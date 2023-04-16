@@ -30,12 +30,12 @@ static bool CheckAPIVersion(const char *api_version)
 #if defined(_WIN32)
 #undef GetClassName
 #endif /* _WIN32 */
-template <> const char *GetClassName<GameInfo, ST_GS>() { return "GSInfo"; }
+template <> const char *GetClassName<GameInfo, ScriptType::GS>() { return "GSInfo"; }
 
 /* static */ void GameInfo::RegisterAPI(Squirrel *engine)
 {
 	/* Create the GSInfo class, and add the RegisterGS function */
-	DefSQClass<GameInfo, ST_GS> SQGSInfo("GSInfo");
+	DefSQClass<GameInfo, ScriptType::GS> SQGSInfo("GSInfo");
 	SQGSInfo.PreRegister(engine);
 	SQGSInfo.AddConstructor<void (GameInfo::*)(), 1>(engine, "x");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddSetting, "AddSetting");

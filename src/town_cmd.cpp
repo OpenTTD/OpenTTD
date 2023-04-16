@@ -145,9 +145,9 @@ Town::~Town()
 	/* Clear the persistent storage list. */
 	this->psa_list.clear();
 
-	DeleteSubsidyWith(ST_TOWN, this->index);
+	DeleteSubsidyWith(SourceType::Town, this->index);
 	DeleteNewGRFInspectWindow(GSF_FAKE_TOWNS, this->index);
-	CargoPacket::InvalidateAllFrom(ST_TOWN, this->index);
+	CargoPacket::InvalidateAllFrom(SourceType::Town, this->index);
 	MarkWholeScreenDirty();
 }
 
@@ -566,7 +566,7 @@ static void TileLoop_Town(TileIndex tile)
 			uint amt = GB(callback, 0, 8);
 			if (amt == 0) continue;
 
-			uint moved = MoveGoodsToStation(cargo, amt, ST_TOWN, t->index, stations.GetStations());
+			uint moved = MoveGoodsToStation(cargo, amt, SourceType::Town, t->index, stations.GetStations());
 
 			const CargoSpec *cs = CargoSpec::Get(cargo);
 			t->supplied[cs->Index()].new_max += amt;
@@ -581,7 +581,7 @@ static void TileLoop_Town(TileIndex tile)
 
 					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
 					t->supplied[CT_PASSENGERS].new_max += amt;
-					t->supplied[CT_PASSENGERS].new_act += MoveGoodsToStation(CT_PASSENGERS, amt, ST_TOWN, t->index, stations.GetStations());
+					t->supplied[CT_PASSENGERS].new_act += MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Town, t->index, stations.GetStations());
 				}
 
 				if (GB(r, 8, 8) < hs->mail_generation) {
@@ -589,7 +589,7 @@ static void TileLoop_Town(TileIndex tile)
 
 					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
 					t->supplied[CT_MAIL].new_max += amt;
-					t->supplied[CT_MAIL].new_act += MoveGoodsToStation(CT_MAIL, amt, ST_TOWN, t->index, stations.GetStations());
+					t->supplied[CT_MAIL].new_act += MoveGoodsToStation(CT_MAIL, amt, SourceType::Town, t->index, stations.GetStations());
 				}
 				break;
 
@@ -606,7 +606,7 @@ static void TileLoop_Town(TileIndex tile)
 					/* Adjust and apply */
 					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
 					t->supplied[CT_PASSENGERS].new_max += amt;
-					t->supplied[CT_PASSENGERS].new_act += MoveGoodsToStation(CT_PASSENGERS, amt, ST_TOWN, t->index, stations.GetStations());
+					t->supplied[CT_PASSENGERS].new_act += MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Town, t->index, stations.GetStations());
 
 					/* Do the same for mail, with a fresh random */
 					r = Random();
@@ -615,7 +615,7 @@ static void TileLoop_Town(TileIndex tile)
 					amt = CountBits(r & genmask);
 					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
 					t->supplied[CT_MAIL].new_max += amt;
-					t->supplied[CT_MAIL].new_act += MoveGoodsToStation(CT_MAIL, amt, ST_TOWN, t->index, stations.GetStations());
+					t->supplied[CT_MAIL].new_act += MoveGoodsToStation(CT_MAIL, amt, SourceType::Town, t->index, stations.GetStations());
 				}
 				break;
 

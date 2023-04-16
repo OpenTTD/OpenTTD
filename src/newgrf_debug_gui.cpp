@@ -841,12 +841,12 @@ struct SpriteAlignerWindow : Window {
 		this->SetWidgetLoweredState(WID_SA_CROSSHAIR, SpriteAlignerWindow::crosshair);
 
 		/* Oh yes, we assume there is at least one normal sprite! */
-		while (GetSpriteType(this->current_sprite) != ST_NORMAL) this->current_sprite++;
+		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) this->current_sprite++;
 	}
 
 	void SetStringParameters(int widget) const override
 	{
-		const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
+		const Sprite *spr = GetSprite(this->current_sprite, SpriteType::Normal);
 		switch (widget) {
 			case WID_SA_CAPTION:
 				SetDParam(0, this->current_sprite);
@@ -901,7 +901,7 @@ struct SpriteAlignerWindow : Window {
 		switch (widget) {
 			case WID_SA_SPRITE: {
 				/* Center the sprite ourselves */
-				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
+				const Sprite *spr = GetSprite(this->current_sprite, SpriteType::Normal);
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				int x;
 				int y;
@@ -949,7 +949,7 @@ struct SpriteAlignerWindow : Window {
 			case WID_SA_PREVIOUS:
 				do {
 					this->current_sprite = (this->current_sprite == 0 ? GetMaxSpriteID() :  this->current_sprite) - 1;
-				} while (GetSpriteType(this->current_sprite) != ST_NORMAL);
+				} while (GetSpriteType(this->current_sprite) != SpriteType::Normal);
 				this->SetDirty();
 				break;
 
@@ -960,7 +960,7 @@ struct SpriteAlignerWindow : Window {
 			case WID_SA_NEXT:
 				do {
 					this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();
-				} while (GetSpriteType(this->current_sprite) != ST_NORMAL);
+				} while (GetSpriteType(this->current_sprite) != SpriteType::Normal);
 				this->SetDirty();
 				break;
 
@@ -977,7 +977,7 @@ struct SpriteAlignerWindow : Window {
 				uint i = this->vscroll->GetPosition() + (pt.y - nwid->pos_y) / step_size;
 				if (i < _newgrf_debug_sprite_picker.sprites.size()) {
 					SpriteID spr = _newgrf_debug_sprite_picker.sprites[i];
-					if (GetSpriteType(spr) == ST_NORMAL) this->current_sprite = spr;
+					if (GetSpriteType(spr) == SpriteType::Normal) this->current_sprite = spr;
 				}
 				this->SetDirty();
 				break;
@@ -1000,7 +1000,7 @@ struct SpriteAlignerWindow : Window {
 				 * used by someone and the sprite cache isn't big enough for that
 				 * particular NewGRF developer.
 				 */
-				Sprite *spr = const_cast<Sprite *>(GetSprite(this->current_sprite, ST_NORMAL));
+				Sprite *spr = const_cast<Sprite *>(GetSprite(this->current_sprite, SpriteType::Normal));
 
 				/* Remember the original offsets of the current sprite, if not already in mapping. */
 				if (!(this->offs_start_map.Contains(this->current_sprite))) {
@@ -1045,7 +1045,7 @@ struct SpriteAlignerWindow : Window {
 
 		this->current_sprite = atoi(str);
 		if (this->current_sprite >= GetMaxSpriteID()) this->current_sprite = 0;
-		while (GetSpriteType(this->current_sprite) != ST_NORMAL) {
+		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) {
 			this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();
 		}
 		this->SetDirty();

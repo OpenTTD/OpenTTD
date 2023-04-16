@@ -2254,19 +2254,19 @@ bool AfterLoadGame()
 					case TE_PASSENGERS:
 					case TE_MAIL:
 						/* Town -> Town */
-						s->src_type = s->dst_type = ST_TOWN;
+						s->src_type = s->dst_type = SourceType::Town;
 						if (Town::IsValidID(s->src) && Town::IsValidID(s->dst)) continue;
 						break;
 					case TE_GOODS:
 					case TE_FOOD:
 						/* Industry -> Town */
-						s->src_type = ST_INDUSTRY;
-						s->dst_type = ST_TOWN;
+						s->src_type = SourceType::Industry;
+						s->dst_type = SourceType::Town;
 						if (Industry::IsValidID(s->src) && Town::IsValidID(s->dst)) continue;
 						break;
 					default:
 						/* Industry -> Industry */
-						s->src_type = s->dst_type = ST_INDUSTRY;
+						s->src_type = s->dst_type = SourceType::Industry;
 						if (Industry::IsValidID(s->src) && Industry::IsValidID(s->dst)) continue;
 						break;
 				}
@@ -2284,7 +2284,7 @@ bool AfterLoadGame()
 						const Station *sd = Station::GetIfValid(s->dst);
 						if (ss != nullptr && sd != nullptr && ss->owner == sd->owner &&
 								Company::IsValidID(ss->owner)) {
-							s->src_type = s->dst_type = ST_TOWN;
+							s->src_type = s->dst_type = SourceType::Town;
 							s->src = ss->town->index;
 							s->dst = sd->town->index;
 							s->awarded = ss->owner;

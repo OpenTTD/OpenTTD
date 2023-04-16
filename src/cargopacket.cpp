@@ -26,7 +26,7 @@ INSTANTIATE_POOL_METHODS(CargoPacket)
  */
 CargoPacket::CargoPacket()
 {
-	this->source_type = ST_INDUSTRY;
+	this->source_type = SourceType::Industry;
 	this->source_id   = INVALID_SOURCE;
 }
 

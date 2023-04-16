@@ -831,17 +831,17 @@ enum SortOrder {
 
 class CargoDataEntry;
 
-enum CargoSortType {
-	ST_AS_GROUPING,    ///< by the same principle the entries are being grouped
-	ST_COUNT,          ///< by amount of cargo
-	ST_STATION_STRING, ///< by station name
-	ST_STATION_ID,     ///< by station id
-	ST_CARGO_ID,       ///< by cargo id
+enum class CargoSortType : byte {
+	AsGrouping,    ///< by the same principle the entries are being grouped
+	Count,         ///< by amount of cargo
+	StationString, ///< by station name
+	StationID,     ///< by station id
+	CargoID,       ///< by cargo id
 };
 
 class CargoSorter {
 public:
-	CargoSorter(CargoSortType t = ST_STATION_ID, SortOrder o = SO_ASCENDING) : type(t), order(o) {}
+	CargoSorter(CargoSortType t = CargoSortType::StationID, SortOrder o = SO_ASCENDING) : type(t), order(o) {}
 	CargoSortType GetSortType() {return this->type;}
 	bool operator()(const CargoDataEntry *cd1, const CargoDataEntry *cd2) const;
 
@@ -1012,7 +1012,7 @@ CargoDataEntry::CargoDataEntry() :
 	station(INVALID_STATION),
 	num_children(0),
 	count(0),
-	children(new CargoDataSet(CargoSorter(ST_CARGO_ID)))
+	children(new CargoDataSet(CargoSorter(CargoSortType::CargoID)))
 {}
 
 CargoDataEntry::CargoDataEntry(CargoID cargo, uint count, CargoDataEntry *parent) :
@@ -1101,7 +1101,7 @@ CargoDataEntry *CargoDataEntry::InsertOrRetrieve(Tid child_id)
 		return *(this->children->insert(new CargoDataEntry(child_id, 0, this)).first);
 	} else {
 		CargoDataEntry *ret = *i;
-		assert(this->children->value_comp().GetSortType() != ST_COUNT);
+		assert(this->children->value_comp().GetSortType() != CargoSortType::Count);
 		return ret;
 	}
 }
@@ -1138,7 +1138,7 @@ CargoDataEntry *CargoDataEntry::Retrieve(CargoDataSet::iterator i) const
 	if (i == this->children->end()) {
 		return nullptr;
 	} else {
-		assert(this->children->value_comp().GetSortType() != ST_COUNT);
+		assert(this->children->value_comp().GetSortType() != CargoSortType::Count);
 		return *i;
 	}
 }
@@ -1146,13 +1146,13 @@ CargoDataEntry *CargoDataEntry::Retrieve(CargoDataSet::iterator i) const
 bool CargoSorter::operator()(const CargoDataEntry *cd1, const CargoDataEntry *cd2) const
 {
 	switch (this->type) {
-		case ST_STATION_ID:
+		case CargoSortType::StationID:
 			return this->SortId<StationID>(cd1->GetStation(), cd2->GetStation());
-		case ST_CARGO_ID:
+		case CargoSortType::CargoID:
 			return this->SortId<CargoID>(cd1->GetCargo(), cd2->GetCargo());
-		case ST_COUNT:
+		case CargoSortType::Count:
 			return this->SortCount(cd1, cd2);
-		case ST_STATION_STRING:
+		case CargoSortType::StationString:
 			return this->SortStation(cd1->GetStation(), cd2->GetStation());
 		default:
 			NOT_REACHED();
@@ -1268,7 +1268,7 @@ struct StationViewWindow : public Window {
 
 	/**
 	 * Sort types of the different 'columns'.
-	 * In fact only ST_COUNT and ST_AS_GROUPING are active and you can only
+	 * In fact only CargoSortType::Count and CargoSortType::AsGrouping are active and you can only
 	 * sort all the columns in the same way. The other options haven't been
 	 * included in the GUI due to lack of space.
 	 */
@@ -1298,7 +1298,7 @@ struct StationViewWindow : public Window {
 		this->FinishInitNested(window_number);
 
 		this->groupings[0] = GR_CARGO;
-		this->sortings[0] = ST_AS_GROUPING;
+		this->sortings[0] = CargoSortType::AsGrouping;
 		this->SelectGroupBy(_settings_client.gui.station_gui_group_order);
 		this->SelectSortBy(_settings_client.gui.station_gui_sort_by);
 		this->sort_orders[0] = SO_ASCENDING;
@@ -1715,12 +1715,12 @@ struct StationViewWindow : public Window {
 	 */
 	int DrawEntries(CargoDataEntry *entry, const Rect &r, int pos, int maxrows, int column, CargoID cargo = CT_INVALID)
 	{
-		if (this->sortings[column] == ST_AS_GROUPING) {
+		if (this->sortings[column] == CargoSortType::AsGrouping) {
 			if (this->groupings[column] != GR_CARGO) {
-				entry->Resort(ST_STATION_STRING, this->sort_orders[column]);
+				entry->Resort(CargoSortType::StationString, this->sort_orders[column]);
 			}
 		} else {
-			entry->Resort(ST_COUNT, this->sort_orders[column]);
+			entry->Resort(CargoSortType::Count, this->sort_orders[column]);
 		}
 		for (CargoDataSet::iterator i = entry->Begin(); i != entry->End(); ++i) {
 			CargoDataEntry *cd = *i;
@@ -1940,7 +1940,7 @@ struct StationViewWindow : public Window {
 				 * sorted by cargo ID. The others can theoretically be sorted
 				 * by different things but there is no UI for that. */
 				ShowDropDownMenu(this, _sort_names,
-						this->current_mode * 2 + (this->sortings[1] == ST_COUNT ? 1 : 0),
+						this->current_mode * 2 + (this->sortings[1] == CargoSortType::Count ? 1 : 0),
 						WID_SV_SORT_BY, 0, 0);
 				break;
 			}
@@ -1980,19 +1980,19 @@ struct StationViewWindow : public Window {
 		switch (_sort_names[index]) {
 			case STR_STATION_VIEW_WAITING_STATION:
 				this->current_mode = MODE_WAITING;
-				this->sortings[1] = this->sortings[2] = this->sortings[3] = ST_AS_GROUPING;
+				this->sortings[1] = this->sortings[2] = this->sortings[3] = CargoSortType::AsGrouping;
 				break;
 			case STR_STATION_VIEW_WAITING_AMOUNT:
 				this->current_mode = MODE_WAITING;
-				this->sortings[1] = this->sortings[2] = this->sortings[3] = ST_COUNT;
+				this->sortings[1] = this->sortings[2] = this->sortings[3] = CargoSortType::Count;
 				break;
 			case STR_STATION_VIEW_PLANNED_STATION:
 				this->current_mode = MODE_PLANNED;
-				this->sortings[1] = this->sortings[2] = this->sortings[3] = ST_AS_GROUPING;
+				this->sortings[1] = this->sortings[2] = this->sortings[3] = CargoSortType::AsGrouping;
 				break;
 			case STR_STATION_VIEW_PLANNED_AMOUNT:
 				this->current_mode = MODE_PLANNED;
-				this->sortings[1] = this->sortings[2] = this->sortings[3] = ST_COUNT;
+				this->sortings[1] = this->sortings[2] = this->sortings[3] = CargoSortType::Count;
 				break;
 			default:
 				NOT_REACHED();

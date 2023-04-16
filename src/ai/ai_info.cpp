@@ -32,12 +32,12 @@ static bool CheckAPIVersion(const char *api_version)
 #if defined(_WIN32)
 #undef GetClassName
 #endif /* _WIN32 */
-template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
+template <> const char *GetClassName<AIInfo, ScriptType::AI>() { return "AIInfo"; }
 
 /* static */ void AIInfo::RegisterAPI(Squirrel *engine)
 {
 	/* Create the AIInfo class, and add the RegisterAI function */
-	DefSQClass<AIInfo, ST_AI> SQAIInfo("AIInfo");
+	DefSQClass<AIInfo, ScriptType::AI> SQAIInfo("AIInfo");
 	SQAIInfo.PreRegister(engine);
 	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
 	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddSetting, "AddSetting");

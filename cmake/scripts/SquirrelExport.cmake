@@ -332,13 +332,13 @@ foreach(LINE IN LISTS SOURCE_LINES)
         endif()
 
         string(APPEND SQUIRREL_EXPORT "\n")
-        string(APPEND SQUIRREL_EXPORT "\ntemplate <> const char *GetClassName<${CLS}, ST_${APIUC}>() { return \"${API_CLS}\"; }")
+        string(APPEND SQUIRREL_EXPORT "\ntemplate <> const char *GetClassName<${CLS}, ScriptType::${APIUC}>() { return \"${API_CLS}\"; }")
         string(APPEND SQUIRREL_EXPORT "\n")
 
         # Then do the registration functions of the class.
         string(APPEND SQUIRREL_EXPORT "\nvoid SQ${API_CLS}_Register(Squirrel *engine)")
         string(APPEND SQUIRREL_EXPORT "\n{")
-        string(APPEND SQUIRREL_EXPORT "\n	DefSQClass<${CLS}, ST_${APIUC}> SQ${API_CLS}(\"${API_CLS}\");")
+        string(APPEND SQUIRREL_EXPORT "\n	DefSQClass<${CLS}, ScriptType::${APIUC}> SQ${API_CLS}(\"${API_CLS}\");")
         if("${SUPER_CLS}" STREQUAL "Text" OR "${SUPER_CLS}" STREQUAL "ScriptObject" OR "${SUPER_CLS}" STREQUAL "AIAbstractiveList::Valuator")
             string(APPEND SQUIRREL_EXPORT "\n	SQ${API_CLS}.PreRegister(engine);")
         else()
