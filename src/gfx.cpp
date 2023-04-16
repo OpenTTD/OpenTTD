@@ -61,9 +61,10 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
 
 static ReusableBuffer<uint8> _cursor_backup;
 
-ZoomLevel _gui_zoom = ZOOM_LVL_OUT_4X;     ///< GUI Zoom level
-int _gui_scale      = MIN_INTERFACE_SCALE; ///< GUI scale, 100 is 100%.
-int _gui_scale_cfg;                        ///< GUI scale in config.
+ZoomLevel _gui_zoom  = ZOOM_LVL_OUT_4X;     ///< GUI Zoom level
+ZoomLevel _font_zoom = _gui_zoom;           ///< Sprite font Zoom level (not clamped)
+int _gui_scale       = MIN_INTERFACE_SCALE; ///< GUI scale, 100 is 100%.
+int _gui_scale_cfg;                         ///< GUI scale in config.
 
 /**
  * The rect for repaint.
@@ -2049,6 +2050,8 @@ void UpdateGUIZoom()
 	}
 
 	int8 new_zoom = ScaleGUITrad(1) <= 1 ? ZOOM_LVL_OUT_4X : ScaleGUITrad(1) >= 4 ? ZOOM_LVL_MIN : ZOOM_LVL_OUT_2X;
+	/* Font glyphs should not be clamped to min/max zoom. */
+	_font_zoom = static_cast<ZoomLevel>(new_zoom);
 	/* Ensure the gui_zoom is clamped between min/max. */
 	new_zoom = Clamp(new_zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 	_gui_zoom = static_cast<ZoomLevel>(new_zoom);
@@ -2062,16 +2065,19 @@ void UpdateGUIZoom()
  */
 bool AdjustGUIZoom(bool automatic)
 {
-	ZoomLevel old_zoom = _gui_zoom;
+	ZoomLevel old_gui_zoom = _gui_zoom;
+	ZoomLevel old_font_zoom = _font_zoom;
 	int old_scale = _gui_scale;
 	UpdateGUIZoom();
 	if (old_scale == _gui_scale) return false;
 
 	/* Reload sprites if sprite zoom level has changed. */
-	if (old_zoom != _gui_zoom) {
+	if (old_gui_zoom != _gui_zoom) {
 		GfxClearSpriteCache();
 		VideoDriver::GetInstance()->ClearSystemSprites();
 		UpdateCursorSize();
+	} else if (old_font_zoom != _font_zoom) {
+		GfxClearFontSpriteCache();
 	}
 
 	ClearFontCache();
@@ -2080,7 +2086,7 @@ bool AdjustGUIZoom(bool automatic)
 
 	/* Adjust all window sizes to match the new zoom level, so that they don't appear
 	   to move around when the application is moved to a screen with different DPI. */
-	auto zoom_shift = old_zoom - _gui_zoom;
+	auto zoom_shift = old_gui_zoom - _gui_zoom;
 	for (Window *w : Window::Iterate()) {
 		if (automatic) {
 			w->left   = (w->left   * _gui_scale) / old_scale;

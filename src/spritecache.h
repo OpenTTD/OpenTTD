@@ -58,6 +58,7 @@ static inline const byte *GetNonSprite(SpriteID sprite, SpriteType type)
 
 void GfxInitSpriteMem();
 void GfxClearSpriteCache();
+void GfxClearFontSpriteCache();
 void IncreaseSpriteLRU();
 
 SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdir, bool palette_remap);
