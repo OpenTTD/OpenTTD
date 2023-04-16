@@ -2396,25 +2396,26 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 
 				/* Allocate space for this house. */
 				if (housespec == nullptr) {
+					/* Only the first property 08 setting copies properties; if you later change it, properties will stay. */
 					_cur.grffile->housespec[hid + i] = std::make_unique<HouseSpec>(*HouseSpec::Get(subs_id));
 					housespec = _cur.grffile->housespec[hid + i].get();
-				}
 
-				housespec->enabled = true;
-				housespec->grf_prop.local_id = hid + i;
-				housespec->grf_prop.subst_id = subs_id;
-				housespec->grf_prop.grffile = _cur.grffile;
-				housespec->random_colour[0] = 0x04;  // those 4 random colours are the base colour
-				housespec->random_colour[1] = 0x08;  // for all new houses
-				housespec->random_colour[2] = 0x0C;  // they stand for red, blue, orange and green
-				housespec->random_colour[3] = 0x06;
+					housespec->enabled = true;
+					housespec->grf_prop.local_id = hid + i;
+					housespec->grf_prop.subst_id = subs_id;
+					housespec->grf_prop.grffile = _cur.grffile;
+					housespec->random_colour[0] = 0x04;  // those 4 random colours are the base colour
+					housespec->random_colour[1] = 0x08;  // for all new houses
+					housespec->random_colour[2] = 0x0C;  // they stand for red, blue, orange and green
+					housespec->random_colour[3] = 0x06;
 
-				/* Make sure that the third cargo type is valid in this
-				 * climate. This can cause problems when copying the properties
-				 * of a house that accepts food, where the new house is valid
-				 * in the temperate climate. */
-				if (!CargoSpec::Get(housespec->accepts_cargo[2])->IsValid()) {
-					housespec->cargo_acceptance[2] = 0;
+					/* Make sure that the third cargo type is valid in this
+					 * climate. This can cause problems when copying the properties
+					 * of a house that accepts food, where the new house is valid
+					 * in the temperate climate. */
+					if (!CargoSpec::Get(housespec->accepts_cargo[2])->IsValid()) {
+						housespec->cargo_acceptance[2] = 0;
+					}
 				}
 				break;
 			}
