@@ -117,7 +117,7 @@ void FiosGetSavegameList(SaveLoadOperation fop, FileList &file_list);
 void FiosGetScenarioList(SaveLoadOperation fop, FileList &file_list);
 void FiosGetHeightmapList(SaveLoadOperation fop, FileList &file_list);
 
-const char *FiosBrowseTo(const FiosItem *item);
+bool FiosBrowseTo(const FiosItem *item);
 
 StringID FiosGetDescText(const char **path, uint64 *total_free);
 bool FiosDelete(const char *name);
