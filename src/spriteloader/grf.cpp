@@ -282,11 +282,12 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_p
 		if (sprite_type != SpriteType::MapGen) {
 			if (zoom < lengthof(zoom_lvl_map)) {
 				is_wanted_zoom_lvl = true;
-				if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_OUT_2X &&
+				ZoomLevel zoom_min = sprite_type == SpriteType::Font ? ZOOM_LVL_NORMAL : _settings_client.gui.sprite_zoom_min;
+				if (zoom_min >= ZOOM_LVL_OUT_2X &&
 						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL) && zoom_lvl_map[zoom] < ZOOM_LVL_OUT_2X) {
 					is_wanted_zoom_lvl = false;
 				}
-				if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_OUT_4X &&
+				if (zoom_min >= ZOOM_LVL_OUT_4X &&
 						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL) && zoom_lvl_map[zoom] < ZOOM_LVL_OUT_4X) {
 					is_wanted_zoom_lvl = false;
 				}

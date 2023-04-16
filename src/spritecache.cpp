@@ -519,14 +519,14 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, allocator, encoder);
 	}
 
-	if (sprite->type == SpriteType::Font && ZOOM_LVL_GUI != ZOOM_LVL_NORMAL) {
+	if (sprite->type == SpriteType::Font && _font_zoom != ZOOM_LVL_NORMAL) {
 		/* Make ZOOM_LVL_NORMAL be ZOOM_LVL_GUI */
-		sprite[ZOOM_LVL_NORMAL].width  = sprite[ZOOM_LVL_GUI].width;
-		sprite[ZOOM_LVL_NORMAL].height = sprite[ZOOM_LVL_GUI].height;
-		sprite[ZOOM_LVL_NORMAL].x_offs = sprite[ZOOM_LVL_GUI].x_offs;
-		sprite[ZOOM_LVL_NORMAL].y_offs = sprite[ZOOM_LVL_GUI].y_offs;
-		sprite[ZOOM_LVL_NORMAL].data   = sprite[ZOOM_LVL_GUI].data;
-		sprite[ZOOM_LVL_NORMAL].colours = sprite[ZOOM_LVL_GUI].colours;
+		sprite[ZOOM_LVL_NORMAL].width  = sprite[_font_zoom].width;
+		sprite[ZOOM_LVL_NORMAL].height = sprite[_font_zoom].height;
+		sprite[ZOOM_LVL_NORMAL].x_offs = sprite[_font_zoom].x_offs;
+		sprite[ZOOM_LVL_NORMAL].y_offs = sprite[_font_zoom].y_offs;
+		sprite[ZOOM_LVL_NORMAL].data   = sprite[_font_zoom].data;
+		sprite[ZOOM_LVL_NORMAL].colours = sprite[_font_zoom].colours;
 	}
 
 	return encoder->Encode(sprite, allocator);
@@ -1046,6 +1046,19 @@ void GfxClearSpriteCache()
 	}
 
 	VideoDriver::GetInstance()->ClearSystemSprites();
+}
+
+/**
+ * Remove all encoded font sprites from the sprite cache without
+ * discarding sprite location information.
+ */
+void GfxClearFontSpriteCache()
+{
+	/* Clear sprite ptr for all cached font items */
+	for (uint i = 0; i != _spritecache_items; i++) {
+		SpriteCache *sc = GetSpriteCache(i);
+		if (sc->type == SpriteType::Font && sc->ptr != nullptr) DeleteEntryFromSpriteCache(i);
+	}
 }
 
 /* static */ ReusableBuffer<SpriteLoader::CommonPixel> SpriteLoader::Sprite::buffer[ZOOM_LVL_COUNT];
