@@ -153,8 +153,6 @@ struct TimetableWindow : Window {
 	VehicleTimetableWidgets query_widget; ///< Which button was clicked to open the query text input?
 	const Vehicle *vehicle;    ///< Vehicle monitored by the window.
 	bool show_expected;        ///< Whether we show expected arrival or scheduled.
-	uint deparr_time_width;    ///< The width of the departure/arrival time
-	uint deparr_abbr_width;    ///< The width of the departure/arrival abbreviation
 	Scrollbar *vscroll;        ///< The scrollbar.
 	bool set_start_date_all;   ///< Set start date using minutes text entry for all timetable entries (ctrl-click) action.
 	bool change_timetable_all; ///< Set wait time or speed for all timetable entries (ctrl-click) action.
@@ -195,10 +193,8 @@ struct TimetableWindow : Window {
 	{
 		switch (widget) {
 			case WID_VT_ARRIVAL_DEPARTURE_PANEL:
-				SetDParamMaxValue(0, MAX_YEAR * DAYS_IN_YEAR, 0, FS_SMALL);
-				this->deparr_time_width = GetStringBoundingBox(STR_JUST_DATE_TINY).width;
-				this->deparr_abbr_width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL_ABBREVIATION).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE_ABBREVIATION).width);
-				size->width = this->deparr_abbr_width + WidgetDimensions::scaled.hsep_wide + this->deparr_time_width + padding.width;
+				SetDParamMaxValue(1, MAX_YEAR * DAYS_IN_YEAR, 0, FS_SMALL);
+				size->width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE).width) + WidgetDimensions::scaled.hsep_wide + padding.width;
 				FALLTHROUGH;
 
 			case WID_VT_ARRIVAL_DEPARTURE_SELECTION:
@@ -442,44 +438,35 @@ struct TimetableWindow : Window {
 		bool show_late = this->show_expected && v->lateness_counter > DAY_TICKS;
 		Ticks offset = show_late ? 0 : -v->lateness_counter;
 
-		bool rtl = _current_text_dir == TD_RTL;
-		Rect abbr = tr.WithWidth(this->deparr_abbr_width, rtl);
-		Rect time = tr.WithWidth(this->deparr_time_width, !rtl);
-
 		for (int i = this->vscroll->GetPosition(); i / 2 < v->GetNumOrders(); ++i) { // note: i is also incremented in the loop
 			/* Don't draw anything if it extends past the end of the window. */
 			if (!this->vscroll->IsVisible(i)) break;
 
+			/* TC_INVALID will skip the colour change. */
+			SetDParam(0, show_late ? TC_RED : TC_INVALID);
 			if (i % 2 == 0) {
 				/* Draw an arrival time. */
 				if (arr_dep[i / 2].arrival != INVALID_TICKS) {
-					/* First draw the arrival abbreviation. */
-					DrawString(abbr.left, abbr.right, tr.top, STR_TIMETABLE_ARRIVAL_ABBREVIATION, i == selected ? TC_WHITE : TC_BLACK);
-
 					/* First set the offset and text colour based on the expected/scheduled mode and some other things. */
 					Ticks this_offset;
-					TextColour colour;
 					if (this->show_expected && i / 2 == earlyID) {
 						/* Show expected arrival. */
 						this_offset = 0;
-						colour = TC_GREEN;
+						SetDParam(0, TC_GREEN);
 					} else {
 						/* Show scheduled arrival. */
 						this_offset = offset;
-						colour = show_late ? TC_RED : (i == selected ? TC_WHITE : TC_BLACK);
 					}
 
 					/* Now actually draw the arrival time. */
-					SetDParam(0, TimerGameCalendar::date + (arr_dep[i / 2].arrival + this_offset) / DAY_TICKS);
-					DrawString(time.left, time.right, tr.top, STR_JUST_DATE_TINY, colour);
+					SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].arrival + this_offset) / DAY_TICKS);
+					DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_ARRIVAL, i == selected ? TC_WHITE : TC_BLACK);
 				}
 			} else {
 				/* Draw a departure time. */
 				if (arr_dep[i / 2].departure != INVALID_TICKS) {
-					DrawString(abbr.left, abbr.right, tr.top, STR_TIMETABLE_DEPARTURE_ABBREVIATION, i == selected ? TC_WHITE : TC_BLACK);
-					TextColour colour = show_late ? TC_RED : (i == selected ? TC_WHITE : TC_BLACK);
-					SetDParam(0, TimerGameCalendar::date + (arr_dep[i / 2].departure + offset) / DAY_TICKS);
-					DrawString(time.left, time.right, tr.top, STR_JUST_DATE_TINY, colour);
+					SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].departure + offset) / DAY_TICKS);
+					DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE, i == selected ? TC_WHITE : TC_BLACK);
 				}
 			}
 			tr.top += FONT_HEIGHT_NORMAL;
