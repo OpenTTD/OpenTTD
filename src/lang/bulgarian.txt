@@ -4114,7 +4114,6 @@ STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Затвори
 STR_AI_SETTINGS_RESET                                           :{BLACK}Рестартиране
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Броят дни докато този ИИ бъде стартиран след предишния (give or take): {ORANGE}{STRING}
 
 
 # Textfile window

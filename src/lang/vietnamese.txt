@@ -195,6 +195,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mp
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}ô/ngày
+STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}{NBSP}hải lý
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
@@ -343,9 +344,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Mở b�
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Tua nhanh trò chơi
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Tùy chọn
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, bỏ ván chơi, thoát chương trình
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Tùy chọn và thiết lập
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, nạp hoặc bỏ ván chơi, thoát chương trình
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ, khung nhìn bổ sung, dòng chảy hàng hóa hoặc danh sách biển hiệu
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Hiển thị danh sách đô thị
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Hiện tiền trợ cấp
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Hiển thị danh sách công ty
@@ -353,9 +354,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Hiện t
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Hiện thông tin tổng quát của công ty
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Hiển thị tình tiết
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Hiển thị danh sách mục tiêu
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Hiển thị biểu đồ
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Hiển thị biểu đồ của công ty và giá cước hàng hóa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Hiện bảng tầm cỡ các công ty
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bỏ vốn cho những ngành mới hoặc hiện tất cả các ngành
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Khảo sát các ngành công nghiệp hoặc bỏ vốn cho những ngành mới
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Hiện danh sách tàu hỏa của công ty. Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Hiện danh sách xe cộ của công ty. Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hiện danh sách tàu thủy của công ty. Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
@@ -369,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Xây b�
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Xây sân bay
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Mở thanh địa hình để nâng cao/hạ thấp ô đất, trồng cây, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hiện cửa sổ âm thanh/nhạc
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Hiện thông báo/tin tức cuối cùng, hiện tùy chọn thông báo
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Thông tin vùng đất, bảng lệnh, script debug, ảnh chụp, về OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Hiện thông báo/tin tức cuối cùng, lịch sử thông báo hoặc xóa tất cả thông báo
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Thông tin vùng đất, chụp màng hình, công cụ dành cho nhà phát triển và thông tin về OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Chuyển thanh công cụ
 
 # Extra tooltips for the scenario editor toolbar
@@ -816,7 +817,7 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông �
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Tàu hoả đầu tiên đến {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe bus đầu tiên đến {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe buýt đầu tiên đến {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe tải đầu tiên đến {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe điện chở khách đầu tiên đến {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe tải điện đầu tiên đến {STATION}!
@@ -1375,9 +1376,9 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :giảm bớt
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :bình thường
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Cho phép xây điểm dừng xe buýt trên đường của thị trấn: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Cho phép xây dựng điểm dừng xe bus trên đường sở hữu bởi địa phương
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Cho phép xây dựng điểm dừng xe buýt trên đường sở hữu bởi địa phương
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Cho phép xây điểm dừng xe buýt trên đường của đối thủ: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Cho phép xây dựng điểm dừng xe bus trên đường sở hữu bởi công ty khác
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Cho phép xây dựng điểm dừng xe buýt trên đường sở hữu bởi công ty khác
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không thể đổi thiết đặt này khi vẫn còn các phương tiện giao thông.
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Phí bảo trì cơ sở hạ tầng: {STRING}
@@ -1808,7 +1809,9 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Nếu bật, ch
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Tuổi công ty tối thiểu để bán cổ phần: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Đặt số tuổi tối thiểu của công ty để cho các bên khác có thể mua và bán cổ phần
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} năm
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :Không có tuổi tối thiểu
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Tỉ lệ lợi tức cổ phiếu chi trả cho môi giới: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Tỉ lệ thu nhập cho mỗi trung gian trên hệ thống vận tải, cho phép điều chỉnh thu nhập
@@ -1923,6 +1926,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Không
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Hệ số quy mô đô thị coi là thành phố: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kích thước trung bình của thành phố tỉ lệ với đô thị lúc bắt đầu trò chơi
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Cập nhật biểu đồ phân phối mỗi {STRING}{NBSP}giây
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Thời gian giữa các lần tính toán lại tiếp theo của biểu đồ liên kết. Mỗi lần tính toán lại sẽ tính toán các kế hoạch cho một thành phần của biểu đồ. Điều đó có nghĩa là giá trị X cho cài đặt này không có nghĩa là toàn bộ biểu đồ sẽ được cập nhật X giây một lần. Chỉ một số thành phần sẽ làm như vậy. Bạn đặt nó càng ngắn thì càng cần nhiều thời gian CPU để tính toán nó. Bạn đặt càng lâu thì càng mất nhiều thời gian cho đến khi việc phân phối hàng hóa bắt đầu trên các tuyến đường mới.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Mất {STRING}{NBSP}giây để tính toán lại biểu đồ phân phối
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Thời gian tiêu tốn cho mỗi lần tính toán lại một thành phần biểu đồ liên kết. Khi bắt đầu tính toán lại, một luồng sẽ được sinh ra và chạy trong số giây được thiết lập. Bạn đặt thông số này càng ngắn thì càng có nhiều khả luồng được tạo chưa hoàn thành công việc của nó. Sau đó, trò chơi dừng lại cho đến khi nó ("lag"). Bạn đặt càng lâu thì biểu đồ phân phối càng mất nhiều thời gian để cập nhật khi các tuyến thay đổi.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Chế độ phân phối đối với hành khách: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Đối xứng" có nghĩa là số lượng hành khách đi từ nhà ga A đến nhà ga B và từ B đến A sẽ tương đương nhau . "Không đối xứng" có nghĩa là số lượng hành khách tùy ý có thể đi theo một trong hai hướng. "Thủ công" có nghĩa là hành khách sẽ không được phân phối tự động.
@@ -1948,13 +1955,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Thiết lập g
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Tỉ lệ bảo hòa (hết tải) của đường tắt trước khi chuyển sang đường khác dài hơn: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Thường sẽ có nhiều con đường giữa 2 ga/bến. Việc vận tải hàng hóa sẽ chọn con đường ngắn nhất trước cho đến khi hết tải. Sau đó chọn con đường ngắn thứ 2, 3... cho đến khi hết tải. Việc hết tải được tính toán bằng khối lượng vận chuyển thực tế so với dự tính. Khi hết tải tất cả các con đường, nếu vẫn còn hàng hóa cần chuyển, thì nó có thể gây quá tải. Dầu vậy thuật toán này không phải lúc nào cũng chính xác trong việc tính toán năng lực vận tải. Thiết lập này cho phép bạn tinh chỉnh tỉ lệ mà một con đường sẽ hết tải trước khi chọn con đường kế tiếp. Nhỏ hơn 100% sẽ giúp tránh việc một ga bến quá đông đúc và bù trừ việc tính toán sai lệch này.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Đơn vị tốc độ: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Đơn vị tốc độ (đất liền): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Đơn vị tốc độ (hàng hải): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Khi thể hiện tốc độ trên giao diện, thể hiện nó bằng đơn vị đã chọn.
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Đơn vị trong trò chơi (ô/ngày)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Hải lý
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Đơn vị công suất phương tiện: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Khi thể hiện công suất phương tiện, thể hiện nó bằng đơn vị đã chọn.
@@ -4581,6 +4590,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Các AIs
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
 STR_AI_CONFIG_RANDOM_AI                                         :AI ngẫu nhiên
 STR_AI_CONFIG_NONE                                              :(không)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Chuyển Lên Trên
@@ -4594,7 +4604,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Chọn AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Chọn Game Script
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Chạy tập lệnh khác
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Chạy tập lệnh khác. Ctrl+Click để hiển thị những phiên bản sẵn có
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Tham Số
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu hình tham số cho AI
 
@@ -4628,7 +4638,6 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Số ngày cần chờ để chạy AI này sau cái trước (sớm hay muộn): {ORANGE}{STRING}
 
 
 # Textfile window
@@ -5084,7 +5093,16 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... máy
 
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Không có ga xe lửa
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Không có trạm xe buýt
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Không có trạm xe tải
+STR_ERROR_NO_DOCK                                               :{WHITE}Không có bến cảng
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Không có sân bay/bãi đỗ trực thăng
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Không có điểm dừng nào phù hợp với kiểu đường
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Không có điểm dừng phù hợp với kiểu tàu điện
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Không có điểm dừng phù hợp với ô tô kéo rơ moóc.{}Ô tô kéo rơ moóc cần điểm dừng ngắn trên đường, không phải bến dừng
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Không thể hạ cánh máy bay tại bãi đỗ trực thăng này
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Không thể hạ cánh trực thăng ở sân bay này
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Không có điểm mốc tàu hỏa
 STR_ERROR_NO_BUOY                                               :{WHITE}Không có cái phao nào
 
 # Timetable related errors
