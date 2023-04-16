@@ -164,8 +164,8 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 					data->a = (colour_fmt & SCC_ALPHA) ? *dest++ : 0xFF;
 					if (colour_fmt & SCC_PAL) {
 						switch (sprite_type) {
-							case ST_NORMAL: data->m = file.NeedsPaletteRemap() ? _palmap_w2d[*dest] : *dest; break;
-							case ST_FONT:   data->m = std::min<uint>(*dest, 2u); break;
+							case SpriteType::Normal: data->m = file.NeedsPaletteRemap() ? _palmap_w2d[*dest] : *dest; break;
+							case SpriteType::Font:   data->m = std::min<uint>(*dest, 2u); break;
 							default:        data->m = *dest; break;
 						}
 						/* Magic blue. */
@@ -201,8 +201,8 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 			sprite->data[i].a = (colour_fmt & SCC_ALPHA) ? *pixel++ : 0xFF;
 			if (colour_fmt & SCC_PAL) {
 				switch (sprite_type) {
-					case ST_NORMAL: sprite->data[i].m = file.NeedsPaletteRemap() ? _palmap_w2d[*pixel] : *pixel; break;
-					case ST_FONT:   sprite->data[i].m = std::min<uint>(*pixel, 2u); break;
+					case SpriteType::Normal: sprite->data[i].m = file.NeedsPaletteRemap() ? _palmap_w2d[*pixel] : *pixel; break;
+					case SpriteType::Font:   sprite->data[i].m = std::min<uint>(*pixel, 2u); break;
 					default:        sprite->data[i].m = *pixel; break;
 				}
 				/* Magic blue. */
@@ -230,7 +230,7 @@ uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_p
 	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
 	if (type == 0xFF) return 0;
 
-	ZoomLevel zoom_lvl = (sprite_type != ST_MAPGEN) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_NORMAL;
+	ZoomLevel zoom_lvl = (sprite_type != SpriteType::MapGen) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_NORMAL;
 
 	sprite[zoom_lvl].height = file.ReadByte();
 	sprite[zoom_lvl].width  = file.ReadWord();
@@ -279,7 +279,7 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_p
 		bool is_wanted_colour_depth = (colour != 0 && (load_32bpp ? colour != SCC_PAL : colour == SCC_PAL));
 		bool is_wanted_zoom_lvl;
 
-		if (sprite_type != ST_MAPGEN) {
+		if (sprite_type != SpriteType::MapGen) {
 			if (zoom < lengthof(zoom_lvl_map)) {
 				is_wanted_zoom_lvl = true;
 				if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_OUT_2X &&
@@ -298,7 +298,7 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_p
 		}
 
 		if (is_wanted_colour_depth && is_wanted_zoom_lvl) {
-			ZoomLevel zoom_lvl = (sprite_type != ST_MAPGEN) ? zoom_lvl_map[zoom] : ZOOM_LVL_NORMAL;
+			ZoomLevel zoom_lvl = (sprite_type != SpriteType::MapGen) ? zoom_lvl_map[zoom] : ZOOM_LVL_NORMAL;
 
 			if (HasBit(loaded_sprites, zoom_lvl)) {
 				/* We already have this zoom level, skip sprite. */

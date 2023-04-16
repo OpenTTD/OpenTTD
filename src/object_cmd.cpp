@@ -588,7 +588,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			if (flags & DC_EXEC) {
 				c->location_of_HQ = INVALID_TILE; // reset HQ position
 				SetWindowDirty(WC_COMPANY, c->index);
-				CargoPacket::InvalidateAllFrom(ST_HEADQUARTERS, c->index);
+				CargoPacket::InvalidateAllFrom(SourceType::Headquarters, c->index);
 			}
 
 			/* cost of relocating company is 1% of company value */
@@ -686,7 +686,7 @@ static void TileLoop_Object(TileIndex tile)
 	if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
 		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
 		if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-		MoveGoodsToStation(CT_PASSENGERS, amt, ST_HEADQUARTERS, GetTileOwner(tile), stations.GetStations());
+		MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
 	}
 
 	/* Top town building generates 90, HQ can make up to 196. The
@@ -695,7 +695,7 @@ static void TileLoop_Object(TileIndex tile)
 	if (GB(r, 8, 8) < (196 / 4 / (6 - level))) {
 		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
 		if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-		MoveGoodsToStation(CT_MAIL, amt, ST_HEADQUARTERS, GetTileOwner(tile), stations.GetStations());
+		MoveGoodsToStation(CT_MAIL, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
 	}
 }
 

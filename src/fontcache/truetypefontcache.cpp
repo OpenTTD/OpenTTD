@@ -141,7 +141,7 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 				8,  // width
 				0,  // x_offs
 				0,  // y_offs
-				ST_FONT,
+				SpriteType::Font,
 				SCC_PAL,
 				builtin_questionmark_data
 			};

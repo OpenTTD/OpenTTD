@@ -25,7 +25,7 @@ public:
 	 */
 	enum SubsidyParticipantType {
 		/* Values are important, as they represent the internal state of the game.
-		 *  It is originally named SourceType. ST_HEADQUARTERS is intentionally
+		 *  It is originally named SourceType. SourceType::Headquarters is intentionally
 		 *  left out, as it cannot be used for Subsidies. */
 		SPT_INDUSTRY =    0, ///< Subsidy participant is an industry
 		SPT_TOWN     =    1, ///< Subsidy participant is a town

@@ -625,7 +625,7 @@ void OffsetGroundSprite(int x, int y)
 static void AddCombinedSprite(SpriteID image, PaletteID pal, int x, int y, int z, const SubSprite *sub)
 {
 	Point pt = RemapCoords(x, y, z);
-	const Sprite *spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
+	const Sprite *spr = GetSprite(image & SPRITE_MASK, SpriteType::Normal);
 
 	if (pt.x + spr->x_offs >= _vd.dpi.left + _vd.dpi.width ||
 			pt.x + spr->x_offs + spr->width <= _vd.dpi.left ||
@@ -691,7 +691,7 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w,
 		top  = tmp_top  = RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y;
 		bottom          = RemapCoords(x + w          , y + h          , z + bb_offset_z).y + 1;
 	} else {
-		const Sprite *spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
+		const Sprite *spr = GetSprite(image & SPRITE_MASK, SpriteType::Normal);
 		left = tmp_left = (pt.x += spr->x_offs);
 		right           = (pt.x +  spr->width );
 		top  = tmp_top  = (pt.y += spr->y_offs);

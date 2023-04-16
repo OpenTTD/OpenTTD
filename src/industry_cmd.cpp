@@ -197,8 +197,8 @@ Industry::~Industry()
 	CloseWindowById(WC_INDUSTRY_VIEW, this->index);
 	DeleteNewGRFInspectWindow(GSF_INDUSTRIES, this->index);
 
-	DeleteSubsidyWith(ST_INDUSTRY, this->index);
-	CargoPacket::InvalidateAllFrom(ST_INDUSTRY, this->index);
+	DeleteSubsidyWith(SourceType::Industry, this->index);
+	CargoPacket::InvalidateAllFrom(SourceType::Industry, this->index);
 
 	for (Station *st : this->stations_near) {
 		st->RemoveIndustryToDeliver(this);
@@ -546,7 +546,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 			i->this_month_production[j] += cw;
 
-			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, &i->stations_near, i->exclusive_consumer);
+			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, SourceType::Industry, i->index, &i->stations_near, i->exclusive_consumer);
 			i->this_month_transported[j] += am;
 
 			moved_cargo |= (am != 0);
