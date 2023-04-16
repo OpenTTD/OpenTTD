@@ -26,11 +26,13 @@ enum AystarStatus {
 	AYSTAR_EMPTY_OPENLIST, ///< All items are tested, and no path has been found.
 	AYSTAR_STILL_BUSY,     ///< Some checking was done, but no path found yet, and there are still items left to try.
 	AYSTAR_NO_PATH,        ///< No path to the goal was found.
-	AYSTAR_LIMIT_REACHED,  ///< The #AyStar::max_search_nodes limit has been reached, aborting search.
+	AYSTAR_LIMIT_REACHED,  ///< The #AYSTAR_MAX_SEARCH_NODES limit has been reached, aborting search.
 	AYSTAR_DONE,           ///< Not an end-tile, or wrong direction.
 };
 
 static const int AYSTAR_INVALID_NODE = -1; ///< Item is not valid (for example, not walkable).
+
+static const int AYSTAR_MAX_SEARCH_NODES = 10000; ///< The maximum number of nodes that will be expanded.
 
 /** Node in the search. */
 struct AyStarNode {
@@ -135,7 +137,6 @@ struct AyStar {
 
 	byte loops_per_tick;   ///< How many loops are there called before Main() gives control back to the caller. 0 = until done.
 	uint max_path_cost;    ///< If the g-value goes over this number, it stops searching, 0 = infinite.
-	uint max_search_nodes; ///< The maximum number of nodes that will be expanded, 0 = infinite.
 
 	/* These should be filled with the neighbours of a tile by
 	 * GetNeighbours */

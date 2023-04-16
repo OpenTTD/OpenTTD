@@ -334,13 +334,13 @@ CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 	return CommandCost();
 }
 
-static FindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance)
+static FindDepotData FindClosestRoadDepot(const RoadVehicle *v)
 {
 	if (IsRoadDepotTile(v->tile)) return FindDepotData(v->tile, 0);
 
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_NPF: return NPFRoadVehicleFindNearestDepot(v, max_distance);
-		case VPF_YAPF: return YapfRoadVehicleFindNearestDepot(v, max_distance);
+		case VPF_NPF: return NPFRoadVehicleFindNearestDepot(v);
+		case VPF_YAPF: return YapfRoadVehicleFindNearestDepot(v);
 
 		default: NOT_REACHED();
 	}
@@ -348,7 +348,7 @@ static FindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance
 
 ClosestDepot RoadVehicle::FindClosestDepot()
 {
-	FindDepotData rfdd = FindClosestRoadDepot(this, 0);
+	FindDepotData rfdd = FindClosestRoadDepot(this);
 	if (rfdd.best_length == UINT_MAX) return ClosestDepot();
 
 	return ClosestDepot(rfdd.tile, GetDepotIndex(rfdd.tile));
@@ -1669,16 +1669,9 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 		return;
 	}
 
-	uint max_penalty;
-	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_NPF:  max_penalty = _settings_game.pf.npf.maximum_go_to_depot_penalty;  break;
-		case VPF_YAPF: max_penalty = _settings_game.pf.yapf.maximum_go_to_depot_penalty; break;
-		default: NOT_REACHED();
-	}
-
-	FindDepotData rfdd = FindClosestRoadDepot(v, max_penalty);
+	FindDepotData rfdd = FindClosestRoadDepot(v);
 	/* Only go to the depot if it is not too far out of our way. */
-	if (rfdd.best_length == UINT_MAX || rfdd.best_length > max_penalty) {
+	if (rfdd.best_length == UINT_MAX) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			/* If we were already heading for a depot but it has
 			 * suddenly moved farther away, we continue our normal

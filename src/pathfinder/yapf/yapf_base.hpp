@@ -56,10 +56,10 @@ public:
 
 	NodeList             m_nodes;              ///< node list multi-container
 protected:
+	static const int MAX_SEARCH_NODES = 10000; ///< stop path-finding when this number of nodes visited
+
 	Node                *m_pBestDestNode;      ///< pointer to the destination node found at last round
 	Node                *m_pBestIntermediateNode; ///< here should be node closest to the destination if path not found
-	const YAPFSettings  *m_settings;           ///< current settings (_settings_game.yapf)
-	int                  m_max_search_nodes;   ///< maximum number of nodes we are allowed to visit before we give up
 	const VehicleType   *m_veh;                ///< vehicle that we are trying to drive
 
 	int                  m_stats_cost_calcs;   ///< stats - how many node's costs were calculated
@@ -73,8 +73,6 @@ public:
 	inline CYapfBaseT()
 		: m_pBestDestNode(nullptr)
 		, m_pBestIntermediateNode(nullptr)
-		, m_settings(&_settings_game.pf.yapf)
-		, m_max_search_nodes(PfGetSettings().max_search_nodes)
 		, m_veh(nullptr)
 		, m_stats_cost_calcs(0)
 		, m_stats_cache_hits(0)
@@ -93,19 +91,13 @@ protected:
 	}
 
 public:
-	/** return current settings (can be custom - company based - but later) */
-	inline const YAPFSettings& PfGetSettings() const
-	{
-		return *m_settings;
-	}
-
 	/**
 	 * Main pathfinder routine:
 	 *   - set startup node(s)
 	 *   - main loop that stops if:
 	 *      - the destination was found
 	 *      - or the open list is empty (no route to destination).
-	 *      - or the maximum amount of loops reached - m_max_search_nodes (default = 10000)
+	 *      - or the maximum amount of loops reached - MAX_SEARCH_NODES
 	 * @return true if the path was found
 	 */
 	inline bool FindPath(const VehicleType *v)
@@ -128,7 +120,7 @@ public:
 			}
 
 			Yapf().PfFollowNode(*n);
-			if (m_max_search_nodes == 0 || m_nodes.ClosedCount() < m_max_search_nodes) {
+			if (m_nodes.ClosedCount() < MAX_SEARCH_NODES) {
 				m_nodes.PopOpenNode(n->GetKey());
 				m_nodes.InsertClosedNode(*n);
 			} else {
@@ -254,7 +246,7 @@ public:
 
 		/* The new node can be set as the best intermediate node only once we're
 		 * certain it will be finalized by being inserted into the open list. */
-		bool set_intermediate = m_max_search_nodes > 0 && (m_pBestIntermediateNode == nullptr || (m_pBestIntermediateNode->GetCostEstimate() - m_pBestIntermediateNode->GetCost()) > (n.GetCostEstimate() - n.GetCost()));
+		bool set_intermediate = m_pBestIntermediateNode == nullptr || (m_pBestIntermediateNode->GetCostEstimate() - m_pBestIntermediateNode->GetCost()) > (n.GetCostEstimate() - n.GetCost());
 
 		/* check new node against open list */
 		Node *openNode = m_nodes.FindOpenNode(n.GetKey());

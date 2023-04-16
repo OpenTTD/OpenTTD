@@ -175,14 +175,8 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	uint max_distance;
-	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_NPF:  max_distance = _settings_game.pf.npf.maximum_go_to_depot_penalty  / NPF_TILE_LENGTH;  break;
-		case VPF_YAPF: max_distance = _settings_game.pf.yapf.maximum_go_to_depot_penalty / YAPF_TILE_LENGTH; break;
-		default: NOT_REACHED();
-	}
-
-	const Depot *depot = FindClosestShipDepot(v, max_distance);
+	static const int MAXIMUM_GOTO_DEPOT_DISTANCE = 20;
+	const Depot *depot = FindClosestShipDepot(v, MAXIMUM_GOTO_DEPOT_DISTANCE);
 
 	if (depot == nullptr) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
