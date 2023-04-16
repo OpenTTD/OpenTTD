@@ -406,7 +406,7 @@ struct GenerateLandscapeWindow : public Window {
 	uint widget_id;
 	uint x;
 	uint y;
-	char name[64];
+	std::string name;
 	GenerateLandscapeWindowMode mode;
 
 	GenerateLandscapeWindow(WindowDesc *desc, WindowNumber number = 0) : Window(desc)
@@ -1057,7 +1057,7 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 	if (mode == GLWM_HEIGHTMAP) {
 		w->x = x;
 		w->y = y;
-		strecpy(w->name, _file_to_saveload.title, lastof(w->name));
+		w->name = _file_to_saveload.title;
 	}
 
 	SetWindowDirty(WC_GENERATE_LANDSCAPE, mode);
