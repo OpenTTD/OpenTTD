@@ -634,9 +634,8 @@ public:
 			case WID_SL_LOAD_BUTTON: {
 				if (this->selected == nullptr || _load_check_data.HasErrors()) break;
 
-				const char *name = FiosBrowseTo(this->selected);
 				_file_to_saveload.SetMode(this->selected->type);
-				_file_to_saveload.SetName(name);
+				_file_to_saveload.SetName(this->selected->name);
 				_file_to_saveload.SetTitle(this->selected->title);
 
 				if (this->abstract_filetype == FT_HEIGHTMAP) {
@@ -676,8 +675,7 @@ public:
 				}
 				const FiosItem *file = &this->fios_items[y];
 
-				const char *name = FiosBrowseTo(file);
-				if (name == nullptr) {
+				if (FiosBrowseTo(file)) {
 					/* Changed directory, need refresh. */
 					this->InvalidateData(SLIWD_RESCAN_FILES);
 					break;
@@ -708,7 +706,7 @@ public:
 						} else {
 							assert(this->abstract_filetype == FT_HEIGHTMAP);
 							_file_to_saveload.SetMode(file->type);
-							_file_to_saveload.SetName(name);
+							_file_to_saveload.SetName(file->name);
 							_file_to_saveload.SetTitle(file->title);
 
 							this->Close();

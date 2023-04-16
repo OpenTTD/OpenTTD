@@ -145,9 +145,9 @@ StringID FiosGetDescText(const char **path, uint64 *total_free)
 /**
  * Browse to a new path based on the passed \a item, starting at #_fios_path.
  * @param *item Item telling us what to do.
- * @return A filename w/path if we reached a file, otherwise \c nullptr.
+ * @return \c true when the path got changed.
  */
-const char *FiosBrowseTo(const FiosItem *item)
+bool FiosBrowseTo(const FiosItem *item)
 {
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
@@ -191,10 +191,10 @@ const char *FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_OLD_SCENARIO:
 		case FIOS_TYPE_PNG:
 		case FIOS_TYPE_BMP:
-			return item->name;
+			return false;
 	}
 
-	return nullptr;
+	return true;
 }
 
 /**
