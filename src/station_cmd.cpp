@@ -1263,7 +1263,6 @@ static void RestoreTrainReservation(Train *v)
 static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, byte spec_index, byte plat_len, byte numtracks)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	bool success = false;
 	bool length_price_ready = true;
 	byte tracknum = 0;
 	for (TileIndex cur_tile : tile_area) {
@@ -1290,11 +1289,8 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlag fl
 				cost.AddCost(_price[PR_BUILD_STATION_RAIL_LENGTH]);
 				length_price_ready = false;
 			}
-			success = true;
 		}
 	}
-
-	if (!success) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 
 	return cost;
 }
@@ -1879,7 +1875,6 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
 static CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlag flags, bool is_drive_through, bool is_truck_stop, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	bool success = false;
 	/* Check every tile in the area. */
 	for (TileIndex cur_tile : tile_area) {
 		uint invalid_dirs = 0;
@@ -1898,15 +1893,8 @@ static CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlag flags
 		if (!is_preexisting_roadstop) {
 			cost.AddCost(ret);
 			cost.AddCost(unit_cost);
-			success = true;
-		} else if (is_preexisting_roadstop && !is_drive_through) {
-			/* Allow rotating non-drive through stops for free */
-			success = true;
 		}
-
 	}
-
-	if (!success) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 
 	return cost;
 }
