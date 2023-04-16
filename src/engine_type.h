@@ -186,10 +186,11 @@ enum EngineFlags {
  * Contexts an engine name can be shown in.
  */
 enum EngineNameContext : uint8 {
-	Generic        = 0x00, ///< No specific context available.
-	VehicleDetails = 0x11, ///< Name is shown in the vehicle details GUI.
-	PurchaseList   = 0x20, ///< Name is shown in the purchase list (including autoreplace window).
-	PreviewNews    = 0x21, ///< Name is shown in exclusive preview or newspaper.
+	Generic                 = 0x00, ///< No specific context available.
+	VehicleDetails          = 0x11, ///< Name is shown in the vehicle details GUI.
+	PurchaseList            = 0x20, ///< Name is shown in the purchase list (including autoreplace window 'Available vehicles' panel).
+	PreviewNews             = 0x21, ///< Name is shown in exclusive preview or newspaper.
+	AutoreplaceVehicleInUse = 0x22, ///< Name is show in the autoreplace window 'Vehicles in use' panel.
 };
 
 /** Combine an engine ID and a name context to an engine name dparam. */
