@@ -56,7 +56,7 @@ bool FiosItem::operator< (const FiosItem &other) const
 	int r = false;
 
 	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && (*this).mtime != other.mtime) {
-		r = (*this).mtime - other.mtime;
+		r = this->mtime - other.mtime;
 	} else {
 		r = StrNaturalCompare((*this).title, other.title);
 	}
@@ -101,29 +101,29 @@ void FileList::BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperati
  *             or a numbered entry into the filename list.
  * @return The information on the file, or \c nullptr if the file is not available.
  */
-const FiosItem *FileList::FindItem(const char *file)
+const FiosItem *FileList::FindItem(const std::string_view file)
 {
 	for (const auto &it : *this) {
 		const FiosItem *item = &it;
-		if (strcmp(file, item->name) == 0) return item;
-		if (strcmp(file, item->title) == 0) return item;
+		if (file == item->name) return item;
+		if (file == item->title) return item;
 	}
 
 	/* If no name matches, try to parse it as number */
 	char *endptr;
-	int i = std::strtol(file, &endptr, 10);
-	if (file == endptr || *endptr != '\0') i = -1;
+	int i = std::strtol(file.data(), &endptr, 10);
+	if (file.data() == endptr || *endptr != '\0') i = -1;
 
 	if (IsInsideMM(i, 0, this->size())) return &this->at(i);
 
 	/* As a last effort assume it is an OpenTTD savegame and
 	 * that the ".sav" part was not given. */
-	char long_file[MAX_PATH];
-	seprintf(long_file, lastof(long_file), "%s.sav", file);
+	std::string long_file(file);
+	long_file += ".sav";
 	for (const auto &it : *this) {
 		const FiosItem *item = &it;
-		if (strcmp(long_file, item->name) == 0) return item;
-		if (strcmp(long_file, item->title) == 0) return item;
+		if (long_file == item->name) return item;
+		if (long_file == item->title) return item;
 	}
 
 	return nullptr;
@@ -153,7 +153,7 @@ bool FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_DRIVE:
 #if defined(_WIN32) || defined(__OS2__)
 			assert(_fios_path != nullptr);
-			*_fios_path = std::string{ item->title[0] } + ":" PATHSEP;
+			*_fios_path = std::string{ item->title, 0, 1 } + ":" PATHSEP;
 #endif
 			break;
 
@@ -334,7 +334,7 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t basepath_lengt
 	}
 
 	fios->type = type;
-	strecpy(fios->name, filename.c_str(), lastof(fios->name));
+	fios->name = filename;
 
 	/* If the file doesn't have a title, use its filename */
 	const char *t = fios_title;
@@ -342,8 +342,7 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t basepath_lengt
 		auto ps = filename.rfind(PATHSEPCHAR);
 		t = filename.c_str() + (ps == std::string::npos ? 0 : ps + 1);
 	}
-	strecpy(fios->title, t, lastof(fios->title));
-	StrMakeValidInPlace(fios->title, lastof(fios->title));
+	fios->title = StrMakeValid(t);
 
 	return true;
 }
@@ -363,7 +362,6 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 	DIR *dir;
 	FiosItem *fios;
 	size_t sort_start;
-	char d_name[sizeof(fios->name)];
 
 	file_list.clear();
 
@@ -374,28 +372,27 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 		fios = &file_list.emplace_back();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
-		strecpy(fios->name, "..", lastof(fios->name));
+		fios->name = "..";
 		SetDParamStr(0, "..");
-		GetString(fios->title, STR_SAVELOAD_PARENT_DIRECTORY, lastof(fios->title));
+		fios->title = GetString(STR_SAVELOAD_PARENT_DIRECTORY);
 	}
 
 	/* Show subdirectories */
 	if ((dir = ttd_opendir(_fios_path->c_str())) != nullptr) {
 		while ((dirent = readdir(dir)) != nullptr) {
-			strecpy(d_name, FS2OTTD(dirent->d_name).c_str(), lastof(d_name));
+			std::string d_name = FS2OTTD(dirent->d_name);
 
 			/* found file must be directory, but not '.' or '..' */
 			if (FiosIsValidFile(_fios_path->c_str(), dirent, &sb) && S_ISDIR(sb.st_mode) &&
 					(!FiosIsHiddenFile(dirent) || StrStartsWithIgnoreCase(PERSONAL_DIR, d_name)) &&
-					strcmp(d_name, ".") != 0 && strcmp(d_name, "..") != 0) {
+					d_name != "." && d_name != "..") {
 				fios = &file_list.emplace_back();
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
-				strecpy(fios->name, d_name, lastof(fios->name));
-				std::string dirname = std::string(d_name) + PATHSEP;
+				fios->name = d_name;
+				std::string dirname = fios->name + PATHSEP;
 				SetDParamStr(0, dirname);
-				GetString(fios->title, STR_SAVELOAD_DIRECTORY, lastof(fios->title));
-				StrMakeValidInPlace(fios->title, lastof(fios->title));
+				fios->title = GetString(STR_SAVELOAD_DIRECTORY);
 			}
 		}
 		closedir(dir);

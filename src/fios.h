@@ -88,8 +88,8 @@ extern LoadCheckData _load_check_data;
 struct FiosItem {
 	FiosType type;
 	uint64 mtime;
-	char title[64];
-	char name[MAX_PATH];
+	std::string title;
+	std::string name;
 	bool operator< (const FiosItem &other) const;
 };
 
@@ -97,7 +97,7 @@ struct FiosItem {
 class FileList : public std::vector<FiosItem> {
 public:
 	void BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop);
-	const FiosItem *FindItem(const char *file);
+	const FiosItem *FindItem(const std::string_view file);
 };
 
 enum SortingBits {

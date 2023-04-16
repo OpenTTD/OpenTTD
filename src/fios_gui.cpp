@@ -378,24 +378,22 @@ public:
 
 		/* Select the initial directory. */
 		o_dir.type = FIOS_TYPE_DIRECT;
-		std::string dir;
 		switch (this->abstract_filetype) {
 			case FT_SAVEGAME:
-				dir = FioFindDirectory(SAVE_DIR);
+				o_dir.name = FioFindDirectory(SAVE_DIR);
 				break;
 
 			case FT_SCENARIO:
-				dir = FioFindDirectory(SCENARIO_DIR);
+				o_dir.name = FioFindDirectory(SCENARIO_DIR);
 				break;
 
 			case FT_HEIGHTMAP:
-				dir = FioFindDirectory(HEIGHTMAP_DIR);
+				o_dir.name = FioFindDirectory(HEIGHTMAP_DIR);
 				break;
 
 			default:
-				dir = _personal_dir;
+				o_dir.name = _personal_dir;
 		}
-		strecpy(o_dir.name, dir.c_str(), lastof(o_dir.name));
 
 		switch (this->fop) {
 			case SLO_SAVE:
@@ -693,7 +691,7 @@ public:
 					}
 					if (this->fop == SLO_SAVE) {
 						/* Copy clicked name to editbox */
-						this->filename_editbox.text.Assign(file->title);
+						this->filename_editbox.text.Assign(file->title.c_str());
 						this->SetWidgetDirty(WID_SL_SAVE_OSK_TITLE);
 					}
 				} else if (!_load_check_data.HasErrors()) {
@@ -876,7 +874,7 @@ public:
 						items_shown_count++;
 					} else {
 						this->string_filter.ResetState();
-						this->string_filter.AddLine(this->fios_items[i].title);
+						this->string_filter.AddLine(this->fios_items[i].title.c_str());
 						/* We set the vector to show this fios element as filtered depending on the result of the filter */
 						this->fios_items_shown[i] = this->string_filter.GetState();
 						if (this->fios_items_shown[i]) items_shown_count++;
