@@ -3396,21 +3396,14 @@ void FileToSaveLoad::SetMode(SaveLoadOperation fop, AbstractFileType aft, Detail
 }
 
 /**
- * Set the name of the file.
- * @param name Name of the file.
- */
-void FileToSaveLoad::SetName(const char *name)
-{
-	this->name = name;
-}
-
-/**
  * Set the title of the file.
  * @param title Title of the file.
  */
-void FileToSaveLoad::SetTitle(const char *title)
+void FileToSaveLoad::Set(const FiosItem &item)
 {
-	strecpy(this->title, title, lastof(this->title));
+	this->SetMode(item.type);
+	this->name = item.name;
+	this->title = item.title;
 }
 
 SaveLoadTable SaveLoadHandler::GetLoadDescription() const

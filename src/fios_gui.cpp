@@ -634,9 +634,7 @@ public:
 			case WID_SL_LOAD_BUTTON: {
 				if (this->selected == nullptr || _load_check_data.HasErrors()) break;
 
-				_file_to_saveload.SetMode(this->selected->type);
-				_file_to_saveload.SetName(this->selected->name);
-				_file_to_saveload.SetTitle(this->selected->title);
+				_file_to_saveload.Set(*this->selected);
 
 				if (this->abstract_filetype == FT_HEIGHTMAP) {
 					this->Close();
@@ -688,7 +686,7 @@ public:
 
 						if (GetDetailedFileType(file->type) == DFT_GAME_FILE) {
 							/* Other detailed file types cannot be checked before. */
-							SaveOrLoad(name, SLO_CHECK, DFT_GAME_FILE, NO_DIRECTORY, false);
+							SaveOrLoad(file->name, SLO_CHECK, DFT_GAME_FILE, NO_DIRECTORY, false);
 						}
 
 						this->InvalidateData(SLIWD_SELECTION_CHANGES);
@@ -705,9 +703,7 @@ public:
 							this->OnClick(pt, WID_SL_LOAD_BUTTON, 1);
 						} else {
 							assert(this->abstract_filetype == FT_HEIGHTMAP);
-							_file_to_saveload.SetMode(file->type);
-							_file_to_saveload.SetName(file->name);
-							_file_to_saveload.SetTitle(file->title);
+							_file_to_saveload.Set(*file);
 
 							this->Close();
 							ShowHeightmapLoad();

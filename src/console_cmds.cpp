@@ -432,9 +432,7 @@ DEF_CONSOLE_CMD(ConLoad)
 	if (item != nullptr) {
 		if (GetAbstractFileType(item->type) == FT_SAVEGAME) {
 			_switch_mode = SM_LOAD_GAME;
-			_file_to_saveload.SetMode(item->type);
-			_file_to_saveload.SetName(item->name);
-			_file_to_saveload.SetTitle(item->title);
+			_file_to_saveload.Set(*item);
 		} else {
 			IConsolePrint(CC_ERROR, "'{}' is not a savegame.", file);
 		}
