@@ -448,13 +448,8 @@ static char *FormatTinyOrISODate(char *buff, Date date, StringID str, const char
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
 
-	char day[3];
-	char month[3];
-	/* We want to zero-pad the days and months */
-	seprintf(day,   lastof(day),   "%02i", ymd.day);
-	seprintf(month, lastof(month), "%02i", ymd.month + 1);
-
-	int64 args[] = {(int64)(size_t)day, (int64)(size_t)month, ymd.year};
+	/* Day and month are zero-padded with ZEROFILL_NUM, hence the two 2s. */
+	int64 args[] = {ymd.day, 2, ymd.month + 1, 2, ymd.year};
 	StringParameters tmp_params(args);
 	return FormatString(buff, GetStringPtr(str), &tmp_params, last);
 }
