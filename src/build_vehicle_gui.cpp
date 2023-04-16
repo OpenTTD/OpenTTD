@@ -1038,7 +1038,12 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
 		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : (TC_NO_SHADE | ((hidden | shaded) ? TC_GREY : TC_BLACK));
 
-		SetDParam(0, PackEngineNameDParam(item.engine_id, EngineNameContext::PurchaseList, item.indent));
+		if (show_count) {
+			/* relies on show_count to find 'Vehicle in use' panel of autoreplace window */
+			SetDParam(0, PackEngineNameDParam(item.engine_id, EngineNameContext::AutoreplaceVehicleInUse, item.indent));
+		} else {
+			SetDParam(0, PackEngineNameDParam(item.engine_id, EngineNameContext::PurchaseList, item.indent));
+		}
 		Rect itr = tr.Indent(indent, rtl);
 		DrawString(itr.left, itr.right, y + normal_text_y_offset, str, tc);
 		int sprite_x = ir.Indent(indent + circle_width + WidgetDimensions::scaled.hsep_normal, rtl).WithWidth(sprite_width, rtl).left + sprite_left;
