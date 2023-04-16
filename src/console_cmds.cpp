@@ -457,7 +457,7 @@ DEF_CONSOLE_CMD(ConRemove)
 	_console_file_list.ValidateFileList();
 	const FiosItem *item = _console_file_list.FindItem(file);
 	if (item != nullptr) {
-		if (unlink(item->name) != 0) {
+		if (unlink(item->name.c_str()) != 0) {
 			IConsolePrint(CC_ERROR, "Failed to delete '{}'.", item->name);
 		}
 	} else {

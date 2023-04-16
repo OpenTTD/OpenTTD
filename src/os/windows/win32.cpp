@@ -185,8 +185,9 @@ void FiosGetDrives(FileList &file_list)
 		FiosItem *fios = &file_list.emplace_back();
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
-		seprintf(fios->name, lastof(fios->name),  "%c:", s[0] & 0xFF);
-		strecpy(fios->title, fios->name, lastof(fios->title));
+		fios->name += (char)(s[0] & 0xFF);
+		fios->name += ':';
+		fios->title = fios->name;
 		while (*s++ != '\0') { /* Nothing */ }
 	}
 }
