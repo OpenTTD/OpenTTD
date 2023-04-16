@@ -330,7 +330,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 	int thousands_offset = (max_digits - fractional_digits - 1) % 3;
 
 	if (number < 0) {
-		buff += seprintf(buff, last, "-");
+		if (buff != last) *buff++ = '-';
 		number = -number;
 	}
 
@@ -340,7 +340,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 		if (i == max_digits - fractional_digits) {
 			const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
 			if (StrEmpty(decimal_separator)) decimal_separator = _langpack.langpack->digit_decimal_separator;
-			buff += seprintf(buff, last, "%s", decimal_separator);
+			buff = strecpy(buff, decimal_separator, last);
 		}
 
 		uint64 quot = 0;
@@ -349,7 +349,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 			num = num % divisor;
 		}
 		if ((tot |= quot) || i >= max_digits - zerofill) {
-			buff += seprintf(buff, last, "%i", (int)quot);
+			if (buff != last) *buff++ = '0' + quot; // quot is a single digit
 			if ((i % 3) == thousands_offset && i < max_digits - 1 - fractional_digits) buff = strecpy(buff, separator, last);
 		}
 
