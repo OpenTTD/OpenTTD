@@ -14,6 +14,7 @@
 #include "genworld.h"
 #include "core/random_func.hpp"
 #include "landscape_type.h"
+#include "debug.h"
 
 #include "safeguards.h"
 
@@ -989,18 +990,18 @@ static void TgenSetTileHeight(TileIndex tile, int height)
  * areas won't be high enough, and there will be very little tropic on the map.
  * Thus Tropic works best on Hilly or Mountainous.
  */
-void GenerateTerrainPerlin()
+void GenerateTerrainPerlin2()
 {
 	if (!AllocHeightMap()) return;
 	GenerateWorldSetAbortCallback(FreeHeightMap);
 
 	HeightMapGenerate();
 
-	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	// IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 	HeightMapNormalize();
 
-	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	// IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 	/* First make sure the tiles at the north border are void tiles if needed. */
 	if (_settings_game.construction.freeform_edges) {
@@ -1017,8 +1018,180 @@ void GenerateTerrainPerlin()
 		}
 	}
 
-	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	// IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 	FreeHeightMap();
 	GenerateWorldSetAbortCallback(nullptr);
+}
+
+#include <wasm_export.h>
+
+static wasm_module_t module = nullptr;
+static wasm_module_inst_t module_inst;
+static wasm_function_inst_t func;
+static wasm_exec_env_t exec_env;
+
+void IncreaseGeneratingWorldProgress_wrapper(wasm_exec_env_t exec_env, int value)
+{
+	Debug(misc, 0, "{}", value);
+	IncreaseGeneratingWorldProgress(static_cast<GenWorldProgress>(value));
+}
+
+int MapSizeX_wrapper(wasm_exec_env_t exec_env)
+{
+	return Map::SizeX();
+}
+
+int MapSizeY_wrapper(wasm_exec_env_t exec_env)
+{
+	return Map::SizeY();
+}
+
+int MapLogX_wrapper(wasm_exec_env_t exec_env)
+{
+	return Map::LogX();
+}
+
+int MapLogY_wrapper(wasm_exec_env_t exec_env)
+{
+	return Map::LogY();
+}
+
+int RandomRange_wrapper(wasm_exec_env_t exec_env, int max)
+{
+	return RandomRange(max);
+}
+
+void SetTileHeight_wrapper(wasm_exec_env_t exec_env, int tile, int height)
+{
+	SetTileHeight(tile, height);
+}
+
+bool IsInnerTile_wrapper(wasm_exec_env_t exec_env, int tile)
+{
+	return IsInnerTile(tile);
+}
+
+void MakeClear_wrapper(wasm_exec_env_t exec_env, int tile, int type, int density)
+{
+	MakeClear(tile, static_cast<ClearGround>(type), density);
+}
+
+static NativeSymbol native_symbols[] =
+{
+	{
+		"IncreaseGeneratingWorldProgress",
+		reinterpret_cast<void *>(IncreaseGeneratingWorldProgress_wrapper),
+		"(i)",
+		nullptr
+	},
+	{
+		"MapSizeX",
+		reinterpret_cast<void *>(MapSizeX_wrapper),
+		"()i",
+		nullptr
+	},
+	{
+		"MapSizeY",
+		reinterpret_cast<void *>(MapSizeY_wrapper),
+		"()i",
+		nullptr
+	},
+	{
+		"MapLogX",
+		reinterpret_cast<void *>(MapLogX_wrapper),
+		"()i",
+		nullptr
+	},
+	{
+		"MapLogY",
+		reinterpret_cast<void *>(MapLogY_wrapper),
+		"()i",
+		nullptr
+	},
+	{
+		"RandomRange",
+		reinterpret_cast<void *>(RandomRange_wrapper),
+		"(i)i",
+		nullptr
+	},
+	{
+		"SetTileHeight",
+		reinterpret_cast<void *>(SetTileHeight_wrapper),
+		"(ii)",
+		nullptr
+	},
+	{
+		"IsInnerTile",
+		reinterpret_cast<void *>(IsInnerTile_wrapper),
+		"(i)i",
+		nullptr
+	},
+	{
+		"MakeClear",
+		reinterpret_cast<void *>(MakeClear_wrapper),
+		"(iii)",
+		nullptr
+	}
+};
+
+void InitializeWASM()
+{
+	const uint32 stack_size = 1024 * 32;
+	const uint32 heap_size = 1024 * 32;
+
+	wasm_runtime_init();
+	wasm_runtime_register_natives("env", native_symbols, sizeof(native_symbols) / sizeof(NativeSymbol));
+
+	static char error_buf[128];
+
+	FILE *file = fopen("tgp.wasm", "rb");
+	fseek(file, 0, SEEK_END);
+	static auto buf_size = ftell(file);
+	fseek(file, 0, SEEK_SET);
+	static auto buffer = new uint8[buf_size];
+	fread(buffer, 1, buf_size, file);
+	fclose(file);
+
+	module = wasm_runtime_load(buffer, buf_size, error_buf, sizeof(error_buf));
+	module_inst = wasm_runtime_instantiate(module, stack_size, heap_size, error_buf, sizeof(error_buf));
+	exec_env = wasm_runtime_create_exec_env(module_inst, stack_size);
+	func = wasm_runtime_lookup_function(module_inst, "generate_terrain", nullptr);
+}
+
+void generate_terrain_wasm()
+{
+	if (_settings_game.construction.freeform_edges) {
+		for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, 0));
+		for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(0, y));
+	}
+
+	// FlatEmptyWorld(1);
+
+	if (module == nullptr) {
+		InitializeWASM();
+	}
+
+	TICC();
+	if (!wasm_runtime_call_wasm(exec_env, func, 0, nullptr)) {
+		Debug(misc, 0, "Failed to call generate_terrain()! {}", wasm_runtime_get_exception(module_inst));
+	}
+	TOCC("WASM", 1);
+}
+
+void GenerateTerrainPerlin()
+{
+	for (int i = 0; i < 10; i++) {
+		TICC();
+		GenerateTerrainPerlin2();
+		TOCC("C", 1);
+	}
+
+	for (int i = 0; i < 10; i++) {
+		generate_terrain_wasm();
+	}
+
+	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 }

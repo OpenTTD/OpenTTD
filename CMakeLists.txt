@@ -309,6 +309,30 @@ if(APPLE)
     )
 endif()
 
+string (TOLOWER ${CMAKE_HOST_SYSTEM_NAME} WAMR_BUILD_PLATFORM)
+set (WAMR_BUILD_INTERP 1)
+set (WAMR_BUILD_FAST_INTERP 1)
+set (WAMR_BUILD_AOT 0)
+set (WAMR_BUILD_JIT 0)
+set (WAMR_BUILD_FAST_JIT 1)
+set (WAMR_BUILD_LIBC_BUILTIN 1)
+set (WAMR_BUILD_LIBC_WASI 1)  # We really don't want this, but it makes compiling from C++ a bit easier.
+set (WAMR_BUILD_MULTI_MODULE 0)
+set (WAMR_BUILD_MINI_LOADER 0)
+set (WAMR_BUILD_SHARED_MEMORY 0)
+set (WAMR_BUILD_BULK_MEMORY 1)
+set (WAMR_BUILD_THREAD_MGR 0)
+set (WAMR_BUILD_LIB_PTHREAD 0)
+set (WAMR_BUILD_ENABLE_GPU 0)
+set (WAMR_BUILD_TAIL_CALL 1)
+set (WAMR_BUILD_SIMD 0)
+set (WAMR_BUILD_REF_TYPES 1)
+set (WAMR_ROOT_DIR ${CMAKE_SOURCE_DIR}/wasm-micro-runtime)
+
+include (${WAMR_ROOT_DIR}/build-scripts/runtime_lib.cmake)
+add_library(vmlib ${WAMR_RUNTIME_LIB_SOURCE})
+target_link_libraries(openttd vmlib)
+
 if(EMSCRIPTEN)
     add_library(WASM::WASM INTERFACE IMPORTED)
 
@@ -351,10 +375,10 @@ if(NOT PERSONAL_DIR STREQUAL "(not set)")
     )
 endif()
 
-if(NOT SHARED_DIR STREQUAL "(not set)")
+if(NOT OPENTTD_SHARED_DIR STREQUAL "(not set)")
     add_definitions(
         -DWITH_SHARED_DIR
-        -DSHARED_DIR="${SHARED_DIR}"
+        -DSHARED_DIR="${OPENTTD_SHARED_DIR}"
     )
 endif()
 

@@ -26,9 +26,9 @@ function(set_directory_options)
         message(STATUS "Detecting Personal Data directory - ${PERSONAL_DIR}")
     endif()
 
-    if(NOT SHARED_DIR)
-        set(SHARED_DIR "${DEFAULT_SHARED_DIR}" CACHE STRING "Shared directory")
-        message(STATUS "Detecting Shared Data directory - ${SHARED_DIR}")
+    if(NOT OPENTTD_SHARED_DIR)
+        set(OPENTTD_SHARED_DIR "${DEFAULT_SHARED_DIR}" CACHE STRING "Shared directory")
+        message(STATUS "Detecting Shared Data directory - ${OPENTTD_SHARED_DIR}")
     endif()
 
     if(NOT GLOBAL_DIR)
