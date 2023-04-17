@@ -24,6 +24,7 @@ int PositionMainToolbar(Window *w);
 int PositionStatusbar(Window *w);
 int PositionNewsMessage(Window *w);
 int PositionNetworkChatWindow(Window *w);
+Point PositionSelectGameWindow(Window *w);
 
 int GetMainViewTop();
 int GetMainViewBottom();

@@ -3502,6 +3502,13 @@ void RelocateAllWindows(int neww, int newh)
 				left = PositionMainToolbar(w); // changes toolbar orientation
 				break;
 
+			case WC_SELECT_GAME: {
+				Point p = PositionSelectGameWindow(w);
+				left = p.x;
+				top = p.y;
+				break;
+			}
+
 			case WC_NEWS_WINDOW:
 				top = newh - w->height;
 				left = PositionNewsMessage(w);
