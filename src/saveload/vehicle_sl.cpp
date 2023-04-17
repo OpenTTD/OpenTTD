@@ -767,6 +767,7 @@ public:
 		SLE_CONDVAR(Vehicle, depot_unbunching_last_departure, SLE_UINT64,        SLV_DEPOT_UNBUNCHING, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, depot_unbunching_next_departure, SLE_UINT64,        SLV_DEPOT_UNBUNCHING, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, round_trip_time,       SLE_INT32,                   SLV_DEPOT_UNBUNCHING, SL_MAX_VERSION),
+		SLE_CONDREF(Vehicle, psa,                   REF_STORAGE,                 SLV_VEHICLE_STORAGE, SL_MAX_VERSION),
 	};
 
 	inline const static SaveLoadCompatTable compat_description = _vehicle_common_sl_compat;

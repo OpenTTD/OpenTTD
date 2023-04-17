@@ -397,6 +397,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_INCREASE_HOUSE_LIMIT,               ///< 348  PR#12288 Increase house limit to 4096.
 	SLV_VARIABLE_PERSISTENT_STORAGE,        ///< 349  PR#10670 NewGRF persistent storage moved from fixed array to dynamic.
 
+	SLV_VEHICLE_STORAGE,                    ///< 350  PR#10670 Addition of persistent storage for vehicles.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

@@ -48,6 +48,7 @@
 #include "../subsidy_base.h"
 #include "../subsidy_func.h"
 #include "../newgrf.h"
+#include "../newgrf_debug.h"
 #include "../newgrf_station.h"
 #include "../engine_func.h"
 #include "../rail_gui.h"
@@ -288,6 +289,11 @@ static void InitializeWindowsAndCaches()
 		for (auto &it : t->psa_list) {
 			it->feature = GSF_FAKE_TOWNS;
 			it->tile = t->xy;
+		}
+	}
+	for (Vehicle *v : Vehicle::Iterate()) {
+		if (v->psa != nullptr) {
+			v->psa->feature = GetGrfSpecFeature(v->type);
 		}
 	}
 	for (RoadVehicle *rv : RoadVehicle::Iterate()) {
