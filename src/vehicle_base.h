@@ -1067,6 +1067,8 @@ public:
 
 	uint32 GetDisplayMaxWeight() const;
 	uint32 GetDisplayMinPowerToWeight() const;
+
+	void CopyWagonsFrom(VehicleID vid);
 };
 
 /**

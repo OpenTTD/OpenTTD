@@ -984,6 +984,12 @@ public:
 
 						Command<CMD_REMOVE_ALL_VEHICLES_GROUP>::Post(STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES, this->vli.index);
 						break;
+					case ADI_COPY_TRAIN_WAGONS:
+						SetObjectToPlaceWnd(SPR_CURSOR_CLONE_TRAIN, PAL_NONE, HT_VEHICLE, this);
+						break;
+					case ADI_CANCEL_COPY_TRAIN_WAGONS:
+						Command<CMD_STOP_COPYING_TRAIN_WAGONS>::Post(STR_ERROR_CAN_T_STOP_COPYING_TRAIN_WAGONS, this->vli);
+						break;
 					default: NOT_REACHED();
 				}
 				break;

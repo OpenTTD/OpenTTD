@@ -11,6 +11,7 @@
 #define BASE_CONSIST_H
 
 #include "order_type.h"
+#include "vehicle_type.h"
 #include "date_type.h"
 #include <string>
 
@@ -24,6 +25,8 @@ struct BaseConsist {
 	Date timetable_start;               ///< When the vehicle is supposed to start the timetable.
 
 	uint16 service_interval;            ///< The interval for (automatic) servicing; either in days or %.
+
+	VehicleID copy_wagons_from;         ///< Reference to another train; Used to copy wagons configuration from it.
 
 	VehicleOrderID cur_real_order_index;///< The index to the current real (non-implicit) order
 	VehicleOrderID cur_implicit_order_index;///< The index to the current implicit order
