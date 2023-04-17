@@ -4779,6 +4779,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :Случайн�
 STR_AI_CONFIG_NONE                                              :(нет)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Максимальное количество конкурентов: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Интервал между запуском конкурентов: {ORANGE}{COMMA} минут{P а ы ""}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Вверх
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Переместить этот модуль ИИ вверх по списку

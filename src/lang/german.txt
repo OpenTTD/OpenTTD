@@ -4583,6 +4583,7 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Menschlicher Sp
 STR_AI_CONFIG_RANDOM_AI                                         :Zufällige KI
 STR_AI_CONFIG_NONE                                              :-
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Max. Mitbewerber-Zahl: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Intervall zwischen Start von Wettbewerbern: {ORANGE}{COMMA} minute{P "" n}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Nach oben verschieben
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Die ausgewählte KI in der Liste nach oben verschieben
