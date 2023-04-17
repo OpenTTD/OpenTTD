@@ -314,7 +314,8 @@ public:
 
 typedef void (*SpecialSpriteHandler)(ByteReader *buf);
 
-static const uint NUM_STATIONS_PER_GRF = 255; ///< Number of StationSpecs per NewGRF; limited to 255 to allow extending Action3 with an extended byte later on.
+/** The maximum amount of stations a single GRF is allowed to add */
+static const uint NUM_STATIONS_PER_GRF = UINT16_MAX - 1;
 
 /** Temporary engine data used when loading only */
 struct GRFTempEngineData {
@@ -1989,7 +1990,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			}
 
 			case 0x0A: { // Copy sprite layout
-				byte srcid = buf->ReadByte();
+				uint16_t srcid = buf->ReadExtendedByte();
 				const StationSpec *srcstatspec = srcid >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[srcid].get();
 
 				if (srcstatspec == nullptr) {
@@ -2043,7 +2044,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				break;
 
 			case 0x0F: { // Copy custom layout
-				byte srcid = buf->ReadByte();
+				uint16_t srcid = buf->ReadExtendedByte();
 				const StationSpec *srcstatspec = srcid >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[srcid].get();
 
 				if (srcstatspec == nullptr) {
