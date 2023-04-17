@@ -2409,6 +2409,9 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 					housespec->random_colour[2] = 0x0C;  // they stand for red, blue, orange and green
 					housespec->random_colour[3] = 0x06;
 
+					/* House flags 40 and 80 are exceptions; these flags are never set automatically. */
+					housespec->building_flags &= ~(BUILDING_IS_CHURCH | BUILDING_IS_STADIUM);
+
 					/* Make sure that the third cargo type is valid in this
 					 * climate. This can cause problems when copying the properties
 					 * of a house that accepts food, where the new house is valid
