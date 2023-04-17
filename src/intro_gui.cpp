@@ -41,6 +41,8 @@
 #include "safeguards.h"
 
 
+namespace {
+
 /**
  * A viewport command for the main menu background (intro game).
  */
@@ -95,8 +97,7 @@ struct IntroGameViewportCommand {
 	}
 };
 
-
-struct SelectGameWindow : public Window {
+struct IntroGameAnimator {
 	/** Vector of viewport commands parsed. */
 	std::vector<IntroGameViewportCommand> intro_viewport_commands;
 	/** Index of currently active viewport command. */
@@ -105,6 +106,16 @@ struct SelectGameWindow : public Window {
 	uint cur_viewport_command_time;
 	uint mouse_idle_time;
 	Point mouse_idle_pos;
+
+	IntroGameAnimator()
+	{
+		this->ReadIntroGameViewportCommands();
+
+		this->cur_viewport_command_index = (size_t)-1;
+		this->cur_viewport_command_time = 0;
+		this->mouse_idle_time = 0;
+		this->mouse_idle_pos = _cursor.pos;
+	}
 
 	/**
 	 * Find and parse all viewport command signs.
@@ -174,21 +185,7 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
-	SelectGameWindow(WindowDesc *desc) : Window(desc)
-	{
-		this->CreateNestedTree();
-		this->FinishInitNested(0);
-		this->OnInvalidateData();
-
-		this->ReadIntroGameViewportCommands();
-
-		this->cur_viewport_command_index = (size_t)-1;
-		this->cur_viewport_command_time = 0;
-		this->mouse_idle_time = 0;
-		this->mouse_idle_pos = _cursor.pos;
-	}
-
-	void OnRealtimeTick(uint delta_ms) override
+	void Tick(uint delta_ms)
 	{
 		/* Move the main game viewport according to intro viewport commands. */
 
@@ -255,6 +252,30 @@ struct SelectGameWindow : public Window {
 
 		/* If there is only one command, we just executed it and don't need to do any more */
 		if (intro_viewport_commands.size() == 1 && vc.vehicle == INVALID_VEHICLE) intro_viewport_commands.clear();
+	}
+
+};
+
+};
+
+
+struct SelectGameWindow : public Window {
+	std::unique_ptr<IntroGameAnimator> intro_animator;
+
+	SelectGameWindow(WindowDesc *desc) : Window(desc)
+	{
+		this->CreateNestedTree();
+		this->FinishInitNested(0);
+		this->OnInvalidateData();
+
+			this->intro_animator.reset(new IntroGameAnimator());
+		}
+
+	void OnRealtimeTick(uint delta_ms) override
+	{
+		if (this->intro_animator) {
+			this->intro_animator->Tick(delta_ms);
+		}
 	}
 
 	/**
