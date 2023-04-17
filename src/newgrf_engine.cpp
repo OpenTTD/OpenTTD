@@ -24,6 +24,7 @@
 #include "newgrf_railtype.h"
 #include "newgrf_roadtype.h"
 #include "ship.h"
+#include "newgrf_debug.h"
 
 #include "safeguards.h"
 
@@ -312,6 +313,25 @@ static uint8_t MapAircraftMovementAction(const Aircraft *v)
 /* virtual */ uint32_t VehicleScopeResolver::GetTriggers() const
 {
 	return this->v == nullptr ? 0 : this->v->waiting_triggers;
+}
+
+/* virtual */ void VehicleScopeResolver::StorePSA(uint pos, int32_t value)
+{
+	if (this->readonly) return;
+
+	if (this->v == nullptr) return;
+
+	/* const_cast because we're in too deep to change Vehicle to be non-const. */
+	Vehicle *v = const_cast<Vehicle *>(this->v);
+	if (v->psa == nullptr) {
+		/* There is no need to create a storage if the value is zero. */
+		if (value == 0) return;
+
+		uint32_t grfid = (this->ro.grffile != nullptr) ? this->ro.grffile->grfid : 0;
+		assert(PersistentStorage::CanAllocateItem());
+		v->psa = new PersistentStorage(grfid, GetGrfSpecFeature(this->v->type), INVALID_TILE);
+	}
+	v->psa->StoreValue(pos, value);
 }
 
 
@@ -691,6 +711,8 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				}
 				default: return 0x00;
 			}
+
+		case 0x7C: return (v->psa != nullptr) ? v->psa->GetValue(parameter) : 0;
 
 		case 0xFE:
 		case 0xFF: {
@@ -1144,11 +1166,15 @@ bool UsesWagonOverride(const Vehicle *v)
  * @param param2   Second parameter of the callback
  * @param engine   Engine type of the vehicle to evaluate the callback for
  * @param v        The vehicle to evaluate the callback for, or nullptr if it doesn't exist yet
+ * @param readonly Set if Persistent Storage is readonly
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
-uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v)
+uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, bool readonly)
 {
 	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_UNCACHED, false, callback, param1, param2);
+	if (!readonly) {
+		object.self_scope.readonly = false;
+	}
 	return object.ResolveCallback();
 }
 
@@ -1160,12 +1186,18 @@ uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param
  * @param engine   Engine type of the vehicle to evaluate the callback for
  * @param v        The vehicle to evaluate the callback for, or nullptr if it doesn't exist yet
  * @param parent   The vehicle to use for parent scope
+ * @param readonly Set if Persistent Storage is readonly
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
-uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent)
+uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent, bool readonly)
 {
 	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_NONE, false, callback, param1, param2);
 	object.parent_scope.SetVehicle(parent);
+	if (!readonly) {
+		object.self_scope.readonly = false;
+		object.parent_scope.readonly = false;
+		object.relative_scope.readonly = false;
+	}
 	return object.ResolveCallback();
 }
 

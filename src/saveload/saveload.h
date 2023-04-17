@@ -387,6 +387,7 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_ROAD_STOP_TILE_DATA,                ///< 340  PR#12883 Move storage of road stop tile data, also save for road waypoints.
 	SLV_VARIABLE_PERSISTENT_STORAGE,        ///< 341  PR#..... NewGRF persistent storage moved from fixed array to dynamic.
+	SLV_VEHICLE_STORAGE,                    ///< 342  PR#..... Addition of persistent storage for vehicles.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

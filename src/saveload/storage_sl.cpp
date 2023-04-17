@@ -73,8 +73,8 @@ static std::array<PersistentStorage::ElementType, 256> _old_persistent_storage;
 /** Description of the data to save and load in #PersistentStorage. */
 static const SaveLoad _storage_desc[] = {
 	 SLE_CONDVAR(PersistentStorage, grfid,    SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
-	 SLEG_CONDARR("storage", _old_persistent_storage, SLE_INT32,  16, SLV_161, SLV_EXTEND_PERSISTENT_STORAGE),
-	 SLEG_CONDARR("storage", _old_persistent_storage, SLE_INT32, 256, SLV_EXTEND_PERSISTENT_STORAGE, SLV_VARIABLE_PERSISTENT_STORAGE),
+	 SLEG_CONDARR("storage", _old_persistent_storage, SLE_UINT32,  16, SLV_161, SLV_EXTEND_PERSISTENT_STORAGE),
+	 SLEG_CONDARR("storage", _old_persistent_storage, SLE_UINT32, 256, SLV_EXTEND_PERSISTENT_STORAGE, SLV_VARIABLE_PERSISTENT_STORAGE),
 	SLEG_CONDSTRUCTLIST("storage", SlPersistentStorage, SLV_VARIABLE_PERSISTENT_STORAGE, SL_MAX_VERSION),
 };
 

@@ -84,6 +84,13 @@ class NIHVehicle : public NIHelper {
 		VehicleResolverObject ro(v->engine_type, v, VehicleResolverObject::WO_CACHED);
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
+
+	const SortedPersistentStorage GetPSA(uint index, uint32_t) const override
+	{
+		const Vehicle *v = Vehicle::Get(index);
+		if (v->psa == nullptr) return {};
+		return {std::begin(v->psa->storage), std::end(v->psa->storage)};
+	}
 };
 
 static const NIFeature _nif_vehicle = {

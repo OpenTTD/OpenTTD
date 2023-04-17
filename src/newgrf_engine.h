@@ -23,6 +23,7 @@ struct VehicleScopeResolver : public ScopeResolver {
 	const struct Vehicle *v; ///< The vehicle being resolved.
 	EngineID self_type;      ///< Type of the vehicle.
 	bool rotor_in_gui;       ///< Helicopter rotor is drawn in GUI.
+	bool readonly = true; ///< Set if PersistentStorage is read only.
 
 	/**
 	 * Scope resolver of a single vehicle.
@@ -41,6 +42,7 @@ struct VehicleScopeResolver : public ScopeResolver {
 	uint32_t GetRandomBits() const override;
 	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
 	uint32_t GetTriggers() const override;
+	void StorePSA(uint pos, int32_t value) override;
 };
 
 /** Resolver for a vehicle (chain) */
@@ -94,8 +96,8 @@ struct GRFFile;
 
 void SetEngineGRF(EngineID engine, const struct GRFFile *file);
 
-uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v);
-uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent);
+uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, bool readonly = true);
+uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent, bool readonly = true);
 bool UsesWagonOverride(const Vehicle *v);
 
 /* Handler to Evaluate callback 36. If the callback fails (i.e. most of the
