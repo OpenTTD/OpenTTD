@@ -22,13 +22,13 @@ extern StationPool _station_pool;
 struct StationSpecList {
 	const StationSpec *spec;
 	uint32 grfid;      ///< GRF ID of this custom station
-	uint8  localidx;   ///< Station ID within GRF of station
+	uint16_t localidx; ///< Station ID within GRF of station
 };
 
 struct RoadStopSpecList {
 	const RoadStopSpec *spec;
 	uint32 grfid;      ///< GRF ID of this custom road stop
-	uint8  localidx;   ///< Station ID within GRF of road stop
+	uint16_t localidx; ///< Station ID within GRF of road stop
 };
 
 struct RoadStopTileData {

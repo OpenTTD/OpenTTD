@@ -185,8 +185,8 @@ private:
  */
 struct EntityIDMapping {
 	uint32 grfid;          ///< The GRF ID of the file the entity belongs to
-	uint8  entity_id;      ///< The entity ID within the GRF file
-	uint8  substitute_id;  ///< The (original) entity ID to use if this GRF is not available
+	uint16_t entity_id; ///< The entity ID within the GRF file
+	uint16_t substitute_id; ///< The (original) entity ID to use if this GRF is not available
 };
 
 class OverrideManagerBase {
@@ -209,12 +209,12 @@ public:
 	void ResetOverride();
 	void ResetMapping();
 
-	void Add(uint8 local_id, uint32 grfid, uint entity_type);
-	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
+	void Add(uint16_t local_id, uint32 grfid, uint entity_type);
+	virtual uint16 AddEntityID(uint16_t grf_local_id, uint32 grfid, uint16_t substitute_id);
 
 	uint32 GetGRFID(uint16 entity_id) const;
 	uint16 GetSubstituteID(uint16 entity_id) const;
-	virtual uint16 GetID(uint8 grf_local_id, uint32 grfid) const;
+	virtual uint16 GetID(uint16_t grf_local_id, uint32 grfid) const;
 
 	inline uint16 GetMaxMapping() const { return this->max_entities; }
 	inline uint16 GetMaxOffset() const { return this->max_offset; }
@@ -237,8 +237,8 @@ public:
 	IndustryOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
-	uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id) override;
-	uint16 GetID(uint8 grf_local_id, uint32 grfid) const override;
+	uint16 AddEntityID(uint16_t grf_local_id, uint32 grfid, uint16_t substitute_id) override;
+	uint16 GetID(uint16_t grf_local_id, uint32 grfid) const override;
 
 	void SetEntitySpec(IndustrySpec *inds);
 };

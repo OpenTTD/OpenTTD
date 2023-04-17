@@ -157,7 +157,7 @@ uint32 RoadStopScopeResolver::GetVariable(byte variable, uint32 parameter, bool 
 
 			if (IsCustomRoadStopSpecIndex(nearby_tile)) {
 				const RoadStopSpecList ssl = BaseStation::GetByTile(nearby_tile)->roadstop_speclist[GetCustomRoadStopSpecIndex(nearby_tile)];
-				res |= 1 << (ssl.grfid != grfid ? 9 : 8) | ssl.localidx;
+				res |= 1 << (ssl.grfid != grfid ? 9 : 8) | std::max<uint16_t>(ssl.localidx, 0xFF);
 			}
 			return res;
 		}

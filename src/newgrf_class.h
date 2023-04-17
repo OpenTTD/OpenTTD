@@ -61,7 +61,7 @@ public:
 	static Tid GetUIClass(uint index);
 	static NewGRFClass *Get(Tid cls_id);
 
-	static const Tspec *GetByGrf(uint32 grfid, byte local_id, int *index);
+	static const Tspec *GetByGrf(uint32 grfid, uint16_t local_id, int *index);
 };
 
 #endif /* NEWGRF_CLASS_H */
