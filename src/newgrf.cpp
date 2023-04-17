@@ -2124,6 +2124,14 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				buf->ReadWord();
 				break;
 
+			case 0x1C: // Station Name
+				AddStringForMapping(buf->ReadWord(), &statspec->name);
+				break;
+
+			case 0x1D: // Station Class name
+				AddStringForMapping(buf->ReadWord(), &StationClass::Get(statspec->cls_id)->name);
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
