@@ -713,6 +713,7 @@ public:
 		SLE_CONDVAR(Vehicle, current_order_time,    SLE_UINT32,                  SLV_67, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, last_loading_tick,     SLE_UINT64,                   SLV_LAST_LOADING_TICK, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_67, SL_MAX_VERSION),
+		SLE_CONDREF(Vehicle, psa,                   REF_STORAGE,                 SLV_VEHICLE_STORAGE, SL_MAX_VERSION),
 	};
 #if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
 		return description;

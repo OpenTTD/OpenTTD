@@ -313,6 +313,22 @@ static byte MapAircraftMovementAction(const Aircraft *v)
 	return this->v == nullptr ? 0 : this->v->waiting_triggers;
 }
 
+/* virtual */ void VehicleScopeResolver::StorePSA(uint reg, int32 value)
+{
+	if (this->v == nullptr) return;
+
+	if (this->v->psa == nullptr) {
+		/* There is no need to create a storage if the value is zero. */
+		if (value == 0) return;
+
+		uint32 grfid = (this->ro.grffile != nullptr) ? this->ro.grffile->grfid : 0;
+		assert(PersistentStorage::CanAllocateItem());
+		/* XXX: const_cast because we're in too deep to change Vehicle to be non-const, and also I'm too lazy. */
+		const_cast<Vehicle *>(this->v)->psa = new PersistentStorage(grfid, GSF_TRAINS, INVALID_TILE);
+	}
+	const_cast<Vehicle *>(this->v)->psa->StoreValue(reg, value);
+}
+
 
 /* virtual */ ScopeResolver *VehicleResolverObject::GetScope(VarSpriteGroupScope scope, byte relative)
 {
@@ -705,6 +721,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 				}
 				default: return 0x00;
 			}
+
+		case 0x7C: return (v->psa != nullptr) ? v->psa->GetValue(parameter) : 0;
 
 		case 0xFE:
 		case 0xFF: {
