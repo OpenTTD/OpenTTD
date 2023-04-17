@@ -58,7 +58,7 @@ OverrideManagerBase::OverrideManagerBase(uint16 offset, uint16 maximum, uint16 i
  * @param grfid  ID of the grf file
  * @param entity_type original entity type
  */
-void OverrideManagerBase::Add(uint8 local_id, uint32 grfid, uint entity_type)
+void OverrideManagerBase::Add(uint16_t local_id, uint32 grfid, uint entity_type)
 {
 	assert(entity_type < this->max_offset);
 	/* An override can be set only once */
@@ -86,7 +86,7 @@ void OverrideManagerBase::ResetOverride()
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
-uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid) const
+uint16 OverrideManagerBase::GetID(uint16_t grf_local_id, uint32 grfid) const
 {
 	for (uint16 id = 0; id < this->max_entities; id++) {
 		const EntityIDMapping *map = &this->mappings[id];
@@ -105,7 +105,7 @@ uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid) const
  * @param substitute_id is the original entity from which data is copied for the new one
  * @return the proper usable slot id, or invalid marker if none is found
  */
-uint16 OverrideManagerBase::AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id)
+uint16 OverrideManagerBase::AddEntityID(uint16_t grf_local_id, uint32 grfid, uint16_t substitute_id)
 {
 	uint16 id = this->GetID(grf_local_id, grfid);
 
@@ -184,7 +184,7 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
-uint16 IndustryOverrideManager::GetID(uint8 grf_local_id, uint32 grfid) const
+uint16 IndustryOverrideManager::GetID(uint16_t grf_local_id, uint32 grfid) const
 {
 	uint16 id = OverrideManagerBase::GetID(grf_local_id, grfid);
 	if (id != this->invalid_id) return id;
@@ -204,7 +204,7 @@ uint16 IndustryOverrideManager::GetID(uint8 grf_local_id, uint32 grfid) const
  * @param substitute_id industry from which data has been copied
  * @return a free entity id (slotid) if ever one has been found, or Invalid_ID marker otherwise
  */
-uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id)
+uint16 IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, uint32 grfid, uint16 substitute_id)
 {
 	/* This entity hasn't been defined before, so give it an ID now. */
 	for (uint16 id = 0; id < this->max_entities; id++) {

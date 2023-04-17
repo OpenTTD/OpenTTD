@@ -354,6 +354,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_AI_START_DATE,                      ///< 309  PR#10653 Removal of individual AI start dates and added a generic one.
 
 	SLV_EXTEND_VEHICLE_RANDOM,              ///< 310  PR#10701 Extend vehicle random bits.
+	SLV_EXTEND_ENTITY_MAPPING,              ///< 311  PR#10672 Extend entity mapping range.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
