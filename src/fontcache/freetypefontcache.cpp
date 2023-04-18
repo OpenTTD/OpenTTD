@@ -128,7 +128,7 @@ void LoadFreeTypeFont(FontSize fs)
 
 	if (_library == nullptr) {
 		if (FT_Init_FreeType(&_library) != FT_Err_Ok) {
-			ShowInfoF("Unable to initialize FreeType, using sprite fonts instead");
+			ShowInfo("Unable to initialize FreeType, using sprite fonts instead");
 			return;
 		}
 
@@ -190,7 +190,7 @@ void LoadFreeTypeFont(FontSize fs)
 
 	FT_Done_Face(face);
 
-	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", font_name, FontSizeToName(fs), error);
+	ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font_name, FontSizeToName(fs), error);
 	return;
 
 found_face:

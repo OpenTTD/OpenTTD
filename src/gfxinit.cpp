@@ -152,7 +152,7 @@ void CheckExternalFiles()
 		add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", sounds_set->files->filename, SoundsSet::CheckMD5(sounds_set->files, BASESET_DIR) == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files->missing_warning);
 	}
 
-	if (add_pos != error_msg) ShowInfoF("%s", error_msg);
+	if (add_pos != error_msg) ShowInfoI(error_msg);
 }
 
 /** Actually load the sprite tables. */

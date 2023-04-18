@@ -392,11 +392,11 @@ void GetKeyboardLayout()
 	}
 
 	if (has_error) {
-		ShowInfoF("The keyboard layout you selected contains invalid chars. Please check those chars marked with ^.");
-		ShowInfoF("Normal keyboard:  %s", keyboard[0]);
-		ShowInfoF("                  %s", errormark[0]);
-		ShowInfoF("Caps Lock:        %s", keyboard[1]);
-		ShowInfoF("                  %s", errormark[1]);
+		ShowInfo("The keyboard layout you selected contains invalid chars. Please check those chars marked with ^.");
+		ShowInfo("Normal keyboard:  {}", keyboard[0]);
+		ShowInfo("                  {}", errormark[0]);
+		ShowInfo("Caps Lock:        {}", keyboard[1]);
+		ShowInfo("                  {}", errormark[1]);
 	}
 }
 

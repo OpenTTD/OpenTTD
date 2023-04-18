@@ -164,20 +164,6 @@ void CDECL error(const char *s, ...)
 }
 
 /**
- * Shows some information on the console/a popup box depending on the OS.
- * @param str the text to show.
- */
-void CDECL ShowInfoF(const char *str, ...)
-{
-	va_list va;
-	char buf[1024];
-	va_start(va, str);
-	vseprintf(buf, lastof(buf), str, va);
-	va_end(va);
-	ShowInfo(buf);
-}
-
-/**
  * Show the help message when someone passed a wrong parameter.
  */
 static void ShowHelp()
@@ -257,7 +243,7 @@ static void ShowHelp()
 #if !defined(_WIN32)
 	printf("%s\n", buf);
 #else
-	ShowInfo(buf);
+	ShowInfoI(buf);
 #endif
 }
 
@@ -295,7 +281,7 @@ static void WriteSavegameInfo(const char *name)
 #if !defined(_WIN32)
 	printf("%s\n", buf);
 #else
-	ShowInfo(buf);
+	ShowInfoI(buf);
 #endif
 }
 
@@ -310,7 +296,7 @@ static void ParseResolution(Dimension *res, const char *s)
 {
 	const char *t = strchr(s, 'x');
 	if (t == nullptr) {
-		ShowInfoF("Invalid resolution '%s'", s);
+		ShowInfo("Invalid resolution '{}'", s);
 		return;
 	}
 
@@ -581,7 +567,7 @@ int openttd_main(int argc, char *argv[])
 			videodriver = "dedicated";
 			blitter = "null";
 			dedicated = true;
-			SetDebugString("net=4", ShowInfo);
+			SetDebugString("net=4", ShowInfoI);
 			if (mgo.opt != nullptr) {
 				scanner->dedicated_host = ParseFullConnectionString(mgo.opt, scanner->dedicated_port);
 			}
@@ -605,7 +591,7 @@ int openttd_main(int argc, char *argv[])
 #if defined(_WIN32)
 				CreateConsole();
 #endif
-				if (mgo.opt != nullptr) SetDebugString(mgo.opt, ShowInfo);
+				if (mgo.opt != nullptr) SetDebugString(mgo.opt, ShowInfoI);
 				break;
 			}
 		case 'e': _switch_mode = (_switch_mode == SM_LOAD_GAME || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : SM_EDITOR); break;

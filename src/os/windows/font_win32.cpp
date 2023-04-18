@@ -609,7 +609,7 @@ void LoadWin32Font(FontSize fs)
 					logfont.lfWeight = strcasestr(font_name, " bold") != nullptr || strcasestr(font_name, "-bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
 				}
 			} else {
-				ShowInfoF("Unable to load file '%s' for %s font, using default windows font selection instead", font_name, FontSizeToName(fs));
+				ShowInfo("Unable to load file '{}' for {} font, using default windows font selection instead", font_name, FontSizeToName(fs));
 			}
 		}
 	}
@@ -621,7 +621,7 @@ void LoadWin32Font(FontSize fs)
 
 	HFONT font = CreateFontIndirect(&logfont);
 	if (font == nullptr) {
-		ShowInfoF("Unable to use '%s' for %s font, Win32 reported error 0x%lX, using sprite font instead", font_name, FontSizeToName(fs), GetLastError());
+		ShowInfo("Unable to use '{}' for {} font, Win32 reported error 0x{:X}, using sprite font instead", font_name, FontSizeToName(fs), GetLastError());
 		return;
 	}
 	DeleteObject(font);

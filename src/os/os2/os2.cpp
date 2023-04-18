@@ -133,7 +133,7 @@ bool FiosIsHiddenFile(const struct dirent *ent)
 	return ent->d_name[0] == '.';
 }
 
-void ShowInfo(const char *str)
+void ShowInfoI(const std::string &str)
 {
 	HAB hab;
 	HMQ hmq;
@@ -143,7 +143,7 @@ void ShowInfo(const char *str)
 	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
 
 	/* display the box */
-	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, (const unsigned char *)str, (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_INFORMATION);
+	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, (const unsigned char *)str.c_str(), (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_INFORMATION);
 
 	/* terminate PM env. */
 	WinDestroyMsgQueue(hmq);

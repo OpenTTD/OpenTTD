@@ -318,27 +318,27 @@ static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM
 	return FALSE;
 }
 
-void ShowInfo(const char *str)
+void ShowInfoI(const std::string &str)
 {
 	if (_has_console) {
-		fprintf(stderr, "%s\n", str);
+		fprintf(stderr, "%s\n", str.c_str());
 	} else {
 		bool old;
 		ReleaseCapture();
 		_left_button_clicked = _left_button_down = false;
 
 		old = MyShowCursor(true);
-		if (strlen(str) > 2048) {
+		if (str.size() > 2048) {
 			/* The minimum length of the help message is 2048. Other messages sent via
 			 * ShowInfo are much shorter, or so long they need this way of displaying
 			 * them anyway. */
-			_help_msg = str;
+			_help_msg = str.c_str();
 			DialogBox(GetModuleHandle(nullptr), MAKEINTRESOURCE(101), nullptr, HelpDialogFunc);
 		} else {
 			/* We need to put the text in a separate buffer because the default
 			 * buffer in OTTD2FS might not be large enough (512 chars). */
 			wchar_t help_msg_buf[8192];
-			MessageBox(GetActiveWindow(), convert_to_fs(str, help_msg_buf, lengthof(help_msg_buf)), L"OpenTTD", MB_ICONINFORMATION | MB_OK);
+			MessageBox(GetActiveWindow(), convert_to_fs(str.c_str(), help_msg_buf, lengthof(help_msg_buf)), L"OpenTTD", MB_ICONINFORMATION | MB_OK);
 		}
 		MyShowCursor(old);
 	}
