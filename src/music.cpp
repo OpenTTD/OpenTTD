@@ -25,7 +25,7 @@
  * @return Pointer to string, caller is responsible for freeing memory,
  *         nullptr if entrynum does not exist.
  */
-char *GetMusicCatEntryName(const char *filename, size_t entrynum)
+char *GetMusicCatEntryName(const std::string &filename, size_t entrynum)
 {
 	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
 
@@ -52,7 +52,7 @@ char *GetMusicCatEntryName(const char *filename, size_t entrynum)
  * @return Pointer to buffer with data read, caller is responsible for freeind memory,
  *         nullptr if entrynum does not exist.
  */
-byte *GetMusicCatEntryData(const char *filename, size_t entrynum, size_t &entrylen)
+byte *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t &entrylen)
 {
 	entrylen = 0;
 	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
@@ -116,7 +116,7 @@ template <class Tbase_set>
 	return BaseMedia<Tbase_set>::used_set != nullptr;
 }
 
-bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_filename)
+bool MusicSet::FillSetDetails(IniFile *ini, const std::string &path, const std::string &full_filename)
 {
 	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false>::FillSetDetails(ini, path, full_filename);
 	if (ret) {
@@ -126,8 +126,8 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 		IniGroup *timingtrim = ini->GetGroup("timingtrim");
 		uint tracknr = 1;
 		for (uint i = 0; i < lengthof(this->songinfo); i++) {
-			const char *filename = this->files[i].filename;
-			if (names == nullptr || StrEmpty(filename) || this->files[i].check_result == MD5File::CR_NO_FILE) {
+			const std::string &filename = this->files[i].filename;
+			if (filename.empty() || this->files[i].check_result == MD5File::CR_NO_FILE) {
 				continue;
 			}
 
@@ -149,7 +149,7 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				this->songinfo[i].filetype = MTT_STANDARDMIDI;
 			}
 
-			const char *trimmed_filename = filename;
+			const char *trimmed_filename = filename.c_str();
 			/* As we possibly add a path to the filename and we compare
 			 * on the filename with the path as in the .obm, we need to
 			 * keep stripping path elements until we find a match. */

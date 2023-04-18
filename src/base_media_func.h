@@ -38,7 +38,7 @@ extern void CheckExternalFiles();
  * @return true if loading was successful.
  */
 template <class T, size_t Tnum_files, bool Tsearch_in_tars>
-bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const char *path, const char *full_filename, bool allow_empty_filename)
+bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename)
 {
 	IniGroup *metadata = ini->GetGroup("metadata");
 	IniItem *item;
@@ -81,15 +81,15 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 		}
 
 		if (!item->value.has_value()) {
-			file->filename = nullptr;
+			file->filename.clear();
 			/* If we list no file, that file must be valid */
 			this->valid_files++;
 			this->found_files++;
 			continue;
 		}
 
-		const char *filename = item->value->c_str();
-		file->filename = str_fmt("%s%s", path, filename);
+		const std::string &filename = item->value.value();
+		file->filename = path + filename;
 
 		/* Then find the MD5 checksum */
 		item = md5s->GetItem(filename, false);
@@ -122,9 +122,9 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 		if (item == nullptr) item = origin->GetItem("default", false);
 		if (item == nullptr || !item->value.has_value()) {
 			Debug(grf, 1, "No origin warning message specified for: {}", filename);
-			file->missing_warning = stredup("");
+			file->missing_warning.clear();
 		} else {
-			file->missing_warning = stredup(item->value->c_str());
+			file->missing_warning = item->value.value();
 		}
 
 		file->check_result = T::CheckMD5(file, BASESET_DIR);
@@ -169,7 +169,7 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 		path.clear();
 	}
 
-	if (set->FillSetDetails(ini, path.c_str(), filename.c_str())) {
+	if (set->FillSetDetails(ini, path, filename)) {
 		Tbase_set *duplicate = nullptr;
 		for (Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
 			if (c->name == set->name || c->shortname == set->shortname) {
@@ -282,7 +282,7 @@ template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo *ci, 
 		if (s->GetNumMissing() != 0) continue;
 
 		if (s->shortname != ci->unique_id) continue;
-		if (!md5sum) return  s->files[0].filename;
+		if (!md5sum) return s->files[0].filename.c_str();
 
 		byte md5[16];
 		memset(md5, 0, sizeof(md5));
@@ -291,7 +291,7 @@ template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo *ci, 
 				md5[j] ^= s->files[i].hash[j];
 			}
 		}
-		if (memcmp(md5, ci->md5sum, sizeof(md5)) == 0) return s->files[0].filename;
+		if (memcmp(md5, ci->md5sum, sizeof(md5)) == 0) return s->files[0].filename.c_str();
 	}
 	return nullptr;
 }

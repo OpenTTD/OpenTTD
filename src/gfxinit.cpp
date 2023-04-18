@@ -42,7 +42,7 @@ static const SpriteID * const _landscape_spriteindexes[] = {
  * @param needs_palette_remap Whether the colours in the GRF file need a palette remap.
  * @return The number of loaded sprites.
  */
-static uint LoadGrfFile(const char *filename, uint load_index, bool needs_palette_remap)
+static uint LoadGrfFile(const std::string &filename, uint load_index, bool needs_palette_remap)
 {
 	uint load_index_org = load_index;
 	uint sprite_id = 0;
@@ -52,7 +52,7 @@ static uint LoadGrfFile(const char *filename, uint load_index, bool needs_palett
 	Debug(sprite, 2, "Reading grf-file '{}'", filename);
 
 	byte container_ver = file.GetContainerVersion();
-	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename);
+	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename.c_str());
 	ReadGRFSpriteOffsets(file);
 	if (container_ver >= 2) {
 		/* Read compression. */
@@ -79,7 +79,7 @@ static uint LoadGrfFile(const char *filename, uint load_index, bool needs_palett
  * @param needs_palette_remap Whether the colours in the GRF file need a palette remap.
  * @return The number of loaded sprites.
  */
-static void LoadGrfFileIndexed(const char *filename, const SpriteID *index_tbl, bool needs_palette_remap)
+static void LoadGrfFileIndexed(const std::string &filename, const SpriteID *index_tbl, bool needs_palette_remap)
 {
 	uint start;
 	uint sprite_id = 0;
@@ -89,7 +89,7 @@ static void LoadGrfFileIndexed(const char *filename, const SpriteID *index_tbl, 
 	Debug(sprite, 2, "Reading indexed grf-file '{}'", filename);
 
 	byte container_ver = file.GetContainerVersion();
-	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename);
+	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename.c_str());
 	ReadGRFSpriteOffsets(file);
 	if (container_ver >= 2) {
 		/* Read compression. */
@@ -137,7 +137,7 @@ void CheckExternalFiles()
 		add_pos += seprintf(add_pos, last, "Trying to load graphics set '%s', but it is incomplete. The game will probably not run correctly until you properly install this set or select another one. See section 4.1 of README.md.\n\nThe following files are corrupted or missing:\n", used_set->name.c_str());
 		for (uint i = 0; i < GraphicsSet::NUM_FILES; i++) {
 			MD5File::ChecksumResult res = GraphicsSet::CheckMD5(&used_set->files[i], BASESET_DIR);
-			if (res != MD5File::CR_MATCH) add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", used_set->files[i].filename, res == MD5File::CR_MISMATCH ? "corrupt" : "missing", used_set->files[i].missing_warning);
+			if (res != MD5File::CR_MATCH) add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", used_set->files[i].filename.c_str(), res == MD5File::CR_MISMATCH ? "corrupt" : "missing", used_set->files[i].missing_warning.c_str());
 		}
 		add_pos += seprintf(add_pos, last, "\n");
 	}
@@ -149,7 +149,7 @@ void CheckExternalFiles()
 		static_assert(SoundsSet::NUM_FILES == 1);
 		/* No need to loop each file, as long as there is only a single
 		 * sound file. */
-		add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", sounds_set->files->filename, SoundsSet::CheckMD5(sounds_set->files, BASESET_DIR) == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files->missing_warning);
+		add_pos += seprintf(add_pos, last, "\t%s is %s (%s)\n", sounds_set->files->filename.c_str(), SoundsSet::CheckMD5(sounds_set->files, BASESET_DIR) == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files->missing_warning.c_str());
 	}
 
 	if (add_pos != error_msg) ShowInfoF("%s", error_msg);
@@ -201,7 +201,7 @@ static void LoadSpriteTables()
 	ClrBit(master->flags, GCF_INIT_ONLY);
 
 	/* Baseset extra graphics */
-	GRFConfig *extra = new GRFConfig(used_set->files[GFT_EXTRA].filename);
+	GRFConfig *extra = new GRFConfig(used_set->files[GFT_EXTRA].filename.c_str());
 
 	/* We know the palette of the base set, so if the base NewGRF is not
 	 * setting one, use the palette of the base set and not the global
@@ -355,7 +355,7 @@ void GfxLoadSprites()
 	UpdateCursorSize();
 }
 
-bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *full_filename)
+bool GraphicsSet::FillSetDetails(IniFile *ini, const std::string &path, const std::string &full_filename)
 {
 	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, true>::FillSetDetails(ini, path, full_filename, false);
 	if (ret) {
