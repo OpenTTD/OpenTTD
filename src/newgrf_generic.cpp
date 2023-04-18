@@ -109,7 +109,7 @@ void ResetGenericCallbacks()
 void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *group)
 {
 	if (feature >= lengthof(_gcl)) {
-		grfmsg(5, "AddGenericCallback: Unsupported feature 0x%02X", feature);
+		GrfMsg(5, "AddGenericCallback: Unsupported feature {:#02X}", feature);
 		return;
 	}
 
