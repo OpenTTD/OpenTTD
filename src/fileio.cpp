@@ -140,7 +140,7 @@ void FioFCloseFile(FILE *f)
  * @param filename Filename to look for.
  * @return String containing the path if the path was found, else an empty string.
  */
-std::string FioFindFullPath(Subdirectory subdir, const char *filename)
+std::string FioFindFullPath(Subdirectory subdir, const std::string &filename)
 {
 	assert(subdir < NUM_SUBDIRS);
 

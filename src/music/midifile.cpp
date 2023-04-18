@@ -849,7 +849,7 @@ bool MidiFile::LoadSong(const MusicSongInfo &song)
 {
 	switch (song.filetype) {
 		case MTT_STANDARDMIDI:
-			return this->LoadFile(song.filename);
+			return this->LoadFile(song.filename.c_str());
 		case MTT_MPSMIDI:
 		{
 			size_t songdatalen = 0;
@@ -1060,9 +1060,9 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 
 	char basename[MAX_PATH];
 	{
-		const char *fnstart = strrchr(song.filename, PATHSEPCHAR);
+		const char *fnstart = strrchr(song.filename.c_str(), PATHSEPCHAR);
 		if (fnstart == nullptr) {
-			fnstart = song.filename;
+			fnstart = song.filename.c_str();
 		} else {
 			fnstart++;
 		}
