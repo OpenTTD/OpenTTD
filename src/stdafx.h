@@ -305,19 +305,16 @@
 #   define OTTD_PRINTF64U "%I64u"
 #   define OTTD_PRINTFHEX64 "%I64x"
 #   define PRINTF_SIZE "%Iu"
-#   define PRINTF_SIZEX "%IX"
 #elif defined(__MINGW32__)
 #   define OTTD_PRINTF64 "%I64d"
 #   define OTTD_PRINTF64U "%I64llu"
 #   define OTTD_PRINTFHEX64 "%I64x"
 #   define PRINTF_SIZE "%Iu"
-#   define PRINTF_SIZEX "%IX"
 #else
 #   define OTTD_PRINTF64 "%lld"
 #   define OTTD_PRINTF64U "%llu"
 #   define OTTD_PRINTFHEX64 "%llx"
 #   define PRINTF_SIZE "%zu"
-#   define PRINTF_SIZEX "%zX"
 #endif
 
 /*

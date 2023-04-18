@@ -39,40 +39,25 @@
 # define LINE_NUM_FMT(s) "%s:%d: " s ": %s\n"
 #endif
 
-void CDECL strgen_warning(const char *s, ...)
+void StrgenWarningI(const std::string &msg)
 {
-	char buf[1024];
-	va_list va;
-	va_start(va, s);
-	vseprintf(buf, lastof(buf), s, va);
-	va_end(va);
 	if (_show_todo > 0) {
-		fprintf(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, buf);
+		fprintf(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, msg.c_str());
 	} else {
-		fprintf(stderr, LINE_NUM_FMT("info"), _file, _cur_line, buf);
+		fprintf(stderr, LINE_NUM_FMT("info"), _file, _cur_line, msg.c_str());
 	}
 	_warnings++;
 }
 
-void CDECL strgen_error(const char *s, ...)
+void StrgenErrorI(const std::string &msg)
 {
-	char buf[1024];
-	va_list va;
-	va_start(va, s);
-	vseprintf(buf, lastof(buf), s, va);
-	va_end(va);
-	fprintf(stderr, LINE_NUM_FMT("error"), _file, _cur_line, buf);
+	fprintf(stderr, LINE_NUM_FMT("error"), _file, _cur_line, msg.c_str());
 	_errors++;
 }
 
-void NORETURN CDECL strgen_fatal(const char *s, ...)
+void NORETURN StrgenFatalI(const std::string &msg)
 {
-	char buf[1024];
-	va_list va;
-	va_start(va, s);
-	vseprintf(buf, lastof(buf), s, va);
-	va_end(va);
-	fprintf(stderr, LINE_NUM_FMT("FATAL"), _file, _cur_line, buf);
+	fprintf(stderr, LINE_NUM_FMT("FATAL"), _file, _cur_line, msg.c_str());
 #ifdef _MSC_VER
 	fprintf(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, "language is not compiled");
 #endif
