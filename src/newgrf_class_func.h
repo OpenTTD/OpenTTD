@@ -63,7 +63,7 @@ DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
 		}
 	}
 
-	grfmsg(2, "ClassAllocate: already allocated %d classes, using default", Tmax);
+	GrfMsg(2, "ClassAllocate: already allocated {} classes, using default", Tmax);
 	return (Tid)0;
 }
 

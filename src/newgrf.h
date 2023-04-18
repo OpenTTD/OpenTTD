@@ -201,7 +201,8 @@ void ReloadNewGRFData(); // in saveload/afterload.cpp
 void ResetNewGRFData();
 void ResetPersistentNewGRFData();
 
-void CDECL grfmsg(int severity, const char *str, ...) WARN_FORMAT(2, 3);
+void GrfMsgI(int severity, const std::string &msg);
+#define GrfMsg(severity, format_string, ...) GrfMsgI(severity, fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 
 bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile);
 

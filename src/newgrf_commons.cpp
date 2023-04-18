@@ -160,7 +160,7 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 	HouseID house_id = this->AddEntityID(hs->grf_prop.local_id, hs->grf_prop.grffile->grfid, hs->grf_prop.subst_id);
 
 	if (house_id == this->invalid_id) {
-		grfmsg(1, "House.SetEntitySpec: Too many houses allocated. Ignoring.");
+		GrfMsg(1, "House.SetEntitySpec: Too many houses allocated. Ignoring.");
 		return;
 	}
 
@@ -254,7 +254,7 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 	}
 
 	if (ind_id == this->invalid_id) {
-		grfmsg(1, "Industry.SetEntitySpec: Too many industries allocated. Ignoring.");
+		GrfMsg(1, "Industry.SetEntitySpec: Too many industries allocated. Ignoring.");
 		return;
 	}
 
@@ -269,7 +269,7 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 	IndustryGfx indt_id = this->AddEntityID(its->grf_prop.local_id, its->grf_prop.grffile->grfid, its->grf_prop.subst_id);
 
 	if (indt_id == this->invalid_id) {
-		grfmsg(1, "IndustryTile.SetEntitySpec: Too many industry tiles allocated. Ignoring.");
+		GrfMsg(1, "IndustryTile.SetEntitySpec: Too many industry tiles allocated. Ignoring.");
 		return;
 	}
 
@@ -308,7 +308,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 	}
 
 	if (type == this->invalid_id) {
-		grfmsg(1, "Object.SetEntitySpec: Too many objects allocated. Ignoring.");
+		GrfMsg(1, "Object.SetEntitySpec: Too many objects allocated. Ignoring.");
 		return;
 	}
 
