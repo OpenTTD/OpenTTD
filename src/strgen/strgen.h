@@ -11,6 +11,7 @@
 #define STRGEN_H
 
 #include "../language.h"
+#include "../3rdparty/fmt/format.h"
 
 /** Container for the different cases of a string. */
 struct Case {
@@ -152,9 +153,12 @@ struct ParsedCommandStruct {
 const CmdStruct *TranslateCmdForCompare(const CmdStruct *a);
 void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool warnings);
 
-void CDECL strgen_warning(const char *s, ...) WARN_FORMAT(1, 2);
-void CDECL strgen_error(const char *s, ...) WARN_FORMAT(1, 2);
-void NORETURN CDECL strgen_fatal(const char *s, ...) WARN_FORMAT(1, 2);
+void StrgenWarningI(const std::string &msg);
+void StrgenErrorI(const std::string &msg);
+void NORETURN StrgenFatalI(const std::string &msg);
+#define StrgenWarning(format_string, ...) StrgenWarningI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
+#define StrgenError(format_string, ...) StrgenErrorI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
+#define StrgenFatal(format_string, ...) StrgenFatalI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 char *ParseWord(char **buf);
 
 extern const char *_file;
