@@ -210,9 +210,9 @@ std::string FS2OTTD(const std::string &name)
 
 #endif /* WITH_ICONV */
 
-void ShowInfo(const char *str)
+void ShowInfoI(const std::string &str)
 {
-	fprintf(stderr, "%s\n", str);
+	fprintf(stderr, "%s\n", str.c_str());
 }
 
 #if !defined(__APPLE__)

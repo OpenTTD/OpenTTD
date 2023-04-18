@@ -424,7 +424,7 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 			"Please file a bug report and attach this savegame.\n");
 	}
 
-	ShowInfo(buffer);
+	ShowInfoI(buffer);
 
 	SignalHandlerPointer call = nullptr;
 	switch (signum) {

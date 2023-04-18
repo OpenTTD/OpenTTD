@@ -57,7 +57,7 @@ extern int _debug_random_level;
 #endif
 
 char *DumpDebugFacilityNames(char *buf, char *last);
-void SetDebugString(const char *s, void (*error_func)(const char *));
+void SetDebugString(const char *s, void (*error_func)(const std::string &));
 const char *GetDebugString();
 
 /* Shorter form for passing filename and linenumber */
@@ -117,8 +117,8 @@ const char *GetDebugString();
 }
 
 
-void ShowInfo(const char *str);
-void CDECL ShowInfoF(const char *str, ...) WARN_FORMAT(1, 2);
+void ShowInfoI(const std::string &str);
+#define ShowInfo(format_string, ...) ShowInfoI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 
 const char *GetLogPrefix();
 

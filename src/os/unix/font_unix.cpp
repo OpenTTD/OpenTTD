@@ -30,7 +30,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	FT_Error err = FT_Err_Cannot_Open_Resource;
 
 	if (!FcInit()) {
-		ShowInfoF("Unable to load font configuration");
+		ShowInfo("Unable to load font configuration");
 	} else {
 		FcPattern *match;
 		FcPattern *pat;

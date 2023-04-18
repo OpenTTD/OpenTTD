@@ -386,7 +386,7 @@ void LoadCoreTextFont(FontSize fs)
 				font_ref.reset((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), 0));
 				CFRetain(font_ref.get());
 			} else {
-				ShowInfoF("Unable to load file '%s' for %s font, using default OS font selection instead", settings->font.c_str(), FontSizeToName(fs));
+				ShowInfo("Unable to load file '{}' for {} font, using default OS font selection instead", settings->font, FontSizeToName(fs));
 			}
 		}
 	}
@@ -410,7 +410,7 @@ void LoadCoreTextFont(FontSize fs)
 	}
 
 	if (!font_ref) {
-		ShowInfoF("Unable to use '%s' for %s font, using sprite font instead", settings->font.c_str(), FontSizeToName(fs));
+		ShowInfo("Unable to use '{}' for {} font, using sprite font instead", settings->font, FontSizeToName(fs));
 		return;
 	}
 
