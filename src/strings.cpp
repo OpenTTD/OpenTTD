@@ -38,6 +38,7 @@
 #include "newgrf_engine.h"
 #include "core/backup_type.hpp"
 #include <stack>
+#include <charconv>
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -381,7 +382,7 @@ static char *FormatZerofillNumber(char *buff, int64 number, int64 count, const c
 
 static char *FormatHexNumber(char *buff, uint64 number, const char *last)
 {
-	return buff + seprintf(buff, last, "0x" OTTD_PRINTFHEX64, number);
+	return strecpy(buff, fmt::format("0x{:X}", number).c_str(), last);
 }
 
 /**
