@@ -400,21 +400,9 @@ void Textbuf::Assign(StringID string)
  * Copy a string into the textbuffer.
  * @param text Source.
  */
-void Textbuf::Assign(const char *text)
+void Textbuf::Assign(const std::string_view text)
 {
-	strecpy(this->buf, text, &this->buf[this->max_bytes - 1]);
-	this->UpdateSize();
-}
-
-/**
- * Print a formatted string into the textbuffer.
- */
-void Textbuf::Print(const char *format, ...)
-{
-	va_list va;
-	va_start(va, format);
-	vseprintf(this->buf, &this->buf[this->max_bytes - 1], format, va);
-	va_end(va);
+	strecpy(this->buf, text.data(), &this->buf[this->max_bytes - 1]);
 	this->UpdateSize();
 }
 
