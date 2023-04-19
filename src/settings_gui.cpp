@@ -298,7 +298,6 @@ struct GameOptionsWindow : Window {
 			case WID_GO_BASE_SFX_DROPDOWN:     SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
 			case WID_GO_BASE_MUSIC_DROPDOWN:   SetDParamStr(0, BaseMusic::GetUsedSet()->name); break;
 			case WID_GO_BASE_MUSIC_STATUS:     SetDParam(0, BaseMusic::GetUsedSet()->GetNumInvalid()); break;
-			case WID_GO_VIDEO_DRIVER_INFO:     SetDParamStr(0, VideoDriver::GetInstance()->GetInfoString()); break;
 			case WID_GO_REFRESH_RATE_DROPDOWN: SetDParam(0, _settings_client.gui.refresh_rate); break;
 			case WID_GO_RESOLUTION_DROPDOWN: {
 				auto current_resolution = GetCurrentResolutionIndex();
@@ -337,6 +336,11 @@ struct GameOptionsWindow : Window {
 				DrawSliderWidget(r, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, this->gui_scale, _scale_labels);
 				break;
 
+			case WID_GO_VIDEO_DRIVER_INFO:
+				SetDParamStr(0, VideoDriver::GetInstance()->GetInfoString());
+				DrawStringMultiLine(r, STR_GAME_OPTIONS_VIDEO_DRIVER_INFO);
+				break;
+
 			case WID_GO_BASE_SFX_VOLUME:
 				DrawSliderWidget(r, 0, INT8_MAX, _settings_client.music.effect_vol, {});
 				break;
@@ -373,6 +377,11 @@ struct GameOptionsWindow : Window {
 			SetDParamStr(0, BaseMusic::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
 			y = std::max(y, GetStringHeight(STR_BLACK_RAW_STRING, wid->current_x));
 		}
+		changed |= wid->UpdateVerticalSize(y);
+
+		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_VIDEO_DRIVER_INFO);
+		SetDParamStr(0, VideoDriver::GetInstance()->GetInfoString());
+		y = GetStringHeight(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, wid->current_x);
 		changed |= wid->UpdateVerticalSize(y);
 
 		if (changed) this->ReInit(0, 0, true);
@@ -732,7 +741,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 					EndContainer(),
 #endif
 					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_VIDEO_DRIVER_INFO), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, STR_NULL),
+						NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_VIDEO_DRIVER_INFO), SetMinimalTextLines(1, 0), SetFill(1, 0),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
