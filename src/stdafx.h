@@ -298,21 +298,6 @@
 #endif
 #define PACK(type_dec) PACK_N(type_dec, 1)
 
-/* MSVCRT of course has to have a different syntax for long long *sigh* */
-#if defined(_MSC_VER)
-#   define OTTD_PRINTF64 "%I64d"
-#   define OTTD_PRINTF64U "%I64u"
-#   define OTTD_PRINTFHEX64 "%I64x"
-#elif defined(__MINGW32__)
-#   define OTTD_PRINTF64 "%I64d"
-#   define OTTD_PRINTF64U "%I64llu"
-#   define OTTD_PRINTFHEX64 "%I64x"
-#else
-#   define OTTD_PRINTF64 "%lld"
-#   define OTTD_PRINTF64U "%llu"
-#   define OTTD_PRINTFHEX64 "%llx"
-#endif
-
 /*
  * When making a (pure) debug build, the compiler will by default disable
  * inlining of functions. This has a detremental effect on the performance of
