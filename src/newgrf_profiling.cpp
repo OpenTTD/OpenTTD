@@ -111,7 +111,7 @@ uint32 NewGRFProfiler::Finish()
 
 	fputs("Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n", f);
 	for (const Call &c : this->calls) {
-		fprintf(f, OTTD_PRINTF64U ",%u,0x%X,%u,0x%X,%u,%u,%u\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
+		fputs(fmt::format("{},{},{:#X},{},{:#X},{},{},{}\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result).c_str(), f);
 		total_microseconds += c.time;
 	}
 
