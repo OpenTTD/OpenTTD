@@ -24,7 +24,7 @@ class Squirrel {
 	friend class ScriptAllocatorScope;
 
 private:
-	typedef void (SQPrintFunc)(bool error_msg, const SQChar *message);
+	typedef void (SQPrintFunc)(bool error_msg, const std::string &message);
 
 	HSQUIRRELVM vm;          ///< The VirtualMachine instance for squirrel
 	void *global_pointer;    ///< Can be set by who ever initializes Squirrel
@@ -63,12 +63,12 @@ protected:
 	/**
 	 * If a user runs 'print' inside a script, this function gets the params.
 	 */
-	static void PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...) WARN_FORMAT(2, 3);
+	static void PrintFunc(HSQUIRRELVM vm, const std::string &s);
 
 	/**
 	 * If an error has to be print, this function is called.
 	 */
-	static void ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...) WARN_FORMAT(2, 3);
+	static void ErrorPrintFunc(HSQUIRRELVM vm, const std::string &s);
 
 public:
 	Squirrel(const char *APIName);
