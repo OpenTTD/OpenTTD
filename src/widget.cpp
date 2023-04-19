@@ -1134,6 +1134,18 @@ void NWidgetResizeBase::SetResize(uint resize_x, uint resize_y)
 	this->resize_y = resize_y;
 }
 
+/**
+ * Set absolute (post-scaling) minimal size of the widget.
+ * @param min_y Vertical minimal size of the widget.
+ * @return true iff the widget minimum size has changed.
+ */
+bool NWidgetResizeBase::UpdateVerticalSize(uint min_y)
+{
+	if (min_y == this->min_y) return false;
+	this->min_y = min_y;
+	return true;
+}
+
 void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
 {
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);

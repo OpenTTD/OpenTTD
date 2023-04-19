@@ -263,6 +263,8 @@ public:
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 
+	bool UpdateVerticalSize(uint min_y);
+
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
 
 	uint min_x; ///< Minimal horizontal size of only this widget.
