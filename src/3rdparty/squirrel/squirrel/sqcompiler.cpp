@@ -3,7 +3,6 @@
  */
 
 #include "../../../stdafx.h"
-
 #include "../../fmt/format.h"
 
 #include <squirrel.h>

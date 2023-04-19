@@ -3,6 +3,7 @@
  */
 
 #include "../../../stdafx.h"
+#include "../../fmt/format.h"
 
 #include "sqpcheader.h"
 #include "sqvm.h"
@@ -214,7 +215,7 @@ static SQInteger base_array(HSQUIRRELVM v)
 	SQInteger nInitialSize = tointeger(stack_get(v,2));
 	SQInteger ret = 1;
 	if (nInitialSize < 0) {
-		v->Raise_Error("can't create/resize array with/to size " OTTD_PRINTF64, nInitialSize);
+		v->Raise_Error(fmt::format("can't create/resize array with/to size {}", nInitialSize));
 		nInitialSize = 0;
 		ret = -1;
 	}

@@ -3,6 +3,7 @@
  */
 
 #include "../../../stdafx.h"
+#include "../../fmt/format.h"
 
 #include "sqpcheader.h"
 #include "sqvm.h"
@@ -283,7 +284,7 @@ bool WriteObject(HSQUIRRELVM v,SQUserPointer up,SQWRITEFUNC write,SQObjectPtr &o
 	case OT_NULL:
 		break;
 	default:
-		v->Raise_Error("cannot serialize a %s",GetTypeName(o));
+		v->Raise_Error(fmt::format("cannot serialize a {}",GetTypeName(o)));
 		return false;
 	}
 	return true;
@@ -313,7 +314,7 @@ bool ReadObject(HSQUIRRELVM v,SQUserPointer up,SQREADFUNC read,SQObjectPtr &o)
 		o=_null_;
 		break;
 	default:
-		v->Raise_Error("cannot serialize a %s",IdType2Name(t));
+		v->Raise_Error(fmt::format("cannot serialize a {}",IdType2Name(t)));
 		return false;
 	}
 	return true;
