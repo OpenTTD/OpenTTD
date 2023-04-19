@@ -4,6 +4,8 @@
 
 #include "../../../stdafx.h"
 
+#include "../../fmt/format.h"
+
 #include <squirrel.h>
 #include "sqpcheader.h"
 #include <stdarg.h>
@@ -65,16 +67,11 @@ public:
 	}
 	NORETURN static void ThrowError(void *ud, const SQChar *s) {
 		SQCompiler *c = (SQCompiler *)ud;
-		c->Error("%s", s);
+		c->Error(s);
 	}
-	NORETURN void Error(const SQChar *s, ...) WARN_FORMAT(2, 3)
+	NORETURN void Error(const std::string &msg)
 	{
-		static SQChar temp[256];
-		va_list vl;
-		va_start(vl, s);
-		vseprintf(temp, lastof(temp), s, vl);
-		va_end(vl);
-		throw temp;
+		throw msg;
 	}
 	void Lex(){	_token = _lex.Lex();}
 	void PushExpState(){ _expstates.push_back(ExpState()); }
@@ -120,9 +117,9 @@ public:
 					default:
 						etypename = _lex.Tok2Str(tok);
 					}
-					Error("expected '%s'", etypename);
+					Error(fmt::format("expected '{}'", etypename));
 				}
-				Error("expected '%c'", (char)tok);
+				Error(fmt::format("expected '{:c}'", tok));
 			}
 		}
 		SQObjectPtr ret;
@@ -647,7 +644,7 @@ public:
 							Expect('.'); constid = Expect(TK_IDENTIFIER);
 							if(!_table(constant)->Get(constid,constval)) {
 								constval.Null();
-								Error("invalid constant [%s.%s]", _stringval(id),_stringval(constid));
+								Error(fmt::format("invalid constant [{}.{}]", _stringval(id),_stringval(constid)));
 							}
 						}
 						else {

@@ -172,7 +172,7 @@ static SQInteger base_print(HSQUIRRELVM v)
 	const SQChar *str;
 	sq_tostring(v,2);
 	sq_getstring(v,-1,&str);
-	if(_ss(v)->_printfunc) _ss(v)->_printfunc(v,"%s",str);
+	if(_ss(v)->_printfunc) _ss(v)->_printfunc(v,str);
 	return 0;
 }
 

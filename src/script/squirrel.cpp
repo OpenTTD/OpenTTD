@@ -208,36 +208,27 @@ size_t Squirrel::GetAllocatedMemory() const noexcept
 
 void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *source, SQInteger line, SQInteger column)
 {
-	SQChar buf[1024];
-
-	seprintf(buf, lastof(buf), "Error %s:" OTTD_PRINTF64 "/" OTTD_PRINTF64 ": %s", source, line, column, desc);
+	std::string msg = fmt::format("Error {}:{}/{}: {}", source, line, column, desc);
 
 	/* Check if we have a custom print function */
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	engine->crashed = true;
 	SQPrintFunc *func = engine->print_func;
 	if (func == nullptr) {
-		Debug(misc, 0, "[Squirrel] Compile error: {}", buf);
+		Debug(misc, 0, "[Squirrel] Compile error: {}", msg);
 	} else {
-		(*func)(true, buf);
+		(*func)(true, msg);
 	}
 }
 
-void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
+void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const std::string &s)
 {
-	va_list arglist;
-	SQChar buf[1024];
-
-	va_start(arglist, s);
-	vseprintf(buf, lastof(buf), s, arglist);
-	va_end(arglist);
-
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == nullptr) {
-		fprintf(stderr, "%s", buf);
+		fprintf(stderr, "%s", s.c_str());
 	} else {
-		(*func)(true, buf);
+		(*func)(true, s);
 	}
 }
 
@@ -248,14 +239,13 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 	sq_setprintfunc(vm, &Squirrel::ErrorPrintFunc);
 
 	/* Check if we have a custom print function */
-	SQChar buf[1024];
-	seprintf(buf, lastof(buf), "Your script made an error: %s\n", error);
+	std::string msg = fmt::format("Your script made an error: {}\n", error);
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	SQPrintFunc *func = engine->print_func;
 	if (func == nullptr) {
-		fprintf(stderr, "%s", buf);
+		fprintf(stderr, "%s", msg.c_str());
 	} else {
-		(*func)(true, buf);
+		(*func)(true, msg);
 	}
 
 	/* Print below the error the stack, so the users knows what is happening */
@@ -279,22 +269,14 @@ SQInteger Squirrel::_RunError(HSQUIRRELVM vm)
 	return 0;
 }
 
-void Squirrel::PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...)
+void Squirrel::PrintFunc(HSQUIRRELVM vm, const std::string &s)
 {
-	va_list arglist;
-	SQChar buf[1024];
-
-	va_start(arglist, s);
-	vseprintf(buf, lastof(buf) - 2, s, arglist);
-	va_end(arglist);
-	strecat(buf, "\n", lastof(buf));
-
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == nullptr) {
-		printf("%s", buf);
+		printf("%s", s.c_str());
 	} else {
-		(*func)(false, buf);
+		(*func)(false, s);
 	}
 }
 
