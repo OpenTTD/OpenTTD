@@ -19,6 +19,7 @@
 #include "signs_base.h"
 #include "fontdetection.h"
 #include "error.h"
+#include "error_func.h"
 #include "strings_func.h"
 #include "rev.h"
 #include "core/endian_func.hpp"
@@ -243,7 +244,7 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 		case TEXT_TAB_OLD_CUSTOM:
 			/* Old table for custom names. This is no longer used */
 			if (!game_script) {
-				error("Incorrect conversion of custom name string.");
+				FatalError("Incorrect conversion of custom name string.");
 			}
 			break;
 
@@ -264,7 +265,7 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 		if (game_script) {
 			return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
 		}
-		error("String 0x%X is invalid. You are probably using an old version of the .lng file.\n", string);
+		FatalError("String 0x{:X} is invalid. You are probably using an old version of the .lng file.\n", string);
 	}
 
 	return FormatString(buffr, GetStringPtr(string), args, last, case_index);
@@ -2041,7 +2042,7 @@ void InitializeLanguagePacks()
 		std::string path = FioGetDirectory(sp, LANG_DIR);
 		GetLanguageList(path.c_str());
 	}
-	if (_languages.size() == 0) usererror("No available language packs (invalid versions?)");
+	if (_languages.size() == 0) UserError("No available language packs (invalid versions?)");
 
 	/* Acquire the locale of the current system */
 	const char *lang = GetCurrentLocale("LC_MESSAGES");
@@ -2077,7 +2078,7 @@ void InitializeLanguagePacks()
 		chosen_language = (language_fallback != nullptr) ? language_fallback : en_GB_fallback;
 	}
 
-	if (!ReadLanguagePack(chosen_language)) usererror("Can't read language pack '%s'", chosen_language->file);
+	if (!ReadLanguagePack(chosen_language)) UserError("Can't read language pack '{}'", chosen_language->file);
 }
 
 /**

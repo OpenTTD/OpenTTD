@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
+#include "../error_func.h"
 #include "../gfx_func.h"
 #include "../rev.h"
 #include "../blitter/factory.hpp"
@@ -176,7 +177,7 @@ static const Dimension _default_resolutions[] = {
 static void GetVideoModes()
 {
 	SDL_Rect **modes = SDL_ListModes(nullptr, SDL_SWSURFACE | SDL_FULLSCREEN);
-	if (modes == nullptr) usererror("sdl: no modes available");
+	if (modes == nullptr) UserError("sdl: no modes available");
 
 	_resolutions.clear();
 
@@ -195,7 +196,7 @@ static void GetVideoModes()
 			if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(w, h)) != _resolutions.end()) continue;
 			_resolutions.emplace_back(w, h);
 		}
-		if (_resolutions.empty()) usererror("No usable screen resolutions found!\n");
+		if (_resolutions.empty()) UserError("No usable screen resolutions found!\n");
 		SortResolutions();
 	}
 }
@@ -233,7 +234,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 
 	Debug(driver, 1, "SDL: using mode {}x{}x{}", w, h, bpp);
 
-	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
+	if (bpp == 0) UserError("Can't use a blitter that blits 0 bpp for normal visuals");
 
 	std::string icon_path = FioFindFullPath(BASESET_DIR, "openttd.32.bmp");
 	if (!icon_path.empty()) {

@@ -11,6 +11,7 @@
 #include "debug.h"
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
+#include "error_func.h"
 #include "string_func.h"
 #include "string_base.h"
 
@@ -120,7 +121,7 @@ char *strecpy(char *dst, const char *src, const char *last)
 
 	if (dst == last && *src != '\0') {
 #if defined(STRGEN) || defined(SETTINGSGEN)
-		error("String too long for destination buffer");
+		FatalError("String too long for destination buffer");
 #else /* STRGEN || SETTINGSGEN */
 		Debug(misc, 0, "String too long for destination buffer");
 #endif /* STRGEN || SETTINGSGEN */

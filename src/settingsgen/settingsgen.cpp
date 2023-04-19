@@ -13,8 +13,7 @@
 #include "../misc/getoptdata.h"
 #include "../ini_type.h"
 #include "../core/smallvec_type.hpp"
-
-#include <stdarg.h>
+#include "../error_func.h"
 
 #if !defined(_WIN32) || defined(__CYGWIN__)
 #include <unistd.h>
@@ -28,14 +27,9 @@
  * @param s Format string.
  * @note Function does not return.
  */
-void NORETURN CDECL error(const char *s, ...)
+void NORETURN FatalErrorI(const std::string &msg)
 {
-	char buf[1024];
-	va_list va;
-	va_start(va, s);
-	vseprintf(buf, lastof(buf), s, va);
-	va_end(va);
-	fprintf(stderr, "FATAL: %s\n", buf);
+	fprintf(stderr, "FATAL: %s\n", msg.c_str());
 	exit(1);
 }
 
@@ -181,7 +175,7 @@ struct SettingsIniFile : IniLoadFile {
 
 	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post)
 	{
-		error("%s%s%s", pre, buffer, post);
+		FatalError("{}{}{}", pre, buffer, post);
 	}
 };
 
@@ -385,7 +379,7 @@ static bool CompareFiles(const char *n1, const char *n2)
 	FILE *f1 = fopen(n1, "rb");
 	if (f1 == nullptr) {
 		fclose(f2);
-		error("can't open %s", n1);
+		FatalError("can't open {}", n1);
 	}
 
 	size_t l1, l2;
@@ -530,7 +524,7 @@ int CDECL main(int argc, char *argv[])
 #if defined(_WIN32)
 			unlink(output_file);
 #endif
-			if (rename(tmp_output, output_file) == -1) error("rename() failed");
+			if (rename(tmp_output, output_file) == -1) FatalError("rename() failed");
 		}
 	}
 	return 0;

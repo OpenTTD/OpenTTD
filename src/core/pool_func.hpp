@@ -13,6 +13,7 @@
 #include "alloc_func.hpp"
 #include "mem_func.hpp"
 #include "pool_type.hpp"
+#include "../error_func.h"
 
 #include "../saveload/saveload_error.hpp" // SlErrorCorruptFmt
 
@@ -129,7 +130,7 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
  * Allocates new item
  * @param size size of item
  * @return pointer to allocated item
- * @note error() on failure! (no free item)
+ * @note FatalError() on failure! (no free item)
  */
 DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
 {
@@ -140,7 +141,7 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
 	this->checked--;
 #endif /* WITH_ASSERT */
 	if (index == NO_FREE_ITEM) {
-		error("%s: no more free items", this->name);
+		FatalError("{}: no more free items", this->name);
 	}
 
 	this->first_free = index + 1;

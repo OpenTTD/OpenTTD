@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "roadveh.h"
 #include "command_func.h"
+#include "error_func.h"
 #include "news_func.h"
 #include "pathfinder/npf/npf_func.h"
 #include "station_base.h"
@@ -1205,7 +1206,7 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 		}
 
 		if (dir == INVALID_TRACKDIR) {
-			if (!v->IsFrontEngine()) error("Disconnecting road vehicle.");
+			if (!v->IsFrontEngine()) FatalError("Disconnecting road vehicle.");
 			v->cur_speed = 0;
 			return false;
 		}

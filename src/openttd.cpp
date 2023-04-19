@@ -17,6 +17,7 @@
 
 #include "fontcache.h"
 #include "error.h"
+#include "error_func.h"
 #include "gui.h"
 
 #include "base_media_base.h"
@@ -112,19 +113,12 @@ static const Month _autosave_months[] = {
 
 /**
  * Error handling for fatal user errors.
- * @param s the string to print.
+ * @param str the string to print.
  * @note Does NEVER return.
  */
-void CDECL usererror(const char *s, ...)
+void UserErrorI(const std::string &str)
 {
-	va_list va;
-	char buf[512];
-
-	va_start(va, s);
-	vseprintf(buf, lastof(buf), s, va);
-	va_end(va);
-
-	ShowOSErrorBox(buf, false);
+	ShowOSErrorBox(str.c_str(), false);
 	if (VideoDriver::GetInstance() != nullptr) VideoDriver::GetInstance()->Stop();
 
 #ifdef __EMSCRIPTEN__
@@ -141,24 +135,17 @@ void CDECL usererror(const char *s, ...)
 
 /**
  * Error handling for fatal non-user errors.
- * @param s the string to print.
+ * @param str the string to print.
  * @note Does NEVER return.
  */
-void CDECL error(const char *s, ...)
+void FatalErrorI(const std::string &str)
 {
-	va_list va;
-	char buf[2048];
-
-	va_start(va, s);
-	vseprintf(buf, lastof(buf), s, va);
-	va_end(va);
-
 	if (VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->HasGUI()) {
-		ShowOSErrorBox(buf, true);
+		ShowOSErrorBox(str.c_str(), true);
 	}
 
 	/* Set the error message for the crash log and then invoke it. */
-	CrashLog::SetErrorMessage(buf);
+	CrashLog::SetErrorMessage(str);
 	abort();
 }
 
@@ -742,8 +729,8 @@ int openttd_main(int argc, char *argv[])
 			BlitterFactory::SelectBlitter("32bpp-anim") == nullptr) {
 		if (BlitterFactory::SelectBlitter(blitter) == nullptr) {
 			blitter.empty() ?
-				usererror("Failed to autoprobe blitter") :
-				usererror("Failed to select requested blitter '%s'; does it exist?", blitter.c_str());
+				UserError("Failed to autoprobe blitter") :
+				UserError("Failed to select requested blitter '{}'; does it exist?", blitter.c_str());
 		}
 	}
 
@@ -778,7 +765,7 @@ int openttd_main(int argc, char *argv[])
 	if (sounds_set.empty() && !BaseSounds::ini_set.empty()) sounds_set = BaseSounds::ini_set;
 	if (!BaseSounds::SetSet(sounds_set)) {
 		if (sounds_set.empty() || !BaseSounds::SetSet({})) {
-			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 1.4 of README.md.");
+			UserError("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 1.4 of README.md.");
 		} else {
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND);
 			msg.SetDParamStr(0, sounds_set);
@@ -790,7 +777,7 @@ int openttd_main(int argc, char *argv[])
 	if (music_set.empty() && !BaseMusic::ini_set.empty()) music_set = BaseMusic::ini_set;
 	if (!BaseMusic::SetSet(music_set)) {
 		if (music_set.empty() || !BaseMusic::SetSet({})) {
-			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 1.4 of README.md.");
+			UserError("Failed to find a music set. Please acquire a music set for OpenTTD. See section 1.4 of README.md.");
 		} else {
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND);
 			msg.SetDParamStr(0, music_set);

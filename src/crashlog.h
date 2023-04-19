@@ -15,7 +15,7 @@
  */
 class CrashLog {
 private:
-	/** Error message coming from #error(const char *, ...). */
+	/** Error message coming from #FatalError(format, ...). */
 	static std::string message;
 protected:
 	/**
@@ -114,7 +114,7 @@ public:
 	 */
 	static void InitThread();
 
-	static void SetErrorMessage(const char *message);
+	static void SetErrorMessage(const std::string &message);
 	static void AfterCrashLogCleanup();
 };
 

@@ -15,6 +15,7 @@
 #include "../core/math_func.hpp"
 #include "../zoom_func.h"
 #include "../fileio_func.h"
+#include "../error_func.h"
 #include "truetypefontcache.h"
 
 #include "../table/control_codes.h"
@@ -236,7 +237,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	uint height = std::max(1U, (uint)slot->bitmap.rows  + shadow);
 
 	/* Limit glyph size to prevent overflows later on. */
-	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) usererror("Font glyph is too large");
+	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) UserError("Font glyph is too large");
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
 	SpriteLoader::Sprite sprite;

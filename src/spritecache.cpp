@@ -12,6 +12,7 @@
 #include "spriteloader/grf.hpp"
 #include "gfx_func.h"
 #include "error.h"
+#include "error_func.h"
 #include "zoom_func.h"
 #include "settings_type.h"
 #include "blitter/factory.hpp"
@@ -482,7 +483,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 	if (sprite_avail == 0) {
 		if (sprite_type == SpriteType::MapGen) return nullptr;
-		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
+		if (id == SPR_IMG_QUERY) UserError("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
 		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, allocator, encoder);
 	}
 
@@ -515,7 +516,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	}
 
 	if (!ResizeSprites(sprite, sprite_avail, encoder)) {
-		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't resize the fallback sprite. What should I do?");
+		if (id == SPR_IMG_QUERY) UserError("Okay... something went horribly wrong. I couldn't resize the fallback sprite. What should I do?");
 		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, allocator, encoder);
 	}
 
@@ -656,13 +657,13 @@ bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id)
 	if (type == SpriteType::Invalid) return false;
 
 	if (load_index >= MAX_SPRITES) {
-		usererror("Tried to load too many sprites (#%d; max %d)", load_index, MAX_SPRITES);
+		UserError("Tried to load too many sprites (#{}; max {})", load_index, MAX_SPRITES);
 	}
 
 	bool is_mapgen = IsMapgenSpriteID(load_index);
 
 	if (is_mapgen) {
-		if (type != SpriteType::Normal) usererror("Uhm, would you be so kind not to load a NewGRF that changes the type of the map generator sprites?");
+		if (type != SpriteType::Normal) UserError("Uhm, would you be so kind not to load a NewGRF that changes the type of the map generator sprites?");
 		type = SpriteType::MapGen;
 	}
 
@@ -836,7 +837,7 @@ static void DeleteEntryFromSpriteCache()
 
 	/* Display an error message and die, in case we found no sprite at all.
 	 * This shouldn't really happen, unless all sprites are locked. */
-	if (best == UINT_MAX) error("Out of sprite memory");
+	if (best == UINT_MAX) FatalError("Out of sprite memory");
 
 	DeleteEntryFromSpriteCache(best);
 }
@@ -893,7 +894,7 @@ void *SimpleSpriteAlloc(size_t size)
  * @param requested requested sprite type
  * @param sc the currently known sprite cache for the requested sprite
  * @return fallback sprite
- * @note this function will do usererror() in the case the fallback sprite isn't available
+ * @note this function will do UserError() in the case the fallback sprite isn't available
  */
 static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteCache *sc, AllocatorProc *allocator)
 {
@@ -916,12 +917,12 @@ static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, S
 
 	switch (requested) {
 		case SpriteType::Normal:
-			if (sprite == SPR_IMG_QUERY) usererror("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non-normal sprite?");
+			if (sprite == SPR_IMG_QUERY) UserError("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non-normal sprite?");
 			FALLTHROUGH;
 		case SpriteType::Font:
 			return GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, allocator);
 		case SpriteType::Recolour:
-			if (sprite == PALETTE_TO_DARK_BLUE) usererror("Uhm, would you be so kind not to load a NewGRF that makes the 'PALETTE_TO_DARK_BLUE' sprite a non-remap sprite?");
+			if (sprite == PALETTE_TO_DARK_BLUE) UserError("Uhm, would you be so kind not to load a NewGRF that makes the 'PALETTE_TO_DARK_BLUE' sprite a non-remap sprite?");
 			return GetRawSprite(PALETTE_TO_DARK_BLUE, SpriteType::Recolour, allocator);
 		case SpriteType::MapGen:
 			/* this shouldn't happen, overriding of SpriteType::MapGen sprites is checked in LoadNextSprite()
@@ -997,7 +998,7 @@ static void GfxInitSpriteCache()
 				delete[] reinterpret_cast<byte *>(_spritecache_ptr);
 				_spritecache_ptr = reinterpret_cast<MemBlock *>(new byte[_allocated_sprite_cache_size]);
 			} else if (_allocated_sprite_cache_size < 2 * 1024 * 1024) {
-				usererror("Cannot allocate spritecache");
+				UserError("Cannot allocate spritecache");
 			} else {
 				/* Try again to allocate half. */
 				_allocated_sprite_cache_size >>= 1;

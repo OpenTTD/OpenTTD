@@ -304,17 +304,14 @@
 #   define OTTD_PRINTF64 "%I64d"
 #   define OTTD_PRINTF64U "%I64u"
 #   define OTTD_PRINTFHEX64 "%I64x"
-#   define PRINTF_SIZE "%Iu"
 #elif defined(__MINGW32__)
 #   define OTTD_PRINTF64 "%I64d"
 #   define OTTD_PRINTF64U "%I64llu"
 #   define OTTD_PRINTFHEX64 "%I64x"
-#   define PRINTF_SIZE "%Iu"
 #else
 #   define OTTD_PRINTF64 "%lld"
 #   define OTTD_PRINTF64U "%llu"
 #   define OTTD_PRINTFHEX64 "%llx"
-#   define PRINTF_SIZE "%zu"
 #endif
 
 /*
@@ -477,14 +474,14 @@ static_assert(SIZE_MAX >= UINT32_MAX);
 /* For the FMT library we only want to use the headers, not link to some library. */
 #define FMT_HEADER_ONLY
 
-void NORETURN CDECL usererror(const char *str, ...) WARN_FORMAT(1, 2);
-void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
-#define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
+void NORETURN NotReachedError(int line, const char *file);
+void NORETURN AssertFailedError(int line, const char *file, const char *expression);
+#define NOT_REACHED() NotReachedError(__LINE__, __FILE__)
 
 /* For non-debug builds with assertions enabled use the special assertion handler. */
 #if defined(NDEBUG) && defined(WITH_ASSERT)
 #	undef assert
-#	define assert(expression) if (unlikely(!(expression))) error("Assertion failed at line %i of %s: %s", __LINE__, __FILE__, #expression);
+#	define assert(expression) if (unlikely(!(expression))) AssertFailedError(__LINE__, __FILE__, #expression);
 #endif
 
 #if defined(OPENBSD)

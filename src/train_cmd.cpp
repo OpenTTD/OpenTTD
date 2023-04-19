@@ -11,6 +11,7 @@
 #include "error.h"
 #include "articulated_vehicles.h"
 #include "command_func.h"
+#include "error_func.h"
 #include "pathfinder/npf/npf_func.h"
 #include "pathfinder/yapf/yapf.hpp"
 #include "news_func.h"
@@ -3513,7 +3514,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 invalid_rail:
 	/* We've reached end of line?? */
-	if (prev != nullptr) error("Disconnecting train");
+	if (prev != nullptr) FatalError("Disconnecting train");
 
 reverse_train_direction:
 	if (reverse) {

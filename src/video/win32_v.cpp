@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
+#include "../error_func.h"
 #include "../gfx_func.h"
 #include "../os/windows/win32.h"
 #include "../rev.h"
@@ -219,7 +220,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 			seprintf(window_title, lastof(window_title), "OpenTTD %s", _openttd_revision);
 
 			this->main_wnd = CreateWindow(L"OTTD", OTTD2FS(window_title).c_str(), style, x, y, w, h, 0, 0, GetModuleHandle(nullptr), this);
-			if (this->main_wnd == nullptr) usererror("CreateWindow failed");
+			if (this->main_wnd == nullptr) UserError("CreateWindow failed");
 			ShowWindow(this->main_wnd, showstyle);
 		}
 	}
@@ -768,7 +769,7 @@ static void RegisterWndClass()
 	};
 
 	registered = true;
-	if (!RegisterClass(&wnd)) usererror("RegisterClass failed");
+	if (!RegisterClass(&wnd)) UserError("RegisterClass failed");
 }
 
 static const Dimension default_resolutions[] = {
@@ -1072,7 +1073,7 @@ bool VideoDriver_Win32GDI::AllocateBackingStore(int w, int h, bool force)
 	this->dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID **)&this->buffer_bits, nullptr, 0);
 	if (this->dib_sect == nullptr) {
 		delete[] bi;
-		usererror("CreateDIBSection failed");
+		UserError("CreateDIBSection failed");
 	}
 	ReleaseDC(0, dc);
 
@@ -1109,7 +1110,7 @@ void VideoDriver_Win32GDI::MakePalette()
 	}
 	this->gdi_palette = CreatePalette(pal);
 	delete[] pal;
-	if (this->gdi_palette == nullptr) usererror("CreatePalette failed!\n");
+	if (this->gdi_palette == nullptr) UserError("CreatePalette failed!\n");
 }
 
 void VideoDriver_Win32GDI::UpdatePalette(HDC dc, uint start, uint count)
