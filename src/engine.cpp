@@ -1239,6 +1239,9 @@ void CheckEngines()
 	for (const Engine *e : Engine::Iterate()) {
 		if (!e->IsEnabled()) continue;
 
+		/* Don't consider train wagons, we need a powered engine available. */
+		if (e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON) continue;
+
 		/* We have an available engine... yay! */
 		if ((e->flags & ENGINE_AVAILABLE) != 0 && e->company_avail != 0) return;
 
