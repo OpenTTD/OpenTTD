@@ -76,15 +76,12 @@ void SQVM::Raise_Error(SQObjectPtr &desc)
 
 SQString *SQVM::PrintObjVal(const SQObject &o)
 {
-	char buf[NUMBER_MAX_CHAR+1];
 	switch(type(o)) {
 	case OT_STRING: return _string(o);
 	case OT_INTEGER:
-		seprintf(buf, lastof(buf), OTTD_PRINTF64, _integer(o));
-		return SQString::Create(_ss(this), buf);
+		return SQString::Create(_ss(this), fmt::format("{}", _integer(o)).c_str());
 	case OT_FLOAT:
-		seprintf(buf, lastof(buf), "%.14g", _float(o));
-		return SQString::Create(_ss(this), buf);
+		return SQString::Create(_ss(this), fmt::format("{:.14g}", _float(o)).c_str());
 	default:
 		return SQString::Create(_ss(this), GetTypeName(o));
 	}

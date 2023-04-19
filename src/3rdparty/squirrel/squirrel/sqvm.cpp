@@ -262,19 +262,19 @@ bool SQVM::CMP_OP(CmpOP op, const SQObjectPtr &o1,const SQObjectPtr &o2,SQObject
 
 void SQVM::ToString(const SQObjectPtr &o,SQObjectPtr &res)
 {
-	char buf[64];
+	std::string str;
 	switch(type(o)) {
 	case OT_STRING:
 		res = o;
 		return;
 	case OT_FLOAT:
-		seprintf(buf, lastof(buf),"%g",_float(o));
+		str = fmt::format("{}",_float(o));
 		break;
 	case OT_INTEGER:
-		seprintf(buf, lastof(buf),OTTD_PRINTF64,_integer(o));
+		str = fmt::format("{}",_integer(o));
 		break;
 	case OT_BOOL:
-		seprintf(buf, lastof(buf),_integer(o)?"true":"false");
+		str = _integer(o)?"true":"false";
 		break;
 	case OT_TABLE:
 	case OT_USERDATA:
@@ -289,9 +289,9 @@ void SQVM::ToString(const SQObjectPtr &o,SQObjectPtr &res)
 		}
 		FALLTHROUGH;
 	default:
-		seprintf(buf, lastof(buf),"(%s : 0x%p)",GetTypeName(o),(void*)_rawval(o));
+		str = fmt::format("({} : 0x{:08X})",GetTypeName(o),(size_t)(void*)_rawval(o));
 	}
-	res = SQString::Create(_ss(this),buf);
+	res = SQString::Create(_ss(this),str.c_str());
 }
 
 
