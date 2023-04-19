@@ -28,7 +28,6 @@
 
 #include "table/strings.h"
 
-#include <stdarg.h> /* va_list */
 #include <deque>
 
 #include "../safeguards.h"
@@ -429,9 +428,9 @@ struct NetworkChatWindow : public Window {
 
 				/* Change to the found name. Add ': ' if we are at the start of the line (pretty) */
 				if (pre_buf == tb_buf) {
-					this->message_editbox.text.Print("%s: ", cur_name);
+					this->message_editbox.text.Assign(fmt::format("{}: ", cur_name));
 				} else {
-					this->message_editbox.text.Print("%s %s", pre_buf, cur_name);
+					this->message_editbox.text.Assign(fmt::format("{} {}", pre_buf, cur_name));
 				}
 
 				this->SetDirty();
