@@ -196,7 +196,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, Stri
 					/* No more extra parameters, assume SQInteger are expected. */
 					if (cur_idx >= this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
 					if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, param_count + i));
-					p += seprintf(p, lastofp, ":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[cur_idx++]));
+					p = strecpy(p, fmt::format(":{:X}", std::get<SQInteger>(this->param[cur_idx++])).c_str(), lastofp);
 				}
 			}
 			if (prev_idx == prev_count) {
@@ -213,7 +213,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, Stri
 				case StringParam::STRING: {
 					if (!std::holds_alternative<ScriptTextRef>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a substring", name, param_count));
 					int count = 0;
-					p += seprintf(p, lastofp, ":");
+					p = strecpy(p, ":", lastofp);
 					p = std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(p, lastofp, count, seen_ids);
 					if (++count != cur_param.consumes) {
 						ScriptLog::Error(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, param_count, count - 1, cur_param.consumes - 1).c_str());
@@ -233,7 +233,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, Stri
 					if (cur_idx + cur_param.consumes > this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
 					for (int i = 0; i < cur_param.consumes; i++) {
 						if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, param_count + i));
-						p += seprintf(p, lastofp, ":" OTTD_PRINTFHEX64, std::get<SQInteger>(this->param[cur_idx++]));
+						p = strecpy(p, fmt::format(":{:X}", std::get<SQInteger>(this->param[cur_idx++])).c_str(), lastofp);
 					}
 			}
 		}

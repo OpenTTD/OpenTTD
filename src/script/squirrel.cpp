@@ -74,12 +74,11 @@ struct ScriptAllocator {
 			 * already as then the allocation is for throwing that error in Squirrel, the
 			 * associated stack trace information and while cleaning up the AI. */
 			this->error_thrown = true;
-			char buff[128];
-			seprintf(buff, lastof(buff), "Maximum memory allocation exceeded by " PRINTF_SIZE " bytes when allocating " PRINTF_SIZE " bytes",
+			std::string msg = fmt::format("Maximum memory allocation exceeded by {} bytes when allocating {} bytes",
 				this->allocated_size + requested_size - this->allocation_limit, requested_size);
 			/* Don't leak the rejected allocation. */
 			free(p);
-			throw Script_FatalError(buff);
+			throw Script_FatalError(msg);
 		}
 
 		if (p == nullptr) {
@@ -93,9 +92,8 @@ struct ScriptAllocator {
 			}
 
 			this->error_thrown = true;
-			char buff[64];
-			seprintf(buff, lastof(buff), "Out of memory. Cannot allocate " PRINTF_SIZE " bytes", requested_size);
-			throw Script_FatalError(buff);
+			std::string msg = fmt::format("Out of memory. Cannot allocate {} bytes", requested_size);
+			throw Script_FatalError(msg);
 		}
 	}
 
