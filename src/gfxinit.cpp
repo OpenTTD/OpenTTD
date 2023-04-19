@@ -52,19 +52,19 @@ static uint LoadGrfFile(const std::string &filename, uint load_index, bool needs
 	Debug(sprite, 2, "Reading grf-file '{}'", filename);
 
 	byte container_ver = file.GetContainerVersion();
-	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename.c_str());
+	if (container_ver == 0) UserError("Base grf '{}' is corrupt", filename);
 	ReadGRFSpriteOffsets(file);
 	if (container_ver >= 2) {
 		/* Read compression. */
 		byte compression = file.ReadByte();
-		if (compression != 0) usererror("Unsupported compression format");
+		if (compression != 0) UserError("Unsupported compression format");
 	}
 
 	while (LoadNextSprite(load_index, file, sprite_id)) {
 		load_index++;
 		sprite_id++;
 		if (load_index >= MAX_SPRITES) {
-			usererror("Too many sprites. Recompile with higher MAX_SPRITES value or remove some custom GRF files.");
+			UserError("Too many sprites. Recompile with higher MAX_SPRITES value or remove some custom GRF files.");
 		}
 	}
 	Debug(sprite, 2, "Currently {} sprites are loaded", load_index);
@@ -89,12 +89,12 @@ static void LoadGrfFileIndexed(const std::string &filename, const SpriteID *inde
 	Debug(sprite, 2, "Reading indexed grf-file '{}'", filename);
 
 	byte container_ver = file.GetContainerVersion();
-	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename.c_str());
+	if (container_ver == 0) UserError("Base grf '{}' is corrupt", filename);
 	ReadGRFSpriteOffsets(file);
 	if (container_ver >= 2) {
 		/* Read compression. */
 		byte compression = file.ReadByte();
-		if (compression != 0) usererror("Unsupported compression format");
+		if (compression != 0) UserError("Unsupported compression format");
 	}
 
 	while ((start = *index_tbl++) != END) {
@@ -248,7 +248,7 @@ static void RealChangeBlitter(const char *repl_blitter)
 
 	if (!VideoDriver::GetInstance()->AfterBlitterChange()) {
 		/* Failed to switch blitter, let's hope we can return to the old one. */
-		if (BlitterFactory::SelectBlitter(cur_blitter) == nullptr || !VideoDriver::GetInstance()->AfterBlitterChange()) usererror("Failed to reinitialize video driver. Specify a fixed blitter in the config");
+		if (BlitterFactory::SelectBlitter(cur_blitter) == nullptr || !VideoDriver::GetInstance()->AfterBlitterChange()) UserError("Failed to reinitialize video driver. Specify a fixed blitter in the config");
 	}
 
 	/* Clear caches that might have sprites for another blitter. */

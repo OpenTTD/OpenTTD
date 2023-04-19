@@ -11,6 +11,7 @@
 #include "debug.h"
 #include "core/alloc_func.hpp"
 #include "water_map.h"
+#include "error_func.h"
 #include "string_func.h"
 
 #include "safeguards.h"
@@ -44,7 +45,7 @@ extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 			!IsInsideMM(size_y, MIN_MAP_SIZE, MAX_MAP_SIZE + 1) ||
 			(size_x & (size_x - 1)) != 0 ||
 			(size_y & (size_y - 1)) != 0) {
-		error("Invalid map size");
+		FatalError("Invalid map size");
 	}
 
 	Debug(map, 1, "Allocating map of size {}x{}", size_x, size_y);

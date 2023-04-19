@@ -20,6 +20,7 @@
 #include "tgp.h"
 #include "genworld.h"
 #include "fios.h"
+#include "error_func.h"
 #include "date_func.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_tick.h"
@@ -820,7 +821,7 @@ static void GenerateTerrain(int type, uint flag)
 
 	/* Choose one of the templates from the graphics file. */
 	const Sprite *templ = GetSprite((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + SPR_MAPGEN_BEGIN, SpriteType::MapGen);
-	if (templ == nullptr) usererror("Map generator sprites could not be loaded");
+	if (templ == nullptr) UserError("Map generator sprites could not be loaded");
 
 	/* Chose a random location to apply the template to. */
 	uint x = r & Map::MaxX();

@@ -517,7 +517,7 @@ bool CrashLog::MakeCrashLog() const
  * Sets a message for the error message handler.
  * @param message The error message of the error.
  */
-/* static */ void CrashLog::SetErrorMessage(const char *message)
+/* static */ void CrashLog::SetErrorMessage(const std::string &message)
 {
 	CrashLog::message = message;
 }

@@ -27,6 +27,7 @@
 
 #include "../../openttd.h"
 #include "../../debug.h"
+#include "../../error_func.h"
 #include "../../core/geometry_func.hpp"
 #include "../../core/math_func.hpp"
 #include "cocoa_v.h"
@@ -447,7 +448,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	CGColorSpaceRelease(this->color_space);
 	this->color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
 	if (this->color_space == nullptr) this->color_space = CGColorSpaceCreateDeviceRGB();
-	if (this->color_space == nullptr) error("Could not get a valid colour space for drawing.");
+	if (this->color_space == nullptr) FatalError("Could not get a valid colour space for drawing.");
 
 	this->setup = false;
 
@@ -679,7 +680,7 @@ void VideoDriver_CocoaQuartz::AllocateBackingStore(bool force)
 	if (this->buffer_depth == 8) {
 		free(this->pixel_buffer);
 		this->pixel_buffer = malloc(this->window_width * this->window_height);
-		if (this->pixel_buffer == nullptr) usererror("Out of memory allocating pixel buffer");
+		if (this->pixel_buffer == nullptr) UserError("Out of memory allocating pixel buffer");
 	} else {
 		free(this->pixel_buffer);
 		this->pixel_buffer = nullptr;

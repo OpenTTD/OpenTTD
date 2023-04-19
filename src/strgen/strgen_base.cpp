@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"
+#include "../error_func.h"
 #include "../string_func.h"
 #include "../table/control_codes.h"
 
@@ -556,7 +557,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 				StrgenError("Missing }} from command '{}'", start);
 				return nullptr;
 			}
-			if (s - start == MAX_COMMAND_PARAM_SIZE) error("param command too long");
+			if (s - start == MAX_COMMAND_PARAM_SIZE) FatalError("param command too long");
 			*param++ = c;
 		}
 	}

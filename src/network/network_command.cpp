@@ -22,6 +22,7 @@
 #include "../dock_cmd.h"
 #include "../economy_cmd.h"
 #include "../engine_cmd.h"
+#include "../error_func.h"
 #include "../goal_cmd.h"
 #include "../group_cmd.h"
 #include "../industry_cmd.h"
@@ -328,7 +329,7 @@ void NetworkExecuteLocalCommandQueue()
 		if (_frame_counter > cp->frame) {
 			/* If we reach here, it means for whatever reason, we've already executed
 			 * past the command we need to execute. */
-			error("[net] Trying to execute a packet in the past!");
+			FatalError("[net] Trying to execute a packet in the past!");
 		}
 
 		/* We can execute this command */

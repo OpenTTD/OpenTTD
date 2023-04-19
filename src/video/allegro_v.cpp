@@ -16,6 +16,7 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
+#include "../error_func.h"
 #include "../gfx_func.h"
 #include "../rev.h"
 #include "../blitter/factory.hpp"
@@ -186,7 +187,7 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 static bool CreateMainSurface(uint w, uint h)
 {
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
+	if (bpp == 0) UserError("Can't use a blitter that blits 0 bpp for normal visuals");
 	set_color_depth(bpp);
 
 	GetAvailableVideoMode(&w, &h);

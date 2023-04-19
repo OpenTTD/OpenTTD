@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 
 #include "../gfx_func.h"
+#include "../error_func.h"
 #include "../network/network.h"
 #include "../network/network_internal.h"
 #include "../console_func.h"
@@ -103,10 +104,10 @@ static void CreateWindowsConsoleThread()
 	/* Create event to signal when console input is ready */
 	_hInputReady = CreateEvent(nullptr, false, false, nullptr);
 	_hWaitForInputHandling = CreateEvent(nullptr, false, false, nullptr);
-	if (_hInputReady == nullptr || _hWaitForInputHandling == nullptr) usererror("Cannot create console event!");
+	if (_hInputReady == nullptr || _hWaitForInputHandling == nullptr) UserError("Cannot create console event!");
 
 	_hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, nullptr, 0, &dwThreadId);
-	if (_hThread == nullptr) usererror("Cannot create console thread!");
+	if (_hThread == nullptr) UserError("Cannot create console thread!");
 
 	Debug(driver, 2, "Windows console thread started");
 }

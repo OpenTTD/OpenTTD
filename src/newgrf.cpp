@@ -45,6 +45,7 @@
 #include "smallmap_gui.h"
 #include "genworld.h"
 #include "error.h"
+#include "error_func.h"
 #include "vehicle_func.h"
 #include "language.h"
 #include "vehicle_base.h"
@@ -9624,7 +9625,7 @@ void LoadNewGRFFile(GRFConfig *config, GrfLoadingStage stage, Subdirectory subdi
 	 * processed once at initialization.  */
 	if (stage != GLS_FILESCAN && stage != GLS_SAFETYSCAN && stage != GLS_LABELSCAN) {
 		_cur.grffile = GetFileByFilename(filename);
-		if (_cur.grffile == nullptr) usererror("File '%s' lost in cache.\n", filename);
+		if (_cur.grffile == nullptr) UserError("File '{}' lost in cache.\n", filename);
 		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
 		if (stage == GLS_ACTIVATION && !HasBit(config->flags, GCF_RESERVED)) return;
 	}
