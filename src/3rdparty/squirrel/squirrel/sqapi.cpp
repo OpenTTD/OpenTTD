@@ -3,6 +3,7 @@
  */
 
 #include "../../../stdafx.h"
+#include "../../fmt/format.h"
 
 #include <squirrel.h>
 #include "sqpcheader.h"
@@ -26,7 +27,7 @@ bool sq_aux_gettypedarg(HSQUIRRELVM v,SQInteger idx,SQObjectType type,SQObjectPt
 	*o = &stack_get(v,idx);
 	if(type(**o) != type){
 		SQObjectPtr oval = v->PrintObjVal(**o);
-		v->Raise_Error("wrong argument type, expected '%s' got '%.50s'",IdType2Name(type),_stringval(oval));
+		v->Raise_Error(fmt::format("wrong argument type, expected '{}' got '{:.50s}'",IdType2Name(type),_stringval(oval)));
 		return false;
 	}
 	return true;
