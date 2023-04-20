@@ -181,7 +181,7 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 		return;
 	}
 
-	memcpy(AirportSpec::GetWithoutOverride(airport_id), as, sizeof(*as));
+	*AirportSpec::GetWithoutOverride(airport_id) = *as;
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {

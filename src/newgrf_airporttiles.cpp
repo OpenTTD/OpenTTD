@@ -73,7 +73,7 @@ void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts)
 		return;
 	}
 
-	memcpy(&AirportTileSpec::tiles[airpt_id], airpts, sizeof(*airpts));
+	AirportTileSpec::tiles[airpt_id] = *airpts;
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
