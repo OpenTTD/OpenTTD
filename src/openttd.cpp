@@ -1093,7 +1093,7 @@ void SwitchToMode(SwitchMode new_mode)
 
 			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_NORMAL, NO_DIRECTORY)) {
 				SetDParamStr(0, GetSaveLoadErrorString());
-				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
+				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_CRITICAL);
 			} else {
 				if (_file_to_saveload.abstract_ftype == FT_SCENARIO) {
 					OnStartScenario();
@@ -1125,7 +1125,7 @@ void SwitchToMode(SwitchMode new_mode)
 				Command<CMD_PAUSE>::Post(PM_PAUSED_SAVELOAD, false);
 			} else {
 				SetDParamStr(0, GetSaveLoadErrorString());
-				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
+				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_CRITICAL);
 			}
 			break;
 		}
