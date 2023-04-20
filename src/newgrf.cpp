@@ -585,7 +585,7 @@ static std::map<uint32, uint32> _grf_id_overrides;
 static void SetNewGRFOverride(uint32 source_grfid, uint32 target_grfid)
 {
 	_grf_id_overrides[source_grfid] = target_grfid;
-	GrfMsg(5, "SetNewGRFOverride: Added override of {:#X} to {:#X}", BSWAP32(source_grfid), BSWAP32(target_grfid));
+	GrfMsg(5, "SetNewGRFOverride: Added override of 0x{:X} to 0x{:X}", BSWAP32(source_grfid), BSWAP32(target_grfid));
 }
 
 /**
@@ -862,7 +862,7 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool us
 	if (_cur.skip_sprites < 0) return true;
 
 	if (flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS)) {
-		GrfMsg(1, "ReadSpriteLayout: Spritelayout uses invalid flag {:#X} for ground sprite", flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS));
+		GrfMsg(1, "ReadSpriteLayout: Spritelayout uses invalid flag 0x{:X} for ground sprite", flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS));
 		DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
 		return true;
 	}
@@ -877,7 +877,7 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool us
 		if (_cur.skip_sprites < 0) return true;
 
 		if (flags & ~valid_flags) {
-			GrfMsg(1, "ReadSpriteLayout: Spritelayout uses unknown flag {:#X}", flags & ~valid_flags);
+			GrfMsg(1, "ReadSpriteLayout: Spritelayout uses unknown flag 0x{:X}", flags & ~valid_flags);
 			DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
 			return true;
 		}
@@ -968,7 +968,7 @@ static void ConvertTTDBasePrice(uint32 base_pointer, const char *error_location,
 	static const uint32 size  = 6;      ///< Size of each base price record
 
 	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= PR_END) {
-		GrfMsg(1, "{}: Unsupported running cost base {:#04X}, ignoring", error_location, base_pointer);
+		GrfMsg(1, "{}: Unsupported running cost base 0x{:04X}, ignoring", error_location, base_pointer);
 		return;
 	}
 
@@ -2136,7 +2136,7 @@ static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, ByteRead
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (id + numinfo > CF_END) {
-		GrfMsg(1, "CanalChangeInfo: Canal feature {:#02X} is invalid, max {}, ignoring", id + numinfo, CF_END);
+		GrfMsg(1, "CanalChangeInfo: Canal feature 0x{:02X} is invalid, max {}, ignoring", id + numinfo, CF_END);
 		return CIR_INVALID_ID;
 	}
 
@@ -4117,7 +4117,7 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 			case 0x0C: // Size
 				spec->size = buf->ReadByte();
 				if (GB(spec->size, 0, 4) == 0 || GB(spec->size, 4, 4) == 0) {
-					GrfMsg(0, "ObjectChangeInfo: Invalid object size requested ({:#X}) for object id {}. Ignoring.", spec->size, id + i);
+					GrfMsg(0, "ObjectChangeInfo: Invalid object size requested (0x{:X}) for object id {}. Ignoring.", spec->size, id + i);
 					spec->size = OBJECT_SIZE_1X1;
 				}
 				break;
@@ -4851,11 +4851,11 @@ static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uin
 			return false;
 
 		case CIR_UNHANDLED:
-			GrfMsg(1, "{}: Ignoring property {:#02X} of feature {:#02X} (not implemented)", caller, property, feature);
+			GrfMsg(1, "{}: Ignoring property 0x{:02X} of feature 0x{:02X} (not implemented)", caller, property, feature);
 			return false;
 
 		case CIR_UNKNOWN:
-			GrfMsg(0, "{}: Unknown property {:#02X} of feature {:#02X}, disabling", caller, property, feature);
+			GrfMsg(0, "{}: Unknown property 0x{:02X} of feature 0x{:02X}, disabling", caller, property, feature);
 			FALLTHROUGH;
 
 		case CIR_INVALID_ID: {
@@ -4912,15 +4912,15 @@ static void FeatureChangeInfo(ByteReader *buf)
 	uint engine   = buf->ReadExtendedByte();
 
 	if (feature >= GSF_END) {
-		GrfMsg(1, "FeatureChangeInfo: Unsupported feature {:#02X}, skipping", feature);
+		GrfMsg(1, "FeatureChangeInfo: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
-	GrfMsg(6, "FeatureChangeInfo: Feature {:#02X}, {} properties, to apply to {}+{}",
+	GrfMsg(6, "FeatureChangeInfo: Feature 0x{:02X}, {} properties, to apply to {}+{}",
 	               feature, numprops, engine, numinfo);
 
 	if (handler[feature] == nullptr) {
-		if (feature != GSF_CARGOES) GrfMsg(1, "FeatureChangeInfo: Unsupported feature {:#02X}, skipping", feature);
+		if (feature != GSF_CARGOES) GrfMsg(1, "FeatureChangeInfo: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
@@ -5045,13 +5045,13 @@ static void NewSpriteSet(ByteReader *buf)
 
 	if (feature >= GSF_END) {
 		_cur.skip_sprites = num_sets * num_ents;
-		GrfMsg(1, "NewSpriteSet: Unsupported feature {:#02X}, skipping {} sprites", feature, _cur.skip_sprites);
+		GrfMsg(1, "NewSpriteSet: Unsupported feature 0x{:02X}, skipping {} sprites", feature, _cur.skip_sprites);
 		return;
 	}
 
 	_cur.AddSpriteSets(feature, _cur.spriteid, first_set, num_sets, num_ents);
 
-	GrfMsg(7, "New sprite set at {} of feature {:#02X}, consisting of {} sets with {} views each (total {})",
+	GrfMsg(7, "New sprite set at {} of feature 0x{:02X}, consisting of {} sets with {} views each (total {})",
 		_cur.spriteid, feature, num_sets, num_ents, num_sets * num_ents
 	);
 
@@ -5090,7 +5090,7 @@ static const SpriteGroup *GetGroupFromGroupID(byte setid, byte type, uint16 grou
 	}
 
 	if (groupid > MAX_SPRITEGROUP || _cur.spritegroups[groupid] == nullptr) {
-		GrfMsg(1, "GetGroupFromGroupID({:#02X}:{:#02X}): Groupid {:#04X} does not exist, leaving empty", setid, type, groupid);
+		GrfMsg(1, "GetGroupFromGroupID(0x{:02X}:0x{:02X}): Groupid 0x{:04X} does not exist, leaving empty", setid, type, groupid);
 		return nullptr;
 	}
 
@@ -5113,7 +5113,7 @@ static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte 
 	}
 
 	if (!_cur.IsValidSpriteSet(feature, spriteid)) {
-		GrfMsg(1, "CreateGroupFromGroupID({:#02X}:{:#02X}): Sprite set {} invalid", setid, type, spriteid);
+		GrfMsg(1, "CreateGroupFromGroupID(0x{:02X}:0x{:02X}): Sprite set {} invalid", setid, type, spriteid);
 		return nullptr;
 	}
 
@@ -5144,7 +5144,7 @@ static void NewSpriteGroup(ByteReader *buf)
 
 	uint8 feature = buf->ReadByte();
 	if (feature >= GSF_END) {
-		GrfMsg(1, "NewSpriteGroup: Unsupported feature {:#02X}, skipping", feature);
+		GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
@@ -5321,7 +5321,7 @@ static void NewSpriteGroup(ByteReader *buf)
 						return;
 					}
 
-					GrfMsg(6, "NewSpriteGroup: New SpriteGroup {:#02X}, {} loaded, {} loading",
+					GrfMsg(6, "NewSpriteGroup: New SpriteGroup 0x{:02X}, {} loaded, {} loading",
 							setid, num_loaded, num_loading);
 
 					if (num_loaded + num_loading == 0) {
@@ -5477,7 +5477,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				}
 
 				/* Loading of Tile Layout and Production Callback groups would happen here */
-				default: GrfMsg(1, "NewSpriteGroup: Unsupported feature {:#02X}, skipping", feature);
+				default: GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 			}
 		}
 	}
@@ -5545,7 +5545,7 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 static bool IsValidGroupID(uint16 groupid, const char *function)
 {
 	if (groupid > MAX_SPRITEGROUP || _cur.spritegroups[groupid] == nullptr) {
-		GrfMsg(1, "{}: Spritegroup {:#04X} out of range or empty, skipping.", function, groupid);
+		GrfMsg(1, "{}: Spritegroup 0x{:04X} out of range or empty, skipping.", function, groupid);
 		return false;
 	}
 
@@ -5599,7 +5599,7 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 		uint16 groupid = buf->ReadWord();
 		if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) continue;
 
-		GrfMsg(8, "VehicleMapSpriteGroup: * [{}] Cargo type {:#X}, group id {:#02X}", c, ctype, groupid);
+		GrfMsg(8, "VehicleMapSpriteGroup: * [{}] Cargo type 0x{:X}, group id 0x{:02X}", c, ctype, groupid);
 
 		ctype = TranslateCargo(feature, ctype);
 		if (ctype == CT_INVALID) continue;
@@ -5620,7 +5620,7 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) return;
 
-	GrfMsg(8, "-- Default group id {:#04X}", groupid);
+	GrfMsg(8, "-- Default group id 0x{:04X}", groupid);
 
 	for (uint i = 0; i < idcount; i++) {
 		EngineID engine = engines[i];
@@ -5687,7 +5687,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station].get();
 
 			if (statspec == nullptr) {
-				GrfMsg(1, "StationMapSpriteGroup: Station with ID {:#02X} does not exist, skipping", station);
+				GrfMsg(1, "StationMapSpriteGroup: Station with ID 0x{:02X} does not exist, skipping", station);
 				continue;
 			}
 
@@ -5702,12 +5702,12 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station].get();
 
 		if (statspec == nullptr) {
-			GrfMsg(1, "StationMapSpriteGroup: Station with ID {:#02X} does not exist, skipping", station);
+			GrfMsg(1, "StationMapSpriteGroup: Station with ID 0x{:02X} does not exist, skipping", station);
 			continue;
 		}
 
 		if (statspec->grf_prop.grffile != nullptr) {
-			GrfMsg(1, "StationMapSpriteGroup: Station with ID {:#02X} mapped multiple times, skipping", station);
+			GrfMsg(1, "StationMapSpriteGroup: Station with ID 0x{:02X} mapped multiple times, skipping", station);
 			continue;
 		}
 
@@ -5868,7 +5868,7 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object].get();
 
 			if (spec == nullptr) {
-				GrfMsg(1, "ObjectMapSpriteGroup: Object with ID {:#02X} undefined, skipping", object);
+				GrfMsg(1, "ObjectMapSpriteGroup: Object with ID 0x{:02X} undefined, skipping", object);
 				continue;
 			}
 
@@ -5883,12 +5883,12 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object].get();
 
 		if (spec == nullptr) {
-			GrfMsg(1, "ObjectMapSpriteGroup: Object with ID {:#02X} undefined, skipping", object);
+			GrfMsg(1, "ObjectMapSpriteGroup: Object with ID 0x{:02X} undefined, skipping", object);
 			continue;
 		}
 
 		if (spec->grf_prop.grffile != nullptr) {
-			GrfMsg(1, "ObjectMapSpriteGroup: Object with ID {:#02X} mapped multiple times, skipping", object);
+			GrfMsg(1, "ObjectMapSpriteGroup: Object with ID 0x{:02X} mapped multiple times, skipping", object);
 			continue;
 		}
 
@@ -6054,7 +6054,7 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop].get();
 
 			if (roadstopspec == nullptr) {
-				GrfMsg(1, "RoadStopMapSpriteGroup: Road stop with ID {:#02X} does not exist, skipping", roadstop);
+				GrfMsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x{:02X} does not exist, skipping", roadstop);
 				continue;
 			}
 
@@ -6069,12 +6069,12 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop].get();
 
 		if (roadstopspec == nullptr) {
-			GrfMsg(1, "RoadStopMapSpriteGroup: Road stop with ID {:#02X} does not exist, skipping.", roadstop);
+			GrfMsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x{:02X} does not exist, skipping.", roadstop);
 			continue;
 		}
 
 		if (roadstopspec->grf_prop.grffile != nullptr) {
-			GrfMsg(1, "RoadStopMapSpriteGroup: Road stop with ID {:#02X} mapped multiple times, skipping", roadstop);
+			GrfMsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x{:02X} mapped multiple times, skipping", roadstop);
 			continue;
 		}
 
@@ -6106,7 +6106,7 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 	uint8 idcount = buf->ReadByte();
 
 	if (feature >= GSF_END) {
-		GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature {:#02X}, skipping", feature);
+		GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
@@ -6117,7 +6117,7 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 		uint16 groupid = buf->ReadWord();
 		if (!IsValidGroupID(groupid, "FeatureMapSpriteGroup")) return;
 
-		GrfMsg(6, "FeatureMapSpriteGroup: Adding generic feature callback for feature {:#02X}", feature);
+		GrfMsg(6, "FeatureMapSpriteGroup: Adding generic feature callback for feature 0x{:02X}", feature);
 
 		AddGenericCallback(feature, _cur.grffile, _cur.spritegroups[groupid]);
 		return;
@@ -6126,7 +6126,7 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 	/* Mark the feature as used by the grf (generic callbacks do not count) */
 	SetBit(_cur.grffile->grf_features, feature);
 
-	GrfMsg(6, "FeatureMapSpriteGroup: Feature {:#02X}, {} ids", feature, idcount);
+	GrfMsg(6, "FeatureMapSpriteGroup: Feature 0x{:02X}, {} ids", feature, idcount);
 
 	switch (feature) {
 		case GSF_TRAINS:
@@ -6189,7 +6189,7 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 			return;
 
 		default:
-			GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature {:#02X}, skipping", feature);
+			GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 			return;
 	}
 }
@@ -6217,7 +6217,7 @@ static void FeatureNewName(ByteReader *buf)
 
 	uint8 feature  = buf->ReadByte();
 	if (feature >= GSF_END && feature != 0x48) {
-		GrfMsg(1, "FeatureNewName: Unsupported feature {:#02X}, skipping", feature);
+		GrfMsg(1, "FeatureNewName: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
@@ -6237,12 +6237,12 @@ static void FeatureNewName(ByteReader *buf)
 
 	uint16 endid = id + num;
 
-	GrfMsg(6, "FeatureNewName: About to rename engines {}..{} (feature {:#02X}) in language {:#02X}",
+	GrfMsg(6, "FeatureNewName: About to rename engines {}..{} (feature 0x{:02X}) in language 0x{:02X}",
 	               id, endid, feature, lang);
 
 	for (; id < endid && buf->HasData(); id++) {
 		const char *name = buf->ReadString();
-		GrfMsg(8, "FeatureNewName: {:#04X} <- {}", id, name);
+		GrfMsg(8, "FeatureNewName: 0x{:04X} <- {}", id, name);
 
 		switch (feature) {
 			case GSF_TRAINS:
@@ -6268,7 +6268,7 @@ static void FeatureNewName(ByteReader *buf)
 				switch (GB(id, 8, 8)) {
 					case 0xC4: // Station class name
 						if (GB(id, 0, 8) >= _cur.grffile->stations.size() || _cur.grffile->stations[GB(id, 0, 8)] == nullptr) {
-							GrfMsg(1, "FeatureNewName: Attempt to name undefined station {:#X}, ignoring", GB(id, 0, 8));
+							GrfMsg(1, "FeatureNewName: Attempt to name undefined station 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
 							StationClassID cls_id = _cur.grffile->stations[GB(id, 0, 8)]->cls_id;
 							StationClass::Get(cls_id)->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
@@ -6277,7 +6277,7 @@ static void FeatureNewName(ByteReader *buf)
 
 					case 0xC5: // Station name
 						if (GB(id, 0, 8) >= _cur.grffile->stations.size() || _cur.grffile->stations[GB(id, 0, 8)] == nullptr) {
-							GrfMsg(1, "FeatureNewName: Attempt to name undefined station {:#X}, ignoring", GB(id, 0, 8));
+							GrfMsg(1, "FeatureNewName: Attempt to name undefined station 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
 							_cur.grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
@@ -6285,7 +6285,7 @@ static void FeatureNewName(ByteReader *buf)
 
 					case 0xC7: // Airporttile name
 						if (GB(id, 0, 8) >= _cur.grffile->airtspec.size() || _cur.grffile->airtspec[GB(id, 0, 8)] == nullptr) {
-							GrfMsg(1, "FeatureNewName: Attempt to name undefined airport tile {:#X}, ignoring", GB(id, 0, 8));
+							GrfMsg(1, "FeatureNewName: Attempt to name undefined airport tile 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
 							_cur.grffile->airtspec[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
@@ -6293,14 +6293,14 @@ static void FeatureNewName(ByteReader *buf)
 
 					case 0xC9: // House name
 						if (GB(id, 0, 8) >= _cur.grffile->housespec.size() || _cur.grffile->housespec[GB(id, 0, 8)] == nullptr) {
-							GrfMsg(1, "FeatureNewName: Attempt to name undefined house {:#X}, ignoring.", GB(id, 0, 8));
+							GrfMsg(1, "FeatureNewName: Attempt to name undefined house 0x{:X}, ignoring.", GB(id, 0, 8));
 						} else {
 							_cur.grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 
 					default:
-						GrfMsg(7, "FeatureNewName: Unsupported ID ({:#04X})", id);
+						GrfMsg(7, "FeatureNewName: Unsupported ID (0x{:04X})", id);
 						break;
 				}
 				break;
@@ -6416,7 +6416,7 @@ static void GraphicsNew(ByteReader *buf)
 
 	/* Supported type? */
 	if ((type >= lengthof(_action5_types)) || (_action5_types[type].block_type == A5BLOCK_INVALID)) {
-		GrfMsg(2, "GraphicsNew: Custom graphics (type {:#02X}) sprite block of length {} (unimplemented, ignoring)", type, num);
+		GrfMsg(2, "GraphicsNew: Custom graphics (type 0x{:02X}) sprite block of length {} (unimplemented, ignoring)", type, num);
 		_cur.skip_sprites = num;
 		return;
 	}
@@ -6427,14 +6427,14 @@ static void GraphicsNew(ByteReader *buf)
 	 * except for the long version of the shore type:
 	 * Ignore offset if not allowed */
 	if ((action5_type->block_type != A5BLOCK_ALLOW_OFFSET) && (offset != 0)) {
-		GrfMsg(1, "GraphicsNew: {} (type {:#02X}) do not allow an <offset> field. Ignoring offset.", action5_type->name, type);
+		GrfMsg(1, "GraphicsNew: {} (type 0x{:02X}) do not allow an <offset> field. Ignoring offset.", action5_type->name, type);
 		offset = 0;
 	}
 
 	/* Ignore action5 if too few sprites are specified. (for TTDP compatibility)
 	 * This does not make sense, if <offset> is allowed */
 	if ((action5_type->block_type == A5BLOCK_FIXED) && (num < action5_type->min_sprites)) {
-		GrfMsg(1, "GraphicsNew: {} (type {:#02X}) count must be at least {}. Only {} were specified. Skipping.", action5_type->name, type, action5_type->min_sprites, num);
+		GrfMsg(1, "GraphicsNew: {} (type 0x{:02X}) count must be at least {}. Only {} were specified. Skipping.", action5_type->name, type, action5_type->min_sprites, num);
 		_cur.skip_sprites = num;
 		return;
 	}
@@ -6444,7 +6444,7 @@ static void GraphicsNew(ByteReader *buf)
 	SpriteID replace = action5_type->sprite_base + offset;
 
 	/* Load <num> sprites starting from <replace>, then skip <skip_num> sprites. */
-	GrfMsg(2, "GraphicsNew: Replacing sprites {} to {} of {} (type {:#02X}) at SpriteID {:#04X}", offset, offset + num - 1, action5_type->name, type, replace);
+	GrfMsg(2, "GraphicsNew: Replacing sprites {} to {} of {} (type 0x{:02X}) at SpriteID 0x{:04X}", offset, offset + num - 1, action5_type->name, type, replace);
 
 	if (type == 0x0D) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_5;
 
@@ -6664,7 +6664,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 			if (param < 0x80) return _cur.grffile->GetParam(param);
 
 			/* In-game variable. */
-			GrfMsg(1, "Unsupported in-game variable {:#02X}", param);
+			GrfMsg(1, "Unsupported in-game variable 0x{:02X}", param);
 			return UINT_MAX;
 	}
 }
@@ -6746,7 +6746,7 @@ static void CfgApply(ByteReader *buf)
 			break;
 		}
 
-		GrfMsg(8, "CfgApply: Applying {} bytes from parameter {:#02X} at offset {:#04X}", param_size, param_num, offset);
+		GrfMsg(8, "CfgApply: Applying {} bytes from parameter 0x{:02X} at offset 0x{:04X}", param_size, param_num, offset);
 
 		bool carry = false;
 		for (i = 0; i < param_size && offset + i < num; i++) {
@@ -6819,7 +6819,7 @@ static void SkipIf(ByteReader *buf)
 		return;
 	}
 
-	GrfMsg(7, "SkipIf: Test condtype {}, param {:#02X}, condval {:#08X}", condtype, param, cond_val);
+	GrfMsg(7, "SkipIf: Test condtype {}, param 0x{:02X}, condval 0x{:08X}", condtype, param, cond_val);
 
 	/* condtypes that do not use 'param' are always valid.
 	 * condtypes that use 'param' are either not valid for param 0x88, or they are only valid for param 0x88.
@@ -6868,7 +6868,7 @@ static void SkipIf(ByteReader *buf)
 		}
 
 		if (condtype != 10 && c == nullptr) {
-			GrfMsg(7, "SkipIf: GRFID {:#08X} unknown, skipping test", BSWAP32(cond_val));
+			GrfMsg(7, "SkipIf: GRFID 0x{:08X} unknown, skipping test", BSWAP32(cond_val));
 			return;
 		}
 
@@ -6942,7 +6942,7 @@ static void SkipIf(ByteReader *buf)
 	}
 
 	if (choice != nullptr) {
-		GrfMsg(2, "SkipIf: Jumping to label {:#X} at line {}, test was true", choice->label, choice->nfo_line);
+		GrfMsg(2, "SkipIf: Jumping to label 0x{:X} at line {}, test was true", choice->label, choice->nfo_line);
 		_cur.file->SeekTo(choice->pos, SEEK_SET);
 		_cur.nfo_line = choice->nfo_line;
 		return;
@@ -7288,7 +7288,7 @@ static uint32 GetPatchVariable(uint8 param)
 			return _settings_game.game_creation.generation_seed;
 
 		default:
-			GrfMsg(2, "ParamSet: Unknown Patch variable {:#02X}.", param);
+			GrfMsg(2, "ParamSet: Unknown Patch variable 0x{:02X}.", param);
 			return 0;
 	}
 }
@@ -7467,7 +7467,7 @@ static void ParamSet(ByteReader *buf)
 							if (_cur.skip_sprites == -1) return;
 							break;
 
-						default: GrfMsg(1, "ParamSet: GRM: Unsupported feature {:#X}", feature); return;
+						default: GrfMsg(1, "ParamSet: GRM: Unsupported feature 0x{:X}", feature); return;
 					}
 				} else {
 					/* Ignore GRM during initialization */
@@ -7607,7 +7607,7 @@ static void ParamSet(ByteReader *buf)
 		case 0x96: // Tile refresh offset downwards
 		case 0x97: // Snow line height -- Better supported by feature 8 property 10h (snow line table) TODO: implement by filling the entire snow line table with the given value
 		case 0x99: // Global ID offset -- Not necessary since IDs are remapped automatically
-			GrfMsg(7, "ParamSet: Skipping unimplemented target {:#02X}", target);
+			GrfMsg(7, "ParamSet: Skipping unimplemented target 0x{:02X}", target);
 			break;
 
 		case 0x9E: // Miscellaneous GRF features
@@ -7628,7 +7628,7 @@ static void ParamSet(ByteReader *buf)
 			break;
 
 		case 0x9F: // locale-dependent settings
-			GrfMsg(7, "ParamSet: Skipping unimplemented target {:#02X}", target);
+			GrfMsg(7, "ParamSet: Skipping unimplemented target 0x{:02X}", target);
 			break;
 
 		default:
@@ -7637,7 +7637,7 @@ static void ParamSet(ByteReader *buf)
 				/* param is zeroed by default */
 				if (target + 1U > _cur.grffile->param_end) _cur.grffile->param_end = target + 1;
 			} else {
-				GrfMsg(7, "ParamSet: Skipping unknown target {:#02X}", target);
+				GrfMsg(7, "ParamSet: Skipping unknown target 0x{:02X}", target);
 			}
 			break;
 	}
@@ -7706,7 +7706,7 @@ static void FeatureTownName(ByteReader *buf)
 	GRFTownName *townname = AddGRFTownName(grfid);
 
 	byte id = buf->ReadByte();
-	GrfMsg(6, "FeatureTownName: definition {:#02X}", id & 0x7F);
+	GrfMsg(6, "FeatureTownName: definition 0x{:02X}", id & 0x7F);
 
 	if (HasBit(id, 7)) {
 		/* Final definition */
@@ -7722,7 +7722,7 @@ static void FeatureTownName(ByteReader *buf)
 			const char *name = buf->ReadString();
 
 			std::string lang_name = TranslateTTDPatchCodes(grfid, lang, false, name);
-			GrfMsg(6, "FeatureTownName: lang {:#X} -> '{}'", lang, lang_name.c_str());
+			GrfMsg(6, "FeatureTownName: lang 0x{:X} -> '{}'", lang, lang_name.c_str());
 
 			style = AddGRFString(grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 
@@ -7751,13 +7751,13 @@ static void FeatureTownName(ByteReader *buf)
 			if (HasBit(part.prob, 7)) {
 				byte ref_id = buf->ReadByte();
 				if (ref_id >= GRFTownName::MAX_LISTS || townname->partlists[ref_id].empty()) {
-					GrfMsg(0, "FeatureTownName: definition {:#02X} doesn't exist, deactivating", ref_id);
+					GrfMsg(0, "FeatureTownName: definition 0x{:02X} doesn't exist, deactivating", ref_id);
 					DelGRFTownName(grfid);
 					DisableGrf(STR_NEWGRF_ERROR_INVALID_ID);
 					return;
 				}
 				part.id = ref_id;
-				GrfMsg(6, "FeatureTownName: part {}, text {}, uses intermediate definition {:#02X} (with probability {})", partnum, textnum, ref_id, part.prob & 0x7F);
+				GrfMsg(6, "FeatureTownName: part {}, text {}, uses intermediate definition 0x{:02X} (with probability {})", partnum, textnum, ref_id, part.prob & 0x7F);
 			} else {
 				const char *text = buf->ReadString();
 				part.text = TranslateTTDPatchCodes(grfid, 0, false, text);
@@ -7781,7 +7781,7 @@ static void DefineGotoLabel(ByteReader *buf)
 
 	_cur.grffile->labels.emplace_back(nfo_label, _cur.nfo_line, _cur.file->GetPos());
 
-	GrfMsg(2, "DefineGotoLabel: GOTO target with label {:#02X}", nfo_label);
+	GrfMsg(2, "DefineGotoLabel: GOTO target with label 0x{:02X}", nfo_label);
 }
 
 /**
@@ -7959,7 +7959,7 @@ static void LoadFontGlyph(ByteReader *buf)
 			GrfMsg(1, "LoadFontGlyph: Size {} is not supported, ignoring", size);
 		}
 
-		GrfMsg(7, "LoadFontGlyph: Loading {} glyph(s) at {:#04X} for size {}", num_char, base_char, size);
+		GrfMsg(7, "LoadFontGlyph: Loading {} glyph(s) at 0x{:04X} for size {}", num_char, base_char, size);
 
 		for (uint c = 0; c < num_char; c++) {
 			if (size < FS_END) SetUnicodeGlyph(size, base_char + c, _cur.spriteid);
@@ -8008,7 +8008,7 @@ static void TranslateGRFStrings(ByteReader *buf)
 	uint32 grfid = buf->ReadDWord();
 	const GRFConfig *c = GetGRFConfig(grfid);
 	if (c == nullptr || (c->status != GCS_INITIALISED && c->status != GCS_ACTIVATED)) {
-		GrfMsg(7, "TranslateGRFStrings: GRFID {:#08X} unknown, skipping action 13", BSWAP32(grfid));
+		GrfMsg(7, "TranslateGRFStrings: GRFID 0x{:08X} unknown, skipping action 13", BSWAP32(grfid));
 		return;
 	}
 
@@ -8032,7 +8032,7 @@ static void TranslateGRFStrings(ByteReader *buf)
 	uint16 first_id  = buf->ReadWord();
 
 	if (!((first_id >= 0xD000 && first_id + num_strings <= 0xD400) || (first_id >= 0xD800 && first_id + num_strings <= 0xE000))) {
-		GrfMsg(7, "TranslateGRFStrings: Attempting to set out-of-range string IDs in action 13 (first: {:#04X}, number: {:#02X})", first_id, num_strings);
+		GrfMsg(7, "TranslateGRFStrings: Attempting to set out-of-range string IDs in action 13 (first: 0x{:04X}, number: 0x{:02X})", first_id, num_strings);
 		return;
 	}
 
@@ -9500,11 +9500,11 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 		} else if (action == 0xFE) {
 			GrfMsg(2, "DecodeSpecialSprite: Unexpected import block, skipping");
 		} else if (action >= lengthof(handlers)) {
-			GrfMsg(7, "DecodeSpecialSprite: Skipping unknown action {:#02X}", action);
+			GrfMsg(7, "DecodeSpecialSprite: Skipping unknown action 0x{:02X}", action);
 		} else if (handlers[action][stage] == nullptr) {
-			GrfMsg(7, "DecodeSpecialSprite: Skipping action {:#02X} in stage {}", action, stage);
+			GrfMsg(7, "DecodeSpecialSprite: Skipping action 0x{:02X} in stage {}", action, stage);
 		} else {
-			GrfMsg(7, "DecodeSpecialSprite: Handling action {:#02X} in stage {}", action, stage);
+			GrfMsg(7, "DecodeSpecialSprite: Handling action 0x{:02X} in stage {}", action, stage);
 			handlers[action][stage](bufp);
 		}
 	} catch (...) {
