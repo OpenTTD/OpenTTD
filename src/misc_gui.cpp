@@ -117,17 +117,17 @@ public:
 #else
 #	define LANDINFOD_LEVEL 1
 #endif
-		Debug(misc, LANDINFOD_LEVEL, "TILE: {:#x} ({},{})", tile, TileX(tile), TileY(tile));
-		Debug(misc, LANDINFOD_LEVEL, "type   = {:#x}", tile.type());
-		Debug(misc, LANDINFOD_LEVEL, "height = {:#x}", tile.height());
-		Debug(misc, LANDINFOD_LEVEL, "m1     = {:#x}", tile.m1());
-		Debug(misc, LANDINFOD_LEVEL, "m2     = {:#x}", tile.m2());
-		Debug(misc, LANDINFOD_LEVEL, "m3     = {:#x}", tile.m3());
-		Debug(misc, LANDINFOD_LEVEL, "m4     = {:#x}", tile.m4());
-		Debug(misc, LANDINFOD_LEVEL, "m5     = {:#x}", tile.m5());
-		Debug(misc, LANDINFOD_LEVEL, "m6     = {:#x}", tile.m6());
-		Debug(misc, LANDINFOD_LEVEL, "m7     = {:#x}", tile.m7());
-		Debug(misc, LANDINFOD_LEVEL, "m8     = {:#x}", tile.m8());
+		Debug(misc, LANDINFOD_LEVEL, "TILE: 0x{:x} ({},{})", tile, TileX(tile), TileY(tile));
+		Debug(misc, LANDINFOD_LEVEL, "type   = 0x{:x}", tile.type());
+		Debug(misc, LANDINFOD_LEVEL, "height = 0x{:x}", tile.height());
+		Debug(misc, LANDINFOD_LEVEL, "m1     = 0x{:x}", tile.m1());
+		Debug(misc, LANDINFOD_LEVEL, "m2     = 0x{:x}", tile.m2());
+		Debug(misc, LANDINFOD_LEVEL, "m3     = 0x{:x}", tile.m3());
+		Debug(misc, LANDINFOD_LEVEL, "m4     = 0x{:x}", tile.m4());
+		Debug(misc, LANDINFOD_LEVEL, "m5     = 0x{:x}", tile.m5());
+		Debug(misc, LANDINFOD_LEVEL, "m6     = 0x{:x}", tile.m6());
+		Debug(misc, LANDINFOD_LEVEL, "m7     = 0x{:x}", tile.m7());
+		Debug(misc, LANDINFOD_LEVEL, "m8     = 0x{:x}", tile.m8());
 #undef LANDINFOD_LEVEL
 	}
 

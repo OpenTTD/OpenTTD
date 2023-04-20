@@ -254,7 +254,7 @@ struct Buffer : std::vector<byte> {
 			this->push_back(0x80 + GB(value,  6, 6));
 			this->push_back(0x80 + GB(value,  0, 6));
 		} else {
-			StrgenWarning("Invalid unicode value U+{:#X}", value);
+			StrgenWarning("Invalid unicode value U+0x{:X}", value);
 		}
 	}
 };
@@ -753,7 +753,7 @@ void StringReader::HandleString(char *str)
 		}
 
 		if (this->data.strings[this->data.next_string_id] != nullptr) {
-			StrgenError("String ID {:#X} for '{}' already in use by '{}'", this->data.next_string_id, str, this->data.strings[this->data.next_string_id]->name);
+			StrgenError("String ID 0x{:X} for '{}' already in use by '{}'", this->data.next_string_id, str, this->data.strings[this->data.next_string_id]->name);
 			return;
 		}
 
