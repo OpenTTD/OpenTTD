@@ -164,7 +164,7 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 		return;
 	}
 
-	MemCpyT(HouseSpec::Get(house_id), hs);
+	*HouseSpec::Get(house_id) = *hs;
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
@@ -273,7 +273,7 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 		return;
 	}
 
-	memcpy(&_industry_tile_specs[indt_id], its, sizeof(*its));
+	_industry_tile_specs[indt_id] = *its;
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
