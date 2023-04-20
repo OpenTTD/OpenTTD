@@ -347,7 +347,7 @@ struct GRFTempEngineData {
 	}
 };
 
-static GRFTempEngineData *_gted;  ///< Temporary engine data used during NewGRF loading
+static std::vector<GRFTempEngineData> _gted;  ///< Temporary engine data used during NewGRF loading
 
 /**
  * Contains the GRF ID of the owner of a vehicle if it has been reserved.
@@ -667,11 +667,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 
 	if (engine_pool_size != Engine::GetPoolSize()) {
 		/* Resize temporary engine data ... */
-		_gted = ReallocT(_gted, Engine::GetPoolSize());
-
-		/* and blank the new block. */
-		size_t len = (Engine::GetPoolSize() - engine_pool_size) * sizeof(*_gted);
-		memset(_gted + engine_pool_size, 0, len);
+		_gted.resize(Engine::GetPoolSize());
 	}
 	if (type == VEH_TRAIN) {
 		_gted[e->index].railtypelabel = GetRailTypeInfo(e->u.rail.railtype)->label;
@@ -8753,7 +8749,7 @@ void ResetNewGRFData()
 	ResetRoadTypes();
 
 	/* Allocate temporary refit/cargo class data */
-	_gted = CallocT<GRFTempEngineData>(Engine::GetPoolSize());
+	_gted.resize(Engine::GetPoolSize());
 
 	/* Fill rail type label temporary data for default trains */
 	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
@@ -9928,7 +9924,7 @@ static void AfterLoadGRFs()
 	FinalisePriceBaseMultipliers();
 
 	/* Deallocate temporary loading data */
-	free(_gted);
+	_gted.clear();
 	_grm_sprites.clear();
 }
 
