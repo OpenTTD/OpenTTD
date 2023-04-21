@@ -4592,6 +4592,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :AI ngẫu nhiê
 STR_AI_CONFIG_NONE                                              :(không)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Khoảng thời gian giữa các lần khởi sự của đối thủ cạnh tranh: {ORANGE}{COMMA} phút
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Chuyển Lên Trên
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Di chuyển AI lên trên danh sách
