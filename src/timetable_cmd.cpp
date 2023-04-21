@@ -14,6 +14,7 @@
 #include "window_func.h"
 #include "vehicle_base.h"
 #include "timetable_cmd.h"
+#include "timetable.h"
 
 #include "table/strings.h"
 
@@ -303,7 +304,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 
 	/* Don't let a timetable start more than 15 years into the future or 1 year in the past. */
 	if (start_date < 0 || start_date > MAX_DAY) return CMD_ERROR;
-	if (start_date - _date > 15 * DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+	if (start_date - _date > MAX_TIMETABLE_START_YEARS * DAYS_IN_LEAP_YEAR) return CMD_ERROR;
 	if (_date - start_date > DAYS_IN_LEAP_YEAR) return CMD_ERROR;
 	if (timetable_all && !v->orders->IsCompleteTimetable()) return CMD_ERROR;
 	if (timetable_all && start_date + total_duration / DAY_TICKS > MAX_DAY) return CMD_ERROR;
