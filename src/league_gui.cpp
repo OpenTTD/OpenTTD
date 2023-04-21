@@ -105,19 +105,18 @@ public:
 		if (widget != WID_PLT_BACKGROUND) return;
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
-		int icon_y_offset = (this->line_height - this->icon.height) / 2;
 		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect ordinal = ir.WithWidth(this->ordinal_width, rtl);
-		uint icon_left = ir.Indent(rtl ? this->text_width : this->ordinal_width, rtl).left;
+		Rect icon    = ir.Indent(this->ordinal_width, rtl).WithWidth(this->icon.width, rtl);
 		Rect text    = ir.WithWidth(this->text_width, !rtl);
 
 		for (uint i = 0; i != this->companies.size(); i++) {
 			const Company *c = this->companies[i];
 			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, i + STR_ORDINAL_NUMBER_1ST, i == 0 ? TC_WHITE : TC_YELLOW);
 
-			DrawCompanyIcon(c->index, icon_left, ir.top + icon_y_offset);
+			DrawCompanyIcon(c->index, icon.WithTopAndHeight(ir.top, this->line_height), false);
 
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
@@ -147,7 +146,7 @@ public:
 			}
 		}
 
-		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
+		this->icon = GetScaledSpriteSize(SPR_COMPANY_ICON);
 		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, FONT_HEIGHT_NORMAL);
 
 		for (const Company *c : Company::Iterate()) {
@@ -326,7 +325,6 @@ public:
 			ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK) + WidgetDimensions::scaled.vsep_wide;
 		}
 
-		int icon_y_offset = (this->line_height - this->icon_size.height) / 2;
 		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
 
 		/* Calculate positions.of the columns */
@@ -339,7 +337,7 @@ public:
 
 		for (auto [rank, lte] : this->rows) {
 			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, rank + STR_ORDINAL_NUMBER_1ST, rank == 0 ? TC_WHITE : TC_YELLOW);
-			if (this->icon_size.width > 0 && lte->company != INVALID_COMPANY) DrawCompanyIcon(lte->company, icon_rect.left, ir.top + icon_y_offset);
+			if (this->icon_size.width > 0 && lte->company != INVALID_COMPANY) DrawCompanyIcon(lte->company, icon_rect.WithTopAndHeight(ir.top, this->line_height), false);
 			SetDParamStr(0, lte->text);
 			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
 			SetDParamStr(0, lte->score);
@@ -361,7 +359,7 @@ public:
 		auto lt = LeagueTable::GetIfValid(this->table);
 		if (lt == nullptr) return;
 
-		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
+		this->icon_size = GetScaledSpriteSize(SPR_COMPANY_ICON);
 		this->line_height = std::max<int>(this->icon_size.height + WidgetDimensions::scaled.fullbevel.Vertical(), FONT_HEIGHT_NORMAL);
 
 		/* Calculate maximum width of every column */

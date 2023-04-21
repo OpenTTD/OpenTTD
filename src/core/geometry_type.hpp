@@ -198,8 +198,8 @@ struct Rect {
 
 	/**
 	 * Copy Rect and set its height.
-	 * @param width height in pixels for new Rect.
-	 * @param end   if set, set height at end of Rect, i.e. at bottom.
+	 * @param height height in pixels for new Rect.
+	 * @param end    if set, set height at end of Rect, i.e. at bottom.
 	 * @return the new resized Rect.
 	 */
 	[[nodiscard]] inline Rect WithHeight(int height, bool end = false) const
@@ -207,6 +207,27 @@ struct Rect {
 		return end
 			? Rect {this->left, this->bottom - height + 1, this->right, this->bottom}
 			: Rect {this->left, this->top,                 this->right, this->top + height - 1};
+	}
+
+	/**
+	 * Copy Rect and set its top and height.
+	 * @param top    top position in pixels for the new Rect.
+	 * @param height height in pixels for new Rect.
+	 * @return the new resized Rect.
+	 */
+	[[nodiscard]] inline Rect WithTopAndHeight(int top, int height) const
+	{
+		return Rect {this->left, top, this->right, top + height - 1};
+	}
+
+	/**
+	 * Copy Rect and vertically centre.
+	 * @param height height in pixels for new Rect.
+	 * @return the new resized Rect.
+	 */
+	[[nodiscard]] inline Rect WithTopCentre(int height) const
+	{
+		return this->WithTopAndHeight((this->top + this->bottom - height + 1) / 2, height);
 	}
 
 	/**

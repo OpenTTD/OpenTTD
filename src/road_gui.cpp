@@ -1840,7 +1840,7 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		for (const auto &rt : _sorted_roadtypes) {
 			if (!HasBit(used_roadtypes, rt)) continue;
 			const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
-			d = maxdim(d, GetSpriteSize(rti->gui_sprites.build_x_road));
+			d = maxdim(d, GetScaledSpriteSize(rti->gui_sprites.build_x_road));
 		}
 	}
 
@@ -1889,7 +1889,7 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 	for (const auto &rt : _sorted_roadtypes) {
 		if (!HasBit(used_roadtypes, rt)) continue;
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
-		d = maxdim(d, GetSpriteSize(rti->gui_sprites.build_x_road));
+		d = maxdim(d, GetScaledSpriteSize(rti->gui_sprites.build_x_road));
 	}
 	for (const auto &rt : _sorted_roadtypes) {
 		if (!HasBit(used_roadtypes, rt)) continue;

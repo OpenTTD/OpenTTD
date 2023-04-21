@@ -101,8 +101,8 @@ public:
 		this->Add(new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_YEARS, STR_NETWORK_SERVER_LIST_YEARS_CAPTION, STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP));
 
 		leaf = new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_INFO, STR_EMPTY, STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP);
-		leaf->SetMinimalSize(14 + GetSpriteSize(SPR_LOCK, nullptr, ZOOM_LVL_OUT_4X).width
-		                        + GetSpriteSize(SPR_BLOT, nullptr, ZOOM_LVL_OUT_4X).width, 12);
+		leaf->SetMinimalSize(WidgetDimensions::unscaled.framerect.Horizontal() + GetSpriteSize(SPR_LOCK, nullptr, ZOOM_LVL_OUT_4X).width
+		                              + WidgetDimensions::unscaled.hsep_normal + GetSpriteSize(SPR_BLOT, nullptr, ZOOM_LVL_OUT_4X).width, 12);
 		leaf->SetFill(0, 1);
 		this->Add(leaf);
 
@@ -230,9 +230,8 @@ protected:
 	QueryString filter_editbox;     ///< Editbox for filter on servers.
 	bool searched_internet = false; ///< Did we ever press "Search Internet" button?
 
-	int lock_offset; ///< Left offset for lock icon.
-	int blot_offset; ///< Left offset for green/yellow/red compatibility icon.
-	int flag_offset; ///< Left offset for language flag icon.
+	Dimension lock_size; ///< Dimension of lock icon.
+	Dimension blot_size; ///< Dimension of green/yellow/red compatibility icon.
 
 	/**
 	 * (Re)build the GUI network game list (a.k.a. this->servers) as some
@@ -392,7 +391,7 @@ protected:
 	void DrawServerLine(const NetworkGameList *cur_item, int y, bool highlight) const
 	{
 		Rect name = this->GetWidget<NWidgetBase>(WID_NG_NAME)->GetCurrentRect();
-		Rect info = this->GetWidget<NWidgetBase>(WID_NG_INFO)->GetCurrentRect();
+		Rect info = this->GetWidget<NWidgetBase>(WID_NG_INFO)->GetCurrentRect().WithTopAndHeight(y, this->resize.step_height);
 
 		/* show highlighted item with a different colour */
 		if (highlight) {
@@ -402,8 +401,6 @@ protected:
 
 		/* offsets to vertically centre text and icons */
 		int text_y_offset = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2 + 1;
-		int icon_y_offset = (this->resize.step_height - GetSpriteSize(SPR_BLOT).height) / 2;
-		int lock_y_offset = (this->resize.step_height - GetSpriteSize(SPR_LOCK).height) / 2;
 
 		name = name.Shrink(WidgetDimensions::scaled.framerect);
 		DrawString(name.left, name.right, y + text_y_offset, cur_item->info.server_name, TC_BLACK);
@@ -448,11 +445,14 @@ protected:
 				DrawString(years.left, years.right, y + text_y_offset, STR_JUST_INT, TC_BLACK, SA_HOR_CENTER);
 			}
 
+			info = info.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
+			bool rtl = _current_text_dir == TD_RTL;
+
 			/* draw a lock if the server is password protected */
-			if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, info.left + this->lock_offset, y + lock_y_offset);
+			if (cur_item->info.use_password) DrawSpriteIgnorePadding(SPR_LOCK, PAL_NONE, info.WithWidth(this->lock_size.width, rtl), false, SA_CENTER);
 
 			/* draw red or green icon, depending on compatibility with server */
-			DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), info.left + this->blot_offset, y + icon_y_offset + 1);
+			DrawSpriteIgnorePadding(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), info.WithWidth(this->blot_size.width, !rtl), false, SA_CENTER);
 		}
 	}
 
@@ -510,22 +510,21 @@ public:
 
 	void OnInit() override
 	{
-		this->lock_offset = ScaleGUITrad(5);
-		this->blot_offset = this->lock_offset + ScaleGUITrad(3) + GetSpriteSize(SPR_LOCK).width;
-		this->flag_offset = this->blot_offset + ScaleGUITrad(2) + GetSpriteSize(SPR_BLOT).width;
+		this->lock_size = GetScaledSpriteSize(SPR_LOCK);
+		this->blot_size = GetScaledSpriteSize(SPR_BLOT);
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				resize->height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
+				resize->height = std::max({this->blot_size.height, this->lock_size.height, (uint)FONT_HEIGHT_NORMAL}) + padding.height;
 				fill->height = resize->height;
 				size->height = 12 * resize->height;
 				break;
 
 			case WID_NG_LASTJOINED:
-				size->height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + WidgetDimensions::scaled.matrix.Vertical();
+				size->height = std::max({this->blot_size.height, this->lock_size.height, (uint)FONT_HEIGHT_NORMAL}) + WidgetDimensions::scaled.matrix.Vertical();
 				break;
 
 			case WID_NG_LASTJOINED_SPACER:
@@ -1295,7 +1294,7 @@ static void ShowNetworkStartServerWindow()
 /* The window below gives information about the connected clients
  * and also makes able to kick them (if server) and stuff like that. */
 
-extern void DrawCompanyIcon(CompanyID cid, int x, int y);
+extern void DrawCompanyIcon(CompanyID c, const Rect &r, bool lowered);
 
 static const NWidgetPart _nested_client_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -1438,7 +1437,7 @@ public:
 		colour(colour),
 		disabled(disabled)
 	{
-		Dimension d = GetSpriteSize(sprite);
+		Dimension d = GetScaledSpriteSize(sprite);
 		this->height = d.height + WidgetDimensions::scaled.framerect.Vertical();
 		this->width = d.width + WidgetDimensions::scaled.framerect.Horizontal();
 	}
@@ -1698,7 +1697,7 @@ private:
 				return button.get();
 			}
 
-			int width = button->width + WidgetDimensions::scaled.framerect.Horizontal();
+			int width = button->width + WidgetDimensions::scaled.hsep_normal;
 			x += rtl ? width : -width;
 		}
 
@@ -1742,7 +1741,7 @@ public:
 				break;
 
 			case WID_CL_MATRIX: {
-				uint height = std::max({GetSpriteSize(SPR_COMPANY_ICON).height, GetSpriteSize(SPR_JOIN).height, GetSpriteSize(SPR_ADMIN).height, GetSpriteSize(SPR_CHAT).height});
+				uint height = std::max({GetScaledSpriteSize(SPR_COMPANY_ICON).height, GetScaledSpriteSize(SPR_JOIN).height, GetScaledSpriteSize(SPR_ADMIN).height, GetScaledSpriteSize(SPR_CHAT).height});
 				height += WidgetDimensions::scaled.framerect.Vertical();
 				this->line_height = std::max(height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
 
@@ -1838,14 +1837,13 @@ public:
 				bool rtl = _current_text_dir == TD_RTL;
 				Rect matrix = this->GetWidget<NWidgetBase>(WID_CL_MATRIX)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 
-				Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-				uint text_left  = matrix.left  + (rtl ? 0 : d.width + WidgetDimensions::scaled.hsep_wide);
-				uint text_right = matrix.right - (rtl ? d.width + WidgetDimensions::scaled.hsep_wide : 0);
+				Dimension d = GetScaledSpriteSize(SPR_COMPANY_ICON);
+				Rect tr = matrix.Indent(d.width + WidgetDimensions::scaled.hsep_wide, rtl);
 
-				Dimension d2 = GetSpriteSize(SPR_PLAYER_SELF);
+				Dimension d2 = GetScaledSpriteSize(SPR_PLAYER_SELF);
 				uint offset_x = WidgetDimensions::scaled.hsep_indent - d2.width - ScaleGUITrad(3);
 
-				uint player_icon_x = rtl ? text_right - offset_x - d2.width : text_left + offset_x;
+				uint player_icon_x = rtl ? tr.right - offset_x - d2.width : tr.left + offset_x;
 
 				if (IsInsideMM(pt.x, player_icon_x, player_icon_x + d2.width)) {
 					if (index == this->player_self_index) {
@@ -1990,7 +1988,7 @@ public:
 			r.bottom = r.top + button->height - 1;
 
 			DrawFrameRect(r, button->colour, FR_NONE);
-			DrawSprite(button->sprite, PAL_NONE, r.left + WidgetDimensions::scaled.framerect.left, r.top + WidgetDimensions::scaled.framerect.top);
+			DrawSpriteIgnorePadding(button->sprite, PAL_NONE, r, false, SA_CENTER);
 			if (button->disabled) {
 				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[button->colour & 0xF][2], FILLRECT_CHECKER);
 			}
@@ -2011,42 +2009,41 @@ public:
 		bool rtl = _current_text_dir == TD_RTL;
 		int text_y_offset = CenterBounds(0, this->line_height, FONT_HEIGHT_NORMAL);
 
-		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-		int offset = CenterBounds(0, this->line_height, d.height);
+		Dimension d = GetScaledSpriteSize(SPR_COMPANY_ICON);
 
 		uint line_start = this->vscroll->GetPosition();
 		uint line_end = line_start + this->vscroll->GetCapacity();
 
-		uint y = r.top + (this->line_height * (line - line_start));
+		Rect row = r.WithHeight(this->line_height).Translate(0, this->line_height * (line - line_start));
 
 		/* Draw the company line (if in range of scrollbar). */
 		if (IsInsideMM(line, line_start, line_end)) {
-			int icon_left = r.WithWidth(d.width, rtl).left;
-			Rect tr = r.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
+			Rect icon = row.WithWidth(d.width, rtl);
+			Rect tr = row.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
 			int &x = rtl ? tr.left : tr.right;
 
 			/* If there are buttons for this company, draw them. */
 			auto button_find = this->buttons.find(line);
 			if (button_find != this->buttons.end()) {
-				this->DrawButtons(x, y, button_find->second);
+				this->DrawButtons(x, row.top, button_find->second);
 			}
 
 			if (company_id == COMPANY_SPECTATOR) {
-				DrawSprite(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon_left, y + offset);
-				DrawString(tr.left, tr.right, y + text_y_offset, STR_NETWORK_CLIENT_LIST_SPECTATORS, TC_SILVER);
+				DrawSpriteIgnorePadding(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon, false, SA_CENTER);
+				DrawString(tr.left, tr.right, tr.top + text_y_offset, STR_NETWORK_CLIENT_LIST_SPECTATORS, TC_SILVER);
 			} else if (company_id == COMPANY_NEW_COMPANY) {
-				DrawSprite(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon_left, y + offset);
-				DrawString(tr.left, tr.right, y + text_y_offset, STR_NETWORK_CLIENT_LIST_NEW_COMPANY, TC_WHITE);
+				DrawSpriteIgnorePadding(SPR_COMPANY_ICON, PALETTE_TO_GREY, icon, false, SA_CENTER);
+				DrawString(tr.left, tr.right, tr.top + text_y_offset, STR_NETWORK_CLIENT_LIST_NEW_COMPANY, TC_WHITE);
 			} else {
-				DrawCompanyIcon(company_id, icon_left, y + offset);
+				DrawCompanyIcon(company_id, icon, false);
 
 				SetDParam(0, company_id);
 				SetDParam(1, company_id);
-				DrawString(tr.left, tr.right, y + text_y_offset, STR_COMPANY_NAME, TC_SILVER);
+				DrawString(tr.left, tr.right, tr.top + text_y_offset, STR_COMPANY_NAME, TC_SILVER);
 			}
 		}
 
-		y += this->line_height;
+		row = row.Translate(0, this->line_height);
 		line++;
 
 		for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
@@ -2054,13 +2051,13 @@ public:
 
 			/* Draw the player line (if in range of scrollbar). */
 			if (IsInsideMM(line, line_start, line_end)) {
-				Rect tr = r.Indent(WidgetDimensions::scaled.hsep_indent, rtl);
+				Rect tr = row.Indent(WidgetDimensions::scaled.hsep_indent, rtl);
 
 				/* If there are buttons for this client, draw them. */
 				auto button_find = this->buttons.find(line);
 				if (button_find != this->buttons.end()) {
 					int &x = rtl ? tr.left : tr.right;
-					this->DrawButtons(x, y, button_find->second);
+					this->DrawButtons(x, row.top, button_find->second);
 				}
 
 				SpriteID player_icon = 0;
@@ -2071,17 +2068,16 @@ public:
 				}
 
 				if (player_icon != 0) {
-					Dimension d2 = GetSpriteSize(player_icon);
-					int offset_y = CenterBounds(0, this->line_height, d2.height);
-					DrawSprite(player_icon, PALETTE_TO_GREY, rtl ? tr.right - d2.width : tr.left, y + offset_y);
+					Dimension d2 = GetScaledSpriteSize(player_icon);
+					DrawSpriteIgnorePadding(player_icon, PALETTE_TO_GREY, tr.WithWidth(d2.width, rtl), false, SA_CENTER);
 					tr = tr.Indent(d2.width + WidgetDimensions::scaled.hsep_normal, rtl);
 				}
 
 				SetDParamStr(0, ci->client_name);
-				DrawString(tr.left, tr.right, y + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
+				DrawString(tr.left, tr.right, tr.top + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
 			}
 
-			y += this->line_height;
+			row = row.Translate(0, this->line_height);
 			line++;
 		}
 	}

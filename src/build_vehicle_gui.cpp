@@ -1009,7 +1009,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 	Dimension replace_icon = {0, 0};
 	int count_width = 0;
 	if (show_count) {
-		replace_icon = GetSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
+		replace_icon = GetScaledSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
 		SetDParamMaxDigits(0, 3, FS_SMALL);
 		count_width = GetStringBoundingBox(STR_TINY_BLACK_COMA).width;
 	}
@@ -1021,7 +1021,6 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 	int normal_text_y_offset = (ir.Height() - FONT_HEIGHT_NORMAL) / 2;
 	int small_text_y_offset  = ir.Height() - FONT_HEIGHT_SMALL;
-	int replace_icon_y_offset = (ir.Height() - replace_icon.height) / 2;
 
 	int y = ir.top;
 	for (; min < max; min++, y += step_size) {
@@ -1051,11 +1050,13 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		if (show_count) {
 			SetDParam(0, num_engines);
 			DrawString(cr.left, cr.right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
-			if (EngineHasReplacementForCompany(Company::Get(_local_company), item.engine_id, selected_group)) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr.left, y + replace_icon_y_offset);
+			if (EngineHasReplacementForCompany(Company::Get(_local_company), item.engine_id, selected_group)) {
+				DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr.WithTopAndHeight(y, ir.Height()), false, SA_CENTER);
+			}
 		}
 		if (has_variants) {
 			Rect fr = ir.Indent(indent, rtl).WithWidth(circle_width, rtl);
-			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, {fr.left, y, fr.right, y + ir.Height() - 1}, false, SA_CENTER);
+			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, fr.WithTopAndHeight(y, ir.Height()), false, SA_CENTER);
 		}
 		if (indent > 0) {
 			/* Draw tree lines */

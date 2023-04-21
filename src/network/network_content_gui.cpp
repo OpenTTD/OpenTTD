@@ -581,7 +581,7 @@ public:
 
 	void OnInit() override
 	{
-		this->checkbox_size = maxdim(maxdim(GetSpriteSize(SPR_BOX_EMPTY), GetSpriteSize(SPR_BOX_CHECKED)), GetSpriteSize(SPR_BLOT));
+		this->checkbox_size = maxdim(maxdim(GetScaledSpriteSize(SPR_BOX_EMPTY), GetScaledSpriteSize(SPR_BOX_CHECKED)), GetScaledSpriteSize(SPR_BLOT));
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -649,7 +649,6 @@ public:
 		Rect type = this->GetWidget<NWidgetBase>(WID_NCL_TYPE)->GetCurrentRect();
 
 		/* Fill the matrix with the information */
-		int sprite_y_offset = (this->resize.step_height - this->checkbox_size.height) / 2;
 		int text_y_offset   = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2;
 
 		Rect mr = r.WithHeight(this->resize.step_height);
@@ -672,7 +671,7 @@ public:
 				case ContentInfo::DOES_NOT_EXIST: sprite = SPR_BLOT; pal = PALETTE_TO_RED;   break;
 				default: NOT_REACHED();
 			}
-			DrawSprite(sprite, pal, checkbox.left + (sprite == SPR_BLOT ? 3 : 2), mr.top + sprite_y_offset + (sprite == SPR_BLOT ? 0 : 1));
+			DrawSpriteIgnorePadding(sprite, pal, checkbox.WithTopAndHeight(mr.top, this->resize.step_height), false, SA_CENTER);
 
 			StringID str = STR_CONTENT_TYPE_BASE_GRAPHICS + ci->type - CONTENT_TYPE_BASE_GRAPHICS;
 			DrawString(type.left, type.right, mr.top + text_y_offset, str, TC_BLACK, SA_HOR_CENTER);

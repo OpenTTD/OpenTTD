@@ -827,8 +827,7 @@ struct ScriptDebugWindow : public Window {
 			/* Draw company icon only for valid AI companies */
 			if (!valid) continue;
 
-			byte offset = (i == script_debug_company) ? 1 : 0;
-			DrawCompanyIcon(i, button->pos_x + button->current_x / 2 - 7 + offset, this->GetWidget<NWidgetBase>(WID_SCRD_COMPANY_BUTTON_START + i)->pos_y + 2 + offset);
+			DrawCompanyIcon(i, button->GetCurrentRect(), i == script_debug_company);
 		}
 
 		/* Set button colour for Game Script. */

@@ -365,6 +365,9 @@ void BaseVehicleListWindow::OnInit()
 {
 	this->order_arrow_width = GetStringBoundingBox(STR_TINY_RIGHT_ARROW).width;
 	this->SetCargoFilterArray();
+
+	this->profit_size  = GetScaledSpriteSize(SPR_PROFIT_LOT);
+	this->warning_size = GetScaledSpriteSize(SPR_WARNING_SIGN);
 }
 
 /**
@@ -406,22 +409,13 @@ void DepotSortList(VehicleList *list)
 	std::sort(list->begin(), list->end(), &VehicleNumberSorter);
 }
 
-/** draw the vehicle profit button in the vehicle list window. */
-static void DrawVehicleProfitButton(Date age, Money display_profit_last_year, uint num_vehicles, int x, int y)
+/** Select the vehicle profit button for the vehicle list window. */
+static SpriteID GetVehicleProfitButton(Date age, Money display_profit_last_year, uint num_vehicles)
 {
-	SpriteID spr;
-
-	/* draw profit-based coloured icons */
-	if (age <= VEHICLE_PROFIT_MIN_AGE) {
-		spr = SPR_PROFIT_NA;
-	} else if (display_profit_last_year < 0) {
-		spr = SPR_PROFIT_NEGATIVE;
-	} else if (display_profit_last_year < VEHICLE_PROFIT_THRESHOLD * num_vehicles) {
-		spr = SPR_PROFIT_SOME;
-	} else {
-		spr = SPR_PROFIT_LOT;
-	}
-	DrawSprite(spr, PAL_NONE, x, y);
+	if (age <= VEHICLE_PROFIT_MIN_AGE) return SPR_PROFIT_NA;
+	if (display_profit_last_year < 0) return SPR_PROFIT_NEGATIVE;
+	if (display_profit_last_year < VEHICLE_PROFIT_THRESHOLD * num_vehicles) return SPR_PROFIT_SOME;
+	return SPR_PROFIT_LOT;
 }
 
 /** Maximum number of refit cycles we try, to prevent infinite loops. And we store only a byte anyway */
@@ -1647,8 +1641,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	Rect ir = r.WithHeight(line_height).Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
 	bool rtl = _current_text_dir == TD_RTL;
 
-	Dimension profit = GetSpriteSize(SPR_PROFIT_LOT);
-	int text_offset = std::max<int>(profit.width, GetDigitWidth() * this->unitnumber_digits) + WidgetDimensions::scaled.hsep_normal;
+	int text_offset = std::max<uint>({this->profit_size.width, this->warning_size.width, (uint)GetDigitWidth() * this->unitnumber_digits}) + WidgetDimensions::scaled.hsep_normal;
 	Rect tr = ir.Indent(text_offset, rtl);
 
 	bool show_orderlist = this->vli.vtype >= VEH_SHIP;
@@ -1657,7 +1650,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int image_left  = (rtl && show_orderlist) ? olr.right : tr.left;
 	int image_right = (!rtl && show_orderlist) ? olr.left : tr.right;
 
-	int vehicle_button_x = rtl ? ir.right - profit.width : ir.left;
+	Rect icon = ir.WithWidth(std::max(this->profit_size.width, this->warning_size.width), rtl);
 
 	uint max = static_cast<uint>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehgroups.size()));
 	for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
@@ -1668,14 +1661,15 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 		SetDParam(1, vehgroup.GetDisplayProfitLastYear());
 		DrawString(tr.left, tr.right, ir.bottom - FONT_HEIGHT_SMALL - WidgetDimensions::scaled.framerect.bottom, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
-		DrawVehicleProfitButton(vehgroup.GetOldestVehicleAge(), vehgroup.GetDisplayProfitLastYear(), vehgroup.NumVehicles(), vehicle_button_x, ir.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal);
+		SpriteID profit_icon = GetVehicleProfitButton(vehgroup.GetOldestVehicleAge(), vehgroup.GetDisplayProfitLastYear(), vehgroup.NumVehicles());
+		DrawSpriteIgnorePadding(profit_icon, PAL_NONE, icon.WithTopAndHeight(ir.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal, this->profit_size.height), false, SA_CENTER);
 
 		switch (this->grouping) {
 			case GB_NONE: {
 				const Vehicle *v = vehgroup.GetSingleVehicle();
 
 				if (HasBit(v->vehicle_flags, VF_PATHFINDER_LOST)) {
-					DrawSprite(SPR_WARNING_SIGN, PAL_NONE, vehicle_button_x, ir.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal + profit.height);
+					DrawSpriteIgnorePadding(SPR_WARNING_SIGN, PAL_NONE, icon.WithTopAndHeight(ir.top + FONT_HEIGHT_NORMAL + this->profit_size.height + WidgetDimensions::scaled.vsep_normal * 2, this->warning_size.height), false, SA_CENTER);
 				}
 
 				DrawVehicleImage(v, {image_left, ir.top, image_right, ir.bottom}, selected_vehicle, EIT_IN_LIST, 0);

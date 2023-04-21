@@ -15,7 +15,7 @@
 #include "gfx_type.h"
 
 TextColour GetDrawStringCompanyColour(CompanyID company);
-void DrawCompanyIcon(CompanyID c, int x, int y);
+void DrawCompanyIcon(CompanyID c, const Rect &r, bool lowered);
 
 void ShowCompanyLiveryWindow(CompanyID company, GroupID group);
 void ShowCompanyStations(CompanyID company);

@@ -54,6 +54,17 @@
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
 
+/**
+ * Draw the icon of a company.
+ * @param c Company that needs its icon drawn.
+ * @param r Rect of the icon.
+ * @param lowered True iff the icon should be displayed as lowered.
+ */
+void DrawCompanyIcon(CompanyID c, const Rect &r, bool lowered)
+{
+	DrawSpriteIgnorePadding(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(c), r, lowered, SA_CENTER);
+}
+
 /** List of revenues. */
 static ExpensesType _expenses_list_revenue[] = {
 	EXPENSES_TRAIN_REVENUE,
@@ -615,14 +626,10 @@ public:
 	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = _current_text_dir == TD_RTL;
-		int icon_y = CenterBounds(r.top, r.bottom, 0);
-		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext);
-		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + (this->result % COLOUR_END),
-				   rtl ? tr.right - ScaleGUITrad(14) : tr.left + ScaleGUITrad(14),
-				   icon_y);
+		DrawSpriteIgnorePadding(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + (this->result % COLOUR_END), tr.WithWidth(ScaleGUITrad(28), rtl), false, SA_CENTER);
 		tr = tr.Indent(ScaleGUITrad(28) + WidgetDimensions::scaled.hsep_normal, rtl);
-		DrawString(tr.left, tr.right, text_y, this->String(), sel ? TC_WHITE : TC_BLACK);
+		DrawString(tr.WithTopCentre(FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
@@ -811,6 +818,11 @@ public:
 		}
 	}
 
+	void OnInit() override
+	{
+		this->square = GetScaledSpriteSize(SPR_SQUARE);
+	}
+
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
@@ -835,7 +847,6 @@ public:
 
 			case WID_SCL_MATRIX: {
 				/* 11 items in the default rail class */
-				this->square = GetSpriteSize(SPR_SQUARE);
 				this->line_height = std::max(this->square.height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
 
 				size->height = 11 * this->line_height;
@@ -852,7 +863,7 @@ public:
 				FALLTHROUGH;
 
 			case WID_SCL_PRI_COL_DROPDOWN: {
-				this->square = GetSpriteSize(SPR_SQUARE);
+				this->square = GetScaledSpriteSize(SPR_SQUARE);
 				int string_padding = this->square.width + WidgetDimensions::scaled.hsep_normal + padding.width;
 				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
 					size->width = std::max(size->width, GetStringBoundingBox(*id).width + string_padding);
@@ -940,7 +951,6 @@ public:
 		sec = sec.Indent(this->square.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
 		Rect ir = r.WithHeight(this->resize.step_height).Shrink(WidgetDimensions::scaled.matrix);
-		int square_offs = (ir.Height() - this->square.height) / 2;
 		int text_offs   = (ir.Height() - FONT_HEIGHT_NORMAL) / 2;
 
 		int y = ir.top;
@@ -951,12 +961,12 @@ public:
 			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, sel ? TC_WHITE : TC_BLACK);
 
 			/* Text below the first dropdown. */
-			DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour1), pri_squ.left, y + square_offs);
+			DrawSpriteIgnorePadding(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour1), pri_squ.WithTopAndHeight(y, ir.Height()), false, SA_CENTER);
 			DrawString(pri.left, pri.right, y + text_offs, (def || HasBit(liv.in_use, 0)) ? STR_COLOUR_DARK_BLUE + liv.colour1 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour2), sec_squ.left, y + square_offs);
+				DrawSpriteIgnorePadding(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour2), sec_squ.WithTopAndHeight(y, ir.Height()), false, SA_CENTER);
 				DrawString(sec.left, sec.right, y + text_offs, (def || HasBit(liv.in_use, 1)) ? STR_COLOUR_DARK_BLUE + liv.colour2 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
 			}
 
@@ -2392,10 +2402,7 @@ struct CompanyWindow : Window
 			}
 
 			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
-				Point offset;
-				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
-				d.width -= offset.x;
-				d.height -= offset.y;
+				Dimension d = GetScaledSpriteSize(SPR_VEH_BUS_SW_VIEW);
 				*size = maxdim(*size, d);
 				break;
 			}
@@ -2449,7 +2456,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_HAS_PASSWORD:
-				*size = maxdim(*size, GetSpriteSize(SPR_LOCK));
+				*size = maxdim(*size, GetScaledSpriteSize(SPR_LOCK));
 				break;
 		}
 	}
@@ -2531,13 +2538,9 @@ struct CompanyWindow : Window
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
-			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
-				Point offset;
-				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
-				d.height -= offset.y;
-				DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), r.left - offset.x, CenterBounds(r.top, r.bottom, d.height) - offset.y);
+			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE:
+				DrawSpriteIgnorePadding(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), r, false, SA_CENTER);
 				break;
-			}
 
 			case WID_C_DESC_VEHICLE_COUNTS:
 				DrawVehicleCountsWidget(r, c);
@@ -2565,7 +2568,7 @@ struct CompanyWindow : Window
 
 			case WID_C_HAS_PASSWORD:
 				if (_networking && NetworkCompanyIsPassworded(c->index)) {
-					DrawSprite(SPR_LOCK, PAL_NONE, r.left, r.top);
+					DrawSpriteIgnorePadding(SPR_LOCK, PAL_NONE, r, false, SA_CENTER);
 				}
 				break;
 		}
