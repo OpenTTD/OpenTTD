@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.16)
 
 if(NOT BINARY_NAME)
     set(BINARY_NAME openttd)
@@ -6,6 +6,7 @@ endif()
 
 project(${BINARY_NAME}
     VERSION 14.0
+    LANGUAGES CXX
 )
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
@@ -149,6 +150,8 @@ if(NOT OPTION_DEDICATED)
     endif()
 endif()
 if(APPLE)
+    enable_language(OBJCXX)
+
     find_package(Iconv)
 
     find_library(AUDIOTOOLBOX_LIBRARY AudioToolbox)
@@ -242,6 +245,12 @@ if(MSVC)
     # Add DPI manifest to project; other WIN32 targets get this via ottdres.rc
     target_sources(openttd PRIVATE "${CMAKE_SOURCE_DIR}/os/windows/openttd.manifest")
 endif()
+
+target_precompile_headers(openttd_lib
+    PRIVATE
+    src/stdafx.h
+    src/3rdparty/fmt/format.h
+)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/bin)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src)
