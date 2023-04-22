@@ -1201,6 +1201,7 @@ void CallVehicleTicks()
 		if (it.second) {
 			v->vehstatus &= ~VS_STOPPED;
 		} else if (IsExtendedDepotTile(v->tile)){
+			if (v->type == VEH_TRAIN) FreeTrainTrackReservation(Train::From(v));
 			UpdateExtendedDepotReservation(v, true);
 		}
 
@@ -1683,8 +1684,6 @@ void VehicleEnterDepot(Vehicle *v)
 		case VEH_TRAIN: {
 			Train *t = Train::From(v);
 			SetWindowClassesDirty(WC_TRAINS_LIST);
-			/* Clear path reservation */
-			SetDepotReservation(t->tile, false);
 			if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(t->tile);
 
 			UpdateSignalsOnSegment(t->tile, INVALID_DIAGDIR, t->owner);

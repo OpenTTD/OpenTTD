@@ -33,6 +33,7 @@
 #include "object_map.h"
 #include "rail_cmd.h"
 #include "landscape_cmd.h"
+#include "platform_func.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"
@@ -3076,6 +3077,38 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 	/* This routine applies only to trains in depot tiles. */
 	if (u->type != VEH_TRAIN || !IsRailDepotTile(tile)) return VETSB_CONTINUE;
 
+	Train *v = Train::From(u);
+
+	if (IsExtendedRailDepot(tile)) {
+		DepotID depot_id = GetDepotIndex(tile);
+		if (!v->current_order.ShouldStopAtDepot(depot_id)) return VETSB_CONTINUE;
+
+		/* Stop position on platform is half the front vehicle length of the train. */
+		int stop_pos = v->gcache.cached_veh_length / 2;
+
+		int depot_ahead  = (GetPlatformLength(tile, DirToDiagDir(v->direction)) - 1) * TILE_SIZE;
+		if (depot_ahead > stop_pos) return VETSB_CONTINUE;
+
+		DiagDirection dir = DirToDiagDir(v->direction);
+
+		x &= 0xF;
+		y &= 0xF;
+
+		if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
+		if (y == TILE_SIZE / 2) {
+			if (dir == DIAGDIR_SE || dir == DIAGDIR_SW) x = TILE_SIZE - 1 - x;
+
+			if (stop_pos == x) {
+				return VETSB_ENTERED_DEPOT_PLATFORM;
+			} else if (stop_pos < x) {
+				v->vehstatus |= VS_TRAIN_SLOWING;
+				uint16_t spd = std::max(0, stop_pos * 20 - 15);
+				if (spd < v->cur_speed) v->cur_speed = spd;
+			}
+		}
+		return VETSB_CONTINUE;
+	}
+
 	/* Depot direction. */
 	DiagDirection dir = GetRailDepotDirection(tile);
 
@@ -3083,8 +3116,6 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 
 	/* Make sure a train is not entering the tile from behind. */
 	if (_fractcoords_behind[dir] == fract_coord) return VETSB_CANNOT_ENTER;
-
-	Train *v = Train::From(u);
 
 	/* Leaving depot? */
 	if (v->direction == DiagDirToDir(dir)) {
@@ -3110,7 +3141,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 		v->track = TRACK_BIT_DEPOT,
 		v->vehstatus |= VS_HIDDEN;
 		v->direction = ReverseDir(v->direction);
-		if (v->Next() == nullptr) VehicleEnterDepot(v->First());
+		if (v->Next() == nullptr) HandleTrainEnterDepot(v->First());
 		v->tile = tile;
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(v->tile));
