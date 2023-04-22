@@ -777,7 +777,7 @@ private:
 
 		/* Sort unrated towns always on ascending town name. */
 		if (before) return TownDirectoryWindow::TownNameSorter(a, b);
-		return !TownDirectoryWindow::TownNameSorter(a, b);
+		return TownDirectoryWindow::TownNameSorter(b, a);
 	}
 
 public:
