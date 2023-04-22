@@ -840,7 +840,7 @@ struct DepotWindow : Window {
 				break;
 
 			case WID_D_AUTOREPLACE:
-				Command<CMD_DEPOT_MASS_AUTOREPLACE>::Post(tile, this->type);
+				Command<CMD_DEPOT_MASS_AUTOREPLACE>::Post(STR_ERROR_CAN_T_REPLACE_VEHICLES, tile, this->type);
 				break;
 
 		}
