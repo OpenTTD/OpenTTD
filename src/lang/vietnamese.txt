@@ -1288,7 +1288,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Sự giảm t�
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Sự giảm tốc cho ôtô tại một ô dốc. Giá trị càng cao thì càng khó leo dốc
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Ngăn tàu hỏa chuyển hướng 90 độ: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :quay 90 độ chỉ xảy ra khi một ray ngang nối với một ray dọc ở 2 ô liền kề, khiến cho tàu hỏa cua 90 độ khi đến ô rẽ thay vì 45 độ như bình thường.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Chuyển hướng 90 độ chỉ xảy ra khi một ray ngang nối với một ray dọc ở 2 ô liền kề, khiến cho tàu hỏa cua 90 độ khi đến ô rẽ thay vì 45 độ như bình thường.
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Cho phép gộp ga, bến, cảng không sát nhau: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Cho phép thêm đoạn vào ga mà không phải sửa cái hiện có. Phải bấm Ctrl+Click để thêm đoạn vào ga
@@ -1712,7 +1712,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Số lượng b
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tần suất bảo trì theo đơn vị phần trăm: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Lựa chọn liệu rằng việc bảo trì phương tiện sẽ được tiến hành sau một khoảng thời gian nhất định hay là độ tin cậy bị giảm xuống bao nhiều phần trăm so với mức tối đa
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Khi được bật, việc bảo trì phương tiện sẽ được thực thực hiện khi độ tin cậy của phương tiện giảm xuống so với độ tin cậy tối đa.{}{}Ví dụ, nếu độ tin cậy tối đa của phương tiện là 90% và tần suất bảo trì là 20%, phương tiện sẽ được bảo trì khi độ tin cậy giảm xuống 72%.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Tần suất bảo trì mặc định đối với tàu hỏa: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Thiết lập khoảng thời gian bảo trì tùy chọn đối với các tàu hỏa, nếu phương tiện không có riêng thời gian bảo trì này
@@ -3947,7 +3947,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Mua tàu
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Mua máy bay đã ấn định. Shift+Click để xem giá mua dự tính
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Mua và cải biến toa tầu được chọn. Shift+Click để xem giá mua dự tính
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Mua và cải biến toa tàu được chọn. Shift+Click để xem giá mua dự tính
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Mua và cải biến ô-tô đang chọn. Shift+Click để xem giá mua dự tính
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Mua và cải biến tàu thuỷ đã chọn. Shift+Click để dự tính giá mà không mua
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Mua và cải biến máy bay được chọn. Shift+Click để xem chi phí dự tính
@@ -4078,7 +4078,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Bạn �
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Thông cáo từ nhà sản xuất phương tiện vận tải
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Chúng tôi vừa thiết kế một {STRING} mới - bạn có muốn mua nó trước khi chúng tôi hoàn thiện 1 năm, để chúng tôi đánh giá nó trước khi bán rộng rãi?
 
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :đầu máy tầu hoả
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :đầu máy tàu hoả
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :ngành vận tải đường sắt điện lực
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :đầu máy ray đơn
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :đầu máy đệm từ

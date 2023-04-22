@@ -1713,7 +1713,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Tek bir betiği
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Servis gecikmeleri yüzde ile: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Araçlara bakım yapılmasına bir önceki bakımın üzerinden geçen zamana göre mi, yoksa aracın güvenilirlik değerinin azami güvenilirliğe kıyasla belli bir yüzde oranında düşmesine bağlı olarak mı karar verileceğini seçin
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Etkinleştirildiğinde, araçların güvenilirlik değerinin azami güvenilirliğe kıyasla belli bir yüzde oranında düşmesine bağlı olarak bakım yapar.{}{}Örneğin, eğer aracın azami güvenirliği %90 ve bakım aralığı %20 ise araç %72 güvenilirliğe ulaştığında bakım yapmayı dener.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Trenler için varsayılan bakım aralığı: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Yeni tren yolu araçları için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir

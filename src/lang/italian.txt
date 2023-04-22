@@ -1747,7 +1747,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quantità massi
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Gli intervalli di manutenzione sono in percentuale: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Determina se la manutenzione dei veicoli è controllata dal tempo trascorso dall'ultima manutenzione piuttosto che dalla riduzione dell'affidabilità di una certa frazione di quella massima
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando è abilitata, i veicoli tentano la manutenzione quando la loro affidabilità scende di una determinata percentuale dell'affidabilità massima.{}{}Ad esempio, se l'affidabilità massima di un veicolo è del 90% e l'intervallo di manutenzione è del 20%, il veicolo tenterà la manutenzione quando raggiunge il 72% di affidabilità.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervallo manutenzione predefinito treni: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Imposta l'intervallo di manutenzione predefinito per i nuovi veicoli ferroviari, quando non viene impostato nessun intervallo esplicito

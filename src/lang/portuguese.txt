@@ -1713,7 +1713,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Definir o volum
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de serviço são em percentagem: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escolher se a manutenção de veículos é ativada pelo tempo decorrido deste a última manutenção, ou pela fiabilidade abaixo de uma certa percentagem da fiabilidade máxima
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando ativado, os veículos procuram fazer a manutenção quando sua fiabilidade reduz para uma determinada percentagem da fiabilidade máxima.{}{}Por exemplo, se a fiabilidade máxima de um veículo for 90% e o intervalo de manutenção for 20%, o veículo tentará fazer a manutenção quando atinge 72% de fiabilidade.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de serviço para comboios por omissão: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Definir o intervalo de manutenção por omissão para novos veículos sobre carris, se não for configurado um intervalo de manutenção explícito para o veículo

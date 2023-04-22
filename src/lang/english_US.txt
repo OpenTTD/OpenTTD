@@ -1712,7 +1712,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :How much memory
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Maintenance intervals are in percents: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Choose whether maintenance of vehicles is triggered by the time passed since last maintenance or by reliability dropping by a certain percentage of the maximum reliability
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :When enabled, vehicles try to service when their reliability drops by a given percentage of the maximum reliability.{}{}For example, if a vehicle's maximum reliability is 90% and the service interval is 20%, the vehicle will try to service when it reaches 72% reliability.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Default maintenance interval for trains: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Set the default maintenance interval for new rail vehicles, if no explicit maintenance interval is set for the vehicle
