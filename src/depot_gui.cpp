@@ -714,7 +714,7 @@ struct DepotWindow : Window {
 		if (this->generate_list) {
 			/* Generate the vehicle list
 			 * It's ok to use the wagon pointers for non-trains as they will be ignored */
-			BuildDepotVehicleList(this->type, Depot::Get(this->window_number)->xy, &this->vehicle_list, &this->wagon_list);
+			BuildDepotVehicleList(this->type, this->window_number, &this->vehicle_list, &this->wagon_list);
 			this->generate_list = false;
 			DepotSortList(&this->vehicle_list);
 

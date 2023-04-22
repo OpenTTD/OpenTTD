@@ -668,7 +668,7 @@ CommandCost CmdMassStartStopVehicle(DoCommandFlag flags, TileIndex tile, bool do
 	} else {
 		if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 		/* Get the list of vehicles in the depot */
-		BuildDepotVehicleList(vli.vtype, tile, &list, nullptr);
+		BuildDepotVehicleList(vli.vtype, GetDepotIndex(tile), &list, nullptr);
 	}
 
 	for (const Vehicle *v : list) {
@@ -700,7 +700,7 @@ CommandCost CmdDepotSellAllVehicles(DoCommandFlag flags, TileIndex tile, Vehicle
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
-	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
+	BuildDepotVehicleList(vehicle_type, GetDepotIndex(tile), &list, &list);
 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
@@ -733,7 +733,7 @@ CommandCost CmdDepotMassAutoReplace(DoCommandFlag flags, TileIndex tile, Vehicle
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
-	BuildDepotVehicleList(vehicle_type, tile, &list, &list, true);
+	BuildDepotVehicleList(vehicle_type, GetDepotIndex(tile), &list, &list, true);
 
 	for (const Vehicle *v : list) {
 		/* Ensure that the vehicle completely in the depot */

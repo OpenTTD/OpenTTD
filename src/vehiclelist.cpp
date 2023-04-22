@@ -13,6 +13,7 @@
 #include "vehiclelist.h"
 #include "vehiclelist_func.h"
 #include "group.h"
+#include "depot_base.h"
 
 #include "safeguards.h"
 
@@ -95,19 +96,24 @@ static Vehicle *BuildDepotVehicleListProc(Vehicle *v, void *data)
 
 /**
  * Generate a list of vehicles inside a depot.
- * @param type    Type of vehicle
- * @param tile    The tile the depot is located on
- * @param engines Pointer to list to add vehicles to
- * @param wagons  Pointer to list to add wagons to (can be nullptr)
+ * @param type     Type of vehicle
+ * @param depot_id The id of the depot
+ * @param engines  Pointer to list to add vehicles to
+ * @param wagons   Pointer to list to add wagons to (can be nullptr)
  * @param individual_wagons If true add every wagon to \a wagons which is not attached to an engine. If false only add the first wagon of every row.
  */
-void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engines, VehicleList *wagons, bool individual_wagons)
+void BuildDepotVehicleList(VehicleType type, DepotID depot_id, VehicleList *engines, VehicleList *wagons, bool individual_wagons)
 {
+	assert(Depot::IsValidID(depot_id));
+	Depot *dep = Depot::Get(depot_id);
 	engines->clear();
 	if (wagons != nullptr && wagons != engines) wagons->clear();
 
 	BuildDepotVehicleListData bdvld{engines, wagons, type, individual_wagons};
-	FindVehicleOnPos(tile, &bdvld, BuildDepotVehicleListProc);
+
+	for (TileIndex tile : dep->depot_tiles) {
+		FindVehicleOnPos(tile, &bdvld, BuildDepotVehicleListProc);
+	}
 }
 
 /**
