@@ -24,7 +24,7 @@
 {
 	if (IsSavegameVersionBefore(SLV_44)) {
 		/* If we remove a station while cargo from it is still en route, payment calculation will assume
-		 * 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_xy
+		 * 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_position
 		 * stores the coordinates, preserving them even if the station is removed. However, if a game is loaded
 		 * where this situation exists, the cargo-source information is lost. in this case, we set the source
 		 * to the current tile of the vehicle to prevent excessive profits
@@ -33,7 +33,7 @@
 			const CargoPacketList *packets = v->cargo.Packets();
 			for (VehicleCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 				CargoPacket *cp = *it;
-				cp->source_xy = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : v->tile;
+				cp->movement = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : v->tile;
 			}
 		}
 
@@ -49,7 +49,7 @@
 				const StationCargoPacketMap *packets = ge->cargo.Packets();
 				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 					CargoPacket *cp = *it;
-					cp->source_xy = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : st->xy;
+					cp->movement = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : st->xy;
 				}
 			}
 		}
@@ -87,7 +87,7 @@ SaveLoadTable GetCargoPacketDesc()
 {
 	static const SaveLoad _cargopacket_desc[] = {
 		SLE_VARNAME(CargoPacket, first_station, "source", SLE_UINT16),
-		SLE_VAR(CargoPacket, source_xy,       SLE_UINT32),
+		SLE_VARNAME(CargoPacket, movement, "source_xy", SLE_UINT32),
 		SLE_VAR(CargoPacket, count,           SLE_UINT16),
 		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_MORE_CARGO_AGE),
 		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_UINT16, SLV_MORE_CARGO_AGE, SLV_PERIODS_IN_TRANSIT_RENAME),

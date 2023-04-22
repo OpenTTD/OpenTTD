@@ -360,6 +360,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_PERIODS_IN_TRANSIT_RENAME,          ///< 316  PR#11112 Rename days in transit to (cargo) periods in transit.
 	SLV_NEWGRF_LAST_SERVICE,                ///< 317  PR#11124 Added stable date_of_last_service to avoid NewGRF trouble.
 	SLV_REMOVE_LOADED_AT_XY,                ///< 318  PR#11276 Remove loaded_at_xy variable from CargoPacket.
+	SLV_UNPAID_TELEPORTATION,               ///< 319  PR#11274 Don't pay for cargo movement outside of the vehicle (teleportation).
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

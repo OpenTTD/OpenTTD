@@ -107,7 +107,7 @@ bool CargoDelivery::operator()(CargoPacket *cp)
 {
 	uint remove = this->Preprocess(cp);
 	this->source->RemoveFromMeta(cp, VehicleCargoList::MTA_DELIVER, remove);
-	this->payment->PayFinalDelivery(cp, remove);
+	this->payment->PayFinalDelivery(cp, remove, DistanceManhattan(this->location, cp->GetMovement()));
 	return this->Postprocess(cp, remove);
 }
 
@@ -120,6 +120,7 @@ bool CargoLoad::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) return false;
+	cp_new->TrackLoad(this->location);
 	this->source->RemoveFromCache(cp_new, cp_new->Count());
 	this->destination->Append(cp_new, VehicleCargoList::MTA_KEEP);
 	return cp_new == cp;
@@ -134,6 +135,7 @@ bool CargoReservation::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) return false;
+	cp_new->TrackLoad(this->location);
 	this->source->reserved_count += cp_new->Count();
 	this->source->RemoveFromCache(cp_new, cp_new->Count());
 	this->destination->Append(cp_new, VehicleCargoList::MTA_LOAD);
@@ -150,6 +152,7 @@ bool CargoReturn::operator()(CargoPacket *cp)
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) cp_new = cp;
 	assert(cp_new->Count() <= this->destination->reserved_count);
+	cp_new->TrackUnload(this->location);
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_LOAD, cp_new->Count());
 	this->destination->reserved_count -= cp_new->Count();
 	this->destination->Append(cp_new, this->next);
@@ -165,6 +168,7 @@ bool CargoTransfer::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) return false;
+	cp_new->TrackUnload(this->location);
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
 	/* No transfer credits here as they were already granted during Stage(). */
 	this->destination->Append(cp_new, cp_new->GetNextStation());

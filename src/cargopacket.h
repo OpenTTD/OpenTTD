@@ -44,7 +44,7 @@ private:
 
 	Money feeder_share{0}; ///< Value of feeder pickup to be paid for on delivery of cargo.
 
-	TileIndex source_xy{0}; ///< The origin of the cargo.
+	TileIndex movement{0}; ///< Vector (tile difference) representing accumulated cargo movement in vehicles. Used to calculate payments. Is calculated as load_tile_1 - unload_tile1 + load_tile_2 - unload_tile_2 + ...
 	SourceID source_id{INVALID_SOURCE}; ///< Index of industry/town/HQ, INVALID_SOURCE if unknown/invalid.
 	SourceType source_type{SourceType::Industry}; ///< Type of \c source_id.
 
@@ -62,8 +62,8 @@ public:
 	static const uint16_t MAX_COUNT = UINT16_MAX;
 
 	CargoPacket();
-	CargoPacket(StationID first_station, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id);
-	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID source, TileIndex source_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
+	CargoPacket(StationID first_station, TileIndex movement, uint16_t count, SourceType source_type, SourceID source_id);
+	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID source, TileIndex source_position, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
 
 	/** Destroy the packet. */
 	~CargoPacket() { }
@@ -71,6 +71,22 @@ public:
 	CargoPacket *Split(uint new_size);
 	void Merge(CargoPacket *cp);
 	void Reduce(uint count);
+
+	/**
+	 * Updates movement vector on cargo load.
+	 * @param load_tile TileIndex of loading location (vehicle).
+	 */
+	void TrackLoad(TileIndex load_tile) {
+		this->movement += load_tile;
+	}
+
+	/**
+	 * Updates movement vector on cargo unload.
+	 * @param unload_tile TileIndex of unloading location (vehicle).
+	 */
+	void TrackUnload(TileIndex unload_tile) {
+		this->movement -= unload_tile;
+	}
 
 	/**
 	 * Sets the station where the packet is supposed to go next.
@@ -160,12 +176,12 @@ public:
 	}
 
 	/**
-	 * Gets the coordinates of the cargo's source.
-	 * @return Source coordinates of cargo.
+	 * Gets the accumulated cargo movement vector.
+	 * @return TileIndexDiff.
 	 */
-	inline TileIndex GetSourceXY() const
+	inline TileIndex GetMovement() const
 	{
-		return this->source_xy;
+		return this->movement;
 	}
 
 	/**
@@ -385,7 +401,7 @@ public:
 
 	void InvalidateCache();
 
-	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoPayment *payment);
+	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoPayment *payment, TileIndex location);
 
 	/**
 	 * Marks all cargo in the vehicle as to be kept. This is mostly useful for
@@ -404,8 +420,8 @@ public:
 
 	template<MoveToAction Tfrom, MoveToAction Tto>
 	uint Reassign(uint max_move, StationID update = INVALID_STATION);
-	uint Return(uint max_move, StationCargoList *dest, StationID next_station);
-	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment);
+	uint Return(uint max_move, StationCargoList *dest, StationID next_station, TileIndex location);
+	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment, TileIndex location);
 	uint Shift(uint max_move, VehicleCargoList *dest);
 	uint Truncate(uint max_move = UINT_MAX);
 	uint Reroute(uint max_move, VehicleCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);
@@ -419,7 +435,7 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy == cp2->source_xy &&
+		return cp1->movement == cp2->movement &&
 				cp1->periods_in_transit == cp2->periods_in_transit &&
 				cp1->source_type == cp2->source_type &&
 				cp1->source_id == cp2->source_id;
@@ -519,8 +535,8 @@ public:
 	 * amount of cargo to be moved. Second parameter is destination (if
 	 * applicable), return value is amount of cargo actually moved. */
 
-	uint Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next);
-	uint Load(uint max_move, VehicleCargoList *dest, StationIDStack next);
+	uint Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next, TileIndex location);
+	uint Load(uint max_move, VehicleCargoList *dest, StationIDStack next, TileIndex location);
 	uint Truncate(uint max_move = UINT_MAX, StationCargoAmountMap *cargo_per_source = nullptr);
 	uint Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);
 
@@ -533,7 +549,7 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy == cp2->source_xy &&
+		return cp1->movement  == cp2->movement &&
 				cp1->periods_in_transit == cp2->periods_in_transit &&
 				cp1->source_type == cp2->source_type &&
 				cp1->source_id == cp2->source_id;

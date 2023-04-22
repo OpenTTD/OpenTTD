@@ -39,9 +39,10 @@ public:
 class CargoDelivery : public CargoRemoval<VehicleCargoList> {
 protected:
 	CargoPayment *payment; ///< Payment object where payments will be registered.
+	TileIndex location;
 public:
-	CargoDelivery(VehicleCargoList *source, uint max_move, CargoPayment *payment) :
-			CargoRemoval<VehicleCargoList>(source, max_move), payment(payment) {}
+	CargoDelivery(VehicleCargoList *source, uint max_move, CargoPayment *payment, TileIndex location) :
+			CargoRemoval<VehicleCargoList>(source, max_move), payment(payment), location(location) {}
 	bool operator()(CargoPacket *cp);
 };
 
@@ -69,33 +70,39 @@ public:
 
 /** Action of transferring cargo from a vehicle to a station. */
 class CargoTransfer : public CargoMovement<VehicleCargoList, StationCargoList> {
+protected:
+	TileIndex location;
 public:
-	CargoTransfer(VehicleCargoList *source, StationCargoList *destination, uint max_move) :
-			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move) {}
+	CargoTransfer(VehicleCargoList *source, StationCargoList *destination, uint max_move, TileIndex location) :
+			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), location(location) {}
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of loading cargo from a station onto a vehicle. */
 class CargoLoad : public CargoMovement<StationCargoList, VehicleCargoList> {
+protected:
+	TileIndex location;
 public:
-	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move) :
-			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move) {}
+	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex location) :
+			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move), location(location) {}
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of reserving cargo from a station to be loaded onto a vehicle. */
 class CargoReservation : public CargoLoad {
 public:
-	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move) :
-			CargoLoad(source, destination, max_move) {}
+	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex location) :
+			CargoLoad(source, destination, max_move, location) {}
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of returning previously reserved cargo from the vehicle to the station. */
 class CargoReturn : public CargoMovement<VehicleCargoList, StationCargoList> {
+protected:
+	TileIndex location;
 	StationID next;
 public:
-	CargoReturn(VehicleCargoList *source, StationCargoList *destination, uint max_move, StationID next) :
+	CargoReturn(VehicleCargoList *source, StationCargoList *destination, uint max_move, StationID next, TileIndex location) :
 			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), next(next) {}
 	bool operator()(CargoPacket *cp);
 };

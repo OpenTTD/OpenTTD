@@ -3241,6 +3241,24 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_UNPAID_TELEPORTATION)) {
+		/* Convert source location into a movement vector by calling TrackUnload.
+		 * This emulates transportation by the vehicle from stored source location to the current station.
+		 * Cargo packets in vehicles don't need conversion as movement vector is equivalent
+		 * to the source location when in the vehicle.
+		 */
+		for (Station *st : Station::Iterate()) {
+			for (size_t i = 0; i < NUM_CARGO; i++) {
+				GoodsEntry *ge = &st->goods[i];
+				for (auto it = ge->cargo.Packets()->begin(); it != ge->cargo.Packets()->end(); it++) {
+					for (CargoPacket *cp : it->second) {
+						cp->TrackUnload(cp->GetMovement());
+					}
+				}
+			}
+		}
+	}
+
 	AfterLoadLabelMaps();
 	AfterLoadCompanyStats();
 	AfterLoadStoryBook();
