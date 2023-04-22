@@ -817,7 +817,7 @@ struct DepotWindow : Window {
 			case WID_D_STOP_ALL:
 			case WID_D_START_ALL: {
 				VehicleListIdentifier vli(VL_DEPOT_LIST, this->type, this->owner);
-				Command<CMD_MASS_START_STOP>::Post(tile, widget == WID_D_START_ALL, false, vli);
+				Command<CMD_MASS_START_STOP>::Post(STR_ERROR_CAN_T_START_STOP_VEHICLES, tile, widget == WID_D_START_ALL, false, vli);
 				break;
 			}
 
