@@ -328,7 +328,7 @@ public:
 	uint32 motion_counter;              ///< counter to occasionally play a vehicle sound.
 	byte progress;                      ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
 
-	byte random_bits;                   ///< Bits used for determining which randomized variational spritegroups to use when drawing.
+	uint16_t random_bits; ///< Bits used for randomized variational spritegroups.
 	byte waiting_triggers;              ///< Triggers to be yet matched before rerandomizing the random bits.
 
 	StationID last_station_visited;     ///< The last station we stopped at.
