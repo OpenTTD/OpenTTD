@@ -300,7 +300,7 @@ static bool EnginePowerVsRunningCostSorter(const GUIEngineListItem &a, const GUI
 	 * since we want consistent sorting.
 	 * Also if both have no power then sort with reverse of running cost to simulate
 	 * previous sorting behaviour for wagons. */
-	if (v_a == 0 && v_b == 0) return !EngineRunningCostSorter(a, b);
+	if (v_a == 0 && v_b == 0) return EngineRunningCostSorter(b, a);
 	if (v_a == v_b)  return EngineNumberSorter(a, b);
 	return _engine_sort_direction != (v_a < v_b);
 }
