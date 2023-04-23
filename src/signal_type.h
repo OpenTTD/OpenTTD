@@ -32,9 +32,6 @@ enum SignalType : byte {
 	SIGTYPE_LAST       = SIGTYPE_PBS_ONEWAY,
 	SIGTYPE_LAST_NOPBS = SIGTYPE_COMBO,
 };
-/** Helper information for extract tool. */
-template <> struct EnumPropsT<SignalType> : MakeEnumPropsT<SignalType, byte, SIGTYPE_NORMAL, SIGTYPE_END, SIGTYPE_END, 3> {};
-
 
 /**
  * These are states in which a signal can be. Currently these are only two, so

@@ -50,8 +50,6 @@ enum WaterClass : byte {
 	WATER_CLASS_RIVER,   ///< River.
 	WATER_CLASS_INVALID, ///< Used for industry tiles on land (also for oilrig if newgrf says so).
 };
-/** Helper information for extract tool. */
-template <> struct EnumPropsT<WaterClass> : MakeEnumPropsT<WaterClass, byte, WATER_CLASS_SEA, WATER_CLASS_INVALID, WATER_CLASS_INVALID, 2> {};
 
 /**
  * Checks if a water class is valid.

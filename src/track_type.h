@@ -30,9 +30,6 @@ enum Track : byte {
 
 /** Allow incrementing of Track variables */
 DECLARE_POSTFIX_INCREMENT(Track)
-/** Define basic enum properties */
-template <> struct EnumPropsT<Track> : MakeEnumPropsT<Track, byte, TRACK_BEGIN, TRACK_END, INVALID_TRACK, 3> {};
-
 
 /** Bitfield corresponding to Track */
 enum TrackBits : byte {
@@ -88,9 +85,6 @@ enum Trackdir : byte {
 	TRACKDIR_END,                   ///< Used for iterations
 	INVALID_TRACKDIR  = 0xFF,       ///< Flag for an invalid trackdir
 };
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<Trackdir> : MakeEnumPropsT<Trackdir, byte, TRACKDIR_BEGIN, TRACKDIR_END, INVALID_TRACKDIR, 4> {};
 
 /**
  * Enumeration of bitmasks for the TrackDirs

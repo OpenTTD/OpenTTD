@@ -31,11 +31,6 @@ enum DistributionType : byte {
 	DT_END = 3
 };
 
-/* It needs to be 8bits, because we save and load it as such
- * Define basic enum properties
- */
-template <> struct EnumPropsT<DistributionType> : MakeEnumPropsT<DistributionType, byte, DT_BEGIN, DT_END, DT_NUM> {};
-
 /**
  * Special modes for updating links. 'Restricted' means that vehicles with
  * 'no loading' orders are serving the link. If a link is only served by

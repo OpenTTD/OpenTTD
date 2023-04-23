@@ -152,7 +152,6 @@ enum ModifyOrderFlags : byte {
 	MOF_COND_DESTINATION,///< Change the destination of a conditional order.
 	MOF_END
 };
-template <> struct EnumPropsT<ModifyOrderFlags> : MakeEnumPropsT<ModifyOrderFlags, byte, MOF_NON_STOP, MOF_END, MOF_END, 4> {};
 
 /**
  * Depot action to switch to when doing a #MOF_DEPOT_ACTION.
@@ -173,8 +172,6 @@ enum ModifyTimetableFlags : byte {
 	MTF_TRAVEL_SPEED, ///< Set max travel speed.
 	MTF_END
 };
-template <> struct EnumPropsT<ModifyTimetableFlags> : MakeEnumPropsT<ModifyTimetableFlags, byte, MTF_WAIT_TIME, MTF_END, MTF_END, 2> {};
-
 
 /** Clone actions. */
 enum CloneOptions : byte {

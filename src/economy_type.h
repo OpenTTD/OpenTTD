@@ -172,9 +172,6 @@ enum ExpensesType : byte {
 	INVALID_EXPENSES      = 0xFF, ///< Invalid expense type.
 };
 
-/** Define basic enum properties for ExpensesType */
-template <> struct EnumPropsT<ExpensesType> : MakeEnumPropsT<ExpensesType, byte, EXPENSES_CONSTRUCTION, EXPENSES_END, INVALID_EXPENSES, 8> {};
-
 /**
  * Categories of a price bases.
  */

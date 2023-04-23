@@ -57,8 +57,6 @@ enum LiveryScheme : byte {
 };
 
 DECLARE_POSTFIX_INCREMENT(LiveryScheme)
-/** Helper information for extract tool. */
-template <> struct EnumPropsT<LiveryScheme> : MakeEnumPropsT<LiveryScheme, byte, LS_BEGIN, LS_END, LS_END, 8> {};
 
 /** List of different livery classes, used only by the livery GUI. */
 enum LiveryClass {

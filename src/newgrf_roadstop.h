@@ -161,9 +161,6 @@ struct RoadStopSpec {
 	static const RoadStopSpec *Get(uint16 index);
 };
 
-template <>
-struct EnumPropsT<RoadStopClassID> : MakeEnumPropsT<RoadStopClassID, byte, ROADSTOP_CLASS_BEGIN, ROADSTOP_CLASS_MAX, ROADSTOP_CLASS_MAX, 8> {};
-
 typedef NewGRFClass<RoadStopSpec, RoadStopClassID, ROADSTOP_CLASS_MAX> RoadStopClass;
 
 void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec, StationType type, int view);

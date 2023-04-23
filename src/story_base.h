@@ -38,9 +38,6 @@ enum StoryPageElementType : byte {
 	INVALID_SPET = 0xFF,
 };
 
-/** Define basic enum properties */
-template <> struct EnumPropsT<StoryPageElementType> : MakeEnumPropsT<StoryPageElementType, byte, SPET_TEXT, SPET_END, INVALID_SPET, 8> {};
-
 /** Flags available for buttons */
 enum StoryPageButtonFlags : byte {
 	SPBF_NONE        = 0,
@@ -109,9 +106,6 @@ enum StoryPageButtonCursor : byte {
 	SPBC_END,
 	INVALID_SPBC = 0xFF
 };
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<StoryPageButtonCursor> : MakeEnumPropsT<StoryPageButtonCursor, byte, SPBC_MOUSE, SPBC_END, INVALID_SPBC, 8> {};
 
 /**
  * Checks if a StoryPageButtonCursor value is valid.
