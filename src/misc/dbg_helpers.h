@@ -25,7 +25,7 @@ template <typename T> struct ArrayT;
 /** Helper template class that provides C array length and item type */
 template <typename T, size_t N> struct ArrayT<T[N]> {
 	static const size_t length = N;
-	typedef T item_t;
+	using Item = T;
 };
 
 
@@ -34,7 +34,7 @@ template <typename T, size_t N> struct ArrayT<T[N]> {
  * or t_unk when index is out of bounds.
  */
 template <typename E, typename T>
-inline typename ArrayT<T>::item_t ItemAtT(E idx, const T &t, typename ArrayT<T>::item_t t_unk)
+inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::Item t_unk)
 {
 	if ((size_t)idx >= ArrayT<T>::length) {
 		return t_unk;
@@ -48,7 +48,7 @@ inline typename ArrayT<T>::item_t ItemAtT(E idx, const T &t, typename ArrayT<T>:
  * or t_unk when index is out of bounds.
  */
 template <typename E, typename T>
-inline typename ArrayT<T>::item_t ItemAtT(E idx, const T &t, typename ArrayT<T>::item_t t_unk, E idx_inv, typename ArrayT<T>::item_t t_inv)
+inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::Item t_unk, E idx_inv, typename ArrayT<T>::Item t_inv)
 {
 	if ((size_t)idx < ArrayT<T>::length) {
 		return t[idx];
