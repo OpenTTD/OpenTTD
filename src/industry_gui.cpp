@@ -869,8 +869,13 @@ public:
 		bool first = true;
 		bool has_accept = false;
 
+		/* If closure is imminent (already decided, draw a warning. */
 		if (i->prod_level == PRODLEVEL_CLOSURE) {
 			DrawString(ir, STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE);
+			ir.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
+		} else if (ind->grf_prop.grffile == nullptr && (ind->life_type & INDUSTRYLIFE_PROCESSING) && (_cur_year - i->last_prod_year) >= PROCESSING_INDUSTRY_ABANDONMENT_YEARS) {
+			/* Otherwise, if this is a non-NewGRF processing industry in danger of closing due to lack of production, draw a threat that it might decide to close. */
+			DrawString(ir, STR_INDUSTRY_VIEW_INDUSTRY_THREATENS_CLOSURE);
 			ir.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 		}
 
