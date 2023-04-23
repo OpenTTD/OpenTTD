@@ -345,9 +345,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}경로 �
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임을 일시 정지합니다.
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}게임 시간을 빠르게 가도록 합니다.
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}게임 기본 설정을 엽니다.
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}게임을 저장하거나, 그만두거나, 게임을 종료합니다
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}지도, 외부 화면, 팻말 목록을 보여줍니다.
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}게임 기본 설정을 엽니다
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}게임을 저장하거나, 불러오거나, 그만두거나, 게임을 종료합니다
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}지도, 외부 화면, 화물 흐름, 팻말 목록을 보여줍니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}도시 메뉴를 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 메뉴를 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}각 회사의 정거장 목록을 표시합니다.
@@ -355,9 +355,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}각 회�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}각 회사의 기본 정보를 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}스토리 북을 엽니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}목표 목록을 보여줍니다.
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}그래프 메뉴를 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}회사 그래프와 화물 운송단가 비율 창을 보여줍니다
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}회사의 성취도 순위를 표시합니다.
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설에 투자하거나 산업시설의 목록을 표시합니다.
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설의 위치를 무작위로 찾거나 원하는 위치에 새로운 산업시설을 건설합니다
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}각 회사의 열차 목록을 표시합니다. CTRL+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}각 회사의 차량 목록을 표시합니다. CTRL+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}각 회사의 선박 목록을 표시합니다. CTRL+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
@@ -371,8 +371,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}항만 �
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}항공 시설을 건설합니다.
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}땅 올리기/내리기, 나무 심기 등의 일를 하기 위한 지형편집창을 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}효과음/배경 음악 창을 엽니다.
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}최근 메시지/뉴스 기록이나 메시지 설정을 엽니다.
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보, 콘솔, 스크립트 디버그, 스크린샷, OpenTTD에 대한 정보를 보여줍니다.
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}최근 메시지/뉴스 기록을 보거나, 모든 메시지를 삭제합니다
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보, 스크린샷, OpenTTD에 대한 정보, 개발자 도구 등을 보여줍니다
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}툴바를 변경합니다.
 
 # Extra tooltips for the scenario editor toolbar
@@ -1713,7 +1713,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :스크립트 �
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :신뢰도에 따른 점검 설정: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :차량 점검 방식을 "마지막 점검 이후 지난 시간 (또는) 최대 신뢰도에 대한 차량 신뢰도의 일정 퍼센트 하락 여부" 중에 하나로 선택합니다.
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :이 설정을 켜면, 차량의 신뢰도가 최대 신뢰도에 비해 일정 비율만큼 하락했을 때 점검을 하러 가려고 합니다.{}{}예를 들어, 차량의 최대 신뢰도가 90%이고 점검 주기를 20%로 설정하면, 그 차량은 신뢰도가 72%가 되었을 때 점검을 하러 가게 됩니다.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :열차에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :열차에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
@@ -1927,6 +1927,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :없음
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :초기 대도시 크기 비율: 일반 도시보다 {STRING}배 크게 시작
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :게임을 시작했을 때 일반 도시에 대한 대도시의 평균 크기를 설정합니다
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :분배 그래프를 매 {STRING}초마다 업데이트
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :각 연결 그래프의 하위 시퀀스 재계산 사이의 시간입니다. 각 재계산은 그래프의 한 구성 요소에 대한 계획을 계산합니다. 즉, 이 설정을 X로 설정한다고 해서 전체 그래프를 X초마다 업데이트한다는 뜻은 아닙니다. 일부 구성 요소만 X초마다 업데이트됩니다. 이 값을 더 짧게 설정할 수록 계산하는데 더 많은 CPU 계산 시간이 필요합니다. 값을 더 길게 설정하면 화물 분배가 새 경로로 이뤄지기까지 더 오랜 시간이 걸리게 됩니다.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :분배 그래프의 재계산을 위해 {STRING}초 사용
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :각 연결 그래프의 구성 요소를 재계산하는데 걸리는 시간입니다. 재계산이 시작되면, 이 시간(초) 동안 실행할 수 있는 스레드가 생성됩니다. 이 값을 더 짧게 설정할수록 스레드가 완료되어야 할 때 완료되지 못할 가능성이 높아집니다. 그러면 이를 완료하기 전까지는 게임이 멈추게 됩니다. 값을 더 길게 설정하면 경로가 변경되었을 때 분배가 업데이트되는 데 더 오래 걸립니다.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :승객에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"대칭"은 A역에서 B역으로 가려는 승객의 수가 B에서 A로 가려는 승객의 수와 비슷하다는 뜻입니다. "비대칭"은 승객이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 승객 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
@@ -4589,6 +4593,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :무작위 인�
 STR_AI_CONFIG_NONE                                              :(없음)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}최대 경쟁자수: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}새 경쟁사가 나타나기 위해 필요한 최소 시간: {ORANGE}{COMMA}분
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}위로 이동
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}목록에서 선택한 인공지능의 순서를 한 칸 위로 옮깁니다
@@ -5106,6 +5111,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}부표�
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}차량의 시간표를 정할 수 없습니다...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}차량은 정거장에서만 기다릴 수 있습니다
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}이 차량은 이 정거장에 서지 않습니다
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... 시간표가 모두 작성되지 않았습니다
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 팻말 수가 너무 많습니다

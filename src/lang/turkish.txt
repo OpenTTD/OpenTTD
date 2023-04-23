@@ -157,7 +157,7 @@ STR_ABBREV_COLA                                                 :{TINY_FONT}KO
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}PŞ
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}BA
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}ŞL
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}PİL
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}PL
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}İÇ
 STR_ABBREV_NONE                                                 :{TINY_FONT}YO
@@ -5111,6 +5111,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}Şamand�
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Aracın zaman çizelgesi oluşturulamıyor...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Araçlar sadece istasyonlarda bekleyebilir
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Araç bu istasyonda durmuyor
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... zaman çizelgesi eksik
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... çok fazla tabela var

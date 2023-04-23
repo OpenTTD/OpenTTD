@@ -196,6 +196,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}cadros/día
+STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}{NBSP}nudos
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}cv
@@ -344,9 +345,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abre a v
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar partida
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rápido da partida
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcións
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Gravar partida, abandonar partida, saír
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Amosa-lo mapa, ventá extra ou lista de rótulos
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcións e axustes
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Gravar, cargar ou abandonar partida, saír do programa
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Amosa-lo mapa, ventá extra, fluxo de carga ou lista de rótulos
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Amosa-lo directorio de cidades
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Amosa-las subvencións
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Amosa-la lista das estacións da compañía
@@ -354,9 +355,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Amosa-la
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Amosa-la información xeral da compañía
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostrar historial
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK} Mostrar lista de obxectivos
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Amosa-las gráficas
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficos de compañías e taxas de pago de carga.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Amosa-lo cadro da liga de compañías
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financia-la construción dunha nova industria ou listar tódalas industrias
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examinar as industrias ou financiar a construción dunha nova industria.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Amosa-la lista dos trens da compañía. Ctrl+Click alterna entre lista de grupos/vehículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Amosa-la lista dos vehículos de estrada da compañía. Ctrl+Click alterna entre lista de grupos/vehículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Amosar a lista dos barcos da compañía. Ctrl+Click alterna entre lista de grupos/vehículos
@@ -370,8 +371,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Constru�
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construír aeroportos
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abri-la ferramenta de terreo para subir/baixar terreo, plantar árbores, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Amosa-la ventá de son/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Amosa-la última mensaxe/nova, amosa-las opcións das mensaxes
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Información dunha área de terreo, consola, depuración de scripts, capturas de pantalla, acerca de OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Amosa-la última mensaxe/nova, histórico de mensaxes ou borra todas as mensaxes
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Información sobre a área de terra, capturas de pantalla, sobre OpenTTD e ferramentas de desenvolvedor.
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Intercambiar barras de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
@@ -1712,7 +1713,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Canta memoria p
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalos de servizo en porcentaxes: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Permite escoller se o mantemento de vehículos comezará debido ao tempo transcurrido dende o último mantemento ou por unha redución da fiabilidade cando se sobrepase unha porcentaxe determinado
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Cando está habilitado, os vehículos intentan ser reparados cando a súa fiabilidade baixa unha porcentaxe dada da fiabilidade máxima.{}{}Por exemplo, se a fiabilidade máxima dun vehículo é do 90% e o intervalo de mantemento é do 20%, o vehículo tentará ser reparado cando alcance unha fiabilidade do 72%.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantemento por defecto para trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Fixa o intervalo de mantemento por defecto para trens novos, o cal se empregará no caso de que non se defina explicitamente un novo intervalo de mantemento para o vehículo
@@ -1809,7 +1810,9 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Cando se activa
 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Idade mínima da compañía para compraventa de accións: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Establece a idade mínima dunha compañía para que outros poidan comprar e vender accións dela.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} ano{P "" s}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :Sen mínimo
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaxe do beneficio parcial a pagar en sistemas transitivos: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentaxe dos beneficios asignados ás partes intermedias da ruta en sistemas transitivos, dando un maior control sobre os ingresos
@@ -1924,6 +1927,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ningunha
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial do tamaño da cidade: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Relación entre o tamaño medio das cidades e o dos pobos ao inicio da partida
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualizar o grafo de distribución cada {STRING}{NBSP}segundo{P 0:2 "" s}.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo entre recálculos sucesivos do grafo de ligazóns. Cada recálculo calcula os plans para un compoñente do grafo. Iso significa que un valor X para esta configuración non significa que o grafo completo sexa actualizado cada X segundos. Só algúns compoñentes o serán. Canto máis curto sexa o tempo establecido, máis tempo de CPU será necesario para calculalo. Canto máis longo sexa o tempo establecido, máis tempo levará ata que a distribución de carga comece a percorrer novas rutas.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Toma {STRING}{NBSP}segundo{P 0:2 "" s} para o recálculo do grafo de distribución.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo necesario para cada recalculación dun compoñente do grafo de ligazóns. Cando se inicia unha recalculación, abrese un fío que se pode executar durante este número de segundos. Canto máis curto o establezas, máis probable é que o fío non remate cando se supón que debe facelo. Entón, o xogo detense ata que o fío remata («lag»). Canto máis longo o estabelezas, máis tempo levará actualizar a distribución cando cambien as rutas.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasaxeiros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simétrico" significa que máis ou menos o mesmo número de pasaxeiros irán dende a estación A cada a estación B e tamén da B cara a A. "Asimétrico" significa que calquera número de pasaxeiros pode ir en calquera dirección. "manual" significa que non haberá distribución automática para os pasaxeiros.
@@ -1949,13 +1956,15 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Fixar esta opci
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturación de rutas curtas antes de empregar rutas con capacidade: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frecuentemente hai múltiples rutas posíbeis entre dúas estacións dadas. En primero lugar intentarase satura-la ruta máis curta, para posteriormente satura-la segunda máis curta e así sucesivamente. A saturación está determinada por unha estimación de capacidade e uso planificado. Unha vez saturadas tódalas rutas, se aínda queda demanda, sobrecargaranse as rutas comezando por aquelas de maior capacidade. A maior parte das veces, o algoritmo non estimará a capacidade con precisión. Esta opción permite especificar ata que porcentaxe de saturación pode ter unha ruta curta na primeira volta do algoritmo antes de escolle-la seguinte máis curta. Fíxao en menos do 100% para evitar estacións sobrecargadas no caso de que se sobreestime a capacidade.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidade: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidade (terra): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Unidade de velocidade (náutica): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Cando unha velocidade apareza na interfaz de usuario, facelo nas unidades seleccionadas
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unidades do xogo (cadros/día)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Nudos
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potencia dos vehículos: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Cando a potencia dun vehículo se amose na interfaz de usuario, facelo nas unidades seleccionadas
@@ -2356,6 +2365,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nova compañí
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crear unha nova compañía e unirte a ela
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Este es ti
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Este é o anfitrión da partida
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s} - {NUM}/{NUM} compañía{P "" "s"}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}O número de clientes conectados actualmente, o número de compañías e o número máximo de compañías permitidas polo administrador do servidor.
 
 # Matches ConnectionType
 ###length 5
@@ -4580,7 +4591,9 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}As IAs q
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Xogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
 STR_AI_CONFIG_NONE                                              :(ningunha)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Nº máximo de opoñentes: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Intervalo entre o comezo dos competidores: {ORANGE}{COMMA} minuto{P "" s}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Subir
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a IA seleccionada cara arriba na lista
@@ -4593,7 +4606,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}IAs
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Seleccionar IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Seleccionar script do xogo
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar outro script
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar outro script. Ctrl+Click amosa todas as versións dispoñibles
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar os parámetros do script
 
@@ -5081,11 +5094,24 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... dema
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... o avión non ten autonomía suficiente
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Non hai estación de ferrocarril
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Non hai estación de bus
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Non hai estación de camións
+STR_ERROR_NO_DOCK                                               :{WHITE}Non hai porto
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Non hai aeroporto/heliporto
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Non hai paradas con un tipo de estrada compatible.
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Non hai paradas con un tipo de tranvía compatible
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Non hai paradas que sexan axeitadas para vehículos articulados.{} Os vehículos articulados requiren dunha parada na que se poida pasar directamente, non unha parada en baía.
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Este avión non pode aterrar neste heliporto
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Este helicóptero non pode aterrar neste aeroporto
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Non hai punto de ruta da liña férrea
+STR_ERROR_NO_BUOY                                               :{WHITE}Non hai boia
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Non se pode axusta-lo horario do vehículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Os vehículos só poden parar nas estacións
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este vehículo non para nesta estación
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... horario incompleto
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados sinais
