@@ -376,7 +376,7 @@ struct GRFLocation {
 };
 
 static std::map<GRFLocation, SpriteID> _grm_sprites;
-typedef std::map<GRFLocation, byte*> GRFLineToSpriteOverride;
+typedef std::map<GRFLocation, std::vector<byte>> GRFLineToSpriteOverride;
 static GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
 
 /**
@@ -6688,34 +6688,30 @@ static void CfgApply(ByteReader *buf)
 	size_t pos = file.GetPos();
 	uint32 num = file.GetContainerVersion() >= 2 ? file.ReadDword() : file.ReadWord();
 	uint8 type = file.ReadByte();
-	byte *preload_sprite = nullptr;
 
 	/* Check if the sprite is a pseudo sprite. We can't operate on real sprites. */
-	if (type == 0xFF) {
-		preload_sprite = MallocT<byte>(num);
-		file.ReadBlock(preload_sprite, num);
+	if (type != 0xFF) {
+		GrfMsg(2, "CfgApply: Ignoring (next sprite is real, unsupported)");
+
+		/* Reset the file position to the start of the next sprite */
+		file.SeekTo(pos, SEEK_SET);
+		return;
+	}
+
+	/* Get (or create) the override for the next sprite. */
+	GRFLocation location(_cur.grfconfig->ident.grfid, _cur.nfo_line + 1);
+	std::vector<byte> &preload_sprite = _grf_line_to_action6_sprite_override[location];
+
+	/* Load new sprite data if it hasn't already been loaded. */
+	if (preload_sprite.empty()) {
+		preload_sprite.resize(num);
+		file.ReadBlock(preload_sprite.data(), num);
 	}
 
 	/* Reset the file position to the start of the next sprite */
 	file.SeekTo(pos, SEEK_SET);
 
-	if (type != 0xFF) {
-		GrfMsg(2, "CfgApply: Ignoring (next sprite is real, unsupported)");
-		free(preload_sprite);
-		return;
-	}
-
-	GRFLocation location(_cur.grfconfig->ident.grfid, _cur.nfo_line + 1);
-	GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.find(location);
-	if (it != _grf_line_to_action6_sprite_override.end()) {
-		free(preload_sprite);
-		preload_sprite = _grf_line_to_action6_sprite_override[location];
-	} else {
-		_grf_line_to_action6_sprite_override[location] = preload_sprite;
-	}
-
 	/* Now perform the Action 0x06 on our data. */
-
 	for (;;) {
 		uint i;
 		uint param_num;
@@ -9482,7 +9478,7 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 		_cur.file->ReadBlock(buf, num);
 	} else {
 		/* Use the preloaded sprite data. */
-		buf = _grf_line_to_action6_sprite_override[location];
+		buf = _grf_line_to_action6_sprite_override[location].data();
 		GrfMsg(7, "DecodeSpecialSprite: Using preloaded pseudo sprite data");
 
 		/* Skip the real (original) content of this action. */
@@ -9818,10 +9814,7 @@ static void AfterLoadGRFs()
 	}
 	_string_to_grf_mapping.clear();
 
-	/* Free the action 6 override sprites. */
-	for (GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.begin(); it != _grf_line_to_action6_sprite_override.end(); it++) {
-		free((*it).second);
-	}
+	/* Clear the action 6 override sprites. */
 	_grf_line_to_action6_sprite_override.clear();
 
 	/* Polish cargoes */
