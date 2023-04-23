@@ -63,6 +63,7 @@
 #include "newgrf_roadstop.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 #include "cheat_type.h"
 
@@ -4002,8 +4003,8 @@ void OnTick_Station()
 	}
 }
 
-/** Monthly loop for stations. */
-static IntervalTimer<TimerGameCalendar> _stations_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::STATION}, [](auto)
+/** Economy monthly loop for stations. */
+static IntervalTimer<TimerGameEconomy> _economy_stations_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::STATION}, [](auto)
 {
 	for (Station *st : Station::Iterate()) {
 		for (GoodsEntry &ge : st->goods) {

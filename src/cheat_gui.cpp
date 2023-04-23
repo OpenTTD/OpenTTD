@@ -92,7 +92,7 @@ static int32_t ClickSetProdCheat(int32_t new_value, int32_t)
 	return _cheats.setup_prod.value;
 }
 
-extern void EnginesMonthlyLoop();
+extern void CalendarEnginesMonthlyLoop();
 
 /**
  * Handle changing of the current year.
@@ -119,7 +119,7 @@ static int32_t ClickChangeDateCheat(int32_t new_value, int32_t)
 	TimerGameCalendar::SetDate(new_calendar_date, TimerGameCalendar::date_fract);
 	TimerGameEconomy::SetDate(new_economy_date, TimerGameEconomy::date_fract);
 
-	EnginesMonthlyLoop();
+	CalendarEnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
 	InvalidateWindowClassesData(WC_BUILD_STATION, 0);
 	InvalidateWindowClassesData(WC_BUS_STATION, 0);

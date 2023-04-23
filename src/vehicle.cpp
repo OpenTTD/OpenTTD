@@ -58,6 +58,7 @@
 #include "newgrf_roadstop.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
@@ -2800,7 +2801,7 @@ void Vehicle::RemoveFromShared()
 	this->previous_shared = nullptr;
 }
 
-static IntervalTimer<TimerGameCalendar> _vehicles_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::VEHICLE}, [](auto)
+static IntervalTimer<TimerGameEconomy> _economy_vehicles_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::VEHICLE}, [](auto)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->IsPrimaryVehicle()) {

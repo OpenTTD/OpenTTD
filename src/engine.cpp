@@ -904,7 +904,7 @@ static bool IsVehicleTypeDisabled(VehicleType type, bool ai)
 }
 
 /** Daily check to offer an exclusive engine preview to the companies. */
-static IntervalTimer<TimerGameCalendar> _engines_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::ENGINE}, [](auto)
+static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::ENGINE}, [](auto)
 {
 	for (Company *c : Company::Iterate()) {
 		c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes, TimerGameCalendar::date);
@@ -1089,7 +1089,7 @@ static void NewVehicleAvailable(Engine *e)
 }
 
 /** Monthly update of the availability, reliability, and preview offers of the engines. */
-void EnginesMonthlyLoop()
+void CalendarEnginesMonthlyLoop()
 {
 	if (TimerGameCalendar::year < _year_engine_aging_stops) {
 		bool refresh = false;
@@ -1136,9 +1136,9 @@ void EnginesMonthlyLoop()
 	}
 }
 
-static IntervalTimer<TimerGameCalendar> _engines_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::ENGINE}, [](auto)
+static IntervalTimer<TimerGameCalendar> _calendar_engines_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::ENGINE}, [](auto)
 {
-	EnginesMonthlyLoop();
+	CalendarEnginesMonthlyLoop();
 });
 
 /**
