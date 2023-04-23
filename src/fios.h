@@ -89,6 +89,10 @@ struct FiosItem {
 	uint64 mtime;
 	char title[64];
 	char name[MAX_PATH];
+
+	FiosItem() = default;
+	FiosItem(FiosType type, const std::string &name, const std::string &title, uint64 mtime = 0);
+
 	bool operator< (const FiosItem &other) const;
 };
 
@@ -124,6 +128,8 @@ std::string FiosMakeHeightmapName(const char *name);
 std::string FiosMakeSavegameName(const char *name);
 
 FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last);
+FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last);
+FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last);
 
 void ScanScenarios();
 const char *FindScenario(const ContentInfo *ci, bool md5sum);

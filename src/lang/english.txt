@@ -3134,6 +3134,11 @@ STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Overwrit
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Are you sure you want to overwrite the existing file?
 STR_SAVELOAD_DIRECTORY                                          :{RAW_STRING} (Directory)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{RAW_STRING} (Parent directory)
+STR_SAVELOAD_DRIVE_VOLUMELABEL                                  :{RAW_STRING} ({RAW_STRING})
+STR_SAVELOAD_SAVEGAMES_DIRECTORY                                :OpenTTD Saved Games
+STR_SAVELOAD_AUTOSAVES_DIRECTORY                                :OpenTTD Automatically Saved Games
+STR_SAVELOAD_SCENARIOS_DIRECTORY                                :OpenTTD Scenarios
+STR_SAVELOAD_HEIGHTMAPS_DIRECTORY                               :OpenTTD Heightmaps
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a name for the savegame
 

@@ -13,6 +13,7 @@
 #include "macos.h"
 #include "../../string_func.h"
 #include "../../fileio_func.h"
+#include "../../fios.h"
 #include <pthread.h>
 #include <array>
 
@@ -177,6 +178,37 @@ const char *GetCurrentLocale(const char *)
 	[ preferredLang getCString:retbuf maxLength:32 encoding:NSASCIIStringEncoding ];
 
 	return retbuf;
+}
+
+/**
+ * Add various well-known user folders to a file list.
+ */
+void FiosGetDrives(FileList &file_list)
+{
+	static std::vector<FiosItem> cache;
+	static bool cache_inited = false;
+
+	if (!cache_inited) {
+		static const NSSearchPathDirectory DOMAIN_DIRECTORIES[] = {
+			NSDesktopDirectory, NSDocumentDirectory, NSDownloadsDirectory
+		};
+		NSFileManager *manager = [ NSFileManager defaultManager ];
+
+		for (NSSearchPathDirectory dir : DOMAIN_DIRECTORIES) {
+			NSArray *paths = NSSearchPathForDirectoriesInDomains(dir, NSUserDomainMask, YES);
+			NSString *dir_path = [paths objectAtIndex:0];
+			BOOL isDir = NO;
+			if ([ manager fileExistsAtPath:dir_path isDirectory:&isDir ] == NO || isDir == NO) continue;
+
+			std::string name = [ dir_path UTF8String ];
+			std::string title = [ [ manager displayNameAtPath:dir_path] UTF8String ];
+			cache.emplace_back(FIOS_TYPE_DRIVE, name, title);
+		}
+
+		cache_inited = true;
+	}
+
+	file_list.insert(file_list.end(), cache.begin(), cache.end());
 }
 
 

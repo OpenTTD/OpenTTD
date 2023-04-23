@@ -47,6 +47,16 @@ extern bool FiosGetDiskFreeSpace(const char *path, uint64 *tot);
 extern void GetOldSaveGameName(const std::string &file, char *title, const char *last);
 
 /**
+ * Construct a FiosItem from std::string values for name and title.
+ */
+FiosItem::FiosItem(FiosType type, const std::string &name, const std::string &title, uint64 mtime) :
+	type(type), mtime(mtime)
+{
+	strecpy(this->name, name.c_str(), lastof(this->name));
+	strecpy(this->title, title.c_str(), lastof(this->title));
+}
+
+/**
  * Compare two FiosItem's. Used with sort when sorting the file list.
  * @param other The FiosItem to compare to.
  * @return for ascending order: returns true if da < db. Vice versa for descending order.
@@ -151,10 +161,8 @@ const char *FiosBrowseTo(const FiosItem *item)
 {
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
-#if defined(_WIN32) || defined(__OS2__)
 			assert(_fios_path != nullptr);
-			*_fios_path = std::string{ item->title[0] } + ":" PATHSEP;
-#endif
+			*_fios_path = std::string{ item->name };
 			break;
 
 		case FIOS_TYPE_INVALID:
@@ -422,6 +430,21 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 
 	std::sort(file_list.begin() + sort_start, file_list.end());
 
+	/* Show default directories */
+	if (callback_proc == &FiosGetSavegameListCallback) {
+		file_list.emplace_back(FIOS_TYPE_DRIVE, FioFindDirectory(SAVE_DIR), GetString(STR_SAVELOAD_SAVEGAMES_DIRECTORY));
+		file_list.emplace_back(FIOS_TYPE_DRIVE, FioFindDirectory(AUTOSAVE_DIR), GetString(STR_SAVELOAD_AUTOSAVES_DIRECTORY));
+		file_list.emplace_back(FIOS_TYPE_DRIVE, FioFindDirectory(SCENARIO_DIR), GetString(STR_SAVELOAD_SCENARIOS_DIRECTORY));
+	} else if (callback_proc == &FiosGetScenarioListCallback) {
+		file_list.emplace_back(FIOS_TYPE_DRIVE, FioFindDirectory(SCENARIO_DIR), GetString(STR_SAVELOAD_SCENARIOS_DIRECTORY));
+		file_list.emplace_back(FIOS_TYPE_DRIVE, FioFindDirectory(SAVE_DIR), GetString(STR_SAVELOAD_SAVEGAMES_DIRECTORY));
+		file_list.emplace_back(FIOS_TYPE_DRIVE, FioFindDirectory(HEIGHTMAP_DIR), GetString(STR_SAVELOAD_HEIGHTMAPS_DIRECTORY));
+	} else if (callback_proc == &FiosGetHeightmapListCallback) {
+		file_list.emplace_back(FIOS_TYPE_DRIVE, FioFindDirectory(HEIGHTMAP_DIR), GetString(STR_SAVELOAD_HEIGHTMAPS_DIRECTORY));
+		file_list.emplace_back(FIOS_TYPE_DRIVE, FioFindDirectory(SCENARIO_DIR), GetString(STR_SAVELOAD_SCENARIOS_DIRECTORY));
+		file_list.emplace_back(FIOS_TYPE_DRIVE, FioFindDirectory(SAVE_DIR), GetString(STR_SAVELOAD_SAVEGAMES_DIRECTORY));
+	}
+
 	/* Show drives */
 	FiosGetDrives(file_list);
 
@@ -517,7 +540,7 @@ void FiosGetSavegameList(SaveLoadOperation fop, FileList &file_list)
  * @see FiosGetFileList
  * @see FiosGetScenarioList
  */
-static FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last)
+FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last)
 {
 	/* Show scenario files
 	 * .SCN OpenTTD style scenario file
@@ -558,7 +581,7 @@ void FiosGetScenarioList(SaveLoadOperation fop, FileList &file_list)
 	FiosGetFileList(fop, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
-static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last)
+FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last)
 {
 	/* Show heightmap files
 	 * .PNG PNG Based heightmap files
