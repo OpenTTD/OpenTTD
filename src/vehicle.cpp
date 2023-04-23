@@ -359,15 +359,6 @@ Vehicle::Vehicle(VehicleType type)
 	this->last_loading_station = INVALID_STATION;
 }
 
-/**
- * Get a value for a vehicle's random_bits.
- * @return A random value from 0 to 255.
- */
-byte VehicleRandomBits()
-{
-	return GB(Random(), 0, 8);
-}
-
 /* Size of the hash, 6 = 64 x 64, 7 = 128 x 128. Larger sizes will (in theory) reduce hash
  * lookup times at the expense of memory usage. */
 const int HASH_BITS = 7;

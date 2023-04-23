@@ -50,7 +50,6 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
 
 void VehicleLengthChanged(const Vehicle *u);
 
-byte VehicleRandomBits();
 void ResetVehicleHash();
 void ResetVehicleColourMap();
 

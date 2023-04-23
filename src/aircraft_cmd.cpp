@@ -344,8 +344,8 @@ CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		u->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 
-		v->random_bits = VehicleRandomBits();
-		u->random_bits = VehicleRandomBits();
+		v->random_bits = Random();
+		u->random_bits = Random();
 
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
@@ -375,7 +375,7 @@ CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *
 			w->spritenum = 0xFF;
 			w->subtype = AIR_ROTOR;
 			w->sprite_cache.sprite_seq.Set(SPR_ROTOR_STOPPED);
-			w->random_bits = VehicleRandomBits();
+			w->random_bits = Random();
 			/* Use rotor's air.state to store the rotor animation frame */
 			w->state = HRS_ROTOR_STOPPED;
 			w->UpdateDeltaXY();
