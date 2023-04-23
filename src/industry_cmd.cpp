@@ -2857,7 +2857,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	if ((i->ctlflags & INDCTL_NO_PRODUCTION_INCREASE) && (mul > 0 || increment > 0)) return;
 
 	if (!callback_enabled && (indspec->life_type & INDUSTRYLIFE_PROCESSING)) {
-		if ( (byte)(TimerGameCalendar::year - i->last_prod_year) >= 5 && Chance16(1, original_economy ? 2 : 180)) {
+		if (TimerGameCalendar::year - i->last_prod_year >= PROCESSING_INDUSTRY_ABANDONMENT_YEARS && Chance16(1, original_economy ? 2 : 180)) {
 			closeit = true;
 		}
 	}
