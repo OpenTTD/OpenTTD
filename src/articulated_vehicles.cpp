@@ -8,6 +8,7 @@
 /** @file articulated_vehicles.cpp Implementation of articulated vehicles. */
 
 #include "stdafx.h"
+#include "core/random_func.hpp"
 #include "train.h"
 #include "roadveh.h"
 #include "vehicle_func.h"
@@ -405,7 +406,7 @@ void AddArticulatedParts(Vehicle *first)
 		v->engine_type = engine_type;
 		v->value = 0;
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
-		v->random_bits = VehicleRandomBits();
+		v->random_bits = Random();
 
 		if (flip_image) v->spritenum++;
 

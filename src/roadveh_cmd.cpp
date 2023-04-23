@@ -303,7 +303,7 @@ CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 		v->build_year = TimerGameCalendar::year;
 
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
-		v->random_bits = VehicleRandomBits();
+		v->random_bits = Random();
 		v->SetFrontEngine();
 
 		v->roadtype = rt;
