@@ -3788,7 +3788,7 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centre the main view on industry location. Ctrl+Click opens a new viewport on industry location
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Production level: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_THREATENS_CLOSURE                    :{YELLOW}This industry may close from lack of supplies!
-STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}The industry has announced imminent closure!
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}This industry has announced imminent closure!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Requires: {YELLOW}{STRING}{RAW_STRING}
 STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produces: {YELLOW}{STRING}{RAW_STRING}
