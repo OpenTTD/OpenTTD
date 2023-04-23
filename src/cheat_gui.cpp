@@ -98,22 +98,27 @@ extern void EnginesMonthlyLoop();
 
 /**
  * Handle changing of the current year.
- * @param new_value Unused.
+ * @param new_value The chosen year to change to.
  * @param change_direction +1 (increase) or -1 (decrease).
  * @return New year.
  */
 static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
 {
-	YearMonthDay ymd;
-	ConvertDateToYMD(_date, &ymd);
-
+	/* Don't allow changing to an invalid year, or the current year. */
 	new_value = Clamp(new_value, MIN_YEAR, MAX_YEAR);
 	if (new_value == _cur_year) return _cur_year;
 
+	YearMonthDay ymd;
+	ConvertDateToYMD(_date, &ymd);
 	Date new_date = ConvertYMDToDate(new_value, ymd.month, ymd.day);
+
+	/* Change the date. */
+	SetDate(new_date, _date_fract);
+
+	/* Shift cached dates. */
 	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - _date);
 	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
-	SetDate(new_date, _date_fract);
+
 	EnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
 	InvalidateWindowClassesData(WC_BUILD_STATION, 0);
