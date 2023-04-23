@@ -549,24 +549,24 @@ static void HeightMapCurves(uint level)
 	height_t mh = TGPGetMaxHeight() - I2H(1); // height levels above sea level only
 
 	/** Basically scale height X to height Y. Everything in between is interpolated. */
-	struct control_point_t {
+	struct ControlPoint {
 		height_t x; ///< The height to scale from.
 		height_t y; ///< The height to scale to.
 	};
 	/* Scaled curve maps; value is in height_ts. */
 #define F(fraction) ((height_t)(fraction * mh))
-	const control_point_t curve_map_1[] = { { F(0.0), F(0.0) },                       { F(0.8), F(0.13) },                       { F(1.0), F(0.4)  } };
-	const control_point_t curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.13) }, { F(0.8), F(0.27) },                       { F(1.0), F(0.6)  } };
-	const control_point_t curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.27) }, { F(0.8), F(0.57) },                       { F(1.0), F(0.8)  } };
-	const control_point_t curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.4),  F(0.3)  }, { F(0.7), F(0.8)  }, { F(0.92), F(0.99) }, { F(1.0), F(0.99) } };
+	const ControlPoint curve_map_1[] = { { F(0.0), F(0.0) },                       { F(0.8), F(0.13) },                       { F(1.0), F(0.4)  } };
+	const ControlPoint curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.13) }, { F(0.8), F(0.27) },                       { F(1.0), F(0.6)  } };
+	const ControlPoint curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.27) }, { F(0.8), F(0.57) },                       { F(1.0), F(0.8)  } };
+	const ControlPoint curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.4),  F(0.3)  }, { F(0.7), F(0.8)  }, { F(0.92), F(0.99) }, { F(1.0), F(0.99) } };
 #undef F
 
 	/** Helper structure to index the different curve maps. */
-	struct control_point_list_t {
-		size_t length;               ///< The length of the curve map.
-		const control_point_t *list; ///< The actual curve map.
+	struct ControlPointList {
+		size_t length;            ///< The length of the curve map.
+		const ControlPoint *list; ///< The actual curve map.
 	};
-	const control_point_list_t curve_maps[] = {
+	static const ControlPointList curve_maps[] = {
 		{ lengthof(curve_map_1), curve_map_1 },
 		{ lengthof(curve_map_2), curve_map_2 },
 		{ lengthof(curve_map_3), curve_map_3 },
@@ -647,10 +647,10 @@ static void HeightMapCurves(uint level)
 				if (!HasBit(corner_bits, t)) continue;
 
 				[[maybe_unused]] bool found = false;
-				const control_point_t *cm = curve_maps[t].list;
+				const ControlPoint *cm = curve_maps[t].list;
 				for (uint i = 0; i < curve_maps[t].length - 1; i++) {
-					const control_point_t &p1 = cm[i];
-					const control_point_t &p2 = cm[i + 1];
+					const ControlPoint &p1 = cm[i];
+					const ControlPoint &p2 = cm[i + 1];
 
 					if (*h >= p1.x && *h < p2.x) {
 						ht[t] = p1.y + (*h - p1.x) * (p2.y - p1.y) / (p2.x - p1.x);
