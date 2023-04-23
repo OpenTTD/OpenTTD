@@ -72,6 +72,7 @@
 #include "misc_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_realtime.h"
 #include "timer/timer_game_tick.h"
 
@@ -1424,6 +1425,7 @@ void StateGameLoop()
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_GAMELOOP);
 		AnimateAnimatedTiles();
 		TimerManager<TimerGameCalendar>::Elapsed(1);
+		TimerManager<TimerGameEconomy>::Elapsed(1);
 		TimerManager<TimerGameTick>::Elapsed(1);
 		RunTileLoop();
 		CallVehicleTicks();
