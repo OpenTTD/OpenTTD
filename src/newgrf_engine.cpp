@@ -1207,7 +1207,7 @@ int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, cons
 }
 
 
-static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_random_bits, bool first)
+static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, uint16_t base_random_bits, bool first)
 {
 	/* We can't trigger a non-existent vehicle... */
 	assert(v != nullptr);
@@ -1223,7 +1223,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	v->waiting_triggers = object.GetRemainingTriggers();
 
 	/* Rerandomise bits. Scopes other than SELF are invalid for rerandomisation. For bug-to-bug-compatibility with TTDP we ignore the scope. */
-	byte new_random_bits = Random();
+	uint16_t new_random_bits = Random();
 	uint32 reseed = object.GetReseedSum();
 	v->random_bits &= ~reseed;
 	v->random_bits |= (first ? new_random_bits : base_random_bits) & reseed;
