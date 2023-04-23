@@ -23,6 +23,7 @@
 #include "timer/timer_window.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "zoom_func.h"
 
 #include "widgets/graph_widget.h"
@@ -184,8 +185,8 @@ protected:
 	byte num_vert_lines;
 
 	/* The starting month and year that values are plotted against. */
-	TimerGameCalendar::Month month;
-	TimerGameCalendar::Year year;
+	TimerGameEconomy::Month month;
+	TimerGameEconomy::Year year;
 
 	bool draw_dates = true; ///< Should we draw months and years on the time axis?
 
@@ -383,8 +384,8 @@ protected:
 		if (this->draw_dates) {
 			x = r.left;
 			y = r.bottom + ScaleGUITrad(2);
-			TimerGameCalendar::Month month = this->month;
-			TimerGameCalendar::Year year = this->year;
+			TimerGameEconomy::Month month = this->month;
+			TimerGameEconomy::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
 				SetDParam(1, year);
@@ -500,8 +501,8 @@ public:
 
 		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
 		if (this->draw_dates) {
-			TimerGameCalendar::Month month = this->month;
-			TimerGameCalendar::Year year = this->year;
+			TimerGameEconomy::Month month = this->month;
+			TimerGameEconomy::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
 				SetDParam(1, year);
@@ -580,8 +581,8 @@ public:
 			nums = std::min(this->num_vert_lines, std::max(nums, c->num_valid_stat_ent));
 		}
 
-		int mo = (TimerGameCalendar::month / 3 - nums) * 3;
-		auto yr = TimerGameCalendar::year;
+		int mo = (TimerGameEconomy::month / 3 - nums) * 3;
+		auto yr = TimerGameEconomy::year;
 		while (mo < 0) {
 			yr--;
 			mo += 12;
