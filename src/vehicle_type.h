@@ -35,8 +35,6 @@ enum VehicleType : byte {
 	VEH_INVALID = 0xFF,           ///< Non-existing type of vehicle.
 };
 DECLARE_POSTFIX_INCREMENT(VehicleType)
-/** Helper information for extract tool. */
-template <> struct EnumPropsT<VehicleType> : MakeEnumPropsT<VehicleType, byte, VEH_TRAIN, VEH_END, VEH_INVALID, 3> {};
 
 struct Vehicle;
 struct Train;

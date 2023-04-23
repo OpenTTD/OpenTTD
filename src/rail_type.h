@@ -36,8 +36,6 @@ enum RailType : byte {
 
 /** Allow incrementing of Track variables */
 DECLARE_POSTFIX_INCREMENT(RailType)
-/** Define basic enum properties */
-template <> struct EnumPropsT<RailType> : MakeEnumPropsT<RailType, byte, RAILTYPE_BEGIN, RAILTYPE_END, INVALID_RAILTYPE, 6> {};
 
 /**
  * The different railtypes we support, but then a bitmask of them.
