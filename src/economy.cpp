@@ -54,6 +54,7 @@
 #include "vehicle_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -1980,16 +1981,23 @@ void LoadUnloadStation(Station *st)
 }
 
 /**
- * Monthly update of the economic data (of the companies as well as economic fluctuations).
+ * Every calendar month update of inflation.
  */
-static IntervalTimer<TimerGameCalendar> _companies_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
+static IntervalTimer<TimerGameCalendar> _calendar_inflation_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
 {
-	CompaniesPayInterest();
-	CompaniesGenStatistics();
 	if (_settings_game.economy.inflation) {
 		AddInflation();
 		RecomputePrices();
 	}
+});
+
+/**
+ * Every economy month update of company economic data, plus economy fluctuations.
+ */
+static IntervalTimer<TimerGameEconomy> _economy_companies_monthly({ TimerGameEconomy::MONTH, TimerGameEconomy::Priority::COMPANY }, [](auto)
+{
+	CompaniesGenStatistics();
+	CompaniesPayInterest();
 	HandleEconomyFluctuations();
 });
 

@@ -45,6 +45,7 @@
 #include "terraform_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
@@ -2393,7 +2394,7 @@ void IndustryBuildData::Reset()
 }
 
 /** Monthly update of industry build data. */
-void IndustryBuildData::MonthlyLoop()
+void IndustryBuildData::EconomyMonthlyLoop()
 {
 	static const int NEWINDS_PER_MONTH = 0x38000 / (10 * 12); // lower 16 bits is a float fraction, 3.5 industries per decade, divided by 10 * 12 months.
 	if (_settings_game.difficulty.industry_density == ID_FUND_ONLY) return; // 'no industries' setting.
@@ -2970,13 +2971,13 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 }
 
 /**
- * Daily handler for the industry changes
+ * Every economy day handler for the industry changes
  * Taking the original map size of 256*256, the number of random changes was always of just one unit.
  * But it cannot be the same on smaller or bigger maps. That number has to be scaled up or down.
  * For small maps, it implies that less than one change per month is required, while on bigger maps,
  * it would be way more. The daily loop handles those changes.
  */
-static IntervalTimer<TimerGameCalendar> _industries_daily({TimerGameCalendar::DAY, TimerGameCalendar::Priority::INDUSTRY}, [](auto)
+static IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::INDUSTRY}, [](auto)
 {
 	_economy.industry_daily_change_counter += _economy.industry_daily_increment;
 
@@ -3018,11 +3019,11 @@ static IntervalTimer<TimerGameCalendar> _industries_daily({TimerGameCalendar::DA
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);
 });
 
-static IntervalTimer<TimerGameCalendar> _industries_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::INDUSTRY}, [](auto)
+static IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::INDUSTRY}, [](auto)
 {
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
-	_industry_builder.MonthlyLoop();
+	_industry_builder.EconomyMonthlyLoop();
 
 	for (Industry *i : Industry::Iterate()) {
 		UpdateIndustryStatistics(i);

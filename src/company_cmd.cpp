@@ -36,7 +36,7 @@
 #include "widgets/statusbar_widget.h"
 #include "company_cmd.h"
 #include "timer/timer.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
@@ -747,7 +747,7 @@ void OnTick_Companies()
  * A year has passed, update the economic data of all companies, and perhaps show the
  * financial overview window of the local company.
  */
-static IntervalTimer<TimerGameCalendar> _companies_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::COMPANY}, [](auto)
+static IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::COMPANY}, [](auto)
 {
 	/* Copy statistics */
 	for (Company *c : Company::Iterate()) {
