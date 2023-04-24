@@ -20,7 +20,7 @@
 #include "../company_gui.h"
 #include "../company_cmd.h"
 #include "../core/random_func.hpp"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "../gfx_func.h"
 #include "../error.h"
 #include "../rev.h"
@@ -277,7 +277,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 			if (_sync_seed_1 != _random.state[0]) {
 #endif
 				ShowNetworkError(STR_NETWORK_ERROR_DESYNC);
-				Debug(desync, 1, "sync_err: {:08x}; {:02x}", _date, _date_fract);
+				Debug(desync, 1, "sync_err: {:08x}; {:02x}", TimerGameCalendar::date, TimerGameCalendar::date_fract);
 				Debug(net, 0, "Sync error detected");
 				my_client->ClientError(NETWORK_RECV_STATUS_DESYNC);
 				return false;

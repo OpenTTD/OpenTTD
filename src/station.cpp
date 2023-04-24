@@ -13,7 +13,6 @@
 #include "roadveh.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
-#include "date_func.h"
 #include "command_func.h"
 #include "news_func.h"
 #include "aircraft.h"
@@ -234,7 +233,7 @@ void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 	}
 	this->facilities |= new_facility_bit;
 	this->owner = _current_company;
-	this->build_date = _date;
+	this->build_date = TimerGameCalendar::date;
 }
 
 /**

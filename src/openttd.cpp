@@ -39,7 +39,6 @@
 #include "genworld.h"
 #include "progress.h"
 #include "strings_func.h"
-#include "date_func.h"
 #include "vehicle_func.h"
 #include "gamelog.h"
 #include "animated_tile_func.h"
@@ -866,7 +865,7 @@ static void OnStartScenario()
 
 	/* Make sure all industries were built "this year", to avoid too early closures. (#9918) */
 	for (Industry *i : Industry::Iterate()) {
-		i->last_prod_year = _cur_year;
+		i->last_prod_year = TimerGameCalendar::year;
 	}
 }
 
@@ -1120,7 +1119,7 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
 			if (SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_EDITOR, NO_DIRECTORY)) {
 				SetLocalCompany(OWNER_NONE);
-				_settings_newgame.game_creation.starting_year = _cur_year;
+				_settings_newgame.game_creation.starting_year = TimerGameCalendar::year;
 				/* Cancel the saveload pausing */
 				Command<CMD_PAUSE>::Post(PM_PAUSED_SAVELOAD, false);
 			} else {
@@ -1404,10 +1403,10 @@ void StateGameLoop()
 		CallWindowGameTickEvent();
 		NewsLoop();
 	} else {
-		if (_debug_desync_level > 2 && _date_fract == 0 && (_date & 0x1F) == 0) {
+		if (_debug_desync_level > 2 && TimerGameCalendar::date_fract == 0 && (TimerGameCalendar::date & 0x1F) == 0) {
 			/* Save the desync savegame if needed. */
 			char name[MAX_PATH];
-			seprintf(name, lastof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
+			seprintf(name, lastof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, TimerGameCalendar::date);
 			SaveOrLoad(name, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
 		}
 
@@ -1446,7 +1445,7 @@ void StateGameLoop()
 static IntervalTimer<TimerGameCalendar> _autosave_interval({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::AUTOSAVE}, [](auto)
 {
 	if (_settings_client.gui.autosave == 0) return;
-	if ((_cur_month % _autosave_months[_settings_client.gui.autosave]) != 0) return;
+	if ((TimerGameCalendar::month % _autosave_months[_settings_client.gui.autosave]) != 0) return;
 
 	_do_autosave = true;
 	SetWindowDirty(WC_STATUS_BAR, 0);

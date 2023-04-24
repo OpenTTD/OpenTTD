@@ -260,7 +260,7 @@ static void InitializeWindowsAndCaches()
 		 * accordingly if it is not the case.  No need to set it on companies that are not been used already,
 		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
 		if (_file_to_saveload.abstract_ftype == FT_SCENARIO && c->inaugurated_year != MIN_YEAR) {
-			c->inaugurated_year = _cur_year;
+			c->inaugurated_year = TimerGameCalendar::year;
 		}
 	}
 
@@ -748,12 +748,12 @@ bool AfterLoadGame()
 		default: break;
 	}
 
-	/* The value of _date_fract got divided, so make sure that old games are converted correctly. */
-	if (IsSavegameVersionBefore(SLV_11, 1) || (IsSavegameVersionBefore(SLV_147) && _date_fract > DAY_TICKS)) _date_fract /= 885;
+	/* The value of TimerGameCalendar::date_fract got divided, so make sure that old games are converted correctly. */
+	if (IsSavegameVersionBefore(SLV_11, 1) || (IsSavegameVersionBefore(SLV_147) && TimerGameCalendar::date_fract > DAY_TICKS)) TimerGameCalendar::date_fract /= 885;
 
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */
-	SetDate(_date, _date_fract);
+	TimerGameCalendar::SetDate(TimerGameCalendar::date, TimerGameCalendar::date_fract);
 
 	/*
 	 * Force the old behaviour for compatibility reasons with old savegames. As new
@@ -1444,8 +1444,8 @@ bool AfterLoadGame()
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
 	if (IsSavegameVersionBefore(SLV_31)) {
-		_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		_cur_year += ORIGINAL_BASE_YEAR;
+		TimerGameCalendar::date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		TimerGameCalendar::year += ORIGINAL_BASE_YEAR;
 
 		for (Station *st : Station::Iterate())   st->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		for (Waypoint *wp : Waypoint::Iterate()) wp->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
@@ -1960,7 +1960,7 @@ bool AfterLoadGame()
 
 			/* Replace "house construction year" with "house age" */
 			if (IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)) {
-				t.m5() = Clamp(_cur_year - (t.m5() + ORIGINAL_BASE_YEAR), 0, 0xFF);
+				t.m5() = Clamp(TimerGameCalendar::year - (t.m5() + ORIGINAL_BASE_YEAR), 0, 0xFF);
 			}
 		}
 	}
@@ -2108,7 +2108,7 @@ bool AfterLoadGame()
 					o->location.tile = (TileIndex)t;
 					o->location.w    = size;
 					o->location.h    = size;
-					o->build_date    = _date;
+					o->build_date    = TimerGameCalendar::date;
 					o->town          = type == OBJECT_STATUE ? Town::Get(t.m2()) : CalcClosestTownFromTile(t, UINT_MAX);
 					t.m2() = o->index;
 					Object::IncTypeCount(type);
@@ -2437,7 +2437,7 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_142)) {
-		for (Depot *d : Depot::Iterate()) d->build_date = _date;
+		for (Depot *d : Depot::Iterate()) d->build_date = TimerGameCalendar::date;
 	}
 
 	/* In old versions it was possible to remove an airport while a plane was

@@ -13,17 +13,17 @@
 #include "../script_instance.hpp"
 #include "../../bridge_map.h"
 #include "../../strings_func.h"
-#include "../../date_func.h"
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
 #include "../../tunnelbridge_cmd.h"
+#include "../../timer/timer_game_calendar.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
 
 /* static */ bool ScriptBridge::IsValidBridge(BridgeID bridge_id)
 {
-	return bridge_id < MAX_BRIDGES && ::GetBridgeSpec(bridge_id)->avail_year <= _cur_year;
+	return bridge_id < MAX_BRIDGES && ::GetBridgeSpec(bridge_id)->avail_year <= TimerGameCalendar::year;
 }
 
 /* static */ bool ScriptBridge::IsBridgeTile(TileIndex tile)

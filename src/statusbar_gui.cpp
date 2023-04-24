@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "core/backup_type.hpp"
-#include "date_func.h"
 #include "gfx_func.h"
 #include "news_func.h"
 #include "company_func.h"
@@ -138,7 +137,7 @@ struct StatusBarWindow : Window {
 		switch (widget) {
 			case WID_S_LEFT:
 				/* Draw the date */
-				SetDParam(0, _date);
+				SetDParam(0, TimerGameCalendar::date);
 				DrawString(tr, STR_WHITE_DATE_LONG, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 

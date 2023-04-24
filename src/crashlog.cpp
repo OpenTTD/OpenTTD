@@ -11,6 +11,7 @@
 #include "crashlog.h"
 #include "gamelog.h"
 #include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "map_func.h"
 #include "rev.h"
 #include "strings_func.h"
@@ -357,8 +358,8 @@ char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 	buffer += UTCTime::Format(buffer, last, "Crash at: %Y-%m-%d %H:%M:%S (UTC)\n");
 
 	YearMonthDay ymd;
-	ConvertDateToYMD(_date, &ymd);
-	buffer += seprintf(buffer, last, "In game date: %i-%02i-%02i (%i)\n\n", ymd.year, ymd.month + 1, ymd.day, _date_fract);
+	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	buffer += seprintf(buffer, last, "In game date: %i-%02i-%02i (%i)\n\n", ymd.year, ymd.month + 1, ymd.day, TimerGameCalendar::date_fract);
 
 	buffer = this->LogError(buffer, last, CrashLog::message.c_str());
 	buffer = this->LogOpenTTDVersion(buffer, last);

@@ -20,7 +20,7 @@ typedef uint8  Month; ///< Type for the month, note: 0 based, i.e. 0 = January, 
 typedef uint8  Day;   ///< Type for the day of the month, note: 1 based, first day of a month is 1.
 
 /**
- * 1 day is 74 ticks; _date_fract used to be uint16 and incremented by 885. On
+ * 1 day is 74 ticks; TimerGameCalendar::date_fract used to be uint16 and incremented by 885. On
  *                    an overflow the new day begun and 65535 / 885 = 74.
  * 1 tick is approximately 27 ms.
  * 1 day is thus about 2 seconds (74 * 27 = 1998) on a machine that can run OpenTTD normally
@@ -45,7 +45,7 @@ static const int INDUSTRY_CUT_TREE_TICKS  = INDUSTRY_PRODUCE_TICKS * 2; ///< cyc
  * ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR and DAYS_TILL_ORIGINAL_BASE_YEAR are
  * primarily used for loading newgrf and savegame data and returning some
  * newgrf (callback) functions that were in the original (TTD) inherited
- * format, where '_date == 0' meant that it was 1920-01-01.
+ * format, where 'TimerGameCalendar::date == 0' meant that it was 1920-01-01.
  */
 
 /** The minimum starting year/base year of the original TTD */
@@ -77,7 +77,7 @@ static const Year ORIGINAL_MAX_YEAR  = 2090;
 #define DAYS_TILL(year) (DAYS_IN_YEAR * (year) + LEAP_YEARS_TILL(year))
 
 /**
- * The offset in days from the '_date == 0' till
+ * The offset in days from the 'TimerGameCalendar::date == 0' till
  * 'ConvertYMDToDate(ORIGINAL_BASE_YEAR, 0, 1)'
  */
 #define DAYS_TILL_ORIGINAL_BASE_YEAR DAYS_TILL(ORIGINAL_BASE_YEAR)

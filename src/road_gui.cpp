@@ -30,7 +30,6 @@
 #include "engine_base.h"
 #include "strings_func.h"
 #include "core/geometry_func.hpp"
-#include "date_func.h"
 #include "station_cmd.h"
 #include "road_cmd.h"
 #include "tunnelbridge_cmd.h"
@@ -1875,7 +1874,7 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 {
 	RoadTypes avail_roadtypes = GetRoadTypes(false);
-	avail_roadtypes = AddDateIntroducedRoadTypes(avail_roadtypes, _date);
+	avail_roadtypes = AddDateIntroducedRoadTypes(avail_roadtypes, TimerGameCalendar::date);
 	RoadTypes used_roadtypes = GetRoadTypes(true);
 
 	/* Filter listed road types */

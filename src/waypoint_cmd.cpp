@@ -19,7 +19,7 @@
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
 #include "window_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
 #include "string_func.h"
 #include "company_func.h"
@@ -248,7 +248,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 
 		wp->delete_ctr = 0;
 		wp->facilities |= FACIL_TRAIN;
-		wp->build_date = _date;
+		wp->build_date = TimerGameCalendar::date;
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
 		wp->train_station = new_location;
 
@@ -329,7 +329,7 @@ CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile)
 		wp->facilities |= FACIL_DOCK;
 		wp->owner = OWNER_NONE;
 
-		wp->build_date = _date;
+		wp->build_date = TimerGameCalendar::date;
 
 		if (wp->town == nullptr) MakeDefaultName(wp);
 

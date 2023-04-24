@@ -30,6 +30,7 @@
 #include "viewport_func.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "company_func.h"
 #include "gamelog.h"
 #include "ai/ai.hpp"
@@ -1451,7 +1452,7 @@ DEF_CONSOLE_CMD(ConGetDate)
 	}
 
 	YearMonthDay ymd;
-	ConvertDateToYMD(_date, &ymd);
+	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 	IConsolePrint(CC_DEFAULT, "Date: {:04d}-{:02d}-{:02d}", ymd.year, ymd.month + 1, ymd.day);
 	return true;
 }
@@ -2290,7 +2291,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			IConsolePrint(CC_DEBUG, "Started profiling for GRFID{} {}.", (started > 1) ? "s" : "", grfids);
 			if (argc >= 3) {
 				int days = std::max(atoi(argv[2]), 1);
-				_newgrf_profile_end_date = _date + days;
+				_newgrf_profile_end_date = TimerGameCalendar::date + days;
 
 				char datestrbuf[32]{ 0 };
 				SetDParam(0, _newgrf_profile_end_date);

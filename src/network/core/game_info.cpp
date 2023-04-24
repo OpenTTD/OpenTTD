@@ -14,6 +14,7 @@
 #include "../../core/bitmath_func.hpp"
 #include "../../company_base.h"
 #include "../../date_func.h"
+#include "../../timer/timer_game_calendar.h"
 #include "../../debug.h"
 #include "../../map_func.h"
 #include "../../game/game.hpp"
@@ -149,7 +150,7 @@ const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
 	 */
 	_network_game_info.companies_on  = (byte)Company::GetNumItems();
 	_network_game_info.spectators_on = NetworkSpectatorCount();
-	_network_game_info.game_date     = _date;
+	_network_game_info.game_date     = TimerGameCalendar::date;
 	return &_network_game_info;
 }
 

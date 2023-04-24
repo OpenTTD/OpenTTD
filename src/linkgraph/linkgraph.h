@@ -14,7 +14,7 @@
 #include "../core/smallmap_type.hpp"
 #include "../station_base.h"
 #include "../cargotype.h"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "../saveload/saveload.h"
 #include "linkgraph_type.h"
 #include <utility>
@@ -106,7 +106,7 @@ public:
 		void UpdateSupply(uint supply)
 		{
 			this->supply += supply;
-			this->last_update = _date;
+			this->last_update = TimerGameCalendar::date;
 		}
 
 		/**
@@ -195,7 +195,7 @@ public:
 	 * Real constructor.
 	 * @param cargo Cargo the link graph is about.
 	 */
-	LinkGraph(CargoID cargo) : cargo(cargo), last_compression(_date) {}
+	LinkGraph(CargoID cargo) : cargo(cargo), last_compression(TimerGameCalendar::date) {}
 
 	void Init(uint size);
 	void ShiftDates(int interval);
@@ -249,7 +249,7 @@ public:
 	 */
 	inline uint Monthly(uint base) const
 	{
-		return base * 30 / (_date - this->last_compression + 1);
+		return base * 30 / (TimerGameCalendar::date - this->last_compression + 1);
 	}
 
 	NodeID AddNode(const Station *st);

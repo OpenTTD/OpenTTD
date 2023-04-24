@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "window_gui.h"
 #include "strings_func.h"
-#include "date_func.h"
 #include "gui.h"
 #include "story_base.h"
 #include "core/geometry_func.hpp"

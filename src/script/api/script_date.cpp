@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "script_date.hpp"
 #include "../../date_func.h"
+#include "../../timer/timer_game_calendar.h"
 
 #include <time.h>
 
@@ -22,7 +23,7 @@
 
 /* static */ ScriptDate::Date ScriptDate::GetCurrentDate()
 {
-	return (ScriptDate::Date)_date;
+	return (ScriptDate::Date)TimerGameCalendar::date;
 }
 
 /* static */ SQInteger ScriptDate::GetYear(ScriptDate::Date date)

@@ -11,7 +11,7 @@
 
 #include "../strings_func.h"
 #include "../command_func.h"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "network_admin.h"
 #include "network_client.h"
 #include "network_query.h"
@@ -263,7 +263,7 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 	char *msg_ptr = message + Utf8Encode(message, _current_text_dir == TD_LTR ? CHAR_TD_LRM : CHAR_TD_RLM);
 	GetString(msg_ptr, strid, lastof(message));
 
-	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", _date, _date_fract, message);
+	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", TimerGameCalendar::date, TimerGameCalendar::date_fract, message);
 	IConsolePrint(colour, message);
 	NetworkAddChatMessage(colour, _settings_client.gui.network_chat_timeout, message);
 }
@@ -1038,12 +1038,12 @@ void NetworkGameLoop()
 
 	if (_network_server) {
 		/* Log the sync state to check for in-syncedness of replays. */
-		if (_date_fract == 0) {
+		if (TimerGameCalendar::date_fract == 0) {
 			/* We don't want to log multiple times if paused. */
 			static Date last_log;
-			if (last_log != _date) {
-				Debug(desync, 1, "sync: {:08x}; {:02x}; {:08x}; {:08x}", _date, _date_fract, _random.state[0], _random.state[1]);
-				last_log = _date;
+			if (last_log != TimerGameCalendar::date) {
+				Debug(desync, 1, "sync: {:08x}; {:02x}; {:08x}; {:08x}", TimerGameCalendar::date, TimerGameCalendar::date_fract, _random.state[0], _random.state[1]);
+				last_log = TimerGameCalendar::date;
 			}
 		}
 
@@ -1061,19 +1061,19 @@ void NetworkGameLoop()
 		}
 
 		while (f != nullptr && !feof(f)) {
-			if (_date == next_date && _date_fract == next_date_fract) {
+			if (TimerGameCalendar::date == next_date && TimerGameCalendar::date_fract == next_date_fract) {
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->cmd, cp->err_msg, nullptr, cp->company, cp->data);
-					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {:06x}; {} ({})", _date, _date_fract, (int)_current_company, cp->cmd, cp->tile, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
+					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {:06x}; {} ({})", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)_current_company, cp->cmd, cp->tile, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
 				}
 				if (check_sync_state) {
 					if (sync_state[0] == _random.state[0] && sync_state[1] == _random.state[1]) {
-						Debug(desync, 0, "Sync check: {:08x}; {:02x}; match", _date, _date_fract);
+						Debug(desync, 0, "Sync check: {:08x}; {:02x}; match", TimerGameCalendar::date, TimerGameCalendar::date_fract);
 					} else {
 						Debug(desync, 0, "Sync check: {:08x}; {:02x}; mismatch expected {{{:08x}, {:08x}}}, got {{{:08x}, {:08x}}}",
-									_date, _date_fract, sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
+									TimerGameCalendar::date, TimerGameCalendar::date_fract, sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
 						NOT_REACHED();
 					}
 					check_sync_state = false;

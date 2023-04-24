@@ -33,7 +33,7 @@
 #include "newgrf_debug.h"
 #include "newgrf_railtype.h"
 #include "newgrf_roadtype.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "genworld.h"
 #include "company_gui.h"
 #include "road_func.h"
@@ -1171,7 +1171,7 @@ CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, 
 
 	if (flags & DC_EXEC) {
 		Depot *dep = new Depot(tile);
-		dep->build_date = _date;
+		dep->build_date = TimerGameCalendar::date;
 
 		/* A road depot has two road bits. */
 		UpdateCompanyRoadInfrastructure(rt, _current_company, ROAD_DEPOT_TRACKBIT_FACTOR);

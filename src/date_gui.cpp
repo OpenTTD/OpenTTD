@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "strings_func.h"
 #include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "window_func.h"
 #include "window_gui.h"
 #include "date_gui.h"
@@ -50,7 +51,7 @@ struct SetDateWindow : Window {
 		this->parent = parent;
 		this->InitNested(window_number);
 
-		if (initial_date == 0) initial_date = _date;
+		if (initial_date == 0) initial_date = TimerGameCalendar::date;
 		ConvertDateToYMD(initial_date, &this->date);
 		this->date.year = Clamp(this->date.year, min_year, max_year);
 	}

@@ -29,7 +29,7 @@
 #include "object_base.h"
 #include "newgrf_config.h"
 #include "newgrf_object.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "newgrf_debug.h"
 #include "vehicle_func.h"
 #include "station_func.h"
@@ -92,7 +92,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	o->type          = type;
 	o->location      = ta;
 	o->town          = town == nullptr ? CalcClosestTownFromTile(tile) : town;
-	o->build_date    = _date;
+	o->build_date    = TimerGameCalendar::date;
 	o->view          = view;
 
 	/* If nothing owns the object, the colour will be random. Otherwise

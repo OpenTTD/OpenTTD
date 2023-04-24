@@ -21,6 +21,7 @@
 #include "../debug.h"
 #include "../depot_base.h"
 #include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "../vehicle_func.h"
 #include "../effectvehicle_base.h"
 #include "../engine_func.h"
@@ -398,7 +399,7 @@ static bool FixTTOEngines()
 		for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
 	}
 
-	Date aging_date = std::min(_date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
+	Date aging_date = std::min(TimerGameCalendar::date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
 
 	for (EngineID i = 0; i < 256; i++) {
 		int oi = ttd_to_tto[i];
@@ -406,17 +407,17 @@ static bool FixTTOEngines()
 
 		if (oi == 255) {
 			/* Default engine is used */
-			_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+			TimerGameCalendar::date += DAYS_TILL_ORIGINAL_BASE_YEAR;
 			StartupOneEngine(e, aging_date, 0);
 			CalcEngineReliability(e, false);
 			e->intro_date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
-			_date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
+			TimerGameCalendar::date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
 
 			/* Make sure for example monorail and maglev are available when they should be */
-			if (_date >= e->intro_date && HasBit(e->info.climates, 0)) {
+			if (TimerGameCalendar::date >= e->intro_date && HasBit(e->info.climates, 0)) {
 				e->flags |= ENGINE_AVAILABLE;
 				e->company_avail = MAX_UVALUE(CompanyMask);
-				e->age = _date > e->intro_date ? (_date - e->intro_date) / 30 : 0;
+				e->age = TimerGameCalendar::date > e->intro_date ? (TimerGameCalendar::date - e->intro_date) / 30 : 0;
 			}
 		} else {
 			/* Using data from TTO savegame */
@@ -846,7 +847,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 			if (i->type == 0x0A) i->type = 0x12; // Iron Ore Mine has different ID
 
 			YearMonthDay ymd;
-			ConvertDateToYMD(_date, &ymd);
+			ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 			i->last_prod_year = ymd.year;
 
 			i->random_colour = RemapTTOColour(i->random_colour);
@@ -1580,8 +1581,8 @@ extern uint8 _old_units;
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0 ),
 	OCL_ASSERT( OC_TTO, 0 ),
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32, 1, &_date ),
-	OCL_VAR ( OC_UINT16,   1, &_date_fract ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32, 1, &TimerGameCalendar::date ),
+	OCL_VAR ( OC_UINT16,   1, &TimerGameCalendar::date_fract ),
 	OCL_NULL( 600 ),            ///< TextEffects
 	OCL_VAR ( OC_UINT32,   2, &_random.state ),
 

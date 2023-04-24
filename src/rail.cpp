@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "station_map.h"
 #include "tunnelbridge_map.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "company_func.h"
 #include "company_base.h"
 #include "engine_base.h"
@@ -256,7 +256,7 @@ RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
-				(HasBit(e->company_avail, company) || _date >= e->intro_date + DAYS_IN_YEAR)) {
+				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + DAYS_IN_YEAR)) {
 			const RailVehicleInfo *rvi = &e->u.rail;
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
@@ -270,7 +270,7 @@ RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRailTypes(rts, _date);
+	if (introduces) return AddDateIntroducedRailTypes(rts, TimerGameCalendar::date);
 	return rts;
 }
 

@@ -23,7 +23,6 @@
 #include "company_manager_face.h"
 #include "window_func.h"
 #include "strings_func.h"
-#include "date_func.h"
 #include "sound_func.h"
 #include "rail.h"
 #include "core/pool_func.hpp"
@@ -570,7 +569,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 
 	c->avail_railtypes = GetCompanyRailtypes(c->index);
 	c->avail_roadtypes = GetCompanyRoadTypes(c->index);
-	c->inaugurated_year = _cur_year;
+	c->inaugurated_year = TimerGameCalendar::year;
 
 	/* If starting a player company in singleplayer and a favorite company manager face is selected, choose it. Otherwise, use a random face.
 	 * In a network game, we'll choose the favorite face later in CmdCompanyCtrl to sync it to all clients. */

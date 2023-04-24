@@ -34,7 +34,6 @@
 #include "town.h"
 #include "company_func.h"
 #include "strings_func.h"
-#include "date_func.h"
 #include "viewport_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
@@ -923,7 +922,7 @@ static void DoDisaster()
 
 	byte j = 0;
 	for (size_t i = 0; i != lengthof(_disasters); i++) {
-		if (_cur_year >= _disasters[i].min_year && _cur_year < _disasters[i].max_year) buf[j++] = (byte)i;
+		if (TimerGameCalendar::year >= _disasters[i].min_year && TimerGameCalendar::year < _disasters[i].max_year) buf[j++] = (byte)i;
 	}
 
 	if (j == 0) return;

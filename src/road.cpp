@@ -15,7 +15,7 @@
 #include "company_func.h"
 #include "company_base.h"
 #include "engine_base.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "landscape.h"
 #include "road.h"
 #include "road_func.h"
@@ -194,7 +194,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
-				(HasBit(e->company_avail, company) || _date >= e->intro_date + DAYS_IN_YEAR)) {
+				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + DAYS_IN_YEAR)) {
 			const RoadVehicleInfo *rvi = &e->u.road;
 			assert(rvi->roadtype < ROADTYPE_END);
 			if (introduces) {
@@ -205,7 +205,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRoadTypes(rts, _date);
+	if (introduces) return AddDateIntroducedRoadTypes(rts, TimerGameCalendar::date);
 	return rts;
 }
 

@@ -17,6 +17,7 @@
 #include "newgrf_sound.h"
 #include "object_base.h"
 #include "object_map.h"
+#include "timer/timer_game_calendar.h"
 #include "tile_cmd.h"
 #include "town.h"
 #include "water.h"
@@ -82,7 +83,7 @@ bool ObjectSpec::IsEverAvailable() const
  */
 bool ObjectSpec::WasEverAvailable() const
 {
-	return this->IsEverAvailable() && _date > this->introduction_date;
+	return this->IsEverAvailable() && TimerGameCalendar::date > this->introduction_date;
 }
 
 /**
@@ -92,7 +93,7 @@ bool ObjectSpec::WasEverAvailable() const
 bool ObjectSpec::IsAvailable() const
 {
 	return this->WasEverAvailable() &&
-			(_date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365);
+			(TimerGameCalendar::date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365);
 }
 
 /**
@@ -276,7 +277,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 				break;
 
 			/* Construction date */
-			case 0x42: return _date;
+			case 0x42: return TimerGameCalendar::date;
 
 			/* Object founder information */
 			case 0x44: return _current_company;

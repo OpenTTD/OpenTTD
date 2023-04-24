@@ -20,6 +20,29 @@
 
 #include "safeguards.h"
 
+Year TimerGameCalendar::year = {};
+Month TimerGameCalendar::month = {};
+Date TimerGameCalendar::date = {};
+DateFract TimerGameCalendar::date_fract = {};
+
+/**
+ * Set the date.
+ * @param date  New date
+ * @param fract The number of ticks that have passed on this date.
+ */
+/* static */ void TimerGameCalendar::SetDate(Date date, DateFract fract)
+{
+	assert(fract < DAY_TICKS);
+
+	YearMonthDay ymd;
+
+	TimerGameCalendar::date = date;
+	TimerGameCalendar::date_fract = fract;
+	ConvertDateToYMD(date, &ymd);
+	TimerGameCalendar::year = ymd.year;
+	TimerGameCalendar::month = ymd.month;
+}
+
 template<>
 void IntervalTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigger)
 {
@@ -48,25 +71,25 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 
 	if (_game_mode == GM_MENU) return;
 
-	_date_fract++;
-	if (_date_fract < DAY_TICKS) return;
-	_date_fract = 0;
+	TimerGameCalendar::date_fract++;
+	if (TimerGameCalendar::date_fract < DAY_TICKS) return;
+	TimerGameCalendar::date_fract = 0;
 
 	/* increase day counter */
-	_date++;
+	TimerGameCalendar::date++;
 
 	YearMonthDay ymd;
-	ConvertDateToYMD(_date, &ymd);
+	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 
 	/* check if we entered a new month? */
-	bool new_month = ymd.month != _cur_month;
+	bool new_month = ymd.month != TimerGameCalendar::month;
 
 	/* check if we entered a new year? */
-	bool new_year = ymd.year != _cur_year;
+	bool new_year = ymd.year != TimerGameCalendar::year;
 
 	/* update internal variables before calling the daily/monthly/yearly loops */
-	_cur_month = ymd.month;
-	_cur_year  = ymd.year;
+	TimerGameCalendar::month = ymd.month;
+	TimerGameCalendar::year = ymd.year;
 
 	/* Make a temporary copy of the timers, as a timer's callback might add/remove other timers. */
 	auto timers = TimerManager<TimerGameCalendar>::GetTimers();
@@ -88,12 +111,12 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 	}
 
 	/* check if we reached the maximum year, decrement dates by a year */
-	if (_cur_year == MAX_YEAR + 1) {
+	if (TimerGameCalendar::year == MAX_YEAR + 1) {
 		int days_this_year;
 
-		_cur_year--;
-		days_this_year = IsLeapYear(_cur_year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
-		_date -= days_this_year;
+		TimerGameCalendar::year--;
+		days_this_year = IsLeapYear(TimerGameCalendar::year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
+		TimerGameCalendar::date -= days_this_year;
 		for (Vehicle *v : Vehicle::Iterate()) v->ShiftDates(-days_this_year);
 		for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(-days_this_year);
 	}

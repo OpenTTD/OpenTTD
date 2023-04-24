@@ -24,7 +24,6 @@
 #include "misc_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
-#include "date_func.h"
 
 #include "widgets/highscore_widget.h"
 
@@ -260,7 +259,7 @@ static IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::YEAR
 	if (_settings_game.game_creation.ending_year == 0) return;
 
 	/* Show the end-game chart at the end of the ending year (hence the + 1). */
-	if (_cur_year == _settings_game.game_creation.ending_year + 1) {
+	if (TimerGameCalendar::year == _settings_game.game_creation.ending_year + 1) {
 		ShowEndGameChart();
 	}
 });

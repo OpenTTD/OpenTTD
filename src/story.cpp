@@ -14,7 +14,7 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "string_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "tile_map.h"
 #include "goal_type.h"
 #include "goal_base.h"
@@ -218,7 +218,7 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlag flags, Com
 
 		StoryPage *s = new StoryPage();
 		s->sort_value = _story_page_next_sort_value;
-		s->date = _date;
+		s->date = TimerGameCalendar::date;
 		s->company = company;
 		if (text.empty()) {
 			s->title = nullptr;

@@ -25,29 +25,7 @@
 
 #include "safeguards.h"
 
-Year      _cur_year;   ///< Current year, starting at 0
-Month     _cur_month;  ///< Current month (0..11)
-Date      _date;       ///< Current date in days (day counter)
-DateFract _date_fract; ///< Fractional part of the day.
 uint64 _tick_counter;  ///< Ever incrementing tick counter for setting off various events
-
-/**
- * Set the date.
- * @param date  New date
- * @param fract The number of ticks that have passed on this date.
- */
-void SetDate(Date date, DateFract fract)
-{
-	assert(fract < DAY_TICKS);
-
-	YearMonthDay ymd;
-
-	_date = date;
-	_date_fract = fract;
-	ConvertDateToYMD(date, &ymd);
-	_cur_year = ymd.year;
-	_cur_month = ymd.month;
-}
 
 #define M(a, b) ((a << 5) | b)
 static const uint16 _month_date_from_year_day[] = {
