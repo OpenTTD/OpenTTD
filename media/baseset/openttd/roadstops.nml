@@ -1,0 +1,17 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Road stop graphics
+replacenew(ROAD_STOPS, "roadstops.png") {
+	[  34, 8, 13, 23,   5, -11 ]
+	[  66, 8, 13, 15,   5,  -2 ]
+	[  98, 8, 21, 19, -20,  -7 ]
+	[ 130, 8, 22, 17, -25,  -4 ]
+	[ 162, 8, 32, 25,  -5,  -9 ]
+	[ 210, 8, 28, 26,  -3, -12 ]
+	[ 258, 8, 29, 25, -24, -12 ]
+	[ 306, 8, 32, 25, -25,  -9 ]
+}

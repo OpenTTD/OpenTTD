@@ -1,0 +1,33 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Aqueduct graphics by Jonathan G. Rennison / PaulC"
+
+if (climate == CLIMATE_TEMPERATE) {
+	// temperate aqueduct
+	replacenew(AQUEDUCTS, "aqueduct.png") {
+		[  34, 8, 61, 32, -30, -9 ]
+		[ 114, 8, 62, 31, -29, -9 ]
+		[ 194, 8, 61, 32, -30, -9 ]
+		[ 274, 8, 62, 31, -29, -9 ]
+		[ 354, 8, 61, 32, -30, -4 ]
+		[ 434, 8, 62, 31, -29, -4 ]
+		[ 514, 8, 33, 23, -31,  0 ]
+		[ 562, 8, 33, 23,   0,  1 ]
+	}
+} else {
+	// non-temperate aqueduct
+	replacenew(AQUEDUCTS, "aqueduct.png") {
+		[  34, 48, 61, 32, -30, -9 ]
+		[ 114, 48, 62, 31, -29, -9 ]
+		[ 194, 48, 61, 32, -30, -9 ]
+		[ 274, 48, 62, 31, -29, -9 ]
+		[ 354, 48, 61, 32, -30, -4 ]
+		[ 434, 48, 62, 31, -29, -4 ]
+		[ 514, 48, 33, 23, -31,  0 ]
+		[ 562, 48, 33, 23,   0,  1 ]
+	}
+}

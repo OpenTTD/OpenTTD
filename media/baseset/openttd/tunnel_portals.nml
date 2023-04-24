@@ -1,0 +1,77 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Tunnel portal overlays for railtypes by Snail (Jacopo Coletto)
+
+if (climate == CLIMATE_TROPIC) {
+	// Tropical sprites.
+	replacenew(RAILTYPE_TUNNELS, "tunnel_portals.png") {
+		[   5,  88, 35, 33, -31,  -2 ]
+		[  43,  88, 40, 37,  -7, -38 ]
+		[  86,  88, 35, 21, -31,   0 ]
+		[ 124,  88, 40, 22,  -7, -29 ]
+		[ 168,  88, 35, 21,  -2,   0 ]
+		[ 206,  88, 40, 22, -31, -29 ]
+		[ 249,  88, 35, 33,  -2,  -2 ]
+		[ 287,  88, 40, 37, -31, -38 ]
+		[   5, 170, 35, 33, -31,  -2 ]
+		[  43, 170, 40, 37,  -7, -38 ]
+		[  86, 170, 35, 21, -31,   0 ]
+		[ 124, 170, 40, 22,  -7, -29 ]
+		[ 168, 170, 35, 21,  -2,   0 ]
+		[ 206, 170, 40, 22, -31, -29 ]
+		[ 249, 170, 35, 33,  -2,  -2 ]
+		[ 287, 170, 40, 37, -31, -38 ]
+	}
+} else {
+	// Temperate grass + snow sprites.
+	replacenew(RAILTYPE_TUNNELS, "tunnel_portals.png") {
+		[   5,   6, 35, 33, -31,  -2 ]
+		[  43,   6, 40, 37,  -7, -38 ]
+		[  86,   6, 35, 21, -31,   0 ]
+		[ 124,   6, 40, 22,  -7, -29 ]
+		[ 168,   6, 35, 21,  -2,   0 ]
+		[ 206,   6, 40, 22, -31, -29 ]
+		[ 249,   6, 35, 33,  -2,  -2 ]
+		[ 287,   6, 40, 37, -31, -38 ]
+		[   5, 129, 35, 33, -31,  -2 ]
+		[  43, 129, 40, 37,  -7, -38 ]
+		[  86, 129, 35, 21, -31,   0 ]
+		[ 124, 129, 40, 22,  -7, -29 ]
+		[ 168, 129, 35, 21,  -2,   0 ]
+		[ 206, 129, 40, 22, -31, -29 ]
+		[ 249, 129, 35, 33,  -2,  -2 ]
+		[ 287, 129, 40, 37, -31, -38 ]
+	}
+}
+
+if (climate == CLIMATE_ARCTIC) {
+	// Arctic grass sprites.
+	replacenew(RAILTYPE_TUNNELS, "tunnel_portals.png", 0) {
+		[   5,  47, 35, 33, -31,  -2 ]
+		[  43,  47, 40, 37,  -7, -38 ]
+		[  86,  47, 35, 21, -31,   0 ]
+		[ 124,  47, 40, 22,  -7, -29 ]
+		[ 168,  47, 35, 21,  -2,   0 ]
+		[ 206,  47, 40, 22, -31, -29 ]
+		[ 249,  47, 35, 33,  -2,  -2 ]
+		[ 287,  47, 40, 37, -31, -38 ]
+	}
+}
+
+if (climate == CLIMATE_TOYLAND) {
+	// Toyland sprites.
+	replacenew(RAILTYPE_TUNNELS, "tunnel_portals.png", 0) {
+		[   5, 211, 35, 33, -31,  -2 ]
+		[  43, 211, 40, 37,  -7, -38 ]
+		[  86, 211, 35, 21, -31,   0 ]
+		[ 124, 211, 40, 22,  -7, -29 ]
+		[ 168, 211, 35, 21,  -2,   0 ]
+		[ 206, 211, 40, 22, -31, -29 ]
+		[ 249, 211, 35, 33,  -2,  -2 ]
+		[ 287, 211, 40, 37, -31, -38 ]
+	}
+}

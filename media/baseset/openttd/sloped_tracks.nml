@@ -1,0 +1,21 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Sloped tracks
+replacenew(SLOPED_RAILS, "sloped_tracks.png") {
+	[  50, 8, 42, 29, -19, -3 ]
+	[  98, 8, 41, 13, -20,  5 ]
+	[ 146, 8, 42, 14, -19,  5 ]
+	[ 194, 8, 42, 29, -21, -3 ]
+	[ 242, 8, 33, 25, -15, -1 ]
+	[ 290, 8, 33, 10, -15,  7 ]
+	[ 338, 8, 34, 10, -15,  7 ]
+	[ 386, 8, 34, 25, -15, -1 ]
+	[ 434, 8, 31, 23, -13, -1 ]
+	[ 482, 8, 32, 10, -15,  7 ]
+	[ 530, 8, 31, 10, -15,  7 ]
+	[ 578, 8, 31, 23, -16, -1 ]
+}

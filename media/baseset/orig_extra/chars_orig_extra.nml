@@ -1,0 +1,320 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Font characters by PaulC, Bilbo and Jasper Vries
+
+// Replace original characters
+replace(0x0041, "../openttd/chars.png") {
+	[  10,  10,  6, 12,  0, -1 ]
+	[  20,  10,  4, 12,  0, -1 ]
+}
+replace(0x0086, "../openttd/chars.png") {
+	[  50,  10,  8, 12,  0, -1 ]
+	[  70,  10,  9, 12,  0, -1 ]
+}
+replace(0x008A, "../openttd/chars.png") {
+	[ 120,  10,  6, 12,  0, -1 ]
+}
+replace(0x00A0, "../openttd/chars.png") {
+	[ 230,  10, 10, 12,  0, -1 ]
+}
+replace(0x00A2, "../openttd/chars.png") {
+	[ 260,  10,  8, 12,  0, -1 ]
+	[ 290,  10,  8, 12,  0, -1 ]
+	[ 320,  10,  8, 12,  0, -1 ]
+	[ 350,  10,  8, 12,  0, -1 ]
+}
+replace(0x00A7, "../openttd/chars.png") {
+	[ 410,  10,  8, 12,  0, -1 ]
+	[ 440,  10, 12, 12,  0, -1 ]
+	[ 470,  10,  8, 12,  0, -1 ]
+	[ 480,  10,  7, 12,  0, -1 ]
+	[ 500,  10,  7, 12,  0, -1 ]
+	[ 520,  10,  7, 12,  0, -1 ]
+}
+replace(0x00AE, "../openttd/chars.png") {
+	[ 560,  10,  4, 12,  0, -1 ]
+	[ 570,  10,  4, 12,  0, -1 ]
+	[ 580,  10,  5, 12,  0, -1 ]
+}
+replace(0x00B3, "../openttd/chars.png") {
+	[ 620,  10,  8, 12,  0, -1 ]
+	[ 640,  10,  9, 12,  0, -1 ]
+	[ 660,  10,  9, 12,  0, -1 ]
+	[ 680,  10,  9, 12,  0, -1 ]
+	[ 700,  10,  9, 12,  0, -1 ]
+}
+replace(0x00BB, "../openttd/chars.png") {
+	[ 770,  10,  8, 12,  0, -1 ]
+	[  10,  70,  8, 12,  0, -1 ]
+	[  30,  70,  8, 12,  0, -1 ]
+}
+replace(0x00BF, "../openttd/chars.png") {
+	[  70,  70,  9, 12,  0, -1 ]
+}
+replace(0x00C1, "../openttd/chars.png") {
+	[ 450,  70,  8, 12,  0, -1 ]
+	[ 110,  70,  6, 12,  0, -1 ]
+	[ 120,  70,  6, 12,  0, -1 ]
+	[ 130,  70,  6, 12,  0, -1 ]
+	[ 140,  70,  6, 12,  0, -1 ]
+}
+replace(0x00C7, "../openttd/chars.png") {
+	[ 160,  70,  6, 12,  0, -1 ]
+}
+replace(0x00CA, "../openttd/chars.png") {
+	[ 200,  70,  6, 12,  0, -1 ]
+	[ 210,  70,  6, 12,  0, -1 ]
+	[ 220,  70,  6, 12,  0, -1 ]
+}
+replace(0x00CE, "../openttd/chars.png") {
+	[ 230,  70,  4, 12,  0, -1 ]
+	[ 240,  70,  4, 12,  0, -1 ]
+	[ 250,  70,  5, 12,  0, -1 ]
+	[ 260,  70,  5, 12,  0, -1 ]
+}
+replace(0x00D3, "../openttd/chars.png") {
+	[ 290,  70,  6, 12,  0, -1 ]
+	[ 310,  70,  6, 12,  0, -1 ]
+	[ 320,  70,  6, 12,  0, -1 ]
+	[ 330,  70,  6, 12,  0, -1 ]
+	[ 340,  70,  6, 12,  0, -1 ]
+}
+replace(0x00DB, "../openttd/chars.png") {
+	[ 390,  70,  6, 12,  0, -1 ]
+	[ 400,  70,  6, 12,  0, -1 ]
+	[ 410,  70,  6, 12,  0, -1 ]
+}
+replace(0x00DF, "../openttd/chars.png") {
+	[ 420,  70,  7, 12,  0, -1 ]
+	[ 430,  70,  6, 12,  0, -1 ]
+}
+replace(0x0122, "../openttd/chars.png") {
+	[  20,  30,  2,  7,  0,  0 ]
+}
+replace(0x017D, "../openttd/chars.png") {
+	[ 220,  30,  4,  7,  0,  0 ]
+}
+replace(0x0180, "../openttd/chars.png") {
+	[ 230,  30,  9,  7,  0,  0 ]
+	[ 250,  30,  3,  7,  0,  0 ]
+}
+replace(0x0189, "../openttd/chars.png") {
+	[ 470,  30,  3,  7,  0,  0 ]
+}
+replace(0x019F, "../openttd/chars.png") {
+	[  70,  90,  3,  7,  0,  0 ]
+}
+replace(0x01A9, "../openttd/chars.png") {
+	[ 190,  90,  3,  7,  0,  0 ]
+}
+replace(0x01BF, "../openttd/chars.png") {
+	[ 420,  90,  3,  7,  0,  0 ]
+	[ 430,  90,  3,  7,  0,  0 ]
+}
+replace(0x0202, "../openttd/chars.png") {
+	[  20,  40,  4, 21,  0, -2 ]
+}
+replace(0x0241, "../openttd/chars.png") {
+	[  30,  40, 14, 21,  0, -2 ]
+}
+replace(0x0246, "../openttd/chars.png") {
+	[  50,  40, 10, 21,  0, -2 ]
+	[  70,  40, 14, 21,  0, -2 ]
+	[  90,  40,  3, 21,  0, -2 ]
+	[ 100,  40, 13, 21,  0, -2 ]
+	[ 120,  40,  7, 21,  0, -2 ]
+	[ 130,  40, 16, 21,  0, -2 ]
+}
+replace(0x0250, "../openttd/chars.png") {
+	[ 150,  40, 16, 21,  0, -2 ]
+}
+replace(0x0252, "../openttd/chars.png") {
+	[ 170,  40,  8, 21,  0, -2 ]
+	[ 180,  40,  9, 21,  0, -2 ]
+	[ 190,  40,  6, 21,  0, -2 ]
+	[ 200,  40,  6, 21,  0, -2 ]
+}
+replace(0x025C, "../openttd/chars.png") {
+	[ 210,  40,  7, 21,  0, -2 ]
+}
+replace(0x0260, "../openttd/chars.png") {
+	[ 230,  40, 16, 21,  0, -2 ]
+}
+replace(0x0262, "../openttd/chars.png") {
+	[ 260,  40, 20, 21,  0, -2 ]
+	[ 290,  40, 20, 21,  0, -2 ]
+	[ 320,  40, 20, 21,  0, -2 ]
+	[ 350,  40, 20, 21,  0, -2 ]
+	[ 380,  40, 20, 21,  0, -2 ]
+	[ 410,  40, 20, 21,  0, -2 ]
+	[ 440,  40, 24, 21,  0, -2 ]
+}
+replace(0x026A, "../openttd/chars.png") {
+	[ 480,  40, 14, 21,  0, -2 ]
+	[ 500,  40, 14, 21,  0, -2 ]
+	[ 520,  40, 14, 21,  0, -2 ]
+	[ 540,  40, 14, 21,  0, -2 ]
+	[ 560,  40,  9, 21,  0, -2 ]
+	[ 570,  40,  9, 21,  0, -2 ]
+	[ 580,  40,  9, 21,  0, -2 ]
+	[ 590,  40,  9, 21,  0, -2 ]
+	[ 600,  40, 17, 21,  0, -2 ]
+	[ 620,  40, 18, 21,  0, -2 ]
+	[ 640,  40, 15, 21,  0, -2 ]
+	[ 660,  40, 15, 21,  0, -2 ]
+	[ 680,  40, 15, 21,  0, -2 ]
+	[ 700,  40, 15, 21,  0, -2 ]
+	[ 720,  40, 15, 21,  0, -2 ]
+	[ 740,  40,  9, 21,  0, -2 ]
+	[ 750,  40, 16, 21,  0, -2 ]
+	[ 770,  40, 17, 21,  0, -2 ]
+	[  10, 100, 17, 21,  0, -2 ]
+	[  30, 100, 17, 21,  0, -2 ]
+	[  50, 100, 17, 21,  0, -2 ]
+	[  70, 100, 14, 21,  0, -2 ]
+	[  90, 100, 14, 21,  0, -2 ]
+	[ 450, 100, 14, 21,  0, -2 ]
+}
+replace(0x0285, "../openttd/chars.png") {
+	[ 140, 100, 12, 21,  0, -2 ]
+}
+replace(0x0288, "../openttd/chars.png") {
+	[ 170, 100, 19, 21,  0, -2 ]
+}
+replace(0x0292, "../openttd/chars.png") {
+	[ 270, 100, 11, 21,  0, -2 ]
+	[ 290, 100, 15, 21,  0, -2 ]
+}
+replace(0x0297, "../openttd/chars.png") {
+	[ 340, 100, 11, 21,  0, -2 ]
+}
+replace(0x0299, "../openttd/chars.png") {
+	[ 360, 100,  9, 21,  0, -2 ]
+	[ 370, 100, 11, 21,  0, -2 ]
+}
+replace(0x02A0, "../openttd/chars.png") {
+	[ 430, 100, 14, 21,  0, -2 ]
+}
+
+// New characters, all fonts except monospaced
+
+// U+007B: Left Curly Bracket
+// U+007C: Vertical Line
+// U+007D: Right Curly Bracket
+// U+007E: Tilde
+font_glyph(NORMAL, 0x007B, "../openttd/chars.png") {
+	[  10, 130,  5, 12,  0, -1 ]
+	[  20, 130,  3, 12,  0, -1 ]
+	[  30, 130,  5, 12,  0, -1 ]
+	[  50, 130,  7, 12,  0, -1 ]
+}
+font_glyph(SMALL, 0x007B, "../openttd/chars.png") {
+	[  10, 150,  3,  7,  0,  0 ]
+	[  20, 150,  1,  7,  0,  0 ]
+	[  30, 150,  3,  7,  0,  0 ]
+	[  50, 150,  4,  7,  0,  0 ]
+}
+font_glyph(LARGE, 0x007B, "../openttd/chars.png") {
+	[  10, 160,  9, 21,  0, -2 ]
+	[  20, 160,  3, 21,  0, -2 ]
+	[  30, 160,  9, 21,  0, -2 ]
+	[  50, 160, 10, 21,  0, -2 ]
+}
+
+// U+007F: No-Break Space
+font_glyph(NORMAL, 0x007F, "../openttd/chars.png") {
+	[  70, 130,  2, 12,  0, -1 ]
+}
+font_glyph(SMALL, 0x007F, "../openttd/chars.png") {
+	[  70, 150,  1,  7,  0,  0 ]
+}
+font_glyph(LARGE, 0x007F, "../openttd/chars.png") {
+	[  70, 160,  5, 21,  0, -2 ]
+}
+
+// U+00AA: Feminine Ordinal Indicator
+font_glyph(NORMAL, 0x00AA, "../openttd/chars.png") {
+	[  80, 130,  6, 12,  0, -1 ]
+}
+font_glyph(SMALL, 0x00AA, "../openttd/chars.png") {
+	[  80, 150,  3,  7,  0,  0 ]
+}
+font_glyph(LARGE, 0x00AA, "../openttd/chars.png") {
+	[  80, 160,  7, 21,  0, -2 ]
+}
+
+// U+00AC: Not Sign
+// U+00AD: Soft Hyphen
+font_glyph(NORMAL, 0x00AC, "../openttd/chars.png") {
+	[  90, 130,  8, 12,  0, -1 ]
+	[ 110, 130,  6, 12,  0, -1 ]
+}
+font_glyph(SMALL, 0x00AC, "../openttd/chars.png") {
+	[  90, 150,  4,  7,  0,  0 ]
+	[ 110, 150,  3,  7,  0,  0 ]
+}
+font_glyph(LARGE, 0x00AC, "../openttd/chars.png") {
+	[  90, 160, 12, 21,  0, -2 ]
+	[ 110, 160,  9, 21,  0, -2 ]
+}
+
+// U+00AF: Macron
+font_glyph(NORMAL, 0x00AF, "../openttd/chars.png") {
+	[ 130, 130,  6, 12,  0, -1 ]
+}
+font_glyph(SMALL, 0x00AF, "../openttd/chars.png") {
+	[ 130, 150,  3,  7,  0,  0 ]
+}
+font_glyph(LARGE, 0x00AF, "../openttd/chars.png") {
+	[ 130, 160, 12, 21,  0, -2 ]
+}
+
+// U+00B4: Acute Accent
+// U+00B5: Micro Sign
+// U+00B6: Pilcrow Sign
+// U+00B7: Middle Dot
+// U+00B8: Cedilla
+// U+00B9: Superscript One
+font_glyph(NORMAL, 0x00B4, "../openttd/chars.png") {
+	[ 150, 130,  4, 12,  0, -1 ]
+	[ 160, 130,  6, 12,  0, -1 ]
+	[ 180, 130,  8, 12,  0, -1 ]
+	[ 200, 130,  3, 12,  0, -1 ]
+	[ 210, 130,  4, 12,  0, -1 ]
+	[ 220, 130,  5, 12,  0, -1 ]
+}
+font_glyph(SMALL, 0x00B4, "../openttd/chars.png") {
+	[ 150, 150,  2,  7,  0,  0 ]
+	[ 160, 150,  3,  7,  0,  0 ]
+	[ 180, 150,  6,  7,  0,  0 ]
+	[ 200, 150,  1,  7,  0,  0 ]
+	[ 210, 150,  2,  7,  0,  0 ]
+	[ 220, 150,  2,  7,  0,  0 ]
+}
+font_glyph(LARGE, 0x00B4, "../openttd/chars.png") {
+	[ 150, 160,  4, 21,  0, -2 ]
+	[ 160, 160, 15, 21,  0, -2 ]
+	[ 180, 160, 13, 21,  0, -2 ]
+	[ 200, 160,  3, 21,  0, -2 ]
+	[ 210, 160,  5, 21,  0, -2 ]
+	[ 220, 160,  6, 21,  0, -2 ]
+}
+
+// U+00BC: Vulgar Fraction One Quarter
+// U+00BD: Vulgar Fraction One Half
+font_glyph(NORMAL, 0x00BC, "../openttd/chars.png") {
+	[ 230, 130, 10, 12,  0, -1 ]
+	[ 250, 130, 10, 12,  0, -1 ]
+}
+font_glyph(SMALL, 0x00BC, "../openttd/chars.png") {
+	[ 230, 150,  9,  7,  0,  0 ]
+	[ 250, 150,  9,  7,  0,  0 ]
+}
+font_glyph(LARGE, 0x00BC, "../openttd/chars.png") {
+	[ 230, 160, 16, 21,  0, -2 ]
+	[ 250, 160, 16, 21,  0, -2 ]
+}

@@ -1,0 +1,143 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Rapid graphics
+spriteset(rivers_rapids_00, "rivers/rapids.png") {
+	[  10,  10, 64, 23, -31,  0 ]
+	[  90,  10, 64, 39, -31, -8 ]
+	[ 170,  10, 64, 23, -31,  0 ]
+	[ 250,  10, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_01, "rivers/rapids.png") {
+	[  10,  60, 64, 23, -31,  0 ]
+	[  90,  60, 64, 39, -31, -8 ]
+	[ 170,  60, 64, 23, -31,  0 ]
+	[ 250,  60, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_02, "rivers/rapids.png") {
+	[  10, 110, 64, 23, -31,  0 ]
+	[  90, 110, 64, 39, -31, -8 ]
+	[ 170, 110, 64, 23, -31,  0 ]
+	[ 250, 110, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_03, "rivers/rapids.png") {
+	[  10, 160, 64, 23, -31,  0 ]
+	[  90, 160, 64, 39, -31, -8 ]
+	[ 170, 160, 64, 23, -31,  0 ]
+	[ 250, 160, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_04, "rivers/rapids.png") {
+	[  10, 210, 64, 23, -31,  0 ]
+	[  90, 210, 64, 39, -31, -8 ]
+	[ 170, 210, 64, 23, -31,  0 ]
+	[ 250, 210, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_05, "rivers/rapids.png") {
+	[  10, 260, 64, 23, -31,  0 ]
+	[  90, 260, 64, 39, -31, -8 ]
+	[ 170, 260, 64, 23, -31,  0 ]
+	[ 250, 260, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_06, "rivers/rapids.png") {
+	[  10, 310, 64, 23, -31,  0 ]
+	[  90, 310, 64, 39, -31, -8 ]
+	[ 170, 310, 64, 23, -31,  0 ]
+	[ 250, 310, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_07, "rivers/rapids.png") {
+	[  10, 360, 64, 23, -31,  0 ]
+	[  90, 360, 64, 39, -31, -8 ]
+	[ 170, 360, 64, 23, -31,  0 ]
+	[ 250, 360, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_08, "rivers/rapids.png") {
+	[  10, 410, 64, 23, -31,  0 ]
+	[  90, 410, 64, 39, -31, -8 ]
+	[ 170, 410, 64, 23, -31,  0 ]
+	[ 250, 410, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_09, "rivers/rapids.png") {
+	[  10, 460, 64, 23, -31,  0 ]
+	[  90, 460, 64, 39, -31, -8 ]
+	[ 170, 460, 64, 23, -31,  0 ]
+	[ 250, 460, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_10, "rivers/rapids.png") {
+	[  10, 510, 64, 23, -31,  0 ]
+	[  90, 510, 64, 39, -31, -8 ]
+	[ 170, 510, 64, 23, -31,  0 ]
+	[ 250, 510, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_11, "rivers/rapids.png") {
+	[  10, 560, 64, 23, -31,  0 ]
+	[  90, 560, 64, 39, -31, -8 ]
+	[ 170, 560, 64, 23, -31,  0 ]
+	[ 250, 560, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_12, "rivers/rapids.png") {
+	[  10, 610, 64, 23, -31,  0 ]
+	[  90, 610, 64, 39, -31, -8 ]
+	[ 170, 610, 64, 23, -31,  0 ]
+	[ 250, 610, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_13, "rivers/rapids.png") {
+	[  10, 660, 64, 23, -31,  0 ]
+	[  90, 660, 64, 39, -31, -8 ]
+	[ 170, 660, 64, 23, -31,  0 ]
+	[ 250, 660, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_14, "rivers/rapids.png") {
+	[  10, 710, 64, 23, -31,  0 ]
+	[  90, 710, 64, 39, -31, -8 ]
+	[ 170, 710, 64, 23, -31,  0 ]
+	[ 250, 710, 64, 39, -31, -8 ]
+}
+
+spriteset(rivers_rapids_15, "rivers/rapids.png") {
+	[  10, 760, 64, 23, -31,  0 ]
+	[  90, 760, 64, 39, -31, -8 ]
+	[ 170, 760, 64, 23, -31,  0 ]
+	[ 250, 760, 64, 39, -31, -8 ]
+}
+
+random_switch(FEAT_CANALS, SELF, rivers_rapids_random) {
+    1: rivers_rapids_00;
+    1: rivers_rapids_01;
+    1: rivers_rapids_02;
+    1: rivers_rapids_03;
+    1: rivers_rapids_04;
+    1: rivers_rapids_05;
+    1: rivers_rapids_06;
+    1: rivers_rapids_07;
+    1: rivers_rapids_08;
+    1: rivers_rapids_09;
+    1: rivers_rapids_10;
+    1: rivers_rapids_11;
+    1: rivers_rapids_12;
+    1: rivers_rapids_13;
+    1: rivers_rapids_14;
+    1: rivers_rapids_15;
+}
+
+item(FEAT_CANALS, rivers_rapids, WF_RIVER_SLOPE) {
+    graphics {
+        default: rivers_rapids_random;
+    }
+}

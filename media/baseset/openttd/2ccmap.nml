@@ -1,0 +1,121 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+// This is the DOS 2CC translation map which OpenTTD translates if needed upon loading.
+//
+
+// 2CC map
+template cc1_range_cc2_range(cc1, cc2) {
+	recolour_sprite {
+		0xC6..0xCD: cc1..cc1 + 7;
+		0x50..0x57: cc2..cc2 + 7;
+	}
+}
+
+template cc1_range_cc2_list(cc1, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8) {
+	recolour_sprite {
+		0xC6..0xCD: cc1..cc1 + 7;
+		0x50: cc2_1;
+		0x51: cc2_2;
+		0x52: cc2_3;
+		0x53: cc2_4;
+		0x54: cc2_5;
+		0x55: cc2_6;
+		0x56: cc2_7;
+		0x57: cc2_8;
+	}
+}
+
+template cc1_list_cc2_range(cc1_1, cc1_2, cc1_3, cc1_4, cc1_5, cc1_6, cc1_7, cc1_8, cc2) {
+	recolour_sprite {
+		0xC6: cc1_1;
+		0xC7: cc1_2;
+		0xC8: cc1_3;
+		0xC9: cc1_4;
+		0xCA: cc1_5;
+		0xCB: cc1_6;
+		0xCC: cc1_7;
+		0xCD: cc1_8;
+		0x50..0x57: cc2..cc2 + 7;
+	}
+}
+
+template cc1_list_cc2_list(cc1_1, cc1_2, cc1_3, cc1_4, cc1_5, cc1_6, cc1_7, cc1_8, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8) {
+	recolour_sprite {
+		0xC6: cc1_1;
+		0xC7: cc1_2;
+		0xC8: cc1_3;
+		0xC9: cc1_4;
+		0xCA: cc1_5;
+		0xCB: cc1_6;
+		0xCC: cc1_7;
+		0xCD: cc1_8;
+		0x50: cc2_1;
+		0x51: cc2_2;
+		0x52: cc2_3;
+		0x53: cc2_4;
+		0x54: cc2_5;
+		0x55: cc2_6;
+		0x56: cc2_7;
+		0x57: cc2_8;
+	}
+}
+
+template cc2_range(cc2) {
+	cc1_range_cc2_range(0xC6, cc2)
+	cc1_range_cc2_range(0x60, cc2)
+	cc1_range_cc2_range(0x2A, cc2)
+	cc1_range_cc2_range(0x3E, cc2)
+	cc1_list_cc2_range(0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xA4, 0xA5, 0xA6, cc2)
+	cc1_range_cc2_range(0x9A, cc2)
+	cc1_list_cc2_range(0x52, 0x53, 0x54, 0x55, 0xCE, 0xCF, 0xD0, 0xD1, cc2)
+	cc1_range_cc2_range(0x58, cc2)
+	cc1_range_cc2_range(0x92, cc2)
+	cc1_range_cc2_range(0x72, cc2)
+	cc1_range_cc2_range(0x80, cc2)
+	cc1_range_cc2_range(0x88, cc2)
+	cc1_list_cc2_range(0x40, 0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0x27, cc2)
+	cc1_range_cc2_range(0x20, cc2)
+	cc1_range_cc2_range(0x04, cc2)
+	cc1_range_cc2_range(0x08, cc2)
+}
+
+template cc2_list(cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8) {
+	cc1_range_cc2_list(0xC6, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x60, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x2A, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x3E, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_list_cc2_list(0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xA4, 0xA5, 0xA6, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x9A, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_list_cc2_list(0x52, 0x53, 0x54, 0x55, 0xCE, 0xCF, 0xD0, 0xD1, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x58, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x92, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x72, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x80, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x88, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_list_cc2_list(0x40, 0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0x27, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x20, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x04, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+	cc1_range_cc2_list(0x08, cc2_1, cc2_2, cc2_3, cc2_4, cc2_5, cc2_6, cc2_7, cc2_8)
+}
+
+replacenew(COLOURMAP_2CC) {
+	cc2_range(0xC6)
+	cc2_range(0x60)
+	cc2_range(0x2A)
+	cc2_range(0x3E)
+	cc2_list(0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xA4, 0xA5, 0xA6)
+	cc2_range(0x9A)
+	cc2_list(0x52, 0x53, 0x54, 0x55, 0xCE, 0xCF, 0xD0, 0xD1)
+	cc2_range(0x58)
+	cc2_range(0x92)
+	cc2_range(0x72)
+	cc2_range(0x80)
+	cc2_range(0x88)
+	cc2_list(0x40, 0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0x27)
+	cc2_range(0x20)
+	cc2_range(0x04)
+	cc2_range(0x08)
+}

@@ -1,0 +1,487 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Fix bugs in the original graphics. By Addi and PaulC.
+
+// Non-toyland specific
+if (climate != CLIMATE_TOYLAND) {
+	// Fix missing wheels on the wood trucks
+	replace(0x0C87, "fix_graphics.png") {
+		[  82,   8, 22, 16,  -6,  -7 ]
+	}
+	replace(0x0C89, "fix_graphics.png") {
+		[ 114,   8, 22, 16, -14,  -7 ]
+	}
+	replace(0x0E07, "fix_graphics.png") {
+		[ 146,   8, 22, 16,  -6,  -7 ]
+	}
+	replace(0x0E09, "fix_graphics.png") {
+		[ 178,   8, 22, 16, -14,  -7 ]
+	}
+	// Show correct graphics for various 3rd generation trucks
+	replace(0x0DC4, "fix_graphics.png") {
+		[ 226,   8,  8, 18,  -3, -10 ]
+		[ 242,   8, 20, 16, -14,  -7 ]
+		[ 274,   8, 28, 12, -14,  -6 ]
+		[ 322,   8, 20, 16,  -6,  -7 ]
+		[ 354,   8,  8, 18,  -3, -10 ]
+		[ 370,   8, 20, 16, -14,  -7 ]
+		[ 402,   8, 28, 12, -14,  -6 ]
+		[ 450,   8, 20, 16,  -6,  -7 ]
+		[ 482,   8,  8, 18,  -3, -10 ]
+		[ 498,   8, 20, 16, -14,  -7 ]
+		[ 530,   8, 28, 12, -14,  -6 ]
+		[ 578,   8, 20, 16,  -6,  -7 ]
+		[ 610,   8,  8, 18,  -3, -10 ]
+		[ 626,   8, 20, 16, -14,  -7 ]
+		[ 658,   8, 28, 12, -14,  -6 ]
+		[ 706,   8, 20, 16,  -6,  -7 ]
+		[ 738,   8,  8, 18,  -3, -10 ]
+		[ 754,   8, 22, 16, -14,  -7 ]
+		[   2,  40, 28, 12, -14,  -6 ]
+		[  50,  40, 22, 16,  -6,  -7 ]
+		[  82,  40,  8, 18,  -3, -10 ]
+		[  98,  40, 22, 16, -14,  -7 ]
+		[ 130,  40, 28, 12, -14,  -6 ]
+		[ 178,  40, 22, 16,  -6,  -7 ]
+		[ 210,  40,  8, 18,  -3, -10 ]
+		[ 226,  40, 22, 16, -14,  -7 ]
+		[ 258,  40, 28, 12, -14,  -6 ]
+		[ 306,  40, 22, 16,  -6,  -7 ]
+		[ 338,  40,  8, 18,  -3, -10 ]
+		[ 354,  40, 22, 16, -14,  -7 ]
+		[ 386,  40, 28, 12, -14,  -6 ]
+		[ 434,  40, 22, 16,  -6,  -7 ]
+		[ 466,  40,  8, 18,  -3, -10 ]
+		[ 482,  40, 20, 16, -14,  -7 ]
+		[ 514,  40, 28, 12, -14,  -6 ]
+		[ 562,  40, 20, 16,  -6,  -7 ]
+		[ 594,  40,  8, 18,  -3, -10 ]
+		[ 610,  40, 20, 16, -14,  -7 ]
+		[ 642,  40, 28, 12, -14,  -6 ]
+		[ 690,  40, 20, 16,  -6,  -7 ]
+	}
+	// Fix clipping on the 2nd generation paper truck
+	replace(0x0C9D, "fix_graphics.png") {
+		[ 738,  40, 22, 16, -14,  -7 ]
+	}
+	replace(0x0C9F, "fix_graphics.png") {
+		[ 770,  40, 22, 16,  -6,  -7 ]
+	}
+	replace(0x0CA1, "fix_graphics.png") {
+		[   2,  72, 22, 16, -14,  -7 ]
+	}
+	replace(0x0CA3, "fix_graphics.png") {
+		[  34,  72, 22, 16,  -6,  -7 ]
+	}
+	// Fix clipping on the 1st generation paper truck
+	replace(0x0D5D, "fix_graphics.png") {
+		[  82,  72, 22, 16, -14,  -7 ]
+	}
+	replace(0x0D5F, "fix_graphics.png") {
+		[ 114,  72, 22, 17,  -5,  -7 ]
+	}
+	replace(0x0D61, "fix_graphics.png") {
+		[ 146,  72, 22, 17, -14,  -8 ]
+	}
+	replace(0x0D63, "fix_graphics.png") {
+		[ 178,  72, 22, 16,  -6,  -7 ]
+	}
+	// Fix clipping on the 3rd generation paper truck
+	replace(0x0E1D, "fix_graphics.png") {
+		[ 226,  72, 22, 16, -14,  -7 ]
+	}
+	replace(0x0E1F, "fix_graphics.png") {
+		[ 258,  72, 22, 16,  -6,  -7 ]
+	}
+	replace(0x0E21, "fix_graphics.png") {
+		[ 290,  72, 22, 16, -14,  -7 ]
+	}
+	replace(0x0E23, "fix_graphics.png") {
+		[ 322,  72, 22, 16,  -6,  -7 ]
+	}
+}
+
+// Fix clipping on the toyland toy van in the German DOS graphics
+if (climate == CLIMATE_TOYLAND) {
+	replace(0x0C5D, "fix_graphics.png") {
+		[  18, 296, 20, 16, -14,  -7 ]
+	}
+}
+
+// Non-toyland specific
+if (climate != CLIMATE_TOYLAND) {
+	// Fix offsets for the monorail bridge heads
+	replace(0x10EA, "fix_graphics.png") {
+		[ 370,  72, 48, 35, -23,  -7 ]
+	}
+	replace(0x10EC, "fix_graphics.png") {
+		[ 434,  72, 48, 35, -23,  -7 ]
+		[ 498,  72, 49, 21, -24,   3 ]
+	}
+	// Fix offsets for the maglev bridge heads
+	replace(0x1112, "fix_graphics.png") {
+		[ 322, 486, 48, 35, -23,  -7 ]
+	}
+	replace(0x1114, "fix_graphics.png") {
+		[ 386, 486, 48, 35, -23,  -7 ]
+		[ 450, 486, 49, 21, -24,   3 ]
+	}
+}
+
+// Toyland specific
+if (climate == CLIMATE_TOYLAND) {
+	// Fix offsets for the toyland monorail bridge heads
+	replace(0x10EA, "fix_graphics.png") {
+		[ 610, 630, 48, 35, -23,  -7 ]
+	}
+	replace(0x10EC, "fix_graphics.png") {
+		[ 674, 630, 48, 35, -23,  -7 ]
+		[ 738, 630, 49, 21, -24,   3 ]
+	}
+	// Fix offsets for the toyland maglev bridge heads
+	replace(0x1112, "fix_graphics.png") {
+		[  18, 678, 48, 35, -23,  -7 ]
+	}
+	replace(0x1114, "fix_graphics.png") {
+		[  82, 678, 48, 35, -23,  -7 ]
+		[ 146, 678, 49, 21, -24,   3 ]
+	}
+	// Fix colours for toyland maglev junction overlays
+	replace(0x0491, "fix_graphics.png") {
+		[ 338, 630, 30, 16, -14,   8 ]
+		[ 386, 630, 30, 16, -14,   8 ]
+		[ 434, 630, 40,  7, -19,   4 ]
+		[ 482, 630, 40,  7, -19,  20 ]
+		[ 530, 630, 12, 19,  11,   6 ]
+		[ 562, 630, 12, 19, -21,   6 ]
+	}
+}
+
+// Fix transparency of cinema
+replace(0x1134, "fix_graphics.png") {
+	[ 578,  72, 64, 31, -31,   0 ]
+	[ 658,  72, 50, 47, -28, -20 ]
+}
+
+// Fix misaligned undergrounds for temperate monorail
+if (climate == CLIMATE_TEMPERATE) {
+	replace(0x044C, "fix_graphics.png") {
+		[   2, 136, 64, 31, -31,   0 ]
+		[  82, 136, 64, 31, -31,   0 ]
+		[ 162, 136, 64, 31, -31,   0 ]
+		[ 242, 136, 64, 31, -31,   0 ]
+		[ 322, 136, 64, 31, -31,   0 ]
+	}
+}
+
+// Fix misaligned undergrounds for arctic monorail
+if (climate == CLIMATE_ARCTIC) {
+	replace(0x044C, "fix_graphics.png") {
+		[ 434, 136, 64, 31, -31,   0 ]
+		[ 514, 136, 64, 31, -31,   0 ]
+		[ 594, 136, 64, 31, -31,   0 ]
+		[ 674, 136, 64, 31, -31,   0 ]
+		[   2, 184, 64, 31, -31,   0 ]
+	}
+}
+
+// Fix misaligned undergrounds for tropical/desert monorail/maglev
+if (climate == CLIMATE_TROPIC) {
+	replace(0x044C, "fix_graphics.png") {
+		[ 114, 184, 64, 31, -31,   0 ]
+		[ 194, 184, 64, 31, -31,   0 ]
+		[ 274, 184, 64, 31, -31,   0 ]
+		[ 354, 184, 64, 31, -31,   0 ]
+		[ 434, 184, 64, 31, -31,   0 ]
+	}
+	replace(0x0466, "fix_graphics.png") {
+		[ 514, 184, 64, 31, -31,   0 ]
+		[ 594, 184, 64, 31, -31,   0 ]
+		[ 674, 184, 64, 31, -31,   0 ]
+		[   2, 232, 64, 31, -31,   0 ]
+		[  82, 232, 64, 31, -31,   0 ]
+	}
+	replace(0x04B8, "fix_graphics.png") {
+		[ 162, 232, 64, 31, -31,   0 ]
+		[ 242, 232, 64, 31, -31,   0 ]
+		[ 322, 232, 64, 31, -31,   0 ]
+		[ 402, 232, 64, 31, -31,   0 ]
+		[ 482, 232, 64, 31, -31,   0 ]
+	}
+}
+
+// Fix misaligned X crossing for snow-covered monorail
+if (climate == CLIMATE_ARCTIC) {
+	replace(0x0465, "fix_graphics.png") {
+		[ 594, 232, 64, 31, -31,   0 ]
+	}
+}
+
+// Fix offsets for the tropical house
+replace(0x11FF, "fix_graphics.png") {
+	[ 706, 232, 64, 47, -31, -16 ]
+}
+
+// Graphics metadata pixel higher than actual graphics
+font_glyph(NORMAL, 0xE2AC, "fix_graphics.png") {
+	[  66, 296,  9, 10,   0,   0 ]
+}
+
+// Non-toyland specific
+if (climate != CLIMATE_TOYLAND) {
+	// Fix offsets for the tubular bridge pillars
+	replace(0x0A05, "fix_graphics.png") {
+		[  98, 296,  4,  9,   2,  -1 ]
+		[ 114, 296,  4,  9,   2,  -1 ]
+		[ 130, 296,  4,  9,  -4,   0 ]
+		[ 146, 296,  4,  9,  -4,   0 ]
+	}
+	// Fix offsets for the cantilever bridge pillars
+	replace(0x09DD, "fix_graphics.png") {
+		[ 178, 296, 10, 11,   2,  -3 ]
+		[ 194, 296, 10, 12,   2,  -2 ]
+		[ 210, 296, 10, 11, -10,  -1 ]
+		[ 226, 296, 10, 11, -10,  -1 ]
+	}
+}
+
+// Toyland specific
+if (climate == CLIMATE_TOYLAND) {
+	// Fix offsets for the toyland tubular bridge pillars
+	replace(0x0A05, "fix_graphics.png") {
+		[ 248, 296,  4,  9,   2,  -1 ]
+		[ 264, 296,  4,  9,   2,  -1 ]
+		[ 280, 296,  4,  9,  -4,   0 ]
+		[ 296, 296,  4,  9,  -4,   0 ]
+	}
+	// Fix offsets for the toyland cantilever bridge pillars
+	replace(0x09DD, "fix_graphics.png") {
+		[ 328, 296, 10, 11,   2,  -3 ]
+		[ 344, 296, 10, 12,   2,  -2 ]
+		[ 360, 296, 10, 11, -10,  -1 ]
+		[ 376, 296, 10, 11, -10,  -1 ]
+	}
+}
+
+// Wrong, non-translated colours in tubular bridge in 'normal' climates
+// Toyland has separate sprites which are not colour translated, thus
+// this does not apply there;
+// Pillars are changed for all climates further up
+if (climate != CLIMATE_TOYLAND) {
+	// Main tubular bridge sprites
+	replace(2559, "fix_graphics.png") {
+		[   2, 330, 32, 40, -30, -26 ]
+		[  52, 330, 44, 50, -42, -26 ]
+		[ 116, 330, 46, 45, -42, -21 ]
+		[ 180, 330, 46, 45,  -2, -20 ]
+		[ 244, 330, 44, 50,   0, -25 ]
+		[ 308, 330, 32, 41,   0, -25 ]
+	}
+	// start rail bridge
+	replace(2569, "fix_graphics.png") {
+		[ 350, 330, 52, 29, -25,  -4 ]
+	}
+	// start rail + road bridge
+	replace(2574, "fix_graphics.png") {
+		[ 420, 330, 50, 29, -25,  -4 ]
+		[ 489, 330, 52, 29, -25,  -4 ]
+	}
+	// start road + monorail bridge
+	replace(2580, "fix_graphics.png") {
+		[ 559, 330, 50, 29, -25,  -4 ]
+		[ 629, 330, 52, 29, -25,  -4 ]
+	}
+	// start monrail + maglev bridge
+	replace(2586, "fix_graphics.png") {
+		[ 699, 330, 50, 29, -25,  -4 ]
+		[ 489, 283, 52, 29, -25,  -4 ]
+	}
+	// start maglev bridge
+	replace(2592, "fix_graphics.png") {
+		[ 559, 283, 50, 29, -25,  -4 ]
+	}
+	// GUI sprite
+	replace(2600, "fix_graphics.png") {
+		[ 433, 298, 40, 15,   0,   5 ]
+	}
+}
+
+// Remove road markings from tropical rail crossings
+if (climate == CLIMATE_TROPIC) {
+	replace(0x055A, "fix_graphics.png") {
+		[   2, 390, 64, 31, -31,   0 ]
+		[  82, 390, 64, 31, -31,   0 ]
+		[ 162, 390, 64, 31, -31,   0 ]
+		[ 242, 390, 64, 31, -31,   0 ]
+	}
+	replace(0x0562, "fix_graphics.png") {
+		[ 322, 390, 64, 31, -31,   0 ]
+		[ 402, 390, 64, 31, -31,   0 ]
+		[ 482, 390, 64, 31, -31,   0 ]
+		[ 562, 390, 64, 31, -31,   0 ]
+		[ 642, 390, 64, 31, -31,   0 ]
+		[ 722, 390, 64, 31, -31,   0 ]
+		[   2, 438, 64, 31, -31,   0 ]
+		[  82, 438, 64, 31, -31,   0 ]
+	}
+	replace(0x056E, "fix_graphics.png") {
+		[ 162, 438, 64, 31, -31,   0 ]
+		[ 242, 438, 64, 31, -31,   0 ]
+		[ 322, 438, 64, 31, -31,   0 ]
+		[ 402, 438, 64, 31, -31,   0 ]
+		[ 482, 438, 64, 31, -31,   0 ]
+		[ 562, 438, 64, 31, -31,   0 ]
+		[ 642, 438, 64, 31, -31,   0 ]
+		[ 722, 438, 64, 31, -31,   0 ]
+	}
+	replace(0x057A, "fix_graphics.png") {
+		[   2, 486, 64, 31, -31,   0 ]
+		[  82, 486, 64, 31, -31,   0 ]
+		[ 162, 486, 64, 31, -31,   0 ]
+		[ 242, 486, 64, 31, -31,   0 ]
+	}
+}
+
+// Fix transparency of steel mill
+replace(0x0846, "fix_graphics.png") {
+	[ 162, 870, 64, 31, -31,   0 ]
+	[ 242, 870, 64, 51, -31, -21 ]
+	[ 322, 870, 64, 31, -31,   0 ]
+	[ 402, 870, 49, 58, -29, -29 ]
+	[ 466, 870, 64, 31, -31,   0 ]
+	[ 546, 870, 45, 42, -18, -12 ]
+}
+replace(0x084D, "fix_graphics.png") {
+	[ 610, 486, 64, 31, -31,   0 ]
+	[ 690, 486, 59, 61, -31, -33 ]
+	[   2, 566, 64, 31, -31,   0 ]
+	[  82, 566, 51, 50, -25, -21 ]
+	[ 606, 870, 64, 31, -31,   0 ]
+	[ 686, 870, 64, 46, -31, -16 ]
+	[   2, 945, 64, 31, -31,   0 ]
+	[  82, 945, 50, 51, -29, -21 ]
+	[ 146, 945, 64, 31, -31,   0 ]
+	[ 226, 945, 47, 42, -18, -12 ]
+}
+replace(0x0858, "fix_graphics.png") {
+	[ 162, 566, 64, 31, -31,   0 ]
+	[ 242, 566, 59, 52, -31, -24 ]
+	[ 306, 566, 64, 31, -31,   0 ]
+	[ 386, 566, 51, 44, -25, -15 ]
+}
+
+// Fix transparency of oil well
+replace(0x087D, "fix_graphics.png") {
+	[   2, 630, 64, 31, -31,   0 ]
+	[ 482, 566, 31, 50, -11, -28 ]
+	[ 530, 566, 31, 47, -11, -25 ]
+	[ 578, 566, 31, 47, -11, -25 ]
+	[ 626, 566, 31, 47, -11, -25 ]
+	[ 674, 566, 31, 49, -11, -27 ]
+	[ 722, 566, 31, 52, -11, -30 ]
+}
+if (climate == CLIMATE_ARCTIC) {
+	replace(0x087D, "fix_graphics.png") {
+		[ 114, 630, 64, 31, -31,   0 ]
+	}
+}
+if (climate == CLIMATE_TROPIC) {
+	replace(0x087D, "fix_graphics.png") {
+		[ 226, 630, 64, 31, -31,   0 ]
+	}
+}
+
+// Fix city airport's grass for temperate
+if (climate == CLIMATE_TEMPERATE) {
+	replace(0x0A4C, "fix_graphics.png") {
+		[ 242, 678, 64, 31, -31,   0 ]
+		[ 322, 678, 64, 31, -31,   0 ]
+		[ 402, 678, 64, 31, -31,   0 ]
+		[ 482, 678, 64, 31, -31,   0 ]
+		[ 562, 678, 64, 31, -31,   0 ]
+		[ 642, 678, 64, 31, -31,   0 ]
+		[ 722, 678, 64, 31, -31,   0 ]
+		[   2, 726, 64, 31, -31,   0 ]
+		[  82, 726, 64, 31, -31,   0 ]
+	}
+}
+
+// Fix city airport's grass for arctic
+if (climate == CLIMATE_ARCTIC) {
+	replace(0x0A4C, "fix_graphics.png") {
+		[ 194, 726, 64, 31, -31,   0 ]
+		[ 274, 726, 64, 31, -31,   0 ]
+		[ 354, 726, 64, 31, -31,   0 ]
+		[ 434, 726, 64, 31, -31,   0 ]
+		[ 514, 726, 64, 31, -31,   0 ]
+		[ 594, 726, 64, 31, -31,   0 ]
+		[ 674, 726, 64, 31, -31,   0 ]
+		[   2, 774, 64, 31, -31,   0 ]
+		[  82, 774, 64, 31, -31,   0 ]
+	}
+}
+
+// Fix city airport's grass for tropical
+if (climate == CLIMATE_TROPIC) {
+	replace(0x0A4C, "fix_graphics.png") {
+		[ 194, 774, 64, 31, -31,   0 ]
+		[ 274, 774, 64, 31, -31,   0 ]
+		[ 354, 774, 64, 31, -31,   0 ]
+		[ 434, 774, 64, 31, -31,   0 ]
+		[ 514, 774, 64, 31, -31,   0 ]
+		[ 594, 774, 64, 31, -31,   0 ]
+		[ 674, 774, 64, 31, -31,   0 ]
+		[   2, 822, 64, 31, -31,   0 ]
+		[  82, 822, 64, 31, -31,   0 ]
+	}
+}
+
+// Fix city airport's grass for toyland
+if (climate == CLIMATE_TOYLAND) {
+	replace(0x0A4C, "fix_graphics.png") {
+		[ 194, 822, 64, 31, -31,   0 ]
+		[ 274, 822, 64, 31, -31,   0 ]
+		[ 354, 822, 64, 31, -31,   0 ]
+		[ 434, 822, 64, 31, -31,   0 ]
+		[ 514, 822, 64, 31, -31,   0 ]
+		[ 594, 822, 64, 31, -31,   0 ]
+		[ 674, 822, 64, 31, -31,   0 ]
+		[   2, 870, 64, 31, -31,   0 ]
+		[  82, 870, 64, 31, -31,   0 ]
+	}
+}
+
+// Wrong, non-translated colours in arctic buildings
+replace(0x061F, "fix_graphics.png") {
+	[ 305, 945, 59, 29, -29, -12 ]
+}
+replace(0x11DB, "fix_graphics.png") {
+	[ 369, 945, 59, 29, -29, -12 ]
+}
+replace(0x1176, "fix_graphics.png") {
+	[ 449, 945, 64, 69, -31, -38 ]
+}
+replace(0x11E6, "fix_graphics.png") {
+	[ 529, 945, 64, 69, -31, -38 ]
+}
+replace(0x117E, "fix_graphics.png") {
+	[ 625, 945, 54, 75, -25, -47 ]
+	[   2,1037, 54, 75, -25, -47 ]
+}
+replace(0x11E1, "fix_graphics.png") {
+	[  66,1037, 54, 75, -25, -47 ]
+}
+
+// Fix buoy in-game; don't show black outline
+spriteset(fix_buoy, "fix_graphics.png") {
+	[ 575, 490,  7, 11,   7,   4 ]
+}
+item(FEAT_CANALS, buoy, WF_BUOY) {
+	graphics {
+		default: fix_buoy;
+	}
+}

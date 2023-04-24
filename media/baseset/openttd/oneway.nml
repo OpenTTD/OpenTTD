@@ -1,0 +1,29 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// One way road graphics
+replacenew(ONE_WAY_ROAD, "oneway.png") {
+	[  34,   8, 24, 16, -10,  -9 ]
+	[  66,   8, 24, 16, -13,  -7 ]
+	[  98,   8, 24, 16, -12,  -8 ]
+	[ 130,   8, 24, 16, -15, -10 ]
+	[ 162,   8, 24, 16, -12,  -9 ]
+	[ 194,   8, 24, 16, -11,  -8 ]
+
+	[  34,  40, 24, 16, -13, -10 ]
+	[  66,  40, 24, 16, -12,  -8 ]
+	[  98,  40, 24, 16, -12,  -9 ]
+	[ 130,  40, 24, 16, -11,  -8 ]
+	[ 162,  40, 24, 16,  -9, -10 ]
+	[ 194,  40, 24, 16, -10,  -9 ]
+
+	[  34,  72, 24, 16,  -8, -11 ]
+	[  66,  72, 24, 16, -11,  -5 ]
+	[  98,  72, 24, 16, -12,  -8 ]
+	[ 130,  72, 24, 16, -12,  -5 ]
+	[ 162,  72, 24, 16, -14, -10 ]
+	[ 194,  72, 24, 16, -12,  -8 ]
+}
