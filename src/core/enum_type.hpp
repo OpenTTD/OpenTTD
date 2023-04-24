@@ -28,14 +28,14 @@
 
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
-# define DECLARE_ENUM_AS_BIT_SET(mask_t) \
-	inline constexpr mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 | (std::underlying_type<mask_t>::type)m2);} \
-	inline constexpr mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 & (std::underlying_type<mask_t>::type)m2);} \
-	inline constexpr mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 ^ (std::underlying_type<mask_t>::type)m2);} \
-	inline constexpr mask_t& operator |= (mask_t& m1, mask_t m2) {m1 = m1 | m2; return m1;} \
-	inline constexpr mask_t& operator &= (mask_t& m1, mask_t m2) {m1 = m1 & m2; return m1;} \
-	inline constexpr mask_t& operator ^= (mask_t& m1, mask_t m2) {m1 = m1 ^ m2; return m1;} \
-	inline constexpr mask_t operator ~(mask_t m) {return (mask_t)(~(std::underlying_type<mask_t>::type)m);}
+#define DECLARE_ENUM_AS_BIT_SET(enum_type) \
+	inline constexpr enum_type operator | (enum_type m1, enum_type m2) {return (enum_type)((std::underlying_type<enum_type>::type)m1 | (std::underlying_type<enum_type>::type)m2);} \
+	inline constexpr enum_type operator & (enum_type m1, enum_type m2) {return (enum_type)((std::underlying_type<enum_type>::type)m1 & (std::underlying_type<enum_type>::type)m2);} \
+	inline constexpr enum_type operator ^ (enum_type m1, enum_type m2) {return (enum_type)((std::underlying_type<enum_type>::type)m1 ^ (std::underlying_type<enum_type>::type)m2);} \
+	inline constexpr enum_type& operator |= (enum_type& m1, enum_type m2) {m1 = m1 | m2; return m1;} \
+	inline constexpr enum_type& operator &= (enum_type& m1, enum_type m2) {m1 = m1 & m2; return m1;} \
+	inline constexpr enum_type& operator ^= (enum_type& m1, enum_type m2) {m1 = m1 ^ m2; return m1;} \
+	inline constexpr enum_type operator ~(enum_type m) {return (enum_type)(~(std::underlying_type<enum_type>::type)m);}
 
 
 #endif /* ENUM_TYPE_HPP */
