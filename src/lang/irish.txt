@@ -5480,7 +5480,7 @@ STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRI
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_BLACK_COMMA                                            :{TINY_FONT}{BLACK}{COMMA}
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
