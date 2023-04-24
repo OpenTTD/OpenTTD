@@ -153,7 +153,7 @@ bool ValParamRoadType(RoadType roadtype)
  * @return The road types that should be available when date
  *         introduced road types are taken into account as well.
  */
-RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, Date date)
+RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date date)
 {
 	RoadTypes rts = current;
 

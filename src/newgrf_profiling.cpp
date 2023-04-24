@@ -21,7 +21,7 @@
 
 
 std::vector<NewGRFProfiler> _newgrf_profilers;
-Date _newgrf_profile_end_date;
+TimerGameCalendar::Date _newgrf_profile_end_date;
 
 
 /**

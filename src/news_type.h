@@ -11,7 +11,7 @@
 #define NEWS_TYPE_H
 
 #include "core/enum_type.hpp"
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "strings_type.h"
 #include "sound_type.h"
 
@@ -124,17 +124,17 @@ struct NewsAllocatedData {
 
 /** Information about a single item of news. */
 struct NewsItem {
-	NewsItem *prev;              ///< Previous news item
-	NewsItem *next;              ///< Next news item
-	StringID string_id;          ///< Message text
-	Date date;                   ///< Date of the news
-	NewsType type;               ///< Type of the news
-	NewsFlag flags;              ///< NewsFlags bits @see NewsFlag
+	NewsItem *prev;               ///< Previous news item
+	NewsItem *next;               ///< Next news item
+	StringID string_id;           ///< Message text
+	TimerGameCalendar::Date date; ///< Date of the news
+	NewsType type;                ///< Type of the news
+	NewsFlag flags;               ///< NewsFlags bits @see NewsFlag
 
-	NewsReferenceType reftype1;  ///< Type of ref1
-	NewsReferenceType reftype2;  ///< Type of ref2
-	uint32 ref1;                 ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
-	uint32 ref2;                 ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
+	NewsReferenceType reftype1;   ///< Type of ref1
+	NewsReferenceType reftype2;   ///< Type of ref2
+	uint32 ref1;                  ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
+	uint32 ref2;                  ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
 
 	std::unique_ptr<const NewsAllocatedData> data; ///< Custom data for the news item that will be deallocated (deleted) when the news item has reached its end.
 

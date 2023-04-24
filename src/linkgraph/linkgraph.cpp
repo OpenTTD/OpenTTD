@@ -89,8 +89,8 @@ void LinkGraph::Compress()
  */
 void LinkGraph::Merge(LinkGraph *other)
 {
-	Date age = TimerGameCalendar::date - this->last_compression + 1;
-	Date other_age = TimerGameCalendar::date - other->last_compression + 1;
+	TimerGameCalendar::Date age = TimerGameCalendar::date - this->last_compression + 1;
+	TimerGameCalendar::Date other_age = TimerGameCalendar::date - other->last_compression + 1;
 	NodeID first = this->Size();
 	for (NodeID node1 = 0; node1 < other->Size(); ++node1) {
 		Station *st = Station::Get(other->nodes[node1].station);

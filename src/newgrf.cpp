@@ -39,6 +39,7 @@
 #include "strings_func.h"
 #include "date_func.h"
 #include "timer/timer_game_tick.h"
+#include "timer/timer_game_calendar.h"
 #include "string_func.h"
 #include "network/core/config.h"
 #include <map>
@@ -2760,7 +2761,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0F: { //  Euro introduction dates
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				Year year_euro = buf->ReadWord();
+				TimerGameCalendar::Year year_euro = buf->ReadWord();
 
 				if (curidx < CURRENCY_END) {
 					_currency_specs[curidx].to_euro = year_euro;
@@ -6514,7 +6515,7 @@ bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 		case 0x02: { // detailed date information: month of year (bit 0-7), day of month (bit 8-12), leap year (bit 15), day of year (bit 16-24)
 			YearMonthDay ymd;
 			ConvertDateToYMD(TimerGameCalendar::date, &ymd);
-			Date start_of_year = ConvertYMDToDate(ymd.year, 0, 1);
+			TimerGameCalendar::Date start_of_year = ConvertYMDToDate(ymd.year, 0, 1);
 			*value = ymd.month | (ymd.day - 1) << 8 | (IsLeapYear(ymd.year) ? 1 << 15 : 0) | (TimerGameCalendar::date - start_of_year) << 16;
 			return true;
 		}
@@ -9240,7 +9241,7 @@ static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseS
  */
 static void EnsureEarlyHouse(HouseZones bitmask)
 {
-	Year min_year = MAX_YEAR;
+	TimerGameCalendar::Year min_year = MAX_YEAR;
 
 	for (int i = 0; i < NUM_HOUSES; i++) {
 		HouseSpec *hs = HouseSpec::Get(i);
@@ -9938,9 +9939,9 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	 * so all NewGRFs are loaded equally. For this we use the
 	 * start date of the game and we set the counters, etc. to
 	 * 0 so they're the same too. */
-	Date date            = TimerGameCalendar::date;
-	Year year            = TimerGameCalendar::year;
-	DateFract date_fract = TimerGameCalendar::date_fract;
+	TimerGameCalendar::Date date            = TimerGameCalendar::date;
+	TimerGameCalendar::Year year            = TimerGameCalendar::year;
+	TimerGameCalendar::DateFract date_fract = TimerGameCalendar::date_fract;
 	uint64 tick_counter  = TimerGameTick::counter;
 	byte display_opt     = _display_opt;
 

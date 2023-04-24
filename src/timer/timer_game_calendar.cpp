@@ -20,17 +20,17 @@
 
 #include "safeguards.h"
 
-Year TimerGameCalendar::year = {};
-Month TimerGameCalendar::month = {};
-Date TimerGameCalendar::date = {};
-DateFract TimerGameCalendar::date_fract = {};
+TimerGameCalendar::Year TimerGameCalendar::year = {};
+TimerGameCalendar::Month TimerGameCalendar::month = {};
+TimerGameCalendar::Date TimerGameCalendar::date = {};
+TimerGameCalendar::DateFract TimerGameCalendar::date_fract = {};
 
 /**
  * Set the date.
  * @param date  New date
  * @param fract The number of ticks that have passed on this date.
  */
-/* static */ void TimerGameCalendar::SetDate(Date date, DateFract fract)
+/* static */ void TimerGameCalendar::SetDate(TimerGameCalendar::Date date, TimerGameCalendar::DateFract fract)
 {
 	assert(fract < DAY_TICKS);
 

@@ -10,7 +10,7 @@
 #ifndef TIMER_GAME_CALENDAR_H
 #define TIMER_GAME_CALENDAR_H
 
-#include "../date_type.h"
+#include "stdafx.h"
 
 /**
  * Timer that is increased every 27ms, and counts towards ticks / days / months / years.
@@ -75,7 +75,14 @@ public:
 	struct TStorage {
 	};
 
-	static void SetDate(Date date, DateFract fract);
+	using Date = int32; ///< The type to store our dates in
+	using DateFract = uint16; ///< The fraction of a date we're in, i.e. the number of ticks since the last date changeover
+
+	using Year = int32; ///< Type for the year, note: 0 based, i.e. starts at the year 0.
+	using Month = uint8; ///< Type for the month, note: 0 based, i.e. 0 = January, 11 = December.
+	using Day = uint8; ///< Type for the day of the month, note: 1 based, first day of a month is 1.
+
+	static void SetDate(TimerGameCalendar::Date date, TimerGameCalendar::DateFract fract);
 
 	static Year year; ///< Current year, starting at 0.
 	static Month month; ///< Current month (0..11).

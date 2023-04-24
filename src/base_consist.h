@@ -11,7 +11,7 @@
 #define BASE_CONSIST_H
 
 #include "order_type.h"
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include <string>
 
 /** Various front vehicle properties that are preserved when autoreplacing, using order-backup or switching front engines within a consist. */
@@ -19,9 +19,9 @@ struct BaseConsist {
 	std::string name;                   ///< Name of vehicle
 
 	/* Used for timetabling. */
-	uint32 current_order_time;          ///< How many ticks have passed since this order started.
-	int32 lateness_counter;             ///< How many ticks late (or early if negative) this vehicle is.
-	Date timetable_start;               ///< When the vehicle is supposed to start the timetable.
+	uint32 current_order_time;               ///< How many ticks have passed since this order started.
+	int32 lateness_counter;                  ///< How many ticks late (or early if negative) this vehicle is.
+	TimerGameCalendar::Date timetable_start; ///< When the vehicle is supposed to start the timetable.
 
 	uint16 service_interval;            ///< The interval for (automatic) servicing; either in days or %.
 

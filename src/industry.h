@@ -16,12 +16,13 @@
 #include "industrytype.h"
 #include "tilearea_type.h"
 #include "station_base.h"
+#include "timer/timer_game_calendar.h"
 
 
 typedef Pool<Industry, IndustryID, 64, 64000> IndustryPool;
 extern IndustryPool _industry_pool;
 
-static const Year PROCESSING_INDUSTRY_ABANDONMENT_YEARS = 5; ///< If a processing industry doesn't produce for this many consecutive years, it may close.
+static const TimerGameCalendar::Year PROCESSING_INDUSTRY_ABANDONMENT_YEARS = 5; ///< If a processing industry doesn't produce for this many consecutive years, it may close.
 
 /**
  * Production level maximum, minimum and default values.
@@ -78,7 +79,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	IndustryType type;             ///< type of industry.
 	Owner owner;                   ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
 	byte random_colour;            ///< randomized colour of the industry, for display purpose
-	Year last_prod_year;           ///< last year of production
+	TimerGameCalendar::Year last_prod_year; ///< last year of production
 	byte was_cargo_delivered;      ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 	IndustryControlFlags ctlflags; ///< flags overriding standard behaviours
 
@@ -87,9 +88,9 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	mutable std::string cached_name; ///< NOSAVE: Cache of the resolved name of the industry
 
 	Owner founder;                 ///< Founder of the industry
-	Date construction_date;        ///< Date of the construction of the industry
+	TimerGameCalendar::Date construction_date; ///< Date of the construction of the industry
 	uint8 construction_type;       ///< Way the industry was constructed (@see IndustryConstructionType)
-	Date last_cargo_accepted_at[INDUSTRY_NUM_INPUTS]; ///< Last day each cargo type was accepted by this industry
+	TimerGameCalendar::Date last_cargo_accepted_at[INDUSTRY_NUM_INPUTS]; ///< Last day each cargo type was accepted by this industry
 	byte selected_layout;          ///< Which tile layout was used when creating the industry
 	Owner exclusive_supplier;      ///< Which company has exclusive rights to deliver cargo (INVALID_OWNER = anyone)
 	Owner exclusive_consumer;      ///< Which company has exclusive rights to take cargo (INVALID_OWNER = anyone)

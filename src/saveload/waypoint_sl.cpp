@@ -14,6 +14,7 @@
 #include "../vehicle_base.h"
 #include "../town.h"
 #include "../newgrf.h"
+#include "../timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -31,7 +32,7 @@ struct OldWaypoint {
 	StringID string_id;
 	std::string name;
 	uint8 delete_ctr;
-	Date build_date;
+	TimerGameCalendar::Date build_date;
 	uint8 localidx;
 	uint32 grfid;
 	const StationSpec *spec;

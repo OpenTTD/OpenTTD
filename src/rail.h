@@ -18,6 +18,7 @@
 #include "slope_type.h"
 #include "strings_type.h"
 #include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "signal_type.h"
 #include "settings_type.h"
 
@@ -249,7 +250,7 @@ public:
 	 * The introduction at this date is furthermore limited by the
 	 * #introduction_required_railtypes.
 	 */
-	Date introduction_date;
+	TimerGameCalendar::Date introduction_date;
 
 	/**
 	 * Bitmask of railtypes that are required for this railtype to be introduced
@@ -450,7 +451,7 @@ bool HasRailtypeAvail(const CompanyID company, const RailType railtype);
 bool HasAnyRailtypesAvail(const CompanyID company);
 bool ValParamRailtype(const RailType rail);
 
-RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date);
+RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date date);
 
 RailTypes GetCompanyRailtypes(CompanyID company, bool introduces = true);
 RailTypes GetRailTypes(bool introduces);

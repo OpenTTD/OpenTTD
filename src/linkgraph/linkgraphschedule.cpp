@@ -205,7 +205,7 @@ void AfterLoad_LinkGraphPauseControl()
 void OnTick_LinkGraph()
 {
 	if (TimerGameCalendar::date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
-	Date offset = TimerGameCalendar::date % (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY);
+	TimerGameCalendar::Date offset = TimerGameCalendar::date % (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY);
 	if (offset == 0) {
 		LinkGraphSchedule::instance.SpawnNext();
 	} else if (offset == (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) / 2) {

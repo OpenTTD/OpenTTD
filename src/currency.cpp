@@ -126,7 +126,7 @@ uint64 GetMaskOfAllowedCurrencies()
 	uint i;
 
 	for (i = 0; i < CURRENCY_END; i++) {
-		Year to_euro = _currency_specs[i].to_euro;
+		TimerGameCalendar::Year to_euro = _currency_specs[i].to_euro;
 
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && TimerGameCalendar::year >= to_euro) continue;
 		if (to_euro == CF_ISEURO && TimerGameCalendar::year < 2000) continue;

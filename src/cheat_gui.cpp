@@ -110,7 +110,7 @@ static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
 
 	YearMonthDay ymd;
 	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
-	Date new_date = ConvertYMDToDate(new_value, ymd.month, ymd.day);
+	TimerGameCalendar::Date new_date = ConvertYMDToDate(new_value, ymd.month, ymd.day);
 
 	/* Shift cached dates before we change the date. */
 	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - TimerGameCalendar::date);

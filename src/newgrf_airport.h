@@ -12,6 +12,7 @@
 
 #include "airport.h"
 #include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "tilearea_type.h"
@@ -106,8 +107,8 @@ struct AirportSpec {
 	byte size_y;                           ///< size of airport in y direction
 	byte noise_level;                      ///< noise that this airport generates
 	byte catchment;                        ///< catchment area of this airport
-	Year min_year;                         ///< first year the airport is available
-	Year max_year;                         ///< last year the airport is available
+	TimerGameCalendar::Year min_year;      ///< first year the airport is available
+	TimerGameCalendar::Year max_year;      ///< last year the airport is available
 	StringID name;                         ///< name of this airport
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 	AirportClassID cls_id;                 ///< the class to which this airport type belongs

@@ -12,6 +12,7 @@
 
 #include "stdafx.h"
 #include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
@@ -58,6 +59,6 @@ struct NewGRFProfiler {
 };
 
 extern std::vector<NewGRFProfiler> _newgrf_profilers;
-extern Date _newgrf_profile_end_date;
+extern TimerGameCalendar::Date _newgrf_profile_end_date;
 
 #endif /* NEWGRF_PROFILING_H */

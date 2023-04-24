@@ -407,7 +407,7 @@ void DepotSortList(VehicleList *list)
 }
 
 /** draw the vehicle profit button in the vehicle list window. */
-static void DrawVehicleProfitButton(Date age, Money display_profit_last_year, uint num_vehicles, int x, int y)
+static void DrawVehicleProfitButton(TimerGameCalendar::Date age, Money display_profit_last_year, uint num_vehicles, int x, int y)
 {
 	SpriteID spr;
 

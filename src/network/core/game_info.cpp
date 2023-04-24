@@ -256,7 +256,7 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
  */
 void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {
-	static const Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
+	static const TimerGameCalendar::Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
 
 	byte game_info_version = p->Recv_uint8();
 	NewGRFSerializationType newgrf_serialisation = NST_GRFID_MD5;

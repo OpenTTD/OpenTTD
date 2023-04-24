@@ -24,6 +24,7 @@
 #include "rev.h"
 #include "core/endian_func.hpp"
 #include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "vehicle_base.h"
 #include "engine_base.h"
 #include "language.h"
@@ -424,7 +425,7 @@ static char *FormatBytes(char *buff, int64 number, const char *last)
 	return buff;
 }
 
-static char *FormatYmdString(char *buff, Date date, const char *last, uint case_index)
+static char *FormatYmdString(char *buff, TimerGameCalendar::Date date, const char *last, uint case_index)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
@@ -434,7 +435,7 @@ static char *FormatYmdString(char *buff, Date date, const char *last, uint case_
 	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_LONG), &tmp_params, last, case_index);
 }
 
-static char *FormatMonthAndYear(char *buff, Date date, const char *last, uint case_index)
+static char *FormatMonthAndYear(char *buff, TimerGameCalendar::Date date, const char *last, uint case_index)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
@@ -444,7 +445,7 @@ static char *FormatMonthAndYear(char *buff, Date date, const char *last, uint ca
 	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_SHORT), &tmp_params, last, case_index);
 }
 
-static char *FormatTinyOrISODate(char *buff, Date date, StringID str, const char *last)
+static char *FormatTinyOrISODate(char *buff, TimerGameCalendar::Date date, StringID str, const char *last)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);

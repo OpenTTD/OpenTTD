@@ -14,7 +14,7 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
 #include "economy_func.h"
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "object_type.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_class.h"
@@ -68,8 +68,8 @@ struct ObjectSpec {
 	uint8 size;                   ///< The size of this objects; low nibble for X, high nibble for Y.
 	uint8 build_cost_multiplier;  ///< Build cost multiplier per tile.
 	uint8 clear_cost_multiplier;  ///< Clear cost multiplier per tile.
-	Date introduction_date;       ///< From when can this object be built.
-	Date end_of_life_date;        ///< When can't this object be built anymore.
+	TimerGameCalendar::Date introduction_date; ///< From when can this object be built.
+	TimerGameCalendar::Date end_of_life_date;  ///< When can't this object be built anymore.
 	ObjectFlags flags;            ///< Flags/settings related to the object.
 	uint16 callback_mask;         ///< Bitmask of requested/allowed callbacks.
 	uint8 height;                 ///< The height of this structure, in heightlevels; max MAX_TILE_HEIGHT.

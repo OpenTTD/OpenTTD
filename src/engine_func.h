@@ -13,6 +13,7 @@
 #include "engine_type.h"
 #include "vehicle_type.h"
 #include "company_type.h"
+#include "timer/timer_game_calendar.h"
 
 void SetupEngines();
 void StartupEngines();
@@ -26,7 +27,7 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company);
 bool IsEngineRefittable(EngineID engine);
 void SetYearEngineAgingStops();
 void CalcEngineReliability(Engine *e, bool new_month);
-void StartupOneEngine(Engine *e, Date aging_date, uint32 seed);
+void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32 seed);
 
 uint GetTotalCapacityOfArticulatedParts(EngineID engine);
 

@@ -14,6 +14,7 @@
 #include "company_base.h"
 #include "newgrf_config.h"
 #include "network/core/tcp_content_type.h"
+#include "timer/timer_game_calendar.h"
 
 
 /** Special values for save-load window for the data parameter of #InvalidateWindowData. */
@@ -34,7 +35,7 @@ struct LoadCheckData {
 	char *error_data;   ///< Data to pass to SetDParamStr when displaying #error.
 
 	uint32 map_size_x, map_size_y;
-	Date current_date;
+	TimerGameCalendar::Date current_date;
 
 	GameSettings settings;
 

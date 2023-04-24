@@ -27,8 +27,8 @@ struct SetDateWindow : Window {
 	SetDateCallback *callback; ///< Callback to call when a date has been selected
 	void *callback_data;       ///< Callback data pointer.
 	YearMonthDay date; ///< The currently selected date
-	Year min_year;     ///< The minimum year in the year dropdown
-	Year max_year;     ///< The maximum year (inclusive) in the year dropdown
+	TimerGameCalendar::Year min_year; ///< The minimum year in the year dropdown
+	TimerGameCalendar::Year max_year; ///< The maximum year (inclusive) in the year dropdown
 
 	/**
 	 * Create the new 'set date' window
@@ -40,7 +40,7 @@ struct SetDateWindow : Window {
 	 * @param max_year the maximum year (inclusive) to show in the year dropdown
 	 * @param callback the callback to call once a date has been selected
 	 */
-	SetDateWindow(WindowDesc *desc, WindowNumber window_number, Window *parent, Date initial_date, Year min_year, Year max_year, SetDateCallback *callback, void *callback_data) :
+	SetDateWindow(WindowDesc *desc, WindowNumber window_number, Window *parent, TimerGameCalendar::Date initial_date, TimerGameCalendar::Year min_year, TimerGameCalendar::Year max_year, SetDateCallback *callback, void *callback_data) :
 			Window(desc),
 			callback(callback),
 			callback_data(callback_data),
@@ -89,7 +89,7 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_YEAR:
-				for (Year i = this->min_year; i <= this->max_year; i++) {
+				for (TimerGameCalendar::Year i = this->min_year; i <= this->max_year; i++) {
 					DropDownListParamStringItem *item = new DropDownListParamStringItem(STR_JUST_INT, i, false);
 					item->SetParam(0, i);
 					list.emplace_back(item);
@@ -214,7 +214,7 @@ static WindowDesc _set_date_desc(
  * @param callback the callback to call once a date has been selected
  * @param callback_data extra callback data
  */
-void ShowSetDateWindow(Window *parent, int window_number, Date initial_date, Year min_year, Year max_year, SetDateCallback *callback, void *callback_data)
+void ShowSetDateWindow(Window *parent, int window_number, TimerGameCalendar::Date initial_date, TimerGameCalendar::Year min_year, TimerGameCalendar::Year max_year, SetDateCallback *callback, void *callback_data)
 {
 	CloseWindowByClass(WC_SET_DATE);
 	new SetDateWindow(&_set_date_desc, window_number, parent, initial_date, min_year, max_year, callback, callback_data);

@@ -12,7 +12,7 @@
 
 #include "company_type.h"
 #include "story_type.h"
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "gfx_type.h"
 #include "vehicle_type.h"
 #include "core/pool_type.hpp"
@@ -163,7 +163,7 @@ struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_po
 /** Struct about stories, current and completed */
 struct StoryPage : StoryPagePool::PoolItem<&_story_page_pool> {
 	uint32 sort_value;   ///< A number that increases for every created story page. Used for sorting. The id of a story page is the pool index.
-	Date date;           ///< Date when the page was created.
+	TimerGameCalendar::Date date; ///< Date when the page was created.
 	CompanyID company;   ///< StoryPage is for a specific company; INVALID_COMPANY if it is global
 
 	char *title;         ///< Title of story page

@@ -18,6 +18,7 @@
 #include "road.h"
 #include "road_gui.h"
 #include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "terraform_gui.h"
@@ -1144,10 +1145,10 @@ void ToggleDirtyBlocks()
  * Set the starting year for a scenario.
  * @param year New starting year.
  */
-void SetStartingYear(Year year)
+void SetStartingYear(TimerGameCalendar::Year year)
 {
 	_settings_game.game_creation.starting_year = Clamp(year, MIN_YEAR, MAX_YEAR);
-	Date new_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+	TimerGameCalendar::Date new_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	/* If you open a savegame as scenario there may already be link graphs.*/
 	LinkGraphSchedule::instance.ShiftDates(new_date - TimerGameCalendar::date);
 	TimerGameCalendar::SetDate(new_date, 0);

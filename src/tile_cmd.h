@@ -15,6 +15,7 @@
 #include "cargo_type.h"
 #include "track_type.h"
 #include "tile_map.h"
+#include "timer/timer_game_calendar.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -52,7 +53,7 @@ struct TileDesc {
 	StringID str;               ///< Description of the tile
 	Owner owner[4];             ///< Name of the owner(s)
 	StringID owner_type[4];     ///< Type of each owner
-	Date build_date;            ///< Date of construction of tile contents
+	TimerGameCalendar::Date build_date; ///< Date of construction of tile contents
 	StringID station_class;     ///< Class of station
 	StringID station_name;      ///< Type of station within the class
 	StringID airport_class;     ///< Name of the airport class

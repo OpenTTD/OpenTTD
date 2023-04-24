@@ -16,6 +16,7 @@
 #include "cargotype.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "date_type.h"
 #include "timer/timer_game_calendar.h"
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
@@ -185,7 +186,7 @@ protected:
 
 	/* The starting month and year that values are plotted against. */
 	byte month;
-	Year year;
+	TimerGameCalendar::Year year;
 
 	bool draw_dates = true; ///< Should we draw months and years on the time axis?
 
@@ -385,7 +386,7 @@ protected:
 			x = r.left;
 			y = r.bottom + ScaleGUITrad(2);
 			byte month = this->month;
-			Year year  = this->year;
+			TimerGameCalendar::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
 				SetDParam(1, year);
@@ -502,7 +503,7 @@ public:
 		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
 		if (this->draw_dates) {
 			byte month = this->month;
-			Year year  = this->year;
+			TimerGameCalendar::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
 				SetDParam(1, year);

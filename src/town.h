@@ -11,6 +11,7 @@
 #define TOWN_H
 
 #include "viewport_type.h"
+#include "date_type.h"
 #include "town_map.h"
 #include "subsidy_type.h"
 #include "newgrf_storage.h"
