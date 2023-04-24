@@ -112,12 +112,12 @@ static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
 	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 	Date new_date = ConvertYMDToDate(new_value, ymd.month, ymd.day);
 
-	/* Change the date. */
-	TimerGameCalendar::SetDate(new_date, TimerGameCalendar::date_fract);
-
-	/* Shift cached dates. */
+	/* Shift cached dates before we change the date. */
 	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - TimerGameCalendar::date);
 	LinkGraphSchedule::instance.ShiftDates(new_date - TimerGameCalendar::date);
+
+	/* Now it's safe to actually change the date. */
+	TimerGameCalendar::SetDate(new_date, TimerGameCalendar::date_fract);
 
 	EnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
