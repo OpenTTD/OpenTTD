@@ -29,6 +29,8 @@ public:
 	struct TStorage {
 		uint elapsed;
 	};
+
+	static uint64 counter; ///< Monotonic counter, in ticks, since start of game.
 };
 
 #endif /* TIMER_GAME_TICK_H */

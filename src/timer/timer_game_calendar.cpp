@@ -67,8 +67,6 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 {
 	assert(delta == 1);
 
-	_tick_counter++;
-
 	if (_game_mode == GM_MENU) return;
 
 	TimerGameCalendar::date_fract++;

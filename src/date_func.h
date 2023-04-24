@@ -12,8 +12,6 @@
 
 #include "date_type.h"
 
-extern uint64 _tick_counter;
-
 void ConvertDateToYMD(Date date, YearMonthDay *ymd);
 Date ConvertYMDToDate(Year year, Month month, Day day);
 

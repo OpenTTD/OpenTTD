@@ -38,6 +38,7 @@
 #include "fios.h"
 #include "strings_func.h"
 #include "date_func.h"
+#include "timer/timer_game_tick.h"
 #include "string_func.h"
 #include "network/core/config.h"
 #include <map>
@@ -6526,7 +6527,7 @@ bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 			return true;
 
 		case 0x0A: // animation counter
-			*value = GB(_tick_counter, 0, 16);
+			*value = GB(TimerGameTick::counter, 0, 16);
 			return true;
 
 		case 0x0B: { // TTDPatch version
@@ -9942,14 +9943,14 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	Date date            = TimerGameCalendar::date;
 	Year year            = TimerGameCalendar::year;
 	DateFract date_fract = TimerGameCalendar::date_fract;
-	uint64 tick_counter  = _tick_counter;
+	uint64 tick_counter  = TimerGameTick::counter;
 	byte display_opt     = _display_opt;
 
 	if (_networking) {
 		TimerGameCalendar::year = _settings_game.game_creation.starting_year;
 		TimerGameCalendar::date = ConvertYMDToDate(TimerGameCalendar::year, 0, 1);
 		TimerGameCalendar::date_fract = 0;
-		_tick_counter = 0;
+		TimerGameTick::counter = 0;
 		_display_opt  = 0;
 	}
 
@@ -10046,6 +10047,6 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	TimerGameCalendar::year = year;
 	TimerGameCalendar::date = date;
 	TimerGameCalendar::date_fract = date_fract;
-	_tick_counter = tick_counter;
+	TimerGameTick::counter = tick_counter;
 	_display_opt  = display_opt;
 }

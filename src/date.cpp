@@ -25,8 +25,6 @@
 
 #include "safeguards.h"
 
-uint64 _tick_counter;  ///< Ever incrementing tick counter for setting off various events
-
 #define M(a, b) ((a << 5) | b)
 static const uint16 _month_date_from_year_day[] = {
 	M( 0, 1), M( 0, 2), M( 0, 3), M( 0, 4), M( 0, 5), M( 0, 6), M( 0, 7), M( 0, 8), M( 0, 9), M( 0, 10), M( 0, 11), M( 0, 12), M( 0, 13), M( 0, 14), M( 0, 15), M( 0, 16), M( 0, 17), M( 0, 18), M( 0, 19), M( 0, 20), M( 0, 21), M( 0, 22), M( 0, 23), M( 0, 24), M( 0, 25), M( 0, 26), M( 0, 27), M( 0, 28), M( 0, 29), M( 0, 30), M( 0, 31),

@@ -46,6 +46,7 @@
 #include "terraform_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"
@@ -661,7 +662,7 @@ static void AnimateOilWell(TileIndex tile, IndustryGfx gfx)
 
 static void AnimateMineTower(TileIndex tile)
 {
-	int state = _tick_counter & 0x7FF;
+	int state = TimerGameTick::counter & 0x7FF;
 
 	if ((state -= 0x400) < 0) return;
 
@@ -702,36 +703,36 @@ static void AnimateTile_Industry(TileIndex tile)
 
 	switch (gfx) {
 	case GFX_SUGAR_MINE_SIEVE:
-		if ((_tick_counter & 1) == 0) AnimateSugarSieve(tile);
+		if ((TimerGameTick::counter & 1) == 0) AnimateSugarSieve(tile);
 		break;
 
 	case GFX_TOFFEE_QUARY:
-		if ((_tick_counter & 3) == 0) AnimateToffeeQuarry(tile);
+		if ((TimerGameTick::counter & 3) == 0) AnimateToffeeQuarry(tile);
 		break;
 
 	case GFX_BUBBLE_CATCHER:
-		if ((_tick_counter & 1) == 0) AnimateBubbleCatcher(tile);
+		if ((TimerGameTick::counter & 1) == 0) AnimateBubbleCatcher(tile);
 		break;
 
 	case GFX_POWERPLANT_SPARKS:
-		if ((_tick_counter & 3) == 0) AnimatePowerPlantSparks(tile);
+		if ((TimerGameTick::counter & 3) == 0) AnimatePowerPlantSparks(tile);
 		break;
 
 	case GFX_TOY_FACTORY:
-		if ((_tick_counter & 1) == 0) AnimateToyFactory(tile);
+		if ((TimerGameTick::counter & 1) == 0) AnimateToyFactory(tile);
 		break;
 
 	case GFX_PLASTIC_FOUNTAIN_ANIMATED_1: case GFX_PLASTIC_FOUNTAIN_ANIMATED_2:
 	case GFX_PLASTIC_FOUNTAIN_ANIMATED_3: case GFX_PLASTIC_FOUNTAIN_ANIMATED_4:
 	case GFX_PLASTIC_FOUNTAIN_ANIMATED_5: case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
 	case GFX_PLASTIC_FOUNTAIN_ANIMATED_7: case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
-		if ((_tick_counter & 3) == 0) AnimatePlasticFountain(tile, gfx);
+		if ((TimerGameTick::counter & 3) == 0) AnimatePlasticFountain(tile, gfx);
 		break;
 
 	case GFX_OILWELL_ANIMATED_1:
 	case GFX_OILWELL_ANIMATED_2:
 	case GFX_OILWELL_ANIMATED_3:
-		if ((_tick_counter & 7) == 0) AnimateOilWell(tile, gfx);
+		if ((TimerGameTick::counter & 7) == 0) AnimateOilWell(tile, gfx);
 		break;
 
 	case GFX_COAL_MINE_TOWER_ANIMATED:
@@ -879,7 +880,7 @@ static void TileLoop_Industry(TileIndex tile)
 	case GFX_COAL_MINE_TOWER_NOT_ANIMATED:
 	case GFX_COPPER_MINE_TOWER_NOT_ANIMATED:
 	case GFX_GOLD_MINE_TOWER_NOT_ANIMATED:
-		if (!(_tick_counter & 0x400) && Chance16(1, 2)) {
+		if (!(TimerGameTick::counter & 0x400) && Chance16(1, 2)) {
 			switch (gfx) {
 				case GFX_COAL_MINE_TOWER_NOT_ANIMATED:   gfx = GFX_COAL_MINE_TOWER_ANIMATED;   break;
 				case GFX_COPPER_MINE_TOWER_NOT_ANIMATED: gfx = GFX_COPPER_MINE_TOWER_ANIMATED; break;
@@ -902,7 +903,7 @@ static void TileLoop_Industry(TileIndex tile)
 	case GFX_COAL_MINE_TOWER_ANIMATED:
 	case GFX_COPPER_MINE_TOWER_ANIMATED:
 	case GFX_GOLD_MINE_TOWER_ANIMATED:
-		if (!(_tick_counter & 0x400)) {
+		if (!(TimerGameTick::counter & 0x400)) {
 			switch (gfx) {
 				case GFX_COAL_MINE_TOWER_ANIMATED:   gfx = GFX_COAL_MINE_TOWER_NOT_ANIMATED;   break;
 				case GFX_COPPER_MINE_TOWER_ANIMATED: gfx = GFX_COPPER_MINE_TOWER_NOT_ANIMATED; break;

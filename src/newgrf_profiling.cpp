@@ -8,7 +8,6 @@
  /** @file newgrf_profiling.cpp Profiling of NewGRF action 2 handling. */
 
 #include "newgrf_profiling.h"
-#include "date_func.h"
 #include "fileio_func.h"
 #include "string_func.h"
 #include "console_func.h"
@@ -16,6 +15,7 @@
 #include "walltime_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 
 #include <chrono>
 
@@ -50,7 +50,7 @@ void NewGRFProfiler::BeginResolve(const ResolverObject &resolver)
 	this->cur_call.root_sprite = resolver.root_spritegroup->nfo_line;
 	this->cur_call.subs = 0;
 	this->cur_call.time = (uint32)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count();
-	this->cur_call.tick = _tick_counter;
+	this->cur_call.tick = TimerGameTick::counter;
 	this->cur_call.cb = resolver.callback;
 	this->cur_call.feat = resolver.GetFeature();
 	this->cur_call.item = resolver.GetDebugID();
@@ -89,7 +89,7 @@ void NewGRFProfiler::Start()
 {
 	this->Abort();
 	this->active = true;
-	this->start_tick = _tick_counter;
+	this->start_tick = TimerGameTick::counter;
 }
 
 uint32 NewGRFProfiler::Finish()
@@ -148,7 +148,7 @@ uint32 NewGRFProfiler::FinishAll()
 	for (NewGRFProfiler &pr : _newgrf_profilers) {
 		if (pr.active) {
 			total_microseconds += pr.Finish();
-			max_ticks = std::max(max_ticks, _tick_counter - pr.start_tick);
+			max_ticks = std::max(max_ticks, TimerGameTick::counter - pr.start_tick);
 		}
 	}
 

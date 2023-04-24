@@ -11,7 +11,7 @@
 
 #include "animated_tile_func.h"
 #include "core/random_func.hpp"
-#include "date_func.h"
+#include "timer/timer_game_tick.h"
 #include "viewport_func.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_callbacks.h"
@@ -60,7 +60,7 @@ struct AnimationBase {
 		 * increasing this value by one doubles the wait. 0 is the minimum value
 		 * allowed for animation_speed, which corresponds to 30ms, and 16 is the
 		 * maximum, corresponding to around 33 minutes. */
-		if (_tick_counter % (1ULL << animation_speed) != 0) return;
+		if (TimerGameTick::counter % (1ULL << animation_speed) != 0) return;
 
 		uint8 frame      = Tframehelper::Get(obj, tile);
 		uint8 num_frames = spec->animation.frames;

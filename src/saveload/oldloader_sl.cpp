@@ -1617,7 +1617,7 @@ static const OldChunks main_chunk[] = {
 	OCL_NULL( 2 ),              ///< land_code,     no longer in use
 
 	OCL_VAR ( OC_FILE_U16 | OC_VAR_U8, 1, &_age_cargo_skip_counter ),
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U64, 1, &_tick_counter ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U64, 1, &TimerGameTick::counter ),
 	OCL_VAR (   OC_TILE,   1, &_cur_tileloop_tile ),
 
 	OCL_ASSERT( OC_TTO, 0x3A2E ),

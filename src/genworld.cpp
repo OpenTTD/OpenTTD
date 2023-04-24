@@ -16,8 +16,8 @@
 #include "network/network.h"
 #include "heightmap.h"
 #include "viewport_func.h"
-#include "date_func.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 #include "engine_func.h"
 #include "water.h"
 #include "video/video_driver.hpp"
@@ -154,7 +154,7 @@ static void _GenerateWorld()
 			SetGeneratingWorldProgress(GWP_RUNTILELOOP, 0x500);
 			for (i = 0; i < 0x500; i++) {
 				RunTileLoop();
-				_tick_counter++;
+				TimerGameTick::counter++;
 				IncreaseGeneratingWorldProgress(GWP_RUNTILELOOP);
 			}
 
