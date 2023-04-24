@@ -185,7 +185,7 @@ protected:
 	byte num_vert_lines;
 
 	/* The starting month and year that values are plotted against. */
-	byte month;
+	TimerGameCalendar::Month month;
 	TimerGameCalendar::Year year;
 
 	bool draw_dates = true; ///< Should we draw months and years on the time axis?
@@ -385,7 +385,7 @@ protected:
 		if (this->draw_dates) {
 			x = r.left;
 			y = r.bottom + ScaleGUITrad(2);
-			byte month = this->month;
+			TimerGameCalendar::Month month = this->month;
 			TimerGameCalendar::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
@@ -502,7 +502,7 @@ public:
 
 		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
 		if (this->draw_dates) {
-			byte month = this->month;
+			TimerGameCalendar::Month month = this->month;
 			TimerGameCalendar::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, month + STR_MONTH_ABBREV_JAN);
