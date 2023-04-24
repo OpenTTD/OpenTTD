@@ -1040,7 +1040,7 @@ void NetworkGameLoop()
 		/* Log the sync state to check for in-syncedness of replays. */
 		if (TimerGameCalendar::date_fract == 0) {
 			/* We don't want to log multiple times if paused. */
-			static Date last_log;
+			static TimerGameCalendar::Date last_log;
 			if (last_log != TimerGameCalendar::date) {
 				Debug(desync, 1, "sync: {:08x}; {:02x}; {:08x}; {:08x}", TimerGameCalendar::date, TimerGameCalendar::date_fract, _random.state[0], _random.state[1]);
 				last_log = TimerGameCalendar::date;

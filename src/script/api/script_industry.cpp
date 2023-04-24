@@ -20,6 +20,7 @@
 #include "../../station_base.h"
 #include "../../newgrf_industries.h"
 #include "../../industry_cmd.h"
+#include "../../timer/timer_game_calendar.h"
 #include "table/strings.h"
 #include <numeric>
 
@@ -234,7 +235,7 @@
 	if (i == nullptr) return ScriptDate::DATE_INVALID;
 
 	if (cargo_type == CT_INVALID) {
-		return (ScriptDate::Date)std::accumulate(std::begin(i->last_cargo_accepted_at), std::end(i->last_cargo_accepted_at), 0, [](Date a, Date b) { return std::max(a, b); });
+		return (ScriptDate::Date)std::accumulate(std::begin(i->last_cargo_accepted_at), std::end(i->last_cargo_accepted_at), 0, [](TimerGameCalendar::Date a, TimerGameCalendar::Date b) { return std::max(a, b); });
 	} else {
 		int index = i->GetCargoAcceptedIndex(cargo_type);
 		if (index < 0) return ScriptDate::DATE_INVALID;

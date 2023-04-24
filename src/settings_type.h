@@ -11,6 +11,7 @@
 #define SETTINGS_TYPE_H
 
 #include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "economy_type.h"
 #include "town_type.h"
 #include "transport_type.h"
@@ -152,13 +153,13 @@ struct GUISettings {
 	SignalGUISettings signal_gui_mode;       ///< select which signal types are shown in the signal GUI
 	SignalCycleSettings cycle_signal_types;  ///< Which signal types to cycle with the build signal tool.
 	SignalType default_signal_type;          ///< The default signal type, which is set automatically by the last signal used. Not available in Settings.
-	Year   coloured_news_year;               ///< when does newspaper become coloured?
+	TimerGameCalendar::Year coloured_news_year; ///< when does newspaper become coloured?
 	bool   timetable_in_ticks;               ///< whether to show the timetable in ticks rather than days
 	bool   quick_goto;                       ///< Allow quick access to 'goto button' in vehicle orders window
 	bool   auto_euro;                        ///< automatically switch to euro in 2002
 	byte   drag_signals_density;             ///< many signals density
 	bool   drag_signals_fixed_distance;      ///< keep fixed distance between signals when dragging
-	Year   semaphore_build_before;           ///< build semaphore signals automatically before this year
+	TimerGameCalendar::Year semaphore_build_before; ///< build semaphore signals automatically before this year
 	byte   news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
 	bool   show_track_reservation;           ///< highlight reserved tracks.
 	byte   station_numtracks;                ///< the number of platforms to default on for rail stations
@@ -301,7 +302,7 @@ struct NetworkSettings {
 	uint8       autoclean_novehicles;                     ///< remove companies with no vehicles after this many months
 	uint8       max_companies;                            ///< maximum amount of companies
 	uint8       max_clients;                              ///< maximum amount of clients
-	Year        restart_game_year;                        ///< year the server restarts
+	TimerGameCalendar::Year restart_game_year;            ///< year the server restarts
 	uint8       min_active_clients;                       ///< minimum amount of active clients to unpause the game
 	bool        reload_cfg;                               ///< reload the config file before restarting
 	std::string last_joined;                              ///< Last joined server
@@ -312,8 +313,8 @@ struct NetworkSettings {
 /** Settings related to the creation of games. */
 struct GameCreationSettings {
 	uint32 generation_seed;                  ///< noise seed for world generation
-	Year   starting_year;                    ///< starting date
-	Year   ending_year;                      ///< scoring end date
+	TimerGameCalendar::Year starting_year;   ///< starting date
+	TimerGameCalendar::Year ending_year;     ///< scoring end date
 	uint8  map_x;                            ///< X size of map
 	uint8  map_y;                            ///< Y size of map
 	byte   land_generator;                   ///< the landscape generator

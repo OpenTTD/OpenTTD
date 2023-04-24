@@ -12,7 +12,7 @@
 
 #include "core/smallvec_type.hpp"
 #include "cargo_type.h"
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "economy_type.h"
 #include "sortlist_type.h"
 #include "vehicle_base.h"
@@ -57,7 +57,7 @@ struct GUIVehicleGroup {
 		});
 	}
 
-	Date GetOldestVehicleAge() const
+	TimerGameCalendar::Date GetOldestVehicleAge() const
 	{
 		const Vehicle *oldest = *std::max_element(this->vehicles_begin, this->vehicles_end, [](const Vehicle *v_a, const Vehicle *v_b) {
 			return v_a->age < v_b->age;

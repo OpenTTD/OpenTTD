@@ -12,15 +12,15 @@
 
 #include "date_type.h"
 
-void ConvertDateToYMD(Date date, YearMonthDay *ymd);
-Date ConvertYMDToDate(Year year, Month month, Day day);
+void ConvertDateToYMD(TimerGameCalendar::Date date, YearMonthDay *ymd);
+TimerGameCalendar::Date ConvertYMDToDate(TimerGameCalendar::Year year, TimerGameCalendar::Month month, TimerGameCalendar::Day day);
 
 /**
  * Checks whether the given year is a leap year or not.
  * @param yr The year to check.
  * @return True if \c yr is a leap year, otherwise false.
  */
-static inline bool IsLeapYear(Year yr)
+static inline bool IsLeapYear(TimerGameCalendar::Year yr)
 {
 	return yr % 4 == 0 && (yr % 100 != 0 || yr % 400 == 0);
 }

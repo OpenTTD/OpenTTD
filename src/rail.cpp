@@ -215,7 +215,7 @@ bool ValParamRailtype(const RailType rail)
  * @return The rail types that should be available when date
  *         introduced rail types are taken into account as well.
  */
-RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date)
+RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date date)
 {
 	RailTypes rts = current;
 

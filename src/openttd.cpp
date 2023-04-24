@@ -102,7 +102,7 @@ bool _request_newgrf_scan = false;
 NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
 
 /** Available settings for autosave intervals. */
-static const Month _autosave_months[] = {
+static const TimerGameCalendar::Month _autosave_months[] = {
 	 0, ///< never
 	 1, ///< every month
 	 3, ///< every 3 months
@@ -406,7 +406,7 @@ void OpenBrowser(const char *url)
 
 /** Callback structure of statements to be executed after the NewGRF scan. */
 struct AfterNewGRFScan : NewGRFScanCallback {
-	Year startyear = INVALID_YEAR;              ///< The start year.
+	TimerGameCalendar::Year startyear = INVALID_YEAR; ///< The start year.
 	uint32 generation_seed = GENERATE_NEW_SEED; ///< Seed for the new game.
 	std::string dedicated_host;                 ///< Hostname for the dedicated server.
 	uint16 dedicated_port = 0;                  ///< Port for the dedicated server.

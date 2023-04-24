@@ -14,7 +14,7 @@
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
 #include "strings_type.h"
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "core/enum_type.hpp"
 #include "newgrf.h"
 #include "economy_func.h"
@@ -161,7 +161,7 @@ public:
 	 * The introduction at this date is furthermore limited by the
 	 * #introduction_required_types.
 	 */
-	Date introduction_date;
+	TimerGameCalendar::Date introduction_date;
 
 	/**
 	 * Bitmask of roadtypes that are required for this roadtype to be introduced

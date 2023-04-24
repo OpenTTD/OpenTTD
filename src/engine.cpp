@@ -47,7 +47,7 @@ EngineOverrideManager _engine_mngr;
  * Year that engine aging stops. Engines will not reduce in reliability
  * and no more engines will be introduced
  */
-static Year _year_engine_aging_stops;
+static TimerGameCalendar::Year _year_engine_aging_stops;
 
 /** Number of engines of each vehicle type in original engine data */
 const uint8 _engine_counts[4] = {
@@ -436,7 +436,7 @@ uint Engine::GetDisplayMaxTractiveEffort() const
  * Returns the vehicle's (not model's!) life length in days.
  * @return the life length
  */
-Date Engine::GetLifeLengthInDays() const
+TimerGameCalendar::Date Engine::GetLifeLengthInDays() const
 {
 	/* Assume leap years; this gives the player a bit more than the given amount of years, but never less. */
 	return (this->info.lifelength + _settings_game.vehicle.extend_vehicle_life) * DAYS_IN_LEAP_YEAR;
@@ -652,7 +652,7 @@ void SetYearEngineAgingStops()
  * @param aging_date The date used for age calculations.
  * @param seed Random seed.
  */
-void StartupOneEngine(Engine *e, Date aging_date, uint32 seed)
+void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32 seed)
 {
 	const EngineInfo *ei = &e->info;
 
@@ -674,7 +674,7 @@ void StartupOneEngine(Engine *e, Date aging_date, uint32 seed)
 	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
 	 * of engines in early starting games.
 	 * Note: TTDP uses fixed 1922 */
-	e->intro_date = ei->base_intro <= ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
+	e->intro_date = ei->base_intro <= ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (TimerGameCalendar::Date)GB(r, 0, 9) + ei->base_intro;
 	if (e->intro_date <= TimerGameCalendar::date) {
 		e->age = (aging_date - e->intro_date) >> 5;
 		e->company_avail = MAX_UVALUE(CompanyMask);
@@ -721,7 +721,7 @@ void StartupOneEngine(Engine *e, Date aging_date, uint32 seed)
 void StartupEngines()
 {
 	/* Aging of vehicles stops, so account for that when starting late */
-	const Date aging_date = std::min(TimerGameCalendar::date, ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
+	const TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date, ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
 	uint32 seed = Random();
 
 	for (Engine *e : Engine::Iterate()) {
@@ -1241,7 +1241,7 @@ bool IsEngineRefittable(EngineID engine)
  */
 void CheckEngines()
 {
-	Date min_date = INT32_MAX;
+	TimerGameCalendar::Date min_date = INT32_MAX;
 
 	for (const Engine *e : Engine::Iterate()) {
 		if (!e->IsEnabled()) continue;

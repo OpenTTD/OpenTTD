@@ -11,7 +11,7 @@
 #define NETWORK_GUI_H
 
 #include "../company_type.h"
-#include "../date_type.h"
+#include "../timer/timer_game_calendar.h"
 #include "../economy_type.h"
 #include "../window_type.h"
 #include "network_type.h"
@@ -29,7 +29,7 @@ void ShowNetworkAskRelay(const std::string &server_connection_string, const std:
 /** Company information stored at the client side */
 struct NetworkCompanyInfo : NetworkCompanyStats {
 	std::string company_name; ///< Company name
-	Year inaugurated_year;    ///< What year the company started in
+	TimerGameCalendar::Year inaugurated_year; ///< What year the company started in
 	Money company_value;      ///< The company value
 	Money money;              ///< The amount of money the company has
 	Money income;             ///< How much did the company earn last year

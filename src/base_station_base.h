@@ -14,6 +14,7 @@
 #include "command_type.h"
 #include "viewport_type.h"
 #include "station_map.h"
+#include "timer/timer_game_calendar.h"
 
 typedef Pool<BaseStation, StationID, 32, 64000> StationPool;
 extern StationPool _station_pool;
@@ -76,7 +77,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	std::vector<StationSpecList> speclist;           ///< List of rail station specs of this station.
 	std::vector<RoadStopSpecList> roadstop_speclist; ///< List of road stop specs of this station
 
-	Date build_date;                ///< Date of construction
+	TimerGameCalendar::Date build_date; ///< Date of construction
 
 	uint16 random_bits;             ///< Random bits assigned to this station
 	byte waiting_triggers;          ///< Waiting triggers (NewGRF) for this station

@@ -14,6 +14,7 @@
 #include "../core/smallmap_type.hpp"
 #include "../station_base.h"
 #include "../cargotype.h"
+#include "../date_type.h"
 #include "../timer/timer_game_calendar.h"
 #include "../saveload/saveload.h"
 #include "linkgraph_type.h"
@@ -44,8 +45,8 @@ public:
 		uint capacity;                 ///< Capacity of the link.
 		uint usage;                    ///< Usage of the link.
 		uint64 travel_time_sum;        ///< Sum of the travel times of the link, in ticks.
-		Date last_unrestricted_update; ///< When the unrestricted part of the link was last updated.
-		Date last_restricted_update;   ///< When the restricted part of the link was last updated.
+		TimerGameCalendar::Date last_unrestricted_update; ///< When the unrestricted part of the link was last updated.
+		TimerGameCalendar::Date last_restricted_update;   ///< When the restricted part of the link was last updated.
 		NodeID dest_node;              ///< Destination of the edge.
 
 		BaseEdge(NodeID dest_node = INVALID_NODE);
@@ -60,7 +61,7 @@ public:
 		 * Get the date of the last update to any part of the edge's capacity.
 		 * @return Last update.
 		 */
-		Date LastUpdate() const { return std::max(this->last_unrestricted_update, this->last_restricted_update); }
+		TimerGameCalendar::Date LastUpdate() const { return std::max(this->last_unrestricted_update, this->last_restricted_update); }
 
 		void Update(uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
 		void Restrict() { this->last_unrestricted_update = INVALID_DATE; }
@@ -93,7 +94,7 @@ public:
 		uint demand;             ///< Acceptance at the station.
 		StationID station;       ///< Station ID.
 		TileIndex xy;            ///< Location of the station referred to by the node.
-		Date last_update;        ///< When the supply was last updated.
+		TimerGameCalendar::Date last_update;        ///< When the supply was last updated.
 
 		std::vector<BaseEdge> edges; ///< Sorted list of outgoing edges from this node.
 
@@ -234,7 +235,7 @@ public:
 	 * Get date of last compression.
 	 * @return Date of last compression.
 	 */
-	inline Date LastCompression() const { return this->last_compression; }
+	inline TimerGameCalendar::Date LastCompression() const { return this->last_compression; }
 
 	/**
 	 * Get the cargo ID this component's link graph refers to.
@@ -263,7 +264,7 @@ protected:
 	friend class LinkGraphJob;
 
 	CargoID cargo;         ///< Cargo of this component's link graph.
-	Date last_compression; ///< Last time the capacities and supplies were compressed.
+	TimerGameCalendar::Date last_compression; ///< Last time the capacities and supplies were compressed.
 	NodeVector nodes;      ///< Nodes in the component.
 };
 

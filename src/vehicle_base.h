@@ -23,6 +23,7 @@
 #include "base_consist.h"
 #include "network/network.h"
 #include "saveload/saveload.h"
+#include "timer/timer_game_calendar.h"
 #include <list>
 #include <map>
 
@@ -286,10 +287,10 @@ public:
 	SpriteID colourmap;                 ///< NOSAVE: cached colour mapping
 
 	/* Related to age and service time */
-	Year build_year;                    ///< Year the vehicle has been built.
-	Date age;                           ///< Age in days
-	Date max_age;                       ///< Maximum age
-	Date date_of_last_service;          ///< Last date the vehicle had a service at a depot.
+	TimerGameCalendar::Year build_year;           ///< Year the vehicle has been built.
+	TimerGameCalendar::Date age;                  ///< Age in days
+	TimerGameCalendar::Date max_age;              ///< Maximum age
+	TimerGameCalendar::Date date_of_last_service; ///< Last date the vehicle had a service at a depot.
 	uint16 reliability;                 ///< Reliability.
 	uint16 reliability_spd_dec;         ///< Reliability decrease speed.
 	byte breakdown_ctr;                 ///< Counter for managing breakdown events. @see Vehicle::HandleBreakdown

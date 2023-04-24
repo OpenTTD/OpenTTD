@@ -12,6 +12,7 @@
 
 #include "road_map.h"
 #include "house.h"
+#include "timer/timer_game_calendar.h"
 
 /**
  * Get the index of which town this house/street is attached to.
@@ -246,7 +247,7 @@ static inline void IncrementHouseAge(Tile t)
  * @pre IsTileType(t, MP_HOUSE)
  * @return year
  */
-static inline Year GetHouseAge(Tile t)
+static inline TimerGameCalendar::Year GetHouseAge(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE));
 	return IsHouseCompleted(t) ? t.m5() : 0;

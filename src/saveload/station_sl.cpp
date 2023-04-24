@@ -18,6 +18,7 @@
 #include "../vehicle_base.h"
 #include "../newgrf_station.h"
 #include "../newgrf_roadstop.h"
+#include "../timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -67,7 +68,7 @@ void MoveBuoysToWaypoints()
 		Town *town         = st->town;
 		StringID string_id = st->string_id;
 		std::string name   = st->name;
-		Date build_date    = st->build_date;
+		TimerGameCalendar::Date build_date = st->build_date;
 		/* TTDPatch could use "buoys with rail station" for rail waypoints */
 		bool train         = st->train_station.tile != INVALID_TILE;
 		TileArea train_st  = st->train_station;

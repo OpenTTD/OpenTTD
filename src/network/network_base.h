@@ -15,6 +15,7 @@
 #include "../core/pool_type.hpp"
 #include "../company_type.h"
 #include "../date_type.h"
+#include "../timer/timer_game_calendar.h"
 
 /** Type for the pool with client information. */
 typedef Pool<NetworkClientInfo, ClientIndex, 8, MAX_CLIENT_SLOTS, PT_NCLIENT> NetworkClientInfoPool;
@@ -25,7 +26,7 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 	ClientID client_id;      ///< Client identifier (same as ClientState->client_id)
 	std::string client_name; ///< Name of the client
 	CompanyID client_playas; ///< As which company is this client playing (CompanyID)
-	Date join_date;          ///< Gamedate the client has joined
+	TimerGameCalendar::Date join_date; ///< Gamedate the client has joined
 
 	/**
 	 * Create a new client.

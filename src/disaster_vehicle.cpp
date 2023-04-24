@@ -900,9 +900,9 @@ static void Disaster_CoalMine_Init()
 }
 
 struct Disaster {
-	DisasterInitProc *init_proc; ///< The init function for this disaster.
-	Year min_year;               ///< The first year this disaster will occur.
-	Year max_year;               ///< The last year this disaster will occur.
+	DisasterInitProc *init_proc;      ///< The init function for this disaster.
+	TimerGameCalendar::Year min_year; ///< The first year this disaster will occur.
+	TimerGameCalendar::Year max_year; ///< The last year this disaster will occur.
 };
 
 static const Disaster _disasters[] = {

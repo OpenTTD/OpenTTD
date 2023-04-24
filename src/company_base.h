@@ -14,6 +14,7 @@
 #include "livery.h"
 #include "autoreplace_type.h"
 #include "tile_type.h"
+#include "timer/timer_game_calendar.h"
 #include "settings_type.h"
 #include "group.h"
 #include <string>
@@ -77,7 +78,7 @@ struct CompanyProperties {
 
 	std::array<Owner, MAX_COMPANY_SHARE_OWNERS> share_owners; ///< Owners of the shares of the company. #INVALID_OWNER if nobody has bought them yet.
 
-	Year inaugurated_year;           ///< Year of starting the company.
+	TimerGameCalendar::Year inaugurated_year; ///< Year of starting the company.
 
 	byte months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?

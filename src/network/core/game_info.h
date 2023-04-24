@@ -15,7 +15,7 @@
 #include "config.h"
 #include "core.h"
 #include "../../newgrf_config.h"
-#include "../../date_type.h"
+#include "../../timer/timer_game_calendar.h"
 
 #include <unordered_map>
 
@@ -92,8 +92,8 @@ enum NewGRFSerializationType {
  */
 struct NetworkServerGameInfo {
 	GRFConfig *grfconfig;        ///< List of NewGRF files used
-	Date start_date;             ///< When the game started
-	Date game_date;              ///< Current date
+	TimerGameCalendar::Date start_date; ///< When the game started
+	TimerGameCalendar::Date game_date;  ///< Current date
 	uint16 map_width;            ///< Map width
 	uint16 map_height;           ///< Map height
 	std::string server_name;     ///< Server name

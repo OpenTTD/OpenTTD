@@ -14,7 +14,7 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "cargo_type.h"
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "sound_type.h"
 #include "strings_type.h"
 
@@ -141,9 +141,9 @@ DECLARE_ENUM_AS_BIT_SET(ExtraEngineFlags);
  *  @see table/engines.h
  */
 struct EngineInfo {
-	Date base_intro;    ///< Basic date of engine introduction (without random parts).
-	Year lifelength;    ///< Lifetime of a single vehicle
-	Year base_life;     ///< Basic duration of engine availability (without random parts). \c 0xFF means infinite life.
+	TimerGameCalendar::Date base_intro;    ///< Basic date of engine introduction (without random parts).
+	TimerGameCalendar::Year lifelength;    ///< Lifetime of a single vehicle
+	TimerGameCalendar::Year base_life;     ///< Basic duration of engine availability (without random parts). \c 0xFF means infinite life.
 	byte decay_speed;
 	byte load_amount;
 	byte climates;      ///< Climates supported by the engine.

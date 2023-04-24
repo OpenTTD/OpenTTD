@@ -30,6 +30,7 @@
 #include "../core/smallvec_type.hpp"
 #include "../timer/timer.h"
 #include "../timer/timer_game_tick.h"
+#include "../timer/timer_game_calendar.h"
 #include "saveload_internal.h"
 #include "oldloader.h"
 #include <array>
@@ -399,7 +400,7 @@ static bool FixTTOEngines()
 		for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
 	}
 
-	Date aging_date = std::min(TimerGameCalendar::date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
+	TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
 
 	for (EngineID i = 0; i < 256; i++) {
 		int oi = ttd_to_tto[i];

@@ -69,14 +69,14 @@ static const uint16 _accum_days_for_month[] = {
  * @param date the date to convert from
  * @param ymd  the year, month and day to write to
  */
-void ConvertDateToYMD(Date date, YearMonthDay *ymd)
+void ConvertDateToYMD(TimerGameCalendar::Date date, YearMonthDay *ymd)
 {
 	/* Year determination in multiple steps to account for leap
 	 * years. First do the large steps, then the smaller ones.
 	 */
 
 	/* There are 97 leap years in 400 years */
-	Year yr = 400 * (date / (DAYS_IN_YEAR * 400 + 97));
+	TimerGameCalendar::Year yr = 400 * (date / (DAYS_IN_YEAR * 400 + 97));
 	int rem = date % (DAYS_IN_YEAR * 400 + 97);
 	uint16 x;
 
@@ -124,7 +124,7 @@ void ConvertDateToYMD(Date date, YearMonthDay *ymd)
  * @param month is a number between 0..11
  * @param day   is a number between 1..31
  */
-Date ConvertYMDToDate(Year year, Month month, Day day)
+TimerGameCalendar::Date ConvertYMDToDate(TimerGameCalendar::Year year, TimerGameCalendar::Month month, TimerGameCalendar::Day day)
 {
 	/* Day-offset in a leap year */
 	int days = _accum_days_for_month[month] + day - 1;

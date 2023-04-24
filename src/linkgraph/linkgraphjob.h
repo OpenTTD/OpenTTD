@@ -161,13 +161,13 @@ private:
 	friend class LinkGraphSchedule;
 
 protected:
-	const LinkGraph link_graph;       ///< Link graph to by analyzed. Is copied when job is started and mustn't be modified later.
-	const LinkGraphSettings settings; ///< Copy of _settings_game.linkgraph at spawn time.
-	std::thread thread;               ///< Thread the job is running in or a default-constructed thread if it's running in the main thread.
-	Date join_date;                   ///< Date when the job is to be joined.
-	NodeAnnotationVector nodes;       ///< Extra node data necessary for link graph calculation.
-	std::atomic<bool> job_completed;  ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
-	std::atomic<bool> job_aborted;    ///< Has the job been aborted. This is accessed by multiple threads and reads may be stale.
+	const LinkGraph link_graph;        ///< Link graph to by analyzed. Is copied when job is started and mustn't be modified later.
+	const LinkGraphSettings settings;  ///< Copy of _settings_game.linkgraph at spawn time.
+	std::thread thread;                ///< Thread the job is running in or a default-constructed thread if it's running in the main thread.
+	TimerGameCalendar::Date join_date; ///< Date when the job is to be joined.
+	NodeAnnotationVector nodes;        ///< Extra node data necessary for link graph calculation.
+	std::atomic<bool> job_completed;   ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
+	std::atomic<bool> job_aborted;     ///< Has the job been aborted. This is accessed by multiple threads and reads may be stale.
 
 	void EraseFlows(NodeID from);
 	void JoinThread();
@@ -218,7 +218,7 @@ public:
 	 * Get the date when the job should be finished.
 	 * @return Join date.
 	 */
-	inline Date JoinDate() const { return join_date; }
+	inline TimerGameCalendar::Date JoinDate() const { return join_date; }
 
 	/**
 	 * Change the join date on date cheating.
@@ -255,7 +255,7 @@ public:
 	 * Get the date when the underlying link graph was last compressed.
 	 * @return Compression date.
 	 */
-	inline Date LastCompression() const { return this->link_graph.LastCompression(); }
+	inline TimerGameCalendar::Date LastCompression() const { return this->link_graph.LastCompression(); }
 
 	/**
 	 * Get the ID of the underlying link graph.
