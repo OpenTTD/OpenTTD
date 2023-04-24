@@ -22,6 +22,7 @@
 #include "fios.h"
 #include "date_func.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 #include "water.h"
 #include "effectvehicle_func.h"
 #include "landscape_type.h"
@@ -780,7 +781,7 @@ void RunTileLoop()
 	assert(tile != 0);
 
 	/* Manually update tile 0 every 256 ticks - the LFSR never iterates over it itself.  */
-	if (_tick_counter % 256 == 0) {
+	if (TimerGameTick::counter % 256 == 0) {
 		_tile_type_procs[GetTileType(0)]->tile_loop_proc(0);
 		count--;
 	}

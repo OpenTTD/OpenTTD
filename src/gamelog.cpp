@@ -15,6 +15,7 @@
 #include "console_func.h"
 #include "debug.h"
 #include "date_func.h"
+#include "timer/timer_game_tick.h"
 #include "rev.h"
 
 #include <stdarg.h>
@@ -387,7 +388,7 @@ static LoggedChange *GamelogChange(GamelogChangeType ct)
 		_current_action  = &_gamelog_action[_gamelog_actions++];
 
 		_current_action->at      = _gamelog_action_type;
-		_current_action->tick    = _tick_counter;
+		_current_action->tick    = TimerGameTick::counter;
 		_current_action->change  = nullptr;
 		_current_action->changes = 0;
 	}

@@ -34,7 +34,6 @@
 #include "newgrf_cargo.h"
 #include "cheat_type.h"
 #include "animated_tile_func.h"
-#include "date_func.h"
 #include "subsidy_func.h"
 #include "core/pool_func.hpp"
 #include "town.h"
@@ -54,6 +53,7 @@
 #include "tunnelbridge_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -345,7 +345,7 @@ static void AnimateTile_Town(TileIndex tile)
 		return;
 	}
 
-	if (_tick_counter & 3) return;
+	if (TimerGameTick::counter & 3) return;
 
 	/* If the house is not one with a lift anymore, then stop this animating.
 	 * Not exactly sure when this happens, but probably when a house changes.
@@ -597,7 +597,7 @@ static void TileLoop_Town(TileIndex tile)
 				/* Binomial distribution per tick, by a series of coin flips */
 				/* Reduce generation rate to a 1/4, using tile bits to spread out distribution.
 				 * As tick counter is incremented by 256 between each call, we ignore the lower 8 bits. */
-				if (GB(_tick_counter, 8, 2) == GB(tile, 0, 2)) {
+				if (GB(TimerGameTick::counter, 8, 2) == GB(tile, 0, 2)) {
 					/* Make a bitmask with up to 32 bits set, one for each potential pax */
 					int genmax = (hs->population + 7) / 8;
 					uint32 genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);

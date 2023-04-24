@@ -22,7 +22,7 @@
 #include "company_base.h"
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
-#include "date_func.h"
+#include "timer/timer_game_tick.h"
 #include "tree_cmd.h"
 #include "landscape_cmd.h"
 
@@ -707,11 +707,11 @@ static void TileLoop_Trees(TileIndex tile)
 
 	AmbientSoundEffect(tile);
 
-	/* _tick_counter is incremented by 256 between each call, so ignore lower 8 bits.
+	/* TimerGameTick::counter is incremented by 256 between each call, so ignore lower 8 bits.
 	 * Also, we use a simple hash to spread the updates evenly over the map.
 	 * 11 and 9 are just some co-prime numbers for better spread.
 	 */
-	uint32 cycle = 11 * TileX(tile) + 9 * TileY(tile) + (_tick_counter >> 8);
+	uint32 cycle = 11 * TileX(tile) + 9 * TileY(tile) + (TimerGameTick::counter >> 8);
 
 	/* Handle growth of grass (under trees/on MP_TREES tiles) at every 8th processings, like it's done for grass on MP_CLEAR tiles. */
 	if ((cycle & 7) == 7 && GetTreeGround(tile) == TREE_GROUND_GRASS) {
@@ -841,7 +841,7 @@ void OnTick_Trees()
 	 * this is the maximum number of ticks that are skipped. Number of ticks to skip is
 	 * inversely proportional to map size, so that is handled to create a mask. */
 	int skip = Map::ScaleBySize(16);
-	if (skip < 16 && (_tick_counter & (16 / skip - 1)) != 0) return;
+	if (skip < 16 && (TimerGameTick::counter & (16 / skip - 1)) != 0) return;
 
 	/* place a tree at a random rainforest spot */
 	if (_settings_game.game_creation.landscape == LT_TROPIC) {

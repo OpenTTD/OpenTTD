@@ -62,6 +62,7 @@
 #include "newgrf_roadstop.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
 
@@ -3979,16 +3980,18 @@ void OnTick_Station()
 		StationHandleSmallTick(st);
 
 		/* Clean up the link graph about once a week. */
-		if (Station::IsExpected(st) && (_tick_counter + st->index) % STATION_LINKGRAPH_TICKS == 0) {
+		if (Station::IsExpected(st) && (TimerGameTick::counter + st->index) % STATION_LINKGRAPH_TICKS == 0) {
 			DeleteStaleLinks(Station::From(st));
 		};
 
-		/* Run STATION_ACCEPTANCE_TICKS = 250 tick interval trigger for station animation.
-		 * Station index is included so that triggers are not all done
-		 * at the same time. */
-		if ((_tick_counter + st->index) % STATION_ACCEPTANCE_TICKS == 0) {
+		/* Spread out big-tick over STATION_ACCEPTANCE_TICKS ticks. */
+		if ((TimerGameTick::counter + st->index) % STATION_ACCEPTANCE_TICKS == 0) {
 			/* Stop processing this station if it was deleted */
 			if (!StationHandleBigTick(st)) continue;
+		}
+
+		/* Spread out station animation over STATION_ACCEPTANCE_TICKS ticks. */
+		if ((TimerGameTick::counter + st->index) % STATION_ACCEPTANCE_TICKS == 0) {
 			TriggerStationAnimation(st, st->xy, SAT_250_TICKS);
 			TriggerRoadStopAnimation(st, st->xy, SAT_250_TICKS);
 			if (Station::IsExpected(st)) AirportAnimationTrigger(Station::From(st), AAT_STATION_250_TICKS);
