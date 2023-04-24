@@ -106,7 +106,7 @@ const SaveLoadCompat _company_sl_compat[] = {
 	SLC_VAR("location_of_HQ"),
 	SLC_VAR("last_build_coordinate"),
 	SLC_VAR("inaugurated_year"),
-	SLC_VAR("share_owners"),
+	SLC_NULL(4, SL_MIN_VERSION, SLV_TABLE_CHUNKS),
 	SLC_VAR("num_valid_stat_ent"),
 	SLC_VAR("months_of_bankruptcy"),
 	SLC_VAR("bankrupt_asked"),

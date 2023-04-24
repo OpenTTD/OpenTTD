@@ -333,10 +333,6 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 	p->Send_bool  (c->is_ai);
 	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
 
-	for (auto owner : c->share_owners) {
-		p->Send_uint8(owner);
-	}
-
 	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
@@ -359,10 +355,6 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Compa
 	p->Send_uint8 (c->colour);
 	p->Send_bool  (NetworkCompanyIsPassworded(c->index));
 	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
-
-	for (auto owner : c->share_owners) {
-		p->Send_uint8(owner);
-	}
 
 	this->SendPacket(p);
 
