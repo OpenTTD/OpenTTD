@@ -13,6 +13,7 @@
 #include "compat/misc_sl_compat.h"
 
 #include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "../zoom_func.h"
 #include "../window_gui.h"
 #include "../window_func.h"
@@ -72,9 +73,9 @@ byte _age_cargo_skip_counter; ///< Skip aging of cargo? Used before savegame ver
 extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
 
 static const SaveLoad _date_desc[] = {
-	SLEG_CONDVAR("date",                   _date,                   SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
-	SLEG_CONDVAR("date",                   _date,                   SLE_INT32,                  SLV_31, SL_MAX_VERSION),
-	    SLEG_VAR("date_fract",             _date_fract,             SLE_UINT16),
+	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_FILE_U16 | SLE_VAR_I32,  SL_MIN_VERSION,  SLV_31),
+	SLEG_CONDVAR("date",                   TimerGameCalendar::date,                   SLE_INT32,                  SLV_31, SL_MAX_VERSION),
+	    SLEG_VAR("date_fract",             TimerGameCalendar::date_fract,             SLE_UINT16),
 	SLEG_CONDVAR("tick_counter",           _tick_counter,           SLE_FILE_U16 | SLE_VAR_U64,  SL_MIN_VERSION, SLV_U64_TICK_COUNTER),
 	SLEG_CONDVAR("tick_counter",           _tick_counter,           SLE_UINT64,                  SLV_U64_TICK_COUNTER, SL_MAX_VERSION),
 	SLEG_CONDVAR("age_cargo_skip_counter", _age_cargo_skip_counter, SLE_UINT8,                   SL_MIN_VERSION, SLV_162),

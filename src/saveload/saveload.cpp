@@ -3281,7 +3281,7 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 		}
 
 		if (fop == SLO_SAVE) { // SAVE game
-			Debug(desync, 1, "save: {:08x}; {:02x}; {}", _date, _date_fract, filename);
+			Debug(desync, 1, "save: {:08x}; {:02x}; {}", TimerGameCalendar::date, TimerGameCalendar::date_fract, filename);
 			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
 
 			return DoSave(new FileWriter(fh), threaded);
@@ -3359,7 +3359,7 @@ void GenerateDefaultSaveName(char *buf, const char *last)
 		case 2: SetDParam(1, STR_JUST_DATE_ISO); break;
 		default: NOT_REACHED();
 	}
-	SetDParam(2, _date);
+	SetDParam(2, TimerGameCalendar::date);
 
 	/* Get the correct string (special string for when there's not company) */
 	GetString(buf, !Company::IsValidID(cid) ? STR_SAVEGAME_NAME_SPECTATOR : STR_SAVEGAME_NAME_DEFAULT, last);

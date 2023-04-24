@@ -23,6 +23,7 @@
 #include "tunnelbridge_map.h"
 #include "newgrf_animation_base.h"
 #include "newgrf_class_func.h"
+#include "timer/timer_game_calendar.h"
 
 #include "safeguards.h"
 
@@ -293,7 +294,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 				}
 				break;
 
-			case 0xFA: return Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Build date, clamped to a 16 bit value
+			case 0xFA: return Clamp(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Build date, clamped to a 16 bit value
 		}
 
 		*available = false;

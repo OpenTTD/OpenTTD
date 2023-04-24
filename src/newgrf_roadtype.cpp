@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "newgrf_roadtype.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "depot_base.h"
 #include "town.h"
 
@@ -29,7 +29,7 @@
 			case 0x40: return 0;
 			case 0x41: return 0;
 			case 0x42: return 0;
-			case 0x43: return _date;
+			case 0x43: return TimerGameCalendar::date;
 			case 0x44: return HZB_TOWN_EDGE;
 		}
 	}
@@ -40,7 +40,7 @@
 		case 0x42: return IsLevelCrossingTile(this->tile) && IsCrossingBarred(this->tile);
 		case 0x43:
 			if (IsRoadDepotTile(this->tile)) return Depot::GetByTile(this->tile)->build_date;
-			return _date;
+			return TimerGameCalendar::date;
 		case 0x44: {
 			const Town *t = nullptr;
 			if (IsRoadDepotTile(this->tile)) {

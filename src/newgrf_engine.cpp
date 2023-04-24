@@ -14,7 +14,7 @@
 #include "company_func.h"
 #include "newgrf_cargo.h"
 #include "newgrf_spritegroup.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
 #include "core/random_func.hpp"
 #include "aircraft.h"
@@ -971,11 +971,11 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 				}
 			}
 			case 0x48: return Engine::Get(this->self_type)->flags; // Vehicle Type Info
-			case 0x49: return _cur_year; // 'Long' format build year
-			case 0x4B: return _date; // Long date of last service
-			case 0x92: return Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF); // Date of last service
-			case 0x93: return GB(Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF), 8, 8);
-			case 0xC4: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
+			case 0x49: return TimerGameCalendar::year; // 'Long' format build year
+			case 0x4B: return TimerGameCalendar::date; // Long date of last service
+			case 0x92: return Clamp(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF); // Date of last service
+			case 0x93: return GB(Clamp(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF), 8, 8);
+			case 0xC4: return Clamp(TimerGameCalendar::year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
 			case 0xC6: return Engine::Get(this->self_type)->grf_prop.local_id;
 			case 0xC7: return GB(Engine::Get(this->self_type)->grf_prop.local_id, 8, 8);
 			case 0xDA: return INVALID_VEHICLE; // Next vehicle

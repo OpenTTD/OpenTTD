@@ -166,7 +166,7 @@ uint32 NewGRFProfiler::FinishAll()
  */
 static IntervalTimer<TimerGameCalendar> _check_profiling_finished({TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [](auto)
 {
-	if (_newgrf_profilers.empty() || _newgrf_profile_end_date > _date) return;
+	if (_newgrf_profilers.empty() || _newgrf_profile_end_date > TimerGameCalendar::date) return;
 
 	NewGRFProfiler::FinishAll();
 });

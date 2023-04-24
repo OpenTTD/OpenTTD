@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_text.h"
 #include "station_base.h"
@@ -124,9 +124,9 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS]; ///< Airport specifications.
 bool AirportSpec::IsAvailable() const
 {
 	if (!this->enabled) return false;
-	if (_cur_year < this->min_year) return false;
+	if (TimerGameCalendar::year < this->min_year) return false;
 	if (_settings_game.station.never_expire_airports) return true;
-	return _cur_year <= this->max_year;
+	return TimerGameCalendar::year <= this->max_year;
 }
 
 /**

@@ -21,6 +21,7 @@
 #include "genworld.h"
 #include "fios.h"
 #include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "water.h"
 #include "effectvehicle_func.h"
 #include "landscape_type.h"
@@ -611,7 +612,7 @@ byte GetSnowLine()
 	if (_snow_line == nullptr) return _settings_game.game_creation.snow_line_height;
 
 	YearMonthDay ymd;
-	ConvertDateToYMD(_date, &ymd);
+	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 	return _snow_line->table[ymd.month][ymd.day];
 }
 

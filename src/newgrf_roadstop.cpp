@@ -19,7 +19,7 @@
 #include "company_func.h"
 #include "road.h"
 #include "window_type.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "town.h"
 #include "viewport_func.h"
 #include "newgrf_animation_base.h"
@@ -176,7 +176,7 @@ uint32 RoadStopScopeResolver::GetVariable(byte variable, uint32 parameter, bool 
 
 		case 0xF0: return this->st == nullptr ? 0 : this->st->facilities; // facilities
 
-		case 0xFA: return Clamp((this->st == nullptr ? _date : this->st->build_date) - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // build date
+		case 0xFA: return Clamp((this->st == nullptr ? TimerGameCalendar::date : this->st->build_date) - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // build date
 	}
 
 	if (this->st != nullptr) return this->st->GetNewGRFVariable(this->ro, variable, parameter, available);

@@ -873,7 +873,7 @@ RoadType GetTownRoadType(const Town *t)
 		if (!HasBit(rti->flags, ROTF_TOWN_BUILD)) continue;
 
 		/* Not yet introduced at this date. */
-		if (IsInsideMM(rti->introduction_date, 0, MAX_DAY) && rti->introduction_date > _date) continue;
+		if (IsInsideMM(rti->introduction_date, 0, MAX_DAY) && rti->introduction_date > TimerGameCalendar::date) continue;
 
 		if (best != nullptr) {
 			if ((rti->max_speed == 0 ? assume_max_speed : rti->max_speed) < (best->max_speed == 0 ? assume_max_speed : best->max_speed)) continue;
@@ -2632,7 +2632,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			continue;
 		}
 
-		if (_cur_year < hs->min_year || _cur_year > hs->max_year) continue;
+		if (TimerGameCalendar::year < hs->min_year || TimerGameCalendar::year > hs->max_year) continue;
 
 		/* Special houses that there can be only one of. */
 		uint oneof = 0;

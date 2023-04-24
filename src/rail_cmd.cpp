@@ -26,7 +26,7 @@
 #include "pbs.h"
 #include "company_base.h"
 #include "core/backup_type.hpp"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "strings_func.h"
 #include "company_gui.h"
 #include "object_map.h"
@@ -997,7 +997,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType rai
 
 	if (flags & DC_EXEC) {
 		Depot *d = new Depot(tile);
-		d->build_date = _date;
+		d->build_date = TimerGameCalendar::date;
 
 		MakeRailDepot(tile, _current_company, d->index, dir, railtype);
 		MarkTileDirtyByTile(tile);

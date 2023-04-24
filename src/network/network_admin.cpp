@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../strings_func.h"
 #include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "core/game_info.h"
 #include "network_admin.h"
 #include "network_base.h"
@@ -207,7 +208,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendDate()
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_DATE);
 
-	p->Send_uint32(_date);
+	p->Send_uint32(TimerGameCalendar::date);
 	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;

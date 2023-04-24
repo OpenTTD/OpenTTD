@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "command_func.h"
 #include "company_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "window_func.h"
 #include "vehicle_base.h"
 #include "timetable_cmd.h"
@@ -304,8 +304,8 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 
 	/* Don't let a timetable start more than 15 years into the future or 1 year in the past. */
 	if (start_date < 0 || start_date > MAX_DAY) return CMD_ERROR;
-	if (start_date - _date > MAX_TIMETABLE_START_YEARS * DAYS_IN_LEAP_YEAR) return CMD_ERROR;
-	if (_date - start_date > DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+	if (start_date - TimerGameCalendar::date > MAX_TIMETABLE_START_YEARS * DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+	if (TimerGameCalendar::date - start_date > DAYS_IN_LEAP_YEAR) return CMD_ERROR;
 	if (timetable_all && !v->orders->IsCompleteTimetable()) return CommandCost(STR_ERROR_TIMETABLE_INCOMPLETE);
 	if (timetable_all && start_date + total_duration / DAY_TICKS > MAX_DAY) return CMD_ERROR;
 
@@ -426,7 +426,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		just_started = !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
 
 		if (v->timetable_start != 0) {
-			v->lateness_counter = (_date - v->timetable_start) * DAY_TICKS + _date_fract;
+			v->lateness_counter = (TimerGameCalendar::date - v->timetable_start) * DAY_TICKS + TimerGameCalendar::date_fract;
 			v->timetable_start = 0;
 		}
 

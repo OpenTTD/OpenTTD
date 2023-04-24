@@ -168,7 +168,7 @@ void VehicleServiceInDepot(Vehicle *v)
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 
 	do {
-		v->date_of_last_service = _date;
+		v->date_of_last_service = TimerGameCalendar::date;
 		v->breakdowns_since_last_service = 0;
 		v->reliability = v->GetEngine()->reliability;
 		/* Prevent vehicles from breaking down directly after exiting the depot. */
@@ -194,7 +194,7 @@ bool Vehicle::NeedsServicing() const
 	const Company *c = Company::Get(this->owner);
 	if (this->ServiceIntervalIsPercent() ?
 			(this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) :
-			(this->date_of_last_service + this->GetServiceInterval() >= _date)) {
+			(this->date_of_last_service + this->GetServiceInterval() >= TimerGameCalendar::date)) {
 		return false;
 	}
 
@@ -920,15 +920,15 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 
 /**
  * Increases the day counter for all vehicles and calls 1-day and 32-day handlers.
- * Each tick, it processes vehicles with "index % DAY_TICKS == _date_fract",
+ * Each tick, it processes vehicles with "index % DAY_TICKS == TimerGameCalendar::date_fract",
  * so each day, all vehicles are processes in DAY_TICKS steps.
  */
 static void RunVehicleDayProc()
 {
 	if (_game_mode != GM_NORMAL) return;
 
-	/* Run the day_proc for every DAY_TICKS vehicle starting at _date_fract. */
-	for (size_t i = _date_fract; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
+	/* Run the day_proc for every DAY_TICKS vehicle starting at TimerGameCalendar::date_fract. */
+	for (size_t i = TimerGameCalendar::date_fract; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
 		Vehicle *v = Vehicle::Get(i);
 		if (v == nullptr) continue;
 

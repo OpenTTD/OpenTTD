@@ -32,7 +32,7 @@
 #include "game/game.hpp"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "company_base.h"
 #include "company_gui.h"
 #include "newgrf_generic.h"
@@ -134,7 +134,7 @@ CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
 
 	if (flags & DC_EXEC) {
 		Depot *depot = new Depot(tile);
-		depot->build_date = _date;
+		depot->build_date = TimerGameCalendar::date;
 
 		uint new_water_infra = 2 * LOCK_DEPOT_TILE_FACTOR;
 		/* Update infrastructure counts after the tile clears earlier.

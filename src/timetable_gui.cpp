@@ -18,7 +18,7 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "company_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "date_gui.h"
 #include "vehicle_gui.h"
 #include "settings_type.h"
@@ -185,7 +185,7 @@ struct TimetableWindow : Window {
 		assert(HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED));
 
 		bool travelling = (!v->current_order.IsType(OT_LOADING) || v->current_order.GetNonStopType() == ONSF_STOP_EVERYWHERE);
-		Ticks start_time = _date_fract - v->current_order_time;
+		Ticks start_time = TimerGameCalendar::date_fract - v->current_order_time;
 
 		FillTimetableArrivalDepartureTable(v, v->cur_real_order_index % v->GetNumOrders(), travelling, table, start_time);
 
@@ -474,7 +474,7 @@ struct TimetableWindow : Window {
 					}
 
 					/* Now actually draw the arrival time. */
-					SetDParam(0, _date + (arr_dep[i / 2].arrival + this_offset) / DAY_TICKS);
+					SetDParam(0, TimerGameCalendar::date + (arr_dep[i / 2].arrival + this_offset) / DAY_TICKS);
 					DrawString(time.left, time.right, tr.top, STR_JUST_DATE_TINY, colour);
 				}
 			} else {
@@ -482,7 +482,7 @@ struct TimetableWindow : Window {
 				if (arr_dep[i / 2].departure != INVALID_TICKS) {
 					DrawString(abbr.left, abbr.right, tr.top, STR_TIMETABLE_DEPARTURE_ABBREVIATION, i == selected ? TC_WHITE : TC_BLACK);
 					TextColour colour = show_late ? TC_RED : (i == selected ? TC_WHITE : TC_BLACK);
-					SetDParam(0, _date + (arr_dep[i / 2].departure + offset) / DAY_TICKS);
+					SetDParam(0, TimerGameCalendar::date + (arr_dep[i / 2].departure + offset) / DAY_TICKS);
 					DrawString(time.left, time.right, tr.top, STR_JUST_DATE_TINY, colour);
 				}
 			}
@@ -572,7 +572,7 @@ struct TimetableWindow : Window {
 			}
 
 			case WID_VT_START_DATE: // Change the date that the timetable starts.
-				ShowSetDateWindow(this, v->index, _date, _cur_year, _cur_year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void *>(static_cast<uintptr_t>(_ctrl_pressed)));
+				ShowSetDateWindow(this, v->index, TimerGameCalendar::date, TimerGameCalendar::year, TimerGameCalendar::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void *>(static_cast<uintptr_t>(_ctrl_pressed)));
 				break;
 
 			case WID_VT_CHANGE_TIME: { // "Wait For" button.

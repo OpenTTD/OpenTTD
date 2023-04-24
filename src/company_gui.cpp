@@ -22,7 +22,7 @@
 #include "newgrf.h"
 #include "company_manager_face.h"
 #include "strings_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "widgets/dropdown_type.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
@@ -434,10 +434,10 @@ struct CompanyFinancesWindow : Window {
 			case WID_CF_EXPS_PRICE2:
 			case WID_CF_EXPS_PRICE3: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
-				int age = std::min(_cur_year - c->inaugurated_year, 2);
+				int age = std::min(TimerGameCalendar::year - c->inaugurated_year, 2);
 				int wid_offset = widget - WID_CF_EXPS_PRICE1;
 				if (wid_offset <= age) {
-					DrawYearColumn(r, _cur_year - (age - wid_offset), c->yearly_expenses[age - wid_offset]);
+					DrawYearColumn(r, TimerGameCalendar::year - (age - wid_offset), c->yearly_expenses[age - wid_offset]);
 				}
 				break;
 			}

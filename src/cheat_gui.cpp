@@ -106,18 +106,18 @@ static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
 {
 	/* Don't allow changing to an invalid year, or the current year. */
 	new_value = Clamp(new_value, MIN_YEAR, MAX_YEAR);
-	if (new_value == _cur_year) return _cur_year;
+	if (new_value == TimerGameCalendar::year) return TimerGameCalendar::year;
 
 	YearMonthDay ymd;
-	ConvertDateToYMD(_date, &ymd);
+	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 	Date new_date = ConvertYMDToDate(new_value, ymd.month, ymd.day);
 
 	/* Change the date. */
-	SetDate(new_date, _date_fract);
+	TimerGameCalendar::SetDate(new_date, TimerGameCalendar::date_fract);
 
 	/* Shift cached dates. */
-	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - _date);
-	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
+	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - TimerGameCalendar::date);
+	LinkGraphSchedule::instance.ShiftDates(new_date - TimerGameCalendar::date);
 
 	EnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
@@ -126,7 +126,7 @@ static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
 	InvalidateWindowClassesData(WC_TRUCK_STATION, 0);
 	InvalidateWindowClassesData(WC_BUILD_OBJECT, 0);
 	ResetSignalVariant();
-	return _cur_year;
+	return TimerGameCalendar::year;
 }
 
 /**
@@ -202,7 +202,7 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,                    &_cheats.no_jetcrash.been_used,      nullptr                  },
 	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,                     &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
 	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.map_height_limit, &_cheats.edit_max_hl.been_used,      &ClickChangeMaxHlCheat   },
-	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                                    &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
+	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &TimerGameCalendar::year,                      &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
 
 static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
@@ -281,7 +281,7 @@ struct CheatWindow : Window {
 
 					switch (ce->str) {
 						/* Display date for change date cheat */
-						case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
+						case STR_CHEAT_CHANGE_DATE: SetDParam(0, TimerGameCalendar::date); break;
 
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY: {

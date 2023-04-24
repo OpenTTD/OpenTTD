@@ -16,7 +16,7 @@
 #include "cargotype.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
 #include "currency.h"
@@ -581,8 +581,8 @@ public:
 			nums = std::min(this->num_vert_lines, std::max(nums, c->num_valid_stat_ent));
 		}
 
-		int mo = (_cur_month / 3 - nums) * 3;
-		int yr = _cur_year;
+		int mo = (TimerGameCalendar::month / 3 - nums) * 3;
+		int yr = TimerGameCalendar::year;
 		while (mo < 0) {
 			yr--;
 			mo += 12;

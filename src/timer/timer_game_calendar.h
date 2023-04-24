@@ -10,6 +10,8 @@
 #ifndef TIMER_GAME_CALENDAR_H
 #define TIMER_GAME_CALENDAR_H
 
+#include "../date_type.h"
+
 /**
  * Timer that is increased every 27ms, and counts towards ticks / days / months / years.
  *
@@ -72,6 +74,13 @@ public:
 	using TElapsed = uint;
 	struct TStorage {
 	};
+
+	static void SetDate(Date date, DateFract fract);
+
+	static Year year; ///< Current year, starting at 0.
+	static Month month; ///< Current month (0..11).
+	static Date date; ///< Current date in days (day counter).
+	static DateFract date_fract; ///< Fractional part of the day.
 };
 
 #endif /* TIMER_GAME_CALENDAR_H */

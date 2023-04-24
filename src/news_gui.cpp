@@ -13,6 +13,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "vehicle_gui.h"
@@ -686,7 +687,7 @@ static void MoveToNextTickerItem()
 		const NewsType type = ni->type;
 
 		/* check the date, don't show too old items */
-		if (_date - _news_type_data[type].age > ni->date) continue;
+		if (TimerGameCalendar::date - _news_type_data[type].age > ni->date) continue;
 
 		switch (_news_type_data[type].GetDisplay()) {
 			default: NOT_REACHED();
@@ -723,7 +724,7 @@ static void MoveToNextNewsItem()
 		const NewsType type = ni->type;
 
 		/* check the date, don't show too old items */
-		if (_date - _news_type_data[type].age > ni->date) continue;
+		if (TimerGameCalendar::date - _news_type_data[type].age > ni->date) continue;
 
 		switch (_news_type_data[type].GetDisplay()) {
 			default: NOT_REACHED();
@@ -800,10 +801,10 @@ static void DeleteNewsItem(NewsItem *ni)
  * @see NewsSubtype
  */
 NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, const NewsAllocatedData *data) :
-	string_id(string_id), date(_date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(data)
+	string_id(string_id), date(TimerGameCalendar::date), type(type), flags(flags), reftype1(reftype1), reftype2(reftype2), ref1(ref1), ref2(ref2), data(data)
 {
 	/* show this news message in colour? */
-	if (_cur_year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
+	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
 	CopyOutDParam(this->params, 0, lengthof(this->params));
 }
 
@@ -983,7 +984,7 @@ static void RemoveOldNewsItems()
 	NewsItem *next;
 	for (NewsItem *cur = _oldest_news; _total_news > MIN_NEWS_AMOUNT && cur != nullptr; cur = next) {
 		next = cur->next;
-		if (_date - _news_type_data[cur->type].age * _settings_client.gui.news_message_timeout > cur->date) DeleteNewsItem(cur);
+		if (TimerGameCalendar::date - _news_type_data[cur->type].age * _settings_client.gui.news_message_timeout > cur->date) DeleteNewsItem(cur);
 	}
 }
 
@@ -1009,9 +1010,9 @@ void NewsLoop()
 
 	static byte _last_clean_month = 0;
 
-	if (_last_clean_month != _cur_month) {
+	if (_last_clean_month != TimerGameCalendar::month) {
 		RemoveOldNewsItems();
-		_last_clean_month = _cur_month;
+		_last_clean_month = TimerGameCalendar::month;
 	}
 
 	if (ReadyForNextTickerItem()) MoveToNextTickerItem();

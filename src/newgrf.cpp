@@ -6498,18 +6498,18 @@ bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 {
 	switch (param) {
 		case 0x00: // current date
-			*value = std::max(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
+			*value = std::max(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
 			return true;
 
 		case 0x01: // current year
-			*value = Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
+			*value = Clamp(TimerGameCalendar::year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 			return true;
 
 		case 0x02: { // detailed date information: month of year (bit 0-7), day of month (bit 8-12), leap year (bit 15), day of year (bit 16-24)
 			YearMonthDay ymd;
-			ConvertDateToYMD(_date, &ymd);
+			ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 			Date start_of_year = ConvertYMDToDate(ymd.year, 0, 1);
-			*value = ymd.month | (ymd.day - 1) << 8 | (IsLeapYear(ymd.year) ? 1 << 15 : 0) | (_date - start_of_year) << 16;
+			*value = ymd.month | (ymd.day - 1) << 8 | (IsLeapYear(ymd.year) ? 1 << 15 : 0) | (TimerGameCalendar::date - start_of_year) << 16;
 			return true;
 		}
 
@@ -6522,7 +6522,7 @@ bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 			return true;
 
 		case 0x09: // date fraction
-			*value = _date_fract * 885;
+			*value = TimerGameCalendar::date_fract * 885;
 			return true;
 
 		case 0x0A: // animation counter
@@ -6615,11 +6615,11 @@ bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 			return true;
 
 		case 0x23: // long format date
-			*value = _date;
+			*value = TimerGameCalendar::date;
 			return true;
 
 		case 0x24: // long format year
-			*value = _cur_year;
+			*value = TimerGameCalendar::year;
 			return true;
 
 		default: return false;
@@ -9939,16 +9939,16 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	 * so all NewGRFs are loaded equally. For this we use the
 	 * start date of the game and we set the counters, etc. to
 	 * 0 so they're the same too. */
-	Date date            = _date;
-	Year year            = _cur_year;
-	DateFract date_fract = _date_fract;
+	Date date            = TimerGameCalendar::date;
+	Year year            = TimerGameCalendar::year;
+	DateFract date_fract = TimerGameCalendar::date_fract;
 	uint64 tick_counter  = _tick_counter;
 	byte display_opt     = _display_opt;
 
 	if (_networking) {
-		_cur_year     = _settings_game.game_creation.starting_year;
-		_date         = ConvertYMDToDate(_cur_year, 0, 1);
-		_date_fract   = 0;
+		TimerGameCalendar::year = _settings_game.game_creation.starting_year;
+		TimerGameCalendar::date = ConvertYMDToDate(TimerGameCalendar::year, 0, 1);
+		TimerGameCalendar::date_fract = 0;
 		_tick_counter = 0;
 		_display_opt  = 0;
 	}
@@ -10043,9 +10043,9 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	AfterLoadGRFs();
 
 	/* Now revert back to the original situation */
-	_cur_year     = year;
-	_date         = date;
-	_date_fract   = date_fract;
+	TimerGameCalendar::year = year;
+	TimerGameCalendar::date = date;
+	TimerGameCalendar::date_fract = date_fract;
 	_tick_counter = tick_counter;
 	_display_opt  = display_opt;
 }
