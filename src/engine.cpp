@@ -476,6 +476,30 @@ StringID Engine::GetAircraftTypeText() const
 }
 
 /**
+ * Check whether the engine variant chain is hidden in the GUI for the given company.
+ * @param c Company to check.
+ * @return \c true iff the engine variant chain is hidden in the GUI for the given company.
+ */
+bool Engine::IsVariantHidden(CompanyID c) const
+{
+	/* In case company is spectator. */
+	if (c >= MAX_COMPANIES) return false;
+
+	/* Shortcut if this engine is explicitly hidden. */
+	if (this->IsHidden(c)) return true;
+
+	/* Check for hidden parent variants. This is a bit convoluted as we must check hidden status of
+	 * the last display variant rather than the actual parent variant. */
+	const Engine *re = this;
+	const Engine *ve = re->GetDisplayVariant();
+	while (!(ve->IsHidden(c)) && re->info.variant_id != INVALID_ENGINE && re->info.variant_id != re->index) {
+		re = Engine::Get(re->info.variant_id);
+		ve = re->GetDisplayVariant();
+	}
+	return ve->IsHidden(c);
+}
+
+/**
  * Initializes the #EngineOverrideManager with the default engines.
  */
 void EngineOverrideManager::ResetToDefaultMapping()

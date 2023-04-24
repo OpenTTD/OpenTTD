@@ -1349,7 +1349,7 @@ struct BuildVehicleWindow : Window {
 		 * and if not, reset selection to INVALID_ENGINE. This could be the case
 		 * when engines become obsolete and are removed */
 		for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
+			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			const RailVehicleInfo *rvi = &e->u.rail;
 
@@ -1400,7 +1400,7 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.clear();
 
 		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
+			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
@@ -1419,7 +1419,7 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.clear();
 
 		for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
+			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
@@ -1443,7 +1443,7 @@ struct BuildVehicleWindow : Window {
 		 * and if not, reset selection to INVALID_ENGINE. This could be the case
 		 * when planes become obsolete and are removed */
 		for (const Engine *e : Engine::IterateType(VEH_AIRCRAFT)) {
-			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
+			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_company)) continue;
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */

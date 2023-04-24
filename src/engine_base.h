@@ -138,6 +138,18 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	}
 
 	/**
+	 * Get the last display variant for an engine.
+	 * @return Engine's last display variant or engine itself if no last display variant is set.
+	 */
+	const Engine *GetDisplayVariant() const
+	{
+		if (this->display_last_variant == this->index || this->display_last_variant == INVALID_ENGINE) return this;
+		return Engine::Get(this->display_last_variant);
+	}
+
+	bool IsVariantHidden(CompanyID c) const;
+
+	/**
 	 * Check if the engine is a ground vehicle.
 	 * @return True iff the engine is a train or a road vehicle.
 	 */
