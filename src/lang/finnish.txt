@@ -1712,7 +1712,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Kuinka paljon m
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Huoltovälit ovat prosentteina: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Määritä, aiheuttaako edellisestä huollosta kulunut aika vai luotettavuuden laskeminen kulkuneuvon huoltamisen
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kun tämä on valittuna, kulkuneuvot yrittävät mennä huoltoon niiden luotettavuuden laskettua annetun prosenttiosuuden verran enimmäisluotettavuudesta.{}{}Jos esimerkiksi kulkuneuvon enimmäisluotettavuus on 90 % ja huoltoväli 20 %, kulkuneuvo pyrkii huoltoon luotettavuuden laskettua 72 %:iin.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Junien oletushuoltoväli: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määritä oletushuoltoväli uusille junille, mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
@@ -5110,6 +5110,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}Poijua e
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ei voi asettaa aikataulua.
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kulkuneuvo voi odottaa vain asemalla
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Tämä kulkuneuvo ei pysähdy tällä asemalla
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}… aikataulu on puutteellinen
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... liian monta kylttiä.
