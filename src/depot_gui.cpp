@@ -360,7 +360,7 @@ struct DepotWindow : Window {
 			DrawSpriteIgnorePadding((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, flag, false, SA_CENTER);
 
 			SetDParam(0, v->unitnumber);
-			DrawString(text, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_BLACK_COMMA : STR_RED_COMMA);
+			DrawString(text, STR_JUST_COMMA, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? TC_BLACK : TC_RED);
 		}
 	}
 
@@ -669,7 +669,7 @@ struct DepotWindow : Window {
 				}
 
 				SetDParamMaxDigits(0, this->unitnumber_digits);
-				Dimension unumber = GetStringBoundingBox(STR_BLACK_COMMA);
+				Dimension unumber = GetStringBoundingBox(STR_JUST_COMMA);
 
 				if (this->type == VEH_TRAIN || this->type == VEH_ROAD) {
 					min_height = std::max<uint>(unumber.height, this->flag_size.height);
