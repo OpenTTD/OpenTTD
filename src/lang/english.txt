@@ -5607,10 +5607,7 @@ STR_JUST_RAW_STRING                                             :{RAW_STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{RAW_STRING}
 
 # Slightly 'raw' stringcodes with colour or size
-STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
