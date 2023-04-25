@@ -5611,7 +5611,6 @@ STR_SHORT_DATE                                                  :{WHITE}{DATE_TI
 STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
-STR_BLACK_RAW_STRING                                            :{BLACK}{RAW_STRING}
 STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING1}{WHITE}
 STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING1}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}

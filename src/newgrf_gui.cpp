@@ -140,7 +140,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 	/* Draw GRF info if it exists */
 	if (!StrEmpty(c->GetDescription())) {
 		SetDParamStr(0, c->GetDescription());
-		tr.top = DrawStringMultiLine(tr, STR_BLACK_RAW_STRING);
+		tr.top = DrawStringMultiLine(tr, STR_JUST_RAW_STRING, TC_BLACK);
 	} else {
 		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NO_INFO);
 	}

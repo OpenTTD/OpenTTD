@@ -388,7 +388,7 @@ static const NWidgetPart _nested_about_widgets[] = {
 		NWidget(WWT_FRAME, COLOUR_GREY), SetPadding(0, 5, 1, 5),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_A_SCROLLING_TEXT),
 		EndContainer(),
-		NWidget(WWT_LABEL, COLOUR_GREY, WID_A_WEBSITE), SetDataTip(STR_BLACK_RAW_STRING, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_GREY, WID_A_WEBSITE), SetDataTip(STR_JUST_RAW_STRING, STR_NULL),
 		NWidget(WWT_LABEL, COLOUR_GREY, WID_A_COPYRIGHT), SetDataTip(STR_ABOUT_COPYRIGHT_OPENTTD, STR_NULL),
 	EndContainer(),
 };

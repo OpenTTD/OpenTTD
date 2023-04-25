@@ -333,7 +333,7 @@ protected:
 		switch (pe.type) {
 			case SPET_TEXT:
 				SetDParamStr(0, pe.text);
-				return GetStringHeight(STR_BLACK_RAW_STRING, max_width);
+				return GetStringHeight(STR_JUST_RAW_STRING, max_width);
 
 			case SPET_GOAL:
 			case SPET_LOCATION: {
@@ -778,7 +778,7 @@ public:
 					} else {
 						SetDParamStr(0, this->selected_generic_title);
 					}
-					Dimension title_d = GetStringBoundingBox(STR_BLACK_RAW_STRING);
+					Dimension title_d = GetStringBoundingBox(STR_JUST_RAW_STRING);
 
 					if (title_d.width > d.width) {
 						d.width = title_d.width;
@@ -969,7 +969,7 @@ static const NWidgetPart _nested_story_book_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_SB_PREV_PAGE), SetMinimalSize(100, 0), SetFill(0, 0), SetDataTip(STR_STORY_BOOK_PREV_PAGE, STR_STORY_BOOK_PREV_PAGE_TOOLTIP),
 		NWidget(NWID_BUTTON_DROPDOWN, COLOUR_BROWN, WID_SB_SEL_PAGE), SetMinimalSize(93, 12), SetFill(1, 0),
-												SetDataTip(STR_BLACK_RAW_STRING, STR_STORY_BOOK_SEL_PAGE_TOOLTIP), SetResize(1, 0),
+												SetDataTip(STR_JUST_RAW_STRING, STR_STORY_BOOK_SEL_PAGE_TOOLTIP), SetResize(1, 0),
 		NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_SB_NEXT_PAGE), SetMinimalSize(100, 0), SetFill(0, 0), SetDataTip(STR_STORY_BOOK_NEXT_PAGE, STR_STORY_BOOK_NEXT_PAGE_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
