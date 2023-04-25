@@ -5595,6 +5595,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -5606,7 +5607,6 @@ STR_JUST_RAW_STRING                                             :{RAW_STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{RAW_STRING}
 
 # Slightly 'raw' stringcodes with colour or size
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
