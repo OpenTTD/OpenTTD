@@ -36,7 +36,6 @@ char *strecpy(char *dst, const char *src, const char *last) NOACCESS(3);
 char *stredup(const char *src, const char *last = nullptr) NOACCESS(2);
 
 int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FORMAT(3, 4) NOACCESS(2);
-int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap) WARN_FORMAT(3, 0) NOACCESS(2);
 
 std::string FormatArrayAsHex(span<const byte> data);
 

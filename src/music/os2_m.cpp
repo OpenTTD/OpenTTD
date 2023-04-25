@@ -12,6 +12,7 @@
 #include "os2_m.h"
 #include "midifile.hpp"
 #include "../base_media_base.h"
+#include "../3rdparty/fmt/format.h"
 
 #define INCL_DOS
 #define INCL_OS2MM
@@ -36,14 +37,9 @@
  * @param cmd The command to send.
  * @return The result of sending it.
  */
-static long CDECL MidiSendCommand(const char *cmd, ...)
+static long CDECL MidiSendCommand(const std::string_view cmd)
 {
-	va_list va;
-	char buf[512];
-	va_start(va, cmd);
-	vseprintf(buf, lastof(buf), cmd, va);
-	va_end(va);
-	return mciSendString(buf, nullptr, 0, nullptr, 0);
+	return mciSendString(cmd.data(), nullptr, 0, nullptr, 0);
 }
 
 /** OS/2's music player's factory. */
@@ -56,7 +52,7 @@ void MusicDriver_OS2::PlaySong(const MusicSongInfo &song)
 	MidiSendCommand("close all");
 	if (filename.empty()) return;
 
-	if (MidiSendCommand("open %s type sequencer alias song", filename.c_str()) != 0) {
+	if (MidiSendCommand(fmt::format("open {} type sequencer alias song", filename)) != 0) {
 		return;
 	}
 

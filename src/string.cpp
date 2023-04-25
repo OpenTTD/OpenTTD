@@ -51,23 +51,6 @@
 #undef vsnprintf
 
 /**
- * Safer implementation of vsnprintf; same as vsnprintf except:
- * - last instead of size, i.e. replace sizeof with lastof.
- * - return gives the amount of characters added, not what it would add.
- * @param str    buffer to write to up to last
- * @param last   last character we may write to
- * @param format the formatting (see snprintf)
- * @param ap     the list of arguments for the format
- * @return the number of added characters
- */
-int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
-{
-	ptrdiff_t diff = last - str;
-	if (diff < 0) return 0;
-	return std::min(static_cast<int>(diff), vsnprintf(str, diff + 1, format, ap));
-}
-
-/**
  * Appends characters from one string to another.
  *
  * Appends the source string to the destination string with respect of the
@@ -536,10 +519,14 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
  */
 int CDECL seprintf(char *str, const char *last, const char *format, ...)
 {
+	ptrdiff_t diff = last - str;
+	if (diff < 0) return 0;
+
 	va_list ap;
 
 	va_start(ap, format);
-	int ret = vseprintf(str, last, format, ap);
+	int ret = std::min(static_cast<int>(diff), vsnprintf(str, diff + 1, format, ap));
+
 	va_end(ap);
 	return ret;
 }
