@@ -657,9 +657,7 @@ bool LinkGraphLegendWindow::OnTooltip(Point pt, int widget, TooltipCloseConditio
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) return false;
 		CargoSpec *cargo = CargoSpec::Get(widget - WID_LGL_CARGO_FIRST);
-		uint64 params[1];
-		params[0] = cargo->name;
-		GuiShowTooltips(this, STR_BLACK_STRING, 1, params, close_cond);
+		GuiShowTooltips(this, cargo->name, 0, nullptr, close_cond);
 		return true;
 	}
 	return false;
