@@ -118,7 +118,7 @@ struct StatusBarWindow : Window {
 				int64 max_money = UINT32_MAX;
 				for (const Company *c : Company::Iterate()) max_money = std::max<int64>(c->money, max_money);
 				SetDParam(0, 100LL * max_money);
-				d = GetStringBoundingBox(STR_COMPANY_MONEY);
+				d = GetStringBoundingBox(STR_JUST_CURRENCY_LONG);
 				break;
 			}
 
@@ -150,7 +150,7 @@ struct StatusBarWindow : Window {
 					const Company *c = Company::GetIfValid(_local_company);
 					if (c != nullptr) {
 						SetDParam(0, c->money);
-						DrawString(tr, STR_COMPANY_MONEY, TC_FROMSTRING, SA_HOR_CENTER);
+						DrawString(tr, STR_JUST_CURRENCY_LONG, TC_WHITE, SA_HOR_CENTER);
 					}
 				}
 				break;
