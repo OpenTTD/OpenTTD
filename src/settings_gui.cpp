@@ -333,17 +333,17 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_BASE_GRF_DESCRIPTION:
 				SetDParamStr(0, BaseGraphics::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
-				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
 				break;
 
 			case WID_GO_BASE_SFX_DESCRIPTION:
 				SetDParamStr(0, BaseSounds::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
-				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
 				break;
 
 			case WID_GO_BASE_MUSIC_DESCRIPTION:
 				SetDParamStr(0, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
-				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
 				break;
 
 			case WID_GO_GUI_SCALE:
@@ -385,7 +385,7 @@ struct GameOptionsWindow : Window {
 		int y = 0;
 		for (int i = 0; i < BaseGraphics::GetNumSets(); i++) {
 			SetDParamStr(0, BaseGraphics::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
-			y = std::max(y, GetStringHeight(STR_BLACK_RAW_STRING, wid->current_x));
+			y = std::max(y, GetStringHeight(STR_JUST_RAW_STRING, wid->current_x));
 		}
 		changed |= wid->UpdateVerticalSize(y);
 
@@ -393,7 +393,7 @@ struct GameOptionsWindow : Window {
 		y = 0;
 		for (int i = 0; i < BaseSounds::GetNumSets(); i++) {
 			SetDParamStr(0, BaseSounds::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
-			y = std::max(y, GetStringHeight(STR_BLACK_RAW_STRING, wid->current_x));
+			y = std::max(y, GetStringHeight(STR_JUST_RAW_STRING, wid->current_x));
 		}
 		changed |= wid->UpdateVerticalSize(y);
 
@@ -401,7 +401,7 @@ struct GameOptionsWindow : Window {
 		y = 0;
 		for (int i = 0; i < BaseMusic::GetNumSets(); i++) {
 			SetDParamStr(0, BaseMusic::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
-			y = std::max(y, GetStringHeight(STR_BLACK_RAW_STRING, wid->current_x));
+			y = std::max(y, GetStringHeight(STR_JUST_RAW_STRING, wid->current_x));
 		}
 		changed |= wid->UpdateVerticalSize(y);
 
@@ -731,7 +731,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 			/* General tab */
 			NWidget(NWID_VERTICAL), SetPadding(10), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_LANGUAGE, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_LANG_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_LANG_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_AUTOSAVE_FRAME, STR_NULL),
@@ -798,7 +798,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_GRF, STR_NULL),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 0),
-						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_GRF_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_GRF_TOOLTIP),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_GRF_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_GRF_TOOLTIP),
 						NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_GRF_STATUS), SetMinimalSize(100, 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 0),
 					EndContainer(),
 					NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_GRF_DESCRIPTION), SetMinimalSize(200, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 6, 0),
@@ -827,7 +827,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_SFX, STR_NULL),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 7),
-						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_SFX_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_SFX_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP),
 						NWidget(NWID_SPACER), SetMinimalSize(100, 12), SetFill(1, 0),
 					EndContainer(),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_BASE_SFX_DESCRIPTION), SetMinimalSize(200, 0), SetMinimalTextLines(1, 0), SetDataTip(STR_NULL, STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 6, 0),
@@ -840,7 +840,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_MUSIC, STR_NULL),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 7),
-						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_MUSIC_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_MUSIC_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP),
 						NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_MUSIC_STATUS), SetMinimalSize(100, 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 0),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 7),
