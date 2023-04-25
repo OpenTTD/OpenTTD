@@ -5609,8 +5609,6 @@ STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{RAW_
 # Slightly 'raw' stringcodes with colour or size
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
-STR_BLACK_INT                                                   :{BLACK}{NUM}
-STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
