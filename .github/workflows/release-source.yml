@@ -11,6 +11,8 @@ on:
         value: ${{ jobs.source.outputs.trigger_type }}
       folder:
         value: ${{ jobs.source.outputs.folder }}
+      survey_key:
+        value: ${{ jobs.source.outputs.survey_key }}
 
 jobs:
   source:
@@ -23,6 +25,7 @@ jobs:
       is_tag: ${{ steps.metadata.outputs.is_tag }}
       trigger_type: ${{ steps.metadata.outputs.trigger_type }}
       folder: ${{ steps.metadata.outputs.folder }}
+      survey_key: ${{ steps.survey_key.outputs.survey_key }}
 
     steps:
     - name: Checkout (Release)
@@ -145,6 +148,19 @@ jobs:
         FOLDER_RELEASES: openttd-releases
         FOLDER_NIGHTLIES: openttd-nightlies
         FOLDER_BRANCHES: openttd-branches
+
+    - name: Generate survey key
+      id: survey_key
+      run: |
+        PAYLOAD='{"version":"${{ steps.metadata.outputs.version }}","type":"${{ vars.SURVEY_TYPE }}"}'
+
+        echo "${{ secrets.SURVEY_SIGNING_KEY }}" > survey_signing_key.pem
+        SIGNATURE=$(echo -n "${PAYLOAD}" | openssl dgst -sha256 -sign survey_signing_key.pem | base64 -w0)
+        rm -f survey_signing_key.pem
+
+        SURVEY_KEY=$(curl -f -s -X POST -d "${PAYLOAD}" -H "Content-Type: application/json" -H "X-Signature: ${SIGNATURE}" https://survey-participate.openttd.org/create-survey-key/${{ vars.SURVEY_TYPE }})
+
+        echo "survey_key=${SURVEY_KEY}" >> $GITHUB_OUTPUT
 
     - name: Remove VCS information
       run: |

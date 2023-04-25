@@ -31,9 +31,11 @@
 #include "town_kdtree.h"
 #include "viewport_kdtree.h"
 #include "newgrf_profiling.h"
+#include "3rdparty/md5/md5.h"
 
 #include "safeguards.h"
 
+std::string _savegame_id; ///< Unique ID of the current savegame.
 
 extern TileIndex _cur_tileloop_tile;
 extern void MakeNewgameSettingsLive();
@@ -55,6 +57,40 @@ void InitializeCompanies();
 void InitializeCheats();
 void InitializeNPF();
 void InitializeOldNames();
+
+/**
+ * Generate an unique ID.
+ *
+ * It isn't as much of an unique ID as we would like, but our random generator
+ * can only produce 32bit random numbers.
+ * That is why we combine InteractiveRandom with the current (steady) clock.
+ * The first to add a bit of randomness, the second to ensure you can't get
+ * the same unique ID when you run it twice from the same state at different
+ * times.
+ *
+ * This makes it unlikely that two users generate the same ID for different
+ * subjects. But as this is not an UUID, so it can't be ruled out either.
+ */
+std::string GenerateUid(std::string_view subject)
+{
+	auto current_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+	std::string coding_string = fmt::format("{}{}{}", InteractiveRandom(), current_time, subject);
+
+	Md5 checksum;
+	uint8 digest[16];
+	checksum.Append(coding_string.c_str(), coding_string.length());
+	checksum.Finish(digest);
+
+	return MD5SumToString(digest);
+}
+
+/**
+ * Generate an unique savegame ID.
+ */
+void GenerateSavegameId()
+{
+	_savegame_id = GenerateUid("OpenTTD Savegame ID");
+}
 
 void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settings)
 {

@@ -71,6 +71,8 @@ function(set_options)
     if (OPTION_DOCS_ONLY)
         set(OPTION_TOOLS_ONLY ON PARENT_SCOPE)
     endif()
+
+    option(OPTION_SURVEY_KEY "Survey-key to use for the opt-in survey (empty if you have none)" "")
 endfunction()
 
 # Show the values of the generic options.
@@ -84,6 +86,12 @@ function(show_options)
     message(STATUS "Option Use assert - ${OPTION_USE_ASSERTS}")
     message(STATUS "Option Use threads - ${OPTION_USE_THREADS}")
     message(STATUS "Option Use NSIS - ${OPTION_USE_NSIS}")
+
+    if(OPTION_SURVEY_KEY)
+        message(STATUS "Option Survey Key - USED")
+    else()
+        message(STATUS "Option Survey Key - NOT USED")
+    endif()
 endfunction()
 
 # Add the definitions for the options that are selected.
@@ -103,5 +111,9 @@ function(add_definitions_based_on_options)
         add_definitions(-DWITH_ASSERT)
     else()
         add_definitions(-DNDEBUG)
+    endif()
+
+    if(OPTION_SURVEY_KEY)
+        add_definitions(-DSURVEY_KEY="${OPTION_SURVEY_KEY}")
     endif()
 endfunction()

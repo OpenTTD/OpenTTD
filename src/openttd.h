@@ -11,6 +11,7 @@
 #define OPENTTD_H
 
 #include <atomic>
+#include <chrono>
 #include "core/enum_type.hpp"
 
 /** Mode which defines the state of the game. */
@@ -53,6 +54,7 @@ enum DisplayOptions {
 
 extern GameMode _game_mode;
 extern SwitchMode _switch_mode;
+extern std::chrono::steady_clock::time_point _switch_mode_time;
 extern std::atomic<bool> _exit_game;
 extern bool _save_config;
 
@@ -86,6 +88,7 @@ void HandleExitGameRequest();
 void SwitchToMode(SwitchMode new_mode);
 
 bool RequestNewGRFScan(struct NewGRFScanCallback *callback = nullptr);
+void GenerateSavegameId();
 
 void OpenBrowser(const char *url);
 void ChangeAutosaveFrequency(bool reset);

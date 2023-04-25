@@ -47,7 +47,7 @@ enum NewGRFStateWidgets {
 	WID_NS_NEWGRF_INFO,       ///< Panel for Info on selected NewGRF.
 	WID_NS_OPEN_URL,          ///< Open URL of NewGRF.
 	WID_NS_NEWGRF_TEXTFILE,   ///< Open NewGRF readme, changelog (+1) or license (+2).
-	WID_NS_SET_PARAMETERS = WID_NS_NEWGRF_TEXTFILE + TFT_END,   ///< Open Parameters Window for selected NewGRF for editing parameters.
+	WID_NS_SET_PARAMETERS = WID_NS_NEWGRF_TEXTFILE + TFT_CONTENT_END,   ///< Open Parameters Window for selected NewGRF for editing parameters.
 	WID_NS_VIEW_PARAMETERS,   ///< Open Parameters Window for selected NewGRF for viewing parameters.
 	WID_NS_TOGGLE_PALETTE,    ///< Toggle Palette of selected, active NewGRF.
 	WID_NS_APPLY_CHANGES,     ///< Apply changes to NewGRF config.

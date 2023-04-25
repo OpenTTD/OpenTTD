@@ -18,6 +18,7 @@
 #include "network_content.h"
 #include "network_server.h"
 #include "network_coordinator.h"
+#include "network_survey.h"
 #include "../gui.h"
 #include "network_udp.h"
 #include "../window_func.h"
@@ -38,6 +39,7 @@
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
 #include "../timer/timer_game_calendar.h"
+#include "../textfile_gui.h"
 
 #include "../widgets/network_widget.h"
 
@@ -2514,4 +2516,120 @@ void ShowNetworkAskRelay(const std::string &server_connection_string, const std:
 
 	Window *parent = GetMainWindow();
 	new NetworkAskRelayWindow(&_network_ask_relay_desc, parent, server_connection_string, relay_connection_string, token);
+}
+
+/**
+ * Window used for asking if the user wants to participate in the automated survey.
+ */
+struct NetworkAskSurveyWindow : public Window {
+	NetworkAskSurveyWindow(WindowDesc *desc, Window *parent) :
+		Window(desc)
+	{
+		this->parent = parent;
+		this->InitNested(0);
+	}
+
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	{
+		if (widget == WID_NAS_TEXT) {
+			*size = GetStringBoundingBox(STR_NETWORK_ASK_SURVEY_TEXT);
+			size->width += WidgetDimensions::scaled.frametext.Horizontal();
+			size->height += WidgetDimensions::scaled.frametext.Vertical();
+		}
+	}
+
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		if (widget == WID_NAS_TEXT) {
+			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_NETWORK_ASK_SURVEY_TEXT, TC_BLACK, SA_CENTER);
+		}
+	}
+
+	void FindWindowPlacementAndResize(int def_width, int def_height) override
+	{
+		/* Position query window over the calling window, ensuring it's within screen bounds. */
+		this->left = Clamp(parent->left + (parent->width / 2) - (this->width / 2), 0, _screen.width - this->width);
+		this->top = Clamp(parent->top + (parent->height / 2) - (this->height / 2), 0, _screen.height - this->height);
+		this->SetDirty();
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		switch (widget) {
+			case WID_NAS_PREVIEW:
+				ShowSurveyResultTextfileWindow();
+				break;
+
+			case WID_NAS_LINK:
+				OpenBrowser(NETWORK_SURVEY_DETAILS_LINK.c_str());
+				break;
+
+			case WID_NAS_NO:
+				_settings_client.network.participate_survey = PS_NO;
+				this->Close();
+				break;
+
+			case WID_NAS_YES:
+				_settings_client.network.participate_survey = PS_YES;
+				this->Close();
+				break;
+		}
+	}
+};
+
+static const NWidgetPart _nested_network_ask_survey_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_NAS_CAPTION), SetDataTip(STR_NETWORK_ASK_SURVEY_CAPTION, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY), SetPIP(0, 4, 8),
+		NWidget(WWT_TEXT, COLOUR_GREY, WID_NAS_TEXT), SetAlignment(SA_HOR_CENTER), SetFill(1, 1),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 15, 10),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NAS_PREVIEW), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_NETWORK_ASK_SURVEY_PREVIEW, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NAS_LINK), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_NETWORK_ASK_SURVEY_LINK, STR_NULL),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 15, 10),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NAS_NO), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_NETWORK_ASK_SURVEY_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NAS_YES), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_NETWORK_ASK_SURVEY_YES, STR_NULL),
+		EndContainer(),
+	EndContainer(),
+};
+
+static WindowDesc _network_ask_survey_desc(
+	WDP_CENTER, nullptr, 0, 0,
+	WC_NETWORK_ASK_SURVEY, WC_NONE,
+	WDF_MODAL,
+	_nested_network_ask_survey_widgets, lengthof(_nested_network_ask_survey_widgets)
+);
+
+/**
+ * Show a modal confirmation window with "no" / "preview" / "yes" buttons.
+ */
+void ShowNetworkAskSurvey()
+{
+	/* If we can't send a survey, don't ask the question. */
+	if constexpr (!NetworkSurveyHandler::IsSurveyPossible()) return;
+
+	CloseWindowByClass(WC_NETWORK_ASK_SURVEY);
+
+	Window *parent = GetMainWindow();
+	new NetworkAskSurveyWindow(&_network_ask_survey_desc, parent);
+}
+
+/** Window for displaying the textfile of a survey result. */
+struct SurveyResultTextfileWindow : public TextfileWindow {
+	const GRFConfig *grf_config; ///< View the textfile of this GRFConfig.
+
+	SurveyResultTextfileWindow(TextfileType file_type) : TextfileWindow(file_type)
+	{
+		auto result = _survey.CreatePayload(NetworkSurveyHandler::Reason::PREVIEW, true);
+		this->LoadText(result);
+		this->InvalidateData();
+	}
+};
+
+void ShowSurveyResultTextfileWindow()
+{
+	CloseWindowById(WC_TEXTFILE, TFT_SURVEY_RESULT);
+	new SurveyResultTextfileWindow(TFT_SURVEY_RESULT);
 }

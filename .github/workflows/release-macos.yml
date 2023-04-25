@@ -2,6 +2,11 @@ name: Release (MacOS)
 
 on:
   workflow_call:
+    inputs:
+      survey_key:
+        required: false
+        type: string
+        default: ""
 
 jobs:
   macos:
@@ -104,6 +109,7 @@ jobs:
           -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           # EOF
         echo "::endgroup::"
 
@@ -124,6 +130,7 @@ jobs:
           -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           -DCPACK_BUNDLE_APPLE_CERT_APP=${{ secrets.APPLE_DEVELOPER_CERTIFICATE_ID }} \
           "-DCPACK_BUNDLE_APPLE_CODESIGN_PARAMETER=--deep -f --options runtime" \
           -DAPPLE_UNIVERSAL_PACKAGE=1 \

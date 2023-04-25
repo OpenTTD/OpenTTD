@@ -23,6 +23,7 @@
 #include "screenshot.h"
 #include "gfx_func.h"
 #include "network/network.h"
+#include "network/network_survey.h"
 #include "language.h"
 #include "fontcache.h"
 #include "news_gui.h"
@@ -509,6 +510,10 @@ bool CrashLog::MakeCrashLog() const
 	} else {
 		ret = false;
 		printf("Writing crash screenshot failed.\n\n");
+	}
+
+	if (_game_mode == GM_NORMAL) {
+		_survey.Transmit(NetworkSurveyHandler::Reason::CRASH, true);
 	}
 
 	return ret;

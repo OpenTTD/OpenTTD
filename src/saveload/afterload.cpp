@@ -3224,6 +3224,10 @@ bool AfterLoadGame()
 		for (Station *st : Station::Iterate()) UpdateStationAcceptance(st, false);
 	}
 
+	if (IsSavegameVersionBefore(SLV_SAVEGAME_ID)) {
+		GenerateSavegameId();
+	}
+
 	if (IsSavegameVersionBefore(SLV_AI_START_DATE)) {
 		/* For older savegames, we don't now the actual interval; so set it to the newgame value. */
 		_settings_game.difficulty.competitors_interval = _settings_newgame.difficulty.competitors_interval;

@@ -20,7 +20,7 @@ enum GSConfigWidgets {
 	WID_GSC_SCROLLBAR,        ///< Scrollbar to scroll through the selected AIs.
 	WID_GSC_CHANGE,           ///< Select another Game Script button.
 	WID_GSC_TEXTFILE,         ///< Open GS readme, changelog (+1) or license (+2).
-	WID_GSC_CONTENT_DOWNLOAD = WID_GSC_TEXTFILE + TFT_END, ///< Download content button.
+	WID_GSC_CONTENT_DOWNLOAD = WID_GSC_TEXTFILE + TFT_CONTENT_END, ///< Download content button.
 	WID_GSC_ACCEPT,           ///< Accept ("Close") button
 	WID_GSC_RESET,            ///< Reset button.
 };

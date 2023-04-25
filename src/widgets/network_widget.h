@@ -119,4 +119,14 @@ enum NetworkAskRelayWidgets {
 	WID_NAR_YES_ALWAYS, ///< "Yes, always" button.
 };
 
+/** Widgets of the #NetworkAskSurveyWindow class. */
+enum NetworkAskSurveyWidgets {
+	WID_NAS_CAPTION,    ///< Caption of the window.
+	WID_NAS_TEXT,       ///< Text in the window.
+	WID_NAS_PREVIEW,    ///< "Preview" button.
+	WID_NAS_LINK,       ///< "Details & Privacy" button.
+	WID_NAS_NO,         ///< "No" button.
+	WID_NAS_YES,        ///< "Yes" button.
+};
+
 #endif /* WIDGETS_NETWORK_WIDGET_H */
