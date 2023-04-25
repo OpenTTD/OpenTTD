@@ -2092,7 +2092,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Ilość pamięc
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Okres między serwisowaniami w procentach: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Wybierz, czy serwisowanie pojazdów odbywa się na podstawie czasu od ostatniego serwisu, czy sprawności malejącej o pewien procent maksymalnej sprawności
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kiedy włączone, pojazdy podejmują próbę serwisowania, gdy ich niezawodność spadnie o dany procent maksymalnej niezawodności.{}{}Na przykład, jeśli maksymalna niezawodność pojazdu wynosi 90%, a interwał serwisowy wynosi 20%, pojazd podejmie próbę serwisowania, gdy osiągnie 72% niezawodności.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Domyślny interwał serwisowania pociągów: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ustaw domyślny okres serwisowania dla nowych pojazdów kolejowych, jeśli takowy nie istnieje dla określonego pojazdu
@@ -2306,6 +2306,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Żadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mnożnik rozmiarów metropolii: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar metropolii w porównaniu do normalnych miast na początku gry
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aktualizuj graf dystrybucji co {STRING}{NBSP}sekund{P 0:2 ę y ""}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Czas pomiędzy kolejnymi przeliczeniami grafu połączeń. Każde przeliczenie oblicza plany dla jednego komponentu grafu. Wartość X dla tego ustawienia nie oznacza, że cały graf będzie aktualizowany co X sekund. Aktualizowane będą tylko niektóre komponenty. Im mniejszą wartość ustawisz, tym więcej czasu będzie potrzebował procesor, aby wykonać obliczenia. Im większą wartość ustawisz, tym więcej czasu upłynie, zanim rozpocznie się dystrybucja ładunków po nowych trasach.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Przeznacz {STRING}{NBSP}sekund{P 0:2 ę y ""} na przeliczenie grafu dystrybucji
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Czas potrzebny na każde przeliczenie komponentu grafu połączeń. Po rozpoczęciu przeliczania, tworzony jest wątek, który może działać przez podaną liczbę sekund. Im mniejszą wartość ustawisz, tym większe prawdopodobieństwo, że wątek nie zostanie ukończony w wyznaczonym czasie. Wtedy gra zatrzymuje się do czasu jego zakończenia („lag”). Im większą wartość ustawisz, tym dłużej będzie trwała aktualizacja dystrybucji, gdy zmienią się trasy.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Tryb dystrybucji dla pasażerów: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Tryb „symetryczny” oznacza, że mniej więcej tyle samo pasażerów będzie podróżować ze stacji A do stacji B, co z B do A. Tryb „asymetryczny” oznacza, że w obu kierunkach może podróżować różna liczba pasażerów. Tryb „ręczny” oznacza, że dla pasażerów nie będzie przeprowadzana dystrybucja automatyczna.
@@ -4974,6 +4978,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :Losowe SI
 STR_AI_CONFIG_NONE                                              :(brak)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksymalna liczba przeciwników: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Odstęp czasowy pomiędzy uruchamianiem rywali: {ORANGE}{COMMA} minut{P a y ""}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Przesuń w górę
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Przesuń wybraną SI w górę listy
@@ -5491,6 +5496,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}Brak boi
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Pojazdy mogą czekać tylko na stacjach
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ten pojazd nie zatrzymuje się na tej stacji.
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... rozkład jazdy jest niekompletny
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zbyt wiele napisów
