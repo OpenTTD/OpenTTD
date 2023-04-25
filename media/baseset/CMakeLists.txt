@@ -20,13 +20,17 @@ set(BASESET_OTHER_SOURCE_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/../openttd.32.bmp
 )
 
-# Done by the subdirectories, if nforenum / grfcodec is installed
-if(GRFCODEC_FOUND)
+# Done by the subdirectories, if nmlc is installed
+if(NML_FOUND)
     set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/openttd.grf PROPERTIES GENERATED TRUE)
+    set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/openttd.grf.md5 PROPERTIES GENERATED TRUE)
     set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.grf PROPERTIES GENERATED TRUE)
+    set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.grf.md5 PROPERTIES GENERATED TRUE)
 
     list(APPEND BASESET_BINARY_FILES openttd.grf)
+    list(APPEND BASESET_BINARY_FILES openttd.grf.md5)
     list(APPEND BASESET_BINARY_FILES orig_extra.grf)
+    list(APPEND BASESET_BINARY_FILES orig_extra.grf.md5)
 endif()
 
 set(BASESET_EXTRAGRF_FILE ${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.grf)
@@ -49,6 +53,7 @@ foreach(BASESET_SOURCE_FILE IN LISTS BASESET_SOURCE_FILES)
             MAIN_DEPENDENCY ${BASESET_SOURCE_FILE}
             DEPENDS ${LANG_SOURCE_FILES}
                     ${BASESET_EXTRAGRF_FILE}
+                    ${BASESET_EXTRAGRF_FILE}.md5
                     ${CMAKE_SOURCE_DIR}/cmake/scripts/Baseset.cmake
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating ${BASESET_SOURCE_FILE_NAME} baseset metadata file"
