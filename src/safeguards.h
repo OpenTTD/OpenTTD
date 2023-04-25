@@ -44,7 +44,7 @@
 #define sprintf   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define snprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use vseprintf instead. */
+/* Use fmt::format instead. */
 #define vsprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define vsnprintf SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
