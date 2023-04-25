@@ -449,7 +449,7 @@ public:
 	static void DeleteClosedWindows();
 
 	void SetDirty() const;
-	void ReInit(int rx = 0, int ry = 0);
+	void ReInit(int rx = 0, int ry = 0, bool reposition = false);
 
 	/** Is window shaded currently? */
 	inline bool IsShaded() const

@@ -1010,9 +1010,10 @@ void Window::SetDirty() const
  * Re-initialize a window, and optionally change its size.
  * @param rx Horizontal resize of the window.
  * @param ry Vertical resize of the window.
+ * @param reposition If set, reposition the window to default location.
  * @note For just resizing the window, use #ResizeWindow instead.
  */
-void Window::ReInit(int rx, int ry)
+void Window::ReInit(int rx, int ry, bool reposition)
 {
 	this->SetDirty(); // Mark whole current window as dirty.
 
@@ -1038,6 +1039,12 @@ void Window::ReInit(int rx, int ry)
 	 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
 	if (this->resize.step_width  > 1) dx -= dx % (int)this->resize.step_width;
 	if (this->resize.step_height > 1) dy -= dy % (int)this->resize.step_height;
+
+	if (reposition) {
+		Point pt = this->OnInitialPosition(this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
+		this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
+		this->FindWindowPlacementAndResize(this->window_desc->GetDefaultWidth(), this->window_desc->GetDefaultHeight());
+	}
 
 	ResizeWindow(this, dx, dy);
 	/* ResizeWindow() does this->SetDirty() already, no need to do it again here. */
