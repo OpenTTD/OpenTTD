@@ -111,7 +111,7 @@ struct StatusBarWindow : Window {
 		switch (widget) {
 			case WID_S_LEFT:
 				SetDParamMaxValue(0, MAX_YEAR * DAYS_IN_YEAR);
-				d = GetStringBoundingBox(STR_WHITE_DATE_LONG);
+				d = GetStringBoundingBox(STR_JUST_DATE_LONG);
 				break;
 
 			case WID_S_RIGHT: {
@@ -139,7 +139,7 @@ struct StatusBarWindow : Window {
 			case WID_S_LEFT:
 				/* Draw the date */
 				SetDParam(0, TimerGameCalendar::date);
-				DrawString(tr, STR_WHITE_DATE_LONG, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(tr, STR_JUST_DATE_LONG, TC_WHITE, SA_HOR_CENTER);
 				break;
 
 			case WID_S_RIGHT: {

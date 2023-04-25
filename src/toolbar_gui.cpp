@@ -2406,7 +2406,7 @@ struct ScenarioEditorToolbarWindow : Window {
 
 			case WID_TE_DATE:
 				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 0, 1));
-				*size = GetStringBoundingBox(STR_WHITE_DATE_LONG);
+				*size = GetStringBoundingBox(STR_JUST_DATE_LONG);
 				break;
 		}
 	}
@@ -2568,7 +2568,7 @@ static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_TE_DATE_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 2, 2), SetPadding(1),
 			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_BACKWARD), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD), SetFill(0, 1),
-			NWidget(WWT_TEXT, COLOUR_GREY, WID_TE_DATE), SetDataTip(STR_WHITE_DATE_LONG, STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE), SetAlignment(SA_CENTER), SetFill(0, 1),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_TE_DATE), SetDataTip(STR_JUST_DATE_LONG, STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE), SetTextStyle(TC_WHITE), SetAlignment(SA_CENTER), SetFill(0, 1),
 			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_FORWARD), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD), SetFill(0, 1),
 		EndContainer(),
 	EndContainer(),
