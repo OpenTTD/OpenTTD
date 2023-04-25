@@ -38,12 +38,18 @@ jobs:
     uses: ./.github/workflows/release-linux.yml
     secrets: inherit
 
+    with:
+      survey_key: ${{ needs.source.outputs.survey_key }}
+
   macos:
     name: MacOS
     needs: source
 
     uses: ./.github/workflows/release-macos.yml
     secrets: inherit
+
+    with:
+      survey_key: ${{ needs.source.outputs.survey_key }}
 
   windows:
     name: Windows
@@ -54,6 +60,7 @@ jobs:
 
     with:
       is_tag: ${{ needs.source.outputs.is_tag }}
+      survey_key: ${{ needs.source.outputs.survey_key }}
 
   windows-store:
     name: Windows Store

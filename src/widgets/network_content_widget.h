@@ -36,7 +36,7 @@ enum NetworkContentListWidgets {
 	WID_NCL_DETAILS,        ///< Panel with content details.
 	WID_NCL_TEXTFILE,       ///< Open readme, changelog (+1) or license (+2) of a file in the content window.
 
-	WID_NCL_SELECT_ALL = WID_NCL_TEXTFILE + TFT_END, ///< 'Select all' button.
+	WID_NCL_SELECT_ALL = WID_NCL_TEXTFILE + TFT_CONTENT_END, ///< 'Select all' button.
 	WID_NCL_SELECT_UPDATE,  ///< 'Select updates' button.
 	WID_NCL_UNSELECT,       ///< 'Unselect all' button.
 	WID_NCL_OPEN_URL,       ///< 'Open url' button.

@@ -29,7 +29,7 @@ enum AIConfigWidgets {
 	WID_AIC_CONFIGURE,        ///< Change AI settings button.
 	WID_AIC_CLOSE,            ///< Close window button.
 	WID_AIC_TEXTFILE,         ///< Open AI readme, changelog (+1) or license (+2).
-	WID_AIC_CONTENT_DOWNLOAD = WID_AIC_TEXTFILE + TFT_END, ///< Download content button.
+	WID_AIC_CONTENT_DOWNLOAD = WID_AIC_TEXTFILE + TFT_CONTENT_END, ///< Download content button.
 };
 
 #endif /* WIDGETS_AI_WIDGET_H */

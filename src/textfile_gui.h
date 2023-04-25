@@ -42,6 +42,9 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 
 	virtual void LoadTextfile(const std::string &textfile, Subdirectory dir);
 
+protected:
+	void LoadText(std::string_view buf);
+
 private:
 	struct Line {
 		int top;               ///< Top scroll position.

@@ -14,6 +14,8 @@
 
 #include "tcp.h"
 
+constexpr int HTTP_429_TOO_MANY_REQUESTS = 429;
+
 /** Callback for when the HTTP handler has something to tell us. */
 struct HTTPCallback {
 	/**

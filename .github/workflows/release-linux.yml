@@ -2,6 +2,11 @@ name: Release (Linux)
 
 on:
   workflow_call:
+    inputs:
+      survey_key:
+        required: false
+        type: string
+        default: ""
 
 jobs:
   linux:
@@ -119,6 +124,7 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_TOOLCHAIN_FILE=/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           -DOPTION_PACKAGE_DEPENDENCIES=ON \
           # EOF
         echo "::endgroup::"

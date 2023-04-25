@@ -63,11 +63,18 @@ enum IndustryDensity {
 	ID_END,       ///< Number of industry density settings.
 };
 
-/** Possible values for "userelayservice" setting. */
+/** Possible values for "use_relay_service" setting. */
 enum UseRelayService {
 	URS_NEVER = 0,
 	URS_ASK,
 	URS_ALLOW,
+};
+
+/** Possible values for "participate_survey" setting. */
+enum ParticipateSurvey {
+	PS_ASK = 0,
+	PS_NO,
+	PS_YES,
 };
 
 /** Settings related to the difficulty of the game */
@@ -306,7 +313,8 @@ struct NetworkSettings {
 	bool        reload_cfg;                               ///< reload the config file before restarting
 	std::string last_joined;                              ///< Last joined server
 	bool        no_http_content_downloads;                ///< do not do content downloads over HTTP
-	UseRelayService use_relay_service;                        ///< Use relay service?
+	UseRelayService use_relay_service;                    ///< Use relay service?
+	ParticipateSurvey participate_survey;                 ///< Participate in the automated survey
 };
 
 /** Settings related to the creation of games. */

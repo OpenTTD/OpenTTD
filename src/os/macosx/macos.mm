@@ -272,3 +272,8 @@ void MacOSSetThreadName(const char *name)
 		[ cur performSelector:@selector(setName:) withObject:[ NSString stringWithUTF8String:name ] ];
 	}
 }
+
+uint64 MacOSGetPhysicalMemory()
+{
+	return [ [ NSProcessInfo processInfo ] physicalMemory ];
+}

@@ -925,7 +925,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
-		if (widget >= WID_NS_NEWGRF_TEXTFILE && widget < WID_NS_NEWGRF_TEXTFILE + TFT_END) {
+		if (widget >= WID_NS_NEWGRF_TEXTFILE && widget < WID_NS_NEWGRF_TEXTFILE + TFT_CONTENT_END) {
 			if (this->active_sel == nullptr && this->avail_sel == nullptr) return;
 
 			ShowNewGRFTextfileWindow((TextfileType)(widget - WID_NS_NEWGRF_TEXTFILE), this->active_sel != nullptr ? this->active_sel : this->avail_sel);
@@ -1286,7 +1286,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		);
 
 		const GRFConfig *selected_config = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
-		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
+		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
 			this->SetWidgetDisabledState(WID_NS_NEWGRF_TEXTFILE + tft, selected_config == nullptr || !selected_config->GetTextfile(tft).has_value());
 		}
 		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || StrEmpty(selected_config->GetURL()));

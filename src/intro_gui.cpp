@@ -17,6 +17,7 @@
 #include "genworld.h"
 #include "network/network_gui.h"
 #include "network/network_content.h"
+#include "network/network_survey.h"
 #include "landscape_type.h"
 #include "landscape.h"
 #include "strings_func.h"
@@ -504,7 +505,10 @@ void ShowSelectGameWindow()
 
 static void AskExitGameCallback(Window *w, bool confirmed)
 {
-	if (confirmed) _exit_game = true;
+	if (confirmed) {
+		_survey.Transmit(NetworkSurveyHandler::Reason::EXIT, true);
+		_exit_game = true;
+	}
 }
 
 void AskExitGame()

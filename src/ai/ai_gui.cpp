@@ -183,7 +183,7 @@ struct AIConfigWindow : public Window {
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
-		if (widget >= WID_AIC_TEXTFILE && widget < WID_AIC_TEXTFILE + TFT_END) {
+		if (widget >= WID_AIC_TEXTFILE && widget < WID_AIC_TEXTFILE + TFT_CONTENT_END) {
 			if (this->selected_slot == INVALID_COMPANY || AIConfig::GetConfig(this->selected_slot) == nullptr) return;
 
 			ShowScriptTextfileWindow((TextfileType)(widget - WID_AIC_TEXTFILE), this->selected_slot);
@@ -284,7 +284,7 @@ struct AIConfigWindow : public Window {
 		this->SetWidgetDisabledState(WID_AIC_MOVE_UP, this->selected_slot == INVALID_COMPANY || !IsEditable((CompanyID)(this->selected_slot - 1)));
 		this->SetWidgetDisabledState(WID_AIC_MOVE_DOWN, this->selected_slot == INVALID_COMPANY || !IsEditable((CompanyID)(this->selected_slot + 1)));
 
-		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
+		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
 			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == INVALID_COMPANY || !AIConfig::GetConfig(this->selected_slot)->GetTextfile(tft, this->selected_slot).has_value());
 		}
 	}

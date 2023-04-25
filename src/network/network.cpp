@@ -85,6 +85,8 @@ static_assert((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_CHARS 
 /** The amount of clients connected */
 byte _network_clients_connected = 0;
 
+extern std::string GenerateUid(std::string_view subject);
+
 /**
  * Return whether there is any client connected or trying to connect at all.
  * @return whether we have any client activity
@@ -1204,24 +1206,7 @@ void NetworkGameLoop()
 
 static void NetworkGenerateServerId()
 {
-	Md5 checksum;
-	uint8 digest[16];
-	char hex_output[16 * 2 + 1];
-	char coding_string[NETWORK_NAME_LENGTH];
-	int di;
-
-	seprintf(coding_string, lastof(coding_string), "%d%s", (uint)Random(), "OpenTTD Server ID");
-
-	/* Generate the MD5 hash */
-	checksum.Append((const uint8*)coding_string, strlen(coding_string));
-	checksum.Finish(digest);
-
-	for (di = 0; di < 16; ++di) {
-		seprintf(hex_output + di * 2, lastof(hex_output), "%02x", digest[di]);
-	}
-
-	/* _settings_client.network.network_id is our id */
-	_settings_client.network.network_id = hex_output;
+	_settings_client.network.network_id = GenerateUid("OpenTTD Server ID");
 }
 
 class TCPNetworkDebugConnecter : TCPConnecter {

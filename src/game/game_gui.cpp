@@ -240,7 +240,7 @@ struct GSConfigWindow : public Window {
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
-		if (widget >= WID_GSC_TEXTFILE && widget < WID_GSC_TEXTFILE + TFT_END) {
+		if (widget >= WID_GSC_TEXTFILE && widget < WID_GSC_TEXTFILE + TFT_CONTENT_END) {
 			if (GameConfig::GetConfig() == nullptr) return;
 
 			ShowScriptTextfileWindow((TextfileType)(widget - WID_GSC_TEXTFILE), (CompanyID)OWNER_DEITY);
@@ -404,7 +404,7 @@ struct GSConfigWindow : public Window {
 
 		this->SetWidgetDisabledState(WID_GSC_CHANGE, (_game_mode == GM_NORMAL) || !IsEditable());
 
-		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
+		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
 			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, !GameConfig::GetConfig()->GetTextfile(tft, (CompanyID)OWNER_DEITY).has_value());
 		}
 		this->RebuildVisibleSettings();

@@ -131,7 +131,8 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 
 			/* If there is any error, we simply abort the request. */
 			if (status_code >= 400) {
-				Debug(net, 0, "HTTP request failed: status-code {}", status_code);
+				/* No need to be verbose about rate limiting. */
+				Debug(net, status_code == HTTP_429_TOO_MANY_REQUESTS ? 1 : 0, "HTTP request failed: status-code {}", status_code);
 				this->finished = true;
 				this->callback->OnFailure();
 				return;
@@ -242,7 +243,9 @@ void NetworkHTTPRequest::Connect()
 	if (data.empty()) {
 		WinHttpSendRequest(this->request, WINHTTP_NO_ADDITIONAL_HEADERS, 0, WINHTTP_NO_REQUEST_DATA, 0, 0, reinterpret_cast<DWORD_PTR>(this));
 	} else {
-		WinHttpSendRequest(this->request, L"Content-Type: application/x-www-form-urlencoded\r\n", -1, const_cast<char *>(data.c_str()), static_cast<DWORD>(data.size()), static_cast<DWORD>(data.size()), reinterpret_cast<DWORD_PTR>(this));
+		/* When the payload starts with a '{', it is a JSON payload. */
+		LPCWSTR content_type = StrStartsWith(data, "{") ? L"Content-Type: application/json\r\n" : L"Content-Type: application/x-www-form-urlencoded\r\n";
+		WinHttpSendRequest(this->request, content_type, -1, const_cast<char *>(data.c_str()), static_cast<DWORD>(data.size()), static_cast<DWORD>(data.size()), reinterpret_cast<DWORD_PTR>(this));
 	}
 }
 

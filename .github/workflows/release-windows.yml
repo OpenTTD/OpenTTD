@@ -3,6 +3,10 @@ name: Release (Windows)
 on:
   workflow_call:
     inputs:
+      survey_key:
+        required: false
+        type: string
+        default: ""
       is_tag:
         required: true
         type: string
@@ -129,6 +133,7 @@ jobs:
           -DOPTION_USE_NSIS=ON \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
           # EOF
         echo "::endgroup::"
@@ -153,6 +158,7 @@ jobs:
           -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
           -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
           # EOF
         echo "::endgroup::"

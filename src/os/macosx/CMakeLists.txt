@@ -7,6 +7,7 @@ add_files(
     osx_stdafx.h
     string_osx.cpp
     string_osx.h
+    survey_osx.cpp
     CONDITION APPLE
 )
 

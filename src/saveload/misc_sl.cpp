@@ -29,6 +29,7 @@
 extern TileIndex _cur_tileloop_tile;
 extern uint16 _disaster_delay;
 extern byte _trees_tick_ctr;
+extern std::string _savegame_id;
 
 /* Keep track of current game position */
 int _saved_scrollpos_x;
@@ -87,6 +88,7 @@ static const SaveLoad _date_desc[] = {
 	    SLEG_VAR("company_tick_counter", _cur_company_tick_index, SLE_FILE_U8  | SLE_VAR_U32),
 	    SLEG_VAR("trees_tick_counter",     _trees_tick_ctr,         SLE_UINT8),
 	SLEG_CONDVAR("pause_mode",             _pause_mode,             SLE_UINT8,                   SLV_4, SL_MAX_VERSION),
+	SLEG_CONDSSTR("id",                    _savegame_id,            SLE_STR,                     SLV_SAVEGAME_ID, SL_MAX_VERSION),
 	/* For older savegames, we load the current value as the "period"; afterload will set the "fired" and "elapsed". */
 	SLEG_CONDVAR("next_competitor_start",        _new_competitor_timeout.period,          SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_109),
 	SLEG_CONDVAR("next_competitor_start",        _new_competitor_timeout.period,          SLE_UINT32,                  SLV_109, SLV_AI_START_DATE),
