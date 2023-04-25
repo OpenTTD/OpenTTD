@@ -145,24 +145,6 @@ char *stredup(const char *s, const char *last)
 }
 
 /**
- * Format, "printf", into a newly allocated string.
- * @param str The formatting string.
- * @return The formatted string. You must free this!
- */
-char *CDECL str_fmt(const char *str, ...)
-{
-	char buf[4096];
-	va_list va;
-
-	va_start(va, str);
-	int len = vseprintf(buf, lastof(buf), str, va);
-	va_end(va);
-	char *p = MallocT<char>(len + 1);
-	memcpy(p, buf, len + 1);
-	return p;
-}
-
-/**
  * Format a byte array into a continuous hex string.
  * @param data Array to format
  * @return Converted string.

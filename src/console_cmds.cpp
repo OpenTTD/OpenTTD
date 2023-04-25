@@ -385,7 +385,8 @@ DEF_CONSOLE_CMD(ConSave)
 	}
 
 	if (argc == 2) {
-		char *filename = str_fmt("%s.sav", argv[1]);
+		std::string filename = argv[1];
+		filename += ".sav";
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
 		if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
@@ -393,7 +394,6 @@ DEF_CONSOLE_CMD(ConSave)
 		} else {
 			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);
 		}
-		free(filename);
 		return true;
 	}
 

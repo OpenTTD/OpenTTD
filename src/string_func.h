@@ -38,8 +38,6 @@ char *stredup(const char *src, const char *last = nullptr) NOACCESS(2);
 int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FORMAT(3, 4) NOACCESS(2);
 int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap) WARN_FORMAT(3, 0) NOACCESS(2);
 
-char *CDECL str_fmt(const char *str, ...) WARN_FORMAT(1, 2);
-
 std::string FormatArrayAsHex(span<const byte> data);
 
 void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK) NOACCESS(2);
