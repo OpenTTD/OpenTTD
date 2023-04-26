@@ -104,6 +104,9 @@ jobs:
 
     - name: Build
       run: |
+        # Automatically disable asserts for stable releases
+        IS_STABLE_TAG=$(if [ "$(cat .ottdrev | cut -f 6 -d$'\t')" = "1" ]; then echo "OFF"; else echo "ON"; fi)
+
         mkdir -p build
         cd build
 
@@ -112,6 +115,7 @@ jobs:
           -DCMAKE_TOOLCHAIN_FILE=/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_PACKAGE_DEPENDENCIES=ON \
+          -DOPTION_USE_ASSERTS=${IS_STABLE_TAG} \
           # EOF
         echo "::endgroup::"
 
