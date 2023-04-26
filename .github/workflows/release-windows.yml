@@ -9,8 +9,6 @@ on:
 
 jobs:
   windows:
-    name: Windows
-
     strategy:
       fail-fast: false
       matrix:
@@ -21,6 +19,8 @@ jobs:
           host: x64
         - arch: arm64
           host: x64_arm64
+
+    name: Windows (${{ matrix.arch }}})
 
     runs-on: windows-latest
 
