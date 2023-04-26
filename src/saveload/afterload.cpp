@@ -1455,6 +1455,7 @@ bool AfterLoadGame()
 
 		for (Vehicle *v : Vehicle::Iterate()) {
 			v->date_of_last_service += DAYS_TILL_ORIGINAL_BASE_YEAR;
+			v->date_of_last_service_newgrf = v->date_of_last_service;
 			v->build_year += ORIGINAL_BASE_YEAR;
 		}
 	}
@@ -3269,6 +3270,13 @@ bool AfterLoadGame()
 		extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
 		_new_competitor_timeout.storage.elapsed = 0;
 		_new_competitor_timeout.fired = _new_competitor_timeout.period == 0;
+	}
+
+	if (IsSavegameVersionBefore(SLV_NEWGRF_LAST_SERVICE)) {
+		/* Fixup service date provided to NewGRF. */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			v->date_of_last_service_newgrf = v->date_of_last_service;
+		}
 	}
 
 	AfterLoadLabelMaps();

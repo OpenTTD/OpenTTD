@@ -892,6 +892,7 @@ CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, V
 
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_ships);
 		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service_newgrf = v->date_of_last_service;
 		v->build_year = TimerGameCalendar::year;
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
