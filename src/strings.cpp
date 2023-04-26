@@ -873,7 +873,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				memset(sub_args_need_free, 0, sizeof(sub_args_need_free));
 
 				char *p;
-				uint32 stringid = strtoul(str, &p, 16);
+				uint32 stringid = std::strtoul(str, &p, 16);
 				if (*p != ':' && *p != '\0') {
 					while (*p != '\0') p++;
 					str = p;
@@ -925,7 +925,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						bool lookup = (l == SCC_ENCODED);
 						if (lookup) s += len;
 
-						param = strtoull(s, &p, 16);
+						param = std::strtoull(s, &p, 16);
 
 						if (lookup) {
 							if (param >= TAB_SIZE_GAMESCRIPT) {
