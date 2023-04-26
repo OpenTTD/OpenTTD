@@ -654,6 +654,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlag flags, TileIndex tile, const 
 		v->railtype = rvi->railtype;
 
 		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->build_year = TimerGameCalendar::year;
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = Random();
@@ -719,6 +720,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->railtype = v->railtype;
 	u->engine_type = v->engine_type;
 	u->date_of_last_service = v->date_of_last_service;
+	u->date_of_last_service_newgrf = v->date_of_last_service_newgrf;
 	u->build_year = v->build_year;
 	u->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 	u->random_bits = Random();
@@ -783,6 +785,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_trains);
 		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->build_year = TimerGameCalendar::year;
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = Random();

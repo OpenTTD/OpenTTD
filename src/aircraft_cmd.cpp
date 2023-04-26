@@ -339,6 +339,7 @@ CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_aircraft);
 
 		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->build_year = u->build_year = TimerGameCalendar::year;
 
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
@@ -1557,6 +1558,7 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 			if (v->subtype == AIR_HELICOPTER && apc->num_helipads > 0) {
 				/* an excerpt of ServiceAircraft, without the invisibility stuff */
 				v->date_of_last_service = TimerGameCalendar::date;
+				v->date_of_last_service_newgrf = TimerGameCalendar::date;
 				v->breakdowns_since_last_service = 0;
 				v->reliability = v->GetEngine()->reliability;
 				SetWindowDirty(WC_VEHICLE_DETAILS, v->index);

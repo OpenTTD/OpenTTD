@@ -170,6 +170,7 @@ void VehicleServiceInDepot(Vehicle *v)
 
 	do {
 		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->breakdowns_since_last_service = 0;
 		v->reliability = v->GetEngine()->reliability;
 		/* Prevent vehicles from breaking down directly after exiting the depot. */
@@ -761,6 +762,8 @@ uint32_t Vehicle::GetGRFID() const
 void Vehicle::ShiftDates(int interval)
 {
 	this->date_of_last_service = std::max(this->date_of_last_service + interval, 0);
+	/* date_of_last_service_newgrf is not updated here as it must stay stable
+	 * for vehicles outside of a depot. */
 }
 
 /**

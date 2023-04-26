@@ -288,6 +288,7 @@ public:
 	TimerGameCalendar::Date age;                  ///< Age in days
 	TimerGameCalendar::Date max_age;              ///< Maximum age
 	TimerGameCalendar::Date date_of_last_service; ///< Last date the vehicle had a service at a depot.
+	TimerGameCalendar::Date date_of_last_service_newgrf; ///< Last date the vehicle had a service at a depot, unchanged by the date cheat to protect against unsafe NewGRF behavior.
 	uint16_t reliability;                 ///< Reliability.
 	uint16_t reliability_spd_dec;         ///< Reliability decrease speed.
 	byte breakdown_ctr;                 ///< Counter for managing breakdown events. @see Vehicle::HandleBreakdown
