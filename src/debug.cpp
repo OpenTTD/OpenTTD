@@ -174,7 +174,7 @@ void SetDebugString(const char *s, void (*error_func)(const std::string &))
 	if (*s >= '0' && *s <= '9') {
 		const DebugLevel *i;
 
-		v = strtoul(s, &end, 0);
+		v = std::strtoul(s, &end, 0);
 		s = end;
 
 		for (i = debug_level; i != endof(debug_level); ++i) {
@@ -201,7 +201,7 @@ void SetDebugString(const char *s, void (*error_func)(const std::string &))
 		}
 
 		if (*s == '=') s++;
-		v = strtoul(s, &end, 0);
+		v = std::strtoul(s, &end, 0);
 		s = end;
 		if (found != nullptr) {
 			new_levels[found->name] = v;

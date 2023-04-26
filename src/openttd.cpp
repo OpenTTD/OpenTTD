@@ -286,8 +286,8 @@ static void ParseResolution(Dimension *res, const char *s)
 		return;
 	}
 
-	res->width  = std::max(strtoul(s, nullptr, 0), 64UL);
-	res->height = std::max(strtoul(t + 1, nullptr, 0), 64UL);
+	res->width  = std::max(std::strtoul(s, nullptr, 0), 64UL);
+	res->height = std::max(std::strtoul(t + 1, nullptr, 0), 64UL);
 }
 
 
@@ -637,7 +637,7 @@ int openttd_main(int argc, char *argv[])
 			_skip_all_newgrf_scanning += 1;
 			break;
 		}
-		case 'G': scanner->generation_seed = strtoul(mgo.opt, nullptr, 10); break;
+		case 'G': scanner->generation_seed = std::strtoul(mgo.opt, nullptr, 10); break;
 		case 'c': _config_file = mgo.opt; break;
 		case 'x': scanner->save_config = false; break;
 		case 'X': only_local_path = true; break;

@@ -117,7 +117,7 @@ struct FileStringReader : StringReader {
 void FileStringReader::HandlePragma(char *str)
 {
 	if (!memcmp(str, "id ", 3)) {
-		this->data.next_string_id = strtoul(str + 3, nullptr, 0);
+		this->data.next_string_id = std::strtoul(str + 3, nullptr, 0);
 	} else if (!memcmp(str, "name ", 5)) {
 		strecpy(_lang.name, str + 5, lastof(_lang.name));
 	} else if (!memcmp(str, "ownname ", 8)) {
@@ -143,14 +143,14 @@ void FileStringReader::HandlePragma(char *str)
 		strecpy(_lang.digit_decimal_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang.digit_decimal_separator));
 	} else if (!memcmp(str, "winlangid ", 10)) {
 		const char *buf = str + 10;
-		long langid = strtol(buf, nullptr, 16);
+		long langid = std::strtol(buf, nullptr, 16);
 		if (langid > (long)UINT16_MAX || langid < 0) {
 			FatalError("Invalid winlangid {}", buf);
 		}
 		_lang.winlangid = (uint16)langid;
 	} else if (!memcmp(str, "grflangid ", 10)) {
 		const char *buf = str + 10;
-		long langid = strtol(buf, nullptr, 16);
+		long langid = std::strtol(buf, nullptr, 16);
 		if (langid >= 0x7F || langid < 0) {
 			FatalError("Invalid grflangid {}", buf);
 		}

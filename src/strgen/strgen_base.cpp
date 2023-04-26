@@ -309,7 +309,7 @@ bool ParseRelNum(char **buf, int *value, int *offset)
 		rel = true;
 		s++;
 	}
-	int v = strtol(s, &end, 0);
+	int v = std::strtol(s, &end, 0);
 	if (end == s) return false;
 	if (rel || v < 0) {
 		*value += v;
@@ -319,7 +319,7 @@ bool ParseRelNum(char **buf, int *value, int *offset)
 	if (offset != nullptr && *end == ':') {
 		/* Take the Nth within */
 		s = end + 1;
-		*offset = strtol(s, &end, 0);
+		*offset = std::strtol(s, &end, 0);
 		if (end == s) return false;
 	}
 	*buf = end;
@@ -509,7 +509,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 	if (*s >= '0' && *s <= '9') {
 		char *end;
 
-		*argno = strtoul(s, &end, 0);
+		*argno = std::strtoul(s, &end, 0);
 		if (*end != ':') StrgenFatal("missing arg #");
 		s = end + 1;
 	}
