@@ -386,7 +386,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 
 			/* found file must be directory, but not '.' or '..' */
 			if (FiosIsValidFile(_fios_path->c_str(), dirent, &sb) && S_ISDIR(sb.st_mode) &&
-					(!FiosIsHiddenFile(dirent) || strncasecmp(d_name, PERSONAL_DIR, strlen(d_name)) == 0) &&
+					(!FiosIsHiddenFile(dirent) || StrStartsWithIgnoreCase(PERSONAL_DIR, d_name)) &&
 					strcmp(d_name, ".") != 0 && strcmp(d_name, "..") != 0) {
 				fios = &file_list.emplace_back();
 				fios->type = FIOS_TYPE_DIR;

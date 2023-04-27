@@ -13,6 +13,8 @@
 
 #include "../string_func.h"
 
+/**** String compare/equals *****/
+
 TEST_CASE("StrCompareIgnoreCase - std::string")
 {
 	/* Same string, with different cases. */
@@ -157,4 +159,360 @@ TEST_CASE("StrEqualsIgnoreCase - std::string_view")
 	CHECK(!StrEqualsIgnoreCase(base.substr(3, 1), base.substr(0, 1)));
 	CHECK(!StrEqualsIgnoreCase(base.substr(0, 1), base.substr(0, 2))); // Same position, different lengths
 	CHECK(!StrEqualsIgnoreCase(base.substr(0, 2), base.substr(0, 1))); // Same position, different lengths
+}
+
+/**** String starts with *****/
+
+TEST_CASE("StrStartsWith - std::string")
+{
+	/* Everything starts with an empty prefix. */
+	CHECK(StrStartsWith(std::string{""}, std::string{""}));
+	CHECK(StrStartsWith(std::string{"a"}, std::string{""}));
+
+	/* Equal strings. */
+	CHECK(StrStartsWith(std::string{"a"}, std::string{"a"}));
+	CHECK(StrStartsWith(std::string{"A"}, std::string{"A"}));
+
+	/* Starts with same. */
+	CHECK(StrStartsWith(std::string{"ab"}, std::string{"a"}));
+	CHECK(StrStartsWith(std::string{"Ab"}, std::string{"A"}));
+
+	/* Different cases. */
+	CHECK(!StrStartsWith(std::string{"a"}, std::string{"A"}));
+	CHECK(!StrStartsWith(std::string{"A"}, std::string{"a"}));
+	CHECK(!StrStartsWith(std::string{"ab"}, std::string{"A"}));
+	CHECK(!StrStartsWith(std::string{"Ab"}, std::string{"a"}));
+
+	/* Does not start the same. */
+	CHECK(!StrStartsWith(std::string{""}, std::string{"b"}));
+	CHECK(!StrStartsWith(std::string{"a"}, std::string{"b"}));
+	CHECK(!StrStartsWith(std::string{"b"}, std::string{"a"}));
+	CHECK(!StrStartsWith(std::string{"a"}, std::string{"aa"}));
+}
+
+TEST_CASE("StrStartsWith - char pointer")
+{
+	CHECK(StrStartsWith("", ""));
+	CHECK(StrStartsWith("a", ""));
+
+	/* Equal strings. */
+	CHECK(StrStartsWith("a", "a"));
+	CHECK(StrStartsWith("A", "A"));
+
+	/* Starts with same. */
+	CHECK(StrStartsWith("ab", "a"));
+	CHECK(StrStartsWith("Ab", "A"));
+
+	/* Different cases. */
+	CHECK(!StrStartsWith("a", "A"));
+	CHECK(!StrStartsWith("A", "a"));
+	CHECK(!StrStartsWith("ab", "A"));
+	CHECK(!StrStartsWith("Ab", "a"));
+
+	/* Does not start the same. */
+	CHECK(!StrStartsWith("", "b"));
+	CHECK(!StrStartsWith("a", "b"));
+	CHECK(!StrStartsWith("b", "a"));
+	CHECK(!StrStartsWith("a", "aa"));
+}
+
+TEST_CASE("StrStartsWith - std::string_view")
+{
+	/*
+	 * With std::string_view the only way to access the data is via .data(),
+	 * which does not guarantee the termination that would be required by
+	 * things such as stricmp/strcasecmp. So, just passing .data() into stricmp
+	 * or strcasecmp would fail if it does not account for the length of the
+	 * view. Thus, contrary to the string/char* tests, this uses the same base
+	 * string but gets different sections to trigger these corner cases.
+	 */
+	std::string_view base{"aabAb"};
+
+	/* Everything starts with an empty prefix. */
+	CHECK(StrStartsWith(base.substr(0, 0), base.substr(1, 0))); // Different positions
+	CHECK(StrStartsWith(base.substr(0, 1), base.substr(0, 0)));
+
+	/* Equals string. */
+	CHECK(StrStartsWith(base.substr(0, 1), base.substr(1, 1))); // Different positions
+	CHECK(StrStartsWith(base.substr(3, 1), base.substr(3, 1)));
+
+	/* Starts with same. */
+	CHECK(StrStartsWith(base.substr(1, 2), base.substr(0, 1)));
+	CHECK(StrStartsWith(base.substr(3, 2), base.substr(3, 1)));
+
+	/* Different cases. */
+	CHECK(!StrStartsWith(base.substr(0, 1), base.substr(3, 1)));
+	CHECK(!StrStartsWith(base.substr(3, 1), base.substr(0, 1)));
+	CHECK(!StrStartsWith(base.substr(1, 2), base.substr(3, 1)));
+	CHECK(!StrStartsWith(base.substr(3, 2), base.substr(0, 1)));
+
+	/* Does not start the same. */
+	CHECK(!StrStartsWith(base.substr(2, 0), base.substr(2, 1)));
+	CHECK(!StrStartsWith(base.substr(0, 1), base.substr(2, 1)));
+	CHECK(!StrStartsWith(base.substr(2, 1), base.substr(0, 1)));
+	CHECK(!StrStartsWith(base.substr(0, 1), base.substr(0, 2)));
+}
+
+
+TEST_CASE("StrStartsWithIgnoreCase - std::string")
+{
+	/* Everything starts with an empty prefix. */
+	CHECK(StrStartsWithIgnoreCase(std::string{""}, std::string{""}));
+	CHECK(StrStartsWithIgnoreCase(std::string{"a"}, std::string{""}));
+
+	/* Equals string, ignoring case. */
+	CHECK(StrStartsWithIgnoreCase(std::string{"a"}, std::string{"a"}));
+	CHECK(StrStartsWithIgnoreCase(std::string{"a"}, std::string{"A"}));
+	CHECK(StrStartsWithIgnoreCase(std::string{"A"}, std::string{"a"}));
+	CHECK(StrStartsWithIgnoreCase(std::string{"A"}, std::string{"A"}));
+
+	/* Starts with same, ignoring case. */
+	CHECK(StrStartsWithIgnoreCase(std::string{"ab"}, std::string{"a"}));
+	CHECK(StrStartsWithIgnoreCase(std::string{"ab"}, std::string{"A"}));
+	CHECK(StrStartsWithIgnoreCase(std::string{"Ab"}, std::string{"a"}));
+	CHECK(StrStartsWithIgnoreCase(std::string{"Ab"}, std::string{"A"}));
+
+	/* Does not start the same. */
+	CHECK(!StrStartsWithIgnoreCase(std::string{""}, std::string{"b"}));
+	CHECK(!StrStartsWithIgnoreCase(std::string{"a"}, std::string{"b"}));
+	CHECK(!StrStartsWithIgnoreCase(std::string{"b"}, std::string{"a"}));
+	CHECK(!StrStartsWithIgnoreCase(std::string{"a"}, std::string{"aa"}));
+}
+
+TEST_CASE("StrStartsWithIgnoreCase - char pointer")
+{
+	/* Everything starts with an empty prefix. */
+	CHECK(StrStartsWithIgnoreCase("", ""));
+	CHECK(StrStartsWithIgnoreCase("a", ""));
+
+	/* Equals string, ignoring case. */
+	CHECK(StrStartsWithIgnoreCase("a", "a"));
+	CHECK(StrStartsWithIgnoreCase("a", "A"));
+	CHECK(StrStartsWithIgnoreCase("A", "a"));
+	CHECK(StrStartsWithIgnoreCase("A", "A"));
+
+	/* Starts with same, ignoring case. */
+	CHECK(StrStartsWithIgnoreCase("ab", "a"));
+	CHECK(StrStartsWithIgnoreCase("ab", "A"));
+	CHECK(StrStartsWithIgnoreCase("Ab", "a"));
+	CHECK(StrStartsWithIgnoreCase("Ab", "A"));
+
+	/* Does not start the same. */
+	CHECK(!StrStartsWithIgnoreCase("", "b"));
+	CHECK(!StrStartsWithIgnoreCase("a", "b"));
+	CHECK(!StrStartsWithIgnoreCase("b", "a"));
+	CHECK(!StrStartsWithIgnoreCase("a", "aa"));
+}
+
+TEST_CASE("StrStartsWithIgnoreCase - std::string_view")
+{
+	/*
+	 * With std::string_view the only way to access the data is via .data(),
+	 * which does not guarantee the termination that would be required by
+	 * things such as stricmp/strcasecmp. So, just passing .data() into stricmp
+	 * or strcasecmp would fail if it does not account for the length of the
+	 * view. Thus, contrary to the string/char* tests, this uses the same base
+	 * string but gets different sections to trigger these corner cases.
+	 */
+	std::string_view base{"aabAb"};
+
+	/* Everything starts with an empty prefix. */
+	CHECK(StrStartsWithIgnoreCase(base.substr(0, 0), base.substr(1, 0))); // Different positions
+	CHECK(StrStartsWithIgnoreCase(base.substr(0, 1), base.substr(0, 0)));
+
+	/* Equals string, ignoring case. */
+	CHECK(StrStartsWithIgnoreCase(base.substr(0, 1), base.substr(1, 1))); // Different positions
+	CHECK(StrStartsWithIgnoreCase(base.substr(0, 1), base.substr(3, 1)));
+	CHECK(StrStartsWithIgnoreCase(base.substr(3, 1), base.substr(0, 1)));
+	CHECK(StrStartsWithIgnoreCase(base.substr(3, 1), base.substr(3, 1)));
+
+	/* Starts with same, ignoring case. */
+	CHECK(StrStartsWithIgnoreCase(base.substr(1, 2), base.substr(0, 1)));
+	CHECK(StrStartsWithIgnoreCase(base.substr(1, 2), base.substr(3, 1)));
+	CHECK(StrStartsWithIgnoreCase(base.substr(3, 2), base.substr(0, 1)));
+	CHECK(StrStartsWithIgnoreCase(base.substr(3, 2), base.substr(3, 1)));
+
+	/* Does not start the same. */
+	CHECK(!StrStartsWithIgnoreCase(base.substr(2, 0), base.substr(2, 1)));
+	CHECK(!StrStartsWithIgnoreCase(base.substr(0, 1), base.substr(2, 1)));
+	CHECK(!StrStartsWithIgnoreCase(base.substr(2, 1), base.substr(0, 1)));
+	CHECK(!StrStartsWithIgnoreCase(base.substr(0, 1), base.substr(0, 2)));
+}
+
+/**** String ends with *****/
+
+TEST_CASE("StrEndsWith - std::string")
+{
+	/* Everything ends with an empty prefix. */
+	CHECK(StrEndsWith(std::string{""}, std::string{""}));
+	CHECK(StrEndsWith(std::string{"a"}, std::string{""}));
+
+	/* Equal strings. */
+	CHECK(StrEndsWith(std::string{"a"}, std::string{"a"}));
+	CHECK(StrEndsWith(std::string{"A"}, std::string{"A"}));
+
+	/* Ends with same. */
+	CHECK(StrEndsWith(std::string{"ba"}, std::string{"a"}));
+	CHECK(StrEndsWith(std::string{"bA"}, std::string{"A"}));
+
+	/* Different cases. */
+	CHECK(!StrEndsWith(std::string{"a"}, std::string{"A"}));
+	CHECK(!StrEndsWith(std::string{"A"}, std::string{"a"}));
+	CHECK(!StrEndsWith(std::string{"ba"}, std::string{"A"}));
+	CHECK(!StrEndsWith(std::string{"bA"}, std::string{"a"}));
+
+	/* Does not end the same. */
+	CHECK(!StrEndsWith(std::string{""}, std::string{"b"}));
+	CHECK(!StrEndsWith(std::string{"a"}, std::string{"b"}));
+	CHECK(!StrEndsWith(std::string{"b"}, std::string{"a"}));
+	CHECK(!StrEndsWith(std::string{"a"}, std::string{"aa"}));
+}
+
+TEST_CASE("StrEndsWith - char pointer")
+{
+	CHECK(StrEndsWith("", ""));
+	CHECK(StrEndsWith("a", ""));
+
+	/* Equal strings. */
+	CHECK(StrEndsWith("a", "a"));
+	CHECK(StrEndsWith("A", "A"));
+
+	/* Ends with same. */
+	CHECK(StrEndsWith("ba", "a"));
+	CHECK(StrEndsWith("bA", "A"));
+
+	/* Different cases. */
+	CHECK(!StrEndsWith("a", "A"));
+	CHECK(!StrEndsWith("A", "a"));
+	CHECK(!StrEndsWith("ba", "A"));
+	CHECK(!StrEndsWith("bA", "a"));
+
+	/* Does not end the same. */
+	CHECK(!StrEndsWith("", "b"));
+	CHECK(!StrEndsWith("a", "b"));
+	CHECK(!StrEndsWith("b", "a"));
+	CHECK(!StrEndsWith("a", "aa"));
+}
+
+TEST_CASE("StrEndsWith - std::string_view")
+{
+	/*
+	 * With std::string_view the only way to access the data is via .data(),
+	 * which does not guarantee the termination that would be required by
+	 * things such as stricmp/strcasecmp. So, just passing .data() into stricmp
+	 * or strcasecmp would fail if it does not account for the length of the
+	 * view. Thus, contrary to the string/char* tests, this uses the same base
+	 * string but gets different sections to trigger these corner cases.
+	 */
+	std::string_view base{"aabAba"};
+
+	/* Everything ends with an empty prefix. */
+	CHECK(StrEndsWith(base.substr(0, 0), base.substr(1, 0))); // Different positions
+	CHECK(StrEndsWith(base.substr(0, 1), base.substr(0, 0)));
+
+	/* Equals string. */
+	CHECK(StrEndsWith(base.substr(0, 1), base.substr(1, 1))); // Different positions
+	CHECK(StrEndsWith(base.substr(3, 1), base.substr(3, 1)));
+
+	/* Ends with same. */
+	CHECK(StrEndsWith(base.substr(4, 2), base.substr(0, 1)));
+	CHECK(StrEndsWith(base.substr(2, 2), base.substr(3, 1)));
+
+	/* Different cases. */
+	CHECK(!StrEndsWith(base.substr(0, 1), base.substr(3, 1)));
+	CHECK(!StrEndsWith(base.substr(3, 1), base.substr(0, 1)));
+	CHECK(!StrEndsWith(base.substr(4, 2), base.substr(3, 1)));
+	CHECK(!StrEndsWith(base.substr(2, 2), base.substr(0, 1)));
+
+	/* Does not end the same. */
+	CHECK(!StrEndsWith(base.substr(2, 0), base.substr(2, 1)));
+	CHECK(!StrEndsWith(base.substr(0, 1), base.substr(2, 1)));
+	CHECK(!StrEndsWith(base.substr(2, 1), base.substr(0, 1)));
+	CHECK(!StrEndsWith(base.substr(0, 1), base.substr(0, 2)));
+}
+
+
+TEST_CASE("StrEndsWithIgnoreCase - std::string")
+{
+	/* Everything ends with an empty prefix. */
+	CHECK(StrEndsWithIgnoreCase(std::string{""}, std::string{""}));
+	CHECK(StrEndsWithIgnoreCase(std::string{"a"}, std::string{""}));
+
+	/* Equals string, ignoring case. */
+	CHECK(StrEndsWithIgnoreCase(std::string{"a"}, std::string{"a"}));
+	CHECK(StrEndsWithIgnoreCase(std::string{"a"}, std::string{"A"}));
+	CHECK(StrEndsWithIgnoreCase(std::string{"A"}, std::string{"a"}));
+	CHECK(StrEndsWithIgnoreCase(std::string{"A"}, std::string{"A"}));
+
+	/* Ends with same, ignoring case. */
+	CHECK(StrEndsWithIgnoreCase(std::string{"ba"}, std::string{"a"}));
+	CHECK(StrEndsWithIgnoreCase(std::string{"ba"}, std::string{"A"}));
+	CHECK(StrEndsWithIgnoreCase(std::string{"bA"}, std::string{"a"}));
+	CHECK(StrEndsWithIgnoreCase(std::string{"bA"}, std::string{"A"}));
+
+	/* Does not end the same. */
+	CHECK(!StrEndsWithIgnoreCase(std::string{""}, std::string{"b"}));
+	CHECK(!StrEndsWithIgnoreCase(std::string{"a"}, std::string{"b"}));
+	CHECK(!StrEndsWithIgnoreCase(std::string{"b"}, std::string{"a"}));
+	CHECK(!StrEndsWithIgnoreCase(std::string{"a"}, std::string{"aa"}));
+}
+
+TEST_CASE("StrEndsWithIgnoreCase - char pointer")
+{
+	/* Everything ends with an empty prefix. */
+	CHECK(StrEndsWithIgnoreCase("", ""));
+	CHECK(StrEndsWithIgnoreCase("a", ""));
+
+	/* Equals string, ignoring case. */
+	CHECK(StrEndsWithIgnoreCase("a", "a"));
+	CHECK(StrEndsWithIgnoreCase("a", "A"));
+	CHECK(StrEndsWithIgnoreCase("A", "a"));
+	CHECK(StrEndsWithIgnoreCase("A", "A"));
+
+	/* Ends with same, ignoring case. */
+	CHECK(StrEndsWithIgnoreCase("ba", "a"));
+	CHECK(StrEndsWithIgnoreCase("ba", "A"));
+	CHECK(StrEndsWithIgnoreCase("bA", "a"));
+	CHECK(StrEndsWithIgnoreCase("bA", "A"));
+
+	/* Does not end the same. */
+	CHECK(!StrEndsWithIgnoreCase("", "b"));
+	CHECK(!StrEndsWithIgnoreCase("a", "b"));
+	CHECK(!StrEndsWithIgnoreCase("b", "a"));
+	CHECK(!StrEndsWithIgnoreCase("a", "aa"));
+}
+
+TEST_CASE("StrEndsWithIgnoreCase - std::string_view")
+{
+	/*
+	 * With std::string_view the only way to access the data is via .data(),
+	 * which does not guarantee the termination that would be required by
+	 * things such as stricmp/strcasecmp. So, just passing .data() into stricmp
+	 * or strcasecmp would fail if it does not account for the length of the
+	 * view. Thus, contrary to the string/char* tests, this uses the same base
+	 * string but gets different sections to trigger these corner cases.
+	 */
+	std::string_view base{"aabAba"};
+
+	/* Everything ends with an empty prefix. */
+	CHECK(StrEndsWithIgnoreCase(base.substr(0, 0), base.substr(1, 0))); // Different positions
+	CHECK(StrEndsWithIgnoreCase(base.substr(0, 1), base.substr(0, 0)));
+
+	/* Equals string, ignoring case. */
+	CHECK(StrEndsWithIgnoreCase(base.substr(0, 1), base.substr(1, 1))); // Different positions
+	CHECK(StrEndsWithIgnoreCase(base.substr(0, 1), base.substr(3, 1)));
+	CHECK(StrEndsWithIgnoreCase(base.substr(3, 1), base.substr(0, 1)));
+	CHECK(StrEndsWithIgnoreCase(base.substr(3, 1), base.substr(3, 1)));
+
+	/* Ends with same, ignoring case. */
+	CHECK(StrEndsWithIgnoreCase(base.substr(2, 2), base.substr(0, 1)));
+	CHECK(StrEndsWithIgnoreCase(base.substr(2, 2), base.substr(3, 1)));
+	CHECK(StrEndsWithIgnoreCase(base.substr(4, 2), base.substr(0, 1)));
+	CHECK(StrEndsWithIgnoreCase(base.substr(4, 2), base.substr(3, 1)));
+
+	/* Does not end the same. */
+	CHECK(!StrEndsWithIgnoreCase(base.substr(2, 0), base.substr(2, 1)));
+	CHECK(!StrEndsWithIgnoreCase(base.substr(0, 1), base.substr(2, 1)));
+	CHECK(!StrEndsWithIgnoreCase(base.substr(2, 1), base.substr(0, 1)));
+	CHECK(!StrEndsWithIgnoreCase(base.substr(0, 1), base.substr(0, 2)));
 }
