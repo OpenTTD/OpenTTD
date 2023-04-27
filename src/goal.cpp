@@ -84,8 +84,7 @@ std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID com
 		g->type = type;
 		g->dst = dest;
 		g->company = company;
-		g->text = stredup(text.c_str());
-		g->progress = nullptr;
+		g->text = text;
 		g->completed = false;
 
 		if (g->company == INVALID_COMPANY) {
@@ -143,8 +142,7 @@ CommandCost CmdSetGoalText(DoCommandFlag flags, GoalID goal, const std::string &
 
 	if (flags & DC_EXEC) {
 		Goal *g = Goal::Get(goal);
-		free(g->text);
-		g->text = stredup(text.c_str());
+		g->text = text;
 
 		if (g->company == INVALID_COMPANY) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
@@ -170,12 +168,7 @@ CommandCost CmdSetGoalProgress(DoCommandFlag flags, GoalID goal, const std::stri
 
 	if (flags & DC_EXEC) {
 		Goal *g = Goal::Get(goal);
-		free(g->progress);
-		if (text.empty()) {
-			g->progress = nullptr;
-		} else {
-			g->progress = stredup(text.c_str());
-		}
+		g->progress = text;
 
 		if (g->company == INVALID_COMPANY) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
@@ -255,7 +248,7 @@ CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16 uniqueid, uint32 target,
 			if (company == INVALID_COMPANY && !Company::IsValidID(_local_company)) return CommandCost();
 			if (company != INVALID_COMPANY && company != _local_company) return CommandCost();
 		}
-		ShowGoalQuestion(uniqueid, type, button_mask, text.c_str());
+		ShowGoalQuestion(uniqueid, type, button_mask, text);
 	}
 
 	return CommandCost();
