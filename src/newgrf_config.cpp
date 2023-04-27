@@ -32,13 +32,11 @@
 
 /**
  * Create a new GRFConfig.
- * @param filename Set the filename of this GRFConfig to filename. The argument
- *   is copied so the original string isn't needed after the constructor.
+ * @param filename Set the filename of this GRFConfig to filename.
  */
-GRFConfig::GRFConfig(const char *filename) :
-	num_valid_params(lengthof(param))
+GRFConfig::GRFConfig(const std::string &filename) :
+	filename(filename), num_valid_params(lengthof(param))
 {
-	if (filename != nullptr) this->filename = stredup(filename);
 }
 
 /**
@@ -48,6 +46,7 @@ GRFConfig::GRFConfig(const char *filename) :
 GRFConfig::GRFConfig(const GRFConfig &config) :
 	ZeroedMemoryAllocator(),
 	ident(config.ident),
+	filename(config.filename),
 	name(config.name),
 	info(config.info),
 	url(config.url),
@@ -63,7 +62,6 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 {
 	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
 	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
-	if (config.filename != nullptr) this->filename = stredup(config.filename);
 	if (config.error != nullptr) this->error = std::make_unique<GRFError>(*config.error);
 	for (uint i = 0; i < config.param_info.size(); i++) {
 		if (config.param_info[i] == nullptr) {
@@ -77,11 +75,6 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 /** Cleanup a GRFConfig object. */
 GRFConfig::~GRFConfig()
 {
-	/* GCF_COPY as in NOT stredupped/alloced the filename */
-	if (!HasBit(this->flags, GCF_COPY)) {
-		free(this->filename);
-	}
-
 	for (uint i = 0; i < this->param_info.size(); i++) delete this->param_info[i];
 }
 
@@ -104,7 +97,7 @@ void GRFConfig::CopyParams(const GRFConfig &src)
 const char *GRFConfig::GetName() const
 {
 	const char *name = GetGRFStringFromGRFText(this->name);
-	return StrEmpty(name) ? this->filename : name;
+	return StrEmpty(name) ? this->filename.c_str() : name;
 }
 
 /**
@@ -546,8 +539,7 @@ compatible_grf:
 			 * When the GCF_COPY flag is set, it is certain that the filename is
 			 * already a local one, so there is no need to replace it. */
 			if (!HasBit(c->flags, GCF_COPY)) {
-				free(c->filename);
-				c->filename = stredup(f->filename);
+				c->filename = f->filename;
 				memcpy(c->ident.md5sum, f->ident.md5sum, sizeof(c->ident.md5sum));
 				c->name = f->name;
 				c->info = f->name;
@@ -644,7 +636,7 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
 
 	const char *name = nullptr;
 	if (c->name != nullptr) name = GetGRFStringFromGRFText(c->name);
-	if (name == nullptr) name = c->filename;
+	if (name == nullptr) name = c->filename.c_str();
 	UpdateNewGRFScanStatus(this->num_scanned, name);
 	VideoDriver::GetInstance()->GameLoopPause();
 
@@ -797,5 +789,5 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last)
  */
 const char *GRFConfig::GetTextfile(TextfileType type) const
 {
-	return ::GetTextfile(type, NEWGRF_DIR, this->filename);
+	return ::GetTextfile(type, NEWGRF_DIR, this->filename.c_str());
 }
