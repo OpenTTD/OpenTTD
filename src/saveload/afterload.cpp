@@ -381,16 +381,16 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 {
 	ResetSignalHandlers();
 
-	char buffer[8192];
-	char *p = buffer;
-	p += seprintf(p, lastof(buffer), "Loading your savegame caused OpenTTD to crash.\n");
+	std::string message;
+	message.reserve(1024);
+	message += "Loading your savegame caused OpenTTD to crash.\n";
 
 	for (const GRFConfig *c = _grfconfig; !_saveload_crash_with_missing_newgrfs && c != nullptr; c = c->next) {
 		_saveload_crash_with_missing_newgrfs = HasBit(c->flags, GCF_COMPATIBLE) || c->status == GCS_NOT_FOUND;
 	}
 
 	if (_saveload_crash_with_missing_newgrfs) {
-		p += seprintf(p, lastof(buffer),
+		message +=
 			"This is most likely caused by a missing NewGRF or a NewGRF that\n"
 			"has been loaded as replacement for a missing NewGRF. OpenTTD\n"
 			"cannot easily determine whether a replacement NewGRF is of a newer\n"
@@ -401,7 +401,7 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 			"cases, OpenTTD will load the savegame and not crash, but this is an\n"
 			"exception.\n"
 			"Please load the savegame with the appropriate NewGRFs installed.\n"
-			"The missing/compatible NewGRFs are:\n");
+			"The missing/compatible NewGRFs are:\n";
 
 		for (const GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
 			if (HasBit(c->flags, GCF_COMPATIBLE)) {
@@ -410,21 +410,21 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 				char replaced_md5[40];
 				md5sumToString(original_md5, lastof(original_md5), c->original_md5sum);
 				md5sumToString(replaced_md5, lastof(replaced_md5), replaced->md5sum);
-				p += seprintf(p, lastof(buffer), "NewGRF %08X (checksum %s) not found.\n  Loaded NewGRF \"%s\" (checksum %s) with same GRF ID instead.\n", BSWAP32(c->ident.grfid), original_md5, c->filename, replaced_md5);
+				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} (checksum {}) not found.\n  Loaded NewGRF \"{}\" (checksum {}) with same GRF ID instead.\n", BSWAP32(c->ident.grfid), original_md5, c->filename, replaced_md5);
 			}
 			if (c->status == GCS_NOT_FOUND) {
 				char buf[40];
 				md5sumToString(buf, lastof(buf), c->ident.md5sum);
-				p += seprintf(p, lastof(buffer), "NewGRF %08X (%s) not found; checksum %s.\n", BSWAP32(c->ident.grfid), c->filename, buf);
+				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} ({}) not found; checksum {}.\n", BSWAP32(c->ident.grfid), c->filename, buf);
 			}
 		}
 	} else {
-		p += seprintf(p, lastof(buffer),
+		message +=
 			"This is probably caused by a corruption in the savegame.\n"
-			"Please file a bug report and attach this savegame.\n");
+			"Please file a bug report and attach this savegame.\n";
 	}
 
-	ShowInfoI(buffer);
+	ShowInfoI(message);
 
 	SignalHandlerPointer call = nullptr;
 	switch (signum) {
