@@ -55,12 +55,12 @@ static const byte INVALID_CARGO = 0xFF; ///< Constant representing invalid cargo
 
 /** Specification of a cargo type. */
 struct CargoSpec {
-	uint8 bitnum;                    ///< Cargo bit number, is #INVALID_CARGO for a non-used spec.
+	uint8 bitnum = INVALID_CARGO;    ///< Cargo bit number, is #INVALID_CARGO for a non-used spec.
 	CargoLabel label;                ///< Unique label of the cargo type.
 	uint8 legend_colour;
 	uint8 rating_colour;
 	uint8 weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
-	uint16 multiplier;               ///< Capacity multiplier for vehicles. (8 fractional bits)
+	uint16 multiplier = 0x100;       ///< Capacity multiplier for vehicles. (8 fractional bits)
 	int32 initial_payment;           ///< Initial payment rate before inflation is applied.
 	uint8 transit_days[2];
 
