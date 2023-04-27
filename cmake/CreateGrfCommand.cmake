@@ -4,14 +4,10 @@
 # create_grf_command()
 #
 function(create_grf_command)
-    set(EXTRA_PNG_SOURCE_FILES ${ARGV})
+    set(GRF_SOURCE_FILES ${ARGV})
 
     get_filename_component(GRF_SOURCE_FOLDER_NAME "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
     get_filename_component(GRF_BINARY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../${GRF_SOURCE_FOLDER_NAME}.grf ABSOLUTE)
-    file(GLOB_RECURSE GRF_PNG_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.png)
-    file(GLOB_RECURSE GRF_NML_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.nml)
-    file(GLOB_RECURSE GRF_LNG_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.lng)
-    set(GRF_PNG_SOURCE_FILES ${GRF_PNG_SOURCE_FILES} ${EXTRA_PNG_SOURCE_FILES})
 
     add_custom_command(OUTPUT ${GRF_BINARY_FILE} ${GRF_BINARY_FILE}.md5
             COMMAND ${CMAKE_COMMAND}
@@ -21,9 +17,7 @@ function(create_grf_command)
                     -DNML_EXECUTABLE=${NML_EXECUTABLE}
                     -P ${CMAKE_SOURCE_DIR}/cmake/scripts/CreateGRF.cmake
             MAIN_DEPENDENCY ${CMAKE_SOURCE_DIR}/cmake/scripts/CreateGRF.cmake
-            DEPENDS ${GRF_PNG_SOURCE_FILES}
-                    ${GRF_NML_SOURCE_FILES}
-                    ${GRF_LNG_SOURCE_FILES}
+            DEPENDS ${GRF_SOURCE_FILES}
             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
             COMMENT "Generating ${GRF_SOURCE_FOLDER_NAME}.grf"
     )

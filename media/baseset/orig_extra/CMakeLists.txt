@@ -6,9 +6,35 @@
 if(NML_FOUND)
     include(CreateGrfCommand)
     create_grf_command(
+        # NML files
+        ${CMAKE_CURRENT_SOURCE_DIR}/airports_orig_extra.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/canals_extra.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/chars_orig_extra.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/fix_graphics.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/fix_gui_icons.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/shore.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/arctic.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/rapids.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/temperate.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/toyland.nml
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/tropic.nml
+        #PNG files
+        ${CMAKE_CURRENT_SOURCE_DIR}/fix_graphics.png
+        ${CMAKE_CURRENT_SOURCE_DIR}/fix_gui_icons.png
+        ${CMAKE_CURRENT_SOURCE_DIR}/shore.png
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/arctic_brown.png
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/arctic_snowy.png
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/rapids.png
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/temperate.png
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/toyland.png
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/tropic_desert.png
+        ${CMAKE_CURRENT_SOURCE_DIR}/rivers/tropic_forest.png
         # We share some files with 'openttd' grf
         ${CMAKE_CURRENT_SOURCE_DIR}/../openttd/airports.png
         ${CMAKE_CURRENT_SOURCE_DIR}/../openttd/canals.png
         ${CMAKE_CURRENT_SOURCE_DIR}/../openttd/chars.png
+        # LNG files
+        ${CMAKE_CURRENT_SOURCE_DIR}/lang/english.lng
     )
 endif()
