@@ -71,7 +71,7 @@ const char *ContentInfo::GetTextfile(TextfileType type) const
 			break;
 		case CONTENT_TYPE_NEWGRF: {
 			const GRFConfig *gc = FindGRFConfig(BSWAP32(this->unique_id), FGCM_EXACT, this->md5sum);
-			tmp = gc != nullptr ? gc->filename : nullptr;
+			tmp = gc != nullptr ? gc->filename.c_str() : nullptr;
 			break;
 		}
 		case CONTENT_TYPE_BASE_GRAPHICS:

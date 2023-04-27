@@ -86,7 +86,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 	}
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
-	if (c->filename != nullptr) {
+	if (!c->filename.empty()) {
 		SetDParamStr(0, c->filename);
 		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_FILENAME);
 	}
@@ -1442,7 +1442,7 @@ private:
 	{
 		filter.ResetState();
 		filter.AddLine((*a)->GetName());
-		filter.AddLine((*a)->filename);
+		filter.AddLine((*a)->filename.c_str());
 		filter.AddLine((*a)->GetDescription());
 		return filter.GetState();;
 	}
