@@ -315,26 +315,26 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	text[0].text_length = strlen(_openttd_revision);
 	text[0].compression = PNG_TEXT_COMPRESSION_NONE;
 
-	char buf[8192];
-	char *p = buf;
-	p += seprintf(p, lastof(buf), "Graphics set: %s (%u)\n", BaseGraphics::GetUsedSet()->name.c_str(), BaseGraphics::GetUsedSet()->version);
-	p = strecpy(p, "NewGRFs:\n", lastof(buf));
+	std::string message;
+	message.reserve(1024);
+	fmt::format_to(std::back_inserter(message), "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
+	message += "NewGRFs:\n";
 	for (const GRFConfig *c = _game_mode == GM_MENU ? nullptr : _grfconfig; c != nullptr; c = c->next) {
-		p += seprintf(p, lastof(buf), "%08X ", BSWAP32(c->ident.grfid));
-		p = md5sumToString(p, lastof(buf), c->ident.md5sum);
-		p += seprintf(p, lastof(buf), " %s\n", c->filename);
+		char buf[33];
+		md5sumToString(buf, lastof(buf), c->ident.md5sum);
+		fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", BSWAP32(c->ident.grfid), buf, c->filename);
 	}
-	p = strecpy(p, "\nCompanies:\n", lastof(buf));
+	message += "\nCompanies:\n";
 	for (const Company *c : Company::Iterate()) {
 		if (c->ai_info == nullptr) {
-			p += seprintf(p, lastof(buf), "%2i: Human\n", (int)c->index);
+			fmt::format_to(std::back_inserter(message), "{:2d}: Human\n", (int)c->index);
 		} else {
-			p += seprintf(p, lastof(buf), "%2i: %s (v%d)\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
+			fmt::format_to(std::back_inserter(message), "{:2d}: {} (v{})\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
 		}
 	}
 	text[1].key = const_cast<char *>("Description");
-	text[1].text = buf;
-	text[1].text_length = p - buf;
+	text[1].text = const_cast<char *>(message.c_str());
+	text[1].text_length = message.size();
 	text[1].compression = PNG_TEXT_COMPRESSION_zTXt;
 	png_set_text(png_ptr, info_ptr, text, 2);
 #endif /* PNG_TEXT_SUPPORTED */
