@@ -74,7 +74,7 @@ void LinkGraph::Compress()
 				if (edge.capacity < (1 << 16)) {
 					edge.travel_time_sum = edge.travel_time_sum * new_capacity / edge.capacity;
 				} else if (edge.travel_time_sum != 0) {
-					edge.travel_time_sum = std::max(1ULL, edge.travel_time_sum / 2);
+					edge.travel_time_sum = std::max<uint64>(1, edge.travel_time_sum / 2);
 				}
 				edge.capacity = new_capacity;
 				edge.usage /= 2;

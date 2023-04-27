@@ -32,9 +32,9 @@
 
 #include "../../../string_type.h"
 
-typedef __int64 SQInteger;
-typedef unsigned __int64 SQUnsignedInteger;
-typedef unsigned __int64 SQHash; /*should be the same size of a pointer*/
+typedef int64_t SQInteger;
+typedef uint64_t SQUnsignedInteger;
+typedef uint64_t SQHash; /*should be the same size of a pointer*/
 typedef int SQInt32;
 
 
@@ -44,7 +44,7 @@ typedef double SQFloat;
 typedef float SQFloat;
 #endif
 
-typedef __int64 SQRawObjectVal; //must be 64bits
+typedef int64_t SQRawObjectVal; //must be 64bits
 #define SQ_OBJECT_RAWINIT() { _unVal.raw = 0; }
 
 typedef void* SQUserPointer;

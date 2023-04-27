@@ -35,7 +35,6 @@
 #	include <unistd.h>
 #	define _DEFAULT_SOURCE
 #	define _GNU_SOURCE
-#	define TROUBLED_INTS
 #endif
 
 #if defined(__HAIKU__) || defined(__CYGWIN__)
@@ -57,46 +56,9 @@
 #	endif
 #endif
 
-/* The conditions for these constants to be available are way too messy; so check them one by one */
-#if !defined(UINT64_MAX)
-#	define UINT64_MAX (18446744073709551615ULL)
-#endif
-#if !defined(INT64_MAX)
-#	define INT64_MAX  (9223372036854775807LL)
-#endif
-#if !defined(INT64_MIN)
-#	define INT64_MIN  (-INT64_MAX - 1)
-#endif
-#if !defined(UINT32_MAX)
-#	define UINT32_MAX (4294967295U)
-#endif
-#if !defined(INT32_MAX)
-#	define INT32_MAX  (2147483647)
-#endif
-#if !defined(INT32_MIN)
-#	define INT32_MIN  (-INT32_MAX - 1)
-#endif
-#if !defined(UINT16_MAX)
-#	define UINT16_MAX (65535U)
-#endif
-#if !defined(INT16_MAX)
-#	define INT16_MAX  (32767)
-#endif
-#if !defined(INT16_MIN)
-#	define INT16_MIN  (-INT16_MAX - 1)
-#endif
-#if !defined(UINT8_MAX)
-#	define UINT8_MAX  (255)
-#endif
-#if !defined(INT8_MAX)
-#	define INT8_MAX   (127)
-#endif
-#if !defined(INT8_MIN)
-#	define INT8_MIN   (-INT8_MAX - 1)
-#endif
-
 #include <algorithm>
 #include <cstdio>
+#include <cstdint>
 #include <cstddef>
 #include <cstring>
 #include <cstdlib>
@@ -104,10 +66,6 @@
 #include <cassert>
 #include <memory>
 #include <string>
-
-#ifndef SIZE_MAX
-#	define SIZE_MAX ((size_t)-1)
-#endif
 
 #if defined(UNIX) || defined(__MINGW32__)
 #	include <sys/types.h>
@@ -343,36 +301,21 @@
 #define debug_inline inline
 #endif
 
-typedef unsigned char byte;
+typedef uint8_t byte;
 
 /* This is already defined in unix, but not in QNX Neutrino (6.x) or Cygwin. */
 #if (!defined(UNIX) && !defined(__HAIKU__)) || defined(__QNXNTO__) || defined(__CYGWIN__)
 	typedef unsigned int uint;
 #endif
 
-#if defined(TROUBLED_INTS)
-	/* Haiku's types for uint32/int32/uint64/int64 are different than what
-	 * they are on other platforms; not in length, but how to print them.
-	 * So make them more like the other platforms, to make printf() etc a
-	 * little bit easier. */
-#	define uint32 uint32_ugly_hack
-#	define int32 int32_ugly_hack
-#	define uint64 uint64_ugly_hack
-#	define int64 int64_ugly_hack
-	typedef unsigned int uint32_ugly_hack;
-	typedef signed int int32_ugly_hack;
-	typedef unsigned __int64 uint64_ugly_hack;
-	typedef signed __int64 int64_ugly_hack;
-#else
-	typedef unsigned char    uint8;
-	typedef   signed char     int8;
-	typedef unsigned short   uint16;
-	typedef   signed short    int16;
-	typedef unsigned int     uint32;
-	typedef   signed int      int32;
-	typedef unsigned __int64 uint64;
-	typedef   signed __int64  int64;
-#endif /* !TROUBLED_INTS */
+typedef uint8_t  uint8;
+typedef  int8_t   int8;
+typedef uint16_t uint16;
+typedef  int16_t  int16;
+typedef uint32_t uint32;
+typedef  int32_t  int32;
+typedef uint64_t uint64;
+typedef  int64_t  int64;
 
 #if !defined(WITH_PERSONAL_DIR)
 #	define PERSONAL_DIR ""
