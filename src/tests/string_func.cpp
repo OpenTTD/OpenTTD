@@ -12,6 +12,7 @@
 #include "../3rdparty/catch2/catch.hpp"
 
 #include "../string_func.h"
+#include <array>
 
 /**** String compare/equals *****/
 
@@ -515,4 +516,12 @@ TEST_CASE("StrEndsWithIgnoreCase - std::string_view")
 	CHECK(!StrEndsWithIgnoreCase(base.substr(0, 1), base.substr(2, 1)));
 	CHECK(!StrEndsWithIgnoreCase(base.substr(2, 1), base.substr(0, 1)));
 	CHECK(!StrEndsWithIgnoreCase(base.substr(0, 1), base.substr(0, 2)));
+}
+
+
+TEST_CASE("FormatArrayAsHex")
+{
+	CHECK(FormatArrayAsHex(std::array<byte, 0>{}) == "");
+	CHECK(FormatArrayAsHex(std::array<byte, 1>{0x12}) == "12");
+	CHECK(FormatArrayAsHex(std::array<byte, 4>{0x13, 0x38, 0x42, 0xAF}) == "133842AF");
 }
