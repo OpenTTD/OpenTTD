@@ -147,7 +147,7 @@ struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_po
 	StoryPageElementType type; ///< Type of page element
 
 	uint32 referenced_id;      ///< Id of referenced object (location, goal etc.)
-	char *text;                ///< Static content text of page element
+	std::string text;          ///< Static content text of page element
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
@@ -157,16 +157,16 @@ struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_po
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
-	inline ~StoryPageElement() { free(this->text); }
+	inline ~StoryPageElement() { }
 };
 
 /** Struct about stories, current and completed */
 struct StoryPage : StoryPagePool::PoolItem<&_story_page_pool> {
-	uint32 sort_value;   ///< A number that increases for every created story page. Used for sorting. The id of a story page is the pool index.
+	uint32 sort_value;            ///< A number that increases for every created story page. Used for sorting. The id of a story page is the pool index.
 	TimerGameCalendar::Date date; ///< Date when the page was created.
-	CompanyID company;   ///< StoryPage is for a specific company; INVALID_COMPANY if it is global
+	CompanyID company;            ///< StoryPage is for a specific company; INVALID_COMPANY if it is global
 
-	char *title;         ///< Title of story page
+	std::string title;            ///< Title of story page
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
@@ -183,7 +183,6 @@ struct StoryPage : StoryPagePool::PoolItem<&_story_page_pool> {
 				if (spe->page == this->index) delete spe;
 			}
 		}
-		free(this->title);
 	}
 };
 

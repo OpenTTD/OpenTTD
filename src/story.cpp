@@ -47,16 +47,16 @@ INSTANTIATE_POOL_METHODS(StoryPage)
  * @param text The text parameter of the DoCommand proc
  * @return true, if and only if the given parameters are valid for the given page element type and page id.
  */
-static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElementType type, TileIndex tile, uint32 reference, const char *text)
+static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElementType type, TileIndex tile, uint32 reference, const std::string &text)
 {
 	StoryPageButtonData button_data{ reference };
 
 	switch (type) {
 		case SPET_TEXT:
-			if (StrEmpty(text)) return false;
+			if (text.empty()) return false;
 			break;
 		case SPET_LOCATION:
-			if (StrEmpty(text)) return false;
+			if (text.empty()) return false;
 			if (!IsValidTile(tile)) return false;
 			break;
 		case SPET_GOAL:
@@ -91,14 +91,14 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
  * @param reference The reference parameter of the DoCommand proc (p2)
  * @param text The text parameter of the DoCommand proc
  */
-static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32 reference, const char *text)
+static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32 reference, const std::string &text)
 {
 	switch (pe.type) {
 		case SPET_TEXT:
-			pe.text = stredup(text);
+			pe.text = text;
 			break;
 		case SPET_LOCATION:
-			pe.text = stredup(text);
+			pe.text = text;
 			pe.referenced_id = tile;
 			break;
 		case SPET_GOAL:
@@ -107,7 +107,7 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32 reference
 		case SPET_BUTTON_PUSH:
 		case SPET_BUTTON_TILE:
 		case SPET_BUTTON_VEHICLE:
-			pe.text = stredup(text);
+			pe.text = text;
 			pe.referenced_id = reference;
 			break;
 		default: NOT_REACHED();
@@ -220,11 +220,7 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlag flags, Com
 		s->sort_value = _story_page_next_sort_value;
 		s->date = TimerGameCalendar::date;
 		s->company = company;
-		if (text.empty()) {
-			s->title = nullptr;
-		} else {
-			s->title = stredup(text.c_str());
-		}
+		s->title = text;
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
 		if (StoryPage::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
@@ -259,7 +255,7 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
 
 	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
 	if (!StoryPage::IsValidID(page_id)) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
-	if (!VerifyElementContentParameters(page_id, type, tile, reference, text.c_str())) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
+	if (!VerifyElementContentParameters(page_id, type, tile, reference, text)) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
 
 
 	if (flags & DC_EXEC) {
@@ -272,7 +268,7 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
 		pe->sort_value = _story_page_element_next_sort_value;
 		pe->type = type;
 		pe->page = page_id;
-		UpdateElement(*pe, tile, reference, text.c_str());
+		UpdateElement(*pe, tile, reference, text);
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
 
@@ -301,10 +297,10 @@ CommandCost CmdUpdateStoryPageElement(DoCommandFlag flags, TileIndex tile, Story
 	StoryPageID page_id = pe->page;
 	StoryPageElementType type = pe->type;
 
-	if (!VerifyElementContentParameters(page_id, type, tile, reference, text.c_str())) return CMD_ERROR;
+	if (!VerifyElementContentParameters(page_id, type, tile, reference, text)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		UpdateElement(*pe, tile, reference, text.c_str());
+		UpdateElement(*pe, tile, reference, text);
 		InvalidateWindowClassesData(WC_STORY_BOOK, pe->page);
 	}
 
@@ -325,12 +321,7 @@ CommandCost CmdSetStoryPageTitle(DoCommandFlag flags, StoryPageID page_id, const
 
 	if (flags & DC_EXEC) {
 		StoryPage *p = StoryPage::Get(page_id);
-		free(p->title);
-		if (text.empty()) {
-			p->title = nullptr;
-		} else {
-			p->title = stredup(text.c_str());
-		}
+		p->title = text;
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
 	}
