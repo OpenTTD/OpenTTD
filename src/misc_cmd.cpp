@@ -173,6 +173,11 @@ CommandCost CmdPause(DoCommandFlag flags, PauseMode mode, bool pause)
 				_pause_mode |= mode;
 			} else {
 				_pause_mode &= ~mode;
+
+				/* If the only remaining reason to be paused is that we saw a command during pause, unpause. */
+				if (_pause_mode == PM_COMMAND_DURING_PAUSE) {
+					_pause_mode = PM_UNPAUSED;
+				}
 			}
 
 			NetworkHandlePauseChange(prev_mode, mode);

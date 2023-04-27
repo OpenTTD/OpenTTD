@@ -401,6 +401,9 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 
 	SubtractMoneyFromCompany(res_exec);
 
+	/* Record if there was a command issues during pause; ignore pause/other setting related changes. */
+	if (_pause_mode != PM_UNPAUSED && _command_proc_table[cmd].type != CMDT_SERVER_SETTING) _pause_mode |= PM_COMMAND_DURING_PAUSE;
+
 	/* update signals if needed */
 	UpdateSignalsInBuffer();
 
