@@ -388,16 +388,12 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 		for (const GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
 			if (HasBit(c->flags, GCF_COMPATIBLE)) {
 				const GRFIdentifier *replaced = _gamelog.GetOverriddenIdentifier(c);
-				char original_md5[40];
-				char replaced_md5[40];
-				md5sumToString(original_md5, lastof(original_md5), c->original_md5sum);
-				md5sumToString(replaced_md5, lastof(replaced_md5), replaced->md5sum);
-				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} (checksum {}) not found.\n  Loaded NewGRF \"{}\" (checksum {}) with same GRF ID instead.\n", BSWAP32(c->ident.grfid), original_md5, c->filename, replaced_md5);
+				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} (checksum {}) not found.\n  Loaded NewGRF \"{}\" (checksum {}) with same GRF ID instead.\n",
+						BSWAP32(c->ident.grfid), MD5SumToString(c->original_md5sum), c->filename, MD5SumToString(replaced->md5sum));
 			}
 			if (c->status == GCS_NOT_FOUND) {
-				char buf[40];
-				md5sumToString(buf, lastof(buf), c->ident.md5sum);
-				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} ({}) not found; checksum {}.\n", BSWAP32(c->ident.grfid), c->filename, buf);
+				fmt::format_to(std::back_inserter(message), "NewGRF {:08X} ({}) not found; checksum {}.\n",
+						BSWAP32(c->ident.grfid), c->filename, MD5SumToString(c->ident.md5sum));
 			}
 		}
 	} else {

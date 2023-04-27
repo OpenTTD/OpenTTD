@@ -365,9 +365,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 				if (!first) url.push_back(',');
 				first = false;
 
-				char buf[33];
-				md5sumToString(buf, lastof(buf), ci->md5sum);
-				fmt::format_to(std::back_inserter(url), "{:08X}:{}", ci->unique_id, buf);
+				fmt::format_to(std::back_inserter(url), "{:08X}:{}", ci->unique_id, MD5SumToString(ci->md5sum));
 			}
 		} else {
 			url += "do=searchtext&q=";

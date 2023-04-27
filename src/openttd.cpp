@@ -257,9 +257,8 @@ static void WriteSavegameInfo(const char *name)
 	message += "NewGRFs:\n";
 	if (_load_check_data.HasNewGrfs()) {
 		for (GRFConfig *c = _load_check_data.grfconfig; c != nullptr; c = c->next) {
-			char md5sum[33];
-			md5sumToString(md5sum, lastof(md5sum), HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum);
-			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", c->ident.grfid, md5sum, c->filename);
+			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", c->ident.grfid,
+				MD5SumToString(HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum), c->filename);
 		}
 	}
 
