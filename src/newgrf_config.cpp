@@ -630,7 +630,7 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
 				/* Because there can be multiple grfs with the same name, make sure we checked all grfs with the same name,
 				 *  before inserting the entry. So insert a new grf at the end of all grfs with the same name, instead of
 				 *  just after the first with the same name. Avoids doubles in the list. */
-				if (strcasecmp(c->GetName(), d->GetName()) <= 0) {
+				if (StrCompareIgnoreCase(c->GetName(), d->GetName()) <= 0) {
 					stop = true;
 				} else if (stop) {
 					break;

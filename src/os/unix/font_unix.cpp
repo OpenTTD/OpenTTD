@@ -70,12 +70,12 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 					FcPatternGetString(fs->fonts[i], FC_STYLE, 0, &style) == FcResultMatch) {
 
 					/* The correct style? */
-					if (font_style != nullptr && strcasecmp(font_style, (char *)style) != 0) continue;
+					if (font_style != nullptr && !StrEqualsIgnoreCase(font_style, (char *)style)) continue;
 
 					/* Font config takes the best shot, which, if the family name is spelled
 					 * wrongly a 'random' font, so check whether the family name is the
 					 * same as the supplied name */
-					if (strcasecmp(font_family, (char *)family) == 0) {
+					if (StrEqualsIgnoreCase(font_family, (char *)family)) {
 						err = FT_New_Face(_library, (char *)file, 0, face);
 					}
 				}

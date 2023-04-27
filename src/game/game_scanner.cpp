@@ -62,7 +62,7 @@ GameInfo *GameScannerInfo::FindInfo(const char *nameParam, int versionParam, boo
 	 *  version which allows loading the requested version */
 	for (const auto &item : this->info_list) {
 		GameInfo *i = static_cast<GameInfo *>(item.second);
-		if (strcasecmp(game_name, i->GetName()) == 0 && i->CanLoadFromVersion(versionParam) && (version == -1 || i->GetVersion() > version)) {
+		if (StrEqualsIgnoreCase(game_name, i->GetName()) && i->CanLoadFromVersion(versionParam) && (version == -1 || i->GetVersion() > version)) {
 			version = item.second->GetVersion();
 			info = i;
 		}

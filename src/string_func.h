@@ -54,6 +54,9 @@ void StrTrimInPlace(std::string &str);
 bool StrStartsWith(const std::string_view str, const std::string_view prefix);
 bool StrEndsWith(const std::string_view str, const std::string_view suffix);
 
+[[nodiscard]] int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2);
+[[nodiscard]] bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str2);
+
 /**
  * Check if a string buffer is empty.
  *

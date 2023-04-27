@@ -128,7 +128,7 @@ public:
 		Blitters::iterator it = GetBlitters().begin();
 		for (; it != GetBlitters().end(); it++) {
 			BlitterFactory *b = (*it).second;
-			if (strcasecmp(bname, b->name.c_str()) == 0) {
+			if (StrEqualsIgnoreCase(bname, b->name)) {
 				return b->IsUsable() ? b : nullptr;
 			}
 		}

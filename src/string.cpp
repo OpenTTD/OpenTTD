@@ -368,6 +368,59 @@ bool StrEndsWith(const std::string_view str, const std::string_view suffix)
 	return str.compare(str.size() - suffix_len, suffix_len, suffix, 0, suffix_len) == 0;
 }
 
+/** Case insensitive implementation of the standard character type traits. */
+struct CaseInsensitiveCharTraits : public std::char_traits<char> {
+	static bool eq(char c1, char c2) { return toupper(c1) == toupper(c2); }
+	static bool ne(char c1, char c2) { return toupper(c1) != toupper(c2); }
+	static bool lt(char c1, char c2) { return toupper(c1) <  toupper(c2); }
+
+	static int compare(const char *s1, const char *s2, size_t n)
+	{
+		while (n-- != 0) {
+			if (toupper(*s1) < toupper(*s2)) return -1;
+			if (toupper(*s1) > toupper(*s2)) return 1;
+			++s1; ++s2;
+		}
+		return 0;
+	}
+
+	static const char *find(const char *s, int n, char a)
+	{
+		while (n-- > 0 && toupper(*s) != toupper(a)) {
+			++s;
+		}
+		return s;
+	}
+};
+
+/** Case insensitive string view. */
+typedef std::basic_string_view<char, CaseInsensitiveCharTraits> CaseInsensitiveStringView;
+
+/**
+ * Compares two string( view)s, while ignoring the case of the characters.
+ * @param str1 The first string.
+ * @param str2 The second string.
+ * @return Less than zero if str1 < str2, zero if str1 == str2, greater than
+ *         zero if str1 > str2. All ignoring the case of the characters.
+ */
+int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2)
+{
+	CaseInsensitiveStringView ci_str1{ str1.data(), str1.size() };
+	CaseInsensitiveStringView ci_str2{ str2.data(), str2.size() };
+	return ci_str1.compare(ci_str2);
+}
+
+/**
+ * Compares two string( view)s for equality, while ignoring the case of the characters.
+ * @param str1 The first string.
+ * @param str2 The second string.
+ * @return True iff both strings are equal, barring the case of the characters.
+ */
+bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str2)
+{
+	if (str1.size() != str2.size()) return false;
+	return StrCompareIgnoreCase(str1, str2) == 0;
+}
 
 /** Scans the string for colour codes and strips them */
 void str_strip_colours(char *str)
@@ -728,7 +781,7 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 #endif
 
 	/* Do a normal comparison if ICU is missing or if we cannot create a collator. */
-	return strcasecmp(s1, s2);
+	return StrCompareIgnoreCase(s1, s2);
 }
 
 #ifdef WITH_UNISCRIBE

@@ -123,7 +123,7 @@ AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool fo
 	 *  version which allows loading the requested version */
 	for (const auto &item : this->info_list) {
 		AIInfo *i = static_cast<AIInfo *>(item.second);
-		if (strcasecmp(ai_name, i->GetName()) == 0 && i->CanLoadFromVersion(versionParam) && (version == -1 || i->GetVersion() > version)) {
+		if (StrEqualsIgnoreCase(ai_name, i->GetName()) && i->CanLoadFromVersion(versionParam) && (version == -1 || i->GetVersion() > version)) {
 			version = item.second->GetVersion();
 			info = i;
 		}
