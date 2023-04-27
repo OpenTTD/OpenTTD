@@ -134,9 +134,9 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		err = FT_New_Face(_library, font_path, index, face);
 		if (err != FT_Err_Ok) break;
 
-		if (strncasecmp(font_name, (*face)->family_name, strlen((*face)->family_name)) == 0) break;
+		if (StrStartsWithIgnoreCase(font_name, (*face)->family_name)) break;
 		/* Try english name if font name failed */
-		if (strncasecmp(font_name + strlen(font_name) + 1, (*face)->family_name, strlen((*face)->family_name)) == 0) break;
+		if (StrStartsWithIgnoreCase(font_name + strlen(font_name) + 1, (*face)->family_name)) break;
 		err = FT_Err_Cannot_Open_Resource;
 
 	} while ((FT_Long)++index != (*face)->num_faces);

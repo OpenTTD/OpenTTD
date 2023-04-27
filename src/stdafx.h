@@ -37,10 +37,6 @@
 #	define _GNU_SOURCE
 #endif
 
-#if defined(__HAIKU__) || defined(__CYGWIN__)
-#	include <strings.h> /* strncasecmp */
-#endif
-
 /* It seems that we need to include stdint.h before anything else
  * We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC
  * does not have stdint.h.
@@ -69,11 +65,6 @@
 
 #if defined(UNIX) || defined(__MINGW32__)
 #	include <sys/types.h>
-#endif
-
-#if defined(__OS2__)
-#	include <types.h>
-#	define strcasecmp stricmp
 #endif
 
 /* Stuff for GCC */
@@ -206,9 +197,6 @@
 #			define LZMA_API_STATIC
 #		endif
 #	endif
-
-#	define strcasecmp stricmp
-#	define strncasecmp strnicmp
 
 	/* MSVC doesn't have these :( */
 #	define S_ISDIR(mode) (mode & S_IFDIR)
@@ -409,11 +397,6 @@ void NORETURN AssertFailedError(int line, const char *file, const char *expressi
 #if defined(NDEBUG) && defined(WITH_ASSERT)
 #	undef assert
 #	define assert(expression) if (unlikely(!(expression))) AssertFailedError(__LINE__, __FILE__, #expression);
-#endif
-
-#if defined(OPENBSD)
-	/* OpenBSD uses strcasecmp(3) */
-#	define _stricmp strcasecmp
 #endif
 
 #if defined(MAX_PATH)

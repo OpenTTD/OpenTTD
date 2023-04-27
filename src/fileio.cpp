@@ -769,7 +769,7 @@ static bool ChangeWorkingDirectoryToExecutable(const char *exe)
 	bool success = false;
 #ifdef WITH_COCOA
 	char *app_bundle = strchr(tmp, '.');
-	while (app_bundle != nullptr && strncasecmp(app_bundle, ".app", 4) != 0) app_bundle = strchr(&app_bundle[1], '.');
+	while (app_bundle != nullptr && !StrStartsWithIgnoreCase(app_bundle, ".app")) app_bundle = strchr(&app_bundle[1], '.');
 
 	if (app_bundle != nullptr) *app_bundle = '\0';
 #endif /* WITH_COCOA */

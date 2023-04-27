@@ -48,11 +48,13 @@ void str_strip_colours(char *str);
 bool strtolower(char *str);
 bool strtolower(std::string &str, std::string::size_type offs = 0);
 
-bool StrValid(const char *str, const char *last) NOACCESS(2);
+[[nodiscard]] bool StrValid(const char *str, const char *last) NOACCESS(2);
 void StrTrimInPlace(std::string &str);
 
-bool StrStartsWith(const std::string_view str, const std::string_view prefix);
-bool StrEndsWith(const std::string_view str, const std::string_view suffix);
+[[nodiscard]] bool StrStartsWith(const std::string_view str, const std::string_view prefix);
+[[nodiscard]] bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix);
+[[nodiscard]] bool StrEndsWith(const std::string_view str, const std::string_view suffix);
+[[nodiscard]] bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix);
 
 [[nodiscard]] int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2);
 [[nodiscard]] bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str2);

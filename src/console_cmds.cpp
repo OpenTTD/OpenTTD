@@ -2022,7 +2022,7 @@ DEF_CONSOLE_CMD(ConFont)
 		byte arg_index = 2;
 		/* We may encounter "aa" or "noaa" but it must be the last argument. */
 		if (StrEqualsIgnoreCase(argv[arg_index], "aa") || StrEqualsIgnoreCase(argv[arg_index], "noaa")) {
-			aa = strncasecmp(argv[arg_index++], "no", 2) != 0;
+			aa = !StrStartsWithIgnoreCase(argv[arg_index++], "no");
 			if (argc > arg_index) return false;
 		} else {
 			/* For <name> we want a string. */
@@ -2044,7 +2044,7 @@ DEF_CONSOLE_CMD(ConFont)
 		if (argc > arg_index) {
 			/* Last argument must be "aa" or "noaa". */
 			if (!StrEqualsIgnoreCase(argv[arg_index], "aa") && !StrEqualsIgnoreCase(argv[arg_index], "noaa")) return false;
-			aa = strncasecmp(argv[arg_index++], "no", 2) != 0;
+			aa = !StrStartsWithIgnoreCase(argv[arg_index++], "no");
 			if (argc > arg_index) return false;
 		}
 
@@ -2220,7 +2220,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	const std::vector<GRFFile *> &files = GetAllGRFFiles();
 
 	/* "list" sub-command */
-	if (argc == 1 || strncasecmp(argv[1], "lis", 3) == 0) {
+	if (argc == 1 || StrStartsWithIgnoreCase(argv[1], "lis")) {
 		IConsolePrint(CC_INFO, "Loaded GRF files:");
 		int i = 1;
 		for (GRFFile *grf : files) {
@@ -2236,7 +2236,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	}
 
 	/* "select" sub-command */
-	if (strncasecmp(argv[1], "sel", 3) == 0 && argc >= 3) {
+	if (StrStartsWithIgnoreCase(argv[1], "sel") && argc >= 3) {
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > (int)files.size()) { // safe cast, files.size() should not be larger than a few hundred in the most extreme cases
@@ -2254,7 +2254,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	}
 
 	/* "unselect" sub-command */
-	if (strncasecmp(argv[1], "uns", 3) == 0 && argc >= 3) {
+	if (StrStartsWithIgnoreCase(argv[1], "uns") && argc >= 3) {
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			if (StrEqualsIgnoreCase(argv[argnum], "all")) {
 				_newgrf_profilers.clear();
@@ -2273,7 +2273,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	}
 
 	/* "start" sub-command */
-	if (strncasecmp(argv[1], "sta", 3) == 0) {
+	if (StrStartsWithIgnoreCase(argv[1], "sta")) {
 		std::string grfids;
 		size_t started = 0;
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
@@ -2309,13 +2309,13 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	}
 
 	/* "stop" sub-command */
-	if (strncasecmp(argv[1], "sto", 3) == 0) {
+	if (StrStartsWithIgnoreCase(argv[1], "sto")) {
 		NewGRFProfiler::FinishAll();
 		return true;
 	}
 
 	/* "abort" sub-command */
-	if (strncasecmp(argv[1], "abo", 3) == 0) {
+	if (StrStartsWithIgnoreCase(argv[1], "abo")) {
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
 			pr.Abort();
 		}

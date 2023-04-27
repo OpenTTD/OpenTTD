@@ -421,7 +421,7 @@ struct NetworkChatWindow : public Window {
 			}
 
 			len = strlen(cur_name);
-			if (tb_len < len && strncasecmp(cur_name, tb_buf, tb_len) == 0) {
+			if (tb_len < len && StrStartsWith(cur_name, tb_buf)) {
 				/* Save the data it was before completion */
 				if (!second_scan) seprintf(_chat_tab_completion_buf, lastof(_chat_tab_completion_buf), "%s", tb->buf);
 				_chat_tab_completion_active = true;

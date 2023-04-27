@@ -23,26 +23,27 @@
 #include <iomanip>
 
 #ifdef _MSC_VER
-#include <errno.h> // required by vsnprintf implementation for MSVC
+#	include <errno.h> // required by vsnprintf implementation for MSVC
+#	define strncasecmp strnicmp
 #endif
 
 #ifdef _WIN32
-#include "os/windows/win32.h"
+#	include "os/windows/win32.h"
 #endif
 
 #ifdef WITH_UNISCRIBE
-#include "os/windows/string_uniscribe.h"
+#	include "os/windows/string_uniscribe.h"
 #endif
 
 #ifdef WITH_ICU_I18N
 /* Required by strnatcmp. */
-#include <unicode/ustring.h>
-#include "language.h"
-#include "gfx_func.h"
+#	include <unicode/ustring.h>
+#	include "language.h"
+#	include "gfx_func.h"
 #endif /* WITH_ICU_I18N */
 
 #if defined(WITH_COCOA)
-#include "os/macosx/string_osx.h"
+#	include "os/macosx/string_osx.h"
 #endif
 
 /* The function vsnprintf is used internally to perform the required formatting
@@ -356,6 +357,18 @@ bool StrStartsWith(const std::string_view str, const std::string_view prefix)
 }
 
 /**
+ * Check whether the given string starts with the given prefix, ignoring case.
+ * @param str    The string to look at.
+ * @param prefix The prefix to look for.
+ * @return True iff the begin of the string is the same as the prefix, ignoring case.
+ */
+bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix)
+{
+	if (str.size() < prefix.size()) return false;
+	return StrEqualsIgnoreCase(str.substr(0, prefix.size()), prefix);
+}
+
+/**
  * Check whether the given string ends with the given suffix.
  * @param str    The string to look at.
  * @param suffix The suffix to look for.
@@ -395,6 +408,18 @@ struct CaseInsensitiveCharTraits : public std::char_traits<char> {
 
 /** Case insensitive string view. */
 typedef std::basic_string_view<char, CaseInsensitiveCharTraits> CaseInsensitiveStringView;
+
+/**
+ * Check whether the given string ends with the given suffix, ignoring case.
+ * @param str    The string to look at.
+ * @param suffix The suffix to look for.
+ * @return True iff the end of the string is the same as the suffix, ignoring case.
+ */
+bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix)
+{
+	if (str.size() < suffix.size()) return false;
+	return StrEqualsIgnoreCase(str.substr(str.size() - suffix.size()), suffix);
+}
 
 /**
  * Compares two string( view)s, while ignoring the case of the characters.
