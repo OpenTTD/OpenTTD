@@ -309,7 +309,7 @@ CommandCost CmdBuildAircraft(DoCommandFlag flags, TileIndex tile, const Engine *
 		u->refit_cap = 0;
 
 		v->cargo_type = e->GetDefaultCargoType();
-		u->cargo_type = CT_MAIL;
+		u->cargo_type = CargoSpec::default_map[CT_MAIL];
 
 		v->name.clear();
 		v->last_station_visited = INVALID_STATION;

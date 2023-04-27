@@ -900,8 +900,8 @@ struct RefitWindow : public Window {
 		SetDParam(1, refit_capacity);
 
 		Money money = cost.GetCost();
-		if (mail_capacity > 0) {
-			SetDParam(2, CT_MAIL);
+		if (CargoSpec::default_map[CT_MAIL] != CT_INVALID && mail_capacity > 0) {
+			SetDParam(2, CargoSpec::default_map[CT_MAIL]);
 			SetDParam(3, mail_capacity);
 			if (this->order != INVALID_VEH_ORDER_ID) {
 				/* No predictable cost */

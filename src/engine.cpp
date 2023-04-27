@@ -188,7 +188,6 @@ bool Engine::CanCarryCargo() const
 	return this->GetDefaultCargoType() != CT_INVALID;
 }
 
-
 /**
  * Determines capacity of a given vehicle from scratch.
  * For aircraft the main capacity is determined. Mail might be present as well.
@@ -242,8 +241,8 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 			if (!IsCargoInClass(cargo_type, CC_PASSENGERS)) {
 				extra_mail_cap = GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
 			}
-			if (!new_multipliers && cargo_type == CT_MAIL) return capacity + extra_mail_cap;
-			default_cargo = CT_PASSENGERS; // Always use 'passengers' wrt. cargo multipliers
+			if (!new_multipliers && cargo_type == CargoSpec::default_map[CT_MAIL]) return capacity + extra_mail_cap;
+			default_cargo = CargoSpec::default_map[CT_PASSENGERS]; // Always use 'passengers' wrt. cargo multipliers
 			break;
 
 		default: NOT_REACHED();
@@ -260,8 +259,8 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 		uint16 default_multiplier = new_multipliers ? 0x100 : CargoSpec::Get(default_cargo)->multiplier;
 		uint16 cargo_multiplier = CargoSpec::Get(cargo_type)->multiplier;
 		capacity *= cargo_multiplier;
-		if (extra_mail_cap > 0) {
-			uint mail_multiplier = CargoSpec::Get(CT_MAIL)->multiplier;
+		if (extra_mail_cap > 0 && CargoSpec::default_map[CT_MAIL] != CT_INVALID) {
+			uint mail_multiplier = CargoSpec::Get(CargoSpec::default_map[CT_MAIL])->multiplier;
 			capacity += (default_multiplier * extra_mail_cap * cargo_multiplier + mail_multiplier / 2) / mail_multiplier;
 		}
 		capacity = (capacity + default_multiplier / 2) / default_multiplier;

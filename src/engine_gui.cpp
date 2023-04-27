@@ -203,7 +203,7 @@ static StringID GetAircraftEngineInfoString(const Engine *e)
 	SetDParam(i++, capacity);
 
 	if (mail_capacity > 0) {
-		SetDParam(i++, CT_MAIL);
+		SetDParam(i++, CargoSpec::default_map[CT_MAIL]);
 		SetDParam(i++, mail_capacity);
 		SetDParam(i++, e->GetRunningCost());
 		return range > 0 ? STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST : STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST;
