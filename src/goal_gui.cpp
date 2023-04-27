@@ -212,7 +212,7 @@ struct GoalListWindow : public Window {
 						}
 
 						case GC_PROGRESS:
-							if (s->progress != nullptr) {
+							if (!s->progress.empty()) {
 								SetDParamStr(0, s->progress);
 								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
 								DrawString(r.WithWidth(progress_col_width, !rtl), str, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
@@ -242,7 +242,7 @@ struct GoalListWindow : public Window {
 		/* Calculate progress column width. */
 		uint max_width = 0;
 		for (const Goal *s : Goal::Iterate()) {
-			if (s->progress != nullptr) {
+			if (!s->progress.empty()) {
 				SetDParamStr(0, s->progress);
 				StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
 				uint str_width = GetStringBoundingBox(str).width;
@@ -322,14 +322,14 @@ void ShowGoalsList(CompanyID company)
 
 /** Ask a question about a goal. */
 struct GoalQuestionWindow : public Window {
-	char *question;     ///< Question to ask (private copy).
-	int buttons;        ///< Number of valid buttons in #button.
-	int button[3];      ///< Buttons to display.
-	TextColour colour;  ///< Colour of the question text.
+	std::string question; ///< Question to ask (private copy).
+	int buttons;          ///< Number of valid buttons in #button.
+	int button[3];        ///< Buttons to display.
+	TextColour colour;    ///< Colour of the question text.
 
-	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, TextColour colour, uint32 button_mask, const char *question) : Window(desc), colour(colour)
+	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, TextColour colour, uint32 button_mask, const std::string &question) : Window(desc), colour(colour)
 	{
-		this->question = stredup(question);
+		this->question = question;
 
 		/* Figure out which buttons we have to enable. */
 		int n = 0;
@@ -352,10 +352,6 @@ struct GoalQuestionWindow : public Window {
 		this->FinishInitNested(window_number);
 	}
 
-	~GoalQuestionWindow()
-	{
-		free(this->question);
-	}
 
 	void SetStringParameters(int widget) const override
 	{
@@ -554,7 +550,7 @@ static WindowDesc _goal_question_list_desc[] = {
  * @param button_mask Buttons to display.
  * @param question Question to ask.
  */
-void ShowGoalQuestion(uint16 id, byte type, uint32 button_mask, const char *question)
+void ShowGoalQuestion(uint16 id, byte type, uint32 button_mask, const std::string &question)
 {
 	assert(type < GQT_END);
 	new GoalQuestionWindow(&_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);
