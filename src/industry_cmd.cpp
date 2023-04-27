@@ -2825,7 +2825,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 				/* Prevent production to overflow or Oil Rig passengers to be over-"produced" */
 				new_prod = Clamp(new_prod, 1, 255);
-				if (i->produced_cargo[j] == CT_PASSENGERS && !(indspec->behaviour & INDUSTRYBEH_NO_PAX_PROD_CLAMP)) {
+				if (i->produced_cargo[j] == CargoSpec::default_map[CT_PASSENGERS] && !(indspec->behaviour & INDUSTRYBEH_NO_PAX_PROD_CLAMP)) {
 					new_prod = Clamp(new_prod, 0, 16);
 				}
 

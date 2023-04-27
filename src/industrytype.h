@@ -112,6 +112,7 @@ struct IndustrySpec {
 	IndustryType conflicting[3];                ///< Industries this industry cannot be close to
 	byte check_proc;                            ///< Index to a procedure to check for conflicting circumstances
 	CargoID produced_cargo[INDUSTRY_NUM_OUTPUTS];
+	uint16_t produced_cargo_set; ///< Set for each slot of produced cargo that has been set.
 	byte production_rate[INDUSTRY_NUM_OUTPUTS];
 	/**
 	 * minimum amount of cargo transported to the stations.
@@ -119,6 +120,7 @@ struct IndustrySpec {
 	 */
 	byte minimal_cargo;
 	CargoID accepts_cargo[INDUSTRY_NUM_INPUTS]; ///< 16 accepted cargoes.
+	uint16_t accepts_cargo_set; ///< Set for each slot of accepts cargo that has been set.
 	uint16 input_cargo_multiplier[INDUSTRY_NUM_INPUTS][INDUSTRY_NUM_OUTPUTS]; ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargoes)
 	IndustryLifeType life_type;                 ///< This is also known as Industry production flag, in newgrf specs
 	byte climate_availability;                  ///< Bitmask, giving landscape enums as bit position
@@ -147,6 +149,10 @@ struct IndustrySpec {
 	bool UsesOriginalEconomy() const;
 
 	~IndustrySpec();
+
+	/* Ensure enough bits available for each cargo slot */
+	static_assert(sizeof(produced_cargo_set) * 8 >= lengthof(produced_cargo));
+	static_assert(sizeof(accepts_cargo_set) * 8 >= lengthof(accepts_cargo));
 };
 
 /**
@@ -155,6 +161,7 @@ struct IndustrySpec {
  */
 struct IndustryTileSpec {
 	CargoID accepts_cargo[INDUSTRY_NUM_INPUTS]; ///< Cargo accepted by this tile
+	uint16_t accepts_cargo_set; ///< Set for each slot of accepts cargo that has been set.
 	int8 acceptance[INDUSTRY_NUM_INPUTS]; ///< Level of acceptance per cargo type (signed, may be negative!)
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
 	byte anim_production;                 ///< Animation frame to start when goods are produced
@@ -170,6 +177,9 @@ struct IndustryTileSpec {
 	IndustryTileSpecialFlags special_flags; ///< Bitmask of extra flags used by the tile
 	bool enabled;                         ///< entity still available (by default true).newgrf can disable it, though
 	GRFFileProps grf_prop;                ///< properties related to the grf file
+
+	/* Ensure enough bits available for each cargo slot */
+	static_assert(sizeof(accepts_cargo_set) * 8 >= lengthof(accepts_cargo));
 };
 
 /* industry_cmd.cpp*/

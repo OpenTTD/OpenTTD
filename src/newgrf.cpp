@@ -3261,6 +3261,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 				uint16 acctp = buf->ReadWord();
 				tsp->accepts_cargo[prop - 0x0A] = GetCargoTranslation(GB(acctp, 0, 8), _cur.grffile);
 				tsp->acceptance[prop - 0x0A] = Clamp(GB(acctp, 8, 8), 0, 16);
+				SetBit(tsp->accepts_cargo_set, prop - 0x0A);
 				break;
 			}
 
@@ -3305,6 +3306,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 						tsp->accepts_cargo[i] = CT_INVALID;
 						tsp->acceptance[i] = 0;
 					}
+					SetBit(tsp->accepts_cargo_set, i);
 				}
 				break;
 			}
@@ -3635,12 +3637,14 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			case 0x10: // Production cargo types
 				for (byte j = 0; j < 2; j++) {
 					indsp->produced_cargo[j] = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+					SetBit(indsp->produced_cargo_set, j);
 				}
 				break;
 
 			case 0x11: // Acceptance cargo types
 				for (byte j = 0; j < 3; j++) {
 					indsp->accepts_cargo[j] = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+					SetBit(indsp->accepts_cargo_set, j);
 				}
 				buf->ReadByte(); // Unnused, eat it up
 				break;
@@ -3751,6 +3755,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					} else {
 						indsp->produced_cargo[i] = CT_INVALID;
 					}
+					SetBit(indsp->produced_cargo_set, i);
 				}
 				break;
 			}
@@ -3769,6 +3774,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					} else {
 						indsp->accepts_cargo[i] = CT_INVALID;
 					}
+					SetBit(indsp->accepts_cargo_set, i);
 				}
 				break;
 			}
@@ -9401,6 +9407,23 @@ static void FinaliseIndustriesArray()
 		}
 		if (!indsp->enabled) {
 			indsp->name = STR_NEWGRF_INVALID_INDUSTRYTYPE;
+		}
+		/* Apply default cargo translation map for unset cargo slots */
+		for (auto &cid : indsp->accepts_cargo) {
+			if (HasBit(indsp->accepts_cargo_set, &cid - indsp->accepts_cargo)) continue;
+			if (cid < CargoSpec::default_map.size()) cid = CargoSpec::default_map[cid];
+		}
+		for (auto &cid : indsp->produced_cargo) {
+			if (HasBit(indsp->produced_cargo_set, &cid - indsp->produced_cargo)) continue;
+			if (cid < CargoSpec::default_map.size()) cid = CargoSpec::default_map[cid];
+		}
+	}
+
+	for (auto &indtsp : _industry_tile_specs) {
+		/* Apply default cargo translation map for unset cargo slots */
+		for (auto &cid : indtsp.accepts_cargo) {
+			if (HasBit(indtsp.accepts_cargo_set, &cid - indtsp.accepts_cargo)) continue;
+			if (cid < CargoSpec::default_map.size()) cid = CargoSpec::default_map[cid];
 		}
 	}
 }
