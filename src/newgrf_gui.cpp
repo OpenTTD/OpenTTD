@@ -92,9 +92,8 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 	}
 
 	/* Prepare and draw GRF ID */
-	char buff[256];
-	seprintf(buff, lastof(buff), "%08X", BSWAP32(c->ident.grfid));
-	SetDParamStr(0, buff);
+	std::string tmp = fmt::format("{:08X}", BSWAP32(c->ident.grfid));
+	SetDParamStr(0, tmp);
 	tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_GRF_ID);
 
 	if ((_settings_client.gui.newgrf_developer_tools || _settings_client.gui.newgrf_show_old_versions) && c->version != 0) {
@@ -107,13 +106,14 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 	}
 
 	/* Prepare and draw MD5 sum */
-	md5sumToString(buff, lastof(buff), c->ident.md5sum);
-	SetDParamStr(0, buff);
+	tmp = MD5SumToString(c->ident.md5sum);
+	SetDParamStr(0, tmp);
 	tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_MD5SUM);
 
 	/* Show GRF parameter list */
 	if (show_params) {
 		if (c->num_params > 0) {
+			char buff[256];
 			GRFBuildParamList(buff, c, lastof(buff));
 			SetDParam(0, STR_JUST_RAW_STRING);
 			SetDParamStr(1, buff);

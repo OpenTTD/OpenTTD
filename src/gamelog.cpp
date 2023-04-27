@@ -125,9 +125,7 @@ template <typename T>
 static void AddGrfInfo(T &outputIterator, uint grfid, const uint8 *md5sum, const GRFConfig *gc)
 {
 	if (md5sum != nullptr) {
-		char txt[40];
-		md5sumToString(txt, lastof(txt), md5sum);
-		fmt::format_to(outputIterator, "GRF ID {:08X}, checksum {}", BSWAP32(grfid), txt);
+		fmt::format_to(outputIterator, "GRF ID {:08X}, checksum {}", BSWAP32(grfid), MD5SumToString(md5sum));
 	} else {
 		fmt::format_to(outputIterator, "GRF ID {:08X}", BSWAP32(grfid));
 	}

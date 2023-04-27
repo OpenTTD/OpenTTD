@@ -86,7 +86,7 @@ static inline size_t ttd_strnlen(const char *str, size_t maxlen)
 	return t - str;
 }
 
-char *md5sumToString(char *buf, const char *last, const uint8 md5sum[16]);
+std::string MD5SumToString(const uint8 md5sum[16]);
 
 bool IsValidChar(WChar key, CharSetFilter afilter);
 

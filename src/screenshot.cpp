@@ -320,9 +320,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	fmt::format_to(std::back_inserter(message), "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
 	message += "NewGRFs:\n";
 	for (const GRFConfig *c = _game_mode == GM_MENU ? nullptr : _grfconfig; c != nullptr; c = c->next) {
-		char buf[33];
-		md5sumToString(buf, lastof(buf), c->ident.md5sum);
-		fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", BSWAP32(c->ident.grfid), buf, c->filename);
+		fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", BSWAP32(c->ident.grfid), MD5SumToString(c->ident.md5sum), c->filename);
 	}
 	message += "\nCompanies:\n";
 	for (const Company *c : Company::Iterate()) {
