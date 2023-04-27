@@ -64,7 +64,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
 	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
 	if (config.filename != nullptr) this->filename = stredup(config.filename);
-	if (config.error != nullptr) this->error = new GRFError(*config.error);
+	if (config.error != nullptr) this->error = std::make_unique<GRFError>(*config.error);
 	for (uint i = 0; i < config.param_info.size(); i++) {
 		if (config.param_info[i] == nullptr) {
 			this->param_info.push_back(nullptr);
@@ -80,7 +80,6 @@ GRFConfig::~GRFConfig()
 	/* GCF_COPY as in NOT stredupped/alloced the filename */
 	if (!HasBit(this->flags, GCF_COPY)) {
 		free(this->filename);
-		delete this->error;
 	}
 
 	for (uint i = 0; i < this->param_info.size(); i++) delete this->param_info[i];

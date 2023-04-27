@@ -166,7 +166,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	GRFTextWrapper name;                        ///< NOSAVE: GRF name (Action 0x08)
 	GRFTextWrapper info;                        ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
 	GRFTextWrapper url;                         ///< NOSAVE: URL belonging to this GRF.
-	GRFError *error;                            ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
+	std::unique_ptr<GRFError> error;            ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
 	uint32 version;                             ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
 	uint32 min_loadable_version;                ///< NOSAVE: Minimum compatible version a NewGRF can define

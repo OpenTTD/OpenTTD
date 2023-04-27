@@ -450,12 +450,11 @@ static GRFError *DisableGrf(StringID message = STR_NULL, GRFConfig *config = nul
 	if (config == _cur.grfconfig) _cur.skip_sprites = -1;
 
 	if (message != STR_NULL) {
-		delete config->error;
-		config->error = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, message);
+		config->error = std::make_unique<GRFError>(STR_NEWGRF_ERROR_MSG_FATAL, message);
 		if (config == _cur.grfconfig) config->error->param_value[0] = _cur.nfo_line;
 	}
 
-	return config->error;
+	return config->error.get();
 }
 
 /**
@@ -7135,8 +7134,7 @@ static void GRFLoadError(ByteReader *buf)
 		DisableGrf();
 
 		/* Make sure we show fatal errors, instead of silly infos from before */
-		delete _cur.grfconfig->error;
-		_cur.grfconfig->error = nullptr;
+		_cur.grfconfig->error.reset();
 	}
 
 	if (message_id >= lengthof(msgstr) && message_id != 0xFF) {
@@ -7152,7 +7150,8 @@ static void GRFLoadError(ByteReader *buf)
 	/* For now we can only show one message per newgrf file. */
 	if (_cur.grfconfig->error != nullptr) return;
 
-	GRFError *error = new GRFError(sevstr[severity]);
+	_cur.grfconfig->error = std::make_unique<GRFError>(sevstr[severity]);
+	GRFError *error = _cur.grfconfig->error.get();
 
 	if (message_id == 0xFF) {
 		/* This is a custom error message. */
@@ -7182,8 +7181,6 @@ static void GRFLoadError(ByteReader *buf)
 		uint param_number = buf->ReadByte();
 		error->param_value[i] = _cur.grffile->GetParam(param_number);
 	}
-
-	_cur.grfconfig->error = error;
 }
 
 /* Action 0x0C */
@@ -8724,10 +8721,7 @@ static void ResetNewGRF()
 static void ResetNewGRFErrors()
 {
 	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
-		if (!HasBit(c->flags, GCF_COPY) && c->error != nullptr) {
-			delete c->error;
-			c->error = nullptr;
-		}
+		c->error.reset();
 	}
 }
 
@@ -10012,7 +10006,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
 					Debug(grf, 0, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
 					c->status = GCS_DISABLED;
-					c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
+					c->error  = std::make_unique<GRFError>(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 					continue;
 				}
 				num_non_static++;
