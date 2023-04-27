@@ -394,17 +394,23 @@ public:
 		DrawString(tr, STR_TOWN_VIEW_POPULATION_HOUSES);
 		tr.top += FONT_HEIGHT_NORMAL;
 
-		SetDParam(0, 1 << CT_PASSENGERS);
-		SetDParam(1, this->town->supplied[CT_PASSENGERS].old_act);
-		SetDParam(2, this->town->supplied[CT_PASSENGERS].old_max);
-		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
-		tr.top += FONT_HEIGHT_NORMAL;
+		CargoID pass = CargoSpec::default_map[CT_PASSENGERS];
+		if (pass != CT_INVALID) {
+			SetDParam(0, 1ULL << pass);
+			SetDParam(1, this->town->supplied[pass].old_act);
+			SetDParam(2, this->town->supplied[pass].old_max);
+			DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+			tr.top += FONT_HEIGHT_NORMAL;
+		}
 
-		SetDParam(0, 1 << CT_MAIL);
-		SetDParam(1, this->town->supplied[CT_MAIL].old_act);
-		SetDParam(2, this->town->supplied[CT_MAIL].old_max);
-		DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
-		tr.top += FONT_HEIGHT_NORMAL;
+		CargoID mail = CargoSpec::default_map[CT_MAIL];
+		if (mail != CT_INVALID) {
+			SetDParam(0, 1ULL << mail);
+			SetDParam(1, this->town->supplied[mail].old_act);
+			SetDParam(2, this->town->supplied[mail].old_max);
+			DrawString(tr, STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX);
+			tr.top += FONT_HEIGHT_NORMAL;
+		}
 
 		bool first = true;
 		for (int i = TE_BEGIN; i < TE_END; i++) {

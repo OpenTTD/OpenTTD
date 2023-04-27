@@ -573,23 +573,25 @@ static void TileLoop_Town(TileIndex tile)
 			t->supplied[cs->Index()].new_act += moved;
 		}
 	} else {
+		CargoID pass = CargoSpec::default_map[CT_PASSENGERS];
+		CargoID mail = CargoSpec::default_map[CT_MAIL];
 		switch (_settings_game.economy.town_cargogen_mode) {
 			case TCGM_ORIGINAL:
 				/* Original (quadratic) cargo generation algorithm */
-				if (GB(r, 0, 8) < hs->population) {
+				if (pass != CT_INVALID && GB(r, 0, 8) < hs->population) {
 					uint amt = GB(r, 0, 8) / 8 + 1;
 
 					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-					t->supplied[CT_PASSENGERS].new_max += amt;
-					t->supplied[CT_PASSENGERS].new_act += MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Town, t->index, stations.GetStations());
+					t->supplied[pass].new_max += amt;
+					t->supplied[pass].new_act += MoveGoodsToStation(pass, amt, SourceType::Town, t->index, stations.GetStations());
 				}
 
-				if (GB(r, 8, 8) < hs->mail_generation) {
+				if (mail != CT_INVALID && GB(r, 8, 8) < hs->mail_generation) {
 					uint amt = GB(r, 8, 8) / 8 + 1;
 
 					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-					t->supplied[CT_MAIL].new_max += amt;
-					t->supplied[CT_MAIL].new_act += MoveGoodsToStation(CT_MAIL, amt, SourceType::Town, t->index, stations.GetStations());
+					t->supplied[mail].new_max += amt;
+					t->supplied[mail].new_act += MoveGoodsToStation(mail, amt, SourceType::Town, t->index, stations.GetStations());
 				}
 				break;
 
@@ -598,24 +600,28 @@ static void TileLoop_Town(TileIndex tile)
 				/* Reduce generation rate to a 1/4, using tile bits to spread out distribution.
 				 * As tick counter is incremented by 256 between each call, we ignore the lower 8 bits. */
 				if (GB(TimerGameTick::counter, 8, 2) == GB(tile, 0, 2)) {
-					/* Make a bitmask with up to 32 bits set, one for each potential pax */
-					int genmax = (hs->population + 7) / 8;
-					uint32 genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
-					/* Mask random value by potential pax and count number of actual pax */
-					uint amt = CountBits(r & genmask);
-					/* Adjust and apply */
-					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-					t->supplied[CT_PASSENGERS].new_max += amt;
-					t->supplied[CT_PASSENGERS].new_act += MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Town, t->index, stations.GetStations());
+					if (pass != CT_INVALID) {
+						/* Make a bitmask with up to 32 bits set, one for each potential pax */
+						int genmax = (hs->population + 7) / 8;
+						uint32 genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
+						/* Mask random value by potential pax and count number of actual pax */
+						uint amt = CountBits(r & genmask);
+						/* Adjust and apply */
+						if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
+						t->supplied[pass].new_max += amt;
+						t->supplied[pass].new_act += MoveGoodsToStation(pass, amt, SourceType::Town, t->index, stations.GetStations());
+					}
 
-					/* Do the same for mail, with a fresh random */
-					r = Random();
-					genmax = (hs->mail_generation + 7) / 8;
-					genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
-					amt = CountBits(r & genmask);
-					if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-					t->supplied[CT_MAIL].new_max += amt;
-					t->supplied[CT_MAIL].new_act += MoveGoodsToStation(CT_MAIL, amt, SourceType::Town, t->index, stations.GetStations());
+					if (mail != CT_INVALID) {
+						/* Do the same for mail, with a fresh random */
+						r = Random();
+						int genmax = (hs->mail_generation + 7) / 8;
+						uint32 genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
+						uint amt = CountBits(r & genmask);
+						if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
+						t->supplied[mail].new_max += amt;
+						t->supplied[mail].new_act += MoveGoodsToStation(mail, amt, SourceType::Town, t->index, stations.GetStations());
+					}
 				}
 				break;
 
@@ -710,11 +716,11 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 			produced[cargo]++;
 		}
 	} else {
-		if (hs->population > 0) {
-			produced[CT_PASSENGERS]++;
+		if (CargoSpec::default_map[CT_PASSENGERS] != CT_INVALID && hs->population > 0) {
+			produced[CargoSpec::default_map[CT_PASSENGERS]]++;
 		}
-		if (hs->mail_generation > 0) {
-			produced[CT_MAIL]++;
+		if (CargoSpec::default_map[CT_MAIL] != CT_INVALID && hs->mail_generation > 0) {
+			produced[CargoSpec::default_map[CT_MAIL]]++;
 		}
 	}
 }
@@ -755,7 +761,7 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, CargoT
 			AddAcceptedCargoSetMask(accepts[1], GB(callback, 4, 4), acceptance, always_accepted);
 			if (_settings_game.game_creation.landscape != LT_TEMPERATE && HasBit(callback, 12)) {
 				/* The 'S' bit indicates food instead of goods */
-				AddAcceptedCargoSetMask(CT_FOOD, GB(callback, 8, 4), acceptance, always_accepted);
+				AddAcceptedCargoSetMask(CargoSpec::default_map[CT_FOOD], GB(callback, 8, 4), acceptance, always_accepted);
 			} else {
 				AddAcceptedCargoSetMask(accepts[2], GB(callback, 8, 4), acceptance, always_accepted);
 			}
@@ -1842,8 +1848,8 @@ void UpdateTownRadius(Town *t)
 
 void UpdateTownMaxPass(Town *t)
 {
-	t->supplied[CT_PASSENGERS].old_max = t->cache.population >> 3;
-	t->supplied[CT_MAIL].old_max = t->cache.population >> 4;
+	if (CargoSpec::default_map[CT_PASSENGERS] != CT_INVALID) t->supplied[CargoSpec::default_map[CT_PASSENGERS]].old_max = t->cache.population >> 3;
+	if (CargoSpec::default_map[CT_MAIL] != CT_INVALID )t->supplied[CargoSpec::default_map[CT_MAIL]].old_max = t->cache.population >> 4;
 }
 
 static void UpdateTownGrowthRate(Town *t);

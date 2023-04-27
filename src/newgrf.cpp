@@ -2452,6 +2452,8 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 
 				housespec->accepts_cargo[2] = cid;
 				housespec->cargo_acceptance[2] = abs(goods); // but we do need positive value here
+				/* Accepts cargo is not mapped during this property. */
+				ClrBit(housespec->accepts_cargo_set, 2);
 				break;
 			}
 
@@ -2536,9 +2538,9 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 					if (cargo == CT_INVALID) {
 						/* Disable acceptance of invalid cargo type */
 						housespec->cargo_acceptance[j] = 0;
-					} else {
-						housespec->accepts_cargo[j] = cargo;
 					}
+					housespec->accepts_cargo[j] = cargo;
+					SetBit(housespec->accepts_cargo_set, j);
 				}
 				break;
 			}
@@ -2582,6 +2584,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 						housespec->accepts_cargo[i] = CT_INVALID;
 						housespec->cargo_acceptance[i] = 0;
 					}
+					SetBit(housespec->accepts_cargo_set, i);
 				}
 				break;
 			}
@@ -9318,6 +9321,11 @@ static void FinaliseHouseArray()
 			 * building_flags to zero here to make sure any house following
 			 * this one in the pool is properly handled as 1x1 house. */
 			hs->building_flags = TILE_NO_FLAG;
+		}
+		/* Apply default cargo translation map for unset cargo slots */
+		for (auto &cid : hs->accepts_cargo) {
+			if (HasBit(hs->accepts_cargo_set, &cid - hs->accepts_cargo)) continue;
+			if (cid < CargoSpec::default_map.size()) cid = CargoSpec::default_map[cid];
 		}
 	}
 
