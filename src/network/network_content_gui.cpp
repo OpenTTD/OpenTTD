@@ -350,27 +350,27 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Search external websites for content */
 	void OpenExternalSearch()
 	{
-		char url[1024];
-		const char *last = lastof(url);
+		std::string url;
+		url.reserve(1024);
 
-		char *pos = strecpy(url, "https://grfsearch.openttd.org/?", last);
+		url += "https://grfsearch.openttd.org/?";
 
 		if (this->auto_select) {
-			pos = strecpy(pos, "do=searchgrfid&q=", last);
+			url += "do=searchgrfid&q=";
 
 			bool first = true;
 			for (const ContentInfo *ci : this->content) {
 				if (ci->state != ContentInfo::DOES_NOT_EXIST) continue;
 
-				if (!first) pos = strecpy(pos, ",", last);
+				if (!first) url.push_back(',');
 				first = false;
 
-				pos += seprintf(pos, last, "%08X", ci->unique_id);
-				pos = strecpy(pos, ":", last);
-				pos = md5sumToString(pos, last, ci->md5sum);
+				char buf[33];
+				md5sumToString(buf, lastof(buf), ci->md5sum);
+				fmt::format_to(std::back_inserter(url), "{:08X}:{}", ci->unique_id, buf);
 			}
 		} else {
-			pos = strecpy(pos, "do=searchtext&q=", last);
+			url += "do=searchtext&q=";
 
 			/* Escape search term */
 			for (const char *search = this->filter_editbox.text.buf; *search != '\0'; search++) {
@@ -379,15 +379,14 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 				/* Escape special chars, such as &%,= */
 				if (*search < 0x30) {
-					pos += seprintf(pos, last, "%%%02X", *search);
-				} else if (pos < last) {
-					*pos = *search;
-					*++pos = '\0';
+					fmt::format_to(std::back_inserter(url), "%{:02X}", *search);
+				} else {
+					url.push_back(*search);
 				}
 			}
 		}
 
-		OpenBrowser(url);
+		OpenBrowser(url.c_str());
 	}
 
 	/**
