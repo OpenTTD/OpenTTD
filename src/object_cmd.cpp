@@ -627,23 +627,27 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, Carg
 
 	/* Top town building generates 10, so to make HQ interesting, the top
 	 * type makes 20. */
-	acceptance[CT_PASSENGERS] += std::max(1U, level);
-	SetBit(*always_accepted, CT_PASSENGERS);
+	if (CargoSpec::default_map[CT_PASSENGERS] != CT_INVALID) {
+		acceptance[CargoSpec::default_map[CT_PASSENGERS]] += std::max(1U, level);
+		SetBit(*always_accepted, CargoSpec::default_map[CT_PASSENGERS]);
+	}
 
 	/* Top town building generates 4, HQ can make up to 8. The
 	 * proportion passengers:mail is different because such a huge
 	 * commercial building generates unusually high amount of mail
 	 * correspondence per physical visitor. */
-	acceptance[CT_MAIL] += std::max(1U, level / 2);
-	SetBit(*always_accepted, CT_MAIL);
+	if (CargoSpec::default_map[CT_MAIL] != CT_INVALID) {
+		acceptance[CargoSpec::default_map[CT_MAIL]] += std::max(1U, level / 2);
+		SetBit(*always_accepted, CargoSpec::default_map[CT_MAIL]);
+	}
 }
 
 static void AddProducedCargo_Object(TileIndex tile, CargoArray &produced)
 {
 	if (!IsObjectType(tile, OBJECT_HQ)) return;
 
-	produced[CT_PASSENGERS]++;
-	produced[CT_MAIL]++;
+	if (CargoSpec::default_map[CT_PASSENGERS] != CT_INVALID) produced[CargoSpec::default_map[CT_PASSENGERS]]++;
+	if (CargoSpec::default_map[CT_MAIL] != CT_INVALID) produced[CargoSpec::default_map[CT_MAIL]]++;
 }
 
 
@@ -682,20 +686,24 @@ static void TileLoop_Object(TileIndex tile)
 	StationFinder stations(TileArea(tile, 2, 2));
 
 	uint r = Random();
-	/* Top town buildings generate 250, so the top HQ type makes 256. */
-	if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
-		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
-		if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-		MoveGoodsToStation(CT_PASSENGERS, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
+	if (CargoSpec::default_map[CT_PASSENGERS] != CT_INVALID) {
+		/* Top town buildings generate 250, so the top HQ type makes 256. */
+		if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
+			uint amt = GB(r, 0, 8) / 8 / 4 + 1;
+			if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
+			MoveGoodsToStation(CargoSpec::default_map[CT_PASSENGERS], amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
+		}
 	}
 
 	/* Top town building generates 90, HQ can make up to 196. The
 	 * proportion passengers:mail is about the same as in the acceptance
 	 * equations. */
-	if (GB(r, 8, 8) < (196 / 4 / (6 - level))) {
-		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
-		if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-		MoveGoodsToStation(CT_MAIL, amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
+	if (CargoSpec::default_map[CT_MAIL] != CT_INVALID) {
+		if (GB(r, 8, 8) < (196 / 4 / (6 - level))) {
+			uint amt = GB(r, 8, 8) / 8 / 4 + 1;
+			if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
+			MoveGoodsToStation(CargoSpec::default_map[CT_MAIL], amt, SourceType::Headquarters, GetTileOwner(tile), stations.GetStations());
+		}
 	}
 }
 
