@@ -1170,6 +1170,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expand a
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Collapse all
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Reset all values
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no explanation available)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING1}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Default value: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Setting type: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Client setting (not stored in saves; affects all games)
@@ -5611,8 +5612,6 @@ STR_SHORT_DATE                                                  :{WHITE}{DATE_TI
 STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
-STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING1}{WHITE}
-STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING1}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
