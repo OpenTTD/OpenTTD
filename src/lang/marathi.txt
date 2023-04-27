@@ -727,10 +727,6 @@ STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोव
 
 # Autosave dropdown
 ###length 5
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :दर महिने
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :दर ३ महिने
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :दर ६ महिने
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :दर १२ महिने
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}भाषा
 

@@ -795,7 +795,6 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 # Autosave dropdown
 ###length 5
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој месец
 
 
 

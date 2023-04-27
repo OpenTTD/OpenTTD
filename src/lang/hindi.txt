@@ -278,7 +278,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :हाँग �
 
 # Autosave dropdown
 ###length 5
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :प्रत्येक माह
 
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% पूर्ण)
 

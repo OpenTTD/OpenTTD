@@ -934,10 +934,6 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Dewiswch
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Diffodd Awtogadw
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Bob mis
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Bob 3 mis
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Bob 6 mis
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Bob 12 mis
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Iaith
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Dewiswch yr iaith rhyngwyneb i'w defnyddio
