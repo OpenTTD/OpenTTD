@@ -243,32 +243,32 @@ static void WriteSavegameInfo(const char *name)
 
 	GamelogInfo(_load_check_data.gamelog_action, _load_check_data.gamelog_actions, &last_ottd_rev, &ever_modified, &removed_newgrfs);
 
-	char buf[8192];
-	char *p = buf;
-	p += seprintf(p, lastof(buf), "Name:         %s\n", name);
-	p += seprintf(p, lastof(buf), "Savegame ver: %d\n", _sl_version);
-	p += seprintf(p, lastof(buf), "NewGRF ver:   0x%08X\n", last_ottd_rev);
-	p += seprintf(p, lastof(buf), "Modified:     %d\n", ever_modified);
+	std::string message;
+	message.reserve(1024);
+	fmt::format_to(std::back_inserter(message), "Name:         {}\n", name);
+	fmt::format_to(std::back_inserter(message), "Savegame ver: {}\n", _sl_version);
+	fmt::format_to(std::back_inserter(message), "NewGRF ver:   0x{:08X}\n", last_ottd_rev);
+	fmt::format_to(std::back_inserter(message), "Modified:     {}\n", ever_modified);
 
 	if (removed_newgrfs) {
-		p += seprintf(p, lastof(buf), "NewGRFs have been removed\n");
+		fmt::format_to(std::back_inserter(message), "NewGRFs have been removed\n");
 	}
 
-	p = strecpy(p, "NewGRFs:\n", lastof(buf));
+	message += "NewGRFs:\n";
 	if (_load_check_data.HasNewGrfs()) {
 		for (GRFConfig *c = _load_check_data.grfconfig; c != nullptr; c = c->next) {
 			char md5sum[33];
 			md5sumToString(md5sum, lastof(md5sum), HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum);
-			p += seprintf(p, lastof(buf), "%08X %s %s\n", c->ident.grfid, md5sum, c->filename);
+			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", c->ident.grfid, md5sum, c->filename);
 		}
 	}
 
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
 #if !defined(_WIN32)
-	printf("%s\n", buf);
+	printf("%s\n", message.c_str());
 #else
-	ShowInfoI(buf);
+	ShowInfoI(message);
 #endif
 }
 
