@@ -567,7 +567,7 @@ void Win32SetCurrentLocaleName(const char *iso_code)
 	MultiByteToWideChar(CP_UTF8, 0, iso, -1, _cur_iso_locale, lengthof(_cur_iso_locale));
 }
 
-int OTTDStringCompare(const char *s1, const char *s2)
+int OTTDStringCompare(std::string_view s1, std::string_view s2)
 {
 	typedef int (WINAPI *PFNCOMPARESTRINGEX)(LPCWSTR, DWORD, LPCWCH, int, LPCWCH, int, LPVOID, LPVOID, LPARAM);
 	static PFNCOMPARESTRINGEX _CompareStringEx = nullptr;
@@ -588,15 +588,15 @@ int OTTDStringCompare(const char *s1, const char *s2)
 
 	if (_CompareStringEx != nullptr) {
 		/* CompareStringEx takes UTF-16 strings, even in ANSI-builds. */
-		int len_s1 = MultiByteToWideChar(CP_UTF8, 0, s1, -1, nullptr, 0);
-		int len_s2 = MultiByteToWideChar(CP_UTF8, 0, s2, -1, nullptr, 0);
+		int len_s1 = MultiByteToWideChar(CP_UTF8, 0, s1.data(), (int)s1.size(), nullptr, 0);
+		int len_s2 = MultiByteToWideChar(CP_UTF8, 0, s2.data(), (int)s2.size(), nullptr, 0);
 
 		if (len_s1 != 0 && len_s2 != 0) {
 			std::wstring str_s1(len_s1, L'\0'); // len includes terminating null
 			std::wstring str_s2(len_s2, L'\0');
 
-			MultiByteToWideChar(CP_UTF8, 0, s1, -1, str_s1.data(), len_s1);
-			MultiByteToWideChar(CP_UTF8, 0, s2, -1, str_s2.data(), len_s2);
+			MultiByteToWideChar(CP_UTF8, 0, s1.data(), (int)s1.size(), str_s1.data(), len_s1);
+			MultiByteToWideChar(CP_UTF8, 0, s2.data(), (int)s2.size(), str_s2.data(), len_s2);
 
 			int result = _CompareStringEx(_cur_iso_locale, LINGUISTIC_IGNORECASE | SORT_DIGITSASNUMBERS, str_s1.c_str(), -1, str_s2.c_str(), -1, nullptr, nullptr, 0);
 			if (result != 0) return result;

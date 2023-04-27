@@ -202,7 +202,7 @@ static bool IndustryTypeNameSorter(const IndustryType &a, const IndustryType &b)
 	const IndustrySpec *indsp2 = GetIndustrySpec(b);
 	GetString(industry_name[1], indsp2->name, lastof(industry_name[1]));
 
-	int r = strnatcmp(industry_name[0], industry_name[1]); // Sort by name (natural sorting).
+	int r = StrNaturalCompare(industry_name[0], industry_name[1]); // Sort by name (natural sorting).
 
 	/* If the names are equal, sort by industry type. */
 	return (r != 0) ? r < 0 : (a < b);
@@ -1498,7 +1498,7 @@ protected:
 	/** Sort industries by name */
 	static bool IndustryNameSorter(const Industry * const &a, const Industry * const &b)
 	{
-		int r = strnatcmp(a->GetCachedName(), b->GetCachedName()); // Sort by name (natural sorting).
+		int r = StrNaturalCompare(a->GetCachedName(), b->GetCachedName()); // Sort by name (natural sorting).
 		if (r == 0) return a->index < b->index;
 		return r < 0;
 	}

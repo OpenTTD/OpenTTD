@@ -1956,12 +1956,10 @@ const char *GetCurrentLocale(const char *param);
 
 bool StringIDSorter(const StringID &a, const StringID &b)
 {
-	char stra[512];
-	char strb[512];
-	GetString(stra, a, lastof(stra));
-	GetString(strb, b, lastof(strb));
+	std::string stra = GetString(a);
+	std::string strb = GetString(b);
 
-	return strnatcmp(stra, strb) < 0;
+	return StrNaturalCompare(stra, strb) < 0;
 }
 
 /**

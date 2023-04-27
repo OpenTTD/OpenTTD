@@ -258,7 +258,7 @@ protected:
 	/** Sort stations by their name */
 	static bool StationNameSorter(const Station * const &a, const Station * const &b)
 	{
-		int r = strnatcmp(a->GetCachedName(), b->GetCachedName()); // Sort by name (natural sorting).
+		int r = StrNaturalCompare(a->GetCachedName(), b->GetCachedName()); // Sort by name (natural sorting).
 		if (r == 0) return a->index < b->index;
 		return r < 0;
 	}
@@ -1186,7 +1186,7 @@ bool CargoSorter::SortStation(StationID st1, StationID st2) const
 		return order == SO_DESCENDING;
 	}
 
-	int res = strnatcmp(Station::Get(st1)->GetCachedName(), Station::Get(st2)->GetCachedName()); // Sort by name (natural sorting).
+	int res = StrNaturalCompare(Station::Get(st1)->GetCachedName(), Station::Get(st2)->GetCachedName()); // Sort by name (natural sorting).
 	if (res == 0) {
 		return this->SortId(st1, st2);
 	} else {

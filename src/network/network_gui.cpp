@@ -289,7 +289,7 @@ protected:
 	/** Sort servers by name. */
 	static bool NGameNameSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
-		int r = strnatcmp(a->info.server_name.c_str(), b->info.server_name.c_str(), true); // Sort by name (natural sorting).
+		int r = StrNaturalCompare(a->info.server_name, b->info.server_name, true); // Sort by name (natural sorting).
 		if (r == 0) r = a->connection_string.compare(b->connection_string);
 
 		return r < 0;

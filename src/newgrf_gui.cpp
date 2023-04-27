@@ -1428,7 +1428,7 @@ private:
 	/** Sort grfs by name. */
 	static bool NameSorter(const GRFConfig * const &a, const GRFConfig * const &b)
 	{
-		int i = strnatcmp(a->GetName(), b->GetName(), true); // Sort by name (natural sorting).
+		int i = StrNaturalCompare(a->GetName(), b->GetName(), true); // Sort by name (natural sorting).
 		if (i != 0) return i < 0;
 
 		i = a->version - b->version;
