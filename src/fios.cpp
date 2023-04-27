@@ -216,7 +216,7 @@ static std::string FiosMakeFilename(const std::string *path, const char *name, c
 
 	/* Don't append the extension if it is already there */
 	const char *period = strrchr(name, '.');
-	if (period != nullptr && strcasecmp(period, ext) == 0) ext = "";
+	if (period != nullptr && StrEqualsIgnoreCase(period, ext)) ext = "";
 
 	return buf + PATHSEP + name + ext;
 }
@@ -473,14 +473,14 @@ FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &f
 	/* Don't crash if we supply no extension */
 	if (ext == nullptr) return FIOS_TYPE_INVALID;
 
-	if (strcasecmp(ext, ".sav") == 0) {
+	if (StrEqualsIgnoreCase(ext, ".sav")) {
 		GetFileTitle(file, title, last, SAVE_DIR);
 		return FIOS_TYPE_FILE;
 	}
 
 	if (fop == SLO_LOAD) {
-		if (strcasecmp(ext, ".ss1") == 0 || strcasecmp(ext, ".sv1") == 0 ||
-				strcasecmp(ext, ".sv2") == 0) {
+		if (StrEqualsIgnoreCase(ext, ".ss1") || StrEqualsIgnoreCase(ext, ".sv1") ||
+				StrEqualsIgnoreCase(ext, ".sv2")) {
 			if (title != nullptr) GetOldSaveGameName(file, title, last);
 			return FIOS_TYPE_OLDFILE;
 		}
@@ -523,13 +523,13 @@ static FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const std::st
 	 * .SCN OpenTTD style scenario file
 	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
 	 * .SS0 Transport Tycoon Deluxe preset scenario */
-	if (strcasecmp(ext, ".scn") == 0) {
+	if (StrEqualsIgnoreCase(ext, ".scn")) {
 		GetFileTitle(file, title, last, SCENARIO_DIR);
 		return FIOS_TYPE_SCENARIO;
 	}
 
 	if (fop == SLO_LOAD) {
-		if (strcasecmp(ext, ".sv0") == 0 || strcasecmp(ext, ".ss0") == 0 ) {
+		if (StrEqualsIgnoreCase(ext, ".sv0") || StrEqualsIgnoreCase(ext, ".ss0")) {
 			GetOldSaveGameName(file, title, last);
 			return FIOS_TYPE_OLD_SCENARIO;
 		}
@@ -568,10 +568,10 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::s
 	FiosType type = FIOS_TYPE_INVALID;
 
 #ifdef WITH_PNG
-	if (strcasecmp(ext, ".png") == 0) type = FIOS_TYPE_PNG;
+	if (StrEqualsIgnoreCase(ext, ".png")) type = FIOS_TYPE_PNG;
 #endif /* WITH_PNG */
 
-	if (strcasecmp(ext, ".bmp") == 0) type = FIOS_TYPE_BMP;
+	if (StrEqualsIgnoreCase(ext, ".bmp")) type = FIOS_TYPE_BMP;
 
 	if (type == FIOS_TYPE_INVALID) return FIOS_TYPE_INVALID;
 
@@ -760,7 +760,7 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 
 	/* Callback for FiosFileScanner. */
 	static fios_getlist_callback_proc *proc = [](SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last) {
-		if (strcasecmp(ext, ".sav") == 0 && StrStartsWith(file, _prefix)) return FIOS_TYPE_FILE;
+		if (StrEqualsIgnoreCase(ext, ".sav") && StrStartsWith(file, _prefix)) return FIOS_TYPE_FILE;
 		return FIOS_TYPE_INVALID;
 	};
 

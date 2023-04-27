@@ -115,7 +115,7 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 		/* This script was already registered */
 #ifdef _WIN32
 		/* Windows doesn't care about the case */
-		if (strcasecmp(this->info_list[script_name]->GetMainScript(), info->GetMainScript()) == 0) {
+		if (StrEqualsIgnoreCase(this->info_list[script_name]->GetMainScript(), info->GetMainScript()) == 0) {
 #else
 		if (strcmp(this->info_list[script_name]->GetMainScript(), info->GetMainScript()) == 0) {
 #endif
@@ -231,7 +231,7 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 
 			/* Check the extension. */
 			const char *ext = strrchr(tar.first.c_str(), '.');
-			if (ext == nullptr || strcasecmp(ext, ".nut") != 0) continue;
+			if (ext == nullptr || !StrEqualsIgnoreCase(ext, ".nut")) continue;
 
 			checksum.AddFile(tar.first, 0, tar_filename);
 		}

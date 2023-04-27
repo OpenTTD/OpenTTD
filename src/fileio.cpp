@@ -1142,7 +1142,7 @@ static bool MatchesExtension(const char *extension, const char *filename)
 	if (extension == nullptr) return true;
 
 	const char *ext = strrchr(filename, extension[0]);
-	return ext != nullptr && strcasecmp(ext, extension) == 0;
+	return ext != nullptr && StrEqualsIgnoreCase(ext, extension);
 }
 
 /**

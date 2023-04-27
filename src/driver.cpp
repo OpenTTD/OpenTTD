@@ -160,7 +160,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 			if (d->type != type) continue;
 
 			/* Check driver name */
-			if (strcasecmp(dname.c_str(), d->name) != 0) continue;
+			if (!StrEqualsIgnoreCase(dname, d->name)) continue;
 
 			/* Found our driver, let's try it */
 			Driver *newd = d->CreateInstance();
