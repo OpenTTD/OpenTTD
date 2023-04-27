@@ -21,6 +21,8 @@
 #include "safeguards.h"
 
 CargoSpec CargoSpec::array[NUM_CARGO];
+std::array<CargoLabel, NUM_ORIGINAL_CARGO> CargoSpec::default_labels;
+std::array<CargoID, NUM_ORIGINAL_CARGO> CargoSpec::default_map;
 
 /**
  * Bitmask of cargo types available. This includes phony cargoes like regearing cargoes.
@@ -69,6 +71,11 @@ void SetupCargoForClimate(LandscapeID l)
 				break;
 			}
 		}
+	}
+
+	/* Populate default cargo labels for climate. */
+	for (size_t i = 0; i < CargoSpec::default_labels.size(); i++) {
+		CargoSpec::default_labels[i] = CargoSpec::array[i].label;
 	}
 }
 

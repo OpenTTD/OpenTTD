@@ -9170,8 +9170,13 @@ static void FinaliseEngineArray()
 }
 
 /** Check for invalid cargoes */
-static void FinaliseCargoArray()
+void FinaliseCargoArray()
 {
+	/* Populate cargo translation map from default cargos. */
+	for (size_t i = 0; i < CargoSpec::default_map.size(); i++) {
+		CargoSpec::default_map[i] = GetCargoIDByLabel(CargoSpec::default_labels[i]);
+	}
+
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		CargoSpec *cs = CargoSpec::Get(c);
 		if (!cs->IsValid()) {

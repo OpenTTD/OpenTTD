@@ -18,6 +18,7 @@
 #include "core/bitmath_func.hpp"
 #include "core/span_type.hpp"
 #include <vector>
+#include <array>
 
 /** Globally unique label of a cargo type. */
 typedef uint32 CargoLabel;
@@ -173,10 +174,14 @@ struct CargoSpec {
 	 */
 	static IterateWrapper Iterate(size_t from = 0) { return IterateWrapper(from); }
 
+	static std::array<CargoID, NUM_ORIGINAL_CARGO> default_map; ///< Translation map for default cargo types.
+
 private:
 	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs
+	static std::array<CargoLabel, NUM_ORIGINAL_CARGO> default_labels; ///< Translation labels for default cargo types.
 
 	friend void SetupCargoForClimate(LandscapeID l);
+	friend void FinaliseCargoArray();
 };
 
 extern CargoTypes _cargo_mask;
