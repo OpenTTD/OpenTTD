@@ -168,14 +168,14 @@ char *CDECL str_fmt(const char *str, ...)
  */
 std::string FormatArrayAsHex(span<const byte> data)
 {
-	std::ostringstream ss;
-	ss << std::uppercase << std::setfill('0') << std::setw(2) << std::hex;
+	std::string str;
+	str.reserve(data.size() * 2 + 1);
 
 	for (auto b : data) {
-		ss << b;
+		fmt::format_to(std::back_inserter(str), "{:02X}", b);
 	}
 
-	return ss.str();
+	return str;
 }
 
 /**
