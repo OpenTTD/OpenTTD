@@ -58,7 +58,7 @@ bool FiosItem::operator< (const FiosItem &other) const
 	if ((_savegame_sort_order & SORT_BY_NAME) == 0 && (*this).mtime != other.mtime) {
 		r = (*this).mtime - other.mtime;
 	} else {
-		r = strnatcmp((*this).title, other.title);
+		r = StrNaturalCompare((*this).title, other.title);
 	}
 	if (r == 0) return false;
 	return (_savegame_sort_order & SORT_DESCENDING) ? r > 0 : r < 0;

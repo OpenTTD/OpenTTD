@@ -1345,7 +1345,7 @@ static bool VehicleNameSorter(const Vehicle * const &a, const Vehicle * const &b
 		GetString(last_name[1], STR_VEHICLE_NAME, lastof(last_name[1]));
 	}
 
-	int r = strnatcmp(last_name[0], last_name[1]); // Sort by name (natural sorting).
+	int r = StrNaturalCompare(last_name[0], last_name[1]); // Sort by name (natural sorting).
 	return (r != 0) ? r < 0: VehicleNumberSorter(a, b);
 }
 

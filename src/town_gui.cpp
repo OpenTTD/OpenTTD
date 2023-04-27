@@ -746,7 +746,7 @@ private:
 	/** Sort by town name */
 	static bool TownNameSorter(const Town * const &a, const Town * const &b)
 	{
-		return strnatcmp(a->GetCachedName(), b->GetCachedName()) < 0; // Sort by name (natural sorting).
+		return StrNaturalCompare(a->GetCachedName(), b->GetCachedName()) < 0; // Sort by name (natural sorting).
 	}
 
 	/** Sort by population (default descending, as big towns are of the most interest). */

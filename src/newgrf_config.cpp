@@ -670,7 +670,7 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
  */
 static bool GRFSorter(GRFConfig * const &c1, GRFConfig * const &c2)
 {
-	return strnatcmp(c1->GetName(), c2->GetName()) < 0;
+	return StrNaturalCompare(c1->GetName(), c2->GetName()) < 0;
 }
 
 /**

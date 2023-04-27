@@ -432,7 +432,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Sort content by name. */
 	static bool NameSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
-		return strnatcmp(a->name.c_str(), b->name.c_str(), true) < 0; // Sort by name (natural sorting).
+		return StrNaturalCompare(a->name, b->name, true) < 0; // Sort by name (natural sorting).
 	}
 
 	/** Sort content by type. */
@@ -440,7 +440,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	{
 		int r = 0;
 		if (a->type != b->type) {
-			r = strnatcmp(content_type_strs[a->type], content_type_strs[b->type]);
+			r = StrNaturalCompare(content_type_strs[a->type], content_type_strs[b->type]);
 		}
 		if (r == 0) return NameSorter(a, b);
 		return r < 0;

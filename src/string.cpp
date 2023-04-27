@@ -36,7 +36,7 @@
 #endif
 
 #ifdef WITH_ICU_I18N
-/* Required by strnatcmp. */
+/* Required by StrNaturalCompare. */
 #	include <unicode/ustring.h>
 #	include "language.h"
 #	include "gfx_func.h"
@@ -766,9 +766,9 @@ char *strcasestr(const char *haystack, const char *needle)
  * @param str The string to skip the initial garbage of.
  * @return The string with the garbage skipped.
  */
-static const char *SkipGarbage(const char *str)
+static std::string_view SkipGarbage(std::string_view str)
 {
-	while (*str != '\0' && (*str < '0' || IsInsideMM(*str, ';', '@' + 1) || IsInsideMM(*str, '[', '`' + 1) || IsInsideMM(*str, '{', '~' + 1))) str++;
+	while (str.size() != 0 && (str[0] < '0' || IsInsideMM(str[0], ';', '@' + 1) || IsInsideMM(str[0], '[', '`' + 1) || IsInsideMM(str[0], '{', '~' + 1))) str.remove_prefix(1);
 	return str;
 }
 
@@ -780,7 +780,7 @@ static const char *SkipGarbage(const char *str)
  * @param ignore_garbage_at_front Skip punctuation characters in the front
  * @return Less than zero if s1 < s2, zero if s1 == s2, greater than zero if s1 > s2.
  */
-int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
+int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garbage_at_front)
 {
 	if (ignore_garbage_at_front) {
 		s1 = SkipGarbage(s1);

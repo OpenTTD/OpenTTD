@@ -52,10 +52,9 @@ void DropDownListStringItem::Draw(const Rect &r, bool sel, Colours bg_colour) co
  */
 /* static */ bool DropDownListStringItem::NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second)
 {
-	char buffer1[512], buffer2[512];
-	GetString(buffer1, static_cast<const DropDownListStringItem*>(first.get())->String(), lastof(buffer1));
-	GetString(buffer2, static_cast<const DropDownListStringItem*>(second.get())->String(), lastof(buffer2));
-	return strnatcmp(buffer1, buffer2) < 0;
+	std::string str1 = GetString(static_cast<const DropDownListStringItem*>(first.get())->String());
+	std::string str2 = GetString(static_cast<const DropDownListStringItem*>(second.get())->String());
+	return StrNaturalCompare(str1, str2) < 0;
 }
 
 StringID DropDownListParamStringItem::String() const

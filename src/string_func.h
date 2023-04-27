@@ -58,6 +58,7 @@ void StrTrimInPlace(std::string &str);
 
 [[nodiscard]] int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2);
 [[nodiscard]] bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str2);
+[[nodiscard]] int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garbage_at_front = false);
 
 /**
  * Check if a string buffer is empty.
@@ -276,7 +277,5 @@ static inline bool IsWhitespace(WChar c)
 #	define DEFINE_STRCASESTR
 char *strcasestr(const char *haystack, const char *needle);
 #endif /* strcasestr is available */
-
-int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front = false);
 
 #endif /* STRING_FUNC_H */
