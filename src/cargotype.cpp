@@ -42,13 +42,7 @@ void SetupCargoForClimate(LandscapeID l)
 	assert(l < lengthof(_default_climate_cargo));
 
 	/* Reset and disable all cargo types */
-	for (CargoID i = 0; i < lengthof(CargoSpec::array); i++) {
-		*CargoSpec::Get(i) = {};
-		CargoSpec::Get(i)->bitnum = INVALID_CARGO_BITNUM;
-
-		/* Set defaults for newer properties, which old GRFs do not know */
-		CargoSpec::Get(i)->multiplier = 0x100;
-	}
+	std::fill(std::begin(CargoSpec::array), std::end(CargoSpec::array), CargoSpec{});
 
 	_cargo_mask = 0;
 
