@@ -8949,8 +8949,8 @@ GRFFile::~GRFFile()
 static void CalculateRefitMasks()
 {
 	CargoTypes original_known_cargoes = 0;
-	for (int ct = 0; ct != NUM_ORIGINAL_CARGO; ++ct) {
-		CargoID cid = GetDefaultCargoID(_settings_game.game_creation.landscape, static_cast<CargoType>(ct));
+	for (size_t ct = 0; ct < CargoSpec::default_map.size(); ++ct) {
+		CargoID cid = CargoSpec::default_map[ct];
 		if (cid != CT_INVALID) SetBit(original_known_cargoes, cid);
 	}
 
@@ -9039,8 +9039,8 @@ static void CalculateRefitMasks()
 			}
 			_gted[engine].UpdateRefittability(_gted[engine].cargo_allowed != 0);
 
-			/* Translate cargo_type using the original climate-specific cargo table. */
-			ei->cargo_type = GetDefaultCargoID(_settings_game.game_creation.landscape, static_cast<CargoType>(ei->cargo_type));
+			/* Translate cargo_type using the default cargo translation map. */
+			if (ei->cargo_type != CT_INVALID) ei->cargo_type = CargoSpec::default_map[ei->cargo_type];
 			if (ei->cargo_type != CT_INVALID) ClrBit(_gted[engine].ctt_exclude_mask, ei->cargo_type);
 		}
 

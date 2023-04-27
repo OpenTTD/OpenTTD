@@ -190,7 +190,6 @@ extern CargoTypes _standard_cargo_mask;
 void SetupCargoForClimate(LandscapeID l);
 CargoID GetCargoIDByLabel(CargoLabel cl);
 CargoID GetCargoIDByBitnum(uint8 bitnum);
-CargoID GetDefaultCargoID(LandscapeID l, CargoType ct);
 
 void InitializeSortedCargoSpecs();
 extern std::vector<const CargoSpec *> _sorted_cargo_specs;
