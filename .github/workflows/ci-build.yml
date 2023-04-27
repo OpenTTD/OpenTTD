@@ -69,24 +69,29 @@ jobs:
         echo "::endgroup::"
 
   linux:
-    name: Linux
-
     strategy:
       fail-fast: false
       matrix:
         include:
-        - compiler: clang
+        - name: Clang
+          compiler: clang
           cxxcompiler: clang++
-          libsdl: libsdl2-dev
-        - compiler: gcc
+          libraries: libsdl2-dev
+        - name: GCC - SDL2
+          compiler: gcc
           cxxcompiler: g++
-          libsdl: libsdl2-dev
-        - compiler: gcc
+          libraries: libsdl2-dev
+        - name: GCC - SDL1.2
+          compiler: gcc
           cxxcompiler: g++
-          libsdl: libsdl1.2-dev
-        - compiler: gcc
+          libraries: libsdl1.2-dev
+        - name: GCC - Dedicated
+          compiler: gcc
           cxxcompiler: g++
           extra-cmake-parameters: -DOPTION_DEDICATED=ON -DCMAKE_CXX_FLAGS_INIT="-DRANDOM_DEBUG"
+          # Compile without SDL / SDL2, as that should compile fine too.
+
+    name: Linux (${{ matrix.name }})
 
     runs-on: ubuntu-20.04
     env:
@@ -111,7 +116,7 @@ jobs:
           libicu-dev \
           liblzma-dev \
           liblzo2-dev \
-          ${{ matrix.libsdl }} \
+          ${{ matrix.libraries }} \
           zlib1g-dev \
           # EOF
         echo "::endgroup::"
@@ -156,14 +161,14 @@ jobs:
         ctest -j $(nproc) --timeout 120
 
   macos:
-    name: Mac OS
-
     strategy:
       fail-fast: false
       matrix:
         include:
         - arch: x64
           full_arch: x86_64
+
+    name: Mac OS (${{ matrix.arch }})
 
     runs-on: macos-latest
     env:
@@ -247,13 +252,13 @@ jobs:
         ctest -j $(sysctl -n hw.logicalcpu) --timeout 120
 
   windows:
-    name: Windows
-
     strategy:
       fail-fast: false
       matrix:
         os: [windows-latest, windows-2019]
         arch: [x86, x64]
+
+    name: Windows (${{ matrix.os }} / ${{ matrix.arch }})
 
     runs-on: ${{ matrix.os }}
 
@@ -338,8 +343,6 @@ jobs:
 
 
   msys2:
-    name: msys2
-
     strategy:
       fail-fast: false
       matrix:
@@ -348,6 +351,8 @@ jobs:
             arch: x86_64
           - msystem: MINGW32
             arch: i686
+
+    name: MinGW (${{ matrix.arch }})
 
     runs-on: windows-latest
 
