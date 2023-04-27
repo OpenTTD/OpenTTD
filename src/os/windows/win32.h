@@ -56,7 +56,7 @@ private:
 };
 
 char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen);
-wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen);
+wchar_t *convert_to_fs(const std::string_view name, wchar_t *utf16_buf, size_t buflen);
 
 void Win32SetCurrentLocaleName(const char *iso_code);
 int OTTDStringCompare(const char *s1, const char *s2);

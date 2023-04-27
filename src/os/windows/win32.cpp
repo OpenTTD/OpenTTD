@@ -338,7 +338,7 @@ void ShowInfoI(const std::string &str)
 			/* We need to put the text in a separate buffer because the default
 			 * buffer in OTTD2FS might not be large enough (512 chars). */
 			wchar_t help_msg_buf[8192];
-			MessageBox(GetActiveWindow(), convert_to_fs(str.c_str(), help_msg_buf, lengthof(help_msg_buf)), L"OpenTTD", MB_ICONINFORMATION | MB_OK);
+			MessageBox(GetActiveWindow(), convert_to_fs(str, help_msg_buf, lengthof(help_msg_buf)), L"OpenTTD", MB_ICONINFORMATION | MB_OK);
 		}
 		MyShowCursor(old);
 	}
@@ -397,7 +397,7 @@ void DetermineBasePaths(const char *exe)
 	} else {
 		/* Use the folder of the config file as working directory. */
 		wchar_t config_dir[MAX_PATH];
-		wcsncpy(path, convert_to_fs(_config_file.c_str(), path, lengthof(path)), lengthof(path));
+		wcsncpy(path, convert_to_fs(_config_file, path, lengthof(path)), lengthof(path));
 		if (!GetFullPathName(path, lengthof(config_dir), config_dir, nullptr)) {
 			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[SP_WORKING_DIR].clear();
@@ -520,10 +520,10 @@ char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
  * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return pointer to system_buf. If conversion fails the string is of zero-length
  */
-wchar_t *convert_to_fs(const char *name, wchar_t *system_buf, size_t buflen)
+wchar_t *convert_to_fs(const std::string_view name, wchar_t *system_buf, size_t buflen)
 {
-	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, system_buf, (int)buflen);
-	if (len == 0) system_buf[0] = '\0';
+	int len = MultiByteToWideChar(CP_UTF8, 0, name.data(), (int)name.size(), system_buf, (int)buflen);
+	system_buf[len] = '\0';
 
 	return system_buf;
 }
