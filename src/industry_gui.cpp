@@ -2401,7 +2401,7 @@ struct CargoesRow {
 			/* Houses only display what is demanded. */
 			for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
 				CargoID cid = cargo_fld->u.cargo.vertical_cargoes[i];
-				if (cid == CT_PASSENGERS || cid == CT_MAIL) cargo_fld->ConnectCargo(cid, true);
+				if (cid == CargoSpec::default_map[CT_PASSENGERS] || cid == CargoSpec::default_map[CT_MAIL]) cargo_fld->ConnectCargo(cid, true);
 			}
 		}
 	}
@@ -2653,9 +2653,11 @@ struct IndustryCargoesWindow : public Window {
 	 */
 	static bool HousesCanSupply(const CargoID *cargoes, uint length)
 	{
+		CargoID pass = CargoSpec::default_map[CT_PASSENGERS];
+		CargoID mail = CargoSpec::default_map[CT_MAIL];
 		for (uint i = 0; i < length; i++) {
 			if (cargoes[i] == INVALID_CARGO) continue;
-			if (cargoes[i] == CT_PASSENGERS || cargoes[i] == CT_MAIL) return true;
+			if (cargoes[i] == pass || cargoes[i] == mail) return true;
 		}
 		return false;
 	}
