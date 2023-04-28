@@ -383,9 +383,9 @@ void MakeNewgameSettingsLive()
 void OpenBrowser(const char *url)
 {
 	/* Make sure we only accept urls that are sure to open a browser. */
-	if (strstr(url, "http://") != url && strstr(url, "https://") != url) return;
-
-	OSOpenBrowser(url);
+	if (StrStartsWith(url, "http://") || StrStartsWith(url, "https://")) {
+		OSOpenBrowser(url);
+	}
 }
 
 /** Callback structure of statements to be executed after the NewGRF scan. */
