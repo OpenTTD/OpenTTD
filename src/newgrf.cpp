@@ -1586,7 +1586,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				svi->cost_factor = buf->ReadByte();
 				break;
 
-			case PROP_SHIP_SPEED: // 0x0B Speed (1 unit is 0.5 km-ish/h)
+			case PROP_SHIP_SPEED: // 0x0B Speed (1 unit is 0.5 km-ish/h). Use 0x23 to achieve higher speeds.
 				svi->max_speed = buf->ReadByte();
 				break;
 
@@ -1712,6 +1712,14 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x22: // Callback additional mask
 				SB(ei->callback_mask, 8, 8, buf->ReadByte());
+				break;
+
+			case 0x23: // Speed (1 unit is 0.5 km-ish/h)
+				svi->max_speed = buf->ReadWord();
+				break;
+
+			case 0x24: // Acceleration (1 unit is 0.5 km-ish/h per tick)
+				svi->acceleration = std::max<uint8_t>(1, buf->ReadByte());
 				break;
 
 			default:

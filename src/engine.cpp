@@ -87,6 +87,8 @@ Engine::Engine(VehicleType type, EngineID base)
 		if (type == VEH_ROAD) this->u.road.tractive_effort = 0x4C;
 		/* Aircraft must have INVALID_CARGO as default, as there is no property */
 		if (type == VEH_AIRCRAFT) this->info.cargo_type = INVALID_CARGO;
+		/* Ships must have a non-zero acceleration. */
+		if (type == VEH_SHIP) this->u.ship.acceleration = 1;
 		/* Set visual effect to the default value */
 		switch (type) {
 			case VEH_TRAIN: this->u.rail.visual_effect = VE_DEFAULT; break;

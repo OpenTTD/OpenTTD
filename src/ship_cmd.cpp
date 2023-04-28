@@ -449,8 +449,7 @@ static bool CheckShipLeaveDepot(Ship *v)
 static uint ShipAccelerate(Vehicle *v)
 {
 	uint speed;
-
-	speed = std::min<uint>(v->cur_speed + 1, v->vcache.cached_max_speed);
+	speed = std::min<uint>(v->cur_speed + v->acceleration, v->vcache.cached_max_speed);
 	speed = std::min<uint>(speed, v->current_order.GetMaxSpeed() * 2);
 
 	/* updates statusbar only if speed have changed to save CPU time */
@@ -745,6 +744,8 @@ static void ShipController(Ship *v)
 
 	const uint number_of_steps = ShipAccelerate(v);
 	for (uint i = 0; i < number_of_steps; ++i) {
+		if (ShipMoveUpDownOnLock(v)) return;
+
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 		if (v->state != TRACK_BIT_WORMHOLE) {
 			/* Not on a bridge */
@@ -949,6 +950,7 @@ CommandCost CmdBuildShip(DoCommandFlag flags, TileIndex tile, const Engine *e, V
 		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = Random();
 
+		v->acceleration = svi->acceleration;
 		v->UpdateCache();
 
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
