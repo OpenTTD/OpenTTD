@@ -1035,7 +1035,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		const Engine *e = Engine::Get(item.engine_id);
 		bool hidden = HasBit(e->company_hidden, _local_company);
 		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
-		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : (TC_NO_SHADE | ((hidden | shaded) ? TC_GREY : TC_BLACK));
+		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : ((hidden | shaded) ? (TC_GREY | TC_FORCED | TC_NO_SHADE) : TC_BLACK);
 
 		SetDParam(0, PackEngineNameDParam(item.engine_id, EngineNameContext::PurchaseList, item.indent));
 		Rect itr = tr.Indent(indent, rtl);
