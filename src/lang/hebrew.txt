@@ -142,39 +142,39 @@ STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}נס
-STR_ABBREV_COAL                                                 :{TINY_FONT}פחם
-STR_ABBREV_MAIL                                                 :{TINY_FONT}דו
-STR_ABBREV_OIL                                                  :{TINY_FONT}נפ
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}בק
-STR_ABBREV_GOODS                                                :{TINY_FONT}מצ
-STR_ABBREV_GRAIN                                                :{TINY_FONT}תב
-STR_ABBREV_WOOD                                                 :{TINY_FONT}עץ
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}עב
-STR_ABBREV_STEEL                                                :{TINY_FONT}בר
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}מע
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}ענ
-STR_ABBREV_MAIZE                                                :{TINY_FONT}תי
-STR_ABBREV_FRUIT                                                :{TINY_FONT}פר
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}יה
-STR_ABBREV_FOOD                                                 :{TINY_FONT}מז
-STR_ABBREV_PAPER                                                :{TINY_FONT}ני
-STR_ABBREV_GOLD                                                 :{TINY_FONT}זה
-STR_ABBREV_WATER                                                :{TINY_FONT}מים
-STR_ABBREV_WHEAT                                                :{TINY_FONT}חט
-STR_ABBREV_RUBBER                                               :{TINY_FONT}גמ
-STR_ABBREV_SUGAR                                                :{TINY_FONT}סכ
-STR_ABBREV_TOYS                                                 :{TINY_FONT}צע
-STR_ABBREV_SWEETS                                               :{TINY_FONT}מם
-STR_ABBREV_COLA                                                 :{TINY_FONT}קולה
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}סוכר על מקל
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}בועות
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}טפ
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}בטריות
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}פל
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}ממ
-STR_ABBREV_NONE                                                 :{TINY_FONT}כל
-STR_ABBREV_ALL                                                  :{TINY_FONT}הכל
+STR_ABBREV_PASSENGERS                                           :נס
+STR_ABBREV_COAL                                                 :פחם
+STR_ABBREV_MAIL                                                 :דו
+STR_ABBREV_OIL                                                  :נפ
+STR_ABBREV_LIVESTOCK                                            :בק
+STR_ABBREV_GOODS                                                :מצ
+STR_ABBREV_GRAIN                                                :תב
+STR_ABBREV_WOOD                                                 :עץ
+STR_ABBREV_IRON_ORE                                             :עב
+STR_ABBREV_STEEL                                                :בר
+STR_ABBREV_VALUABLES                                            :מע
+STR_ABBREV_COPPER_ORE                                           :ענ
+STR_ABBREV_MAIZE                                                :תי
+STR_ABBREV_FRUIT                                                :פר
+STR_ABBREV_DIAMONDS                                             :יה
+STR_ABBREV_FOOD                                                 :מז
+STR_ABBREV_PAPER                                                :ני
+STR_ABBREV_GOLD                                                 :זה
+STR_ABBREV_WATER                                                :מים
+STR_ABBREV_WHEAT                                                :חט
+STR_ABBREV_RUBBER                                               :גמ
+STR_ABBREV_SUGAR                                                :סכ
+STR_ABBREV_TOYS                                                 :צע
+STR_ABBREV_SWEETS                                               :מם
+STR_ABBREV_COLA                                                 :קולה
+STR_ABBREV_CANDYFLOSS                                           :סוכר על מקל
+STR_ABBREV_BUBBLES                                              :בועות
+STR_ABBREV_TOFFEE                                               :טפ
+STR_ABBREV_BATTERIES                                            :בטריות
+STR_ABBREV_PLASTIC                                              :פל
+STR_ABBREV_FIZZY_DRINKS                                         :ממ
+STR_ABBREV_NONE                                                 :כל
+STR_ABBREV_ALL                                                  :הכל
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{P 0 "נוסע " ""}{COMMA}{P "" " נוסעים"}

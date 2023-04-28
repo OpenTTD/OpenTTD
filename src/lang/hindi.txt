@@ -54,7 +54,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} �
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_COAL                                                 :{TINY_FONT}कोयला
+STR_ABBREV_COAL                                                 :कोयला
 
 # 'Mode' of transport for cargoes
 

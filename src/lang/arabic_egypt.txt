@@ -128,39 +128,39 @@ STR_QUANTITY_N_A                                                :غير متاح
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}راكب
-STR_ABBREV_COAL                                                 :{TINY_FONT}فحم
-STR_ABBREV_MAIL                                                 :{TINY_FONT}بريد
-STR_ABBREV_OIL                                                  :{TINY_FONT}نفط
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}ماشية
-STR_ABBREV_GOODS                                                :{TINY_FONT}بضائع
-STR_ABBREV_GRAIN                                                :{TINY_FONT}حبوب
-STR_ABBREV_WOOD                                                 :{TINY_FONT}خشب
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}خام حديد
-STR_ABBREV_STEEL                                                :{TINY_FONT}حديد
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}ممتلكات ثمينة
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}خام النحاس
-STR_ABBREV_MAIZE                                                :{TINY_FONT}ذرة
-STR_ABBREV_FRUIT                                                :{TINY_FONT}فواكة
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}جواهر
-STR_ABBREV_FOOD                                                 :{TINY_FONT}طعام
-STR_ABBREV_PAPER                                                :{TINY_FONT}ورق
-STR_ABBREV_GOLD                                                 :{TINY_FONT}ذهب
-STR_ABBREV_WATER                                                :{TINY_FONT}ماء
-STR_ABBREV_WHEAT                                                :{TINY_FONT}قمح
-STR_ABBREV_RUBBER                                               :{TINY_FONT}مطاط
-STR_ABBREV_SUGAR                                                :{TINY_FONT}سكر
-STR_ABBREV_TOYS                                                 :{TINY_FONT}العاب
-STR_ABBREV_SWEETS                                               :{TINY_FONT}حلويات
-STR_ABBREV_COLA                                                 :{TINY_FONT}كولا
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}سكر نبات
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}فقاعات
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}توفي
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}بطاريات
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}بلاستيك
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}شراب مخفوق
-STR_ABBREV_NONE                                                 :{TINY_FONT}لا شيء
-STR_ABBREV_ALL                                                  :{TINY_FONT}الكل
+STR_ABBREV_PASSENGERS                                           :راكب
+STR_ABBREV_COAL                                                 :فحم
+STR_ABBREV_MAIL                                                 :بريد
+STR_ABBREV_OIL                                                  :نفط
+STR_ABBREV_LIVESTOCK                                            :ماشية
+STR_ABBREV_GOODS                                                :بضائع
+STR_ABBREV_GRAIN                                                :حبوب
+STR_ABBREV_WOOD                                                 :خشب
+STR_ABBREV_IRON_ORE                                             :خام حديد
+STR_ABBREV_STEEL                                                :حديد
+STR_ABBREV_VALUABLES                                            :ممتلكات ثمينة
+STR_ABBREV_COPPER_ORE                                           :خام النحاس
+STR_ABBREV_MAIZE                                                :ذرة
+STR_ABBREV_FRUIT                                                :فواكة
+STR_ABBREV_DIAMONDS                                             :جواهر
+STR_ABBREV_FOOD                                                 :طعام
+STR_ABBREV_PAPER                                                :ورق
+STR_ABBREV_GOLD                                                 :ذهب
+STR_ABBREV_WATER                                                :ماء
+STR_ABBREV_WHEAT                                                :قمح
+STR_ABBREV_RUBBER                                               :مطاط
+STR_ABBREV_SUGAR                                                :سكر
+STR_ABBREV_TOYS                                                 :العاب
+STR_ABBREV_SWEETS                                               :حلويات
+STR_ABBREV_COLA                                                 :كولا
+STR_ABBREV_CANDYFLOSS                                           :سكر نبات
+STR_ABBREV_BUBBLES                                              :فقاعات
+STR_ABBREV_TOFFEE                                               :توفي
+STR_ABBREV_BATTERIES                                            :بطاريات
+STR_ABBREV_PLASTIC                                              :بلاستيك
+STR_ABBREV_FIZZY_DRINKS                                         :شراب مخفوق
+STR_ABBREV_NONE                                                 :لا شيء
+STR_ABBREV_ALL                                                  :الكل
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP} راكب

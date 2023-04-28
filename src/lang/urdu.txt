@@ -129,39 +129,39 @@ STR_QUANTITY_N_A                                                :-
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}مسافر
-STR_ABBREV_COAL                                                 :{TINY_FONT} کل
-STR_ABBREV_MAIL                                                 :{TINY_FONT} ڈاک
-STR_ABBREV_OIL                                                  :{TINY_FONT} تیل
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT} م ش
-STR_ABBREV_GOODS                                                :{TINY_FONT} س م
-STR_ABBREV_GRAIN                                                :{TINY_FONT}اناج
-STR_ABBREV_WOOD                                                 :{TINY_FONT}لکڑی
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}خام لوہا
-STR_ABBREV_STEEL                                                :{TINY_FONT}اسٹیل
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}قیمتی اشیاء
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}خام تانبا
-STR_ABBREV_MAIZE                                                :{TINY_FONT}مکئی
-STR_ABBREV_FRUIT                                                :{TINY_FONT}پھل
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}ہیرے
-STR_ABBREV_FOOD                                                 :{TINY_FONT}خوراک
-STR_ABBREV_PAPER                                                :{TINY_FONT}کاغذ
-STR_ABBREV_GOLD                                                 :{TINY_FONT}سونا
-STR_ABBREV_WATER                                                :{TINY_FONT}پانی
-STR_ABBREV_WHEAT                                                :{TINY_FONT}گندم
-STR_ABBREV_RUBBER                                               :{TINY_FONT}ربڑ
-STR_ABBREV_SUGAR                                                :{TINY_FONT}چینی
-STR_ABBREV_TOYS                                                 :{TINY_FONT}کھلونے
-STR_ABBREV_SWEETS                                               :{TINY_FONT}مٹھائی
-STR_ABBREV_COLA                                                 :{TINY_FONT}کولا
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}میٹھی گولیاں
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}بُلبُلے
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}ٹافی
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}سیل
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}پلاسٹِک
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}سوڈا واٹر
-STR_ABBREV_NONE                                                 :{TINY_FONT}نہیں
-STR_ABBREV_ALL                                                  :{TINY_FONT}تمام
+STR_ABBREV_PASSENGERS                                           :مسافر
+STR_ABBREV_COAL                                                 : کل
+STR_ABBREV_MAIL                                                 : ڈاک
+STR_ABBREV_OIL                                                  : تیل
+STR_ABBREV_LIVESTOCK                                            : م ش
+STR_ABBREV_GOODS                                                : س م
+STR_ABBREV_GRAIN                                                :اناج
+STR_ABBREV_WOOD                                                 :لکڑی
+STR_ABBREV_IRON_ORE                                             :خام لوہا
+STR_ABBREV_STEEL                                                :اسٹیل
+STR_ABBREV_VALUABLES                                            :قیمتی اشیاء
+STR_ABBREV_COPPER_ORE                                           :خام تانبا
+STR_ABBREV_MAIZE                                                :مکئی
+STR_ABBREV_FRUIT                                                :پھل
+STR_ABBREV_DIAMONDS                                             :ہیرے
+STR_ABBREV_FOOD                                                 :خوراک
+STR_ABBREV_PAPER                                                :کاغذ
+STR_ABBREV_GOLD                                                 :سونا
+STR_ABBREV_WATER                                                :پانی
+STR_ABBREV_WHEAT                                                :گندم
+STR_ABBREV_RUBBER                                               :ربڑ
+STR_ABBREV_SUGAR                                                :چینی
+STR_ABBREV_TOYS                                                 :کھلونے
+STR_ABBREV_SWEETS                                               :مٹھائی
+STR_ABBREV_COLA                                                 :کولا
+STR_ABBREV_CANDYFLOSS                                           :میٹھی گولیاں
+STR_ABBREV_BUBBLES                                              :بُلبُلے
+STR_ABBREV_TOFFEE                                               :ٹافی
+STR_ABBREV_BATTERIES                                            :سیل
+STR_ABBREV_PLASTIC                                              :پلاسٹِک
+STR_ABBREV_FIZZY_DRINKS                                         :سوڈا واٹر
+STR_ABBREV_NONE                                                 :نہیں
+STR_ABBREV_ALL                                                  :تمام
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} مسافرین
