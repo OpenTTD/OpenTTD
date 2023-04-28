@@ -5609,7 +5609,6 @@ STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{RAW_
 
 # Slightly 'raw' stringcodes with colour or size
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
