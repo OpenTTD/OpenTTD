@@ -67,6 +67,7 @@ struct RailVehicleInfo {
 struct ShipVehicleInfo {
 	byte image_index;
 	byte cost_factor;
+	uint8_t acceleration;    ///< Acceleration (1 unit = 1/3.2 mph per tick = 0.5 km-ish/h per tick)
 	uint16_t max_speed;      ///< Maximum speed (1 unit = 1/3.2 mph = 0.5 km-ish/h)
 	uint16_t capacity;
 	byte running_cost;

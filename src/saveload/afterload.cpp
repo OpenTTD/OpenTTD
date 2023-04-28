@@ -3273,6 +3273,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_SHIP_ACCELERATION)) {
+		/* NewGRF acceleration information was added to ships. */
+		for (Ship *s : Ship::Iterate()) {
+			if (s->acceleration == 0) s->acceleration = ShipVehInfo(s->engine_type)->acceleration;
+		}
+	}
+
 	for (Company *c : Company::Iterate()) {
 		UpdateCompanyLiveries(c);
 	}
