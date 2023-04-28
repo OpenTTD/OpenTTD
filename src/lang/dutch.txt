@@ -983,6 +983,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tijdsduu
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Uit
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Elke 10 minuten
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Elke 30 minuten
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Elke 60 minuten
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Elke 120 minuten
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Taal selecteren voor gebruikersscherm
@@ -1708,7 +1712,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :De hoeveelheid 
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Onderhoudstermijnen in procenten: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Selecteer of onderhoud van de voertuigen wordt geactiveerd door verstreken tijd sinds het laatste onderhoud of door het zakken van de betrouwbaarheid met een bepaald percentage van de maximale betrouwbaarheid
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Als deze optie is ingeschakeld, proberen voertuigen in onderhoud te gaan als de betrouwbaarheid met een bepaald percentage van de maximale betrouwbaarheid is gezakt.{}{}Als bijvoorbeeld de maximale betrouwbaarheid 90% is en de onderhoudstermijn is 20%, dan probeert het voertuig in onderhoud te gaan als de betrouwbaarheid tot 72% daalt.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaardonderhoudstermijn voor treinen: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Standaardonderhoudstermijn instellen voor nieuwe treinen als er geen expliciete onderhoudstermijn is ingesteld voor het voertuig
@@ -5106,6 +5110,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}Er is ge
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan geen dienstregeling opzetten voor dit voertuig...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Voertuigen kunnen alleen wachten op stations
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dit voertuig stopt niet op dit station
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... dienstregeling is niet compleet
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te veel bordjes

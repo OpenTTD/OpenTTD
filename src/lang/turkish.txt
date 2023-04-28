@@ -984,6 +984,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otomatik
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Kapalı
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Her 10 dakikada
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Her 30 dakikada
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Her 60 dakikada
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Her 120 dakikada
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Dil
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Görünen dili seçin

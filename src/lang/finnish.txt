@@ -983,6 +983,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Pois
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :10 minuutin välein
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :30 minuutin välein
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :60 minuutin välein
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :120 minuutin välein
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kieli
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valitse käyttöliittymän kieli
