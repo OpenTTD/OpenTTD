@@ -486,15 +486,16 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
  * @param colour  Colour of the text.
  * @param str     Text to draw.
  * @param align   Alignment of the text.
+ * @param fs      Font size of the text.
  */
-static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextColour colour, StringID str, StringAlignment align)
+static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextColour colour, StringID str, StringAlignment align, FontSize fs)
 {
 	if (str == STR_NULL) return;
 	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
-	Dimension d = GetStringBoundingBox(str);
+	Dimension d = GetStringBoundingBox(str, fs);
 	Point p = GetAlignedPosition(r, d, align);
 	int o = clicked ? WidgetDimensions::scaled.pressed : 0;
-	DrawString(r.left + o, r.right + o, p.y + o, str, colour, align);
+	DrawString(r.left + o, r.right + o, p.y + o, str, colour, align, false, fs);
 }
 
 /**
@@ -503,12 +504,13 @@ static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextC
  * @param colour Colour of the text.
  * @param str    Text to draw.
  * @param align  Alignment of the text.
+ * @param fs     Font size of the text.
  */
-static inline void DrawText(const Rect &r, TextColour colour, StringID str, StringAlignment align)
+static inline void DrawText(const Rect &r, TextColour colour, StringID str, StringAlignment align, FontSize fs)
 {
-	Dimension d = GetStringBoundingBox(str);
+	Dimension d = GetStringBoundingBox(str, fs);
 	Point p = GetAlignedPosition(r, d, align);
-	if (str != STR_NULL) DrawString(r.left, r.right, p.y, str, colour, align);
+	if (str != STR_NULL) DrawString(r.left, r.right, p.y, str, colour, align, fs);
 }
 
 /**
@@ -518,11 +520,12 @@ static inline void DrawText(const Rect &r, TextColour colour, StringID str, Stri
  * @param text_colour Colour of the text.
  * @param str         Text to draw.
  * @param align       Alignment of the text.
+ * @param fs          Font size of the text.
  */
-static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
+static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align, FontSize fs)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_LOWERED | FR_DARKENED);
-	if (str != STR_NULL) DrawString(r.Shrink(WidgetDimensions::scaled.inset), str, text_colour, align);
+	if (str != STR_NULL) DrawString(r.Shrink(WidgetDimensions::scaled.inset), str, text_colour, align, false, fs);
 }
 
 /**
@@ -672,12 +675,13 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
  * @param text_colour Colour of the text.
  * @param str         Text of the frame.
  * @param align       Alignment of the text in the frame.
+ * @param fs          Font size of the text.
  */
-static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
+static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align, FontSize fs)
 {
 	int x2 = r.left; // by default the left side is the left side of the widget
 
-	if (str != STR_NULL) x2 = DrawString(r.left + WidgetDimensions::scaled.frametext.left, r.right - WidgetDimensions::scaled.frametext.right, r.top, str, text_colour, align);
+	if (str != STR_NULL) x2 = DrawString(r.left + WidgetDimensions::scaled.frametext.left, r.right - WidgetDimensions::scaled.frametext.right, r.top, str, text_colour, align, false, fs);
 
 	int c1 = _colour_gradient[colour][3];
 	int c2 = _colour_gradient[colour][7];
@@ -801,8 +805,9 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
  * @param text_colour Colour of the text.
  * @param str         Text to draw in the bar.
  * @param align       Alignment of the text.
+ * @param fs          Font size of the text.
  */
-void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align)
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align, FontSize fs)
 {
 	bool company_owned = owner < MAX_COMPANIES;
 
@@ -817,7 +822,7 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
 	if (str != STR_NULL) {
 		Dimension d = GetStringBoundingBox(str);
 		Point p = GetAlignedPosition(r, d, align);
-		DrawString(r.left + WidgetDimensions::scaled.captiontext.left, r.right - WidgetDimensions::scaled.captiontext.left, p.y, str, text_colour, align);
+		DrawString(r.left + WidgetDimensions::scaled.captiontext.left, r.right - WidgetDimensions::scaled.captiontext.left, p.y, str, text_colour, align, false, fs);
 	}
 }
 
@@ -1168,6 +1173,7 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y
 	this->tool_tip = tool_tip;
 	this->scrollbar_index = -1;
 	this->text_colour = TC_BLACK;
+	this->text_size = FS_NORMAL;
 	this->align = SA_CENTER;
 }
 
@@ -1193,12 +1199,14 @@ void NWidgetCore::SetDataTip(uint32 widget_data, StringID tool_tip)
 }
 
 /**
- * Set the text colour of the nested widget.
+ * Set the text style of the nested widget.
  * @param colour TextColour to use.
+ * @param size Font size to use.
  */
-void NWidgetCore::SetTextColour(TextColour colour)
+void NWidgetCore::SetTextStyle(TextColour colour, FontSize size)
 {
 	this->text_colour = colour;
+	this->text_size = size;
 }
 
 /**
@@ -2175,7 +2183,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 			this->smallest_y += this->child->padding.Vertical();
 
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(this->widget_data).width + WidgetDimensions::scaled.frametext.Horizontal());
+			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(this->widget_data, this->text_size).width + WidgetDimensions::scaled.frametext.Horizontal());
 		} else if (this->type == WWT_INSET) {
 			/* Apply automatic padding for bevel thickness. */
 			this->child->padding = WidgetDimensions::scaled.bevel;
@@ -2190,7 +2198,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		if (w != nullptr) { // A non-nullptr window pointer acts as switch to turn dynamic widget size on.
 			if (this->type == WWT_FRAME || this->type == WWT_INSET) {
 				if (this->index >= 0) w->SetStringParameters(this->index);
-				Dimension background = GetStringBoundingBox(this->widget_data);
+				Dimension background = GetStringBoundingBox(this->widget_data, this->text_size);
 				background.width += (this->type == WWT_FRAME) ? (WidgetDimensions::scaled.frametext.Horizontal()) : (WidgetDimensions::scaled.inset.Horizontal());
 				d = maxdim(d, background);
 			}
@@ -2249,12 +2257,12 @@ void NWidgetBackground::Draw(const Window *w)
 
 		case WWT_FRAME:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawFrame(r, this->colour, this->text_colour, this->widget_data, this->align);
+			DrawFrame(r, this->colour, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_INSET:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawInset(r, this->colour, this->text_colour, this->widget_data, this->align);
+			DrawInset(r, this->colour, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		default:
@@ -2793,7 +2801,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		case WWT_TEXTBTN_2: {
 			padding = {WidgetDimensions::scaled.framerect.Horizontal(), WidgetDimensions::scaled.framerect.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			Dimension d2 = GetStringBoundingBox(this->widget_data);
+			Dimension d2 = GetStringBoundingBox(this->widget_data, this->text_size);
 			d2.width += padding.width;
 			d2.height += padding.height;
 			size = maxdim(size, d2);
@@ -2802,13 +2810,13 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		case WWT_LABEL:
 		case WWT_TEXT: {
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			size = maxdim(size, GetStringBoundingBox(this->widget_data));
+			size = maxdim(size, GetStringBoundingBox(this->widget_data, this->text_size));
 			break;
 		}
 		case WWT_CAPTION: {
 			padding = {WidgetDimensions::scaled.captiontext.Horizontal(), WidgetDimensions::scaled.captiontext.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			Dimension d2 = GetStringBoundingBox(this->widget_data);
+			Dimension d2 = GetStringBoundingBox(this->widget_data, this->text_size);
 			d2.width += padding.width;
 			d2.height += padding.height;
 			size = maxdim(size, d2);
@@ -2824,7 +2832,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			}
 			padding = {WidgetDimensions::scaled.dropdowntext.Horizontal() + NWidgetLeaf::dropdown_dimension.width + WidgetDimensions::scaled.fullbevel.Horizontal(), WidgetDimensions::scaled.dropdowntext.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			Dimension d2 = GetStringBoundingBox(this->widget_data);
+			Dimension d2 = GetStringBoundingBox(this->widget_data, this->text_size);
 			d2.width += padding.width;
 			d2.height = std::max(d2.height + padding.height, NWidgetLeaf::dropdown_dimension.height);
 			size = maxdim(size, d2);
@@ -2881,7 +2889,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_TEXTBTN_2:
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_ARROWBTN:
@@ -2900,12 +2908,12 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_LABEL:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_TEXT:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawText(r, this->text_colour, this->widget_data, this->align);
+			DrawText(r, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_MATRIX:
@@ -2920,7 +2928,7 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_CAPTION:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawCaption(r, this->colour, w->owner, this->text_colour, this->widget_data, this->align);
+			DrawCaption(r, this->colour, w->owner, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_SHADEBOX:
@@ -3096,10 +3104,10 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				break;
 			}
 
-			case WPT_TEXTCOLOUR: {
+			case WPT_TEXTSTYLE: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
 				if (nwc != nullptr) {
-					nwc->SetTextColour(parts->u.colour.colour);
+					nwc->SetTextStyle(parts->u.text_style.colour, parts->u.text_style.size);
 				}
 				break;
 			}
