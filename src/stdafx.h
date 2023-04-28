@@ -298,15 +298,6 @@ typedef uint8_t byte;
 	typedef unsigned int uint;
 #endif
 
-typedef uint8_t  uint8;
-typedef  int8_t   int8;
-typedef uint16_t uint16;
-typedef  int16_t  int16;
-typedef uint32_t uint32;
-typedef  int32_t  int32;
-typedef uint64_t uint64;
-typedef  int64_t  int64;
-
 #if !defined(WITH_PERSONAL_DIR)
 #	define PERSONAL_DIR ""
 #endif
@@ -317,10 +308,10 @@ typedef  int64_t  int64;
 #endif
 
 /* Check if the types have the bitsizes like we are using them */
-static_assert(sizeof(uint64) == 8);
-static_assert(sizeof(uint32) == 4);
-static_assert(sizeof(uint16) == 2);
-static_assert(sizeof(uint8)  == 1);
+static_assert(sizeof(uint64_t) == 8);
+static_assert(sizeof(uint32_t) == 4);
+static_assert(sizeof(uint16_t) == 2);
+static_assert(sizeof(uint8_t)  == 1);
 static_assert(SIZE_MAX >= UINT32_MAX);
 
 #ifndef M_PI_2
