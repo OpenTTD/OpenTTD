@@ -590,7 +590,7 @@ void LinkGraphLegendWindow::UpdateWidgetSize(int widget, Dimension *size, const 
 			str = STR_LINKGRAPH_LEGEND_SATURATED;
 		}
 		if (str != STR_NULL) {
-			Dimension dim = GetStringBoundingBox(str);
+			Dimension dim = GetStringBoundingBox(str, FS_SMALL);
 			dim.width += padding.width;
 			dim.height += padding.height;
 			*size = maxdim(*size, dim);
@@ -599,7 +599,7 @@ void LinkGraphLegendWindow::UpdateWidgetSize(int widget, Dimension *size, const 
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		CargoSpec *cargo = CargoSpec::Get(widget - WID_LGL_CARGO_FIRST);
 		if (cargo->IsValid()) {
-			Dimension dim = GetStringBoundingBox(cargo->abbrev);
+			Dimension dim = GetStringBoundingBox(cargo->abbrev, FS_SMALL);
 			dim.width += padding.width;
 			dim.height += padding.height;
 			*size = maxdim(*size, dim);
@@ -629,14 +629,14 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 			str = STR_LINKGRAPH_LEGEND_SATURATED;
 		}
 		if (str != STR_NULL) {
-			DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, FONT_HEIGHT_SMALL), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER);
+			DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, FONT_HEIGHT_SMALL), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER, false, FS_SMALL);
 		}
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) return;
 		CargoSpec *cargo = CargoSpec::Get(widget - WID_LGL_CARGO_FIRST);
 		GfxFillRect(br, cargo->legend_colour);
-		DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, FONT_HEIGHT_SMALL), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER);
+		DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, FONT_HEIGHT_SMALL), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER, false, FS_SMALL);
 	}
 }
 
