@@ -280,6 +280,9 @@ enum TextColour {
 	TC_IS_PALETTE_COLOUR = 0x100, ///< Colour value is already a real palette colour index, not an index of a StringColour.
 	TC_NO_SHADE          = 0x200, ///< Do not add shading to this text colour.
 	TC_FORCED            = 0x400, ///< Ignore colour changes from strings.
+
+	TC_COLOUR_MASK = 0xFF, ///< Mask to test if TextColour (without flags) is within limits.
+	TC_FLAGS_MASK = 0x700, ///< Mask to test if TextColour (with flags) is within limits.
 };
 DECLARE_ENUM_AS_BIT_SET(TextColour)
 
