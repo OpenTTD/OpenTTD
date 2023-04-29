@@ -364,6 +364,8 @@ public:
 
 	mutable MutableSpriteCache sprite_cache; ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
 
+	struct PersistentStorage *psa;      ///< Persistent storage
+
 	/**
 	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.
 	 * @return Weight value in tonnes.

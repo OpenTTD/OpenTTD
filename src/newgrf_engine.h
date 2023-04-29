@@ -41,6 +41,7 @@ struct VehicleScopeResolver : public ScopeResolver {
 	uint32 GetRandomBits() const override;
 	uint32 GetVariable(byte variable, uint32 parameter, bool *available) const override;
 	uint32 GetTriggers() const override;
+	void StorePSA(uint reg, int32 value) override;
 };
 
 /** Resolver for a vehicle (chain) */

@@ -353,6 +353,8 @@ enum SaveLoadVersion : uint16 {
 	SLV_LINKGRAPH_SECONDS,                  ///< 308  PR#10610 Store linkgraph update intervals in seconds instead of days.
 	SLV_AI_START_DATE,                      ///< 309  PR#10653 Removal of individual AI start dates and added a generic one.
 
+	SLV_VEHICLE_STORAGE,                    ///< 310  PR#..... Addition of persistent storage for vehicles.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
