@@ -1596,11 +1596,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Byrjunar ár: {
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Loyv keypi av partabrøvum frá øðrum fyritøkum: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Um gilda, er loyvt at keypa og selja fyritøku partabrøv. Partabrøv verða einans tøk hjá fyritøkum ið hava rokki ein ávísan aldur
-
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prosentpartur av deilvinningi at gjalda í veitingar kervum: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Prosentpartur av inntøku ið verður útgoldi til millum liðini í veitara kervum (umskipan), gevur betri ræðið í inntøkuni
 
@@ -2950,7 +2945,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} skip
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Einki
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Virði á fyritøku: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% ogn hjá {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Innankervi:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} jarnbreyta pett{P i ir}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} vega pett{P i ir}
@@ -2976,11 +2970,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Fyritøk
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Broyt navni á fyritøkuni
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Leiðara navn
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Broyt navni á leiðaranum
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Keyp 25% partabrøv í fyritøkuni
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sel 25% partabrøv í fyritøkuni
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Keyp 25% partabrøv í hesi fyritøkuni. Shift+trýst vísir kostnaðar meting uttan at keypa nakað partabræv
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sel 25% partabrøv í hesi fyritøkuni. Shift+trýst vísir inntøku meting uttan at selja nakað partabræv
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Navn á Fyritøku
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Navn á leiðara
@@ -3816,9 +3805,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kann ikk
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kann ikki geva pening burtur ið er lándur frá bankanum...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kann ikki keypa fyritøku...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kann ikki byggja fyritøku høvuðsborg...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kann ikki keypa 25% partabræv í hesi fyritøkuni...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kann ikki selja 25% partabræv í hesari fyritøkuni...
-STR_ERROR_PROTECTED                                             :{WHITE}Hendan fyritøkan er ikki nóg gomul at býta partabrøv enn...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kann ikki byggja bygdir...

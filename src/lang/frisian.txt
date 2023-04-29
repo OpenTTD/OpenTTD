@@ -1672,11 +1672,6 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Stea it keapjen fan oandielen ta: {STRING}
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimale leeftiid fan it bedriuw om oandielen te hanneljen: {STRING}
-###setting-zero-is-special
-
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :By slepe, pleats seinen eltse: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tegel{P 0 "" s}
@@ -3173,7 +3168,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} sk{P ip epen}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Gjin
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Bedriuwswearde: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% besit fan {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Ynfrastruktuer:
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} stikje dyk{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} wetterfjild{P "" en}
@@ -3197,11 +3191,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Bedriuws
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Feroarje de bedriuwsnamme
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Namme fan Direkteur
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Feroarje de namme fan de direkteur
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Keapje 25% oandielen fan bedriuw
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Ferkeapje 25% oandielen fan bedriuw
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Keapje 25% oandielen fan dit bedriuw. Shift+Klik toant ferwachte kosten sûnder oandielen te keapje
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ferkeapje 25% oandielen fan dit bedriuw. Shift+Klik toant ferwachte kosten sûnder oandielen te ferkeapje
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Bedriuwsnamme
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namme fan Direkteur
@@ -3994,9 +3983,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kin lien
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kin gjin jild dat fan de bank lient is weijaan...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kin bedriuw net keapje...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kin gjin haadkantoar boue
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kin net 25% oandielen fan dit bedriuw keapje...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kin net 25% oandielen fan dit bedriuw ferkeapje...
-STR_ERROR_PROTECTED                                             :{WHITE}Dit bedriuw is noch net âld genoch om oandielen te ferhannelje...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kin gjin stêd bouwe

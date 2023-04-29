@@ -782,9 +782,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Тулли
 ###length 3
 
 
-###setting-zero-is-special
-
-
 
 
 ###length 2
@@ -1338,7 +1335,6 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 # Company view
 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ҫук
-
 
 
 

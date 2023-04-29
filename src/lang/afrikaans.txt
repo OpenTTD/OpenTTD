@@ -1689,13 +1689,6 @@ STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nooit
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Laat die koop van aandeele van ander maatskappye toe: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :As dit geaktiveer is, kan aandele in maatskappye gekoop en verkoop word. Aandele is net in maatskappye beskikbaar na 'n sekere aantal jaar.
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimum maatskappyouderdom om aandele te verhandel: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Stel die minimum ouderdom van 'n maatskappy in vir ander om aandele by hulle te kan koop en verkoop.
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Persentasie van wins om te betaal in voerder systeem: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Persentasie wins wat gedeel word met die tussengangerstasies in oordragstelsels vir beter beheer oor die wins
 
@@ -3393,7 +3386,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} sk{P ip epe}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Geen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Maatskappy waarde: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% besit by {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktuur:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spoorstuk{P "" ke}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} padstuk{P "" ke}
@@ -3419,11 +3411,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Maatskap
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Verander die maatskappy se naam
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Bestuurder Naam
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Verander bestuurder se naam
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Koop 25% aandeel in maatskappy
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Verkoop 25% aandeel in maatskappy
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Koop 'n 25% aandeel in maatskappy. Shift+klik vir kwotasie
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkoop 'n 25% aandeel in maatskappy. Shift+klik vir beraamde inkomste
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Maatskappy Naam
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Bestuurder se Naam
@@ -4416,9 +4403,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan nie 
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan nie geld wat van die bank geleen is weggee nie...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Maatskappy kan nie aangekoop word nie...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Maatskappy hoofkwartier kan nie hier gebou word nie...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan nie 25% aandeel in die maatskappy koop nie...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan nie 25% aandeel in die maatskappy verkoop nie...
-STR_ERROR_PROTECTED                                             :{WHITE}Die maatskappy is nie oud genoeg om aandeele te handel nie...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan nie enige stede bou nie

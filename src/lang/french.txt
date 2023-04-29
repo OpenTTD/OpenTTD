@@ -1801,15 +1801,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Stable
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Gelée
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permettre d'acheter des actions d'autres compagnies{NBSP}: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Lorsqu'il est activé, l'achat et la vente des parts de compagnie sont autorisées. Les parts ne seront disponibles que pour les compagnies ayant atteint un certain âge
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Âge minimum de la compagnie pour la vente d'actions{NBSP}: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Définir l'âge minimum qu'une compagnie doit avoir pour que les autres puissent acheter ou vendre ses parts.
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} an{P "" s}
-###setting-zero-is-special
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :Pas de minimum
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Pourcentage du profit de branche à payer dans les systèmes multimodaux{NBSP}: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Pourcentage du profit donné aux branches intermédiaires dans les systèmes multimodaux, donnant plus de contrôle sur les profits
 
@@ -3710,7 +3701,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} navire{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Aucun
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valeur de la compagnie{NBSP}: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}% détenu{P "" s} par {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{G=f}{GOLD}Infrastructure{NBSP}:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} morceau{P "" x} de voie ferrée
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} morceau{P "" x} de route
@@ -3738,11 +3728,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nom de l
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Changer le nom de la compagnie
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nom du P.D.G.
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Changer le nom du président directeur général
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Acheter 25{NBSP}% de la compagnie
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendre 25{NBSP}% de la compagnie
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Acheter 25% de la compagnie.{}Shift-clic pour afficher seulement le coût estimé.
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vendre 25% de la compagnie. Shift-clic pour afficher le revenu estimé sans vendre
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nom de la société
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom du P.D.G.
@@ -4772,9 +4757,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Impossib
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Vous ne pouvez pas donner de l’argent à cette compagnie
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossible d'acheter la compagnie...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Impossible de construire le siège...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Impossible d'acheter 25{NBSP}% des parts...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Impossible de vendre 25{NBSP}% des parts...
-STR_ERROR_PROTECTED                                             :{WHITE}Cette compagnie ne vend pas d'actions pour le moment...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ne peut plus bâtir de villes

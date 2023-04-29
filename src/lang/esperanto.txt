@@ -1450,10 +1450,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Komenca jaro: {
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permesu aĉetadon de dividaĵoj en aliaj kompanioj: {STRING}
-
-###setting-zero-is-special
-
 
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Aŭtomate konstruu semaforojn antaŭ: {STRING}
@@ -2785,7 +2781,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} ŝipo{P "" j}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Neniu
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Kompania valoro: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% posedataj de {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Faru HQ
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Konstrui kompanian administraciejon
@@ -2802,11 +2797,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Kompanin
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Ŝanĝu la nomon de la kompanio
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Manaĝantnomo
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ŝanĝu la nomon de la manaĝanto
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Aĉetu 25%-an dividaĵon
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendu 25%-an dividaĵon
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Aĉetu 25%-an dividaĵon en ĉi tiu kompanio. Tenu la maljuskliga klavo por (kosto)taksi sen aĉeti dividaĵojn
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vendu 25%-an dividaĵon en ĉi tiu kompanio. Tenu la maljuskliga klavo por (enspezo)taksi sen vendi dividaĵojn
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Kompania Nomo
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nomo de la Manaĝanto
@@ -3673,9 +3663,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ne povas
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ne povas donaci monon pruntitan de la banko...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ne povas aĉeti kompanion...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ne povas konstrui kompanian ĉefkonstruaĵon...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Ne povas aĉeti 25%-an dividaĵon...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Ne povas vendi 25%-an dividaĵon...
-STR_ERROR_PROTECTED                                             :{WHITE}Ĉi tiu kompanio ne sufiĉe aĝas por jam komerci dividaĵojn...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ne povas konstrui ajnan urbon

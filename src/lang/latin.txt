@@ -1862,11 +1862,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Annus initii: {
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Sinere mercari sortes societatum: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Sinere mercari sortes a societatibus. Sortes societatum satis aetatis modo mercari licet
-
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Centesimae partes lucri pendenda in translatione: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Centesimae lucri pars medietati data in systematibus transferendi, ut melius distribuatur lucrum vehiculorum
 
@@ -3547,7 +3542,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} nav{P is es}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nulla
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Aestimatio societatis: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% posessa a {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastructura:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} par{P s tes} ferriviae
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} par{P s tes} viae
@@ -3573,11 +3567,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nomen So
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Mutare nomen societatis
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nomen Praesidis
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Mutare nomen praesidis
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Quadrantem sortium huius societatis emere
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Quadrantem sortium huius societatis vendere
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Quadrantem sortium huius societatis emere. Shift+Preme ut pretium monstretur sine emptione
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Quadrantem sortium huius societatis vendere. Shift+Preme ut pretium monstretur sine emptione
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nomen Societatis
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nomen Praesidis
@@ -4550,9 +4539,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Non lice
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Non licet pecuniam mutuam largiri...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Non licet societatem emere...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Non licet sedem societatis struere...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Non licet quadrantem sortium huius societatis emere...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Non licet quadrantem sortium huius societatis vendere...
-STR_ERROR_PROTECTED                                             :{WHITE}Nondum licet sortes societatis mercari...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Non licet oppida condi

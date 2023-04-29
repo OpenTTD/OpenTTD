@@ -1903,13 +1903,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Αρχικό
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Ομαλή
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Παγωμένο
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ενεργοποίηση της δυνατότητας αγοράς μετοχών από άλλες εταιρίες: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Όταν είναι ενεργοποιημένη, επιτρέπεται η αγοραπωλησία εταιρικών μετοχών. Οι μετοχές θα είναι διαθέσιμες μόνο όταν οι εταιρείες φτάνουν μια ορισμένη ηλικία
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Ελάχιστη ηλικία εταιρίας για συναλλαγή μετοχών: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Ορίστε την ελάχιστη ηλικία μίας εταιρίας για να μπορούν άλλοι να αγοράσουν ή να πουλήσουν μετοχές από αυτές.
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Το ποσοστό κέρδους από το σκέλος μεταφοράς στα συστήματα τροφοδότησης: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Το ποσοστό του εισοδήματος που δίνεται στα ενδιάμεσα σκέλη των συστημάτων τροφοδότησης, δίνοντας μεγαλύτερο έλεγχο στο εισόδημα
 
@@ -3796,7 +3789,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} πλοί{P ο α}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Κανένα
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία εταιρίας: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Υποδομή:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} κομμάτι{P "" α} σιδηροτροχιάς
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} κομμάτι{P "" α} δρόμου
@@ -3824,11 +3816,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Όνομ
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Αλλαγή του ονόματος της εταιρίας
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Όνομα Διευθυντή
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Αλλαγή του ονόματος του διευθυντή
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Αγορά μεριδίου 25% της εταιρία
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Πώληση μεριδίου 25% της εταιρίας
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Αγορά μεριδίου 25% σε αυτήν την εταιρεία. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς την αγορά μετοχών
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κέρδος χωρίς την πώληση μετοχών
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Όνομα Εταιρίας
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Όνομα Διευθυντή
@@ -4861,9 +4848,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Δεν �
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Δεν μπορείτε να δώσετε χρήματα σε αυτή την εταιρία...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Αδύνατη η εξαγορά της εταιρίας...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Δεν μπορεί να κτιστεί αρχηγείο εταιρίας...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Αδύνατη η αγορά μεριδίου 25% της εταιρίας...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Αδύνατη η πώληση μεριδίου 25% της εταιρίας...
-STR_ERROR_PROTECTED                                             :{WHITE}Αυτή η εταιρία δεν είναι αρκετά παλιά για συναλλαγή μετοχών...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Αδύνατο να κτιστούν πόλεις

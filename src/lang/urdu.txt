@@ -1395,10 +1395,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :شروعاتی 
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :دوسری کمپنیوں کے حصص خریدنے کی اجازت: {STRING}
-
-###setting-zero-is-special
-
 
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :پہلے خودکار طریقے سے semaphores بنائیں: {STRING}
@@ -2416,7 +2412,6 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{COMMA}{WHITE} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}کوئی نہیں
 
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}تفصیلات
-
 
 
 

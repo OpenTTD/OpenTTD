@@ -1515,10 +1515,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Tahun permulaan
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Benarkan membeli saham syarikat lain: {STRING}
-
-###setting-zero-is-special
-
 
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bina semafor secara automatik sebelum: {STRING}
@@ -3009,7 +3005,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} kapal-kapal
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Tiada
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Nilai syarikat: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% dimiliki oleh {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktur:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} cebisan landasan
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} cebisan jalanraya
@@ -3035,11 +3030,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nama Sya
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Tukar nama syarikat
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nama Pengurus
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Tukar nama pengurus
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Beli 25% saham dalam syarikat ini
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Jual 25% saham dalam syarikat ini
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25% saham dalam syarikat ini. Shift+Klik menunjukkan anggaran kos tanpa membeli saham
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham dalam syarikat ini. Shift+Klik menunjukkan anggaran kos tanpa menjual saham
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Syarikat
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pengurus
@@ -3955,9 +3945,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tidak bo
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak boleh memberi wang yang dipinjamkan oleh bank...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Tidak boleh beli syarikat ini...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ibu pejabat syarikat tidak dapat dibina...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Tidak boleh beli 25% saham dalam syarikat ini...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Tidak boleh jual 25% saham dalam syarikat ini...
-STR_ERROR_PROTECTED                                             :{WHITE}Syarikat ini tidak cukup berusia untuk berpasaran saham...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Tidak boleh bina bandar

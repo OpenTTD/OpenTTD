@@ -1955,15 +1955,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :классич�
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :плавная
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :стабильная
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Разрешить торговлю акциями других компаний: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Разрешает торговлю акциями транспортных компаний. Акции выпускаются компаниями через некоторое время после основания.
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мин. возраст компании для выпуска акций: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Минимальный возраст, которого должна достичь компания для начала выпуска акций, которые смогут покупать и продавать другие игроки.
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} {P год года лет}
-###setting-zero-is-special
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :без ограничений по возрасту
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент дохода, начисляемый при частичной перевозке: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Процент прибыли, начисляемый транспорту за частичную перевозку груза.
 
@@ -3888,7 +3879,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} суд{P но на ов}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}нет
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Стоимость компании: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% владеет {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Инфраструктура:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ж/д участ{P ок ка ков}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} дорожны{P й х х} участ{P ок ка ков}
@@ -3916,11 +3906,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Назв
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Изменить название компании
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Директор
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Изменить имя директора
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купить 25% акций компании
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Продать 25% акций компании
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Купить 25% акций этой компании. Shift+щелчок - оценка стоимости акций.
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Продать 25% акций этой компании. Shift+щелчок - оценка стоимости акций.
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Компания
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Имя директора
@@ -4962,9 +4947,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Нево
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Невозможно передать деньги этой компании...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Невозможно приобрести компанию...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Невозможно построить штаб-квартиру компании...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Невозможно купить 25% акций этой компании...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Невозможно продать 25% акций этой компании...
-STR_ERROR_PROTECTED                                             :{WHITE}Эта компания ещё не выпускает акции...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Невозможно построить города...

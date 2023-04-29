@@ -1799,13 +1799,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Lin
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Înghețată
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite cumpărarea de acţiuni de la alte companii: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Dacă este activată, se permite cumpărarea și vânzarea de acțiuni ale companiilor. Acțiunile devin disponibile doar când compania depășește o anumită vârstă
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Vârsta minimă a companiilor pentru tranzacțiile cu acțiuni: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Stabilește vechimea minimă a unei companii, ca alții să-i poată tranzacționa acțiunile.
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentul din profitul pe secţiune care să fie plătit pentru alimentare: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentul din câştig care este oferit legăturilor intermediare pentru alimentare, oferind mai mult control asupra încasărilor
 
@@ -3699,7 +3692,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} {P navă nave "de nave"}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Niciunul
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valoarea companiei: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% deţinute de {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastructură:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} pătrățele de cale ferată
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} pătrățele cu drumuri
@@ -3727,11 +3719,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nume com
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Schimbă numele companiei
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nume preşedinte
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Schimbă numele președintelui
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Cumpără 25% din acţiunile companiei
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vinde 25% din acţiunile companiei
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Cumpără 25% din acțiunile acestei companii. Shift+clic arată costul estimat fără să cumpere acțiuni
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vinde 25% din acțiunile acestei companii. Shift+clic arată costul estimat fără să efectueze vânzarea
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Noul nume al companiei
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Noul nume al preşedintelui
@@ -4759,9 +4746,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nu poţi
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Nu se pot da bani acestei companii...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nu se poate cumpăra compania...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nu se poate construi sediul companiei...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nu se pot cumpăra 25% din acţiunile acestei companii...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Nu se pot vinde 25% din acţiunile acestei companii...
-STR_ERROR_PROTECTED                                             :{WHITE}Compania nu are vechimea necesară pentru tranzacționarea de acțiuni...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nu pot construi nici un oras

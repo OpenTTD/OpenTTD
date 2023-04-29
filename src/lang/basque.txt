@@ -1603,11 +1603,6 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Beste konpainien akzioak erostea baimendu: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Gaitua dagoenean, konpainiaren akzioak erostea eta saltzea baimendu. Konpainiak akzioak izateko gutxiengo adin batera iritsi beharko dira
-
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Elikadura sistemetan ordaindu beharreko irabazien ehunekoa: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Elikadura sistemetan eman beharreko irabazien ehunekoa, irabaziengain kontrol gehiago emanez
 
@@ -3209,7 +3204,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} itsasontzi
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ezer ez
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Konpainiaren balioa: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}(%{COMMA} konpainia honek erosi du: {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Azpiegiturak:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} trenbide kopuru
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} errepide sail kopuru
@@ -3235,11 +3229,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Konpaini
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Konpainiaren izena aldatu
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Lehendakariaren izena
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Lehendakariaren izena aldatu
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Konpainiaren akzioen %25a erosi
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Konpainiaren akzioen %25a saldu
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Konpainiaren akzioen %25a erosi. Shift+Klik gutxi gora beherako kostea erakutsi
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Konpainiaren akzioen %25a saldu. Shift+Klik gutxi gora beherako irabaziak erakutsi
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Konpainiaren izena
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Lehendakariaren izena
@@ -4163,9 +4152,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ezin da 
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ezin da mailegatutako dirua eman...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ezin da konpainia erosi...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ezin izan da konpainiaren egoitza eraiki...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Ezin izan da konpainiaren akzioen %25a erosi...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Ezin izan da konpainiaren akzioen %25a saldu...
-STR_ERROR_PROTECTED                                             :{WHITE}Konpainia gazteegia da akzioak izateko...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ezin izan da herririk sortu

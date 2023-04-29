@@ -1799,13 +1799,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :オリジナル
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :なだらか
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :固定
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :他社株の取引許容: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :有効にすると、ライバル会社の株式を取引できるようになります。この設定を有効にしても、目的の社が設立から丸5年経過していない場合は取引できません
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :株式を取引するための最低会社年齢：{STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :他の人が彼らから株式を売買できるように、会社の最低年齢を設定します。
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :区間払いの割合: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :転送を行う輸送網(フィーダーシステム)を構築した場合、中継地点までの輸送で総輸送費の何%を受け取れるかを設定します(転送時に予想される最終輸送費から仮に部分払いし、最終的に貨物が目的地に到着した時点で清算します)。転送元の輸送機器が赤字になるのを防ぎます
 
@@ -3700,7 +3693,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}　航�
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}　船舶 {COMMA}隻
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}　なし
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}総資産: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({1:COMPANY}が株式の{0:COMMA}%を保有)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}インフラ設備:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}　線路 {COMMA}タイル
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}　道路 {COMMA}タイル
@@ -3728,11 +3720,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}会社�
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}会社名を変更します
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}社長名
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}社長の名前を変更します
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}会社株の25%を買収
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}会社株の25%を売却
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}この会社の株式の25%を購入します。Shift+クリックで費用を見積もります
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}この会社の株式の25%を売却します。Shift+クリックで売却価格の見積が出ます
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :会社名
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :社長名
@@ -4760,9 +4747,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}借入�
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}この会社にお金を渡すことはできません...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}会社を買収できません
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}会社の本社ビルを建設できません
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}この会社の株を25%購入できません
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}この会社の株を25%売却できません
-STR_ERROR_PROTECTED                                             :{WHITE}この会社は開設から6年が経過していません
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}街を開設できません

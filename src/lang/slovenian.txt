@@ -1814,11 +1814,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Začetno leto: 
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dovoli kupovanje delnic od drugih podjetij: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Če je omogočeno, se lahko trguje z delnicami podjetij. Na voljo samo po določeni starosti podjetja.
-
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procent osnovnega dobička za plačilo v sklade: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procent prihodkov vložen v srednje sklade, ki omogoča več kontrole nad prihodki.
 
@@ -3468,7 +3463,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} lad{P ja ji je ij}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Brez
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Vrednost podjetja: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% v lasti podjetja {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktura:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} kos{P "" a i ov} tirov
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} odsek{P "" a i ov} ceste
@@ -3494,11 +3488,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Ime podj
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Spremeni ime podjetja
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Direktorjevo ime
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Spremeni direktorjevo ime
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kupi 25% delnic podjetja
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Prodaj 25% delnic podjetja
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kupi 25% delnic tega podjetja. Shift+Klik prikaže predviden strošek brez nakupa delnic
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodaj 25% delnic tega podjetja. Shift+Klik prikaže predviden dobiček brez prodaje delnic
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ime podjetja
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktorjevo ime
@@ -4439,9 +4428,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ni mogo�
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ni mogoča oddaja denarja, ki je izposojen od banke...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ne moreš kupiti podjetja...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ni mogoče zgraditi sedeža podjetja...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Ni mogoče kupiti 25% delnic tega podjetja...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Ni mogoče prodati 25% delnic tega podjetja...
-STR_ERROR_PROTECTED                                             :{WHITE}Podjetje še ni dovolj staro, da bi lahko trgovalo z lastnimi delnicami...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ni mogoče zgraditi mest

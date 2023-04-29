@@ -545,9 +545,6 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###length 3
 
 
-###setting-zero-is-special
-
-
 
 
 ###length 2
@@ -989,7 +986,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}कं�
 
 
 
-
 # Company infrastructure window
 
 # Industry directory
@@ -1298,7 +1294,6 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}... ब�
 
 # Company related errors
 
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}इस कंपनी का २५% अंश नहीं बेच सकते...
 
 # Town related errors
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}नगर का नाम नहीं बदला जा सकता है...

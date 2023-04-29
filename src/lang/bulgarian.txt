@@ -1649,11 +1649,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Начална 
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Разреши купуване на акции от други компании: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ако тази опция бъде активирана, ще можете да купувате и продавате дялове на компании. Това ще бъде възможно единствено когато дадената компания достигне определена възраст
-
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент от leg profit to pay in feeder systems: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Процент от приходите, който се плаща на intermediate legs in feeder systems, давайки ви повече контрол върху приходите
 
@@ -3262,7 +3257,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P "" и}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Николко
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Стойност на Компанията: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% е притежание на {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Инфраструктура:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} релсов{P а и} част{P "" и}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} пътн{P а и} част{P "" и}
@@ -3288,11 +3282,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Име �
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Смени името на компанията
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Име на управителя
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Смени името на управителя
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купи 25% от акциите на компанията
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Продай 25% от акциите на компанията
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Купи 25% от акциите на тази компания. Shift показва цената на 25% от акциите
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Продай 25% от акциите на тази компания. Shift показва цената на 25% от акциите
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Име на компанията
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Име на управителя
@@ -4243,9 +4232,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Не м�
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Не може да се харчат пари които са заети от банка...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Не може да купиш компанията...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Не може да бъде построен централен офис...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Не може да купиш 25% от акциите на тази компания...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Не може да продадеш 25% от акциите на тази компания...
-STR_ERROR_PROTECTED                                             :{WHITE}Тази компания все още не е достатъчно стара да предлага акции...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Не може да се строят градове

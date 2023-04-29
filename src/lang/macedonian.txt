@@ -1069,9 +1069,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :целосна
 ###length 3
 
 
-###setting-zero-is-special
-
-
 
 
 ###length 2
@@ -1621,7 +1618,6 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нико
 
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}детали за
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Погледнете детални точки инфраструктура
-
 
 
 

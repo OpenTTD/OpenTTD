@@ -1662,11 +1662,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Blwyddyn dechre
 
 ###length 3
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Caniatáu prynu cyfranddaliadau mewn cwmnïau eraill: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Pan fo wedi'i alluogi, fe ganiateir prynnu a gwerthu cyfrandalaidau cwmni. Rhaid i gwmni gyrraedd oed penodol cyn y daw eu cyfrandaliadau ar gael
-
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Canran elw y cymal i'w dalu mewn systemau trosglwyddo: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Y canran o elw a ddyfarnir i'r cymalau rhyngol mewn systemau trosglwyddo, gan rhoi fwy o reolaeth dros yr elw
 
@@ -3318,7 +3313,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} llong
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Dim
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Gwerth cwmni: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% yn eiddo {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Tanadeiledd:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} darn{P "" au} rheilffordd
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} darn{P "" au} ffordd
@@ -3345,11 +3339,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Enw Cwmn
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Newid enw'r cwmni
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Enw Rheolwr
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Newid enw'r rheolwr
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Prynu cyfran o 25% o'r cwmni
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Gwerthu cyfran o 25% o'r cwmni
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Prynu cyfran o 25% yn y cwmni yma. Mae Shift+Clic yn dangos amcangyfrif o'r gost heb brynnu cyfran
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Gwerthu cyfran o 25% yn y cwmni yma. Mae Shift+Clic yn dangos amcangyfrif o'r elw heb werthu cyfran
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Enw Cwmni
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Enw Rheolwr
@@ -4306,9 +4295,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Does dim
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Does dim modd rhoi arian sydd wedi ei fenthyg gan y banc i ffwrdd...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Methu prynu cwmni...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Methu adeiladu pencadlys cwmni...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Methu prynu cyfran o 25% o'r cwmni hwn...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Methu gwerthu cyfran o 25% o'r cwmni ...
-STR_ERROR_PROTECTED                                             :{WHITE}Nid yw'r cwmni hwn yn ddigon da ar gyfer cyfnewid cyfrandaliadau eto...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Methu adeiladu unrhyw drefi

@@ -1758,13 +1758,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Bunaidh
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Mín
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Reoite
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaigh scaireanna a cheannach ó chuideachtaí eile: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Má tá sé cumasaithe, tá cead scaireanna i gcuideachta a cheannach agus a dhíol. Ní bheidh scaireanna ar fáil ach do chuideachtaí a bhfuil aois áirithe bainte amach acu
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Aois íosta na gcuideachtaí le bheith in ann scaireanna a thrádáil: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Socraigh aois íosta na gcuideachtaí sula mbeidh daoine eile in ann scaireanna iontu a cheannach agus a dhíol.
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :An céatadán den bhrabús a íocfar ar chuid den turas i gcórais fhriothálacha: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :An céatadán den bhrabús a thugtar as lastais a thabhairt cuid den bhealach i gcórais fhriothálacha, rud a fhágann go bhfuil tuilleadh smachta agat ar an ioncam
 
@@ -3615,7 +3608,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} {P "" "" "" "" ""}long
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ceann ar bith
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Luach na cuideachta: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}(is le {1:COMPANY} {0:COMMA}%)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Bonneagar:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} {P ph ph ph bp p}íosa iarnróid
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} {P ph ph ph bp p}íosa bóthair
@@ -3643,11 +3635,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Ainm na 
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Athraigh ainm na cuideachta
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Ainm an Bhainisteora
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Athraigh ainm an bhainisteora
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Ceannaigh sciar 25% sa chuideachta
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Díol sciar 25% sa chuideachta
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Ceannaigh sciar 25% sa chuideachta seo
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Díol sciar 25% sa chuideachta seo
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ainm na Cuideachta
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ainm an Bhainisteora
@@ -4664,9 +4651,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ní féi
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Ní féidir airgead a thabhairt uait chuig an gcuideachta seo...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ní féidir an chuideachta a cheannach...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ní féidir ceanncheathrú na cuideachta a thógáil...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Ní féidir sciar 25% a cheannach sa chuideachta seo...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Ní féidir sciar 25% a dhíol sa chuideachta seo...
-STR_ERROR_PROTECTED                                             :{WHITE}Níl an chuideachta seo sean go leor le scaireanna a thrádáil fós...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ní féidir baile ar bith a thógáil

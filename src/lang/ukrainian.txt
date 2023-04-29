@@ -1925,13 +1925,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Оригіна�
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Плавно
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Заморожена
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дозволити придбання акції інших компаній: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :При включенні дозволяє придбання та продаж акцій команій. Акції компанії стають доступними після досягнення деякого віку.
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мінімальний вік компанії для торгівлі акціями: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Встановіть мінімальний вік компанії, щоб інші могли купувати та продавати акції у них.
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Відсоток прибутку за часткове перевезення: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Налаштування проценту прибутку, що нараховується за часткове перевезення вантажу. За допомогою даної опції можна контролювати розподіл прибутків між учасниками багатоланкових перевезень.
 
@@ -3821,7 +3814,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P ель лі лів}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Немає
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Вартість компанії: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% у власності {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Інфраструктура:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} клітин{P ка ки ок} з залізничними коліями
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} клітин{P ка ки ок} з дорогами
@@ -3849,11 +3841,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Назв
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Зміна назви компанії
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Ім'я керівника
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Перейменувати керівника
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купити 25% акцій компанії
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Продати 25% акцій компанії
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Купити 25% акцій цієї компанії. Утримуйте Shift для показу вартості цих акцій
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Продати 25% акцій цієї компанії. Утримуйте Shift для показу вартості цих акцій
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Назва компанії
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ім'я керівника
@@ -4881,9 +4868,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Немо
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Неможливо передати гроші цій компанії...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Неможливо купити компанію...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Неможливо збудувати Офіс...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Неможливо купити 25% акцій цієї компанії...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Неможливо продати 25% акцій цієї компанії...
-STR_ERROR_PROTECTED                                             :{WHITE}Ця компанія поки ще не продається...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Не можна створити місто

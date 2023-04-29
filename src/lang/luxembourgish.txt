@@ -1799,13 +1799,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Glaat
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Agefruer
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Undeeler vun aaneren Firme kafen: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Wann ugeschalt, dierfen Aktien vu Firme kaf an verkaf ginn. Aktien si just fir Firme verfügbar, déi en gewëssen Alter erreecht hunn
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimalt Firmenalter fir Aktien ze handelen: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Definéiert d'minimalt Alter vun enger Firma, befier anerer kënnen Undeeler un Aktien vun hier kafen.
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prozentsaz vum Etappenprofit den am Feeder-System bezuelt gëtt: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Prozentsaz vum Akommes déi un d'Zwëschenetappen an engem Feeder-System gi ginn, wat méi Kontroll iwwert d'Akommes erméiglegt
 
@@ -3698,7 +3691,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} Schëff{P "" er}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Keng
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmewäert: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% am Besëtz vun {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktur:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} Schinnendeel{P "" er}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} Stroossendeel{P "" er}
@@ -3726,11 +3718,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Firmennu
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Ännert de Firmennumm
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Managernumm
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ännert den Numm vum Manager
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kaaft 25% Undeel vun der Firma
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Verkaaft 25% Undeel vun der Firma
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kaaft 25% Undeel vun deser Firma. Shift+Klick weist ongeféier Käschten ouni Kaf vun Aktien
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkaaft 25% Undeel vun deser Firma. Shift+Klick weist ongeféier Käschten ouni Verkaf vun Aktien
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmennumm
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Numm vum Manager
@@ -4758,9 +4745,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kann ken
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Kann dëser Firma kee Geld ginn...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kann d'Firma net kafen...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kann d'Firmenhaaptgebai net bauen...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kann keng 25% Undeeler vun dëser Firma kafen...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kann keng 25% Undeeler vun dëser Firma verkafen...
-STR_ERROR_PROTECTED                                             :{WHITE}Des Firma ass nach net al genuch fir Undeeler ze handelen...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ka keng Stied bauen

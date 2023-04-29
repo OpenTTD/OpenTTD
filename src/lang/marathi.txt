@@ -982,9 +982,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 ###length 3
 
 
-###setting-zero-is-special
-
-
 
 
 ###length 2
@@ -1471,7 +1468,6 @@ STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}नव�
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}व्यवस्थापका साठी नवीन चेहरा निवडा
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}व्यवस्थापकाचे नाव
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}व्यवस्थापकाच नाव बदला
-
 
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :व्यवस्थापकाचे नाव
 

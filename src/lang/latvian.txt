@@ -1801,13 +1801,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Orģināls
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Gluds
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Saldēts
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ja iespējots, ir atļauts pirkt un pārdodot uzņēmumu akcijas. Akcijas būs pieejamas tikai atbilstošu vecumu sasniegušiem uzņēmumiem
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimālais uzņēmuma vecums, lai tirgotos ar akcijām: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Iestatīt minimālo uzņēmuma vecums, lai citi varētu pirkt un pārdod to akcijas.
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procenti no kopējās peļņas, ko maksā tranzītstacijās: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procenti no ienākumiem, kas tiek doti starpposmiem padeves sistēmās, kas dod lielāku kontroli pār ienākumiem
 
@@ -3705,7 +3698,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} kuģ{P is i u}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Neviens
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Uzņēmuma vērtība: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% piederoši {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktūra:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} sliežu gabal{P s i u}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} ceļa gabal{P s i u}
@@ -3733,11 +3725,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Uzņēmu
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Mainīt uzņēmuma nosaukumu
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Vadītāja vārds
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Mainīt vadītāja vārdu
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Nopirkt 25% daļu uzņēmumā
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Pārdot 25% daļu uzņēmumā
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Nopirkt 25% daļu šajā uzņēmumā. Shift+klikšķis rāda izmaksu novērtējumu, nepērkot akcijas
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Pārdot 25% daļu uzņēmumā. Shift+Ctrl rāda izmaksu novērtējumu, nepārdodot nevienu akciju
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Uzņēmuma nosaukums
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Vadītāja vārds
@@ -4765,9 +4752,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Bankas a
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Nav iespējams atdot naudu šai kompānijai...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nevar nopirkt uzņēmumu...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nevar uzbūvēt uzņēmuma biroju...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nevar nopirkt 25% daļu šajā uzņēmumā...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Nevar pārdot 25% daļu šajā uzņēmumā...
-STR_ERROR_PROTECTED                                             :{WHITE}Šis uzņēmums ir par jaunu lai tirgotu akcijas...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nevar būvēt pilsētas

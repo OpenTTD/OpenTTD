@@ -1805,15 +1805,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Orijinal
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Pürüzsüz
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Donuk
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Diğer şirketlerin hisseleri alınabilsin: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Etkinleştirildiğinde, şirketlerin hisse senetlerinin alınıp satılması mümkün olur. Hisse senetleri sadece belli bir yaşa ulaşan şirketler için geçerlidir
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Hisse satmak için gerekli minimum şirket yaşı: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Bir şirketin hisselerinin satılabileceği ve diğer şirketlerin alabileceği minimum şirket yaşını belirleyin.
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_VALUE                   :{COMMA} yıl{P ""}
-###setting-zero-is-special
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_NO_MIN                  :Minimum yok
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Besleme sistemlerinde, bölümlerden elde edilen kardan ödenecek yüzde: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Besleme sistemlerinde, sistemi oluşturan ara bölümlere verilen kar yüzdesi. Böylece kar miktarı üzerinde daha fazla kontrol elde edilmiş olur
 
@@ -3714,7 +3705,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} gemi
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Yok
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Şirket değeri: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}(%{COMMA} ortağı {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Altyapı:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ray parçası
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} yol parçası
@@ -3742,11 +3732,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Şirket 
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Şirket ismini değiştir
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Müdür ismi
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Müdürün ismini değiştir
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}%25'ini satın al
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}%25'ini geri ver
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Şirketin %25 hissesini al. Shift+tıklama hisse satın almadan tahmini maliyeti gösterir
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Şirketin %25 hissesini sat. Shift+tıklama hisse satmadan tahmini maliyeti gösterir
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Şirketin ismi
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Yöneticinin ismi
@@ -4776,9 +4761,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Bankadan
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Bu şirkete para veremezsin...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Şirket satın alınamaz...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Şirket binasi yapılamaz...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Şirketin %25'i alınamıyor...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Şirketin %25'i satılamıyor...
-STR_ERROR_PROTECTED                                             :{WHITE}Bu şirket hisselerini satacak kadar eski değil...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Şehir kurulamaz

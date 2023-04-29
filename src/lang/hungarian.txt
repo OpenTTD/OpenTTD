@@ -1861,13 +1861,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Eredeti
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Egyenletes
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Stagnáló
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Más vállalatokból lehet részvényt vásárolni: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Bekapcsolva engedélyezi más vállalatok részvényeinek megvásárlását. A részvények csak akkor elérhetőek, ha a vállalat elért egy bizonyos kort
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Vállalatok minimális életkora részvénykibocsátáshoz: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Egy vállalatnak legalább ennyi évesnek kell lennie ahhoz, hogy más vállalatok kereskedhessenek a részvényeivel.
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Ráhordó rendszereknek kifizetett profitszázalék: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :A bevételek százaléka, mely a közbenső szállítóknak, ráhordó járatoknak kerül kifizetésre, nagyobb ellenőrzést adva a bevétel felett
 
@@ -3754,7 +3747,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} hajó
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nincs
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Vállalat értéke: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% {COMPANY} tulajdona)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktúra:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} vasúti elem
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} közúti elem
@@ -3782,11 +3774,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Vállala
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}A vállalat nevének megváltoztatása
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Elnök neve
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Az elnök nevének megváltoztatása
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}25% megvétele a vállalatból
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}25% eladása a vállalatból
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}25%-nyi vállalati részvény megvétele. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25%-nyi vállalati részvény eladása. Shift+kattintással megmutatja a becsült költséget eladás nélkül
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :A vállalat neve
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Elnök neve
@@ -4812,9 +4799,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nem tudo
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Nem tudsz pénzt adományozni a vállalatnak...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nem veheted meg a vállalatot...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nem építheted ide a székházadat...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nem vehetsz 25%-nyi részvényt ebből a vállalatból...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Nem adhatsz el 25%-nyi részvényt ebből a vállalatból...
-STR_ERROR_PROTECTED                                             :{WHITE}Ez a vállalat egyelőre még nem rendelkezik részvényekkel...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nem lehet több települést építeni

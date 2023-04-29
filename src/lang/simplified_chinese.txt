@@ -1799,13 +1799,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :原版
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :平滑
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :冻结
 
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :允许购买其他公司的股份：{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :“打开”时，允许买卖其它公司股份。被入股公司必须经营一定年限
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :公司可发售股份的最小已存续年份数：{STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :设置公司可发售股份的最小已存续年份数。
-###setting-zero-is-special
-
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :转运系统中支付的利润百分比 {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :设定在转运系统中支付给前一环节的收入百分比, 从而对收入有更多的控制权
 
@@ -3698,7 +3691,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 艘轮船
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}无
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}公司市值：{WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% 由 {COMPANY} 所有)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}设施:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} 轨道交通
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} 道路
@@ -3726,11 +3718,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}公司�
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}改变公司的名称
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}总裁姓名
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}为总裁改名
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}购买其 25% 的股份
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}出售其 25% 的股份
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}购买此公司 25% 的股份，按住 Shift 键单击可以显示所需资金
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}出售此公司 25% 的股份，按住 Shift 键单击可以显示预计收入
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :公司名称
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :总裁姓名
@@ -4758,9 +4745,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}不能�
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}不能给予该公司资金……
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}不能收购公司……
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}不能设置公司总部
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}不能购买此公司的股份……
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}不能出售此公司的股份……
-STR_ERROR_PROTECTED                                             :{WHITE}这个公司刚刚开业，还不能进行股权交易……
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}不能建设任何城镇
