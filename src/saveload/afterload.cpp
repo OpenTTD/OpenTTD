@@ -1775,21 +1775,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_84)) {
-		/* Set all share owners to INVALID_COMPANY for
-		 * 1) all inactive companies
-		 *     (when inactive companies were stored in the savegame - TTD, TTDP and some
-		 *      *really* old revisions of OTTD; else it is already set in InitializeCompanies())
-		 * 2) shares that are owned by inactive companies or self
-		 *     (caused by cheating clients in earlier revisions) */
-		for (Company *c : Company::Iterate()) {
-			for (auto &share_owner : c->share_owners) {
-				if (share_owner == INVALID_COMPANY) continue;
-				if (!Company::IsValidID(share_owner) || share_owner == c->index) share_owner = INVALID_COMPANY;
-			}
-		}
-	}
-
 	/* The water class was moved/unified. */
 	if (IsSavegameVersionBefore(SLV_146)) {
 		for (auto t : Map::Iterate()) {

@@ -950,10 +950,8 @@ static const OldChunks _company_chunk[] = {
 	OCL_CNULL( OC_TTD, 1 ),           // Old AI
 	OCL_CNULL( OC_TTD, 1 ), // avail_railtypes
 	OCL_SVAR(   OC_TILE, Company, location_of_HQ ),
-	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[0] ),
-	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[1] ),
-	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[2] ),
-	OCL_SVAR( OC_TTD | OC_UINT8, Company, share_owners[3] ),
+
+	OCL_NULL( 4 ),           // Shares
 
 	OCL_CNULL( OC_TTD, 8 ), ///< junk at end of chunk
 
