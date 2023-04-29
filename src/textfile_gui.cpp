@@ -124,11 +124,11 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
 		/* Reflow is mandatory if text wrapping is on */
 		uint height = this->ReflowContent();
-		this->vscroll->SetCount(std::min<uint>(UINT16_MAX, height));
+		this->vscroll->SetCount(ClampTo<uint16_t>(height));
 		this->hscroll->SetCount(0);
 	} else {
 		uint height = force_reflow ? this->ReflowContent() : this->GetContentHeight();
-		this->vscroll->SetCount(std::min<uint>(UINT16_MAX, height));
+		this->vscroll->SetCount(ClampTo<uint16_t>(height));
 		this->hscroll->SetCount(this->max_length + WidgetDimensions::scaled.frametext.Horizontal());
 	}
 

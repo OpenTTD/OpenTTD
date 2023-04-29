@@ -533,7 +533,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 	bool moved_cargo = false;
 
 	for (uint j = 0; j < lengthof(i->produced_cargo_waiting); j++) {
-		uint cw = std::min<uint>(i->produced_cargo_waiting[j], 255u);
+		uint cw = ClampTo<uint8_t>(i->produced_cargo_waiting[j]);
 		if (cw > indspec->minimal_cargo && i->produced_cargo[j] != CT_INVALID) {
 			i->produced_cargo_waiting[j] -= cw;
 
@@ -1142,7 +1142,7 @@ static void ChopLumberMillTrees(Industry *i)
 
 	TileIndex tile = i->location.tile;
 	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, nullptr)) { // 40x40 tiles  to search.
-		i->produced_cargo_waiting[0] = std::min(0xffff, i->produced_cargo_waiting[0] + 45); // Found a tree, add according value to waiting cargo.
+		i->produced_cargo_waiting[0] = ClampTo<uint16_t>(i->produced_cargo_waiting[0] + 45); // Found a tree, add according value to waiting cargo.
 	}
 }
 
@@ -1174,7 +1174,7 @@ static void ProduceIndustryGoods(Industry *i)
 
 		IndustryBehaviour indbehav = indsp->behaviour;
 		for (size_t j = 0; j < lengthof(i->produced_cargo_waiting); j++) {
-			i->produced_cargo_waiting[j] = std::min(0xffff, i->produced_cargo_waiting[j] + i->production_rate[j]);
+			i->produced_cargo_waiting[j] = ClampTo<uint16_t>(i->produced_cargo_waiting[j] + i->production_rate[j]);
 		}
 
 		if ((indbehav & INDUSTRYBEH_PLANT_FIELDS) != 0) {
@@ -1785,7 +1785,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	/* Randomize inital production if non-original economy is used and there are no production related callbacks. */
 	if (!indspec->UsesOriginalEconomy()) {
 		for (size_t ci = 0; ci < lengthof(i->production_rate); ci++) {
-			i->production_rate[ci] = std::min((RandomRange(256) + 128) * i->production_rate[ci] >> 8, 255u);
+			i->production_rate[ci] = ClampTo<byte>((RandomRange(256) + 128) * i->production_rate[ci] >> 8);
 		}
 	}
 
@@ -2423,7 +2423,7 @@ static void UpdateIndustryStatistics(Industry *i)
 			byte pct = 0;
 			if (i->this_month_production[j] != 0) {
 				i->last_prod_year = TimerGameCalendar::year;
-				pct = std::min(i->this_month_transported[j] * 256 / i->this_month_production[j], 255);
+				pct = ClampTo<byte>(i->this_month_transported[j] * 256 / i->this_month_production[j]);
 			}
 			i->last_month_pct_transported[j] = pct;
 
@@ -2447,7 +2447,7 @@ void Industry::RecomputeProductionMultipliers()
 
 	/* Rates are rounded up, so e.g. oilrig always produces some passengers */
 	for (size_t i = 0; i < lengthof(this->production_rate); i++) {
-		this->production_rate[i] = std::min(CeilDiv(indspec->production_rate[i] * this->prod_level, PRODLEVEL_DEFAULT), 0xFFu);
+		this->production_rate[i] = ClampTo<byte>(CeilDiv(indspec->production_rate[i] * this->prod_level, PRODLEVEL_DEFAULT));
 	}
 }
 

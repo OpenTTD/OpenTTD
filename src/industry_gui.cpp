@@ -1052,7 +1052,7 @@ public:
 								if (i->production_rate[line - IL_RATE1] >= 255) return;
 								/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
 								int new_prod = i->production_rate[line - IL_RATE1] == 0 ? 1 : i->production_rate[line - IL_RATE1] * 2;
-								i->production_rate[line - IL_RATE1] = std::min<uint>(new_prod, 255);
+								i->production_rate[line - IL_RATE1] = ClampTo<byte>(new_prod);
 							}
 							break;
 

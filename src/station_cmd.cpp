@@ -3660,9 +3660,9 @@ static void UpdateStationRating(Station *st)
 				/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
 				uint last_speed = ge->HasVehicleEverTriedLoading() ? ge->last_speed : 0xFF;
 
-				uint32 var18 = std::min<uint>(ge->time_since_pickup, 0xFFu)
-					| (std::min<uint>(ge->max_waiting_cargo, 0xFFFFu) << 8)
-					| (std::min<uint>(last_speed, 0xFFu) << 24);
+				uint32 var18 = ClampTo<uint8_t>(ge->time_since_pickup)
+					| (ClampTo<uint16_t>(ge->max_waiting_cargo) << 8)
+					| (ClampTo<uint8_t>(last_speed) << 24);
 				/* Convert to the 'old' vehicle types */
 				uint32 var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
 				uint16 callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
@@ -3705,7 +3705,7 @@ static void UpdateStationRating(Station *st)
 				int or_ = ge->rating; // old rating
 
 				/* only modify rating in steps of -2, -1, 0, 1 or 2 */
-				ge->rating = rating = or_ + Clamp(Clamp(rating, 0, 255) - or_, -2, 2);
+				ge->rating = rating = or_ + Clamp(ClampTo<uint8_t>(rating) - or_, -2, 2);
 
 				/* if rating is <= 64 and more than 100 items waiting on average per destination,
 				 * remove some random amount of goods from the station */
@@ -4019,7 +4019,7 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 				GoodsEntry *ge = &st->goods[i];
 
 				if (ge->status != 0) {
-					ge->rating = Clamp(ge->rating + amount, 0, 255);
+					ge->rating = ClampTo<uint8_t>(ge->rating + amount);
 				}
 			}
 		}

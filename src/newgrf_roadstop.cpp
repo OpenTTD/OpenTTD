@@ -105,7 +105,7 @@ uint32 RoadStopScopeResolver::GetVariable(byte variable, uint32 parameter, bool 
 		case 0x45: {
 			if (this->tile == INVALID_TILE) return HZB_TOWN_EDGE << 16;
 			const Town *t = (this->st == nullptr) ? ClosestTownFromTile(this->tile, UINT_MAX) : this->st->town;
-			return t != nullptr ? (GetTownRadiusGroup(t, this->tile) << 16 | std::min(DistanceManhattan(this->tile, t->xy), 0xFFFFu)) : HZB_TOWN_EDGE << 16;
+			return t != nullptr ? (GetTownRadiusGroup(t, this->tile) << 16 | ClampTo<uint16_t>(DistanceManhattan(this->tile, t->xy))) : HZB_TOWN_EDGE << 16;
 		}
 
 		/* Get square of Euclidian distance of closest town */
@@ -176,7 +176,7 @@ uint32 RoadStopScopeResolver::GetVariable(byte variable, uint32 parameter, bool 
 
 		case 0xF0: return this->st == nullptr ? 0 : this->st->facilities; // facilities
 
-		case 0xFA: return Clamp((this->st == nullptr ? TimerGameCalendar::date : this->st->build_date) - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // build date
+		case 0xFA: return ClampTo<uint16_t>((this->st == nullptr ? TimerGameCalendar::date : this->st->build_date) - DAYS_TILL_ORIGINAL_BASE_YEAR); // build date
 	}
 
 	if (this->st != nullptr) return this->st->GetNewGRFVariable(this->ro, variable, parameter, available);

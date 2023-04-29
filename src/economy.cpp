@@ -938,7 +938,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, uint16 transit_days,
 
 	/* Use callback to calculate cargo profit, if available */
 	if (HasBit(cs->callback_mask, CBM_CARGO_PROFIT_CALC)) {
-		uint32 var18 = std::min(dist, 0xFFFFu) | (std::min(num_pieces, 0xFFu) << 16) | (std::min<uint16>(transit_days, 0xFFu) << 24);
+		uint32 var18 = ClampTo<uint16_t>(dist) | (ClampTo<uint8_t>(num_pieces) << 16) | (ClampTo<uint8_t>(transit_days) << 24);
 		uint16 callback = GetCargoCallback(CBID_CARGO_PROFIT_CALC, 0, var18, cs);
 		if (callback != CALLBACK_FAILED) {
 			int result = GB(callback, 0, 14);
@@ -1126,7 +1126,7 @@ static void TriggerIndustryProduction(Industry *i)
 			if (cargo_waiting == 0) continue;
 
 			for (uint ci_out = 0; ci_out < lengthof(i->produced_cargo_waiting); ci_out++) {
-				i->produced_cargo_waiting[ci_out] = std::min(i->produced_cargo_waiting[ci_out] + (cargo_waiting * indspec->input_cargo_multiplier[ci_in][ci_out] / 256), 0xFFFFu);
+				i->produced_cargo_waiting[ci_out] = ClampTo<uint16_t>(i->produced_cargo_waiting[ci_out] + (cargo_waiting * indspec->input_cargo_multiplier[ci_in][ci_out] / 256));
 			}
 
 			i->incoming_cargo_waiting[ci_in] = 0;
@@ -1728,8 +1728,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 		}
 
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
-		ge->last_speed = std::min(t, 255);
-		ge->last_age = std::min(TimerGameCalendar::year - front->build_year, 255);
+		ge->last_speed = ClampTo<uint8_t>(t);
+		ge->last_age = ClampTo<uint8_t>(TimerGameCalendar::year - front->build_year);
 
 		assert(v->cargo_cap >= v->cargo.StoredCount());
 		/* Capacity available for loading more cargo. */
