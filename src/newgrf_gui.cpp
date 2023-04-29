@@ -2184,19 +2184,13 @@ static WindowDesc _scan_progress_desc(
 
 /** Window for showing the progress of NewGRF scanning. */
 struct ScanProgressWindow : public Window {
-	char *last_name; ///< The name of the last 'seen' NewGRF.
-	int scanned;     ///< The number of NewGRFs that we have seen.
+	std::string last_name; ///< The name of the last 'seen' NewGRF.
+	int scanned;           ///< The number of NewGRFs that we have seen.
 
 	/** Create the window. */
-	ScanProgressWindow() : Window(&_scan_progress_desc), last_name(nullptr), scanned(0)
+	ScanProgressWindow() : Window(&_scan_progress_desc), scanned(0)
 	{
 		this->InitNested(1);
-	}
-
-	/** Free the last name buffer. */
-	~ScanProgressWindow()
-	{
-		free(last_name);
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -2241,7 +2235,7 @@ struct ScanProgressWindow : public Window {
 				SetDParam(1, _settings_client.gui.last_newgrf_count);
 				DrawString(r.left, r.right, r.top, STR_NEWGRF_SCAN_STATUS, TC_FROMSTRING, SA_HOR_CENTER);
 
-				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal, this->last_name == nullptr ? "" : this->last_name, TC_BLACK, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal, this->last_name, TC_BLACK, SA_HOR_CENTER);
 				break;
 		}
 	}
@@ -2253,13 +2247,10 @@ struct ScanProgressWindow : public Window {
 	 */
 	void UpdateNewGRFScanStatus(uint num, const char *name)
 	{
-		free(this->last_name);
 		if (name == nullptr) {
-			char buf[256];
-			GetString(buf, STR_NEWGRF_SCAN_ARCHIVES, lastof(buf));
-			this->last_name = stredup(buf);
+			this->last_name = GetString(STR_NEWGRF_SCAN_ARCHIVES);
 		} else {
-			this->last_name = stredup(name);
+			this->last_name = name;
 		}
 		this->scanned = num;
 		if (num > _settings_client.gui.last_newgrf_count) _settings_client.gui.last_newgrf_count = num;
