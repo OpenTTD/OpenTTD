@@ -190,37 +190,6 @@ constexpr To ClampTo(From value)
 }
 
 /**
- * Reduce a signed 64-bit int to a signed 32-bit one
- *
- * This function clamps a 64-bit integer to a 32-bit integer.
- * If the 64-bit value is smaller than the smallest 32-bit integer
- * value 0x80000000 this value is returned (the left one bit is the sign bit).
- * If the 64-bit value is greater than the greatest 32-bit integer value 0x7FFFFFFF
- * this value is returned. In all other cases the 64-bit value 'fits' in a
- * 32-bits integer field and so the value is casted to int32 and returned.
- *
- * @param a The 64-bit value to clamps
- * @return The 64-bit value reduced to a 32-bit value
- * @see Clamp(int, int, int)
- */
-static inline int32 ClampToI32(const int64 a)
-{
-	return ClampTo<int32>(a);
-}
-
-/**
- * Reduce an unsigned 64-bit int to an unsigned 16-bit one
- *
- * @param a The 64-bit value to clamp
- * @return The 64-bit value reduced to a 16-bit value
- * @see ClampU(uint, uint, uint)
- */
-static inline uint16 ClampToU16(const uint64 a)
-{
-	return ClampTo<uint16>(a);
-}
-
-/**
  * Returns the (absolute) difference between two (scalar) variables
  *
  * @param a The first scalar

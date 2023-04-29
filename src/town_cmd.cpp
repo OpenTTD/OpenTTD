@@ -2957,7 +2957,7 @@ CommandCost CmdExpandTown(DoCommandFlag flags, TownID town_id, uint32 grow_amoun
 	if (flags & DC_EXEC) {
 		/* The more houses, the faster we grow */
 		if (grow_amount == 0) {
-			uint amount = RandomRange(ClampToU16(t->cache.num_houses / 10)) + 3;
+			uint amount = RandomRange(ClampTo<uint16_t>(t->cache.num_houses / 10)) + 3;
 			t->cache.num_houses += amount;
 			UpdateTownRadius(t);
 
