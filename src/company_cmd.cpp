@@ -565,7 +565,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 
 	c->avail_railtypes = GetCompanyRailTypes(c->index);
 	c->avail_roadtypes = GetCompanyRoadTypes(c->index);
-	c->inaugurated_year = TimerGameCalendar::year;
+	c->inaugurated_year = TimerGameEconomy::year;
 
 	/* If starting a player company in singleplayer and a favorite company manager face is selected, choose it. Otherwise, use a random face.
 	 * In a network game, we'll choose the favorite face later in CmdCompanyCtrl to sync it to all clients. */

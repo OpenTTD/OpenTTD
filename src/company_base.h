@@ -14,7 +14,7 @@
 #include "livery.h"
 #include "autoreplace_type.h"
 #include "tile_type.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "settings_type.h"
 #include "group.h"
 
@@ -74,7 +74,7 @@ struct CompanyProperties {
 	TileIndex location_of_HQ;        ///< Northern tile of HQ; #INVALID_TILE when there is none.
 	TileIndex last_build_coordinate; ///< Coordinate of the last build thing by this company.
 
-	TimerGameCalendar::Year inaugurated_year; ///< Year of starting the company.
+	TimerGameEconomy::Year inaugurated_year; ///< Economy year of starting the company.
 
 	byte months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?
