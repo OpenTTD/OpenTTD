@@ -170,7 +170,7 @@ void VehicleServiceInDepot(Vehicle *v)
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 
 	do {
-		v->date_of_last_service = TimerGameCalendar::date;
+		v->date_of_last_service = TimerGameEconomy::date;
 		v->date_of_last_service_newgrf = TimerGameCalendar::date;
 		v->breakdowns_since_last_service = 0;
 		v->reliability = v->GetEngine()->reliability;
@@ -197,7 +197,7 @@ bool Vehicle::NeedsServicing() const
 	const Company *c = Company::Get(this->owner);
 	if (this->ServiceIntervalIsPercent() ?
 			(this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) :
-			(this->date_of_last_service + this->GetServiceInterval() >= TimerGameCalendar::date)) {
+			(this->date_of_last_service + this->GetServiceInterval() >= TimerGameEconomy::date)) {
 		return false;
 	}
 
@@ -767,9 +767,9 @@ uint32_t Vehicle::GetGRFID() const
  * This is useful if the date has been modified with the cheat menu.
  * @param interval Number of days to be added or substracted.
  */
-void Vehicle::ShiftDates(TimerGameCalendar::Date interval)
+void Vehicle::ShiftDates(TimerGameEconomy::Date interval)
 {
-	this->date_of_last_service = std::max(this->date_of_last_service + interval, TimerGameCalendar::Date(0));
+	this->date_of_last_service = std::max(this->date_of_last_service + interval, TimerGameEconomy::Date(0));
 	/* date_of_last_service_newgrf is not updated here as it must stay stable
 	 * for vehicles outside of a depot. */
 }

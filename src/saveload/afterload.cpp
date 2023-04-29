@@ -1441,7 +1441,7 @@ bool AfterLoadGame()
 		for (Industry *i : Industry::Iterate())  i->last_prod_year   += EconomyTime::ORIGINAL_BASE_YEAR;
 
 		for (Vehicle *v : Vehicle::Iterate()) {
-			v->date_of_last_service += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+			v->date_of_last_service += EconomyTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 			v->build_year += CalendarTime::ORIGINAL_BASE_YEAR;
 		}
 	}
@@ -3266,7 +3266,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_NEWGRF_LAST_SERVICE)) {
 		/* Set service date provided to NewGRF. */
 		for (Vehicle *v : Vehicle::Iterate()) {
-			v->date_of_last_service_newgrf = v->date_of_last_service;
+			v->date_of_last_service_newgrf = v->date_of_last_service.base();
 		}
 	}
 

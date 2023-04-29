@@ -111,7 +111,6 @@ void TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar
 		TimerGameCalendar::year--;
 		days_this_year = TimerGameCalendar::IsLeapYear(TimerGameCalendar::year) ? CalendarTime::DAYS_IN_LEAP_YEAR : CalendarTime::DAYS_IN_YEAR;
 		TimerGameCalendar::date -= days_this_year;
-		for (Vehicle *v : Vehicle::Iterate()) v->ShiftDates(-days_this_year);
 		for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(-days_this_year);
 	}
 }
