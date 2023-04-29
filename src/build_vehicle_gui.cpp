@@ -194,7 +194,7 @@ static bool EngineCostSorter(const GUIEngineListItem &a, const GUIEngineListItem
 {
 	Money va = Engine::Get(a.engine_id)->GetCost();
 	Money vb = Engine::Get(b.engine_id)->GetCost();
-	int r = ClampToI32(va - vb);
+	int r = ClampTo<int32_t>(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
 	if (r == 0) return EngineNumberSorter(a, b);
@@ -262,7 +262,7 @@ static bool EngineRunningCostSorter(const GUIEngineListItem &a, const GUIEngineL
 {
 	Money va = Engine::Get(a.engine_id)->GetRunningCost();
 	Money vb = Engine::Get(b.engine_id)->GetRunningCost();
-	int r = ClampToI32(va - vb);
+	int r = ClampTo<int32_t>(va - vb);
 
 	/* Use EngineID to sort instead since we want consistent sorting */
 	if (r == 0) return EngineNumberSorter(a, b);

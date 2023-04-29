@@ -519,7 +519,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			{
 				const Vehicle *w = v->Next();
 				assert(w != nullptr);
-				uint16 altitude = ClampToU16(v->z_pos - w->z_pos); // Aircraft height - shadow height
+				uint16 altitude = ClampTo<uint16_t>(v->z_pos - w->z_pos); // Aircraft height - shadow height
 				byte airporttype = ATP_TTDP_LARGE;
 
 				const Station *st = GetTargetAirportIfValid(Aircraft::From(v));
@@ -820,14 +820,14 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 		case 0x39: return v->cargo_type;
 		case 0x3A: return v->cargo_cap;
 		case 0x3B: return GB(v->cargo_cap, 8, 8);
-		case 0x3C: return ClampToU16(v->cargo.StoredCount());
-		case 0x3D: return GB(ClampToU16(v->cargo.StoredCount()), 8, 8);
+		case 0x3C: return ClampTo<uint16_t>(v->cargo.StoredCount());
+		case 0x3D: return GB(ClampTo<uint16_t>(v->cargo.StoredCount()), 8, 8);
 		case 0x3E: return v->cargo.Source();
 		case 0x3F: return ClampU(v->cargo.DaysInTransit(), 0, 0xFF);
-		case 0x40: return ClampToU16(v->age);
-		case 0x41: return GB(ClampToU16(v->age), 8, 8);
-		case 0x42: return ClampToU16(v->max_age);
-		case 0x43: return GB(ClampToU16(v->max_age), 8, 8);
+		case 0x40: return ClampTo<uint16_t>(v->age);
+		case 0x41: return GB(ClampTo<uint16_t>(v->age), 8, 8);
+		case 0x42: return ClampTo<uint16_t>(v->max_age);
+		case 0x43: return GB(ClampTo<uint16_t>(v->max_age), 8, 8);
 		case 0x44: return Clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x45: return v->unitnumber;
 		case 0x46: return v->GetEngine()->grf_prop.local_id;
@@ -845,20 +845,20 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 		case 0x4F: return GB(v->reliability, 8, 8);
 		case 0x50: return v->reliability_spd_dec;
 		case 0x51: return GB(v->reliability_spd_dec, 8, 8);
-		case 0x52: return ClampToI32(v->GetDisplayProfitThisYear());
-		case 0x53: return GB(ClampToI32(v->GetDisplayProfitThisYear()),  8, 24);
-		case 0x54: return GB(ClampToI32(v->GetDisplayProfitThisYear()), 16, 16);
-		case 0x55: return GB(ClampToI32(v->GetDisplayProfitThisYear()), 24,  8);
-		case 0x56: return ClampToI32(v->GetDisplayProfitLastYear());
-		case 0x57: return GB(ClampToI32(v->GetDisplayProfitLastYear()),  8, 24);
-		case 0x58: return GB(ClampToI32(v->GetDisplayProfitLastYear()), 16, 16);
-		case 0x59: return GB(ClampToI32(v->GetDisplayProfitLastYear()), 24,  8);
+		case 0x52: return ClampTo<int32_t>(v->GetDisplayProfitThisYear());
+		case 0x53: return GB(ClampTo<int32_t>(v->GetDisplayProfitThisYear()),  8, 24);
+		case 0x54: return GB(ClampTo<int32_t>(v->GetDisplayProfitThisYear()), 16, 16);
+		case 0x55: return GB(ClampTo<int32_t>(v->GetDisplayProfitThisYear()), 24,  8);
+		case 0x56: return ClampTo<int32_t>(v->GetDisplayProfitLastYear());
+		case 0x57: return GB(ClampTo<int32_t>(v->GetDisplayProfitLastYear()),  8, 24);
+		case 0x58: return GB(ClampTo<int32_t>(v->GetDisplayProfitLastYear()), 16, 16);
+		case 0x59: return GB(ClampTo<int32_t>(v->GetDisplayProfitLastYear()), 24,  8);
 		case 0x5A: return v->Next() == nullptr ? INVALID_VEHICLE : v->Next()->index;
 		case 0x5B: break; // not implemented
-		case 0x5C: return ClampToI32(v->value);
-		case 0x5D: return GB(ClampToI32(v->value),  8, 24);
-		case 0x5E: return GB(ClampToI32(v->value), 16, 16);
-		case 0x5F: return GB(ClampToI32(v->value), 24,  8);
+		case 0x5C: return ClampTo<int32_t>(v->value);
+		case 0x5D: return GB(ClampTo<int32_t>(v->value),  8, 24);
+		case 0x5E: return GB(ClampTo<int32_t>(v->value), 16, 16);
+		case 0x5F: return GB(ClampTo<int32_t>(v->value), 24,  8);
 		case 0x60: break; // not implemented
 		case 0x61: break; // not implemented
 		case 0x62: break; // vehicle specific, see below

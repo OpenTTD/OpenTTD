@@ -99,7 +99,7 @@ struct FileStringReader : StringReader {
 
 	char *ReadLine(char *buffer, const char *last) override
 	{
-		return fgets(buffer, ClampToU16(last - buffer + 1), this->fh);
+		return fgets(buffer, ClampTo<uint16_t>(last - buffer + 1), this->fh);
 	}
 
 	void HandlePragma(char *str) override;

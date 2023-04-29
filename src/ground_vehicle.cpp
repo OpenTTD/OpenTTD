@@ -175,10 +175,10 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 		 * down hill will never slow down enough, and a vehicle that came up
 		 * a hill will never speed up enough to (eventually) get back to the
 		 * same (maximum) speed. */
-		int accel = ClampToI32((force - resistance) / (mass * 4));
+		int accel = ClampTo<int32_t>((force - resistance) / (mass * 4));
 		return force < resistance ? std::min(-1, accel) : std::max(1, accel);
 	} else {
-		return ClampToI32(std::min<int64>(-force - resistance, -10000) / mass);
+		return ClampTo<int32_t>(std::min<int64>(-force - resistance, -10000) / mass);
 	}
 }
 
