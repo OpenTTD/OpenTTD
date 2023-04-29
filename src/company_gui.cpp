@@ -22,7 +22,7 @@
 #include "newgrf.h"
 #include "company_manager_face.h"
 #include "strings_func.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "widgets/dropdown_type.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
@@ -255,7 +255,7 @@ static Money DrawYearCategory(const Rect &r, int start_y, const ExpensesList &li
  * @param tbl  Reference to table of amounts for \a year.
  * @note The environment must provide padding at the left and right of \a r.
  */
-static void DrawYearColumn(const Rect &r, TimerGameCalendar::Year year, const Expenses &tbl)
+static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Expenses &tbl)
 {
 	int y = r.top;
 	Money sum;
@@ -421,10 +421,10 @@ struct CompanyFinancesWindow : Window {
 			case WID_CF_EXPS_PRICE2:
 			case WID_CF_EXPS_PRICE3: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
-				auto age = std::min(TimerGameCalendar::year - c->inaugurated_year, TimerGameCalendar::Year(2));
+				auto age = std::min(TimerGameEconomy::year - c->inaugurated_year, TimerGameEconomy::Year(2));
 				int wid_offset = widget - WID_CF_EXPS_PRICE1;
 				if (wid_offset <= age) {
-					DrawYearColumn(r, TimerGameCalendar::year - (age - wid_offset), c->yearly_expenses[(age - wid_offset).base()]);
+					DrawYearColumn(r, TimerGameEconomy::year - (age - wid_offset), c->yearly_expenses[(age - wid_offset).base()]);
 				}
 				break;
 			}

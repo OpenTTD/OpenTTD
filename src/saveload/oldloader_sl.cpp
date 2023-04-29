@@ -1034,7 +1034,7 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 	}
 
 	_company_colours[num] = c->colour;
-	c->inaugurated_year -= CalendarTime::ORIGINAL_BASE_YEAR;
+	c->inaugurated_year -= EconomyTime::ORIGINAL_BASE_YEAR;
 
 	return true;
 }
