@@ -2218,8 +2218,8 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 			 * future, so for safety we just Utf8 Encode it into the string,
 			 * which takes exactly three characters, so it replaces the "XXX"
 			 * with the colour marker. */
-			static char *err_str = stredup("XXXThe current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
-			Utf8Encode(err_str, SCC_YELLOW);
+			static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
+			Utf8Encode(err_str.data(), SCC_YELLOW);
 			SetDParamStr(0, err_str);
 			ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
 		}
@@ -2239,8 +2239,8 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		 * properly we have to set the colour of the string, otherwise we end up with a lot of artifacts.
 		 * The colour 'character' might change in the future, so for safety we just Utf8 Encode it into
 		 * the string, which takes exactly three characters, so it replaces the "XXX" with the colour marker. */
-		static char *err_str = stredup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
-		Utf8Encode(err_str, SCC_YELLOW);
+		static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
+		Utf8Encode(err_str.data(), SCC_YELLOW);
 		SetDParamStr(0, err_str);
 		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
 
@@ -2267,8 +2267,8 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	 * the colour marker.
 	 */
 	if (_current_text_dir != TD_LTR) {
-		static char *err_str = stredup("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with icu enabled.");
-		Utf8Encode(err_str, SCC_YELLOW);
+		static std::string err_str("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with icu enabled.");
+		Utf8Encode(err_str.data(), SCC_YELLOW);
 		SetDParamStr(0, err_str);
 		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 	}
