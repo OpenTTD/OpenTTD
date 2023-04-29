@@ -3825,9 +3825,9 @@ void DeleteStaleLinks(Station *from)
 		for (Edge &edge : (*lg)[ge.node].edges) {
 			Station *to = Station::Get((*lg)[edge.dest_node].station);
 			assert(to->goods[c].node == edge.dest_node);
-			assert(TimerGameCalendar::date >= edge.LastUpdate());
-			auto timeout = TimerGameCalendar::Date(LinkGraph::MIN_TIMEOUT_DISTANCE + (DistanceManhattan(from->xy, to->xy) >> 3));
-			if (TimerGameCalendar::date - edge.LastUpdate() > timeout) {
+			assert(TimerGameEconomy::date >= edge.LastUpdate());
+			auto timeout = TimerGameEconomy::Date(LinkGraph::MIN_TIMEOUT_DISTANCE + (DistanceManhattan(from->xy, to->xy) >> 3));
+			if (TimerGameEconomy::date - edge.LastUpdate() > timeout) {
 				bool updated = false;
 
 				if (auto_distributed) {
@@ -3855,10 +3855,10 @@ void DeleteStaleLinks(Station *from)
 					while (iter != vehicles.end()) {
 						Vehicle *v = *iter;
 						/* Do not refresh links of vehicles that have been stopped in depot for a long time. */
-						if (!v->IsStoppedInDepot() || TimerGameCalendar::date - v->date_of_last_service <= LinkGraph::STALE_LINK_DEPOT_TIMEOUT) {
+						if (!v->IsStoppedInDepot() || TimerGameEconomy::date - v->date_of_last_service <= LinkGraph::STALE_LINK_DEPOT_TIMEOUT) {
 							LinkRefresher::Run(v, false); // Don't allow merging. Otherwise lg might get deleted.
 						}
-						if (edge.LastUpdate() == TimerGameCalendar::date) {
+						if (edge.LastUpdate() == TimerGameEconomy::date) {
 							updated = true;
 							break;
 						}
@@ -3881,19 +3881,19 @@ void DeleteStaleLinks(Station *from)
 					ge.flows.DeleteFlows(to->index);
 					RerouteCargo(from, c, to->index, from->index);
 				}
-			} else if (edge.last_unrestricted_update != CalendarTime::INVALID_DATE && TimerGameCalendar::date - edge.last_unrestricted_update > timeout) {
+			} else if (edge.last_unrestricted_update != EconomyTime::INVALID_DATE && TimerGameEconomy::date - edge.last_unrestricted_update > timeout) {
 				edge.Restrict();
 				ge.flows.RestrictFlows(to->index);
 				RerouteCargo(from, c, to->index, from->index);
-			} else if (edge.last_restricted_update != CalendarTime::INVALID_DATE && TimerGameCalendar::date - edge.last_restricted_update > timeout) {
+			} else if (edge.last_restricted_update != EconomyTime::INVALID_DATE && TimerGameEconomy::date - edge.last_restricted_update > timeout) {
 				edge.Release();
 			}
 		}
 		/* Remove dead edges. */
 		for (NodeID r : to_remove) (*lg)[ge.node].RemoveEdge(r);
 
-		assert(TimerGameCalendar::date >= lg->LastCompression());
-		if (TimerGameCalendar::date - lg->LastCompression() > LinkGraph::COMPRESSION_INTERVAL) {
+		assert(TimerGameEconomy::date >= lg->LastCompression());
+		if (TimerGameEconomy::date - lg->LastCompression() > LinkGraph::COMPRESSION_INTERVAL) {
 			lg->Compress();
 		}
 	}
