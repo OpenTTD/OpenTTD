@@ -301,8 +301,8 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
  */
 char *CrashLog::LogGamelog(char *buffer, const char *last) const
 {
-	_gamelog.Print([&buffer, last](const char *s) {
-		buffer += seprintf(buffer, last, "%s\n", s);
+	_gamelog.Print([&buffer, last](const std::string &s) {
+		buffer += seprintf(buffer, last, "%s\n", s.c_str());
 	});
 	return buffer + seprintf(buffer, last, "\n");
 }

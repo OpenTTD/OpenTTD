@@ -114,36 +114,34 @@ void Gamelog::Reset()
 }
 
 /**
- * Prints GRF ID, checksum and filename if found
- * @param buf The location in the buffer to draw
+ * Adds the GRF ID, checksum and filename if found to the output iterator
+ * @param outputIterator The iterator to add the GRF info to.
  * @param last The end of the buffer
  * @param grfid GRF ID
  * @param md5sum array of md5sum to print, if known
  * @param gc GrfConfig, if known
- * @return The buffer location.
  */
-static char *PrintGrfInfo(char *buf, const char *last, uint grfid, const uint8 *md5sum, const GRFConfig *gc)
+template <typename T>
+static void AddGrfInfo(T &outputIterator, uint grfid, const uint8 *md5sum, const GRFConfig *gc)
 {
-	char txt[40];
-
 	if (md5sum != nullptr) {
+		char txt[40];
 		md5sumToString(txt, lastof(txt), md5sum);
-		buf += seprintf(buf, last, "GRF ID %08X, checksum %s", BSWAP32(grfid), txt);
+		fmt::format_to(outputIterator, "GRF ID {:08X}, checksum {}", BSWAP32(grfid), txt);
 	} else {
-		buf += seprintf(buf, last, "GRF ID %08X", BSWAP32(grfid));
+		fmt::format_to(outputIterator, "GRF ID {:08X}", BSWAP32(grfid));
 	}
 
 	if (gc != nullptr) {
-		buf += seprintf(buf, last, ", filename: %s (md5sum matches)", gc->filename);
+		fmt::format_to(outputIterator, ", filename: {} (md5sum matches)", gc->filename);
 	} else {
 		gc = FindGRFConfig(grfid, FGCM_ANY);
 		if (gc != nullptr) {
-			buf += seprintf(buf, last, ", filename: %s (matches GRFID only)", gc->filename);
+			fmt::format_to(outputIterator, ", filename: {} (matches GRFID only)", gc->filename);
 		} else {
-			buf += seprintf(buf, last, ", unknown GRF");
+			fmt::format_to(outputIterator, ", unknown GRF");
 		}
 	}
-	return buf;
 }
 
 
@@ -180,9 +178,8 @@ typedef SmallMap<uint32, GRFPresence> GrfIDMapping;
  * Prints active gamelog
  * @param proc the procedure to draw with
  */
-void Gamelog::Print(std::function<void(const char*)> proc)
+void Gamelog::Print(std::function<void(const std::string &)> proc)
 {
-	char buffer[1024];
 	GrfIDMapping grf_names;
 
 	proc("---- gamelog start ----");
@@ -190,58 +187,57 @@ void Gamelog::Print(std::function<void(const char*)> proc)
 	for (const LoggedAction &la : this->data->action) {
 		assert((uint)la.at < GLAT_END);
 
-		seprintf(buffer, lastof(buffer), "Tick %u: %s", (uint)la.tick, la_text[(uint)la.at]);
-		proc(buffer);
+		proc(fmt::format("Tick {}: {}", la.tick, la_text[la.at]));
 
 		for (const LoggedChange &lc : la.change) {
-			char *buf = buffer;
+			std::string message;
+			auto outputIterator = std::back_inserter(message);
 
 			switch (lc.ct) {
 				default: NOT_REACHED();
 				case GLCT_MODE:
 					/* Changing landscape, or going from scenario editor to game or back. */
-					buf += seprintf(buf, lastof(buffer), "New game mode: %u landscape: %u",
-						(uint)lc.mode.mode, (uint)lc.mode.landscape);
+					fmt::format_to(outputIterator, "New game mode: {} landscape: {}", lc.mode.mode, lc.mode.landscape);
 					break;
 
 				case GLCT_REVISION:
 					/* The game was loaded in a diffferent version than before. */
-					buf += seprintf(buf, lastof(buffer), "Revision text changed to %s, savegame version %u, ",
+					fmt::format_to(outputIterator, "Revision text changed to {}, savegame version {}, ",
 						lc.revision.text, lc.revision.slver);
 
 					switch (lc.revision.modified) {
-						case 0: buf += seprintf(buf, lastof(buffer), "not "); break;
-						case 1: buf += seprintf(buf, lastof(buffer), "maybe "); break;
+						case 0: message += "not "; break;
+						case 1: message += "maybe "; break;
 						default: break;
 					}
 
-					buf += seprintf(buf, lastof(buffer), "modified, _openttd_newgrf_version = 0x%08x", lc.revision.newgrf);
+					fmt::format_to(outputIterator, "modified, _openttd_newgrf_version = 0x{:08x}", lc.revision.newgrf);
 					break;
 
 				case GLCT_OLDVER:
 					/* The game was loaded from before 0.7.0-beta1. */
-					buf += seprintf(buf, lastof(buffer), "Conversion from ");
+					message += "Conversion from ";
 					switch (lc.oldver.type) {
 						default: NOT_REACHED();
 						case SGT_OTTD:
-							buf += seprintf(buf, lastof(buffer), "OTTD savegame without gamelog: version %u, %u",
+							fmt::format_to(outputIterator, "OTTD savegame without gamelog: version {}, {}",
 								GB(lc.oldver.version, 8, 16), GB(lc.oldver.version, 0, 8));
 							break;
 
 						case SGT_TTO:
-							buf += seprintf(buf, lastof(buffer), "TTO savegame");
+							message += "TTO savegame";
 							break;
 
 						case SGT_TTD:
-							buf += seprintf(buf, lastof(buffer), "TTD savegame");
+							message += "TTD savegame";
 							break;
 
 						case SGT_TTDP1:
 						case SGT_TTDP2:
-							buf += seprintf(buf, lastof(buffer), "TTDP savegame, %s format",
+							fmt::format_to(outputIterator, "TTDP savegame, {} format",
 								lc.oldver.type == SGT_TTDP1 ? "old" : "new");
 							if (lc.oldver.version != 0) {
-								buf += seprintf(buf, lastof(buffer), ", TTDP version %u.%u.%u.%u",
+								fmt::format_to(outputIterator, ", TTDP version {}.{}.{}.{}",
 									GB(lc.oldver.version, 24, 8), GB(lc.oldver.version, 20, 4),
 									GB(lc.oldver.version, 16, 4), GB(lc.oldver.version, 0, 16));
 							}
@@ -251,16 +247,16 @@ void Gamelog::Print(std::function<void(const char*)> proc)
 
 				case GLCT_SETTING:
 					/* A setting with the SF_NO_NETWORK flag got changed; these settings usually affect NewGRFs, such as road side or wagon speed limits. */
-					buf += seprintf(buf, lastof(buffer), "Setting changed: %s : %d -> %d", lc.setting.name, lc.setting.oldval, lc.setting.newval);
+					fmt::format_to(outputIterator, "Setting changed: {} : {} -> {}", lc.setting.name, lc.setting.oldval, lc.setting.newval);
 					break;
 
 				case GLCT_GRFADD: {
 					/* A NewGRF got added to the game, either at the start of the game (never an issue), or later on when it could be an issue. */
 					const GRFConfig *gc = FindGRFConfig(lc.grfadd.grfid, FGCM_EXACT, lc.grfadd.md5sum);
-					buf += seprintf(buf, lastof(buffer), "Added NewGRF: ");
-					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfadd.grfid, lc.grfadd.md5sum, gc);
+					message += "Added NewGRF: ";
+					AddGrfInfo(outputIterator, lc.grfadd.grfid, lc.grfadd.md5sum, gc);
 					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
-					if (gm != grf_names.End() && !gm->second.was_missing) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was already added!");
+					if (gm != grf_names.End() && !gm->second.was_missing) message += ". Gamelog inconsistency: GrfID was already added!";
 					grf_names[lc.grfadd.grfid] = gc;
 					break;
 				}
@@ -268,10 +264,10 @@ void Gamelog::Print(std::function<void(const char*)> proc)
 				case GLCT_GRFREM: {
 					/* A NewGRF got removed from the game, either manually or by it missing when loading the game. */
 					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
-					buf += seprintf(buf, lastof(buffer), la.at == GLAT_LOAD ? "Missing NewGRF: " : "Removed NewGRF: ");
-					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfrem.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
+					message += la.at == GLAT_LOAD ? "Missing NewGRF: " : "Removed NewGRF: ";
+					AddGrfInfo(outputIterator, lc.grfrem.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
 					if (gm == grf_names.End()) {
-						buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
+						message += ". Gamelog inconsistency: GrfID was never added!";
 					} else {
 						if (la.at == GLAT_LOAD) {
 							/* Missing grfs on load are not removed from the configuration */
@@ -286,9 +282,9 @@ void Gamelog::Print(std::function<void(const char*)> proc)
 				case GLCT_GRFCOMPAT: {
 					/* Another version of the same NewGRF got loaded. */
 					const GRFConfig *gc = FindGRFConfig(lc.grfadd.grfid, FGCM_EXACT, lc.grfadd.md5sum);
-					buf += seprintf(buf, lastof(buffer), "Compatible NewGRF loaded: ");
-					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfcompat.grfid, lc.grfcompat.md5sum, gc);
-					if (!grf_names.Contains(lc.grfcompat.grfid)) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
+					message += "Compatible NewGRF loaded: ";
+					AddGrfInfo(outputIterator, lc.grfcompat.grfid, lc.grfcompat.md5sum, gc);
+					if (!grf_names.Contains(lc.grfcompat.grfid)) message += ". Gamelog inconsistency: GrfID was never added!";
 					grf_names[lc.grfcompat.grfid] = gc;
 					break;
 				}
@@ -296,19 +292,19 @@ void Gamelog::Print(std::function<void(const char*)> proc)
 				case GLCT_GRFPARAM: {
 					/* A parameter of a NewGRF got changed after the game was started. */
 					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
-					buf += seprintf(buf, lastof(buffer), "GRF parameter changed: ");
-					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfparam.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
-					if (gm == grf_names.End()) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
+					message += "GRF parameter changed: ";
+					AddGrfInfo(outputIterator, lc.grfparam.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
+					if (gm == grf_names.End()) message += ". Gamelog inconsistency: GrfID was never added!";
 					break;
 				}
 
 				case GLCT_GRFMOVE: {
 					/* The order of NewGRFs got changed, which might cause some other NewGRFs to behave differently. */
 					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
-					buf += seprintf(buf, lastof(buffer), "GRF order changed: %08X moved %d places %s",
+					fmt::format_to(outputIterator, "GRF order changed: {:08X} moved {} places {}",
 						BSWAP32(lc.grfmove.grfid), abs(lc.grfmove.offset), lc.grfmove.offset >= 0 ? "down" : "up" );
-					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfmove.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
-					if (gm == grf_names.End()) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
+					AddGrfInfo(outputIterator, lc.grfmove.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
+					if (gm == grf_names.End()) message += ". Gamelog inconsistency: GrfID was never added!";
 					break;
 				}
 
@@ -317,9 +313,9 @@ void Gamelog::Print(std::function<void(const char*)> proc)
 					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
 					assert(lc.grfbug.bug == GBUG_VEH_LENGTH);
 
-					buf += seprintf(buf, lastof(buffer), "Rail vehicle changes length outside a depot: GRF ID %08X, internal ID 0x%X", BSWAP32(lc.grfbug.grfid), (uint)lc.grfbug.data);
-					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfbug.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
-					if (gm == grf_names.End()) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
+					fmt::format_to(outputIterator, "Rail vehicle changes length outside a depot: GRF ID {:08X}, internal ID 0x{:X}", BSWAP32(lc.grfbug.grfid), (uint)lc.grfbug.data);
+					AddGrfInfo(outputIterator, lc.grfbug.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
+					if (gm == grf_names.End()) message += ". Gamelog inconsistency: GrfID was never added!";
 					break;
 				}
 
@@ -329,7 +325,7 @@ void Gamelog::Print(std::function<void(const char*)> proc)
 					break;
 			}
 
-			proc(buffer);
+			proc(message);
 		}
 	}
 
@@ -340,7 +336,7 @@ void Gamelog::Print(std::function<void(const char*)> proc)
 /** Print the gamelog data to the console. */
 void Gamelog::PrintConsole()
 {
-	this->Print([](const char *s) {
+	this->Print([](const std::string &s) {
 		IConsolePrint(CC_WARNING, s);
 	});
 }
@@ -353,7 +349,7 @@ void Gamelog::PrintConsole()
  */
 void Gamelog::PrintDebug(int level)
 {
-	this->Print([level](const char *s) {
+	this->Print([level](const std::string &s) {
 		Debug(gamelog, level, "{}", s);
 	});
 }
