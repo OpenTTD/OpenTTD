@@ -215,6 +215,10 @@ static_assert(OverflowSafeInt32(INT32_MAX) + 1 == OverflowSafeInt32(INT32_MAX));
 static_assert(OverflowSafeInt32(INT32_MAX) * 2 == OverflowSafeInt32(INT32_MAX));
 static_assert(OverflowSafeInt32(INT32_MIN) * 2 == OverflowSafeInt32(INT32_MIN));
 
+/* Specialisation of the generic ClampTo function for overflow safe integers to normal integers. */
+template <typename To, typename From>
+constexpr To ClampTo(OverflowSafeInt<From> value) { return ClampTo<To>(From(value)); }
+
 #undef HAS_OVERFLOW_BUILTINS
 
 #endif /* OVERFLOWSAFE_TYPE_HPP */

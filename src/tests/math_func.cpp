@@ -75,3 +75,48 @@ TEST_CASE("IntSqrtTest - FindSqRt")
 	CHECK(9 == IntSqrt(88));
 	CHECK(1696 == IntSqrt(2876278));
 }
+
+
+TEST_CASE("ClampTo")
+{
+	CHECK(0 == ClampTo<uint8_t>(std::numeric_limits<int64_t>::lowest()));
+	CHECK(0 == ClampTo<uint8_t>(-1));
+	CHECK(0 == ClampTo<uint8_t>(0));
+	CHECK(1 == ClampTo<uint8_t>(1));
+
+	CHECK(255 == ClampTo<uint8_t>(std::numeric_limits<uint64_t>::max()));
+	CHECK(255 == ClampTo<uint8_t>(256));
+	CHECK(255 == ClampTo<uint8_t>(255));
+	CHECK(254 == ClampTo<uint8_t>(254));
+
+	CHECK(-128 == ClampTo<int8_t>(std::numeric_limits<int64_t>::lowest()));
+	CHECK(-128 == ClampTo<int8_t>(-129));
+	CHECK(-128 == ClampTo<int8_t>(-128));
+	CHECK(-127 == ClampTo<int8_t>(-127));
+
+	CHECK(127 == ClampTo<int8_t>(std::numeric_limits<uint64_t>::max()));
+	CHECK(127 == ClampTo<int8_t>(128));
+	CHECK(127 == ClampTo<int8_t>(127));
+	CHECK(126 == ClampTo<int8_t>(126));
+
+	CHECK(126 == ClampTo<int64_t>(static_cast<uint8>(126)));
+	CHECK(126 == ClampTo<uint64_t>(static_cast<int8>(126)));
+	CHECK(0 == ClampTo<uint64_t>(static_cast<int8>(-126)));
+	CHECK(0 == ClampTo<uint8_t>(static_cast<int8>(-126)));
+
+	/* The realm around 64 bits types is tricky as there is not one type/method that works for all. */
+
+	/* lowest/max uint64_t does not get clamped when clamping to uint64_t. */
+	CHECK(std::numeric_limits<uint64_t>::lowest() == ClampTo<uint64_t>(std::numeric_limits<uint64_t>::lowest()));
+	CHECK(std::numeric_limits<uint64_t>::max() == ClampTo<uint64_t>(std::numeric_limits<uint64_t>::max()));
+
+	/* negative int64_t get clamped to 0. */
+	CHECK(0 == ClampTo<uint64_t>(std::numeric_limits<int64_t>::lowest()));
+	CHECK(0 == ClampTo<uint64_t>(int64_t(-1)));
+	/* positive int64_t remain the same. */
+	CHECK(1 == ClampTo<uint64_t>(int64_t(1)));
+	CHECK(static_cast<uint64_t>(std::numeric_limits<int64_t>::max()) == ClampTo<uint64_t>(std::numeric_limits<int64_t>::max()));
+
+	/* max uint64_t gets clamped to max int64_t. */
+	CHECK(std::numeric_limits<int64_t>::max() == ClampTo<int64_t>(std::numeric_limits<uint64_t>::max()));
+}
