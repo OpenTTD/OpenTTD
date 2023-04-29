@@ -790,7 +790,7 @@ int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garb
 #ifdef WITH_ICU_I18N
 	if (_current_collator) {
 		UErrorCode status = U_ZERO_ERROR;
-		int result = _current_collator->compareUTF8(s1, s2, status);
+		int result = _current_collator->compareUTF8(icu::StringPiece(s1.data(), s1.size()), icu::StringPiece(s2.data(), s2.size()), status);
 		if (U_SUCCESS(status)) return result;
 	}
 #endif /* WITH_ICU_I18N */
