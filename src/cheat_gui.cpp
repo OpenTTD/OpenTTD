@@ -31,6 +31,7 @@
 #include "core/geometry_func.hpp"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 
 #include "widgets/cheat_widget.h"
 
@@ -105,14 +106,17 @@ static int32_t ClickChangeDateCheat(int32_t new_value, int32_t)
 	if (new_year == TimerGameCalendar::year) return TimerGameCalendar::year.base();
 
 	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
-	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(new_year, ymd.month, ymd.day);
+	TimerGameCalendar::Date new_calendar_date = TimerGameCalendar::ConvertYMDToDate(new_year, ymd.month, ymd.day);
+	/* Keep economy and calendar dates synced. */
+	TimerGameEconomy::Date new_economy_date = new_calendar_date.base();
 
 	/* Shift cached dates before we change the date. */
-	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - TimerGameCalendar::date);
-	LinkGraphSchedule::instance.ShiftDates(new_date - TimerGameCalendar::date);
+	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_economy_date - TimerGameEconomy::date);
+	LinkGraphSchedule::instance.ShiftDates(new_economy_date - TimerGameEconomy::date);
 
 	/* Now it's safe to actually change the date. */
-	TimerGameCalendar::SetDate(new_date, TimerGameCalendar::date_fract);
+	TimerGameCalendar::SetDate(new_calendar_date, TimerGameCalendar::date_fract);
+	TimerGameEconomy::SetDate(new_economy_date, TimerGameEconomy::date_fract);
 
 	EnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
