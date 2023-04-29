@@ -10,6 +10,9 @@
 #ifndef MATH_FUNC_HPP
 #define MATH_FUNC_HPP
 
+#include <limits>
+#include <type_traits>
+
 /**
  * Returns the absolute value of (scalar) variable.
  *
@@ -125,6 +128,68 @@ static inline uint ClampU(const uint a, const uint min, const uint max)
 }
 
 /**
+ * Clamp the given value down to lie within the requested type.
+ *
+ * For example ClampTo<uint8_t> will return a value clamped to the range of 0
+ * to 255. Anything smaller will become 0, anything larger will become 255.
+ *
+ * @param a The 64-bit value to clamp.
+ * @return The 64-bit value reduced to a value within the given allowed range
+ * for the return type.
+ * @see Clamp(int, int, int)
+ */
+template <typename To, typename From>
+constexpr To ClampTo(From value)
+{
+	static_assert(std::numeric_limits<To>::is_integer, "Do not clamp from non-integer values");
+	static_assert(std::numeric_limits<From>::is_integer, "Do not clamp to non-integer values");
+
+	if (sizeof(To) >= sizeof(From) && std::numeric_limits<To>::is_signed == std::numeric_limits<From>::is_signed) {
+		/* Same signedness and To type is larger or equal than From type, no clamping is required. */
+		return static_cast<To>(value);
+	}
+
+	if (sizeof(To) > sizeof(From) && std::numeric_limits<To>::is_signed) {
+		/* Signed destination and a larger To type, no clamping is required. */
+		return static_cast<To>(value);
+	}
+
+	/* Get the bigger of the two types based on essentially the number of bits. */
+	using BiggerType = typename std::conditional<sizeof(From) >= sizeof(To), From, To>::type;
+
+	if constexpr (std::numeric_limits<To>::is_signed) {
+		/* The output is a signed number. */
+		if constexpr (std::numeric_limits<From>::is_signed) {
+			/* Both input and output are signed. */
+			return static_cast<To>(std::clamp<BiggerType>(value,
+					std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
+		}
+
+		/* The input is unsigned, so skip the minimum check and use unsigned variant of the biggest type as intermediate type. */
+		using BiggerUnsignedType = typename std::make_unsigned<BiggerType>::type;
+		return static_cast<To>(std::min<BiggerUnsignedType>(std::numeric_limits<To>::max(), value));
+	}
+
+	/* The output is unsigned. */
+
+	if constexpr (std::numeric_limits<From>::is_signed) {
+		/* Input is signed; account for the negative numbers in the input. */
+		if constexpr (sizeof(To) >= sizeof(From)) {
+			/* If the output type is larger or equal to the input type, then only clamp the negative numbers. */
+			return static_cast<To>(std::max<From>(value, 0));
+		}
+
+		/* The output type is smaller than the input type. */
+		using BiggerSignedType = typename std::make_signed<BiggerType>::type;
+		return static_cast<To>(std::clamp<BiggerSignedType>(value,
+				std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
+	}
+
+	/* The input and output are unsigned, just clamp at the high side. */
+	return static_cast<To>(std::min<BiggerType>(value, std::numeric_limits<To>::max()));
+}
+
+/**
  * Reduce a signed 64-bit int to a signed 32-bit one
  *
  * This function clamps a 64-bit integer to a 32-bit integer.
@@ -140,7 +205,7 @@ static inline uint ClampU(const uint a, const uint min, const uint max)
  */
 static inline int32 ClampToI32(const int64 a)
 {
-	return static_cast<int32>(Clamp<int64>(a, INT32_MIN, INT32_MAX));
+	return ClampTo<int32>(a);
 }
 
 /**
@@ -152,11 +217,7 @@ static inline int32 ClampToI32(const int64 a)
  */
 static inline uint16 ClampToU16(const uint64 a)
 {
-	/* MSVC thinks, in its infinite wisdom, that int min(int, int) is a better
-	 * match for min(uint64, uint) than uint64 min(uint64, uint64). As such we
-	 * need to cast the UINT16_MAX to prevent MSVC from displaying its
-	 * infinite loads of warnings. */
-	return static_cast<uint16>(std::min(a, static_cast<uint64>(UINT16_MAX)));
+	return ClampTo<uint16>(a);
 }
 
 /**
