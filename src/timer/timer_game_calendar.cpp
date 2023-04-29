@@ -15,7 +15,6 @@
 #include "timer.h"
 #include "timer_game_calendar.h"
 #include "../vehicle_base.h"
-#include "../linkgraph/linkgraph.h"
 
 #include "../safeguards.h"
 
@@ -114,7 +113,6 @@ void TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar
 		TimerGameCalendar::year--;
 		days_this_year = TimerGameCalendar::IsLeapYear(TimerGameCalendar::year) ? CalendarTime::DAYS_IN_LEAP_YEAR : CalendarTime::DAYS_IN_YEAR;
 		TimerGameCalendar::date -= days_this_year;
-		for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(-days_this_year);
 	}
 }
 

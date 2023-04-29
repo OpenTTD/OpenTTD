@@ -163,7 +163,7 @@ protected:
 	const LinkGraph link_graph;        ///< Link graph to by analyzed. Is copied when job is started and mustn't be modified later.
 	const LinkGraphSettings settings;  ///< Copy of _settings_game.linkgraph at spawn time.
 	std::thread thread;                ///< Thread the job is running in or a default-constructed thread if it's running in the main thread.
-	TimerGameCalendar::Date join_date; ///< Date when the job is to be joined.
+	TimerGameEconomy::Date join_date; ///< Date when the job is to be joined.
 	NodeAnnotationVector nodes;        ///< Extra node data necessary for link graph calculation.
 	std::atomic<bool> job_completed;   ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
 	std::atomic<bool> job_aborted;     ///< Has the job been aborted. This is accessed by multiple threads and reads may be stale.
@@ -178,7 +178,7 @@ public:
 	 * settings have to be brutally const-casted in order to populate them.
 	 */
 	LinkGraphJob() : settings(_settings_game.linkgraph),
-			join_date(CalendarTime::INVALID_DATE), job_completed(false), job_aborted(false) {}
+			join_date(EconomyTime::INVALID_DATE), job_completed(false), job_aborted(false) {}
 
 	LinkGraphJob(const LinkGraph &orig);
 	~LinkGraphJob();
@@ -211,19 +211,19 @@ public:
 	 * Check if job is supposed to be finished.
 	 * @return True if job should be finished by now, false if not.
 	 */
-	inline bool IsScheduledToBeJoined() const { return this->join_date <= TimerGameCalendar::date; }
+	inline bool IsScheduledToBeJoined() const { return this->join_date <= TimerGameEconomy::date; }
 
 	/**
 	 * Get the date when the job should be finished.
 	 * @return Join date.
 	 */
-	inline TimerGameCalendar::Date JoinDate() const { return join_date; }
+	inline TimerGameEconomy::Date JoinDate() const { return join_date; }
 
 	/**
 	 * Change the join date on date cheating.
 	 * @param interval Number of days to add.
 	 */
-	inline void ShiftJoinDate(TimerGameCalendar::Date interval) { this->join_date += interval; }
+	inline void ShiftJoinDate(TimerGameEconomy::Date interval) { this->join_date += interval; }
 
 	/**
 	 * Get the link graph settings for this component.
@@ -254,7 +254,7 @@ public:
 	 * Get the date when the underlying link graph was last compressed.
 	 * @return Compression date.
 	 */
-	inline TimerGameCalendar::Date LastCompression() const { return this->link_graph.LastCompression(); }
+	inline TimerGameEconomy::Date LastCompression() const { return this->link_graph.LastCompression(); }
 
 	/**
 	 * Get the ID of the underlying link graph.

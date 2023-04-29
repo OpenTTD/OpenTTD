@@ -58,7 +58,7 @@ public:
 	bool IsJoinWithUnfinishedJobDue() const;
 	void JoinNext();
 	void SpawnAll();
-	void ShiftDates(TimerGameCalendar::Date interval);
+	void ShiftDates(TimerGameEconomy::Date interval);
 
 	/**
 	 * Queue a link graph for execution.
