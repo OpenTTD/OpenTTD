@@ -65,7 +65,7 @@ public:
 
 	void Reset();
 
-	void Print(std::function<void(const char *)> proc);
+	void Print(std::function<void(const std::string &)> proc);
 	void PrintDebug(int level);
 	void PrintConsole();
 
