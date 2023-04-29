@@ -1923,7 +1923,7 @@ bool AfterLoadGame()
 
 			/* Replace "house construction year" with "house age" */
 			if (IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)) {
-				t.m5() = Clamp(TimerGameCalendar::year - (t.m5() + ORIGINAL_BASE_YEAR), 0, 0xFF);
+				t.m5() = ClampTo<uint8_t>(TimerGameCalendar::year - (t.m5() + ORIGINAL_BASE_YEAR));
 			}
 		}
 	}

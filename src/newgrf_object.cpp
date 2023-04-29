@@ -249,7 +249,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 	/* If the object type is invalid, there is none and the closest is far away. */
 	if (idx >= NUM_OBJECTS) return 0 | 0xFFFF;
 
-	return Object::GetTypeCount(idx) << 16 | std::min(GetClosestObject(tile, idx, current), 0xFFFFu);
+	return Object::GetTypeCount(idx) << 16 | ClampTo<uint16_t>(GetClosestObject(tile, idx, current));
 }
 
 /** Used by the resolver to get values for feature 0F deterministic spritegroups. */
@@ -324,7 +324,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 		case 0x44: return GetTileOwner(this->tile);
 
 		/* Get town zone and Manhattan distance of closest town */
-		case 0x45: return GetTownRadiusGroup(t, this->tile) << 16 | std::min(DistanceManhattan(this->tile, t->xy), 0xFFFFu);
+		case 0x45: return GetTownRadiusGroup(t, this->tile) << 16 | ClampTo<uint16_t>(DistanceManhattan(this->tile, t->xy));
 
 		/* Get square of Euclidian distance of closest town */
 		case 0x46: return DistanceSquare(this->tile, t->xy);

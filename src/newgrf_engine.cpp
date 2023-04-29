@@ -528,7 +528,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 					airporttype = st->airport.GetSpec()->ttd_airport_type;
 				}
 
-				return (Clamp(altitude, 0, 0xFF) << 8) | airporttype;
+				return (ClampTo<uint8_t>(altitude) << 8) | airporttype;
 			}
 
 		case 0x45: { // Curvature info
@@ -766,8 +766,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			}
 			return (variable - 0x80) == 0x10 ? ticks : GB(ticks, 8, 8);
 		}
-		case 0x12: return Clamp(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF);
-		case 0x13: return GB(Clamp(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF), 8, 8);
+		case 0x12: return ClampTo<uint16_t>(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR);
+		case 0x13: return GB(ClampTo<uint16_t>(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR), 8, 8);
 		case 0x14: return v->GetServiceInterval();
 		case 0x15: return GB(v->GetServiceInterval(), 8, 8);
 		case 0x16: return v->last_station_visited;
@@ -823,7 +823,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 		case 0x3C: return ClampTo<uint16_t>(v->cargo.StoredCount());
 		case 0x3D: return GB(ClampTo<uint16_t>(v->cargo.StoredCount()), 8, 8);
 		case 0x3E: return v->cargo.Source();
-		case 0x3F: return ClampU(v->cargo.DaysInTransit(), 0, 0xFF);
+		case 0x3F: return ClampTo<uint8_t>(v->cargo.DaysInTransit());
 		case 0x40: return ClampTo<uint16_t>(v->age);
 		case 0x41: return GB(ClampTo<uint16_t>(v->age), 8, 8);
 		case 0x42: return ClampTo<uint16_t>(v->max_age);
@@ -973,8 +973,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			case 0x48: return Engine::Get(this->self_type)->flags; // Vehicle Type Info
 			case 0x49: return TimerGameCalendar::year; // 'Long' format build year
 			case 0x4B: return TimerGameCalendar::date; // Long date of last service
-			case 0x92: return Clamp(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF); // Date of last service
-			case 0x93: return GB(Clamp(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF), 8, 8);
+			case 0x92: return ClampTo<uint16_t>(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR); // Date of last service
+			case 0x93: return GB(ClampTo<uint16_t>(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR), 8, 8);
 			case 0xC4: return Clamp(TimerGameCalendar::year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
 			case 0xC6: return Engine::Get(this->self_type)->grf_prop.local_id;
 			case 0xC7: return GB(Engine::Get(this->self_type)->grf_prop.local_id, 8, 8);

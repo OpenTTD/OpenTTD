@@ -1279,7 +1279,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	/* increase chance of failure */
 	int chance = v->breakdown_chance + 1;
 	if (Chance16I(1, 25, r)) chance += 25;
-	v->breakdown_chance = std::min(255, chance);
+	v->breakdown_chance = ClampTo<uint8_t>(chance);
 
 	/* calculate reliability value to use in comparison */
 	rel = v->reliability;
@@ -1289,7 +1289,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if (_settings_game.difficulty.vehicle_breakdowns == 1) rel += 0x6666;
 
 	/* check if to break down */
-	if (_breakdown_chance[(uint)std::min(rel, 0xffff) >> 10] <= v->breakdown_chance) {
+	if (_breakdown_chance[ClampTo<uint16_t>(rel) >> 10] <= v->breakdown_chance) {
 		v->breakdown_ctr    = GB(r, 16, 6) + 0x3F;
 		v->breakdown_delay  = GB(r, 24, 7) + 0x80;
 		v->breakdown_chance = 0;

@@ -182,7 +182,7 @@
 		0,
 		source_industry,
 		goal_industry,
-		std::min<SQInteger>(255, distance / 2),
+		ClampTo<uint8_t>(distance / 2),
 		AICE_STATION_GET_STATION_ID,
 		source_station ? 0 : 1,
 		std::min<SQInteger>(15u, num_platforms) << 4 | std::min<SQInteger>(15u, platform_length),

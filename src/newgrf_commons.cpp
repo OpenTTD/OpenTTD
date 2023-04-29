@@ -437,7 +437,7 @@ uint32 GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 	/* Return 0 if the tile is a land tile */
 	byte terrain_type = (HasTileWaterClass(tile) ? (GetWaterClass(tile) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
 	if (grf_version8) z /= TILE_HEIGHT;
-	return tile_type << 24 | Clamp(z, 0, 0xFF) << 16 | terrain_type << 8 | tileh;
+	return tile_type << 24 | ClampTo<uint8_t>(z) << 16 | terrain_type << 8 | tileh;
 }
 
 /**

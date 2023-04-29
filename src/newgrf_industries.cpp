@@ -141,7 +141,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		/* If the filter is 0, it could be because none was specified as well as being really a 0.
 		 * In either case, just do the regular var67 */
 		closest_dist = GetClosestIndustry(current->location.tile, ind_index, current);
-		count = std::min<uint>(Industry::GetIndustryTypeCount(ind_index), UINT8_MAX); // clamp to 8 bit
+		count = ClampTo<byte>(Industry::GetIndustryTypeCount(ind_index));
 	} else {
 		/* Count only those who match the same industry type and layout filter
 		 * Unfortunately, we have to do it manually */
@@ -181,16 +181,16 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			case 0x88: return GetTownRadiusGroup(this->industry->town, this->tile);
 
 			/* Manhattan distance of the closest town */
-			case 0x89: return std::min(DistanceManhattan(this->industry->town->xy, this->tile), 255u);
+			case 0x89: return ClampTo<uint8_t>(DistanceManhattan(this->industry->town->xy, this->tile));
 
 			/* Lowest height of the tile */
-			case 0x8A: return Clamp(GetTileZ(this->tile) * (this->ro.grffile->grf_version >= 8 ? 1 : TILE_HEIGHT), 0, 0xFF);
+			case 0x8A: return ClampTo<uint8_t>(GetTileZ(this->tile) * (this->ro.grffile->grf_version >= 8 ? 1 : TILE_HEIGHT));
 
 			/* Distance to the nearest water/land tile */
 			case 0x8B: return GetClosestWaterDistance(this->tile, (GetIndustrySpec(this->industry->type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
 
 			/* Square of Euclidian distance from town */
-			case 0x8D: return std::min(DistanceSquare(this->industry->town->xy, this->tile), 65535u);
+			case 0x8D: return ClampTo<uint16_t>(DistanceSquare(this->industry->town->xy, this->tile));
 
 			/* 32 random bits */
 			case 0x8F: return this->random_bits;
@@ -214,9 +214,9 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 				if ((indspec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) {
 					if (this->industry->prod_level == 0) return 0;
-					return std::min<uint16>(this->industry->incoming_cargo_waiting[variable - 0x40] / this->industry->prod_level, 0xFFFFu);
+					return ClampTo<uint16>(this->industry->incoming_cargo_waiting[variable - 0x40] / this->industry->prod_level);
 				} else {
-					return std::min<uint16>(this->industry->incoming_cargo_waiting[variable - 0x40], 0xFFFFu);
+					return ClampTo<uint16>(this->industry->incoming_cargo_waiting[variable - 0x40]);
 				}
 			} else {
 				return 0;
@@ -285,7 +285,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		case 0x65: {
 			if (this->tile == INVALID_TILE) break;
 			TileIndex tile = GetNearbyTile(parameter, this->tile, true);
-			return GetTownRadiusGroup(this->industry->town, tile) << 16 | std::min(DistanceManhattan(tile, this->industry->town->xy), 0xFFFFu);
+			return GetTownRadiusGroup(this->industry->town, tile) << 16 | ClampTo<uint16_t>(DistanceManhattan(tile, this->industry->town->xy));
 		}
 		/* Get square of Euclidian distance of closest town */
 		case 0x66: {
@@ -396,16 +396,16 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		case 0xA6: return indspec->grf_prop.local_id;
 		case 0xA7: return this->industry->founder;
 		case 0xA8: return this->industry->random_colour;
-		case 0xA9: return Clamp(this->industry->last_prod_year - ORIGINAL_BASE_YEAR, 0, 255);
+		case 0xA9: return ClampTo<uint8_t>(this->industry->last_prod_year - ORIGINAL_BASE_YEAR);
 		case 0xAA: return this->industry->counter;
 		case 0xAB: return GB(this->industry->counter, 8, 8);
 		case 0xAC: return this->industry->was_cargo_delivered;
 
-		case 0xB0: return Clamp(this->industry->construction_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Date when built since 1920 (in days)
+		case 0xB0: return ClampTo<uint16_t>(this->industry->construction_date - DAYS_TILL_ORIGINAL_BASE_YEAR); // Date when built since 1920 (in days)
 		case 0xB3: return this->industry->construction_type; // Construction type
 		case 0xB4: {
 			TimerGameCalendar::Date *latest = std::max_element(this->industry->last_cargo_accepted_at, endof(this->industry->last_cargo_accepted_at));
-			return Clamp((*latest) - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Date last cargo accepted since 1920 (in days)
+			return ClampTo<uint16_t>((*latest) - DAYS_TILL_ORIGINAL_BASE_YEAR); // Date last cargo accepted since 1920 (in days)
 		}
 	}
 
@@ -643,22 +643,22 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		if (group->version < 2) {
 			/* Callback parameters map directly to industry cargo slot indices */
 			for (uint i = 0; i < group->num_input; i++) {
-				ind->incoming_cargo_waiting[i] = Clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->subtract_input[i], deref) * multiplier, 0, 0xFFFF);
+				ind->incoming_cargo_waiting[i] = ClampTo<uint16_t>(ind->incoming_cargo_waiting[i] - DerefIndProd(group->subtract_input[i], deref) * multiplier);
 			}
 			for (uint i = 0; i < group->num_output; i++) {
-				ind->produced_cargo_waiting[i] = Clamp(ind->produced_cargo_waiting[i] + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier, 0, 0xFFFF);
+				ind->produced_cargo_waiting[i] = ClampTo<uint16_t>(ind->produced_cargo_waiting[i] + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier);
 			}
 		} else {
 			/* Callback receives list of cargos to apply for, which need to have their cargo slots in industry looked up */
 			for (uint i = 0; i < group->num_input; i++) {
 				int cargo_index = ind->GetCargoAcceptedIndex(group->cargo_input[i]);
 				if (cargo_index < 0) continue;
-				ind->incoming_cargo_waiting[cargo_index] = Clamp(ind->incoming_cargo_waiting[cargo_index] - DerefIndProd(group->subtract_input[i], deref) * multiplier, 0, 0xFFFF);
+				ind->incoming_cargo_waiting[cargo_index] = ClampTo<uint16_t>(ind->incoming_cargo_waiting[cargo_index] - DerefIndProd(group->subtract_input[i], deref) * multiplier);
 			}
 			for (uint i = 0; i < group->num_output; i++) {
 				int cargo_index = ind->GetCargoProducedIndex(group->cargo_output[i]);
 				if (cargo_index < 0) continue;
-				ind->produced_cargo_waiting[cargo_index] = Clamp(ind->produced_cargo_waiting[cargo_index] + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier, 0, 0xFFFF);
+				ind->produced_cargo_waiting[cargo_index] = ClampTo<uint16_t>(ind->produced_cargo_waiting[cargo_index] + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier);
 			}
 		}
 
