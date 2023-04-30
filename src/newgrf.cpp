@@ -5643,10 +5643,10 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 
 static void CanalMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	std::vector<CanalFeature> cfs;
+	std::vector<uint16_t> cfs;
 	cfs.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		cfs.push_back((CanalFeature)buf->ReadByte());
+		cfs.push_back(buf->ReadExtendedByte());
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -5674,10 +5674,10 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	std::vector<uint8> stations;
+	std::vector<uint16_t> stations;
 	stations.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		stations.push_back(buf->ReadByte());
+		stations.push_back(buf->ReadExtendedByte());
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -5732,10 +5732,10 @@ static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	std::vector<uint8> houses;
+	std::vector<uint16_t> houses;
 	houses.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		houses.push_back(buf->ReadByte());
+		houses.push_back(buf->ReadExtendedByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -5764,10 +5764,10 @@ static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	std::vector<uint8> industries;
+	std::vector<uint16_t> industries;
 	industries.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		industries.push_back(buf->ReadByte());
+		industries.push_back(buf->ReadExtendedByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -5796,10 +5796,10 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	std::vector<uint8> indtiles;
+	std::vector<uint16_t> indtiles;
 	indtiles.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		indtiles.push_back(buf->ReadByte());
+		indtiles.push_back(buf->ReadExtendedByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -5823,10 +5823,10 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	std::vector<CargoID> cargoes;
+	std::vector<uint16_t> cargoes;
 	cargoes.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		cargoes.push_back((CargoID)buf->ReadByte());
+		cargoes.push_back(buf->ReadExtendedByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -5855,10 +5855,10 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	std::vector<uint8> objects;
+	std::vector<uint16_t> objects;
 	objects.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		objects.push_back(buf->ReadByte());
+		objects.push_back(buf->ReadExtendedByte());
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -5909,7 +5909,7 @@ static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	std::vector<uint8> railtypes;
 	railtypes.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		uint8 id = buf->ReadByte();
+		uint16_t id = buf->ReadExtendedByte();
 		railtypes.push_back(id < RAILTYPE_END ? _cur.grffile->railtype_map[id] : INVALID_RAILTYPE);
 	}
 
@@ -5943,7 +5943,7 @@ static void RoadTypeMapSpriteGroup(ByteReader *buf, uint8 idcount, RoadTramType 
 	std::vector<uint8> roadtypes;
 	roadtypes.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		uint8 id = buf->ReadByte();
+		uint16_t id = buf->ReadExtendedByte();
 		roadtypes.push_back(id < ROADTYPE_END ? type_map[id] : INVALID_ROADTYPE);
 	}
 
@@ -5977,10 +5977,10 @@ static void AirportMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	std::vector<uint8> airports;
+	std::vector<uint16_t> airports;
 	airports.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		airports.push_back(buf->ReadByte());
+		airports.push_back(buf->ReadExtendedByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -6009,10 +6009,10 @@ static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	std::vector<uint8> airptiles;
+	std::vector<uint16_t> airptiles;
 	airptiles.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		airptiles.push_back(buf->ReadByte());
+		airptiles.push_back(buf->ReadExtendedByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -6041,10 +6041,10 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	std::vector<uint8> roadstops;
+	std::vector<uint16_t> roadstops;
 	roadstops.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		roadstops.push_back(buf->ReadByte());
+		roadstops.push_back(buf->ReadExtendedByte());
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -6101,7 +6101,7 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 	 * B feature       see action 0
 	 * B n-id          bits 0-6: how many IDs this definition applies to
 	 *                 bit 7: if set, this is a wagon override definition (see below)
-	 * B ids           the IDs for which this definition applies
+	 * E ids           the IDs for which this definition applies
 	 * B num-cid       number of cargo IDs (sprite group IDs) in this definition
 	 *                 can be zero, in that case the def-cid is used always
 	 * B cargo-type    type of this cargo type (e.g. mail=2, wood=7, see below)
