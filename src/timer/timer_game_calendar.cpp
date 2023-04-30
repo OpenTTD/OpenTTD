@@ -11,7 +11,6 @@
  */
 
 #include "stdafx.h"
-#include "date_func.h"
 #include "openttd.h"
 #include "timer.h"
 #include "timer_game_calendar.h"
