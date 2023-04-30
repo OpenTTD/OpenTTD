@@ -15,12 +15,10 @@
 
 /** Container for the different cases of a string. */
 struct Case {
-	int caseidx;  ///< The index of the case.
-	char *string; ///< The translation of the case.
-	Case *next;   ///< The next, chained, case.
+	int caseidx;        ///< The index of the case.
+	std::string string; ///< The translation of the case.
 
-	Case(int caseidx, const char *string, Case *next);
-	~Case();
+	Case(int caseidx, const std::string &string);
 };
 
 /** Information about a single string. */
@@ -31,7 +29,7 @@ struct LangString {
 	size_t hash_next;      ///< Next hash entry.
 	size_t index;          ///< The index in the language file.
 	int line;              ///< Line of string in source-file.
-	Case *translated_case; ///< Cases of the translation.
+	std::vector<Case> translated_cases; ///< Cases of the translation.
 
 	LangString(const char *name, const char *english, size_t index, int line);
 	~LangString();
