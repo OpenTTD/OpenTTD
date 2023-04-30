@@ -16,6 +16,7 @@ For Linux, the following additional libraries are used:
 - libSDL2: hardware access (video, sound, mouse)
 - libfreetype: loading generic fonts and rendering them
 - libfontconfig: searching for fonts, resolving font names to actual fonts
+- harfbuzz: handling of right-to-left scripts (e.g. Arabic and Persian) (required libicu)
 - libicu: handling of right-to-left scripts (e.g. Arabic and Persian) and
    natural sorting of strings
 

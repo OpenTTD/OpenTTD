@@ -11,6 +11,7 @@
 #define GFX_LAYOUT_ICU_H
 
 #include "gfx_layout.h"
+
 #include <unicode/ustring.h>
 
 /**

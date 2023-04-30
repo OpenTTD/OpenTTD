@@ -36,7 +36,7 @@ add_files(
 add_files(
     gfx_layout_icu.cpp
     gfx_layout_icu.h
-    CONDITION ICU_lx_FOUND
+    CONDITION ICU_i18n_FOUND AND HARFBUZZ_FOUND
 )
 
 add_files(

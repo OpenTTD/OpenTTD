@@ -33,8 +33,7 @@
  * The positions in a visual run are sequential pairs of X,Y of the
  * begin of each of the glyphs plus an extra pair to mark the end.
  *
- * @note This variant does not handle left-to-right properly. This
- *       is supported in the one ParagraphLayout coming from ICU.
+ * @note This variant does not handle right-to-left properly.
  */
 class FallbackParagraphLayout : public ParagraphLayouter {
 public:
