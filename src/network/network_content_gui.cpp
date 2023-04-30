@@ -467,9 +467,9 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	static bool CDECL TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
 		filter.string_filter.ResetState();
-		for (auto &tag : (*a)->tags) filter.string_filter.AddLine(tag.c_str());
+		for (auto &tag : (*a)->tags) filter.string_filter.AddLine(tag);
 
-		filter.string_filter.AddLine((*a)->name.c_str());
+		filter.string_filter.AddLine((*a)->name);
 		return filter.string_filter.GetState();
 	}
 

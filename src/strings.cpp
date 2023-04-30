@@ -1458,7 +1458,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				static bool use_cache = true;
 				if (use_cache) { // Use cached version if first call
 					AutoRestoreBackup cache_backup(use_cache, false);
-					buff = strecpy(buff, i->GetCachedName(), last);
+					buff = strecpy(buff, i->GetCachedName().c_str(), last);
 				} else if (_scan_for_gender_data) {
 					/* Gender is defined by the industry type.
 					 * STR_FORMAT_INDUSTRY_NAME may have the town first, so it would result in the gender of the town name */
@@ -1541,7 +1541,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				static bool use_cache = true;
 				if (use_cache) { // Use cached version if first call
 					AutoRestoreBackup cache_backup(use_cache, false);
-					buff = strecpy(buff, t->GetCachedName(), last);
+					buff = strecpy(buff, t->GetCachedName().c_str(), last);
 				} else if (!t->name.empty()) {
 					int64 args_array[] = {(int64)(size_t)t->name.c_str()};
 					StringParameters tmp_params(args_array);

@@ -184,10 +184,10 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		memset(&counts, 0, sizeof(counts));
 	}
 
-	inline const char *GetCachedName() const
+	inline const std::string &GetCachedName() const
 	{
 		if (this->cached_name.empty()) this->FillCachedName();
-		return this->cached_name.c_str();
+		return this->cached_name;
 	}
 
 private:

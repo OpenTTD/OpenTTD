@@ -125,11 +125,11 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	void UpdateVirtCoord();
 
-	inline const char *GetCachedName() const
+	inline const std::string &GetCachedName() const
 	{
-		if (!this->name.empty()) return this->name.c_str();
+		if (!this->name.empty()) return this->name;
 		if (this->cached_name.empty()) this->FillCachedName();
-		return this->cached_name.c_str();
+		return this->cached_name;
 	}
 
 	static inline Town *GetByTile(TileIndex tile)
