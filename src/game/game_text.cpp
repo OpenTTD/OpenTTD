@@ -270,10 +270,9 @@ static void ExtractStringParams(const StringData &data, StringParamsList &params
 
 		if (ls != nullptr) {
 			StringParams &param = params.emplace_back();
-			ParsedCommandStruct pcs;
-			ExtractCommandString(&pcs, ls->english.c_str(), false);
+			ParsedCommandStruct pcs = ExtractCommandString(ls->english.c_str(), false);
 
-			for (const CmdStruct *cs : pcs.cmd) {
+			for (const CmdStruct *cs : pcs.consuming_commands) {
 				if (cs == nullptr) break;
 				param.emplace_back(GetParamType(cs), cs->consumes);
 			}
