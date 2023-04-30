@@ -23,16 +23,15 @@ struct Case {
 
 /** Information about a single string. */
 struct LangString {
-	char *name;            ///< Name of the string.
-	char *english;         ///< English text.
-	char *translated;      ///< Translated text.
-	size_t hash_next;      ///< Next hash entry.
-	size_t index;          ///< The index in the language file.
-	int line;              ///< Line of string in source-file.
+	std::string name;       ///< Name of the string.
+	std::string english;    ///< English text.
+	std::string translated; ///< Translated text.
+	size_t hash_next;       ///< Next hash entry.
+	size_t index;           ///< The index in the language file.
+	int line;               ///< Line of string in source-file.
 	std::vector<Case> translated_cases; ///< Cases of the translation.
 
-	LangString(const char *name, const char *english, size_t index, int line);
-	~LangString();
+	LangString(const std::string &name, const std::string &english, size_t index, int line);
 	void FreeTranslation();
 };
 
@@ -93,7 +92,7 @@ struct HeaderWriter {
 	 * @param name     The name of the string.
 	 * @param stringid The ID of the string.
 	 */
-	virtual void WriteStringID(const char *name, int stringid) = 0;
+	virtual void WriteStringID(const std::string &name, int stringid) = 0;
 
 	/**
 	 * Finalise writing the file.

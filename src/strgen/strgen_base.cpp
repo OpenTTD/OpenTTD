@@ -51,26 +51,15 @@ Case::Case(int caseidx, const std::string &string) :
  * @param index   The index in the string table.
  * @param line    The line this string was found on.
  */
-LangString::LangString(const char *name, const char *english, size_t index, int line) :
-		name(stredup(name)), english(stredup(english)), translated(nullptr),
-		hash_next(0), index(index), line(line)
+LangString::LangString(const std::string &name, const std::string &english, size_t index, int line) :
+		name(name), english(english), hash_next(0), index(index), line(line)
 {
-}
-
-/** Free everything we allocated. */
-LangString::~LangString()
-{
-	free(this->name);
-	free(this->english);
-	free(this->translated);
 }
 
 /** Free all data related to the translation. */
 void LangString::FreeTranslation()
 {
-	free(this->translated);
-	this->translated = nullptr;
-
+	this->translated.clear();
 	this->translated_cases.clear();
 }
 
@@ -140,7 +129,7 @@ LangString *StringData::Find(const char *s)
 	while (idx-- > 0) {
 		LangString *ls = this->strings[idx];
 
-		if (strcmp(ls->name, s) == 0) return ls;
+		if (ls->name == s) return ls;
 		idx = ls->hash_next;
 	}
 	return nullptr;
@@ -179,12 +168,12 @@ uint StringData::Version() const
 			int argno;
 			int casei;
 
-			s = ls->name;
+			s = ls->name.c_str();
 			hash ^= i * 0x717239;
 			hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
 			hash = this->VersionHashStr(hash, s + 1);
 
-			s = ls->english;
+			s = ls->english.c_str();
 			while ((cs = ParseCommandString(&s, buf, &argno, &casei)) != nullptr) {
 				if (cs->flags & C_DONTCOUNT) continue;
 
@@ -630,7 +619,7 @@ const CmdStruct *TranslateCmdForCompare(const CmdStruct *a)
 }
 
 
-static bool CheckCommandsMatch(char *a, char *b, const char *name)
+static bool CheckCommandsMatch(const char *a, const char *b, const char *name)
 {
 	/* If we're not translating, i.e. we're compiling the base language,
 	 * it is pointless to do all these checks as it'll always be correct.
@@ -757,18 +746,18 @@ void StringReader::HandleString(char *str)
 			return;
 		}
 
-		if (ent->translated && casep == nullptr) {
+		if (!ent->translated.empty() && casep == nullptr) {
 			StrgenError("String name '{}' is used multiple times", str);
 			return;
 		}
 
 		/* make sure that the commands match */
-		if (!CheckCommandsMatch(s, ent->english, str)) return;
+		if (!CheckCommandsMatch(s, ent->english.c_str(), str)) return;
 
 		if (casep != nullptr) {
 			ent->translated_cases.emplace_back(ResolveCaseName(casep, strlen(casep)), s);
 		} else {
-			ent->translated = stredup(s);
+			ent->translated = s;
 			/* If the string was translated, use the line from the
 			 * translated language so errors in the translated file
 			 * are properly referenced to. */
@@ -950,7 +939,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 
 		for (uint j = 0; j != in_use[tab]; j++) {
 			const LangString *ls = data.strings[(tab * TAB_SIZE) + j];
-			if (ls != nullptr && ls->translated == nullptr) _lang.missing++;
+			if (ls != nullptr && ls->translated.empty()) _lang.missing++;
 		}
 	}
 
@@ -965,7 +954,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 	for (size_t tab = 0; tab < data.tabs; tab++) {
 		for (uint j = 0; j != in_use[tab]; j++) {
 			const LangString *ls = data.strings[(tab * TAB_SIZE) + j];
-			const char *cmdp;
+			const std::string *cmdp;
 
 			/* For undefined strings, just set that it's an empty string */
 			if (ls == nullptr) {
@@ -973,11 +962,11 @@ void LanguageWriter::WriteLang(const StringData &data)
 				continue;
 			}
 
-			_cur_ident = ls->name;
+			_cur_ident = ls->name.c_str();
 			_cur_line = ls->line;
 
 			/* Produce a message if a string doesn't have a translation. */
-			if (_show_todo > 0 && ls->translated == nullptr) {
+			if (_show_todo > 0 && ls->translated.empty()) {
 				if ((_show_todo & 2) != 0) {
 					StrgenWarning("'{}' is untranslated", ls->name);
 				}
@@ -988,15 +977,15 @@ void LanguageWriter::WriteLang(const StringData &data)
 			}
 
 			/* Extract the strings and stuff from the english command string */
-			ExtractCommandString(&_cur_pcs, ls->english, false);
+			ExtractCommandString(&_cur_pcs, ls->english.c_str(), false);
 
-			if (!ls->translated_cases.empty() || ls->translated != nullptr) {
-				cmdp = ls->translated;
+			if (!ls->translated_cases.empty() || !ls->translated.empty()) {
+				cmdp = &ls->translated;
 			} else {
-				cmdp = ls->english;
+				cmdp = &ls->english;
 			}
 
-			_translated = cmdp != ls->english;
+			_translated = cmdp != &ls->english;
 
 			if (!ls->translated_cases.empty()) {
 				/* Need to output a case-switch.
@@ -1023,7 +1012,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 				}
 			}
 
-			if (cmdp != nullptr) PutCommandString(&buffer, cmdp);
+			if (!cmdp->empty()) PutCommandString(&buffer, cmdp->c_str());
 
 			this->WriteLength((uint)buffer.size());
 			this->Write(buffer.data(), buffer.size());
