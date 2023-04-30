@@ -50,9 +50,12 @@
 #	include <ft2build.h>
 #	include FT_FREETYPE_H
 #endif /* WITH_FREETYPE */
-#if defined(WITH_ICU_LX) || defined(WITH_ICU_I18N)
+#ifdef WITH_HARFBUZZ
+#	include <hb.h>
+#endif /* WITH_HARFBUZZ */
+#ifdef WITH_ICU_I18N
 #	include <unicode/uversion.h>
-#endif /* WITH_ICU_LX || WITH_ICU_I18N */
+#endif /* WITH_ICU_I18N */
 #ifdef WITH_LIBLZMA
 #	include <lzma.h>
 #endif
@@ -238,19 +241,18 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 	buffer += seprintf(buffer, last, " FreeType:   %d.%d.%d\n", major, minor, patch);
 #endif /* WITH_FREETYPE */
 
-#if defined(WITH_ICU_LX) || defined(WITH_ICU_I18N)
+#if defined(WITH_HARFBUZZ)
+	buffer += seprintf(buffer, last, " HarfBuzz:   %s\n", hb_version_string());
+#endif /* WITH_HARFBUZZ */
+
+#if defined(WITH_ICU_I18N)
 	/* 4 times 0-255, separated by dots (.) and a trailing '\0' */
 	char buf[4 * 3 + 3 + 1];
 	UVersionInfo ver;
 	u_getVersion(ver);
 	u_versionToString(ver, buf);
-#ifdef WITH_ICU_I18N
 	buffer += seprintf(buffer, last, " ICU i18n:   %s\n", buf);
-#endif
-#ifdef WITH_ICU_LX
-	buffer += seprintf(buffer, last, " ICU lx:     %s\n", buf);
-#endif
-#endif /* WITH_ICU_LX || WITH_ICU_I18N */
+#endif /* WITH_ICU_I18N */
 
 #ifdef WITH_LIBLZMA
 	buffer += seprintf(buffer, last, " LZMA:       %s\n", lzma_version_string());

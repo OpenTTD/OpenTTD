@@ -183,6 +183,9 @@ See `src/3rdparty/fmt/LICENSE.rst` for the complete license text.
 The catch2 implementation in `src/3rdparty/catch2` is licensed under the Boost Software License, Version 1.0.
 See `src/3rdparty/catch2/LICENSE.txt` for the complete license text.
 
+The icu scriptrun implementation in `src/3rdparty/icu` is licensed under the Unicode license.
+See `src/3rdparty/icu/LICENSE` for the complete license text.
+
 ## 4.0 Credits
 
 See [CREDITS.md](./CREDITS.md)

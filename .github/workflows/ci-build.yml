@@ -113,6 +113,7 @@ jobs:
           liballegro4-dev \
           libcurl4-openssl-dev \
           libfontconfig-dev \
+          libharfbuzz-dev \
           libicu-dev \
           liblzma-dev \
           liblzo2-dev \

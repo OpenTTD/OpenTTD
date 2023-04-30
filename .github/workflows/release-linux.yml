@@ -34,15 +34,20 @@ jobs:
     - name: Install dependencies
       run: |
         echo "::group::Install system dependencies"
-        # ICU is used as vcpkg fails to install ICU. Other dependencies
-        # are needed either for vcpkg or for the packages installed with
-        # vcpkg.
+        # perl-IPC-Cmd, wget, and zip are needed to run vcpkg.
+        # autoconf-archive is needed to build ICU.
         yum install -y \
-          libicu-devel \
+          autoconf-archive \
           perl-IPC-Cmd \
           wget \
           zip \
           # EOF
+
+        # aclocal looks first in /usr/local/share/aclocal, and if that doesn't
+        # exist only looks in /usr/share/aclocal. We have files in both that
+        # are important. So copy the latter to the first, and we are good to
+        # go.
+        cp /usr/share/aclocal/* /usr/local/share/aclocal/
         echo "::endgroup::"
 
         # We use vcpkg for our dependencies, to get more up-to-date version.
@@ -69,6 +74,8 @@ jobs:
             curl[http2] \
             fontconfig \
             freetype \
+            harfbuzz \
+            icu \
             liblzma \
             libpng \
             lzo \

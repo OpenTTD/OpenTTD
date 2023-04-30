@@ -10,17 +10,15 @@
 #include "stdafx.h"
 #include "gfx_layout.h"
 #include "string_func.h"
-#include "strings_func.h"
-#include "zoom_func.h"
 #include "debug.h"
 
 #include "table/control_codes.h"
 
 #include "gfx_layout_fallback.h"
 
-#ifdef WITH_ICU_LX
+#if defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)
 #include "gfx_layout_icu.h"
-#endif /* WITH_ICU_LX */
+#endif /* WITH_ICU_I18N && WITH_HARFBUZZ */
 
 #ifdef WITH_UNISCRIBE
 #include "os/windows/string_uniscribe.h"
@@ -95,8 +93,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
 			/* Filter out non printable characters */
 			if (!IsPrintable(c)) continue;
 			/* Filter out text direction characters that shouldn't be drawn, and
-			 * will not be handled in the fallback non ICU case because they are
-			 * mostly needed for RTL languages which need more ICU support. */
+			 * will not be handled in the fallback case because they are mostly
+			 * needed for RTL languages which need more proper shaping support. */
 			if (!T::SUPPORTS_RTL && IsTextDirectionChar(c)) continue;
 			buff += T::AppendToBuffer(buff, buffer_last, c);
 			continue;
@@ -148,21 +146,17 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 		} else {
 			/* Line is new, layout it */
 			FontState old_state = state;
-#if defined(WITH_ICU_LX) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
+#if (defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
 			const char *old_str = str;
 #endif
 
-#ifdef WITH_ICU_LX
-			GetLayouter<ICUParagraphLayoutFactory>(line, str, state);
+#if defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)
 			if (line.layout == nullptr) {
-				static bool warned = false;
-				if (!warned) {
-					Debug(misc, 0, "ICU layouter bailed on the font. Falling back to the fallback layouter");
-					warned = true;
+				GetLayouter<ICUParagraphLayoutFactory>(line, str, state);
+				if (line.layout == nullptr) {
+					state = old_state;
+					str = old_str;
 				}
-
-				state = old_state;
-				str = old_str;
 			}
 #endif
 
