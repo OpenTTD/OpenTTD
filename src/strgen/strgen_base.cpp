@@ -38,18 +38,10 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
  * Create a new case.
  * @param caseidx The index of the case.
  * @param string  The translation of the case.
- * @param next    The next chained case.
  */
-Case::Case(int caseidx, const char *string, Case *next) :
-		caseidx(caseidx), string(stredup(string)), next(next)
+Case::Case(int caseidx, const std::string &string) :
+		caseidx(caseidx), string(string)
 {
-}
-
-/** Free everything we allocated. */
-Case::~Case()
-{
-	free(this->string);
-	delete this->next;
 }
 
 /**
@@ -61,7 +53,7 @@ Case::~Case()
  */
 LangString::LangString(const char *name, const char *english, size_t index, int line) :
 		name(stredup(name)), english(stredup(english)), translated(nullptr),
-		hash_next(0), index(index), line(line), translated_case(nullptr)
+		hash_next(0), index(index), line(line)
 {
 }
 
@@ -71,7 +63,6 @@ LangString::~LangString()
 	free(this->name);
 	free(this->english);
 	free(this->translated);
-	delete this->translated_case;
 }
 
 /** Free all data related to the translation. */
@@ -80,8 +71,7 @@ void LangString::FreeTranslation()
 	free(this->translated);
 	this->translated = nullptr;
 
-	delete this->translated_case;
-	this->translated_case = nullptr;
+	this->translated_cases.clear();
 }
 
 /**
@@ -776,7 +766,7 @@ void StringReader::HandleString(char *str)
 		if (!CheckCommandsMatch(s, ent->english, str)) return;
 
 		if (casep != nullptr) {
-			ent->translated_case = new Case(ResolveCaseName(casep, strlen(casep)), s, ent->translated_case);
+			ent->translated_cases.emplace_back(ResolveCaseName(casep, strlen(casep)), s);
 		} else {
 			ent->translated = stredup(s);
 			/* If the string was translated, use the line from the
@@ -975,7 +965,6 @@ void LanguageWriter::WriteLang(const StringData &data)
 	for (size_t tab = 0; tab < data.tabs; tab++) {
 		for (uint j = 0; j != in_use[tab]; j++) {
 			const LangString *ls = data.strings[(tab * TAB_SIZE) + j];
-			const Case *casep;
 			const char *cmdp;
 
 			/* For undefined strings, just set that it's an empty string */
@@ -1001,38 +990,31 @@ void LanguageWriter::WriteLang(const StringData &data)
 			/* Extract the strings and stuff from the english command string */
 			ExtractCommandString(&_cur_pcs, ls->english, false);
 
-			if (ls->translated_case != nullptr || ls->translated != nullptr) {
-				casep = ls->translated_case;
+			if (!ls->translated_cases.empty() || ls->translated != nullptr) {
 				cmdp = ls->translated;
 			} else {
-				casep = nullptr;
 				cmdp = ls->english;
 			}
 
 			_translated = cmdp != ls->english;
 
-			if (casep != nullptr) {
-				const Case *c;
-				uint num;
-
+			if (!ls->translated_cases.empty()) {
 				/* Need to output a case-switch.
 				 * It has this format
 				 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
 				 * Each LEN is printed using 2 bytes in big endian order. */
 				buffer.AppendUtf8(SCC_SWITCH_CASE);
-				/* Count the number of cases */
-				for (num = 0, c = casep; c; c = c->next) num++;
-				buffer.AppendByte(num);
+				buffer.AppendByte((byte)ls->translated_cases.size());
 
 				/* Write each case */
-				for (c = casep; c != nullptr; c = c->next) {
-					buffer.AppendByte(c->caseidx);
+				for (const Case &c : ls->translated_cases) {
+					buffer.AppendByte(c.caseidx);
 					/* Make some space for the 16-bit length */
 					uint pos = (uint)buffer.size();
 					buffer.AppendByte(0);
 					buffer.AppendByte(0);
 					/* Write string */
-					PutCommandString(&buffer, c->string);
+					PutCommandString(&buffer, c.string.c_str());
 					buffer.AppendByte(0); // terminate with a zero
 					/* Fill in the length */
 					uint size = (uint)buffer.size() - (pos + 2);
