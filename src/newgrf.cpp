@@ -5692,7 +5692,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station].get();
 
 			if (statspec == nullptr) {
-				GrfMsg(1, "StationMapSpriteGroup: Station with ID 0x{:02X} does not exist, skipping", station);
+				GrfMsg(1, "StationMapSpriteGroup: Station {} undefined, skipping", station);
 				continue;
 			}
 
@@ -5707,12 +5707,12 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		StationSpec *statspec = station >= _cur.grffile->stations.size() ? nullptr : _cur.grffile->stations[station].get();
 
 		if (statspec == nullptr) {
-			GrfMsg(1, "StationMapSpriteGroup: Station with ID 0x{:02X} does not exist, skipping", station);
+			GrfMsg(1, "StationMapSpriteGroup: Station {} undefined, skipping", station);
 			continue;
 		}
 
 		if (statspec->grf_prop.grffile != nullptr) {
-			GrfMsg(1, "StationMapSpriteGroup: Station with ID 0x{:02X} mapped multiple times, skipping", station);
+			GrfMsg(1, "StationMapSpriteGroup: Station {} mapped multiple times, skipping", station);
 			continue;
 		}
 
@@ -5873,7 +5873,7 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object].get();
 
 			if (spec == nullptr) {
-				GrfMsg(1, "ObjectMapSpriteGroup: Object with ID 0x{:02X} undefined, skipping", object);
+				GrfMsg(1, "ObjectMapSpriteGroup: Object {} undefined, skipping", object);
 				continue;
 			}
 
@@ -5888,12 +5888,12 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		ObjectSpec *spec = object >= _cur.grffile->objectspec.size() ? nullptr : _cur.grffile->objectspec[object].get();
 
 		if (spec == nullptr) {
-			GrfMsg(1, "ObjectMapSpriteGroup: Object with ID 0x{:02X} undefined, skipping", object);
+			GrfMsg(1, "ObjectMapSpriteGroup: Object {} undefined, skipping", object);
 			continue;
 		}
 
 		if (spec->grf_prop.grffile != nullptr) {
-			GrfMsg(1, "ObjectMapSpriteGroup: Object with ID 0x{:02X} mapped multiple times, skipping", object);
+			GrfMsg(1, "ObjectMapSpriteGroup: Object {} mapped multiple times, skipping", object);
 			continue;
 		}
 
@@ -6059,7 +6059,7 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop].get();
 
 			if (roadstopspec == nullptr) {
-				GrfMsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x{:02X} does not exist, skipping", roadstop);
+				GrfMsg(1, "RoadStopMapSpriteGroup: Road stop {} undefined, skipping", roadstop);
 				continue;
 			}
 
@@ -6074,12 +6074,12 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		RoadStopSpec *roadstopspec = roadstop >= _cur.grffile->roadstops.size() ? nullptr : _cur.grffile->roadstops[roadstop].get();
 
 		if (roadstopspec == nullptr) {
-			GrfMsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x{:02X} does not exist, skipping.", roadstop);
+			GrfMsg(1, "RoadStopMapSpriteGroup: Road stop {} undefined, skipping.", roadstop);
 			continue;
 		}
 
 		if (roadstopspec->grf_prop.grffile != nullptr) {
-			GrfMsg(1, "RoadStopMapSpriteGroup: Road stop with ID 0x{:02X} mapped multiple times, skipping", roadstop);
+			GrfMsg(1, "RoadStopMapSpriteGroup: Road stop {} mapped multiple times, skipping", roadstop);
 			continue;
 		}
 
