@@ -208,7 +208,7 @@ struct SaveLoadParams {
 	LoadFilter *lf;                      ///< Filter to read the savegame from.
 
 	StringID error_str;                  ///< the translatable error message to show
-	char *extra_msg;                     ///< the error message
+	std::string extra_msg;               ///< the error message
 
 	bool saveinprogress;                 ///< Whether there is currently a save in progress.
 };
@@ -330,17 +330,15 @@ static void SlNullPointers()
  * @note This function does never return as it throws an exception to
  *       break out of all the saveload code.
  */
-void NORETURN SlError(StringID string, const char *extra_msg)
+void NORETURN SlError(StringID string, const std::string &extra_msg)
 {
 	/* Distinguish between loading into _load_check_data vs. normal save/load. */
 	if (_sl.action == SLA_LOAD_CHECK) {
 		_load_check_data.error = string;
-		free(_load_check_data.error_data);
-		_load_check_data.error_data = (extra_msg == nullptr) ? nullptr : stredup(extra_msg);
+		_load_check_data.error_msg = extra_msg;
 	} else {
 		_sl.error_str = string;
-		free(_sl.extra_msg);
-		_sl.extra_msg = (extra_msg == nullptr) ? nullptr : stredup(extra_msg);
+		_sl.extra_msg = extra_msg;
 	}
 
 	/* We have to nullptr all pointers here; we might be in a state where
@@ -362,7 +360,7 @@ void NORETURN SlError(StringID string, const char *extra_msg)
  * @note This function does never return as it throws an exception to
  *       break out of all the saveload code.
  */
-void NORETURN SlErrorCorrupt(const char *msg)
+void NORETURN SlErrorCorrupt(const std::string &msg)
 {
 	SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, msg);
 }

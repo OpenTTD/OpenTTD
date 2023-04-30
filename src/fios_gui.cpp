@@ -49,8 +49,7 @@ void LoadCheckData::Clear()
 {
 	this->checkable = false;
 	this->error = INVALID_STRING_ID;
-	free(this->error_data);
-	this->error_data = nullptr;
+	this->error_msg.clear();
 
 	this->map_size_x = this->map_size_y = 256; // Default for old savegames which do not store mapsize.
 	this->current_date = 0;
@@ -500,7 +499,7 @@ public:
 			tr.top += FONT_HEIGHT_NORMAL;
 		} else if (_load_check_data.error != INVALID_STRING_ID) {
 			/* Incompatible / broken savegame */
-			SetDParamStr(0, _load_check_data.error_data);
+			SetDParamStr(0, _load_check_data.error_msg);
 			tr.top = DrawStringMultiLine(tr, _load_check_data.error, TC_RED);
 		} else {
 			/* Mapsize */

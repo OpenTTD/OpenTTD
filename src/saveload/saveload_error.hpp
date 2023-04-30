@@ -13,8 +13,8 @@
 #include "../3rdparty/fmt/format.h"
 #include "../strings_type.h"
 
-void NORETURN SlError(StringID string, const char *extra_msg = nullptr);
-void NORETURN SlErrorCorrupt(const char *msg);
+void NORETURN SlError(StringID string, const std::string &extra_msg = {});
+void NORETURN SlErrorCorrupt(const std::string &msg);
 
 /**
  * Issue an SlErrorCorrupt with a format string.
@@ -28,7 +28,7 @@ void NORETURN SlErrorCorrupt(const char *msg);
 template <typename T, typename ... Args>
 static inline void NORETURN SlErrorCorruptFmt(const T &format, Args&&... fmt_args)
 {
-	SlErrorCorrupt(fmt::format(format, fmt_args...).c_str());
+	SlErrorCorrupt(fmt::format(format, fmt_args...));
 }
 
 #endif /* SAVELOAD_ERROR_HPP */

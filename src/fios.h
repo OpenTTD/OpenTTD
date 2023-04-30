@@ -32,7 +32,7 @@ typedef SmallMap<uint, CompanyProperties *> CompanyPropertiesMap;
 struct LoadCheckData {
 	bool checkable;     ///< True if the savegame could be checked by SL_LOAD_CHECK. (Old savegames are not checkable.)
 	StringID error;     ///< Error message from loading. INVALID_STRING_ID if no error.
-	char *error_data;   ///< Data to pass to SetDParamStr when displaying #error.
+	std::string error_msg; ///< Data to pass to SetDParamStr when displaying #error.
 
 	uint32 map_size_x, map_size_y;
 	TimerGameCalendar::Date current_date;
@@ -47,7 +47,7 @@ struct LoadCheckData {
 	struct LoggedAction *gamelog_action;          ///< Gamelog actions
 	uint gamelog_actions;                         ///< Number of gamelog actions
 
-	LoadCheckData() : error_data(nullptr), grfconfig(nullptr),
+	LoadCheckData() : grfconfig(nullptr),
 			grf_compatibility(GLC_NOT_FOUND), gamelog_action(nullptr), gamelog_actions(0)
 	{
 		this->Clear();
