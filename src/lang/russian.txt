@@ -1127,7 +1127,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Инте
 
 # Autosave dropdown
 ###length 5
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Отключено
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :отключено
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :каждые 10 минут
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :каждые 30 минут
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :каждые 60 минут
