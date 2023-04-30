@@ -6514,9 +6514,9 @@ bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 
 		case 0x02: { // detailed date information: month of year (bit 0-7), day of month (bit 8-12), leap year (bit 15), day of year (bit 16-24)
 			YearMonthDay ymd;
-			ConvertDateToYMD(TimerGameCalendar::date, &ymd);
-			TimerGameCalendar::Date start_of_year = ConvertYMDToDate(ymd.year, 0, 1);
-			*value = ymd.month | (ymd.day - 1) << 8 | (IsLeapYear(ymd.year) ? 1 << 15 : 0) | (TimerGameCalendar::date - start_of_year) << 16;
+			TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+			TimerGameCalendar::Date start_of_year = TimerGameCalendar::ConvertYMDToDate(ymd.year, 0, 1);
+			*value = ymd.month | (ymd.day - 1) << 8 | (TimerGameCalendar::IsLeapYear(ymd.year) ? 1 << 15 : 0) | (TimerGameCalendar::date - start_of_year) << 16;
 			return true;
 		}
 
@@ -9947,7 +9947,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 
 	if (_networking) {
 		TimerGameCalendar::year = _settings_game.game_creation.starting_year;
-		TimerGameCalendar::date = ConvertYMDToDate(TimerGameCalendar::year, 0, 1);
+		TimerGameCalendar::date = TimerGameCalendar::ConvertYMDToDate(TimerGameCalendar::year, 0, 1);
 		TimerGameCalendar::date_fract = 0;
 		TimerGameTick::counter = 0;
 		_display_opt  = 0;

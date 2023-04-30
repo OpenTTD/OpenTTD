@@ -74,7 +74,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_newgrf_profilers.clear();
 
 	if (reset_date) {
-		TimerGameCalendar::SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
+		TimerGameCalendar::SetDate(TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
 		InitializeOldNames();
 	}
 

@@ -1450,7 +1450,7 @@ DEF_CONSOLE_CMD(ConGetDate)
 	}
 
 	YearMonthDay ymd;
-	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 	IConsolePrint(CC_DEFAULT, "Date: {:04d}-{:02d}-{:02d}", ymd.year, ymd.month + 1, ymd.day);
 	return true;
 }

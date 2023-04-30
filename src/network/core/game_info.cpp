@@ -124,7 +124,7 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
 void FillStaticNetworkServerGameInfo()
 {
 	_network_game_info.use_password   = !_settings_client.network.server_password.empty();
-	_network_game_info.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+	_network_game_info.start_date     = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	_network_game_info.clients_max    = _settings_client.network.max_clients;
 	_network_game_info.companies_max  = _settings_client.network.max_companies;
 	_network_game_info.map_width      = Map::SizeX();
@@ -256,7 +256,7 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
  */
 void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {
-	static const TimerGameCalendar::Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
+	static const TimerGameCalendar::Date MAX_DATE = TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
 
 	byte game_info_version = p->Recv_uint8();
 	NewGRFSerializationType newgrf_serialisation = NST_GRFID_MD5;

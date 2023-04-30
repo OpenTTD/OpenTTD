@@ -400,7 +400,7 @@ static bool FixTTOEngines()
 		for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
 	}
 
-	TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
+	TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date + DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::ConvertYMDToDate(2050, 0, 1));
 
 	for (EngineID i = 0; i < 256; i++) {
 		int oi = ttd_to_tto[i];
@@ -848,7 +848,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 			if (i->type == 0x0A) i->type = 0x12; // Iron Ore Mine has different ID
 
 			YearMonthDay ymd;
-			ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+			TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 			i->last_prod_year = ymd.year;
 
 			i->random_colour = RemapTTOColour(i->random_colour);

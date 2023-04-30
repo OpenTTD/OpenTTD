@@ -433,7 +433,7 @@ protected:
 				/* current date */
 				Rect date = this->GetWidget<NWidgetBase>(WID_NG_DATE)->GetCurrentRect();
 				YearMonthDay ymd;
-				ConvertDateToYMD(cur_item->info.game_date, &ymd);
+				TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date, &ymd);
 				SetDParam(0, ymd.year);
 				DrawString(date.left, date.right, y + text_y_offset, STR_JUST_INT, TC_BLACK, SA_HOR_CENTER);
 			}
@@ -442,8 +442,8 @@ protected:
 				/* number of years the game is running */
 				Rect years = this->GetWidget<NWidgetBase>(WID_NG_YEARS)->GetCurrentRect();
 				YearMonthDay ymd_cur, ymd_start;
-				ConvertDateToYMD(cur_item->info.game_date, &ymd_cur);
-				ConvertDateToYMD(cur_item->info.start_date, &ymd_start);
+				TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date, &ymd_cur);
+				TimerGameCalendar::ConvertDateToYMD(cur_item->info.start_date, &ymd_start);
 				SetDParam(0, ymd_cur.year - ymd_start.year);
 				DrawString(years.left, years.right, y + text_y_offset, STR_JUST_INT, TC_BLACK, SA_HOR_CENTER);
 			}

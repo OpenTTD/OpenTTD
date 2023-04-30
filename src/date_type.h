@@ -74,7 +74,7 @@ static const TimerGameCalendar::Year ORIGINAL_MAX_YEAR  = 2090;
 
 /**
  * The offset in days from the 'TimerGameCalendar::date == 0' till
- * 'ConvertYMDToDate(ORIGINAL_BASE_YEAR, 0, 1)'
+ * 'TimerGameCalendar::ConvertYMDToDate(ORIGINAL_BASE_YEAR, 0, 1)'
  */
 #define DAYS_TILL_ORIGINAL_BASE_YEAR DAYS_TILL(ORIGINAL_BASE_YEAR)
 
@@ -97,7 +97,7 @@ static const TimerGameCalendar::Year MAX_YEAR  = 5000000;
 
 /**
  * Data structure to convert between Date and triplet (year, month, and day).
- * @see ConvertDateToYMD(), ConvertYMDToDate()
+ * @see TimerGameCalendar::ConvertDateToYMD(), TimerGameCalendar::ConvertYMDToDate()
  */
 struct YearMonthDay {
 	TimerGameCalendar::Year  year;   ///< Year (0...)

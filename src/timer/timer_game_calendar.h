@@ -81,6 +81,9 @@ public:
 	using Month = uint8; ///< Type for the month, note: 0 based, i.e. 0 = January, 11 = December.
 	using Day = uint8; ///< Type for the day of the month, note: 1 based, first day of a month is 1.
 
+	static bool IsLeapYear(TimerGameCalendar::Year yr);
+	static void ConvertDateToYMD(TimerGameCalendar::Date date, YearMonthDay *ymd);
+	static TimerGameCalendar::Date ConvertYMDToDate(TimerGameCalendar::Year year, TimerGameCalendar::Month month, TimerGameCalendar::Day day);
 	static void SetDate(TimerGameCalendar::Date date, TimerGameCalendar::DateFract fract);
 
 	static Year year; ///< Current year, starting at 0.

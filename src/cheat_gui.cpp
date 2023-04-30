@@ -109,8 +109,8 @@ static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
 	if (new_value == TimerGameCalendar::year) return TimerGameCalendar::year;
 
 	YearMonthDay ymd;
-	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
-	TimerGameCalendar::Date new_date = ConvertYMDToDate(new_value, ymd.month, ymd.day);
+	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(new_value, ymd.month, ymd.day);
 
 	/* Shift cached dates before we change the date. */
 	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - TimerGameCalendar::date);
@@ -323,7 +323,7 @@ struct CheatWindow : Window {
 					switch (ce->str) {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE:
-							SetDParam(0, ConvertYMDToDate(MAX_YEAR, 11, 31));
+							SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 11, 31));
 							width = std::max(width, GetStringBoundingBox(ce->str).width);
 							break;
 

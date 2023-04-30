@@ -1148,7 +1148,7 @@ void ToggleDirtyBlocks()
 void SetStartingYear(TimerGameCalendar::Year year)
 {
 	_settings_game.game_creation.starting_year = Clamp(year, MIN_YEAR, MAX_YEAR);
-	TimerGameCalendar::Date new_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	/* If you open a savegame as scenario there may already be link graphs.*/
 	LinkGraphSchedule::instance.ShiftDates(new_date - TimerGameCalendar::date);
 	TimerGameCalendar::SetDate(new_date, 0);
@@ -2377,7 +2377,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		switch (widget) {
 			case WID_TE_DATE:
-				SetDParam(0, ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
+				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
 				break;
 		}
 	}
@@ -2406,7 +2406,7 @@ struct ScenarioEditorToolbarWindow : Window {
 				break;
 
 			case WID_TE_DATE:
-				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
+				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 0, 1));
 				*size = GetStringBoundingBox(STR_WHITE_DATE_LONG);
 				break;
 		}

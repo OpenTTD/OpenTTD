@@ -904,7 +904,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 {
 	const Engine *e = Engine::Get(engine_number);
 	YearMonthDay ymd;
-	ConvertDateToYMD(e->intro_date, &ymd);
+	TimerGameCalendar::ConvertDateToYMD(e->intro_date, &ymd);
 	bool refittable = IsArticulatedVehicleRefittable(engine_number);
 	bool articulated_cargo = false;
 
