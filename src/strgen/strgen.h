@@ -137,18 +137,17 @@ struct LanguageWriter {
 struct CmdStruct;
 
 struct CmdPair {
-	const CmdStruct *a;
-	const char *v;
+	const CmdStruct *cmd;
+	std::string param;
 };
 
 struct ParsedCommandStruct {
-	uint np;
-	CmdPair pairs[32];
-	const CmdStruct *cmd[32]; // ordered by param #
+	std::vector<CmdPair> non_consuming_commands;
+	std::array<const CmdStruct*, 32> consuming_commands{ nullptr }; // ordered by param #
 };
 
 const CmdStruct *TranslateCmdForCompare(const CmdStruct *a);
-void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool warnings);
+ParsedCommandStruct ExtractCommandString(const char *s, bool warnings);
 
 void StrgenWarningI(const std::string &msg);
 void StrgenErrorI(const std::string &msg);

@@ -336,7 +336,7 @@ void EmitPlural(Buffer *buffer, char *buf, int value)
 	/* Parse out the number, if one exists. Otherwise default to prev arg. */
 	if (!ParseRelNum(&buf, &argidx, &offset)) argidx--;
 
-	const CmdStruct *cmd = _cur_pcs.cmd[argidx];
+	const CmdStruct *cmd = _cur_pcs.consuming_commands[argidx];
 	if (offset == -1) {
 		/* Use default offset */
 		if (cmd == nullptr || cmd->default_plural_offset < 0) {
@@ -401,7 +401,7 @@ void EmitGender(Buffer *buffer, char *buf, int value)
 		 * If no relative number exists, default to +0 */
 		ParseRelNum(&buf, &argidx, &offset);
 
-		const CmdStruct *cmd = _cur_pcs.cmd[argidx];
+		const CmdStruct *cmd = _cur_pcs.consuming_commands[argidx];
 		if (cmd == nullptr || (cmd->flags & C_GENDER) == 0) {
 			StrgenFatal("Command '{}' can't have a gender", cmd == nullptr ? "<empty>" : cmd->cmd);
 		}
@@ -531,14 +531,14 @@ StringReader::StringReader(StringData &data, const std::string &file, bool maste
 {
 }
 
-void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool warnings)
+ParsedCommandStruct ExtractCommandString(const char *s, bool warnings)
 {
 	char param[MAX_COMMAND_PARAM_SIZE];
 	int argno;
 	int argidx = 0;
 	int casei;
 
-	memset(p, 0, sizeof(*p));
+	ParsedCommandStruct p;
 
 	for (;;) {
 		/* read until next command from a. */
@@ -551,17 +551,16 @@ void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool warnings)
 
 		if (ar->consumes) {
 			if (argno != -1) argidx = argno;
-			if (argidx < 0 || (uint)argidx >= lengthof(p->cmd)) StrgenFatal("invalid param idx {}", argidx);
-			if (p->cmd[argidx] != nullptr && p->cmd[argidx] != ar) StrgenFatal("duplicate param idx {}", argidx);
+			if (argidx < 0 || (uint)argidx >= p.consuming_commands.max_size()) StrgenFatal("invalid param idx {}", argidx);
+			if (p.consuming_commands[argidx] != nullptr && p.consuming_commands[argidx] != ar) StrgenFatal("duplicate param idx {}", argidx);
 
-			p->cmd[argidx++] = ar;
+			p.consuming_commands[argidx++] = ar;
 		} else if (!(ar->flags & C_DONTCOUNT)) { // Ignore some of them
-			if (p->np >= lengthof(p->pairs)) StrgenFatal("too many commands in string, max {}", lengthof(p->pairs));
-			p->pairs[p->np].a = ar;
-			p->pairs[p->np].v = param[0] != '\0' ? stredup(param) : "";
-			p->np++;
+			p.non_consuming_commands.emplace_back(CmdPair{ar, param});
 		}
 	}
+
+	return p;
 }
 
 
@@ -592,45 +591,42 @@ static bool CheckCommandsMatch(const char *a, const char *b, const char *name)
 	 */
 	if (!_translation) return true;
 
-	ParsedCommandStruct templ;
-	ParsedCommandStruct lang;
 	bool result = true;
 
-	ExtractCommandString(&templ, b, true);
-	ExtractCommandString(&lang, a, true);
+	ParsedCommandStruct templ = ExtractCommandString(b, true);
+	ParsedCommandStruct lang = ExtractCommandString(a, true);
 
 	/* For each string in templ, see if we find it in lang */
-	if (templ.np != lang.np) {
+	if (templ.non_consuming_commands.max_size() != lang.non_consuming_commands.max_size()) {
 		StrgenWarning("{}: template string and language string have a different # of commands", name);
 		result = false;
 	}
 
-	for (uint i = 0; i < templ.np; i++) {
+	for (auto &templ_nc : templ.non_consuming_commands) {
 		/* see if we find it in lang, and zero it out */
 		bool found = false;
-		for (uint j = 0; j < lang.np; j++) {
-			if (templ.pairs[i].a == lang.pairs[j].a &&
-					strcmp(templ.pairs[i].v, lang.pairs[j].v) == 0) {
+		for (auto &lang_nc : lang.non_consuming_commands) {
+			if (templ_nc.cmd == lang_nc.cmd && templ_nc.param == lang_nc.param) {
 				/* it was found in both. zero it out from lang so we don't find it again */
-				lang.pairs[j].a = nullptr;
+				lang_nc.cmd = nullptr;
 				found = true;
 				break;
 			}
 		}
 
 		if (!found) {
-			StrgenWarning("{}: command '{}' exists in template file but not in language file", name, templ.pairs[i].a->cmd);
+			StrgenWarning("{}: command '{}' exists in template file but not in language file", name, templ_nc.cmd->cmd);
 			result = false;
 		}
 	}
 
 	/* if we reach here, all non consumer commands match up.
 	 * Check if the non consumer commands match up also. */
-	for (uint i = 0; i < lengthof(templ.cmd); i++) {
-		if (TranslateCmdForCompare(templ.cmd[i]) != lang.cmd[i]) {
+	for (uint i = 0; i < templ.consuming_commands.max_size(); i++) {
+		if (TranslateCmdForCompare(templ.consuming_commands[i]) != lang.consuming_commands[i]) {
 			StrgenWarning("{}: Param idx #{} '{}' doesn't match with template command '{}'", name, i,
-				lang.cmd[i]  == nullptr ? "<empty>" : TranslateCmdForCompare(lang.cmd[i])->cmd,
-				templ.cmd[i] == nullptr ? "<empty>" : templ.cmd[i]->cmd);
+				lang.consuming_commands[i]  == nullptr ? "<empty>" : TranslateCmdForCompare(lang.consuming_commands[i])->cmd,
+				templ.consuming_commands[i] == nullptr ? "<empty>" : templ.consuming_commands[i]->cmd);
 			result = false;
 		}
 	}
@@ -801,20 +797,20 @@ static int TranslateArgumentIdx(int argidx, int offset)
 {
 	int sum;
 
-	if (argidx < 0 || (uint)argidx >= lengthof(_cur_pcs.cmd)) {
+	if (argidx < 0 || (uint)argidx >= _cur_pcs.consuming_commands.max_size()) {
 		StrgenFatal("invalid argidx {}", argidx);
 	}
-	const CmdStruct *cs = _cur_pcs.cmd[argidx];
+	const CmdStruct *cs = _cur_pcs.consuming_commands[argidx];
 	if (cs != nullptr && cs->consumes <= offset) {
 		StrgenFatal("invalid argidx offset {}:{}", argidx, offset);
 	}
 
-	if (_cur_pcs.cmd[argidx] == nullptr) {
+	if (_cur_pcs.consuming_commands[argidx] == nullptr) {
 		StrgenFatal("no command for this argidx {}", argidx);
 	}
 
 	for (int i = sum = 0; i < argidx; i++) {
-		cs = _cur_pcs.cmd[i];
+		cs = _cur_pcs.consuming_commands[i];
 
 		sum += (cs != nullptr) ? cs->consumes : 1;
 	}
@@ -860,7 +856,7 @@ static void PutCommandString(Buffer *buffer, const char *str)
 			}
 
 			/* Output the one from the master string... it's always accurate. */
-			cs = _cur_pcs.cmd[_cur_argidx++];
+			cs = _cur_pcs.consuming_commands[_cur_argidx++];
 			if (cs == nullptr) {
 				StrgenFatal("{}: No argument exists at position {}", _cur_ident, _cur_argidx - 1);
 			}
@@ -942,7 +938,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 			}
 
 			/* Extract the strings and stuff from the english command string */
-			ExtractCommandString(&_cur_pcs, ls->english.c_str(), false);
+			_cur_pcs = ExtractCommandString(ls->english.c_str(), false);
 
 			if (!ls->translated_cases.empty() || !ls->translated.empty()) {
 				cmdp = &ls->translated;
