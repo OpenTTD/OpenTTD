@@ -2293,7 +2293,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				GetString(datestrbuf, STR_JUST_DATE_ISO, lastof(datestrbuf));
 				IConsolePrint(CC_DEBUG, "Profiling will automatically stop on game date {}.", datestrbuf);
 			} else {
-				_newgrf_profile_end_date = MAX_DAY;
+				_newgrf_profile_end_date = MAX_DATE;
 			}
 		} else if (_newgrf_profilers.empty()) {
 			IConsolePrint(CC_ERROR, "No GRFs selected for profiling, did not start.");
@@ -2314,7 +2314,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
 			pr.Abort();
 		}
-		_newgrf_profile_end_date = MAX_DAY;
+		_newgrf_profile_end_date = MAX_DATE;
 		return true;
 	}
 

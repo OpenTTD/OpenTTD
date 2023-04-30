@@ -163,7 +163,7 @@ RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date 
 		if (rti->label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, MAX_DAY)) continue;
+		if (!IsInsideMM(rti->introduction_date, 0, MAX_DATE)) continue;
 
 		/* Not yet introduced at this date. */
 		if (rti->introduction_date > date) continue;
@@ -231,7 +231,7 @@ RoadTypes GetRoadTypes(bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRoadTypes(rts, MAX_DAY);
+	if (introduces) return AddDateIntroducedRoadTypes(rts, MAX_DATE);
 	return rts;
 }
 
@@ -292,7 +292,7 @@ RoadTypes ExistingRoadTypes(CompanyID c)
 	}
 
 	/* Get the date introduced roadtypes as well. */
-	known_roadtypes = AddDateIntroducedRoadTypes(known_roadtypes, MAX_DAY);
+	known_roadtypes = AddDateIntroducedRoadTypes(known_roadtypes, MAX_DATE);
 
 	return known_roadtypes;
 }

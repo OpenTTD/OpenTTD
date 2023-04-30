@@ -225,7 +225,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date 
 		if (rti->label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, MAX_DAY)) continue;
+		if (!IsInsideMM(rti->introduction_date, 0, MAX_DATE)) continue;
 
 		/* Not yet introduced at this date. */
 		if (rti->introduction_date > date) continue;
@@ -298,7 +298,7 @@ RailTypes GetRailTypes(bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRailTypes(rts, MAX_DAY);
+	if (introduces) return AddDateIntroducedRailTypes(rts, MAX_DATE);
 	return rts;
 }
 
