@@ -266,7 +266,7 @@ static StringParam::ParamType GetParamType(const CmdStruct *cs)
 static void ExtractStringParams(const StringData &data, StringParamsList &params)
 {
 	for (size_t i = 0; i < data.max_strings; i++) {
-		const LangString *ls = data.strings[i];
+		const LangString *ls = data.strings[i].get();
 
 		if (ls != nullptr) {
 			StringParams &param = params.emplace_back();

@@ -52,7 +52,7 @@ Case::Case(int caseidx, const std::string &string) :
  * @param line    The line this string was found on.
  */
 LangString::LangString(const std::string &name, const std::string &english, size_t index, int line) :
-		name(name), english(english), hash_next(0), index(index), line(line)
+		name(name), english(english), index(index), line(line)
 {
 }
 
@@ -69,38 +69,17 @@ void LangString::FreeTranslation()
  */
 StringData::StringData(size_t tabs) : tabs(tabs), max_strings(tabs * TAB_SIZE)
 {
-	this->strings = CallocT<LangString *>(max_strings);
-	this->hash_heads = CallocT<size_t>(max_strings);
+	this->strings.resize(max_strings);
 	this->next_string_id = 0;
-}
-
-/** Free everything we allocated. */
-StringData::~StringData()
-{
-	for (size_t i = 0; i < this->max_strings; i++) delete this->strings[i];
-	free(this->strings);
-	free(this->hash_heads);
 }
 
 /** Free all data related to the translation. */
 void StringData::FreeTranslation()
 {
 	for (size_t i = 0; i < this->max_strings; i++) {
-		LangString *ls = this->strings[i];
+		LangString *ls = this->strings[i].get();
 		if (ls != nullptr) ls->FreeTranslation();
 	}
-}
-
-/**
- * Create a hash of the string for finding them back quickly.
- * @param s The string to hash.
- * @return The hashed string.
- */
-uint StringData::HashStr(const char *s) const
-{
-	uint hash = 0;
-	for (; *s != '\0'; s++) hash = ROL(hash, 3) ^ *s;
-	return hash % this->max_strings;
 }
 
 /**
@@ -108,13 +87,10 @@ uint StringData::HashStr(const char *s) const
  * @param s  The name of the string.
  * @param ls The string to add.
  */
-void StringData::Add(const char *s, LangString *ls)
+void StringData::Add(std::unique_ptr<LangString> ls)
 {
-	uint hash = this->HashStr(s);
-	ls->hash_next = this->hash_heads[hash];
-	/* Off-by-one for hash find. */
-	this->hash_heads[hash] = ls->index + 1;
-	this->strings[ls->index] = ls;
+	this->name_to_string[ls->name] = ls.get();
+	this->strings[ls->index].swap(ls);
 }
 
 /**
@@ -122,17 +98,12 @@ void StringData::Add(const char *s, LangString *ls)
  * @param s The string name to search on.
  * @return The LangString or nullptr if it is not known.
  */
-LangString *StringData::Find(const char *s)
+LangString *StringData::Find(const std::string_view s)
 {
-	size_t idx = this->hash_heads[this->HashStr(s)];
+	auto it = this->name_to_string.find(s);
+	if (it == this->name_to_string.end()) return nullptr;
 
-	while (idx-- > 0) {
-		LangString *ls = this->strings[idx];
-
-		if (ls->name == s) return ls;
-		idx = ls->hash_next;
-	}
-	return nullptr;
+	return it->second;
 }
 
 /**
@@ -159,7 +130,7 @@ uint StringData::Version() const
 	uint hash = 0;
 
 	for (size_t i = 0; i < this->max_strings; i++) {
-		const LangString *ls = this->strings[i];
+		const LangString *ls = this->strings[i].get();
 
 		if (ls != nullptr) {
 			const CmdStruct *cs;
@@ -555,15 +526,9 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
  * @param master      Are we reading the master file?
  * @param translation Are we reading a translation?
  */
-StringReader::StringReader(StringData &data, const char *file, bool master, bool translation) :
-		data(data), file(stredup(file)), master(master), translation(translation)
+StringReader::StringReader(StringData &data, const std::string &file, bool master, bool translation) :
+		data(data), file(file), master(master), translation(translation)
 {
-}
-
-/** Make sure the right reader gets freed. */
-StringReader::~StringReader()
-{
-	free(file);
 }
 
 void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool warnings)
@@ -739,7 +704,7 @@ void StringReader::HandleString(char *str)
 		}
 
 		/* Allocate a new LangString */
-		this->data.Add(str, new LangString(str, s, this->data.next_string_id++, _cur_line));
+		this->data.Add(std::make_unique<LangString>(str, s, this->data.next_string_id++, _cur_line));
 	} else {
 		if (ent == nullptr) {
 			StrgenWarning("String name '{}' does not exist in master file", str);
@@ -791,7 +756,7 @@ void StringReader::ParseFile()
 	_warnings = _errors = 0;
 
 	_translation = this->translation;
-	_file = this->file;
+	_file = this->file.c_str();
 
 	/* Abusing _show_todo to replace "warning" with "info" for translations. */
 	_show_todo &= 3;
@@ -938,7 +903,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 		_lang.offsets[tab] = TO_LE16(n);
 
 		for (uint j = 0; j != in_use[tab]; j++) {
-			const LangString *ls = data.strings[(tab * TAB_SIZE) + j];
+			const LangString *ls = data.strings[(tab * TAB_SIZE) + j].get();
 			if (ls != nullptr && ls->translated.empty()) _lang.missing++;
 		}
 	}
@@ -953,7 +918,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 
 	for (size_t tab = 0; tab < data.tabs; tab++) {
 		for (uint j = 0; j != in_use[tab]; j++) {
-			const LangString *ls = data.strings[(tab * TAB_SIZE) + j];
+			const LangString *ls = data.strings[(tab * TAB_SIZE) + j].get();
 			const std::string *cmdp;
 
 			/* For undefined strings, just set that it's an empty string */
