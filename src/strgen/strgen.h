@@ -13,6 +13,9 @@
 #include "../language.h"
 #include "../3rdparty/fmt/format.h"
 
+#include <unordered_map>
+#include <array>
+
 /** Container for the different cases of a string. */
 struct Case {
 	int caseidx;        ///< The index of the case.
@@ -26,7 +29,6 @@ struct LangString {
 	std::string name;       ///< Name of the string.
 	std::string english;    ///< English text.
 	std::string translated; ///< Translated text.
-	size_t hash_next;       ///< Next hash entry.
 	size_t index;           ///< The index in the language file.
 	int line;               ///< Line of string in source-file.
 	std::vector<Case> translated_cases; ///< Cases of the translation.
@@ -37,18 +39,16 @@ struct LangString {
 
 /** Information about the currently known strings. */
 struct StringData {
-	LangString **strings; ///< Array of all known strings.
-	size_t *hash_heads;   ///< Hash table for the strings.
+	std::vector<std::unique_ptr<LangString>> strings; ///< List of all known strings.
+	std::unordered_map<std::string_view, LangString *> name_to_string; ///< Lookup table for the strings.
 	size_t tabs;          ///< The number of 'tabs' of strings.
 	size_t max_strings;   ///< The maximum number of strings.
 	size_t next_string_id;///< The next string ID to allocate.
 
 	StringData(size_t tabs);
-	~StringData();
 	void FreeTranslation();
-	uint HashStr(const char *s) const;
-	void Add(const char *s, LangString *ls);
-	LangString *Find(const char *s);
+	void Add(std::unique_ptr<LangString> ls);
+	LangString *Find(const std::string_view s);
 	uint VersionHashStr(uint hash, const char *s) const;
 	uint Version() const;
 	uint CountInUse(uint tab) const;
@@ -57,12 +57,12 @@ struct StringData {
 /** Helper for reading strings. */
 struct StringReader {
 	StringData &data; ///< The data to fill during reading.
-	const char *file; ///< The file we are reading.
+	const std::string file; ///< The file we are reading.
 	bool master;      ///< Are we reading the master file?
 	bool translation; ///< Are we reading a translation, implies !master. However, the base translation will have this false.
 
-	StringReader(StringData &data, const char *file, bool master, bool translation);
-	virtual ~StringReader();
+	StringReader(StringData &data, const std::string &file, bool master, bool translation);
+	virtual ~StringReader() {}
 	void HandleString(char *str);
 
 	/**
