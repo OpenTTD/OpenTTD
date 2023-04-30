@@ -26,7 +26,7 @@
 struct SetDateWindow : Window {
 	SetDateCallback *callback; ///< Callback to call when a date has been selected
 	void *callback_data;       ///< Callback data pointer.
-	YearMonthDay date; ///< The currently selected date
+	TimerGameCalendar::YearMonthDay date; ///< The currently selected date
 	TimerGameCalendar::Year min_year; ///< The minimum year in the year dropdown
 	TimerGameCalendar::Year max_year; ///< The maximum year (inclusive) in the year dropdown
 

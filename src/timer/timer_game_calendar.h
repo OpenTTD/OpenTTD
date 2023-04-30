@@ -81,6 +81,16 @@ public:
 	using Month = uint8; ///< Type for the month, note: 0 based, i.e. 0 = January, 11 = December.
 	using Day = uint8; ///< Type for the day of the month, note: 1 based, first day of a month is 1.
 
+	/**
+	 * Data structure to convert between Date and triplet (year, month, and day).
+	 * @see TimerGameCalendar::ConvertDateToYMD(), TimerGameCalendar::ConvertYMDToDate()
+	 */
+	struct YearMonthDay {
+		Year  year;   ///< Year (0...)
+		Month month;  ///< Month (0..11)
+		Day   day;    ///< Day (1..31)
+	};
+
 	static bool IsLeapYear(TimerGameCalendar::Year yr);
 	static void ConvertDateToYMD(TimerGameCalendar::Date date, YearMonthDay *ymd);
 	static TimerGameCalendar::Date ConvertYMDToDate(TimerGameCalendar::Year year, TimerGameCalendar::Month month, TimerGameCalendar::Day day);

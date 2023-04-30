@@ -108,7 +108,7 @@ static int32 ClickChangeDateCheat(int32 new_value, int32 change_direction)
 	new_value = Clamp(new_value, MIN_YEAR, MAX_YEAR);
 	if (new_value == TimerGameCalendar::year) return TimerGameCalendar::year;
 
-	YearMonthDay ymd;
+	TimerGameCalendar::YearMonthDay ymd;
 	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(new_value, ymd.month, ymd.day);
 

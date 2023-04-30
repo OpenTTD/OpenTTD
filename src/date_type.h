@@ -95,16 +95,6 @@ static const TimerGameCalendar::Year MAX_YEAR  = 5000000;
 /** The number of days till the last day */
 #define MAX_DAY (DAYS_TILL(MAX_YEAR + 1) - 1)
 
-/**
- * Data structure to convert between Date and triplet (year, month, and day).
- * @see TimerGameCalendar::ConvertDateToYMD(), TimerGameCalendar::ConvertYMDToDate()
- */
-struct YearMonthDay {
-	TimerGameCalendar::Year  year;   ///< Year (0...)
-	TimerGameCalendar::Month month;  ///< Month (0..11)
-	TimerGameCalendar::Day   day;    ///< Day (1..31)
-};
-
 static const TimerGameCalendar::Year INVALID_YEAR = -1; ///< Representation of an invalid year
 static const TimerGameCalendar::Date INVALID_DATE = -1; ///< Representation of an invalid date
 static const Ticks INVALID_TICKS = -1; ///< Representation of an invalid number of ticks

@@ -663,7 +663,7 @@ void SetYearEngineAgingStops()
 		if (e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON) continue;
 
 		/* Base year ending date on half the model life */
-		YearMonthDay ymd;
+		TimerGameCalendar::YearMonthDay ymd;
 		TimerGameCalendar::ConvertDateToYMD(ei->base_intro + (ei->lifelength * DAYS_IN_LEAP_YEAR) / 2, &ymd);
 
 		_year_engine_aging_stops = std::max(_year_engine_aging_stops, ymd.year);

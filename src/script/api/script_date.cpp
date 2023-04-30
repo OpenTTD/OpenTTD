@@ -30,7 +30,7 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
+	::TimerGameCalendar::YearMonthDay ymd;
 	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 	return ymd.year;
 }
@@ -39,7 +39,7 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
+	::TimerGameCalendar::YearMonthDay ymd;
 	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 	return ymd.month + 1;
 }
@@ -48,7 +48,7 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
+	::TimerGameCalendar::YearMonthDay ymd;
 	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 	return ymd.day;
 }

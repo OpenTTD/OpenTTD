@@ -196,7 +196,7 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 	/* increase day counter */
 	TimerGameCalendar::date++;
 
-	YearMonthDay ymd;
+	TimerGameCalendar::YearMonthDay ymd;
 	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 
 	/* check if we entered a new month? */
