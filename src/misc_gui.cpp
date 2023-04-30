@@ -793,7 +793,7 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
 
 	bool rtl = _current_text_dir == TD_RTL;
-	Dimension sprite_size = GetSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+	Dimension sprite_size = GetScaledSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
 	int clearbtn_width = sprite_size.width + WidgetDimensions::scaled.imgbtn.Horizontal();
 
 	Rect r = wi->GetCurrentRect();
@@ -801,7 +801,7 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	Rect fr = r.Indent(clearbtn_width, !rtl);
 
 	DrawFrameRect(cr, wi->colour, wi->IsLowered() ? FR_LOWERED : FR_NONE);
-	DrawSprite(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT, PAL_NONE, cr.left + WidgetDimensions::scaled.imgbtn.left + (wi->IsLowered() ? 1 : 0), CenterBounds(r.top, r.bottom, sprite_size.height) + (wi->IsLowered() ? 1 : 0));
+	DrawSpriteIgnorePadding(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT, PAL_NONE, cr, wi->IsLowered(), SA_CENTER);
 	if (this->text.bytes == 1) GfxFillRect(cr.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[wi->colour & 0xF][2], FILLRECT_CHECKER);
 
 	DrawFrameRect(fr, wi->colour, FR_LOWERED | FR_DARKENED);
@@ -845,7 +845,7 @@ Point QueryString::GetCaretPosition(const Window *w, int wid) const
 	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
 
 	bool rtl = _current_text_dir == TD_RTL;
-	Dimension sprite_size = GetSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+	Dimension sprite_size = GetScaledSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
 	int clearbtn_width = sprite_size.width + WidgetDimensions::scaled.imgbtn.Horizontal();
 
 	Rect r = wi->GetCurrentRect().Indent(clearbtn_width, !rtl).Shrink(WidgetDimensions::scaled.framerect);
@@ -874,7 +874,7 @@ Rect QueryString::GetBoundingRect(const Window *w, int wid, const char *from, co
 	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
 
 	bool rtl = _current_text_dir == TD_RTL;
-	Dimension sprite_size = GetSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+	Dimension sprite_size = GetScaledSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
 	int clearbtn_width = sprite_size.width + WidgetDimensions::scaled.imgbtn.Horizontal();
 
 	Rect r = wi->GetCurrentRect().Indent(clearbtn_width, !rtl).Shrink(WidgetDimensions::scaled.framerect);
@@ -905,7 +905,7 @@ const char *QueryString::GetCharAtPosition(const Window *w, int wid, const Point
 	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
 
 	bool rtl = _current_text_dir == TD_RTL;
-	Dimension sprite_size = GetSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+	Dimension sprite_size = GetScaledSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
 	int clearbtn_width = sprite_size.width + WidgetDimensions::scaled.imgbtn.Horizontal();
 
 	Rect r = wi->GetCurrentRect().Indent(clearbtn_width, !rtl).Shrink(WidgetDimensions::scaled.framerect);
@@ -927,7 +927,7 @@ void QueryString::ClickEditBox(Window *w, Point pt, int wid, int click_count, bo
 	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
 
 	bool rtl = _current_text_dir == TD_RTL;
-	Dimension sprite_size = GetSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+	Dimension sprite_size = GetScaledSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
 	int clearbtn_width = sprite_size.width + WidgetDimensions::scaled.imgbtn.Horizontal();
 
 	Rect cr = wi->GetCurrentRect().WithWidth(clearbtn_width, !rtl);
