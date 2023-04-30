@@ -23,7 +23,6 @@
 #include "strings_func.h"
 #include "rev.h"
 #include "core/endian_func.hpp"
-#include "date_func.h"
 #include "timer/timer_game_calendar.h"
 #include "vehicle_base.h"
 #include "engine_base.h"

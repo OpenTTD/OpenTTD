@@ -10,7 +10,6 @@
 #ifndef SETTINGS_TYPE_H
 #define SETTINGS_TYPE_H
 
-#include "date_type.h"
 #include "timer/timer_game_calendar.h"
 #include "economy_type.h"
 #include "town_type.h"

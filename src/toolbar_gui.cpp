@@ -17,8 +17,6 @@
 #include "rail_gui.h"
 #include "road.h"
 #include "road_gui.h"
-#include "date_func.h"
-#include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "terraform_gui.h"
@@ -56,6 +54,7 @@
 #include "league_base.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "timer/timer_game_calendar.h"
 
 #include "widgets/toolbar_widget.h"
 

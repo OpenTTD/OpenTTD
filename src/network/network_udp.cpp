@@ -13,7 +13,7 @@
  */
 
 #include "../stdafx.h"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "../map_func.h"
 #include "../debug.h"
 #include "core/game_info.h"

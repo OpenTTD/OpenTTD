@@ -12,8 +12,6 @@
 #include "viewport_func.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "date_func.h"
-#include "timer/timer_game_calendar.h"
 #include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "vehicle_gui.h"
@@ -38,6 +36,7 @@
 #include "news_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "timer/timer_game_calendar.h"
 
 #include "widgets/news_widget.h"
 

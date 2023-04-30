@@ -23,7 +23,7 @@
 #include "querystring_gui.h"
 #include "engine_func.h"
 #include "landscape_type.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "core/geometry_func.hpp"
 #include "gamelog.h"
 #include "stringfilter_type.h"

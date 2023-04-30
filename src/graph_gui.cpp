@@ -17,12 +17,12 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "date_type.h"
-#include "timer/timer_game_calendar.h"
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
 #include "currency.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "timer/timer_game_calendar.h"
 #include "zoom_func.h"
 
 #include "widgets/graph_widget.h"

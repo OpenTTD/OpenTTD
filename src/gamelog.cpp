@@ -14,7 +14,7 @@
 #include "gamelog_internal.h"
 #include "console_func.h"
 #include "debug.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "timer/timer_game_tick.h"
 #include "rev.h"
 

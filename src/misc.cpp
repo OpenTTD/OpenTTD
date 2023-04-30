@@ -15,7 +15,7 @@
 #include "newgrf.h"
 #include "newgrf_house.h"
 #include "economy_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "timer/timer_game_tick.h"
 #include "texteff.hpp"
 #include "gfx_func.h"

@@ -37,7 +37,6 @@
 #include "rev.h"
 #include "fios.h"
 #include "strings_func.h"
-#include "date_func.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 #include "string_func.h"

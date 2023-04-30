@@ -20,7 +20,7 @@
 #include "../subsidy_base.h"
 #include "../debug.h"
 #include "../depot_base.h"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "../timer/timer_game_calendar.h"
 #include "../vehicle_func.h"
 #include "../effectvehicle_base.h"

@@ -9,7 +9,6 @@
 
 #include "../../stdafx.h"
 #include "script_date.hpp"
-#include "../../date_func.h"
 #include "../../timer/timer_game_calendar.h"
 
 #include <time.h>

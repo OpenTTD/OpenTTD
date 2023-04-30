@@ -12,7 +12,6 @@
 #include "cheat_type.h"
 #include "company_base.h"
 #include "company_func.h"
-#include "date_func.h"
 #include "saveload/saveload.h"
 #include "vehicle_base.h"
 #include "textbuf_gui.h"

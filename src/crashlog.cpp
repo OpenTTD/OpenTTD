@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "crashlog.h"
 #include "gamelog.h"
-#include "date_func.h"
 #include "timer/timer_game_calendar.h"
 #include "map_func.h"
 #include "rev.h"

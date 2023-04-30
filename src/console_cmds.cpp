@@ -29,7 +29,6 @@
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_func.h"
-#include "date_func.h"
 #include "timer/timer_game_calendar.h"
 #include "company_func.h"
 #include "gamelog.h"

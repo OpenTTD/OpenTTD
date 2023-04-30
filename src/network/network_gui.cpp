@@ -9,7 +9,6 @@
 
 #include "../stdafx.h"
 #include "../strings_func.h"
-#include "../date_func.h"
 #include "../fios.h"
 #include "network_client.h"
 #include "network_gui.h"
@@ -38,6 +37,7 @@
 #include "../company_cmd.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
+#include "../timer/timer_game_calendar.h"
 
 #include "../widgets/network_widget.h"
 

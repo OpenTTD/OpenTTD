@@ -13,7 +13,6 @@
 #include "game_info.h"
 #include "../../core/bitmath_func.hpp"
 #include "../../company_base.h"
-#include "../../date_func.h"
 #include "../../timer/timer_game_calendar.h"
 #include "../../debug.h"
 #include "../../map_func.h"

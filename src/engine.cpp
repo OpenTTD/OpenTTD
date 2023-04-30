@@ -17,7 +17,6 @@
 #include "strings_func.h"
 #include "core/random_func.hpp"
 #include "window_func.h"
-#include "date_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
 #include "ai/ai.hpp"
