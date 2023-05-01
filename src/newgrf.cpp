@@ -2096,6 +2096,8 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				statspec->animation.triggers = buf->ReadWord();
 				break;
 
+			/* 0x19 road routing (not implemented) */
+
 			case 0x1A: { // Advanced sprite layout
 				uint16 tiles = buf->ReadExtendedByte();
 				statspec->renderdata.clear(); // delete earlier loaded stuff
@@ -2115,6 +2117,13 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				}
 				break;
 			}
+
+			case 0x1B: // Minimum bridge height (not implemented)
+				buf->ReadWord();
+				buf->ReadWord();
+				buf->ReadWord();
+				buf->ReadWord();
+				break;
 
 			default:
 				ret = CIR_UNKNOWN;
