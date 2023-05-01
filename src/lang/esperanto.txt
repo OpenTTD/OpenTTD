@@ -872,6 +872,10 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gluu la 
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludaj Opcioj
+
+
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Monunuoj
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elekto de monunuoj
 

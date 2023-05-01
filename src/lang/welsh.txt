@@ -887,6 +887,10 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gludo ll
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Dewisiadau Gêm
+
+
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Uned Arian
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Dewis unedau arian
 

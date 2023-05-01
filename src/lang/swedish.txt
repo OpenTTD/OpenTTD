@@ -929,6 +929,10 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopiera 
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelinställningar
+
+
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenheter
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj valutaenhet
 

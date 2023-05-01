@@ -931,6 +931,10 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copier l
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Options du jeu
+
+
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Devise
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Sélectionner l'unité monétaire
 

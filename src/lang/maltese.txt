@@ -404,6 +404,10 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 
 # Game options window
 
+
+
+
+
 ###length 42
 
 

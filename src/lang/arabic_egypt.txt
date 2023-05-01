@@ -895,6 +895,10 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}لصق �
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}إعدادات اللعبه
+
+
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}وحدة العملة
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}اختيار وحدة العملة
 

@@ -270,6 +270,10 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 # Game options window
 
+
+
+
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिनलैंड मार्का (FIM)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :आइसलैंडिक क्रोना (ISK)

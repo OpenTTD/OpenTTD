@@ -918,6 +918,10 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gramaigh
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Roghanna Cluiche
+
+
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Aonaid airgeadra
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Aonaid airgeadra a roghnú
 

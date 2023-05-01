@@ -790,6 +790,10 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опции на Играта
 
+
+
+
+
 ###length 42
 
 
