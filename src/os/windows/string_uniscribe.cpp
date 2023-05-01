@@ -348,6 +348,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 
 	/* If the text does not fit into the available width, find a suitable breaking point. */
 	int remaining_offset = (last_run - 1)->len;
+	int whitespace_count = 0;
 	if (cur_width > max_width) {
 		std::vector<SCRIPT_LOGATTR> log_attribs;
 
@@ -380,10 +381,10 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 			num_chars = last_cluster;
 		}
 
-		/* Include whitespace characters after the breaking point. */
-		while (num_chars < (int)log_attribs.size() && log_attribs[num_chars].fWhiteSpace) {
-			num_chars++;
-		}
+		/* Eat any whitespace characters before the breaking point. */
+		while (num_chars - 1 > this->cur_range_offset && log_attribs[num_chars - 1].fWhiteSpace) num_chars--;
+		/* Count whitespace after the breaking point. */
+		while (num_chars + whitespace_count < (int)log_attribs.size() && log_attribs[num_chars + whitespace_count].fWhiteSpace) whitespace_count++;
 
 		/* Get last run that corresponds to the number of characters to show. */
 		for (std::vector<UniscribeRun>::iterator run = start_run; run != last_run; run++) {
@@ -432,9 +433,9 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		cur_pos += run.total_advance;
 	}
 
-	if (remaining_offset < (last_run - 1)->len) {
+	if (remaining_offset + whitespace_count < (last_run - 1)->len) {
 		/* We didn't use up all of the last run, store remainder for the next line. */
-		this->cur_range_offset = remaining_offset - 1;
+		this->cur_range_offset = remaining_offset + whitespace_count - 1;
 		this->cur_range = last_run - 1;
 		assert(this->cur_range->len > this->cur_range_offset);
 	} else {
