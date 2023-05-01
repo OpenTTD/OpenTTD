@@ -12,24 +12,6 @@
 
 #include "gamelog.h"
 
-/** Type of logged change */
-enum GamelogChangeType : uint8 {
-	GLCT_MODE,        ///< Scenario editor x Game, different landscape
-	GLCT_REVISION,    ///< Changed game revision string
-	GLCT_OLDVER,      ///< Loaded from savegame without logged data
-	GLCT_SETTING,     ///< Non-networksafe setting value changed
-	GLCT_GRFADD,      ///< Removed GRF
-	GLCT_GRFREM,      ///< Added GRF
-	GLCT_GRFCOMPAT,   ///< Loading compatible GRF
-	GLCT_GRFPARAM,    ///< GRF parameter changed
-	GLCT_GRFMOVE,     ///< GRF order changed
-	GLCT_GRFBUG,      ///< GRF bug triggered
-	GLCT_EMERGENCY,   ///< Emergency savegame
-	GLCT_END,         ///< So we know how many GLCTs are there
-	GLCT_NONE = 0xFF, ///< In savegames, end of list
-};
-
-
 static const uint GAMELOG_REVISION_LENGTH = 15;
 
 /** Contains information about one logged change */
@@ -73,18 +55,20 @@ struct LoggedChange {
 			byte bug;        ///< type of bug, @see enum GRFBugs
 		} grfbug;
 	};
+
+	~LoggedChange();
 };
 
 
 /** Contains information about one logged action that caused at least one logged change */
 struct LoggedAction {
-	LoggedChange *change; ///< First logged change in this action
-	uint32 changes;       ///< Number of changes in this action
+	std::vector<LoggedChange> change; ///< First logged change in this action
 	GamelogActionType at; ///< Type of action
 	uint64 tick;          ///< Tick when it happened
 };
 
-extern LoggedAction *_gamelog_action;
-extern uint _gamelog_actions;
+struct GamelogInternalData {
+	std::vector<LoggedAction> action;
+};
 
 #endif /* GAMELOG_INTERNAL_H */

@@ -227,7 +227,7 @@ void CDECL HandleCrash(int signum)
 		signal(*i, SIG_DFL);
 	}
 
-	if (GamelogTestEmergency()) {
+	if (_gamelog.TestEmergency()) {
 		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.",
 				"As you loaded an emergency savegame no crash information will be generated.\n",
 				"Quit");
