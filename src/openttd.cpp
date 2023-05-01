@@ -241,7 +241,7 @@ static void WriteSavegameInfo(const char *name)
 	byte ever_modified = 0;
 	bool removed_newgrfs = false;
 
-	GamelogInfo(_load_check_data.gamelog_action, _load_check_data.gamelog_actions, &last_ottd_rev, &ever_modified, &removed_newgrfs);
+	_gamelog.Info(&last_ottd_rev, &ever_modified, &removed_newgrfs);
 
 	std::string message;
 	message.reserve(1024);
@@ -311,7 +311,7 @@ static void ShutdownGame()
 	Game::Uninitialize(false);
 
 	/* Uninitialize variables that are allocated dynamically */
-	GamelogReset();
+	_gamelog.Reset();
 
 	LinkGraphSchedule::Clear();
 	PoolBase::Clean(PT_ALL);

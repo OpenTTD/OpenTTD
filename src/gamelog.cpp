@@ -30,13 +30,23 @@ extern uint32 _ttdp_version;        ///< version of TTDP savegame (if applicable
 extern SaveLoadVersion _sl_version; ///< the major savegame version identifier
 extern byte   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
 
+Gamelog _gamelog; ///< Gamelog instance
 
-static GamelogActionType _gamelog_action_type = GLAT_NONE; ///< action to record if anything changes
+LoggedChange::~LoggedChange()
+{
+	if (this->ct == GLCT_SETTING) free(this->setting.name);
+}
 
-LoggedAction *_gamelog_action = nullptr;        ///< first logged action
-uint _gamelog_actions         = 0;           ///< number of actions
-static LoggedAction *_current_action = nullptr; ///< current action we are logging, nullptr when there is no action active
+Gamelog::Gamelog()
+{
+	this->data = std::make_unique<GamelogInternalData>();
+	this->action_type = GLAT_NONE;
+	this->current_action = nullptr;
+}
 
+Gamelog::~Gamelog()
+{
+}
 
 /**
  * Return the revision string for the current client version, for use in gamelog.
@@ -67,60 +77,40 @@ static const char * GetGamelogRevisionString()
  * Action is allocated only when there is at least one change
  * @param at type of action
  */
-void GamelogStartAction(GamelogActionType at)
+void Gamelog::StartAction(GamelogActionType at)
 {
-	assert(_gamelog_action_type == GLAT_NONE); // do not allow starting new action without stopping the previous first
-	_gamelog_action_type = at;
+	assert(this->action_type == GLAT_NONE); // do not allow starting new action without stopping the previous first
+	this->action_type = at;
 }
 
 /**
  * Stops logging of any changes
  */
-void GamelogStopAction()
+void Gamelog::StopAction()
 {
-	assert(_gamelog_action_type != GLAT_NONE); // nobody should try to stop if there is no action in progress
+	assert(this->action_type != GLAT_NONE); // nobody should try to stop if there is no action in progress
 
-	bool print = _current_action != nullptr;
+	bool print = this->current_action != nullptr;
 
-	_current_action = nullptr;
-	_gamelog_action_type = GLAT_NONE;
+	this->current_action = nullptr;
+	this->action_type = GLAT_NONE;
 
-	if (print) GamelogPrintDebug(5);
+	if (print) this->PrintDebug(5);
 }
 
-void GamelogStopAnyAction()
+void Gamelog::StopAnyAction()
 {
-	if (_gamelog_action_type != GLAT_NONE) GamelogStopAction();
-}
-
-/**
- * Frees the memory allocated by a gamelog
- */
-void GamelogFree(LoggedAction *gamelog_action, uint gamelog_actions)
-{
-	for (uint i = 0; i < gamelog_actions; i++) {
-		const LoggedAction *la = &gamelog_action[i];
-		for (uint j = 0; j < la->changes; j++) {
-			const LoggedChange *lc = &la->change[j];
-			if (lc->ct == GLCT_SETTING) free(lc->setting.name);
-		}
-		free(la->change);
-	}
-
-	free(gamelog_action);
+	if (this->action_type != GLAT_NONE) this->StopAction();
 }
 
 /**
  * Resets and frees all memory allocated - used before loading or starting a new game
  */
-void GamelogReset()
+void Gamelog::Reset()
 {
-	assert(_gamelog_action_type == GLAT_NONE);
-	GamelogFree(_gamelog_action, _gamelog_actions);
-
-	_gamelog_action  = nullptr;
-	_gamelog_actions = 0;
-	_current_action  = nullptr;
+	assert(this->action_type == GLAT_NONE);
+	this->data->action.clear();
+	this->current_action  = nullptr;
 }
 
 /**
@@ -190,56 +180,52 @@ typedef SmallMap<uint32, GRFPresence> GrfIDMapping;
  * Prints active gamelog
  * @param proc the procedure to draw with
  */
-void GamelogPrint(std::function<void(const char*)> proc)
+void Gamelog::Print(std::function<void(const char*)> proc)
 {
 	char buffer[1024];
 	GrfIDMapping grf_names;
 
 	proc("---- gamelog start ----");
 
-	const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
+	for (const LoggedAction &la : this->data->action) {
+		assert((uint)la.at < GLAT_END);
 
-	for (const LoggedAction *la = _gamelog_action; la != laend; la++) {
-		assert((uint)la->at < GLAT_END);
-
-		seprintf(buffer, lastof(buffer), "Tick %u: %s", (uint)la->tick, la_text[(uint)la->at]);
+		seprintf(buffer, lastof(buffer), "Tick %u: %s", (uint)la.tick, la_text[(uint)la.at]);
 		proc(buffer);
 
-		const LoggedChange *lcend = &la->change[la->changes];
-
-		for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
+		for (const LoggedChange &lc : la.change) {
 			char *buf = buffer;
 
-			switch (lc->ct) {
+			switch (lc.ct) {
 				default: NOT_REACHED();
 				case GLCT_MODE:
 					/* Changing landscape, or going from scenario editor to game or back. */
 					buf += seprintf(buf, lastof(buffer), "New game mode: %u landscape: %u",
-						(uint)lc->mode.mode, (uint)lc->mode.landscape);
+						(uint)lc.mode.mode, (uint)lc.mode.landscape);
 					break;
 
 				case GLCT_REVISION:
 					/* The game was loaded in a diffferent version than before. */
 					buf += seprintf(buf, lastof(buffer), "Revision text changed to %s, savegame version %u, ",
-						lc->revision.text, lc->revision.slver);
+						lc.revision.text, lc.revision.slver);
 
-					switch (lc->revision.modified) {
+					switch (lc.revision.modified) {
 						case 0: buf += seprintf(buf, lastof(buffer), "not "); break;
 						case 1: buf += seprintf(buf, lastof(buffer), "maybe "); break;
 						default: break;
 					}
 
-					buf += seprintf(buf, lastof(buffer), "modified, _openttd_newgrf_version = 0x%08x", lc->revision.newgrf);
+					buf += seprintf(buf, lastof(buffer), "modified, _openttd_newgrf_version = 0x%08x", lc.revision.newgrf);
 					break;
 
 				case GLCT_OLDVER:
 					/* The game was loaded from before 0.7.0-beta1. */
 					buf += seprintf(buf, lastof(buffer), "Conversion from ");
-					switch (lc->oldver.type) {
+					switch (lc.oldver.type) {
 						default: NOT_REACHED();
 						case SGT_OTTD:
 							buf += seprintf(buf, lastof(buffer), "OTTD savegame without gamelog: version %u, %u",
-								GB(lc->oldver.version, 8, 16), GB(lc->oldver.version, 0, 8));
+								GB(lc.oldver.version, 8, 16), GB(lc.oldver.version, 0, 8));
 							break;
 
 						case SGT_TTO:
@@ -253,11 +239,11 @@ void GamelogPrint(std::function<void(const char*)> proc)
 						case SGT_TTDP1:
 						case SGT_TTDP2:
 							buf += seprintf(buf, lastof(buffer), "TTDP savegame, %s format",
-								lc->oldver.type == SGT_TTDP1 ? "old" : "new");
-							if (lc->oldver.version != 0) {
+								lc.oldver.type == SGT_TTDP1 ? "old" : "new");
+							if (lc.oldver.version != 0) {
 								buf += seprintf(buf, lastof(buffer), ", TTDP version %u.%u.%u.%u",
-									GB(lc->oldver.version, 24, 8), GB(lc->oldver.version, 20, 4),
-									GB(lc->oldver.version, 16, 4), GB(lc->oldver.version, 0, 16));
+									GB(lc.oldver.version, 24, 8), GB(lc.oldver.version, 20, 4),
+									GB(lc.oldver.version, 16, 4), GB(lc.oldver.version, 0, 16));
 							}
 							break;
 					}
@@ -265,29 +251,29 @@ void GamelogPrint(std::function<void(const char*)> proc)
 
 				case GLCT_SETTING:
 					/* A setting with the SF_NO_NETWORK flag got changed; these settings usually affect NewGRFs, such as road side or wagon speed limits. */
-					buf += seprintf(buf, lastof(buffer), "Setting changed: %s : %d -> %d", lc->setting.name, lc->setting.oldval, lc->setting.newval);
+					buf += seprintf(buf, lastof(buffer), "Setting changed: %s : %d -> %d", lc.setting.name, lc.setting.oldval, lc.setting.newval);
 					break;
 
 				case GLCT_GRFADD: {
 					/* A NewGRF got added to the game, either at the start of the game (never an issue), or later on when it could be an issue. */
-					const GRFConfig *gc = FindGRFConfig(lc->grfadd.grfid, FGCM_EXACT, lc->grfadd.md5sum);
+					const GRFConfig *gc = FindGRFConfig(lc.grfadd.grfid, FGCM_EXACT, lc.grfadd.md5sum);
 					buf += seprintf(buf, lastof(buffer), "Added NewGRF: ");
-					buf = PrintGrfInfo(buf, lastof(buffer), lc->grfadd.grfid, lc->grfadd.md5sum, gc);
-					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
+					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfadd.grfid, lc.grfadd.md5sum, gc);
+					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
 					if (gm != grf_names.End() && !gm->second.was_missing) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was already added!");
-					grf_names[lc->grfadd.grfid] = gc;
+					grf_names[lc.grfadd.grfid] = gc;
 					break;
 				}
 
 				case GLCT_GRFREM: {
 					/* A NewGRF got removed from the game, either manually or by it missing when loading the game. */
-					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
-					buf += seprintf(buf, lastof(buffer), la->at == GLAT_LOAD ? "Missing NewGRF: " : "Removed NewGRF: ");
-					buf = PrintGrfInfo(buf, lastof(buffer), lc->grfrem.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
+					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
+					buf += seprintf(buf, lastof(buffer), la.at == GLAT_LOAD ? "Missing NewGRF: " : "Removed NewGRF: ");
+					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfrem.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
 					if (gm == grf_names.End()) {
 						buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
 					} else {
-						if (la->at == GLAT_LOAD) {
+						if (la.at == GLAT_LOAD) {
 							/* Missing grfs on load are not removed from the configuration */
 							gm->second.was_missing = true;
 						} else {
@@ -299,40 +285,40 @@ void GamelogPrint(std::function<void(const char*)> proc)
 
 				case GLCT_GRFCOMPAT: {
 					/* Another version of the same NewGRF got loaded. */
-					const GRFConfig *gc = FindGRFConfig(lc->grfadd.grfid, FGCM_EXACT, lc->grfadd.md5sum);
+					const GRFConfig *gc = FindGRFConfig(lc.grfadd.grfid, FGCM_EXACT, lc.grfadd.md5sum);
 					buf += seprintf(buf, lastof(buffer), "Compatible NewGRF loaded: ");
-					buf = PrintGrfInfo(buf, lastof(buffer), lc->grfcompat.grfid, lc->grfcompat.md5sum, gc);
-					if (!grf_names.Contains(lc->grfcompat.grfid)) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
-					grf_names[lc->grfcompat.grfid] = gc;
+					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfcompat.grfid, lc.grfcompat.md5sum, gc);
+					if (!grf_names.Contains(lc.grfcompat.grfid)) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
+					grf_names[lc.grfcompat.grfid] = gc;
 					break;
 				}
 
 				case GLCT_GRFPARAM: {
 					/* A parameter of a NewGRF got changed after the game was started. */
-					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
+					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
 					buf += seprintf(buf, lastof(buffer), "GRF parameter changed: ");
-					buf = PrintGrfInfo(buf, lastof(buffer), lc->grfparam.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
+					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfparam.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
 					if (gm == grf_names.End()) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
 					break;
 				}
 
 				case GLCT_GRFMOVE: {
 					/* The order of NewGRFs got changed, which might cause some other NewGRFs to behave differently. */
-					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
+					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
 					buf += seprintf(buf, lastof(buffer), "GRF order changed: %08X moved %d places %s",
-						BSWAP32(lc->grfmove.grfid), abs(lc->grfmove.offset), lc->grfmove.offset >= 0 ? "down" : "up" );
-					buf = PrintGrfInfo(buf, lastof(buffer), lc->grfmove.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
+						BSWAP32(lc.grfmove.grfid), abs(lc.grfmove.offset), lc.grfmove.offset >= 0 ? "down" : "up" );
+					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfmove.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
 					if (gm == grf_names.End()) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
 					break;
 				}
 
 				case GLCT_GRFBUG: {
 					/* A specific bug in a NewGRF, that could cause wide spread problems, has been noted during the execution of the game. */
-					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
-					assert (lc->grfbug.bug == GBUG_VEH_LENGTH);
+					GrfIDMapping::Pair *gm = grf_names.Find(lc.grfrem.grfid);
+					assert(lc.grfbug.bug == GBUG_VEH_LENGTH);
 
-					buf += seprintf(buf, lastof(buffer), "Rail vehicle changes length outside a depot: GRF ID %08X, internal ID 0x%X", BSWAP32(lc->grfbug.grfid), (uint)lc->grfbug.data);
-					buf = PrintGrfInfo(buf, lastof(buffer), lc->grfbug.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
+					buf += seprintf(buf, lastof(buffer), "Rail vehicle changes length outside a depot: GRF ID %08X, internal ID 0x%X", BSWAP32(lc.grfbug.grfid), (uint)lc.grfbug.data);
+					buf = PrintGrfInfo(buf, lastof(buffer), lc.grfbug.grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
 					if (gm == grf_names.End()) buf += seprintf(buf, lastof(buffer), ". Gamelog inconsistency: GrfID was never added!");
 					break;
 				}
@@ -352,9 +338,9 @@ void GamelogPrint(std::function<void(const char*)> proc)
 
 
 /** Print the gamelog data to the console. */
-void GamelogPrintConsole()
+void Gamelog::PrintConsole()
 {
-	GamelogPrint([](const char *s) {
+	this->Print([](const char *s) {
 		IConsolePrint(CC_WARNING, s);
 	});
 }
@@ -365,9 +351,9 @@ void GamelogPrintConsole()
  * doesn't matter that much. At least it gives more uniform code...
  * @param level debug level we need to print stuff
  */
-void GamelogPrintDebug(int level)
+void Gamelog::PrintDebug(int level)
 {
-	GamelogPrint([level](const char *s) {
+	this->Print([level](const char *s) {
 		Debug(gamelog, level, "{}", s);
 	});
 }
@@ -379,23 +365,17 @@ void GamelogPrintDebug(int level)
  * @param ct type of change
  * @return new LoggedChange, or nullptr if there is no action active
  */
-static LoggedChange *GamelogChange(GamelogChangeType ct)
+LoggedChange *Gamelog::Change(GamelogChangeType ct)
 {
-	if (_current_action == nullptr) {
-		if (_gamelog_action_type == GLAT_NONE) return nullptr;
+	if (this->current_action == nullptr) {
+		if (this->action_type == GLAT_NONE) return nullptr;
 
-		_gamelog_action  = ReallocT(_gamelog_action, _gamelog_actions + 1);
-		_current_action  = &_gamelog_action[_gamelog_actions++];
-
-		_current_action->at      = _gamelog_action_type;
-		_current_action->tick    = TimerGameTick::counter;
-		_current_action->change  = nullptr;
-		_current_action->changes = 0;
+		this->current_action = &this->data->action.emplace_back();
+		this->current_action->at = this->action_type;
+		this->current_action->tick = TimerGameTick::counter;
 	}
 
-	_current_action->change = ReallocT(_current_action->change, _current_action->changes + 1);
-
-	LoggedChange *lc = &_current_action->change[_current_action->changes++];
+	LoggedChange *lc = &this->current_action->change.emplace_back();
 	lc->ct = ct;
 
 	return lc;
@@ -405,41 +385,37 @@ static LoggedChange *GamelogChange(GamelogChangeType ct)
 /**
  * Logs a emergency savegame
  */
-void GamelogEmergency()
+void Gamelog::Emergency()
 {
 	/* Terminate any active action */
-	if (_gamelog_action_type != GLAT_NONE) GamelogStopAction();
-	GamelogStartAction(GLAT_EMERGENCY);
-	GamelogChange(GLCT_EMERGENCY);
-	GamelogStopAction();
+	if (this->action_type != GLAT_NONE) this->StopAction();
+	this->StartAction(GLAT_EMERGENCY);
+	this->Change(GLCT_EMERGENCY);
+	this->StopAction();
 }
 
 /**
  * Finds out if current game is a loaded emergency savegame.
  */
-bool GamelogTestEmergency()
+bool Gamelog::TestEmergency()
 {
-	const LoggedChange *emergency = nullptr;
-
-	const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
-	for (const LoggedAction *la = _gamelog_action; la != laend; la++) {
-		const LoggedChange *lcend = &la->change[la->changes];
-		for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
-			if (lc->ct == GLCT_EMERGENCY) emergency = lc;
+	for (const LoggedAction &la : this->data->action) {
+		for (const LoggedChange &lc : la.change) {
+			if (lc.ct == GLCT_EMERGENCY) return true;
 		}
 	}
 
-	return (emergency != nullptr);
+	return false;
 }
 
 /**
  * Logs a change in game revision
  */
-void GamelogRevision()
+void Gamelog::Revision()
 {
-	assert(_gamelog_action_type == GLAT_START || _gamelog_action_type == GLAT_LOAD);
+	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
 
-	LoggedChange *lc = GamelogChange(GLCT_REVISION);
+	LoggedChange *lc = this->Change(GLCT_REVISION);
 	if (lc == nullptr) return;
 
 	memset(lc->revision.text, 0, sizeof(lc->revision.text));
@@ -452,11 +428,11 @@ void GamelogRevision()
 /**
  * Logs a change in game mode (scenario editor or game)
  */
-void GamelogMode()
+void Gamelog::Mode()
 {
-	assert(_gamelog_action_type == GLAT_START || _gamelog_action_type == GLAT_LOAD || _gamelog_action_type == GLAT_CHEAT);
+	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD || this->action_type == GLAT_CHEAT);
 
-	LoggedChange *lc = GamelogChange(GLCT_MODE);
+	LoggedChange *lc = this->Change(GLCT_MODE);
 	if (lc == nullptr) return;
 
 	lc->mode.mode      = _game_mode;
@@ -466,11 +442,11 @@ void GamelogMode()
 /**
  * Logs loading from savegame without gamelog
  */
-void GamelogOldver()
+void Gamelog::Oldver()
 {
-	assert(_gamelog_action_type == GLAT_LOAD);
+	assert(this->action_type == GLAT_LOAD);
 
-	LoggedChange *lc = GamelogChange(GLCT_OLDVER);
+	LoggedChange *lc = this->Change(GLCT_OLDVER);
 	if (lc == nullptr) return;
 
 	lc->oldver.type = _savegame_type;
@@ -483,11 +459,11 @@ void GamelogOldver()
  * @param oldval old setting value
  * @param newval new setting value
  */
-void GamelogSetting(const std::string &name, int32 oldval, int32 newval)
+void Gamelog::Setting(const std::string &name, int32 oldval, int32 newval)
 {
-	assert(_gamelog_action_type == GLAT_SETTING);
+	assert(this->action_type == GLAT_SETTING);
 
-	LoggedChange *lc = GamelogChange(GLCT_SETTING);
+	LoggedChange *lc = this->Change(GLCT_SETTING);
 	if (lc == nullptr) return;
 
 	lc->setting.name = stredup(name.c_str());
@@ -500,22 +476,20 @@ void GamelogSetting(const std::string &name, int32 oldval, int32 newval)
  * Finds out if current revision is different than last revision stored in the savegame.
  * Appends GLCT_REVISION when the revision string changed
  */
-void GamelogTestRevision()
+void Gamelog::TestRevision()
 {
 	const LoggedChange *rev = nullptr;
 
-	const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
-	for (const LoggedAction *la = _gamelog_action; la != laend; la++) {
-		const LoggedChange *lcend = &la->change[la->changes];
-		for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
-			if (lc->ct == GLCT_REVISION) rev = lc;
+	for (const LoggedAction &la : this->data->action) {
+		for (const LoggedChange &lc : la.change) {
+			if (lc.ct == GLCT_REVISION) rev = &lc;
 		}
 	}
 
 	if (rev == nullptr || strcmp(rev->revision.text, GetGamelogRevisionString()) != 0 ||
 			rev->revision.modified != _openttd_revision_modified ||
 			rev->revision.newgrf != _openttd_newgrf_version) {
-		GamelogRevision();
+		this->Revision();
 	}
 }
 
@@ -523,19 +497,17 @@ void GamelogTestRevision()
  * Finds last stored game mode or landscape.
  * Any change is logged
  */
-void GamelogTestMode()
+void Gamelog::TestMode()
 {
 	const LoggedChange *mode = nullptr;
 
-	const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
-	for (const LoggedAction *la = _gamelog_action; la != laend; la++) {
-		const LoggedChange *lcend = &la->change[la->changes];
-		for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
-			if (lc->ct == GLCT_MODE) mode = lc;
+	for (const LoggedAction &la : this->data->action) {
+		for (const LoggedChange &lc : la.change) {
+			if (lc.ct == GLCT_MODE) mode = &lc;
 		}
 	}
 
-	if (mode == nullptr || mode->mode.mode != _game_mode || mode->mode.landscape != _settings_game.game_creation.landscape) GamelogMode();
+	if (mode == nullptr || mode->mode.mode != _game_mode || mode->mode.landscape != _settings_game.game_creation.landscape) this->Mode();
 }
 
 
@@ -545,11 +517,11 @@ void GamelogTestMode()
  * @param bug type of bug, @see enum GRFBugs
  * @param data additional data
  */
-static void GamelogGRFBug(uint32 grfid, byte bug, uint64 data)
+void Gamelog::GRFBug(uint32 grfid, byte bug, uint64 data)
 {
-	assert(_gamelog_action_type == GLAT_GRFBUG);
+	assert(this->action_type == GLAT_GRFBUG);
 
-	LoggedChange *lc = GamelogChange(GLCT_GRFBUG);
+	LoggedChange *lc = this->Change(GLCT_GRFBUG);
 	if (lc == nullptr) return;
 
 	lc->grfbug.data  = data;
@@ -566,22 +538,20 @@ static void GamelogGRFBug(uint32 grfid, byte bug, uint64 data)
  * @param internal_id the internal ID of whatever's broken in the NewGRF
  * @return true iff a unique record was done
  */
-bool GamelogGRFBugReverse(uint32 grfid, uint16 internal_id)
+bool Gamelog::GRFBugReverse(uint32 grfid, uint16 internal_id)
 {
-	const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
-	for (const LoggedAction *la = _gamelog_action; la != laend; la++) {
-		const LoggedChange *lcend = &la->change[la->changes];
-		for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
-			if (lc->ct == GLCT_GRFBUG && lc->grfbug.grfid == grfid &&
-					lc->grfbug.bug == GBUG_VEH_LENGTH && lc->grfbug.data == internal_id) {
+	for (const LoggedAction &la : this->data->action) {
+		for (const LoggedChange &lc : la.change) {
+			if (lc.ct == GLCT_GRFBUG && lc.grfbug.grfid == grfid &&
+					lc.grfbug.bug == GBUG_VEH_LENGTH && lc.grfbug.data == internal_id) {
 				return false;
 			}
 		}
 	}
 
-	GamelogStartAction(GLAT_GRFBUG);
-	GamelogGRFBug(grfid, GBUG_VEH_LENGTH, internal_id);
-	GamelogStopAction();
+	this->StartAction(GLAT_GRFBUG);
+	this->GRFBug(grfid, GBUG_VEH_LENGTH, internal_id);
+	this->StopAction();
 
 	return true;
 }
@@ -601,11 +571,11 @@ static inline bool IsLoggableGrfConfig(const GRFConfig *g)
  * Logs removal of a GRF
  * @param grfid ID of removed GRF
  */
-void GamelogGRFRemove(uint32 grfid)
+void Gamelog::GRFRemove(uint32 grfid)
 {
-	assert(_gamelog_action_type == GLAT_LOAD || _gamelog_action_type == GLAT_GRF);
+	assert(this->action_type == GLAT_LOAD || this->action_type == GLAT_GRF);
 
-	LoggedChange *lc = GamelogChange(GLCT_GRFREM);
+	LoggedChange *lc = this->Change(GLCT_GRFREM);
 	if (lc == nullptr) return;
 
 	lc->grfrem.grfid = grfid;
@@ -615,13 +585,13 @@ void GamelogGRFRemove(uint32 grfid)
  * Logs adding of a GRF
  * @param newg added GRF
  */
-void GamelogGRFAdd(const GRFConfig *newg)
+void Gamelog::GRFAdd(const GRFConfig *newg)
 {
-	assert(_gamelog_action_type == GLAT_LOAD || _gamelog_action_type == GLAT_START || _gamelog_action_type == GLAT_GRF);
+	assert(this->action_type == GLAT_LOAD || this->action_type == GLAT_START || this->action_type == GLAT_GRF);
 
 	if (!IsLoggableGrfConfig(newg)) return;
 
-	LoggedChange *lc = GamelogChange(GLCT_GRFADD);
+	LoggedChange *lc = this->Change(GLCT_GRFADD);
 	if (lc == nullptr) return;
 
 	lc->grfadd = newg->ident;
@@ -632,11 +602,11 @@ void GamelogGRFAdd(const GRFConfig *newg)
  * (the same ID, but different MD5 hash)
  * @param newg new (updated) GRF
  */
-void GamelogGRFCompatible(const GRFIdentifier *newg)
+void Gamelog::GRFCompatible(const GRFIdentifier *newg)
 {
-	assert(_gamelog_action_type == GLAT_LOAD || _gamelog_action_type == GLAT_GRF);
+	assert(this->action_type == GLAT_LOAD || this->action_type == GLAT_GRF);
 
-	LoggedChange *lc = GamelogChange(GLCT_GRFCOMPAT);
+	LoggedChange *lc = this->Change(GLCT_GRFCOMPAT);
 	if (lc == nullptr) return;
 
 	lc->grfcompat = *newg;
@@ -647,11 +617,11 @@ void GamelogGRFCompatible(const GRFIdentifier *newg)
  * @param grfid GRF that is moved
  * @param offset how far it is moved, positive = moved down
  */
-static void GamelogGRFMove(uint32 grfid, int32 offset)
+void Gamelog::GRFMove(uint32 grfid, int32 offset)
 {
-	assert(_gamelog_action_type == GLAT_GRF);
+	assert(this->action_type == GLAT_GRF);
 
-	LoggedChange *lc = GamelogChange(GLCT_GRFMOVE);
+	LoggedChange *lc = this->Change(GLCT_GRFMOVE);
 	if (lc == nullptr) return;
 
 	lc->grfmove.grfid  = grfid;
@@ -663,11 +633,11 @@ static void GamelogGRFMove(uint32 grfid, int32 offset)
  * Details about parameters changed are not stored
  * @param grfid ID of GRF to store
  */
-static void GamelogGRFParameters(uint32 grfid)
+void Gamelog::GRFParameters(uint32 grfid)
 {
-	assert(_gamelog_action_type == GLAT_GRF);
+	assert(this->action_type == GLAT_GRF);
 
-	LoggedChange *lc = GamelogChange(GLCT_GRFPARAM);
+	LoggedChange *lc = this->Change(GLCT_GRFPARAM);
 	if (lc == nullptr) return;
 
 	lc->grfparam.grfid = grfid;
@@ -678,12 +648,12 @@ static void GamelogGRFParameters(uint32 grfid)
  * Useful when old savegame is loaded or when new game is started
  * @param newg head of GRF linked list
  */
-void GamelogGRFAddList(const GRFConfig *newg)
+void Gamelog::GRFAddList(const GRFConfig *newg)
 {
-	assert(_gamelog_action_type == GLAT_START || _gamelog_action_type == GLAT_LOAD);
+	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
 
 	for (; newg != nullptr; newg = newg->next) {
-		GamelogGRFAdd(newg);
+		this->GRFAdd(newg);
 	}
 }
 
@@ -719,7 +689,7 @@ static GRFList *GenerateGRFList(const GRFConfig *grfc)
  * @param oldc original GRF list
  * @param newc new GRF list
  */
-void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
+void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 {
 	GRFList *ol = GenerateGRFList(oldc);
 	GRFList *nl = GenerateGRFList(newc);
@@ -742,7 +712,7 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 			}
 			if (oi == ol->n) {
 				/* GRF couldn't be found in the OLD list, GRF was ADDED */
-				GamelogGRFAdd(nl->grf[n++]);
+				this->GRFAdd(nl->grf[n++]);
 				continue;
 			}
 			for (ni = 0; ni < nl->n; ni++) {
@@ -755,7 +725,7 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 			}
 			if (ni == nl->n) {
 				/* GRF couldn't be found in the NEW list, GRF was REMOVED */
-				GamelogGRFRemove(ol->grf[o++]->ident.grfid);
+				this->GRFRemove(ol->grf[o++]->ident.grfid);
 				continue;
 			}
 
@@ -769,18 +739,18 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 
 			if (ni >= oi) { // prefer the one that is moved further
 				/* GRF was moved down */
-				GamelogGRFMove(ol->grf[o++]->ident.grfid, ni);
+				this->GRFMove(ol->grf[o++]->ident.grfid, ni);
 			} else {
-				GamelogGRFMove(nl->grf[n++]->ident.grfid, -(int)oi);
+				this->GRFMove(nl->grf[n++]->ident.grfid, -(int)oi);
 			}
 		} else {
 			if (memcmp(og->ident.md5sum, ng->ident.md5sum, sizeof(og->ident.md5sum)) != 0) {
 				/* md5sum changed, probably loading 'compatible' GRF */
-				GamelogGRFCompatible(&nl->grf[n]->ident);
+				this->GRFCompatible(&nl->grf[n]->ident);
 			}
 
 			if (og->num_params != ng->num_params || memcmp(og->param, ng->param, og->num_params * sizeof(og->param[0])) != 0) {
-				GamelogGRFParameters(ol->grf[o]->ident.grfid);
+				this->GRFParameters(ol->grf[o]->ident.grfid);
 			}
 
 			o++;
@@ -788,8 +758,8 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 		}
 	}
 
-	while (o < ol->n) GamelogGRFRemove(ol->grf[o++]->ident.grfid); // remaining GRFs were removed ...
-	while (n < nl->n) GamelogGRFAdd   (nl->grf[n++]);              // ... or added
+	while (o < ol->n) this->GRFRemove(ol->grf[o++]->ident.grfid); // remaining GRFs were removed ...
+	while (n < nl->n) this->GRFAdd   (nl->grf[n++]);              // ... or added
 
 	free(ol);
 	free(nl);
@@ -797,24 +767,20 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 
 /**
  * Get some basic information from the given gamelog.
- * @param gamelog_action Pointer to the gamelog to extract information from.
- * @param gamelog_actions Number of actions in the given gamelog.
  * @param[out] last_ottd_rev OpenTTD NewGRF version from the binary that saved the savegame last.
  * @param[out] ever_modified Max value of 'modified' from all binaries that ever saved this savegame.
  * @param[out] removed_newgrfs Set to true if any NewGRFs have been removed.
  */
-void GamelogInfo(LoggedAction *gamelog_action, uint gamelog_actions, uint32 *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs)
+void Gamelog::Info(uint32 *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs)
 {
-	const LoggedAction *laend = &gamelog_action[gamelog_actions];
-	for (const LoggedAction *la = gamelog_action; la != laend; la++) {
-		const LoggedChange *lcend = &la->change[la->changes];
-		for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
-			switch (lc->ct) {
+	for (const LoggedAction &la : this->data->action) {
+		for (const LoggedChange &lc : la.change) {
+			switch (lc.ct) {
 				default: break;
 
 				case GLCT_REVISION:
-					*last_ottd_rev = lc->revision.newgrf;
-					*ever_modified = std::max(*ever_modified, lc->revision.modified);
+					*last_ottd_rev = lc.revision.newgrf;
+					*ever_modified = std::max(*ever_modified, lc.revision.modified);
 					break;
 
 				case GLCT_GRFREM:
@@ -823,4 +789,22 @@ void GamelogInfo(LoggedAction *gamelog_action, uint gamelog_actions, uint32 *las
 			}
 		}
 	}
+}
+
+/**
+ * Try to find the overridden GRF identifier of the given GRF.
+ * @param c the GRF to get the 'previous' version of.
+ * @return the GRF identifier or \a c if none could be found.
+ */
+const GRFIdentifier *Gamelog::GetOverriddenIdentifier(const GRFConfig *c)
+{
+	assert(c != nullptr);
+	const LoggedAction &la = this->data->action.back();
+	if (la.at != GLAT_LOAD) return &c->ident;
+
+	for (const LoggedChange &lc : la.change) {
+		if (lc.ct == GLCT_GRFCOMPAT && lc.grfcompat.grfid == c->ident.grfid) return &lc.grfcompat;
+	}
+
+	return &c->ident;
 }

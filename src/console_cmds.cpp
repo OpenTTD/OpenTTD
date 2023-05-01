@@ -2116,7 +2116,7 @@ DEF_CONSOLE_CMD(ConListSettings)
 
 DEF_CONSOLE_CMD(ConGamelogPrint)
 {
-	GamelogPrintConsole();
+	_gamelog.PrintConsole();
 	return true;
 }
 

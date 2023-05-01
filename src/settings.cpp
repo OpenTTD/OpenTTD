@@ -1401,9 +1401,9 @@ void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
 	if (this->post_callback != nullptr) this->post_callback(newval);
 
 	if (this->flags & SF_NO_NETWORK) {
-		GamelogStartAction(GLAT_SETTING);
-		GamelogSetting(this->GetName(), oldval, newval);
-		GamelogStopAction();
+		_gamelog.StartAction(GLAT_SETTING);
+		_gamelog.Setting(this->GetName(), oldval, newval);
+		_gamelog.StopAction();
 	}
 
 	SetWindowClassesDirty(WC_GAME_OPTIONS);

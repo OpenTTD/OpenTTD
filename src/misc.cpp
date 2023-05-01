@@ -122,10 +122,10 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 
 	ResetObjectToPlace();
 
-	GamelogReset();
-	GamelogStartAction(GLAT_START);
-	GamelogRevision();
-	GamelogMode();
-	GamelogGRFAddList(_grfconfig);
-	GamelogStopAction();
+	_gamelog.Reset();
+	_gamelog.StartAction(GLAT_START);
+	_gamelog.Revision();
+	_gamelog.Mode();
+	_gamelog.GRFAddList(_grfconfig);
+	_gamelog.StopAction();
 }

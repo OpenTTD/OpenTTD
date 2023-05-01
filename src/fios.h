@@ -13,6 +13,7 @@
 #include "gfx_type.h"
 #include "company_base.h"
 #include "newgrf_config.h"
+#include "gamelog.h"
 #include "network/core/tcp_content_type.h"
 #include "timer/timer_game_calendar.h"
 
@@ -44,21 +45,11 @@ struct LoadCheckData {
 	GRFConfig *grfconfig;                         ///< NewGrf configuration from save.
 	GRFListCompatibility grf_compatibility;       ///< Summary state of NewGrfs, whether missing files or only compatible found.
 
-	struct LoggedAction *gamelog_action;          ///< Gamelog actions
-	uint gamelog_actions;                         ///< Number of gamelog actions
+	Gamelog gamelog; ///< Gamelog actions
 
 	LoadCheckData() : grfconfig(nullptr),
-			grf_compatibility(GLC_NOT_FOUND), gamelog_action(nullptr), gamelog_actions(0)
+			grf_compatibility(GLC_NOT_FOUND)
 	{
-		this->Clear();
-	}
-
-	/**
-	 * Don't leak memory at program exit
-	 */
-	~LoadCheckData()
-	{
-		this->Clear();
 	}
 
 	/**

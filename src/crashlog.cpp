@@ -299,7 +299,7 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
  */
 char *CrashLog::LogGamelog(char *buffer, const char *last) const
 {
-	GamelogPrint([&buffer, last](const char *s) {
+	_gamelog.Print([&buffer, last](const char *s) {
 		buffer += seprintf(buffer, last, "%s\n", s);
 	});
 	return buffer + seprintf(buffer, last, "\n");
@@ -421,7 +421,7 @@ bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 	if (!Map::IsInitialized()) return false;
 
 	try {
-		GamelogEmergency();
+		_gamelog.Emergency();
 
 		this->CreateFileName(filename, filename_last, ".sav");
 

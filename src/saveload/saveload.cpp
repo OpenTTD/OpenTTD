@@ -348,7 +348,7 @@ void NORETURN SlError(StringID string, const std::string &extra_msg)
 	if (_sl.action == SLA_LOAD || _sl.action == SLA_PTRS) SlNullPointers();
 
 	/* Logging could be active. */
-	GamelogStopAnyAction();
+	_gamelog.StopAnyAction();
 
 	throw std::exception();
 }
@@ -3129,7 +3129,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 		 * confuse old games */
 		InitializeGame(256, 256, true, true);
 
-		GamelogReset();
+		_gamelog.Reset();
 
 		if (IsSavegameVersionBefore(SLV_4)) {
 			/*
@@ -3175,16 +3175,16 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 		/* The only part from AfterLoadGame() we need */
 		_load_check_data.grf_compatibility = IsGoodGRFConfigList(_load_check_data.grfconfig);
 	} else {
-		GamelogStartAction(GLAT_LOAD);
+		_gamelog.StartAction(GLAT_LOAD);
 
 		/* After loading fix up savegame for any internal changes that
 		 * might have occurred since then. If it fails, load back the old game. */
 		if (!AfterLoadGame()) {
-			GamelogStopAction();
+			_gamelog.StopAction();
 			return SL_REINIT;
 		}
 
-		GamelogStopAction();
+		_gamelog.StopAction();
 	}
 
 	return SL_OK;
@@ -3237,16 +3237,16 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 			 * Note: this is done here because AfterLoadGame is also called
 			 * for OTTD savegames which have their own NewGRF logic. */
 			ClearGRFConfigList(&_grfconfig);
-			GamelogReset();
+			_gamelog.Reset();
 			if (!LoadOldSaveGame(filename)) return SL_REINIT;
 			_sl_version = SL_MIN_VERSION;
 			_sl_minor_version = 0;
-			GamelogStartAction(GLAT_LOAD);
+			_gamelog.StartAction(GLAT_LOAD);
 			if (!AfterLoadGame()) {
-				GamelogStopAction();
+				_gamelog.StopAction();
 				return SL_REINIT;
 			}
-			GamelogStopAction();
+			_gamelog.StopAction();
 			return SL_OK;
 		}
 

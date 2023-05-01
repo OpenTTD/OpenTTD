@@ -340,24 +340,6 @@ static void ResetSignalHandlers()
 	signal(SIGFPE,  _prev_fpe);
 }
 
-/**
- * Try to find the overridden GRF identifier of the given GRF.
- * @param c the GRF to get the 'previous' version of.
- * @return the GRF identifier or \a c if none could be found.
- */
-static const GRFIdentifier *GetOverriddenIdentifier(const GRFConfig *c)
-{
-	const LoggedAction *la = &_gamelog_action[_gamelog_actions - 1];
-	if (la->at != GLAT_LOAD) return &c->ident;
-
-	const LoggedChange *lcend = &la->change[la->changes];
-	for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
-		if (lc->ct == GLCT_GRFCOMPAT && lc->grfcompat.grfid == c->ident.grfid) return &lc->grfcompat;
-	}
-
-	return &c->ident;
-}
-
 /** Was the saveload crash because of missing NewGRFs? */
 static bool _saveload_crash_with_missing_newgrfs = false;
 
@@ -405,7 +387,7 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 
 		for (const GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
 			if (HasBit(c->flags, GCF_COMPATIBLE)) {
-				const GRFIdentifier *replaced = GetOverriddenIdentifier(c);
+				const GRFIdentifier *replaced = _gamelog.GetOverriddenIdentifier(c);
 				char original_md5[40];
 				char replaced_md5[40];
 				md5sumToString(original_md5, lastof(original_md5), c->original_md5sum);
@@ -591,10 +573,10 @@ bool AfterLoadGame()
 	/* The LFSR used in RunTileLoop iteration cannot have a zeroed state, make it non-zeroed. */
 	if (_cur_tileloop_tile == 0) _cur_tileloop_tile = 1;
 
-	if (IsSavegameVersionBefore(SLV_98)) GamelogOldver();
+	if (IsSavegameVersionBefore(SLV_98)) _gamelog.Oldver();
 
-	GamelogTestRevision();
-	GamelogTestMode();
+	_gamelog.TestRevision();
+	_gamelog.TestMode();
 
 	RebuildTownKdtree();
 	RebuildStationKdtree();
@@ -602,7 +584,7 @@ bool AfterLoadGame()
 	 * that otherwise won't exist in the tree. */
 	RebuildViewportKdtree();
 
-	if (IsSavegameVersionBefore(SLV_98)) GamelogGRFAddList(_grfconfig);
+	if (IsSavegameVersionBefore(SLV_98)) _gamelog.GRFAddList(_grfconfig);
 
 	if (IsSavegameVersionBefore(SLV_119)) {
 		_pause_mode = (_pause_mode == 2) ? PM_PAUSED_NORMAL : PM_UNPAUSED;
@@ -729,9 +711,9 @@ bool AfterLoadGame()
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList(_grfconfig);
 	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
 		if (c->status == GCS_NOT_FOUND) {
-			GamelogGRFRemove(c->ident.grfid);
+			_gamelog.GRFRemove(c->ident.grfid);
 		} else if (HasBit(c->flags, GCF_COMPATIBLE)) {
-			GamelogGRFCompatible(&c->ident);
+			_gamelog.GRFCompatible(&c->ident);
 		}
 	}
 
@@ -3260,7 +3242,7 @@ bool AfterLoadGame()
 	AfterLoadCompanyStats();
 	AfterLoadStoryBook();
 
-	GamelogPrintDebug(1);
+	_gamelog.PrintDebug(1);
 
 	InitializeWindowsAndCaches();
 	/* Restore the signals */

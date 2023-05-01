@@ -28,6 +28,7 @@
 #include "gamelog.h"
 #include "stringfilter_type.h"
 #include "misc_cmd.h"
+#include "gamelog_internal.h"
 
 #include "widgets/fios_widget.h"
 
@@ -40,7 +41,6 @@ LoadCheckData _load_check_data;    ///< Data loaded from save during SL_LOAD_CHE
 
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
-
 
 /**
  * Reset read data.
@@ -60,9 +60,7 @@ void LoadCheckData::Clear()
 	}
 	companies.clear();
 
-	GamelogFree(this->gamelog_action, this->gamelog_actions);
-	this->gamelog_action = nullptr;
-	this->gamelog_actions = 0;
+	this->gamelog.Reset();
 
 	ClearGRFConfigList(&this->grfconfig);
 }

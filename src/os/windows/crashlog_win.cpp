@@ -540,7 +540,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		ExitProcess(2);
 	}
 
-	if (GamelogTestEmergency()) {
+	if (_gamelog.TestEmergency()) {
 		static const wchar_t _emergency_crash[] =
 			L"A serious fault condition occurred in the game. The game will shut down.\n"
 			L"As you loaded an emergency savegame no crash information will be generated.\n";
