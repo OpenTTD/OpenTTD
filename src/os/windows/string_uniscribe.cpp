@@ -347,7 +347,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	}
 
 	/* If the text does not fit into the available width, find a suitable breaking point. */
-	int remaing_offset = (last_run - 1)->len;
+	int remaining_offset = (last_run - 1)->len;
 	if (cur_width > max_width) {
 		std::vector<SCRIPT_LOGATTR> log_attribs;
 
@@ -390,9 +390,9 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 			num_chars -= run->len;
 
 			if (num_chars <= 0) {
-				remaing_offset = num_chars + run->len + 1;
+				remaining_offset = num_chars + run->len + 1;
 				last_run = run + 1;
-				assert(remaing_offset - 1 > 0);
+				assert(remaining_offset - 1 > 0);
 				break;
 			}
 		}
@@ -415,8 +415,8 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		UniscribeRun run = *i_run;
 
 		/* Partial run after line break (either start or end)? Reshape run to get the first/last glyphs right. */
-		if (i_run == last_run - 1 && remaing_offset < (last_run - 1)->len) {
-			run.len = remaing_offset - 1;
+		if (i_run == last_run - 1 && remaining_offset < (last_run - 1)->len) {
+			run.len = remaining_offset - 1;
 
 			if (!UniscribeShapeRun(this->text_buffer, run)) return nullptr;
 		}
@@ -432,9 +432,9 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		cur_pos += run.total_advance;
 	}
 
-	if (remaing_offset < (last_run - 1)->len) {
+	if (remaining_offset < (last_run - 1)->len) {
 		/* We didn't use up all of the last run, store remainder for the next line. */
-		this->cur_range_offset = remaing_offset - 1;
+		this->cur_range_offset = remaining_offset - 1;
 		this->cur_range = last_run - 1;
 		assert(this->cur_range->len > this->cur_range_offset);
 	} else {
