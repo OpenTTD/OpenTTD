@@ -368,6 +368,7 @@ struct ConstructionSettings {
 	bool   extra_dynamite;                   ///< extra dynamite
 	bool   road_stop_on_town_road;           ///< allow building of drive-through road stops on town owned roads
 	bool   road_stop_on_competitor_road;     ///< allow building of drive-through road stops on roads owned by competitors
+	bool   crossing_with_competitor;         ///< allow building of level crossings with competitor roads or rails
 	uint8_t  raw_industry_construction;        ///< type of (raw) industry construction (none, "normal", prospecting)
 	uint8_t  industry_platform;                ///< the amount of flat land around an industry
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
