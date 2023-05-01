@@ -45,6 +45,7 @@
 #include "fios.h"
 #include "fileio_func.h"
 #include "settings_cmd.h"
+#include "date_type.h"
 
 #include "table/strings.h"
 
