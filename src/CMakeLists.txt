@@ -34,6 +34,12 @@ add_files(
 )
 
 add_files(
+    gfx_layout_icu.cpp
+    gfx_layout_icu.h
+    CONDITION ICU_lx_FOUND
+)
+
+add_files(
     aircraft.h
     aircraft_cmd.cpp
     aircraft_cmd.h
@@ -175,6 +181,8 @@ add_files(
     gfx_func.h
     gfx_layout.cpp
     gfx_layout.h
+    gfx_layout_fallback.cpp
+    gfx_layout_fallback.h
     gfx_type.h
     gfxinit.cpp
     gfxinit.h
