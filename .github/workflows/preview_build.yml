@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     container:
       # If you change this version, change the number in the cache step too.
-      image: emscripten/emsdk:3.1.28
+      image: emscripten/emsdk:3.1.37
 
     steps:
     - name: Update deployment status to in progress
@@ -45,7 +45,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: /emsdk/upstream/emscripten/cache
-        key: 3.1.28-${{ runner.os }}
+        key: 3.1.37-${{ runner.os }}
 
     - name: Patch Emscripten to support LZMA
       run: |
@@ -83,7 +83,7 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(nproc) cores"
-        emmake make -j$(nproc)
+        cmake --build . -j $(nproc) --target openttd
         echo "::endgroup::"
 
     - name: Publish preview
