@@ -931,8 +931,22 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Siirrä 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pelin valinnat
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Yleiset
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Valitse yleisasetukset
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafiikka
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Valitse grafiikka-asetukset
+STR_GAME_OPTIONS_TAB_SOUND                                      :Ääni
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Valitse ääni- ja musiikkiasetukset
 
+STR_GAME_OPTIONS_VOLUME                                         :Äänenvoimakkuus
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Äänitehosteet
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musiikki
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0{NBSP}%
+STR_GAME_OPTIONS_VOLUME_25                                      :25{NBSP}%
+STR_GAME_OPTIONS_VOLUME_50                                      :50{NBSP}%
+STR_GAME_OPTIONS_VOLUME_75                                      :75{NBSP}%
+STR_GAME_OPTIONS_VOLUME_100                                     :100{NBSP}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Rahayksikkö
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksikön valinta

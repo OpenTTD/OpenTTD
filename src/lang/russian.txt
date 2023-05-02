@@ -1074,10 +1074,24 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}В ос�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Показать в основном окне
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Основные настройки
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Основные
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Основные настройки игры
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Графика
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Настройки графики
+STR_GAME_OPTIONS_TAB_SOUND                                      :Звук
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Настройки звука и музыки
 
+STR_GAME_OPTIONS_VOLUME                                         :Громкость
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Звуковые эффекты
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Музыка
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25%
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
+STR_GAME_OPTIONS_VOLUME_75                                      :75%
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Валюта
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Смена используемой в игре валюты

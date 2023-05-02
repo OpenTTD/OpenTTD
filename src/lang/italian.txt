@@ -933,8 +933,22 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copia la
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opzioni di gioco
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Generale
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Scegliere le impostazioni generali
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafica
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Scegliere le impostazioni grafiche
+STR_GAME_OPTIONS_TAB_SOUND                                      :Suono
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Scegliere le impostazioni audio e musicali
 
+STR_GAME_OPTIONS_VOLUME                                         :Volume
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Effetti sonori
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musica
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25%
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
+STR_GAME_OPTIONS_VOLUME_75                                      :75%
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selezione della valuta

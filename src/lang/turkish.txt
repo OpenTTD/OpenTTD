@@ -932,8 +932,22 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Bu gör�
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Seçenekler
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Genel
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Genel ayarları seçin
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafikler
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Grafik ayarlarını seçin
+STR_GAME_OPTIONS_TAB_SOUND                                      :Ses
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Ses ve müzik ayarlarını seçin
 
+STR_GAME_OPTIONS_VOLUME                                         :Ses seviyesi
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Ses efektleri
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Müzik
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25%
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
+STR_GAME_OPTIONS_VOLUME_75                                      :75%
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Para birimleri
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Para birimi seçimi
