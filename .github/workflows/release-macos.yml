@@ -107,7 +107,7 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(sysctl -n hw.logicalcpu) cores"
-        cmake --build . -j $(sysctl -n hw.logicalcpu)
+        cmake --build . -j $(sysctl -n hw.logicalcpu) --target openttd
         echo "::endgroup::"
 
     - name: Build x64
@@ -130,7 +130,7 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(sysctl -n hw.logicalcpu) cores"
-        cmake --build . -j $(sysctl -n hw.logicalcpu)
+        cmake --build . -j $(sysctl -n hw.logicalcpu) --target openttd
         echo "::endgroup::"
 
     - name: Create bundles

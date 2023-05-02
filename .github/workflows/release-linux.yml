@@ -124,7 +124,7 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(nproc) cores"
-        cmake --build . -j $(nproc)
+        cmake --build . -j $(nproc) --target openttd
         echo "::endgroup::"
 
     - name: Create bundles
