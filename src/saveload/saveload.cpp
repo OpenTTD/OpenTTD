@@ -2598,6 +2598,7 @@ struct ZlibLoadFilter : LoadFilter {
 /** Filter using Zlib compression. */
 struct ZlibSaveFilter : SaveFilter {
 	z_stream z; ///< Stream state we are writing to.
+	byte fwrite_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for writing to the file.
 
 	/**
 	 * Initialise this filter.
@@ -2624,13 +2625,12 @@ struct ZlibSaveFilter : SaveFilter {
 	 */
 	void WriteLoop(byte *p, size_t len, int mode)
 	{
-		byte buf[MEMORY_CHUNK_SIZE]; // output buffer
 		uint n;
 		this->z.next_in = p;
 		this->z.avail_in = (uInt)len;
 		do {
-			this->z.next_out = buf;
-			this->z.avail_out = sizeof(buf);
+			this->z.next_out = this->fwrite_buf;
+			this->z.avail_out = sizeof(this->fwrite_buf);
 
 			/**
 			 * For the poor next soul who sees many valgrind warnings of the
@@ -2642,8 +2642,8 @@ struct ZlibSaveFilter : SaveFilter {
 			int r = deflate(&this->z, mode);
 
 			/* bytes were emitted? */
-			if ((n = sizeof(buf) - this->z.avail_out) != 0) {
-				this->chain->Write(buf, n);
+			if ((n = sizeof(this->fwrite_buf) - this->z.avail_out) != 0) {
+				this->chain->Write(this->fwrite_buf, n);
 			}
 			if (r == Z_STREAM_END) break;
 
@@ -2726,6 +2726,7 @@ struct LZMALoadFilter : LoadFilter {
 /** Filter using LZMA compression. */
 struct LZMASaveFilter : SaveFilter {
 	lzma_stream lzma; ///< Stream state that we are writing to.
+	byte fwrite_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for writing to the file.
 
 	/**
 	 * Initialise this filter.
@@ -2751,19 +2752,18 @@ struct LZMASaveFilter : SaveFilter {
 	 */
 	void WriteLoop(byte *p, size_t len, lzma_action action)
 	{
-		byte buf[MEMORY_CHUNK_SIZE]; // output buffer
 		size_t n;
 		this->lzma.next_in = p;
 		this->lzma.avail_in = len;
 		do {
-			this->lzma.next_out = buf;
-			this->lzma.avail_out = sizeof(buf);
+			this->lzma.next_out = this->fwrite_buf;
+			this->lzma.avail_out = sizeof(this->fwrite_buf);
 
 			lzma_ret r = lzma_code(&this->lzma, action);
 
 			/* bytes were emitted? */
-			if ((n = sizeof(buf) - this->lzma.avail_out) != 0) {
-				this->chain->Write(buf, n);
+			if ((n = sizeof(this->fwrite_buf) - this->lzma.avail_out) != 0) {
+				this->chain->Write(this->fwrite_buf, n);
 			}
 			if (r == LZMA_STREAM_END) break;
 			if (r != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "liblzma returned error code");
