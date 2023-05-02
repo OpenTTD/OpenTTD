@@ -76,20 +76,20 @@ jobs:
         - name: Clang
           compiler: clang
           cxxcompiler: clang++
-          libraries: libsdl2-dev
+          libraries: libsdl2-dev nlohmann-json3-dev
         - name: GCC - SDL2
           compiler: gcc
           cxxcompiler: g++
-          libraries: libsdl2-dev
+          libraries: libsdl2-dev nlohmann-json3-dev
         - name: GCC - SDL1.2
           compiler: gcc
           cxxcompiler: g++
-          libraries: libsdl1.2-dev
+          libraries: libsdl1.2-dev nlohmann-json3-dev
         - name: GCC - Dedicated
           compiler: gcc
           cxxcompiler: g++
           extra-cmake-parameters: -DOPTION_DEDICATED=ON -DCMAKE_CXX_FLAGS_INIT="-DRANDOM_DEBUG" -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
-          # Compile without SDL / SDL2, as that should compile fine too.
+          # Compile without SDL / SDL2 / nlohmann-json, as that should compile fine too.
 
     name: Linux (${{ matrix.name }})
 
@@ -197,7 +197,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: /usr/local/share/vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-1 # Increase the number whenever dependencies are modified
         restore-keys: |
           ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
 
@@ -208,6 +208,7 @@ jobs:
           liblzma \
           libpng \
           lzo \
+          nlohmann-json \
           zlib \
           # EOF
 
@@ -280,7 +281,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-1 # Increase the number whenever dependencies are modified
         restore-keys: |
           ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
 
@@ -291,6 +292,7 @@ jobs:
           liblzma \
           libpng \
           lzo \
+          nlohmann-json \
           zlib \
           # EOF
 
@@ -377,6 +379,7 @@ jobs:
           mingw-w64-${{ matrix.arch }}-libpng
           mingw-w64-${{ matrix.arch }}-lld
           mingw-w64-${{ matrix.arch }}-ninja
+          mingw-w64-${{ matrix.arch }}-nlohmann-json
 
     - name: Install OpenGFX
       shell: bash
