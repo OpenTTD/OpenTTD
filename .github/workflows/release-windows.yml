@@ -53,7 +53,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-1 # Increase the number whenever dependencies are modified
         restore-keys: |
           ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
 
@@ -64,6 +64,7 @@ jobs:
           liblzma \
           libpng \
           lzo \
+          nlohmann-json \
           zlib \
           # EOF
 

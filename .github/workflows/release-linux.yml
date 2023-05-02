@@ -27,7 +27,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: /vcpkg/installed
-        key: ubuntu-20.04-vcpkg-release-0 # Increase the number whenever dependencies are modified
+        key: ubuntu-20.04-vcpkg-release-1 # Increase the number whenever dependencies are modified
         restore-keys: |
           ubuntu-20.04-vcpkg-release
 
@@ -79,6 +79,7 @@ jobs:
             liblzma \
             libpng \
             lzo \
+            nlohmann-json \
             sdl2 \
             zlib \
             # EOF

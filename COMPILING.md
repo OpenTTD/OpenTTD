@@ -4,6 +4,7 @@
 
 OpenTTD makes use of the following external libraries:
 
+- (encouraged) nlohmann-json: JSON handling
 - (encouraged) zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads,
    heightmaps
 - (encouraged) liblzma: (de)compressing of savegames (1.1.0 and later)
@@ -52,13 +53,14 @@ the `static` versions, and OpenTTD currently needs the following dependencies:
 - liblzma
 - libpng
 - lzo
+- nlohmann-json
 - zlib
 
 To install both the x64 (64bit) and x86 (32bit) variants (though only one is necessary), you can use:
 
 ```ps
-.\vcpkg install liblzma:x64-windows-static libpng:x64-windows-static lzo:x64-windows-static zlib:x64-windows-static
-.\vcpkg install liblzma:x86-windows-static libpng:x86-windows-static lzo:x86-windows-static zlib:x86-windows-static
+.\vcpkg install liblzma:x64-windows-static libpng:x64-windows-static lzo:x64-windows-static nlohmann-json:x64-windows-static zlib:x64-windows-static
+.\vcpkg install liblzma:x86-windows-static libpng:x86-windows-static lzo:x86-windows-static nlohmann-json:x86-windows-static zlib:x86-windows-static
 ```
 
 You can open the folder (as a CMake project). CMake will be detected, and you can compile from there.
