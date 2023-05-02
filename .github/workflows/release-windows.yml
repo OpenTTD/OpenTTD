@@ -133,7 +133,7 @@ jobs:
         echo "::endgroup::"
 
         echo "::group::Build"
-        cmake --build .
+        cmake --build . --target openttd
         echo "::endgroup::"
       env:
         WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
@@ -157,7 +157,7 @@ jobs:
         echo "::endgroup::"
 
         echo "::group::Build"
-        cmake --build .
+        cmake --build . --target openttd
         echo "::endgroup::"
       env:
         WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
