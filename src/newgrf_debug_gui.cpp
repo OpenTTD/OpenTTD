@@ -964,12 +964,9 @@ struct SpriteAlignerWindow : Window {
 				break;
 
 			case WID_SA_LIST: {
-				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
-				int step_size = nwid->resize_y;
-
-				uint i = this->vscroll->GetPosition() + (pt.y - nwid->pos_y) / step_size;
-				if (i < _newgrf_debug_sprite_picker.sprites.size()) {
-					SpriteID spr = _newgrf_debug_sprite_picker.sprites[i];
+				auto it = this->vscroll->GetScrolledItemFromWidget(_newgrf_debug_sprite_picker.sprites, pt.y, this, widget);
+				if (it != _newgrf_debug_sprite_picker.sprites.end()) {
+					SpriteID spr = *it;
 					if (GetSpriteType(spr) == SpriteType::Normal) this->current_sprite = spr;
 				}
 				this->SetDirty();

@@ -267,13 +267,13 @@ struct GSConfigWindow : public Window {
 				break;
 
 			case WID_GSC_SETTINGS: {
-				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
-				int num = (pt.y - r.top) / this->line_height + this->vscroll->GetPosition();
-				if (num >= (int)this->visible_settings.size()) break;
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->visible_settings, pt.y, this, widget);
+				if (it == this->visible_settings.end()) break;
 
-				const ScriptConfigItem &config_item = *this->visible_settings[num];
+				const ScriptConfigItem &config_item = **it;
 				if (!this->IsEditableItem(config_item)) return;
 
+				int num = it - this->visible_settings.begin();
 				if (this->clicked_row != num) {
 					this->CloseChildWindows(WC_QUERY_STRING);
 					HideDropDownMenu(this);
@@ -283,6 +283,7 @@ struct GSConfigWindow : public Window {
 
 				bool bool_item = (config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0;
 
+				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
 				int x = pt.x - r.left;
 				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
 
