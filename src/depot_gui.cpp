@@ -458,10 +458,10 @@ struct DepotWindow : Window {
 		}
 		ym = y % this->resize.step_height;
 
-		uint row = y / this->resize.step_height;
-		if (row >= this->vscroll->GetCapacity()) return MODE_ERROR;
+		int row = this->vscroll->GetScrolledRowFromWidget(y, this, WID_D_MATRIX);
+		if (row == INT_MAX) return MODE_ERROR;
 
-		uint pos = ((row + this->vscroll->GetPosition()) * this->num_columns) + xt;
+		uint pos = (row * this->num_columns) + xt;
 
 		if (this->vehicle_list.size() + this->wagon_list.size() <= pos) {
 			/* Clicking on 'line' / 'block' without a vehicle */

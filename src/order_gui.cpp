@@ -560,14 +560,10 @@ private:
 	 */
 	VehicleOrderID GetOrderFromPt(int y)
 	{
-		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_O_ORDER_LIST);
-		uint sel = (y - nwid->pos_y - WidgetDimensions::scaled.framerect.top) / nwid->resize_y; // Selected line in the WID_O_ORDER_LIST panel.
-
-		if (sel >= this->vscroll->GetCapacity()) return INVALID_VEH_ORDER_ID;
-
-		sel += this->vscroll->GetPosition();
-
-		return (sel <= vehicle->GetNumOrders()) ? sel : INVALID_VEH_ORDER_ID;
+		int sel = this->vscroll->GetScrolledRowFromWidget(y, this, WID_O_ORDER_LIST, WidgetDimensions::scaled.framerect.top);
+		if (sel == INT_MAX) return INVALID_VEH_ORDER_ID;
+		assert(IsInsideBS(sel, 0, vehicle->GetNumOrders()));
+		return sel;
 	}
 
 	/**

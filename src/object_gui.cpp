@@ -517,10 +517,10 @@ public:
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
-				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / this->line_height;
-				if (num_clicked >= (int)this->object_classes.size()) break;
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->object_classes, widget, this, pt.y);
+				if (it == this->object_classes.end()) break;
 
-				this->SelectOtherClass(this->object_classes[num_clicked]);
+				this->SelectOtherClass(*it);
 				this->SelectFirstAvailableObject(false);
 				break;
 			}
