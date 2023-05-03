@@ -820,7 +820,7 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 	 * Soften the coast slope */
 	for (depth = 0; IsValidXY(x, y) && depth <= max_coast_Smooth_depth; depth++, x += dir_x, y += dir_y) {
 		h = _height_map.height(x, y);
-		h = std::min<uint>(h, h_prev + (4 + depth)); // coast softening formula
+		h = static_cast<Height>(std::min<uint>(h, h_prev + (4 + depth))); // coast softening formula
 		_height_map.height(x, y) = h;
 		h_prev = h;
 	}

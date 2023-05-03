@@ -432,7 +432,7 @@ public:
 
 			case WID_STL_LIST: {
 				bool rtl = _current_text_dir == TD_RTL;
-				int max = std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->stations.size());
+				size_t max = std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->stations.size());
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				uint line_height = this->GetWidget<NWidgetBase>(widget)->resize_y;
 				/* Spacing between station name and first rating graph. */
@@ -440,7 +440,7 @@ public:
 				/* Spacing between additional rating graphs. */
 				int rating_spacing = WidgetDimensions::scaled.hsep_normal;
 
-				for (int i = this->vscroll->GetPosition(); i < max; ++i) { // do until max number of stations of owner
+				for (size_t i = this->vscroll->GetPosition(); i < max; ++i) { // do until max number of stations of owner
 					const Station *st = this->stations[i];
 					assert(st->xy != INVALID_TILE);
 

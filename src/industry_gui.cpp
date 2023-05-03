@@ -1037,10 +1037,10 @@ public:
 						case EA_MULTIPLIER:
 							if (decrease) {
 								if (i->prod_level <= PRODLEVEL_MINIMUM) return;
-								i->prod_level = std::max<uint>(i->prod_level / 2, PRODLEVEL_MINIMUM);
+								i->prod_level = static_cast<byte>(std::max<uint>(i->prod_level / 2, PRODLEVEL_MINIMUM));
 							} else {
 								if (i->prod_level >= PRODLEVEL_MAXIMUM) return;
-								i->prod_level = std::min<uint>(i->prod_level * 2, PRODLEVEL_MAXIMUM);
+								i->prod_level = static_cast<byte>(std::min<uint>(i->prod_level * 2, PRODLEVEL_MAXIMUM));
 							}
 							break;
 
