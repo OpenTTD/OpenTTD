@@ -155,10 +155,11 @@ public:
  * location. These versions assist with situations like that.
  */
 enum IniFileVersion : uint32 {
-	IFV_0,                 ///< 0  All versions prior to introduction.
-	IFV_PRIVATE_SECRETS,   ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
-	IFV_GAME_TYPE,         ///< 2  PR#9515  Convert server_advertise to server_game_type.
-	IFV_LINKGRAPH_SECONDS, ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
+	IFV_0,                                                 ///< 0  All versions prior to introduction.
+	IFV_PRIVATE_SECRETS,                                   ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
+	IFV_GAME_TYPE,                                         ///< 2  PR#9515  Convert server_advertise to server_game_type.
+	IFV_LINKGRAPH_SECONDS,                                 ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
+	IFV_NETWORK_PRIVATE_SETTINGS,                          ///< 4  PR#10762 Move no_http_content_downloads / use_relay_service to private settings.
 
 	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
 };
@@ -1243,6 +1244,31 @@ void LoadFromConfig(bool startup)
 			_settings_newgame.linkgraph.recalc_time     *= SECONDS_PER_DAY;
 		}
 
+		if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
+			IniGroup *network = generic_ini.GetGroup("network", false);
+			if (network != nullptr) {
+				IniItem *no_http_content_downloads = network->GetItem("no_http_content_downloads", false);
+				if (no_http_content_downloads != nullptr) {
+					if (no_http_content_downloads->value == "true") {
+						_settings_client.network.no_http_content_downloads = true;
+					} else if (no_http_content_downloads->value == "false") {
+						_settings_client.network.no_http_content_downloads = false;
+					}
+				}
+
+				IniItem *use_relay_service = network->GetItem("use_relay_service", false);
+				if (use_relay_service != nullptr) {
+					if (use_relay_service->value == "never") {
+						_settings_client.network.use_relay_service = UseRelayService::URS_NEVER;
+					} else if (use_relay_service->value == "ask") {
+						_settings_client.network.use_relay_service = UseRelayService::URS_ASK;
+					} else if (use_relay_service->value == "allow") {
+						_settings_client.network.use_relay_service = UseRelayService::URS_ALLOW;
+					}
+				}
+			}
+		}
+
 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);
 		_grfconfig_static  = GRFLoadConfig(generic_ini, "newgrf-static", true);
 		AILoadConfig(generic_ini, "ai_players");
@@ -1302,6 +1328,13 @@ void SaveToConfig()
 		IniGroup *network = generic_ini.GetGroup("network", false);
 		if (network != nullptr) {
 			network->RemoveItem("server_advertise");
+		}
+	}
+	if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
+		IniGroup *network = generic_ini.GetGroup("network", false);
+		if (network != nullptr) {
+			network->RemoveItem("no_http_content_downloads");
+			network->RemoveItem("use_relay_service");
 		}
 	}
 
