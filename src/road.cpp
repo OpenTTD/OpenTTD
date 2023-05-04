@@ -115,7 +115,7 @@ bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 		if (rti->label == 0) return false;
 
 		/* Not yet introduced at this date. */
-		if (IsInsideMM(rti->introduction_date, 0, MAX_DATE) && rti->introduction_date > TimerGameCalendar::date) return false;
+		if (IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(MAX_DATE)) && rti->introduction_date > TimerGameCalendar::date) return false;
 
 		/*
 		 * Do not allow building hidden road types, except when a town may build it.
@@ -173,7 +173,7 @@ RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date 
 		if (rti->label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, MAX_DATE)) continue;
+		if (!IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(MAX_DATE))) continue;
 
 		/* Not yet introduced at this date. */
 		if (rti->introduction_date > date) continue;

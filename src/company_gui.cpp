@@ -437,7 +437,7 @@ struct CompanyFinancesWindow : Window {
 				auto age = std::min(TimerGameCalendar::year - c->inaugurated_year, TimerGameCalendar::Year(2));
 				int wid_offset = widget - WID_CF_EXPS_PRICE1;
 				if (wid_offset <= age) {
-					DrawYearColumn(r, TimerGameCalendar::year - (age - wid_offset), c->yearly_expenses[age - wid_offset]);
+					DrawYearColumn(r, TimerGameCalendar::year - (age - wid_offset), c->yearly_expenses[static_cast<int32_t>(age - wid_offset)]);
 				}
 				break;
 			}

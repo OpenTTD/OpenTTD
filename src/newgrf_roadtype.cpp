@@ -30,7 +30,7 @@
 			case 0x40: return 0;
 			case 0x41: return 0;
 			case 0x42: return 0;
-			case 0x43: return TimerGameCalendar::date;
+			case 0x43: return static_cast<int32_t>(TimerGameCalendar::date);
 			case 0x44: return HZB_TOWN_EDGE;
 		}
 	}
@@ -40,8 +40,8 @@
 		case 0x41: return 0;
 		case 0x42: return IsLevelCrossingTile(this->tile) && IsCrossingBarred(this->tile);
 		case 0x43:
-			if (IsRoadDepotTile(this->tile)) return Depot::GetByTile(this->tile)->build_date;
-			return TimerGameCalendar::date;
+			if (IsRoadDepotTile(this->tile)) return static_cast<int32_t>(Depot::GetByTile(this->tile)->build_date);
+			return static_cast<int32_t>(TimerGameCalendar::date);
 		case 0x44: {
 			const Town *t = nullptr;
 			if (IsRoadDepotTile(this->tile)) {

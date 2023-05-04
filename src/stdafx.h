@@ -125,6 +125,13 @@
 #	define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 #endif
 
+#if defined(_MSC_VER)
+	// See https://learn.microsoft.com/en-us/cpp/cpp/empty-bases?view=msvc-170
+#	define EMPTY_BASES __declspec(empty_bases)
+#else
+#	define EMPTY_BASES
+#endif
+
 /* Stuff for MSVC */
 #if defined(_MSC_VER)
 #	pragma once

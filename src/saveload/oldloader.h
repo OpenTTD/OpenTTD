@@ -93,9 +93,6 @@ struct OldChunks {
 	OldChunkProc *proc;  ///< Pointer to function that is called with OC_CHUNK
 };
 
-/* If it fails, check lines above.. */
-static_assert(sizeof(TileIndex) == 4);
-
 extern uint _bump_assert_value;
 byte ReadByte(LoadgameState *ls);
 bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks);

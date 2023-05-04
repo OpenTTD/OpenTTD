@@ -75,8 +75,8 @@ static const uint16_t _accum_days_for_month[] = {
 	 */
 
 	/* There are 97 leap years in 400 years */
-	TimerGameCalendar::Year yr = 400 * (date / (DAYS_IN_YEAR * 400 + 97));
-	int rem = date % (DAYS_IN_YEAR * 400 + 97);
+	TimerGameCalendar::Year yr = 400 * (static_cast<int32_t>(date) / (DAYS_IN_YEAR * 400 + 97));
+	int rem = static_cast<int32_t>(date) % (DAYS_IN_YEAR * 400 + 97);
 	uint16_t x;
 
 	if (rem >= DAYS_IN_YEAR * 100 + 25) {
@@ -141,7 +141,7 @@ static const uint16_t _accum_days_for_month[] = {
  */
 /* static */ bool TimerGameCalendar::IsLeapYear(TimerGameCalendar::Year yr)
 {
-	return yr % 4 == 0 && (yr % 100 != 0 || yr % 400 == 0);
+	return static_cast<int32_t>(yr) % 4 == 0 && (static_cast<int32_t>(yr) % 100 != 0 || static_cast<int32_t>(yr) % 400 == 0);
 }
 
 /**
@@ -215,7 +215,7 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 		timer->Elapsed(TimerGameCalendar::DAY);
 	}
 
-	if ((TimerGameCalendar::date % 7) == 3) {
+	if ((static_cast<int32_t>(TimerGameCalendar::date) % 7) == 3) {
 		for (auto timer : timers) {
 			timer->Elapsed(TimerGameCalendar::WEEK);
 		}

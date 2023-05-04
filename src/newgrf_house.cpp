@@ -296,7 +296,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 		case 0x40: return (IsTileType(this->tile, MP_HOUSE) ? GetHouseBuildingStage(this->tile) : 0) | TileHash2Bit(TileX(this->tile), TileY(this->tile)) << 2;
 
 		/* Building age. */
-		case 0x41: return IsTileType(this->tile, MP_HOUSE) ? GetHouseAge(this->tile) : 0;
+		case 0x41: return static_cast<int32_t>(IsTileType(this->tile, MP_HOUSE) ? GetHouseAge(this->tile) : 0);
 
 		/* Town zone */
 		case 0x42: return GetTownRadiusGroup(this->town, this->tile);

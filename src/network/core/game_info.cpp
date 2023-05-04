@@ -227,8 +227,8 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
 	}
 
 	/* NETWORK_GAME_INFO_VERSION = 3 */
-	p->Send_uint32(info->game_date);
-	p->Send_uint32(info->start_date);
+	p->Send_uint32(static_cast<int32_t>(info->game_date));
+	p->Send_uint32(static_cast<int32_t>(info->start_date));
 
 	/* NETWORK_GAME_INFO_VERSION = 2 */
 	p->Send_uint8 (info->companies_max);
@@ -323,8 +323,8 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 		}
 
 		case 3:
-			info->game_date      = Clamp(p->Recv_uint32(), 0, MAX_DATE);
-			info->start_date     = Clamp(p->Recv_uint32(), 0, MAX_DATE);
+			info->game_date      = Clamp(p->Recv_uint32(), 0, static_cast<int32_t>(MAX_DATE));
+			info->start_date     = Clamp(p->Recv_uint32(), 0, static_cast<int32_t>(MAX_DATE));
 			FALLTHROUGH;
 
 		case 2:

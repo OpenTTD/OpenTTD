@@ -311,7 +311,7 @@
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->age;
+	return (int32_t)::Vehicle::Get(vehicle_id)->age;
 }
 
 /* static */ SQInteger ScriptVehicle::GetWagonAge(VehicleID vehicle_id, SQInteger wagon)
@@ -323,21 +323,21 @@
 	if (v->type == VEH_TRAIN) {
 		while (wagon-- > 0) v = ::Train::From(v)->GetNextUnit();
 	}
-	return v->age;
+	return (int32_t)v->age;
 }
 
 /* static */ SQInteger ScriptVehicle::GetMaxAge(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->max_age;
+	return (int32_t)::Vehicle::Get(vehicle_id)->max_age;
 }
 
 /* static */ SQInteger ScriptVehicle::GetAgeLeft(VehicleID vehicle_id)
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->max_age - ::Vehicle::Get(vehicle_id)->age;
+	return (int32_t)(::Vehicle::Get(vehicle_id)->max_age - ::Vehicle::Get(vehicle_id)->age);
 }
 
 /* static */ SQInteger ScriptVehicle::GetCurrentSpeed(VehicleID vehicle_id)

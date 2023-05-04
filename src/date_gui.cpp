@@ -91,9 +91,9 @@ struct SetDateWindow : Window {
 			case WID_SD_YEAR:
 				for (TimerGameCalendar::Year i = this->min_year; i <= this->max_year; i++) {
 					SetDParam(0, i);
-					list.emplace_back(new DropDownListStringItem(STR_JUST_INT, i, false));
+					list.emplace_back(new DropDownListStringItem(STR_JUST_INT, static_cast<int32_t>(i), false));
 				}
-				selected = this->date.year;
+				selected = static_cast<int32_t>(this->date.year);
 				break;
 		}
 

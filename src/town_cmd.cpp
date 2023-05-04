@@ -595,7 +595,7 @@ static void TileLoop_Town(TileIndex tile)
 				/* Binomial distribution per tick, by a series of coin flips */
 				/* Reduce generation rate to a 1/4, using tile bits to spread out distribution.
 				 * As tick counter is incremented by 256 between each call, we ignore the lower 8 bits. */
-				if (GB(TimerGameTick::counter, 8, 2) == GB(tile, 0, 2)) {
+				if (GB(TimerGameTick::counter, 8, 2) == GB(static_cast<uint32_t>(tile), 0, 2)) {
 					/* Make a bitmask with up to 32 bits set, one for each potential pax */
 					int genmax = (hs->population + 7) / 8;
 					uint32_t genmask = (genmax >= 32) ? 0xFFFFFFFF : ((1 << genmax) - 1);
@@ -871,7 +871,7 @@ RoadType GetTownRoadType(const Town *t)
 		if (!HasBit(rti->flags, ROTF_TOWN_BUILD)) continue;
 
 		/* Not yet introduced at this date. */
-		if (IsInsideMM(rti->introduction_date, 0, MAX_DATE) && rti->introduction_date > TimerGameCalendar::date) continue;
+		if (IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(MAX_DATE)) && rti->introduction_date > TimerGameCalendar::date) continue;
 
 		if (best != nullptr) {
 			if ((rti->max_speed == 0 ? assume_max_speed : rti->max_speed) < (best->max_speed == 0 ? assume_max_speed : best->max_speed)) continue;

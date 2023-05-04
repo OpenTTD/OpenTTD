@@ -139,7 +139,7 @@
 	if (!IsValidEngine(engine_id)) return -1;
 	if (GetVehicleType(engine_id) == ScriptVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
 
-	return ::Engine::Get(engine_id)->GetLifeLengthInDays();
+	return (int32_t)::Engine::Get(engine_id)->GetLifeLengthInDays();
 }
 
 /* static */ Money ScriptEngine::GetRunningCost(EngineID engine_id)
@@ -179,7 +179,7 @@
 {
 	if (!IsValidEngine(engine_id)) return ScriptDate::DATE_INVALID;
 
-	return (ScriptDate::Date)::Engine::Get(engine_id)->intro_date;
+	return (ScriptDate::Date)(int32_t)::Engine::Get(engine_id)->intro_date;
 }
 
 /* static */ ScriptVehicle::VehicleType ScriptEngine::GetVehicleType(EngineID engine_id)
