@@ -21,7 +21,7 @@
  * Check if the API version provided by the Game is supported.
  * @param api_version The API version as provided by the Game.
  */
-static bool CheckAPIVersion(const char *api_version)
+static bool CheckAPIVersion(const std::string &api_version)
 {
 	static const std::set<std::string> versions = { "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13", "14" };
 	return versions.find(api_version) != versions.end();
@@ -73,7 +73,7 @@ template <> const char *GetClassName<GameInfo, ScriptType::GS>() { return "GSInf
 	}
 	/* Try to get the API version the AI is written for. */
 	if (!info->CheckMethod("GetAPIVersion")) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
 	if (!CheckAPIVersion(info->api_version)) {
 		Debug(script, 1, "Loading info.nut from ({}.{}): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
 		return SQ_ERROR;
@@ -88,14 +88,8 @@ template <> const char *GetClassName<GameInfo, ScriptType::GS>() { return "GSInf
 
 GameInfo::GameInfo() :
 	min_loadable_version(0),
-	is_developer_only(false),
-	api_version(nullptr)
+	is_developer_only(false)
 {
-}
-
-GameInfo::~GameInfo()
-{
-	free(this->api_version);
 }
 
 bool GameInfo::CanLoadFromVersion(int version) const

@@ -51,7 +51,6 @@ static void PrintFunc(bool error_msg, const std::string &message)
 
 ScriptInstance::ScriptInstance(const char *APIName) :
 	engine(nullptr),
-	versionAPI(nullptr),
 	controller(nullptr),
 	storage(nullptr),
 	instance(nullptr),
@@ -113,10 +112,9 @@ void ScriptInstance::RegisterAPI()
 	squirrel_register_std(this->engine);
 }
 
-bool ScriptInstance::LoadCompatibilityScripts(const char *api_version, Subdirectory dir)
+bool ScriptInstance::LoadCompatibilityScripts(const std::string &api_version, Subdirectory dir)
 {
-	char script_name[32];
-	seprintf(script_name, lastof(script_name), "compat_%s.nut", api_version);
+	std::string script_name = fmt::format("compat_{}.nut", api_version);
 	for (Searchpath sp : _valid_searchpaths) {
 		std::string buf = FioGetDirectory(sp, dir);
 		buf += script_name;
