@@ -619,7 +619,7 @@ bool ScriptInstance::IsPaused()
 	}
 
 	if (std::holds_alternative<std::string>(value)) {
-		sq_pushstring(vm, std::get<std::string>(value).c_str(), -1);
+		sq_pushstring(vm, std::get<std::string>(value), -1);
 		return true;
 	}
 
