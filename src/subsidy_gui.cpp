@@ -12,7 +12,6 @@
 #include "town.h"
 #include "window_gui.h"
 #include "strings_func.h"
-#include "date_func.h"
 #include "timer/timer_game_calendar.h"
 #include "viewport_func.h"
 #include "gui.h"
@@ -143,8 +142,8 @@ struct SubsidyListWindow : Window {
 	{
 		if (widget != WID_SUL_PANEL) return;
 
-		YearMonthDay ymd;
-		ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+		TimerGameCalendar::YearMonthDay ymd;
+		TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 

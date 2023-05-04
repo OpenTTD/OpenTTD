@@ -9,11 +9,11 @@
 
 #include "stdafx.h"
 #include "strings_func.h"
-#include "date_func.h"
 #include "timer/timer_game_calendar.h"
 #include "window_func.h"
 #include "window_gui.h"
 #include "date_gui.h"
+#include "date_type.h"
 #include "core/geometry_func.hpp"
 
 #include "widgets/dropdown_type.h"
@@ -26,7 +26,7 @@
 struct SetDateWindow : Window {
 	SetDateCallback *callback; ///< Callback to call when a date has been selected
 	void *callback_data;       ///< Callback data pointer.
-	YearMonthDay date; ///< The currently selected date
+	TimerGameCalendar::YearMonthDay date; ///< The currently selected date
 	TimerGameCalendar::Year min_year; ///< The minimum year in the year dropdown
 	TimerGameCalendar::Year max_year; ///< The maximum year (inclusive) in the year dropdown
 
@@ -52,7 +52,7 @@ struct SetDateWindow : Window {
 		this->InitNested(window_number);
 
 		if (initial_date == 0) initial_date = TimerGameCalendar::date;
-		ConvertDateToYMD(initial_date, &this->date);
+		TimerGameCalendar::ConvertDateToYMD(initial_date, &this->date);
 		this->date.year = Clamp(this->date.year, min_year, max_year);
 	}
 
@@ -149,7 +149,7 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_SET_DATE:
-				if (this->callback != nullptr) this->callback(this, ConvertYMDToDate(this->date.year, this->date.month, this->date.day), this->callback_data);
+				if (this->callback != nullptr) this->callback(this, TimerGameCalendar::ConvertYMDToDate(this->date.year, this->date.month, this->date.day), this->callback_data);
 				this->Close();
 				break;
 		}

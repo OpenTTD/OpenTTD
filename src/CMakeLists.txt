@@ -115,8 +115,6 @@ add_files(
     crashlog.h
     currency.cpp
     currency.h
-    date.cpp
-    date_func.h
     date_gui.cpp
     date_gui.h
     date_type.h

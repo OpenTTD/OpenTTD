@@ -23,7 +23,6 @@
 #include "strings_func.h"
 #include "rev.h"
 #include "core/endian_func.hpp"
-#include "date_func.h"
 #include "timer/timer_game_calendar.h"
 #include "vehicle_base.h"
 #include "engine_base.h"
@@ -428,8 +427,8 @@ static char *FormatBytes(char *buff, int64 number, const char *last)
 
 static char *FormatYmdString(char *buff, TimerGameCalendar::Date date, const char *last, uint case_index)
 {
-	YearMonthDay ymd;
-	ConvertDateToYMD(date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd;
+	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 
 	int64 args[] = {ymd.day + STR_DAY_NUMBER_1ST - 1, STR_MONTH_ABBREV_JAN + ymd.month, ymd.year};
 	StringParameters tmp_params(args);
@@ -438,8 +437,8 @@ static char *FormatYmdString(char *buff, TimerGameCalendar::Date date, const cha
 
 static char *FormatMonthAndYear(char *buff, TimerGameCalendar::Date date, const char *last, uint case_index)
 {
-	YearMonthDay ymd;
-	ConvertDateToYMD(date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd;
+	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 
 	int64 args[] = {STR_MONTH_JAN + ymd.month, ymd.year};
 	StringParameters tmp_params(args);
@@ -448,8 +447,8 @@ static char *FormatMonthAndYear(char *buff, TimerGameCalendar::Date date, const 
 
 static char *FormatTinyOrISODate(char *buff, TimerGameCalendar::Date date, StringID str, const char *last)
 {
-	YearMonthDay ymd;
-	ConvertDateToYMD(date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd;
+	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 
 	/* Day and month are zero-padded with ZEROFILL_NUM, hence the two 2s. */
 	int64 args[] = {ymd.day, 2, ymd.month + 1, 2, ymd.year};

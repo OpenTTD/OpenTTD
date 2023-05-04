@@ -12,7 +12,6 @@
 #include "saveload.h"
 #include "compat/misc_sl_compat.h"
 
-#include "../date_func.h"
 #include "../timer/timer_game_calendar.h"
 #include "../zoom_func.h"
 #include "../window_gui.h"
@@ -21,6 +20,7 @@
 #include "../gfx_func.h"
 #include "../core/random_func.hpp"
 #include "../fios.h"
+#include "../date_type.h"
 #include "../timer/timer.h"
 #include "../timer/timer_game_tick.h"
 

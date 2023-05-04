@@ -17,7 +17,6 @@
 #include "strings_func.h"
 #include "core/random_func.hpp"
 #include "window_func.h"
-#include "date_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
 #include "ai/ai.hpp"
@@ -663,8 +662,8 @@ void SetYearEngineAgingStops()
 		if (e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON) continue;
 
 		/* Base year ending date on half the model life */
-		YearMonthDay ymd;
-		ConvertDateToYMD(ei->base_intro + (ei->lifelength * DAYS_IN_LEAP_YEAR) / 2, &ymd);
+		TimerGameCalendar::YearMonthDay ymd;
+		TimerGameCalendar::ConvertDateToYMD(ei->base_intro + (ei->lifelength * DAYS_IN_LEAP_YEAR) / 2, &ymd);
 
 		_year_engine_aging_stops = std::max(_year_engine_aging_stops, ymd.year);
 	}
@@ -698,7 +697,7 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32 seed
 	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
 	 * of engines in early starting games.
 	 * Note: TTDP uses fixed 1922 */
-	e->intro_date = ei->base_intro <= ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (TimerGameCalendar::Date)GB(r, 0, 9) + ei->base_intro;
+	e->intro_date = ei->base_intro <= TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (TimerGameCalendar::Date)GB(r, 0, 9) + ei->base_intro;
 	if (e->intro_date <= TimerGameCalendar::date) {
 		e->age = (aging_date - e->intro_date) >> 5;
 		e->company_avail = MAX_UVALUE(CompanyMask);
@@ -745,7 +744,7 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32 seed
 void StartupEngines()
 {
 	/* Aging of vehicles stops, so account for that when starting late */
-	const TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date, ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
+	const TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date, TimerGameCalendar::ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
 	uint32 seed = Random();
 
 	for (Engine *e : Engine::Iterate()) {

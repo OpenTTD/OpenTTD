@@ -27,7 +27,6 @@
 #include "water.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "animated_tile_func.h"

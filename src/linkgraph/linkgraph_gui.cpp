@@ -12,7 +12,7 @@
 #include "../window_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "../viewport_func.h"
 #include "../zoom_func.h"
 #include "../smallmap_gui.h"

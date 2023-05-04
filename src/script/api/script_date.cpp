@@ -9,7 +9,6 @@
 
 #include "../../stdafx.h"
 #include "script_date.hpp"
-#include "../../date_func.h"
 #include "../../timer/timer_game_calendar.h"
 
 #include <time.h>
@@ -30,8 +29,8 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
-	::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd;
+	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 	return ymd.year;
 }
 
@@ -39,8 +38,8 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
-	::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd;
+	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 	return ymd.month + 1;
 }
 
@@ -48,8 +47,8 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
-	::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd;
+	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 	return ymd.day;
 }
 
@@ -59,7 +58,7 @@
 	if (day_of_month < 1 || day_of_month > 31) return DATE_INVALID;
 	if (year < 0 || year > MAX_YEAR) return DATE_INVALID;
 
-	return (ScriptDate::Date)::ConvertYMDToDate(year, month - 1, day_of_month);
+	return (ScriptDate::Date)::TimerGameCalendar::ConvertYMDToDate(year, month - 1, day_of_month);
 }
 
 /* static */ SQInteger ScriptDate::GetSystemTime()

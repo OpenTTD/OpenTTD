@@ -23,7 +23,7 @@
 #include "string_func.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
 #include "widgets/dropdown_func.h"
 #include "engine_gui.h"
@@ -920,8 +920,8 @@ void TestedEngineDetails::FillDefaultCapacities(const Engine *e)
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, TestedEngineDetails &te)
 {
 	const Engine *e = Engine::Get(engine_number);
-	YearMonthDay ymd;
-	ConvertDateToYMD(e->intro_date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd;
+	TimerGameCalendar::ConvertDateToYMD(e->intro_date, &ymd);
 	bool refittable = IsArticulatedVehicleRefittable(engine_number);
 	bool articulated_cargo = false;
 

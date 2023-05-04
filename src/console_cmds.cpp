@@ -29,7 +29,6 @@
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_func.h"
-#include "date_func.h"
 #include "timer/timer_game_calendar.h"
 #include "company_func.h"
 #include "gamelog.h"
@@ -1449,8 +1448,8 @@ DEF_CONSOLE_CMD(ConGetDate)
 		return true;
 	}
 
-	YearMonthDay ymd;
-	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd;
+	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 	IConsolePrint(CC_DEFAULT, "Date: {:04d}-{:02d}-{:02d}", ymd.year, ymd.month + 1, ymd.day);
 	return true;
 }

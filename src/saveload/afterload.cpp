@@ -22,7 +22,6 @@
 #include "../clear_map.h"
 #include "../vehicle_func.h"
 #include "../string_func.h"
-#include "../date_func.h"
 #include "../roadveh.h"
 #include "../roadveh_cmd.h"
 #include "../train.h"
@@ -59,6 +58,7 @@
 #include "../ship.h"
 #include "../water.h"
 #include "../timer/timer.h"
+#include "../timer/timer_game_calendar.h"
 #include "../timer/timer_game_tick.h"
 
 #include "saveload_internal.h"

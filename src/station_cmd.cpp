@@ -29,7 +29,7 @@
 #include "water.h"
 #include "strings_func.h"
 #include "clear_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
 #include "string_func.h"
 #include "animated_tile_func.h"

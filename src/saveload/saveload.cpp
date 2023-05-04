@@ -31,7 +31,7 @@
 #include "../core/endian_func.hpp"
 #include "../vehicle_base.h"
 #include "../company_func.h"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "../autoreplace_base.h"
 #include "../roadstop_base.h"
 #include "../linkgraph/linkgraph.h"

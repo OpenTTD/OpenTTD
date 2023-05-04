@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "crashlog.h"
 #include "gamelog.h"
-#include "date_func.h"
 #include "timer/timer_game_calendar.h"
 #include "map_func.h"
 #include "rev.h"
@@ -319,8 +318,8 @@ char *CrashLog::LogRecentNews(char *buffer, const char *last) const
 
 	int i = 0;
 	for (NewsItem *news = _latest_news; i < 32 && news != nullptr; news = news->prev, i++) {
-		YearMonthDay ymd;
-		ConvertDateToYMD(news->date, &ymd);
+		TimerGameCalendar::YearMonthDay ymd;
+		TimerGameCalendar::ConvertDateToYMD(news->date, &ymd);
 		buffer += seprintf(buffer, last, "(%i-%02i-%02i) StringID: %u, Type: %u, Ref1: %u, %u, Ref2: %u, %u\n",
 		                   ymd.year, ymd.month + 1, ymd.day, news->string_id, news->type,
 		                   news->reftype1, news->ref1, news->reftype2, news->ref2);
@@ -359,8 +358,8 @@ char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 	buffer += seprintf(buffer, last, "*** OpenTTD Crash Report ***\n\n");
 	buffer += UTCTime::Format(buffer, last, "Crash at: %Y-%m-%d %H:%M:%S (UTC)\n");
 
-	YearMonthDay ymd;
-	ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd;
+	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 	buffer += seprintf(buffer, last, "In game date: %i-%02i-%02i (%i)\n\n", ymd.year, ymd.month + 1, ymd.day, TimerGameCalendar::date_fract);
 
 	buffer = this->LogError(buffer, last, CrashLog::message.c_str());

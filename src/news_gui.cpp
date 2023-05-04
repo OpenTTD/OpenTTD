@@ -12,8 +12,6 @@
 #include "viewport_func.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "date_func.h"
-#include "timer/timer_game_calendar.h"
 #include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "vehicle_gui.h"
@@ -38,6 +36,7 @@
 #include "news_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "timer/timer_game_calendar.h"
 
 #include "widgets/news_widget.h"
 
@@ -1155,7 +1154,7 @@ struct MessageHistoryWindow : Window {
 
 			/* Months are off-by-one, so it's actually 8. Not using
 			 * month 12 because the 1 is usually less wide. */
-			SetDParam(0, ConvertYMDToDate(ORIGINAL_MAX_YEAR, 7, 30));
+			SetDParam(0, TimerGameCalendar::ConvertYMDToDate(ORIGINAL_MAX_YEAR, 7, 30));
 			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width + WidgetDimensions::scaled.hsep_wide;
 
 			size->height = 4 * resize->height + WidgetDimensions::scaled.framerect.Vertical(); // At least 4 lines are visible.

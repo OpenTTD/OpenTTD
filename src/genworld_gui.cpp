@@ -14,7 +14,7 @@
 #include "network/network.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "sound_func.h"
 #include "fios.h"
 #include "string_func.h"
@@ -437,7 +437,7 @@ struct GenerateLandscapeWindow : public Window {
 	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
-			case WID_GL_START_DATE_TEXT:      SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1)); break;
+			case WID_GL_START_DATE_TEXT:      SetDParam(0, TimerGameCalendar::ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1)); break;
 			case WID_GL_MAPSIZE_X_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_x); break;
 			case WID_GL_MAPSIZE_Y_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_y); break;
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT: SetDParam(0, _settings_newgame.game_creation.heightmap_height); break;
@@ -600,7 +600,7 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_START_DATE_TEXT:
-				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
+				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 0, 1));
 				d = GetStringBoundingBox(STR_BLACK_DATE_LONG);
 				break;
 
@@ -1107,7 +1107,7 @@ struct CreateScenarioWindow : public Window
 	{
 		switch (widget) {
 			case WID_CS_START_DATE_TEXT:
-				SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
+				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
 				break;
 
 			case WID_CS_MAPSIZE_X_PULLDOWN:
@@ -1144,7 +1144,7 @@ struct CreateScenarioWindow : public Window
 		StringID str = STR_JUST_INT;
 		switch (widget) {
 			case WID_CS_START_DATE_TEXT:
-				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
+				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 0, 1));
 				str = STR_BLACK_DATE_LONG;
 				break;
 
