@@ -248,7 +248,7 @@ public:
 
 protected:
 	class Squirrel *engine;               ///< A wrapper around the squirrel vm.
-	const char *versionAPI;               ///< Current API used by this script.
+	std::string versionAPI;               ///< Current API used by this script.
 
 	/**
 	 * Register all API functions to the VM.
@@ -261,7 +261,7 @@ protected:
 	 * @param dir Subdirectory to find the scripts in
 	 * @return true iff script loading should proceed
 	 */
-	bool LoadCompatibilityScripts(const char *api_version, Subdirectory dir);
+	bool LoadCompatibilityScripts(const std::string &api_version, Subdirectory dir);
 
 	/**
 	 * Tell the script it died.
