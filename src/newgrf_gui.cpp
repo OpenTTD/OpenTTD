@@ -545,8 +545,8 @@ struct NewGRFTextfileWindow : public TextfileWindow {
 
 	NewGRFTextfileWindow(TextfileType file_type, const GRFConfig *c) : TextfileWindow(file_type), grf_config(c)
 	{
-		const char *textfile = this->grf_config->GetTextfile(file_type);
-		this->LoadTextfile(textfile, NEWGRF_DIR);
+		auto textfile = this->grf_config->GetTextfile(file_type);
+		this->LoadTextfile(textfile.value(), NEWGRF_DIR);
 	}
 
 	void SetStringParameters(int widget) const override
@@ -1285,7 +1285,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		const GRFConfig *selected_config = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
-			this->SetWidgetDisabledState(WID_NS_NEWGRF_TEXTFILE + tft, selected_config == nullptr || selected_config->GetTextfile(tft) == nullptr);
+			this->SetWidgetDisabledState(WID_NS_NEWGRF_TEXTFILE + tft, selected_config == nullptr || !selected_config->GetTextfile(tft).has_value());
 		}
 		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || StrEmpty(selected_config->GetURL()));
 

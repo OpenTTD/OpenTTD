@@ -184,9 +184,9 @@ public:
 	 * Search a textfile file next to this script.
 	 * @param type The type of the textfile to search for.
 	 * @param slot #CompanyID to check status of.
-	 * @return The filename for the textfile, \c nullptr otherwise.
+	 * @return The filename for the textfile.
 	 */
-	const char *GetTextfile(TextfileType type, CompanyID slot) const;
+	std::optional<std::string> GetTextfile(TextfileType type, CompanyID slot) const;
 
 	void SetToLoadData(ScriptInstance::ScriptData *data);
 	ScriptInstance::ScriptData *GetToLoadData();

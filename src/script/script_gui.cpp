@@ -643,11 +643,11 @@ struct ScriptTextfileWindow : public TextfileWindow {
 
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
-		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
-		if (textfile == nullptr) {
+		auto textfile = GetConfig(slot)->GetTextfile(file_type, slot);
+		if (!textfile.has_value()) {
 			this->Close();
 		} else {
-			this->LoadTextfile(textfile, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
+			this->LoadTextfile(textfile.value(), (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
 		}
 	}
 };

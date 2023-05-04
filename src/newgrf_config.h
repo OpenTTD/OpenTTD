@@ -17,6 +17,7 @@
 #include "fileio_type.h"
 #include "textfile_type.h"
 #include "newgrf_text.h"
+#include <optional>
 
 /** GRF config bit flags */
 enum GCF_Flags {
@@ -184,7 +185,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 
 	void CopyParams(const GRFConfig &src);
 
-	const char *GetTextfile(TextfileType type) const;
+	std::optional<std::string> GetTextfile(TextfileType type) const;
 	const char *GetName() const;
 	const char *GetDescription() const;
 	const char *GetURL() const;

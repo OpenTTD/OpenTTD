@@ -285,7 +285,7 @@ struct AIConfigWindow : public Window {
 		this->SetWidgetDisabledState(WID_AIC_MOVE_DOWN, this->selected_slot == INVALID_COMPANY || !IsEditable((CompanyID)(this->selected_slot + 1)));
 
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
-			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == INVALID_COMPANY || (AIConfig::GetConfig(this->selected_slot)->GetTextfile(tft, this->selected_slot) == nullptr));
+			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == INVALID_COMPANY || !AIConfig::GetConfig(this->selected_slot)->GetTextfile(tft, this->selected_slot).has_value());
 		}
 	}
 };

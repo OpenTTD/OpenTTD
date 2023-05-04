@@ -785,9 +785,9 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last)
 /**
  * Search a textfile file next to this NewGRF.
  * @param type The type of the textfile to search for.
- * @return The filename for the textfile, \c nullptr otherwise.
+ * @return The filename for the textfile.
  */
-const char *GRFConfig::GetTextfile(TextfileType type) const
+std::optional<std::string> GRFConfig::GetTextfile(TextfileType type) const
 {
-	return ::GetTextfile(type, NEWGRF_DIR, this->filename.c_str());
+	return ::GetTextfile(type, NEWGRF_DIR, this->filename);
 }

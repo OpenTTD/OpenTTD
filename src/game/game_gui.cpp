@@ -405,7 +405,7 @@ struct GSConfigWindow : public Window {
 		this->SetWidgetDisabledState(WID_GSC_CHANGE, (_game_mode == GM_NORMAL) || !IsEditable());
 
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
-			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, GameConfig::GetConfig()->GetTextfile(tft, (CompanyID)OWNER_DEITY) == nullptr);
+			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, !GameConfig::GetConfig()->GetTextfile(tft, (CompanyID)OWNER_DEITY).has_value());
 		}
 		this->RebuildVisibleSettings();
 		HideDropDownMenu(this);
