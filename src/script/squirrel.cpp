@@ -442,6 +442,15 @@ bool Squirrel::CallStringMethodStrdup(HSQOBJECT instance, const char *method_nam
 	return true;
 }
 
+bool Squirrel::CallStringMethod(HSQOBJECT instance, const char *method_name, std::string *res, int suspend)
+{
+	HSQOBJECT ret;
+	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
+	if (ret._type != OT_STRING) return false;
+	*res = StrMakeValid(ObjectToString(&ret));
+	return true;
+}
+
 bool Squirrel::CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend)
 {
 	HSQOBJECT ret;
