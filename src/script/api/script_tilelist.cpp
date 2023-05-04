@@ -86,7 +86,7 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 	{
 		bool cargo_accepts = false;
 		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-			if (i->accepts_cargo[j] != CT_INVALID) cargo_accepts = true;
+			if (::IsValidCargoID(i->accepts_cargo[j])) cargo_accepts = true;
 		}
 		if (!cargo_accepts) return;
 	}
@@ -104,7 +104,7 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 		{
 			bool cargo_accepts = false;
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-				if (i->accepts_cargo[j] != CT_INVALID && acceptance[i->accepts_cargo[j]] != 0) cargo_accepts = true;
+				if (::IsValidCargoID(i->accepts_cargo[j]) && acceptance[i->accepts_cargo[j]] != 0) cargo_accepts = true;
 			}
 			if (!cargo_accepts) continue;
 		}
@@ -125,7 +125,7 @@ ScriptTileList_IndustryProducing::ScriptTileList_IndustryProducing(IndustryID in
 	/* Check if this industry produces anything */
 	bool cargo_produces = false;
 	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (i->produced_cargo[j] != CT_INVALID) cargo_produces = true;
+		if (::IsValidCargoID(i->produced_cargo[j])) cargo_produces = true;
 	}
 	if (!cargo_produces) return;
 

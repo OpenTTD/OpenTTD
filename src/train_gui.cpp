@@ -209,7 +209,7 @@ static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int rig
 		SetDParam(3, _settings_game.vehicle.freight_trains);
 		str = FreightWagonMult(item->cargo) > 1 ? STR_VEHICLE_DETAILS_CARGO_FROM_MULT : STR_VEHICLE_DETAILS_CARGO_FROM;
 	} else {
-		str = item->cargo == INVALID_CARGO ? STR_QUANTITY_N_A : STR_VEHICLE_DETAILS_CARGO_EMPTY;
+		str = !IsValidCargoID(item->cargo) ? STR_QUANTITY_N_A : STR_VEHICLE_DETAILS_CARGO_EMPTY;
 	}
 
 	DrawString(left, right, y, str, TC_LIGHT_BLUE);
@@ -248,7 +248,7 @@ static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int right, int y)
 {
 	StringID str;
-	if (item->cargo != INVALID_CARGO) {
+	if (IsValidCargoID(item->cargo)) {
 		SetDParam(0, item->cargo);
 		SetDParam(1, item->capacity);
 		SetDParam(4, item->subtype);
@@ -276,7 +276,7 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary *su
 		CargoSummaryItem new_item;
 		new_item.cargo = v->cargo_cap > 0 ? v->cargo_type : INVALID_CARGO;
 		new_item.subtype = GetCargoSubtypeText(v);
-		if (new_item.cargo == INVALID_CARGO && new_item.subtype == STR_EMPTY) continue;
+		if (!IsValidCargoID(new_item.cargo) && new_item.subtype == STR_EMPTY) continue;
 
 		auto item = std::find(summary->begin(), summary->end(), new_item);
 		if (item == summary->end()) {

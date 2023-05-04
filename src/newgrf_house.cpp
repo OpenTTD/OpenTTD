@@ -340,7 +340,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
 		/* Cargo acceptance history of nearby stations */
 		case 0x64: {
 			CargoID cid = GetCargoTranslation(parameter, this->ro.grffile);
-			if (cid == CT_INVALID) return 0;
+			if (!IsValidCargoID(cid)) return 0;
 
 			/* Extract tile offset. */
 			int8 x_offs = GB(GetRegister(0x100), 0, 8);

@@ -412,7 +412,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject &object, byte variable, b
 	if ((variable >= 0x60 && variable <= 0x65) || variable == 0x69) {
 		CargoID c = GetCargoTranslation(parameter, object.grffile);
 
-		if (c == CT_INVALID) {
+		if (!IsValidCargoID(c)) {
 			switch (variable) {
 				case 0x62: return 0xFFFFFFFF;
 				case 0x64: return 0xFF00;
@@ -931,7 +931,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss != nullptr && HasBit(ss->animation.triggers, trigger)) {
 				CargoID cargo;
-				if (cargo_type == CT_INVALID) {
+				if (!IsValidCargoID(cargo_type)) {
 					cargo = CT_INVALID;
 				} else {
 					cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
@@ -962,7 +962,7 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 	/* Check the cached cargo trigger bitmask to see if we need
 	 * to bother with any further processing. */
 	if (st->cached_cargo_triggers == 0) return;
-	if (cargo_type != CT_INVALID && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
+	if (IsValidCargoID(cargo_type) && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
 
 	uint32 whole_reseed = 0;
 	ETileArea area = ETileArea(st, trigger_tile, tas[trigger]);
@@ -993,7 +993,7 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 				if ((ss->cargo_triggers & ~empty_mask) != 0) continue;
 			}
 
-			if (cargo_type == CT_INVALID || HasBit(ss->cargo_triggers, cargo_type)) {
+			if (!IsValidCargoID(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
 				StationResolverObject object(ss, st, tile, CBID_RANDOM_TRIGGER, 0);
 				object.waiting_triggers = st->waiting_triggers;
 

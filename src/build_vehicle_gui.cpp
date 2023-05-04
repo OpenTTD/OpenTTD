@@ -1328,7 +1328,7 @@ struct BuildVehicleWindow : Window {
 				this->te.cost          = ret.GetCost() - e->GetCost();
 				this->te.capacity      = refit_capacity;
 				this->te.mail_capacity = refit_mail;
-				this->te.cargo         = (cargo == CT_INVALID) ? e->GetDefaultCargoType() : cargo;
+				this->te.cargo         = !IsValidCargoID(cargo) ? e->GetDefaultCargoType() : cargo;
 				this->te.all_capacities = cargo_capacities;
 				return;
 			}

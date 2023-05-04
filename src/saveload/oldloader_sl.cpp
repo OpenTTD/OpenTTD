@@ -1440,7 +1440,7 @@ static bool LoadOldSubsidy(LoadgameState *ls, int num)
 {
 	Subsidy *s = new (num) Subsidy();
 	bool ret = LoadChunk(ls, s, subsidy_chunk);
-	if (s->cargo_type == CT_INVALID) delete s;
+	if (!IsValidCargoID(s->cargo_type)) delete s;
 	return ret;
 }
 

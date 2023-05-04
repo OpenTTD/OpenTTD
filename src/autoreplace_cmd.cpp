@@ -238,7 +238,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 	CargoID cargo_type;
 	if (IsArticulatedVehicleCarryingDifferentCargoes(v, &cargo_type)) return CT_INVALID; // We cannot refit to mixed cargoes in an automated way
 
-	if (cargo_type == CT_INVALID) {
+	if (!IsValidCargoID(cargo_type)) {
 		if (v->type != VEH_TRAIN) return CT_NO_REFIT; // If the vehicle does not carry anything at all, every replacement is fine.
 
 		if (!part_of_chain) return CT_NO_REFIT;
@@ -321,7 +321,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 
 	/* Does it need to be refitted */
 	CargoID refit_cargo = GetNewCargoTypeForReplace(old_veh, e, part_of_chain);
-	if (refit_cargo == CT_INVALID) {
+	if (!IsValidCargoID(refit_cargo)) {
 		if (!IsLocalCompany()) return CommandCost();
 
 		SetDParam(0, old_veh->index);

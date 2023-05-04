@@ -95,16 +95,16 @@ std::tuple<CommandCost, VehicleID, uint, uint16, CargoArray> CmdBuildVehicle(DoC
 	if (!IsEngineBuildable(eid, type, _current_company)) return { CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + type), INVALID_VEHICLE, 0, 0, {} };
 
 	/* Validate the cargo type. */
-	if (cargo >= NUM_CARGO && cargo != CT_INVALID) return { CMD_ERROR, INVALID_VEHICLE, 0, 0, {} };
+	if (cargo >= NUM_CARGO && IsValidCargoID(cargo)) return { CMD_ERROR, INVALID_VEHICLE, 0, 0, {} };
 
 	const Engine *e = Engine::Get(eid);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	/* Engines without valid cargo should not be available */
 	CargoID default_cargo = e->GetDefaultCargoType();
-	if (default_cargo == CT_INVALID) return { CMD_ERROR, INVALID_VEHICLE, 0, 0, {} };
+	if (!IsValidCargoID(default_cargo)) return { CMD_ERROR, INVALID_VEHICLE, 0, 0, {} };
 
-	bool refitting = cargo != CT_INVALID && cargo != default_cargo;
+	bool refitting = IsValidCargoID(cargo) && cargo != default_cargo;
 
 	/* Check whether the number of vehicles we need to build can be built according to pool space. */
 	uint num_vehicles;
@@ -951,7 +951,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlag flags, TileInde
 				const Engine *e = v->GetEngine();
 				CargoID initial_cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
 
-				if (v->cargo_type != initial_cargo && initial_cargo != CT_INVALID) {
+				if (v->cargo_type != initial_cargo && IsValidCargoID(initial_cargo)) {
 					bool dummy;
 					total_cost.AddCost(GetRefitCost(nullptr, v->engine_type, v->cargo_type, v->cargo_subtype, &dummy));
 				}
