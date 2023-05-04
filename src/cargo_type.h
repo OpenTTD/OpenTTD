@@ -70,9 +70,9 @@ enum CargoType {
 };
 
 /** Test whether cargo type is not CT_INVALID */
-inline bool IsCargoTypeValid(CargoType t) { return t != CT_INVALID; }
+inline bool IsValidCargoType(CargoType t) { return t != CT_INVALID; }
 /** Test whether cargo type is not CT_INVALID */
-inline bool IsCargoIDValid(CargoID t) { return t != CT_INVALID; }
+inline bool IsValidCargoID(CargoID t) { return t != CT_INVALID; }
 
 typedef uint64 CargoTypes;
 
