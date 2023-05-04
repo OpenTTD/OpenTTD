@@ -43,8 +43,8 @@ struct ContentTextfileWindow : public TextfileWindow {
 
 	ContentTextfileWindow(TextfileType file_type, const ContentInfo *ci) : TextfileWindow(file_type), ci(ci)
 	{
-		const char *textfile = this->ci->GetTextfile(file_type);
-		this->LoadTextfile(textfile, GetContentInfoSubDir(this->ci->type));
+		auto textfile = this->ci->GetTextfile(file_type);
+		this->LoadTextfile(textfile.value(), GetContentInfoSubDir(this->ci->type));
 	}
 
 	StringID GetTypeString() const
@@ -998,7 +998,7 @@ public:
 		this->SetWidgetDisabledState(WID_NCL_SELECT_UPDATE, !show_select_upgrade);
 		this->SetWidgetDisabledState(WID_NCL_OPEN_URL, this->selected == nullptr || this->selected->url.empty());
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
-			this->SetWidgetDisabledState(WID_NCL_TEXTFILE + tft, this->selected == nullptr || this->selected->state != ContentInfo::ALREADY_HERE || this->selected->GetTextfile(tft) == nullptr);
+			this->SetWidgetDisabledState(WID_NCL_TEXTFILE + tft, this->selected == nullptr || this->selected->state != ContentInfo::ALREADY_HERE || !this->selected->GetTextfile(tft).has_value());
 		}
 
 		this->GetWidget<NWidgetCore>(WID_NCL_CANCEL)->widget_data = this->filesize_sum == 0 ? STR_AI_SETTINGS_CLOSE : STR_AI_LIST_CANCEL;

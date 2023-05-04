@@ -14,8 +14,9 @@
 #include "strings_func.h"
 #include "textfile_type.h"
 #include "window_gui.h"
+#include <optional>
 
-const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filename);
+std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, const std::string &filename);
 
 /** Window for displaying a textfile */
 struct TextfileWindow : public Window, MissingGlyphSearcher {
@@ -51,7 +52,7 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	bool Monospace() override;
 	void SetFontNames(FontCacheSettings *settings, const char *font_name, const void *os_data) override;
 
-	virtual void LoadTextfile(const char *textfile, Subdirectory dir);
+	virtual void LoadTextfile(const std::string &textfile, Subdirectory dir);
 
 private:
 	uint ReflowContent();
