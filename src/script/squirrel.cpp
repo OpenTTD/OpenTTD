@@ -634,7 +634,7 @@ static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger 
 	return ret;
 }
 
-SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printerror)
+SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool printerror)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -712,7 +712,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 	}
 
 	SQFile f(file, size);
-	if (SQ_SUCCEEDED(sq_compile(vm, func, &f, filename, printerror))) {
+	if (SQ_SUCCEEDED(sq_compile(vm, func, &f, filename.c_str(), printerror))) {
 		FioFCloseFile(file);
 		return SQ_OK;
 	}
@@ -720,7 +720,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 	return SQ_ERROR;
 }
 
-bool Squirrel::LoadScript(HSQUIRRELVM vm, const char *script, bool in_root)
+bool Squirrel::LoadScript(HSQUIRRELVM vm, const std::string &script, bool in_root)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -744,7 +744,7 @@ bool Squirrel::LoadScript(HSQUIRRELVM vm, const char *script, bool in_root)
 	return false;
 }
 
-bool Squirrel::LoadScript(const char *script)
+bool Squirrel::LoadScript(const std::string &script)
 {
 	return LoadScript(this->vm, script);
 }

@@ -84,13 +84,13 @@ public:
 	 * @param script The full script-name to load.
 	 * @return False if loading failed.
 	 */
-	bool LoadScript(const char *script);
-	bool LoadScript(HSQUIRRELVM vm, const char *script, bool in_root = true);
+	bool LoadScript(const std::string &script);
+	bool LoadScript(HSQUIRRELVM vm, const std::string &script, bool in_root = true);
 
 	/**
 	 * Load a file to a given VM.
 	 */
-	SQRESULT LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printerror);
+	SQRESULT LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool printerror);
 
 	/**
 	 * Adds a function to the stack. Depending on the current state this means
