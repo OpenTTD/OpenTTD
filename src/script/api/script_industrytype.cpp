@@ -72,7 +72,7 @@
 
 	ScriptList *list = new ScriptList();
 	for (size_t i = 0; i < lengthof(ins->produced_cargo); i++) {
-		if (ins->produced_cargo[i] != CT_INVALID) list->AddItem(ins->produced_cargo[i]);
+		if (::IsValidCargoID(ins->produced_cargo[i])) list->AddItem(ins->produced_cargo[i]);
 	}
 
 	return list;
@@ -86,7 +86,7 @@
 
 	ScriptList *list = new ScriptList();
 	for (size_t i = 0; i < lengthof(ins->accepts_cargo); i++) {
-		if (ins->accepts_cargo[i] != CT_INVALID) list->AddItem(ins->accepts_cargo[i]);
+		if (::IsValidCargoID(ins->accepts_cargo[i])) list->AddItem(ins->accepts_cargo[i]);
 	}
 
 	return list;

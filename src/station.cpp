@@ -407,7 +407,7 @@ void Station::AddIndustryToDeliver(Industry *ind, TileIndex tile)
 	/* Include only industries that can accept cargo */
 	uint cargo_index;
 	for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
-		if (ind->accepts_cargo[cargo_index] != CT_INVALID) break;
+		if (IsValidCargoID(ind->accepts_cargo[cargo_index])) break;
 	}
 	if (cargo_index >= lengthof(ind->accepts_cargo)) return;
 

@@ -75,7 +75,7 @@
 {
 	EnforceCompanyModeValid(VEHICLE_INVALID);
 	EnforcePrecondition(VEHICLE_INVALID, ScriptEngine::IsBuildable(engine_id));
-	EnforcePrecondition(VEHICLE_INVALID, cargo == CT_INVALID || ScriptCargo::IsValidCargo(cargo));
+	EnforcePrecondition(VEHICLE_INVALID, !::IsValidCargoID(cargo) || ScriptCargo::IsValidCargo(cargo));
 
 	::VehicleType type = ::Engine::Get(engine_id)->type;
 

@@ -184,7 +184,7 @@ bool Engine::CanCarryCargo() const
 
 		default: NOT_REACHED();
 	}
-	return this->GetDefaultCargoType() != CT_INVALID;
+	return IsValidCargoID(this->GetDefaultCargoType());
 }
 
 
@@ -1256,7 +1256,7 @@ bool IsEngineRefittable(EngineID engine)
 	CargoID default_cargo = e->GetDefaultCargoType();
 	CargoTypes default_cargo_mask = 0;
 	SetBit(default_cargo_mask, default_cargo);
-	return default_cargo != CT_INVALID && ei->refit_mask != default_cargo_mask;
+	return IsValidCargoID(default_cargo) && ei->refit_mask != default_cargo_mask;
 }
 
 /**

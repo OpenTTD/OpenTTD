@@ -452,7 +452,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 
 	for (byte i = 0; i < lengthof(itspec->accepts_cargo); i++) {
 		CargoID a = accepts_cargo[i];
-		if (a == CT_INVALID || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
+		if (!IsValidCargoID(a) || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
 
 		/* Add accepted cargo */
 		acceptance[a] += cargo_acceptance[i];
@@ -534,7 +534,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 	for (uint j = 0; j < lengthof(i->produced_cargo_waiting); j++) {
 		uint cw = ClampTo<uint8_t>(i->produced_cargo_waiting[j]);
-		if (cw > indspec->minimal_cargo && i->produced_cargo[j] != CT_INVALID) {
+		if (cw > indspec->minimal_cargo && IsValidCargoID(i->produced_cargo[j])) {
 			i->produced_cargo_waiting[j] -= cw;
 
 			/* fluctuating economy? */
@@ -991,7 +991,7 @@ bool IsTileForestIndustry(TileIndex tile)
 	/* Check for wood production */
 	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
 		/* The industry produces wood. */
-		if (ind->produced_cargo[i] != CT_INVALID && CargoSpec::Get(ind->produced_cargo[i])->label == 'WOOD') return true;
+		if (IsValidCargoID(ind->produced_cargo[i]) && CargoSpec::Get(ind->produced_cargo[i])->label == 'WOOD') return true;
 	}
 
 	return false;
@@ -1867,7 +1867,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 			/* Industries without "unlimited" cargo types support depend on the specific order/slots of cargo types.
 			 * They need to be able to blank out specific slots without aborting the callback sequence,
 			 * and solve this by returning undefined cargo indexes. Skip these. */
-			if (cargo == CT_INVALID && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) continue;
+			if (!IsValidCargoID(cargo) && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) continue;
 			/* Verify valid cargo */
 			if (std::find(indspec->accepts_cargo, endof(indspec->accepts_cargo), cargo) == endof(indspec->accepts_cargo)) {
 				/* Cargo not in spec, error in NewGRF */
@@ -1897,7 +1897,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 			}
 			CargoID cargo = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
 			/* Allow older GRFs to skip slots. */
-			if (cargo == CT_INVALID && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) continue;
+			if (!IsValidCargoID(cargo) && !(indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED)) continue;
 			/* Verify valid cargo */
 			if (std::find(indspec->produced_cargo, endof(indspec->produced_cargo), cargo) == endof(indspec->produced_cargo)) {
 				/* Cargo not in spec, error in NewGRF */
@@ -2420,7 +2420,7 @@ void GenerateIndustries()
 static void UpdateIndustryStatistics(Industry *i)
 {
 	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (i->produced_cargo[j] != CT_INVALID) {
+		if (IsValidCargoID(i->produced_cargo[j])) {
 			byte pct = 0;
 			if (i->this_month_production[j] != 0) {
 				i->last_prod_year = TimerGameCalendar::year;
@@ -2622,7 +2622,7 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
  */
 static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accepts, bool *c_produces)
 {
-	if (cargo == CT_INVALID) return;
+	if (!IsValidCargoID(cargo)) return;
 
 	/* Check for acceptance of cargo */
 	for (byte j = 0; j < lengthof(ind->accepts_cargo); j++) {
@@ -2800,7 +2800,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		} else if (_settings_game.economy.type == ET_SMOOTH) {
 			closeit = !(i->ctlflags & (INDCTL_NO_CLOSURE | INDCTL_NO_PRODUCTION_DECREASE));
 			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-				if (i->produced_cargo[j] == CT_INVALID) continue;
+				if (!IsValidCargoID(i->produced_cargo[j])) continue;
 				uint32 r = Random();
 				int old_prod, new_prod, percent;
 				/* If over 60% is transported, mult is 1, else mult is -1. */

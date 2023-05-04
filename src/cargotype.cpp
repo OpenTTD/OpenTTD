@@ -88,7 +88,7 @@ CargoID GetDefaultCargoID(LandscapeID l, CargoType ct)
 {
 	assert(l < lengthof(_default_climate_cargo));
 
-	if (ct == CT_INVALID) return CT_INVALID;
+	if (!IsValidCargoType(ct)) return CT_INVALID;
 
 	assert(ct < lengthof(_default_climate_cargo[0]));
 	CargoLabel cl = _default_climate_cargo[l][ct];

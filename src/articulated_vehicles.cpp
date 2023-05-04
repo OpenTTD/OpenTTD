@@ -108,7 +108,7 @@ static inline uint16 GetVehicleDefaultCapacity(EngineID engine, CargoID *cargo_t
 	const Engine *e = Engine::Get(engine);
 	CargoID cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
 	if (cargo_type != nullptr) *cargo_type = cargo;
-	if (cargo == CT_INVALID) return 0;
+	if (!IsValidCargoID(cargo)) return 0;
 	return e->GetDisplayDefaultCapacity();
 }
 
@@ -251,8 +251,8 @@ bool IsArticulatedVehicleCarryingDifferentCargoes(const Vehicle *v, CargoID *car
 	CargoID first_cargo = CT_INVALID;
 
 	do {
-		if (v->cargo_type != CT_INVALID && v->GetEngine()->CanCarryCargo()) {
-			if (first_cargo == CT_INVALID) first_cargo = v->cargo_type;
+		if (IsValidCargoID(v->cargo_type) && v->GetEngine()->CanCarryCargo()) {
+			if (!IsValidCargoID(first_cargo)) first_cargo = v->cargo_type;
 			if (first_cargo != v->cargo_type) {
 				if (cargo_type != nullptr) *cargo_type = CT_INVALID;
 				return true;

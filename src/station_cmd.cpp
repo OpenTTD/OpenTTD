@@ -173,7 +173,7 @@ static bool CMSAMine(TileIndex tile)
 	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
 		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine.
 		 * Also the production of passengers and mail is ignored. */
-		if (ind->produced_cargo[i] != CT_INVALID &&
+		if (IsValidCargoID(ind->produced_cargo[i]) &&
 				(CargoSpec::Get(ind->produced_cargo[i])->classes & (CC_LIQUID | CC_PASSENGERS | CC_MAIL)) == 0) {
 			return true;
 		}
@@ -534,7 +534,7 @@ CargoArray GetProductionAroundTiles(TileIndex north_tile, int w, int h, int rad)
 
 		for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
 			CargoID cargo = i->produced_cargo[j];
-			if (cargo != CT_INVALID) produced[cargo]++;
+			if (IsValidCargoID(cargo)) produced[cargo]++;
 		}
 	}
 

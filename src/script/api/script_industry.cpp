@@ -234,7 +234,7 @@
 	Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return ScriptDate::DATE_INVALID;
 
-	if (cargo_type == CT_INVALID) {
+	if (!::IsValidCargoID(cargo_type)) {
 		return (ScriptDate::Date)std::accumulate(std::begin(i->last_cargo_accepted_at), std::end(i->last_cargo_accepted_at), 0, [](TimerGameCalendar::Date a, TimerGameCalendar::Date b) { return std::max(a, b); });
 	} else {
 		int index = i->GetCargoAcceptedIndex(cargo_type);

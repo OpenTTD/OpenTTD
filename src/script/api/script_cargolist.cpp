@@ -31,7 +31,7 @@ ScriptCargoList_IndustryAccepting::ScriptCargoList_IndustryAccepting(IndustryID 
 	Industry *ind = ::Industry::Get(industry_id);
 	for (uint i = 0; i < lengthof(ind->accepts_cargo); i++) {
 		CargoID cargo_id = ind->accepts_cargo[i];
-		if (cargo_id != CT_INVALID) {
+		if (::IsValidCargoID(cargo_id)) {
 			this->AddItem(cargo_id);
 		}
 	}
@@ -44,7 +44,7 @@ ScriptCargoList_IndustryProducing::ScriptCargoList_IndustryProducing(IndustryID 
 	Industry *ind = ::Industry::Get(industry_id);
 	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
 		CargoID cargo_id = ind->produced_cargo[i];
-		if (cargo_id != CT_INVALID) {
+		if (::IsValidCargoID(cargo_id)) {
 			this->AddItem(cargo_id);
 		}
 	}

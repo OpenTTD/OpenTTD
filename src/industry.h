@@ -117,7 +117,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	inline int GetCargoProducedIndex(CargoID cargo) const
 	{
-		if (cargo == CT_INVALID) return -1;
+		if (!IsValidCargoID(cargo)) return -1;
 		const CargoID *pos = std::find(this->produced_cargo, endof(this->produced_cargo), cargo);
 		if (pos == endof(this->produced_cargo)) return -1;
 		return pos - this->produced_cargo;
@@ -125,7 +125,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	inline int GetCargoAcceptedIndex(CargoID cargo) const
 	{
-		if (cargo == CT_INVALID) return -1;
+		if (!IsValidCargoID(cargo)) return -1;
 		const CargoID *pos = std::find(this->accepts_cargo, endof(this->accepts_cargo), cargo);
 		if (pos == endof(this->accepts_cargo)) return -1;
 		return pos - this->accepts_cargo;

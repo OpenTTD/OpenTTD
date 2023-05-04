@@ -964,7 +964,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			case 0x47: { // Vehicle cargo info
 				const Engine *e = Engine::Get(this->self_type);
 				CargoID cargo_type = e->GetDefaultCargoType();
-				if (cargo_type != CT_INVALID) {
+				if (IsValidCargoID(cargo_type)) {
 					const CargoSpec *cs = CargoSpec::Get(cargo_type);
 					return (cs->classes << 16) | (cs->weight << 8) | this->ro.grffile->cargo_map[cargo_type];
 				} else {
