@@ -369,7 +369,7 @@ void RegisterGameTranslation(Squirrel *engine)
 
 	int idx = 0;
 	for (const auto &p : _current_data->string_names) {
-		sq_pushstring(vm, p.c_str(), -1);
+		sq_pushstring(vm, p, -1);
 		sq_pushinteger(vm, idx);
 		sq_rawset(vm, -3);
 		idx++;
