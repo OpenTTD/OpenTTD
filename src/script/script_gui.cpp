@@ -378,7 +378,7 @@ struct ScriptSettingsWindow : public Window {
 			StringID str;
 			TextColour colour;
 			uint idx = 0;
-			if (StrEmpty(config_item.description)) {
+			if (config_item.description.empty()) {
 				str = STR_JUST_STRING;
 				colour = TC_ORANGE;
 			} else {
@@ -396,9 +396,11 @@ struct ScriptSettingsWindow : public Window {
 				} else {
 					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 				}
-				if (config_item.labels != nullptr && config_item.labels->Contains(current_value)) {
+
+				auto config_iterator = config_item.labels.find(current_value);
+				if (config_iterator != config_item.labels.end()) {
 					SetDParam(idx++, STR_JUST_RAW_STRING);
-					SetDParamStr(idx++, config_item.labels->Find(current_value)->second);
+					SetDParamStr(idx++, config_iterator->second);
 				} else {
 					SetDParam(idx++, STR_JUST_INT);
 					SetDParam(idx++, current_value);
@@ -429,7 +431,7 @@ struct ScriptSettingsWindow : public Window {
 
 				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 				for (int i = 0; i < num; i++) it++;
-				const ScriptConfigItem config_item = **it;
+				const ScriptConfigItem &config_item = **it;
 				if (!this->IsEditableItem(config_item)) return;
 
 				if (this->clicked_row != num) {
@@ -468,7 +470,7 @@ struct ScriptSettingsWindow : public Window {
 
 							DropDownList list;
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list.emplace_back(new DropDownListCharStringItem(config_item.labels->Find(i)->second, i, false));
+								list.emplace_back(new DropDownListCharStringItem(config_item.labels.find(i)->second, i, false));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, -1, wi_rect, COLOUR_ORANGE);
@@ -577,7 +579,7 @@ private:
 	{
 		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 		for (int i = 0; i < this->clicked_row; i++) it++;
-		const ScriptConfigItem config_item = **it;
+		const ScriptConfigItem &config_item = **it;
 		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
 		this->script_config->SetSetting(config_item.name, value);
 		this->SetDirty();

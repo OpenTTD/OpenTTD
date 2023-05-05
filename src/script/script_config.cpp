@@ -24,8 +24,7 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 	this->info = (name == nullptr) ? nullptr : this->FindInfo(this->name, version, force_exact_match);
 	this->version = (info == nullptr) ? -1 : info->GetVersion();
 	this->is_random = is_random;
-	if (this->config_list != nullptr) delete this->config_list;
-	this->config_list = (info == nullptr) ? nullptr : new ScriptConfigItemList();
+	this->config_list.reset();
 	this->to_load_data.reset();
 
 	this->ClearConfigList();
@@ -48,7 +47,6 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 	this->name = (config->name == nullptr) ? nullptr : stredup(config->name);
 	this->info = config->info;
 	this->version = config->version;
-	this->config_list = nullptr;
 	this->is_random = config->is_random;
 	this->to_load_data.reset();
 
@@ -64,7 +62,6 @@ ScriptConfig::~ScriptConfig()
 {
 	free(this->name);
 	this->ResetSettings();
-	if (this->config_list != nullptr) delete this->config_list;
 	this->to_load_data.reset();
 }
 
@@ -77,9 +74,9 @@ const ScriptConfigItemList *ScriptConfig::GetConfigList()
 {
 	if (this->info != nullptr) return this->info->GetConfigList();
 	if (this->config_list == nullptr) {
-		this->config_list = new ScriptConfigItemList();
+		this->config_list = std::make_unique<ScriptConfigItemList>();
 	}
-	return this->config_list;
+	return this->config_list.get();
 }
 
 void ScriptConfig::ClearConfigList()
@@ -96,14 +93,14 @@ void ScriptConfig::AnchorUnchangeableSettings()
 	}
 }
 
-int ScriptConfig::GetSetting(const char *name) const
+int ScriptConfig::GetSetting(const std::string &name) const
 {
 	const auto it = this->settings.find(name);
 	if (it == this->settings.end()) return this->info->GetSettingDefaultValue(name);
 	return (*it).second;
 }
 
-void ScriptConfig::SetSetting(const char *name, int value)
+void ScriptConfig::SetSetting(const std::string &name, int value)
 {
 	/* You can only set Script specific settings if an Script is selected. */
 	if (this->info == nullptr) return;
@@ -126,7 +123,7 @@ void ScriptConfig::ResetEditableSettings(bool yet_to_start)
 	if (this->info == nullptr) return ResetSettings();
 
 	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end();) {
-		const ScriptConfigItem *config_item = this->info->GetConfigItem(it->first.c_str());
+		const ScriptConfigItem *config_item = this->info->GetConfigItem(it->first);
 		assert(config_item != nullptr);
 
 		bool editable = yet_to_start || (config_item->flags & SCRIPTCONFIG_INGAME) != 0;

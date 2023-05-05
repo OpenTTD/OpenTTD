@@ -193,7 +193,7 @@ struct GSConfigWindow : public Window {
 					StringID str;
 					TextColour colour;
 					uint idx = 0;
-					if (StrEmpty(config_item.description)) {
+					if (config_item.description.empty()) {
 						str = STR_JUST_STRING;
 						colour = TC_ORANGE;
 					} else {
@@ -211,9 +211,10 @@ struct GSConfigWindow : public Window {
 						} else {
 							DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 						}
-						if (config_item.labels != nullptr && config_item.labels->Contains(current_value)) {
+						auto config_iterator = config_item.labels.find(current_value);
+						if (config_iterator != config_item.labels.end()) {
 							SetDParam(idx++, STR_JUST_RAW_STRING);
-							SetDParamStr(idx++, config_item.labels->Find(current_value)->second);
+							SetDParamStr(idx++, config_iterator->second);
 						} else {
 							SetDParam(idx++, STR_JUST_INT);
 							SetDParam(idx++, current_value);
@@ -311,7 +312,7 @@ struct GSConfigWindow : public Window {
 
 							DropDownList list;
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list.emplace_back(new DropDownListCharStringItem(config_item.labels->Find(i)->second, i, false));
+								list.emplace_back(new DropDownListCharStringItem(config_item.labels.find(i)->second, i, false));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, -1, wi_rect, COLOUR_ORANGE);

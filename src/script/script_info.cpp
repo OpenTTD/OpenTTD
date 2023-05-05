@@ -19,19 +19,6 @@
 
 ScriptInfo::~ScriptInfo()
 {
-	/* Free all allocated strings */
-	for (const auto &item : this->config_list) {
-		free(item.name);
-		free(item.description);
-		if (item.labels != nullptr) {
-			for (auto &lbl_map : *item.labels) {
-				free(lbl_map.second);
-			}
-			delete item.labels;
-		}
-	}
-	this->config_list.clear();
-
 	free(this->author);
 	free(this->name);
 	free(this->short_name);
@@ -112,9 +99,6 @@ bool ScriptInfo::GetSettings()
 SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 {
 	ScriptConfigItem config;
-	memset(&config, 0, sizeof(config));
-	config.max_value = 1;
-	config.step_size = 1;
 	uint items = 0;
 
 	/* Read the table, and find all properties we care about */
@@ -127,21 +111,17 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		if (strcmp(key, "name") == 0) {
 			const SQChar *sqvalue;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
-			char *name = stredup(sqvalue);
-			char *s;
-			StrMakeValidInPlace(name);
 
 			/* Don't allow '=' and ',' in configure setting names, as we need those
 			 *  2 chars to nicely store the settings as a string. */
-			while ((s = strchr(name, '=')) != nullptr) *s = '_';
-			while ((s = strchr(name, ',')) != nullptr) *s = '_';
-			config.name = name;
+			auto replace_with_underscore = [](auto c) { return c == '=' || c == ','; };
+			config.name = StrMakeValid(sqvalue);
+			std::replace_if(config.name.begin(), config.name.end(), replace_with_underscore, '_');
 			items |= 0x001;
 		} else if (strcmp(key, "description") == 0) {
 			const SQChar *sqdescription;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
-			config.description = stredup(sqdescription);
-			StrMakeValidInPlace(const_cast<char *>(config.description));
+			config.description = StrMakeValid(sqdescription);
 			items |= 0x002;
 		} else if (strcmp(key, "min_value") == 0) {
 			SQInteger res;
@@ -218,7 +198,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		return SQ_ERROR;
 	}
 
-	this->config_list.push_back(config);
+	this->config_list.emplace_back(config);
 	return 0;
 }
 
@@ -230,7 +210,7 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 
 	ScriptConfigItem *config = nullptr;
 	for (auto &item : this->config_list) {
-		if (strcmp(item.name, setting_name) == 0) config = &item;
+		if (item.name == setting_name) config = &item;
 	}
 
 	if (config == nullptr) {
@@ -239,9 +219,7 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 		this->engine->ThrowError(error);
 		return SQ_ERROR;
 	}
-	if (config->labels != nullptr) return SQ_ERROR;
-
-	config->labels = new LabelMapping;
+	if (!config->labels.empty()) return SQ_ERROR;
 
 	/* Read the table and find all labels */
 	sq_pushnull(vm);
@@ -262,8 +240,7 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 		int key = atoi(key_string) * sign;
 		StrMakeValidInPlace(const_cast<char *>(label));
 
-		/* !Contains() prevents stredup from leaking. */
-		if (!config->labels->Contains(key)) config->labels->Insert(key, stredup(label));
+		config->labels[key] = label;
 
 		sq_pop(vm, 2);
 	}
@@ -272,7 +249,7 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 	/* Check labels for completeness */
 	config->complete_labels = true;
 	for (int value = config->min_value; value <= config->max_value; value++) {
-		if (!config->labels->Contains(value)) {
+		if (config->labels.find(value) == config->labels.end()) {
 			config->complete_labels = false;
 			break;
 		}
@@ -286,18 +263,18 @@ const ScriptConfigItemList *ScriptInfo::GetConfigList() const
 	return &this->config_list;
 }
 
-const ScriptConfigItem *ScriptInfo::GetConfigItem(const char *name) const
+const ScriptConfigItem *ScriptInfo::GetConfigItem(const std::string &name) const
 {
 	for (const auto &item : this->config_list) {
-		if (strcmp(item.name, name) == 0) return &item;
+		if (item.name == name) return &item;
 	}
 	return nullptr;
 }
 
-int ScriptInfo::GetSettingDefaultValue(const char *name) const
+int ScriptInfo::GetSettingDefaultValue(const std::string &name) const
 {
 	for (const auto &item : this->config_list) {
-		if (strcmp(item.name, name) != 0) continue;
+		if (item.name != name) continue;
 		/* The default value depends on the difficulty level */
 		switch (GetGameSettings().script.settings_profile) {
 			case SP_EASY:   return item.easy_value;
