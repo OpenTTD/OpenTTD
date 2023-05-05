@@ -17,22 +17,22 @@
 
 #include "../../safeguards.h"
 
-/* static */ void ScriptLog::Info(const char *message)
+/* static */ void ScriptLog::Info(const std::string &message)
 {
 	ScriptLog::Log(ScriptLogTypes::LOG_INFO, message);
 }
 
-/* static */ void ScriptLog::Warning(const char *message)
+/* static */ void ScriptLog::Warning(const std::string &message)
 {
 	ScriptLog::Log(ScriptLogTypes::LOG_WARNING, message);
 }
 
-/* static */ void ScriptLog::Error(const char *message)
+/* static */ void ScriptLog::Error(const std::string &message)
 {
 	ScriptLog::Log(ScriptLogTypes::LOG_ERROR, message);
 }
 
-/* static */ void ScriptLog::Log(ScriptLogTypes::ScriptLogType level, const char *message)
+/* static */ void ScriptLog::Log(ScriptLogTypes::ScriptLogType level, const std::string &message)
 {
 	ScriptLogTypes::LogData &logdata = ScriptObject::GetLogData();
 
@@ -43,8 +43,7 @@
 	line.type = level;
 
 	/* Cut string after first \n */
-	const char *newline = strchr(message, '\n');
-	line.text = std::string(message, 0, newline == nullptr ? strlen(message) : newline - message);
+	line.text = message.substr(0, message.find_first_of('\n'));
 
 	char logc;
 
