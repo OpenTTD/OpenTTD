@@ -1187,7 +1187,7 @@ uint32 CompanyInfrastructure::GetTramTotal() const
  * @param dest_company the company to transfer the money to
  * @return the cost of this operation or an error
  */
-CommandCost CmdGiveMoney(DoCommandFlag flags, uint32 money, CompanyID dest_company)
+CommandCost CmdGiveMoney(DoCommandFlag flags, Money money, CompanyID dest_company)
 {
 	if (!_settings_game.economy.give_money) return CMD_ERROR;
 
