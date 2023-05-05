@@ -40,7 +40,7 @@ public:
 	void SetDummyAI(class AIInfo *info);
 
 protected:
-	void GetScriptName(ScriptInfo *info, char *name, const char *last) override;
+	std::string GetScriptName(ScriptInfo *info) override;
 	const char *GetFileName() const override { return PATHSEP "info.nut"; }
 	Subdirectory GetDirectory() const override { return AI_DIR; }
 	const char *GetScannerName() const override { return "AIs"; }
@@ -63,7 +63,7 @@ public:
 	class AILibrary *FindLibrary(const char *library, int version);
 
 protected:
-	void GetScriptName(ScriptInfo *info, char *name, const char *last) override;
+	std::string GetScriptName(ScriptInfo *info) override;
 	const char *GetFileName() const override { return PATHSEP "library.nut"; }
 	Subdirectory GetDirectory() const override { return AI_LIBRARY_DIR; }
 	const char *GetScannerName() const override { return "AI Libraries"; }

@@ -13,6 +13,8 @@
 #include "game_info.hpp"
 #include "game_scanner.hpp"
 
+#include "../3rdparty/fmt/format.h"
+
 #include "../safeguards.h"
 
 
@@ -21,9 +23,9 @@ void GameScannerInfo::Initialize()
 	ScriptScanner::Initialize("GSScanner");
 }
 
-void GameScannerInfo::GetScriptName(ScriptInfo *info, char *name, const char *last)
+std::string GameScannerInfo::GetScriptName(ScriptInfo *info)
 {
-	seprintf(name, last, "%s", info->GetName());
+	return info->GetName();
 }
 
 void GameScannerInfo::RegisterAPI(class Squirrel *engine)
@@ -77,10 +79,10 @@ void GameScannerLibrary::Initialize()
 	ScriptScanner::Initialize("GSScanner");
 }
 
-void GameScannerLibrary::GetScriptName(ScriptInfo *info, char *name, const char *last)
+std::string GameScannerLibrary::GetScriptName(ScriptInfo *info)
 {
 	GameLibrary *library = static_cast<GameLibrary *>(info);
-	seprintf(name, last, "%s.%s", library->GetCategory(), library->GetInstanceName());
+	return fmt::format("{}.{}", library->GetCategory(), library->GetInstanceName());
 }
 
 void GameScannerLibrary::RegisterAPI(class Squirrel *engine)
