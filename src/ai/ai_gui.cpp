@@ -161,7 +161,7 @@ struct AIConfigWindow : public Window {
 		switch (widget) {
 			case WID_AIC_LIST: {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.matrix);
-				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < MAX_COMPANIES; i++) {
+				for (int i = this->vscroll->GetPosition(); i < this->vscroll->End(); i++) {
 					StringID text;
 
 					if ((_game_mode != GM_NORMAL && i == 0) || (_game_mode == GM_NORMAL && Company::IsValidHumanID(i))) {
