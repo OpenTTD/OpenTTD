@@ -10,7 +10,6 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "../core/string_compare_type.hpp"
 #include "game_scanner.hpp"
 
 #include "../script/api/script_event_types.hpp"

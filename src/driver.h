@@ -11,7 +11,6 @@
 #define DRIVER_H
 
 #include "core/enum_type.hpp"
-#include "core/string_compare_type.hpp"
 #include "string_type.h"
 #include <map>
 
