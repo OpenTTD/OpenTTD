@@ -76,16 +76,6 @@ ScriptController::ScriptController(CompanyID company) :
 	ScriptObject::SetCompany(company);
 }
 
-ScriptController::~ScriptController()
-{
-	for (const auto &item : this->loaded_library) {
-		free(item.second);
-		free(item.first);
-	}
-
-	this->loaded_library.clear();
-}
-
 /* static */ uint ScriptController::GetTick()
 {
 	return ScriptObject::GetActiveInstance()->GetController()->ticks;
@@ -120,24 +110,22 @@ ScriptController::~ScriptController()
 	}
 
 	/* Internally we store libraries as 'library.version' */
-	char library_name[1024];
-	seprintf(library_name, lastof(library_name), "%s.%d", library, version);
-	strtolower(library_name);
+	std::string library_name = fmt::format("{}.{}", library, version);
 
 	/* Get the current table/class we belong to */
 	HSQOBJECT parent;
 	sq_getstackobj(vm, 1, &parent);
 
-	char fake_class[1024];
+	std::string fake_class;
 
 	LoadedLibraryList::iterator it = controller->loaded_library.find(library_name);
 	if (it != controller->loaded_library.end()) {
-		strecpy(fake_class, (*it).second, lastof(fake_class));
+		fake_class = (*it).second;
 	} else {
 		int next_number = ++controller->loaded_library_count;
 
 		/* Create a new fake internal name */
-		seprintf(fake_class, lastof(fake_class), "_internalNA%d", next_number);
+		fake_class = fmt::format("_internalNA{}", next_number);
 
 		/* Load the library in a 'fake' namespace, so we can link it to the name the user requested */
 		sq_pushroottable(vm);
@@ -153,7 +141,7 @@ ScriptController::~ScriptController()
 		sq_newslot(vm, -3, SQFalse);
 		sq_pop(vm, 1);
 
-		controller->loaded_library[stredup(library_name)] = stredup(fake_class);
+		controller->loaded_library[library_name] = fake_class;
 	}
 
 	/* Find the real class inside the fake class (like 'sets.Vector') */

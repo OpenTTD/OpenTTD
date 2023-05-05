@@ -12,9 +12,9 @@
 
 #include <map>
 #include "../fileio_func.h"
-#include "../core/string_compare_type.hpp"
+#include "../string_func.h"
 
-typedef std::map<const char *, class ScriptInfo *, StringCompare> ScriptInfoList; ///< Type for the list of scripts.
+typedef std::map<std::string, class ScriptInfo *, CaseInsensitiveComparator> ScriptInfoList; ///< Type for the list of scripts.
 
 /** Scanner to help finding scripts. */
 class ScriptScanner : public FileScanner {

@@ -57,7 +57,7 @@ typedef std::list<ScriptConfigItem> ScriptConfigItemList; ///< List of ScriptCon
 class ScriptConfig {
 protected:
 	/** List with name=>value pairs of all script-specific settings */
-	typedef std::map<const char *, int, StringCompare> SettingValueList;
+	typedef std::map<std::string, int> SettingValueList;
 
 public:
 	ScriptConfig() :
