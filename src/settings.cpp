@@ -1080,7 +1080,7 @@ static void AISaveConfig(IniFile &ini, const char *grpname)
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
-		const char *name;
+		std::string name;
 		std::string value = config->SettingsToString();
 
 		if (config->HasScript()) {
@@ -1102,7 +1102,7 @@ static void GameSaveConfig(IniFile &ini, const char *grpname)
 	group->Clear();
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
-	const char *name;
+	std::string name;
 	std::string value = config->SettingsToString();
 
 	if (config->HasScript()) {

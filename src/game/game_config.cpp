@@ -32,7 +32,7 @@ class GameInfo *GameConfig::GetInfo() const
 	return static_cast<class GameInfo *>(ScriptConfig::GetInfo());
 }
 
-ScriptInfo *GameConfig::FindInfo(const char *name, int version, bool force_exact_match)
+ScriptInfo *GameConfig::FindInfo(const std::string &name, int version, bool force_exact_match)
 {
 	return static_cast<ScriptInfo *>(Game::FindInfo(name, version, force_exact_match));
 }

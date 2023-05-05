@@ -24,7 +24,7 @@ public:
 	void Initialize(class GameInfo *info);
 
 	int GetSetting(const char *name) override;
-	ScriptInfo *FindLibrary(const char *library, int version) override;
+	ScriptInfo *FindLibrary(const std::string &library, int version) override;
 
 private:
 	void RegisterAPI() override;

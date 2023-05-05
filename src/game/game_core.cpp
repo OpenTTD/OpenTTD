@@ -239,12 +239,12 @@
 	return Game::scanner_info->GetUniqueInfoList();
 }
 
-/* static */ GameInfo *Game::FindInfo(const char *name, int version, bool force_exact_match)
+/* static */ GameInfo *Game::FindInfo(const std::string &name, int version, bool force_exact_match)
 {
 	return Game::scanner_info->FindInfo(name, version, force_exact_match);
 }
 
-/* static */ GameLibrary *Game::FindLibrary(const char *library, int version)
+/* static */ GameLibrary *Game::FindLibrary(const std::string &library, int version)
 {
 	return Game::scanner_library->FindLibrary(library, version);
 }

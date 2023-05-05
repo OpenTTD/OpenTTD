@@ -91,9 +91,9 @@ public:
 	/** Wrapper function for GameScanner::GetUniqueInfoList */
 	static const ScriptInfoList *GetUniqueInfoList();
 	/** Wrapper function for GameScannerInfo::FindInfo */
-	static class GameInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	static class GameInfo *FindInfo(const std::string &name, int version, bool force_exact_match);
 	/** Wrapper function for GameScanner::FindLibrary */
-	static class GameLibrary *FindLibrary(const char *library, int version);
+	static class GameLibrary *FindLibrary(const std::string &library, int version);
 
 	/**
 	 * Get the current active instance.

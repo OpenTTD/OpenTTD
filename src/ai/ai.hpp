@@ -120,9 +120,9 @@ public:
 	/** Wrapper function for AIScanner::GetUniqueAIInfoList */
 	static const ScriptInfoList *GetUniqueInfoList();
 	/** Wrapper function for AIScanner::FindInfo */
-	static class AIInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	static class AIInfo *FindInfo(const std::string &name, int version, bool force_exact_match);
 	/** Wrapper function for AIScanner::FindLibrary */
-	static class AILibrary *FindLibrary(const char *library, int version);
+	static class AILibrary *FindLibrary(const std::string &library, int version);
 
 	/**
 	 * Rescans all searchpaths for available AIs. If a used AI is no longer

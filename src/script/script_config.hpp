@@ -60,7 +60,6 @@ protected:
 
 public:
 	ScriptConfig() :
-		name(nullptr),
 		version(-1),
 		info(nullptr),
 		is_random(false),
@@ -159,7 +158,7 @@ public:
 	/**
 	 * Get the name of the Script.
 	 */
-	const char *GetName() const;
+	const std::string &GetName() const;
 
 	/**
 	 * Get the version of the Script.
@@ -190,7 +189,7 @@ public:
 	ScriptInstance::ScriptData *GetToLoadData();
 
 protected:
-	const char *name;                                         ///< Name of the Script
+	std::string name;                                         ///< Name of the Script
 	int version;                                              ///< Version of the Script
 	class ScriptInfo *info;                                   ///< ScriptInfo object for related to this Script version
 	SettingValueList settings;                                ///< List with all setting=>value pairs that are configure for this Script
@@ -207,7 +206,7 @@ protected:
 	 * This function should call back to the Scanner in charge of this Config,
 	 *  to find the ScriptInfo belonging to a name+version.
 	 */
-	virtual ScriptInfo *FindInfo(const char *name, int version, bool force_exact_match) = 0;
+	virtual ScriptInfo *FindInfo(const std::string &name, int version, bool force_exact_match) = 0;
 };
 
 #endif /* SCRIPT_CONFIG_HPP */

@@ -58,7 +58,7 @@ int GameInstance::GetSetting(const char *name)
 	return GameConfig::GetConfig()->GetSetting(name);
 }
 
-ScriptInfo *GameInstance::FindLibrary(const char *library, int version)
+ScriptInfo *GameInstance::FindLibrary(const std::string &library, int version)
 {
 	return (ScriptInfo *)Game::FindLibrary(library, version);
 }

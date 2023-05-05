@@ -70,7 +70,7 @@ public:
 	 * @param version The version the library should have.
 	 * @return The library if found, nullptr otherwise.
 	 */
-	virtual class ScriptInfo *FindLibrary(const char *library, int version) = 0;
+	virtual class ScriptInfo *FindLibrary(const std::string &library, int version) = 0;
 
 	/**
 	 * A script in multiplayer waits for the server to handle its DoCommand.

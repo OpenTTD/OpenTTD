@@ -32,7 +32,7 @@ public:
 	 * @param force_exact_match Only match name+version, never latest.
 	 * @return nullptr if no match found, otherwise the AI that matched.
 	 */
-	class AIInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	class AIInfo *FindInfo(const std::string &name, int version, bool force_exact_match);
 
 	/**
 	 * Set the Dummy AI.
@@ -60,7 +60,7 @@ public:
 	 * @param version The version the library should have.
 	 * @return The library if found, nullptr otherwise.
 	 */
-	class AILibrary *FindLibrary(const char *library, int version);
+	class AILibrary *FindLibrary(const std::string &library, int version);
 
 protected:
 	std::string GetScriptName(ScriptInfo *info) override;

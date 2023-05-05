@@ -23,7 +23,7 @@ public:
 	 * @param force_exact_match Only match name+version, never latest.
 	 * @return nullptr if no match found, otherwise the game script that matched.
 	 */
-	class GameInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	class GameInfo *FindInfo(const std::string &name, int version, bool force_exact_match);
 
 protected:
 	std::string GetScriptName(ScriptInfo *info) override;
@@ -44,7 +44,7 @@ public:
 	 * @param version The version the library should have.
 	 * @return The library if found, nullptr otherwise.
 	 */
-	class GameLibrary *FindLibrary(const char *library, int version);
+	class GameLibrary *FindLibrary(const std::string &library, int version);
 
 protected:
 	std::string GetScriptName(ScriptInfo *info) override;
