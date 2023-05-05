@@ -122,7 +122,7 @@ public:
 	/**
 	 * Get the description of a certain Script config option.
 	 */
-	const ScriptConfigItem *GetConfigItem(const char *name) const;
+	const ScriptConfigItem *GetConfigItem(const std::string &name) const;
 
 	/**
 	 * Set a setting.
@@ -137,7 +137,7 @@ public:
 	/**
 	 * Get the default value for a setting.
 	 */
-	int GetSettingDefaultValue(const char *name) const;
+	int GetSettingDefaultValue(const std::string &name) const;
 
 	/**
 	 * Can this script be selected by developers only?

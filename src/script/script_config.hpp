@@ -29,26 +29,26 @@ enum ScriptConfigFlags {
 	SCRIPTCONFIG_DEVELOPER = 0x8, ///< This setting will only be visible when the Script development tools are active.
 };
 
-typedef SmallMap<int, char *> LabelMapping; ///< Map-type used to map the setting numbers to labels.
+typedef std::map<int, std::string> LabelMapping; ///< Map-type used to map the setting numbers to labels.
 
 /** Info about a single Script setting. */
 struct ScriptConfigItem {
-	const char *name;        ///< The name of the configuration setting.
-	const char *description; ///< The description of the configuration setting.
-	int min_value;           ///< The minimal value this configuration setting can have.
-	int max_value;           ///< The maximal value this configuration setting can have.
-	int custom_value;        ///< The default value on custom difficulty setting.
-	int easy_value;          ///< The default value on easy difficulty setting.
-	int medium_value;        ///< The default value on medium difficulty setting.
-	int hard_value;          ///< The default value on hard difficulty setting.
-	int random_deviation;    ///< The maximum random deviation from the default value.
-	int step_size;           ///< The step size in the gui.
-	ScriptConfigFlags flags; ///< Flags for the configuration setting.
-	LabelMapping *labels;    ///< Text labels for the integer values.
-	bool complete_labels;    ///< True if all values have a label.
+	std::string name;             ///< The name of the configuration setting.
+	std::string description;      ///< The description of the configuration setting.
+	int min_value = 0;            ///< The minimal value this configuration setting can have.
+	int max_value = 1;            ///< The maximal value this configuration setting can have.
+	int custom_value = 0;         ///< The default value on custom difficulty setting.
+	int easy_value = 0;           ///< The default value on easy difficulty setting.
+	int medium_value = 0;         ///< The default value on medium difficulty setting.
+	int hard_value = 0;           ///< The default value on hard difficulty setting.
+	int random_deviation = 0;     ///< The maximum random deviation from the default value.
+	int step_size = 1;            ///< The step size in the gui.
+	ScriptConfigFlags flags = SCRIPTCONFIG_NONE; ///< Flags for the configuration setting.
+	LabelMapping labels;          ///< Text labels for the integer values.
+	bool complete_labels = false; ///< True if all values have a label.
 };
 
-typedef std::list<ScriptConfigItem> ScriptConfigItemList; ///< List of ScriptConfig items.
+typedef std::vector<ScriptConfigItem> ScriptConfigItemList; ///< List of ScriptConfig items.
 
 /**
  * Script settings.
@@ -63,7 +63,6 @@ public:
 		name(nullptr),
 		version(-1),
 		info(nullptr),
-		config_list(nullptr),
 		is_random(false),
 		to_load_data(nullptr)
 	{}
@@ -124,12 +123,12 @@ public:
 	 * @return The (default) value of the setting, or -1 if the setting was not
 	 *  found.
 	 */
-	int GetSetting(const char *name) const;
+	int GetSetting(const std::string &name) const;
 
 	/**
 	 * Set the value of a setting for this config.
 	 */
-	void SetSetting(const char *name, int value);
+	void SetSetting(const std::string &name, int value);
 
 	/**
 	 * Reset all settings to their default value.
@@ -195,7 +194,7 @@ protected:
 	int version;                                              ///< Version of the Script
 	class ScriptInfo *info;                                   ///< ScriptInfo object for related to this Script version
 	SettingValueList settings;                                ///< List with all setting=>value pairs that are configure for this Script
-	ScriptConfigItemList *config_list;                        ///< List with all settings defined by this Script
+	std::unique_ptr<ScriptConfigItemList> config_list;        ///< List with all settings defined by this Script
 	bool is_random;                                           ///< True if the AI in this slot was randomly chosen.
 	std::unique_ptr<ScriptInstance::ScriptData> to_load_data; ///< Data to load after the Script start.
 
