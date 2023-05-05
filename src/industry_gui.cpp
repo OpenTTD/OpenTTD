@@ -516,16 +516,16 @@ public:
 				icon.top    = r.top + (this->resize.step_height - this->legend.height + 1) / 2;
 				icon.bottom = icon.top + this->legend.height - 1;
 
-				for (uint16 i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
-					IndustryType type = this->list[i];
-					bool selected = this->selected_type == type;
-					const IndustrySpec *indsp = GetIndustrySpec(type);
+				for (const auto &indtype : this->vscroll->Iterate(this->list)) {
+					bool selected = this->selected_type == indtype;
+
+					const IndustrySpec *indsp = GetIndustrySpec(indtype);
 
 					/* Draw the name of the industry in white is selected, otherwise, in orange */
 					DrawString(text, indsp->name, selected ? TC_WHITE : TC_ORANGE);
 					GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
 					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
-					SetDParam(0, Industry::GetIndustryTypeCount(type));
+					SetDParam(0, Industry::GetIndustryTypeCount(indtype));
 					DrawString(text, STR_JUST_COMMA, TC_BLACK, SA_RIGHT, false, FS_SMALL);
 
 					text = text.Translate(0, this->resize.step_height);
@@ -1657,26 +1657,22 @@ public:
 				break;
 
 			case WID_ID_INDUSTRY_LIST: {
-				int n = 0;
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 				if (this->industries.size() == 0) {
 					DrawString(ir, STR_INDUSTRY_DIRECTORY_NONE);
 					break;
 				}
-				TextColour tc;
 				const CargoID acf_cid = this->cargo_filter[this->accepted_cargo_filter_criteria];
-				for (uint i = this->vscroll->GetPosition(); i < this->industries.size(); i++) {
-					tc = TC_FROMSTRING;
+				for (const auto &ind : this->vscroll->Iterate(this->industries)) {
+					TextColour tc = TC_FROMSTRING;
 					if (acf_cid != CF_ANY && acf_cid != CF_NONE) {
-						Industry *ind = const_cast<Industry *>(this->industries[i]);
-						if (IndustryTemporarilyRefusesCargo(ind, acf_cid)) {
+						if (IndustryTemporarilyRefusesCargo(const_cast<Industry *>(ind), acf_cid)) {
 							tc = TC_GREY | TC_FORCED;
 						}
 					}
-					DrawString(ir, this->GetIndustryString(this->industries[i]), tc);
+					DrawString(ir, this->GetIndustryString(ind), tc);
 
 					ir.top += this->resize.step_height;
-					if (++n == this->vscroll->GetCapacity()) break; // max number of industries in 1 window
 				}
 				break;
 			}

@@ -286,8 +286,9 @@ struct NewGRFParametersWindow : public Window {
 
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
-		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
-			GRFParameterInfo &par_info = this->GetParameterInfo(i);
+		for (const auto &it : this->vscroll->Iterate(this->grf_config->param_info)) {
+			uint i = &it - this->grf_config->param_info.data(); /* Row number required to test selection. */
+			const GRFParameterInfo &par_info = it.has_value() ? it.value() : GetDummyParameterInfo(i);
 			uint32 current_value = par_info.GetValue(this->grf_config);
 			bool selected = (i == this->clicked_row);
 
@@ -906,11 +907,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				uint step_height = this->GetWidget<NWidgetBase>(WID_NS_AVAIL_LIST)->resize_y;
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
-				uint min_index = this->vscroll2->GetPosition();
-				uint max_index = std::min(min_index + this->vscroll2->GetCapacity(), (uint)this->avails.size());
 
-				for (uint i = min_index; i < max_index; i++) {
-					const GRFConfig *c = this->avails[i];
+				for (const auto &c : this->vscroll2->Iterate(this->avails)) {
 					bool h = (c == this->avail_sel);
 					const char *text = c->GetName();
 
@@ -2122,13 +2120,12 @@ struct SavePresetWindow : public Window {
 				uint step_height = this->GetWidget<NWidgetBase>(WID_SVP_PRESET_LIST)->resize_y;
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-				uint min_index = this->vscroll->GetPosition();
-				uint max_index = std::min(min_index + this->vscroll->GetCapacity(), (uint)this->presets.size());
 
-				for (uint i = min_index; i < max_index; i++) {
-					if ((int)i == this->selected) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
+				for (const auto &preset : this->vscroll->Iterate(this->presets)) {
+					int i = &preset - this->presets.data(); /* Row number required to test selection. */
+					if (i == this->selected) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 
-					const char *text = this->presets[i].c_str();
+					const char *text = preset.c_str();
 					DrawString(tr.left, tr.right, tr.top + offset_y, text, ((int)i == this->selected) ? TC_WHITE : TC_SILVER);
 					tr.top += step_height;
 				}

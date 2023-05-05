@@ -973,11 +973,9 @@ public:
 				}
 			}
 		} else {
-			uint max = static_cast<uint>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->groups.size()));
-			for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
-				const Group *g = this->groups[i];
+			for (const auto &g : this->vscroll->Iterate(this->groups)) {
 				SetDParam(0, g->index);
-				draw_livery(STR_GROUP_NAME, g->livery, this->sel == g->index, false, this->indents[i] * WidgetDimensions::scaled.hsep_indent);
+				draw_livery(STR_GROUP_NAME, g->livery, this->sel == g->index, false, this->indents[&g - this->groups.data()] * WidgetDimensions::scaled.hsep_indent);
 			}
 		}
 	}

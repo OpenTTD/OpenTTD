@@ -650,13 +650,7 @@ public:
 		int text_y_offset   = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2;
 
 		Rect mr = r.WithHeight(this->resize.step_height);
-		auto iter = this->content.begin() + this->vscroll->GetPosition();
-		size_t last = this->vscroll->GetPosition() + this->vscroll->GetCapacity();
-		auto end = (last < this->content.size()) ? this->content.begin() + last : this->content.end();
-
-		for (/**/; iter != end; iter++) {
-			const ContentInfo *ci = *iter;
-
+		for (const auto &ci : this->vscroll->Iterate(this->content)) {
 			if (ci == this->selected) GfxFillRect(mr.Shrink(WidgetDimensions::scaled.bevel), PC_GREY);
 
 			SpriteID sprite;

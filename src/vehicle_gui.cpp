@@ -1660,11 +1660,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 	int vehicle_button_x = rtl ? ir.right - profit.width : ir.left;
 
-	uint max = static_cast<uint>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehgroups.size()));
-	for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
-
-		const GUIVehicleGroup &vehgroup = this->vehgroups[i];
-
+	for (const auto &vehgroup : this->vscroll->Iterate(this->vehgroups)) {
 		SetDParam(0, vehgroup.GetDisplayProfitThisYear());
 		SetDParam(1, vehgroup.GetDisplayProfitLastYear());
 		DrawString(tr.left, tr.right, ir.bottom - FONT_HEIGHT_SMALL - WidgetDimensions::scaled.framerect.bottom, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);

@@ -173,9 +173,6 @@ struct GSConfigWindow : public Window {
 			}
 			case WID_GSC_SETTINGS: {
 				ScriptConfig *config = this->gs_config;
-				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
-				int i = 0;
-				for (; !this->vscroll->IsVisible(i); i++) it++;
 
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 				bool rtl = _current_text_dir == TD_RTL;
@@ -185,10 +182,11 @@ struct GSConfigWindow : public Window {
 				int y = r.top;
 				int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 				int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
-				for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
-					const ScriptConfigItem &config_item = **it;
-					int current_value = config->GetSetting((config_item).name);
+				for (const auto &it : this->vscroll->Iterate(this->visible_settings)) {
+					const ScriptConfigItem &config_item = *it;
+					int current_value = config->GetSetting(config_item.name);
 					bool editable = this->IsEditableItem(config_item);
+					int i = &it - this->visible_settings.data(); /* Row number required to determine if clicked on. */
 
 					StringID str;
 					TextColour colour;

@@ -216,12 +216,8 @@ struct DropdownWindow : Window {
 		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
 		int y     = _cursor.pos.y - this->top - r.top - WidgetDimensions::scaled.fullbevel.top;
 		int width = r.Width();
-		int pos   = this->vscroll->GetPosition();
 
-		for (const auto &item : this->list) {
-			/* Skip items that are scrolled up */
-			if (--pos >= 0) continue;
-
+		for (const auto &item : this->vscroll->Iterate(this->list)) {
 			int item_height = item->Height(width);
 
 			if (y < item_height) {
@@ -244,12 +240,8 @@ struct DropdownWindow : Window {
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.fullbevel).Shrink(RectPadding::zero, WidgetDimensions::scaled.fullbevel);
 		int y = ir.top;
-		int pos = this->vscroll->GetPosition();
-		for (const auto &item : this->list) {
+		for (const auto &item : this->vscroll->Iterate(this->list)) {
 			int item_height = item->Height(ir.Width());
-
-			/* Skip items that are scrolled up */
-			if (--pos >= 0) continue;
 
 			if (y + item_height - 1 <= ir.bottom) {
 				bool selected = (this->selected_index == item->result);

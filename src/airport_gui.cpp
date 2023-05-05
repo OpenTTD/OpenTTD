@@ -390,12 +390,11 @@ public:
 				Rect row = r.WithHeight(this->line_height).Shrink(WidgetDimensions::scaled.bevel);
 				Rect text = r.WithHeight(this->line_height).Shrink(WidgetDimensions::scaled.matrix);
 				AirportClass *apclass = AirportClass::Get(_selected_airport_class);
-				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < apclass->GetSpecCount(); i++) {
-					const AirportSpec *as = apclass->GetSpec(i);
+				for (const auto &as : this->vscroll->Iterate(apclass->Specs())) {
 					if (!as->IsAvailable()) {
 						GfxFillRect(row, PC_BLACK, FILLRECT_CHECKER);
 					}
-					DrawString(text, as->name, ((int)i == _selected_airport_index) ? TC_WHITE : TC_BLACK);
+					DrawString(text, as->name, (as->GetIndex() == _selected_airport_index) ? TC_WHITE : TC_BLACK);
 					row = row.Translate(0, this->line_height);
 					text = text.Translate(0, this->line_height);
 				}

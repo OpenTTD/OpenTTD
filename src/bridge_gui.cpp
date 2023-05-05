@@ -233,8 +233,7 @@ public:
 
 			case WID_BBS_BRIDGE_LIST: {
 				Rect tr = r.WithHeight(this->resize.step_height).Shrink(WidgetDimensions::scaled.matrix);
-				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges.size(); i++) {
-					const BuildBridgeData &bridge_data = this->bridges.at(i);
+				for (const auto &bridge_data : this->vscroll->Iterate(this->bridges)) {
 					const BridgeSpec *b = bridge_data.spec;
 					DrawSprite(b->sprite, b->pal, tr.left, tr.bottom - GetSpriteSize(b->sprite).height);
 					DrawStringMultiLine(tr.Indent(this->bridgetext_offset, false), GetBridgeSelectString(bridge_data));

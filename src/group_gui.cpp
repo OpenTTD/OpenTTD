@@ -606,17 +606,15 @@ public:
 
 			case WID_GL_LIST_GROUP: {
 				int y1 = r.top;
-				size_t max = std::min<size_t>(this->group_sb->GetPosition() + this->group_sb->GetCapacity(), this->groups.size());
-				for (size_t i = this->group_sb->GetPosition(); i < max; ++i) {
-					const Group *g = this->groups[i];
-
+				for (const auto &g : this->group_sb->Iterate(this->groups)) {
 					assert(g->owner == this->owner);
+					size_t i = &g - this->groups.data(); /* Row number required for indent lookup. */
 
 					DrawGroupInfo(y1, r.left, r.right, g->index, this->indents[i] * WidgetDimensions::scaled.hsep_indent, HasBit(g->flags, GroupFlags::GF_REPLACE_PROTECTION), g->folded || (i + 1 < this->groups.size() && indents[i + 1] > this->indents[i]));
 
 					y1 += this->tiny_step_height;
 				}
-				if ((uint)this->group_sb->GetPosition() + this->group_sb->GetCapacity() > this->groups.size()) {
+				if ((size_t)this->group_sb->End() > this->groups.size()) {
 					DrawGroupInfo(y1, r.left, r.right, NEW_GROUP);
 				}
 				break;
@@ -630,9 +628,8 @@ public:
 				if (this->vli.index != ALL_GROUP && this->grouping == GB_NONE) {
 					/* Mark vehicles which are in sub-groups (only if we are not using shared order coalescing) */
 					Rect mr = r.WithHeight(this->resize.step_height);
-					size_t max = std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehgroups.size());
-					for (size_t i = this->vscroll->GetPosition(); i < max; ++i) {
-						const Vehicle *v = this->vehgroups[i].GetSingleVehicle();
+					for (auto &vehgroup : this->vscroll->Iterate(this->vehgroups)) {
+						const Vehicle *v = vehgroup.GetSingleVehicle();
 						if (v->group_id != this->vli.index) {
 							GfxFillRect(mr.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[COLOUR_GREY][3], FILLRECT_CHECKER);
 						}
