@@ -99,7 +99,7 @@ protected:
 	/**
 	 * Get the script name how to store the script in memory.
 	 */
-	virtual void GetScriptName(ScriptInfo *info, char *name, const char *last) = 0;
+	virtual std::string GetScriptName(ScriptInfo *info) = 0;
 
 	/**
 	 * Get the filename to scan for this type of script.

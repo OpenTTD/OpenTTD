@@ -26,7 +26,7 @@ public:
 	class GameInfo *FindInfo(const char *nameParam, int versionParam, bool force_exact_match);
 
 protected:
-	void GetScriptName(ScriptInfo *info, char *name, const char *last) override;
+	std::string GetScriptName(ScriptInfo *info) override;
 	const char *GetFileName() const override { return PATHSEP "info.nut"; }
 	Subdirectory GetDirectory() const override { return GAME_DIR; }
 	const char *GetScannerName() const override { return "Game Scripts"; }
@@ -47,7 +47,7 @@ public:
 	class GameLibrary *FindLibrary(const char *library, int version);
 
 protected:
-	void GetScriptName(ScriptInfo *info, char *name, const char *last) override;
+	std::string GetScriptName(ScriptInfo *info) override;
 	const char *GetFileName() const override { return PATHSEP "library.nut"; }
 	Subdirectory GetDirectory() const override { return GAME_LIBRARY_DIR; }
 	const char *GetScannerName() const override { return "GS Libraries"; }
