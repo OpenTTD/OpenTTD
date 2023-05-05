@@ -29,7 +29,7 @@
  */
 void NORETURN FatalErrorI(const std::string &msg)
 {
-	fprintf(stderr, "FATAL: %s\n", msg.c_str());
+	fprintf(stderr, "settingsgen: FATAL: %s\n", msg.c_str());
 	exit(1);
 }
 
@@ -66,7 +66,7 @@ public:
 	void Write(FILE *out_fp) const
 	{
 		if (fwrite(this->data, 1, this->size, out_fp) != this->size) {
-			fprintf(stderr, "Error: Cannot write output\n");
+			FatalError("Cannot write output");
 		}
 	}
 
@@ -323,8 +323,7 @@ static void DumpSections(IniLoadFile *ifile)
 
 		IniItem *template_item = templates_grp->GetItem(grp->name, false); // Find template value.
 		if (template_item == nullptr || !template_item->value.has_value()) {
-			fprintf(stderr, "settingsgen: Warning: Cannot find template %s\n", grp->name.c_str());
-			continue;
+			FatalError("Cannot find template {}", grp->name);
 		}
 		DumpLine(template_item, grp, default_grp, _stored_output);
 
@@ -348,8 +347,7 @@ static void CopyFile(const char *fname, FILE *out_fp)
 
 	FILE *in_fp = fopen(fname, "r");
 	if (in_fp == nullptr) {
-		fprintf(stderr, "settingsgen: Warning: Cannot open file %s for copying\n", fname);
-		return;
+		FatalError("Cannot open file {} for copying", fname);
 	}
 
 	char buffer[4096];
@@ -357,8 +355,7 @@ static void CopyFile(const char *fname, FILE *out_fp)
 	do {
 		length = fread(buffer, 1, lengthof(buffer), in_fp);
 		if (fwrite(buffer, 1, length, out_fp) != length) {
-			fprintf(stderr, "Error: Cannot copy file\n");
-			break;
+			FatalError("Cannot copy file");
 		}
 	} while (length == lengthof(buffer));
 
@@ -507,8 +504,7 @@ int CDECL main(int argc, char *argv[])
 
 		FILE *fp = fopen(tmp_output, "w");
 		if (fp == nullptr) {
-			fprintf(stderr, "settingsgen: Warning: Cannot open file %s\n", tmp_output);
-			return 1;
+			FatalError("Cannot open file {}", tmp_output);
 		}
 		CopyFile(before_file, fp);
 		_stored_output.Write(fp);
