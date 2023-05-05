@@ -682,6 +682,12 @@ public:
 	}
 
 	/**
+	 * Get the end of the visible valid elements.
+	 * @return index to the end of the visible valid elements.
+	 */
+	inline int End() const { return std::min<int>(this->GetPosition() + this->GetCapacity(), this->GetCount()); }
+
+	/**
 	 * Checks whether given current item is visible in the list
 	 * @param item to check
 	 * @return true iff the item is visible
@@ -810,6 +816,33 @@ public:
 		typename Tcontainer::iterator it = std::begin(container);
 		std::advance(it, row);
 		return it;
+	}
+
+	/* Scrollbar Iterator wrapper */
+	template <class iterator>
+	class IterateWrapper {
+		iterator b;
+		iterator e;
+	public:
+		IterateWrapper(iterator b, iterator e) : b(b), e(e) {}
+		iterator begin() const { return b; }
+		iterator end() const { return e; }
+	};
+
+	/**
+	 * Create an iterator to iterate through the current visible elements.
+	 * @param c Container to iterate through.
+	 * @return iterator of currently visible elements.
+	 */
+	template <class Tcontainer>
+	inline IterateWrapper<typename Tcontainer::const_iterator> Iterate(const Tcontainer &container) const
+	{
+		// assert(this->GetCount() == container.size()); // Scrollbar and container size must match.
+		auto b = container.cbegin();
+		std::advance(b, this->GetPosition());
+		auto e = b;
+		std::advance(e, std::min<size_t>({(size_t)this->GetCapacity(), (size_t)this->GetCount() - this->GetPosition(), (size_t)std::distance(b, container.cend())}));
+		return IterateWrapper<typename Tcontainer::const_iterator>{b, e};
 	}
 
 	EventState UpdateListPositionOnKeyPress(int &list_position, uint16 keycode) const;
