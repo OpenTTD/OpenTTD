@@ -180,6 +180,7 @@ add_files(
     script_league.hpp
     script_list.hpp
     script_log.hpp
+    script_log_types.hpp
     script_map.hpp
     script_marine.hpp
     script_newgrf.hpp

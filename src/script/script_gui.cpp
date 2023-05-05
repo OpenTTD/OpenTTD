@@ -704,10 +704,10 @@ struct ScriptDebugWindow : public Window {
 	int highlight_row;                                     ///< The output row that matches the given string, or -1
 	Scrollbar *vscroll;                                    ///< Cache of the vertical scrollbar.
 
-	ScriptLog::LogData *GetLogPointer() const
+	ScriptLogTypes::LogData &GetLogPointer() const
 	{
-		if (script_debug_company == OWNER_DEITY) return (ScriptLog::LogData *)Game::GetInstance()->GetLogPointer();
-		return (ScriptLog::LogData *)Company::Get(script_debug_company)->ai_instance->GetLogPointer();
+		if (script_debug_company == OWNER_DEITY) return Game::GetInstance()->GetLogPointer();
+		return Company::Get(script_debug_company)->ai_instance->GetLogPointer();
 	}
 
 	/**
@@ -845,9 +845,9 @@ struct ScriptDebugWindow : public Window {
 		/* If there are no active companies, don't display anything else. */
 		if (script_debug_company == INVALID_COMPANY) return;
 
-		ScriptLog::LogData *log = this->GetLogPointer();
+		ScriptLogTypes::LogData &log = this->GetLogPointer();
 
-		int scroll_count = (log == nullptr) ? 0 : log->used;
+		int scroll_count = (int)log.size();
 		if (this->vscroll->GetCount() != scroll_count) {
 			this->vscroll->SetCount(scroll_count);
 
@@ -855,15 +855,15 @@ struct ScriptDebugWindow : public Window {
 			this->SetWidgetDirty(WID_SCRD_SCROLLBAR);
 		}
 
-		if (log == nullptr) return;
+		if (log.empty()) return;
 
 		/* Detect when the user scrolls the window. Enable autoscroll when the
 		 * bottom-most line becomes visible. */
 		if (this->last_vscroll_pos != this->vscroll->GetPosition()) {
-			this->autoscroll = this->vscroll->GetPosition() >= log->used - this->vscroll->GetCapacity();
+			this->autoscroll = this->vscroll->GetPosition() >= log.size() - this->vscroll->GetCapacity();
 		}
 		if (this->autoscroll) {
-			int scroll_pos = std::max(0, log->used - this->vscroll->GetCapacity());
+			int scroll_pos = std::max<int>(0, (int)log.size() - this->vscroll->GetCapacity());
 			if (this->vscroll->SetPosition(scroll_pos)) {
 				/* We need a repaint */
 				this->SetWidgetDirty(WID_SCRD_SCROLLBAR);
@@ -900,32 +900,31 @@ struct ScriptDebugWindow : public Window {
 
 		if (widget != WID_SCRD_LOG_PANEL) return;
 
-		ScriptLog::LogData *log = this->GetLogPointer();
-		if (log == nullptr) return;
+		ScriptLogTypes::LogData &log = this->GetLogPointer();
+		if (log.empty()) return;
 
 		Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-		for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < log->used; i++) {
-			int pos = (i + log->pos + 1 - log->used + log->count) % log->count;
-			if (log->lines[pos] == nullptr) break;
+		for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < log.size(); i++) {
+			const ScriptLogTypes::LogLine &line = log[i];
 
 			TextColour colour;
-			switch (log->type[pos]) {
-				case ScriptLog::LOG_SQ_INFO:  colour = TC_BLACK;  break;
-				case ScriptLog::LOG_SQ_ERROR: colour = TC_WHITE;  break;
-				case ScriptLog::LOG_INFO:     colour = TC_BLACK;  break;
-				case ScriptLog::LOG_WARNING:  colour = TC_YELLOW; break;
-				case ScriptLog::LOG_ERROR:    colour = TC_RED;    break;
-				default:                      colour = TC_BLACK;  break;
+			switch (line.type) {
+				case ScriptLogTypes::LOG_SQ_INFO:  colour = TC_BLACK;  break;
+				case ScriptLogTypes::LOG_SQ_ERROR: colour = TC_WHITE;  break;
+				case ScriptLogTypes::LOG_INFO:     colour = TC_BLACK;  break;
+				case ScriptLogTypes::LOG_WARNING:  colour = TC_YELLOW; break;
+				case ScriptLogTypes::LOG_ERROR:    colour = TC_RED;    break;
+				default:                           colour = TC_BLACK;  break;
 			}
 
 			/* Check if the current line should be highlighted */
-			if (pos == this->highlight_row) {
+			if (i == this->highlight_row) {
 				GfxFillRect(br.left, tr.top, br.right, tr.top + this->resize.step_height - 1, PC_BLACK);
 				if (colour == TC_BLACK) colour = TC_WHITE; // Make black text readable by inverting it to white.
 			}
 
-			DrawString(tr, log->lines[pos], colour, SA_LEFT | SA_FORCE);
+			DrawString(tr, line.text, colour, SA_LEFT | SA_FORCE);
 			tr.top += this->resize.step_height;
 		}
 	}
@@ -1041,11 +1040,11 @@ struct ScriptDebugWindow : public Window {
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
 		if (!gui_scope && data == script_debug_company && this->IsValidDebugCompany(script_debug_company) && this->break_check_enabled && !this->break_string_filter.IsEmpty()) {
 			/* Get the log instance of the active company */
-			ScriptLog::LogData *log = this->GetLogPointer();
+			ScriptLogTypes::LogData &log = this->GetLogPointer();
 
-			if (log != nullptr) {
+			if (!log.empty()) {
 				this->break_string_filter.ResetState();
-				this->break_string_filter.AddLine(log->lines[log->pos]);
+				this->break_string_filter.AddLine(log.back().text);
 				if (this->break_string_filter.GetState()) {
 					/* Pause execution of script. */
 					if (!this->IsDead()) {
@@ -1062,7 +1061,7 @@ struct ScriptDebugWindow : public Window {
 					}
 
 					/* Highlight row that matched */
-					this->highlight_row = log->pos;
+					this->highlight_row = (int)(log.size() - 1);
 				}
 			}
 		}
@@ -1071,8 +1070,7 @@ struct ScriptDebugWindow : public Window {
 
 		this->SelectValidDebugCompany();
 
-		ScriptLog::LogData *log = script_debug_company != INVALID_COMPANY ? this->GetLogPointer() : nullptr;
-		this->vscroll->SetCount((log == nullptr) ? 0 : log->used);
+		this->vscroll->SetCount(script_debug_company != INVALID_COMPANY ? (int)this->GetLogPointer().size() : 0);
 
 		/* Update company buttons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {

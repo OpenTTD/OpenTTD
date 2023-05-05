@@ -53,7 +53,7 @@
 
 	char log_message[1024];
 	seprintf(log_message, lastof(log_message), "Break: %s", message);
-	ScriptLog::Log(ScriptLog::LOG_SQ_ERROR, log_message);
+	ScriptLog::Log(ScriptLogTypes::LOG_SQ_ERROR, log_message);
 
 	/* Inform script developer that their script has been paused and
 	 * needs manual action to continue. */
@@ -66,7 +66,7 @@
 
 /* static */ void ScriptController::Print(bool error_msg, const char *message)
 {
-	ScriptLog::Log(error_msg ? ScriptLog::LOG_SQ_ERROR : ScriptLog::LOG_SQ_INFO, message);
+	ScriptLog::Log(error_msg ? ScriptLogTypes::LOG_SQ_ERROR : ScriptLogTypes::LOG_SQ_INFO, message);
 }
 
 ScriptController::ScriptController(CompanyID company) :

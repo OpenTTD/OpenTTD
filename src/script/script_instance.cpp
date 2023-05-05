@@ -36,7 +36,6 @@ ScriptStorage::~ScriptStorage()
 {
 	/* Free our pointers */
 	if (event_data != nullptr) ScriptEventController::FreeEventPointer();
-	if (log_data != nullptr) ScriptLog::FreeLogPointer();
 }
 
 /**
@@ -315,7 +314,7 @@ ScriptStorage *ScriptInstance::GetStorage()
 	return this->storage;
 }
 
-void *ScriptInstance::GetLogPointer()
+ScriptLogTypes::LogData &ScriptInstance::GetLogPointer()
 {
 	ScriptObject::ActiveInstance active(this);
 
