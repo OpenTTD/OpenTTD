@@ -175,7 +175,7 @@
 	if (_settings_game.game_config != nullptr && _settings_game.game_config->HasScript()) {
 		if (!_settings_game.game_config->ResetInfo(true)) {
 			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_game.game_config->GetName());
-			_settings_game.game_config->Change(nullptr);
+			_settings_game.game_config->Change(std::nullopt);
 			if (Game::instance != nullptr) {
 				delete Game::instance;
 				Game::instance = nullptr;
@@ -188,7 +188,7 @@
 	if (_settings_newgame.game_config != nullptr && _settings_newgame.game_config->HasScript()) {
 		if (!_settings_newgame.game_config->ResetInfo(false)) {
 			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_newgame.game_config->GetName());
-			_settings_newgame.game_config->Change(nullptr);
+			_settings_newgame.game_config->Change(std::nullopt);
 		}
 	}
 }

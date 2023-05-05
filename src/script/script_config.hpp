@@ -83,7 +83,7 @@ public:
 	 *   as specified. If false any compatible version is ok.
 	 * @param is_random Is the Script chosen randomly?
 	 */
-	void Change(const char *name, int version = -1, bool force_exact_match = false, bool is_random = false);
+	void Change(std::optional<const std::string> name, int version = -1, bool force_exact_match = false, bool is_random = false);
 
 	/**
 	 * Get the ScriptInfo linked to this ScriptConfig.
