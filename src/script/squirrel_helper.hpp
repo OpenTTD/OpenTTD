@@ -52,10 +52,21 @@ namespace SQConvert {
 	template <> struct Return<Money>        { static inline int Set(HSQUIRRELVM vm, Money res)       { sq_pushinteger(vm, res); return 1; } };
 	template <> struct Return<TileIndex>    { static inline int Set(HSQUIRRELVM vm, TileIndex res)   { sq_pushinteger(vm, (int32)res.value); return 1; } };
 	template <> struct Return<bool>         { static inline int Set(HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; } };
-	template <> struct Return<char *>       { static inline int Set(HSQUIRRELVM vm, char *res)       { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); free(res); } return 1; } };
-	template <> struct Return<const char *> { static inline int Set(HSQUIRRELVM vm, const char *res) { if (res == nullptr) sq_pushnull(vm); else { sq_pushstring(vm, res, -1); } return 1; } };
+	template <> struct Return<char *>       { /* Do not use char *, use std::optional<std::string> instead. */ };
+	template <> struct Return<const char *> { /* Do not use const char *, use std::optional<std::string> instead. */ };
 	template <> struct Return<void *>       { static inline int Set(HSQUIRRELVM vm, void *res)       { sq_pushuserpointer(vm, res); return 1; } };
 	template <> struct Return<HSQOBJECT>    { static inline int Set(HSQUIRRELVM vm, HSQOBJECT res)   { sq_pushobject(vm, res); return 1; } };
+
+	template <> struct Return<std::optional<std::string>> {
+		static inline int Set(HSQUIRRELVM vm, std::optional<std::string> res) {
+			if (res.has_value()) {
+				sq_pushstring(vm, res.value(), -1);
+			} else {
+				sq_pushnull(vm);
+			}
+			return 1;
+		}
+	};
 
 	/**
 	 * To get a param from squirrel, we use this helper class. It converts to the right format.

@@ -150,7 +150,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The name of the given company.
 	 */
-	static char *GetName(CompanyID company);
+	static std::optional<std::string> GetName(CompanyID company);
 
 	/**
 	 * Set the name of your president.
@@ -168,7 +168,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The name of the president of the given company.
 	 */
-	static char *GetPresidentName(CompanyID company);
+	static std::optional<std::string> GetPresidentName(CompanyID company);
 
 	/**
 	 * Set the gender of the president of your company.

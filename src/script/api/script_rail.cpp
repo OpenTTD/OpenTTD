@@ -24,9 +24,9 @@
 
 #include "../../safeguards.h"
 
-/* static */ char *ScriptRail::GetName(RailType rail_type)
+/* static */ std::optional<std::string> ScriptRail::GetName(RailType rail_type)
 {
-	if (!IsRailTypeAvailable(rail_type)) return nullptr;
+	if (!IsRailTypeAvailable(rail_type)) return std::nullopt;
 
 	return GetString(GetRailTypeInfo((::RailType)rail_type)->strings.menu_text);
 }

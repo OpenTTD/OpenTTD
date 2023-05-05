@@ -28,26 +28,25 @@
 	return (towneffect_type >= (TownEffect)TE_BEGIN && towneffect_type < (TownEffect)TE_END);
 }
 
-/* static */ char *ScriptCargo::GetName(CargoID cargo_type)
+/* static */ std::optional<std::string> ScriptCargo::GetName(CargoID cargo_type)
 {
-	if (!IsValidCargo(cargo_type)) return nullptr;
+	if (!IsValidCargo(cargo_type)) return std::nullopt;
 
 	::SetDParam(0, 1ULL << cargo_type);
 	return GetString(STR_JUST_CARGO_LIST);
 }
 
-/* static */ char *ScriptCargo::GetCargoLabel(CargoID cargo_type)
+/* static */ std::optional<std::string> ScriptCargo::GetCargoLabel(CargoID cargo_type)
 {
-	if (!IsValidCargo(cargo_type)) return nullptr;
+	if (!IsValidCargo(cargo_type)) return std::nullopt;
 	const CargoSpec *cargo = ::CargoSpec::Get(cargo_type);
 
 	/* cargo->label is a uint32 packing a 4 character non-terminated string,
 	 * like "PASS", "COAL", "OIL_". New ones can be defined by NewGRFs */
-	char *cargo_label = MallocT<char>(sizeof(cargo->label) + 1);
+	std::string cargo_label;
 	for (uint i = 0; i < sizeof(cargo->label); i++) {
-		cargo_label[i] = GB(cargo->label, (uint8)(sizeof(cargo->label) - i - 1) * 8, 8);
+		cargo_label.push_back(GB(cargo->label, (uint8)(sizeof(cargo->label) - i - 1) * 8, 8));
 	}
-	cargo_label[sizeof(cargo->label)] = '\0';
 	return cargo_label;
 }
 

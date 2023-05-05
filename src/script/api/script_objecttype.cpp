@@ -23,9 +23,9 @@
 	return ObjectSpec::Get(object_type)->IsEverAvailable();
 }
 
-/* static */ char *ScriptObjectType::GetName(ObjectType object_type)
+/* static */ std::optional<std::string> ScriptObjectType::GetName(ObjectType object_type)
 {
-	EnforcePrecondition(nullptr, IsValidObjectType(object_type));
+	EnforcePrecondition(std::nullopt, IsValidObjectType(object_type));
 
 	return GetString(ObjectSpec::Get(object_type)->name);
 }

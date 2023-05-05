@@ -90,7 +90,7 @@ public:
 	 * @pre IsValidCargo(cargo_type).
 	 * @return The name of the cargo type.
 	 */
-	static char *GetName(CargoID cargo_type);
+	static std::optional<std::string> GetName(CargoID cargo_type);
 
 	/**
 	 * Gets the string representation of the cargo label.
@@ -107,7 +107,7 @@ public:
 	 *  - In other words: Only use the cargo label, if you know more about the behaviour
 	 *    of a specific cargo from a specific industry set, than the API methods can tell you.
 	 */
-	static char *GetCargoLabel(CargoID cargo_type);
+	static std::optional<std::string> GetCargoLabel(CargoID cargo_type);
 
 	/**
 	 * Checks whether the give cargo is a freight or not.

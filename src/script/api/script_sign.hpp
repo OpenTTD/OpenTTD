@@ -55,7 +55,7 @@ public:
 	 * @pre IsValidSign(sign_id).
 	 * @return The name of the sign.
 	 */
-	static char *GetName(SignID sign_id);
+	static std::optional<std::string> GetName(SignID sign_id);
 
 	/**
 	 * Get the owner of a sign.

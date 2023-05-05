@@ -32,9 +32,9 @@
 	return ::Town::IsValidID(town_id);
 }
 
-/* static */ char *ScriptTown::GetName(TownID town_id)
+/* static */ std::optional<std::string> ScriptTown::GetName(TownID town_id)
 {
-	if (!IsValidTown(town_id)) return nullptr;
+	if (!IsValidTown(town_id)) return std::nullopt;
 
 	::SetDParam(0, town_id);
 	return GetString(STR_TOWN_NAME);

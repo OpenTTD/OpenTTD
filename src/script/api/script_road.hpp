@@ -90,7 +90,7 @@ public:
 	 * @pre IsRoadTypeAvailable(road_type).
 	 * @return The name the road type has.
 	 */
-	static char *GetName(RoadType road_type);
+	static std::optional<std::string> GetName(RoadType road_type);
 
 	/**
 	 * Determines whether a busstop or a truckstop is needed to transport a certain cargo.

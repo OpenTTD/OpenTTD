@@ -39,7 +39,7 @@ public:
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return The name of an industry.
 	 */
-	static char *GetName(IndustryType industry_type);
+	static std::optional<std::string> GetName(IndustryType industry_type);
 
 	/**
 	 * Get a list of CargoID possible produced by this industry-type.

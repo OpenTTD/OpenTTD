@@ -42,9 +42,9 @@
 	return ::GetIndustryIndex(tile);
 }
 
-/* static */ char *ScriptIndustry::GetName(IndustryID industry_id)
+/* static */ std::optional<std::string> ScriptIndustry::GetName(IndustryID industry_id)
 {
-	if (!IsValidIndustry(industry_id)) return nullptr;
+	if (!IsValidIndustry(industry_id)) return std::nullopt;
 
 	::SetDParam(0, industry_id);
 	return GetString(STR_INDUSTRY_NAME);

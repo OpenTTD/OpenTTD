@@ -218,12 +218,9 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->log_data;
 }
 
-/* static */ char *ScriptObject::GetString(StringID string)
+/* static */ std::string ScriptObject::GetString(StringID string)
 {
-	char buffer[64];
-	::GetString(buffer, string, lastof(buffer));
-	::StrMakeValidInPlace(buffer, lastof(buffer), SVS_NONE);
-	return ::stredup(buffer);
+	return ::StrMakeValid(::GetString(string));
 }
 
 /* static */ void ScriptObject::SetCallbackVariable(int index, int value)

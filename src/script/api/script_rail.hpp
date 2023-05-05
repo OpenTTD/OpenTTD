@@ -101,7 +101,7 @@ public:
 	 *  means that the name could be something like "Maglev construction" instead
 	 *  of just "Maglev".
 	 */
-	static char *GetName(RailType rail_type);
+	static std::optional<std::string> GetName(RailType rail_type);
 
 	/**
 	 * Checks whether the given tile is actually a tile with rail that can be

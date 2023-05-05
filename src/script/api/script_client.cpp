@@ -32,11 +32,11 @@ static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 	return (FindClientInfo(client) == nullptr ? ScriptClient::CLIENT_INVALID : client);
 }
 
-/* static */ char *ScriptClient::GetName(ScriptClient::ClientID client)
+/* static */ std::optional<std::string> ScriptClient::GetName(ScriptClient::ClientID client)
 {
 	NetworkClientInfo *ci = FindClientInfo(client);
-	if (ci == nullptr) return nullptr;
-	return stredup(ci->client_name.c_str());
+	if (ci == nullptr) return std::nullopt;
+	return ci->client_name;
 }
 
 /* static */ ScriptCompany::CompanyID ScriptClient::GetCompany(ScriptClient::ClientID client)

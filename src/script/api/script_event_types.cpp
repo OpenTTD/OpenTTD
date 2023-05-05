@@ -28,9 +28,9 @@ bool ScriptEventEnginePreview::IsEngineValid() const
 	return e != nullptr && e->IsEnabled();
 }
 
-char *ScriptEventEnginePreview::GetName()
+std::optional<std::string> ScriptEventEnginePreview::GetName()
 {
-	if (!this->IsEngineValid()) return nullptr;
+	if (!this->IsEngineValid()) return std::nullopt;
 
 	::SetDParam(0, this->engine);
 	return GetString(STR_ENGINE_NAME);

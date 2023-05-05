@@ -47,9 +47,9 @@
 	return ScriptObject::Command<CMD_RENAME_SIGN>::Do(sign_id, text);
 }
 
-/* static */ char *ScriptSign::GetName(SignID sign_id)
+/* static */ std::optional<std::string> ScriptSign::GetName(SignID sign_id)
 {
-	if (!IsValidSign(sign_id)) return nullptr;
+	if (!IsValidSign(sign_id)) return std::nullopt;
 
 	::SetDParam(0, sign_id);
 	return GetString(STR_SIGN_NAME);
