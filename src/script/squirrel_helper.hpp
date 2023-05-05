@@ -91,6 +91,20 @@ namespace SQConvert {
 		}
 	};
 
+	template <> struct Param<const std::string &> {
+		static inline const std::string Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
+		{
+			/* Convert what-ever there is as parameter to a string */
+			sq_tostring(vm, index);
+
+			const SQChar *tmp;
+			sq_getstring(vm, -1, &tmp);
+			std::string result = StrMakeValid(tmp);
+			sq_poptop(vm);
+			return result;
+		}
+	};
+
 	template <typename Titem>
 	struct Param<Array<Titem>> {
 		static inline Array<Titem> Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
