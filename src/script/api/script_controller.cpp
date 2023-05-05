@@ -104,9 +104,7 @@ ScriptController::ScriptController(CompanyID company) :
 
 	ScriptInfo *lib = ScriptObject::GetActiveInstance()->FindLibrary(library, version);
 	if (lib == nullptr) {
-		char error[1024];
-		seprintf(error, lastof(error), "couldn't find library '%s' with version %d", library, version);
-		throw sq_throwerror(vm, error);
+		throw sq_throwerror(vm, fmt::format("couldn't find library '{}' with version {}", library, version));
 	}
 
 	/* Internally we store libraries as 'library.version' */
@@ -133,9 +131,7 @@ ScriptController::ScriptController(CompanyID company) :
 		sq_newclass(vm, SQFalse);
 		/* Load the library */
 		if (!engine->LoadScript(vm, lib->GetMainScript(), false)) {
-			char error[1024];
-			seprintf(error, lastof(error), "there was a compile error when importing '%s' version %d", library, version);
-			throw sq_throwerror(vm, error);
+			throw sq_throwerror(vm, fmt::format("there was a compile error when importing '{}' version {}", library, version));
 		}
 		/* Create the fake class */
 		sq_newslot(vm, -3, SQFalse);
@@ -152,9 +148,7 @@ ScriptController::ScriptController(CompanyID company) :
 	}
 	sq_pushstring(vm, lib->GetInstanceName(), -1);
 	if (SQ_FAILED(sq_get(vm, -2))) {
-		char error[1024];
-		seprintf(error, lastof(error), "unable to find class '%s' in the library '%s' version %d", lib->GetInstanceName(), library, version);
-		throw sq_throwerror(vm, error);
+		throw sq_throwerror(vm, fmt::format("unable to find class '{}' in the library '{}' version {}", lib->GetInstanceName(), library, version));
 	}
 	HSQOBJECT obj;
 	sq_getstackobj(vm, -1, &obj);

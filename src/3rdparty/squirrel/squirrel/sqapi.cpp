@@ -933,9 +933,9 @@ void sq_resetobject(HSQOBJECT *po)
 	po->_unVal.pUserPointer=nullptr;po->_type=OT_NULL;
 }
 
-SQRESULT sq_throwerror(HSQUIRRELVM v,const SQChar *err)
+SQRESULT sq_throwerror(HSQUIRRELVM v,const SQChar *err, SQInteger len)
 {
-	v->_lasterror=SQString::Create(_ss(v),err);
+	v->_lasterror=SQString::Create(_ss(v),err, len);
 	return -1;
 }
 
