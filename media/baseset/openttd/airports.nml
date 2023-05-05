@@ -1,0 +1,46 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Extra airport graphics
+replacenew(AIRPORTS, "airports.png") {
+	[  18,  8, 64, 31, -31,   0 ]
+	[  98,  8, 64, 31, -31,   0 ]
+	[ 178,  8, 64, 31, -31,   0 ]
+	[ 258,  8, 64, 31, -31,   0 ]
+	[ 338,  8, 64, 31, -31,   0 ]
+	[ 418,  8, 64, 31, -31,   0 ]
+	[ 498,  8, 64, 55,  -2, -38 ]
+	[ 578,  8, 18, 17,  16,  -1 ]
+	[ 610,  8, 64, 55,  -2, -38 ]
+	[ 690,  8, 18, 17, -30,   1 ]
+	[ 722,  8, 64, 55,  -2, -38 ]
+	[   2, 88, 64, 55,  -2, -38 ]
+	[  82, 88, 64, 31, -31,   0 ]
+	[ 162, 88, 64, 31, -31,   0 ]
+	[ 242, 88, 64, 31, -31,   0 ]
+}
+
+// Climate specific sprites by PaulC
+if (climate == CLIMATE_ARCTIC) {
+	replacenew(AIRPORTS, "airports.png", 13) {
+		[ 320, 88, 64, 31, -31, 0 ]
+		[ 400, 88, 64, 31, -31, 0 ]
+	}
+}
+
+if (climate == CLIMATE_TROPIC) {
+	replacenew(AIRPORTS, "airports.png", 13) {
+		[ 480, 88, 64, 31, -31, 0 ]
+		[ 560, 88, 64, 31, -31, 0 ]
+	}
+}
+
+if (climate == CLIMATE_TOYLAND) {
+	replacenew(AIRPORTS, "airports.png", 13) {
+		[ 640, 88, 64, 31, -31, 0 ]
+		[ 720, 88, 64, 31, -31, 0 ]
+	}
+}

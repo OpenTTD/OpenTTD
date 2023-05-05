@@ -168,7 +168,7 @@ endif()
 find_package(SSE)
 find_package(Xaudio2)
 
-find_package(Grfcodec)
+find_package(Nml)
 
 include(CheckIPOSupported)
 check_ipo_supported(RESULT IPO_FOUND)

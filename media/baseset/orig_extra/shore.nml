@@ -1,0 +1,69 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Missing shore tile graphics for the temperate climate
+if (climate == CLIMATE_TEMPERATE) {
+	replacenew(COAST_TILES_BASEGFX, "shore.png") {
+		[  82,   8, 64, 15, -31,   0 ]
+		[ 162,   8, 64, 31, -31,  -8 ]
+		[ 242,   8, 64, 23, -31,   0 ]
+		[ 322,   8, 64, 47, -31, -16 ]
+		[ 402,   8, 64, 31, -31,  -8 ]
+		[ 482,   8, 64, 39, -31,  -8 ]
+		[ 562,   8, 64, 31, -31,  -8 ]
+		[ 642,   8, 64, 31, -31,  -8 ]
+		[ 722,   8, 64, 32, -31,  -1 ]
+		[   2,  72, 64, 31, -31,  -8 ]
+	}
+}
+
+// Missing shore tile graphics for the sub-arctic climate
+if (climate == CLIMATE_ARCTIC) {
+	replacenew(COAST_TILES_BASEGFX, "shore.png") {
+		[ 130,  72, 64, 15, -31,   0 ]
+		[ 210,  72, 64, 31, -31,  -8 ]
+		[ 290,  72, 64, 23, -31,   0 ]
+		[ 370,  72, 64, 47, -31, -16 ]
+		[ 450,  72, 64, 31, -31,  -8 ]
+		[ 530,  72, 64, 39, -31,  -8 ]
+		[ 610,  72, 64, 31, -31,  -8 ]
+		[ 690,  72, 64, 31, -31,  -8 ]
+		[   2, 136, 64, 32, -31,  -1 ]
+		[  82, 136, 64, 31, -31,  -8 ]
+	}
+}
+
+// Missing shore tile graphics for the sub-tropical climate
+if (climate == CLIMATE_TROPIC) {
+	replacenew(COAST_TILES_BASEGFX, "shore.png") {
+		[ 210, 136, 64, 15, -31,   0 ]
+		[ 290, 136, 64, 31, -31,  -8 ]
+		[ 370, 136, 64, 23, -31,   0 ]
+		[ 450, 136, 64, 47, -31, -16 ]
+		[ 530, 136, 64, 31, -31,  -8 ]
+		[ 610, 136, 64, 39, -31,  -8 ]
+		[ 690, 136, 64, 31, -31,  -8 ]
+		[   2, 200, 64, 31, -31,  -8 ]
+		[  82, 200, 64, 32, -31,  -1 ]
+		[ 162, 200, 64, 31, -31,  -8 ]
+	}
+}
+
+// Missing shore tile graphics for the toyland climate
+if (climate == CLIMATE_TOYLAND) {
+	replacenew(COAST_TILES_BASEGFX, "shore.png") {
+		[ 290, 200, 64, 15, -31,   0 ]
+		[ 370, 200, 64, 31, -31,  -8 ]
+		[ 450, 200, 64, 23, -31,   0 ]
+		[ 530, 200, 64, 47, -31, -16 ]
+		[ 610, 200, 64, 31, -31,  -8 ]
+		[ 690, 200, 64, 39, -31,  -8 ]
+		[   2, 264, 64, 31, -31,  -8 ]
+		[  82, 264, 64, 31, -31,  -8 ]
+		[ 162, 264, 64, 32, -31,  -1 ]
+		[ 242, 264, 64, 31, -31,  -8 ]
+	}
+}

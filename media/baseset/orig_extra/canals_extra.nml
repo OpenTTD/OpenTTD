@@ -1,0 +1,125 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+// Extra canal graphics by PaulC
+
+// Differentiation for the climates starts here
+
+// Canal edges (arctic snowy)
+spriteset(edges_arctic_snowy, "../openttd/canals.png") {
+	[  30, 40, 45, 22, -11, -1 ]
+	[  94, 40, 41, 21,  -8, 10 ]
+	[ 142, 40, 42, 21, -31, 10 ]
+	[ 190, 40, 43, 22, -31, -1 ]
+	[ 238, 40, 22, 22,  11,  4 ]
+	[ 270, 40, 24, 16, -11, 15 ]
+	[ 302, 40, 23, 23, -31,  4 ]
+	[ 334, 40, 24, 18, -11, -1 ]
+	[ 366, 40, 12, 11,  21, 10 ]
+	[ 398, 40, 19, 10,  -8, 21 ]
+	[ 430, 40, 11, 10, -31, 10 ]
+	[ 446, 40, 24, 16, -11, -6 ]
+}
+
+// Canal edges (arctic normal)
+spriteset(edges_arctic_normal, "../openttd/canals.png") {
+	[  30, 70, 45, 22, -11, -1 ]
+	[  94, 70, 41, 21,  -8, 10 ]
+	[ 142, 70, 42, 21, -31, 10 ]
+	[ 190, 70, 43, 22, -31, -1 ]
+	[ 238, 70, 22, 22,  11,  4 ]
+	[ 270, 70, 24, 16, -11, 15 ]
+	[ 302, 70, 23, 23, -31,  4 ]
+	[ 334, 70, 24, 18, -11, -1 ]
+	[ 366, 70, 12, 11,  21, 10 ]
+	[ 398, 70, 19, 10,  -8, 21 ]
+	[ 430, 70, 11, 10, -31, 10 ]
+	[ 446, 70, 24, 16, -11, -6 ]
+}
+
+// Choose the right arctic canal edges
+switch(FEAT_CANALS, SELF, edges_arctic, terrain_type) {
+	TILETYPE_SNOW: edges_arctic_snowy;
+	edges_arctic_normal;
+}
+
+if (climate == CLIMATE_ARCTIC) {
+	item(FEAT_CANALS, arctic, WF_DIKES) {
+		graphics {
+			default: edges_arctic;
+		}
+	}
+}
+
+// Canal edges (tropic desert)
+spriteset(edges_tropic_desert, "../openttd/canals.png") {
+	[  30, 100, 45, 22, -11, -1 ]
+	[  94, 100, 41, 21,  -8, 10 ]
+	[ 142, 100, 42, 21, -31, 10 ]
+	[ 190, 100, 43, 22, -31, -1 ]
+	[ 238, 100, 22, 22,  11,  4 ]
+	[ 270, 100, 24, 16, -11, 15 ]
+	[ 302, 100, 23, 23, -31,  4 ]
+	[ 334, 100, 24, 18, -11, -1 ]
+	[ 366, 100, 12, 11,  21, 10 ]
+	[ 398, 100, 19, 10,  -8, 21 ]
+	[ 430, 100, 11, 10, -31, 10 ]
+	[ 446, 100, 24, 16, -11, -6 ]
+}
+
+// Canal edges (tropic rainforest)
+spriteset(edges_tropic_rainforest, "../openttd/canals.png") {
+	[  30, 130, 45, 22, -11, -1 ]
+	[  94, 130, 41, 21,  -8, 10 ]
+	[ 142, 130, 42, 21, -31, 10 ]
+	[ 190, 130, 43, 22, -31, -1 ]
+	[ 238, 130, 22, 22,  11,  4 ]
+	[ 270, 130, 24, 16, -11, 15 ]
+	[ 302, 130, 23, 23, -31,  4 ]
+	[ 334, 130, 24, 18, -11, -1 ]
+	[ 366, 130, 12, 11,  21, 10 ]
+	[ 398, 130, 19, 10,  -8, 21 ]
+	[ 430, 130, 11, 10, -31, 10 ]
+	[ 446, 130, 24, 16, -11, -6 ]
+}
+
+// Choose the right tropic canal edges
+switch(FEAT_CANALS, SELF, edges_tropic, terrain_type) {
+	TILETYPE_DESERT: edges_tropic_desert;
+	edges_tropic_rainforest;
+}
+
+if (climate == CLIMATE_TROPIC) {
+	item(FEAT_CANALS, tropic, WF_DIKES) {
+		graphics {
+			default: edges_tropic;
+		}
+	}
+}
+
+// Canal edges (toyland)
+spriteset(edges_toyland, "../openttd/canals.png") {
+	[  30, 160, 45, 22, -11, -1 ]
+	[  94, 160, 41, 21,  -8, 10 ]
+	[ 142, 160, 42, 21, -31, 10 ]
+	[ 190, 160, 43, 22, -31, -1 ]
+	[ 238, 160, 22, 22,  11,  4 ]
+	[ 270, 160, 24, 16, -11, 15 ]
+	[ 302, 160, 23, 23, -31,  4 ]
+	[ 334, 160, 24, 18, -11, -1 ]
+	[ 366, 160, 12, 11,  21, 10 ]
+	[ 398, 160, 19, 10,  -8, 21 ]
+	[ 430, 160, 11, 10, -31, 10 ]
+	[ 446, 160, 24, 16, -11, -6 ]
+}
+
+if (climate == CLIMATE_TOYLAND) {
+	item(FEAT_CANALS, toyland, WF_DIKES) {
+		graphics {
+			default: edges_toyland;
+		}
+	}
+}
