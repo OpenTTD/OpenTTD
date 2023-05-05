@@ -55,11 +55,6 @@ public:
 	 */
 	ScriptController(CompanyID company);
 
-	/**
-	 * Destructor of the ScriptController.
-	 */
-	~ScriptController();
-
 #else
 	/**
 	 * This function is called to start your script. Your script starts here. If you
@@ -210,7 +205,7 @@ public:
 	static HSQOBJECT Import(const char *library, const char *class_name, int version);
 
 private:
-	typedef std::map<const char *, const char *, StringCompare> LoadedLibraryList; ///< The type for loaded libraries.
+	typedef std::map<std::string, std::string, CaseInsensitiveComparator> LoadedLibraryList; ///< The type for loaded libraries.
 
 	uint ticks;                       ///< The amount of ticks we're sleeping.
 	LoadedLibraryList loaded_library; ///< The libraries we loaded.
