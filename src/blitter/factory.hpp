@@ -13,7 +13,6 @@
 #include "base.hpp"
 #include "../debug.h"
 #include "../string_func.h"
-#include "../core/string_compare_type.hpp"
 #include <map>
 
 

@@ -11,7 +11,6 @@
 #define AI_HPP
 
 #include "../script/api/script_event_types.hpp"
-#include "../core/string_compare_type.hpp"
 #include "ai_scanner.hpp"
 
 /**

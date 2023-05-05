@@ -11,7 +11,6 @@
 #define SCRIPT_CONTROLLER_HPP
 
 #include "script_types.hpp"
-#include "../../core/string_compare_type.hpp"
 #include <map>
 
 /**
