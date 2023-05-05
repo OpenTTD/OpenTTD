@@ -40,6 +40,8 @@ public:
 
 	void Insert(Tspec *spec);
 
+	/** Get a reference to the specs within this class for iteration. */
+	const std::vector<Tspec *> &Specs() const { return this->spec; }
 	/** Get the number of allocated specs within the class. */
 	uint GetSpecCount() const { return static_cast<uint>(this->spec.size()); }
 	/** Get the number of potentially user-available specs within the class. */
