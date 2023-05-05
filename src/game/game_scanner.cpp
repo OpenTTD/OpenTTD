@@ -33,10 +33,10 @@ void GameScannerInfo::RegisterAPI(class Squirrel *engine)
 	GameInfo::RegisterAPI(engine);
 }
 
-GameInfo *GameScannerInfo::FindInfo(const char *name, int version, bool force_exact_match)
+GameInfo *GameScannerInfo::FindInfo(const std::string &name, int version, bool force_exact_match)
 {
 	if (this->info_list.size() == 0) return nullptr;
-	if (name == nullptr) return nullptr;
+	if (name.empty()) return nullptr;
 
 	if (version == -1) {
 		/* We want to load the latest version of this Game script; so find it */
@@ -86,7 +86,7 @@ void GameScannerLibrary::RegisterAPI(class Squirrel *engine)
 	GameLibrary::RegisterAPI(engine);
 }
 
-GameLibrary *GameScannerLibrary::FindLibrary(const char *library, int version)
+GameLibrary *GameScannerLibrary::FindLibrary(const std::string &library, int version)
 {
 	/* Internally we store libraries as 'library.version' */
 	std::string library_name = fmt::format("{}.{}", library, version);

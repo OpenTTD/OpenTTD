@@ -88,7 +88,7 @@ int AIInstance::GetSetting(const char *name)
 	return AIConfig::GetConfig(_current_company)->GetSetting(name);
 }
 
-ScriptInfo *AIInstance::FindLibrary(const char *library, int version)
+ScriptInfo *AIInstance::FindLibrary(const std::string &library, int version)
 {
 	return (ScriptInfo *)AI::FindLibrary(library, version);
 }

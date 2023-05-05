@@ -92,10 +92,10 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 #undef GetAIInfo
 }
 
-AIInfo *AIScannerInfo::FindInfo(const char *name, int version, bool force_exact_match)
+AIInfo *AIScannerInfo::FindInfo(const std::string &name, int version, bool force_exact_match)
 {
 	if (this->info_list.size() == 0) return nullptr;
-	if (name == nullptr) return nullptr;
+	if (name.empty()) return nullptr;
 
 	if (version == -1) {
 		/* We want to load the latest version of this AI; so find it */
@@ -145,7 +145,7 @@ void AIScannerLibrary::RegisterAPI(class Squirrel *engine)
 	AILibrary::RegisterAPI(engine);
 }
 
-AILibrary *AIScannerLibrary::FindLibrary(const char *library, int version)
+AILibrary *AIScannerLibrary::FindLibrary(const std::string &library, int version)
 {
 	/* Internally we store libraries as 'library.version' */
 	std::string library_name = fmt::format("{}.{}", library, version);

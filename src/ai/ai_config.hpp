@@ -41,7 +41,7 @@ public:
 	bool ResetInfo(bool force_exact_match);
 
 protected:
-	ScriptInfo *FindInfo(const char *name, int version, bool force_exact_match) override;
+	ScriptInfo *FindInfo(const std::string &name, int version, bool force_exact_match) override;
 };
 
 #endif /* AI_CONFIG_HPP */

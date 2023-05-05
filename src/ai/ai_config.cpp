@@ -33,7 +33,7 @@ class AIInfo *AIConfig::GetInfo() const
 	return static_cast<class AIInfo *>(ScriptConfig::GetInfo());
 }
 
-ScriptInfo *AIConfig::FindInfo(const char *name, int version, bool force_exact_match)
+ScriptInfo *AIConfig::FindInfo(const std::string &name, int version, bool force_exact_match)
 {
 	return static_cast<ScriptInfo *>(AI::FindInfo(name, version, force_exact_match));
 }

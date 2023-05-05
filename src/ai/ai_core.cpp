@@ -309,12 +309,12 @@
 	return AI::scanner_info->GetUniqueInfoList();
 }
 
-/* static */ AIInfo *AI::FindInfo(const char *name, int version, bool force_exact_match)
+/* static */ AIInfo *AI::FindInfo(const std::string &name, int version, bool force_exact_match)
 {
 	return AI::scanner_info->FindInfo(name, version, force_exact_match);
 }
 
-/* static */ AILibrary *AI::FindLibrary(const char *library, int version)
+/* static */ AILibrary *AI::FindLibrary(const std::string &library, int version)
 {
 	return AI::scanner_library->FindLibrary(library, version);
 }

@@ -19,8 +19,7 @@
 
 void ScriptConfig::Change(const char *name, int version, bool force_exact_match, bool is_random)
 {
-	free(this->name);
-	this->name = (name == nullptr) ? nullptr : stredup(name);
+	this->name = (name == nullptr) ? "" : name;
 	this->info = (name == nullptr) ? nullptr : this->FindInfo(this->name, version, force_exact_match);
 	this->version = (info == nullptr) ? -1 : info->GetVersion();
 	this->is_random = is_random;
@@ -44,7 +43,7 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 
 ScriptConfig::ScriptConfig(const ScriptConfig *config)
 {
-	this->name = (config->name == nullptr) ? nullptr : stredup(config->name);
+	this->name = config->name;
 	this->info = config->info;
 	this->version = config->version;
 	this->is_random = config->is_random;
@@ -60,7 +59,6 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 
 ScriptConfig::~ScriptConfig()
 {
-	free(this->name);
 	this->ResetSettings();
 	this->to_load_data.reset();
 }
@@ -156,7 +154,7 @@ bool ScriptConfig::IsRandom() const
 	return this->is_random;
 }
 
-const char *ScriptConfig::GetName() const
+const std::string &ScriptConfig::GetName() const
 {
 	return this->name;
 }
