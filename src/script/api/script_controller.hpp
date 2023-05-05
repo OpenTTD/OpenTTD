@@ -181,7 +181,7 @@ public:
 	 * @note gui.ai_developer_tools setting must be enabled or the break is
 	 * ignored.
 	 */
-	static void Break(const char* message);
+	static void Break(const std::string &message);
 
 	/**
 	 * When Squirrel triggers a print, this function is called.
@@ -190,7 +190,7 @@ public:
 	 * @param message The message Squirrel logged.
 	 * @note Use ScriptLog.Info/Warning/Error instead of 'print'.
 	 */
-	static void Print(bool error_msg, const char *message);
+	static void Print(bool error_msg, const std::string &message);
 
 	/**
 	 * Import a library.

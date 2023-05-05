@@ -45,15 +45,13 @@
 	throw Script_Suspend(ticks, nullptr);
 }
 
-/* static */ void ScriptController::Break(const char* message)
+/* static */ void ScriptController::Break(const std::string &message)
 {
 	if (_network_dedicated || !_settings_client.gui.ai_developer_tools) return;
 
 	ScriptObject::GetActiveInstance()->Pause();
 
-	char log_message[1024];
-	seprintf(log_message, lastof(log_message), "Break: %s", message);
-	ScriptLog::Log(ScriptLogTypes::LOG_SQ_ERROR, log_message);
+	ScriptLog::Log(ScriptLogTypes::LOG_SQ_ERROR, fmt::format("Break: {}", message));
 
 	/* Inform script developer that their script has been paused and
 	 * needs manual action to continue. */
@@ -64,7 +62,7 @@
 	}
 }
 
-/* static */ void ScriptController::Print(bool error_msg, const char *message)
+/* static */ void ScriptController::Print(bool error_msg, const std::string &message)
 {
 	ScriptLog::Log(error_msg ? ScriptLogTypes::LOG_SQ_ERROR : ScriptLogTypes::LOG_SQ_INFO, message);
 }
