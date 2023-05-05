@@ -344,7 +344,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}指令�
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ゲームをポーズします
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}ゲーム進行速度を早くします
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ゲームオプションの設定画面を開きます
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ゲームオプションと設定
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}ゲームのセーブ、ロード、中断、OpenTTDの終了ができます
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}地図の表示、ビューポートの表示、貨物流通、標識のリストの表示ができます
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}街の一覧を表示します
@@ -354,7 +354,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}会社�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}会社の一般的な情報を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}ゲームの背景となる物語を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}ゲームの目標一覧を表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}さまざまなグラフを表示します
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}会社の業績グラフや運送報酬相場を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}会社の業務成績表を表示します
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}産業を調査、及び産業の開設に出資します
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}社有の列車一覧とそのグループを表示します。Ctrl+クリックで一覧のみ表示します
@@ -370,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}埠頭�
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}空港を建設します
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}地形のツールバーを開きます。整地や植林などを行うことができます。
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}音楽/効果音のウィンドウを表示します
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最後のメッセージ/ニュースの表示と、メッセージオプションの設定ができます
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域の情報、コンソール、スクリプトのデバッグ、スクリーンショット、OpenTTDについて、などのツール群です
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最新メッセージ/ニュースとメッセージ履歴を表示、メッセージをすべて削除
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域の情報、スクリーンショット、OpenTTDについて、開発者ツール
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}ツールバーを切り替えます
 
 # Extra tooltips for the scenario editor toolbar
@@ -1730,7 +1730,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :一つのスク
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :最大信頼度を点検要件化: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :次の点検が必要と判断される条件を設定します。無効の場合は、前の点検から指定の期間が経過した際に点検が必要と判断されます。有効にすると、輸送機器の最大信頼度が指定の値より落ち込んだ場合に次の点検が必要と判断されます
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :有効にすると、輸送機器の信頼度が最大信頼度より指定の差分落ち込んだ場合に点検に行きます。{}{}例えば、輸送機器の最大信頼度が90%で点検間隔が20%だとすると、輸送機器の信頼度が72%を下回る場合に点検に行きます。
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :列車の点検周期: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :個別に指定されていない場合の、列車の点検周期を設定します
@@ -1935,6 +1935,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :変化なし
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初期の都市サイズ乗数: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ゲーム開始時に都市が普通の街に比べて平均して何倍の人口規模になるかを設定します
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :行先分配グラフを{STRING}秒毎に更新
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :行先分配グラフの更新の間の待ち時間。各更新はグラフの一部だけのルートを再計算します。即ち、この設定を〇〇秒に指定する場合、全グラフが〇〇秒毎に更新されるのではありません。間隔が短ければ短いほどCPU時間を消費します。長ければ長いほど貨物流通の新規ルートの行先分配に時間がかかります。
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :行先分配の更新に{STRING}秒を割り当て
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :行先分配グラフの更新に割り当てられる時間。更新が始まると、スレッドが生成されて、指定の時間に実行させられます。短ければ短いほど間に合わない可能性が高まります。その場合、ゲームは停止して計算完了を待ちます。長ければ長いほどルート変更の際に行先分配の更新に時間がかかります。
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :旅客の行先分配法: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :旅客がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう乗客とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう旅客数は独立に決められます。「無効」では行き先別分配をしなくなります。
@@ -3823,8 +3827,6 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}この�
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :輸送機器更新
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :回送して点検
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}収益(今年): {CURRENCY_LONG} (収益(去年): {CURRENCY_LONG})
-STR_VEHICLE_LIST_CARGO                                          :{TINY_FONT}{BLACK}[{CARGO_LIST}]
-STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{TINY_FONT}{BLACK}{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :列車庫へ回送
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :車庫へ回送
@@ -4591,6 +4593,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :ランダムな
 STR_AI_CONFIG_NONE                                              :(なし)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}最大競争会社数: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}競争会社の創業間隔: {ORANGE}{COMMA}分
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}上に移動
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}選択したAIの順位を上げる
@@ -5601,33 +5604,8 @@ STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMMA                                            :{TINY_FONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
-STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
-STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
-STR_BLACK_INT                                                   :{BLACK}{NUM}
-STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
-STR_BLACK_STRING                                                :{BLACK}{STRING}
-STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
-STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING}{WHITE}
-STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2
