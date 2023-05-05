@@ -18,7 +18,7 @@ enum ClientID : uint32;
 enum Colours : byte;
 
 CommandCost CmdCompanyCtrl(DoCommandFlag flags, CompanyCtrlAction cca, CompanyID company_id, CompanyRemoveReason reason, ClientID client_id);
-CommandCost CmdGiveMoney(DoCommandFlag flags, uint32 money, CompanyID dest_company);
+CommandCost CmdGiveMoney(DoCommandFlag flags, Money money, CompanyID dest_company);
 CommandCost CmdRenameCompany(DoCommandFlag flags, const std::string &text);
 CommandCost CmdRenamePresident(DoCommandFlag flags, const std::string &text);
 CommandCost CmdSetCompanyManagerFace(DoCommandFlag flags, CompanyManagerFace cmf);
