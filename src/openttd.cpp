@@ -373,7 +373,7 @@ void MakeNewgameSettingsLive()
 		if (_settings_newgame.ai_config[c] != nullptr) {
 			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
 			if (!AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->HasScript()) {
-				AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(nullptr);
+				AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(std::nullopt);
 			}
 		}
 	}

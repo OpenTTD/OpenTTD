@@ -17,10 +17,14 @@
 
 #include "../safeguards.h"
 
-void ScriptConfig::Change(const char *name, int version, bool force_exact_match, bool is_random)
+void ScriptConfig::Change(std::optional<const std::string> name, int version, bool force_exact_match, bool is_random)
 {
-	this->name = (name == nullptr) ? "" : name;
-	this->info = (name == nullptr) ? nullptr : this->FindInfo(this->name, version, force_exact_match);
+	if (name.has_value()) {
+		this->name = std::move(name.value());
+		this->info = this->FindInfo(this->name, version, force_exact_match);
+	} else {
+		this->info = nullptr;
+	}
 	this->version = (info == nullptr) ? -1 : info->GetVersion();
 	this->is_random = is_random;
 	this->config_list.reset();

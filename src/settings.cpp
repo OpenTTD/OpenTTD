@@ -869,7 +869,7 @@ static void AILoadConfig(IniFile &ini, const char *grpname)
 
 	/* Clean any configured AI */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME)->Change(nullptr);
+		AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME)->Change(std::nullopt);
 	}
 
 	/* If no group exists, return */
@@ -879,7 +879,7 @@ static void AILoadConfig(IniFile &ini, const char *grpname)
 	for (item = group->item; c < MAX_COMPANIES && item != nullptr; c++, item = item->next) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 
-		config->Change(item->name.c_str());
+		config->Change(item->name);
 		if (!config->HasScript()) {
 			if (item->name != "none") {
 				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", item->name);
@@ -896,7 +896,7 @@ static void GameLoadConfig(IniFile &ini, const char *grpname)
 	IniItem *item;
 
 	/* Clean any configured GameScript */
-	GameConfig::GetConfig(GameConfig::SSS_FORCE_NEWGAME)->Change(nullptr);
+	GameConfig::GetConfig(GameConfig::SSS_FORCE_NEWGAME)->Change(std::nullopt);
 
 	/* If no group exists, return */
 	if (group == nullptr) return;
@@ -906,7 +906,7 @@ static void GameLoadConfig(IniFile &ini, const char *grpname)
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
 
-	config->Change(item->name.c_str());
+	config->Change(item->name);
 	if (!config->HasScript()) {
 		if (item->name != "none") {
 			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", item->name);

@@ -172,7 +172,7 @@ struct ScriptListWindow : public Window {
 	void ChangeScript()
 	{
 		if (this->selected == -1) {
-			GetConfig(slot)->Change(nullptr);
+			GetConfig(slot)->Change(std::nullopt);
 		} else {
 			ScriptInfoList::const_iterator it = this->info_list->cbegin();
 			std::advance(it, this->selected);
