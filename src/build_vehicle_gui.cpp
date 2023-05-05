@@ -999,18 +999,18 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
  * @param type Type of vehicle (VEH_*)
  * @param r The Rect of the list
  * @param eng_list What engines to draw
- * @param min where to start in the list
- * @param max where in the list to end
+ * @param sb scrollbar
  * @param selected_id what engine to highlight as selected, if any
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
  */
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group)
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar *sb, EngineID selected_id, bool show_count, GroupID selected_group)
 {
 	static const int sprite_y_offsets[] = { -1, -1, -2, -2 };
 
 	/* Obligatory sanity checks! */
-	assert(max <= eng_list.size());
+	assert(sb != nullptr);
+	assert((size_t)sb->End() <= eng_list.size());
 
 	bool rtl = _current_text_dir == TD_RTL;
 	int step_size = GetEngineListHeight(type);
@@ -1041,8 +1041,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 	int replace_icon_y_offset = (ir.Height() - replace_icon.height) / 2;
 
 	int y = ir.top;
-	for (; min < max; min++, y += step_size) {
-		const auto &item = eng_list[min];
+	for (const auto &item : sb->Iterate(eng_list)) {
 		uint indent       = item.indent * WidgetDimensions::scaled.hsep_indent;
 		bool has_variants = (item.flags & EngineDisplayFlags::HasVariants) != EngineDisplayFlags::None;
 		bool is_folded    = (item.flags & EngineDisplayFlags::IsFolded)    != EngineDisplayFlags::None;
@@ -1078,10 +1077,12 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 			/* Draw tree lines */
 			Rect fr = ir.Indent(indent - WidgetDimensions::scaled.hsep_indent, rtl).WithWidth(circle_width, rtl);
 			int ycenter = y + normal_text_y_offset + FONT_HEIGHT_NORMAL / 2;
-			bool continues = (min + 1U) < eng_list.size() && eng_list[min + 1].indent == item.indent;
+			size_t i = (&item - eng_list.data()) + 1U; /* Row number required to get next element. */
+			bool continues = i < eng_list.size() && eng_list[i].indent == item.indent;
 			GfxDrawLine(fr.left + circle_width / 2, y - WidgetDimensions::scaled.matrix.top, fr.left + circle_width / 2, continues ? y - WidgetDimensions::scaled.matrix.top + step_size - 1 : ycenter, linecolour, WidgetDimensions::scaled.fullbevel.top);
 			GfxDrawLine(fr.left + circle_width / 2, ycenter, fr.right, ycenter, linecolour, WidgetDimensions::scaled.fullbevel.top);
 		}
+		y += step_size;
 	}
 }
 
@@ -1769,8 +1770,7 @@ struct BuildVehicleWindow : Window {
 					this->vehicle_type,
 					r,
 					this->eng_list,
-					this->vscroll->GetPosition(),
-					static_cast<uint16>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->eng_list.size())),
+					this->vscroll,
 					this->sel_engine,
 					false,
 					DEFAULT_GROUP
