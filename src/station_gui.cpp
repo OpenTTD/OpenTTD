@@ -2180,6 +2180,7 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 	TileArea ctx = ta;
 
 	_stations_nearby_list.clear();
+	_stations_nearby_list.push_back(NEW_STATION);
 	_deleted_stations_nearby.clear();
 
 	/* Check the inside, to return, if we sit on another station */
@@ -2268,8 +2269,9 @@ struct SelectStationWindow : Window {
 
 		/* Determine the widest string */
 		Dimension d = GetStringBoundingBox(T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
-		for (uint i = 0; i < _stations_nearby_list.size(); i++) {
-			const T *st = T::Get(_stations_nearby_list[i]);
+		for (const auto &station : _stations_nearby_list) {
+			if (station == NEW_STATION) continue;
+			const T *st = T::Get(station);
 			SetDParam(0, st->index);
 			SetDParam(1, st->facilities);
 			d = maxdim(d, GetStringBoundingBox(T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION));
@@ -2287,34 +2289,28 @@ struct SelectStationWindow : Window {
 		if (widget != WID_JS_PANEL) return;
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-		if (this->vscroll->GetPosition() == 0) {
-			DrawString(tr, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
-			tr.top += this->resize.step_height;
+		for (uint i = this->vscroll->GetPosition(); i < _stations_nearby_list.size(); ++i, tr.top += this->resize.step_height) {
+			if (_stations_nearby_list[i] == NEW_STATION) {
+				DrawString(tr, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
+			} else {
+				const T *st = T::Get(_stations_nearby_list[i]);
+				SetDParam(0, st->index);
+				SetDParam(1, st->facilities);
+				DrawString(tr, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION);
+			}
 		}
 
-		for (uint i = std::max<uint>(1, this->vscroll->GetPosition()); i <= _stations_nearby_list.size(); ++i, tr.top += this->resize.step_height) {
-			/* Don't draw anything if it extends past the end of the window. */
-			if (i - this->vscroll->GetPosition() >= this->vscroll->GetCapacity()) break;
-
-			const T *st = T::Get(_stations_nearby_list[i - 1]);
-			SetDParam(0, st->index);
-			SetDParam(1, st->facilities);
-			DrawString(tr, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION);
-		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget != WID_JS_PANEL) return;
 
-		uint st_index = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_JS_PANEL, WidgetDimensions::scaled.framerect.top);
-		bool distant_join = (st_index > 0);
-		if (distant_join) st_index--;
-
-		if (distant_join && st_index >= _stations_nearby_list.size()) return;
+		auto it = this->vscroll->GetScrolledItemFromWidget(_stations_nearby_list, pt.y, this, WID_JS_PANEL, WidgetDimensions::scaled.framerect.top);
+		if (it == _stations_nearby_list.end()) return;
 
 		/* Execute stored Command */
-		this->select_station_proc(false, distant_join ? _stations_nearby_list[st_index] : NEW_STATION);
+		this->select_station_proc(false, *it);
 
 		/* Close Window; this might cause double frees! */
 		CloseWindowById(WC_SELECT_STATION, 0);
@@ -2342,7 +2338,7 @@ struct SelectStationWindow : Window {
 	{
 		if (!gui_scope) return;
 		FindStationsNearby<T>(this->area, true);
-		this->vscroll->SetCount(_stations_nearby_list.size() + 1);
+		this->vscroll->SetCount(_stations_nearby_list.size());
 		this->SetDirty();
 	}
 
@@ -2354,13 +2350,9 @@ struct SelectStationWindow : Window {
 		}
 
 		/* Show coverage area of station under cursor */
-		uint st_index = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_JS_PANEL, WidgetDimensions::scaled.framerect.top);
-		if (st_index == 0 || st_index > _stations_nearby_list.size()) {
-			SetViewportCatchmentStation(nullptr, true);
-		} else {
-			st_index--;
-			SetViewportCatchmentStation(Station::Get(_stations_nearby_list[st_index]), true);
-		}
+		auto it = this->vscroll->GetScrolledItemFromWidget(_stations_nearby_list, pt.y, this, WID_JS_PANEL, WidgetDimensions::scaled.framerect.top);
+		const Station *st = it == _stations_nearby_list.end() || *it == NEW_STATION ? nullptr : Station::Get(*it);
+		SetViewportCatchmentStation(st, true);
 	}
 };
 
@@ -2404,7 +2396,7 @@ static bool StationJoinerNeeded(TileArea ta, const StationPickerCmdProc &proc)
 	 * If adjacent-stations is disabled and we are building next to a station, do not show the selection window.
 	 * but join the other station immediately. */
 	const T *st = FindStationsNearby<T>(ta, false);
-	return st == nullptr && (_settings_game.station.adjacent_stations || _stations_nearby_list.size() == 0);
+	return st == nullptr && (_settings_game.station.adjacent_stations || std::any_of(std::begin(_stations_nearby_list), std::end(_stations_nearby_list), [](StationID s) { return s != NEW_STATION; }));
 }
 
 /**
