@@ -26,9 +26,9 @@
 	return st != nullptr && (st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity() || st->owner == OWNER_NONE);
 }
 
-/* static */ char *ScriptBaseStation::GetName(StationID station_id)
+/* static */ std::optional<std::string> ScriptBaseStation::GetName(StationID station_id)
 {
-	if (!IsValidBaseStation(station_id)) return nullptr;
+	if (!IsValidBaseStation(station_id)) return std::nullopt;
 
 	::SetDParam(0, station_id);
 	return GetString(::Station::IsValidID(station_id) ? STR_STATION_NAME : STR_WAYPOINT_NAME);

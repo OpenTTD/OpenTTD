@@ -142,7 +142,7 @@ public:
 	 * @pre IsValidTown(town_id).
 	 * @return The name of the town.
 	 */
-	static char *GetName(TownID town_id);
+	static std::optional<std::string> GetName(TownID town_id);
 
 	/**
 	 * Rename a town.

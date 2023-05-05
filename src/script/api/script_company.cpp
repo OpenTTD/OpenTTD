@@ -57,10 +57,10 @@
 	return ScriptObject::Command<CMD_RENAME_COMPANY>::Do(text);
 }
 
-/* static */ char *ScriptCompany::GetName(ScriptCompany::CompanyID company)
+/* static */ std::optional<std::string> ScriptCompany::GetName(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == COMPANY_INVALID) return nullptr;
+	if (company == COMPANY_INVALID) return std::nullopt;
 
 	::SetDParam(0, company);
 	return GetString(STR_COMPANY_NAME);
@@ -79,20 +79,13 @@
 	return ScriptObject::Command<CMD_RENAME_PRESIDENT>::Do(text);
 }
 
-/* static */ char *ScriptCompany::GetPresidentName(ScriptCompany::CompanyID company)
+/* static */ std::optional<std::string> ScriptCompany::GetPresidentName(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
+	if (company == COMPANY_INVALID) return std::nullopt;
 
-	static const int len = 64;
-	char *president_name = MallocT<char>(len);
-	if (company != COMPANY_INVALID) {
-		::SetDParam(0, company);
-		::GetString(president_name, STR_PRESIDENT_NAME, &president_name[len - 1]);
-	} else {
-		*president_name = '\0';
-	}
-
-	return president_name;
+	::SetDParam(0, company);
+	return GetString(STR_PRESIDENT_NAME);
 }
 
 /* static */ bool ScriptCompany::SetPresidentGender(Gender gender)

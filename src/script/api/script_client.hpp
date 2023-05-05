@@ -45,7 +45,7 @@ public:
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
 	 * @return The name of the given client.
 	 */
-	static char *GetName(ClientID client);
+	static std::optional<std::string> GetName(ClientID client);
 
 	/**
 	 * Get the company in which the given client is playing.

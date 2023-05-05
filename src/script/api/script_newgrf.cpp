@@ -50,15 +50,15 @@ ScriptNewGRFList::ScriptNewGRFList()
 	return 0;
 }
 
-/* static */ char *ScriptNewGRF::GetName(SQInteger grfid)
+/* static */ std::optional<std::string> ScriptNewGRF::GetName(SQInteger grfid)
 {
 	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
 
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
-			return ::stredup(c->GetName());
+			return c->GetName();
 		}
 	}
 
-	return nullptr;
+	return std::nullopt;
 }

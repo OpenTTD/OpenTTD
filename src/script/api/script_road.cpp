@@ -25,9 +25,9 @@
 	return ScriptCargo::HasCargoClass(cargo_type, ScriptCargo::CC_PASSENGERS) ? ROADVEHTYPE_BUS : ROADVEHTYPE_TRUCK;
 }
 
-/* static */ char *ScriptRoad::GetName(RoadType road_type)
+/* static */ std::optional<std::string> ScriptRoad::GetName(RoadType road_type)
 {
-	if (!IsRoadTypeAvailable(road_type)) return nullptr;
+	if (!IsRoadTypeAvailable(road_type)) return std::nullopt;
 
 	return GetString(GetRoadTypeInfo((::RoadType)road_type)->strings.name);
 }

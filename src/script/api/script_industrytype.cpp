@@ -57,9 +57,9 @@
 	return ::GetIndustrySpec(industry_type)->GetConstructionCost();
 }
 
-/* static */ char *ScriptIndustryType::GetName(IndustryType industry_type)
+/* static */ std::optional<std::string> ScriptIndustryType::GetName(IndustryType industry_type)
 {
-	if (!IsValidIndustryType(industry_type)) return nullptr;
+	if (!IsValidIndustryType(industry_type)) return std::nullopt;
 
 	return GetString(::GetIndustrySpec(industry_type)->name);
 }

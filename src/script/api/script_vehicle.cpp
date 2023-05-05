@@ -299,9 +299,9 @@
 	return ::Vehicle::Get(vehicle_id)->unitnumber;
 }
 
-/* static */ char *ScriptVehicle::GetName(VehicleID vehicle_id)
+/* static */ std::optional<std::string> ScriptVehicle::GetName(VehicleID vehicle_id)
 {
-	if (!IsPrimaryVehicle(vehicle_id)) return nullptr;
+	if (!IsPrimaryVehicle(vehicle_id)) return std::nullopt;
 
 	::SetDParam(0, vehicle_id);
 	return GetString(STR_VEHICLE_NAME);

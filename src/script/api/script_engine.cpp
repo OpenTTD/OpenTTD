@@ -41,9 +41,9 @@
 	return e != nullptr && ::IsEngineBuildable(engine_id, e->type, ScriptObject::GetCompany());
 }
 
-/* static */ char *ScriptEngine::GetName(EngineID engine_id)
+/* static */ std::optional<std::string> ScriptEngine::GetName(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return nullptr;
+	if (!IsValidEngine(engine_id)) return std::nullopt;
 
 	::SetDParam(0, engine_id);
 	return GetString(STR_ENGINE_NAME);

@@ -33,7 +33,7 @@ public:
 	 * @pre IsValidObjectType(object_type).
 	 * @return The name of an object.
 	 */
-	static char *GetName(ObjectType object_type);
+	static std::optional<std::string> GetName(ObjectType object_type);
 
 	/**
 	 * Get the number of views for an object-type.

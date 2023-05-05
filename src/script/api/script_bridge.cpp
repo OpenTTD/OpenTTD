@@ -129,10 +129,10 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
 
-/* static */ char *ScriptBridge::GetName(BridgeID bridge_id, ScriptVehicle::VehicleType vehicle_type)
+/* static */ std::optional<std::string> ScriptBridge::GetName(BridgeID bridge_id, ScriptVehicle::VehicleType vehicle_type)
 {
-	EnforcePrecondition(nullptr, vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER);
-	if (!IsValidBridge(bridge_id)) return nullptr;
+	EnforcePrecondition(std::nullopt, vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER);
+	if (!IsValidBridge(bridge_id)) return std::nullopt;
 
 	return GetString(vehicle_type == ScriptVehicle::VT_WATER ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : ::GetBridgeSpec(bridge_id)->transport_name[vehicle_type]);
 }

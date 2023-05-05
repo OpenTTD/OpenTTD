@@ -137,7 +137,7 @@ public:
 	 * @pre IsPrimaryVehicle(vehicle_id).
 	 * @return The name the vehicle has.
 	 */
-	static char *GetName(VehicleID vehicle_id);
+	static std::optional<std::string> GetName(VehicleID vehicle_id);
 
 	/**
 	 * Get the owner of a vehicle.
