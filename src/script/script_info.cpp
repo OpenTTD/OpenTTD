@@ -254,7 +254,7 @@ const ScriptConfigItemList *ScriptInfo::GetConfigList() const
 	return &this->config_list;
 }
 
-const ScriptConfigItem *ScriptInfo::GetConfigItem(const std::string &name) const
+const ScriptConfigItem *ScriptInfo::GetConfigItem(const std::string_view name) const
 {
 	for (const auto &item : this->config_list) {
 		if (item.name == name) return &item;
