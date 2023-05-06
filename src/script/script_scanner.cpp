@@ -28,7 +28,7 @@ bool ScriptScanner::AddFile(const std::string &filename, size_t basepath_length,
 	this->main_script = filename;
 	this->tar_file = tar_filename;
 
-	auto p = this->main_script.rfind(PATHSEPCHAR);
+	auto p = this->main_script.find_last_of(PATHSEPCHAR);
 	this->main_script.erase(p != std::string::npos ? p + 1 : 0);
 	this->main_script += "main.nut";
 
@@ -229,12 +229,11 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 			checksum.AddFile(tar.first, 0, tar_filename);
 		}
 	} else {
-		char path[MAX_PATH];
-		strecpy(path, info->GetMainScript(), lastof(path));
 		/* There'll always be at least 1 path separator character in a script
 		 * main script name as the search algorithm requires the main script to
 		 * be in a subdirectory of the script directory; so <dir>/<path>/main.nut. */
-		*strrchr(path, PATHSEPCHAR) = '\0';
+		const std::string &main_script = info->GetMainScript();
+		std::string path = main_script.substr(0, main_script.find_last_of(PATHSEPCHAR));
 		checksum.Scan(".nut", path);
 	}
 

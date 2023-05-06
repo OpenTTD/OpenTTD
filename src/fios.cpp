@@ -410,7 +410,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 	/* Show files */
 	FiosFileScanner scanner(fop, callback_proc, file_list);
 	if (subdir == NO_DIRECTORY) {
-		scanner.Scan(nullptr, _fios_path->c_str(), false);
+		scanner.Scan(nullptr, *_fios_path, false);
 	} else {
 		scanner.Scan(nullptr, subdir, true, true);
 	}
