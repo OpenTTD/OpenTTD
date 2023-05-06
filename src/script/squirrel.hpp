@@ -179,12 +179,12 @@ public:
 	 * @param prepend_API_name Optional parameter; if true, the class_name is prefixed with the current API name.
 	 * @return False if creating failed.
 	 */
-	static bool CreateClassInstanceVM(HSQUIRRELVM vm, const char *class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name = false);
+	static bool CreateClassInstanceVM(HSQUIRRELVM vm, const std::string &class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name = false);
 
 	/**
 	 * Exactly the same as CreateClassInstanceVM, only callable without instance of Squirrel.
 	 */
-	bool CreateClassInstance(const char *class_name, void *real_instance, HSQOBJECT *instance);
+	bool CreateClassInstance(const std::string &class_name, void *real_instance, HSQOBJECT *instance);
 
 	/**
 	 * Get the real-instance pointer.

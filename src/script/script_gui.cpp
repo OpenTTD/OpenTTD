@@ -153,7 +153,7 @@ struct ScriptListWindow : public Window {
 					SetDParam(0, selected_info->GetVersion());
 					DrawString(tr, STR_AI_LIST_VERSION);
 					tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
-					if (selected_info->GetURL() != nullptr) {
+					if (!selected_info->GetURL().empty()) {
 						SetDParamStr(0, selected_info->GetURL());
 						DrawString(tr, STR_AI_LIST_URL);
 						tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;

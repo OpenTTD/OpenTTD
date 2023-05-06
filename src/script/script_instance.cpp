@@ -67,7 +67,7 @@ ScriptInstance::ScriptInstance(const char *APIName) :
 	this->engine->SetPrintFunction(&PrintFunc);
 }
 
-void ScriptInstance::Initialize(const char *main_script, const char *instance_name, CompanyID company)
+void ScriptInstance::Initialize(const std::string &main_script, const std::string &instance_name, CompanyID company)
 {
 	ScriptObject::ActiveInstance active(this);
 
@@ -80,7 +80,7 @@ void ScriptInstance::Initialize(const char *main_script, const char *instance_na
 	try {
 		ScriptObject::SetAllowDoCommand(false);
 		/* Load and execute the script for this script */
-		if (strcmp(main_script, "%_dummy") == 0) {
+		if (main_script == "%_dummy") {
 			this->LoadDummyScript();
 		} else if (!this->engine->LoadScript(main_script) || this->engine->IsSuspended()) {
 			if (this->engine->IsSuspended()) ScriptLog::Error("This script took too long to load script. AI is not started.");

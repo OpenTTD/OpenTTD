@@ -55,7 +55,7 @@ public:
 	 * @param instance_name The name of the instance out of the script to load.
 	 * @param company Which company this script is serving.
 	 */
-	void Initialize(const char *main_script, const char *instance_name, CompanyID company);
+	void Initialize(const std::string &main_script, const std::string &instance_name, CompanyID company);
 
 	/**
 	 * Get the value of a setting of the current instance.

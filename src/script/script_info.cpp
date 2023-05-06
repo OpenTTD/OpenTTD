@@ -20,13 +20,6 @@
 
 ScriptInfo::~ScriptInfo()
 {
-	free(this->author);
-	free(this->name);
-	free(this->short_name);
-	free(this->description);
-	free(this->date);
-	free(this->instance_name);
-	free(this->url);
 	free(this->SQ_instance);
 }
 
@@ -69,17 +62,17 @@ bool ScriptInfo::CheckMethod(const char *name) const
 	info->tar_file = info->scanner->GetTarFile();
 
 	/* Cache the data the info file gives us. */
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetName", &info->name, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetShortName", &info->short_name, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDescription", &info->description, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDate", &info->date, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetName", &info->name, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetShortName", &info->short_name, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetDescription", &info->description, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetDate", &info->date, MAX_GET_OPS)) return SQ_ERROR;
 	if (!info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion", &info->version, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "CreateInstance", &info->instance_name, MAX_CREATEINSTANCE_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(*info->SQ_instance, "CreateInstance", &info->instance_name, MAX_CREATEINSTANCE_OPS)) return SQ_ERROR;
 
 	/* The GetURL function is optional. */
 	if (info->engine->MethodExists(*info->SQ_instance, "GetURL")) {
-		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetURL", &info->url, MAX_GET_OPS)) return SQ_ERROR;
+		if (!info->engine->CallStringMethod(*info->SQ_instance, "GetURL", &info->url, MAX_GET_OPS)) return SQ_ERROR;
 	}
 
 	/* Check if we have settings */

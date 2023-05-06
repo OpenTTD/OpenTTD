@@ -368,7 +368,7 @@ static const PerformanceElement DISPLAY_ORDER_PFE[PFE_MAX] = {
 static const char * GetAIName(int ai_index)
 {
 	if (!Company::IsValidAiID(ai_index)) return "";
-	return Company::Get(ai_index)->ai_info->GetName();
+	return Company::Get(ai_index)->ai_info->GetName().c_str();
 }
 
 /** @hideinitializer */

@@ -469,7 +469,7 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 	return true;
 }
 
-/* static */ bool Squirrel::CreateClassInstanceVM(HSQUIRRELVM vm, const char *class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name)
+/* static */ bool Squirrel::CreateClassInstanceVM(HSQUIRRELVM vm, const std::string &class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name)
 {
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 
@@ -479,12 +479,9 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 	sq_pushroottable(vm);
 
 	if (prepend_API_name) {
-		size_t len = strlen(class_name) + strlen(engine->GetAPIName()) + 1;
-		char *class_name2 = MallocT<char>(len);
-		seprintf(class_name2, class_name2 + len - 1, "%s%s", engine->GetAPIName(), class_name);
-
-		sq_pushstring(vm, class_name2, -1);
-		free(class_name2);
+		std::string prepended_class_name = engine->GetAPIName();
+		prepended_class_name += class_name;
+		sq_pushstring(vm, prepended_class_name, -1);
 	} else {
 		sq_pushstring(vm, class_name, -1);
 	}
@@ -520,7 +517,7 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 	return true;
 }
 
-bool Squirrel::CreateClassInstance(const char *class_name, void *real_instance, HSQOBJECT *instance)
+bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_instance, HSQOBJECT *instance)
 {
 	ScriptAllocatorScope alloc_scope(this);
 	return Squirrel::CreateClassInstanceVM(this->vm, class_name, real_instance, instance, nullptr);

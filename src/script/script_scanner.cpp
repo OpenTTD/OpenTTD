@@ -97,8 +97,8 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 	std::string script_name = fmt::format("{}.{}", script_original_name, info->GetVersion());
 
 	/* Check if GetShortName follows the rules */
-	if (strlen(info->GetShortName()) != 4) {
-		Debug(script, 0, "The script '{}' returned a string from GetShortName() which is not four characaters. Unable to load the script.", info->GetName());
+	if (info->GetShortName().size() != 4) {
+		Debug(script, 0, "The script '{}' returned a string from GetShortName() which is not four characters. Unable to load the script.", info->GetName());
 		delete info;
 		return;
 	}
@@ -107,9 +107,9 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 		/* This script was already registered */
 #ifdef _WIN32
 		/* Windows doesn't care about the case */
-		if (StrEqualsIgnoreCase(this->info_list[script_name]->GetMainScript(), info->GetMainScript()) == 0) {
+		if (StrEqualsIgnoreCase(this->info_list[script_name]->GetMainScript(), info->GetMainScript())) {
 #else
-		if (strcmp(this->info_list[script_name]->GetMainScript(), info->GetMainScript()) == 0) {
+		if (this->info_list[script_name]->GetMainScript() == info->GetMainScript()) {
 #endif
 			delete info;
 			return;
@@ -206,7 +206,7 @@ struct ScriptFileChecksumCreator : FileScanner {
 static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, Subdirectory dir)
 {
 	uint32 id = 0;
-	const char *str = info->GetShortName();
+	const char *str = info->GetShortName().c_str();
 	for (int j = 0; j < 4 && *str != '\0'; j++, str++) id |= *str << (8 * j);
 
 	if (id != ci->unique_id) return false;
@@ -251,7 +251,7 @@ bool ScriptScanner::HasScript(const ContentInfo *ci, bool md5sum)
 const char *ScriptScanner::FindMainScript(const ContentInfo *ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
-		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript();
+		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript().c_str();
 	}
 	return nullptr;
 }
