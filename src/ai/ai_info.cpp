@@ -129,11 +129,6 @@ bool AIInfo::CanLoadFromVersion(int version) const
 }
 
 
-AILibrary::~AILibrary()
-{
-	free(this->category);
-}
-
 /* static */ void AILibrary::RegisterAPI(Squirrel *engine)
 {
 	/* Create the AILibrary class, and add the RegisterLibrary function */
@@ -154,7 +149,7 @@ AILibrary::~AILibrary()
 	}
 
 	/* Cache the category */
-	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
+	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethod(*library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
 		delete library;
 		return SQ_ERROR;
 	}

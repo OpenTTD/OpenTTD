@@ -56,8 +56,7 @@ private:
 /** All static information from an AI library like name, version, etc. */
 class AILibrary : public ScriptInfo {
 public:
-	AILibrary() : ScriptInfo(), category(nullptr) {};
-	~AILibrary();
+	AILibrary() : ScriptInfo() {};
 
 	/**
 	 * Register the functions of this class.
@@ -72,10 +71,10 @@ public:
 	/**
 	 * Get the category this library is in.
 	 */
-	const char *GetCategory() const { return this->category; }
+	const std::string &GetCategory() const { return this->category; }
 
 private:
-	const char *category; ///< The category this library is in.
+	std::string category; ///< The category this library is in.
 };
 
 #endif /* AI_INFO_HPP */

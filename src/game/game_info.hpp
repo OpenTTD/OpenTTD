@@ -48,8 +48,7 @@ private:
 /** All static information from an Game library like name, version, etc. */
 class GameLibrary : public ScriptInfo {
 public:
-	GameLibrary() : ScriptInfo(), category(nullptr) {};
-	~GameLibrary();
+	GameLibrary() : ScriptInfo() {};
 
 	/**
 	 * Register the functions of this class.
@@ -64,10 +63,10 @@ public:
 	/**
 	 * Get the category this library is in.
 	 */
-	const char *GetCategory() const { return this->category; }
+	const std::string &GetCategory() const { return this->category; }
 
 private:
-	const char *category; ///< The category this library is in.
+	std::string category; ///< The category this library is in.
 };
 
 #endif /* GAME_INFO_HPP */
