@@ -84,6 +84,15 @@ void StringFilter::SetFilterTerm(const char *str)
 }
 
 /**
+ * Set the term to filter on.
+ * @param str Filter term
+ */
+void StringFilter::SetFilterTerm(const std::string &str)
+{
+	this->SetFilterTerm(str.c_str());
+}
+
+/**
  * Reset the matching state to process a new item.
  */
 void StringFilter::ResetState()
