@@ -63,7 +63,7 @@ void NewGRFMappingChunkHandler::Load() const
 
 
 static const SaveLoad _grfconfig_desc[] = {
-	    SLE_STR(GRFConfig, filename,         SLE_STR,    0x40),
+	   SLE_SSTR(GRFConfig, filename,         SLE_STR),
 	    SLE_VAR(GRFConfig, ident.grfid,      SLE_UINT32),
 	    SLE_ARR(GRFConfig, ident.md5sum,     SLE_UINT8,  16),
 	SLE_CONDVAR(GRFConfig, version,          SLE_UINT32, SLV_151, SL_MAX_VERSION),
