@@ -70,7 +70,7 @@ void AIInstance::Died()
 	if (info != nullptr) {
 		ShowErrorMessage(STR_ERROR_AI_PLEASE_REPORT_CRASH, INVALID_STRING_ID, WL_WARNING);
 
-		if (info->GetURL() != nullptr) {
+		if (!info->GetURL().empty()) {
 			ScriptLog::Info("Please report the error to the following URL:");
 			ScriptLog::Info(info->GetURL());
 		}

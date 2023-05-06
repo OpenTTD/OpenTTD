@@ -200,12 +200,12 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 		if (c->ai_info == nullptr) {
 			buffer += seprintf(buffer, last, " %2i: Human\n", (int)c->index);
 		} else {
-			buffer += seprintf(buffer, last, " %2i: %s (v%d)\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
+			buffer += seprintf(buffer, last, " %2i: %s (v%d)\n", (int)c->index, c->ai_info->GetName().c_str(), c->ai_info->GetVersion());
 		}
 	}
 
 	if (Game::GetInfo() != nullptr) {
-		buffer += seprintf(buffer, last, " GS: %s (v%d)\n", Game::GetInfo()->GetName(), Game::GetInfo()->GetVersion());
+		buffer += seprintf(buffer, last, " GS: %s (v%d)\n", Game::GetInfo()->GetName().c_str(), Game::GetInfo()->GetVersion());
 	}
 	buffer += seprintf(buffer, last, "\n");
 
