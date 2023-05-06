@@ -325,7 +325,7 @@ class BuildIndustryWindow : public Window {
 
 		this->UpdateAvailability();
 
-		this->vscroll->SetCount(this->list.size());
+		this->vscroll->SetCount((int)this->list.size());
 	}
 
 	/** Update status of the fund and display-chain widgets. */
