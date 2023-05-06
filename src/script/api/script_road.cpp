@@ -379,7 +379,7 @@ static bool NormaliseTileOffset(int32 *tile)
 		return false;
 }
 
-/* static */ SQInteger ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::Slope slope_, Array<> existing, TileIndex start_, TileIndex end_)
+/* static */ SQInteger ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::Slope slope_, Array<> &&existing, TileIndex start_, TileIndex end_)
 {
 	::Slope slope = (::Slope)slope_;
 	int32 start = start_;
@@ -420,7 +420,7 @@ static bool NormaliseTileOffset(int32 *tile)
 		if (HasBit(rb, i)) existing.emplace_back(neighbours[i]);
 	}
 
-	return ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::GetSlope(tile), existing, start - tile, end - tile);
+	return ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::GetSlope(tile), std::move(existing), start - tile, end - tile);
 }
 
 /**
