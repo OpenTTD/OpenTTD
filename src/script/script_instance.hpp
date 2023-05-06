@@ -62,7 +62,7 @@ public:
 	 * @param name The name of the setting.
 	 * @return the value for the setting, or -1 if the setting is not known.
 	 */
-	virtual int GetSetting(const char *name) = 0;
+	virtual int GetSetting(const std::string &name) = 0;
 
 	/**
 	 * Find a library.

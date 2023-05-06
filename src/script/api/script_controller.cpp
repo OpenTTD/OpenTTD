@@ -84,7 +84,7 @@ ScriptController::ScriptController(CompanyID company) :
 	return ScriptObject::GetActiveInstance()->GetOpsTillSuspend();
 }
 
-/* static */ int ScriptController::GetSetting(const char *name)
+/* static */ int ScriptController::GetSetting(const std::string &name)
 {
 	return ScriptObject::GetActiveInstance()->GetSetting(name);
 }
@@ -94,7 +94,7 @@ ScriptController::ScriptController(CompanyID company) :
 	return _openttd_newgrf_version;
 }
 
-/* static */ HSQOBJECT ScriptController::Import(const char *library, const char *class_name, int version)
+/* static */ HSQOBJECT ScriptController::Import(const std::string &library, const std::string &class_name, int version)
 {
 	ScriptController *controller = ScriptObject::GetActiveInstance()->GetController();
 	Squirrel *engine = ScriptObject::GetActiveInstance()->engine;
@@ -152,7 +152,7 @@ ScriptController::ScriptController(CompanyID company) :
 	sq_getstackobj(vm, -1, &obj);
 	sq_pop(vm, 3);
 
-	if (StrEmpty(class_name)) return obj;
+	if (class_name.empty()) return obj;
 
 	/* Now link the name the user wanted to our 'fake' class */
 	sq_pushobject(vm, parent);

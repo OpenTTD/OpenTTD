@@ -84,23 +84,8 @@ namespace SQConvert {
 	template <> struct Param<TileIndex>    { static inline TileIndex   Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return TileIndex((uint32)(int32)tmp); } };
 	template <> struct Param<Money>        { static inline Money       Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger     tmp; sq_getinteger    (vm, index, &tmp); return tmp; } };
 	template <> struct Param<bool>         { static inline bool        Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQBool        tmp; sq_getbool       (vm, index, &tmp); return tmp != 0; } };
+	template <> struct Param<const char *> { /* Do not use const char *, use std::string& instead. */ };
 	template <> struct Param<void *>       { static inline void       *Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer tmp; sq_getuserpointer(vm, index, &tmp); return tmp; } };
-
-	template <> struct Param<const char *> {
-		static inline const char *Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
-		{
-			/* Convert what-ever there is as parameter to a string */
-			sq_tostring(vm, index);
-
-			const SQChar *tmp;
-			sq_getstring(vm, -1, &tmp);
-			char *tmp_str = stredup(tmp);
-			sq_poptop(vm);
-			ptr->push_back((void *)tmp_str);
-			StrMakeValidInPlace(tmp_str);
-			return tmp_str;
-		}
-	};
 
 	template <> struct Param<const std::string &> {
 		static inline const std::string Get(HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
