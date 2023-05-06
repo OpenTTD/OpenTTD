@@ -14,6 +14,7 @@
 #include "api/script_object.hpp"
 #include "../textfile_gui.h"
 #include "../string_func.h"
+#include <charconv>
 
 #include "../safeguards.h"
 
@@ -102,7 +103,7 @@ int ScriptConfig::GetSetting(const std::string &name) const
 	return (*it).second;
 }
 
-void ScriptConfig::SetSetting(const std::string &name, int value)
+void ScriptConfig::SetSetting(const std::string_view name, int value)
 {
 	/* You can only set Script specific settings if an Script is selected. */
 	if (this->info == nullptr) return;
@@ -112,7 +113,7 @@ void ScriptConfig::SetSetting(const std::string &name, int value)
 
 	value = Clamp(value, config_item->min_value, config_item->max_value);
 
-	this->settings[name] = value;
+	this->settings[std::string{name}] = value;
 }
 
 void ScriptConfig::ResetSettings()
@@ -170,28 +171,24 @@ int ScriptConfig::GetVersion() const
 
 void ScriptConfig::StringToSettings(const std::string &value)
 {
-	char *value_copy = stredup(value.c_str());
-	char *s = value_copy;
-
-	while (s != nullptr) {
+	std::string_view to_process = value;
+	for (;;) {
 		/* Analyze the string ('name=value,name=value\0') */
-		char *item_name = s;
-		s = strchr(s, '=');
-		if (s == nullptr) break;
-		if (*s == '\0') break;
-		*s = '\0';
-		s++;
+		size_t pos = to_process.find_first_of('=');
+		if (pos == std::string_view::npos) return;
 
-		char *item_value = s;
-		s = strchr(s, ',');
-		if (s != nullptr) {
-			*s = '\0';
-			s++;
-		}
+		std::string_view item_name = to_process.substr(0, pos);
 
-		this->SetSetting(item_name, atoi(item_value));
+		to_process.remove_prefix(pos + 1);
+		pos = to_process.find_first_of(',');
+		int item_value = 0;
+		std::from_chars(to_process.data(), to_process.data() + std::min(pos, to_process.size()), item_value);
+
+		this->SetSetting(item_name, item_value);
+
+		if (pos == std::string_view::npos) return;
+		to_process.remove_prefix(pos + 1);
 	}
-	free(value_copy);
 }
 
 std::string ScriptConfig::SettingsToString() const

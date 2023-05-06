@@ -122,7 +122,7 @@ public:
 	/**
 	 * Get the description of a certain Script config option.
 	 */
-	const ScriptConfigItem *GetConfigItem(const std::string &name) const;
+	const ScriptConfigItem *GetConfigItem(const std::string_view name) const;
 
 	/**
 	 * Set a setting.
