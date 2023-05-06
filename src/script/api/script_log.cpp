@@ -40,12 +40,11 @@
 	if (logdata.size() >= 400U) logdata.pop_front();
 
 	auto &line = logdata.emplace_back();
-	line.text = message;
 	line.type = level;
 
 	/* Cut string after first \n */
-	size_t newline = line.text.find('\n');
-	if (newline != std::string::npos) line.text.erase(newline, std::string::npos);
+	const char *newline = strchr(message, '\n');
+	line.text = std::string(message, 0, newline == nullptr ? strlen(message) : newline - message);
 
 	char logc;
 
