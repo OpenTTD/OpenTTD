@@ -96,7 +96,7 @@ public:
 	/**
 	 * Get the log pointer of this script.
 	 */
-	ScriptLogTypes::LogData &GetLogPointer();
+	ScriptLogTypes::LogData &GetLogData();
 
 	/**
 	 * Return a true/false reply for a DoCommand.

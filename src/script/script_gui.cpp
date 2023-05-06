@@ -704,10 +704,10 @@ struct ScriptDebugWindow : public Window {
 	int highlight_row;                                     ///< The output row that matches the given string, or -1
 	Scrollbar *vscroll;                                    ///< Cache of the vertical scrollbar.
 
-	ScriptLogTypes::LogData &GetLogPointer() const
+	ScriptLogTypes::LogData &GetLogData() const
 	{
-		if (script_debug_company == OWNER_DEITY) return Game::GetInstance()->GetLogPointer();
-		return Company::Get(script_debug_company)->ai_instance->GetLogPointer();
+		if (script_debug_company == OWNER_DEITY) return Game::GetInstance()->GetLogData();
+		return Company::Get(script_debug_company)->ai_instance->GetLogData();
 	}
 
 	/**
@@ -845,7 +845,7 @@ struct ScriptDebugWindow : public Window {
 		/* If there are no active companies, don't display anything else. */
 		if (script_debug_company == INVALID_COMPANY) return;
 
-		ScriptLogTypes::LogData &log = this->GetLogPointer();
+		ScriptLogTypes::LogData &log = this->GetLogData();
 
 		int scroll_count = (int)log.size();
 		if (this->vscroll->GetCount() != scroll_count) {
@@ -900,7 +900,7 @@ struct ScriptDebugWindow : public Window {
 
 		if (widget != WID_SCRD_LOG_PANEL) return;
 
-		ScriptLogTypes::LogData &log = this->GetLogPointer();
+		ScriptLogTypes::LogData &log = this->GetLogData();
 		if (log.empty()) return;
 
 		Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
@@ -1040,7 +1040,7 @@ struct ScriptDebugWindow : public Window {
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
 		if (!gui_scope && data == script_debug_company && this->IsValidDebugCompany(script_debug_company) && this->break_check_enabled && !this->break_string_filter.IsEmpty()) {
 			/* Get the log instance of the active company */
-			ScriptLogTypes::LogData &log = this->GetLogPointer();
+			ScriptLogTypes::LogData &log = this->GetLogData();
 
 			if (!log.empty()) {
 				this->break_string_filter.ResetState();
@@ -1070,7 +1070,7 @@ struct ScriptDebugWindow : public Window {
 
 		this->SelectValidDebugCompany();
 
-		this->vscroll->SetCount(script_debug_company != INVALID_COMPANY ? (int)this->GetLogPointer().size() : 0);
+		this->vscroll->SetCount(script_debug_company != INVALID_COMPANY ? (int)this->GetLogData().size() : 0);
 
 		/* Update company buttons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {

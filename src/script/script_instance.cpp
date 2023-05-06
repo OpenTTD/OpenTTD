@@ -314,11 +314,11 @@ ScriptStorage *ScriptInstance::GetStorage()
 	return this->storage;
 }
 
-ScriptLogTypes::LogData &ScriptInstance::GetLogPointer()
+ScriptLogTypes::LogData &ScriptInstance::GetLogData()
 {
 	ScriptObject::ActiveInstance active(this);
 
-	return ScriptObject::GetLogPointer();
+	return ScriptObject::GetLogData();
 }
 
 /*

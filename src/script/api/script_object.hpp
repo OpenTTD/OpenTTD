@@ -277,7 +277,7 @@ protected:
 	/**
 	 * Get the pointer to store log message in.
 	 */
-	static ScriptLogTypes::LogData &GetLogPointer();
+	static ScriptLogTypes::LogData &GetLogData();
 
 	/**
 	 * Get an allocated string with all control codes stripped off.

@@ -34,7 +34,7 @@
 
 /* static */ void ScriptLog::Log(ScriptLogTypes::ScriptLogType level, const char *message)
 {
-	ScriptLogTypes::LogData &logdata = ScriptObject::GetLogPointer();
+	ScriptLogTypes::LogData &logdata = ScriptObject::GetLogData();
 
 	/* Limit the log to 400 lines. */
 	if (logdata.size() >= 400U) logdata.pop_front();
