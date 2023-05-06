@@ -213,7 +213,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->event_data;
 }
 
-/* static */ void *&ScriptObject::GetLogPointer()
+/* static */ ScriptLogTypes::LogData &ScriptObject::GetLogData()
 {
 	return GetStorage()->log_data;
 }

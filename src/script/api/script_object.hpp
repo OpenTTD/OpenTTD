@@ -18,6 +18,7 @@
 #include "../../core/random_func.hpp"
 
 #include "script_types.hpp"
+#include "script_log_types.hpp"
 #include "../script_suspend.hpp"
 #include "../squirrel.hpp"
 
@@ -276,7 +277,7 @@ protected:
 	/**
 	 * Get the pointer to store log message in.
 	 */
-	static void *&GetLogPointer();
+	static ScriptLogTypes::LogData &GetLogData();
 
 	/**
 	 * Get an allocated string with all control codes stripped off.
