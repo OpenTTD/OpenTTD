@@ -213,41 +213,44 @@ Dimension Layouter::GetBounds()
  */
 Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 {
+	const auto &line = this->front();
+
+	/* Pointer to the end-of-string marker? Return total line width. */
+	if (ch == this->string.end()) {
+		Point p = { line->GetWidth(), 0 };
+		return p;
+	}
+
 	/* Find the code point index which corresponds to the char
 	 * pointer into our UTF-8 source string. */
 	size_t index = 0;
 	auto str = this->string.begin();
-	while (str < ch && str != this->string.end()) {
+	while (str < ch) {
 		WChar c = Utf8Consume(str);
-		index += this->front()->GetInternalCharLength(c);
+		index += line->GetInternalCharLength(c);
 	}
 
-	if (str == ch) {
-		/* Valid character. */
-		const auto &line = this->front();
+	/* We couldn't find the code point index. */
+	if (str != ch) {
+		return { 0, 0 };
+	}
 
-		/* Pointer to the end-of-string/line marker? Return total line width. */
-		if (ch == this->string.end() || *ch == '\0' || *ch == '\n') {
-			Point p = { line->GetWidth(), 0 };
-			return p;
-		}
+	/* Valid character. */
 
-		/* Scan all runs until we've found our code point index. */
-		for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
-			const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
+	/* Scan all runs until we've found our code point index. */
+	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
+		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);
 
-			for (int i = 0; i < run.GetGlyphCount(); i++) {
-				/* Matching glyph? Return position. */
-				if ((size_t)run.GetGlyphToCharMap()[i] == index) {
-					Point p = { (int)run.GetPositions()[i * 2], (int)run.GetPositions()[i * 2 + 1] };
-					return p;
-				}
+		for (int i = 0; i < run.GetGlyphCount(); i++) {
+			/* Matching glyph? Return position. */
+			if ((size_t)run.GetGlyphToCharMap()[i] == index) {
+				Point p = { (int)run.GetPositions()[i * 2], (int)run.GetPositions()[i * 2 + 1] };
+				return p;
 			}
 		}
 	}
 
-	Point p = { 0, 0 };
-	return p;
+	NOT_REACHED();
 }
 
 /**
