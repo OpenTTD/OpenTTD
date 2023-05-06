@@ -51,6 +51,7 @@ public:
 	~StringFilter() { free(this->filter_buffer); }
 
 	void SetFilterTerm(const char *str);
+	void SetFilterTerm(const std::string &str);
 
 	/**
 	 * Check whether any filter words were entered.

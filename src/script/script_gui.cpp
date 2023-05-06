@@ -699,7 +699,7 @@ struct ScriptDebugWindow : public Window {
 	bool autoscroll;                                       ///< Whether automatically scrolling should be enabled or not.
 	bool show_break_box;                                   ///< Whether the break/debug box is visible.
 	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
-	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the AI output
+	static std::string break_string;                       ///< The string to match to the AI output
 	QueryString break_editbox;                             ///< Break editbox
 	static StringFilter break_string_filter;               ///< Log filter for break.
 	static bool case_sensitive_break_check;                ///< Is the matching done case-sensitive
@@ -1025,7 +1025,7 @@ struct ScriptDebugWindow : public Window {
 		if (wid != WID_SCRD_BREAK_STR_EDIT_BOX) return;
 
 		/* Save the current string to static member so it can be restored next time the window is opened. */
-		strecpy(this->break_string, this->break_editbox.text.buf, lastof(this->break_string));
+		this->break_string = this->break_editbox.text.buf;
 		break_string_filter.SetFilterTerm(this->break_string);
 	}
 
@@ -1101,7 +1101,7 @@ struct ScriptDebugWindow : public Window {
 };
 
 CompanyID ScriptDebugWindow::script_debug_company = INVALID_COMPANY;
-char ScriptDebugWindow::break_string[MAX_BREAK_STR_STRING_LENGTH] = "";
+std::string ScriptDebugWindow::break_string;
 bool ScriptDebugWindow::break_check_enabled = true;
 bool ScriptDebugWindow::case_sensitive_break_check = false;
 StringFilter ScriptDebugWindow::break_string_filter(&ScriptDebugWindow::case_sensitive_break_check);
