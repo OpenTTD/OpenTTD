@@ -44,7 +44,7 @@ public:
 	 * @note Results achieved in the past offer no guarantee for the future.
 	 * @return True if and only if the setting is valid.
 	 */
-	static bool IsValid(const char *setting);
+	static bool IsValid(const std::string &setting);
 
 	/**
 	 * Gets the value of the game setting.
@@ -57,7 +57,7 @@ public:
 	 * @note Results achieved in the past offer no guarantee for the future.
 	 * @return The value for the setting.
 	 */
-	static SQInteger GetValue(const char *setting);
+	static SQInteger GetValue(const std::string &setting);
 
 	/**
 	 * Sets the value of the game setting.
@@ -69,7 +69,7 @@ public:
 	 * @note Results achieved in the past offer no guarantee for the future.
 	 * @api -ai
 	 */
-	static bool SetValue(const char *setting, SQInteger value);
+	static bool SetValue(const std::string &setting, SQInteger value);
 
 	/**
 	 * Checks whether the given vehicle-type is disabled for companies.

@@ -83,7 +83,7 @@ void AIInstance::LoadDummyScript()
 	Script_CreateDummy(this->engine->GetVM(), STR_ERROR_AI_NO_AI_FOUND, "AI");
 }
 
-int AIInstance::GetSetting(const char *name)
+int AIInstance::GetSetting(const std::string &name)
 {
 	return AIConfig::GetConfig(_current_company)->GetSetting(name);
 }

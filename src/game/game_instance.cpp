@@ -53,7 +53,7 @@ void GameInstance::RegisterAPI()
 	if (!this->LoadCompatibilityScripts(this->versionAPI, GAME_DIR)) this->Died();
 }
 
-int GameInstance::GetSetting(const char *name)
+int GameInstance::GetSetting(const std::string &name)
 {
 	return GameConfig::GetConfig()->GetSetting(name);
 }

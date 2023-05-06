@@ -42,7 +42,7 @@ public:
  */
 class RawText : public Text {
 public:
-	RawText(const char *text);
+	RawText(const std::string &text);
 
 	const std::string GetEncodedText() override { return this->text; }
 private:
