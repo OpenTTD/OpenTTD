@@ -611,8 +611,8 @@ void CalcEngineReliability(Engine *e, bool new_month)
 		re = Engine::Get(re->info.variant_id);
 	}
 
-	uint age = re->age;
-	if (new_month && re->index > e->index && age != MAX_DAY) age++; /* parent variant's age has not yet updated. */
+	uint32 age = re->age;
+	if (new_month && re->index > e->index && age != INT32_MAX) age++; /* parent variant's age has not yet updated. */
 
 	/* Check for early retirement */
 	if (e->company_avail != 0 && !_settings_game.vehicle.never_expire_vehicles && e->info.base_life != 0xFF) {
@@ -1094,7 +1094,7 @@ void EnginesMonthlyLoop()
 		bool refresh = false;
 		for (Engine *e : Engine::Iterate()) {
 			/* Age the vehicle */
-			if ((e->flags & ENGINE_AVAILABLE) && e->age != MAX_DAY) {
+			if ((e->flags & ENGINE_AVAILABLE) && e->age != INT32_MAX) {
 				e->age++;
 				CalcEngineReliability(e, true);
 				refresh = true;

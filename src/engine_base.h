@@ -37,7 +37,7 @@ extern EnginePool _engine_pool;
 struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	std::string name;           ///< Custom name of engine.
 	TimerGameCalendar::Date intro_date; ///< Date of introduction of the engine.
-	TimerGameCalendar::Date age;        ///< Age of the engine, in days.
+	int32 age;                  ///< Age of the engine in months.
 	uint16 reliability;         ///< Current reliability of the engine.
 	uint16 reliability_spd_dec; ///< Speed of reliability decay between services (per day).
 	uint16 reliability_start;   ///< Initial reliability of the engine.
