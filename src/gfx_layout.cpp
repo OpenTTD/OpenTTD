@@ -59,7 +59,7 @@ Font::Font(FontSize size, TextColour colour) :
  * @tparam T The type of layouter we want.
  */
 template <typename T>
-static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, FontState &state)
+static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view str, FontState &state)
 {
 	if (line.buffer != nullptr) free(line.buffer);
 
@@ -72,15 +72,18 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
 	line.buffer = buff_begin;
 	fontMapping.clear();
 
+	auto cur = str.begin();
+
 	/*
 	 * Go through the whole string while adding Font instances to the font map
 	 * whenever the font changes, and convert the wide characters into a format
 	 * usable by ParagraphLayout.
 	 */
-	for (; buff < buffer_last;) {
-		WChar c = Utf8Consume(const_cast<const char **>(&str));
+	for (; buff < buffer_last && cur != str.end();) {
+		WChar c = Utf8Consume(cur);
 		if (c == '\0' || c == '\n') {
-			break;
+			/* Caller should already have filtered out these characters. */
+			NOT_REACHED();
 		} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
 			state.SetColour((TextColour)(c - SCC_BLUE));
 		} else if (c == SCC_PUSH_COLOUR) {
@@ -123,65 +126,51 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
  * @param colour   The colour of the font.
  * @param fontsize The size of font to use.
  */
-Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsize) : string(str)
+Layouter::Layouter(std::string_view str, int maxw, TextColour colour, FontSize fontsize) : string(str)
 {
 	FontState state(colour, fontsize);
-	WChar c = 0;
 
-	do {
-		/* Scan string for end of line */
-		const char *lineend = str;
-		for (;;) {
-			size_t len = Utf8Decode(&c, lineend);
-			if (c == '\0' || c == '\n') break;
-			lineend += len;
-		}
+	while (true) {
+		auto line_length = str.find_first_of('\n');
+		auto str_line = str.substr(0, line_length);
 
-		LineCacheItem& line = GetCachedParagraphLayout(str, lineend - str, state);
+		LineCacheItem &line = GetCachedParagraphLayout(str_line, state);
 		if (line.layout != nullptr) {
-			/* Line is in cache */
-			str = lineend + 1;
 			state = line.state_after;
 			line.layout->Reflow();
 		} else {
 			/* Line is new, layout it */
 			FontState old_state = state;
-#if (defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
-			const char *old_str = str;
-#endif
 
 #if defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)
 			if (line.layout == nullptr) {
-				GetLayouter<ICUParagraphLayoutFactory>(line, str, state);
+				GetLayouter<ICUParagraphLayoutFactory>(line, str_line, state);
 				if (line.layout == nullptr) {
 					state = old_state;
-					str = old_str;
 				}
 			}
 #endif
 
 #ifdef WITH_UNISCRIBE
 			if (line.layout == nullptr) {
-				GetLayouter<UniscribeParagraphLayoutFactory>(line, str, state);
+				GetLayouter<UniscribeParagraphLayoutFactory>(line, str_line, state);
 				if (line.layout == nullptr) {
 					state = old_state;
-					str = old_str;
 				}
 			}
 #endif
 
 #ifdef WITH_COCOA
 			if (line.layout == nullptr) {
-				GetLayouter<CoreTextParagraphLayoutFactory>(line, str, state);
+				GetLayouter<CoreTextParagraphLayoutFactory>(line, str_line, state);
 				if (line.layout == nullptr) {
 					state = old_state;
-					str = old_str;
 				}
 			}
 #endif
 
 			if (line.layout == nullptr) {
-				GetLayouter<FallbackParagraphLayoutFactory>(line, str, state);
+				GetLayouter<FallbackParagraphLayoutFactory>(line, str_line, state);
 			}
 		}
 
@@ -191,7 +180,15 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			if (l == nullptr) break;
 			this->push_back(std::move(l));
 		}
-	} while (c != '\0');
+
+		/* Break out if this was the last line. */
+		if (line_length == std::string_view::npos) {
+			break;
+		}
+
+		/* Go to the next line. */
+		str.remove_prefix(line_length + 1);
+	}
 }
 
 /**
@@ -210,21 +207,18 @@ Dimension Layouter::GetBounds()
 
 /**
  * Get the position of a character in the layout.
- * @param ch Character to get the position of.
+ * @param ch Character to get the position of. Must be an iterator of the string passed to the constructor.
  * @return Upper left corner of the character relative to the start of the string.
  * @note Will only work right for single-line strings.
  */
-Point Layouter::GetCharPosition(const char *ch) const
+Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 {
 	/* Find the code point index which corresponds to the char
 	 * pointer into our UTF-8 source string. */
 	size_t index = 0;
-	const char *str = this->string;
-	while (str < ch) {
-		WChar c;
-		size_t len = Utf8Decode(&c, str);
-		if (c == '\0' || c == '\n') break;
-		str += len;
+	auto str = this->string.begin();
+	while (str < ch && str != this->string.end()) {
+		WChar c = Utf8Consume(str);
 		index += this->front()->GetInternalCharLength(c);
 	}
 
@@ -233,7 +227,7 @@ Point Layouter::GetCharPosition(const char *ch) const
 		const auto &line = this->front();
 
 		/* Pointer to the end-of-string/line marker? Return total line width. */
-		if (*ch == '\0' || *ch == '\n') {
+		if (ch == this->string.end() || *ch == '\0' || *ch == '\n') {
 			Point p = { line->GetWidth(), 0 };
 			return p;
 		}
@@ -259,9 +253,9 @@ Point Layouter::GetCharPosition(const char *ch) const
 /**
  * Get the character that is at a position.
  * @param x Position in the string.
- * @return Pointer to the character at the position or nullptr if no character is at the position.
+ * @return Index of the position or -1 if no character is at the position.
  */
-const char *Layouter::GetCharAtPosition(int x) const
+ptrdiff_t Layouter::GetCharAtPosition(int x) const
 {
 	const auto &line = this->front();
 
@@ -280,17 +274,18 @@ const char *Layouter::GetCharAtPosition(int x) const
 				size_t index = run.GetGlyphToCharMap()[i];
 
 				size_t cur_idx = 0;
-				for (const char *str = this->string; *str != '\0'; ) {
-					if (cur_idx == index) return str;
+				int char_index = 0;
+				for (auto str = this->string.begin(); str != this->string.end(); char_index++) {
+					if (cur_idx == index) return char_index;
 
-					WChar c = Utf8Consume(&str);
+					WChar c = Utf8Consume(str);
 					cur_idx += line->GetInternalCharLength(c);
 				}
 			}
 		}
 	}
 
-	return nullptr;
+	return -1;
 }
 
 /**
@@ -332,18 +327,17 @@ void Layouter::ResetFontCache(FontSize size)
  * Get reference to cache item.
  * If the item does not exist yet, it is default constructed.
  * @param str Source string of the line (including colour and font size codes).
- * @param len Length of \a str in bytes (no termination).
  * @param state State of the font at the beginning of the line.
  * @return Reference to cache item.
  */
-Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(const char *str, size_t len, const FontState &state)
+Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(std::string_view str, const FontState &state)
 {
 	if (linecache == nullptr) {
 		/* Create linecache on first access to avoid trouble with initialisation order of static variables. */
 		linecache = new LineCache();
 	}
 
-	if (auto match = linecache->find(LineCacheQuery{state, std::string_view{str, len}});
+	if (auto match = linecache->find(LineCacheQuery{state, str});
 		match != linecache->end()) {
 		return match->second;
 	}
@@ -351,7 +345,7 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(const char *str, siz
 	/* Create missing entry */
 	LineCacheKey key;
 	key.state_before = state;
-	key.str.assign(str, len);
+	key.str.assign(str);
 	return (*linecache)[key];
 }
 

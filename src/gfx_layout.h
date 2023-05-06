@@ -124,7 +124,7 @@ public:
  * It also accounts for the memory allocations and frees.
  */
 class Layouter : public std::vector<std::unique_ptr<const ParagraphLayouter::Line>> {
-	const char *string; ///< Pointer to the original string.
+	std::string_view string; ///< Pointer to the original string.
 
 	/** Key into the linecache */
 	struct LineCacheKey {
@@ -168,17 +168,17 @@ private:
 	typedef std::map<LineCacheKey, LineCacheItem, LineCacheCompare> LineCache;
 	static LineCache *linecache;
 
-	static LineCacheItem &GetCachedParagraphLayout(const char *str, size_t len, const FontState &state);
+	static LineCacheItem &GetCachedParagraphLayout(std::string_view str, const FontState &state);
 
 	typedef SmallMap<TextColour, Font *> FontColourMap;
 	static FontColourMap fonts[FS_END];
 public:
 	static Font *GetFont(FontSize size, TextColour colour);
 
-	Layouter(const char *str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
+	Layouter(std::string_view str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
-	Point GetCharPosition(const char *ch) const;
-	const char *GetCharAtPosition(int x) const;
+	Point GetCharPosition(std::string_view::const_iterator ch) const;
+	ptrdiff_t GetCharAtPosition(int x) const;
 
 	static void ResetFontCache(FontSize size);
 	static void ResetLineCache();

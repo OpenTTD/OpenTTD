@@ -642,7 +642,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawString(int left, int right, int top, std::string_view str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
 	int max_height = std::max({FONT_HEIGHT_SMALL, FONT_HEIGHT_NORMAL, FONT_HEIGHT_LARGE, FONT_HEIGHT_MONO});
@@ -678,28 +678,6 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-int DrawString(int left, int right, int top, const std::string &str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
-{
-	return DrawString(left, right, top, str.c_str(), colour, align, underline, fontsize);
-}
-
-/**
- * Draw string, possibly truncated to make it fit in its allocated space
- *
- * @param left   The left most position to draw on.
- * @param right  The right most position to draw on.
- * @param top    The top most position to draw on.
- * @param str    String to draw.
- * @param colour Colour used for drawing the string, for details see _string_colourmap in
- *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
- * @param align  The alignment of the string when drawing left-to-right. In the
- *               case a right-to-left language is chosen this is inverted so it
- *               will be drawn in the right direction.
- * @param underline Whether to underline what has been drawn or not.
- * @param fontsize The size of the initial characters.
- * @return In case of left or center alignment the right most pixel we have drawn to.
- *         In case of right alignment the left most pixel we have drawn to.
- */
 int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	char buffer[DRAW_STRING_BUFFER];
@@ -713,7 +691,7 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
  * @param maxw maximum string width
  * @return height of pixels of string when it is drawn
  */
-int GetStringHeight(const char *str, int maxw, FontSize fontsize)
+int GetStringHeight(std::string_view str, int maxw, FontSize fontsize)
 {
 	Layouter layout(str, maxw, TC_FROMSTRING, fontsize);
 	return layout.GetBounds().height;
@@ -765,7 +743,7 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
  * @param suggestion Suggested bounding box.
  * @return Bounding box for the multi-line string, may be bigger than \a suggestion.
  */
-Dimension GetStringMultiLineBoundingBox(const char *str, const Dimension &suggestion)
+Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion)
 {
 	Dimension box = {suggestion.width, (uint)GetStringHeight(str, suggestion.width)};
 	return box;
@@ -787,7 +765,7 @@ Dimension GetStringMultiLineBoundingBox(const char *str, const Dimension &sugges
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-int DrawStringMultiLine(int left, int right, int top, int bottom, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	int maxw = right - left + 1;
 	int maxh = bottom - top + 1;
@@ -833,28 +811,6 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
 	return ((align & SA_VERT_MASK) == SA_BOTTOM) ? first_line : last_line;
 }
 
-
-/**
- * Draw string, possibly over multiple lines.
- *
- * @param left   The left most position to draw on.
- * @param right  The right most position to draw on.
- * @param top    The top most position to draw on.
- * @param bottom The bottom most position to draw on.
- * @param str    String to draw.
- * @param colour Colour used for drawing the string, for details see _string_colourmap in
- *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
- * @param align  The horizontal and vertical alignment of the string.
- * @param underline Whether to underline all strings
- * @param fontsize The size of the initial characters.
- *
- * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
- */
-int DrawStringMultiLine(int left, int right, int top, int bottom, const std::string &str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
-{
-	return DrawStringMultiLine(left, right, top, bottom, str.c_str(), colour, align, underline, fontsize);
-}
-
 /**
  * Draw string, possibly over multiple lines.
  *
@@ -888,30 +844,15 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
  * @param start_fontsize Fontsize to start the text with
  * @return string width and height in pixels
  */
-Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize)
+Dimension GetStringBoundingBox(std::string_view str, FontSize start_fontsize)
 {
 	Layouter layout(str, INT32_MAX, TC_FROMSTRING, start_fontsize);
 	return layout.GetBounds();
 }
 
 /**
- * Return the string dimension in pixels. The height and width are returned
- * in a single Dimension value. TINYFONT, BIGFONT modifiers are only
- * supported as the first character of the string. The returned dimensions
- * are therefore a rough estimation correct for all the current strings
- * but not every possible combination
- * @param str string to calculate pixel-width
- * @param start_fontsize Fontsize to start the text with
- * @return string width and height in pixels
- */
-Dimension GetStringBoundingBox(const std::string &str, FontSize start_fontsize)
-{
-	return GetStringBoundingBox(str.c_str(), start_fontsize);
-}
-
-/**
  * Get bounding box of a string. Uses parameters set by #SetDParam if needed.
- * Has the same restrictions as #GetStringBoundingBox(const char *str, FontSize start_fontsize).
+ * Has the same restrictions as #GetStringBoundingBox(std::string_view str, FontSize start_fontsize).
  * @param strid String to examine.
  * @return Width and height of the bounding box for the string in pixels.
  */
@@ -946,10 +887,14 @@ uint GetStringListWidth(const StringID *list, FontSize fontsize)
  * @param start_fontsize Font size to start the text with.
  * @return Upper left corner of the glyph associated with the character.
  */
-Point GetCharPosInString(const char *str, const char *ch, FontSize start_fontsize)
+Point GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize)
 {
+	/* Ensure "ch" is inside "str" or at the exact end. */
+	assert(ch >= str.data() && (ch - str.data()) <= static_cast<ptrdiff_t>(str.size()));
+	auto it_ch = str.begin() + (ch - str.data());
+
 	Layouter layout(str, INT32_MAX, TC_FROMSTRING, start_fontsize);
-	return layout.GetCharPosition(ch);
+	return layout.GetCharPosition(it_ch);
 }
 
 /**
@@ -957,11 +902,11 @@ Point GetCharPosInString(const char *str, const char *ch, FontSize start_fontsiz
  * @param str String to test.
  * @param x Position relative to the start of the string.
  * @param start_fontsize Font size to start the text with.
- * @return Pointer to the character at the position or nullptr if there is no character at the position.
+ * @return Index of the character position or -1 if there is no character at the position.
  */
-const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize)
+ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize)
 {
-	if (x < 0) return nullptr;
+	if (x < 0) return -1;
 
 	Layouter layout(str, INT32_MAX, TC_FROMSTRING, start_fontsize);
 	return layout.GetCharAtPosition(x);

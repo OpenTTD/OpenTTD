@@ -1057,10 +1057,11 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	Point pt = { (int)view_pt.x, (int)[ self frame ].size.height - (int)view_pt.y };
 
-	const char *ch = _focused_window->GetTextCharacterAtPosition(pt);
-	if (ch == nullptr) return NSNotFound;
+	auto index = _focused_window->GetTextCharacterAtPosition(pt);
+	if (index == -1) return NSNotFound;
 
-	return CountUtf16Units(_focused_window->GetFocusedText(), ch);
+	auto text = _focused_window->GetFocusedText();
+	return CountUtf16Units(text, text + index);
 }
 
 /** Get the bounding rect for the given range. */

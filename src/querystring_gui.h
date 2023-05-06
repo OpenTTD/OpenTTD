@@ -54,7 +54,7 @@ public:
 
 	Point GetCaretPosition(const Window *w, int wid) const;
 	Rect GetBoundingRect(const Window *w, int wid, const char *from, const char *to) const;
-	const char *GetCharAtPosition(const Window *w, int wid, const Point &pt) const;
+	ptrdiff_t GetCharAtPosition(const Window *w, int wid, const Point &pt) const;
 
 	/**
 	 * Get the current text.

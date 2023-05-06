@@ -896,9 +896,9 @@ Rect QueryString::GetBoundingRect(const Window *w, int wid, const char *from, co
  * @param w Window the edit box is in.
  * @param wid Widget index.
  * @param pt Position to test.
- * @return Pointer to the character at the position or nullptr if no character is at the position.
+ * @return Index of the character position or -1 if no character is at the position.
  */
-const char *QueryString::GetCharAtPosition(const Window *w, int wid, const Point &pt) const
+ptrdiff_t QueryString::GetCharAtPosition(const Window *w, int wid, const Point &pt) const
 {
 	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);
 
@@ -910,7 +910,7 @@ const char *QueryString::GetCharAtPosition(const Window *w, int wid, const Point
 
 	Rect r = wi->GetCurrentRect().Indent(clearbtn_width, !rtl).Shrink(WidgetDimensions::scaled.framerect);
 
-	if (!IsInsideMM(pt.y, r.top, r.bottom)) return nullptr;
+	if (!IsInsideMM(pt.y, r.top, r.bottom)) return -1;
 
 	/* Clamp caret position to be inside our current width. */
 	const Textbuf *tb = &this->text;
