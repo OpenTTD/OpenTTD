@@ -318,11 +318,11 @@ struct IConsoleWindow : Window
 		return r;
 	}
 
-	const char *GetTextCharacterAtPosition(const Point &pt) const override
+	ptrdiff_t GetTextCharacterAtPosition(const Point &pt) const override
 	{
 		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
-		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return nullptr;
+		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return -1;
 
 		return GetCharAtPosition(_iconsole_cmdline.buf, pt.x - delta);
 	}
