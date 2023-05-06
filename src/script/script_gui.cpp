@@ -905,7 +905,7 @@ struct ScriptDebugWindow : public Window {
 
 		Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-		for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < log.size(); i++) {
+		for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && (size_t)i < log.size(); i++) {
 			const ScriptLogTypes::LogLine &line = log[i];
 
 			TextColour colour;
