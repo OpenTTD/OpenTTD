@@ -261,9 +261,9 @@ public:
 
 	/**
 	 * Get the next string to search through.
-	 * @return The next string or nullptr if there is none.
+	 * @return The next string or nullopt if there is none.
 	 */
-	virtual const char *NextString() = 0;
+	virtual std::optional<std::string_view> NextString() = 0;
 
 	/**
 	 * Get the default (font) size of the string.

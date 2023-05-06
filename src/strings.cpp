@@ -2103,9 +2103,13 @@ bool MissingGlyphSearcher::FindMissingGlyphs()
 	}
 
 	this->Reset();
-	for (const char *text = this->NextString(); text != nullptr; text = this->NextString()) {
+	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
+		auto src = text->cbegin();
+
 		FontSize size = this->DefaultSize();
-		for (WChar c = Utf8Consume(&text); c != '\0'; c = Utf8Consume(&text)) {
+		while (src != text->cend()) {
+			WChar c = Utf8Consume(src);
+
 			if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 				size = (FontSize)(c - SCC_FIRST_FONT);
 			} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(size, c) == question_mark[size]) {
@@ -2144,9 +2148,9 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 		return FS_NORMAL;
 	}
 
-	const char *NextString() override
+	std::optional<std::string_view> NextString() override
 	{
-		if (this->i >= TEXT_TAB_END) return nullptr;
+		if (this->i >= TEXT_TAB_END) return std::nullopt;
 
 		const char *ret = _langpack.offsets[_langpack.langtab_start[this->i] + this->j];
 

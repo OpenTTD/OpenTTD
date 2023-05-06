@@ -40,7 +40,7 @@ int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FO
 std::string FormatArrayAsHex(span<const byte> data);
 
 void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK) NOACCESS(2);
-[[nodiscard]] std::string StrMakeValid(const std::string &str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+[[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 void StrMakeValidInPlace(char *str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 
 void str_fix_scc_encoded(char *str, const char *last) NOACCESS(2);
