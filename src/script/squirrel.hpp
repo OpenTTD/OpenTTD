@@ -159,7 +159,6 @@ public:
 	 */
 	bool CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend);
 	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend) { return this->CallMethod(instance, method_name, nullptr, suspend); }
-	bool CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, const char **res, int suspend);
 	bool CallStringMethod(HSQOBJECT instance, const char *method_name, std::string *res, int suspend);
 	bool CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend);
 	bool CallBoolMethod(HSQOBJECT instance, const char *method_name, bool *res, int suspend);
