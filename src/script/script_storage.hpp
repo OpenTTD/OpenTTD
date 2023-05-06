@@ -56,7 +56,7 @@ private:
 	RailType rail_type;              ///< The current railtype we build.
 
 	void *event_data;                ///< Pointer to the event data storage.
-	ScriptLogTypes::LogData log_data;     ///< Log data storage.
+	ScriptLogTypes::LogData log_data;///< Log data storage.
 
 public:
 	ScriptStorage() :
