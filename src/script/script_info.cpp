@@ -18,14 +18,9 @@
 
 #include "../safeguards.h"
 
-ScriptInfo::~ScriptInfo()
-{
-	free(this->SQ_instance);
-}
-
 bool ScriptInfo::CheckMethod(const char *name) const
 {
-	if (!this->engine->MethodExists(*this->SQ_instance, name)) {
+	if (!this->engine->MethodExists(this->SQ_instance, name)) {
 		this->engine->ThrowError(fmt::format("your info.nut/library.nut doesn't have the method '{}'", name));
 		return false;
 	}
@@ -35,10 +30,9 @@ bool ScriptInfo::CheckMethod(const char *name) const
 /* static */ SQInteger ScriptInfo::Constructor(HSQUIRRELVM vm, ScriptInfo *info)
 {
 	/* Set some basic info from the parent */
-	info->SQ_instance = MallocT<SQObject>(1);
-	Squirrel::GetInstance(vm, info->SQ_instance, 2);
+	Squirrel::GetInstance(vm, &info->SQ_instance, 2);
 	/* Make sure the instance stays alive over time */
-	sq_addref(vm, info->SQ_instance);
+	sq_addref(vm, &info->SQ_instance);
 
 	info->scanner = (ScriptScanner *)Squirrel::GetGlobalPointer(vm);
 	info->engine = info->scanner->GetEngine();
@@ -62,21 +56,21 @@ bool ScriptInfo::CheckMethod(const char *name) const
 	info->tar_file = info->scanner->GetTarFile();
 
 	/* Cache the data the info file gives us. */
-	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetName", &info->name, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetShortName", &info->short_name, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetDescription", &info->description, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetDate", &info->date, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion", &info->version, MAX_GET_OPS)) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(*info->SQ_instance, "CreateInstance", &info->instance_name, MAX_CREATEINSTANCE_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(info->SQ_instance, "GetName", &info->name, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(info->SQ_instance, "GetShortName", &info->short_name, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(info->SQ_instance, "GetDescription", &info->description, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(info->SQ_instance, "GetDate", &info->date, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallIntegerMethod(info->SQ_instance, "GetVersion", &info->version, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(info->SQ_instance, "CreateInstance", &info->instance_name, MAX_CREATEINSTANCE_OPS)) return SQ_ERROR;
 
 	/* The GetURL function is optional. */
-	if (info->engine->MethodExists(*info->SQ_instance, "GetURL")) {
-		if (!info->engine->CallStringMethod(*info->SQ_instance, "GetURL", &info->url, MAX_GET_OPS)) return SQ_ERROR;
+	if (info->engine->MethodExists(info->SQ_instance, "GetURL")) {
+		if (!info->engine->CallStringMethod(info->SQ_instance, "GetURL", &info->url, MAX_GET_OPS)) return SQ_ERROR;
 	}
 
 	/* Check if we have settings */
-	if (info->engine->MethodExists(*info->SQ_instance, "GetSettings")) {
+	if (info->engine->MethodExists(info->SQ_instance, "GetSettings")) {
 		if (!info->GetSettings()) return SQ_ERROR;
 	}
 
@@ -85,7 +79,7 @@ bool ScriptInfo::CheckMethod(const char *name) const
 
 bool ScriptInfo::GetSettings()
 {
-	return this->engine->CallMethod(*this->SQ_instance, "GetSettings", nullptr, MAX_GET_SETTING_OPS);
+	return this->engine->CallMethod(this->SQ_instance, "GetSettings", nullptr, MAX_GET_SETTING_OPS);
 }
 
 SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)

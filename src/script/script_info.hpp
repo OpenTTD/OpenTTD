@@ -31,11 +31,9 @@ class ScriptInfo : public SimpleCountedObject {
 public:
 	ScriptInfo() :
 		engine(nullptr),
-		SQ_instance(nullptr),
 		version(0),
 		scanner(nullptr)
 	{}
-	~ScriptInfo();
 
 	/**
 	 * Get the Author of the script.
@@ -139,7 +137,7 @@ public:
 
 protected:
 	class Squirrel *engine;           ///< Engine used to register for Squirrel.
-	HSQOBJECT *SQ_instance;           ///< The Squirrel instance created for this info.
+	HSQOBJECT SQ_instance;            ///< The Squirrel instance created for this info.
 	ScriptConfigItemList config_list; ///< List of settings from this Script.
 
 private:
