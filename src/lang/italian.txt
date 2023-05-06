@@ -1184,6 +1184,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Espandi 
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Comprimi tutti
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Resetta tutti i valori
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrizione non disponibile)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valore predefinito: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo impostazione: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Impostazione del client (non conservata nei salvataggi; influenza tutte le partite)
@@ -3868,6 +3869,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Invia is
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Rimpiazza veicoli
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Manutenzione
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profitto quest'anno: {CURRENCY_LONG} (anno scorso: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Manda al deposito
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Manda al deposito
@@ -5629,11 +5632,13 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
