@@ -99,11 +99,6 @@ bool GameInfo::CanLoadFromVersion(int version) const
 }
 
 
-GameLibrary::~GameLibrary()
-{
-	free(this->category);
-}
-
 /* static */ void GameLibrary::RegisterAPI(Squirrel *engine)
 {
 	/* Create the GameLibrary class, and add the RegisterLibrary function */
@@ -124,7 +119,7 @@ GameLibrary::~GameLibrary()
 	}
 
 	/* Cache the category */
-	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
+	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethod(*library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
 		delete library;
 		return SQ_ERROR;
 	}
