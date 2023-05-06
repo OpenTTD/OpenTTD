@@ -280,14 +280,9 @@ struct DropdownWindow : Window {
 	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(30), [this](auto) {
 		if (this->scrolling == 0) return;
 
-		int pos = this->vscroll->GetPosition();
+		if (this->vscroll->UpdatePosition(this->scrolling)) this->SetDirty();
 
-		this->vscroll->UpdatePosition(this->scrolling);
 		this->scrolling = 0;
-
-		if (pos != this->vscroll->GetPosition()) {
-			this->SetDirty();
-		}
 	}};
 
 	void OnMouseLoop() override
