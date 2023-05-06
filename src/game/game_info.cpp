@@ -60,20 +60,20 @@ template <> const char *GetClassName<GameInfo, ScriptType::GS>() { return "GSInf
 	SQInteger res = ScriptInfo::Constructor(vm, info);
 	if (res != 0) return res;
 
-	if (info->engine->MethodExists(*info->SQ_instance, "MinVersionToLoad")) {
-		if (!info->engine->CallIntegerMethod(*info->SQ_instance, "MinVersionToLoad", &info->min_loadable_version, MAX_GET_OPS)) return SQ_ERROR;
+	if (info->engine->MethodExists(info->SQ_instance, "MinVersionToLoad")) {
+		if (!info->engine->CallIntegerMethod(info->SQ_instance, "MinVersionToLoad", &info->min_loadable_version, MAX_GET_OPS)) return SQ_ERROR;
 	} else {
 		info->min_loadable_version = info->GetVersion();
 	}
 	/* When there is an IsSelectable function, call it. */
-	if (info->engine->MethodExists(*info->SQ_instance, "IsDeveloperOnly")) {
-		if (!info->engine->CallBoolMethod(*info->SQ_instance, "IsDeveloperOnly", &info->is_developer_only, MAX_GET_OPS)) return SQ_ERROR;
+	if (info->engine->MethodExists(info->SQ_instance, "IsDeveloperOnly")) {
+		if (!info->engine->CallBoolMethod(info->SQ_instance, "IsDeveloperOnly", &info->is_developer_only, MAX_GET_OPS)) return SQ_ERROR;
 	} else {
 		info->is_developer_only = false;
 	}
 	/* Try to get the API version the AI is written for. */
 	if (!info->CheckMethod("GetAPIVersion")) return SQ_ERROR;
-	if (!info->engine->CallStringMethod(*info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethod(info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
 	if (!CheckAPIVersion(info->api_version)) {
 		Debug(script, 1, "Loading info.nut from ({}.{}): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
 		return SQ_ERROR;
@@ -119,7 +119,7 @@ bool GameInfo::CanLoadFromVersion(int version) const
 	}
 
 	/* Cache the category */
-	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethod(*library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
+	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethod(library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
 		delete library;
 		return SQ_ERROR;
 	}
