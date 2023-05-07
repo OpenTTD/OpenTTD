@@ -273,14 +273,14 @@ void LinkGraphOverlay::Draw(const DrawPixelInfo *dpi)
 void LinkGraphOverlay::DrawLinks(const DrawPixelInfo *dpi) const
 {
 	int width = ScaleGUITrad(this->scale);
-	for (LinkMap::const_iterator i(this->cached_links.begin()); i != this->cached_links.end(); ++i) {
-		if (!Station::IsValidID(i->first)) continue;
-		Point pta = this->GetStationMiddle(Station::Get(i->first));
-		for (StationLinkMap::const_iterator j(i->second.begin()); j != i->second.end(); ++j) {
-			if (!Station::IsValidID(j->first)) continue;
-			Point ptb = this->GetStationMiddle(Station::Get(j->first));
+	for (const auto &i : this->cached_links) {
+		if (!Station::IsValidID(i.first)) continue;
+		Point pta = this->GetStationMiddle(Station::Get(i.first));
+		for (const auto &j : i.second) {
+			if (!Station::IsValidID(j.first)) continue;
+			Point ptb = this->GetStationMiddle(Station::Get(j.first));
 			if (!this->IsLinkVisible(pta, ptb, dpi, width + 2)) continue;
-			this->DrawContent(pta, ptb, j->second);
+			this->DrawContent(pta, ptb, j.second);
 		}
 	}
 }
@@ -319,13 +319,13 @@ void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &c
 void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 {
 	int width = ScaleGUITrad(this->scale);
-	for (StationSupplyList::const_iterator i(this->cached_stations.begin()); i != this->cached_stations.end(); ++i) {
-		const Station *st = Station::GetIfValid(i->first);
+	for (const auto &i : this->cached_stations) {
+		const Station *st = Station::GetIfValid(i.first);
 		if (st == nullptr) continue;
 		Point pt = this->GetStationMiddle(st);
 		if (!this->IsPointVisible(pt, dpi, 3 * width)) continue;
 
-		uint r = width * 2 + width * 2 * std::min(200U, i->second) / 200;
+		uint r = width * 2 + width * 2 * std::min(200U, i.second) / 200;
 
 		LinkGraphOverlay::DrawVertex(pt.x, pt.y, r,
 				_colour_gradient[st->owner != OWNER_NONE ?

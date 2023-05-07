@@ -105,9 +105,8 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 	if (name.empty()) {
 		/* Probe for this driver, but do not fall back to dedicated/null! */
 		for (int priority = 10; priority > 0; priority--) {
-			Drivers::iterator it = GetDrivers().begin();
-			for (; it != GetDrivers().end(); ++it) {
-				DriverFactoryBase *d = (*it).second;
+			for (auto &it : GetDrivers()) {
+				DriverFactoryBase *d = it.second;
 
 				/* Check driver type */
 				if (d->type != type) continue;
@@ -151,9 +150,8 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 		}
 
 		/* Find this driver */
-		Drivers::iterator it = GetDrivers().begin();
-		for (; it != GetDrivers().end(); ++it) {
-			DriverFactoryBase *d = (*it).second;
+		for (auto &it : GetDrivers()) {
+			DriverFactoryBase *d = it.second;
 
 			/* Check driver type */
 			if (d->type != type) continue;
@@ -191,9 +189,8 @@ char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 		p += seprintf(p, last, "List of %s drivers:\n", GetDriverTypeName(type));
 
 		for (int priority = 10; priority >= 0; priority--) {
-			Drivers::iterator it = GetDrivers().begin();
-			for (; it != GetDrivers().end(); it++) {
-				DriverFactoryBase *d = (*it).second;
+			for (auto &it : GetDrivers()) {
+				DriverFactoryBase *d = it.second;
 				if (d->type != type) continue;
 				if (d->priority != priority) continue;
 				p += seprintf(p, last, "%18s: %s\n", d->name, d->GetDescription());

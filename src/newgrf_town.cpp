@@ -35,9 +35,8 @@
 				grfid = this->ro.grffile->grfid;
 			}
 
-			std::list<PersistentStorage *>::iterator iter;
-			for (iter = this->t->psa_list.begin(); iter != this->t->psa_list.end(); iter++) {
-				if ((*iter)->grfid == grfid) return (*iter)->GetValue(parameter);
+			for (auto &it : this->t->psa_list) {
+				if (it->grfid == grfid) return it->GetValue(parameter);
 			}
 
 			return 0;
@@ -133,10 +132,9 @@
 	if (grfid != this->ro.grffile->grfid) return;
 
 	/* Check if the storage exists. */
-	std::list<PersistentStorage *>::iterator iter;
-	for (iter = t->psa_list.begin(); iter != t->psa_list.end(); iter++) {
-		if ((*iter)->grfid == grfid) {
-			(*iter)->StoreValue(pos, value);
+	for (auto &it : t->psa_list) {
+		if (it->grfid == grfid) {
+			it->StoreValue(pos, value);
 			return;
 		}
 	}

@@ -283,9 +283,9 @@ static void InitializeWindowsAndCaches()
 		}
 	}
 	for (Town *t : Town::Iterate()) {
-		for (std::list<PersistentStorage *>::iterator it = t->psa_list.begin(); it != t->psa_list.end(); ++it) {
-			(*it)->feature = GSF_FAKE_TOWNS;
-			(*it)->tile = t->xy;
+		for (auto &it : t->psa_list) {
+			it->feature = GSF_FAKE_TOWNS;
+			it->tile = t->xy;
 		}
 	}
 	for (RoadVehicle *rv : RoadVehicle::Iterate()) {
@@ -2157,13 +2157,11 @@ bool AfterLoadGame()
 		 * add cargopayment for the vehicles that don't have it.
 		 */
 		for (Station *st : Station::Iterate()) {
-			std::list<Vehicle *>::iterator iter;
-			for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
+			for (Vehicle *v : st->loading_vehicles) {
 				/* There are always as many CargoPayments as Vehicles. We need to make the
 				 * assert() in Pool::GetNew() happy by calling CanAllocateItem(). */
 				static_assert(CargoPaymentPool::MAX_SIZE == VehiclePool::MAX_SIZE);
 				assert(CargoPayment::CanAllocateItem());
-				Vehicle *v = *iter;
 				if (v->cargo_payment == nullptr) v->cargo_payment = new CargoPayment(v);
 			}
 		}

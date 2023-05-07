@@ -1347,8 +1347,8 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
  */
 void SettingsContainer::Init(byte level)
 {
-	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		(*it)->Init(level);
+	for (auto &it : this->entries) {
+		it->Init(level);
 	}
 }
 
@@ -1363,16 +1363,16 @@ void SettingsContainer::ResetAll()
 /** Recursively close all folds of sub-pages */
 void SettingsContainer::FoldAll()
 {
-	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		(*it)->FoldAll();
+	for (auto &it : this->entries) {
+		it->FoldAll();
 	}
 }
 
 /** Recursively open all folds of sub-pages */
 void SettingsContainer::UnFoldAll()
 {
-	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		(*it)->UnFoldAll();
+	for (auto &it : this->entries) {
+		it->UnFoldAll();
 	}
 }
 
@@ -1383,8 +1383,8 @@ void SettingsContainer::UnFoldAll()
  */
 void SettingsContainer::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 {
-	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		(*it)->GetFoldingState(all_folded, all_unfolded);
+	for (auto &it : this->entries) {
+		it->GetFoldingState(all_folded, all_unfolded);
 	}
 }
 
@@ -1415,8 +1415,8 @@ bool SettingsContainer::UpdateFilterState(SettingFilter &filter, bool force_visi
  */
 bool SettingsContainer::IsVisible(const BaseSettingEntry *item) const
 {
-	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		if ((*it)->IsVisible(item)) return true;
+	for (const auto &it : this->entries) {
+		if (it->IsVisible(item)) return true;
 	}
 	return false;
 }
@@ -1425,8 +1425,8 @@ bool SettingsContainer::IsVisible(const BaseSettingEntry *item) const
 uint SettingsContainer::Length() const
 {
 	uint length = 0;
-	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		length += (*it)->Length();
+	for (const auto &it : this->entries) {
+		length += it->Length();
 	}
 	return length;
 }
@@ -1440,8 +1440,8 @@ uint SettingsContainer::Length() const
 BaseSettingEntry *SettingsContainer::FindEntry(uint row_num, uint *cur_row)
 {
 	BaseSettingEntry *pe = nullptr;
-	for (EntryVector::iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		pe = (*it)->FindEntry(row_num, cur_row);
+	for (const auto &it : this->entries) {
+		pe = it->FindEntry(row_num, cur_row);
 		if (pe != nullptr) {
 			break;
 		}
@@ -1457,8 +1457,8 @@ BaseSettingEntry *SettingsContainer::FindEntry(uint row_num, uint *cur_row)
 uint SettingsContainer::GetMaxHelpHeight(int maxw)
 {
 	uint biggest = 0;
-	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		biggest = std::max(biggest, (*it)->GetMaxHelpHeight(maxw));
+	for (const auto &it : this->entries) {
+		biggest = std::max(biggest, it->GetMaxHelpHeight(maxw));
 	}
 	return biggest;
 }
@@ -1480,11 +1480,9 @@ uint SettingsContainer::GetMaxHelpHeight(int maxw)
  */
 uint SettingsContainer::Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row, uint parent_last) const
 {
-	for (EntryVector::const_iterator it = this->entries.begin(); it != this->entries.end(); ++it) {
-		cur_row = (*it)->Draw(settings_ptr, left, right, y, first_row, max_row, selected, cur_row, parent_last);
-		if (cur_row >= max_row) {
-			break;
-		}
+	for (const auto &it : this->entries) {
+		cur_row = it->Draw(settings_ptr, left, right, y, first_row, max_row, selected, cur_row, parent_last);
+		if (cur_row >= max_row) break;
 	}
 	return cur_row;
 }

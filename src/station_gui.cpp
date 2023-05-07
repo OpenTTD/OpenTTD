@@ -1058,9 +1058,9 @@ CargoDataEntry::~CargoDataEntry()
 void CargoDataEntry::Clear()
 {
 	if (this->children != nullptr) {
-		for (CargoDataSet::iterator i = this->children->begin(); i != this->children->end(); ++i) {
-			assert(*i != this);
-			delete *i;
+		for (auto &it : *this->children) {
+			assert(it != this);
+			delete it;
 		}
 		this->children->clear();
 	}
@@ -1464,21 +1464,19 @@ struct StationViewWindow : public Window {
 		CargoDataEntry *cargo_entry = cached_destinations.InsertOrRetrieve(i);
 		cargo_entry->Clear();
 
-		const FlowStatMap &flows = st->goods[i].flows;
-		for (FlowStatMap::const_iterator it = flows.begin(); it != flows.end(); ++it) {
-			StationID from = it->first;
+		for (const auto &it : st->goods[i].flows) {
+			StationID from = it.first;
 			CargoDataEntry *source_entry = cargo_entry->InsertOrRetrieve(from);
-			const FlowStat::SharesMap *shares = it->second.GetShares();
 			uint32 prev_count = 0;
-			for (FlowStat::SharesMap::const_iterator flow_it = shares->begin(); flow_it != shares->end(); ++flow_it) {
-				StationID via = flow_it->second;
+			for (const auto &flow_it : *it.second.GetShares()) {
+				StationID via = flow_it.second;
 				CargoDataEntry *via_entry = source_entry->InsertOrRetrieve(via);
 				if (via == this->window_number) {
-					via_entry->InsertOrRetrieve(via)->Update(flow_it->first - prev_count);
+					via_entry->InsertOrRetrieve(via)->Update(flow_it.first - prev_count);
 				} else {
-					EstimateDestinations(i, from, via, flow_it->first - prev_count, via_entry);
+					EstimateDestinations(i, from, via, flow_it.first - prev_count, via_entry);
 				}
-				prev_count = flow_it->first;
+				prev_count = flow_it.first;
 			}
 		}
 	}

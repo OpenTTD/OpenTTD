@@ -310,22 +310,22 @@ public:
 
 	void Save(GoodsEntry *ge) const override
 	{
-		uint32 num_flows = 0;
-		for (FlowStatMap::const_iterator it(ge->flows.begin()); it != ge->flows.end(); ++it) {
-			num_flows += (uint32)it->second.GetShares()->size();
+		size_t num_flows = 0;
+		for (const auto &it : ge->flows) {
+			num_flows += it.second.GetShares()->size();
 		}
 		SlSetStructListLength(num_flows);
 
-		for (FlowStatMap::const_iterator outer_it(ge->flows.begin()); outer_it != ge->flows.end(); ++outer_it) {
-			const FlowStat::SharesMap *shares = outer_it->second.GetShares();
+		for (const auto &outer_it : ge->flows) {
+			const FlowStat::SharesMap *shares = outer_it.second.GetShares();
 			uint32 sum_shares = 0;
 			FlowSaveLoad flow;
-			flow.source = outer_it->first;
-			for (FlowStat::SharesMap::const_iterator inner_it(shares->begin()); inner_it != shares->end(); ++inner_it) {
-				flow.via = inner_it->second;
-				flow.share = inner_it->first - sum_shares;
-				flow.restricted = inner_it->first > outer_it->second.GetUnrestricted();
-				sum_shares = inner_it->first;
+			flow.source = outer_it.first;
+			for (auto &inner_it : *shares) {
+				flow.via = inner_it.second;
+				flow.share = inner_it.first - sum_shares;
+				flow.restricted = inner_it.first > outer_it.second.GetUnrestricted();
+				sum_shares = inner_it.first;
 				assert(flow.share > 0);
 				SlObject(&flow, this->GetDescription());
 			}
