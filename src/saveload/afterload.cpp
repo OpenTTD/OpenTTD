@@ -1610,11 +1610,13 @@ bool AfterLoadGame()
 		/* For some reason non-loading vehicles could be in the station's loading vehicle list */
 
 		for (Station *st : Station::Iterate()) {
-			std::list<Vehicle *>::iterator iter;
-			for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end();) {
+			for (auto iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); /* nothing */) {
 				Vehicle *v = *iter;
-				iter++;
-				if (!v->current_order.IsType(OT_LOADING)) st->loading_vehicles.remove(v);
+				if (!v->current_order.IsType(OT_LOADING)) {
+					iter = st->loading_vehicles.erase(iter);
+				} else {
+					++iter;
+				}
 			}
 		}
 	}
