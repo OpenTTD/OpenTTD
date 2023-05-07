@@ -860,11 +860,10 @@ struct ScriptDebugWindow : public Window {
 		/* Detect when the user scrolls the window. Enable autoscroll when the
 		 * bottom-most line becomes visible. */
 		if (this->last_vscroll_pos != this->vscroll->GetPosition()) {
-			this->autoscroll = this->vscroll->GetPosition() >= log.size() - this->vscroll->GetCapacity();
+			this->autoscroll = this->vscroll->GetPosition() + this->vscroll->GetCapacity() >= (int)log.size();
 		}
 		if (this->autoscroll) {
-			int scroll_pos = std::max<int>(0, (int)log.size() - this->vscroll->GetCapacity());
-			if (this->vscroll->SetPosition(scroll_pos)) {
+			if (this->vscroll->SetPosition((int)log.size())) {
 				/* We need a repaint */
 				this->SetWidgetDirty(WID_SCRD_SCROLLBAR);
 				this->SetWidgetDirty(WID_SCRD_LOG_PANEL);
