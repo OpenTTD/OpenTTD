@@ -364,7 +364,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 
 			if (IsCustomStationSpecIndex(nearby_tile)) {
 				const StationSpecList ssl = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
-				res |= 1 << (ssl.grfid != grfid ? 9 : 8) | std::max<uint16_t>(ssl.localidx, 0xFF);
+				res |= 1 << (ssl.grfid != grfid ? 9 : 8) | ClampTo<uint8_t>(ssl.localidx);
 			}
 			return res;
 		}
