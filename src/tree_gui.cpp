@@ -269,15 +269,13 @@ static NWidgetBase *MakeTreeTypeButtons(int *biggest_index)
 	byte cur_type = type_base;
 
 	NWidgetVertical *vstack = new NWidgetVertical(NC_EQUALSIZE);
-	vstack->SetPIP(0, 1, 0);
 
 	for (int row = 0; row < num_rows; row++) {
 		NWidgetHorizontal *hstack = new NWidgetHorizontal(NC_EQUALSIZE);
-		hstack->SetPIP(0, 1, 0);
 		vstack->Add(hstack);
 		for (int col = 0; col < num_columns; col++) {
 			if (cur_type > type_base + type_count) break;
-			NWidgetBackground *button = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_BUTTON_FIRST + cur_type);
+			NWidgetBackground *button = new NWidgetBackground(WWT_PANEL, COLOUR_DARK_GREEN, WID_BT_TYPE_BUTTON_FIRST + cur_type);
 			button->SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP);
 			hstack->Add(button);
 			*biggest_index = WID_BT_TYPE_BUTTON_FIRST + cur_type;
@@ -296,20 +294,17 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-		NWidget(NWID_VERTICAL), SetPadding(2),
+		NWidget(NWID_VERTICAL),
 			NWidgetFunction(MakeTreeTypeButtons),
-			NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_TYPE_RANDOM), SetDataTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_BT_TYPE_RANDOM), SetMinimalSize(0, 12), SetDataTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BT_SE_PANE),
 				NWidget(NWID_VERTICAL),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_NORMAL), SetFill(1, 0), SetDataTip(STR_TREES_MODE_NORMAL_BUTTON, STR_TREES_MODE_NORMAL_TOOLTIP),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_FOREST_SM), SetFill(1, 0), SetDataTip(STR_TREES_MODE_FOREST_SM_BUTTON, STR_TREES_MODE_FOREST_SM_TOOLTIP),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MODE_FOREST_LG), SetFill(1, 0), SetDataTip(STR_TREES_MODE_FOREST_LG_BUTTON, STR_TREES_MODE_FOREST_LG_TOOLTIP),
+						NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_BT_MODE_NORMAL), SetFill(1, 0), SetMinimalSize(0, 12), SetDataTip(STR_TREES_MODE_NORMAL_BUTTON, STR_TREES_MODE_NORMAL_TOOLTIP),
+						NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_BT_MODE_FOREST_SM), SetFill(1, 0), SetMinimalSize(0, 12), SetDataTip(STR_TREES_MODE_FOREST_SM_BUTTON, STR_TREES_MODE_FOREST_SM_TOOLTIP),
+						NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_BT_MODE_FOREST_LG), SetFill(1, 0), SetMinimalSize(0, 12), SetDataTip(STR_TREES_MODE_FOREST_LG_BUTTON, STR_TREES_MODE_FOREST_LG_TOOLTIP),
 					EndContainer(),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BT_MANY_RANDOM), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_BT_MANY_RANDOM), SetMinimalSize(0, 12), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
