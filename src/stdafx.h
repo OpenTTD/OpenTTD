@@ -53,15 +53,28 @@
 #endif
 
 #include <algorithm>
-#include <cstdio>
-#include <cstdint>
+#include <cassert>
+#include <cctype>
+#include <cerrno>
+#include <climits>
+#include <cmath>
+#include <cstdarg>
 #include <cstddef>
+#include <cstdint>
+#include <cstdio>
 #include <cstring>
 #include <cstdlib>
-#include <climits>
-#include <cassert>
+#include <cwchar>
+#include <exception>
+#include <functional>
+#include <iterator>
+#include <limits>
 #include <memory>
+#include <optional>
+#include <stdexcept>
 #include <string>
+#include <type_traits>
+#include <vector>
 
 #if defined(UNIX) || defined(__MINGW32__)
 #	include <sys/types.h>

@@ -10,8 +10,6 @@
 #ifndef MATH_FUNC_HPP
 #define MATH_FUNC_HPP
 
-#include <limits>
-#include <type_traits>
 
 /**
  * Returns the absolute value of (scalar) variable.

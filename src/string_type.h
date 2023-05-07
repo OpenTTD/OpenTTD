@@ -11,8 +11,6 @@
 #define STRING_TYPE_H
 
 #include "core/enum_type.hpp"
-#include <vector>
-#include <string>
 
 /** A non-breaking space. */
 #define NBSP u8"\u00a0"

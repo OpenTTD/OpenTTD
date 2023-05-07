@@ -13,8 +13,6 @@
 #include "../stdafx.h"
 #include "../core/smallvec_type.hpp"
 #include "midi.h"
-#include <vector>
-#include <string>
 
 struct MusicSongInfo;
 

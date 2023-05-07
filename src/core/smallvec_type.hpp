@@ -11,7 +11,6 @@
 #define SMALLVEC_TYPE_HPP
 
 #include "mem_func.hpp"
-#include <vector>
 
 /**
  * Helper function to append an item to a vector if it is not already contained

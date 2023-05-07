@@ -12,9 +12,7 @@
 
 #include <utility>
 #include <list>
-#include <functional>
 #include <unordered_map>
-#include <stdexcept>
 
 /**
  * Size limited cache with a least recently used eviction strategy.

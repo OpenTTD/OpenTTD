@@ -18,7 +18,6 @@
 #include "../../strings_func.h"
 #include "../../zoom_func.h"
 #include "macos.h"
-#include <cmath>
 
 #include "../../table/control_codes.h"
 

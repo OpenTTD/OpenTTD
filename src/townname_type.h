@@ -17,7 +17,6 @@
 #include "town_type.h"
 #include "string_type.h"
 #include <set>
-#include <string>
 
 typedef std::set<std::string> TownNames;
 

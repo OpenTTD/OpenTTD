@@ -42,8 +42,6 @@
 #include "gui.h"
 #include "mixer.h"
 
-#include <vector>
-#include <iterator>
 
 #include "safeguards.h"
 #include "video/video_driver.hpp"

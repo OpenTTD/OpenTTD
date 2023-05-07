@@ -8,7 +8,6 @@
 /** @file music_gui.cpp GUI for the music playback. */
 
 #include "stdafx.h"
-#include <vector>
 #include "openttd.h"
 #include "base_media_base.h"
 #include "music/music_driver.hpp"

@@ -16,7 +16,6 @@
 #include "../../string_func.h"
 #include "../../core/smallmap_type.hpp"
 
-#include <string>
 
 class NetworkAddress;
 typedef std::vector<NetworkAddress> NetworkAddressList; ///< Type for a list of addresses.

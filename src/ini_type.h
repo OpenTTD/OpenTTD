@@ -11,8 +11,6 @@
 #define INI_TYPE_H
 
 #include "fileio_type.h"
-#include <string>
-#include <optional>
 
 /** Types of groups */
 enum IniGroupType {

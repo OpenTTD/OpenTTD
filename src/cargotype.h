@@ -17,7 +17,6 @@
 #include "landscape_type.h"
 #include "core/bitmath_func.hpp"
 #include "core/span_type.hpp"
-#include <vector>
 
 /** Globally unique label of a cargo type. */
 typedef uint32 CargoLabel;

@@ -16,7 +16,6 @@
 #include "video/video_driver.hpp"
 #include "string_func.h"
 #include "table/strings.h"
-#include <string>
 #include <sstream>
 
 #include "safeguards.h"

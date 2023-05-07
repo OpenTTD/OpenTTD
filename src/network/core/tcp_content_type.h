@@ -12,8 +12,6 @@
 #ifndef NETWORK_CORE_TCP_CONTENT_TYPE_H
 #define NETWORK_CORE_TCP_CONTENT_TYPE_H
 
-#include <optional>
-
 /** The values in the enum are important; they are used as database 'keys' */
 enum ContentType {
 	CONTENT_TYPE_BEGIN         = 1, ///< Helper to mark the begin of the types

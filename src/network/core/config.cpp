@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 
-#include <cstdlib>
 #include "../../string_func.h"
 
 #include "../../safeguards.h"

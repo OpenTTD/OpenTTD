@@ -15,8 +15,6 @@
 #include "core/smallvec_type.hpp"
 #include "table/control_codes.h"
 #include <utility>
-#include <vector>
-#include <string>
 
 /** This character, the thorn ('þ'), indicates a unicode string to NFO. */
 static const WChar NFO_UTF8_IDENTIFIER = 0x00DE;

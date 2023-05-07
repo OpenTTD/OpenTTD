@@ -17,7 +17,6 @@
 #include "timer/timer_game_calendar.h"
 #include "settings_type.h"
 #include "group.h"
-#include <string>
 #include <array>
 
 /** Statistics about the economy. */

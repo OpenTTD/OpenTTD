@@ -11,7 +11,6 @@
 #define TAR_TYPE_H
 
 #include <map>
-#include <string>
 #include <array>
 
 #include "fileio_type.h"

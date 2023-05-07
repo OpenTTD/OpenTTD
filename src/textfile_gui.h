@@ -14,7 +14,6 @@
 #include "strings_func.h"
 #include "textfile_type.h"
 #include "window_gui.h"
-#include <optional>
 
 std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, const std::string &filename);
 

@@ -38,7 +38,6 @@
 #include "table/strings.h"
 
 #include <set>
-#include <vector>
 
 #include "safeguards.h"
 

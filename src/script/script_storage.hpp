@@ -20,7 +20,6 @@
 #include "script_log_types.hpp"
 
 #include "table/strings.h"
-#include <vector>
 
 /**
  * The callback function for Mode-classes.

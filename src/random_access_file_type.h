@@ -11,7 +11,6 @@
 #define RANDOM_ACCESS_FILE_TYPE_H
 
 #include "fileio_type.h"
-#include <string>
 
 /**
  * A file from which bytes, words and double words are read in (potentially) a random order.

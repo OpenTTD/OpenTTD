@@ -11,7 +11,6 @@
 #define INDUSTRYTYPE_H
 
 #include <array>
-#include <vector>
 #include "map_type.h"
 #include "slope_type.h"
 #include "industry_type.h"

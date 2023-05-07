@@ -4,7 +4,6 @@
 #define MCF_H
 
 #include "linkgraphjob_base.h"
-#include <vector>
 
 typedef std::vector<Path *> PathVector;
 

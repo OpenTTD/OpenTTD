@@ -12,7 +12,6 @@
 
 #include "timer_manager.h"
 
-#include <functional>
 
 /**
  * The base where every other type of timer is derived from.

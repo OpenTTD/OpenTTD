@@ -16,7 +16,6 @@
 #include "../window_gui.h"
 #include "linkgraph_base.h"
 #include <map>
-#include <vector>
 
 /**
  * Monthly statistics for a link between two stations.

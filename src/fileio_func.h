@@ -12,8 +12,6 @@
 
 #include "core/enum_type.hpp"
 #include "fileio_type.h"
-#include <string>
-#include <vector>
 
 void FioFCloseFile(FILE *f);
 FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);

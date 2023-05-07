@@ -44,8 +44,6 @@
 #include "../error.h"
 #include <atomic>
 #include <deque>
-#include <vector>
-#include <string>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #endif
