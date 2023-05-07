@@ -11,8 +11,6 @@
 #define KDTREE_HPP
 
 #include "../stdafx.h"
-#include <vector>
-#include <limits>
 
 /**
  * K-dimensional tree, specialised for 2-dimensional space.

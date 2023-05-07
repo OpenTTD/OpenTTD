@@ -12,7 +12,6 @@
 
 #include "math_func.hpp"
 
-#include <limits>
 
 #ifdef __has_builtin
 #	if __has_builtin(__builtin_add_overflow) && __has_builtin(__builtin_sub_overflow) && __has_builtin(__builtin_mul_overflow)

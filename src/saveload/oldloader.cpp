@@ -19,7 +19,6 @@
 #include "saveload_internal.h"
 #include "oldloader.h"
 
-#include <exception>
 
 #include "../safeguards.h"
 

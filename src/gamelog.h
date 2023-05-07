@@ -10,7 +10,6 @@
 #ifndef GAMELOG_H
 #define GAMELOG_H
 
-#include <functional>
 #include "newgrf_config.h"
 
 /** The actions we log. */

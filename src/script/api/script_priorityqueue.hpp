@@ -13,7 +13,6 @@
 
 #include "script_object.hpp"
 #include <utility>
-#include <vector>
 
 /**
  * Class that creates a queue which keeps its items ordered by an item priority.

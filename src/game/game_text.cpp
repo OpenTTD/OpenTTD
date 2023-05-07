@@ -22,7 +22,6 @@
 #include "table/strgen_tables.h"
 
 #include <stdarg.h>
-#include <memory>
 
 #include "../safeguards.h"
 

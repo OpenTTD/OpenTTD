@@ -12,7 +12,6 @@
 
 #include "strings_type.h"
 
-#include <vector>
 
 /**
  * Struct containing information relating to NewGRF classes for stations and airports.

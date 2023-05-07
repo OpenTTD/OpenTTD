@@ -12,7 +12,6 @@
 
 #include "order_type.h"
 #include "timer/timer_game_calendar.h"
-#include <string>
 
 /** Various front vehicle properties that are preserved when autoreplacing, using order-backup or switching front engines within a consist. */
 struct BaseConsist {

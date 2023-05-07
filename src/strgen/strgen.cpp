@@ -17,7 +17,6 @@
 
 #include "strgen.h"
 
-#include <exception>
 
 #if !defined(_WIN32) || defined(__CYGWIN__)
 #include <unistd.h>

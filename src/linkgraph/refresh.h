@@ -12,7 +12,6 @@
 
 #include "../cargo_type.h"
 #include "../vehicle_base.h"
-#include <vector>
 #include <map>
 #include <set>
 

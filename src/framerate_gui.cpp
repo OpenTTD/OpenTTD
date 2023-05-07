@@ -29,7 +29,6 @@
 
 #include <atomic>
 #include <mutex>
-#include <vector>
 
 #include "safeguards.h"
 

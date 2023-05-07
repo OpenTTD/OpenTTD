@@ -15,7 +15,6 @@
 #include "saveload_internal.h"
 #include "../engine_base.h"
 #include "../string_func.h"
-#include <vector>
 
 #include "../safeguards.h"
 

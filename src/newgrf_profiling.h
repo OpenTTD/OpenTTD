@@ -17,9 +17,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 
-#include <vector>
-#include <string>
-#include <memory>
 
 /**
  * Callback profiler for NewGRF development

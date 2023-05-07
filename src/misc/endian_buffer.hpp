@@ -10,7 +10,6 @@
 #ifndef ENDIAN_BUFFER_HPP
 #define ENDIAN_BUFFER_HPP
 
-#include <iterator>
 #include <string_view>
 #include "../core/span_type.hpp"
 #include "../core/bitmath_func.hpp"

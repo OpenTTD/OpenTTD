@@ -20,8 +20,6 @@
 #include "strings_func.h"
 #include "tar_type.h"
 #include <sys/stat.h>
-#include <functional>
-#include <optional>
 #include <charconv>
 
 #ifndef _WIN32

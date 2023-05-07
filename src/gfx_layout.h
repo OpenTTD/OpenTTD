@@ -15,11 +15,8 @@
 #include "core/smallmap_type.hpp"
 
 #include <map>
-#include <string>
 #include <stack>
 #include <string_view>
-#include <type_traits>
-#include <vector>
 
 /**
  * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts

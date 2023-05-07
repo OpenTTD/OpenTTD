@@ -13,7 +13,6 @@
 #ifndef NEWGRF_TOWNNAME_H
 #define NEWGRF_TOWNNAME_H
 
-#include <vector>
 #include "strings_type.h"
 
 struct NamePart {

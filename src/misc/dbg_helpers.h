@@ -12,7 +12,6 @@
 
 #include <map>
 #include <stack>
-#include <string>
 
 #include "../direction_type.h"
 #include "../signal_type.h"

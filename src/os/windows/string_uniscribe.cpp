@@ -16,7 +16,6 @@
 #include "../../table/control_codes.h"
 #include "../../zoom_func.h"
 #include "win32.h"
-#include <vector>
 
 #include <windows.h>
 #include <usp10.h>

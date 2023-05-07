@@ -24,7 +24,6 @@
 #include "settings_type.h"
 #include "timetable_cmd.h"
 #include "timetable.h"
-#include <cstdint>
 
 #include "widgets/timetable_widget.h"
 

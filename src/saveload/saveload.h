@@ -14,9 +14,6 @@
 #include "../fileio_type.h"
 #include "../fios.h"
 #include "../core/span_type.hpp"
-#include <optional>
-#include <string>
-#include <vector>
 
 /** SaveLoad versions
  * Previous savegame versions, the trunk revision where they were

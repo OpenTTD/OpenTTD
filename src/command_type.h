@@ -13,7 +13,6 @@
 #include "economy_type.h"
 #include "strings_type.h"
 #include "tile_type.h"
-#include <vector>
 
 struct GRFFile;
 

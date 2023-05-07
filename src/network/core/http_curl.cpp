@@ -21,7 +21,6 @@
 #include <atomic>
 #include <condition_variable>
 #include <curl/curl.h>
-#include <memory>
 #include <mutex>
 #include <queue>
 

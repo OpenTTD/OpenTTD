@@ -16,7 +16,6 @@
 #include "vehicle_type.h"
 #include "engine_type.h"
 #include "livery.h"
-#include <string>
 
 typedef Pool<Group, GroupID, 16, 64000> GroupPool;
 extern GroupPool _group_pool; ///< Pool of groups.

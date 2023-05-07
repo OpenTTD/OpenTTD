@@ -21,8 +21,6 @@
 #include <condition_variable>
 #include <mutex>
 #include <thread>
-#include <vector>
-#include <functional>
 
 extern std::string _ini_videodriver;
 extern std::vector<Dimension> _resolutions;

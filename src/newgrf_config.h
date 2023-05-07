@@ -17,7 +17,6 @@
 #include "fileio_type.h"
 #include "textfile_type.h"
 #include "newgrf_text.h"
-#include <optional>
 
 /** GRF config bit flags */
 enum GCF_Flags {

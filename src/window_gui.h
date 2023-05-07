@@ -11,8 +11,6 @@
 #define WINDOW_GUI_H
 
 #include <list>
-#include <algorithm>
-#include <functional>
 
 #include "vehiclelist.h"
 #include "vehicle_type.h"

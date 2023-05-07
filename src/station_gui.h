@@ -14,7 +14,6 @@
 #include "tilearea_type.h"
 #include "window_type.h"
 #include "station_type.h"
-#include <functional>
 
 
 /** Types of cargo to display for station coverage. */

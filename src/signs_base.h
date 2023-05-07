@@ -14,7 +14,6 @@
 #include "viewport_type.h"
 #include "core/pool_type.hpp"
 #include "company_type.h"
-#include <string>
 
 typedef Pool<Sign, SignID, 16, 64000> SignPool;
 extern SignPool _sign_pool;

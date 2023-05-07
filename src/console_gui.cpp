@@ -23,7 +23,6 @@
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 #include <deque>
-#include <string>
 
 #include "widgets/console_widget.h"
 

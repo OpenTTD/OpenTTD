@@ -15,7 +15,6 @@
 #include "../../fontcache.h"
 #include "../../zoom_func.h"
 #include "macos.h"
-#include <cmath>
 
 #include <CoreFoundation/CoreFoundation.h>
 
