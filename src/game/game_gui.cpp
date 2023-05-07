@@ -127,7 +127,7 @@ struct GSConfigWindow : public Window {
 			}
 		}
 
-		this->vscroll->SetCount((int)this->visible_settings.size());
+		this->vscroll->SetCount(this->visible_settings.size());
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override

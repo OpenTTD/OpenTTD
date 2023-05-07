@@ -929,7 +929,7 @@ private:
 			if (station_class == _railstation.station_class) break;
 			pos++;
 		}
-		this->vscroll->SetCount((int)this->station_classes.size());
+		this->vscroll->SetCount(this->station_classes.size());
 		this->vscroll->ScrollTowards(pos);
 	}
 
@@ -1075,7 +1075,7 @@ public:
 			this->station_classes.RebuildDone();
 			this->station_classes.Sort();
 
-			this->vscroll->SetCount((uint)this->station_classes.size());
+			this->vscroll->SetCount(this->station_classes.size());
 		}
 	}
 

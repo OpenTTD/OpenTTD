@@ -892,7 +892,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_CPR_MATRIX_SCROLLBAR);
-		this->vscroll->SetCount(static_cast<int>(_sorted_standard_cargo_specs.size()));
+		this->vscroll->SetCount(_sorted_standard_cargo_specs.size());
 
 		/* Initialise the dataset */
 		this->UpdatePaymentRates();

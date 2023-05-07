@@ -423,7 +423,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		this->content.RebuildDone();
 		this->SortContentList();
 
-		this->vscroll->SetCount((int)this->content.size()); // Update the scrollbar
+		this->vscroll->SetCount(this->content.size()); // Update the scrollbar
 		this->ScrollToSelected();
 	}
 

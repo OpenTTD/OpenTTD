@@ -1135,7 +1135,7 @@ private:
 			if (rs_class == _roadstop_gui_settings.roadstop_class) break;
 			pos++;
 		}
-		this->vscrollList->SetCount((int)this->roadstop_classes.size());
+		this->vscrollList->SetCount(this->roadstop_classes.size());
 		this->vscrollList->ScrollTowards(pos);
 	}
 
@@ -1281,7 +1281,7 @@ public:
 			this->roadstop_classes.RebuildDone();
 			this->roadstop_classes.Sort();
 
-			this->vscrollList->SetCount((uint)this->roadstop_classes.size());
+			this->vscrollList->SetCount(this->roadstop_classes.size());
 		}
 	}
 

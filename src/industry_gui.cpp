@@ -325,7 +325,7 @@ class BuildIndustryWindow : public Window {
 
 		this->UpdateAvailability();
 
-		this->vscroll->SetCount((int)this->list.size());
+		this->vscroll->SetCount(this->list.size());
 	}
 
 	/** Update status of the fund and display-chain widgets. */
@@ -1419,7 +1419,7 @@ protected:
 		IndustryDirectoryWindow::produced_cargo_filter = this->cargo_filter[this->produced_cargo_filter_criteria];
 		this->industries.Sort();
 
-		this->vscroll->SetCount((uint)this->industries.size()); // Update scrollbar as well.
+		this->vscroll->SetCount(this->industries.size()); // Update scrollbar as well.
 
 		this->SetDirty();
 	}

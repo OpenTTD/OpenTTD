@@ -77,7 +77,7 @@ struct ScriptListWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_SCRL_SCROLLBAR);
 		this->FinishInitNested(); // Initializes 'this->line_height' as side effect.
 
-		this->vscroll->SetCount((int)this->info_list->size() + 1);
+		this->vscroll->SetCount(this->info_list->size() + 1);
 
 		/* Try if we can find the currently selected AI */
 		this->selected = -1;
@@ -231,7 +231,7 @@ struct ScriptListWindow : public Window {
 
 		if (!gui_scope) return;
 
-		this->vscroll->SetCount((int)this->info_list->size() + 1);
+		this->vscroll->SetCount(this->info_list->size() + 1);
 
 		/* selected goes from -1 .. length of ai list - 1. */
 		this->selected = std::min(this->selected, this->vscroll->GetCount() - 2);
@@ -332,7 +332,7 @@ struct ScriptSettingsWindow : public Window {
 			}
 		}
 
-		this->vscroll->SetCount((int)this->visible_settings.size());
+		this->vscroll->SetCount(this->visible_settings.size());
 	}
 
 	void SetStringParameters(int widget) const override
@@ -1070,7 +1070,7 @@ struct ScriptDebugWindow : public Window {
 
 		this->SelectValidDebugCompany();
 
-		this->vscroll->SetCount(script_debug_company != INVALID_COMPANY ? (int)this->GetLogData().size() : 0);
+		this->vscroll->SetCount(script_debug_company != INVALID_COMPANY ? this->GetLogData().size() : 0);
 
 		/* Update company buttons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {

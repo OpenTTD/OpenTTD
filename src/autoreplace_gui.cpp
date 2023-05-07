@@ -217,7 +217,7 @@ class ReplaceVehicleWindow : public Window {
 		if (this->engines[0].NeedRebuild()) {
 			/* We need to rebuild the left engines list */
 			this->GenerateReplaceVehList(true);
-			this->vscroll[0]->SetCount((uint)this->engines[0].size());
+			this->vscroll[0]->SetCount(this->engines[0].size());
 			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && this->engines[0].size() != 0) {
 				this->sel_engine[0] = this->engines[0][0].engine_id;
 			}
@@ -237,7 +237,7 @@ class ReplaceVehicleWindow : public Window {
 				}
 				/* Regenerate the list on the right. Note: This resets sel_engine[1] to INVALID_ENGINE, if it is no longer available. */
 				this->GenerateReplaceVehList(false);
-				this->vscroll[1]->SetCount((uint)this->engines[1].size());
+				this->vscroll[1]->SetCount(this->engines[1].size());
 				if (this->reset_sel_engine && this->sel_engine[1] != INVALID_ENGINE) {
 					int position = 0;
 					for (const auto &item : this->engines[1]) {

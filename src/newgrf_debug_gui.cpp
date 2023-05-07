@@ -1055,7 +1055,7 @@ struct SpriteAlignerWindow : Window {
 		if (data == 1) {
 			/* Sprite picker finished */
 			this->RaiseWidget(WID_SA_PICKER);
-			this->vscroll->SetCount((uint)_newgrf_debug_sprite_picker.sprites.size());
+			this->vscroll->SetCount(_newgrf_debug_sprite_picker.sprites.size());
 		}
 	}
 
