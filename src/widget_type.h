@@ -721,9 +721,8 @@ public:
 		assert(num <= MAX_UVALUE(uint16));
 
 		this->count = ClampTo<uint16_t>(num);
-		num -= this->cap;
-		if (num < 0) num = 0;
-		if (num < this->pos) this->pos = num;
+		/* Ensure position is within bounds */
+		this->SetPosition(this->pos);
 	}
 
 	/**
@@ -736,7 +735,8 @@ public:
 		assert(capacity <= MAX_UVALUE(uint16));
 
 		this->cap = ClampTo<uint16_t>(capacity);
-		if (this->cap + this->pos > this->count) this->pos = std::max(0, this->count - this->cap);
+		/* Ensure position is within bounds */
+		this->SetPosition(this->pos);
 	}
 
 	void SetCapacityFromWidget(Window *w, int widget, int padding = 0);
