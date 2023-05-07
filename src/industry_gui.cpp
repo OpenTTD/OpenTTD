@@ -282,25 +282,23 @@ static WindowDesc _build_industry_desc(
 
 /** Build (fund or prospect) a new industry, */
 class BuildIndustryWindow : public Window {
-	int selected_index;                         ///< index of the element in the matrix
 	IndustryType selected_type;                 ///< industry corresponding to the above index
-	uint16 count;                               ///< How many industries are loaded
-	IndustryType index[NUM_INDUSTRYTYPES + 1];  ///< Type of industry, in the order it was loaded
-	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_PROBABILITY (if ever)
+	std::vector<IndustryType> list;             ///< List of industries.
+	bool enabled;                               ///< Availability state of the selected industry.
 	Scrollbar *vscroll;
 	Dimension legend;                           ///< Dimension of the legend 'blob'.
 
 	/** The largest allowed minimum-width of the window, given in line heights */
 	static const int MAX_MINWIDTH_LINEHEIGHTS = 20;
 
+	void UpdateAvailability()
+	{
+		this->enabled = this->selected_type != INVALID_INDUSTRYTYPE && (_game_mode == GM_EDITOR || GetIndustryProbabilityCallback(this->selected_type, IACT_USERCREATION, 1) > 0);
+	}
+
 	void SetupArrays()
 	{
-		this->count = 0;
-
-		for (uint i = 0; i < lengthof(this->index); i++) {
-			this->index[i]   = INVALID_INDUSTRYTYPE;
-			this->enabled[i] = false;
-		}
+		this->list.clear();
 
 		/* Fill the arrays with industries.
 		 * The tests performed after the enabled allow to load the industries
@@ -314,32 +312,27 @@ class BuildIndustryWindow : public Window {
 				 * and raw ones are loaded only when setting allows it */
 				if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _settings_game.construction.raw_industry_construction == 0) {
 					/* Unselect if the industry is no longer in the list */
-					if (this->selected_type == ind) this->selected_index = -1;
+					if (this->selected_type == ind) this->selected_type = INVALID_INDUSTRYTYPE;
 					continue;
 				}
-				this->index[this->count] = ind;
-				this->enabled[this->count] = (_game_mode == GM_EDITOR) || GetIndustryProbabilityCallback(ind, IACT_USERCREATION, 1) > 0;
-				/* Keep the selection to the correct line */
-				if (this->selected_type == ind) this->selected_index = this->count;
-				this->count++;
+
+				this->list.push_back(ind);
 			}
 		}
 
-		/* first industry type is selected if the current selection is invalid.
-		 * I'll be damned if there are none available ;) */
-		if (this->selected_index == -1) {
-			this->selected_index = 0;
-			this->selected_type = this->index[0];
-		}
+		/* First industry type is selected if the current selection is invalid. */
+		if (this->selected_type == INVALID_INDUSTRYTYPE && !this->list.empty()) this->selected_type = this->list[0];
 
-		this->vscroll->SetCount(this->count);
+		this->UpdateAvailability();
+
+		this->vscroll->SetCount((int)this->list.size());
 	}
 
 	/** Update status of the fund and display-chain widgets. */
 	void SetButtons()
 	{
-		this->SetWidgetDisabledState(WID_DPI_FUND_WIDGET, this->selected_type != INVALID_INDUSTRYTYPE && !this->enabled[this->selected_index]);
-		this->SetWidgetDisabledState(WID_DPI_DISPLAY_WIDGET, this->selected_type == INVALID_INDUSTRYTYPE && this->enabled[this->selected_index]);
+		this->SetWidgetDisabledState(WID_DPI_FUND_WIDGET, this->selected_type != INVALID_INDUSTRYTYPE && !this->enabled);
+		this->SetWidgetDisabledState(WID_DPI_DISPLAY_WIDGET, this->selected_type == INVALID_INDUSTRYTYPE && this->enabled);
 	}
 
 	/**
@@ -392,7 +385,6 @@ class BuildIndustryWindow : public Window {
 public:
 	BuildIndustryWindow() : Window(&_build_industry_desc)
 	{
-		this->selected_index = -1;
 		this->selected_type = INVALID_INDUSTRYTYPE;
 
 		this->CreateNestedTree();
@@ -423,9 +415,8 @@ public:
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
 				Dimension d = GetStringBoundingBox(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES);
-				for (uint16 i = 0; i < this->count; i++) {
-					if (this->index[i] == INVALID_INDUSTRYTYPE) continue;
-					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(this->index[i])->name));
+				for (const auto &indtype : this->list) {
+					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(indtype)->name));
 				}
 				resize->height = std::max<uint>(this->legend.height, FONT_HEIGHT_NORMAL) + padding.height;
 				d.width += this->legend.width + WidgetDimensions::scaled.hsep_wide + padding.width;
@@ -442,14 +433,12 @@ public:
 				uint extra_lines_newgrf = 0;
 				uint max_minwidth = FONT_HEIGHT_NORMAL * MAX_MINWIDTH_LINEHEIGHTS;
 				Dimension d = {0, 0};
-				for (uint16 i = 0; i < this->count; i++) {
-					if (this->index[i] == INVALID_INDUSTRYTYPE) continue;
-
-					const IndustrySpec *indsp = GetIndustrySpec(this->index[i]);
+				for (const auto &indtype : this->list) {
+					const IndustrySpec *indsp = GetIndustrySpec(indtype);
 					CargoSuffix cargo_suffix[lengthof(indsp->accepts_cargo)];
 
 					/* Measure the accepted cargoes, if any. */
-					GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, nullptr, this->index[i], indsp, indsp->accepts_cargo, cargo_suffix);
+					GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_FUND, nullptr, indtype, indsp, indsp->accepts_cargo, cargo_suffix);
 					std::string cargostring = this->MakeCargoListString(indsp->accepts_cargo, cargo_suffix, lengthof(indsp->accepts_cargo), STR_INDUSTRY_VIEW_REQUIRES_N_CARGO);
 					Dimension strdim = GetStringBoundingBox(cargostring.c_str());
 					if (strdim.width > max_minwidth) {
@@ -459,7 +448,7 @@ public:
 					d = maxdim(d, strdim);
 
 					/* Measure the produced cargoes, if any. */
-					GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, nullptr, this->index[i], indsp, indsp->produced_cargo, cargo_suffix);
+					GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_FUND, nullptr, indtype, indsp, indsp->produced_cargo, cargo_suffix);
 					cargostring = this->MakeCargoListString(indsp->produced_cargo, cargo_suffix, lengthof(indsp->produced_cargo), STR_INDUSTRY_VIEW_PRODUCES_N_CARGO);
 					strdim = GetStringBoundingBox(cargostring.c_str());
 					if (strdim.width > max_minwidth) {
@@ -503,8 +492,8 @@ public:
 					/* We've chosen many random industries but no industries have been specified */
 					SetDParam(0, STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
 				} else {
-					if (count > 0) {
-						const IndustrySpec *indsp = GetIndustrySpec(this->index[this->selected_index]);
+					if (this->selected_type != INVALID_INDUSTRYTYPE) {
+						const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
 						SetDParam(0, (_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
 					} else {
 						SetDParam(0, STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
@@ -527,19 +516,15 @@ public:
 				icon.top    = r.top + (this->resize.step_height - this->legend.height + 1) / 2;
 				icon.bottom = icon.top + this->legend.height - 1;
 
-				for (uint16 i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->count; i++) {
-					bool selected = this->selected_index == i + this->vscroll->GetPosition();
+				for (uint16 i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
+					bool selected = this->selected_type == this->list[i];
 
-					if (this->index[i + this->vscroll->GetPosition()] == INVALID_INDUSTRYTYPE) {
-						DrawString(text, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
-					} else {
-						const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll->GetPosition()]);
+					const IndustrySpec *indsp = GetIndustrySpec(this->list[i]);
 
-						/* Draw the name of the industry in white is selected, otherwise, in orange */
-						DrawString(text, indsp->name, selected ? TC_WHITE : TC_ORANGE);
-						GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
-						GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
-					}
+					/* Draw the name of the industry in white is selected, otherwise, in orange */
+					DrawString(text, indsp->name, selected ? TC_WHITE : TC_ORANGE);
+					GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
+					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
 
 					text = text.Translate(0, this->resize.step_height);
 					icon = icon.Translate(0, this->resize.step_height);
@@ -646,24 +631,23 @@ public:
 
 			case WID_DPI_MATRIX_WIDGET: {
 				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_DPI_MATRIX_WIDGET);
-				if (y < this->count) { // Is it within the boundaries of available data?
-					this->selected_index = y;
-					this->selected_type = this->index[y];
-					const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? nullptr : GetIndustrySpec(this->selected_type);
+				if (y != INT_MAX) { // Is it within the boundaries of available data?
+					this->selected_type = this->list[y];
+					this->UpdateAvailability();
+
+					const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
 
 					this->SetDirty();
 
 					if (_thd.GetCallbackWnd() == this &&
-							((_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indsp != nullptr && indsp->IsRawIndustry()) ||
-							this->selected_type == INVALID_INDUSTRYTYPE ||
-							!this->enabled[this->selected_index])) {
+							((_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indsp != nullptr && indsp->IsRawIndustry()) || !this->enabled)) {
 						/* Reset the button state if going to prospecting or "build many industries" */
 						this->RaiseButtons();
 						ResetObjectToPlace();
 					}
 
 					this->SetButtons();
-					if (this->enabled[this->selected_index] && click_count > 1) this->OnClick(pt, WID_DPI_FUND_WIDGET, 1);
+					if (this->enabled && click_count > 1) this->OnClick(pt, WID_DPI_FUND_WIDGET, 1);
 				}
 				break;
 			}
@@ -727,18 +711,13 @@ public:
 
 	IntervalTimer<TimerWindow> update_interval = {std::chrono::seconds(3), [this](auto) {
 		if (_game_mode == GM_EDITOR) return;
-		if (this->count == 0) return;
-		const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
+		if (this->selected_type == INVALID_INDUSTRYTYPE) return;
 
-		if (indsp->enabled) {
-			bool call_back_result = GetIndustryProbabilityCallback(this->selected_type, IACT_USERCREATION, 1) > 0;
-
-			/* Only if result does match the previous state would it require a redraw. */
-			if (call_back_result != this->enabled[this->selected_index]) {
-				this->enabled[this->selected_index] = call_back_result;
-				this->SetButtons();
-				this->SetDirty();
-			}
+		bool enabled = this->enabled;
+		this->UpdateAvailability();
+		if (enabled != this->enabled) {
+			this->SetButtons();
+			this->SetDirty();
 		}
 	}};
 
@@ -761,9 +740,6 @@ public:
 	{
 		if (!gui_scope) return;
 		this->SetupArrays();
-
-		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? nullptr : GetIndustrySpec(this->selected_type);
-		if (indsp == nullptr) this->enabled[this->selected_index] = _settings_game.difficulty.industry_density != ID_FUND_ONLY;
 		this->SetButtons();
 		this->SetDirty();
 	}
