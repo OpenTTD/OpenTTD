@@ -52,31 +52,21 @@ static const TimerGameCalendar::Year ORIGINAL_END_YEAR  = 2051;
 static const TimerGameCalendar::Year ORIGINAL_MAX_YEAR  = 2090;
 
 /**
- * Calculate the number of leap years till a given year.
- *
- * Each passed leap year adds one day to the 'day count'.
- *
- * A special case for the year 0 as no year has been passed,
- * but '(year - 1) / 4' does not yield '-1' to counteract the
- * '+1' at the end of the formula as divisions round to zero.
- *
- * @param year the year to get the leap years till.
- * @return the number of leap years.
- */
-#define LEAP_YEARS_TILL(year) ((year) == 0 ? 0 : ((year) - 1) / 4 - ((year) - 1) / 100 + ((year) - 1) / 400 + 1)
-
-/**
  * Calculate the date of the first day of a given year.
  * @param year the year to get the first day of.
  * @return the date.
  */
-#define DAYS_TILL(year) (DAYS_IN_YEAR * (year) + LEAP_YEARS_TILL(year))
+static inline TimerGameCalendar::Date DateAtStartOfYear(TimerGameCalendar::Year year)
+{
+	uint number_of_leap_years = (year == 0) ? 0 : ((year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400 + 1);
+
+	return (DAYS_IN_YEAR * year) + number_of_leap_years;
+}
 
 /**
- * The offset in days from the 'TimerGameCalendar::date == 0' till
- * 'TimerGameCalendar::ConvertYMDToDate(ORIGINAL_BASE_YEAR, 0, 1)'
+ * The date of the first day of the original base year.
  */
-#define DAYS_TILL_ORIGINAL_BASE_YEAR DAYS_TILL(ORIGINAL_BASE_YEAR)
+static const TimerGameCalendar::Date DAYS_TILL_ORIGINAL_BASE_YEAR = DateAtStartOfYear(ORIGINAL_BASE_YEAR);
 
 /** The absolute minimum & maximum years in OTTD */
 static const TimerGameCalendar::Year MIN_YEAR = 0;
@@ -92,8 +82,8 @@ static const TimerGameCalendar::Year DEF_END_YEAR = ORIGINAL_END_YEAR - 1;
  */
 static const TimerGameCalendar::Year MAX_YEAR  = 5000000;
 
-/** The number of days till the last day */
-#define MAX_DAY (DAYS_TILL(MAX_YEAR + 1) - 1)
+/** The date of the last day of the max year. */
+static const TimerGameCalendar::Date MAX_DATE = DateAtStartOfYear(MAX_YEAR + 1) - 1;
 
 static const TimerGameCalendar::Year INVALID_YEAR = -1; ///< Representation of an invalid year
 static const TimerGameCalendar::Date INVALID_DATE = -1; ///< Representation of an invalid date

@@ -131,7 +131,7 @@ static const uint16 _accum_days_for_month[] = {
 	/* Account for the missing of the 29th of February in non-leap years */
 	if (!TimerGameCalendar::IsLeapYear(year) && days >= ACCUM_MAR) days--;
 
-	return DAYS_TILL(year) + days;
+	return DateAtStartOfYear(year) + days;
 }
 
 /**

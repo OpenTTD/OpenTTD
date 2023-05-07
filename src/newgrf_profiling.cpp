@@ -156,7 +156,7 @@ uint32 NewGRFProfiler::FinishAll()
 		IConsolePrint(CC_DEBUG, "Total NewGRF callback processing: {} microseconds over {} ticks.", total_microseconds, max_ticks);
 	}
 
-	_newgrf_profile_end_date = MAX_DAY;
+	_newgrf_profile_end_date = MAX_DATE;
 
 	return total_microseconds;
 }

@@ -1370,7 +1370,7 @@ bool Vehicle::HandleBreakdown()
  */
 void AgeVehicle(Vehicle *v)
 {
-	if (v->age < MAX_DAY) {
+	if (v->age < MAX_DATE) {
 		v->age++;
 		if (v->IsPrimaryVehicle() && v->age == VEHICLE_PROFIT_MIN_AGE + 1) GroupStatistics::VehicleReachedMinAge(v);
 	}
