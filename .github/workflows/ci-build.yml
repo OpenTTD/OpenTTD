@@ -373,6 +373,7 @@ jobs:
           mingw-w64-${{ matrix.arch }}-gcc
           mingw-w64-${{ matrix.arch }}-lzo2
           mingw-w64-${{ matrix.arch }}-libpng
+          mingw-w64-${{ matrix.arch }}-lld
 
     - name: Install OpenGFX
       shell: bash
@@ -400,7 +401,7 @@ jobs:
         cd build
 
         echo "::group::CMake"
-        cmake .. -G"MSYS Makefiles"
+        cmake .. -G"MSYS Makefiles" -DCMAKE_CXX_FLAGS="-fuse-ld=lld"
         echo "::endgroup::"
 
         echo "::group::Build"
