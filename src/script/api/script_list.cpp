@@ -564,9 +564,9 @@ void ScriptList::AddList(ScriptList *list)
 		this->modifications++;
 	} else {
 		ScriptListMap *list_items = &list->items;
-		for (ScriptListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
-			this->AddItem((*iter).first);
-			this->SetValue((*iter).first, (*iter).second);
+		for (auto &it : *list_items) {
+			this->AddItem(it.first);
+			this->SetValue(it.first, it.second);
 		}
 	}
 }

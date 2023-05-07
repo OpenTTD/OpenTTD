@@ -550,9 +550,8 @@ class NIHTown : public NIHelper {
 	{
 		Town *t = Town::Get(index);
 
-		std::list<PersistentStorage *>::iterator iter;
-		for (iter = t->psa_list.begin(); iter != t->psa_list.end(); iter++) {
-			if ((*iter)->grfid == grfid) return (int32 *)(&(*iter)->storage[0]);
+		for (const auto &it : t->psa_list) {
+			if (it->grfid == grfid) return &it->storage[0];
 		}
 
 		return nullptr;

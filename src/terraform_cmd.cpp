@@ -222,9 +222,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 	 * Pass == 0: Collect tileareas which are caused to be auto-cleared.
 	 * Pass == 1: Collect the actual cost. */
 	for (int pass = 0; pass < 2; pass++) {
-		for (TileIndexSet::const_iterator it = ts.dirty_tiles.begin(); it != ts.dirty_tiles.end(); it++) {
-			TileIndex t = *it;
-
+		for (const auto &t : ts.dirty_tiles) {
 			assert(t < Map::Size());
 			/* MP_VOID tiles can be terraformed but as tunnels and bridges
 			 * cannot go under / over these tiles they don't need checking. */
@@ -301,18 +299,17 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 
 	if (flags & DC_EXEC) {
 		/* Mark affected areas dirty. */
-		for (TileIndexSet::const_iterator it = ts.dirty_tiles.begin(); it != ts.dirty_tiles.end(); it++) {
-			MarkTileDirtyByTile(*it);
-			TileIndexToHeightMap::const_iterator new_height = ts.tile_to_new_height.find(*it);
+		for (const auto &t : ts.dirty_tiles) {
+			MarkTileDirtyByTile(t);
+			TileIndexToHeightMap::const_iterator new_height = ts.tile_to_new_height.find(t);
 			if (new_height == ts.tile_to_new_height.end()) continue;
-			MarkTileDirtyByTile(*it, 0, new_height->second);
+			MarkTileDirtyByTile(t, 0, new_height->second);
 		}
 
 		/* change the height */
-		for (TileIndexToHeightMap::const_iterator it = ts.tile_to_new_height.begin();
-				it != ts.tile_to_new_height.end(); it++) {
-			TileIndex t = it->first;
-			int height = it->second;
+		for (const auto &it : ts.tile_to_new_height) {
+			TileIndex t = it.first;
+			int height = it.second;
 
 			SetTileHeight(t, (uint)height);
 		}

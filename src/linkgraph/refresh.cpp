@@ -144,10 +144,10 @@ bool LinkRefresher::HandleRefit(CargoID refit_cargo)
  */
 void LinkRefresher::ResetRefit()
 {
-	for (RefitList::iterator it(this->refit_capacities.begin()); it != this->refit_capacities.end(); ++it) {
-		if (it->remaining == it->capacity) continue;
-		this->capacities[it->cargo] += it->capacity - it->remaining;
-		it->remaining = it->capacity;
+	for (auto &it : this->refit_capacities) {
+		if (it.remaining == it.capacity) continue;
+		this->capacities[it.cargo] += it.capacity - it.remaining;
+		it.remaining = it.capacity;
 	}
 }
 

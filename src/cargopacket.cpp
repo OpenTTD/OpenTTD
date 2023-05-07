@@ -380,8 +380,7 @@ void VehicleCargoList::AddToMeta(const CargoPacket *cp, MoveToAction action)
  */
 void VehicleCargoList::AgeCargo()
 {
-	for (ConstIterator it(this->packets.begin()); it != this->packets.end(); it++) {
-		CargoPacket *cp = *it;
+	for (const auto &cp : this->packets) {
 		/* If we're at the maximum, then we can't increase no more. */
 		if (cp->days_in_transit == UINT16_MAX) continue;
 
