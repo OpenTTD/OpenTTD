@@ -252,7 +252,7 @@ protected:
 		this->stations.shrink_to_fit();
 		this->stations.RebuildDone();
 
-		this->vscroll->SetCount((uint)this->stations.size()); // Update the scrollbar
+		this->vscroll->SetCount(this->stations.size()); // Update the scrollbar
 	}
 
 	/** Sort stations by their name */
@@ -2345,7 +2345,7 @@ struct SelectStationWindow : Window {
 	{
 		if (!gui_scope) return;
 		FindStationsNearby<T>(this->area, true);
-		this->vscroll->SetCount((uint)_stations_nearby_list.size() + 1);
+		this->vscroll->SetCount(_stations_nearby_list.size() + 1);
 		this->SetDirty();
 	}
 

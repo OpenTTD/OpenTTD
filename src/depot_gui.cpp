@@ -735,7 +735,7 @@ struct DepotWindow : Window {
 				max_width = std::max(max_width, width);
 			}
 			/* Always have 1 empty row, so people can change the setting of the train */
-			this->vscroll->SetCount((uint)this->vehicle_list.size() + (uint)this->wagon_list.size() + 1);
+			this->vscroll->SetCount(this->vehicle_list.size() + this->wagon_list.size() + 1);
 			/* Always make it longer than the longest train, so you can attach vehicles at the end, and also see the next vertical tile separator line */
 			this->hscroll->SetCount(max_width + ScaleSpriteTrad(2 * VEHICLEINFO_FULL_VEHICLE_WIDTH + 1));
 		} else {

@@ -821,7 +821,7 @@ public:
 
 				_fios_path_changed = true;
 				this->fios_items.BuildFileList(this->abstract_filetype, this->fop);
-				this->vscroll->SetCount((uint)this->fios_items.size());
+				this->vscroll->SetCount(this->fios_items.size());
 				this->selected = nullptr;
 				_load_check_data.Clear();
 

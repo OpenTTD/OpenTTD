@@ -1490,7 +1490,7 @@ private:
 			}
 		}
 
-		this->vscroll2->SetCount((uint)this->avails.size()); // Update the scrollbar
+		this->vscroll2->SetCount(this->avails.size()); // Update the scrollbar
 	}
 
 	/**
@@ -2068,7 +2068,7 @@ struct SavePresetWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_SVP_SCROLLBAR);
 		this->FinishInitNested(0);
 
-		this->vscroll->SetCount((uint)this->presets.size());
+		this->vscroll->SetCount(this->presets.size());
 		this->SetFocusedWidget(WID_SVP_EDITBOX);
 		if (initial_text != nullptr) this->presetname_editbox.text.Assign(initial_text);
 	}

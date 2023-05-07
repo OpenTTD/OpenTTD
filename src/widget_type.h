@@ -704,10 +704,11 @@ public:
 	 * Set the distance to scroll when using the buttons or the wheel.
 	 * @param stepsize Scrolling speed.
 	 */
-	void SetStepSize(uint16 stepsize)
+	void SetStepSize(size_t stepsize)
 	{
 		assert(stepsize > 0);
-		this->stepsize = stepsize;
+
+		this->stepsize = ClampTo<uint16_t>(stepsize);
 	}
 
 	/**
@@ -715,12 +716,11 @@ public:
 	 * @param num the number of elements in the list
 	 * @note updates the position if needed
 	 */
-	void SetCount(int num)
+	void SetCount(size_t num)
 	{
-		assert(num >= 0);
 		assert(num <= MAX_UVALUE(uint16));
 
-		this->count = num;
+		this->count = ClampTo<uint16_t>(num);
 		num -= this->cap;
 		if (num < 0) num = 0;
 		if (num < this->pos) this->pos = num;
@@ -731,12 +731,11 @@ public:
 	 * @param capacity the new capacity
 	 * @note updates the position if needed
 	 */
-	void SetCapacity(int capacity)
+	void SetCapacity(size_t capacity)
 	{
-		assert(capacity > 0);
 		assert(capacity <= MAX_UVALUE(uint16));
 
-		this->cap = capacity;
+		this->cap = ClampTo<uint16_t>(capacity);
 		if (this->cap + this->pos > this->count) this->pos = std::max(0, this->count - this->cap);
 	}
 

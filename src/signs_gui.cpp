@@ -308,7 +308,7 @@ struct SignListWindow : Window, SignList {
 	{
 		if (this->signs.NeedRebuild()) {
 			this->BuildSignsList();
-			this->vscroll->SetCount((uint)this->signs.size());
+			this->vscroll->SetCount(this->signs.size());
 			this->SetWidgetDirty(WID_SIL_CAPTION);
 		}
 		this->SortSignsList();

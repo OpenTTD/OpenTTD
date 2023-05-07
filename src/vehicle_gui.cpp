@@ -224,7 +224,7 @@ void BaseVehicleListWindow::BuildVehicleList()
 	}
 
 	this->vehgroups.RebuildDone();
-	this->vscroll->SetCount(static_cast<int>(this->vehgroups.size()));
+	this->vscroll->SetCount(this->vehgroups.size());
 }
 
 

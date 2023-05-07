@@ -364,7 +364,7 @@ public:
 		this->groups.ForceRebuild();
 		this->groups.NeedResort();
 		this->BuildGroupList(vli.company);
-		this->group_sb->SetCount((uint)this->groups.size());
+		this->group_sb->SetCount(this->groups.size());
 
 		this->GetWidget<NWidgetCore>(WID_GL_CAPTION)->widget_data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vli.vtype;
 		this->GetWidget<NWidgetCore>(WID_GL_LIST_VEHICLE)->tool_tip = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vli.vtype;
@@ -506,8 +506,8 @@ public:
 
 		this->BuildGroupList(this->owner);
 
-		this->group_sb->SetCount(static_cast<int>(this->groups.size()));
-		this->vscroll->SetCount(static_cast<int>(this->vehgroups.size()));
+		this->group_sb->SetCount(this->groups.size());
+		this->vscroll->SetCount(this->vehgroups.size());
 
 		/* The drop down menu is out, *but* it may not be used, retract it. */
 		if (this->vehicles.size() == 0 && this->IsWidgetLowered(WID_GL_MANAGE_VEHICLES_DROPDOWN)) {
@@ -1087,7 +1087,7 @@ public:
 				}
 				this->groups.ForceRebuild();
 				this->BuildGroupList(this->owner);
-				this->group_sb->SetCount((uint)this->groups.size());
+				this->group_sb->SetCount(this->groups.size());
 				id_g = find_index(this->groups, g);
 			}
 			this->group_sb->ScrollTowards(id_g);
