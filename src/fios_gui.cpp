@@ -280,7 +280,7 @@ private:
 
 	StringFilter string_filter; ///< Filter for available games.
 	QueryString filter_editbox; ///< Filter editbox;
-	std::vector<bool> fios_items_shown; ///< Map of the filtered out fios items
+	std::vector<FiosItem *> display_list; ///< Filtered display list
 
 	static void SaveGameConfirmationCallback(Window *w, bool confirmed)
 	{
@@ -443,14 +443,8 @@ public:
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.inset).WithHeight(this->resize.step_height);
 				uint scroll_pos = this->vscroll->GetPosition();
-				for (uint row = 0; row < this->fios_items.size() && tr.top < br.bottom; row++) {
-					if (!this->fios_items_shown[row]) {
-						/* The current item is filtered out : we do not show it */
-						scroll_pos++;
-						continue;
-					}
-					if (row < scroll_pos) continue;
-					const FiosItem *item = &this->fios_items[row];
+				for (auto it = this->display_list.begin() + scroll_pos; it != this->display_list.end() && tr.top < br.bottom; ++it) {
+					const FiosItem *item = *it;
 
 					if (item == this->selected) {
 						GfxFillRect(br.left, tr.top, br.right, tr.bottom, PC_DARK_BLUE);
@@ -654,16 +648,11 @@ public:
 				break;
 
 			case WID_SL_DRIVES_DIRECTORIES_LIST: { // Click the listbox
-				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WidgetDimensions::scaled.inset.top);
-				if (y == INT_MAX) return;
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->display_list, pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WidgetDimensions::scaled.inset.top);
+				if (it == this->display_list.end()) return;
 
 				/* Get the corresponding non-filtered out item from the list */
-				int i = 0;
-				while (i <= y) {
-					if (!this->fios_items_shown[i]) y++;
-					i++;
-				}
-				const FiosItem *file = &this->fios_items[y];
+				const FiosItem *file = *it;
 
 				if (FiosBrowseTo(file)) {
 					/* Changed directory, need refresh. */
@@ -731,16 +720,11 @@ public:
 	void OnMouseOver(Point pt, int widget) override
 	{
 		if (widget == WID_SL_DRIVES_DIRECTORIES_LIST) {
-			int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WidgetDimensions::scaled.inset.top);
-			if (y == INT_MAX) return;
+			auto it = this->vscroll->GetScrolledItemFromWidget(this->display_list, pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WidgetDimensions::scaled.inset.top);
+			if (it == this->display_list.end()) return;
 
 			/* Get the corresponding non-filtered out item from the list */
-			int i = 0;
-			while (i <= y) {
-				if (!this->fios_items_shown[i]) y++;
-				i++;
-			}
-			const FiosItem *file = &this->fios_items[y];
+			const FiosItem *file = *it;
 
 			if (file != this->highlighted) {
 				this->highlighted = file;
@@ -802,6 +786,35 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_SL_DRIVES_DIRECTORIES_LIST);
 	}
 
+	void BuildDisplayList()
+	{
+		/* Filter changes */
+		this->display_list.clear();
+		this->display_list.reserve(this->fios_items.size());
+
+		if (this->string_filter.IsEmpty()) {
+			/* We don't filter anything out if the filter editbox is empty */
+			for (auto &it : this->fios_items) {
+				this->display_list.push_back(&it);
+			}
+		} else {
+			for (auto &it : this->fios_items) {
+				this->string_filter.ResetState();
+				this->string_filter.AddLine(it.title.c_str());
+				/* We set the vector to show this fios element as filtered depending on the result of the filter */
+				if (this->string_filter.GetState()) {
+					this->display_list.push_back(&it);
+				} else if (&it == this->selected) {
+					/* The selected element has been filtered out */
+					this->selected = nullptr;
+					this->OnInvalidateData(SLIWD_SELECTION_CHANGES);
+				}
+			}
+		}
+
+		this->vscroll->SetCount(this->display_list.size());
+	}
+
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
@@ -818,7 +831,6 @@ public:
 
 				_fios_path_changed = true;
 				this->fios_items.BuildFileList(this->abstract_filetype, this->fop);
-				this->vscroll->SetCount(this->fios_items.size());
 				this->selected = nullptr;
 				_load_check_data.Clear();
 
@@ -857,30 +869,7 @@ public:
 				break;
 
 			case SLIWD_FILTER_CHANGES:
-				/* Filter changes */
-				this->fios_items_shown.resize(this->fios_items.size());
-				uint items_shown_count = 0; ///< The number of items shown in the list
-				/* We pass through every fios item */
-				for (uint i = 0; i < this->fios_items.size(); i++) {
-					if (this->string_filter.IsEmpty()) {
-						/* We don't filter anything out if the filter editbox is empty */
-						this->fios_items_shown[i] = true;
-						items_shown_count++;
-					} else {
-						this->string_filter.ResetState();
-						this->string_filter.AddLine(this->fios_items[i].title.c_str());
-						/* We set the vector to show this fios element as filtered depending on the result of the filter */
-						this->fios_items_shown[i] = this->string_filter.GetState();
-						if (this->fios_items_shown[i]) items_shown_count++;
-
-						if (&(this->fios_items[i]) == this->selected && !this->fios_items_shown[i]) {
-							/* The selected element has been filtered out */
-							this->selected = nullptr;
-							this->OnInvalidateData(SLIWD_SELECTION_CHANGES);
-						}
-					}
-				}
-				this->vscroll->SetCount(items_shown_count);
+				this->BuildDisplayList();
 				break;
 		}
 	}
