@@ -1375,7 +1375,7 @@ public:
 					RoadStopClass *rs_class = RoadStopClass::Get(roadstop_class);
 					for (uint j = 0; j < rs_class->GetSpecCount(); j++) {
 						const RoadStopSpec *roadstopspec = rs_class->GetSpec(j);
-						SetDParam(0, (roadstopspec != nullptr && roadstopspec->name != 0) ? roadstopspec->name : STR_STATION_CLASS_DFLT);
+						SetDParam(0, (roadstopspec != nullptr && roadstopspec->name != 0) ? roadstopspec->name : STR_STATION_CLASS_DFLT_ROADSTOP);
 						d = maxdim(d, GetStringBoundingBox(str));
 					}
 				}
@@ -1497,7 +1497,7 @@ public:
 	void SetStringParameters(int widget) const override {
 		if (widget == WID_BROS_SHOW_NEWST_TYPE) {
 			const RoadStopSpec *roadstopspec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(_roadstop_gui_settings.roadstop_type);
-			SetDParam(0, (roadstopspec != nullptr && roadstopspec->name != 0) ? roadstopspec->name : STR_STATION_CLASS_DFLT);
+			SetDParam(0, (roadstopspec != nullptr && roadstopspec->name != 0) ? roadstopspec->name : STR_STATION_CLASS_DFLT_ROADSTOP);
 		}
 	}
 
