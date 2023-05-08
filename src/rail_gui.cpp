@@ -2022,9 +2022,9 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 	{
 		switch (widget) {
 			case WID_BRW_WAYPOINT_MATRIX:
-				/* Three blobs high and wide. */
+				/* Two blobs high and three wide. */
 				size->width  += resize->width  * 2;
-				size->height += resize->height * 2;
+				size->height += resize->height * 1;
 
 				/* Resizing in X direction only at blob size, but at pixel level in Y. */
 				resize->height = 1;
