@@ -2695,6 +2695,7 @@ STR_STATION_CLASS_DFLT                                          :Default
 STR_STATION_CLASS_DFLT_STATION                                  :Default station
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Default road stop
 STR_STATION_CLASS_WAYP                                          :Waypoints
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Default waypoint
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signal Selection
