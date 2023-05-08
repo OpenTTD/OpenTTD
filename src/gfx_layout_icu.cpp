@@ -208,7 +208,7 @@ void ICURun::Shape(UChar *buff, size_t buff_length) {
 			x_advance = glyph_pos[i].x_advance / FONT_SCALE;
 		}
 
-		this->glyph_to_char.push_back(glyph_info[i].cluster);
+		this->glyph_to_char.push_back(glyph_info[i].cluster - this->start);
 		this->advance.push_back(x_advance);
 		advance += x_advance;
 	}
