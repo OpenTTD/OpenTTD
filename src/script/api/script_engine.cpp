@@ -172,7 +172,7 @@
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL && GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD) return -1;
 	if (IsWagon(engine_id)) return -1;
 
-	return ::Engine::Get(engine_id)->GetDisplayMaxTractiveEffort();
+	return ::Engine::Get(engine_id)->GetDisplayMaxTractiveEffort() / 1000;
 }
 
 /* static */ ScriptDate::Date ScriptEngine::GetDesignDate(EngineID engine_id)
