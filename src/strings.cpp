@@ -658,8 +658,7 @@ static const char *ParseStringChoice(const char *b, uint form, char **dst, const
 
 /** Helper for unit conversion. */
 struct UnitConversion {
-	int multiplier; ///< Amount to multiply upon conversion.
-	int shift;      ///< Amount to shift upon conversion.
+	double factor; ///< Amount to multiply or divide upon conversion.
 
 	/**
 	 * Convert value from OpenTTD's internal unit into the displayed value.
@@ -669,7 +668,9 @@ struct UnitConversion {
 	 */
 	int64 ToDisplay(int64 input, bool round = true) const
 	{
-		return ((input * this->multiplier) + (round && this->shift != 0 ? 1 << (this->shift - 1) : 0)) >> this->shift;
+		return round
+			? (int64_t)std::round(input * this->factor)
+			: (int64_t)(input * this->factor);
 	}
 
 	/**
@@ -681,7 +682,9 @@ struct UnitConversion {
 	 */
 	int64 FromDisplay(int64 input, bool round = true, int64 divider = 1) const
 	{
-		return ((input << this->shift) + (round ? (this->multiplier * divider) - 1 : 0)) / (this->multiplier * divider);
+		return round
+			? (int64_t)std::round(input / this->factor / divider)
+			: (int64_t)(input / this->factor / divider);
 	}
 };
 
@@ -701,59 +704,59 @@ struct UnitsLong {
 
 /** Unit conversions for velocity. */
 static const Units _units_velocity[] = {
-	{ {       1,  0}, STR_UNITS_VELOCITY_IMPERIAL,     0 },
-	{ {     103,  6}, STR_UNITS_VELOCITY_METRIC,       0 },
-	{ {    1831, 12}, STR_UNITS_VELOCITY_SI,           0 },
-	{ {   37888, 16}, STR_UNITS_VELOCITY_GAMEUNITS,    1 },
-	{ { 7289499, 23}, STR_UNITS_VELOCITY_KNOTS,        0 },
+	{ { 1.0      }, STR_UNITS_VELOCITY_IMPERIAL,  0 },
+	{ { 1.609344 }, STR_UNITS_VELOCITY_METRIC,    0 },
+	{ { 0.44704  }, STR_UNITS_VELOCITY_SI,        0 },
+	{ { 0.578125 }, STR_UNITS_VELOCITY_GAMEUNITS, 1 },
+	{ { 0.868976 }, STR_UNITS_VELOCITY_KNOTS,     0 },
 };
 
 /** Unit conversions for power. */
 static const Units _units_power[] = {
-	{ {   1,  0}, STR_UNITS_POWER_IMPERIAL, 0 },
-	{ {4153, 12}, STR_UNITS_POWER_METRIC,   0 },
-	{ {6109, 13}, STR_UNITS_POWER_SI,       0 },
+	{ { 1.0      }, STR_UNITS_POWER_IMPERIAL, 0 },
+	{ { 1.01387  }, STR_UNITS_POWER_METRIC,   0 },
+	{ { 0.745699 }, STR_UNITS_POWER_SI,       0 },
 };
 
 /** Unit conversions for power to weight. */
 static const Units _units_power_to_weight[] = {
-	{ {  29,  5}, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL, 1},
-	{ {   1,  0}, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC, 1},
-	{ {   1,  0}, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI, 1},
-	{ {  59,  6}, STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL, 1},
-	{ {  65,  6}, STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC, 1},
-	{ {  65,  6}, STR_UNITS_POWER_METRIC_TO_WEIGHT_SI, 1},
-	{ { 173,  8}, STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL, 1},
-	{ {   3,  2}, STR_UNITS_POWER_SI_TO_WEIGHT_METRIC, 1},
-	{ {   3,  2}, STR_UNITS_POWER_SI_TO_WEIGHT_SI, 1},
+	{ { 0.907185 }, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL, 1 },
+	{ { 1.0      }, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC,   1 },
+	{ { 1.0      }, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI,       1 },
+	{ { 0.919768 }, STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL,   1 },
+	{ { 1.01387  }, STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC,     1 },
+	{ { 1.01387  }, STR_UNITS_POWER_METRIC_TO_WEIGHT_SI,         1 },
+	{ { 0.676487 }, STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL,       1 },
+	{ { 0.745699 }, STR_UNITS_POWER_SI_TO_WEIGHT_METRIC,         1 },
+	{ { 0.745699 }, STR_UNITS_POWER_SI_TO_WEIGHT_SI,             1 },
 };
 
 /** Unit conversions for weight. */
 static const UnitsLong _units_weight[] = {
-	{ {4515, 12}, STR_UNITS_WEIGHT_SHORT_IMPERIAL, STR_UNITS_WEIGHT_LONG_IMPERIAL },
-	{ {   1,  0}, STR_UNITS_WEIGHT_SHORT_METRIC,   STR_UNITS_WEIGHT_LONG_METRIC   },
-	{ {1000,  0}, STR_UNITS_WEIGHT_SHORT_SI,       STR_UNITS_WEIGHT_LONG_SI       },
+	{ {    1.102311 }, STR_UNITS_WEIGHT_SHORT_IMPERIAL, STR_UNITS_WEIGHT_LONG_IMPERIAL },
+	{ {    1.0      }, STR_UNITS_WEIGHT_SHORT_METRIC,   STR_UNITS_WEIGHT_LONG_METRIC   },
+	{ { 1000.0      }, STR_UNITS_WEIGHT_SHORT_SI,       STR_UNITS_WEIGHT_LONG_SI       },
 };
 
 /** Unit conversions for volume. */
 static const UnitsLong _units_volume[] = {
-	{ {4227,  4}, STR_UNITS_VOLUME_SHORT_IMPERIAL, STR_UNITS_VOLUME_LONG_IMPERIAL },
-	{ {1000,  0}, STR_UNITS_VOLUME_SHORT_METRIC,   STR_UNITS_VOLUME_LONG_METRIC   },
-	{ {   1,  0}, STR_UNITS_VOLUME_SHORT_SI,       STR_UNITS_VOLUME_LONG_SI       },
+	{ {  264.172 }, STR_UNITS_VOLUME_SHORT_IMPERIAL, STR_UNITS_VOLUME_LONG_IMPERIAL },
+	{ { 1000.0   }, STR_UNITS_VOLUME_SHORT_METRIC,   STR_UNITS_VOLUME_LONG_METRIC   },
+	{ {    1.0   }, STR_UNITS_VOLUME_SHORT_SI,       STR_UNITS_VOLUME_LONG_SI       },
 };
 
 /** Unit conversions for force. */
 static const Units _units_force[] = {
-	{ {3597,  4}, STR_UNITS_FORCE_IMPERIAL, 0 },
-	{ {3263,  5}, STR_UNITS_FORCE_METRIC,   0 },
-	{ {   1,  0}, STR_UNITS_FORCE_SI,       0 },
+	{ { 224.809 }, STR_UNITS_FORCE_IMPERIAL, 0 },
+	{ { 101.972 }, STR_UNITS_FORCE_METRIC,   0 },
+	{ {   1.0   }, STR_UNITS_FORCE_SI,       0 },
 };
 
 /** Unit conversions for height. */
 static const Units _units_height[] = {
-	{ {   3,  0}, STR_UNITS_HEIGHT_IMPERIAL, 0 }, // "Wrong" conversion factor for more nicer GUI values
-	{ {   1,  0}, STR_UNITS_HEIGHT_METRIC,   0 },
-	{ {   1,  0}, STR_UNITS_HEIGHT_SI,       0 },
+	{ { 3.0 }, STR_UNITS_HEIGHT_IMPERIAL, 0 }, // "Wrong" conversion factor for more nicer GUI values
+	{ { 1.0 }, STR_UNITS_HEIGHT_METRIC,   0 },
+	{ { 1.0 }, STR_UNITS_HEIGHT_SI,       0 },
 };
 
 /**
