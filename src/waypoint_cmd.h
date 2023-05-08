@@ -15,7 +15,7 @@
 
 enum StationClassID : byte;
 
-CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis axis, byte width, byte height, StationClassID spec_class, byte spec_index, StationID station_to_join, bool adjacent);
+CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis axis, byte width, byte height, StationClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent);
 CommandCost CmdRemoveFromRailWaypoint(DoCommandFlag flags, TileIndex start, TileIndex end, bool keep_rail);
 CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile);
 CommandCost CmdRenameWaypoint(DoCommandFlag flags, StationID waypoint_id, const std::string &text);

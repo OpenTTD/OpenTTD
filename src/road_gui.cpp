@@ -66,8 +66,8 @@ struct RoadStopGUISettings {
 	DiagDirection orientation;
 
 	RoadStopClassID roadstop_class;
-	byte roadstop_type;
-	byte roadstop_count;
+	uint16_t roadstop_type;
+	uint16_t roadstop_count;
 };
 static RoadStopGUISettings _roadstop_gui_settings;
 
@@ -181,7 +181,7 @@ void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, RoadTy
  * @see CmdBuildRoadStop
  */
 void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, uint8 width, uint8 length, RoadStopType, bool is_drive_through,
-		DiagDirection dir, RoadType, RoadStopClassID spec_class, byte spec_index, StationID, bool)
+		DiagDirection dir, RoadType, RoadStopClassID spec_class, uint16_t spec_index, StationID, bool)
 {
 	if (result.Failed()) return;
 
@@ -221,7 +221,7 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType
 	bool drive_through = ddir >= DIAGDIR_END;
 	if (drive_through) ddir = static_cast<DiagDirection>(ddir - DIAGDIR_END); // Adjust picker result to actual direction.
 	RoadStopClassID spec_class = _roadstop_gui_settings.roadstop_class;
-	byte spec_index = _roadstop_gui_settings.roadstop_type;
+	uint16_t spec_index = _roadstop_gui_settings.roadstop_type;
 
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
@@ -1459,7 +1459,7 @@ public:
 			}
 
 			case WID_BROS_IMAGE: {
-				byte type = GB(widget, 16, 16);
+				uint16_t type = GB(widget, 16, 16);
 				assert(type < _roadstop_gui_settings.roadstop_count);
 
 				const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(type);
@@ -1555,7 +1555,7 @@ public:
 			}
 
 			case WID_BROS_IMAGE: {
-				int y = GB(widget, 16, 16);
+				uint16_t y = GB(widget, 16, 16);
 				if (y >= _roadstop_gui_settings.roadstop_count) return;
 
 				const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(y);
