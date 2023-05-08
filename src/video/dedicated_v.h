@@ -28,6 +28,19 @@ public:
 	bool ToggleFullscreen(bool fullscreen) override;
 	const char *GetName() const override { return "dedicated"; }
 	bool HasGUI() const override { return false; }
+
+	std::chrono::steady_clock::duration GetGameInterval() override
+	{
+		/* Infinite speed, as quickly as you can. */
+		if (_game_speed == 0) return std::chrono::microseconds(0);
+
+		long min = MILLISECONDS_PER_TICK * 1000;
+		long ms = 1000000 / _settings_client.gui.refresh_rate;
+		if (ms < min)
+			ms = min;
+
+		return std::chrono::microseconds(ms * 100 / _game_speed);
+	}
 };
 
 /** Factory for the dedicated server video driver. */

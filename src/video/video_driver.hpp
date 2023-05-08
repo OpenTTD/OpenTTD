@@ -307,7 +307,7 @@ protected:
 	 */
 	void SleepTillNextTick();
 
-	std::chrono::steady_clock::duration GetGameInterval()
+	virtual std::chrono::steady_clock::duration GetGameInterval()
 	{
 		/* If we are paused, run on normal speed. */
 		if (_pause_mode) return std::chrono::milliseconds(MILLISECONDS_PER_TICK);
