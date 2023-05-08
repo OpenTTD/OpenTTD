@@ -62,7 +62,7 @@ void BuildOilRig(TileIndex tile);
 static byte _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
-uint16 Industry::counts[NUM_INDUSTRYTYPES];
+uint16_t Industry::counts[NUM_INDUSTRYTYPES];
 
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
@@ -218,7 +218,7 @@ void Industry::PostDestructor(size_t index)
 /* static */ Industry *Industry::GetRandom()
 {
 	if (Industry::GetNumItems() == 0) return nullptr;
-	int num = RandomRange((uint16)Industry::GetNumItems());
+	int num = RandomRange((uint16_t)Industry::GetNumItems());
 	size_t index = MAX_UVALUE(size_t);
 
 	while (num >= 0) {
@@ -256,7 +256,7 @@ static void IndustryDrawSugarMine(const TileInfo *ti)
 
 static void IndustryDrawToffeeQuarry(const TileInfo *ti)
 {
-	uint8 x = 0;
+	uint8_t x = 0;
 
 	if (IsIndustryCompleted(ti->tile)) {
 		x = _industry_anim_offs_toffee[GetAnimationFrame(ti->tile)];
@@ -296,7 +296,7 @@ static void IndustryDrawToyFactory(const TileInfo *ti)
 static void IndustryDrawCoalPlantSparks(const TileInfo *ti)
 {
 	if (IsIndustryCompleted(ti->tile)) {
-		uint8 image = GetAnimationFrame(ti->tile);
+		uint8_t image = GetAnimationFrame(ti->tile);
 
 		if (image != 0 && image < 7) {
 			AddChildSpriteScreen(image + SPR_IT_POWER_PLANT_TRANSFORMERS,
@@ -399,7 +399,7 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
 		const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
 		if (indts->grf_prop.spritegroup[0] != nullptr && HasBit(indts->callback_mask, CBM_INDT_DRAW_FOUNDATIONS)) {
-			uint32 callback_res = GetIndustryTileCallback(CBID_INDTILE_DRAW_FOUNDATIONS, 0, 0, gfx, Industry::GetByTile(tile), tile);
+			uint32_t callback_res = GetIndustryTileCallback(CBID_INDTILE_DRAW_FOUNDATIONS, 0, 0, gfx, Industry::GetByTile(tile), tile);
 			if (callback_res != CALLBACK_FAILED && !ConvertBooleanCallback(indts->grf_prop.grffile, CBID_INDTILE_DRAW_FOUNDATIONS, callback_res)) return FOUNDATION_NONE;
 		}
 	}
@@ -414,7 +414,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 
 	/* Starting point for acceptance */
 	CargoID accepts_cargo[lengthof(itspec->accepts_cargo)];
-	int8 cargo_acceptance[lengthof(itspec->acceptance)];
+	int8_t cargo_acceptance[lengthof(itspec->acceptance)];
 	MemCpyT(accepts_cargo, itspec->accepts_cargo, lengthof(accepts_cargo));
 	MemCpyT(cargo_acceptance, itspec->acceptance, lengthof(cargo_acceptance));
 
@@ -434,7 +434,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 
 	if (HasBit(itspec->callback_mask, CBM_INDT_ACCEPT_CARGO)) {
 		/* Try callback for accepts list, if success override all existing accepts */
-		uint16 res = GetIndustryTileCallback(CBID_INDTILE_ACCEPT_CARGO, 0, 0, gfx, Industry::GetByTile(tile), tile);
+		uint16_t res = GetIndustryTileCallback(CBID_INDTILE_ACCEPT_CARGO, 0, 0, gfx, Industry::GetByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
 			MemSetT(accepts_cargo, CT_INVALID, lengthof(accepts_cargo));
 			for (uint i = 0; i < 3; i++) accepts_cargo[i] = GetCargoTranslation(GB(res, i * 5, 5), itspec->grf_prop.grffile);
@@ -443,7 +443,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 
 	if (HasBit(itspec->callback_mask, CBM_INDT_CARGO_ACCEPTANCE)) {
 		/* Try callback for acceptance list, if success override all existing acceptance */
-		uint16 res = GetIndustryTileCallback(CBID_INDTILE_CARGO_ACCEPTANCE, 0, 0, gfx, Industry::GetByTile(tile), tile);
+		uint16_t res = GetIndustryTileCallback(CBID_INDTILE_CARGO_ACCEPTANCE, 0, 0, gfx, Industry::GetByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
 			MemSetT(cargo_acceptance, 0, lengthof(cargo_acceptance));
 			for (uint i = 0; i < 3; i++) cargo_acceptance[i] = GB(res, i * 4, 4);
@@ -806,7 +806,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 
 static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 {
-	static const int8 _bubble_spawn_location[3][4] = {
+	static const int8_t _bubble_spawn_location[3][4] = {
 		{ 11,   0, -4, -14 },
 		{ -4, -10, -4,   1 },
 		{ 49,  59, 60,  65 },
@@ -1035,7 +1035,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	}
 
 	/* determine field size */
-	uint32 r = (Random() & 0x303) + 0x404;
+	uint32_t r = (Random() & 0x303) + 0x404;
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) r += 0x404;
 	uint size_x = GB(r, 0, 8);
 	uint size_y = GB(r, 8, 8);
@@ -1139,7 +1139,7 @@ static void ProduceIndustryGoods(Industry *i)
 
 	/* play a sound? */
 	if ((i->counter & 0x3F) == 0) {
-		uint32 r;
+		uint32_t r;
 		if (Chance16R(1, 14, r) && indsp->number_of_sounds != 0 && _settings_client.sound.ambient) {
 			if (std::any_of(std::begin(i->produced), std::end(i->produced), [](const auto &p) { return p.history[LAST_MONTH].production > 0; })) {
 				/* Play sound since last month had production */
@@ -1162,7 +1162,7 @@ static void ProduceIndustryGoods(Industry *i)
 		}
 
 		if ((indbehav & INDUSTRYBEH_PLANT_FIELDS) != 0) {
-			uint16 cb_res = CALLBACK_FAILED;
+			uint16_t cb_res = CALLBACK_FAILED;
 			if (HasBit(indsp->callback_mask, CBM_IND_SPECIAL_EFFECT)) {
 				cb_res = GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 0, i, i->type, i->location.tile);
 			}
@@ -1177,7 +1177,7 @@ static void ProduceIndustryGoods(Industry *i)
 			if (plant) PlantRandomFarmField(i);
 		}
 		if ((indbehav & INDUSTRYBEH_CUT_TREES) != 0) {
-			uint16 cb_res = CALLBACK_FAILED;
+			uint16_t cb_res = CALLBACK_FAILED;
 			if (HasBit(indsp->callback_mask, CBM_IND_SPECIAL_EFFECT)) {
 				cb_res = GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 1, i, i->type, i->location.tile);
 			}
@@ -1495,7 +1495,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
  * @param[out] custom_shape_check Perform custom check for the site.
  * @return Failed or succeeded command.
  */
-static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileLayout &layout, size_t layout_index, int type, uint16 initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type, bool *custom_shape_check = nullptr)
+static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileLayout &layout, size_t layout_index, int type, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type, bool *custom_shape_check = nullptr)
 {
 	bool refused_slope = false;
 	bool custom_shape = false;
@@ -1746,7 +1746,7 @@ static void PopulateStationsNearby(Industry *ind)
  * @param founder             Founder of the industry; OWNER_NONE in case of random construction.
  * @param initial_random_bits Random bits for the industry.
  */
-static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, const IndustryTileLayout &layout, size_t layout_index, Town *t, Owner founder, uint16 initial_random_bits)
+static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, const IndustryTileLayout &layout, size_t layout_index, Town *t, Owner founder, uint16_t initial_random_bits)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
@@ -1775,7 +1775,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->town = t;
 	i->owner = OWNER_NONE;
 
-	uint16 r = Random();
+	uint16_t r = Random();
 	i->random_colour = GB(r, 0, 4);
 	i->counter = GB(r, 4, 12);
 	i->random = initial_random_bits;
@@ -1801,7 +1801,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	/* Call callbacks after the regular fields got initialised. */
 
 	if (HasBit(indspec->callback_mask, CBM_IND_PROD_CHANGE_BUILD)) {
-		uint16 res = GetIndustryCallback(CBID_INDUSTRY_PROD_CHANGE_BUILD, 0, Random(), i, type, INVALID_TILE);
+		uint16_t res = GetIndustryCallback(CBID_INDUSTRY_PROD_CHANGE_BUILD, 0, Random(), i, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) {
 			if (res < PRODLEVEL_MINIMUM || res > PRODLEVEL_MAXIMUM) {
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_PROD_CHANGE_BUILD, res);
@@ -1827,7 +1827,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	}
 
 	if (HasBit(indspec->callback_mask, CBM_IND_DECIDE_COLOUR)) {
-		uint16 res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
+		uint16_t res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) {
 			if (GB(res, 4, 11) != 0) ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_DECIDE_COLOUR, res);
 			i->random_colour = GB(res, 0, 4);
@@ -1840,7 +1840,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		/* Query actual types */
 		uint maxcargoes = (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) ? static_cast<uint>(i->accepted.size()) : 3;
 		for (uint j = 0; j < maxcargoes; j++) {
-			uint16 res = GetIndustryCallback(CBID_INDUSTRY_INPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
+			uint16_t res = GetIndustryCallback(CBID_INDUSTRY_INPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
 			if (res == CALLBACK_FAILED || GB(res, 0, 8) == CT_INVALID) break;
 			if (indspec->grf_prop.grffile->grf_version >= 8 && res >= 0x100) {
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
@@ -1872,7 +1872,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		/* Query actual types */
 		uint maxcargoes = (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) ? static_cast<uint>(i->produced.size()) : 2;
 		for (uint j = 0; j < maxcargoes; j++) {
-			uint16 res = GetIndustryCallback(CBID_INDUSTRY_OUTPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
+			uint16_t res = GetIndustryCallback(CBID_INDUSTRY_OUTPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
 			if (res == CALLBACK_FAILED || GB(res, 0, 8) == CT_INVALID) break;
 			if (indspec->grf_prop.grffile->grf_version >= 8 && res >= 0x100) {
 				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
@@ -1947,7 +1947,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
  *
  * @post \c *ip contains the newly created industry if all checks are successful and the \a flags request actual creation, else it contains \c nullptr afterwards.
  */
-static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, size_t layout_index, uint32 random_var8f, uint16 random_initial_bits, Owner founder, IndustryAvailabilityCallType creation_type, Industry **ip)
+static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, size_t layout_index, uint32_t random_var8f, uint16_t random_initial_bits, Owner founder, IndustryAvailabilityCallType creation_type, Industry **ip)
 {
 	assert(layout_index < indspec->layouts.size());
 	const IndustryTileLayout &layout = indspec->layouts[layout_index];
@@ -2011,7 +2011,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
  * @param seed seed to use for desyncfree randomisations
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType it, uint32 first_layout, bool fund, uint32 seed)
+CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType it, uint32_t first_layout, bool fund, uint32_t seed)
 {
 	if (it >= NUM_INDUSTRYTYPES) return CMD_ERROR;
 
@@ -2032,8 +2032,8 @@ CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType i
 
 	Randomizer randomizer;
 	randomizer.SetSeed(seed);
-	uint16 random_initial_bits = GB(seed, 0, 16);
-	uint32 random_var8f = randomizer.Next();
+	uint16_t random_initial_bits = GB(seed, 0, 16);
+	uint32_t random_var8f = randomizer.Next();
 	size_t num_layouts = indspec->layouts.size();
 	CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	const bool deity_prospect = _current_company == OWNER_DEITY && !fund;
@@ -2055,7 +2055,7 @@ CommandCost CmdBuildIndustry(DoCommandFlag flags, TileIndex tile, IndustryType i
 					 */
 					tile = RandomTile();
 					/* Start with a random layout */
-					size_t layout = RandomRange((uint32)num_layouts);
+					size_t layout = RandomRange((uint32_t)num_layouts);
 					/* Check now each layout, starting with the random one */
 					for (size_t j = 0; j < num_layouts; j++) {
 						layout = (layout + 1) % num_layouts;
@@ -2180,10 +2180,10 @@ static Industry *CreateNewIndustry(TileIndex tile, IndustryType type, IndustryAv
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
-	uint32 seed = Random();
-	uint32 seed2 = Random();
+	uint32_t seed = Random();
+	uint32_t seed2 = Random();
 	Industry *i = nullptr;
-	size_t layout_index = RandomRange((uint32)indspec->layouts.size());
+	size_t layout_index = RandomRange((uint32_t)indspec->layouts.size());
 	[[maybe_unused]] CommandCost ret = CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, layout_index, seed, GB(seed2, 0, 16), OWNER_NONE, creation_type, &i);
 	assert(i != nullptr || ret.Failed());
 	return i;
@@ -2195,10 +2195,10 @@ static Industry *CreateNewIndustry(TileIndex tile, IndustryType type, IndustryAv
  * @param[out] force_at_least_one Returns whether at least one instance should be forced on map creation.
  * @return Relative probability for the industry to appear.
  */
-static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *force_at_least_one)
+static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, bool *force_at_least_one)
 {
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
-	uint32 chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
+	uint32_t chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
 			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) ||
 			(chance = GetIndustryProbabilityCallback(it, IACT_MAPGENERATION, chance)) == 0) {
@@ -2221,7 +2221,7 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
  * @param[out] min_number Minimal number of industries that should exist at the map.
  * @return Relative probability for the industry to appear.
  */
-static uint16 GetIndustryGamePlayProbability(IndustryType it, byte *min_number)
+static uint16_t GetIndustryGamePlayProbability(IndustryType it, byte *min_number)
 {
 	if (_settings_game.difficulty.industry_density == ID_FUND_ONLY) {
 		*min_number = 0;
@@ -2248,7 +2248,7 @@ static uint16 GetIndustryGamePlayProbability(IndustryType it, byte *min_number)
 static uint GetNumberOfIndustries()
 {
 	/* Number of industries on a 256x256 map. */
-	static const uint16 numof_industry_table[] = {
+	static const uint16_t numof_industry_table[] = {
 		0,    // none
 		0,    // minimal
 		10,   // very low
@@ -2353,9 +2353,9 @@ void GenerateIndustries()
 {
 	if (_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) return; // No industries in the game.
 
-	uint32 industry_probs[NUM_INDUSTRYTYPES];
+	uint32_t industry_probs[NUM_INDUSTRYTYPES];
 	bool force_at_least_one[NUM_INDUSTRYTYPES];
-	uint32 total_prob = 0;
+	uint32_t total_prob = 0;
 	uint num_forced = 0;
 
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
@@ -2383,7 +2383,7 @@ void GenerateIndustries()
 
 	/* Add the remaining industries according to their probabilities */
 	for (uint i = 0; i < total_amount; i++) {
-		uint32 r = RandomRange(total_prob);
+		uint32_t r = RandomRange(total_prob);
 		IndustryType it = 0;
 		while (r >= industry_probs[it]) {
 			r -= industry_probs[it];
@@ -2450,7 +2450,7 @@ void ClearAllIndustryCachedNames()
 bool IndustryTypeBuildData::GetIndustryTypeData(IndustryType it)
 {
 	byte min_number;
-	uint32 probability = GetIndustryGamePlayProbability(it, &min_number);
+	uint32_t probability = GetIndustryGamePlayProbability(it, &min_number);
 	bool changed = min_number != this->min_number || probability != this->probability;
 	this->min_number = min_number;
 	this->probability = probability;
@@ -2472,7 +2472,7 @@ void IndustryBuildData::SetupTargetCount()
 
 	/* Initialize the target counts. */
 	uint force_build = 0;  // Number of industries that should always be available.
-	uint32 total_prob = 0; // Sum of probabilities.
+	uint32_t total_prob = 0; // Sum of probabilities.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		IndustryTypeBuildData *ibd = this->builddata + it;
 		force_build += ibd->min_number;
@@ -2487,7 +2487,7 @@ void IndustryBuildData::SetupTargetCount()
 
 	/* Assign number of industries that should be aimed for, by using the probability as a weight. */
 	while (total_amount > 0) {
-		uint32 r = RandomRange(total_prob);
+		uint32_t r = RandomRange(total_prob);
 		IndustryType it = 0;
 		while (r >= this->builddata[it].probability) {
 			r -= this->builddata[it].probability;
@@ -2509,7 +2509,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 
 	int missing = 0;       // Number of industries that need to be build.
 	uint count = 0;        // Number of industry types eligible for build.
-	uint32 total_prob = 0; // Sum of probabilities.
+	uint32_t total_prob = 0; // Sum of probabilities.
 	IndustryType forced_build = NUM_INDUSTRYTYPES; // Industry type that should be forcibly build.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		int difference = this->builddata[it].target_count - Industry::GetIndustryTypeCount(it);
@@ -2538,7 +2538,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 			it = forced_build;
 		} else {
 			/* Non-forced, select an industry type to build (weighted random). */
-			uint32 r = 0; // Initialized to silence the compiler.
+			uint32_t r = 0; // Initialized to silence the compiler.
 			if (count > 1) r = RandomRange(total_prob);
 			for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
 				if (this->builddata[it].wait_count > 0) continue; // Type may not be built now.
@@ -2711,11 +2711,11 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	bool original_economy = indspec->UsesOriginalEconomy();
 	byte div = 0;
 	byte mul = 0;
-	int8 increment = 0;
+	int8_t increment = 0;
 
 	bool callback_enabled = HasBit(indspec->callback_mask, monthly ? CBM_IND_MONTHLYPROD_CHANGE : CBM_IND_PRODUCTION_CHANGE);
 	if (callback_enabled) {
-		uint16 res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->location.tile);
+		uint16_t res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->location.tile);
 		if (res != CALLBACK_FAILED) { // failed callback means "do nothing"
 			suppress_message = HasBit(res, 7);
 			/* Get the custom message if any */
@@ -2765,7 +2765,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			closeit = !(i->ctlflags & (INDCTL_NO_CLOSURE | INDCTL_NO_PRODUCTION_DECREASE));
 			for (auto &p : i->produced) {
 				if (!IsValidCargoID(p.cargo)) continue;
-				uint32 r = Random();
+				uint32_t r = Random();
 				int old_prod, new_prod, percent;
 				/* If over 60% is transported, mult is 1, else mult is -1. */
 				int mult = (p.history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_60) ? 1 : -1;
@@ -2917,7 +2917,7 @@ static IntervalTimer<TimerGameCalendar> _industries_daily({TimerGameCalendar::DA
 	/* Bits 16-31 of industry_construction_counter contain the number of industries to change/create today,
 	 * the lower 16 bit are a fractional part that might accumulate over several days until it
 	 * is sufficient for an industry. */
-	uint16 change_loop = _economy.industry_daily_change_counter >> 16;
+	uint16_t change_loop = _economy.industry_daily_change_counter >> 16;
 
 	/* Reset the active part of the counter, just keeping the "fractional part" */
 	_economy.industry_daily_change_counter &= 0xFFFF;
@@ -2934,7 +2934,7 @@ static IntervalTimer<TimerGameCalendar> _industries_daily({TimerGameCalendar::DA
 	if ((_industry_builder.wanted_inds >> 16) > GetCurrentTotalNumberOfIndustries()) {
 		perc = std::min(9u, perc + (_industry_builder.wanted_inds >> 16) - GetCurrentTotalNumberOfIndustries());
 	}
-	for (uint16 j = 0; j < change_loop; j++) {
+	for (uint16_t j = 0; j < change_loop; j++) {
 		if (Chance16(perc, 100)) {
 			_industry_builder.TryBuildNewIndustry();
 		} else {
@@ -2991,7 +2991,7 @@ void CheckIndustries()
 		if (Industry::GetIndustryTypeCount(it) > 0) continue; // Types of existing industries can be skipped.
 
 		bool force_at_least_one;
-		uint32 chance = GetScaledIndustryGenerationProbability(it, &force_at_least_one);
+		uint32_t chance = GetScaledIndustryGenerationProbability(it, &force_at_least_one);
 		if (chance == 0 || !force_at_least_one) continue; // Types that are not available can be skipped.
 
 		const IndustrySpec *is = GetIndustrySpec(it);
@@ -3081,7 +3081,7 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, i
 			/* Call callback 3C 'disable autosloping for industry tiles'. */
 			if (HasBit(itspec->callback_mask, CBM_INDT_AUTOSLOPE)) {
 				/* If the callback fails, allow autoslope. */
-				uint16 res = GetIndustryTileCallback(CBID_INDTILE_AUTOSLOPE, 0, 0, gfx, Industry::GetByTile(tile), tile);
+				uint16_t res = GetIndustryTileCallback(CBID_INDTILE_AUTOSLOPE, 0, 0, gfx, Industry::GetByTile(tile), tile);
 				if (res == CALLBACK_FAILED || !ConvertBooleanCallback(itspec->grf_prop.grffile, CBID_INDTILE_AUTOSLOPE, res)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 			} else {
 				/* allow autoslope */

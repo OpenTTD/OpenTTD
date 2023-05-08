@@ -10,7 +10,7 @@
  */
 
 /** Height map colours for the green colour scheme, ordered by height. */
-static const uint32 _green_map_heights[] = {
+static const uint32_t _green_map_heights[] = {
 	MKCOLOUR(0x59595958),
 	MKCOLOUR(0x59595958),
 	MKCOLOUR(0x59595959),
@@ -129,7 +129,7 @@ static const uint32 _green_map_heights[] = {
 };
 
 /** Height map colours for the dark green colour scheme, ordered by height. */
-static const uint32 _dark_green_map_heights[] = {
+static const uint32_t _dark_green_map_heights[] = {
 	MKCOLOUR(0x60606060),
 	MKCOLOUR(0x60606061),
 	MKCOLOUR(0x60606160),
@@ -232,7 +232,7 @@ static const uint32 _dark_green_map_heights[] = {
 };
 
 /** Height map colours for the violet colour scheme, ordered by height. */
-static const uint32 _violet_map_heights[] = {
+static const uint32_t _violet_map_heights[] = {
 	MKCOLOUR(0x80808080),
 	MKCOLOUR(0x80808081),
 	MKCOLOUR(0x80808180),

@@ -30,7 +30,7 @@ struct LinkProperties {
 	uint capacity; ///< Capacity of the link.
 	uint usage;    ///< Actual usage of the link.
 	uint planned;  ///< Planned usage of the link.
-	uint32 time;   ///< Travel time of the link.
+	uint32_t time;   ///< Travel time of the link.
 	bool shared;   ///< If this is a shared link to be drawn dashed.
 };
 
@@ -44,7 +44,7 @@ public:
 	typedef std::map<StationID, StationLinkMap> LinkMap;
 	typedef std::vector<std::pair<StationID, uint> > StationSupplyList;
 
-	static const uint8 LINK_COLOURS[][12];
+	static const uint8_t LINK_COLOURS[][12];
 
 	/**
 	 * Create a link graph overlay for the specified window.
@@ -94,7 +94,7 @@ protected:
 	void GetWidgetDpi(DrawPixelInfo *dpi) const;
 	void RebuildCache();
 
-	static void AddStats(CargoID new_cargo, uint new_cap, uint new_usg, uint new_flow, uint32 time, bool new_shared, LinkProperties &cargo);
+	static void AddStats(CargoID new_cargo, uint new_cap, uint new_usg, uint new_flow, uint32_t time, bool new_shared, LinkProperties &cargo);
 	static void DrawVertex(int x, int y, int size, int colour, int border_colour);
 };
 

@@ -95,9 +95,9 @@ struct HotkeyList;
  */
 struct WindowDesc : ZeroedMemoryAllocator {
 
-	WindowDesc(WindowPosition default_pos, const char *ini_key, int16 def_width_trad, int16 def_height_trad,
-			WindowClass window_class, WindowClass parent_class, uint32 flags,
-			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys = nullptr);
+	WindowDesc(WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
+			WindowClass window_class, WindowClass parent_class, uint32_t flags,
+			const NWidgetPart *nwid_parts, int16_t nwid_length, HotkeyList *hotkeys = nullptr);
 
 	~WindowDesc();
 
@@ -105,24 +105,24 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	WindowClass cls;               ///< Class of the window, @see WindowClass.
 	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
 	const char *ini_key;           ///< Key to store window defaults in openttd.cfg. \c nullptr if nothing shall be stored.
-	uint32 flags;                  ///< Flags. @see WindowDefaultFlag
+	uint32_t flags;                  ///< Flags. @see WindowDefaultFlag
 	const NWidgetPart *nwid_parts; ///< Nested widget parts describing the window.
-	int16 nwid_length;             ///< Length of the #nwid_parts array.
+	int16_t nwid_length;             ///< Length of the #nwid_parts array.
 	HotkeyList *hotkeys;           ///< Hotkeys for the window.
 
 	bool pref_sticky;              ///< Preferred stickyness.
-	int16 pref_width;              ///< User-preferred width of the window. Zero if unset.
-	int16 pref_height;             ///< User-preferred height of the window. Zero if unset.
+	int16_t pref_width;              ///< User-preferred width of the window. Zero if unset.
+	int16_t pref_height;             ///< User-preferred height of the window. Zero if unset.
 
-	int16 GetDefaultWidth() const;
-	int16 GetDefaultHeight() const;
+	int16_t GetDefaultWidth() const;
+	int16_t GetDefaultHeight() const;
 
 	static void LoadFromConfig();
 	static void SaveToConfig();
 
 private:
-	int16 default_width_trad;      ///< Preferred initial width of the window (pixels at 1x zoom).
-	int16 default_height_trad;     ///< Preferred initial height of the window (pixels at 1x zoom).
+	int16_t default_width_trad;      ///< Preferred initial width of the window (pixels at 1x zoom).
+	int16_t default_height_trad;     ///< Preferred initial height of the window (pixels at 1x zoom).
 
 	/**
 	 * Dummy private copy constructor to prevent compilers from
@@ -186,10 +186,10 @@ static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for W
  */
 struct ViewportData : Viewport {
 	VehicleID follow_vehicle; ///< VehicleID to follow if following a vehicle, #INVALID_VEHICLE otherwise.
-	int32 scrollpos_x;        ///< Currently shown x coordinate (virtual screen coordinate of topleft corner of the viewport).
-	int32 scrollpos_y;        ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).
-	int32 dest_scrollpos_x;   ///< Current destination x coordinate to display (virtual screen coordinate of topleft corner of the viewport).
-	int32 dest_scrollpos_y;   ///< Current destination y coordinate to display (virtual screen coordinate of topleft corner of the viewport).
+	int32_t scrollpos_x;        ///< Currently shown x coordinate (virtual screen coordinate of topleft corner of the viewport).
+	int32_t scrollpos_y;        ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).
+	int32_t dest_scrollpos_x;   ///< Current destination x coordinate to display (virtual screen coordinate of topleft corner of the viewport).
+	int32_t dest_scrollpos_y;   ///< Current destination y coordinate to display (virtual screen coordinate of topleft corner of the viewport).
 };
 
 struct QueryString;
@@ -235,8 +235,8 @@ public:
 	WindowClass window_class;   ///< Window class
 	WindowNumber window_number; ///< Window number within the window class
 
-	uint8 timeout_timer;      ///< Timer value of the WF_TIMEOUT for flags.
-	uint8 white_border_timer; ///< Timer value of the WF_WHITE_BORDER for flags.
+	uint8_t timeout_timer;      ///< Timer value of the WF_TIMEOUT for flags.
+	uint8_t white_border_timer; ///< Timer value of the WF_WHITE_BORDER for flags.
 
 	int left;   ///< x position of left edge of the window
 	int top;    ///< y position of top edge of the window
@@ -423,7 +423,7 @@ public:
 	void UnfocusFocusedWidget();
 	bool SetFocusedWidget(int widget_index);
 
-	EventState HandleEditBoxKey(int wid, WChar key, uint16 keycode);
+	EventState HandleEditBoxKey(int wid, char32_t key, uint16_t keycode);
 	virtual void InsertTextString(int wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end);
 
 	void HandleButtonClick(byte widget);
@@ -475,7 +475,7 @@ public:
 	 * @param window_number The window number of the new window.
 	 * @return Initial position of the top-left corner of the window.
 	 */
-	virtual Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number);
+	virtual Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number);
 
 	/**
 	 * The window must be repainted.
@@ -534,7 +534,7 @@ public:
 	 * @return #ES_HANDLED if the key press has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnKeyPress(WChar key, uint16 keycode) { return ES_NOT_HANDLED; }
+	virtual EventState OnKeyPress(char32_t key, uint16_t keycode) { return ES_NOT_HANDLED; }
 
 	virtual EventState OnHotkey(int hotkey);
 

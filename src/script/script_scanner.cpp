@@ -164,7 +164,7 @@ struct ScriptFileChecksumCreator : FileScanner {
 	virtual bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
 	{
 		Md5 checksum;
-		uint8 buffer[1024];
+		uint8_t buffer[1024];
 		size_t len, size;
 
 		/* Open the file ... */
@@ -199,7 +199,7 @@ struct ScriptFileChecksumCreator : FileScanner {
  */
 static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, Subdirectory dir)
 {
-	uint32 id = 0;
+	uint32_t id = 0;
 	const char *str = info->GetShortName().c_str();
 	for (int j = 0; j < 4 && *str != '\0'; j++, str++) id |= *str << (8 * j);
 

@@ -249,7 +249,7 @@ protected:
 	DropDownList BuildDropDownList() const
 	{
 		DropDownList list;
-		uint16 page_num = 1;
+		uint16_t page_num = 1;
 		for (const StoryPage *p : this->story_pages) {
 			bool current_page = p->index == this->selected_page_id;
 			if (!p->title.empty()) {
@@ -632,7 +632,7 @@ public:
 	 * Sets the selected page.
 	 * @param page_index pool index of the page to select.
 	 */
-	void SetSelectedPage(uint16 page_index)
+	void SetSelectedPage(uint16_t page_index)
 	{
 		if (this->selected_page_id != page_index) {
 			if (this->active_button_id) ResetObjectToPlace();
@@ -1042,7 +1042,7 @@ static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor)
  * @param company 'Owner' of the story book, may be #INVALID_COMPANY.
  * @param page_id Page to open, may be #INVALID_STORY_PAGE.
  */
-void ShowStoryBook(CompanyID company, uint16 page_id)
+void ShowStoryBook(CompanyID company, uint16_t page_id)
 {
 	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
 

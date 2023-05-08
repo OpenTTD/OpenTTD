@@ -90,16 +90,16 @@ public:
 }
 
 struct DebugFileInfo {
-	uint32 size;
-	uint32 crc32;
+	uint32_t size;
+	uint32_t crc32;
 	SYSTEMTIME file_time;
 };
 
-static uint32 _crc_table[256];
+static uint32_t _crc_table[256];
 
 static void MakeCRCTable()
 {
-	uint32 crc, poly = 0xEDB88320L;
+	uint32_t crc, poly = 0xEDB88320L;
 	int i;
 	int j;
 
@@ -112,7 +112,7 @@ static void MakeCRCTable()
 	}
 }
 
-static uint32 CalcCRC(byte *data, uint size, uint32 crc)
+static uint32_t CalcCRC(byte *data, uint size, uint32_t crc)
 {
 	for (; size > 0; size--) {
 		crc = ((crc >> 8) & 0x00FFFFFF) ^ _crc_table[(crc ^ *data++) & 0xFF];
@@ -129,9 +129,9 @@ static void GetFileInfo(DebugFileInfo *dfi, const wchar_t *filename)
 	if (file != INVALID_HANDLE_VALUE) {
 		byte buffer[1024];
 		DWORD numread;
-		uint32 filesize = 0;
+		uint32_t filesize = 0;
 		FILETIME write_time;
-		uint32 crc = (uint32)-1;
+		uint32_t crc = (uint32_t)-1;
 
 		for (;;) {
 			if (ReadFile(file, buffer, sizeof(buffer), &numread, nullptr) == 0 || numread == 0) {
@@ -141,7 +141,7 @@ static void GetFileInfo(DebugFileInfo *dfi, const wchar_t *filename)
 			crc = CalcCRC(buffer, numread, crc);
 		}
 		dfi->size = filesize;
-		dfi->crc32 = crc ^ (uint32)-1;
+		dfi->crc32 = crc ^ (uint32_t)-1;
 
 		if (GetFileTime(file, nullptr, nullptr, &write_time)) {
 			FileTimeToSystemTime(&write_time, &dfi->file_time);
@@ -308,15 +308,15 @@ static void PrintModuleInfo(std::back_insert_iterator<std::string> &output_itera
 {
 	fmt::format_to(output_iterator, "Stack trace:\n");
 #ifdef _M_AMD64
-	uint32 *b = (uint32*)ep->ContextRecord->Rsp;
+	uint32_t *b = (uint32_t*)ep->ContextRecord->Rsp;
 #elif defined(_M_IX86)
-	uint32 *b = (uint32*)ep->ContextRecord->Esp;
+	uint32_t *b = (uint32_t*)ep->ContextRecord->Esp;
 #elif defined(_M_ARM64)
-	uint32 *b = (uint32*)ep->ContextRecord->Sp;
+	uint32_t *b = (uint32_t*)ep->ContextRecord->Sp;
 #endif
 	for (int j = 0; j != 24; j++) {
 		for (int i = 0; i != 8; i++) {
-			if (IsBadReadPtr(b, sizeof(uint32))) {
+			if (IsBadReadPtr(b, sizeof(uint32_t))) {
 				fmt::format_to(output_iterator, " ????????"); // OCR: WAS - , 0);
 			} else {
 				fmt::format_to(output_iterator, " {:08X}", *b);
@@ -658,7 +658,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			const char *unix_nl = CrashLogWindows::current->crashlog.data();
 			char dos_nl[65536];
 			char *p = dos_nl;
-			WChar c;
+			char32_t c;
 			while ((c = Utf8Consume(&unix_nl)) && p < lastof(dos_nl) - 4) { // 4 is max number of bytes per character
 				if (c == '\n') p += Utf8Encode(p, '\r');
 				p += Utf8Encode(p, c);

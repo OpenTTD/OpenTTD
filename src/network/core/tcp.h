@@ -114,7 +114,7 @@ private:
 
 public:
 	TCPConnecter() {};
-	TCPConnecter(const std::string &connection_string, uint16 default_port, const NetworkAddress &bind_address = {}, int family = AF_UNSPEC);
+	TCPConnecter(const std::string &connection_string, uint16_t default_port, const NetworkAddress &bind_address = {}, int family = AF_UNSPEC);
 	virtual ~TCPConnecter();
 
 	/**
@@ -143,7 +143,7 @@ private:
 public:
 	ServerAddress server_address; ///< Address we are connecting to.
 
-	TCPServerConnecter(const std::string &connection_string, uint16 default_port);
+	TCPServerConnecter(const std::string &connection_string, uint16_t default_port);
 
 	void SetConnected(SOCKET sock);
 	void SetFailure();

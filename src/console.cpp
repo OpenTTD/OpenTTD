@@ -127,7 +127,7 @@ void IConsolePrint(TextColour colour_code, const std::string &string)
  * @param *arg the string to be converted
  * @return Return true on success or false on failure
  */
-bool GetArgumentInteger(uint32 *value, const char *arg)
+bool GetArgumentInteger(uint32_t *value, const char *arg)
 {
 	char *endptr;
 

@@ -46,7 +46,7 @@ public:
 		int glyph_count;  ///< The number of glyphs.
 
 	public:
-		FallbackVisualRun(Font *font, const WChar *chars, int glyph_count, int char_offset, int x);
+		FallbackVisualRun(Font *font, const char32_t *chars, int glyph_count, int char_offset, int x);
 		FallbackVisualRun(FallbackVisualRun &&other) noexcept;
 		~FallbackVisualRun() override;
 		const Font *GetFont() const override;
@@ -65,14 +65,14 @@ public:
 		int CountRuns() const override;
 		const ParagraphLayouter::VisualRun &GetVisualRun(int run) const override;
 
-		int GetInternalCharLength(WChar c) const override { return 1; }
+		int GetInternalCharLength(char32_t c) const override { return 1; }
 	};
 
-	const WChar *buffer_begin; ///< Begin of the buffer.
-	const WChar *buffer;       ///< The current location in the buffer.
+	const char32_t *buffer_begin; ///< Begin of the buffer.
+	const char32_t *buffer;       ///< The current location in the buffer.
 	FontMap &runs;             ///< The fonts we have to use for this paragraph.
 
-	FallbackParagraphLayout(WChar *buffer, int length, FontMap &runs);
+	FallbackParagraphLayout(char32_t *buffer, int length, FontMap &runs);
 	void Reflow() override;
 	std::unique_ptr<const Line> NextLine(int max_width) override;
 };
@@ -84,7 +84,7 @@ public:
  * @param fontMapping THe mapping of the fonts.
  * @return The ParagraphLayout instance.
  */
-/* static */ ParagraphLayouter *FallbackParagraphLayoutFactory::GetParagraphLayout(WChar *buff, WChar *buff_end, FontMap &fontMapping)
+/* static */ ParagraphLayouter *FallbackParagraphLayoutFactory::GetParagraphLayout(char32_t *buff, char32_t *buff_end, FontMap &fontMapping)
 {
 	return new FallbackParagraphLayout(buff, buff_end - buff, fontMapping);
 }
@@ -96,7 +96,7 @@ public:
  * @param c           The character to add.
  * @return The number of buffer spaces that were used.
  */
-/* static */ size_t FallbackParagraphLayoutFactory::AppendToBuffer(WChar *buff, const WChar *buffer_last, WChar c)
+/* static */ size_t FallbackParagraphLayoutFactory::AppendToBuffer(char32_t *buff, const char32_t *buffer_last, char32_t c)
 {
 	*buff = c;
 	return 1;
@@ -110,7 +110,7 @@ public:
  * @param char_offset This run's offset from the start of the layout input string.
  * @param x           The initial x position for this run.
  */
-FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const WChar *chars, int char_count, int char_offset, int x) :
+FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const char32_t *chars, int char_count, int char_offset, int x) :
 		font(font), glyph_count(char_count)
 {
 	const bool isbuiltin = font->fc->IsBuiltInFont();
@@ -265,7 +265,7 @@ const ParagraphLayouter::VisualRun &FallbackParagraphLayout::FallbackLine::GetVi
  * @param length The length of the paragraph.
  * @param runs   The font mapping of this paragraph.
  */
-FallbackParagraphLayout::FallbackParagraphLayout(WChar *buffer, int length, FontMap &runs) : buffer_begin(buffer), buffer(buffer), runs(runs)
+FallbackParagraphLayout::FallbackParagraphLayout(char32_t *buffer, int length, FontMap &runs) : buffer_begin(buffer), buffer(buffer), runs(runs)
 {
 	assert(runs.rbegin()->first == length);
 }
@@ -308,14 +308,14 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 	}
 
 	const FontCache *fc = iter->second->fc;
-	const WChar *next_run = this->buffer_begin + iter->first;
+	const char32_t *next_run = this->buffer_begin + iter->first;
 
-	const WChar *begin = this->buffer;
-	const WChar *last_space = nullptr;
-	const WChar *last_char;
+	const char32_t *begin = this->buffer;
+	const char32_t *last_space = nullptr;
+	const char32_t *last_char;
 	int width = 0;
 	for (;;) {
-		WChar c = *this->buffer;
+		char32_t c = *this->buffer;
 		last_char = this->buffer;
 
 		if (c == '\0') {

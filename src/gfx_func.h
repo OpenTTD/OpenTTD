@@ -54,7 +54,7 @@ extern byte _support8bpp;
 extern CursorVars _cursor;
 extern bool _ctrl_pressed;   ///< Is Ctrl pressed?
 extern bool _shift_pressed;  ///< Is Shift pressed?
-extern uint16 _game_speed;
+extern uint16_t _game_speed;
 
 extern bool _left_button_down;
 extern bool _left_button_clicked;
@@ -69,7 +69,7 @@ extern Dimension _cur_resolution;
 extern Palette _cur_palette; ///< Current palette
 
 void HandleToolbarHotkey(int hotkey);
-void HandleKeypress(uint keycode, WChar key);
+void HandleKeypress(uint keycode, char32_t key);
 void HandleTextInput(const char *str, bool marked = false, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
 void HandleCtrlChanged();
 void HandleMouseEvents();
@@ -90,14 +90,14 @@ Dimension GetScaledSpriteSize(SpriteID sprid); /* widget.cpp */
 void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr);
 void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = nullptr, ZoomLevel zoom = ZOOM_LVL_GUI);
 void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, bool clicked, StringAlignment align); /* widget.cpp */
-std::unique_ptr<uint32[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zoom = ZOOM_LVL_GUI);
+std::unique_ptr<uint32_t[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel zoom = ZOOM_LVL_GUI);
 
 int DrawString(int left, int right, int top, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
 int DrawString(int left, int right, int top, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
 int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
 int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
 
-void DrawCharCentered(WChar c, const Rect &r, TextColour colour);
+void DrawCharCentered(char32_t c, const Rect &r, TextColour colour);
 
 void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectMode mode = FILLRECT_OPAQUE);
 void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mode = FILLRECT_OPAQUE);
@@ -177,7 +177,7 @@ void SortResolutions();
 bool ToggleFullScreen(bool fs);
 
 /* gfx.cpp */
-byte GetCharacterWidth(FontSize size, WChar key);
+byte GetCharacterWidth(FontSize size, char32_t key);
 byte GetDigitWidth(FontSize size = FS_NORMAL);
 void GetBroadestDigit(uint *front, uint *next, FontSize size = FS_NORMAL);
 
@@ -208,7 +208,7 @@ static inline bool IsValidColours(Colours colours)
 	return colours < COLOUR_END;
 }
 
-TextColour GetContrastColour(uint8 background, uint8 threshold = 128);
+TextColour GetContrastColour(uint8_t background, uint8_t threshold = 128);
 
 /**
  * All 16 colour gradients
@@ -223,34 +223,34 @@ extern byte _colour_gradient[COLOUR_END][8];
  */
 #define GREY_SCALE(level) (level)
 
-static const uint8 PC_BLACK              = GREY_SCALE(1);  ///< Black palette colour.
-static const uint8 PC_DARK_GREY          = GREY_SCALE(6);  ///< Dark grey palette colour.
-static const uint8 PC_GREY               = GREY_SCALE(10); ///< Grey palette colour.
-static const uint8 PC_WHITE              = GREY_SCALE(15); ///< White palette colour.
+static const uint8_t PC_BLACK              = GREY_SCALE(1);  ///< Black palette colour.
+static const uint8_t PC_DARK_GREY          = GREY_SCALE(6);  ///< Dark grey palette colour.
+static const uint8_t PC_GREY               = GREY_SCALE(10); ///< Grey palette colour.
+static const uint8_t PC_WHITE              = GREY_SCALE(15); ///< White palette colour.
 
-static const uint8 PC_VERY_DARK_RED      = 0xB2;           ///< Almost-black red palette colour.
-static const uint8 PC_DARK_RED           = 0xB4;           ///< Dark red palette colour.
-static const uint8 PC_RED                = 0xB8;           ///< Red palette colour.
+static const uint8_t PC_VERY_DARK_RED      = 0xB2;           ///< Almost-black red palette colour.
+static const uint8_t PC_DARK_RED           = 0xB4;           ///< Dark red palette colour.
+static const uint8_t PC_RED                = 0xB8;           ///< Red palette colour.
 
-static const uint8 PC_VERY_DARK_BROWN    = 0x56;           ///< Almost-black brown palette colour.
+static const uint8_t PC_VERY_DARK_BROWN    = 0x56;           ///< Almost-black brown palette colour.
 
-static const uint8 PC_ORANGE             = 0xC2;           ///< Orange palette colour.
+static const uint8_t PC_ORANGE             = 0xC2;           ///< Orange palette colour.
 
-static const uint8 PC_YELLOW             = 0xBF;           ///< Yellow palette colour.
-static const uint8 PC_LIGHT_YELLOW       = 0x44;           ///< Light yellow palette colour.
-static const uint8 PC_VERY_LIGHT_YELLOW  = 0x45;           ///< Almost-white yellow palette colour.
+static const uint8_t PC_YELLOW             = 0xBF;           ///< Yellow palette colour.
+static const uint8_t PC_LIGHT_YELLOW       = 0x44;           ///< Light yellow palette colour.
+static const uint8_t PC_VERY_LIGHT_YELLOW  = 0x45;           ///< Almost-white yellow palette colour.
 
-static const uint8 PC_GREEN              = 0xD0;           ///< Green palette colour.
+static const uint8_t PC_GREEN              = 0xD0;           ///< Green palette colour.
 
-static const uint8 PC_VERY_DARK_BLUE     = 0x9A;           ///< Almost-black blue palette colour.
-static const uint8 PC_DARK_BLUE          = 0x9D;           ///< Dark blue palette colour.
-static const uint8 PC_LIGHT_BLUE         = 0x98;           ///< Light blue palette colour.
+static const uint8_t PC_VERY_DARK_BLUE     = 0x9A;           ///< Almost-black blue palette colour.
+static const uint8_t PC_DARK_BLUE          = 0x9D;           ///< Dark blue palette colour.
+static const uint8_t PC_LIGHT_BLUE         = 0x98;           ///< Light blue palette colour.
 
-static const uint8 PC_ROUGH_LAND         = 0x52;           ///< Dark green palette colour for rough land.
-static const uint8 PC_GRASS_LAND         = 0x54;           ///< Dark green palette colour for grass land.
-static const uint8 PC_BARE_LAND          = 0x37;           ///< Brown palette colour for bare land.
-static const uint8 PC_RAINFOREST         = 0x5C;           ///< Pale green palette colour for rainforest.
-static const uint8 PC_FIELDS             = 0x25;           ///< Light brown palette colour for fields.
-static const uint8 PC_TREES              = 0x57;           ///< Green palette colour for trees.
-static const uint8 PC_WATER              = 0xC9;           ///< Dark blue palette colour for water.
+static const uint8_t PC_ROUGH_LAND         = 0x52;           ///< Dark green palette colour for rough land.
+static const uint8_t PC_GRASS_LAND         = 0x54;           ///< Dark green palette colour for grass land.
+static const uint8_t PC_BARE_LAND          = 0x37;           ///< Brown palette colour for bare land.
+static const uint8_t PC_RAINFOREST         = 0x5C;           ///< Pale green palette colour for rainforest.
+static const uint8_t PC_FIELDS             = 0x25;           ///< Light brown palette colour for fields.
+static const uint8_t PC_TREES              = 0x57;           ///< Green palette colour for trees.
+static const uint8_t PC_WATER              = 0xC9;           ///< Dark blue palette colour for water.
 #endif /* GFX_FUNC_H */

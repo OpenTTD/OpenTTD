@@ -60,7 +60,7 @@
 
 #include "../../safeguards.h"
 
-#define T_MASK ((uint32)~0)
+#define T_MASK ((uint32_t)~0)
 #define T1 /* 0xd76aa478 */ (T_MASK ^ 0x28955b87)
 #define T2 /* 0xe8c7b756 */ (T_MASK ^ 0x173848a9)
 #define T3    0x242070db
@@ -126,31 +126,31 @@
 #define T63    0x2ad7d2bb
 #define T64 /* 0xeb86d391 */ (T_MASK ^ 0x14792c6e)
 
-static inline void Md5Set1(const uint32 *X, uint32 *a, const uint32 *b, const uint32 *c, const uint32 *d, const uint8 k, const uint8 s, const uint32 Ti)
+static inline void Md5Set1(const uint32_t *X, uint32_t *a, const uint32_t *b, const uint32_t *c, const uint32_t *d, const uint8_t k, const uint8_t s, const uint32_t Ti)
 {
-	uint32 t = (*b & *c) | (~*b & *d);
+	uint32_t t = (*b & *c) | (~*b & *d);
 	t += *a + X[k] + Ti;
 	*a = ROL(t, s) + *b;
 }
 
-static inline void Md5Set2(const uint32 *X, uint32 *a, const uint32 *b, const uint32 *c, const uint32 *d, const uint8 k, const uint8 s, const uint32 Ti)
+static inline void Md5Set2(const uint32_t *X, uint32_t *a, const uint32_t *b, const uint32_t *c, const uint32_t *d, const uint8_t k, const uint8_t s, const uint32_t Ti)
 {
-	uint32 t = (*b & *d) | (*c & ~*d);
+	uint32_t t = (*b & *d) | (*c & ~*d);
 	t += *a + X[k] + Ti;
 	*a = ROL(t, s) + *b;
 }
 
 
-static inline void Md5Set3(const uint32 *X, uint32 *a, const uint32 *b, const uint32 *c, const uint32 *d, const uint8 k, const uint8 s, const uint32 Ti)
+static inline void Md5Set3(const uint32_t *X, uint32_t *a, const uint32_t *b, const uint32_t *c, const uint32_t *d, const uint8_t k, const uint8_t s, const uint32_t Ti)
 {
-	uint32 t = *b ^ *c ^ *d;
+	uint32_t t = *b ^ *c ^ *d;
 	t += *a + X[k] + Ti;
 	*a = ROL(t, s) + *b;
 }
 
-static inline void Md5Set4(const uint32 *X, uint32 *a, const uint32 *b, const uint32 *c, const uint32 *d, const uint8 k, const uint8 s, const uint32 Ti)
+static inline void Md5Set4(const uint32_t *X, uint32_t *a, const uint32_t *b, const uint32_t *c, const uint32_t *d, const uint8_t k, const uint8_t s, const uint32_t Ti)
 {
-	uint32 t = *c ^ (*b | ~*d);
+	uint32_t t = *c ^ (*b | ~*d);
 	t += *a + X[k] + Ti;
 	*a = ROL(t, s) + *b;
 }
@@ -165,17 +165,17 @@ Md5::Md5()
 	abcd[3] = 0x10325476;
 }
 
-void Md5::Process(const uint8 *data /*[64]*/)
+void Md5::Process(const uint8_t *data /*[64]*/)
 {
-	uint32 a = this->abcd[0];
-	uint32 b = this->abcd[1];
-	uint32 c = this->abcd[2];
-	uint32 d = this->abcd[3];
+	uint32_t a = this->abcd[0];
+	uint32_t b = this->abcd[1];
+	uint32_t c = this->abcd[2];
+	uint32_t d = this->abcd[3];
 
-	uint32 X[16];
+	uint32_t X[16];
 
-	/* Convert the uint8 data to uint32 LE */
-	const uint32 *px = (const uint32 *)data;
+	/* Convert the uint8_t data to uint32_t LE */
+	const uint32_t *px = (const uint32_t *)data;
 	for (uint i = 0; i < 16; i++) {
 		X[i] = TO_LE32(*px);
 		px++;
@@ -264,15 +264,15 @@ void Md5::Process(const uint8 *data /*[64]*/)
 
 void Md5::Append(const void *data, const size_t nbytes)
 {
-	const uint8 *p = (const uint8 *)data;
+	const uint8_t *p = (const uint8_t *)data;
 	size_t left = nbytes;
 	const size_t offset = (this->count[0] >> 3) & 63;
-	const uint32 nbits = (uint32)(nbytes << 3);
+	const uint32_t nbits = (uint32_t)(nbytes << 3);
 
 	if (nbytes <= 0) return;
 
 	/* Update the message length. */
-	this->count[1] += (uint32)(nbytes >> 29);
+	this->count[1] += (uint32_t)(nbytes >> 29);
 	this->count[0] += nbits;
 
 	if (this->count[0] < nbits) this->count[1]++;
@@ -299,17 +299,17 @@ void Md5::Append(const void *data, const size_t nbytes)
 
 void Md5::Finish(MD5Hash &digest)
 {
-	static const uint8 pad[64] = {
+	static const uint8_t pad[64] = {
 		0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	};
-	uint8 data[8];
+	uint8_t data[8];
 
 	/* Save the length before padding. */
 	for (uint i = 0; i < 8; ++i) {
-		data[i] = (uint8)(this->count[i >> 2] >> ((i & 3) << 3));
+		data[i] = (uint8_t)(this->count[i >> 2] >> ((i & 3) << 3));
 	}
 
 	/* Pad to 56 bytes mod 64. */
@@ -318,6 +318,6 @@ void Md5::Finish(MD5Hash &digest)
 	this->Append(data, 8);
 
 	for (uint i = 0; i < 16; ++i) {
-		digest[i] = (uint8)(this->abcd[i >> 2] >> ((i & 3) << 3));
+		digest[i] = (uint8_t)(this->abcd[i >> 2] >> ((i & 3) << 3));
 	}
 }

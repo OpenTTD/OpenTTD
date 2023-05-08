@@ -179,7 +179,7 @@ typedef void (*SQPRINTFUNCTION)(HSQUIRRELVM,const std::string &);
 typedef SQInteger (*SQWRITEFUNC)(SQUserPointer,SQUserPointer,SQInteger);
 typedef SQInteger (*SQREADFUNC)(SQUserPointer,SQUserPointer,SQInteger);
 
-typedef WChar (*SQLEXREADFUNC)(SQUserPointer);
+typedef char32_t (*SQLEXREADFUNC)(SQUserPointer);
 
 typedef struct tagSQRegFunction{
 	const SQChar *name;

@@ -42,9 +42,9 @@ typedef uint BridgeType; ///< Bridge spec number.
 struct BridgeSpec {
 	TimerGameCalendar::Year avail_year; ///< the year where it becomes available
 	byte min_length;                    ///< the minimum length (not counting start and end tile)
-	uint16 max_length;                  ///< the maximum length (not counting start and end tile)
-	uint16 price;                       ///< the price multiplier
-	uint16 speed;                       ///< maximum travel speed (1 unit = 1/1.6 mph = 1 km-ish/h)
+	uint16_t max_length;                  ///< the maximum length (not counting start and end tile)
+	uint16_t price;                       ///< the price multiplier
+	uint16_t speed;                       ///< maximum travel speed (1 unit = 1/1.6 mph = 1 km-ish/h)
 	SpriteID sprite;                    ///< the sprite which is used in the GUI
 	PaletteID pal;                      ///< the palette which is used in the GUI
 	StringID material;                  ///< the string that contains the bridge description

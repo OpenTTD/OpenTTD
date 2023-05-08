@@ -25,7 +25,7 @@ TimerGameCalendar::Date TimerGameCalendar::date = {};
 TimerGameCalendar::DateFract TimerGameCalendar::date_fract = {};
 
 #define M(a, b) ((a << 5) | b)
-static const uint16 _month_date_from_year_day[] = {
+static const uint16_t _month_date_from_year_day[] = {
 	M(0, 1), M(0, 2), M(0, 3), M(0, 4), M(0, 5), M(0, 6), M(0, 7), M(0, 8), M(0, 9), M(0, 10), M(0, 11), M(0, 12), M(0, 13), M(0, 14), M(0, 15), M(0, 16), M(0, 17), M(0, 18), M(0, 19), M(0, 20), M(0, 21), M(0, 22), M(0, 23), M(0, 24), M(0, 25), M(0, 26), M(0, 27), M(0, 28), M(0, 29), M(0, 30), M(0, 31),
 	M(1, 1), M(1, 2), M(1, 3), M(1, 4), M(1, 5), M(1, 6), M(1, 7), M(1, 8), M(1, 9), M(1, 10), M(1, 11), M(1, 12), M(1, 13), M(1, 14), M(1, 15), M(1, 16), M(1, 17), M(1, 18), M(1, 19), M(1, 20), M(1, 21), M(1, 22), M(1, 23), M(1, 24), M(1, 25), M(1, 26), M(1, 27), M(1, 28), M(1, 29),
 	M(2, 1), M(2, 2), M(2, 3), M(2, 4), M(2, 5), M(2, 6), M(2, 7), M(2, 8), M(2, 9), M(2, 10), M(2, 11), M(2, 12), M(2, 13), M(2, 14), M(2, 15), M(2, 16), M(2, 17), M(2, 18), M(2, 19), M(2, 20), M(2, 21), M(2, 22), M(2, 23), M(2, 24), M(2, 25), M(2, 26), M(2, 27), M(2, 28), M(2, 29), M(2, 30), M(2, 31),
@@ -57,7 +57,7 @@ enum DaysTillMonth {
 };
 
 /** Number of days to pass from the first day in the year before reaching the first of a month. */
-static const uint16 _accum_days_for_month[] = {
+static const uint16_t _accum_days_for_month[] = {
 	ACCUM_JAN, ACCUM_FEB, ACCUM_MAR, ACCUM_APR,
 	ACCUM_MAY, ACCUM_JUN, ACCUM_JUL, ACCUM_AUG,
 	ACCUM_SEP, ACCUM_OCT, ACCUM_NOV, ACCUM_DEC,
@@ -77,7 +77,7 @@ static const uint16 _accum_days_for_month[] = {
 	/* There are 97 leap years in 400 years */
 	TimerGameCalendar::Year yr = 400 * (date / (DAYS_IN_YEAR * 400 + 97));
 	int rem = date % (DAYS_IN_YEAR * 400 + 97);
-	uint16 x;
+	uint16_t x;
 
 	if (rem >= DAYS_IN_YEAR * 100 + 25) {
 		/* There are 25 leap years in the first 100 years after

@@ -102,9 +102,9 @@ static std::vector<WindowDesc*> *_window_descs = nullptr;
 std::string _windows_file;
 
 /** Window description constructor. */
-WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_width_trad, int16 def_height_trad,
-			WindowClass window_class, WindowClass parent_class, uint32 flags,
-			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys) :
+WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
+			WindowClass window_class, WindowClass parent_class, uint32_t flags,
+			const NWidgetPart *nwid_parts, int16_t nwid_length, HotkeyList *hotkeys) :
 	default_pos(def_pos),
 	cls(window_class),
 	parent_cls(parent_class),
@@ -133,7 +133,7 @@ WindowDesc::~WindowDesc()
  * This is either a stored user preferred size, or the built-in default.
  * @return Width in pixels.
  */
-int16 WindowDesc::GetDefaultWidth() const
+int16_t WindowDesc::GetDefaultWidth() const
 {
 	return this->pref_width != 0 ? this->pref_width : ScaleGUITrad(this->default_width_trad);
 }
@@ -143,7 +143,7 @@ int16 WindowDesc::GetDefaultWidth() const
  * This is either a stored user preferred size, or the built-in default.
  * @return Height in pixels.
  */
-int16 WindowDesc::GetDefaultHeight() const
+int16_t WindowDesc::GetDefaultHeight() const
 {
 	return this->pref_height != 0 ? this->pref_height : ScaleGUITrad(this->default_height_trad);
 }
@@ -752,8 +752,8 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 				w->window_desc->pref_width = w->width;
 				w->window_desc->pref_height = w->height;
 			} else {
-				int16 def_width = std::max<int16>(std::min<int16>(w->window_desc->GetDefaultWidth(), _screen.width), w->nested_root->smallest_x);
-				int16 def_height = std::max<int16>(std::min<int16>(w->window_desc->GetDefaultHeight(), _screen.height - 50), w->nested_root->smallest_y);
+				int16_t def_width = std::max<int16_t>(std::min<int16_t>(w->window_desc->GetDefaultWidth(), _screen.width), w->nested_root->smallest_x);
+				int16_t def_height = std::max<int16_t>(std::min<int16_t>(w->window_desc->GetDefaultHeight(), _screen.height - 50), w->nested_root->smallest_y);
 
 				int dx = (w->resize.step_width  == 0) ? 0 : def_width  - w->width;
 				int dy = (w->resize.step_height == 0) ? 0 : def_height - w->height;
@@ -1721,13 +1721,13 @@ Point GetToolbarAlignedWindowPosition(int window_width)
  *
  * @return Coordinate of the top-left corner of the new window.
  */
-static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+static Point LocalGetWindowPlacement(const WindowDesc *desc, int16_t sm_width, int16_t sm_height, int window_number)
 {
 	Point pt;
 	const Window *w;
 
-	int16 default_width  = std::max(desc->GetDefaultWidth(),  sm_width);
-	int16 default_height = std::max(desc->GetDefaultHeight(), sm_height);
+	int16_t default_width  = std::max(desc->GetDefaultWidth(),  sm_width);
+	int16_t default_height = std::max(desc->GetDefaultHeight(), sm_height);
 
 	if (desc->parent_cls != WC_NONE && (w = FindWindowById(desc->parent_cls, window_number)) != nullptr) {
 		bool rtl = _current_text_dir == TD_RTL;
@@ -1780,7 +1780,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 	return pt;
 }
 
-/* virtual */ Point Window::OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
+/* virtual */ Point Window::OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number)
 {
 	return LocalGetWindowPlacement(this->window_desc, sm_width, sm_height, window_number);
 }
@@ -2545,7 +2545,7 @@ static bool MaybeBringWindowToFront(Window *w)
  * @return #ES_HANDLED if the key press has been handled and no other
  *         window should receive the event.
  */
-EventState Window::HandleEditBoxKey(int wid, WChar key, uint16 keycode)
+EventState Window::HandleEditBoxKey(int wid, char32_t key, uint16_t keycode)
 {
 	QueryString *query = this->GetQueryString(wid);
 	if (query == nullptr) return ES_NOT_HANDLED;
@@ -2634,7 +2634,7 @@ void HandleToolbarHotkey(int hotkey)
  * @param keycode Virtual keycode of the key.
  * @param key Unicode character of the key.
  */
-void HandleKeypress(uint keycode, WChar key)
+void HandleKeypress(uint keycode, char32_t key)
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
@@ -2803,7 +2803,7 @@ static void ScrollMainViewport(int x, int y)
  * 4 = right
  * 8 = down
  */
-static const int8 scrollamt[16][2] = {
+static const int8_t scrollamt[16][2] = {
 	{ 0,  0}, ///<  no key specified
 	{-2,  0}, ///<  1 : left
 	{ 0, -2}, ///<  2 : up

@@ -28,7 +28,7 @@ public:
 	/**
 	 * The goal IDs.
 	 */
-	enum GoalID : uint16 {
+	enum GoalID : uint16_t {
 		/* Note: these values represent part of the in-game GoalID enum */
 		GOAL_INVALID = ::INVALID_GOAL, ///< An invalid goal id.
 	};
@@ -191,7 +191,7 @@ public:
 	 * @pre question != null && len(question) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
-	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16_t)
 	 * @note Replies to the question are given by you via the event ScriptEventGoalQuestionAnswer.
 	 * @note There is no guarantee you ever get a reply on your question.
 	 */
@@ -210,7 +210,7 @@ public:
 	 * @pre question != null && len(question) != 0.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
-	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16_t)
 	 * @note Replies to the question are given by you via the event ScriptEventGoalQuestionAnswer.
 	 * @note There is no guarantee you ever get a reply on your question.
 	 */
@@ -221,7 +221,7 @@ public:
 	 * @param uniqueid The uniqueid of the question you want to close.
 	 * @return True if the action succeeded.
 	 * @pre ScriptCompanyMode::IsDeity().
-	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16)
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16_t)
 	 * @note If you send a question to a single company, and get a reply for them,
 	 *   the question is already closed on all clients. Only use this function if
 	 *   you want to timeout a question, or if you send the question to all
@@ -233,7 +233,7 @@ protected:
 	/**
 	 * Does common checks and asks the question.
 	 */
-	static bool DoQuestion(SQInteger uniqueid, uint32 target, bool is_client, Text *question, QuestionType type, SQInteger buttons);
+	static bool DoQuestion(SQInteger uniqueid, uint32_t target, bool is_client, Text *question, QuestionType type, SQInteger buttons);
 };
 
 #endif /* SCRIPT_GOAL_HPP */

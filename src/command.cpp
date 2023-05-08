@@ -428,7 +428,7 @@ void CommandCost::AddCost(const CommandCost &ret)
  * There is only one static instance of the array, just like there is only one
  * instance of normal DParams.
  */
-uint32 CommandCost::textref_stack[16];
+uint32_t CommandCost::textref_stack[16];
 
 /**
  * Activate usage of the NewGRF #TextRefStack for the error message.
@@ -437,7 +437,7 @@ uint32 CommandCost::textref_stack[16];
  */
 void CommandCost::UseTextRefStack(const GRFFile *grffile, uint num_registers)
 {
-	extern TemporaryStorageArray<int32, 0x110> _temp_store;
+	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
 
 	assert(num_registers < lengthof(textref_stack));
 	this->textref_stack_grffile = grffile;

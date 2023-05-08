@@ -12,7 +12,7 @@
 
 #include "../safeguards.h"
 
-const uint8 _ffb_64[64] = {
+const uint8_t _ffb_64[64] = {
 	0,  0,  1,  0,  2,  0,  1,  0,
 	3,  0,  1,  0,  2,  0,  1,  0,
 	4,  0,  1,  0,  2,  0,  1,  0,
@@ -34,13 +34,13 @@ const uint8 _ffb_64[64] = {
  * @param x The value to search
  * @return The position of the first bit set
  */
-uint8 FindFirstBit(uint64 x)
+uint8_t FindFirstBit(uint64_t x)
 {
 	if (x == 0) return 0;
 	/* The macro FIND_FIRST_BIT is better to use when your x is
 	  not more than 128. */
 
-	uint8 pos = 0;
+	uint8_t pos = 0;
 
 	if ((x & 0xffffffffULL) == 0) { x >>= 32; pos += 32; }
 	if ((x & 0x0000ffffULL) == 0) { x >>= 16; pos += 16; }
@@ -63,11 +63,11 @@ uint8 FindFirstBit(uint64 x)
  * @param x The value to search
  * @return The position of the last bit set
  */
-uint8 FindLastBit(uint64 x)
+uint8_t FindLastBit(uint64_t x)
 {
 	if (x == 0) return 0;
 
-	uint8 pos = 0;
+	uint8_t pos = 0;
 
 	if ((x & 0xffffffff00000000ULL) != 0) { x >>= 32; pos += 32; }
 	if ((x & 0x00000000ffff0000ULL) != 0) { x >>= 16; pos += 16; }

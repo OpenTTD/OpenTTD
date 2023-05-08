@@ -34,8 +34,8 @@ struct TownScopeResolver : public ScopeResolver {
 	{
 	}
 
-	virtual uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
-	virtual void StorePSA(uint reg, int32 value);
+	virtual uint32_t GetVariable(byte variable, uint32_t parameter, bool *available) const;
+	virtual void StorePSA(uint reg, int32_t value);
 };
 
 /** Resolver of town properties. */

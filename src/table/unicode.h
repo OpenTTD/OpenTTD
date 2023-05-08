@@ -8,7 +8,7 @@
 /** @file unicode.h Character mapping for using Unicode characters in OTTD. */
 
 struct DefaultUnicodeMapping {
-	WChar code; ///< Unicode value
+	char32_t code; ///< Unicode value
 	byte key;   ///< Character index of sprite
 };
 

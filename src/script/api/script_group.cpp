@@ -201,8 +201,8 @@
 {
 	if (!IsValidGroup(group_id)) return -1;
 
-	uint32 occupancy = 0;
-	uint32 vehicle_count = 0;
+	uint32_t occupancy = 0;
+	uint32_t vehicle_count = 0;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->group_id != group_id) continue;

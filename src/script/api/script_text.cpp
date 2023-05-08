@@ -133,7 +133,7 @@ SQInteger ScriptText::AddParam(HSQUIRRELVM vm)
 
 SQInteger ScriptText::_set(HSQUIRRELVM vm)
 {
-	int32 k;
+	int32_t k;
 
 	if (sq_gettype(vm, 2) == OT_STRING) {
 		const SQChar *key_string;
@@ -146,7 +146,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	} else if (sq_gettype(vm, 2) == OT_INTEGER) {
 		SQInteger key;
 		sq_getinteger(vm, 2, &key);
-		k = (int32)key;
+		k = (int32_t)key;
 	} else {
 		return SQ_ERROR;
 	}

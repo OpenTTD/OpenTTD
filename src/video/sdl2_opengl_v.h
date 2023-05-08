@@ -27,7 +27,7 @@ public:
 	void PopulateSystemSprites() override;
 
 	bool HasAnimBuffer() override { return true; }
-	uint8 *GetAnimBuffer() override { return this->anim_buffer; }
+	uint8_t *GetAnimBuffer() override { return this->anim_buffer; }
 
 	void ToggleVsync(bool vsync) override;
 
@@ -42,7 +42,7 @@ protected:
 
 private:
 	void  *gl_context;  ///< OpenGL context.
-	uint8 *anim_buffer; ///< Animation buffer from OpenGL back-end.
+	uint8_t *anim_buffer; ///< Animation buffer from OpenGL back-end.
 
 	const char *AllocateContext();
 	void DestroyContext();

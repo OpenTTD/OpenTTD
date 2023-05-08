@@ -42,7 +42,7 @@
 
 #include "safeguards.h"
 
-static const uint16 _roadveh_images[] = {
+static const uint16_t _roadveh_images[] = {
 	0xCD4, 0xCDC, 0xCE4, 0xCEC, 0xCF4, 0xCFC, 0xD0C, 0xD14,
 	0xD24, 0xD1C, 0xD2C, 0xD04, 0xD1C, 0xD24, 0xD6C, 0xD74,
 	0xD7C, 0xC14, 0xC1C, 0xC24, 0xC2C, 0xC34, 0xC3C, 0xC4C,
@@ -53,7 +53,7 @@ static const uint16 _roadveh_images[] = {
 	0xC5C, 0xC64, 0xC6C, 0xC74, 0xC84, 0xC94, 0xCA4
 };
 
-static const uint16 _roadveh_full_adder[] = {
+static const uint16_t _roadveh_full_adder[] = {
 	 0,  88,   0,   0,   0,   0,  48,  48,
 	48,  48,   0,   0,  64,  64,   0,  16,
 	16,   0,  88,   0,   0,   0,   0,  48,
@@ -66,7 +66,7 @@ static const uint16 _roadveh_full_adder[] = {
 static_assert(lengthof(_roadveh_images) == lengthof(_roadveh_full_adder));
 
 template <>
-bool IsValidImageIndex<VEH_ROAD>(uint8 image_index)
+bool IsValidImageIndex<VEH_ROAD>(uint8_t image_index)
 {
 	return image_index < lengthof(_roadveh_images);
 }
@@ -104,7 +104,7 @@ int RoadVehicle::GetDisplayImageWidth(Point *offset) const
 static void GetRoadVehIcon(EngineID engine, EngineImageType image_type, VehicleSpriteSeq *result)
 {
 	const Engine *e = Engine::Get(engine);
-	uint8 spritenum = e->u.road.image_index;
+	uint8_t spritenum = e->u.road.image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
@@ -119,7 +119,7 @@ static void GetRoadVehIcon(EngineID engine, EngineImageType image_type, VehicleS
 
 void RoadVehicle::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const
 {
-	uint8 spritenum = this->spritenum;
+	uint8_t spritenum = this->spritenum;
 
 	if (is_custom_sprite(spritenum)) {
 		GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)), image_type, result);
@@ -192,7 +192,7 @@ static uint GetRoadVehLength(const RoadVehicle *v)
 	const Engine *e = v->GetEngine();
 	uint length = VEHICLE_LENGTH;
 
-	uint16 veh_len = CALLBACK_FAILED;
+	uint16_t veh_len = CALLBACK_FAILED;
 	if (e->GetGRF() != nullptr && e->GetGRF()->grf_version >= 8) {
 		/* Use callback 36 */
 		veh_len = GetVehicleProperty(v, PROP_ROADVEH_SHORTEN_FACTOR, CALLBACK_FAILED);
@@ -402,7 +402,7 @@ void RoadVehicle::MarkDirty()
 
 void RoadVehicle::UpdateDeltaXY()
 {
-	static const int8 _delta_xy_table[8][10] = {
+	static const int8_t _delta_xy_table[8][10] = {
 		/* y_extent, x_extent, y_offs, x_offs, y_bb_offs, x_bb_offs, y_extent_shorten, x_extent_shorten, y_bb_offs_shorten, x_bb_offs_shorten */
 		{3, 3, -1, -1,  0,  0, -1, -1, -1, -1}, // N
 		{3, 7, -1, -3,  0, -1,  0, -1,  0,  0}, // NE
@@ -417,7 +417,7 @@ void RoadVehicle::UpdateDeltaXY()
 	int shorten = VEHICLE_LENGTH - this->gcache.cached_veh_length;
 	if (!IsDiagonalDirection(this->direction)) shorten >>= 1;
 
-	const int8 *bb = _delta_xy_table[this->direction];
+	const int8_t *bb = _delta_xy_table[this->direction];
 	this->x_bb_offs     = bb[5] + bb[9] * shorten;
 	this->y_bb_offs     = bb[4] + bb[8] * shorten;;
 	this->x_offs        = bb[3];
@@ -480,7 +480,7 @@ static void RoadVehSetRandomDirection(RoadVehicle *v)
 	};
 
 	do {
-		uint32 r = Random();
+		uint32_t r = Random();
 
 		v->direction = ChangeDir(v->direction, delta[r & 3]);
 		v->UpdateViewport(true, true);
@@ -614,8 +614,8 @@ struct RoadVehFindData {
 
 static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 {
-	static const int8 dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
-	static const int8 dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
+	static const int8_t dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
+	static const int8_t dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
 
 	RoadVehFindData *rvf = (RoadVehFindData*)data;
 
@@ -853,7 +853,7 @@ static void RoadZPosAffectSpeed(RoadVehicle *v, int old_z)
 	if (old_z < v->z_pos) {
 		v->cur_speed = v->cur_speed * 232 / 256; // slow down by ~10%
 	} else {
-		uint16 spd = v->cur_speed + 2;
+		uint16_t spd = v->cur_speed + 2;
 		if (spd <= v->gcache.cached_max_track_speed) v->cur_speed = spd;
 	}
 }
@@ -1288,7 +1288,7 @@ again:
 			}
 		}
 
-		uint32 r = VehicleEnterTile(v, tile, x, y);
+		uint32_t r = VehicleEnterTile(v, tile, x, y);
 		if (HasBit(r, VETS_CANNOT_ENTER)) {
 			if (!IsTileType(tile, MP_TUNNELBRIDGE)) {
 				v->cur_speed = 0;
@@ -1404,7 +1404,7 @@ again:
 			}
 		}
 
-		uint32 r = VehicleEnterTile(v, v->tile, x, y);
+		uint32_t r = VehicleEnterTile(v, v->tile, x, y);
 		if (HasBit(r, VETS_CANNOT_ENTER)) {
 			v->cur_speed = 0;
 			return false;
@@ -1542,7 +1542,7 @@ again:
 
 	/* Check tile position conditions - i.e. stop position in depot,
 	 * entry onto bridge or into tunnel */
-	uint32 r = VehicleEnterTile(v, v->tile, x, y);
+	uint32_t r = VehicleEnterTile(v, v->tile, x, y);
 	if (HasBit(r, VETS_CANNOT_ENTER)) {
 		v->cur_speed = 0;
 		return false;
@@ -1752,9 +1752,9 @@ Trackdir RoadVehicle::GetVehicleTrackdir() const
 	return (Trackdir)((IsReversingRoadTrackdir((Trackdir)this->state)) ? (this->state - 6) : this->state);
 }
 
-uint16 RoadVehicle::GetMaxWeight() const
+uint16_t RoadVehicle::GetMaxWeight() const
 {
-	uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnits(this->GetEngine()->DetermineCapacity(this));
+	uint16_t weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnits(this->GetEngine()->DetermineCapacity(this));
 
 	/* Vehicle weight is not added for articulated parts. */
 	if (!this->IsArticulatedPart()) {

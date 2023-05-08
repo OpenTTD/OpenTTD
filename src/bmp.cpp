@@ -48,15 +48,15 @@ static inline byte ReadByte(BmpBuffer *buffer)
 	return buffer->data[buffer->pos++];
 }
 
-static inline uint16 ReadWord(BmpBuffer *buffer)
+static inline uint16_t ReadWord(BmpBuffer *buffer)
 {
-	uint16 var = ReadByte(buffer);
+	uint16_t var = ReadByte(buffer);
 	return var | (ReadByte(buffer) << 8);
 }
 
-static inline uint32 ReadDword(BmpBuffer *buffer)
+static inline uint32_t ReadDword(BmpBuffer *buffer)
 {
-	uint32 var = ReadWord(buffer);
+	uint32_t var = ReadWord(buffer);
 	return var | (ReadWord(buffer) << 16);
 }
 
@@ -316,7 +316,7 @@ static inline bool BmpRead24(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
  */
 bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
-	uint32 header_size;
+	uint32_t header_size;
 	assert(info != nullptr);
 	MemSetT(info, 0);
 

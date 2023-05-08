@@ -18,7 +18,7 @@
  * Pack a VehicleListIdentifier in a single uint32.
  * @return The packed identifier.
  */
-uint32 VehicleListIdentifier::Pack() const
+uint32_t VehicleListIdentifier::Pack() const
 {
 	byte c = this->company == OWNER_NONE ? 0xF : (byte)this->company;
 	assert(c             < (1 <<  4));
@@ -35,7 +35,7 @@ uint32 VehicleListIdentifier::Pack() const
  * @param data The data to unpack.
  * @return true iff the data was valid (enough).
  */
-bool VehicleListIdentifier::UnpackIfValid(uint32 data)
+bool VehicleListIdentifier::UnpackIfValid(uint32_t data)
 {
 	byte c        = GB(data, 28, 4);
 	this->company = c == 0xF ? OWNER_NONE : (CompanyID)c;
@@ -50,7 +50,7 @@ bool VehicleListIdentifier::UnpackIfValid(uint32 data)
  * Decode a packed vehicle list identifier into a new one.
  * @param data The data to unpack.
  */
-/* static */ VehicleListIdentifier VehicleListIdentifier::UnPack(uint32 data)
+/* static */ VehicleListIdentifier VehicleListIdentifier::UnPack(uint32_t data)
 {
 	VehicleListIdentifier result;
 	[[maybe_unused]] bool ret = result.UnpackIfValid(data);

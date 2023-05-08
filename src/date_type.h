@@ -12,11 +12,11 @@
 
 #include "timer/timer_game_calendar.h"
 
-typedef int32  Ticks;     ///< The type to store ticks in
+typedef int32_t  Ticks;     ///< The type to store ticks in
 
 
 /**
- * 1 day is 74 ticks; TimerGameCalendar::date_fract used to be uint16 and incremented by 885. On
+ * 1 day is 74 ticks; TimerGameCalendar::date_fract used to be uint16_t and incremented by 885. On
  *                    an overflow the new day begun and 65535 / 885 = 74.
  * 1 tick is approximately 27 ms.
  * 1 day is thus about 2 seconds (74 * 27 = 1998) on a machine that can run OpenTTD normally

@@ -12,7 +12,7 @@
 
 #include "core/enum_type.hpp"
 
-typedef uint16 TownID;
+typedef uint16_t TownID;
 struct Town;
 
 /** Supported initial town sizes */

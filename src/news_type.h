@@ -133,14 +133,14 @@ struct NewsItem {
 
 	NewsReferenceType reftype1;   ///< Type of ref1
 	NewsReferenceType reftype2;   ///< Type of ref2
-	uint32 ref1;                  ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
-	uint32 ref2;                  ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
+	uint32_t ref1;                  ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
+	uint32_t ref2;                  ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
 
 	std::unique_ptr<const NewsAllocatedData> data; ///< Custom data for the news item that will be deallocated (deleted) when the news item has reached its end.
 
 	std::vector<StringParameterBackup> params; ///< Parameters for string resolving.
 
-	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, const NewsAllocatedData *data);
+	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32_t ref1, NewsReferenceType reftype2, uint32_t ref2, const NewsAllocatedData *data);
 };
 
 /** Container for a single string to be passed as NewsAllocatedData. */
@@ -160,7 +160,7 @@ struct CompanyNewsInformation : NewsAllocatedData {
 	std::string president_name;     ///< The name of the president
 	std::string other_company_name; ///< The name of the company taking over this one
 
-	uint32 face; ///< The face of the president
+	uint32_t face; ///< The face of the president
 	byte colour; ///< The colour related to the company
 
 	CompanyNewsInformation(const struct Company *c, const struct Company *other = nullptr);

@@ -19,7 +19,7 @@ struct StringParameter {
 	uint64_t data; ///< The data of the parameter.
 	const char *string_view; ///< The string value, if it has any.
 	std::unique_ptr<std::string> string; ///< Copied string value, if it has any.
-	WChar type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
+	char32_t type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
 };
 
 class StringParameters {
@@ -28,7 +28,7 @@ protected:
 	span<StringParameter> parameters = {}; ///< Array with the actual parameters.
 
 	size_t offset = 0; ///< Current offset in the parameters span.
-	WChar next_type = 0; ///< The type of the next data that is retrieved.
+	char32_t next_type = 0; ///< The type of the next data that is retrieved.
 
 	StringParameters(span<StringParameter> parameters = {}) :
 		parameters(parameters)
@@ -54,7 +54,7 @@ public:
 	}
 
 	void PrepareForNextRun();
-	void SetTypeOfNextParameter(WChar type) { this->next_type = type; }
+	void SetTypeOfNextParameter(char32_t type) { this->next_type = type; }
 
 	/**
 	 * Get the current offset, so it can be backed up for certain processing
@@ -139,13 +139,13 @@ public:
 	}
 
 	/** Get the type of a specific element. */
-	WChar GetTypeAtOffset(size_t offset) const
+	char32_t GetTypeAtOffset(size_t offset) const
 	{
 		assert(offset < this->parameters.size());
 		return this->parameters[offset].type;
 	}
 
-	void SetParam(size_t n, uint64 v)
+	void SetParam(size_t n, uint64_t v)
 	{
 		assert(n < this->parameters.size());
 		this->parameters[n].data = v;
@@ -171,7 +171,7 @@ public:
 		this->parameters[n].string_view = nullptr;
 	}
 
-	uint64 GetParam(size_t n) const
+	uint64_t GetParam(size_t n) const
 	{
 		assert(n < this->parameters.size());
 		assert(this->parameters[n].string_view == nullptr && this->parameters[n].string == nullptr);
@@ -285,7 +285,7 @@ public:
 	 * Encode the given Utf8 character into the output buffer.
 	 * @param c The character to encode.
 	 */
-	void Utf8Encode(WChar c)
+	void Utf8Encode(char32_t c)
 	{
 		auto iterator = std::back_inserter(*this->string);
 		::Utf8Encode(iterator, c);
@@ -326,7 +326,7 @@ std::string GetStringWithArgs(StringID string, StringParameters &args);
 /* Do not leak the StringBuilder to everywhere. */
 void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32_t seed);
 void GetTownName(StringBuilder &builder, const struct Town *t);
-void GRFTownNameGenerate(StringBuilder &builder, uint32 grfid, uint16 gen, uint32 seed);
+void GRFTownNameGenerate(StringBuilder &builder, uint32_t grfid, uint16_t gen, uint32_t seed);
 
 uint RemapNewGRFStringControlCode(uint scc, const char **str, StringParameters &parameters, bool modify_parameters);
 

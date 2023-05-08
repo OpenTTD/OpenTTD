@@ -190,9 +190,9 @@ static StringID GetTrainEngineInfoString(const Engine *e)
 static StringID GetAircraftEngineInfoString(const Engine *e)
 {
 	CargoID cargo = e->GetDefaultCargoType();
-	uint16 mail_capacity;
+	uint16_t mail_capacity;
 	uint capacity = e->GetDisplayDefaultCapacity(&mail_capacity);
-	uint16 range = e->GetRange();
+	uint16_t range = e->GetRange();
 
 	uint i = 0;
 	SetDParam(i++, e->GetCost());

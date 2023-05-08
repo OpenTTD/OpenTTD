@@ -101,7 +101,7 @@ public:
 	void ClearCursorCache();
 
 	void *GetVideoBuffer();
-	uint8 *GetAnimBuffer();
+	uint8_t *GetAnimBuffer();
 	void ReleaseVideoBuffer(const Rect &update_rect);
 	void ReleaseAnimBuffer(const Rect &update_rect);
 

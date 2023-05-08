@@ -1287,7 +1287,7 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 
 
 struct DrawRoadTileStruct {
-	uint16 image;
+	uint16_t image;
 	byte subcoord_x;
 	byte subcoord_y;
 };

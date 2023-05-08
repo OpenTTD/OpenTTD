@@ -40,10 +40,10 @@
 #include "../safeguards.h"
 
 static bool _read_ttdpatch_flags;    ///< Have we (tried to) read TTDPatch extra flags?
-static uint16 _old_extra_chunk_nums; ///< Number of extra TTDPatch chunks
+static uint16_t _old_extra_chunk_nums; ///< Number of extra TTDPatch chunks
 static byte _old_vehicle_multiplier; ///< TTDPatch vehicle multiplier
 
-static uint8 *_old_map3;
+static uint8_t *_old_map3;
 
 void FixOldMapArray()
 {
@@ -121,7 +121,7 @@ static void FixTTDDepots()
 
 #define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)
 
-static uint32 RemapOldTownName(uint32 townnameparts, byte old_town_name_type)
+static uint32_t RemapOldTownName(uint32_t townnameparts, byte old_town_name_type)
 {
 	switch (old_town_name_type) {
 		case 0: case 3: // English, American
@@ -494,9 +494,9 @@ extern std::vector<TileIndex> _animated_tiles;
 extern TimeoutTimer<TimerGameTick> _new_competitor_timeout;
 extern char *_old_name_array;
 
-static uint32 _old_town_index;
-static uint16 _old_string_id;
-static uint16 _old_string_id_2;
+static uint32_t _old_town_index;
+static uint16_t _old_string_id;
+static uint16_t _old_string_id_2;
 
 static void ReadTTDPatchFlags()
 {
@@ -613,7 +613,7 @@ static bool LoadOldTown(LoadgameState *ls, int num)
 	return true;
 }
 
-static uint16 _old_order;
+static uint16_t _old_order;
 static const OldChunks order_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_order ),
 	OCL_END()
@@ -681,9 +681,9 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 }
 
 static StationID _current_station_id;
-static uint16 _waiting_acceptance;
-static uint8  _cargo_source;
-static uint8  _cargo_periods;
+static uint16_t _waiting_acceptance;
+static uint8_t  _cargo_source;
+static uint8_t  _cargo_periods;
 
 static const OldChunks goods_chunk[] = {
 	OCL_VAR ( OC_UINT16, 1,          &_waiting_acceptance ),
@@ -860,7 +860,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 }
 
 static CompanyID _current_company_id;
-static int32 _old_yearly;
+static int32_t _old_yearly;
 
 static const OldChunks _company_yearly_chunk[] = {
 	OCL_VAR(  OC_INT32,   1, &_old_yearly ),
@@ -1025,8 +1025,8 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 	return true;
 }
 
-static uint32 _old_order_ptr;
-static uint16 _old_next_ptr;
+static uint32_t _old_order_ptr;
+static uint16_t _old_next_ptr;
 static VehicleID _current_vehicle_id;
 
 static const OldChunks vehicle_train_chunk[] = {
@@ -1126,7 +1126,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 	return res;
 }
 
-static uint16 _cargo_count;
+static uint16_t _cargo_count;
 
 static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Vehicle, subtype ),
@@ -1523,8 +1523,8 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 	Debug(oldloader, 2, "Found {} extra chunk(s)", _old_extra_chunk_nums);
 
 	for (int i = 0; i != _old_extra_chunk_nums; i++) {
-		uint16 id = ReadUint16(ls);
-		uint32 len = ReadUint32(ls);
+		uint16_t id = ReadUint16(ls);
+		uint32_t len = ReadUint32(ls);
 
 		switch (id) {
 			/* List of GRFIDs, used in the savegame. 0x8004 is the new ID
@@ -1536,7 +1536,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 
 				ClearGRFConfigList(&_grfconfig);
 				while (len != 0) {
-					uint32 grfid = ReadUint32(ls);
+					uint32_t grfid = ReadUint32(ls);
 
 					if (ReadByte(ls) == 1) {
 						GRFConfig *c = new GRFConfig("TTDP game, no information");
@@ -1573,11 +1573,11 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 }
 
 extern TileIndex _cur_tileloop_tile;
-extern uint16 _disaster_delay;
+extern uint16_t _disaster_delay;
 extern byte _trees_tick_ctr;
 extern byte _age_cargo_skip_counter; // From misc_sl.cpp
-extern uint8 _old_diff_level;
-extern uint8 _old_units;
+extern uint8_t _old_diff_level;
+extern uint8_t _old_units;
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0 ),
 	OCL_ASSERT( OC_TTO, 0 ),

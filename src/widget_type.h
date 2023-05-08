@@ -147,7 +147,7 @@ public:
 	 * @param bottom Amount of additional space below the widget.
 	 * @param left   Amount of additional space left of the widget.
 	 */
-	inline void SetPadding(uint8 top, uint8 right, uint8 bottom, uint8 left)
+	inline void SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uint8_t left)
 	{
 		this->uz_padding.top = top;
 		this->uz_padding.right = right;
@@ -259,7 +259,7 @@ public:
 	void AdjustPaddingForZoom() override;
 	void SetMinimalSize(uint min_x, uint min_y);
 	void SetMinimalSizeAbsolute(uint min_x, uint min_y);
-	void SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size);
+	void SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, FontSize size);
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 
@@ -274,8 +274,8 @@ public:
 	uint uz_min_x; ///< Unscaled Minimal horizontal size of only this widget.
 	uint uz_min_y; ///< Unscaled Minimal vertical size of only this widget.
 
-	uint8 uz_text_lines;   ///< 'Unscaled' text lines, stored for resize calculation.
-	uint8 uz_text_spacing; ///< 'Unscaled' text padding, stored for resize calculation.
+	uint8_t uz_text_lines;   ///< 'Unscaled' text lines, stored for resize calculation.
+	uint8_t uz_text_spacing; ///< 'Unscaled' text padding, stored for resize calculation.
 	FontSize uz_text_size; ///< 'Unscaled' font size, stored for resize calculation.
 };
 
@@ -317,10 +317,10 @@ DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
  */
 class NWidgetCore : public NWidgetResizeBase {
 public:
-	NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip);
+	NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip);
 
 	void SetIndex(int index);
-	void SetDataTip(uint32 widget_data, StringID tool_tip);
+	void SetDataTip(uint32_t widget_data, StringID tool_tip);
 	void SetToolTip(StringID tool_tip);
 	void SetTextStyle(TextColour colour, FontSize size);
 	void SetAlignment(StringAlignment align);
@@ -339,7 +339,7 @@ public:
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
 	int index;                 ///< Index of the nested widget in the widget array of the window (\c -1 means 'not used').
-	uint32 widget_data;        ///< Data of the widget. @see Widget::data
+	uint32_t widget_data;        ///< Data of the widget. @see Widget::data
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
 	int scrollbar_index;       ///< Index of an attached scrollbar.
 	TextColour highlight_colour; ///< Colour of highlight.
@@ -480,20 +480,20 @@ public:
 	NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags = NC_NONE);
 
 	void AdjustPaddingForZoom() override;
-	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
+	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
 
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 
 protected:
 	NWidContainerFlags flags; ///< Flags of the container.
-	uint8 pip_pre;            ///< Amount of space before first widget.
-	uint8 pip_inter;          ///< Amount of space between widgets.
-	uint8 pip_post;           ///< Amount of space after last widget.
+	uint8_t pip_pre;            ///< Amount of space before first widget.
+	uint8_t pip_inter;          ///< Amount of space between widgets.
+	uint8_t pip_post;           ///< Amount of space after last widget.
 
-	uint8 uz_pip_pre;         ///< Unscaled space before first widget.
-	uint8 uz_pip_inter;       ///< Unscaled space between widgets.
-	uint8 uz_pip_post;        ///< Unscaled space after last widget.
+	uint8_t uz_pip_pre;         ///< Unscaled space before first widget.
+	uint8_t uz_pip_inter;       ///< Unscaled space between widgets.
+	uint8_t uz_pip_post;        ///< Unscaled space after last widget.
 };
 
 /**
@@ -597,7 +597,7 @@ public:
 	~NWidgetBackground();
 
 	void Add(NWidgetBase *nwid);
-	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
+	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
 
 	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w, bool init_array) override;
@@ -629,7 +629,7 @@ public:
 	void SetupSmallestSize(Window *w, bool init_array) override;
 	void Draw(const Window *w) override;
 
-	void InitializeViewport(Window *w, uint32 follow_flags, ZoomLevel zoom);
+	void InitializeViewport(Window *w, uint32_t follow_flags, ZoomLevel zoom);
 	void UpdateViewportCoordinates(Window *w);
 };
 
@@ -639,10 +639,10 @@ public:
 class Scrollbar {
 private:
 	const bool is_vertical; ///< Scrollbar has vertical orientation.
-	uint16 count;           ///< Number of elements in the list.
-	uint16 cap;             ///< Number of visible elements of the scroll bar.
-	uint16 pos;             ///< Index of first visible item of the list.
-	uint16 stepsize;        ///< Distance to scroll, when pressing the buttons or using the wheel.
+	uint16_t count;           ///< Number of elements in the list.
+	uint16_t cap;             ///< Number of visible elements of the scroll bar.
+	uint16_t pos;             ///< Index of first visible item of the list.
+	uint16_t stepsize;        ///< Distance to scroll, when pressing the buttons or using the wheel.
 
 public:
 	/** Stepping sizes when scrolling */
@@ -660,7 +660,7 @@ public:
 	 * Gets the number of elements in the list
 	 * @return the number of elements
 	 */
-	inline uint16 GetCount() const
+	inline uint16_t GetCount() const
 	{
 		return this->count;
 	}
@@ -669,7 +669,7 @@ public:
 	 * Gets the number of visible elements of the scrollbar
 	 * @return the number of visible elements
 	 */
-	inline uint16 GetCapacity() const
+	inline uint16_t GetCapacity() const
 	{
 		return this->cap;
 	}
@@ -678,7 +678,7 @@ public:
 	 * Gets the position of the first visible element in the list
 	 * @return the position of the element
 	 */
-	inline uint16 GetPosition() const
+	inline uint16_t GetPosition() const
 	{
 		return this->pos;
 	}
@@ -688,7 +688,7 @@ public:
 	 * @param item to check
 	 * @return true iff the item is visible
 	 */
-	inline bool IsVisible(uint16 item) const
+	inline bool IsVisible(uint16_t item) const
 	{
 		return IsInsideBS(item, this->GetPosition(), this->GetCapacity());
 	}
@@ -720,7 +720,7 @@ public:
 	 */
 	void SetCount(size_t num)
 	{
-		assert(num <= MAX_UVALUE(uint16));
+		assert(num <= MAX_UVALUE(uint16_t));
 
 		this->count = ClampTo<uint16_t>(num);
 		/* Ensure position is within bounds */
@@ -734,7 +734,7 @@ public:
 	 */
 	void SetCapacity(size_t capacity)
 	{
-		assert(capacity <= MAX_UVALUE(uint16));
+		assert(capacity <= MAX_UVALUE(uint16_t));
 
 		this->cap = ClampTo<uint16_t>(capacity);
 		/* Ensure position is within bounds */
@@ -750,7 +750,7 @@ public:
 	 */
 	bool SetPosition(int position)
 	{
-		uint16 old_pos = this->pos;
+		uint16_t old_pos = this->pos;
 		this->pos = Clamp(position, 0, std::max(this->count - this->cap, 0));
 		return this->pos != old_pos;
 	}
@@ -814,7 +814,7 @@ public:
 		return it;
 	}
 
-	EventState UpdateListPositionOnKeyPress(int &list_position, uint16 keycode) const;
+	EventState UpdateListPositionOnKeyPress(int &list_position, uint16_t keycode) const;
 };
 
 /**
@@ -844,7 +844,7 @@ private:
  */
 class NWidgetLeaf : public NWidgetCore {
 public:
-	NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, StringID tip);
+	NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32_t data, StringID tip);
 
 	void SetupSmallestSize(Window *w, bool init_array) override;
 	void Draw(const Window *w) override;
@@ -883,7 +883,7 @@ static inline uint ComputeMaxSize(uint base, uint max_space, uint step)
  * @defgroup NestedWidgetParts Hierarchical widget parts
  * To make nested widgets easier to enter, nested widget parts have been created. They allow the tree to be defined in a flat array of parts.
  *
- * - Leaf widgets start with a #NWidget(WidgetType tp, Colours col, int16 idx) part.
+ * - Leaf widgets start with a #NWidget(WidgetType tp, Colours col, int16_t idx) part.
  *   Next, specify its properties with one or more of
  *   - #SetMinimalSize Define the minimal size of the widget.
  *   - #SetFill Define how the widget may grow to make it nicely.
@@ -914,7 +914,7 @@ static inline uint ComputeMaxSize(uint base, uint max_space, uint step)
  *   so the widget does not support #SetPIP. #SetPadding is allowed though.
  *   Like the other container widgets, below the last child widgets, a #EndContainer part should be used to denote the end of the stacked widget.
  *
- * - Background widgets #NWidgetBackground start with a #NWidget(WidgetType tp, Colours col, int16 idx) part.
+ * - Background widgets #NWidgetBackground start with a #NWidget(WidgetType tp, Colours col, int16_t idx) part.
  *   What follows depends on how the widget is used.
  *   - If the widget is used as a leaf widget, that is, to create some space in the window to display a viewport or some text, use the properties of the
  *     leaf widgets to define how it behaves.
@@ -931,7 +931,7 @@ static inline uint ComputeMaxSize(uint base, uint max_space, uint step)
  * @ingroup NestedWidgetParts
  */
 struct NWidgetPartDataTip {
-	uint32 data;      ///< Data value of the widget.
+	uint32_t data;      ///< Data value of the widget.
 	StringID tooltip; ///< Tooltip of the widget.
 };
 
@@ -941,7 +941,7 @@ struct NWidgetPartDataTip {
  */
 struct NWidgetPartWidget {
 	Colours colour; ///< Widget colour.
-	int16 index;    ///< Widget index in the widget array.
+	int16_t index;    ///< Widget index in the widget array.
 };
 
 /**
@@ -956,7 +956,7 @@ struct NWidgetPartPaddings : RectPadding {
  * @ingroup NestedWidgetParts
  */
 struct NWidgetPartPIP {
-	uint8 pre, inter, post; ///< Amount of space before/between/after child widgets.
+	uint8_t pre, inter, post; ///< Amount of space before/between/after child widgets.
 };
 
 /**
@@ -964,8 +964,8 @@ struct NWidgetPartPIP {
  * @ingroup NestedWidgetParts
  */
 struct NWidgetPartTextLines {
-	uint8 lines;   ///< Number of text lines.
-	uint8 spacing; ///< Extra spacing around lines.
+	uint8_t lines;   ///< Number of text lines.
+	uint8_t spacing; ///< Extra spacing around lines.
 	FontSize size; ///< Font size of text lines.
 };
 
@@ -1020,7 +1020,7 @@ struct NWidgetPart {
  * @param dy Vertical resize step. 0 means no vertical resizing.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetResize(int16 dx, int16 dy)
+static inline NWidgetPart SetResize(int16_t dx, int16_t dy)
 {
 	NWidgetPart part;
 
@@ -1037,7 +1037,7 @@ static inline NWidgetPart SetResize(int16 dx, int16 dy)
  * @param y Vertical minimal size.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetMinimalSize(int16 x, int16 y)
+static inline NWidgetPart SetMinimalSize(int16_t x, int16_t y)
 {
 	NWidgetPart part;
 
@@ -1055,7 +1055,7 @@ static inline NWidgetPart SetMinimalSize(int16 x, int16 y)
  * @param size    Font size of text.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetMinimalTextLines(uint8 lines, uint8 spacing, FontSize size = FS_NORMAL)
+static inline NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FS_NORMAL)
 {
 	NWidgetPart part;
 
@@ -1136,7 +1136,7 @@ static inline NWidgetPart EndContainer()
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetDataTip(uint32 data, StringID tip)
+static inline NWidgetPart SetDataTip(uint32_t data, StringID tip)
 {
 	NWidgetPart part;
 
@@ -1154,7 +1154,7 @@ static inline NWidgetPart SetDataTip(uint32 data, StringID tip)
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetMatrixDataTip(uint8 cols, uint8 rows, StringID tip)
+static inline NWidgetPart SetMatrixDataTip(uint8_t cols, uint8_t rows, StringID tip)
 {
 	return SetDataTip((rows << MAT_ROW_START) | (cols << MAT_COL_START), tip);
 }
@@ -1168,7 +1168,7 @@ static inline NWidgetPart SetMatrixDataTip(uint8 cols, uint8 rows, StringID tip)
  * @param left The padding left of the widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetPadding(uint8 top, uint8 right, uint8 bottom, uint8 left)
+static inline NWidgetPart SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uint8_t left)
 {
 	NWidgetPart part;
 
@@ -1204,7 +1204,7 @@ static inline NWidgetPart SetPadding(const RectPadding &padding)
  * @param padding The padding to use for all directions.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetPadding(uint8 padding)
+static inline NWidgetPart SetPadding(uint8_t padding)
 {
 	return SetPadding(padding, padding, padding, padding);
 }
@@ -1216,7 +1216,7 @@ static inline NWidgetPart SetPadding(uint8 padding)
  * @param post The amount of space after the last widget.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart SetPIP(uint8 pre, uint8 inter, uint8 post)
+static inline NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
 {
 	NWidgetPart part;
 
@@ -1254,7 +1254,7 @@ static inline NWidgetPart SetScrollbar(int index)
  *       Child widgets must have a index bigger than the parent index.
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx = -1)
+static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16_t idx = -1)
 {
 	NWidgetPart part;
 

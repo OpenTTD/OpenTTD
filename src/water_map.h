@@ -402,7 +402,7 @@ static inline void MakeShore(Tile t)
  * @param wc The class of water the tile has to be
  * @param random_bits Eventual random bits to be set for this tile
  */
-static inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8 random_bits)
+static inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
@@ -430,7 +430,7 @@ static inline void MakeSea(Tile t)
  * @param t The tile to change into river
  * @param random_bits Random bits to be set for this tile
  */
-static inline void MakeRiver(Tile t, uint8 random_bits)
+static inline void MakeRiver(Tile t, uint8_t random_bits)
 {
 	MakeWater(t, OWNER_WATER, WATER_CLASS_RIVER, random_bits);
 }
@@ -441,7 +441,7 @@ static inline void MakeRiver(Tile t, uint8 random_bits)
  * @param o The owner of the canal
  * @param random_bits Random bits to be set for this tile
  */
-static inline void MakeCanal(Tile t, Owner o, uint8 random_bits)
+static inline void MakeCanal(Tile t, Owner o, uint8_t random_bits)
 {
 	assert(o != OWNER_WATER);
 	MakeWater(t, o, WATER_CLASS_CANAL, random_bits);

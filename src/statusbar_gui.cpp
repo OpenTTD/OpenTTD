@@ -73,7 +73,7 @@ struct StatusBarWindow : Window {
 		PositionStatusbar(this);
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number) override
 	{
 		Point pt = { 0, _screen.height - sm_height };
 		return pt;
@@ -94,8 +94,8 @@ struct StatusBarWindow : Window {
 				break;
 
 			case WID_S_RIGHT: {
-				int64 max_money = UINT32_MAX;
-				for (const Company *c : Company::Iterate()) max_money = std::max<int64>(c->money, max_money);
+				int64_t max_money = UINT32_MAX;
+				for (const Company *c : Company::Iterate()) max_money = std::max<int64_t>(c->money, max_money);
 				SetDParam(0, 100LL * max_money);
 				d = GetStringBoundingBox(STR_JUST_CURRENCY_LONG);
 				break;

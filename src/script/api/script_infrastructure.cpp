@@ -42,7 +42,7 @@
 	::Company *c = ::Company::Get((::CompanyID)company);
 	switch (infra_type) {
 		case INFRASTRUCTURE_RAIL: {
-			uint32 count = 0;
+			uint32_t count = 0;
 			for (::RailType rt = ::RAILTYPE_BEGIN; rt != ::RAILTYPE_END; rt++) {
 				count += c->infrastructure.rail[rt];
 			}
@@ -53,7 +53,7 @@
 			return c->infrastructure.signal;
 
 		case INFRASTRUCTURE_ROAD: {
-			uint32 count = 0;
+			uint32_t count = 0;
 			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
 				count += c->infrastructure.road[rt];
 			}
@@ -101,7 +101,7 @@
 	switch (infra_type) {
 		case INFRASTRUCTURE_RAIL: {
 			Money cost;
-			uint32 rail_total = c->infrastructure.GetRailTotal();
+			uint32_t rail_total = c->infrastructure.GetRailTotal();
 			for (::RailType rt = ::RAILTYPE_BEGIN; rt != ::RAILTYPE_END; rt++) {
 				cost += RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total);
 			}
@@ -113,7 +113,7 @@
 
 		case INFRASTRUCTURE_ROAD: {
 			Money cost;
-			uint32 road_total = c->infrastructure.GetRoadTotal();
+			uint32_t road_total = c->infrastructure.GetRoadTotal();
 			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
 				cost += RoadMaintenanceCost(rt, c->infrastructure.road[rt], road_total);
 			}

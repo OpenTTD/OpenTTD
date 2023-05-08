@@ -154,7 +154,7 @@ public:
  * when we have to load/remove it from the old versus reading it from the new
  * location. These versions assist with situations like that.
  */
-enum IniFileVersion : uint32 {
+enum IniFileVersion : uint32_t {
 	IFV_0,                                                 ///< 0  All versions prior to introduction.
 	IFV_PRIVATE_SECRETS,                                   ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
 	IFV_GAME_TYPE,                                         ///< 2  PR#9515  Convert server_advertise to server_game_type.
@@ -166,7 +166,7 @@ enum IniFileVersion : uint32 {
 	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
 };
 
-const uint16 INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Current ini-file version of OpenTTD.
+const uint16_t INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Current ini-file version of OpenTTD.
 
 /**
  * Find the index value of a ONEofMANY type in a string separated by |
@@ -227,7 +227,7 @@ static size_t LookupManyOfMany(const std::vector<std::string> &many, const char 
 		r = OneOfManySettingDesc::ParseSingleValue(str, s - str, many);
 		if (r == (size_t)-1) return r;
 
-		SetBit(res, (uint8)r); // value found, set it
+		SetBit(res, (uint8_t)r); // value found, set it
 		if (*s == 0) break;
 		str = s + 1;
 	}
@@ -311,12 +311,12 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 
 		case SLE_VAR_I16:
 		case SLE_VAR_U16:
-			for (i = 0; i != nitems; i++) ((uint16*)array)[i] = items[i];
+			for (i = 0; i != nitems; i++) ((uint16_t*)array)[i] = items[i];
 			break;
 
 		case SLE_VAR_I32:
 		case SLE_VAR_U32:
-			for (i = 0; i != nitems; i++) ((uint32*)array)[i] = items[i];
+			for (i = 0; i != nitems; i++) ((uint32_t*)array)[i] = items[i];
 			break;
 
 		default: NOT_REACHED();
@@ -343,12 +343,12 @@ std::string ListSettingDesc::FormatValue(const void *object) const
 		int64_t v;
 		switch (GetVarMemType(this->save.conv)) {
 			case SLE_VAR_BL:
-			case SLE_VAR_I8:  v = *(const   int8 *)p; p += 1; break;
-			case SLE_VAR_U8:  v = *(const  uint8 *)p; p += 1; break;
-			case SLE_VAR_I16: v = *(const  int16 *)p; p += 2; break;
-			case SLE_VAR_U16: v = *(const uint16 *)p; p += 2; break;
-			case SLE_VAR_I32: v = *(const  int32 *)p; p += 4; break;
-			case SLE_VAR_U32: v = *(const uint32 *)p; p += 4; break;
+			case SLE_VAR_I8:  v = *(const   int8_t *)p; p += 1; break;
+			case SLE_VAR_U8:  v = *(const  uint8_t *)p; p += 1; break;
+			case SLE_VAR_I16: v = *(const  int16_t *)p; p += 2; break;
+			case SLE_VAR_U16: v = *(const uint16_t *)p; p += 2; break;
+			case SLE_VAR_I32: v = *(const  int32_t *)p; p += 4; break;
+			case SLE_VAR_U32: v = *(const uint32_t *)p; p += 4; break;
 			default: NOT_REACHED();
 		}
 		if (i != 0) result += ',';
@@ -454,7 +454,7 @@ size_t BoolSettingDesc::ParseValue(const char *str) const
  * @param object The object the setting is to be saved in.
  * @param val Signed version of the new value.
  */
-void IntSettingDesc::MakeValueValidAndWrite(const void *object, int32 val) const
+void IntSettingDesc::MakeValueValidAndWrite(const void *object, int32_t val) const
 {
 	this->MakeValueValid(val);
 	this->Write(object, val);
@@ -469,9 +469,9 @@ void IntSettingDesc::MakeValueValidAndWrite(const void *object, int32 val) const
  * However, for SF_GUI_DROPDOWN the default is used when the value is not valid.
  * @param val The value to make valid.
  */
-void IntSettingDesc::MakeValueValid(int32 &val) const
+void IntSettingDesc::MakeValueValid(int32_t &val) const
 {
-	/* We need to take special care of the uint32 type as we receive from the function
+	/* We need to take special care of the uint32_t type as we receive from the function
 	 * a signed integer. While here also bail out on 64-bit settings as those are not
 	 * supported. Unsigned 8 and 16-bit variables are safe since they fit into a signed
 	 * 32-bit variable
@@ -489,7 +489,7 @@ void IntSettingDesc::MakeValueValid(int32 &val) const
 				if (!(this->flags & SF_GUI_DROPDOWN)) {
 					/* Clamp value-type setting to its valid range */
 					val = Clamp(val, this->min, this->max);
-				} else if (val < this->min || val > (int32)this->max) {
+				} else if (val < this->min || val > (int32_t)this->max) {
 					/* Reset invalid discrete setting (where different values change gameplay) to its default value */
 					val = this->def;
 				}
@@ -498,17 +498,17 @@ void IntSettingDesc::MakeValueValid(int32 &val) const
 		}
 		case SLE_VAR_U32: {
 			/* Override the minimum value. No value below this->min, except special value 0 */
-			uint32 uval = (uint32)val;
+			uint32_t uval = (uint32_t)val;
 			if (!(this->flags & SF_GUI_0_IS_SPECIAL) || uval != 0) {
 				if (!(this->flags & SF_GUI_DROPDOWN)) {
 					/* Clamp value-type setting to its valid range */
 					uval = ClampU(uval, this->min, this->max);
 				} else if (uval < (uint)this->min || uval > this->max) {
 					/* Reset invalid discrete setting to its default value */
-					uval = (uint32)this->def;
+					uval = (uint32_t)this->def;
 				}
 			}
-			val = (int32)uval;
+			val = (int32_t)uval;
 			return;
 		}
 		case SLE_VAR_I64:
@@ -522,10 +522,10 @@ void IntSettingDesc::MakeValueValid(int32 &val) const
  * @param object The object the setting is to be saved in.
  * @param val Signed version of the new value.
  */
-void IntSettingDesc::Write(const void *object, int32 val) const
+void IntSettingDesc::Write(const void *object, int32_t val) const
 {
 	void *ptr = GetVariableAddress(object, this->save);
-	WriteValue(ptr, this->save.conv, (int64)val);
+	WriteValue(ptr, this->save.conv, (int64_t)val);
 }
 
 /**
@@ -533,10 +533,10 @@ void IntSettingDesc::Write(const void *object, int32 val) const
  * @param object The object the setting is to be saved in.
  * @return The value of the saved integer.
  */
-int32 IntSettingDesc::Read(const void *object) const
+int32_t IntSettingDesc::Read(const void *object) const
 {
 	void *ptr = GetVariableAddress(object, this->save);
-	return (int32)ReadValue(ptr, this->save.conv);
+	return (int32_t)ReadValue(ptr, this->save.conv);
 }
 
 /**
@@ -626,7 +626,7 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 void IntSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
 	size_t val = (item == nullptr) ? this->def : this->ParseValue(item->value.has_value() ? item->value->c_str() : "");
-	this->MakeValueValidAndWrite(object, (int32)val);
+	this->MakeValueValidAndWrite(object, (int32_t)val);
 }
 
 void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
@@ -712,8 +712,8 @@ std::string BoolSettingDesc::FormatValue(const void *object) const
 
 bool IntSettingDesc::IsSameValue(const IniItem *item, void *object) const
 {
-	int32 item_value = (int32)this->ParseValue(item->value->c_str());
-	int32 object_value = this->Read(object);
+	int32_t item_value = (int32_t)this->ParseValue(item->value->c_str());
+	int32_t object_value = this->Read(object);
 	return item_value == object_value;
 }
 
@@ -951,7 +951,7 @@ static int DecodeHexNibble(char c)
  * @param dest_size Number of bytes in \a dest.
  * @return Whether reading was successful.
  */
-static bool DecodeHexText(const char *pos, uint8 *dest, size_t dest_size)
+static bool DecodeHexText(const char *pos, uint8_t *dest, size_t dest_size)
 {
 	while (dest_size > 0) {
 		int hi = DecodeHexNibble(pos[0]);
@@ -983,7 +983,7 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 	for (item = group->item; item != nullptr; item = item->next) {
 		GRFConfig *c = nullptr;
 
-		uint8 grfid_buf[4];
+		uint8_t grfid_buf[4];
 		MD5Hash md5sum;
 		const char *filename = item->name.c_str();
 		bool has_grfid = false;
@@ -996,7 +996,7 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 			has_md5sum = DecodeHexText(filename, md5sum.data(), md5sum.size());
 			if (has_md5sum) filename += 1 + 2 * md5sum.size();
 
-			uint32 grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
+			uint32_t grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
 			if (has_md5sum) {
 				const GRFConfig *s = FindGRFConfig(grfid, FGCM_EXACT, &md5sum);
 				if (s != nullptr) c = new GRFConfig(*s);
@@ -1080,7 +1080,7 @@ static IniFileVersion LoadVersionFromConfig(IniFile &ini)
 	/* Older ini-file versions don't have this key yet. */
 	if (version_number == nullptr || !version_number->value.has_value()) return IFV_0;
 
-	uint32 version = 0;
+	uint32_t version = 0;
 	std::from_chars(version_number->value->data(), version_number->value->data() + version_number->value->size(), version);
 
 	return static_cast<IniFileVersion>(version);
@@ -1483,9 +1483,9 @@ void DeleteGRFPresetFromConfig(const char *config_name)
  * @param object The object the setting is in.
  * @param newval The new value for the setting.
  */
-void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
+void IntSettingDesc::ChangeValue(const void *object, int32_t newval) const
 {
-	int32 oldval = this->Read(object);
+	int32_t oldval = this->Read(object);
 	this->MakeValueValid(newval);
 	if (this->pre_check != nullptr && !this->pre_check(newval)) return;
 	if (oldval == newval) return;
@@ -1591,7 +1591,7 @@ const SettingDesc *GetSettingFromName(const std::string_view name)
  * @return the cost of this operation or an error
  * @see _settings
  */
-CommandCost CmdChangeSetting(DoCommandFlag flags, const std::string &name, int32 value)
+CommandCost CmdChangeSetting(DoCommandFlag flags, const std::string &name, int32_t value)
 {
 	if (name.empty()) return CMD_ERROR;
 	const SettingDesc *sd = GetSettingFromName(name);
@@ -1617,7 +1617,7 @@ CommandCost CmdChangeSetting(DoCommandFlag flags, const std::string &name, int32
  * The new value is properly clamped to its minimum/maximum when setting
  * @return the cost of this operation or an error
  */
-CommandCost CmdChangeCompanySetting(DoCommandFlag flags, const std::string &name, int32 value)
+CommandCost CmdChangeCompanySetting(DoCommandFlag flags, const std::string &name, int32_t value)
 {
 	if (name.empty()) return CMD_ERROR;
 	const SettingDesc *sd = GetCompanySettingFromName(name);
@@ -1639,7 +1639,7 @@ CommandCost CmdChangeCompanySetting(DoCommandFlag flags, const std::string &name
  * @param value new value of the setting
  * @param force_newgame force the newgame settings
  */
-bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
+bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame)
 {
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if ((setting->flags & SF_PER_COMPANY) != 0) {
@@ -1696,8 +1696,8 @@ void SyncCompanySettings()
 	const void *new_object = &_settings_client.company;
 	for (auto &desc : _company_settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
-		uint32 old_value = (uint32)sd->AsIntSetting()->Read(old_object);
-		uint32 new_value = (uint32)sd->AsIntSetting()->Read(new_object);
+		uint32_t old_value = (uint32_t)sd->AsIntSetting()->Read(old_object);
+		uint32_t new_value = (uint32_t)sd->AsIntSetting()->Read(new_object);
 		if (old_value != new_value) Command<CMD_CHANGE_COMPANY_SETTING>::SendNet(STR_NULL, _local_company, sd->GetName(), new_value);
 	}
 }
@@ -1760,7 +1760,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 			_settings_error_list.clear();
 			return;
 		}
-		success = SetSettingValue(isd, (int32)val, force_newgame);
+		success = SetSettingValue(isd, (int32_t)val, force_newgame);
 	}
 
 	if (!success) {

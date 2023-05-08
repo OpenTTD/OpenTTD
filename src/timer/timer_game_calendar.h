@@ -74,12 +74,12 @@ public:
 	struct TStorage {
 	};
 
-	using Date = int32; ///< The type to store our dates in
-	using DateFract = uint16; ///< The fraction of a date we're in, i.e. the number of ticks since the last date changeover
+	using Date = int32_t; ///< The type to store our dates in
+	using DateFract = uint16_t; ///< The fraction of a date we're in, i.e. the number of ticks since the last date changeover
 
-	using Year = int32; ///< Type for the year, note: 0 based, i.e. starts at the year 0.
-	using Month = uint8; ///< Type for the month, note: 0 based, i.e. 0 = January, 11 = December.
-	using Day = uint8; ///< Type for the day of the month, note: 1 based, first day of a month is 1.
+	using Year = int32_t; ///< Type for the year, note: 0 based, i.e. starts at the year 0.
+	using Month = uint8_t; ///< Type for the month, note: 0 based, i.e. 0 = January, 11 = December.
+	using Day = uint8_t; ///< Type for the day of the month, note: 1 based, first day of a month is 1.
 
 	/**
 	 * Data structure to convert between Date and triplet (year, month, and day).

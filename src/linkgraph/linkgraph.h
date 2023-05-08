@@ -43,7 +43,7 @@ public:
 	struct BaseEdge {
 		uint capacity;                 ///< Capacity of the link.
 		uint usage;                    ///< Usage of the link.
-		uint64 travel_time_sum;        ///< Sum of the travel times of the link, in ticks.
+		uint64_t travel_time_sum;        ///< Sum of the travel times of the link, in ticks.
 		TimerGameCalendar::Date last_unrestricted_update; ///< When the unrestricted part of the link was last updated.
 		TimerGameCalendar::Date last_restricted_update;   ///< When the restricted part of the link was last updated.
 		NodeID dest_node;              ///< Destination of the edge.
@@ -54,7 +54,7 @@ public:
 		 * Get edge's average travel time.
 		 * @return Travel time, in ticks.
 		 */
-		uint32 TravelTime() const { return this->travel_time_sum / this->capacity; }
+		uint32_t TravelTime() const { return this->travel_time_sum / this->capacity; }
 
 		/**
 		 * Get the date of the last update to any part of the edge's capacity.
@@ -62,7 +62,7 @@ public:
 		 */
 		TimerGameCalendar::Date LastUpdate() const { return std::max(this->last_unrestricted_update, this->last_restricted_update); }
 
-		void Update(uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
+		void Update(uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode);
 		void Restrict() { this->last_unrestricted_update = INVALID_DATE; }
 		void Release() { this->last_restricted_update = INVALID_DATE; }
 
@@ -127,8 +127,8 @@ public:
 			this->demand = demand;
 		}
 
-		void AddEdge(NodeID to, uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
-		void UpdateEdge(NodeID to, uint capacity, uint usage, uint32 time, EdgeUpdateMode mode);
+		void AddEdge(NodeID to, uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode);
+		void UpdateEdge(NodeID to, uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode);
 		void RemoveEdge(NodeID to);
 
 		/**

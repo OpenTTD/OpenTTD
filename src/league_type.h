@@ -20,7 +20,7 @@ enum LinkType : byte {
 	LT_STORY_PAGE = 5,   ///< Link a story page
 };
 
-typedef uint32 LinkTargetID; ///< Contains either tile, industry ID, town ID, story page ID or company ID
+typedef uint32_t LinkTargetID; ///< Contains either tile, industry ID, town ID, story page ID or company ID
 
 struct Link {
 	LinkType type;
@@ -29,11 +29,11 @@ struct Link {
 	Link(): Link(LT_NONE, 0) {}
 };
 
-typedef uint8 LeagueTableID; ///< ID of a league table
+typedef uint8_t LeagueTableID; ///< ID of a league table
 struct LeagueTable;
 static const LeagueTableID INVALID_LEAGUE_TABLE = 0xFF; ///< Invalid/unknown index of LeagueTable
 
-typedef uint16 LeagueTableElementID; ///< ID of a league table element
+typedef uint16_t LeagueTableElementID; ///< ID of a league table element
 struct LeagueTableElement;
 static const LeagueTableElementID INVALID_LEAGUE_TABLE_ELEMENT = 0xFFFF; ///< Invalid/unknown index of LeagueTableElement
 

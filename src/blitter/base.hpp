@@ -56,7 +56,7 @@ public:
 	 * Get the screen depth this blitter works for.
 	 *  This is either: 8, 16, 24 or 32.
 	 */
-	virtual uint8 GetScreenDepth() = 0;
+	virtual uint8_t GetScreenDepth() = 0;
 
 	bool Is32BppSupported() override
 	{
@@ -96,7 +96,7 @@ public:
 	 * @param y The y position within video-buffer.
 	 * @param colour A 8bpp mapping colour.
 	 */
-	virtual void SetPixel(void *video, int x, int y, uint8 colour) = 0;
+	virtual void SetPixel(void *video, int x, int y, uint8_t colour) = 0;
 
 	/**
 	 * Make a single horizontal line in a single colour on the video-buffer.
@@ -105,7 +105,7 @@ public:
 	 * @param height The height of the line.
 	 * @param colour A 8bpp mapping colour.
 	 */
-	virtual void DrawRect(void *video, int width, int height, uint8 colour) = 0;
+	virtual void DrawRect(void *video, int width, int height, uint8_t colour) = 0;
 
 	/**
 	 * Draw a line with a given colour.
@@ -120,7 +120,7 @@ public:
 	 * @param width Line width.
 	 * @param dash Length of dashes for dashed lines. 0 means solid line.
 	 */
-	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash = 0) = 0;
+	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash = 0) = 0;
 
 	/**
 	 * Copy from a buffer to the screen.

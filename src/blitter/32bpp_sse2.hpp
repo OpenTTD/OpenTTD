@@ -32,8 +32,8 @@ public:
 	virtual ~Blitter_32bppSSE_Base() = default;
 
 	struct MapValue {
-		uint8 m;
-		uint8 v;
+		uint8_t m;
+		uint8_t v;
 	};
 	static_assert(sizeof(MapValue) == 2);
 
@@ -65,10 +65,10 @@ public:
 
 	/** Data stored about a (single) sprite. */
 	struct SpriteInfo {
-		uint32 sprite_offset;    ///< The offset to the sprite data.
-		uint32 mv_offset;        ///< The offset to the map value data.
-		uint16 sprite_line_size; ///< The size of a single line (pitch).
-		uint16 sprite_width;     ///< The width of the sprite.
+		uint32_t sprite_offset;    ///< The offset to the sprite data.
+		uint32_t mv_offset;        ///< The offset to the map value data.
+		uint16_t sprite_line_size; ///< The size of a single line (pitch).
+		uint16_t sprite_width;     ///< The width of the sprite.
 	};
 	struct SpriteData {
 		SpriteFlags flags;

@@ -113,7 +113,7 @@ struct AirportSpec {
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 	AirportClassID cls_id;                 ///< the class to which this airport type belongs
 	SpriteID preview_sprite;               ///< preview sprite for this airport
-	uint16 maintenance_cost;               ///< maintenance cost multiplier
+	uint16_t maintenance_cost;               ///< maintenance cost multiplier
 	/* Newgrf data */
 	bool enabled;                          ///< Entity still available (by default true). Newgrf can disable it, though.
 	struct GRFFileProps grf_prop;          ///< Properties related to the grf file.
@@ -144,6 +144,6 @@ typedef NewGRFClass<AirportSpec, AirportClassID, APC_MAX> AirportClass;
 
 void BindAirportSpecs();
 
-StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callback);
+StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16_t callback);
 
 #endif /* NEWGRF_AIRPORT_H */

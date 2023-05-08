@@ -26,7 +26,7 @@ enum TextEffectMode {
 
 typedef size_t TextEffectID;
 
-TextEffectID AddTextEffect(StringID msg, int x, int y, uint8 duration, TextEffectMode mode);
+TextEffectID AddTextEffect(StringID msg, int x, int y, uint8_t duration, TextEffectMode mode);
 void InitTextEffects();
 void DrawTextEffects(DrawPixelInfo *dpi);
 void UpdateTextEffect(TextEffectID effect_id, StringID msg);
@@ -34,8 +34,8 @@ void RemoveTextEffect(TextEffectID effect_id);
 void UpdateAllTextEffectVirtCoords();
 
 /* misc_gui.cpp */
-TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID colour);
-void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID colour);
+TextEffectID ShowFillingPercent(int x, int y, int z, uint8_t percent, StringID colour);
+void UpdateFillingPercent(TextEffectID te_id, uint8_t percent, StringID colour);
 void HideFillingPercent(TextEffectID *te_id);
 
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);

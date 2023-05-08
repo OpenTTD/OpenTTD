@@ -16,12 +16,12 @@
 /** The most trivial 32 bpp blitter (without palette animation). */
 class Blitter_32bppSimple : public Blitter_32bppBase {
 	struct Pixel {
-		uint8 r;  ///< Red-channel
-		uint8 g;  ///< Green-channel
-		uint8 b;  ///< Blue-channel
-		uint8 a;  ///< Alpha-channel
-		uint8 m;  ///< Remap-channel
-		uint8 v;  ///< Brightness-channel
+		uint8_t r;  ///< Red-channel
+		uint8_t g;  ///< Green-channel
+		uint8_t b;  ///< Blue-channel
+		uint8_t a;  ///< Alpha-channel
+		uint8_t m;  ///< Remap-channel
+		uint8_t v;  ///< Brightness-channel
 	};
 public:
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;

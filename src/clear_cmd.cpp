@@ -319,7 +319,7 @@ void GenerateClearTile()
 	/* add rocky tiles */
 	i = gi;
 	do {
-		uint32 r = Random();
+		uint32_t r = Random();
 		tile = RandomTileSeed(r);
 
 		IncreaseGeneratingWorldProgress(GWP_ROUGH_ROCKY);

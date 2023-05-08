@@ -35,7 +35,7 @@ const std::string &NetworkAddress::GetHostname()
  * Get the port.
  * @return the port.
  */
-uint16 NetworkAddress::GetPort() const
+uint16_t NetworkAddress::GetPort() const
 {
 	switch (this->address.ss_family) {
 		case AF_UNSPEC:
@@ -54,7 +54,7 @@ uint16 NetworkAddress::GetPort() const
  * Set the port.
  * @param port set the port number.
  */
-void NetworkAddress::SetPort(uint16 port)
+void NetworkAddress::SetPort(uint16_t port)
 {
 	switch (this->address.ss_family) {
 		case AF_UNSPEC:
@@ -77,7 +77,7 @@ void NetworkAddress::SetPort(uint16 port)
  * @param with_family Whether to add the familty to the address (e.g. IPv4).
  * @return The format string for the address.
  */
-static const char *GetAddressFormatString(uint16 family, bool with_family)
+static const char *GetAddressFormatString(uint16_t family, bool with_family)
 {
 	switch (family) {
 		case AF_INET: return with_family ? "{}:{} (IPv4)" : "{}:{}";
@@ -169,17 +169,17 @@ bool NetworkAddress::IsInNetmask(const std::string &netmask)
 
 	if (mask_address.GetAddressLength() == 0) return false;
 
-	uint32 *ip;
-	uint32 *mask;
+	uint32_t *ip;
+	uint32_t *mask;
 	switch (this->address.ss_family) {
 		case AF_INET:
-			ip = (uint32*)&((struct sockaddr_in*)&this->address)->sin_addr.s_addr;
-			mask = (uint32*)&((struct sockaddr_in*)&mask_address.address)->sin_addr.s_addr;
+			ip = (uint32_t*)&((struct sockaddr_in*)&this->address)->sin_addr.s_addr;
+			mask = (uint32_t*)&((struct sockaddr_in*)&mask_address.address)->sin_addr.s_addr;
 			break;
 
 		case AF_INET6:
-			ip = (uint32*)&((struct sockaddr_in6*)&this->address)->sin6_addr;
-			mask = (uint32*)&((struct sockaddr_in6*)&mask_address.address)->sin6_addr;
+			ip = (uint32_t*)&((struct sockaddr_in6*)&this->address)->sin6_addr;
+			mask = (uint32_t*)&((struct sockaddr_in6*)&mask_address.address)->sin6_addr;
 			break;
 
 		default:
@@ -187,7 +187,7 @@ bool NetworkAddress::IsInNetmask(const std::string &netmask)
 	}
 
 	while (cidr > 0) {
-		uint32 msk = cidr >= 32 ? (uint32)-1 : htonl(-(1 << (32 - cidr)));
+		uint32_t msk = cidr >= 32 ? (uint32_t)-1 : htonl(-(1 << (32 - cidr)));
 		if ((*mask++ & msk) != (*ip++ & msk)) return false;
 
 		cidr -= 32;
@@ -448,14 +448,14 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
  * @param company Pointer to the company variable to set iff indicated.
  * @return A valid ServerAddress of the parsed information.
  */
-/* static */ ServerAddress ServerAddress::Parse(const std::string &connection_string, uint16 default_port, CompanyID *company_id)
+/* static */ ServerAddress ServerAddress::Parse(const std::string &connection_string, uint16_t default_port, CompanyID *company_id)
 {
 	if (StrStartsWith(connection_string, "+")) {
 		std::string_view invite_code = ParseCompanyFromConnectionString(connection_string, company_id);
 		return ServerAddress(SERVER_ADDRESS_INVITE_CODE, std::string(invite_code));
 	}
 
-	uint16 port = default_port;
+	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port, company_id);
 	return ServerAddress(SERVER_ADDRESS_DIRECT, std::string(ip) + ":" + std::to_string(port));
 }

@@ -362,7 +362,7 @@ public:
 		this->FinishInitNested(window_number);
 		this->owner = (Owner)this->window_number;
 
-		uint8 index = 0;
+		uint8_t index = 0;
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 			if (HasBit(this->cargo_filter, cs->Index())) {
 				this->LowerWidget(WID_STL_CARGOSTART + index);
@@ -1485,7 +1485,7 @@ struct StationViewWindow : public Window {
 		for (const auto &it : st->goods[i].flows) {
 			StationID from = it.first;
 			CargoDataEntry *source_entry = cargo_entry->InsertOrRetrieve(from);
-			uint32 prev_count = 0;
+			uint32_t prev_count = 0;
 			for (const auto &flow_it : *it.second.GetShares()) {
 				StationID via = flow_it.second;
 				CargoDataEntry *via_entry = source_entry->InsertOrRetrieve(via);
@@ -1516,7 +1516,7 @@ struct StationViewWindow : public Window {
 			FlowStatMap::const_iterator map_it = flowmap.find(source);
 			if (map_it != flowmap.end()) {
 				const FlowStat::SharesMap *shares = map_it->second.GetShares();
-				uint32 prev_count = 0;
+				uint32_t prev_count = 0;
 				for (FlowStat::SharesMap::const_iterator i = shares->begin(); i != shares->end(); ++i) {
 					tmp.InsertOrRetrieve(i->second)->Update(i->first - prev_count);
 					prev_count = i->first;

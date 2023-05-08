@@ -16,7 +16,7 @@
 
 ScriptStoryPageList::ScriptStoryPageList(ScriptCompany::CompanyID company)
 {
-	uint8 c = company;
+	uint8_t c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
 	for (StoryPage *p : StoryPage::Iterate()) {

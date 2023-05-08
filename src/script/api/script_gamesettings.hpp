@@ -63,7 +63,7 @@ public:
 	 * Sets the value of the game setting.
 	 * @param setting The setting to set the value of.
 	 * @param value The value to set the setting to.
-	 *              The value will be clamped to MIN(int32) .. MAX(int32).
+	 *              The value will be clamped to MIN(int32_t) .. MAX(int32_t).
 	 * @pre IsValid(setting).
 	 * @return True if the action succeeded.
 	 * @note Results achieved in the past offer no guarantee for the future.

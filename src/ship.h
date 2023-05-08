@@ -25,8 +25,8 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 	TrackBits state;      ///< The "track" the ship is following.
 	ShipPathCache path;   ///< Cached path.
 	Direction rotation;   ///< Visible direction.
-	int16 rotation_x_pos; ///< NOSAVE: X Position before rotation.
-	int16 rotation_y_pos; ///< NOSAVE: Y Position before rotation.
+	int16_t rotation_x_pos; ///< NOSAVE: X Position before rotation.
+	int16_t rotation_y_pos; ///< NOSAVE: Y Position before rotation.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Ship() : SpecializedVehicleBase() {}

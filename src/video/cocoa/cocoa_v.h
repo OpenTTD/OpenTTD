@@ -99,7 +99,7 @@ private:
 	int window_height;    ///< Current window height in pixel
 	int window_pitch;
 
-	uint32 palette[256];  ///< Colour Palette
+	uint32_t palette[256];  ///< Colour Palette
 
 	void BlitIndexedToView32(int left, int top, int right, int bottom);
 	void UpdatePalette(uint first_color, uint num_colors);

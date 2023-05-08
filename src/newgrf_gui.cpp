@@ -282,7 +282,7 @@ struct NewGRFParametersWindow : public Window {
 		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
 		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
 			GRFParameterInfo &par_info = this->GetParameterInfo(i);
-			uint32 current_value = par_info.GetValue(this->grf_config);
+			uint32_t current_value = par_info.GetValue(this->grf_config);
 			bool selected = (i == this->clicked_row);
 
 			if (par_info.type == PTYPE_BOOL) {
@@ -370,7 +370,7 @@ struct NewGRFParametersWindow : public Window {
 				GRFParameterInfo &par_info = it->has_value() ? it->value() : GetDummyParameterInfo(num);
 
 				/* One of the arrows is clicked */
-				uint32 old_val = par_info.GetValue(this->grf_config);
+				uint32_t old_val = par_info.GetValue(this->grf_config);
 				if (par_info.type != PTYPE_BOOL && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && par_info.complete_labels) {
 					if (this->clicked_dropdown) {
 						/* unclick the dropdown */
@@ -392,7 +392,7 @@ struct NewGRFParametersWindow : public Window {
 							this->closing_dropdown = false;
 
 							DropDownList list;
-							for (uint32 i = par_info.min_value; i <= par_info.max_value; i++) {
+							for (uint32_t i = par_info.min_value; i <= par_info.max_value; i++) {
 								list.emplace_back(new DropDownListStringItem(GetGRFStringFromGRFText(par_info.value_names.find(i)->second), i, false));
 							}
 
@@ -400,7 +400,7 @@ struct NewGRFParametersWindow : public Window {
 						}
 					}
 				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
-					uint32 val = old_val;
+					uint32_t val = old_val;
 					if (par_info.type == PTYPE_BOOL) {
 						val = !val;
 					} else {
@@ -445,9 +445,9 @@ struct NewGRFParametersWindow : public Window {
 	void OnQueryTextFinished(char *str) override
 	{
 		if (StrEmpty(str)) return;
-		int32 value = atoi(str);
+		int32_t value = atoi(str);
 		GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
-		uint32 val = Clamp<uint32>(value, par_info.min_value, par_info.max_value);
+		uint32_t val = Clamp<uint32_t>(value, par_info.min_value, par_info.max_value);
 		par_info.SetValue(this->grf_config, val);
 		this->SetDirty();
 	}
@@ -576,7 +576,7 @@ void ShowNewGRFTextfileWindow(TextfileType file_type, const GRFConfig *c)
 	new NewGRFTextfileWindow(file_type, c);
 }
 
-typedef std::map<uint32, const GRFConfig *> GrfIdMap; ///< Map of grfid to the grf config.
+typedef std::map<uint32_t, const GRFConfig *> GrfIdMap; ///< Map of grfid to the grf config.
 
 /**
  * Add all grf configs from \a c into the map.
@@ -586,7 +586,7 @@ typedef std::map<uint32, const GRFConfig *> GrfIdMap; ///< Map of grfid to the g
 static void FillGrfidMap(const GRFConfig *c, GrfIdMap *grfid_map)
 {
 	while (c != nullptr) {
-		std::pair<uint32, const GRFConfig *> p(c->ident.grfid, c);
+		std::pair<uint32_t, const GRFConfig *> p(c->ident.grfid, c);
 		grfid_map->insert(p);
 		c = c->next;
 	}
@@ -1320,7 +1320,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			has_missing    |= c->status == GCS_NOT_FOUND;
 			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
 		}
-		uint32 widget_data;
+		uint32_t widget_data;
 		StringID tool_tip;
 		if (has_missing || has_compatible) {
 			widget_data = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON;
@@ -1337,7 +1337,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->SetWidgetDisabledState(WID_NS_PRESET_SAVE, has_missing);
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress(char32_t key, uint16_t keycode) override
 	{
 		if (!this->editable) return ES_NOT_HANDLED;
 

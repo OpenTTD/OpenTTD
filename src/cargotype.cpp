@@ -121,7 +121,7 @@ CargoID GetCargoIDByLabel(CargoLabel cl)
  * @param bitnum 'bitnum' to find.
  * @return First CargoID with the given bitnum, or #CT_INVALID if not found or if the provided \a bitnum is invalid.
  */
-CargoID GetCargoIDByBitnum(uint8 bitnum)
+CargoID GetCargoIDByBitnum(uint8_t bitnum)
 {
 	if (bitnum == INVALID_CARGO) return CT_INVALID;
 
@@ -196,7 +196,7 @@ void InitializeSortedCargoSpecs()
 
 	/* Count the number of standard cargos and fill the mask. */
 	_standard_cargo_mask = 0;
-	uint8 nb_standard_cargo = 0;
+	uint8_t nb_standard_cargo = 0;
 	for (const auto &cargo : _sorted_cargo_specs) {
 		if (cargo->classes & CC_SPECIAL) break;
 		nb_standard_cargo++;
@@ -207,7 +207,7 @@ void InitializeSortedCargoSpecs()
 	_sorted_standard_cargo_specs = { _sorted_cargo_specs.data(), nb_standard_cargo };
 }
 
-uint64 CargoSpec::WeightOfNUnitsInTrain(uint32 n) const
+uint64_t CargoSpec::WeightOfNUnitsInTrain(uint32_t n) const
 {
 	if (this->is_freight) n *= _settings_game.vehicle.freight_trains;
 	return this->WeightOfNUnits(n);

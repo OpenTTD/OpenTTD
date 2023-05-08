@@ -12,8 +12,8 @@
 
 #include "core/enum_type.hpp"
 
-typedef uint16 StoryPageElementID; ///< ID of a story page element
-typedef uint16 StoryPageID; ///< ID of a story page
+typedef uint16_t StoryPageElementID; ///< ID of a story page element
+typedef uint16_t StoryPageID; ///< ID of a story page
 struct StoryPageElement;
 struct StoryPage;
 enum StoryPageElementType : byte;

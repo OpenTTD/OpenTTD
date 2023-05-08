@@ -58,7 +58,7 @@ static std::chrono::steady_clock::time_point _chatmessage_dirty_time;
  * the left and pixels from the bottom. The height is the maximum height.
  */
 static PointDimension _chatmsg_box;
-static uint8 *_chatmessage_backup = nullptr; ///< Backup in case text is moved.
+static uint8_t *_chatmessage_backup = nullptr; ///< Backup in case text is moved.
 
 /**
  * Test if there are any chat messages to display.
@@ -436,7 +436,7 @@ struct NetworkChatWindow : public Window {
 		}
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number) override
 	{
 		Point pt = { 0, _screen.height - sm_height - FindWindowById(WC_STATUS_BAR, 0)->height };
 		return pt;
@@ -464,7 +464,7 @@ struct NetworkChatWindow : public Window {
 		}
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress(char32_t key, uint16_t keycode) override
 	{
 		EventState state = ES_NOT_HANDLED;
 		if (keycode == WKC_TAB) {

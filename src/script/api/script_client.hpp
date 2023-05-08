@@ -24,7 +24,7 @@ class ScriptClient : public ScriptObject {
 public:
 
 	/** Different constants related to ClientID. */
-	enum ClientID : uint32 {
+	enum ClientID : uint32_t {
 		CLIENT_INVALID = 0,  ///< Client is not part of anything
 		CLIENT_SERVER  = 1,  ///< Servers always have this ID
 		CLIENT_FIRST   = 2,  ///< The first client ID

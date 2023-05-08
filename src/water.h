@@ -49,7 +49,7 @@ bool IsWateredTile(TileIndex tile, Direction from);
  * @param num Number of canal tiles.
  * @return Total cost.
  */
-static inline Money CanalMaintenanceCost(uint32 num)
+static inline Money CanalMaintenanceCost(uint32_t num)
 {
 	return (_price[PR_INFRASTRUCTURE_WATER] * num * (1 + IntSqrt(num))) >> 6; // 6 bits scaling.
 }

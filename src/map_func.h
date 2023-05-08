@@ -32,7 +32,7 @@ private:
 	struct TileBase {
 		byte   type;   ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
 		byte   height; ///< The height of the northern corner.
-		uint16 m2;     ///< Primarily used for indices to towns, industries and stations
+		uint16_t m2;     ///< Primarily used for indices to towns, industries and stations
 		byte   m1;     ///< Primarily used for ownership information
 		byte   m3;     ///< General purpose
 		byte   m4;     ///< General purpose
@@ -48,7 +48,7 @@ private:
 	struct TileExtended {
 		byte m6;   ///< General purpose
 		byte m7;   ///< Primarily used for newgrf support
-		uint16 m8; ///< General purpose
+		uint16_t m8; ///< General purpose
 	};
 
 	static TileBase *base_tiles;         ///< Pointer to the tile-array.
@@ -120,9 +120,9 @@ public:
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
 	 * @param tile The tile to get the data for.
-	 * @return reference to the uint16 holding the data.
+	 * @return reference to the uint16_t holding the data.
 	 */
-	debug_inline uint16 &m2()
+	debug_inline uint16_t &m2()
 	{
 		return base_tiles[tile].m2;
 	}
@@ -192,9 +192,9 @@ public:
 	 *
 	 * Look at docs/landscape.html for the exact meaning of the data.
 	 * @param tile The tile to get the data for.
-	 * @return reference to the uint16 holding the data.
+	 * @return reference to the uint16_t holding the data.
 	 */
-	debug_inline uint16 &m8()
+	debug_inline uint16_t &m8()
 	{
 		return extended_tiles[tile].m8;
 	}
@@ -373,7 +373,7 @@ public:
  *
  * @see TileDiffXY(int, int)
  */
-typedef int32 TileIndexDiff;
+typedef int32_t TileIndexDiff;
 
 /**
  * Returns the TileIndex of a coordinate.
@@ -643,7 +643,7 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
  * @param r the random 'seed'
  * @return a valid tile
  */
-static inline TileIndex RandomTileSeed(uint32 r)
+static inline TileIndex RandomTileSeed(uint32_t r)
 {
 	return Map::WrapToMap(r);
 }

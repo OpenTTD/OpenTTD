@@ -2505,7 +2505,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		/* Was 'cancel' pressed? */
 		if (str == nullptr) return;
 
-		int32 value;
+		int32_t value;
 		if (!StrEmpty(str)) {
 			value = atoi(str);
 		} else {

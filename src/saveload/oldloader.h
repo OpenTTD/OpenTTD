@@ -86,7 +86,7 @@ typedef void *OffsetProc(void *base);
 
 struct OldChunks {
 	OldChunkType type;   ///< Type of field
-	uint32 amount;       ///< Amount of fields
+	uint32_t amount;       ///< Amount of fields
 
 	void *ptr;           ///< Pointer where to save the data (takes precedence over #offset)
 	OffsetProc *offset;  ///< Pointer to function that returns the actual memory address of a member (ignored if #ptr is not nullptr)
@@ -103,15 +103,15 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks);
 bool LoadTTDMain(LoadgameState *ls);
 bool LoadTTOMain(LoadgameState *ls);
 
-static inline uint16 ReadUint16(LoadgameState *ls)
+static inline uint16_t ReadUint16(LoadgameState *ls)
 {
 	byte x = ReadByte(ls);
 	return x | ReadByte(ls) << 8;
 }
 
-static inline uint32 ReadUint32(LoadgameState *ls)
+static inline uint32_t ReadUint32(LoadgameState *ls)
 {
-	uint16 x = ReadUint16(ls);
+	uint16_t x = ReadUint16(ls);
 	return x | ReadUint16(ls) << 16;
 }
 

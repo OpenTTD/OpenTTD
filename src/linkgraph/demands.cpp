@@ -204,16 +204,16 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
 				continue;
 			}
 
-			int32 supply = scaler.EffectiveSupply(job[from_id], job[to_id]);
+			int32_t supply = scaler.EffectiveSupply(job[from_id], job[to_id]);
 			assert(supply > 0);
 
 			/* Scale the distance by mod_dist around max_distance */
-			int32 distance = this->max_distance - (this->max_distance -
-					(int32)DistanceMaxPlusManhattan(job[from_id].base.xy, job[to_id].base.xy)) *
+			int32_t distance = this->max_distance - (this->max_distance -
+					(int32_t)DistanceMaxPlusManhattan(job[from_id].base.xy, job[to_id].base.xy)) *
 					this->mod_dist / 100;
 
 			/* Scale the accuracy by distance around accuracy / 2 */
-			int32 divisor = this->accuracy * (this->mod_dist - 50) / 100 +
+			int32_t divisor = this->accuracy * (this->mod_dist - 50) / 100 +
 					this->accuracy * distance / this->max_distance + 1;
 
 			assert(divisor > 0);

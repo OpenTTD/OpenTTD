@@ -81,13 +81,13 @@ enum GRFPalette {
 
 /** Basic data to distinguish a GRF. Used in the server list window */
 struct GRFIdentifier {
-	uint32 grfid;     ///< GRF ID (defined by Action 0x08)
+	uint32_t grfid;     ///< GRF ID (defined by Action 0x08)
 	MD5Hash md5sum;   ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
 
 	GRFIdentifier() = default;
 	GRFIdentifier(const GRFIdentifier &other) = default;
 	GRFIdentifier(GRFIdentifier &&other) = default;
-	GRFIdentifier(uint32 grfid, const MD5Hash &md5sum) : grfid(grfid), md5sum(md5sum) {}
+	GRFIdentifier(uint32_t grfid, const MD5Hash &md5sum) : grfid(grfid), md5sum(md5sum) {}
 
 	GRFIdentifier& operator =(const GRFIdentifier &other) = default;
 
@@ -97,7 +97,7 @@ struct GRFIdentifier {
 	 * @param md5sum Expected md5sum, may be \c nullptr (in which case, do not check it).
 	 * @return the object has the provided grfid and md5sum.
 	 */
-	inline bool HasGrfIdentifier(uint32 grfid, const MD5Hash *md5sum) const
+	inline bool HasGrfIdentifier(uint32_t grfid, const MD5Hash *md5sum) const
 	{
 		if (this->grfid != grfid) return false;
 		if (md5sum == nullptr) return true;
@@ -129,17 +129,17 @@ struct GRFParameterInfo {
 	GRFTextList name;      ///< The name of this parameter
 	GRFTextList desc;      ///< The description of this parameter
 	GRFParameterType type; ///< The type of this parameter
-	uint32 min_value;      ///< The minimal value this parameter can have
-	uint32 max_value;      ///< The maximal value of this parameter
-	uint32 def_value;      ///< Default value of this parameter
+	uint32_t min_value;      ///< The minimal value this parameter can have
+	uint32_t max_value;      ///< The maximal value of this parameter
+	uint32_t def_value;      ///< Default value of this parameter
 	byte param_nr;         ///< GRF parameter to store content in
 	byte first_bit;        ///< First bit to use in the GRF parameter
 	byte num_bit;          ///< Number of bits to use for this parameter
 	std::map<uint32_t, GRFTextList> value_names; ///< Names for each value.
 	bool complete_labels;  ///< True if all values have a label.
 
-	uint32 GetValue(struct GRFConfig *config) const;
-	void SetValue(struct GRFConfig *config, uint32 value);
+	uint32_t GetValue(struct GRFConfig *config) const;
+	void SetValue(struct GRFConfig *config, uint32_t value);
 	void Finalize();
 };
 
@@ -159,15 +159,15 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	GRFTextWrapper url; ///< NOSAVE: URL belonging to this GRF.
 	std::optional<GRFError> error; ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
-	uint32 version; ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
-	uint32 min_loadable_version; ///< NOSAVE: Minimum compatible version a NewGRF can define
-	uint8 flags; ///< NOSAVE: GCF_Flags, bitset
+	uint32_t version; ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
+	uint32_t min_loadable_version; ///< NOSAVE: Minimum compatible version a NewGRF can define
+	uint8_t flags; ///< NOSAVE: GCF_Flags, bitset
 	GRFStatus status; ///< NOSAVE: GRFStatus, enum
-	uint32 grf_bugs; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
+	uint32_t grf_bugs; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
 	std::array<uint32_t, 0x80> param; ///< GRF parameters
-	uint8 num_params; ///< Number of used parameters
-	uint8 num_valid_params; ///< NOSAVE: Number of valid parameters (action 0x14)
-	uint8 palette; ///< GRFPalette, bitset
+	uint8_t num_params; ///< Number of used parameters
+	uint8_t num_valid_params; ///< NOSAVE: Number of valid parameters (action 0x14)
+	uint8_t palette; ///< GRFPalette, bitset
 	std::vector<std::optional<GRFParameterInfo>> param_info; ///< NOSAVE: extra information about the parameters
 	bool has_param_defaults; ///< NOSAVE: did this newgrf specify any defaults for it's parameters
 
@@ -211,8 +211,8 @@ struct NewGRFScanCallback {
 size_t GRFGetSizeOfDataSection(FILE *f);
 
 void ScanNewGRFFiles(NewGRFScanCallback *callback);
-const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const MD5Hash *md5sum = nullptr, uint32 desired_version = 0);
-GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask = 0xFFFFFFFF);
+const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5Hash *md5sum = nullptr, uint32_t desired_version = 0);
+GRFConfig *GetGRFConfig(uint32_t grfid, uint32_t mask = 0xFFFFFFFF);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only);
 void AppendStaticGRFConfigs(GRFConfig **dst);
 void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
@@ -226,6 +226,6 @@ std::string GRFBuildParamList(const GRFConfig *c);
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);
 
 void UpdateNewGRFScanStatus(uint num, const char *name);
-void UpdateNewGRFConfigPalette(int32 new_value = 0);
+void UpdateNewGRFConfigPalette(int32_t new_value = 0);
 
 #endif /* NEWGRF_CONFIG_H */

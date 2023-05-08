@@ -23,13 +23,13 @@ void GroundVehicle<T, Type>::PowerChanged()
 	assert(this->First() == this);
 	const T *v = T::From(this);
 
-	uint32 total_power = 0;
-	uint32 max_te = 0;
-	uint32 number_of_parts = 0;
-	uint16 max_track_speed = this->vcache.cached_max_speed; // Max track speed in internal units.
+	uint32_t total_power = 0;
+	uint32_t max_te = 0;
+	uint32_t number_of_parts = 0;
+	uint16_t max_track_speed = this->vcache.cached_max_speed; // Max track speed in internal units.
 
 	for (const T *u = v; u != nullptr; u = u->Next()) {
-		uint32 current_power = u->GetPower() + u->GetPoweredPartPower(u);
+		uint32_t current_power = u->GetPower() + u->GetPoweredPartPower(u);
 		total_power += current_power;
 
 		/* Only powered parts add tractive effort. */
@@ -37,7 +37,7 @@ void GroundVehicle<T, Type>::PowerChanged()
 		number_of_parts++;
 
 		/* Get minimum max speed for this track. */
-		uint16 track_speed = u->GetMaxTrackSpeed();
+		uint16_t track_speed = u->GetMaxTrackSpeed();
 		if (track_speed > 0) max_track_speed = std::min(max_track_speed, track_speed);
 	}
 
@@ -46,7 +46,7 @@ void GroundVehicle<T, Type>::PowerChanged()
 
 	/* If air drag is set to zero (default), the resulting air drag coefficient is dependent on max speed. */
 	if (air_drag_value == 0) {
-		uint16 max_speed = v->GetDisplayMaxSpeed();
+		uint16_t max_speed = v->GetDisplayMaxSpeed();
 		/* Simplification of the method used in TTDPatch. It uses <= 10 to change more steadily from 128 to 196. */
 		air_drag = (max_speed <= 10) ? 192 : std::max(2048 / max_speed, 1);
 	} else {
@@ -79,10 +79,10 @@ template <class T, VehicleType Type>
 void GroundVehicle<T, Type>::CargoChanged()
 {
 	assert(this->First() == this);
-	uint32 weight = 0;
+	uint32_t weight = 0;
 
 	for (T *u = T::From(this); u != nullptr; u = u->Next()) {
-		uint32 current_weight = u->GetWeight();
+		uint32_t current_weight = u->GetWeight();
 		weight += current_weight;
 		/* Slope steepness is in percent, result in N. */
 		u->gcache.cached_slope_resistance = current_weight * u->GetSlopeSteepness() * 100;
@@ -107,16 +107,16 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	/* Templated class used for function calls for performance reasons. */
 	const T *v = T::From(this);
 	/* Speed is used squared later on, so U16 * U16, and then multiplied by other values. */
-	int64 speed = v->GetCurrentSpeed(); // [km/h-ish]
+	int64_t speed = v->GetCurrentSpeed(); // [km/h-ish]
 
 	/* Weight is stored in tonnes. */
-	int32 mass = this->gcache.cached_weight;
+	int32_t mass = this->gcache.cached_weight;
 
 	/* Power is stored in HP, we need it in watts.
 	 * Each vehicle can have U16 power, 128 vehicles, HP -> watt
 	 * and km/h to m/s conversion below result in a maximum of
 	 * about 1.1E11, way more than 4.3E9 of int32. */
-	int64 power = this->gcache.cached_power * 746ll;
+	int64_t power = this->gcache.cached_power * 746ll;
 
 	/* This is constructed from:
 	 *  - axle resistance:  U16 power * 10 for 128 vehicles.
@@ -127,9 +127,9 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	 *     * 8.4E9
 	 *  - air drag: 28 * (U8 drag + 3 * U8 drag * 128 vehicles / 20) * U16 speed * U16 speed
 	 *     * 6.2E14 before dividing by 1000
-	 * Sum is 6.3E11, more than 4.3E9 of int32, so int64 is needed.
+	 * Sum is 6.3E11, more than 4.3E9 of int32_t, so int64_t is needed.
 	 */
-	int64 resistance = 0;
+	int64_t resistance = 0;
 
 	bool maglev = v->GetAccelerationType() == 2;
 
@@ -141,7 +141,7 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	}
 	/* Air drag; the air drag coefficient is in an arbitrary NewGRF-unit,
 	 * so we need some magic conversion factor. */
-	resistance += static_cast<int64>(area) * this->gcache.cached_air_drag * speed * speed / 1000;
+	resistance += static_cast<int64_t>(area) * this->gcache.cached_air_drag * speed * speed / 1000;
 
 	resistance += this->GetSlopeResistance();
 
@@ -151,7 +151,7 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	const int max_te = this->gcache.cached_max_te; // [N]
 	/* Constructued from power, with need to multiply by 18 and assuming
 	 * low speed, it needs to be a 64 bit integer too. */
-	int64 force;
+	int64_t force;
 	if (speed > 0) {
 		if (!maglev) {
 			/* Conversion factor from km/h to m/s is 5/18 to get [N] in the end. */
@@ -178,7 +178,7 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 		int accel = ClampTo<int32_t>((force - resistance) / (mass * 4));
 		return force < resistance ? std::min(-1, accel) : std::max(1, accel);
 	} else {
-		return ClampTo<int32_t>(std::min<int64>(-force - resistance, -10000) / mass);
+		return ClampTo<int32_t>(std::min<int64_t>(-force - resistance, -10000) / mass);
 	}
 }
 

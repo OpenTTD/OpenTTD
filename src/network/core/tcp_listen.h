@@ -140,7 +140,7 @@ public:
 	 * @param port The port to listen on.
 	 * @return true if listening succeeded.
 	 */
-	static bool Listen(uint16 port)
+	static bool Listen(uint16_t port)
 	{
 		assert(sockets.size() == 0);
 

@@ -17,13 +17,13 @@
 
 #include "safeguards.h"
 
-/* virtual */ uint32 RailTypeScopeResolver::GetRandomBits() const
+/* virtual */ uint32_t RailTypeScopeResolver::GetRandomBits() const
 {
-	uint tmp = CountBits(static_cast<uint32>(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE));
+	uint tmp = CountBits(static_cast<uint32_t>(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE));
 	return GB(tmp, 0, 2);
 }
 
-/* virtual */ uint32 RailTypeScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
+/* virtual */ uint32_t RailTypeScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
 {
 	if (this->tile == INVALID_TILE) {
 		switch (variable) {
@@ -64,7 +64,7 @@ GrfSpecFeature RailTypeResolverObject::GetFeature() const
 	return GSF_RAILTYPES;
 }
 
-uint32 RailTypeResolverObject::GetDebugID() const
+uint32_t RailTypeResolverObject::GetDebugID() const
 {
 	return this->railtype_scope.rti->label;
 }
@@ -78,7 +78,7 @@ uint32 RailTypeResolverObject::GetDebugID() const
  * @param param1 Extra parameter (first parameter of the callback, except railtypes do not have callbacks).
  * @param param2 Extra parameter (second parameter of the callback, except railtypes do not have callbacks).
  */
-RailTypeResolverObject::RailTypeResolverObject(const RailtypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32 param1, uint32 param2)
+RailTypeResolverObject::RailTypeResolverObject(const RailtypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32_t param1, uint32_t param2)
 	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
@@ -122,8 +122,8 @@ SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalTy
 {
 	if (rti->group[RTSG_SIGNALS] == nullptr) return 0;
 
-	uint32 param1 = gui ? 0x10 : 0x00;
-	uint32 param2 = (type << 16) | (var << 8) | state;
+	uint32_t param1 = gui ? 0x10 : 0x00;
+	uint32_t param2 = (type << 16) | (var << 8) | state;
 	RailTypeResolverObject object(rti, tile, TCX_NORMAL, RTSG_SIGNALS, param1, param2);
 
 	const SpriteGroup *group = object.Resolve();
@@ -138,7 +138,7 @@ SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalTy
  * @param grffile   Originating GRF file.
  * @return RailType or INVALID_RAILTYPE if the railtype is unknown.
  */
-RailType GetRailTypeTranslation(uint8 railtype, const GRFFile *grffile)
+RailType GetRailTypeTranslation(uint8_t railtype, const GRFFile *grffile)
 {
 	if (grffile == nullptr || grffile->railtype_list.size() == 0) {
 		/* No railtype table present. Return railtype as-is (if valid), so it works for original railtypes. */
@@ -160,7 +160,7 @@ RailType GetRailTypeTranslation(uint8 railtype, const GRFFile *grffile)
  * @param grffile The GRF to do the lookup for.
  * @return the GRF internal ID.
  */
-uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
+uint8_t GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
 {
 	/* No rail type table present, return rail type as-is */
 	if (grffile == nullptr || grffile->railtype_list.size() == 0) return railtype;

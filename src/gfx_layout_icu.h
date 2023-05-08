@@ -25,7 +25,7 @@ public:
 	static const bool SUPPORTS_RTL = true;
 
 	static ParagraphLayouter *GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &fontMapping);
-	static size_t AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c);
+	static size_t AppendToBuffer(UChar *buff, const UChar *buffer_last, char32_t c);
 };
 
 #endif /* GFX_LAYOUT_ICU_H */

@@ -45,10 +45,10 @@ struct Dimension {
 
 /** Padding dimensions to apply to each side of a Rect. */
 struct RectPadding {
-	uint8 left;
-	uint8 top;
-	uint8 right;
-	uint8 bottom;
+	uint8_t left;
+	uint8_t top;
+	uint8_t right;
+	uint8_t bottom;
 
 	static const RectPadding zero;
 

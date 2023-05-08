@@ -24,8 +24,8 @@ struct CmdStruct {
 	const char *cmd;
 	ParseCmdProc proc;
 	long value;
-	uint8 consumes;
-	int8 default_plural_offset;
+	uint8_t consumes;
+	int8_t default_plural_offset;
 	CmdFlags flags;
 };
 
