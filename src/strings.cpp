@@ -748,9 +748,9 @@ static const UnitsLong _units_volume[] = {
 
 /** Unit conversions for force. */
 static const Units _units_force[] = {
-	{ { 224.809 }, STR_UNITS_FORCE_IMPERIAL, 0 },
-	{ { 101.972 }, STR_UNITS_FORCE_METRIC,   0 },
-	{ {   1.0   }, STR_UNITS_FORCE_SI,       0 },
+	{ { 0.224809 }, STR_UNITS_FORCE_IMPERIAL, 0 },
+	{ { 0.101972 }, STR_UNITS_FORCE_METRIC,   0 },
+	{ { 0.001    }, STR_UNITS_FORCE_SI,       0 },
 };
 
 /** Unit conversions for height. */
