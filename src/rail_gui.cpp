@@ -53,8 +53,8 @@
 static RailType _cur_railtype;               ///< Rail type of the current build-rail toolbar.
 static bool _remove_button_clicked;          ///< Flag whether 'remove' toggle-button is currently enabled
 static DiagDirection _build_depot_direction; ///< Currently selected depot direction
-static byte _waypoint_count = 1;             ///< Number of waypoint types
-static byte _cur_waypoint_type;              ///< Currently selected waypoint type
+static uint16_t _waypoint_count = 1;         ///< Number of waypoint types
+static uint16_t _cur_waypoint_type;          ///< Currently selected waypoint type
 static bool _convert_signal_button;          ///< convert signal button in the signal GUI pressed
 static SignalVariant _cur_signal_variant;    ///< set the signal variant (for signal GUI)
 static SignalType _cur_signal_type;          ///< set the signal type (for signal GUI)
@@ -64,8 +64,8 @@ struct RailStationGUISettings {
 
 	bool newstations;                 ///< Are custom station definitions available?
 	StationClassID station_class;     ///< Currently selected custom station class (if newstations is \c true )
-	byte station_type;                ///< %Station type within the currently selected custom station class (if newstations is \c true )
-	byte station_count;               ///< Number of custom stations (if newstations is \c true )
+	uint16_t station_type;            ///< %Station type within the currently selected custom station class (if newstations is \c true )
+	uint16_t station_count;           ///< Number of custom stations (if newstations is \c true )
 };
 static RailStationGUISettings _railstation; ///< Settings of the station builder GUI
 
@@ -711,7 +711,7 @@ struct BuildRailToolbarWindow : Window {
 							TileArea ta(start_tile, end_tile);
 							Axis axis = select_method == VPM_X_LIMITED ? AXIS_X : AXIS_Y;
 							bool adjacent = _ctrl_pressed;
-							byte waypoint_type = _cur_waypoint_type;
+							uint16_t waypoint_type = _cur_waypoint_type;
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
@@ -1290,7 +1290,7 @@ public:
 			}
 
 			case WID_BRAS_IMAGE: {
-				byte type = GB(widget, 16, 16);
+				uint16_t type = GB(widget, 16, 16);
 				assert(type < _railstation.station_count);
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(type);
@@ -1478,7 +1478,7 @@ public:
 			}
 
 			case WID_BRAS_IMAGE: {
-				int y = GB(widget, 16, 16);
+				uint16_t y = GB(widget, 16, 16);
 				if (y >= _railstation.station_count) return;
 
 				/* Check station availability callback */
@@ -2041,7 +2041,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BRW_WAYPOINT: {
-				byte type = GB(widget, 16, 16);
+				uint16_t type = GB(widget, 16, 16);
 				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP)->GetSpec(type);
 
 				DrawPixelInfo tmp_dpi;
@@ -2063,7 +2063,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BRW_WAYPOINT: {
-				byte type = GB(widget, 16, 16);
+				uint16_t type = GB(widget, 16, 16);
 				this->GetWidget<NWidgetMatrix>(WID_BRW_WAYPOINT_MATRIX)->SetClicked(_cur_waypoint_type);
 
 				/* Check station availability callback */
