@@ -32,13 +32,10 @@ template <typename Tspec, typename Tid, Tid Tmax>
 /* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
 {
 	/* Set up initial data */
-	classes[0].global_id = 'DFLT';
-	classes[0].name = STR_STATION_CLASS_DFLT;
-	classes[0].Insert(nullptr);
-
-	classes[1].global_id = 'WAYP';
-	classes[1].name = STR_STATION_CLASS_WAYP;
-	classes[1].Insert(nullptr);
+	StationClass::Get(StationClass::Allocate('DFLT'))->name = STR_STATION_CLASS_DFLT;
+	StationClass::Get(StationClass::Allocate('DFLT'))->Insert(nullptr);
+	StationClass::Get(StationClass::Allocate('WAYP'))->name = STR_STATION_CLASS_WAYP;
+	StationClass::Get(StationClass::Allocate('WAYP'))->Insert(nullptr);
 }
 
 template <typename Tspec, typename Tid, Tid Tmax>

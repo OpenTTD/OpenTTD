@@ -31,13 +31,10 @@ template <typename Tspec, typename Tid, Tid Tmax>
 void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
 {
 	/* Set up initial data */
-	classes[0].global_id = 'DFLT';
-	classes[0].name = STR_STATION_CLASS_DFLT;
-	classes[0].Insert(nullptr);
-
-	classes[1].global_id = 'WAYP';
-	classes[1].name = STR_STATION_CLASS_WAYP;
-	classes[1].Insert(nullptr);
+	RoadStopClass::Get(RoadStopClass::Allocate('DFLT'))->name = STR_STATION_CLASS_DFLT;
+	RoadStopClass::Get(RoadStopClass::Allocate('DFLT'))->Insert(nullptr);
+	RoadStopClass::Get(RoadStopClass::Allocate('WAYP'))->name = STR_STATION_CLASS_WAYP;
+	RoadStopClass::Get(RoadStopClass::Allocate('WAYP'))->Insert(nullptr);
 }
 
 template <typename Tspec, typename Tid, Tid Tmax>
