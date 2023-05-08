@@ -415,13 +415,13 @@ struct FramerateWindow : Window {
 
 	struct CachedDecimal {
 		StringID strid;
-		uint32 value;
+		uint32_t value;
 
 		inline void SetRate(double value, double target)
 		{
 			const double threshold_good = target * 0.95;
 			const double threshold_bad = target * 2 / 3;
-			this->value = (uint32)(value * 100);
+			this->value = (uint32_t)(value * 100);
 			this->strid = (value > threshold_good) ? STR_FRAMERATE_FPS_GOOD : (value < threshold_bad) ? STR_FRAMERATE_FPS_BAD : STR_FRAMERATE_FPS_WARN;
 		}
 
@@ -429,7 +429,7 @@ struct FramerateWindow : Window {
 		{
 			const double threshold_good = target / 3;
 			const double threshold_bad = target;
-			this->value = (uint32)(value * 100);
+			this->value = (uint32_t)(value * 100);
 			this->strid = (value < threshold_good) ? STR_FRAMERATE_MS_GOOD : (value > threshold_bad) ? STR_FRAMERATE_MS_BAD : STR_FRAMERATE_MS_WARN;
 		}
 
@@ -601,7 +601,7 @@ struct FramerateWindow : Window {
 	void DrawElementTimesColumn(const Rect &r, StringID heading_str, const CachedDecimal *values) const
 	{
 		const Scrollbar *sb = this->GetScrollbar(WID_FRW_SCROLLBAR);
-		uint16 skip = sb->GetPosition();
+		uint16_t skip = sb->GetPosition();
 		int drawable = this->num_displayed;
 		int y = r.top;
 		DrawString(r.left, r.right, y, heading_str, TC_FROMSTRING, SA_CENTER, true);
@@ -623,7 +623,7 @@ struct FramerateWindow : Window {
 	void DrawElementAllocationsColumn(const Rect &r) const
 	{
 		const Scrollbar *sb = this->GetScrollbar(WID_FRW_SCROLLBAR);
-		uint16 skip = sb->GetPosition();
+		uint16_t skip = sb->GetPosition();
 		int drawable = this->num_displayed;
 		int y = r.top;
 		DrawString(r.left, r.right, y, STR_FRAMERATE_MEMORYUSE, TC_FROMSTRING, SA_CENTER, true);
@@ -657,7 +657,7 @@ struct FramerateWindow : Window {
 			case WID_FRW_TIMES_NAMES: {
 				/* Render a column of titles for performance element names */
 				const Scrollbar *sb = this->GetScrollbar(WID_FRW_SCROLLBAR);
-				uint16 skip = sb->GetPosition();
+				uint16_t skip = sb->GetPosition();
 				int drawable = this->num_displayed;
 				int y = r.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal; // first line contains headings in the value columns
 				for (PerformanceElement e : DISPLAY_ORDER_PFE) {
@@ -949,7 +949,7 @@ struct FrametimeGraphWindow : Window {
 			/* Position of last rendered data point */
 			Point lastpoint = {
 				x_max,
-				(int)Scinterlate<int64>(y_zero, y_max, 0, this->vertical_scale, durations[point])
+				(int)Scinterlate<int64_t>(y_zero, y_max, 0, this->vertical_scale, durations[point])
 			};
 			/* Timestamp of last rendered data point */
 			TimingMeasurement lastts = timestamps[point];
@@ -979,8 +979,8 @@ struct FrametimeGraphWindow : Window {
 
 				/* Draw line from previous point to new point */
 				Point newpoint = {
-					(int)Scinterlate<int64>(x_zero, x_max, 0, (int64)draw_horz_scale, (int64)draw_horz_scale - (int64)time_sum),
-					(int)Scinterlate<int64>(y_zero, y_max, 0, (int64)draw_vert_scale, (int64)value)
+					(int)Scinterlate<int64_t>(x_zero, x_max, 0, (int64_t)draw_horz_scale, (int64_t)draw_horz_scale - (int64_t)time_sum),
+					(int)Scinterlate<int64_t>(y_zero, y_max, 0, (int64_t)draw_vert_scale, (int64_t)value)
 				};
 				if (newpoint.x > lastpoint.x) continue; // don't draw backwards
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);

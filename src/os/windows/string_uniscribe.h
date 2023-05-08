@@ -43,7 +43,7 @@ public:
 	* @param c           The character to add.
 	* @return The number of buffer spaces that were used.
 	*/
-	static size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, WChar c)
+	static size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, char32_t c)
 	{
 		if (c >= 0x010000U) {
 			/* Character is encoded using surrogates in UTF-16. */

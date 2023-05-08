@@ -34,6 +34,6 @@ DEF_CMD_TRAIT(CMD_CONVERT_ROAD,     CmdConvertRoad,    0,                       
 CommandCallback CcPlaySound_CONSTRUCTION_OTHER;
 CommandCallback CcBuildRoadTunnel;
 void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, RoadType rt, DiagDirection dir);
-void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, uint8 width, uint8 length, RoadStopType, bool is_drive_through, DiagDirection dir, RoadType, RoadStopClassID spec_class, uint16_t spec_index, StationID, bool);
+void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, uint8_t width, uint8_t length, RoadStopType, bool is_drive_through, DiagDirection dir, RoadType, RoadStopClassID spec_class, uint16_t spec_index, StationID, bool);
 
 #endif /* ROAD_CMD_H */

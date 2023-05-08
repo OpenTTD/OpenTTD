@@ -35,14 +35,14 @@ enum class IncludeHeightmap {
 	Always      ///< Always include the heightmap
 };
 
-uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap include_heightmap);
+uint32_t GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap include_heightmap);
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
-	uint8 colour;              ///< Colour of the item on the map.
+	uint8_t colour;              ///< Colour of the item on the map.
 	StringID legend;           ///< String corresponding to the coloured item.
 	IndustryType type;         ///< Type of industry. Only valid for industry entries.
-	uint8 height;              ///< Height in tiles. Only valid for height legend entries.
+	uint8_t height;              ///< Height in tiles. Only valid for height legend entries.
 	CompanyID company;         ///< Company to display. Only valid for company entries of the owner legend.
 	bool show_on_map;          ///< For filtering industries, if \c true, industry is shown on the map in colour.
 	bool end;                  ///< This is the end of the list.
@@ -81,9 +81,9 @@ protected:
 	uint column_width;             ///< Width of a column in the #WID_SM_LEGEND widget.
 	uint legend_width;             ///< Width of legend 'blob'.
 
-	int32 scroll_x;  ///< Horizontal world coordinate of the base tile left of the top-left corner of the smallmap display.
-	int32 scroll_y;  ///< Vertical world coordinate of the base tile left of the top-left corner of the smallmap display.
-	int32 subscroll; ///< Number of pixels (0..3) between the right end of the base tile and the pixel at the top-left corner of the smallmap display.
+	int32_t scroll_x;  ///< Horizontal world coordinate of the base tile left of the top-left corner of the smallmap display.
+	int32_t scroll_y;  ///< Vertical world coordinate of the base tile left of the top-left corner of the smallmap display.
+	int32_t subscroll; ///< Number of pixels (0..3) between the right end of the base tile and the pixel at the top-left corner of the smallmap display.
 	int zoom;        ///< Zoom level. Bigger number means more zoom-out (further away).
 
 	LinkGraphOverlay *overlay;
@@ -182,7 +182,7 @@ protected:
 	void SetZoomLevel(ZoomLevelChange change, const Point *zoom_pt);
 	void SetOverlayCargoMask();
 	void SetupWidgetData();
-	uint32 GetTileColours(const TileArea &ta) const;
+	uint32_t GetTileColours(const TileArea &ta) const;
 
 	int GetPositionOnLegend(Point pt);
 

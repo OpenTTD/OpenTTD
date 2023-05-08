@@ -30,7 +30,7 @@ public:
 		uint elapsed;
 	};
 
-	static uint64 counter; ///< Monotonic counter, in ticks, since start of game.
+	static uint64_t counter; ///< Monotonic counter, in ticks, since start of game.
 };
 
 #endif /* TIMER_GAME_TICK_H */

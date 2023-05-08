@@ -23,7 +23,7 @@
 #include "../safeguards.h"
 
 struct PlaybackSegment {
-	uint32 start, end;
+	uint32_t start, end;
 	size_t start_block;
 	bool loop;
 };

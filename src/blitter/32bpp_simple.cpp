@@ -48,7 +48,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 				case BM_CRASH_REMAP:
 					if (src->m == 0) {
 						if (src->a != 0) {
-							uint8 g = MakeDark(src->r, src->g, src->b);
+							uint8_t g = MakeDark(src->r, src->g, src->b);
 							*dst = ComposeColourRGBA(g, g, g, src->a, *dst);
 						}
 					} else {
@@ -132,7 +132,7 @@ Sprite *Blitter_32bppSimple::Encode(const SpriteLoader::Sprite *sprite, Allocato
 			dst[i].v = 0;
 		} else {
 			/* Get brightest value */
-			uint8 rgb_max = std::max({src->r, src->g, src->b});
+			uint8_t rgb_max = std::max({src->r, src->g, src->b});
 
 			/* Black pixel (8bpp or old 32bpp image), so use default value */
 			if (rgb_max == 0) rgb_max = DEFAULT_BRIGHTNESS;

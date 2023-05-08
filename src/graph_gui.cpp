@@ -178,7 +178,7 @@ protected:
 	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
 	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
 
-	uint64 excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
+	uint64_t excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
 	byte num_dataset;
 	byte num_on_x_axis;
 	byte num_vert_lines;
@@ -191,8 +191,8 @@ protected:
 
 	/* These values are used if the graph is being plotted against values
 	 * rather than the dates specified by month and year. */
-	uint16 x_values_start;
-	uint16 x_values_increment;
+	uint16_t x_values_start;
+	uint16_t x_values_increment;
 
 	int graph_widget;
 	StringID format_str_y_axis;
@@ -234,7 +234,7 @@ protected:
 		double abs_higher = (current_interval.highest < 0) ? 0 : (double)current_interval.highest;
 
 		int num_pos_grids;
-		int64 grid_size;
+		int64_t grid_size;
 
 		if (abs_lower != 0 || abs_higher != 0) {
 			/* The number of grids to reserve for the positive part is: */
@@ -245,8 +245,8 @@ protected:
 			if (num_pos_grids == num_hori_lines && abs_lower != 0) num_pos_grids--;
 
 			/* Get the required grid size for each side and use the maximum one. */
-			int64 grid_size_higher = (abs_higher > 0) ? ((int64)abs_higher + num_pos_grids - 1) / num_pos_grids : 0;
-			int64 grid_size_lower = (abs_lower > 0) ? ((int64)abs_lower + num_hori_lines - num_pos_grids - 1) / (num_hori_lines - num_pos_grids) : 0;
+			int64_t grid_size_higher = (abs_higher > 0) ? ((int64_t)abs_higher + num_pos_grids - 1) / num_pos_grids : 0;
+			int64_t grid_size_lower = (abs_lower > 0) ? ((int64_t)abs_lower + num_hori_lines - num_pos_grids - 1) / (num_hori_lines - num_pos_grids) : 0;
 			grid_size = std::max(grid_size_higher, grid_size_lower);
 		} else {
 			/* If both values are zero, show an empty graph. */
@@ -267,8 +267,8 @@ protected:
 	uint GetYLabelWidth(ValuesInterval current_interval, int num_hori_lines) const
 	{
 		/* draw text strings on the y axis */
-		int64 y_label = current_interval.highest;
-		int64 y_label_separation = (current_interval.highest - current_interval.lowest) / num_hori_lines;
+		int64_t y_label = current_interval.highest;
+		int64_t y_label_separation = (current_interval.highest - current_interval.lowest) / num_hori_lines;
 
 		uint max_width = 0;
 
@@ -366,8 +366,8 @@ protected:
 		assert(this->num_dataset > 0);
 
 		/* draw text strings on the y axis */
-		int64 y_label = interval.highest;
-		int64 y_label_separation = abs(interval.highest - interval.lowest) / num_hori_lines;
+		int64_t y_label = interval.highest;
+		int64_t y_label_separation = abs(interval.highest - interval.lowest) / num_hori_lines;
 
 		y = r.top - GetCharacterHeight(FS_SMALL) / 2;
 
@@ -405,7 +405,7 @@ protected:
 			/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
 			x = r.left;
 			y = r.bottom + ScaleGUITrad(2);
-			uint16 label = this->x_values_start;
+			uint16_t label = this->x_values_start;
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, label);
@@ -1223,8 +1223,8 @@ struct PerformanceRatingDetailWindow : Window {
 		int colour_notdone = _colour_gradient[COLOUR_RED][4];
 
 		/* Draw all the score parts */
-		int64 val    = _score_part[company][score_type];
-		int64 needed = _score_info[score_type].needed;
+		int64_t val    = _score_part[company][score_type];
+		int64_t needed = _score_info[score_type].needed;
 		int   score  = _score_info[score_type].score;
 
 		/* SCORE_TOTAL has its own rules ;) */
@@ -1243,7 +1243,7 @@ struct PerformanceRatingDetailWindow : Window {
 		DrawString(this->score_info_left, this->score_info_right, text_top, STR_JUST_COMMA, TC_BLACK, SA_RIGHT);
 
 		/* Calculate the %-bar */
-		uint x = Clamp<int64>(val, 0, needed) * this->bar_width / needed;
+		uint x = Clamp<int64_t>(val, 0, needed) * this->bar_width / needed;
 		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) {
 			x = this->bar_right - x;
@@ -1256,7 +1256,7 @@ struct PerformanceRatingDetailWindow : Window {
 		if (x != this->bar_right) GfxFillRect(x,              bar_top, this->bar_right, bar_top + this->bar_height - 1, rtl ? colour_done : colour_notdone);
 
 		/* Draw it */
-		SetDParam(0, Clamp<int64>(val, 0, needed) * 100 / needed);
+		SetDParam(0, Clamp<int64_t>(val, 0, needed) * 100 / needed);
 		DrawString(this->bar_left, this->bar_right, text_top, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_HOR_CENTER);
 
 		/* SCORE_LOAN is inversed */

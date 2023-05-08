@@ -38,9 +38,9 @@ protected:
 	 */
 	struct RefitDesc {
 		CargoID cargo;    ///< Cargo type the vehicle will be carrying.
-		uint16 capacity;  ///< Capacity the vehicle will have.
-		uint16 remaining; ///< Capacity remaining from before the previous refit.
-		RefitDesc(CargoID cargo, uint16 capacity, uint16 remaining) :
+		uint16_t capacity;  ///< Capacity the vehicle will have.
+		uint16_t remaining; ///< Capacity remaining from before the previous refit.
+		RefitDesc(CargoID cargo, uint16_t capacity, uint16_t remaining) :
 				cargo(cargo), capacity(capacity), remaining(remaining) {}
 	};
 
@@ -90,9 +90,9 @@ protected:
 	bool HandleRefit(CargoID refit_cargo);
 	void ResetRefit();
 	void RefreshStats(const Order *cur, const Order *next);
-	const Order *PredictNextOrder(const Order *cur, const Order *next, uint8 flags, uint num_hops = 0);
+	const Order *PredictNextOrder(const Order *cur, const Order *next, uint8_t flags, uint num_hops = 0);
 
-	void RefreshLinks(const Order *cur, const Order *next, uint8 flags, uint num_hops = 0);
+	void RefreshLinks(const Order *cur, const Order *next, uint8_t flags, uint num_hops = 0);
 };
 
 #endif /* REFRESH_H */

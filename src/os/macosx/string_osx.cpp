@@ -113,7 +113,7 @@ public:
 		int CountRuns() const override { return this->size(); }
 		const VisualRun &GetVisualRun(int run) const override { return this->at(run);  }
 
-		int GetInternalCharLength(WChar c) const override
+		int GetInternalCharLength(char32_t c) const override
 		{
 			/* CoreText uses UTF-16 internally which means we need to account for surrogate pairs. */
 			return c >= 0x010000U ? 2 : 1;
@@ -138,7 +138,7 @@ public:
 static CGFloat SpriteFontGetWidth(void *ref_con)
 {
 	FontSize fs = (FontSize)((size_t)ref_con >> 24);
-	WChar c = (WChar)((size_t)ref_con & 0xFFFFFF);
+	char32_t c = (char32_t)((size_t)ref_con & 0xFFFFFF);
 
 	return GetGlyphWidth(fs, c);
 }
@@ -185,7 +185,7 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 		}
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, i.first - last), kCTFontAttributeName, font);
 
-		CGColorRef color = CGColorCreateGenericGray((uint8)i.second->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
+		CGColorRef color = CGColorCreateGenericGray((uint8_t)i.second->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, i.first - last), kCTForegroundColorAttributeName, color);
 		CGColorRelease(color);
 
@@ -351,7 +351,7 @@ int MacOSStringCompare(std::string_view s1, std::string_view s2)
 	while (*s != '\0') {
 		size_t idx = s - string_base;
 
-		WChar c = Utf8Consume(&s);
+		char32_t c = Utf8Consume(&s);
 		if (c < 0x10000) {
 			utf16_str.push_back((UniChar)c);
 		} else {

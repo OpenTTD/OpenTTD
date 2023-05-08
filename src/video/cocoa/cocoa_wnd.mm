@@ -107,7 +107,7 @@ static NSUInteger CountUtf16Units(const char *from, const char *to)
 	NSUInteger i = 0;
 
 	while (from < to) {
-		WChar c;
+		char32_t c;
 		size_t len = Utf8Decode(&c, from);
 		i += len < 4 ? 1 : 2; // Watch for surrogate pairs.
 		from += len;
@@ -125,7 +125,7 @@ static NSUInteger CountUtf16Units(const char *from, const char *to)
 static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 {
 	for (NSUInteger i = 0; i < count && *str != '\0'; ) {
-		WChar c;
+		char32_t c;
 		size_t len = Utf8Decode(&c, str);
 		i += len < 4 ? 1 : 2; // Watch for surrogates.
 		str += len;
@@ -139,9 +139,9 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
  * @param s String to convert.
  * @return Vector of UTF-32 characters.
  */
-static std::vector<WChar> NSStringToUTF32(NSString *s)
+static std::vector<char32_t> NSStringToUTF32(NSString *s)
 {
-	std::vector<WChar> unicode_str;
+	std::vector<char32_t> unicode_str;
 
 	unichar lead = 0;
 	for (NSUInteger i = 0; i < s.length; i++) {
@@ -161,7 +161,7 @@ static std::vector<WChar> NSStringToUTF32(NSString *s)
 
 static void CGDataFreeCallback(void *, const void *data, size_t)
 {
-	delete[] (const uint32 *)data;
+	delete[] (const uint32_t *)data;
 }
 
 /**
@@ -176,7 +176,7 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 
 	/* Fetch the sprite and create a new bitmap */
 	Dimension dim = GetSpriteSize(sprite_id, nullptr, zoom);
-	std::unique_ptr<uint32[]> buffer = DrawSpriteToRgbaBuffer(sprite_id, zoom);
+	std::unique_ptr<uint32_t[]> buffer = DrawSpriteToRgbaBuffer(sprite_id, zoom);
 	if (!buffer) return nullptr; // Failed to blit sprite for some reason.
 
 	CFAutoRelease<CGDataProvider> data(CGDataProviderCreateWithData(nullptr, buffer.release(), dim.width * dim.height * 4, &CGDataFreeCallback));
@@ -674,7 +674,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 - (BOOL)emulateRightButton:(NSEvent *)event
 {
-	uint32 keymask = 0;
+	uint32_t keymask = 0;
 	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSEventModifierFlagCommand;
 	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSEventModifierFlagControl;
 
@@ -780,7 +780,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 }
 
 
-- (BOOL)internalHandleKeycode:(unsigned short)keycode unicode:(WChar)unicode pressed:(BOOL)down modifiers:(NSUInteger)modifiers
+- (BOOL)internalHandleKeycode:(unsigned short)keycode unicode:(char32_t)unicode pressed:(BOOL)down modifiers:(NSUInteger)modifiers
 {
 	switch (keycode) {
 		case QZ_UP:    SB(_dirkeys, 1, 1, down); break;
@@ -813,7 +813,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	if (down) {
 		/* Map keycode to OTTD code. */
 		auto vk = std::find_if(std::begin(_vk_mapping), std::end(_vk_mapping), [=](const CocoaVkMapping &m) { return m.vk_from == keycode; });
-		uint32 pressed_key = vk != std::end(_vk_mapping) ? vk->map_to : 0;
+		uint32_t pressed_key = vk != std::end(_vk_mapping) ? vk->map_to : 0;
 
 		if (modifiers & NSEventModifierFlagShift)   pressed_key |= WKC_SHIFT;
 		if (modifiers & NSEventModifierFlagControl) pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
@@ -861,7 +861,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	}
 
 	/* Convert UTF-16 characters to UCS-4 chars. */
-	std::vector<WChar> unicode_str = NSStringToUTF32([ event characters ]);
+	std::vector<char32_t> unicode_str = NSStringToUTF32([ event characters ]);
 	if (unicode_str.empty()) unicode_str.push_back(0);
 
 	if (EditBoxInGlobalFocus()) {
@@ -890,7 +890,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	}
 
 	/* Convert UTF-16 characters to UCS-4 chars. */
-	std::vector<WChar> unicode_str = NSStringToUTF32([ event characters ]);
+	std::vector<char32_t> unicode_str = NSStringToUTF32([ event characters ]);
 	if (unicode_str.empty()) unicode_str.push_back(0);
 
 	[ self internalHandleKeycode:event.keyCode unicode:unicode_str[0] pressed:NO modifiers:event.modifierFlags ];

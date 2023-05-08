@@ -83,7 +83,7 @@ static bool IsStationAvailable(const StationSpec *statspec)
 {
 	if (statspec == nullptr || !HasBit(statspec->callback_mask, CBM_STATION_AVAIL)) return true;
 
-	uint16 cb_res = GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, nullptr, INVALID_TILE);
+	uint16_t cb_res = GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, nullptr, INVALID_TILE);
 	if (cb_res == CALLBACK_FAILED) return true;
 
 	return Convert8bitBooleanCallback(statspec->grf_prop.grffile, CBID_STATION_AVAILABILITY, cb_res);
@@ -2293,7 +2293,7 @@ static void SetDefaultRailGui()
  * to the one adequate to current year.
  * @param new_value needed to be called when a setting changes
  */
-void ResetSignalVariant(int32 new_value)
+void ResetSignalVariant(int32_t new_value)
 {
 	SignalVariant new_variant = (TimerGameCalendar::year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 

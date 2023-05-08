@@ -193,16 +193,16 @@ void FiosGetDrives(FileList &file_list)
 bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb)
 {
 	/* hectonanoseconds between Windows and POSIX epoch */
-	static const int64 posix_epoch_hns = 0x019DB1DED53E8000LL;
+	static const int64_t posix_epoch_hns = 0x019DB1DED53E8000LL;
 	const WIN32_FIND_DATA *fd = &ent->dir->fd;
 
-	sb->st_size  = ((uint64) fd->nFileSizeHigh << 32) + fd->nFileSizeLow;
+	sb->st_size  = ((uint64_t) fd->nFileSizeHigh << 32) + fd->nFileSizeLow;
 	/* UTC FILETIME to seconds-since-1970 UTC
 	 * we just have to subtract POSIX epoch and scale down to units of seconds.
 	 * http://www.gamedev.net/community/forums/topic.asp?topic_id=294070&whichpage=1&#1860504
 	 * XXX - not entirely correct, since filetimes on FAT aren't UTC but local,
 	 * this won't entirely be correct, but we use the time only for comparison. */
-	sb->st_mtime = (time_t)((*(const uint64*)&fd->ftLastWriteTime - posix_epoch_hns) / 1E7);
+	sb->st_mtime = (time_t)((*(const uint64_t*)&fd->ftLastWriteTime - posix_epoch_hns) / 1E7);
 	sb->st_mode  = (fd->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)? S_IFDIR : S_IFREG;
 
 	return true;

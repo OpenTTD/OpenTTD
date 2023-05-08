@@ -100,7 +100,7 @@ static const SpriteID _aircraft_sprite[] = {
 };
 
 template <>
-bool IsValidImageIndex<VEH_AIRCRAFT>(uint8 image_index)
+bool IsValidImageIndex<VEH_AIRCRAFT>(uint8_t image_index)
 {
 	return image_index < lengthof(_aircraft_sprite);
 }
@@ -172,7 +172,7 @@ static StationID FindNearestHangar(const Aircraft *v)
 
 void Aircraft::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const
 {
-	uint8 spritenum = this->spritenum;
+	uint8_t spritenum = this->spritenum;
 
 	if (is_custom_sprite(spritenum)) {
 		GetCustomVehicleSprite(this, direction, image_type, result);
@@ -202,7 +202,7 @@ void GetRotorImage(const Aircraft *v, EngineImageType image_type, VehicleSpriteS
 static void GetAircraftIcon(EngineID engine, EngineImageType image_type, VehicleSpriteSeq *result)
 {
 	const Engine *e = Engine::Get(engine);
-	uint8 spritenum = e->u.air.image_index;
+	uint8_t spritenum = e->u.air.image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
@@ -1174,7 +1174,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 	}
 
 	if (v->crashed_counter < 650) {
-		uint32 r;
+		uint32_t r;
 		if (Chance16R(1, 32, r)) {
 			static const DirDiff delta[] = {
 				DIRDIFF_45LEFT, DIRDIFF_SAME, DIRDIFF_SAME, DIRDIFF_45RIGHT
@@ -1218,8 +1218,8 @@ static bool HandleCrashedAircraft(Aircraft *v)
 static void HandleAircraftSmoke(Aircraft *v, bool mode)
 {
 	static const struct {
-		int8 x;
-		int8 y;
+		int8_t x;
+		int8_t y;
 	} smoke_pos[] = {
 		{  5,  5 },
 		{  6,  0 },
@@ -1358,7 +1358,7 @@ static void MaybeCrashAirplane(Aircraft *v)
 
 	Station *st = Station::Get(v->targetairport);
 
-	uint32 prob;
+	uint32_t prob;
 	if ((st->airport.GetFTA()->flags & AirportFTAClass::SHORT_STRIP) &&
 			(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
 			!_cheats.no_jetcrash.value) {
@@ -1655,8 +1655,8 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 				/* save speed before, since if AirportHasBlock is false, it resets them to 0
 				 * we don't want that for plane in air
 				 * hack for speed thingie */
-				uint16 tcur_speed = v->cur_speed;
-				uint16 tsubspeed = v->subspeed;
+				uint16_t tcur_speed = v->cur_speed;
+				uint16_t tsubspeed = v->subspeed;
 				if (!AirportHasBlock(v, current, apc)) {
 					v->state = landingtype; // LANDING / HELILANDING
 					if (v->state == HELILANDING) SetBit(v->flags, VAF_HELI_DIRECT_DESCENT);
@@ -1840,7 +1840,7 @@ static bool AirportHasBlock(Aircraft *v, const AirportFTA *current_pos, const Ai
 	/* same block, then of course we can move */
 	if (apc->layout[current_pos->position].block != next->block) {
 		const Station *st = Station::Get(v->targetairport);
-		uint64 airport_flags = next->block;
+		uint64_t airport_flags = next->block;
 
 		/* check additional possible extra blocks */
 		if (current_pos != reference && current_pos->block != NOTHING_block) {
@@ -1870,7 +1870,7 @@ static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const A
 
 	/* if the next position is in another block, check it and wait until it is free */
 	if ((apc->layout[current_pos->position].block & next->block) != next->block) {
-		uint64 airport_flags = next->block;
+		uint64_t airport_flags = next->block;
 		/* search for all all elements in the list with the same state, and blocks != N
 		 * this means more blocks should be checked/set */
 		const AirportFTA *current = current_pos;
@@ -1907,7 +1907,7 @@ static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const A
  */
 struct MovementTerminalMapping {
 	AirportMovementStates state; ///< Aircraft movement state when going to this terminal.
-	uint64 airport_flag;         ///< Bitmask in the airport flags that need to be free for this terminal.
+	uint64_t airport_flag;         ///< Bitmask in the airport flags that need to be free for this terminal.
 };
 
 /** A list of all valid terminals and their associated blocks. */

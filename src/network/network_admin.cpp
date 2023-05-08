@@ -396,13 +396,13 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
 		p->Send_uint64(company->money);
 		p->Send_uint64(company->current_loan);
 		p->Send_uint64(income);
-		p->Send_uint16(static_cast<uint16>(std::min<uint64>(UINT16_MAX, company->cur_economy.delivered_cargo.GetSum<OverflowSafeInt64>())));
+		p->Send_uint16(static_cast<uint16_t>(std::min<uint64_t>(UINT16_MAX, company->cur_economy.delivered_cargo.GetSum<OverflowSafeInt64>())));
 
 		/* Send stats for the last 2 quarters. */
 		for (uint i = 0; i < 2; i++) {
 			p->Send_uint64(company->old_economy[i].company_value);
 			p->Send_uint16(company->old_economy[i].performance_history);
-			p->Send_uint16(static_cast<uint16>(std::min<uint64>(UINT16_MAX, company->old_economy[i].delivered_cargo.GetSum<OverflowSafeInt64>())));
+			p->Send_uint16(static_cast<uint16_t>(std::min<uint64_t>(UINT16_MAX, company->old_economy[i].delivered_cargo.GetSum<OverflowSafeInt64>())));
 		}
 
 		this->SendPacket(p);
@@ -448,7 +448,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyStats()
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64 data)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64_t data)
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CHAT);
 
@@ -481,7 +481,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRconEnd(const std::string
  * @param colour The colour of the text.
  * @param result The result of the command.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16 colour, const std::string_view result)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16_t colour, const std::string_view result)
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_RCON);
 
@@ -522,7 +522,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_PING(Packet *p)
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	uint32 d1 = p->Recv_uint32();
+	uint32_t d1 = p->Recv_uint32();
 
 	Debug(net, 6, "[admin] Ping from '{}' ({}): {}", this->admin_name, this->admin_version, d1);
 
@@ -571,7 +571,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(const std::str
 }
 
 /** Send ping-reply (pong) to admin **/
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendPong(uint32 d1)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendPong(uint32_t d1)
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_PONG);
 
@@ -586,11 +586,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdNames()
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CMD_NAMES);
 
-	for (uint16 i = 0; i < CMD_END; i++) {
+	for (uint16_t i = 0; i < CMD_END; i++) {
 		const char *cmdname = GetCommandName(static_cast<Commands>(i));
 
 		/* Should COMPAT_MTU be exceeded, start a new packet
-		 * (magic 5: 1 bool "more data" and one uint16 "command id", one
+		 * (magic 5: 1 bool "more data" and one uint16_t "command id", one
 		 * byte for string '\0' termination and 1 bool "no more data" */
 		if (!p->CanWriteToPacket(strlen(cmdname) + 5)) {
 			p->Send_bool(false);
@@ -693,7 +693,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	AdminUpdateType type = (AdminUpdateType)p->Recv_uint8();
-	uint32 d1 = p->Recv_uint32();
+	uint32_t d1 = p->Recv_uint32();
 
 	switch (type) {
 		case ADMIN_UPDATE_DATE:
@@ -790,7 +790,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_EXTERNAL_CHAT(P
 	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
 
 	if (!IsValidConsoleColour(colour)) {
-		Debug(net, 1, "[admin] Not supported chat colour {} ({}, {}, {}) from '{}' ({}).", (uint16)colour, source, user, msg, this->admin_name, this->admin_version);
+		Debug(net, 1, "[admin] Not supported chat colour {} ({}, {}, {}) from '{}' ({}).", (uint16_t)colour, source, user, msg, this->admin_name, this->admin_version);
 		return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
 	}
 
@@ -913,7 +913,7 @@ void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bc
 /**
  * Send chat to the admin network (if they did opt in for the respective update).
  */
-void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64 data, bool from_admin)
+void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64_t data, bool from_admin)
 {
 	if (from_admin) return;
 

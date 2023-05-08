@@ -60,15 +60,15 @@ INSTANTIATE_POOL_METHODS(Company)
  * @param name_1 Name of the company.
  * @param is_ai  A computer program is running for this company.
  */
-Company::Company(uint16 name_1, bool is_ai)
+Company::Company(uint16_t name_1, bool is_ai)
 {
 	this->name_1 = name_1;
 	this->location_of_HQ = INVALID_TILE;
 	this->is_ai = is_ai;
-	this->terraform_limit    = (uint32)_settings_game.construction.terraform_frame_burst << 16;
-	this->clear_limit        = (uint32)_settings_game.construction.clear_frame_burst << 16;
-	this->tree_limit         = (uint32)_settings_game.construction.tree_frame_burst << 16;
-	this->build_object_limit = (uint32)_settings_game.construction.build_object_frame_burst << 16;
+	this->terraform_limit    = (uint32_t)_settings_game.construction.terraform_frame_burst << 16;
+	this->clear_limit        = (uint32_t)_settings_game.construction.clear_frame_burst << 16;
+	this->tree_limit         = (uint32_t)_settings_game.construction.tree_frame_burst << 16;
+	this->build_object_limit = (uint32_t)_settings_game.construction.build_object_frame_burst << 16;
 
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, INVALID_COMPANY);
 }
@@ -362,7 +362,7 @@ static void GenerateCompanyName(Company *c)
 	Town *t = ClosestTownFromTile(c->last_build_coordinate, UINT_MAX);
 
 	StringID str;
-	uint32 strp;
+	uint32_t strp;
 	std::string name;
 	if (t->name.empty() && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1)) {
 		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_COMPANY_NAME_START;
@@ -561,7 +561,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	_company_colours[c->index] = (Colours)c->colour;
 
 	/* Scale the initial loan based on the inflation rounded down to the loan interval. The maximum loan has already been inflation adjusted. */
-	c->money = c->current_loan = std::min<int64>((INITIAL_LOAN * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL, _economy.max_loan);
+	c->money = c->current_loan = std::min<int64_t>((INITIAL_LOAN * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL, _economy.max_loan);
 
 	c->avail_railtypes = GetCompanyRailtypes(c->index);
 	c->avail_roadtypes = GetCompanyRoadTypes(c->index);
@@ -684,7 +684,7 @@ static void HandleBankruptcyTakeover(Company *c)
 	if (c->bankrupt_asked == MAX_UVALUE(CompanyMask)) return;
 
 	Company *best = nullptr;
-	int32 best_performance = -1;
+	int32_t best_performance = -1;
 
 	/* Ask the company with the highest performance history first */
 	for (Company *c2 : Company::Iterate()) {
@@ -725,7 +725,7 @@ void OnTick_Companies()
 	}
 
 	if (_new_competitor_timeout.HasFired() && _game_mode != GM_MENU && AI::CanStartNew()) {
-		int32 timeout = _settings_game.difficulty.competitors_interval * 60 * TICKS_PER_SECOND;
+		int32_t timeout = _settings_game.difficulty.competitors_interval * 60 * TICKS_PER_SECOND;
 		/* If the interval is zero, check every ~10 minutes if a company went bankrupt and needs replacing. */
 		if (timeout == 0) timeout = 10 * 60 * TICKS_PER_SECOND;
 
@@ -1149,9 +1149,9 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
  * Get total sum of all owned road bits.
  * @return Combined total road road bits.
  */
-uint32 CompanyInfrastructure::GetRoadTotal() const
+uint32_t CompanyInfrastructure::GetRoadTotal() const
 {
-	uint32 total = 0;
+	uint32_t total = 0;
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
 		if (RoadTypeIsRoad(rt)) total += this->road[rt];
 	}
@@ -1162,9 +1162,9 @@ uint32 CompanyInfrastructure::GetRoadTotal() const
  * Get total sum of all owned tram bits.
  * @return Combined total of tram road bits.
  */
-uint32 CompanyInfrastructure::GetTramTotal() const
+uint32_t CompanyInfrastructure::GetTramTotal() const
 {
-	uint32 total = 0;
+	uint32_t total = 0;
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
 		if (RoadTypeIsTram(rt)) total += this->road[rt];
 	}

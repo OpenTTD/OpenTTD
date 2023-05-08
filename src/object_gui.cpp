@@ -36,7 +36,7 @@
 
 static ObjectClassID _selected_object_class; ///< Currently selected available object class.
 static int _selected_object_index;           ///< Index of the currently selected object if existing, else \c -1.
-static uint8 _selected_object_view;          ///< the view of the selected object
+static uint8_t _selected_object_view;          ///< the view of the selected object
 
 /** Enum referring to the Hotkeys in the build object window */
 enum BuildObjectHotkeys {
@@ -393,7 +393,7 @@ public:
 
 				/* Get the extra message for the GUI */
 				if (HasBit(spec->callback_mask, CBM_OBJ_FUND_MORE_TEXT)) {
-					uint16 callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, _selected_object_view);
+					uint16_t callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, _selected_object_view);
 					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 						if (callback_res > 0x400) {
 							ErrorUnknownCallbackResult(spec->grf_prop.grffile->grfid, CBID_OBJECT_FUND_MORE_TEXT, callback_res);

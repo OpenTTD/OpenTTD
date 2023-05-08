@@ -520,7 +520,7 @@ static WindowDesc _main_window_desc(
  * @param keycode The keycode that was pressed by the user.
  * @return True iff the keycode matches one of the hotkeys for 'quit'.
  */
-bool IsQuitKey(uint16 keycode)
+bool IsQuitKey(uint16_t keycode)
 {
 	int num = MainWindow::hotkeys.CheckMatch(keycode);
 	return num == GHK_QUIT;

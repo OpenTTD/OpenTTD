@@ -14,7 +14,7 @@
 
 #include "safeguards.h"
 
-/* virtual */ uint32 TownScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
+/* virtual */ uint32_t TownScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
 {
 	switch (variable) {
 		/* Larger towns */
@@ -29,7 +29,7 @@
 		/* Get a variable from the persistent storage */
 		case 0x7C: {
 			/* Check the persistent storage for the GrfID stored in register 100h. */
-			uint32 grfid = GetRegister(0x100);
+			uint32_t grfid = GetRegister(0x100);
 			if (grfid == 0xFFFFFFFF) {
 				if (this->ro.grffile == nullptr) return 0;
 				grfid = this->ro.grffile->grfid;
@@ -116,7 +116,7 @@
 	return UINT_MAX;
 }
 
-/* virtual */ void TownScopeResolver::StorePSA(uint pos, int32 value)
+/* virtual */ void TownScopeResolver::StorePSA(uint pos, int32_t value)
 {
 	if (this->readonly) return;
 
@@ -125,7 +125,7 @@
 	if (this->ro.grffile == nullptr) return;
 
 	/* Check the persistent storage for the GrfID stored in register 100h. */
-	uint32 grfid = GetRegister(0x100);
+	uint32_t grfid = GetRegister(0x100);
 
 	/* A NewGRF can only write in the persistent storage associated to its own GRFID. */
 	if (grfid == 0xFFFFFFFF) grfid = this->ro.grffile->grfid;

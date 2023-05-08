@@ -457,7 +457,7 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 		Debug(net, 0, "Unknown callback for command; no callback sent (command: {})", cp->cmd);
 		callback = 0; // _callback_table[0] == nullptr
 	}
-	p->Send_uint8 ((uint8)callback);
+	p->Send_uint8 ((uint8_t)callback);
 }
 
 /** Helper to process a single ClientID argument. */

@@ -13,7 +13,7 @@
 #include "date_type.h"
 #include "vehicle_type.h"
 
-static const uint8 MAX_TIMETABLE_START_YEARS = 15; ///< The maximum start date offset, in years.
+static const uint8_t MAX_TIMETABLE_START_YEARS = 15; ///< The maximum start date offset, in years.
 
 void ShowTimetableWindow(const Vehicle *v);
 void UpdateVehicleTimetable(Vehicle *v, bool travelling);

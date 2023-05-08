@@ -146,7 +146,7 @@ void SetDParamMaxDigits(size_t n, uint count, FontSize size)
 	uint front = 0;
 	uint next = 0;
 	GetBroadestDigit(&front, &next, size);
-	uint64 val = count > 1 ? front : next;
+	uint64_t val = count > 1 ? front : next;
 	for (; count > 1; count--) {
 		val = 10 * val + next;
 	}
@@ -206,7 +206,7 @@ bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup)
 }
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacility x);
-static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32 seed);
+static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32_t seed);
 static void GetSpecialNameString(StringBuilder &builder, int ind, StringParameters &args);
 
 static void FormatString(StringBuilder &builder, const char *str, StringParameters &args, uint case_index = 0, bool game_script = false, bool dry_run = false);
@@ -385,10 +385,10 @@ void SetDParamStr(size_t n, std::string &&str)
  * @param fractional_digits number of fractional digits to display after a decimal separator. The decimal separator is inserted
  *                          in front of the \a fractional_digits last digit of \a number.
  */
-static void FormatNumber(StringBuilder &builder, int64 number, const char *separator, int zerofill = 1, int fractional_digits = 0)
+static void FormatNumber(StringBuilder &builder, int64_t number, const char *separator, int zerofill = 1, int fractional_digits = 0)
 {
 	static const int max_digits = 20;
-	uint64 divisor = 10000000000000000000ULL;
+	uint64_t divisor = 10000000000000000000ULL;
 	zerofill += fractional_digits;
 	int thousands_offset = (max_digits - fractional_digits - 1) % 3;
 
@@ -397,8 +397,8 @@ static void FormatNumber(StringBuilder &builder, int64 number, const char *separ
 		number = -number;
 	}
 
-	uint64 num = number;
-	uint64 tot = 0;
+	uint64_t num = number;
+	uint64_t tot = 0;
 	for (int i = 0; i < max_digits; i++) {
 		if (i == max_digits - fractional_digits) {
 			const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
@@ -406,7 +406,7 @@ static void FormatNumber(StringBuilder &builder, int64 number, const char *separ
 			builder += decimal_separator;
 		}
 
-		uint64 quot = 0;
+		uint64_t quot = 0;
 		if (num >= divisor) {
 			quot = num / divisor;
 			num = num % divisor;
@@ -420,24 +420,24 @@ static void FormatNumber(StringBuilder &builder, int64 number, const char *separ
 	}
 }
 
-static void FormatCommaNumber(StringBuilder &builder, int64 number, int fractional_digits = 0)
+static void FormatCommaNumber(StringBuilder &builder, int64_t number, int fractional_digits = 0)
 {
 	const char *separator = _settings_game.locale.digit_group_separator.c_str();
 	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator;
 	FormatNumber(builder, number, separator, 1, fractional_digits);
 }
 
-static void FormatNoCommaNumber(StringBuilder &builder, int64 number)
+static void FormatNoCommaNumber(StringBuilder &builder, int64_t number)
 {
 	FormatNumber(builder, number, "");
 }
 
-static void FormatZerofillNumber(StringBuilder &builder, int64 number, int count)
+static void FormatZerofillNumber(StringBuilder &builder, int64_t number, int count)
 {
 	FormatNumber(builder, number, "", count);
 }
 
-static void FormatHexNumber(StringBuilder &builder, uint64 number)
+static void FormatHexNumber(StringBuilder &builder, uint64_t number)
 {
 	fmt::format_to(builder, "0x{:X}", number);
 }
@@ -447,7 +447,7 @@ static void FormatHexNumber(StringBuilder &builder, uint64 number)
  * @param builder the string builder to write to
  * @param number  the number of bytes to write down
  */
-static void FormatBytes(StringBuilder &builder, int64 number)
+static void FormatBytes(StringBuilder &builder, int64_t number)
 {
 	assert(number >= 0);
 
@@ -563,10 +563,10 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
  * @param plural_form The plural form we want an index for.
  * @return The plural index for the given form.
  */
-static int DeterminePluralForm(int64 count, int plural_form)
+static int DeterminePluralForm(int64_t count, int plural_form)
 {
 	/* The absolute value determines plurality */
-	uint64 n = abs(count);
+	uint64_t n = abs(count);
 
 	switch (plural_form) {
 		default:
@@ -710,7 +710,7 @@ struct UnitConversion {
 	 * @param round Whether to round the value or not.
 	 * @return The converted value.
 	 */
-	int64 ToDisplay(int64 input, bool round = true) const
+	int64_t ToDisplay(int64_t input, bool round = true) const
 	{
 		return round
 			? (int64_t)std::round(input * this->factor)
@@ -724,7 +724,7 @@ struct UnitConversion {
 	 * @param divider Divide the return value by this.
 	 * @return The converted value.
 	 */
-	int64 FromDisplay(int64 input, bool round = true, int64 divider = 1) const
+	int64_t FromDisplay(int64_t input, bool round = true, int64_t divider = 1) const
 	{
 		return round
 			? (int64_t)std::round(input / this->factor / divider)
@@ -897,7 +897,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		/* We have to restore the original offset here to to read the correct values. */
 		args.SetOffset(orig_offset);
 	}
-	WChar b = '\0';
+	char32_t b = '\0';
 	uint next_substr_case_index = 0;
 	std::stack<const char *, std::vector<const char *>> str_stack;
 	str_stack.push(str_arg);
@@ -927,7 +927,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				AllocatedStringParameters sub_args(20);
 
 				char *p;
-				uint32 stringid = std::strtoul(str, &p, 16);
+				uint32_t stringid = std::strtoul(str, &p, 16);
 				if (*p != ':' && *p != '\0') {
 					while (*p != '\0') p++;
 					str = p;
@@ -943,7 +943,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				int i = 0;
 				while (*p != '\0' && i < 20) {
-					uint64 param;
+					uint64_t param;
 					const char *s = ++p;
 
 					/* Find the next value */
@@ -974,7 +974,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 					if (*s != '"') {
 						/* Check if we want to look up another string */
-						WChar l;
+						char32_t l;
 						size_t len = Utf8Decode(&l, s);
 						bool lookup = (l == SCC_ENCODED);
 						if (lookup) s += len;
@@ -1043,7 +1043,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 					/* And determine the string. */
 					const char *s = buffer.c_str();
-					WChar c = Utf8Consume(&s);
+					char32_t c = Utf8Consume(&s);
 					/* Does this string have a gender, if so, set it */
 					if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
 				}
@@ -1065,7 +1065,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_PLURAL_LIST: { // {P}
 				int plural_form = *str++;          // contains the plural form for this string
 				size_t offset = orig_offset + (byte)*str++;
-				int64 v = args.GetParam(offset); // contains the number that determines plural
+				int64_t v = args.GetParam(offset); // contains the number that determines plural
 				str = ParseStringChoice(str, DeterminePluralForm(v, plural_form), builder);
 				break;
 			}
@@ -1150,7 +1150,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				break;
 
 			case SCC_DECIMAL: { // {DECIMAL}
-				int64 number = args.GetNextParameter<int64_t>();
+				int64_t number = args.GetNextParameter<int64_t>();
 				int digits = args.GetNextParameter<int>();
 				FormatCommaNumber(builder, number, digits);
 				break;
@@ -1161,7 +1161,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				break;
 
 			case SCC_ZEROFILL_NUM: { // {ZEROFILL_NUM}
-				int64 num = args.GetNextParameter<int64_t>();
+				int64_t num = args.GetNextParameter<int64_t>();
 				FormatZerofillNumber(builder, num, args.GetNextParameter<int>());
 				break;
 			}
@@ -1182,7 +1182,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				if (cargo >= CargoSpec::GetArraySize()) break;
 
 				StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
-				int64 amount = 0;
+				int64_t amount = 0;
 				switch (cargo_str) {
 					case STR_TONS:
 						amount = _units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetNextParameter<int64_t>());
@@ -1430,7 +1430,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				if (HasBit(e->info.callback_mask, CBM_VEHICLE_NAME)) {
-					uint16 callback = GetVehicleCallback(CBID_VEHICLE_NAME, static_cast<uint32>(arg >> 32), 0, e->index, nullptr);
+					uint16_t callback = GetVehicleCallback(CBID_VEHICLE_NAME, static_cast<uint32_t>(arg >> 32), 0, e->index, nullptr);
 					/* Not calling ErrorUnknownCallbackResult due to being inside string processing. */
 					if (callback != CALLBACK_FAILED && callback < 0x400) {
 						const GRFFile *grffile = e->GetGRF();
@@ -1643,7 +1643,7 @@ static void StationGetSpecialString(StringBuilder &builder, StationFacility x)
 	if ((x & FACIL_AIRPORT) != 0) builder.Utf8Encode(SCC_PLANE);
 }
 
-static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32 seed)
+static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32_t seed)
 {
 	GenerateTownNameString(builder, ind, seed);
 }
@@ -1716,7 +1716,7 @@ static const char _initial_name_letters[] = {
 	'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
 };
 
-static void GenAndCoName(StringBuilder &builder, uint32 arg)
+static void GenAndCoName(StringBuilder &builder, uint32_t arg)
 {
 	const char * const *base;
 	uint num;
@@ -1733,7 +1733,7 @@ static void GenAndCoName(StringBuilder &builder, uint32 arg)
 	builder += " & Co.";
 }
 
-static void GenPresidentName(StringBuilder &builder, uint32 x)
+static void GenPresidentName(StringBuilder &builder, uint32_t x)
 {
 	char initial[] = "?. ";
 	const char * const *base;
@@ -1846,7 +1846,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 
 	uint count = 0;
 	for (uint i = 0; i < TEXT_TAB_END; i++) {
-		uint16 num = lang_pack->offsets[i];
+		uint16_t num = lang_pack->offsets[i];
 		if (num > TAB_SIZE) return false;
 
 		tab_start[i] = count;
@@ -2107,7 +2107,7 @@ bool MissingGlyphSearcher::FindMissingGlyphs()
 
 		FontSize size = this->DefaultSize();
 		while (src != text->cend()) {
-			WChar c = Utf8Consume(src);
+			char32_t c = Utf8Consume(src);
 
 			if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 				size = (FontSize)(c - SCC_FIRST_FONT);

@@ -20,7 +20,7 @@ struct GUIEngineListItem {
 	EngineID engine_id;       ///< Engine to display in build purchase list
 	EngineID variant_id;      ///< Variant group of the engine.
 	EngineDisplayFlags flags; ///< Flags for toggling/drawing (un)folded status and controlling indentation.
-	int8 indent;              ///< Display indentation level.
+	int8_t indent;              ///< Display indentation level.
 
 	GUIEngineListItem(EngineID engine_id, EngineID variant_id, EngineDisplayFlags flags, int indent) : engine_id(engine_id), variant_id(variant_id), flags(flags), indent(indent) {}
 

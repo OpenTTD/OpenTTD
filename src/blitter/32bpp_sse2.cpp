@@ -22,8 +22,8 @@ static FBlitter_32bppSSE2 iFBlitter_32bppSSE2;
 
 Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
 {
-	/* First uint32 of a line = the number of transparent pixels from the left.
-	 * Second uint32 of a line = the number of transparent pixels from the right.
+	/* First uint32_t of a line = the number of transparent pixels from the left.
+	 * Second uint32_t of a line = the number of transparent pixels from the right.
 	 * Then all RGBA then all MV.
 	 */
 	ZoomLevel zoom_min = ZOOM_LVL_NORMAL;
@@ -42,7 +42,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 		const SpriteLoader::Sprite *src_sprite = &sprite[z];
 		sd.infos[z].sprite_width = src_sprite->width;
 		sd.infos[z].sprite_offset = all_sprites_size;
-		sd.infos[z].sprite_line_size = sizeof(Colour) * src_sprite->width + sizeof(uint32) * META_LENGTH;
+		sd.infos[z].sprite_line_size = sizeof(Colour) * src_sprite->width + sizeof(uint32_t) * META_LENGTH;
 
 		const uint rgba_size = sd.infos[z].sprite_line_size * src_sprite->height;
 		sd.infos[z].mv_offset = all_sprites_size + rgba_size;
@@ -80,7 +80,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 						if (src->m >= PALETTE_ANIM_START) has_anim = true;
 
 						/* Get brightest value (or default brightness if it's a black pixel). */
-						const uint8 rgb_max = std::max({src->r, src->g, src->b});
+						const uint8_t rgb_max = std::max({src->r, src->g, src->b});
 						dst_mv->v = (rgb_max == 0) ? Blitter_32bppBase::DEFAULT_BRIGHTNESS : rgb_max;
 
 						/* Pre-convert the mapping channel to a RGB value. */
@@ -96,7 +96,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 					}
 				} else {
 					dst_rgba->data = 0;
-					*(uint16*) dst_mv = 0;
+					*(uint16_t*) dst_mv = 0;
 				}
 				dst_rgba++;
 				dst_mv++;
@@ -105,7 +105,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 
 			/* Count the number of transparent pixels from the left. */
 			dst_rgba = dst_rgba_line + META_LENGTH;
-			uint32 nb_pix_transp = 0;
+			uint32_t nb_pix_transp = 0;
 			for (uint x = src_sprite->width; x != 0; x--) {
 				if (dst_rgba->a == 0) nb_pix_transp++;
 				else break;

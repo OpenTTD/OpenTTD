@@ -92,7 +92,7 @@ static bool IsRoadStopAvailable(const RoadStopSpec *roadstopspec, StationType ty
 
 	if (!HasBit(roadstopspec->callback_mask, CBM_ROAD_STOP_AVAIL)) return true;
 
-	uint16 cb_res = GetRoadStopCallback(CBID_STATION_AVAILABILITY, 0, 0, roadstopspec, nullptr, INVALID_TILE, _cur_roadtype, type, 0);
+	uint16_t cb_res = GetRoadStopCallback(CBID_STATION_AVAILABILITY, 0, 0, roadstopspec, nullptr, INVALID_TILE, _cur_roadtype, type, 0);
 	if (cb_res == CALLBACK_FAILED) return true;
 
 	return Convert8bitBooleanCallback(roadstopspec->grf_prop.grffile, CBID_STATION_AVAILABILITY, cb_res);
@@ -180,7 +180,7 @@ void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, RoadTy
  * @param spec_index Road stop spec index.
  * @see CmdBuildRoadStop
  */
-void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, uint8 width, uint8 length, RoadStopType, bool is_drive_through,
+void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, uint8_t width, uint8_t length, RoadStopType, bool is_drive_through,
 		DiagDirection dir, RoadType, RoadStopClassID spec_class, uint16_t spec_index, StationID, bool)
 {
 	if (result.Failed()) return;
@@ -1472,7 +1472,7 @@ public:
 					} else {
 						DiagDirection orientation = _roadstop_gui_settings.orientation;
 						if (orientation < DIAGDIR_END && HasBit(spec->flags, RSF_DRIVE_THROUGH_ONLY)) orientation = DIAGDIR_END;
-						DrawRoadStopTile(x, y, _cur_roadtype, spec, st, (uint8)orientation);
+						DrawRoadStopTile(x, y, _cur_roadtype, spec, st, (uint8_t)orientation);
 					}
 				}
 				break;

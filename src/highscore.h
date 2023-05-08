@@ -17,7 +17,7 @@
 struct HighScore {
 	std::string name; ///< The name of the companyy and president.
 	StringID title = INVALID_STRING_ID; ///< NOSAVE, has troubles with changing string-numbers.
-	uint16 score = 0; ///< The score for this high score. Do NOT change type, will break hs.dat
+	uint16_t score = 0; ///< The score for this high score. Do NOT change type, will break hs.dat
 };
 
 using HighScores = std::array<HighScore, 5>; ///< Record 5 high scores

@@ -197,7 +197,7 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number) override
 	{
 		return this->position;
 	}
@@ -458,7 +458,7 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, 
  * @param hidden_mask   Bitmask for hidden items (items with their bit set are not copied to the dropdown list).
  * @param width         Minimum width of the dropdown menu.
  */
-void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
+void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32_t disabled_mask, uint32_t hidden_mask, uint width)
 {
 	DropDownList list;
 

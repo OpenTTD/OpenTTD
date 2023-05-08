@@ -100,7 +100,7 @@ struct NICallback {
 	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
 	byte read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
 	byte cb_bit;               ///< The bit that needs to be set for this callback to be enabled
-	uint16 cb_id;              ///< The number of the callback
+	uint16_t cb_id;              ///< The number of the callback
 };
 /** Mask to show no bit needs to be enabled for the callback. */
 static const int CBM_NO_BIT = UINT8_MAX;
@@ -156,7 +156,7 @@ public:
 	 * @param index index to check.
 	 * @return GRFID of the item. 0 means that the item is not inspectable.
 	 */
-	virtual uint32 GetGRFID(uint index) const = 0;
+	virtual uint32_t GetGRFID(uint index) const = 0;
 
 	/**
 	 * Resolve (action2) variable for a given index.
@@ -183,7 +183,7 @@ public:
 	 * @param grfid Parameter for the PSA. Only required for items with parameters.
 	 * @return Size of the persistent storage in indices.
 	 */
-	virtual uint GetPSASize(uint index, uint32 grfid) const
+	virtual uint GetPSASize(uint index, uint32_t grfid) const
 	{
 		return 0;
 	}
@@ -194,7 +194,7 @@ public:
 	 * @param grfid Parameter for the PSA. Only required for items with parameters.
 	 * @return Pointer to the first position of the storage array or nullptr if not present.
 	 */
-	virtual const int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
+	virtual const int32_t *GetPSAFirstPosition(uint index, uint32_t grfid) const
 	{
 		return nullptr;
 	}
@@ -205,7 +205,7 @@ protected:
 	 * @param string the string to actually draw.
 	 * @param index  the (instance) index for the string.
 	 */
-	void SetSimpleStringParameters(StringID string, uint32 index) const
+	void SetSimpleStringParameters(StringID string, uint32_t index) const
 	{
 		SetDParam(0, string);
 		SetDParam(1, index);
@@ -218,7 +218,7 @@ protected:
 	 * @param index  the (instance) index for the string.
 	 * @param tile   the tile the object is at
 	 */
-	void SetObjectAtStringParameters(StringID string, uint32 index, TileIndex tile) const
+	void SetObjectAtStringParameters(StringID string, uint32_t index, TileIndex tile) const
 	{
 		SetDParam(0, STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT);
 		SetDParam(1, string);
@@ -274,10 +274,10 @@ static inline const NIHelper *GetFeatureHelper(uint window_number)
 /** Window used for inspecting NewGRFs. */
 struct NewGRFInspectWindow : Window {
 	/** The value for the variable 60 parameters. */
-	static uint32 var60params[GSF_FAKE_END][0x20];
+	static uint32_t var60params[GSF_FAKE_END][0x20];
 
 	/** GRFID of the caller of this window, 0 if it has no caller. */
-	uint32 caller_grfid;
+	uint32_t caller_grfid;
 
 	/** For ground vehicles: Index in vehicle chain. */
 	uint chain_index;
@@ -301,7 +301,7 @@ struct NewGRFInspectWindow : Window {
 	 * Set the GRFID of the item opening this window.
 	 * @param grfid GRFID of the item opening this window, or 0 if not opened by other window.
 	 */
-	void SetCallerGRFID(uint32 grfid)
+	void SetCallerGRFID(uint32_t grfid)
 	{
 		this->caller_grfid = grfid;
 		this->SetDirty();
@@ -470,7 +470,7 @@ struct NewGRFInspectWindow : Window {
 		}
 
 		uint psa_size = nih->GetPSASize(index, this->caller_grfid);
-		const int32 *psa = nih->GetPSAFirstPosition(index, this->caller_grfid);
+		const int32_t *psa = nih->GetPSAFirstPosition(index, this->caller_grfid);
 		if (psa_size != 0 && psa != nullptr) {
 			if (nih->PSAWithParameter()) {
 				this->DrawString(r, i++, fmt::format("Persistent storage [{:08X}]:", BSWAP32(this->caller_grfid)));
@@ -489,9 +489,9 @@ struct NewGRFInspectWindow : Window {
 				const void *ptr = nip->offset_proc(base);
 				uint value;
 				switch (nip->read_size) {
-					case 1: value = *(const uint8  *)ptr; break;
-					case 2: value = *(const uint16 *)ptr; break;
-					case 4: value = *(const uint32 *)ptr; break;
+					case 1: value = *(const uint8_t  *)ptr; break;
+					case 2: value = *(const uint16_t *)ptr; break;
+					case 4: value = *(const uint32_t *)ptr; break;
 					default: NOT_REACHED();
 				}
 
@@ -521,9 +521,9 @@ struct NewGRFInspectWindow : Window {
 					const void *ptr = nic->offset_proc(base_spec);
 					uint value;
 					switch (nic->read_size) {
-						case 1: value = *(const uint8  *)ptr; break;
-						case 2: value = *(const uint16 *)ptr; break;
-						case 4: value = *(const uint32 *)ptr; break;
+						case 1: value = *(const uint8_t  *)ptr; break;
+						case 2: value = *(const uint16_t *)ptr; break;
+						case 4: value = *(const uint32_t *)ptr; break;
 						default: NOT_REACHED();
 					}
 
@@ -634,7 +634,7 @@ struct NewGRFInspectWindow : Window {
 	}
 };
 
-/* static */ uint32 NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = { {0} }; // Use spec to have 0s in whole array
+/* static */ uint32_t NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = { {0} }; // Use spec to have 0s in whole array
 
 static const NWidgetPart _nested_newgrf_inspect_chain_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -701,7 +701,7 @@ static WindowDesc _newgrf_inspect_desc(
  * @param index   The index/identifier of the feature to inspect.
  * @param grfid   GRFID of the item opening this window, or 0 if not opened by other window.
  */
-void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32 grfid)
+void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32_t grfid)
 {
 	if (!IsNewGRFInspectable(feature, index)) return;
 
@@ -812,7 +812,7 @@ GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 
 /** Window used for aligning sprites. */
 struct SpriteAlignerWindow : Window {
-	typedef std::pair<int16, int16> XyOffs;    ///< Pair for x and y offsets of the sprite before alignment. First value contains the x offset, second value y offset.
+	typedef std::pair<int16_t, int16_t> XyOffs;    ///< Pair for x and y offsets of the sprite before alignment. First value contains the x offset, second value y offset.
 
 	SpriteID current_sprite;                   ///< The currently shown sprite.
 	Scrollbar *vscroll;

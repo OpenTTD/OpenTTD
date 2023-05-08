@@ -1055,7 +1055,7 @@ CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType rai
  * @return the cost of this operation or an error
  * @todo p2 should be replaced by two bits for "along" and "against" the track.
  */
-CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8 num_dir_cycle, byte signals_copy)
+CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8_t num_dir_cycle, byte signals_copy)
 {
 	if (sigtype > SIGTYPE_LAST || sigvar > SIG_SEMAPHORE) return CMD_ERROR;
 	if (cycle_start > cycle_stop || cycle_stop > SIGTYPE_LAST) return CMD_ERROR;
@@ -1914,7 +1914,7 @@ static void DrawSingleSignal(TileIndex tile, const RailtypeInfo *rti, Track trac
 	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSaveSlopeZ(x, y, track));
 }
 
-static uint32 _drawtile_track_palette;
+static uint32_t _drawtile_track_palette;
 
 
 
@@ -2549,7 +2549,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	const DrawTileSprites *dts = &_depot_gfx_table[dir];
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID image = rti->UsesOverlay() ? SPR_FLAT_GRASS_TILE : dts->ground.sprite;
-	uint32 offset = rti->GetRailtypeSpriteOffset();
+	uint32_t offset = rti->GetRailtypeSpriteOffset();
 
 	if (image != SPR_FLAT_GRASS_TILE) image += offset;
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
@@ -2864,7 +2864,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 			td->str = STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
 			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
 				if (td->rail_speed > 0) {
-					td->rail_speed = std::min<uint16>(td->rail_speed, 61);
+					td->rail_speed = std::min<uint16_t>(td->rail_speed, 61);
 				} else {
 					td->rail_speed = 61;
 				}
@@ -2907,7 +2907,7 @@ static void ChangeTileOwner_Track(TileIndex tile, Owner old_owner, Owner new_own
 
 static const byte _fractcoords_behind[4] = { 0x8F, 0x8, 0x80, 0xF8 };
 static const byte _fractcoords_enter[4] = { 0x8A, 0x48, 0x84, 0xA8 };
-static const int8 _deltacoord_leaveoffset[8] = {
+static const int8_t _deltacoord_leaveoffset[8] = {
 	-1,  0,  1,  0, /* x */
 	 0,  1,  0, -1  /* y */
 };

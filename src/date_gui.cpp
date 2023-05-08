@@ -56,7 +56,7 @@ struct SetDateWindow : Window {
 		this->date.year = Clamp(this->date.year, min_year, max_year);
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number) override
 	{
 		Point pt = { this->parent->left + this->parent->width / 2 - sm_width / 2, this->parent->top + this->parent->height / 2 - sm_height / 2 };
 		return pt;

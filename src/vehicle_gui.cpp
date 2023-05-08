@@ -614,7 +614,7 @@ struct RefitWindow : public Window {
 	uint vehicle_margin;         ///< Margin to use while selecting vehicles when the vehicle image is centered.
 	int click_x;                 ///< Position of the first click while dragging.
 	VehicleID selected_vehicle;  ///< First vehicle in the current selection.
-	uint8 num_vehicles;          ///< Number of selected vehicles.
+	uint8_t num_vehicles;          ///< Number of selected vehicles.
 	bool auto_refit;             ///< Select cargo for auto-refitting.
 
 	/**
@@ -1288,7 +1288,7 @@ uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 StringID GetCargoSubtypeText(const Vehicle *v)
 {
 	if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) {
-		uint16 cb = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v->engine_type, v);
+		uint16_t cb = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v->engine_type, v);
 		if (cb != CALLBACK_FAILED) {
 			if (cb > 0x400) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_CARGO_SUFFIX, cb);
 			if (cb >= 0x400 || (v->GetGRF()->grf_version < 8 && cb == 0xFF)) cb = CALLBACK_FAILED;
@@ -2181,7 +2181,7 @@ static WindowDesc _vehicle_list_train_desc(
 	_nested_vehicle_list, lengthof(_nested_vehicle_list)
 );
 
-static void ShowVehicleListWindowLocal(CompanyID company, VehicleListType vlt, VehicleType vehicle_type, uint32 unique_number)
+static void ShowVehicleListWindowLocal(CompanyID company, VehicleListType vlt, VehicleType vehicle_type, uint32_t unique_number)
 {
 	if (!Company::IsValidID(company) && company != OWNER_NONE) return;
 
@@ -2220,7 +2220,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationI
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileIndex depot_tile)
 {
-	uint16 depot_airport_index;
+	uint16_t depot_airport_index;
 
 	if (vehicle_type == VEH_AIRCRAFT) {
 		depot_airport_index = GetStationIndex(depot_tile);
@@ -2299,7 +2299,7 @@ static const NWidgetPart _nested_train_vehicle_details_widgets[] = {
 
 
 extern int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab);
-extern void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16 vscroll_cap, TrainDetailsWindowTabs det_tab);
+extern void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t vscroll_cap, TrainDetailsWindowTabs det_tab);
 extern void DrawRoadVehDetails(const Vehicle *v, const Rect &r);
 extern void DrawShipDetails(const Vehicle *v, const Rect &r);
 extern void DrawAircraftDetails(const Aircraft *v, const Rect &r);
@@ -2659,7 +2659,7 @@ struct VehicleDetailsWindow : Window {
 				const Vehicle *v = Vehicle::Get(this->window_number);
 				bool iscustom = index != 0;
 				bool ispercent = iscustom ? (index == 2) : Company::Get(v->owner)->settings.vehicle.servint_ispercent;
-				uint16 interval = GetServiceIntervalClamped(v->GetServiceInterval(), ispercent);
+				uint16_t interval = GetServiceIntervalClamped(v->GetServiceInterval(), ispercent);
 				Command<CMD_CHANGE_SERVICE_INT>::Post(STR_ERROR_CAN_T_CHANGE_SERVICING, v->index, interval, iscustom, ispercent);
 				break;
 			}
@@ -3366,7 +3366,7 @@ void StopGlobalFollowVehicle(const Vehicle *v)
  * @param result indicates completion (or not) of the operation
  * @param new_veh_id ID of the new vehicle.
  */
-void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, CargoArray)
+void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray)
 {
 	if (result.Failed()) return;
 

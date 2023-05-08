@@ -28,23 +28,23 @@ enum AccelStatus {
  */
 struct GroundVehicleCache {
 	/* Cached acceleration values, recalculated when the cargo on a vehicle changes (in addition to the conditions below) */
-	uint32 cached_weight;           ///< Total weight of the consist (valid only for the first engine).
-	uint32 cached_slope_resistance; ///< Resistance caused by weight when this vehicle part is at a slope.
-	uint32 cached_max_te;           ///< Maximum tractive effort of consist (valid only for the first engine).
-	uint16 cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle (valid only for the first engine).
+	uint32_t cached_weight;           ///< Total weight of the consist (valid only for the first engine).
+	uint32_t cached_slope_resistance; ///< Resistance caused by weight when this vehicle part is at a slope.
+	uint32_t cached_max_te;           ///< Maximum tractive effort of consist (valid only for the first engine).
+	uint16_t cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle (valid only for the first engine).
 
 	/* Cached acceleration values, recalculated on load and each time a vehicle is added to/removed from the consist. */
-	uint16 cached_max_track_speed;  ///< Maximum consist speed (in internal units) limited by track type (valid only for the first engine).
-	uint32 cached_power;            ///< Total power of the consist (valid only for the first engine).
-	uint32 cached_air_drag;         ///< Air drag coefficient of the vehicle (valid only for the first engine).
+	uint16_t cached_max_track_speed;  ///< Maximum consist speed (in internal units) limited by track type (valid only for the first engine).
+	uint32_t cached_power;            ///< Total power of the consist (valid only for the first engine).
+	uint32_t cached_air_drag;         ///< Air drag coefficient of the vehicle (valid only for the first engine).
 
 	/* Cached NewGRF values, recalculated on load and each time a vehicle is added to/removed from the consist. */
-	uint16 cached_total_length;     ///< Length of the whole vehicle (valid only for the first engine).
+	uint16_t cached_total_length;     ///< Length of the whole vehicle (valid only for the first engine).
 	EngineID first_engine;          ///< Cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
-	uint8 cached_veh_length;        ///< Length of this vehicle in units of 1/VEHICLE_LENGTH of normal length. It is cached because this can be set by a callback.
+	uint8_t cached_veh_length;        ///< Length of this vehicle in units of 1/VEHICLE_LENGTH of normal length. It is cached because this can be set by a callback.
 
 	/* Cached UI information. */
-	uint16 last_speed;              ///< The last speed we did display, so we only have to redraw when this changes.
+	uint16_t last_speed;              ///< The last speed we did display, so we only have to redraw when this changes.
 };
 
 /** Ground vehicle flags. */
@@ -60,25 +60,25 @@ enum GroundVehicleFlags {
  * Child classes must define all of the following functions.
  * These functions are not defined as pure virtual functions at this class to improve performance.
  *
- * virtual uint16      GetPower() const = 0;
- * virtual uint16      GetPoweredPartPower(const T *head) const = 0;
- * virtual uint16      GetWeight() const = 0;
+ * virtual uint16_t      GetPower() const = 0;
+ * virtual uint16_t      GetPoweredPartPower(const T *head) const = 0;
+ * virtual uint16_t      GetWeight() const = 0;
  * virtual byte        GetTractiveEffort() const = 0;
  * virtual byte        GetAirDrag() const = 0;
  * virtual byte        GetAirDragArea() const = 0;
  * virtual AccelStatus GetAccelerationStatus() const = 0;
- * virtual uint16      GetCurrentSpeed() const = 0;
- * virtual uint32      GetRollingFriction() const = 0;
+ * virtual uint16_t      GetCurrentSpeed() const = 0;
+ * virtual uint32_t      GetRollingFriction() const = 0;
  * virtual int         GetAccelerationType() const = 0;
- * virtual int32       GetSlopeSteepness() const = 0;
+ * virtual int32_t       GetSlopeSteepness() const = 0;
  * virtual int         GetDisplayMaxSpeed() const = 0;
- * virtual uint16      GetMaxTrackSpeed() const = 0;
+ * virtual uint16_t      GetMaxTrackSpeed() const = 0;
  * virtual bool        TileMayHaveSlopedTrack() const = 0;
  */
 template <class T, VehicleType Type>
 struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	GroundVehicleCache gcache; ///< Cache of often calculated values.
-	uint16 gv_flags;           ///< @see GroundVehicleFlags.
+	uint16_t gv_flags;           ///< @see GroundVehicleFlags.
 
 	typedef GroundVehicle<T, Type> GroundVehicleBase; ///< Our type
 
@@ -111,9 +111,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * Calculates the total slope resistance for this vehicle.
 	 * @return Slope resistance.
 	 */
-	inline int64 GetSlopeResistance() const
+	inline int64_t GetSlopeResistance() const
 	{
-		int64 incl = 0;
+		int64_t incl = 0;
 
 		for (const T *u = T::From(this); u != nullptr; u = u->Next()) {
 			if (HasBit(u->gv_flags, GVF_GOINGUP_BIT)) {
@@ -206,13 +206,13 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 			/* DirToDiagDir() is a simple right shift */
 			DiagDirection dir = DirToDiagDir(this->direction);
 			/* Read variables, so the compiler knows the access doesn't trap */
-			int8 x_pos = this->x_pos;
-			int8 y_pos = this->y_pos;
+			int8_t x_pos = this->x_pos;
+			int8_t y_pos = this->y_pos;
 			/* DiagDirToAxis() is a simple mask */
-			int8 d = DiagDirToAxis(dir) == AXIS_X ? x_pos : y_pos;
+			int8_t d = DiagDirToAxis(dir) == AXIS_X ? x_pos : y_pos;
 			/* We need only the least significant bit */
 			d &= 1;
-			d ^= (int8)(dir == DIAGDIR_NW || dir == DIAGDIR_NE);
+			d ^= (int8_t)(dir == DIAGDIR_NW || dir == DIAGDIR_NE);
 			/* Subtraction instead of addition because we are testing for GVF_GOINGUP_BIT.
 			 * GVF_GOINGUP_BIT is used because it's bit 0, so simple AND can be used,
 			 * without any shift */

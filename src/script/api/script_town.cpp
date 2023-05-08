@@ -160,7 +160,7 @@
 {
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
-	uint16 growth_rate;
+	uint16_t growth_rate;
 	switch (days_between_town_growth) {
 		case TOWN_GROWTH_NORMAL:
 			growth_rate = 0;
@@ -206,7 +206,7 @@
 	if (!IsValidTown(town_id)) return false;
 
 	const Town *t = ::Town::Get(town_id);
-	return ((uint32)GetDistanceSquareToTile(town_id, tile) <= t->cache.squared_town_zone_radius[0]);
+	return ((uint32_t)GetDistanceSquareToTile(town_id, tile) <= t->cache.squared_town_zone_radius[0]);
 }
 
 /* static */ bool ScriptTown::HasStatue(TownID town_id)
@@ -243,7 +243,7 @@
 	EnforceCompanyModeValid(ScriptCompany::COMPANY_INVALID);
 	if (!IsValidTown(town_id)) return ScriptCompany::COMPANY_INVALID;
 
-	return (ScriptCompany::CompanyID)(int8)::Town::Get(town_id)->exclusivity;
+	return (ScriptCompany::CompanyID)(int8_t)::Town::Get(town_id)->exclusivity;
 }
 
 /* static */ SQInteger ScriptTown::GetExclusiveRightsDuration(TownID town_id)
@@ -302,7 +302,7 @@
 		text = name->GetDecodedText();
 		EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 	}
-	uint32 townnameparts;
+	uint32_t townnameparts;
 	if (!GenerateTownName(ScriptObject::GetRandomizer(), &townnameparts)) {
 		ScriptObject::SetLastError(ScriptError::ERR_NAME_IS_NOT_UNIQUE);
 		return false;
@@ -357,7 +357,7 @@
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
 	const Town *t = ::Town::Get(town_id);
-	int16 new_rating = Clamp(t->ratings[company] + delta, RATING_MINIMUM, RATING_MAXIMUM);
+	int16_t new_rating = Clamp(t->ratings[company] + delta, RATING_MINIMUM, RATING_MAXIMUM);
 	if (new_rating == t->ratings[company]) return false;
 
 	return ScriptObject::Command<CMD_TOWN_RATING>::Do(town_id, (::CompanyID)company_id, new_rating);

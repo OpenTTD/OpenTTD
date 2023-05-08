@@ -45,7 +45,7 @@ TownNameParams::TownNameParams(const Town *t) :
  * @param par           Town name parameters.
  * @param townnameparts 'Encoded' town name.
  */
-static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint32 townnameparts)
+static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint32_t townnameparts)
 {
 	if (par->grfid == 0) {
 		auto tmp_params = MakeParameters(townnameparts);
@@ -62,7 +62,7 @@ static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint3
  * @param townnameparts 'Encoded' town name.
  * @return The town name.
  */
-std::string GetTownName(const TownNameParams *par, uint32 townnameparts)
+std::string GetTownName(const TownNameParams *par, uint32_t townnameparts)
 {
 	std::string result;
 	StringBuilder builder(result);
@@ -100,7 +100,7 @@ std::string GetTownName(const Town *t)
  * @param town_names if a name is generated, check its uniqueness with the set
  * @return true iff name is valid and unique
  */
-bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
+bool VerifyTownName(uint32_t r, const TownNameParams *par, TownNames *town_names)
 {
 	std::string name = GetTownName(par, r);
 
@@ -133,7 +133,7 @@ bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
  * @param town_names if a name is generated, check its uniqueness with the set
  * @return true iff a name was generated
  */
-bool GenerateTownName(Randomizer &randomizer, uint32 *townnameparts, TownNames *town_names)
+bool GenerateTownName(Randomizer &randomizer, uint32_t *townnameparts, TownNames *town_names)
 {
 	TownNameParams par(_settings_game.game_creation.town_name);
 
@@ -147,7 +147,7 @@ bool GenerateTownName(Randomizer &randomizer, uint32 *townnameparts, TownNames *
 	 * the other towns may take considerable amount of time (10000 is
 	 * too much). */
 	for (int i = 1000; i != 0; i--) {
-		uint32 r = randomizer.Next();
+		uint32_t r = randomizer.Next();
 		if (!VerifyTownName(r, &par, town_names)) continue;
 
 		*townnameparts = r;
@@ -166,7 +166,7 @@ bool GenerateTownName(Randomizer &randomizer, uint32 *townnameparts, TownNames *
  * @param seed seed
  * @return seed transformed to a number from given range
  */
-static inline uint32 SeedChance(byte shift_by, int max, uint32 seed)
+static inline uint32_t SeedChance(byte shift_by, int max, uint32_t seed)
 {
 	return (GB(seed, shift_by, 16) * max) >> 16;
 }
@@ -179,7 +179,7 @@ static inline uint32 SeedChance(byte shift_by, int max, uint32 seed)
  * @param seed seed
  * @return seed transformed to a number from given range
  */
-static inline uint32 SeedModChance(byte shift_by, int max, uint32 seed)
+static inline uint32_t SeedModChance(byte shift_by, int max, uint32_t seed)
 {
 	/* This actually gives *MUCH* more even distribution of the values
 	 * than SeedChance(), which is absolutely horrible in that. If
@@ -202,7 +202,7 @@ static inline uint32 SeedModChance(byte shift_by, int max, uint32 seed)
  * @param bias minimum value that can be returned
  * @return seed transformed to a number from given range
  */
-static inline int32 SeedChanceBias(byte shift_by, int max, uint32 seed, int bias)
+static inline int32_t SeedChanceBias(byte shift_by, int max, uint32_t seed, int bias)
 {
 	return SeedChance(shift_by, max + bias, seed) - bias;
 }
@@ -976,7 +976,7 @@ static void MakeCatalanTownName(StringBuilder &builder, uint32_t seed)
  * @param builder The builder to write the name to.
  * @param seed The seed of the town name.
  */
-typedef void TownNameGenerator(StringBuilder &builder, uint32 seed);
+typedef void TownNameGenerator(StringBuilder &builder, uint32_t seed);
 
 /** Town name generators */
 static TownNameGenerator *_town_name_generators[] = {
@@ -1010,7 +1010,7 @@ static TownNameGenerator *_town_name_generators[] = {
  * @param lang    town name language
  * @param seed    generation seed
  */
-void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32 seed)
+void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32_t seed)
 {
 	assert(lang < lengthof(_town_name_generators));
 	return _town_name_generators[lang](builder, seed);

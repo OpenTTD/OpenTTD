@@ -752,8 +752,8 @@ private:
 	/** Sort by population (default descending, as big towns are of the most interest). */
 	static bool TownPopulationSorter(const Town * const &a, const Town * const &b)
 	{
-		uint32 a_population = a->cache.population;
-		uint32 b_population = b->cache.population;
+		uint32_t a_population = a->cache.population;
+		uint32_t b_population = b->cache.population;
 		if (a_population == b_population) return TownDirectoryWindow::TownNameSorter(a, b);
 		return a_population < b_population;
 	}
@@ -766,8 +766,8 @@ private:
 		/* Towns without rating are always after towns with rating. */
 		if (HasBit(a->have_ratings, _local_company)) {
 			if (HasBit(b->have_ratings, _local_company)) {
-				int16 a_rating = a->ratings[_local_company];
-				int16 b_rating = b->ratings[_local_company];
+				int16_t a_rating = a->ratings[_local_company];
+				int16_t b_rating = b->ratings[_local_company];
 				if (a_rating == b_rating) return TownDirectoryWindow::TownNameSorter(a, b);
 				return a_rating < b_rating;
 			}
@@ -1135,7 +1135,7 @@ private:
 	bool city;              ///< Are we building a city?
 	QueryString townname_editbox; ///< Townname editbox
 	bool townnamevalid;     ///< Is generated town name valid?
-	uint32 townnameparts;   ///< Generated town name
+	uint32_t townnameparts;   ///< Generated town name
 	TownNameParams params;  ///< Town name parameters
 
 public:

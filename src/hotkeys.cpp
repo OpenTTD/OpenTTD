@@ -94,7 +94,7 @@ static const KeycodeNames _keycode_to_name[] = {
  * @param end End of the string to parse.
  * @return A keycode if a match is found or 0.
  */
-static uint16 ParseCode(const char *start, const char *end)
+static uint16_t ParseCode(const char *start, const char *end)
 {
 	assert(start <= end);
 	while (start < end && *start == ' ') start++;
@@ -108,7 +108,7 @@ static uint16 ParseCode(const char *start, const char *end)
 	if (end - start == 1) {
 		if (*start >= 'a' && *start <= 'z') return *start - ('a'-'A');
 		/* Ignore invalid keycodes */
-		if (*(const uint8 *)start < 128) return *start;
+		if (*(const uint8_t *)start < 128) return *start;
 	}
 	return 0;
 }
@@ -119,14 +119,14 @@ static uint16 ParseCode(const char *start, const char *end)
  * @param end End of the input.
  * @return A valid keycode or 0.
  */
-static uint16 ParseKeycode(const char *start, const char *end)
+static uint16_t ParseKeycode(const char *start, const char *end)
 {
 	assert(start <= end);
-	uint16 keycode = 0;
+	uint16_t keycode = 0;
 	for (;;) {
 		const char *cur = start;
 		while (*cur != '+' && cur != end) cur++;
-		uint16 code = ParseCode(start, cur);
+		uint16_t code = ParseCode(start, cur);
 		if (code == 0) return 0;
 		if (code & WKC_SPECIAL_KEYS) {
 			/* Some completely wrong keycode we don't support. */
@@ -155,7 +155,7 @@ static void ParseHotkeys(Hotkey &hotkey, const char *value)
 	while (*start != '\0') {
 		const char *end = start;
 		while (*end != '\0' && *end != ',') end++;
-		uint16 keycode = ParseKeycode(start, end);
+		uint16_t keycode = ParseKeycode(start, end);
 		if (keycode != 0) hotkey.AddKeycode(keycode);
 		start = (*end == ',') ? end + 1: end;
 	}
@@ -168,7 +168,7 @@ static void ParseHotkeys(Hotkey &hotkey, const char *value)
  * @param keycode The keycode to convert to a string.
  * @return A string representation of this keycode.
  */
-static std::string KeycodeToString(uint16 keycode)
+static std::string KeycodeToString(uint16_t keycode)
 {
 	std::string str;
 	if (keycode & WKC_GLOBAL_HOTKEY) {
@@ -226,7 +226,7 @@ std::string SaveKeycodes(const Hotkey &hotkey)
  * @param name The name of this hotkey.
  * @param num Number of this hotkey, should be unique within the hotkey list.
  */
-Hotkey::Hotkey(uint16 default_keycode, const std::string &name, int num) :
+Hotkey::Hotkey(uint16_t default_keycode, const std::string &name, int num) :
 	name(name),
 	num(num)
 {
@@ -239,11 +239,11 @@ Hotkey::Hotkey(uint16 default_keycode, const std::string &name, int num) :
  * @param name The name of this hotkey.
  * @param num Number of this hotkey, should be unique within the hotkey list.
  */
-Hotkey::Hotkey(const std::vector<uint16> &default_keycodes, const std::string &name, int num) :
+Hotkey::Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, int num) :
 	name(name),
 	num(num)
 {
-	for (uint16 keycode : default_keycodes) {
+	for (uint16_t keycode : default_keycodes) {
 		this->AddKeycode(keycode);
 	}
 }
@@ -253,7 +253,7 @@ Hotkey::Hotkey(const std::vector<uint16> &default_keycodes, const std::string &n
  * in addition to any previously added keycodes.
  * @param keycode The keycode to add.
  */
-void Hotkey::AddKeycode(uint16 keycode)
+void Hotkey::AddKeycode(uint16_t keycode)
 {
 	this->keycodes.insert(keycode);
 }
@@ -305,7 +305,7 @@ void HotkeyList::Save(IniFile *ini) const
  * @param global_only Limit the search to hotkeys defined as 'global'.
  * @return The number of the matching hotkey or -1.
  */
-int HotkeyList::CheckMatch(uint16 keycode, bool global_only) const
+int HotkeyList::CheckMatch(uint16_t keycode, bool global_only) const
 {
 	for (const Hotkey &hotkey : this->items) {
 		auto begin = hotkey.keycodes.begin();
@@ -348,7 +348,7 @@ void SaveHotkeysToConfig()
 	SaveLoadHotkeys(true);
 }
 
-void HandleGlobalHotkeys(WChar key, uint16 keycode)
+void HandleGlobalHotkeys(char32_t key, uint16_t keycode)
 {
 	for (HotkeyList *list : *_hotkey_lists) {
 		if (list->global_hotkey_handler == nullptr) continue;

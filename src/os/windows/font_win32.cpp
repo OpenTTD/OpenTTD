@@ -279,7 +279,7 @@ void Win32FontCache::ClearFontCache()
 	return new_glyph.sprite;
 }
 
-/* virtual */ GlyphID Win32FontCache::MapCharToGlyph(WChar key)
+/* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
@@ -302,7 +302,7 @@ void Win32FontCache::ClearFontCache()
 	return glyphs[0] != 0xFFFF ? glyphs[0] : 0;
 }
 
-/* virtual */ const void *Win32FontCache::InternalGetFontTable(uint32 tag, size_t &length)
+/* virtual */ const void *Win32FontCache::InternalGetFontTable(uint32_t tag, size_t &length)
 {
 	DWORD len = GetFontData(this->dc, tag, 0, nullptr, 0);
 

@@ -10,7 +10,7 @@
 #ifndef GROUP_TYPE_H
 #define GROUP_TYPE_H
 
-typedef uint16 GroupID; ///< Type for all group identifiers.
+typedef uint16_t GroupID; ///< Type for all group identifiers.
 
 static const GroupID NEW_GROUP     = 0xFFFC; ///< Sentinel for a to-be-created group.
 static const GroupID ALL_GROUP     = 0xFFFD; ///< All vehicles are in this group.

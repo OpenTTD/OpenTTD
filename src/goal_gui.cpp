@@ -327,7 +327,7 @@ struct GoalQuestionWindow : public Window {
 	int button[3];        ///< Buttons to display.
 	TextColour colour;    ///< Colour of the question text.
 
-	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, TextColour colour, uint32 button_mask, const std::string &question) : Window(desc), colour(colour)
+	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, TextColour colour, uint32_t button_mask, const std::string &question) : Window(desc), colour(colour)
 	{
 		this->question = question;
 
@@ -550,7 +550,7 @@ static WindowDesc _goal_question_list_desc[] = {
  * @param button_mask Buttons to display.
  * @param question Question to ask.
  */
-void ShowGoalQuestion(uint16 id, byte type, uint32 button_mask, const std::string &question)
+void ShowGoalQuestion(uint16_t id, byte type, uint32_t button_mask, const std::string &question)
 {
 	assert(type < GQT_END);
 	new GoalQuestionWindow(&_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);

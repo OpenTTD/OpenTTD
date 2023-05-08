@@ -351,7 +351,7 @@ public:
 	/**
 	 * Set the number of months before/after max age to autorenew an engine for your company.
 	 * @param months The new months between autorenew.
-	 *               The value will be clamped to MIN(int16) .. MAX(int16).
+	 *               The value will be clamped to MIN(int16_t) .. MAX(int16_t).
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if autorenew months has been modified.
 	 */

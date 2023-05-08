@@ -25,7 +25,7 @@
 #include "safeguards.h"
 
 std::string _keyboard_opt[2];
-static WChar _keyboard[2][OSK_KEYBOARD_ENTRIES];
+static char32_t _keyboard[2][OSK_KEYBOARD_ENTRIES];
 
 enum KeyStateBits {
 	KEYS_NONE,
@@ -105,7 +105,7 @@ struct OskWindow : public Window {
 	{
 		/* clicked a letter */
 		if (widget >= WID_OSK_LETTERS) {
-			WChar c = _keyboard[this->shift][widget - WID_OSK_LETTERS];
+			char32_t c = _keyboard[this->shift][widget - WID_OSK_LETTERS];
 
 			if (!IsValidChar(c, this->qs->text.afilter)) return;
 
@@ -221,7 +221,7 @@ static const int KEY_PADDING = 6;     // Vertical padding for remaining key rows
  * @param biggest_index Collected biggest widget index so far.
  * @note Key width is measured in 1/2 keys to allow for 1/2 key shifting between rows.
  */
-static void AddKey(NWidgetHorizontal *hor, int pad_y, int num_half, WidgetType widtype, int widnum, uint16 widdata, int *biggest_index)
+static void AddKey(NWidgetHorizontal *hor, int pad_y, int num_half, WidgetType widtype, int widnum, uint16_t widdata, int *biggest_index)
 {
 	int key_width = HALF_KEY_WIDTH + (INTER_KEY_SPACE + HALF_KEY_WIDTH) * (num_half - 1);
 

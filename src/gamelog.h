@@ -13,7 +13,7 @@
 #include "newgrf_config.h"
 
 /** The actions we log. */
-enum GamelogActionType : uint8 {
+enum GamelogActionType : uint8_t {
 	GLAT_START,        ///< Game created
 	GLAT_LOAD,         ///< Game loaded
 	GLAT_GRF,          ///< GRF changed
@@ -26,7 +26,7 @@ enum GamelogActionType : uint8 {
 };
 
 /** Type of logged change */
-enum GamelogChangeType : uint8 {
+enum GamelogChangeType : uint8_t {
 	GLCT_MODE,        ///< Scenario editor x Game, different landscape
 	GLCT_REVISION,    ///< Changed game revision string
 	GLCT_OLDVER,      ///< Loaded from savegame without logged data
@@ -74,22 +74,22 @@ public:
 	void Revision();
 	void Mode();
 	void Oldver();
-	void Setting(const std::string &name, int32 oldval, int32 newval);
+	void Setting(const std::string &name, int32_t oldval, int32_t newval);
 
 	void GRFUpdate(const GRFConfig *oldg, const GRFConfig *newg);
 	void GRFAddList(const GRFConfig *newg);
-	void GRFRemove(uint32 grfid);
+	void GRFRemove(uint32_t grfid);
 	void GRFAdd(const GRFConfig *newg);
-	void GRFBug(uint32 grfid, byte bug, uint64 data);
-	bool GRFBugReverse(uint32 grfid, uint16 internal_id);
+	void GRFBug(uint32_t grfid, byte bug, uint64_t data);
+	bool GRFBugReverse(uint32_t grfid, uint16_t internal_id);
 	void GRFCompatible(const GRFIdentifier *newg);
-	void GRFMove(uint32 grfid, int32 offset);
-	void GRFParameters(uint32 grfid);
+	void GRFMove(uint32_t grfid, int32_t offset);
+	void GRFParameters(uint32_t grfid);
 
 	void TestRevision();
 	void TestMode();
 
-	void Info(uint32 *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs);
+	void Info(uint32_t *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs);
 	const GRFIdentifier *GetOverriddenIdentifier(const GRFConfig *c);
 
 	/* Saveload handler for gamelog needs access to internal data. */

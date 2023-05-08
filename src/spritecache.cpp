@@ -33,8 +33,8 @@ struct SpriteCache {
 	void *ptr;
 	size_t file_pos;
 	SpriteFile *file;    ///< The file the sprite in this entry can be found in.
-	uint32 id;
-	int16 lru;
+	uint32_t id;
+	int16_t lru;
 	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
 	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
 	byte control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
@@ -124,13 +124,13 @@ static void *AllocSprite(size_t mem_req);
  * @param num the amount of sprites to skip
  * @return true if the data could be correctly skipped.
  */
-bool SkipSpriteData(SpriteFile &file, byte type, uint16 num)
+bool SkipSpriteData(SpriteFile &file, byte type, uint16_t num)
 {
 	if (type & 2) {
 		file.SkipBytes(num);
 	} else {
 		while (num > 0) {
-			int8 i = file.ReadByte();
+			int8_t i = file.ReadByte();
 			if (i >= 0) {
 				int size = (i == 0) ? 0x80 : i;
 				if (size > num) return false;
@@ -183,7 +183,7 @@ SpriteFile *GetOriginFile(SpriteID sprite)
  * @param sprite The sprite to look at.
  * @return The GRF-local sprite id.
  */
-uint32 GetSpriteLocalID(SpriteID sprite)
+uint32_t GetSpriteLocalID(SpriteID sprite)
 {
 	if (!SpriteExists(sprite)) return 0;
 	return GetSpriteCache(sprite)->id;
@@ -229,7 +229,7 @@ uint GetMaxSpriteID()
 
 static bool ResizeSpriteIn(SpriteLoader::Sprite *sprite, ZoomLevel src, ZoomLevel tgt)
 {
-	uint8 scaled_1 = ScaleByZoom(1, (ZoomLevel)(src - tgt));
+	uint8_t scaled_1 = ScaleByZoom(1, (ZoomLevel)(src - tgt));
 
 	/* Check for possible memory overflow. */
 	if (sprite[src].width * scaled_1 > UINT16_MAX || sprite[src].height * scaled_1 > UINT16_MAX) return false;
@@ -337,7 +337,7 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 	return true;
 }
 
-static bool PadSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail, SpriteEncoder *encoder)
+static bool PadSprites(SpriteLoader::Sprite *sprite, uint8_t sprite_avail, SpriteEncoder *encoder)
 {
 	/* Get minimum top left corner coordinates. */
 	int min_xoffs = INT32_MAX;
@@ -385,7 +385,7 @@ static bool PadSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail, SpriteE
 	return true;
 }
 
-static bool ResizeSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail, SpriteEncoder *encoder)
+static bool ResizeSprites(SpriteLoader::Sprite *sprite, uint8_t sprite_avail, SpriteEncoder *encoder)
 {
 	/* Create a fully zoomed image if it does not exist */
 	ZoomLevel first_avail = static_cast<ZoomLevel>(FIND_FIRST_BIT(sprite_avail));
@@ -472,7 +472,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	Debug(sprite, 9, "Load sprite {}", id);
 
 	SpriteLoader::Sprite sprite[ZOOM_LVL_COUNT];
-	uint8 sprite_avail = 0;
+	uint8_t sprite_avail = 0;
 	sprite[ZOOM_LVL_NORMAL].type = sprite_type;
 
 	SpriteLoaderGrf sprite_loader(file.GetContainerVersion());
@@ -542,14 +542,14 @@ struct GrfSpriteOffset {
 };
 
 /** Map from sprite numbers to position in the GRF file. */
-static std::map<uint32, GrfSpriteOffset> _grf_sprite_offsets;
+static std::map<uint32_t, GrfSpriteOffset> _grf_sprite_offsets;
 
 /**
  * Get the file offset for a specific sprite in the sprite section of a GRF.
  * @param id ID of the sprite to look up.
  * @return Position of the sprite in the sprite section or SIZE_MAX if no such sprite is present.
  */
-size_t GetGRFSpriteOffset(uint32 id)
+size_t GetGRFSpriteOffset(uint32_t id)
 {
 	return _grf_sprite_offsets.find(id) != _grf_sprite_offsets.end() ? _grf_sprite_offsets[id].file_pos : SIZE_MAX;
 }
@@ -572,7 +572,7 @@ void ReadGRFSpriteOffsets(SpriteFile &file)
 
 		/* Loop over all sprite section entries and store the file
 		 * offset for each newly encountered ID. */
-		uint32 id, prev_id = 0;
+		uint32_t id, prev_id = 0;
 		while ((id = file.ReadDword()) != 0) {
 			if (id != prev_id) {
 				_grf_sprite_offsets[prev_id] = offset;
@@ -619,7 +619,7 @@ bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id)
 	size_t file_pos = file.GetPos();
 
 	/* Read sprite header. */
-	uint32 num = file.GetContainerVersion() >= 2 ? file.ReadDword() : file.ReadWord();
+	uint32_t num = file.GetContainerVersion() >= 2 ? file.ReadDword() : file.ReadWord();
 	if (num == 0) return false;
 	byte grf_type = file.ReadByte();
 

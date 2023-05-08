@@ -180,7 +180,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->font_name, pixels);
 }
 
-GlyphID CoreTextFontCache::MapCharToGlyph(WChar key)
+GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
@@ -205,7 +205,7 @@ GlyphID CoreTextFontCache::MapCharToGlyph(WChar key)
 	return 0;
 }
 
-const void *CoreTextFontCache::InternalGetFontTable(uint32 tag, size_t &length)
+const void *CoreTextFontCache::InternalGetFontTable(uint32_t tag, size_t &length)
 {
 	CFAutoRelease<CFDataRef> data(CTFontCopyTable(this->font.get(), (CTFontTableTag)tag, kCTFontTableOptionNoOptions));
 	if (!data) return nullptr;
@@ -246,8 +246,8 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	sprite.colours = (use_aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
 	sprite.width = width;
 	sprite.height = height;
-	sprite.x_offs = (int16)std::round(CGRectGetMinX(bounds));
-	sprite.y_offs = this->ascender - (int16)std::ceil(CGRectGetMaxY(bounds));
+	sprite.x_offs = (int16_t)std::round(CGRectGetMinX(bounds));
+	sprite.y_offs = this->ascender - (int16_t)std::ceil(CGRectGetMaxY(bounds));
 
 	if (bounds.size.width > 0) {
 		/* Glyph is not a white-space glyph. Render it to a bitmap context. */

@@ -20,7 +20,7 @@
 #include "saveload/saveload.h"
 
 /** Unique identifier for a single cargo packet. */
-typedef uint32 CargoPacketID;
+typedef uint32_t CargoPacketID;
 struct CargoPacket;
 
 /** Type of the pool for cargo packets for a little over 16 million packets. */
@@ -34,7 +34,7 @@ template <class Tinst, class Tcont> class CargoList;
 class StationCargoList; // forward-declare, so we can use it in VehicleCargoList.
 extern SaveLoadTable GetCargoPacketDesc();
 
-typedef uint32 TileOrStationID;
+typedef uint32_t TileOrStationID;
 
 /**
  * Container for cargo from the same location and time.
@@ -42,8 +42,8 @@ typedef uint32 TileOrStationID;
 struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 private:
 	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo.
-	uint16 count;           ///< The amount of cargo in this packet.
-	uint16 periods_in_transit; ///< Amount of cargo aging periods this packet has been in transit.
+	uint16_t count;           ///< The amount of cargo in this packet.
+	uint16_t periods_in_transit; ///< Amount of cargo aging periods this packet has been in transit.
 	SourceType source_type; ///< Type of \c source_id.
 	SourceID source_id;     ///< Index of source, INVALID_SOURCE if unknown/invalid.
 	StationID source;       ///< The station where the cargo came from first.
@@ -61,11 +61,11 @@ private:
 	friend SaveLoadTable GetCargoPacketDesc();
 public:
 	/** Maximum number of items in a single cargo packet. */
-	static const uint16 MAX_COUNT = UINT16_MAX;
+	static const uint16_t MAX_COUNT = UINT16_MAX;
 
 	CargoPacket();
-	CargoPacket(StationID source, TileIndex source_xy, uint16 count, SourceType source_type, SourceID source_id);
-	CargoPacket(uint16 count, uint16 periods_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
+	CargoPacket(StationID source, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id);
+	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
 
 	/** Destroy the packet. */
 	~CargoPacket() { }
@@ -96,7 +96,7 @@ public:
 	 * Gets the number of 'items' in this packet.
 	 * @return Item count.
 	 */
-	inline uint16 Count() const
+	inline uint16_t Count() const
 	{
 		return this->count;
 	}
@@ -129,7 +129,7 @@ public:
 	 * value is capped at UINT16_MAX.
 	 * @return Length this cargo has been in transit.
 	 */
-	inline uint16 PeriodsInTransit() const
+	inline uint16_t PeriodsInTransit() const
 	{
 		return this->periods_in_transit;
 	}
@@ -222,7 +222,7 @@ public:
 
 protected:
 	uint count;                   ///< Cache for the number of cargo entities.
-	uint64 cargo_periods_in_transit; ///< Cache for the sum of number of cargo aging periods in transit of each entity; comparable to man-hours.
+	uint64_t cargo_periods_in_transit; ///< Cache for the sum of number of cargo aging periods in transit of each entity; comparable to man-hours.
 
 	Tcont packets;              ///< The cargo packets in this list.
 
@@ -398,7 +398,7 @@ public:
 
 	void SetTransferLoadPlace(TileIndex xy);
 
-	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8 order_flags, const GoodsEntry *ge, CargoPayment *payment);
+	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoPayment *payment);
 
 	/**
 	 * Marks all cargo in the vehicle as to be kept. This is mostly useful for

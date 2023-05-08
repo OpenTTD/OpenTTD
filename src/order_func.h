@@ -37,6 +37,6 @@ static const uint DEF_SERVINT_PERCENT = 50;
 static const uint MIN_SERVINT_PERCENT = 5;
 static const uint MAX_SERVINT_PERCENT = 90;
 
-uint16 GetServiceIntervalClamped(uint interval, bool ispercent);
+uint16_t GetServiceIntervalClamped(uint interval, bool ispercent);
 
 #endif /* ORDER_FUNC_H */

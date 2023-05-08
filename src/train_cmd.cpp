@@ -55,7 +55,7 @@ static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
 static const byte _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
 
 template <>
-bool IsValidImageIndex<VEH_TRAIN>(uint8 image_index)
+bool IsValidImageIndex<VEH_TRAIN>(uint8_t image_index)
 {
 	return image_index < lengthof(_engine_sprite_base);
 }
@@ -109,7 +109,7 @@ void CheckTrainsLengths()
  */
 void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 {
-	uint16 max_speed = UINT16_MAX;
+	uint16_t max_speed = UINT16_MAX;
 
 	assert(this->IsFrontEngine() || this->IsFreeWagon());
 
@@ -186,12 +186,12 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 
 			/* max speed is the minimum of the speed limits of all vehicles in the consist */
 			if ((rvi_u->railveh_type != RAILVEH_WAGON || _settings_game.vehicle.wagon_speed_limits) && !UsesWagonOverride(u)) {
-				uint16 speed = GetVehicleProperty(u, PROP_TRAIN_SPEED, rvi_u->max_speed);
+				uint16_t speed = GetVehicleProperty(u, PROP_TRAIN_SPEED, rvi_u->max_speed);
 				if (speed != 0) max_speed = std::min(speed, max_speed);
 			}
 		}
 
-		uint16 new_cap = e_u->DetermineCapacity(u);
+		uint16_t new_cap = e_u->DetermineCapacity(u);
 		if (allowed_changes & CCF_CAPACITY) {
 			/* Update vehicle capacity. */
 			if (u->cargo_cap > new_cap) u->cargo.Truncate(new_cap);
@@ -204,7 +204,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		u->vcache.cached_cargo_age_period = GetVehicleProperty(u, PROP_TRAIN_CARGO_AGE_PERIOD, e_u->info.cargo_age_period);
 
 		/* check the vehicle length (callback) */
-		uint16 veh_len = CALLBACK_FAILED;
+		uint16_t veh_len = CALLBACK_FAILED;
 		if (e_u->GetGRF() != nullptr && e_u->GetGRF()->grf_version >= 8) {
 			/* Use callback 36 */
 			veh_len = GetVehicleProperty(u, PROP_TRAIN_SHORTEN_FACTOR, CALLBACK_FAILED);
@@ -478,7 +478,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	return ScaleSpriteTrad(this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH);
 }
 
-static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
+static SpriteID GetDefaultTrainSprite(uint8_t spritenum, Direction direction)
 {
 	assert(IsValidImageIndex<VEH_TRAIN>(spritenum));
 	return ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
@@ -492,7 +492,7 @@ static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
  */
 void Train::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const
 {
-	uint8 spritenum = this->spritenum;
+	uint8_t spritenum = this->spritenum;
 
 	if (HasBit(this->flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
 
@@ -515,7 +515,7 @@ static void GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType
 {
 	const Engine *e = Engine::Get(engine);
 	Direction dir = rear_head ? DIR_E : DIR_W;
-	uint8 spritenum = e->u.rail.image_index;
+	uint8_t spritenum = e->u.rail.image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		GetCustomVehicleIcon(engine, dir, image_type, result);
@@ -1031,7 +1031,7 @@ static CommandCost CheckTrainAttachment(Train *t)
 			 * the loop and after each callback does not need to be cleared here. */
 			t->InvalidateNewGRFCache();
 
-			uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, head->engine_type, t, head);
+			uint16_t callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, head->engine_type, t, head);
 
 			/* Restore original first_engine data */
 			t->gcache.first_engine = first_engine;
@@ -1549,10 +1549,10 @@ static void MarkTrainAsStuck(Train *v)
  * @param[in,out] swap_flag1 First train flag.
  * @param[in,out] swap_flag2 Second train flag.
  */
-static void SwapTrainFlags(uint16 *swap_flag1, uint16 *swap_flag2)
+static void SwapTrainFlags(uint16_t *swap_flag1, uint16_t *swap_flag2)
 {
-	uint16 flag1 = *swap_flag1;
-	uint16 flag2 = *swap_flag2;
+	uint16_t flag1 = *swap_flag1;
+	uint16_t flag2 = *swap_flag2;
 
 	/* Clear the flags */
 	ClrBit(*swap_flag1, GVF_GOINGUP_BIT);
@@ -1625,7 +1625,7 @@ void ReverseTrainSwapVeh(Train *v, int l, int r)
 	if (a != b) {
 		/* swap the hidden bits */
 		{
-			uint16 tmp = (a->vehstatus & ~VS_HIDDEN) | (b->vehstatus & VS_HIDDEN);
+			uint16_t tmp = (a->vehstatus & ~VS_HIDDEN) | (b->vehstatus & VS_HIDDEN);
 			b->vehstatus = (b->vehstatus & ~VS_HIDDEN) | (a->vehstatus & VS_HIDDEN);
 			a->vehstatus = tmp;
 		}
@@ -3042,7 +3042,7 @@ static inline void AffectSpeedByZChange(Train *v, int old_z)
 	if (old_z < v->z_pos) {
 		v->cur_speed -= (v->cur_speed * asp->z_up >> 8);
 	} else {
-		uint16 spd = v->cur_speed + asp->z_down;
+		uint16_t spd = v->cur_speed + asp->z_down;
 		if (spd <= v->gcache.cached_max_track_speed) v->cur_speed = spd;
 	}
 }
@@ -3278,7 +3278,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					/* Reverse when we are at the end of the track already, do not move to the new position */
 					if (v->IsFrontEngine() && !TrainCheckIfLineEnds(v, reverse)) return false;
 
-					uint32 r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+					uint32_t r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
 					if (HasBit(r, VETS_CANNOT_ENTER)) {
 						goto invalid_rail;
 					}
@@ -3425,7 +3425,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 				Direction chosen_dir = (Direction)b[2];
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
-				uint32 r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+				uint32_t r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
 				if (HasBit(r, VETS_CANNOT_ENTER)) {
 					goto invalid_rail;
 				}
@@ -3717,7 +3717,7 @@ static bool HandleCrashedTrain(Train *v)
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	}
 
-	uint32 r;
+	uint32_t r;
 	if (state <= 200 && Chance16R(1, 7, r)) {
 		int index = (r * 10 >> 16);
 
@@ -3748,7 +3748,7 @@ static bool HandleCrashedTrain(Train *v)
 }
 
 /** Maximum speeds for train that is broken down or approaching line end */
-static const uint16 _breakdown_speeds[16] = {
+static const uint16_t _breakdown_speeds[16] = {
 	225, 210, 195, 180, 165, 150, 135, 120, 105, 90, 75, 60, 45, 30, 15, 15
 };
 
@@ -3794,7 +3794,7 @@ static bool TrainApproachingLineEnd(Train *v, bool signal, bool reverse)
 
 	/* slow down */
 	v->vehstatus |= VS_TRAIN_SLOWING;
-	uint16 break_speed = _breakdown_speeds[x & 0xF];
+	uint16_t break_speed = _breakdown_speeds[x & 0xF];
 	if (break_speed < v->cur_speed) v->cur_speed = break_speed;
 
 	return true;
@@ -3871,7 +3871,7 @@ static bool TrainCheckIfLineEnds(Train *v, bool reverse)
 	if (t > 1) {
 		v->vehstatus |= VS_TRAIN_SLOWING;
 
-		uint16 break_speed = _breakdown_speeds[GB(~t, 4, 4)];
+		uint16_t break_speed = _breakdown_speeds[GB(~t, 4, 4)];
 		if (break_speed < v->cur_speed) v->cur_speed = break_speed;
 	} else {
 		v->vehstatus &= ~VS_TRAIN_SLOWING;
@@ -4210,9 +4210,9 @@ Trackdir Train::GetVehicleTrackdir() const
 	return TrackDirectionToTrackdir(FindFirstTrack(this->track), this->direction);
 }
 
-uint16 Train::GetMaxWeight() const
+uint16_t Train::GetMaxWeight() const
 {
-	uint16 weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnitsInTrain(this->GetEngine()->DetermineCapacity(this));
+	uint16_t weight = CargoSpec::Get(this->cargo_type)->WeightOfNUnitsInTrain(this->GetEngine()->DetermineCapacity(this));
 
 	/* Vehicle weight is not added for articulated parts. */
 	if (!this->IsArticulatedPart()) {

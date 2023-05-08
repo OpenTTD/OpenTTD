@@ -10,8 +10,8 @@
 #ifndef HOUSE_TYPE_H
 #define HOUSE_TYPE_H
 
-typedef uint16 HouseID; ///< OpenTTD ID of house types.
-typedef uint16 HouseClassID; ///< Classes of houses.
+typedef uint16_t HouseID; ///< OpenTTD ID of house types.
+typedef uint16_t HouseClassID; ///< Classes of houses.
 
 struct HouseSpec;
 

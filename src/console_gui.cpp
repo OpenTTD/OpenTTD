@@ -39,7 +39,7 @@ static const uint ICON_BOTTOM_BORDERWIDTH = 12;
 struct IConsoleLine {
 	std::string buffer;     ///< The data to store.
 	TextColour colour;      ///< The colour of the line.
-	uint16 time;            ///< The amount of time the line is in the backlog.
+	uint16_t time;            ///< The amount of time the line is in the backlog.
 
 	IConsoleLine() : buffer(), colour(TC_BEGIN), time(0)
 	{
@@ -200,7 +200,7 @@ struct IConsoleWindow : Window
 		if (_iconsole_cmdline.HandleCaret()) this->SetDirty();
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress(char32_t key, uint16_t keycode) override
 	{
 		if (_focused_window != this) return ES_NOT_HANDLED;
 

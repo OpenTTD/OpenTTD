@@ -63,20 +63,20 @@ bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkCompanyState *_network_company_states = nullptr; ///< Statistics about some companies.
 ClientID _network_own_client_id;      ///< Our client identifier.
 ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
-uint8 _network_reconnect;             ///< Reconnect timeout
+uint8_t _network_reconnect;             ///< Reconnect timeout
 StringList _network_bind_list;        ///< The addresses to bind on.
 StringList _network_host_list;        ///< The servers we know.
 StringList _network_ban_list;         ///< The banned clients.
-uint32 _frame_counter_server;         ///< The frame_counter of the server, if in network-mode
-uint32 _frame_counter_max;            ///< To where we may go with our clients
-uint32 _frame_counter;                ///< The current frame.
-uint32 _last_sync_frame;              ///< Used in the server to store the last time a sync packet was sent to clients.
+uint32_t _frame_counter_server;         ///< The frame_counter of the server, if in network-mode
+uint32_t _frame_counter_max;            ///< To where we may go with our clients
+uint32_t _frame_counter;                ///< The current frame.
+uint32_t _last_sync_frame;              ///< Used in the server to store the last time a sync packet was sent to clients.
 NetworkAddressList _broadcast_list;   ///< List of broadcast addresses.
-uint32 _sync_seed_1;                  ///< Seed to compare during sync checks.
+uint32_t _sync_seed_1;                  ///< Seed to compare during sync checks.
 #ifdef NETWORK_SEND_DOUBLE_SEED
-uint32 _sync_seed_2;                  ///< Second part of the seed.
+uint32_t _sync_seed_2;                  ///< Second part of the seed.
 #endif
-uint32 _sync_frame;                   ///< The frame to perform the sync check.
+uint32_t _sync_frame;                   ///< The frame to perform the sync check.
 bool _network_first_time;             ///< Whether we have finished joining or not.
 CompanyMask _network_company_passworded; ///< Bitmask of the password status of all companies.
 
@@ -173,7 +173,7 @@ std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string passw
  * @param password_game_seed Game seed.
  * @return The hashed password.
  */
-std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32 password_game_seed)
+std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32_t password_game_seed)
 {
 	if (password.empty()) return password;
 
@@ -213,7 +213,7 @@ bool NetworkCompanyIsPassworded(CompanyID company_id)
 /* This puts a text-message to the console, or in the future, the chat-box,
  *  (to keep it all a bit more general)
  * If 'self_send' is true, this is the client who is sending the message */
-void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str, int64 data, const std::string &data_str)
+void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str, int64_t data, const std::string &data_str)
 {
 	StringID strid;
 	switch (action) {
@@ -466,7 +466,7 @@ std::string_view ParseCompanyFromConnectionString(const std::string &connection_
 		std::string_view company_string = ip.substr(offset + 1);
 		ip = ip.substr(0, offset);
 
-		uint8 company_value;
+		uint8_t company_value;
 		auto [_, err] = std::from_chars(company_string.data(), company_string.data() + company_string.size(), company_value);
 		if (err == std::errc()) {
 			if (company_value != COMPANY_NEW_COMPANY && company_value != COMPANY_SPECTATOR) {
@@ -500,7 +500,7 @@ std::string_view ParseCompanyFromConnectionString(const std::string &connection_
  * @param company_id        The company ID to set, if available.
  * @return A std::string_view into the connection string with the (IP) address part.
  */
-std::string_view ParseFullConnectionString(const std::string &connection_string, uint16 &port, CompanyID *company_id)
+std::string_view ParseFullConnectionString(const std::string &connection_string, uint16_t &port, CompanyID *company_id)
 {
 	std::string_view ip = ParseCompanyFromConnectionString(connection_string, company_id);
 
@@ -520,9 +520,9 @@ std::string_view ParseFullConnectionString(const std::string &connection_string,
  * @param default_port The port to use if none is given.
  * @return The normalized connection string.
  */
-std::string NormalizeConnectionString(const std::string &connection_string, uint16 default_port)
+std::string NormalizeConnectionString(const std::string &connection_string, uint16_t default_port)
 {
-	uint16 port = default_port;
+	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port);
 	return std::string(ip) + ":" + std::to_string(port);
 }
@@ -535,9 +535,9 @@ std::string NormalizeConnectionString(const std::string &connection_string, uint
  * @param default_port The default port to set port to if not in connection_string.
  * @return A valid NetworkAddress of the parsed information.
  */
-NetworkAddress ParseConnectionString(const std::string &connection_string, uint16 default_port)
+NetworkAddress ParseConnectionString(const std::string &connection_string, uint16_t default_port)
 {
-	uint16 port = default_port;
+	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port);
 	return NetworkAddress(ip, port);
 }
@@ -695,7 +695,7 @@ NetworkGameList *NetworkAddServer(const std::string &connection_string, bool man
  * @param addresses the list to write to.
  * @param port the port to bind to.
  */
-void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
+void GetBindAddresses(NetworkAddressList *addresses, uint16_t port)
 {
 	for (const auto &iter : _network_bind_list) {
 		addresses->emplace_back(iter.c_str(), port);
@@ -1056,10 +1056,10 @@ void NetworkGameLoop()
 		/* Loading of the debug commands from -ddesync>=1 */
 		static FILE *f = FioFOpenFile("commands.log", "rb", SAVE_DIR);
 		static Date next_date = 0;
-		static uint32 next_date_fract;
+		static uint32_t next_date_fract;
 		static CommandPacket *cp = nullptr;
 		static bool check_sync_state = false;
-		static uint32 sync_state[2];
+		static uint32_t sync_state[2];
 		if (f == nullptr && next_date == 0) {
 			Debug(desync, 0, "Cannot open commands.log");
 			next_date = 1;

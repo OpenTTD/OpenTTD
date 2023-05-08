@@ -361,7 +361,7 @@ struct GSConfigWindow : public Window {
 	void OnQueryTextFinished(char *str) override
 	{
 		if (StrEmpty(str)) return;
-		int32 value = atoi(str);
+		int32_t value = atoi(str);
 		SetValue(value);
 	}
 

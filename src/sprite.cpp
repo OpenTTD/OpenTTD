@@ -27,7 +27,7 @@
  * @param default_palette The default recolour sprite to use (typically company colour)
  * @param child_offset_is_unsigned Whether child sprite offsets are interpreted signed or unsigned
  */
-void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned)
+void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned)
 {
 	bool parent_sprite_encountered = false;
 	const DrawTileSeqStruct *dtss;
@@ -63,8 +63,8 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to)
 			);
 		} else {
-			int offs_x = child_offset_is_unsigned ? (uint8)dtss->delta_x : dtss->delta_x;
-			int offs_y = child_offset_is_unsigned ? (uint8)dtss->delta_y : dtss->delta_y;
+			int offs_x = child_offset_is_unsigned ? (uint8_t)dtss->delta_x : dtss->delta_x;
+			int offs_y = child_offset_is_unsigned ? (uint8_t)dtss->delta_y : dtss->delta_y;
 			bool transparent = !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to);
 			if (parent_sprite_encountered) {
 				AddChildSpriteScreen(image, pal, offs_x, offs_y, transparent);
@@ -89,7 +89,7 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
  * @param default_palette The default recolour sprite to use (typically company colour)
  * @param child_offset_is_unsigned Whether child sprite offsets are interpreted signed or unsigned
  */
-void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned)
+void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned)
 {
 	const DrawTileSeqStruct *dtss;
 	Point child_offset = {0, 0};
@@ -123,8 +123,8 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 			child_offset.x = UnScaleGUI(pt.x + spr->x_offs);
 			child_offset.y = UnScaleGUI(pt.y + spr->y_offs);
 		} else {
-			int offs_x = child_offset_is_unsigned ? (uint8)dtss->delta_x : dtss->delta_x;
-			int offs_y = child_offset_is_unsigned ? (uint8)dtss->delta_y : dtss->delta_y;
+			int offs_x = child_offset_is_unsigned ? (uint8_t)dtss->delta_x : dtss->delta_x;
+			int offs_y = child_offset_is_unsigned ? (uint8_t)dtss->delta_y : dtss->delta_y;
 			DrawSprite(image, pal, x + child_offset.x + ScaleSpriteTrad(offs_x), y + child_offset.y + ScaleSpriteTrad(offs_y));
 		}
 	}

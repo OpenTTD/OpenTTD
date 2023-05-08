@@ -601,10 +601,10 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex ti
 		if (c != nullptr) bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		if (transport_type != TRANSPORT_WATER) {
-			cost.AddCost((int64)bridge_len * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
+			cost.AddCost((int64_t)bridge_len * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
 		} else {
 			/* Aqueducts use a separate base cost. */
-			cost.AddCost((int64)bridge_len * _price[PR_BUILD_AQUEDUCT]);
+			cost.AddCost((int64_t)bridge_len * _price[PR_BUILD_AQUEDUCT]);
 		}
 
 	}
@@ -1749,7 +1749,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 		td->railtype = rti->strings.name;
 
 		if (!IsTunnel(tile)) {
-			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
+			uint16_t spd = GetBridgeSpec(GetBridgeType(tile))->speed;
 			/* rail speed special-cases 0 as unlimited, hides display of limit etc. */
 			if (spd == UINT16_MAX) spd = 0;
 			if (td->rail_speed == 0 || spd < td->rail_speed) {
@@ -1757,7 +1757,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 			}
 		}
 	} else if (tt == TRANSPORT_ROAD && !IsTunnel(tile)) {
-		uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
+		uint16_t spd = GetBridgeSpec(GetBridgeType(tile))->speed;
 		/* road speed special-cases 0 as unlimited, hides display of limit etc. */
 		if (spd == UINT16_MAX) spd = 0;
 		if (road_rt != INVALID_ROADTYPE && (td->road_speed == 0 || spd < td->road_speed)) td->road_speed = spd;
@@ -1965,7 +1965,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 	} else { // IsBridge(tile)
 		if (v->type != VEH_SHIP) {
 			/* modify speed of vehicle */
-			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
+			uint16_t spd = GetBridgeSpec(GetBridgeType(tile))->speed;
 
 			if (v->type == VEH_ROAD) spd *= 2;
 			Vehicle *first = v->First();

@@ -54,7 +54,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16 OPENTTD_SPRITE_COUNT = 191;
+static const uint16_t OPENTTD_SPRITE_COUNT = 191;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -175,12 +175,12 @@ static const SpriteID SPR_PLAYER_HOST                = SPR_OPENTTD_BASE + 190;
 static const SpriteID SPR_IMG_CARGOFLOW              = SPR_OPENTTD_BASE + 174;
 
 static const SpriteID SPR_SIGNALS_BASE  = SPR_OPENTTD_BASE + OPENTTD_SPRITE_COUNT;
-static const uint16 PRESIGNAL_SPRITE_COUNT                   =  48;
-static const uint16 PRESIGNAL_AND_SEMAPHORE_SPRITE_COUNT     = 112;
-static const uint16 PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT = 240;
+static const uint16_t PRESIGNAL_SPRITE_COUNT                   =  48;
+static const uint16_t PRESIGNAL_AND_SEMAPHORE_SPRITE_COUNT     = 112;
+static const uint16_t PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT = 240;
 
 static const SpriteID SPR_CANALS_BASE   = SPR_SIGNALS_BASE + PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT;
-static const uint16 CANALS_SPRITE_COUNT = 65;
+static const uint16_t CANALS_SPRITE_COUNT = 65;
 
 /** Sprites for the Aqueduct. */
 static const SpriteID SPR_AQUEDUCT_BASE     = SPR_CANALS_BASE + CANALS_SPRITE_COUNT;
@@ -192,33 +192,33 @@ static const SpriteID SPR_AQUEDUCT_MIDDLE_X = SPR_AQUEDUCT_BASE + 4;
 static const SpriteID SPR_AQUEDUCT_MIDDLE_Y = SPR_AQUEDUCT_BASE + 5;
 static const SpriteID SPR_AQUEDUCT_PILLAR_X = SPR_AQUEDUCT_BASE + 6;
 static const SpriteID SPR_AQUEDUCT_PILLAR_Y = SPR_AQUEDUCT_BASE + 7;
-static const uint16 AQUEDUCT_SPRITE_COUNT = 8;
+static const uint16_t AQUEDUCT_SPRITE_COUNT = 8;
 
 /** Sprites for 'highlighting' tracks on sloped land. */
 static const SpriteID SPR_TRACKS_FOR_SLOPES_BASE        = SPR_AQUEDUCT_BASE + AQUEDUCT_SPRITE_COUNT;
 static const SpriteID SPR_TRACKS_FOR_SLOPES_RAIL_BASE   = SPR_TRACKS_FOR_SLOPES_BASE + 0;
 static const SpriteID SPR_TRACKS_FOR_SLOPES_MONO_BASE   = SPR_TRACKS_FOR_SLOPES_BASE + 4;
 static const SpriteID SPR_TRACKS_FOR_SLOPES_MAGLEV_BASE = SPR_TRACKS_FOR_SLOPES_BASE + 8;
-static const uint16 TRACKS_FOR_SLOPES_SPRITE_COUNT = 12;
+static const uint16_t TRACKS_FOR_SLOPES_SPRITE_COUNT = 12;
 
 static const SpriteID SPR_SLOPES_BASE              = SPR_TRACKS_FOR_SLOPES_BASE + TRACKS_FOR_SLOPES_SPRITE_COUNT;
 static const SpriteID SPR_SLOPES_INCLINED_OFFSET   = 15;
 static const SpriteID SPR_SLOPES_VIRTUAL_BASE      = SPR_SLOPES_BASE - SPR_SLOPES_INCLINED_OFFSET; // The original foundations (see SPR_FOUNDATION_BASE below) are mapped before the additional foundations.
 static const SpriteID SPR_TRKFOUND_BLOCK_SIZE      = 22; // The normal track foundation sprites are organized in blocks of 22.
-static const uint16 NORMAL_FOUNDATION_SPRITE_COUNT = 74;
+static const uint16_t NORMAL_FOUNDATION_SPRITE_COUNT = 74;
 /** Halftile foundations */
 static const SpriteID SPR_HALFTILE_FOUNDATION_BASE = SPR_SLOPES_BASE + NORMAL_FOUNDATION_SPRITE_COUNT;
 static const SpriteID SPR_HALFTILE_BLOCK_SIZE      = 4;  // The half tile foundation sprites are organized in blocks of 4.
-static const uint16 NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT = 90;
+static const uint16_t NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT = 90;
 
 static const SpriteID SPR_AUTORAIL_BASE = SPR_HALFTILE_FOUNDATION_BASE + NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT;
-static const uint16 AUTORAIL_SPRITE_COUNT = 55;
+static const uint16_t AUTORAIL_SPRITE_COUNT = 55;
 
 static const SpriteID SPR_ELRAIL_BASE   = SPR_AUTORAIL_BASE + AUTORAIL_SPRITE_COUNT;
-static const uint16 ELRAIL_SPRITE_COUNT = 48;
+static const uint16_t ELRAIL_SPRITE_COUNT = 48;
 
 static const SpriteID SPR_2CCMAP_BASE   = SPR_ELRAIL_BASE + ELRAIL_SPRITE_COUNT;
-static const uint16 TWOCCMAP_SPRITE_COUNT = 256;
+static const uint16_t TWOCCMAP_SPRITE_COUNT = 256;
 
 /** shore tiles - action 05-0D */
 static const SpriteID SPR_SHORE_BASE                  = SPR_2CCMAP_BASE + TWOCCMAP_SPRITE_COUNT;
@@ -242,7 +242,7 @@ static const SpriteID SPR_NEWHANGAR_E       = SPR_AIRPORTX_BASE + 11;
 static const SpriteID SPR_NEWHELIPAD        = SPR_AIRPORTX_BASE + 12;
 static const SpriteID SPR_GRASS_RIGHT       = SPR_AIRPORTX_BASE + 13;
 static const SpriteID SPR_GRASS_LEFT        = SPR_AIRPORTX_BASE + 14;
-static const uint16 AIRPORTX_SPRITE_COUNT = 15;
+static const uint16_t AIRPORTX_SPRITE_COUNT = 15;
 
 /** Airport preview sprites */
 static const SpriteID SPR_AIRPORT_PREVIEW_BASE             = SPR_AIRPORTX_BASE + AIRPORTX_SPRITE_COUNT;
@@ -266,7 +266,7 @@ static const SpriteID SPR_TRUCK_STOP_DT_Y_W = SPR_ROADSTOP_BASE + 4;
 static const SpriteID SPR_TRUCK_STOP_DT_Y_E = SPR_ROADSTOP_BASE + 5;
 static const SpriteID SPR_TRUCK_STOP_DT_X_W = SPR_ROADSTOP_BASE + 6;
 static const SpriteID SPR_TRUCK_STOP_DT_X_E = SPR_ROADSTOP_BASE + 7;
-static const uint16 ROADSTOP_SPRITE_COUNT = 8;
+static const uint16_t ROADSTOP_SPRITE_COUNT = 8;
 
 /** Tramway sprites */
 static const SpriteID SPR_TRAMWAY_BASE                 = SPR_ROADSTOP_BASE + ROADSTOP_SPRITE_COUNT;
@@ -287,25 +287,25 @@ static const SpriteID SPR_TRAMWAY_FRONT_WIRES_SLOPED   = SPR_TRAMWAY_BASE + 72;
 static const SpriteID SPR_TRAMWAY_TUNNEL_WIRES         = SPR_TRAMWAY_BASE + 80;
 static const SpriteID SPR_TRAMWAY_BRIDGE               = SPR_TRAMWAY_BASE + 107;
 static const SpriteID SPR_TRAMWAY_DEPOT_NO_TRACK       = SPR_TRAMWAY_BASE + 113;
-static const uint16 TRAMWAY_SPRITE_COUNT = 119;
+static const uint16_t TRAMWAY_SPRITE_COUNT = 119;
 
 /** One way road sprites */
 static const SpriteID SPR_ONEWAY_BASE           = SPR_TRAMWAY_BASE + TRAMWAY_SPRITE_COUNT;
 static const SpriteID SPR_ONEWAY_SLOPE_N_OFFSET = 6;
 static const SpriteID SPR_ONEWAY_SLOPE_S_OFFSET = 12;
-static const uint16 ONEWAY_SPRITE_COUNT = 18;
+static const uint16_t ONEWAY_SPRITE_COUNT = 18;
 
 /** Tunnel sprites with grass only for custom railtype tunnel. */
 static const SpriteID SPR_RAILTYPE_TUNNEL_BASE = SPR_ONEWAY_BASE + ONEWAY_SPRITE_COUNT;
-static const uint16 RAILTYPE_TUNNEL_BASE_COUNT = 16;
+static const uint16_t RAILTYPE_TUNNEL_BASE_COUNT = 16;
 
 /* Not really a sprite, but an empty bounding box. Used to construct bounding boxes that help sorting the sprites, but do not have a sprite associated. */
 static const SpriteID SPR_EMPTY_BOUNDING_BOX = SPR_RAILTYPE_TUNNEL_BASE + RAILTYPE_TUNNEL_BASE_COUNT;
-static const uint16 EMPTY_BOUNDING_BOX_SPRITE_COUNT = 1;
+static const uint16_t EMPTY_BOUNDING_BOX_SPRITE_COUNT = 1;
 
 /* Black palette sprite, needed for painting (fictive) tiles outside map */
 static const SpriteID SPR_PALETTE_BASE = SPR_EMPTY_BOUNDING_BOX + EMPTY_BOUNDING_BOX_SPRITE_COUNT;
-static const uint16 PALETTE_SPRITE_COUNT = 1;
+static const uint16_t PALETTE_SPRITE_COUNT = 1;
 
 /* From where can we start putting NewGRFs? */
 static const SpriteID SPR_NEWGRFS_BASE = SPR_PALETTE_BASE + PALETTE_SPRITE_COUNT;

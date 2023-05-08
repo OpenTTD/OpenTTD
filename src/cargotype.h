@@ -19,7 +19,7 @@
 #include "core/span_type.hpp"
 
 /** Globally unique label of a cargo type. */
-typedef uint32 CargoLabel;
+typedef uint32_t CargoLabel;
 
 /** Town growth effect when delivering cargo. */
 enum TownEffect : byte {
@@ -54,18 +54,18 @@ static const byte INVALID_CARGO = 0xFF; ///< Constant representing invalid cargo
 
 /** Specification of a cargo type. */
 struct CargoSpec {
-	uint8 bitnum;                    ///< Cargo bit number, is #INVALID_CARGO for a non-used spec.
+	uint8_t bitnum;                    ///< Cargo bit number, is #INVALID_CARGO for a non-used spec.
 	CargoLabel label;                ///< Unique label of the cargo type.
-	uint8 legend_colour;
-	uint8 rating_colour;
-	uint8 weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
-	uint16 multiplier;               ///< Capacity multiplier for vehicles. (8 fractional bits)
-	int32 initial_payment;           ///< Initial payment rate before inflation is applied.
-	uint8 transit_periods[2];
+	uint8_t legend_colour;
+	uint8_t rating_colour;
+	uint8_t weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
+	uint16_t multiplier;               ///< Capacity multiplier for vehicles. (8 fractional bits)
+	int32_t initial_payment;           ///< Initial payment rate before inflation is applied.
+	uint8_t transit_periods[2];
 
 	bool is_freight;                 ///< Cargo type is considered to be freight (affects train freight multiplier).
 	TownEffect town_effect;          ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
-	uint8 callback_mask;             ///< Bitmask of cargo callbacks that have to be called
+	uint8_t callback_mask;             ///< Bitmask of cargo callbacks that have to be called
 
 	StringID name;                   ///< Name of this type of cargo.
 	StringID name_single;            ///< Name of a single entity of this type of cargo.
@@ -75,7 +75,7 @@ struct CargoSpec {
 
 	SpriteID sprite;                 ///< Icon to display this cargo type, may be \c 0xFFF (which means to resolve an action123 chain).
 
-	uint16 classes;                  ///< Classes of this cargo type. @see CargoClass
+	uint16_t classes;                  ///< Classes of this cargo type. @see CargoClass
 	const struct GRFFile *grffile;   ///< NewGRF where #group belongs to.
 	const struct SpriteGroup *group;
 
@@ -122,12 +122,12 @@ struct CargoSpec {
 
 	SpriteID GetCargoIcon() const;
 
-	inline uint64 WeightOfNUnits(uint32 n) const
+	inline uint64_t WeightOfNUnits(uint32_t n) const
 	{
 		return n * this->weight / 16u;
 	}
 
-	uint64 WeightOfNUnitsInTrain(uint32 n) const;
+	uint64_t WeightOfNUnitsInTrain(uint32_t n) const;
 
 	/**
 	 * Iterator to iterate all valid CargoSpec
@@ -183,7 +183,7 @@ extern CargoTypes _standard_cargo_mask;
 
 void SetupCargoForClimate(LandscapeID l);
 CargoID GetCargoIDByLabel(CargoLabel cl);
-CargoID GetCargoIDByBitnum(uint8 bitnum);
+CargoID GetCargoIDByBitnum(uint8_t bitnum);
 CargoID GetDefaultCargoID(LandscapeID l, CargoType ct);
 
 void InitializeSortedCargoSpecs();

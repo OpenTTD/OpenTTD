@@ -51,7 +51,7 @@ static_assert(MAX_HEIGHTMAP_SIZE_PIXELS < UINT32_MAX / 8);
  */
 static inline bool IsValidHeightmapDimension(size_t width, size_t height)
 {
-	return (uint64)width * height <= MAX_HEIGHTMAP_SIZE_PIXELS &&
+	return (uint64_t)width * height <= MAX_HEIGHTMAP_SIZE_PIXELS &&
 		width > 0 && width <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS &&
 		height > 0 && height <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS;
 }

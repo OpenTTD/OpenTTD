@@ -30,7 +30,7 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 	 *  Especially when going between toyland and non-toyland. */
 	assert(this->palette.first_dirty == PALETTE_ANIM_START || this->palette.first_dirty == 0);
 
-	const uint16 *anim = this->anim_buf;
+	const uint16_t *anim = this->anim_buf;
 	Colour *dst = (Colour *)_screen.dst_ptr;
 
 	bool screen_dirty = false;
@@ -44,7 +44,7 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 	__m128i colour_mask = _mm_set1_epi16(0xFF);
 	for (int y = this->anim_buf_height; y != 0 ; y--) {
 		Colour *next_dst_ln = dst + screen_pitch;
-		const uint16 *next_anim_ln = anim + anim_pitch;
+		const uint16_t *next_anim_ln = anim + anim_pitch;
 		int x = width;
 		while (x > 0) {
 			__m128i data = _mm_load_si128((const __m128i *) anim);
@@ -61,7 +61,7 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 					/* slow path: < 8 pixels left or unexpected brightnesses */
 					for (int z = std::min<int>(x, 8); z != 0 ; z--) {
 						int value = _mm_extract_epi16(data, 0);
-						uint8 colour = GB(value, 0, 8);
+						uint8_t colour = GB(value, 0, 8);
 						if (colour >= PALETTE_ANIM_START) {
 							/* Update this pixel */
 							*dst = AdjustBrightneSSE(LookupColourInPalette(colour), GB(value, 8, 8));

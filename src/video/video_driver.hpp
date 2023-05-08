@@ -140,7 +140,7 @@ public:
 	 * Get a pointer to the animation buffer of the video back-end.
 	 * @return Pointer to the buffer or nullptr if no animation buffer is supported.
 	 */
-	virtual uint8 *GetAnimBuffer()
+	virtual uint8_t *GetAnimBuffer()
 	{
 		return nullptr;
 	}

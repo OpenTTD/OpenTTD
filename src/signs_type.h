@@ -11,7 +11,7 @@
 #define SIGNS_TYPE_H
 
 /** The type of the IDs of signs. */
-typedef uint16 SignID;
+typedef uint16_t SignID;
 struct Sign;
 
 static const SignID INVALID_SIGN = 0xFFFF; ///< Sentinel for an invalid sign.

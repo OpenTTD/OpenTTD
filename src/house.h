@@ -102,7 +102,7 @@ struct HouseSpec {
 	byte population;                          ///< population (Zero on other tiles in multi tile house.)
 	byte removal_cost;                        ///< cost multiplier for removing it
 	StringID building_name;                   ///< building name
-	uint16 remove_rating_decrease;            ///< rating decrease if removed
+	uint16_t remove_rating_decrease;            ///< rating decrease if removed
 	byte mail_generation;                     ///< mail generation multiplier (tile based, as the acceptances below)
 	byte cargo_acceptance[HOUSE_NUM_ACCEPTS]; ///< acceptance level for the cargo slots
 	CargoID accepts_cargo[HOUSE_NUM_ACCEPTS]; ///< input cargo slots
@@ -112,7 +112,7 @@ struct HouseSpec {
 
 	/* NewHouses properties */
 	GRFFileProps grf_prop;                    ///< Properties related the the grf file
-	uint16 callback_mask;                     ///< Bitmask of house callbacks that have to be called
+	uint16_t callback_mask;                     ///< Bitmask of house callbacks that have to be called
 	byte random_colour[4];                    ///< 4 "random" colours
 	byte probability;                         ///< Relative probability of appearing (16 is the standard value)
 	HouseExtraFlags extra_flags;              ///< some more flags

@@ -50,7 +50,7 @@ static std::vector<Engine*> _temp_engine;
  */
 static Engine* CallocEngine()
 {
-	uint8 *zero = CallocT<uint8>(sizeof(Engine));
+	uint8_t *zero = CallocT<uint8_t>(sizeof(Engine));
 	Engine *engine = new (zero) Engine();
 	return engine;
 }

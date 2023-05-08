@@ -23,21 +23,21 @@ class ScriptBase : public ScriptObject {
 public:
 	/**
 	 * Get a random value.
-	 * @return A random value between 0 and MAX(uint32).
+	 * @return A random value between 0 and MAX(uint32_t).
 	 */
 	static SQInteger Rand();
 
 	/**
 	 * Get a random value.
 	 * @param unused_param This parameter is not used, but is needed to work with lists.
-	 * @return A random value between 0 and MAX(uint32).
+	 * @return A random value between 0 and MAX(uint32_t).
 	 */
 	static SQInteger RandItem(SQInteger unused_param);
 
 	/**
 	 * Get a random value in a range.
 	 * @param max The first number this function will never return (the maximum it returns is max - 1).
-	 *            The value will be clamped to 0 .. MAX(uint32).
+	 *            The value will be clamped to 0 .. MAX(uint32_t).
 	 * @return A random value between 0 .. max - 1.
 	 */
 	static SQInteger RandRange(SQInteger max);
@@ -46,7 +46,7 @@ public:
 	 * Get a random value in a range.
 	 * @param unused_param This parameter is not used, but is needed to work with lists.
 	 * @param max The first number this function will never return (the maximum it returns is max - 1).
-	 *            The value will be clamped to 0 .. MAX(uint32).
+	 *            The value will be clamped to 0 .. MAX(uint32_t).
 	 * @return A random value between 0 .. max - 1.
 	 */
 	static SQInteger RandRangeItem(SQInteger unused_param, SQInteger max);
@@ -55,9 +55,9 @@ public:
 	 * Returns approximately 'out' times true when called 'max' times.
 	 *   After all, it is a random function.
 	 * @param out How many times it should return true.
-	 *            The value will be clamped to 0 .. MAX(uint32).
+	 *            The value will be clamped to 0 .. MAX(uint32_t).
 	 * @param max Out of this many times.
-	 *            The value will be clamped to 0 .. MAX(uint32).
+	 *            The value will be clamped to 0 .. MAX(uint32_t).
 	 * @pre \a out is at most equal to \a max.
 	 * @return True if the chance worked out.
 	 */
@@ -68,9 +68,9 @@ public:
 	 *   After all, it is a random function.
 	 * @param unused_param This parameter is not used, but is needed to work with lists.
 	 * @param out How many times it should return true.
-	 *            The value will be clamped to 0 .. MAX(uint32).
+	 *            The value will be clamped to 0 .. MAX(uint32_t).
 	 * @param max Out of this many times.
-	 *            The value will be clamped to 0 .. MAX(uint32).
+	 *            The value will be clamped to 0 .. MAX(uint32_t).
 	 * @pre \a out is at most equal to \a max.
 	 * @return True if the chance worked out.
 	 */

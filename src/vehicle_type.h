@@ -13,7 +13,7 @@
 #include "core/enum_type.hpp"
 
 /** The type all our vehicle IDs have. */
-typedef uint32 VehicleID;
+typedef uint32_t VehicleID;
 
 static const int GROUND_ACCELERATION = 9800; ///< Acceleration due to gravity, 9.8 m/s^2
 

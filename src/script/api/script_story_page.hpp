@@ -69,7 +69,7 @@ public:
 	/**
 	 * Formatting data for button page elements.
 	 */
-	typedef uint32 StoryPageButtonFormatting;
+	typedef uint32_t StoryPageButtonFormatting;
 
 	/**
 	 * Formatting and layout flags for story page buttons.

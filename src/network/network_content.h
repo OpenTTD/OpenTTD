@@ -136,7 +136,7 @@ public:
 	/** Get the begin of the content inf iterator. */
 	ConstContentIterator Begin() const { return this->infos.data(); }
 	/** Get the nth position of the content inf iterator. */
-	ConstContentIterator Get(uint32 index) const { return this->infos.data() + index; }
+	ConstContentIterator Get(uint32_t index) const { return this->infos.data() + index; }
 	/** Get the end of the content inf iterator. */
 	ConstContentIterator End() const { return this->Begin() + this->Length(); }
 

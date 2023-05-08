@@ -89,7 +89,7 @@ public:
 		int CountRuns() const override { return (uint)this->size();  }
 		const VisualRun &GetVisualRun(int run) const override { return this->at(run); }
 
-		int GetInternalCharLength(WChar c) const override
+		int GetInternalCharLength(char32_t c) const override
 		{
 			/* ICU uses UTF-16 internally which means we need to account for surrogate pairs. */
 			return c >= 0x010000U ? 2 : 1;
@@ -160,7 +160,7 @@ void ICURun::Shape(UChar *buff, size_t buff_length) {
 
 	/* ICU buffer is in UTF-16. */
 	auto hbbuf = hb_buffer_create();
-	hb_buffer_add_utf16(hbbuf, reinterpret_cast<uint16 *>(buff), buff_length, this->start, this->length);
+	hb_buffer_add_utf16(hbbuf, reinterpret_cast<uint16_t *>(buff), buff_length, this->start, this->length);
 
 	/* Set all the properties of this segment. */
 	hb_buffer_set_direction(hbbuf, (this->level & 1) == 1 ? HB_DIRECTION_RTL : HB_DIRECTION_LTR);
@@ -522,10 +522,10 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 	return line;
 }
 
-/* static */ size_t ICUParagraphLayoutFactory::AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c)
+/* static */ size_t ICUParagraphLayoutFactory::AppendToBuffer(UChar *buff, const UChar *buffer_last, char32_t c)
 {
 	/* Transform from UTF-32 to internal ICU format of UTF-16. */
-	int32 length = 0;
+	int32_t length = 0;
 	UErrorCode err = U_ZERO_ERROR;
 	u_strFromUTF32(buff, buffer_last - buff, &length, (UChar32*)&c, 1, &err);
 	return length;

@@ -8,7 +8,7 @@
 /** @file object_land.h Sprites to use and how to display them for object tiles. */
 
 #define TILE_SEQ_LINE(sz, img) { 0, 0, 0, 16, 16, sz, {img, PAL_NONE} },
-#define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
+#define TILE_SEQ_END() { (int8_t)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 static const DrawTileSeqStruct _object_nothing[] = {
 	TILE_SEQ_END()

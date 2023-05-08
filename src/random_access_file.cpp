@@ -115,7 +115,7 @@ byte RandomAccessFile::ReadByte()
  * Read a word (16 bits) from the file (in low endian format).
  * @return Read word.
  */
-uint16 RandomAccessFile::ReadWord()
+uint16_t RandomAccessFile::ReadWord()
 {
 	byte b = this->ReadByte();
 	return (this->ReadByte() << 8) | b;
@@ -125,7 +125,7 @@ uint16 RandomAccessFile::ReadWord()
  * Read a double word (32 bits) from the file (in low endian format).
  * @return Read word.
  */
-uint32 RandomAccessFile::ReadDword()
+uint32_t RandomAccessFile::ReadDword()
 {
 	uint b = this->ReadWord();
 	return (this->ReadWord() << 16) | b;

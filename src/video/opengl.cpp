@@ -940,7 +940,7 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 		if (_glClearBufferSubData != nullptr) {
 			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_RGBA8, 0, line_pixel_count * bpp / 8, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &black.data);
 		} else {
-			ClearPixelBuffer<uint32>(line_pixel_count, black.data);
+			ClearPixelBuffer<uint32_t>(line_pixel_count, black.data);
 		}
 	} else if (bpp == 8) {
 		if (_glClearBufferSubData != nullptr) {
@@ -1173,7 +1173,7 @@ void *OpenGLBackend::GetVideoBuffer()
  * Get a pointer to the memory for the separate animation buffer.
  * @return Pointer to draw on.
  */
-uint8 *OpenGLBackend::GetAnimBuffer()
+uint8_t *OpenGLBackend::GetAnimBuffer()
 {
 	if (this->anim_pbo == 0) return nullptr;
 
@@ -1189,7 +1189,7 @@ uint8 *OpenGLBackend::GetAnimBuffer()
 		this->anim_buffer = _glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, static_cast<GLsizeiptr>(_screen.pitch) * _screen.height, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
 	}
 
-	return (uint8 *)this->anim_buffer;
+	return (uint8_t *)this->anim_buffer;
 }
 
 /**
@@ -1370,7 +1370,7 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
 	_glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1, 1, 0, GL_RED, GL_UNSIGNED_BYTE, &pal);
 
 	/* Create palette remap textures. */
-	std::array<uint8, 256> identity_pal;
+	std::array<uint8_t, 256> identity_pal;
 	std::iota(std::begin(identity_pal), std::end(identity_pal), 0);
 
 	/* Permanent texture for identity remap. */
@@ -1474,7 +1474,7 @@ OpenGLSprite::~OpenGLSprite()
 void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoader::CommonPixel * data)
 {
 	static ReusableBuffer<Colour> buf_rgba;
-	static ReusableBuffer<uint8> buf_pal;
+	static ReusableBuffer<uint8_t> buf_pal;
 
 	_glActiveTexture(GL_TEXTURE0);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
@@ -1499,7 +1499,7 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 		/* Unpack and align pixel data. */
 		size_t pitch = Align(width, 4);
 
-		uint8 *pal = buf_pal.Allocate(pitch * height);
+		uint8_t *pal = buf_pal.Allocate(pitch * height);
 		const SpriteLoader::CommonPixel *row = data;
 		for (uint y = 0; y < height; y++, pal += pitch, row += width) {
 			for (uint x = 0; x < width; x++) {

@@ -197,7 +197,7 @@ struct PacketWriter : SaveFilter {
 
 		/* Fast-track the size to the client. */
 		this->current = new Packet(PACKET_SERVER_MAP_SIZE);
-		this->current->Send_uint32((uint32)this->total_size);
+		this->current->Send_uint32((uint32_t)this->total_size);
 		this->PrependQueue();
 	}
 };
@@ -658,7 +658,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacke
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64 data)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64_t data)
 {
 	if (this->status < STATUS_PRE_ACTIVE) return NETWORK_RECV_STATUS_OKAY;
 
@@ -747,7 +747,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGame()
  * @param colour The colour of the result.
  * @param command The command that was executed.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16 colour, const std::string &command)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16_t colour, const std::string &command)
 {
 	Packet *p = new Packet(PACKET_SERVER_RCON);
 
@@ -777,7 +777,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyUpdate()
 {
 	Packet *p = new Packet(PACKET_SERVER_COMPANY_UPDATE);
 
-	static_assert(sizeof(_network_company_passworded) <= sizeof(uint16));
+	static_assert(sizeof(_network_company_passworded) <= sizeof(uint16_t));
 	p->Send_uint16(_network_company_passworded);
 	this->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
@@ -838,7 +838,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	}
 
 	std::string client_revision = p->Recv_string(NETWORK_REVISION_LENGTH);
-	uint32 newgrf_version = p->Recv_uint32();
+	uint32_t newgrf_version = p->Recv_uint32();
 
 	/* Check if the client has revision control enabled */
 	if (!IsNetworkCompatibleVersion(client_revision) || _openttd_newgrf_version != newgrf_version) {
@@ -1136,7 +1136,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
 		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
-	uint32 frame = p->Recv_uint32();
+	uint32_t frame = p->Recv_uint32();
 
 	/* The client is trying to catch up with the server */
 	if (this->status == STATUS_PRE_ACTIVE) {
@@ -1152,7 +1152,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
 	}
 
 	/* Get, and validate the token. */
-	uint8 token = p->Recv_uint8();
+	uint8_t token = p->Recv_uint8();
 	if (token == this->last_token) {
 		/* We differentiate between last_token_frame and last_frame so the lag
 		 * test uses the actual lag of the client instead of the lag for getting
@@ -1185,7 +1185,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
  * @param data Arbitrary data.
  * @param from_admin Whether the origin is an admin or not.
  */
-void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const std::string &msg, ClientID from_id, int64 data, bool from_admin)
+void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const std::string &msg, ClientID from_id, int64_t data, bool from_admin)
 {
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
 
@@ -1323,7 +1323,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet *p)
 	int dest = p->Recv_uint32();
 
 	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
-	int64 data = p->Recv_uint64();
+	int64_t data = p->Recv_uint64();
 
 	NetworkClientInfo *ci = this->GetInfo();
 	switch (action) {

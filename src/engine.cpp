@@ -49,7 +49,7 @@ EngineOverrideManager _engine_mngr;
 static TimerGameCalendar::Year _year_engine_aging_stops;
 
 /** Number of engines of each vehicle type in original engine data */
-const uint8 _engine_counts[4] = {
+const uint8_t _engine_counts[4] = {
 	lengthof(_orig_rail_vehicle_info),
 	lengthof(_orig_road_vehicle_info),
 	lengthof(_orig_ship_vehicle_info),
@@ -57,7 +57,7 @@ const uint8 _engine_counts[4] = {
 };
 
 /** Offset of the first engine of each vehicle type in original engine data */
-const uint8 _engine_offsets[4] = {
+const uint8_t _engine_offsets[4] = {
 	0,
 	lengthof(_orig_rail_vehicle_info),
 	lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info),
@@ -151,7 +151,7 @@ bool Engine::IsEnabled() const
  * This is the GRF providing the Action 3.
  * @return GRF ID of the associated NewGRF.
  */
-uint32 Engine::GetGRFID() const
+uint32_t Engine::GetGRFID() const
 {
 	const GRFFile *file = this->GetGRF();
 	return file == nullptr ? 0 : file->grfid;
@@ -195,7 +195,7 @@ bool Engine::CanCarryCargo() const
  * @param mail_capacity returns secondary cargo (mail) capacity of aircraft
  * @return Capacity
  */
-uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
+uint Engine::DetermineCapacity(const Vehicle *v, uint16_t *mail_capacity) const
 {
 	assert(v == nullptr || this->index == v->engine_type);
 	if (mail_capacity != nullptr) *mail_capacity = 0;
@@ -213,7 +213,7 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 	/* Check the refit capacity callback if we are not in the default configuration, or if we are using the new multiplier algorithm. */
 	if (HasBit(this->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY) &&
 			(new_multipliers || default_cargo != cargo_type || (v != nullptr && v->cargo_subtype != 0))) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, this->index, v);
+		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, this->index, v);
 		if (callback != CALLBACK_FAILED) return callback;
 	}
 
@@ -256,8 +256,8 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 
 	/* Apply multipliers depending on cargo- and vehicletype. */
 	if (new_multipliers || (this->type != VEH_SHIP && default_cargo != cargo_type)) {
-		uint16 default_multiplier = new_multipliers ? 0x100 : CargoSpec::Get(default_cargo)->multiplier;
-		uint16 cargo_multiplier = CargoSpec::Get(cargo_type)->multiplier;
+		uint16_t default_multiplier = new_multipliers ? 0x100 : CargoSpec::Get(default_cargo)->multiplier;
+		uint16_t cargo_multiplier = CargoSpec::Get(cargo_type)->multiplier;
 		capacity *= cargo_multiplier;
 		if (extra_mail_cap > 0) {
 			uint mail_multiplier = CargoSpec::Get(CT_MAIL)->multiplier;
@@ -445,7 +445,7 @@ TimerGameCalendar::Date Engine::GetLifeLengthInDays() const
  * Get the range of an aircraft type.
  * @return Range of the aircraft type in tiles or 0 if unlimited range.
  */
-uint16 Engine::GetRange() const
+uint16_t Engine::GetRange() const
 {
 	switch (this->type) {
 		case VEH_AIRCRAFT:
@@ -524,7 +524,7 @@ void EngineOverrideManager::ResetToDefaultMapping()
  *              If dynnamic_engines is disabled, all newgrf share the same ID scope identified by INVALID_GRFID.
  * @return The engine ID if present, or INVALID_ENGINE if not.
  */
-EngineID EngineOverrideManager::GetID(VehicleType type, uint16 grf_local_id, uint32 grfid)
+EngineID EngineOverrideManager::GetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid)
 {
 	EngineID index = 0;
 	for (const EngineIDMapping &eid : *this) {
@@ -611,7 +611,7 @@ void CalcEngineReliability(Engine *e, bool new_month)
 		re = Engine::Get(re->info.variant_id);
 	}
 
-	uint32 age = re->age;
+	uint32_t age = re->age;
 	if (new_month && re->index > e->index && age != INT32_MAX) age++; /* parent variant's age has not yet updated. */
 
 	/* Check for early retirement */
@@ -675,7 +675,7 @@ void SetYearEngineAgingStops()
  * @param aging_date The date used for age calculations.
  * @param seed Random seed.
  */
-void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32 seed)
+void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32_t seed)
 {
 	const EngineInfo *ei = &e->info;
 
@@ -692,7 +692,7 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32 seed
 	              ei->base_intro ^
 	              e->type ^
 	              e->GetGRFID());
-	uint32 r = Random();
+	uint32_t r = Random();
 
 	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
 	 * of engines in early starting games.
@@ -745,7 +745,7 @@ void StartupEngines()
 {
 	/* Aging of vehicles stops, so account for that when starting late */
 	const TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date, TimerGameCalendar::ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
-	uint32 seed = Random();
+	uint32_t seed = Random();
 
 	for (Engine *e : Engine::Iterate()) {
 		StartupOneEngine(e, aging_date, seed);
@@ -863,7 +863,7 @@ static CompanyID GetPreviewCompany(Engine *e)
 	/* For trains the cargomask has no useful meaning, since you can attach other wagons */
 	CargoTypes cargomask = e->type != VEH_TRAIN ? GetUnionOfArticulatedRefitMasks(e->index, true) : ALL_CARGOTYPES;
 
-	int32 best_hist = -1;
+	int32_t best_hist = -1;
 	for (const Company *c : Company::Iterate()) {
 		if (c->block_preview == 0 && !HasBit(e->preview_asked, c->index) &&
 				c->old_economy[0].performance_history > best_hist) {

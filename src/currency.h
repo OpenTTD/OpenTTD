@@ -70,7 +70,7 @@ enum Currencies {
 
 /** Specification of a currency. */
 struct CurrencySpec {
-	uint16 rate;           ///< The conversion rate compared to the base currency.
+	uint16_t rate;           ///< The conversion rate compared to the base currency.
 	std::string separator; ///< The thousands separator for this currency.
 	TimerGameCalendar::Year to_euro; ///< Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
 	std::string prefix;    ///< Prefix to apply when formatting money in this currency.
@@ -90,7 +90,7 @@ struct CurrencySpec {
 
 	CurrencySpec() = default;
 
-	CurrencySpec(uint16 rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, const char *code, byte symbol_pos, StringID name) :
+	CurrencySpec(uint16_t rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, const char *code, byte symbol_pos, StringID name) :
 		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), code(code), symbol_pos(symbol_pos), name(name)
 	{
 	}
@@ -102,7 +102,7 @@ extern CurrencySpec _currency_specs[CURRENCY_END];
 #define _custom_currency (_currency_specs[CURRENCY_CUSTOM])
 #define _currency ((const CurrencySpec*)&_currency_specs[GetGameSettings().locale.currency])
 
-uint64 GetMaskOfAllowedCurrencies();
+uint64_t GetMaskOfAllowedCurrencies();
 void ResetCurrencies(bool preserve_custom = true);
 byte GetNewgrfCurrencyIdConverted(byte grfcurr_id);
 

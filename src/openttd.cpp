@@ -224,7 +224,7 @@ static void ShowHelp()
 static void WriteSavegameInfo(const std::string &name)
 {
 	extern SaveLoadVersion _sl_version;
-	uint32 last_ottd_rev = 0;
+	uint32_t last_ottd_rev = 0;
 	byte ever_modified = 0;
 	bool removed_newgrfs = false;
 
@@ -381,9 +381,9 @@ void OpenBrowser(const char *url)
 /** Callback structure of statements to be executed after the NewGRF scan. */
 struct AfterNewGRFScan : NewGRFScanCallback {
 	TimerGameCalendar::Year startyear = INVALID_YEAR; ///< The start year.
-	uint32 generation_seed = GENERATE_NEW_SEED; ///< Seed for the new game.
+	uint32_t generation_seed = GENERATE_NEW_SEED; ///< Seed for the new game.
 	std::string dedicated_host;                 ///< Hostname for the dedicated server.
-	uint16 dedicated_port = 0;                  ///< Port for the dedicated server.
+	uint16_t dedicated_port = 0;                  ///< Port for the dedicated server.
 	std::string connection_string;              ///< Information about the server to connect to
 	std::string join_server_password;           ///< The password to join the server with.
 	std::string join_company_password;          ///< The password to join the company with.

@@ -26,8 +26,8 @@ static constexpr uint BUILTIN_TOWNNAME_GENERATOR_COUNT = SPECSTR_TOWNNAME_LAST -
  * Speeds things up a bit because these values are computed only once per name generation.
  */
 struct TownNameParams {
-	uint32 grfid; ///< newgrf ID (0 if not used)
-	uint16 type;  ///< town name style
+	uint32_t grfid; ///< newgrf ID (0 if not used)
+	uint16_t type;  ///< town name style
 
 	/**
 	 * Initializes this struct from language ID

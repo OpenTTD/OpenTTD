@@ -60,8 +60,8 @@ struct BaseSet {
 
 	std::string name;              ///< The name of the base set
 	TranslatedStrings description; ///< Description of the base set
-	uint32 shortname;              ///< Four letter short variant of the name
-	uint32 version;                ///< The version of this base set
+	uint32_t shortname;              ///< Four letter short variant of the name
+	uint32_t version;                ///< The version of this base set
 	bool fallback;                 ///< This set is a fallback set, i.e. it should be used only as last resort
 
 	MD5File files[NUM_FILES];      ///< All files part of this set

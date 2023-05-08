@@ -24,7 +24,7 @@ extern const SaveLoadVersion SAVEGAME_VERSION;  ///< current savegame version
 
 extern SavegameType _savegame_type; ///< type of savegame we are loading
 
-extern uint32 _ttdp_version;        ///< version of TTDP savegame (if applicable)
+extern uint32_t _ttdp_version;        ///< version of TTDP savegame (if applicable)
 extern SaveLoadVersion _sl_version; ///< the major savegame version identifier
 extern byte   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
 
@@ -406,7 +406,7 @@ void Gamelog::Oldver()
  * @param oldval old setting value
  * @param newval new setting value
  */
-void Gamelog::Setting(const std::string &name, int32 oldval, int32 newval)
+void Gamelog::Setting(const std::string &name, int32_t oldval, int32_t newval)
 {
 	assert(this->action_type == GLAT_SETTING);
 
@@ -459,7 +459,7 @@ void Gamelog::TestMode()
  * @param bug type of bug, @see enum GRFBugs
  * @param data additional data
  */
-void Gamelog::GRFBug(uint32 grfid, byte bug, uint64 data)
+void Gamelog::GRFBug(uint32_t grfid, byte bug, uint64_t data)
 {
 	assert(this->action_type == GLAT_GRFBUG);
 
@@ -475,7 +475,7 @@ void Gamelog::GRFBug(uint32 grfid, byte bug, uint64 data)
  * @param internal_id the internal ID of whatever's broken in the NewGRF
  * @return true iff a unique record was done
  */
-bool Gamelog::GRFBugReverse(uint32 grfid, uint16 internal_id)
+bool Gamelog::GRFBugReverse(uint32_t grfid, uint16_t internal_id)
 {
 	for (const LoggedAction &la : this->data->action) {
 		for (const auto &lc : la.change) {
@@ -510,7 +510,7 @@ static inline bool IsLoggableGrfConfig(const GRFConfig *g)
  * Logs removal of a GRF
  * @param grfid ID of removed GRF
  */
-void Gamelog::GRFRemove(uint32 grfid)
+void Gamelog::GRFRemove(uint32_t grfid)
 {
 	assert(this->action_type == GLAT_LOAD || this->action_type == GLAT_GRF);
 
@@ -547,7 +547,7 @@ void Gamelog::GRFCompatible(const GRFIdentifier *newg)
  * @param grfid GRF that is moved
  * @param offset how far it is moved, positive = moved down
  */
-void Gamelog::GRFMove(uint32 grfid, int32 offset)
+void Gamelog::GRFMove(uint32_t grfid, int32_t offset)
 {
 	assert(this->action_type == GLAT_GRF);
 
@@ -559,7 +559,7 @@ void Gamelog::GRFMove(uint32 grfid, int32 offset)
  * Details about parameters changed are not stored
  * @param grfid ID of GRF to store
  */
-void Gamelog::GRFParameters(uint32 grfid)
+void Gamelog::GRFParameters(uint32_t grfid)
 {
 	assert(this->action_type == GLAT_GRF);
 
@@ -678,7 +678,7 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
  * @param[out] ever_modified Max value of 'modified' from all binaries that ever saved this savegame.
  * @param[out] removed_newgrfs Set to true if any NewGRFs have been removed.
  */
-void Gamelog::Info(uint32 *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs)
+void Gamelog::Info(uint32_t *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs)
 {
 	for (const LoggedAction &la : this->data->action) {
 		for (const auto &lc : la.change) {

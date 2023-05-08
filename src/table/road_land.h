@@ -8,7 +8,7 @@
 /** @file road_land.h Sprite constructs for road depots. */
 
 #define TILE_SEQ_LINE(img, pal, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 20, {img, pal} },
-#define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
+#define TILE_SEQ_END() { (int8_t)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 static const DrawTileSeqStruct _road_depot_NE[] = {
 	TILE_SEQ_LINE(0x584 | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE, 0, 15, 16, 1)

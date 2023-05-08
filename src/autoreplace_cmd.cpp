@@ -498,7 +498,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 	if (old_head->type == VEH_TRAIN) {
 		/* Store the length of the old vehicle chain, rounded up to whole tiles */
-		uint16 old_total_length = CeilDiv(Train::From(old_head)->gcache.cached_total_length, TILE_SIZE) * TILE_SIZE;
+		uint16_t old_total_length = CeilDiv(Train::From(old_head)->gcache.cached_total_length, TILE_SIZE) * TILE_SIZE;
 
 		int num_units = 0; ///< Number of units in the chain
 		for (Train *w = Train::From(old_head); w != nullptr; w = w->GetNextUnit()) num_units++;

@@ -82,21 +82,21 @@ enum TropicZone {
 /**
  * The index/ID of a Tile.
  */
-struct TileIndex : StrongIntegralTypedef<uint32, TileIndex> {
-	using StrongIntegralTypedef<uint32, TileIndex>::StrongIntegralTypedef;
+struct TileIndex : StrongIntegralTypedef<uint32_t, TileIndex> {
+	using StrongIntegralTypedef<uint32_t, TileIndex>::StrongIntegralTypedef;
 
 	debug_inline constexpr TileIndex() = default;
 	debug_inline constexpr TileIndex(const TileIndex &o) = default;
 	debug_inline constexpr TileIndex(TileIndex &&o) = default;
 
-	debug_inline constexpr TileIndex(const uint32 &value) : StrongIntegralTypedef<uint32, TileIndex>(value) {}
+	debug_inline constexpr TileIndex(const uint32_t &value) : StrongIntegralTypedef<uint32_t, TileIndex>(value) {}
 
 	debug_inline constexpr TileIndex &operator =(const TileIndex &rhs) { this->value = rhs.value; return *this; }
 	debug_inline constexpr TileIndex &operator =(TileIndex &&rhs) { this->value = std::move(rhs.value); return *this; }
-	debug_inline constexpr TileIndex &operator =(const uint32 &rhs) { this->value = rhs; return *this; }
+	debug_inline constexpr TileIndex &operator =(const uint32_t &rhs) { this->value = rhs; return *this; }
 
 	/** Implicit conversion to the base type for e.g. array indexing. */
-	debug_inline constexpr operator uint32() const { return this->value; }
+	debug_inline constexpr operator uint32_t() const { return this->value; }
 
 	/* Import operators from the base class into our overload set. */
 	using StrongIntegralTypedef::operator ==;
@@ -106,15 +106,15 @@ struct TileIndex : StrongIntegralTypedef<uint32, TileIndex> {
 
 	/* Add comparison and add/sub for signed ints as e.g. 0 is signed and will
 	 * match ambiguously when only unsigned overloads are present. */
-	constexpr bool operator ==(int rhs) const { return this->value == (uint32)rhs; }
-	constexpr bool operator !=(int rhs) const { return this->value != (uint32)rhs; }
-	constexpr TileIndex operator +(int rhs) const { return { (uint32)(this->value + rhs) }; }
-	constexpr TileIndex operator -(int rhs) const { return { (uint32)(this->value - rhs) }; }
+	constexpr bool operator ==(int rhs) const { return this->value == (uint32_t)rhs; }
+	constexpr bool operator !=(int rhs) const { return this->value != (uint32_t)rhs; }
+	constexpr TileIndex operator +(int rhs) const { return { (uint32_t)(this->value + rhs) }; }
+	constexpr TileIndex operator -(int rhs) const { return { (uint32_t)(this->value - rhs) }; }
 };
 
 /**
  * The very nice invalid tile marker
  */
-static inline constexpr TileIndex INVALID_TILE = TileIndex{ (uint32)-1 };
+static inline constexpr TileIndex INVALID_TILE = TileIndex{ (uint32_t)-1 };
 
 #endif /* TILE_TYPE_H */

@@ -14,9 +14,9 @@
 #include "core/geometry_type.hpp"
 #include "zoom_type.h"
 
-typedef uint32 SpriteID;  ///< The number of a sprite, without mapping bits and colourtables
-typedef uint32 PaletteID; ///< The number of the palette
-typedef uint32 CursorID;  ///< The number of the cursor (sprite)
+typedef uint32_t SpriteID;  ///< The number of a sprite, without mapping bits and colourtables
+typedef uint32_t PaletteID; ///< The number of the palette
+typedef uint32_t CursorID;  ///< The number of the cursor (sprite)
 
 /** Combination of a palette sprite and a 'real' sprite */
 struct PalSpriteID {
@@ -157,14 +157,14 @@ struct DrawPixelInfo {
 
 /** Structure to access the alpha, red, green, and blue channels from a 32 bit number. */
 union Colour {
-	uint32 data; ///< Conversion of the channel information to a 32 bit number.
+	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
 	struct {
 #if defined(__EMSCRIPTEN__)
-		uint8 r, g, b, a;  ///< colour channels as used in browsers
+		uint8_t r, g, b, a;  ///< colour channels as used in browsers
 #elif TTD_ENDIAN == TTD_BIG_ENDIAN
-		uint8 a, r, g, b; ///< colour channels in BE order
+		uint8_t a, r, g, b; ///< colour channels in BE order
 #else
-		uint8 b, g, r, a; ///< colour channels in LE order
+		uint8_t b, g, r, a; ///< colour channels in LE order
 #endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 	};
 
@@ -175,7 +175,7 @@ union Colour {
 	 * @param b The channel for the blue colour.
 	 * @param a The channel for the alpha/transparency.
 	 */
-	Colour(uint8 r, uint8 g, uint8 b, uint8 a = 0xFF) :
+	Colour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) :
 #if defined(__EMSCRIPTEN__)
 		r(r), g(g), b(b), a(a)
 #elif TTD_ENDIAN == TTD_BIG_ENDIAN
@@ -195,7 +195,7 @@ union Colour {
 	}
 };
 
-static_assert(sizeof(Colour) == sizeof(uint32));
+static_assert(sizeof(Colour) == sizeof(uint32_t));
 
 
 /** Available font sizes */

@@ -20,7 +20,7 @@ CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex end_tile, Tile
 CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType railtype, Track track, bool auto_remove_signals);
 CommandCost CmdRemoveSingleRail(DoCommandFlag flags, TileIndex tile, Track track);
 CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir);
-CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8 num_dir_cycle, byte signals_copy);
+CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8_t num_dir_cycle, byte signals_copy);
 CommandCost CmdRemoveSingleSignal(DoCommandFlag flags, TileIndex tile, Track track);
 CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_start, RailType totype, bool diagonal);
 CommandCost CmdBuildSignalTrack(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool autofill, bool minimise_gaps, byte signal_density);

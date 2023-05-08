@@ -115,7 +115,7 @@ PACK_N(struct WAVE_DOWNLOAD {
 }, 2);
 
 struct PlaybackSegment {
-	uint32 start, end;
+	uint32_t start, end;
 	size_t start_block;
 	bool loop;
 };
@@ -722,7 +722,7 @@ static void MidiThreadProc()
 				REFERENCE_TIME playback_time = current_time - playback_start_time;
 				if (block.realtime * MIDITIME_TO_REFTIME > playback_time +  3 *_playback.preload_time * MS_TO_REFTIME) {
 					/* Stop the thread loop until we are at the preload time of the next block. */
-					next_timeout = Clamp(((int64)block.realtime * MIDITIME_TO_REFTIME - playback_time) / MS_TO_REFTIME - _playback.preload_time, 0, 1000);
+					next_timeout = Clamp(((int64_t)block.realtime * MIDITIME_TO_REFTIME - playback_time) / MS_TO_REFTIME - _playback.preload_time, 0, 1000);
 					Debug(driver, 9, "DMusic thread: Next event in {} ms (music {}, ref {})", next_timeout, block.realtime * MIDITIME_TO_REFTIME, playback_time);
 					break;
 				}

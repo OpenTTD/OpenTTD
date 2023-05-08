@@ -168,7 +168,7 @@ WidgetDimensions WidgetDimensions::scaled = {};
  */
 static inline RectPadding ScaleGUITrad(const RectPadding &r)
 {
-	return {(uint8)ScaleGUITrad(r.left), (uint8)ScaleGUITrad(r.top), (uint8)ScaleGUITrad(r.right), (uint8)ScaleGUITrad(r.bottom)};
+	return {(uint8_t)ScaleGUITrad(r.left), (uint8_t)ScaleGUITrad(r.top), (uint8_t)ScaleGUITrad(r.right), (uint8_t)ScaleGUITrad(r.bottom)};
 }
 
 /**
@@ -537,7 +537,7 @@ static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colo
  * @param resize_x Matrix resize unit size.
  * @param resize_y Matrix resize unit size.
  */
-static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint16 data, uint resize_x, uint resize_y)
+static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint16_t data, uint resize_x, uint resize_y)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
@@ -615,8 +615,8 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	/* track positions. These fractions are based on original 1x dimensions, but scale better. */
 	int left  = r.left + r.Width() * 3 / 11; /*  left track is positioned 3/11ths from the left */
 	int right = r.left + r.Width() * 8 / 11; /* right track is positioned 8/11ths from the left */
-	const uint8 bl = WidgetDimensions::scaled.bevel.left;
-	const uint8 br = WidgetDimensions::scaled.bevel.right;
+	const uint8_t bl = WidgetDimensions::scaled.bevel.left;
+	const uint8_t br = WidgetDimensions::scaled.bevel.right;
 
 	/* draw shaded lines */
 	GfxFillRect(left - bl,  r.top + height, left       - 1, r.bottom - height, c1);
@@ -654,8 +654,8 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	/* track positions. These fractions are based on original 1x dimensions, but scale better. */
 	int top    = r.top + r.Height() * 3 / 11; /*    top track is positioned 3/11ths from the top */
 	int bottom = r.top + r.Height() * 8 / 11; /* bottom track is positioned 8/11ths from the top */
-	const uint8 bt = WidgetDimensions::scaled.bevel.top;
-	const uint8 bb = WidgetDimensions::scaled.bevel.bottom;
+	const uint8_t bt = WidgetDimensions::scaled.bevel.top;
+	const uint8_t bb = WidgetDimensions::scaled.bevel.bottom;
 
 	/* draw shaded lines */
 	GfxFillRect(r.left + width, top - bt,    r.right - width, top         - 1, c1);
@@ -1109,7 +1109,7 @@ void NWidgetResizeBase::SetMinimalSizeAbsolute(uint min_x, uint min_y)
  * @param spacing   Extra unscaled spacing (eg WidgetDimensions::unscaled.framerect.Vertical()) of the widget.
  * @param size      Font size of text.
  */
-void NWidgetResizeBase::SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size)
+void NWidgetResizeBase::SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, FontSize size)
 {
 	this->uz_text_lines = min_lines;
 	this->uz_text_spacing = spacing;
@@ -1165,7 +1165,7 @@ void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, ui
  * @param widget_data Data component of the widget. @see Widget::data
  * @param tool_tip    Tool tip of the widget. @see Widget::tooltips
  */
-NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y)
+NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y)
 {
 	this->colour = colour;
 	this->index = -1;
@@ -1192,7 +1192,7 @@ void NWidgetCore::SetIndex(int index)
  * @param widget_data Data to use.
  * @param tool_tip    Tool tip string to use.
  */
-void NWidgetCore::SetDataTip(uint32 widget_data, StringID tool_tip)
+void NWidgetCore::SetDataTip(uint32_t widget_data, StringID tool_tip)
 {
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
@@ -1454,7 +1454,7 @@ void NWidgetPIPContainer::AdjustPaddingForZoom()
  * @param pip_post  Additional space after the last child widget (below for the
  *                  vertical container, at the right for the horizontal container).
  */
-void NWidgetPIPContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
+void NWidgetPIPContainer::SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post)
 {
 	this->uz_pip_pre = pip_pre;
 	this->uz_pip_inter = pip_inter;
@@ -2141,7 +2141,7 @@ void NWidgetBackground::Add(NWidgetBase *nwid)
  *                  vertical container, at the right for the horizontal container).
  * @note Using this function implies that the widget has (or will have) child widgets.
  */
-void NWidgetBackground::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
+void NWidgetBackground::SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post)
 {
 	if (this->child == nullptr) {
 		this->child = new NWidgetVertical();
@@ -2177,7 +2177,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		if (this->type == WWT_FRAME) {
 			/* Account for the size of the frame's text if that exists */
 			this->child->padding     = WidgetDimensions::scaled.frametext;
-			this->child->padding.top = std::max<uint8>(WidgetDimensions::scaled.frametext.top, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.frametext.top / 2 : 0);
+			this->child->padding.top = std::max<uint8_t>(WidgetDimensions::scaled.frametext.top, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.frametext.top / 2 : 0);
 
 			this->smallest_x += this->child->padding.Horizontal();
 			this->smallest_y += this->child->padding.Vertical();
@@ -2336,7 +2336,7 @@ void NWidgetViewport::Draw(const Window *w)
  * @param follow_flags Type of viewport, see #InitializeWindowViewport().
  * @param zoom         Zoom level.
  */
-void NWidgetViewport::InitializeViewport(Window *w, uint32 follow_flags, ZoomLevel zoom)
+void NWidgetViewport::InitializeViewport(Window *w, uint32_t follow_flags, ZoomLevel zoom)
 {
 	InitializeWindowViewport(w, this->pos_x, this->pos_y, this->current_x, this->current_y, follow_flags, zoom);
 }
@@ -2389,7 +2389,7 @@ int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, in
  * @param key_code      The pressed key code.
  * @return ES_NOT_HANDLED when another key than the 6 specific keys was pressed, otherwise ES_HANDLED.
  */
-EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16 keycode) const
+EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16_t keycode) const
 {
 	int new_pos = list_position;
 	switch (keycode) {
@@ -2586,7 +2586,7 @@ Dimension NWidgetLeaf::dropdown_dimension   = {0, 0};
  * @param data   Data of the widget.
  * @param tip    Tooltip of the widget.
  */
-NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
+NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32_t data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
 {
 	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_DEFSIZEBOX || tp == WWT_DEBUGBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
 	if (index >= 0) this->SetIndex(index);

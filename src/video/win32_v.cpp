@@ -123,7 +123,7 @@ static uint MapWindowsKey(uint sym)
 }
 
 /** Colour depth to use for fullscreen display modes. */
-uint8 VideoDriver_Win32Base::GetFullscreenBpp()
+uint8_t VideoDriver_Win32Base::GetFullscreenBpp()
 {
 	/* Check modes for the relevant fullscreen bpp */
 	return _support8bpp != S8BPP_HARDWARE ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
@@ -239,9 +239,9 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 }
 
 /** Forward key presses to the window system. */
-static LRESULT HandleCharMsg(uint keycode, WChar charcode)
+static LRESULT HandleCharMsg(uint keycode, char32_t charcode)
 {
-	static WChar prev_char = 0;
+	static char32_t prev_char = 0;
 
 	/* Did we get a lead surrogate? If yes, store and exit. */
 	if (Utf16IsLeadSurrogate(charcode)) {
@@ -399,7 +399,7 @@ static void CancelIMEComposition(HWND hwnd)
 
 LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	static uint32 keycode = 0;
+	static uint32_t keycode = 0;
 	static bool console = false;
 
 	VideoDriver_Win32Base *video_driver = (VideoDriver_Win32Base *)GetWindowLongPtr(hwnd, GWLP_USERDATA);
@@ -471,8 +471,8 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			return 0;
 
 		case WM_MOUSEMOVE: {
-			int x = (int16)LOWORD(lParam);
-			int y = (int16)HIWORD(lParam);
+			int x = (int16_t)LOWORD(lParam);
+			int y = (int16_t)HIWORD(lParam);
 
 			/* If the mouse was not in the window and it has moved it means it has
 			 * come into the window, so start drawing the mouse. Also start
@@ -492,8 +492,8 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				 * end, we only care about the current mouse position and not bygone events. */
 				MSG m;
 				while (PeekMessage(&m, hwnd, WM_MOUSEMOVE, WM_MOUSEMOVE, PM_REMOVE | PM_NOYIELD | PM_QS_INPUT)) {
-					x = (int16)LOWORD(m.lParam);
-					y = (int16)HIWORD(m.lParam);
+					x = (int16_t)LOWORD(m.lParam);
+					y = (int16_t)HIWORD(m.lParam);
 				}
 			}
 
@@ -793,7 +793,7 @@ static const Dimension default_resolutions[] = {
 	{ 1920, 1200 }
 };
 
-static void FindResolutions(uint8 bpp)
+static void FindResolutions(uint8_t bpp)
 {
 	_resolutions.clear();
 

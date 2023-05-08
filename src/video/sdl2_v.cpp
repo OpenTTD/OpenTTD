@@ -166,7 +166,7 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 		SDL_Surface *icon = SDL_LoadBMP(icon_path.c_str());
 		if (icon != nullptr) {
 			/* Get the colourkey, which will be magenta */
-			uint32 rgbmap = SDL_MapRGB(icon->format, 255, 0, 255);
+			uint32_t rgbmap = SDL_MapRGB(icon->format, 255, 0, 255);
 
 			SDL_SetColorKey(icon, SDL_TRUE, rgbmap);
 			SDL_SetWindowIcon(this->sdl_window, icon);
@@ -302,7 +302,7 @@ static const SDLVkMapping _vk_mapping[] = {
 	AS(SDLK_PERIOD,  WKC_PERIOD)
 };
 
-static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, WChar *character)
+static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 {
 	const SDLVkMapping *map;
 	uint key = 0;
@@ -440,7 +440,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
 				if (ev.key.repeat == 0) ToggleFullScreen(!_fullscreen);
 			} else {
-				WChar character;
+				char32_t character;
 
 				uint keycode = ConvertSdlKeyIntoMy(&ev.key.keysym, &character);
 				// Only handle non-text keys here. Text is handled in
@@ -470,7 +470,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 			uint keycode = ConvertSdlKeycodeIntoMy(kc);
 
 			if (keycode == WKC_BACKQUOTE && FocusedWindowIsConsole()) {
-				WChar character;
+				char32_t character;
 				Utf8Decode(&character, ev.text.text);
 				HandleKeypress(keycode, character);
 			} else {
@@ -575,7 +575,7 @@ void VideoDriver_SDL_Base::Stop()
 
 void VideoDriver_SDL_Base::InputLoop()
 {
-	uint32 mod = SDL_GetModState();
+	uint32_t mod = SDL_GetModState();
 	const Uint8 *keys = SDL_GetKeyboardState(nullptr);
 
 	bool old_ctrl_pressed = _ctrl_pressed;

@@ -8,7 +8,7 @@
 /** @file track_land.h Sprites to use and how to display them for train depot tiles. */
 
 #define TILE_SEQ_LINE(img, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 23, {img, PAL_NONE} },
-#define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
+#define TILE_SEQ_END() { (int8_t)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 
 static const DrawTileSeqStruct _depot_gfx_NE[] = {

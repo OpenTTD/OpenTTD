@@ -56,7 +56,7 @@ struct STPEChunkHandler : ChunkHandler {
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_story_page_elements_desc, _story_page_elements_sl_compat);
 
 		int index;
-		uint32 max_sort_value = 0;
+		uint32_t max_sort_value = 0;
 		while ((index = SlIterateArray()) != -1) {
 			StoryPageElement *s = new (index) StoryPageElement();
 			SlObject(s, slt);
@@ -98,7 +98,7 @@ struct STPAChunkHandler : ChunkHandler {
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_story_pages_desc, _story_pages_sl_compat);
 
 		int index;
-		uint32 max_sort_value = 0;
+		uint32_t max_sort_value = 0;
 		while ((index = SlIterateArray()) != -1) {
 			StoryPage *s = new (index) StoryPage();
 			SlObject(s, slt);

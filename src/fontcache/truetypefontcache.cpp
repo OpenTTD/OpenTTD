@@ -165,7 +165,7 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 	return this->InternalGetGlyph(key, GetFontAAState(this->fs));
 }
 
-const void *TrueTypeFontCache::GetFontTable(uint32 tag, size_t &length)
+const void *TrueTypeFontCache::GetFontTable(uint32_t tag, size_t &length)
 {
 	const auto iter = this->font_tables.find(tag);
 	if (iter != this->font_tables.end()) {

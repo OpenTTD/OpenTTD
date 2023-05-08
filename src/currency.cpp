@@ -120,9 +120,9 @@ byte GetNewgrfCurrencyIdConverted(byte grfcurr_id)
  * get a mask of the allowed currencies depending on the year
  * @return mask of currencies
  */
-uint64 GetMaskOfAllowedCurrencies()
+uint64_t GetMaskOfAllowedCurrencies()
 {
-	uint64 mask = 0LL;
+	uint64_t mask = 0LL;
 	uint i;
 
 	for (i = 0; i < CURRENCY_END; i++) {

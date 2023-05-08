@@ -30,7 +30,7 @@ char *GetMusicCatEntryName(const std::string &filename, size_t entrynum)
 	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
 
 	RandomAccessFile file(filename, BASESET_DIR);
-	uint32 ofs = file.ReadDword();
+	uint32_t ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
 	if (entrynum < entry_count) {
 		file.SeekTo(entrynum * 8, SEEK_SET);
@@ -58,7 +58,7 @@ byte *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t 
 	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
 
 	RandomAccessFile file(filename, BASESET_DIR);
-	uint32 ofs = file.ReadDword();
+	uint32_t ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
 	if (entrynum < entry_count) {
 		file.SeekTo(entrynum * 8, SEEK_SET);

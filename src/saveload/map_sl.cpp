@@ -18,8 +18,8 @@
 
 #include "../safeguards.h"
 
-static uint32 _map_dim_x;
-static uint32 _map_dim_y;
+static uint32_t _map_dim_x;
+static uint32_t _map_dim_y;
 
 static const SaveLoad _map_desc[] = {
 	SLEG_CONDVAR("dim_x", _map_dim_x, SLE_UINT32, SLV_6, SL_MAX_VERSION),
@@ -152,7 +152,7 @@ struct MAP2ChunkHandler : ChunkHandler {
 
 	void Load() const override
 	{
-		std::array<uint16, MAP_SL_BUF_SIZE> buf;
+		std::array<uint16_t, MAP_SL_BUF_SIZE> buf;
 		TileIndex size = Map::Size();
 
 		for (TileIndex i = 0; i != size;) {
@@ -166,10 +166,10 @@ struct MAP2ChunkHandler : ChunkHandler {
 
 	void Save() const override
 	{
-		std::array<uint16, MAP_SL_BUF_SIZE> buf;
+		std::array<uint16_t, MAP_SL_BUF_SIZE> buf;
 		TileIndex size = Map::Size();
 
-		SlSetLength(size * sizeof(uint16));
+		SlSetLength(size * sizeof(uint16_t));
 		for (TileIndex i = 0; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m2();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);
@@ -330,7 +330,7 @@ struct MAP8ChunkHandler : ChunkHandler {
 
 	void Load() const override
 	{
-		std::array<uint16, MAP_SL_BUF_SIZE> buf;
+		std::array<uint16_t, MAP_SL_BUF_SIZE> buf;
 		TileIndex size = Map::Size();
 
 		for (TileIndex i = 0; i != size;) {
@@ -341,10 +341,10 @@ struct MAP8ChunkHandler : ChunkHandler {
 
 	void Save() const override
 	{
-		std::array<uint16, MAP_SL_BUF_SIZE> buf;
+		std::array<uint16_t, MAP_SL_BUF_SIZE> buf;
 		TileIndex size = Map::Size();
 
-		SlSetLength(size * sizeof(uint16));
+		SlSetLength(size * sizeof(uint16_t));
 		for (TileIndex i = 0; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m8();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);

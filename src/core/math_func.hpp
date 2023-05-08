@@ -355,6 +355,6 @@ static inline int DivAwayFromZero(int a, uint b)
 	}
 }
 
-uint32 IntSqrt(uint32 num);
+uint32_t IntSqrt(uint32_t num);
 
 #endif /* MATH_FUNC_HPP */

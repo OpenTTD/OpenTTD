@@ -245,11 +245,11 @@ CommandCost CmdSetGoalCompleted(DoCommandFlag flags, GoalID goal, bool completed
  * @param text Text of the question.
  * @return the cost of this operation or an error
  */
-CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16 uniqueid, uint32 target, bool is_client, uint32 button_mask, GoalQuestionType type, const std::string &text)
+CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const std::string &text)
 {
-	static_assert(sizeof(uint32) >= sizeof(CompanyID));
+	static_assert(sizeof(uint32_t) >= sizeof(CompanyID));
 	CompanyID company = (CompanyID)target;
-	static_assert(sizeof(uint32) >= sizeof(ClientID));
+	static_assert(sizeof(uint32_t) >= sizeof(ClientID));
 	ClientID client = (ClientID)target;
 
 	static_assert(GOAL_QUESTION_BUTTON_COUNT < 29);
@@ -289,7 +289,7 @@ CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16 uniqueid, uint32 target,
  * @param button Button the company pressed
  * @return the cost of this operation or an error
  */
-CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16 uniqueid, uint8 button)
+CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16_t uniqueid, uint8_t button)
 {
 	if (button >= GOAL_QUESTION_BUTTON_COUNT) return CMD_ERROR;
 

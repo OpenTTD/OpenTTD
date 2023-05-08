@@ -59,10 +59,10 @@ WaterClass GetEffectiveWaterClass(TileIndex tile)
 	NOT_REACHED();
 }
 
-static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
+static const uint16_t _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 
 template <>
-bool IsValidImageIndex<VEH_SHIP>(uint8 image_index)
+bool IsValidImageIndex<VEH_SHIP>(uint8_t image_index)
 {
 	return image_index < lengthof(_ship_sprites);
 }
@@ -75,7 +75,7 @@ static inline TrackBits GetTileShipTrackStatus(TileIndex tile)
 static void GetShipIcon(EngineID engine, EngineImageType image_type, VehicleSpriteSeq *result)
 {
 	const Engine *e = Engine::Get(engine);
-	uint8 spritenum = e->u.ship.image_index;
+	uint8_t spritenum = e->u.ship.image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
@@ -127,7 +127,7 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, i
 
 void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const
 {
-	uint8 spritenum = this->spritenum;
+	uint8_t spritenum = this->spritenum;
 
 	if (image_type == EIT_ON_MAP) direction = this->rotation;
 
@@ -293,7 +293,7 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 
 void Ship::UpdateDeltaXY()
 {
-	static const int8 _delta_xy_table[8][4] = {
+	static const int8_t _delta_xy_table[8][4] = {
 		/* y_extent, x_extent, y_offs, x_offs */
 		{ 6,  6,  -3,  -3}, // N
 		{ 6, 32,  -3, -16}, // NE
@@ -305,7 +305,7 @@ void Ship::UpdateDeltaXY()
 		{32,  6, -16,  -3}, // NW
 	};
 
-	const int8 *bb = _delta_xy_table[this->rotation];
+	const int8_t *bb = _delta_xy_table[this->rotation];
 	this->x_offs        = bb[3];
 	this->y_offs        = bb[2];
 	this->x_extent      = bb[1];

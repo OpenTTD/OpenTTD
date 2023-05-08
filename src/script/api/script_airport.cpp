@@ -169,5 +169,5 @@
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
-	return (int64)GetMaintenanceCostFactor(type) * _price[PR_INFRASTRUCTURE_AIRPORT] >> 3;
+	return (int64_t)GetMaintenanceCostFactor(type) * _price[PR_INFRASTRUCTURE_AIRPORT] >> 3;
 }

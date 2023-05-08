@@ -14,7 +14,7 @@
 #include "spritecache.h"
 
 /** Glyphs are characters from a font. */
-typedef uint32 GlyphID;
+typedef uint32_t GlyphID;
 static const GlyphID SPRITE_GLYPH = 1U << 30;
 
 /** Font cache for basic fonts. */
@@ -78,7 +78,7 @@ public:
 	 * @param key The key to map to.
 	 * @param sprite The sprite that is being mapped.
 	 */
-	virtual void SetUnicodeGlyph(WChar key, SpriteID sprite) = 0;
+	virtual void SetUnicodeGlyph(char32_t key, SpriteID sprite) = 0;
 
 	/** Initialize the glyph map */
 	virtual void InitializeUnicodeGlyphMap() = 0;
@@ -111,7 +111,7 @@ public:
 	 * @param key The character.
 	 * @return The glyph ID used to draw the character.
 	 */
-	virtual GlyphID MapCharToGlyph(WChar key) = 0;
+	virtual GlyphID MapCharToGlyph(char32_t key) = 0;
 
 	/**
 	 * Read a font table from the font.
@@ -119,7 +119,7 @@ public:
 	 * @param length The length of the read data.
 	 * @return The loaded table data.
 	 */
-	virtual const void *GetFontTable(uint32 tag, size_t &length) = 0;
+	virtual const void *GetFontTable(uint32_t tag, size_t &length) = 0;
 
 	/**
 	 * Get the native OS font handle, if there is one.
@@ -164,7 +164,7 @@ public:
 };
 
 /** Map a SpriteID to the font size and key */
-static inline void SetUnicodeGlyph(FontSize size, WChar key, SpriteID sprite)
+static inline void SetUnicodeGlyph(FontSize size, char32_t key, SpriteID sprite)
 {
 	FontCache::Get(size)->SetUnicodeGlyph(key, sprite);
 }
@@ -185,14 +185,14 @@ static inline void ClearFontCache()
 }
 
 /** Get the Sprite for a glyph */
-static inline const Sprite *GetGlyph(FontSize size, WChar key)
+static inline const Sprite *GetGlyph(FontSize size, char32_t key)
 {
 	FontCache *fc = FontCache::Get(size);
 	return fc->GetGlyph(fc->MapCharToGlyph(key));
 }
 
 /** Get the width of a glyph */
-static inline uint GetGlyphWidth(FontSize size, WChar key)
+static inline uint GetGlyphWidth(FontSize size, char32_t key)
 {
 	FontCache *fc = FontCache::Get(size);
 	return fc->GetGlyphWidth(fc->MapCharToGlyph(key));

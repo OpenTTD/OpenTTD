@@ -611,7 +611,7 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money transfer, Money income
  * @param string  String which is drawn on the map.
  * @return        TextEffectID to be used for future updates of the loading indicators.
  */
-TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID string)
+TextEffectID ShowFillingPercent(int x, int y, int z, uint8_t percent, StringID string)
 {
 	Point pt = RemapCoords(x, y, z);
 
@@ -626,7 +626,7 @@ TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID str
  * @param te_id   TextEffectID to be updated.
  * @param string  String which is printed.
  */
-void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID string)
+void UpdateFillingPercent(TextEffectID te_id, uint8_t percent, StringID string)
 {
 	assert(string != STR_NULL);
 
@@ -676,7 +676,7 @@ struct TooltipsWindow : public Window
 		CLRBITS(this->flags, WF_WHITE_BORDER);
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number) override
 	{
 		/* Find the free screen space between the main toolbar at the top, and the statusbar at the bottom.
 		 * Add a fixed distance 2 so the tooltip floats free from both bars.
@@ -1174,7 +1174,7 @@ struct QueryWindow : public Window {
 		}
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress(char32_t key, uint16_t keycode) override
 	{
 		/* ESC closes the window, Enter confirms the action */
 		switch (keycode) {

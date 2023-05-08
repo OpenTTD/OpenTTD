@@ -140,7 +140,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, int widge
 			/* Draw the % complete with a bar and a text */
 			DrawFrameRect(r, COLOUR_GREY, FR_BORDERONLY | FR_LOWERED);
 			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
-			DrawFrameRect(ir.WithWidth((uint64)ir.Width() * this->downloaded_bytes / this->total_bytes, false), COLOUR_MAUVE, FR_NONE);
+			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, false), COLOUR_MAUVE, FR_NONE);
 			SetDParam(0, this->downloaded_bytes);
 			SetDParam(1, this->total_bytes);
 			SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
@@ -873,7 +873,7 @@ public:
 		}
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress(char32_t key, uint16_t keycode) override
 	{
 		if (this->vscroll->UpdateListPositionOnKeyPress(this->list_pos, keycode) == ES_NOT_HANDLED) {
 			switch (keycode) {

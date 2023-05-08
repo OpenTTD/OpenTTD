@@ -735,7 +735,7 @@ public:
 		}
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress(char32_t key, uint16_t keycode) override
 	{
 		if (keycode == WKC_ESC) {
 			this->Close();

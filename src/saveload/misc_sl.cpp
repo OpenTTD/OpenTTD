@@ -27,7 +27,7 @@
 #include "../safeguards.h"
 
 extern TileIndex _cur_tileloop_tile;
-extern uint16 _disaster_delay;
+extern uint16_t _disaster_delay;
 extern byte _trees_tick_ctr;
 extern std::string _savegame_id;
 

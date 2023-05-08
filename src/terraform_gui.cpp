@@ -258,7 +258,7 @@ struct TerraformToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number) override
 	{
 		Point pt = GetToolbarAlignedWindowPosition(sm_width);
 		pt.y += sm_height;
@@ -438,7 +438,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, bool mode)
 	}
 }
 
-static const int8 _multi_terraform_coords[][2] = {
+static const int8_t _multi_terraform_coords[][2] = {
 	{  0, -2},
 	{  4,  0}, { -4,  0}, {  0,  2},
 	{ -8,  2}, { -4,  4}, {  0,  6}, {  4,  4}, {  8,  2},
@@ -570,7 +570,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		int center_y = RoundDivSU(r.top + r.bottom, 2);
 
 		int n = _terraform_size * _terraform_size;
-		const int8 *coords = &_multi_terraform_coords[0][0];
+		const int8_t *coords = &_multi_terraform_coords[0][0];
 
 		assert(n != 0);
 		do {

@@ -71,11 +71,11 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type);
  * @param type Type of vehicle for parameter.
  * @return Bit-packed velocity and vehicle type, for use with SetDParam().
  */
-static inline int64 PackVelocity(uint speed, VehicleType type)
+static inline int64_t PackVelocity(uint speed, VehicleType type)
 {
 	/* Vehicle type is a byte, so packed into the top 8 bits of the 64-bit
 	 * parameter, although only values from 0-3 are relevant. */
-	return speed | (static_cast<uint64>(type) << 56);
+	return speed | (static_cast<uint64_t>(type) << 56);
 }
 
 void SetDParam(size_t n, uint64_t v);

@@ -15,7 +15,7 @@
 #include "station_type.h"
 #include "industry_type.h"
 
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1 = NR_NONE, uint32 ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32 ref2 = UINT32_MAX, const NewsAllocatedData *data = nullptr);
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1 = NR_NONE, uint32_t ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32_t ref2 = UINT32_MAX, const NewsAllocatedData *data = nullptr);
 
 static inline void AddCompanyNewsItem(StringID string, CompanyNewsInformation *cni)
 {
