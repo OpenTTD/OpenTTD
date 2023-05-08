@@ -53,7 +53,7 @@
 static RailType _cur_railtype;               ///< Rail type of the current build-rail toolbar.
 static bool _remove_button_clicked;          ///< Flag whether 'remove' toggle-button is currently enabled
 static DiagDirection _build_depot_direction; ///< Currently selected depot direction
-static uint16_t _waypoint_count = 1;             ///< Number of waypoint types
+static uint16_t _waypoint_count = 1;         ///< Number of waypoint types
 static uint16_t _cur_waypoint_type;          ///< Currently selected waypoint type
 static bool _convert_signal_button;          ///< convert signal button in the signal GUI pressed
 static SignalVariant _cur_signal_variant;    ///< set the signal variant (for signal GUI)
