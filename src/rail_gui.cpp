@@ -1219,7 +1219,7 @@ public:
 					StationClass *stclass = StationClass::Get(station_class);
 					for (uint j = 0; j < stclass->GetSpecCount(); j++) {
 						const StationSpec *statspec = stclass->GetSpec(j);
-						SetDParam(0, (statspec != nullptr && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT);
+						SetDParam(0, (statspec != nullptr && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT_STATION);
 						d = maxdim(d, GetStringBoundingBox(str));
 					}
 				}
@@ -1323,7 +1323,7 @@ public:
 	{
 		if (widget == WID_BRAS_SHOW_NEWST_TYPE) {
 			const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type);
-			SetDParam(0, (statspec != nullptr && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT);
+			SetDParam(0, (statspec != nullptr && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT_STATION);
 		}
 	}
 
