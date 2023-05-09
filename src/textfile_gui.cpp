@@ -70,11 +70,6 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 	this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
 }
 
-/* virtual */ TextfileWindow::~TextfileWindow()
-{
-	free(this->text);
-}
-
 /**
  * Get the total height of the content displayed in this window, if wrapping is disabled.
  * @return the height in pixels
@@ -199,9 +194,9 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 	return FS_MONO;
 }
 
-/* virtual */ const char *TextfileWindow::NextString()
+/* virtual */ std::optional<std::string_view> TextfileWindow::NextString()
 {
-	if (this->search_iterator >= this->lines.size()) return nullptr;
+	if (this->search_iterator >= this->lines.size()) return std::nullopt;
 
 	return this->lines[this->search_iterator++].text;
 }
@@ -344,48 +339,48 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	FILE *handle = FioFOpenFile(textfile, "rb", dir, &filesize);
 	if (handle == nullptr) return;
 
-	this->text = ReallocT(this->text, filesize);
-	size_t read = fread(this->text, 1, filesize, handle);
+	char *buf = MallocT<char>(filesize);
+	size_t read = fread(buf, 1, filesize, handle);
 	fclose(handle);
 
-	if (read != filesize) return;
+	if (read != filesize) {
+		free(buf);
+		return;
+	}
 
 #if defined(WITH_ZLIB)
 	/* In-place gunzip */
-	if (StrEndsWith(textfile, ".gz")) Gunzip((byte**)&this->text, &filesize);
+	if (StrEndsWith(textfile, ".gz")) Gunzip((byte**)&buf, &filesize);
 #endif
 
 #if defined(WITH_LIBLZMA)
 	/* In-place xunzip */
-	if (StrEndsWith(textfile, ".xz")) Xunzip((byte**)&this->text, &filesize);
+	if (StrEndsWith(textfile, ".xz")) Xunzip((byte**)&buf, &filesize);
 #endif
 
-	if (!this->text) return;
+	if (buf == nullptr) return;
 
-	/* Add space for trailing \0 */
-	this->text = ReallocT(this->text, filesize + 1);
-	this->text[filesize] = '\0';
-
-	/* Replace tabs and line feeds with a space since StrMakeValidInPlace removes those. */
-	for (char *p = this->text; *p != '\0'; p++) {
-		if (*p == '\t' || *p == '\r') *p = ' ';
-	}
+	std::string_view sv_buf(buf, filesize);
 
 	/* Check for the byte-order-mark, and skip it if needed. */
-	char *p = this->text + (strncmp(u8"\ufeff", this->text, 3) == 0 ? 3 : 0);
+	if (StrStartsWith(sv_buf, u8"\ufeff")) sv_buf.remove_prefix(3);
 
-	/* Make sure the string is a valid UTF-8 sequence. */
-	StrMakeValidInPlace(p, this->text + filesize, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
+	/* Replace any invalid characters with a question-mark. This copies the buf in the process. */
+	this->text = StrMakeValid(sv_buf, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE | SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	free(buf);
 
 	/* Split the string on newlines. */
+	std::string_view p(this->text);
 	int row = 0;
-	this->lines.emplace_back(row, p);
-	for (; *p != '\0'; p++) {
-		if (*p == '\n') {
-			*p = '\0';
-			this->lines.emplace_back(++row, p + 1);
-		}
+	auto next = p.find_first_of('\n');
+	while (next != std::string_view::npos) {
+		this->lines.emplace_back(row, p.substr(0, next));
+		p.remove_prefix(next + 1);
+
+		row++;
+		next = p.find_first_of('\n');
 	}
+	this->lines.emplace_back(row, p);
 
 	/* Calculate maximum text line length. */
 	uint max_length = 0;

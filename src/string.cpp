@@ -221,9 +221,14 @@ static void StrMakeValidInPlace(T &dst, const char *str, const char *last, Strin
 				str += len;
 				continue;
 			}
-			/* Replace the undesirable character with a question mark */
 			str += len;
-			if ((settings & SVS_REPLACE_WITH_QUESTION_MARK) != 0) *dst++ = '?';
+			if ((settings & SVS_REPLACE_TAB_CR_NL_WITH_SPACE) != 0 && (c == '\r' || c == '\n' || c == '\t')) {
+				/* Replace the tab, carriage return or newline with a space. */
+				*dst++ = ' ';
+			} else if ((settings & SVS_REPLACE_WITH_QUESTION_MARK) != 0) {
+				/* Replace the undesirable character with a question mark */
+				*dst++ = '?';
+			}
 		}
 	}
 
@@ -263,7 +268,7 @@ void StrMakeValidInPlace(char *str, StringValidationSettings settings)
  * @param str The string to validate.
  * @param settings The settings for the string validation.
  */
-std::string StrMakeValid(const std::string &str, StringValidationSettings settings)
+std::string StrMakeValid(std::string_view str, StringValidationSettings settings)
 {
 	auto buf = str.data();
 	auto last = buf + str.size();
