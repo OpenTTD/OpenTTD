@@ -52,7 +52,7 @@ private:
 	GamelogActionType action_type;
 	struct LoggedAction *current_action;
 
-	LoggedChange *Change(GamelogChangeType ct);
+	void Change(std::unique_ptr<LoggedChange> &&change);
 
 public:
 	Gamelog();
