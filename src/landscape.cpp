@@ -1378,11 +1378,9 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 		std::tie(found, main_river) = FlowRiver(spring, end, min_river_length);
 	} else if (count > 32) {
 		/* Maybe we can make a lake. Find the Nth of the considered tiles. */
-		TileIndex lakeCenter = 0;
-		int i = RandomRange(count - 1) + 1;
-		std::set<TileIndex>::const_iterator cit = marks.begin();
-		while (--i) cit++;
-		lakeCenter = *cit;
+		std::set<TileIndex>::const_iterator cit = marks.cbegin();
+		std::advance(cit, RandomRange(count - 1));
+		TileIndex lakeCenter = *cit;
 
 		if (IsValidTile(lakeCenter) &&
 				/* A river, or lake, can only be built on flat slopes. */
