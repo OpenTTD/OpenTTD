@@ -510,7 +510,7 @@ static inline void DrawText(const Rect &r, TextColour colour, StringID str, Stri
 {
 	Dimension d = GetStringBoundingBox(str, fs);
 	Point p = GetAlignedPosition(r, d, align);
-	if (str != STR_NULL) DrawString(r.left, r.right, p.y, str, colour, align, fs);
+	if (str != STR_NULL) DrawString(r.left, r.right, p.y, str, colour, align, false, fs);
 }
 
 /**
