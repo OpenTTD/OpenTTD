@@ -354,6 +354,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_EXTEND_ENTITY_MAPPING,              ///< 311  PR#10672 Extend entity mapping range.
 	SLV_DISASTER_VEH_STATE,                 ///< 312  PR#10798 Explicit storage of disaster vehicle state.
 	SLV_SAVEGAME_ID,                        ///< 313  PR#10719 Add an unique ID to every savegame (used to deduplicate surveys).
+	SLV_STRING_GAMELOG,                     ///< 314  PR#10801 Use std::string in gamelog.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -772,6 +773,18 @@ struct SaveLoadCompat {
 #define SLE_CONDARR(base, variable, type, length, from, to) SLE_GENERAL(SL_ARR, base, variable, type, length, from, to, 0)
 
 /**
+ * Storage of a fixed-size array of #SL_VAR elements in some savegame versions.
+ * @param base     Name of the class or struct containing the array.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param name     Field name for table chunks.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the array.
+ * @param from     First savegame version that has the array.
+ * @param to       Last savegame version that has the array.
+ */
+#define SLE_CONDARRNAME(base, variable, name, type, length, from, to) SLE_GENERAL_NAME(SL_ARR, name, base, variable, type, length, from, to, 0)
+
+/**
  * Storage of a string in some savegame versions.
  * @param base     Name of the class or struct containing the string.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -791,6 +804,17 @@ struct SaveLoadCompat {
  * @param to       Last savegame version that has the string.
  */
 #define SLE_CONDSSTR(base, variable, type, from, to) SLE_GENERAL(SL_STDSTR, base, variable, type, 0, from, to, 0)
+
+/**
+ * Storage of a \c std::string in some savegame versions.
+ * @param base     Name of the class or struct containing the string.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param name     Field name for table chunks.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the string.
+ * @param to       Last savegame version that has the string.
+ */
+#define SLE_CONDSSTRNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SL_STDSTR, name, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a list of #SL_REF elements in some savegame versions.
@@ -821,6 +845,15 @@ struct SaveLoadCompat {
 #define SLE_VAR(base, variable, type) SLE_CONDVAR(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
+ * Storage of a variable in every version of a savegame.
+ * @param base     Name of the class or struct containing the variable.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param name     Field name for table chunks.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
+#define SLE_VARNAME(base, variable, name, type) SLE_CONDVARNAME(base, variable, name, type, SL_MIN_VERSION, SL_MAX_VERSION)
+
+/**
  * Storage of a reference in every version of a savegame.
  * @param base     Name of the class or struct containing the variable.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -838,6 +871,16 @@ struct SaveLoadCompat {
 #define SLE_ARR(base, variable, type, length) SLE_CONDARR(base, variable, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
+ * Storage of fixed-size array of #SL_VAR elements in every version of a savegame.
+ * @param base     Name of the class or struct containing the array.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param name     Field name for table chunks.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the array.
+ */
+#define SLE_ARRNAME(base, variable, name, type, length) SLE_CONDARRNAME(base, variable, name, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
+
+/**
  * Storage of a string in every savegame version.
  * @param base     Name of the class or struct containing the string.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -853,6 +896,15 @@ struct SaveLoadCompat {
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLE_SSTR(base, variable, type) SLE_CONDSSTR(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
+
+/**
+ * Storage of a \c std::string in every savegame version.
+ * @param base     Name of the class or struct containing the string.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param name     Field name for table chunks.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
+#define SLE_SSTRNAME(base, variable, name, type) SLE_CONDSSTRNAME(base, variable, name, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a list of #SL_REF elements in every savegame version.
