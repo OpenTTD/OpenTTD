@@ -215,8 +215,8 @@ int Window::GetRowFromWidget(int clickpos, int widget, int padding, int line_hei
 {
 	const NWidgetBase *wid = this->GetWidget<NWidgetBase>(widget);
 	if (line_height < 0) line_height = wid->resize_y;
-	if (clickpos < (int)wid->pos_y + padding) return INT_MAX;
-	return (clickpos - (int)wid->pos_y - padding) / line_height;
+	if (clickpos < wid->pos_y + padding) return INT_MAX;
+	return (clickpos - wid->pos_y - padding) / line_height;
 }
 
 /**
@@ -741,7 +741,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		case WWT_RESIZEBOX:
 			/* When the resize widget is on the left size of the window
 			 * we assume that that button is used to resize to the left. */
-			StartWindowSizing(w, (int)nw->pos_x < (w->width / 2));
+			StartWindowSizing(w, nw->pos_x < (w->width / 2));
 			nw->SetDirty(w);
 			return;
 

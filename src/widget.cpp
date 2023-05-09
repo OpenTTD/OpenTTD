@@ -2000,11 +2000,11 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 	bool rtl = _current_text_dir == TD_RTL;
 
 	int widget_col = (rtl ?
-				-x + (int)this->pip_post + (int)this->pos_x + base_offs_x + (int)this->widget_w - 1 - (int)this->pip_inter :
-				 x - (int)this->pip_pre  - (int)this->pos_x - base_offs_x
+				-x + (int)this->pip_post + this->pos_x + base_offs_x + this->widget_w - 1 - (int)this->pip_inter :
+				 x - (int)this->pip_pre  - this->pos_x - base_offs_x
 			) / this->widget_w;
 
-	int widget_row = (y - base_offs_y - (int)this->pip_pre - (int)this->pos_y) / this->widget_h;
+	int widget_row = (y - base_offs_y - (int)this->pip_pre - this->pos_y) / this->widget_h;
 
 	int sub_wid = (widget_row + start_y) * this->widgets_x + start_x + widget_col;
 	if (sub_wid >= this->count) return nullptr;
