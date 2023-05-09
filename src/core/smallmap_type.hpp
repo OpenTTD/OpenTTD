@@ -40,11 +40,7 @@ struct SmallMap : std::vector<std::pair<T, U> > {
 	 */
 	inline typename std::vector<Pair>::const_iterator Find(const T &key) const
 	{
-		typename std::vector<Pair>::const_iterator it;
-		for (it = std::vector<Pair>::begin(); it != std::vector<Pair>::end(); it++) {
-			if (key == it->first) return it;
-		}
-		return it;
+		return std::find_if(std::vector<Pair>::begin(), std::vector<Pair>::end(), [&key](const Pair &pair) { return key == pair.first; });
 	}
 
 	/**
