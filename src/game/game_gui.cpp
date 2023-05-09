@@ -271,9 +271,7 @@ struct GSConfigWindow : public Window {
 				int num = (pt.y - r.top) / this->line_height + this->vscroll->GetPosition();
 				if (num >= (int)this->visible_settings.size()) break;
 
-				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
-				for (int i = 0; i < num; i++) it++;
-				const ScriptConfigItem config_item = **it;
+				const ScriptConfigItem &config_item = *this->visible_settings[num];
 				if (!this->IsEditableItem(config_item)) return;
 
 				if (this->clicked_row != num) {
@@ -423,9 +421,7 @@ private:
 
 	void SetValue(int value)
 	{
-		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
-		for (int i = 0; i < this->clicked_row; i++) it++;
-		const ScriptConfigItem config_item = **it;
+		const ScriptConfigItem &config_item = *this->visible_settings[this->clicked_row];
 		if (_game_mode == GM_NORMAL && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
 		this->gs_config->SetSetting(config_item.name, value);
 		this->SetDirty();
