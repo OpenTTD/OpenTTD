@@ -174,9 +174,9 @@ struct ScriptListWindow : public Window {
 		if (this->selected == -1) {
 			GetConfig(slot)->Change(nullptr);
 		} else {
-			ScriptInfoList::const_iterator it = this->info_list->begin();
-			for (int i = 0; i < this->selected; i++) it++;
-			GetConfig(slot)->Change((*it).second->GetName(), (*it).second->GetVersion());
+			ScriptInfoList::const_iterator it = this->info_list->cbegin();
+			std::advance(it, this->selected);
+			GetConfig(slot)->Change(it->second->GetName(), it->second->GetVersion());
 		}
 		InvalidateWindowData(WC_GAME_OPTIONS, slot == OWNER_DEITY ? WN_GAME_OPTIONS_GS : WN_GAME_OPTIONS_AI);
 		InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
