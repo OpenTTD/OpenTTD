@@ -374,6 +374,7 @@ jobs:
           mingw-w64-${{ matrix.arch }}-lzo2
           mingw-w64-${{ matrix.arch }}-libpng
           mingw-w64-${{ matrix.arch }}-lld
+          mingw-w64-${{ matrix.arch }}-ninja
 
     - name: Install OpenGFX
       shell: bash
@@ -396,24 +397,28 @@ jobs:
 
     - name: Build
       shell: msys2 {0}
+      env:
+        NINJA_STATUS: "[%f/%t -- %e] " # [finished_edges/total_edges -- elapsed_time], default value is "[%f/%t] "
       run: |
         mkdir build
         cd build
 
         echo "::group::CMake"
-        cmake .. -G"MSYS Makefiles" -DCMAKE_CXX_FLAGS="-fuse-ld=lld"
+        cmake .. \
+          -GNinja \
+          -DCMAKE_CXX_FLAGS="-fuse-ld=lld" \
+          # EOF
         echo "::endgroup::"
 
         echo "::group::Build"
-        echo "Running on $(nproc) cores"
-        cmake --build . -j $(nproc)
+        cmake --build .
         echo "::endgroup::"
 
     - name: Test
       shell: msys2 {0}
       run: |
         cd build
-        ctest -j $(nproc) --timeout 120
+        ctest --timeout 120
 
   check_annotations:
     name: Check Annotations
