@@ -932,8 +932,22 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copia el
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opcions de la partida
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :General
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Trieu la configuració general.
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Gràfics
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Trieu la configuració dels gràfics.
+STR_GAME_OPTIONS_TAB_SOUND                                      :So
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Escolliu la configuració de so i de música.
 
+STR_GAME_OPTIONS_VOLUME                                         :Volum
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectes de so
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0{NBSP}%
+STR_GAME_OPTIONS_VOLUME_25                                      :25{NBSP}%
+STR_GAME_OPTIONS_VOLUME_50                                      :50{NBSP}%
+STR_GAME_OPTIONS_VOLUME_75                                      :75{NBSP}%
+STR_GAME_OPTIONS_VOLUME_100                                     :100{NBSP}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Moneda
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecció de la unitat monetària
@@ -988,6 +1002,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Seleccio
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Inactiu
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Cada 10 minuts
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Cada 30 minuts
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Cada 60 minuts
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Cada 120 minuts
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecciona l'idioma de la interfície
@@ -1153,6 +1171,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplega
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plega-ho tot
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restableix tots els valors
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(cap explicació disponible)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor per defecte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipus de paràmetre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paràmetre del client (no s'emmagatzema a les partides; afecta a totes les partides)
@@ -1713,7 +1732,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quantitat de me
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA}{NBSP}MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Els intervals de revisions es mostren en percentatges: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escull si les revisions dels vehicles depenen del temps passat des de la darrera revisió o de la caiguda d'un cert percentatge de la fiabilitat màxima
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quan l'opció està activada, els vehicles intenten fer les seves revisions quan la seva fiabilitat baixa d'un cert percentatge de la fiabilitat màxima.{}{}Per exemple, si la fiabilitat màxima d'un vehicle és del 90{NBSP}% i l'interval de revisions és del 20{NBSP}%, el vehicle mirarà de fer la revisió quan arribi a un 72{NBSP}% de fiabilitat.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval per defecte de servei per als trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Estableix l'interval de revisió predeterminat pels nous ferrocarrils, si no hi ha un interval de revisió explícit pel vehicle
@@ -1918,6 +1937,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida inicial de ciutats: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida.
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualitza el graf de distribució cada {STRING}{NBSP}segon{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Temps entre actualitzacions de les arestes del graf de distribució. Cada vegada es calcularan els plans d'un dels components del graf. Això vol dir que un valor X d'aquesta opció no significa que es recalculi el graf sencer cada X segons. Només ho farà algun component. Com més curt sigui, farà falta més temps de CPU per a calcular-lo. Com més llarg sigui, més es trigarà a què la distribució de càrrega s'apliqui a les rutes noves.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Triga {STRING}{NBSP}segon{P 0:2 "" s} per a recalcular el graf de distribució
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Temps emprat per a cada actualització del component d'una aresta del graf. Quan comença el recàlcul, s'inicia un fil que pot executar-se durant aquests segons. Com més curt sigui, més probable és que el fil no acabi a temps. Llavors, la partida para fins que finalitzi, provocant una interrupció del desenvolupament de la partida. Com més llarg sigui, més es trigarà a actualitzar el graf de distribució quan es facin canvis de rutes.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mode de distribució per passatgers: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simètric" vol dir que aproximadament el mateix nombre de passatgers aniran des de l'estació A a la B que de B a A. "Asimètric" significa que un nombre arbitrari de passatgers poden anar en qualsevol dels dos sentits. "Manual" vol dir que no s'aplicarà una distribució automàtica pels passatgers.
@@ -3806,6 +3829,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envia in
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Substitueix vehicles
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envia a fer revisió
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Benefici enguany: {CURRENCY_LONG} (darrer any: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Envia a la cotxera
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Envia a la cotxera
@@ -4572,6 +4597,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :IA aleatòria
 STR_AI_CONFIG_NONE                                              :(cap)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Nombre màxim de competidors: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Interval entre l'inici de competidors: {ORANGE}{COMMA} minut{P "" s}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mou amunt
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Desplaça la IA seleccionada una posició cap amunt
@@ -5086,6 +5112,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}No hi ha
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible establir l'horari del vehicle...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Els vehicles només poden esperar a les estacions
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Aquest vehicle no para en aquesta estació
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... l'horari està incomplet.
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... massa senyals
@@ -5565,11 +5592,13 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
