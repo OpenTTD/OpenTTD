@@ -2935,8 +2935,8 @@ struct IndustryCargoesWindow : public Window {
 
 		const NWidgetBase *nwp = this->GetWidget<NWidgetBase>(WID_IC_PANEL);
 		int vpos = WidgetDimensions::scaled.frametext.top - WidgetDimensions::scaled.bevel.top - this->vscroll->GetPosition() * nwp->resize_y;
-		for (uint i = 0; i < this->fields.size(); i++) {
-			int row_height = (i == 0) ? CargoesField::small_height : CargoesField::normal_height;
+		int row_height = CargoesField::small_height;
+		for (const auto &field : this->fields) {
 			if (vpos + row_height >= 0) {
 				int xpos = left_pos;
 				int col, dir;
@@ -2948,13 +2948,14 @@ struct IndustryCargoesWindow : public Window {
 					dir = 1;
 				}
 				while (col >= 0 && col <= last_column) {
-					this->fields[i].columns[col].Draw(xpos, vpos);
+					field.columns[col].Draw(xpos, vpos);
 					xpos += (col & 1) ? CargoesField::cargo_field_width : CargoesField::industry_width;
 					col += dir;
 				}
 			}
 			vpos += row_height;
 			if (vpos >= height) break;
+			row_height = CargoesField::normal_height;
 		}
 	}
 
