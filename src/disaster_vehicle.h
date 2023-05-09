@@ -38,6 +38,7 @@ struct DisasterVehicle FINAL : public SpecializedVehicle<DisasterVehicle, VEH_DI
 	SpriteID image_override;            ///< Override for the default disaster vehicle sprite.
 	VehicleID big_ufo_destroyer_target; ///< The big UFO that this destroyer is supposed to bomb.
 	byte flags;                         ///< Flags about the state of the vehicle, @see AirVehicleFlags
+	uint16_t state;                     ///< Action stage of the disaster vehicle.
 
 	/** For use by saveload. */
 	DisasterVehicle() : SpecializedVehicleBase() {}
