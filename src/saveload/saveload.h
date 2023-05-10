@@ -389,6 +389,8 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_DEPOTID_BACKUP_ORDERS,              ///< 314  PR#XXXXX Backup orders are indexed through DepotIDs.
 
+	SLV_ALIGN_WATER_BITS,                   ///< 315  PR#XXXXX Align some water bits in the map array.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

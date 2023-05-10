@@ -246,7 +246,7 @@ the array so you can quickly see what is used and what is not.
       <td class="bits" rowspan=3><span class="free">OOOO OOOO OOOO OOOO</span></td>
       <td class="bits" rowspan=4><span class="free">OOOO OOOO</span></td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
-      <td class="bits"><span class="used" title="Water tile type: coast, clear, lock, depot">O<span class="usable">OO</span>O</span> <span class="free">OOO</span><span class="used" title="Sea shore flag">X</span></td>
+      <td class="bits"><span class="used" title="Water tile type: coast or water (00), lock (01), depot (10)">OO</span><span class="free">OO OOO</span><span class="used" title="Sea shore flag">X</span></td>
       <td class="bits" rowspan=4><span class="free">OOOO OOOO</span></td>
       <td class="bits" rowspan=4><span class="free">OOOO OOOO</td>
       <td class="bits" rowspan=4><span class="free">OOOO OOOO OOOO OOOO</span></td>
@@ -254,18 +254,18 @@ the array so you can quickly see what is used and what is not.
     <tr>
       <td class="caption">canal, river</td>
       <td class="bits"><span class="used" title="Canal/river random bits">XXXX XXXX</span></td>
-      <td class="bits"><span class="used" title="Water tile type: coast, clear, lock, depot">O<span class="usable">OO</span>O</span> <span class="free">OOOO</span></td>
+      <td class="bits"><span class="used" title="Water tile type: coast or water (00), lock (01), depot (10)">OO</span><span class="free">OO OOOO</span></td>
     </tr>
     <tr>
       <td class="caption">lock</td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
-      <td class="bits"><span class="used" title="Water tile type: coast, clear, lock, depot">O<span class="usable">OO</span>1</span> <span class="used" title="Lock part">XX</span> <span class="used" title="Lock orientation m5[1..0]">XX</span></td>
+      <td class="bits"><span class="used" title="Water tile type: coast or water (00), lock (01), depot (10)">O1</span><span class="free">OO</span><span class="used" title="Lock part">XX</span> <span class="used" title="Lock orientation m5[1..0]">XX</span></td>
     </tr>
     <tr>
       <td class="caption">shipdepot</td>
       <td class="bits"><span class="pool" title="Depot index on pool">XXXX XXXX XXXX XXXX</span></td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
-      <td class="bits"><span class="used" title="Water tile type: coast, clear, lock, depot">1<span class="usable">OOO</span></span> <span class="free">OO</span><span class="used" title="Depot axis">X</span> <span class="used" title="Depot part">X</span></td>
+      <td class="bits"><span class="used" title="Water tile type: coast or water (00), lock (01), depot (10)">1O</span><span class="free">OOOO</span><span class="used" title="Depot axis">X</span> <span class="used" title="Depot part">X</span></td>
     </tr>
     <tr>
       <td rowspan=2>8</td>
