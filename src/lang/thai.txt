@@ -190,38 +190,38 @@ STR_COLOUR_GREY                                                 :เทา
 STR_COLOUR_WHITE                                                :ขาว
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} ไมล์/ชม.
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} กม./ชม.
-STR_UNITS_VELOCITY_SI                                           :{COMMA} ม./วิ.
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} ไมล์/ชม.
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} กม./ชม.
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} ม./วิ.
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA} แรงม้า
-STR_UNITS_POWER_METRIC                                          :{COMMA} แรงม้า
-STR_UNITS_POWER_SI                                              :{COMMA} กิโลวัตต์
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL} แรงม้า
+STR_UNITS_POWER_METRIC                                          :{DECIMAL} แรงม้า
+STR_UNITS_POWER_SI                                              :{DECIMAL} กิโลวัตต์
 
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ตัน
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} ตัน
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} กิโลกรัม
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}ตัน
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL} ตัน
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL} กิโลกรัม
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ตัน
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ตัน
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} กิโลกรัม
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL} ตัน
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} ตัน
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} กิโลกรัม
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}แกลลอน
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} ลิตร
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} ลบ.ม.
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}แกลลอน
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL} ลิตร
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL} ลบ.ม.
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} แกลลอน
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} ลิตร
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลบ.ม.
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL} แกลลอน
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL} ลิตร
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} ลบ.ม.
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} ปอนด์
-STR_UNITS_FORCE_METRIC                                          :{COMMA} กิโลกรัม
-STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL} ปอนด์
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL} กิโลกรัม
+STR_UNITS_FORCE_SI                                              :{DECIMAL} กิโลนิวตัน
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ฟุต
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} เมตร
-STR_UNITS_HEIGHT_SI                                             :{COMMA} ม.
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ฟุต
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} เมตร
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL} ม.
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}คำกรอง:

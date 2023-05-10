@@ -189,27 +189,27 @@ STR_COLOUR_GREY                                                 :करडा
 STR_COLOUR_WHITE                                                :पांढरा
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} किमी / तास
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} किमी / तास
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hp
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}hp
 
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ट
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}ट
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} किलो
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}ट
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}ट
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL} किलो
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} टन
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} किलो
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} टन
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} किलो
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}गॅलन
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}लि
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}गॅलन
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}लि
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} लिटर
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL} लिटर
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
 
 
 

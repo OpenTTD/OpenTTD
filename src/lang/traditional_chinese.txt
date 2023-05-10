@@ -191,14 +191,14 @@ STR_COLOUR_WHITE                                                :白
 STR_COLOUR_RANDOM                                               :隨機
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}英里/小時
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}公里/小時
-STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}米/秒
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}英里/小時
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}公里/小時
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}米/秒
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}格/日
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}匹
-STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}匹
-STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}千瓦
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}匹
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}匹
+STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}千瓦
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}匹/短噸
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}匹/公噸
@@ -210,29 +210,29 @@ STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}千瓦/公噸
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}瓦/公斤
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}短噸
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}噸
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}公斤
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}短噸
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}噸
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}公斤
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}短噸
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}公噸
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}公斤
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}短噸
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}公噸
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}公斤
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}加侖
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}升
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}米³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}加侖
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}升
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}米³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}加侖
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}公升
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}立方米
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}加侖
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}公升
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}立方米
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}磅力
-STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}公斤力
-STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}千牛頓
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}磅力
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL}{NBSP}公斤力
+STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}千牛頓
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}英呎
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}米
-STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}公尺
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}英呎
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}米
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}公尺
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}篩選：

@@ -64,7 +64,7 @@ STR_COLOUR_RED                                                  :लाल
 
 # Units used in OpenTTD
 
-STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}hp
 
 
 
