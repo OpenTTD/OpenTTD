@@ -17,6 +17,9 @@
 #include "vehiclelist.h"
 #include "window_func.h"
 #include "depot_cmd.h"
+#include "strings_func.h"
+#include "landscape.h"
+#include "viewport_kdtree.h"
 #include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
@@ -60,6 +63,8 @@ CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::str
 	}
 
 	if (flags & DC_EXEC) {
+		/* _viewport_sign_kdtree does not need to be updated, only in-use depots can be renamed */
+
 		if (reset) {
 			d->name.clear();
 			MakeDefaultName(d);
@@ -75,6 +80,27 @@ CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::str
 		SetWindowDirty(GetWindowClassForVehicleType(d->veh_type), VehicleListIdentifier(VL_DEPOT_LIST, d->veh_type, d->owner, d->index).Pack());
 	}
 	return CommandCost();
+}
+
+/** Update the virtual coords needed to draw the depot sign. */
+void Depot::UpdateVirtCoord()
+{
+	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
+
+	pt.y -= 32 * ZOOM_BASE;
+
+	SetDParam(0, this->veh_type);
+	SetDParam(1, this->index);
+	this->sign.UpdatePosition(pt.x, pt.y, STR_VIEWPORT_DEPOT, STR_VIEWPORT_DEPOT_TINY);
+
+	SetWindowDirty(WC_VEHICLE_DEPOT, this->index);
+}
+
+/** Update the virtual coords needed to draw the depot sign for all depots. */
+void UpdateAllDepotVirtCoords()
+{
+	/* Only demolished depots have signs. */
+	for (Depot *d : Depot::Iterate()) if (!d->IsInUse()) d->UpdateVirtCoord();
 }
 
 /**

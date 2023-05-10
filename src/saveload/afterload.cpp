@@ -11,6 +11,7 @@
 #include "../void_map.h"
 #include "../signs_base.h"
 #include "../depot_base.h"
+#include "../depot_func.h"
 #include "../fios.h"
 #include "../gamelog_internal.h"
 #include "../network/network.h"
@@ -222,6 +223,7 @@ static inline RailType UpdateRailType(RailType rt, RailType min)
 void UpdateAllVirtCoords()
 {
 	UpdateAllStationVirtCoords();
+	UpdateAllDepotVirtCoords();
 	UpdateAllSignVirtCoords();
 	UpdateAllTownVirtCoords();
 	UpdateAllTextEffectVirtCoords();
