@@ -317,15 +317,15 @@ STR_COLOUR_WHITE                                                :Белый
 STR_COLOUR_RANDOM                                               :Случайный
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}мил{P я и ь}/ч
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}км/ч
-STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}м/с
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}мил{P я и ь}/ч
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}км/ч
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}м/с
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}кл./день
-STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}{NBSP}уз{P ел ла лов}
+STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}уз{P ел ла лов}
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}лс
-STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}лс
-STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}кВт
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}лс
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}лс
+STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}кВт
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}лс/т
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}лс/т
@@ -337,29 +337,29 @@ STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}кВт/т
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}Вт/кг
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP}т
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}т
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}кг
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}т
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}т
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}кг
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}тонн{P а ы ""}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}тонн{P а ы ""}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}кг
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}тонн{P а ы ""}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}тонн{P а ы ""}
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}кг
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}гал.
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}л
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}м³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}гал.
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}л
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}м³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}галлон{P "" а ов}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}литр{P "" а ов}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}м³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}галлон{P "" а ов}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}литр{P "" а ов}
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}м³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}фунт{P "" а ов}-силы
-STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}кгс
-STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}кН
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}фунт{P "" а ов}-силы
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL}{NBSP}кгс
+STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}кН
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}фут{P "" а ов}
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}м
-STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}м
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}фут{P "" а ов}
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}м
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фильтр:

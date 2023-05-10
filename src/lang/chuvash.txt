@@ -151,11 +151,11 @@ STR_COLOUR_GREY                                                 :Сӑрӑ
 STR_COLOUR_WHITE                                                :Шурӑ
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} мил/с
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/с
-STR_UNITS_VELOCITY_SI                                           :{COMMA} м/ҫ
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} мил/с
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} км/с
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} м/ҫ
 
-STR_UNITS_POWER_SI                                              :{COMMA}кВт
+STR_UNITS_POWER_SI                                              :{DECIMAL}кВт
 
 
 

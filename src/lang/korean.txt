@@ -192,15 +192,15 @@ STR_COLOUR_WHITE                                                :흰색
 STR_COLOUR_RANDOM                                               :무작위
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA}km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA}m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}mph
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}km/h
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL}m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}칸/일
-STR_UNITS_VELOCITY_KNOTS                                        :{COMMA}노트
+STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}노트
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}마력
-STR_UNITS_POWER_METRIC                                          :{COMMA}마력
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}마력
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}마력
+STR_UNITS_POWER_SI                                              :{DECIMAL}kW
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}마력/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}마력/t
@@ -212,29 +212,29 @@ STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}W/kg
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}톤
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}톤
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}톤
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}톤
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}갤런
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}갤런
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}갤런
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}리터
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}갤런
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}리터
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}파운드중
-STR_UNITS_FORCE_METRIC                                          :{COMMA}kgf
-STR_UNITS_FORCE_SI                                              :{COMMA}kN
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}파운드중
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL}kgf
+STR_UNITS_FORCE_SI                                              :{DECIMAL}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}피트
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA}m
-STR_UNITS_HEIGHT_SI                                             :{COMMA}m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}피트
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}m
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL}m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}검색:

@@ -190,40 +190,40 @@ STR_COLOUR_GREY                                                 :رمادي
 STR_COLOUR_WHITE                                                :ابيض
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}ميل/س
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}كم/س
-STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}م/ث
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}ميل/س
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}كم/س
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}م/ث
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}مربعات/ اليوم
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}حصان
-STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}حصان
-STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}ك واط
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}حصان
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}حصان
+STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}ك واط
 
 STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}{NBSP} طن
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}طن
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}كجم
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP} طن
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}طن
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}كجم
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}طن
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP} طن
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}كجم
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}طن
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP} طن
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}كجم
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}غال
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}ل
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}م3
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}غال
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}ل
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}م3
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}جالون
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP} لتر
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}م3
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}جالون
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP} لتر
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}م3
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}رطل قوة
-STR_UNITS_FORCE_METRIC                                          :{COMMA}{NBSP}كيلوغرام قوة
-STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP} كيلو نيوتن
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}رطل قوة
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL}{NBSP}كيلوغرام قوة
+STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP} كيلو نيوتن
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP} قدم
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}م
-STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP} متر
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP} قدم
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}م
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP} متر
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}تصفية القائمة:

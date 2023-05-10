@@ -190,31 +190,31 @@ STR_COLOUR_GREY                                                 :Grár
 STR_COLOUR_WHITE                                                :Hvítur
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mílur/klst
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/klst
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mílur/klst
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/klst
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hö.
-STR_UNITS_POWER_METRIC                                          :{COMMA}hö.
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hö.
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}hö.
+STR_UNITS_POWER_SI                                              :{DECIMAL}kW
 
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}tonn
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}tonn
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} tonn
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lítr{P i ar}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL} lítr{P i ar}
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
 
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Sía:

@@ -203,39 +203,39 @@ STR_COLOUR_GREY                                                 :אפור
 STR_COLOUR_WHITE                                                :לבן
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} מייל לשעה
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} קמ"ש
-STR_UNITS_VELOCITY_SI                                           :{COMMA} מטר\שניה
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} מייל לשעה
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} קמ"ש
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} מטר\שניה
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}כ"ס
-STR_UNITS_POWER_METRIC                                          :{COMMA}כ"ס
-STR_UNITS_POWER_SI                                              :{COMMA}קילו וואט
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}כ"ס
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}כ"ס
+STR_UNITS_POWER_SI                                              :{DECIMAL}קילו וואט
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ט'
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}ט'
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}ק"ג
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}ט'
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}ט'
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}ק"ג
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} טו{P ן נות}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{P 0 "טון " ""}{COMMA}{P "" " טונות"}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} ק"ג
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL} טו{P ן נות}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{P 0 "טון " ""}{DECIMAL}{P "" " טונות"}
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} ק"ג
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}גל'
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}ל'
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}מ'³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}גל'
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}ל'
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}מ'³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} גלו{P ן ים}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{P 0 "ליטר " ""}{COMMA}{P "" " ליטרים"}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ³מטר
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL} גלו{P ן ים}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{P 0 "ליטר " ""}{DECIMAL}{P "" " ליטרים"}
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} ³מטר
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} ליברות כוח
-STR_UNITS_FORCE_METRIC                                          :{COMMA} ק"ג
-STR_UNITS_FORCE_SI                                              :{COMMA} קילו ניוטן
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL} ליברות כוח
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL} ק"ג
+STR_UNITS_FORCE_SI                                              :{DECIMAL} קילו ניוטן
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} רגל
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} מ'
-STR_UNITS_HEIGHT_SI                                             :{COMMA} מ'
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} רגל
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} מ'
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL} מ'
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}מחרוזת סינון:

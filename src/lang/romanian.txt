@@ -191,14 +191,14 @@ STR_COLOUR_WHITE                                                :Alb
 STR_COLOUR_RANDOM                                               :Aleator
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}dale/zi
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cp
-STR_UNITS_POWER_METRIC                                          :{COMMA}cp
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}cp
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}cp
+STR_UNITS_POWER_SI                                              :{DECIMAL}kW
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}cp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}cp/t
@@ -210,29 +210,29 @@ STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA}{NBSP}{P tonă tone "de tone"}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}{P tonă tone "de tone"}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}{P tonă tone "de tone"}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}{P tonă tone "de tone"}
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}{P galon galoane "de galoane"}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}{P litru litri "de litri"}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}{P galon galoane "de galoane"}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}{P litru litri "de litri"}
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL} lbf
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL} kgf
+STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtru:

@@ -190,31 +190,31 @@ STR_COLOUR_GREY                                                 :سلیٹی
 STR_COLOUR_WHITE                                                :سفید
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} میل فی گھنٹھ
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} کلو میٹر فی گھنٹھ
-STR_UNITS_VELOCITY_SI                                           :{COMMA} میٹر فی سیکنڈ
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} میل فی گھنٹھ
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} کلو میٹر فی گھنٹھ
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} میٹر فی سیکنڈ
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ھارس پآور
-STR_UNITS_POWER_METRIC                                          :{COMMA} ھارس پآور
-STR_UNITS_POWER_SI                                              :{COMMA} کلو واٹ
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL} ھارس پآور
+STR_UNITS_POWER_METRIC                                          :{DECIMAL} ھارس پآور
+STR_UNITS_POWER_SI                                              :{DECIMAL} کلو واٹ
 
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} من
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL} من
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL} kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} من
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} من
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :I{NBSP}{COMMA}
-STR_UNITS_VOLUME_SHORT_SI                                       :{NBSP}{COMMA}کیوبک میٹر
+STR_UNITS_VOLUME_SHORT_METRIC                                   :I{NBSP}{DECIMAL}
+STR_UNITS_VOLUME_SHORT_SI                                       :{NBSP}{DECIMAL}کیوبک میٹر
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{NBSP}{COMMA} لیٹر
-STR_UNITS_VOLUME_LONG_SI                                        :{NBSP}{COMMA}کیوبک میٹر
+STR_UNITS_VOLUME_LONG_METRIC                                    :{NBSP}{DECIMAL} لیٹر
+STR_UNITS_VOLUME_LONG_SI                                        :{NBSP}{DECIMAL}کیوبک میٹر
 
-STR_UNITS_FORCE_SI                                              :{NBSP}{COMMA}کلو نیوٹن
+STR_UNITS_FORCE_SI                                              :{NBSP}{DECIMAL}کلو نیوٹن
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{NBSP}{COMMA} فٹ
-STR_UNITS_HEIGHT_SI                                             :{NBSP}{COMMA} میٹر
+STR_UNITS_HEIGHT_IMPERIAL                                       :{NBSP}{DECIMAL} فٹ
+STR_UNITS_HEIGHT_SI                                             :{NBSP}{DECIMAL} میٹر
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} چھان کے الفاظ درج کیجیئے
