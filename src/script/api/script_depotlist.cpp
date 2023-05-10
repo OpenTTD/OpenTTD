@@ -24,7 +24,7 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 	bool is_deity = ScriptCompanyMode::IsDeity();
 	CompanyID owner = ScriptObject::GetCompany();
 	for (const Depot *depot : Depot::Iterate()) {
-		if (depot->veh_type != (VehicleType)transport_type ||
+		if (!depot->IsInUse() || depot->veh_type != (VehicleType)transport_type ||
 			(!is_deity && ::GetTileOwner(depot->xy) != owner)) continue;
 
 		/* It only returns one hangar per airport. Anyway, new aircraft is always built in this hangar and not others. */

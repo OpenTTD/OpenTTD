@@ -17,6 +17,7 @@
 #include "vehiclelist.h"
 #include "window_func.h"
 #include "depot_cmd.h"
+#include "timer/timer_game_tick.h"
 
 #include "table/strings.h"
 
@@ -75,6 +76,20 @@ CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::str
 	}
 	return CommandCost();
 }
+
+void OnTick_Depot()
+{
+	if (_game_mode == GM_EDITOR) return;
+
+	/* Clean up demolished depots. */
+	for (Depot *d : Depot::Iterate()) {
+		if (d->IsInUse()) continue;
+		if ((TimerGameTick::counter + d->index) % Ticks::DEPOT_REMOVAL_TICKS != 0) continue;
+		if (--d->delete_ctr != 0) continue;
+		delete d;
+	}
+}
+
 
 /**
  * Look for or check depot to join to, building a new one if necessary.
