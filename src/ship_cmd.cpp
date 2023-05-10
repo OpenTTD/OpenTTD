@@ -187,14 +187,14 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 	const Depot *best_depot = nullptr;
 	uint best_dist_sq = std::numeric_limits<uint>::max();
 	for (const Depot *depot : Depot::Iterate()) {
+		if (depot->veh_type != VEH_SHIP || depot->owner != v->owner) continue;
+
 		const TileIndex tile = depot->xy;
-		if (IsShipDepotTile(tile) && IsTileOwner(tile, v->owner)) {
-			const uint dist_sq = DistanceSquare(tile, v->tile);
-			if (dist_sq < best_dist_sq && dist_sq <= max_distance * max_distance &&
-					visited_patch_hashes.count(CalculateWaterRegionPatchHash(GetWaterRegionPatchInfo(tile))) > 0) {
-				best_dist_sq = dist_sq;
-				best_depot = depot;
-			}
+		const uint dist_sq = DistanceSquare(tile, v->tile);
+		if (dist_sq < best_dist_sq && dist_sq <= max_distance * max_distance &&
+				visited_patch_hashes.count(CalculateWaterRegionPatchHash(GetWaterRegionPatchInfo(tile))) > 0) {
+			best_dist_sq = dist_sq;
+			best_depot = depot;
 		}
 	}
 
@@ -222,7 +222,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	}
 
 	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
-	v->SetDestTile(depot->xy);
+	v->SetDestTile(depot->GetBestDepotTile(v));
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
@@ -962,5 +962,5 @@ ClosestDepot Ship::FindClosestDepot()
 	const Depot *depot = FindClosestShipDepot(this, MAX_SHIP_DEPOT_SEARCH_DISTANCE);
 	if (depot == nullptr) return ClosestDepot();
 
-	return ClosestDepot(depot->xy, depot->index);
+	return ClosestDepot(depot->GetBestDepotTile(this), depot->index);
 }

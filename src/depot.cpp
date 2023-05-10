@@ -16,6 +16,7 @@
 #include "vehicle_gui.h"
 #include "vehiclelist.h"
 #include "command_func.h"
+#include "vehicle_base.h"
 
 #include "safeguards.h"
 
@@ -41,6 +42,15 @@ Depot::~Depot()
 	/* Clear the order backup. */
 	OrderBackup::Reset(this->index, false);
 
+	/* Make sure no vehicle is going to the old depot. */
+	for (Vehicle *v : Vehicle::Iterate()) {
+		if (v->First() != v) continue;
+		if (!v->current_order.IsType(OT_GOTO_DEPOT)) continue;
+		if (v->current_order.GetDestination() != this->index) continue;
+
+		v->current_order.MakeDummy();
+	}
+
 	/* Clear the depot from all order-lists */
 	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->index);
 
@@ -51,6 +61,29 @@ Depot::~Depot()
 	CloseWindowById(GetWindowClassForVehicleType(this->veh_type),
 			VehicleListIdentifier(VL_DEPOT_LIST,
 			this->veh_type, this->owner, this->index).Pack());
+}
+
+/**
+ * Of all the depot parts a depot has, return the best destination for a vehicle.
+ * @param v The vehicle.
+ * @param dep The depot vehicle \a v is heading for.
+ * @return The closest part of depot to vehicle v.
+ */
+TileIndex Depot::GetBestDepotTile(Vehicle *v) const
+{
+	assert(this->veh_type == v->type);
+	TileIndex best_depot = INVALID_TILE;
+	uint best_distance = UINT_MAX;
+
+	for (const auto &tile : this->depot_tiles) {
+		uint new_distance = DistanceManhattan(v->tile, tile);
+		if (new_distance < best_distance) {
+			best_depot = tile;
+			best_distance = new_distance;
+		}
+	}
+
+	return best_depot;
 }
 
 /**
