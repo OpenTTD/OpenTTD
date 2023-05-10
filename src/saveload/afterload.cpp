@@ -641,6 +641,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_DEPOTS_ALIGN_RAIL_DEPOT_BITS)) {
+		for (auto t : Map::Iterate()) {
+			if (IsTileType(t, MP_RAILWAY) && GetRailTileType(t) == 3) {
+				/* Change the rail type for depots from old value 3 to new value 2. */
+				SB(t.m5(), 6, 2, RAIL_TILE_DEPOT);
+			}
+		}
+	}
+
 	/* in version 2.1 of the savegame, town owner was unified. */
 	if (IsSavegameVersionBefore(SLV_2, 1)) ConvertTownOwner();
 
