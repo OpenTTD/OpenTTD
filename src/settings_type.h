@@ -574,6 +574,9 @@ struct StationSettings {
 struct DepotSettings {
 	uint8_t depot_spread;            ///< amount a depot may spread
 	bool    distant_join_depots;     ///< allow to join non-adjacent depots
+
+	bool    allow_no_comp_railtype_replacements;  ///< allow replacing rail vehicles even if rail type is not compatible
+	bool    allow_no_comp_roadtype_replacements;  ///< allow replacing road vehicles even if road type is not compatible
 };
 
 /** Default settings for vehicles. */

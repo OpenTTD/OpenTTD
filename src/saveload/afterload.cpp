@@ -804,6 +804,11 @@ bool AfterLoadGame()
 		_settings_game.depot.distant_join_depots = true;
 	}
 
+	if (IsSavegameVersionBefore(SLV_ALLOW_INCOMPATIBLE_REPLACEMENTS)) {
+		_settings_game.depot.allow_no_comp_railtype_replacements = false;
+		_settings_game.depot.allow_no_comp_roadtype_replacements = false;
+	}
+
 	/* Load the sprites */
 	GfxLoadSprites();
 	LoadStringWidthTable();
