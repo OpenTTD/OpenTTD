@@ -1056,7 +1056,9 @@ bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 
 	if (first) {
 		/* We are leaving a depot, but have to go to the exact same one; re-enter */
-		if (v->current_order.IsType(OT_GOTO_DEPOT) && v->tile == v->dest_tile) {
+		if (v->current_order.IsType(OT_GOTO_DEPOT) &&
+				IsRoadDepotTile(v->tile) &&
+				v->current_order.GetDestination() == GetDepotIndex(v->tile)) {
 			VehicleEnterDepot(v);
 			return true;
 		}

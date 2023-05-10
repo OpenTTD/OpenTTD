@@ -38,6 +38,7 @@
 #include "misc_cmd.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
+#include "depot_base.h"
 
 #include "table/strings.h"
 #include "table/train_sprites.h"
@@ -604,6 +605,65 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 	}
 }
 
+
+/**
+ * Check if a train chain is compatible with a depot tile.
+ * @param tile Tile to check.
+ * @param t Train chain to check.
+ * @return Whether the full train chain is compatible with this tile.
+ */
+bool IsVehicleCompatibleWithDepotTile(TileIndex tile, const Train *t)
+{
+	assert(IsRailDepotTile(tile));
+	for (const Train *u = t; u != nullptr; u = u->Next()) {
+		RailType rail_type = Engine::Get(u->engine_type)->u.rail.railtype;
+		if (!IsCompatibleRail(rail_type, GetRailType(tile))) return false;
+	}
+
+	return true;
+}
+
+/**
+ * Check if a depot has a tile where a train chain can be stored.
+ * @param tile A tile of the depot.
+ * @param t The train to check.
+ * @return True iff the depot has a tile compatible with the chain.
+ */
+bool HasCompatibleDepotTile(TileIndex tile, const Train *t)
+{
+	assert(IsRailDepotTile(tile));
+	Depot *dep = Depot::GetByTile(tile);
+
+	for (auto &depot_tile : dep->depot_tiles) {
+		if (IsVehicleCompatibleWithDepotTile(depot_tile, t)) return true;
+	}
+
+	return false;
+}
+
+/**
+ * Find a tile of a depot compatible with the rail type of a rail vehicle.
+ * @param depot_id Index of the depot.
+ * @param rail_type Rail type of the new vehicle.
+ * @param is_engine Whether the vehicle is an engine.
+ * @return A compatible tile of the depot or INVALID_TILE if no compatible tile is found.
+ */
+TileIndex FindCompatibleDepotTile(DepotID depot_id, RailType rail_type, bool is_engine)
+{
+	assert(Depot::IsValidID(depot_id));
+	Depot *depot = Depot::Get(depot_id);
+
+	for (auto &dep_tile : depot->depot_tiles) {
+		if (is_engine) {
+			if (HasPowerOnRail(rail_type, GetRailType(dep_tile))) return dep_tile;
+		} else {
+			if (IsCompatibleRail(rail_type, GetRailType(dep_tile))) return dep_tile;
+		}
+	}
+
+	return INVALID_TILE;
+}
+
 /**
  * Build a railroad wagon.
  * @param flags    type of operation.
@@ -618,8 +678,9 @@ static CommandCost CmdBuildRailWagon(DoCommandFlag flags, TileIndex tile, const 
 	assert(IsRailDepotTile(tile));
 	DepotID depot_id = GetDepotIndex(tile);
 
-	/* Check that the wagon can drive on the track in question */
-	if (!IsCompatibleRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
+	/* Find a good tile to place the wagon. */
+	tile = FindCompatibleDepotTile(depot_id, rvi->railtype, false);
+	if (tile == INVALID_TILE) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Train *v = new Train();
@@ -675,7 +736,8 @@ static CommandCost CmdBuildRailWagon(DoCommandFlag flags, TileIndex tile, const 
 
 		/* Try to connect the vehicle to one of free chains of wagons. */
 		for (Train *w : Train::Iterate()) {
-			if (w->tile == tile &&              ///< Same depot
+			if (!IsRailDepotTile(w->tile)) continue;
+			if (GetDepotIndex(w->tile) == depot_id &&       ///< Same depot
 					w->IsFreeWagon() &&             ///< A free wagon chain
 					w->engine_type == e->index &&   ///< Same type
 					w->First() != v &&              ///< Don't connect to ourself
@@ -694,9 +756,10 @@ static CommandCost CmdBuildRailWagon(DoCommandFlag flags, TileIndex tile, const 
 void NormalizeTrainVehInDepot(const Train *u)
 {
 	assert(u->IsEngine());
+	DepotID dep_id = GetDepotIndex(u->tile);
 	for (const Train *v : Train::Iterate()) {
-		if (v->IsFreeWagon() && v->tile == u->tile &&
-				v->track == TRACK_BIT_DEPOT) {
+		if (v->IsFreeWagon() && v->IsInDepot() &&
+				GetDepotIndex(v->tile) == dep_id) {
 			if (Command<CMD_MOVE_RAIL_VEHICLE>::Do(DC_EXEC, v->index, u->index, true).Failed()) {
 				break;
 			}
@@ -750,13 +813,14 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
  */
 CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
+	assert(IsRailDepotTile(tile));
 	const RailVehicleInfo *rvi = &e->u.rail;
 
 	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(flags, tile, e, ret);
 
-	/* Check if depot and new engine uses the same kind of tracks *
-	 * We need to see if the engine got power on the tile to avoid electric engines in non-electric depots */
-	if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
+	/* Find a good tile to place the engine and get power on it. */
+	tile = FindCompatibleDepotTile(GetDepotIndex(tile), rvi->railtype, true);
+	if (tile == INVALID_TILE) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		DiagDirection dir = GetRailDepotDirection(tile);
@@ -826,10 +890,10 @@ CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 static Train *FindGoodVehiclePos(const Train *src)
 {
 	EngineID eng = src->engine_type;
-	TileIndex tile = src->tile;
+	DepotID dep_id = GetDepotIndex(src->tile);
 
 	for (Train *dst : Train::Iterate()) {
-		if (dst->IsFreeWagon() && dst->tile == tile && !(dst->vehstatus & VS_CRASHED)) {
+		if (dst->IsFreeWagon() && !(dst->vehstatus & VS_CRASHED) && GetDepotIndex(dst->tile) == dep_id) {
 			/* check so all vehicles in the line have the same engine. */
 			Train *t = dst;
 			while (t->engine_type == eng) {
@@ -1231,7 +1295,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlag flags, VehicleID src_veh, VehicleID
 	Train *dst_head;
 	if (dst != nullptr) {
 		dst_head = dst->First();
-		if (dst_head->tile != src_head->tile) return CMD_ERROR;
+		if (GetDepotIndex(dst_head->tile) != GetDepotIndex(src_head->tile)) return CMD_ERROR;
 		/* Now deal with articulated part of destination wagon */
 		dst = dst->GetLastEnginePart();
 	} else {
@@ -2304,7 +2368,9 @@ static bool CheckTrainStayInDepot(Train *v)
 	}
 
 	/* We are leaving a depot, but have to go to the exact same one; re-enter. */
-	if (v->current_order.IsType(OT_GOTO_DEPOT) && v->tile == v->dest_tile) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
+			IsRailDepotTile(v->tile) &&
+			v->current_order.GetDestination() == GetDepotIndex(v->tile)) {
 		/* Service when depot has no reservation. */
 		if (!HasDepotReservation(v->tile)) VehicleEnterDepot(v);
 		return true;
