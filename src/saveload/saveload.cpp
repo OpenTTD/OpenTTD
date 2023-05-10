@@ -565,7 +565,6 @@ static uint8 GetSavegameFileType(const SaveLoad &sld)
 		case SL_VAR:
 			return GetVarFileType(sld.conv); break;
 
-		case SL_STR:
 		case SL_STDSTR:
 		case SL_ARR:
 		case SL_VECTOR:
@@ -600,7 +599,6 @@ static inline uint SlCalcConvMemLen(VarType conv)
 	static const byte conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
 
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_STRB:
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
 			return SlReadArrayLength();
@@ -879,52 +877,6 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 }
 
 /**
- * Calculate the net length of a string. This is in almost all cases
- * just strlen(), but if the string is not properly terminated, we'll
- * resort to the maximum length of the buffer.
- * @param ptr pointer to the stringbuffer
- * @param length maximum length of the string (buffer). If -1 we don't care
- * about a maximum length, but take string length as it is.
- * @return return the net length of the string
- */
-static inline size_t SlCalcNetStringLen(const char *ptr, size_t length)
-{
-	if (ptr == nullptr) return 0;
-	return std::min(strlen(ptr), length - 1);
-}
-
-/**
- * Calculate the gross length of the string that it
- * will occupy in the savegame. This includes the real length, returned
- * by SlCalcNetStringLen and the length that the index will occupy.
- * @param ptr pointer to the stringbuffer
- * @param length maximum length of the string (buffer size, etc.)
- * @param conv type of data been used
- * @return return the gross length of the string
- */
-static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType conv)
-{
-	size_t len;
-	const char *str;
-
-	switch (GetVarMemType(conv)) {
-		default: NOT_REACHED();
-		case SLE_VAR_STR:
-		case SLE_VAR_STRQ:
-			str = *(const char * const *)ptr;
-			len = SIZE_MAX;
-			break;
-		case SLE_VAR_STRB:
-			str = (const char *)ptr;
-			len = length;
-			break;
-	}
-
-	len = SlCalcNetStringLen(str, len);
-	return len + SlGetArrayLength(len); // also include the length of the index
-}
-
-/**
  * Calculate the gross length of the string that it
  * will occupy in the savegame. This includes the real length, returned
  * by SlCalcNetStringLen and the length that the index will occupy.
@@ -937,86 +889,6 @@ static inline size_t SlCalcStdStringLen(const void *ptr)
 
 	size_t len = str->length();
 	return len + SlGetArrayLength(len); // also include the length of the index
-}
-
-/**
- * Save/Load a string.
- * @param ptr the string being manipulated
- * @param length of the string (full length)
- * @param conv must be SLE_FILE_STRING
- */
-static void SlString(void *ptr, size_t length, VarType conv)
-{
-	switch (_sl.action) {
-		case SLA_SAVE: {
-			size_t len;
-			switch (GetVarMemType(conv)) {
-				default: NOT_REACHED();
-				case SLE_VAR_STRB:
-					len = SlCalcNetStringLen((char *)ptr, length);
-					break;
-				case SLE_VAR_STR:
-				case SLE_VAR_STRQ:
-					ptr = *(char **)ptr;
-					len = SlCalcNetStringLen((char *)ptr, SIZE_MAX);
-					break;
-			}
-
-			SlWriteArrayLength(len);
-			SlCopyBytes(ptr, len);
-			break;
-		}
-		case SLA_LOAD_CHECK:
-		case SLA_LOAD: {
-			size_t len = SlReadArrayLength();
-
-			switch (GetVarMemType(conv)) {
-				default: NOT_REACHED();
-				case SLE_VAR_NULL:
-					SlSkipBytes(len);
-					return;
-				case SLE_VAR_STRB:
-					if (len >= length) {
-						Debug(sl, 1, "String length in savegame is bigger than buffer, truncating");
-						SlCopyBytes(ptr, length);
-						SlSkipBytes(len - length);
-						len = length - 1;
-					} else {
-						SlCopyBytes(ptr, len);
-					}
-					break;
-				case SLE_VAR_STR:
-				case SLE_VAR_STRQ: // Malloc'd string, free previous incarnation, and allocate
-					free(*(char **)ptr);
-					if (len == 0) {
-						*(char **)ptr = nullptr;
-						return;
-					} else {
-						*(char **)ptr = MallocT<char>(len + 1); // terminating '\0'
-						ptr = *(char **)ptr;
-						SlCopyBytes(ptr, len);
-					}
-					break;
-			}
-
-			((char *)ptr)[len] = '\0'; // properly terminate the string
-			StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK;
-			if ((conv & SLF_ALLOW_CONTROL) != 0) {
-				settings = settings | SVS_ALLOW_CONTROL_CODE;
-				if (IsSavegameVersionBefore(SLV_169)) {
-					str_fix_scc_encoded((char *)ptr, (char *)ptr + len);
-				}
-			}
-			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
-				settings = settings | SVS_ALLOW_NEWLINE;
-			}
-			StrMakeValidInPlace((char *)ptr, (char *)ptr + len, settings);
-			break;
-		}
-		case SLA_PTRS: break;
-		case SLA_NULL: break;
-		default: NOT_REACHED();
-	}
 }
 
 /**
@@ -1588,7 +1460,6 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 		case SL_VAR: return SlCalcConvFileLen(sld.conv);
 		case SL_REF: return SlCalcRefLen();
 		case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
-		case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld.length, sld.conv);
 		case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_VECTOR: return SlCalcVectorLen(GetVariableAddress(object, sld), sld.conv);
@@ -1660,10 +1531,6 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 			/* These should all be pointer sized. */
 			return sld.size == sizeof(void *);
 
-		case SL_STR:
-			/* These should be pointer sized, or fixed array. */
-			return sld.size == sizeof(void *) || sld.size == sld.length;
-
 		case SL_STDSTR:
 			/* These should be all pointers to std::string. */
 			return sld.size == sizeof(std::string);
@@ -1684,7 +1551,6 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		case SL_VAR:
 		case SL_REF:
 		case SL_ARR:
-		case SL_STR:
 		case SL_REFLIST:
 		case SL_DEQUE:
 		case SL_VECTOR:
@@ -1695,7 +1561,6 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				case SL_VAR: SlSaveLoadConv(ptr, conv); break;
 				case SL_REF: SlSaveLoadRef(ptr, conv); break;
 				case SL_ARR: SlArray(ptr, sld.length, conv); break;
-				case SL_STR: SlString(ptr, sld.length, sld.conv); break;
 				case SL_REFLIST: SlRefList(ptr, conv); break;
 				case SL_DEQUE: SlDeque(ptr, conv); break;
 				case SL_VECTOR: SlVector(ptr, conv); break;
@@ -1902,7 +1767,7 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 					switch (type & SLE_FILE_TYPE_MASK) {
 						case SLE_FILE_STRING:
 							/* Strings are always marked with SLE_FILE_HAS_LENGTH_FIELD, as they are a list of chars. */
-							saveload_type = SL_STR;
+							saveload_type = SL_STDSTR;
 							break;
 
 						case SLE_FILE_STRUCT:
