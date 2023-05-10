@@ -187,7 +187,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 	const Depot *best_depot = nullptr;
 	uint best_dist_sq = std::numeric_limits<uint>::max();
 	for (const Depot *depot : Depot::Iterate()) {
-		if (depot->veh_type != VEH_SHIP || depot->owner != v->owner) continue;
+		if (depot->veh_type != VEH_SHIP || depot->owner != v->owner || !depot->IsInUse()) continue;
 
 		const TileIndex tile = depot->xy;
 		const uint dist_sq = DistanceSquare(tile, v->tile);

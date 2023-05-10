@@ -787,7 +787,7 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 			if ((new_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) == 0) {
 				const Depot *dp = Depot::GetIfValid(new_order.GetDestination());
 
-				if (dp == nullptr) return CMD_ERROR;
+				if (dp == nullptr || !dp->IsInUse()) return CMD_ERROR;
 
 				ret = CheckOwnership(dp->owner);
 				if (ret.Failed()) return ret;

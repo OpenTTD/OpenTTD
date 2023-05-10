@@ -3613,6 +3613,10 @@ void MarkCatchmentTilesDirty()
 		MarkWholeScreenDirty();
 	}
 	if (_viewport_highlight_depot != INVALID_DEPOT) {
+		Depot *dep = Depot::Get(_viewport_highlight_depot);
+		if (!dep->IsInUse()) {
+			_viewport_highlight_depot = INVALID_DEPOT;
+		}
 		MarkWholeScreenDirty();
 	}
 }

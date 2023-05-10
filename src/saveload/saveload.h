@@ -395,6 +395,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_DEPOT_SPREAD,                       ///< 318  PR#XXXXX Add a setting for max depot spread.
 	SLV_ALLOW_INCOMPATIBLE_REPLACEMENTS,    ///< 319  PR#XXXXX Allow incompatible vehicle replacements.
 
+	SLV_KEEP_REMOVED_DEPOTS,                ///< 320  PR#XXXXX Keep remove depots for a while.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

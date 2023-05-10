@@ -33,6 +33,7 @@ static const SaveLoad _depot_desc[] = {
 	 SLE_CONDVAR(Depot, ta.w,       SLE_FILE_U8 | SLE_VAR_U16,  SLV_ADD_MEMBERS_TO_DEPOT_STRUCT, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, ta.h,       SLE_FILE_U8 | SLE_VAR_U16,  SLV_ADD_MEMBERS_TO_DEPOT_STRUCT, SL_MAX_VERSION),
 	 SLE_CONDREF(Depot, station,    REF_STATION,                SLV_ADD_MEMBERS_TO_DEPOT_STRUCT, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, delete_ctr, SLE_UINT8,                          SLV_KEEP_REMOVED_DEPOTS, SL_MAX_VERSION),
 };
 
 struct DEPTChunkHandler : ChunkHandler {

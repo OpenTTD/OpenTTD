@@ -32,6 +32,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 
 	VehicleType veh_type;   ///< Vehicle type of the depot.
 	Owner owner;            ///< Owner of the depot.
+	uint8_t delete_ctr;     ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the depot is then deleted.
 	Station *station;       ///< For aircraft, station associated with this hangar.
 
 	union {
@@ -67,8 +68,23 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	 */
 	inline bool IsOfType(const Depot *d) const
 	{
-		return GetTileType(d->xy) == GetTileType(this->xy);
+		return d->veh_type == this->veh_type;
 	}
+
+	/**
+	 * Check whether the depot currently is in use; in use means
+	 * that it is not scheduled for deletion and that it still has
+	 * a building on the map. Otherwise the building is demolished
+	 * and the depot awaits to be deleted.
+	 * @return true iff still in use
+	 * @see Depot::Disuse
+	 */
+	inline bool IsInUse() const
+	{
+		return this->delete_ctr == 0;
+	}
+
+	void Disuse();
 
 	/* Check we can add some tiles to this depot. */
 	CommandCost BeforeAddTiles(TileArea ta);

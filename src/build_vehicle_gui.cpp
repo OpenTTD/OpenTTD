@@ -1276,6 +1276,9 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case VEH_SHIP:
+				this->filter.railtypes = this->listview_mode ? INVALID_RAILTYPES : depot->r_types.rail_types;
+				break;
+
 			case VEH_AIRCRAFT:
 				break;
 		}
@@ -1469,18 +1472,17 @@ struct BuildVehicleWindow : Window {
 		EngineID sel_id = INVALID_ENGINE;
 		this->eng_list.clear();
 
-		for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
-			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
-			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
+		if (this->listview_mode || this->filter.railtypes != RAILTYPES_NONE) {
+			for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
+				if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
+				EngineID eid = e->index;
+				if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
+				this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
-			/* Filter by name or NewGRF extra text */
-			if (!FilterByText(e)) continue;
-
-			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
-
-			if (eid == this->sel_engine) sel_id = eid;
+				if (eid == this->sel_engine) sel_id = eid;
+			}
 		}
+
 		this->SelectEngine(sel_id);
 	}
 
