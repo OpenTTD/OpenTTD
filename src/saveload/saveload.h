@@ -610,7 +610,6 @@ enum VarTypes {
 	SLE_VAR_I64   =  7 << 4,
 	SLE_VAR_U64   =  8 << 4,
 	SLE_VAR_NULL  =  9 << 4, ///< useful to write zeros in savegame.
-	SLE_VAR_STRB  = 10 << 4, ///< string (with pre-allocated buffer)
 	SLE_VAR_STR   = 12 << 4, ///< string pointer
 	SLE_VAR_STRQ  = 13 << 4, ///< string pointer enclosed in quotes
 	SLE_VAR_NAME  = 14 << 4, ///< old custom name to be converted to a char pointer
@@ -633,7 +632,6 @@ enum VarTypes {
 	SLE_UINT64       = SLE_FILE_U64 | SLE_VAR_U64,
 	SLE_CHAR         = SLE_FILE_I8  | SLE_VAR_CHAR,
 	SLE_STRINGID     = SLE_FILE_STRINGID | SLE_VAR_U32,
-	SLE_STRINGBUF    = SLE_FILE_STRING   | SLE_VAR_STRB,
 	SLE_STRING       = SLE_FILE_STRING   | SLE_VAR_STR,
 	SLE_STRINGQUOTE  = SLE_FILE_STRING   | SLE_VAR_STRQ,
 	SLE_NAME         = SLE_FILE_STRINGID | SLE_VAR_NAME,
@@ -641,7 +639,6 @@ enum VarTypes {
 	/* Shortcut values */
 	SLE_UINT  = SLE_UINT32,
 	SLE_INT   = SLE_INT32,
-	SLE_STRB  = SLE_STRINGBUF,
 	SLE_STR   = SLE_STRING,
 	SLE_STRQ  = SLE_STRINGQUOTE,
 
@@ -659,7 +656,6 @@ enum SaveLoadType : byte {
 	SL_REF         =  1, ///< Save/load a reference.
 	SL_STRUCT      =  2, ///< Save/load a struct.
 
-	SL_STR         =  3, ///< Save/load a string.
 	SL_STDSTR      =  4, ///< Save/load a \c std::string.
 
 	SL_ARR         =  5, ///< Save/load a fixed-size array of #SL_VAR elements.
@@ -881,15 +877,6 @@ struct SaveLoadCompat {
 #define SLE_ARRNAME(base, variable, name, type, length) SLE_CONDARRNAME(base, variable, name, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
- * Storage of a string in every savegame version.
- * @param base     Name of the class or struct containing the string.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the string (only used for fixed size buffers).
- */
-#define SLE_STR(base, variable, type, length) SLE_CONDSTR(base, variable, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
-
-/**
  * Storage of a \c std::string in every savegame version.
  * @param base     Name of the class or struct containing the string.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -971,17 +958,6 @@ struct SaveLoadCompat {
 #define SLEG_CONDARR(name, variable, type, length, from, to) SLEG_GENERAL(name, SL_ARR, variable, type, length, from, to, 0)
 
 /**
- * Storage of a global string in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the string (only used for fixed size buffers).
- * @param from     First savegame version that has the string.
- * @param to       Last savegame version that has the string.
- */
-#define SLEG_CONDSTR(name, variable, type, length, from, to) SLEG_GENERAL(name, SL_STR, variable, type, length, from, to, 0)
-
-/**
  * Storage of a global \c std::string in some savegame versions.
  * @param name     The name of the field.
  * @param variable Name of the global variable.
@@ -1052,14 +1028,6 @@ struct SaveLoadCompat {
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLEG_ARR(name, variable, type) SLEG_CONDARR(name, variable, type, lengthof(variable), SL_MIN_VERSION, SL_MAX_VERSION)
-
-/**
- * Storage of a global string in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_STR(name, variable, type) SLEG_CONDSTR(name, variable, type, sizeof(variable), SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Storage of a global \c std::string in every savegame version.
