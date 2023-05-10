@@ -27,7 +27,7 @@ struct QueryString {
 	int ok_button;      ///< Widget button of parent window to simulate when pressing OK in OSK.
 	int cancel_button;  ///< Widget button of parent window to simulate when pressing CANCEL in OSK.
 	Textbuf text;
-	const char *orig;
+	std::optional<std::string> orig;
 	bool handled;
 
 	/**
@@ -35,16 +35,8 @@ struct QueryString {
 	 * @param size Maximum size in bytes.
 	 * @param chars Maximum size in chars.
 	 */
-	QueryString(uint16 size, uint16 chars = UINT16_MAX) : ok_button(ACTION_NOTHING), cancel_button(ACTION_DESELECT), text(size, chars), orig(nullptr)
+	QueryString(uint16 size, uint16 chars = UINT16_MAX) : ok_button(ACTION_NOTHING), cancel_button(ACTION_DESELECT), text(size, chars)
 	{
-	}
-
-	/**
-	 * Make sure everything gets freed.
-	 */
-	~QueryString()
-	{
-		free(this->orig);
 	}
 
 public:
