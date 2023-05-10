@@ -1133,6 +1133,7 @@ static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
 	if (confirmed) {
 		assert(Depot::IsValidID(win->window_number));
 		Depot *d = Depot::Get(win->window_number);
+		if (!d->IsInUse()) return;
 		Command<CMD_DEPOT_SELL_ALL_VEHICLES>::Post(d->xy, d->veh_type);
 	}
 }

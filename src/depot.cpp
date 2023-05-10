@@ -61,6 +61,23 @@ Depot::~Depot()
 	CloseWindowById(GetWindowClassForVehicleType(this->veh_type),
 			VehicleListIdentifier(VL_DEPOT_LIST,
 			this->veh_type, this->owner, this->index).Pack());
+
+	InvalidateWindowData(WC_SELECT_DEPOT, this->veh_type);
+}
+
+/**
+ * Schedule deletion of this depot.
+ *
+ * This method is ought to be called after demolishing last depot part.
+ * The depot will be kept in the pool for a while so it can be
+ * placed again later without messing vehicle orders.
+ *
+ * @see Depot::IsInUse
+ */
+void Depot::Disuse()
+{
+	/* Mark that the depot is demolished and start the countdown. */
+	this->delete_ctr = 8;
 }
 
 /**
@@ -139,7 +156,8 @@ void Depot::AfterAddRemove(TileArea ta, bool adding)
 		assert(!this->depot_tiles.empty());
 		this->xy = this->depot_tiles[0];
 	} else {
-		delete this;
+		assert(this->IsInUse());
+		this->Disuse();
 	}
 
 	InvalidateWindowData(WC_SELECT_DEPOT, veh_type);
