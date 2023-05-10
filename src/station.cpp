@@ -755,6 +755,9 @@ void Airport::AddHangar()
  */
 void Airport::RemoveHangar()
 {
+	if (this->hangar == nullptr) return;
+
+	/* TODO Check this. */
 	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->hangar->index);
 
 	for (Aircraft *a : Aircraft::Iterate()) {
@@ -764,6 +767,7 @@ void Airport::RemoveHangar()
 		a->current_order.MakeDummy();
 	}
 
+	this->hangar->Disuse();
 	delete this->hangar;
 	this->hangar = nullptr;
 }

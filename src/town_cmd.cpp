@@ -44,6 +44,7 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "depot_base.h"
+#include "depot_func.h"
 #include "object_map.h"
 #include "object_base.h"
 #include "ai/ai.hpp"
@@ -2998,6 +2999,8 @@ CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string
 		ClearAllStationCachedNames();
 		ClearAllIndustryCachedNames();
 		UpdateAllStationVirtCoords();
+		UpdateAllDepotVirtCoords();
+		RebuildViewportKdtree();
 	}
 	return CommandCost();
 }

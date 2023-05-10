@@ -11,6 +11,7 @@
 #define DEPOT_BASE_H
 
 #include "depot_map.h"
+#include "viewport_type.h"
 #include "core/pool_type.hpp"
 #include "timer/timer_game_calendar.h"
 #include "rail_type.h"
@@ -33,6 +34,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	VehicleType veh_type;   ///< Vehicle type of the depot.
 	Owner owner;            ///< Owner of the depot.
 	uint8_t delete_ctr;     ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the depot is then deleted.
+	ViewportSign sign;      ///< NOSAVE: Dimensions of sign
 	Station *station;       ///< For aircraft, station associated with this hangar.
 
 	union {
@@ -87,6 +89,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 
 	void Reuse(TileIndex xy);
 	void Disuse();
+	void UpdateVirtCoord();
 
 	/* Check we can add some tiles to this depot. */
 	CommandCost BeforeAddTiles(TileArea ta);
