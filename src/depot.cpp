@@ -17,6 +17,7 @@
 #include "vehiclelist.h"
 #include "command_func.h"
 #include "vehicle_base.h"
+#include "viewport_kdtree.h"
 
 #include "safeguards.h"
 
@@ -63,6 +64,10 @@ Depot::~Depot()
 			this->veh_type, this->owner, this->index).Pack());
 
 	InvalidateWindowData(WC_SELECT_DEPOT, this->veh_type);
+
+	/* The sign will now disappear. */
+	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeDepot(this->index));
+	this->sign.MarkDirty();
 }
 
 /**
@@ -77,6 +82,10 @@ void Depot::Reuse(TileIndex xy)
 	this->xy = xy;
 	this->ta.tile = xy;
 	this->ta.h = this->ta.w = 1;
+
+	/* Ensure the sign is not drawn */
+	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeDepot(this->index));
+	this->sign.MarkDirty();
 }
 
 /**
@@ -93,6 +102,10 @@ void Depot::Disuse()
 {
 	/* Mark that the depot is demolished and start the countdown. */
 	this->delete_ctr = 8;
+
+	/* Update the sign, it will be visible from now. */
+	this->UpdateVirtCoord();
+	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeDepot(this->index));
 }
 
 /**

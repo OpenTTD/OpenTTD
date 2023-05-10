@@ -11,6 +11,7 @@
 #define DEPOT_BASE_H
 
 #include "depot_map.h"
+#include "viewport_type.h"
 #include "core/pool_type.hpp"
 #include "timer/timer_game_calendar.h"
 #include "rail_type.h"
@@ -33,6 +34,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	Owner owner;
 	VehicleType veh_type;
 	byte delete_ctr;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the depot is then deleted.
+	ViewportSign sign;    ///< NOSAVE: Dimensions of sign
 
 	union {
 		RoadTypes road_types;
@@ -85,6 +87,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 
 	void Reuse(TileIndex xy);
 	void Disuse();
+	void UpdateVirtCoord();
 
 	/* Check we can add some tiles to this depot. */
 	CommandCost BeforeAddTiles(TileArea ta);

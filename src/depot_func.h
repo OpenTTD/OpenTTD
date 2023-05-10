@@ -19,6 +19,7 @@ void ShowDepotWindow(DepotID depot_id);
 void InitDepotWindowBlockSizes();
 
 void DeleteDepotHighlightOfVehicle(const Vehicle *v);
+void UpdateAllDepotVirtCoords();
 
 /**
  * Find out if the slope of the tile is suitable to build a depot of given direction
