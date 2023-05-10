@@ -172,11 +172,16 @@ struct Pool : PoolBase {
 	 */
 	template <class T>
 	struct IterateWrapper {
+		using iterator = PoolIterator<T>;
+		using const_iterator = PoolIterator<const T>;
+
 		size_t from;
 		IterateWrapper(size_t from = 0) : from(from) {}
-		PoolIterator<T> begin() { return PoolIterator<T>(this->from); }
-		PoolIterator<T> end() { return PoolIterator<T>(T::Pool::MAX_SIZE); }
-		bool empty() { return this->begin() == this->end(); }
+		iterator begin() { return iterator(this->from); }
+		iterator end() { return iterator(T::Pool::MAX_SIZE); }
+		const_iterator cbegin() const { return const_iterator(this->from); }
+		const_iterator cend() const { return const_iterator(T::Pool::MAX_SIZE); }
+		bool empty() const { return this->cbegin() == this->cend(); }
 	};
 
 	/**
@@ -217,12 +222,17 @@ struct Pool : PoolBase {
 	 */
 	template <class T, class F>
 	struct IterateWrapperFiltered {
+		using iterator = PoolIteratorFiltered<T, F>;
+		using const_iterator = PoolIteratorFiltered<const T, F>;
+
 		size_t from;
 		F filter;
 		IterateWrapperFiltered(size_t from, F filter) : from(from), filter(filter) {}
-		PoolIteratorFiltered<T, F> begin() { return PoolIteratorFiltered<T, F>(this->from, this->filter); }
-		PoolIteratorFiltered<T, F> end() { return PoolIteratorFiltered<T, F>(T::Pool::MAX_SIZE, this->filter); }
-		bool empty() { return this->begin() == this->end(); }
+		iterator begin() { return iterator(this->from, this->filter); }
+		iterator end() { return iterator(T::Pool::MAX_SIZE, this->filter); }
+		const_iterator cbegin() const { return const_iterator(this->from, this->filter); }
+		const_iterator cend() const { return const_iterator(T::Pool::MAX_SIZE, this->filter); }
+		bool empty() const { return this->cbegin() == this->cend(); }
 	};
 
 	/**
