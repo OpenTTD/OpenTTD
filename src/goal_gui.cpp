@@ -75,16 +75,12 @@ struct GoalListWindow : public Window {
 				break;
 
 			case WID_GOAL_LIST: {
-				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_LIST, WidgetDimensions::scaled.framerect.top);
-				for (const Goal *s : Goal::Iterate()) {
-					if (s->company == this->window_number) {
-						if (y == 0) {
-							this->HandleClick(s);
-							return;
-						}
-						y--;
-					}
-				}
+				int row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_LIST, WidgetDimensions::scaled.framerect.top);
+				if (row == INT_MAX) break;
+
+				auto it = Goal::IterateOwner((CompanyID)this->window_number).cbegin();
+				std::advance(it, row);
+				this->HandleClick(*it);
 				break;
 			}
 
@@ -195,41 +191,31 @@ struct GoalListWindow : public Window {
 		Rect r = wid->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		bool rtl = _current_text_dir == TD_RTL;
 
-		int pos = -this->vscroll->GetPosition();
-		const int cap = this->vscroll->GetCapacity();
-
-		uint num = 0;
-		for (const Goal *s : Goal::Iterate()) {
-			if (s->company == this->window_number) {
-				if (IsInsideMM(pos, 0, cap)) {
-					switch (column) {
-						case GC_GOAL: {
-							/* Display the goal. */
-							SetDParamStr(0, s->text);
-							uint width_reduction = progress_col_width > 0 ? progress_col_width + WidgetDimensions::scaled.framerect.Horizontal() : 0;
-							DrawString(r.Indent(width_reduction, !rtl), STR_GOALS_TEXT);
-							break;
-						}
-
-						case GC_PROGRESS:
-							if (!s->progress.empty()) {
-								SetDParamStr(0, s->progress);
-								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-								DrawString(r.WithWidth(progress_col_width, !rtl), str, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
-							}
-							break;
-					}
-					r.top += FONT_HEIGHT_NORMAL;
+		bool empty = true;
+		for (const auto *s : this->vscroll->Iterate(Goal::IterateOwner((CompanyID)this->window_number))) {
+			switch (column) {
+				case GC_GOAL: {
+					/* Display the goal. */
+					SetDParamStr(0, s->text);
+					uint width_reduction = progress_col_width > 0 ? progress_col_width + WidgetDimensions::scaled.framerect.Horizontal() : 0;
+					DrawString(r.Indent(width_reduction, !rtl), STR_GOALS_TEXT);
+					break;
 				}
-				pos++;
-				num++;
+
+				case GC_PROGRESS:
+					if (!s->progress.empty()) {
+						SetDParamStr(0, s->progress);
+						StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
+						DrawString(r.WithWidth(progress_col_width, !rtl), str, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+					}
+					break;
 			}
+			r.top += FONT_HEIGHT_NORMAL;
+			empty = false;
 		}
 
-		if (num == 0) {
-			if (column == GC_GOAL && IsInsideMM(pos, 0, cap)) {
-				DrawString(r, STR_GOALS_NONE);
-			}
+		if (empty && column == GC_GOAL) {
+			DrawString(r, STR_GOALS_NONE);
 		}
 	}
 

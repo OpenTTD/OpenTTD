@@ -35,6 +35,19 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
 	inline ~Goal() { }
+
+	struct OwnerFilter {
+		CompanyID cid;
+
+		bool operator() (size_t index) { return Goal::Get(index)->company == this->cid; }
+	};
+
+	/**
+	 */
+	static Pool::IterateWrapperFiltered<Goal, OwnerFilter> IterateOwner(CompanyID cid, size_t from = 0)
+	{
+		return Pool::IterateWrapperFiltered<Goal, OwnerFilter>(from, OwnerFilter{ cid });
+	}
 };
 
 #endif /* GOAL_BASE_H */
