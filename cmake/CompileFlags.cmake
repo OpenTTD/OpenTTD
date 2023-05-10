@@ -136,6 +136,10 @@ macro(compile_flags)
                 # -flifetime-dse=2 (default since GCC 6) doesn't play
                 # well with our custom pool item allocator
                 "$<$<BOOL:${LIFETIME_DSE_FOUND}>:-flifetime-dse=1>"
+
+                # We have a fight between clang wanting std::move() and gcc not wanting it
+                # and of course they both warn when the other compiler is happy
+                "-Wno-redundant-move"
             )
         endif()
 
