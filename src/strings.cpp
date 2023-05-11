@@ -1664,7 +1664,7 @@ static void StationGetSpecialString(StringBuilder &builder, int x)
 
 static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32 seed)
 {
-	builder.AddViaStreCallback([&](auto buff, auto last) { return GenerateTownNameString(buff, last, ind, seed); });
+	GenerateTownNameString(builder, ind, seed);
 }
 
 static const char * const _silly_company_names[] = {
