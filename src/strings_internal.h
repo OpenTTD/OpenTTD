@@ -20,7 +20,8 @@
  * extra functions to ease the migration from char buffers to std::string.
  */
 class StringBuilder {
-	char **current; ///< The current location to add strings
+	char **current; ///< The current location to add strings.
+	char *start;   ///< The begin of the string.
 	const char *last; ///< The last element of the buffer.
 
 public:
@@ -36,7 +37,7 @@ public:
 	 * @param start The start location to write to.
 	 * @param last  The last location to write to.
 	 */
-	StringBuilder(char **start, const char *last) : current(start), last(last) {}
+	StringBuilder(char **start, const char *last) : current(start), start(*start), last(last) {}
 
 	/* Required operators for this to be an output_iterator; mimics std::back_insert_iterator, which has no-ops. */
 	StringBuilder &operator++() { return *this; }
@@ -101,6 +102,15 @@ public:
 	}
 
 	/**
+	 * Remove the given amount of characters from the back of the string.
+	 * @param amount The amount of characters to remove.
+	 */
+	void RemoveElementsFromBack(size_t amount)
+	{
+		*this->current = std::max(this->start, *this->current - amount);
+	}
+
+	/**
 	 * Get the pointer to the this->last written element in the buffer.
 	 * This call does '\0' terminate the string, whereas other calls do not
 	 * (necessarily) do this.
@@ -122,19 +132,28 @@ public:
 	}
 
 	/**
-	 * Add a string using the strecpy-esque calling signature.
-	 * @param function The function to pass the current and last location to,
-	 *                 that will then return the new current location.
+	 * Get the current index in the string.
+	 * @return The index.
 	 */
-	void AddViaStreCallback(std::function<char*(char*, const char*)> function)
+	size_t CurrentIndex()
 	{
-		*this->current = function(*this->current, this->last);
+		return *this->current - this->start;
+	}
+
+	/**
+	 * Get the reference to the character at the given index.
+	 * @return The reference to the character.
+	 */
+	char &operator[](size_t index)
+	{
+		return this->start[index];
 	}
 };
 
 void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters *args, uint case_index = 0, bool game_script = false);
 
 /* Do not leak the StringBuilder to everywhere. */
+void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32_t seed);
 void GetTownName(StringBuilder &builder, const struct Town *t);
 void GRFTownNameGenerate(StringBuilder &builder, uint32 grfid, uint16 gen, uint32 seed);
 
