@@ -445,6 +445,8 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 					case 0x1F: Utf8Encode(d, SCC_PUSH_COLOUR); break;
 					case 0x20: Utf8Encode(d, SCC_POP_COLOUR);  break;
 
+					case 0x21: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_FORCE); break;
+
 					default:
 						GrfMsg(1, "missing handler for extended format code");
 						break;
@@ -882,6 +884,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG:
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_POWER:
+		case SCC_NEWGRF_PRINT_DWORD_FORCE:
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME:
 			if (argv_size < 1) {
@@ -927,6 +930,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 			case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    *argv = _newgrf_textrefstack.PopUnsignedWord();  break;
 
+			case SCC_NEWGRF_PRINT_DWORD_FORCE:
 			case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
 			case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
 			case SCC_NEWGRF_PRINT_DWORD_HEX:        *argv = _newgrf_textrefstack.PopUnsignedDWord(); break;
@@ -1017,6 +1021,9 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 		case SCC_NEWGRF_PRINT_WORD_POWER:
 			return SCC_POWER;
+
+		case SCC_NEWGRF_PRINT_DWORD_FORCE:
+			return SCC_FORCE;
 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 			return SCC_CARGO_LONG;
