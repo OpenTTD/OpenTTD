@@ -424,6 +424,7 @@ add_files(
     stringfilter_type.h
     strings.cpp
     strings_func.h
+    strings_internal.h
     strings_type.h
     subsidy.cpp
     subsidy_base.h
