@@ -517,14 +517,16 @@ public:
 				icon.bottom = icon.top + this->legend.height - 1;
 
 				for (uint16 i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
-					bool selected = this->selected_type == this->list[i];
-
-					const IndustrySpec *indsp = GetIndustrySpec(this->list[i]);
+					IndustryType type = this->list[i];
+					bool selected = this->selected_type == type;
+					const IndustrySpec *indsp = GetIndustrySpec(type);
 
 					/* Draw the name of the industry in white is selected, otherwise, in orange */
 					DrawString(text, indsp->name, selected ? TC_WHITE : TC_ORANGE);
 					GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
 					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
+					SetDParam(0, Industry::GetIndustryTypeCount(type));
+					DrawString(text, STR_JUST_COMMA, TC_BLACK, SA_RIGHT, false, FS_SMALL);
 
 					text = text.Translate(0, this->resize.step_height);
 					icon = icon.Translate(0, this->resize.step_height);
