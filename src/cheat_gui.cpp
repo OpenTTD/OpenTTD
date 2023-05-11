@@ -273,7 +273,6 @@ struct CheatWindow : Window {
 
 				default: {
 					int32 val = (int32)ReadValue(ce->variable, ce->type);
-					char buf[512];
 
 					/* Draw [<][>] boxes for settings of an integer-type */
 					DrawArrowButtons(button_left, y + button_y_offset, COLOUR_YELLOW, clicked - (i * 2), true, true);
@@ -285,8 +284,7 @@ struct CheatWindow : Window {
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY: {
 							SetDParam(0, val + 1);
-							GetString(buf, STR_CHEAT_CHANGE_COMPANY, lastof(buf));
-							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(buf).width;
+							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(ce->str).width;
 							DrawCompanyIcon(_local_company, rtl ? text_right - offset - WidgetDimensions::scaled.hsep_indent : text_left + offset, y + icon_y_offset);
 							break;
 						}
