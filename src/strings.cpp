@@ -43,6 +43,8 @@
 #include "table/strings.h"
 #include "table/control_codes.h"
 
+#include "strings_internal.h"
+
 #include "safeguards.h"
 
 std::string _config_language_file;                ///< The file (name) stored in the configuration.
@@ -315,16 +317,15 @@ void SetDParamStr(uint n, const std::string &str)
 
 /**
  * Format a number into a string.
- * @param buff      the buffer to write to
+ * @param builder   the string builder to write to
  * @param number    the number to write down
  * @param last      the last element in the buffer
  * @param separator the thousands-separator to use
  * @param zerofill  minimum number of digits to print for the integer part. The number will be filled with zeros at the front if necessary.
  * @param fractional_digits number of fractional digits to display after a decimal separator. The decimal separator is inserted
  *                          in front of the \a fractional_digits last digit of \a number.
- * @return till where we wrote
  */
-static char *FormatNumber(char *buff, int64 number, const char *last, const char *separator, int zerofill = 1, int fractional_digits = 0)
+static void FormatNumber(StringBuilder &builder, int64 number, const char *separator, int zerofill = 1, int fractional_digits = 0)
 {
 	static const int max_digits = 20;
 	uint64 divisor = 10000000000000000000ULL;
@@ -332,7 +333,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 	int thousands_offset = (max_digits - fractional_digits - 1) % 3;
 
 	if (number < 0) {
-		if (buff != last) *buff++ = '-';
+		builder += '-';
 		number = -number;
 	}
 
@@ -342,7 +343,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 		if (i == max_digits - fractional_digits) {
 			const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
 			if (StrEmpty(decimal_separator)) decimal_separator = _langpack.langpack->digit_decimal_separator;
-			buff = strecpy(buff, decimal_separator, last);
+			builder += decimal_separator;
 		}
 
 		uint64 quot = 0;
@@ -351,48 +352,42 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 			num = num % divisor;
 		}
 		if ((tot |= quot) || i >= max_digits - zerofill) {
-			if (buff != last) *buff++ = '0' + quot; // quot is a single digit
-			if ((i % 3) == thousands_offset && i < max_digits - 1 - fractional_digits) buff = strecpy(buff, separator, last);
+			builder += '0' + quot; // quot is a single digit
+			if ((i % 3) == thousands_offset && i < max_digits - 1 - fractional_digits) builder += separator;
 		}
 
 		divisor /= 10;
 	}
-
-	*buff = '\0';
-
-	return buff;
 }
 
-static char *FormatCommaNumber(char *buff, int64 number, const char *last, int fractional_digits = 0)
+static void FormatCommaNumber(StringBuilder &builder, int64 number, int fractional_digits = 0)
 {
 	const char *separator = _settings_game.locale.digit_group_separator.c_str();
 	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator;
-	return FormatNumber(buff, number, last, separator, 1, fractional_digits);
+	FormatNumber(builder, number, separator, 1, fractional_digits);
 }
 
-static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
+static void FormatNoCommaNumber(StringBuilder &builder, int64 number)
 {
-	return FormatNumber(buff, number, last, "");
+	FormatNumber(builder, number, "");
 }
 
-static char *FormatZerofillNumber(char *buff, int64 number, int64 count, const char *last)
+static void FormatZerofillNumber(StringBuilder &builder, int64 number, int64 count)
 {
-	return FormatNumber(buff, number, last, "", count);
+	FormatNumber(builder, number, "", count);
 }
 
-static char *FormatHexNumber(char *buff, uint64 number, const char *last)
+static void FormatHexNumber(StringBuilder &builder, uint64 number)
 {
-	return strecpy(buff, fmt::format("0x{:X}", number).c_str(), last);
+	fmt::format_to(builder, "0x{:X}", number);
 }
 
 /**
  * Format a given number as a number of bytes with the SI prefix.
- * @param buff   the buffer to write to
- * @param number the number of bytes to write down
- * @param last   the last element in the buffer
- * @return till where we wrote
+ * @param builder the string builder to write to
+ * @param number  the number of bytes to write down
  */
-static char *FormatBytes(char *buff, int64 number, const char *last)
+static void FormatBytes(StringBuilder &builder, int64 number)
 {
 	assert(number >= 0);
 
@@ -409,20 +404,18 @@ static char *FormatBytes(char *buff, int64 number, const char *last)
 
 	if (number < 1024) {
 		id = 0;
-		buff += seprintf(buff, last, "%i", (int)number);
+		fmt::format_to(builder, "{}", number);
 	} else if (number < 1024 * 10) {
-		buff += seprintf(buff, last, "%i%s%02i", (int)number / 1024, decimal_separator, (int)(number % 1024) * 100 / 1024);
+		fmt::format_to(builder, "{}{}{:02}", number / 1024, decimal_separator, (number % 1024) * 100 / 1024);
 	} else if (number < 1024 * 100) {
-		buff += seprintf(buff, last, "%i%s%01i", (int)number / 1024, decimal_separator, (int)(number % 1024) * 10 / 1024);
+		fmt::format_to(builder, "{}{}{:01}", number / 1024, decimal_separator, (number % 1024) * 10 / 1024);
 	} else {
 		assert(number < 1024 * 1024);
-		buff += seprintf(buff, last, "%i", (int)number / 1024);
+		fmt::format_to(builder, "{}", number / 1024);
 	}
 
 	assert(id < lengthof(iec_prefixes));
-	buff += seprintf(buff, last, NBSP "%sB", iec_prefixes[id]);
-
-	return buff;
+	fmt::format_to(builder, NBSP "{}B", iec_prefixes[id]);
 }
 
 static char *FormatYmdString(char *buff, TimerGameCalendar::Date date, const char *last, uint case_index)
@@ -456,7 +449,7 @@ static char *FormatTinyOrISODate(char *buff, TimerGameCalendar::Date date, Strin
 	return FormatString(buff, GetStringPtr(str), &tmp_params, last);
 }
 
-static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money number, bool compact, const char *last)
+static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *spec, Money number, bool compact)
 {
 	/* We are going to make number absolute for printing, so
 	 * keep this piece of data as we need it later on */
@@ -467,18 +460,16 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 
 	/* convert from negative */
 	if (number < 0) {
-		if (buff + Utf8CharLen(SCC_PUSH_COLOUR) > last) return buff;
-		buff += Utf8Encode(buff, SCC_PUSH_COLOUR);
-		if (buff + Utf8CharLen(SCC_RED) > last) return buff;
-		buff += Utf8Encode(buff, SCC_RED);
-		buff = strecpy(buff, "-", last);
+		if (!builder.Utf8Encode(SCC_PUSH_COLOUR)) return;
+		if (!builder.Utf8Encode(SCC_RED)) return;
+		builder += '-';
 		number = -number;
 	}
 
 	/* Add prefix part, following symbol_pos specification.
 	 * Here, it can can be either 0 (prefix) or 2 (both prefix and suffix).
 	 * The only remaining value is 1 (suffix), so everything that is not 1 */
-	if (spec->symbol_pos != 1) buff = strecpy(buff, spec->prefix.c_str(), last);
+	if (spec->symbol_pos != 1) builder += spec->prefix;
 
 	/* for huge numbers, compact the number into k or M */
 	if (compact) {
@@ -496,21 +487,17 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	const char *separator = _settings_game.locale.digit_group_separator_currency.c_str();
 	if (StrEmpty(separator)) separator = _currency->separator.c_str();
 	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator_currency;
-	buff = FormatNumber(buff, number, last, separator);
-	buff = strecpy(buff, multiplier, last);
+	FormatNumber(builder, number, separator);
+	builder += multiplier;
 
 	/* Add suffix part, following symbol_pos specification.
 	 * Here, it can can be either 1 (suffix) or 2 (both prefix and suffix).
 	 * The only remaining value is 1 (prefix), so everything that is not 0 */
-	if (spec->symbol_pos != 0) buff = strecpy(buff, spec->suffix.c_str(), last);
+	if (spec->symbol_pos != 0) builder += spec->suffix;
 
 	if (negative) {
-		if (buff + Utf8CharLen(SCC_POP_COLOUR) > last) return buff;
-		buff += Utf8Encode(buff, SCC_POP_COLOUR);
-		*buff = '\0';
+		builder.Utf8Encode(SCC_POP_COLOUR);
 	}
-
-	return buff;
 }
 
 /**
@@ -1109,34 +1096,50 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 			}
 
-			case SCC_COMMA: // {COMMA}
-				buff = FormatCommaNumber(buff, args->GetInt64(SCC_COMMA), last);
-				break;
-
-			case SCC_DECIMAL: {// {DECIMAL}
-				int64 number = args->GetInt64(SCC_DECIMAL);
-				int digits = args->GetInt32(SCC_DECIMAL);
-				buff = FormatCommaNumber(buff, number, last, digits);
+			case SCC_COMMA: { // {COMMA}
+				StringBuilder builder(buff, last);
+				FormatCommaNumber(builder, args->GetInt64(SCC_COMMA));
+				buff = builder.GetEnd();
 				break;
 			}
 
-			case SCC_NUM: // {NUM}
-				buff = FormatNoCommaNumber(buff, args->GetInt64(SCC_NUM), last);
+			case SCC_DECIMAL: { // {DECIMAL}
+				int64 number = args->GetInt64(SCC_DECIMAL);
+				int digits = args->GetInt32(SCC_DECIMAL);
+				StringBuilder builder(buff, last);
+				FormatCommaNumber(builder, number, digits);
+				buff = builder.GetEnd();
 				break;
+			}
+
+			case SCC_NUM: { // {NUM}
+				StringBuilder builder(buff, last);
+				FormatNoCommaNumber(builder, args->GetInt64(SCC_NUM));
+				buff = builder.GetEnd();
+				break;
+			}
 
 			case SCC_ZEROFILL_NUM: { // {ZEROFILL_NUM}
 				int64 num = args->GetInt64();
-				buff = FormatZerofillNumber(buff, num, args->GetInt64(), last);
+				StringBuilder builder(buff, last);
+				FormatZerofillNumber(builder, num, args->GetInt64());
+				buff = builder.GetEnd();
 				break;
 			}
 
-			case SCC_HEX: // {HEX}
-				buff = FormatHexNumber(buff, (uint64)args->GetInt64(SCC_HEX), last);
+			case SCC_HEX: { // {HEX}
+				StringBuilder builder(buff, last);
+				FormatHexNumber(builder, (uint64)args->GetInt64(SCC_HEX));
+				buff = builder.GetEnd();
 				break;
+			}
 
-			case SCC_BYTES: // {BYTES}
-				buff = FormatBytes(buff, args->GetInt64(), last);
+			case SCC_BYTES: { // {BYTES}
+				StringBuilder builder(buff, last);
+				FormatBytes(builder, args->GetInt64());
+				buff = builder.GetEnd();
 				break;
+			}
 
 			case SCC_CARGO_TINY: { // {CARGO_TINY}
 				/* Tiny description of cargotypes. Layout:
@@ -1162,7 +1165,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 					}
 				}
 
-				buff = FormatCommaNumber(buff, amount, last);
+				StringBuilder builder(buff, last);
+				FormatCommaNumber(builder, amount);
+				buff = builder.GetEnd();
 				break;
 			}
 
@@ -1242,13 +1247,19 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 			}
 
-			case SCC_CURRENCY_SHORT: // {CURRENCY_SHORT}
-				buff = FormatGenericCurrency(buff, _currency, args->GetInt64(), true, last);
+			case SCC_CURRENCY_SHORT: { // {CURRENCY_SHORT}
+				StringBuilder builder(buff, last);
+				FormatGenericCurrency(builder, _currency, args->GetInt64(), true);
+				buff = builder.GetEnd();
 				break;
+			}
 
-			case SCC_CURRENCY_LONG: // {CURRENCY_LONG}
-				buff = FormatGenericCurrency(buff, _currency, args->GetInt64(SCC_CURRENCY_LONG), false, last);
+			case SCC_CURRENCY_LONG: { // {CURRENCY_LONG}
+				StringBuilder builder(buff, last);
+				FormatGenericCurrency(builder, _currency, args->GetInt64(SCC_CURRENCY_LONG), false);
+				buff = builder.GetEnd();
 				break;
+			}
 
 			case SCC_DATE_TINY: // {DATE_TINY}
 				buff = FormatTinyOrISODate(buff, args->GetInt32(SCC_DATE_TINY), STR_FORMAT_DATE_TINY, last);
