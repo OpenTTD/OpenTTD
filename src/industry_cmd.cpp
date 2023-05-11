@@ -207,6 +207,7 @@ Industry::~Industry()
 void Industry::PostDestructor(size_t index)
 {
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_FORCE_REBUILD);
+	SetWindowDirty(WC_BUILD_INDUSTRY, 0);
 }
 
 
@@ -1942,6 +1943,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		for (uint j = 0; j != 50; j++) PlantRandomFarmField(i);
 	}
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_FORCE_REBUILD);
+	SetWindowDirty(WC_BUILD_INDUSTRY, 0);
 
 	if (!_generating_world) PopulateStationsNearby(i);
 }
