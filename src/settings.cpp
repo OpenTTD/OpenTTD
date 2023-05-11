@@ -162,6 +162,7 @@ enum IniFileVersion : uint32_t {
 	IFV_NETWORK_PRIVATE_SETTINGS,                          ///< 4  PR#10762 Move no_http_content_downloads / use_relay_service to private settings.
 	IFV_AUTOSAVE_RENAME,                                   ///< 5  PR#11143 Renamed values of autosave to be in minutes.
 	IFV_RIGHT_CLICK_CLOSE,                                 ///< 6  PR#10204 Add alternative right click to close windows setting.
+	IFV_PBS_COST_ONCE,                                     ///< 7  PR#10807 Penalty for crossing a reserved segment is now constant
 
 	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
 };
@@ -1282,6 +1283,11 @@ void LoadFromConfig(bool startup)
 
 	/* Load basic settings only during bootstrap, load other settings not during bootstrap */
 	if (!startup) {
+		if(generic_version < IFV_PBS_COST_ONCE) {
+			_settings_newgame.pf.yapf.rail_pbs_cross_penalty *= 5;
+			_settings_newgame.pf.yapf.rail_pbs_station_penalty *= 5;
+		}
+
 		if (generic_version < IFV_LINKGRAPH_SECONDS) {
 			_settings_newgame.linkgraph.recalc_interval *= SECONDS_PER_DAY;
 			_settings_newgame.linkgraph.recalc_time     *= SECONDS_PER_DAY;
