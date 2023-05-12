@@ -1250,7 +1250,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	if (slope != SLOPE_FLAT && CircularTileSearch(&search, bridge_length, 0, 0, RedundantBridgeExistsNearby, &direction_to_match)) return false;
 
 	for (uint8 times = 0; times <= 22; times++) {
-		byte bridge_type = RandomRange(MAX_BRIDGES - 1);
+		byte bridge_type = RandomRange(_bridge_mngr.GetMaxMapping() - 1);
 
 		/* Can we actually build the bridge? */
 		RoadType rt = GetTownRoadType(t);
@@ -3032,6 +3032,15 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 
 			case MP_INDUSTRY:
 				try_clear = Industry::GetByTile(current_tile)->town == t;
+				break;
+
+			case MP_TUNNELBRIDGE:
+				if (IsBridgeTile(current_tile)) {
+					Bridge *b = Bridge::Get(GetBridgeIndex(current_tile));
+					if (b->town == t) {
+						if (flags & DC_EXEC) b->town = nullptr;
+					}
+				}
 				break;
 
 			case MP_OBJECT:

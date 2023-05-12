@@ -29,6 +29,7 @@
 #include "industrytype.h"
 #include "industry_map.h"
 #include "newgrf_canal.h"
+#include "newgrf_bridge.h"
 #include "newgrf_townname.h"
 #include "newgrf_industries.h"
 #include "newgrf_airporttiles.h"
@@ -54,6 +55,7 @@
 
 #include "table/strings.h"
 #include "table/build_industry.h"
+#include "table/bridge_land.h"
 
 #include "safeguards.h"
 
@@ -2181,6 +2183,51 @@ static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, ByteRead
 }
 
 /**
+ * Ignore a bridge property
+ * @param prop Property to read.
+ * @param buf Property value.
+ * @return ChangeInfoResult.
+ */
+static ChangeInfoResult IgnoreBridgeProperty(int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	switch (prop) {
+		case 0x00:
+		case 0x08:
+		case 0x09:
+		case 0x0A:
+		case 0x0B:
+		case 0x0E:
+			buf->ReadByte();
+			break;
+		case 0x0C:
+		case 0x10:
+		case 0x11:
+		case 0x12:
+		case 0x13:
+			buf->ReadWord();
+			break;
+		case 0x0F:
+			buf->ReadDWord();
+			break;
+		case 0x0D: {
+			byte tableid = buf->ReadByte();
+			byte numtables = buf->ReadByte();
+
+			for (; numtables-- != 0; tableid++) {
+				for (byte sprite = 0; sprite < 32; sprite++) buf->ReadDWord();
+			}
+			break;
+		}
+		default:
+			ret = CIR_UNKNOWN;
+			break;
+	}
+	return ret;
+}
+
+/**
  * Define properties for bridges
  * @param brid BridgeID of the bridge.
  * @param numinfo Number of subsequent bridgeIDs to change the property for.
@@ -2192,47 +2239,94 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	if (brid + numinfo > MAX_BRIDGES) {
-		GrfMsg(1, "BridgeChangeInfo: Bridge {} is invalid, max {}, ignoring", brid + numinfo, MAX_BRIDGES);
+	if (brid + numinfo > NUM_BRIDGES_PER_GRF) {
+		GrfMsg(1, "BridgeChangeInfo: Bridge {} is invalid, max {}, ignoring", brid + numinfo, NUM_BRIDGES_PER_GRF);
 		return CIR_INVALID_ID;
 	}
 
+	/* Allocate bridge specs if they haven't been allocated already. */
+	if (_cur.grffile->bridgespec.size() < brid + numinfo) _cur.grffile->bridgespec.resize(brid + numinfo);
+
 	for (int i = 0; i < numinfo; i++) {
-		BridgeSpec *bridge = &_bridge[brid + i];
+		BridgeSpec *bridgespec = _cur.grffile->bridgespec[brid + i].get();
+
+		if (prop != 0x00 && bridgespec == nullptr) {
+			if (brid + i >= NEW_BRIDGE_OFFSET) {
+				/* If the bridge property 00 is not yet set, ignore this property */
+				ChangeInfoResult cir = IgnoreBridgeProperty(prop, buf);
+				if (cir > ret) ret = cir;
+				continue;
+			} else {
+				/* Old style bridge specs, overriding default bridges */
+				bridgespec = &_bridge_specs[brid + i];
+
+				bridgespec->enabled = true;
+				bridgespec->grf_prop.local_id = brid + i;
+				bridgespec->grf_prop.grffile = _cur.grffile;
+
+				_bridge_mngr.Add(brid + i, _cur.grffile->grfid, brid + i);
+			}
+		}
 
 		switch (prop) {
+			case 0x00: { // Substitute bridge type, and definition of a new bridge
+				byte subs_id = buf->ReadByte();
+
+				if (subs_id == 0xFF) {
+					/* Instead of defining a new bridge, a substitute bridge id
+					 * of 0xFF disables the old bridge with the current id. */
+					BridgeSpec::Get(brid + i)->enabled = false;
+					continue;
+				} else if (subs_id >= NEW_BRIDGE_OFFSET) {
+					/* The substitute id must be one of the original bridges. */
+					GrfMsg(2, "BridgeChangeInfo: Attempt to use new bridge {} as substitute bridge for {}. Ignoring.", subs_id, brid + i);
+					continue;
+				}
+
+				/* Allocate space for this bridge. */
+				_cur.grffile->bridgespec[brid + i] = std::make_unique<BridgeSpec>();
+				bridgespec = _cur.grffile->bridgespec[brid + i].get();
+
+				bridgespec->enabled = true;
+				bridgespec->grf_prop.local_id = brid + i;
+				bridgespec->grf_prop.grffile = _cur.grffile;
+
+				_bridge_mngr.AddEntityID(brid + i, _cur.grffile->grfid, subs_id);
+				break;
+			}
+
 			case 0x08: { // Year of availability
 				/* We treat '0' as always available */
 				byte year = buf->ReadByte();
-				bridge->avail_year = (year > 0 ? ORIGINAL_BASE_YEAR + year : 0);
+				bridgespec->avail_year = (year > 0 ? ORIGINAL_BASE_YEAR + year : 0);
 				break;
 			}
 
 			case 0x09: // Minimum length
-				bridge->min_length = buf->ReadByte();
+				bridgespec->min_length = buf->ReadByte();
 				break;
 
 			case 0x0A: // Maximum length
-				bridge->max_length = buf->ReadByte();
-				if (bridge->max_length > 16) bridge->max_length = UINT16_MAX;
+				bridgespec->max_length = buf->ReadByte();
+				if (bridgespec->max_length > 16) bridgespec->max_length = UINT16_MAX;
 				break;
 
 			case 0x0B: // Cost factor
-				bridge->price = buf->ReadByte();
+				bridgespec->price = buf->ReadByte();
 				break;
 
 			case 0x0C: // Maximum speed
-				bridge->speed = buf->ReadWord();
-				if (bridge->speed == 0) bridge->speed = UINT16_MAX;
+				bridgespec->speed = buf->ReadWord();
+				if (bridgespec->speed == 0) bridgespec->speed = UINT16_MAX;
 				break;
 
-			case 0x0D: { // Bridge sprite tables
+			case 0x0D: { // Bridge sprite tables (deprecated)
 				byte tableid = buf->ReadByte();
 				byte numtables = buf->ReadByte();
 
-				if (bridge->sprite_table == nullptr) {
+				if (bridgespec->sprite_table == nullptr) {
 					/* Allocate memory for sprite table pointers and zero out */
-					bridge->sprite_table = CallocT<PalSpriteID*>(7);
+					bridgespec->sprite_table = CallocT<PalSpriteID*>(7);
 				}
 
 				for (; numtables-- != 0; tableid++) {
@@ -2242,46 +2336,46 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 						continue;
 					}
 
-					if (bridge->sprite_table[tableid] == nullptr) {
-						bridge->sprite_table[tableid] = MallocT<PalSpriteID>(32);
+					if (bridgespec->sprite_table[tableid] == nullptr) {
+						bridgespec->sprite_table[tableid] = MallocT<PalSpriteID>(32);
 					}
 
 					for (byte sprite = 0; sprite < 32; sprite++) {
-						SpriteID image = buf->ReadWord();
-						PaletteID pal  = buf->ReadWord();
+						PalSpriteID image;
 
-						bridge->sprite_table[tableid][sprite].sprite = image;
-						bridge->sprite_table[tableid][sprite].pal    = pal;
+						image.sprite = buf->ReadWord();
+						image.pal = buf->ReadWord();
+						bridgespec->sprite_table[tableid][sprite] = image;
 
-						MapSpriteMappingRecolour(&bridge->sprite_table[tableid][sprite]);
+						MapSpriteMappingRecolour(&bridgespec->sprite_table[tableid][sprite]);
 					}
 				}
 				break;
 			}
 
 			case 0x0E: // Flags; bit 0 - disable far pillars
-				bridge->flags = buf->ReadByte();
+				bridgespec->flags = buf->ReadByte();
 				break;
 
 			case 0x0F: // Long format year of availability (year since year 0)
-				bridge->avail_year = Clamp(buf->ReadDWord(), MIN_YEAR, MAX_YEAR);
+				bridgespec->avail_year = Clamp(buf->ReadDWord(), MIN_YEAR, MAX_YEAR);
 				break;
 
 			case 0x10: { // purchase string
 				StringID newone = GetGRFStringID(_cur.grffile->grfid, buf->ReadWord());
-				if (newone != STR_UNDEFINED) bridge->material = newone;
+				if (newone != STR_UNDEFINED) bridgespec->material = newone;
 				break;
 			}
 
 			case 0x11: // description of bridge with rails or roads
 			case 0x12: {
 				StringID newone = GetGRFStringID(_cur.grffile->grfid, buf->ReadWord());
-				if (newone != STR_UNDEFINED) bridge->transport_name[prop - 0x11] = newone;
+				if (newone != STR_UNDEFINED) bridgespec->transport_name[prop - 0x11] = newone;
 				break;
 			}
 
 			case 0x13: // 16 bits cost multiplier
-				bridge->price = buf->ReadWord();
+				bridgespec->price = buf->ReadWord();
 				break;
 
 			default:
@@ -5330,6 +5424,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				case GSF_AIRCRAFT:
 				case GSF_STATIONS:
 				case GSF_CANALS:
+				case GSF_BRIDGES:
 				case GSF_CARGOES:
 				case GSF_AIRPORTS:
 				case GSF_RAILTYPES:
@@ -5519,6 +5614,7 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 				return CT_INVALID;
 		}
 	}
+
 	/* Special cargo types for purchase list and stations */
 	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return CT_DEFAULT_NA;
 	if (ctype == 0xFF) return CT_PURCHASE;
@@ -5739,6 +5835,44 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		statspec->grf_prop.local_id = station;
 		StationClass::Assign(statspec);
 	}
+}
+
+static void BridgeMapSpriteGroup(ByteReader *buf, uint8 idcount)
+{
+	if (_cur.grffile->bridgespec.empty()) {
+		GrfMsg(1, "BridgeMapSpriteGroup: No bridges defined, skipping");
+		return;
+	}
+	
+	std::vector<uint16_t> bridges;
+	bridges.reserve(idcount);
+	for (uint i = 0; i < idcount; i++) {
+		bridges.push_back(buf->ReadExtendedByte());
+	}
+
+	uint8 cidcount = buf->ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8 ctype = buf->ReadByte();
+		uint16 groupid = buf->ReadWord();
+		if (!IsValidGroupID(groupid, "BridgeMapSpriteGroup")) continue;
+
+		if (ctype >= BSG_END) continue;
+
+		for (auto &bridge : bridges) {
+			BridgeSpec *spec = bridge >= _cur.grffile->bridgespec.size() ? nullptr : _cur.grffile->bridgespec[bridge].get();
+
+			if (spec == nullptr) {
+				GrfMsg(1, "BridgeMapSpriteGroup: Bridge {} undefined, skipping", bridge);
+				continue;
+			}
+
+			spec->grf_prop.spritegroup[ctype] = _cur.spritegroups[groupid];
+			spec->use_custom_sprites = true;
+		}
+	}
+
+	/* Bridges do not use the default group. */
+	buf->ReadWord();
 }
 
 
@@ -6165,6 +6299,10 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 
 		case GSF_STATIONS:
 			StationMapSpriteGroup(buf, idcount);
+			return;
+
+		case GSF_BRIDGES:
+			BridgeMapSpriteGroup(buf, idcount);
 			return;
 
 		case GSF_HOUSES:
@@ -9421,6 +9559,27 @@ static void FinaliseObjectsArray()
 }
 
 /**
+ * Add all new bridges to the bridge array. Bridge properties can be set at any
+ * time in the GRF file, so we can only add a bridge spec to the bridge array
+ * after the file has finished loading.
+ */
+static void FinaliseBridgesArray()
+{
+	for (GRFFile *const file : _grf_files) {
+		if (!file->bridgespec.empty()) {
+			size_t num_bridges = file->bridgespec.size();
+			for (size_t i = 0; i < num_bridges; i++) {
+				BridgeSpec *bs = file->bridgespec[i].get();
+
+				if (bs != nullptr && bs->grf_prop.grffile != nullptr && bs->enabled) {
+					_bridge_mngr.SetEntitySpec(bs);
+				}
+			}
+		}
+	}
+}
+
+/**
  * Add all new airports to the airport array. Airport properties can be set at any
  * time in the GRF file, so we can only add a airport spec to the airport array
  * after the file has finished loading.
@@ -9854,6 +10013,9 @@ static void AfterLoadGRFs()
 
 	/* Add all new objects to the object array. */
 	FinaliseObjectsArray();
+
+	/* Add all new bridges to the bridge array. */
+	FinaliseBridgesArray();
 
 	InitializeSortedCargoSpecs();
 

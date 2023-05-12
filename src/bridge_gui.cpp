@@ -23,6 +23,7 @@
 #include "tunnelbridge_map.h"
 #include "road_gui.h"
 #include "tunnelbridge_cmd.h"
+#include "newgrf_bridge.h"
 
 #include "widgets/bridge_widget.h"
 
@@ -59,6 +60,7 @@ void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, 
 {
 	if (result.Failed()) return;
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_27_CONSTRUCTION_BRIDGE, end_tile);
+
 
 	if (transport_type == TRANSPORT_ROAD) {
 		DiagDirection end_direction = ReverseDiagDir(GetTunnelBridgeDirection(end_tile));
@@ -137,8 +139,10 @@ private:
 	 */
 	StringID GetBridgeSelectString(const BuildBridgeData &bridge_data) const
 	{
-		SetDParam(0, bridge_data.spec->material);
-		SetDParam(1, PackVelocity(bridge_data.spec->speed, static_cast<VehicleType>(this->transport_type)));
+		const BridgeSpec* b = bridge_data.spec;
+
+		SetDParam(0, b->material);
+		SetDParam(1, PackVelocity(b->speed, static_cast<VehicleType>(this->transport_type)));
 		SetDParam(2, bridge_data.cost);
 		/* If the bridge has no meaningful speed limit, don't display it. */
 		if (bridge_data.spec->speed == UINT16_MAX) {
@@ -200,8 +204,15 @@ public:
 			case WID_BBS_BRIDGE_LIST: {
 				Dimension sprite_dim = {0, 0}; // Biggest bridge sprite dimension
 				Dimension text_dim   = {0, 0}; // Biggest text dimension
+
 				for (const BuildBridgeData &bridge_data : *this->bridges) {
-					sprite_dim = maxdim(sprite_dim, GetSpriteSize(bridge_data.spec->sprite));
+					const BridgeSpec *b = bridge_data.spec;
+					SpriteID sprite = b->sprite;
+					if (b->use_custom_sprites) {
+						sprite = GetCustomBridgeSprites(b, nullptr, INVALID_TILE, BSG_GUI);
+					}
+
+					sprite_dim = maxdim(sprite_dim, GetSpriteSize(b->sprite));
 					text_dim = maxdim(text_dim, GetStringBoundingBox(GetBridgeSelectString(bridge_data)));
 				}
 				sprite_dim.height++; // Sprite is rendered one pixel down in the matrix field.
@@ -238,7 +249,15 @@ public:
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges->size(); i++) {
 					const BuildBridgeData &bridge_data = this->bridges->at(i);
 					const BridgeSpec *b = bridge_data.spec;
-					DrawSprite(b->sprite, b->pal, tr.left, tr.bottom - GetSpriteSize(b->sprite).height);
+
+					SpriteID sprite = b->sprite;
+					if (b->use_custom_sprites) {
+						sprite = BridgeResolverObject(b, nullptr, INVALID_TILE, BSG_GUI).Resolve()->GetResult();
+					}
+
+					PaletteID pal = b->use_custom_sprites ? PAL_NONE : b->pal;
+
+					DrawSprite(sprite, pal, tr.left, tr.bottom - GetSpriteSize(b->sprite).height);
 					DrawStringMultiLine(tr.Indent(this->bridgetext_offset, false), GetBridgeSelectString(bridge_data));
 					tr = tr.Translate(0, this->resize.step_height);
 				}
@@ -427,13 +446,13 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		bool any_available = false;
 		CommandCost type_check;
 		/* loop for all bridgetypes */
-		for (BridgeType brd_type = 0; brd_type != MAX_BRIDGES; brd_type++) {
+		for (BridgeType brd_type = 0; brd_type != _bridge_mngr.GetMaxMapping(); brd_type++) {
 			type_check = CheckBridgeAvailability(brd_type, bridge_len);
 			if (type_check.Succeeded()) {
 				/* bridge is accepted, add to list */
 				BuildBridgeData &item = bl->emplace_back();
 				item.index = brd_type;
-				item.spec = GetBridgeSpec(brd_type);
+				item.spec = BridgeSpec::Get(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DC_QUERY_COST) */
 				item.cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item.spec->price) >> 8) + infra_cost;

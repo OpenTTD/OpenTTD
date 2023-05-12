@@ -17,13 +17,16 @@
 #include "../../road_cmd.h"
 #include "../../tunnelbridge_cmd.h"
 #include "../../timer/timer_game_calendar.h"
+#include "../../newgrf_bridge.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
 
 /* static */ bool ScriptBridge::IsValidBridge(BridgeID bridge_id)
 {
-	return bridge_id < MAX_BRIDGES && ::GetBridgeSpec(bridge_id)->avail_year <= TimerGameCalendar::year;
+	if (bridge_id > NUM_BRIDGES) return false;
+	BridgeSpec *b = ::BridgeSpec::Get(bridge_id);
+	return b->enabled && b->avail_year <= TimerGameCalendar::year;
 }
 
 /* static */ bool ScriptBridge::IsBridgeTile(TileIndex tile)
@@ -134,14 +137,14 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	EnforcePrecondition(nullptr, vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER);
 	if (!IsValidBridge(bridge_id)) return nullptr;
 
-	return GetString(vehicle_type == ScriptVehicle::VT_WATER ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : ::GetBridgeSpec(bridge_id)->transport_name[vehicle_type]);
+	return GetString(vehicle_type == ScriptVehicle::VT_WATER ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : ::BridgeSpec::Get(bridge_id)->transport_name[vehicle_type]);
 }
 
 /* static */ SQInteger ScriptBridge::GetMaxSpeed(BridgeID bridge_id)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
 
-	return ::GetBridgeSpec(bridge_id)->speed; // km-ish/h
+	return ::BridgeSpec::Get(bridge_id)->speed; // km-ish/h
 }
 
 /* static */ Money ScriptBridge::GetPrice(BridgeID bridge_id, SQInteger length)
@@ -150,21 +153,21 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 
 	length = Clamp<SQInteger>(length, 0, INT32_MAX);
 
-	return ::CalcBridgeLenCostFactor(length) * _price[PR_BUILD_BRIDGE] * ::GetBridgeSpec(bridge_id)->price >> 8;
+	return ::CalcBridgeLenCostFactor(length) * _price[PR_BUILD_BRIDGE] * ::BridgeSpec::Get(bridge_id)->price >> 8;
 }
 
 /* static */ SQInteger ScriptBridge::GetMaxLength(BridgeID bridge_id)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
 
-	return std::min<SQInteger>(::GetBridgeSpec(bridge_id)->max_length, _settings_game.construction.max_bridge_length) + 2;
+	return std::min<SQInteger>(::BridgeSpec::Get(bridge_id)->max_length, _settings_game.construction.max_bridge_length) + 2;
 }
 
 /* static */ SQInteger ScriptBridge::GetMinLength(BridgeID bridge_id)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
 
-	return static_cast<SQInteger>(::GetBridgeSpec(bridge_id)->min_length) + 2;
+	return static_cast<SQInteger>(::BridgeSpec::Get(bridge_id)->min_length) + 2;
 }
 
 /* static */ TileIndex ScriptBridge::GetOtherBridgeEnd(TileIndex tile)

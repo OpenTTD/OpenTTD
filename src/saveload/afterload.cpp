@@ -1189,7 +1189,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_42)) {
 		for (auto t : Map::Iterate()) {
-			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);
+			if (MayHaveBridgeAbove(t)) SB(t.type(), 2, 2, 0); // ClearBridgeMiddle
 			if (IsBridgeTile(t)) {
 				if (HasBit(t.m5(), 6)) { // middle part
 					Axis axis = (Axis)GB(t.m5(), 0, 1);
@@ -1229,7 +1229,7 @@ bool AfterLoadGame()
 							}
 						}
 					}
-					SetBridgeMiddle(t, axis);
+					SetBit(t.type(), 2 + axis); // SetBridgeMiddle
 				} else { // ramp
 					Axis axis = (Axis)GB(t.m5(), 0, 1);
 					uint north_south = GB(t.m5(), 5, 1);
@@ -1255,7 +1255,7 @@ bool AfterLoadGame()
 					case DIAGDIR_NW: if ((v->y_pos & 0xF) !=  0)            continue; break;
 				}
 			} else if (v->z_pos > GetTileMaxPixelZ(TileVirtXY(v->x_pos, v->y_pos))) {
-				v->tile = GetNorthernBridgeEnd(v->tile);
+				v->tile = GetBridgeEnd(v->tile, ReverseDiagDir(AxisToDiagDir((Axis)(GB(Tile(v->tile).type(), 2, 2) - 1))));
 				v->UpdatePosition();
 			} else {
 				continue;
@@ -3152,7 +3152,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Use current order time to approximate last loading time */
+	/* Compute station catchment areas. This is needed here in case UpdateStationAcceptance is called below. */
 	if (IsSavegameVersionBefore(SLV_LAST_LOADING_TICK)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
 			v->last_loading_tick = std::max(TimerGameTick::counter, static_cast<uint64>(v->current_order_time)) - v->current_order_time;
@@ -3213,6 +3213,45 @@ bool AfterLoadGame()
 		/* Refresh all level crossings to bar adjacent crossing tiles, if needed. */
 		for (auto tile : Map::Iterate()) {
 			if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile, false);
+		}
+	}
+
+	if (IsSavegameVersionBefore(SLV_NEW_BRIDGES)) {
+		for (auto t : Map::Iterate()) {
+			if (IsBridgeTile(t)) {
+				DiagDirection dir = GetTunnelBridgeDirection(t);
+				if (dir == DIAGDIR_SW || dir == DIAGDIR_SE) {
+					Tile t2 = GetOtherBridgeEnd(t);
+
+					if (!Bridge::CanAllocateItem()) {
+						SlError(STR_ERROR_TOO_MANY_BRIDGES);
+					}
+					Bridge* b = new Bridge();
+					b->type = (BridgeType)GB(t.m6(), 2, 4);
+					b->build_date = TimerGameCalendar::date;
+
+					b->town = CalcClosestTownFromTile(t);
+
+					b->heads[0] = (TileIndex)t;
+					b->heads[1] = (TileIndex)t2;
+
+					t.m2() = b->index;
+					t.m6() = b->index >> 16;
+
+					t2.m2() = b->index;
+					t2.m6() = b->index >> 16;
+
+					Axis axis = DiagDirToAxis(dir);
+					uint pos = axis == AXIS_X ? TileY(t) : TileX(t);
+					_bridge_index[axis].Insert(pos, b->index);
+				}
+			}
+		}
+
+		for (auto t : Map::Iterate()) {
+			if (GB(t.type(), 2, 2)) {
+				SB(t.type(), 2, 2, 1);
+			}
 		}
 	}
 

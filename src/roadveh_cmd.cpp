@@ -37,7 +37,7 @@
 #include "framerate_type.h"
 #include "roadveh_cmd.h"
 #include "road_cmd.h"
-
+#include "newgrf_bridge.h"
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -448,7 +448,7 @@ inline int RoadVehicle::GetCurrentMaxSpeed() const
 
 		/* Vehicle is on the middle part of a bridge. */
 		if (u->state == RVSB_WORMHOLE && !(u->vehstatus & VS_HIDDEN)) {
-			max_speed = std::min(max_speed, GetBridgeSpec(GetBridgeType(u->tile))->speed * 2);
+			max_speed = std::min(max_speed, BridgeSpec::Get(GetBridgeType(u->tile))->speed * 2);
 		}
 	}
 
