@@ -1170,6 +1170,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles ui
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles inklappen
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Alle waarden terugstellen
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen uitleg beschikbaar)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaardwaarde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Instellingstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Gebruikersinstellingen (niet opgeslagen in bestand; van invloed op alle spellen)
@@ -2690,8 +2691,11 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Je kunt 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecteer een stationsklasse om weer te geven
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecteer het type station om te bouwen
 
-STR_STATION_CLASS_DFLT                                          :Standaardstation
+STR_STATION_CLASS_DFLT                                          :Standaard
+STR_STATION_CLASS_DFLT_STATION                                  :Standaard station
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Standaard wegstation
 STR_STATION_CLASS_WAYP                                          :Routepunten
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standaard routepunt
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seinselectie
@@ -3827,6 +3831,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Stuur in
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Vervang voertuigen
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Stuur voor onderhoud
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Winst dit jaar: {CURRENCY_LONG} (vorig jaar: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Stuur naar depot
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Stuur naar garage
@@ -5588,11 +5594,13 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

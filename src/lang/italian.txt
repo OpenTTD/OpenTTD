@@ -2732,8 +2732,11 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Costruis
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Seleziona il tipo di stazioni da mostrare
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Seleziona il tipo di stazione da costruire
 
-STR_STATION_CLASS_DFLT                                          :Stazione predefinita
+STR_STATION_CLASS_DFLT                                          :Predefinita
+STR_STATION_CLASS_DFLT_STATION                                  :Stazione predefinita
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Fermata stradale predefinita
 STR_STATION_CLASS_WAYP                                          :Waypoint
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Waypoint predefinito
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selezione segnale
