@@ -632,9 +632,9 @@ public:
 			}
 
 			case WID_DPI_MATRIX_WIDGET: {
-				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_DPI_MATRIX_WIDGET);
-				if (y != INT_MAX) { // Is it within the boundaries of available data?
-					this->selected_type = this->list[y];
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->list, pt.y, this, WID_DPI_MATRIX_WIDGET);
+				if (it != this->list.end()) { // Is it within the boundaries of available data?
+					this->selected_type = *it;
 					this->UpdateAvailability();
 
 					const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
@@ -1742,12 +1742,12 @@ public:
 				break;
 
 			case WID_ID_INDUSTRY_LIST: {
-				uint p = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_ID_INDUSTRY_LIST, WidgetDimensions::scaled.framerect.top);
-				if (p < this->industries.size()) {
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->industries, pt.y, this, WID_ID_INDUSTRY_LIST, WidgetDimensions::scaled.framerect.top);
+				if (it != this->industries.end()) {
 					if (_ctrl_pressed) {
-						ShowExtraViewportWindow(this->industries[p]->location.tile);
+						ShowExtraViewportWindow((*it)->location.tile);
 					} else {
-						ScrollMainWindowToTile(this->industries[p]->location.tile);
+						ScrollMainWindowToTile((*it)->location.tile);
 					}
 				}
 				break;

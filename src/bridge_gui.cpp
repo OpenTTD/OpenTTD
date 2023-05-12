@@ -264,9 +264,9 @@ public:
 		switch (widget) {
 			default: break;
 			case WID_BBS_BRIDGE_LIST: {
-				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BBS_BRIDGE_LIST);
-				if (i < this->bridges->size()) {
-					this->BuildBridge(i);
+				auto it = this->vscroll->GetScrolledItemFromWidget(*this->bridges, pt.y, this, WID_BBS_BRIDGE_LIST);
+				if (it != this->bridges->end()) {
+					this->BuildBridge(it - this->bridges->begin());
 					this->Close();
 				}
 				break;

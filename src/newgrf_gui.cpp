@@ -1071,13 +1071,13 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_AVAIL_LIST: { // Select a non-active GRF.
 				ResetObjectToPlace();
 
-				uint i = this->vscroll2->GetScrolledRowFromWidget(pt.y, this, WID_NS_AVAIL_LIST);
+				auto it = this->vscroll2->GetScrolledItemFromWidget(this->avails, pt.y, this, WID_NS_AVAIL_LIST);
 				this->active_sel = nullptr;
 				CloseWindowByClass(WC_GRF_PARAMETERS);
-				if (i < this->avails.size()) {
-					if (this->avail_sel != this->avails[i]) CloseWindowByClass(WC_TEXTFILE);
-					this->avail_sel = this->avails[i];
-					this->avail_pos = i;
+				if (it != this->avails.end()) {
+					if (this->avail_sel != *it) CloseWindowByClass(WC_TEXTFILE);
+					this->avail_sel = *it;
+					this->avail_pos = it - this->avails.begin();
 				}
 				this->InvalidateData();
 				if (click_count == 1) {
@@ -2123,10 +2123,10 @@ struct SavePresetWindow : public Window {
 	{
 		switch (widget) {
 			case WID_SVP_PRESET_LIST: {
-				uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SVP_PRESET_LIST);
-				if (row < this->presets.size()) {
-					this->selected = row;
-					this->presetname_editbox.text.Assign(this->presets[row].c_str());
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->presets, pt.y, this, WID_SVP_PRESET_LIST);
+				if (it != this->presets.end()) {
+					this->selected = it - this->presets.begin();
+					this->presetname_editbox.text.Assign(it->c_str());
 					this->SetWidgetDirty(WID_SVP_PRESET_LIST);
 					this->SetWidgetDirty(WID_SVP_EDITBOX);
 				}

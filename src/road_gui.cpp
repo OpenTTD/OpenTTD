@@ -1533,9 +1533,9 @@ public:
 				break;
 
 			case WID_BROS_NEWST_LIST: {
-				int y = this->vscrollList->GetScrolledRowFromWidget(pt.y, this, WID_BROS_NEWST_LIST);
-				if (y >= (int)this->roadstop_classes.size()) return;
-				RoadStopClassID class_id = this->roadstop_classes[y];
+				auto it = this->vscrollList->GetScrolledItemFromWidget(this->roadstop_classes, pt.y, this, WID_BROS_NEWST_LIST);
+				if (it == this->roadstop_classes.end()) return;
+				RoadStopClassID class_id = *it;
 				if (_roadstop_gui_settings.roadstop_class != class_id && GetIfClassHasNewStopsByType(RoadStopClass::Get(class_id), roadStopType, _cur_roadtype)) {
 					_roadstop_gui_settings.roadstop_class = class_id;
 					RoadStopClass *rsclass = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class);

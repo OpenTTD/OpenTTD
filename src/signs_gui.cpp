@@ -235,10 +235,10 @@ struct SignListWindow : Window, SignList {
 	{
 		switch (widget) {
 			case WID_SIL_LIST: {
-				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SIL_LIST, WidgetDimensions::scaled.framerect.top);
-				if (id_v == INT_MAX) return;
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->signs, pt.y, this, WID_SIL_LIST, WidgetDimensions::scaled.framerect.top);
+				if (it == this->signs.end()) return;
 
-				const Sign *si = this->signs[id_v];
+				const Sign *si = *it;
 				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 				break;
 			}

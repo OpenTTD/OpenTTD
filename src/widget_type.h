@@ -789,6 +789,28 @@ public:
 	}
 
 	int GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding = 0) const;
+
+	/**
+	 * Return an iterator pointing to the element of a scrolled widget that a user clicked in.
+	 * @param container   Container of elements represented by the scrollbar.
+	 * @param clickpos    Vertical position of the mouse click (without taking scrolling into account).
+	 * @param w           The window the click was in.
+	 * @param widget      Widget number of the widget clicked in.
+	 * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
+	 * @return Iterator to the element clicked at. If clicked at a wrong position, returns as interator to the end of the container.
+	 */
+	template <typename Tcontainer>
+	typename Tcontainer::iterator GetScrolledItemFromWidget(Tcontainer &container, int clickpos, const Window * const w, int widget, int padding = 0) const
+	{
+		assert(this->GetCount() == container.size()); // Scrollbar and container size must match.
+		int row = this->GetScrolledRowFromWidget(clickpos, w, widget, padding);
+		if (row == INT_MAX) return std::end(container);
+
+		typename Tcontainer::iterator it = std::begin(container);
+		std::advance(it, row);
+		return it;
+	}
+
 	EventState UpdateListPositionOnKeyPress(int &list_position, uint16 keycode) const;
 };
 

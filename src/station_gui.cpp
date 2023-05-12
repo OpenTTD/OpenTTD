@@ -507,10 +507,10 @@ public:
 	{
 		switch (widget) {
 			case WID_STL_LIST: {
-				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_STL_LIST);
-				if (id_v >= this->stations.size()) return; // click out of list bound
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->stations, pt.y, this, WID_STL_LIST);
+				if (it == this->stations.end()) return; // click out of list bound
 
-				const Station *st = this->stations[id_v];
+				const Station *st = *it;
 				/* do not check HasStationInUse - it is slow and may be invalid */
 				assert(st->owner == (Owner)this->window_number || st->owner == OWNER_NONE);
 
