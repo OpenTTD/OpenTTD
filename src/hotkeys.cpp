@@ -167,53 +167,41 @@ static void ParseHotkeys(Hotkey *hotkey, const char *value)
  * by a '+'.
  * @param keycode The keycode to convert to a string.
  * @return A string representation of this keycode.
- * @note The return value is a static buffer, stredup the result before calling
- *  this function again.
  */
-static const char *KeycodeToString(uint16 keycode)
+static std::string KeycodeToString(uint16 keycode)
 {
-	static char buf[32];
-	buf[0] = '\0';
-	bool first = true;
+	std::string str;
 	if (keycode & WKC_GLOBAL_HOTKEY) {
-		strecat(buf, "GLOBAL", lastof(buf));
-		first = false;
+		str += "GLOBAL";
 	}
 	if (keycode & WKC_SHIFT) {
-		if (!first) strecat(buf, "+", lastof(buf));
-		strecat(buf, "SHIFT", lastof(buf));
-		first = false;
+		if (!str.empty()) str += "+";
+		str += "SHIFT";
 	}
 	if (keycode & WKC_CTRL) {
-		if (!first) strecat(buf, "+", lastof(buf));
-		strecat(buf, "CTRL", lastof(buf));
-		first = false;
+		if (!str.empty()) str += "+";
+		str += "CTRL";
 	}
 	if (keycode & WKC_ALT) {
-		if (!first) strecat(buf, "+", lastof(buf));
-		strecat(buf, "ALT", lastof(buf));
-		first = false;
+		if (!str.empty()) str += "+";
+		str += "ALT";
 	}
 	if (keycode & WKC_META) {
-		if (!first) strecat(buf, "+", lastof(buf));
-		strecat(buf, "META", lastof(buf));
-		first = false;
+		if (!str.empty()) str += "+";
+		str += "META";
 	}
-	if (!first) strecat(buf, "+", lastof(buf));
+	if (!str.empty()) str += "+";
 	keycode = keycode & ~WKC_SPECIAL_KEYS;
 
 	for (uint i = 0; i < lengthof(_keycode_to_name); i++) {
 		if (_keycode_to_name[i].keycode == keycode) {
-			strecat(buf, _keycode_to_name[i].name, lastof(buf));
-			return buf;
+			str += _keycode_to_name[i].name;
+			return str;
 		}
 	}
 	assert(keycode < 128);
-	char key[2];
-	key[0] = keycode;
-	key[1] = '\0';
-	strecat(buf, key, lastof(buf));
-	return buf;
+	str.push_back(keycode);
+	return str;
 }
 
 /**
@@ -221,19 +209,15 @@ static const char *KeycodeToString(uint16 keycode)
  * keycodes are attached to the hotkey they are split by a comma.
  * @param hotkey The keycodes of this hotkey need to be converted to a string.
  * @return A string representation of all keycodes.
- * @note The return value is a static buffer, stredup the result before calling
- *  this function again.
  */
-const char *SaveKeycodes(const Hotkey *hotkey)
+std::string SaveKeycodes(const Hotkey *hotkey)
 {
-	static char buf[128];
-	buf[0] = '\0';
+	std::string str;
 	for (uint i = 0; i < hotkey->keycodes.size(); i++) {
-		const char *str = KeycodeToString(hotkey->keycodes[i]);
-		if (i > 0) strecat(buf, ",", lastof(buf));
-		strecat(buf, str, lastof(buf));
+		if (i > 0) str += ",";
+		str += KeycodeToString(hotkey->keycodes[i]);
 	}
-	return buf;
+	return str;
 }
 
 /**
