@@ -144,8 +144,7 @@ private:
 			this->indents.push_back(indent);
 			if (g->folded) {
 				/* Test if this group has children at all. If not, the folded flag should be cleared to avoid lingering unfold buttons in the list. */
-				auto child = std::find_if(source.begin(), source.end(), [g](const Group *child){ return child->parent == g->index; });
-				bool has_children = child != source.end();
+				bool has_children = std::any_of(source.begin(), source.end(), [g](const Group *child){ return child->parent == g->index; });
 				Group::Get(g->index)->folded = has_children;
 			} else {
 				AddChildren(source, g->index, indent + 1);
