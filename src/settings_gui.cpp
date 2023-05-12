@@ -2314,7 +2314,7 @@ struct GameSettingsWindow : Window {
 				this->closing_dropdown = false;
 
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL);
-				int rel_y = (pt.y - (int)wid->pos_y - WidgetDimensions::scaled.framerect.top) % wid->resize_y;
+				int rel_y = (pt.y - wid->pos_y - WidgetDimensions::scaled.framerect.top) % wid->resize_y;
 
 				Rect wi_rect;
 				wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
