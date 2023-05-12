@@ -2138,12 +2138,12 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 	TileArea *ctx = (TileArea *)user_data;
 
 	/* First check if there were deleted stations here */
-	for (uint i = 0; i < _deleted_stations_nearby.size(); i++) {
-		auto ts = _deleted_stations_nearby.begin() + i;
-		if (ts->tile == tile) {
-			_stations_nearby_list.push_back(_deleted_stations_nearby[i].station);
-			_deleted_stations_nearby.erase(ts);
-			i--;
+	for (auto it = _deleted_stations_nearby.begin(); it != _deleted_stations_nearby.end(); /* nothing */) {
+		if (it->tile == tile) {
+			_stations_nearby_list.push_back(it->station);
+			it = _deleted_stations_nearby.erase(it);
+		} else {
+			++it;
 		}
 	}
 
