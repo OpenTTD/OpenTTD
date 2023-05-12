@@ -746,9 +746,9 @@ public:
 				break;
 
 			case WID_NG_MATRIX: { // Show available network games
-				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NG_MATRIX);
-				this->server = (id_v < this->servers.size()) ? this->servers[id_v] : nullptr;
-				this->list_pos = (server == nullptr) ? SLP_INVALID : id_v;
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->servers, pt.y, this, WID_NG_MATRIX);
+				this->server = (it != this->servers.end()) ? *it : nullptr;
+				this->list_pos = (server == nullptr) ? SLP_INVALID : it - this->servers.begin();
 				this->SetDirty();
 
 				/* FIXME the disabling should go into some InvalidateData, which is called instead of the SetDirty */

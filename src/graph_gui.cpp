@@ -999,13 +999,9 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			}
 
 			case WID_CPR_MATRIX: {
-				uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_CPR_MATRIX);
-				if (row >= this->vscroll->GetCount()) return;
-
-				for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-					if (row-- > 0) continue;
-
-					ToggleBit(_legend_excluded_cargo, cs->Index());
+				auto it = this->vscroll->GetScrolledItemFromWidget(_sorted_standard_cargo_specs, pt.y, this, WID_CPR_MATRIX);
+				if (it != _sorted_standard_cargo_specs.end()) {
+					ToggleBit(_legend_excluded_cargo, (*it)->Index());
 					this->UpdateExcludedData();
 					this->SetDirty();
 					break;

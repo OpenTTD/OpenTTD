@@ -1588,11 +1588,10 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_LIST: {
-				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BV_LIST);
-				size_t num_items = this->eng_list.size();
 				EngineID e = INVALID_ENGINE;
-				if (i < num_items) {
-					const auto &item = this->eng_list[i];
+				const auto it = this->vscroll->GetScrolledItemFromWidget(this->eng_list, pt.y, this, WID_BV_LIST);
+				if (it != this->eng_list.end()) {
+					const auto &item = *it;
 					const Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix).WithWidth(WidgetDimensions::scaled.hsep_indent * (item.indent + 1), _current_text_dir == TD_RTL);
 					if ((item.flags & EngineDisplayFlags::HasVariants) != EngineDisplayFlags::None && IsInsideMM(r.left, r.right, pt.x)) {
 						/* toggle folded flag on engine */

@@ -799,11 +799,11 @@ public:
 
 		switch (widget) {
 			case WID_NCL_MATRIX: {
-				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NCL_MATRIX);
-				if (id_v >= this->content.size()) return; // click out of bounds
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->content, pt.y, this, WID_NCL_MATRIX);
+				if (it == this->content.end()) return; // click out of bounds
 
-				this->selected = this->content[id_v];
-				this->list_pos = id_v;
+				this->selected = *it;
+				this->list_pos = it - this->content.begin();
 
 				const NWidgetBase *checkbox = this->GetWidget<NWidgetBase>(WID_NCL_CHECKBOX);
 				if (click_count > 1 || IsInsideBS(pt.x, checkbox->pos_x, checkbox->current_x)) {

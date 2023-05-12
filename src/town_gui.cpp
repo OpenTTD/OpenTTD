@@ -942,10 +942,10 @@ public:
 				break;
 
 			case WID_TD_LIST: { // Click on Town Matrix
-				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_TD_LIST, WidgetDimensions::scaled.framerect.top);
-				if (id_v >= this->towns.size()) return; // click out of town bounds
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->towns, pt.y, this, WID_TD_LIST, WidgetDimensions::scaled.framerect.top);
+				if (it == this->towns.end()) return; // click out of town bounds
 
-				const Town *t = this->towns[id_v];
+				const Town *t = *it;
 				assert(t != nullptr);
 				if (_ctrl_pressed) {
 					ShowExtraViewportWindow(t->xy);
