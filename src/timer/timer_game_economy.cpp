@@ -10,6 +10,19 @@
  * This file implements the timer logic for the game-economy-timer.
  */
 
+/**
+ * Economy time is used for the regular pace of the game, including:
+ * - Industry and house production/consumption
+ * - Industry production changes, closure, and spawning
+ * - Town growth
+ * - Company age and financial statistics
+ * - Vehicle financial statistics
+ * - Vehicle aging, depreciation, reliability, and renewal
+ * - Payment intervals for running and maintenance costs, loan interest, etc.
+ * - Cargo payment "time" calculation
+ * - Local authority and station ratings change intervals
+ */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "timer.h"

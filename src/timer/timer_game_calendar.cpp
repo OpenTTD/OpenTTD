@@ -10,6 +10,16 @@
  * This file implements the timer logic for the game-calendar-timer.
  */
 
+/**
+ * Calendar time is used for technology and time-of-year changes, including:
+ * - Vehicle, airport, station, object introduction and obsolescence
+ * - Vehicle and engine age
+ * - NewGRF variables for visual styles or behavior based on year or time of year (e.g. variable snow line)
+ * - Inflation, since it is tied to original game years. One interpretation of inflation is that it compensates for faster and higher capacity vehicles,
+ *   another is that it compensates for more established companies. Each of these point to a different choice of calendar versus economy time, but we have to pick one
+ *   so we follow a previous decision to tie inflation to original TTD game years.
+ */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "timer.h"
