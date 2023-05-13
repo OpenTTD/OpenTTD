@@ -1089,14 +1089,7 @@ public:
 		} else {
 			/* Check if the previously selected station class is not available anymore as a
 			 * result of starting a new game without the corresponding NewGRF. */
-			bool available = false;
-			for (uint i = 0; i < StationClass::GetClassCount(); ++i) {
-				if ((StationClassID)i == _railstation.station_class) {
-					available = true;
-					break;
-				}
-			}
-
+			bool available = _railstation.station_class < StationClass::GetClassCount();
 			this->SelectOtherClass(available ? _railstation.station_class : StationClassID::STAT_CLASS_DFLT);
 		}
 	}

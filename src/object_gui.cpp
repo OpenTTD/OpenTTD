@@ -182,19 +182,8 @@ public:
 		} else {
 			/* Check if the previously selected object class is not available anymore as a
 			 * result of starting a new game without the corresponding NewGRF. */
-			bool available = false;
-			for (uint i = 0; ObjectClass::GetClassCount(); ++i) {
-				if ((ObjectClassID)i == _selected_object_class) {
-					available = true;
-					break;
-				}
-			}
-
-			if (available) {
-				this->SelectOtherClass(_selected_object_class);
-			} else {
-				this->SelectOtherClass(this->object_classes[0]);
-			}
+			bool available = _selected_object_class < ObjectClass::GetClassCount();
+			this->SelectOtherClass(available ? _selected_object_class : this->object_classes[0]);
 		}
 
 		if (this->CanRestoreSelectedObject()) {
