@@ -15,6 +15,7 @@
 
 std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text);
 CommandCost CmdRemoveGoal(DoCommandFlag flags, GoalID goal);
+CommandCost CmdSetGoalDestination(DoCommandFlag flags, GoalID goal, GoalType type, GoalTypeID dest);
 CommandCost CmdSetGoalText(DoCommandFlag flags, GoalID goal, const std::string &text);
 CommandCost CmdSetGoalProgress(DoCommandFlag flags, GoalID goal, const std::string &text);
 CommandCost CmdSetGoalCompleted(DoCommandFlag flags, GoalID goal, bool completed);
@@ -23,6 +24,7 @@ CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16 uniqueid, uint8 bu
 
 DEF_CMD_TRAIT(CMD_CREATE_GOAL,          CmdCreateGoal,         CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_REMOVE_GOAL,          CmdRemoveGoal,         CMD_DEITY,                CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_SET_GOAL_DESTINATION, CmdSetGoalDestination, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SET_GOAL_TEXT,        CmdSetGoalText,        CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SET_GOAL_PROGRESS,    CmdSetGoalProgress,    CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SET_GOAL_COMPLETED,   CmdSetGoalCompleted,   CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)

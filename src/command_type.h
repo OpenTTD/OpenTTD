@@ -295,6 +295,7 @@ enum Commands : uint16 {
 	CMD_CUSTOM_NEWS_ITEM,             ///< create a custom news message
 	CMD_CREATE_GOAL,                  ///< create a new goal
 	CMD_REMOVE_GOAL,                  ///< remove a goal
+	CMD_SET_GOAL_DESTINATION,         ///< update goal destination of a goal
 	CMD_SET_GOAL_TEXT,                ///< update goal text of a goal
 	CMD_SET_GOAL_PROGRESS,            ///< update goal progress text of a goal
 	CMD_SET_GOAL_COMPLETED,           ///< update goal completed status of a goal

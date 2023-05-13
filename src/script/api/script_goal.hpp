@@ -90,6 +90,15 @@ public:
 	static bool IsValidGoal(GoalID goal_id);
 
 	/**
+	 * Check whether this is a valid goal destination.
+	 * @param company The relevant company if a story page is the destination.
+	 * @param type The type of the goal.
+	 * @param destination The destination of the \a type type.
+	 * @return True if and only if this goal destination is valid.
+	 */
+	static bool IsValidGoalDestination(ScriptCompany::CompanyID company, GoalType type, SQInteger destination);
+
+	/**
 	 * Create a new goal.
 	 * @param company The company to create the goal for, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param goal The goal to add to the GUI (can be either a raw string, or a ScriptText object).
@@ -113,6 +122,18 @@ public:
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool Remove(GoalID goal_id);
+
+	/**
+	 * Update goal destination of a goal.
+	 * @param goal_id The goal to update.
+	 * @param type The type of the goal.
+	 * @param destination The destination of the \a type type.
+	 * @return True if the action succeeded.
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre IsValidGoal(goal_id).
+	 * @pre IsValidGoalDestination(g->company, type, destination).
+	 */
+	static bool SetDestination(GoalID goal_id, GoalType type, SQInteger destination);
 
 	/**
 	 * Update goal text of a goal.

@@ -28,6 +28,20 @@
 	return ::Goal::IsValidID(goal_id);
 }
 
+/* static */ bool ScriptGoal::IsValidGoalDestination(ScriptCompany::CompanyID company, GoalType type, SQInteger destination)
+{
+	CompanyID c = (::CompanyID)company;
+	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
+	StoryPage *story_page = nullptr;
+	if (type == GT_STORY_PAGE && ScriptStoryPage::IsValidStoryPage((ScriptStoryPage::StoryPageID)destination)) story_page = ::StoryPage::Get((ScriptStoryPage::StoryPageID)destination);
+	return (type == GT_NONE && destination == 0) ||
+			(type == GT_TILE && ScriptMap::IsValidTile(destination)) ||
+			(type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(destination)) ||
+			(type == GT_TOWN && ScriptTown::IsValidTown(destination)) ||
+			(type == GT_COMPANY && ScriptCompany::ResolveCompanyID((ScriptCompany::CompanyID)destination) != ScriptCompany::COMPANY_INVALID) ||
+			(type == GT_STORY_PAGE && story_page != nullptr && (c == INVALID_COMPANY ? story_page->company == INVALID_COMPANY : story_page->company == INVALID_COMPANY || story_page->company == c));
+}
+
 /* static */ ScriptGoal::GoalID ScriptGoal::New(ScriptCompany::CompanyID company, Text *goal, GoalType type, SQInteger destination)
 {
 	CCountedPtr<Text> counter(goal);
@@ -37,20 +51,9 @@
 	const std::string &text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(GOAL_INVALID, text);
 	EnforcePrecondition(GOAL_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
+	EnforcePrecondition(GOAL_INVALID, IsValidGoalDestination(company, type, destination));
 
-	CompanyID c = (::CompanyID)company;
-	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
-	StoryPage *story_page = nullptr;
-	if (type == GT_STORY_PAGE && ScriptStoryPage::IsValidStoryPage((ScriptStoryPage::StoryPageID)destination)) story_page = ::StoryPage::Get((ScriptStoryPage::StoryPageID)destination);
-
-	EnforcePrecondition(GOAL_INVALID, (type == GT_NONE && destination == 0) ||
-			(type == GT_TILE && ScriptMap::IsValidTile(destination)) ||
-			(type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(destination)) ||
-			(type == GT_TOWN && ScriptTown::IsValidTown(destination)) ||
-			(type == GT_COMPANY && ScriptCompany::ResolveCompanyID((ScriptCompany::CompanyID)destination) != ScriptCompany::COMPANY_INVALID) ||
-			(type == GT_STORY_PAGE && story_page != nullptr && (c == INVALID_COMPANY ? story_page->company == INVALID_COMPANY : story_page->company == INVALID_COMPANY || story_page->company == c)));
-
-	if (!ScriptObject::Command<CMD_CREATE_GOAL>::Do(&ScriptInstance::DoCommandReturnGoalID, c, (::GoalType)type, destination, text)) return GOAL_INVALID;
+	if (!ScriptObject::Command<CMD_CREATE_GOAL>::Do(&ScriptInstance::DoCommandReturnGoalID, (::CompanyID)company, (::GoalType)type, destination, text)) return GOAL_INVALID;
 
 	/* In case of test-mode, we return GoalID 0 */
 	return (ScriptGoal::GoalID)0;
@@ -62,6 +65,16 @@
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 
 	return ScriptObject::Command<CMD_REMOVE_GOAL>::Do(goal_id);
+}
+
+/* static */ bool ScriptGoal::SetDestination(GoalID goal_id, GoalType type, SQInteger destination)
+{
+	EnforceDeityMode(false);
+	EnforcePrecondition(false, IsValidGoal(goal_id));
+	Goal *g = Goal::Get(goal_id);
+	EnforcePrecondition(false, IsValidGoalDestination((ScriptCompany::CompanyID)g->company, type, destination));
+
+	return ScriptObject::Command<CMD_SET_GOAL_DESTINATION>::Do(goal_id, (::GoalType)type, destination);
 }
 
 /* static */ bool ScriptGoal::SetText(GoalID goal_id, Text *goal)
