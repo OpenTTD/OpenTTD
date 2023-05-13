@@ -176,8 +176,6 @@ bool GetIfNewStopsByType(RoadStopType rs, RoadType roadtype);
 bool GetIfClassHasNewStopsByType(const RoadStopClass *roadstopclass, RoadStopType rs, RoadType roadtype);
 bool GetIfStopIsForType(const RoadStopSpec *roadstopspec, RoadStopType rs, RoadType roadtype);
 
-uint GetCountOfCompatibleStopsByType(RoadStopClass *roadstopclass, RoadStopType rs);
-
 const RoadStopSpec *GetRoadStopSpec(TileIndex t);
 int AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool exec);
 void DeallocateSpecFromRoadStop(BaseStation *st, byte specindex);
