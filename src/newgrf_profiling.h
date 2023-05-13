@@ -34,6 +34,8 @@ struct NewGRFProfiler {
 	void Abort();
 	std::string GetOutputFilename() const;
 
+	static void StartTimer(uint64 ticks);
+	static void AbortTimer();
 	static uint32 FinishAll();
 
 	/** Measurement of a single sprite group resolution */
@@ -56,6 +58,5 @@ struct NewGRFProfiler {
 };
 
 extern std::vector<NewGRFProfiler> _newgrf_profilers;
-extern TimerGameCalendar::Date _newgrf_profile_end_date;
 
 #endif /* NEWGRF_PROFILING_H */
