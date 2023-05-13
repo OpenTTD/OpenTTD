@@ -2691,8 +2691,11 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Rakenna 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Valitse asemaluokka
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Valitse asematyyppi
 
-STR_STATION_CLASS_DFLT                                          :Oletusasema
+STR_STATION_CLASS_DFLT                                          :Oletus
+STR_STATION_CLASS_DFLT_STATION                                  :Oletusasema
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Oletuspysäkki
 STR_STATION_CLASS_WAYP                                          :Reittipisteet
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Oletusreittipiste
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Opastimien valinta
