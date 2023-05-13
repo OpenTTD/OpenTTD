@@ -98,6 +98,8 @@ uint32 NewGRFProfiler::Finish()
 
 	if (this->calls.empty()) {
 		IConsolePrint(CC_DEBUG, "Finished profile of NewGRF [{:08X}], no events collected, not writing a file.", BSWAP32(this->grffile->grfid));
+
+		this->Abort();
 		return 0;
 	}
 
@@ -116,7 +118,6 @@ uint32 NewGRFProfiler::Finish()
 	}
 
 	this->Abort();
-
 	return total_microseconds;
 }
 
