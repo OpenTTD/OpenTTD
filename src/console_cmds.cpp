@@ -2203,8 +2203,8 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		IConsolePrint(CC_HELP, "  Select one or more GRFs for profiling.");
 		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile unselect <grf-num>...':");
 		IConsolePrint(CC_HELP, "  Unselect one or more GRFs from profiling. Use the keyword \"all\" instead of a GRF number to unselect all. Removing an active profiler aborts data collection.");
-		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile start [<num-days>]':");
-		IConsolePrint(CC_HELP, "  Begin profiling all selected GRFs. If a number of days is provided, profiling stops after that many in-game days.");
+		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile start [<num-ticks>]':");
+		IConsolePrint(CC_HELP, "  Begin profiling all selected GRFs. If a number of ticks is provided, profiling stops after that many game ticks. There are 74 ticks in a calendar day.");
 		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile stop':");
 		IConsolePrint(CC_HELP, "  End profiling and write the collected data to CSV files.");
 		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile abort':");
@@ -2284,16 +2284,11 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		}
 		if (started > 0) {
 			IConsolePrint(CC_DEBUG, "Started profiling for GRFID{} {}.", (started > 1) ? "s" : "", grfids);
-			if (argc >= 3) {
-				int days = std::max(atoi(argv[2]), 1);
-				_newgrf_profile_end_date = TimerGameCalendar::date + days;
 
-				char datestrbuf[32]{ 0 };
-				SetDParam(0, _newgrf_profile_end_date);
-				GetString(datestrbuf, STR_JUST_DATE_ISO, lastof(datestrbuf));
-				IConsolePrint(CC_DEBUG, "Profiling will automatically stop on game date {}.", datestrbuf);
-			} else {
-				_newgrf_profile_end_date = MAX_DATE;
+			if (argc >= 3) {
+				uint64 ticks = std::max(atoi(argv[2]), 1);
+				NewGRFProfiler::StartTimer(ticks);
+				IConsolePrint(CC_DEBUG, "Profiling will automatically stop after {} ticks.", ticks);
 			}
 		} else if (_newgrf_profilers.empty()) {
 			IConsolePrint(CC_ERROR, "No GRFs selected for profiling, did not start.");
@@ -2314,7 +2309,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
 			pr.Abort();
 		}
-		_newgrf_profile_end_date = MAX_DATE;
+		NewGRFProfiler::AbortTimer();
 		return true;
 	}
 
