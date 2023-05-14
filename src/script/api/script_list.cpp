@@ -28,7 +28,7 @@ public:
 	/**
 	 * Virtual dtor, needed to mute warnings.
 	 */
-	virtual ~ScriptListSorter() { }
+	virtual ~ScriptListSorter() = default;
 
 	/**
 	 * Get the first item of the sorter.

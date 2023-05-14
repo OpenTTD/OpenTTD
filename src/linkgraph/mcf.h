@@ -81,11 +81,6 @@ public:
 	 * @param graph Component to be calculated.
 	 */
 	virtual void Run(LinkGraphJob &job) const { Tpass pass(job); }
-
-	/**
-	 * Destructor. Has to be given because of virtual Run().
-	 */
-	virtual ~MCFHandler() {}
 };
 
 #endif /* MCF_H */

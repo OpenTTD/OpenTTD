@@ -30,10 +30,6 @@ public:
 	FlowMapper(bool scale) : scale(scale) {}
 	virtual void Run(LinkGraphJob &job) const;
 
-	/**
-	 * Virtual destructor has to be defined because of virtual Run().
-	 */
-	virtual ~FlowMapper() {}
 private:
 
 	/**

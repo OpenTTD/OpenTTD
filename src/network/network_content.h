@@ -57,7 +57,7 @@ struct ContentCallback {
 	virtual void OnDownloadComplete(ContentID cid) {}
 
 	/** Silentium */
-	virtual ~ContentCallback() {}
+	virtual ~ContentCallback() = default;
 };
 
 /**

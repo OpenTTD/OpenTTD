@@ -89,12 +89,12 @@ typedef SmallMap<int, Font *> FontMap;
  */
 class ParagraphLayouter {
 public:
-	virtual ~ParagraphLayouter() {}
+	virtual ~ParagraphLayouter() = default;
 
 	/** Visual run contains data about the bit of text with the same font. */
 	class VisualRun {
 	public:
-		virtual ~VisualRun() {}
+		virtual ~VisualRun() = default;
 		virtual const Font *GetFont() const = 0;
 		virtual int GetGlyphCount() const = 0;
 		virtual const GlyphID *GetGlyphs() const = 0;
@@ -106,7 +106,7 @@ public:
 	/** A single line worth of VisualRuns. */
 	class Line {
 	public:
-		virtual ~Line() {}
+		virtual ~Line() = default;
 		virtual int GetLeading() const = 0;
 		virtual int GetWidth() const = 0;
 		virtual int CountRuns() const = 0;

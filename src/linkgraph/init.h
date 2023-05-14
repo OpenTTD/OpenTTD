@@ -17,11 +17,6 @@ public:
 	 * @param job Job to be initialized.
 	 */
 	virtual void Run(LinkGraphJob &job) const { job.Init(); }
-
-	/**
-	 * Virtual destructor has to be defined because of virtual Run().
-	 */
-	virtual ~InitHandler() {}
 };
 
 #endif /* INIT_H */

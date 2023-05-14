@@ -204,7 +204,7 @@ public:
 	std::vector<EntityIDMapping> mappings; ///< mapping of ids from grf files.  Public out of convenience
 
 	OverrideManagerBase(uint16 offset, uint16 maximum, uint16 invalid);
-	virtual ~OverrideManagerBase() {}
+	virtual ~OverrideManagerBase() = default;
 
 	void ResetOverride();
 	void ResetMapping();

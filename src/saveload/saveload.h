@@ -424,7 +424,7 @@ struct ChunkHandler {
 
 	ChunkHandler(uint32 id, ChunkType type) : id(id), type(type) {}
 
-	virtual ~ChunkHandler() {}
+	virtual ~ChunkHandler() = default;
 
 	/**
 	 * Save the chunk.
@@ -480,7 +480,7 @@ class SaveLoadHandler {
 public:
 	std::optional<std::vector<SaveLoad>> load_description;
 
-	virtual ~SaveLoadHandler() {}
+	virtual ~SaveLoadHandler() = default;
 
 	/**
 	 * Save the object to disk.
