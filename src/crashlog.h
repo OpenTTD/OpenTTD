@@ -81,7 +81,7 @@ protected:
 
 public:
 	/** Stub destructor to silence some compilers. */
-	virtual ~CrashLog() {}
+	virtual ~CrashLog() = default;
 
 	char *FillCrashLog(char *buffer, const char *last) const;
 	bool WriteCrashLog(const char *buffer, char *filename, const char *filename_last) const;

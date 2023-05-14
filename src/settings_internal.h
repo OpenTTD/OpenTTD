@@ -72,7 +72,7 @@ struct IniItem;
 struct SettingDesc {
 	SettingDesc(const SaveLoad &save, SettingFlag flags, bool startup) :
 		flags(flags), startup(startup), save(save) {}
-	virtual ~SettingDesc() {}
+	virtual ~SettingDesc() = default;
 
 	SettingFlag flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).
 	bool startup;       ///< Setting has to be loaded directly at startup?.
@@ -155,7 +155,6 @@ struct IntSettingDesc : SettingDesc {
 		SettingDesc(save, flags, startup), def(def), min(min), max(max), interval(interval),
 			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
 			post_callback(post_callback) {}
-	virtual ~IntSettingDesc() {}
 
 	int32 def;              ///< default value given when none is present
 	int32 min;              ///< minimum values
@@ -196,7 +195,6 @@ struct BoolSettingDesc : IntSettingDesc {
 			PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		IntSettingDesc(save, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat,
 			pre_check, post_callback) {}
-	virtual ~BoolSettingDesc() {}
 
 	bool IsBoolSetting() const override { return true; }
 	size_t ParseValue(const char *str) const override;
@@ -217,8 +215,6 @@ struct OneOfManySettingDesc : IntSettingDesc {
 		for (auto one : many) this->many.push_back(one);
 	}
 
-	virtual ~OneOfManySettingDesc() {}
-
 	std::vector<std::string> many; ///< possible values for this type
 	OnConvert *many_cnvt;          ///< callback procedure when loading value mechanism fails
 
@@ -237,7 +233,6 @@ struct ManyOfManySettingDesc : OneOfManySettingDesc {
 		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
 		OneOfManySettingDesc(save, flags, startup, def, (1 << many.size()) - 1, str, str_help,
 			str_val, cat, pre_check, post_callback, many, many_cnvt) {}
-	virtual ~ManyOfManySettingDesc() {}
 
 	size_t ParseValue(const char *str) const override;
 	void FormatValue(char *buf, const char *last, const void *object) const override;
@@ -264,7 +259,6 @@ struct StringSettingDesc : SettingDesc {
 			uint32 max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		SettingDesc(save, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
 			pre_check(pre_check), post_callback(post_callback) {}
-	virtual ~StringSettingDesc() {}
 
 	std::string def;                   ///< Default value given when none is present
 	uint32 max_length;                 ///< Maximum length of the string, 0 means no maximum length
@@ -288,7 +282,6 @@ private:
 struct ListSettingDesc : SettingDesc {
 	ListSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, const char *def) :
 		SettingDesc(save, flags, startup), def(def) {}
-	virtual ~ListSettingDesc() {}
 
 	const char *def;        ///< default value given when none is present
 
@@ -301,7 +294,6 @@ struct ListSettingDesc : SettingDesc {
 struct NullSettingDesc : SettingDesc {
 	NullSettingDesc(const SaveLoad &save) :
 		SettingDesc(save, SF_NOT_IN_CONFIG, false) {}
-	virtual ~NullSettingDesc() {}
 
 	void FormatValue(char *buf, const char *last, const void *object) const override { NOT_REACHED(); }
 	void ParseValue(const IniItem *item, void *object) const override { NOT_REACHED(); }

@@ -1442,7 +1442,7 @@ public:
 		this->height = d.height + WidgetDimensions::scaled.framerect.Vertical();
 		this->width = d.width + WidgetDimensions::scaled.framerect.Horizontal();
 	}
-	virtual ~ButtonCommon() {}
+	virtual ~ButtonCommon() = default;
 
 	/**
 	 * OnClick handler for when the button is pressed.

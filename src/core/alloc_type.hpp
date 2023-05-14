@@ -86,7 +86,7 @@ class ZeroedMemoryAllocator
 {
 public:
 	ZeroedMemoryAllocator() {}
-	virtual ~ZeroedMemoryAllocator() {}
+	virtual ~ZeroedMemoryAllocator() = default;
 
 	/**
 	 * Memory allocator for a single class instance.

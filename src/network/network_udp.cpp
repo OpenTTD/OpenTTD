@@ -70,7 +70,7 @@ public:
 	 * @param addresses The addresses to bind on.
 	 */
 	ServerNetworkUDPSocketHandler(NetworkAddressList *addresses) : NetworkUDPSocketHandler(addresses) {}
-	virtual ~ServerNetworkUDPSocketHandler() {}
+	virtual ~ServerNetworkUDPSocketHandler() = default;
 };
 
 void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr)
@@ -88,7 +88,7 @@ class ClientNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
 	void Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr) override;
 public:
-	virtual ~ClientNetworkUDPSocketHandler() {}
+	virtual ~ClientNetworkUDPSocketHandler() = default;
 };
 
 void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr)

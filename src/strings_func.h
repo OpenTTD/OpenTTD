@@ -257,7 +257,7 @@ bool StringIDSorter(const StringID &a, const StringID &b);
 class MissingGlyphSearcher {
 public:
 	/** Make sure everything gets destructed right. */
-	virtual ~MissingGlyphSearcher() {}
+	virtual ~MissingGlyphSearcher() = default;
 
 	/**
 	 * Get the next string to search through.

@@ -212,7 +212,7 @@ extern uint _missing_extra_graphics;  ///< Number of sprites provided by the fal
 /** Callback for NewGRF scanning. */
 struct NewGRFScanCallback {
 	/** Make sure the right destructor gets called. */
-	virtual ~NewGRFScanCallback() {}
+	virtual ~NewGRFScanCallback() = default;
 	/** Called whenever the NewGRF scan completed. */
 	virtual void OnNewGRFsScanned() = 0;
 };

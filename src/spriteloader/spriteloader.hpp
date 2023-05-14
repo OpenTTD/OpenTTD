@@ -77,14 +77,14 @@ public:
 	 */
 	virtual uint8 LoadSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags) = 0;
 
-	virtual ~SpriteLoader() { }
+	virtual ~SpriteLoader() = default;
 };
 
 /** Interface for something that can encode a sprite. */
 class SpriteEncoder {
 public:
 
-	virtual ~SpriteEncoder() { }
+	virtual ~SpriteEncoder() = default;
 
 	/**
 	 * Can the sprite encoder make use of RGBA sprites?

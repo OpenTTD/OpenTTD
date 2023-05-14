@@ -23,7 +23,7 @@ public:
 	/**
 	 * Destroy the handler. Must be given due to virtual Run.
 	 */
-	virtual ~ComponentHandler() {}
+	virtual ~ComponentHandler() = default;
 
 	/**
 	 * Run the handler. A link graph handler must not read or write any data

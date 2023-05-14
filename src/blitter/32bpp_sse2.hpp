@@ -29,7 +29,7 @@
 /** Base methods for 32bpp SSE blitters. */
 class Blitter_32bppSSE_Base {
 public:
-	virtual ~Blitter_32bppSSE_Base() {}
+	virtual ~Blitter_32bppSSE_Base() = default;
 
 	struct MapValue {
 		uint8 m;

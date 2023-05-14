@@ -104,7 +104,7 @@ struct HeaderWriter {
 	virtual void Finalise(const StringData &data) = 0;
 
 	/** Especially destroy the subclasses. */
-	virtual ~HeaderWriter() {};
+	virtual ~HeaderWriter() = default;
 
 	void WriteHeader(const StringData &data);
 };
@@ -131,7 +131,7 @@ struct LanguageWriter {
 	virtual void Finalise() = 0;
 
 	/** Especially destroy the subclasses. */
-	virtual ~LanguageWriter() {}
+	virtual ~LanguageWriter() = default;
 
 	virtual void WriteLength(uint length);
 	virtual void WriteLang(const StringData &data);

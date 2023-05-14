@@ -913,7 +913,7 @@ struct BaseSettingEntry {
 	byte level; ///< Nesting level of this setting entry
 
 	BaseSettingEntry() : flags(0), level(0) {}
-	virtual ~BaseSettingEntry() {}
+	virtual ~BaseSettingEntry() = default;
 
 	virtual void Init(byte level = 0);
 	virtual void FoldAll() {}

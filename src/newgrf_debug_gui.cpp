@@ -116,7 +116,7 @@ struct NIVariable {
 class NIHelper {
 public:
 	/** Silence a warning. */
-	virtual ~NIHelper() {}
+	virtual ~NIHelper() = default;
 
 	/**
 	 * Is the item with the given index inspectable?

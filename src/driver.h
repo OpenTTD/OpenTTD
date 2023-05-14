@@ -33,7 +33,7 @@ public:
 	 */
 	virtual void Stop() = 0;
 
-	virtual ~Driver() { }
+	virtual ~Driver() = default;
 
 	/** The type of driver */
 	enum Type {

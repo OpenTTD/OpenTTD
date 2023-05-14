@@ -40,7 +40,7 @@ struct HTTPCallback {
 	virtual bool IsCancelled() const = 0;
 
 	/** Silentium */
-	virtual ~HTTPCallback() {}
+	virtual ~HTTPCallback() = default;
 };
 
 /** Base socket handler for HTTP traffic. */
