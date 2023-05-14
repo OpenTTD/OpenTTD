@@ -690,9 +690,9 @@ private:
 		ShowDropDownList(this, std::move(list), sel, widget);
 	}
 
-	void AddChildren(GUIGroupList *source, GroupID parent, int indent)
+	void AddChildren(GUIGroupList &source, GroupID parent, int indent)
 	{
-		for (const Group *g : *source) {
+		for (const Group *g : source) {
 			if (g->parent != parent) continue;
 			this->groups.push_back(g);
 			this->indents.push_back(indent);
@@ -740,7 +740,7 @@ private:
 				return r < 0;
 			});
 
-			AddChildren(&list, INVALID_GROUP, 0);
+			AddChildren(list, INVALID_GROUP, 0);
 		}
 
 		this->groups.shrink_to_fit();

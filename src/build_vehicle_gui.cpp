@@ -1430,14 +1430,14 @@ struct BuildVehicleWindow : Window {
 
 		/* make engines first, and then wagons, sorted by selected sort_criteria */
 		_engine_sort_direction = false;
-		EngList_Sort(&list, TrainEnginesThenWagonsSorter);
+		EngList_Sort(list, TrainEnginesThenWagonsSorter);
 
 		/* and then sort engines */
 		_engine_sort_direction = this->descending_sort_order;
-		EngList_SortPartial(&list, _engine_sort_functions[0][this->sort_criteria], 0, num_engines);
+		EngList_SortPartial(list, _engine_sort_functions[0][this->sort_criteria], 0, num_engines);
 
 		/* and finally sort wagons */
-		EngList_SortPartial(&list, _engine_sort_functions[0][this->sort_criteria], num_engines, list.size() - num_engines);
+		EngList_SortPartial(list, _engine_sort_functions[0][this->sort_criteria], num_engines, list.size() - num_engines);
 	}
 
 	/* Figure out what road vehicle EngineIDs to put in the list */
@@ -1561,7 +1561,7 @@ struct BuildVehicleWindow : Window {
 		}
 
 		_engine_sort_direction = this->descending_sort_order;
-		EngList_Sort(&this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
+		EngList_Sort(this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
 
 		this->eng_list.swap(list);
 		AddChildren(list, INVALID_ENGINE, 0);

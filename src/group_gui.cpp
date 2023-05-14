@@ -136,16 +136,16 @@ private:
 
 	Dimension column_size[VGC_END]; ///< Size of the columns in the group list.
 
-	void AddChildren(GUIGroupList *source, GroupID parent, int indent)
+	void AddChildren(GUIGroupList &source, GroupID parent, int indent)
 	{
-		for (const Group *g : *source) {
+		for (const Group *g : source) {
 			if (g->parent != parent) continue;
 			this->groups.push_back(g);
 			this->indents.push_back(indent);
 			if (g->folded) {
 				/* Test if this group has children at all. If not, the folded flag should be cleared to avoid lingering unfold buttons in the list. */
-				auto child = std::find_if(source->begin(), source->end(), [g](const Group *child){ return child->parent == g->index; });
-				bool has_children = child != source->end();
+				auto child = std::find_if(source.begin(), source.end(), [g](const Group *child){ return child->parent == g->index; });
+				bool has_children = child != source.end();
 				Group::Get(g->index)->folded = has_children;
 			} else {
 				AddChildren(source, g->index, indent + 1);
@@ -196,7 +196,7 @@ private:
 			return r < 0;
 		});
 
-		AddChildren(&list, INVALID_GROUP, 0);
+		AddChildren(list, INVALID_GROUP, 0);
 
 		this->groups.shrink_to_fit();
 		this->groups.RebuildDone();
