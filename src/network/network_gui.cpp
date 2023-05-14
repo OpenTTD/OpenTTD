@@ -2428,7 +2428,8 @@ struct NetworkAskRelayWindow : public Window {
 	{
 		if (widget == WID_NAR_TEXT) {
 			*size = GetStringBoundingBox(STR_NETWORK_ASK_RELAY_TEXT);
-			size->height = GetStringHeight(STR_NETWORK_ASK_RELAY_TEXT, size->width - WidgetDimensions::scaled.frametext.Horizontal()) + WidgetDimensions::scaled.frametext.Vertical();
+			size->width += WidgetDimensions::scaled.frametext.Horizontal();
+			size->height += WidgetDimensions::scaled.frametext.Vertical();
 		}
 	}
 
