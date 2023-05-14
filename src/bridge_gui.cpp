@@ -106,15 +106,15 @@ private:
 		return a.spec->speed < b.spec->speed;
 	}
 
-	void BuildBridge(uint8 i)
+	void BuildBridge(BridgeType type)
 	{
 		switch (this->transport_type) {
-			case TRANSPORT_RAIL: _last_railbridge_type = this->bridges.at(i).index; break;
-			case TRANSPORT_ROAD: _last_roadbridge_type = this->bridges.at(i).index; break;
+			case TRANSPORT_RAIL: _last_railbridge_type = type; break;
+			case TRANSPORT_ROAD: _last_roadbridge_type = type; break;
 			default: break;
 		}
 		Command<CMD_BUILD_BRIDGE>::Post(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE, CcBuildBridge,
-					this->end_tile, this->start_tile, this->transport_type, this->bridges.at(i).index, this->road_rail_type);
+					this->end_tile, this->start_tile, this->transport_type, type, this->road_rail_type);
 	}
 
 	/** Sort the builable bridges */
@@ -250,7 +250,7 @@ public:
 		const uint8 i = keycode - '1';
 		if (i < 9 && i < this->bridges.size()) {
 			/* Build the requested bridge */
-			this->BuildBridge(i);
+			this->BuildBridge(this->bridges[i].index);
 			this->Close();
 			return ES_HANDLED;
 		}
@@ -264,7 +264,7 @@ public:
 			case WID_BBS_BRIDGE_LIST: {
 				auto it = this->vscroll->GetScrolledItemFromWidget(this->bridges, pt.y, this, WID_BBS_BRIDGE_LIST);
 				if (it != this->bridges.end()) {
-					this->BuildBridge(it - this->bridges.begin());
+					this->BuildBridge(it->index);
 					this->Close();
 				}
 				break;
