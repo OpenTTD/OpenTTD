@@ -2691,8 +2691,11 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Xây d�
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Chọn loại ga để hiển thị
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Chọn loại ga để xây dựng
 
-STR_STATION_CLASS_DFLT                                          :Ga mặc định
+STR_STATION_CLASS_DFLT                                          :Mặc định
+STR_STATION_CLASS_DFLT_STATION                                  :Trạm mặc định
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Điểm dừng trên đường mặc định
 STR_STATION_CLASS_WAYP                                          :Điểm mốc
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Điểm mốc mặc định
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Chọn Đèn Tín Hiệu
