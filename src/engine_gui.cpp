@@ -324,10 +324,10 @@ void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID eng
  * @param el list to be sorted
  * @param compare function for evaluation of the quicksort
  */
-void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
+void EngList_Sort(GUIEngineList &el, EngList_SortTypeFunction compare)
 {
-	if (el->size() < 2) return;
-	std::sort(el->begin(), el->end(), compare);
+	if (el.size() < 2) return;
+	std::sort(el.begin(), el.end(), compare);
 }
 
 /**
@@ -337,11 +337,11 @@ void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
  * @param begin start of sorting
  * @param num_items count of items to be sorted
  */
-void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, size_t begin, size_t num_items)
+void EngList_SortPartial(GUIEngineList &el, EngList_SortTypeFunction compare, size_t begin, size_t num_items)
 {
 	if (num_items < 2) return;
-	assert(begin < el->size());
-	assert(begin + num_items <= el->size());
-	std::sort(el->begin() + begin, el->begin() + begin + num_items, compare);
+	assert(begin < el.size());
+	assert(begin + num_items <= el.size());
+	std::sort(el.begin() + begin, el.begin() + begin + num_items, compare);
 }
 
