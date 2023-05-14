@@ -180,7 +180,7 @@ void CargoList<Tinst, Tcont>::RemoveFromCache(const CargoPacket *cp, uint count)
 {
 	assert(count <= cp->count);
 	this->count                 -= count;
-	this->cargo_days_in_transit -= cp->days_in_transit * count;
+	this->cargo_days_in_transit -= static_cast<uint64_t>(cp->days_in_transit) * count;
 }
 
 /**
@@ -192,7 +192,7 @@ template <class Tinst, class Tcont>
 void CargoList<Tinst, Tcont>::AddToCache(const CargoPacket *cp)
 {
 	this->count                 += cp->count;
-	this->cargo_days_in_transit += cp->days_in_transit * cp->count;
+	this->cargo_days_in_transit += static_cast<uint64_t>(cp->days_in_transit) * cp->count;
 }
 
 /** Invalidates the cached data and rebuilds it. */
