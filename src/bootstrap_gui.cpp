@@ -102,7 +102,8 @@ public:
 	{
 		if (widget == WID_BEM_MESSAGE) {
 			*size = GetStringBoundingBox(STR_MISSING_GRAPHICS_ERROR);
-			size->height = GetStringHeight(STR_MISSING_GRAPHICS_ERROR, size->width - WidgetDimensions::scaled.frametext.Horizontal()) + WidgetDimensions::scaled.frametext.Vertical();
+			size->width += WidgetDimensions::scaled.frametext.Horizontal();
+			size->height += WidgetDimensions::scaled.frametext.Vertical();
 		}
 	}
 
