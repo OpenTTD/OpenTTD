@@ -1022,6 +1022,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3倍
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4倍
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5倍
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}图像
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}显示刷新率
@@ -2374,6 +2375,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} 无法
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，本次请求
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，不要再次询问
+
 
 STR_NETWORK_SPECTATORS                                          :旁观者
 
@@ -4619,7 +4621,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}強迫�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}查看说明
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}更新日志
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}版权信息
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} 的说明
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} 的更新日志
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} 的版权信息

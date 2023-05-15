@@ -1042,6 +1042,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :x5
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK} Graphiques
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK} Taux de rafraîchissement de l'affichage
@@ -2402,6 +2403,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Aucune 
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Non
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Oui, cette fois uniquement
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Oui, ne plus me demander
+
 
 STR_NETWORK_SPECTATORS                                          :Spectateurs
 
@@ -4652,7 +4654,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Insérer
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Voir le Lisez-moi
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Journal des modifications
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Lisez-moi du module {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Journal des modifications pour le module {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licence du module {STRING} {STRING}

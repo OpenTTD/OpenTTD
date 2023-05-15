@@ -970,6 +970,7 @@ STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 
 
+
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Byldferfaskingssnelheid
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset for ôfbyldings
@@ -2108,6 +2109,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Bisto d
 
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nee
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, net wer freegje
+
 
 STR_NETWORK_SPECTATORS                                          :Taskôgers
 
@@ -3881,7 +3883,7 @@ STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Omwikkel
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Besjoch readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Feroarings
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisinsje
-###length 3
+###length 4
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} feroarings fan {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisinsje fan {STRING}
 

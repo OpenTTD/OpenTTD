@@ -1282,6 +1282,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Iншае
 
 
 
+
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Чашчыня абнаўлення экрана
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Набор базавай ґрафікі
@@ -2505,6 +2506,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Гэта
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Адключыць
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Адключыць гульца «{STRING}»?
+
 
 
 STR_NETWORK_SPECTATORS                                          :Назіральнікі
@@ -4638,7 +4640,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Пера
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Прагледзець iнструкцыю
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Журнал зьменаў
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцэнзія
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} iнструкцыя {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} сьпiс зьменаў {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} ліцэнзія {STRING}

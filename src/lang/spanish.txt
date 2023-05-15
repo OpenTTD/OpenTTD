@@ -1023,6 +1023,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Mostrar frecuencia de actualización
@@ -2374,6 +2375,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}La cone
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, sólo esta vez
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, y no preguntar de nuevo
+
 
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
@@ -4616,7 +4618,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Limitar 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver léeme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registro de cambios
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencia
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Léeme del {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registro de cambios del {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licencia del {STRING} {STRING}

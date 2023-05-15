@@ -430,6 +430,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
+
 # Custom currency window
 
 
@@ -788,6 +789,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -1331,7 +1333,7 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Исчи
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Прикажи ги чита-ми
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Промени се најавите
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лиценца
-###length 3
+###length 4
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лиценца за {STRING}
 
 

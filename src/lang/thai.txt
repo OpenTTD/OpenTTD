@@ -969,6 +969,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
 
 
+
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}รีเฟรชเรทของหน้าจอ
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}หากตั้งรีเฟรชเรทไว้มากกว่า 60Hz ขึ้นไป อาจมีผลต่อประสิทธิภาพของเกมได้
 
@@ -2193,6 +2194,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}คุ�
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}ใช้รีเลย์มั้ย?
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}ใช่ครั้งเดียว
+
 
 STR_NETWORK_SPECTATORS                                          :ผู้ชม
 
@@ -4268,7 +4270,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}จั�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}แสดง readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}ข้อมูลการอัพเดต
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}การอนุญาต
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme ของ {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog ของ {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} การอนุญาตของ {STRING}

@@ -1186,6 +1186,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Настройки графики
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Частота обновления экрана
@@ -2552,6 +2553,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Не у
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Нет
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Да, однократно
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Да, всегда
+
 
 STR_NETWORK_SPECTATORS                                          :Зрители
 
@@ -4841,7 +4843,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Пере
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Посмотреть инструкцию
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Список изменений
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лицензия
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Инструкция к {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Список изменений к {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Лицензия к {STRING} {STRING}

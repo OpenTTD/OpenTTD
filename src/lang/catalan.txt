@@ -1042,6 +1042,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :x3
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :x4
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :x5
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gràfics
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Rati de refresc de la pantalla
@@ -2402,6 +2403,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}No s'ha
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, aquest una vegada.
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no ho preguntis més.
+
 
 STR_NETWORK_SPECTATORS                                          :Espectadors
 
@@ -4655,7 +4657,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ajusta e
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeix-me
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registre de canvis
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Llicència
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeix-me del {STRING} de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Llicència del {STRING} de {STRING}

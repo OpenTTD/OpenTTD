@@ -497,6 +497,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
+
 # Custom currency window
 
 
@@ -860,6 +861,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -1459,7 +1461,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-###length 3
+###length 4
 
 
 # Vehicle loading indicators

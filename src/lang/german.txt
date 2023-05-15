@@ -1023,6 +1023,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3×
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4×
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Bildwiederholrate
@@ -2376,6 +2377,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Verbind
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nein
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, diesmal
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, nicht erneut fragen
+
 
 STR_NETWORK_SPECTATORS                                          :Zuschauer
 
@@ -4623,7 +4625,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Text des
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Liesmich anzeigen
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Änderungen
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizenz
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}-Liesmich von {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}-Änderungen von {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}-Lizenz von {STRING}

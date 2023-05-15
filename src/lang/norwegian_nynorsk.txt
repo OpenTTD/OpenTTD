@@ -955,6 +955,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anna
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel grafikksett som skal nyttast
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglande/øydelagd{P "" e} fil{P "" er}
@@ -2065,6 +2066,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klie
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -4054,7 +4056,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Bryt tek
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vis lesmeg
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Endringslogg
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisens
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} lesmeg for {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} endringslogg for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisens for {STRING}

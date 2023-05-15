@@ -1042,6 +1042,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikler
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Tazeleme oranını görüntüle
@@ -2402,6 +2403,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Sunucu 
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Hayır
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Evet, bu seferliğine
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Evet, bir daha sorma
+
 
 STR_NETWORK_SPECTATORS                                          :İzleyiciler
 
@@ -4655,7 +4657,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Metni, o
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Benioku dosyasını göster
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Değişiklik kayıtları
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisans
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} adlı {STRING}'nin benioku dosyası
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} adlı {STRING}'nin değişiklik kaydı
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} adlı {STRING}'nin lisansı

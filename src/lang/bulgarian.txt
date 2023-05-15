@@ -953,6 +953,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базов графичен набор
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Изберете базов графичен набор
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} липсващи/повредени файлове
@@ -2104,6 +2105,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Списък с
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -4111,7 +4113,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Реор
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Отвори readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Дневник на промените
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лиценз
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme of {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Дневник на промените на {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лиценз на {STRING}

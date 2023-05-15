@@ -1024,6 +1024,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekrāna atsvaidzes intensitāte
@@ -2377,6 +2378,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} Neizde
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nē
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Jā, vienreiz
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Jā, vairs nejautāt
+
 
 STR_NETWORK_SPECTATORS                                          :Novērotāji
 
@@ -4626,7 +4628,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Aplauzt 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Skatīt failu Lasi_mani
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} kopas {STRING} fails Lasi_mani
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} kopas {STRING} izmaiņu žurnāls
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} kopas {STRING} licence

@@ -1109,6 +1109,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiky
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Obnovovací frekvence obrazovky
@@ -2462,6 +2463,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nepoda�
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ne
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ano, toto jednou
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ano, znovu se neptat
+
 
 STR_NETWORK_SPECTATORS                                          :Pozorovatelé
 
@@ -4717,7 +4719,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zalomit 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Zobrazit readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Novinky ve verzi
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} změny ve verzi {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licence {STRING}

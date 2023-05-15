@@ -1022,6 +1022,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafică
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Afișează rata de reîmprospătare
@@ -2374,6 +2375,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Conexiu
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nu
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Da, de data asta
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Da, nu mă mai întreba
+
 
 STR_NETWORK_SPECTATORS                                          :Spectatori
 
@@ -4620,7 +4622,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Încadre
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Listă modificări
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenţă
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}, fișier readme al {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}, lista de modificări a {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}, licența fișierului {STRING}

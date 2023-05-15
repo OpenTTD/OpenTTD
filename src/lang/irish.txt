@@ -999,6 +999,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cuir tic
 
 
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafaicí
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ráta athnuachana na taispeána
@@ -2328,6 +2329,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Níorbh
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Níl
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Tá, an uair seo
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Tá, ná fiafraigh díom arís
+
 
 STR_NETWORK_SPECTATORS                                          :Féachadóirí
 
@@ -4527,7 +4529,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Timthria
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Amharc ar léigh mé
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Loga na n-athruithe
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ceadúnas
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} léigh mé de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} loga athruithe de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} ceadúnas de {STRING}

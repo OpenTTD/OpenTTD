@@ -1158,6 +1158,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Gnàthaichte
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Seata grafaigeachd bunasach
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Tagh an seata grafaigeachd bunasach a chleachdas tu
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} {P fhaidhle fhaidhle faidhlichean faidhle} a dhìth/coirbte
@@ -2346,6 +2347,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta nan clia
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -4425,7 +4427,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Paisg te
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Seall “Leugh mi”
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Loga nan atharraichean
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ceadachas
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}“Leugh mi” {STRING} aig {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Loga atharraichean {STRING} aig {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ceadachas {STRING} aig {STRING}

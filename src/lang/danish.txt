@@ -1041,6 +1041,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Skærm opdateringshastighed
@@ -2400,6 +2401,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Det lyk
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nej
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, denne gang
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, spørg ikke igen
+
 
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
@@ -4648,7 +4650,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ombryd t
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ændringslog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme for {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licens for {STRING}

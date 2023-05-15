@@ -749,6 +749,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
+
 # Custom currency window
 
 
@@ -1134,6 +1135,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -1753,7 +1755,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-###length 3
+###length 4
 
 
 # Vehicle loading indicators

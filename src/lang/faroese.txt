@@ -925,6 +925,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base grafikk sett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel ta base grafikk setti tú vil brúka
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} vantandi/oyðiløgd fíl{P a ir}
@@ -1970,6 +1971,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klie
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -3685,7 +3687,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Sjá readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Broytingarskrá
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Loyvi
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme fyri {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} broytingarskrá fyri {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} loyvi fyri {STRING}

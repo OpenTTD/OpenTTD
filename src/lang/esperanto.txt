@@ -937,6 +937,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Baza grafikaro
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektu la uzendan bazgrafikaron
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} mankanta{P "" j}/koruptita{P "" j} dosiero{P "" j}
@@ -1807,6 +1808,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlisto
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -3544,7 +3546,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vidi legumin
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ŝanĝarĥivo
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenco
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} legumin de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}-a ŝanĝarĥivo de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}-a licenco de {STRING}

@@ -1022,6 +1022,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Menampilkan kecepatan refresh
@@ -2371,6 +2372,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} Gagal 
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Tidak
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ya, kali ini
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Iya, Jangan tanya lagi
+
 
 STR_NETWORK_SPECTATORS                                          :Penonton
 
@@ -4609,7 +4611,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Mengebat
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Catatan Perubahan
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensi
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}keterangan {STRING} dari {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Catatan perubahan {STRING} dari {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Lisensi {STRING} dari {STRING}

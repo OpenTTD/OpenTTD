@@ -1150,6 +1150,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Графіка
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Показати швидкість оновлення
@@ -2499,6 +2500,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Не в
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ні
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Так, тільки раз
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Так, більше не питати
+
 
 STR_NETWORK_SPECTATORS                                          :Спостерігачі
 
@@ -4742,7 +4744,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Розм
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Інструкція
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Зміни
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцензія
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ліцензія до {STRING} {STRING}

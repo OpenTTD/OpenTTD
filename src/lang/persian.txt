@@ -945,6 +945,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بسته گرافیک پایه
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بسته گرافیک پایه را انتخاب کنید
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} فایل وجود ندارد یا خراب است
@@ -1874,6 +1875,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}لیست
 
 
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}آیا از حذف شرکت «{COMPANY}» مطمئنید؟
+
 
 
 STR_NETWORK_SPECTATORS                                          :تماشاگران
@@ -3478,7 +3480,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}متن �
 STR_TEXTFILE_VIEW_README                                        :{BLACK}مشاهده راهنما
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}گزارش تغییر
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}گواهی
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}راهنمای {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} گزارش تغییرات {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} گواهی {STRING}

@@ -1110,6 +1110,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni komplet grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Izberi osnovni komplet grafik za uporabo
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manjkajoč{P a i e ih}/okvarjen{P a i e ih} datotek{P a i e ""}
@@ -2303,6 +2304,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Spremeni
 
 
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Zagotovo želiš brcniti igralca '{STRING}'?
+
 
 
 STR_NETWORK_SPECTATORS                                          :Gledalci
@@ -4307,7 +4309,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Prilagod
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Prikaži preberi-me datoteko
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Zamenjaj dnevnik
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenca
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} preberi-me od {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} zamenjaj dnevnik od {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licenca od {STRING}

@@ -1076,6 +1076,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni set grafike
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberi osnovni grafički set za igru
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} datotek{P a e a} nedostaj{P e u e}/korumpiran{P a e o}
@@ -2315,6 +2316,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Jeste l
 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Koristi relej?
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Da, samo ovaj put
+
 
 STR_NETWORK_SPECTATORS                                          :Promatrači
 
@@ -4468,7 +4470,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Posloži
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Pogledaj "pročitaj me" datoteku
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Zapis izmjena
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenca
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "pročitaj me" datoteka od {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} zapis izmjena od {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licenca od {STRING}

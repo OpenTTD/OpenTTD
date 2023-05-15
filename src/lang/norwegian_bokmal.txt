@@ -1005,6 +1005,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Merk av 
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
 STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikk
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}VIs oppdateringsfrekvens
@@ -2345,6 +2346,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Kunne i
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nei
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, denne
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, ikke spør igjen
+
 
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
@@ -4549,7 +4551,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Bryt tek
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se på hjelpefilen
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Endringslogg
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisens
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} hjelpefil til {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} endringslogg til {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisens til {STRING}

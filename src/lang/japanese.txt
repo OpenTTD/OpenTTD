@@ -1041,6 +1041,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}グラフィクス
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}画面リフレッシュレート
@@ -2400,6 +2401,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW} '{STRI
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}拒否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}一度だけ
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}はい、二度と聞かないでください
+
 
 STR_NETWORK_SPECTATORS                                          :観覧者
 
@@ -4648,7 +4650,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}ウィ�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readmeを見る
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}変更履歴を見る
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}ライセンス
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}のReadme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}の変更履歴
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}のライセンス

@@ -1078,6 +1078,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekraani värskendussagedus
@@ -2430,6 +2431,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Ühendu
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ei
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Jah, ainult seekord
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}jah, ära küsi uuesti
+
 
 STR_NETWORK_SPECTATORS                                          :Vaatlejad
 
@@ -4677,7 +4679,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Murrab t
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vaata abi
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Muudatuste logi
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Litsents
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} abi.
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} muudatuste logi {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} litsents {STRING}

@@ -957,6 +957,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set raffeg sylfaenol
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Dewiswch y set raffeg sylfaenol i'w defnyddio
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ffeil ar goll/llygredig
@@ -2146,6 +2147,7 @@ STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Anfon ne
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -4174,7 +4176,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Amlapio 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Gweld dogfenyddiaeth
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log Newidiadau
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Trwydded
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Dogfenyddiaeth {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Log newidiadau {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Trwydded {STRING} {STRING}

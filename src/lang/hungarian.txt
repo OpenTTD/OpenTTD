@@ -1105,6 +1105,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Képernyőfrissítési frekvencia
@@ -2463,6 +2464,7 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Nem sik
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nem
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Igen, most az egyszer
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Igen, ne kérdezd újra
+
 
 STR_NETWORK_SPECTATORS                                          :Megfigyelők
 
@@ -4716,7 +4718,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Szöveg 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme megtekintése
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Változások listája
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenc
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} readme-je
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}A(z) {STRING} {STRING} változásainak listája
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}A(z) {STRING} {STRING} licence

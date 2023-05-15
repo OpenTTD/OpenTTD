@@ -980,6 +980,7 @@ STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
 STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}גרפיקה
 
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}עדכוני סמך מעל 60Hz עלולים להשפיע על ביצועים.
@@ -2223,6 +2224,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}אתה 
 STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}השתמש ב"relay"?
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}לא
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}כן, זה
+
 
 STR_NETWORK_SPECTATORS                                          :צופים
 
@@ -4327,7 +4329,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}אפשר
 STR_TEXTFILE_VIEW_README                                        :{BLACK}צפה ב-"קרא אותי"
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}רשימת שינויים
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}רשיון
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "קרא אותי" של {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} רשימת שינויים של {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} רשיון של {STRING}

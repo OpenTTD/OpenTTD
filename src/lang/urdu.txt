@@ -920,6 +920,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بُنیادی گرافک سیٹ
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بُنیادی گرافک سیٹ اختیار کریں
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} missing/corrupted file{P "" s}
@@ -1761,6 +1762,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائ
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -2730,7 +2732,7 @@ STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کھی�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}مجھے پڑھیے فائل دیکھیں
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}تبدیلیوں کا ریکارڈ
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}لائسنس
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} میں سے {STRING} مجھے پڑھیے
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} میں سے {STRING} تبدیلی کا ریکارڈ
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} میں سے {STRING} لائسنس

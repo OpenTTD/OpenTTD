@@ -945,6 +945,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafiko basea markatu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko grafiko paketea
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} galdutako/hautsitako artxiboa{P "" k}
@@ -2060,6 +2061,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Bezero zerrenda
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -4032,7 +4034,7 @@ STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Testua t
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ikusi "irakur nazazu"
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Aldaketak
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizentzia
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} ren "irakur nazazu" artxiboa
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}-aren aldaketak
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} rako lizentzia

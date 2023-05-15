@@ -514,6 +514,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
 
 
+
 # Custom currency window
 
 
@@ -992,6 +993,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -1598,7 +1600,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-###length 3
+###length 4
 
 
 # Vehicle loading indicators

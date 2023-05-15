@@ -969,6 +969,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
 STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
 
+
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}அசைவூட்டங்கள்
 
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
@@ -2110,6 +2111,7 @@ STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}'{COMPA
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}இல்லை
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}ஆம், இந்த முறை மட்டும்
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}ஆம், ஆனால் மீண்டும் கேட்காதே
+
 
 STR_NETWORK_SPECTATORS                                          :கவனிப்பவர்கள்
 
@@ -4126,7 +4128,7 @@ STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}உர�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}படிக்க வேண்டியதை பார்வையிடு
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}மாற்றங்கள் பதிவேடு
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}அனுமதி
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} இன் படிப்பு அறி
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} இன் மாற்றங்கள் பதிவேடு
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} இன் அனுமதி

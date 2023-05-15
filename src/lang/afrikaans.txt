@@ -974,6 +974,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafikastel
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies die basis-grafikastel stel om te gebruik
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} verlore / korrupte ler{P "" s}
@@ -2174,6 +2175,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klient Lys
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -4282,7 +4284,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Omvou di
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Besigtig readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Veranderinge-log
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensie
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme van {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} veranderinge-log van {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisensie van {STRING}

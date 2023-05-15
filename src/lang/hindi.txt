@@ -299,6 +299,7 @@ STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}
 
 
 
+
 # Custom currency window
 
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}एक पाउंड (£) की तुलना में अपनी मुद्रा का अवमूल्यन करें
@@ -673,6 +674,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}सर�
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -1263,7 +1265,7 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 
 
 # Textfile window
-###length 3
+###length 4
 
 
 # Vehicle loading indicators

@@ -1150,6 +1150,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Fundamentum graphicum
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Eligere fundamentum graphicum adhibendum
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fascicul{P us i} absen{P s tes}/corrupt{P us i}
@@ -2348,6 +2349,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -4418,7 +4420,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Volvere 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Inspicere LegeMe
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Index Mutationum
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licentia
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} - {STRING} LegeMe
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} - {STRING} Index Mutationum
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} - {STRING} Licentia
