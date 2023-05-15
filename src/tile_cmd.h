@@ -10,6 +10,7 @@
 #ifndef TILE_CMD_H
 #define TILE_CMD_H
 
+#include "cheat_type.h"
 #include "command_type.h"
 #include "vehicle_type.h"
 #include "cargo_type.h"
@@ -206,6 +207,11 @@ static inline bool ClickTile(TileIndex tile)
 	ClickTileProc *proc = _tile_type_procs[GetTileType(tile)]->click_tile_proc;
 	if (proc == nullptr) return false;
 	return proc(tile);
+}
+
+static inline bool IsMagicBulldozeCommand(DoCommandFlag flags)
+{
+	return _cheats.magic_bulldozer.value || (flags & DC_MAGIC_BULLDOZER) != 0;
 }
 
 #endif /* TILE_CMD_H */

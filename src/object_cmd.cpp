@@ -20,7 +20,6 @@
 #include "water.h"
 #include "window_func.h"
 #include "company_gui.h"
-#include "cheat_type.h"
 #include "object.h"
 #include "cargopacket.h"
 #include "core/random_func.hpp"
@@ -563,13 +562,13 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			/* No further limitations for the editor. */
 		} else if (GetTileOwner(tile) == OWNER_NONE) {
 			/* Owned by nobody and unremovable, so we can only remove it with brute force! */
-			if (!_cheats.magic_bulldozer.value && (spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0) return CMD_ERROR;
+			if (!IsMagicBulldozeCommand(flags) && (spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0) return CMD_ERROR;
 		} else if (CheckTileOwnership(tile).Failed()) {
 			/* We don't own it!. */
 			return_cmd_error(STR_ERROR_OWNED_BY);
 		} else if ((spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0 && (spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
-			if (!_cheats.magic_bulldozer.value) {
+			if (!IsMagicBulldozeCommand(flags)) {
 				if (type == OBJECT_HQ) return_cmd_error(STR_ERROR_COMPANY_HEADQUARTERS_IN);
 				return CMD_ERROR;
 			}

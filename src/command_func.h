@@ -62,6 +62,7 @@ static constexpr inline DoCommandFlag CommandFlagsToDCFlags(CommandFlags cmd_fla
 	if (cmd_flags & CMD_NO_WATER) flags |= DC_NO_WATER;
 	if (cmd_flags & CMD_AUTO) flags |= DC_AUTO;
 	if (cmd_flags & CMD_ALL_TILES) flags |= DC_ALL_TILES;
+	if (cmd_flags & CMD_MAGIC_BULLDOZER) flags |= DC_MAGIC_BULLDOZER;
 	return flags;
 }
 

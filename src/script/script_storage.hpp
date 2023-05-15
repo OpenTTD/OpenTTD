@@ -41,6 +41,7 @@ private:
 	class ScriptObject *mode_instance; ///< The instance belonging to the current build mode.
 	ScriptAsyncModeProc *async_mode;         ///< The current command async mode we are in.
 	class ScriptObject *async_mode_instance; ///< The instance belonging to the current command async mode.
+	bool magic_bulldozer_mode;       ///< whether or not we are in magic bulldozer mode.
 	CompanyID root_company;          ///< The root company, the company that the script really belongs to.
 	CompanyID company;               ///< The current company.
 
@@ -66,23 +67,24 @@ private:
 
 public:
 	ScriptStorage() :
-		mode              (nullptr),
-		mode_instance     (nullptr),
-		async_mode        (nullptr),
+		mode                (nullptr),
+		mode_instance       (nullptr),
+		async_mode          (nullptr),
 		async_mode_instance (nullptr),
-		root_company      (INVALID_OWNER),
-		company           (INVALID_OWNER),
-		delay             (1),
-		allow_do_command  (true),
+		magic_bulldozer_mode(false),
+		root_company        (INVALID_OWNER),
+		company             (INVALID_OWNER),
+		delay               (1),
+		allow_do_command    (true),
 		/* costs (can't be set) */
-		last_cost         (0),
-		last_error        (STR_NULL),
-		last_command_res  (true),
-		last_cmd          (CMD_END),
+		last_cost           (0),
+		last_error          (STR_NULL),
+		last_command_res    (true),
+		last_cmd            (CMD_END),
 		/* calback_value (can't be set) */
-		road_type         (INVALID_ROADTYPE),
-		rail_type         (INVALID_RAILTYPE),
-		event_data        (nullptr)
+		road_type           (INVALID_ROADTYPE),
+		rail_type           (INVALID_RAILTYPE),
+		event_data          (nullptr)
 	{ }
 
 	~ScriptStorage();

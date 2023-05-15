@@ -182,6 +182,7 @@ add_files(
     script_list.hpp
     script_log.hpp
     script_log_types.hpp
+    script_magicbulldozermode.hpp
     script_map.hpp
     script_marine.hpp
     script_newgrf.hpp
@@ -254,6 +255,7 @@ add_files(
     script_league.cpp
     script_list.cpp
     script_log.cpp
+    script_magicbulldozermode.cpp
     script_map.cpp
     script_marine.cpp
     script_newgrf.cpp

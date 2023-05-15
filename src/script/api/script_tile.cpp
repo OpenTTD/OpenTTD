@@ -280,8 +280,12 @@
 {
 	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
-
-	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
+	if (GetMagicBulldozerMode()) {
+		EnforceDeityMode(false);
+		return ScriptObject::Command<CMD_LANDSCAPE_MAGIC_CLEAR>::Do(tile);
+	} else {
+		return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
+	}
 }
 
 /* static */ bool ScriptTile::PlantTree(TileIndex tile)

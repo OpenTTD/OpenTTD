@@ -244,6 +244,17 @@ protected:
 	static bool GetAllowDoCommand();
 
 	/**
+	 * Set the value of the magic bulldozer mode flag.
+	 * @param mode The new magic bulldozer mode flag value.
+	 */
+	static void SetMagicBulldozerMode(bool mode);
+
+	/**
+	 * Gets the value of the magic bulldozer mode flag.
+	 */
+	static bool GetMagicBulldozerMode();
+
+	/**
 	 * Set the current company to execute commands for or request
 	 *  information about.
 	 * @param company The new company.
