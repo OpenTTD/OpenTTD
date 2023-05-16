@@ -1041,6 +1041,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3×
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4×
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5×
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatisoitu tutkimus
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Osallistu automatisoituun tutkimukseen
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Mikäli käytössä, OpenTTD lähettää tilastointitietoja pelistä poistuttaessa
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Tutkimuksesta ja yksityisyydestä
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Avaa selaimen, jossa lisätietoja automatisoidusta tutkimuksesta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Esikatsele tutkimustulosta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Näytä meneillään olevan pelin tutkimustulos
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiikka
 
@@ -2403,6 +2410,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ei
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Kyllä, tämän kerran
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Kyllä, älä kysy uudestaan
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Osallistutko automatisoituun tutkimukseen?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Haluatko osallistua automatisoituun tutkimukseen?{}Tällöin OpenTTD lähettää tilastointitietoja aina pelistä poistuttaessa.{}Voit muuttaa tätä milloin tahansa kohdassa ”Pelin asetukset”.
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Esikatsele tutkimustulosta
+STR_NETWORK_ASK_SURVEY_LINK                                     :Tutkimuksesta ja yksityisyydestä
+STR_NETWORK_ASK_SURVEY_NO                                       :En
+STR_NETWORK_ASK_SURVEY_YES                                      :Osallistun
 
 STR_NETWORK_SPECTATORS                                          :Katsojat
 
@@ -4660,6 +4673,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisenssi
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}:n {STRING} readme-tiedosto
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}:n {STRING} muutosloki
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}:n {STRING} lisenssi
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Tutkimustuloksen esikatselu
 
 
 # Vehicle loading indicators

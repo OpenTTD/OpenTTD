@@ -1186,6 +1186,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Автоматический сбор данных
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Разрешить автоматический сбор данных
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Разрешить автоматический сбор данных о ваших настройках игры и используемых модулях. OpenTTD отправит эти данные при закрытии игры.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}О сборе данных и приватности
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Открыть ссылку с информацией об автоматическом сборе данных
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Просмотр собранных данных
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Показать собранные в текущем сеансе данные
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Настройки графики
 
@@ -2554,6 +2561,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Нет
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Да, однократно
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Да, всегда
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Разрешить автоматический сбор данных?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Разрешаете ли вы автоматический сбор данных о ваших настройках игры и используемых модулях?{}OpenTTD отправит эти данные при закрытии игры.{}Вы можете в любой момент открыть настройки и изменить своё решение.
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Просмотр собранных данных
+STR_NETWORK_ASK_SURVEY_LINK                                     :О сборе данных и приватности
+STR_NETWORK_ASK_SURVEY_NO                                       :Нет
+STR_NETWORK_ASK_SURVEY_YES                                      :Да
 
 STR_NETWORK_SPECTATORS                                          :Зрители
 
@@ -4847,6 +4860,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лице
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Инструкция к {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Список изменений к {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Лицензия к {STRING} {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Собранные данные
 
 
 # Vehicle loading indicators

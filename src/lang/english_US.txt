@@ -1041,6 +1041,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automated survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participate in automated survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}When enabled, OpenTTD will transmit a survey when leaving a game
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}About survey and privacy
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}This opens a browser with more information about the automated survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Preview survey result
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Show the survey result of the current running game
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graphics
 
@@ -2403,6 +2410,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Yes, this once
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Yes, don't ask again
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Participate in automated survey?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Would you like to participate in the automated survey?{}OpenTTD will transmit a survey when leaving a game.{}You can change this at any time under "Game Options".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Preview survey result
+STR_NETWORK_ASK_SURVEY_LINK                                     :About survey and privacy
+STR_NETWORK_ASK_SURVEY_NO                                       :No
+STR_NETWORK_ASK_SURVEY_YES                                      :Yes
 
 STR_NETWORK_SPECTATORS                                          :Spectators
 
@@ -4660,6 +4673,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}License
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme of {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog of {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} license of {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Preview of survey result
 
 
 # Vehicle loading indicators

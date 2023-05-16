@@ -930,7 +930,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}이 장�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}외부 화면에 저장된 장소로 이동합니다.
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}게임 기본 설정
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}게임 설정
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :일반
 STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}일반 설정을 선택합니다
@@ -1042,6 +1042,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}자동 설문
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}자동 설문조사 참여
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}이 설정을 켜면, 게임을 종료할 때마다 OpenTTD가 관련 설문 통계를 전송합니다
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}설문조사와 개인정보 보호에 대하여
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}자동 설문조사에 대한 더 많은 정보를 보여주기 위해 브라우저 창을 엽니다
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}설문조사 결과 미리보기
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}현재 진행 중인 게임의 설문조사 결과를 보여줍니다
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}그래픽
 
@@ -2404,6 +2411,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}아니�
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}이번에만 사용
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}항상 사용
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :설문조사에 참여하시겠습니까?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :자동 설문조사에 참여하시겠습니까?{}게임을 종료할 때마다 OpenTTD가 관련 설문 통계를 전송합니다.{}"게임 설정"에서 참여 여부를 변경할 수 있습니다.
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :설문조사 결과 미리보기
+STR_NETWORK_ASK_SURVEY_LINK                                     :설문조사와 개인정보 보호에 대하여
+STR_NETWORK_ASK_SURVEY_NO                                       :아니요
+STR_NETWORK_ASK_SURVEY_YES                                      :예
 
 STR_NETWORK_SPECTATORS                                          :관전자
 
@@ -2694,8 +2707,11 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}드래�
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}표시할 역의 종류를 선택합니다
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}건설할 역의 종류를 선택합니다
 
-STR_STATION_CLASS_DFLT                                          :기본 역사
+STR_STATION_CLASS_DFLT                                          :기본
+STR_STATION_CLASS_DFLT_STATION                                  :기본 역
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :기본 도로 정류장
 STR_STATION_CLASS_WAYP                                          :경유지
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :기본 경유지
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}신호기 선택
@@ -4658,6 +4674,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}저작�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}의 Readme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}의 변경기록
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}의 저작권
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}설문조사 결과 미리보기
 
 
 # Vehicle loading indicators

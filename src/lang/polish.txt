@@ -1421,6 +1421,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatyczna ankieta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Udział w automatycznej ankiecie
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Kiedy włączone, OpenTTD prześle ankietę przy opuszczaniu gry
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}O ankiecie i prywatności
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Spowoduje to otwarcie przeglądarki z dodatkowymi informacjami na temat automatycznej ankiety
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Podejrzyj wynik ankiety
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Pokaż wynik ankiety dotyczącej bieżącej gry
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
@@ -2783,6 +2790,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nie
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Tak, ten jeden raz
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Tak, nie pytaj ponownie
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Uczestniczyć w automatycznej ankiecie?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Czy chcesz wziąć udział w automatycznej ankiecie?{}OpenTTD prześle ankietę przy opuszczaniu gry.{}Możesz to zmienić w dowolnym momencie w „Opcjach gry”.
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Podejrzyj wynik ankiety
+STR_NETWORK_ASK_SURVEY_LINK                                     :O ankiecie i prywatności
+STR_NETWORK_ASK_SURVEY_NO                                       :Nie
+STR_NETWORK_ASK_SURVEY_YES                                      :Tak
 
 STR_NETWORK_SPECTATORS                                          :Widzowie
 
@@ -5046,6 +5059,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencja
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} - plik „readme”
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} - lista zmian
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} - licencja
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Podgląd wyniku ankiety
 
 
 # Vehicle loading indicators

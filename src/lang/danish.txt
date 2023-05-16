@@ -1041,6 +1041,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatiseret undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Deltag i automatiseret undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Når det er aktiveret, sender OpenTTD en undersøgelse, når du forlader et spil
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Om GPDR og privatliv
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Dette åbner en browser med mere information om den automatiserede undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Forhåndsvisning af undersøgelsesresultat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Vis undersøgelsesresultatet af det aktuelle spil
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
@@ -1171,6 +1178,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Udvid al
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Nulstil alle værdier
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgængelig)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Indstillingstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klient indstilling (ikke lagret i gemt spil, påvirker alle spil)
@@ -2402,6 +2410,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nej
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, denne gang
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, spørg ikke igen
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Deltag i automatiseret undersøgelse?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Kunne du tænke dig at deltage i den automatiske undersøgelse?{}OpenTTD sender en undersøgelse, når du forlader et spil.{}Du kan til enhver tid ændre dette under "Spilindstillinger".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Forhåndsvisning af undersøgelsesresultat
+STR_NETWORK_ASK_SURVEY_LINK                                     :Om undersøgelse og privatliv
+STR_NETWORK_ASK_SURVEY_NO                                       :Nej
+STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
@@ -2693,7 +2707,10 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vælg hv
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vælg hvilken stationstype du vil bygge
 
 STR_STATION_CLASS_DFLT                                          :Standard station
+STR_STATION_CLASS_DFLT_STATION                                  :Standard station
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Standard vejstop
 STR_STATION_CLASS_WAYP                                          :Rutepunkt
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standard rutepunkt
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalvælger
@@ -3829,6 +3846,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Send ins
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Udskift køretøjer
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send til eftersyn
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Afkast i år: {CURRENCY_LONG} (sidste år: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Send til remise
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Send til værksted
@@ -4654,6 +4673,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme for {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licens for {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :Forhåndsvisning af undersøgelsesresultat
 
 
 # Vehicle loading indicators
@@ -5590,11 +5610,13 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

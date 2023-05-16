@@ -1042,6 +1042,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Sondagem automatizada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participar numa sondagem automatizada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quando ativo, o OpenTTD transmitirá uma sondagem ao deixar um jogo
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Sobre sondagem e privacidade
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Isto abre um navegador com mais informações sobre a pesquisa automatizada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Pré-visualizar resultado da sondagem
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar o resultado da sondagem do jogo atual a decorrer
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
@@ -2404,6 +2411,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Não
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sim, desta vez
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sim, não perguntar novamente
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Participar na sondagem automatizada ?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Pretende participar numa sondagem automatizada?{}OpenTTD irá transmitir uma sondagem ao deixar um jogo.{}Pode alterar isto em qualquer altura nas "Opções de Jogo".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Pré-visualizar resultado da sondagem
+STR_NETWORK_ASK_SURVEY_LINK                                     :Sobre sondagem e privacidade
+STR_NETWORK_ASK_SURVEY_NO                                       :Não
+STR_NETWORK_ASK_SURVEY_YES                                      :Sim
 
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
@@ -4661,6 +4674,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leiame {STRING} de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lista de alterações {STRING} de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença {STRING} de {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Pré-visualização do resultado da sondagem
 
 
 # Vehicle loading indicators

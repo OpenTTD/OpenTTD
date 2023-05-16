@@ -1041,6 +1041,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Khảo sát tự động
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Tham gia khảo sát tự động
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Khi bật, OpenTTD sẽ gửi một khảo sát lúc rời ván chơi
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Về khảo sát và quyền riêng tư
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Sẽ mở trình duyệt để xem thêm thông tin về khảo sát tự động
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Xem trước kết quả khảo sát
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Hiển thị kết quả khảo sát ở ván chơi hiện tại
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Hình ảnh
 
@@ -2403,6 +2410,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Không
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Đồng ý, chỉ lần này
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Đồng ý, đừng hỏi lại
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Tham gia khảo sát tự động?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Bạn có muốn tham gia khảo sát tự động?{}OpenTTD sẽ gửi một khảo sát lúc rời ván chơi.{}Bạn có thể thay đổi thiết lập này ở "Thiết lập ván chơi".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Xem trước kết quả khảo sát
+STR_NETWORK_ASK_SURVEY_LINK                                     :Về khảo sát và quyền riêng tư
+STR_NETWORK_ASK_SURVEY_NO                                       :Không
+STR_NETWORK_ASK_SURVEY_YES                                      :Có
 
 STR_NETWORK_SPECTATORS                                          :Người xem
 
@@ -4660,6 +4673,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Giấy p
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Readme của {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lịch sử thay đổi của {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Giấy phép của {STRING} {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Xem trước kết quả khảo sát
 
 
 # Vehicle loading indicators
