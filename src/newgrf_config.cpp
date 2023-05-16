@@ -264,7 +264,7 @@ void GRFParameterInfo::Finalize()
 {
 	this->complete_labels = true;
 	for (uint32 value = this->min_value; value <= this->max_value; value++) {
-		if (!this->value_names.Contains(value)) {
+		if (this->value_names.count(value) == 0) {
 			this->complete_labels = false;
 			break;
 		}

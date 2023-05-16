@@ -22,7 +22,6 @@ add_files(
     pool_type.hpp
     random_func.cpp
     random_func.hpp
-    smallmap_type.hpp
     smallstack_type.hpp
     smallvec_type.hpp
     span_type.hpp

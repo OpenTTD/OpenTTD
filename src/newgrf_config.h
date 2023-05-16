@@ -12,7 +12,6 @@
 
 #include "strings_type.h"
 #include "core/alloc_type.hpp"
-#include "core/smallmap_type.hpp"
 #include "misc/countedptr.hpp"
 #include "fileio_type.h"
 #include "textfile_type.h"
@@ -143,7 +142,7 @@ struct GRFParameterInfo {
 	byte param_nr;         ///< GRF parameter to store content in
 	byte first_bit;        ///< First bit to use in the GRF parameter
 	byte num_bit;          ///< Number of bits to use for this parameter
-	SmallMap<uint32, GRFTextList> value_names; ///< Names for each value.
+	std::map<uint32_t, GRFTextList> value_names; ///< Names for each value.
 	bool complete_labels;  ///< True if all values have a label.
 
 	uint32 GetValue(struct GRFConfig *config) const;

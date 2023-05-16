@@ -25,7 +25,7 @@ enum SaveLoadInvalidateWindowData {
 	SLIWD_FILTER_CHANGES,        ///< The filename filter has changed (via the editbox)
 };
 
-typedef SmallMap<uint, CompanyProperties *> CompanyPropertiesMap;
+using CompanyPropertiesMap = std::map<uint, CompanyProperties *>;
 
 /**
  * Container for loading in mode SL_LOAD_CHECK.

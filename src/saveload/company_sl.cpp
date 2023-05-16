@@ -548,7 +548,11 @@ struct PLYRChunkHandler : ChunkHandler {
 				cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
 			}
 
-			if (!_load_check_data.companies.Insert(index, cprops)) delete cprops;
+			if (_load_check_data.companies.count(index) == 0) {
+				_load_check_data.companies[index] = cprops;
+			} else {
+				delete cprops;
+			}
 		}
 	}
 

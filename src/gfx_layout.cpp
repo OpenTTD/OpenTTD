@@ -103,8 +103,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 			continue;
 		}
 
-		if (!fontMapping.Contains(buff - buff_begin)) {
-			fontMapping.Insert(buff - buff_begin, f);
+		if (fontMapping.count(buff - buff_begin) == 0) {
+			fontMapping[buff - buff_begin] = f;
 		}
 		f = Layouter::GetFont(state.fontsize, state.cur_colour);
 	}
@@ -112,8 +112,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	/* Better safe than sorry. */
 	*buff = '\0';
 
-	if (!fontMapping.Contains(buff - buff_begin)) {
-		fontMapping.Insert(buff - buff_begin, f);
+	if (fontMapping.count(buff - buff_begin) == 0) {
+		fontMapping[buff - buff_begin] = f;
 	}
 	line.layout = T::GetParagraphLayout(buff_begin, buff, fontMapping);
 	line.state_after = state;
@@ -296,12 +296,11 @@ ptrdiff_t Layouter::GetCharAtPosition(int x) const
  */
 Font *Layouter::GetFont(FontSize size, TextColour colour)
 {
-	FontColourMap::iterator it = fonts[size].Find(colour);
-	if (it != fonts[size].End()) return it->second;
+	FontColourMap::iterator it = fonts[size].find(colour);
+	if (it != fonts[size].end()) return it->second;
 
-	Font *f = new Font(size, colour);
-	fonts[size].emplace_back(colour, f);
-	return f;
+	fonts[size][colour] = new Font(size, colour);
+	return fonts[size][colour];
 }
 
 /**

@@ -11,7 +11,6 @@
 #define BASE_MEDIA_BASE_H
 
 #include "fileio_func.h"
-#include "core/smallmap_type.hpp"
 #include "gfx_type.h"
 #include "textfile_type.h"
 #include "textfile_gui.h"

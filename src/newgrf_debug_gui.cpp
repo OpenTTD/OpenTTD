@@ -818,7 +818,7 @@ struct SpriteAlignerWindow : Window {
 
 	SpriteID current_sprite;                   ///< The currently shown sprite.
 	Scrollbar *vscroll;
-	SmallMap<SpriteID, XyOffs> offs_start_map; ///< Mapping of starting offsets for the sprites which have been aligned in the sprite aligner window.
+	std::map<SpriteID, XyOffs> offs_start_map; ///< Mapping of starting offsets for the sprites which have been aligned in the sprite aligner window.
 
 	static bool centre;
 	static bool crosshair;
@@ -854,7 +854,7 @@ struct SpriteAlignerWindow : Window {
 				/* Relative offset is new absolute offset - starting absolute offset.
 				 * Show 0, 0 as the relative offsets if entry is not in the map (meaning they have not been changed yet).
 				 */
-				const auto key_offs_pair = this->offs_start_map.Find(this->current_sprite);
+				const auto key_offs_pair = this->offs_start_map.find(this->current_sprite);
 				if (key_offs_pair != this->offs_start_map.end()) {
 					SetDParam(0, spr->x_offs - key_offs_pair->second.first);
 					SetDParam(1, spr->y_offs - key_offs_pair->second.second);
@@ -992,8 +992,8 @@ struct SpriteAlignerWindow : Window {
 				Sprite *spr = const_cast<Sprite *>(GetSprite(this->current_sprite, SpriteType::Normal));
 
 				/* Remember the original offsets of the current sprite, if not already in mapping. */
-				if (!(this->offs_start_map.Contains(this->current_sprite))) {
-					this->offs_start_map.Insert(this->current_sprite, XyOffs(spr->x_offs, spr->y_offs));
+				if (this->offs_start_map.count(this->current_sprite) == 0) {
+					this->offs_start_map[this->current_sprite] = XyOffs(spr->x_offs, spr->y_offs);
 				}
 				switch (widget) {
 					/* Move eight units at a time if ctrl is pressed. */
@@ -1010,7 +1010,7 @@ struct SpriteAlignerWindow : Window {
 
 			case WID_SA_RESET_REL:
 				/* Reset the starting offsets for the current sprite. */
-				this->offs_start_map.Erase(this->current_sprite);
+				this->offs_start_map.erase(this->current_sprite);
 				this->SetDirty();
 				break;
 

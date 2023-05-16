@@ -19,14 +19,14 @@
  * So if the gamelog tells a Grf is missing we do not know whether it was readded or completely removed
  * at some later point.
  */
-struct GRFPresence{
+struct GRFPresence {
 	const GRFConfig *gc;  ///< GRFConfig, if known
 	bool was_missing;     ///< Grf was missing during some gameload in the past
 
 	GRFPresence(const GRFConfig *gc) : gc(gc), was_missing(false) {}
 	GRFPresence() = default;
 };
-typedef SmallMap<uint32_t, GRFPresence> GrfIDMapping;
+using GrfIDMapping = std::map<uint32_t, GRFPresence>;
 
 struct LoggedChange {
 	LoggedChange(GamelogChangeType type = GLCT_NONE) : ct(type) {}

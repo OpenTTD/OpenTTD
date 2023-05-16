@@ -678,13 +678,12 @@ void ResetVehicleColourMap()
  * List of vehicles that should check for autoreplace this tick.
  * Mapping of vehicle -> leave depot immediately after autoreplace.
  */
-typedef SmallMap<Vehicle *, bool> AutoreplaceMap;
+using AutoreplaceMap = std::map<Vehicle *, bool>;
 static AutoreplaceMap _vehicles_to_autoreplace;
 
 void InitializeVehicles()
 {
 	_vehicles_to_autoreplace.clear();
-	_vehicles_to_autoreplace.shrink_to_fit();
 	ResetVehicleHash();
 }
 
@@ -2357,13 +2356,13 @@ void Vehicle::HandleLoading(bool mode)
  * Get a map of cargoes and free capacities in the consist.
  * @param capacities Map to be filled with cargoes and capacities.
  */
-void Vehicle::GetConsistFreeCapacities(SmallMap<CargoID, uint> &capacities) const
+void Vehicle::GetConsistFreeCapacities(std::map<CargoID, uint> &capacities) const
 {
 	for (const Vehicle *v = this; v != nullptr; v = v->Next()) {
 		if (v->cargo_cap == 0) continue;
-		std::pair<CargoID, uint> *pair = capacities.Find(v->cargo_type);
-		if (pair == capacities.End()) {
-			capacities.push_back({v->cargo_type, v->cargo_cap - v->cargo.StoredCount()});
+		auto pair = capacities.find(v->cargo_type);
+		if (pair == capacities.end()) {
+			capacities[v->cargo_type] = v->cargo_cap - v->cargo.StoredCount();
 		} else {
 			pair->second += v->cargo_cap - v->cargo.StoredCount();
 		}

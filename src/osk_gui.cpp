@@ -50,8 +50,8 @@ struct OskWindow : public Window {
 		NWidgetCore *par_wid = parent->GetWidget<NWidgetCore>(button);
 		assert(par_wid != nullptr);
 
-		assert(parent->querystrings.Contains(button));
-		this->qs         = parent->querystrings.Find(button)->second;
+		assert(parent->querystrings.count(button) != 0);
+		this->qs         = parent->querystrings.find(button)->second;
 		this->caption = (par_wid->widget_data != STR_NULL) ? par_wid->widget_data : this->qs->caption;
 		this->text_btn   = button;
 		this->text       = &this->qs->text;
