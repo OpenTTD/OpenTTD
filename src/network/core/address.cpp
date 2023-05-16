@@ -259,7 +259,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		 * of course totally unneeded ;) */
 		if (sockets != nullptr) {
 			NetworkAddress address(runp->ai_addr, (int)runp->ai_addrlen);
-			if (sockets->Contains(address)) continue;
+			if (std::any_of(sockets->begin(), sockets->end(), [&address](const auto &p) { return p.second == address; })) continue;
 		}
 		sock = func(runp);
 		if (sock == INVALID_SOCKET) continue;
@@ -284,7 +284,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		}
 
 		NetworkAddress addr(runp->ai_addr, (int)runp->ai_addrlen);
-		(*sockets)[addr] = sock;
+		(*sockets)[sock] = addr;
 		sock = INVALID_SOCKET;
 	}
 	freeaddrinfo (ai);
