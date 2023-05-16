@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "font_osx.h"
+#include "../../core/math_func.hpp"
 #include "../../blitter/factory.hpp"
 #include "../../error_func.h"
 #include "../../fileio_func.h"

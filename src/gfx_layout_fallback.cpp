@@ -266,7 +266,7 @@ const ParagraphLayouter::VisualRun &FallbackParagraphLayout::FallbackLine::GetVi
  */
 FallbackParagraphLayout::FallbackParagraphLayout(WChar *buffer, int length, FontMap &runs) : buffer_begin(buffer), buffer(buffer), runs(runs)
 {
-	assert(runs.End()[-1].first == length);
+	assert(runs.rbegin()->first == length);
 }
 
 /**
@@ -295,15 +295,15 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 	if (*this->buffer == '\0') {
 		/* Only a newline. */
 		this->buffer = nullptr;
-		l->emplace_back(this->runs.front().second, this->buffer, 0, 0);
+		l->emplace_back(this->runs.begin()->second, this->buffer, 0, 0);
 		return l;
 	}
 
 	int offset = this->buffer - this->buffer_begin;
-	FontMap::iterator iter = this->runs.data();
+	FontMap::iterator iter = this->runs.begin();
 	while (iter->first <= offset) {
-		iter++;
-		assert(iter != this->runs.End());
+		++iter;
+		assert(iter != this->runs.end());
 	}
 
 	const FontCache *fc = iter->second->fc;
@@ -325,8 +325,8 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		if (this->buffer == next_run) {
 			int w = l->GetWidth();
 			l->emplace_back(iter->second, begin, this->buffer - begin, w);
-			iter++;
-			assert(iter != this->runs.End());
+			++iter;
+			assert(iter != this->runs.end());
 
 			next_run = this->buffer_begin + iter->first;
 			begin = this->buffer;

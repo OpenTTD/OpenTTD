@@ -26,7 +26,6 @@
 #include "date_type.h"
 #include "debug.h"
 #include "core/alloc_type.hpp"
-#include "core/smallmap_type.hpp"
 #include "language.h"
 #include <sstream>
 

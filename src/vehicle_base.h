@@ -10,7 +10,6 @@
 #ifndef VEHICLE_BASE_H
 #define VEHICLE_BASE_H
 
-#include "core/smallmap_type.hpp"
 #include "track_type.h"
 #include "command_type.h"
 #include "order_base.h"
@@ -391,7 +390,7 @@ public:
 
 	void HandleLoading(bool mode = false);
 
-	void GetConsistFreeCapacities(SmallMap<CargoID, uint> &capacities) const;
+	void GetConsistFreeCapacities(std::map<CargoID, uint> &capacities) const;
 
 	uint GetConsistTotalCapacity() const;
 

@@ -167,14 +167,14 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 
 const void *TrueTypeFontCache::GetFontTable(uint32 tag, size_t &length)
 {
-	const FontTable::iterator iter = this->font_tables.Find(tag);
-	if (iter != this->font_tables.data() + this->font_tables.size()) {
+	const auto iter = this->font_tables.find(tag);
+	if (iter != this->font_tables.end()) {
 		length = iter->second.first;
 		return iter->second.second;
 	}
 
 	const void *result = this->InternalGetFontTable(tag, length);
 
-	this->font_tables.Insert(tag, std::pair<size_t, const void *>(length, result));
+	this->font_tables[tag] = std::pair<size_t, const void *>(length, result);
 	return result;
 }

@@ -283,8 +283,9 @@ struct NewGRFParametersWindow : public Window {
 				}
 				SetDParam(2, STR_JUST_INT);
 				SetDParam(3, current_value);
-				if (par_info->value_names.Contains(current_value)) {
-					const char *label = GetGRFStringFromGRFText(par_info->value_names.Find(current_value)->second);
+				auto it = par_info->value_names.find(current_value);
+				if (it != par_info->value_names.end()) {
+					const char *label = GetGRFStringFromGRFText(it->second);
 					if (label != nullptr) {
 						SetDParam(2, STR_JUST_RAW_STRING);
 						SetDParamStr(3, label);
@@ -380,7 +381,7 @@ struct NewGRFParametersWindow : public Window {
 
 							DropDownList list;
 							for (uint32 i = par_info->min_value; i <= par_info->max_value; i++) {
-								list.emplace_back(new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info->value_names.Find(i)->second), i, false));
+								list.emplace_back(new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info->value_names.find(i)->second), i, false));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, -1, wi_rect, COLOUR_ORANGE);

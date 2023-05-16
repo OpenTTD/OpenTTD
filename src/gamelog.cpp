@@ -233,25 +233,25 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, this->md5sum);
 	fmt::format_to(output_iterator, "Added NewGRF: ");
 	AddGrfInfo(output_iterator, this->grfid, this->md5sum, gc);
-	GrfIDMapping::Pair *gm = grf_names.Find(this->grfid);
-	if (gm != grf_names.End() && !gm->second.was_missing) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was already added!");
+	auto gm = grf_names.find(this->grfid);
+	if (gm != grf_names.end() && !gm->second.was_missing) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was already added!");
 	grf_names[this->grfid] = gc;
 }
 
 /* virtual */ void LoggedChangeGRFRemoved::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
 {
 	/* A NewGRF got removed from the game, either manually or by it missing when loading the game. */
-	GrfIDMapping::Pair *gm = grf_names.Find(this->grfid);
+	auto gm = grf_names.find(this->grfid);
 	fmt::format_to(output_iterator, action_type == GLAT_LOAD ? "Missing NewGRF: " : "Removed NewGRF: ");
-	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
-	if (gm == grf_names.End()) {
+	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.end() ? gm->second.gc : nullptr);
+	if (gm == grf_names.end()) {
 		fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 	} else {
 		if (action_type == GLAT_LOAD) {
 			/* Missing grfs on load are not removed from the configuration */
 			gm->second.was_missing = true;
 		} else {
-			grf_names.Erase(gm);
+			grf_names.erase(gm);
 		}
 	}
 }
@@ -262,38 +262,38 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, this->md5sum);
 	fmt::format_to(output_iterator, "Compatible NewGRF loaded: ");
 	AddGrfInfo(output_iterator, this->grfid, this->md5sum, gc);
-	if (!grf_names.Contains(this->grfid)) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
+	if (grf_names.count(this->grfid) == 0) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 	grf_names[this->grfid] = gc;
 }
 
 /* virtual */ void LoggedChangeGRFParameterChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
 {
 	/* A parameter of a NewGRF got changed after the game was started. */
-	GrfIDMapping::Pair *gm = grf_names.Find(this->grfid);
+	auto gm = grf_names.find(this->grfid);
 	fmt::format_to(output_iterator, "GRF parameter changed: ");
-	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
-	if (gm == grf_names.End()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
+	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.end() ? gm->second.gc : nullptr);
+	if (gm == grf_names.end()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 }
 
 /* virtual */ void LoggedChangeGRFMoved::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
 {
 	/* The order of NewGRFs got changed, which might cause some other NewGRFs to behave differently. */
-	GrfIDMapping::Pair *gm = grf_names.Find(this->grfid);
+	auto gm = grf_names.find(this->grfid);
 	fmt::format_to(output_iterator, "GRF order changed: {:08X} moved {} places {}",
 		BSWAP32(this->grfid), abs(this->offset), this->offset >= 0 ? "down" : "up" );
-	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
-	if (gm == grf_names.End()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
+	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.end() ? gm->second.gc : nullptr);
+	if (gm == grf_names.end()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 }
 
 /* virtual */ void LoggedChangeGRFBug::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
 {
 	/* A specific bug in a NewGRF, that could cause wide spread problems, has been noted during the execution of the game. */
-	GrfIDMapping::Pair *gm = grf_names.Find(this->grfid);
+	auto gm = grf_names.find(this->grfid);
 	assert(this->bug == GBUG_VEH_LENGTH);
 
 	fmt::format_to(output_iterator, "Rail vehicle changes length outside a depot: GRF ID {:08X}, internal ID 0x{:X}", BSWAP32(this->grfid), this->data);
-	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.End() ? gm->second.gc : nullptr);
-	if (gm == grf_names.End()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
+	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.end() ? gm->second.gc : nullptr);
+	if (gm == grf_names.end()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 }
 
 /* virtual */ void LoggedChangeEmergencySave::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)

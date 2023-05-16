@@ -102,8 +102,7 @@ public:
 
 				/* Extract font information for this run. */
 				CFRange chars = CTRunGetStringRange(run);
-				auto map = fontMapping.begin();
-				while (map < fontMapping.end() - 1 && map->first <= chars.location) map++;
+				auto map = fontMapping.upper_bound(chars.location);
 
 				this->emplace_back(run, map->second, buff);
 			}

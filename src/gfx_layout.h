@@ -12,7 +12,7 @@
 
 #include "fontcache.h"
 #include "gfx_func.h"
-#include "core/smallmap_type.hpp"
+#include "core/math_func.hpp"
 
 #include <stack>
 #include <string_view>
@@ -81,7 +81,7 @@ public:
 };
 
 /** Mapping from index to font. */
-typedef SmallMap<int, Font *> FontMap;
+using FontMap = std::map<int, Font *>;
 
 /**
  * Interface to glue fallback and normal layouter into one.
@@ -169,7 +169,7 @@ private:
 
 	static LineCacheItem &GetCachedParagraphLayout(std::string_view str, const FontState &state);
 
-	typedef SmallMap<TextColour, Font *> FontColourMap;
+	using FontColourMap = std::map<TextColour, Font *>;
 	static FontColourMap fonts[FS_END];
 public:
 	static Font *GetFont(FontSize size, TextColour colour);
