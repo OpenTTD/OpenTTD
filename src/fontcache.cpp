@@ -65,9 +65,14 @@ int GetCharacterHeight(FontSize size)
 }
 
 
-/* static */ FontCache *FontCache::caches[FS_END] = { new SpriteFontCache(FS_NORMAL), new SpriteFontCache(FS_SMALL), new SpriteFontCache(FS_LARGE), new SpriteFontCache(FS_MONO) };
+/* static */ FontCache *FontCache::caches[FS_END];
 
-
+/* static */ void FontCache::InitializeFontCaches()
+{
+	for (FontSize fs = FS_BEGIN; fs != FS_END; fs++) {
+		if (FontCache::caches[fs] == nullptr) new SpriteFontCache(fs); /* FontCache inserts itself into to the cache. */
+	}
+}
 
 /* Check if a glyph should be rendered with anti-aliasing. */
 bool GetFontAAState(FontSize size, bool check_blitter)
@@ -136,6 +141,8 @@ extern void LoadCoreTextFont(FontSize fs);
  */
 void InitFontCache(bool monospace)
 {
+	FontCache::InitializeFontCaches();
+
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
 		if (monospace != (fs == FS_MONO)) continue;
 
