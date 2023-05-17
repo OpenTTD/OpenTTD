@@ -1042,6 +1042,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Otomatik anket
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Otomatik ankete katılın
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Etkinleştirildiğinde, OpenTTD bir oyundan çıkarken bir anket gönderir
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Anket ve gizlilik hakkında
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Bu, otomatik anket hakkında daha fazla bilgi içeren bir tarayıcı açar
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Anket sonucunu önizleyin
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mevcut çalışan oyunun anket sonucunu göster
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafikler
 
@@ -2404,6 +2411,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Hayır
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Evet, bu seferliğine
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Evet, bir daha sorma
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Otomatik ankete katılıyor musunuz?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Otomatik ankete katılmak ister misiniz?{}OpenTTD, bir oyundan çıkarken bir anket gönderir.{}Bunu, "Oyun Seçenekleri" altında istediğiniz zaman değiştirebilirsiniz.
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Anket sonucunu önizleyin
+STR_NETWORK_ASK_SURVEY_LINK                                     :Anket ve gizlilik hakkında
+STR_NETWORK_ASK_SURVEY_NO                                       :Hayır
+STR_NETWORK_ASK_SURVEY_YES                                      :Evet
 
 STR_NETWORK_SPECTATORS                                          :İzleyiciler
 
@@ -4661,6 +4674,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisans
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} adlı {STRING}'nin benioku dosyası
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} adlı {STRING}'nin değişiklik kaydı
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} adlı {STRING}'nin lisansı
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Anket sonucunun önizlemesi
 
 
 # Vehicle loading indicators
