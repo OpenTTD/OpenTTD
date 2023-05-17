@@ -19,8 +19,6 @@
 #include <../squirrel/sqvm.h>
 #include "../core/alloc_func.hpp"
 
-#include <stdarg.h>
-
 /**
  * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS
  * does not have enough memory the game does not go into unrecoverable error mode and kill the

@@ -8,7 +8,6 @@
 /** @file textbuf.cpp Textbuffer handling. */
 
 #include "stdafx.h"
-#include <stdarg.h>
 
 #include "textbuf_type.h"
 #include "string_func.h"

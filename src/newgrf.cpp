@@ -9,8 +9,6 @@
 
 #include "stdafx.h"
 
-#include <stdarg.h>
-
 #include "debug.h"
 #include "fileio_func.h"
 #include "engine_func.h"

@@ -76,7 +76,6 @@
 
 #include "linkgraph/linkgraphschedule.h"
 
-#include <stdarg.h>
 #include <system_error>
 
 #include "safeguards.h"
