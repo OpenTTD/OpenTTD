@@ -28,8 +28,6 @@
 
 #include "table/strings.h"
 
-#include <deque>
-
 #include "../safeguards.h"
 
 /** The draw buffer must be able to contain the chat message, client name and the "[All]" message,

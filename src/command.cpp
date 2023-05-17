@@ -59,8 +59,6 @@
 #include "misc/endian_buffer.hpp"
 #include "string_func.h"
 
-#include <array>
-
 #include "table/strings.h"
 
 #include "safeguards.h"

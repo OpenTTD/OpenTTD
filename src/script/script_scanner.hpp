@@ -10,7 +10,6 @@
 #ifndef SCRIPT_SCANNER_HPP
 #define SCRIPT_SCANNER_HPP
 
-#include <map>
 #include "../fileio_func.h"
 #include "../string_func.h"
 

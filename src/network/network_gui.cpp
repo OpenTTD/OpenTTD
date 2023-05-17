@@ -52,8 +52,6 @@
 #	include <emscripten.h>
 #endif
 
-#include <map>
-
 #include "../safeguards.h"
 
 static void ShowNetworkStartServerWindow();

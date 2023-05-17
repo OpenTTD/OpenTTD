@@ -17,7 +17,6 @@
 #include "road.h"
 #include "road_map.h"
 #include "newgrf_engine.h"
-#include <deque>
 
 struct RoadVehicle;
 

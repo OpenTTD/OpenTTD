@@ -12,8 +12,6 @@
 #define SCRIPT_LIST_HPP
 
 #include "script_object.hpp"
-#include <map>
-#include <set>
 
 class ScriptListSorter;
 

@@ -27,7 +27,6 @@
 #include <sys/stat.h>
 #include "../../language.h"
 #include "../../thread.h"
-#include <array>
 
 #include "../../safeguards.h"
 

@@ -24,8 +24,6 @@
 #include "network/network.h"
 #include "saveload/saveload.h"
 #include "timer/timer_game_calendar.h"
-#include <list>
-#include <map>
 
 const uint TILE_AXIAL_DISTANCE = 192;  // Logical length of the tile in any DiagDirection used in vehicle movement.
 const uint TILE_CORNER_DISTANCE = 128;  // Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.

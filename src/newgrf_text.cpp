@@ -17,8 +17,6 @@
 
 #include "stdafx.h"
 
-#include <array>
-
 #include "newgrf.h"
 #include "strings_func.h"
 #include "newgrf_storage.h"
@@ -31,7 +29,6 @@
 #include "core/smallmap_type.hpp"
 #include "language.h"
 #include <sstream>
-#include <map>
 
 #include "table/strings.h"
 #include "table/control_codes.h"

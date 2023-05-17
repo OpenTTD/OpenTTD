@@ -24,8 +24,6 @@
 #include <hb.h>
 #include <hb-ft.h>
 
-#include <deque>
-
 #include "safeguards.h"
 
 /** harfbuzz doesn't use floats, so we need a value to scale position with to get sub-pixel precision. */

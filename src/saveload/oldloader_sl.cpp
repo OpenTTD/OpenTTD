@@ -33,7 +33,6 @@
 #include "../timer/timer_game_calendar.h"
 #include "saveload_internal.h"
 #include "oldloader.h"
-#include <array>
 
 #include "table/strings.h"
 #include "../table/engines.h"

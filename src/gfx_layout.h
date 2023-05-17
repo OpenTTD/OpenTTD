@@ -14,7 +14,6 @@
 #include "gfx_func.h"
 #include "core/smallmap_type.hpp"
 
-#include <map>
 #include <stack>
 #include <string_view>
 

@@ -53,6 +53,7 @@
 #endif
 
 #include <algorithm>
+#include <array>
 #include <cassert>
 #include <cctype>
 #include <cerrno>
@@ -65,12 +66,16 @@
 #include <cstring>
 #include <cstdlib>
 #include <cwchar>
+#include <deque>
 #include <exception>
 #include <functional>
 #include <iterator>
+#include <list>
 #include <limits>
+#include <map>
 #include <memory>
 #include <optional>
+#include <set>
 #include <stdexcept>
 #include <string>
 #include <type_traits>

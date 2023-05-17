@@ -11,7 +11,6 @@
 #define SCRIPT_INSTANCE_HPP
 
 #include <variant>
-#include <list>
 #include <squirrel.h>
 #include "script_suspend.hpp"
 #include "script_log_types.hpp"

@@ -16,7 +16,6 @@
 #include "subsidy_type.h"
 #include "newgrf_storage.h"
 #include "cargotype.h"
-#include <list>
 
 template <typename T>
 struct BuildingCounts {

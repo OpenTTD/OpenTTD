@@ -18,7 +18,6 @@
 #include "vehicle_type.h"
 #include "core/multimap.hpp"
 #include "saveload/saveload.h"
-#include <list>
 
 /** Unique identifier for a single cargo packet. */
 typedef uint32 CargoPacketID;

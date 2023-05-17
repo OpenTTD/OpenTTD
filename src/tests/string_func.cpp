@@ -12,7 +12,6 @@
 #include "../3rdparty/catch2/catch.hpp"
 
 #include "../string_func.h"
-#include <array>
 
 /**** String compare/equals *****/
 

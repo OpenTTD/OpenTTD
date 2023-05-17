@@ -10,8 +10,6 @@
 #ifndef SCRIPT_LOG_TYPES_HPP
 #define SCRIPT_LOG_TYPES_HPP
 
-#include <deque>
-
 namespace ScriptLogTypes {
 	/**
 	 * Log levels; The value is also feed to Debug() lvl.

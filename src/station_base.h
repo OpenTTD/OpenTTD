@@ -18,8 +18,6 @@
 #include "linkgraph/linkgraph_type.h"
 #include "newgrf_storage.h"
 #include "bitmap_type.h"
-#include <map>
-#include <set>
 
 static const byte INITIAL_STATION_RATING = 175;
 

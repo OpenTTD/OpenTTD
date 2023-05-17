@@ -16,8 +16,6 @@
 #include "../network_coordinator.h"
 #include "../network_internal.h"
 
-#include <deque>
-
 #include "../../safeguards.h"
 
 /** List of connections that are currently being created */

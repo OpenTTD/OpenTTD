@@ -13,8 +13,6 @@
 
 #include "stdafx.h"
 
-#include <set>
-
 template <typename TTimerType>
 class BaseTimer;
 

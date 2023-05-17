@@ -13,7 +13,6 @@
 #include "core/tcp_coordinator.h"
 #include "network_stun.h"
 #include "network_turn.h"
-#include <map>
 
 /**
  * Game Coordinator communication.

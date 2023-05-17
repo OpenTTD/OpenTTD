@@ -34,7 +34,6 @@
 #include "../../window_gui.h"
 #include "../../spritecache.h"
 #include "../../toolbar_gui.h"
-#include <array>
 
 #include "table/sprites.h"
 

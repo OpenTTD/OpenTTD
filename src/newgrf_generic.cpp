@@ -14,7 +14,6 @@
 #include "core/random_func.hpp"
 #include "newgrf_sound.h"
 #include "water_map.h"
-#include <list>
 
 #include "safeguards.h"
 

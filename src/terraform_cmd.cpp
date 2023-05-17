@@ -22,9 +22,6 @@
 
 #include "table/strings.h"
 
-#include <map>
-#include <set>
-
 #include "safeguards.h"
 
 /** Set of tiles. */

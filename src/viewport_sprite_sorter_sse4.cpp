@@ -14,7 +14,6 @@
 #include "smmintrin.h"
 #include "viewport_sprite_sorter.h"
 #include <forward_list>
-#include <map>
 #include <stack>
 
 #include "safeguards.h"

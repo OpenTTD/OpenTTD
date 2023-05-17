@@ -12,7 +12,6 @@
 
 #include "script_object.hpp"
 #include "script_companymode.hpp"
-#include <map>
 
 /**
  * Helper to write precondition enforcers for the script API in an abbreviated manner.

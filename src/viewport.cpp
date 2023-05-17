@@ -92,7 +92,6 @@
 #include "viewport_cmd.h"
 
 #include <forward_list>
-#include <map>
 #include <stack>
 
 #include "table/strings.h"
