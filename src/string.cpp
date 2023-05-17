@@ -17,8 +17,6 @@
 
 #include "table/control_codes.h"
 
-#include <stdarg.h>
-#include <ctype.h> /* required for tolower() */
 #include <sstream>
 #include <iomanip>
 

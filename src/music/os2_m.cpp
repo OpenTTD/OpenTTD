@@ -18,7 +18,6 @@
 #define INCL_OS2MM
 #define INCL_WIN
 
-#include <stdarg.h>
 #include <os2.h>
 #include <os2me.h>
 

@@ -21,8 +21,6 @@
 #include "table/strings.h"
 #include "table/strgen_tables.h"
 
-#include <stdarg.h>
-
 #include "../safeguards.h"
 
 void CDECL StrgenWarningI(const std::string &msg)

@@ -8,7 +8,6 @@
 /** @file window.cpp Windowing system, widgets and events */
 
 #include "stdafx.h"
-#include <stdarg.h>
 #include "company_func.h"
 #include "gfx_func.h"
 #include "console_func.h"

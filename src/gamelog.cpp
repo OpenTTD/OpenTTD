@@ -18,8 +18,6 @@
 #include "timer/timer_game_tick.h"
 #include "rev.h"
 
-#include <stdarg.h>
-
 #include "safeguards.h"
 
 extern const SaveLoadVersion SAVEGAME_VERSION;  ///< current savegame version

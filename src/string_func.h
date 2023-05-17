@@ -24,7 +24,6 @@
 #ifndef STRING_FUNC_H
 #define STRING_FUNC_H
 
-#include <stdarg.h>
 #include <iosfwd>
 
 #include "core/bitmath_func.hpp"
