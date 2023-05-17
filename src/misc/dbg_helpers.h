@@ -10,7 +10,6 @@
 #ifndef DBG_HELPERS_H
 #define DBG_HELPERS_H
 
-#include <map>
 #include <stack>
 
 #include "../direction_type.h"

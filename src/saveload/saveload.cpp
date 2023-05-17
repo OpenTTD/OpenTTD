@@ -43,7 +43,6 @@
 #include "../fios.h"
 #include "../error.h"
 #include <atomic>
-#include <deque>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #endif

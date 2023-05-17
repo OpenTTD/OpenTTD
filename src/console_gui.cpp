@@ -22,7 +22,6 @@
 #include "video/video_driver.hpp"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
-#include <deque>
 
 #include "widgets/console_widget.h"
 

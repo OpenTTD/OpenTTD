@@ -36,9 +36,6 @@
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
 #include "station_func.h"
-#include <array>
-#include <list>
-#include <set>
 
 #include "table/strings.h"
 #include "table/sprites.h"

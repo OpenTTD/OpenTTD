@@ -10,8 +10,6 @@
 #ifndef WINDOW_GUI_H
 #define WINDOW_GUI_H
 
-#include <list>
-
 #include "vehiclelist.h"
 #include "vehicle_type.h"
 #include "viewport_type.h"

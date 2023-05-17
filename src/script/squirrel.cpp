@@ -20,7 +20,6 @@
 #include "../core/alloc_func.hpp"
 
 #include <stdarg.h>
-#include <map>
 
 /**
  * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS

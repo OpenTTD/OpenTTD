@@ -3,7 +3,6 @@
 #include "../stdafx.h"
 #include "../core/math_func.hpp"
 #include "mcf.h"
-#include <set>
 
 #include "../safeguards.h"
 

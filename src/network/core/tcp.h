@@ -17,7 +17,6 @@
 
 #include <atomic>
 #include <chrono>
-#include <map>
 #include <thread>
 
 /** The states of sending the packets. */

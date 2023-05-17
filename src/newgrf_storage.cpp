@@ -12,7 +12,6 @@
 #include "core/pool_func.hpp"
 #include "core/endian_func.hpp"
 #include "debug.h"
-#include <set>
 
 #include "safeguards.h"
 

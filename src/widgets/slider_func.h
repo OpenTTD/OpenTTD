@@ -13,8 +13,6 @@
 #include "../window_type.h"
 #include "../gfx_func.h"
 
-#include <map>
-
 void DrawSliderWidget(Rect r, int min_value, int max_value, int value, const std::map<int, StringID> &labels);
 bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int &value);
 

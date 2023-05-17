@@ -13,7 +13,6 @@
 #include "game_info.hpp"
 #include "game_scanner.hpp"
 #include "../debug.h"
-#include <set>
 
 #include "../safeguards.h"
 

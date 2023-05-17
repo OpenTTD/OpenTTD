@@ -23,8 +23,6 @@
 #include "../company_func.h"
 #include "../disaster_vehicle.h"
 
-#include <map>
-
 #include "../safeguards.h"
 
 /**

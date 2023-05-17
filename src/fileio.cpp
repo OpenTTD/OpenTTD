@@ -25,7 +25,6 @@
 #include <pwd.h>
 #endif
 #include <sys/stat.h>
-#include <array>
 #include <sstream>
 
 #include "safeguards.h"

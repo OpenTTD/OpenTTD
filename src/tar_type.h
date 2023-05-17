@@ -10,9 +10,6 @@
 #ifndef TAR_TYPE_H
 #define TAR_TYPE_H
 
-#include <map>
-#include <array>
-
 #include "fileio_type.h"
 
 

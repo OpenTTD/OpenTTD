@@ -12,8 +12,6 @@
 
 #include "../cargo_type.h"
 #include "../vehicle_base.h"
-#include <map>
-#include <set>
 
 /**
  * Utility to refresh links a consist will visit.

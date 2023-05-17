@@ -44,7 +44,6 @@
 
 #import <sys/param.h> /* for MAXPATHLEN */
 #import <sys/time.h> /* gettimeofday */
-#include <array>
 
 /* The 10.12 SDK added new names for some enum constants and
  * deprecated the old ones. As there's no functional change in any

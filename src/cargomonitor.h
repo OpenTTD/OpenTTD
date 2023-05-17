@@ -15,7 +15,6 @@
 #include "industry.h"
 #include "town.h"
 #include "core/overflowsafe_type.hpp"
-#include <map>
 
 struct Station;
 

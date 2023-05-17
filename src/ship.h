@@ -10,8 +10,6 @@
 #ifndef SHIP_H
 #define SHIP_H
 
-#include <deque>
-
 #include "vehicle_base.h"
 #include "water_map.h"
 

@@ -36,7 +36,6 @@
 #include "../debug.h"
 #include "../blitter/factory.hpp"
 #include "../zoom_func.h"
-#include <array>
 #include <numeric>
 
 #include "../table/opengl_shader.h"

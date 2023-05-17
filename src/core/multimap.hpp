@@ -10,9 +10,6 @@
 #ifndef MULTIMAP_HPP
 #define MULTIMAP_HPP
 
-#include <map>
-#include <list>
-
 template<typename Tkey, typename Tvalue, typename Tcompare>
 class MultiMap;
 

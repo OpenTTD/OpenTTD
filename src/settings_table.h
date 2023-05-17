@@ -12,7 +12,6 @@
 #ifndef SETTINGS_TABLE_H
 #define SETTINGS_TABLE_H
 
-#include <array>
 #include "settings_internal.h"
 
 extern SettingTable _company_settings;

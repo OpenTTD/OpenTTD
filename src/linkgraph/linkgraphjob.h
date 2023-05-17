@@ -12,7 +12,6 @@
 
 #include "../thread.h"
 #include "linkgraph.h"
-#include <list>
 #include <atomic>
 
 class LinkGraphJob;

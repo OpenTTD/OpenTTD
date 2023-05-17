@@ -10,8 +10,6 @@
 #ifndef SCRIPT_CONFIG_HPP
 #define SCRIPT_CONFIG_HPP
 
-#include <map>
-#include <list>
 #include "../core/smallmap_type.hpp"
 #include "../company_type.h"
 #include "../textfile_gui.h"

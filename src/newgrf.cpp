@@ -41,7 +41,6 @@
 #include "timer/timer_game_calendar.h"
 #include "string_func.h"
 #include "network/core/config.h"
-#include <map>
 #include "smallmap_gui.h"
 #include "genworld.h"
 #include "error.h"

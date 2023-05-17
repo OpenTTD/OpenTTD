@@ -36,7 +36,6 @@
 
 #include "table/sprites.h"
 
-#include <map>
 #include "safeguards.h"
 
 /**

@@ -11,7 +11,6 @@
 #define LRUCACHE_HPP
 
 #include <utility>
-#include <list>
 #include <unordered_map>
 
 /**

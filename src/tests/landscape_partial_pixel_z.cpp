@@ -13,7 +13,6 @@
 
 #include "../landscape.h"
 #include "../slope_func.h"
-#include <array>
 
 /**
  * Check whether the addition of two slope's GetPartialPixelZ values results in

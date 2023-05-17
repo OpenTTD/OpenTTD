@@ -15,7 +15,6 @@
 #include "../debug.h"
 #include "../string_func.h"
 #include "../rev.h"
-#include <set>
 
 #include "../safeguards.h"
 

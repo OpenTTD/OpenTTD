@@ -11,7 +11,6 @@
 #define GAMELOG_INTERNAL_H
 
 #include "gamelog.h"
-#include <iterator>
 
 /**
  * Information about the presence of a Grf at a certain point during gamelog history

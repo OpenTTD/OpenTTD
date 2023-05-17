@@ -11,7 +11,6 @@
 #define CONSOLE_INTERNAL_H
 
 #include "gfx_type.h"
-#include <map>
 
 static const uint ICON_CMDLN_SIZE     = 1024; ///< maximum length of a typed in command
 static const uint ICON_MAX_STREAMSIZE = 2048; ///< maximum length of a totally expanded command
