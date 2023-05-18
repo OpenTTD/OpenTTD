@@ -37,7 +37,7 @@ ClientNetworkContentSocketHandler _network_content_client;
 /** Wrapper function for the HasProc */
 static bool HasGRFConfig(const ContentInfo *ci, bool md5sum)
 {
-	return FindGRFConfig(BSWAP32(ci->unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? ci->md5sum : nullptr) != nullptr;
+	return FindGRFConfig(BSWAP32(ci->unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? &ci->md5sum : nullptr) != nullptr;
 }
 
 /**
@@ -62,7 +62,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 	ci->description = p->Recv_string(NETWORK_CONTENT_DESC_LENGTH, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	ci->unique_id = p->Recv_uint32();
-	for (uint j = 0; j < sizeof(ci->md5sum); j++) {
+	for (size_t j = 0; j < ci->md5sum.size(); j++) {
 		ci->md5sum[j] = p->Recv_uint8();
 	}
 
@@ -144,8 +144,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 
 	/* Do we already have a stub for this? */
 	for (ContentInfo *ici : this->infos) {
-		if (ici->type == ci->type && ici->unique_id == ci->unique_id &&
-				memcmp(ci->md5sum, ici->md5sum, sizeof(ci->md5sum)) == 0) {
+		if (ici->type == ci->type && ici->unique_id == ci->unique_id && ci->md5sum == ici->md5sum) {
 			/* Preserve the name if possible */
 			if (ci->name.empty()) ci->name = ici->name;
 			if (ici->IsSelected()) ci->state = ici->state;
@@ -267,7 +266,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 
 	assert(cv->size() < 255);
 	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
-			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? /*sizeof(ContentInfo::md5sum)*/16 : 0)));
+			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? MD5_HASH_BYTES : 0)));
 
 	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
 	p->Send_uint8((uint8)cv->size());
@@ -277,7 +276,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 		p->Send_uint32(ci->unique_id);
 		if (!send_md5sum) continue;
 
-		for (uint j = 0; j < sizeof(ci->md5sum); j++) {
+		for (size_t j = 0; j < ci->md5sum.size(); j++) {
 			p->Send_uint8(ci->md5sum[j]);
 		}
 	}
@@ -288,7 +287,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 		bool found = false;
 		for (ContentInfo *ci2 : this->infos) {
 			if (ci->type == ci2->type && ci->unique_id == ci2->unique_id &&
-					(!send_md5sum || memcmp(ci->md5sum, ci2->md5sum, sizeof(ci->md5sum)) == 0)) {
+					(!send_md5sum || ci->md5sum == ci2->md5sum)) {
 				found = true;
 				break;
 			}

@@ -16,6 +16,7 @@
 #include "fileio_type.h"
 #include "textfile_type.h"
 #include "newgrf_text.h"
+#include "3rdparty/md5/md5.h"
 
 /** GRF config bit flags */
 enum GCF_Flags {
@@ -81,15 +82,12 @@ enum GRFPalette {
 /** Basic data to distinguish a GRF. Used in the server list window */
 struct GRFIdentifier {
 	uint32 grfid;     ///< GRF ID (defined by Action 0x08)
-	uint8 md5sum[16]; ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
+	MD5Hash md5sum;   ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
 
 	GRFIdentifier() = default;
 	GRFIdentifier(const GRFIdentifier &other) = default;
 	GRFIdentifier(GRFIdentifier &&other) = default;
-	GRFIdentifier(uint32 grfid, const uint8 *md5sum) : grfid(grfid)
-	{
-		MemCpyT(this->md5sum, md5sum, lengthof(this->md5sum));
-	}
+	GRFIdentifier(uint32 grfid, const MD5Hash &md5sum) : grfid(grfid), md5sum(md5sum) {}
 
 	GRFIdentifier& operator =(const GRFIdentifier &other) = default;
 
@@ -99,11 +97,11 @@ struct GRFIdentifier {
 	 * @param md5sum Expected md5sum, may be \c nullptr (in which case, do not check it).
 	 * @return the object has the provided grfid and md5sum.
 	 */
-	inline bool HasGrfIdentifier(uint32 grfid, const uint8 *md5sum) const
+	inline bool HasGrfIdentifier(uint32 grfid, const MD5Hash *md5sum) const
 	{
 		if (this->grfid != grfid) return false;
 		if (md5sum == nullptr) return true;
-		return memcmp(md5sum, this->md5sum, sizeof(this->md5sum)) == 0;
+		return *md5sum == this->md5sum;
 	}
 };
 
@@ -158,7 +156,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	GRFConfig &operator=(GRFConfig &rhs) = delete;
 
 	GRFIdentifier ident; ///< grfid and md5sum to uniquely identify newgrfs
-	uint8 original_md5sum[16]; ///< MD5 checksum of original file if only a 'compatible' file was loaded
+	MD5Hash original_md5sum; ///< MD5 checksum of original file if only a 'compatible' file was loaded
 	std::string filename; ///< Filename - either with or without full path
 	GRFTextWrapper name; ///< NOSAVE: GRF name (Action 0x08)
 	GRFTextWrapper info; ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
@@ -217,7 +215,7 @@ struct NewGRFScanCallback {
 size_t GRFGetSizeOfDataSection(FILE *f);
 
 void ScanNewGRFFiles(NewGRFScanCallback *callback);
-const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum = nullptr, uint32 desired_version = 0);
+const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const MD5Hash *md5sum = nullptr, uint32 desired_version = 0);
 GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask = 0xFFFFFFFF);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only);
 void AppendStaticGRFConfigs(GRFConfig **dst);

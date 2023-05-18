@@ -297,7 +297,7 @@ void Md5::Append(const void *data, const size_t nbytes)
 	if (left) memcpy(this->buf, p, left);
 }
 
-void Md5::Finish(uint8 digest[16])
+void Md5::Finish(MD5Hash &digest)
 {
 	static const uint8 pad[64] = {
 		0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

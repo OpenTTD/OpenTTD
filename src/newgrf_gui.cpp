@@ -1245,7 +1245,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					bool compatible = HasBit(c->flags, GCF_COMPATIBLE);
 					if (c->status != GCS_NOT_FOUND && !compatible) continue;
 
-					const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, compatible ? c->original_md5sum : c->ident.md5sum);
+					const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, compatible ? &c->original_md5sum : &c->ident.md5sum);
 					if (f == nullptr || HasBit(f->flags, GCF_INVALID)) continue;
 
 					*l = new GRFConfig(*f);
@@ -1452,7 +1452,7 @@ private:
 		i = a->version - b->version;
 		if (i != 0) return i < 0;
 
-		return memcmp(a->ident.md5sum, b->ident.md5sum, lengthof(b->ident.md5sum)) < 0;
+		return a->ident.md5sum < b->ident.md5sum;
 	}
 
 	/** Filter grfs by tags/name */
@@ -1473,7 +1473,7 @@ private:
 
 		for (const GRFConfig *c = _all_grfs; c != nullptr; c = c->next) {
 			bool found = false;
-			for (const GRFConfig *grf = this->actives; grf != nullptr && !found; grf = grf->next) found = grf->ident.HasGrfIdentifier(c->ident.grfid, c->ident.md5sum);
+			for (const GRFConfig *grf = this->actives; grf != nullptr && !found; grf = grf->next) found = grf->ident.HasGrfIdentifier(c->ident.grfid, &c->ident.md5sum);
 			if (found) continue;
 
 			if (_settings_client.gui.newgrf_show_old_versions) {
@@ -1490,7 +1490,7 @@ private:
 				 * If we are the best version, then we definitely want to
 				 * show that NewGRF!.
 				 */
-				if (best->version == 0 || best->ident.HasGrfIdentifier(c->ident.grfid, c->ident.md5sum)) {
+				if (best->version == 0 || best->ident.HasGrfIdentifier(c->ident.grfid, &c->ident.md5sum)) {
 					this->avails.push_back(c);
 				}
 			}
@@ -1575,7 +1575,7 @@ void ShowMissingContentWindow(const GRFConfig *list)
 		ci->state = ContentInfo::DOES_NOT_EXIST;
 		ci->name = c->GetName();
 		ci->unique_id = BSWAP32(c->ident.grfid);
-		memcpy(ci->md5sum, HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum, sizeof(ci->md5sum));
+		ci->md5sum = HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum;
 		cv.push_back(ci);
 	}
 	ShowNetworkContentListWindow(cv.size() == 0 ? nullptr : &cv, CONTENT_TYPE_NEWGRF);

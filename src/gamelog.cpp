@@ -106,10 +106,10 @@ void Gamelog::Reset()
  * @param md5sum array of md5sum to print, if known
  * @param gc GrfConfig, if known
  */
-static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, uint32_t grfid, const uint8_t *md5sum, const GRFConfig *gc)
+static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, uint32_t grfid, const MD5Hash *md5sum, const GRFConfig *gc)
 {
 	if (md5sum != nullptr) {
-		fmt::format_to(output_iterator, "GRF ID {:08X}, checksum {}", BSWAP32(grfid), MD5SumToString(md5sum));
+		fmt::format_to(output_iterator, "GRF ID {:08X}, checksum {}", BSWAP32(grfid), MD5SumToString(*md5sum));
 	} else {
 		fmt::format_to(output_iterator, "GRF ID {:08X}", BSWAP32(grfid));
 	}
@@ -230,9 +230,9 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 /* virtual */ void LoggedChangeGRFAdd::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
 {
 	/* A NewGRF got added to the game, either at the start of the game (never an issue), or later on when it could be an issue. */
-	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, this->md5sum);
+	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, &this->md5sum);
 	fmt::format_to(output_iterator, "Added NewGRF: ");
-	AddGrfInfo(output_iterator, this->grfid, this->md5sum, gc);
+	AddGrfInfo(output_iterator, this->grfid, &this->md5sum, gc);
 	auto gm = grf_names.find(this->grfid);
 	if (gm != grf_names.end() && !gm->second.was_missing) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was already added!");
 	grf_names[this->grfid] = gc;
@@ -259,9 +259,9 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 /* virtual */ void LoggedChangeGRFChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
 {
 	/* Another version of the same NewGRF got loaded. */
-	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, this->md5sum);
+	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, &this->md5sum);
 	fmt::format_to(output_iterator, "Compatible NewGRF loaded: ");
-	AddGrfInfo(output_iterator, this->grfid, this->md5sum, gc);
+	AddGrfInfo(output_iterator, this->grfid, &this->md5sum, gc);
 	if (grf_names.count(this->grfid) == 0) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 	grf_names[this->grfid] = gc;
 }
@@ -654,7 +654,7 @@ void Gamelog::GRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 				this->GRFMove(nl[n++]->ident.grfid, -(int)oi);
 			}
 		} else {
-			if (memcmp(og->ident.md5sum, ng->ident.md5sum, sizeof(og->ident.md5sum)) != 0) {
+			if (og->ident.md5sum != ng->ident.md5sum) {
 				/* md5sum changed, probably loading 'compatible' GRF */
 				this->GRFCompatible(&nl[n]->ident);
 			}
