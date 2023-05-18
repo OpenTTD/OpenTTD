@@ -109,7 +109,7 @@ void Gamelog::Reset()
 static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, uint32_t grfid, const MD5Hash *md5sum, const GRFConfig *gc)
 {
 	if (md5sum != nullptr) {
-		fmt::format_to(output_iterator, "GRF ID {:08X}, checksum {}", BSWAP32(grfid), MD5SumToString(*md5sum));
+		fmt::format_to(output_iterator, "GRF ID {:08X}, checksum {}", BSWAP32(grfid), FormatArrayAsHex(*md5sum));
 	} else {
 		fmt::format_to(output_iterator, "GRF ID {:08X}", BSWAP32(grfid));
 	}

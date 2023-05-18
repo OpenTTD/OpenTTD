@@ -613,17 +613,6 @@ int CDECL seprintf(char *str, const char *last, const char *format, ...)
 }
 
 
-/**
- * Convert the md5sum to a hexadecimal string representation
- * @param md5sum the md5sum itself
- * @return the string representation of the md5sum.
- */
-std::string MD5SumToString(const MD5Hash &md5sum)
-{
-	return FormatArrayAsHex(md5sum);
-}
-
-
 /* UTF-8 handling routines */
 
 
