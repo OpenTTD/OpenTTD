@@ -169,7 +169,7 @@ struct NewGRFParametersWindow : public Window {
 		clicked_row(UINT_MAX),
 		editable(editable)
 	{
-		this->action14present = (c->num_valid_params != lengthof(c->param) || c->param_info.size() != 0);
+		this->action14present = (c->num_valid_params != c->param.size() || c->param_info.size() != 0);
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NP_SCROLLBAR);
@@ -225,7 +225,7 @@ struct NewGRFParametersWindow : public Window {
 			}
 
 			case WID_NP_NUMPAR: {
-				SetDParamMaxValue(0, lengthof(this->grf_config->param));
+				SetDParamMaxValue(0, this->grf_config->param.size());
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width;
 				d.height += padding.height;

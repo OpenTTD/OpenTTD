@@ -164,7 +164,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	uint8 flags; ///< NOSAVE: GCF_Flags, bitset
 	GRFStatus status; ///< NOSAVE: GRFStatus, enum
 	uint32 grf_bugs; ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
-	uint32 param[0x80]; ///< GRF parameters
+	std::array<uint32_t, 0x80> param; ///< GRF parameters
 	uint8 num_params; ///< Number of used parameters
 	uint8 num_valid_params; ///< NOSAVE: Number of valid parameters (action 0x14)
 	uint8 palette; ///< GRFPalette, bitset
