@@ -172,8 +172,8 @@ void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num)
 }
 
 static void StationGetSpecialString(StringBuilder &builder, int x);
-static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last);
-static char *GetSpecialNameString(char *buff, int ind, StringParameters *args, const char *last);
+static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32 seed);
+static void GetSpecialNameString(StringBuilder &builder, int ind, StringParameters *args);
 
 static void FormatString(StringBuilder &builder, const char *str, StringParameters *args, uint case_index = 0, bool game_script = false, bool dry_run = false);
 
@@ -216,17 +216,18 @@ const char *GetStringPtr(StringID string)
 
 /**
  * Get a parsed string with most special stringcodes replaced by the string parameters.
- * @param buffr  Pointer to a string buffer where the formatted string should be written to.
- * @param string
- * @param args   Arguments for the string.
- * @param last   Pointer just past the end of \a buffr.
+ * @param builder     The builder of the string.
+ * @param string      The ID of the string to parse.
+ * @param args        Arguments for the string.
  * @param case_index  The "case index". This will only be set when FormatString wants to print the string in a different case.
  * @param game_script The string is coming directly from a game script.
- * @return       Pointer to the final zero byte of the formatted string.
  */
-char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index, bool game_script)
+void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters *args, uint case_index, bool game_script)
 {
-	if (string == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
+	if (string == 0) {
+		GetStringWithArgs(builder, STR_UNDEFINED, args);
+		return;
+	}
 
 	uint index = GetStringIndex(string);
 	StringTab tab = GetStringTab(string);
@@ -234,13 +235,15 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 	switch (tab) {
 		case TEXT_TAB_TOWN:
 			if (index >= 0xC0 && !game_script) {
-				return GetSpecialTownNameString(buffr, index - 0xC0, args->GetInt32(), last);
+				GetSpecialTownNameString(builder, index - 0xC0, args->GetInt32());
+				return;
 			}
 			break;
 
 		case TEXT_TAB_SPECIAL:
 			if (index >= 0xE4 && !game_script) {
-				return GetSpecialNameString(buffr, index - 0xE4, args, last);
+				GetSpecialNameString(builder, index - 0xE4, args);
+				return;
 			}
 			break;
 
@@ -252,18 +255,16 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 			break;
 
 		case TEXT_TAB_GAMESCRIPT_START: {
-			StringBuilder builder(buffr, last);
 			FormatString(builder, GetGameStringPtr(index), args, case_index, true);
-			return builder.GetEnd();
+			return;
 		}
 
 		case TEXT_TAB_OLD_NEWGRF:
 			NOT_REACHED();
 
 		case TEXT_TAB_NEWGRF_START: {
-			StringBuilder builder(buffr, last);
 			FormatString(builder, GetGRFStringPtr(index), args, case_index);
-			return builder.GetEnd();
+			return;
 		}
 
 		default:
@@ -272,34 +273,21 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 
 	if (index >= _langpack.langtab_num[tab]) {
 		if (game_script) {
-			return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
+			return GetStringWithArgs(builder, STR_UNDEFINED, args);
 		}
 		FatalError("String 0x{:X} is invalid. You are probably using an old version of the .lng file.\n", string);
 	}
 
-	StringBuilder builder(buffr, last);
 	FormatString(builder, GetStringPtr(string), args, case_index);
-	return builder.GetEnd();
 }
 
 char *GetString(char *buffr, StringID string, const char *last)
 {
 	_global_string_params.ClearTypeInformation();
 	_global_string_params.offset = 0;
-	return GetStringWithArgs(buffr, string, &_global_string_params, last);
-}
-
-/**
- * Get a parsed string with most special stringcodes replaced by the string parameters.
- * @param builder     The builder of the string.
- * @param string      The ID of the string to parse.
- * @param args        Arguments for the string.
- * @param case_index  The "case index". This will only be set when FormatString wants to print the string in a different case.
- * @param game_script The string is coming directly from a game script.
- */
-void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters *args, uint case_index = 0, bool game_script = false)
-{
-	builder.AddViaStreCallback([&](auto buff, auto last) { return GetStringWithArgs(buff, string, args, last, case_index, game_script); });
+	StringBuilder builder(buffr, last);
+	GetStringWithArgs(builder, string, &_global_string_params);
+	return builder.GetEnd();
 }
 
 
@@ -314,6 +302,20 @@ std::string GetString(StringID string)
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, string, lastof(buffer));
 	return buffer;
+}
+
+/**
+ * Get a parsed string with most special stringcodes replaced by the string parameters.
+ * @param string The ID of the string to parse.
+ * @param args   Arguments for the string.
+ * @return The parsed string.
+ */
+std::string GetStringWithArgs(StringID string, StringParameters *args)
+{
+	char buffer[DRAW_STRING_BUFFER];
+	StringBuilder builder(buffer, lastof(buffer));
+	GetStringWithArgs(builder, string, args);
+	return std::string(buffer, builder.GetEnd());
 }
 
 /**
@@ -1568,7 +1570,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					StringParameters tmp_params(args_array);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, &tmp_params);
 				} else {
-					builder.AddViaStreCallback([&t](auto buff, auto last) { return GetTownName(buff, t, last); });
+					GetTownName(builder, t);
 				}
 				break;
 			}
@@ -1659,9 +1661,9 @@ static void StationGetSpecialString(StringBuilder &builder, int x)
 	if ((x & FACIL_AIRPORT) != 0) builder.Utf8Encode(SCC_PLANE);
 }
 
-static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last)
+static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32 seed)
 {
-	return GenerateTownNameString(buff, last, ind, seed);
+	builder.AddViaStreCallback([&](auto buff, auto last) { return GenerateTownNameString(buff, last, ind, seed); });
 }
 
 static const char * const _silly_company_names[] = {
@@ -1732,7 +1734,7 @@ static const char _initial_name_letters[] = {
 	'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
 };
 
-static char *GenAndCoName(char *buff, uint32 arg, const char *last)
+static void GenAndCoName(StringBuilder &builder, uint32 arg)
 {
 	const char * const *base;
 	uint num;
@@ -1745,13 +1747,11 @@ static char *GenAndCoName(char *buff, uint32 arg, const char *last)
 		num  = lengthof(_surname_list);
 	}
 
-	buff = strecpy(buff, base[num * GB(arg, 16, 8) >> 8], last);
-	buff = strecpy(buff, " & Co.", last);
-
-	return buff;
+	builder += base[num * GB(arg, 16, 8) >> 8];
+	builder += " & Co.";
 }
 
-static char *GenPresidentName(char *buff, uint32 x, const char *last)
+static void GenPresidentName(StringBuilder &builder, uint32 x)
 {
 	char initial[] = "?. ";
 	const char * const *base;
@@ -1759,12 +1759,12 @@ static char *GenPresidentName(char *buff, uint32 x, const char *last)
 	uint i;
 
 	initial[0] = _initial_name_letters[sizeof(_initial_name_letters) * GB(x, 0, 8) >> 8];
-	buff = strecpy(buff, initial, last);
+	builder += initial;
 
 	i = (sizeof(_initial_name_letters) + 35) * GB(x, 8, 8) >> 8;
 	if (i < sizeof(_initial_name_letters)) {
 		initial[0] = _initial_name_letters[i];
-		buff = strecpy(buff, initial, last);
+		builder += initial;
 	}
 
 	if (_settings_game.game_creation.landscape == LT_TOYLAND) {
@@ -1775,28 +1775,30 @@ static char *GenPresidentName(char *buff, uint32 x, const char *last)
 		num  = lengthof(_surname_list);
 	}
 
-	buff = strecpy(buff, base[num * GB(x, 16, 8) >> 8], last);
-
-	return buff;
+	builder += base[num * GB(x, 16, 8) >> 8];
 }
 
-static char *GetSpecialNameString(char *buff, int ind, StringParameters *args, const char *last)
+static void GetSpecialNameString(StringBuilder &builder, int ind, StringParameters *args)
 {
 	switch (ind) {
 		case 1: // not used
-			return strecpy(buff, _silly_company_names[std::min<uint>(args->GetInt32() & 0xFFFF, lengthof(_silly_company_names) - 1)], last);
+			builder += _silly_company_names[std::min<uint>(args->GetInt32() & 0xFFFF, lengthof(_silly_company_names) - 1)];
+			return;
 
 		case 2: // used for Foobar & Co company names
-			return GenAndCoName(buff, args->GetInt32(), last);
+			GenAndCoName(builder, args->GetInt32());
+			return;
 
 		case 3: // President name
-			return GenPresidentName(buff, args->GetInt32(), last);
+			GenPresidentName(builder, args->GetInt32());
+			return;
 	}
 
 	/* town name? */
 	if (IsInsideMM(ind - 6, 0, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1)) {
-		buff = GetSpecialTownNameString(buff, ind - 6, args->GetInt32(), last);
-		return strecpy(buff, " Transport", last);
+		GetSpecialTownNameString(builder, ind - 6, args->GetInt32());
+		builder += " Transport";
+		return;
 	}
 
 	NOT_REACHED();

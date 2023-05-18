@@ -10,6 +10,8 @@
 #ifndef STRINGS_INTERNAL_H
 #define STRINGS_INTERNAL_H
 
+#include "strings_func.h"
+
 /**
  * Equivalent to the std::back_insert_iterator in function, with some
  * convenience helpers for string concatenation.
@@ -129,5 +131,11 @@ public:
 		this->current = function(this->current, this->last);
 	}
 };
+
+void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters *args, uint case_index = 0, bool game_script = false);
+
+/* Do not leak the StringBuilder to everywhere. */
+void GetTownName(StringBuilder &builder, const struct Town *t);
+void GRFTownNameGenerate(StringBuilder &builder, uint32 grfid, uint16 gen, uint32 seed);
 
 #endif /* STRINGS_INTERNAL_H */

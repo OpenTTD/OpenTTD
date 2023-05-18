@@ -15,6 +15,7 @@
 #include "core/random_func.hpp"
 #include "genworld.h"
 #include "gfx_layout.h"
+#include "strings_internal.h"
 
 #include "table/townname.h"
 
@@ -39,6 +40,24 @@ TownNameParams::TownNameParams(const Town *t) :
 
 
 /**
+ * Fills builder with specified town name.
+ * @param builder       The string builder.
+ * @param par           Town name parameters.
+ * @param townnameparts 'Encoded' town name.
+ */
+static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint32 townnameparts)
+{
+	if (par->grfid == 0) {
+		int64 args_array[1] = { townnameparts };
+		StringParameters tmp_params(args_array);
+		GetStringWithArgs(builder, par->type, &tmp_params);
+		return;
+	}
+
+	GRFTownNameGenerate(builder, par->grfid, par->type, townnameparts);
+}
+
+/**
  * Fills buffer with specified town name
  * @param buff buffer start
  * @param par town name parameters
@@ -48,15 +67,21 @@ TownNameParams::TownNameParams(const Town *t) :
  */
 char *GetTownName(char *buff, const TownNameParams *par, uint32 townnameparts, const char *last)
 {
-	if (par->grfid == 0) {
-		int64 args_array[1] = { townnameparts };
-		StringParameters tmp_params(args_array);
-		return GetStringWithArgs(buff, par->type, &tmp_params, last);
-	}
-
-	return GRFTownNameGenerate(buff, par->grfid, par->type, townnameparts, last);
+	StringBuilder builder(buff, last);
+	GetTownName(builder, par, townnameparts);
+	return builder.GetEnd();
 }
 
+/**
+ * Fills builder with town's name.
+ * @param builder String builder.
+ * @param t       The town to get the name from.
+ */
+void GetTownName(StringBuilder &builder, const Town *t)
+{
+	TownNameParams par(t);
+	GetTownName(builder, &par, t->townnameparts);
+}
 
 /**
  * Fills buffer with town's name
@@ -67,8 +92,9 @@ char *GetTownName(char *buff, const TownNameParams *par, uint32 townnameparts, c
  */
 char *GetTownName(char *buff, const Town *t, const char *last)
 {
-	TownNameParams par(t);
-	return GetTownName(buff, &par, t->townnameparts, last);
+	StringBuilder builder(buff, last);
+	GetTownName(builder, t);
+	return builder.GetEnd();
 }
 
 

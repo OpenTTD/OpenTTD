@@ -16,6 +16,7 @@
 #include "newgrf_townname.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
+#include "strings_internal.h"
 
 #include "table/strings.h"
 
@@ -46,7 +47,7 @@ void DelGRFTownName(uint32 grfid)
 	_grf_townnames.erase(std::find_if(std::begin(_grf_townnames), std::end(_grf_townnames), [&grfid](const GRFTownName &t){ return t.grfid == grfid; }));
 }
 
-static char *RandomPart(char *buf, const GRFTownName *t, uint32 seed, byte id, const char *last)
+static void RandomPart(StringBuilder &builder, const GRFTownName *t, uint32 seed, byte id)
 {
 	assert(t != nullptr);
 	for (const auto &partlist : t->partlists[id]) {
@@ -57,25 +58,22 @@ static char *RandomPart(char *buf, const GRFTownName *t, uint32 seed, byte id, c
 			maxprob -= GB(part.prob, 0, 7);
 			if (maxprob > r) continue;
 			if (HasBit(part.prob, 7)) {
-				buf = RandomPart(buf, t, seed, part.id, last);
+				RandomPart(builder, t, seed, part.id);
 			} else {
-				buf = strecat(buf, part.text.c_str(), last);
+				builder += part.text;
 			}
 			break;
 		}
 	}
-	return buf;
 }
 
-char *GRFTownNameGenerate(char *buf, uint32 grfid, uint16 gen, uint32 seed, const char *last)
+void GRFTownNameGenerate(StringBuilder &builder, uint32 grfid, uint16 gen, uint32 seed)
 {
-	strecpy(buf, "", last);
 	const GRFTownName *t = GetGRFTownName(grfid);
 	if (t != nullptr) {
 		assert(gen < t->styles.size());
-		buf = RandomPart(buf, t, seed, t->styles[gen].id, last);
+		RandomPart(builder, t, seed, t->styles[gen].id);
 	}
-	return buf;
 }
 
 
