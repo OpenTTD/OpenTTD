@@ -58,24 +58,12 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	num_params(config.num_params),
 	num_valid_params(config.num_valid_params),
 	palette(config.palette),
+	param_info(config.param_info),
 	has_param_defaults(config.has_param_defaults)
 {
 	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
 	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
 	if (config.error != nullptr) this->error = std::make_unique<GRFError>(*config.error);
-	for (uint i = 0; i < config.param_info.size(); i++) {
-		if (config.param_info[i] == nullptr) {
-			this->param_info.push_back(nullptr);
-		} else {
-			this->param_info.push_back(new GRFParameterInfo(*config.param_info[i]));
-		}
-	}
-}
-
-/** Cleanup a GRFConfig object. */
-GRFConfig::~GRFConfig()
-{
-	for (uint i = 0; i < this->param_info.size(); i++) delete this->param_info[i];
 }
 
 /**
@@ -127,7 +115,7 @@ void GRFConfig::SetParameterDefaults()
 	if (!this->has_param_defaults) return;
 
 	for (uint i = 0; i < this->param_info.size(); i++) {
-		if (this->param_info[i] == nullptr) continue;
+		if (!this->param_info[i]) continue;
 		this->param_info[i]->SetValue(this, this->param_info[i]->def_value);
 	}
 }
@@ -153,8 +141,8 @@ void GRFConfig::SetSuitablePalette()
  */
 void GRFConfig::FinalizeParameterInfo()
 {
-	for (GRFParameterInfo *info : this->param_info) {
-		if (info == nullptr) continue;
+	for (auto &info : this->param_info) {
+		if (!info.has_value()) continue;
 		info->Finalize();
 	}
 }
@@ -527,14 +515,8 @@ compatible_grf:
 				c->version = f->version;
 				c->min_loadable_version = f->min_loadable_version;
 				c->num_valid_params = f->num_valid_params;
+				c->param_info = f->param_info;
 				c->has_param_defaults = f->has_param_defaults;
-				for (uint i = 0; i < f->param_info.size(); i++) {
-					if (f->param_info[i] == nullptr) {
-						c->param_info.push_back(nullptr);
-					} else {
-						c->param_info.push_back(new GRFParameterInfo(*f->param_info[i]));
-					}
-				}
 			}
 		}
 	}

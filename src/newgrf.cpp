@@ -8419,10 +8419,10 @@ static bool HandleParameterInfo(ByteReader *buf)
 		if (id >= _cur.grfconfig->param_info.size()) {
 			_cur.grfconfig->param_info.resize(id + 1);
 		}
-		if (_cur.grfconfig->param_info[id] == nullptr) {
-			_cur.grfconfig->param_info[id] = new GRFParameterInfo(id);
+		if (!_cur.grfconfig->param_info[id].has_value()) {
+			_cur.grfconfig->param_info[id] = GRFParameterInfo(id);
 		}
-		_cur_parameter = _cur.grfconfig->param_info[id];
+		_cur_parameter = &_cur.grfconfig->param_info[id].value();
 		/* Read all parameter-data and process each node. */
 		if (!HandleNodes(buf, _tags_parameters)) return false;
 		type = buf->ReadByte();
