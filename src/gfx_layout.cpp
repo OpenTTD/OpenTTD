@@ -297,10 +297,10 @@ ptrdiff_t Layouter::GetCharAtPosition(int x) const
 Font *Layouter::GetFont(FontSize size, TextColour colour)
 {
 	FontColourMap::iterator it = fonts[size].find(colour);
-	if (it != fonts[size].end()) return it->second;
+	if (it != fonts[size].end()) return it->second.get();
 
-	fonts[size][colour] = new Font(size, colour);
-	return fonts[size][colour];
+	fonts[size][colour] = std::make_unique<Font>(size, colour);
+	return fonts[size][colour].get();
 }
 
 /**
@@ -309,9 +309,6 @@ Font *Layouter::GetFont(FontSize size, TextColour colour)
  */
 void Layouter::ResetFontCache(FontSize size)
 {
-	for (auto &pair : fonts[size]) {
-		delete pair.second;
-	}
 	fonts[size].clear();
 
 	/* We must reset the linecache since it references the just freed fonts */
