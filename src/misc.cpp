@@ -77,7 +77,7 @@ std::string GenerateUid(std::string_view subject)
 	std::string coding_string = fmt::format("{}{}{}", InteractiveRandom(), current_time, subject);
 
 	Md5 checksum;
-	uint8 digest[16];
+	MD5Hash digest;
 	checksum.Append(coding_string.c_str(), coding_string.length());
 	checksum.Finish(digest);
 

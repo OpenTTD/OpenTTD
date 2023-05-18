@@ -969,7 +969,8 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 	for (item = group->item; item != nullptr; item = item->next) {
 		GRFConfig *c = nullptr;
 
-		uint8 grfid_buf[4], md5sum[16];
+		uint8 grfid_buf[4];
+		MD5Hash md5sum;
 		const char *filename = item->name.c_str();
 		bool has_grfid = false;
 		bool has_md5sum = false;
@@ -978,12 +979,12 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 		has_grfid = DecodeHexText(filename, grfid_buf, lengthof(grfid_buf));
 		if (has_grfid) {
 			filename += 1 + 2 * lengthof(grfid_buf);
-			has_md5sum = DecodeHexText(filename, md5sum, lengthof(md5sum));
-			if (has_md5sum) filename += 1 + 2 * lengthof(md5sum);
+			has_md5sum = DecodeHexText(filename, md5sum.data(), md5sum.size());
+			if (has_md5sum) filename += 1 + 2 * md5sum.size();
 
 			uint32 grfid = grfid_buf[0] | (grfid_buf[1] << 8) | (grfid_buf[2] << 16) | (grfid_buf[3] << 24);
 			if (has_md5sum) {
-				const GRFConfig *s = FindGRFConfig(grfid, FGCM_EXACT, md5sum);
+				const GRFConfig *s = FindGRFConfig(grfid, FGCM_EXACT, &md5sum);
 				if (s != nullptr) c = new GRFConfig(*s);
 			}
 			if (c == nullptr && !FioCheckFileExists(filename, NEWGRF_DIR)) {

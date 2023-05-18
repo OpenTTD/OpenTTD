@@ -99,7 +99,7 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 			return false;
 		}
 		const char *c = item->value->c_str();
-		for (uint i = 0; i < sizeof(file->hash) * 2; i++, c++) {
+		for (size_t i = 0; i < file->hash.size() * 2; i++, c++) {
 			uint j;
 			if ('0' <= *c && *c <= '9') {
 				j = *c - '0';
@@ -285,14 +285,11 @@ template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo *ci, 
 		if (s->shortname != ci->unique_id) continue;
 		if (!md5sum) return s->files[0].filename.c_str();
 
-		byte md5[16];
-		memset(md5, 0, sizeof(md5));
+		MD5Hash md5;
 		for (uint i = 0; i < Tbase_set::NUM_FILES; i++) {
-			for (uint j = 0; j < sizeof(md5); j++) {
-				md5[j] ^= s->files[i].hash[j];
-			}
+			md5 ^= s->files[i].hash;
 		}
-		if (memcmp(md5, ci->md5sum, sizeof(md5)) == 0) return s->files[0].filename.c_str();
+		if (md5 == ci->md5sum) return s->files[0].filename.c_str();
 	}
 	return nullptr;
 }

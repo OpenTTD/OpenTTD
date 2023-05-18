@@ -14,6 +14,7 @@
 #include "gfx_type.h"
 #include "textfile_type.h"
 #include "textfile_gui.h"
+#include "3rdparty/md5/md5.h"
 #include <unordered_map>
 
 /* Forward declare these; can't do 'struct X' in functions as older GCCs barf on that */
@@ -31,7 +32,7 @@ struct MD5File {
 	};
 
 	std::string filename;        ///< filename
-	uint8 hash[16];              ///< md5 sum of the file
+	MD5Hash hash;                ///< md5 sum of the file
 	std::string missing_warning; ///< warning when this file is missing
 	ChecksumResult check_result; ///< cached result of md5 check
 

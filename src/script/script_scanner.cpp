@@ -154,18 +154,14 @@ std::string ScriptScanner::GetConsoleList(bool newest_only) const
 
 /** Helper for creating a MD5sum of all files within of a script. */
 struct ScriptFileChecksumCreator : FileScanner {
-	byte md5sum[16];  ///< The final md5sum.
+	MD5Hash md5sum; ///< The final md5sum.
 	Subdirectory dir; ///< The directory to look in.
 
 	/**
 	 * Initialise the md5sum to be all zeroes,
 	 * so we can easily xor the data.
 	 */
-	ScriptFileChecksumCreator(Subdirectory dir)
-	{
-		this->dir = dir;
-		memset(this->md5sum, 0, sizeof(this->md5sum));
-	}
+	ScriptFileChecksumCreator(Subdirectory dir) : dir(dir) {}
 
 	/* Add the file and calculate the md5 sum. */
 	virtual bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
@@ -173,7 +169,6 @@ struct ScriptFileChecksumCreator : FileScanner {
 		Md5 checksum;
 		uint8 buffer[1024];
 		size_t len, size;
-		byte tmp_md5sum[16];
 
 		/* Open the file ... */
 		FILE *f = FioFOpenFile(filename, "rb", this->dir, &size);
@@ -184,12 +179,14 @@ struct ScriptFileChecksumCreator : FileScanner {
 			size -= len;
 			checksum.Append(buffer, len);
 		}
+
+		MD5Hash tmp_md5sum;
 		checksum.Finish(tmp_md5sum);
 
 		FioFCloseFile(f);
 
 		/* ... and xor it to the overall md5sum. */
-		for (uint i = 0; i < sizeof(md5sum); i++) this->md5sum[i] ^= tmp_md5sum[i];
+		this->md5sum ^= tmp_md5sum;
 
 		return true;
 	}
@@ -237,7 +234,7 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 		checksum.Scan(".nut", path);
 	}
 
-	return memcmp(ci->md5sum, checksum.md5sum, sizeof(ci->md5sum)) == 0;
+	return ci->md5sum == checksum.md5sum;
 }
 
 bool ScriptScanner::HasScript(const ContentInfo *ci, bool md5sum)

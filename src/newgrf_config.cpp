@@ -46,6 +46,7 @@ GRFConfig::GRFConfig(const std::string &filename) :
 GRFConfig::GRFConfig(const GRFConfig &config) :
 	ZeroedMemoryAllocator(),
 	ident(config.ident),
+	original_md5sum(config.original_md5sum),
 	filename(config.filename),
 	name(config.name),
 	info(config.info),
@@ -61,7 +62,6 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	param_info(config.param_info),
 	has_param_defaults(config.has_param_defaults)
 {
-	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
 	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
 	if (config.error != nullptr) this->error = std::make_unique<GRFError>(*config.error);
 }
@@ -475,7 +475,7 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 	GRFListCompatibility res = GLC_ALL_GOOD;
 
 	for (GRFConfig *c = grfconfig; c != nullptr; c = c->next) {
-		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, c->ident.md5sum);
+		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, &c->ident.md5sum);
 		if (f == nullptr || HasBit(f->flags, GCF_INVALID)) {
 			/* If we have not found the exactly matching GRF try to find one with the
 			 * same grfid, as it most likely is compatible */
@@ -485,7 +485,7 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 				if (!HasBit(c->flags, GCF_COMPATIBLE)) {
 					/* Preserve original_md5sum after it has been assigned */
 					SetBit(c->flags, GCF_COMPATIBLE);
-					memcpy(c->original_md5sum, c->ident.md5sum, sizeof(c->original_md5sum));
+					c->original_md5sum = c->ident.md5sum;
 				}
 
 				/* Non-found has precedence over compatibility load */
@@ -508,7 +508,7 @@ compatible_grf:
 			 * already a local one, so there is no need to replace it. */
 			if (!HasBit(c->flags, GCF_COPY)) {
 				c->filename = f->filename;
-				memcpy(c->ident.md5sum, f->ident.md5sum, sizeof(c->ident.md5sum));
+				c->ident.md5sum = f->ident.md5sum;
 				c->name = f->name;
 				c->info = f->name;
 				c->error = nullptr;
@@ -575,7 +575,7 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
 			GRFConfig **pd, *d;
 			bool stop = false;
 			for (pd = &_all_grfs; (d = *pd) != nullptr; pd = &d->next) {
-				if (c->ident.grfid == d->ident.grfid && memcmp(c->ident.md5sum, d->ident.md5sum, sizeof(c->ident.md5sum)) == 0) added = false;
+				if (c->ident.grfid == d->ident.grfid && c->ident.md5sum == d->ident.md5sum) added = false;
 				/* Because there can be multiple grfs with the same name, make sure we checked all grfs with the same name,
 				 *  before inserting the entry. So insert a new grf at the end of all grfs with the same name, instead of
 				 *  just after the first with the same name. Avoids doubles in the list. */
@@ -691,7 +691,7 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
  * @param desired_version Requested version
  * @return The matching grf, if it exists in #_all_grfs, else \c nullptr.
  */
-const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum, uint32 desired_version)
+const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const MD5Hash *md5sum, uint32 desired_version)
 {
 	assert((mode == FGCM_EXACT) != (md5sum == nullptr));
 	const GRFConfig *best = nullptr;

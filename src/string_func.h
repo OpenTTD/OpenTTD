@@ -29,6 +29,7 @@
 #include "core/bitmath_func.hpp"
 #include "core/span_type.hpp"
 #include "string_type.h"
+#include "3rdparty/md5/md5.h"
 
 char *strecat(char *dst, const char *src, const char *last) NOACCESS(3);
 char *strecpy(char *dst, const char *src, const char *last) NOACCESS(3);
@@ -90,7 +91,7 @@ static inline size_t ttd_strnlen(const char *str, size_t maxlen)
 	return t - str;
 }
 
-std::string MD5SumToString(const uint8 md5sum[16]);
+std::string MD5SumToString(const MD5Hash &md5sum);
 
 bool IsValidChar(WChar key, CharSetFilter afilter);
 

@@ -190,18 +190,14 @@ std::string GenerateCompanyPasswordHash(const std::string &password, const std::
 	}
 
 	Md5 checksum;
-	uint8 digest[16];
+	MD5Hash digest;
 
 	/* Generate the MD5 hash */
 	std::string salted_password_string = salted_password.str();
 	checksum.Append(salted_password_string.data(), salted_password_string.size());
 	checksum.Finish(digest);
 
-	std::ostringstream hashed_password;
-	hashed_password << std::hex << std::setfill('0');
-	for (int di = 0; di < 16; di++) hashed_password << std::setw(2) << (int)digest[di]; // Cast needed, otherwise interpreted as character to add
-
-	return hashed_password.str();
+	return MD5SumToString(digest);
 }
 
 /**
