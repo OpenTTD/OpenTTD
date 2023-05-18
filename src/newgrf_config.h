@@ -146,10 +146,6 @@ struct GRFParameterInfo {
 /** Information about GRF, used in the game and (part of it) in savegames */
 struct GRFConfig {
 	GRFConfig(const std::string &filename = std::string{});
-	GRFConfig(const GRFConfig &config);
-
-	/* Remove the copy assignment, as the default implementation will not do the right thing. */
-	GRFConfig &operator=(GRFConfig &rhs) = delete;
 
 	GRFIdentifier ident{}; ///< grfid and md5sum to uniquely identify newgrfs
 	MD5Hash original_md5sum{}; ///< MD5 checksum of original file if only a 'compatible' file was loaded
@@ -171,8 +167,6 @@ struct GRFConfig {
 	std::vector<std::optional<GRFParameterInfo>> param_info{}; ///< NOSAVE: extra information about the parameters
 	bool has_param_defaults = false; ///< NOSAVE: did this newgrf specify any defaults for it's parameters
 
-	struct GRFConfig *next = nullptr; ///< NOSAVE: Next item in the linked list
-
 	bool IsCompatible(uint32_t old_version) const;
 	void SetParams(const std::vector<uint32_t> &pars);
 	void CopyParams(const GRFConfig &src);
@@ -187,7 +181,7 @@ struct GRFConfig {
 	void FinalizeParameterInfo();
 };
 
-using GRFConfigList = GRFConfig *;
+using GRFConfigList = std::vector<std::shared_ptr<GRFConfig>>;
 
 /** Method to find GRFs using FindGRFConfig */
 enum FindGRFConfigMode {
@@ -217,14 +211,14 @@ size_t GRFGetSizeOfDataSection(FILE *f);
 void ScanNewGRFFiles(NewGRFScanCallback *callback);
 const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5Hash *md5sum = nullptr, uint32_t desired_version = 0);
 GRFConfig *GetGRFConfig(uint32_t grfid, uint32_t mask = 0xFFFFFFFF);
-GRFConfig **CopyGRFConfigList(GRFConfigList &dst, const GRFConfigList &src, bool init_only);
+void CopyGRFConfigList(GRFConfigList &dst, const GRFConfigList &src, bool init_only, bool replace);
 void AppendStaticGRFConfigs(GRFConfigList &dst);
-void AppendToGRFConfigList(GRFConfigList &dst, GRFConfig *el);
+void AppendToGRFConfigList(GRFConfigList &dst, const std::shared_ptr<GRFConfig> &el);
 void ClearGRFConfigList(GRFConfigList &config);
 void ResetGRFConfig(bool defaults);
 GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig);
 bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir = NEWGRF_DIR);
-std::string GRFBuildParamList(const GRFConfig *c);
+std::string GRFBuildParamList(const GRFConfig &c);
 
 /* In newgrf_gui.cpp */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfigList &config);

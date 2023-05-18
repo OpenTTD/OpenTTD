@@ -47,8 +47,7 @@ struct LoadCheckData {
 
 	Gamelog gamelog; ///< Gamelog actions
 
-	LoadCheckData() : grfconfig(nullptr),
-			grf_compatibility(GLC_NOT_FOUND)
+	LoadCheckData() : grf_compatibility(GLC_NOT_FOUND)
 	{
 	}
 
@@ -67,7 +66,7 @@ struct LoadCheckData {
 	 */
 	bool HasNewGrfs()
 	{
-		return this->checkable && this->error == INVALID_STRING_ID && this->grfconfig != nullptr;
+		return this->checkable && this->error == INVALID_STRING_ID && !this->grfconfig.empty();
 	}
 
 	void Clear();

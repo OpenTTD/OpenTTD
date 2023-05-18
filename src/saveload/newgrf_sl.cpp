@@ -82,10 +82,10 @@ struct NGRFChunkHandler : ChunkHandler {
 
 		int index = 0;
 
-		for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+		for (const auto &c : _grfconfig) {
 			if (HasBit(c->flags, GCF_STATIC) || HasBit(c->flags, GCF_INIT_ONLY)) continue;
 			SlSetArrayIndex(index++);
-			SlObject(c, _grfconfig_desc);
+			SlObject(&*c, _grfconfig_desc);
 		}
 	}
 
@@ -96,8 +96,8 @@ struct NGRFChunkHandler : ChunkHandler {
 
 		ClearGRFConfigList(grfconfig);
 		while (SlIterateArray() != -1) {
-			GRFConfig *c = new GRFConfig();
-			SlObject(c, slt);
+			std::shared_ptr<GRFConfig> c = std::make_shared<GRFConfig>();
+			SlObject(c.get(), slt);
 			if (IsSavegameVersionBefore(SLV_101)) c->SetSuitablePalette();
 			AppendToGRFConfigList(grfconfig, c);
 		}
@@ -109,7 +109,7 @@ struct NGRFChunkHandler : ChunkHandler {
 
 		if (_game_mode == GM_MENU) {
 			/* Intro game must not have NewGRF. */
-			if (_grfconfig != nullptr) SlErrorCorrupt("The intro game must not use NewGRF");
+			if (!_grfconfig.empty()) SlErrorCorrupt("The intro game must not use NewGRF");
 
 			/* Activate intro NewGRFs (townnames) */
 			ResetGRFConfig(false);

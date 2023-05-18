@@ -8795,7 +8795,7 @@ static void ResetNewGRF()
 /** Clear all NewGRF errors */
 static void ResetNewGRFErrors()
 {
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		c->error.reset();
 	}
 }
@@ -10116,7 +10116,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	 * be reset, the NewGRF would remain disabled even though it should
 	 * have been enabled.
 	 */
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (c->status != GCS_NOT_FOUND) c->status = GCS_UNKNOWN;
 	}
 
@@ -10128,7 +10128,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	for (GrfLoadingStage stage = GLS_LABELSCAN; stage <= GLS_ACTIVATION; stage++) {
 		/* Set activated grfs back to will-be-activated between reservation- and activation-stage.
 		 * This ensures that action7/9 conditions 0x06 - 0x0A work correctly. */
-		for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+		for (const auto &c : _grfconfig) {
 			if (c->status == GCS_ACTIVATED) c->status = GCS_INITIALISED;
 		}
 
@@ -10147,7 +10147,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 		uint num_non_static = 0;
 
 		_cur.stage = stage;
-		for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+		for (const auto &c : _grfconfig) {
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
 
@@ -10158,7 +10158,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 				continue;
 			}
 
-			if (stage == GLS_LABELSCAN) InitNewGRFFile(c);
+			if (stage == GLS_LABELSCAN) InitNewGRFFile(c.get());
 
 			if (!HasBit(c->flags, GCF_STATIC) && !HasBit(c->flags, GCF_SYSTEM)) {
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
@@ -10172,7 +10172,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 
 			num_grfs++;
 
-			LoadNewGRFFile(c, stage, subdir, false);
+			LoadNewGRFFile(c.get(), stage, subdir, false);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {

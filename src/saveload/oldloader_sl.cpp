@@ -1559,7 +1559,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int)
 					uint32_t grfid = ReadUint32(ls);
 
 					if (ReadByte(ls) == 1) {
-						GRFConfig *c = new GRFConfig("TTDP game, no information");
+						std::shared_ptr<GRFConfig> c = std::make_shared<GRFConfig>("TTDP game, no information");
 						c->ident.grfid = grfid;
 
 						AppendToGRFConfigList(_grfconfig, c);

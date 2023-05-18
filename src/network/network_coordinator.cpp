@@ -243,17 +243,13 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet &p)
 	for (; servers > 0; servers--) {
 		std::string connection_string = p.Recv_string(NETWORK_HOSTNAME_PORT_LENGTH);
 
-		/* Read the NetworkGameInfo from the packet. */
-		NetworkGameInfo ngi = {};
-		DeserializeNetworkGameInfo(p, ngi, &this->newgrf_lookup_table);
-
 		/* Now we know the connection string, we can add it to our list. */
 		NetworkGameList *item = NetworkGameListAddItem(connection_string);
 
 		/* Clear any existing GRFConfig chain. */
 		ClearGRFConfigList(item->info.grfconfig);
-		/* Copy the new NetworkGameInfo info. */
-		item->info = ngi;
+		/* Read the NetworkGameInfo from the packet. */
+		DeserializeNetworkGameInfo(p, item->info, &this->newgrf_lookup_table);
 		/* Check for compatability with the client. */
 		CheckGameCompatibility(item->info);
 		/* Mark server as online. */

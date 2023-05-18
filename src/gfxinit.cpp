@@ -208,16 +208,14 @@ static void LoadSpriteTables()
 	 * However, we do not want it to show up in the list of used NewGRFs,
 	 * so we have to manually add it, and then remove it later.
 	 */
-	GRFConfig *top = _grfconfig;
 
 	auto default_extra = GetDefaultExtraGRFConfig();
 	auto baseset_extra = GetBasesetExtraGRFConfig();
 
-	baseset_extra->next = top;
-	default_extra->next = baseset_extra.get();
-	_grfconfig = default_extra.get();
+	auto extra_grfs = {default_extra, baseset_extra};
+	_grfconfig.insert(std::begin(_grfconfig), extra_grfs);
 
-	LoadNewGRF(SPR_NEWGRFS_BASE, 2);
+	LoadNewGRF(SPR_NEWGRFS_BASE, static_cast<uint>(std::size(extra_grfs)));
 
 	uint total_extra_graphics = SPR_NEWGRFS_BASE - SPR_OPENTTD_BASE;
 	Debug(sprite, 4, "Checking sprites from fallback grf");
@@ -228,8 +226,8 @@ static void LoadSpriteTables()
 	 * Let's say everything which provides less than 500 sprites misses the rest intentionally. */
 	if (500 + _missing_extra_graphics > total_extra_graphics) _missing_extra_graphics = 0;
 
-	/* Remove the extra sets from the GRF config. */
-	_grfconfig = top;
+	/* Remove the default and baseset extra graphics. */
+	_grfconfig.erase(std::begin(_grfconfig), std::next(std::begin(_grfconfig), std::size(extra_grfs)));
 }
 
 
@@ -275,7 +273,7 @@ static bool SwitchNewGRFBlitter()
 	 */
 	uint depth_wanted_by_base = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP ? 32 : 8;
 	uint depth_wanted_by_grf = _support8bpp != S8BPP_NONE ? 8 : 32;
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND || HasBit(c->flags, GCF_INIT_ONLY)) continue;
 		if (c->palette & GRFP_BLT_32BPP) depth_wanted_by_grf = 32;
 	}
