@@ -10,7 +10,6 @@
 #ifndef HOTKEYS_H
 #define HOTKEYS_H
 
-#include "core/smallvec_type.hpp"
 #include "gfx_type.h"
 #include "window_type.h"
 #include "string_type.h"
@@ -27,7 +26,7 @@ struct Hotkey {
 
 	const char *name;
 	int num;
-	std::vector<uint16> keycodes;
+	std::set<uint16> keycodes;
 };
 
 #define HOTKEY_LIST_END Hotkey((uint16)0, nullptr, -1)
