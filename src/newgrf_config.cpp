@@ -209,26 +209,6 @@ GRFParameterInfo::GRFParameterInfo(uint nr) :
 {}
 
 /**
- * Create a new GRFParameterInfo object that is a deep copy of an existing
- *   parameter info object.
- * @param info The GRFParameterInfo object to make a copy of.
- */
-GRFParameterInfo::GRFParameterInfo(GRFParameterInfo &info) :
-	name(info.name),
-	desc(info.desc),
-	type(info.type),
-	min_value(info.min_value),
-	max_value(info.max_value),
-	def_value(info.def_value),
-	param_nr(info.param_nr),
-	first_bit(info.first_bit),
-	num_bit(info.num_bit),
-	value_names(info.value_names),
-	complete_labels(info.complete_labels)
-{
-}
-
-/**
  * Get the value of this user-changeable parameter from the given config.
  * @param config The GRFConfig to get the value from.
  * @return The value of this parameter.

@@ -132,7 +132,6 @@ enum GRFParameterType {
 /** Information about one grf parameter. */
 struct GRFParameterInfo {
 	GRFParameterInfo(uint nr);
-	GRFParameterInfo(GRFParameterInfo &info);
 	GRFTextList name;      ///< The name of this parameter
 	GRFTextList desc;      ///< The description of this parameter
 	GRFParameterType type; ///< The type of this parameter
