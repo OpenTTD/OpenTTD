@@ -227,9 +227,9 @@ static size_t LookupManyOfMany(const std::vector<std::string> &many, const char 
  * @return returns the number of items found, or -1 on an error
  */
 template<typename T>
-static int ParseIntList(const char *p, T *items, int maxitems)
+static int ParseIntList(const char *p, T *items, size_t maxitems)
 {
-	int n = 0; // number of items read so far
+	size_t n = 0; // number of items read so far
 	bool comma = false; // do we accept comma?
 
 	while (*p != '\0') {
@@ -262,7 +262,7 @@ static int ParseIntList(const char *p, T *items, int maxitems)
 	 * We have read comma when (n != 0) and comma is not allowed */
 	if (n != 0 && !comma) return -1;
 
-	return n;
+	return ClampTo<int>(n);
 }
 
 /**
@@ -996,7 +996,7 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 
 		/* Parse parameters */
 		if (item->value.has_value() && !item->value->empty()) {
-			int count = ParseIntList(item->value->c_str(), c->param, lengthof(c->param));
+			int count = ParseIntList(item->value->c_str(), c->param.data(), c->param.size());
 			if (count < 0) {
 				SetDParamStr(0, filename);
 				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);

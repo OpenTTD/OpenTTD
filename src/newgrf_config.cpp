@@ -35,7 +35,7 @@
  * @param filename Set the filename of this GRFConfig to filename.
  */
 GRFConfig::GRFConfig(const std::string &filename) :
-	filename(filename), num_valid_params(lengthof(param))
+	filename(filename), num_valid_params(ClampTo<uint8_t>(GRFConfig::param.size()))
 {
 }
 
@@ -56,13 +56,13 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	flags(config.flags & ~(1 << GCF_COPY)),
 	status(config.status),
 	grf_bugs(config.grf_bugs),
+	param(config.param),
 	num_params(config.num_params),
 	num_valid_params(config.num_valid_params),
 	palette(config.palette),
 	param_info(config.param_info),
 	has_param_defaults(config.has_param_defaults)
 {
-	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
 	if (config.error != nullptr) this->error = std::make_unique<GRFError>(*config.error);
 }
 
@@ -74,7 +74,7 @@ void GRFConfig::CopyParams(const GRFConfig &src)
 {
 	this->num_params = src.num_params;
 	this->num_valid_params = src.num_valid_params;
-	MemCpyT<uint32>(this->param, src.param, lengthof(this->param));
+	this->param = src.param;
 }
 
 /**
@@ -110,7 +110,7 @@ const char *GRFConfig::GetURL() const
 void GRFConfig::SetParameterDefaults()
 {
 	this->num_params = 0;
-	MemSetT<uint32>(this->param, 0, lengthof(this->param));
+	this->param = {};
 
 	if (!this->has_param_defaults) return;
 

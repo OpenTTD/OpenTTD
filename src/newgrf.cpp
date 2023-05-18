@@ -8090,7 +8090,7 @@ static bool ChangeGRFNumUsedParams(size_t len, ByteReader *buf)
 		GrfMsg(2, "StaticGRFInfo: expected only 1 byte for 'INFO'->'NPAR' but got {}, ignoring this field", len);
 		buf->Skip(len);
 	} else {
-		_cur.grfconfig->num_valid_params = std::min<byte>(buf->ReadByte(), lengthof(_cur.grfconfig->param));
+		_cur.grfconfig->num_valid_params = std::min(buf->ReadByte(), ClampTo<uint8_t>(_cur.grfconfig->param.size()));
 	}
 	return true;
 }
@@ -8239,7 +8239,7 @@ static bool ChangeGRFParamMask(size_t len, ByteReader *buf)
 		buf->Skip(len);
 	} else {
 		byte param_nr = buf->ReadByte();
-		if (param_nr >= lengthof(_cur.grfconfig->param)) {
+		if (param_nr >= _cur.grfconfig->param.size()) {
 			GrfMsg(2, "StaticGRFInfo: invalid parameter number in 'INFO'->'PARA'->'MASK', param {}, ignoring this field", param_nr);
 			buf->Skip(len - 1);
 		} else {
@@ -8926,13 +8926,8 @@ GRFFile::GRFFile(const GRFConfig *config)
 
 	/* Copy the initial parameter list
 	 * 'Uninitialised' parameters are zeroed as that is their default value when dynamically creating them. */
-	static_assert(lengthof(this->param) == lengthof(config->param) && lengthof(this->param) == 0x80);
-
-	assert(config->num_params <= lengthof(config->param));
+	this->param = config->param;
 	this->param_end = config->num_params;
-	if (this->param_end > 0) {
-		MemCpyT(this->param, config->param, this->param_end);
-	}
 }
 
 GRFFile::~GRFFile()
