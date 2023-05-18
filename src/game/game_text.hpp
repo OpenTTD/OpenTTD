@@ -10,8 +10,6 @@
 #ifndef GAME_TEXT_HPP
 #define GAME_TEXT_HPP
 
-#include "../core/smallvec_type.hpp"
-
 struct StringParam {
 	enum ParamType {
 		RAW_STRING,

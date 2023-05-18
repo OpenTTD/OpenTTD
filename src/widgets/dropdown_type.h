@@ -12,7 +12,6 @@
 
 #include "../window_type.h"
 #include "../gfx_func.h"
-#include "../core/smallvec_type.hpp"
 #include "table/strings.h"
 
 /**

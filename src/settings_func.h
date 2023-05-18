@@ -10,7 +10,6 @@
 #ifndef SETTINGS_FUNC_H
 #define SETTINGS_FUNC_H
 
-#include "core/smallvec_type.hpp"
 #include "company_type.h"
 #include "string_type.h"
 

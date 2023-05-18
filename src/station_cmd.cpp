@@ -45,6 +45,7 @@
 #include "pbs.h"
 #include "debug.h"
 #include "core/random_func.hpp"
+#include "core/container_func.hpp"
 #include "company_base.h"
 #include "table/airporttile_ids.h"
 #include "newgrf_airporttiles.h"

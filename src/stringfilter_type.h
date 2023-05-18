@@ -10,7 +10,6 @@
 #ifndef STRINGFILTER_TYPE_H
 #define STRINGFILTER_TYPE_H
 
-#include "core/smallvec_type.hpp"
 #include "strings_type.h"
 
 /**

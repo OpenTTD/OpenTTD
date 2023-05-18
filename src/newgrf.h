@@ -16,7 +16,7 @@
 #include "fileio_type.h"
 #include "core/bitmath_func.hpp"
 #include "core/alloc_type.hpp"
-#include "core/smallvec_type.hpp"
+#include "core/mem_func.hpp"
 
 /**
  * List of different canal 'features'.

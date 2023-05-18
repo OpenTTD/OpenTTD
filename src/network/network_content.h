@@ -13,6 +13,7 @@
 #include "core/tcp_content.h"
 #include "core/http.h"
 #include <unordered_map>
+#include "../core/container_func.hpp"
 
 /** Vector with content info */
 typedef std::vector<ContentInfo *> ContentVector;

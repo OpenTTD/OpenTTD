@@ -11,7 +11,6 @@
 #define MUSIC_MIDIFILE_HPP
 
 #include "../stdafx.h"
-#include "../core/smallvec_type.hpp"
 #include "midi.h"
 
 struct MusicSongInfo;
