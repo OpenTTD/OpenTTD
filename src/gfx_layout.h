@@ -80,7 +80,7 @@ public:
 	Font(FontSize size, TextColour colour);
 };
 
-/** Mapping from index to font. */
+/** Mapping from index to font. The pointer is owned by FontColourMap. */
 using FontMap = std::map<int, Font *>;
 
 /**
@@ -169,7 +169,7 @@ private:
 
 	static LineCacheItem &GetCachedParagraphLayout(std::string_view str, const FontState &state);
 
-	using FontColourMap = std::map<TextColour, Font *>;
+	using FontColourMap = std::map<TextColour, std::unique_ptr<Font>>;
 	static FontColourMap fonts[FS_END];
 public:
 	static Font *GetFont(FontSize size, TextColour colour);
