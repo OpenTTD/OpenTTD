@@ -108,16 +108,12 @@ struct GRFIdentifier {
 /** Information about why GRF had problems during initialisation */
 struct GRFError {
 	GRFError(StringID severity, StringID message = 0);
-	GRFError(const GRFError &error);
-
-	/* Remove the copy assignment, as the default implementation will not do the right thing. */
-	GRFError &operator=(GRFError &rhs) = delete;
 
 	std::string custom_message; ///< Custom message (if present)
 	std::string data;           ///< Additional data for message and custom_message
 	StringID message;           ///< Default message
 	StringID severity;          ///< Info / Warning / Error / Fatal
-	uint32 param_value[2];      ///< Values of GRF parameters to show for message and custom_message
+	std::array<uint32_t, 2> param_value; ///< Values of GRF parameters to show for message and custom_message
 };
 
 /** The possible types of a newgrf parameter. */

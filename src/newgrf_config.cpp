@@ -158,24 +158,8 @@ uint _missing_extra_graphics = 0;
  * @param severity The severity of this error.
  * @param message The actual error-string.
  */
-GRFError::GRFError(StringID severity, StringID message) :
-	message(message),
-	severity(severity),
-	param_value()
+GRFError::GRFError(StringID severity, StringID message) : message(message), severity(severity)
 {
-}
-
-/**
- * Create a new GRFError that is a deep copy of an existing error message.
- * @param error The GRFError object to make a copy of.
- */
-GRFError::GRFError(const GRFError &error) :
-	custom_message(error.custom_message),
-	data(error.data),
-	message(error.message),
-	severity(error.severity)
-{
-	memcpy(this->param_value, error.param_value, sizeof(this->param_value));
 }
 
 /**
