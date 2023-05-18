@@ -213,9 +213,9 @@ static std::string KeycodeToString(uint16 keycode)
 std::string SaveKeycodes(const Hotkey *hotkey)
 {
 	std::string str;
-	for (uint i = 0; i < hotkey->keycodes.size(); i++) {
-		if (i > 0) str += ",";
-		str += KeycodeToString(hotkey->keycodes[i]);
+	for (auto keycode : hotkey->keycodes) {
+		if (!str.empty()) str += ",";
+		str += KeycodeToString(keycode);
 	}
 	return str;
 }
@@ -257,7 +257,7 @@ Hotkey::Hotkey(const uint16 *default_keycodes, const char *name, int num) :
  */
 void Hotkey::AddKeycode(uint16 keycode)
 {
-	include(this->keycodes, keycode);
+	this->keycodes.insert(keycode);
 }
 
 HotkeyList::HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler) :
