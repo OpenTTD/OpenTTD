@@ -2431,11 +2431,9 @@ void Industry::RecomputeProductionMultipliers()
 
 void Industry::FillCachedName() const
 {
-	char buf[256];
 	int64 args_array[] = { this->index };
 	StringParameters tmp_params(args_array);
-	char *end = GetStringWithArgs(buf, STR_INDUSTRY_NAME, &tmp_params, lastof(buf));
-	this->cached_name.assign(buf, end);
+	this->cached_name = GetStringWithArgs(STR_INDUSTRY_NAME, &tmp_params);
 }
 
 void ClearAllIndustryCachedNames()

@@ -172,7 +172,7 @@ extern StringParameters _global_string_params;
 
 char *GetString(char *buffr, StringID string, const char *last);
 std::string GetString(StringID string);
-char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index = 0, bool game_script = false);
+std::string GetStringWithArgs(StringID string, StringParameters *args);
 const char *GetStringPtr(StringID string);
 
 uint ConvertKmhishSpeedToDisplaySpeed(uint speed, VehicleType type);
