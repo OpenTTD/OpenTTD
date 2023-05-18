@@ -118,6 +118,16 @@ public:
 	{
 		return (ptrdiff_t)(this->last - this->current);
 	}
+
+	/**
+	 * Add a string using the strecpy/strecat-esque calling signature.
+	 * @param function The function to pass the current and last location to,
+	 *                 that will then return the new current location.
+	 */
+	void AddViaStreCallback(std::function<char*(char*, const char*)> function)
+	{
+		this->current = function(this->current, this->last);
+	}
 };
 
 #endif /* STRINGS_INTERNAL_H */
