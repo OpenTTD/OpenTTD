@@ -1187,12 +1187,12 @@ STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Автоматический сбор данных
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Разрешить автоматический сбор данных
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Разрешить сбор и отправку данных
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Разрешить автоматический сбор данных о ваших настройках игры и используемых модулях. OpenTTD отправит эти данные при закрытии игры.
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}О сборе данных и приватности
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Открыть ссылку с информацией об автоматическом сборе данных
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Просмотр собранных данных
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Показать собранные в текущем сеансе данные
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Показать данные, собранные в текущем сеансе и подготовленные к отправке
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Настройки графики
 
