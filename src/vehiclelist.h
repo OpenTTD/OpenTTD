@@ -10,7 +10,6 @@
 #ifndef VEHICLELIST_H
 #define VEHICLELIST_H
 
-#include "core/smallvec_type.hpp"
 #include "vehicle_type.h"
 #include "company_type.h"
 #include "tile_type.h"

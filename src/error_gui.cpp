@@ -8,6 +8,7 @@
 /** @file error_gui.cpp GUI related to errors. */
 
 #include "stdafx.h"
+#include "core/mem_func.hpp"
 #include "landscape.h"
 #include "newgrf_text.h"
 #include "error.h"

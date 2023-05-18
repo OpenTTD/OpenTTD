@@ -10,7 +10,6 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
-#include "core/smallvec_type.hpp"
 #ifdef WITH_ICU_I18N
 #include <unicode/coll.h>
 #endif /* WITH_ICU_I18N */

@@ -11,7 +11,6 @@
 #define NEWGRF_DEBUG_H
 
 #include "newgrf.h"
-#include "core/smallvec_type.hpp"
 #include "tile_type.h"
 #include "vehicle_type.h"
 

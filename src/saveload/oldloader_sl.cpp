@@ -27,7 +27,6 @@
 #include "../engine_func.h"
 #include "../company_base.h"
 #include "../disaster_vehicle.h"
-#include "../core/smallvec_type.hpp"
 #include "../timer/timer.h"
 #include "../timer/timer_game_tick.h"
 #include "../timer/timer_game_calendar.h"

@@ -20,6 +20,7 @@
 #include "subsidy_func.h"
 #include "core/pool_func.hpp"
 #include "core/random_func.hpp"
+#include "core/container_func.hpp"
 #include "game/game.hpp"
 #include "command_func.h"
 #include "string_func.h"

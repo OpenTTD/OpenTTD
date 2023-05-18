@@ -30,6 +30,7 @@
 #include "town.h"
 #include "company_base.h"
 #include "core/random_func.hpp"
+#include "core/container_func.hpp"
 #include "newgrf_debug.h"
 #include "newgrf_railtype.h"
 #include "newgrf_roadtype.h"

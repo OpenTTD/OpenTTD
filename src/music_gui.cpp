@@ -18,6 +18,7 @@
 #include "gfx_func.h"
 #include "zoom_func.h"
 #include "core/random_func.hpp"
+#include "core/mem_func.hpp"
 #include "error.h"
 #include "core/geometry_func.hpp"
 #include "string_func.h"

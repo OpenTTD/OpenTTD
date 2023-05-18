@@ -22,6 +22,7 @@
 #include "newgrf_debug.h"
 #include "thread.h"
 #include "core/backup_type.hpp"
+#include "core/container_func.hpp"
 #include "viewport_func.h"
 
 #include "table/palettes.h"

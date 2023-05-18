@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"
+#include "../core/mem_func.hpp"
 #include "../error_func.h"
 #include "../string_func.h"
 #include "../table/control_codes.h"

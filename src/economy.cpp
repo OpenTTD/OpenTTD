@@ -41,6 +41,7 @@
 #include "economy_base.h"
 #include "core/pool_func.hpp"
 #include "core/backup_type.hpp"
+#include "core/container_func.hpp"
 #include "cargo_type.h"
 #include "water.h"
 #include "game/game.hpp"

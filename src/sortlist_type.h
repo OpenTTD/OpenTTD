@@ -12,7 +12,7 @@
 
 #include "core/enum_type.hpp"
 #include "core/bitmath_func.hpp"
-#include "core/smallvec_type.hpp"
+#include "core/mem_func.hpp"
 #include "date_type.h"
 
 /** Flags of the sort list. */

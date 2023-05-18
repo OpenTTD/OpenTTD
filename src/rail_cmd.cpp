@@ -26,6 +26,7 @@
 #include "pbs.h"
 #include "company_base.h"
 #include "core/backup_type.hpp"
+#include "core/container_func.hpp"
 #include "timer/timer_game_calendar.h"
 #include "strings_func.h"
 #include "company_gui.h"

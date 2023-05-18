@@ -10,7 +10,6 @@
 #ifndef SMALLSTACK_TYPE_HPP
 #define SMALLSTACK_TYPE_HPP
 
-#include "smallvec_type.hpp"
 #include <mutex>
 
 /**

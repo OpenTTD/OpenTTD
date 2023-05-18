@@ -10,7 +10,6 @@
 #ifndef VEHICLE_GUI_BASE_H
 #define VEHICLE_GUI_BASE_H
 
-#include "core/smallvec_type.hpp"
 #include "cargo_type.h"
 #include "timer/timer_game_calendar.h"
 #include "economy_type.h"

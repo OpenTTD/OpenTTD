@@ -12,7 +12,6 @@
 
 #include "string_type.h"
 #include "strings_type.h"
-#include "core/smallvec_type.hpp"
 #include "table/control_codes.h"
 #include <utility>
 

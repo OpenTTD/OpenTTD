@@ -12,6 +12,7 @@
 #include "../fileio_type.h"
 #include "../string_func.h"
 #include "../core/endian_func.hpp"
+#include "../core/mem_func.hpp"
 #include "../base_media_base.h"
 #include "midi.h"
 
