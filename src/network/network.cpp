@@ -197,7 +197,7 @@ std::string GenerateCompanyPasswordHash(const std::string &password, const std::
 	checksum.Append(salted_password_string.data(), salted_password_string.size());
 	checksum.Finish(digest);
 
-	return MD5SumToString(digest);
+	return FormatArrayAsHex(digest);
 }
 
 /**

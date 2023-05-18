@@ -81,7 +81,7 @@ std::string GenerateUid(std::string_view subject)
 	checksum.Append(coding_string.c_str(), coding_string.length());
 	checksum.Finish(digest);
 
-	return MD5SumToString(digest);
+	return FormatArrayAsHex(digest);
 }
 
 /**

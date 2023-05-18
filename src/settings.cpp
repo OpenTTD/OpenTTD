@@ -1140,7 +1140,7 @@ static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfig *li
 		GRFBuildParamList(params, c, lastof(params));
 
 		std::string key = fmt::format("{:08X}|{}|{}", BSWAP32(c->ident.grfid),
-				MD5SumToString(c->ident.md5sum), c->filename);
+				FormatArrayAsHex(c->ident.md5sum), c->filename);
 		group->GetItem(key, true)->SetValue(params);
 	}
 }

@@ -481,7 +481,7 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 			 * same grfid, as it most likely is compatible */
 			f = FindGRFConfig(c->ident.grfid, FGCM_COMPATIBLE, nullptr, c->version);
 			if (f != nullptr) {
-				Debug(grf, 1, "NewGRF {:08X} ({}) not found; checksum {}. Compatibility mode on", BSWAP32(c->ident.grfid), c->filename, MD5SumToString(c->ident.md5sum));
+				Debug(grf, 1, "NewGRF {:08X} ({}) not found; checksum {}. Compatibility mode on", BSWAP32(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 				if (!HasBit(c->flags, GCF_COMPATIBLE)) {
 					/* Preserve original_md5sum after it has been assigned */
 					SetBit(c->flags, GCF_COMPATIBLE);
@@ -494,7 +494,7 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 			}
 
 			/* No compatible grf was found, mark it as disabled */
-			Debug(grf, 0, "NewGRF {:08X} ({}) not found; checksum {}", BSWAP32(c->ident.grfid), c->filename, MD5SumToString(c->ident.md5sum));
+			Debug(grf, 0, "NewGRF {:08X} ({}) not found; checksum {}", BSWAP32(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 
 			c->status = GCS_NOT_FOUND;
 			res = GLC_NOT_FOUND;
