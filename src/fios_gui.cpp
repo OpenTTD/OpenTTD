@@ -55,9 +55,6 @@ void LoadCheckData::Clear()
 	this->current_date = 0;
 	this->settings = {};
 
-	for (auto &pair : this->companies) {
-		delete pair.second;
-	}
 	companies.clear();
 
 	this->gamelog.Reset();

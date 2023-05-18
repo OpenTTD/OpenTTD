@@ -527,8 +527,8 @@ struct PLYRChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			CompanyProperties *cprops = new CompanyProperties();
-			SlObject(cprops, slt);
+			std::unique_ptr<CompanyProperties> cprops = std::make_unique<CompanyProperties>();
+			SlObject(cprops.get(), slt);
 
 			/* We do not load old custom names */
 			if (IsSavegameVersionBefore(SLV_84)) {
@@ -549,9 +549,7 @@ struct PLYRChunkHandler : ChunkHandler {
 			}
 
 			if (_load_check_data.companies.count(index) == 0) {
-				_load_check_data.companies[index] = cprops;
-			} else {
-				delete cprops;
+				_load_check_data.companies[index] = std::move(cprops);
 			}
 		}
 	}
