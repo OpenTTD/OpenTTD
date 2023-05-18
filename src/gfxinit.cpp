@@ -182,23 +182,20 @@ static void LoadSpriteTables()
 	 * However, we do not want it to show up in the list of used NewGRFs,
 	 * so we have to manually add it, and then remove it later.
 	 */
-	GRFConfig *top = _grfconfig;
 
 	/* Default extra graphics */
 	static const char *master_filename = "OPENTTD.GRF";
-	GRFConfig *master = new GRFConfig(master_filename);
+	auto master = std::make_shared<GRFConfig>(master_filename);
 	master->palette |= GRFP_GRF_DOS;
-	FillGRFDetails(master, false, BASESET_DIR);
+	FillGRFDetails(*master, false, BASESET_DIR);
 	ClrBit(master->flags, GCF_INIT_ONLY);
 
 	/* Baseset extra graphics */
-	GRFConfig *extra = new GRFConfig(used_set->GetOrCreateExtraConfig());
+	auto extra = std::make_shared<GRFConfig>(used_set->GetOrCreateExtraConfig());
 	if (extra->num_params == 0) extra->SetParameterDefaults();
 	ClrBit(extra->flags, GCF_INIT_ONLY);
 
-	extra->next = top;
-	master->next = extra;
-	_grfconfig = master;
+	_grfconfig.insert(std::begin(_grfconfig), {master, extra});
 
 	LoadNewGRF(SPR_NEWGRFS_BASE, 2);
 
@@ -211,10 +208,8 @@ static void LoadSpriteTables()
 	 * Let's say everything which provides less than 500 sprites misses the rest intentionally. */
 	if (500 + _missing_extra_graphics > total_extra_graphics) _missing_extra_graphics = 0;
 
-	/* Free and remove the top element. */
-	delete extra;
-	delete master;
-	_grfconfig = top;
+	/* Remove the default and baseset extra graphics. */
+	_grfconfig.erase(std::begin(_grfconfig), std::next(std::begin(_grfconfig), 2));
 }
 
 
@@ -260,7 +255,7 @@ static bool SwitchNewGRFBlitter()
 	 */
 	uint depth_wanted_by_base = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP ? 32 : 8;
 	uint depth_wanted_by_grf = _support8bpp != S8BPP_NONE ? 8 : 32;
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND || HasBit(c->flags, GCF_INIT_ONLY)) continue;
 		if (c->palette & GRFP_BLT_32BPP) depth_wanted_by_grf = 32;
 	}
@@ -384,7 +379,7 @@ GRFConfig &GraphicsSet::GetOrCreateExtraConfig() const
 			case PAL_WINDOWS: this->extra_cfg->palette |= GRFP_GRF_WINDOWS; break;
 			default: break;
 		}
-		FillGRFDetails(this->extra_cfg.get(), false, BASESET_DIR);
+		FillGRFDetails(*this->extra_cfg.get(), false, BASESET_DIR);
 	}
 	return *this->extra_cfg;
 }

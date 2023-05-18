@@ -17,7 +17,7 @@
 
 ScriptNewGRFList::ScriptNewGRFList()
 {
-	for (auto c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (!HasBit(c->flags, GCF_STATIC)) {
 			this->AddItem(BSWAP32(c->ident.grfid));
 		}
@@ -28,7 +28,7 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
 
-	for (auto c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
 			return true;
 		}
@@ -41,7 +41,7 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
 
-	for (auto c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
 			return c->version;
 		}
@@ -54,7 +54,7 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
 
-	for (auto c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
 			return c->GetName();
 		}

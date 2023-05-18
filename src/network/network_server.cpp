@@ -416,15 +416,14 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 {
 	Packet *p = new Packet(PACKET_SERVER_CHECK_NEWGRFS, TCP_MTU);
-	const GRFConfig *c;
 	uint grf_count = 0;
 
-	for (c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (!HasBit(c->flags, GCF_STATIC)) grf_count++;
 	}
 
 	p->Send_uint8 (grf_count);
-	for (c = _grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : _grfconfig) {
 		if (!HasBit(c->flags, GCF_STATIC)) SerializeGRFIdentifier(p, &c->ident);
 	}
 
@@ -892,7 +891,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 
 	this->status = STATUS_NEWGRFS_CHECK;
 
-	if (_grfconfig == nullptr) {
+	if (_grfconfig.empty()) {
 		/* Behave as if we received PACKET_CLIENT_NEWGRFS_CHECKED */
 		return this->Receive_CLIENT_NEWGRFS_CHECKED(nullptr);
 	}

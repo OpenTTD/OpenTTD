@@ -76,8 +76,8 @@ public:
 	void Oldver();
 	void Setting(const std::string &name, int32_t oldval, int32_t newval);
 
-	void GRFUpdate(const GRFConfig *oldg, const GRFConfig *newg);
-	void GRFAddList(const GRFConfig *newg);
+	void GRFUpdate(const GRFConfigList &oldg, const GRFConfigList &newg);
+	void GRFAddList(const GRFConfigList &newg);
 	void GRFRemove(uint32_t grfid);
 	void GRFAdd(const GRFConfig *newg);
 	void GRFBug(uint32_t grfid, byte bug, uint64_t data);
@@ -90,7 +90,7 @@ public:
 	void TestMode();
 
 	void Info(uint32_t *last_ottd_rev, byte *ever_modified, bool *removed_newgrfs);
-	const GRFIdentifier *GetOverriddenIdentifier(const GRFConfig *c);
+	const GRFIdentifier *GetOverriddenIdentifier(const GRFConfig &c);
 
 	/* Saveload handler for gamelog needs access to internal data. */
 	friend struct GLOGChunkHandler;
