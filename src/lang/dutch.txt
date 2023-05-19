@@ -1041,6 +1041,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Geautomatiseerd onderzoek
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Deelnemen aan geautomatiseerd onderzoek
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Als dit is ingeschakeld, verzendt OpenTTD een onderzoek wanneer je het spel afsluit
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Onderzoek en privacy
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Hiermee open je een browser met meer informatie over het geautomatiseerde onderzoek.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Voorbeeld van resultaten van onderzoek
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Geef de resultaten weer van het onderzoek van het huidige spel
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Weergave
 
@@ -2403,6 +2410,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nee
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, deze keer
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, en vraag dit niet opnieuw
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Deelnemen aan geautomatiseerd onderzoek?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Wil je meedoen aan het geautomatiseerde onderzoek?{}OpenTTD verzendt een onderzoek wanneer je het spel afsluit.{}Je kunt dit altijd wijzigen bij 'Spelopties'.
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Voorbeeld van resultaten van onderzoek
+STR_NETWORK_ASK_SURVEY_LINK                                     :Onderzoek en privacy
+STR_NETWORK_ASK_SURVEY_NO                                       :Nee
+STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Toeschouwers
 
@@ -4660,6 +4673,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licentie
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} leesmij van {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} wijzigingen van {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licentie van {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Voorbeeld van resultaten van onderzoek
 
 
 # Vehicle loading indicators

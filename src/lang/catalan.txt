@@ -1042,6 +1042,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :x3
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :x4
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :x5
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Enquesta automatitzada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participa a l'enquesta automatitzada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quan s'activa, l'OpenTTD transmetrà dades a l'enquesta quan es surti d'una partida.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Sobre l'enquesta i la privacitat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Obre una pàgina amb més informació sobre l'enquesta automatitzada.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vista prèvia del resultat de l'enquesta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostra el resultat de l'enquesta automatitzada de la partida actual.
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gràfics
 
@@ -2404,6 +2411,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, aquest una vegada.
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no ho preguntis més.
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Voleu participar a l'enquesta automatitzada?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Voleu participar en l'enquesta automatitzada?{}L'OpenTTD transmetrà dades sobre l'enquesta quan sortiu d'una partida.{}Podeu canviar-ho en qualsevol moment des de les "Opcions de la partida".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Vista prèvia del resultat de l'enquesta
+STR_NETWORK_ASK_SURVEY_LINK                                     :Sobre l'enquesta i la privacitat
+STR_NETWORK_ASK_SURVEY_NO                                       :No
+STR_NETWORK_ASK_SURVEY_YES                                      :Sí
 
 STR_NETWORK_SPECTATORS                                          :Espectadors
 
@@ -4661,6 +4674,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Llicènc
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeix-me del {STRING} de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Llicència del {STRING} de {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Vista prèvia del resultat de l'enquesta
 
 
 # Vehicle loading indicators
