@@ -27,6 +27,7 @@
 #include "company_base.h"
 #include "error.h"
 #include "strings_func.h"
+#include "string_func.h"
 
 #include "table/strings.h"
 
@@ -508,16 +509,12 @@ void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res)
 	}
 
 	/* debug output */
-	char buffer[512];
-
 	SetDParamStr(0, grfconfig->GetName());
-	GetString(buffer, STR_NEWGRF_BUGGY, lastof(buffer));
-	Debug(grf, 0, "{}", buffer + 3);
+	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY)));
 
 	SetDParam(1, cbid);
 	SetDParam(2, cb_res);
-	GetString(buffer, STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, lastof(buffer));
-	Debug(grf, 0, "{}", buffer + 3);
+	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT)));
 }
 
 /**
