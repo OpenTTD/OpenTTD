@@ -315,15 +315,11 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	}
 
 	/* debug output */
-	char buffer[512];
-
 	SetDParamStr(0, grfconfig->GetName());
-	GetString(buffer, part1, lastof(buffer));
-	Debug(grf, 0, "{}", buffer + 3);
+	Debug(grf, 0, "{}", StrMakeValid(GetString(part1)));
 
 	SetDParam(1, engine);
-	GetString(buffer, part2, lastof(buffer));
-	Debug(grf, 0, "{}", buffer + 3);
+	Debug(grf, 0, "{}", StrMakeValid(GetString(part2)));
 }
 
 /**
