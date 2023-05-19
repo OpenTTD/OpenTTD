@@ -127,7 +127,7 @@ public:
 	}
 
 	static void SelectDriver(const std::string &name, Driver::Type type);
-	static char *GetDriversInfo(char *p, const char *last);
+	static void GetDriversInfo(std::back_insert_iterator<std::string> &output_iterator);
 
 	/**
 	 * Get a nice description of the driver-class.

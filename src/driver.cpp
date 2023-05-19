@@ -179,28 +179,24 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 
 /**
  * Build a human readable list of available drivers, grouped by type.
- * @param p The buffer to write to.
- * @param last The last element in the buffer.
- * @return The end of the written buffer.
+ * @param output_iterator The iterator to write the string to.
  */
-char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
+void DriverFactoryBase::GetDriversInfo(std::back_insert_iterator<std::string> &output_iterator)
 {
 	for (Driver::Type type = Driver::DT_BEGIN; type != Driver::DT_END; type++) {
-		p += seprintf(p, last, "List of %s drivers:\n", GetDriverTypeName(type));
+		fmt::format_to(output_iterator, "List of {} drivers:\n", GetDriverTypeName(type));
 
 		for (int priority = 10; priority >= 0; priority--) {
 			for (auto &it : GetDrivers()) {
 				DriverFactoryBase *d = it.second;
 				if (d->type != type) continue;
 				if (d->priority != priority) continue;
-				p += seprintf(p, last, "%18s: %s\n", d->name, d->GetDescription());
+				fmt::format_to(output_iterator, "{:>18}: {}\n", d->name, d->GetDescription());
 			}
 		}
 
-		p += seprintf(p, last, "\n");
+		fmt::format_to(output_iterator, "\n");
 	}
-
-	return p;
 }
 
 /**

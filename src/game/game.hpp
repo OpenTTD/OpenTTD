@@ -83,9 +83,9 @@ public:
 	static void Save();
 
 	/** Wrapper function for GameScanner::GetConsoleList */
-	static std::string GetConsoleList(bool newest_only = false);
+	static void GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only);
 	/** Wrapper function for GameScanner::GetConsoleLibraryList */
-	static std::string GetConsoleLibraryList();
+	static void GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator);
 	/** Wrapper function for GameScanner::GetInfoList */
 	static const ScriptInfoList *GetInfoList();
 	/** Wrapper function for GameScanner::GetUniqueInfoList */

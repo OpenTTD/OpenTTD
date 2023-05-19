@@ -138,18 +138,15 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 	}
 }
 
-std::string ScriptScanner::GetConsoleList(bool newest_only) const
+void ScriptScanner::GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only) const
 {
-	std::string p;
-	p += fmt::format("List of {}:\n", this->GetScannerName());
+	fmt::format_to(output_iterator, "List of {}:\n", this->GetScannerName());
 	const ScriptInfoList &list = newest_only ? this->info_single_list : this->info_list;
 	for (const auto &item : list) {
 		ScriptInfo *i = item.second;
-		p += fmt::format("{:>10} (v{:d}): {}\n", i->GetName(), i->GetVersion(), i->GetDescription());
+		fmt::format_to(output_iterator, "{:>10} (v{:d}): {}\n", i->GetName(), i->GetVersion(), i->GetDescription());
 	}
-	p += "\n";
-
-	return p;
+	fmt::format_to(output_iterator, "\n");
 }
 
 /** Helper for creating a MD5sum of all files within of a script. */

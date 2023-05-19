@@ -155,11 +155,12 @@ void FatalErrorI(const std::string &str)
  */
 static void ShowHelp()
 {
-	char buf[8192];
-	char *p = buf;
+	std::string str;
+	str.reserve(8192);
 
-	p += seprintf(p, lastof(buf), "OpenTTD %s\n", _openttd_revision);
-	p = strecpy(p,
+	std::back_insert_iterator<std::string> output_iterator = std::back_inserter(str);
+	fmt::format_to(output_iterator, "OpenTTD {}\n", _openttd_revision);
+	str +=
 		"\n"
 		"\n"
 		"Command line options:\n"
@@ -191,46 +192,42 @@ static void ShowHelp()
 		"  -q savegame         = Write some information about the savegame and exit\n"
 		"  -Q                  = Don't scan for/load NewGRF files on startup\n"
 		"  -QQ                 = Disable NewGRF scanning/loading entirely\n"
-		"\n",
-		lastof(buf)
-	);
+		"\n";
 
 	/* List the graphics packs */
-	p = BaseGraphics::GetSetsList(p, lastof(buf));
+	BaseGraphics::GetSetsList(output_iterator);
 
 	/* List the sounds packs */
-	p = BaseSounds::GetSetsList(p, lastof(buf));
+	BaseSounds::GetSetsList(output_iterator);
 
 	/* List the music packs */
-	p = BaseMusic::GetSetsList(p, lastof(buf));
+	BaseMusic::GetSetsList(output_iterator);
 
 	/* List the drivers */
-	p = DriverFactoryBase::GetDriversInfo(p, lastof(buf));
+	DriverFactoryBase::GetDriversInfo(output_iterator);
 
 	/* List the blitters */
-	p = BlitterFactory::GetBlittersInfo(p, lastof(buf));
+	BlitterFactory::GetBlittersInfo(output_iterator);
 
 	/* List the debug facilities. */
-	p = DumpDebugFacilityNames(p, lastof(buf));
+	DumpDebugFacilityNames(output_iterator);
 
 	/* We need to initialize the AI, so it finds the AIs */
 	AI::Initialize();
-	const std::string ai_list = AI::GetConsoleList(true);
-	p = strecpy(p, ai_list.c_str(), lastof(buf));
+	AI::GetConsoleList(output_iterator, true);
 	AI::Uninitialize(true);
 
 	/* We need to initialize the GameScript, so it finds the GSs */
 	Game::Initialize();
-	const std::string game_list = Game::GetConsoleList(true);
-	p = strecpy(p, game_list.c_str(), lastof(buf));
+	Game::GetConsoleList(output_iterator, true);
 	Game::Uninitialize(true);
 
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
 #if !defined(_WIN32)
-	printf("%s\n", buf);
+	printf("%s\n", str.c_str());
 #else
-	ShowInfoI(buf);
+	ShowInfoI(str);
 #endif
 }
 

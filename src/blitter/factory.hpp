@@ -146,16 +146,14 @@ public:
 	 * @param last The last element of the buffer.
 	 * @return p The location till where we filled the buffer.
 	 */
-	static char *GetBlittersInfo(char *p, const char *last)
+	static void GetBlittersInfo(std::back_insert_iterator<std::string> &output_iterator)
 	{
-		p += seprintf(p, last, "List of blitters:\n");
+		fmt::format_to(output_iterator, "List of blitters:\n");
 		for (auto &it : GetBlitters()) {
 			BlitterFactory *b = it.second;
-			p += seprintf(p, last, "%18s: %s\n", b->name.c_str(), b->GetDescription().c_str());
+			fmt::format_to(output_iterator, "{:>18}: {}\n", b->name, b->GetDescription());
 		}
-		p += seprintf(p, last, "\n");
-
-		return p;
+		fmt::format_to(output_iterator, "\n");
 	}
 
 	/**

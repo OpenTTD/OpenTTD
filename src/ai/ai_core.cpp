@@ -289,14 +289,14 @@
 	}
 }
 
-/* static */ std::string AI::GetConsoleList(bool newest_only)
+/* static */ void AI::GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only)
 {
-	return AI::scanner_info->GetConsoleList(newest_only);
+	AI::scanner_info->GetConsoleList(output_iterator, newest_only);
 }
 
-/* static */ std::string AI::GetConsoleLibraryList()
+/* static */ void AI::GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator)
 {
-	 return AI::scanner_library->GetConsoleList(true);
+	 AI::scanner_library->GetConsoleList(output_iterator, true);
 }
 
 /* static */ const ScriptInfoList *AI::GetInfoList()
