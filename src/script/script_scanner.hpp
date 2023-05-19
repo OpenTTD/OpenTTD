@@ -55,8 +55,10 @@ public:
 
 	/**
 	 * Get the list of registered scripts to print on the console.
+	 * @param output_iterator The iterator to write the output to.
+	 * @param newest_only Whether to only show the newest scripts.
 	 */
-	std::string GetConsoleList(bool newest_only) const;
+	void GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only) const;
 
 	/**
 	 * Check whether we have a script with the exact characteristics as ci.

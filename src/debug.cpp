@@ -85,27 +85,23 @@ struct DebugLevel {
 
 /**
  * Dump the available debug facility names in the help text.
- * @param buf Start address for storing the output.
- * @param last Last valid address for storing the output.
- * @return Next free position in the output.
+ * @param output_iterator The iterator to write the string to.
  */
-char *DumpDebugFacilityNames(char *buf, char *last)
+void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator)
 {
-	size_t length = 0;
+	bool written = false;
 	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
-		if (length == 0) {
-			buf = strecpy(buf, "List of debug facility names:\n", last);
+		if (!written) {
+			fmt::format_to(output_iterator, "List of debug facility names:\n");
 		} else {
-			buf = strecpy(buf, ", ", last);
-			length += 2;
+			fmt::format_to(output_iterator, ", ");
 		}
-		buf = strecpy(buf, i->name, last);
-		length += strlen(i->name);
+		fmt::format_to(output_iterator, i->name);
+		written = true;
 	}
-	if (length > 0) {
-		buf = strecpy(buf, "\n\n", last);
+	if (written) {
+		fmt::format_to(output_iterator, "\n\n");
 	}
-	return buf;
 }
 
 /**

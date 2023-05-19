@@ -112,9 +112,9 @@ public:
 	static void Save(CompanyID company);
 
 	/** Wrapper function for AIScanner::GetAIConsoleList */
-	static std::string GetConsoleList(bool newest_only = false);
+	static void GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only);
 	/** Wrapper function for AIScanner::GetAIConsoleLibraryList */
-	static std::string GetConsoleLibraryList();
+	static void GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator);
 	/** Wrapper function for AIScanner::GetAIInfoList */
 	static const ScriptInfoList *GetInfoList();
 	/** Wrapper function for AIScanner::GetUniqueAIInfoList */

@@ -192,7 +192,7 @@ public:
 	static Tbase_set *GetAvailableSets();
 
 	static bool SetSet(const std::string &name);
-	static char *GetSetsList(char *p, const char *last);
+	static void GetSetsList(std::back_insert_iterator<std::string> &output_iterator);
 	static int GetNumSets();
 	static int GetIndexOfUsedSet();
 	static const Tbase_set *GetSet(int index);

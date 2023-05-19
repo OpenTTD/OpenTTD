@@ -1180,6 +1180,17 @@ static void PrintLineByLine(const std::string &full_string)
 	}
 }
 
+template <typename F, typename ... Args>
+bool PrintList(F list_function, Args... args)
+{
+	std::string output_str;
+	auto inserter = std::back_inserter(output_str);
+	list_function(inserter, args...);
+	PrintLineByLine(output_str);
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConListAILibs)
 {
 	if (argc == 0) {
@@ -1187,10 +1198,7 @@ DEF_CONSOLE_CMD(ConListAILibs)
 		return true;
 	}
 
-	const std::string output_str = AI::GetConsoleLibraryList();
-	PrintLineByLine(output_str);
-
-	return true;
+	return PrintList(AI::GetConsoleLibraryList);
 }
 
 DEF_CONSOLE_CMD(ConListAI)
@@ -1200,10 +1208,7 @@ DEF_CONSOLE_CMD(ConListAI)
 		return true;
 	}
 
-	const std::string output_str = AI::GetConsoleList();
-	PrintLineByLine(output_str);
-
-	return true;
+	return PrintList(AI::GetConsoleList, false);
 }
 
 DEF_CONSOLE_CMD(ConListGameLibs)
@@ -1213,10 +1218,7 @@ DEF_CONSOLE_CMD(ConListGameLibs)
 		return true;
 	}
 
-	const std::string output_str = Game::GetConsoleLibraryList();
-	PrintLineByLine(output_str);
-
-	return true;
+	return PrintList(Game::GetConsoleLibraryList);
 }
 
 DEF_CONSOLE_CMD(ConListGame)
@@ -1226,10 +1228,7 @@ DEF_CONSOLE_CMD(ConListGame)
 		return true;
 	}
 
-	const std::string output_str = Game::GetConsoleList();
-	PrintLineByLine(output_str);
-
-	return true;
+	return PrintList(Game::GetConsoleList, false);
 }
 
 DEF_CONSOLE_CMD(ConStartAI)

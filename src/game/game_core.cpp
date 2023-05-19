@@ -219,14 +219,14 @@
 	}
 }
 
-/* static */ std::string Game::GetConsoleList(bool newest_only)
+/* static */ void Game::GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only)
 {
-	return Game::scanner_info->GetConsoleList(newest_only);
+	Game::scanner_info->GetConsoleList(output_iterator, newest_only);
 }
 
-/* static */ std::string Game::GetConsoleLibraryList()
+/* static */ void Game::GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator)
 {
-	 return Game::scanner_library->GetConsoleList(true);
+	Game::scanner_library->GetConsoleList(output_iterator, true);
 }
 
 /* static */ const ScriptInfoList *Game::GetInfoList()

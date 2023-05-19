@@ -248,31 +248,27 @@ template <class Tbase_set>
 
 /**
  * Returns a list with the sets.
- * @param p    where to print to
- * @param last the last character to print to
- * @return the last printed character
+ * @param output_iterator The iterator to write the string to.
  */
 template <class Tbase_set>
-/* static */ char *BaseMedia<Tbase_set>::GetSetsList(char *p, const char *last)
+/* static */ void BaseMedia<Tbase_set>::GetSetsList(std::back_insert_iterator<std::string> &output_iterator)
 {
-	p += seprintf(p, last, "List of " SET_TYPE " sets:\n");
+	fmt::format_to(output_iterator, "List of " SET_TYPE " sets:\n");
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != nullptr; s = s->next) {
-		p += seprintf(p, last, "%18s: %s", s->name.c_str(), s->GetDescription({}));
+		fmt::format_to(output_iterator, "{:>18}: {}", s->name, s->GetDescription({}));
 		int invalid = s->GetNumInvalid();
 		if (invalid != 0) {
 			int missing = s->GetNumMissing();
 			if (missing == 0) {
-				p += seprintf(p, last, " (%i corrupt file%s)\n", invalid, invalid == 1 ? "" : "s");
+				fmt::format_to(output_iterator, " ({} corrupt file{})\n", invalid, invalid == 1 ? "" : "s");
 			} else {
-				p += seprintf(p, last, " (unusable: %i missing file%s)\n", missing, missing == 1 ? "" : "s");
+				fmt::format_to(output_iterator, " (unusable: {} missing file{})\n", missing, missing == 1 ? "" : "s");
 			}
 		} else {
-			p += seprintf(p, last, "\n");
+			fmt::format_to(output_iterator, "\n");
 		}
 	}
-	p += seprintf(p, last, "\n");
-
-	return p;
+	fmt::format_to(output_iterator, "\n");
 }
 
 #include "network/core/tcp_content_type.h"
@@ -378,7 +374,7 @@ template <class Tbase_set>
 	template bool repl_type::AddFile(const std::string &filename, size_t pathlength, const std::string &tar_filename); \
 	template bool repl_type::HasSet(const struct ContentInfo *ci, bool md5sum); \
 	template bool repl_type::SetSet(const std::string &name); \
-	template char *repl_type::GetSetsList(char *p, const char *last); \
+	template void repl_type::GetSetsList(std::back_insert_iterator<std::string> &output_iterator); \
 	template int repl_type::GetNumSets(); \
 	template int repl_type::GetIndexOfUsedSet(); \
 	template const set_type *repl_type::GetSet(int index); \
