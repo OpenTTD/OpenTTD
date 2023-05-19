@@ -800,7 +800,7 @@ public:
 		} else {
 			for (auto &it : this->fios_items) {
 				this->string_filter.ResetState();
-				this->string_filter.AddLine(it.title.c_str());
+				this->string_filter.AddLine(it.title);
 				/* We set the vector to show this fios element as filtered depending on the result of the filter */
 				if (this->string_filter.GetState()) {
 					this->display_list.push_back(&it);
