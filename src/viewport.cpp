@@ -1449,17 +1449,15 @@ void ViewportSign::UpdatePosition(int center, int top, StringID str, StringID st
 
 	this->top = top;
 
-	char buffer[DRAW_STRING_BUFFER];
-
-	GetString(buffer, str, lastof(buffer));
-	this->width_normal = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(buffer).width, 2) + WidgetDimensions::scaled.fullbevel.right;
+	std::string name = GetString(str);
+	this->width_normal = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(name).width, 2) + WidgetDimensions::scaled.fullbevel.right;
 	this->center = center;
 
 	/* zoomed out version */
 	if (str_small != STR_NULL) {
-		GetString(buffer, str_small, lastof(buffer));
+		name = GetString(str_small);
 	}
-	this->width_small = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(buffer, FS_SMALL).width, 2) + WidgetDimensions::scaled.fullbevel.right;
+	this->width_small = WidgetDimensions::scaled.fullbevel.left + Align(GetStringBoundingBox(name, FS_SMALL).width, 2) + WidgetDimensions::scaled.fullbevel.right;
 
 	this->MarkDirty();
 }

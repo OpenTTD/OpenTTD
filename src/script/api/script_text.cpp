@@ -250,8 +250,6 @@ const std::string Text::GetDecodedText()
 {
 	const std::string &encoded_text = this->GetEncodedText();
 
-	static char buf[1024];
 	::SetDParamStr(0, encoded_text);
-	::GetString(buf, STR_JUST_RAW_STRING, lastof(buf));
-	return buf;
+	return ::GetString(STR_JUST_RAW_STRING);
 }

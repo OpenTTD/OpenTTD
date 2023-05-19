@@ -682,9 +682,7 @@ int DrawString(int left, int right, int top, std::string_view str, TextColour co
  */
 int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, str, lastof(buffer));
-	return DrawString(left, right, top, buffer, colour, align, underline, fontsize);
+	return DrawString(left, right, top, GetString(str), colour, align, underline, fontsize);
 }
 
 /**
@@ -707,9 +705,7 @@ int GetStringHeight(std::string_view str, int maxw, FontSize fontsize)
  */
 int GetStringHeight(StringID str, int maxw)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, str, lastof(buffer));
-	return GetStringHeight(buffer, maxw);
+	return GetStringHeight(GetString(str), maxw);
 }
 
 /**
@@ -720,10 +716,7 @@ int GetStringHeight(StringID str, int maxw)
  */
 int GetStringLineCount(StringID str, int maxw)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, str, lastof(buffer));
-
-	Layouter layout(buffer, maxw);
+	Layouter layout(GetString(str), maxw);
 	return (uint)layout.size();
 }
 
@@ -831,9 +824,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_vi
  */
 int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, str, lastof(buffer));
-	return DrawStringMultiLine(left, right, top, bottom, buffer, colour, align, underline, fontsize);
+	return DrawStringMultiLine(left, right, top, bottom, GetString(str), colour, align, underline, fontsize);
 }
 
 /**
@@ -860,10 +851,7 @@ Dimension GetStringBoundingBox(std::string_view str, FontSize start_fontsize)
  */
 Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize)
 {
-	char buffer[DRAW_STRING_BUFFER];
-
-	GetString(buffer, strid, lastof(buffer));
-	return GetStringBoundingBox(buffer, start_fontsize);
+	return GetStringBoundingBox(GetString(strid), start_fontsize);
 }
 
 /**

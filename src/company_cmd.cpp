@@ -356,10 +356,6 @@ CommandCost CheckTileOwnership(TileIndex tile)
  */
 static void GenerateCompanyName(Company *c)
 {
-	/* Reserve space for extra unicode character. We need to do this to be able
-	 * to detect too long company name. */
-	char buffer[(MAX_LENGTH_COMPANY_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
-
 	if (c->name_1 != STR_SV_UNNAMED) return;
 	if (c->last_build_coordinate == 0) return;
 
@@ -367,6 +363,7 @@ static void GenerateCompanyName(Company *c)
 
 	StringID str;
 	uint32 strp;
+	std::string name;
 	if (t->name.empty() && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1)) {
 		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_COMPANY_NAME_START;
 		strp = t->townnameparts;
@@ -377,8 +374,8 @@ verify_name:;
 			if (cc->name_1 == str && cc->name_2 == strp) goto bad_town_name;
 		}
 
-		GetString(buffer, str, lastof(buffer));
-		if (Utf8StringLength(buffer) >= MAX_LENGTH_COMPANY_NAME_CHARS) goto bad_town_name;
+		name = GetString(str);
+		if (Utf8StringLength(name) >= MAX_LENGTH_COMPANY_NAME_CHARS) goto bad_town_name;
 
 set_name:;
 		c->name_1 = str;
@@ -499,18 +496,15 @@ restart:;
 
 		/* Reserve space for extra unicode character. We need to do this to be able
 		 * to detect too long president name. */
-		char buffer[(MAX_LENGTH_PRESIDENT_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
 		SetDParam(0, c->index);
-		GetString(buffer, STR_PRESIDENT_NAME, lastof(buffer));
-		if (Utf8StringLength(buffer) >= MAX_LENGTH_PRESIDENT_NAME_CHARS) continue;
+		std::string name = GetString(STR_PRESIDENT_NAME);
+		if (Utf8StringLength(name) >= MAX_LENGTH_PRESIDENT_NAME_CHARS) continue;
 
 		for (const Company *cc : Company::Iterate()) {
 			if (c != cc) {
-				/* Reserve extra space so even overlength president names can be compared. */
-				char buffer2[(MAX_LENGTH_PRESIDENT_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
 				SetDParam(0, cc->index);
-				GetString(buffer2, STR_PRESIDENT_NAME, lastof(buffer2));
-				if (strcmp(buffer2, buffer) == 0) goto restart;
+				std::string other_name = GetString(STR_PRESIDENT_NAME);
+				if (name == other_name) goto restart;
 			}
 		}
 		return;

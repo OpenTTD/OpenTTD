@@ -155,8 +155,8 @@ void CopyOutDParam(uint64 *dst, int offs, int num)
  */
 void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num)
 {
-	char buf[DRAW_STRING_BUFFER];
-	GetString(buf, string, lastof(buf));
+	/* Just get the string to extract the type information. */
+	GetString(string);
 
 	MemCpyT(dst, _global_string_params.GetPointerToOffset(0), num);
 	for (int i = 0; i < num; i++) {

@@ -1717,9 +1717,8 @@ DEF_CONSOLE_CMD(ConCompanies)
 
 	for (const Company *c : Company::Iterate()) {
 		/* Grab the company name */
-		char company_name[512];
 		SetDParam(0, c->index);
-		GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+		std::string company_name = GetString(STR_COMPANY_NAME);
 
 		const char *password_state = "";
 		if (c->is_ai) {
@@ -1728,8 +1727,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 			password_state = _network_company_states[c->index].password.empty() ? "unprotected" : "protected";
 		}
 
-		char colour[512];
-		GetString(colour, STR_COLOUR_DARK_BLUE + _company_colours[c->index], lastof(colour));
+		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
 			c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),

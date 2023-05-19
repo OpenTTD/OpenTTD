@@ -72,7 +72,7 @@ enum CargoSuffixDisplay {
 /** Transfer storage of cargo suffix information. */
 struct CargoSuffix {
 	CargoSuffixDisplay display; ///< How to display the cargo and text.
-	char text[512];             ///< Cargo suffix text.
+	std::string text;           ///< Cargo suffix text.
 };
 
 extern void GenerateIndustries();
@@ -89,7 +89,7 @@ static void ShowIndustryCargoesWindow(IndustryType id);
  */
 static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, CargoSuffix &suffix)
 {
-	suffix.text[0] = '\0';
+	suffix.text.clear();
 	suffix.display = CSD_CARGO_AMOUNT;
 
 	if (HasBit(indspec->callback_mask, CBM_IND_CARGO_SUFFIX)) {
@@ -101,7 +101,7 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 			if (GB(callback, 0, 8) == 0xFF) return;
 			if (callback < 0x400) {
 				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
-				GetString(suffix.text, GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback), lastof(suffix.text));
+				suffix.text = GetString(GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback));
 				StopTextRefStackUsage();
 				suffix.display = CSD_CARGO_AMOUNT_TEXT;
 				return;
@@ -117,14 +117,14 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 			}
 			if (callback < 0x400) {
 				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
-				GetString(suffix.text, GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback), lastof(suffix.text));
+				suffix.text = GetString(GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback));
 				StopTextRefStackUsage();
 				suffix.display = CSD_CARGO_AMOUNT_TEXT;
 				return;
 			}
 			if (callback >= 0x800 && callback < 0xC00) {
 				StartTextRefStackUsage(indspec->grf_prop.grffile, 6);
-				GetString(suffix.text, GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 - 0x800 + callback), lastof(suffix.text));
+				suffix.text = GetString(GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 - 0x800 + callback));
 				StopTextRefStackUsage();
 				suffix.display = CSD_CARGO_TEXT;
 				return;
@@ -194,15 +194,7 @@ std::array<IndustryType, NUM_INDUSTRYTYPES> _sorted_industry_types; ///< Industr
 /** Sort industry types by their name. */
 static bool IndustryTypeNameSorter(const IndustryType &a, const IndustryType &b)
 {
-	static char industry_name[2][64];
-
-	const IndustrySpec *indsp1 = GetIndustrySpec(a);
-	GetString(industry_name[0], indsp1->name, lastof(industry_name[0]));
-
-	const IndustrySpec *indsp2 = GetIndustrySpec(b);
-	GetString(industry_name[1], indsp2->name, lastof(industry_name[1]));
-
-	int r = StrNaturalCompare(industry_name[0], industry_name[1]); // Sort by name (natural sorting).
+	int r = StrNaturalCompare(GetString(GetIndustrySpec(a)->name), GetString(GetIndustrySpec(b)->name)); // Sort by name (natural sorting).
 
 	/* If the names are equal, sort by industry type. */
 	return (r != 0) ? r < 0 : (a < b);
@@ -350,7 +342,6 @@ class BuildIndustryWindow : public Window {
 	std::string MakeCargoListString(const CargoID *cargolist, const CargoSuffix *cargo_suffix, int cargolistlen, StringID prefixstr) const
 	{
 		std::string cargostring;
-		char buf[1024];
 		int numcargo = 0;
 		int firstcargo = -1;
 
@@ -363,20 +354,17 @@ class BuildIndustryWindow : public Window {
 			}
 			SetDParam(0, CargoSpec::Get(cargolist[j])->name);
 			SetDParamStr(1, cargo_suffix[j].text);
-			GetString(buf, STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION, lastof(buf));
-			cargostring += buf;
+			cargostring += GetString(STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION);
 		}
 
 		if (numcargo > 0) {
 			SetDParam(0, CargoSpec::Get(cargolist[firstcargo])->name);
 			SetDParamStr(1, cargo_suffix[firstcargo].text);
-			GetString(buf, prefixstr, lastof(buf));
-			cargostring = std::string(buf) + cargostring;
+			cargostring = GetString(prefixstr) + cargostring;
 		} else {
 			SetDParam(0, STR_JUST_NOTHING);
 			SetDParamStr(1, "");
-			GetString(buf, prefixstr, lastof(buf));
-			cargostring = std::string(buf);
+			cargostring = GetString(prefixstr);
 		}
 
 		return cargostring;
@@ -1547,7 +1535,7 @@ protected:
 
 		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 			if (i->produced_cargo[j] == CT_INVALID) continue;
-			cargos.push_back({ i->produced_cargo[j], i->last_month_production[j], cargo_suffix[j].text, ToPercent8(i->last_month_pct_transported[j]) });
+			cargos.push_back({ i->produced_cargo[j], i->last_month_production[j], cargo_suffix[j].text.c_str(), ToPercent8(i->last_month_pct_transported[j]) });
 		}
 
 		switch (static_cast<IndustryDirectoryWindow::SorterType>(this->industries.SortType())) {
