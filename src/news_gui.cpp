@@ -1099,37 +1099,13 @@ void ShowLastNewsMessage()
  */
 static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem *ni)
 {
-	char buffer[512], buffer2[512];
-	StringID str;
-
 	CopyInDParam(0, ni->params, lengthof(ni->params));
-	str = ni->string_id;
 
-	GetString(buffer, str, lastof(buffer));
-	/* Copy the just gotten string to another buffer to remove any formatting
-	 * from it such as big fonts, etc. */
-	const char *ptr = buffer;
-	char *dest = buffer2;
-	WChar c_last = '\0';
-	for (;;) {
-		WChar c = Utf8Consume(&ptr);
-		if (c == 0) break;
-		/* Make a space from a newline, but ignore multiple newlines */
-		if (c == '\n' && c_last != '\n') {
-			dest[0] = ' ';
-			dest++;
-		} else if (c == '\r') {
-			dest[0] = dest[1] = dest[2] = dest[3] = ' ';
-			dest += 4;
-		} else if (IsPrintable(c)) {
-			dest += Utf8Encode(dest, c);
-		}
-		c_last = c;
-	}
+	/* Get the string, replaces newlines with spaces and remove control codes from the string. */
+	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
 
-	*dest = '\0';
 	/* Truncate and show string; postfixed by '...' if necessary */
-	DrawString(left, right, y, buffer2, colour);
+	DrawString(left, right, y, message, colour);
 }
 
 struct MessageHistoryWindow : Window {
