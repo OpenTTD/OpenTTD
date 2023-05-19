@@ -40,39 +40,18 @@
 static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left, int right, int top, int bottom)
 {
 	CopyInDParam(0, ni->params, lengthof(ni->params));
-	StringID str = ni->string_id;
 
-	char buf[512];
-	GetString(buf, str, lastof(buf));
-	const char *s = buf;
-
-	char buffer[256];
-	char *d = buffer;
-	const char *last = lastof(buffer);
-
-	for (;;) {
-		WChar c = Utf8Consume(&s);
-		if (c == 0) {
-			break;
-		} else if (c == '\n') {
-			if (d + 4 >= last) break;
-			d[0] = d[1] = d[2] = d[3] = ' ';
-			d += 4;
-		} else if (IsPrintable(c)) {
-			if (d + Utf8CharLen(c) >= last) break;
-			d += Utf8Encode(d, c);
-		}
-	}
-	*d = '\0';
+	/* Replace newlines and the likes with spaces. */
+	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
 
 	DrawPixelInfo tmp_dpi;
 	if (!FillDrawPixelInfo(&tmp_dpi, left, top, right - left, bottom)) return true;
 
-	int width = GetStringBoundingBox(buffer).width;
+	int width = GetStringBoundingBox(message).width;
 	int pos = (_current_text_dir == TD_RTL) ? (scroll_pos - width) : (right - scroll_pos - left);
 
 	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
-	DrawString(pos, INT16_MAX, 0, buffer, TC_LIGHT_BLUE, SA_LEFT | SA_FORCE);
+	DrawString(pos, INT16_MAX, 0, message, TC_LIGHT_BLUE, SA_LEFT | SA_FORCE);
 
 	return (_current_text_dir == TD_RTL) ? (pos < right - left) : (pos + width > 0);
 }
