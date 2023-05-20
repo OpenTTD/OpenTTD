@@ -1700,11 +1700,11 @@ bool AfterLoadGame()
 		uint j;
 		for (Industry * i : Industry::Iterate()) {
 			const IndustrySpec *indsp = GetIndustrySpec(i->type);
-			for (j = 0; j < lengthof(i->produced_cargo); j++) {
-				i->produced_cargo[j] = indsp->produced_cargo[j];
+			for (j = 0; j < lengthof(i->produced); j++) {
+				i->produced[j].cargo = indsp->produced_cargo[j];
 			}
-			for (j = 0; j < lengthof(i->accepts_cargo); j++) {
-				i->accepts_cargo[j] = indsp->accepts_cargo[j];
+			for (j = 0; j < lengthof(i->accepted); j++) {
+				i->accepted[j].cargo = indsp->accepts_cargo[j];
 			}
 		}
 	}
@@ -3006,27 +3006,23 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {
 		/* Make sure added industry cargo slots are cleared */
 		for (Industry *i : Industry::Iterate()) {
-			for (size_t ci = 2; ci < lengthof(i->produced_cargo); ci++) {
-				i->produced_cargo[ci] = CT_INVALID;
-				i->produced_cargo_waiting[ci] = 0;
-				i->production_rate[ci] = 0;
-				i->last_month_production[ci] = 0;
-				i->last_month_transported[ci] = 0;
-				i->last_month_pct_transported[ci] = 0;
-				i->this_month_production[ci] = 0;
-				i->this_month_transported[ci] = 0;
+			for (auto it = std::begin(i->produced) + 2; it != std::end(i->produced); ++it) {
+				it->cargo = CT_INVALID;
+				it->waiting = 0;
+				it->rate = 0;
+				it->history = {};
 			}
-			for (size_t ci = 3; ci < lengthof(i->accepts_cargo); ci++) {
-				i->accepts_cargo[ci] = CT_INVALID;
-				i->incoming_cargo_waiting[ci] = 0;
+			for (auto it = std::begin(i->accepted) + 3; it != std::end(i->accepted); ++it) {
+				it->cargo = CT_INVALID;
+				it->waiting = 0;
 			}
 			/* Make sure last_cargo_accepted_at is copied to elements for every valid input cargo.
 			 * The loading routine should put the original singular value into the first array element. */
-			for (size_t ci = 0; ci < lengthof(i->accepts_cargo); ci++) {
-				if (IsValidCargoID(i->accepts_cargo[ci])) {
-					i->last_cargo_accepted_at[ci] = i->last_cargo_accepted_at[0];
+			for (auto &a : i->accepted) {
+				if (IsValidCargoID(a.cargo)) {
+					a.last_accepted = i->accepted[0].last_accepted;
 				} else {
-					i->last_cargo_accepted_at[ci] = 0;
+					a.last_accepted = 0;
 				}
 			}
 		}

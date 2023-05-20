@@ -12,6 +12,24 @@
 
 #include "../saveload.h"
 
+const SaveLoadCompat _industry_accepts_sl_compat[] = {
+	SLC_VAR("cargo"),
+	SLC_VAR("waiting"),
+	SLC_VAR("last_accepted"),
+};
+
+const SaveLoadCompat _industry_produced_history_sl_compat[] = {
+	SLC_VAR("production"),
+	SLC_VAR("transported"),
+};
+
+const SaveLoadCompat _industry_produced_sl_compat[] = {
+	SLC_VAR("cargo"),
+	SLC_VAR("waiting"),
+	SLC_VAR("rate"),
+	SLC_VAR("pct_transported"),
+};
+
 /** Original field order for _industry_desc. */
 const SaveLoadCompat _industry_sl_compat[] = {
 	SLC_VAR("location.tile"),

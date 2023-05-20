@@ -189,6 +189,33 @@ static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixTy
 	}
 }
 
+/**
+ * Gets the strings to display after the cargo of industries (using callback 37)
+ * @param use_input get suffixes for output cargo or input cargo?
+ * @param cst the cargo suffix type (for which window is it requested). @see CargoSuffixType
+ * @param ind the industry (nullptr if in fund window)
+ * @param ind_type the industry type
+ * @param indspec the industry spec
+ * @param cargo cargotype. for CT_INVALID no suffix will be determined
+ * @param slot accepts/produced slot number, used for old-style 3-in/2-out industries.
+ * @param suffix is filled with the suffix
+ */
+void GetCargoSuffix(CargoSuffixInOut use_input, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, CargoID cargo, uint8_t slot, CargoSuffix &suffix)
+{
+	suffix.text[0] = '\0';
+	suffix.display = CSD_CARGO;
+	if (!IsValidCargoID(cargo)) return;
+	if (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) {
+		byte local_id = indspec->grf_prop.grffile->cargo_map[cargo]; // should we check the value for valid?
+		uint cargotype = local_id << 16 | use_input;
+		GetCargoSuffix(cargotype, cst, ind, ind_type, indspec, suffix);
+	} else if (use_input == CARGOSUFFIX_IN) {
+		if (slot < 3) GetCargoSuffix(slot, cst, ind, ind_type, indspec, suffix);
+	} else if (use_input == CARGOSUFFIX_OUT) {
+		if (slot < 2) GetCargoSuffix(slot + 3, cst, ind, ind_type, indspec, suffix);
+	}
+}
+
 std::array<IndustryType, NUM_INDUSTRYTYPES> _sorted_industry_types; ///< Industry types sorted by name.
 
 /** Sort industry types by their name. */
@@ -840,33 +867,35 @@ public:
 			ir.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
 		}
 
-		CargoSuffix cargo_suffix[lengthof(i->accepts_cargo)];
-		GetAllCargoSuffixes(CARGOSUFFIX_IN, CST_VIEW, i, i->type, ind, i->accepts_cargo, cargo_suffix);
 		bool stockpiling = HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS);
 
-		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-			if (!IsValidCargoID(i->accepts_cargo[j])) continue;
+		for (const auto &a : i->accepted) {
+			if (!IsValidCargoID(a.cargo)) continue;
 			has_accept = true;
 			if (first) {
 				DrawString(ir, STR_INDUSTRY_VIEW_REQUIRES);
 				ir.top += FONT_HEIGHT_NORMAL;
 				first = false;
 			}
-			SetDParam(0, CargoSpec::Get(i->accepts_cargo[j])->name);
-			SetDParam(1, i->accepts_cargo[j]);
-			SetDParam(2, i->incoming_cargo_waiting[j]);
+
+			CargoSuffix suffix;
+			GetCargoSuffix(CARGOSUFFIX_IN, CST_VIEW, i, i->type, ind, a.cargo, &a - i->accepted.data(), suffix);
+
+			SetDParam(0, CargoSpec::Get(a.cargo)->name);
+			SetDParam(1, a.cargo);
+			SetDParam(2, a.waiting);
 			SetDParamStr(3, "");
 			StringID str = STR_NULL;
-			switch (cargo_suffix[j].display) {
+			switch (suffix.display) {
 				case CSD_CARGO_AMOUNT_TEXT:
-					SetDParamStr(3, cargo_suffix[j].text);
+					SetDParamStr(3, suffix.text);
 					FALLTHROUGH;
 				case CSD_CARGO_AMOUNT:
 					str = stockpiling ? STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT : STR_INDUSTRY_VIEW_ACCEPT_CARGO;
 					break;
 
 				case CSD_CARGO_TEXT:
-					SetDParamStr(3, cargo_suffix[j].text);
+					SetDParamStr(3, suffix.text);
 					FALLTHROUGH;
 				case CSD_CARGO:
 					str = STR_INDUSTRY_VIEW_ACCEPT_CARGO;
@@ -879,13 +908,12 @@ public:
 			ir.top += FONT_HEIGHT_NORMAL;
 		}
 
-		GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_VIEW, i, i->type, ind, i->produced_cargo, cargo_suffix);
 		int line_height = this->editable == EA_RATE ? this->cheat_line_height : FONT_HEIGHT_NORMAL;
 		int text_y_offset = (line_height - FONT_HEIGHT_NORMAL) / 2;
 		int button_y_offset = (line_height - SETTING_BUTTON_HEIGHT) / 2;
 		first = true;
-		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-			if (!IsValidCargoID(i->produced_cargo[j])) continue;
+		for (const auto &p : i->produced) {
+			if (!IsValidCargoID(p.cargo)) continue;
 			if (first) {
 				if (has_accept) ir.top += WidgetDimensions::scaled.vsep_wide;
 				DrawString(ir, STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE);
@@ -894,15 +922,18 @@ public:
 				first = false;
 			}
 
-			SetDParam(0, i->produced_cargo[j]);
-			SetDParam(1, i->last_month_production[j]);
-			SetDParamStr(2, cargo_suffix[j].text);
-			SetDParam(3, ToPercent8(i->last_month_pct_transported[j]));
+			CargoSuffix suffix;
+			GetCargoSuffix(CARGOSUFFIX_OUT, CST_VIEW, i, i->type, ind, p.cargo, &p - i->produced.data(), suffix);
+
+			SetDParam(0, p.cargo);
+			SetDParam(1, p.history[LAST_MONTH].production);
+			SetDParamStr(2, suffix.text);
+			SetDParam(3, ToPercent8(p.pct_transported));
 			DrawString(ir.Indent(WidgetDimensions::scaled.hsep_indent + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal : 0), rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
 			if (this->editable == EA_RATE) {
-				DrawArrowButtons(ir.Indent(WidgetDimensions::scaled.hsep_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + j) ? this->clicked_button : 0,
-						i->production_rate[j] > 0, i->production_rate[j] < 255);
+				DrawArrowButtons(ir.Indent(WidgetDimensions::scaled.hsep_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + (&p - i->produced.data())) ? this->clicked_button : 0,
+						p.rate > 0, p.rate < 255);
 			}
 			ir.top += line_height;
 		}
@@ -980,11 +1011,11 @@ public:
 					case EA_RATE:
 						if (pt.y >= this->production_offset_y) {
 							int row = (pt.y - this->production_offset_y) / this->cheat_line_height;
-							for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
-								if (!IsValidCargoID(i->produced_cargo[j])) continue;
+							for (auto itp = std::begin(i->produced); itp != std::end(i->produced); ++itp) {
+								if (!IsValidCargoID(itp->cargo)) continue;
 								row--;
 								if (row < 0) {
-									line = (InfoLine)(IL_RATE1 + j);
+									line = (InfoLine)(IL_RATE1 + (itp - std::begin(i->produced)));
 									break;
 								}
 							}
@@ -1012,13 +1043,13 @@ public:
 
 						case EA_RATE:
 							if (decrease) {
-								if (i->production_rate[line - IL_RATE1] <= 0) return;
-								i->production_rate[line - IL_RATE1] = std::max(i->production_rate[line - IL_RATE1] / 2, 0);
+								if (i->produced[line - IL_RATE1].rate <= 0) return;
+								i->produced[line - IL_RATE1].rate = std::max(i->produced[line - IL_RATE1].rate / 2, 0);
 							} else {
-								if (i->production_rate[line - IL_RATE1] >= 255) return;
+								if (i->produced[line - IL_RATE1].rate >= 255) return;
 								/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
-								int new_prod = i->production_rate[line - IL_RATE1] == 0 ? 1 : i->production_rate[line - IL_RATE1] * 2;
-								i->production_rate[line - IL_RATE1] = ClampTo<byte>(new_prod);
+								int new_prod = i->produced[line - IL_RATE1].rate == 0 ? 1 : i->produced[line - IL_RATE1].rate * 2;
+								i->produced[line - IL_RATE1].rate = ClampTo<byte>(new_prod);
 							}
 							break;
 
@@ -1040,7 +1071,7 @@ public:
 							break;
 
 						case EA_RATE:
-							SetDParam(0, i->production_rate[line - IL_RATE1] * 8);
+							SetDParam(0, i->produced[line - IL_RATE1].rate * 8);
 							ShowQueryString(STR_JUST_INT, STR_CONFIG_GAME_PRODUCTION, 10, this, CS_ALPHANUMERAL, QSF_NONE);
 							break;
 
@@ -1099,7 +1130,7 @@ public:
 				break;
 
 			default:
-				i->production_rate[this->editbox_line - IL_RATE1] = ClampU(RoundDivSU(value, 8), 0, 255);
+				i->produced[this->editbox_line - IL_RATE1].rate = ClampU(RoundDivSU(value, 8), 0, 255);
 				break;
 		}
 		UpdateIndustryProduction(i);
@@ -1139,9 +1170,9 @@ static void UpdateIndustryProduction(Industry *i)
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 	if (indspec->UsesOriginalEconomy()) i->RecomputeProductionMultipliers();
 
-	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (IsValidCargoID(i->produced_cargo[j])) {
-			i->last_month_production[j] = 8 * i->production_rate[j];
+	for (auto &p : i->produced) {
+		if (IsValidCargoID(p.cargo)) {
+			p.history[LAST_MONTH].production = 8 * p.rate;
 		}
 	}
 }
@@ -1415,12 +1446,10 @@ protected:
 	 * @param id cargo slot
 	 * @return percents of cargo transported, or -1 if industry doesn't use this cargo slot
 	 */
-	static inline int GetCargoTransportedPercentsIfValid(const Industry *i, uint id)
+	static inline int GetCargoTransportedPercentsIfValid(const Industry::ProducedCargo &p)
 	{
-		assert(id < lengthof(i->produced_cargo));
-
-		if (!IsValidCargoID(i->produced_cargo[id])) return -1;
-		return ToPercent8(i->last_month_pct_transported[id]);
+		if (!IsValidCargoID(p.cargo)) return -1;
+		return ToPercent8(p.pct_transported);
 	}
 
 	/**
@@ -1436,18 +1465,18 @@ protected:
 		if (filter == CF_NONE) return 0;
 
 		int percentage = 0, produced_cargo_count = 0;
-		for (uint id = 0; id < lengthof(i->produced_cargo); id++) {
+		for (const auto &p : i->produced) {
 			if (filter == CF_ANY) {
-				int transported = GetCargoTransportedPercentsIfValid(i, id);
+				int transported = GetCargoTransportedPercentsIfValid(p);
 				if (transported != -1) {
 					produced_cargo_count++;
 					percentage += transported;
 				}
-				if (produced_cargo_count == 0 && id == lengthof(i->produced_cargo) - 1 && percentage == 0) {
+				if (produced_cargo_count == 0 && &p == &i->produced.back() && percentage == 0) {
 					return transported;
 				}
-			} else if (filter == i->produced_cargo[id]) {
-				return GetCargoTransportedPercentsIfValid(i, id);
+			} else if (filter == p.cargo) {
+				return GetCargoTransportedPercentsIfValid(p);
 			}
 		}
 
@@ -1481,13 +1510,13 @@ protected:
 		if (filter == CF_NONE) return IndustryTypeSorter(a, b);
 
 		uint prod_a = 0, prod_b = 0;
-		for (uint i = 0; i < lengthof(a->produced_cargo); i++) {
+		for (auto ita = std::begin(a->produced), itb = std::begin(b->produced); ita != std::end(a->produced) && itb != std::end(b->produced); ++ita, ++itb) {
 			if (filter == CF_ANY) {
-				if (IsValidCargoID(a->produced_cargo[i])) prod_a += a->last_month_production[i];
-				if (IsValidCargoID(b->produced_cargo[i])) prod_b += b->last_month_production[i];
+				if (IsValidCargoID(ita->cargo)) prod_a += ita->history[LAST_MONTH].production;
+				if (IsValidCargoID(itb->cargo)) prod_b += ita->history[LAST_MONTH].production;
 			} else {
-				if (a->produced_cargo[i] == filter) prod_a += a->last_month_production[i];
-				if (b->produced_cargo[i] == filter) prod_b += b->last_month_production[i];
+				if (ita->cargo == filter) prod_a += ita->history[LAST_MONTH].production;
+				if (itb->cargo == filter) prod_b += itb->history[LAST_MONTH].production;
 			}
 		}
 		int r = prod_a - prod_b;
@@ -1515,8 +1544,7 @@ protected:
 		/* Industry name */
 		SetDParam(p++, i->index);
 
-		static CargoSuffix cargo_suffix[lengthof(i->produced_cargo)];
-		GetAllCargoSuffixes(CARGOSUFFIX_OUT, CST_DIR, i, i->type, indsp, i->produced_cargo, cargo_suffix);
+		static CargoSuffix cargo_suffix[INDUSTRY_NUM_OUTPUTS];
 
 		/* Get industry productions (CargoID, production, suffix, transported) */
 		struct CargoInfo {
@@ -1527,9 +1555,10 @@ protected:
 		};
 		std::vector<CargoInfo> cargos;
 
-		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-			if (!IsValidCargoID(i->produced_cargo[j])) continue;
-			cargos.push_back({ i->produced_cargo[j], i->last_month_production[j], cargo_suffix[j].text.c_str(), ToPercent8(i->last_month_pct_transported[j]) });
+		for (auto itp = std::begin(i->produced); itp != std::end(i->produced); ++itp) {
+			if (!IsValidCargoID(itp->cargo)) continue;
+			GetCargoSuffix(CARGOSUFFIX_OUT, CST_DIR, i, i->type, indsp, itp->cargo, itp - std::begin(i->produced), cargo_suffix[itp - std::begin(i->produced)]);
+			cargos.push_back({ itp->cargo, itp->history[LAST_MONTH].production, cargo_suffix[itp - std::begin(i->produced)].text.c_str(), ToPercent8(itp->pct_transported) });
 		}
 
 		switch (static_cast<IndustryDirectoryWindow::SorterType>(this->industries.SortType())) {

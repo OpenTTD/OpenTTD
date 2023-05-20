@@ -80,10 +80,10 @@
 
 	Industry *i = ::Industry::Get(industry_id);
 
-	int j = i->GetCargoAcceptedIndex(cargo_id);
-	if (j < 0) return -1;
+	auto it = i->GetCargoAccepted(cargo_id);
+	if (it == std::end(i->accepted)) return -1;
 
-	return i->incoming_cargo_waiting[j];
+	return it->waiting;
 }
 
 /* static */ SQInteger ScriptIndustry::GetLastMonthProduction(IndustryID industry_id, CargoID cargo_id)
@@ -91,12 +91,12 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	const Industry *i = ::Industry::Get(industry_id);
+	Industry *i = ::Industry::Get(industry_id);
 
-	int j = i->GetCargoProducedIndex(cargo_id);
-	if (j < 0) return -1;
+	auto it = i->GetCargoProduced(cargo_id);
+	if (it == std::end(i->produced)) return -1;
 
-	return i->last_month_production[j];
+	return it->history[LAST_MONTH].production;
 }
 
 /* static */ SQInteger ScriptIndustry::GetLastMonthTransported(IndustryID industry_id, CargoID cargo_id)
@@ -104,12 +104,12 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	const Industry *i = ::Industry::Get(industry_id);
+	Industry *i = ::Industry::Get(industry_id);
 
-	int j = i->GetCargoProducedIndex(cargo_id);
-	if (j < 0) return -1;
+	auto it = i->GetCargoProduced(cargo_id);
+	if (it == std::end(i->produced)) return -1;
 
-	return i->last_month_transported[j];
+	return it->history[LAST_MONTH].transported;
 }
 
 /* static */ SQInteger ScriptIndustry::GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id)
@@ -117,12 +117,12 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	const Industry *i = ::Industry::Get(industry_id);
+	Industry *i = ::Industry::Get(industry_id);
 
-	int j = i->GetCargoProducedIndex(cargo_id);
-	if (j < 0) return -1;
+	auto it = i->GetCargoProduced(cargo_id);
+	if (it == std::end(i->produced)) return -1;
 
-	return ::ToPercent8(i->last_month_pct_transported[j]);
+	return ::ToPercent8(it->pct_transported);
 }
 
 /* static */ TileIndex ScriptIndustry::GetLocation(IndustryID industry_id)
@@ -225,11 +225,12 @@
 	if (i == nullptr) return ScriptDate::DATE_INVALID;
 
 	if (!::IsValidCargoID(cargo_type)) {
-		return (ScriptDate::Date)std::accumulate(std::begin(i->last_cargo_accepted_at), std::end(i->last_cargo_accepted_at), 0, [](TimerGameCalendar::Date a, TimerGameCalendar::Date b) { return std::max(a, b); });
+		auto it = std::max_element(std::begin(i->accepted), std::end(i->accepted), [](const auto &a, const auto &b) { return a.last_accepted < b.last_accepted; });
+		return (ScriptDate::Date)it->last_accepted;
 	} else {
-		int index = i->GetCargoAcceptedIndex(cargo_type);
-		if (index < 0) return ScriptDate::DATE_INVALID;
-		return (ScriptDate::Date)i->last_cargo_accepted_at[index];
+		auto it = i->GetCargoAccepted(cargo_type);
+		if (it == std::end(i->accepted)) return ScriptDate::DATE_INVALID;
+		return (ScriptDate::Date)it->last_accepted;
 	}
 }
 
