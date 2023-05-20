@@ -4255,10 +4255,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Started
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Name train
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Name road vehicle
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Name ship
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Name aircraft
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Name train. Ctrl+Click names its group
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Name road vehicle. Ctrl+Click names its group
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Name ship. Ctrl+Click names its group
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Name aircraft. Ctrl+Click names its group
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY_LONG}/yr
 STR_VEHICLE_INFO_AGE                                            :{COMMA} year{P "" s} ({COMMA})

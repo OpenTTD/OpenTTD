@@ -43,5 +43,6 @@ DEF_CMD_TRAIT(CMD_SET_GROUP_LIVERY,          CmdSetGroupLivery,         0, CMDT_
 
 void CcCreateGroup(Commands cmd, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID parent_group);
 void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool);
+void CcRenameVehicleGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool);
 
 #endif /* GROUP_CMD_H */

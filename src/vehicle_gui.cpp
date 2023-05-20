@@ -21,6 +21,7 @@
 #include "train.h"
 #include "aircraft.h"
 #include "depot_map.h"
+#include "group_cmd.h"
 #include "group_gui.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
@@ -2840,6 +2841,15 @@ private:
 	};
 	bool mouse_over_start_stop = false;
 
+	/** Possible contexts in which ShowQueryString may be called. */
+	enum class QueryType {
+		RenameVehicle,
+		RenameGroup,
+	};
+
+	/** Context in which ShowQueryString was last called. */
+	QueryType query;
+
 	/**
 	 * Display a plane in the window.
 	 * @param plane Plane to show.
@@ -3088,15 +3098,39 @@ public:
 		DrawString(tr.left, tr.right, CenterBounds(tr.top, tr.bottom, FONT_HEIGHT_NORMAL), str, text_colour, SA_HOR_CENTER);
 	}
 
+	/** Reuse the same logic as VehicleGroupWindow::ShowRenameGroupWindow, but in the vehicle view window context. */
+	void ShowRenameGroupWindow(bool empty)
+	{
+		const Vehicle *v = Vehicle::Get(this->window_number);
+		/* Show empty query for new groups */
+		StringID str = STR_EMPTY;
+		if (!empty) {
+			SetDParam(0, v->group_id);
+			str = STR_GROUP_NAME;
+		}
+		this->query = QueryType::RenameGroup;
+		ShowQueryString(str, STR_GROUP_RENAME_CAPTION, MAX_LENGTH_GROUP_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+	}
+
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 
 		switch (widget) {
 			case WID_VV_RENAME: { // rename
-				SetDParam(0, v->index);
-				ShowQueryString(STR_VEHICLE_NAME, STR_QUERY_RENAME_TRAIN_CAPTION + v->type,
-						MAX_LENGTH_VEHICLE_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+				if (_ctrl_pressed) {
+					if (v->group_id == DEFAULT_GROUP) {
+						// Add the vehicle to a new group. The callback will then open the window to rename the group.
+						Command<CMD_ADD_VEHICLE_GROUP>::Post(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE, CcRenameVehicleGroup, NEW_GROUP, v->index, false);
+					} else {
+						ShowRenameGroupWindow(false);
+					}
+				} else {
+					this->query = QueryType::RenameVehicle;
+					SetDParam(0, v->index);
+					ShowQueryString(STR_VEHICLE_NAME, STR_QUERY_RENAME_TRAIN_CAPTION + v->type,
+							MAX_LENGTH_VEHICLE_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+				}
 				break;
 			}
 
@@ -3193,7 +3227,17 @@ public:
 	{
 		if (str == nullptr) return;
 
-		Command<CMD_RENAME_VEHICLE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN + Vehicle::Get(this->window_number)->type, this->window_number, str);
+		const Vehicle *v = Vehicle::Get(this->window_number);
+		switch (this->query) {
+			case QueryType::RenameVehicle:
+				Command<CMD_RENAME_VEHICLE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN + v->type, v->index, str);
+				break;
+			case QueryType::RenameGroup:
+				Command<CMD_ALTER_GROUP>::Post(STR_ERROR_GROUP_CAN_T_RENAME, AlterGroupMode::Rename, v->group_id, 0, str);
+				break;
+			default:
+				NOT_REACHED();
+		}
 	}
 
 	void OnMouseOver(Point pt, int widget) override
@@ -3352,6 +3396,16 @@ void StopGlobalFollowVehicle(const Vehicle *v)
 	}
 }
 
+/**
+ * When naming the group of an ungrouped vehicle, the CMD_ADD_VEHICLE_GROUP is
+ * called with this callback to create the new group and add the vehicle. Then,
+ * this callback must open the *Rename group* box to rename the new group.
+ */
+void CcRenameVehicleGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool)
+{
+	VehicleViewWindow *w = (VehicleViewWindow*) FindWindowById(WC_VEHICLE_VIEW, veh_id);
+	if (w != nullptr) w->ShowRenameGroupWindow(true);
+}
 
 /**
  * This is the Callback method after the construction attempt of a primary vehicle
