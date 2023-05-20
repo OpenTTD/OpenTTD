@@ -315,20 +315,18 @@ void CrashLog::LogRecentNews(std::back_insert_iterator<std::string> &output_iter
 
 /**
  * Create a timestamped filename.
- * @param filename      The begin where to write at.
- * @param filename_last The last position in the buffer to write to.
  * @param ext           The extension for the filename.
  * @param with_dir      Whether to prepend the filename with the personal directory.
- * @return the number of added characters.
+ * @return The filename
  */
-int CrashLog::CreateFileName(char *filename, const char *filename_last, const char *ext, bool with_dir) const
+std::string CrashLog::CreateFileName(const char *ext, bool with_dir) const
 {
 	static std::string crashname;
 
 	if (crashname.empty()) {
 		crashname = fmt::format("crash{:%Y%m%d%H%M%S}", fmt::gmtime(time(nullptr)));
 	}
-	return seprintf(filename, filename_last, "%s%s%s", with_dir ? _personal_dir.c_str() : "", crashname.c_str(), ext);
+	return fmt::format("{}{}{}", with_dir ? _personal_dir : std::string{}, crashname, ext);
 }
 
 /**
@@ -361,28 +359,24 @@ void CrashLog::FillCrashLog(std::back_insert_iterator<std::string> &output_itera
 
 /**
  * Write the crash log to a file.
- * @note On success the filename will be filled with the full path of the
- *       crash log file. Make sure filename is at least \c MAX_PATH big.
- * @param buffer The begin of the buffer to write to the disk.
- * @param filename      Output for the filename of the written file.
- * @param filename_last The last position in the filename buffer.
+ * @note The filename will be written to \c crashlog_filename.
  * @return true when the crash log was successfully written.
  */
-bool CrashLog::WriteCrashLog(const char *buffer, char *filename, const char *filename_last) const
+bool CrashLog::WriteCrashLog()
 {
-	this->CreateFileName(filename, filename_last, ".log");
+	this->crashlog_filename = this->CreateFileName(".log");
 
-	FILE *file = FioFOpenFile(filename, "w", NO_DIRECTORY);
+	FILE *file = FioFOpenFile(this->crashlog_filename, "w", NO_DIRECTORY);
 	if (file == nullptr) return false;
 
-	size_t len = strlen(buffer);
-	size_t written = fwrite(buffer, 1, len, file);
+	size_t len = this->crashlog.size();
+	size_t written = fwrite(this->crashlog.data(), 1, len, file);
 
 	FioFCloseFile(file);
 	return len == written;
 }
 
-/* virtual */ int CrashLog::WriteCrashDump(char *filename, const char *filename_last) const
+/* virtual */ int CrashLog::WriteCrashDump()
 {
 	/* Stub implementation; not all OSes support this. */
 	return 0;
@@ -390,13 +384,10 @@ bool CrashLog::WriteCrashLog(const char *buffer, char *filename, const char *fil
 
 /**
  * Write the (crash) savegame to a file.
- * @note On success the filename will be filled with the full path of the
- *       crash save file. Make sure filename is at least \c MAX_PATH big.
- * @param filename      Output for the filename of the written file.
- * @param filename_last The last position in the filename buffer.
+ * @note The filename will be written to \c savegame_filename.
  * @return true when the crash save was successfully made.
  */
-bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
+bool CrashLog::WriteSavegame()
 {
 	/* If the map doesn't exist, saving will fail too. If the map got
 	 * initialised, there is a big chance the rest is initialised too. */
@@ -405,10 +396,10 @@ bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 	try {
 		_gamelog.Emergency();
 
-		this->CreateFileName(filename, filename_last, ".sav");
+		this->savegame_filename = this->CreateFileName(".sav");
 
 		/* Don't do a threaded saveload. */
-		return SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY, false) == SL_OK;
+		return SaveOrLoad(this->savegame_filename, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY, false) == SL_OK;
 	} catch (...) {
 		return false;
 	}
@@ -416,21 +407,17 @@ bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 
 /**
  * Write the (crash) screenshot to a file.
- * @note On success the filename will be filled with the full path of the
- *       screenshot. Make sure filename is at least \c MAX_PATH big.
- * @param filename      Output for the filename of the written file.
- * @param filename_last The last position in the filename buffer.
- * @return true when the crash screenshot was successfully made.
+ * @note The filename will be written to \c screenshot_filename.
+ * @return std::nullopt when the crash screenshot could not be made, otherwise the filename.
  */
-bool CrashLog::WriteScreenshot(char *filename, const char *filename_last) const
+bool CrashLog::WriteScreenshot()
 {
 	/* Don't draw when we have invalid screen size */
 	if (_screen.width < 1 || _screen.height < 1 || _screen.dst_ptr == nullptr) return false;
 
-	this->CreateFileName(filename, filename_last, "", false);
+	std::string filename = this->CreateFileName("", false);
 	bool res = MakeScreenshot(SC_CRASHLOG, filename);
-	filename[0] = '\0';
-	if (res) strecpy(filename, _full_screenshot_name, filename_last);
+	if (res) this->screenshot_filename = _full_screenshot_name;
 	return res;
 }
 
@@ -447,55 +434,53 @@ void CrashLog::SendSurvey() const
  * information like paths to the console.
  * @return true when everything is made successfully.
  */
-bool CrashLog::MakeCrashLog() const
+bool CrashLog::MakeCrashLog()
 {
 	/* Don't keep looping logging crashes. */
 	static bool crashlogged = false;
 	if (crashlogged) return false;
 	crashlogged = true;
 
-	char filename[MAX_PATH];
-	std::string buffer;
-	buffer.reserve(65536);
-	auto output_iterator = std::back_inserter(buffer);
+	crashlog.reserve(65536);
+	auto output_iterator = std::back_inserter(crashlog);
 	bool ret = true;
 
 	fmt::print("Crash encountered, generating crash log...\n");
 	this->FillCrashLog(output_iterator);
-	fmt::print("{}\n", buffer);
+	fmt::print("{}\n", crashlog);
 	fmt::print("Crash log generated.\n\n");
 
 	fmt::print("Writing crash log to disk...\n");
-	bool bret = this->WriteCrashLog(buffer.c_str(), filename, lastof(filename));
+	bool bret = this->WriteCrashLog();
 	if (bret) {
-		fmt::print("Crash log written to {}. Please add this file to any bug reports.\n\n", filename);
+		fmt::print("Crash log written to {}. Please add this file to any bug reports.\n\n", this->crashlog_filename);
 	} else {
 		fmt::print("Writing crash log failed. Please attach the output above to any bug reports.\n\n");
 		ret = false;
 	}
 
 	/* Don't mention writing crash dumps because not all platforms support it. */
-	int dret = this->WriteCrashDump(filename, lastof(filename));
+	int dret = this->WriteCrashDump();
 	if (dret < 0) {
 		fmt::print("Writing crash dump failed.\n\n");
 		ret = false;
 	} else if (dret > 0) {
-		fmt::print("Crash dump written to {}. Please add this file to any bug reports.\n\n", filename);
+		fmt::print("Crash dump written to {}. Please add this file to any bug reports.\n\n", this->crashdump_filename);
 	}
 
 	fmt::print("Writing crash savegame...\n");
-	bret = this->WriteSavegame(filename, lastof(filename));
+	bret = this->WriteSavegame();
 	if (bret) {
-		fmt::print("Crash savegame written to {}. Please add this file and the last (auto)save to any bug reports.\n\n", filename);
+		fmt::print("Crash savegame written to {}. Please add this file and the last (auto)save to any bug reports.\n\n", this->savegame_filename);
 	} else {
 		ret = false;
 		fmt::print("Writing crash savegame failed. Please attach the last (auto)save to any bug reports.\n\n");
 	}
 
 	fmt::print("Writing crash screenshot...\n");
-	bret = this->WriteScreenshot(filename, lastof(filename));
+	bret = this->WriteScreenshot();
 	if (bret) {
-		fmt::print("Crash screenshot written to {}. Please add this file to any bug reports.\n\n", filename);
+		fmt::print("Crash screenshot written to {}. Please add this file to any bug reports.\n\n", this->screenshot_filename);
 	} else {
 		ret = false;
 		fmt::print("Writing crash screenshot failed.\n\n");
