@@ -31,13 +31,6 @@
 #define IS_ALIGNED(addr) (((uintptr_t)(addr) & 0xf) == 0)
 #endif
 
-/* printf format specification for 32/64-bit addresses. */
-#ifdef __LP64__
-#define PRINTF_PTR "0x%016lx"
-#else
-#define PRINTF_PTR "0x%08lx"
-#endif
-
 #define MAX_STACK_FRAMES 64
 
 /**
@@ -51,20 +44,20 @@ class CrashLogOSX : public CrashLog {
 	char filename_save[MAX_PATH];       ///< Path of crash.sav
 	char filename_screenshot[MAX_PATH]; ///< Path of crash.(png|bmp|pcx)
 
-	char *LogOSVersion(char *buffer, const char *last) const override
+	void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const override
 	{
 		int ver_maj, ver_min, ver_bug;
 		GetMacOSVersion(&ver_maj, &ver_min, &ver_bug);
 
 		const NXArchInfo *arch = NXGetLocalArchInfo();
 
-		return buffer + seprintf(buffer, last,
+		fmt::format_to(output_iterator,
 				"Operating system:\n"
 				" Name:     Mac OS X\n"
-				" Release:  %d.%d.%d\n"
-				" Machine:  %s\n"
-				" Min Ver:  %d\n"
-				" Max Ver:  %d\n",
+				" Release:  {}.{}.{}\n"
+				" Machine:  {}\n"
+				" Min Ver:  {}\n"
+				" Max Ver:  {}\n",
 				ver_maj, ver_min, ver_bug,
 				arch != nullptr ? arch->description : "unknown",
 				MAC_OS_X_VERSION_MIN_REQUIRED,
@@ -72,25 +65,25 @@ class CrashLogOSX : public CrashLog {
 		);
 	}
 
-	char *LogError(char *buffer, const char *last, const char *message) const override
+	void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const override
 	{
-		return buffer + seprintf(buffer, last,
+		fmt::format_to(output_iterator,
 				"Crash reason:\n"
-				" Signal:  %s (%d)\n"
-				" Message: %s\n\n",
+				" Signal:  {} ({})\n"
+				" Message: {}\n\n",
 				strsignal(this->signum),
 				this->signum,
 				message
 		);
 	}
 
-	char *LogStacktrace(char *buffer, const char *last) const override
+	void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const override
 	{
 		/* As backtrace() is only implemented in 10.5 or later,
 		 * we're rolling our own here. Mostly based on
 		 * http://stackoverflow.com/questions/289820/getting-the-current-stack-trace-on-mac-os-x
 		 * and some details looked up in the Darwin sources. */
-		buffer += seprintf(buffer, last, "\nStacktrace:\n");
+		fmt::format_to(output_iterator, "\nStacktrace:\n");
 
 		void **frame;
 #if defined(__ppc__) || defined(__ppc64__)
@@ -110,7 +103,7 @@ class CrashLogOSX : public CrashLog {
 			if (ip == nullptr) break;
 
 			/* Print running index. */
-			buffer += seprintf(buffer, last, " [%02d]", i);
+			fmt::format_to(output_iterator, " [{:02}]", i);
 
 			Dl_info dli;
 			bool dl_valid = dladdr(ip, &dli) != 0;
@@ -126,7 +119,7 @@ class CrashLogOSX : public CrashLog {
 				}
 			}
 			/* Print image name and IP. */
-			buffer += seprintf(buffer, last, " %-20s " PRINTF_PTR, fname, (uintptr_t)ip);
+			fmt::format_to(output_iterator, " {:20s} {}", fname, (uintptr_t)ip);
 
 			/* Print function offset if information is available. */
 			if (dl_valid && dli.dli_sname != nullptr && dli.dli_saddr != nullptr) {
@@ -135,11 +128,11 @@ class CrashLogOSX : public CrashLog {
 				char *func_name = abi::__cxa_demangle(dli.dli_sname, nullptr, 0, &status);
 
 				long int offset = (intptr_t)ip - (intptr_t)dli.dli_saddr;
-				buffer += seprintf(buffer, last, " (%s + %ld)", func_name != nullptr ? func_name : dli.dli_sname, offset);
+				fmt::format_to(output_iterator, " ({} + {})", func_name != nullptr ? func_name : dli.dli_sname, offset);
 
 				free(func_name);
 			}
-			buffer += seprintf(buffer, last, "\n");
+			fmt::format_to(output_iterator, "\n");
 
 			/* Get address of next stack frame. */
 			void **next = (void **)frame[0];
@@ -148,7 +141,7 @@ class CrashLogOSX : public CrashLog {
 			frame = next;
 		}
 
-		return buffer + seprintf(buffer, last, "\n");
+		fmt::format_to(output_iterator, "\n");
 	}
 
 public:
@@ -161,40 +154,6 @@ public:
 		filename_log[0] = '\0';
 		filename_save[0] = '\0';
 		filename_screenshot[0] = '\0';
-	}
-
-	/** Generate the crash log. */
-	bool MakeCrashLog()
-	{
-		char buffer[65536];
-		bool ret = true;
-
-		fmt::print("Crash encountered, generating crash log...\n");
-		this->FillCrashLog(buffer, lastof(buffer));
-		fmt::print("{}\n", buffer);
-		fmt::print("Crash log generated.\n\n");
-
-		fmt::print("Writing crash log to disk...\n");
-		if (!this->WriteCrashLog(buffer, filename_log, lastof(filename_log))) {
-			filename_log[0] = '\0';
-			ret = false;
-		}
-
-		fmt::print("Writing crash savegame...\n");
-		if (!this->WriteSavegame(filename_save, lastof(filename_save))) {
-			filename_save[0] = '\0';
-			ret = false;
-		}
-
-		fmt::print("Writing crash screenshot...\n");
-		if (!this->WriteScreenshot(filename_screenshot, lastof(filename_screenshot))) {
-			filename_screenshot[0] = '\0';
-			ret = false;
-		}
-
-		this->SendSurvey();
-
-		return ret;
 	}
 
 	/** Show a dialog with the crash information. */
