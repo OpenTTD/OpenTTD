@@ -250,12 +250,7 @@
 #  define FMT_INLINE_VARIABLE
 #endif
 
-// Enable minimal optimizations for more compact code in debug mode.
 FMT_GCC_PRAGMA("GCC push_options")
-#if !defined(__OPTIMIZE__) && !defined(__NVCOMPILER) && !defined(__LCC__) && \
-    !defined(__CUDACC__)
-FMT_GCC_PRAGMA("GCC optimize(\"Og\")")
-#endif
 
 FMT_BEGIN_NAMESPACE
 
