@@ -12,7 +12,7 @@
 
 #include "cpu.h"
 #include <chrono>
-#include "3rdparty/fmt/format.h"
+#include "core/format.hpp"
 
 /* Debugging messages policy:
  * These should be the severities used for direct Debug() calls

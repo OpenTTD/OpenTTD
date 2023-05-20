@@ -11,7 +11,7 @@
 #define CONSOLE_FUNC_H
 
 #include "console_type.h"
-#include "3rdparty/fmt/format.h"
+#include "core/format.hpp"
 
 /* console modes */
 extern IConsoleModes _iconsole_mode;

@@ -148,7 +148,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, 
 			callback->SetFontNames(settings, (const char *)file);
 
 			bool missing = callback->FindMissingGlyphs();
-			Debug(fontcache, 1, "Font \"{}\" misses{} glyphs", file, missing ? "" : " no");
+			Debug(fontcache, 1, "Font \"{}\" misses{} glyphs", (char *)file, missing ? "" : " no");
 
 			if (!missing) {
 				best_weight = value;

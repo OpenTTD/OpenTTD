@@ -8,6 +8,7 @@ add_files(
     endian_func.hpp
     endian_type.hpp
     enum_type.hpp
+    format.hpp
     geometry_func.cpp
     geometry_func.hpp
     geometry_type.hpp
