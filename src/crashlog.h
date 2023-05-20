@@ -65,31 +65,34 @@ protected:
 	void LogGamelog(std::back_insert_iterator<std::string> &output_iterator) const;
 	void LogRecentNews(std::back_insert_iterator<std::string> &output_iterator) const;
 
-	int CreateFileName(char *filename, const char *filename_last, const char *ext, bool with_dir = true) const;
+	std::string CreateFileName(const char *ext, bool with_dir = true) const;
 
 public:
 	/** Stub destructor to silence some compilers. */
 	virtual ~CrashLog() = default;
 
+	std::string crashlog;
+	std::string crashlog_filename;
+	std::string crashdump_filename;
+	std::string savegame_filename;
+	std::string screenshot_filename;
+
 	void FillCrashLog(std::back_insert_iterator<std::string> &output_iterator) const;
-	bool WriteCrashLog(const char *buffer, char *filename, const char *filename_last) const;
+	bool WriteCrashLog();
 
 	/**
 	 * Write the (crash) dump to a file.
-	 * @note On success the filename will be filled with the full path of the
-	 *       crash dump file. Make sure filename is at least \c MAX_PATH big.
-	 * @param filename      Output for the filename of the written file.
-	 * @param filename_last The last position in the filename buffer.
+	 * @note Sets \c crashdump_filename when there is a successful return.
 	 * @return if less than 0, error. If 0 no dump is made, otherwise the dump
 	 *         was successful (not all OSes support dumping files).
 	 */
-	virtual int WriteCrashDump(char *filename, const char *filename_last) const;
-	bool WriteSavegame(char *filename, const char *filename_last) const;
-	bool WriteScreenshot(char *filename, const char *filename_last) const;
+	virtual int WriteCrashDump();
+	bool WriteSavegame();
+	bool WriteScreenshot();
 
 	void SendSurvey() const;
 
-	bool MakeCrashLog() const;
+	bool MakeCrashLog();
 
 	/**
 	 * Initialiser for crash logs; do the appropriate things so crashes are

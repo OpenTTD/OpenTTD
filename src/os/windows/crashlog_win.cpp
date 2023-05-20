@@ -39,33 +39,17 @@ class CrashLogWindows : public CrashLog {
 	void LogModules(std::back_insert_iterator<std::string> &output_iterator) const override;
 public:
 #if defined(_MSC_VER)
-	int WriteCrashDump(char *filename, const char *filename_last) const override;
+	int WriteCrashDump() override;
 	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const;
 #else
 	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const {}
 #endif /* _MSC_VER */
 
-	/** Buffer for the generated crash log */
-	std::string crashlog;
-	/** Buffer for the filename of the crash log */
-	char crashlog_filename[MAX_PATH];
-	/** Buffer for the filename of the crash dump */
-	char crashdump_filename[MAX_PATH];
-	/** Buffer for the filename of the crash screenshot */
-	char screenshot_filename[MAX_PATH];
-
 	/**
 	 * A crash log is always generated when it's generated.
 	 * @param ep the data related to the exception.
 	 */
-	CrashLogWindows(EXCEPTION_POINTERS *ep = nullptr) :
-		ep(ep)
-	{
-		this->crashlog.reserve(65536);
-		this->crashlog_filename[0] = '\0';
-		this->crashdump_filename[0] = '\0';
-		this->screenshot_filename[0] = '\0';
-	}
+	CrashLogWindows(EXCEPTION_POINTERS *ep = nullptr) : ep(ep) {}
 
 	/**
 	 * Points to the current crash log.
@@ -90,7 +74,6 @@ public:
 			os.dwBuildNumber,
 			os.szCSDVersion
 	);
-
 }
 
 /* virtual */ void CrashLogWindows::LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const
@@ -466,7 +449,7 @@ void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::str
 	fmt::format_to(output_iterator, "\n*** End of additional info ***\n");
 }
 
-/* virtual */ int CrashLogWindows::WriteCrashDump(char *filename, const char *filename_last) const
+/* virtual */ int CrashLogWindows::WriteCrashDump()
 {
 	int ret = 0;
 	DllLoader dbghelp(L"dbghelp.dll");
@@ -478,8 +461,8 @@ void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::str
 				CONST PMINIDUMP_CALLBACK_INFORMATION);
 		MiniDumpWriteDump_t funcMiniDumpWriteDump = dbghelp.GetProcAddress("MiniDumpWriteDump");
 		if (funcMiniDumpWriteDump != nullptr) {
-			this->CreateFileName(filename, filename_last, ".dmp");
-			HANDLE file  = CreateFile(OTTD2FS(filename).c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
+			this->crashdump_filename = this->CreateFileName(".dmp");
+			HANDLE file  = CreateFile(OTTD2FS(this->crashdump_filename).c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
 			HANDLE proc  = GetCurrentProcess();
 			DWORD procid = GetCurrentProcessId();
 			MINIDUMP_EXCEPTION_INFORMATION mdei;
@@ -550,10 +533,10 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	CrashLogWindows::current = log;
 	auto output_iterator = std::back_inserter(log->crashlog);
 	log->FillCrashLog(output_iterator);
-	log->WriteCrashDump(log->crashdump_filename, lastof(log->crashdump_filename));
+	log->WriteCrashDump();
 	log->AppendDecodedStacktrace(output_iterator);
-	log->WriteCrashLog(log->crashlog.c_str(), log->crashlog_filename, lastof(log->crashlog_filename));
-	log->WriteScreenshot(log->screenshot_filename, lastof(log->screenshot_filename));
+	log->WriteCrashLog();
+	log->WriteScreenshot();
 	log->SendSurvey();
 
 	/* Close any possible log files */
@@ -715,9 +698,8 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 					ExitProcess(2);
 				case 13: // Emergency save
 					wchar_t filenamebuf[MAX_PATH * 2];
-					char filename[MAX_PATH];
-					if (CrashLogWindows::current->WriteSavegame(filename, lastof(filename))) {
-						convert_to_fs(filename, filenamebuf, lengthof(filenamebuf));
+					if (CrashLogWindows::current->WriteSavegame()) {
+						convert_to_fs(CrashLogWindows::current->savegame_filename, filenamebuf, lengthof(filenamebuf));
 						size_t len = lengthof(_save_succeeded) + wcslen(filenamebuf) + 1;
 						static wchar_t text[lengthof(_save_succeeded) + MAX_PATH * 2 + 1];
 						_snwprintf(text, len, _save_succeeded, filenamebuf);
