@@ -76,58 +76,54 @@
 
 /* static */ std::string CrashLog::message{ "<none>" };
 
-char *CrashLog::LogCompiler(char *buffer, const char *last) const
+void CrashLog::LogCompiler(std::back_insert_iterator<std::string> &output_iterator) const
 {
-			buffer += seprintf(buffer, last, " Compiler: "
+	fmt::format_to(output_iterator, " Compiler: "
 #if defined(_MSC_VER)
-			"MSVC %d", _MSC_VER
+			"MSVC {}", _MSC_VER
 #elif defined(__ICC) && defined(__GNUC__)
-			"ICC %d (GCC %d.%d.%d mode)", __ICC,  __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__
+			"ICC {} (GCC {}.{}.{} mode)", __ICC,  __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__
 #elif defined(__ICC)
-			"ICC %d", __ICC
+			"ICC {}", __ICC
 #elif defined(__GNUC__)
-			"GCC %d.%d.%d", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__
+			"GCC {}.{}.{}", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__
 #elif defined(__WATCOMC__)
-			"WatcomC %d", __WATCOMC__
+			"WatcomC {}", __WATCOMC__
 #else
 			"<unknown>"
 #endif
 			);
 #if defined(__VERSION__)
-			return buffer + seprintf(buffer, last,  " \"" __VERSION__ "\"\n\n");
+	fmt::format_to(output_iterator, " \"" __VERSION__ "\"\n\n");
 #else
-			return buffer + seprintf(buffer, last,  "\n\n");
+	fmt::format_to(output_iterator, "\n\n");
 #endif
 }
 
-/* virtual */ char *CrashLog::LogRegisters(char *buffer, const char *last) const
+/* virtual */ void CrashLog::LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const
 {
 	/* Stub implementation; not all OSes support this. */
-	return buffer;
 }
 
-/* virtual */ char *CrashLog::LogModules(char *buffer, const char *last) const
+/* virtual */ void CrashLog::LogModules(std::back_insert_iterator<std::string> &output_iterator) const
 {
 	/* Stub implementation; not all OSes support this. */
-	return buffer;
 }
 
 /**
  * Writes OpenTTD's version to the buffer.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
+ * @param output_iterator Iterator to write the output to.
  */
-char *CrashLog::LogOpenTTDVersion(char *buffer, const char *last) const
+void CrashLog::LogOpenTTDVersion(std::back_insert_iterator<std::string> &output_iterator) const
 {
-	return buffer + seprintf(buffer, last,
+	fmt::format_to(output_iterator,
 			"OpenTTD version:\n"
-			" Version:    %s (%d)\n"
-			" NewGRF ver: %08x\n"
-			" Bits:       %d\n"
-			" Endian:     %s\n"
-			" Dedicated:  %s\n"
-			" Build date: %s\n\n",
+			" Version:    {} ({})\n"
+			" NewGRF ver: {:08x}\n"
+			" Bits:       {}\n"
+			" Endian:     {}\n"
+			" Dedicated:  {}\n"
+			" Build date: {}\n\n",
 			_openttd_revision,
 			_openttd_revision_modified,
 			_openttd_newgrf_version,
@@ -153,83 +149,77 @@ char *CrashLog::LogOpenTTDVersion(char *buffer, const char *last) const
 /**
  * Writes the (important) configuration settings to the buffer.
  * E.g. graphics set, sound set, blitter and AIs.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
+ * @param output_iterator Iterator to write the output to.
  */
-char *CrashLog::LogConfiguration(char *buffer, const char *last) const
+void CrashLog::LogConfiguration(std::back_insert_iterator<std::string> &output_iterator) const
 {
-	buffer += seprintf(buffer, last,
+	fmt::format_to(output_iterator,
 			"Configuration:\n"
-			" Blitter:      %s\n"
-			" Graphics set: %s (%u)\n"
-			" Language:     %s\n"
-			" Music driver: %s\n"
-			" Music set:    %s (%u)\n"
-			" Network:      %s\n"
-			" Sound driver: %s\n"
-			" Sound set:    %s (%u)\n"
-			" Video driver: %s\n\n",
+			" Blitter:      {}\n"
+			" Graphics set: {} ({})\n"
+			" Language:     {}\n"
+			" Music driver: {}\n"
+			" Music set:    {} ({})\n"
+			" Network:      {}\n"
+			" Sound driver: {}\n"
+			" Sound set:    {} ({})\n"
+			" Video driver: {}\n\n",
 			BlitterFactory::GetCurrentBlitter() == nullptr ? "none" : BlitterFactory::GetCurrentBlitter()->GetName(),
-			BaseGraphics::GetUsedSet() == nullptr ? "none" : BaseGraphics::GetUsedSet()->name.c_str(),
+			BaseGraphics::GetUsedSet() == nullptr ? "none" : BaseGraphics::GetUsedSet()->name,
 			BaseGraphics::GetUsedSet() == nullptr ? UINT32_MAX : BaseGraphics::GetUsedSet()->version,
 			_current_language == nullptr ? "none" : _current_language->file,
 			MusicDriver::GetInstance() == nullptr ? "none" : MusicDriver::GetInstance()->GetName(),
-			BaseMusic::GetUsedSet() == nullptr ? "none" : BaseMusic::GetUsedSet()->name.c_str(),
+			BaseMusic::GetUsedSet() == nullptr ? "none" : BaseMusic::GetUsedSet()->name,
 			BaseMusic::GetUsedSet() == nullptr ? UINT32_MAX : BaseMusic::GetUsedSet()->version,
 			_networking ? (_network_server ? "server" : "client") : "no",
 			SoundDriver::GetInstance() == nullptr ? "none" : SoundDriver::GetInstance()->GetName(),
-			BaseSounds::GetUsedSet() == nullptr ? "none" : BaseSounds::GetUsedSet()->name.c_str(),
+			BaseSounds::GetUsedSet() == nullptr ? "none" : BaseSounds::GetUsedSet()->name,
 			BaseSounds::GetUsedSet() == nullptr ? UINT32_MAX : BaseSounds::GetUsedSet()->version,
 			VideoDriver::GetInstance() == nullptr ? "none" : VideoDriver::GetInstance()->GetInfoString()
 	);
 
-	buffer += seprintf(buffer, last,
+	fmt::format_to(output_iterator,
 			"Fonts:\n"
-			" Small:  %s\n"
-			" Medium: %s\n"
-			" Large:  %s\n"
-			" Mono:   %s\n\n",
+			" Small:  {}\n"
+			" Medium: {}\n"
+			" Large:  {}\n"
+			" Mono:   {}\n\n",
 			FontCache::Get(FS_SMALL)->GetFontName(),
 			FontCache::Get(FS_NORMAL)->GetFontName(),
 			FontCache::Get(FS_LARGE)->GetFontName(),
 			FontCache::Get(FS_MONO)->GetFontName()
 	);
 
-	buffer += seprintf(buffer, last, "AI Configuration (local: %i) (current: %i):\n", (int)_local_company, (int)_current_company);
+	fmt::format_to(output_iterator, "AI Configuration (local: {}) (current: {}):\n", _local_company, _current_company);
 	for (const Company *c : Company::Iterate()) {
 		if (c->ai_info == nullptr) {
-			buffer += seprintf(buffer, last, " %2i: Human\n", (int)c->index);
+			fmt::format_to(output_iterator, " {:2}: Human\n", c->index);
 		} else {
-			buffer += seprintf(buffer, last, " %2i: %s (v%d)\n", (int)c->index, c->ai_info->GetName().c_str(), c->ai_info->GetVersion());
+			fmt::format_to(output_iterator, " {:2}: {} (v{})\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
 		}
 	}
 
 	if (Game::GetInfo() != nullptr) {
-		buffer += seprintf(buffer, last, " GS: %s (v%d)\n", Game::GetInfo()->GetName().c_str(), Game::GetInfo()->GetVersion());
+		fmt::format_to(output_iterator, " GS: {} (v{})\n", Game::GetInfo()->GetName(), Game::GetInfo()->GetVersion());
 	}
-	buffer += seprintf(buffer, last, "\n");
-
-	return buffer;
+	fmt::format_to(output_iterator, "\n");
 }
 
 /**
  * Writes information (versions) of the used libraries.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
+ * @param output_iterator Iterator to write the output to.
  */
-char *CrashLog::LogLibraries(char *buffer, const char *last) const
+void CrashLog::LogLibraries(std::back_insert_iterator<std::string> &output_iterator) const
 {
-	buffer += seprintf(buffer, last, "Libraries:\n");
+	fmt::format_to(output_iterator, "Libraries:\n");
 
 #ifdef WITH_ALLEGRO
-	buffer += seprintf(buffer, last, " Allegro:    %s\n", allegro_id);
+	fmt::format_to(output_iterator, " Allegro:    {}\n", allegro_id);
 #endif /* WITH_ALLEGRO */
 
 #ifdef WITH_FONTCONFIG
 	int version = FcGetVersion();
-	buffer += seprintf(buffer, last, " FontConfig: %d.%d.%d\n", version / 10000, (version / 100) % 100, version % 100);
+	fmt::format_to(output_iterator, " FontConfig: {}.{}.{}\n", version / 10000, (version / 100) % 100, version % 100);
 #endif /* WITH_FONTCONFIG */
 
 #ifdef WITH_FREETYPE
@@ -238,11 +228,11 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 	FT_Init_FreeType(&library);
 	FT_Library_Version(library, &major, &minor, &patch);
 	FT_Done_FreeType(library);
-	buffer += seprintf(buffer, last, " FreeType:   %d.%d.%d\n", major, minor, patch);
+	fmt::format_to(output_iterator, " FreeType:   {}.{}.{}\n", major, minor, patch);
 #endif /* WITH_FREETYPE */
 
 #if defined(WITH_HARFBUZZ)
-	buffer += seprintf(buffer, last, " HarfBuzz:   %s\n", hb_version_string());
+	fmt::format_to(output_iterator, " HarfBuzz:   {}\n", hb_version_string());
 #endif /* WITH_HARFBUZZ */
 
 #if defined(WITH_ICU_I18N)
@@ -251,82 +241,76 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 	UVersionInfo ver;
 	u_getVersion(ver);
 	u_versionToString(ver, buf);
-	buffer += seprintf(buffer, last, " ICU i18n:   %s\n", buf);
+	fmt::format_to(output_iterator, " ICU i18n:   {}\n", buf);
 #endif /* WITH_ICU_I18N */
 
 #ifdef WITH_LIBLZMA
-	buffer += seprintf(buffer, last, " LZMA:       %s\n", lzma_version_string());
+	fmt::format_to(output_iterator, " LZMA:       {}\n", lzma_version_string());
 #endif
 
 #ifdef WITH_LZO
-	buffer += seprintf(buffer, last, " LZO:        %s\n", lzo_version_string());
+	fmt::format_to(output_iterator, " LZO:        {}\n", lzo_version_string());
 #endif
 
 #ifdef WITH_PNG
-	buffer += seprintf(buffer, last, " PNG:        %s\n", png_get_libpng_ver(nullptr));
+	fmt::format_to(output_iterator, " PNG:        {}\n", png_get_libpng_ver(nullptr));
 #endif /* WITH_PNG */
 
 #ifdef WITH_SDL
 	const SDL_version *sdl_v = SDL_Linked_Version();
-	buffer += seprintf(buffer, last, " SDL1:       %d.%d.%d\n", sdl_v->major, sdl_v->minor, sdl_v->patch);
+	fmt::format_to(output_iterator, " SDL1:       {}.{}.{}\n", sdl_v->major, sdl_v->minor, sdl_v->patch);
 #elif defined(WITH_SDL2)
 	SDL_version sdl2_v;
 	SDL_GetVersion(&sdl2_v);
-	buffer += seprintf(buffer, last, " SDL2:       %d.%d.%d\n", sdl2_v.major, sdl2_v.minor, sdl2_v.patch);
+	fmt::format_to(output_iterator, " SDL2:       {}.{}.{}\n", sdl2_v.major, sdl2_v.minor, sdl2_v.patch);
 #endif
 
 #ifdef WITH_ZLIB
-	buffer += seprintf(buffer, last, " Zlib:       %s\n", zlibVersion());
+	fmt::format_to(output_iterator, " Zlib:       {}\n", zlibVersion());
 #endif
 
 #ifdef WITH_CURL
 	auto *curl_v = curl_version_info(CURLVERSION_NOW);
-	buffer += seprintf(buffer, last, " Curl:       %s\n", curl_v->version);
+	fmt::format_to(output_iterator, " Curl:       {}\n", curl_v->version);
 	if (curl_v->ssl_version != nullptr) {
-		buffer += seprintf(buffer, last, " Curl SSL:   %s\n", curl_v->ssl_version);
+		fmt::format_to(output_iterator, " Curl SSL:   {}\n", curl_v->ssl_version);
 	} else {
-		buffer += seprintf(buffer, last, " Curl SSL:   none\n");
+		fmt::format_to(output_iterator, " Curl SSL:   none\n");
 	}
 #endif
 
-	buffer += seprintf(buffer, last, "\n");
-	return buffer;
+	fmt::format_to(output_iterator, "\n");
 }
 
 /**
  * Writes the gamelog data to the buffer.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
+ * @param output_iterator Iterator to write the output to.
  */
-char *CrashLog::LogGamelog(char *buffer, const char *last) const
+void CrashLog::LogGamelog(std::back_insert_iterator<std::string> &output_iterator) const
 {
-	_gamelog.Print([&buffer, last](const std::string &s) {
-		buffer += seprintf(buffer, last, "%s\n", s.c_str());
+	_gamelog.Print([&output_iterator](const std::string &s) {
+		fmt::format_to(output_iterator, "{}\n", s);
 	});
-	return buffer + seprintf(buffer, last, "\n");
+	fmt::format_to(output_iterator, "\n");
 }
 
 /**
  * Writes up to 32 recent news messages to the buffer, with the most recent first.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
+ * @param output_iterator Iterator to write the output to.
  */
-char *CrashLog::LogRecentNews(char *buffer, const char *last) const
+void CrashLog::LogRecentNews(std::back_insert_iterator<std::string> &output_iterator) const
 {
-	buffer += seprintf(buffer, last, "Recent news messages:\n");
+	fmt::format_to(output_iterator, "Recent news messages:\n");
 
 	int i = 0;
 	for (NewsItem *news = _latest_news; i < 32 && news != nullptr; news = news->prev, i++) {
 		TimerGameCalendar::YearMonthDay ymd;
 		TimerGameCalendar::ConvertDateToYMD(news->date, &ymd);
-		buffer += seprintf(buffer, last, "(%i-%02i-%02i) StringID: %u, Type: %u, Ref1: %u, %u, Ref2: %u, %u\n",
+		fmt::format_to(output_iterator, "({}-{:02}-{:02}) StringID: {}, Type: {}, Ref1: {}, {}, Ref2: {}, {}\n",
 		                   ymd.year, ymd.month + 1, ymd.day, news->string_id, news->type,
 		                   news->reftype1, news->ref1, news->reftype2, news->ref2);
 	}
-	buffer += seprintf(buffer, last, "\n");
-	return buffer;
+	fmt::format_to(output_iterator, "\n");
 }
 
 /**
@@ -349,34 +333,30 @@ int CrashLog::CreateFileName(char *filename, const char *filename_last, const ch
 
 /**
  * Fill the crash log buffer with all data of a crash log.
- * @param buffer The begin where to write at.
- * @param last   The last position in the buffer to write to.
- * @return the position of the \c '\0' character after the buffer.
+ * @param output_iterator Iterator to write the output to.
  */
-char *CrashLog::FillCrashLog(char *buffer, const char *last) const
+void CrashLog::FillCrashLog(std::back_insert_iterator<std::string> &output_iterator) const
 {
-	buffer += seprintf(buffer, last, "*** OpenTTD Crash Report ***\n\n");
-	std::string temp = fmt::format("Crash at: {:%Y-%m-%d %H:%M:%S} (UTC)\n", fmt::gmtime(time(nullptr)));
-	buffer = strecpy(buffer, temp.c_str(), last);
+	fmt::format_to(output_iterator, "*** OpenTTD Crash Report ***\n\n");
+	fmt::format_to(output_iterator, "Crash at: {:%Y-%m-%d %H:%M:%S} (UTC)\n", fmt::gmtime(time(nullptr)));
 
 	TimerGameCalendar::YearMonthDay ymd;
 	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
-	buffer += seprintf(buffer, last, "In game date: %i-%02i-%02i (%i)\n\n", ymd.year, ymd.month + 1, ymd.day, TimerGameCalendar::date_fract);
+	fmt::format_to(output_iterator, "In game date: {}-{:02}-{:02} ({})\n\n", ymd.year, ymd.month + 1, ymd.day, TimerGameCalendar::date_fract);
 
-	buffer = this->LogError(buffer, last, CrashLog::message.c_str());
-	buffer = this->LogOpenTTDVersion(buffer, last);
-	buffer = this->LogRegisters(buffer, last);
-	buffer = this->LogStacktrace(buffer, last);
-	buffer = this->LogOSVersion(buffer, last);
-	buffer = this->LogCompiler(buffer, last);
-	buffer = this->LogConfiguration(buffer, last);
-	buffer = this->LogLibraries(buffer, last);
-	buffer = this->LogModules(buffer, last);
-	buffer = this->LogGamelog(buffer, last);
-	buffer = this->LogRecentNews(buffer, last);
+	this->LogError(output_iterator, CrashLog::message);
+	this->LogOpenTTDVersion(output_iterator);
+	this->LogRegisters(output_iterator);
+	this->LogStacktrace(output_iterator);
+	this->LogOSVersion(output_iterator);
+	this->LogCompiler(output_iterator);
+	this->LogConfiguration(output_iterator);
+	this->LogLibraries(output_iterator);
+	this->LogModules(output_iterator);
+	this->LogGamelog(output_iterator);
+	this->LogRecentNews(output_iterator);
 
-	buffer += seprintf(buffer, last, "*** End of OpenTTD Crash Report ***\n");
-	return buffer;
+	fmt::format_to(output_iterator, "*** End of OpenTTD Crash Report ***\n");
 }
 
 /**
@@ -475,16 +455,18 @@ bool CrashLog::MakeCrashLog() const
 	crashlogged = true;
 
 	char filename[MAX_PATH];
-	char buffer[65536];
+	std::string buffer;
+	buffer.reserve(65536);
+	auto output_iterator = std::back_inserter(buffer);
 	bool ret = true;
 
 	fmt::print("Crash encountered, generating crash log...\n");
-	this->FillCrashLog(buffer, lastof(buffer));
+	this->FillCrashLog(output_iterator);
 	fmt::print("{}\n", buffer);
 	fmt::print("Crash log generated.\n\n");
 
 	fmt::print("Writing crash log to disk...\n");
-	bool bret = this->WriteCrashLog(buffer, filename, lastof(filename));
+	bool bret = this->WriteCrashLog(buffer.c_str(), filename, lastof(filename));
 	if (bret) {
 		fmt::print("Crash log written to {}. Please add this file to any bug reports.\n\n", filename);
 	} else {

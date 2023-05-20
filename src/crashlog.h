@@ -20,62 +20,50 @@ private:
 protected:
 	/**
 	 * Writes OS' version to the buffer.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
+	 * @param output_iterator Iterator to write the output to.
 	 */
-	virtual char *LogOSVersion(char *buffer, const char *last) const = 0;
+	virtual void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const = 0;
 
 	/**
 	 * Writes compiler (and its version, if available) to the buffer.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
+	 * @param output_iterator Iterator to write the output to.
 	 */
-	virtual char *LogCompiler(char *buffer, const char *last) const;
+	virtual void LogCompiler(std::back_insert_iterator<std::string> &output_iterator) const;
 
 	/**
 	 * Writes actually encountered error to the buffer.
-	 * @param buffer  The begin where to write at.
-	 * @param last    The last position in the buffer to write to.
+	 * @param output_iterator Iterator to write the output to.
 	 * @param message Message passed to use for errors.
-	 * @return the position of the \c '\0' character after the buffer.
 	 */
-	virtual char *LogError(char *buffer, const char *last, const char *message) const = 0;
+	virtual void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const = 0;
 
 	/**
 	 * Writes the stack trace to the buffer, if there is information about it
 	 * available.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
+	 * @param output_iterator Iterator to write the output to.
 	 */
-	virtual char *LogStacktrace(char *buffer, const char *last) const = 0;
+	virtual void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const = 0;
 
 	/**
 	 * Writes information about the data in the registers, if there is
 	 * information about it available.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
+	 * @param output_iterator Iterator to write the output to.
 	 */
-	virtual char *LogRegisters(char *buffer, const char *last) const;
+	virtual void LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const;
 
 	/**
 	 * Writes the dynamically linked libraries/modules to the buffer, if there
 	 * is information about it available.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
+	 * @param output_iterator Iterator to write the output to.
 	 */
-	virtual char *LogModules(char *buffer, const char *last) const;
+	virtual void LogModules(std::back_insert_iterator<std::string> &output_iterator) const;
 
 
-	char *LogOpenTTDVersion(char *buffer, const char *last) const;
-	char *LogConfiguration(char *buffer, const char *last) const;
-	char *LogLibraries(char *buffer, const char *last) const;
-	char *LogGamelog(char *buffer, const char *last) const;
-	char *LogRecentNews(char *buffer, const char *list) const;
+	void LogOpenTTDVersion(std::back_insert_iterator<std::string> &output_iterator) const;
+	void LogConfiguration(std::back_insert_iterator<std::string> &output_iterator) const;
+	void LogLibraries(std::back_insert_iterator<std::string> &output_iterator) const;
+	void LogGamelog(std::back_insert_iterator<std::string> &output_iterator) const;
+	void LogRecentNews(std::back_insert_iterator<std::string> &output_iterator) const;
 
 	int CreateFileName(char *filename, const char *filename_last, const char *ext, bool with_dir = true) const;
 
@@ -83,7 +71,7 @@ public:
 	/** Stub destructor to silence some compilers. */
 	virtual ~CrashLog() = default;
 
-	char *FillCrashLog(char *buffer, const char *last) const;
+	void FillCrashLog(std::back_insert_iterator<std::string> &output_iterator) const;
 	bool WriteCrashLog(const char *buffer, char *filename, const char *filename_last) const;
 
 	/**
