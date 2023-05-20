@@ -250,7 +250,7 @@ endif()
 target_precompile_headers(openttd_lib
     PRIVATE
     src/stdafx.h
-    src/3rdparty/fmt/format.h
+    src/core/format.hpp
 )
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/bin)

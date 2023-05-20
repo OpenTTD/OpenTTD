@@ -117,7 +117,7 @@ public:
 #else
 #	define LANDINFOD_LEVEL 1
 #endif
-		Debug(misc, LANDINFOD_LEVEL, "TILE: 0x{:x} ({},{})", tile, TileX(tile), TileY(tile));
+		Debug(misc, LANDINFOD_LEVEL, "TILE: 0x{:x} ({},{})", (TileIndex)tile, TileX(tile), TileY(tile));
 		Debug(misc, LANDINFOD_LEVEL, "type   = 0x{:x}", tile.type());
 		Debug(misc, LANDINFOD_LEVEL, "height = 0x{:x}", tile.height());
 		Debug(misc, LANDINFOD_LEVEL, "m1     = 0x{:x}", tile.m1());
