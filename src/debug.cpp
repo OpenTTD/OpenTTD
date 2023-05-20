@@ -19,7 +19,7 @@
 #include "os/windows/win32.h"
 #endif
 
-#include "walltime_func.h"
+#include "3rdparty/fmt/chrono.h"
 
 #include "network/network_admin.h"
 SOCKET _debug_socket = INVALID_SOCKET;
@@ -245,13 +245,13 @@ const char *GetDebugString()
  */
 const char *GetLogPrefix()
 {
-	static char _log_prefix[24];
+	static std::string _log_prefix;
 	if (_settings_client.gui.show_date_in_logs) {
-		LocalTime::Format(_log_prefix, lastof(_log_prefix), "[%Y-%m-%d %H:%M:%S] ");
+		_log_prefix = fmt::format("[{:%Y-%m-%d %H:%M:%S}] ", fmt::localtime(time(nullptr)));
 	} else {
-		*_log_prefix = '\0';
+		_log_prefix.clear();
 	}
-	return _log_prefix;
+	return _log_prefix.c_str();
 }
 
 /**

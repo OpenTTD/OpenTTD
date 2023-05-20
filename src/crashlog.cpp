@@ -33,7 +33,7 @@
 #include "game/game_info.hpp"
 #include "company_base.h"
 #include "company_func.h"
-#include "walltime_func.h"
+#include "3rdparty/fmt/chrono.h"
 
 #ifdef WITH_ALLEGRO
 #	include <allegro.h>
@@ -342,8 +342,7 @@ int CrashLog::CreateFileName(char *filename, const char *filename_last, const ch
 	static std::string crashname;
 
 	if (crashname.empty()) {
-		UTCTime::Format(filename, filename_last, "crash%Y%m%d%H%M%S");
-		crashname = filename;
+		crashname = fmt::format("crash{:%Y%m%d%H%M%S}", fmt::gmtime(time(nullptr)));
 	}
 	return seprintf(filename, filename_last, "%s%s%s", with_dir ? _personal_dir.c_str() : "", crashname.c_str(), ext);
 }
@@ -357,7 +356,8 @@ int CrashLog::CreateFileName(char *filename, const char *filename_last, const ch
 char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 {
 	buffer += seprintf(buffer, last, "*** OpenTTD Crash Report ***\n\n");
-	buffer += UTCTime::Format(buffer, last, "Crash at: %Y-%m-%d %H:%M:%S (UTC)\n");
+	std::string temp = fmt::format("Crash at: {:%Y-%m-%d %H:%M:%S} (UTC)\n", fmt::gmtime(time(nullptr)));
+	buffer = strecpy(buffer, temp.c_str(), last);
 
 	TimerGameCalendar::YearMonthDay ymd;
 	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
