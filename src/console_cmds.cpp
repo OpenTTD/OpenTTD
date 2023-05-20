@@ -42,7 +42,7 @@
 #include "rail.h"
 #include "game/game.hpp"
 #include "table/strings.h"
-#include "walltime_func.h"
+#include "3rdparty/fmt/chrono.h"
 #include "company_cmd.h"
 #include "misc_cmd.h"
 
@@ -1460,9 +1460,7 @@ DEF_CONSOLE_CMD(ConGetSysDate)
 		return true;
 	}
 
-	char buffer[lengthof("2000-01-02 03:04:05")];
-	LocalTime::Format(buffer, lastof(buffer), "%Y-%m-%d %H:%M:%S");
-	IConsolePrint(CC_DEFAULT, "System Date: {}", buffer);
+	IConsolePrint(CC_DEFAULT, "System Date: {:%Y-%m-%d %H:%M:%S}", fmt::localtime(time(nullptr)));
 	return true;
 }
 

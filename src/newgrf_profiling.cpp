@@ -12,7 +12,7 @@
 #include "string_func.h"
 #include "console_func.h"
 #include "spritecache.h"
-#include "walltime_func.h"
+#include "3rdparty/fmt/chrono.h"
 #include "timer/timer.h"
 #include "timer/timer_game_tick.h"
 
@@ -131,13 +131,7 @@ void NewGRFProfiler::Abort()
  */
 std::string NewGRFProfiler::GetOutputFilename() const
 {
-	char timestamp[16] = {};
-	LocalTime::Format(timestamp, lastof(timestamp), "%Y%m%d-%H%M");
-
-	char filepath[MAX_PATH] = {};
-	seprintf(filepath, lastof(filepath), "%sgrfprofile-%s-%08X.csv", FiosGetScreenshotDir(), timestamp, BSWAP32(this->grffile->grfid));
-
-	return std::string(filepath);
+	return fmt::format("{}grfprofile-{%Y%m%d-%H%M}-{:08X}.csv", FiosGetScreenshotDir(), fmt::localtime(time(nullptr)), BSWAP32(this->grffile->grfid));
 }
 
 /* static */ uint32 NewGRFProfiler::FinishAll()
