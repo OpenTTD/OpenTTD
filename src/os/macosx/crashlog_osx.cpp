@@ -169,24 +169,24 @@ public:
 		char buffer[65536];
 		bool ret = true;
 
-		printf("Crash encountered, generating crash log...\n");
+		fmt::print("Crash encountered, generating crash log...\n");
 		this->FillCrashLog(buffer, lastof(buffer));
-		printf("%s\n", buffer);
-		printf("Crash log generated.\n\n");
+		fmt::print("{}\n", buffer);
+		fmt::print("Crash log generated.\n\n");
 
-		printf("Writing crash log to disk...\n");
+		fmt::print("Writing crash log to disk...\n");
 		if (!this->WriteCrashLog(buffer, filename_log, lastof(filename_log))) {
 			filename_log[0] = '\0';
 			ret = false;
 		}
 
-		printf("Writing crash savegame...\n");
+		fmt::print("Writing crash savegame...\n");
 		if (!this->WriteSavegame(filename_save, lastof(filename_save))) {
 			filename_save[0] = '\0';
 			ret = false;
 		}
 
-		printf("Writing crash screenshot...\n");
+		fmt::print("Writing crash screenshot...\n");
 		if (!this->WriteScreenshot(filename_screenshot, lastof(filename_screenshot))) {
 			filename_screenshot[0] = '\0';
 			ret = false;

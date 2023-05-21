@@ -225,7 +225,7 @@ static void ShowHelp()
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
 #if !defined(_WIN32)
-	printf("%s\n", str.c_str());
+	fmt::print("{}\n", str);
 #else
 	ShowInfoI(str);
 #endif
@@ -262,7 +262,7 @@ static void WriteSavegameInfo(const char *name)
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
 #if !defined(_WIN32)
-	printf("%s\n", message.c_str());
+	fmt::print("%s\n", message);
 #else
 	ShowInfoI(message);
 #endif

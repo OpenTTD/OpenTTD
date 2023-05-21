@@ -85,7 +85,7 @@ static inline bool HaveChatMessages(bool show_all)
  * Add a text message to the 'chat window' to be shown
  * @param colour The colour this message is to be shown in
  * @param duration The duration of the chat message in seconds
- * @param message message itself in printf() style
+ * @param message message itself
  */
 void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message)
 {

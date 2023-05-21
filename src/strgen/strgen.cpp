@@ -427,7 +427,7 @@ int CDECL main(int argc, char *argv[])
 				return 0;
 
 			case 'C':
-				printf("args\tflags\tcommand\treplacement\n");
+				fmt::print("args\tflags\tcommand\treplacement\n");
 				for (const CmdStruct *cs = _cmd_structs; cs < endof(_cmd_structs); cs++) {
 					char flags;
 					if (cs->proc == EmitGender) {
@@ -439,21 +439,21 @@ int CDECL main(int argc, char *argv[])
 					} else {
 						flags = '0'; // Command needs no parameters
 					}
-					printf("%i\t%c\t\"%s\"\t\"%s\"\n", cs->consumes, flags, cs->cmd, strstr(cs->cmd, "STRING") ? "STRING" : cs->cmd);
+					fmt::print("{}\t{:c}\t\"{}\"\t\"{}\"\n", cs->consumes, flags, cs->cmd, strstr(cs->cmd, "STRING") ? "STRING" : cs->cmd);
 				}
 				return 0;
 
 			case 'L':
-				printf("count\tdescription\tnames\n");
+				fmt::print("count\tdescription\tnames\n");
 				for (const PluralForm *pf = _plural_forms; pf < endof(_plural_forms); pf++) {
-					printf("%i\t\"%s\"\t%s\n", pf->plural_count, pf->description, pf->names);
+					fmt::print("{}\t\"{}\"\t{}\n", pf->plural_count, pf->description, pf->names);
 				}
 				return 0;
 
 			case 'P':
-				printf("name\tflags\tdefault\tdescription\n");
+				fmt::print("name\tflags\tdefault\tdescription\n");
 				for (size_t j = 0; j < lengthof(_pragmas); j++) {
-					printf("\"%s\"\t%s\t\"%s\"\t\"%s\"\n",
+					fmt::print("\"{}\"\t{}\t\"{}\"\t\"{}\"\n",
 							_pragmas[j][0], _pragmas[j][1], _pragmas[j][2], _pragmas[j][3]);
 				}
 				return 0;
