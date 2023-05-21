@@ -54,6 +54,13 @@
 /* No clear replacement. */
 #define strtok    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
+/* Use fmt::print instead. */
+#define printf    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define fprintf   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define puts      SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define fputs     SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define putchar   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+
 /* Use our own templated implementation instead of a macro or function with only one type. */
 #ifdef min
 #undef min
