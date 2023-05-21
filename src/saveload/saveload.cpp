@@ -3142,7 +3142,7 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 
 		if (fop == SLO_SAVE) { // SAVE game
 			Debug(desync, 1, "save: {:08x}; {:02x}; {}", TimerGameCalendar::date, TimerGameCalendar::date_fract, filename);
-			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
+			if (!_settings_client.gui.threaded_saves) threaded = false;
 
 			return DoSave(new FileWriter(fh), threaded);
 		}
