@@ -615,13 +615,11 @@ int openttd_main(int argc, char *argv[])
 			_load_check_data.Clear();
 			SaveOrLoadResult res = SaveOrLoad(mgo.opt, SLO_CHECK, DFT_GAME_FILE, SAVE_DIR, false);
 			if (res != SL_OK || _load_check_data.HasErrors()) {
-				fprintf(stderr, "Failed to open savegame\n");
+				fmt::print(stderr, "Failed to open savegame\n");
 				if (_load_check_data.HasErrors()) {
 					InitializeLanguagePacks(); // A language pack is needed for GetString()
-					char buf[256];
 					SetDParamStr(0, _load_check_data.error_msg);
-					GetString(buf, _load_check_data.error, lastof(buf));
-					fprintf(stderr, "%s\n", buf);
+					fmt::print(stderr, "{}\n", GetString(_load_check_data.error));
 				}
 				return ret;
 			}

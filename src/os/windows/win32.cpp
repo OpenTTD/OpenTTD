@@ -321,7 +321,7 @@ static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM
 void ShowInfoI(const std::string &str)
 {
 	if (_has_console) {
-		fprintf(stderr, "%s\n", str.c_str());
+		fmt::print(stderr, "{}\n", str);
 	} else {
 		bool old;
 		ReleaseCapture();

@@ -212,7 +212,7 @@ std::string FS2OTTD(const std::string &name)
 
 void ShowInfoI(const std::string &str)
 {
-	fprintf(stderr, "%s\n", str.c_str());
+	fmt::print(stderr, "{}\n", str);
 }
 
 #if !defined(__APPLE__)
@@ -220,9 +220,9 @@ void ShowOSErrorBox(const char *buf, bool system)
 {
 	/* All unix systems, except OSX. Only use escape codes on a TTY. */
 	if (isatty(fileno(stderr))) {
-		fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
+		fmt::print(stderr, "\033[1;31mError: {}\033[0;39m\n", buf);
 	} else {
-		fprintf(stderr, "Error: %s\n", buf);
+		fmt::print(stderr, "Error: {}\n", buf);
 	}
 }
 #endif

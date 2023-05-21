@@ -112,7 +112,7 @@ void IConsolePrint(TextColour colour_code, const std::string &string)
 
 	if (_network_dedicated) {
 		NetworkAdminConsole("console", str);
-		fprintf(stdout, "%s%s\n", GetLogPrefix(), str);
+		fmt::print("{}{}\n", GetLogPrefix(), str);
 		fflush(stdout);
 		IConsoleWriteToLogFile(str);
 		free(str); // free duplicated string since it's not used anymore

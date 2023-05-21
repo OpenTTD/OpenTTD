@@ -397,7 +397,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	if (VideoDriver::GetInstance() == nullptr) {
 		CocoaSetupApplication(); // Setup application before showing dialog
 	} else if (!_cocoa_video_started && VideoDriver::GetInstance()->Start({}) != nullptr) {
-		fprintf(stderr, "%s: %s\n", title, message);
+		fmt::print(stderr, "{}: {}\n", title, message);
 		return;
 	}
 
