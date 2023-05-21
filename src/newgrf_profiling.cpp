@@ -109,9 +109,9 @@ uint32 NewGRFProfiler::Finish()
 
 	uint32 total_microseconds = 0;
 
-	fputs("Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n", f);
+	fmt::print(f, "Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n");
 	for (const Call &c : this->calls) {
-		fputs(fmt::format("{},{},{:#X},{},{:#X},{},{},{}\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result).c_str(), f);
+		fmt::print(f, "{},{},{:#X},{},{:#X},{},{},{}\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
 		total_microseconds += c.time;
 	}
 
