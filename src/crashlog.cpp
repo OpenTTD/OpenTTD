@@ -454,6 +454,13 @@ bool CrashLog::WriteScreenshot(char *filename, const char *filename_last) const
 	return res;
 }
 
+void CrashLog::SendSurvey() const
+{
+	if (_game_mode == GM_NORMAL) {
+		_survey.Transmit(NetworkSurveyHandler::Reason::CRASH, true);
+	}
+}
+
 /**
  * Makes the crash log, writes it to a file and then subsequently tries
  * to make a crash dump and crash savegame. It uses DEBUG to write
@@ -512,9 +519,7 @@ bool CrashLog::MakeCrashLog() const
 		printf("Writing crash screenshot failed.\n\n");
 	}
 
-	if (_game_mode == GM_NORMAL) {
-		_survey.Transmit(NetworkSurveyHandler::Reason::CRASH, true);
-	}
+	this->SendSurvey();
 
 	return ret;
 }

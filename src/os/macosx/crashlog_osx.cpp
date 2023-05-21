@@ -192,6 +192,8 @@ public:
 			ret = false;
 		}
 
+		this->SendSurvey();
+
 		return ret;
 	}
 
