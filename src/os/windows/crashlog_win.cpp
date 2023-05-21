@@ -564,6 +564,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	log->AppendDecodedStacktrace(buf, lastof(log->crashlog));
 	log->WriteCrashLog(log->crashlog, log->crashlog_filename, lastof(log->crashlog_filename));
 	log->WriteScreenshot(log->screenshot_filename, lastof(log->screenshot_filename));
+	log->SendSurvey();
 
 	/* Close any possible log files */
 	CloseConsoleLogIfActive();

@@ -99,6 +99,8 @@ public:
 	bool WriteSavegame(char *filename, const char *filename_last) const;
 	bool WriteScreenshot(char *filename, const char *filename_last) const;
 
+	void SendSurvey() const;
+
 	bool MakeCrashLog() const;
 
 	/**
