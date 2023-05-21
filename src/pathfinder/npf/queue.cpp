@@ -303,29 +303,26 @@ void Hash::PrintStatistics() const
 			max_usage = usage[collision];
 		}
 	}
-	printf(
-		"---\n"
-		"Hash size: %u\n"
-		"Nodes used: %u\n"
-		"Non empty buckets: %u\n"
-		"Max collision: %u\n",
+	Debug(misc, 0, "Hash size: {}, Nodes used: {}, Non empty buckets: {}, Max collision: {}",
 		this->num_buckets, this->size, used_buckets, max_collision
 	);
-	printf("{ ");
+	std::string line;
+	line += "{ ";
 	for (i = 0; i <= max_collision; i++) {
 		if (usage[i] > 0) {
-			printf("%u:%u ", i, usage[i]);
+			fmt::format_to(std::back_inserter(line), "{}:{} ", i, usage[i]);
 #if 0
 			if (i > 0) {
 				uint j;
 
-				for (j = 0; j < usage[i] * 160 / 800; j++) putchar('#');
+				for (j = 0; j < usage[i] * 160 / 800; j++) line += "#";
 			}
-			printf("\n");
+			line += "\n";
 #endif
 		}
 	}
-	printf ("}\n");
+	line += "}";
+	Debug(misc, 0, "{}", line);
 }
 #endif
 

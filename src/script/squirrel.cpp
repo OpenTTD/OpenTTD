@@ -269,7 +269,7 @@ void Squirrel::PrintFunc(HSQUIRRELVM vm, const std::string &s)
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == nullptr) {
-		printf("%s", s.c_str());
+		fmt::print("%s", s);
 	} else {
 		(*func)(false, s);
 	}

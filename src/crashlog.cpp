@@ -478,45 +478,45 @@ bool CrashLog::MakeCrashLog() const
 	char buffer[65536];
 	bool ret = true;
 
-	printf("Crash encountered, generating crash log...\n");
+	fmt::print("Crash encountered, generating crash log...\n");
 	this->FillCrashLog(buffer, lastof(buffer));
-	printf("%s\n", buffer);
-	printf("Crash log generated.\n\n");
+	fmt::print("{}\n", buffer);
+	fmt::print("Crash log generated.\n\n");
 
-	printf("Writing crash log to disk...\n");
+	fmt::print("Writing crash log to disk...\n");
 	bool bret = this->WriteCrashLog(buffer, filename, lastof(filename));
 	if (bret) {
-		printf("Crash log written to %s. Please add this file to any bug reports.\n\n", filename);
+		fmt::print("Crash log written to {}. Please add this file to any bug reports.\n\n", filename);
 	} else {
-		printf("Writing crash log failed. Please attach the output above to any bug reports.\n\n");
+		fmt::print("Writing crash log failed. Please attach the output above to any bug reports.\n\n");
 		ret = false;
 	}
 
 	/* Don't mention writing crash dumps because not all platforms support it. */
 	int dret = this->WriteCrashDump(filename, lastof(filename));
 	if (dret < 0) {
-		printf("Writing crash dump failed.\n\n");
+		fmt::print("Writing crash dump failed.\n\n");
 		ret = false;
 	} else if (dret > 0) {
-		printf("Crash dump written to %s. Please add this file to any bug reports.\n\n", filename);
+		fmt::print("Crash dump written to {}. Please add this file to any bug reports.\n\n", filename);
 	}
 
-	printf("Writing crash savegame...\n");
+	fmt::print("Writing crash savegame...\n");
 	bret = this->WriteSavegame(filename, lastof(filename));
 	if (bret) {
-		printf("Crash savegame written to %s. Please add this file and the last (auto)save to any bug reports.\n\n", filename);
+		fmt::print("Crash savegame written to {}. Please add this file and the last (auto)save to any bug reports.\n\n", filename);
 	} else {
 		ret = false;
-		printf("Writing crash savegame failed. Please attach the last (auto)save to any bug reports.\n\n");
+		fmt::print("Writing crash savegame failed. Please attach the last (auto)save to any bug reports.\n\n");
 	}
 
-	printf("Writing crash screenshot...\n");
+	fmt::print("Writing crash screenshot...\n");
 	bret = this->WriteScreenshot(filename, lastof(filename));
 	if (bret) {
-		printf("Crash screenshot written to %s. Please add this file to any bug reports.\n\n", filename);
+		fmt::print("Crash screenshot written to {}. Please add this file to any bug reports.\n\n", filename);
 	} else {
 		ret = false;
-		printf("Writing crash screenshot failed.\n\n");
+		fmt::print("Writing crash screenshot failed.\n\n");
 	}
 
 	this->SendSurvey();
