@@ -400,7 +400,6 @@ static bool CompareFiles(const char *n1, const char *n2)
 
 /** Options of settingsgen. */
 static const OptionData _opts[] = {
-	  GETOPT_NOVAL(     'v', "--version"),
 	  GETOPT_NOVAL(     'h', "--help"),
 	GETOPT_GENERAL('h', '?', nullptr, ODF_NO_VALUE),
 	  GETOPT_VALUE(     'o', "--output"),
@@ -455,15 +454,10 @@ int CDECL main(int argc, char *argv[])
 		if (i == -1) break;
 
 		switch (i) {
-			case 'v':
-				fmt::print("$Revision$\n");
-				return 0;
-
 			case 'h':
-				fmt::print("settingsgen - $Revision$\n"
+				fmt::print("settingsgen\n"
 						"Usage: settingsgen [options] ini-file...\n"
 						"with options:\n"
-						"   -v, --version           Print version information and exit\n"
 						"   -h, -?, --help          Print this help message and exit\n"
 						"   -b FILE, --before FILE  Copy FILE before all settings\n"
 						"   -a FILE, --after FILE   Copy FILE after all settings\n"
