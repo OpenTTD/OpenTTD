@@ -456,11 +456,11 @@ int CDECL main(int argc, char *argv[])
 
 		switch (i) {
 			case 'v':
-				puts("$Revision$");
+				fmt::print("$Revision$\n");
 				return 0;
 
 			case 'h':
-				puts("settingsgen - $Revision$\n"
+				fmt::print("settingsgen - $Revision$\n"
 						"Usage: settingsgen [options] ini-file...\n"
 						"with options:\n"
 						"   -v, --version           Print version information and exit\n"

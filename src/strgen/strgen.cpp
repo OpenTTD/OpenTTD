@@ -423,7 +423,7 @@ int CDECL main(int argc, char *argv[])
 
 		switch (i) {
 			case 'v':
-				puts("$Revision$");
+				fmt::print("$Revision$\n");
 				return 0;
 
 			case 'C':
@@ -467,7 +467,7 @@ int CDECL main(int argc, char *argv[])
 				break;
 
 			case 'h':
-				puts(
+				fmt::print(
 					"strgen - $Revision$\n"
 					" -v | --version    print version information and exit\n"
 					" -t | --todo       replace any untranslated strings with '<TODO>'\n"
@@ -480,7 +480,7 @@ int CDECL main(int argc, char *argv[])
 					" -export-pragmas   export all pragmas and exit\n"
 					" Run without parameters and strgen will search for english.txt and parse it,\n"
 					" creating strings.h. Passing an argument, strgen will translate that language\n"
-					" file using english.txt as a reference and output <language>.lng."
+					" file using english.txt as a reference and output <language>.lng.\n"
 				);
 				return 0;
 

@@ -138,8 +138,7 @@ void DebugPrint(const char *level, const std::string &message)
 		fflush(f);
 #endif
 	} else {
-		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
-		fputs(msg.c_str(), stderr);
+		fmt::print(stderr, "{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
 
 		if (_debug_remote_console.load()) {
 			/* Only add to the queue when there is at least one consumer of the data. */
