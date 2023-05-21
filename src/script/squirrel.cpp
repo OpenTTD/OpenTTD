@@ -221,7 +221,7 @@ void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const std::string &s)
 	/* Check if we have a custom print function */
 	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
 	if (func == nullptr) {
-		fprintf(stderr, "%s", s.c_str());
+		fmt::print(stderr, "{}", s);
 	} else {
 		(*func)(true, s);
 	}
@@ -238,7 +238,7 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
 	SQPrintFunc *func = engine->print_func;
 	if (func == nullptr) {
-		fprintf(stderr, "%s", msg.c_str());
+		fmt::print(stderr, "{}", msg);
 	} else {
 		(*func)(true, msg);
 	}

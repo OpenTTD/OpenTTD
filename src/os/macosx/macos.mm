@@ -135,7 +135,7 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
  */
 void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
-	fprintf(stderr, "%s: %s\n", title, message);
+	fmt::print(stderr, "{}: {}\n", title, message);
 }
 
 #endif

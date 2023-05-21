@@ -29,7 +29,7 @@
  */
 void NORETURN FatalErrorI(const std::string &msg)
 {
-	fprintf(stderr, "settingsgen: FATAL: %s\n", msg.c_str());
+	fmt::print(stderr, "settingsgen: FATAL: {}\n", msg);
 	exit(1);
 }
 
@@ -483,7 +483,7 @@ int CDECL main(int argc, char *argv[])
 				break;
 
 			case -2:
-				fprintf(stderr, "Invalid arguments\n");
+				fmt::print(stderr, "Invalid arguments\n");
 				return 1;
 		}
 	}

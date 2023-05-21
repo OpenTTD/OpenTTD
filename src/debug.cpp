@@ -127,14 +127,14 @@ void DebugPrint(const char *level, const std::string &message)
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
-		fprintf(f, "%s%s\n", GetLogPrefix(), message.c_str());
+		fmt::print(f, "{}{}\n", GetLogPrefix(), message);
 		fflush(f);
 #ifdef RANDOM_DEBUG
 	} else if (strcmp(level, "random") == 0) {
 		static FILE *f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
-		fprintf(f, "%s\n", message.c_str());
+		fmt::print(f, "{}\n", message);
 		fflush(f);
 #endif
 	} else {
