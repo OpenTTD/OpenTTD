@@ -282,6 +282,7 @@ STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}ĉp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}ĉp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}ĉp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}ĉp/t
 STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}ĉp/Mg
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
@@ -454,6 +455,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landaspe
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Urba generado
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industria generado
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Vojkonstruado
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Konstruado de tramvojo
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantu arbojn. «Shift» aktivigita konstruado/montrante kosto takso
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Metu signon
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Loku objekton. «Shift» aktivigita konstruado/montrante kosto takso
@@ -1056,9 +1058,12 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Ŝaltu �
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrana montrogrando
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Elektu uzotan ekranan montrograndon
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
+
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aparatara plirapidigo
 
 
-
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuna pelilo: {STRING}
 
 
 
@@ -1069,6 +1074,7 @@ STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Kiam tiu ĉi agordo estas aktiva, OpenTTD sendos sondaĵon je forlaso de ludo
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Pri sondado kaj privateco
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Montru la sondaĵrezulton de la kuranta ludo
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiko
@@ -1181,7 +1187,7 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpeca
 
 ###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
-STR_CITY_APPROVAL_HOSTILE                                       :Gastige
+STR_CITY_APPROVAL_HOSTILE                                       :Malamikema
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permeseme (ne efikas al la agoj de la kompanio)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Neniu taŭga AI estas disponebla...{}Kelkaj AI-oj estas elŝuteblaj per la sistemo 'Enreta Enhavo'.
@@ -1249,6 +1255,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstrurapido: 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Veturilpaneoj: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Regu kiom ofte povas panei maladekvate prizorgataj veturiloj
 
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subvencia multobligo: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ŝanĝu kio oni pagas por subvenciataj rilatoj
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Daŭro de subvencio: {STRING}
@@ -1279,6 +1286,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Permesu pli rea
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permesu forigon de pli da urbaj stratoj, pontoj ktp: {STRING}
 
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimuma longeco de trajnoj: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Agordu la maksimuman longecon de trajnoj
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} kvadrato{P 0 "" j}
 
@@ -1292,6 +1300,7 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Deklivkruteco p
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Kruteco de dekliva kahelo por trajno. Kun pli alta valoro estas pli malfacile supreniri altaĵon
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Deklivkruteco por stratveturiloj: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kruteco de dekliva kahelo por stratveturilo. Kun pli alta valoro estas pli malfacile supreniri altaĵon
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Vagonaroj kaj ŝipoj ne ort-turniĝu: {STRING}
@@ -1302,8 +1311,10 @@ STR_CONFIG_SETTING_INFLATION                                    :Inflacio: {STRI
 
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimuma longeco de pontoj: {STRING}
 
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimuma alteco de pontoj: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maksimuma alteco por konstrui pontojn
 
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimuma longeco de tuneloj: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimuma longeco por konstrui tunelojn
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Permana ĉefa industri-konstrumaniero: {STRING}
@@ -1327,6 +1338,7 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Montru financan
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Kiam tiu ĉi agordo estas aktiva, la financa fenesto aperas je la fino de ĉiu jaro por ebligi facilan inspektadon de la financa stato de la kompanio
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novaj ordonoj estas 'sen-halte' per defaŭlto: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normale, veturilo haltos ĉe ĉiu stacio kiun ĝi trapasas. Post aktivigo de tiu ĉi agordo, ĝi trairos ĉiujn stacioj survoje al sia fina celo sen halti. Atentu ke tiu ĉi agordo nur difinas defaŭltan valoron por novaj ordonoj. Individuaj ordonoj povas esti eksplicite agorditaj al ajna el la du kondutoj sendepende
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Novaj trajnordonoj ĉesas defaŭlte ĉe la {STRING} of the platform
 ###length 3
@@ -1368,6 +1380,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permesu trairaj
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permesu konstrui trairajn strathaltejojn sur stratoj posedataj de konkurantoj
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ne eblas ŝanĝi ĉi tiujn agordon dum veturiloj ĉeestas
 
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktura bontenado: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kiam tiu ĉi agordo estas aktiva, infrastrukturo kaŭzas bontenadajn kostojn. La kosto kreskas super-proporcie laŭ la grandeco de la transportreto, kaj tial pli efikas al grandaj kompanioj ol al malgrandaj
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Elektu komencan koloron por la kompanio
@@ -1464,6 +1477,7 @@ STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Kiom alta fari�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Almenaŭ unu kahelo ĉe la norda rando ne estas malplena
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Almenaŭ unu kahelo ĉe unu de la eĝoj ne estas akvo
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimuma stacia etendo: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksimuma area sur kiu povas etendiĝi unu stacio. Atentu ke altaj valoroj malrapidigos la ludon
 
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Aŭtomate prizorgu helikopterojn sur helikopterejoj: {STRING}
@@ -1628,8 +1642,12 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Prizorginterval
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kiam tiu ĉi agordo estas aktiva, veturiloj klopodas iri al priservado kiam ilia fidindeco estas je certa procentaĵo malpli alta ol la maksimuma fidindeco.{}{}Ekzemple, se la maksimuma fidindeco de veturilo estas 90% kaj la priservintervalo estas 20%, la veturilo klopodos iri al priservado kiam ĝi atingas fidindecon de 72%.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Defaŭlta priservintervalo for trajnoj: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Defaŭlta priservintervalo por stratveturiloj: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Defaŭlta priservintervalo por aviadiloj: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Defaŭlta priservintervalo por ŝipoj: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}tago{P 0 "" j}/%
 ###setting-zero-is-special
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Malaktiva
 
 STR_CONFIG_SETTING_NOSERVICE                                    :Malŝaltu prizorgadon se rompiĝoj ne okazas: {STRING}
 
@@ -1751,10 +1769,12 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Fenestra mollim
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimuma zom-nivelo: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimuma elzom-nivelo: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :La maksumuma elzom-nivelo por vidujoj. Pli altaj elzom-niveloj povas kaŭzi malrapidiĝon
 ###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normala
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
@@ -1788,6 +1808,8 @@ STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetria
 
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Angla-usona sistemo (mejloj hore)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metra (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI-unuoj (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Ludunuoj (kaheloj tage)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Kiam ajn montriĝas povumo de veturilo en la uzantinterfaco, montru ĝin en la indikitaj unuoj
@@ -1805,18 +1827,21 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Kiam ajn montri
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Kiam ajn montriĝas trakcia forto en la uzantinterfaco, montru ĝin en la indikitaj unuoj
 ###length 3
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Angla-usona sistemo (funto-forto, lbf)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Altecunuoj: {STRING}
 ###length 3
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Angla-usona sistemo (futoj)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metra (m)
 
+STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafiko
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sonefektoj
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaco
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruado
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Kompanio
 STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Librotenado
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fiziko
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Navigado
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofoj / akcidentoj
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Mondgenerado
@@ -1849,6 +1874,7 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... igno
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Eraro pri videaj agordoj...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ne troveblis kongrua grafika procesoro. Malŝaltis aparataran plirapidigon
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1885,6 +1911,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Montru a
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Montru agordojn
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Montri NewGRF-agordojn
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Serĉi pri nova kaj ĝisdatigita enhavo por elŝuti
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Montru ludoskriptajn agordojn
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fermu 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Ĉi tiu traduko ne havas {NUM} teksto{P "" j}. Bonvolu helpu fari OpenTTD pli bona per estigi traduktiston. Vidi readme.txt por detaloj.
@@ -2116,6 +2143,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nomo
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Invitkodo
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Konektotipo
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}Ĉu kaj kiel vian servilon povas atingi aliuloj
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Via ludantnomo
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Sendu mesaĝon al ĉiuj ludantoj de tiu ĉi kompanio
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Spektantoj
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Kreu novan kompanion kaj aliĝu al ĝi
@@ -2132,6 +2160,7 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Jes, ĉi
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :Partopreni aŭtomatan sondadon?
 STR_NETWORK_ASK_SURVEY_LINK                                     :Pri sondado kaj privateco
+STR_NETWORK_ASK_SURVEY_NO                                       :Ne
 STR_NETWORK_ASK_SURVEY_YES                                      :Jes
 
 STR_NETWORK_SPECTATORS                                          :Spektantoj
@@ -2182,6 +2211,7 @@ STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Kialo: {
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Vi ne rajtas filudi en ĉi tiu servilo
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Vi estis sendanta tro da komandojn al la servilo
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Ebla konektoperdo
 
 ###length 21
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :ĝenerala eraro
@@ -2229,6 +2259,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} 
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}La servilo restartiĝas...{}Bonvolu atendi...
 
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Servila registrado malsukcesis
 STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Alia servilo kun la sama invitokodo registris sin. Ŝaltas al "loka" ludotipo.
 
 # Content downloading window
@@ -2337,6 +2368,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ne marku
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Marku ŝarĝregionon ĉe proponata loko
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akceptiĝas: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provizoj: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Bontenada kosto: {GOLD}{CURRENCY_SHORT} jare
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ligi stacion
@@ -2557,6 +2589,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Hazarda 
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fondi urbon en hazarda loko
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Multaj hazardaj urboj
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Kovru la mapon per hazarde metitajn urbojn
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Ĉiuj urboj kreskas iomete
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Urbnomo:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Enigu urbnomon
@@ -3001,6 +3034,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Mankaj dos
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ĝi ŝanĝis la veturilan longecon de '{1:ENGINE}' dum ĝi ne estis en garaĝo
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}La trajno '{VEHICLE}' aparenanta al '{COMPANY}' havas malvalidan longecon. Tion verŝajne kaŭzis problemoj pri NewGRF-oj. La ludo eventuale malsinkroniĝos aŭ paneos
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' donas malĝustan informon
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Revoko' {1:HEX} revenis nekonatan/malvalidan rezulton {2:HEX}
@@ -3110,6 +3144,7 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Eraro
 # Goal Question button list
 ###length 18
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Nuligi
+STR_GOAL_QUESTION_BUTTON_YES                                    :Jes
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Antaŭa
 STR_GOAL_QUESTION_BUTTON_NEXT                                   :Sekva
 STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Daŭrigu
@@ -3156,9 +3191,15 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Ĉiumona
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupigu laŭ
+STR_STATION_VIEW_PLANNED_STATION                                :Stacio: Planata
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} de {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} tra {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} al {STATION}
 STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} el nekonata stacio
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} al ajna stacio
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} tra ajna stacio
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} de tiu ĉi stacio
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} al tiu ĉi stacio
 
 STR_STATION_VIEW_GROUP_S_V_D                                    :Ekirpunkto-Tra-Celpunkto
 STR_STATION_VIEW_GROUP_S_D_V                                    :Ekirpunkto-Celpunkto-Tra
@@ -3252,11 +3293,15 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} ŝipo{P "" j}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Neniu
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Kompania valoro: {WHITE}{CURRENCY_LONG}
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastrukturo:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} fervojpeco{P "" j}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} vojpeco{P "" j}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} akvokahelo{P "" j}
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stacia{P "" j} kahelo{P "" j}
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION.n                       :{WHITE}{COMMA} stacia{P "" j}n kahelo{P "" j}n
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} flughaveno{P "" j}
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT.n                       :{WHITE}{COMMA} flughaveno{P "" j}n
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nenia
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Faru HQ
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Konstrui kompanian administraciejon
@@ -3264,6 +3309,7 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vidu HQ
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Rigardi kompanian administraciejon
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Relokigu HQ
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rekonstruu kompanian ĉefkonstruaĵon aliloke por 1% de kompanivaloro. Tenu maljuskliga klavo + Klak por (kost)taksi sen rekonstrui ĉefkonstruaĵon
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaloj
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Vidu detalajn nombrojn de infrastruktureroj
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Donu monon
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Donu monon al tiu ĉi kompanio
@@ -3302,6 +3348,7 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Neniu -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportiĝis){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrionomoj - klaku nomon por centri vidon ĉe la industrio. Ctrl+Klak por malfermi novan vidujon ĉe la loko
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Ŝarĝo akceptata: {SILVER}{STRING}
@@ -3375,6 +3422,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Sengrupaj strat
 STR_GROUP_DEFAULT_SHIPS                                         :Sengrupaj ŝipoj
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Sengrupaj aviadiloj
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupoj - klaku grupon por listigi ĉiujn veturilojn de tiu ĉi grupo. Trenu/faligu grupojn por ordigi ĝin
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klaku por krei grupon
@@ -3494,6 +3542,7 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Montru
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Ŝaltu kaŝadon/montradon de trajnveturila tipo
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Ŝaltu kaŝadon/montradon de stratveturila tipo
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Ŝaltu kaŝadon/montradon de ŝipa tipo
 
 ###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Alinomi trajnan veturiltipon
@@ -3665,6 +3714,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centrigu ĉefvidon ĉe la pozicio de la trajno. Duobla klako igas la ĉefvidon sekvi la trajnon. Stir+Klak malfermas novan vidujon ĉe la pozicio de la trajno
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centrigu ĉefvidon ĉe la pozicio de la veturilo. Duobla klako igas la ĉefvidon sekvi la veturilon. Stir+Klak malfermas novan vidujon ĉe la pozicio de la veturilo
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrigu ĉefvidon ĉe la pozicio de la aviadilo. Duobla klako igas la ĉefvidon sekvi la aviadilon. Stir+Klak malfermas novan vidujon ĉe la pozicio de la aviadilo
 
 ###length VEHICLE_TYPES
@@ -3703,6 +3753,7 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Montru �
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Montru aviadilajn detalojn
 
 ###length VEHICLE_TYPES
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Nuna ago de la trajno - klaku por haltigi/ekigi la trajnon
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Nuna ago de la veturilo - klaku por haltigi/ekigi la veturilon
 STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Nuna ago de la ŝipo - klaku por haltigi/ekigi la ŝipon
 STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Nuna ago de la aviadilo - klaku por haltigi/ekigi la aviadilon
