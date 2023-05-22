@@ -2001,9 +2001,9 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 	const StationClass *waypoints;
 	WaypointList list;
 	StringFilter string_filter; ///< Filter for waypoint name
-	QueryString editbox;        ///< Filter editbox
+	static QueryString editbox; ///< Filter editbox
 
-	BuildRailWaypointWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent), editbox(FILTER_LENGTH * MAX_CHAR_LENGTH, FILTER_LENGTH)
+	BuildRailWaypointWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->waypoints = StationClass::Get(STAT_CLASS_WAYP);
 
@@ -2016,6 +2016,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 
 		this->querystrings[WID_BRW_FILTER] = &this->editbox;
 		this->editbox.cancel_button = QueryString::ACTION_CLEAR;
+		this->string_filter.SetFilterTerm(this->editbox.text.buf);
 
 		this->list.ForceRebuild();
 		this->BuildPickerList();
@@ -2169,6 +2170,8 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 		}
 	}
 };
+
+/* static */ QueryString BuildRailWaypointWindow::editbox(BuildRailWaypointWindow::FILTER_LENGTH * MAX_CHAR_LENGTH, BuildRailWaypointWindow::FILTER_LENGTH);
 
 /** Nested widget definition for the build NewGRF rail waypoint window */
 static const NWidgetPart _nested_build_waypoint_widgets[] = {
