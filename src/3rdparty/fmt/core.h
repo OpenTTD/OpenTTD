@@ -1666,8 +1666,7 @@ constexpr auto encode_types() -> unsigned long long {
 
 template <typename Context, typename T>
 FMT_CONSTEXPR FMT_INLINE auto make_value(T&& val) -> value<Context> {
-  auto&& arg = arg_mapper<Context>().map(FMT_FORWARD(val));
-  using arg_type = remove_cvref_t<decltype(arg)>;
+  using arg_type = remove_cvref_t<decltype(arg_mapper<Context>().map(val))>;
 
   constexpr bool formattable_char =
       !std::is_same<arg_type, unformattable_char>::value;
@@ -1686,7 +1685,7 @@ FMT_CONSTEXPR FMT_INLINE auto make_value(T&& val) -> value<Context> {
       formattable,
       "Cannot format an argument. To make type T formattable provide a "
       "formatter<T> specialization: https://fmt.dev/latest/api.html#udt");
-  return {arg};
+  return {arg_mapper<Context>().map(val)};
 }
 
 template <typename Context, typename T>
