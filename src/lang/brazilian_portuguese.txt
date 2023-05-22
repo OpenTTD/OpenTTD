@@ -1042,6 +1042,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Pesquisa automatizada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participe de pesquisas automatizadas
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quando ativado, o OpenTTD transmitirá uma pesquisa ao sair de um jogo
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Sobre pesquisa e privacidade
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Isso abre um navegador com mais informações sobre a pesquisa automatizada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Visualizar resultado da pesquisa
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar o resultado da pesquisa do jogo atual em execução
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
@@ -2404,6 +2411,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Não
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sim, apenas dessa vez
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sim, não perguntar novamente
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Participar de pesquisa automatizada?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Você gostaria de participar da pesquisa automatizada?{}O OpenTTD transmitirá uma pesquisa ao sair do jogo.{}Você pode alterar isso a qualquer momento em "Opções do jogo".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Visualizar resultado da pesquisa
+STR_NETWORK_ASK_SURVEY_LINK                                     :Sobre pesquisa e privacidade
+STR_NETWORK_ASK_SURVEY_NO                                       :Não
+STR_NETWORK_ASK_SURVEY_YES                                      :Sim
 
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
@@ -2694,8 +2707,11 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construi
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecionar a classe de estação a ser exibida
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecionar o tipo de estação a construir
 
-STR_STATION_CLASS_DFLT                                          :Estação padrão
+STR_STATION_CLASS_DFLT                                          :Padrão
+STR_STATION_CLASS_DFLT_STATION                                  :Estação padrão
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Parada de estrada padrão
 STR_STATION_CLASS_WAYP                                          :Pontos de controle
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Ponto de controle padrão
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seleção de Sinais
@@ -4658,6 +4674,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} Leia-me de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} log de mudanças de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licença de {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Visualização do resultado da pesquisa
 
 
 # Vehicle loading indicators

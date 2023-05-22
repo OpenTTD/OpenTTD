@@ -932,8 +932,22 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copia a 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opcións da partida
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Xeral
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Escolle os axustes xerais
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Gráficos
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Escoller opcións gráficas
+STR_GAME_OPTIONS_TAB_SOUND                                      :Son
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Escoller axustes de son e música
 
+STR_GAME_OPTIONS_VOLUME                                         :Volume
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectos de son
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25%
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
+STR_GAME_OPTIONS_VOLUME_75                                      :75%
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades monetarias
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de unidades monetarias
@@ -988,6 +1002,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Seleccio
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Apagado
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Cada 10 minutos
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Cada 30 minutos
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Cada 60 minutos
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Cada 120 minutos
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Lingua
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecciona a lingua para a interface
@@ -1024,6 +1042,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Enquisa automática
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participar nunha enquisa automática
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Cando se activa, OpenTTD enviará unha enquisa cando se sala dunha partida
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Acerca da enquisa e privacidade
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Isto abre un navegador con máis información sobre a enquisa automática
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Previsualizar resultado da enquisa
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Amosar o resultado da enquisa da partida actual
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
@@ -1154,6 +1179,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Minimizar todos
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restablecer todos os valores
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sen explicación dispoñíbel)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de configuración: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Configuración de cliente (non se almacena nas partidas gravadas; afecta a tódalas partidas)
@@ -2385,6 +2411,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Si, esta vez
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Si, non volvas preguntar
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Participar nunha enquisa automática?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Queres participar na enquisa automática?{}OpenTTD enviará unha enquisa cando se sala dunha partida.{}Podes cambiar isto en calquera momento dende as "Opcións de xogo".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Previsualizar resultado da enquisa
+STR_NETWORK_ASK_SURVEY_LINK                                     :Acerca da enquisa e privacidade
+STR_NETWORK_ASK_SURVEY_NO                                       :Non
+STR_NETWORK_ASK_SURVEY_YES                                      :Si
 
 STR_NETWORK_SPECTATORS                                          :Espectadores
 
@@ -2675,8 +2707,11 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Constru�
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecciona a clase de estación a mostrar
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecciona o tipo da estación a construir
 
-STR_STATION_CLASS_DFLT                                          :Estación por defecto
+STR_STATION_CLASS_DFLT                                          :Por defecto
+STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Parada de estrada por defecto
 STR_STATION_CLASS_WAYP                                          :Puntos de ruta
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Punto de ruta por defecto
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de sinais
@@ -3812,6 +3847,8 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envia-la
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Reemprazar vehículos
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar para servizo
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Beneficio este ano: {CURRENCY_LONG} (ano pasado: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Enviar ao depósito
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Enviar ao depósito
@@ -4637,6 +4674,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenza
 STR_TEXTFILE_README_CAPTION                                     :{WHITE} "readme" de {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Rexistro de cambios de {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE} licenza de {STRING}{STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Previsualizar resultado da enquisa
 
 
 # Vehicle loading indicators
@@ -5573,11 +5611,13 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
