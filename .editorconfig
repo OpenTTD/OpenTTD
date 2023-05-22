@@ -147,15 +147,15 @@ cpp_wrap_preserve_blocks = never
 #cpp_keep_blank_lines_in_code
 # No override for "Number of blank lines around class/struct/enum definition" (Unspecified; Not consistent across source code)
 #cpp_blank_lines_around_class_definition
-# No override for "Number of blank lines around function declarations﻿" (Unspecified; Not consistent across source code)
+# No override for "Number of blank lines around function declarations" (Unspecified; Not consistent across source code)
 #cpp_blank_lines_around_function_declaration
-# No override for "Number of blank lines around function definitions﻿" (Unspecified; Not consistent across source code)
+# No override for "Number of blank lines around function definitions" (Unspecified; Not consistent across source code)
 #cpp_blank_lines_around_function_definition
-# No override for "Number of blank lines around single line function definitions﻿" (Unspecified; Not consistent across source code)
+# No override for "Number of blank lines around single line function definitions" (Unspecified; Not consistent across source code)
 #cpp_blank_lines_around_single_line_function_definition
-# No override for "Number of blank lines around namespaces﻿" (Unspecified; Not consistent across source code)
+# No override for "Number of blank lines around namespaces" (Unspecified; Not consistent across source code)
 #cpp_blank_lines_around_namespace
-# No override for "Number of blank lines around other definitions and declarations﻿" (Unspecified; Not consistent across source code)
+# No override for "Number of blank lines around other definitions and declarations" (Unspecified; Not consistent across source code)
 #cpp_blank_lines_around_other_declaration
 
 # Braces Layout #
@@ -201,69 +201,69 @@ cpp_alignment_tab_fill_style = use_spaces
 cpp_allow_far_alignment = true
 
 # Indentation and Alignment #
-# No override for "Continuous line indent﻿" (Varies throughout source code)
+# No override for "Continuous line indent" (Varies throughout source code)
 #cpp_continuous_line_indent
-# Do not use continuous line indent in function declaration and invocation parentheses﻿
+# Do not use continuous line indent in function declaration and invocation parentheses
 cpp_use_continuous_line_indent_in_method_pars = false
-# Do not use continuous line indent in initializer lists﻿
+# Do not use continuous line indent in initializer lists
 cpp_use_continuous_line_indent_in_expression_braces = false
-# Indent namespace members﻿ (including nested ones)
+# Indent namespace members (including nested ones)
 cpp_namespace_indentation = all
 # No override for "Indent linkage specification block members" (Unspecified)
 #cpp_linkage_specification_indentation
-# Do not indent access specifier from class﻿
+# Do not indent access specifier from class
 cpp_indent_access_specifiers_from_class = false
 # Indent class member from access specifier
 cpp_indent_class_members_from_access_specifiers = true
 # Do not indent if a function definition or declaration is wrapped after the type
 cpp_indent_wrapped_function_names = false
-# Indent 'case' labels from 'switch'﻿
+# Indent 'case' labels from 'switch'
 cpp_indent_switch_labels = true
-# No override for "Indent function declarations' parentheses﻿" (Varies throughout source code)
+# No override for "Indent function declarations' parentheses" (Varies throughout source code)
 #cpp_indent_method_decl_pars
 # No override for "Indent method calls' parentheses" (Varies throughout source code)
 #cpp_indent_invocation_pars
 # No override for "Indent statement (if, while, for, etc) parentheses" (Varies throughout source code)
 #cpp_indent_statement_pars
-# Do not change preprocessor directives indenting﻿
+# Do not change preprocessor directives indenting
 cpp_indent_preprocessor_directives = do_not_change
-# No override for "Indent C++/CLI generic constraints﻿" (C++/CLI is not used)
+# No override for "Indent C++/CLI generic constraints" (C++/CLI is not used)
 #cpp_indent_type_constraints
-# Align/indent comments started at the first column﻿
+# Align/indent comments started at the first column
 cpp_indent_comment = true
 # Comments that comment out code will use the indentation level of the commented code.
 cpp_place_comments_at_first_column = false
-# Align multiline declarators in declaration﻿
+# Align multiline declarators in declaration
 cpp_align_multiple_declaration = true
-# Align multiline function parameters﻿
+# Align multiline function parameters
 cpp_align_multiline_parameter = true
-# Align multiline call arguments﻿
+# Align multiline call arguments
 cpp_align_multiline_argument = true
 # Do not align first of multiline call arguments with the opening parentheses
 cpp_align_first_arg_by_paren = false
 # Align multiline initializer list arguments
 cpp_align_multiline_expression_brace = true
-# No override for "Align multiline template parameters in template declaration﻿" (Unspecified)
+# No override for "Align multiline template parameters in template declaration" (Unspecified)
 #cpp_align_multiline_type_parameter
 # No override for "Align multiline template arguments" (Unspecified)
 #cpp_align_multiline_type_argument
 # Align multiline base classes in class base clause
 cpp_align_multiline_extends_list = true
-# Align multiline member initializers in member initializer lists﻿
+# Align multiline member initializers in member initializer lists
 cpp_align_multiline_ctor_init = true
-# Outdent commas﻿ placed on new line
+# Outdent commas placed on new line
 cpp_outdent_commas = true
 # Do not align multiline ?: operator with first line (since alignment is incorrect)
 cpp_align_ternary = none
-# Do not indent aligned ?: operator﻿ (since indentation varies)
+# Do not indent aligned ?: operator (since indentation varies)
 cpp_indent_aligned_ternary = false
 # No override for "Align multiline chained method calls" (Unspecified)
 #cpp_align_multiline_calls_chain
-# No override for "Outdent '.' and '->' in chained method calls﻿ on new lines" (Unspecified)
+# No override for "Outdent '.' and '->' in chained method calls on new lines" (Unspecified)
 #cpp_outdent_dots
 # Do not align multiline chained binary expressions
 cpp_align_multiline_binary_expressions_chain = false
-# Fix column alignment in adjacent lines﻿
+# Fix column alignment in adjacent lines
 cpp_int_align_fix_in_adjacent = true
 # Align assignments with adjacent assignments
 cpp_int_align_eq = true
@@ -277,121 +277,121 @@ cpp_int_align_comments = true
 cpp_space_before_comma = false
 # Put space after ALL commas
 cpp_space_after_comma = true
-# Put space before ptr in declaration of variable﻿
+# Put space before ptr in declaration of variable
 cpp_space_before_ptr_in_data_member = true
-# Do not put space after ptr in declaration of variable﻿
+# Do not put space after ptr in declaration of variable
 cpp_space_after_ptr_in_data_member = false
-# Put space before ptr in declaration of multiple variables﻿
+# Put space before ptr in declaration of multiple variables
 cpp_space_before_ptr_in_data_members = true
-# Do not put space after ptr in declaration of multiple variables﻿
+# Do not put space after ptr in declaration of multiple variables
 cpp_space_after_ptr_in_data_members = false
-# Put space before ptr in return type of function﻿
+# Put space before ptr in return type of function
 cpp_space_before_ptr_in_method = true
-# Do not put space after ptr in return type of function﻿
+# Do not put space after ptr in return type of function
 cpp_space_after_ptr_in_method = false
-# Do not put space before ptr in abstract declaration﻿
+# Do not put space before ptr in abstract declaration
 cpp_space_before_ptr_in_abstract_decl = false
-# Put space before ref in declaration of variable﻿
+# Put space before ref in declaration of variable
 cpp_space_before_ref_in_data_member = true
-# Do not put space after ref in declaration of variable﻿
+# Do not put space after ref in declaration of variable
 cpp_space_after_ref_in_data_member = false
-# Put space before ref in declaration of multiple variables﻿
+# Put space before ref in declaration of multiple variables
 cpp_space_before_ref_in_data_members = true
-# Do not put space after ref in declaration of multiple variables﻿
+# Do not put space after ref in declaration of multiple variables
 cpp_space_after_ref_in_data_members = false
-# Do not put space before ref in return type of function﻿
+# Do not put space before ref in return type of function
 cpp_space_before_ref_in_method = false
-# Put space after ref in return type of function﻿
+# Put space after ref in return type of function
 cpp_space_after_ref_in_method = true
-# Do not put space before ref in abstract declaration﻿
+# Do not put space before ref in abstract declaration
 cpp_space_before_ref_in_abstract_decl = false
-# Do not put space before parentheses in function parameters﻿
+# Do not put space before parentheses in function parameters
 cpp_space_between_method_declaration_name_and_open_parenthesis = false
-# Do not put space before parentheses in lambda parameters﻿
+# Do not put space before parentheses in lambda parameters
 cpp_space_before_lambda_parentheses = false
-# Do not put space within parentheses in function parameters﻿
+# Do not put space within parentheses in function parameters
 cpp_space_between_method_declaration_parameter_list_parentheses = false
-# Do not put space within empty parentheses in function parameters﻿
+# Do not put space within empty parentheses in function parameters
 cpp_space_between_method_declaration_empty_parameter_list_parentheses = false
-# Do not put space before angle brackets in template parameters﻿
+# Do not put space before angle brackets in template parameters
 cpp_space_before_template_params = false
-# Do not put space within angle brackets in template parameters﻿
+# Do not put space within angle brackets in template parameters
 cpp_space_within_template_params = false
-# Do not put space within empty angle brackets in template parameters﻿
+# Do not put space within empty angle brackets in template parameters
 cpp_space_within_empty_template_params = false
-# Do not put space before angle brackets in template arguments﻿
+# Do not put space before angle brackets in template arguments
 cpp_space_before_template_args = false
-# Do not put space within angle brackets in template arguments﻿
+# Do not put space within angle brackets in template arguments
 cpp_space_within_template_args = false
-# Do not put space between closing angle brackets in template arguments﻿
+# Do not put space between closing angle brackets in template arguments
 cpp_space_between_closing_angle_brackets_in_template_args = false
-# Put space around '=' in alias declaration and namespace alias﻿
+# Put space around '=' in alias declaration and namespace alias
 cpp_space_around_alias_eq = true
-# Do not put space around '->' in trailing return types﻿
+# Do not put space around '->' in trailing return types
 cpp_space_around_deref_in_trailing_return_type = false
-# Put space before base types list colon﻿
+# Put space before base types list colon
 cpp_space_before_colon_in_inheritance_clause = true
-# Put space after base types list colon﻿
+# Put space after base types list colon
 cpp_space_after_colon_in_inheritance_clause = true
-# No override for "Before C++/CLI generic constraint colon﻿" (Unspecified)
+# No override for "Before C++/CLI generic constraint colon" (Unspecified)
 #cpp_space_before_type_parameter_constraint_colon
-# No override for "After C++/CLI generic constraint colon﻿" (Unspecified)
+# No override for "After C++/CLI generic constraint colon" (Unspecified)
 #cpp_space_after_type_parameter_constraint_colon
-# Put space before parentheses﻿ of control statements﻿
+# Put space before parentheses of control statements
 cpp_space_after_keywords_in_control_flow_statements = true
-# Do not put space within parentheses﻿﻿ of control statements﻿
+# Do not put space within parentheses of control statements
 cpp_space_between_parentheses_of_control_flow_statements = false
-# Do not put space before semicolon﻿ in 'for' statements
+# Do not put space before semicolon in 'for' statements
 cpp_space_before_semicolon_in_for_statement = false
-# Put space after semicolon﻿ in 'for' statements
+# Put space after semicolon in 'for' statements
 cpp_space_after_semicolon_in_for_statement = true
-# Put space before ':' in range-based for loop﻿
+# Put space before ':' in range-based for loop
 cpp_space_before_for_colon = true
-# Put space after ':' in range-based for loop﻿
+# Put space after ':' in range-based for loop
 cpp_space_after_for_colon = true
-# Do not put space before colon in switch case or label statement﻿
+# Do not put space before colon in switch case or label statement
 cpp_space_before_colon_in_case = false
-# Put space after colon in switch case or label statement﻿
+# Put space after colon in switch case or label statement
 cpp_space_after_colon_in_case = true
-# Put space around binary operator﻿
+# Put space around binary operator
 cpp_space_around_binary_operator = true
-# Put space around assignment operator﻿
+# Put space around assignment operator
 cpp_space_around_assignment_operator = true
-# Do not put space around dot, '->', '.*' and '->.'﻿
+# Do not put space around dot, '->', '.*' and '->.'
 cpp_space_around_member_access_operator = false
-# Do not put space within any parentheses﻿
+# Do not put space within any parentheses
 cpp_space_within_parentheses = false
-# Do not put space before array subscript brackets﻿
+# Do not put space before array subscript brackets
 cpp_space_before_open_square_brackets = false
-# Do not put space within array subscript brackets﻿
+# Do not put space within array subscript brackets
 cpp_space_between_square_brackets = false
-# Do not put space before empty parentheses in function call and initialization﻿
+# Do not put space before empty parentheses in function call and initialization
 cpp_space_between_method_call_name_and_opening_parenthesis = false
-# Do not put space within parentheses in cast expressions﻿
+# Do not put space within parentheses in cast expressions
 cpp_space_between_typecast_parentheses = false
-# Do not put space after parentheses in cast expressions﻿
+# Do not put space after parentheses in cast expressions
 cpp_space_after_cast = false
-# Do not put space within parentheses in function call and initialization﻿
+# Do not put space within parentheses in function call and initialization
 cpp_space_between_method_call_parameter_list_parentheses = false
-# Do not put space within empty parentheses in function call and initialization﻿
+# Do not put space within empty parentheses in function call and initialization
 cpp_space_between_method_call_empty_parameter_list_parentheses = false
-# Put space in ternary operator '? :' before '?' ﻿
+# Put space in ternary operator '? :' before '?'
 cpp_space_before_ternary_quest = true
-# Put space in ternary operator '? :' after '?'﻿
+# Put space in ternary operator '? :' after '?'
 cpp_space_after_ternary_quest = true
-# Put space in ternary operator '? :' before ':' ﻿
+# Put space in ternary operator '? :' before ':'
 cpp_space_before_ternary_colon = true
-# Put space in ternary operator '? :' after ':'﻿
+# Put space in ternary operator '? :' after ':'
 cpp_space_after_ternary_colon = true
-# Do not put space before uniform initialization braces﻿
+# Do not put space before uniform initialization braces
 cpp_space_before_initializer_braces = false
-# Do not put space within uniform initialization braces﻿
+# Do not put space within uniform initialization braces
 cpp_space_within_initializer_braces = false
-# Do not put space within empty uniform initialization braces﻿
+# Do not put space within empty uniform initialization braces
 cpp_space_within_empty_initializer_braces = false
-# Put space before end of line comment﻿
+# Put space before end of line comment
 cpp_space_before_trailing_comment = true
-# Preserve spaces before end of line comment﻿
+# Preserve spaces before end of line comment
 cpp_disable_space_changes_before_trailing_comment = true
 
 # Line breaks and Wrapping #
@@ -403,75 +403,75 @@ cpp_disable_space_changes_before_trailing_comment = true
 cpp_new_line_before_while = false
 # Redundant override (Already overriden earlier in Visual Studio section)
 #cpp_new_line_before_catch
-# Do not change the line breaks of single embedded statement﻿s
+# Do not change the line breaks of single embedded statements
 cpp_simple_embedded_statement_style = do_not_change
-# Do not change the line breaks of simple 'case' statement﻿
+# Do not change the line breaks of simple 'case' statement
 cpp_simple_case_statement_style = do_not_change
-# Put member function definition return type﻿ on same line
+# Put member function definition return type on same line
 cpp_function_definition_return_type_style = on_single_line
-# Put top-level function definition return type﻿ on same line
+# Put top-level function definition return type on same line
 cpp_toplevel_function_definition_return_type_style = on_single_line
-# Put member function declaration return type﻿ on same line
+# Put member function declaration return type on same line
 cpp_function_declaration_return_type_style = on_single_line
 # Put top-level function declaration return type on same line
 cpp_toplevel_function_declaration_return_type_style = on_single_line
-# Force template<...> of a template declaration﻿ on new line
+# Force template<...> of a template declaration on new line
 cpp_break_template_declaration = line_break
-# No override for "Break line before the requires-clause﻿" (requires-clause is a C++20 feature)
+# No override for "Break line before the requires-clause" (requires-clause is a C++20 feature)
 #cpp_line_break_before_requires_clause
-# Do not change the line break before the colon in member initializer lists﻿
+# Do not change the line break before the colon in member initializer lists
 cpp_member_initializer_list_style = do_not_change
-# Do not change the line break after the colon in member initializer lists﻿
+# Do not change the line break after the colon in member initializer lists
 cpp_line_break_after_colon_in_member_initializer_lists = do_not_change
-# No override for "Break line before comma in member initializer lists﻿" (Varies throughout source code)
+# No override for "Break line before comma in member initializer lists" (Varies throughout source code)
 #cpp_line_break_before_comma_in_member_initializer_lists
-# No override for "Break line after comma in member initializer lists﻿" (Varies throughout source code)
+# No override for "Break line after comma in member initializer lists" (Varies throughout source code)
 #cpp_line_break_after_comma_in_member_initializer_lists
-# No override for "Allow C++/CLI generic constraints on the same line﻿" (C++/CLI is not used)
+# No override for "Allow C++/CLI generic constraints on the same line" (C++/CLI is not used)
 #cpp_place_type_constraints_on_same_line
-# No override for "Keep existing line breaks﻿" (Varies throughout source code; depends on developer preference)
+# No override for "Keep existing line breaks" (Varies throughout source code; depends on developer preference)
 #cpp_keep_user_linebreaks
 # No override for "Hard wrap at _ characters" (Unspecified)
 #cpp_max_line_length
-# Do not prefer wrap before ','﻿
+# Do not prefer wrap before ','
 cpp_wrap_before_comma = false
-# Do not prefer wrap before ','﻿ in base clause﻿
+# Do not prefer wrap before ',' in base clause
 cpp_wrap_before_comma_in_base_clause = false
-# No override for "Wrap ternary expression﻿" (Varies throughout source code)
+# No override for "Wrap ternary expression" (Varies throughout source code)
 #cpp_wrap_ternary_expr_style
-# No override for "Prefer wrap before '?' and ':' in ternary expressions﻿" (Varies throughout source code)
+# No override for "Prefer wrap before '?' and ':' in ternary expressions" (Varies throughout source code)
 #cpp_wrap_before_ternary_opsigns
-# No override for "Prefer wrap before ':'﻿" (Varies throughout source code)
+# No override for "Prefer wrap before ':'" (Varies throughout source code)
 #cpp_wrap_before_colon
-# No override for "Prefer wrap before first C++/CLI generic constraint﻿" (C++/CLI is not used)
+# No override for "Prefer wrap before first C++/CLI generic constraint" (C++/CLI is not used)
 #cpp_wrap_before_first_type_parameter_constraint
-# No override for "Wrap multiple C++/CLI generic constraints﻿" (C++/CLI is not used)
+# No override for "Wrap multiple C++/CLI generic constraints" (C++/CLI is not used)
 #cpp_wrap_multiple_type_parameter_constraints_style
-# No override for "Wrap enum definition﻿" (Varies throughout source code)
+# No override for "Wrap enum definition" (Varies throughout source code)
 #cpp_wrap_enumeration_style
-# No override for "Wrap braced initializer list﻿" (Varies throughout source code)
+# No override for "Wrap braced initializer list" (Varies throughout source code)
 #cpp_wrap_braced_init_list_style
-# No override for "Wrap base classes list﻿" (Varies throughout source code)
+# No override for "Wrap base classes list" (Varies throughout source code)
 #cpp_wrap_base_clause_style
-# No override for "Wrap constructor initializer﻿" (Varies throughout source code)
+# No override for "Wrap constructor initializer" (Varies throughout source code)
 #cpp_wrap_ctor_initializer_style
-# No override for "Wrap formal parameters﻿" (Varies throughout source code)
+# No override for "Wrap formal parameters" (Varies throughout source code)
 #cpp_wrap_parameters_style
-# Do not prefer wrap before '(' in declaration﻿
+# Do not prefer wrap before '(' in declaration
 cpp_wrap_before_declaration_lpar = false
-# Prefer wrap after '(' in declaration﻿
+# Prefer wrap after '(' in declaration
 cpp_wrap_after_declaration_lpar = true
-# Do not prefer wrap before ')' in declaration﻿
+# Do not prefer wrap before ')' in declaration
 cpp_wrap_before_declaration_rpar = false
-# No override for "Wrap invocation arguments﻿" (Varies throughout source code)
+# No override for "Wrap invocation arguments" (Varies throughout source code)
 #cpp_wrap_arguments_style
-# Do not prefer wrap before '(' in invocation﻿
+# Do not prefer wrap before '(' in invocation
 cpp_wrap_before_invocation_lpar = false
-# Prefer wrap after '(' in invocation﻿
+# Prefer wrap after '(' in invocation
 cpp_wrap_after_invocation_lpar = true
-# Do not prefer wrap before ')' in invocation﻿
+# Do not prefer wrap before ')' in invocation
 cpp_wrap_before_invocation_rpar = false
-# Prefer wrap after '{' in initializer lists﻿
+# Prefer wrap after '{' in initializer lists
 cpp_wrap_after_expression_lbrace = true
-# Do not prefer wrap before '}' in initializer lists﻿
+# Do not prefer wrap before '}' in initializer lists
 cpp_wrap_before_expression_rbrace = false
