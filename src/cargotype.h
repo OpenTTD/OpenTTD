@@ -50,11 +50,11 @@ enum CargoClass {
 	CC_SPECIAL      = 1 << 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
 
-static const byte INVALID_CARGO = 0xFF; ///< Constant representing invalid cargo
+static const byte INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo
 
 /** Specification of a cargo type. */
 struct CargoSpec {
-	uint8_t bitnum;                    ///< Cargo bit number, is #INVALID_CARGO for a non-used spec.
+	uint8_t bitnum; ///< Cargo bit number, is #INVALID_CARGO_BITNUM for a non-used spec.
 	CargoLabel label;                ///< Unique label of the cargo type.
 	uint8_t legend_colour;
 	uint8_t rating_colour;
@@ -97,7 +97,7 @@ struct CargoSpec {
 	 */
 	inline bool IsValid() const
 	{
-		return this->bitnum != INVALID_CARGO;
+		return this->bitnum != INVALID_CARGO_BITNUM;
 	}
 
 	/**
