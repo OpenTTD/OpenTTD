@@ -274,7 +274,7 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary &su
 		if (!v->GetEngine()->CanCarryCargo()) continue;
 
 		CargoSummaryItem new_item;
-		new_item.cargo = v->cargo_cap > 0 ? v->cargo_type : INVALID_CARGO;
+		new_item.cargo = v->cargo_cap > 0 ? v->cargo_type : (CargoID)CT_INVALID;
 		new_item.subtype = GetCargoSubtypeText(v);
 		if (!IsValidCargoID(new_item.cargo) && new_item.subtype == STR_EMPTY) continue;
 
