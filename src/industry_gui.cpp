@@ -1243,14 +1243,11 @@ static bool CDECL CargoFilter(const Industry * const *industry, const std::pair<
 			break;
 
 		case CF_NONE:
-			accepted_cargo_matches = std::all_of(std::begin((*industry)->accepts_cargo), std::end((*industry)->accepts_cargo), [](CargoID cargo) {
-				return !IsValidCargoID(cargo);
-			});
+			accepted_cargo_matches = !(*industry)->IsCargoAccepted();
 			break;
 
 		default:
-			const auto &ac = (*industry)->accepts_cargo;
-			accepted_cargo_matches = std::find(std::begin(ac), std::end(ac), accepted_cargo) != std::end(ac);
+			accepted_cargo_matches = (*industry)->IsCargoAccepted(accepted_cargo);
 			break;
 	}
 
@@ -1262,14 +1259,11 @@ static bool CDECL CargoFilter(const Industry * const *industry, const std::pair<
 			break;
 
 		case CF_NONE:
-			produced_cargo_matches = std::all_of(std::begin((*industry)->produced_cargo), std::end((*industry)->produced_cargo), [](CargoID cargo) {
-				return !IsValidCargoID(cargo);
-			});
+			produced_cargo_matches = !(*industry)->IsCargoProduced();
 			break;
 
 		default:
-			const auto &pc = (*industry)->produced_cargo;
-			produced_cargo_matches = std::find(std::begin(pc), std::end(pc), produced_cargo) != std::end(pc);
+			produced_cargo_matches = (*industry)->IsCargoProduced(produced_cargo);
 			break;
 	}
 

@@ -680,7 +680,7 @@ void IndustryProductionCallback(Industry *ind, int reason)
  */
 bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoID cargo_type)
 {
-	assert(std::find(ind->accepts_cargo, endof(ind->accepts_cargo), cargo_type) != endof(ind->accepts_cargo));
+	assert(ind->IsCargoAccepted(cargo_type));
 
 	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
 	if (HasBit(indspec->callback_mask, CBM_IND_REFUSE_CARGO)) {

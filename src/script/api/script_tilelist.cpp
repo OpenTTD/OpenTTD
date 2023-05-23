@@ -83,13 +83,7 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 	if (i->neutral_station != nullptr && !_settings_game.station.serve_neutral_industries) return;
 
 	/* Check if this industry accepts anything */
-	{
-		bool cargo_accepts = false;
-		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-			if (::IsValidCargoID(i->accepts_cargo[j])) cargo_accepts = true;
-		}
-		if (!cargo_accepts) return;
-	}
+	if (!i->IsCargoAccepted()) return;
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
@@ -123,11 +117,7 @@ ScriptTileList_IndustryProducing::ScriptTileList_IndustryProducing(IndustryID in
 	if (i->neutral_station != nullptr && !_settings_game.station.serve_neutral_industries) return;
 
 	/* Check if this industry produces anything */
-	bool cargo_produces = false;
-	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (::IsValidCargoID(i->produced_cargo[j])) cargo_produces = true;
-	}
-	if (!cargo_produces) return;
+	if (!i->IsCargoProduced()) return;
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
