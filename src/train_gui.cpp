@@ -329,12 +329,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 			max_cargo[v->cargo_type] += v->cargo_cap;
 		}
 
-		/* Set scroll-amount separately from counting, as to not compute num double
-		 * for more carriages of the same type
-		 */
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (max_cargo[i] > 0) num++; // only count carriages that the train has
-		}
+		num = max_cargo.GetCount();
 		num++; // needs one more because first line is description string
 	} else {
 		for (const Train *v = Train::Get(veh_id); v != nullptr; v = v->GetNextVehicle()) {
