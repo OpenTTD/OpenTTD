@@ -990,6 +990,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludaj Op
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Ĝenerale
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafiko
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Elektu agordojn pri grafiko
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sono
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Elektu agordojn pri sono kaj muziko
 
@@ -1205,12 +1206,15 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Neniu ta
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Agordoj
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtroteksto:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Etendu ĉio
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Maletendu ĉiujn
+STR_CONFIG_SETTING_COLLAPSE_ALL.n                               :{BLACK}Collapse all
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restarigu ĉiujn valorojn
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(neniu ekspliko disponeble)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Defaŭlta valoro: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de agordo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Luda agordo (konservata en dosiero; tuŝas nur tiun ĉi ludon)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Kompania agordo (enmemorigataj en konservitaj ludoj; tuŝas nur novajn ludojn)
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Atentu!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Tiu ĉi ago reagordos ĉiujn agordojn al la defaŭltaj valoroj.{}Ĉu vi certas ke vi volas daŭrigi?
 
@@ -1224,10 +1228,10 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Agordoj kiu mal
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Limigas la suban liston al certaj tipoj de agordoj
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Ĉiuj agordoj
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ludo agordojn (stokite en savoj; nur tuŝas novajn ludojn)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ludo agordojn (stokite en savo; tuŝas nur kuranta ludo)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Kompanio agordojn (stokite en savoj; nur tuŝas novajn ludojn)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Kompanio agordojn (stokita en savu; tuŝas nur kuranta kompanio)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ludaj agordoj (enmemorigataj en konservitaj ludoj; tuŝas nur novajn ludojn)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ludaj agordoj (enmemorigataj en konservitaj ludoj; tuŝas nur la nunan ludon)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Kompaniaj agordoj (enmemorigataj en konservitaj ludoj; tuŝas nur novajn ludojn)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Kompaniaj agordoj (enmemorigataj en konservitaj ludoj; tuŝas nur tiun ĉi kompanion)
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Neniu -
 ###length 3
@@ -1302,6 +1306,7 @@ STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Agordu la maksi
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} kvadrato{P 0 "" j}
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Kvanto da lokomotivo fumo/fajreroj: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Agordu kiom da fumo aŭ fajreroj eligas veturiloj
 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de trajnakcelado: {STRING}
 
@@ -1592,6 +1597,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Montru alvenojn
 STR_CONFIG_SETTING_QUICKGOTO                                    :Rapidkreo de veturilordonoj: {STRING}
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Defaŭlta reltipo (post novludo/ŝargludo): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Elektita reltipo post startigo aŭ ŝarĝo de ludo. 'Unue havebla' elektas la plej malnovan tipon de reloj, 'laste havebla' elektas la plej novan tipon de reloj, kaj 'pli uzata' elektas tiun tipon kiu estas ĉi-momente la plej uzata
 ###length 3
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Unue havebla
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Laste havebla
@@ -1831,6 +1837,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Tre rapide
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporcio de urboj kiuj iĝos urbegoj: {STRING}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgrandeca multobligo: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Averaĝa grandeco de urbegoj rilate al normalaj urboj je la komenco de la ludo
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Ĝisdatigu la distribuan grafeon {P 0:2 "ĉiun" "ĉiujn"} {STRING}{NBSP}{P 0:2 "sekundon" "sekundojn"}
 
@@ -2308,6 +2315,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Ludo paŭzas ({
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Ludo ankoraŭ paŭzas ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Ludo ankoraŭ paŭzas ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Ludo ankoraŭ paŭzas ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Ludo ankoraŭ paŭzas ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Ludo malpaŭzas ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nombro da ludantoj
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kontektante al klientoj
@@ -2381,6 +2389,7 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenaro
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Altecmapo
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Bazaj sonoj
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Baza muziko
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Ludoskripto
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Enhavo elŝutiĝas...
@@ -2713,6 +2722,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Elektu i
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landregionaj informoj
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centrigu la ĉefvidon ĉe la loko de la kahelo. Stir+Klak malfermas novan vidujon ĉe la loko de la kahelo
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Forviŝkosto: {LTBLUE}ne eblas
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Forviŝkosto: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Enspezo kaze de forigo: {LTBLUE}{CURRENCY_LONG}
@@ -2913,6 +2923,7 @@ STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Agordoj 
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Montru NewGRF-agordojn
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI-agordoj
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Ludoskriptaj agordoj
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Montru ludoskriptajn agordojn
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Angle (Originale)
@@ -3115,6 +3126,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Mankaj dos
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ĝi ŝanĝis la veturilan longecon de '{1:ENGINE}' dum ĝi ne estis en garaĝo
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ĝi ŝanĝis la veturilan kapaciton de '{1:ENGINE}' dum ĝi ne estis en garaĝo aŭ readaptiĝanta
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}La trajno '{VEHICLE}' aparenanta al '{COMPANY}' havas malvalidan longecon. Tion verŝajne kaŭzis problemoj pri NewGRF-oj. La ludo eventuale malsinkroniĝos aŭ paneos
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' donas malĝustan informon
@@ -3142,6 +3154,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Aktivu/M
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ŝanĝu afiŝan tekston
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrigu ĉefvidon je la loko de la ŝildo. Stir+Klak malfermas novan vidujon ĉe la loko de la ŝildo
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Iri al la sekva signo
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Iri al la antaŭa signo
 
@@ -4209,6 +4222,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Parigu k
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Daŭrigu
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Malpaŭzu kaj daŭrigi la AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu forigeraran eligon de ĉiu tio AI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Ludoskripto
 
 
 # AI configuration window
