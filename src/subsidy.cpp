@@ -323,7 +323,7 @@ bool FindSubsidyTownCargoRoute()
 	if (src_town->cache.population < SUBSIDY_CARGO_MIN_POPULATION) return false;
 
 	/* Calculate the produced cargo of houses around town center. */
-	CargoArray town_cargo_produced;
+	CargoArray town_cargo_produced{};
 	TileArea ta = TileArea(src_town->xy, 1, 1).Expand(SUBSIDY_TOWN_CARGO_RADIUS);
 	for (TileIndex tile : ta) {
 		if (IsTileType(tile, MP_HOUSE)) {
@@ -431,7 +431,7 @@ bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 			const Town *dst_town = Town::GetRandom();
 
 			/* Calculate cargo acceptance of houses around town center. */
-			CargoArray town_cargo_accepted;
+			CargoArray town_cargo_accepted{};
 			TileArea ta = TileArea(dst_town->xy, 1, 1).Expand(SUBSIDY_TOWN_CARGO_RADIUS);
 			for (TileIndex tile : ta) {
 				if (IsTileType(tile, MP_HOUSE)) {

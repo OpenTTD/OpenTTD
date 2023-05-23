@@ -22,7 +22,7 @@
 struct CompanyEconomyEntry {
 	Money income;               ///< The amount of income.
 	Money expenses;             ///< The amount of expenses.
-	CargoArray delivered_cargo; ///< The amount of delivered cargo.
+	CargoArray delivered_cargo{}; ///< The amount of delivered cargo.
 	int32 performance_history;  ///< Company score (scale 0-1000)
 	Money company_value;        ///< The value of the company.
 };

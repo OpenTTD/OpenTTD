@@ -145,7 +145,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16, CargoArray> CmdBuildVehicle(DoC
 	VehicleID veh_id = INVALID_VEHICLE;
 	uint refitted_capacity = 0;
 	uint16 refitted_mail_capacity = 0;
-	CargoArray cargo_capacities;
+	CargoArray cargo_capacities{};
 	if (value.Succeeded()) {
 		if (subflags & DC_EXEC) {
 			v->unitnumber = unit_num;
@@ -166,7 +166,6 @@ std::tuple<CommandCost, VehicleID, uint, uint16, CargoArray> CmdBuildVehicle(DoC
 				refitted_mail_capacity = 0;
 			} else {
 				refitted_capacity = e->GetDisplayDefaultCapacity(&refitted_mail_capacity);
-				cargo_capacities.Clear();
 				cargo_capacities[default_cargo] = refitted_capacity;
 				cargo_capacities[CT_MAIL] = refitted_mail_capacity;
 			}
@@ -355,7 +354,7 @@ static std::tuple<CommandCost, uint, uint16, CargoArray> RefitVehicle(Vehicle *v
 	uint total_capacity = 0;
 	uint total_mail_capacity = 0;
 	num_vehicles = num_vehicles == 0 ? UINT8_MAX : num_vehicles;
-	CargoArray cargo_capacities;
+	CargoArray cargo_capacities{};
 
 	VehicleSet vehicles_to_refit;
 	if (!only_this) {

@@ -39,7 +39,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 	y += FONT_HEIGHT_NORMAL;
 
 	if (v->HasArticulatedPart()) {
-		CargoArray max_cargo;
+		CargoArray max_cargo{};
 		StringID subtype_text[NUM_CARGO];
 		char capacity[512];
 

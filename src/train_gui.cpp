@@ -322,8 +322,8 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 	int num = 0;
 
 	if (det_tab == TDW_TAB_TOTALS) { // Total cargo tab
-		CargoArray act_cargo;
-		CargoArray max_cargo;
+		CargoArray act_cargo{};
+		CargoArray max_cargo{};
 		for (const Vehicle *v = Vehicle::Get(veh_id); v != nullptr; v = v->Next()) {
 			act_cargo[v->cargo_type] += v->cargo.StoredCount();
 			max_cargo[v->cargo_type] += v->cargo_cap;
@@ -435,8 +435,8 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16 vsc
 		}
 	} else {
 		int y = r.top;
-		CargoArray act_cargo;
-		CargoArray max_cargo;
+		CargoArray act_cargo{};
+		CargoArray max_cargo{};
 		Money feeder_share = 0;
 
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
