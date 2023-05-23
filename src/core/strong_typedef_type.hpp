@@ -35,14 +35,14 @@ struct StrongTypedef : StrongTypedefBase {
 
 	debug_inline constexpr StrongTypedef(const T &value) : value(value) {}
 
-	debug_inline constexpr Tthis &operator =(const StrongTypedef &rhs) { this->value = rhs.value; return static_cast<Tthis &>(*this); }
-	debug_inline constexpr Tthis &operator =(StrongTypedef &&rhs) { this->value = std::move(rhs.value); return static_cast<Tthis &>(*this); }
+	debug_inline constexpr Tthis &operator =(const Tthis &rhs) { this->value = rhs.value; return static_cast<Tthis &>(*this); }
+	debug_inline constexpr Tthis &operator =(Tthis &&rhs) { this->value = std::move(rhs.value); return static_cast<Tthis &>(*this); }
 	debug_inline constexpr Tthis &operator =(const T &rhs) { this->value = rhs; return static_cast<Tthis &>(*this); }
 
 	explicit constexpr operator T() const { return this->value; }
 
-	constexpr bool operator ==(const StrongTypedef &rhs) const { return this->value == rhs.value; }
-	constexpr bool operator !=(const StrongTypedef &rhs) const { return this->value != rhs.value; }
+	constexpr bool operator ==(const Tthis &rhs) const { return this->value == rhs.value; }
+	constexpr bool operator !=(const Tthis &rhs) const { return this->value != rhs.value; }
 	constexpr bool operator ==(const T &rhs) const { return this->value == rhs; }
 	constexpr bool operator !=(const T &rhs) const { return this->value != rhs; }
 };
@@ -62,8 +62,8 @@ struct StrongIntegralTypedef : StrongTypedef<T, Tthis> {
 
 	debug_inline constexpr StrongIntegralTypedef(const T &value) : StrongTypedef<T, Tthis>(value) {}
 
-	debug_inline constexpr Tthis &operator =(const StrongIntegralTypedef &rhs) { this->value = rhs.value; return static_cast<Tthis &>(*this); }
-	debug_inline constexpr Tthis &operator =(StrongIntegralTypedef &&rhs) { this->value = std::move(rhs.value); return static_cast<Tthis &>(*this); }
+	debug_inline constexpr Tthis &operator =(const Tthis &rhs) { this->value = rhs.value; return static_cast<Tthis &>(*this); }
+	debug_inline constexpr Tthis &operator =(Tthis &&rhs) { this->value = std::move(rhs.value); return static_cast<Tthis &>(*this); }
 	debug_inline constexpr Tthis &operator =(const T &rhs) { this->value = rhs; return static_cast<Tthis &>(*this); }
 
 	constexpr Tthis &operator ++() { this->value++; return static_cast<Tthis &>(*this); }
