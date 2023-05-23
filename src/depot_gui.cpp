@@ -855,7 +855,7 @@ struct DepotWindow : Window {
 
 		if (v == nullptr || mode != MODE_DRAG_VEHICLE) return false;
 
-		CargoArray capacity, loaded;
+		CargoArray capacity{}, loaded{};
 
 		/* Display info for single (articulated) vehicle, or for whole chain starting with selected vehicle */
 		bool whole_chain = (this->type == VEH_TRAIN && _ctrl_pressed);

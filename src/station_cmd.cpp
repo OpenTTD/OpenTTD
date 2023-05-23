@@ -513,7 +513,7 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
  */
 CargoArray GetProductionAroundTiles(TileIndex north_tile, int w, int h, int rad)
 {
-	CargoArray produced;
+	CargoArray produced{};
 	std::set<IndustryID> industries;
 	TileArea ta = TileArea(north_tile, w, h).Expand(rad);
 
@@ -552,7 +552,7 @@ CargoArray GetProductionAroundTiles(TileIndex north_tile, int w, int h, int rad)
  */
 CargoArray GetAcceptanceAroundTiles(TileIndex center_tile, int w, int h, int rad, CargoTypes *always_accepted)
 {
-	CargoArray acceptance;
+	CargoArray acceptance{};
 	if (always_accepted != nullptr) *always_accepted = 0;
 
 	TileArea ta = TileArea(center_tile, w, h).Expand(rad);
@@ -574,7 +574,7 @@ CargoArray GetAcceptanceAroundTiles(TileIndex center_tile, int w, int h, int rad
  */
 static CargoArray GetAcceptanceAroundStation(const Station *st, CargoTypes *always_accepted)
 {
-	CargoArray acceptance;
+	CargoArray acceptance{};
 	if (always_accepted != nullptr) *always_accepted = 0;
 
 	BitmapTileIterator it(st->catchment_tiles);
@@ -596,7 +596,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 	CargoTypes old_acc = GetAcceptanceMask(st);
 
 	/* And retrieve the acceptance. */
-	CargoArray acceptance;
+	CargoArray acceptance{};
 	if (!st->rect.IsEmpty()) {
 		acceptance = GetAcceptanceAroundStation(st, &st->always_accepted);
 	}

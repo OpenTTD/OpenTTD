@@ -1588,7 +1588,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 	StationIDStack next_station = front->GetNextStoppingStation();
 	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CT_AUTO_REFIT;
-	CargoArray consist_capleft;
+	CargoArray consist_capleft{};
 	if (_settings_game.order.improved_load && use_autorefit ?
 			front->cargo_payment == nullptr : (front->current_order.GetLoadType() & OLFB_FULL_LOAD) != 0) {
 		ReserveConsist(st, front,

@@ -79,41 +79,7 @@ typedef uint64 CargoTypes;
 static const CargoTypes ALL_CARGOTYPES = (CargoTypes)UINT64_MAX;
 
 /** Class for storing amounts of cargo */
-struct CargoArray {
-private:
-	uint amount[NUM_CARGO]; ///< Amount of each type of cargo.
-
-public:
-	/** Default constructor. */
-	inline CargoArray()
-	{
-		this->Clear();
-	}
-
-	/** Reset all entries. */
-	inline void Clear()
-	{
-		memset(this->amount, 0, sizeof(this->amount));
-	}
-
-	/**
-	 * Read/write access to an amount of a specific cargo type.
-	 * @param cargo Cargo type to access.
-	 */
-	inline uint &operator[](CargoID cargo)
-	{
-		return this->amount[cargo];
-	}
-
-	/**
-	 * Read-only access to an amount of a specific cargo type.
-	 * @param cargo Cargo type to access.
-	 */
-	inline const uint &operator[](CargoID cargo) const
-	{
-		return this->amount[cargo];
-	}
-
+struct CargoArray : std::array<uint, NUM_CARGO> {
 	/**
 	 * Get the sum of all cargo amounts.
 	 * @return The sum.
@@ -121,24 +87,16 @@ public:
 	template <typename T>
 	inline const T GetSum() const
 	{
-		T ret = 0;
-		for (size_t i = 0; i < lengthof(this->amount); i++) {
-			ret += this->amount[i];
-		}
-		return ret;
+		return std::reduce(this->begin(), this->end(), T{});
 	}
 
 	/**
 	 * Get the amount of cargos that have an amount.
 	 * @return The amount.
 	 */
-	inline byte GetCount() const
+	inline uint GetCount() const
 	{
-		byte count = 0;
-		for (size_t i = 0; i < lengthof(this->amount); i++) {
-			if (this->amount[i] != 0) count++;
-		}
-		return count;
+		return std::count_if(this->begin(), this->end(), [](uint amount) { return amount != 0; });
 	}
 };
 

@@ -43,7 +43,7 @@ struct TestedEngineDetails {
 	CargoID cargo;        ///< Cargo type
 	uint capacity;        ///< Cargo capacity
 	uint16 mail_capacity; ///< Mail capacity if available
-	CargoArray all_capacities; ///< Capacities for all cargoes
+	CargoArray all_capacities{}; ///< Capacities for all cargoes
 
 	void FillDefaultCapacities(const Engine *e);
 };

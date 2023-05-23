@@ -1375,7 +1375,7 @@ static bool VehicleProfitLastYearSorter(const Vehicle * const &a, const Vehicle 
 static bool VehicleCargoSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
 	const Vehicle *v;
-	CargoArray diff;
+	CargoArray diff{};
 
 	/* Append the cargo of the connected waggons */
 	for (v = a; v != nullptr; v = v->Next()) diff[v->cargo_type] += v->cargo_cap;

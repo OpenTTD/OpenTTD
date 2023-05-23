@@ -139,7 +139,7 @@ static inline CargoTypes GetAvailableVehicleCargoTypes(EngineID engine, bool inc
  */
 CargoArray GetCapacityOfArticulatedParts(EngineID engine)
 {
-	CargoArray capacity;
+	CargoArray capacity{};
 	const Engine *e = Engine::Get(engine);
 
 	CargoID cargo_type;
@@ -284,7 +284,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 	CargoTypes real_refit_union = 0;
 	CargoTypes real_refit_intersection = ALL_CARGOTYPES;
-	CargoArray real_default_capacity;
+	CargoArray real_default_capacity{};
 
 	do {
 		CargoTypes refit_mask = GetAvailableVehicleCargoTypes(v->engine_type, true);
