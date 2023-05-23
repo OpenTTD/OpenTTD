@@ -460,16 +460,8 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 		/* Maybe set 'always accepted' bit (if it's not set already) */
 		if (HasBit(*always_accepted, a)) continue;
 
-		bool accepts = false;
-		for (uint cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
-			/* Test whether the industry itself accepts the cargo type */
-			if (ind->accepts_cargo[cargo_index] == a) {
-				accepts = true;
-				break;
-			}
-		}
-
-		if (accepts) continue;
+		/* Test whether the industry itself accepts the cargo type */
+		if (ind->IsCargoAccepted(a)) continue;
 
 		/* If the industry itself doesn't accept this cargo, set 'always accepted' bit */
 		SetBit(*always_accepted, a);
@@ -2625,20 +2617,10 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 	if (!IsValidCargoID(cargo)) return;
 
 	/* Check for acceptance of cargo */
-	for (byte j = 0; j < lengthof(ind->accepts_cargo); j++) {
-		if (cargo == ind->accepts_cargo[j] && !IndustryTemporarilyRefusesCargo(ind, cargo)) {
-			*c_accepts = true;
-			break;
-		}
-	}
+	if (ind->IsCargoAccepted(cargo) && !IndustryTemporarilyRefusesCargo(ind, cargo)) *c_accepts = true;
 
 	/* Check for produced cargo */
-	for (byte j = 0; j < lengthof(ind->produced_cargo); j++) {
-		if (cargo == ind->produced_cargo[j]) {
-			*c_produces = true;
-			break;
-		}
-	}
+	if (ind->IsCargoProduced(cargo)) *c_produces = true;
 }
 
 /**

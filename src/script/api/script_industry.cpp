@@ -67,14 +67,10 @@
 
 	Industry *i = ::Industry::Get(industry_id);
 
-	for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-		if (i->accepts_cargo[j] == cargo_id) {
-			if (IndustryTemporarilyRefusesCargo(i, cargo_id)) return CAS_TEMP_REFUSED;
-			return CAS_ACCEPTED;
-		}
-	}
+	if (!i->IsCargoAccepted(cargo_id)) return CAS_NOT_ACCEPTED;
+	if (IndustryTemporarilyRefusesCargo(i, cargo_id)) return CAS_TEMP_REFUSED;
 
-	return CAS_NOT_ACCEPTED;
+	return CAS_ACCEPTED;
 }
 
 /* static */ SQInteger ScriptIndustry::GetStockpiledCargo(IndustryID industry_id, CargoID cargo_id)

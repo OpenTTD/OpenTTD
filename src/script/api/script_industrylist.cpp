@@ -23,17 +23,13 @@ ScriptIndustryList::ScriptIndustryList()
 ScriptIndustryList_CargoAccepting::ScriptIndustryList_CargoAccepting(CargoID cargo_id)
 {
 	for (const Industry *i : Industry::Iterate()) {
-		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-			if (i->accepts_cargo[j] == cargo_id) this->AddItem(i->index);
-		}
+		if (i->IsCargoAccepted(cargo_id)) this->AddItem(i->index);
 	}
 }
 
 ScriptIndustryList_CargoProducing::ScriptIndustryList_CargoProducing(CargoID cargo_id)
 {
 	for (const Industry *i : Industry::Iterate()) {
-		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-			if (i->produced_cargo[j] == cargo_id) this->AddItem(i->index);
-		}
+		if (i->IsCargoProduced(cargo_id)) this->AddItem(i->index);
 	}
 }

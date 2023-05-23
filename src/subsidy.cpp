@@ -452,8 +452,7 @@ bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 			if (dst_ind == nullptr) return false;
 
 			/* The industry must accept the cargo */
-			bool valid = std::find(dst_ind->accepts_cargo, endof(dst_ind->accepts_cargo), cid) != endof(dst_ind->accepts_cargo);
-			if (!valid) return false;
+			if (!dst_ind->IsCargoAccepted(cid)) return false;
 
 			dst = dst_ind->index;
 			break;

@@ -131,6 +131,28 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		return pos - this->accepts_cargo;
 	}
 
+	/** Test if this industry accepts any cargo.
+	 * @return true iff the industry accepts any cargo.
+	 */
+	bool IsCargoAccepted() const { return std::any_of(std::begin(this->accepts_cargo), std::end(this->accepts_cargo), [](const auto &cargo) { return IsValidCargoID(cargo); }); }
+
+	/** Test if this industry produces any cargo.
+	 * @return true iff the industry produces any cargo.
+	 */
+	bool IsCargoProduced() const { return std::any_of(std::begin(this->produced_cargo), std::end(this->produced_cargo), [](const auto &cargo) { return IsValidCargoID(cargo); }); }
+
+	/** Test if this industry accepts a specific cargo.
+	 * @param cargo Cargo type to test.
+	 * @return true iff the industry accepts the given cargo type.
+	 */
+	bool IsCargoAccepted(CargoID cargo) const { return std::any_of(std::begin(this->accepts_cargo), std::end(this->accepts_cargo), [&cargo](const auto &cid) { return cid == cargo; }); }
+
+	/** Test if this industry produces a specific cargo.
+	 * @param cargo Cargo type to test.
+	 * @return true iff the industry produces the given cargo types.
+	 */
+	bool IsCargoProduced(CargoID cargo) const { return std::any_of(std::begin(this->produced_cargo), std::end(this->produced_cargo), [&cargo](const auto &cid) { return cid == cargo; }); }
+
 	/**
 	 * Get the industry of the given tile
 	 * @param tile the tile to get the industry from
