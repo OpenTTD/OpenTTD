@@ -1017,12 +1017,9 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		Industry *ind = i.industry;
 		if (ind->index == source) continue;
 
-		uint cargo_index;
-		for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
-			if (cargo_type == ind->accepts_cargo[cargo_index]) break;
-		}
+		int cargo_index = ind->GetCargoAcceptedIndex(cargo_type);
 		/* Check if matching cargo has been found */
-		if (cargo_index >= lengthof(ind->accepts_cargo)) continue;
+		if (cargo_index < 0) continue;
 
 		/* Check if industry temporarily refuses acceptance */
 		if (IndustryTemporarilyRefusesCargo(ind, cargo_type)) continue;

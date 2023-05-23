@@ -82,15 +82,12 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	Industry *ind = ::Industry::Get(industry_id);
-	for (uint i = 0; i < lengthof(ind->accepts_cargo); i++) {
-		CargoID cid = ind->accepts_cargo[i];
-		if (cid == cargo_id) {
-			return ind->incoming_cargo_waiting[i];
-		}
-	}
+	Industry *i = ::Industry::Get(industry_id);
 
-	return -1;
+	int j = i->GetCargoAcceptedIndex(cargo_id);
+	if (j < 0) return -1;
+
+	return i->incoming_cargo_waiting[j];
 }
 
 /* static */ SQInteger ScriptIndustry::GetLastMonthProduction(IndustryID industry_id, CargoID cargo_id)
@@ -100,11 +97,10 @@
 
 	const Industry *i = ::Industry::Get(industry_id);
 
-	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (i->produced_cargo[j] == cargo_id) return i->last_month_production[j];
-	}
+	int j = i->GetCargoProducedIndex(cargo_id);
+	if (j < 0) return -1;
 
-	return -1;
+	return i->last_month_production[j];
 }
 
 /* static */ SQInteger ScriptIndustry::GetLastMonthTransported(IndustryID industry_id, CargoID cargo_id)
@@ -114,11 +110,10 @@
 
 	const Industry *i = ::Industry::Get(industry_id);
 
-	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (i->produced_cargo[j] == cargo_id) return i->last_month_transported[j];
-	}
+	int j = i->GetCargoProducedIndex(cargo_id);
+	if (j < 0) return -1;
 
-	return -1;
+	return i->last_month_transported[j];
 }
 
 /* static */ SQInteger ScriptIndustry::GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id)
@@ -128,11 +123,10 @@
 
 	const Industry *i = ::Industry::Get(industry_id);
 
-	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (i->produced_cargo[j] == cargo_id) return ::ToPercent8(i->last_month_pct_transported[j]);
-	}
+	int j = i->GetCargoProducedIndex(cargo_id);
+	if (j < 0) return -1;
 
-	return -1;
+	return ::ToPercent8(i->last_month_pct_transported[j]);
 }
 
 /* static */ TileIndex ScriptIndustry::GetLocation(IndustryID industry_id)
