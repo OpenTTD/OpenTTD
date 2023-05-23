@@ -44,7 +44,7 @@ void SetupCargoForClimate(LandscapeID l)
 	/* Reset and disable all cargo types */
 	for (CargoID i = 0; i < lengthof(CargoSpec::array); i++) {
 		*CargoSpec::Get(i) = {};
-		CargoSpec::Get(i)->bitnum = INVALID_CARGO;
+		CargoSpec::Get(i)->bitnum = INVALID_CARGO_BITNUM;
 
 		/* Set defaults for newer properties, which old GRFs do not know */
 		CargoSpec::Get(i)->multiplier = 0x100;
@@ -60,7 +60,7 @@ void SetupCargoForClimate(LandscapeID l)
 			/* Copy the indexed cargo */
 			CargoSpec *cargo = CargoSpec::Get(i);
 			*cargo = _default_cargo[cl];
-			if (cargo->bitnum != INVALID_CARGO) SetBit(_cargo_mask, i);
+			if (cargo->bitnum != INVALID_CARGO_BITNUM) SetBit(_cargo_mask, i);
 			continue;
 		}
 
@@ -123,7 +123,7 @@ CargoID GetCargoIDByLabel(CargoLabel cl)
  */
 CargoID GetCargoIDByBitnum(uint8_t bitnum)
 {
-	if (bitnum == INVALID_CARGO) return CT_INVALID;
+	if (bitnum == INVALID_CARGO_BITNUM) return CT_INVALID;
 
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		if (cs->bitnum == bitnum) return cs->Index();

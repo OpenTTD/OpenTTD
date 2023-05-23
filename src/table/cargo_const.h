@@ -27,7 +27,7 @@
  * And the following sprite:
  * - SPR_CARGO_<str_plural>
  *
- * @param bt           Cargo bit number, is #INVALID_CARGO for a non-used spec.
+ * @param bt           Cargo bit number, is #INVALID_CARGO_BITNUM for a non-used spec.
  * @param label        Unique label of the cargo type.
  * @param colour       CargoSpec->legend_colour and CargoSpec->rating_colour.
  * @param weight       Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
