@@ -41,7 +41,6 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 	if (v->HasArticulatedPart()) {
 		CargoArray max_cargo{};
 		StringID subtype_text[NUM_CARGO];
-		char capacity[512];
 
 		memset(subtype_text, 0, sizeof(subtype_text));
 
@@ -53,23 +52,19 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 			}
 		}
 
-		GetString(capacity, STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY, lastof(capacity));
+		std::string capacity = GetString(STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY);
 
 		bool first = true;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0) {
-				char buffer[128];
+				if (!first) capacity += ", ";
 
 				SetDParam(0, i);
 				SetDParam(1, max_cargo[i]);
-				GetString(buffer, STR_JUST_CARGO, lastof(buffer));
-
-				if (!first) strecat(capacity, ", ", lastof(capacity));
-				strecat(capacity, buffer, lastof(capacity));
+				capacity += GetString(STR_JUST_CARGO);
 
 				if (subtype_text[i] != 0) {
-					GetString(buffer, subtype_text[i], lastof(buffer));
-					strecat(capacity, buffer, lastof(capacity));
+					capacity += GetString(subtype_text[i]);
 				}
 
 				first = false;
