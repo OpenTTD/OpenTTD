@@ -714,18 +714,14 @@ GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask)
 
 
 /** Build a string containing space separated parameter values, and terminate */
-char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last)
+std::string GRFBuildParamList(const GRFConfig *c)
 {
-	uint i;
-
-	/* Return an empty string if there are no parameters */
-	if (c->num_params == 0) return strecpy(dst, "", last);
-
-	for (i = 0; i < c->num_params; i++) {
-		if (i > 0) dst = strecpy(dst, " ", last);
-		dst += seprintf(dst, last, "%d", c->param[i]);
+	std::string result;
+	for (uint i = 0; i < c->num_params; i++) {
+		if (!result.empty()) result += ' ';
+		result += std::to_string(c->param[i]);
 	}
-	return dst;
+	return result;
 }
 
 /**

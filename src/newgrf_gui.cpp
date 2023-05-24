@@ -112,10 +112,9 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 	/* Show GRF parameter list */
 	if (show_params) {
 		if (c->num_params > 0) {
-			char buff[256];
-			GRFBuildParamList(buff, c, lastof(buff));
+			std::string params = GRFBuildParamList(c);
 			SetDParam(0, STR_JUST_RAW_STRING);
-			SetDParamStr(1, buff);
+			SetDParamStr(1, params);
 		} else {
 			SetDParam(0, STR_NEWGRF_SETTINGS_PARAMETER_NONE);
 		}
