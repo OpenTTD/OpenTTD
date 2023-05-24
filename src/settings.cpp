@@ -318,12 +318,13 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
  * @param nelems the number of elements the array holds.
  * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
  */
-void ListSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+std::string ListSettingDesc::FormatValue(const void *object) const
 {
 	const byte *p = static_cast<const byte *>(GetVariableAddress(object, this->save));
-	int i, v = 0;
 
-	for (i = 0; i != this->save.length; i++) {
+	std::string result;
+	for (size_t i = 0; i != this->save.length; i++) {
+		int64_t v;
 		switch (GetVarMemType(this->save.conv)) {
 			case SLE_VAR_BL:
 			case SLE_VAR_I8:  v = *(const   int8 *)p; p += 1; break;
@@ -334,41 +335,39 @@ void ListSettingDesc::FormatValue(char *buf, const char *last, const void *objec
 			case SLE_VAR_U32: v = *(const uint32 *)p; p += 4; break;
 			default: NOT_REACHED();
 		}
-		if (IsSignedVarMemType(this->save.conv)) {
-			buf += seprintf(buf, last, (i == 0) ? "%d" : ",%d", v);
-		} else {
-			buf += seprintf(buf, last, (i == 0) ? "%u" : ",%u", v);
-		}
+		if (i != 0) result += ',';
+		result += std::to_string(v);
 	}
+	return result;
 }
 
-char *OneOfManySettingDesc::FormatSingleValue(char *buf, const char *last, uint id) const
+std::string OneOfManySettingDesc::FormatSingleValue(uint id) const
 {
 	if (id >= this->many.size()) {
-		return buf + seprintf(buf, last, "%d", id);
+		return std::to_string(id);
 	}
-	return strecpy(buf, this->many[id].c_str(), last);
+	return this->many[id];
 }
 
-void OneOfManySettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+std::string OneOfManySettingDesc::FormatValue(const void *object) const
 {
 	uint id = (uint)this->Read(object);
-	this->FormatSingleValue(buf, last, id);
+	return this->FormatSingleValue(id);
 }
 
-void ManyOfManySettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+std::string ManyOfManySettingDesc::FormatValue(const void *object) const
 {
 	uint bitmask = (uint)this->Read(object);
 	if (bitmask == 0) {
-		buf[0] = '\0';
-		return;
+		return {};
 	}
-	bool first = true;
+
+	std::string result;
 	for (uint id : SetBitIterator(bitmask)) {
-		if (!first) buf = strecpy(buf, "|", last);
-		buf = this->FormatSingleValue(buf, last, id);
-		first = false;
+		if (!result.empty()) result += '|';
+		result += this->FormatSingleValue(id);
 	}
+	return result;
 }
 
 /**
@@ -651,7 +650,6 @@ static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, co
 {
 	IniGroup *group_def = nullptr, *group;
 	IniItem *item;
-	char buf[512];
 
 	for (auto &desc : settings_table) {
 		const SettingDesc *sd = GetSettingDesc(desc);
@@ -674,25 +672,27 @@ static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, co
 		item = group->GetItem(s, true);
 
 		if (!item->value.has_value() || !sd->IsSameValue(item, object)) {
-			/* Value has changed, get the new value and put it into a buffer */
-			sd->FormatValue(buf, lastof(buf), object);
-
 			/* The value is different, that means we have to write it to the ini */
-			item->value.emplace(buf);
+			item->value.emplace(sd->FormatValue(object));
 		}
 	}
 }
 
-void IntSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+std::string IntSettingDesc::FormatValue(const void *object) const
 {
-	uint32 i = (uint32)this->Read(object);
-	seprintf(buf, last, IsSignedVarMemType(this->save.conv) ? "%d" : "%u", i);
+	int64_t i;
+	if (IsSignedVarMemType(this->save.conv)) {
+		i = this->Read(object);
+	} else {
+		i = (uint32_t)this->Read(object);
+	}
+	return std::to_string(i);
 }
 
-void BoolSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+std::string BoolSettingDesc::FormatValue(const void *object) const
 {
 	bool val = this->Read(object) != 0;
-	strecpy(buf, val ? "true" : "false", last);
+	return val ? "true" : "false";
 }
 
 bool IntSettingDesc::IsSameValue(const IniItem *item, void *object) const
@@ -702,19 +702,17 @@ bool IntSettingDesc::IsSameValue(const IniItem *item, void *object) const
 	return item_value == object_value;
 }
 
-void StringSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+std::string StringSettingDesc::FormatValue(const void *object) const
 {
 	const std::string &str = this->Read(object);
 	switch (GetVarMemType(this->save.conv)) {
-		case SLE_VAR_STR: strecpy(buf, str.c_str(), last); break;
+		case SLE_VAR_STR: return str;
 
 		case SLE_VAR_STRQ:
 			if (str.empty()) {
-				buf[0] = '\0';
-			} else {
-				seprintf(buf, last, "\"%s\"", str.c_str());
+				return str;
 			}
-			break;
+			return fmt::format("\"{}\"", str);
 
 		default: NOT_REACHED();
 	}
@@ -1736,8 +1734,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 	if (sd->IsStringSetting()) {
 		IConsolePrint(CC_INFO, "Current value for '{}' is '{}'.", sd->GetName(), sd->AsStringSetting()->Read(object));
 	} else if (sd->IsIntSetting()) {
-		char value[20];
-		sd->FormatValue(value, lastof(value), object);
+		std::string value = sd->FormatValue(object);
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}).",
 			sd->GetName(), value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", int_setting->min, int_setting->max);
@@ -1750,9 +1747,7 @@ static void IConsoleListSettingsTable(const SettingTable &table, const char *pre
 		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (prefilter != nullptr && sd->GetName().find(prefilter) == std::string::npos) continue;
-		char value[80];
-		sd->FormatValue(value, lastof(value), &GetGameSettings());
-		IConsolePrint(CC_DEFAULT, "{} = {}", sd->GetName(), value);
+		IConsolePrint(CC_DEFAULT, "{} = {}", sd->GetName(), sd->FormatValue(&GetGameSettings()));
 	}
 }
 
