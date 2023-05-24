@@ -326,7 +326,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 				case 0x6C: return it->history[LAST_MONTH].production;
 				case 0x6D: return it->history[LAST_MONTH].transported;
 				case 0x70: return it->rate;
-				case 0x71: return it->pct_transported;
+				case 0x71: return it->history[LAST_MONTH].PctTransported();
 				default: NOT_REACHED();
 			}
 		}
@@ -381,7 +381,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		case 0x9B: return GB(this->industry->produced[1].history[THIS_MONTH].transported, 8, 8);
 		/* fraction of cargo transported LAST month. */
 		case 0x9C:
-		case 0x9D: return this->industry->produced[variable - 0x9C].pct_transported;
+		case 0x9D: return this->industry->produced[variable - 0x9C].history[LAST_MONTH].PctTransported();
 		/* amount of cargo produced LAST month. */
 		case 0x9E: return this->industry->produced[0].history[LAST_MONTH].production;
 		case 0x9F: return GB(this->industry->produced[0].history[LAST_MONTH].production, 8, 8);

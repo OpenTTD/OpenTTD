@@ -394,7 +394,7 @@ bool FindSubsidyIndustryCargoRoute()
 	assert(it != std::end(src_ind->produced)); // indicates loop didn't end as intended
 
 	cid = it->cargo;
-	trans = it->pct_transported;
+	trans = it->history[LAST_MONTH].PctTransported();
 	total = it->history[LAST_MONTH].production;
 
 	/* Quit if no production in this industry

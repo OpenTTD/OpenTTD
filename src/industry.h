@@ -78,7 +78,6 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		CargoID cargo; ///< Cargo type
 		uint16_t waiting; ///< Amount of cargo produced
 		uint8_t rate; ///< Production rate
-		uint8_t pct_transported; ///< Percentage transported last month
 		std::array<ProducedHistory, 2> history; ///< History of cargo produced and transported
 	};
 

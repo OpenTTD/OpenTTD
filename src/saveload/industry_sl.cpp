@@ -91,7 +91,6 @@ public:
 		 SLE_VAR(Industry::ProducedCargo, cargo, SLE_UINT8),
 		 SLE_VAR(Industry::ProducedCargo, waiting, SLE_UINT16),
 		 SLE_VAR(Industry::ProducedCargo, rate, SLE_UINT8),
-		 SLE_VAR(Industry::ProducedCargo, pct_transported, SLE_UINT8),
 		SLEG_STRUCTLIST("history", SlIndustryProducedHistory),
 	};
 	inline const static SaveLoadCompatTable compat_description = _industry_produced_sl_compat;
@@ -119,7 +118,6 @@ public:
 	static CargoID old_cargo[INDUSTRY_NUM_OUTPUTS];
 	static uint16_t old_waiting[INDUSTRY_NUM_OUTPUTS];
 	static uint8_t old_rate[INDUSTRY_NUM_OUTPUTS];
-	static uint8_t old_pct_transported[INDUSTRY_NUM_OUTPUTS];
 	static uint16_t old_this_month_production[INDUSTRY_NUM_OUTPUTS];
 	static uint16_t old_this_month_transported[INDUSTRY_NUM_OUTPUTS];
 	static uint16_t old_last_month_production[INDUSTRY_NUM_OUTPUTS];
@@ -129,7 +127,6 @@ public:
 /* static */ CargoID SlIndustryProduced::old_cargo[INDUSTRY_NUM_OUTPUTS];
 /* static */ uint16_t SlIndustryProduced::old_waiting[INDUSTRY_NUM_OUTPUTS];
 /* static */ uint8_t SlIndustryProduced::old_rate[INDUSTRY_NUM_OUTPUTS];
-/* static */ uint8_t SlIndustryProduced::old_pct_transported[INDUSTRY_NUM_OUTPUTS];
 /* static */ uint16_t SlIndustryProduced::old_this_month_production[INDUSTRY_NUM_OUTPUTS];
 /* static */ uint16_t SlIndustryProduced::old_this_month_transported[INDUSTRY_NUM_OUTPUTS];
 /* static */ uint16_t SlIndustryProduced::old_last_month_production[INDUSTRY_NUM_OUTPUTS];
@@ -157,8 +154,6 @@ static const SaveLoad _industry_desc[] = {
 	SLEG_CONDARR("this_month_production",      SlIndustryProduced::old_this_month_production,  SLE_UINT16, 16, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
 	SLEG_CONDARR("this_month_transported",     SlIndustryProduced::old_this_month_transported, SLE_UINT16,  2, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
 	SLEG_CONDARR("this_month_transported",     SlIndustryProduced::old_this_month_transported, SLE_UINT16, 16, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLEG_CONDARR("last_month_pct_transported", SlIndustryProduced::old_pct_transported,        SLE_UINT8,   2, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("last_month_pct_transported", SlIndustryProduced::old_pct_transported,        SLE_UINT8,  16, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
 	SLEG_CONDARR("last_month_production",      SlIndustryProduced::old_last_month_production,  SLE_UINT16,  2, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
 	SLEG_CONDARR("last_month_production",      SlIndustryProduced::old_last_month_production,  SLE_UINT16, 16, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
 	SLEG_CONDARR("last_month_transported",     SlIndustryProduced::old_last_month_transported, SLE_UINT16,  2, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
@@ -177,8 +172,8 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, founder,                    SLE_UINT8,                 SLV_70, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, construction_date,          SLE_INT32,                 SLV_70, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, construction_type,          SLE_UINT8,                 SLV_70, SL_MAX_VERSION),
-	SLEG_CONDVAR("last_cargo_accepted_at[0]",  SlIndustryAccepted::old_last_accepted[0], SLE_INT32,                 SLV_70, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("last_cargo_accepted_at",     SlIndustryAccepted::old_last_accepted, SLE_INT32, 16,            SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
+	SLEG_CONDVAR("last_cargo_accepted_at[0]",  SlIndustryAccepted::old_last_accepted[0], SLE_INT32,     SLV_70, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
+	SLEG_CONDARR("last_cargo_accepted_at",     SlIndustryAccepted::old_last_accepted,    SLE_INT32, 16, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
 	SLE_CONDVAR(Industry, selected_layout,            SLE_UINT8,                 SLV_73, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, exclusive_supplier,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, exclusive_consumer,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
@@ -221,7 +216,6 @@ struct INDYChunkHandler : ChunkHandler {
 			p.cargo = SlIndustryProduced::old_cargo[j];
 			p.waiting = SlIndustryProduced::old_waiting[j];
 			p.rate = SlIndustryProduced::old_rate[j];
-			p.pct_transported = SlIndustryProduced::old_pct_transported[j];
 			p.history[THIS_MONTH].production = SlIndustryProduced::old_this_month_production[j];
 			p.history[THIS_MONTH].transported = SlIndustryProduced::old_this_month_transported[j];
 			p.history[LAST_MONTH].production = SlIndustryProduced::old_last_month_production[j];

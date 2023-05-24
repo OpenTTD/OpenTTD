@@ -122,7 +122,7 @@
 	auto it = i->GetCargoProduced(cargo_id);
 	if (it == std::end(i->produced)) return -1;
 
-	return ::ToPercent8(it->pct_transported);
+	return ::ToPercent8(it->history[LAST_MONTH].PctTransported());
 }
 
 /* static */ TileIndex ScriptIndustry::GetLocation(IndustryID industry_id)

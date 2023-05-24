@@ -928,7 +928,7 @@ public:
 			SetDParam(0, p.cargo);
 			SetDParam(1, p.history[LAST_MONTH].production);
 			SetDParamStr(2, suffix.text);
-			SetDParam(3, ToPercent8(p.pct_transported));
+			SetDParam(3, ToPercent8(p.history[LAST_MONTH].PctTransported()));
 			DrawString(ir.Indent(WidgetDimensions::scaled.hsep_indent + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal : 0), rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
 			if (this->editable == EA_RATE) {
@@ -1449,7 +1449,7 @@ protected:
 	static inline int GetCargoTransportedPercentsIfValid(const Industry::ProducedCargo &p)
 	{
 		if (!IsValidCargoID(p.cargo)) return -1;
-		return ToPercent8(p.pct_transported);
+		return ToPercent8(p.history[LAST_MONTH].PctTransported());
 	}
 
 	/**
@@ -1558,7 +1558,7 @@ protected:
 		for (auto itp = std::begin(i->produced); itp != std::end(i->produced); ++itp) {
 			if (!IsValidCargoID(itp->cargo)) continue;
 			GetCargoSuffix(CARGOSUFFIX_OUT, CST_DIR, i, i->type, indsp, itp->cargo, itp - std::begin(i->produced), cargo_suffix[itp - std::begin(i->produced)]);
-			cargos.push_back({ itp->cargo, itp->history[LAST_MONTH].production, cargo_suffix[itp - std::begin(i->produced)].text.c_str(), ToPercent8(itp->pct_transported) });
+			cargos.push_back({ itp->cargo, itp->history[LAST_MONTH].production, cargo_suffix[itp - std::begin(i->produced)].text.c_str(), ToPercent8(itp->history[LAST_MONTH].PctTransported()) });
 		}
 
 		switch (static_cast<IndustryDirectoryWindow::SorterType>(this->industries.SortType())) {

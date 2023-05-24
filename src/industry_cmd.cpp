@@ -2404,12 +2404,7 @@ static void UpdateIndustryStatistics(Industry *i)
 {
 	for (auto &p : i->produced) {
 		if (IsValidCargoID(p.cargo)) {
-			byte pct = 0;
-			if (p.history[THIS_MONTH].production != 0) {
-				i->last_prod_year = TimerGameCalendar::year;
-				pct = p.history[THIS_MONTH].PctTransported();
-			}
-			p.pct_transported = pct;
+			if (p.history[THIS_MONTH].production != 0) i->last_prod_year = TimerGameCalendar::year;
 
 			/* Move history from this month to last month. */
 			std::rotate(std::rbegin(p.history), std::rbegin(p.history) + 1, std::rend(p.history));
@@ -2763,7 +2758,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		if (original_economy) {
 			if (only_decrease || Chance16(1, 3)) {
 				/* If more than 60% transported, 66% chance of increase, else 33% chance of increase */
-				if (!only_decrease && (i->produced[0].pct_transported > PERCENT_TRANSPORTED_60) != Chance16(1, 3)) {
+				if (!only_decrease && (i->produced[0].history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_60) != Chance16(1, 3)) {
 					mul = 1; // Increase production
 				} else {
 					div = 1; // Decrease production
@@ -2776,7 +2771,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				uint32 r = Random();
 				int old_prod, new_prod, percent;
 				/* If over 60% is transported, mult is 1, else mult is -1. */
-				int mult = (p.pct_transported > PERCENT_TRANSPORTED_60) ? 1 : -1;
+				int mult = (p.history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_60) ? 1 : -1;
 
 				new_prod = old_prod = p.rate;
 
@@ -2786,7 +2781,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 					mult = -1;
 				/* For normal industries, if over 60% is transported, 33% chance for decrease.
 				 * Bonus for very high station ratings (over 80%): 16% chance for decrease. */
-				} else if (Chance16I(1, ((p.pct_transported > PERCENT_TRANSPORTED_80) ? 6 : 3), r)) {
+				} else if (Chance16I(1, ((p.history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_80) ? 6 : 3), r)) {
 					mult *= -1;
 				}
 

@@ -812,8 +812,7 @@ static const OldChunks industry_chunk[] = {
 	OCL_SVAR( OC_UINT16, Industry, produced[0].history[THIS_MONTH].transported ),
 	OCL_SVAR( OC_UINT16, Industry, produced[1].history[THIS_MONTH].transported ),
 
-	OCL_SVAR(  OC_UINT8, Industry, produced[0].pct_transported ),
-	OCL_SVAR(  OC_UINT8, Industry, produced[1].pct_transported ),
+	OCL_NULL( 2 ), ///< last_month_pct_transported, now computed on the fly
 
 	OCL_SVAR( OC_UINT16, Industry, produced[0].history[LAST_MONTH].production ),
 	OCL_SVAR( OC_UINT16, Industry, produced[1].history[LAST_MONTH].production ),
