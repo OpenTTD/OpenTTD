@@ -106,16 +106,13 @@ static auto &GenericSettingTables()
  */
 static void SurveySettingsTable(nlohmann::json &survey, const SettingTable &table, void *object)
 {
-	char buf[512];
 	for (auto &desc : table) {
 		const SettingDesc *sd = GetSettingDesc(desc);
 		/* Skip any old settings we no longer save/load. */
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 
 		auto name = sd->GetName();
-		sd->FormatValue(buf, lastof(buf), object);
-
-		survey[name] = buf;
+		survey[name] = sd->FormatValue(object);
 	}
 }
 
