@@ -220,7 +220,7 @@ void ClearGRFConfigList(GRFConfig **config);
 void ResetGRFConfig(bool defaults);
 GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig);
 bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir = NEWGRF_DIR);
-char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
+std::string GRFBuildParamList(const GRFConfig *c);
 
 /* In newgrf_gui.cpp */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);

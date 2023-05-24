@@ -1134,12 +1134,9 @@ static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfig *li
 	const GRFConfig *c;
 
 	for (c = list; c != nullptr; c = c->next) {
-		char params[512];
-		GRFBuildParamList(params, c, lastof(params));
-
 		std::string key = fmt::format("{:08X}|{}|{}", BSWAP32(c->ident.grfid),
 				FormatArrayAsHex(c->ident.md5sum), c->filename);
-		group->GetItem(key, true)->SetValue(params);
+		group->GetItem(key, true)->SetValue(GRFBuildParamList(c));
 	}
 }
 
