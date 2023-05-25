@@ -423,6 +423,7 @@ struct BuildRailToolbarWindow : Window {
 	{
 		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
+		CloseWindowById(WC_SELECT_STATION, 0);
 		this->Window::Close();
 	}
 
@@ -2020,6 +2021,12 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 
 		this->list.ForceRebuild();
 		this->BuildPickerList();
+	}
+
+	void Close() override
+	{
+		CloseWindowById(WC_SELECT_STATION, 0);
+		this->PickerWindowBase::Close();
 	}
 
 	bool FilterByText(const StationSpec *statspec)
