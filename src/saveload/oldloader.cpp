@@ -24,6 +24,8 @@
 
 static const int TTO_HEADER_SIZE = 41;
 static const int TTD_HEADER_SIZE = 49;
+/** The size of the checksum in the name/header of the TTD/TTO savegames. */
+static const int HEADER_CHECKSUM_SIZE = 2;
 
 uint32 _bump_assert_value;
 
@@ -204,66 +206,39 @@ static void InitLoading(LoadgameState *ls)
  * @param title title and checksum
  * @param len   the length of the title to read/checksum
  * @return true iff the title is valid
- * @note the title (incl. checksum) has to be at least 41/49 (HEADER_SIZE) bytes long!
  */
 static bool VerifyOldNameChecksum(char *title, uint len)
 {
 	uint16 sum = 0;
-	for (uint i = 0; i < len - 2; i++) {
+	for (uint i = 0; i < len - HEADER_CHECKSUM_SIZE; i++) {
 		sum += title[i];
 		sum = ROL(sum, 1);
 	}
 
 	sum ^= 0xAAAA; // computed checksum
 
-	uint16 sum2 = title[len - 2]; // checksum in file
-	SB(sum2, 8, 8, title[len - 1]);
+	uint16 sum2 = title[len - HEADER_CHECKSUM_SIZE]; // checksum in file
+	SB(sum2, 8, 8, title[len - HEADER_CHECKSUM_SIZE + 1]);
 
 	return sum == sum2;
 }
 
-static inline bool CheckOldSavegameType(FILE *f, char *temp, const char *last, uint len)
+static std::tuple<SavegameType, std::string> DetermineOldSavegameTypeAndName(FILE *f)
 {
-	assert(last - temp + 1 >= (int)len);
-
-	if (fread(temp, 1, len, f) != len) {
-		temp[0] = '\0'; // if reading failed, make the name empty
-		return false;
+	char buffer[std::max(TTO_HEADER_SIZE, TTD_HEADER_SIZE)];
+	if (fread(buffer, 1, lengthof(buffer), f) != lengthof(buffer)) {
+		return { SGT_INVALID, "(broken) Unable to read file" };
 	}
 
-	bool ret = VerifyOldNameChecksum(temp, len);
-	temp[len - 2] = '\0'; // name is null-terminated in savegame, but it's better to be sure
-	StrMakeValidInPlace(temp, last);
-
-	return ret;
-}
-
-static SavegameType DetermineOldSavegameType(FILE *f, char *title, const char *last)
-{
-	static_assert(TTD_HEADER_SIZE >= TTO_HEADER_SIZE);
-	char temp[TTD_HEADER_SIZE] = "Unknown";
-
-	SavegameType type = SGT_TTO;
-
-	/* Can't fseek to 0 as in tar files that is not correct */
-	long pos = ftell(f);
-	if (pos >= 0 && !CheckOldSavegameType(f, temp, lastof(temp), TTO_HEADER_SIZE)) {
-		type = SGT_TTD;
-		if (fseek(f, pos, SEEK_SET) < 0 || !CheckOldSavegameType(f, temp, lastof(temp), TTD_HEADER_SIZE)) {
-			type = SGT_INVALID;
-		}
+	if (VerifyOldNameChecksum(buffer, TTO_HEADER_SIZE)) {
+		return { SGT_TTO, "(TTO)" + StrMakeValid({buffer, TTO_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
 	}
 
-	if (title != nullptr) {
-		switch (type) {
-			case SGT_TTO: title = strecpy(title, "(TTO) ", last);    break;
-			case SGT_TTD: title = strecpy(title, "(TTD) ", last);    break;
-			default:      title = strecpy(title, "(broken) ", last); break;
-		}
-		strecpy(title, temp, last);
+	if (VerifyOldNameChecksum(buffer, TTD_HEADER_SIZE)) {
+		return { SGT_TTD, "(TTD)" + StrMakeValid({buffer, TTD_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
 	}
 
-	return type;
+	return { SGT_INVALID, "(broken) Unknown" };
 }
 
 typedef bool LoadOldMainProc(LoadgameState *ls);
@@ -284,7 +259,8 @@ bool LoadOldSaveGame(const std::string &file)
 		return false;
 	}
 
-	SavegameType type = DetermineOldSavegameType(ls.file, nullptr, nullptr);
+	SavegameType type;
+	std::tie(type, std::ignore) = DetermineOldSavegameTypeAndName(ls.file);
 
 	LoadOldMainProc *proc = nullptr;
 
@@ -314,16 +290,13 @@ bool LoadOldSaveGame(const std::string &file)
 	return true;
 }
 
-void GetOldSaveGameName(const std::string &file, char *title, const char *last)
+std::string GetOldSaveGameName(const std::string &file)
 {
 	FILE *f = FioFOpenFile(file, "rb", NO_DIRECTORY);
+	if (f == nullptr) return {};
 
-	if (f == nullptr) {
-		*title = '\0';
-		return;
-	}
-
-	DetermineOldSavegameType(f, title, last);
-
+	std::string name;
+	std::tie(std::ignore, name) = DetermineOldSavegameTypeAndName(f);
 	fclose(f);
+	return name;
 }

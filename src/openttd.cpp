@@ -231,7 +231,7 @@ static void ShowHelp()
 #endif
 }
 
-static void WriteSavegameInfo(const char *name)
+static void WriteSavegameInfo(const std::string &name)
 {
 	extern SaveLoadVersion _sl_version;
 	uint32 last_ottd_rev = 0;
@@ -262,7 +262,7 @@ static void WriteSavegameInfo(const char *name)
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
 #if !defined(_WIN32)
-	fmt::print("%s\n", message);
+	fmt::print("{}\n", message);
 #else
 	ShowInfoI(message);
 #endif
@@ -588,7 +588,7 @@ int openttd_main(int argc, char *argv[])
 				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
 				auto t = _file_to_saveload.name.find_last_of('.');
 				if (t != std::string::npos) {
-					FiosType ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, _file_to_saveload.name.substr(t).c_str(), nullptr, nullptr);
+					auto [ft, _] = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, _file_to_saveload.name.substr(t));
 					if (ft != FIOS_TYPE_INVALID) _file_to_saveload.SetMode(ft);
 				}
 
@@ -608,9 +608,7 @@ int openttd_main(int argc, char *argv[])
 				return ret;
 			}
 
-			char title[80];
-			title[0] = '\0';
-			FiosGetSavegameListCallback(SLO_LOAD, mgo.opt, strrchr(mgo.opt, '.'), title, lastof(title));
+			auto [_, title] = FiosGetSavegameListCallback(SLO_LOAD, mgo.opt, strrchr(mgo.opt, '.'));
 
 			_load_check_data.Clear();
 			SaveOrLoadResult res = SaveOrLoad(mgo.opt, SLO_CHECK, DFT_GAME_FILE, SAVE_DIR, false);
