@@ -1017,9 +1017,9 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		Industry *ind = i.industry;
 		if (ind->index == source) continue;
 
-		int cargo_index = ind->GetCargoAcceptedIndex(cargo_type);
+		auto it = ind->GetCargoAccepted(cargo_type);
 		/* Check if matching cargo has been found */
-		if (cargo_index < 0) continue;
+		if (it == std::end(ind->accepted)) continue;
 
 		/* Check if industry temporarily refuses acceptance */
 		if (IndustryTemporarilyRefusesCargo(ind, cargo_type)) continue;
@@ -1029,9 +1029,9 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		/* Insert the industry into _cargo_delivery_destinations, if not yet contained */
 		include(_cargo_delivery_destinations, ind);
 
-		uint amount = std::min(num_pieces, 0xFFFFu - ind->incoming_cargo_waiting[cargo_index]);
-		ind->incoming_cargo_waiting[cargo_index] += amount;
-		ind->last_cargo_accepted_at[cargo_index] = TimerGameCalendar::date;
+		uint amount = std::min(num_pieces, 0xFFFFu - it->waiting);
+		it->waiting += amount;
+		it->last_accepted = TimerGameCalendar::date;
 		num_pieces -= amount;
 		accepted += amount;
 
@@ -1119,15 +1119,14 @@ static void TriggerIndustryProduction(Industry *i)
 			SetWindowDirty(WC_INDUSTRY_VIEW, i->index);
 		}
 	} else {
-		for (uint ci_in = 0; ci_in < lengthof(i->incoming_cargo_waiting); ci_in++) {
-			uint cargo_waiting = i->incoming_cargo_waiting[ci_in];
-			if (cargo_waiting == 0) continue;
+		for (auto ita = std::begin(i->accepted); ita != std::end(i->accepted); ++ita) {
+			if (ita->waiting == 0) continue;
 
-			for (uint ci_out = 0; ci_out < lengthof(i->produced_cargo_waiting); ci_out++) {
-				i->produced_cargo_waiting[ci_out] = ClampTo<uint16_t>(i->produced_cargo_waiting[ci_out] + (cargo_waiting * indspec->input_cargo_multiplier[ci_in][ci_out] / 256));
+			for (auto itp = std::begin(i->produced); itp != std::end(i->produced); ++itp) {
+				itp->waiting = ClampTo<uint16_t>(itp->waiting + (ita->waiting * indspec->input_cargo_multiplier[ita - std::begin(i->accepted)][itp - std::begin(i->produced)] / 256));
 			}
 
-			i->incoming_cargo_waiting[ci_in] = 0;
+			ita->waiting = 0;
 		}
 	}
 
