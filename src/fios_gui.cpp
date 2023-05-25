@@ -299,8 +299,7 @@ public:
 	/** Generate a default save filename. */
 	void GenerateFileName()
 	{
-		GenerateDefaultSaveName(this->filename_editbox.text.buf, &this->filename_editbox.text.buf[this->filename_editbox.text.max_bytes - 1]);
-		this->filename_editbox.text.UpdateSize();
+		this->filename_editbox.text.Assign(GenerateDefaultSaveName());
 	}
 
 	SaveLoadWindow(WindowDesc *desc, AbstractFileType abstract_filetype, SaveLoadOperation fop)

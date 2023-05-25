@@ -674,7 +674,7 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext, b
 		if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_company == COMPANY_SPECTATOR) {
 			strecpy(_screenshot_name, default_fn, lastof(_screenshot_name));
 		} else {
-			GenerateDefaultSaveName(_screenshot_name, lastof(_screenshot_name));
+			strecpy(_screenshot_name, GenerateDefaultSaveName().c_str(), lastof(_screenshot_name));
 		}
 	}
 

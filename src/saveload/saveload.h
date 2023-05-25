@@ -393,7 +393,7 @@ enum SavegameType {
 
 extern FileToSaveLoad _file_to_saveload;
 
-void GenerateDefaultSaveName(char *buf, const char *last);
+std::string GenerateDefaultSaveName();
 void SetSaveLoadError(StringID str);
 const char *GetSaveLoadErrorString();
 SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
