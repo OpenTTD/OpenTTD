@@ -182,12 +182,12 @@ public:
 #endif
 			return true;
 		}
-		catch (SQChar *compilererror) {
+		catch (const std::string &compilererror) {
 			if(_raiseerror && _ss(_vm)->_compilererrorhandler) {
-				_ss(_vm)->_compilererrorhandler(_vm, compilererror, type(_sourcename) == OT_STRING?_stringval(_sourcename):"unknown",
+				_ss(_vm)->_compilererrorhandler(_vm, compilererror.c_str(), type(_sourcename) == OT_STRING ? _stringval(_sourcename) : "unknown",
 					_lex._currentline, _lex._currentcolumn);
 			}
-			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror, -1);
+			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror.c_str(), -1);
 			return false;
 		}
 	}
