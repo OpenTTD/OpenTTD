@@ -3170,17 +3170,16 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
  */
 void DoAutoOrNetsave(FiosNumberedSaveName &counter)
 {
-	char buf[MAX_PATH];
+	std::string filename;
 
 	if (_settings_client.gui.keep_all_autosave) {
-		GenerateDefaultSaveName(buf, lastof(buf));
-		strecat(buf, counter.Extension().c_str(), lastof(buf));
+		filename = GenerateDefaultSaveName() + counter.Extension();
 	} else {
-		strecpy(buf, counter.Filename().c_str(), lastof(buf));
+		filename = counter.Filename();
 	}
 
-	Debug(sl, 2, "Autosaving to '{}'", buf);
-	if (SaveOrLoad(buf, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR) != SL_OK) {
+	Debug(sl, 2, "Autosaving to '{}'", filename);
+	if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR) != SL_OK) {
 		ShowErrorMessage(STR_ERROR_AUTOSAVE_FAILED, INVALID_STRING_ID, WL_ERROR);
 	}
 }
@@ -3193,11 +3192,9 @@ void DoExitSave()
 }
 
 /**
- * Fill the buffer with the default name for a savegame *or* screenshot.
- * @param buf the buffer to write to.
- * @param last the last element in the buffer.
+ * Get the default name for a savegame *or* screenshot.
  */
-void GenerateDefaultSaveName(char *buf, const char *last)
+std::string GenerateDefaultSaveName()
 {
 	/* Check if we have a name for this map, which is the name of the first
 	 * available company. When there's no company available we'll use
@@ -3222,8 +3219,9 @@ void GenerateDefaultSaveName(char *buf, const char *last)
 	SetDParam(2, TimerGameCalendar::date);
 
 	/* Get the correct string (special string for when there's not company) */
-	GetString(buf, !Company::IsValidID(cid) ? STR_SAVEGAME_NAME_SPECTATOR : STR_SAVEGAME_NAME_DEFAULT, last);
-	SanitizeFilename(buf);
+	std::string filename = GetString(!Company::IsValidID(cid) ? STR_SAVEGAME_NAME_SPECTATOR : STR_SAVEGAME_NAME_DEFAULT);
+	SanitizeFilename(filename);
+	return filename;
 }
 
 /**

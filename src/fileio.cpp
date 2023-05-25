@@ -1061,17 +1061,17 @@ void DeterminePaths(const char *exe, bool only_local_path)
 
 /**
  * Sanitizes a filename, i.e. removes all illegal characters from it.
- * @param filename the "\0" terminated filename
+ * @param filename the filename
  */
-void SanitizeFilename(char *filename)
+void SanitizeFilename(std::string &filename)
 {
-	for (; *filename != '\0'; filename++) {
-		switch (*filename) {
+	for (auto &c : filename) {
+		switch (c) {
 			/* The following characters are not allowed in filenames
 			 * on at least one of the supported operating systems: */
 			case ':': case '\\': case '*': case '?': case '/':
 			case '<': case '>': case '|': case '"':
-				*filename = '_';
+				c = '_';
 				break;
 		}
 	}
