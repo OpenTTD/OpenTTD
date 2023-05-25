@@ -1790,7 +1790,8 @@ void UpdateLevelCrossing(TileIndex tile, bool sound, bool force_bar)
 
 /**
  * Find adjacent level crossing tiles in this multi-track crossing and mark them dirty.
- * @param The tile which causes the update.
+ * @param tile The tile which causes the update.
+ * @param road_axis The road axis.
  */
 void MarkDirtyAdjacentLevelCrossingTiles(TileIndex tile, Axis road_axis)
 {
@@ -1800,6 +1801,44 @@ void MarkDirtyAdjacentLevelCrossingTiles(TileIndex tile, Axis road_axis)
 		const TileIndex t = TileAddByDiagDir(tile, dir);
 		if (t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
 			MarkTileDirtyByTile(t);
+		}
+	}
+}
+
+/**
+ * Update adjacent level crossing tiles in this multi-track crossing, due to removal of a level crossing tile.
+ * @param tile The crossing tile which has been or is about to be removed, and which caused the update.
+ * @param road_axis The road axis.
+ */
+void UpdateAdjacentLevelCrossingTilesOnLevelCrossingRemoval(TileIndex tile, Axis road_axis)
+{
+	const DiagDirection dir1 = AxisToDiagDir(road_axis);
+	const DiagDirection dir2 = ReverseDiagDir(dir1);
+	for (DiagDirection dir : { dir1, dir2 }) {
+		const TileIndexDiff diff = TileOffsByDiagDir(dir);
+		bool occupied = false;
+		for (TileIndex t = tile + diff; t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis; t += diff) {
+			occupied |= CheckLevelCrossing(t);
+		}
+		if (occupied) {
+			/* Mark the immediately adjacent tile dirty */
+			const TileIndex t = tile + diff;
+			if (t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
+				MarkTileDirtyByTile(t);
+			}
+		} else {
+			/* Unbar the crossing tiles in this direction as necessary */
+			for (TileIndex t = tile + diff; t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis; t += diff) {
+				if (IsCrossingBarred(t)) {
+					/* The crossing tile is barred, unbar it and continue to check the next tile */
+					SetCrossingBarred(t, false);
+					MarkTileDirtyByTile(t);
+				} else {
+					/* The crossing tile is already unbarred, mark the tile dirty and stop checking */
+					MarkTileDirtyByTile(t);
+					break;
+				}
+			}
 		}
 	}
 }
