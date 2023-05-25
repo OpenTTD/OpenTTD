@@ -41,7 +41,7 @@ extern bool FiosIsHiddenFile(const struct dirent *ent);
 extern void FiosGetDrives(FileList &file_list);
 
 /* get the name of an oldstyle savegame */
-extern void GetOldSaveGameName(const std::string &file, char *title, const char *last);
+extern std::string GetOldSaveGameName(const std::string &file);
 
 /**
  * Compare two FiosItem's. Used with sort when sorting the file list.
@@ -215,9 +215,7 @@ static std::string FiosMakeFilename(const std::string *path, const char *name, c
 
 /**
  * Make a save game or scenario filename from a name.
- * @param buf Destination buffer for saving the filename.
  * @param name Name of the file.
- * @param last Last element of buffer \a buf.
  * @return The completed filename.
  */
 std::string FiosMakeSavegameName(const char *name)
@@ -251,14 +249,14 @@ bool FiosDelete(const char *name)
 	return unlink(filename.c_str()) == 0;
 }
 
-typedef FiosType fios_getlist_callback_proc(SaveLoadOperation fop, const std::string &filename, const char *ext, char *title, const char *last);
+typedef std::tuple<FiosType, std::string> FiosGetTypeAndNameProc(SaveLoadOperation fop, const std::string &filename, const std::string_view ext);
 
 /**
  * Scanner to scan for a particular type of FIOS file.
  */
 class FiosFileScanner : public FileScanner {
 	SaveLoadOperation fop;   ///< The kind of file we are looking for.
-	fios_getlist_callback_proc *callback_proc; ///< Callback to check whether the file may be added
+	FiosGetTypeAndNameProc *callback_proc; ///< Callback to check whether the file may be added
 	FileList &file_list;     ///< Destination of the found files.
 public:
 	/**
@@ -267,7 +265,7 @@ public:
 	 * @param callback_proc The function that is called where you need to do the filtering.
 	 * @param file_list Destination of the found files.
 	 */
-	FiosFileScanner(SaveLoadOperation fop, fios_getlist_callback_proc *callback_proc, FileList &file_list) :
+	FiosFileScanner(SaveLoadOperation fop, FiosGetTypeAndNameProc *callback_proc, FileList &file_list) :
 			fop(fop), callback_proc(callback_proc), file_list(file_list)
 	{}
 
@@ -286,10 +284,7 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t basepath_lengt
 	if (sep == std::string::npos) return false;
 	std::string ext = filename.substr(sep);
 
-	char fios_title[64];
-	fios_title[0] = '\0'; // reset the title
-
-	FiosType type = this->callback_proc(this->fop, filename, ext.c_str(), fios_title, lastof(fios_title));
+	auto [type, title] = this->callback_proc(this->fop, filename, ext);
 	if (type == FIOS_TYPE_INVALID) return false;
 
 	for (const auto &fios : file_list) {
@@ -329,12 +324,12 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t basepath_lengt
 	fios->name = filename;
 
 	/* If the file doesn't have a title, use its filename */
-	const char *t = fios_title;
-	if (StrEmpty(fios_title)) {
+	if (title.empty()) {
 		auto ps = filename.rfind(PATHSEPCHAR);
-		t = filename.c_str() + (ps == std::string::npos ? 0 : ps + 1);
-	}
-	fios->title = StrMakeValid(t);
+		fios->title = StrMakeValid(filename.substr((ps == std::string::npos ? 0 : ps + 1)));
+	} else {
+		fios->title = StrMakeValid(title);
+	};
 
 	return true;
 }
@@ -347,7 +342,7 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t basepath_lengt
  * @param subdir The directory from where to start (global) searching.
  * @param file_list Destination of the found files.
  */
-static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *callback_proc, Subdirectory subdir, FileList &file_list)
+static void FiosGetFileList(SaveLoadOperation fop, FiosGetTypeAndNameProc *callback_proc, Subdirectory subdir, FileList &file_list)
 {
 	struct stat sb;
 	struct dirent *dirent;
@@ -421,23 +416,20 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
  * Get the title of a file, which (if exists) is stored in a file named
  * the same as the data file but with '.title' added to it.
  * @param file filename to get the title for
- * @param title the title buffer to fill
- * @param last the last element in the title buffer
  * @param subdir the sub directory to search in
+ * @return The file title.
  */
-static void GetFileTitle(const std::string &file, char *title, const char *last, Subdirectory subdir)
+static std::string GetFileTitle(const std::string &file, Subdirectory subdir)
 {
-	std::string buf = file;
-	buf += ".title";
+	FILE *f = FioFOpenFile(file + ".title", "r", subdir);
+	if (f == nullptr) return {};
 
-	FILE *f = FioFOpenFile(buf, "r", subdir);
-	if (f == nullptr) return;
-
-	size_t read = fread(title, 1, last - title, f);
-	assert(title + read <= last);
-	title[read] = '\0';
-	StrMakeValidInPlace(title, last);
+	char title[80];
+	size_t read = fread(title, 1, lengthof(title), f);
 	FioFCloseFile(f);
+
+	assert(read <= lengthof(title));
+	return StrMakeValid({title, read});
 }
 
 /**
@@ -445,13 +437,11 @@ static void GetFileTitle(const std::string &file, char *title, const char *last,
  * @param fop Purpose of collecting the list.
  * @param file Name of the file to check.
  * @param ext A pointer to the extension identifier inside file
- * @param title Buffer if a callback wants to lookup the title of the file; nullptr to skip the lookup
- * @param last Last available byte in buffer (to prevent buffer overflows); not used when title == nullptr
- * @return a FIOS_TYPE_* type of the found file, FIOS_TYPE_INVALID if not a savegame
+ * @return a FIOS_TYPE_* type of the found file, FIOS_TYPE_INVALID if not a savegame, and the title of the file (if any).
  * @see FiosGetFileList
  * @see FiosGetSavegameList
  */
-FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last)
+std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext)
 {
 	/* Show savegame files
 	 * .SAV OpenTTD saved game
@@ -460,22 +450,20 @@ FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &f
 	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game */
 
 	/* Don't crash if we supply no extension */
-	if (ext == nullptr) return FIOS_TYPE_INVALID;
+	if (ext.empty()) return { FIOS_TYPE_INVALID, {} };
 
 	if (StrEqualsIgnoreCase(ext, ".sav")) {
-		GetFileTitle(file, title, last, SAVE_DIR);
-		return FIOS_TYPE_FILE;
+		return { FIOS_TYPE_FILE, GetFileTitle(file, SAVE_DIR) };
 	}
 
 	if (fop == SLO_LOAD) {
 		if (StrEqualsIgnoreCase(ext, ".ss1") || StrEqualsIgnoreCase(ext, ".sv1") ||
 				StrEqualsIgnoreCase(ext, ".sv2")) {
-			if (title != nullptr) GetOldSaveGameName(file, title, last);
-			return FIOS_TYPE_OLDFILE;
+			return { FIOS_TYPE_OLDFILE, GetOldSaveGameName(file) };
 		}
 	}
 
-	return FIOS_TYPE_INVALID;
+	return { FIOS_TYPE_INVALID, {} };
 }
 
 /**
@@ -500,31 +488,28 @@ void FiosGetSavegameList(SaveLoadOperation fop, FileList &file_list)
  * @param fop Purpose of collecting the list.
  * @param file Name of the file to check.
  * @param ext A pointer to the extension identifier inside file
- * @param title Buffer if a callback wants to lookup the title of the file
- * @param last Last available byte in buffer (to prevent buffer overflows)
- * @return a FIOS_TYPE_* type of the found file, FIOS_TYPE_INVALID if not a scenario
+ * @return a FIOS_TYPE_* type of the found file, FIOS_TYPE_INVALID if not a scenario and the title of the file (if any).
  * @see FiosGetFileList
  * @see FiosGetScenarioList
  */
-static FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last)
+static std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext)
 {
 	/* Show scenario files
 	 * .SCN OpenTTD style scenario file
 	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
 	 * .SS0 Transport Tycoon Deluxe preset scenario */
 	if (StrEqualsIgnoreCase(ext, ".scn")) {
-		GetFileTitle(file, title, last, SCENARIO_DIR);
-		return FIOS_TYPE_SCENARIO;
+		return { FIOS_TYPE_SCENARIO, GetFileTitle(file, SCENARIO_DIR) };
+
 	}
 
 	if (fop == SLO_LOAD) {
 		if (StrEqualsIgnoreCase(ext, ".sv0") || StrEqualsIgnoreCase(ext, ".ss0")) {
-			GetOldSaveGameName(file, title, last);
-			return FIOS_TYPE_OLD_SCENARIO;
+			return { FIOS_TYPE_OLD_SCENARIO, GetOldSaveGameName(file) };
 		}
 	}
 
-	return FIOS_TYPE_INVALID;
+	return { FIOS_TYPE_INVALID, {} };
 }
 
 /**
@@ -547,7 +532,7 @@ void FiosGetScenarioList(SaveLoadOperation fop, FileList &file_list)
 	FiosGetFileList(fop, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
-static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last)
+static std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext)
 {
 	/* Show heightmap files
 	 * .PNG PNG Based heightmap files
@@ -562,7 +547,7 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::s
 
 	if (StrEqualsIgnoreCase(ext, ".bmp")) type = FIOS_TYPE_BMP;
 
-	if (type == FIOS_TYPE_INVALID) return FIOS_TYPE_INVALID;
+	if (type == FIOS_TYPE_INVALID) return { FIOS_TYPE_INVALID, {} };
 
 	TarFileList::iterator it = _tar_filelist[SCENARIO_DIR].find(file);
 	if (it != _tar_filelist[SCENARIO_DIR].end()) {
@@ -581,12 +566,10 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::s
 			}
 		}
 
-		if (!match) return FIOS_TYPE_INVALID;
+		if (!match) return { FIOS_TYPE_INVALID, {} };
 	}
 
-	GetFileTitle(file, title, last, HEIGHTMAP_DIR);
-
-	return type;
+	return { type, GetFileTitle(file, HEIGHTMAP_DIR) };
 }
 
 /**
@@ -747,9 +730,9 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 	static std::string _prefix; ///< Static as the lambda needs access to it.
 
 	/* Callback for FiosFileScanner. */
-	static fios_getlist_callback_proc *proc = [](SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last) {
-		if (StrEqualsIgnoreCase(ext, ".sav") && StrStartsWith(file, _prefix)) return FIOS_TYPE_FILE;
-		return FIOS_TYPE_INVALID;
+	static FiosGetTypeAndNameProc *proc = [](SaveLoadOperation fop, const std::string &file, const std::string_view ext) {
+		if (StrEqualsIgnoreCase(ext, ".sav") && StrStartsWith(file, _prefix)) return std::tuple(FIOS_TYPE_FILE, std::string{});
+		return std::tuple(FIOS_TYPE_INVALID, std::string{});
 	};
 
 	/* Prefix to check in the callback. */

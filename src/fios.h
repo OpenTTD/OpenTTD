@@ -116,7 +116,7 @@ bool FiosDelete(const char *name);
 std::string FiosMakeHeightmapName(const char *name);
 std::string FiosMakeSavegameName(const char *name);
 
-FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last);
+std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext);
 
 void ScanScenarios();
 const char *FindScenario(const ContentInfo *ci, bool md5sum);
