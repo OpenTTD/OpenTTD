@@ -34,6 +34,6 @@ bool MakeMinimapWorldScreenshot();
 extern std::string _screenshot_format_name;
 extern uint _num_screenshot_formats;
 extern uint _cur_screenshot_format;
-extern char _full_screenshot_name[MAX_PATH];
+extern std::string _full_screenshot_path;
 
 #endif /* SCREENSHOT_H */

@@ -417,7 +417,7 @@ bool CrashLog::WriteScreenshot()
 
 	std::string filename = this->CreateFileName("", false);
 	bool res = MakeScreenshot(SC_CRASHLOG, filename);
-	if (res) this->screenshot_filename = _full_screenshot_name;
+	if (res) this->screenshot_filename = _full_screenshot_path;
 	return res;
 }
 
