@@ -357,11 +357,6 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 						Utf8Encode(d, tmp);
 						break;
 					}
-					case 0x04:
-						if (src[0] == '\0') goto string_end;
-						Utf8Encode(d, SCC_NEWGRF_UNPRINT);
-						Utf8Encode(d, *src++);
-						break;
 					case 0x06: Utf8Encode(d, SCC_NEWGRF_PRINT_BYTE_HEX);          break;
 					case 0x07: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_HEX);          break;
 					case 0x08: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_HEX);         break;
@@ -939,7 +934,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     _newgrf_textrefstack.RotateTop4Words(); break;
 			case SCC_NEWGRF_PUSH_WORD:              _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
-			case SCC_NEWGRF_UNPRINT:                *buff = std::max(*buff - Utf8Consume(str), buf_start); break;
 
 			case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 			case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
@@ -964,7 +958,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			default: break;
 
 			case SCC_NEWGRF_PUSH_WORD:
-			case SCC_NEWGRF_UNPRINT:
 				Utf8Consume(str);
 				break;
 		}
@@ -1040,7 +1033,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_DISCARD_WORD:
 		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:
 		case SCC_NEWGRF_PUSH_WORD:
-		case SCC_NEWGRF_UNPRINT:
 			return 0;
 	}
 }
