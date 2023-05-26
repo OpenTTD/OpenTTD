@@ -34,7 +34,7 @@ public:
 	~Win32FontCache();
 	void ClearFontCache() override;
 	GlyphID MapCharToGlyph(WChar key) override;
-	const char *GetFontName() override { return this->fontname.c_str(); }
+	std::string GetFontName() override { return this->fontname; }
 	const void *GetOSHandle() override { return &this->logfont; }
 };
 
