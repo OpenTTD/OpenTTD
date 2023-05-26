@@ -95,10 +95,27 @@ static inline void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset =
 Point GetViewportStationMiddle(const Viewport *vp, const Station *st);
 
 struct Station;
+struct Waypoint;
 struct Town;
 
 void SetViewportCatchmentStation(const Station *st, bool sel);
+void SetViewportCatchmentWaypoint(const Waypoint *wp, bool sel);
 void SetViewportCatchmentTown(const Town *t, bool sel);
 void MarkCatchmentTilesDirty();
+
+template<class T>
+void SetViewportCatchmentSpecializedStation(const T *st, bool sel);
+
+template<>
+inline void SetViewportCatchmentSpecializedStation(const Station *st, bool sel)
+{
+	SetViewportCatchmentStation(st, sel);
+}
+
+template<>
+inline void SetViewportCatchmentSpecializedStation(const Waypoint *st, bool sel)
+{
+	SetViewportCatchmentWaypoint(st, sel);
+}
 
 #endif /* VIEWPORT_FUNC_H */

@@ -422,6 +422,7 @@ struct BuildRailToolbarWindow : Window {
 	void Close() override
 	{
 		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
+		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) SetViewportCatchmentWaypoint(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
 		CloseWindowById(WC_SELECT_STATION, 0);
 		this->Window::Close();
@@ -731,6 +732,7 @@ struct BuildRailToolbarWindow : Window {
 	void OnPlaceObjectAbort() override
 	{
 		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
+		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) SetViewportCatchmentWaypoint(nullptr, true);
 
 		this->RaiseButtons();
 		this->DisableWidget(WID_RAT_REMOVE);
@@ -755,6 +757,11 @@ struct BuildRailToolbarWindow : Window {
 		/* do not toggle Remove button by Ctrl when placing station */
 		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) && !this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
+	}
+
+	void OnRealtimeTick(uint delta_ms) override
+	{
+		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) CheckRedrawWaypointCoverage(this);
 	}
 
 	static HotkeyList hotkeys;
@@ -2175,6 +2182,11 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 			this->string_filter.SetFilterTerm(this->editbox.text.buf);
 			this->InvalidateData();
 		}
+	}
+
+	void OnRealtimeTick(uint delta_ms) override
+	{
+		CheckRedrawWaypointCoverage(this);
 	}
 };
 

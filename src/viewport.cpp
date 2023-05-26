@@ -992,7 +992,8 @@ enum TileHighlightType {
 };
 
 const Station *_viewport_highlight_station; ///< Currently selected station for coverage area highlight
-const Town *_viewport_highlight_town;       ///< Currently selected town for coverage area highlight
+const Waypoint *_viewport_highlight_waypoint; ///< Currently selected waypoint for coverage area highlight
+const Town *_viewport_highlight_town; ///< Currently selected town for coverage area highlight
 
 /**
  * Get tile highlight type of coverage area for a given tile.
@@ -1004,6 +1005,9 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 	if (_viewport_highlight_station != nullptr) {
 		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_station->index) return THT_WHITE;
 		if (_viewport_highlight_station->TileIsInCatchment(t)) return THT_BLUE;
+	}
+	if (_viewport_highlight_waypoint != nullptr) {
+		if (IsTileType(t, MP_STATION) && GetStationIndex(t) == _viewport_highlight_waypoint->index) return THT_BLUE;
 	}
 
 	if (_viewport_highlight_town != nullptr) {
@@ -3511,11 +3515,18 @@ void MarkCatchmentTilesDirty()
 			}
 		}
 	}
+	if (_viewport_highlight_waypoint != nullptr) {
+		if (!_viewport_highlight_waypoint->IsInUse()) {
+			_viewport_highlight_waypoint = nullptr;
+		}
+		MarkWholeScreenDirty();
+	}
 }
 
 static void SetWindowDirtyForViewportCatchment()
 {
 	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+	if (_viewport_highlight_waypoint != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint->index);
 	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
 }
 
@@ -3523,6 +3534,7 @@ static void ClearViewportCatchment()
 {
 	MarkCatchmentTilesDirty();
 	_viewport_highlight_station = nullptr;
+	_viewport_highlight_waypoint = nullptr;
 	_viewport_highlight_town = nullptr;
 }
 
@@ -3544,6 +3556,26 @@ void SetViewportCatchmentStation(const Station *st, bool sel)
 		_viewport_highlight_station = nullptr;
 	}
 	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+}
+
+/**
+ * Select or deselect waypoint for coverage area highlight.
+ * Selecting a waypoint will deselect a town.
+ * @param *wp Waypoint in question
+ * @param sel Select or deselect given waypoint
+ */
+void SetViewportCatchmentWaypoint(const Waypoint *wp, bool sel)
+{
+	SetWindowDirtyForViewportCatchment();
+	if (sel && _viewport_highlight_waypoint != wp) {
+		ClearViewportCatchment();
+		_viewport_highlight_waypoint = wp;
+		MarkCatchmentTilesDirty();
+	} else if (!sel && _viewport_highlight_waypoint == wp) {
+		MarkCatchmentTilesDirty();
+		_viewport_highlight_waypoint = nullptr;
+	}
+	if (_viewport_highlight_waypoint != nullptr) SetWindowDirty(WC_WAYPOINT_VIEW, _viewport_highlight_waypoint->index);
 }
 
 /**
