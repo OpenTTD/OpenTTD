@@ -185,10 +185,10 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 			" Medium: %s\n"
 			" Large:  %s\n"
 			" Mono:   %s\n\n",
-			FontCache::Get(FS_SMALL)->GetFontName(),
-			FontCache::Get(FS_NORMAL)->GetFontName(),
-			FontCache::Get(FS_LARGE)->GetFontName(),
-			FontCache::Get(FS_MONO)->GetFontName()
+			FontCache::Get(FS_SMALL)->GetFontName().c_str(),
+			FontCache::Get(FS_NORMAL)->GetFontName().c_str(),
+			FontCache::Get(FS_LARGE)->GetFontName().c_str(),
+			FontCache::Get(FS_MONO)->GetFontName().c_str()
 	);
 
 	buffer += seprintf(buffer, last, "AI Configuration (local: %i) (current: %i):\n", (int)_local_company, (int)_current_company);
