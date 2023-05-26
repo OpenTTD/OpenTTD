@@ -79,12 +79,22 @@ public:
 	void Close() override
 	{
 		CloseWindowById(GetWindowClassForVehicleType(this->vt), VehicleListIdentifier(VL_STATION_LIST, this->vt, this->owner, this->window_number).Pack(), false);
+		SetViewportCatchmentWaypoint(Waypoint::Get(this->window_number), false);
 		this->Window::Close();
 	}
 
 	void SetStringParameters(int widget) const override
 	{
 		if (widget == WID_W_CAPTION) SetDParam(0, this->wp->index);
+	}
+
+	void OnPaint() override
+	{
+		extern const Waypoint *_viewport_highlight_waypoint;
+		this->SetWidgetDisabledState(WID_W_CATCHMENT, !this->wp->IsInUse());
+		this->SetWidgetLoweredState(WID_W_CATCHMENT, _viewport_highlight_waypoint == this->wp);
+
+		this->DrawWidgets();
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -105,6 +115,10 @@ public:
 
 			case WID_W_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
 				ShowVehicleListWindow(this->wp->owner, this->vt, this->wp->index);
+				break;
+
+			case WID_W_CATCHMENT:
+				SetViewportCatchmentWaypoint(Waypoint::Get(this->window_number), !this->IsWidgetLowered(WID_W_CATCHMENT));
 				break;
 		}
 	}
@@ -162,7 +176,7 @@ static const NWidgetPart _nested_waypoint_view_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), SetResize(1, 0), EndContainer(),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_W_CATCHMENT), SetMinimalSize(50, 12), SetResize(1, 0), SetFill(1, 1), SetDataTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_W_SHOW_VEHICLES), SetMinimalSize(15, 12), SetDataTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),

@@ -17,6 +17,7 @@ enum WaypointWidgets {
 	WID_W_CENTER_VIEW,   ///< Center the main view on this waypoint.
 	WID_W_RENAME,        ///< Rename this waypoint.
 	WID_W_SHOW_VEHICLES, ///< Show the vehicles visiting this waypoint.
+	WID_W_CATCHMENT,     ///< Coverage button.
 };
 
 #endif /* WIDGETS_WAYPOINT_WIDGET_H */
