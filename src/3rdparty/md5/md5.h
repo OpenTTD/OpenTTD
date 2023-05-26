@@ -57,20 +57,20 @@
 static const size_t MD5_HASH_BYTES = 16;
 
 /** Container for storing a MD5 hash/checksum/digest. */
-using MD5Hash = std::array<byte, MD5_HASH_BYTES>;
+struct MD5Hash : std::array<byte, MD5_HASH_BYTES> {
+	MD5Hash() : std::array<byte, MD5_HASH_BYTES>{} {}
 
-/**
- * Exclusively-or one hash into another hash.
- * @param lhs The hash to exclusively-or into.
- * @param rhs The hash to exclusively-or with.
- * @return Reference to \c lhs hash.
- */
-inline MD5Hash &operator^=(MD5Hash &lhs, const MD5Hash &rhs)
-{
-	for (size_t i = 0; i < lhs.size(); i++) lhs[i] ^= rhs[i];
-	return lhs;
-}
-
+	/**
+	 * Exclusively-or the given hash into this hash.
+	 * @param other The other hash.
+	 * @return Reference to this hash.
+	 */
+	MD5Hash &operator^=(const MD5Hash &other)
+	{
+		for (size_t i = 0; i < size(); i++) this->operator[](i) ^= other[i];
+		return *this;
+	}
+};
 
 struct Md5 {
 private:
