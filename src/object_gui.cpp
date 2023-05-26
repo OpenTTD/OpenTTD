@@ -506,7 +506,7 @@ public:
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
-				auto it = this->vscroll->GetScrolledItemFromWidget(this->object_classes, widget, this, pt.y);
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->object_classes, pt.y, this, widget);
 				if (it == this->object_classes.end()) break;
 
 				this->SelectOtherClass(*it);
