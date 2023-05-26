@@ -132,7 +132,7 @@ public:
 	 * Get the name of this font.
 	 * @return The name of the font.
 	 */
-	virtual const char *GetFontName() = 0;
+	virtual std::string GetFontName() = 0;
 
 	/**
 	 * Get the font cache of a given font size.

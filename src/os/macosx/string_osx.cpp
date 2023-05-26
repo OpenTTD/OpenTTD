@@ -180,7 +180,7 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 		if (font == nullptr) {
 			if (!_font_cache[i.second->fc->GetSize()]) {
 				/* Cache font information. */
-				CFAutoRelease<CFStringRef> font_name(CFStringCreateWithCString(kCFAllocatorDefault, i.second->fc->GetFontName(), kCFStringEncodingUTF8));
+				CFAutoRelease<CFStringRef> font_name(CFStringCreateWithCString(kCFAllocatorDefault, i.second->fc->GetFontName().c_str(), kCFStringEncodingUTF8));
 				_font_cache[i.second->fc->GetSize()].reset(CTFontCreateWithName(font_name.get(), i.second->fc->GetFontSize(), nullptr));
 			}
 			font = _font_cache[i.second->fc->GetSize()].get();

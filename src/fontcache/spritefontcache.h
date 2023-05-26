@@ -31,7 +31,7 @@ public:
 	virtual bool GetDrawGlyphShadow();
 	virtual GlyphID MapCharToGlyph(WChar key) { assert(IsPrintable(key)); return SPRITE_GLYPH | key; }
 	virtual const void *GetFontTable(uint32 tag, size_t &length) { length = 0; return nullptr; }
-	virtual const char *GetFontName() { return "sprite"; }
+	virtual std::string GetFontName() { return "sprite"; }
 	virtual bool IsBuiltInFont() { return true; }
 };
 
