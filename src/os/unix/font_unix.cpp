@@ -61,13 +61,15 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 			FcChar8 *family;
 			FcChar8 *style;
 			FcChar8 *file;
+			int32_t index;
 			FcFontSetAdd(fs, match);
 
 			for (i = 0; err != FT_Err_Ok && i < fs->nfont; i++) {
 				/* Try the new filename */
 				if (FcPatternGetString(fs->fonts[i], FC_FILE, 0, &file) == FcResultMatch &&
 					FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
-					FcPatternGetString(fs->fonts[i], FC_STYLE, 0, &style) == FcResultMatch) {
+					FcPatternGetString(fs->fonts[i], FC_STYLE, 0, &style) == FcResultMatch &&
+					FcPatternGetInteger(fs->fonts[i], FC_INDEX, 0, &index) == FcResultMatch) {
 
 					/* The correct style? */
 					if (font_style != nullptr && strcasecmp(font_style, (char *)style) != 0) continue;
@@ -76,7 +78,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 					 * wrongly a 'random' font, so check whether the family name is the
 					 * same as the supplied name */
 					if (strcasecmp(font_family, (char *)family) == 0) {
-						err = FT_New_Face(_library, (char *)file, 0, face);
+						err = FT_New_Face(_library, (char *)file, index, face);
 					}
 				}
 			}
