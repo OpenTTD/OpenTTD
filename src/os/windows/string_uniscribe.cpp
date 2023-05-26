@@ -152,7 +152,7 @@ static HFONT HFontFromFont(Font *font)
 	logfont.lfHeight = font->fc->GetHeight();
 	logfont.lfWeight = FW_NORMAL;
 	logfont.lfCharSet = DEFAULT_CHARSET;
-	convert_to_fs(font->fc->GetFontName(), logfont.lfFaceName, lengthof(logfont.lfFaceName));
+	convert_to_fs(font->fc->GetFontName().c_str(), logfont.lfFaceName, lengthof(logfont.lfFaceName));
 
 	return CreateFontIndirect(&logfont);
 }

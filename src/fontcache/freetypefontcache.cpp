@@ -33,16 +33,16 @@ private:
 	FT_Face face;  ///< The font face associated with this font.
 
 	void SetFontSize(FontSize fs, FT_Face face, int pixels);
-	virtual const void *InternalGetFontTable(uint32 tag, size_t &length);
-	virtual const Sprite *InternalGetGlyph(GlyphID key, bool aa);
+	const void *InternalGetFontTable(uint32 tag, size_t &length) override;
+	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache();
-	virtual void ClearFontCache();
-	virtual GlyphID MapCharToGlyph(WChar key);
-	virtual const char *GetFontName() { return face->family_name; }
-	virtual bool IsBuiltInFont() { return false; }
+	void ClearFontCache() override;
+	GlyphID MapCharToGlyph(WChar key) override;
+	std::string GetFontName() override { return face->family_name; }
+	bool IsBuiltInFont() override { return false; }
 };
 
 FT_Library _library = nullptr;
