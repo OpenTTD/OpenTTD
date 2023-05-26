@@ -3513,6 +3513,19 @@ void MarkCatchmentTilesDirty()
 	}
 }
 
+static void SetWindowDirtyForViewportCatchment()
+{
+	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
+}
+
+static void ClearViewportCatchment()
+{
+	MarkCatchmentTilesDirty();
+	_viewport_highlight_station = nullptr;
+	_viewport_highlight_town = nullptr;
+}
+
 /**
  * Select or deselect station for coverage area highlight.
  * Selecting a station will deselect a town.
@@ -3521,12 +3534,10 @@ void MarkCatchmentTilesDirty()
  */
 void SetViewportCatchmentStation(const Station *st, bool sel)
 {
-	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
-	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
+	SetWindowDirtyForViewportCatchment();
 	if (sel && _viewport_highlight_station != st) {
-		MarkCatchmentTilesDirty();
+		ClearViewportCatchment();
 		_viewport_highlight_station = st;
-		_viewport_highlight_town = nullptr;
 		MarkCatchmentTilesDirty();
 	} else if (!sel && _viewport_highlight_station == st) {
 		MarkCatchmentTilesDirty();
@@ -3543,10 +3554,9 @@ void SetViewportCatchmentStation(const Station *st, bool sel)
  */
 void SetViewportCatchmentTown(const Town *t, bool sel)
 {
-	if (_viewport_highlight_town != nullptr) SetWindowDirty(WC_TOWN_VIEW, _viewport_highlight_town->index);
-	if (_viewport_highlight_station != nullptr) SetWindowDirty(WC_STATION_VIEW, _viewport_highlight_station->index);
+	SetWindowDirtyForViewportCatchment();
 	if (sel && _viewport_highlight_town != t) {
-		_viewport_highlight_station = nullptr;
+		ClearViewportCatchment();
 		_viewport_highlight_town = t;
 		MarkWholeScreenDirty();
 	} else if (!sel && _viewport_highlight_town == t) {
