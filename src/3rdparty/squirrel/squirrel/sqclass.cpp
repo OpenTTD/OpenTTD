@@ -65,6 +65,9 @@ bool SQClass::NewSlot(SQSharedState *ss,const SQObjectPtr &key,const SQObjectPtr
 		_defaultvalues[_member_idx(temp)].val = val;
 		return true;
 	}
+	if (_members->CountUsed() >= MEMBER_MAX_COUNT) {
+		return false;
+	}
 	if(type(val) == OT_CLOSURE || type(val) == OT_NATIVECLOSURE || bstatic) {
 		SQInteger mmidx;
 		if((type(val) == OT_CLOSURE || type(val) == OT_NATIVECLOSURE) &&
