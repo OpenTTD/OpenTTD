@@ -424,9 +424,9 @@ STR_GOTO_ORDER_VIEW                                             :{BLACK}Itinero
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Paŭzigu la ludon
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rapide pluirigu la ludon
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcioj
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcioj kaj agordoj
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Konservu ludon, foriru ludo, forlasi
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Montru mapon
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Montru mapon, ekstran vidujon, fluon de ŝarĝoj aŭ liston de ŝildoj
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Montru urbaron
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Montru subvenciojn
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Montri stacidomoliston de la kompanio.
@@ -1373,6 +1373,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Vagonaroj kaj �
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-gradaj turnoj ekzistas kiam horizontalan relpecon tuj sekvas vertikala relpeco sur apuda kahelo, tiel ke la trajno devas turniĝi 90 gradojn trairante la randon de la relo, anstataŭ la kutimaj 45 gradoj por aliaj kombinoj de relpecoj
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permesu ligi staciojn ne rekte najbarajn: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permesas aldoni al stacio partojn kiuj ne rekte tuŝas jam ekzistantajn partojn. Bezonas Stir+Klak por meti la novajn partojn
 
 STR_CONFIG_SETTING_INFLATION                                    :Inflacio: {STRING}
 
@@ -1528,6 +1529,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimuma dista
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Neĝregiona alto: {STRING}
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Neĝa kovro: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Dezerta kovro: {STRING}
 STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Regu la proksimuman kvanton de dezerto en la tropika terentipo. Dezertoj ankaŭ influas generadon de fabrikoj. Nur uzata dum mapgenerado
@@ -1572,6 +1574,7 @@ STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimuma staci
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksimuma area sur kiu povas etendiĝi unu stacio. Atentu ke altaj valoroj malrapidigos la ludon
 
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Aŭtomate prizorgu helikopterojn sur helikopterejoj: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Priservu helikopterojn post ĉiu surteriĝo, eĉ se ne estas hangaro ĉe la flughaveno
 
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligu landaspektan breton al konstruadaj bretoj: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Kiam malfermiĝas ilbreto por iu transporttipo, ankaŭ malfermu la landaspektan ilbreton
@@ -1598,6 +1601,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Movu la mapon p
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Movu la mapon per la maldekstra musbutono
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glata rulumado de vidujo: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Regu kiel la ĉefa vidujo rulumas al specifa pozicio kiam oni klakas en la mapeto aŭ petas rulumi al specifa objekto sur la mapo. Se tiu ĉi agordo estas aktiva, la vidujo rulumas glate, se malaktiva, ĝi tuj saltas al la celpunkto
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Montru mezuran konsilbalonon ĉe uzo de konstruiloj: {STRING}
 
@@ -1695,6 +1699,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Aŭtomate forig
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Aŭtomate forigu semaforojn dum relkonstruado se ili malhelpas konstrui. Atentu ke tio ĉi eventuale povas kaŭzi trajnkoliziojn.
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Maksimuma rapideco dum rapidpluigo: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% de la normala ludrapideco
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Senlime (tiel rapide kiel ebligas via komputilo)
 
@@ -1814,6 +1819,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Aliaj industria
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Montru gazetan anoncon kiam ŝanĝiĝas la produktadkvanto de fabrikoj ne servataj de la kompanio nek de konkurantoj
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Konsilo / informoj pri kompania veturilaro: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Montru mesaĝojn pri veturiloj kiuj bezonas atenton
 
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novaj veturiloj: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Montru gazetan anoncon kiam nova tipo de veturilo ekhaveblas
@@ -1891,7 +1897,9 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesate
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permesate, kutimo urbomapo
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Urba ŝarĝogenerado: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Kiom da ŝarĝoj produktas domoj en urboj, rilate al la loĝantaro de la tuta urbo.{}Kvadrata kresko: Urbo duoble pli granda generas kvaroblan nombron da pasaĝeroj.{}Lineara kresko: Urbo duoble pli granda generas duoblan nombron da pasaĝeroj.
 ###length 2
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadrata (originala)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineara
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :En ludo metanta de arbojn: {STRING}
@@ -2020,6 +2028,7 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfa
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Ĝenerale
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vidujoj
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruado
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Novaĵoj / Konsilantoj
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Kompanio
 STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Librotenado
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
@@ -2344,6 +2353,7 @@ STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Enretaj 
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servilo
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nomo
 STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nomo de la servilo ĉe kiu vi ludas
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Videbleco
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Ĉu aliuloj povas vidi vian servilon en la publika listo
 STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE                      :{BLACK}Invitkodo
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE                  :{BLACK}Konektotipo
@@ -2368,6 +2378,7 @@ STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}La nombr
 # Matches ConnectionType
 ###length 5
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Loka
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Foraj ludantoj ne povas konekti
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Publika
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Tra relajso
 
@@ -2422,7 +2433,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tajpu te
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ne trovis retstirilojn aŭ kompiliĝis sen ENABLE_NETWORK
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}La servilo ne respondis al la peto
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}La konektoprovo al la servilo superis la tempolimon aŭ estis rifuzita
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ne povis konekti pro miso pri NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Retluda sinkronigado fiaskis
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Perdis konekton al retludo
@@ -2484,11 +2495,11 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :atendas ĝisdat
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlasanta
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ensalutis la ludon
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} interligis la ludon (Client #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} iĝis ano de kompanio #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} aliĝis al la ludo (Kliento #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {0:STRING} iĝis ano de kompanio #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} iĝis spektanto
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ekis novan kompanion (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ĉesis la ludon ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} fondis novan kompanion (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} foriris el la ludo ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ŝanĝis sian nomon al {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} donis {2:CURRENCY_LONG} al {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
@@ -2595,6 +2606,7 @@ STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}neuzata
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}saturita
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}superŝutata
 
 # Linkgraph tooltip
@@ -3278,6 +3290,7 @@ STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Movadi l
 
 ###length 2
 
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Celkruco
 
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Elektu bildeto
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Elektu bildeton ie el la ekrano
@@ -3292,12 +3305,12 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalo: {S
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}La NewGRF "{STRING}" respondis per neriparebla eraro:{}{STRING}
 STR_NEWGRF_ERROR_POPUP                                          :{WHITE}La NewGRF "{STRING}" respondis per eraro:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne funkcios kun la versio de TTDPatch menciata de OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} estas por la {STRING} versio de TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} estas intencita por uzo kun {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nevalida parametro por {1:STRING}: parametro{STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} devi esti ŝarĝata antaŭ {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} devi esti ŝarĝata post {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} bezonas OpenTTD versio {STRING} aŭ pli bona
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} estas por la {2:STRING}-versio de TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} estas intencita por uzo kun {2:STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Malvalida parametro por {1:STRING}: parametro {2:STRING} ({3:NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} devas esti ŝarĝata antaŭ {2:STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} devas esti ŝarĝata post {2:STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} bezonas OpenTTD-version {2:STRING} aŭ pli bonan
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :la GRF-dosiero estas farita por traduki
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tro da NewGRF-oj estas ŝarĝataj
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neatendita bildeto (bildeto {3:NUM})
@@ -3405,6 +3418,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Alinomi urbon
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Lokaj estroj de {TOWN}
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zono
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Montru la zonon ene de la limoj de la lokaj estroj
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Takso de transportkompanioj:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Haveblaj agoj:
@@ -3981,7 +3995,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :aviadilo
 STR_ENGINE_PREVIEW_SHIP                                         :ŝipo
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosto: {CURRENCY_LONG} Pezo: {WEIGHT_SHORT}{}Rapido: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY_LONG} jare{}Kapablo: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kosto: {CURRENCY_LONG} Pezo: {WEIGHT_SHORT}{}Rapido: {VELOCITY}  Povo: {POWER}  Maks. T.E.: {6:FORCE}{}Irkosto: {4:CURRENCY_LONG}/jaro{}Kapacito: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kosto: {0:CURRENCY_LONG} Pezo: {1:WEIGHT_SHORT}{}Rapideco: {2:VELOCITY}  Povumo: {3:POWER}  Maks. trakcia forto.: {6:FORCE}{}Irkosto: {4:CURRENCY_LONG} jare{}Kapacito: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kosto: {CURRENCY_LONG} Maks. Rapido: {VELOCITY}{}Kapacito: {CARGO_LONG}{}Irkosto: {CURRENCY_LONG}/jaro
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Kosto: {CURRENCY_LONG} Maks. rapideco: {VELOCITY}{}Tipo de aviadilo: {STRING}{}Kapacito: {CARGO_LONG}, {CARGO_LONG}{}Irkosto: {CURRENCY_LONG} jare
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Kosto: {CURRENCY_LONG} Maks. rapideco: {VELOCITY}{}Tipo de aviadilo: {STRING}{}Kapacito: {CARGO_LONG}{}Irkosto: {CURRENCY_LONG} jare
