@@ -79,7 +79,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		CargoID cargo; ///< Cargo type
 		uint16_t waiting; ///< Amount of cargo produced
 		uint8_t rate; ///< Production rate
-		std::array<ProducedHistory, 2> history; ///< History of cargo produced and transported
+		std::array<ProducedHistory, 25> history; ///< History of cargo produced and transported for this month and 24 previous months
 	};
 
 	struct AcceptedCargo {
