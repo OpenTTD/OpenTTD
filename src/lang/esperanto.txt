@@ -408,6 +408,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenco/Irkosto
 STR_SORT_BY_CARGO_CAPACITY                                      :Ŝarĝkapablo
 STR_SORT_BY_RANGE                                               :Atingopovo
 STR_SORT_BY_POPULATION                                          :Enloĝantaro
+STR_SORT_BY_RATING                                              :Takso
 STR_SORT_BY_NUM_VEHICLES                                        :Nombro de veturiloj
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Ensuma profito pasintjare
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Ensuma profito ĉi-jare
@@ -510,8 +511,8 @@ STR_FILE_MENU_EXIT                                              :Fermu
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mondomapo
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Plia vidujo
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legendo de ŝarĝfluo
-STR_MAP_MENU_SIGN_LIST                                          :Afiŝa listo
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Klarigeto de ŝarĝfluo
+STR_MAP_MENU_SIGN_LIST                                          :Listo de ŝildoj
 
 # Town menu
 ###length 2
@@ -586,6 +587,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Baskuligi Konzolon
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Ludo skripto sencimigo
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Montru bildrapidon
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pri 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Bildeto-liniigilo
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Montri/ne montri limigujo
@@ -1238,7 +1240,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Neniu ta
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Agordoj
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtroteksto:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Etendu ĉio
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Etendu ĉion
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Maletendu ĉiujn
 STR_CONFIG_SETTING_COLLAPSE_ALL.n                               :{BLACK}Collapse all
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restarigu ĉiujn valorojn
@@ -1273,6 +1275,8 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Kompaniaj agord
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Neniu -
 ###length 3
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Montru ĉiujn serĉrezultojn ŝanĝante{}{SILVER}Kategorion {BLACK}al {WHITE}{STRING}
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Montru ĉiujn serĉrezultojn ŝanĝante{}{SILVER}Kategorion {BLACK}al {WHITE}{STRING}{BLACK}kaj {SILVER}Tipon {BLACK}al {WHITE}Ĉiuj agordoj
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Malaktiva
@@ -1369,7 +1373,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Deklivkruteco por stratveturiloj: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kruteco de dekliva kahelo por stratveturilo. Kun pli alta valoro estas pli malfacile supreniri altaĵon
 
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Vagonaroj kaj ŝipoj ne ort-turniĝu: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Malpermesi al trajnoj fari 90-gradajn turnojn: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-gradaj turnoj ekzistas kiam horizontalan relpecon tuj sekvas vertikala relpeco sur apuda kahelo, tiel ke la trajno devas turniĝi 90 gradojn trairante la randon de la relo, anstataŭ la kutimaj 45 gradoj por aliaj kombinoj de relpecoj
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permesu ligi staciojn ne rekte najbarajn: {STRING}
@@ -1442,6 +1446,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permesu ĝiri m
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {STRING}
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Aviadila rapidecfaktoro: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Agordu la relativan rapidecon de aviadiloj kompare al aliaj tipoj de veturiloj, por malpliigi enspezojn de transportado per aviadilo
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Nombro da aviadilokraŝoj: {STRING}
@@ -1494,6 +1499,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} monato{
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER.n               :{COMMA} monato{P 0 "" j}n post
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimuma mono por anstataŭado: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimuma monkvanto kiu devas resti en la banko antaŭ eventuala aŭtomata renovigo de veturiloj
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Daŭro de erarmesaĝo: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekundo{P 0 "" j}
@@ -1525,6 +1531,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Denseco de fabr
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Agordu kiom da fabrikoj estu generitaj, kaj kiu nivelo estu tenata dum la ludo
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimuma distanco de la maprando por olea industrio: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limigu kiom for de la eĝo de la mapo konstrueblas olerafinejoj kaj oleplatformoj. Ĉe insulaj mapoj, tio certigas ke ili estos proksime de la bordo. Ĉe mapoj pli grandaj ol 256 kaheloj, tiu ĉi agordo estos laŭskale grandigita.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Neĝregiona alto: {STRING}
 
@@ -1604,6 +1611,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glata rulumado 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Regu kiel la ĉefa vidujo rulumas al specifa pozicio kiam oni klakas en la mapeto aŭ petas rulumi al specifa objekto sur la mapo. Se tiu ĉi agordo estas aktiva, la vidujo rulumas glate, se malaktiva, ĝi tuj saltas al la celpunkto
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Montru mezuran konsilbalonon ĉe uzo de konstruiloj: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Montru kahel-distancojn kaj altec-diferencojn dum mustrenado por konstruado
 
 STR_CONFIG_SETTING_LIVERIES                                     :Montru veturiltipe specifajn liverojn: {STRING}
 ###length 3
@@ -1632,6 +1640,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Unuobla klako (
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Unuobla klako (tuj)
 
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Uzu relajsan servon: {STRING}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Se konektado al la servilo malsukcesas, eblas uzi relajsan servon por starigi konekton. La agordo "neniam" malpermesas tion, "demandu" demandos unue, "permesu" permesas sen peti konfirmon
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Neniam
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Demandu
@@ -1760,6 +1769,7 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Malfacila
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permesu ArtefaritajnIntelektojn en pluropaj ludoj: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permesu ke Artefarit-Inteligentaj (AI) komputilaj ludantoj partoprenu en pluropaj ludoj
 
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Maksimuma memoruzo por ĉiu skripto: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Kiom da memoro unuopa skripto rajtas konsumi antaŭ ol ĝi estos devige haltigita. Povas esti necese altigi tiun ĉi agordon por grandaj mapoj.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
@@ -1855,8 +1865,9 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Glata
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Frostigita
 
 
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Dum trenado, metu semaforojn je ĉiu: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} kahelo{P 0 "" j}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Dum mustrenado, metu semaforojn je ĉiu: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}a kahelo
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Dum trenado, tenu fiksitan distancon inter semaforoj: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Elektu kiel funkcias dismeto de semaforoj dum Stir+trenado. Se tiu ĉi agordo estas malaktiva, semaforoj estos metitaj ĉirkaŭ tuneloj aŭ pontoj por eviti longajn sekciojn sen semaforoj. Se tiu ĉi agordo estas aktiva, semaforoj estos metitaj je ĉiu N-a kahelo, por faciligi laŭliniigon de semaforoj sur paralelaj trakoj
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Aŭtomate konstruu semaforojn antaŭ: {STRING}
@@ -1902,7 +1913,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Kiom da ŝarĝo
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadrata (originala)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineara
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :En ludo metanta de arbojn: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Dumluda metado de arboj: {STRING}
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Kresku sed ne disvastiĝu {RED}(malfunkciigas lignejojn)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Kresku kaj disvastiĝu ĉie
@@ -1955,6 +1966,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgran
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Averaĝa grandeco de urbegoj rilate al normalaj urboj je la komenco de la ludo
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Ĝisdatigu la distribuan grafeon {P 0:2 "ĉiun" "ĉiujn"} {STRING}{NBSP}{P 0:2 "sekundon" "sekundojn"}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Uzu {STRING}{NBSP}sekundo{P 0:2 n jn} por rekalkulado de la distribua grafeo
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribua reĝimo por pasaĝeroj: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetria" signifas ke proksimume la sama nombro de pasaĝeroj iros de stacio A al stacio B kiel de B al A. "Malsimetria" signifas ke ajnaj nombroj de pasaĝeroj povas iri en ajnan direkton. "Permana" signifas ke ne estos aŭtomata distribuado de pasaĝeroj.
@@ -1973,6 +1985,7 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Akurateco de di
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efiko de distanco al postulado: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Se vi agordas tion ĉi al valoro pli alta ol 0, la distanco inter la stacio A kie iu ŝarĝo originis kaj ebla celpunkto B efikos al la kvanto de ŝarĝo sendota de A al B. Ju pli for B estas de A, des malpli da ŝarĝo estos sendota. Ju pli alte vi agordas la valoron, des malpli da ŝarĝo estos sendata al foraj stacioj kaj des pli da ŝarĝo estos sendata al proksimaj stacioj.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Kvanto de revenanta ŝarĝo por simetria reĝimo: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Se vi agordas tion ĉi al malpli ol 100%, la simetria distribuado kondutos pli kiel la malsimetria. Malpli da ŝarĝo estos devige sendata reen se certa kvanto estas sendata al iu stacio. Se vi agordas ĝin al 0%, la simetria distribuado kondutos ekzakte kiel la malsimetria.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturado de mallongaj vojoj antaŭ ol uzi altkapacitajn vojojn: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofte ekzistas pluraj vojoj inter ajnaj du stacioj. La ŝarĝdistribua algoritmo unue saturos la plej mallongan vojon, poste uzos la duan plej mallongan vojon ĝis ĝi estos saturita, kaj tiel plu. Saturado estas determinita de takso de kapacito kaj planita uzado. Post kiam ĉiuj vojoj estas saturitaj, se ankoraŭ estas postulado, ĝi superŝutos ĉiujn vojojn, preferante la plej altkapacitajn. Tamen plej ofte la algoritmo malakurate taksos kapaciton. Per tiu ĉi agordo vi povas indiki ĝis kiu procentaĵo mallonga vojo devas esti saturita en la unua paŝo antaŭ ol elekti la sekvan pli longan. Agordu ĝin al malpli ol 100% por eviti superŝutitajn staciojn kaze de trotaksita kapacito.
@@ -2022,6 +2035,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Angla-usona sis
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metra (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI-unuoj (m)
 
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Loka adaptado
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafiko
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sonefektoj
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaco
@@ -2065,13 +2079,17 @@ STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... supe
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoras la NewGRF-on '{STRING}': ĝi havas GRF-ID-duoblaĵon kun '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoras malvalidan NewGRF-on '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ne troveblas
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :malsekura por statika uzo
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :malkongrua kun tiu ĉi versio de OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nekonata
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... la kompaktignivelo '{STRING}' estas malvalida
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... ludokonserva formato '{STRING}' ne estas havebla. Reiras al '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoras Bazan Grafikaron '{STRING}': ne trovebla
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoras Bazan Sonaron '{STRING}': ne trovebla
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoras Bazan Muzikaron '{STRING}': ne trovebla
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memormanko
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Asignado de {BYTES} por bildeta kaŝmemoro malsukcesis. La bildeta kaŝmemoro estis reduktita al {BYTES}. Tio ĉi igos OpenTTD funkcii pli malrapide. Por malpliigi la memorbezonon vi povas provi malŝalti grafikon kun 32 bitoj rastrumere kaj/aŭ zom-nivelojn.
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Eraro pri videaj agordoj...
@@ -2383,6 +2401,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Publika
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Tra relajso
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Forbaru
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Forigi
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administra ago
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Ĉu vi certas ke vi volas forbari la ludanton '{STRING}'?
@@ -2474,6 +2493,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estis sendanta 
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :ne ricevis pasvorton ene de la tempolimo
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :ĝenerala tempolimo
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :elŝutado de mapo daŭris tro longe
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :prilaborado de la mapo daŭris tro longe
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :malvalida klientonomo
 
 # Network related errors
@@ -2504,6 +2524,7 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ŝ
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} donis {2:CURRENCY_LONG} al {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}La servilo restartiĝas...{}Bonvolu atendi...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} estis forbatita. Kialo: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Servila registrado malsukcesis
 STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}Alia servilo kun la sama invitokodo registris sin. Ŝaltas al "loka" ludotipo.
@@ -2562,6 +2583,7 @@ STR_CONTENT_TYPE_HEIGHTMAP                                      :Altecmapo
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Bazaj sonoj
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Baza muziko
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Ludoskripto
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Ludoskripta kodoteko
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Enhavo elŝutiĝas...
@@ -2599,6 +2621,7 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Baskulig
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Igu objektojn nevideblaj anstataŭ travideblaj
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Klarigeto de ŝarĝfluo
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Ĉiuj
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Neniaj
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Elektu kiujn kompaniojn montri
@@ -2693,6 +2716,7 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombina 
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Vojrezerva semaforo (elektra){}Vojrezerva semaforo ebligas ke pli ol unu trajno eniru signalan blokon samtempe, se la trajno povas rezervi vojon ĝis sekura haltopunkto. Normalan vojrezervan semaforon eblas trapasi de la malantaŭa flanko
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Unudirekta vojrezerva semaforo (elektra){}Vojrezerva semaforo ebligas ke pli ol unu trajno eniru signalan blokon samtempe, se la trajno povas rezervi vojon ĝis sekura haltopunkto. Unudirektan vojrezervan semaforon ne eblas trapasi de la malantaŭa flanko
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distanco inter semaforoj dum trenado
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Malpliigu semaforan distancon dum trenado
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Pliigu semaforan distancon dum trenado
 
 # Bridge selection window
@@ -3043,6 +3067,7 @@ STR_FRAMERATE_CAPTION                                           :{WHITE}Bildrapi
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_CURRENT                                           :{WHITE}Nuna
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Averaĝa
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memory
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}La datumoj baziĝas je {COMMA} mezuroj
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
@@ -3121,6 +3146,7 @@ STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Pliigu n
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Malpliigu neĝan kovron je dek procentoj
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Dezerta kovro:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Pliigu dezertan kovron je dek procentoj
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Malpliigu dezertan kovron je dek procentoj
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terentipo:
@@ -3249,6 +3275,9 @@ STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kon
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletro: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Defaŭlta (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Defaŭlta (D) / po 32 bitoj por rastrumero
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Malnova (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Malnova (W) / po 32 bitoj por rastrumero
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametroj: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Neniuj
 
@@ -3346,7 +3375,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Mankaj dos
 STR_NEWGRF_BROKEN                                               :{WHITE}La konduto de la NewGRF '{0:STRING}' verŝajne kaŭzos malsinkroniĝojn kaj/aŭ paneojn
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ĝi ŝanĝis la veturilan longecon de '{1:ENGINE}' dum ĝi ne estis en garaĝo
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ĝi ŝanĝis la veturilan kapaciton de '{1:ENGINE}' dum ĝi ne estis en garaĝo aŭ readaptiĝanta
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}La trajno '{VEHICLE}' aparenanta al '{COMPANY}' havas malvalidan longecon. Tion verŝajne kaŭzis problemoj pri NewGRF-oj. La ludo eventuale malsinkroniĝos aŭ paneos
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}La trajno '{VEHICLE}' apartenanta al '{COMPANY}' havas malvalidan longecon. Tion verŝajne kaŭzis problemoj pri NewGRF-oj. La ludo eventuale malsinkroniĝos aŭ paneos
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' donas malĝustan informon
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Revoko' {1:HEX} revenis nekonatan/malvalidan rezulton {2:HEX}
@@ -3368,12 +3397,12 @@ STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} Ne
 STR_NEWGRF_SCAN_ARCHIVES                                        :Trovas por arĥivoj
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Signolisto - {COMMA} Signo{P "" j}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Ŝildolisto - {COMMA} ŝildo{P "" j}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Parigu kazon
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Aktivu/Malaktivu parigan kazon dum komparanta signajn nomojn kontraŭ la filtra teksto
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ŝanĝu afiŝan tekston
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ŝanĝu tekston de la ŝildo
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrigu ĉefvidon je la loko de la ŝildo. Stir+Klak malfermas novan vidujon ĉe la loko de la ŝildo
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Iri al la sekva signo
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Iri al la antaŭa signo
@@ -3580,6 +3609,8 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Enspezo
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Operaciaj elspezoj
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitalaj elspezoj
 
 
 ###length 13
@@ -4563,8 +4594,8 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Enspezo: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transigo: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transigo: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {GREEN}Revenuo: {CURRENCY_LONG}
-STR_FEEDER_INCOME                                               :{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {GREEN}Revenuo: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {GREEN}Enspezo: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {GREEN}Enspezo: {CURRENCY_LONG}
 STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {RED}Kosta: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {RED}Kosto: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Atendata Kosto: {CURRENCY_LONG}
@@ -5437,7 +5468,7 @@ STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hanga
 # _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :nekonata stacio
-STR_DEFAULT_SIGN_NAME                                           :Signo
+STR_DEFAULT_SIGN_NAME                                           :Ŝildo
 STR_COMPANY_SOMEONE                                             :iu
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY} je {STRING}
