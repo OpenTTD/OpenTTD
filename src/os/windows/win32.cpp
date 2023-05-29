@@ -23,7 +23,6 @@
 #include "../../fios.h"
 #include "../../core/alloc_func.hpp"
 #include "../../string_func.h"
-#include <errno.h>
 #include <sys/stat.h>
 #include "../../language.h"
 #include "../../thread.h"

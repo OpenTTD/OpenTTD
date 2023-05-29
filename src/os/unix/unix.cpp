@@ -108,7 +108,6 @@ bool FiosIsHiddenFile(const struct dirent *ent)
 #ifdef WITH_ICONV
 
 #include <iconv.h>
-#include <errno.h>
 #include "../../debug.h"
 #include "../../string_func.h"
 

@@ -19,8 +19,6 @@
 #include "window_gui.h"
 #include "widgets/dropdown_type.h"
 
-#include <numeric>
-
 typedef GUIList<const Vehicle*, CargoID> GUIVehicleList;
 
 struct GUIVehicleGroup {

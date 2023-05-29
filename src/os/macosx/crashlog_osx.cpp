@@ -15,7 +15,6 @@
 #include "../../video/video_driver.hpp"
 #include "macos.h"
 
-#include <errno.h>
 #include <signal.h>
 #include <mach-o/arch.h>
 #include <dlfcn.h>
