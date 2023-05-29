@@ -13,7 +13,6 @@
 #include "../../gamelog.h"
 #include "../../saveload/saveload.h"
 
-#include <errno.h>
 #include <signal.h>
 #include <sys/utsname.h>
 

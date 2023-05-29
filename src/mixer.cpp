@@ -8,7 +8,6 @@
 /** @file mixer.cpp Mixing of sound samples. */
 
 #include "stdafx.h"
-#include <math.h>
 #include <mutex>
 #include <atomic>
 #include "core/math_func.hpp"

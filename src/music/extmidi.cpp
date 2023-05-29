@@ -24,7 +24,6 @@
 #include <unistd.h>
 #include <signal.h>
 #include <sys/stat.h>
-#include <errno.h>
 
 #include "../safeguards.h"
 

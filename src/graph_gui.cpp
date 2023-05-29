@@ -29,7 +29,6 @@
 
 #include "table/strings.h"
 #include "table/sprites.h"
-#include <math.h>
 
 #include "safeguards.h"
 

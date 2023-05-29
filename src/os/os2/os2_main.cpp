@@ -12,7 +12,6 @@
 #include "../../core/random_func.hpp"
 #include "../../string_func.h"
 
-#include <stdlib.h>
 #include <time.h>
 
 #include "../../safeguards.h"

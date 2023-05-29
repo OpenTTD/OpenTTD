@@ -22,7 +22,6 @@
 #include "../../industry_cmd.h"
 #include "../../timer/timer_game_calendar.h"
 #include "table/strings.h"
-#include <numeric>
 
 #include "../../safeguards.h"
 

@@ -8,7 +8,6 @@
 /** @file tgp.cpp OTTD Perlin Noise Landscape Generator, aka TerraGenesis Perlin */
 
 #include "stdafx.h"
-#include <math.h>
 #include "clear_map.h"
 #include "void_map.h"
 #include "genworld.h"

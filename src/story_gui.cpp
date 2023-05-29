@@ -31,8 +31,6 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-#include <numeric>
-
 #include "safeguards.h"
 
 static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor);
