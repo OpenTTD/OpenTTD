@@ -14,6 +14,7 @@
 #include "engine_type.h"
 #include "vehicle_type.h"
 #include "vehiclelist.h"
+#include "vehiclelist_cmd.h"
 #include "cargo_type.h"
 
 std::tuple<CommandCost, VehicleID, uint, uint16, CargoArray> CmdBuildVehicle(DoCommandFlag flags, TileIndex tile, EngineID eid, bool use_free_vehicles, CargoID cargo, ClientID client_id);
@@ -42,17 +43,6 @@ DEF_CMD_TRAIT(CMD_DEPOT_MASS_AUTOREPLACE,  CmdDepotMassAutoReplace, 0,          
 
 void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16, CargoArray);
 void CcStartStopVehicle(Commands cmd, const CommandCost &result, VehicleID veh_id, bool);
-
-template <typename Tcont, typename Titer>
-inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const VehicleListIdentifier &vli)
-{
-	return buffer << vli.type << vli.vtype << vli.company << vli.index;
-}
-
-inline EndianBufferReader &operator >>(EndianBufferReader &buffer, VehicleListIdentifier &vli)
-{
-	return buffer >> vli.type >> vli.vtype >> vli.company >> vli.index;
-}
 
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const CargoArray &cargo_array)

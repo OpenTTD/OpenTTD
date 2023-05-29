@@ -102,6 +102,7 @@ struct BaseVehicleListWindow : public Window {
 		ADI_DEPOT,
 		ADI_ADD_SHARED,
 		ADI_REMOVE_ALL,
+		ADI_CREATE_GROUP,
 	};
 
 	static const StringID vehicle_depot_name[];
@@ -124,8 +125,8 @@ struct BaseVehicleListWindow : public Window {
 	void SetCargoFilterIndex(byte index);
 	void SetCargoFilterArray();
 	void FilterVehicleList();
-	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group);
-	DropDownList BuildActionDropdownList(bool show_autoreplace, bool show_group);
+	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group, bool show_create);
+	DropDownList BuildActionDropdownList(bool show_autoreplace, bool show_group, bool show_create);
 
 	const StringID *GetVehicleSorterNames()
 	{

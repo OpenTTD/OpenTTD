@@ -915,7 +915,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlag flags, TileInde
 
 	if (flags & DC_EXEC) {
 		/* Cloned vehicles belong to the same group */
-		Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, v_front->group_id, w_front->index, false);
+		Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, v_front->group_id, w_front->index, false, VehicleListIdentifier{});
 	}
 
 

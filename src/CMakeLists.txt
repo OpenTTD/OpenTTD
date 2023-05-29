@@ -503,6 +503,7 @@ add_files(
     vehicle_type.h
     vehiclelist.cpp
     vehiclelist.h
+    vehiclelist_cmd.h
     viewport.cpp
     viewport_cmd.h
     viewport_func.h
