@@ -12,6 +12,7 @@
  */
 
 #include "stdafx.h"
+#include <cmath>
 #include "newgrf_object.h"
 #include "viewport_func.h"
 #include "command_func.h"
@@ -98,25 +99,38 @@ void ResetBridges()
 	memcpy(&_bridge, &_orig_bridge, sizeof(_orig_bridge));
 }
 
+/*
+ * Newton method for square roots; factors of 10 used so we get the
+ * first digit after decimal point as well (to determine rounding).
+ * [This also means n must be less than UINT_MAX/100.]
+ */
+static unsigned int ipu_sqrt_rounded(unsigned int n)
+{
+	if (n == 0)
+		return 0;
+	unsigned int x = n * 10;
+	unsigned int y = 10;
+	while (x > y) {
+		x = (x + y) / 2;
+		y = n * 100 / x;
+	}
+	return (x / 10) + (x % 10 >= 5);
+}
+
 /**
  * Calculate the price factor for building a long bridge.
- * Basically the cost delta is 1,1, 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5, 6,6,6,6,6,6,  7,7,7,7,7,7,7,  8,8,8,8,8,8,8,8,
+ * The bridge heads (each costs 1) are trimmed (and later added back).
+ * The cost for main tiles of the bridge follow https://oeis.org/A002024 ,
+ * the sum of which is https://oeis.org/A060432 .
  * @param length Length of the bridge.
  * @return Price factor for the bridge.
  */
-int CalcBridgeLenCostFactor(int length)
+unsigned int CalcBridgeLenCostFactor(unsigned int length)
 {
 	if (length < 2) return length;
-
-	length -= 2;
-	int sum = 2;
-	for (int delta = 1;; delta++) {
-		for (int count = 0; count < delta; count++) {
-			if (length == 0) return sum;
-			sum += delta;
-			length--;
-		}
-	}
+	length -= 2; /* ignore bridge heads */
+	unsigned int r = ipu_sqrt_rounded(2 * length);
+	return 2 + ((6 * length + 1) * r - r * r * r) / 6;
 }
 
 /**
