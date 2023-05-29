@@ -595,21 +595,21 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :(Mal)ŝalti la 
 
 # Place in highscore window
 ###length 15
-STR_ORDINAL_NUMBER_1ST                                          :1a de
-STR_ORDINAL_NUMBER_2ND                                          :2a de
-STR_ORDINAL_NUMBER_3RD                                          :3a de
-STR_ORDINAL_NUMBER_4TH                                          :4a de
-STR_ORDINAL_NUMBER_5TH                                          :5a de
-STR_ORDINAL_NUMBER_6TH                                          :6a de
-STR_ORDINAL_NUMBER_7TH                                          :7a de
-STR_ORDINAL_NUMBER_8TH                                          :8a de
-STR_ORDINAL_NUMBER_9TH                                          :9a de
-STR_ORDINAL_NUMBER_10TH                                         :10a de
-STR_ORDINAL_NUMBER_11TH                                         :11a de
-STR_ORDINAL_NUMBER_12TH                                         :12a de
-STR_ORDINAL_NUMBER_13TH                                         :13a de
-STR_ORDINAL_NUMBER_14TH                                         :14a de
-STR_ORDINAL_NUMBER_15TH                                         :15a de
+STR_ORDINAL_NUMBER_1ST                                          :1a
+STR_ORDINAL_NUMBER_2ND                                          :2a
+STR_ORDINAL_NUMBER_3RD                                          :3a
+STR_ORDINAL_NUMBER_4TH                                          :4a
+STR_ORDINAL_NUMBER_5TH                                          :5a
+STR_ORDINAL_NUMBER_6TH                                          :6a
+STR_ORDINAL_NUMBER_7TH                                          :7a
+STR_ORDINAL_NUMBER_8TH                                          :8a
+STR_ORDINAL_NUMBER_9TH                                          :9a
+STR_ORDINAL_NUMBER_10TH                                         :10a
+STR_ORDINAL_NUMBER_11TH                                         :11a
+STR_ORDINAL_NUMBER_12TH                                         :12a
+STR_ORDINAL_NUMBER_13TH                                         :13a
+STR_ORDINAL_NUMBER_14TH                                         :14a
+STR_ORDINAL_NUMBER_15TH                                         :15a
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1a de
@@ -740,9 +740,9 @@ STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombro d
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombro da staciopartoj lastatempe servitaj. Ĉiu stacioparto (ekz. stacidomo, bushaltejo, flughaveno) alkalkuliĝas, eĉ se ligite kiel unu stacio.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}La profito de la malplejenspeza veturilo (nur de veturiloj pli aĝaj ol 2 jaroj).
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Enspezo dum la plej malaltprofita kvarono de la lastaj 12 kvaronoj
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Enspezo dum la plej altprofita kvarono de la lastaj 12 kvaronoj
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ŝarĝunuoj liveritaj en la lastaj 4 kvaronoj
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Nombro da ŝarĝtipoj liveritaj en la lasta kvarono
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Enspezo dum la plej altprofita kvaronjaro el la lastaj 12 kvaronjaroj
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Ŝarĝunuoj liveritaj dum la pasintaj 4 kvaronjaroj
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Nombro de ŝarĝtipoj liveritaj dum la pasinta kvaronjaro
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Monkvanto de ĉi tiu kompanio en la banko
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}La monkvanto pruntita de ĉi tiu kompanio
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Entuta poentaro el eblaj poentoj
@@ -1276,6 +1276,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Kompaniaj agord
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Neniu -
 ###length 3
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Montru ĉiujn serĉrezultojn ŝanĝante{}{SILVER}Kategorion {BLACK}al {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Montru ĉiujn serĉrezultojn ŝanĝante{}{SILVER}Tipon {BLACK}al {WHITE}Ĉiuj agordoj
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Montru ĉiujn serĉrezultojn ŝanĝante{}{SILVER}Kategorion {BLACK}al {WHITE}{STRING}{BLACK}kaj {SILVER}Tipon {BLACK}al {WHITE}Ĉiuj agordoj
 
 ###length 3
@@ -1332,6 +1333,7 @@ STR_CONFIG_SETTING_RECESSIONS                                   :Recesioj: {STRI
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kiam tiu ĉi agordo estas aktiva, recesioj povas okazi ĉiujn kelkajn jarojn. Dum recesio ĉia produktado estas signife malpli alta (ĝi revenos al la antaŭa nivelo kiam finiĝas la recesio)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Malpermesu al trajnoj turniĝi en stacioj: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se tiu ĉi agordo estas aktiva, trajnoj ne turniĝos en trairaj stacioj, eĉ se troveblus pli mallonga vojo al la sekva celpunkto turniĝinte
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofoj: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ŝaltu akcidentojn kiuj de temp' al tempo povas bloki veturilojn aŭ infrastrukturon
@@ -1406,6 +1408,7 @@ STR_CONFIG_SETTING_SIGNALSIDE                                   :Montru signaloj
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Elektu je kiu flanko de la reloj meti semaforojn
 ###length 3
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Maldekstre
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :En la strata stirflanko
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Dekstre
 
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Montru financan fenestron fine de la jaro: {STRING}
@@ -1521,8 +1524,9 @@ STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Montru kiujn ŝ
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landaspekto: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landgenerilo: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :La originala landgenerilo dependas je la baza grafikaro, kaj komponas fiksitajn pejzaĝformojn. TerraGenesis estas generilo bazita je Perlin-bruo kun pli fajnaj agordebloj
 ###length 2
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originale
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originala
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terentipo: {STRING}
@@ -1536,10 +1540,11 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limigu kiom for
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Neĝregiona alto: {STRING}
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Neĝa kovro: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Regas la proksimuman kvanton de neĝo en la arktikeca landaspekto. Neĝo ankaŭ influas generadon de fabrikoj kaj kondiĉojn por kreskado de urboj. Nur uzata dum mapgenerado. Tereno tuj super la marnivelo ĉiam estas senneĝa.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Dezerta kovro: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Regu la proksimuman kvanton de dezerto en la tropika terentipo. Dezertoj ankaŭ influas generadon de fabrikoj. Nur uzata dum mapgenerado
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Regas la proksimuman kvanton de dezerto en la tropikeca landaspekto. Dezertoj ankaŭ influas generadon de fabrikoj. Nur uzata dum mapgenerado
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Nereguleco de tereno: {STRING}
@@ -1647,6 +1652,7 @@ STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Demandu
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Permesu
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Imitado de dekstra klako: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Elektu metodon por imiti klakojn per la dekstra musbutono
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komando+Klako
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klako
@@ -1777,6 +1783,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Prizorginterval
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kiam tiu ĉi agordo estas aktiva, veturiloj klopodas iri al priservado kiam ilia fidindeco estas je certa procentaĵo malpli alta ol la maksimuma fidindeco.{}{}Ekzemple, se la maksimuma fidindeco de veturilo estas 90% kaj la priservintervalo estas 20%, la veturilo klopodos iri al priservado kiam ĝi atingas fidindecon de 72%.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Defaŭlta priservintervalo for trajnoj: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Elektu la defaŭltan priservintervalon por novaj relveturiloj, se ne estas eksplicite agordita priservintervalo por la veturilo
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Defaŭlta priservintervalo por stratveturiloj: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Elektu la defaŭltan priservintervalon por novaj stratveturiloj, se ne estas eksplicite agordita priservintervalo por la veturilo
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Defaŭlta priservintervalo por aviadiloj: {STRING}
@@ -1902,6 +1909,7 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permesu urbe ko
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kiam tiu ĉi agordo estas malaktiva, povas esti nur du flughavenoj en ĉiu urbo. Kiam tiu ĉi agordo estas aktiva, la nombron de flughavenoj en urbo limigas la bruo-toleremo de la urbo, kiu dependas de la loĝantaro kaj de la grandeco kaj distanco de la flughaveno
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Konstruanta urbojn en ludo: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Kiam tiu ĉi agordo estas aktiva, ludantoj rajtas fondi novajn urbojn dum la ludo
 ###length 3
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :malpermesita
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesate
@@ -1916,6 +1924,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineara
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Dumluda metado de arboj: {STRING}
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Kresku sed ne disvastiĝu {RED}(malfunkciigas lignejojn)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Kresku sed disvastiĝu nur en pluvarbaroj
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Kresku kaj disvastiĝu ĉie
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Ne kresku, ne disvastiĝu {RED}(malfunkciigas lignejojn)
 
@@ -1971,8 +1980,9 @@ STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Uzu {STRING}{NB
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribua reĝimo por pasaĝeroj: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetria" signifas ke proksimume la sama nombro de pasaĝeroj iros de stacio A al stacio B kiel de B al A. "Malsimetria" signifas ke ajnaj nombroj de pasaĝeroj povas iri en ajnan direkton. "Permana" signifas ke ne estos aŭtomata distribuado de pasaĝeroj.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distribua reĝimo por poŝto: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simetria" signifas ke proksimume la sama kvanto de poŝto estos sendita de stacio A al stacio B kiel de B al A. "Malsimetria" signifas ke ajnaj kvantoj de poŝto povas esti sendita en ajnan direkton. "Permana" signifas ke ne estos aŭtomata distribuado de poŝto.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simetria" signifas ke proksimume la sama kvanto de poŝto estos sendata de stacio A al stacio B kiel de B al A. "Malsimetria" signifas ke ajnaj kvantoj de poŝto povas esti sendataj en ajnan direkton. "Permana" signifas ke ne estos aŭtomata distribuado de poŝto.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribua reĝimo por KIRASA ŝarĝoklaso: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La KIRASA ŝarĝoklaso inkluzivas valoraĵojn en la modera landaspekto, diamantojn en la tropikeca landaspekto, aŭ oron en la arktikeca landaspekto. NewGRF-oj povas ŝanĝi tion. "Simetria" signifas ke proksimume la sama kvanto de ŝarĝo estos sendata de stacio A al stacio B kiel de B al A. "Malsimetria" signifas ke ajnaj kvantoj de ŝarĝoj povas esti sendataj en ajnan direkton. "Permana" signifas ke ne estos aŭtomata distribuado de poŝto. Estas rekomendate agordi tion ĉi al "malsimetria" aŭ "permana" en arktikeca aŭ tropikeca landaspekto, pro tio ke en tiuj landaspektoj bankoj nur ricevas ŝarĝojn. En modera landaspekto vi ankaŭ povas elekti "simetria", ĉar bankoj sendos valoraĵojn reen al la origina banko.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribua reĝimo por aliaj klasoj de ŝarĝoj: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Malsimetria" signifas ke ajnaj kvantoj de ŝarĝoj povas esti senditaj en ajnan direkton. "Permana" signifas ke ne estos aŭtomata distribuado de tiaj ĉi ŝarĝoj.
 ###length 3
@@ -2381,6 +2391,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nomo
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Via ludantnomo
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Ŝanĝu vian ludantonomon
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Via ludantnomo
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administraj agoj fareblaj por tiu ĉi kompanio
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Aliĝu al tiu ĉi kompanio
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Sendu mesaĝon al tiu ĉi ludanto
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Sendu mesaĝon al ĉiuj ludantoj de tiu ĉi kompanio
@@ -2468,6 +2479,7 @@ STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Kialo: {
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Vi ne rajtas filudi en ĉi tiu servilo
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Vi estis sendanta tro da komandojn al la servilo
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Via komputilo bezonis tro longan tempon por elŝuti la mapon
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Via komputilo bezonis tro longan tempon por aliĝi al la servilo
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Via ludantnomo estas malvalida
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Ebla konektoperdo
@@ -3218,7 +3230,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Altigu l
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Ŝanĝu altecon de ebena lando
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Generante Mondon...
+STR_GENERATION_WORLD                                            :{WHITE}Generas mondon...
 STR_GENERATION_ABORT                                            :{BLACK}Ĉesu
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Ĉesu generi mondon
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ĉu vi vere volas ĉesi generi mondon?
@@ -4296,27 +4308,27 @@ STR_ORDER_DROP_TRANSFER                                         :Transigo
 STR_ORDER_DROP_NO_UNLOADING                                     :Ne malŝarĝu
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ŝanĝi la malŝarĝagon de la emfazita ordono
 
-STR_ORDER_REFIT                                                 :{BLACK}Transformu
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Elektu kargospecon por transformo en ĉi tiu ordono. CTRL+klako por forigi transforminstrukcion
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Aŭtotransformi al stacio
+STR_ORDER_REFIT                                                 :{BLACK}Readaptu
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Elektu al kia ŝarĝotipo readapti en ĉi tiu ordono. Ctrl+klaku por forigi readaptan instrukcion
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Readaptu ĉe stacio
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Elektu al kia ŝarĝotipo readapti en tiu ĉi ordono. Forigu la readaptan instrukcion per Stir+klako. Readaptado ĉe stacioj okazos nur se la veturilo permesas tion
 STR_ORDER_DROP_REFIT_AUTO                                       :Malŝanĝa ŝarĝo
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Haveblaj ŝarĝoj
 
-STR_ORDER_SERVICE                                               :{BLACK}Prizorgo
+STR_ORDER_SERVICE                                               :{BLACK}Priservo
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ĉiam iru.
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Prizorgu se necesas.
 STR_ORDER_DROP_HALT_DEPOT                                       :Haltu.
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Transsalti ordonon escepte de prizorgo necesas
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Transsaltu tiun ĉi ordonon krom se priservo necesas
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 ###length 8
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ŝarĝu procenton
-STR_ORDER_CONDITIONAL_RELIABILITY                               :Fidindo
-STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimuma rapido.
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ŝarĝoprocentaĵo
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Fidindeco
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimuma rapideco
 STR_ORDER_CONDITIONAL_AGE                                       :Aĝo (jaroj)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Prizorgo necesas.
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Priservado necesas
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ĉiam
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Resta vivo (jaroj)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksimuma fidindeco
@@ -4343,8 +4355,8 @@ STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Haltu ku
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Haltu kunhavanta la ordonan registron. Stir+Klak ankaŭ forviŝas ĉiujn ordonojn por ĉi tio veturilo
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Iru al
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Iru al la plej proksima garaĝo.
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Iru al la plej proksima hangaro.
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Iru al la plej proksima garaĝo
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Iru al la plej proksima hangaro
 STR_ORDER_CONDITIONAL                                           :Kondiĉe transsaltu ordonon
 STR_ORDER_SHARE                                                 :Kunhavu ordonojn
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Enigi novan ordonon antaŭ la elektita ordono, aŭ aldoni fine de la listo. Kun Ctrl, trajnordonoj estos 'plenŝargi ia kargo', vojpunkt-ordonoj estos 'ne-halti' kaj depotordono estos 'servado'. Kun 'Komunordonoj'-butono aŭ Ctrl-klaku, ĉi tiu veturilo akiros komunajn ordonojn kun eklekta veturilo. Klaku veturilon por kopii ordonojn de tiu veturilo. Doni ia depotordono maleblas aŭtomatan servadon de ĉi tiu veturilo
@@ -4355,8 +4367,8 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Montru �
 STR_ORDER_GO_TO_WAYPOINT                                        :Iru laŭ {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Iru senhalte laŭ {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :Prizorgu ĉe
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Prizorgu senhalte ĉe
+STR_ORDER_SERVICE_AT                                            :Priservo ĉe
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Priservo senhalte ĉe
 
 STR_ORDER_NEAREST_DEPOT                                         :la plej proksima
 STR_ORDER_NEAREST_HANGAR                                        :la plej proksima Hangaro
@@ -4369,8 +4381,8 @@ STR_ORDER_SHIP_DEPOT                                            :Ŝipgaraĝo
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Transformu al {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Transformu al {STRING} kaj haltu)
+STR_ORDER_REFIT_ORDER                                           :(Readaptu por porti {STRING.n})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Readaptu por porti {STRING.n} kaj haltu)
 STR_ORDER_STOP_ORDER                                            :(Haltu)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -4405,7 +4417,7 @@ STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transigi kaj a
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transigi kaj atendi por ian plenan ŝarĝon kun aŭtotransformi al {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Ne malŝarĝi kaj preni ŝarĝojn kun aŭtotransformi al {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ne malŝarĝi kaj atendi por la plenan ŝarĝon kun aŭtotransformi al {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ne malŝarĝi kaj atendi por ian plenan ŝarĝon kun aŭtotransformi al {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ne malŝarĝu kaj atendu plenan ŝarĝon de ajna ŝarĝotipo, kun readapto por porti {STRING.n})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :haveblaj ŝarĝoj
 
@@ -4711,7 +4723,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tro 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... spaco mankas sur la mapo
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La urbo ne konstruos stratojn. Vi povas ebligi stratkonstruadon per Avancitaj Agordoj->Ekonomio->Urboj
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Aktivas vojprilaborado
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ne povas forviŝi ĉi tiun urbon...{}Stacidomo aŭ tenejo rilatas al la urbon aŭ urban kahelon ne povas forviŝigi
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ne eblas forviŝi ĉi tiun urbon...{}Stacidomo aŭ garaĝo havas referencon al la urbo, aŭ ne eblas forviŝi kahelon posedatan de la urbo
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ne jen estas konvenan lokon por statuo en la centro de ĉi tiu urbo
 
 # Industry related errors
