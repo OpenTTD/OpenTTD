@@ -116,6 +116,7 @@ public:
 
 private:
 	std::shared_ptr<LinkGraphOverlay> overlay;
+	size_t num_cargo;
 
 	void UpdateOverlayCompanies();
 	void UpdateOverlayCargoes();
