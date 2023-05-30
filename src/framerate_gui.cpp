@@ -1058,7 +1058,7 @@ void ConPrintFramerate()
 		"AI/GS scripts total",
 		"Game script",
 	};
-	char ai_name_buf[128];
+	std::string ai_name_buf;
 
 	static const PerformanceElement rate_elements[] = { PFE_GAMELOOP, PFE_DRAWING, PFE_VIDEO };
 
@@ -1077,11 +1077,11 @@ void ConPrintFramerate()
 	for (PerformanceElement e = PFE_FIRST; e < PFE_MAX; e++) {
 		auto &pf = _pf_data[e];
 		if (pf.num_valid == 0) continue;
-		const char *name;
+		std::string_view name;
 		if (e < PFE_AI0) {
 			name = MEASUREMENT_NAMES[e];
 		} else {
-			seprintf(ai_name_buf, lastof(ai_name_buf), "AI %d %s", e - PFE_AI0 + 1, GetAIName(e - PFE_AI0)),
+			ai_name_buf = fmt::format("AI {} {}", e - PFE_AI0 + 1, GetAIName(e - PFE_AI0));
 			name = ai_name_buf;
 		}
 		IConsolePrint(TC_LIGHT_BLUE, "{} times: {:.2f}ms  {:.2f}ms  {:.2f}ms",

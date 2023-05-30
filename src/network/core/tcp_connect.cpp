@@ -233,14 +233,13 @@ void TCPConnecter::Resolve()
 	hints.ai_flags = AI_ADDRCONFIG;
 	hints.ai_socktype = SOCK_STREAM;
 
-	char port_name[6];
-	seprintf(port_name, lastof(port_name), "%u", address.GetPort());
+	std::string port_name = std::to_string(address.GetPort());
 
 	static bool getaddrinfo_timeout_error_shown = false;
 	auto start = std::chrono::steady_clock::now();
 
 	addrinfo *ai;
-	int error = getaddrinfo(address.GetHostname().c_str(), port_name, &hints, &ai);
+	int error = getaddrinfo(address.GetHostname().c_str(), port_name.c_str(), &hints, &ai);
 
 	auto end = std::chrono::steady_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);

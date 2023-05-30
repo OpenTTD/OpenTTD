@@ -2974,9 +2974,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 
 	/* loader for this savegame type is not implemented? */
 	if (fmt->init_load == nullptr) {
-		char err_str[64];
-		seprintf(err_str, lastof(err_str), "Loader for '%s' is not available.", fmt->name);
-		SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
+		SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, fmt::format("Loader for '{}' is not available.", fmt->name));
 	}
 
 	_sl.lf = fmt->init_load(_sl.lf);
