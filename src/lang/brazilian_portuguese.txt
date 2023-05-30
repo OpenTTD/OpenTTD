@@ -1033,7 +1033,7 @@ STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arraste 
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detectar tamanho automaticamente
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marque esta caixa para detectar o tamanho da interface automaticamente
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Escalar de chanfros
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Escalar chanfros
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marque esta caixa para dimensionar os chanfros por tamanho de interface
 
 STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
