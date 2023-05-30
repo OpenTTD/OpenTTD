@@ -216,7 +216,7 @@ public:
 			if (HasBit(this->available_actions, i)) action_colour = TC_ORANGE;
 			if (this->sel_index == i) action_colour = TC_WHITE;
 
-			DrawString(r, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, action_colour);
+			DrawString(r, STR_LOCAL_AUTHORITY_ACTION_ADVERTISING_CAMPAIGN + i, action_colour);
 			r.top += FONT_HEIGHT_NORMAL;
 		}
 	}
@@ -236,7 +236,7 @@ public:
 
 					SetDParam(0, action_cost);
 					DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
-						STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + this->sel_index,
+						STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ADVERTISING + this->sel_index,
 						affordable ? TC_YELLOW : TC_RED);
 				}
 				break;
@@ -251,7 +251,7 @@ public:
 				Dimension d = {0, 0};
 				for (int i = 0; i < TACT_COUNT; i++) {
 					SetDParam(0, _price[PR_TOWN_ACTION] * _town_action_costs[i] >> 8);
-					d = maxdim(d, GetStringMultiLineBoundingBox(STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING + i, *size));
+					d = maxdim(d, GetStringMultiLineBoundingBox(STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ADVERTISING + i, *size));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -263,7 +263,7 @@ public:
 				size->height = (TACT_COUNT + 1) * FONT_HEIGHT_NORMAL + padding.height;
 				size->width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
 				for (uint i = 0; i < TACT_COUNT; i++ ) {
-					size->width = std::max(size->width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i).width);
+					size->width = std::max(size->width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_ADVERTISING_CAMPAIGN + i).width);
 				}
 				size->width += padding.width;
 				break;

@@ -3519,20 +3519,16 @@ STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}List of 
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Do it
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Carry out the highlighted action in the list above
 
-###length 8
-STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Small advertising campaign
-STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Medium advertising campaign
-STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Large advertising campaign
+###length 6
+STR_LOCAL_AUTHORITY_ACTION_ADVERTISING_CAMPAIGN                 :Advertising campaign
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Fund local road reconstruction
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Build statue of company owner
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fund new buildings
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Buy exclusive transport rights
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bribe the local authority
 
-###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a small radius around the town centre.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a medium radius around the town centre.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a large radius around the town centre.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+###length 6
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Initiate a local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating around the town centre.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Fund the reconstruction of the urban road network.{}Causes considerable disruption to road traffic for up to 6 months.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Build a statue in honour of your company.{}Provides a permanent boost to station rating in this town.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Fund the construction of new buildings in the town.{}Provides a temporary boost to town growth in this town.{}{POP_COLOUR}Cost: {CURRENCY_LONG}

@@ -19,3 +19,8 @@ AIRoad.HasRoadType <- function(tile, road_type)
 	}
 	return false;
 }
+
+/* 14.0 removes small and medium advertise options */
+AITown.TOWN_ACTION_ADVERTISE_SMALL <- AITown.TOWN_ACTION_ADVERTISE
+AITown.TOWN_ACTION_ADVERTISE_MEDIUM <- AITown.TOWN_ACTION_ADVERTISE
+AITown.TOWN_ACTION_ADVERTISE_LARGE <- AITown.TOWN_ACTION_ADVERTISE

@@ -6,3 +6,8 @@
  */
 
 GSLog.Info("13 API compatibility in effect.");
+
+/* 14.0 removes small and medium advertise options */
+GSTown.TOWN_ACTION_ADVERTISE_SMALL <- GSTown.TOWN_ACTION_ADVERTISE
+GSTown.TOWN_ACTION_ADVERTISE_MEDIUM <- GSTown.TOWN_ACTION_ADVERTISE
+GSTown.TOWN_ACTION_ADVERTISE_LARGE <- GSTown.TOWN_ACTION_ADVERTISE

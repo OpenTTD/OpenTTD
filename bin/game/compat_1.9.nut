@@ -26,3 +26,8 @@ GSRoad.HasRoadType <- function(tile, road_type)
 	}
 	return false;
 }
+
+/* 14.0 removes small and medium advertise options */
+GSTown.TOWN_ACTION_ADVERTISE_SMALL <- GSTown.TOWN_ACTION_ADVERTISE
+GSTown.TOWN_ACTION_ADVERTISE_MEDIUM <- GSTown.TOWN_ACTION_ADVERTISE
+GSTown.TOWN_ACTION_ADVERTISE_LARGE <- GSTown.TOWN_ACTION_ADVERTISE

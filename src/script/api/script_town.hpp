@@ -27,50 +27,36 @@ public:
 		/* Note: these values represent part of the in-game order of the _town_action_proc array */
 
 		/**
-		 * The cargo ratings temporary gains 25% of rating (in
-		 * absolute percentage, so 10% becomes 35%, with a max of 99%)
-		 * for all stations within 10 tiles.
-		 */
-		TOWN_ACTION_ADVERTISE_SMALL  = 0,
-
-		/**
-		 * The cargo ratings temporary gains 44% of rating (in
-		 * absolute percentage, so 10% becomes 54%, with a max of 99%)
-		 * for all stations within 15 tiles.
-		 */
-		TOWN_ACTION_ADVERTISE_MEDIUM = 1,
-
-		/**
 		 * The cargo ratings temporary gains 63% of rating (in
 		 * absolute percentage, so 10% becomes 73%, with a max of 99%)
 		 * for all stations within 20 tiles.
 		 */
-		TOWN_ACTION_ADVERTISE_LARGE  = 2,
+		TOWN_ACTION_ADVERTISE        = 0,
 
 		/**
 		 * Rebuild the roads of this town for 6 months.
 		 */
-		TOWN_ACTION_ROAD_REBUILD     = 3,
+		TOWN_ACTION_ROAD_REBUILD     = 1,
 
 		/**
 		 * Build a statue in this town.
 		 */
-		TOWN_ACTION_BUILD_STATUE     = 4,
+		TOWN_ACTION_BUILD_STATUE     = 2,
 
 		/**
 		 * Fund the creation of extra buildings for 3 months.
 		 */
-		TOWN_ACTION_FUND_BUILDINGS   = 5,
+		TOWN_ACTION_FUND_BUILDINGS   = 3,
 
 		/**
 		 * Buy exclusive rights for this town for 12 months.
 		 */
-		TOWN_ACTION_BUY_RIGHTS       = 6,
+		TOWN_ACTION_BUY_RIGHTS       = 4,
 
 		/**
 		 * Bribe the town in order to get a higher rating.
 		 */
-		TOWN_ACTION_BRIBE            = 7,
+		TOWN_ACTION_BRIBE            = 5,
 	};
 
 	/**

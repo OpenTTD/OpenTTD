@@ -3076,26 +3076,10 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
  * @see TownActions
  */
 const byte _town_action_costs[TACT_COUNT] = {
-	2, 4, 9, 35, 48, 53, 117, 175
+	9, 35, 48, 53, 117, 175
 };
 
-static CommandCost TownActionAdvertiseSmall(Town *t, DoCommandFlag flags)
-{
-	if (flags & DC_EXEC) {
-		ModifyStationRatingAround(t->xy, _current_company, 0x40, 10);
-	}
-	return CommandCost();
-}
-
-static CommandCost TownActionAdvertiseMedium(Town *t, DoCommandFlag flags)
-{
-	if (flags & DC_EXEC) {
-		ModifyStationRatingAround(t->xy, _current_company, 0x70, 15);
-	}
-	return CommandCost();
-}
-
-static CommandCost TownActionAdvertiseLarge(Town *t, DoCommandFlag flags)
+static CommandCost TownActionAdvertise(Town *t, DoCommandFlag flags)
 {
 	if (flags & DC_EXEC) {
 		ModifyStationRatingAround(t->xy, _current_company, 0xA0, 20);
@@ -3300,10 +3284,8 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 }
 
 typedef CommandCost TownActionProc(Town *t, DoCommandFlag flags);
-static TownActionProc * const _town_action_proc[] = {
-	TownActionAdvertiseSmall,
-	TownActionAdvertiseMedium,
-	TownActionAdvertiseLarge,
+static TownActionProc * const _town_action_proc[TACT_COUNT] = {
+	TownActionAdvertise,
 	TownActionRoadRebuild,
 	TownActionBuildStatue,
 	TownActionFundBuildings,
