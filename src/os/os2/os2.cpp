@@ -120,12 +120,10 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 #endif
 }
 
-bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
+bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb)
 {
-	char filename[MAX_PATH];
-
-	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, ent->d_name);
-	return stat(filename, sb) == 0;
+	std::string filename = fmt::format("{}" PATHSEP "{}", path, ent->d_name);
+	return stat(filename.c_str(), sb) == 0;
 }
 
 bool FiosIsHiddenFile(const struct dirent *ent)
