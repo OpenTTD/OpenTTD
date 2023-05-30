@@ -46,7 +46,7 @@ public:
 	std::vector<int> advance; ///< The advance (width) of the glyphs. Valid after Shape() is called.
 	std::vector<int> glyph_to_char; ///< The mapping from glyphs to characters. Valid after Shape() is called.
 	std::vector<float> positions; ///< The positions of the glyphs. Valid after Shape() is called.
-	int total_advance; ///< The total advance of the run. Valid after Shape() is called.
+	int total_advance = 0; ///< The total advance of the run. Valid after Shape() is called.
 
 	ICURun(int start, int length, UBiDiLevel level, UScriptCode script = USCRIPT_UNKNOWN, Font *font = nullptr) : start(start), length(length), level(level), script(script), font(font) {}
 
