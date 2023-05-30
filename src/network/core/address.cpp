@@ -215,8 +215,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	hints.ai_socktype = socktype;
 
 	/* The port needs to be a string. Six is enough to contain all characters + '\0'. */
-	char port_name[6];
-	seprintf(port_name, lastof(port_name), "%u", this->GetPort());
+	std::string port_name = std::to_string(this->GetPort());
 
 	bool reset_hostname = false;
 	/* Setting both hostname to nullptr and port to 0 is not allowed.
@@ -231,7 +230,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 
 	static bool _resolve_timeout_error_message_shown = false;
 	auto start = std::chrono::steady_clock::now();
-	int e = getaddrinfo(this->hostname.empty() ? nullptr : this->hostname.c_str(), port_name, &hints, &ai);
+	int e = getaddrinfo(this->hostname.empty() ? nullptr : this->hostname.c_str(), port_name.c_str(), &hints, &ai);
 	auto end = std::chrono::steady_clock::now();
 	std::chrono::seconds duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 	if (!_resolve_timeout_error_message_shown && duration >= std::chrono::seconds(5)) {
