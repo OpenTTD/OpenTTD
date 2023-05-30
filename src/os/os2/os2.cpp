@@ -36,9 +36,9 @@
 #	include <i86.h>
 #endif
 
-bool FiosIsRoot(const char *file)
+bool FiosIsRoot(const std::string &file)
 {
-	return file[3] == '\0';
+	return file.size() == 3; // C:\...
 }
 
 void FiosGetDrives(FileList &file_list)

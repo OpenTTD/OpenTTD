@@ -57,9 +57,9 @@
 
 #include "../../safeguards.h"
 
-bool FiosIsRoot(const char *path)
+bool FiosIsRoot(const std::string &path)
 {
-	return path[1] == '\0';
+	return path == PATHSEP;
 }
 
 void FiosGetDrives(FileList &file_list)

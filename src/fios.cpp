@@ -35,7 +35,7 @@ static std::string *_fios_path = nullptr;
 SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
 /* OS-specific functions are taken from their respective files (win32/unix/os2 .c) */
-extern bool FiosIsRoot(const char *path);
+extern bool FiosIsRoot(const std::string &path);
 extern bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb);
 extern bool FiosIsHiddenFile(const struct dirent *ent);
 extern void FiosGetDrives(FileList &file_list);
@@ -366,7 +366,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 	assert(_fios_path != nullptr);
 
 	/* A parent directory link exists if we are not in the root directory */
-	if (!FiosIsRoot(_fios_path->c_str())) {
+	if (!FiosIsRoot(*_fios_path)) {
 		fios = &file_list.emplace_back();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
