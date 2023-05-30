@@ -413,7 +413,7 @@ static bool FixupMidiData(MidiFile &target)
  * @param[out] header filled with data read
  * @return true if the file could be opened and contained a header with correct format
  */
-bool MidiFile::ReadSMFHeader(const char *filename, SMFHeader &header)
+bool MidiFile::ReadSMFHeader(const std::string &filename, SMFHeader &header)
 {
 	FILE *file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
 	if (!file) return false;
@@ -455,7 +455,7 @@ bool MidiFile::ReadSMFHeader(FILE *file, SMFHeader &header)
  * @param filename name of the file to load
  * @returns true if loaded was successful
  */
-bool MidiFile::LoadFile(const char *filename)
+bool MidiFile::LoadFile(const std::string &filename)
 {
 	_midifile_instance = this;
 
@@ -850,7 +850,7 @@ bool MidiFile::LoadSong(const MusicSongInfo &song)
 {
 	switch (song.filetype) {
 		case MTT_STANDARDMIDI:
-			return this->LoadFile(song.filename.c_str());
+			return this->LoadFile(song.filename);
 		case MTT_MPSMIDI:
 		{
 			size_t songdatalen = 0;
@@ -916,7 +916,7 @@ static void WriteVariableLen(FILE *f, uint32 value)
  * @param filename Name of file to write to
  * @return True if the file was written to completion
  */
-bool MidiFile::WriteSMF(const char *filename)
+bool MidiFile::WriteSMF(const std::string &filename)
 {
 	FILE *f = FioFOpenFile(filename, "wb", Subdirectory::NO_DIRECTORY);
 	if (!f) {
@@ -1100,7 +1100,7 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 	}
 	free(data);
 
-	if (midifile.WriteSMF(output_filename.c_str())) {
+	if (midifile.WriteSMF(output_filename)) {
 		return output_filename;
 	} else {
 		return std::string();
@@ -1124,14 +1124,10 @@ static bool CmdDumpSMF(byte argc, char *argv[])
 		return false;
 	}
 
-	char fnbuf[MAX_PATH] = { 0 };
-	if (seprintf(fnbuf, lastof(fnbuf), "%s%s", FiosGetScreenshotDir(), argv[1]) >= (int)lengthof(fnbuf)) {
-		IConsolePrint(CC_ERROR, "Filename too long.");
-		return false;
-	}
-	IConsolePrint(CC_INFO, "Dumping MIDI to '{}'.", fnbuf);
+	std::string filename = fmt::format("{}{}", FiosGetScreenshotDir(), argv[1]);
+	IConsolePrint(CC_INFO, "Dumping MIDI to '{}'.", filename);
 
-	if (_midifile_instance->WriteSMF(fnbuf)) {
+	if (_midifile_instance->WriteSMF(filename)) {
 		IConsolePrint(CC_INFO, "File written successfully.");
 		return true;
 	} else {
