@@ -36,7 +36,7 @@ SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
 /* OS-specific functions are taken from their respective files (win32/unix/os2 .c) */
 extern bool FiosIsRoot(const char *path);
-extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
+extern bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb);
 extern bool FiosIsHiddenFile(const struct dirent *ent);
 extern void FiosGetDrives(FileList &file_list);
 extern bool FiosGetDiskFreeSpace(const char *path, uint64 *tot);
@@ -381,7 +381,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 			std::string d_name = FS2OTTD(dirent->d_name);
 
 			/* found file must be directory, but not '.' or '..' */
-			if (FiosIsValidFile(_fios_path->c_str(), dirent, &sb) && S_ISDIR(sb.st_mode) &&
+			if (FiosIsValidFile(*_fios_path, dirent, &sb) && S_ISDIR(sb.st_mode) &&
 					(!FiosIsHiddenFile(dirent) || StrStartsWithIgnoreCase(PERSONAL_DIR, d_name)) &&
 					d_name != "." && d_name != "..") {
 				fios = &file_list.emplace_back();

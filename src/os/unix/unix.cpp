@@ -86,18 +86,13 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 	return true;
 }
 
-bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
+bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb)
 {
-	char filename[MAX_PATH];
-	int res;
-	assert(path[strlen(path) - 1] == PATHSEPCHAR);
-	if (strlen(path) > 2) assert(path[strlen(path) - 2] != PATHSEPCHAR);
-	res = seprintf(filename, lastof(filename), "%s%s", path, ent->d_name);
+	assert(path.back() == PATHSEPCHAR);
+	if (path.size() > 2) assert(path[path.size() - 2] != PATHSEPCHAR);
+	std::string filename = fmt::format("{}{}", path, ent->d_name);
 
-	/* Could we fully concatenate the path and filename? */
-	if (res >= (int)lengthof(filename) || res < 0) return false;
-
-	return stat(filename, sb) == 0;
+	return stat(filename.c_str(), sb) == 0;
 }
 
 bool FiosIsHiddenFile(const struct dirent *ent)
