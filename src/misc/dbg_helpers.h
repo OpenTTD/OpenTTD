@@ -130,21 +130,21 @@ struct DumpTarget {
 
 	void WriteIndent();
 
-	void WriteValue(const char *name, int value);
-	void WriteValue(const char *name, const char *value_str);
-	void WriteTile(const char *name, TileIndex t);
+	void WriteValue(const std::string &name, int value);
+	void WriteValue(const std::string &name, const std::string &value_str);
+	void WriteTile(const std::string &name, TileIndex t);
 
 	/** Dump given enum value (as a number and as named value) */
-	template <typename E> void WriteEnumT(const char *name, E e)
+	template <typename E> void WriteEnumT(const std::string &name, E e)
 	{
-		WriteValue(name, ValueStr(e).c_str());
+		WriteValue(name, ValueStr(e));
 	}
 
-	void BeginStruct(size_t type_id, const char *name, const void *ptr);
+	void BeginStruct(size_t type_id, const std::string &name, const void *ptr);
 	void EndStruct();
 
 	/** Dump nested object (or only its name if this instance is already known). */
-	template <typename S> void WriteStructT(const char *name, const S *s)
+	template <typename S> void WriteStructT(const std::string &name, const S *s)
 	{
 		static size_t type_id = ++LastTypeId();
 
@@ -157,7 +157,7 @@ struct DumpTarget {
 		if (FindKnownName(type_id, s, known_as)) {
 			/* We already know this one, no need to dump it. */
 			std::string known_as_str = std::string("known_as.") + name;
-			WriteValue(name, known_as_str.c_str());
+			WriteValue(name, known_as_str);
 		} else {
 			/* Still unknown, dump it */
 			BeginStruct(type_id, name, s);
