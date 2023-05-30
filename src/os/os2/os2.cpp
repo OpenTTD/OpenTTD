@@ -92,32 +92,21 @@ void FiosGetDrives(FileList &file_list)
 #endif
 }
 
-bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
+std::optional<uint64_t> FiosGetDiskFreeSpace(const std::string &path)
 {
 #ifndef __INNOTEK_LIBC__
 	struct diskfree_t free;
 	char drive = path[0] - 'A' + 1;
 
-	if (tot != nullptr && _getdiskfree(drive, &free) == 0) {
-		*tot = free.avail_clusters * free.sectors_per_cluster * free.bytes_per_sector;
-		return true;
+	if (_getdiskfree(drive, &free) == 0) {
+		return free.avail_clusters * free.sectors_per_cluster * free.bytes_per_sector;
 	}
+#elif defined(HAS_STATVFS)
+	struct statvfs s;
 
-	return false;
-#else
-	uint64 free = 0;
-
-#ifdef HAS_STATVFS
-	{
-		struct statvfs s;
-
-		if (statvfs(path, &s) != 0) return false;
-		free = (uint64)s.f_frsize * s.f_bavail;
-	}
+	if (statvfs(path.c_str(), &s) == 0) return static_cast<uint64_t>(s.f_frsize) * s.f_bavail;
 #endif
-	if (tot != nullptr) *tot = free;
-	return true;
-#endif
+	return std::nullopt;
 }
 
 bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb)

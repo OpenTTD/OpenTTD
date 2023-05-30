@@ -514,8 +514,6 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 
 DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 {
-	const char *path;
-
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Print out the current working directory. Usage: 'pwd'.");
 		return true;
@@ -525,8 +523,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	_console_file_list.ValidateFileList(true);
 	_console_file_list.InvalidateFileList();
 
-	FiosGetDescText(&path, nullptr);
-	IConsolePrint(CC_DEFAULT, path);
+	IConsolePrint(CC_DEFAULT, FiosGetCurrentPath());
 	return true;
 }
 
