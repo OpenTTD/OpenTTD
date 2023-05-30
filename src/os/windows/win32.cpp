@@ -213,16 +213,17 @@ bool FiosIsHiddenFile(const struct dirent *ent)
 	return (ent->dir->fd.dwFileAttributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) != 0;
 }
 
-bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
+std::optional<uint64_t> FiosGetDiskFreeSpace(const std::string &path)
 {
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS);  // disable 'no-disk' message box
 
 	ULARGE_INTEGER bytes_free;
 	bool retval = GetDiskFreeSpaceEx(OTTD2FS(path).c_str(), &bytes_free, nullptr, nullptr);
-	if (retval && tot != nullptr) *tot = bytes_free.QuadPart;
 
 	SetErrorMode(sem); // reset previous setting
-	return retval;
+
+	if (retval) return bytes_free.QuadPart;
+	return std::nullopt;
 }
 
 void CreateConsole()

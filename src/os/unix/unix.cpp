@@ -67,23 +67,18 @@ void FiosGetDrives(FileList &file_list)
 	return;
 }
 
-bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
+std::optional<uint64_t> FiosGetDiskFreeSpace(const std::string &path)
 {
-	uint64 free = 0;
-
 #ifdef __APPLE__
 	struct statfs s;
 
-	if (statfs(path, &s) != 0) return false;
-	free = (uint64)s.f_bsize * s.f_bavail;
+	if (statfs(path.c_str(), &s) == 0) return static_cast<uint64_t>(s.f_bsize) * s.f_bavail;
 #elif defined(HAS_STATVFS)
 	struct statvfs s;
 
-	if (statvfs(path, &s) != 0) return false;
-	free = (uint64)s.f_frsize * s.f_bavail;
+	if (statvfs(path.c_str(), &s) == 0) return static_cast<uint64_t>(s.f_frsize) * s.f_bavail;
 #endif
-	if (tot != nullptr) *tot = free;
-	return true;
+	return std::nullopt;
 }
 
 bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb)

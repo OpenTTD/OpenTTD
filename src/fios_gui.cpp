@@ -420,19 +420,19 @@ public:
 				break;
 
 			case WID_SL_BACKGROUND: {
-				static const char *path = nullptr;
-				static StringID str = STR_ERROR_UNABLE_TO_READ_DRIVE;
-				static uint64 tot = 0;
+				static std::string path;
+				static std::optional<uint64_t> free_space = std::nullopt;
 
 				if (_fios_path_changed) {
-					str = FiosGetDescText(&path, &tot);
+					path = FiosGetCurrentPath();
+					free_space = FiosGetDiskFreeSpace(path);
 					_fios_path_changed = false;
 				}
 
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 
-				if (str != STR_ERROR_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
-				DrawString(ir.left, ir.right, ir.top + FONT_HEIGHT_NORMAL, str);
+				if (free_space.has_value()) SetDParam(0, free_space.value());
+				DrawString(ir.left, ir.right, ir.top + FONT_HEIGHT_NORMAL, free_space.has_value() ? STR_SAVELOAD_BYTES_FREE : STR_ERROR_UNABLE_TO_READ_DRIVE);
 				DrawString(ir.left, ir.right, ir.top, path, TC_BLACK);
 				break;
 			}

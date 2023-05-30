@@ -110,7 +110,8 @@ void FiosGetHeightmapList(SaveLoadOperation fop, FileList &file_list);
 
 bool FiosBrowseTo(const FiosItem *item);
 
-StringID FiosGetDescText(const char **path, uint64 *total_free);
+std::string FiosGetCurrentPath();
+std::optional<uint64_t> FiosGetDiskFreeSpace(const std::string &path);
 bool FiosDelete(const char *name);
 std::string FiosMakeHeightmapName(const char *name);
 std::string FiosMakeSavegameName(const char *name);
