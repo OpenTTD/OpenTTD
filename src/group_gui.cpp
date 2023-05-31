@@ -177,18 +177,18 @@ private:
 
 		/* Sort the groups by their name */
 		const Group *last_group[2] = { nullptr, nullptr };
-		char         last_name[2][64] = { "", "" };
+		std::string last_name[2] = { {}, {} };
 		list.Sort([&](const Group * const &a, const Group * const &b) {
 			if (a != last_group[0]) {
 				last_group[0] = a;
 				SetDParam(0, a->index);
-				GetString(last_name[0], STR_GROUP_NAME, lastof(last_name[0]));
+				last_name[0] = GetString(STR_GROUP_NAME);
 			}
 
 			if (b != last_group[1]) {
 				last_group[1] = b;
 				SetDParam(0, b->index);
-				GetString(last_name[1], STR_GROUP_NAME, lastof(last_name[1]));
+				last_name[1] = GetString(STR_GROUP_NAME);
 			}
 
 			int r = StrNaturalCompare(last_name[0], last_name[1]); // Sort by name (natural sorting).
