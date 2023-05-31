@@ -433,26 +433,19 @@ void DetermineBasePaths(const char *exe)
 }
 
 
-bool GetClipboardContents(char *buffer, const char *last)
+std::optional<std::string> GetClipboardContents()
 {
-	HGLOBAL cbuf;
-	const char *ptr;
+	if (!IsClipboardFormatAvailable(CF_UNICODETEXT)) return std::nullopt;
 
-	if (IsClipboardFormatAvailable(CF_UNICODETEXT)) {
-		OpenClipboard(nullptr);
-		cbuf = GetClipboardData(CF_UNICODETEXT);
+	OpenClipboard(nullptr);
+	HGLOBAL cbuf = GetClipboardData(CF_UNICODETEXT);
 
-		ptr = (const char*)GlobalLock(cbuf);
-		int out_len = WideCharToMultiByte(CP_UTF8, 0, (LPCWSTR)ptr, -1, buffer, (last - buffer) + 1, nullptr, nullptr);
-		GlobalUnlock(cbuf);
-		CloseClipboard();
+	std::string result = FS2OTTD(static_cast<LPCWSTR>(GlobalLock(cbuf)));
+	GlobalUnlock(cbuf);
+	CloseClipboard();
 
-		if (out_len == 0) return false;
-	} else {
-		return false;
-	}
-
-	return true;
+	if (result.empty()) return std::nullopt;
+	return result;
 }
 
 
