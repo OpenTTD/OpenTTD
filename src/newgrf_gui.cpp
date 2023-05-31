@@ -71,14 +71,13 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 {
 	Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
 	if (c->error != nullptr) {
-		char message[512];
 		SetDParamStr(0, c->error->custom_message); // is skipped by built-in messages
 		SetDParamStr(1, c->filename);
 		SetDParamStr(2, c->error->data);
 		for (uint i = 0; i < c->error->param_value.size(); i++) {
 			SetDParam(3 + i, c->error->param_value[i]);
 		}
-		GetString(message, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING, lastof(message));
+		std::string message = GetString(c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
 
 		SetDParamStr(0, message);
 		tr.top = DrawStringMultiLine(tr, c->error->severity);

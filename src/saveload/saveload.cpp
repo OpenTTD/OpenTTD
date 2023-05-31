@@ -2792,9 +2792,9 @@ const char *GetSaveLoadErrorString()
 	SetDParam(0, _sl.error_str);
 	SetDParamStr(1, _sl.extra_msg);
 
-	static char err_str[512];
-	GetString(err_str, _sl.action == SLA_SAVE ? STR_ERROR_GAME_SAVE_FAILED : STR_ERROR_GAME_LOAD_FAILED, lastof(err_str));
-	return err_str;
+	static std::string err_str;
+	err_str = GetString(_sl.action == SLA_SAVE ? STR_ERROR_GAME_SAVE_FAILED : STR_ERROR_GAME_LOAD_FAILED);
+	return err_str.c_str();
 }
 
 /** Show a gui message when saving has failed */

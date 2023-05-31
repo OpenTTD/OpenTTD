@@ -345,7 +345,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	uint filesize_sum;           ///< The sum of all selected file sizes
 	Scrollbar *vscroll;          ///< Cache of the vertical scrollbar
 
-	static char content_type_strs[CONTENT_TYPE_END][64]; ///< Cached strings for all content types.
+	static std::string content_type_strs[CONTENT_TYPE_END]; ///< Cached strings for all content types.
 
 	/** Search external websites for content */
 	void OpenExternalSearch()
@@ -1019,7 +1019,7 @@ NetworkContentListWindow::GUIContentList::FilterFunction * const NetworkContentL
 	&TypeOrSelectedFilter,
 };
 
-char NetworkContentListWindow::content_type_strs[CONTENT_TYPE_END][64];
+std::string NetworkContentListWindow::content_type_strs[CONTENT_TYPE_END];
 
 /**
  * Build array of all strings corresponding to the content types.
@@ -1027,7 +1027,7 @@ char NetworkContentListWindow::content_type_strs[CONTENT_TYPE_END][64];
 void BuildContentTypeStringList()
 {
 	for (int i = CONTENT_TYPE_BEGIN; i < CONTENT_TYPE_END; i++) {
-		GetString(NetworkContentListWindow::content_type_strs[i], STR_CONTENT_TYPE_BASE_GRAPHICS + i - CONTENT_TYPE_BASE_GRAPHICS, lastof(NetworkContentListWindow::content_type_strs[i]));
+		NetworkContentListWindow::content_type_strs[i] = GetString(STR_CONTENT_TYPE_BASE_GRAPHICS + i - CONTENT_TYPE_BASE_GRAPHICS);
 	}
 }
 
