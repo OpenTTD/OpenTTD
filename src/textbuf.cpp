@@ -23,11 +23,9 @@
  * Try to retrieve the current clipboard contents.
  *
  * @note OS-specific function.
- * @param buffer Clipboard content.
- * @param last The pointer to the last element of the destination buffer
- * @return True if some text could be retrieved.
+ * @return The (optional) clipboard contents.
  */
-bool GetClipboardContents(char *buffer, const char *last);
+std::optional<std::string> GetClipboardContents();
 
 int _caret_timer;
 
@@ -223,11 +221,10 @@ bool Textbuf::InsertString(const char *str, bool marked, const char *caret, cons
  */
 bool Textbuf::InsertClipboard()
 {
-	char utf8_buf[512];
+	auto contents = GetClipboardContents();
+	if (!contents.has_value()) return false;
 
-	if (!GetClipboardContents(utf8_buf, lastof(utf8_buf))) return false;
-
-	return this->InsertString(utf8_buf, false);
+	return this->InsertString(contents.value().c_str(), false);
 }
 
 /**

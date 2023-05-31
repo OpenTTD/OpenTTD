@@ -154,27 +154,25 @@ void ShowOSErrorBox(const char *buf, bool system)
 	WinTerminate(hab);
 }
 
-bool GetClipboardContents(char *buffer, const char *last)
+std::optional<std::string> GetClipboardContents()
 {
 /* XXX -- Currently no clipboard support implemented with GCC */
 #ifndef __INNOTEK_LIBC__
 	HAB hab = 0;
 
-	if (WinOpenClipbrd(hab))
-	{
-		const char *text = (const char*)WinQueryClipbrdData(hab, CF_TEXT);
+	if (WinOpenClipbrd(hab)) {
+		const char *text = (const char *)WinQueryClipbrdData(hab, CF_TEXT);
 
-		if (text != nullptr)
-		{
-			strecpy(buffer, text, last);
+		if (text != nullptr) {
+			std::string result = text;
 			WinCloseClipbrd(hab);
-			return true;
+			return result;
 		}
 
 		WinCloseClipbrd(hab);
 	}
 #endif
-	return false;
+	return std::nullopt;
 }
 
 

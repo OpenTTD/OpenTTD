@@ -217,22 +217,20 @@ void ShowOSErrorBox(const char *buf, bool system)
 #endif
 
 #ifndef WITH_COCOA
-bool GetClipboardContents(char *buffer, const char *last)
+std::optional<std::string> GetClipboardContents()
 {
 #ifdef WITH_SDL2
-	if (SDL_HasClipboardText() == SDL_FALSE) {
-		return false;
-	}
+	if (SDL_HasClipboardText() == SDL_FALSE) return std::nullopt;
 
 	char *clip = SDL_GetClipboardText();
 	if (clip != nullptr) {
-		strecpy(buffer, clip, last);
+		std::string result = clip;
 		SDL_free(clip);
-		return true;
+		return result;
 	}
 #endif
 
-	return false;
+	return std::nullopt;
 }
 #endif
 
