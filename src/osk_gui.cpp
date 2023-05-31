@@ -347,27 +347,18 @@ static WindowDesc _osk_desc(
  */
 void GetKeyboardLayout()
 {
-	char keyboard[2][OSK_KEYBOARD_ENTRIES * 4 + 1];
-	char errormark[2][OSK_KEYBOARD_ENTRIES + 1]; // used for marking invalid chars
+	std::string keyboard[2];
+	std::string errormark[2]; // used for marking invalid chars
 	bool has_error = false; // true when an invalid char is detected
 
-	if (_keyboard_opt[0].empty()) {
-		GetString(keyboard[0], STR_OSK_KEYBOARD_LAYOUT, lastof(keyboard[0]));
-	} else {
-		strecpy(keyboard[0], _keyboard_opt[0].c_str(), lastof(keyboard[0]));
-	}
-
-	if (_keyboard_opt[1].empty()) {
-		GetString(keyboard[1], STR_OSK_KEYBOARD_LAYOUT_CAPS, lastof(keyboard[1]));
-	} else {
-		strecpy(keyboard[1], _keyboard_opt[1].c_str(), lastof(keyboard[1]));
-	}
+	keyboard[0] = _keyboard_opt[0].empty() ? GetString(STR_OSK_KEYBOARD_LAYOUT) : _keyboard_opt[0];
+	keyboard[1] = _keyboard_opt[1].empty() ? GetString(STR_OSK_KEYBOARD_LAYOUT_CAPS) : _keyboard_opt[1];
 
 	for (uint j = 0; j < 2; j++) {
-		const char *kbd = keyboard[j];
+		auto kbd = keyboard[j].begin();
 		bool ended = false;
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
-			_keyboard[j][i] = Utf8Consume(&kbd);
+			_keyboard[j][i] = Utf8Consume(kbd);
 
 			/* Be lenient when the last characters are missing (is quite normal) */
 			if (_keyboard[j][i] == '\0' || ended) {
@@ -377,10 +368,10 @@ void GetKeyboardLayout()
 			}
 
 			if (IsPrintable(_keyboard[j][i])) {
-				errormark[j][i] = ' ';
+				errormark[j] += ' ';
 			} else {
 				has_error = true;
-				errormark[j][i] = '^';
+				errormark[j] += '^';
 				_keyboard[j][i] = ' ';
 			}
 		}

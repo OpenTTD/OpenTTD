@@ -510,9 +510,7 @@ struct NewGRFInspectWindow : Window {
 						NOT_REACHED();
 				}
 
-				char buffer[64];
-				GetString(buffer, string, lastof(buffer));
-				this->DrawString(r, i++, fmt::format("  {:02x}: {} ({})", nip->prop, buffer, nip->name));
+				this->DrawString(r, i++, fmt::format("  {:02x}: {} ({})", nip->prop, GetString(string), nip->name));
 			}
 		}
 
