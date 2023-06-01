@@ -107,6 +107,7 @@ struct GSConfigWindow : public Window {
 
 	void Close() override
 	{
+		HideDropDownMenu(this);
 		CloseWindowByClass(WC_SCRIPT_LIST);
 		this->Window::Close();
 	}

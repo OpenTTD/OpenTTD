@@ -316,6 +316,12 @@ struct ScriptSettingsWindow : public Window {
 		this->RebuildVisibleSettings();
 	}
 
+	void Close() override
+	{
+		HideDropDownMenu(this);
+		this->Window::Close();
+	}
+
 	/**
 	 * Rebuilds the list of visible settings. AI settings with the flag
 	 * AICONFIG_AI_DEVELOPER set will only be visible if the game setting

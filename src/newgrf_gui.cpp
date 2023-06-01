@@ -180,6 +180,12 @@ struct NewGRFParametersWindow : public Window {
 		this->InvalidateData();
 	}
 
+	void Close() override
+	{
+		HideDropDownMenu(this);
+		this->Window::Close();
+	}
+
 	/**
 	 * Get a dummy parameter-info object with default information.
 	 * @param nr The param number that should be changed.
