@@ -26,6 +26,7 @@
 #endif
 #include <sys/stat.h>
 #include <sstream>
+#include <filesystem>
 
 #include "safeguards.h"
 
@@ -392,15 +393,16 @@ static void TarAddLink(const std::string &srcParam, const std::string &destParam
  * Replace '/' by #PATHSEPCHAR, and force 'name' to lowercase.
  * @param name Filename to process.
  */
-static void SimplifyFileName(char *name)
+static void SimplifyFileName(std::string &name)
 {
-	/* Force lowercase */
-	strtolower(name);
-
-	/* Tar-files always have '/' path-separator, but we want our PATHSEPCHAR */
+	for (char &c : name) {
+		/* Force lowercase */
+		c = std::tolower(c);
 #if (PATHSEPCHAR != '/')
-	for (char *n = name; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
+		/* Tar-files always have '/' path-separator, but we want our PATHSEPCHAR */
+		if (c == '/') c = PATHSEPCHAR;
 #endif
+	}
 }
 
 /**
@@ -456,6 +458,24 @@ bool TarScanner::AddFile(Subdirectory sd, const std::string &filename)
 	return this->AddFile(filename, 0);
 }
 
+/**
+ * Helper to extract a string for the tar header. We must assume that the tar
+ * header contains garbage and is malicious. So, we cannot rely on the string
+ * being properly terminated.
+ * As such, do not use strlen to determine the actual length (explicitly or
+ * implictly via the std::string constructor), but also do not create a string
+ * of the buffer length as that makes the string contain essentially garbage.
+ * @param buffer The buffer to read from.
+ * @param buffer_length The length of the buffer to read from.
+ * @return The string data.
+ */
+static std::string ExtractString(char *buffer, size_t buffer_length)
+{
+	size_t length = 0;
+	for (; length < buffer_length && buffer[length] != '\0'; length++) {}
+	return StrMakeValid(std::string(buffer, length));
+}
+
 bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
 {
 	/* No tar within tar. */
@@ -467,7 +487,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, co
 		char mode[8];
 		char uid[8];
 		char gid[8];
-		char size[12];       ///< Size of the file, in ASCII
+		char size[12];       ///< Size of the file, in ASCII octals
 		char mtime[12];
 		char chksum[8];
 		char typeflag;
@@ -499,10 +519,6 @@ bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, co
 	TarLinkList links; ///< Temporary list to collect links
 
 	TarHeader th;
-	char buf[sizeof(th.name) + 1], *end;
-	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1];
-	char link[sizeof(th.linkname) + 1];
-	char dest[sizeof(th.prefix) + 1 + sizeof(th.name) + 1 + 1 + sizeof(th.linkname) + 1];
 	size_t num = 0, pos = 0;
 
 	/* Make a char of 512 empty bytes */
@@ -524,25 +540,25 @@ bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, co
 			return false;
 		}
 
-		name[0] = '\0';
+		std::string name;
 
 		/* The prefix contains the directory-name */
 		if (th.prefix[0] != '\0') {
-			strecpy(name, th.prefix, lastof(name));
-			strecat(name, PATHSEP, lastof(name));
+			name = ExtractString(th.prefix, lengthof(th.prefix));
+			name += PATHSEP;
 		}
 
 		/* Copy the name of the file in a safe way at the end of 'name' */
-		strecat(name, th.name, lastof(name));
+		name += ExtractString(th.name, lengthof(th.name));
 
-		/* Calculate the size of the file.. for some strange reason this is stored as a string */
-		strecpy(buf, th.size, lastof(buf));
-		size_t skip = std::strtoul(buf, &end, 8);
+		/* The size of the file, for some strange reason, this is stored as a string in octals. */
+		std::string size = ExtractString(th.size, lengthof(th.size));
+		size_t skip = size.empty() ? 0 : std::stoul(size, nullptr, 8);
 
 		switch (th.typeflag) {
 			case '\0':
 			case '0': { // regular file
-				if (strlen(name) == 0) break;
+				if (name.empty()) break;
 
 				/* Store this entry in the list */
 				TarFileListEntry entry;
@@ -562,9 +578,9 @@ bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, co
 			case '1': // hard links
 			case '2': { // symbolic links
 				/* Copy the destination of the link in a safe way at the end of 'linkname' */
-				strecpy(link, th.linkname, lastof(link));
+				std::string link = ExtractString(th.linkname, lengthof(th.linkname));
 
-				if (strlen(name) == 0 || strlen(link) == 0) break;
+				if (name.empty() || link.empty()) break;
 
 				/* Convert to lowercase and our PATHSEPCHAR */
 				SimplifyFileName(name);
@@ -578,48 +594,10 @@ bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, co
 
 				/* Process relative path.
 				 * Note: The destination of links must not contain any directory-links. */
-				strecpy(dest, name, lastof(dest));
-				char *destpos = strrchr(dest, PATHSEPCHAR);
-				if (destpos == nullptr) destpos = dest;
-				*destpos = '\0';
-
-				char *pos = link;
-				while (*pos != '\0') {
-					char *next = strchr(pos, PATHSEPCHAR);
-					if (next == nullptr) {
-						next = pos + strlen(pos);
-					} else {
-						/* Terminate the substring up to the path separator character. */
-						*next++= '\0';
-					}
-
-					if (strcmp(pos, ".") == 0) {
-						/* Skip '.' (current dir) */
-					} else if (strcmp(pos, "..") == 0) {
-						/* level up */
-						if (dest[0] == '\0') {
-							Debug(misc, 5, "Ignoring link pointing outside of data directory: {} -> {}", name, link);
-							break;
-						}
-
-						/* Truncate 'dest' after last PATHSEPCHAR.
-						 * This assumes that the truncated part is a real directory and not a link. */
-						destpos = strrchr(dest, PATHSEPCHAR);
-						if (destpos == nullptr) destpos = dest;
-						*destpos = '\0';
-					} else {
-						/* Append at end of 'dest' */
-						if (destpos != dest) destpos = strecpy(destpos, PATHSEP, lastof(dest));
-						destpos = strecpy(destpos, pos, lastof(dest));
-					}
-
-					if (destpos >= lastof(dest)) {
-						Debug(misc, 0, "The length of a link in tar-file '{}' is too large (malformed?)", filename);
-						fclose(f);
-						return false;
-					}
-
-					pos = next;
+				std::string dest = (std::filesystem::path(name).remove_filename() /= link).lexically_normal().string();
+				if (dest[0] == PATHSEPCHAR || StrStartsWith(dest, "..")) {
+					Debug(misc, 5, "Ignoring link pointing outside of data directory: {} -> {}", name, link);
+					break;
 				}
 
 				/* Store links in temporary list */
