@@ -461,7 +461,7 @@ public:
 
 		if (!(IsAllGroupID(this->vli.index) || IsDefaultGroupID(this->vli.index) || Group::IsValidID(this->vli.index))) {
 			this->vli.index = ALL_GROUP;
-			HideDropDownMenu(this);
+			this->CloseChildWindows(WC_DROPDOWN_MENU);
 		}
 		this->SetDirty();
 	}
@@ -512,7 +512,7 @@ public:
 		/* The drop down menu is out, *but* it may not be used, retract it. */
 		if (this->vehicles.size() == 0 && this->IsWidgetLowered(WID_GL_MANAGE_VEHICLES_DROPDOWN)) {
 			this->RaiseWidget(WID_GL_MANAGE_VEHICLES_DROPDOWN);
-			HideDropDownMenu(this);
+			this->CloseChildWindows(WC_DROPDOWN_MENU);
 		}
 
 		/* Disable all lists management button when the list is empty */
