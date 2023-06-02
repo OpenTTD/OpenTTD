@@ -58,7 +58,7 @@ extern int _debug_random_level;
 
 void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator);
 void SetDebugString(const char *s, void (*error_func)(const std::string &));
-const char *GetDebugString();
+std::string GetDebugString();
 
 /* Shorter form for passing filename and linenumber */
 #define FILE_LINE __FILE__, __LINE__
