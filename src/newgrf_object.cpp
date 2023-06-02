@@ -378,8 +378,8 @@ ObjectResolverObject::ObjectResolverObject(const ObjectSpec *spec, Object *obj, 
 	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), object_scope(*this, obj, spec, tile, view)
 {
 	this->town_scope = nullptr;
-	this->root_spritegroup = (obj == nullptr && spec->grf_prop.spritegroup[1] != nullptr) ?
-			spec->grf_prop.spritegroup[1] : spec->grf_prop.spritegroup[0];
+	this->root_spritegroup = (obj == nullptr && spec->grf_prop.spritegroup[OBJECT_SPRITE_GROUP_PURCHASE] != nullptr) ?
+			spec->grf_prop.spritegroup[OBJECT_SPRITE_GROUP_PURCHASE] : spec->grf_prop.spritegroup[OBJECT_SPRITE_GROUP_DEFAULT];
 }
 
 ObjectResolverObject::~ObjectResolverObject()
