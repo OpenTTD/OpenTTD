@@ -2229,7 +2229,7 @@ struct GameSettingsWindow : Window {
 
 			if (this->valuedropdown_entry == pe) {
 				/* unclick the dropdown */
-				HideDropDownMenu(this);
+				this->CloseChildWindows(WC_DROPDOWN_MENU);
 				this->closing_dropdown = false;
 				this->valuedropdown_entry->SetButtons(0);
 				this->valuedropdown_entry = nullptr;

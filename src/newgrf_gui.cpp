@@ -342,7 +342,7 @@ struct NewGRFParametersWindow : public Window {
 				if (num >= this->vscroll->GetCount()) break;
 				if (this->clicked_row != num) {
 					this->CloseChildWindows(WC_QUERY_STRING);
-					HideDropDownMenu(this);
+					this->CloseChildWindows(WC_DROPDOWN_MENU);
 					this->clicked_row = num;
 					this->clicked_dropdown = false;
 				}
@@ -359,7 +359,7 @@ struct NewGRFParametersWindow : public Window {
 				if (par_info->type != PTYPE_BOOL && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && par_info->complete_labels) {
 					if (this->clicked_dropdown) {
 						/* unclick the dropdown */
-						HideDropDownMenu(this);
+						this->CloseChildWindows(WC_DROPDOWN_MENU);
 						this->clicked_dropdown = false;
 						this->closing_dropdown = false;
 					} else {

@@ -301,7 +301,7 @@ struct GSConfigWindow : public Window {
 
 				if (this->clicked_row != num) {
 					this->CloseChildWindows(WC_QUERY_STRING);
-					HideDropDownMenu(this);
+					this->CloseChildWindows(WC_DROPDOWN_MENU);
 					this->clicked_row = num;
 					this->clicked_dropdown = false;
 				}
@@ -316,7 +316,7 @@ struct GSConfigWindow : public Window {
 				if (!bool_item && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && config_item.complete_labels) {
 					if (this->clicked_dropdown) {
 						/* unclick the dropdown */
-						HideDropDownMenu(this);
+						this->CloseChildWindows(WC_DROPDOWN_MENU);
 						this->clicked_dropdown = false;
 						this->closing_dropdown = false;
 					} else {
@@ -434,7 +434,7 @@ struct GSConfigWindow : public Window {
 			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, GameConfig::GetConfig()->GetTextfile(tft, (CompanyID)OWNER_DEITY) == nullptr);
 		}
 		this->RebuildVisibleSettings();
-		HideDropDownMenu(this);
+		this->CloseChildWindows(WC_DROPDOWN_MENU);
 		this->CloseChildWindows(WC_QUERY_STRING);
 	}
 private:

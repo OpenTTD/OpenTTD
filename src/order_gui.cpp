@@ -849,7 +849,6 @@ public:
 				if (this->selected_order == -1) break;
 
 				this->CloseChildWindows();
-				HideDropDownMenu(this);
 				this->selected_order = -1;
 				break;
 
@@ -881,7 +880,6 @@ public:
 				if (to == INVALID_VEH_ORDER_ID) {
 					/* Deleting selected order */
 					this->CloseChildWindows();
-					HideDropDownMenu(this);
 					this->selected_order = -1;
 					break;
 				}
@@ -1181,7 +1179,6 @@ public:
 
 				/* This order won't be selected any more, close all child windows and dropdowns */
 				this->CloseChildWindows();
-				HideDropDownMenu(this);
 
 				if (sel == INVALID_VEH_ORDER_ID || this->vehicle->owner != _local_company) {
 					/* Deselect clicked order */
