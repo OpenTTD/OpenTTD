@@ -1966,7 +1966,7 @@ public:
 		this->SortVehicleList();
 
 		if (this->vehicles.size() == 0 && this->IsWidgetLowered(WID_VL_MANAGE_VEHICLES_DROPDOWN)) {
-			HideDropDownMenu(this);
+			this->CloseChildWindows(WC_DROPDOWN_MENU);
 		}
 
 		/* Hide the widgets that we will not use in this window
