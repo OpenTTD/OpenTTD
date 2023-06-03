@@ -658,7 +658,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		_cursor.UpdateCursorPositionRelative(event.deltaX * self.getContentsScale, event.deltaY * self.getContentsScale);
 	} else {
 		NSPoint pt = [ self mousePositionFromEvent:event ];
-		_cursor.UpdateCursorPosition(pt.x, pt.y, false);
+		_cursor.UpdateCursorPosition(pt.x, pt.y);
 	}
 
 	HandleMouseEvents();

@@ -391,7 +391,7 @@ bool VideoDriver_Allegro::PollEvent()
 	}
 
 	/* Mouse movement */
-	if (_cursor.UpdateCursorPosition(mouse_x, mouse_y, false)) {
+	if (_cursor.UpdateCursorPosition(mouse_x, mouse_y)) {
 		position_mouse(_cursor.pos.x, _cursor.pos.y);
 	}
 	if (_cursor.delta.x != 0 || _cursor.delta.y) mouse_action = true;

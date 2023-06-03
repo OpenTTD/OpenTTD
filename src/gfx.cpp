@@ -1897,50 +1897,22 @@ void CursorVars::UpdateCursorPositionRelative(int delta_x, int delta_y)
  * Update cursor position on mouse movement.
  * @param x New X position.
  * @param y New Y position.
- * @param queued_warp True, if the OS queues mouse warps after pending mouse movement events.
- *                    False, if the warp applies instantaneous.
  * @return true, if the OS cursor position should be warped back to this->pos.
  */
-bool CursorVars::UpdateCursorPosition(int x, int y, bool queued_warp)
+bool CursorVars::UpdateCursorPosition(int x, int y)
 {
-	/* Detecting relative mouse movement is somewhat tricky.
-	 *  - There may be multiple mouse move events in the video driver queue (esp. when OpenTTD lags a bit).
-	 *  - When we request warping the mouse position (return true), a mouse move event is appended at the end of the queue.
-	 *
-	 * So, when this->fix_at is active, we use the following strategy:
-	 *  - The first movement triggers the warp to reset the mouse position.
-	 *  - Subsequent events have to compute movement relative to the previous event.
-	 *  - The relative movement is finished, when we receive the event matching the warp.
-	 */
+	this->delta.x = x - this->pos.x;
+	this->delta.y = y - this->pos.y;
 
-	if (x == this->pos.x && y == this->pos.y) {
-		/* Warp finished. */
-		this->queued_warp = false;
-	}
-
-	this->delta.x = x - (this->queued_warp ? this->last_position.x : this->pos.x);
-	this->delta.y = y - (this->queued_warp ? this->last_position.y : this->pos.y);
-
-	this->last_position.x = x;
-	this->last_position.y = y;
-
-	bool need_warp = false;
 	if (this->fix_at) {
-		if (this->delta.x != 0 || this->delta.y != 0) {
-			/* Trigger warp.
-			 * Note: We also trigger warping again, if there is already a pending warp.
-			 *       This makes it more tolerant about the OS or other software in between
-			 *       botchering the warp. */
-			this->queued_warp = queued_warp;
-			need_warp = true;
-		}
+		return this->delta.x != 0 || this->delta.y != 0;
 	} else if (this->pos.x != x || this->pos.y != y) {
-		this->queued_warp = false; // Cancel warping, we are no longer confining the position.
 		this->dirty = true;
 		this->pos.x = x;
 		this->pos.y = y;
 	}
-	return need_warp;
+
+	return false;
 }
 
 bool ChangeResInGame(int width, int height)
