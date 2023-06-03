@@ -203,6 +203,11 @@ struct DropdownWindow : Window {
 		}
 	}
 
+	void OnFocusLost() override
+	{
+		this->Close();
+	}
+
 	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
 	{
 		return this->position;
