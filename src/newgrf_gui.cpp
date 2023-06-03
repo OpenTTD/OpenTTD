@@ -110,8 +110,9 @@ static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 
 	/* Show GRF parameter list */
 	if (show_params) {
+		std::string params;
 		if (c->num_params > 0) {
-			std::string params = GRFBuildParamList(c);
+			params = GRFBuildParamList(c);
 			SetDParam(0, STR_JUST_RAW_STRING);
 			SetDParamStr(1, params);
 		} else {
