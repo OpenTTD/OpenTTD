@@ -384,7 +384,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 				}
 			}
 
-			if (_cursor.UpdateCursorPosition(x, y, false)) {
+			if (_cursor.UpdateCursorPosition(x, y)) {
 				SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
 			}
 			HandleMouseEvents();

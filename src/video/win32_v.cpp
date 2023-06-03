@@ -489,7 +489,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				}
 			}
 
-			if (_cursor.UpdateCursorPosition(x, y, false)) {
+			if (_cursor.UpdateCursorPosition(x, y)) {
 				POINT pt;
 				pt.x = _cursor.pos.x;
 				pt.y = _cursor.pos.y;
