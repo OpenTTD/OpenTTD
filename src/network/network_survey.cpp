@@ -298,6 +298,33 @@ static void SurveyGameScript(nlohmann::json &survey)
 	survey = fmt::format("{}.{}", Game::GetInfo()->GetName(), Game::GetInfo()->GetVersion());
 }
 
+/**
+ * Change the bytes of memory into a textual version rounded up to the biggest unit.
+ *
+ * For example, 16751108096 would become 16 GiB.
+ *
+ * @param memory The bytes of memory.
+ * @return std::string A textual representation.
+ */
+std::string SurveyMemoryToText(uint64_t memory)
+{
+	memory = memory / 1024; // KiB
+	memory = CeilDiv(memory, 1024); // MiB
+
+	/* Anything above 512 MiB we represent in GiB. */
+	if (memory > 512) {
+		return fmt::format("{} GiB", CeilDiv(memory, 1024));
+	}
+
+	/* Anything above 64 MiB we represent in a multiplier of 128 MiB. */
+	if (memory > 64) {
+		return fmt::format("{} MiB", Ceil(memory, 128));
+	}
+
+	/* Anything else in a multiplier of 4 MiB. */
+	return fmt::format("{} MiB", Ceil(memory, 4));
+}
+
 #endif /* WITH_NLOHMANN_JSON */
 
 /**
@@ -328,8 +355,6 @@ std::string NetworkSurveyHandler::CreatePayload(Reason reason, bool for_preview)
 	{
 		auto &info = survey["info"];
 		SurveyOS(info["os"]);
-		info["os"]["hardware_concurrency"] = std::thread::hardware_concurrency();
-
 		SurveyOpenTTD(info["openttd"]);
 		SurveyConfiguration(info["configuration"]);
 		SurveyFont(info["font"]);

@@ -13,9 +13,12 @@
 
 #include <nlohmann/json.hpp>
 #include <sys/utsname.h>
+#include <thread>
 #include <unistd.h>
 
 #include "../../safeguards.h"
+
+extern std::string SurveyMemoryToText(uint64_t memory);
 
 void SurveyOS(nlohmann::json &json)
 {
@@ -32,7 +35,8 @@ void SurveyOS(nlohmann::json &json)
 
 	long pages = sysconf(_SC_PHYS_PAGES);
 	long page_size = sysconf(_SC_PAGE_SIZE);
-	json["memory"] = pages * page_size;
+	json["memory"] = SurveyMemoryToText(pages * page_size);
+	json["hardware_concurrency"] = std::thread::hardware_concurrency();
 }
 
 #endif /* WITH_NLOHMANN_JSON */
