@@ -477,12 +477,25 @@ bool VideoDriver_SDL::PollEvent()
 	if (!SDL_PollEvent(&ev)) return false;
 
 	switch (ev.type) {
-		case SDL_MOUSEMOTION:
-			if (_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y, true)) {
+		case SDL_MOUSEMOTION: {
+			int32_t x = ev.motion.x;
+			int32_t y = ev.motion.y;
+
+			if (_cursor.fix_at) {
+				/* Get all queued mouse events now in case we have to warp the cursor. In the
+				 * end, we only care about the current mouse position and not bygone events. */
+				while (SDL_PeepEvents(&ev, 1, SDL_GETEVENT, SDL_MOUSEMOTION)) {
+					x = ev.motion.x;
+					y = ev.motion.y;
+				}
+			}
+
+			if (_cursor.UpdateCursorPosition(x, y, false)) {
 				SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
 			}
 			HandleMouseEvents();
 			break;
+		}
 
 		case SDL_MOUSEBUTTONDOWN:
 			if (_rightclick_emulate && SDL_GetModState() & KMOD_CTRL) {
