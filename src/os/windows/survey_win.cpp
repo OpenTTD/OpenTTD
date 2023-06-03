@@ -14,9 +14,12 @@
 #include "../../3rdparty/fmt/format.h"
 
 #include <nlohmann/json.hpp>
+#include <thread>
 #include <windows.h>
 
 #include "../../safeguards.h"
+
+extern std::string SurveyMemoryToText(uint64_t memory);
 
 void SurveyOS(nlohmann::json &json)
 {
@@ -31,7 +34,8 @@ void SurveyOS(nlohmann::json &json)
 	status.dwLength = sizeof(status);
 	GlobalMemoryStatusEx(&status);
 
-	json["memory"] = status.ullTotalPhys;
+	json["memory"] = SurveyMemoryToText(status.ullTotalPhys);
+	json["hardware_concurrency"] = std::thread::hardware_concurrency();
 }
 
 #endif /* WITH_NLOHMANN_JSON */
