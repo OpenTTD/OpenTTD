@@ -144,11 +144,7 @@ struct CursorVars {
 	bool vehchain;                ///< vehicle chain is dragged
 
 	void UpdateCursorPositionRelative(int delta_x, int delta_y);
-	bool UpdateCursorPosition(int x, int y, bool queued_warp);
-
-private:
-	bool queued_warp;
-	Point last_position;
+	bool UpdateCursorPosition(int x, int y);
 };
 
 /** Data about how and where to blit pixels. */
