@@ -470,17 +470,17 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Пока
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Ускорить игру
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Настройки
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Сохранение игры, главное меню, выход
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Показать карту
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Сохранение/загрузка игры; главное меню; выход
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Карта; окна просмотра; грузовые потоки; таблички
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Список городов
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Показать субсидии
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Субсидии
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Список станций
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Показать финансовую информацию компании
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Показать основную информацию о компании
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Показать историю компании
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Показать список задач
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Показать графики
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Показать рейтинги компаний
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Информация о финансах компаний
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Основная информация о компаниях
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}История компаний
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Список задач
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Графики компаний и оплаты грузоперевозок
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Рейтинги компаний
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Список существующих предприятий; создание новых
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Список поездов. Ctrl+щелчок переключает отображение по группам.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Список автотранспорта. Ctrl+щелчок переключает отображение по группам.
@@ -495,8 +495,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Стро
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Строительство аэропортов
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Открыть панель ландшафта для изменения рельефа, посадки деревьев и т.д.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Настройка звука и музыки
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показать последнее сообщение; настройки сообщений
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о территории, консоль, отладка скриптов, снимки экрана, об игре
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показать последнее сообщение; настройки и удаление сообщений
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о территории, об игре и инструментах разработчика, снимки экрана
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Переключить панели инструментов
 
 # Extra tooltips for the scenario editor toolbar
@@ -1073,7 +1073,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}В ос�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Показать в основном окне
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Основные настройки
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Валюта
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Смена используемой в игре валюты
 
@@ -1126,11 +1126,11 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Инте
 
 # Autosave dropdown
 ###length 5
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Отключено
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Каждый месяц
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Каждые 3 месяца
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Каждые 6 месяцев
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Каждый год
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :отключено
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Язык
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Язык пользовательского интерфейса
@@ -1862,7 +1862,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Объём па
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} МиБ
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интервал тех. обслуживания в процентах: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Выберите, должно ли техническое обслуживание транспорта выполняться через определённые промежутки времени, либо при снижении надёжности транспортного средства на определённый процент от максимума
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :При включении транспортные средства будут отправляться на техническое обслуживание после падения надёжности на указанный процент от максимальной.{}Например, при максимальной надёжности 90% и указанном интервале ТО 20% транспортное средство уйдёт на обслуживание при падении надёжности до 72%.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Интервал ТО по умолчанию для поездов: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Настройка периодичности технического обслуживания для новых поездов
@@ -5274,6 +5274,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... да
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не удалось составить график движения для этого транспорта...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Транспорт может ждать только на станции
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Это транспортное средство не останавливается на этой станции
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... график движения неполный
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... слишком много табличек

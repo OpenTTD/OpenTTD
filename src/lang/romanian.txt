@@ -5087,6 +5087,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... avio
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nu pot programa vehiculul...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vehiculele pot aştepta numai în staţii
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Acest vehicul nu are oprire în această staţie
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... orarul este incomplet
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... prea multe semne

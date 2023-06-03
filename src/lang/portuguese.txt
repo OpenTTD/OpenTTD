@@ -344,9 +344,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir a 
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Aumentar velocidade do jogo
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Guardar jogo, abandonar jogo, sair
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostrar mapa
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções e definições
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Guardar, carregar ou abandonar o jogo, sair do programa
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Exibir mapa, visualizador extra, fluxo de cargas ou lista de sinais
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostrar lista de localidades
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostrar subsídios
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Mostrar lista de estações da empresa
@@ -354,9 +354,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Mostrar 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Mostrar informações gerais da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostrar livro de história
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostrar lista de objetivos
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficos
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Exibir gráficos da empresa e taxas de pagamento de carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostrar tabela de classificação de empresas
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financiar a construção de uma nova indústria
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examina indústrias ou financia a construção de uma nova indústria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostrar lista de comboios da empresa. Ctrl+Clique alterna entre abrir a lista de grupos/veículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de veículos rodoviários da empresa. Ctrl+Clique alterna entre abrir a lista de grupos/veículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostrar lista de navios da empresa. Ctrl+Clique alterna entre abrir a lista de grupos/veículos
@@ -370,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construi
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeroportos
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abra a barra de modelação ambiental para elevar ou baixar terreno, plantar árvores, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostrar janela som/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostrar última mensagem/notícia, mostrar opções de mensagens
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações do terreno, consola, depuração de scripts, capturas, sobre o OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostrar a última mensagem/notícia, histórico de mensagens ou eliminar todas as mensagens
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações do terreno, captura de ecrã, sobre o OpenTTD e ferramentas de desenvolvedor
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar barras de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
@@ -1384,8 +1384,8 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Não é 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de infraestruturas: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativo, as infraestruturas têm custos de manutenção. O custo cresce mais do que proporcionalmente com o tamanho da rede e com isso afeta mais as companhias maiores comparando com as mais pequenas
 
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Côr de inicio da empresa: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolher côr de inicio da empresa
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Cor inicial da empresa: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolher a cor inicial da empresa
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca expiram: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ativar esta preferência torna cada tipo de aeroporto disponível para sempre após a sua introdução
@@ -1712,7 +1712,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Definir o volum
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de serviço são em percentagem: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escolher se a manutenção de veículos é ativada pelo tempo decorrido deste a última manutenção, ou pela fiabilidade abaixo de uma certa percentagem da fiabilidade máxima
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando ativado, os veículos procuram fazer a manutenção quando sua fiabilidade reduz para uma determinada percentagem da fiabilidade máxima.{}{}Por exemplo, se a fiabilidade máxima de um veículo for 90% e o intervalo de manutenção for 20%, o veículo tentará fazer a manutenção quando atinge 72% de fiabilidade.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de serviço para comboios por omissão: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Definir o intervalo de manutenção por omissão para novos veículos sobre carris, se não for configurado um intervalo de manutenção explícito para o veículo
@@ -2124,7 +2124,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aviões
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Editar altura máxima do mapa: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar altura máxima de montanhas no mapa
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE}{DATE_SHORT}
-STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Alterar ano actual
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Alterar ano atual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ativar modificação de valores de produção: {ORANGE}{STRING}
 
 # Livery window
@@ -3076,7 +3076,7 @@ STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Quantid
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  World ticks:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Atraso no gráfico de ligação:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderização gráfica:
-STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Janelas de exibição do mundo:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Visualizadores do mundo:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Saída de video:
 STR_FRAMERATE_SOUND                                             :{BLACK}Mistura de Som:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  SJ/IA total:
@@ -3093,7 +3093,7 @@ STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Quantidade de a
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Quantidade de Atraso no Percurso Mundial
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Atraso no gráfico de ligação
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderização gráfica
-STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderização de janela de exibição do mundo
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Renderização de visualizador do mundo
 STR_FRAMETIME_CAPTION_VIDEO                                     :Saída de video
 STR_FRAMETIME_CAPTION_SOUND                                     :Mistura de Som
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :total scripts GS/AI
@@ -4618,12 +4618,12 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar o script
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Tirar uma captura de ecrã
-STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura de tela normal
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura de ecrã normal
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Ampliação máxima
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Ampliação padrão
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Mapa completo
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de alturas
-STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap screenshot
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de ecrã do minimapa
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parâmetros de IA
@@ -5088,6 +5088,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... o av
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossível programar veículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículos apenas podem esperar em estações.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este veículo não pára nesta estação.
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... horário incompleto
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados sinais

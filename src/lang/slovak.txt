@@ -407,9 +407,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Otvoriť
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pozastaviť hru
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Zrýchliť priebeh hry
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nastavenia
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložiť hru, opustiť hru, ukončiť
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Zobraziť mapu
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Možnosti a nastavenia
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložiť, načítať alebo opustiť hru, ukončiť program
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Zobraziť mapu, extra výrez, tok nákladu alebo zoznam značiek
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Zobraziť zoznam miest
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Zobraziť dotácie
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Zoznam staníc spoločnosti
@@ -417,9 +417,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Finančn
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Informácie o spoločnosti
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Zobraziť knihu príbehov
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Zobraziť zoznam cieľov
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafy
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Zobrazte firemné grafy a sadzby platieb za náklad
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Hodnotenie spoločností
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financovať výstavbu nového priemyslu
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Preskúmať odvetvia alebo zafinancovať výstavbu nového odvetvia
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Zoznam vlakov spoločnosti. Ctrl+klik prepína zoznam skupín/vozidiel
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Zoznam cestných vozidiel spoločnosti. Ctrl+klik prepína zoznam skupín/vozidiel
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Zoznam lodí spoločnosti. Ctrl+klik prepína zoznam skupín/vozidiel
@@ -433,8 +433,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Výstavb
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Výstavba letísk
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvoriť panel nástrojov pre úpravy terénu, výsadbu stromov, a pod.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Zobraziť okno zvuku a hudby
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Zobraziť poslednú správu/novinku, nastavenia správ
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informácie o pozemku, konzola, ladenie skriptu, snímky obrazovky, o OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Zobraziť poslednú správu/novinku, históriu správ alebo vymazať všetky správy
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informácie o pozemku, snímka obrazovky, o OpenTTD a nástrojoch pre vývojárov
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Prepnúť panely nástrojov
 
 # Extra tooltips for the scenario editor toolbar

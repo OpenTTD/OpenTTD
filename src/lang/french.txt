@@ -344,9 +344,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Ouvrir l
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Mettre le jeu en pause
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rapide du jeu
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sauvegarder, abandonner, quitter
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afficher la mini-carte, vue supplémentaire ou liste des panneaux
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options et paramètres
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sauvegarder, charger ou abandonner une partie, quitter le programme
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afficher la mini-carte, vue supplémentaire, le flux des marchandises ou la liste des panneaux
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Afficher l'annuaire des villes
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Afficher les subventions
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Afficher la liste des stations de la compagnie
@@ -354,9 +354,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Afficher
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Afficher les informations générales
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Afficher le livre d'histoire
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Afficher la liste des objectifs
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Afficher les graphiques
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Afficher les graphiques de compagnie et les valeurs des marchandises
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Afficher le tableau de classement des compagnies
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financer la construction de nouvelles industries ou lister toutes les industries
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examiner les industries ou financer la construction de nouvelles industries
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Afficher la liste des trains de la compagnie. Ctrl-clic pour ouvrir dans l'autre mode (avancé/normal)
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Afficher la liste des véhicules routiers de la compagnie. Ctrl-clic pour ouvrir dans l'autre mode (avancé/normal)
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Afficher la liste des navires de la compagnie. Ctrl-clic pour ouvrir dans l'autre mode (avancé/normal)
@@ -370,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construc
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construction aéronautique
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ouvrir la barre d'outils de terraformation pour relever/abaisser du terrain, planter des arbres, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Options son et musique
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afficher le dernier message/bulletin, afficher les options des messages
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Outils d'inspection du paysage, console, débogage de script, copies d'écran, à propos d'OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afficher le dernier message/bulletin, l'historique des messages ou supprimer tous les messages
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Outils d'inspection du paysage, copies d'écran, à propos d'OpenTTD et outils pour développeurs
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Changer de barre d'outils
 
 # Extra tooltips for the scenario editor toolbar
@@ -1712,7 +1712,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quantité de m�
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} Mio
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Les intervalles de service sont en pourcentage{NBSP}: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Choisir si l'entretien des véhicule est activé par le temps passé depuis le dernier entretien ou par la fiabilité passant sous un pourcentage de la fiabilité maximum
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Lorsqu'il est activé, les véhicules essaient d'être entretenus quand leur fiabilité passe sous le pourcentage donné de la fiabilité maximum.{}{}Par exemple, si la fiabilité maximum d'un véhicule est 90% et l'intervalle d'entretien 20%, le véhicule essayera d'être entretenu quand sa fiabilité atteindra 72%.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalle d'entretien par défaut pour les trains{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Définit l'intervalle d'entretien par défaut des nouveaux véhicules ferroviaires, si aucun intervalle d'entretien n'est défini pour le véhicule
@@ -5088,6 +5088,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... l'a�
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible d'affecter un horaire au véhicule...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Les véhicules ne peuvent attendre qu'aux stations
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ce véhicule ne s'arrête pas à cette station
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... l'horaire est incomplet
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... trop de panneaux

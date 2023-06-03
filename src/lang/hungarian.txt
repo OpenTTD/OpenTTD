@@ -406,9 +406,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}A járm�
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Játék szüneteltetése
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Játék gyorsítása
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Beállítások
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Játék mentése, játék elhagyása, kilépés
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Térkép, extra látkép és feliratok listája
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Alapbeállítások és beállítások
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Játék mentése vagy játék elhagyása, kilépés
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Térkép, extra látkép, rakományáramlás és feliratok listája
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Településlista mutatása
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Támogatások megjelenítése
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Állomások listája
@@ -416,9 +416,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Pénzüg
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Általános adatok
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Napló
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Célok listája
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikonok
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vállalati grafikonok és rakományok szállítási díja
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}A vállalatok helyezése
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Gazdasági épület építése, meglévők listázása
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Gazdasági épületek szemügyre vétele vagy egy új gazdasági épület építése
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vonatok listája. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Közúti járművek listája. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Hajók listája. Ctrl+kattintással válszthatsz a csoport- vagy járműlista között
@@ -432,8 +432,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Vízi ú
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Repülőtér építése
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Nyisd meg a tájrendező ablakot a talaj emeléséhez vagy süllyesztéséhez, faültetéshez stb.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hang/zene beállításai
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Legutóbbi üzenet/újsághír, üzenetek beállításai
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület-információ, konzol, MI/Játékszkript nyomkövetés, képmentések, az OpenTTD-ről
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Legutóbbi üzenet/újsághír megmutatása, üzenetelőzmények vagy minden üzenet törlése
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület-információ, konzol, képmentések, az OpenTTD-ről és fejlesztői eszközök
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Eszköztár váltás
 
 # Extra tooltips for the scenario editor toolbar
@@ -449,7 +449,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Települ
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gazdasági épület-generálás
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Út építése
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Villamospálya építése
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Faültetés. Shift lenyomásával megmutatja a becsült építési költséget
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Faültetés. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Felirat lerakása
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektum építése. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
 
@@ -1270,7 +1270,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximális kezdeti hitelkeret: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálisan kölcsönözhető összeg (az inflációtól eltekintve)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Nincs kölcsön {RED}Kezdőtőkéhez játékszkript szükséges
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Kamatláb: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Banki hitel kamat; inflációt is szabályozza, ha be van kapcsolva
@@ -1990,13 +1992,13 @@ STR_CONFIG_SETTING_LINKGRAPH_TIME                               :A szétosztási
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :A kapcsolati gráf egy komponensének újraszámítására szánt idő. Az újraszámítás egy külön szálon indul el, és a megadott számú napig fut. Minél rövidebb ez az időtartam, annál valószínűbb, hogy a számítás nincs kész az idő lejártakor, ekkor a játék megáll a számítás befejeződéséig (ettől a játék akadhat). Minél hosszabb ez az időtartam, annál több idő kell a szétosztás frissüléséhez, amikor megváltoznak az útvonalak.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Utasok szétosztása: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi utas megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű utas mehet. "Kézi" esetben az utasok nem lesznek automatikusan szétosztva.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :A "Szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi utas megy majd A-ból B-be, mint B-ből A-ba. Az "Aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű utas mehet. "Kézi" esetben az utasok nem lesznek automatikusan szétosztva.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Levelek szétosztása: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi levél megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű levél mehet. "Kézi" esetben a levelek nem lesznek automatikusan szétosztva.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :A "Szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi levél megy majd A-ból B-be, mint B-ből A-ba. Az "Aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű levél mehet. "Kézi" esetben a levelek nem lesznek automatikusan szétosztva.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :A PÁNCÉLOZOTT rakománytípus szétosztása: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A PÁNCÉLOZOTT rakománytípus a mérsékelt égövi tájon az értéktárgyakat, szubtrópusi tájon a gyémántot, szubarktikus tájon pedig az aranyat jelenti, ezeken a NewGRF-ek változtathatnak. A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi rakomány megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű rakomány mehet. "Kézi" esetben a rakományok nem lesznek automatikusan szétosztva. Szubarktikus esetben az "aszimmetrikus" vagy "kézi" beállítás javasolt, mivel a bankok nem fognak aranyat, ill. gyémántot visszaküldeni a bányáknak. Mérsékelt és szubtropikus égövi esetben a "szimmetrikus" is jó választás, ebben az esetben a bankok a fogadott mennyiségnek megfelelően fognak értéktárgyakat visszaküldeni a küldő banknak.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Egyéb rakománytípusok szétosztása: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű rakomány mehet. "Kézi" esetben a rakományok nem lesznek automatikusan szétosztva.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Az "Aszimmetrikus" beállítás esetén a különböző irányokba tetszőleges mennyiségű rakomány mehet. "Kézi" esetben a rakományok nem lesznek automatikusan szétosztva.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :kézi
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :aszimmetrikus
@@ -2763,6 +2765,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Automata
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Válassz egy vasúti hidat
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Közúti híd építése
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Híd kiválasztása - kattints arra a hídra, amit meg akarsz építeni
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Függő, acél
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Gerendás, acél
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Rácsos, acél
@@ -2882,7 +2888,7 @@ STR_OBJECT_CLASS_TRNS                                           :Adótornyok
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Fák
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Ültetendő fa kiválasztása. Ha már van fa a mezőn, akkor újabb fák ültetése a kiválasztott fatípustól függetlenül
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletlenszerű fafélék
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Véletlenszerűen kiválasztott fákat helyez el. Shift lenyomásával megmutatja a várható telepítési költséget
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Véletlenszerűen kiválasztott fákat helyez el. Ctrl lenyomásával átlós terület jelölhető ki. Shift lenyomásával megmutatja a becsült építési költséget.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Véletlenszerű fák
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Véletlenszerűen fákat ültet a térképre
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normál
@@ -5145,6 +5151,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... a re
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}A jármű nem időzíthető
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}A járművek csak az állomáson várakozhatnak
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ez a jármű nem áll meg ezen az állomáson
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... menetrend befejezetlen
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... túl sok a felirat

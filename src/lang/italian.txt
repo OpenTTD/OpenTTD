@@ -345,9 +345,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Apri la 
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Aumenta la velocità di gioco
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opzioni
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salva la partita, abbandona la partita, esci
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostra la mappa, apre una mini visuale extra o mostra l'elenco dei cartelli
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opzioni e impostazioni
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvare, caricare o abbandonare il gioco, uscire dal programma
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Visualizzazione di una mappa, di una finestra supplementare, di un flusso di carico o di un elenco di segnali.
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostra l'elenco delle città
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostra i sussidi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Mostra l'elenco delle stazioni di una compagnia
@@ -355,9 +355,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Mostra i
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Mostra informazioni generali sulle compagnie
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostra la storia delle compagnie
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostra le liste degli obiettivi
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostra i grafici
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Visualizzare i grafici aziendali e i tassi di pagamento del carico
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostra la classifica delle compagnie
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finanzia la costruzione di una nuova industria o mostra l'elenco delle industrie
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Esaminare le industrie o finanziare la costruzione di una nuova industria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostra l'elenco dei treni di una compagnia. CTRL+clic non apre la lista gruppi.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostra l'elenco degli automezzi di una compagnia. CTRL+clic non apre la lista gruppi.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostra l'elenco delle navi di una compagnia. CTRL+clic non apre la lista gruppi.
@@ -371,8 +371,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Costruzi
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Costruzione aeroporti
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Apre la barra di modellazione del terreno per alzare/abbassare il terreno, piantare alberi, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra suoni/musica
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra l'ultimo messaggio/notizia, mostra le opzioni dei messaggi
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informazioni area terreno, console, debug degli script, screenshot, informazioni su OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra l'ultimo messaggio/notizia, la cronologia dei messaggi o cancella tutti i messaggi
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informazioni sull'area del terreno, screenshot, su OpenTTD e sugli strumenti per gli sviluppatori
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Alterna barre degli strumenti
 
 # Extra tooltips for the scenario editor toolbar
@@ -1746,7 +1746,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quantità massi
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Gli intervalli di manutenzione sono in percentuale: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Determina se la manutenzione dei veicoli è controllata dal tempo trascorso dall'ultima manutenzione piuttosto che dalla riduzione dell'affidabilità di una certa frazione di quella massima
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando è abilitata, i veicoli tentano la manutenzione quando la loro affidabilità scende di una determinata percentuale dell'affidabilità massima.{}{}Ad esempio, se l'affidabilità massima di un veicolo è del 90% e l'intervallo di manutenzione è del 20%, il veicolo tenterà la manutenzione quando raggiunge il 72% di affidabilità.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervallo manutenzione predefinito treni: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Imposta l'intervallo di manutenzione predefinito per i nuovi veicoli ferroviari, quando non viene impostato nessun intervallo esplicito
@@ -5128,6 +5128,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... l'ae
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossibile dare un orario al veicolo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}I veicoli possono attendere solo alle stazioni
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Il veicolo non ferma a questa stazione
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... l'orario è incompleto
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... troppi cartelli

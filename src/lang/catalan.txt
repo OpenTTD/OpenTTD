@@ -344,9 +344,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Obre la 
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Posa en pausa o reprèn la partida
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avança la partida el més ràpid possible
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcions
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Desa la partida, abandona-la o surt del programa
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostra el mapa, finestres de visualització o llista de senyals, entre d'altres
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcions i configuració
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Desa o carrega una partida, abandona-la o surt del programa.
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostra el mapa, vistes addicionals, la llista de senyals o el flux de càrrega.
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostra la llista de poblacions
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostra les subvencions
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Mostra la llista d'estacions de la companyia
@@ -356,7 +356,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostra e
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostra la llista d'objectius
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostra gràfics de l'evolució de les companyies i les tarifes de transport.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostra la taula de la lliga de companyies.
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finança la construcció d'una nova indústria
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examina les indústries o finança la construcció d'una indústria nova.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostra la llista de trens de la companyia. Ctrl+Clic commuta l'obertura de la llista de grups/vehicles.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostra la llista de vehicles de la companyia. Ctrl+Clic commuta l'obertura de la llista de grups/vehicles.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostra la llista de vaixells de la companyia. Ctrl+Clic canvia entre l'obertura de la llista de grups/vehicles.
@@ -370,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construe
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construeix aeroports
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Obre la barra d'eines del terreny per elevar/rebaixar el terreny, plantar arbres, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra de so/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra els darrers missatges/notícies i l'historial disponible
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació de terreny, consola, depuració de scripts, captures de pantalla, informació de l'OpenTTD...
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra els darrers missatges/notícies i l'historial disponible o esborra tots els missatges.
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació de terreny, captures de pantalla i informació sobre l'OpenTTD i eines de desenvolupament.
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Commuta barres d'eines
 
 # Extra tooltips for the scenario editor toolbar
@@ -1712,7 +1712,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quantitat de me
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA}{NBSP}MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Els intervals de revisions es mostren en percentatges: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escull si les revisions dels vehicles depenen del temps passat des de la darrera revisió o de la caiguda d'un cert percentatge de la fiabilitat màxima
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quan l'opció està activada, els vehicles intenten fer les seves revisions quan la seva fiabilitat baixa d'un cert percentatge de la fiabilitat màxima.{}{}Per exemple, si la fiabilitat màxima d'un vehicle és del 90{NBSP}% i l'interval de revisions és del 20{NBSP}%, el vehicle mirarà de fer la revisió quan arribi a un 72{NBSP}% de fiabilitat.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval per defecte de servei per als trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Estableix l'interval de revisió predeterminat pels nous ferrocarrils, si no hi ha un interval de revisió explícit pel vehicle
@@ -5088,6 +5088,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... l'av
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible establir l'horari del vehicle...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Els vehicles només poden esperar a les estacions
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Aquest vehicle no para en aquesta estació
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... l'horari està incomplet.
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... massa senyals

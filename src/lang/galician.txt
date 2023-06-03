@@ -344,9 +344,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abre a v
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar partida
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rápido da partida
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcións
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Gravar partida, abandonar partida, saír
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Amosa-lo mapa, ventá extra ou lista de rótulos
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcións e axustes
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Gravar, cargar ou abandonar partida, saír do programa
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Amosa-lo mapa, ventá extra, fluxo de carga ou lista de rótulos
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Amosa-lo directorio de cidades
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Amosa-las subvencións
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Amosa-la lista das estacións da compañía
@@ -354,9 +354,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Amosa-la
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Amosa-la información xeral da compañía
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostrar historial
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK} Mostrar lista de obxectivos
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Amosa-las gráficas
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficos de compañías e taxas de pago de carga.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Amosa-lo cadro da liga de compañías
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financia-la construción dunha nova industria ou listar tódalas industrias
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examinar as industrias ou financiar a construción dunha nova industria.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Amosa-la lista dos trens da compañía. Ctrl+Click alterna entre lista de grupos/vehículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Amosa-la lista dos vehículos de estrada da compañía. Ctrl+Click alterna entre lista de grupos/vehículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Amosar a lista dos barcos da compañía. Ctrl+Click alterna entre lista de grupos/vehículos
@@ -370,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Constru�
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construír aeroportos
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abri-la ferramenta de terreo para subir/baixar terreo, plantar árbores, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Amosa-la ventá de son/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Amosa-la última mensaxe/nova, amosa-las opcións das mensaxes
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Información dunha área de terreo, consola, depuración de scripts, capturas de pantalla, acerca de OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Amosa-la última mensaxe/nova, histórico de mensaxes ou borra todas as mensaxes
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Información sobre a área de terra, capturas de pantalla, sobre OpenTTD e ferramentas de desenvolvedor.
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Intercambiar barras de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
@@ -1712,7 +1712,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Canta memoria p
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalos de servizo en porcentaxes: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Permite escoller se o mantemento de vehículos comezará debido ao tempo transcurrido dende o último mantemento ou por unha redución da fiabilidade cando se sobrepase unha porcentaxe determinado
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Cando está habilitado, os vehículos intentan ser reparados cando a súa fiabilidade baixa unha porcentaxe dada da fiabilidade máxima.{}{}Por exemplo, se a fiabilidade máxima dun vehículo é do 90% e o intervalo de mantemento é do 20%, o vehículo tentará ser reparado cando alcance unha fiabilidade do 72%.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantemento por defecto para trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Fixa o intervalo de mantemento por defecto para trens novos, o cal se empregará no caso de que non se defina explicitamente un novo intervalo de mantemento para o vehículo
@@ -5088,6 +5088,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... o av
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Non se pode axusta-lo horario do vehículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Os vehículos só poden parar nas estacións
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este vehículo non para nesta estación
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... horario incompleto
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados sinais

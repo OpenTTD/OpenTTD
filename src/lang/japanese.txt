@@ -343,9 +343,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}指令�
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ゲームをポーズします
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}ゲーム進行速度を早くします
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ゲームオプションの設定画面を開きます
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}ゲームのセーブ、中断、OpenTTDの終了ができます
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}地図の表示、ビューポートの表示、標識のリストの表示ができます
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ゲームオプションと設定
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}ゲームのセーブ、ロード、中断、OpenTTDの終了ができます
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}地図の表示、ビューポートの表示、貨物流通、標識のリストの表示ができます
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}街の一覧を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}助成金一覧を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}社有の停留施設の一覧を表示します
@@ -353,9 +353,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}会社�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}会社の一般的な情報を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}ゲームの背景となる物語を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}ゲームの目標一覧を表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}さまざまなグラフを表示します
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}会社の業績グラフや運送報酬相場を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}会社の業務成績表を表示します
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}新たな産業の開設に出資します
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}産業を調査、及び産業の開設に出資します
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}社有の列車一覧とそのグループを表示します。Ctrl+クリックで一覧のみ表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}社有の車両一覧とそのグループを表示します。Ctrl+クリックで一覧のみ表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}社有の船舶一覧とそのグループを表示します。Ctrl+クリックで一覧のみ表示します
@@ -369,8 +369,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}埠頭�
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}空港を建設します
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}地形のツールバーを開きます。整地や植林などを行うことができます。
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}音楽/効果音のウィンドウを表示します
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最後のメッセージ/ニュースの表示と、メッセージオプションの設定ができます
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域の情報、コンソール、スクリプトのデバッグ、スクリーンショット、OpenTTDについて、などのツール群です
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最新メッセージ/ニュースとメッセージ履歴を表示、メッセージをすべて削除
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域の情報、スクリーンショット、OpenTTDについて、開発者ツール
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}ツールバーを切り替えます
 
 # Extra tooltips for the scenario editor toolbar
@@ -430,7 +430,7 @@ STR_FILE_MENU_EXIT                                              :OpenTTDを終�
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :地図
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :ビューポートを開く
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :貨物輸送履歴
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :貨物流通履歴
 STR_MAP_MENU_SIGN_LIST                                          :標識リスト
 
 # Town menu
@@ -1711,7 +1711,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :一つのスク
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :最大信頼度を点検要件化: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :次の点検が必要と判断される条件を設定します。無効の場合は、前の点検から指定の期間が経過した際に点検が必要と判断されます。有効にすると、輸送機器の最大信頼度が指定の値より落ち込んだ場合に次の点検が必要と判断されます
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :有効にすると、輸送機器の信頼度が最大信頼度より指定の差分落ち込んだ場合に点検に行きます。{}{}例えば、輸送機器の最大信頼度が90%で点検間隔が20%だとすると、輸送機器の信頼度が72%を下回る場合に点検に行きます。
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :列車の点検周期: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :個別に指定されていない場合の、列車の点検周期を設定します
@@ -5087,6 +5087,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}航続�
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}この輸送機器にダイヤを設定できません
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}輸送機器は停留施設でのみ待機できます
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}この輸送機器はこの停留施設には停まれません
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}…ダイヤが未完成です
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}標識が多すぎます
