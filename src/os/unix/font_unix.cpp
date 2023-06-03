@@ -31,64 +31,68 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 
 	if (!FcInit()) {
 		ShowInfo("Unable to load font configuration");
-	} else {
-		FcPattern *match;
-		FcPattern *pat;
-		FcFontSet *fs;
-		FcResult  result;
-		char *font_style;
-		char *font_family;
+		return err;
+	}
 
-		/* Split & strip the font's style */
-		font_family = stredup(font_name);
-		font_style = strchr(font_family, ',');
-		if (font_style != nullptr) {
-			font_style[0] = '\0';
-			font_style++;
-			while (*font_style == ' ' || *font_style == '\t') font_style++;
-		}
+	auto fc_instance = FcConfigReference(nullptr);
+	assert(fc_instance != nullptr);
 
-		/* Resolve the name and populate the information structure */
-		pat = FcNameParse((FcChar8 *)font_family);
-		if (font_style != nullptr) FcPatternAddString(pat, FC_STYLE, (FcChar8 *)font_style);
-		FcConfigSubstitute(nullptr, pat, FcMatchPattern);
-		FcDefaultSubstitute(pat);
-		fs = FcFontSetCreate();
-		match = FcFontMatch(nullptr, pat, &result);
+	FcPattern *match;
+	FcPattern *pat;
+	FcFontSet *fs;
+	FcResult  result;
+	char *font_style;
+	char *font_family;
 
-		if (fs != nullptr && match != nullptr) {
-			int i;
-			FcChar8 *family;
-			FcChar8 *style;
-			FcChar8 *file;
-			int32_t index;
-			FcFontSetAdd(fs, match);
+	/* Split & strip the font's style */
+	font_family = stredup(font_name);
+	font_style = strchr(font_family, ',');
+	if (font_style != nullptr) {
+		font_style[0] = '\0';
+		font_style++;
+		while (*font_style == ' ' || *font_style == '\t') font_style++;
+	}
 
-			for (i = 0; err != FT_Err_Ok && i < fs->nfont; i++) {
-				/* Try the new filename */
-				if (FcPatternGetString(fs->fonts[i], FC_FILE, 0, &file) == FcResultMatch &&
-					FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
-					FcPatternGetString(fs->fonts[i], FC_STYLE, 0, &style) == FcResultMatch &&
-					FcPatternGetInteger(fs->fonts[i], FC_INDEX, 0, &index) == FcResultMatch) {
+	/* Resolve the name and populate the information structure */
+	pat = FcNameParse((FcChar8 *)font_family);
+	if (font_style != nullptr) FcPatternAddString(pat, FC_STYLE, (FcChar8 *)font_style);
+	FcConfigSubstitute(nullptr, pat, FcMatchPattern);
+	FcDefaultSubstitute(pat);
+	fs = FcFontSetCreate();
+	match = FcFontMatch(nullptr, pat, &result);
 
-					/* The correct style? */
-					if (font_style != nullptr && !StrEqualsIgnoreCase(font_style, (char *)style)) continue;
+	if (fs != nullptr && match != nullptr) {
+		int i;
+		FcChar8 *family;
+		FcChar8 *style;
+		FcChar8 *file;
+		int32_t index;
+		FcFontSetAdd(fs, match);
 
-					/* Font config takes the best shot, which, if the family name is spelled
-					 * wrongly a 'random' font, so check whether the family name is the
-					 * same as the supplied name */
-					if (StrEqualsIgnoreCase(font_family, (char *)family)) {
-						err = FT_New_Face(_library, (char *)file, index, face);
-					}
+		for (i = 0; err != FT_Err_Ok && i < fs->nfont; i++) {
+			/* Try the new filename */
+			if (FcPatternGetString(fs->fonts[i], FC_FILE, 0, &file) == FcResultMatch &&
+				FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
+				FcPatternGetString(fs->fonts[i], FC_STYLE, 0, &style) == FcResultMatch &&
+				FcPatternGetInteger(fs->fonts[i], FC_INDEX, 0, &index) == FcResultMatch) {
+
+				/* The correct style? */
+				if (font_style != nullptr && !StrEqualsIgnoreCase(font_style, (char *)style)) continue;
+
+				/* Font config takes the best shot, which, if the family name is spelled
+					* wrongly a 'random' font, so check whether the family name is the
+					* same as the supplied name */
+				if (StrEqualsIgnoreCase(font_family, (char *)family)) {
+					err = FT_New_Face(_library, (char *)file, index, face);
 				}
 			}
 		}
-
-		free(font_family);
-		FcPatternDestroy(pat);
-		FcFontSetDestroy(fs);
-		FcFini();
 	}
+
+	free(font_family);
+	FcPatternDestroy(pat);
+	FcFontSetDestroy(fs);
+	FcConfigDestroy(fc_instance);
 
 	return err;
 }
@@ -98,9 +102,12 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 
 bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
-	if (!FcInit()) return false;
-
 	bool ret = false;
+
+	if (!FcInit()) return ret;
+
+	auto fc_instance = FcConfigReference(nullptr);
+	assert(fc_instance != nullptr);
 
 	/* Fontconfig doesn't handle full language isocodes, only the part
 	 * before the _ of e.g. en_GB is used, so "remove" everything after
@@ -168,6 +175,6 @@ bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, 
 		FcFontSetDestroy(fs);
 	}
 
-	FcFini();
+	FcConfigDestroy(fc_instance);
 	return ret;
 }
