@@ -234,7 +234,7 @@ public:
 	{
 		this->flags ^= VL_DESC;
 
-		if (this->IsSortable()) MemReverseT(std::vector<T>::data(), std::vector<T>::size());
+		if (this->IsSortable()) std::reverse(std::vector<T>::begin(), std::vector<T>::end());
 	}
 
 	/**
