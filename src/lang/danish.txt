@@ -343,9 +343,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Åbn ord
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Sæt spillet på pause
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Kør spillet hurtigere
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Valg
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Valgmuligheder og indstillinger
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Gem spillet, forlad spillet, afslut
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kortet
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kort, ekstra viewport eller liste over skilte
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vis byoversigten
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis tilskudsordninger
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vis liste over selskabets stationer
@@ -369,8 +369,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Byg havn
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byg lufthavne
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åbn landskabsværktøjslinjen for at hæve/sænke terræn, plante træer, osv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikvindue
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis seneste besked/nyhedsrapport, vis beskedvalg
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Information om landområde, konsol, debug af script, skærmbillede, om OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis sidste besked/nyhedsrapport, beskedhistorik eller slet alle beskeder
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landområde information, konsol, script debug, skærmbilleder, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift værktøjslinier
 
 # Extra tooltips for the scenario editor toolbar
@@ -863,7 +863,7 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} øger produktionen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Ny kulåre fundet tæt på {INDUSTRY}!{}Produktionen forventes fordoblet!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Ny kulmine fundet tæt på {INDUSTRY}!{}Produktionen forventes fordoblet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nye oliereserver fundet tæt ved {INDUSTRY}!{}Produktionen forventes fordoblet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Forbedrede landbrugsmetoder ved {INDUSTRY} gør at produktionen forventes fordoblet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}produktionen på {INDUSTRY} vokser med {COMMA}%!
@@ -872,7 +872,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}produktionen på {INDUSTRY} sænkes med {COMMA}%!
 
 ###length VEHICLE_TYPES
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} afventer i remisen
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} afventer i depotet
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter på værkstedet
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} venter i skibsdokken
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} venter i hangaren
@@ -883,7 +883,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en ugyldig ordre
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har dublerede ordrer
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har en ugyldig station i sine ordrer
-STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} har i sine ordrer en lufthavn, hvis bane er for kort
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} har en lufthavn i sine ordrer, hvis bane er for kort
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} er gammel
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er meget gammel
@@ -1711,7 +1711,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hvor meget huko
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Service intervaller er i procent: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Vælg om vedligeholdelse bliver udløst af forløbet tid, eller pålideligheden som falder en givet procenttal i forhold til maximum pålideligheden
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Når den er aktiveret, forsøger køretøjer at servicere, når deres pålidelighed falder med en given procentdel af den maksimale pålidelighed.Hvis f.eks. et køretøjs maksimale pålidelighed er 90 %, og serviceintervallet er 20 %, vil køretøjet forsøge at servicere, når den når 72 % pålidelighed.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard vedligeholdelses interval for tog: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Sæt serviceintervallets standardværdi for nye skinnekøretøjer.
@@ -2524,7 +2524,7 @@ STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besøg h
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Download det valgte indhold
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total størrelse af download: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INDHOLDSINFO
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INDHOLDS INFORMATION
 
 ###length 5
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Du har ikke valgt denne til download
@@ -3198,7 +3198,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri udfo
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vand
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfældige
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfældige
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelle
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Højdekortets rotation:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Højdekortets navn:
@@ -3985,8 +3985,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ømdøb 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ændere depotets navn
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Omdøb depot
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Skift navn på depot
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Omdøb værksted
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -5087,6 +5087,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... fly 
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan ikke lave køreplan for transportmiddel...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Transportmidler kan kun vente ved stationer.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dette transportmiddel stopper ikke ved denne station.
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... tidsplanen er ufuldstændig
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... for mange skilte

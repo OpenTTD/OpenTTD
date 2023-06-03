@@ -722,9 +722,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Otwórz 
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Przyspieszenie czasu w grze
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcje
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Zapis gry, opuszczenie gry, wyjście
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Wyświetl mapę, dodatkowy podgląd lub listę napisów
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcje i ustawienia
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Zapis, wczytanie lub opuszczenie rozgrywki, zamknięcie programu
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Wyświetl mapę, dodatkowy podgląd, przepływ ładunków lub listę napisów
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Wyświetl listę miast
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Wyświetl dotacje
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Wyświetl listę stacji firmy
@@ -732,9 +732,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Wyświet
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświetl informacje ogólne firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Wyświetl przewodnik
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Wyświetl listę celów
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetl wykresy
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetlanie wykresów firmy i stawek płatności za ładunek
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl ranking firm
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ufunduj budowę nowego przedsiębiorstwa
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Analiza przedsiębiorstw lub fundowanie budowy nowego przedsiębiorstwa
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Wyświetl listę pociągów firmy. Ctrl+klik przełącza otwieranie listy grup/pojazdów
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Wyświetl listę pojazdów drogowych firmy. Ctrl+klik przełącza otwieranie listy grup/pojazdów
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Wyświetl listę statków firmy. Ctrl+klik przełącza otwieranie listy grup/pojazdów
@@ -748,8 +748,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Budowa p
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Budowa lotnisk
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Zmiana terenu, podwyższanie/obniżanie lądu, sadzenie drzew, itp.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Wyświetl okno dźwięk/muzyka
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Wyświetl ostatnią wiadomość/ogłoszenie, wyświetl ustawienia wiadomości
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacje o terenie, konsola, debugowanie skryptów, zrzut ekranu, o grze OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Wyświetlenie ostatniej wiadomości/ogłoszenia, historii wiadomości lub usunięcie wszystkich wiadomości
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacje o terenie, zrzut ekranu, o grze OpenTTD oraz narzędzia dla deweloperów
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Przełącz paski narzędzi
 
 # Extra tooltips for the scenario editor toolbar
@@ -828,7 +828,7 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Wykres przychod
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Wykres dostarczonego ładunku
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Wykres oceny wydajności
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Wykres wartości firmy
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stawki za ładunek
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stawki płatności za ładunek
 
 # Company league menu
 ###length 3
@@ -984,7 +984,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Dostarcz
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocena wydajności firmy (maks. ocena=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Wartości firm
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki za ładunek
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki płatności za ładunek
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dni w transporcie
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Dochód z przewozu 10 jednostek (lub 10,000 litrów) ładunku na odległość 20 pól
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Włącz wszystko
@@ -1046,7 +1046,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Wielkoś
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Suma przyznanych punktów
 
 # Music window
-STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Szafa Grająca
 STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Wszystko
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Stary styl
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Nowy styl
@@ -1059,7 +1059,7 @@ STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKG
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
 STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Brak dostępnej muzyki
-STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}„{STRING}”
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Ścieżka
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Tytuł
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Losowo
@@ -1069,20 +1069,20 @@ STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Przejdź
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Zatrzymaj muzykę
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Odtwarzaj muzykę
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Przesuń suwaki żeby ustawić głośność dźwięków i muzyki
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Wybierz program 'Wszystko'
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Wybierz program 'Stary styl'
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Wybierz program 'Nowy styl'
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Wybierz program 'Ezy Street'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Wybierz program 'Własny 1' (definiowany)
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Wybierz program 'Własny 2' (definiowany)
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Losowe odtwarzanie wł./wył.
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Wybierz program „Wszystko”
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Wybierz program „Stary styl”
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Wybierz program „Nowy styl”
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Wybierz program „Ezy Street”
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Wybierz program „Własny 1” (zdefiniowany przez użytkownika)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Wybierz program „Własny 2” (zdefiniowany przez użytkownika)
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Włącz/wyłącz losowe odtwarzanie
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Pokaż okno wyboru ścieżek
 
 # Playlist window
-STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Program muzyczny - '{STRING}'
-STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Program muzyczny - „{STRING}”
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} „{STRING}”
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Wykaz ścieżek
-STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programuj - '{STRING}'
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - „{STRING}”
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Wyczyść
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Zmień zestaw
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Wyczyść obecny program (tylko Wlasny1 lub Wlasny2)
@@ -2091,7 +2091,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Ilość pamięc
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Okres między serwisowaniami w procentach: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Wybierz, czy serwisowanie pojazdów odbywa się na podstawie czasu od ostatniego serwisu, czy sprawności malejącej o pewien procent maksymalnej sprawności
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kiedy włączone, pojazdy podejmują próbę serwisowania, gdy ich niezawodność spadnie o dany procent maksymalnej niezawodności.{}{}Na przykład, jeśli maksymalna niezawodność pojazdu wynosi 90%, a interwał serwisowy wynosi 20%, pojazd podejmie próbę serwisowania, gdy osiągnie 72% niezawodności.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Domyślny interwał serwisowania pociągów: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ustaw domyślny okres serwisowania dla nowych pojazdów kolejowych, jeśli takowy nie istnieje dla określonego pojazdu
@@ -2966,7 +2966,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Przełą
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Przełącz przeźroczystość dla drzew. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Przełącz przeźroczystość dla budynków miejskich. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Przełącz przeźroczystość dla przedsiębiorstw. Ctrl+klik, aby zablokować
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Przełącz przeźroczystość dla infrastruktury takiej jak stacje, zajezdnie i pkt. orientacyjne. Ctrl+klik, aby zablokować
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Przełącz przeźroczystość dla infrastruktury takiej jak stacje, zajezdnie i posterunki. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Przełącz przeźroczystość dla mostów. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Przełącz przeźroczystość dla obiektów takich jak latarnie morskie i anteny. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Przełącz przeźroczystość dla trakcji (linii nośnych). Ctrl+klik, aby zablokować
@@ -3144,7 +3144,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Buduj ka
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Buduj śluzy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Wybuduj stocznię (do kupowania i serwisowania statków). Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Zbuduj port. Ctrl umożliwia łączenie stacji. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Ustaw boję, która może być użyta jako pkt. orientacyjny. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Ustaw boję, która może być użyta jako punkt orientacyjny. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Zbuduj akwedukt. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Stwórz akwen wodny.{}Tworzy kanał, chyba że przytrzymany jest CTRL na poziomie morza, wtedy pobliski teren zostanie zatopiony
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Umieszczanie rzek. Ctrl zaznacza obszar po przekątnej.
@@ -4029,7 +4029,7 @@ STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień n
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji boi. Ctrl+klik otwiera nowy podgląd na jej lokalizację
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmień nazwę boi
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę pkt. orientacyjnego
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę posterunku
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanse {COMPANY} {BLACK}{COMPANY_NUM}
@@ -5240,7 +5240,7 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Należy 
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Przylega do więcej niż jednego istniejącego posterunku
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zbyt blisko innego posterunku
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nie można budować tutaj punktu orientacyjnego...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nie można budować tutaj posterunku...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nie można tutaj ustawić boi...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie można zmienić nazwy posterunku...
 
@@ -5473,6 +5473,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... samo
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Pojazdy mogą czekać tylko na stacjach
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ten pojazd nie zatrzymuje się na tej stacji.
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... rozkład jazdy jest niekompletny
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zbyt wiele napisów

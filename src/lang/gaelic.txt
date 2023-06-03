@@ -5535,7 +5535,6 @@ STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LO
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
-STR_DATE_LONG_SMALL.dat                                         :{TINY_FONT}{BLACK}{DATE_LONG.dat}
 STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
