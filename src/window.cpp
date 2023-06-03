@@ -3483,7 +3483,7 @@ void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index)
  */
 void RelocateAllWindows(int neww, int newh)
 {
-	CloseWindowById(WC_DROPDOWN_MENU, 0);
+	CloseWindowByClass(WC_DROPDOWN_MENU);
 
 	for (Window *w : Window::Iterate()) {
 		int left, top;
