@@ -27,6 +27,11 @@
 typedef bool (ScriptModeProc)();
 
 /**
+ * The callback function for Async Mode-classes.
+ */
+typedef bool (ScriptAsyncModeProc)();
+
+/**
  * The storage for each script. It keeps track of important information.
  */
 class ScriptStorage {
@@ -34,6 +39,8 @@ friend class ScriptObject;
 private:
 	ScriptModeProc *mode;             ///< The current build mode we are int.
 	class ScriptObject *mode_instance; ///< The instance belonging to the current build mode.
+	ScriptAsyncModeProc *async_mode;         ///< The current command async mode we are in.
+	class ScriptObject *async_mode_instance; ///< The instance belonging to the current command async mode.
 	CompanyID root_company;          ///< The root company, the company that the script really belongs to.
 	CompanyID company;               ///< The current company.
 
@@ -61,6 +68,8 @@ public:
 	ScriptStorage() :
 		mode              (nullptr),
 		mode_instance     (nullptr),
+		async_mode        (nullptr),
+		async_mode_instance (nullptr),
 		root_company      (INVALID_OWNER),
 		company           (INVALID_OWNER),
 		delay             (1),

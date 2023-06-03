@@ -146,6 +146,7 @@ add_files(
     script_accounting.hpp
     script_admin.hpp
     script_airport.hpp
+    script_asyncmode.hpp
     script_base.hpp
     script_basestation.hpp
     script_bridge.hpp
@@ -219,6 +220,7 @@ add_files(
     script_accounting.cpp
     script_admin.cpp
     script_airport.cpp
+    script_asyncmode.cpp
     script_base.cpp
     script_basestation.cpp
     script_bridge.cpp
