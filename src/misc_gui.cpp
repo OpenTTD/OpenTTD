@@ -959,17 +959,7 @@ struct QueryStringWindow : public Window
 	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
 			Window(desc), editbox(max_bytes, max_chars)
 	{
-		char *last_of = &this->editbox.text.buf[this->editbox.text.max_bytes - 1];
-		GetString(this->editbox.text.buf, str, last_of);
-		StrMakeValidInPlace(this->editbox.text.buf, last_of, SVS_NONE);
-
-		/* Make sure the name isn't too long for the text buffer in the number of
-		 * characters (not bytes). max_chars also counts the '\0' characters. */
-		while (Utf8StringLength(this->editbox.text.buf) + 1 > this->editbox.text.max_chars) {
-			*Utf8PrevChar(this->editbox.text.buf + strlen(this->editbox.text.buf)) = '\0';
-		}
-
-		this->editbox.text.UpdateSize();
+		this->editbox.text.Assign(str);
 
 		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->editbox.orig = this->editbox.text.buf;
 
