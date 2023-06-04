@@ -12,6 +12,7 @@
 #include "../network/network.h"
 #include "../blitter/factory.hpp"
 #include "../debug.h"
+#include "../driver.h"
 #include "../fontcache.h"
 #include "../gfx_func.h"
 #include "../gfxinit.h"
@@ -156,6 +157,13 @@ void VideoDriver::Tick()
 		this->Paint();
 
 		this->UnlockVideoBuffer();
+
+		/* Wait till the first successful drawing tick before marking the driver as operational. */
+		static bool first_draw_tick = true;
+		if (first_draw_tick) {
+			first_draw_tick = false;
+			DriverFactoryBase::MarkVideoDriverOperational();
+		}
 	}
 }
 
