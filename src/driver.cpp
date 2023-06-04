@@ -15,8 +15,15 @@
 #include "video/video_driver.hpp"
 #include "string_func.h"
 #include "table/strings.h"
+#include "fileio_func.h"
 #include <string>
 #include <sstream>
+
+#ifdef _WIN32
+# include <windows.h>
+#else
+# include <unistd.h>
+#endif /* _WIN32 */
 
 #include "safeguards.h"
 
@@ -31,6 +38,8 @@ std::string _ini_musicdriver;        ///< The music driver a stored in the confi
 
 std::string _ini_blitter;            ///< The blitter as stored in the configuration file.
 bool _blitter_autodetected;          ///< Was the blitter autodetected or specified by the user?
+
+static const std::string HWACCELERATION_TEST_FILE = "hwaccel.dat"; ///< Filename to test if we crashed last time we tried to use hardware acceleration.
 
 /**
  * Get a string parameter the list of parameters.
@@ -115,6 +124,27 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 
 				if (type == Driver::DT_VIDEO && !_video_hw_accel && d->UsesHardwareAcceleration()) continue;
 
+				if (type == Driver::DT_VIDEO && _video_hw_accel && d->UsesHardwareAcceleration()) {
+					/* Check if we have already tried this driver in last run.
+					 * If it is here, it most likely means we crashed. So skip
+					 * hardware acceleration. */
+					auto filename = FioFindFullPath(BASE_DIR, HWACCELERATION_TEST_FILE.c_str());
+					if (!filename.empty()) {
+						unlink(filename.c_str());
+
+						Debug(driver, 1, "Probing {} driver '{}' skipped due to earlier crash", GetDriverTypeName(type), d->name);
+
+						_video_hw_accel = false;
+						ErrorMessageData msg(STR_VIDEO_DRIVER_ERROR, STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH, true);
+						ScheduleErrorMessage(msg);
+						continue;
+					}
+
+					/* Write empty file to note we are attempting hardware acceleration. */
+					auto f = FioFOpenFile(HWACCELERATION_TEST_FILE.c_str(), "w", BASE_DIR);
+					FioFCloseFile(f);
+				}
+
 				Driver *oldd = *GetActiveDriver(type);
 				Driver *newd = d->CreateInstance();
 				*GetActiveDriver(type) = newd;
@@ -132,7 +162,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 
 				if (type == Driver::DT_VIDEO && _video_hw_accel && d->UsesHardwareAcceleration()) {
 					_video_hw_accel = false;
-					ErrorMessageData msg(STR_VIDEO_DRIVER_ERROR, STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION);
+					ErrorMessageData msg(STR_VIDEO_DRIVER_ERROR, STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION, true);
 					ScheduleErrorMessage(msg);
 				}
 			}
@@ -177,6 +207,18 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 		}
 		usererror("No such %s driver: %s\n", GetDriverTypeName(type), dname.c_str());
 	}
+}
+
+/**
+ * Mark the current video driver as operational.
+ */
+void DriverFactoryBase::MarkVideoDriverOperational()
+{
+	/* As part of the detection whether the GPU driver crashes the game,
+	 * and as we are operational now, remove the hardware acceleration
+	 * test-file. */
+	auto filename = FioFindFullPath(BASE_DIR, HWACCELERATION_TEST_FILE.c_str());
+	if (!filename.empty()) unlink(filename.c_str());
 }
 
 /**
