@@ -457,6 +457,9 @@ void SetFocusedWindow(Window *w)
 {
 	if (_focused_window == w) return;
 
+	/* Don't focus a tooltip */
+	if (w != nullptr && w->window_class == WC_TOOLTIPS) return;
+
 	/* Invalidate focused widget */
 	if (_focused_window != nullptr) {
 		if (_focused_window->nested_focus != nullptr) _focused_window->nested_focus->SetDirty(_focused_window);
