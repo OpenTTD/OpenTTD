@@ -58,18 +58,18 @@ static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint3
 }
 
 /**
- * Fills buffer with specified town name
- * @param buff buffer start
- * @param par town name parameters
- * @param townnameparts 'encoded' town name
- * @param last end of buffer
- * @return pointer to terminating '\0'
+ * Get the town name for the given parameters and parts.
+ * @param par Town name parameters.
+ * @param townnameparts 'Encoded' town name.
+ * @return The town name.
  */
-char *GetTownName(char *buff, const TownNameParams *par, uint32 townnameparts, const char *last)
+std::string GetTownName(const TownNameParams *par, uint32 townnameparts)
 {
-	StringBuilder builder(&buff, last);
+	char buffer[DRAW_STRING_BUFFER];
+	char *state = buffer;
+	StringBuilder builder(&state, lastof(buffer));
 	GetTownName(builder, par, townnameparts);
-	return builder.GetEnd();
+	return std::string(buffer, builder.GetEnd());
 }
 
 /**
@@ -84,17 +84,14 @@ void GetTownName(StringBuilder &builder, const Town *t)
 }
 
 /**
- * Fills buffer with town's name
- * @param buff buffer start
- * @param t we want to get name of this town
- * @param last end of buffer
- * @return pointer to terminating '\0'
+ * Get the name of the given town.
+ * @param t The town to get the name for.
+ * @return The town name.
  */
-char *GetTownName(char *buff, const Town *t, const char *last)
+std::string GetTownName(const Town *t)
 {
-	StringBuilder builder(&buff, last);
-	GetTownName(builder, t);
-	return builder.GetEnd();
+	TownNameParams par(t);
+	return GetTownName(&par, t->townnameparts);
 }
 
 
@@ -107,28 +104,19 @@ char *GetTownName(char *buff, const Town *t, const char *last)
  */
 bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
 {
-	/* reserve space for extra unicode character and terminating '\0' */
-	char buf1[(MAX_LENGTH_TOWN_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
-	char buf2[(MAX_LENGTH_TOWN_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
-
-	GetTownName(buf1, par, r, lastof(buf1));
+	std::string name = GetTownName(par, r);
 
 	/* Check size and width */
-	if (Utf8StringLength(buf1) >= MAX_LENGTH_TOWN_NAME_CHARS) return false;
+	if (Utf8StringLength(name) >= MAX_LENGTH_TOWN_NAME_CHARS) return false;
 
 	if (town_names != nullptr) {
-		if (town_names->find(buf1) != town_names->end()) return false;
-		town_names->insert(buf1);
+		if (town_names->find(name) != town_names->end()) return false;
+		town_names->insert(name);
 	} else {
 		for (const Town *t : Town::Iterate()) {
 			/* We can't just compare the numbers since
 			 * several numbers may map to a single name. */
-			const char *buf = t->name.empty() ? nullptr : t->name.c_str();
-			if (buf == nullptr) {
-				GetTownName(buf2, t, lastof(buf2));
-				buf = buf2;
-			}
-			if (strcmp(buf1, buf) == 0) return false;
+			if (name == (t->name.empty() ? GetTownName(t) : t->name)) return false;
 		}
 	}
 

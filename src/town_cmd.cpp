@@ -207,9 +207,7 @@ void Town::InitializeLayout(TownLayout layout)
 
 void Town::FillCachedName() const
 {
-	char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
-	char *end = GetTownName(buf, this, lastof(buf));
-	this->cached_name.assign(buf, end);
+	this->cached_name.assign(GetTownName(this));
 }
 
 /**
