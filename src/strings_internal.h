@@ -20,7 +20,7 @@
  * extra functions to ease the migration from char buffers to std::string.
  */
 class StringBuilder {
-	char *current; ///< The current location to add strings
+	char **current; ///< The current location to add strings
 	const char *last; ///< The last element of the buffer.
 
 public:
@@ -36,7 +36,7 @@ public:
 	 * @param start The start location to write to.
 	 * @param last  The last location to write to.
 	 */
-	StringBuilder(char *start, const char *last) : current(start), last(last) {}
+	StringBuilder(char **start, const char *last) : current(start), last(last) {}
 
 	/* Required operators for this to be an output_iterator; mimics std::back_insert_iterator, which has no-ops. */
 	StringBuilder &operator++() { return *this; }
@@ -62,7 +62,7 @@ public:
 	 */
 	StringBuilder &operator+=(const char value)
 	{
-		if (this->current != this->last) *this->current++ = value;
+		if (*this->current != this->last) *(*this->current)++ = value;
 		return *this;
 	}
 
@@ -73,7 +73,7 @@ public:
 	 */
 	StringBuilder &operator+=(const char *str)
 	{
-		this->current = strecpy(this->current, str, this->last);
+		*this->current = strecpy(*this->current, str, this->last);
 		return *this;
 	}
 
@@ -96,7 +96,7 @@ public:
 	{
 		if (this->Remaining() < Utf8CharLen(c)) return false;
 
-		this->current += ::Utf8Encode(this->current, c);
+		(*this->current) += ::Utf8Encode(*this->current, c);
 		return true;
 	}
 
@@ -108,8 +108,8 @@ public:
 	 */
 	char *GetEnd()
 	{
-		*this->current = '\0';
-		return this->current;
+		**this->current = '\0';
+		return *this->current;
 	}
 
 	/**
@@ -118,7 +118,7 @@ public:
 	 */
 	ptrdiff_t Remaining()
 	{
-		return (ptrdiff_t)(this->last - this->current);
+		return (ptrdiff_t)(this->last - *this->current);
 	}
 
 	/**
@@ -128,7 +128,7 @@ public:
 	 */
 	void AddViaStreCallback(std::function<char*(char*, const char*)> function)
 	{
-		this->current = function(this->current, this->last);
+		*this->current = function(*this->current, this->last);
 	}
 };
 
