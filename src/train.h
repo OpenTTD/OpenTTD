@@ -66,6 +66,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
 bool TrainOnCrossing(TileIndex tile);
+void NormalizeTrainVehInDepot(const Train *u);
 
 /** Variables that are cached to improve performance and such */
 struct TrainCache {
