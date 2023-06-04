@@ -184,7 +184,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 
 	void OnPaint() override
 	{
-		const HighScore *hs = _highscore_table[this->window_number];
+		const auto &hs = _highscore_table[this->window_number];
 
 		this->SetupHighScoreEndWindow();
 		Point pt = this->GetTopLeft(ScaleSpriteTrad(640), ScaleSpriteTrad(480));
@@ -193,14 +193,14 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		DrawStringMultiLine(pt.x + ScaleSpriteTrad(70), pt.x + ScaleSpriteTrad(570), pt.y, pt.y + ScaleSpriteTrad(140), !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
 
 		/* Draw Highscore peepz */
-		for (uint8 i = 0; i < lengthof(_highscore_table[0]); i++) {
+		for (uint8_t i = 0; i < ClampTo<uint8_t>(hs.size()); i++) {
 			SetDParam(0, i + 1);
 			DrawString(pt.x + ScaleSpriteTrad(40), pt.x + ScaleSpriteTrad(600), pt.y + ScaleSpriteTrad(140 + i * 55), STR_HIGHSCORE_POSITION);
 
-			if (hs[i].company[0] != '\0') {
+			if (!hs[i].name.empty()) {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
-				SetDParamStr(0, hs[i].company);
+				SetDParamStr(0, hs[i].name);
 				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55), STR_JUST_BIG_RAW_STRING, colour);
 				SetDParam(0, hs[i].title);
 				SetDParam(1, hs[i].score);
