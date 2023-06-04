@@ -737,11 +737,10 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
  * @param flags    type of operation.
  * @param tile     tile of the depot where rail-vehicle is built.
  * @param e        the engine to build.
- * @param free_cars add any free cars to the train.
  * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, bool free_cars, Vehicle **ret)
+CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
 	const RailVehicleInfo *rvi = &e->u.rail;
 
@@ -806,10 +805,6 @@ CommandCost CmdBuildRailVehicle(DoCommandFlag flags, TileIndex tile, const Engin
 
 		v->ConsistChanged(CCF_ARRANGE);
 		UpdateTrainGroupID(v);
-
-		if (free_cars && !(flags & DC_AUTOREPLACE)) { // check if the cars should be added to the new vehicle
-			NormalizeTrainVehInDepot(v);
-		}
 
 		CheckConsistencyOfArticulatedVehicle(v);
 	}

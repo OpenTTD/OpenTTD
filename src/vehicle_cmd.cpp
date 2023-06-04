@@ -135,7 +135,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16, CargoArray> CmdBuildVehicle(DoC
 
 	Vehicle *v = nullptr;
 	switch (type) {
-		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(subflags, tile, e, use_free_vehicles, &v)); break;
+		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(subflags, tile, e, &v)); break;
 		case VEH_ROAD:     value.AddCost(CmdBuildRoadVehicle(subflags, tile, e, &v)); break;
 		case VEH_SHIP:     value.AddCost(CmdBuildShip       (subflags, tile, e, &v)); break;
 		case VEH_AIRCRAFT: value.AddCost(CmdBuildAircraft   (subflags, tile, e, &v)); break;
@@ -172,6 +172,10 @@ std::tuple<CommandCost, VehicleID, uint, uint16, CargoArray> CmdBuildVehicle(DoC
 		}
 
 		if (flags & DC_EXEC) {
+			if (type == VEH_TRAIN && use_free_vehicles && !(flags & DC_AUTOREPLACE)) { // check if the cars should be added to the new vehicle
+				NormalizeTrainVehInDepot(v);
+			}
+
 			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 			InvalidateWindowClassesData(GetWindowClassForVehicleType(type), 0);
 			SetWindowDirty(WC_COMPANY, _current_company);
