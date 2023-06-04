@@ -388,8 +388,7 @@ Textbuf::~Textbuf()
  */
 void Textbuf::Assign(StringID string)
 {
-	GetString(this->buf, string, &this->buf[this->max_bytes - 1]);
-	this->UpdateSize();
+	this->Assign(GetString(string));
 }
 
 /**
@@ -398,7 +397,16 @@ void Textbuf::Assign(StringID string)
  */
 void Textbuf::Assign(const std::string_view text)
 {
-	strecpy(this->buf, text.data(), &this->buf[this->max_bytes - 1]);
+	const char *last_of = &this->buf[this->max_bytes - 1];
+	strecpy(this->buf, text.data(), last_of);
+	StrMakeValidInPlace(this->buf, last_of, SVS_NONE);
+
+	/* Make sure the name isn't too long for the text buffer in the number of
+	 * characters (not bytes). max_chars also counts the '\0' characters. */
+	while (Utf8StringLength(this->buf) + 1 > this->max_chars) {
+		*Utf8PrevChar(this->buf + strlen(this->buf)) = '\0';
+	}
+
 	this->UpdateSize();
 }
 
