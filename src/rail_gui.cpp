@@ -1352,8 +1352,6 @@ public:
 				_settings_client.gui.station_numtracks = widget - WID_BRAS_PLATFORM_NUM_BEGIN;
 				_settings_client.gui.station_dragdrop = false;
 
-				_settings_client.gui.station_dragdrop = false;
-
 				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type) : nullptr;
 				if (statspec != nullptr && HasBit(statspec->disallowed_lengths, _settings_client.gui.station_platlength - 1)) {
 					/* The previously selected number of platforms in invalid */
@@ -1385,8 +1383,6 @@ public:
 				this->RaiseWidget(WID_BRAS_PLATFORM_DRAG_N_DROP);
 
 				_settings_client.gui.station_platlength = widget - WID_BRAS_PLATFORM_LEN_BEGIN;
-				_settings_client.gui.station_dragdrop = false;
-
 				_settings_client.gui.station_dragdrop = false;
 
 				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type) : nullptr;
