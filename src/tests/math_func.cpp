@@ -120,3 +120,13 @@ TEST_CASE("ClampTo")
 	/* max uint64_t gets clamped to max int64_t. */
 	CHECK(std::numeric_limits<int64_t>::max() == ClampTo<int64_t>(std::numeric_limits<uint64_t>::max()));
 }
+
+
+TEST_CASE("SoftClamp")
+{
+	/* Special behaviour of soft clamp returning the average of min/max when min is higher than max. */
+	CHECK(1250 == SoftClamp(0, 1500, 1000));
+	int million = 1000 * 1000;
+	CHECK(1250 * million == SoftClamp(0, 1500 * million, 1000 * million));
+	CHECK(0 == SoftClamp(0, 1500 * million, -1500 * million));
+}
