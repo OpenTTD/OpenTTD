@@ -67,7 +67,7 @@ static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint3
  */
 char *GetTownName(char *buff, const TownNameParams *par, uint32 townnameparts, const char *last)
 {
-	StringBuilder builder(buff, last);
+	StringBuilder builder(&buff, last);
 	GetTownName(builder, par, townnameparts);
 	return builder.GetEnd();
 }
@@ -92,7 +92,7 @@ void GetTownName(StringBuilder &builder, const Town *t)
  */
 char *GetTownName(char *buff, const Town *t, const char *last)
 {
-	StringBuilder builder(buff, last);
+	StringBuilder builder(&buff, last);
 	GetTownName(builder, t);
 	return builder.GetEnd();
 }

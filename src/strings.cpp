@@ -285,7 +285,7 @@ char *GetString(char *buffr, StringID string, const char *last)
 {
 	_global_string_params.ClearTypeInformation();
 	_global_string_params.offset = 0;
-	StringBuilder builder(buffr, last);
+	StringBuilder builder(&buffr, last);
 	GetStringWithArgs(builder, string, &_global_string_params);
 	return builder.GetEnd();
 }
@@ -313,7 +313,8 @@ std::string GetString(StringID string)
 std::string GetStringWithArgs(StringID string, StringParameters *args)
 {
 	char buffer[DRAW_STRING_BUFFER];
-	StringBuilder builder(buffer, lastof(buffer));
+	char *state = buffer;
+	StringBuilder builder(&state, lastof(buffer));
 	GetStringWithArgs(builder, string, args);
 	return std::string(buffer, builder.GetEnd());
 }
@@ -845,11 +846,10 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		 * space allocated for type information and thus wants type checks on
 		 * the parameters. So, we need to gather the type information via the
 		 * dry run first, before we can continue formatting the string.
-		 *
-		 * Create a copy of the state of the builder for the dry run, so we do
-		 * not have to reset it after the dry run has completed.
 		 */
-		StringBuilder dry_run_builder = builder;
+		char buffer[DRAW_STRING_BUFFER];
+		char *state = buffer;
+		StringBuilder dry_run_builder(&state, lastof(buffer));
 		if (UsingNewGRFTextStack()) {
 			/* Values from the NewGRF text stack are only copied to the normal
 			 * argv array at the time they are encountered. That means that if
@@ -1018,9 +1018,10 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					 * enough space for the gender index token, one character
 					 * for the actual gender and one character for '\0'. */
 					char buf[MAX_CHAR_LENGTH + 1 + 1];
+					char *state = buf;
 					bool old_sgd = _scan_for_gender_data;
 					_scan_for_gender_data = true;
-					StringBuilder tmp_builder(buf, lastof(buf));
+					StringBuilder tmp_builder(&state, lastof(buf));
 					StringParameters tmp_params(args->GetPointerToOffset(offset), args->num_param - offset, nullptr);
 					FormatString(tmp_builder, input, &tmp_params);
 					_scan_for_gender_data = old_sgd;
