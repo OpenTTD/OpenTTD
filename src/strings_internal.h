@@ -122,7 +122,7 @@ public:
 	}
 
 	/**
-	 * Add a string using the strecpy/strecat-esque calling signature.
+	 * Add a string using the strecpy-esque calling signature.
 	 * @param function The function to pass the current and last location to,
 	 *                 that will then return the new current location.
 	 */

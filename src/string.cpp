@@ -49,33 +49,6 @@
 #include "safeguards.h"
 #undef vsnprintf
 
-/**
- * Appends characters from one string to another.
- *
- * Appends the source string to the destination string with respect of the
- * terminating null-character and and the last pointer to the last element
- * in the destination buffer. If the last pointer is set to nullptr no
- * boundary check is performed.
- *
- * @note usage: strecat(dst, src, lastof(dst));
- * @note lastof() applies only to fixed size arrays
- *
- * @param dst The buffer containing the target string
- * @param src The buffer containing the string to append
- * @param last The pointer to the last element of the destination buffer
- * @return The pointer to the terminating null-character in the destination buffer
- */
-char *strecat(char *dst, const char *src, const char *last)
-{
-	assert(dst <= last);
-	while (*dst != '\0') {
-		if (dst == last) return dst;
-		dst++;
-	}
-
-	return strecpy(dst, src, last);
-}
-
 
 /**
  * Copies characters from one buffer to another.
