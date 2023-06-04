@@ -377,9 +377,8 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 					pt.x - 2 <= std::max(pta.x, ptb.x) &&
 					pt.y + 2 >= std::min(pta.y, ptb.y) &&
 					pt.y - 2 <= std::max(pta.y, ptb.y)) {
-				static char buf[1024];
-				char *buf_end = buf;
-				buf[0] = 0;
+				static std::string tooltip_extension;
+				tooltip_extension.clear();
 				/* Fill buf with more information if this is a bidirectional link. */
 				uint32 back_time = 0;
 				auto k = this->cached_links[j->first].find(i->first);
@@ -390,21 +389,21 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 						SetDParam(0, back.cargo);
 						SetDParam(1, back.Usage());
 						SetDParam(2, back.Usage() * 100 / (back.capacity + 1));
-						buf_end = GetString(buf, STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION, lastof(buf));
+						tooltip_extension = GetString(STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION);
 					}
 				}
 				/* Add information about the travel time if known. */
 				const auto time = link.time ? back_time ? ((link.time + back_time) / 2) : link.time : back_time;
 				if (time > 0) {
 					SetDParam(0, time);
-					buf_end = GetString(buf_end, STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION, lastof(buf));
+					tooltip_extension += GetString(STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION);
 				}
 				SetDParam(0, link.cargo);
 				SetDParam(1, link.Usage());
 				SetDParam(2, i->first);
 				SetDParam(3, j->first);
 				SetDParam(4, link.Usage() * 100 / (link.capacity + 1));
-				SetDParamStr(5, buf);
+				SetDParamStr(5, tooltip_extension);
 				GuiShowTooltips(this->window, STR_LINKGRAPH_STATS_TOOLTIP, 7, nullptr, close_cond);
 				return true;
 			}
