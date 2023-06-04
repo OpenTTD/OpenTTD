@@ -385,11 +385,8 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 			scroll = true;
 			uint avg_height = height / (uint)list.size();
 
-			/* Check at least there is space for one item. */
-			assert(available_height >= avg_height);
-
-			/* Fit the list. */
-			uint rows = available_height / avg_height;
+			/* Fit the list; create at least one row, even if there is no height available. */
+			uint rows = std::max<uint>(available_height / avg_height, 1);
 			height = rows * avg_height;
 
 			/* Add space for the scrollbar. */
