@@ -213,8 +213,13 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 		if (this->main_wnd != nullptr) {
 			if (!_window_maximize && resize) SetWindowPos(this->main_wnd, 0, 0, 0, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER | SWP_NOMOVE);
 		} else {
-			int x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
-			int y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
+			/* Center on the workspace of the primary display. */
+			MONITORINFO mi;
+			mi.cbSize = sizeof(mi);
+			GetMonitorInfo(MonitorFromWindow(0, MONITOR_DEFAULTTOPRIMARY), &mi);
+
+			int x = (mi.rcWork.right - mi.rcWork.left - w) / 2;
+			int y = (mi.rcWork.bottom - mi.rcWork.top - h) / 2;
 
 			char window_title[64];
 			seprintf(window_title, lastof(window_title), "OpenTTD %s", _openttd_revision);
