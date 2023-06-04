@@ -357,11 +357,6 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 						Utf8Encode(d, tmp);
 						break;
 					}
-					case 0x04:
-						if (src[0] == '\0') goto string_end;
-						Utf8Encode(d, SCC_NEWGRF_UNPRINT);
-						Utf8Encode(d, *src++);
-						break;
 					case 0x06: Utf8Encode(d, SCC_NEWGRF_PRINT_BYTE_HEX);          break;
 					case 0x07: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_HEX);          break;
 					case 0x08: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_HEX);         break;
@@ -846,14 +841,13 @@ void RewindTextRefStack()
 /**
  * FormatString for NewGRF specific "magic" string control codes
  * @param scc   the string control code that has been read
- * @param buff  the buffer we're writing to
  * @param str   the string that we need to write
  * @param argv  the OpenTTD stack of values
  * @param argv_size space on the stack \a argv
  * @param modify_argv When true, modify the OpenTTD stack.
  * @return the string control code to "execute" now
  */
-uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv, uint argv_size, bool modify_argv)
+uint RemapNewGRFStringControlCode(uint scc, const char **str, int64 *argv, uint argv_size, bool modify_argv)
 {
 	switch (scc) {
 		default: break;
@@ -939,7 +933,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     _newgrf_textrefstack.RotateTop4Words(); break;
 			case SCC_NEWGRF_PUSH_WORD:              _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
-			case SCC_NEWGRF_UNPRINT:                *buff = std::max(*buff - Utf8Consume(str), buf_start); break;
 
 			case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 			case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
@@ -964,7 +957,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			default: break;
 
 			case SCC_NEWGRF_PUSH_WORD:
-			case SCC_NEWGRF_UNPRINT:
 				Utf8Consume(str);
 				break;
 		}
@@ -1040,7 +1032,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_DISCARD_WORD:
 		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:
 		case SCC_NEWGRF_PUSH_WORD:
-		case SCC_NEWGRF_UNPRINT:
 			return 0;
 	}
 }

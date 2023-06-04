@@ -836,7 +836,6 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 	}
 	WChar b = '\0';
 	uint next_substr_case_index = 0;
-	char *buf_start = buff;
 	std::stack<const char *, std::vector<const char *>> str_stack;
 	str_stack.push(str_arg);
 
@@ -850,7 +849,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 			/* We need to pass some stuff as it might be modified. */
 			//todo: should argve be passed here too?
-			b = RemapNewGRFStringControlCode(b, buf_start, &buff, &str, (int64 *)args->GetDataPointer(), args->GetDataLeft(), dry_run);
+			b = RemapNewGRFStringControlCode(b, &str, (int64 *)args->GetDataPointer(), args->GetDataLeft(), dry_run);
 			if (b == 0) continue;
 		}
 
