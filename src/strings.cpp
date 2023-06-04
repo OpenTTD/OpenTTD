@@ -281,15 +281,6 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 	FormatString(builder, GetStringPtr(string), args, case_index);
 }
 
-char *GetString(char *buffr, StringID string, const char *last)
-{
-	_global_string_params.ClearTypeInformation();
-	_global_string_params.offset = 0;
-	StringBuilder builder(&buffr, last);
-	GetStringWithArgs(builder, string, &_global_string_params);
-	return builder.GetEnd();
-}
-
 
 /**
  * Resolve the given StringID into a std::string with all the associated
@@ -299,9 +290,9 @@ char *GetString(char *buffr, StringID string, const char *last)
  */
 std::string GetString(StringID string)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, string, lastof(buffer));
-	return buffer;
+	_global_string_params.ClearTypeInformation();
+	_global_string_params.offset = 0;
+	return GetStringWithArgs(string, &_global_string_params);
 }
 
 /**
