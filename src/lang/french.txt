@@ -2708,8 +2708,10 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Choisir 
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Choisir le type de station à construire
 
 STR_STATION_CLASS_DFLT                                          :Par défaut
-STR_STATION_CLASS_DFLT_STATION                                  :Station par défaut
+STR_STATION_CLASS_DFLT_STATION                                  :Stations par défaut
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Arrêts routiers par défaut
 STR_STATION_CLASS_WAYP                                          :Points de contrôle
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Points de contrôle par défaut
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sélection des signaux
