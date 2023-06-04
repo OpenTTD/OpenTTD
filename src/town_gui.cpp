@@ -1159,8 +1159,7 @@ public:
 		if (!this->townnamevalid) {
 			this->townname_editbox.text.DeleteAll();
 		} else {
-			GetTownName(this->townname_editbox.text.buf, &this->params, this->townnameparts, &this->townname_editbox.text.buf[this->townname_editbox.text.max_bytes - 1]);
-			this->townname_editbox.text.UpdateSize();
+			this->townname_editbox.text.Assign(GetTownName(&this->params, this->townnameparts));
 		}
 		UpdateOSKOriginalText(this, WID_TF_TOWN_NAME_EDITBOX);
 
@@ -1198,9 +1197,8 @@ public:
 			name = this->townname_editbox.text.buf;
 		} else {
 			/* If user changed the name, send it */
-			char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
-			GetTownName(buf, &this->params, this->townnameparts, lastof(buf));
-			if (strcmp(buf, this->townname_editbox.text.buf) != 0) name = this->townname_editbox.text.buf;
+			std::string original_name = GetTownName(&this->params, this->townnameparts);
+			if (original_name != this->townname_editbox.text.buf) name = this->townname_editbox.text.buf;
 		}
 
 		bool success = Command<CMD_FOUND_TOWN>::Post(errstr, cc,
