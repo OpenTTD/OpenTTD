@@ -170,7 +170,6 @@ public:
 };
 extern StringParameters _global_string_params;
 
-char *GetString(char *buffr, StringID string, const char *last);
 std::string GetString(StringID string);
 std::string GetStringWithArgs(StringID string, StringParameters *args);
 const char *GetStringPtr(StringID string);
