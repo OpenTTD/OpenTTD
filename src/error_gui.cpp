@@ -414,23 +414,22 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 
 	if (wl != WL_INFO) {
 		/* Print message to console */
-		char buf[DRAW_STRING_BUFFER];
 
 		if (textref_stack_size > 0) StartTextRefStackUsage(textref_stack_grffile, textref_stack_size, textref_stack);
 
-		char *b = GetString(buf, summary_msg, lastof(buf));
+		std::string message = GetString(summary_msg);
 		if (detailed_msg != INVALID_STRING_ID) {
-			b += seprintf(b, lastof(buf), " ");
-			GetString(b, detailed_msg, lastof(buf));
+			message += " ";
+			message += GetString(detailed_msg);
 		}
 		if (extra_msg != INVALID_STRING_ID) {
-			b += seprintf(b, lastof(buf), " ");
-			GetString(b, extra_msg, lastof(buf));
+			message += " ";
+			message += GetString(extra_msg);
 		}
 
 		if (textref_stack_size > 0) StopTextRefStackUsage();
 
-		IConsolePrint(wl == WL_WARNING ? CC_WARNING : CC_ERROR, buf);
+		IConsolePrint(wl == WL_WARNING ? CC_WARNING : CC_ERROR, message);
 	}
 
 	bool is_critical = wl == WL_CRITICAL;
