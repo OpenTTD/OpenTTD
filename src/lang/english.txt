@@ -1530,7 +1530,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grey to red
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Greyscale
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Viewport scroll behaviour: {STRING2}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Behaviour when scrolling the map
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Behaviour when scrolling the map. The "mouse position locked" options don't work on all systems, like web-based versions, touchscreens, Linux with Wayland, and others
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Move viewport with RMB, mouse position locked
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Move map with RMB, mouse position locked
