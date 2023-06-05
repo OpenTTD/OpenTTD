@@ -64,8 +64,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 {
 	if (line.buffer != nullptr) free(line.buffer);
 
-	typename T::CharType *buff_begin = MallocT<typename T::CharType>(DRAW_STRING_BUFFER);
-	const typename T::CharType *buffer_last = buff_begin + DRAW_STRING_BUFFER;
+	typename T::CharType *buff_begin = MallocT<typename T::CharType>(str.size() + 1);
+	const typename T::CharType *buffer_last = buff_begin + str.size() + 1;
 	typename T::CharType *buff = buff_begin;
 	FontMap &fontMapping = line.runs;
 	Font *f = Layouter::GetFont(state.fontsize, state.cur_colour);
