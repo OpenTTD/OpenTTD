@@ -86,7 +86,7 @@ IniGroup::~IniGroup()
  * @param name   name of the item to find.
  * @return the requested item or nullptr if not found.
  */
-IniItem *IniGroup::GetItem(const std::string &name)
+IniItem *IniGroup::GetItem(const std::string &name) const
 {
 	for (IniItem *item = this->item; item != nullptr; item = item->next) {
 		if (item->name == name) return item;
