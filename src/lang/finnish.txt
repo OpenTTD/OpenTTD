@@ -1558,7 +1558,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Harmaasta punai
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Harmaasävy
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Näkymän vieritystapa: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Toiminta karttaa vieritettäessä
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Toiminta karttaa vieritettäessä. Hiiren sijainnin lukitus ei toimi kaikissa järjestelmissä, kuten selainpohjaisissa versioissa, kosketusnäytöillä, Linuxissa Waylandilla ym.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Siirrä näkymää hiiren oikealla painikkeella, hiiren sijainti lukiten
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Siirrä karttaa hiiren oikealla painikkeella, hiiren sijainti lukiten
@@ -2080,6 +2080,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Virhe näyttöasetuksissa…
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}… yhteensopivaa grafiikkasuoritinta ei löytynyt. Laitteistokiihdytystä ei käytetä.
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}… Näytönohjaimen ajuri kaatoi pelin. Laitteistokiihdytys on poistettu käytöstä
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

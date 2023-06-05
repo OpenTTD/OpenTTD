@@ -1559,7 +1559,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Griden kırmız
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Gri tonlamalı
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Bakış noktası kaydırma davranışı: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Haritada gezinirkenki davranış
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Haritada gezinirkenki davranış. "fare konumu kilitli" seçeneği web tabanlı sürümler, dokunmatik ekranlar, Linux ile birlikte Wayland ve bunun gibi diğer sistemlerde çalışmaz.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Sağ Fare Tuşu ile görüş alanını hareket ettir, fare konumu kilitli
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Sağ Fare Tuşu ile haritayı hareket ettir, fare konumu kilitli
@@ -2081,6 +2081,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Video ayarlarında hata...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... uyumlu GPU bulunamadı. Donanım hızlandırma devre dışı bırakıldı
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU sürücüsü oyunu çökertti. Donanım hızlandırma devre dışı bırakıldı
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
