@@ -1909,18 +1909,18 @@ struct CompanyInfrastructureWindow : Window
 			case WID_CI_RAIL_DESC: {
 				uint lines = 1; // Starts at 1 because a line is also required for the section title
 
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width);
+				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width + padding.width);
 
 				for (const auto &rt : _sorted_railtypes) {
 					if (HasBit(this->railtypes, rt)) {
 						lines++;
 						SetDParam(0, GetRailTypeInfo(rt)->strings.name);
-						size->width = std::max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + WidgetDimensions::scaled.hsep_indent);
+						size->width = std::max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + padding.width + WidgetDimensions::scaled.hsep_indent);
 					}
 				}
 				if (this->railtypes != RAILTYPES_NONE) {
 					lines++;
-					size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS).width + WidgetDimensions::scaled.hsep_indent);
+					size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
 				}
 
 				size->height = std::max(size->height, lines * FONT_HEIGHT_NORMAL);
@@ -1931,13 +1931,13 @@ struct CompanyInfrastructureWindow : Window
 			case WID_CI_TRAM_DESC: {
 				uint lines = 1; // Starts at 1 because a line is also required for the section title
 
-				size->width = std::max(size->width, GetStringBoundingBox(widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT).width);
+				size->width = std::max(size->width, GetStringBoundingBox(widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT).width + padding.width);
 
 				for (const auto &rt : _sorted_roadtypes) {
 					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
 						lines++;
 						SetDParam(0, GetRoadTypeInfo(rt)->strings.name);
-						size->width = std::max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + WidgetDimensions::scaled.hsep_indent);
+						size->width = std::max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + padding.width + WidgetDimensions::scaled.hsep_indent);
 					}
 				}
 
@@ -1946,14 +1946,14 @@ struct CompanyInfrastructureWindow : Window
 			}
 
 			case WID_CI_WATER_DESC:
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT).width);
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS).width + WidgetDimensions::scaled.hsep_indent);
+				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT).width + padding.width);
+				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
 				break;
 
 			case WID_CI_STATION_DESC:
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT).width);
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS).width + WidgetDimensions::scaled.hsep_indent);
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS).width + WidgetDimensions::scaled.hsep_indent);
+				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT).width + padding.width);
+				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
+				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
 				break;
 
 			case WID_CI_RAIL_COUNT:
@@ -2399,18 +2399,19 @@ struct CompanyWindow : Window
 			case WID_C_DESC_VEHICLE_COUNTS:
 				SetDParamMaxValue(0, 5000); // Maximum number of vehicles
 				for (uint i = 0; i < lengthof(_company_view_vehicle_count_strings); i++) {
-					size->width = std::max(size->width, GetStringBoundingBox(_company_view_vehicle_count_strings[i]).width);
+					size->width = std::max(size->width, GetStringBoundingBox(_company_view_vehicle_count_strings[i]).width + padding.width);
 				}
 				break;
 
 			case WID_C_DESC_INFRASTRUCTURE_COUNTS:
 				SetDParamMaxValue(0, UINT_MAX);
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL).width);
+				size->width = GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL).width;
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD).width);
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_WATER).width);
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_STATION).width);
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT).width);
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_NONE).width);
+				size->width += padding.width;
 				break;
 
 			case WID_C_DESC_OWNERS: {
@@ -2430,13 +2431,14 @@ struct CompanyWindow : Window
 			case WID_C_GIVE_MONEY:
 			case WID_C_COMPANY_PASSWORD:
 			case WID_C_COMPANY_JOIN:
-				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_VIEW_HQ_BUTTON).width);
+				size->width = GetStringBoundingBox(STR_COMPANY_VIEW_VIEW_HQ_BUTTON).width;
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_BUILD_HQ_BUTTON).width);
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_RELOCATE_HQ).width);
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON).width);
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_GIVE_MONEY_BUTTON).width);
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_PASSWORD).width);
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_JOIN).width);
+				size->width += padding.width;
 				break;
 
 			case WID_C_HAS_PASSWORD:

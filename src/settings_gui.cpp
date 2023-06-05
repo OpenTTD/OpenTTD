@@ -2003,7 +2003,7 @@ struct GameSettingsWindow : Window {
 				};
 				for (uint i = 0; i < lengthof(setting_types); i++) {
 					SetDParam(0, setting_types[i]);
-					size->width = std::max(size->width, GetStringBoundingBox(STR_CONFIG_SETTING_TYPE).width);
+					size->width = std::max(size->width, GetStringBoundingBox(STR_CONFIG_SETTING_TYPE).width + padding.width);
 				}
 				size->height = 2 * FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal +
 						std::max(size->height, GetSettingsTree().GetMaxHelpHeight(size->width));
