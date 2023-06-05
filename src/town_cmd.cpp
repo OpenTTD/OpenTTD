@@ -207,7 +207,7 @@ void Town::InitializeLayout(TownLayout layout)
 
 void Town::FillCachedName() const
 {
-	this->cached_name.assign(GetTownName(this));
+	this->cached_name = GetTownName(this);
 }
 
 /**

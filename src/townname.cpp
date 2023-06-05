@@ -116,7 +116,11 @@ bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
 		for (const Town *t : Town::Iterate()) {
 			/* We can't just compare the numbers since
 			 * several numbers may map to a single name. */
-			if (name == (t->name.empty() ? GetTownName(t) : t->name)) return false;
+			if (t->name.empty()) {
+				if (name == GetTownName(t)) return false;
+			} else {
+				if (name == t->name) return false;
+			}
 		}
 	}
 
