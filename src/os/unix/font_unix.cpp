@@ -111,8 +111,8 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 
 	/* First create a pattern to match the wanted language. */
 	FcPattern *pat = FcNameParse((const FcChar8 *)lang.c_str());
-	/* We only want to know the filename. */
-	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_SPACING, FC_SLANT, FC_WEIGHT, nullptr);
+	/* We only want to know these attributes. */
+	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_INDEX, FC_SPACING, FC_SLANT, FC_WEIGHT, nullptr);
 	/* Get the list of filenames matching the wanted language. */
 	FcFontSet *fs = FcFontList(nullptr, pat, os);
 
@@ -123,6 +123,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	if (fs != nullptr) {
 		int best_weight = -1;
 		const char *best_font = nullptr;
+		int best_index = 0;
 
 		for (int i = 0; i < fs->nfont; i++) {
 			FcPattern *font = fs->fonts[i];
@@ -146,7 +147,12 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 			FcPatternGetInteger(font, FC_WEIGHT, 0, &value);
 			if (value <= best_weight) continue;
 
-			callback->SetFontNames(settings, (const char *)file);
+			/* Possible match based on attributes, get index. */
+			int32_t index;
+			res = FcPatternGetInteger(font, FC_INDEX, 0, &index);
+			if (res != FcResultMatch) continue;
+
+			callback->SetFontNames(settings, (const char *)file, &index);
 
 			bool missing = callback->FindMissingGlyphs();
 			Debug(fontcache, 1, "Font \"{}\" misses{} glyphs", (char *)file, missing ? "" : " no");
@@ -154,12 +160,13 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 			if (!missing) {
 				best_weight = value;
 				best_font = (const char *)file;
+				best_index = index;
 			}
 		}
 
 		if (best_font != nullptr) {
 			ret = true;
-			callback->SetFontNames(settings, best_font);
+			callback->SetFontNames(settings, best_font, &best_index);
 			InitFontCache(callback->Monospace());
 		}
 
