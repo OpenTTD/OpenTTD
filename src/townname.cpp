@@ -974,42 +974,34 @@ static void MakeCatalanTownName(StringBuilder &builder, uint32_t seed)
 
 /**
  * Type for all town name generator functions.
- * @param buf  The buffer to write the name to.
- * @param last The last element of the buffer.
+ * @param builder The builder to write the name to.
  * @param seed The seed of the town name.
- * @return The end of the filled buffer.
  */
 typedef void TownNameGenerator(StringBuilder &builder, uint32 seed);
 
-/** Contains pointer to generator and minimum buffer size (not incl. terminating '\0') */
-struct TownNameGeneratorParams {
-	byte min; ///< minimum number of characters that need to be printed for generator to work correctly
-	TownNameGenerator *proc; ///< generator itself
-};
-
 /** Town name generators */
-static const TownNameGeneratorParams _town_name_generators[] = {
-	{  4, MakeEnglishOriginalTownName},  // replaces first 4 characters of name
-	{  0, MakeFrenchTownName},
-	{  0, MakeGermanTownName},
-	{  4, MakeEnglishAdditionalTownName}, // replaces first 4 characters of name
-	{  0, MakeSpanishTownName},
-	{  0, MakeSillyTownName},
-	{  0, MakeSwedishTownName},
-	{  0, MakeDutchTownName},
-	{  8, MakeFinnishTownName}, // _name_finnish_1
-	{  0, MakePolishTownName},
-	{  0, MakeSlovakTownName},
-	{  0, MakeNorwegianTownName},
-	{  0, MakeHungarianTownName},
-	{  0, MakeAustrianTownName},
-	{  0, MakeRomanianTownName},
-	{ 28, MakeCzechTownName}, // _name_czech_adj + _name_czech_patmod + 1 + _name_czech_subst_stem + _name_czech_subst_postfix
-	{  0, MakeSwissTownName},
-	{  0, MakeDanishTownName},
-	{  0, MakeTurkishTownName},
-	{  0, MakeItalianTownName},
-	{  0, MakeCatalanTownName},
+static TownNameGenerator *_town_name_generators[] = {
+	MakeEnglishOriginalTownName,  // replaces first 4 characters of name
+	MakeFrenchTownName,
+	MakeGermanTownName,
+	MakeEnglishAdditionalTownName, // replaces first 4 characters of name
+	MakeSpanishTownName,
+	MakeSillyTownName,
+	MakeSwedishTownName,
+	MakeDutchTownName,
+	MakeFinnishTownName, // _name_finnish_1
+	MakePolishTownName,
+	MakeSlovakTownName,
+	MakeNorwegianTownName,
+	MakeHungarianTownName,
+	MakeAustrianTownName,
+	MakeRomanianTownName,
+	MakeCzechTownName, // _name_czech_adj + _name_czech_patmod + 1 + _name_czech_subst_stem + _name_czech_subst_postfix
+	MakeSwissTownName,
+	MakeDanishTownName,
+	MakeTurkishTownName,
+	MakeItalianTownName,
+	MakeCatalanTownName,
 };
 
 
@@ -1022,7 +1014,5 @@ static const TownNameGeneratorParams _town_name_generators[] = {
 void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32 seed)
 {
 	assert(lang < lengthof(_town_name_generators));
-
-	const TownNameGeneratorParams *par = &_town_name_generators[lang];
-	return par->proc(builder, seed);
+	return _town_name_generators[lang](builder, seed);
 }
