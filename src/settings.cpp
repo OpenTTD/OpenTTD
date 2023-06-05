@@ -590,17 +590,17 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 			group = group_def;
 		}
 
-		IniItem *item = group->GetItem(s, false);
+		IniItem *item = group->GetItem(s);
 		if (item == nullptr && group != group_def) {
 			/* For settings.xx.yy load the settings from [settings] yy = ? in case the previous
 			 * did not exist (e.g. loading old config files with a [settings] section */
-			item = group_def->GetItem(s, false);
+			item = group_def->GetItem(s);
 		}
 		if (item == nullptr) {
 			/* For settings.xx.zz.yy load the settings from [zz] yy = ? in case the previous
 			 * did not exist (e.g. loading old config files with a [yapf] section */
 			sc = s.find('.');
-			if (sc != std::string::npos) item = ini.GetGroup(s.substr(0, sc))->GetItem(s.substr(sc + 1), false);
+			if (sc != std::string::npos) item = ini.GetGroup(s.substr(0, sc))->GetItem(s.substr(sc + 1));
 		}
 
 		sd->ParseValue(item, object);
@@ -649,7 +649,6 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, const char *grpname, void *object, bool)
 {
 	IniGroup *group_def = nullptr, *group;
-	IniItem *item;
 
 	for (auto &desc : settings_table) {
 		const SettingDesc *sd = GetSettingDesc(desc);
@@ -669,11 +668,11 @@ static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, co
 			group = group_def;
 		}
 
-		item = group->GetItem(s, true);
+		IniItem &item = group->GetOrCreateItem(s);
 
-		if (!item->value.has_value() || !sd->IsSameValue(item, object)) {
+		if (!item.value.has_value() || !sd->IsSameValue(&item, object)) {
 			/* The value is different, that means we have to write it to the ini */
-			item->value.emplace(sd->FormatValue(object));
+			item.value.emplace(sd->FormatValue(object));
 		}
 	}
 }
@@ -773,7 +772,7 @@ static void IniSaveSettingList(IniFile &ini, const char *grpname, StringList &li
 	group->Clear();
 
 	for (const auto &iter : list) {
-		group->GetItem(iter, true)->SetValue("");
+		group->GetOrCreateItem(iter).SetValue("");
 	}
 }
 
@@ -1060,7 +1059,7 @@ static IniFileVersion LoadVersionFromConfig(IniFile &ini)
 {
 	IniGroup *group = ini.GetGroup("version");
 
-	auto version_number = group->GetItem("ini_version", false);
+	auto version_number = group->GetItem("ini_version");
 	/* Older ini-file versions don't have this key yet. */
 	if (version_number == nullptr || !version_number->value.has_value()) return IFV_0;
 
@@ -1121,9 +1120,9 @@ static void GameSaveConfig(IniFile &ini, const char *grpname)
 static void SaveVersionInConfig(IniFile &ini)
 {
 	IniGroup *group = ini.GetGroup("version");
-	group->GetItem("version_string", true)->SetValue(_openttd_revision);
-	group->GetItem("version_number", true)->SetValue(fmt::format("{:08X}", _openttd_newgrf_version));
-	group->GetItem("ini_version", true)->SetValue(std::to_string(INIFILE_VERSION));
+	group->GetOrCreateItem("version_string").SetValue(_openttd_revision);
+	group->GetOrCreateItem("version_number").SetValue(fmt::format("{:08X}", _openttd_newgrf_version));
+	group->GetOrCreateItem("ini_version").SetValue(std::to_string(INIFILE_VERSION));
 }
 
 /* Save a GRF configuration to the given group name */
@@ -1136,7 +1135,7 @@ static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfig *li
 	for (c = list; c != nullptr; c = c->next) {
 		std::string key = fmt::format("{:08X}|{}|{}", BSWAP32(c->ident.grfid),
 				FormatArrayAsHex(c->ident.md5sum), c->filename);
-		group->GetItem(key, true)->SetValue(GRFBuildParamList(c));
+		group->GetOrCreateItem(key).SetValue(GRFBuildParamList(c));
 	}
 }
 
@@ -1224,7 +1223,7 @@ void LoadFromConfig(bool startup)
 			if (_settings_client.network.server_game_type == SERVER_GAME_TYPE_LOCAL) {
 				IniGroup *network = generic_ini.GetGroup("network", false);
 				if (network != nullptr) {
-					IniItem *server_advertise = network->GetItem("server_advertise", false);
+					IniItem *server_advertise = network->GetItem("server_advertise");
 					if (server_advertise != nullptr && server_advertise->value == "true") {
 						_settings_client.network.server_game_type = SERVER_GAME_TYPE_PUBLIC;
 					}
@@ -1240,7 +1239,7 @@ void LoadFromConfig(bool startup)
 		if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
 			IniGroup *network = generic_ini.GetGroup("network", false);
 			if (network != nullptr) {
-				IniItem *no_http_content_downloads = network->GetItem("no_http_content_downloads", false);
+				IniItem *no_http_content_downloads = network->GetItem("no_http_content_downloads");
 				if (no_http_content_downloads != nullptr) {
 					if (no_http_content_downloads->value == "true") {
 						_settings_client.network.no_http_content_downloads = true;
@@ -1249,7 +1248,7 @@ void LoadFromConfig(bool startup)
 					}
 				}
 
-				IniItem *use_relay_service = network->GetItem("use_relay_service", false);
+				IniItem *use_relay_service = network->GetItem("use_relay_service");
 				if (use_relay_service != nullptr) {
 					if (use_relay_service->value == "never") {
 						_settings_client.network.use_relay_service = UseRelayService::URS_NEVER;

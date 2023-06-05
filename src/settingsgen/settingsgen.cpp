@@ -229,8 +229,8 @@ static void DumpGroup(IniLoadFile *ifile, const char * const group_name)
  */
 static const char *FindItemValue(const char *name, IniGroup *grp, IniGroup *defaults)
 {
-	IniItem *item = grp->GetItem(name, false);
-	if (item == nullptr && defaults != nullptr) item = defaults->GetItem(name, false);
+	IniItem *item = grp->GetItem(name);
+	if (item == nullptr && defaults != nullptr) item = defaults->GetItem(name);
 	if (item == nullptr || !item->value.has_value()) return nullptr;
 	return item->value->c_str();
 }
@@ -321,14 +321,14 @@ static void DumpSections(IniLoadFile *ifile)
 		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (grp->name == *sgn) break;
 		if (*sgn != nullptr) continue;
 
-		IniItem *template_item = templates_grp->GetItem(grp->name, false); // Find template value.
+		IniItem *template_item = templates_grp->GetItem(grp->name); // Find template value.
 		if (template_item == nullptr || !template_item->value.has_value()) {
 			FatalError("Cannot find template {}", grp->name);
 		}
 		DumpLine(template_item, grp, default_grp, _stored_output);
 
 		if (validation_grp != nullptr) {
-			IniItem *validation_item = validation_grp->GetItem(grp->name, false); // Find template value.
+			IniItem *validation_item = validation_grp->GetItem(grp->name); // Find template value.
 			if (validation_item != nullptr && validation_item->value.has_value()) {
 				DumpLine(validation_item, grp, default_grp, _post_amble_output);
 			}
