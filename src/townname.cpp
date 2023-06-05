@@ -65,11 +65,10 @@ static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint3
  */
 std::string GetTownName(const TownNameParams *par, uint32 townnameparts)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	char *state = buffer;
-	StringBuilder builder(&state, lastof(buffer));
+	std::string result;
+	StringBuilder builder(result);
 	GetTownName(builder, par, townnameparts);
-	return std::string(buffer, builder.GetEnd());
+	return result;
 }
 
 /**
@@ -1024,19 +1023,6 @@ void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32 seed)
 {
 	assert(lang < lengthof(_town_name_generators));
 
-	/* Some generators need at least 9 bytes in buffer.  English generators need 5 for
-	 * string replacing, others use constructions like strlen(buf)-3 and so on.
-	 * Finnish generator needs to fit all strings from _name_finnish_1.
-	 * Czech generator needs to fit almost whole town name...
-	 * These would break. Using another temporary buffer results in ~40% slower code,
-	 * so use it only when really needed. */
 	const TownNameGeneratorParams *par = &_town_name_generators[lang];
-	if (builder.Remaining() >= par->min) return par->proc(builder, seed);
-
-	std::string buffer(par->min + 1, '\0');
-	char *state = buffer.data();
-	StringBuilder buffer_builder(&state, buffer.data() + par->min);
-	par->proc(buffer_builder, seed);
-
-	builder += buffer;
+	return par->proc(builder, seed);
 }

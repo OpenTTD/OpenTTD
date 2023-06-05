@@ -20,9 +20,7 @@
  * extra functions to ease the migration from char buffers to std::string.
  */
 class StringBuilder {
-	char **current; ///< The current location to add strings.
-	char *start;   ///< The begin of the string.
-	const char *last; ///< The last element of the buffer.
+	std::string *string;
 
 public:
 	/* Required type for this to be an output_iterator; mimics std::back_insert_iterator. */
@@ -37,7 +35,7 @@ public:
 	 * @param start The start location to write to.
 	 * @param last  The last location to write to.
 	 */
-	StringBuilder(char **start, const char *last) : current(start), start(*start), last(last) {}
+	StringBuilder(std::string &string) : string(&string) {}
 
 	/* Required operators for this to be an output_iterator; mimics std::back_insert_iterator, which has no-ops. */
 	StringBuilder &operator++() { return *this; }
@@ -63,7 +61,7 @@ public:
 	 */
 	StringBuilder &operator+=(const char value)
 	{
-		if (*this->current != this->last) *(*this->current)++ = value;
+		this->string->push_back(value);
 		return *this;
 	}
 
@@ -72,54 +70,31 @@ public:
 	 * @param str The string to add.
 	 * @return Reference to this inserter.
 	 */
-	StringBuilder &operator+=(const char *str)
+	StringBuilder &operator+=(std::string_view str)
 	{
-		*this->current = strecpy(*this->current, str, this->last);
+		*this->string += str;
 		return *this;
-	}
-
-	/**
-	 * Operator to append the given string to the output buffer.
-	 * @param str The string to add.
-	 * @return Reference to this inserter.
-	 */
-	StringBuilder &operator+=(const std::string &str)
-	{
-		return this->operator+=(str.c_str());
 	}
 
 	/**
 	 * Encode the given Utf8 character into the output buffer.
 	 * @param c The character to encode.
-	 * @return true iff there was enough space and the character got added.
 	 */
 	bool Utf8Encode(WChar c)
 	{
-		if (this->Remaining() < Utf8CharLen(c)) return false;
-
-		(*this->current) += ::Utf8Encode(*this->current, c);
+		auto iterator = std::back_inserter(*this->string);
+		::Utf8Encode(iterator, c);
 		return true;
 	}
 
 	/**
 	 * Remove the given amount of characters from the back of the string.
 	 * @param amount The amount of characters to remove.
+	 * @return true iff there was enough space and the character got added.
 	 */
 	void RemoveElementsFromBack(size_t amount)
 	{
-		*this->current = std::max(this->start, *this->current - amount);
-	}
-
-	/**
-	 * Get the pointer to the this->last written element in the buffer.
-	 * This call does '\0' terminate the string, whereas other calls do not
-	 * (necessarily) do this.
-	 * @return The this->current end of the string.
-	 */
-	char *GetEnd()
-	{
-		**this->current = '\0';
-		return *this->current;
+		this->string->erase(this->string->size() - std::min(amount, this->string->size()));
 	}
 
 	/**
@@ -128,7 +103,7 @@ public:
 	 */
 	ptrdiff_t Remaining()
 	{
-		return (ptrdiff_t)(this->last - *this->current);
+		return 42; // Just something big-ish, as there's always space (until allocation fails)
 	}
 
 	/**
@@ -137,7 +112,7 @@ public:
 	 */
 	size_t CurrentIndex()
 	{
-		return *this->current - this->start;
+		return this->string->size();
 	}
 
 	/**
@@ -146,7 +121,7 @@ public:
 	 */
 	char &operator[](size_t index)
 	{
-		return this->start[index];
+		return (*this->string)[index];
 	}
 };
 
