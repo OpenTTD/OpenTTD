@@ -303,11 +303,10 @@ std::string GetString(StringID string)
  */
 std::string GetStringWithArgs(StringID string, StringParameters *args)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	char *state = buffer;
-	StringBuilder builder(&state, lastof(buffer));
+	std::string result;
+	StringBuilder builder(result);
 	GetStringWithArgs(builder, string, args);
-	return std::string(buffer, builder.GetEnd());
+	return result;
 }
 
 /**
@@ -838,9 +837,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		 * the parameters. So, we need to gather the type information via the
 		 * dry run first, before we can continue formatting the string.
 		 */
-		char buffer[DRAW_STRING_BUFFER];
-		char *state = buffer;
-		StringBuilder dry_run_builder(&state, lastof(buffer));
+		std::string buffer;
+		StringBuilder dry_run_builder(buffer);
 		if (UsingNewGRFTextStack()) {
 			/* Values from the NewGRF text stack are only copied to the normal
 			 * argv array at the time they are encountered. That means that if
@@ -1004,21 +1002,17 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					char *p = input + Utf8Encode(input, args->GetTypeAtOffset(offset));
 					*p = '\0';
 
-					/* The gender is stored at the start of the formatted string.
-					 * So to determine the gender after formatting we only need
-					 * enough space for the gender index token, one character
-					 * for the actual gender and one character for '\0'. */
-					char buf[MAX_CHAR_LENGTH + 1 + 1];
-					char *state = buf;
+					/* The gender is stored at the start of the formatted string. */
 					bool old_sgd = _scan_for_gender_data;
 					_scan_for_gender_data = true;
-					StringBuilder tmp_builder(&state, lastof(buf));
+					std::string buffer;
+					StringBuilder tmp_builder(buffer);
 					StringParameters tmp_params(args->GetPointerToOffset(offset), args->num_param - offset, nullptr);
 					FormatString(tmp_builder, input, &tmp_params);
 					_scan_for_gender_data = old_sgd;
 
 					/* And determine the string. */
-					const char *s = buf;
+					const char *s = buffer.c_str();
 					WChar c = Utf8Consume(&s);
 					/* Does this string have a gender, if so, set it */
 					if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
