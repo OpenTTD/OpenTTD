@@ -82,22 +82,32 @@ IniGroup::~IniGroup()
 }
 
 /**
- * Get the item with the given name, and if it doesn't exist
- * and create is true it creates a new item.
+ * Get the item with the given name.
  * @param name   name of the item to find.
- * @param create whether to create an item when not found or not.
  * @return the requested item or nullptr if not found.
  */
-IniItem *IniGroup::GetItem(const std::string &name, bool create)
+IniItem *IniGroup::GetItem(const std::string &name)
 {
 	for (IniItem *item = this->item; item != nullptr; item = item->next) {
 		if (item->name == name) return item;
 	}
 
-	if (!create) return nullptr;
+	return nullptr;
+}
 
-	/* otherwise make a new one */
-	return new IniItem(this, name);
+/**
+ * Get the item with the given name, and if it doesn't exist create a new item.
+ * @param name   name of the item to find.
+ * @return the requested item.
+ */
+IniItem &IniGroup::GetOrCreateItem(const std::string &name)
+{
+	for (IniItem *item = this->item; item != nullptr; item = item->next) {
+		if (item->name == name) return *item;
+	}
+
+	/* Item doesn't exist, make a new one. */
+	return *(new IniItem(this, name));
 }
 
 /**

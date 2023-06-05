@@ -357,7 +357,7 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const std::string &path, const st
 		this->palette = ((*item->value)[0] == 'D' || (*item->value)[0] == 'd') ? PAL_DOS : PAL_WINDOWS;
 
 		/* Get optional blitter information. */
-		item = metadata->GetItem("blitter", false);
+		item = metadata->GetItem("blitter");
 		this->blitter = (item != nullptr && (*item->value)[0] == '3') ? BLT_32BPP : BLT_8BPP;
 	}
 	return ret;

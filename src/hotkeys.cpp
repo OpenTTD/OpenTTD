@@ -278,7 +278,7 @@ void HotkeyList::Load(IniFile *ini)
 {
 	IniGroup *group = ini->GetGroup(this->ini_group);
 	for (Hotkey &hotkey : this->items) {
-		IniItem *item = group->GetItem(hotkey.name, false);
+		IniItem *item = group->GetItem(hotkey.name);
 		if (item != nullptr) {
 			hotkey.keycodes.clear();
 			if (item->value.has_value()) ParseHotkeys(hotkey, item->value->c_str());
@@ -294,8 +294,8 @@ void HotkeyList::Save(IniFile *ini) const
 {
 	IniGroup *group = ini->GetGroup(this->ini_group);
 	for (const Hotkey &hotkey : this->items) {
-		IniItem *item = group->GetItem(hotkey.name, true);
-		item->SetValue(SaveKeycodes(hotkey));
+		IniItem &item = group->GetOrCreateItem(hotkey.name);
+		item.SetValue(SaveKeycodes(hotkey));
 	}
 }
 
