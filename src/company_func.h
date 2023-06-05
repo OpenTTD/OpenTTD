@@ -19,7 +19,7 @@ bool MayCompanyTakeOver(CompanyID cbig, CompanyID small);
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
 void GetNameOfOwner(Owner owner, TileIndex tile);
 void SetLocalCompany(CompanyID new_company);
-void ShowBuyCompanyDialog(CompanyID company);
+void ShowBuyCompanyDialog(CompanyID company, bool hostile_takeover);
 void CompanyAdminUpdate(const Company *company);
 void CompanyAdminBankrupt(CompanyID company_id);
 void UpdateLandscapingLimits();

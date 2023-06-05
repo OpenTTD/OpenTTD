@@ -709,7 +709,7 @@ static void HandleBankruptcyTakeover(Company *c)
 
 	AI::NewEvent(best->index, new ScriptEventCompanyAskMerger(c->index, c->bankrupt_value));
 	if (IsInteractiveCompany(best->index)) {
-		ShowBuyCompanyDialog(c->index);
+		ShowBuyCompanyDialog(c->index, false);
 	}
 }
 
