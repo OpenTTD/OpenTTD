@@ -260,7 +260,7 @@ public:
 				size->height = (TACT_COUNT + 1) * FONT_HEIGHT_NORMAL + padding.height;
 				size->width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
 				for (uint i = 0; i < TACT_COUNT; i++ ) {
-					size->width = std::max(size->width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i).width);
+					size->width = std::max(size->width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i).width + padding.width);
 				}
 				size->width += padding.width;
 				break;
