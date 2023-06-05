@@ -741,8 +741,7 @@ public:
 
 		if (!this->selected->dependencies.empty()) {
 			/* List dependencies */
-			char buf[DRAW_STRING_BUFFER] = "";
-			char *p = buf;
+			std::string buf;
 			for (auto &cid : this->selected->dependencies) {
 				/* Try to find the dependency */
 				ConstContentIterator iter = _network_content_client.Begin();
@@ -750,7 +749,8 @@ public:
 					const ContentInfo *ci = *iter;
 					if (ci->id != cid) continue;
 
-					p += seprintf(p, lastof(buf), p == buf ? "%s" : ", %s", (*iter)->name.c_str());
+					if (!buf.empty()) buf += ", ";
+					buf += (*iter)->name;
 					break;
 				}
 			}
@@ -760,10 +760,10 @@ public:
 
 		if (!this->selected->tags.empty()) {
 			/* List all tags */
-			char buf[DRAW_STRING_BUFFER] = "";
-			char *p = buf;
+			std::string buf;
 			for (auto &tag : this->selected->tags) {
-				p += seprintf(p, lastof(buf), p == buf ? "%s" : ", %s", tag.c_str());
+				if (!buf.empty()) buf += ", ";
+				buf += tag;
 			}
 			SetDParamStr(0, buf);
 			tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_TAGS);
@@ -774,14 +774,14 @@ public:
 			ConstContentVector tree;
 			_network_content_client.ReverseLookupTreeDependency(tree, this->selected);
 
-			char buf[DRAW_STRING_BUFFER] = "";
-			char *p = buf;
+			std::string buf;
 			for (const ContentInfo *ci : tree) {
 				if (ci == this->selected || ci->state != ContentInfo::SELECTED) continue;
 
-				p += seprintf(p, lastof(buf), buf == p ? "%s" : ", %s", ci->name.c_str());
+				if (!buf.empty()) buf += ", ";
+				buf += ci->name;
 			}
-			if (p != buf) {
+			if (!buf.empty()) {
 				SetDParamStr(0, buf);
 				tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF);
 			}
