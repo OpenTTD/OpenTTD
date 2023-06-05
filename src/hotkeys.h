@@ -19,17 +19,15 @@
  * a list of keycodes and a number to help identifying this hotkey.
  */
 struct Hotkey {
-	Hotkey(uint16 default_keycode, const char *name, int num);
-	Hotkey(const uint16 *default_keycodes, const char *name, int num);
+	Hotkey(uint16 default_keycode, const std::string &name, int num);
+	Hotkey(const std::vector<uint16> &default_keycodes, const std::string &name, int num);
 
 	void AddKeycode(uint16 keycode);
 
-	const char *name;
+	const std::string name;
 	int num;
 	std::set<uint16> keycodes;
 };
-
-#define HOTKEY_LIST_END Hotkey((uint16)0, nullptr, -1)
 
 struct IniFile;
 
@@ -39,7 +37,7 @@ struct IniFile;
 struct HotkeyList {
 	typedef EventState (*GlobalHotkeyHandlerFunc)(int hotkey);
 
-	HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler = nullptr);
+	HotkeyList(const std::string &ini_group, const std::vector<Hotkey> &items, GlobalHotkeyHandlerFunc global_hotkey_handler = nullptr);
 	~HotkeyList();
 
 	void Load(IniFile *ini);
@@ -49,8 +47,8 @@ struct HotkeyList {
 
 	GlobalHotkeyHandlerFunc global_hotkey_handler;
 private:
-	const char *ini_group;
-	Hotkey *items;
+	const std::string ini_group;
+	std::vector<Hotkey> items;
 
 	/**
 	 * Dummy private copy constructor to prevent compilers from

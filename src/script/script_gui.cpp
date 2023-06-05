@@ -1094,7 +1094,43 @@ struct ScriptDebugWindow : public Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_SCRD_LOG_PANEL, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
-	static HotkeyList hotkeys;
+	/**
+	 * Handler for global hotkeys of the ScriptDebugWindow.
+	 * @param hotkey Hotkey
+	 * @return ES_HANDLED if hotkey was accepted.
+	 */
+	static EventState ScriptDebugGlobalHotkeys(int hotkey)
+	{
+		if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
+		Window *w = ShowScriptDebugWindow(INVALID_COMPANY);
+		if (w == nullptr) return ES_NOT_HANDLED;
+		return w->OnHotkey(hotkey);
+	}
+
+	static inline HotkeyList hotkeys{"aidebug", {
+		Hotkey('1', "company_1", WID_SCRD_COMPANY_BUTTON_START),
+		Hotkey('2', "company_2", WID_SCRD_COMPANY_BUTTON_START + 1),
+		Hotkey('3', "company_3", WID_SCRD_COMPANY_BUTTON_START + 2),
+		Hotkey('4', "company_4", WID_SCRD_COMPANY_BUTTON_START + 3),
+		Hotkey('5', "company_5", WID_SCRD_COMPANY_BUTTON_START + 4),
+		Hotkey('6', "company_6", WID_SCRD_COMPANY_BUTTON_START + 5),
+		Hotkey('7', "company_7", WID_SCRD_COMPANY_BUTTON_START + 6),
+		Hotkey('8', "company_8", WID_SCRD_COMPANY_BUTTON_START + 7),
+		Hotkey('9', "company_9", WID_SCRD_COMPANY_BUTTON_START + 8),
+		Hotkey(0, "company_10", WID_SCRD_COMPANY_BUTTON_START + 9),
+		Hotkey(0, "company_11", WID_SCRD_COMPANY_BUTTON_START + 10),
+		Hotkey(0, "company_12", WID_SCRD_COMPANY_BUTTON_START + 11),
+		Hotkey(0, "company_13", WID_SCRD_COMPANY_BUTTON_START + 12),
+		Hotkey(0, "company_14", WID_SCRD_COMPANY_BUTTON_START + 13),
+		Hotkey(0, "company_15", WID_SCRD_COMPANY_BUTTON_START + 14),
+		Hotkey('S', "settings", WID_SCRD_SETTINGS),
+		Hotkey('0', "game_script", WID_SCRD_SCRIPT_GAME),
+		Hotkey(0, "reload", WID_SCRD_RELOAD_TOGGLE),
+		Hotkey('B', "break_toggle", WID_SCRD_BREAK_STR_ON_OFF_BTN),
+		Hotkey('F', "break_string", WID_SCRD_BREAK_STR_EDIT_BOX),
+		Hotkey('C', "match_case", WID_SCRD_MATCH_CASE_BTN),
+		Hotkey(WKC_RETURN, "continue", WID_SCRD_CONTINUE_BTN),
+	}, ScriptDebugGlobalHotkeys};
 };
 
 CompanyID ScriptDebugWindow::script_debug_company = INVALID_COMPANY;
@@ -1108,46 +1144,6 @@ NWidgetBase *MakeCompanyButtonRowsScriptDebug(int *biggest_index)
 {
 	return MakeCompanyButtonRows(biggest_index, WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END, COLOUR_GREY, 8, STR_AI_DEBUG_SELECT_AI_TOOLTIP);
 }
-
-/**
- * Handler for global hotkeys of the ScriptDebugWindow.
- * @param hotkey Hotkey
- * @return ES_HANDLED if hotkey was accepted.
- */
-static EventState ScriptDebugGlobalHotkeys(int hotkey)
-{
-	if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
-	Window *w = ShowScriptDebugWindow(INVALID_COMPANY);
-	if (w == nullptr) return ES_NOT_HANDLED;
-	return w->OnHotkey(hotkey);
-}
-
-static Hotkey scriptdebug_hotkeys[] = {
-	Hotkey('1', "company_1", WID_SCRD_COMPANY_BUTTON_START),
-	Hotkey('2', "company_2", WID_SCRD_COMPANY_BUTTON_START + 1),
-	Hotkey('3', "company_3", WID_SCRD_COMPANY_BUTTON_START + 2),
-	Hotkey('4', "company_4", WID_SCRD_COMPANY_BUTTON_START + 3),
-	Hotkey('5', "company_5", WID_SCRD_COMPANY_BUTTON_START + 4),
-	Hotkey('6', "company_6", WID_SCRD_COMPANY_BUTTON_START + 5),
-	Hotkey('7', "company_7", WID_SCRD_COMPANY_BUTTON_START + 6),
-	Hotkey('8', "company_8", WID_SCRD_COMPANY_BUTTON_START + 7),
-	Hotkey('9', "company_9", WID_SCRD_COMPANY_BUTTON_START + 8),
-	Hotkey((uint16)0, "company_10", WID_SCRD_COMPANY_BUTTON_START + 9),
-	Hotkey((uint16)0, "company_11", WID_SCRD_COMPANY_BUTTON_START + 10),
-	Hotkey((uint16)0, "company_12", WID_SCRD_COMPANY_BUTTON_START + 11),
-	Hotkey((uint16)0, "company_13", WID_SCRD_COMPANY_BUTTON_START + 12),
-	Hotkey((uint16)0, "company_14", WID_SCRD_COMPANY_BUTTON_START + 13),
-	Hotkey((uint16)0, "company_15", WID_SCRD_COMPANY_BUTTON_START + 14),
-	Hotkey('S', "settings", WID_SCRD_SETTINGS),
-	Hotkey('0', "game_script", WID_SCRD_SCRIPT_GAME),
-	Hotkey((uint16)0, "reload", WID_SCRD_RELOAD_TOGGLE),
-	Hotkey('B', "break_toggle", WID_SCRD_BREAK_STR_ON_OFF_BTN),
-	Hotkey('F', "break_string", WID_SCRD_BREAK_STR_EDIT_BOX),
-	Hotkey('C', "match_case", WID_SCRD_MATCH_CASE_BTN),
-	Hotkey(WKC_RETURN, "continue", WID_SCRD_CONTINUE_BTN),
-	HOTKEY_LIST_END
-};
-HotkeyList ScriptDebugWindow::hotkeys("aidebug", scriptdebug_hotkeys, ScriptDebugGlobalHotkeys);
 
 /** Widgets for the Script debug window. */
 static const NWidgetPart _nested_script_debug_widgets[] = {

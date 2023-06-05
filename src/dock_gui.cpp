@@ -298,36 +298,30 @@ struct BuildDocksToolbarWindow : Window {
 		VpSetPresizeRange(tile_from, tile_to);
 	}
 
-	static HotkeyList hotkeys;
+	/**
+	 * Handler for global hotkeys of the BuildDocksToolbarWindow.
+	 * @param hotkey Hotkey
+	 * @return ES_HANDLED if hotkey was accepted.
+	 */
+	static EventState DockToolbarGlobalHotkeys(int hotkey)
+	{
+		if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
+		Window *w = ShowBuildDocksToolbar();
+		if (w == nullptr) return ES_NOT_HANDLED;
+		return w->OnHotkey(hotkey);
+	}
+
+	static inline HotkeyList hotkeys{"dockstoolbar", {
+		Hotkey('1', "canal", WID_DT_CANAL),
+		Hotkey('2', "lock", WID_DT_LOCK),
+		Hotkey('3', "demolish", WID_DT_DEMOLISH),
+		Hotkey('4', "depot", WID_DT_DEPOT),
+		Hotkey('5', "dock", WID_DT_STATION),
+		Hotkey('6', "buoy", WID_DT_BUOY),
+		Hotkey('7', "river", WID_DT_RIVER),
+		Hotkey({'B', '8'}, "aqueduct", WID_DT_BUILD_AQUEDUCT),
+	}, DockToolbarGlobalHotkeys};
 };
-
-/**
- * Handler for global hotkeys of the BuildDocksToolbarWindow.
- * @param hotkey Hotkey
- * @return ES_HANDLED if hotkey was accepted.
- */
-static EventState DockToolbarGlobalHotkeys(int hotkey)
-{
-	if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
-	Window *w = ShowBuildDocksToolbar();
-	if (w == nullptr) return ES_NOT_HANDLED;
-	return w->OnHotkey(hotkey);
-}
-
-const uint16 _dockstoolbar_aqueduct_keys[] = {'B', '8', 0};
-
-static Hotkey dockstoolbar_hotkeys[] = {
-	Hotkey('1', "canal", WID_DT_CANAL),
-	Hotkey('2', "lock", WID_DT_LOCK),
-	Hotkey('3', "demolish", WID_DT_DEMOLISH),
-	Hotkey('4', "depot", WID_DT_DEPOT),
-	Hotkey('5', "dock", WID_DT_STATION),
-	Hotkey('6', "buoy", WID_DT_BUOY),
-	Hotkey('7', "river", WID_DT_RIVER),
-	Hotkey(_dockstoolbar_aqueduct_keys, "aqueduct", WID_DT_BUILD_AQUEDUCT),
-	HOTKEY_LIST_END
-};
-HotkeyList BuildDocksToolbarWindow::hotkeys("dockstoolbar", dockstoolbar_hotkeys, DockToolbarGlobalHotkeys);
 
 /**
  * Nested widget parts of docks toolbar, game version.

@@ -177,28 +177,24 @@ struct BuildAirToolbarWindow : Window {
 		CloseWindowById(WC_SELECT_STATION, 0);
 	}
 
-	static HotkeyList hotkeys;
-};
+	/**
+	 * Handler for global hotkeys of the BuildAirToolbarWindow.
+	 * @param hotkey Hotkey
+	 * @return ES_HANDLED if hotkey was accepted.
+	 */
+	static EventState AirportToolbarGlobalHotkeys(int hotkey)
+	{
+		if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
+		Window *w = ShowBuildAirToolbar();
+		if (w == nullptr) return ES_NOT_HANDLED;
+		return w->OnHotkey(hotkey);
+	}
 
-/**
- * Handler for global hotkeys of the BuildAirToolbarWindow.
- * @param hotkey Hotkey
- * @return ES_HANDLED if hotkey was accepted.
- */
-static EventState AirportToolbarGlobalHotkeys(int hotkey)
-{
-	if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
-	Window *w = ShowBuildAirToolbar();
-	if (w == nullptr) return ES_NOT_HANDLED;
-	return w->OnHotkey(hotkey);
-}
-
-static Hotkey airtoolbar_hotkeys[] = {
-	Hotkey('1', "airport", WID_AT_AIRPORT),
-	Hotkey('2', "demolish", WID_AT_DEMOLISH),
-	HOTKEY_LIST_END
+	static inline HotkeyList hotkeys{"airtoolbar", {
+		Hotkey('1', "airport", WID_AT_AIRPORT),
+		Hotkey('2', "demolish", WID_AT_DEMOLISH),
+	}, AirportToolbarGlobalHotkeys};
 };
-HotkeyList BuildAirToolbarWindow::hotkeys("airtoolbar", airtoolbar_hotkeys, AirportToolbarGlobalHotkeys);
 
 static const NWidgetPart _nested_air_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
