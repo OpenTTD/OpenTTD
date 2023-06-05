@@ -672,6 +672,11 @@ size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, WChar c)
 	return Utf8Encode<std::ostreambuf_iterator<char> &>(buf, c);
 }
 
+size_t Utf8Encode(std::back_insert_iterator<std::string> &buf, WChar c)
+{
+	return Utf8Encode<std::back_insert_iterator<std::string> &>(buf, c);
+}
+
 /**
  * Properly terminate an UTF8 string to some maximum length
  * @param s string to check if it needs additional trimming
