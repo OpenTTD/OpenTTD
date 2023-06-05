@@ -2142,58 +2142,49 @@ struct MainToolbarWindow : Window {
 		HandleZoomMessage(this, GetMainWindow()->viewport, WID_TN_ZOOM_IN, WID_TN_ZOOM_OUT);
 	}
 
-	static HotkeyList hotkeys;
+	static inline HotkeyList hotkeys{"maintoolbar", {
+		Hotkey({WKC_F1, WKC_PAUSE}, "pause", MTHK_PAUSE),
+		Hotkey(0, "fastforward", MTHK_FASTFORWARD),
+		Hotkey(WKC_F2, "settings", MTHK_SETTINGS),
+		Hotkey(WKC_F3, "saveload", MTHK_SAVEGAME),
+		Hotkey(0, "load_game", MTHK_LOADGAME),
+		Hotkey({WKC_F4, 'M'}, "smallmap", MTHK_SMALLMAP),
+		Hotkey(WKC_F5, "town_list", MTHK_TOWNDIRECTORY),
+		Hotkey(WKC_F6, "subsidies", MTHK_SUBSIDIES),
+		Hotkey(WKC_F7, "station_list", MTHK_STATIONS),
+		Hotkey(WKC_F8, "finances", MTHK_FINANCES),
+		Hotkey(WKC_F9, "companies", MTHK_COMPANIES),
+		Hotkey(0, "story_book", MTHK_STORY),
+		Hotkey(0, "goal_list", MTHK_GOAL),
+		Hotkey(WKC_F10, "graphs", MTHK_GRAPHS),
+		Hotkey(WKC_F11, "league", MTHK_LEAGUE),
+		Hotkey(WKC_F12, "industry_list", MTHK_INDUSTRIES),
+		Hotkey(WKC_SHIFT | WKC_F1, "train_list", MTHK_TRAIN_LIST),
+		Hotkey(WKC_SHIFT | WKC_F2, "roadveh_list", MTHK_ROADVEH_LIST),
+		Hotkey(WKC_SHIFT | WKC_F3, "ship_list", MTHK_SHIP_LIST),
+		Hotkey(WKC_SHIFT | WKC_F4, "aircraft_list", MTHK_AIRCRAFT_LIST),
+		Hotkey({WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT | WKC_EQUALS, WKC_SHIFT | WKC_F5}, "zoomin", MTHK_ZOOM_IN),
+		Hotkey({WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6}, "zoomout", MTHK_ZOOM_OUT),
+		Hotkey(WKC_SHIFT | WKC_F7, "build_rail", MTHK_BUILD_RAIL),
+		Hotkey(WKC_SHIFT | WKC_F8, "build_road", MTHK_BUILD_ROAD),
+		Hotkey(0, "build_tram", MTHK_BUILD_TRAM),
+		Hotkey(WKC_SHIFT | WKC_F9, "build_docks", MTHK_BUILD_DOCKS),
+		Hotkey(WKC_SHIFT | WKC_F10, "build_airport", MTHK_BUILD_AIRPORT),
+		Hotkey(WKC_SHIFT | WKC_F11, "build_trees", MTHK_BUILD_TREES),
+		Hotkey(WKC_SHIFT | WKC_F12, "music", MTHK_MUSIC),
+		Hotkey(0, "ai_debug", MTHK_SCRIPT_DEBUG),
+		Hotkey(WKC_CTRL  | 'S', "small_screenshot", MTHK_SMALL_SCREENSHOT),
+		Hotkey(WKC_CTRL  | 'P', "zoomedin_screenshot", MTHK_ZOOMEDIN_SCREENSHOT),
+		Hotkey(WKC_CTRL  | 'D', "defaultzoom_screenshot", MTHK_DEFAULTZOOM_SCREENSHOT),
+		Hotkey(0, "giant_screenshot", MTHK_GIANT_SCREENSHOT),
+		Hotkey(WKC_CTRL | WKC_ALT | 'C', "cheats", MTHK_CHEATS),
+		Hotkey('L', "terraform", MTHK_TERRAFORM),
+		Hotkey('V', "extra_viewport", MTHK_EXTRA_VIEWPORT),
+		Hotkey(0, "client_list", MTHK_CLIENT_LIST),
+		Hotkey(0, "sign_list", MTHK_SIGN_LIST),
+		Hotkey(0, "land_info", MTHK_LANDINFO),
+	}};
 };
-
-const uint16 _maintoolbar_pause_keys[] = {WKC_F1, WKC_PAUSE, 0};
-const uint16 _maintoolbar_zoomin_keys[] = {WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT | WKC_EQUALS, WKC_SHIFT | WKC_F5, 0};
-const uint16 _maintoolbar_zoomout_keys[] = {WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6, 0};
-const uint16 _maintoolbar_smallmap_keys[] = {WKC_F4, 'M', 0};
-
-static Hotkey maintoolbar_hotkeys[] = {
-	Hotkey(_maintoolbar_pause_keys, "pause", MTHK_PAUSE),
-	Hotkey((uint16)0, "fastforward", MTHK_FASTFORWARD),
-	Hotkey(WKC_F2, "settings", MTHK_SETTINGS),
-	Hotkey(WKC_F3, "saveload", MTHK_SAVEGAME),
-	Hotkey((uint16)0, "load_game", MTHK_LOADGAME),
-	Hotkey(_maintoolbar_smallmap_keys, "smallmap", MTHK_SMALLMAP),
-	Hotkey(WKC_F5, "town_list", MTHK_TOWNDIRECTORY),
-	Hotkey(WKC_F6, "subsidies", MTHK_SUBSIDIES),
-	Hotkey(WKC_F7, "station_list", MTHK_STATIONS),
-	Hotkey(WKC_F8, "finances", MTHK_FINANCES),
-	Hotkey(WKC_F9, "companies", MTHK_COMPANIES),
-	Hotkey((uint16)0, "story_book", MTHK_STORY),
-	Hotkey((uint16)0, "goal_list", MTHK_GOAL),
-	Hotkey(WKC_F10, "graphs", MTHK_GRAPHS),
-	Hotkey(WKC_F11, "league", MTHK_LEAGUE),
-	Hotkey(WKC_F12, "industry_list", MTHK_INDUSTRIES),
-	Hotkey(WKC_SHIFT | WKC_F1, "train_list", MTHK_TRAIN_LIST),
-	Hotkey(WKC_SHIFT | WKC_F2, "roadveh_list", MTHK_ROADVEH_LIST),
-	Hotkey(WKC_SHIFT | WKC_F3, "ship_list", MTHK_SHIP_LIST),
-	Hotkey(WKC_SHIFT | WKC_F4, "aircraft_list", MTHK_AIRCRAFT_LIST),
-	Hotkey(_maintoolbar_zoomin_keys, "zoomin", MTHK_ZOOM_IN),
-	Hotkey(_maintoolbar_zoomout_keys, "zoomout", MTHK_ZOOM_OUT),
-	Hotkey(WKC_SHIFT | WKC_F7, "build_rail", MTHK_BUILD_RAIL),
-	Hotkey(WKC_SHIFT | WKC_F8, "build_road", MTHK_BUILD_ROAD),
-	Hotkey((uint16)0, "build_tram", MTHK_BUILD_TRAM),
-	Hotkey(WKC_SHIFT | WKC_F9, "build_docks", MTHK_BUILD_DOCKS),
-	Hotkey(WKC_SHIFT | WKC_F10, "build_airport", MTHK_BUILD_AIRPORT),
-	Hotkey(WKC_SHIFT | WKC_F11, "build_trees", MTHK_BUILD_TREES),
-	Hotkey(WKC_SHIFT | WKC_F12, "music", MTHK_MUSIC),
-	Hotkey((uint16)0, "ai_debug", MTHK_SCRIPT_DEBUG),
-	Hotkey(WKC_CTRL  | 'S', "small_screenshot", MTHK_SMALL_SCREENSHOT),
-	Hotkey(WKC_CTRL  | 'P', "zoomedin_screenshot", MTHK_ZOOMEDIN_SCREENSHOT),
-	Hotkey(WKC_CTRL  | 'D', "defaultzoom_screenshot", MTHK_DEFAULTZOOM_SCREENSHOT),
-	Hotkey((uint16)0, "giant_screenshot", MTHK_GIANT_SCREENSHOT),
-	Hotkey(WKC_CTRL | WKC_ALT | 'C', "cheats", MTHK_CHEATS),
-	Hotkey('L', "terraform", MTHK_TERRAFORM),
-	Hotkey('V', "extra_viewport", MTHK_EXTRA_VIEWPORT),
-	Hotkey((uint16)0, "client_list", MTHK_CLIENT_LIST),
-	Hotkey((uint16)0, "sign_list", MTHK_SIGN_LIST),
-	Hotkey((uint16)0, "land_info", MTHK_LANDINFO),
-	HOTKEY_LIST_END
-};
-HotkeyList MainToolbarWindow::hotkeys("maintoolbar", maintoolbar_hotkeys);
 
 static NWidgetBase *MakeMainToolbar(int *biggest_index)
 {
@@ -2526,36 +2517,32 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->SetDirty();
 	}
 
-	static HotkeyList hotkeys;
+	static inline HotkeyList hotkeys{"scenedit_maintoolbar", {
+		Hotkey({WKC_F1, WKC_PAUSE}, "pause", MTEHK_PAUSE),
+		Hotkey(0, "fastforward", MTEHK_FASTFORWARD),
+		Hotkey(WKC_F2, "settings", MTEHK_SETTINGS),
+		Hotkey(WKC_F3, "saveload", MTEHK_SAVEGAME),
+		Hotkey(WKC_F4, "gen_land", MTEHK_GENLAND),
+		Hotkey(WKC_F5, "gen_town", MTEHK_GENTOWN),
+		Hotkey(WKC_F6, "gen_industry", MTEHK_GENINDUSTRY),
+		Hotkey(WKC_F7, "build_road", MTEHK_BUILD_ROAD),
+		Hotkey(0, "build_tram", MTEHK_BUILD_TRAM),
+		Hotkey(WKC_F8, "build_docks", MTEHK_BUILD_DOCKS),
+		Hotkey(WKC_F9, "build_trees", MTEHK_BUILD_TREES),
+		Hotkey(WKC_F10, "build_sign", MTEHK_SIGN),
+		Hotkey(WKC_F11, "music", MTEHK_MUSIC),
+		Hotkey(WKC_F12, "land_info", MTEHK_LANDINFO),
+		Hotkey(WKC_CTRL  | 'S', "small_screenshot", MTEHK_SMALL_SCREENSHOT),
+		Hotkey(WKC_CTRL  | 'P', "zoomedin_screenshot", MTEHK_ZOOMEDIN_SCREENSHOT),
+		Hotkey(WKC_CTRL  | 'D', "defaultzoom_screenshot", MTEHK_DEFAULTZOOM_SCREENSHOT),
+		Hotkey(0, "giant_screenshot", MTEHK_GIANT_SCREENSHOT),
+		Hotkey({WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT | WKC_EQUALS, WKC_SHIFT | WKC_F5}, "zoomin", MTEHK_ZOOM_IN),
+		Hotkey({WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6}, "zoomout", MTEHK_ZOOM_OUT),
+		Hotkey('L', "terraform", MTEHK_TERRAFORM),
+		Hotkey('M', "smallmap", MTEHK_SMALLMAP),
+		Hotkey('V', "extra_viewport", MTEHK_EXTRA_VIEWPORT),
+	}};
 };
-
-static Hotkey scenedit_maintoolbar_hotkeys[] = {
-	Hotkey(_maintoolbar_pause_keys, "pause", MTEHK_PAUSE),
-	Hotkey((uint16)0, "fastforward", MTEHK_FASTFORWARD),
-	Hotkey(WKC_F2, "settings", MTEHK_SETTINGS),
-	Hotkey(WKC_F3, "saveload", MTEHK_SAVEGAME),
-	Hotkey(WKC_F4, "gen_land", MTEHK_GENLAND),
-	Hotkey(WKC_F5, "gen_town", MTEHK_GENTOWN),
-	Hotkey(WKC_F6, "gen_industry", MTEHK_GENINDUSTRY),
-	Hotkey(WKC_F7, "build_road", MTEHK_BUILD_ROAD),
-	Hotkey((uint16)0, "build_tram", MTEHK_BUILD_TRAM),
-	Hotkey(WKC_F8, "build_docks", MTEHK_BUILD_DOCKS),
-	Hotkey(WKC_F9, "build_trees", MTEHK_BUILD_TREES),
-	Hotkey(WKC_F10, "build_sign", MTEHK_SIGN),
-	Hotkey(WKC_F11, "music", MTEHK_MUSIC),
-	Hotkey(WKC_F12, "land_info", MTEHK_LANDINFO),
-	Hotkey(WKC_CTRL  | 'S', "small_screenshot", MTEHK_SMALL_SCREENSHOT),
-	Hotkey(WKC_CTRL  | 'P', "zoomedin_screenshot", MTEHK_ZOOMEDIN_SCREENSHOT),
-	Hotkey(WKC_CTRL  | 'D', "defaultzoom_screenshot", MTEHK_DEFAULTZOOM_SCREENSHOT),
-	Hotkey((uint16)0, "giant_screenshot", MTEHK_GIANT_SCREENSHOT),
-	Hotkey(_maintoolbar_zoomin_keys, "zoomin", MTEHK_ZOOM_IN),
-	Hotkey(_maintoolbar_zoomout_keys, "zoomout", MTEHK_ZOOM_OUT),
-	Hotkey('L', "terraform", MTEHK_TERRAFORM),
-	Hotkey('M', "smallmap", MTEHK_SMALLMAP),
-	Hotkey('V', "extra_viewport", MTEHK_EXTRA_VIEWPORT),
-	HOTKEY_LIST_END
-};
-HotkeyList ScenarioEditorToolbarWindow::hotkeys("scenedit_maintoolbar", scenedit_maintoolbar_hotkeys);
 
 static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_PAUSE), SetDataTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),

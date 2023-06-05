@@ -1871,14 +1871,10 @@ struct BuildVehicleWindow : Window {
 		return ES_HANDLED;
 	}
 
-	static HotkeyList hotkeys;
+	static inline HotkeyList hotkeys{"buildvehicle", {
+		Hotkey('F', "focus_filter_box", BVHK_FOCUS_FILTER_BOX),
+	}};
 };
-
-static Hotkey buildvehicle_hotkeys[] = {
-	Hotkey('F', "focus_filter_box", BVHK_FOCUS_FILTER_BOX),
-	HOTKEY_LIST_END
-};
-HotkeyList BuildVehicleWindow::hotkeys("buildvehicle", buildvehicle_hotkeys);
 
 static WindowDesc _build_vehicle_desc(
 	WDP_AUTO, "build_vehicle", 240, 268,

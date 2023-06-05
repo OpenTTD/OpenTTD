@@ -3264,14 +3264,10 @@ public:
 		::ShowNewGRFInspectWindow(GetGrfSpecFeature(Vehicle::Get(this->window_number)->type), this->window_number);
 	}
 
-	static HotkeyList hotkeys;
+	static inline HotkeyList hotkeys{"vehicleview", {
+		Hotkey('H', "honk", WID_VV_HONK_HORN),
+	}};
 };
-
-static Hotkey vehicleview_hotkeys[] = {
-	Hotkey('H', "honk", WID_VV_HONK_HORN),
-	HOTKEY_LIST_END
-};
-HotkeyList VehicleViewWindow::hotkeys("vehicleview", vehicleview_hotkeys);
 
 /** Vehicle view window descriptor for all vehicles but trains. */
 static WindowDesc _vehicle_view_desc(

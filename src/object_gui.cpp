@@ -637,27 +637,24 @@ public:
 		this->SelectOtherObject(-1);
 	}
 
-	static HotkeyList hotkeys;
+	/**
+	 * Handler for global hotkeys of the BuildObjectWindow.
+	 * @param hotkey Hotkey
+	 * @return ES_HANDLED if hotkey was accepted.
+	 */
+	static EventState BuildObjectGlobalHotkeys(int hotkey)
+	{
+		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
+		Window *w = ShowBuildObjectPicker();
+		if (w == nullptr) return ES_NOT_HANDLED;
+		return w->OnHotkey(hotkey);
+	}
+
+	static inline HotkeyList hotkeys{"buildobject", {
+		Hotkey('F', "focus_filter_box", BOHK_FOCUS_FILTER_BOX),
+	}, BuildObjectGlobalHotkeys};
 };
 
-/**
- * Handler for global hotkeys of the BuildObjectWindow.
- * @param hotkey Hotkey
- * @return ES_HANDLED if hotkey was accepted.
- */
-static EventState BuildObjectGlobalHotkeys(int hotkey)
-{
-	if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
-	Window *w = ShowBuildObjectPicker();
-	if (w == nullptr) return ES_NOT_HANDLED;
-	return w->OnHotkey(hotkey);
-}
-
-static Hotkey buildobject_hotkeys[] = {
-	Hotkey('F', "focus_filter_box", BOHK_FOCUS_FILTER_BOX),
-	HOTKEY_LIST_END
-};
-HotkeyList BuildObjectWindow::hotkeys("buildobject", buildobject_hotkeys, BuildObjectGlobalHotkeys);
 
 Listing BuildObjectWindow::last_sorting = { false, 0 };
 Filtering BuildObjectWindow::last_filtering = { false, 0 };
