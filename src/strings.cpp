@@ -475,8 +475,8 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 
 	/* convert from negative */
 	if (number < 0) {
-		if (!builder.Utf8Encode(SCC_PUSH_COLOUR)) return;
-		if (!builder.Utf8Encode(SCC_RED)) return;
+		builder.Utf8Encode(SCC_PUSH_COLOUR);
+		builder.Utf8Encode(SCC_RED);
 		builder += '-';
 		number = -number;
 	}
@@ -1224,8 +1224,6 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				for (const auto &cs : _sorted_cargo_specs) {
 					if (!HasBit(cmask, cs->Index())) continue;
-
-					if (builder.Remaining() < 2) break; // ", "
 
 					if (first) {
 						first = false;

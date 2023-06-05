@@ -15,9 +15,6 @@
 /**
  * Equivalent to the std::back_insert_iterator in function, with some
  * convenience helpers for string concatenation.
- *
- * The formatter is currently backed by an external char buffer, and has some
- * extra functions to ease the migration from char buffers to std::string.
  */
 class StringBuilder {
 	std::string *string;
@@ -80,11 +77,10 @@ public:
 	 * Encode the given Utf8 character into the output buffer.
 	 * @param c The character to encode.
 	 */
-	bool Utf8Encode(WChar c)
+	void Utf8Encode(WChar c)
 	{
 		auto iterator = std::back_inserter(*this->string);
 		::Utf8Encode(iterator, c);
-		return true;
 	}
 
 	/**
@@ -95,15 +91,6 @@ public:
 	void RemoveElementsFromBack(size_t amount)
 	{
 		this->string->erase(this->string->size() - std::min(amount, this->string->size()));
-	}
-
-	/**
-	 * Get the remaining number of characters that can be placed.
-	 * @return The number of characters.
-	 */
-	ptrdiff_t Remaining()
-	{
-		return 42; // Just something big-ish, as there's always space (until allocation fails)
 	}
 
 	/**
