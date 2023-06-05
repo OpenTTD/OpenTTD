@@ -82,9 +82,6 @@ void GameSizeChanged();
 bool AdjustGUIZoom(bool automatic);
 void UndrawMouseCursor();
 
-/** Size of the buffer used for drawing strings. */
-static const int DRAW_STRING_BUFFER = 2048;
-
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
