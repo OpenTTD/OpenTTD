@@ -94,6 +94,7 @@ bool IsValidChar(WChar key, CharSetFilter afilter);
 size_t Utf8Decode(WChar *c, const char *s);
 size_t Utf8Encode(char *buf, WChar c);
 size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, WChar c);
+size_t Utf8Encode(std::back_insert_iterator<std::string> &buf, WChar c);
 size_t Utf8TrimString(char *s, size_t maxlen);
 
 
