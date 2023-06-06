@@ -17,8 +17,6 @@
 
 #include "safeguards.h"
 
-#ifdef WITH_FREETYPE
-
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
@@ -96,9 +94,6 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 
 	return err;
 }
-
-#endif /* WITH_FREETYPE */
-
 
 bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
