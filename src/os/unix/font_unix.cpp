@@ -95,7 +95,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	return err;
 }
 
-bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
 	bool ret = false;
 
@@ -107,13 +107,10 @@ bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, 
 	/* Fontconfig doesn't handle full language isocodes, only the part
 	 * before the _ of e.g. en_GB is used, so "remove" everything after
 	 * the _. */
-	char lang[16];
-	seprintf(lang, lastof(lang), ":lang=%s", language_isocode);
-	char *split = strchr(lang, '_');
-	if (split != nullptr) *split = '\0';
+	std::string lang = language_isocode.substr(0, language_isocode.find('_'));
 
 	/* First create a pattern to match the wanted language. */
-	FcPattern *pat = FcNameParse((FcChar8 *)lang);
+	FcPattern *pat = FcNameParse((const FcChar8 *)lang.c_str());
 	/* We only want to know the filename. */
 	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_SPACING, FC_SLANT, FC_WEIGHT, nullptr);
 	/* Get the list of filenames matching the wanted language. */
