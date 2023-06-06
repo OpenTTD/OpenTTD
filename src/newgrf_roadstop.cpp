@@ -171,6 +171,23 @@ uint32_t RoadStopScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint
 			return ssl.grfid;
 		}
 
+		/* 16 bit road stop ID of nearby tiles */
+		case 0x6B: {
+			TileIndex nearby_tile = GetNearbyTile(parameter, this->tile);
+
+			if (!IsRoadStopTile(nearby_tile)) return 0xFFFFFFFF;
+			if (!IsCustomRoadStopSpecIndex(nearby_tile)) return 0xFFFE;
+
+			uint32_t grfid = this->st->roadstop_speclist[GetCustomRoadStopSpecIndex(this->tile)].grfid;
+
+			const RoadStopSpecList ssl = BaseStation::GetByTile(nearby_tile)->roadstop_speclist[GetCustomRoadStopSpecIndex(nearby_tile)];
+			if (ssl.grfid == grfid) {
+				return ssl.localidx;
+			}
+
+			return 0xFFFE;
+		}
+
 		case 0xF0: return this->st == nullptr ? 0 : this->st->facilities; // facilities
 
 		case 0xFA: return ClampTo<uint16_t>((this->st == nullptr ? TimerGameCalendar::date : this->st->build_date) - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // build date
