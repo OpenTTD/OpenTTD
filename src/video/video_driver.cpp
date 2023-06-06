@@ -17,6 +17,7 @@
 #include "../gfx_func.h"
 #include "../gfxinit.h"
 #include "../progress.h"
+#include "../rev.h"
 #include "../thread.h"
 #include "../window_func.h"
 #include "video_driver.hpp"
@@ -179,4 +180,13 @@ void VideoDriver::SleepTillNextTick()
 	if (next_tick > now) {
 		std::this_thread::sleep_for(next_tick - now);
 	}
+}
+
+/**
+ * Get the caption to use for the game's title bar.
+ * @return The caption.
+ */
+/* static */ std::string VideoDriver::GetCaption()
+{
+	return fmt::format("OpenTTD {}", _openttd_revision);
 }

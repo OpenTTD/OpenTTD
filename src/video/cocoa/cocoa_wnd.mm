@@ -24,7 +24,6 @@
 
 #include "../../openttd.h"
 #include "../../debug.h"
-#include "../../rev.h"
 #include "cocoa_v.h"
 #include "cocoa_wnd.h"
 #include "../../settings_type.h"
@@ -456,7 +455,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 		[ self setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
 
-		std::string caption = std::string{"OpenTTD "} + _openttd_revision;
+		std::string caption = VideoDriver::GetCaption();
 		NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption.c_str() ];
 		[ self setTitle:nsscaption ];
 		[ self setMiniwindowTitle:nsscaption ];
