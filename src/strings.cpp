@@ -42,6 +42,7 @@
 
 #include "table/strings.h"
 #include "table/control_codes.h"
+#include "3rdparty/fmt/std.h"
 
 #include "strings_internal.h"
 
@@ -1827,7 +1828,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */
 	size_t len = 0;
-	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(lang->file, len, 1U << 20).release()));
+	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(lang->file.string(), len, 1U << 20).release()));
 	if (!lang_pack) return false;
 
 	/* End of read data (+ terminating zero added in ReadFileToMem()) */
@@ -1882,8 +1883,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 
 	_current_language = lang;
 	_current_text_dir = (TextDirection)_current_language->text_dir;
-	const char *c_file = strrchr(_current_language->file, PATHSEPCHAR) + 1;
-	_config_language_file = c_file;
+	_config_language_file = _current_language->file.filename().string();
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 
 #ifdef _WIN32
@@ -2007,9 +2007,9 @@ static bool GetLanguageFileHeader(const char *file, LanguagePackHeader *hdr)
  * Gets a list of languages from the given directory.
  * @param path  the base directory to search in
  */
-static void GetLanguageList(const char *path)
+static void GetLanguageList(const std::string &path)
 {
-	DIR *dir = ttd_opendir(path);
+	DIR *dir = ttd_opendir(path.c_str());
 	if (dir != nullptr) {
 		struct dirent *dirent;
 		while ((dirent = readdir(dir)) != nullptr) {
@@ -2020,10 +2020,10 @@ static void GetLanguageList(const char *path)
 			if (extension == nullptr || strcmp(extension, ".lng") != 0) continue;
 
 			LanguageMetadata lmd;
-			seprintf(lmd.file, lastof(lmd.file), "%s%s", path, d_name.c_str());
+			lmd.file = path + d_name;
 
 			/* Check whether the file is of the correct version */
-			if (!GetLanguageFileHeader(lmd.file, &lmd)) {
+			if (!GetLanguageFileHeader(lmd.file.string().c_str(), &lmd)) {
 				Debug(misc, 3, "{} is not a valid language file", lmd.file);
 			} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
 				Debug(misc, 3, "{}'s language ID is already known", lmd.file);
@@ -2042,8 +2042,7 @@ static void GetLanguageList(const char *path)
 void InitializeLanguagePacks()
 {
 	for (Searchpath sp : _valid_searchpaths) {
-		std::string path = FioGetDirectory(sp, LANG_DIR);
-		GetLanguageList(path.c_str());
+		GetLanguageList(FioGetDirectory(sp, LANG_DIR));
 	}
 	if (_languages.size() == 0) UserError("No available language packs (invalid versions?)");
 
@@ -2060,8 +2059,7 @@ void InitializeLanguagePacks()
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
 		 * English. */
-		const char *lang_file = strrchr(lng.file, PATHSEPCHAR) + 1;
-		if (_config_language_file == lang_file) {
+		if (_config_language_file == lng.file.filename()) {
 			chosen_language = &lng;
 			break;
 		}

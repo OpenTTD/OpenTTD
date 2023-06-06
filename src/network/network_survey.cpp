@@ -176,13 +176,7 @@ static void SurveyConfiguration(nlohmann::json &survey)
 {
 	survey["network"] = _networking ? (_network_server ? "server" : "client") : "no";
 	if (_current_language != nullptr) {
-		std::string_view language_basename(_current_language->file);
-		auto e = language_basename.rfind(PATHSEPCHAR);
-		if (e != std::string::npos) {
-			language_basename = language_basename.substr(e + 1);
-		}
-
-		survey["language"]["filename"] = language_basename;
+		survey["language"]["filename"] = _current_language->file.filename().string();
 		survey["language"]["name"] = _current_language->name;
 		survey["language"]["isocode"] = _current_language->isocode;
 	}

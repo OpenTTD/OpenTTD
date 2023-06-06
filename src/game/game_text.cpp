@@ -384,19 +384,7 @@ void ReconsiderGameScriptLanguage()
 {
 	if (_current_data == nullptr) return;
 
-	char temp[MAX_PATH];
-	strecpy(temp, _current_language->file, lastof(temp));
-
-	/* Remove the extension */
-	char *l = strrchr(temp, '.');
-	assert(l != nullptr);
-	*l = '\0';
-
-	/* Skip the path */
-	char *language = strrchr(temp, PATHSEPCHAR);
-	assert(language != nullptr);
-	language++;
-
+	std::string language = _current_language->file.stem().string();
 	for (auto &p : _current_data->compiled_strings) {
 		if (p.language == language) {
 			_current_data->cur_language = &p;
