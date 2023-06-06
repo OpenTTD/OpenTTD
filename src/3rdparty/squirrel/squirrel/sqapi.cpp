@@ -48,9 +48,7 @@ SQInteger sq_aux_throwobject(HSQUIRRELVM v,SQObjectPtr &e)
 
 SQInteger sq_aux_invalidtype(HSQUIRRELVM v,SQObjectType type)
 {
-	char buf[100];
-	seprintf(buf, lastof(buf), "unexpected type %s", IdType2Name(type));
-	return sq_throwerror(v, buf);
+	return sq_throwerror(v, fmt::format("unexpected type {}", IdType2Name(type)));
 }
 
 HSQUIRRELVM sq_open(SQInteger initialstacksize)
