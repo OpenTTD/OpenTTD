@@ -34,6 +34,7 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "3rdparty/fmt/chrono.h"
+#include "3rdparty/fmt/std.h"
 
 #ifdef WITH_ALLEGRO
 #	include <allegro.h>
@@ -167,7 +168,7 @@ void CrashLog::LogConfiguration(std::back_insert_iterator<std::string> &output_i
 			BlitterFactory::GetCurrentBlitter() == nullptr ? "none" : BlitterFactory::GetCurrentBlitter()->GetName(),
 			BaseGraphics::GetUsedSet() == nullptr ? "none" : BaseGraphics::GetUsedSet()->name,
 			BaseGraphics::GetUsedSet() == nullptr ? UINT32_MAX : BaseGraphics::GetUsedSet()->version,
-			_current_language == nullptr ? "none" : _current_language->file,
+			_current_language == nullptr ? "none" : _current_language->file.filename(),
 			MusicDriver::GetInstance() == nullptr ? "none" : MusicDriver::GetInstance()->GetName(),
 			BaseMusic::GetUsedSet() == nullptr ? "none" : BaseMusic::GetUsedSet()->name,
 			BaseMusic::GetUsedSet() == nullptr ? UINT32_MAX : BaseMusic::GetUsedSet()->version,

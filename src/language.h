@@ -14,6 +14,7 @@
 #include <unicode/coll.h>
 #endif /* WITH_ICU_I18N */
 #include "strings_type.h"
+#include <filesystem>
 
 static const uint8 CASE_GENDER_LEN = 16; ///< The (maximum) length of a case/gender string.
 static const uint8 MAX_NUM_GENDERS =  8; ///< Maximum number of supported genders.
@@ -90,7 +91,7 @@ static_assert(sizeof(LanguagePackHeader) % 4 == 0);
 
 /** Metadata about a single language. */
 struct LanguageMetadata : public LanguagePackHeader {
-	char file[MAX_PATH]; ///< Name of the file we read this data from.
+	std::filesystem::path file; ///< Name of the file we read this data from.
 };
 
 /** Type for the list of language meta data. */
