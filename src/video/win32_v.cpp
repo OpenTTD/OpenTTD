@@ -12,7 +12,6 @@
 #include "../error_func.h"
 #include "../gfx_func.h"
 #include "../os/windows/win32.h"
-#include "../rev.h"
 #include "../blitter/factory.hpp"
 #include "../core/geometry_func.hpp"
 #include "../core/math_func.hpp"
@@ -221,10 +220,8 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 			int x = (mi.rcWork.right - mi.rcWork.left - w) / 2;
 			int y = (mi.rcWork.bottom - mi.rcWork.top - h) / 2;
 
-			char window_title[64];
-			seprintf(window_title, lastof(window_title), "OpenTTD %s", _openttd_revision);
-
-			this->main_wnd = CreateWindow(L"OTTD", OTTD2FS(window_title).c_str(), style, x, y, w, h, 0, 0, GetModuleHandle(nullptr), this);
+			std::string caption = VideoDriver::GetCaption();
+			this->main_wnd = CreateWindow(L"OTTD", OTTD2FS(caption).c_str(), style, x, y, w, h, 0, 0, GetModuleHandle(nullptr), this);
 			if (this->main_wnd == nullptr) UserError("CreateWindow failed");
 			ShowWindow(this->main_wnd, showstyle);
 		}

@@ -10,7 +10,6 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../gfx_func.h"
-#include "../rev.h"
 #include "../blitter/factory.hpp"
 #include "../thread.h"
 #include "../progress.h"
@@ -149,10 +148,9 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 		y = r.y + std::max(0, r.h - static_cast<int>(h)) / 4; // decent desktops have taskbars at the bottom
 	}
 
-	char caption[50];
-	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
+	std::string caption = VideoDriver::GetCaption();
 	this->sdl_window = SDL_CreateWindow(
-		caption,
+		caption.c_str(),
 		x, y,
 		w, h,
 		flags);

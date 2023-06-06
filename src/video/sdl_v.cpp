@@ -13,7 +13,6 @@
 #include "../openttd.h"
 #include "../error_func.h"
 #include "../gfx_func.h"
-#include "../rev.h"
 #include "../blitter/factory.hpp"
 #include "../thread.h"
 #include "../progress.h"
@@ -226,7 +225,6 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 {
 	SDL_Surface *newscreen, *icon;
-	char caption[50];
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	bool want_hwpalette;
 
@@ -360,8 +358,8 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 
 	InitPalette();
 
-	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
-	SDL_WM_SetCaption(caption, caption);
+	std::string caption = VideoDriver::GetCaption();
+	SDL_WM_SetCaption(caption.c_str(), caption.c_str());
 
 	GameSizeChanged();
 

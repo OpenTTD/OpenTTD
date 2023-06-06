@@ -201,6 +201,8 @@ public:
 		return static_cast<VideoDriver*>(*DriverFactoryBase::GetActiveDriver(Driver::DT_VIDEO));
 	}
 
+	static std::string GetCaption();
+
 	/**
 	 * Helper struct to ensure the video buffer is locked and ready for drawing. The destructor
 	 * will make sure the buffer is unlocked no matter how the scope is exited.
