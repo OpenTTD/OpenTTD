@@ -88,7 +88,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	return 0; // stop enumerating
 }
 
-bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
 	Debug(fontcache, 1, "Trying fallback fonts");
 	EFCParam langInfo;

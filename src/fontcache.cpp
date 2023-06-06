@@ -189,5 +189,5 @@ bool HasAntialiasedFonts()
 
 #if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA)
 
-bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
 #endif /* !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA) */

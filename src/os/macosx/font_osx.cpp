@@ -24,28 +24,26 @@
 
 #include "safeguards.h"
 
-bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
+bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
 	/* Determine fallback font using CoreText. This uses the language isocode
 	 * to find a suitable font. CoreText is available from 10.5 onwards. */
-	char lang[16];
-	if (strcmp(language_isocode, "zh_TW") == 0) {
+	std::string lang;
+	if (language_isocode == "zh_TW") {
 		/* Traditional Chinese */
-		strecpy(lang, "zh-Hant", lastof(lang));
-	} else if (strcmp(language_isocode, "zh_CN") == 0) {
+		lang = "zh-Hant";
+	} else if (language_isocode == "zh_CN") {
 		/* Simplified Chinese */
-		strecpy(lang, "zh-Hans", lastof(lang));
+		lang = "zh-Hans";
 	} else {
 		/* Just copy the first part of the isocode. */
-		strecpy(lang, language_isocode, lastof(lang));
-		char *sep = strchr(lang, '_');
-		if (sep != nullptr) *sep = '\0';
+		lang = language_isocode.substr(0, language_isocode.find('_'));
 	}
 
 	/* Create a font descriptor matching the wanted language and latin (english) glyphs.
 	 * Can't use CFAutoRelease here for everything due to the way the dictionary has to be created. */
 	CFStringRef lang_codes[2];
-	lang_codes[0] = CFStringCreateWithCString(kCFAllocatorDefault, lang, kCFStringEncodingUTF8);
+	lang_codes[0] = CFStringCreateWithCString(kCFAllocatorDefault, lang.c_str(), kCFStringEncodingUTF8);
 	lang_codes[1] = CFSTR("en");
 	CFArrayRef lang_arr = CFArrayCreate(kCFAllocatorDefault, (const void **)lang_codes, lengthof(lang_codes), &kCFTypeArrayCallBacks);
 	CFAutoRelease<CFDictionaryRef> lang_attribs(CFDictionaryCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void *const *>(&kCTFontLanguagesAttribute)), (const void **)&lang_arr, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks));
