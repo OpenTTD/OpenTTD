@@ -376,7 +376,7 @@ void Gamelog::Revision()
 	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
 
 	this->Change(std::make_unique<LoggedChangeRevision>(
-		GetGamelogRevisionString(), SAVEGAME_VERSION, _openttd_revision_modified, _openttd_newgrf_version));
+		GetGamelogRevisionString(), _openttd_newgrf_version, SAVEGAME_VERSION, _openttd_revision_modified));
 }
 
 /**
