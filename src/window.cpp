@@ -22,7 +22,6 @@
 #include "tilehighlight_func.h"
 #include "network/network.h"
 #include "querystring_gui.h"
-#include "widgets/dropdown_func.h"
 #include "strings_func.h"
 #include "settings_type.h"
 #include "settings_func.h"
@@ -679,6 +678,9 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
 	WidgetType widget_type = (nw != nullptr) ? nw->type : WWT_EMPTY;
 
+	/* Allow dropdown close flag detection to work. */
+	if (nw != nullptr) ClrBit(nw->disp_flags, NDB_DROPDOWN_CLOSED);
+
 	bool focused_widget_changed = false;
 	/* If clicked on a window that previously did not have focus */
 	if (_focused_window != w &&                 // We already have focus, right?
@@ -711,9 +713,8 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		focused_widget_changed |= w->SetFocusedWidget(widget_index);
 	}
 
-	/* Close any child drop down menus. If the button pressed was the drop down
-	 * list's own button, then we should not process the click any further. */
-	if (HideDropDownMenu(w) == widget_index && widget_index >= 0) return;
+	/* Dropdown window of this widget was closed so don't process click this time. */
+	if (HasBit(nw->disp_flags, NDB_DROPDOWN_CLOSED)) return;
 
 	if ((widget_type & ~WWB_PUSHBUTTON) < WWT_LAST && (widget_type & WWB_PUSHBUTTON)) w->HandleButtonClick(widget_index);
 
