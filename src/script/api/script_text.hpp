@@ -138,13 +138,11 @@ private:
 	/**
 	 * Internal function for recursive calling this function over multiple
 	 *  instances, while writing in the same buffer.
-	 * @param p The current position in the buffer.
-	 * @param lastofp The last position valid in the buffer.
+	 * @param output The output to write the encoded text to.
 	 * @param param_count The number of parameters that are in the string.
 	 * @param seen_ids The list of seen StringID.
-	 * @return The new current position in the buffer.
 	 */
-	char *_GetEncodedText(char *p, char *lastofp, int &param_count, StringIDList &seen_ids);
+	void _GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, StringIDList &seen_ids);
 
 	/**
 	 * Set a parameter, where the value is the first item on the stack.

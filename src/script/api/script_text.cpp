@@ -159,24 +159,25 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 
 const std::string ScriptText::GetEncodedText()
 {
-	static char buf[1024];
 	static StringIDList seen_ids;
 	int param_count = 0;
 	seen_ids.clear();
-	this->_GetEncodedText(buf, lastof(buf), param_count, seen_ids);
+	std::string result;
+	auto output = std::back_inserter(result);
+	this->_GetEncodedText(output, param_count, seen_ids);
 	if (param_count > SCRIPT_TEXT_MAX_PARAMETERS) throw Script_FatalError(fmt::format("{}: Too many parameters", GetGameStringName(this->string)));
-	return buf;
+	return result;
 }
 
-char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, StringIDList &seen_ids)
+void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, StringIDList &seen_ids)
 {
 	const std::string &name = GetGameStringName(this->string);
 
 	if (std::find(seen_ids.begin(), seen_ids.end(), this->string) != seen_ids.end()) throw Script_FatalError(fmt::format("{}: Circular reference detected", name));
 	seen_ids.push_back(this->string);
 
-	p += Utf8Encode(p, SCC_ENCODED);
-	p += seprintf(p, lastofp, "%X", this->string);
+	Utf8Encode(output, SCC_ENCODED);
+	fmt::format_to(output, "{:X}", this->string);
 
 	const StringParams &params = GetGameStringParams(this->string);
 	int cur_idx = 0;
@@ -196,7 +197,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, Stri
 					/* No more extra parameters, assume SQInteger are expected. */
 					if (cur_idx >= this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
 					if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, param_count + i));
-					p = strecpy(p, fmt::format(":{:X}", std::get<SQInteger>(this->param[cur_idx++])).c_str(), lastofp);
+					fmt::format_to(output, ":{:X}", std::get<SQInteger>(this->param[cur_idx++]));
 				}
 			}
 			if (prev_idx == prev_count) {
@@ -207,18 +208,18 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, Stri
 			switch (cur_param.type) {
 				case StringParam::RAW_STRING:
 					if (!std::holds_alternative<std::string>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a raw string", name, param_count));
-					p += seprintf(p, lastofp, ":\"%s\"", std::get<std::string>(this->param[cur_idx++]).c_str());
+					fmt::format_to(output, ":\"%s\"", std::get<std::string>(this->param[cur_idx++]));
 					break;
 
 				case StringParam::STRING: {
 					if (!std::holds_alternative<ScriptTextRef>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a substring", name, param_count));
 					int count = 0;
-					p = strecpy(p, ":", lastofp);
-					p = std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(p, lastofp, count, seen_ids);
+					fmt::format_to(output, ":");
+					std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(output, count, seen_ids);
 					if (++count != cur_param.consumes) {
 						ScriptLog::Error(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, param_count, count - 1, cur_param.consumes - 1).c_str());
 						/* Fill missing params if needed. */
-						for (int i = count; i < cur_param.consumes; i++) p += seprintf(p, lastofp, ":0");
+						for (int i = count; i < cur_param.consumes; i++) fmt::format_to(output, ":0");
 						/* Disable validation for the extra params if any. */
 						if (count > cur_param.consumes) {
 							prev_string = param_count;
@@ -233,7 +234,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, Stri
 					if (cur_idx + cur_param.consumes > this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
 					for (int i = 0; i < cur_param.consumes; i++) {
 						if (!std::holds_alternative<SQInteger>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects an integer", name, param_count + i));
-						p = strecpy(p, fmt::format(":{:X}", std::get<SQInteger>(this->param[cur_idx++])).c_str(), lastofp);
+						fmt::format_to(output, ":{:X}", std::get<SQInteger>(this->param[cur_idx++]));
 					}
 			}
 		}
@@ -242,8 +243,6 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count, Stri
 	}
 
 	seen_ids.pop_back();
-
-	return p;
 }
 
 const std::string Text::GetDecodedText()
