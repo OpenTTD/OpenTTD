@@ -847,7 +847,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} foi fechada pelos credores e todos os seus bens foram vendidos!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova empresa de transportes!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} inicia construção em {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} foi comprada por {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} foi comprada por {STRING} por um valor não revelado!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Presidente)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} subsidiou a construção da nova localidade de {TOWN}!
@@ -3761,6 +3761,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalhes
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver contagens de infraestrutura detalhadas
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar dinheiro
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Dá dinheiro a esta empresa
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Aquisição hostil
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Fazer a aquisição hostil desta empresa
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Seleccione uma nova cara para o presidente
@@ -3776,6 +3778,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome do Preside
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Insira a quantidade de dinheiro que quer dar
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estamos à procura de uma empresa de transportes para comprar a nossa empresa{}{}Deseja comprar {COMPANY} por {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Na aquisição hostil de {COMPANY} irá adquirir todos os ativos, liquidar todos os empréstimos e pagar o valor de 2 anos de lucros.{}{}O total estimado é de {CURRENCY_LONG}.{}{}Quer continuar com esta aquisição hostil?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestrutura de {COMPANY}
@@ -4067,9 +4070,9 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar A
 
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esta acção comprará uma cópia de um comboio, incluindo todas as carruagens. Clique neste botão e, de seguida, num comboio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta acção comprará uma cópia de um veículo rodoviário. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora de um depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta acção comprará uma cópia de um navio. Clique neste botão e, de seguida, num navio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta acção comprará uma cópia de uma aeronave. Clique neste botão e, de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique ira partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta ação comprará uma cópia de um veículo rodoviário. Clique neste botão e de seguida, num veículo que se encontre dentro ou fora de um depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta ação comprará uma cópia de um navio. Clique neste botão e de seguida, num navio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta ação comprará uma cópia de uma aeronave. Clique neste botão e de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique ira partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visualização na localização de um depósito ferroviário. Ctrl+Clique abre um novo visualizador na localização do depósito ferroviário

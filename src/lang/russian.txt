@@ -991,7 +991,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} была закрыта кредиторами! Все активы распроданы!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Основана новая транспортная компания!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} начинает строительство около г.{NBSP}{TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} выкуплена {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} выкуплена {STRING}! Сумма сделки не раскрывается.
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Директор)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Компания «{STRING}» профинансировала основание города {TOWN}!
@@ -3935,6 +3935,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Подр
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Посмотреть подробный состав инфраструктуры
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Передать деньги
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Передать некоторую сумму денег этой компании
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Поглощение
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Осуществить поглощение компании
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Внешность
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Изменить внешность директора
@@ -3950,6 +3952,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Имя дире
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Введите сумму, которую собираетесь передать
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Мы ищем потенциального покупателя для нашей компании.{}{}Не желаете ли Вы приобрести {COMPANY} за {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}После поглощения компании {COMPANY} вы приобретёте все её активы. При этом вам придётся выплатить все её долги плюс сумму, эквивалентную её двойному годовому доходу.{}{}Сумма сделки оценивается в {CURRENCY_LONG}.{}{}Осуществить поглощение компании?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Инфраструктура «{COMPANY}»

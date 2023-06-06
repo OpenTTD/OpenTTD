@@ -846,7 +846,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} er blevet lukket af kreditorerne og alle ejendomme er solgt!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nyt transportselskab er startet!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} starter konstruktion i nærheden af {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} er blevet overtaget af {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} er blevet overtaget af {STRING} til et ikke oplyst beløb!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Direktør)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} har sponsoreret stiftelsen af en ny by, {TOWN}!
@@ -1558,7 +1558,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grå til rød
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Gråtoner
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Visningsport bevægelse: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Virkemåde for bevægelse af kortet
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Virkemåde for bevægelse af kortet. "Museposition låst"-mulighederne virker ikke på alle systemer, såsom webbaserede versioner, berøringsskærme, Linux med Wayland og andre
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Bevæg syns vinduet med højre mussetast, musse position låst
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Bevæg kortet med højre mussetast, musse position låst
@@ -2080,6 +2080,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokeri
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fejl med grafikindstillinger...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ingen kompatibel GPU fundet. Hardware-acceleration deaktiveret
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-driver fik spillet til at gå ned. Hardwareacceleration deaktiveret
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3759,6 +3760,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljer
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Se detaljerede infrastruktur-tal
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Giv penge
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Giv penge til dette selskab
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Foretag en fjendtlig overtagelse af dette firma
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nyt ansigt
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Vælg nyt ansigt til direktøren
@@ -3774,6 +3776,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktørens na
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Skriv hvor mange penge du ønsker at give
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vi leder efter et selskab til at overtage vores{}{}Vil du købe {COMPANY} for {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}I en fjendtlig overtagelse af {COMPANY} du vil købe alle aktiver, betale af på alle lån og betale to års overskud.{}{}Det samlede anslås at være {CURRENCY_LONG}.{}{}Ønsker du at fortsætte denne fjendtlige overtagelse?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktur for {COMPANY}
