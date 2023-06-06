@@ -112,13 +112,11 @@ bool SetFallbackFont(FontCacheSettings *settings, const char *language_isocode, 
 	/* Fontconfig doesn't handle full language isocodes, only the part
 	 * before the _ of e.g. en_GB is used, so "remove" everything after
 	 * the _. */
-	char lang[16];
-	seprintf(lang, lastof(lang), ":lang=%s", language_isocode);
-	char *split = strchr(lang, '_');
-	if (split != nullptr) *split = '\0';
+	std::string_view isocode_view(language_isocode);
+	std::string lang = fmt::format(":lang={}", isocode_view.substr(0, isocode_view.find_first_of('_')));
 
 	/* First create a pattern to match the wanted language. */
-	FcPattern *pat = FcNameParse((FcChar8 *)lang);
+	FcPattern *pat = FcNameParse((FcChar8 *)lang.data());
 	/* We only want to know the filename. */
 	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_SPACING, FC_SLANT, FC_WEIGHT, nullptr);
 	/* Get the list of filenames matching the wanted language. */
