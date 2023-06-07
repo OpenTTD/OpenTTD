@@ -195,6 +195,10 @@ struct DropdownWindow : Window {
 		pt.x -= this->parent->left;
 		pt.y -= this->parent->top;
 		this->parent->OnDropdownClose(pt, this->parent_button, this->selected_index, this->instant_close);
+
+		/* Set flag on parent widget to indicate that we have just closed. */
+		NWidgetCore *nwc = this->parent->GetWidget<NWidgetCore>(this->parent_button);
+		if (nwc != nullptr) SetBit(nwc->disp_flags, NDB_DROPDOWN_CLOSED);
 	}
 
 	void OnFocusLost() override
@@ -486,25 +490,3 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 	if (!list.empty()) ShowDropDownList(w, std::move(list), selected, button, width);
 }
-
-/**
- * Delete the drop-down menu from window \a pw
- * @param pw Parent window of the drop-down menu window
- * @return Parent widget number if the drop-down was found and closed, \c -1 if the window was not found.
- */
-int HideDropDownMenu(Window *pw)
-{
-	for (Window *w : Window::Iterate()) {
-		if (w->parent != pw) continue;
-		if (w->window_class != WC_DROPDOWN_MENU) continue;
-
-		DropdownWindow *dw = dynamic_cast<DropdownWindow*>(w);
-		assert(dw != nullptr);
-		int parent_button = dw->parent_button;
-		dw->Close();
-		return parent_button;
-	}
-
-	return -1;
-}
-

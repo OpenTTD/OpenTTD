@@ -293,6 +293,7 @@ enum NWidgetDisplay {
 	NDB_SCROLLBAR_DOWN  = 7, ///< Down-button is lowered bit.
 	/* Generic. */
 	NDB_HIGHLIGHT       = 8, ///< Highlight of widget is on.
+	NDB_DROPDOWN_CLOSED = 9, ///< Dropdown menu of the dropdown widget has closed.
 
 	ND_LOWERED  = 1 << NDB_LOWERED,                ///< Bit value of the lowered flag.
 	ND_DISABLED = 1 << NDB_DISABLED,               ///< Bit value of the disabled flag.
@@ -304,6 +305,7 @@ enum NWidgetDisplay {
 	ND_SCROLLBAR_UP    = 1 << NDB_SCROLLBAR_UP,    ///< Bit value of the 'scrollbar up' flag.
 	ND_SCROLLBAR_DOWN  = 1 << NDB_SCROLLBAR_DOWN,  ///< Bit value of the 'scrollbar down' flag.
 	ND_SCROLLBAR_BTN   = ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN, ///< Bit value of the 'scrollbar up' or 'scrollbar down' flag.
+	ND_DROPDOWN_CLOSED = 1 << NDB_DROPDOWN_CLOSED, ///< Bit value of the 'dropdown closed' flag.
 };
 DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
 
