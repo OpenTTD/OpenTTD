@@ -7,18 +7,6 @@
 
 /**
  * @file string_func.h Functions related to low-level strings.
- *
- * @note Be aware of "dangerous" string functions; string functions that
- * have behaviour that could easily cause buffer overruns and such:
- * - strncpy: does not '\0' terminate when input string is longer than
- *   the size of the output string. Use strecpy instead.
- * - [v]snprintf: returns the length of the string as it would be written
- *   when the output is large enough, so it can be more than the size of
- *   the buffer and than can underflow size_t (uint-ish) which makes all
- *   subsequent snprintf alikes write outside of the buffer. Use
- *   [v]seprintf instead; it will return the number of bytes actually
- *   added so no [v]seprintf will cause outside of bounds writes.
- * - [v]sprintf: does not bounds checking: use [v]seprintf instead.
  */
 
 #ifndef STRING_FUNC_H
@@ -32,8 +20,6 @@
 
 char *strecpy(char *dst, const char *src, const char *last) NOACCESS(3);
 char *stredup(const char *src, const char *last = nullptr) NOACCESS(2);
-
-int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FORMAT(3, 4) NOACCESS(2);
 
 std::string FormatArrayAsHex(span<const byte> data);
 
