@@ -40,7 +40,7 @@
 #define strcat    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strncat   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use seprintf instead. */
+/* Use fmt::format instead. */
 #define sprintf   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define snprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
 

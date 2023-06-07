@@ -90,10 +90,6 @@
 #if defined(__GNUC__) || (defined(__clang__) && !defined(_MSC_VER))
 #	define NORETURN __attribute__ ((noreturn))
 #	define CDECL
-#	define __int64 long long
-	/* Warn about functions using 'printf' format syntax. First argument determines which parameter
-	 * is the format string, second argument is start of values passed to printf. */
-#	define WARN_FORMAT(string, args) __attribute__ ((format (printf, string, args)))
 #	if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 7)
 #		define FINAL final
 #	else
@@ -128,7 +124,6 @@
 #if defined(__WATCOMC__)
 #	define NORETURN
 #	define CDECL
-#	define WARN_FORMAT(string, args)
 #	define FINAL
 #	define FALLTHROUGH
 #	include <malloc.h>
@@ -170,7 +165,6 @@
 #	endif
 
 #	define CDECL _cdecl
-#	define WARN_FORMAT(string, args)
 #	define FINAL final
 
 	/* fallthrough attribute, VS 2017 */

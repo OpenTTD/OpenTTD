@@ -21,7 +21,6 @@
 #include <iomanip>
 
 #ifdef _MSC_VER
-#	include <errno.h> // required by vsnprintf implementation for MSVC
 #	define strncasecmp strnicmp
 #endif
 
@@ -44,10 +43,7 @@
 #	include "os/macosx/string_osx.h"
 #endif
 
-/* The function vsnprintf is used internally to perform the required formatting
- * tasks. As such this one must be allowed, and makes sure it's terminated. */
 #include "safeguards.h"
-#undef vsnprintf
 
 
 /**
@@ -453,67 +449,6 @@ bool IsValidChar(WChar key, CharSetFilter afilter)
 		case CS_HEXADECIMAL:    return (key >= '0' && key <= '9') || (key >= 'a' && key <= 'f') || (key >= 'A' && key <= 'F');
 		default: NOT_REACHED();
 	}
-}
-
-#ifdef _WIN32
-#if defined(_MSC_VER) && _MSC_VER < 1900
-/**
- * Almost POSIX compliant implementation of \c vsnprintf for VC compiler.
- * The difference is in the value returned on output truncation. This
- * implementation returns size whereas a POSIX implementation returns
- * size or more (the number of bytes that would be written to str
- * had size been sufficiently large excluding the terminating null byte).
- */
-int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
-{
-	if (size == 0) return 0;
-
-	errno = 0;
-	int ret = _vsnprintf(str, size, format, ap);
-
-	if (ret < 0) {
-		if (errno != ERANGE) {
-			/* There's a formatting error, better get that looked
-			 * at properly instead of ignoring it. */
-			NOT_REACHED();
-		}
-	} else if ((size_t)ret < size) {
-		/* The buffer is big enough for the number of
-		 * characters stored (excluding null), i.e.
-		 * the string has been null-terminated. */
-		return ret;
-	}
-
-	/* The buffer is too small for _vsnprintf to write the
-	 * null-terminator at its end and return size. */
-	str[size - 1] = '\0';
-	return (int)size;
-}
-#endif /* _MSC_VER */
-
-#endif /* _WIN32 */
-
-/**
- * Safer implementation of snprintf; same as snprintf except:
- * - last instead of size, i.e. replace sizeof with lastof.
- * - return gives the amount of characters added, not what it would add.
- * @param str    buffer to write to up to last
- * @param last   last character we may write to
- * @param format the formatting (see snprintf)
- * @return the number of added characters
- */
-int CDECL seprintf(char *str, const char *last, const char *format, ...)
-{
-	ptrdiff_t diff = last - str;
-	if (diff < 0) return 0;
-
-	va_list ap;
-
-	va_start(ap, format);
-	int ret = std::min(static_cast<int>(diff), vsnprintf(str, diff + 1, format, ap));
-
-	va_end(ap);
-	return ret;
 }
 
 
