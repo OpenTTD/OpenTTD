@@ -1887,7 +1887,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 
 #ifdef _WIN32
-	extern void Win32SetCurrentLocaleName(const char *iso_code);
+	extern void Win32SetCurrentLocaleName(std::string iso_code);
 	Win32SetCurrentLocaleName(_current_language->isocode);
 #endif
 
