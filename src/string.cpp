@@ -423,29 +423,6 @@ bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str
 	return StrCompareIgnoreCase(str1, str2) == 0;
 }
 
-/** Scans the string for colour codes and strips them */
-void str_strip_colours(char *str)
-{
-	char *dst = str;
-	WChar c;
-	size_t len;
-
-	for (len = Utf8Decode(&c, str); c != '\0'; len = Utf8Decode(&c, str)) {
-		if (c < SCC_BLUE || c > SCC_BLACK) {
-			/* Copy the character back. Even if dst is current the same as str
-			 * (i.e. no characters have been changed) this is quicker than
-			 * moving the pointers ahead by len */
-			do {
-				*dst++ = *str++;
-			} while (--len != 0);
-		} else {
-			/* Just skip (strip) the colour codes */
-			str += len;
-		}
-	}
-	*dst = '\0';
-}
-
 /**
  * Get the length of an UTF-8 encoded string in number of characters
  * and thus not the number of bytes that the encoded string contains.

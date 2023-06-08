@@ -107,7 +107,6 @@ void IConsolePrint(TextColour colour_code, const std::string &string)
 	/* Create a copy of the string, strip if of colours and invalid
 	 * characters and (when applicable) assign it to the console buffer */
 	char *str = stredup(string.c_str());
-	str_strip_colours(str);
 	StrMakeValidInPlace(str);
 
 	if (_network_dedicated) {
