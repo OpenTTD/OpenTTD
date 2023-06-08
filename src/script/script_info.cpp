@@ -90,11 +90,11 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	/* Read the table, and find all properties we care about */
 	sq_pushnull(vm);
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
-		const SQChar *key;
-		if (SQ_FAILED(sq_getstring(vm, -2, &key))) return SQ_ERROR;
-		StrMakeValidInPlace(const_cast<char *>(key));
+		const SQChar *key_string;
+		if (SQ_FAILED(sq_getstring(vm, -2, &key_string))) return SQ_ERROR;
+		std::string key = StrMakeValid(key_string);
 
-		if (strcmp(key, "name") == 0) {
+		if (key == "name") {
 			const SQChar *sqvalue;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
 
@@ -104,51 +104,51 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			config.name = StrMakeValid(sqvalue);
 			std::replace_if(config.name.begin(), config.name.end(), replace_with_underscore, '_');
 			items |= 0x001;
-		} else if (strcmp(key, "description") == 0) {
+		} else if (key == "description") {
 			const SQChar *sqdescription;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
 			config.description = StrMakeValid(sqdescription);
 			items |= 0x002;
-		} else if (strcmp(key, "min_value") == 0) {
+		} else if (key == "min_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.min_value = ClampTo<int32_t>(res);
 			items |= 0x004;
-		} else if (strcmp(key, "max_value") == 0) {
+		} else if (key == "max_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.max_value = ClampTo<int32_t>(res);
 			items |= 0x008;
-		} else if (strcmp(key, "easy_value") == 0) {
+		} else if (key == "easy_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.easy_value = ClampTo<int32_t>(res);
 			items |= 0x010;
-		} else if (strcmp(key, "medium_value") == 0) {
+		} else if (key == "medium_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.medium_value = ClampTo<int32_t>(res);
 			items |= 0x020;
-		} else if (strcmp(key, "hard_value") == 0) {
+		} else if (key == "hard_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.hard_value = ClampTo<int32_t>(res);
 			items |= 0x040;
-		} else if (strcmp(key, "random_deviation") == 0) {
+		} else if (key == "random_deviation") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.random_deviation = ClampTo<int32_t>(abs(res));
 			items |= 0x200;
-		} else if (strcmp(key, "custom_value") == 0) {
+		} else if (key == "custom_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.custom_value = ClampTo<int32_t>(res);
 			items |= 0x080;
-		} else if (strcmp(key, "step_size") == 0) {
+		} else if (key == "step_size") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.step_size = ClampTo<int32_t>(res);
-		} else if (strcmp(key, "flags") == 0) {
+		} else if (key == "flags") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.flags = (ScriptConfigFlags)res;
@@ -184,9 +184,9 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 
 SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 {
-	const SQChar *setting_name;
-	if (SQ_FAILED(sq_getstring(vm, -2, &setting_name))) return SQ_ERROR;
-	StrMakeValidInPlace(const_cast<char *>(setting_name));
+	const SQChar *setting_name_str;
+	if (SQ_FAILED(sq_getstring(vm, -2, &setting_name_str))) return SQ_ERROR;
+	std::string setting_name = StrMakeValid(setting_name_str);
 
 	ScriptConfigItem *config = nullptr;
 	for (auto &item : this->config_list) {
@@ -216,9 +216,7 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 			key_string++;
 		}
 		int key = atoi(key_string) * sign;
-		StrMakeValidInPlace(const_cast<char *>(label));
-
-		config->labels[key] = label;
+		config->labels[key] = StrMakeValid(label);
 
 		sq_pop(vm, 2);
 	}

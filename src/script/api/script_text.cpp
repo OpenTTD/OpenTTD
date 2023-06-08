@@ -138,10 +138,11 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	if (sq_gettype(vm, 2) == OT_STRING) {
 		const SQChar *key_string;
 		sq_getstring(vm, 2, &key_string);
-		StrMakeValidInPlace(const_cast<char *>(key_string));
 
-		if (strncmp(key_string, "param_", 6) != 0 || strlen(key_string) > 8) return SQ_ERROR;
-		k = atoi(key_string + 6);
+		std::string str = StrMakeValid(key_string);
+		if (!StrStartsWith(str, "param_") || str.size() > 8) return SQ_ERROR;
+
+		k = stoi(str.substr(6));
 	} else if (sq_gettype(vm, 2) == OT_INTEGER) {
 		SQInteger key;
 		sq_getinteger(vm, 2, &key);
