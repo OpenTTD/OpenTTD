@@ -471,28 +471,6 @@ size_t Utf8StringLength(const std::string &str)
 	return Utf8StringLength(str.c_str());
 }
 
-/**
- * Convert a given ASCII string to lowercase.
- * NOTE: only support ASCII characters, no UTF8 fancy. As currently
- * the function is only used to lowercase data-filenames if they are
- * not found, this is sufficient. If more, or general functionality is
- * needed, look to r7271 where it was removed because it was broken when
- * using certain locales: eg in Turkish the uppercase 'I' was converted to
- * '?', so just revert to the old functionality
- * @param str string to convert
- * @return String has changed.
- */
-bool strtolower(char *str)
-{
-	bool changed = false;
-	for (; *str != '\0'; str++) {
-		char new_str = tolower(*str);
-		changed |= new_str != *str;
-		*str = new_str;
-	}
-	return changed;
-}
-
 bool strtolower(std::string &str, std::string::size_type offs)
 {
 	bool changed = false;
