@@ -31,6 +31,41 @@
 GoalPool _goal_pool("Goal");
 INSTANTIATE_POOL_METHODS(Goal)
 
+/* static */ bool Goal::IsValidGoalDestination(CompanyID company, GoalType type, GoalTypeID dest)
+{
+	switch (type) {
+		case GT_NONE:
+			if (dest != 0) return false;
+			break;
+
+		case GT_TILE:
+			if (!IsValidTile(dest)) return false;
+			break;
+
+		case GT_INDUSTRY:
+			if (!Industry::IsValidID(dest)) return false;
+			break;
+
+		case GT_TOWN:
+			if (!Town::IsValidID(dest)) return false;
+			break;
+
+		case GT_COMPANY:
+			if (!Company::IsValidID(dest)) return false;
+			break;
+
+		case GT_STORY_PAGE: {
+			if (!StoryPage::IsValidID(dest)) return false;
+			CompanyID story_company = StoryPage::Get(dest)->company;
+			if (company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != company) return false;
+			break;
+		}
+
+		default: return false;
+	}
+	return true;
+}
+
 /**
  * Create a new goal.
  * @param flags type of operation
@@ -47,37 +82,7 @@ std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID com
 	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_GOAL };
 	if (text.empty()) return { CMD_ERROR, INVALID_GOAL };
 	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return { CMD_ERROR, INVALID_GOAL };
-
-	switch (type) {
-		case GT_NONE:
-			if (dest != 0) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_TILE:
-			if (!IsValidTile(dest)) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_INDUSTRY:
-			if (!Industry::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_TOWN:
-			if (!Town::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_COMPANY:
-			if (!Company::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
-			break;
-
-		case GT_STORY_PAGE: {
-			if (!StoryPage::IsValidID(dest)) return { CMD_ERROR, INVALID_GOAL };
-			CompanyID story_company = StoryPage::Get(dest)->company;
-			if (company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != company) return { CMD_ERROR, INVALID_GOAL };
-			break;
-		}
-
-		default: return { CMD_ERROR, INVALID_GOAL };
-	}
+	if (!Goal::IsValidGoalDestination(company, type, dest)) return { CMD_ERROR, INVALID_GOAL };
 
 	if (flags & DC_EXEC) {
 		Goal *g = new Goal();
@@ -122,6 +127,29 @@ CommandCost CmdRemoveGoal(DoCommandFlag flags, GoalID goal)
 			InvalidateWindowData(WC_GOALS_LIST, c);
 		}
 		if (Goal::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
+	}
+
+	return CommandCost();
+}
+
+/**
+ * Update goal destination of a goal.
+ * @param flags type of operation
+ * @param goal GoalID to update.
+ * @param type GoalType of destination.
+ * @param dest GoalTypeID of destination.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetGoalDestination(DoCommandFlag flags, GoalID goal, GoalType type, GoalTypeID dest)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	if (!Goal::IsValidID(goal)) return CMD_ERROR;
+	Goal *g = Goal::Get(goal);
+	if (!Goal::IsValidGoalDestination(g->company, type, dest)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		g->type = type;
+		g->dst = dest;
 	}
 
 	return CommandCost();

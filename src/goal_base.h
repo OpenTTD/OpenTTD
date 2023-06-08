@@ -35,6 +35,8 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
 	inline ~Goal() { }
+
+	static bool IsValidGoalDestination(CompanyID company, GoalType type, GoalTypeID dest);
 };
 
 #endif /* GOAL_BASE_H */
