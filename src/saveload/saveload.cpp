@@ -890,6 +890,27 @@ static inline size_t SlCalcStdStringLen(const void *ptr)
 	return len + SlGetArrayLength(len); // also include the length of the index
 }
 
+
+/**
+ * Scan the string for old values of SCC_ENCODED and fix it to it's new, value.
+ * Note that at the moment this runs, the string has not been validated yet
+ * because the validation looks for SCC_ENCODED. If there is something invalid,
+ * just bail out and do not continue trying to replace the tokens.
+ * @param str the string to fix.
+ */
+static void FixSCCEncoded(std::string &str)
+{
+	for (size_t i = 0; i < str.size(); /* nothing. */) {
+		size_t len = Utf8EncodedCharLen(str[i]);
+		if (len == 0 || i + len > str.size()) break;
+
+		WChar c;
+		Utf8Decode(&c, &str[i]);
+		if (c == 0xE028 || c == 0xE02A) Utf8Encode(&str[i], SCC_ENCODED);
+		i += len;
+	}
+}
+
 /**
  * Save/Load a \c std::string.
  * @param ptr the string being manipulated
@@ -921,9 +942,7 @@ static void SlStdString(void *ptr, VarType conv)
 			StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK;
 			if ((conv & SLF_ALLOW_CONTROL) != 0) {
 				settings = settings | SVS_ALLOW_CONTROL_CODE;
-				if (IsSavegameVersionBefore(SLV_169)) {
-					str_fix_scc_encoded(str->data(), str->data() + len);
-				}
+				if (IsSavegameVersionBefore(SLV_169)) FixSCCEncoded(*str);
 			}
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings = settings | SVS_ALLOW_NEWLINE;

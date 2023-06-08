@@ -116,30 +116,6 @@ std::string FormatArrayAsHex(span<const byte> data)
 	return str;
 }
 
-/**
- * Scan the string for old values of SCC_ENCODED and fix it to
- * it's new, static value.
- * @param str the string to scan
- * @param last the last valid character of str
- */
-void str_fix_scc_encoded(char *str, const char *last)
-{
-	while (str <= last && *str != '\0') {
-		size_t len = Utf8EncodedCharLen(*str);
-		if ((len == 0 && str + 4 > last) || str + len > last) break;
-
-		WChar c;
-		Utf8Decode(&c, str);
-		if (c == '\0') break;
-
-		if (c == 0xE028 || c == 0xE02A) {
-			c = SCC_ENCODED;
-		}
-		str += Utf8Encode(str, c);
-	}
-	*str = '\0';
-}
-
 
 template <class T>
 static void StrMakeValidInPlace(T &dst, const char *str, const char *last, StringValidationSettings settings)
