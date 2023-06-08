@@ -2004,10 +2004,10 @@ static bool GetLanguageFileHeader(const char *file, LanguagePackHeader *hdr)
 }
 
 /**
- * Gets a list of languages from the given directory.
- * @param path  the base directory to search in
+ * Search for the languages in the given directory and add them to the #_languages list.
+ * @param path the base directory to search in
  */
-static void GetLanguageList(const std::string &path)
+static void FillLanguageList(const std::string &path)
 {
 	DIR *dir = ttd_opendir(path.c_str());
 	if (dir != nullptr) {
@@ -2042,7 +2042,7 @@ static void GetLanguageList(const std::string &path)
 void InitializeLanguagePacks()
 {
 	for (Searchpath sp : _valid_searchpaths) {
-		GetLanguageList(FioGetDirectory(sp, LANG_DIR));
+		FillLanguageList(FioGetDirectory(sp, LANG_DIR));
 	}
 	if (_languages.size() == 0) UserError("No available language packs (invalid versions?)");
 
