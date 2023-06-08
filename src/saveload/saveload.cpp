@@ -915,9 +915,8 @@ static void SlStdString(void *ptr, VarType conv)
 				return;
 			}
 
-			str->resize(len + 1);
+			str->resize(len);
 			SlCopyBytes(str->data(), len);
-			(*str)[len] = '\0'; // properly terminate the string
 
 			StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK;
 			if ((conv & SLF_ALLOW_CONTROL) != 0) {
