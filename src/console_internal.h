@@ -86,6 +86,6 @@ bool GetArgumentInteger(uint32 *value, const char *arg);
 
 void IConsoleGUIInit();
 void IConsoleGUIFree();
-void IConsoleGUIPrint(TextColour colour_code, char *string);
+void IConsoleGUIPrint(TextColour colour_code, const std::string &string);
 
 #endif /* CONSOLE_INTERNAL_H */

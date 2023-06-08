@@ -47,13 +47,13 @@ void IConsoleInit()
 	IConsoleStdLibRegister();
 }
 
-static void IConsoleWriteToLogFile(const char *string)
+static void IConsoleWriteToLogFile(const std::string &string)
 {
 	if (_iconsole_output_file != nullptr) {
 		/* if there is an console output file ... also print it there */
 		const char *header = GetLogPrefix();
 		if ((strlen(header) != 0 && fwrite(header, strlen(header), 1, _iconsole_output_file) != 1) ||
-				fwrite(string, strlen(string), 1, _iconsole_output_file) != 1 ||
+				fwrite(string.c_str(), string.size(), 1, _iconsole_output_file) != 1 ||
 				fwrite("\n", 1, 1, _iconsole_output_file) != 1) {
 			fclose(_iconsole_output_file);
 			_iconsole_output_file = nullptr;
@@ -104,23 +104,20 @@ void IConsolePrint(TextColour colour_code, const std::string &string)
 		return;
 	}
 
-	/* Create a copy of the string, strip if of colours and invalid
+	/* Create a copy of the string, strip it of colours and invalid
 	 * characters and (when applicable) assign it to the console buffer */
-	char *str = stredup(string.c_str());
-	StrMakeValidInPlace(str);
+	std::string str = StrMakeValid(string);
 
 	if (_network_dedicated) {
 		NetworkAdminConsole("console", str);
 		fmt::print("{}{}\n", GetLogPrefix(), str);
 		fflush(stdout);
 		IConsoleWriteToLogFile(str);
-		free(str); // free duplicated string since it's not used anymore
 		return;
 	}
 
 	IConsoleWriteToLogFile(str);
 	IConsoleGUIPrint(colour_code, str);
-	free(str);
 }
 
 /**
