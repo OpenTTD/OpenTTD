@@ -18,6 +18,7 @@
 #include "station_map.h"
 #include "order_cmd.h"
 #include "group_cmd.h"
+#include "vehicle_func.h"
 
 #include "safeguards.h"
 
@@ -82,6 +83,9 @@ void OrderBackup::DoRestore(Vehicle *v)
 		/* Make sure buoys/oil rigs are updated in the station list. */
 		InvalidateWindowClassesData(WC_STATION_LIST, 0);
 	}
+
+	/* Remove backed up name if it's no longer unique. */
+	if (!IsUniqueVehicleName(this->name)) this->name.clear();
 
 	v->CopyConsistPropertiesFrom(this);
 
