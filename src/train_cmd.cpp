@@ -1327,6 +1327,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlag flags, VehicleID src_veh, VehicleID
 			/* Remove stuff not valid anymore for non-front engines. */
 			DeleteVehicleOrders(src);
 			src->unitnumber = 0;
+			src->name.clear();
 		}
 
 		/* We weren't a front engine but are becoming one. So
