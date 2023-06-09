@@ -738,26 +738,28 @@ extern void DetermineBasePaths(const char *exe);
  */
 static bool ChangeWorkingDirectoryToExecutable(const char *exe)
 {
-	char tmp[MAX_PATH];
-	strecpy(tmp, exe, lastof(tmp));
+	std::string path = exe;
 
-	bool success = false;
 #ifdef WITH_COCOA
-	char *app_bundle = strchr(tmp, '.');
-	while (app_bundle != nullptr && !StrStartsWithIgnoreCase(app_bundle, ".app")) app_bundle = strchr(&app_bundle[1], '.');
-
-	if (app_bundle != nullptr) *app_bundle = '\0';
-#endif /* WITH_COCOA */
-	char *s = strrchr(tmp, PATHSEPCHAR);
-	if (s != nullptr) {
-		*s = '\0';
-		if (chdir(tmp) != 0) {
-			Debug(misc, 0, "Directory with the binary does not exist?");
-		} else {
-			success = true;
+	for (size_t pos = path.find_first_of('.'); pos != std::string::npos; pos = path.find_first_of('.', pos + 1)) {
+		if (StrEqualsIgnoreCase(path.substr(pos, 4), ".app")) {
+			path.erase(pos);
+			break;
 		}
 	}
-	return success;
+#endif /* WITH_COCOA */
+
+	size_t pos = path.find_last_of(PATHSEPCHAR);
+	if (pos == std::string::npos) return false;
+
+	path.erase(pos);
+
+	if (chdir(path.c_str()) != 0) {
+		Debug(misc, 0, "Directory with the binary does not exist?");
+		return false;
+	}
+
+	return true;
 }
 
 /**
