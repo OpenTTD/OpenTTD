@@ -102,14 +102,10 @@ struct StringListReader : StringReader {
 	{
 	}
 
-	char *ReadLine(char *buffer, const char *last) override
+	std::optional<std::string> ReadLine() override
 	{
-		if (this->p == this->end) return nullptr;
-
-		strecpy(buffer, this->p->c_str(), last);
-		this->p++;
-
-		return buffer;
+		if (this->p == this->end) return std::nullopt;
+		return *this->p++;
 	}
 };
 
