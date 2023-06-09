@@ -739,16 +739,13 @@ void StringReader::HandlePragma(char *str)
 	}
 }
 
-static void rstrip(char *buf)
+static void StripTrailingWhitespace(std::string &str)
 {
-	size_t i = strlen(buf);
-	while (i > 0 && (buf[i - 1] == '\r' || buf[i - 1] == '\n' || buf[i - 1] == ' ')) i--;
-	buf[i] = '\0';
+	str.erase(str.find_last_not_of("\r\n ") + 1);
 }
 
 void StringReader::ParseFile()
 {
-	char buf[2048];
 	_warnings = _errors = 0;
 
 	_translation = this->translation;
@@ -765,9 +762,12 @@ void StringReader::ParseFile()
 	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));
 
 	_cur_line = 1;
-	while (this->data.next_string_id < this->data.max_strings && this->ReadLine(buf, lastof(buf)) != nullptr) {
-		rstrip(buf);
-		this->HandleString(buf);
+	while (this->data.next_string_id < this->data.max_strings) {
+		std::optional<std::string> line = this->ReadLine();
+		if (!line.has_value()) return;
+
+		StripTrailingWhitespace(line.value());
+		this->HandleString(line.value().data());
 		_cur_line++;
 	}
 

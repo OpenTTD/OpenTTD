@@ -84,9 +84,11 @@ struct FileStringReader : StringReader {
 		this->input_stream.open(file, std::ifstream::binary);
 	}
 
-	char *ReadLine(char *buffer, const char *last) override
+	std::optional<std::string> ReadLine() override
 	{
-		return this->input_stream.getline(buffer, last - buffer) ? buffer : nullptr;
+		std::string result;
+		if (!std::getline(this->input_stream, result)) return std::nullopt;
+		return result;
 	}
 
 	void HandlePragma(char *str) override;
