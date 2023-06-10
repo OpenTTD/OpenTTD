@@ -1530,7 +1530,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grey to red
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Greyscale
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Viewport scroll behaviour: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Behaviour when scrolling the map
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Behaviour when scrolling the map. The "mouse position locked" options don't work on all systems, like web-based versions, touchscreens, Linux with Wayland, and others
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Move viewport with RMB, mouse position locked
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Move map with RMB, mouse position locked
@@ -2056,6 +2056,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allocati
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Error with video settings...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no compatible GPU found. Hardware acceleration disabled
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU driver crashed the game. Hardware acceleration disabled
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

@@ -1531,7 +1531,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :회색 & 적색
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :흑백
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :외부 화면 스크롤 행동: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :지도를 스크롤 할 때의 행동을 선택합니다.
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :지도를 스크롤 할 때의 행동을 선택합니다. "마우스 위치는 고정" 설정은 웹 기반 버전, 터치 스크린 환경, Wayland가 설치된 Linux 등의 환경에서는 모두 동작하지 않습니다
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :마우스 오른쪽 클릭으로 외부 화면 이동 (마우스 위치는 고정)
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :마우스 오른쪽 클릭으로 지도 이동 (마우스 위치는 고정)
@@ -2057,6 +2057,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES}�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}비디오 설정 오류 발생...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... 호환되는 GPU를 찾지 못했습니다. 하드웨어 가속이 비활성화됩니다
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU 드라이버가 게임을 종료시켰습니다. 하드웨어 가속이 비활성화됩니다
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

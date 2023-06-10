@@ -1681,7 +1681,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :серый и �
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :оттенки серого
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Перемещение обзора: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Способ перемещения по игровому полю
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Способ перемещения по игровому полю. Варианты с зафиксированным курсором не работают на некоторых системах, например, в браузерах, на сенсорных экранах, на Linux с Wayland и т. д.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :перемещать обзор с помощью ПКМ, зафиксировав курсор
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :перемещать карту с помощью ПКМ, зафиксировав курсор
@@ -2207,6 +2207,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Не у�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Ошибка в настройках графики...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... не найдено подходящего графического процессора. Аппаратное ускорение отключено.
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... драйвер видеокарты вызвал критическую ошибку. Аппаратное ускорение отключено.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

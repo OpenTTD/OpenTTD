@@ -1531,7 +1531,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Cinza para verm
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de cinza
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Comportamento de deslocação da janela de exibição: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento na deslocação do mapa
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento na deslocação do mapa. As opções de "posição do rato bloqueada" não funcionam em todos os sistemas, tais como versões baseadas na web, ecrãs sensíveis ao toque, Linux com Wayland, e outros.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mover janela de exibição com Botão Direito Rato, posição do rato bloqueada
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mover mapa com Botão Direito Rato, posição do rato bloqueada
@@ -2057,6 +2057,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Falha a 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Erro com as definições gráficas...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... Não foi encontrado um GPU compatível. Aceleração por hardware desativada
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... O driver gráfico (GPU) interrompeu o jogo. Aceleração por hardware desativada
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -4038,9 +4039,9 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar A
 
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esta acção comprará uma cópia de um comboio, incluindo todas as carruagens. Clique neste botão e, de seguida, num comboio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta acção comprará uma cópia de um veículo rodoviário. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora de um depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta acção comprará uma cópia de um navio. Clique neste botão e, de seguida, num navio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta acção comprará uma cópia de uma aeronave. Clique neste botão e, de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique ira partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta ação comprará uma cópia de um veículo rodoviário. Clique neste botão e de seguida, num veículo que se encontre dentro ou fora de um depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta ação comprará uma cópia de um navio. Clique neste botão e de seguida, num navio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta ação comprará uma cópia de uma aeronave. Clique neste botão e de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique ira partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visualização na localização de um depósito ferroviário. Ctrl+Clique abre um novo visualizador na localização do depósito ferroviário
