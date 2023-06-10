@@ -1530,7 +1530,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grå til rød
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Gråtoner
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Visningsport bevægelse: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Virkemåde for bevægelse af kortet
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Virkemåde for bevægelse af kortet. "Museposition låst"-mulighederne virker ikke på alle systemer, såsom webbaserede versioner, berøringsskærme, Linux med Wayland og andre
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Bevæg syns vinduet med højre mussetast, musse position låst
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Bevæg kortet med højre mussetast, musse position låst
@@ -2056,6 +2056,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokeri
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fejl med grafikindstillinger...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ingen kompatibel GPU fundet. Hardware-acceleration deaktiveret
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-driver fik spillet til at gå ned. Hardwareacceleration deaktiveret
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
