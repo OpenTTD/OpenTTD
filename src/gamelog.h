@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file gamelog.h Functions to be called to log possibly unsafe game events */
+/** @file gamelog.h Functions to be called to log fundamental changes to the game */
 
 #ifndef GAMELOG_H
 #define GAMELOG_H
