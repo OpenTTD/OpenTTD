@@ -361,7 +361,7 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MESSAGE:
-				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+				CopyInDParam(this->ni->params, lengthof(this->ni->params));
 				str = this->ni->string_id;
 				break;
 
@@ -429,7 +429,7 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MESSAGE:
-				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+				CopyInDParam(this->ni->params, lengthof(this->ni->params));
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				break;
 
@@ -582,7 +582,7 @@ private:
 	StringID GetCompanyMessageString() const
 	{
 		/* Company news with a face have a separate headline, so the normal message is shifted by two params */
-		CopyInDParam(0, this->ni->params + 2, lengthof(this->ni->params) - 2);
+		CopyInDParam(this->ni->params + 2, lengthof(this->ni->params) - 2);
 		return this->ni->params[1];
 	}
 
@@ -804,7 +804,7 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsRefere
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags |= NF_INCOLOUR;
-	CopyOutDParam(this->params, 0, lengthof(this->params));
+	CopyOutDParam(this->params, lengthof(this->params));
 }
 
 /**
@@ -1099,7 +1099,7 @@ void ShowLastNewsMessage()
  */
 static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem *ni)
 {
-	CopyInDParam(0, ni->params, lengthof(ni->params));
+	CopyInDParam(ni->params, lengthof(ni->params));
 
 	/* Get the string, replaces newlines with spaces and remove control codes from the string. */
 	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);

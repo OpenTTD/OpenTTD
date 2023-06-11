@@ -1111,7 +1111,7 @@ struct QueryWindow : public Window {
 	{
 		/* Create a backup of the variadic arguments to strings because it will be
 		 * overridden pretty often. We will copy these back for drawing */
-		CopyOutDParam(this->params, 0, lengthof(this->params));
+		CopyOutDParam(this->params, lengthof(this->params));
 		this->message = message;
 		this->proc    = callback;
 		this->parent  = parent;
@@ -1140,7 +1140,7 @@ struct QueryWindow : public Window {
 		switch (widget) {
 			case WID_Q_CAPTION:
 			case WID_Q_TEXT:
-				CopyInDParam(0, this->params, lengthof(this->params));
+				CopyInDParam(this->params, lengthof(this->params));
 				break;
 		}
 	}

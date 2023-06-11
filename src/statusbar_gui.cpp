@@ -39,7 +39,7 @@
 
 static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left, int right, int top, int bottom)
 {
-	CopyInDParam(0, ni->params, lengthof(ni->params));
+	CopyInDParam(ni->params, lengthof(ni->params));
 
 	/* Replace newlines and the likes with spaces. */
 	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
