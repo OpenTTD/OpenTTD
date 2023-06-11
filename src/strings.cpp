@@ -128,24 +128,22 @@ void SetDParamMaxDigits(uint n, uint count, FontSize size)
 
 /**
  * Copy \a num string parameters from array \a src into the global string parameter array.
- * @param offs Index in the global array to copy the first string parameter to.
  * @param src  Source array of string parameters.
  * @param num  Number of string parameters to copy.
  */
-void CopyInDParam(int offs, const uint64 *src, int num)
+void CopyInDParam(const uint64 *src, int num)
 {
-	MemCpyT(_global_string_params.GetPointerToOffset(offs), src, num);
+	MemCpyT(_global_string_params.GetPointerToOffset(0), src, num);
 }
 
 /**
  * Copy \a num string parameters from the global string parameter array to the \a dst array.
  * @param dst  Destination array of string parameters.
- * @param offs Index in the global array to copy the first string parameter from.
  * @param num  Number of string parameters to copy.
  */
-void CopyOutDParam(uint64 *dst, int offs, int num)
+void CopyOutDParam(uint64 *dst, int num)
 {
-	MemCpyT(dst, _global_string_params.GetPointerToOffset(offs), num);
+	MemCpyT(dst, _global_string_params.GetPointerToOffset(0), num);
 }
 
 /**

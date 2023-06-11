@@ -210,7 +210,7 @@ public:
 	{
 		switch (widget) {
 			case WID_EM_MESSAGE: {
-				CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
+				CopyInDParam(this->decode_params, lengthof(this->decode_params));
 				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 
 				this->height_summary = GetStringHeight(this->summary_msg, size->width);
@@ -279,7 +279,7 @@ public:
 
 	void SetStringParameters(int widget) const override
 	{
-		if (widget == WID_EM_CAPTION) CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
+		if (widget == WID_EM_CAPTION) CopyInDParam(this->decode_params, lengthof(this->decode_params));
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -292,7 +292,7 @@ public:
 			}
 
 			case WID_EM_MESSAGE:
-				CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
+				CopyInDParam(this->decode_params, lengthof(this->decode_params));
 				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 
 				if (this->detailed_msg == INVALID_STRING_ID) {

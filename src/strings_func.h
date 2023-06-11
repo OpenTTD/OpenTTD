@@ -218,8 +218,8 @@ void SetDParamStr(uint n, const char *str);
 void SetDParamStr(uint n, const std::string &str);
 void SetDParamStr(uint n, std::string &&str) = delete; // block passing temporaries to SetDParamStr
 
-void CopyInDParam(int offs, const uint64 *src, int num);
-void CopyOutDParam(uint64 *dst, int offs, int num);
+void CopyInDParam(const uint64 *src, int num);
+void CopyOutDParam(uint64 *dst, int num);
 void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num);
 
 /**
