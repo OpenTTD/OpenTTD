@@ -476,7 +476,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 	td->owner[0] = i->owner;
 	td->str = is->name;
 	if (!IsIndustryCompleted(tile)) {
-		SetDParamX(td->dparam, 0, td->str);
+		td->dparam = td->str;
 		td->str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
