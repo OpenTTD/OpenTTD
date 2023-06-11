@@ -212,17 +212,6 @@ void CopyOutDParam(uint64 *dst, int num);
 void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num);
 
 /**
- * Get the current string parameter at index \a n from parameter array \a s.
- * @param s Array of string parameters.
- * @param n Index of the string parameter.
- * @return Value of the requested string parameter.
- */
-static inline uint64 GetDParamX(const uint64 *s, uint n)
-{
-	return s[n];
-}
-
-/**
  * Get the current string parameter at index \a n from the global string parameter array.
  * @param n Index of the string parameter.
  * @return Value of the requested string parameter.
