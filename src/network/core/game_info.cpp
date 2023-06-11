@@ -47,10 +47,6 @@ std::string_view GetNetworkRevisionString()
 	if (network_revision.empty()) {
 		network_revision = _openttd_revision;
 		if (_openttd_revision_tagged) {
-			/* 13.2.1 is a fix-release with only a single change in the Win32 video driver.
-			 * As such, it is safe to call it 13.2 from a networking point of view. */
-			if (network_revision == "13.2.1") network_revision = "13.2";
-
 			/* Tagged; do not mangle further, though ensure it's not too long. */
 			if (network_revision.size() >= NETWORK_REVISION_LENGTH) network_revision.resize(NETWORK_REVISION_LENGTH - 1);
 		} else {
