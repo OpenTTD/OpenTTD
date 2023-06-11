@@ -191,17 +191,6 @@ static inline int64 PackVelocity(uint speed, VehicleType type)
 }
 
 /**
- * Set a string parameter \a v at index \a n in a given array \a s.
- * @param s Array of string parameters.
- * @param n Index of the string parameter.
- * @param v Value of the string parameter.
- */
-static inline void SetDParamX(uint64 *s, uint n, uint64 v)
-{
-	s[n] = v;
-}
-
-/**
  * Set a string parameter \a v at index \a n in the global string parameter array.
  * @param n Index of the string parameter.
  * @param v Value of the string parameter.
