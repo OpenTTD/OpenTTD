@@ -131,6 +131,12 @@ ErrorMessageData::ErrorMessageData(StringID summary_msg, StringID detailed_msg, 
  */
 void ErrorMessageData::CopyOutDParams()
 {
+	if (this->detailed_msg == STR_ERROR_OWNED_BY) {
+		/* The parameters are set by SetDParamsForOwnedBy. */
+		CompanyID company = (CompanyID)GetDParam(OWNED_BY_OWNER_IN_PARAMETERS_OFFSET);
+		if (company < MAX_COMPANIES) face = company;
+	}
+
 	/* Reset parameters */
 	for (size_t i = 0; i < lengthof(this->strings); i++) free(this->strings[i]);
 	memset(this->decode_params, 0, sizeof(this->decode_params));
@@ -140,11 +146,6 @@ void ErrorMessageData::CopyOutDParams()
 	if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 	CopyOutDParam(this->decode_params, this->strings, this->detailed_msg == INVALID_STRING_ID ? this->summary_msg : this->detailed_msg, lengthof(this->decode_params));
 	if (this->textref_stack_size > 0) StopTextRefStackUsage();
-
-	if (this->detailed_msg == STR_ERROR_OWNED_BY) {
-		CompanyID company = (CompanyID)GetDParamX(this->decode_params, OWNED_BY_OWNER_IN_PARAMETERS_OFFSET);
-		if (company < MAX_COMPANIES) face = company;
-	}
 }
 
 /**
