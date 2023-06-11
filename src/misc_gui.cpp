@@ -182,7 +182,7 @@ public:
 			if (td.owner_type[i] == STR_NULL) continue;
 
 			SetDParam(0, STR_LAND_AREA_INFORMATION_OWNER_N_A);
-			if (td.owner[i] != OWNER_NONE && td.owner[i] != OWNER_WATER) GetNameOfOwner(td.owner[i], tile);
+			if (td.owner[i] != OWNER_NONE && td.owner[i] != OWNER_WATER) SetDParamsForOwnedBy(td.owner[i], tile);
 			this->landinfo_data.push_back(GetString(td.owner_type[i]));
 		}
 

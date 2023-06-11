@@ -2463,8 +2463,8 @@ CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 				}
 
 				if (rtt == RTT_ROAD && owner == OWNER_TOWN) {
+					SetDParamsForOwnedBy(OWNER_TOWN, tile);
 					error.MakeError(STR_ERROR_OWNED_BY);
-					GetNameOfOwner(OWNER_TOWN, tile);
 					continue;
 				}
 			}
@@ -2516,8 +2516,8 @@ CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 				}
 
 				if (rtt == RTT_ROAD && owner == OWNER_TOWN) {
+					SetDParamsForOwnedBy(OWNER_TOWN, tile);
 					error.MakeError(STR_ERROR_OWNED_BY);
-					GetNameOfOwner(OWNER_TOWN, tile);
 					continue;
 				}
 			}

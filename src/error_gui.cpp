@@ -16,6 +16,7 @@
 #include "gfx_func.h"
 #include "string_func.h"
 #include "company_base.h"
+#include "company_func.h"
 #include "company_manager_face.h"
 #include "strings_func.h"
 #include "zoom_func.h"
@@ -141,7 +142,7 @@ void ErrorMessageData::CopyOutDParams()
 	if (this->textref_stack_size > 0) StopTextRefStackUsage();
 
 	if (this->detailed_msg == STR_ERROR_OWNED_BY) {
-		CompanyID company = (CompanyID)GetDParamX(this->decode_params, 2);
+		CompanyID company = (CompanyID)GetDParamX(this->decode_params, OWNED_BY_OWNER_IN_PARAMETERS_OFFSET);
 		if (company < MAX_COMPANIES) face = company;
 	}
 }

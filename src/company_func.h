@@ -17,7 +17,8 @@
 
 bool MayCompanyTakeOver(CompanyID cbig, CompanyID small);
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
-void GetNameOfOwner(Owner owner, TileIndex tile);
+static const int OWNED_BY_OWNER_IN_PARAMETERS_OFFSET = 2; ///< The index in the parameters for the owner information.
+void SetDParamsForOwnedBy(Owner owner, TileIndex tile);
 void SetLocalCompany(CompanyID new_company);
 void ShowBuyCompanyDialog(CompanyID company, bool hostile_takeover);
 void CompanyAdminUpdate(const Company *company);
