@@ -285,14 +285,14 @@ void UpdateLandscapingLimits()
 }
 
 /**
- * Set the right DParams to get the name of an owner.
+ * Set the right DParams for STR_ERROR_OWNED_BY.
  * @param owner the owner to get the name of.
  * @param tile  optional tile to get the right town.
  * @pre if tile == 0, then owner can't be OWNER_TOWN.
  */
-void GetNameOfOwner(Owner owner, TileIndex tile)
+void SetDParamsForOwnedBy(Owner owner, TileIndex tile)
 {
-	SetDParam(2, owner);
+	SetDParam(OWNED_BY_OWNER_IN_PARAMETERS_OFFSET, owner);
 
 	if (owner != OWNER_TOWN) {
 		if (!Company::IsValidID(owner)) {
@@ -326,7 +326,7 @@ CommandCost CheckOwnership(Owner owner, TileIndex tile)
 
 	if (owner == _current_company) return CommandCost();
 
-	GetNameOfOwner(owner, tile);
+	SetDParamsForOwnedBy(owner, tile);
 	return_cmd_error(STR_ERROR_OWNED_BY);
 }
 
@@ -346,7 +346,7 @@ CommandCost CheckTileOwnership(TileIndex tile)
 	if (owner == _current_company) return CommandCost();
 
 	/* no need to get the name of the owner unless we're the local company (saves some time) */
-	if (IsLocalCompany()) GetNameOfOwner(owner, tile);
+	if (IsLocalCompany()) SetDParamsForOwnedBy(owner, tile);
 	return_cmd_error(STR_ERROR_OWNED_BY);
 }
 
