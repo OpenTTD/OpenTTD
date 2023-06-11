@@ -1,3 +1,8 @@
+13.2.1 (2023-06-11)
+------------------------------------------------------------------------
+Fix: [Win32] use full monitor resolution for fullscreen (#10985)
+
+
 13.2 (2023-06-10)
 ------------------------------------------------------------------------
 Change: [Win32] position window in center of workspace of primary display (#10942)
