@@ -1106,19 +1106,19 @@ struct QueryWindow : public Window {
 	QueryCallbackProc *proc; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
 	uint64 params[10];       ///< local copy of #_global_string_params
 	StringID message;        ///< message shown for query window
-	StringID caption;        ///< title of window
 
 	QueryWindow(WindowDesc *desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
 	{
 		/* Create a backup of the variadic arguments to strings because it will be
 		 * overridden pretty often. We will copy these back for drawing */
 		CopyOutDParam(this->params, 0, lengthof(this->params));
-		this->caption = caption;
 		this->message = message;
 		this->proc    = callback;
 		this->parent  = parent;
 
-		this->InitNested(WN_CONFIRM_POPUP_QUERY);
+		this->CreateNestedTree();
+		this->GetWidget<NWidgetCore>(WID_Q_CAPTION)->SetDataTip(caption, STR_NULL);
+		this->FinishInitNested(WN_CONFIRM_POPUP_QUERY);
 	}
 
 	void Close() override
@@ -1139,10 +1139,6 @@ struct QueryWindow : public Window {
 	{
 		switch (widget) {
 			case WID_Q_CAPTION:
-				CopyInDParam(1, this->params, lengthof(this->params));
-				SetDParam(0, this->caption);
-				break;
-
 			case WID_Q_TEXT:
 				CopyInDParam(0, this->params, lengthof(this->params));
 				break;
@@ -1213,7 +1209,7 @@ struct QueryWindow : public Window {
 static const NWidgetPart _nested_query_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
-		NWidget(WWT_CAPTION, COLOUR_RED, WID_Q_CAPTION), SetDataTip(STR_JUST_STRING, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_RED, WID_Q_CAPTION), // The caption's string is set in the constructor
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
