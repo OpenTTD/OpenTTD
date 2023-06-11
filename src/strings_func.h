@@ -66,6 +66,7 @@ class StringParameters {
 public:
 	uint offset;              ///< Current offset in the data/type arrays.
 	uint num_param;           ///< Length of the data array.
+	WChar next_type = 0; ///< The type of the next data that is retrieved.
 
 	/** Create a new StringParameters instance. */
 	StringParameters(uint64 *data, uint num_param, WChar *type) :
@@ -115,12 +116,12 @@ public:
 
 	void ClearTypeInformation();
 
-	int64 GetInt64(WChar type = 0);
+	int64 GetInt64();
 
 	/** Read an int32 from the argument array. @see GetInt64. */
-	int32 GetInt32(WChar type = 0)
+	int32 GetInt32()
 	{
-		return (int32)this->GetInt64(type);
+		return (int32)this->GetInt64();
 	}
 
 	/**
