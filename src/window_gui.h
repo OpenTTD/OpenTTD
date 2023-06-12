@@ -521,9 +521,16 @@ public:
 	 */
 	virtual void SetStringParameters(int widget) const {}
 
+	/**
+	 * The window has gained focus.
+	 */
 	virtual void OnFocus();
 
-	virtual void OnFocusLost();
+	/**
+	 * The window has lost focus.
+	 * @param closing True iff the window has lost focus in the process of closing.
+	 */
+	virtual void OnFocusLost(bool closing);
 
 	/**
 	 * A key has been pressed.
