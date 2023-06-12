@@ -197,9 +197,9 @@ struct DropdownWindow : Window {
 		if (nwc != nullptr) SetBit(nwc->disp_flags, NDB_DROPDOWN_CLOSED);
 	}
 
-	void OnFocusLost() override
+	void OnFocusLost(bool closing) override
 	{
-		this->Close();
+		if (!closing) this->Close();
 	}
 
 	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override

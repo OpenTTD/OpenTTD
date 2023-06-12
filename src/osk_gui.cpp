@@ -197,10 +197,10 @@ struct OskWindow : public Window {
 		this->parent->SetWidgetDirty(this->text_btn);
 	}
 
-	void OnFocusLost() override
+	void OnFocusLost(bool closing) override
 	{
 		VideoDriver::GetInstance()->EditBoxLostFocus();
-		this->Close();
+		if (!closing) this->Close();
 	}
 };
 
