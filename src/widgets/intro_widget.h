@@ -12,6 +12,7 @@
 
 /** Widgets of the #SelectGameWindow class. */
 enum SelectGameIntroWidgets {
+	WID_SGI_GAME_VERSION,          ///< Game name and version label.
 	WID_SGI_GENERATE_GAME,         ///< Generate game button.
 	WID_SGI_LOAD_GAME,             ///< Load game button.
 	WID_SGI_PLAY_SCENARIO,         ///< Play scenario button.
