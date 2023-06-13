@@ -58,9 +58,7 @@ TextDirection _current_text_dir; ///< Text direction of the currently selected l
 std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
 #endif /* WITH_ICU_I18N */
 
-static uint64 _global_string_params_data[20];     ///< Global array of string parameters. To access, use #SetDParam.
-static WChar _global_string_params_type[20];      ///< Type of parameters stored in #_global_string_params
-StringParameters _global_string_params(_global_string_params_data, 20, _global_string_params_type);
+AllocatedStringParameters _global_string_params(20);
 
 /**
  * Prepare the string parameters for the next formatting run. This means
@@ -905,12 +903,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		args.SetTypeOfNextParameter(b);
 		switch (b) {
 			case SCC_ENCODED: {
-				uint64 sub_args_data[20];
-				WChar sub_args_type[20];
 				bool sub_args_need_free[20];
-				StringParameters sub_args(sub_args_data, 20, sub_args_type);
-
-				sub_args.PrepareForNextRun(); // Needed to reset the currently undefined types
+				AllocatedStringParameters sub_args(20);
 				memset(sub_args_need_free, 0, sizeof(sub_args_need_free));
 
 				char *p;
@@ -1400,9 +1394,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_DEPOT_NAME: { // {DEPOT}
 				VehicleType vt = (VehicleType)args.GetInt32();
 				if (vt == VEH_AIRCRAFT) {
-					uint64 args_array[] = {(uint64)args.GetInt32()};
-					WChar types_array[] = {SCC_STATION_NAME};
-					StringParameters tmp_params(args_array, 1, types_array);
+					StringParameters tmp_params = StringParameters(args, 1);
 					GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_AIRCRAFT, tmp_params);
 					break;
 				}
@@ -1437,9 +1429,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						assert(grffile != nullptr);
 
 						StartTextRefStackUsage(grffile, 6);
-						uint64 tmp_dparam[6] = { 0 };
-						WChar tmp_type[6] = { 0 };
-						StringParameters tmp_params(tmp_dparam, 6, tmp_type);
+						AllocatedStringParameters tmp_params(6);
 						GetStringWithArgs(builder, GetGRFStringID(grffile->grfid, 0xD000 + callback), tmp_params);
 						StopTextRefStackUsage();
 
@@ -1536,9 +1526,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						}
 					}
 
-					uint64 args_array[] = {STR_TOWN_NAME, st->town->index, st->index};
-					WChar types_array[] = {0, SCC_TOWN_NAME, SCC_NUM};
-					StringParameters tmp_params(args_array, 3, types_array);
+					auto tmp_params = MakeParameters(STR_TOWN_NAME, st->town->index, st->index);
 					GetStringWithArgs(builder, string_id, tmp_params);
 				}
 				break;
