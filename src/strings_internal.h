@@ -15,23 +15,22 @@
 
 class StringParameters {
 protected:
-	StringParameters *parent; ///< If not nullptr, this instance references data from this parent instance.
+	StringParameters *parent = nullptr; ///< If not nullptr, this instance references data from this parent instance.
 	uint64 *data;             ///< Array with the actual data.
 	WChar *type;              ///< Array with type information about the data. Can be nullptr when no type information is needed. See #StringControlCode.
 
 	WChar next_type = 0; ///< The type of the next data that is retrieved.
 	size_t offset = 0; ///< Current offset in the data/type arrays.
 
-public:
-	size_t num_param; ///< Length of the data array.
-
 	/** Create a new StringParameters instance. */
 	StringParameters(uint64 *data, size_t num_param, WChar *type) :
-		parent(nullptr),
 		data(data),
 		type(type),
 		num_param(num_param)
 	{ }
+
+public:
+	size_t num_param; ///< Length of the data array.
 
 	/**
 	 * Create a new StringParameters instance that can reference part of the data of
@@ -169,11 +168,13 @@ public:
  */
 class AllocatedStringParameters : public StringParameters {
 	std::vector<uint64_t> params; ///< The actual parameters
+	std::vector<WChar> types; ///< The actual types.
 
 public:
-	AllocatedStringParameters(size_t parameters = 0) : StringParameters(nullptr, parameters, nullptr), params(parameters)
+	AllocatedStringParameters(size_t parameters = 0) : StringParameters(nullptr, parameters, nullptr), params(parameters), types(parameters)
 	{
 		this->data = params.data();
+		this->type = types.data();
 	}
 };
 
