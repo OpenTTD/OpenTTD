@@ -2433,7 +2433,7 @@ void Industry::FillCachedName() const
 {
 	int64 args_array[] = { this->index };
 	StringParameters tmp_params(args_array);
-	this->cached_name = GetStringWithArgs(STR_INDUSTRY_NAME, &tmp_params);
+	this->cached_name = GetStringWithArgs(STR_INDUSTRY_NAME, tmp_params);
 }
 
 void ClearAllIndustryCachedNames()

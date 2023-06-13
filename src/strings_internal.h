@@ -112,7 +112,7 @@ public:
 	}
 };
 
-void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters *args, uint case_index = 0, bool game_script = false);
+void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters &args, uint case_index = 0, bool game_script = false);
 
 /* Do not leak the StringBuilder to everywhere. */
 void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32_t seed);
