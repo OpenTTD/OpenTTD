@@ -123,12 +123,6 @@ public:
 		return (int32)this->GetInt64(type);
 	}
 
-	/** Get a pointer to the current element in the data array. */
-	uint64 *GetDataPointer() const
-	{
-		return &this->data[this->offset];
-	}
-
 	/**
 	 * Get a new instance of StringParameters that is a "range" into the
 	 * parameters existing parameters. Upon destruction the offset in the parent
