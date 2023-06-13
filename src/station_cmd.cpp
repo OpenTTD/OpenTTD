@@ -461,8 +461,7 @@ void UpdateAllStationVirtCoords()
 
 void BaseStation::FillCachedName() const
 {
-	int64 args_array[] = { this->index };
-	StringParameters tmp_params(args_array);
+	auto tmp_params = MakeParameters(this->index);
 	this->cached_name = GetStringWithArgs(Waypoint::IsExpected(this) ? STR_WAYPOINT_NAME : STR_STATION_NAME, tmp_params);
 }
 

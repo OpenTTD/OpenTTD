@@ -48,8 +48,7 @@ TownNameParams::TownNameParams(const Town *t) :
 static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint32 townnameparts)
 {
 	if (par->grfid == 0) {
-		int64 args_array[1] = { townnameparts };
-		StringParameters tmp_params(args_array);
+		auto tmp_params = MakeParameters(townnameparts);
 		GetStringWithArgs(builder, par->type, tmp_params);
 		return;
 	}
