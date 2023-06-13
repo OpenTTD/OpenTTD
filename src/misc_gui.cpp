@@ -673,8 +673,7 @@ struct TooltipsWindow : public Window
 		static_assert(sizeof(this->params[0]) == sizeof(params[0]));
 		assert(paramcount <= lengthof(this->params));
 		if (params == nullptr) {
-			_global_string_params.offset = 0;
-			params = _global_string_params.GetDataPointer();
+			params = _global_string_params.GetPointerToOffset(0);
 		}
 		if (paramcount > 0) memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;
