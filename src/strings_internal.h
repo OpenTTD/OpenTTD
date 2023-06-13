@@ -119,4 +119,6 @@ void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32_t seed);
 void GetTownName(StringBuilder &builder, const struct Town *t);
 void GRFTownNameGenerate(StringBuilder &builder, uint32 grfid, uint16 gen, uint32 seed);
 
+uint RemapNewGRFStringControlCode(uint scc, const char **str, StringParameters &parameters, bool modify_parameters);
+
 #endif /* STRINGS_INTERNAL_H */

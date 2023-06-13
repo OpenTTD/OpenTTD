@@ -129,6 +129,20 @@ public:
 		return &this->data[this->offset];
 	}
 
+	/**
+	 * Get a new instance of StringParameters that is a "range" into the
+	 * parameters existing parameters. Upon destruction the offset in the parent
+	 * is not updated. However, calls to SetDParam do update the parameters.
+	 *
+	 * The returned StringParameters must not outlive this StringParameters.
+	 * @return A "range" of the string parameters.
+	 */
+	StringParameters GetRemainingParameters()
+	{
+		return StringParameters(&this->data[this->offset], GetDataLeft(),
+			this->type == nullptr ? nullptr : &this->type[this->offset]);
+	}
+
 	/** Return the amount of elements which can still be read. */
 	uint GetDataLeft() const
 	{
