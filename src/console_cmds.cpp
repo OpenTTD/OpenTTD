@@ -2105,6 +2105,11 @@ DEF_CONSOLE_CMD(ConListSettings)
 
 DEF_CONSOLE_CMD(ConGamelogPrint)
 {
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Print logged fundamental changes to the game since the start. Usage: 'gamelog'.");
+		return true;
+	}
+
 	_gamelog.PrintConsole();
 	return true;
 }
