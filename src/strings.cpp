@@ -868,8 +868,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 			/* We need to pass some stuff as it might be modified. */
-			//todo: should argve be passed here too?
-			b = RemapNewGRFStringControlCode(b, &str, (int64 *)args->GetDataPointer(), args->GetDataLeft(), dry_run);
+			StringParameters remaining = args->GetRemainingParameters();
+			b = RemapNewGRFStringControlCode(b, &str, remaining, dry_run);
 			if (b == 0) continue;
 		}
 
