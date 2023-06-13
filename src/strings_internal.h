@@ -14,6 +14,7 @@
 #include "string_func.h"
 
 class StringParameters {
+protected:
 	StringParameters *parent; ///< If not nullptr, this instance references data from this parent instance.
 	uint64 *data;             ///< Array with the actual data.
 	WChar *type;              ///< Array with type information about the data. Can be nullptr when no type information is needed. See #StringControlCode.
@@ -30,18 +31,6 @@ public:
 		type(type),
 		num_param(num_param)
 	{ }
-
-	/** Create a new StringParameters instance. */
-	template <size_t Tnum_param>
-	StringParameters(int64 (&data)[Tnum_param]) :
-		parent(nullptr),
-		data((uint64 *)data),
-		type(nullptr),
-		offset(0),
-		num_param(Tnum_param)
-	{
-		static_assert(sizeof(data[0]) == sizeof(uint64));
-	}
 
 	/**
 	 * Create a new StringParameters instance that can reference part of the data of
@@ -136,12 +125,45 @@ public:
 		this->data[n] = v;
 	}
 
+	void SetParam(size_t n, const char *str) { this->SetParam(n, (uint64_t)(size_t)str); }
+	void SetParam(size_t n, const std::string &str) { this->SetParam(n, str.c_str()); }
+	void SetParam(size_t n, std::string &&str) = delete; // block passing temporaries to SetDParam
+
 	uint64 GetParam(size_t n) const
 	{
 		assert(n < this->num_param);
 		return this->data[n];
 	}
 };
+
+/**
+ * Extension of StringParameters with its own statically allocated buffer for
+ * the parameters.
+ */
+class AllocatedStringParameters : public StringParameters {
+	std::vector<uint64_t> params; ///< The actual parameters
+
+public:
+	AllocatedStringParameters(size_t parameters = 0) : StringParameters(nullptr, parameters, nullptr), params(parameters)
+	{
+		this->data = params.data();
+	}
+};
+
+/**
+ * Helper to create the StringParameters with its own buffer with the given
+ * parameter values.
+ * @param args The parameters to set for the to be created StringParameters.
+ * @return The constructed StringParameters.
+ */
+template <typename... Args>
+static auto MakeParameters(const Args&... args)
+{
+	AllocatedStringParameters parameters(sizeof...(args));
+	size_t index = 0;
+	(parameters.SetParam(index++, std::forward<const Args&>(args)), ...);
+	return parameters;
+}
 
 /**
  * Equivalent to the std::back_insert_iterator in function, with some
