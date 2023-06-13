@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file gamelog.cpp Definition of functions used for logging of important changes in the game */
+/** @file gamelog.cpp Definition of functions used for logging of fundamental changes to the game */
 
 #include "stdafx.h"
 #include "saveload/saveload.h"
