@@ -339,7 +339,7 @@ std::string GetStringWithArgs(StringID string, StringParameters &args)
  */
 void SetDParamStr(size_t n, const char *str)
 {
-	SetDParam(n, (uint64)(size_t)str);
+	_global_string_params.SetParam(n, str);
 }
 
 /**
@@ -350,7 +350,7 @@ void SetDParamStr(size_t n, const char *str)
  */
 void SetDParamStr(size_t n, const std::string &str)
 {
-	SetDParamStr(n, str.c_str());
+	_global_string_params.SetParam(n, str);
 }
 
 /**
@@ -461,8 +461,7 @@ static void FormatYmdString(StringBuilder &builder, TimerGameCalendar::Date date
 	TimerGameCalendar::YearMonthDay ymd;
 	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 
-	int64 args[] = {ymd.day + STR_DAY_NUMBER_1ST - 1, STR_MONTH_ABBREV_JAN + ymd.month, ymd.year};
-	StringParameters tmp_params(args);
+	auto tmp_params = MakeParameters(ymd.day + STR_DAY_NUMBER_1ST - 1, STR_MONTH_ABBREV_JAN + ymd.month, ymd.year);
 	FormatString(builder, GetStringPtr(STR_FORMAT_DATE_LONG), tmp_params, case_index);
 }
 
@@ -471,8 +470,7 @@ static void FormatMonthAndYear(StringBuilder &builder, TimerGameCalendar::Date d
 	TimerGameCalendar::YearMonthDay ymd;
 	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 
-	int64 args[] = {STR_MONTH_JAN + ymd.month, ymd.year};
-	StringParameters tmp_params(args);
+	auto tmp_params = MakeParameters(STR_MONTH_JAN + ymd.month, ymd.year);
 	FormatString(builder, GetStringPtr(STR_FORMAT_DATE_SHORT), tmp_params, case_index);
 }
 
@@ -482,8 +480,7 @@ static void FormatTinyOrISODate(StringBuilder &builder, TimerGameCalendar::Date 
 	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 
 	/* Day and month are zero-padded with ZEROFILL_NUM, hence the two 2s. */
-	int64 args[] = {ymd.day, 2, ymd.month + 1, 2, ymd.year};
-	StringParameters tmp_params(args);
+	auto tmp_params = MakeParameters(ymd.day, 2, ymd.month + 1, 2, ymd.year);
 	FormatString(builder, GetStringPtr(str), tmp_params);
 }
 
@@ -1213,16 +1210,14 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				switch (cargo_str) {
 					case STR_TONS: {
 						assert(_settings_game.locale.units_weight < lengthof(_units_weight));
-						int64 args_array[] = {_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetInt64())};
-						StringParameters tmp_params(args_array);
+						auto tmp_params = MakeParameters(_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetInt64()));
 						FormatString(builder, GetStringPtr(_units_weight[_settings_game.locale.units_weight].l), tmp_params);
 						break;
 					}
 
 					case STR_LITERS: {
 						assert(_settings_game.locale.units_volume < lengthof(_units_volume));
-						int64 args_array[] = {_units_volume[_settings_game.locale.units_volume].c.ToDisplay(args.GetInt64())};
-						StringParameters tmp_params(args_array);
+						auto tmp_params = MakeParameters(_units_volume[_settings_game.locale.units_volume].c.ToDisplay(args.GetInt64()));
 						FormatString(builder, GetStringPtr(_units_volume[_settings_game.locale.units_volume].l), tmp_params);
 						break;
 					}
@@ -1300,8 +1295,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_FORCE: { // {FORCE}
 				assert(_settings_game.locale.units_force < lengthof(_units_force));
 				const auto &x = _units_force[_settings_game.locale.units_force];
-				int64 args_array[] = {x.c.ToDisplay(args.GetInt64()), x.decimal_places};
-				StringParameters tmp_params(args_array);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1309,8 +1303,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_HEIGHT: { // {HEIGHT}
 				assert(_settings_game.locale.units_height < lengthof(_units_height));
 				const auto &x = _units_height[_settings_game.locale.units_height];
-				int64 args_array[] = {x.c.ToDisplay(args.GetInt64()), x.decimal_places};
-				StringParameters tmp_params(args_array);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1318,8 +1311,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_POWER: { // {POWER}
 				assert(_settings_game.locale.units_power < lengthof(_units_power));
 				const auto &x = _units_power[_settings_game.locale.units_power];
-				int64 args_array[] = {x.c.ToDisplay(args.GetInt64()), x.decimal_places};
-				StringParameters tmp_params(args_array);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1328,8 +1320,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				auto setting = _settings_game.locale.units_power * 3u + _settings_game.locale.units_weight;
 				assert(setting < lengthof(_units_power_to_weight));
 				const auto &x = _units_power_to_weight[setting];
-				int64 args_array[] = {x.c.ToDisplay(args.GetInt64()), x.decimal_places};
-				StringParameters tmp_params(args_array);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1341,8 +1332,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				byte units = GetVelocityUnits(vt);
 				assert(units < lengthof(_units_velocity));
 				const auto &x = _units_velocity[units];
-				int64 args_array[] = {ConvertKmhishSpeedToDisplaySpeed(GB(arg, 0, 56), vt), x.decimal_places};
-				StringParameters tmp_params(args_array);
+				auto tmp_params = MakeParameters(ConvertKmhishSpeedToDisplaySpeed(GB(arg, 0, 56), vt), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1350,8 +1340,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_VOLUME_SHORT: { // {VOLUME_SHORT}
 				assert(_settings_game.locale.units_volume < lengthof(_units_volume));
 				const auto &x = _units_volume[_settings_game.locale.units_volume];
-				int64 args_array[] = {x.c.ToDisplay(args.GetInt64()), x.decimal_places};
-				StringParameters tmp_params(args_array);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1359,8 +1348,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_VOLUME_LONG: { // {VOLUME_LONG}
 				assert(_settings_game.locale.units_volume < lengthof(_units_volume));
 				const auto &x = _units_volume[_settings_game.locale.units_volume];
-				int64 args_array[] = {x.c.ToDisplay(args.GetInt64()), x.decimal_places};
-				StringParameters tmp_params(args_array);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.l), tmp_params);
 				break;
 			}
@@ -1368,8 +1356,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_WEIGHT_SHORT: { // {WEIGHT_SHORT}
 				assert(_settings_game.locale.units_weight < lengthof(_units_weight));
 				const auto &x = _units_weight[_settings_game.locale.units_weight];
-				int64 args_array[] = {x.c.ToDisplay(args.GetInt64()), x.decimal_places};
-				StringParameters tmp_params(args_array);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1377,8 +1364,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_WEIGHT_LONG: { // {WEIGHT_LONG}
 				assert(_settings_game.locale.units_weight < lengthof(_units_weight));
 				const auto &x = _units_weight[_settings_game.locale.units_weight];
-				int64 args_array[] = {x.c.ToDisplay(args.GetInt64()), x.decimal_places};
-				StringParameters tmp_params(args_array);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.l), tmp_params);
 				break;
 			}
@@ -1388,12 +1374,10 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				if (c == nullptr) break;
 
 				if (!c->name.empty()) {
-					int64 args_array[] = {(int64)(size_t)c->name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(c->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else {
-					int64 args_array[] = {c->name_2};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(c->name_2);
 					GetStringWithArgs(builder, c->name_1, tmp_params);
 				}
 				break;
@@ -1404,8 +1388,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				/* Nothing is added for AI or inactive companies */
 				if (Company::IsValidHumanID(company)) {
-					int64 args_array[] = {company + 1};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(company + 1);
 					GetStringWithArgs(builder, STR_FORMAT_COMPANY_NUM, tmp_params);
 				}
 				break;
@@ -1423,12 +1406,10 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				const Depot *d = Depot::Get(args.GetInt32());
 				if (!d->name.empty()) {
-					int64 args_array[] = {(int64)(size_t)d->name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(d->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else {
-					int64 args_array[] = {d->town->index, d->town_cn + 1};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(d->town->index, d->town_cn + 1);
 					GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_TRAIN + 2 * vt + (d->town_cn == 0 ? 0 : 1), tmp_params);
 				}
 				break;
@@ -1440,10 +1421,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				if (e == nullptr) break;
 
 				if (!e->name.empty() && e->IsEnabled()) {
-					int64 args_array[] = {(int64)(size_t)e->name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(e->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
-
 					break;
 				}
 
@@ -1465,7 +1444,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					}
 				}
 
-				StringParameters tmp_params(nullptr, 0, nullptr);
+				auto tmp_params = AllocatedStringParameters();
 				GetStringWithArgs(builder, e->info.string_id, tmp_params);
 				break;
 			}
@@ -1475,13 +1454,10 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				if (g == nullptr) break;
 
 				if (!g->name.empty()) {
-					int64 args_array[] = {(int64)(size_t)g->name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(g->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else {
-					int64 args_array[] = {g->index};
-					StringParameters tmp_params(args_array);
-
+					auto tmp_params = MakeParameters(g->index);
 					GetStringWithArgs(builder, STR_FORMAT_GROUP_NAME, tmp_params);
 				}
 				break;
@@ -1498,13 +1474,11 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				} else if (_scan_for_gender_data) {
 					/* Gender is defined by the industry type.
 					 * STR_FORMAT_INDUSTRY_NAME may have the town first, so it would result in the gender of the town name */
-					StringParameters tmp_params(nullptr, 0, nullptr);
+					auto tmp_params = AllocatedStringParameters();
 					FormatString(builder, GetStringPtr(GetIndustrySpec(i->type)->name), tmp_params, next_substr_case_index);
 				} else {
 					/* First print the town name and the industry type name. */
-					int64 args_array[2] = {i->town->index, GetIndustrySpec(i->type)->name};
-					StringParameters tmp_params(args_array);
-
+					auto tmp_params = MakeParameters(i->town->index, GetIndustrySpec(i->type)->name);
 					FormatString(builder, GetStringPtr(STR_FORMAT_INDUSTRY_NAME), tmp_params, next_substr_case_index);
 				}
 				next_substr_case_index = 0;
@@ -1516,12 +1490,10 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				if (c == nullptr) break;
 
 				if (!c->president_name.empty()) {
-					int64 args_array[] = {(int64)(size_t)c->president_name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(c->president_name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else {
-					int64 args_array[] = {c->president_name_2};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(c->president_name_2);
 					GetStringWithArgs(builder, c->president_name_1, tmp_params);
 				}
 				break;
@@ -1535,7 +1507,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					/* The station doesn't exist anymore. The only place where we might
 					 * be "drawing" an invalid station is in the case of cargo that is
 					 * in transit. */
-					StringParameters tmp_params(nullptr, 0, nullptr);
+					auto tmp_params = AllocatedStringParameters();
 					GetStringWithArgs(builder, STR_UNKNOWN_STATION, tmp_params);
 					break;
 				}
@@ -1545,8 +1517,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					AutoRestoreBackup cache_backup(use_cache, false);
 					builder += st->GetCachedName();
 				} else if (!st->name.empty()) {
-					int64 args_array[] = {(int64)(size_t)st->name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(st->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else {
 					StringID string_id = st->string_id;
@@ -1579,8 +1550,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					AutoRestoreBackup cache_backup(use_cache, false);
 					builder += t->GetCachedName();
 				} else if (!t->name.empty()) {
-					int64 args_array[] = {(int64)(size_t)t->name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(t->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else {
 					GetTownName(builder, t);
@@ -1593,12 +1563,10 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				if (wp == nullptr) break;
 
 				if (!wp->name.empty()) {
-					int64 args_array[] = {(int64)(size_t)wp->name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(wp->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else {
-					int64 args_array[] = {wp->town->index, wp->town_cn + 1};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(wp->town->index, wp->town_cn + 1);
 					StringID string_id = ((wp->string_id == STR_SV_STNAME_BUOY) ? STR_FORMAT_BUOY_NAME : STR_FORMAT_WAYPOINT_NAME);
 					if (wp->town_cn != 0) string_id++;
 					GetStringWithArgs(builder, string_id, tmp_params);
@@ -1611,17 +1579,14 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				if (v == nullptr) break;
 
 				if (!v->name.empty()) {
-					int64 args_array[] = {(int64)(size_t)v->name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(v->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else if (v->group_id != DEFAULT_GROUP) {
 					/* The vehicle has no name, but is member of a group, so print group name */
-					int64 args_array[] = {v->group_id, v->unitnumber};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(v->group_id, v->unitnumber);
 					GetStringWithArgs(builder, STR_FORMAT_GROUP_VEHICLE_NAME, tmp_params);
 				} else {
-					int64 args_array[] = {v->unitnumber};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(v->unitnumber);
 
 					StringID string_id;
 					switch (v->type) {
@@ -1642,11 +1607,10 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				if (si == nullptr) break;
 
 				if (!si->name.empty()) {
-					int64 args_array[] = {(int64)(size_t)si->name.c_str()};
-					StringParameters tmp_params(args_array);
+					auto tmp_params = MakeParameters(si->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else {
-					StringParameters tmp_params(nullptr, 0, nullptr);
+					auto tmp_params = AllocatedStringParameters();
 					GetStringWithArgs(builder, STR_DEFAULT_SIGN_NAME, tmp_params);
 				}
 				break;

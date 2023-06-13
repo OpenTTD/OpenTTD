@@ -2431,8 +2431,7 @@ void Industry::RecomputeProductionMultipliers()
 
 void Industry::FillCachedName() const
 {
-	int64 args_array[] = { this->index };
-	StringParameters tmp_params(args_array);
+	auto tmp_params = MakeParameters(this->index);
 	this->cached_name = GetStringWithArgs(STR_INDUSTRY_NAME, tmp_params);
 }
 
