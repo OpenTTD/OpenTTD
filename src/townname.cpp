@@ -50,7 +50,7 @@ static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint3
 	if (par->grfid == 0) {
 		int64 args_array[1] = { townnameparts };
 		StringParameters tmp_params(args_array);
-		GetStringWithArgs(builder, par->type, &tmp_params);
+		GetStringWithArgs(builder, par->type, tmp_params);
 		return;
 	}
 
