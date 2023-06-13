@@ -379,7 +379,7 @@ struct ScriptSettingsWindow : public Window {
 			TextColour colour;
 			uint idx = 0;
 			if (config_item.description.empty()) {
-				str = STR_JUST_STRING;
+				str = STR_JUST_STRING1;
 				colour = TC_ORANGE;
 			} else {
 				str = STR_AI_SETTINGS_SETTING;
@@ -1159,7 +1159,7 @@ static const NWidgetPart _nested_script_debug_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCRD_SCRIPT_GAME), SetMinimalSize(100, 20), SetResize(1, 0), SetDataTip(STR_AI_GAME_SCRIPT, STR_AI_GAME_SCRIPT_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCRD_NAME_TEXT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_AI_DEBUG_NAME_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCRD_NAME_TEXT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING2, STR_AI_DEBUG_NAME_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCRD_SETTINGS), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCRD_RELOAD_TOGGLE), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
 	EndContainer(),

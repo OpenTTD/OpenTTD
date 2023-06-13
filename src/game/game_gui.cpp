@@ -194,7 +194,7 @@ struct GSConfigWindow : public Window {
 					TextColour colour;
 					uint idx = 0;
 					if (config_item.description.empty()) {
-						str = STR_JUST_STRING;
+						str = STR_JUST_STRING1;
 						colour = TC_ORANGE;
 					} else {
 						str = STR_AI_SETTINGS_SETTING;
