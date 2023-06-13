@@ -1087,10 +1087,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_STRING: {// {STRING}
 				StringID string_id = args->GetInt32(SCC_STRING);
 				if (game_script && GetStringTab(string_id) != TEXT_TAB_GAMESCRIPT_START) break;
-				/* WARNING. It's prohibited for the included string to consume any arguments.
-				 * For included strings that consume argument, you should use STRING1, STRING2 etc.
-				 * To debug stuff you can set argv to nullptr and it will tell you */
-				StringParameters tmp_params(args->GetDataPointer(), args->GetDataLeft(), nullptr);
+				/* It's prohibited for the included string to consume any arguments. */
+				StringParameters tmp_params(*args, 0);
 				GetStringWithArgs(builder, string_id, &tmp_params, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;
