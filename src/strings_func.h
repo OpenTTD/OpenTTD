@@ -179,7 +179,7 @@ public:
 extern StringParameters _global_string_params;
 
 std::string GetString(StringID string);
-std::string GetStringWithArgs(StringID string, StringParameters *args);
+std::string GetStringWithArgs(StringID string, StringParameters &args);
 const char *GetStringPtr(StringID string);
 
 uint ConvertKmhishSpeedToDisplaySpeed(uint speed, VehicleType type);
