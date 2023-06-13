@@ -1226,7 +1226,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} zostaje zamknięty przez wierzycieli i wszystkie udziały zostają sprzedane!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nowa firma rozpoczęła działalność!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} rozpoczyna budowę w pobliżu miasta {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} zostało przejęte przez {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} zostało przejęte przez {STRING} za nieujawnioną kwotę!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Prezes)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponsoruje konstrukcję nowego miasta {TOWN}!
@@ -1938,7 +1938,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Od szarego do c
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Skala szarości
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Zachowanie przeciągania okna podglądu: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Zachowanie podczas przeciągania mapy
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Zachowanie podczas przeciągania mapy. Opcje „pozycja myszy zablokowana” nie działają na systemach, takich jak wersje internetowe, ekrany dotykowe, Linux z Waylandem i innych
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Przeciągnij okno podglądu prawym przyciskiem myszy, pozycja myszy zablokowana
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Przeciągnij mapę prawym przyciskiem myszy, pozycja myszy zablokowana
@@ -2460,6 +2460,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nie powi
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Błąd ustawień obrazu...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nie znaleziono kompatybilnego procesora graficznego. Przyspieszenie sprzętowe wyłączone.
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Sterownik GPU spowodował awarię gry. Wyłączono akcelerację sprzętową
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -4139,6 +4140,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Szczegó
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobacz szczegółowe wartości infrastruktury
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Przekaż pieniądze
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Przekaż część pieniędzy tej firmie
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Wrogie przejęcie
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Dokonaj wrogiego przejęcia tej firmy
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nowa twarz
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Wybierz nową twarz prezesa
@@ -4154,6 +4157,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nazwisko prezes
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Wpisz kwotę, jaką chcesz przekazać
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Szukamy firmy transportowej, która przejęłaby naszą firmę.{}{}Chcesz zakupić {COMPANY} za {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}W ramach wrogiego przejęcia {COMPANY} wykupisz wszystkie aktywa, spłacisz wszystkie pożyczki i wypłacisz dwuletnie zyski.{}{}Całość szacowana jest na {CURRENCY_LONG}.{}{}Czy chcesz kontynuować to wrogie przejęcie?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktura firmy {COMPANY}

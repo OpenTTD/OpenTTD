@@ -3760,6 +3760,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljer
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Se detaljerede infrastruktur-tal
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Giv penge
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Giv penge til dette selskab
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Fjendtlig overtagelse
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Foretag en fjendtlig overtagelse af dette firma
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nyt ansigt

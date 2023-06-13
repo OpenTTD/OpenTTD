@@ -847,7 +847,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} 회사가 채권자에 의해 모든 자산이 팔려 파산하였습니다!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}새로운 운송회사 등장!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING}의 관리권이 {STRING}(으)로 넘어갔습니다!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} 회사가 비공개 금액에 {STRING} 회사로 인수되었습니다!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(사장)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING}은(는) 새로운 도시 {TOWN}을(를) 건설했습니다!
@@ -3761,6 +3761,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}상세�
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}기반시설 상세정보 창을 엽니다
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}돈 보내기
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}이 회사에 돈을 보냅니다
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}강제 인수
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}이 회사를 강제 인수
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}새 얼굴
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}사장의 얼굴을 선택합니다
@@ -3776,6 +3778,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :사장 이름
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :보내고자 하는 돈의 액수를 입력하세요
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송 회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY_LONG}의 가격으로 인수합병하시겠습니까?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}{COMPANY} 회사를 강제 인수하려면 해당 회사의 모든 자산을 구매하고, 모든 대출을 상환하며 2년치 이익을 지불하게 됩니다.{}{}총 금액은 {CURRENCY_LONG} 가 될 것입니다.{}{}정말 강제 인수를 진행하시겠습니까?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY}의 기반시설

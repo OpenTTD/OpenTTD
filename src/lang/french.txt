@@ -847,7 +847,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} a été dissolue par ses créanciers et tous ses actifs vendus{NBSP}!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nouvelle compagnie de transport{NBSP}!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} commence à construire près de {TOWN}{NBSP}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} a été rachetée par {STRING}{NBSP}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} a été rachetée par {STRING} pour un montant iconnu !
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Président)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} a sponsorisé la construction de la nouvelle ville {TOWN}{NBSP}!
@@ -3761,6 +3761,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Détails
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Afficher le détail des calculs d'infrastructure
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Donner de l’argent
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Donner de l’argent à cette compagnie
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Rachat de force
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Racheter de force cette compagnie
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nouveau visage
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Choix d'un nouveau visage pour le P.D.G.
@@ -3776,6 +3778,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom du P.D.G.
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Entrer le montant que vous souhaiter donner
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Nous sommes à la recherche d'un repreneur pour notre compagnie{}{}Voulez-vous acheter {COMPANY} pour {CURRENCY_LONG}{NBSP}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Si vous rachetez de force la compagnie {COMPANY} vous acquérirez tout ce qu'elle possède, rembourserez les prêts et payerez pendant deux ans une partie des profits.{}{} Le total est estimé à {CURRENCY_LONG}.{}{} Souhaitez-vous tout de même racheter de force cette compagnie ?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastructure de {COMPANY}

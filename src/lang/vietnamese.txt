@@ -846,7 +846,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} đã bị đóng cửa bởi chủ nợ và tất cả tài sản đã bị bán đi!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Công ty vận tải mới thành lập!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} đang được xây dựng gần thị trấn {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} đã bị kiểm soát bởi {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} đã bị kiểm soát bởi {STRING} với số tiền không được tiết lộ!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Giám Đốc)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} Tài trợ xây dựng Thị Xã mới {TOWN}!
@@ -1558,7 +1558,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Xám tới đ�
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Thang màu xám
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Kiểu cuộn khung nhìn: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Hành xử khi kéo, cuộn bản đồ
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Hành xử khi kéo, cuộn bản đồ. Tùy chọn "khóa vị trí chuột" không hoạt động ở một số phiên bản, như phiên bản web, phiên bản cảm ứng, Linux với Wayland, và một số phiên bản khác
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Kéo cuộn khung nhìn kiểu RMB, khoá vị trí con trỏ chuột
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Kéo cuộn kiểu RMB, khoá vị trí con trỏ chuột
@@ -2080,6 +2080,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Phân b�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Lỗi ở thiết lập hình ảnh...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... không tìm thấy GPU tương thích. Tăng tốc phần cứng đã được tắt
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... trình điều khiển GPU đã làm trò chơi bị lỗi. Tăng tốc phần cứng đã được tắt
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3759,6 +3760,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Chi ti�
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Xem chi tiết thống kê hạ tầng
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Tặng tiền
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Tặng tiền cho công ty này
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Thâu tóm thù địch
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Thực hiện việc thâu tóm thù địch với công ty này
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Chọn khuôn mặt khác
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Chọn khuôn mặt của người điều hành
@@ -3774,6 +3777,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Tên Giám Đ�
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Nhập số tiền bạn muốn tặng
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Chúng tôi tìm một công ty để chuyển nhượng công việc kinh doanh và tài sản công ty chúng tôi.{}{}Bạn có muốn mua công ty {COMPANY} của chúng tôi với giá {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Khi thâu tóm thù địch công ty {COMPANY}, bạn sẽ mua hết tài sản, trả hết nợ, và trả một số tiền tương ứng với lợi nhuận trong hai năm.{}{}Tổng số tiền dự tính là {CURRENCY_LONG}.{}{}Bạn có muốn tiếp tục việc thâu tóm thù địch này?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Cơ sở hạ tầng của công ty {COMPANY}
