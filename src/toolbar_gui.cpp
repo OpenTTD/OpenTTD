@@ -2027,6 +2027,10 @@ struct MainToolbarWindow : Window {
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
+		bool lowered = this->IsWidgetLowered(widget);
+		this->CloseChildWindows(WC_DROPDOWN_MENU);
+		if (lowered != this->IsWidgetLowered(widget)) return;
+
 		if (_game_mode != GM_MENU && !this->IsWidgetDisabled(widget)) _toolbar_button_procs[widget](this);
 	}
 
