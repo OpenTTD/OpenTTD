@@ -806,6 +806,7 @@ void IniSaveWindowSettings(IniFile &ini, const char *grpname, void *desc)
 bool SettingDesc::IsEditable(bool do_command) const
 {
 	if (!do_command && !(this->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server && !(this->flags & SF_PER_COMPANY)) return false;
+	if (do_command && (this->flags & SF_NO_NETWORK_SYNC)) return false;
 	if ((this->flags & SF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return false;
 	if ((this->flags & SF_NO_NETWORK) && _networking) return false;
 	if ((this->flags & SF_NEWGAME_ONLY) &&
