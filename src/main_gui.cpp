@@ -510,7 +510,7 @@ struct MainWindow : Window
 static WindowDesc _main_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
-	0,
+	WDF_NO_CLOSE,
 	_nested_main_window_widgets, lengthof(_nested_main_window_widgets),
 	&MainWindow::hotkeys
 );

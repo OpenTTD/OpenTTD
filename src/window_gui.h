@@ -138,6 +138,7 @@ enum WindowDefaultFlag {
 	WDF_CONSTRUCTION    =   1 << 0, ///< This window is used for construction; close it whenever changing company.
 	WDF_MODAL           =   1 << 1, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
 	WDF_NO_FOCUS        =   1 << 2, ///< This window won't get focus/make any other window lose focus when click
+	WDF_NO_CLOSE        =   1 << 3, ///< This window can't be interactively closed
 };
 
 /**

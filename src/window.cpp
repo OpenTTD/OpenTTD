@@ -820,7 +820,7 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	}
 
 	/* Right-click close is enabled and there is a closebox */
-	if (_settings_client.gui.right_mouse_wnd_close && w->nested_root->GetWidgetOfType(WWT_CLOSEBOX)) {
+	if (_settings_client.gui.right_mouse_wnd_close && (w->window_desc->flags & WDF_NO_CLOSE) == 0) {
 		w->Close();
 	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->index, TCC_RIGHT_CLICK) && wid->tool_tip != 0) {
 		GuiShowTooltips(w, wid->tool_tip, 0, nullptr, TCC_RIGHT_CLICK);
@@ -3293,11 +3293,7 @@ void CloseNonVitalWindows()
 {
 	/* Note: the container remains stable, even when deleting windows. */
 	for (Window *w : Window::Iterate()) {
-		if (w->window_class != WC_MAIN_WINDOW &&
-				w->window_class != WC_SELECT_GAME &&
-				w->window_class != WC_MAIN_TOOLBAR &&
-				w->window_class != WC_STATUS_BAR &&
-				w->window_class != WC_TOOLTIPS &&
+		if ((w->window_desc->flags & WDF_NO_CLOSE) == 0 &&
 				(w->flags & WF_STICKY) == 0) { // do not delete windows which are 'pinned'
 
 			w->Close();
@@ -3314,12 +3310,9 @@ void CloseNonVitalWindows()
  */
 void CloseAllNonVitalWindows()
 {
-	/* Close every window except for stickied ones, then sticky ones as well */
-	CloseNonVitalWindows();
-
 	/* Note: the container remains stable, even when closing windows. */
 	for (Window *w : Window::Iterate()) {
-		if (w->flags & WF_STICKY) {
+		if ((w->window_desc->flags & WDF_NO_CLOSE) == 0) {
 			w->Close();
 		}
 	}

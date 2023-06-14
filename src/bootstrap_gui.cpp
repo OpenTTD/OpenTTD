@@ -42,7 +42,7 @@ static const struct NWidgetPart _background_widgets[] = {
 static WindowDesc _background_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
-	0,
+	WDF_NO_CLOSE,
 	_background_widgets, lengthof(_background_widgets)
 );
 
@@ -80,7 +80,7 @@ static const NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
 static WindowDesc _bootstrap_errmsg_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
-	WDF_MODAL,
+	WDF_MODAL | WDF_NO_CLOSE,
 	_nested_bootstrap_errmsg_widgets, lengthof(_nested_bootstrap_errmsg_widgets)
 );
 
@@ -137,7 +137,7 @@ static const NWidgetPart _nested_bootstrap_download_status_window_widgets[] = {
 static WindowDesc _bootstrap_download_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
-	WDF_MODAL,
+	WDF_MODAL | WDF_NO_CLOSE,
 	_nested_bootstrap_download_status_window_widgets, lengthof(_nested_bootstrap_download_status_window_widgets)
 );
 
@@ -191,7 +191,7 @@ static const NWidgetPart _bootstrap_query_widgets[] = {
 static WindowDesc _bootstrap_query_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
-	0,
+	WDF_NO_CLOSE,
 	_bootstrap_query_widgets, lengthof(_bootstrap_query_widgets)
 );
 
