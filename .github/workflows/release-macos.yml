@@ -162,19 +162,19 @@ jobs:
         rm -f bundles/*.sha256
         echo "::endgroup::"
 
-    - name: Install gon
-      env:
-        HOMEBREW_NO_AUTO_UPDATE: 1
-        HOMEBREW_NO_INSTALL_CLEANUP: 1
-      run: |
-        brew tap mitchellh/gon
-        brew install mitchellh/gon/gon
-
     - name: Notarize
       env:
         AC_USERNAME: ${{ secrets.APPLE_DEVELOPER_APP_USERNAME }}
         AC_PASSWORD: ${{ secrets.APPLE_DEVELOPER_APP_PASSWORD }}
+        AC_TEAM_ID: ${{ secrets.APPLE_DEVELOPER_TEAM_ID }}
       run: |
+        if [ -z "${AC_USERNAME}" ]; then
+            # We may be running on a fork that doesn't have notarization secrets set up; skip this step
+            echo No notarization secrets set up, skipping.
+            exit 0
+        fi
+
+        xcrun notarytool store-credentials --apple-id "${AC_USERNAME}" --password "${AC_PASSWORD}" --team-id "${AC_TEAM_ID}" openttd
         cd build-x64
         ../os/macosx/notarize.sh
 
