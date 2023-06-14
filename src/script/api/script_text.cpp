@@ -209,7 +209,7 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 			switch (cur_param.type) {
 				case StringParam::RAW_STRING:
 					if (!std::holds_alternative<std::string>(this->param[cur_idx])) throw Script_FatalError(fmt::format("{}: Parameter {} expects a raw string", name, param_count));
-					fmt::format_to(output, ":\"%s\"", std::get<std::string>(this->param[cur_idx++]));
+					fmt::format_to(output, ":\"{}\"", std::get<std::string>(this->param[cur_idx++]));
 					break;
 
 				case StringParam::STRING: {
