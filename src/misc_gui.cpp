@@ -654,7 +654,7 @@ static const NWidgetPart _nested_tooltips_widgets[] = {
 static WindowDesc _tool_tips_desc(
 	WDP_MANUAL, nullptr, 0, 0, // Coordinates and sizes are not used,
 	WC_TOOLTIPS, WC_NONE,
-	WDF_NO_FOCUS,
+	WDF_NO_FOCUS | WDF_NO_CLOSE,
 	_nested_tooltips_widgets, lengthof(_nested_tooltips_widgets)
 );
 

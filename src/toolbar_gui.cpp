@@ -2251,7 +2251,7 @@ static const NWidgetPart _nested_toolbar_normal_widgets[] = {
 static WindowDesc _toolb_normal_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
-	WDF_NO_FOCUS,
+	WDF_NO_FOCUS | WDF_NO_CLOSE,
 	_nested_toolbar_normal_widgets, lengthof(_nested_toolbar_normal_widgets),
 	&MainToolbarWindow::hotkeys
 );
@@ -2591,7 +2591,7 @@ static const NWidgetPart _nested_toolb_scen_widgets[] = {
 static WindowDesc _toolb_scen_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_MAIN_TOOLBAR, WC_NONE,
-	WDF_NO_FOCUS,
+	WDF_NO_FOCUS | WDF_NO_CLOSE,
 	_nested_toolb_scen_widgets, lengthof(_nested_toolb_scen_widgets),
 	&ScenarioEditorToolbarWindow::hotkeys
 );
