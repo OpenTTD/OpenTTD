@@ -723,7 +723,7 @@ int openttd_main(int argc, char *argv[])
 		if (BlitterFactory::SelectBlitter(blitter) == nullptr) {
 			blitter.empty() ?
 				UserError("Failed to autoprobe blitter") :
-				UserError("Failed to select requested blitter '{}'; does it exist?", blitter.c_str());
+				UserError("Failed to select requested blitter '{}'; does it exist?", blitter);
 		}
 	}
 

@@ -7727,7 +7727,7 @@ static void FeatureTownName(ByteReader *buf)
 			const char *name = buf->ReadString();
 
 			std::string lang_name = TranslateTTDPatchCodes(grfid, lang, false, name);
-			GrfMsg(6, "FeatureTownName: lang 0x{:X} -> '{}'", lang, lang_name.c_str());
+			GrfMsg(6, "FeatureTownName: lang 0x{:X} -> '{}'", lang, lang_name);
 
 			style = AddGRFString(grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 
@@ -7766,7 +7766,7 @@ static void FeatureTownName(ByteReader *buf)
 			} else {
 				const char *text = buf->ReadString();
 				part.text = TranslateTTDPatchCodes(grfid, 0, false, text);
-				GrfMsg(6, "FeatureTownName: part {}, text {}, '{}' (with probability {})", partnum, textnum, part.text.c_str(), part.prob);
+				GrfMsg(6, "FeatureTownName: part {}, text {}, '{}' (with probability {})", partnum, textnum, part.text, part.prob);
 			}
 			partlist.maxprob += GB(part.prob, 0, 7);
 		}

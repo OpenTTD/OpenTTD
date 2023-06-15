@@ -99,7 +99,7 @@ struct SignList {
 		const std::string &a_name = (*a)->name.empty() ? SignList::default_name : (*a)->name;
 
 		filter.ResetState();
-		filter.AddLine(a_name.c_str());
+		filter.AddLine(a_name);
 		return filter.GetState();
 	}
 
