@@ -1459,7 +1459,7 @@ private:
 	{
 		filter.ResetState();
 		filter.AddLine((*a)->GetName());
-		filter.AddLine((*a)->filename.c_str());
+		filter.AddLine((*a)->filename);
 		filter.AddLine((*a)->GetDescription());
 		return filter.GetState();;
 	}
@@ -2101,7 +2101,7 @@ struct SavePresetWindow : public Window {
 				resize->height = FONT_HEIGHT_NORMAL;
 				size->height = 0;
 				for (uint i = 0; i < this->presets.size(); i++) {
-					Dimension d = GetStringBoundingBox(this->presets[i].c_str());
+					Dimension d = GetStringBoundingBox(this->presets[i]);
 					size->width = std::max(size->width, d.width + padding.width);
 					resize->height = std::max(resize->height, d.height);
 				}
@@ -2127,8 +2127,7 @@ struct SavePresetWindow : public Window {
 				for (uint i = min_index; i < max_index; i++) {
 					if ((int)i == this->selected) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 
-					const char *text = this->presets[i].c_str();
-					DrawString(tr.left, tr.right, tr.top + offset_y, text, ((int)i == this->selected) ? TC_WHITE : TC_SILVER);
+					DrawString(tr.left, tr.right, tr.top + offset_y, this->presets[i], ((int)i == this->selected) ? TC_WHITE : TC_SILVER);
 					tr.top += step_height;
 				}
 				break;
@@ -2143,7 +2142,7 @@ struct SavePresetWindow : public Window {
 				auto it = this->vscroll->GetScrolledItemFromWidget(this->presets, pt.y, this, WID_SVP_PRESET_LIST);
 				if (it != this->presets.end()) {
 					this->selected = it - this->presets.begin();
-					this->presetname_editbox.text.Assign(it->c_str());
+					this->presetname_editbox.text.Assign(*it);
 					this->SetWidgetDirty(WID_SVP_PRESET_LIST);
 					this->SetWidgetDirty(WID_SVP_EDITBOX);
 				}
