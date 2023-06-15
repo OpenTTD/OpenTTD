@@ -44,7 +44,6 @@ GRFConfig::GRFConfig(const std::string &filename) :
  * @param config The GRFConfig object to make a copy of.
  */
 GRFConfig::GRFConfig(const GRFConfig &config) :
-	ZeroedMemoryAllocator(),
 	ident(config.ident),
 	original_md5sum(config.original_md5sum),
 	filename(config.filename),
