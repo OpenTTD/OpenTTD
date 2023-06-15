@@ -1127,7 +1127,7 @@ draw_inner:
 					if (IsSteepSlope(ti->tileh)) z -= TILE_HEIGHT;
 				}
 			}
-			DrawSelectionSprite(_cur_dpi->zoom <= ZOOM_LVL_DETAIL ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti, z, foundation_part);
+			DrawSelectionSprite(SPR_DOT, PAL_NONE, ti, z, foundation_part);
 		} else if (_thd.drawstyle & HT_RAIL) {
 			/* autorail highlight piece under cursor */
 			HighLightStyle type = _thd.drawstyle & HT_DIR_MASK;
