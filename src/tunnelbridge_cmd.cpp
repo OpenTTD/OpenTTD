@@ -408,7 +408,7 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex ti
 	} else {
 		/* Build a new bridge. */
 
-		bool allow_on_slopes = (_settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
+		bool allow_on_slopes = (_settings_game.construction.build_on_slopes );
 
 		/* Try and clear the start landscape */
 		CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_start);
