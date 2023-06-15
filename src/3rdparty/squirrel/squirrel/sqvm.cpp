@@ -291,7 +291,7 @@ void SQVM::ToString(const SQObjectPtr &o,SQObjectPtr &res)
 	default:
 		str = fmt::format("({} : 0x{:08X})",GetTypeName(o),(size_t)(void*)_rawval(o));
 	}
-	res = SQString::Create(_ss(this),str.c_str());
+	res = SQString::Create(_ss(this),str);
 }
 
 
