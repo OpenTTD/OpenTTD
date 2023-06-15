@@ -93,6 +93,27 @@ int64 StringParameters::GetInt64()
 	return this->data[this->offset++];
 }
 
+
+/**
+ * Set a string parameter \a v at index \a n in the global string parameter array.
+ * @param n Index of the string parameter.
+ * @param v Value of the string parameter.
+ */
+void SetDParam(uint n, uint64_t v)
+{
+	_global_string_params.SetParam(n, v);
+}
+
+/**
+ * Get the current string parameter at index \a n from the global string parameter array.
+ * @param n Index of the string parameter.
+ * @return Value of the requested string parameter.
+ */
+uint64_t GetDParam(uint n)
+{
+	return _global_string_params.GetParam(n);
+}
+
 /**
  * Set DParam n to some number that is suitable for string size computations.
  * @param n Index of the string parameter.
@@ -101,7 +122,7 @@ int64 StringParameters::GetInt64()
  * @param min_count Minimum number of digits independent of \a max.
  * @param size  Font of the number
  */
-void SetDParamMaxValue(uint n, uint64 max_value, uint min_count, FontSize size)
+void SetDParamMaxValue(uint n, uint64_t max_value, uint min_count, FontSize size)
 {
 	uint num_digits = 1;
 	while (max_value >= 10) {
