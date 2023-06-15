@@ -18,7 +18,7 @@
 #include "stdafx.h"
 
 #include "newgrf.h"
-#include "strings_func.h"
+#include "strings_internal.h"
 #include "newgrf_storage.h"
 #include "newgrf_text.h"
 #include "newgrf_cargo.h"

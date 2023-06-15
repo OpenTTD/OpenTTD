@@ -11,6 +11,127 @@
 #define STRINGS_INTERNAL_H
 
 #include "strings_func.h"
+#include "string_func.h"
+
+class StringParameters {
+	StringParameters *parent; ///< If not nullptr, this instance references data from this parent instance.
+	uint64 *data;             ///< Array with the actual data.
+	WChar *type;              ///< Array with type information about the data. Can be nullptr when no type information is needed. See #StringControlCode.
+
+public:
+	uint offset;              ///< Current offset in the data/type arrays.
+	uint num_param;           ///< Length of the data array.
+	WChar next_type = 0; ///< The type of the next data that is retrieved.
+
+	/** Create a new StringParameters instance. */
+	StringParameters(uint64 *data, uint num_param, WChar *type) :
+		parent(nullptr),
+		data(data),
+		type(type),
+		offset(0),
+		num_param(num_param)
+	{ }
+
+	/** Create a new StringParameters instance. */
+	template <size_t Tnum_param>
+	StringParameters(int64 (&data)[Tnum_param]) :
+		parent(nullptr),
+		data((uint64 *)data),
+		type(nullptr),
+		offset(0),
+		num_param(Tnum_param)
+	{
+		static_assert(sizeof(data[0]) == sizeof(uint64));
+	}
+
+	/**
+	 * Create a new StringParameters instance that can reference part of the data of
+	 * the given partent instance.
+	 */
+	StringParameters(StringParameters &parent, uint size) :
+		parent(&parent),
+		data(parent.data + parent.offset),
+		offset(0),
+		num_param(size)
+	{
+		assert(size <= parent.GetDataLeft());
+		if (parent.type == nullptr) {
+			this->type = nullptr;
+		} else {
+			this->type = parent.type + parent.offset;
+		}
+	}
+
+	~StringParameters()
+	{
+		if (this->parent != nullptr) {
+			this->parent->offset += this->num_param;
+		}
+	}
+
+	void ClearTypeInformation();
+
+	int64 GetInt64();
+
+	/** Read an int32 from the argument array. @see GetInt64. */
+	int32 GetInt32()
+	{
+		return (int32)this->GetInt64();
+	}
+
+	/**
+	 * Get a new instance of StringParameters that is a "range" into the
+	 * parameters existing parameters. Upon destruction the offset in the parent
+	 * is not updated. However, calls to SetDParam do update the parameters.
+	 *
+	 * The returned StringParameters must not outlive this StringParameters.
+	 * @return A "range" of the string parameters.
+	 */
+	StringParameters GetRemainingParameters()
+	{
+		return StringParameters(&this->data[this->offset], GetDataLeft(),
+			this->type == nullptr ? nullptr : &this->type[this->offset]);
+	}
+
+	/** Return the amount of elements which can still be read. */
+	uint GetDataLeft() const
+	{
+		return this->num_param - this->offset;
+	}
+
+	/** Get a pointer to a specific element in the data array. */
+	uint64 *GetPointerToOffset(uint offset) const
+	{
+		assert(offset < this->num_param);
+		return &this->data[offset];
+	}
+
+	/** Does this instance store information about the type of the parameters. */
+	bool HasTypeInformation() const
+	{
+		return this->type != nullptr;
+	}
+
+	/** Get the type of a specific element. */
+	WChar GetTypeAtOffset(uint offset) const
+	{
+		assert(offset < this->num_param);
+		assert(this->HasTypeInformation());
+		return this->type[offset];
+	}
+
+	void SetParam(uint n, uint64 v)
+	{
+		assert(n < this->num_param);
+		this->data[n] = v;
+	}
+
+	uint64 GetParam(uint n) const
+	{
+		assert(n < this->num_param);
+		return this->data[n];
+	}
+};
 
 /**
  * Equivalent to the std::back_insert_iterator in function, with some
@@ -113,6 +234,7 @@ public:
 };
 
 void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters &args, uint case_index = 0, bool game_script = false);
+std::string GetStringWithArgs(StringID string, StringParameters &args);
 
 /* Do not leak the StringBuilder to everywhere. */
 void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32_t seed);
