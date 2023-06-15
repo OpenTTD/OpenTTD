@@ -29,19 +29,11 @@
 
 #include "safeguards.h"
 
-
-/**
- * Create a new GRFConfig.
- * @param filename Set the filename of this GRFConfig to filename.
- */
-GRFConfig::GRFConfig(const std::string &filename) : filename(filename), num_valid_params(MAX_NUM_PARAMS) {}
-
 /**
  * Create a new GRFConfig that is a deep copy of an existing config.
  * @param config The GRFConfig object to make a copy of.
  */
 GRFConfig::GRFConfig(const GRFConfig &config) :
-	ZeroedMemoryAllocator(),
 	ident(config.ident),
 	original_md5sum(config.original_md5sum),
 	filename(config.filename),
