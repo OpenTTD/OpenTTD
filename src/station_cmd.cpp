@@ -27,7 +27,7 @@
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "autoslope.h"
 #include "water.h"
-#include "strings_func.h"
+#include "strings_internal.h"
 #include "clear_func.h"
 #include "timer/timer_game_calendar.h"
 #include "vehicle_func.h"
