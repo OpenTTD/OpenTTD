@@ -199,17 +199,8 @@ static inline int64 PackVelocity(uint speed, VehicleType type)
 	return speed | (static_cast<uint64>(type) << 56);
 }
 
-/**
- * Set a string parameter \a v at index \a n in the global string parameter array.
- * @param n Index of the string parameter.
- * @param v Value of the string parameter.
- */
-static inline void SetDParam(uint n, uint64 v)
-{
-	_global_string_params.SetParam(n, v);
-}
-
-void SetDParamMaxValue(uint n, uint64 max_value, uint min_count = 0, FontSize size = FS_NORMAL);
+void SetDParam(uint n, uint64_t v);
+void SetDParamMaxValue(uint n, uint64_t max_value, uint min_count = 0, FontSize size = FS_NORMAL);
 void SetDParamMaxDigits(uint n, uint count, FontSize size = FS_NORMAL);
 
 void SetDParamStr(uint n, const char *str);
@@ -220,15 +211,7 @@ void CopyInDParam(const uint64 *src, int num);
 void CopyOutDParam(uint64 *dst, int num);
 void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num);
 
-/**
- * Get the current string parameter at index \a n from the global string parameter array.
- * @param n Index of the string parameter.
- * @return Value of the requested string parameter.
- */
-static inline uint64 GetDParam(uint n)
-{
-	return _global_string_params.GetParam(n);
-}
+uint64_t GetDParam(uint n);
 
 extern TextDirection _current_text_dir; ///< Text direction of the currently selected language
 
