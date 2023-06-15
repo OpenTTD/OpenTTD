@@ -583,7 +583,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	}
 	AddGRFTextToList(_grf_text[id].textholder, langid_to_add, newtext);
 
-	GrfMsg(3, "Added 0x{:X} grfid {:08X} string 0x{:X} lang 0x{:X} string '{}' ({:X})", id, grfid, stringid, langid_to_add, newtext.c_str(), MakeStringID(TEXT_TAB_NEWGRF_START, id));
+	GrfMsg(3, "Added 0x{:X} grfid {:08X} string 0x{:X} lang 0x{:X} string '{}' ({:X})", id, grfid, stringid, langid_to_add, newtext, MakeStringID(TEXT_TAB_NEWGRF_START, id));
 
 	return MakeStringID(TEXT_TAB_NEWGRF_START, id);
 }

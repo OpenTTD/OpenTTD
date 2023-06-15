@@ -96,7 +96,7 @@ void DriverFactoryBase::SelectDriver(const std::string &name, Driver::Type type)
 	if (!DriverFactoryBase::SelectDriverImpl(name, type)) {
 		name.empty() ?
 			UserError("Failed to autoprobe {} driver", GetDriverTypeName(type)) :
-			UserError("Failed to select requested {} driver '{}'", GetDriverTypeName(type), name.c_str());
+			UserError("Failed to select requested {} driver '{}'", GetDriverTypeName(type), name);
 	}
 }
 

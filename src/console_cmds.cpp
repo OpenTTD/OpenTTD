@@ -1173,7 +1173,7 @@ static void PrintLineByLine(const std::string &full_string)
 	std::istringstream in(full_string);
 	std::string line;
 	while (std::getline(in, line)) {
-		IConsolePrint(CC_DEFAULT, line.c_str());
+		IConsolePrint(CC_DEFAULT, line);
 	}
 }
 

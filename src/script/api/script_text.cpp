@@ -193,7 +193,7 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 			/* The previous substring added more parameters than expected, means we will consume them but can't properly validate them. */
 			for (int i = 0; i < cur_param.consumes; i++) {
 				if (prev_idx < prev_count) {
-					ScriptLog::Warning(fmt::format("{}: Parameter {} uses parameter {} from substring {} and cannot be validated", name, param_count + i, prev_idx++, prev_string).c_str());
+					ScriptLog::Warning(fmt::format("{}: Parameter {} uses parameter {} from substring {} and cannot be validated", name, param_count + i, prev_idx++, prev_string));
 				} else {
 					/* No more extra parameters, assume SQInteger are expected. */
 					if (cur_idx >= this->paramc) throw Script_FatalError(fmt::format("{}: Not enough parameters", name));
@@ -218,7 +218,7 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 					fmt::format_to(output, ":");
 					std::get<ScriptTextRef>(this->param[cur_idx++])->_GetEncodedText(output, count, seen_ids);
 					if (++count != cur_param.consumes) {
-						ScriptLog::Error(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, param_count, count - 1, cur_param.consumes - 1).c_str());
+						ScriptLog::Error(fmt::format("{}: Parameter {} substring consumes {}, but expected {} to be consumed", name, param_count, count - 1, cur_param.consumes - 1));
 						/* Fill missing params if needed. */
 						for (int i = count; i < cur_param.consumes; i++) fmt::format_to(output, ":0");
 						/* Disable validation for the extra params if any. */
