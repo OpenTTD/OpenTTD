@@ -224,6 +224,8 @@ ServerNetworkGameSocketHandler::ServerNetworkGameSocketHandler(SOCKET s) : Netwo
  */
 ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 {
+	delete this->GetInfo();
+
 	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
 	OrderBackup::ResetUser(this->client_id);
 
@@ -256,7 +258,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	 * connection. This handles that case gracefully without having to make
 	 * that code any more complex or more aware of the validity of the socket.
 	 */
-	if (this->sock == INVALID_SOCKET) return status;
+	if (this->IsPendingDeletion() || this->sock == INVALID_SOCKET) return status;
 
 	if (status != NETWORK_RECV_STATUS_CLIENT_QUIT && status != NETWORK_RECV_STATUS_SERVER_ERROR && !this->HasClientQuit() && this->status >= STATUS_AUTHORIZED) {
 		/* We did not receive a leave message from this client... */
@@ -292,8 +294,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 
 	this->SendPackets(true);
 
-	delete this->GetInfo();
-	delete this;
+	this->DeferDeletion();
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
 
