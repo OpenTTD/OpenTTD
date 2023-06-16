@@ -160,6 +160,8 @@ ClientNetworkGameSocketHandler::~ClientNetworkGameSocketHandler()
 NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
 {
 	assert(status != NETWORK_RECV_STATUS_OKAY);
+	if (this->IsPendingDeletion()) return status;
+
 	assert(this->sock != INVALID_SOCKET);
 
 	if (!this->HasClientQuit()) {
@@ -174,7 +176,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		CSleep(3 * MILLISECONDS_PER_TICK);
 	}
 
-	delete this;
+	this->DeferDeletion();
 
 	return status;
 }
@@ -185,6 +187,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
  */
 void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 {
+	if (this->IsPendingDeletion()) return;
+
 	/* First, send a CLIENT_ERROR to the server, so it knows we are
 	 *  disconnected (and why!) */
 	NetworkErrorCode errorno;
