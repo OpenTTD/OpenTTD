@@ -60,8 +60,7 @@ const byte *MidiGetStandardSysexMessage(MidiSysexMessage msg, size_t &length)
  * RAII-compliant to make teardown in error situations easier.
  */
 class ByteBuffer {
-	byte *buf;
-	size_t buflen;
+	std::vector<byte> buf;
 	size_t pos;
 public:
 	/**
@@ -73,22 +72,13 @@ public:
 	 */
 	ByteBuffer(FILE *file, size_t len)
 	{
-		this->buf = MallocT<byte>(len);
-		if (fread(this->buf, 1, len, file) == len) {
-			this->buflen = len;
+		this->buf.resize(len);
+		if (fread(this->buf.data(), 1, len, file) == len) {
 			this->pos = 0;
 		} else {
 			/* invalid state */
-			this->buflen = 0;
+			this->buf.clear();
 		}
-	}
-
-	/**
-	 * Destructor, frees the buffer.
-	 */
-	~ByteBuffer()
-	{
-		free(this->buf);
 	}
 
 	/**
@@ -97,7 +87,7 @@ public:
 	 */
 	bool IsValid() const
 	{
-		return this->buflen > 0;
+		return this->buf.size() > 0;
 	}
 
 	/**
@@ -106,7 +96,7 @@ public:
 	 */
 	bool IsEnd() const
 	{
-		return this->pos >= this->buflen;
+		return this->pos >= this->buf.size();
 	}
 
 	/**
@@ -149,8 +139,8 @@ public:
 	bool ReadBuffer(byte *dest, size_t length)
 	{
 		if (this->IsEnd()) return false;
-		if (this->buflen - this->pos < length) return false;
-		memcpy(dest, this->buf + this->pos, length);
+		if (this->buf.size() - this->pos < length) return false;
+		std::copy(std::begin(this->buf) + this->pos, std::begin(this->buf) + this->pos + length, dest);
 		this->pos += length;
 		return true;
 	}
@@ -164,8 +154,8 @@ public:
 	bool ReadDataBlock(MidiFile::DataBlock *dest, size_t length)
 	{
 		if (this->IsEnd()) return false;
-		if (this->buflen - this->pos < length) return false;
-		dest->data.insert(dest->data.end(), this->buf + this->pos, this->buf + this->pos + length);
+		if (this->buf.size() - this->pos < length) return false;
+		dest->data.insert(dest->data.end(), std::begin(this->buf) + this->pos, std::begin(this->buf) + this->pos + length);
 		this->pos += length;
 		return true;
 	}
@@ -178,7 +168,7 @@ public:
 	bool Skip(size_t count)
 	{
 		if (this->IsEnd()) return false;
-		if (this->buflen - this->pos < count) return false;
+		if (this->buf.size() - this->pos < count) return false;
 		this->pos += count;
 		return true;
 	}
