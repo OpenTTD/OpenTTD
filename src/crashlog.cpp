@@ -88,8 +88,6 @@ void CrashLog::LogCompiler(std::back_insert_iterator<std::string> &output_iterat
 			"ICC {}", __ICC
 #elif defined(__GNUC__)
 			"GCC {}.{}.{}", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__
-#elif defined(__WATCOMC__)
-			"WatcomC {}", __WATCOMC__
 #else
 			"<unknown>"
 #endif

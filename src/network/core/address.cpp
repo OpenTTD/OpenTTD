@@ -316,13 +316,11 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 		Debug(net, 0, "Setting reuse-address mode failed: {}", NetworkError::GetLast().AsString());
 	}
 
-#ifndef __OS2__
 	int on = 1;
 	if (runp->ai_family == AF_INET6 &&
 			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
 		Debug(net, 3, "Could not disable IPv4 over IPv6: {}", NetworkError::GetLast().AsString());
 	}
-#endif
 
 	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
 		Debug(net, 0, "Could not bind socket on {}: {}", address, NetworkError::GetLast().AsString());

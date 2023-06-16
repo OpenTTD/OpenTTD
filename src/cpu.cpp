@@ -32,13 +32,6 @@ uint64 ottd_rdtsc()
 #define RDTSC_AVAILABLE
 #endif
 
-/* rdtsc for OS/2. Hopefully this works, who knows */
-#if defined (__WATCOMC__) && !defined(RDTSC_AVAILABLE)
-unsigned __int64 ottd_rdtsc();
-# pragma aux ottd_rdtsc = 0x0F 0x31 value [edx eax] parm nomemory modify exact [edx eax] nomemory;
-# define RDTSC_AVAILABLE
-#endif
-
 /* rdtsc for all other *nix-en (hopefully). Use GCC syntax */
 #if (defined(__i386__) || defined(__x86_64__)) && !defined(RDTSC_AVAILABLE)
 uint64 ottd_rdtsc()

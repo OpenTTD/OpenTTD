@@ -34,7 +34,7 @@
 static std::string *_fios_path = nullptr;
 SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
-/* OS-specific functions are taken from their respective files (win32/unix/os2 .c) */
+/* OS-specific functions are taken from their respective files (win32/unix .c) */
 extern bool FiosIsRoot(const std::string &path);
 extern bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb);
 extern bool FiosIsHiddenFile(const struct dirent *ent);
@@ -143,7 +143,7 @@ bool FiosBrowseTo(const FiosItem *item)
 {
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
-#if defined(_WIN32) || defined(__OS2__)
+#if defined(_WIN32)
 			assert(_fios_path != nullptr);
 			*_fios_path = std::string{ item->title, 0, 1 } + ":" PATHSEP;
 #endif
