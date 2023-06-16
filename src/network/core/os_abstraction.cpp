@@ -118,8 +118,6 @@ bool NetworkError::HasError() const
 {
 #if defined(_WIN32)
 	return NetworkError(WSAGetLastError());
-#elif defined(__OS2__)
-	return NetworkError(sock_errno());
 #else
 	return NetworkError(errno);
 #endif
