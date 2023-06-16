@@ -25,33 +25,6 @@
 #include "../window_func.h"
 #include "dedicated_v.h"
 
-#ifdef __OS2__
-#	include <sys/time.h> /* gettimeofday */
-#	include <sys/types.h>
-#	include <unistd.h>
-#	include <conio.h>
-
-#	define INCL_DOS
-#	include <os2.h>
-
-#	define STDIN 0  /* file descriptor for standard input */
-
-/**
- * Switches OpenTTD to a console app at run-time, instead of a PM app
- * Necessary to see stdout, etc.
- */
-static void OS2_SwitchToConsoleMode()
-{
-	PPIB pib;
-	PTIB tib;
-
-	DosGetInfoBlocks(&tib, &pib);
-
-	/* Change flag from PM to VIO */
-	pib->pib_ultype = 3;
-}
-#endif
-
 #if defined(UNIX)
 #	include <sys/time.h> /* gettimeofday */
 #	include <sys/types.h>
@@ -160,11 +133,6 @@ const char *VideoDriver_Dedicated::Start(const StringList &parm)
 	_set_error_mode(_OUT_TO_STDERR);
 #endif
 
-#ifdef __OS2__
-	/* For OS/2 we also need to switch to console mode instead of PM mode */
-	OS2_SwitchToConsoleMode();
-#endif
-
 	Debug(driver, 1, "Loading dedicated server");
 	return nullptr;
 }
@@ -181,7 +149,7 @@ void VideoDriver_Dedicated::MakeDirty(int left, int top, int width, int height) 
 bool VideoDriver_Dedicated::ChangeResolution(int w, int h) { return false; }
 bool VideoDriver_Dedicated::ToggleFullscreen(bool fs) { return false; }
 
-#if defined(UNIX) || defined(__OS2__)
+#if defined(UNIX)
 static bool InputWaiting()
 {
 	struct timeval tv;
@@ -214,7 +182,7 @@ static void DedicatedHandleKeyInput()
 
 	if (_exit_game) return;
 
-#if defined(UNIX) || defined(__OS2__)
+#if defined(UNIX)
 	if (fgets(input_line, lengthof(input_line), stdin) == nullptr) return;
 #else
 	/* Handle console input, and signal console thread, it can accept input again */

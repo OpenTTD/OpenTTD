@@ -121,14 +121,6 @@
 #      define NODISCARD [[nodiscard]]
 #endif
 
-#if defined(__WATCOMC__)
-#	define NORETURN
-#	define CDECL
-#	define FINAL
-#	define FALLTHROUGH
-#	include <malloc.h>
-#endif /* __WATCOMC__ */
-
 #if defined(_WIN32)
 #	define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 #endif
@@ -236,7 +228,7 @@
 #	endif /* _WIN32 or WITH_ICONV */
 #endif /* STRGEN || SETTINGSGEN */
 
-#if defined(_WIN32) || defined(__OS2__) && !defined(__INNOTEK_LIBC__)
+#if defined(_WIN32)
 #	define PATHSEP "\\"
 #	define PATHSEPCHAR '\\'
 #else
@@ -244,7 +236,7 @@
 #	define PATHSEPCHAR '/'
 #endif
 
-#if defined(_MSC_VER) || defined(__WATCOMC__)
+#if defined(_MSC_VER)
 #	define PACK_N(type_dec, n) __pragma(pack(push, n)) type_dec; __pragma(pack(pop))
 #elif defined(__MINGW32__)
 #	define PRAGMA(x) _Pragma(#x)

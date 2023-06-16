@@ -347,8 +347,6 @@ void FioCreateDirectory(const std::string &name)
 	 * of the time they are 'directory already exists' errors anyhow. */
 #if defined(_WIN32)
 	CreateDirectory(OTTD2FS(name).c_str(), nullptr);
-#elif defined(OS2) && !defined(__INNOTEK_LIBC__)
-	mkdir(OTTD2FS(name).c_str());
 #else
 	mkdir(OTTD2FS(name).c_str(), 0755);
 #endif
@@ -724,7 +722,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 /**
  * Determine the base (personal dir and game data dir) paths
  * @param exe the path from the current path to the executable
- * @note defined in the OS related files (os2.cpp, win32.cpp, unix.cpp etc)
+ * @note defined in the OS related files (win32.cpp, unix.cpp etc)
  */
 extern void DetermineBasePaths(const char *exe);
 #else /* defined(_WIN32) */
@@ -846,7 +844,7 @@ void DetermineBasePaths(const char *exe)
 	}
 #endif
 
-#if defined(OS2) || !defined(WITH_PERSONAL_DIR)
+#if !defined(WITH_PERSONAL_DIR)
 	_searchpaths[SP_PERSONAL_DIR].clear();
 #else
 	if (!homedir.empty()) {
