@@ -64,9 +64,15 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 {
 	PacketGameType type = (PacketGameType)p->Recv_uint8();
 
+	if (this->HasClientQuit()) {
+		Debug(net, 0, "[tcp/game] Received invalid packet from client {}", this->client_id);
+		this->CloseConnection();
+		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	}
+
 	this->last_packet = std::chrono::steady_clock::now();
 
-	switch (this->HasClientQuit() ? PACKET_END : type) {
+	switch (type) {
 		case PACKET_SERVER_FULL:                  return this->Receive_SERVER_FULL(p);
 		case PACKET_SERVER_BANNED:                return this->Receive_SERVER_BANNED(p);
 		case PACKET_CLIENT_JOIN:                  return this->Receive_CLIENT_JOIN(p);
@@ -113,13 +119,8 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 		case PACKET_SERVER_CONFIG_UPDATE:         return this->Receive_SERVER_CONFIG_UPDATE(p);
 
 		default:
+			Debug(net, 0, "[tcp/game] Received invalid packet type {} from client {}", type, this->client_id);
 			this->CloseConnection();
-
-			if (this->HasClientQuit()) {
-				Debug(net, 0, "[tcp/game] Received invalid packet type {} from client {}", type, this->client_id);
-			} else {
-				Debug(net, 0, "[tcp/game] Received illegal packet from client {}", this->client_id);
-			}
 			return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 }
