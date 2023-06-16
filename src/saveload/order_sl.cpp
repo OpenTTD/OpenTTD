@@ -143,27 +143,23 @@ struct ORDRChunkHandler : ChunkHandler {
 				/* Pre-version 5 had another layout for orders
 				 * (uint16 instead of uint32) */
 				len /= sizeof(uint16);
-				uint16 *orders = MallocT<uint16>(len + 1);
+				std::vector<uint16> orders(len);
 
-				SlCopy(orders, len, SLE_UINT16);
+				SlCopy(&orders[0], len, SLE_UINT16);
 
 				for (size_t i = 0; i < len; ++i) {
 					Order *o = new (i) Order();
 					o->AssignOrder(UnpackVersion4Order(orders[i]));
 				}
-
-				free(orders);
 			} else if (IsSavegameVersionBefore(SLV_5, 2)) {
 				len /= sizeof(uint32);
-				uint32 *orders = MallocT<uint32>(len + 1);
+				std::vector<uint32> orders(len);
 
-				SlCopy(orders, len, SLE_UINT32);
+				SlCopy(&orders[0], len, SLE_UINT32);
 
 				for (size_t i = 0; i < len; ++i) {
 					new (i) Order(orders[i]);
 				}
-
-				free(orders);
 			}
 
 			/* Update all the next pointer */
