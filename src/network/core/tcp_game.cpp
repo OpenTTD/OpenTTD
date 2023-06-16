@@ -20,6 +20,8 @@
 
 #include "../../safeguards.h"
 
+static std::vector<std::unique_ptr<NetworkGameSocketHandler>> _deferred_deletions;
+
 /**
  * Create a new socket for the game connection.
  * @param s The socket to connect with.
@@ -198,3 +200,15 @@ NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_MOVE(Packet *p) { ret
 NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_MOVE); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_COMPANY_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_COMPANY_UPDATE); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_CONFIG_UPDATE); }
+
+void NetworkGameSocketHandler::DeferDeletion()
+{
+	_deferred_deletions.emplace_back(this);
+	this->is_pending_deletion = true;
+}
+
+/* static */ void NetworkGameSocketHandler::ProcessDeferredDeletions()
+{
+	/* Calls deleter on all items */
+	_deferred_deletions.clear();
+}
