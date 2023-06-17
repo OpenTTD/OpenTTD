@@ -96,6 +96,12 @@ public:
 
 	constexpr pointer data() const noexcept { return first; }
 
+	constexpr span<element_type> subspan(size_t offset, size_t count)
+	{
+		assert(offset + count <= size());
+		return span(this->data() + offset, count);
+	}
+
 private:
 	pointer first;
 	pointer last;
