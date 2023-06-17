@@ -81,16 +81,28 @@ public:
 
 	/**
 	 * Get a new instance of StringParameters that is a "range" into the
-	 * parameters existing parameters. Upon destruction the offset in the parent
+	 * remaining existing parameters. Upon destruction the offset in the parent
 	 * is not updated. However, calls to SetDParam do update the parameters.
 	 *
 	 * The returned StringParameters must not outlive this StringParameters.
 	 * @return A "range" of the string parameters.
 	 */
-	StringParameters GetRemainingParameters()
+	StringParameters GetRemainingParameters() { return GetRemainingParameters(this->offset); }
+
+	/**
+	 * Get a new instance of StringParameters that is a "range" into the
+	 * remaining existing parameters from the given offset. Upon destruction the
+	 * offset in the parent is not updated. However, calls to SetDParam do
+	 * update the parameters.
+	 *
+	 * The returned StringParameters must not outlive this StringParameters.
+	 * @param offset The offset to get the remaining parameters for.
+	 * @return A "range" of the string parameters.
+	 */
+	StringParameters GetRemainingParameters(size_t offset)
 	{
-		return StringParameters(&this->data[this->offset], GetDataLeft(),
-			this->type == nullptr ? nullptr : &this->type[this->offset]);
+		return StringParameters(&this->data[offset], GetDataLeft(),
+			this->type == nullptr ? nullptr : &this->type[offset]);
 	}
 
 	/** Return the amount of elements which can still be read. */
