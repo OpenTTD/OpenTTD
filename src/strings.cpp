@@ -66,8 +66,7 @@ AllocatedStringParameters _global_string_params(20);
  */
 void StringParameters::PrepareForNextRun()
 {
-	assert(this->type != nullptr);
-	MemSetT(this->type, 0, this->num_param);
+	for (auto &param : this->parameters) param.type = 0;
 	this->offset = 0;
 }
 
@@ -79,20 +78,20 @@ void StringParameters::PrepareForNextRun()
 int64 StringParameters::GetInt64()
 {
 	assert(this->next_type == 0 || (SCC_CONTROL_START <= this->next_type && this->next_type <= SCC_CONTROL_END));
-	if (this->offset >= this->num_param) {
+	if (this->offset >= this->parameters.size()) {
 		Debug(misc, 0, "Trying to read invalid string parameter");
 		return 0;
 	}
-	if (this->type != nullptr) {
-		if (this->type[this->offset] != 0 && this->type[this->offset] != this->next_type) {
-			Debug(misc, 0, "Trying to read string parameter with wrong type");
-			this->next_type = 0;
-			return 0;
-		}
-		this->type[this->offset] = next_type;
+
+	auto &param = this->parameters[this->offset++];
+	if (param.type != 0 && param.type != this->next_type) {
+		Debug(misc, 0, "Trying to read string parameter with wrong type");
 		this->next_type = 0;
+		return 0;
 	}
-	return this->data[this->offset++];
+	param.type = next_type;
+	this->next_type = 0;
+	return param.data;
 }
 
 
