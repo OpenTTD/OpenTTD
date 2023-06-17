@@ -12,47 +12,40 @@
 
 #include "strings_func.h"
 #include "string_func.h"
+#include "core/span_type.hpp"
+
+/** The data required to format and validate a single parameter of a string. */
+struct StringParameter {
+	uint64_t data; ///< The data of the parameter.
+	WChar type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
+};
 
 class StringParameters {
 protected:
 	StringParameters *parent = nullptr; ///< If not nullptr, this instance references data from this parent instance.
-	uint64 *data;             ///< Array with the actual data.
-	WChar *type;              ///< Array with type information about the data. See #StringControlCode.
+	span<StringParameter> parameters = {}; ///< Array with the actual parameters.
 
+	size_t offset = 0; ///< Current offset in the parameters span.
 	WChar next_type = 0; ///< The type of the next data that is retrieved.
-	size_t offset = 0; ///< Current offset in the data/type arrays.
 
-	/** Create a new StringParameters instance. */
-	StringParameters(uint64 *data, size_t num_param, WChar *type) :
-		data(data),
-		type(type),
-		num_param(num_param)
-	{ }
+	StringParameters(span<StringParameter> parameters = {}) :
+		parameters(parameters)
+	{}
 
 public:
-	size_t num_param; ///< Length of the data array.
-
 	/**
 	 * Create a new StringParameters instance that can reference part of the data of
 	 * the given partent instance.
 	 */
 	StringParameters(StringParameters &parent, size_t size) :
 		parent(&parent),
-		data(parent.data + parent.offset),
-		num_param(size)
-	{
-		assert(size <= parent.GetDataLeft());
-		if (parent.type == nullptr) {
-			this->type = nullptr;
-		} else {
-			this->type = parent.type + parent.offset;
-		}
-	}
+		parameters(parent.parameters.subspan(parent.offset, size))
+	{}
 
 	~StringParameters()
 	{
 		if (this->parent != nullptr) {
-			this->parent->offset += this->num_param;
+			this->parent->offset += this->parameters.size();
 		}
 	}
 
@@ -80,7 +73,7 @@ public:
 		 * words, when the offset was already at the end of the parameters and
 		 * the string did not consume any parameters.
 		 */
-		assert(offset < this->num_param || this->offset == offset);
+		assert(offset < this->parameters.size() || this->offset == offset);
 		this->offset = offset;
 	}
 
@@ -114,26 +107,26 @@ public:
 	 */
 	StringParameters GetRemainingParameters(size_t offset)
 	{
-		return StringParameters(&this->data[offset], GetDataLeft(), &this->type[offset]);
+		return StringParameters(this->parameters.subspan(this->offset, GetDataLeft()));
 	}
 
 	/** Return the amount of elements which can still be read. */
 	size_t GetDataLeft() const
 	{
-		return this->num_param - this->offset;
+		return this->parameters.size() - this->offset;
 	}
 
 	/** Get the type of a specific element. */
 	WChar GetTypeAtOffset(size_t offset) const
 	{
-		assert(offset < this->num_param);
-		return this->type[offset];
+		assert(offset < this->parameters.size());
+		return this->parameters[offset].type;
 	}
 
 	void SetParam(size_t n, uint64 v)
 	{
-		assert(n < this->num_param);
-		this->data[n] = v;
+		assert(n < this->parameters.size());
+		this->parameters[n].data = v;
 	}
 
 	void SetParam(size_t n, const char *str) { this->SetParam(n, (uint64_t)(size_t)str); }
@@ -142,8 +135,8 @@ public:
 
 	uint64 GetParam(size_t n) const
 	{
-		assert(n < this->num_param);
-		return this->data[n];
+		assert(n < this->parameters.size());
+		return this->parameters[n].data;
 	}
 };
 
@@ -152,14 +145,12 @@ public:
  * the parameters.
  */
 class AllocatedStringParameters : public StringParameters {
-	std::vector<uint64_t> params; ///< The actual parameters
-	std::vector<WChar> types; ///< The actual types.
+	std::vector<StringParameter> params; ///< The actual parameters
 
 public:
-	AllocatedStringParameters(size_t parameters = 0) : StringParameters(nullptr, parameters, nullptr), params(parameters), types(parameters)
+	AllocatedStringParameters(size_t parameters = 0) : params(parameters)
 	{
-		this->data = params.data();
-		this->type = types.data();
+		this->parameters = span(params.data(), params.size());
 	}
 };
 
