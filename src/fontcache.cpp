@@ -53,6 +53,21 @@ int FontCache::GetDefaultFontHeight(FontSize fs)
 	return _default_font_height[fs];
 }
 
+/**
+ * Get the font name of a given font size.
+ * @param fs The font size to look up.
+ * @return The font name.
+ */
+std::string FontCache::GetName(FontSize fs)
+{
+	FontCache *fc = FontCache::Get(fs);
+	if (fc != nullptr) {
+		return fc->GetFontName();
+	} else {
+		return "[NULL]";
+	}
+}
+
 
 /**
  * Get height of a character for a given font size.
