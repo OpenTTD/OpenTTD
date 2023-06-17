@@ -2640,13 +2640,11 @@ void UpdateTileSelection()
  * Displays the measurement tooltips when selecting multiple tiles
  * @param str String to be displayed
  * @param paramcount number of params to deal with
- * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
- * @param close_cond Condition for closing this tooltip.
  */
-static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_cond = TCC_EXIT_VIEWPORT)
+static inline void ShowMeasurementTooltips(StringID str, uint paramcount)
 {
 	if (!_settings_client.gui.measure_tooltip) return;
-	GuiShowTooltips(_thd.GetCallbackWnd(), str, paramcount, params, close_cond);
+	GuiShowTooltips(_thd.GetCallbackWnd(), str, paramcount, nullptr, TCC_EXIT_VIEWPORT);
 }
 
 static void HideMeasurementTooltips()
@@ -2722,7 +2720,8 @@ void VpSetPresizeRange(TileIndex from, TileIndex to)
 
 	/* show measurement only if there is any length to speak of */
 	if (distance > 1) {
-		ShowMeasurementTooltips(STR_MEASURE_LENGTH, 1, &distance);
+		SetDParam(0, distance);
+		ShowMeasurementTooltips(STR_MEASURE_LENGTH, 1);
 	} else {
 		HideMeasurementTooltips();
 	}
@@ -3110,7 +3109,6 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 		TileIndex t1 = TileVirtXY(x, y);
 		uint distance = DistanceManhattan(t0, t1) + 1;
 		byte index = 0;
-		uint64 params[2];
 
 		if (distance != 1) {
 			int heightdiff = CalcHeightdiff(b, distance, t0, t1);
@@ -3121,11 +3119,11 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 				distance = CeilDiv(distance, 2);
 			}
 
-			params[index++] = distance;
-			if (heightdiff != 0) params[index++] = heightdiff;
+			SetDParam(index++, distance);
+			if (heightdiff != 0) SetDParam(index++, heightdiff);
 		}
 
-		ShowMeasurementTooltips(measure_strings_length[index], index, params);
+		ShowMeasurementTooltips(measure_strings_length[index], index);
 	}
 
 	_thd.selend.x = x;
@@ -3207,7 +3205,6 @@ calc_heightdiff_single_direction:;
 				TileIndex t1 = TileVirtXY(x, y);
 				uint distance = DistanceManhattan(t0, t1) + 1;
 				byte index = 0;
-				uint64 params[2];
 
 				if (distance != 1) {
 					/* With current code passing a HT_LINE style to calculate the height
@@ -3217,11 +3214,11 @@ calc_heightdiff_single_direction:;
 					 * new_style := (_thd.next_drawstyle & HT_RECT) ? HT_LINE | style : _thd.next_drawstyle; */
 					int heightdiff = CalcHeightdiff(HT_LINE | style, 0, t0, t1);
 
-					params[index++] = distance;
-					if (heightdiff != 0) params[index++] = heightdiff;
+					SetDParam(index++, distance);
+					if (heightdiff != 0) SetDParam(index++, heightdiff);
 				}
 
-				ShowMeasurementTooltips(measure_strings_length[index], index, params);
+				ShowMeasurementTooltips(measure_strings_length[index], index);
 			}
 			break;
 
@@ -3242,7 +3239,6 @@ calc_heightdiff_single_direction:;
 				uint dx = Delta(TileX(t0), TileX(t1)) + 1;
 				uint dy = Delta(TileY(t0), TileY(t1)) + 1;
 				byte index = 0;
-				uint64 params[3];
 
 				/* If dragging an area (eg dynamite tool) and it is actually a single
 				 * row/column, change the type to 'line' to get proper calculation for height */
@@ -3287,12 +3283,12 @@ calc_heightdiff_single_direction:;
 				if (dx != 1 || dy != 1) {
 					int heightdiff = CalcHeightdiff(style, 0, t0, t1);
 
-					params[index++] = dx - (style & HT_POINT ? 1 : 0);
-					params[index++] = dy - (style & HT_POINT ? 1 : 0);
-					if (heightdiff != 0) params[index++] = heightdiff;
+					SetDParam(index++, dx - (style & HT_POINT ? 1 : 0));
+					SetDParam(index++, dy - (style & HT_POINT ? 1 : 0));
+					if (heightdiff != 0) SetDParam(index++, heightdiff);
 				}
 
-				ShowMeasurementTooltips(measure_strings_area[index], index, params);
+				ShowMeasurementTooltips(measure_strings_area[index], index);
 			}
 			break;
 
