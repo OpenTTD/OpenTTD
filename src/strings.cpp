@@ -1064,7 +1064,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_PLURAL_LIST: { // {P}
 				int plural_form = *str++;          // contains the plural form for this string
 				uint offset = orig_offset + (byte)*str++;
-				int64 v = *args.GetPointerToOffset(offset); // contains the number that determines plural
+				int64 v = args.GetParam(offset); // contains the number that determines plural
 				str = ParseStringChoice(str, DeterminePluralForm(v, plural_form), builder);
 				break;
 			}
