@@ -717,11 +717,10 @@ public:
 		if (widget != WID_RV_TRAIN_WAGONREMOVE_TOGGLE) return false;
 
 		if (Group::IsValidID(this->sel_group)) {
-			uint64 params[1];
-			params[0] = STR_REPLACE_REMOVE_WAGON_HELP;
-			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_GROUP_HELP, 1, params, close_cond);
+			SetDParam(0, STR_REPLACE_REMOVE_WAGON_HELP);
+			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_GROUP_HELP, close_cond, 1);
 		} else {
-			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_HELP, 0, nullptr, close_cond);
+			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_HELP, close_cond);
 		}
 		return true;
 	}

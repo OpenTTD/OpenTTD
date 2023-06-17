@@ -3129,7 +3129,7 @@ struct IndustryCargoesWindow : public Window {
 
 			case CFT_INDUSTRY:
 				if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES && (this->ind_cargo >= NUM_INDUSTRYTYPES || fieldxy.x != 2)) {
-					GuiShowTooltips(this, STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP, 0, nullptr, close_cond);
+					GuiShowTooltips(this, STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP, close_cond);
 				}
 				return true;
 
@@ -3138,9 +3138,8 @@ struct IndustryCargoesWindow : public Window {
 		}
 		if (IsValidCargoID(cid) && (this->ind_cargo < NUM_INDUSTRYTYPES || cid != this->ind_cargo - NUM_INDUSTRYTYPES)) {
 			const CargoSpec *csp = CargoSpec::Get(cid);
-			uint64 params[5];
-			params[0] = csp->name;
-			GuiShowTooltips(this, STR_INDUSTRY_CARGOES_CARGO_TOOLTIP, 1, params, close_cond);
+			SetDParam(0, csp->name);
+			GuiShowTooltips(this, STR_INDUSTRY_CARGOES_CARGO_TOOLTIP, close_cond, 1);
 			return true;
 		}
 
