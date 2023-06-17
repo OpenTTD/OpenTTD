@@ -694,9 +694,16 @@ void ScriptInstance::LoadOnStack(ScriptData *data)
 
 	ScriptDataVariant version = data->front();
 	data->pop_front();
-	sq_pushinteger(vm, std::get<SQInteger>(version));
-	LoadObjects(vm, data);
-	this->is_save_data_on_stack = true;
+	SQInteger top = sq_gettop(vm);
+	try {
+		sq_pushinteger(vm, std::get<SQInteger>(version));
+		LoadObjects(vm, data);
+		this->is_save_data_on_stack = true;
+	} catch (Script_FatalError &e) {
+		ScriptLog::Warning(fmt::format("Loading failed: {}", e.GetErrorMessage()));
+		/* Discard partially loaded savegame data and version. */
+		sq_settop(vm, top);
+	}
 }
 
 bool ScriptInstance::CallLoad()
