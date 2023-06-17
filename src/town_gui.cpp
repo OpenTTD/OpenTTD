@@ -38,6 +38,7 @@
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_window.h"
 #include "zoom_func.h"
+#include "hotkeys.h"
 
 #include "widgets/town_widget.h"
 
@@ -694,6 +695,11 @@ static const NWidgetPart _nested_town_directory_widgets[] = {
 	EndContainer(),
 };
 
+/** Enum referring to the Hotkeys in the town directory window */
+enum TownDirectoryHotkeys {
+	TDHK_FOCUS_FILTER_BOX, ///< Focus the filter box
+};
+
 /** Town directory window class. */
 struct TownDirectoryWindow : public Window {
 private:
@@ -1006,6 +1012,23 @@ public:
 				this->towns.ForceResort();
 		}
 	}
+
+	EventState OnHotkey(int hotkey) override
+	{
+		switch (hotkey) {
+			case TDHK_FOCUS_FILTER_BOX:
+				this->SetFocusedWidget(WID_TD_FILTER);
+				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
+				break;
+			default:
+				return ES_NOT_HANDLED;
+		}
+		return ES_HANDLED;
+	}
+
+	static inline HotkeyList hotkeys {"towndirectory", {
+		Hotkey('F', "focus_filter_box", TDHK_FOCUS_FILTER_BOX),
+	}};
 };
 
 Listing TownDirectoryWindow::last_sorting = {false, 0};
@@ -1029,7 +1052,8 @@ static WindowDesc _town_directory_desc(__FILE__, __LINE__,
 	WDP_AUTO, "list_towns", 208, 202,
 	WC_TOWN_DIRECTORY, WC_NONE,
 	0,
-	std::begin(_nested_town_directory_widgets), std::end(_nested_town_directory_widgets)
+	std::begin(_nested_town_directory_widgets), std::end(_nested_town_directory_widgets),
+	&TownDirectoryWindow::hotkeys
 );
 
 void ShowTownDirectory()
