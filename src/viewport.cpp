@@ -2644,7 +2644,7 @@ void UpdateTileSelection()
 static inline void ShowMeasurementTooltips(StringID str, uint paramcount)
 {
 	if (!_settings_client.gui.measure_tooltip) return;
-	GuiShowTooltips(_thd.GetCallbackWnd(), str, paramcount, nullptr, TCC_EXIT_VIEWPORT);
+	GuiShowTooltips(_thd.GetCallbackWnd(), str, TCC_EXIT_VIEWPORT, paramcount);
 }
 
 static void HideMeasurementTooltips()
