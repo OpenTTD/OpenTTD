@@ -183,10 +183,10 @@ void CrashLog::LogConfiguration(std::back_insert_iterator<std::string> &output_i
 			" Medium: {}\n"
 			" Large:  {}\n"
 			" Mono:   {}\n\n",
-			FontCache::Get(FS_SMALL)->GetFontName(),
-			FontCache::Get(FS_NORMAL)->GetFontName(),
-			FontCache::Get(FS_LARGE)->GetFontName(),
-			FontCache::Get(FS_MONO)->GetFontName()
+			FontCache::GetName(FS_SMALL),
+			FontCache::GetName(FS_NORMAL),
+			FontCache::GetName(FS_LARGE),
+			FontCache::GetName(FS_MONO)
 	);
 
 	fmt::format_to(output_iterator, "AI Configuration (local: {}) (current: {}):\n", _local_company, _current_company);

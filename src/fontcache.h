@@ -147,6 +147,8 @@ public:
 		return FontCache::caches[fs];
 	}
 
+	static std::string GetName(FontSize fs);
+
 	/**
 	 * Check whether the font cache has a parent.
 	 */
