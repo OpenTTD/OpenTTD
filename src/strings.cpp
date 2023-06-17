@@ -1036,7 +1036,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					_scan_for_gender_data = true;
 					std::string buffer;
 					StringBuilder tmp_builder(buffer);
-					StringParameters tmp_params(args.GetPointerToOffset(offset), args.num_param - offset, nullptr);
+					StringParameters tmp_params = args.GetRemainingParameters(offset);
 					FormatString(tmp_builder, input, tmp_params);
 					_scan_for_gender_data = old_sgd;
 
