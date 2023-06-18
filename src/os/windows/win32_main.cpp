@@ -58,10 +58,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	CrashLog::InitialiseCrashLog();
 
-	/* Convert the command line to UTF-8. We need a dedicated buffer
-	 * for this because argv[] points into this buffer and this needs to
-	 * be available between subsequent calls to FS2OTTD(). */
-	char *cmdline = stredup(FS2OTTD(GetCommandLine()).c_str());
+	/* Convert the command line to UTF-8. */
+	std::string cmdline = FS2OTTD(GetCommandLine());
 
 	/* Set the console codepage to UTF-8. */
 	SetConsoleOutputCP(CP_UTF8);
@@ -76,7 +74,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	SetRandomSeed(GetTickCount());
 
 	char *argv[64]; // max 64 command line arguments
-	int argc = ParseCommandLine(cmdline, argv, lengthof(argv));
+	int argc = ParseCommandLine(cmdline.data(), argv, lengthof(argv));
 
 	/* Make sure our arguments contain only valid UTF-8 characters. */
 	for (int i = 0; i < argc; i++) StrMakeValidInPlace(argv[i]);
@@ -86,6 +84,5 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	/* Restore system timer resolution. */
 	timeEndPeriod(1);
 
-	free(cmdline);
 	return ret;
 }
