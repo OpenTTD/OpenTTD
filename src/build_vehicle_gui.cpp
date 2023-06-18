@@ -1370,7 +1370,8 @@ struct BuildVehicleWindow : Window {
 
 		/* Filter engine name */
 		this->string_filter.ResetState();
-		this->string_filter.AddLine(GetString(e->info.string_id));
+		SetDParam(0, PackEngineNameDParam(e->index, EngineNameContext::PurchaseList));
+		this->string_filter.AddLine(GetString(STR_ENGINE_NAME));
 
 		/* Filter NewGRF extra text */
 		auto text = GetNewGRFAdditionalText(e->index);
