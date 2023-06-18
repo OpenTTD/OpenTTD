@@ -68,7 +68,7 @@ public:
 		}
 	}
 
-	void ClearTypeInformation();
+	void PrepareForNextRun();
 	void SetTypeOfNextParameter(WChar type) { this->next_type = type; }
 
 	int64 GetInt64();
