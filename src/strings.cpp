@@ -99,7 +99,7 @@ int64 StringParameters::GetInt64()
  * @param n Index of the string parameter.
  * @param v Value of the string parameter.
  */
-void SetDParam(uint n, uint64_t v)
+void SetDParam(size_t n, uint64_t v)
 {
 	_global_string_params.SetParam(n, v);
 }
@@ -109,7 +109,7 @@ void SetDParam(uint n, uint64_t v)
  * @param n Index of the string parameter.
  * @return Value of the requested string parameter.
  */
-uint64_t GetDParam(uint n)
+uint64_t GetDParam(size_t n)
 {
 	return _global_string_params.GetParam(n);
 }
@@ -122,7 +122,7 @@ uint64_t GetDParam(uint n)
  * @param min_count Minimum number of digits independent of \a max.
  * @param size  Font of the number
  */
-void SetDParamMaxValue(uint n, uint64_t max_value, uint min_count, FontSize size)
+void SetDParamMaxValue(size_t n, uint64_t max_value, uint min_count, FontSize size)
 {
 	uint num_digits = 1;
 	while (max_value >= 10) {
@@ -138,7 +138,7 @@ void SetDParamMaxValue(uint n, uint64_t max_value, uint min_count, FontSize size
  * @param count Number of digits which shall be displayable.
  * @param size  Font of the number
  */
-void SetDParamMaxDigits(uint n, uint count, FontSize size)
+void SetDParamMaxDigits(size_t n, uint count, FontSize size)
 {
 	uint front = 0;
 	uint next = 0;
@@ -337,7 +337,7 @@ std::string GetStringWithArgs(StringID string, StringParameters &args)
  * @param n slot of the string
  * @param str string to bind
  */
-void SetDParamStr(uint n, const char *str)
+void SetDParamStr(size_t n, const char *str)
 {
 	SetDParam(n, (uint64)(size_t)str);
 }
@@ -348,7 +348,7 @@ void SetDParamStr(uint n, const char *str)
  * @param n slot of the string
  * @param str string to bind
  */
-void SetDParamStr(uint n, const std::string &str)
+void SetDParamStr(size_t n, const std::string &str)
 {
 	SetDParamStr(n, str.c_str());
 }
@@ -851,7 +851,7 @@ static std::vector<const char *> _game_script_raw_strings;
  */
 static void FormatString(StringBuilder &builder, const char *str_arg, StringParameters &args, uint case_index, bool game_script, bool dry_run)
 {
-	uint orig_offset = args.offset;
+	size_t orig_offset = args.offset;
 
 	if (!dry_run && args.HasTypeInformation()) {
 		/*
@@ -1021,7 +1021,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 			case SCC_GENDER_LIST: { // {G 0 Der Die Das}
 				/* First read the meta data from the language file. */
-				uint offset = orig_offset + (byte)*str++;
+				size_t offset = orig_offset + (byte)*str++;
 				int gender = 0;
 				if (!dry_run && args.GetTypeAtOffset(offset) != 0) {
 					/* Now we need to figure out what text to resolve, i.e.
@@ -1063,7 +1063,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 			case SCC_PLURAL_LIST: { // {P}
 				int plural_form = *str++;          // contains the plural form for this string
-				uint offset = orig_offset + (byte)*str++;
+				size_t offset = orig_offset + (byte)*str++;
 				int64 v = args.GetParam(offset); // contains the number that determines plural
 				str = ParseStringChoice(str, DeterminePluralForm(v, plural_form), builder);
 				break;

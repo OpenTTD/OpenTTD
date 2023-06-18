@@ -77,19 +77,19 @@ static inline int64 PackVelocity(uint speed, VehicleType type)
 	return speed | (static_cast<uint64>(type) << 56);
 }
 
-void SetDParam(uint n, uint64_t v);
-void SetDParamMaxValue(uint n, uint64_t max_value, uint min_count = 0, FontSize size = FS_NORMAL);
-void SetDParamMaxDigits(uint n, uint count, FontSize size = FS_NORMAL);
+void SetDParam(size_t n, uint64_t v);
+void SetDParamMaxValue(size_t n, uint64_t max_value, uint min_count = 0, FontSize size = FS_NORMAL);
+void SetDParamMaxDigits(size_t n, uint count, FontSize size = FS_NORMAL);
 
-void SetDParamStr(uint n, const char *str);
-void SetDParamStr(uint n, const std::string &str);
-void SetDParamStr(uint n, std::string &&str) = delete; // block passing temporaries to SetDParamStr
+void SetDParamStr(size_t n, const char *str);
+void SetDParamStr(size_t n, const std::string &str);
+void SetDParamStr(size_t n, std::string &&str) = delete; // block passing temporaries to SetDParamStr
 
 void CopyInDParam(const uint64 *src, int num);
 void CopyOutDParam(uint64 *dst, int num);
 void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num);
 
-uint64_t GetDParam(uint n);
+uint64_t GetDParam(size_t n);
 
 extern TextDirection _current_text_dir; ///< Text direction of the currently selected language
 
