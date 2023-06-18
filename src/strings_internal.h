@@ -18,10 +18,11 @@ class StringParameters {
 	uint64 *data;             ///< Array with the actual data.
 	WChar *type;              ///< Array with type information about the data. Can be nullptr when no type information is needed. See #StringControlCode.
 
+	WChar next_type = 0; ///< The type of the next data that is retrieved.
+
 public:
 	size_t offset = 0; ///< Current offset in the data/type arrays.
 	size_t num_param; ///< Length of the data array.
-	WChar next_type = 0; ///< The type of the next data that is retrieved.
 
 	/** Create a new StringParameters instance. */
 	StringParameters(uint64 *data, size_t num_param, WChar *type) :
@@ -68,6 +69,7 @@ public:
 	}
 
 	void ClearTypeInformation();
+	void SetTypeOfNextParameter(WChar type) { this->next_type = type; }
 
 	int64 GetInt64();
 
