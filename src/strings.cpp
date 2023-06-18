@@ -851,7 +851,7 @@ static std::vector<const char *> _game_script_raw_strings;
  */
 static void FormatString(StringBuilder &builder, const char *str_arg, StringParameters &args, uint case_index, bool game_script, bool dry_run)
 {
-	size_t orig_offset = args.offset;
+	size_t orig_offset = args.GetOffset();
 
 	if (!dry_run && args.HasTypeInformation()) {
 		/*
@@ -876,7 +876,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			FormatString(dry_run_builder, str_arg, args, case_index, game_script, true);
 		}
 		/* We have to restore the original offset here to to read the correct values. */
-		args.offset = orig_offset;
+		args.SetOffset(orig_offset);
 	}
 	WChar b = '\0';
 	uint next_substr_case_index = 0;
@@ -1070,7 +1070,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_ARG_INDEX: { // Move argument pointer
-				args.offset = orig_offset + (byte)*str++;
+				args.SetOffset(orig_offset + (byte)*str++);
 				break;
 			}
 
