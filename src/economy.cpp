@@ -1977,12 +1977,12 @@ void LoadUnloadStation(Station *st)
  */
 static IntervalTimer<TimerGameCalendar> _companies_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
 {
+	CompaniesPayInterest();
 	CompaniesGenStatistics();
 	if (_settings_game.economy.inflation) {
 		AddInflation();
 		RecomputePrices();
 	}
-	CompaniesPayInterest();
 	HandleEconomyFluctuations();
 });
 
