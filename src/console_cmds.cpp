@@ -1275,16 +1275,14 @@ DEF_CONSOLE_CMD(ConStartAI)
 		 * try again with the assumption everything right of the dot is
 		 * the version the user wants to load. */
 		if (!config->HasScript()) {
-			char *name = stredup(argv[1]);
-			char *e = strrchr(name, '.');
+			const char *e = strrchr(argv[1], '.');
 			if (e != nullptr) {
-				*e = '\0';
+				size_t name_length = e - argv[1];
 				e++;
 
 				int version = atoi(e);
-				config->Change(name, version, true);
+				config->Change(std::string(argv[1], name_length), version, true);
 			}
-			free(name);
 		}
 
 		if (!config->HasScript()) {
