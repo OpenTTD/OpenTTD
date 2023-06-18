@@ -899,7 +899,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			continue;
 		}
 
-		args.next_type = b;
+		args.SetTypeOfNextParameter(b);
 		switch (b) {
 			case SCC_ENCODED: {
 				uint64 sub_args_data[20];
