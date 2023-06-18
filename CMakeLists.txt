@@ -392,10 +392,12 @@ if(EMSCRIPTEN)
     target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/docs/debugging_desyncs.md@/docs/debugging_desyncs.md")
     target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/docs/desync.md@/docs/desync.md")
     target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/docs/directory_structure.md@/docs/directory_structure.md")
+    target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/docs/eints.md@/docs/eints.md")
     target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/docs/linkgraph.md@/docs/linkgraph.md")
     target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/docs/logging_and_performance_metrics.md@/docs/logging_and_performance_metrics.md")
     target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/docs/multiplayer.md@/docs/multiplayer.md")
     target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/docs/savegame_format.md@/docs/savegame_format.md")
+    target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/docs/symbol_server.md@/docs/symbol_server.md")
 
     # We use IDBFS for persistent storage.
     target_link_libraries(WASM::WASM INTERFACE "-lidbfs.js")

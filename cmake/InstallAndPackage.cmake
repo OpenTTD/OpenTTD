@@ -49,11 +49,13 @@ install(FILES
                 ${CMAKE_SOURCE_DIR}/docs/debugging_desyncs.md
                 ${CMAKE_SOURCE_DIR}/docs/desync.md
                 ${CMAKE_SOURCE_DIR}/docs/directory_structure.md
+                ${CMAKE_SOURCE_DIR}/docs/eints.md
                 ${CMAKE_SOURCE_DIR}/docs/game_coordinator.md
                 ${CMAKE_SOURCE_DIR}/docs/linkgraph.md
                 ${CMAKE_SOURCE_DIR}/docs/logging_and_performance_metrics.md
                 ${CMAKE_SOURCE_DIR}/docs/multiplayer.md
                 ${CMAKE_SOURCE_DIR}/docs/savegame_format.md
+                ${CMAKE_SOURCE_DIR}/docs/symbol_server.md
                 ${CMAKE_SOURCE_DIR}/docs/obg_format.txt
                 ${CMAKE_SOURCE_DIR}/docs/obm_format.txt
                 ${CMAKE_SOURCE_DIR}/docs/obs_format.txt

@@ -55,6 +55,7 @@
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 #include "timer/timer_game_calendar.h"
+#include "help_gui.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -1104,7 +1105,7 @@ static CallBackFunction PlaceLandBlockInfo()
 
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 10 : 7);
+	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 11 : 8);
 	return CBF_NONE;
 }
 
@@ -1164,14 +1165,15 @@ static CallBackFunction MenuClickHelp(int index)
 {
 	switch (index) {
 		case  0: return PlaceLandBlockInfo();
-		case  2: IConsoleSwitch();                 break;
-		case  3: ShowScriptDebugWindow();          break;
-		case  4: ShowScreenshotWindow();           break;
-		case  5: ShowFramerateWindow();            break;
-		case  6: ShowAboutWindow();                break;
-		case  7: ShowSpriteAlignerWindow();        break;
-		case  8: ToggleBoundingBoxes();            break;
-		case  9: ToggleDirtyBlocks();              break;
+		case  1: ShowHelpWindow();                 break;
+		case  3: IConsoleSwitch();                 break;
+		case  4: ShowScriptDebugWindow();          break;
+		case  5: ShowScreenshotWindow();           break;
+		case  6: ShowFramerateWindow();            break;
+		case  7: ShowAboutWindow();                break;
+		case  8: ShowSpriteAlignerWindow();        break;
+		case  9: ToggleBoundingBoxes();            break;
+		case 10: ToggleDirtyBlocks();              break;
 	}
 	return CBF_NONE;
 }
