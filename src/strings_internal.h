@@ -19,9 +19,9 @@ class StringParameters {
 	WChar *type;              ///< Array with type information about the data. Can be nullptr when no type information is needed. See #StringControlCode.
 
 	WChar next_type = 0; ///< The type of the next data that is retrieved.
+	size_t offset = 0; ///< Current offset in the data/type arrays.
 
 public:
-	size_t offset = 0; ///< Current offset in the data/type arrays.
 	size_t num_param; ///< Length of the data array.
 
 	/** Create a new StringParameters instance. */
@@ -70,6 +70,31 @@ public:
 
 	void PrepareForNextRun();
 	void SetTypeOfNextParameter(WChar type) { this->next_type = type; }
+
+	/**
+	 * Get the current offset, so it can be backed up for certain processing
+	 * steps, or be used to offset the argument index within sub strings.
+	 * @return The current offset.
+	 */
+	size_t GetOffset() { return this->offset; }
+
+	/**
+	 * Set the offset within the string from where to return the next result of
+	 * \c GetInt64 or \c GetInt32.
+	 * @param offset The offset.
+	 */
+	void SetOffset(size_t offset)
+	{
+		/*
+		 * The offset must be fewer than the number of parameters when it is
+		 * being set. Unless restoring a backup, then the original value is
+		 * correct as well as long as the offset was not changed. In other
+		 * words, when the offset was already at the end of the parameters and
+		 * the string did not consume any parameters.
+		 */
+		assert(offset < this->num_param || this->offset == offset);
+		this->offset = offset;
+	}
 
 	int64 GetInt64();
 
