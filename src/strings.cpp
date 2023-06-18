@@ -62,11 +62,15 @@ static uint64 _global_string_params_data[20];     ///< Global array of string pa
 static WChar _global_string_params_type[20];      ///< Type of parameters stored in #_global_string_params
 StringParameters _global_string_params(_global_string_params_data, 20, _global_string_params_type);
 
-/** Reset the type array. */
-void StringParameters::ClearTypeInformation()
+/**
+ * Prepare the string parameters for the next formatting run. This means
+ * resetting the type information and resetting the offset to the begin.
+ */
+void StringParameters::PrepareForNextRun()
 {
 	assert(this->type != nullptr);
 	MemSetT(this->type, 0, this->num_param);
+	this->offset = 0;
 }
 
 
@@ -313,8 +317,7 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
  */
 std::string GetString(StringID string)
 {
-	_global_string_params.ClearTypeInformation();
-	_global_string_params.offset = 0;
+	_global_string_params.PrepareForNextRun();
 	return GetStringWithArgs(string, _global_string_params);
 }
 
@@ -907,7 +910,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				bool sub_args_need_free[20];
 				StringParameters sub_args(sub_args_data, 20, sub_args_type);
 
-				sub_args.ClearTypeInformation();
+				sub_args.PrepareForNextRun(); // Needed to reset the currently undefined types
 				memset(sub_args_need_free, 0, sizeof(sub_args_need_free));
 
 				char *p;
