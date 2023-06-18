@@ -44,10 +44,9 @@
 #include "network/core/config.h"
 #include "network/network_gui.h"
 #include "network/network_survey.h"
-
+#include "video/video_driver.hpp"
 
 #include "safeguards.h"
-#include "video/video_driver.hpp"
 
 
 static const StringID _autosave_dropdown[] = {
