@@ -13,9 +13,9 @@
 /** The type of set we're replacing */
 #define SET_TYPE "music"
 #include "base_media_func.h"
+#include "random_access_file_type.h"
 
 #include "safeguards.h"
-#include "random_access_file_type.h"
 
 
 /**

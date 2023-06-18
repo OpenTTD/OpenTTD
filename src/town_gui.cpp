@@ -37,13 +37,13 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_window.h"
+#include "zoom_func.h"
 
 #include "widgets/town_widget.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
-#include "zoom_func.h"
 
 TownKdtree _town_local_authority_kdtree(&Kdtree_TownXYFunc);
 

@@ -21,13 +21,13 @@
 #include "window_func.h"
 #include "waypoint_base.h"
 #include "waypoint_cmd.h"
+#include "zoom_func.h"
 
 #include "widgets/waypoint_widget.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
-#include "zoom_func.h"
 
 /** GUI for accessing waypoints and buoys. */
 struct WaypointWindow : Window {
