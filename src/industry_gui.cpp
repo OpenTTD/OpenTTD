@@ -44,6 +44,7 @@
 #include "stringfilter_type.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "hotkeys.h"
 
 #include "table/strings.h"
 
@@ -1302,7 +1303,10 @@ static bool CDECL CargoFilter(const Industry * const *industry, const std::pair<
 
 static GUIIndustryList::FilterFunction * const _filter_funcs[] = { &CargoFilter };
 
-
+/** Enum referring to the Hotkeys in the industry directory window */
+enum IndustryDirectoryHotkeys {
+	IDHK_FOCUS_FILTER_BOX, ///< Focus the filter box
+};
 /**
  * The list of industries.
  */
@@ -1866,6 +1870,23 @@ public:
 				break;
 		}
 	}
+
+	EventState OnHotkey(int hotkey) override
+	{
+		switch (hotkey) {
+			case IDHK_FOCUS_FILTER_BOX:
+				this->SetFocusedWidget(WID_ID_FILTER);
+				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
+				break;
+			default:
+				return ES_NOT_HANDLED;
+		}
+		return ES_HANDLED;
+	}
+
+	static inline HotkeyList hotkeys {"industrydirectory", {
+		Hotkey('F', "focus_filter_box", IDHK_FOCUS_FILTER_BOX),
+	}};
 };
 
 Listing IndustryDirectoryWindow::last_sorting = {false, 0};
@@ -1895,7 +1916,8 @@ static WindowDesc _industry_directory_desc(__FILE__, __LINE__,
 	WDP_AUTO, "list_industries", 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	0,
-	std::begin(_nested_industry_directory_widgets), std::end(_nested_industry_directory_widgets)
+	std::begin(_nested_industry_directory_widgets), std::end(_nested_industry_directory_widgets),
+	&IndustryDirectoryWindow::hotkeys
 );
 
 void ShowIndustryDirectory()
