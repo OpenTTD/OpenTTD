@@ -71,8 +71,8 @@ static bool TruncateBuffer();
 
 /* ** main console cmd buffer ** */
 static Textbuf _iconsole_cmdline(ICON_CMDLN_SIZE);
-static char *_iconsole_history[ICON_HISTORY_SIZE];
-static int _iconsole_historypos;
+static std::deque<std::string> _iconsole_history;
+static ptrdiff_t _iconsole_historypos;
 IConsoleModes _iconsole_mode;
 
 /* *************** *
@@ -350,7 +350,6 @@ void IConsoleGUIInit()
 	_iconsole_mode = ICONSOLE_CLOSED;
 
 	IConsoleClearBuffer();
-	memset(_iconsole_history, 0, sizeof(_iconsole_history));
 
 	IConsolePrint(TC_LIGHT_BLUE, "OpenTTD Game Console Revision 7 - {}", _openttd_revision);
 	IConsolePrint(CC_WHITE, "------------------------------------");
@@ -424,15 +423,14 @@ static const char *IConsoleHistoryAdd(const char *cmd)
 	if (StrEmpty(cmd)) return nullptr;
 
 	/* Do not put in history if command is same as previous */
-	if (_iconsole_history[0] == nullptr || strcmp(_iconsole_history[0], cmd) != 0) {
-		free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
-		memmove(&_iconsole_history[1], &_iconsole_history[0], sizeof(_iconsole_history[0]) * (ICON_HISTORY_SIZE - 1));
-		_iconsole_history[0] = stredup(cmd);
+	if (_iconsole_history.empty() || _iconsole_history.front() != cmd) {
+		_iconsole_history.emplace_front(cmd);
+		while (_iconsole_history.size() > ICON_HISTORY_SIZE) _iconsole_history.pop_back();
 	}
 
 	/* Reset the history position */
 	IConsoleResetHistoryPos();
-	return _iconsole_history[0];
+	return _iconsole_history.front().c_str();
 }
 
 /**
@@ -441,10 +439,8 @@ static const char *IConsoleHistoryAdd(const char *cmd)
  */
 static void IConsoleHistoryNavigate(int direction)
 {
-	if (_iconsole_history[0] == nullptr) return; // Empty history
-	_iconsole_historypos = Clamp(_iconsole_historypos + direction, -1, ICON_HISTORY_SIZE - 1);
-
-	if (direction > 0 && _iconsole_history[_iconsole_historypos] == nullptr) _iconsole_historypos--;
+	if (_iconsole_history.empty()) return; // Empty history
+	_iconsole_historypos = Clamp<ptrdiff_t>(_iconsole_historypos + direction, -1, _iconsole_history.size() - 1);
 
 	if (_iconsole_historypos == -1) {
 		_iconsole_cmdline.DeleteAll();
