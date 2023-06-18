@@ -13,6 +13,7 @@
 #include "window_gui.h"
 #include "window_func.h"
 #include "textbuf_gui.h"
+#include "help_gui.h"
 #include "network/network.h"
 #include "genworld.h"
 #include "network/network_gui.h"
@@ -360,6 +361,7 @@ struct SelectGameWindow : public Window {
 
 			case WID_SGI_OPTIONS:         ShowGameOptions(); break;
 			case WID_SGI_HIGHSCORE:       ShowHighscoreTable(); break;
+			case WID_SGI_HELP:            ShowHelpWindow(); break;
 			case WID_SGI_SETTINGS_OPTIONS:ShowGameSettings(); break;
 			case WID_SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
 			case WID_SGI_CONTENT_DOWNLOAD:
@@ -470,10 +472,12 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
-	/* 'Highscore Table' button */
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_HIGHSCORE), SetMinimalSize(316, 12),
-							SetDataTip(STR_INTRO_HIGHSCORE, STR_INTRO_TOOLTIP_HIGHSCORE), SetPadding(0, 10, 0, 10), SetFill(1, 0),
+	/* 'Help and Manuals' and 'Highscore Table' buttons */
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_HELP), SetMinimalSize(158, 12),
+							SetDataTip(STR_INTRO_HELP, STR_INTRO_TOOLTIP_HELP), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_HIGHSCORE), SetMinimalSize(158, 12),
+							SetDataTip(STR_INTRO_HIGHSCORE, STR_INTRO_TOOLTIP_HIGHSCORE), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 	EndContainer(),
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 6),

@@ -48,11 +48,15 @@ enum QueryWidgets {
 
 /** Widgets of the #TextfileWindow class. */
 enum TextfileWidgets {
-	WID_TF_CAPTION,    ///< The caption of the window.
-	WID_TF_WRAPTEXT,   ///< Whether or not to wrap the text.
-	WID_TF_BACKGROUND, ///< Panel to draw the textfile on.
-	WID_TF_VSCROLLBAR, ///< Vertical scrollbar to scroll through the textfile up-and-down.
-	WID_TF_HSCROLLBAR, ///< Horizontal scrollbar to scroll through the textfile left-to-right.
+	WID_TF_CAPTION,      ///< The caption of the window.
+	WID_TF_NAVBACK,      ///< Navigate back button.
+	WID_TF_NAVFORWARD,   ///< Navigate forward button.
+	WID_TF_WRAPTEXT,     ///< Whether or not to wrap the text.
+	WID_TF_JUMPLIST,     ///< List to jump around the file.
+	WID_TF_SEL_JUMPLIST, ///< Selection to display the jump list or not.
+	WID_TF_BACKGROUND,   ///< Panel to draw the textfile on.
+	WID_TF_VSCROLLBAR,   ///< Vertical scrollbar to scroll through the textfile up-and-down.
+	WID_TF_HSCROLLBAR,   ///< Horizontal scrollbar to scroll through the textfile left-to-right.
 };
 
 #endif /* WIDGETS_MISC_WIDGET_H */
