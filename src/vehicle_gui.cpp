@@ -43,6 +43,7 @@
 #include "roadveh_cmd.h"
 #include "train_cmd.h"
 #include "hotkeys.h"
+#include "group_cmd.h"
 
 #include "safeguards.h"
 
@@ -344,9 +345,10 @@ void BaseVehicleListWindow::FilterVehicleList()
  * Compute the size for the Action dropdown.
  * @param show_autoreplace If true include the autoreplace item.
  * @param show_group If true include group-related stuff.
+ * @param show_create If true include group-create item.
  * @return Required size.
  */
-Dimension BaseVehicleListWindow::GetActionDropdownSize(bool show_autoreplace, bool show_group)
+Dimension BaseVehicleListWindow::GetActionDropdownSize(bool show_autoreplace, bool show_group, bool show_create)
 {
 	Dimension d = {0, 0};
 
@@ -357,6 +359,8 @@ Dimension BaseVehicleListWindow::GetActionDropdownSize(bool show_autoreplace, bo
 	if (show_group) {
 		d = maxdim(d, GetStringBoundingBox(STR_GROUP_ADD_SHARED_VEHICLE));
 		d = maxdim(d, GetStringBoundingBox(STR_GROUP_REMOVE_ALL_VEHICLES));
+	} else if (show_create) {
+		d = maxdim(d, GetStringBoundingBox(STR_VEHICLE_LIST_CREATE_GROUP));
 	}
 
 	return d;
@@ -372,9 +376,10 @@ void BaseVehicleListWindow::OnInit()
  * Display the Action dropdown window.
  * @param show_autoreplace If true include the autoreplace item.
  * @param show_group If true include group-related stuff.
+ * @param show_create If true include group-create item.
  * @return Itemlist for dropdown
  */
-DropDownList BaseVehicleListWindow::BuildActionDropdownList(bool show_autoreplace, bool show_group)
+DropDownList BaseVehicleListWindow::BuildActionDropdownList(bool show_autoreplace, bool show_group, bool show_create)
 {
 	DropDownList list;
 
@@ -385,6 +390,8 @@ DropDownList BaseVehicleListWindow::BuildActionDropdownList(bool show_autoreplac
 	if (show_group) {
 		list.emplace_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED, false));
 		list.emplace_back(new DropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, ADI_REMOVE_ALL, false));
+	} else if (show_create) {
+		list.emplace_back(new DropDownListStringItem(STR_VEHICLE_LIST_CREATE_GROUP, ADI_CREATE_GROUP, false));
 	}
 
 	return list;
@@ -1889,7 +1896,7 @@ public:
 				break;
 
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN: {
-				Dimension d = this->GetActionDropdownSize(this->vli.type == VL_STANDARD, false);
+				Dimension d = this->GetActionDropdownSize(this->vli.type == VL_STANDARD, false, true);
 				d.height += padding.height;
 				d.width  += padding.width;
 				*size = maxdim(*size, d);
@@ -2070,7 +2077,7 @@ public:
 				break;
 
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN: {
-				ShowDropDownList(this, this->BuildActionDropdownList(VehicleListIdentifier::UnPack(this->window_number).type == VL_STANDARD, false), 0, WID_VL_MANAGE_VEHICLES_DROPDOWN);
+				ShowDropDownList(this, this->BuildActionDropdownList(VehicleListIdentifier::UnPack(this->window_number).type == VL_STANDARD, false, true), 0, WID_VL_MANAGE_VEHICLES_DROPDOWN);
 				break;
 			}
 
@@ -2106,6 +2113,10 @@ public:
 					case ADI_SERVICE: // Send for servicing
 					case ADI_DEPOT: // Send to Depots
 						Command<CMD_SEND_VEHICLE_TO_DEPOT>::Post(GetCmdSendToDepotMsg(this->vli.vtype), 0, DepotCommand::MassSend | (index == ADI_SERVICE ? DepotCommand::Service : DepotCommand::None), this->vli);
+						break;
+
+					case ADI_CREATE_GROUP: // Create group
+						Command<CMD_ADD_VEHICLE_GROUP>::Post(CcAddVehicleNewGroup, NEW_GROUP, INVALID_VEHICLE, false, this->vli);
 						break;
 
 					default: NOT_REACHED();

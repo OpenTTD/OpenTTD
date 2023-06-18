@@ -94,7 +94,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 	if (v->cur_implicit_order_index >= v->GetNumOrders()) v->cur_implicit_order_index = v->cur_real_order_index;
 
 	/* Restore vehicle group */
-	Command<CMD_ADD_VEHICLE_GROUP>::Do(DC_EXEC, this->group, v->index, false);
+	Command<CMD_ADD_VEHICLE_GROUP>::Do(DC_EXEC, this->group, v->index, false, VehicleListIdentifier{});
 }
 
 /**
