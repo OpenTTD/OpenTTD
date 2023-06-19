@@ -2097,7 +2097,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options 
 STR_INTRO_HIGHSCORE                                             :{BLACK}Meilleurs scores
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Paramètres de jeu
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenue additionnel en ligne
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenu additionnel en ligne
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuration des IAs
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configuration du script de jeu
 STR_INTRO_QUIT                                                  :{BLACK}Quitter
