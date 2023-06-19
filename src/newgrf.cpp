@@ -447,12 +447,11 @@ static GRFError *DisableGrf(StringID message = STR_NULL, GRFConfig *config = nul
 	if (file != nullptr) ClearTemporaryNewGRFData(file);
 	if (config == _cur.grfconfig) _cur.skip_sprites = -1;
 
-	if (message != STR_NULL) {
-		config->error = std::make_unique<GRFError>(STR_NEWGRF_ERROR_MSG_FATAL, message);
-		if (config == _cur.grfconfig) config->error->param_value[0] = _cur.nfo_line;
-	}
+	if (message == STR_NULL) return nullptr;
 
-	return config->error.get();
+	config->error = {STR_NEWGRF_ERROR_MSG_FATAL, message};
+	if (config == _cur.grfconfig) config->error->param_value[0] = _cur.nfo_line;
+	return &config->error.value();
 }
 
 /**
@@ -7154,10 +7153,10 @@ static void GRFLoadError(ByteReader *buf)
 	}
 
 	/* For now we can only show one message per newgrf file. */
-	if (_cur.grfconfig->error != nullptr) return;
+	if (_cur.grfconfig->error.has_value()) return;
 
-	_cur.grfconfig->error = std::make_unique<GRFError>(sevstr[severity]);
-	GRFError *error = _cur.grfconfig->error.get();
+	_cur.grfconfig->error = {sevstr[severity]};
+	GRFError *error = &_cur.grfconfig->error.value();
 
 	if (message_id == 0xFF) {
 		/* This is a custom error message. */
@@ -10006,7 +10005,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
 					Debug(grf, 0, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
 					c->status = GCS_DISABLED;
-					c->error  = std::make_unique<GRFError>(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
+					c->error  = {STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED};
 					continue;
 				}
 				num_non_static++;
