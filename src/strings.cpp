@@ -187,7 +187,7 @@ void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num)
 
 	MemCpyT(dst, _global_string_params.GetPointerToOffset(0), num);
 	for (int i = 0; i < num; i++) {
-		if (_global_string_params.HasTypeInformation() && _global_string_params.GetTypeAtOffset(i) == SCC_RAW_STRING_POINTER) {
+		if (_global_string_params.GetTypeAtOffset(i) == SCC_RAW_STRING_POINTER) {
 			strings[i] = stredup((const char *)(size_t)_global_string_params.GetParam(i));
 			dst[i] = (size_t)strings[i];
 		} else {
@@ -851,12 +851,14 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 {
 	size_t orig_offset = args.GetOffset();
 
-	if (!dry_run && args.HasTypeInformation()) {
+	if (!dry_run) {
 		/*
-		 * FormatString was called without `dry_run` set, however `args` has
-		 * space allocated for type information and thus wants type checks on
-		 * the parameters. So, we need to gather the type information via the
-		 * dry run first, before we can continue formatting the string.
+		 * This function is normally called with `dry_run` false, then we call this function again
+		 * with `dry_run` being true. The dry run is required for the gender formatting. For the
+		 * gender determination we need to format a sub string to get the gender, but for that we
+		 * need to know as what string control code type the specific parameter is encoded. Since
+		 * gendered words can be before the "parameter" words, this needs to be determined before
+		 * the actual formatting.
 		 */
 		std::string buffer;
 		StringBuilder dry_run_builder(buffer);
