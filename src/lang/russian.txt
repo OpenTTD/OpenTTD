@@ -4024,6 +4024,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Орга
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Управление транспортом, находящимся в этом списке
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Замена транспорта
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Отправить на тех. обслуживание
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Создать группу
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибыль в этом году: {CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
