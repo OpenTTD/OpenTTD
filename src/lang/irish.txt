@@ -4434,8 +4434,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Ag súil
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Sceidealta
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Athraigh idir an t-am a bhfuil súil leis agus an t-am sceidealta
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :I:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 
 
 # Date window (for timetable)

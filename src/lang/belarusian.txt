@@ -4551,8 +4551,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Чака
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Па раскладзе
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Пераключэньне паміж ґрафікам руху й чаканым часам прыбыцьця/адпраўленьня
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :А:
 
 
 # Date window (for timetable)

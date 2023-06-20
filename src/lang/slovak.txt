@@ -4594,8 +4594,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Očakáv
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plánované
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prepnúť medzi očakávaným a plánovaným
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :P:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :O:
 
 
 # Date window (for timetable)

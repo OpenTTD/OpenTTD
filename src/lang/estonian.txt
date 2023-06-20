@@ -4578,8 +4578,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Eeldatav
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plaanis
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaheta eeldatava ja graafiku vahel
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :S:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :V:
 
 
 # Date window (for timetable)

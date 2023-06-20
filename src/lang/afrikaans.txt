@@ -4189,8 +4189,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Word ver
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Geskeduleer
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Verander tussen verwagte tyd en geskeduleerde tyd
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)

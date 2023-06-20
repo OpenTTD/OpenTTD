@@ -4571,8 +4571,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Mong mu�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Chốt lịch
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Chuyển giữa lịch mong muốn và lịch được chốt
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Đến:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Đi:
 
 
 # Date window (for timetable)

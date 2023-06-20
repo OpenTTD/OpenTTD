@@ -4513,8 +4513,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Harapan
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Dijadwalkan
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ubah antara perkiraan dan jadwal
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)

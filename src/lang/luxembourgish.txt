@@ -4521,8 +4521,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Erwaard
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Geplangt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Tëschent erwaard a geplangt wiesselen
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)

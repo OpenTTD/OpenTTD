@@ -3606,8 +3606,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Væntað
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Ætlað
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skift ímillum væntað og ætlað
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :K:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 
 
 # Date window (for timetable)

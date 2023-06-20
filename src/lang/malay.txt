@@ -3745,8 +3745,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Dijangka
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Dijadualkan
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Tukar di antara dijangkakan dan dijadualkan
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :T:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :B:
 
 
 # Date window (for timetable)

@@ -4037,8 +4037,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}எத�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}அட்டவணையிடப்பட்ட
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}எதிர்பார்க்கப்பட்ட மற்றும் அட்டவணையிடப்பட்ட ஆகிவற்றிற்குள் இடைமாற்றவும்
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)

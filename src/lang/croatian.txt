@@ -4375,8 +4375,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Očekiva
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Raspoređeno
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Promijeni između očekivanog i zadanog
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :D:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :O:
 
 
 # Date window (for timetable)

@@ -4572,8 +4572,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Beklenen
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programlanan
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Beklenen ile programlanan arasında geçiş yap
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :V:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Ç:
 
 
 # Date window (for timetable)

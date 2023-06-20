@@ -4523,8 +4523,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}實際�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}表定時間
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}切換顯示 (根據實際情況的) 預期時間 或 表定時間
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :到:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :開:
 
 
 # Date window (for timetable)

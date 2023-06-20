@@ -4332,8 +4332,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Aestimat
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Secundum horarium
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Mutare inter tempora quae aestimata sunt ac secundum horarium sunt
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :E:
 
 
 # Date window (for timetable)

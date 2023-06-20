@@ -4573,8 +4573,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Marcado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar entre tempo esperado e marcado
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :C:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :P:
 
 
 # Date window (for timetable)

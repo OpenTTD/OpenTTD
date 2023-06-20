@@ -4626,8 +4626,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Αναμ
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Προγραμματισμένη
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Εναλλαγή μεταξύ αναμενόμενης και προγραμματισμένης
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :ΑΦ:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :ΑΝ:
 
 
 # Date window (for timetable)

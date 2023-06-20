@@ -4571,8 +4571,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Verwacht
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Volgens dienstregeling
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Wissel tussen verwacht en volgens dienstregeling
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :V:
 
 
 # Date window (for timetable)

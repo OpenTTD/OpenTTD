@@ -4180,8 +4180,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}กา�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}ตารางเวลา
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}สลับระหว่างการดูรายการตารางเวลาและการคาดการณ์
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :ถึง:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :ออก:
 
 
 # Date window (for timetable)

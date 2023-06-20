@@ -4529,8 +4529,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Paredzē
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Ieplānots
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Pārslēgties starp sagaidāmo un ieplānoto
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ie:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Iz:
 
 
 # Date window (for timetable)

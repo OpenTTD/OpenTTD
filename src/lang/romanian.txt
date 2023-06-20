@@ -4569,8 +4569,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Estimat
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planificat
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Comută între estimare şi orar
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)

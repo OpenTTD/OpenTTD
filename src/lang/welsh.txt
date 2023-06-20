@@ -4088,8 +4088,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Disgwyli
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Amserlenwyd
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Newid rhwng yr amser a ddisgwylir a'r amserlen
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Cyr:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Gad:
 
 
 # Date window (for timetable)

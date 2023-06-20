@@ -4727,8 +4727,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Tikėtin
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planuoti laikai
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Rodyti arba suplanuotus atvykimo laikus, arba tikėtinus atvykimo laikus (pastarieji gali keistis atsižvelgiant į tai, ar transporto priemonė laikosi tvarkaraščio)
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Atv.:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Išv.:
 
 
 # Date window (for timetable)
