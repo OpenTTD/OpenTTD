@@ -123,13 +123,6 @@ public:
 		return this->num_param - this->offset;
 	}
 
-	/** Get a pointer to a specific element in the data array. */
-	uint64 *GetPointerToOffset(size_t offset) const
-	{
-		assert(offset < this->num_param);
-		return &this->data[offset];
-	}
-
 	/** Get the type of a specific element. */
 	WChar GetTypeAtOffset(size_t offset) const
 	{
