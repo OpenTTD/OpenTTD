@@ -4681,8 +4681,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Очік
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Призначено
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Перемкнути очікуване на заплановане
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :В:
 
 
 # Date window (for timetable)

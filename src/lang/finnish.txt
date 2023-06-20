@@ -3849,6 +3849,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Muokkaa 
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Ohjaa kaikkia listan kulkuneuvoja
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Korvaa kulkuneuvoja
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Lähetä huoltoon
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Luo ryhmä
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Tuotto tänä vuonna: {CURRENCY_LONG} (viime vuonna: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4571,8 +4572,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Odotettu
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Aikataulu
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaihda odotetun ja aikataulun välillä
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :S:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :L:
 
 
 # Date window (for timetable)

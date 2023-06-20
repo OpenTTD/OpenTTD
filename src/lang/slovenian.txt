@@ -4221,8 +4221,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Pričako
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Določen
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Preklopi med pričakovanim in določenim
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)

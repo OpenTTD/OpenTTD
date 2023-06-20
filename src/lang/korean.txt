@@ -4573,8 +4573,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}예정�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}예정 소요시간 기준
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}시간표 검사 기준을 도착 예정일과 도착 예정 시간 기준 중에서 선택합니다
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :도착:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :출발:
 
 
 # Date window (for timetable)

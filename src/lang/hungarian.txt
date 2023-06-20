@@ -4616,8 +4616,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Várhat�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Tervezett
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Váltás a várható és a tervezett időpontok között
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :É:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :I:
 
 
 # Date window (for timetable)

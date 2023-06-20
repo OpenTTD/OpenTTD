@@ -4521,8 +4521,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}预期�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}表定时间
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}切换显示（根据实际情况计算的）预期时间或表定时间
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)

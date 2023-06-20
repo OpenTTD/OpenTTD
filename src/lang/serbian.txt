@@ -4724,8 +4724,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Očekiva
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Po planu
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prebacivanje između prikaza očekivanog i po planu
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :D:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :P:
 
 
 # Date window (for timetable)

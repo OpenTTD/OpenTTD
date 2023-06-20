@@ -4488,8 +4488,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Atendite
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planite
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ŝalti inter atendite kaj planite
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 
 
 # Date window (for timetable)

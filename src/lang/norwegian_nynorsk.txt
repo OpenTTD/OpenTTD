@@ -3968,8 +3968,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Forventa
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Byt mellom antatt og planlagt
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ank:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Avg:
 
 
 # Date window (for timetable)

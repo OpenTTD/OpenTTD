@@ -3807,8 +3807,6 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Fertragi
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Ferwachte
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Pland
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 
 
 # Date window (for timetable)

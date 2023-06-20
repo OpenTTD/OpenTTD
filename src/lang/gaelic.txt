@@ -4339,8 +4339,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Dùil ai
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Clàraichte
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Gearr leum eadar dùil air is clàraichte
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :R:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 
 
 # Date window (for timetable)

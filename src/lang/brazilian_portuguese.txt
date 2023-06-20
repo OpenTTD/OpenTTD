@@ -3850,6 +3850,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administ
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envia instruções a todos os veículos desta lista
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Substituir veículos
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar para Manutenção
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Criar grupo
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Lucro anual: {CURRENCY_LONG} (último ano: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4572,8 +4573,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Agendado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Trocar entre esperado e agendado
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :C:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :P:
 
 
 # Date window (for timetable)

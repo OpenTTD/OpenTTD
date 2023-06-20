@@ -4552,8 +4552,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Voraussi
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Fahrplanmäßig
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Umschalten zwischen Anzeige der erwarteten Ankunftszeit und des Fahrplans
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :an
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :ab
 
 
 # Date window (for timetable)

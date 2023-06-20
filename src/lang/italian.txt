@@ -4608,8 +4608,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Orari at
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Orari programmati
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna fra la visualizzazione degli orari attesi e degli orari programmati
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :P:
 
 
 # Date window (for timetable)

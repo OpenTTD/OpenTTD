@@ -4520,8 +4520,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Previsto
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna entre fechas previstas y programadas
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ll:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :S:
 
 
 # Date window (for timetable)

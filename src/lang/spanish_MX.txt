@@ -4521,8 +4521,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Cambiar entre esperado y programado
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Lleg:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Sal:
 
 
 # Date window (for timetable)

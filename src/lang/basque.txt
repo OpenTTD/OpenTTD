@@ -3947,8 +3947,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Espero z
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programatuta
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Espero zena eta programatutakoaren artean aukeratu
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)

@@ -4548,8 +4548,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}予想�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}定刻日時
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}予想日時(現状の運転時刻から推定される今後の発着日時)と定刻日時(ダイヤから割り出される定刻の発着日時)の表示を切り返えます
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :着:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :発:
 
 
 # Date window (for timetable)

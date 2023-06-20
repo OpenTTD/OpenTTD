@@ -4571,8 +4571,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Forvente
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skift mellem forventet og tidslagt
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ank:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Afg:
 
 
 # Date window (for timetable)

@@ -3912,8 +3912,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}متوق
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}مجدول
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}غير بين المتوقع و المجدول
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :و:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :م:
 
 
 # Date window (for timetable)

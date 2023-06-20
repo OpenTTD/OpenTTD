@@ -4235,8 +4235,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}צפוי
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}מתוכנן
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}החלף בין מתוכנן וצפוי
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)

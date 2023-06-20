@@ -4573,8 +4573,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Attendu
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planifié
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterner entre attendu et planifié
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
