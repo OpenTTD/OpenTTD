@@ -159,7 +159,7 @@ void SetDParamMaxDigits(size_t n, uint count, FontSize size)
  */
 void CopyInDParam(const uint64 *src, int num)
 {
-	MemCpyT(_global_string_params.GetPointerToOffset(0), src, num);
+	for (int i = 0; i < num; i++) SetDParam(i, src[i]);
 }
 
 /**
@@ -169,7 +169,7 @@ void CopyInDParam(const uint64 *src, int num)
  */
 void CopyOutDParam(uint64 *dst, int num)
 {
-	MemCpyT(dst, _global_string_params.GetPointerToOffset(0), num);
+	for (int i = 0; i < num; i++) dst[i] = GetDParam(i);
 }
 
 /**
@@ -185,13 +185,13 @@ void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num)
 	/* Just get the string to extract the type information. */
 	GetString(string);
 
-	MemCpyT(dst, _global_string_params.GetPointerToOffset(0), num);
 	for (int i = 0; i < num; i++) {
 		if (_global_string_params.GetTypeAtOffset(i) == SCC_RAW_STRING_POINTER) {
 			strings[i] = stredup((const char *)(size_t)_global_string_params.GetParam(i));
 			dst[i] = (size_t)strings[i];
 		} else {
 			strings[i] = nullptr;
+			dst[i] = _global_string_params.GetParam(i);
 		}
 	}
 }
