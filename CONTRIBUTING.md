@@ -182,6 +182,16 @@ There is no single source for OpenTTD development docs. It's a complex project w
 A good entry point is [Development](https://wiki.openttd.org/en/Development/) on the OpenTTD wiki; this provides links to wiki documentation and other sources.
 
 The GitHub repo also includes some non-comprehensive documentation in [/docs](./docs).
+These include:
+- When to [change other languages and when not to](./docs/eints.md).
+- The [savegame format](./docs/savegame_format.md).
+- The [release process](./docs/releasing_openttd.md).
+- Some [notes on the link graph algorithm](./docs/linkgraph.md).
+- The [network game coordinator](./docs/game_coordinator.md).
+- How to use [the admin port for network games](./docs/admin_network.md), also useful for multiplayer server hosts.
+- The [performance metrics and logging features](./docs/logging_and_performance_metrics.md), also useful for add-on developers.
+- How [symbol server and analysis works](./docs/symbol_server.md).
+- And several miscellaneous files detailing internal data structures and graphics measurements and palettes.
 
 You may also want the guide to [compiling OpenTTD](./COMPILING.md).
 
