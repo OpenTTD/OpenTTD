@@ -17,7 +17,7 @@ class StringParameters {
 protected:
 	StringParameters *parent = nullptr; ///< If not nullptr, this instance references data from this parent instance.
 	uint64 *data;             ///< Array with the actual data.
-	WChar *type;              ///< Array with type information about the data. Can be nullptr when no type information is needed. See #StringControlCode.
+	WChar *type;              ///< Array with type information about the data. See #StringControlCode.
 
 	WChar next_type = 0; ///< The type of the next data that is retrieved.
 	size_t offset = 0; ///< Current offset in the data/type arrays.
@@ -114,8 +114,7 @@ public:
 	 */
 	StringParameters GetRemainingParameters(size_t offset)
 	{
-		return StringParameters(&this->data[offset], GetDataLeft(),
-			this->type == nullptr ? nullptr : &this->type[offset]);
+		return StringParameters(&this->data[offset], GetDataLeft(), &this->type[offset]);
 	}
 
 	/** Return the amount of elements which can still be read. */
@@ -131,17 +130,10 @@ public:
 		return &this->data[offset];
 	}
 
-	/** Does this instance store information about the type of the parameters. */
-	bool HasTypeInformation() const
-	{
-		return this->type != nullptr;
-	}
-
 	/** Get the type of a specific element. */
 	WChar GetTypeAtOffset(size_t offset) const
 	{
 		assert(offset < this->num_param);
-		assert(this->HasTypeInformation());
 		return this->type[offset];
 	}
 
