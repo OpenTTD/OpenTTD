@@ -8,7 +8,7 @@ notifications:
     only:
     - master
     only-by:
-    - DorpsGek
+    - eints-sync[bot]
   commit-comment:
   discussion:
   pull-request:
