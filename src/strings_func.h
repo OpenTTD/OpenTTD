@@ -14,6 +14,7 @@
 #include "string_type.h"
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
+#include "core/span_type.hpp"
 #include "vehicle_type.h"
 
 /**
@@ -88,6 +89,10 @@ void SetDParamStr(size_t n, std::string &&str) = delete; // block passing tempor
 void CopyInDParam(const uint64 *src, int num);
 void CopyOutDParam(uint64 *dst, int num);
 void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num);
+
+void CopyInDParam(const span<const StringParameterBackup> backup);
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num);
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num, StringID string);
 
 uint64_t GetDParam(size_t n);
 
