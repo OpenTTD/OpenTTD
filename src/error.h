@@ -31,8 +31,7 @@ enum WarningLevel {
 class ErrorMessageData {
 protected:
 	bool is_critical;               ///< Whether the error message is critical.
-	uint64 decode_params[20];       ///< Parameters of the message strings.
-	const char *strings[20];        ///< Copies of raw strings that were used.
+	std::vector<StringParameterBackup> params; ///< Backup of parameters of the message strings.
 	const GRFFile *textref_stack_grffile; ///< NewGRF that filled the #TextRefStack for the error message.
 	uint textref_stack_size;        ///< Number of uint32 values to put on the #TextRefStack for the error message.
 	uint32 textref_stack[16];       ///< Values to put on the #TextRefStack for the error message.
@@ -44,7 +43,6 @@ protected:
 
 public:
 	ErrorMessageData(const ErrorMessageData &data);
-	~ErrorMessageData();
 	ErrorMessageData(StringID summary_msg, StringID detailed_msg, bool is_critical = false, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr, StringID extra_msg = INVALID_STRING_ID);
 
 	/* Remove the copy assignment, as the default implementation will not do the right thing. */
