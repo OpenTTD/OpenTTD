@@ -662,17 +662,14 @@ static WindowDesc _tool_tips_desc(
 struct TooltipsWindow : public Window
 {
 	StringID string_id;               ///< String to display as tooltip.
-	byte paramcount;                  ///< Number of string parameters in #string_id.
-	uint64 params[8];                 ///< The string parameters.
+	std::vector<StringParameterBackup> params; ///< The string parameters.
 	TooltipCloseCondition close_cond; ///< Condition for closing the window.
 
 	TooltipsWindow(Window *parent, StringID str, uint paramcount, TooltipCloseCondition close_tooltip) : Window(&_tool_tips_desc)
 	{
 		this->parent = parent;
 		this->string_id = str;
-		assert(paramcount <= lengthof(this->params));
-		this->paramcount = paramcount;
-		if (paramcount > 0) CopyOutDParam(this->params, this->paramcount);
+		CopyOutDParam(this->params, paramcount);
 		this->close_cond = close_tooltip;
 
 		this->InitNested();
@@ -703,7 +700,7 @@ struct TooltipsWindow : public Window
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		/* There is only one widget. */
-		for (uint i = 0; i != this->paramcount; i++) SetDParam(i, this->params[i]);
+		CopyInDParam(this->params);
 
 		size->width  = std::min<uint>(GetStringBoundingBox(this->string_id).width, ScaleGUITrad(194));
 		size->height = GetStringHeight(this->string_id, size->width);
@@ -719,9 +716,7 @@ struct TooltipsWindow : public Window
 		GfxFillRect(r, PC_BLACK);
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_LIGHT_YELLOW);
 
-		for (uint arg = 0; arg < this->paramcount; arg++) {
-			SetDParam(arg, this->params[arg]);
-		}
+		CopyInDParam(this->params);
 		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect).Shrink(WidgetDimensions::scaled.fullbevel), this->string_id, TC_BLACK, SA_CENTER);
 	}
 
@@ -1098,14 +1093,14 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *paren
  */
 struct QueryWindow : public Window {
 	QueryCallbackProc *proc; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
-	uint64 params[10];       ///< local copy of #_global_string_params
+	std::vector<StringParameterBackup> params; ///< local copy of #_global_string_params
 	StringID message;        ///< message shown for query window
 
 	QueryWindow(WindowDesc *desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
 	{
 		/* Create a backup of the variadic arguments to strings because it will be
 		 * overridden pretty often. We will copy these back for drawing */
-		CopyOutDParam(this->params, lengthof(this->params));
+		CopyOutDParam(this->params, 10);
 		this->message = message;
 		this->proc    = callback;
 		this->parent  = parent;
@@ -1134,7 +1129,7 @@ struct QueryWindow : public Window {
 		switch (widget) {
 			case WID_Q_CAPTION:
 			case WID_Q_TEXT:
-				CopyInDParam(this->params, lengthof(this->params));
+				CopyInDParam(this->params);
 				break;
 		}
 	}
