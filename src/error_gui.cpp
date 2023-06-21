@@ -74,24 +74,10 @@ static WindowDesc _errmsg_face_desc(
  * @param data The data to copy.
  */
 ErrorMessageData::ErrorMessageData(const ErrorMessageData &data) :
-	is_critical(data.is_critical), textref_stack_grffile(data.textref_stack_grffile), textref_stack_size(data.textref_stack_size),
+	is_critical(data.is_critical), params(data.params), textref_stack_grffile(data.textref_stack_grffile), textref_stack_size(data.textref_stack_size),
 	summary_msg(data.summary_msg), detailed_msg(data.detailed_msg), extra_msg(data.extra_msg), position(data.position), face(data.face)
 {
 	memcpy(this->textref_stack, data.textref_stack, sizeof(this->textref_stack));
-	memcpy(this->decode_params, data.decode_params, sizeof(this->decode_params));
-	memcpy(this->strings,       data.strings,       sizeof(this->strings));
-	for (size_t i = 0; i < lengthof(this->strings); i++) {
-		if (this->strings[i] != nullptr) {
-			this->strings[i] = stredup(this->strings[i]);
-			this->decode_params[i] = (size_t)this->strings[i];
-		}
-	}
-}
-
-/** Free all the strings. */
-ErrorMessageData::~ErrorMessageData()
-{
-	for (size_t i = 0; i < lengthof(this->strings); i++) free(this->strings[i]);
 }
 
 /**
@@ -118,9 +104,6 @@ ErrorMessageData::ErrorMessageData(StringID summary_msg, StringID detailed_msg, 
 	this->position.x = x;
 	this->position.y = y;
 
-	memset(this->decode_params, 0, sizeof(this->decode_params));
-	memset(this->strings, 0, sizeof(this->strings));
-
 	if (textref_stack_size > 0) MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
 
 	assert(summary_msg != INVALID_STRING_ID);
@@ -137,14 +120,9 @@ void ErrorMessageData::CopyOutDParams()
 		if (company < MAX_COMPANIES) face = company;
 	}
 
-	/* Reset parameters */
-	for (size_t i = 0; i < lengthof(this->strings); i++) free(this->strings[i]);
-	memset(this->decode_params, 0, sizeof(this->decode_params));
-	memset(this->strings, 0, sizeof(this->strings));
-
 	/* Get parameters using type information */
 	if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
-	CopyOutDParam(this->decode_params, this->strings, this->detailed_msg == INVALID_STRING_ID ? this->summary_msg : this->detailed_msg, lengthof(this->decode_params));
+	CopyOutDParam(this->params, 20, this->detailed_msg == INVALID_STRING_ID ? this->summary_msg : this->detailed_msg);
 	if (this->textref_stack_size > 0) StopTextRefStackUsage();
 }
 
@@ -155,7 +133,8 @@ void ErrorMessageData::CopyOutDParams()
  */
 void ErrorMessageData::SetDParam(uint n, uint64 v)
 {
-	this->decode_params[n] = v;
+	if (n >= this->params.size()) this->params.resize(n + 1);
+	this->params[n] = v;
 }
 
 /**
@@ -165,8 +144,8 @@ void ErrorMessageData::SetDParam(uint n, uint64 v)
  */
 void ErrorMessageData::SetDParamStr(uint n, const char *str)
 {
-	free(this->strings[n]);
-	this->strings[n] = stredup(str);
+	if (n >= this->params.size()) this->params.resize(n + 1);
+	this->params[n] = str;
 }
 
 /**
@@ -176,7 +155,8 @@ void ErrorMessageData::SetDParamStr(uint n, const char *str)
  */
 void ErrorMessageData::SetDParamStr(uint n, const std::string &str)
 {
-	this->SetDParamStr(n, str.c_str());
+	if (n >= this->params.size()) this->params.resize(n + 1);
+	this->params[n] = str;
 }
 
 /** The actual queue with errors. */
@@ -212,7 +192,7 @@ public:
 	{
 		switch (widget) {
 			case WID_EM_MESSAGE: {
-				CopyInDParam(this->decode_params, lengthof(this->decode_params));
+				CopyInDParam(this->params);
 				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 
 				this->height_summary = GetStringHeight(this->summary_msg, size->width);
@@ -281,7 +261,7 @@ public:
 
 	void SetStringParameters(int widget) const override
 	{
-		if (widget == WID_EM_CAPTION) CopyInDParam(this->decode_params, lengthof(this->decode_params));
+		if (widget == WID_EM_CAPTION) CopyInDParam(this->params);
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -294,7 +274,7 @@ public:
 			}
 
 			case WID_EM_MESSAGE:
-				CopyInDParam(this->decode_params, lengthof(this->decode_params));
+				CopyInDParam(this->params);
 				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 
 				if (this->detailed_msg == INVALID_STRING_ID) {
