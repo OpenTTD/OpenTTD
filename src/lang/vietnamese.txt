@@ -3849,6 +3849,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Quản l
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Gửi chỉ dẫn tới toàn bộ phương tiện trong danh sách
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Thay phương tiện
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Gửi về bảo trì
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Tạo nhóm
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Lợi nhuận năm nay: {CURRENCY_LONG} (năm ngoái: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4571,6 +4572,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Mong mu�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Chốt lịch
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Chuyển giữa lịch mong muốn và lịch được chốt
 
+STR_TIMETABLE_ARRIVAL                                           :ĐN: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :KH: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)

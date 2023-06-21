@@ -4573,6 +4573,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Marcado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar entre tempo esperado e marcado
 
+STR_TIMETABLE_ARRIVAL                                           :C: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :P: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)

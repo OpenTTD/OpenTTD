@@ -4759,6 +4759,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Ожид
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}График
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Переключение между графиком движения и ожидаемым временем прибытия/отправления
 
+STR_TIMETABLE_ARRIVAL                                           :Приб: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :Отпр: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
