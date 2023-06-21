@@ -197,6 +197,56 @@ void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num)
 	}
 }
 
+/**
+ * Copy the parameters from the backup into the global string parameter array.
+ * @param backup The backup to copy from.
+ */
+void CopyInDParam(const span<const StringParameterBackup> backup)
+{
+	for (size_t i = 0; i < backup.size(); i++) {
+		auto &value = backup[i];
+		if (value.string.has_value()) {
+			_global_string_params.SetParam(i, value.string.value());
+		} else {
+			_global_string_params.SetParam(i, value.data);
+		}
+	}
+}
+
+/**
+ * Copy \a num string parameters from the global string parameter array to the \a backup.
+ * @param backup The backup to write to.
+ * @param num Number of string parameters to copy.
+ */
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
+{
+	backup.resize(num);
+	for (size_t i = 0; i < backup.size(); i++) {
+		backup[i] = _global_string_params.GetParam(i);
+	}
+}
+
+/**
+ * Copy \a num string parameters from the global string parameter array to the \a backup.
+ * @param backup The backup to write to.
+ * @param num Number of string parameters to copy.
+ * @param string The string used to determine where raw strings are and where there are no raw strings.
+ */
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num, StringID string)
+{
+	/* Just get the string to extract the type information. */
+	GetString(string);
+
+	backup.resize(num);
+	for (size_t i = 0; i < backup.size(); i++) {
+		if (_global_string_params.GetTypeAtOffset(i) == SCC_RAW_STRING_POINTER) {
+			backup[i] = (const char *)(size_t)_global_string_params.GetParam(i);
+		} else {
+			backup[i] = _global_string_params.GetParam(i);
+		}
+	}
+}
+
 static void StationGetSpecialString(StringBuilder &builder, StationFacility x);
 static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32 seed);
 static void GetSpecialNameString(StringBuilder &builder, int ind, StringParameters &args);
