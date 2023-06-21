@@ -154,50 +154,6 @@ void SetDParamMaxDigits(size_t n, uint count, FontSize size)
 }
 
 /**
- * Copy \a num string parameters from array \a src into the global string parameter array.
- * @param src  Source array of string parameters.
- * @param num  Number of string parameters to copy.
- */
-void CopyInDParam(const uint64 *src, int num)
-{
-	for (int i = 0; i < num; i++) SetDParam(i, src[i]);
-}
-
-/**
- * Copy \a num string parameters from the global string parameter array to the \a dst array.
- * @param dst  Destination array of string parameters.
- * @param num  Number of string parameters to copy.
- */
-void CopyOutDParam(uint64 *dst, int num)
-{
-	for (int i = 0; i < num; i++) dst[i] = GetDParam(i);
-}
-
-/**
- * Copy \a num string parameters from the global string parameter array to the \a dst array.
- * Furthermore clone raw string parameters into \a strings and amend the data in \a dst.
- * @param dst     Destination array of string parameters.
- * @param strings Destination array for clone of the raw strings. Must be of same length as dst. Deallocation left to the caller.
- * @param string  The string used to determine where raw strings are and where there are no raw strings.
- * @param num     Number of string parameters to copy.
- */
-void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num)
-{
-	/* Just get the string to extract the type information. */
-	GetString(string);
-
-	for (int i = 0; i < num; i++) {
-		if (_global_string_params.GetTypeAtOffset(i) == SCC_RAW_STRING_POINTER) {
-			strings[i] = stredup((const char *)(size_t)_global_string_params.GetParam(i));
-			dst[i] = (size_t)strings[i];
-		} else {
-			strings[i] = nullptr;
-			dst[i] = _global_string_params.GetParam(i);
-		}
-	}
-}
-
-/**
  * Copy the parameters from the backup into the global string parameter array.
  * @param backup The backup to copy from.
  */
