@@ -55,6 +55,38 @@ jobs:
         cp /usr/share/aclocal/* /usr/local/share/aclocal/
         echo "::endgroup::"
 
+        # The yum variant of fluidsynth depends on all possible audio drivers,
+        # like jack, ALSA, pulseaudio, etc. This is not really useful for us,
+        # as we route the output of fluidsynth back via our sound driver, and
+        # as such do not use these audio driver outputs at all.
+        # The vcpkg variant of fluidsynth depends on ALSA. Similar issue here.
+        # So instead, we compile fluidsynth ourselves, with as few
+        # dependencies as possible. We do it before anything else is installed,
+        # to make sure it doesn't pick up on any of the drivers.
+        echo "::group::Install fluidsynth"
+        wget https://github.com/FluidSynth/fluidsynth/archive/v2.3.3.tar.gz
+        tar xf v2.3.3.tar.gz
+        (
+          cd fluidsynth-2.3.3
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
+          cmake --build . -j $(nproc)
+          cmake --install .
+        )
+        echo "::endgroup::"
+
+        echo "::group::Install audio drivers"
+        # These audio libs are to make sure the SDL version of vcpkg adds
+        # sound-support; these libraries are not added to the resulting
+        # binary, but the headers are used to enable them in SDL.
+        yum install -y \
+          alsa-lib-devel \
+          jack-audio-connection-kit-devel \
+          pulseaudio-libs-devel \
+          # EOF
+        echo "::endgroup::"
+
         # We use vcpkg for our dependencies, to get more up-to-date version.
         echo "::group::Install vcpkg and dependencies"
 
@@ -88,27 +120,6 @@ jobs:
             sdl2 \
             zlib \
             # EOF
-        )
-        echo "::endgroup::"
-
-        # The yum variant of fluidsynth depends on all possible audio drivers,
-        # like jack, ALSA, pulseaudio, etc. This is not really useful for us,
-        # as we route the output of fluidsynth back via our sound driver, and
-        # as such do not use these audio driver outputs at all.
-        # The vcpkg variant of fluidsynth depends on ALSA. Similar issue here.
-        # So instead, we compile fluidsynth ourselves, with as few
-        # dependencies as possible. This currently means it picks up SDL2, but
-        # this is fine, as we need SDL2 anyway.
-        echo "::group::Install fluidsynth"
-        wget https://github.com/FluidSynth/fluidsynth/archive/v2.1.6.tar.gz
-        tar xf v2.1.6.tar.gz
-        (
-          cd fluidsynth-2.1.6
-          mkdir build
-          cd build
-          cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
-          cmake --build . -j $(nproc)
-          cmake --install .
         )
         echo "::endgroup::"
 
