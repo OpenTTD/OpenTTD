@@ -178,7 +178,12 @@ void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
 {
 	backup.resize(num);
 	for (size_t i = 0; i < backup.size(); i++) {
-		backup[i] = _global_string_params.GetParam(i);
+		const char *str = _global_string_params.GetParamStr(i);
+		if (str != nullptr) {
+			backup[i] = str;
+		} else {
+			backup[i] = _global_string_params.GetParam(i);
+		}
 	}
 }
 
@@ -190,17 +195,7 @@ void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
  */
 void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num, StringID string)
 {
-	/* Just get the string to extract the type information. */
-	GetString(string);
-
-	backup.resize(num);
-	for (size_t i = 0; i < backup.size(); i++) {
-		if (_global_string_params.GetTypeAtOffset(i) == SCC_RAW_STRING_POINTER) {
-			backup[i] = (const char *)(size_t)_global_string_params.GetParam(i);
-		} else {
-			backup[i] = _global_string_params.GetParam(i);
-		}
-	}
+	CopyOutDParam(backup, num);
 }
 
 /**
@@ -1124,7 +1119,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				break;
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
-				const char *raw_string = (const char *)(size_t)args.GetNextParameter<size_t>();
+				const char *raw_string = args.GetNextParameterString();
 				/* raw_string can be(come) nullptr when the parameter is out of range and 0 is returned instead. */
 				if (raw_string == nullptr ||
 						(game_script && std::find(_game_script_raw_strings.begin(), _game_script_raw_strings.end(), raw_string) == _game_script_raw_strings.end())) {
