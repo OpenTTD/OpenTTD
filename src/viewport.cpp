@@ -1417,6 +1417,9 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 			t->index, t->cache.population);
 	}
 
+	/* Do not draw signs nor station names if they are set invisible */
+	if (IsInvisibilitySet(TO_SIGNS)) return;
+
 	for (const auto *si : signs) {
 		ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &si->sign,
 			STR_WHITE_SIGN,
@@ -1701,9 +1704,6 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 		SetDParam(1, ss.params[1]);
 
 		if (ss.colour != INVALID_COLOUR) {
-			/* Do not draw signs nor station names if they are set invisible */
-			if (IsInvisibilitySet(TO_SIGNS) && ss.string != STR_WHITE_SIGN) continue;
-
 			if (IsTransparencySet(TO_SIGNS) && ss.string != STR_WHITE_SIGN) {
 				/* Don't draw the rectangle.
 				 * Real colours need the TC_IS_PALETTE_COLOUR flag.
