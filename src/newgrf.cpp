@@ -2710,6 +2710,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 				if ((newone != STR_UNDEFINED) && (curidx < CURRENCY_END)) {
 					_currency_specs[curidx].name = newone;
+					_currency_specs[curidx].code.clear();
 				}
 				break;
 			}
