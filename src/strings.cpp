@@ -188,17 +188,6 @@ void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
 }
 
 /**
- * Copy \a num string parameters from the global string parameter array to the \a backup.
- * @param backup The backup to write to.
- * @param num Number of string parameters to copy.
- * @param string The string used to determine where raw strings are and where there are no raw strings.
- */
-void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num, StringID string)
-{
-	CopyOutDParam(backup, num);
-}
-
-/**
  * Checks whether the global string parameters have changed compared to the given backup.
  * @param backup The backup to check against.
  * @return True when the parameters have changed, otherwise false.
