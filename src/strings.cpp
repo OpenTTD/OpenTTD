@@ -197,7 +197,7 @@ void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num)
 	}
 }
 
-static void StationGetSpecialString(StringBuilder &builder, int x);
+static void StationGetSpecialString(StringBuilder &builder, StationFacility x);
 static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32 seed);
 static void GetSpecialNameString(StringBuilder &builder, int ind, StringParameters &args);
 
@@ -261,7 +261,7 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 	switch (tab) {
 		case TEXT_TAB_TOWN:
 			if (index >= 0xC0 && !game_script) {
-				GetSpecialTownNameString(builder, index - 0xC0, args.GetInt32());
+				GetSpecialTownNameString(builder, index - 0xC0, args.GetNextParameter<uint32_t>());
 				return;
 			}
 			break;
@@ -412,7 +412,7 @@ static void FormatNoCommaNumber(StringBuilder &builder, int64 number)
 	FormatNumber(builder, number, "");
 }
 
-static void FormatZerofillNumber(StringBuilder &builder, int64 number, int64 count)
+static void FormatZerofillNumber(StringBuilder &builder, int64 number, int count)
 {
 	FormatNumber(builder, number, "", count);
 }
@@ -1008,7 +1008,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
-				StringID substr = args.GetInt32();
+				StringID substr = args.GetNextParameter<StringID>();
 				str_stack.push(GetStringPtr(substr));
 				case_index = next_substr_case_index;
 				next_substr_case_index = 0;
@@ -1100,7 +1100,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				break;
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
-				const char *raw_string = (const char *)(size_t)args.GetInt64();
+				const char *raw_string = (const char *)(size_t)args.GetNextParameter<size_t>();
 				/* raw_string can be(come) nullptr when the parameter is out of range and 0 is returned instead. */
 				if (raw_string == nullptr ||
 						(game_script && std::find(_game_script_raw_strings.begin(), _game_script_raw_strings.end(), raw_string) == _game_script_raw_strings.end())) {
@@ -1112,7 +1112,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_STRING: {// {STRING}
-				StringID string_id = args.GetInt32();
+				StringID string_id = args.GetNextParameter<StringID>();
 				if (game_script && GetStringTab(string_id) != TEXT_TAB_GAMESCRIPT_START) break;
 				/* It's prohibited for the included string to consume any arguments. */
 				StringParameters tmp_params(args, 0);
@@ -1129,7 +1129,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_STRING6:
 			case SCC_STRING7: { // {STRING1..7}
 				/* Strings that consume arguments */
-				StringID string_id = args.GetInt32();
+				StringID string_id = args.GetNextParameter<StringID>();
 				if (game_script && GetStringTab(string_id) != TEXT_TAB_GAMESCRIPT_START) break;
 				uint size = b - SCC_STRING1 + 1;
 				if (game_script && size > args.GetDataLeft()) {
@@ -1143,54 +1143,54 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_COMMA: // {COMMA}
-				FormatCommaNumber(builder, args.GetInt64());
+				FormatCommaNumber(builder, args.GetNextParameter<int64_t>());
 				break;
 
 			case SCC_DECIMAL: { // {DECIMAL}
-				int64 number = args.GetInt64();
-				int digits = args.GetInt32();
+				int64 number = args.GetNextParameter<int64_t>();
+				int digits = args.GetNextParameter<int>();
 				FormatCommaNumber(builder, number, digits);
 				break;
 			}
 
 			case SCC_NUM: // {NUM}
-				FormatNoCommaNumber(builder, args.GetInt64());
+				FormatNoCommaNumber(builder, args.GetNextParameter<int64_t>());
 				break;
 
 			case SCC_ZEROFILL_NUM: { // {ZEROFILL_NUM}
-				int64 num = args.GetInt64();
-				FormatZerofillNumber(builder, num, args.GetInt64());
+				int64 num = args.GetNextParameter<int64_t>();
+				FormatZerofillNumber(builder, num, args.GetNextParameter<int>());
 				break;
 			}
 
 			case SCC_HEX: // {HEX}
-				FormatHexNumber(builder, (uint64)args.GetInt64());
+				FormatHexNumber(builder, args.GetNextParameter<uint64_t>());
 				break;
 
 			case SCC_BYTES: // {BYTES}
-				FormatBytes(builder, args.GetInt64());
+				FormatBytes(builder, args.GetNextParameter<int64_t>());
 				break;
 
 			case SCC_CARGO_TINY: { // {CARGO_TINY}
 				/* Tiny description of cargotypes. Layout:
 				 * param 1: cargo type
 				 * param 2: cargo count */
-				CargoID cargo = args.GetInt32();
+				CargoID cargo = args.GetNextParameter<CargoID>();
 				if (cargo >= CargoSpec::GetArraySize()) break;
 
 				StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
 				int64 amount = 0;
 				switch (cargo_str) {
 					case STR_TONS:
-						amount = _units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetInt64());
+						amount = _units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetNextParameter<int64_t>());
 						break;
 
 					case STR_LITERS:
-						amount = _units_volume[_settings_game.locale.units_volume].c.ToDisplay(args.GetInt64());
+						amount = _units_volume[_settings_game.locale.units_volume].c.ToDisplay(args.GetNextParameter<int64_t>());
 						break;
 
 					default: {
-						amount = args.GetInt64();
+						amount = args.GetNextParameter<int64_t>();
 						break;
 					}
 				}
@@ -1203,21 +1203,21 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				/* Short description of cargotypes. Layout:
 				 * param 1: cargo type
 				 * param 2: cargo count */
-				CargoID cargo = args.GetInt32();
+				CargoID cargo = args.GetNextParameter<CargoID>();
 				if (cargo >= CargoSpec::GetArraySize()) break;
 
 				StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
 				switch (cargo_str) {
 					case STR_TONS: {
 						assert(_settings_game.locale.units_weight < lengthof(_units_weight));
-						auto tmp_params = MakeParameters(_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetInt64()));
+						auto tmp_params = MakeParameters(_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetNextParameter<int64_t>()));
 						FormatString(builder, GetStringPtr(_units_weight[_settings_game.locale.units_weight].l), tmp_params);
 						break;
 					}
 
 					case STR_LITERS: {
 						assert(_settings_game.locale.units_volume < lengthof(_units_volume));
-						auto tmp_params = MakeParameters(_units_volume[_settings_game.locale.units_volume].c.ToDisplay(args.GetInt64()));
+						auto tmp_params = MakeParameters(_units_volume[_settings_game.locale.units_volume].c.ToDisplay(args.GetNextParameter<int64_t>()));
 						FormatString(builder, GetStringPtr(_units_volume[_settings_game.locale.units_volume].l), tmp_params);
 						break;
 					}
@@ -1233,7 +1233,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 			case SCC_CARGO_LONG: { // {CARGO_LONG}
 				/* First parameter is cargo type, second parameter is cargo count */
-				CargoID cargo = args.GetInt32();
+				CargoID cargo = args.GetNextParameter<CargoID>();
 				if (IsValidCargoID(cargo) && cargo >= CargoSpec::GetArraySize()) break;
 
 				StringID cargo_str = !IsValidCargoID(cargo) ? STR_QUANTITY_N_A : CargoSpec::Get(cargo)->quantifier;
@@ -1243,7 +1243,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_CARGO_LIST: { // {CARGO_LIST}
-				CargoTypes cmask = args.GetInt64();
+				CargoTypes cmask = args.GetNextParameter<CargoTypes>();
 				bool first = true;
 
 				for (const auto &cs : _sorted_cargo_specs) {
@@ -1267,35 +1267,35 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_CURRENCY_SHORT: // {CURRENCY_SHORT}
-				FormatGenericCurrency(builder, _currency, args.GetInt64(), true);
+				FormatGenericCurrency(builder, _currency, args.GetNextParameter<int64_t>(), true);
 				break;
 
 			case SCC_CURRENCY_LONG: // {CURRENCY_LONG}
-				FormatGenericCurrency(builder, _currency, args.GetInt64(), false);
+				FormatGenericCurrency(builder, _currency, args.GetNextParameter<int64_t>(), false);
 				break;
 
 			case SCC_DATE_TINY: // {DATE_TINY}
-				FormatTinyOrISODate(builder, args.GetInt32(), STR_FORMAT_DATE_TINY);
+				FormatTinyOrISODate(builder, args.GetNextParameter<TimerGameCalendar::Date>(), STR_FORMAT_DATE_TINY);
 				break;
 
 			case SCC_DATE_SHORT: // {DATE_SHORT}
-				FormatMonthAndYear(builder, args.GetInt32(), next_substr_case_index);
+				FormatMonthAndYear(builder, args.GetNextParameter<TimerGameCalendar::Date>(), next_substr_case_index);
 				next_substr_case_index = 0;
 				break;
 
 			case SCC_DATE_LONG: // {DATE_LONG}
-				FormatYmdString(builder, args.GetInt32(), next_substr_case_index);
+				FormatYmdString(builder, args.GetNextParameter<TimerGameCalendar::Date>(), next_substr_case_index);
 				next_substr_case_index = 0;
 				break;
 
 			case SCC_DATE_ISO: // {DATE_ISO}
-				FormatTinyOrISODate(builder, args.GetInt32(), STR_FORMAT_DATE_ISO);
+				FormatTinyOrISODate(builder, args.GetNextParameter<TimerGameCalendar::Date>(), STR_FORMAT_DATE_ISO);
 				break;
 
 			case SCC_FORCE: { // {FORCE}
 				assert(_settings_game.locale.units_force < lengthof(_units_force));
 				const auto &x = _units_force[_settings_game.locale.units_force];
-				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1303,7 +1303,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_HEIGHT: { // {HEIGHT}
 				assert(_settings_game.locale.units_height < lengthof(_units_height));
 				const auto &x = _units_height[_settings_game.locale.units_height];
-				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1311,7 +1311,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_POWER: { // {POWER}
 				assert(_settings_game.locale.units_power < lengthof(_units_power));
 				const auto &x = _units_power[_settings_game.locale.units_power];
-				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1320,13 +1320,13 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				auto setting = _settings_game.locale.units_power * 3u + _settings_game.locale.units_weight;
 				assert(setting < lengthof(_units_power_to_weight));
 				const auto &x = _units_power_to_weight[setting];
-				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
 
 			case SCC_VELOCITY: { // {VELOCITY}
-				int64 arg = args.GetInt64();
+				int64_t arg = args.GetNextParameter<int64_t>();
 				// Unpack vehicle type from packed argument to get desired units.
 				VehicleType vt = static_cast<VehicleType>(GB(arg, 56, 8));
 				byte units = GetVelocityUnits(vt);
@@ -1340,7 +1340,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_VOLUME_SHORT: { // {VOLUME_SHORT}
 				assert(_settings_game.locale.units_volume < lengthof(_units_volume));
 				const auto &x = _units_volume[_settings_game.locale.units_volume];
-				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1348,7 +1348,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_VOLUME_LONG: { // {VOLUME_LONG}
 				assert(_settings_game.locale.units_volume < lengthof(_units_volume));
 				const auto &x = _units_volume[_settings_game.locale.units_volume];
-				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.l), tmp_params);
 				break;
 			}
@@ -1356,7 +1356,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_WEIGHT_SHORT: { // {WEIGHT_SHORT}
 				assert(_settings_game.locale.units_weight < lengthof(_units_weight));
 				const auto &x = _units_weight[_settings_game.locale.units_weight];
-				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.s), tmp_params);
 				break;
 			}
@@ -1364,13 +1364,13 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_WEIGHT_LONG: { // {WEIGHT_LONG}
 				assert(_settings_game.locale.units_weight < lengthof(_units_weight));
 				const auto &x = _units_weight[_settings_game.locale.units_weight];
-				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetInt64()), x.decimal_places);
+				auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
 				FormatString(builder, GetStringPtr(x.l), tmp_params);
 				break;
 			}
 
 			case SCC_COMPANY_NAME: { // {COMPANY}
-				const Company *c = Company::GetIfValid(args.GetInt32());
+				const Company *c = Company::GetIfValid(args.GetNextParameter<CompanyID>());
 				if (c == nullptr) break;
 
 				if (!c->name.empty()) {
@@ -1384,7 +1384,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_COMPANY_NUM: { // {COMPANY_NUM}
-				CompanyID company = (CompanyID)args.GetInt32();
+				CompanyID company = args.GetNextParameter<CompanyID>();
 
 				/* Nothing is added for AI or inactive companies */
 				if (Company::IsValidHumanID(company)) {
@@ -1395,14 +1395,14 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_DEPOT_NAME: { // {DEPOT}
-				VehicleType vt = (VehicleType)args.GetInt32();
+				VehicleType vt = args.GetNextParameter<VehicleType>();
 				if (vt == VEH_AIRCRAFT) {
 					StringParameters tmp_params = StringParameters(args, 1);
 					GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_AIRCRAFT, tmp_params);
 					break;
 				}
 
-				const Depot *d = Depot::Get(args.GetInt32());
+				const Depot *d = Depot::Get(args.GetNextParameter<DepotID>());
 				if (!d->name.empty()) {
 					auto tmp_params = MakeParameters(d->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
@@ -1414,7 +1414,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_ENGINE_NAME: { // {ENGINE}
-				int64 arg = args.GetInt64();
+				int64_t arg = args.GetNextParameter<int64_t>();
 				const Engine *e = Engine::GetIfValid(static_cast<EngineID>(arg));
 				if (e == nullptr) break;
 
@@ -1446,7 +1446,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_GROUP_NAME: { // {GROUP}
-				const Group *g = Group::GetIfValid(args.GetInt32());
+				const Group *g = Group::GetIfValid(args.GetNextParameter<GroupID>());
 				if (g == nullptr) break;
 
 				if (!g->name.empty()) {
@@ -1460,7 +1460,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_INDUSTRY_NAME: { // {INDUSTRY}
-				const Industry *i = Industry::GetIfValid(args.GetInt32());
+				const Industry *i = Industry::GetIfValid(args.GetNextParameter<IndustryID>());
 				if (i == nullptr) break;
 
 				static bool use_cache = true;
@@ -1482,7 +1482,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_PRESIDENT_NAME: { // {PRESIDENT_NAME}
-				const Company *c = Company::GetIfValid(args.GetInt32());
+				const Company *c = Company::GetIfValid(args.GetNextParameter<CompanyID>());
 				if (c == nullptr) break;
 
 				if (!c->president_name.empty()) {
@@ -1496,7 +1496,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_STATION_NAME: { // {STATION}
-				StationID sid = args.GetInt32();
+				StationID sid = args.GetNextParameter<StationID>();
 				const Station *st = Station::GetIfValid(sid);
 
 				if (st == nullptr) {
@@ -1536,7 +1536,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_TOWN_NAME: { // {TOWN}
-				const Town *t = Town::GetIfValid(args.GetInt32());
+				const Town *t = Town::GetIfValid(args.GetNextParameter<TownID>());
 				if (t == nullptr) break;
 
 				static bool use_cache = true;
@@ -1553,7 +1553,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
-				Waypoint *wp = Waypoint::GetIfValid(args.GetInt32());
+				Waypoint *wp = Waypoint::GetIfValid(args.GetNextParameter<StationID>());
 				if (wp == nullptr) break;
 
 				if (!wp->name.empty()) {
@@ -1569,7 +1569,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_VEHICLE_NAME: { // {VEHICLE}
-				const Vehicle *v = Vehicle::GetIfValid(args.GetInt32());
+				const Vehicle *v = Vehicle::GetIfValid(args.GetNextParameter<VehicleID>());
 				if (v == nullptr) break;
 
 				if (!v->name.empty()) {
@@ -1597,7 +1597,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_SIGN_NAME: { // {SIGN}
-				const Sign *si = Sign::GetIfValid(args.GetInt32());
+				const Sign *si = Sign::GetIfValid(args.GetNextParameter<SignID>());
 				if (si == nullptr) break;
 
 				if (!si->name.empty()) {
@@ -1611,12 +1611,12 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			}
 
 			case SCC_STATION_FEATURES: { // {STATIONFEATURES}
-				StationGetSpecialString(builder, args.GetInt32());
+				StationGetSpecialString(builder, args.GetNextParameter<StationFacility>());
 				break;
 			}
 
 			case SCC_COLOUR: { // {COLOUR}
-				StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetInt32());
+				StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetNextParameter<Colours>());
 				if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.Utf8Encode(scc);
 				break;
 			}
@@ -1629,7 +1629,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 }
 
 
-static void StationGetSpecialString(StringBuilder &builder, int x)
+static void StationGetSpecialString(StringBuilder &builder, StationFacility x)
 {
 	if ((x & FACIL_TRAIN) != 0) builder.Utf8Encode(SCC_TRAIN);
 	if ((x & FACIL_TRUCK_STOP) != 0) builder.Utf8Encode(SCC_LORRY);
@@ -1759,21 +1759,21 @@ static void GetSpecialNameString(StringBuilder &builder, int ind, StringParamete
 {
 	switch (ind) {
 		case 1: // not used
-			builder += _silly_company_names[std::min<uint>(args.GetInt32() & 0xFFFF, lengthof(_silly_company_names) - 1)];
+			builder += _silly_company_names[std::min<uint>(args.GetNextParameter<uint16_t>(), lengthof(_silly_company_names) - 1)];
 			return;
 
 		case 2: // used for Foobar & Co company names
-			GenAndCoName(builder, args.GetInt32());
+			GenAndCoName(builder, args.GetNextParameter<uint32_t>());
 			return;
 
 		case 3: // President name
-			GenPresidentName(builder, args.GetInt32());
+			GenPresidentName(builder, args.GetNextParameter<uint32_t>());
 			return;
 	}
 
 	/* town name? */
 	if (IsInsideMM(ind - 6, 0, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1)) {
-		GetSpecialTownNameString(builder, ind - 6, args.GetInt32());
+		GetSpecialTownNameString(builder, ind - 6, args.GetNextParameter<uint32_t>());
 		builder += " Transport";
 		return;
 	}
