@@ -3850,6 +3850,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Listeyi 
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Listedeki tüm araçlara talimat ver
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Araçları Değiştir
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Bakıma Gönder
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Grup kur
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Bu seneki kar: {CURRENCY_LONG} (geçen sene: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4572,6 +4573,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Beklenen
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programlanan
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Beklenen ile programlanan arasında geçiş yap
 
+STR_TIMETABLE_ARRIVAL                                           :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :D: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -5636,6 +5639,8 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

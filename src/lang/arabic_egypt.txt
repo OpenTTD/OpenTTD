@@ -1942,6 +1942,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}أسم �
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}ضع كلمة سر
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}احم لعبتك برقم سري حتى لا تصبح لعبتك مفتوحة للجميع
 
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}سواء بإمكان الأشخاص الآخرين رؤية خادمك (server) في القائمة العامة أم لا
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}عميل
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}اقصى عدد للعملاء:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}أختر أقصى عدد للعملاء
@@ -1980,6 +1981,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :شاهد
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}اللاعبون عبر الإنترنت
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}الاسم
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP          :{BLACK}سواء ان يمكن الوصول إلى الخادم الخاص بك من قبل الآخرين وكيف سيصلون اليه
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}الاسم
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :المشاهدين
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(شركة جديدة)
@@ -2112,6 +2114,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} مسح 
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} ضع علامة على المحتوى التي لن يتم تحميلها
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}بحث المواقع الخارجية
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK} محتوى البحث غير متوفر في في خدمة محتوى OpenTTD على مواقع الويب غير التابعة لـ OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}تختلف شروط وأحكام تنزيل المحتوى من مواقع الويب الخارجية.{}يجب عليك الرجوع إلى المواقع الخارجية للحصول على إرشادات حول كيفية تثبيت المحتوى في OpenTTD.{}هل تريد أن تكمل؟
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}مُرَشِح:
 STR_CONTENT_OPEN_URL                                            :{BLACK} زيارة الموقع
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}قم بزيارة الموقع لهذا المحتوى
@@ -2615,6 +2618,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}النس
 
 # Framerate display window
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} صورة في الثانية
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} صورة في الثانية
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} ثواني
@@ -3110,6 +3114,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}الدخل
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}مصروفات التشغيل
 
 
 ###length 13
@@ -3211,6 +3216,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}وسط �
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}نسبة الانتاج: {YELLOW}{COMMA}%
 
 STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}ينتج: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :، {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}:يتطلب
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} تنتظر{STRING}
@@ -3954,6 +3960,7 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انس
 STR_AI_CONFIG_RANDOM_AI                                         :ذكاء صناعي عشوائي
 STR_AI_CONFIG_NONE                                              :(لا شيء)
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}العدد الاقصى للمتنافسين: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}الفترة بين بدء المنافسين: {ORANGE}{COMMA} دقيقة
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}انقل للاعلى
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}انقل الذكاء الاصطناعي المختار للاعلى
@@ -4009,6 +4016,7 @@ STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{D
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}تكلفة: {CURRENCY_LONG}
