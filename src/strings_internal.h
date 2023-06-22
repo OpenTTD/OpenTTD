@@ -92,17 +92,6 @@ public:
 		return static_cast<T>(ptr == nullptr ? 0 : ptr->data);
 	}
 
-	int64 GetInt64()
-	{
-		return GetNextParameter<int64_t>();
-	}
-
-	/** Read an int32 from the argument array. @see GetInt64. */
-	int32 GetInt32()
-	{
-		return GetNextParameter<int32_t>();
-	}
-
 	/**
 	 * Get a new instance of StringParameters that is a "range" into the
 	 * remaining existing parameters. Upon destruction the offset in the parent
