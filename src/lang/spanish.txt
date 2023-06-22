@@ -938,48 +938,48 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidad m
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecciona la nnidad monetaria
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra británica (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar estadounidense (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen japonés (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Chelín austriaco (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco belga (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco suizo (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corona checa (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marco alemán (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corona danesa (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta española (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka finlandés (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco francés (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracma griego (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florín húngaro (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona islandesa (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira italiana (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florín holandés (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona noruega(NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty polaco (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu rumano (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo ruso (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tólar esloveno (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona sueca (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira turca (TRY)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra británica
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar estadounidense
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen japonés
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Chelín austriaco
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco belga
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco suizo
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corona checa
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marco alemán
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corona danesa
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta española
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka finlandés
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco francés
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracma griego
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florín húngaro
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona islandesa
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira italiana
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florín holandés
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona noruega
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty polaco
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu rumano
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo ruso
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tólar esloveno
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona sueca
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira turca
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona eslovaca
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real brasileño (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni estonio (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituana (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won surcoreano (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sudafricano (ZAR)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real brasileño
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni estonio
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituana
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won surcoreano
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sudafricano
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgiano (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iraní (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo rublo ruso (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuevo dólar taiwanés (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chino (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar hongkonés (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgiano
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iraní
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo rublo ruso
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuevo dólar taiwanés
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chino
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar hongkonés
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre guardados automáticos del juego

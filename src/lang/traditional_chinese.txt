@@ -937,48 +937,48 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}幣值�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}選擇幣值單位
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :英鎊 (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :美元 (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :歐元 (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :日圓 (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :奧地利先令 (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :比利時法郎 (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :瑞士法郎 (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :捷克克朗 (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :德國馬克 (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :捷克克朗 (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :西班牙披索 (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :芬蘭馬克 (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :法國法朗 (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :希臘德拉克馬 (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :匈牙利福林 (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :冰島克朗 (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :義大利里拉 (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :荷蘭盾 (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :挪威克朗 (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :波蘭茲羅提 (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :羅馬尼亞列伊 (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :俄羅斯舊盧布 (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :斯洛文尼亞托拉 (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :瑞典克朗 (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :土耳其里拉 (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :斯洛伐克克朗 (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :巴西里拉 (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :愛沙尼亞克魯恩(EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :立陶宛立特 (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :韓圓 (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南非蘭特 (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :英鎊
+STR_GAME_OPTIONS_CURRENCY_USD                                   :美元
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :歐元
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :日圓
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :奧地利先令
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :比利時法郎
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :瑞士法郎
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :捷克克朗
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :德國馬克
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :捷克克朗
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :西班牙披索
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :芬蘭馬克
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :法國法朗
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :希臘德拉克馬
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :匈牙利福林
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :冰島克朗
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :義大利里拉
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :荷蘭盾
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :挪威克朗
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :波蘭茲羅提
+STR_GAME_OPTIONS_CURRENCY_RON                                   :羅馬尼亞列伊
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :俄羅斯舊盧布
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :斯洛文尼亞托拉
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :瑞典克朗
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :土耳其里拉
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :斯洛伐克克朗
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :巴西里拉
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :愛沙尼亞克魯恩
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :立陶宛立特
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :韓圓
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南非蘭特
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自訂...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :喬治亞拉里 (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亞爾 (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :俄羅斯盧布 (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :墨西哥披索 (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :新臺幣 (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :中國人民幣(CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :港幣 (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :印度盧比(INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾 (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :馬來西亞令吉 (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :喬治亞拉里
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亞爾
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :俄羅斯盧布
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :墨西哥披索
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :新臺幣
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :中國人民幣
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :港幣
+STR_GAME_OPTIONS_CURRENCY_INR                                   :印度盧比
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :馬來西亞令吉
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動存檔
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}選擇自動存檔頻率

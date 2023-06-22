@@ -1089,41 +1089,41 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitates
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Electio unitatum nummi
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Britannica (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarium CFA (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ien Iaponicus (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scellinus Austriacus (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Francus Belgicus (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Francus Helveticus (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corona Cecha (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marca Germanica (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corona Danica (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Hispanica (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marca Finnica (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Francus Francogallicus (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Graeca (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florenus Hungaricus (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona Islandica (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Libra Italiana (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florenus Batavicus (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona Norvegica (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Polonica (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romanicus (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rubelus Russicus (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Dollarium Slovenicum (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona Suecica (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Libra Turcica (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona Slovaca (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Regalis Brasilica (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Corona Estonica (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lithuanica (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Von Coreanus (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Randum Africae Australis (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Britannica
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarium CFA
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ien Iaponicus
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scellinus Austriacus
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Francus Belgicus
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Francus Helveticus
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corona Cecha
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marca Germanica
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corona Danica
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Hispanica
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marca Finnica
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Francus Francogallicus
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Graeca
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florenus Hungaricus
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona Islandica
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Libra Italiana
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florenus Batavicus
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona Norvegica
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Polonica
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romanicus
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rubelus Russicus
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Dollarium Slovenicum
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona Suecica
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Libra Turcica
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona Slovaca
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Regalis Brasilica
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Corona Estonica
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lithuanica
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Von Coreanus
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Randum Africae Australis
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Propria...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiana (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus (RUB)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiana
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Servare automatice
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Eligere crebritatem automatice ludum servandi

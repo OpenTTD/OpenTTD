@@ -895,42 +895,42 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Uned Ari
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Dewis unedau arian
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punnoedd Prydeinig (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Doleri America (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ewro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Siapan (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Swllt Awstriaidd (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Ffranc Belgaidd (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ffranc Swisaidd (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Tsecaidd (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Danaidd (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Sbaen (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Ffinaidd(FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Ffranc Ffrainc (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona Ynys yr Iâ (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Eidalaidd (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Norwyaidd (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Pwylaidd (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Rwmanaidd (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rwbl Rwsaidd (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slofenaidd (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Swedaidd (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Twrcaidd (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slofacaidd (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brazilaidd (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonia (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litau Lithiwanaidd (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won De Korea (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand De Affrica (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punnoedd Prydeinig
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Doleri America
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ewro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Siapan
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Swllt Awstriaidd
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Ffranc Belgaidd
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ffranc Swisaidd
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Tsecaidd
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Danaidd
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Sbaen
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Ffinaidd
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Ffranc Ffrainc
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona Ynys yr Iâ
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Eidalaidd
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Norwyaidd
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Pwylaidd
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Rwmanaidd
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rwbl Rwsaidd
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slofenaidd
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Swedaidd
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Twrcaidd
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slofacaidd
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brazilaidd
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonia
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litau Lithiwanaidd
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won De Korea
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand De Affrica
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Addasedig...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rwbl Rwsaidd Newydd (RUB)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Tseina (CNY)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rwbl Rwsaidd Newydd
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Tseina
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Awtogadw
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Dewiswch pa mor aml y dylid awtogadw gemau

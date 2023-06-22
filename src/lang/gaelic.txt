@@ -1098,40 +1098,40 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Aonadan 
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Tagh aonadan airgeadra
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Not Breatannach (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Aimeireaganach (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eòro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Seapanach (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Sgillin Ostaireach (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc Beilgeach (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc Eilbheiseach (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Seiceach (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mark Gearmailteach (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Crùn Danmhairgeach (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Spàinnteach (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Fionnlannach (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Frangach (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Greugach (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Ungaireach (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona Tìleach (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Eadailteach (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder Duitseach (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Nirribheach (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Pòlainneach (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romàineach (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rùbal Ruiseach (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slòbhaineach (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Suaineach (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turcach (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slòbhacach (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Braisileach (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Eastoineach (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Liotuaineach (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Choirèa a Deas (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Afraga a Deas (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Not Breatannach
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Aimeireaganach
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eòro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Seapanach
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Sgillin Ostaireach
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc Beilgeach
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc Eilbheiseach
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Seiceach
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mark Gearmailteach
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Crùn Danmhairgeach
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Spàinnteach
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Fionnlannach
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Frangach
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Greugach
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Ungaireach
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona Tìleach
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Eadailteach
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder Duitseach
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Nirribheach
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Pòlainneach
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Romàineach
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rùbal Ruiseach
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slòbhaineach
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Suaineach
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turcach
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slòbhacach
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Braisileach
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Eastoineach
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Liotuaineach
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Choirèa a Deas
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Afraga a Deas
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Gnàthaichte...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Cairtbheileach (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iorànach (IRR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Cairtbheileach
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iorànach
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Fèin-shàbhaladh
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tagh dè cho tric ’s a thèid an geama fèin-shàbhaladh

@@ -885,40 +885,40 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Diru uni
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Diru unitatearen aukeraketa
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Amerikarrak (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euroa (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yena (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Txelin Austriarra (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franko Belgikarra (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Suitzar Frankoa (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koroa Txekoa (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marko Alemaniarra (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danierar Koroa (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marko Finlandiarra (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frankoa (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Grekoa (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florin Hungariarra (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Koro Islandiarra (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Italiarra (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Herbeheretako Florina (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvegiar Koroa (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Poloniarra (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Errumaniarra (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Errusiar Rubloa (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Esloveniarra (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Suediar Koroa (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turkiarra (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Eslovakiar Koroa (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Erreal Brasildarra (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estoniar Koroa (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lituaniako Litas-ak (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Hego koreako Won-a (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Hego Afrikako Rand-a (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Amerikarrak
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euroa
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yena
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Txelin Austriarra
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franko Belgikarra
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Suitzar Frankoa
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koroa Txekoa
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marko Alemaniarra
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danierar Koroa
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marko Finlandiarra
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frankoa
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Grekoa
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florin Hungariarra
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Koro Islandiarra
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Italiarra
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Herbeheretako Florina
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvegiar Koroa
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Poloniarra
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Errumaniarra
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Errusiar Rubloa
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Esloveniarra
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Suediar Koroa
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turkiarra
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Eslovakiar Koroa
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Erreal Brasildarra
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estoniar Koroa
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lituaniako Litas-ak
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Hego koreako Won-a
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Hego Afrikako Rand-a
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pertsonalizatua...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiarra (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniarra (IRR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiarra
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniarra
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-gordea
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Aukeratu jokoa automatikoki gordetzeko denbora

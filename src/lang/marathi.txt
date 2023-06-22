@@ -702,31 +702,31 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :पौंड (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :डोल्लर ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :युरो (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :येन (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :ओस्त्रिअन शिल्लिंग (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :बेल्गीअन फ्रांक (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :स्विस फ्रांक (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :झेख कोरुना (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :दोइश्मार्क (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :डेनिष क्रोन (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :पेसेटा (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिन्निश मार्क्का (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :फ्रांक (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :ग्रीक द्रक्मा (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :हंगेरियन फोरिन्त (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :आईसलेंडीक क्रोना (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :ईटेलिअन लिरा (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :डच गिल्डर (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :नोर्वेगीअन क्रोन (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :पोलिश झ्लोटी (PLN)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :रशिअन रुबल्स (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :स्लोवेनिअन तोलार (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :स्वीडीश क्रोना (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :तुर्की लिरा (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोवाक कोरुना (SKK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :पौंड
+STR_GAME_OPTIONS_CURRENCY_USD                                   :डोल्लर
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :युरो
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :येन
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :ओस्त्रिअन शिल्लिंग
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :बेल्गीअन फ्रांक
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :स्विस फ्रांक
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :झेख कोरुना
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :दोइश्मार्क
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :डेनिष क्रोन
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :पेसेटा
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिन्निश मार्क्का
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :फ्रांक
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :ग्रीक द्रक्मा
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :हंगेरियन फोरिन्त
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :आईसलेंडीक क्रोना
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :ईटेलिअन लिरा
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :डच गिल्डर
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :नोर्वेगीअन क्रोन
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :पोलिश झ्लोटी
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :रशिअन रुबल्स
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :स्लोवेनिअन तोलार
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :स्वीडीश क्रोना
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :तुर्की लिरा
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोवाक कोरुना
 
 
 # Autosave dropdown

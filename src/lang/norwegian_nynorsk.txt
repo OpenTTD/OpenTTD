@@ -895,40 +895,40 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaei
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Vel valutaeining
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Østerriksk shilling (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgisk franc (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitsisk franc (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tsjekkisk koruna (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Tyske mark (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dansk krone (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesetas (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finske mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Gresk drakme (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarsk forint (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandsk krone (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italiensk lire (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollandsk gylden (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk krone (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polsk zloty (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumensk lei (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russisk rubel (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovensk tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svensk krone (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkiske lira (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk koruna (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estiske kroner (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sør-Koreanske Won (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sør-Afrikanske Rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Østerriksk shilling
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgisk franc
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitsisk franc
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tsjekkisk koruna
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Tyske mark
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dansk krone
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesetas
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finske mark
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Gresk drakme
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarsk forint
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandsk krone
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italiensk lire
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollandsk gylden
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk krone
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polsk zloty
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumensk lei
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russisk rubel
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovensk tolar
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svensk krone
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkiske lira
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk koruna
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estiske kroner
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske Litas
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sør-Koreanske Won
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sør-Afrikanske Rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eigendefinert...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial (IRR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk lagring
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vel intervall for automatisk lagring

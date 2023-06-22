@@ -865,37 +865,37 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldsoy
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Úrval av gjaldsoyra eindum
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bretsk Pund (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarar (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evrir (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Eysturríkskan Shilling (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiskan Frank (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveisiskan Frank (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjekkisk Koruna (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danskar Krónir (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanskir Peseta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finskan Mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franskan Frank (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grikkskan Drachma (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarskan Forint (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Íslenska Krónu (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italskan Lira (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Niðurlendskan Gillin (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norskar Krónur (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polskan Zloty (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumeniskan Leu (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russiskar Rublar (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenskar Tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svenskar Krónur (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkiskan Lira (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakiska Koruna (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilskan Real (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estoniska Krooni (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiskir Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suður Koreanskar Won (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suður Afrikanskir Rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bretsk Pund
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarar
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evrir
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Eysturríkskan Shilling
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiskan Frank
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveisiskan Frank
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjekkisk Koruna
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danskar Krónir
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanskir Peseta
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finskan Mark
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franskan Frank
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grikkskan Drachma
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarskan Forint
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Íslenska Krónu
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italskan Lira
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Niðurlendskan Gillin
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norskar Krónur
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polskan Zloty
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumeniskan Leu
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russiskar Rublar
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenskar Tolar
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svenskar Krónur
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkiskan Lira
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakiska Koruna
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilskan Real
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estoniska Krooni
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiskir Litas
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suður Koreanskar Won
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suður Afrikanskir Rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sjálvgjørt...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiskur Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranskur Rial

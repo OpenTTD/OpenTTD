@@ -908,42 +908,42 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}หน�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}การเลือกสกุลเงิน
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :ปอนด์สเตอร์ลิง (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :ดอลลาร์สหรัฐ ($)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :ปอนด์สเตอร์ลิง
+STR_GAME_OPTIONS_CURRENCY_USD                                   :ดอลลาร์สหรัฐ
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :ยูโร
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :เยน (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :ชิลลิ่งออสเตรีย (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :ฟรังก์เบลเยี่ยม (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :ฟรังก์สวิส (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :โครูนาเช็ค (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :ดอยช์มาร์ค (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :โครนเดนมาร์ค (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :เพเซต้า (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :มาร์คคา ฟินแลนด์ (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :ฟรังก์ฝรั่งเศส(FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :ดรากช์มา กรีซ (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :ฟอรินท์ ฮังการี (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :โครนา ไอซแลนด์ (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :ลิรา อิตาลี (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :กิลเดอร์ ดัชต์ (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :โครน นอร์เวย์ (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :ซโลตี โปแลนด์ (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :ลิว โรมาเนีย (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :รูเบิ้ลส์ รัสเซีย (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :โทลาร์ สโลวีเนีย (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :โครนา สวีเดน (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :ลิรา ตุรกี (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :โครูนา สโลวาเกีย (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :เรียล บราซิล (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :ครูนิ เอสโทเนีย (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :วอน เกาหลีใต้ (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :เยน
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :ชิลลิ่งออสเตรีย
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :ฟรังก์เบลเยี่ยม
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :ฟรังก์สวิส
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :โครูนาเช็ค
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :ดอยช์มาร์ค
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :โครนเดนมาร์ค
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :เพเซต้า
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :มาร์คคา ฟินแลนด์
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :ฟรังก์ฝรั่งเศส
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :ดรากช์มา กรีซ
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :ฟอรินท์ ฮังการี
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :โครนา ไอซแลนด์
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :ลิรา อิตาลี
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :กิลเดอร์ ดัชต์
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :โครน นอร์เวย์
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :ซโลตี โปแลนด์
+STR_GAME_OPTIONS_CURRENCY_RON                                   :ลิว โรมาเนีย
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :รูเบิ้ลส์ รัสเซีย
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :โทลาร์ สโลวีเนีย
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :โครนา สวีเดน
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :ลิรา ตุรกี
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :โครูนา สโลวาเกีย
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :เรียล บราซิล
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :ครูนิ เอสโทเนีย
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Litas
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :วอน เกาหลีใต้
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :ระบุเอง...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial (IRR)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :ดอลลาร์ฮ่องกง (HKD)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :ริงกิตมาเลเซีย (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :ดอลลาร์ฮ่องกง
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :ริงกิตมาเลเซีย
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}บันทึกเกมอัตโนมัติ
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}เลือกระยะห่างระหว่างการบันทึกเกมอัตโนมัติแต่ละครั้ง
