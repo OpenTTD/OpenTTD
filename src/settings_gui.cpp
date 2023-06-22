@@ -216,13 +216,19 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: { // Setup currencies dropdown
 				*selected_index = this->opt->locale.currency;
-				StringID *items = BuildCurrencyDropdown();
 				uint64 disabled = _game_mode == GM_MENU ? 0LL : ~GetMaskOfAllowedCurrencies();
 
 				/* Add non-custom currencies; sorted naturally */
-				for (uint i = 0; i < CURRENCY_END; items++, i++) {
+				for (const CurrencySpec &currency : _currency_specs) {
+					int i = &currency - _currency_specs;
 					if (i == CURRENCY_CUSTOM) continue;
-					list.emplace_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
+					if (currency.code.empty()) {
+						list.emplace_back(new DropDownListStringItem(currency.name, i, HasBit(disabled, i)));
+					} else {
+						SetDParam(0, currency.name);
+						SetDParamStr(1, currency.code);
+						list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CODE, i, HasBit(disabled, i)));
+					}
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 
@@ -303,7 +309,17 @@ struct GameOptionsWindow : Window {
 	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
-			case WID_GO_CURRENCY_DROPDOWN:     SetDParam(0, _currency_specs[this->opt->locale.currency].name); break;
+			case WID_GO_CURRENCY_DROPDOWN: {
+				const CurrencySpec &currency = _currency_specs[this->opt->locale.currency];
+				if (currency.code.empty()) {
+					SetDParam(0, currency.name);
+				} else {
+					SetDParam(0, STR_GAME_OPTIONS_CURRENCY_CODE);
+					SetDParam(1, currency.name);
+					SetDParamStr(2, currency.code);
+				}
+				break;
+			}
 			case WID_GO_AUTOSAVE_DROPDOWN:     SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
 			case WID_GO_LANG_DROPDOWN:         SetDParamStr(0, _current_language->own_name); break;
 			case WID_GO_BASE_GRF_DROPDOWN:     SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
@@ -763,7 +779,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				EndContainer(),
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_STRING, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_STRING2, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GO_SURVEY_SEL),
