@@ -122,7 +122,7 @@ void ErrorMessageData::CopyOutDParams()
 
 	/* Get parameters using type information */
 	if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
-	CopyOutDParam(this->params, 20, this->detailed_msg == INVALID_STRING_ID ? this->summary_msg : this->detailed_msg);
+	CopyOutDParam(this->params, 20);
 	if (this->textref_stack_size > 0) StopTextRefStackUsage();
 }
 
