@@ -3849,6 +3849,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administ
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Send instruktioner til alle køretøjer i denne liste
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Udskift køretøjer
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send til eftersyn
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Opret gruppe
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Afkast i år: {CURRENCY_LONG} (sidste år: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4571,6 +4572,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Forvente
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skift mellem forventet og tidslagt
 
+STR_TIMETABLE_ARRIVAL                                           :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :D: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
