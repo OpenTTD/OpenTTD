@@ -75,6 +75,7 @@ struct CurrencySpec {
 	TimerGameCalendar::Year to_euro; ///< Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
 	std::string prefix;    ///< Prefix to apply when formatting money in this currency.
 	std::string suffix;    ///< Suffix to apply when formatting money in this currency.
+	std::string code; ///< 3 letter untranslated code to identify the currency.
 	/**
 	 * The currency symbol is represented by two possible values, prefix and suffix
 	 * Usage of one or the other is determined by #symbol_pos.
@@ -89,8 +90,8 @@ struct CurrencySpec {
 
 	CurrencySpec() = default;
 
-	CurrencySpec(uint16 rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, byte symbol_pos, StringID name) :
-		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), symbol_pos(symbol_pos), name(name)
+	CurrencySpec(uint16 rate, const char *separator, TimerGameCalendar::Year to_euro, const char *prefix, const char *suffix, const char *code, byte symbol_pos, StringID name) :
+		rate(rate), separator(separator), to_euro(to_euro), prefix(prefix), suffix(suffix), code(code), symbol_pos(symbol_pos), name(name)
 	{
 	}
 };
@@ -103,7 +104,6 @@ extern CurrencySpec _currency_specs[CURRENCY_END];
 
 uint64 GetMaskOfAllowedCurrencies();
 void ResetCurrencies(bool preserve_custom = true);
-StringID *BuildCurrencyDropdown();
 byte GetNewgrfCurrencyIdConverted(byte grfcurr_id);
 
 #endif /* CURRENCY_H */
