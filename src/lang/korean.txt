@@ -953,48 +953,48 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 �
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :영국 파운드 (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :미국 달러 (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :유로 (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :일본 엔 (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :오스트리아 실링 (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :벨기에 프랑크 (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :스위스 프랑크 (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :체코 코루나 (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :독일 마르크 (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :덴마크 크로네 (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :스페인 페세타 (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :핀란드 마르카 (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :프랑스 프랑크 (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :그리스 드라크마 (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :헝가리 프로인트 (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :아이슬란드 크로나 (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :이탈리아 리라 (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :네덜란드 길더 (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :노르웨이 크로네 (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :폴란드 즈워티 (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :루마니아 레우 (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :러시아 루블 (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :슬로바키아 톨라 (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :스웨덴 크로나 (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :터키 리라 (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :슬로바키아 코루나 (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :브라질 레알 (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :에스토니아 크룬 (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :리투아니아 리타스 (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :대한민국 원 (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :남아프리카공화국 자르 (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :영국 파운드
+STR_GAME_OPTIONS_CURRENCY_USD                                   :미국 달러
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :유로
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :일본 엔
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :오스트리아 실링
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :벨기에 프랑크
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :스위스 프랑크
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :체코 코루나
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :독일 마르크
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :덴마크 크로네
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :스페인 페세타
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :핀란드 마르카
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :프랑스 프랑크
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :그리스 드라크마
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :헝가리 프로인트
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :아이슬란드 크로나
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :이탈리아 리라
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :네덜란드 길더
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :노르웨이 크로네
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :폴란드 즈워티
+STR_GAME_OPTIONS_CURRENCY_RON                                   :루마니아 레우
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :러시아 루블
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :슬로바키아 톨라
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :스웨덴 크로나
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :터키 리라
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :슬로바키아 코루나
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :브라질 레알
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :에스토니아 크룬
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :리투아니아 리타스
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :대한민국 원
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :남아프리카공화국 자르
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :사용자 설정...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :그루지야 라리 (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :이란 리알 (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :신 러시아 루블 (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :멕시코 페소 (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :신 타이완 달러 (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :중국 위안 (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :홍콩 달러 (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :인도 루피 (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :인도네시아 루피아 (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아 링깃 (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :그루지야 라리
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :이란 리알
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :신 러시아 루블
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :멕시코 페소
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :신 타이완 달러
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :중국 위안
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :홍콩 달러
+STR_GAME_OPTIONS_CURRENCY_INR                                   :인도 루피
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :인도네시아 루피아
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아 링깃
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 저장
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동 저장 간격을 선택

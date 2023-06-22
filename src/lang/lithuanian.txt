@@ -1137,48 +1137,48 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valiuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valiutos pasirinkimas
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Svarai sterlingų (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikos Doleris ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eurai (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japonijos jenos (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijos šilingai (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijos frankai (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Šveicarijos frankai (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Čekijos kronos (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Vokietijos markės (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danijos kronos (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Ispanijos pesetos (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Suomijos markės (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Prancūzijos frankai (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Graikijos drachmos (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Vengrijos forintai (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandijos kronos (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italijos liros (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Olandijos guldenai (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvegijos kronos (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Lenkijos zlotai (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumunijos lėjos (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rusijos rubliai (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovėnijos tolarai (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Švedijos kronos (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkijos liros (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakijos kronos (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilijos realai (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estijos kronos (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lietuvos Respublikos litai (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Pietų Korėjos vonai (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Pietų Afrikos Respublikos randas (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Svarai sterlingų
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikos Doleris
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eurai
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japonijos jenos
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijos šilingai
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijos frankai
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Šveicarijos frankai
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Čekijos kronos
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Vokietijos markės
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danijos kronos
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Ispanijos pesetos
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Suomijos markės
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Prancūzijos frankai
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Graikijos drachmos
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Vengrijos forintai
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandijos kronos
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italijos liros
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Olandijos guldenai
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvegijos kronos
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Lenkijos zlotai
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumunijos lėjos
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rusijos rubliai
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovėnijos tolarai
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Švedijos kronos
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkijos liros
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakijos kronos
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilijos realai
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estijos kronos
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lietuvos Respublikos litai
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Pietų Korėjos vonai
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Pietų Afrikos Respublikos randas
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Kita...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijos lariai (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irano rialai (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Naujieji Rusijos rubliai (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikos pesai (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Naujieji Taivano doleriai (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinijos ženminbi juaniai (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Honkongo doleriai (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijos rupijos (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonezijos rupijos (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijos ringitai (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijos lariai
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irano rialai
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Naujieji Rusijos rubliai
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikos pesai
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Naujieji Taivano doleriai
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinijos ženminbi juaniai
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Honkongo doleriai
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijos rupijos
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonezijos rupijos
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijos ringitai
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatinis išsaugojimas
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pasirink, kaip dažnai išsaugoti žaidimą

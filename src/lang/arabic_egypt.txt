@@ -903,42 +903,42 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}وحدة
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}اختيار وحدة العملة
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :جنية(£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :دولار ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :يورو (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :ين (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :شلنق استرالي (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :فرنك بلجيكي (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :فرنك سويسري (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :كرونا تشيكية (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :مارك الماني (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :كرونا دنمركي
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :بيستا (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :ماركا فنلندي(FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :فرنك (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :دراخما يونانية (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :فورنت هنغاري (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :كرونا ايسلاندية (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :ليرة ايطالية (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :غلدر هولندي (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :كرونا نرويجية (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :زلوتي بولندي (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :لور يوناني (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :روبل روسي (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :تولار سوفاني (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :كرونا سويدية (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :ليرة تركية (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :كرونا سلوفاكية (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :ريال برازيلي (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :كرونا استونية (EEK)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :وون كوريا الجنوبية (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :راند جنوب أفريقيا (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :جنية
+STR_GAME_OPTIONS_CURRENCY_USD                                   :دولار
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :يورو
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :ين
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :شلنق استرالي
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :فرنك بلجيكي
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :فرنك سويسري
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :كرونا تشيكية
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :مارك الماني
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :كرونا د
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :بيستا
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :ماركا فنلندي
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :فرنك
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :دراخما يونانية
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :فورنت هنغاري
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :كرونا ايسلاندية
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :ليرة ايطالية
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :غلدر هولندي
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :كرونا نرويجية
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :زلوتي بولندي
+STR_GAME_OPTIONS_CURRENCY_RON                                   :لور يوناني
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :روبل روسي
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :تولار سوفاني
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :كرونا سويدية
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :ليرة تركية
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :كرونا سلوفاكية
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :ريال برازيلي
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :كرونا استونية
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :وون كوريا الجنوبية
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :راند جنوب أفريقيا
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :مخصص ...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :(GEL) لاري جورجي
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :الدولار التايواني الجديد (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :(CNY) الرنمينبي الصيني
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :(HKD) دولار هونج كونج
-STR_GAME_OPTIONS_CURRENCY_INR                                   :الروبية الهندية (INR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :لاري جورجي
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :الدولار التايواني الجديد
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :الرنمينبي الصيني
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :دولار هونج كونج
+STR_GAME_OPTIONS_CURRENCY_INR                                   :الروبية الهندية
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}حفظ آلي
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}اختار مدة الحفظ الآلي

@@ -926,48 +926,48 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Aonaid a
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Aonaid airgeadra a roghnú
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punt na Breataine (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar Mheiriceá (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen na Seapáine (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scilling na hOstaire (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc na Beilge (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc na hEilbhéise (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Phoblacht na Seice (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone na Danmhairge (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta na Spáinne (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka na Fionlainne (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc na Fraince (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma na Gréige (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint na hUngáire (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona na hÍoslainne (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira na hIodáile (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder na hÍsiltíre (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone na hIorua (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty na Polainne (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu na Rómáine (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rúbal na Rúise (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar na Slóivéine (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona na Sualainne (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira na Tuirce (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna na Slováice (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real na Brasaíle (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni na hEastóine (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas na Liotuáine (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won na Cóiré Theas (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand na hAfraice Theas (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punt na Breataine
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar Mheiriceá
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen na Seapáine
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scilling na hOstaire
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc na Beilge
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc na hEilbhéise
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Phoblacht na Seice
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone na Danmhairge
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta na Spáinne
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka na Fionlainne
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc na Fraince
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma na Gréige
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint na hUngáire
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona na hÍoslainne
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira na hIodáile
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder na hÍsiltíre
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone na hIorua
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty na Polainne
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu na Rómáine
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rúbal na Rúise
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar na Slóivéine
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona na Sualainne
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira na Tuirce
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna na Slováice
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real na Brasaíle
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni na hEastóine
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas na Liotuáine
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won na Cóiré Theas
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand na hAfraice Theas
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Saincheaptha...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari na Seoirsia (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial na hIaráine (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rúbal Nua na Rúise (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mheicsiceo (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Dollar Nua na Téaváine (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi na Síne (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar Hong Cong (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúipí na hIndia (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah na hIndinéise (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit na Malaeisia (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari na Seoirsia
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial na hIaráine
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rúbal Nua na Rúise
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mheicsiceo
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Dollar Nua na Téaváine
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi na Síne
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar Hong Cong
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúipí na hIndia
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah na hIndinéise
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit na Malaeisia
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Uathshábháil
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Roghnaigh eatramh idir uathshábhálacha an chluiche
