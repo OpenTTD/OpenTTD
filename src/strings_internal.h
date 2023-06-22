@@ -32,6 +32,8 @@ protected:
 		parameters(parameters)
 	{}
 
+	StringParameter *GetNextParameterPointer();
+
 public:
 	/**
 	 * Create a new StringParameters instance that can reference part of the data of
@@ -77,12 +79,28 @@ public:
 		this->offset = offset;
 	}
 
-	int64 GetInt64();
+	/**
+	 * Get the next parameter from our parameters.
+	 * This updates the offset, so the next time this is called the next parameter
+	 * will be read.
+	 * @return The next parameter's value.
+	 */
+	template <typename T>
+	T GetNextParameter()
+	{
+		auto ptr = GetNextParameterPointer();
+		return static_cast<T>(ptr == nullptr ? 0 : ptr->data);
+	}
+
+	int64 GetInt64()
+	{
+		return GetNextParameter<int64_t>();
+	}
 
 	/** Read an int32 from the argument array. @see GetInt64. */
 	int32 GetInt32()
 	{
-		return (int32)this->GetInt64();
+		return GetNextParameter<int32_t>();
 	}
 
 	/**

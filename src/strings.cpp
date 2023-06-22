@@ -72,26 +72,28 @@ void StringParameters::PrepareForNextRun()
 
 
 /**
- * Read an int64 from the argument array. The offset is increased
- * so the next time GetInt64 is called the next value is read.
+ * Get the next parameter from our parameters.
+ * This updates the offset, so the next time this is called the next parameter
+ * will be read.
+ * @return The pointer to the next parameter.
  */
-int64 StringParameters::GetInt64()
+StringParameter *StringParameters::GetNextParameterPointer()
 {
 	assert(this->next_type == 0 || (SCC_CONTROL_START <= this->next_type && this->next_type <= SCC_CONTROL_END));
 	if (this->offset >= this->parameters.size()) {
 		Debug(misc, 0, "Trying to read invalid string parameter");
-		return 0;
+		return nullptr;
 	}
 
 	auto &param = this->parameters[this->offset++];
 	if (param.type != 0 && param.type != this->next_type) {
 		Debug(misc, 0, "Trying to read string parameter with wrong type");
 		this->next_type = 0;
-		return 0;
+		return nullptr;
 	}
-	param.type = next_type;
+	param.type = this->next_type;
 	this->next_type = 0;
-	return param.data;
+	return &param;
 }
 
 
