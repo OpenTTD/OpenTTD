@@ -126,7 +126,9 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	for (TextEffect &te : _text_effects) {
 		if (te.string_id == INVALID_STRING_ID) continue;
 		if (te.mode == TE_RISING || (_settings_client.gui.loading_indicators && !IsTransparencySet(TO_LOADING))) {
-			ViewportAddString(dpi, ZOOM_LVL_OUT_8X, &te, te.string_id, te.string_id - 1, STR_NULL, te.params_1, te.params_2);
+			SetDParam(0, te.params_1);
+			SetDParam(1, te.params_2);
+			ViewportAddString(dpi, ZOOM_LVL_OUT_8X, &te, te.string_id, te.string_id - 1, STR_NULL);
 		}
 	}
 }
