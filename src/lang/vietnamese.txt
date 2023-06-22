@@ -952,48 +952,48 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Đơn v�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Lựa chọn đơn vị tiền tệ
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bảng Anh (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Đô-la Mỹ (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yên Nhật (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Úc (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Phơ-răng Bỉ (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Phơ-răng Thụy Sỹ (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Séc (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mác Đức (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Đan Mạch (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Tây Ban Nha(ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Phần Lan (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Pháp (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Hy Lạp (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Hungary (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Đồng Króna (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Ý (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder Hà Lan (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Na Uy (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Phần Lan (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Ru-ma-ni (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rúp Nga (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Thụy Điển (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Thổ Nhĩ Kỳ (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slovakia (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Đồng Real Brasil (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Kroon Estonia (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Đồng Litas Lát-vi (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Hàn Quốc (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Nam Phi (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bảng Anh
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Đô-la Mỹ
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yên Nhật
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Úc
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Phơ-răng Bỉ
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Phơ-răng Thụy Sỹ
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Séc
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mác Đức
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Đan Mạch
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Tây Ban Nha
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Phần Lan
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Pháp
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Hy Lạp
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Hungary
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Đồng Króna
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Ý
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder Hà Lan
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Na Uy
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Phần Lan
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Ru-ma-ni
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rúp Nga
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Thụy Điển
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Thổ Nhĩ Kỳ
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slovakia
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Đồng Real Brasil
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Kroon Estonia
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Đồng Litas Lát-vi
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Hàn Quốc
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Nam Phi
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Tùy chọn...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Đồng Rúp Nga mới (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso México (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Tân Đài tệ (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Nhân dân tệ TQ (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Đô-la Hồng Kông (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupee Ấn Độ (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah Indonesia (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysia (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Đồng Rúp Nga mới
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso México
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Tân Đài tệ
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Nhân dân tệ TQ
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Đô-la Hồng Kông
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupee Ấn Độ
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah Indonesia
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysia
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Lựa chọn khoảng thời gian tự động lưu

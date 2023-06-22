@@ -1218,45 +1218,45 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Валю
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Выбар валюты
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Брытанскі фунт (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Даляр ЗША ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Эўра (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Японская ена (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Аўстралійскі шылінг (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Бэльґійскі франк (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Швайцарскі франк (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Чэская крона (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Нямецкая марка (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Дацкая крона (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Гішпанская пэсэта (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Фінская марка (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Францускі франк (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Грэцкая драхма (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Вугорскі форынт (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ісьляндзкая крона (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Італьянская ліра (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Нідэрляндзкі гульдэн (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Нарвэская крона (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Польскі злоты (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Румынскі лей (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Расейскі рубель (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Славенскі толар (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Швэдзкая крона (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турэцкая ліра (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Славацкая каруна (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Бразыльскі рэал (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Эстонская крона (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Летувiскi лiт (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Паўднёвакарэйская вона (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Паўднёваафрыканскі рэнд (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Брытанскі фунт
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Даляр ЗША
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Эўра
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Японская ена
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Аўстралійскі шылінг
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Бэльґійскі франк
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Швайцарскі франк
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Чэская крона
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Нямецкая марка
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Дацкая крона
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Гішпанская пэсэта
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Фінская марка
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Францускі франк
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Грэцкая драхма
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Вугорскі форынт
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ісьляндзкая крона
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Італьянская ліра
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Нідэрляндзкі гульдэн
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Нарвэская крона
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Польскі злоты
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Румынскі лей
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Расейскі рубель
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Славенскі толар
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Швэдзкая крона
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турэцкая ліра
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Славацкая каруна
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Бразыльскі рэал
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Эстонская крона
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Летувiскi лiт
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Паўднёвакарэйская вона
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Паўднёваафрыканскі рэнд
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Уласная...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузінскі лары (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранскі рыал (IRR)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексіканскі песа (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новы тайваньскі даляр (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Кітайскі юань (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Ганконскі даляр (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Індыйская рупія (INR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузінскі лары
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранскі рыал
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексіканскі песа
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новы тайваньскі даляр
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Кітайскі юань
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Ганконскі даляр
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Індыйская рупія
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Аўтазахаваньне
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Інтэрвал паміж аўтаматычнымі захаваньнямі гульні

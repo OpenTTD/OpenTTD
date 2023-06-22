@@ -897,48 +897,48 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}நா�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}நாணய பிரிவு தேர்ந்தெடுத்தல்
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :பிரித்தானிய பவுண்டு (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :அமெரிக்கன் டாலர் (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :யுரோ (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :ஜப்பானிய என் (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :ஆஸ்திரிய சில்லிங் (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :பெல்கிய ப்ரேங்க் (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :சுவிஸ் ப்ரேங்க் (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :செக் கொருணா (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :டச்மார்க் (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :டேனிஷ் க்ரோன் (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :ஸ்பானிஷ் பெசெடா (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :பின்னிஷ் மார்க்கா (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :பிரெஞ்ச் ப்ரேங்க் (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :கிரேக்க ட்ரச்மா (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :ஹங்கேரிய போரின்ட் (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :ஐஸ்லாந்திய க்ரோனா (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :இத்தாலிய லிரா (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :டச்சு கில்டர் (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :நோர்வேஜிய க்ரோன் (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :போலிஷ் சிலாட்டி Złoty (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :ரோமானிய லூ (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :ரஷ்ய ரூபில்ஸ் (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :ஸ்லோவேனிய டொலர் (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :ஸ்வீடிஷ் க்ரோனா (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :துருக்கிய லிரா (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :சுலோவக் கொருணா (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :பிரேசிலிய ரியால் (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :எஸ்டோனிய க்ரூனி (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :லிதுவேனிய லிடாஸ் (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :தென்கொரிய வொன் (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :தென் ஆப்பிரிக்க ரான்ட் (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :பிரித்தானிய பவுண்டு
+STR_GAME_OPTIONS_CURRENCY_USD                                   :அமெரிக்கன் டாலர்
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :யுரோ
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :ஜப்பானிய என்
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :ஆஸ்திரிய சில்லிங்
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :பெல்கிய ப்ரேங்க்
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :சுவிஸ் ப்ரேங்க்
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :செக் கொருணா
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :டச்மார்க்
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :டேனிஷ் க்ரோன்
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :ஸ்பானிஷ் பெசெடா
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :பின்னிஷ் மார்க்கா
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :பிரெஞ்ச் ப்ரேங்க்
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :கிரேக்க ட்ரச்மா
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :ஹங்கேரிய போரின்ட்
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :ஐஸ்லாந்திய க்ரோனா
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :இத்தாலிய லிரா
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :டச்சு கில்டர்
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :நோர்வேஜிய க்ரோன்
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :போலிஷ் சிலாட்டி Złoty
+STR_GAME_OPTIONS_CURRENCY_RON                                   :ரோமானிய லூ
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :ரஷ்ய ரூபில்ஸ்
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :ஸ்லோவேனிய டொலர்
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :ஸ்வீடிஷ் க்ரோனா
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :துருக்கிய லிரா
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :சுலோவக் கொருணா
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :பிரேசிலிய ரியால்
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :எஸ்டோனிய க்ரூனி
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :லிதுவேனிய லிடாஸ்
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :தென்கொரிய வொன்
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :தென் ஆப்பிரிக்க ரான்ட்
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :புதிதாக...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :ஜார்ஜிய லாரி (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :ஈரானிய ரியால் (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :புதிய ரஷ்ய ரூபிள் (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :மெக்சிகன் பெசோ (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :புதிய தைவான் டாலர் (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :சீன ரென்மின்பி (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :ஹாங்காங் டாலர் (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :இந்திய ரூபாய் (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :இந்தோனேசிய ரூபியா (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :மலேசிய ரிங்கிட்டு (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :ஜார்ஜிய லாரி
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :ஈரானிய ரியால்
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :புதிய ரஷ்ய ரூபிள்
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :மெக்சிகன் பெசோ
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :புதிய தைவான் டாலர்
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :சீன ரென்மின்பி
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :ஹாங்காங் டாலர்
+STR_GAME_OPTIONS_CURRENCY_INR                                   :இந்திய ரூபாய்
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :இந்தோனேசிய ரூபியா
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :மலேசிய ரிங்கிட்டு
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}தானாக சேமி
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}தானியங்கி விளையாட்டு சேமிப்பு இடைவெளியைத் தேர்ந்தெடுக்கவும்

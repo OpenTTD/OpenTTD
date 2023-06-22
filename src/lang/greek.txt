@@ -1043,48 +1043,48 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Νομι
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλογή νομισματικών μονάδων
 
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Στερλίνα Ηνωμένου Βασιλείου (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάριο Η.Π.Α. (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ιαπωνικό Γιεν (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Αυστριακό Σελίνι (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Βελγικό Φράγκο (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ελβετικό Φράγκο (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Τσέχικη Κορώνα (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Γερμανικό Μάρκο (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Δανέζικη Κορώνα (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Ισπανική Πεσέτα (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Φινλανδικό Μάρκο (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Γαλλικό Φράγκο (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Ελληνική Δραχμή (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ουγγρικό Φλουρί (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ισλανδική Κορώνα (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Ιταλική Λίρα (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Ολλανδικό Φιορίνι (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Νορβηγική Κορώνα (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Πολωνικό Ζλότυ (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Ρουμάνικο Λευ (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ρωσικό Ρούβλι (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Σλοβένικο Τολάρ (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Σουηδική Κορώνα (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Τούρκικη Λίρα (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Σλοβάκικη Κορώνα (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Βραζιλιάνικο Ρεάλ (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Εσθονική Κορώνα (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Λιθουανική Λίτα (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Νοτιοκορεάτικο Γουόν (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Νοτιοαφρικάνικο Ραντ (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Στερλίνα Ηνωμένου Βασιλείου
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάριο Η.Π.Α.
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ιαπωνικό Γιεν
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Αυστριακό Σελίνι
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Βελγικό Φράγκο
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ελβετικό Φράγκο
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Τσέχικη Κορώνα
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Γερμανικό Μάρκο
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Δανέζικη Κορώνα
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Ισπανική Πεσέτα
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Φινλανδικό Μάρκο
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Γαλλικό Φράγκο
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Ελληνική Δραχμή
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ουγγρικό Φλουρί
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ισλανδική Κορώνα
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Ιταλική Λίρα
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Ολλανδικό Φιορίνι
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Νορβηγική Κορώνα
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Πολωνικό Ζλότυ
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Ρουμάνικο Λευ
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ρωσικό Ρούβλι
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Σλοβένικο Τολάρ
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Σουηδική Κορώνα
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Τούρκικη Λίρα
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Σλοβάκικη Κορώνα
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Βραζιλιάνικο Ρεάλ
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Εσθονική Κορώνα
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Λιθουανική Λίτα
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Νοτιοκορεάτικο Γουόν
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Νοτιοαφρικάνικο Ραντ
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Άλλο...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Γεοργιανό Λάρι (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ιρανικό Ριάλ (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Νεο Ρώσικο Ρούβλι (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Πεσος Μεξικου (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Δολλάριο Νέας Ταϊβάν (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Ρενμίνμπι Κίνας (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Δολάριο Χονγκ Κονγκ (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Ρουπία Ινδίας (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Ινδονησιακή Ρουπία  (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ρινγκίτ Μαλαισίας (MYR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Γεοργιανό Λάρι
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ιρανικό Ριάλ
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Νεο Ρώσικο Ρούβλι
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Πεσος Μεξικου
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Δολλάριο Νέας Ταϊβάν
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Ρενμίνμπι Κίνας
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Δολάριο Χονγκ Κονγκ
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Ρουπία Ινδίας
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Ινδονησιακή Ρουπία
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ρινγκίτ Μαλαισίας
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Αυτόματη αποθήκευση
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Επιλογή διάκενου ανάμεσα στις αυτόματες αποθηκεύσεις
