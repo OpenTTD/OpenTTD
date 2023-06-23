@@ -964,7 +964,7 @@ STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo ruso
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tólar esloveno
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Corona sueca
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira turca
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona eslovaca (SKK)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona eslovaca
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real brasileño
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Corona estonia
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituana

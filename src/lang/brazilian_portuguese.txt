@@ -987,7 +987,7 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lituano
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Sul-Coreano
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul-Africano
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia (GEL)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano
@@ -995,7 +995,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novo dólar de 
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chinês
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar de Hong Kong
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúpia Indiana
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonésia (IDR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonésia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaio
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvar automaticamente

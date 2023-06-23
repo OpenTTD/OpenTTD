@@ -974,7 +974,7 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :喬治亞拉里
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亞爾
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :俄羅斯盧布
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :墨西哥披索
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :新臺幣 (NTD)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :新臺幣
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :中國人民幣
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :港幣
 STR_GAME_OPTIONS_CURRENCY_INR                                   :印度盧比
