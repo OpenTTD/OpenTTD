@@ -3242,6 +3242,7 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
 {
 	/* Check if it's allowed to buy the rights */
 	if (!_settings_game.economy.exclusive_rights) return CMD_ERROR;
+	if (t->exclusivity != INVALID_COMPANY) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		t->exclusive_counter = 12;
@@ -3292,6 +3293,10 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 			}
 		} else {
 			ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM, DC_EXEC);
+			if (t->exclusivity != _current_company && t->exclusivity != INVALID_COMPANY) {
+				t->exclusivity = INVALID_COMPANY;
+				t->exclusive_counter = 0;
+			}
 		}
 	}
 	return CommandCost();
@@ -3334,7 +3339,7 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 			if (cur == TACT_BRIBE && (!_settings_game.economy.bribe || t->ratings[cid] >= RATING_BRIBE_MAXIMUM)) continue;
 
 			/* Is the company not able to buy exclusive rights ? */
-			if (cur == TACT_BUY_RIGHTS && !_settings_game.economy.exclusive_rights) continue;
+			if (cur == TACT_BUY_RIGHTS && (!_settings_game.economy.exclusive_rights || t->exclusive_counter != 0)) continue;
 
 			/* Is the company not able to fund buildings ? */
 			if (cur == TACT_FUND_BUILDINGS && !_settings_game.economy.fund_buildings) continue;
