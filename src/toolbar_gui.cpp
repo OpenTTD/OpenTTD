@@ -692,7 +692,7 @@ static const int LTMN_HIGHSCORE          = -9;        ///< Show highscrore table
 static void AddDropDownLeagueTableOptions(DropDownList &list) {
 	if (LeagueTable::GetNumItems() > 0) {
 		for (LeagueTable *lt : LeagueTable::Iterate()) {
-			list.emplace_back(new DropDownListCharStringItem(lt->title, lt->index, false));
+			list.emplace_back(new DropDownListStringItem(lt->title, lt->index, false));
 		}
 	} else {
 		list.emplace_back(new DropDownListStringItem(STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, LTMN_PERFORMANCE_LEAGUE, false));

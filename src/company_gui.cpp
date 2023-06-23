@@ -588,14 +588,9 @@ static const LiveryClass _livery_class[LS_END] = {
 	LC_ROAD, LC_ROAD,
 };
 
-class DropDownListColourItem : public DropDownListItem {
+class DropDownListColourItem : public DropDownListStringItem {
 public:
-	DropDownListColourItem(int result, bool masked) : DropDownListItem(result, masked) {}
-
-	StringID String() const
-	{
-		return this->result >= COLOUR_END ? STR_COLOUR_DEFAULT : _colour_dropdown[this->result];
-	}
+	DropDownListColourItem(int result, bool masked) : DropDownListStringItem(result >= COLOUR_END ? STR_COLOUR_DEFAULT : _colour_dropdown[result], result, masked) {}
 
 	uint Width() const override
 	{
