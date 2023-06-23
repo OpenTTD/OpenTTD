@@ -936,6 +936,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}游戏�
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}货币单位
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}货币单位选择
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :英镑
 STR_GAME_OPTIONS_CURRENCY_USD                                   :美元

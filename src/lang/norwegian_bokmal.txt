@@ -929,6 +929,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spillinn
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhet
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Velg valutaenhet som skal brukes
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britisk pund
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikansk dollar
@@ -969,7 +970,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikansk peso
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny Taiwan Dollar
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminbi
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringgit
 

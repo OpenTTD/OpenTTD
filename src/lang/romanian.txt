@@ -951,6 +951,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitate monetară
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Alege unitatea monetară
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Liră sterlină
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar american

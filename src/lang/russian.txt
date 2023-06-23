@@ -1096,6 +1096,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Валюта
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Смена используемой в игре валюты
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Английский фунт
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Доллар США

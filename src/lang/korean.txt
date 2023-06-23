@@ -952,6 +952,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 단위
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :영국 파운드
 STR_GAME_OPTIONS_CURRENCY_USD                                   :미국 달러

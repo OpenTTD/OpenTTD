@@ -953,6 +953,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selezione della valuta
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlina britannica
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollaro americano

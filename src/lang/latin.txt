@@ -1088,6 +1088,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludi opt
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitates nummi
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Electio unitatum nummi
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Britannica
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarium CFA

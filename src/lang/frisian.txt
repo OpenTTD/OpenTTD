@@ -901,6 +901,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spulopsj
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Muntienheid
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Muntienheidseleksje
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britske Pûn
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikaanske Dollars

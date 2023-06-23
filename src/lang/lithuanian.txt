@@ -1136,6 +1136,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pagrindi
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valiuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valiutos pasirinkimas
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Svarai sterlingų
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikos Doleris
@@ -1171,7 +1172,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Pietų Afrikos 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Kita...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijos lariai
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irano rialai
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Naujieji Rusijos rubliai
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Naujieji Rusijos rubliai (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikos pesai
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Naujieji Taivano doleriai
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinijos ženminbi juaniai

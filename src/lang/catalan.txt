@@ -952,6 +952,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100{NBSP}%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Moneda
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecció de la unitat monetària
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Lliura esterlina
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dòlar americà
