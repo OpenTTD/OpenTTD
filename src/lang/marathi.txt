@@ -701,6 +701,7 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :पौंड
 STR_GAME_OPTIONS_CURRENCY_USD                                   :डोल्लर

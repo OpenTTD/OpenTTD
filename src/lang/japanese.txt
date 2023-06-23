@@ -951,6 +951,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}通貨単位
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}通貨単位の選択
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :英ポンド
 STR_GAME_OPTIONS_CURRENCY_USD                                   :米ドル

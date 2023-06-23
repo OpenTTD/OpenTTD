@@ -952,6 +952,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades monetarias
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de unidades monetarias
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra esterlina
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar americano

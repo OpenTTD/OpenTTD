@@ -951,6 +951,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Currency units
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency units selection
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :British Pound
 STR_GAME_OPTIONS_CURRENCY_USD                                   :American Dollar

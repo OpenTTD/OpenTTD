@@ -952,6 +952,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Devise
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Sélectionner l'unité monétaire
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Livre
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar

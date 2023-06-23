@@ -993,6 +993,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Liidese 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuuta valimine
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Suurbritannia nael
 STR_GAME_OPTIONS_CURRENCY_USD                                   :USA dollar

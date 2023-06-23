@@ -861,6 +861,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}کھیل
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}کرنسی کی اکائیاں
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}کرنسی کی اکائی اختیار کریں
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :برطانوی پاونڈ
 STR_GAME_OPTIONS_CURRENCY_USD                                   :امریکی ڈالر

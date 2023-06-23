@@ -902,6 +902,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}إعدا
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}وحدة العملة
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}اختيار وحدة العملة
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :جنية
 STR_GAME_OPTIONS_CURRENCY_USD                                   :دولار

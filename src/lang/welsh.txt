@@ -894,6 +894,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Dewisiad
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Uned Arian
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Dewis unedau arian
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punnoedd Prydeinig
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Doleri America

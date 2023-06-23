@@ -938,6 +938,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spēles 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Naudas vienības
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Naudas vienību izvēle
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Lielbritānijas sterliņu mārciņas
 STR_GAME_OPTIONS_CURRENCY_USD                                   :ASV dolāri

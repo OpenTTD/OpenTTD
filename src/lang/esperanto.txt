@@ -1027,6 +1027,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Monunuoj
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elekto de monunuoj
 
+
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brita Pundo
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Usona Dolaro
