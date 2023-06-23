@@ -32,6 +32,10 @@ void DropDownListItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
 	GfxFillRect(r.left, mid, r.right, mid + WidgetDimensions::scaled.bevel.top - 1, c2);
 }
 
+DropDownListStringItem::DropDownListStringItem(StringID string, int result, bool masked) : DropDownListItem(result, masked), string(GetString(string))
+{
+}
+
 uint DropDownListStringItem::Width() const
 {
 	return GetStringBoundingBox(this->String()).width + WidgetDimensions::scaled.dropdowntext.Horizontal();
@@ -52,24 +56,12 @@ void DropDownListStringItem::Draw(const Rect &r, bool sel, Colours bg_colour) co
  */
 /* static */ bool DropDownListStringItem::NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second)
 {
-	std::string str1 = GetString(static_cast<const DropDownListStringItem*>(first.get())->String());
-	std::string str2 = GetString(static_cast<const DropDownListStringItem*>(second.get())->String());
+	std::string str1 = static_cast<const DropDownListStringItem*>(first.get())->String();
+	std::string str2 = static_cast<const DropDownListStringItem*>(second.get())->String();
 	return StrNaturalCompare(str1, str2) < 0;
 }
 
-StringID DropDownListParamStringItem::String() const
-{
-	for (uint i = 0; i < lengthof(this->decode_params); i++) SetDParam(i, this->decode_params[i]);
-	return this->string;
-}
-
-StringID DropDownListCharStringItem::String() const
-{
-	SetDParamStr(0, this->raw_string);
-	return this->string;
-}
-
-DropDownListIconItem::DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked) : DropDownListParamStringItem(string, result, masked), sprite(sprite), pal(pal)
+DropDownListIconItem::DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked) : DropDownListStringItem(string, result, masked), sprite(sprite), pal(pal)
 {
 	this->dim = GetSpriteSize(sprite);
 	this->sprite_y = dim.height;
@@ -82,7 +74,7 @@ uint DropDownListIconItem::Height(uint width) const
 
 uint DropDownListIconItem::Width() const
 {
-	return DropDownListParamStringItem::Width() + this->dim.width + WidgetDimensions::scaled.hsep_wide;
+	return DropDownListStringItem::Width() + this->dim.width + WidgetDimensions::scaled.hsep_wide;
 }
 
 void DropDownListIconItem::Draw(const Rect &r, bool sel, Colours bg_colour) const

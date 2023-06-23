@@ -37,48 +37,23 @@ public:
  */
 class DropDownListStringItem : public DropDownListItem {
 public:
-	StringID string; ///< String ID of item
+	const std::string string; ///< String of item
 
-	DropDownListStringItem(StringID string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
+	DropDownListStringItem(StringID string, int result, bool masked);
+	DropDownListStringItem(const std::string &string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
 
 	bool Selectable() const override { return true; }
 	uint Width() const override;
 	void Draw(const Rect &r, bool sel, Colours bg_colour) const override;
-	virtual StringID String() const { return this->string; }
+	virtual const std::string &String() const { return this->string; }
 
 	static bool NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second);
 };
 
 /**
- * String list item with parameters.
- */
-class DropDownListParamStringItem : public DropDownListStringItem {
-public:
-	uint64 decode_params[10]; ///< Parameters of the string
-
-	DropDownListParamStringItem(StringID string, int result, bool masked) : DropDownListStringItem(string, result, masked) {}
-
-	StringID String() const override;
-	void SetParam(uint index, uint64 value) { decode_params[index] = value; }
-	void SetParamStr(uint index, const char *str) { this->SetParam(index, (uint64)(size_t)str); }
-};
-
-/**
- * List item containing a C char string.
- */
-class DropDownListCharStringItem : public DropDownListStringItem {
-public:
-	std::string raw_string;
-
-	DropDownListCharStringItem(const std::string &raw_string, int result, bool masked) : DropDownListStringItem(STR_JUST_RAW_STRING, result, masked), raw_string(raw_string) {}
-
-	StringID String() const override;
-};
-
-/**
  * List item with icon and string.
  */
-class DropDownListIconItem : public DropDownListParamStringItem {
+class DropDownListIconItem : public DropDownListStringItem {
 	SpriteID sprite;
 	PaletteID pal;
 	Dimension dim;

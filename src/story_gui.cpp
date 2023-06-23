@@ -252,18 +252,13 @@ protected:
 		uint16 page_num = 1;
 		for (const StoryPage *p : this->story_pages) {
 			bool current_page = p->index == this->selected_page_id;
-			DropDownListStringItem *item = nullptr;
 			if (!p->title.empty()) {
-				item = new DropDownListCharStringItem(p->title, p->index, current_page);
+				list.emplace_back(new DropDownListStringItem(p->title, p->index, current_page));
 			} else {
 				/* No custom title => use a generic page title with page number. */
-				DropDownListParamStringItem *str_item =
-						new DropDownListParamStringItem(STR_STORY_BOOK_GENERIC_PAGE_ITEM, p->index, current_page);
-				str_item->SetParam(0, page_num);
-				item = str_item;
+				SetDParam(0, page_num);
+				list.emplace_back(new DropDownListStringItem(STR_STORY_BOOK_GENERIC_PAGE_ITEM, p->index, current_page));
 			}
-
-			list.emplace_back(item);
 			page_num++;
 		}
 
