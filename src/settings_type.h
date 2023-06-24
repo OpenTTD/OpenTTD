@@ -186,6 +186,7 @@ struct GUISettings {
 	uint8_t  graph_line_thickness;             ///< the thickness of the lines in the various graph guis
 	uint8_t  osk_activation;                   ///< Mouse gesture to trigger the OSK.
 	byte   starting_colour;                  ///< default color scheme for the company to start a new game with
+	byte   starting_colour_secondary;        ///< default secondary color scheme for the company to start a new game with
 	bool   show_newgrf_name;                 ///< Show the name of the NewGRF in the build vehicle window
 	bool   show_cargo_in_vehicle_lists;      ///< Show the cargoes the vehicles can carry in the list windows
 	bool   auto_remove_signals;              ///< automatically remove signals when in the way during rail construction
