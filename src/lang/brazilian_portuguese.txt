@@ -952,6 +952,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades monetárias
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Seleção de unidades monetárias
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libras Britânicas
@@ -987,7 +988,7 @@ STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Sul-Coreano
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul-Africano
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano (IRR)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novo dólar de Taiwan
@@ -4574,6 +4575,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Agendado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Trocar entre esperado e agendado
 
+STR_TIMETABLE_ARRIVAL                                           :C: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :P: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
