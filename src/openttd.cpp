@@ -22,6 +22,7 @@
 
 #include "base_media_base.h"
 #include "saveload/saveload.h"
+#include "company_cmd.h"
 #include "company_func.h"
 #include "command_func.h"
 #include "news_func.h"
@@ -861,10 +862,15 @@ static void MakeNewGameDone()
 
 	/* Overwrite color from settings if needed
 	 * COLOUR_END corresponds to Random colour */
+
 	if (_settings_client.gui.starting_colour != COLOUR_END) {
 		c->colour = _settings_client.gui.starting_colour;
 		ResetCompanyLivery(c);
 		_company_colours[c->index] = (Colours)c->colour;
+	}
+
+	if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
+		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, false, (Colours)_settings_client.gui.starting_colour_secondary);
 	}
 
 	OnStartGame(false);
