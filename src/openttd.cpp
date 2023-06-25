@@ -88,7 +88,6 @@
 void CallLandscapeTick();
 void DoPaletteAnimations();
 void MusicLoop();
-void ResetMusic();
 void CallWindowGameTickEvent();
 bool HandleBootstrap();
 
