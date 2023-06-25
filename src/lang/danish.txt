@@ -2019,30 +2019,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperisk (fod)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafiksæt / Manglende grafik
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Brugerflade
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Viewports
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nyheder / Rådgivere
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Regnskab
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køretøjer
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysik / Tilstand
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruteplanlægning
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Begrænsninger
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofer / Ulykker
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Verden generation
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljø
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Myndigheder
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Fragtdistribution
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerstyrede spillere
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Netværk
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisering
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafiksæt / Manglende grafik
+STR_CONFIG_SETTING_SOUND                                        :Lydeffekter
+STR_CONFIG_SETTING_INTERFACE                                    :Brugerflade
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generelt
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Viewports
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruktion
+STR_CONFIG_SETTING_ADVISORS                                     :Nyheder / Rådgivere
+STR_CONFIG_SETTING_COMPANY                                      :Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :Regnskab
+STR_CONFIG_SETTING_VEHICLES                                     :Køretøjer
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fysik / Tilstand
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Ruteplanlægning
+STR_CONFIG_SETTING_LIMITATIONS                                  :Begrænsninger
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofer / Ulykker
+STR_CONFIG_SETTING_GENWORLD                                     :Verden generation
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Myndigheder
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Byer
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrier
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Fragtdistribution
+STR_CONFIG_SETTING_AI                                           :Modstandere
+STR_CONFIG_SETTING_AI_NPC                                       :Computerstyrede spillere
+STR_CONFIG_SETTING_NETWORK                                      :Netværk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Stifinder til tog: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Stifinder til brug for toge

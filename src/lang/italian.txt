@@ -2054,30 +2054,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperiali (pied
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metriche (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localizzazione
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafica
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effetti sonori
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaccia
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generale
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Visuali
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Costruzione
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Notizie / consigli
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Compagnia
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Economia
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veicoli
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fisica
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Instradamento
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limiti
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Disastri / incidenti
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generazione del mondo
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ambiente
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autorità
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Città
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrie
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuzione dei carichi
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Avversari
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Giocatori controllati dal computer
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Rete
+STR_CONFIG_SETTING_LOCALISATION                                 :Localizzazione
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafica
+STR_CONFIG_SETTING_SOUND                                        :Effetti sonori
+STR_CONFIG_SETTING_INTERFACE                                    :Interfaccia
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generale
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Visuali
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Costruzione
+STR_CONFIG_SETTING_ADVISORS                                     :Notizie / consigli
+STR_CONFIG_SETTING_COMPANY                                      :Compagnia
+STR_CONFIG_SETTING_ACCOUNTING                                   :Economia
+STR_CONFIG_SETTING_VEHICLES                                     :Veicoli
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fisica
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Instradamento
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limiti
+STR_CONFIG_SETTING_ACCIDENTS                                    :Disastri / incidenti
+STR_CONFIG_SETTING_GENWORLD                                     :Generazione del mondo
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Ambiente
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autorità
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Città
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrie
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribuzione dei carichi
+STR_CONFIG_SETTING_AI                                           :Avversari
+STR_CONFIG_SETTING_AI_NPC                                       :Giocatori controllati dal computer
+STR_CONFIG_SETTING_NETWORK                                      :Rete
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder per i treni: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pathfinder da utilizzare per i treni

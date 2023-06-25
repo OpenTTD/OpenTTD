@@ -1862,29 +1862,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Empiries (vt)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metries (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Eenhede
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafika
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Klank
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Koppelvlak
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Algemeen
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vertoonvensters
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksie
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nuus / Raad
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Maatskappy
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Rekeningkunde
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Voertuie
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fisika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Roete
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Beperkings
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Ongelukke & rampe
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Land skepping
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Omgewing
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Stadsrade
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Dorpe
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Nywerhede
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vragverspreiding
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Mededingers
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Rekenaar spelers
+STR_CONFIG_SETTING_LOCALISATION                                 :Eenhede
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafika
+STR_CONFIG_SETTING_SOUND                                        :Klank
+STR_CONFIG_SETTING_INTERFACE                                    :Koppelvlak
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Algemeen
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Vertoonvensters
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruksie
+STR_CONFIG_SETTING_ADVISORS                                     :Nuus / Raad
+STR_CONFIG_SETTING_COMPANY                                      :Maatskappy
+STR_CONFIG_SETTING_ACCOUNTING                                   :Rekeningkunde
+STR_CONFIG_SETTING_VEHICLES                                     :Voertuie
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fisika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Roete
+STR_CONFIG_SETTING_LIMITATIONS                                  :Beperkings
+STR_CONFIG_SETTING_ACCIDENTS                                    :Ongelukke & rampe
+STR_CONFIG_SETTING_GENWORLD                                     :Land skepping
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Omgewing
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Stadsrade
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Dorpe
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Nywerhede
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Vragverspreiding
+STR_CONFIG_SETTING_AI                                           :Mededingers
+STR_CONFIG_SETTING_AI_NPC                                       :Rekenaar spelers
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Padvinder vir treine: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pad speurder om vir teine te gebruik

@@ -1753,28 +1753,28 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Inperiala (oin)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrikoa (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Kokapena
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikoak
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soinua
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfazea
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Orokorra
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Leihoak
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Eraikuntza
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Albisteak / Aholkulariak
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Konpainia
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ibilgailuak
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fisika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ibilbideak
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Mugak
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Hondamendiak / Istripuak
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Mundua sortu
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ingurugiroa
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Agintariak
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Herriak
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriak
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Zama banaketa
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiakideak
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
+STR_CONFIG_SETTING_LOCALISATION                                 :Kokapena
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafikoak
+STR_CONFIG_SETTING_SOUND                                        :Soinua
+STR_CONFIG_SETTING_INTERFACE                                    :Interfazea
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Orokorra
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Leihoak
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Eraikuntza
+STR_CONFIG_SETTING_ADVISORS                                     :Albisteak / Aholkulariak
+STR_CONFIG_SETTING_COMPANY                                      :Konpainia
+STR_CONFIG_SETTING_VEHICLES                                     :Ibilgailuak
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fisika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Ibilbideak
+STR_CONFIG_SETTING_LIMITATIONS                                  :Mugak
+STR_CONFIG_SETTING_ACCIDENTS                                    :Hondamendiak / Istripuak
+STR_CONFIG_SETTING_GENWORLD                                     :Mundua sortu
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Ingurugiroa
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Agintariak
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Herriak
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industriak
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Zama banaketa
+STR_CONFIG_SETTING_AI                                           :Lehiakideak
+STR_CONFIG_SETTING_AI_NPC                                       :Ordenagailu jokalariak
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Trenen ibilbide bilatzailea: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Trenek erabiliko duten ibilbide bilatzailea

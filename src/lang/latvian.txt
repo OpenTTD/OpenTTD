@@ -1990,30 +1990,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :impērijas, bri
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriskās (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI, starptautiskās (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizēšana
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafika
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Skaņa
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Saskarne
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Vispārīgi
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Skatvietas
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Būvniecība
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Avīžu raksti / padomnieki
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Uzņēmums
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Grāmatvedība
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Transportlīdzekļi
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pārvietošanās
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ierobežojumi
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofas / negadījumi
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Pasaules radīšana
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Apkārtējā vide
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Pašvaldības
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Pilsētas
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Ražotnes
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kravu sadale
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Tīkls
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalizēšana
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafika
+STR_CONFIG_SETTING_SOUND                                        :Skaņa
+STR_CONFIG_SETTING_INTERFACE                                    :Saskarne
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Vispārīgi
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Skatvietas
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Būvniecība
+STR_CONFIG_SETTING_ADVISORS                                     :Avīžu raksti / padomnieki
+STR_CONFIG_SETTING_COMPANY                                      :Uzņēmums
+STR_CONFIG_SETTING_ACCOUNTING                                   :Grāmatvedība
+STR_CONFIG_SETTING_VEHICLES                                     :Transportlīdzekļi
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Pārvietošanās
+STR_CONFIG_SETTING_LIMITATIONS                                  :Ierobežojumi
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofas / negadījumi
+STR_CONFIG_SETTING_GENWORLD                                     :Pasaules radīšana
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Apkārtējā vide
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Pašvaldības
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Pilsētas
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Ražotnes
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Kravu sadale
+STR_CONFIG_SETTING_AI                                           :Sāncenši
+STR_CONFIG_SETTING_AI_NPC                                       :Nespēlētāju tēli (datora vadīti)
+STR_CONFIG_SETTING_NETWORK                                      :Tīkls
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vilcienu ceļa meklētājs: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vilcieniem pielietotais ceļa meklētājs

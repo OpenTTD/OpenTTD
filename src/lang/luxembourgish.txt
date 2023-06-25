@@ -1986,30 +1986,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Britesch (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metresch (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokaliséirung
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafik
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soundeffekter
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generell
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Usiicht
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktioun
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}News / Meldungen
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Compta
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Gefierer
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Physik
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routeplangung
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitatiounen
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrophen / Accidenter
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Welt Generatioun
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Emwelt
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoritéiten
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Stied
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrien
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Wuereverdeelung
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Géigner
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspiller
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Netzwierk
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokaliséirung
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafik
+STR_CONFIG_SETTING_SOUND                                        :Soundeffekter
+STR_CONFIG_SETTING_INTERFACE                                    :Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generell
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Usiicht
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruktioun
+STR_CONFIG_SETTING_ADVISORS                                     :News / Meldungen
+STR_CONFIG_SETTING_COMPANY                                      :Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :Compta
+STR_CONFIG_SETTING_VEHICLES                                     :Gefierer
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Physik
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Routeplangung
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limitatiounen
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrophen / Accidenter
+STR_CONFIG_SETTING_GENWORLD                                     :Welt Generatioun
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Emwelt
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoritéiten
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Stied
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrien
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Wuereverdeelung
+STR_CONFIG_SETTING_AI                                           :Géigner
+STR_CONFIG_SETTING_AI_NPC                                       :Computerspiller
+STR_CONFIG_SETTING_NETWORK                                      :Netzwierk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pfadfinder fir Zich: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pfadfinder dee fir Zich benotzt gëtt

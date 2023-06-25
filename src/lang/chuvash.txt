@@ -841,11 +841,11 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Питӗ хӑв
 
 ###length 3
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Лартӑм
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ҫул-йӗр:
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Хуласем
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Ӑмӑртуҫӑсем
+STR_CONFIG_SETTING_INTERFACE                                    :Интерфейс
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Лартӑм
+STR_CONFIG_SETTING_VEHICLES                                     :Ҫул-йӗр:
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Хуласем
+STR_CONFIG_SETTING_AI                                           :Ӑмӑртуҫӑсем
 
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

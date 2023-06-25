@@ -2020,30 +2020,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft/p�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localização
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gráficos
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efeitos sonoros
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Geral
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Visualizadores
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construção
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Notícias / Assessores
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Empresa
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Contabilidade
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veículos
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Física
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Em rota
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitações
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Acidentes
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Geração do mundo
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Meio Ambiente
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoridades
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Localidades
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuição de Carga
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Oponentes
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jogadores Computador
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Rede
+STR_CONFIG_SETTING_LOCALISATION                                 :Localização
+STR_CONFIG_SETTING_GRAPHICS                                     :Gráficos
+STR_CONFIG_SETTING_SOUND                                        :Efeitos sonoros
+STR_CONFIG_SETTING_INTERFACE                                    :Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Geral
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Visualizadores
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Construção
+STR_CONFIG_SETTING_ADVISORS                                     :Notícias / Assessores
+STR_CONFIG_SETTING_COMPANY                                      :Empresa
+STR_CONFIG_SETTING_ACCOUNTING                                   :Contabilidade
+STR_CONFIG_SETTING_VEHICLES                                     :Veículos
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Física
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Em rota
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limitações
+STR_CONFIG_SETTING_ACCIDENTS                                    :Desastres / Acidentes
+STR_CONFIG_SETTING_GENWORLD                                     :Geração do mundo
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Meio Ambiente
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoridades
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Localidades
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrias
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribuição de Carga
+STR_CONFIG_SETTING_AI                                           :Oponentes
+STR_CONFIG_SETTING_AI_NPC                                       :Jogadores Computador
+STR_CONFIG_SETTING_NETWORK                                      :Rede
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Sistema de encaminhar comboios: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Sistema de encaminhar comboios

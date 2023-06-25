@@ -1945,30 +1945,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impiriúil (tr)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Méadrach (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Logánú
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafaicí
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Fuaim
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Comhéadan
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Ginearálta
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Painéil amhairc
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Tógáil
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nuacht / Comhairleoirí
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Cuideachta
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Cuntasaíocht
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Feithiclí
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fisic
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ródú
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Teorainneacha
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Tubaistí / Timpistí
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Domhan a chruthú
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Timpeallacht
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Údaráis
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bailte
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Tionscail
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dáileadh lastais
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Iomaitheoirí
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ríomh-imreoirí
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Líonra
+STR_CONFIG_SETTING_LOCALISATION                                 :Logánú
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafaicí
+STR_CONFIG_SETTING_SOUND                                        :Fuaim
+STR_CONFIG_SETTING_INTERFACE                                    :Comhéadan
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Ginearálta
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Painéil amhairc
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Tógáil
+STR_CONFIG_SETTING_ADVISORS                                     :Nuacht / Comhairleoirí
+STR_CONFIG_SETTING_COMPANY                                      :Cuideachta
+STR_CONFIG_SETTING_ACCOUNTING                                   :Cuntasaíocht
+STR_CONFIG_SETTING_VEHICLES                                     :Feithiclí
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fisic
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Ródú
+STR_CONFIG_SETTING_LIMITATIONS                                  :Teorainneacha
+STR_CONFIG_SETTING_ACCIDENTS                                    :Tubaistí / Timpistí
+STR_CONFIG_SETTING_GENWORLD                                     :Domhan a chruthú
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Timpeallacht
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Údaráis
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Bailte
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Tionscail
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Dáileadh lastais
+STR_CONFIG_SETTING_AI                                           :Iomaitheoirí
+STR_CONFIG_SETTING_AI_NPC                                       :Ríomh-imreoirí
+STR_CONFIG_SETTING_NETWORK                                      :Líonra
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Aimsitheoir bealaigh do thraenacha: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :An t-aimsitheoir bealaigh a úsáidfear do thraenacha

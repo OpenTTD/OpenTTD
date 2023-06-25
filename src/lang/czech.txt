@@ -2073,30 +2073,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperiální (f
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrické (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Překlad
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafika
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvuk
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Ovládaní
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Obecné
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Pohledy
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Výstavba
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Novinky / Poradci
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Společnost
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Účetnictví
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Dopravní prostředky
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fyzika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Směrování
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Omezení
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofy / Nehody
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generování krajiny
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Prostředí
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Městská správa
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Města
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Průmysl
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuce nákladu
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Umělá inteligence
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Síť
+STR_CONFIG_SETTING_LOCALISATION                                 :Překlad
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafika
+STR_CONFIG_SETTING_SOUND                                        :Zvuk
+STR_CONFIG_SETTING_INTERFACE                                    :Ovládaní
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Obecné
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Pohledy
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Výstavba
+STR_CONFIG_SETTING_ADVISORS                                     :Novinky / Poradci
+STR_CONFIG_SETTING_COMPANY                                      :Společnost
+STR_CONFIG_SETTING_ACCOUNTING                                   :Účetnictví
+STR_CONFIG_SETTING_VEHICLES                                     :Dopravní prostředky
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fyzika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Směrování
+STR_CONFIG_SETTING_LIMITATIONS                                  :Omezení
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofy / Nehody
+STR_CONFIG_SETTING_GENWORLD                                     :Generování krajiny
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Prostředí
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Městská správa
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Města
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Průmysl
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribuce nákladu
+STR_CONFIG_SETTING_AI                                           :Konkurenti
+STR_CONFIG_SETTING_AI_NPC                                       :Umělá inteligence
+STR_CONFIG_SETTING_NETWORK                                      :Síť
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Hledač cesty pro vlaky: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Hledač cesty pro vlaky

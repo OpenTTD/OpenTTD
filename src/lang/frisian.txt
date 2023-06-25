@@ -1813,29 +1813,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Ymperiaal (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrysk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisaasje
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Ôfbyldings
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lûd
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Algemien
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}konstruksje
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nijs / Adviseurs
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Bedriuw
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Boekhâlding
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Motorreauwen
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Natuerkundig model
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Route
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Beheinings
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Rampen / Ûngelokken
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Wrâldgeneraasje
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Omwrâld
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoriteiten
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Stêd
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}yndustryen
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Frachtdistribusje
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinstânners
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Netwurk
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisaasje
+STR_CONFIG_SETTING_GRAPHICS                                     :Ôfbyldings
+STR_CONFIG_SETTING_SOUND                                        :Lûd
+STR_CONFIG_SETTING_INTERFACE                                    :Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Algemien
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :konstruksje
+STR_CONFIG_SETTING_ADVISORS                                     :Nijs / Adviseurs
+STR_CONFIG_SETTING_COMPANY                                      :Bedriuw
+STR_CONFIG_SETTING_ACCOUNTING                                   :Boekhâlding
+STR_CONFIG_SETTING_VEHICLES                                     :Motorreauwen
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Natuerkundig model
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Route
+STR_CONFIG_SETTING_LIMITATIONS                                  :Beheinings
+STR_CONFIG_SETTING_ACCIDENTS                                    :Rampen / Ûngelokken
+STR_CONFIG_SETTING_GENWORLD                                     :Wrâldgeneraasje
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Omwrâld
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoriteiten
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Stêd
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :yndustryen
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Frachtdistribusje
+STR_CONFIG_SETTING_AI                                           :Tsjinstânners
+STR_CONFIG_SETTING_AI_NPC                                       :Computer spilers
+STR_CONFIG_SETTING_NETWORK                                      :Netwurk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder foar treinen: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pathfinder foar auto's: {STRING}

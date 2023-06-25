@@ -1881,29 +1881,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :בריטית (�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :מטרי (מטר)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (מטר)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}הגדרות מיקום
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}גרפיקה
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}צלילים
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ממשק חזותי
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}כללי
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}נקודות מבט
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}בנייה
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}חדשות / יועצים
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}חברה
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}חשבונאות
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי תחבורה
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}פיזיקה
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}ניתוב
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}מגבלות
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}אסונות / תאונות
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}יצירת עולם
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}סביבה
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}רשויות
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}ערים
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}תעשיות
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}התפלגות המטען
-STR_CONFIG_SETTING_AI                                           :{ORANGE}מתחרים
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}שחקני מחשב
+STR_CONFIG_SETTING_LOCALISATION                                 :הגדרות מיקום
+STR_CONFIG_SETTING_GRAPHICS                                     :גרפיקה
+STR_CONFIG_SETTING_SOUND                                        :צלילים
+STR_CONFIG_SETTING_INTERFACE                                    :ממשק חזותי
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :כללי
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :נקודות מבט
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :בנייה
+STR_CONFIG_SETTING_ADVISORS                                     :חדשות / יועצים
+STR_CONFIG_SETTING_COMPANY                                      :חברה
+STR_CONFIG_SETTING_ACCOUNTING                                   :חשבונאות
+STR_CONFIG_SETTING_VEHICLES                                     :כלי תחבורה
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :פיזיקה
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :ניתוב
+STR_CONFIG_SETTING_LIMITATIONS                                  :מגבלות
+STR_CONFIG_SETTING_ACCIDENTS                                    :אסונות / תאונות
+STR_CONFIG_SETTING_GENWORLD                                     :יצירת עולם
+STR_CONFIG_SETTING_ENVIRONMENT                                  :סביבה
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :רשויות
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :ערים
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :תעשיות
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :התפלגות המטען
+STR_CONFIG_SETTING_AI                                           :מתחרים
+STR_CONFIG_SETTING_AI_NPC                                       :שחקני מחשב
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{STRING} :אלגוריתם איתור נתיב עבור רכבות
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :אלגוריתם איתור נתיב עבור רכבות

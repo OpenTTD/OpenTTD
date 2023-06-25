@@ -1804,19 +1804,19 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Позициониране
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукови ефекти
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Интерфейс
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Основни
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Строене
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Автомобили
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрутизация
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ограничения
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Права
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Градове
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Индустрии
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Съперници
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
+STR_CONFIG_SETTING_LOCALISATION                                 :Позициониране
+STR_CONFIG_SETTING_SOUND                                        :Звукови ефекти
+STR_CONFIG_SETTING_INTERFACE                                    :Интерфейс
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Основни
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Строене
+STR_CONFIG_SETTING_VEHICLES                                     :Автомобили
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Маршрутизация
+STR_CONFIG_SETTING_LIMITATIONS                                  :Ограничения
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Права
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Градове
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Индустрии
+STR_CONFIG_SETTING_AI                                           :Съперници
+STR_CONFIG_SETTING_AI_NPC                                       :Компютърни играчи
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Пътенамирач за влакове: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Маршрутизатор използван за влакове

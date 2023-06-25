@@ -2019,30 +2019,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperiaal (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisch (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisatie
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafische elementen
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Geluid
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Gebruikersscherm
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Algemeen
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Kijkvensters
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Constructie
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nieuws/adviseurs
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Bedrijf
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Boekhouding
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Voertuigen
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Natuurkundige eigenschappen
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routebepaling
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Beperkingen
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Rampen/ongelukken
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Wereldontwikkeling
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Omgeving
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoriteiten
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Steden
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrieën
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Vrachtdistributie
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Tegenstanders
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspelers
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Netwerk
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisatie
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafische elementen
+STR_CONFIG_SETTING_SOUND                                        :Geluid
+STR_CONFIG_SETTING_INTERFACE                                    :Gebruikersscherm
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Algemeen
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Kijkvensters
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Constructie
+STR_CONFIG_SETTING_ADVISORS                                     :Nieuws/adviseurs
+STR_CONFIG_SETTING_COMPANY                                      :Bedrijf
+STR_CONFIG_SETTING_ACCOUNTING                                   :Boekhouding
+STR_CONFIG_SETTING_VEHICLES                                     :Voertuigen
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Natuurkundige eigenschappen
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Routebepaling
+STR_CONFIG_SETTING_LIMITATIONS                                  :Beperkingen
+STR_CONFIG_SETTING_ACCIDENTS                                    :Rampen/ongelukken
+STR_CONFIG_SETTING_GENWORLD                                     :Wereldontwikkeling
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Omgeving
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoriteiten
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Steden
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrieën
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Vrachtdistributie
+STR_CONFIG_SETTING_AI                                           :Tegenstanders
+STR_CONFIG_SETTING_AI_NPC                                       :Computerspelers
+STR_CONFIG_SETTING_NETWORK                                      :Netwerk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Routezoeker voor treinen: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Routezoeker voor treinen.

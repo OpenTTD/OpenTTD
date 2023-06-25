@@ -2019,30 +2019,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localization
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Graphics
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sound
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Viewports
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construction
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}News / Advisors
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Company
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Accounting
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicles
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Physics
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routing
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitations
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Disasters / Accidents
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}World generation
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Environment
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Authorities
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Towns
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industries
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Cargo distribution
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer players
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Network
+STR_CONFIG_SETTING_LOCALISATION                                 :Localization
+STR_CONFIG_SETTING_GRAPHICS                                     :Graphics
+STR_CONFIG_SETTING_SOUND                                        :Sound
+STR_CONFIG_SETTING_INTERFACE                                    :Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :General
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Viewports
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Construction
+STR_CONFIG_SETTING_ADVISORS                                     :News / Advisors
+STR_CONFIG_SETTING_COMPANY                                      :Company
+STR_CONFIG_SETTING_ACCOUNTING                                   :Accounting
+STR_CONFIG_SETTING_VEHICLES                                     :Vehicles
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Physics
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Routing
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limitations
+STR_CONFIG_SETTING_ACCIDENTS                                    :Disasters / Accidents
+STR_CONFIG_SETTING_GENWORLD                                     :World generation
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Environment
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Authorities
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Towns
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industries
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Cargo distribution
+STR_CONFIG_SETTING_AI                                           :Competitors
+STR_CONFIG_SETTING_AI_NPC                                       :Computer players
+STR_CONFIG_SETTING_NETWORK                                      :Network
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder for trains: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Path finder to use for trains

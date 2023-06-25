@@ -1755,28 +1755,28 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Britisk eining 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Plassering
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikk
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydar
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksjon
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nyhende / Rådgjevarar
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Rekneskap
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køyretøy
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysikk
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Avgrensingar
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofar / ulykker
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generer ei verd
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljø
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Styremaktane
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byar
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriar
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Varefordeling
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
+STR_CONFIG_SETTING_LOCALISATION                                 :Plassering
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafikk
+STR_CONFIG_SETTING_SOUND                                        :Lydar
+STR_CONFIG_SETTING_INTERFACE                                    :Grensesnitt
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generelt
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruksjon
+STR_CONFIG_SETTING_ADVISORS                                     :Nyhende / Rådgjevarar
+STR_CONFIG_SETTING_COMPANY                                      :Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :Rekneskap
+STR_CONFIG_SETTING_VEHICLES                                     :Køyretøy
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fysikk
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Ruting
+STR_CONFIG_SETTING_LIMITATIONS                                  :Avgrensingar
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofar / ulykker
+STR_CONFIG_SETTING_GENWORLD                                     :Generer ei verd
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Styremaktane
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Byar
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industriar
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Varefordeling
+STR_CONFIG_SETTING_AI                                           :Motstandarar
+STR_CONFIG_SETTING_AI_NPC                                       :Datamaskinspelarar
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vegfinnar for tog: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Kva for vegfinnar som skal nyttast for tog

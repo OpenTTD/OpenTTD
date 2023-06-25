@@ -2015,30 +2015,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Brittisk (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafik
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljud
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Gränssnitt
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generellt
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vyfönster
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE} Nyheter / Rådgivare
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Företag
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE} Redovisning
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fordon
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE} Fysik
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Planering av resrutt
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE} Begränsningar
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE} Katastrofer / Olyckor
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Världsgenerering
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljö
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Mydigheter
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Städer
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Godsdistribution
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Motståndare
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datorspelare
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Nätverk
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisering
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafik
+STR_CONFIG_SETTING_SOUND                                        :Ljud
+STR_CONFIG_SETTING_INTERFACE                                    :Gränssnitt
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generellt
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Vyfönster
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruktion
+STR_CONFIG_SETTING_ADVISORS                                     : Nyheter / Rådgivare
+STR_CONFIG_SETTING_COMPANY                                      :Företag
+STR_CONFIG_SETTING_ACCOUNTING                                   : Redovisning
+STR_CONFIG_SETTING_VEHICLES                                     :Fordon
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             : Fysik
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Planering av resrutt
+STR_CONFIG_SETTING_LIMITATIONS                                  : Begränsningar
+STR_CONFIG_SETTING_ACCIDENTS                                    : Katastrofer / Olyckor
+STR_CONFIG_SETTING_GENWORLD                                     :Världsgenerering
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Miljö
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Mydigheter
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Städer
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrier
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Godsdistribution
+STR_CONFIG_SETTING_AI                                           :Motståndare
+STR_CONFIG_SETTING_AI_NPC                                       :Datorspelare
+STR_CONFIG_SETTING_NETWORK                                      :Nätverk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vägfinnare för tåg: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vägfinnare som tåg ska använda
