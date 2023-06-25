@@ -51,6 +51,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	name(config.name),
 	info(config.info),
 	url(config.url),
+	error(config.error),
 	version(config.version),
 	min_loadable_version(config.min_loadable_version),
 	flags(config.flags & ~(1 << GCF_COPY)),
@@ -63,7 +64,6 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	param_info(config.param_info),
 	has_param_defaults(config.has_param_defaults)
 {
-	if (config.error != nullptr) this->error = std::make_unique<GRFError>(*config.error);
 }
 
 /**
@@ -495,7 +495,7 @@ compatible_grf:
 				c->ident.md5sum = f->ident.md5sum;
 				c->name = f->name;
 				c->info = f->name;
-				c->error = nullptr;
+				c->error.reset();
 				c->version = f->version;
 				c->min_loadable_version = f->min_loadable_version;
 				c->num_valid_params = f->num_valid_params;

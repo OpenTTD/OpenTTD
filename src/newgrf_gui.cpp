@@ -48,7 +48,7 @@ void ShowNewGRFError()
 
 	for (const GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
 		/* Only show Fatal and Error level messages */
-		if (c->error == nullptr || (c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL && c->error->severity != STR_NEWGRF_ERROR_MSG_ERROR)) continue;
+		if (!c->error.has_value() || (c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL && c->error->severity != STR_NEWGRF_ERROR_MSG_ERROR)) continue;
 
 		SetDParamStr(0, c->GetName());
 		SetDParam   (1, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
@@ -70,7 +70,7 @@ void ShowNewGRFError()
 static void ShowNewGRFInfo(const GRFConfig *c, const Rect &r, bool show_params)
 {
 	Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
-	if (c->error != nullptr) {
+	if (c->error.has_value()) {
 		SetDParamStr(0, c->error->custom_message); // is skipped by built-in messages
 		SetDParamStr(1, c->filename);
 		SetDParamStr(2, c->error->data);
@@ -886,8 +886,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 							}
 						}
 						DrawSprite(SPR_SQUARE, pal, square_left, tr.top + square_offset_y);
-						if (c->error != nullptr) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
-						uint txtoffset = c->error == nullptr ? 0 : warning.width;
+						if (c->error.has_value()) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
+						uint txtoffset = !c->error.has_value() ? 0 : warning.width;
 						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, text, h ? TC_WHITE : TC_ORANGE);
 						tr.top += step_height;
 					}
