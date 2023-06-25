@@ -951,6 +951,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100{NBSP}%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Rahayksikkö
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksikön valinta
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Englannin punta
@@ -4573,6 +4574,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Odotettu
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Aikataulu
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaihda odotetun ja aikataulun välillä
 
+STR_TIMETABLE_ARRIVAL                                           :T: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :L: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
