@@ -1690,15 +1690,15 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Eingin
 
 ###length 3
 
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljóð effektir
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Takførisflati
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Bygging
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Flutningstól
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Beining
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bygdir
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Ídnaðir
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Kappingarneytar
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Teldu spælarir
+STR_CONFIG_SETTING_SOUND                                        :Ljóð effektir
+STR_CONFIG_SETTING_INTERFACE                                    :Takførisflati
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Bygging
+STR_CONFIG_SETTING_VEHICLES                                     :Flutningstól
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Beining
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Bygdir
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Ídnaðir
+STR_CONFIG_SETTING_AI                                           :Kappingarneytar
+STR_CONFIG_SETTING_AI_NPC                                       :Teldu spælarir
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Leiðbeinari fyri tok: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Leið beinari at nýta til tok

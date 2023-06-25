@@ -2186,30 +2186,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :imperiniai (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriniai (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizavimas
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafika
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Garsai
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vaizdas
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Bendros nuostatos
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Papildomi peržiūros langai
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstrukcijos
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Žinios ir patarėjai
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Kompanija
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Apskaita
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Transporto priemonės
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršrutas
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ribos
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofos ir incidentai
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Žemėlapio kūrimas
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Aplinka
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Valdžia
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Miestai
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gamyklos
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Krovinių pasiskirstymas
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurentai
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Žaidimas tinkle
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalizavimas
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafika
+STR_CONFIG_SETTING_SOUND                                        :Garsai
+STR_CONFIG_SETTING_INTERFACE                                    :Vaizdas
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Bendros nuostatos
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Papildomi peržiūros langai
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstrukcijos
+STR_CONFIG_SETTING_ADVISORS                                     :Žinios ir patarėjai
+STR_CONFIG_SETTING_COMPANY                                      :Kompanija
+STR_CONFIG_SETTING_ACCOUNTING                                   :Apskaita
+STR_CONFIG_SETTING_VEHICLES                                     :Transporto priemonės
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Maršrutas
+STR_CONFIG_SETTING_LIMITATIONS                                  :Ribos
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofos ir incidentai
+STR_CONFIG_SETTING_GENWORLD                                     :Žemėlapio kūrimas
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Aplinka
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Valdžia
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Miestai
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Gamyklos
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Krovinių pasiskirstymas
+STR_CONFIG_SETTING_AI                                           :Konkurentai
+STR_CONFIG_SETTING_AI_NPC                                       :Kompiuterio žaidėjai
+STR_CONFIG_SETTING_NETWORK                                      :Žaidimas tinkle
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Traukinių maršrutų paieškos algoritmas: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Maršruto naudojamas ieškotojas traukiniams

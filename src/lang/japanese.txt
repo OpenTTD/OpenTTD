@@ -2011,30 +2011,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ヤード・ポ
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :メートル法 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :国際単位系 (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}多国籍対応
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}グラフィック
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}効果音
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}インターフェース
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}一般
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}画面表示
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}建設
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}ニュース/アドバイス
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}会社
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}会計
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}輸送機器
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}物理モデル
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}経路構築
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}制限
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}災害/事故
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}マップ生成
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}環境
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}地方自治体
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}街
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}産業
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}貨物配送先
-STR_CONFIG_SETTING_AI                                           :{ORANGE}競争会社
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}コンピュータプレイヤー
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}ネットワーク
+STR_CONFIG_SETTING_LOCALISATION                                 :多国籍対応
+STR_CONFIG_SETTING_GRAPHICS                                     :グラフィック
+STR_CONFIG_SETTING_SOUND                                        :効果音
+STR_CONFIG_SETTING_INTERFACE                                    :インターフェース
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :一般
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :画面表示
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :建設
+STR_CONFIG_SETTING_ADVISORS                                     :ニュース/アドバイス
+STR_CONFIG_SETTING_COMPANY                                      :会社
+STR_CONFIG_SETTING_ACCOUNTING                                   :会計
+STR_CONFIG_SETTING_VEHICLES                                     :輸送機器
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :物理モデル
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :経路構築
+STR_CONFIG_SETTING_LIMITATIONS                                  :制限
+STR_CONFIG_SETTING_ACCIDENTS                                    :災害/事故
+STR_CONFIG_SETTING_GENWORLD                                     :マップ生成
+STR_CONFIG_SETTING_ENVIRONMENT                                  :環境
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :地方自治体
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :街
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :産業
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :貨物配送先
+STR_CONFIG_SETTING_AI                                           :競争会社
+STR_CONFIG_SETTING_AI_NPC                                       :コンピュータプレイヤー
+STR_CONFIG_SETTING_NETWORK                                      :ネットワーク
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :列車の経路探索アルゴリズム: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :列車の経路探索アルゴリズムを決めます

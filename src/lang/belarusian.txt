@@ -2182,29 +2182,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ангельс�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :мэтрычная (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Лакалізацыя
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Графіка
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Гукавыя эфэкты
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інтэрфэйс
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Агульныя наладкі
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Вокны прагляду
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Будаўніцтва
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Навіны і інфармацыя
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Кампанія
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Фінансы
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспарт
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Фізічная мадэль
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Абмежаваньні
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Аварыі і катастрофы
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Стварэньне мапы
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Навакольнае асяроддзе
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Гарадская адміністрацыя
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Населеныя пункты
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Прамысловасьць
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Разьмеркаваньне грузаў
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Канкурэнты
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Кампутарныя гульцы
+STR_CONFIG_SETTING_LOCALISATION                                 :Лакалізацыя
+STR_CONFIG_SETTING_GRAPHICS                                     :Графіка
+STR_CONFIG_SETTING_SOUND                                        :Гукавыя эфэкты
+STR_CONFIG_SETTING_INTERFACE                                    :Інтэрфэйс
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Агульныя наладкі
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Вокны прагляду
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Будаўніцтва
+STR_CONFIG_SETTING_ADVISORS                                     :Навіны і інфармацыя
+STR_CONFIG_SETTING_COMPANY                                      :Кампанія
+STR_CONFIG_SETTING_ACCOUNTING                                   :Фінансы
+STR_CONFIG_SETTING_VEHICLES                                     :Транспарт
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Фізічная мадэль
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Маршруты
+STR_CONFIG_SETTING_LIMITATIONS                                  :Абмежаваньні
+STR_CONFIG_SETTING_ACCIDENTS                                    :Аварыі і катастрофы
+STR_CONFIG_SETTING_GENWORLD                                     :Стварэньне мапы
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Навакольнае асяроддзе
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Гарадская адміністрацыя
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Населеныя пункты
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Прамысловасьць
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Разьмеркаваньне грузаў
+STR_CONFIG_SETTING_AI                                           :Канкурэнты
+STR_CONFIG_SETTING_AI_NPC                                       :Кампутарныя гульцы
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Альґарытм пошуку шляху для цягнікоў: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Мэханізм пошуку шляху для цягнікоў.

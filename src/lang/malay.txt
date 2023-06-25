@@ -1610,18 +1610,18 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :Unit SI (m³)
 
 ###length 3
 
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Bunyi
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka (Interface)
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Pembinaan
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Berita / Penasihat
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Syarikat
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Laluan
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Kecelakaan / Kemalangan
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bandar-bandar
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri-industri
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain komputer
+STR_CONFIG_SETTING_SOUND                                        :Bunyi
+STR_CONFIG_SETTING_INTERFACE                                    :Antaramuka (Interface)
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Pembinaan
+STR_CONFIG_SETTING_ADVISORS                                     :Berita / Penasihat
+STR_CONFIG_SETTING_COMPANY                                      :Syarikat
+STR_CONFIG_SETTING_VEHICLES                                     :Kenderaan
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Laluan
+STR_CONFIG_SETTING_ACCIDENTS                                    :Kecelakaan / Kemalangan
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Bandar-bandar
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industri-industri
+STR_CONFIG_SETTING_AI                                           :Pesaing
+STR_CONFIG_SETTING_AI_NPC                                       :Pemain komputer
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pencari laluan untuk keretapi: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pencari laluan untuk kenderaan jalanraya: {STRING}

@@ -2033,29 +2033,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impireil (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Meatrach (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Ionadaileadh
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafaigeachd
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Fuaim
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Eadar-aghaidh
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Coitcheann
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Puirt-sheallaidh
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Togail
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Comhairlean / Fiosrachadh
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Companaidh
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Cunntasachd
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Carbadan
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fiosaigeachd
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Lorg shlighean
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Cuingeachaidhean
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Dunaidh / Tubaistean
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Gintinn saoghail
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Àrainneachd
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Ùghdarrasan
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bailtean
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gnìomhachasan
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Sgaoileadh carago
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Co-farpaisichean
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Cluicheadairean coimpiutair
+STR_CONFIG_SETTING_LOCALISATION                                 :Ionadaileadh
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafaigeachd
+STR_CONFIG_SETTING_SOUND                                        :Fuaim
+STR_CONFIG_SETTING_INTERFACE                                    :Eadar-aghaidh
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Coitcheann
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Puirt-sheallaidh
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Togail
+STR_CONFIG_SETTING_ADVISORS                                     :Comhairlean / Fiosrachadh
+STR_CONFIG_SETTING_COMPANY                                      :Companaidh
+STR_CONFIG_SETTING_ACCOUNTING                                   :Cunntasachd
+STR_CONFIG_SETTING_VEHICLES                                     :Carbadan
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fiosaigeachd
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Lorg shlighean
+STR_CONFIG_SETTING_LIMITATIONS                                  :Cuingeachaidhean
+STR_CONFIG_SETTING_ACCIDENTS                                    :Dunaidh / Tubaistean
+STR_CONFIG_SETTING_GENWORLD                                     :Gintinn saoghail
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Àrainneachd
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Ùghdarrasan
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Bailtean
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Gnìomhachasan
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Sgaoileadh carago
+STR_CONFIG_SETTING_AI                                           :Co-farpaisichean
+STR_CONFIG_SETTING_AI_NPC                                       :Cluicheadairean coimpiutair
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Lorg shlighean aig trèanaichean: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :An dòigh a lorgas trèanaichean an slighe

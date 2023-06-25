@@ -1715,15 +1715,15 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meðalstærð b
 
 ###length 3
 
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hljóð
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Viðmót
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Bygging
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Farartæki
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Leiðarvísun farartækja
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bæir
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Iðnaður
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Mótherji
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gervigreind
+STR_CONFIG_SETTING_SOUND                                        :Hljóð
+STR_CONFIG_SETTING_INTERFACE                                    :Viðmót
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Bygging
+STR_CONFIG_SETTING_VEHICLES                                     :Farartæki
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Leiðarvísun farartækja
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Bæir
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Iðnaður
+STR_CONFIG_SETTING_AI                                           :Mótherji
+STR_CONFIG_SETTING_AI_NPC                                       :Gervigreind
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Leiðsögukerfi lesta: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Leiðsögukerfi sem nota á fyrir lestir

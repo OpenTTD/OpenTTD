@@ -1482,14 +1482,14 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا ش�
 
 ###length 3
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}انٹرفیس
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}تعمیرات
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}گاڑیاں
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}روٹنگ
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}شہر
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}صنعتیں
-STR_CONFIG_SETTING_AI                                           :{ORANGE}مد مقابل
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}کمپیوٹر کے کھلاڑی
+STR_CONFIG_SETTING_INTERFACE                                    :انٹرفیس
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :تعمیرات
+STR_CONFIG_SETTING_VEHICLES                                     :گاڑیاں
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :روٹنگ
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :شہر
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :صنعتیں
+STR_CONFIG_SETTING_AI                                           :مد مقابل
+STR_CONFIG_SETTING_AI_NPC                                       :کمپیوٹر کے کھلاڑی
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :ریل گاڑیوں کے لئے راستہ ڈھونڈنے والا: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :گاڑیوں کا راستہ تلاش کرنے والا: {STRING}

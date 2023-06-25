@@ -2399,30 +2399,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metryczne (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizacja
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafika
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Dźwięk
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfejs
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Ogólne
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Widok
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstrukcje
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Wiadomości i porady
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Finanse
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Pojazdy
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizyka
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Wyznaczanie trasy
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ograniczenia
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Awarie i katastrofy
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Tworzenie mapy
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Środowisko
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Władze lokalne
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Miasta
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Przedsiębiorstwa
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dystrybucja ładunków
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Rywale
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gracze komputerowi
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Sieć
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalizacja
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafika
+STR_CONFIG_SETTING_SOUND                                        :Dźwięk
+STR_CONFIG_SETTING_INTERFACE                                    :Interfejs
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Ogólne
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Widok
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstrukcje
+STR_CONFIG_SETTING_ADVISORS                                     :Wiadomości i porady
+STR_CONFIG_SETTING_COMPANY                                      :Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :Finanse
+STR_CONFIG_SETTING_VEHICLES                                     :Pojazdy
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizyka
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Wyznaczanie trasy
+STR_CONFIG_SETTING_LIMITATIONS                                  :Ograniczenia
+STR_CONFIG_SETTING_ACCIDENTS                                    :Awarie i katastrofy
+STR_CONFIG_SETTING_GENWORLD                                     :Tworzenie mapy
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Środowisko
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Władze lokalne
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Miasta
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Przedsiębiorstwa
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Dystrybucja ładunków
+STR_CONFIG_SETTING_AI                                           :Rywale
+STR_CONFIG_SETTING_AI_NPC                                       :Gracze komputerowi
+STR_CONFIG_SETTING_NETWORK                                      :Sieć
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Wytyczanie drogi dla pociągów: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :System wyszukiwania trasy dla pociągów

@@ -1673,29 +1673,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :متري (كغ 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :إمبراطوري (قدم)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :متري (م)
 
-STR_CONFIG_SETTING_GRAPHICS                                     :رسوميات {ORANGE}
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}الصوت
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}النظام البيني
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :عموم{ORANGE}
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :مجالات رؤية {ORANGE}
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}البناء
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}أخبار\ مستشارون
-STR_CONFIG_SETTING_COMPANY                                      :شركة{ORANGE}
-STR_CONFIG_SETTING_ACCOUNTING                                   :حسابات{ORANGE}
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}المركبات
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :فيزياء{ORANGE}
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE} المسارات
-STR_CONFIG_SETTING_LIMITATIONS                                  :حدود {ORANGE}
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE} كوارث\حوادث
-STR_CONFIG_SETTING_GENWORLD                                     :تكوين عالم {ORANGE}
-STR_CONFIG_SETTING_ENVIRONMENT                                  :بيئة {ORANGE}
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :سلطات {ORANGE}
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE} مدن
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE} مصانع
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :توزيع البضائع{ORANGE}
-STR_CONFIG_SETTING_AI                                           :{ORANGE}المتنافسين
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاعبين الحاسوب
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}شبكة الاتصال
+STR_CONFIG_SETTING_GRAPHICS                                     :رسوميات
+STR_CONFIG_SETTING_SOUND                                        :الصوت
+STR_CONFIG_SETTING_INTERFACE                                    :النظام البيني
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :عموم
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :مجالات رؤية
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :البناء
+STR_CONFIG_SETTING_ADVISORS                                     :أخبار\ مستشارون
+STR_CONFIG_SETTING_COMPANY                                      :شركة
+STR_CONFIG_SETTING_ACCOUNTING                                   :حسابات
+STR_CONFIG_SETTING_VEHICLES                                     :المركبات
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :فيزياء
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :المسارات
+STR_CONFIG_SETTING_LIMITATIONS                                  :حدود
+STR_CONFIG_SETTING_ACCIDENTS                                    :كوارث\حوادث
+STR_CONFIG_SETTING_GENWORLD                                     :تكوين عالم
+STR_CONFIG_SETTING_ENVIRONMENT                                  :بيئة
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :سلطات
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :مدن
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :مصانع
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :توزيع البضائع
+STR_CONFIG_SETTING_AI                                           :المتنافسين
+STR_CONFIG_SETTING_AI_NPC                                       : لاعبين الحاسوب
+STR_CONFIG_SETTING_NETWORK                                      :شبكة الاتصال
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :موجد الطريق- قصاص الطريق - للقطارات:{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :موجد الطريق (قصاص الأثر) للعربات: {STRING}

@@ -2019,30 +2019,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Hoàng Gia (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Tiêu Chuẩn Đo Lường
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Đồ họa
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Âm thanh
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Giao Diện
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Tổng quát
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vùng nhìn
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Xây Dựng
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Tin tức / Cố vấn
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Công ty
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Kế toán
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Phương Tiện
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Vật lý
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Tìm đường
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Giới hạn
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Thiên tai / Tai nạn
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Khởi tạo bản đồ
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Môi trường
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Chính quyền
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Đô thị
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Nhà máy
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Phân bổ hàng hóa
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Kết nối
+STR_CONFIG_SETTING_LOCALISATION                                 :Tiêu Chuẩn Đo Lường
+STR_CONFIG_SETTING_GRAPHICS                                     :Đồ họa
+STR_CONFIG_SETTING_SOUND                                        :Âm thanh
+STR_CONFIG_SETTING_INTERFACE                                    :Giao Diện
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Tổng quát
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Vùng nhìn
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Xây Dựng
+STR_CONFIG_SETTING_ADVISORS                                     :Tin tức / Cố vấn
+STR_CONFIG_SETTING_COMPANY                                      :Công ty
+STR_CONFIG_SETTING_ACCOUNTING                                   :Kế toán
+STR_CONFIG_SETTING_VEHICLES                                     :Phương Tiện
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Vật lý
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Tìm đường
+STR_CONFIG_SETTING_LIMITATIONS                                  :Giới hạn
+STR_CONFIG_SETTING_ACCIDENTS                                    :Thiên tai / Tai nạn
+STR_CONFIG_SETTING_GENWORLD                                     :Khởi tạo bản đồ
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Môi trường
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Chính quyền
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Đô thị
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Nhà máy
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Phân bổ hàng hóa
+STR_CONFIG_SETTING_AI                                           :Đối Thủ
+STR_CONFIG_SETTING_AI_NPC                                       :Nhân vật máy
+STR_CONFIG_SETTING_NETWORK                                      :Kết nối
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Cơ chế tìm đường cho tàu hoả: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Cơ chế tìm đường cho tàu hỏa

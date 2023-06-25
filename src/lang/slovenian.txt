@@ -1985,29 +1985,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperične (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrične (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalno
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafike
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvočni učinki
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Vmesnik
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Splošno
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Pogledi
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Gradnja
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Novice/Nasveti
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Podjetje
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Računi
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Usmerjanje
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Omejitve
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofe / Nesreče
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Ustvarjanje sveta
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Okolje
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Oblasti
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Mesta
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrije
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Razpored tovora
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Tekmeci
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalniški igralci
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalno
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafike
+STR_CONFIG_SETTING_SOUND                                        :Zvočni učinki
+STR_CONFIG_SETTING_INTERFACE                                    :Vmesnik
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Splošno
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Pogledi
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Gradnja
+STR_CONFIG_SETTING_ADVISORS                                     :Novice/Nasveti
+STR_CONFIG_SETTING_COMPANY                                      :Podjetje
+STR_CONFIG_SETTING_ACCOUNTING                                   :Računi
+STR_CONFIG_SETTING_VEHICLES                                     :Vozila
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Usmerjanje
+STR_CONFIG_SETTING_LIMITATIONS                                  :Omejitve
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofe / Nesreče
+STR_CONFIG_SETTING_GENWORLD                                     :Ustvarjanje sveta
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Okolje
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Oblasti
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Mesta
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrije
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Razpored tovora
+STR_CONFIG_SETTING_AI                                           :Tekmeci
+STR_CONFIG_SETTING_AI_NPC                                       :Računalniški igralci
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Iskalnik poti za vlake: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Iskalnik poti za vlake.

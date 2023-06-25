@@ -2021,30 +2021,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Impérial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrique (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localisation
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Graphiques
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Son
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Général
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vues
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construction
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Informations / Annonces
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Compagnie
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Comptabilité
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Véhicules
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Physique
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routage
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitations
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Catastrophes / Accidents
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Création du terrain
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Environnement
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autorités
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Villes
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industries
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribution des marchandises
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Compétiteurs
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence artificielle
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Réseau
+STR_CONFIG_SETTING_LOCALISATION                                 :Localisation
+STR_CONFIG_SETTING_GRAPHICS                                     :Graphiques
+STR_CONFIG_SETTING_SOUND                                        :Son
+STR_CONFIG_SETTING_INTERFACE                                    :Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Général
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Vues
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Construction
+STR_CONFIG_SETTING_ADVISORS                                     :Informations / Annonces
+STR_CONFIG_SETTING_COMPANY                                      :Compagnie
+STR_CONFIG_SETTING_ACCOUNTING                                   :Comptabilité
+STR_CONFIG_SETTING_VEHICLES                                     :Véhicules
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Physique
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Routage
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limitations
+STR_CONFIG_SETTING_ACCIDENTS                                    :Catastrophes / Accidents
+STR_CONFIG_SETTING_GENWORLD                                     :Création du terrain
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Environnement
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autorités
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Villes
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industries
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribution des marchandises
+STR_CONFIG_SETTING_AI                                           :Compétiteurs
+STR_CONFIG_SETTING_AI_NPC                                       :Intelligence artificielle
+STR_CONFIG_SETTING_NETWORK                                      :Réseau
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Recherche de chemin des trains{NBSP}: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Recherche de chemin à utiliser pour les trains

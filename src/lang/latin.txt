@@ -2035,29 +2035,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Anglicae (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metricae (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localizatio
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Res Graphicae
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soni
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfacies
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Res Generales
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Fenestrae Conspectus
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Constructio
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nuntia / Admonitio
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Societas
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Ratiocinium
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicula
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Physica
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Itinera
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Fines
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Calamitates / Accidentes
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generatio Mundi
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Circumiecta
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Auctoritates
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Oppida
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industriae
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Partitio onerum
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitores
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Lusores computatrales
+STR_CONFIG_SETTING_LOCALISATION                                 :Localizatio
+STR_CONFIG_SETTING_GRAPHICS                                     :Res Graphicae
+STR_CONFIG_SETTING_SOUND                                        :Soni
+STR_CONFIG_SETTING_INTERFACE                                    :Interfacies
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Res Generales
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Fenestrae Conspectus
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Constructio
+STR_CONFIG_SETTING_ADVISORS                                     :Nuntia / Admonitio
+STR_CONFIG_SETTING_COMPANY                                      :Societas
+STR_CONFIG_SETTING_ACCOUNTING                                   :Ratiocinium
+STR_CONFIG_SETTING_VEHICLES                                     :Vehicula
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Physica
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Itinera
+STR_CONFIG_SETTING_LIMITATIONS                                  :Fines
+STR_CONFIG_SETTING_ACCIDENTS                                    :Calamitates / Accidentes
+STR_CONFIG_SETTING_GENWORLD                                     :Generatio Mundi
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Circumiecta
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Auctoritates
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Oppida
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industriae
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Partitio onerum
+STR_CONFIG_SETTING_AI                                           :Competitores
+STR_CONFIG_SETTING_AI_NPC                                       :Lusores computatrales
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Inventrum itineris traminum: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Inventrum itineris hamaxostichis adhibendum

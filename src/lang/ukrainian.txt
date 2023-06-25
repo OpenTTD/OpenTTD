@@ -2136,30 +2136,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Імперсь�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Метричні (м)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СІ (м)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Локалізація
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Графіки
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звук
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Інтерфейс
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Загальні
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Точки огляду
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Будівництво
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Новини / Поради
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Компанія
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Облік
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Фізика
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрути
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Обмеження
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Катастрофи
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Створення світу
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Довкілля
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Органи влади
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Міста
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Підприємства
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Розподіл вантажів
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренти
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Віртуальні гравці
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Мережа
+STR_CONFIG_SETTING_LOCALISATION                                 :Локалізація
+STR_CONFIG_SETTING_GRAPHICS                                     :Графіки
+STR_CONFIG_SETTING_SOUND                                        :Звук
+STR_CONFIG_SETTING_INTERFACE                                    :Інтерфейс
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Загальні
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Точки огляду
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Будівництво
+STR_CONFIG_SETTING_ADVISORS                                     :Новини / Поради
+STR_CONFIG_SETTING_COMPANY                                      :Компанія
+STR_CONFIG_SETTING_ACCOUNTING                                   :Облік
+STR_CONFIG_SETTING_VEHICLES                                     :Транспорт
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Фізика
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Маршрути
+STR_CONFIG_SETTING_LIMITATIONS                                  :Обмеження
+STR_CONFIG_SETTING_ACCIDENTS                                    :Катастрофи
+STR_CONFIG_SETTING_GENWORLD                                     :Створення світу
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Довкілля
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Органи влади
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Міста
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Підприємства
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Розподіл вантажів
+STR_CONFIG_SETTING_AI                                           :Конкуренти
+STR_CONFIG_SETTING_AI_NPC                                       :Віртуальні гравці
+STR_CONFIG_SETTING_NETWORK                                      :Мережа
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Алгоритм пошуку шляху для поїздів: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Вибір алгоритма пошуку шляху для залізничного транспорту.
