@@ -2020,30 +2020,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :야드파운드
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :미터법 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :국제표준규격 (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}단위 설정
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}그래픽
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}효과음
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}인터페이스
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}일반
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}게임 화면
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}건설
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}뉴스 / 정보
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}회사
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}회계
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}차량
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}물리
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}제한
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}재앙 / 사고
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}세계 제작
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}환경
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}지역 당국
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}도시
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}산업시설
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}화물 분배
-STR_CONFIG_SETTING_AI                                           :{ORANGE}경쟁자
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 플레이어
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}네트워크
+STR_CONFIG_SETTING_LOCALISATION                                 :단위 설정
+STR_CONFIG_SETTING_GRAPHICS                                     :그래픽
+STR_CONFIG_SETTING_SOUND                                        :효과음
+STR_CONFIG_SETTING_INTERFACE                                    :인터페이스
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :일반
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :게임 화면
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :건설
+STR_CONFIG_SETTING_ADVISORS                                     :뉴스 / 정보
+STR_CONFIG_SETTING_COMPANY                                      :회사
+STR_CONFIG_SETTING_ACCOUNTING                                   :회계
+STR_CONFIG_SETTING_VEHICLES                                     :차량
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :물리
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :경로
+STR_CONFIG_SETTING_LIMITATIONS                                  :제한
+STR_CONFIG_SETTING_ACCIDENTS                                    :재앙 / 사고
+STR_CONFIG_SETTING_GENWORLD                                     :세계 제작
+STR_CONFIG_SETTING_ENVIRONMENT                                  :환경
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :지역 당국
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :도시
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :산업시설
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :화물 분배
+STR_CONFIG_SETTING_AI                                           :경쟁자
+STR_CONFIG_SETTING_AI_NPC                                       :컴퓨터 플레이어
+STR_CONFIG_SETTING_NETWORK                                      :네트워크
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :열차에 사용할 경로 탐색법: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :열차에 사용할 경로 탐색 방법을 선택합니다.

@@ -1831,29 +1831,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrig (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Unedau Lleol
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Graffeg
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sain
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Rhyngwyneb
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Cyffredinol
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Ffenestri Golygfa
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Adeiladu
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Newyddion a Chyngor
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Cwmni
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Cyfrifo
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Cerbydau
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Ffiseg
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Llwybro
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Cyfyngiadau
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Trychinebau a Damweiniau
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Cread byd
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Amgylchedd
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Awdurdodau
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Trefi
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Diwydiannau
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Dosraniad cargo
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Cystadleuwyr
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Chwaraewyr Cyfrifiadurol
+STR_CONFIG_SETTING_LOCALISATION                                 :Unedau Lleol
+STR_CONFIG_SETTING_GRAPHICS                                     :Graffeg
+STR_CONFIG_SETTING_SOUND                                        :Sain
+STR_CONFIG_SETTING_INTERFACE                                    :Rhyngwyneb
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Cyffredinol
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Ffenestri Golygfa
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Adeiladu
+STR_CONFIG_SETTING_ADVISORS                                     :Newyddion a Chyngor
+STR_CONFIG_SETTING_COMPANY                                      :Cwmni
+STR_CONFIG_SETTING_ACCOUNTING                                   :Cyfrifo
+STR_CONFIG_SETTING_VEHICLES                                     :Cerbydau
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Ffiseg
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Llwybro
+STR_CONFIG_SETTING_LIMITATIONS                                  :Cyfyngiadau
+STR_CONFIG_SETTING_ACCIDENTS                                    :Trychinebau a Damweiniau
+STR_CONFIG_SETTING_GENWORLD                                     :Cread byd
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Amgylchedd
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Awdurdodau
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Trefi
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Diwydiannau
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Dosraniad cargo
+STR_CONFIG_SETTING_AI                                           :Cystadleuwyr
+STR_CONFIG_SETTING_AI_NPC                                       :Chwaraewyr Cyfrifiadurol
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Llwybrwr ar gyfer trenau: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Llwybrwr i'w ddefnyddio ar gyfer trenau

@@ -2020,30 +2020,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localización
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gráficos
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectos de son
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Xeral
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Fiestras de visualización
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construción
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Novas / Conselleiros
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Compañía
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Contabilidade
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehículos
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Física
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Encamiñamento
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitacións
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Accidentes
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Xeración do mundo
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Contorno
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoridades
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Cidades
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrias
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribución da carga
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Xogadores da computadora
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Rede
+STR_CONFIG_SETTING_LOCALISATION                                 :Localización
+STR_CONFIG_SETTING_GRAPHICS                                     :Gráficos
+STR_CONFIG_SETTING_SOUND                                        :Efectos de son
+STR_CONFIG_SETTING_INTERFACE                                    :Interface
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Xeral
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Fiestras de visualización
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Construción
+STR_CONFIG_SETTING_ADVISORS                                     :Novas / Conselleiros
+STR_CONFIG_SETTING_COMPANY                                      :Compañía
+STR_CONFIG_SETTING_ACCOUNTING                                   :Contabilidade
+STR_CONFIG_SETTING_VEHICLES                                     :Vehículos
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Física
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Encamiñamento
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limitacións
+STR_CONFIG_SETTING_ACCIDENTS                                    :Desastres / Accidentes
+STR_CONFIG_SETTING_GENWORLD                                     :Xeración do mundo
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Contorno
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoridades
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Cidades
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrias
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribución da carga
+STR_CONFIG_SETTING_AI                                           :Competidores
+STR_CONFIG_SETTING_AI_NPC                                       :Xogadores da computadora
+STR_CONFIG_SETTING_NETWORK                                      :Rede
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Buscador de ruta para trens: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Buscador de ruta empregado polos trens

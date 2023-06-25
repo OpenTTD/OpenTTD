@@ -2090,30 +2090,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Αυτοκρα�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Μετρικό (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Τοπικοποίηση
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Γραφικά
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ήχος
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Περιβάλλον Λειτουργίας
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Γενικά
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Παράθυρα προβολών
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Κατασκευή
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Ειδήσεις / Σύμβουλοι
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Εταιρία
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Λογιστικά
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Φυσική
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρομολογήσεις
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Περιορισμοί
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Καταστροφές/Ατυχήματα
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Δημιουργία Κόσμου
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Περιβάλλον
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Αρχές
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Πόλεις
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Βιομηχανίες
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Κατανομή φορτίων
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Ανταγωνιστές
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Παίκτες υπολογιστή
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Δίκτυο
+STR_CONFIG_SETTING_LOCALISATION                                 :Τοπικοποίηση
+STR_CONFIG_SETTING_GRAPHICS                                     :Γραφικά
+STR_CONFIG_SETTING_SOUND                                        :Ήχος
+STR_CONFIG_SETTING_INTERFACE                                    :Περιβάλλον Λειτουργίας
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Γενικά
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Παράθυρα προβολών
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Κατασκευή
+STR_CONFIG_SETTING_ADVISORS                                     :Ειδήσεις / Σύμβουλοι
+STR_CONFIG_SETTING_COMPANY                                      :Εταιρία
+STR_CONFIG_SETTING_ACCOUNTING                                   :Λογιστικά
+STR_CONFIG_SETTING_VEHICLES                                     :Οχήματα
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Φυσική
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Δρομολογήσεις
+STR_CONFIG_SETTING_LIMITATIONS                                  :Περιορισμοί
+STR_CONFIG_SETTING_ACCIDENTS                                    :Καταστροφές/Ατυχήματα
+STR_CONFIG_SETTING_GENWORLD                                     :Δημιουργία Κόσμου
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Περιβάλλον
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Αρχές
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Πόλεις
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Βιομηχανίες
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Κατανομή φορτίων
+STR_CONFIG_SETTING_AI                                           :Ανταγωνιστές
+STR_CONFIG_SETTING_AI_NPC                                       :Παίκτες υπολογιστή
+STR_CONFIG_SETTING_NETWORK                                      :Δίκτυο
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Μέθοδος δρομολόγησης για τρένα: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα τρένα

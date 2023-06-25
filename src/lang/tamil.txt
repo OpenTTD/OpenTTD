@@ -1775,28 +1775,28 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :இம்பீ
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :மெட்ரிக் (மீ)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :அனைத்துலக முறை அலகு (மீ)
 
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}அசைவூட்டம்
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}ஒலிகள்
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}இடைமுகம்
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE} பொதுவான
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}கட்டுமானம்
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}செய்திகள் / அறிவுரைஞர்கள்
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}நிறுவனம்
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}கணக்கியல்
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வாகனங்கள்
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}இயற்பியல்
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}வழி மாற்றல்
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}எல்லைகள்
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}பேரழிவுகள் / விபத்துகள்
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}உலகம் உருவாக்குதல்
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}சுற்றுச்சூழல்
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}அதிகாரிகள்
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}நகரங்கள்
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}தொழிற்சாலைகள்
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}சரக்கு பரிமாற்றம்
-STR_CONFIG_SETTING_AI                                           :{ORANGE}போட்டியாளர்கள்
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}கணினி வீரர்கள்
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}இணையம்
+STR_CONFIG_SETTING_GRAPHICS                                     :அசைவூட்டம்
+STR_CONFIG_SETTING_SOUND                                        :ஒலிகள்
+STR_CONFIG_SETTING_INTERFACE                                    :இடைமுகம்
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            : பொதுவான
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :கட்டுமானம்
+STR_CONFIG_SETTING_ADVISORS                                     :செய்திகள் / அறிவுரைஞர்கள்
+STR_CONFIG_SETTING_COMPANY                                      :நிறுவனம்
+STR_CONFIG_SETTING_ACCOUNTING                                   :கணக்கியல்
+STR_CONFIG_SETTING_VEHICLES                                     :வாகனங்கள்
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :இயற்பியல்
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :வழி மாற்றல்
+STR_CONFIG_SETTING_LIMITATIONS                                  :எல்லைகள்
+STR_CONFIG_SETTING_ACCIDENTS                                    :பேரழிவுகள் / விபத்துகள்
+STR_CONFIG_SETTING_GENWORLD                                     :உலகம் உருவாக்குதல்
+STR_CONFIG_SETTING_ENVIRONMENT                                  :சுற்றுச்சூழல்
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :அதிகாரிகள்
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :நகரங்கள்
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :தொழிற்சாலைகள்
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :சரக்கு பரிமாற்றம்
+STR_CONFIG_SETTING_AI                                           :போட்டியாளர்கள்
+STR_CONFIG_SETTING_AI_NPC                                       :கணினி வீரர்கள்
+STR_CONFIG_SETTING_NETWORK                                      :இணையம்
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :இரயில்களுக்கான வழிகண்டுபிடிப்பான்: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :இரயில்கள் பயன்படுத்தப்போகும் வழிகண்டுபிடிப்பான்

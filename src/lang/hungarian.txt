@@ -2074,30 +2074,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Angolszász (l�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrikus (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Honosítás
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Megjelenés
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hang effektek
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Felület
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Általános
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Nézet
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Építkezés
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Hírüzenetek / Figyelmeztetések
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Vállalat
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Pénzügyek
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Járművek
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Útvonalkeresés
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Korlátozások
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katasztrófák / Balesetek
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Térképgenerálás
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Környezet
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Önkormányzatok
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Települések
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Gazdasági épületek
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rakományok szétosztása (úticélok)
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Ellenfelek
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Hálózat
+STR_CONFIG_SETTING_LOCALISATION                                 :Honosítás
+STR_CONFIG_SETTING_GRAPHICS                                     :Megjelenés
+STR_CONFIG_SETTING_SOUND                                        :Hang effektek
+STR_CONFIG_SETTING_INTERFACE                                    :Felület
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Általános
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Nézet
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Építkezés
+STR_CONFIG_SETTING_ADVISORS                                     :Hírüzenetek / Figyelmeztetések
+STR_CONFIG_SETTING_COMPANY                                      :Vállalat
+STR_CONFIG_SETTING_ACCOUNTING                                   :Pénzügyek
+STR_CONFIG_SETTING_VEHICLES                                     :Járművek
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Útvonalkeresés
+STR_CONFIG_SETTING_LIMITATIONS                                  :Korlátozások
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katasztrófák / Balesetek
+STR_CONFIG_SETTING_GENWORLD                                     :Térképgenerálás
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Környezet
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Önkormányzatok
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Települések
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Gazdasági épületek
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Rakományok szétosztása (úticélok)
+STR_CONFIG_SETTING_AI                                           :Ellenfelek
+STR_CONFIG_SETTING_AI_NPC                                       :Számítógép által vezérelt ellenfelek
+STR_CONFIG_SETTING_NETWORK                                      :Hálózat
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Útvonalkereső vonatokhoz: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :A vonatokhoz használt útvonalkereső

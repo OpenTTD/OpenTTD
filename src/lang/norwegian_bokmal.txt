@@ -1959,30 +1959,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Det britiske im
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikk
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Grensesnitt
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Synsfelt
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksjon
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nyheter / Rådgivere
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Regnskap
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kjøretøy
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysikk
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Begrensninger
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofer / Ulykker
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Verdensgenerering
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljø
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Myndigheter
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Gods-distribusjon
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandere
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinstyrte spillere
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Nettverk
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisering
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafikk
+STR_CONFIG_SETTING_SOUND                                        :Lydeffekter
+STR_CONFIG_SETTING_INTERFACE                                    :Grensesnitt
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generelt
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Synsfelt
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruksjon
+STR_CONFIG_SETTING_ADVISORS                                     :Nyheter / Rådgivere
+STR_CONFIG_SETTING_COMPANY                                      :Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :Regnskap
+STR_CONFIG_SETTING_VEHICLES                                     :Kjøretøy
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fysikk
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Ruting
+STR_CONFIG_SETTING_LIMITATIONS                                  :Begrensninger
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofer / Ulykker
+STR_CONFIG_SETTING_GENWORLD                                     :Verdensgenerering
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Myndigheter
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Byer
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrier
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Gods-distribusjon
+STR_CONFIG_SETTING_AI                                           :Motstandere
+STR_CONFIG_SETTING_AI_NPC                                       :Datamaskinstyrte spillere
+STR_CONFIG_SETTING_NETWORK                                      :Nettverk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Veifinner for tog: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Stifinner som skal brukes for tog

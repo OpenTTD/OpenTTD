@@ -2179,30 +2179,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperijalne mer
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metričke mere (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Prevod
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafika
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Okruženje
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Opšte
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Prikazi
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Izgradnja
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Vesti / Savetnici
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Preduzeće
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Računovodstvo
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutiranje
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ograničenja
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofe / Nezgode
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Stvaranje sveta
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Okoliš
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Vlasti
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Naselja
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Fabrike
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribucija tereta
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Mreža
+STR_CONFIG_SETTING_LOCALISATION                                 :Prevod
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafika
+STR_CONFIG_SETTING_SOUND                                        :Zvučni efekti
+STR_CONFIG_SETTING_INTERFACE                                    :Okruženje
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Opšte
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Prikazi
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Izgradnja
+STR_CONFIG_SETTING_ADVISORS                                     :Vesti / Savetnici
+STR_CONFIG_SETTING_COMPANY                                      :Preduzeće
+STR_CONFIG_SETTING_ACCOUNTING                                   :Računovodstvo
+STR_CONFIG_SETTING_VEHICLES                                     :Vozila
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Rutiranje
+STR_CONFIG_SETTING_LIMITATIONS                                  :Ograničenja
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofe / Nezgode
+STR_CONFIG_SETTING_GENWORLD                                     :Stvaranje sveta
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Okoliš
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Vlasti
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Naselja
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Fabrike
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribucija tereta
+STR_CONFIG_SETTING_AI                                           :Suparnici
+STR_CONFIG_SETTING_AI_NPC                                       :Računar
+STR_CONFIG_SETTING_NETWORK                                      :Mreža
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pretraživanje putanja vozova: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algoritam pronalaženja puta za vozove

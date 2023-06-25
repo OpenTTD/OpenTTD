@@ -1585,18 +1585,18 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :امپریال 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :متریک (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :متر (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}بومی سازی
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}واسط کاربری
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}ساخت و ساز
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}وسایل نقلیه
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}مسیریابی
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}محیط زیست
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}مقامات
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}شهرها
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}صنایع
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}توزیع محموله
-STR_CONFIG_SETTING_AI                                           :{ORANGE}رقیبان
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}بازیگران رایانه
+STR_CONFIG_SETTING_LOCALISATION                                 :بومی سازی
+STR_CONFIG_SETTING_INTERFACE                                    :واسط کاربری
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :ساخت و ساز
+STR_CONFIG_SETTING_VEHICLES                                     :وسایل نقلیه
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :مسیریابی
+STR_CONFIG_SETTING_ENVIRONMENT                                  :محیط زیست
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :مقامات
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :شهرها
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :صنایع
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :توزیع محموله
+STR_CONFIG_SETTING_AI                                           :رقیبان
+STR_CONFIG_SETTING_AI_NPC                                       :بازیگران رایانه
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :مسیریاب برای قطارها: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :مسیریاب برای خودروهای جاده ای: {STRING}

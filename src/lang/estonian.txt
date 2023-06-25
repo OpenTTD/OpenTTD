@@ -2042,30 +2042,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Inglise mõõdu
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Meetermõõdustik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI-süsteem (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Kohandused
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Graafika
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Heliefektid
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Liides
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Üldine
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vaated
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Ehitus
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Uudised / Nõunikud
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Ettevõte
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Arveldamine
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Sõidukid
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Füüsika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Marsruutimine
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Piirangud
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastroofid / Õnnetused
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Maailma tekitamine
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Keskkond
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Omavalitsus
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Asulad
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Tööstused
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kaubajaotus
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurendid
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Arvuti
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Võrk
+STR_CONFIG_SETTING_LOCALISATION                                 :Kohandused
+STR_CONFIG_SETTING_GRAPHICS                                     :Graafika
+STR_CONFIG_SETTING_SOUND                                        :Heliefektid
+STR_CONFIG_SETTING_INTERFACE                                    :Liides
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Üldine
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Vaated
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Ehitus
+STR_CONFIG_SETTING_ADVISORS                                     :Uudised / Nõunikud
+STR_CONFIG_SETTING_COMPANY                                      :Ettevõte
+STR_CONFIG_SETTING_ACCOUNTING                                   :Arveldamine
+STR_CONFIG_SETTING_VEHICLES                                     :Sõidukid
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Füüsika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Marsruutimine
+STR_CONFIG_SETTING_LIMITATIONS                                  :Piirangud
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastroofid / Õnnetused
+STR_CONFIG_SETTING_GENWORLD                                     :Maailma tekitamine
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Keskkond
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Omavalitsus
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Asulad
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Tööstused
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Kaubajaotus
+STR_CONFIG_SETTING_AI                                           :Konkurendid
+STR_CONFIG_SETTING_AI_NPC                                       :Arvuti
+STR_CONFIG_SETTING_NETWORK                                      :Võrk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Rongide marsruudileidja: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Marsruudileidja rongide jaoks

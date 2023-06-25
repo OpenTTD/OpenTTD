@@ -2017,30 +2017,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localizare
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafică
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efecte sonore
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaţă
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Câmpuri vizuale
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcţie
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Știri / Consilieri
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Companie
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Contabilitate
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicule
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizică
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţionare
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitări
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Dezastre / Accidente
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generare lume
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Mediu
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autorități
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Oraşe
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrii
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuţie cargo
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Concurenţi
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jucători virtuali
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Rețea
+STR_CONFIG_SETTING_LOCALISATION                                 :Localizare
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafică
+STR_CONFIG_SETTING_SOUND                                        :Efecte sonore
+STR_CONFIG_SETTING_INTERFACE                                    :Interfaţă
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :General
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Câmpuri vizuale
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Construcţie
+STR_CONFIG_SETTING_ADVISORS                                     :Știri / Consilieri
+STR_CONFIG_SETTING_COMPANY                                      :Companie
+STR_CONFIG_SETTING_ACCOUNTING                                   :Contabilitate
+STR_CONFIG_SETTING_VEHICLES                                     :Vehicule
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizică
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Direcţionare
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limitări
+STR_CONFIG_SETTING_ACCIDENTS                                    :Dezastre / Accidente
+STR_CONFIG_SETTING_GENWORLD                                     :Generare lume
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Mediu
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autorități
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Oraşe
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrii
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribuţie cargo
+STR_CONFIG_SETTING_AI                                           :Concurenţi
+STR_CONFIG_SETTING_AI_NPC                                       :Jucători virtuali
+STR_CONFIG_SETTING_NETWORK                                      :Rețea
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Algoritm de rutare pentru trenuri: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algoritm de rutare pentru trenuri

@@ -2020,30 +2020,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (peu)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Mètric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localització
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Gràfics
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectes de so
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfície
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}General
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Finestres de visualització
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcció
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Notícies / Consells
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Companyia
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Comptabilitat
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicles
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Lleis físiques
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Recorreguts
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limitacions
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Desastres / Accidents
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generació del món
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Interacció amb l'entorn
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autoritats
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Poblacions
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Indústries
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribució de la càrrega
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidors
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadors IA
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Xarxa
+STR_CONFIG_SETTING_LOCALISATION                                 :Localització
+STR_CONFIG_SETTING_GRAPHICS                                     :Gràfics
+STR_CONFIG_SETTING_SOUND                                        :Efectes de so
+STR_CONFIG_SETTING_INTERFACE                                    :Interfície
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :General
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Finestres de visualització
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Construcció
+STR_CONFIG_SETTING_ADVISORS                                     :Notícies / Consells
+STR_CONFIG_SETTING_COMPANY                                      :Companyia
+STR_CONFIG_SETTING_ACCOUNTING                                   :Comptabilitat
+STR_CONFIG_SETTING_VEHICLES                                     :Vehicles
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Lleis físiques
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Recorreguts
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limitacions
+STR_CONFIG_SETTING_ACCIDENTS                                    :Desastres / Accidents
+STR_CONFIG_SETTING_GENWORLD                                     :Generació del món
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Interacció amb l'entorn
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Autoritats
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Poblacions
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Indústries
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribució de la càrrega
+STR_CONFIG_SETTING_AI                                           :Competidors
+STR_CONFIG_SETTING_AI_NPC                                       :Jugadors IA
+STR_CONFIG_SETTING_NETWORK                                      :Xarxa
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Encaminador dels trens: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algorisme a emprar per a escollir les rutes dels trens

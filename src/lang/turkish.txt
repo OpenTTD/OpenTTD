@@ -2021,30 +2021,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (Ingil
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (Uluslararası Ölçüm Sistemi) (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Yerelleştirme
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafikler
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ses
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Arayüz
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Genel
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Görüş alanları
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}İnşaat
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Haberler / Danışmanlar
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Şirket
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Muhasebe
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Araçlar
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fizik
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Yönlenme
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Sınırlamalar
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Felaketler / Kazalar
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Harita üretimi
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ortam
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Yetkililer
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Şehirler
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Endüstri
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kargo dağılımı
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Rakipler
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Bilgisayar oyuncuları
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Ağ
+STR_CONFIG_SETTING_LOCALISATION                                 :Yerelleştirme
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafikler
+STR_CONFIG_SETTING_SOUND                                        :Ses
+STR_CONFIG_SETTING_INTERFACE                                    :Arayüz
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Genel
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Görüş alanları
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :İnşaat
+STR_CONFIG_SETTING_ADVISORS                                     :Haberler / Danışmanlar
+STR_CONFIG_SETTING_COMPANY                                      :Şirket
+STR_CONFIG_SETTING_ACCOUNTING                                   :Muhasebe
+STR_CONFIG_SETTING_VEHICLES                                     :Araçlar
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fizik
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Yönlenme
+STR_CONFIG_SETTING_LIMITATIONS                                  :Sınırlamalar
+STR_CONFIG_SETTING_ACCIDENTS                                    :Felaketler / Kazalar
+STR_CONFIG_SETTING_GENWORLD                                     :Harita üretimi
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Ortam
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Yetkililer
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Şehirler
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Endüstri
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Kargo dağılımı
+STR_CONFIG_SETTING_AI                                           :Rakipler
+STR_CONFIG_SETTING_AI_NPC                                       :Bilgisayar oyuncuları
+STR_CONFIG_SETTING_NETWORK                                      :Ağ
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Trenler için yol bulucu: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Trenler için kullanılacak "yol bulucu" algoritma

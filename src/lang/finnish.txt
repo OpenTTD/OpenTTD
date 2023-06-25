@@ -2019,30 +2019,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Brittiläinen (
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrinen (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Mittayksiköt ja päivämäärät
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafiikka
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ääni
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Käyttöliittymä
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Yleinen
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Näkymät
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Rakentaminen
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Uutiset ja neuvonantajat
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Yhtiö
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Talous
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kulkuneuvot
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysiikka
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Reititys
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Rajoitukset
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Onnettomuudet
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Maailman luominen
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Ympäristö
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Viranomaiset
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kunnat
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Laitokset
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Rahdin jakautuminen
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Kilpailijat
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Tietokonepelaajat
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Verkko
+STR_CONFIG_SETTING_LOCALISATION                                 :Mittayksiköt ja päivämäärät
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafiikka
+STR_CONFIG_SETTING_SOUND                                        :Ääni
+STR_CONFIG_SETTING_INTERFACE                                    :Käyttöliittymä
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Yleinen
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Näkymät
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Rakentaminen
+STR_CONFIG_SETTING_ADVISORS                                     :Uutiset ja neuvonantajat
+STR_CONFIG_SETTING_COMPANY                                      :Yhtiö
+STR_CONFIG_SETTING_ACCOUNTING                                   :Talous
+STR_CONFIG_SETTING_VEHICLES                                     :Kulkuneuvot
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fysiikka
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Reititys
+STR_CONFIG_SETTING_LIMITATIONS                                  :Rajoitukset
+STR_CONFIG_SETTING_ACCIDENTS                                    :Onnettomuudet
+STR_CONFIG_SETTING_GENWORLD                                     :Maailman luominen
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Ympäristö
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Viranomaiset
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Kunnat
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Laitokset
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Rahdin jakautuminen
+STR_CONFIG_SETTING_AI                                           :Kilpailijat
+STR_CONFIG_SETTING_AI_NPC                                       :Tietokonepelaajat
+STR_CONFIG_SETTING_NETWORK                                      :Verkko
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Junien käyttämä reitinetsijä: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Junien käyttämä reitinetsijä

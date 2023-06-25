@@ -1854,23 +1854,23 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :อิมพี
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :เมตริก (เมตร)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :มาตรฐานสากล (เมตร)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}มาตราวัดต่างๆ
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}กราฟิก
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}เสียงเอฟเฟกต์
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}การก่อสร้าง
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}ข่าวสาร / ที่ปรึกษา
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}กายภาพ
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}การค้นหาเส้นทางของพาหนะ
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}ภัยพิบัติ / อุบัติเหตุ
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}การสร้างภูมิประเทศ
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}สิ่งแวดล้อม
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}เมือง
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}อุตสาหกรรม
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}การกระจายสินค้า
-STR_CONFIG_SETTING_AI                                           :{ORANGE}คู่แข่ง
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}ผู้เล่นคอมพิวเตอร์
+STR_CONFIG_SETTING_LOCALISATION                                 :มาตราวัดต่างๆ
+STR_CONFIG_SETTING_GRAPHICS                                     :กราฟิก
+STR_CONFIG_SETTING_SOUND                                        :เสียงเอฟเฟกต์
+STR_CONFIG_SETTING_INTERFACE                                    :ส่วนเชื่อมต่อผู้ใช้
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :การก่อสร้าง
+STR_CONFIG_SETTING_ADVISORS                                     :ข่าวสาร / ที่ปรึกษา
+STR_CONFIG_SETTING_VEHICLES                                     :ยานพาหนะ
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :กายภาพ
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :การค้นหาเส้นทางของพาหนะ
+STR_CONFIG_SETTING_ACCIDENTS                                    :ภัยพิบัติ / อุบัติเหตุ
+STR_CONFIG_SETTING_GENWORLD                                     :การสร้างภูมิประเทศ
+STR_CONFIG_SETTING_ENVIRONMENT                                  :สิ่งแวดล้อม
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :เมือง
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :อุตสาหกรรม
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :การกระจายสินค้า
+STR_CONFIG_SETTING_AI                                           :คู่แข่ง
+STR_CONFIG_SETTING_AI_NPC                                       :ผู้เล่นคอมพิวเตอร์
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :ตัวค้นหาเส้นทางสำหรับรถไฟ: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :การหาค้นหาเส้นทางของขบวนรถไฟ

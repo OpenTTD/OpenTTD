@@ -1984,30 +1984,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrik (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisasi
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafik
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Suara
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Antaramuka
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Umum
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Jendela
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruksi
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Berita / Penasihat
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Perusahaan
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Akuntansi
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kendaraan
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fisika
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pengarahan
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Keterbatasan
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Bencana / Kecelakaan
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Pembuatan Bentang Darat
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Linkungan Dunia
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Berwenang
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Kota
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industri
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribusi kargo
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Pesaing
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Pemain Komputer
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Jaringan
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisasi
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafik
+STR_CONFIG_SETTING_SOUND                                        :Suara
+STR_CONFIG_SETTING_INTERFACE                                    :Antaramuka
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Umum
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Jendela
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruksi
+STR_CONFIG_SETTING_ADVISORS                                     :Berita / Penasihat
+STR_CONFIG_SETTING_COMPANY                                      :Perusahaan
+STR_CONFIG_SETTING_ACCOUNTING                                   :Akuntansi
+STR_CONFIG_SETTING_VEHICLES                                     :Kendaraan
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fisika
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Pengarahan
+STR_CONFIG_SETTING_LIMITATIONS                                  :Keterbatasan
+STR_CONFIG_SETTING_ACCIDENTS                                    :Bencana / Kecelakaan
+STR_CONFIG_SETTING_GENWORLD                                     :Pembuatan Bentang Darat
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Linkungan Dunia
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Berwenang
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Kota
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industri
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Distribusi kargo
+STR_CONFIG_SETTING_AI                                           :Pesaing
+STR_CONFIG_SETTING_AI_NPC                                       :Pemain Komputer
+STR_CONFIG_SETTING_NETWORK                                      :Jaringan
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pencari jejak untuk kereta: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pencari jejak untuk kereta

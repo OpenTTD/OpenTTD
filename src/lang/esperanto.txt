@@ -2053,30 +2053,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Angla-usona sis
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metra (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI-unuoj (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Loka adaptado
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafiko
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sonefektoj
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interfaco
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Ĝenerale
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vidujoj
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruado
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Novaĵoj / Konsilantoj
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Kompanio
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Librotenado
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fiziko
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Navigado
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Limigoj
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofoj / akcidentoj
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Mondgenerado
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Medio
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Lokaj estroj
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Urboj
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrioj
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Ŝarĝodistribuado
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurantoj
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Komputil-ludantoj
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Reto
+STR_CONFIG_SETTING_LOCALISATION                                 :Loka adaptado
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafiko
+STR_CONFIG_SETTING_SOUND                                        :Sonefektoj
+STR_CONFIG_SETTING_INTERFACE                                    :Interfaco
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Ĝenerale
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Vidujoj
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruado
+STR_CONFIG_SETTING_ADVISORS                                     :Novaĵoj / Konsilantoj
+STR_CONFIG_SETTING_COMPANY                                      :Kompanio
+STR_CONFIG_SETTING_ACCOUNTING                                   :Librotenado
+STR_CONFIG_SETTING_VEHICLES                                     :Veturiloj
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fiziko
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Navigado
+STR_CONFIG_SETTING_LIMITATIONS                                  :Limigoj
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofoj / akcidentoj
+STR_CONFIG_SETTING_GENWORLD                                     :Mondgenerado
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Medio
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Lokaj estroj
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Urboj
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrioj
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Ŝarĝodistribuado
+STR_CONFIG_SETTING_AI                                           :Konkurantoj
+STR_CONFIG_SETTING_AI_NPC                                       :Komputil-ludantoj
+STR_CONFIG_SETTING_NETWORK                                      :Reto
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Padtrovilo por trajnoj: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Padtrovilo por stratveturiloj: {STRING}
