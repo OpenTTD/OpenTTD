@@ -203,6 +203,24 @@ void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num, Strin
 	}
 }
 
+/**
+ * Checks whether the global string parameters have changed compared to the given backup.
+ * @param backup The backup to check against.
+ * @return True when the parameters have changed, otherwise false.
+ */
+bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup)
+{
+	bool changed = false;
+	for (size_t i = 0; !changed && i < backup.size(); i++) {
+		if (backup[i].string.has_value()) {
+			changed = backup[i].string.value() != (const char *)(size_t)_global_string_params.GetParam(i);
+		} else {
+			changed = backup[i].data != _global_string_params.GetParam(i);
+		}
+	}
+	return changed;
+}
+
 static void StationGetSpecialString(StringBuilder &builder, StationFacility x);
 static void GetSpecialTownNameString(StringBuilder &builder, int ind, uint32 seed);
 static void GetSpecialNameString(StringBuilder &builder, int ind, StringParameters &args);
