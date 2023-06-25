@@ -109,11 +109,11 @@ struct GRFIdentifier {
 struct GRFError {
 	GRFError(StringID severity, StringID message = 0);
 
-	std::string custom_message; ///< Custom message (if present)
-	std::string data;           ///< Additional data for message and custom_message
-	StringID message;           ///< Default message
-	StringID severity;          ///< Info / Warning / Error / Fatal
-	std::array<uint32_t, 2> param_value; ///< Values of GRF parameters to show for message and custom_message
+	std::string custom_message{}; ///< Custom message (if present)
+	std::string data{}; ///< Additional data for message and custom_message
+	StringID message{}; ///< Default message
+	StringID severity{}; ///< Info / Warning / Error / Fatal
+	std::array<uint32_t, 2> param_value{}; ///< Values of GRF parameters to show for message and custom_message
 };
 
 /** The possible types of a newgrf parameter. */
@@ -157,7 +157,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	GRFTextWrapper name; ///< NOSAVE: GRF name (Action 0x08)
 	GRFTextWrapper info; ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
 	GRFTextWrapper url; ///< NOSAVE: URL belonging to this GRF.
-	std::unique_ptr<GRFError> error; ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
+	std::optional<GRFError> error; ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
 	uint32 version; ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
 	uint32 min_loadable_version; ///< NOSAVE: Minimum compatible version a NewGRF can define
