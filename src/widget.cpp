@@ -2857,10 +2857,10 @@ void NWidgetLeaf::Draw(const Window *w)
 {
 	if (this->current_x == 0 || this->current_y == 0) return;
 
-	/* Setup a clipping rectangle... for WWT_EMPTY or WWT_TEXT, an extra scaled pixel is allowed vertically in case text shadow encroaches. */
-	int extra_y = (this->type == WWT_EMPTY || this->type == WWT_TEXT) ? ScaleGUITrad(1) : 0;
+	/* Setup a clipping rectangle... for WWT_EMPTY or WWT_TEXT, an extra scaled pixel is allowed in case text shadow encroaches. */
+	int extra = (this->type == WWT_EMPTY || this->type == WWT_TEXT) ? ScaleGUITrad(1) : 0;
 	DrawPixelInfo new_dpi;
-	if (!FillDrawPixelInfo(&new_dpi, this->pos_x, this->pos_y, this->current_x, this->current_y + extra_y)) return;
+	if (!FillDrawPixelInfo(&new_dpi, this->pos_x, this->pos_y, this->current_x + extra, this->current_y + extra)) return;
 	/* ...but keep coordinates relative to the window. */
 	new_dpi.left += this->pos_x;
 	new_dpi.top += this->pos_y;
