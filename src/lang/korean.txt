@@ -952,6 +952,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 단위
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :영국 파운드
@@ -4574,6 +4575,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}예정�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}예정 소요시간 기준
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}시간표 검사 기준을 도착 예정일과 도착 예정 시간 기준 중에서 선택합니다
 
+STR_TIMETABLE_ARRIVAL                                           :도착: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :착: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)

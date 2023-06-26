@@ -951,6 +951,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhed
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valg af valutaenhed
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britiske Pund
@@ -2835,8 +2836,8 @@ STR_AIRPORT_HELISTATION                                         :Helikopterplads
 
 STR_AIRPORT_CLASS_SMALL                                         :Små lufthavne
 STR_AIRPORT_CLASS_LARGE                                         :Store lufthavne
-STR_AIRPORT_CLASS_HUB                                           :Central lufthavn
-STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterlufthavn
+STR_AIRPORT_CLASS_HUB                                           :Central lufthavne
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopter lufthavne
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Genereret støj: {GOLD}{COMMA}
 
