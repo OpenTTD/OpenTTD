@@ -103,7 +103,7 @@ void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client = fal
 void NetworkAdminClientUpdate(const NetworkClientInfo *ci);
 void NetworkAdminClientQuit(ClientID client_id);
 void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code);
-void NetworkAdminCompanyInfo(const Company *company, bool new_company);
+void NetworkAdminCompanyNew(const Company *company);
 void NetworkAdminCompanyUpdate(const Company *company);
 void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
 

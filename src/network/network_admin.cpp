@@ -853,11 +853,10 @@ void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code)
 }
 
 /**
- * Notify the admin network of company details.
+ * Notify the admin network of a new company.
  * @param company the company of which details will be sent into the admin network.
- * @param new_company whether this is a new company or not.
  */
-void NetworkAdminCompanyInfo(const Company *company, bool new_company)
+void NetworkAdminCompanyNew(const Company *company)
 {
 	if (company == nullptr) {
 		Debug(net, 1, "[admin] Empty company given for update");
@@ -867,10 +866,8 @@ void NetworkAdminCompanyInfo(const Company *company, bool new_company)
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_COMPANY_INFO] != ADMIN_FREQUENCY_AUTOMATIC) continue;
 
+		as->SendCompanyNew(company->index);
 		as->SendCompanyInfo(company);
-		if (new_company) {
-			as->SendCompanyNew(company->index);
-		}
 	}
 }
 
