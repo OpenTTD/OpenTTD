@@ -2198,9 +2198,6 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		Command<CMD_RENAME_PRESIDENT>::SendNet(STR_NULL, c->index, ci->client_name);
 	}
 
-	/* Announce new company on network. */
-	NetworkAdminCompanyInfo(c, true);
-
 	if (ci != nullptr) {
 		/* ci is nullptr when replaying, or for AIs. In neither case there is a client.
 		   We need to send Admin port update here so that they first know about the new company
