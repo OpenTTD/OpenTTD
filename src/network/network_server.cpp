@@ -2085,6 +2085,7 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 
 	_network_company_states[c->index].months_empty = 0;
 	_network_company_states[c->index].password.clear();
+	//SB(_network_company_passworded, c->index, 1, false);
 	NetworkServerUpdateCompanyPassworded(c->index, false);
 
 	if (ci != nullptr) {
