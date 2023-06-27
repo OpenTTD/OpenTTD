@@ -732,7 +732,7 @@ STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gorsaf Reilffordd
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Man Llwytho Lorïau
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Gorsaf Fysiau
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Maes Awyr/Glanfa Hofrenyddion
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Maes Awyr/Hofrenfa
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Doc
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Tir Garw
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Glaswelltir
@@ -771,6 +771,7 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  WE
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AWTOGADW
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  CADW GÊM  *  *
 
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(gwyliwr)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Hanes Negeseuon
@@ -872,7 +873,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Mae {STA
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Cynnig cymhorthdal ar ben:{}{}Ni fydd cludo {STRING} o {STRING} i {STRING} yn derbyn cymhorthdal bellach
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Cymhorthdal wedi'i dynnu'n ôl:{}{}Ni fydd gwasanaeth {STRING} o {STRING} i {STRING} yn derbyn cymhorthdal bellach
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Cynnig cymhorthdal:{}{}Bydd y gwasanaeth {STRING} cyntaf o {STRING} i {STRING} yn derbyn {NUM} {P "blwyddyn" "mlynedd"}! o gymhorthdal gan yr awdurdod lleol!
 ###length 4
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu 50% yn fwy am {NUM} {P "blwyddyn" "mlynedd"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu dwywaith yn fwy am {NUM} {P "blwyddyn" "mlynedd"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu teirgwaith yn fwy am {NUM} {P "blwyddyn" "mlynedd"}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu pedair gwaith yn fwy am {NUM} {P "blwyddyn" "mlynedd"}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Anrhefn traffig yn {TOWN}!{}{}Daw gwaith ffordd a ariannwyd gan {STRING} â 6 mis o boen i deithwyr ffordd y dref!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoli cludiant!
@@ -890,6 +896,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Dewisiad
 
 
 
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Uned Arian
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Dewis unedau arian
@@ -955,6 +962,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 
 
 
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 
 
@@ -1366,6 +1374,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Codir purfeydd 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Uchder Llinell Eira: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Rheoli'r uchder y mae eira'n ymddangos mewn tirwedd is-arctig. Mae eira hefyd yn effeitiho ar gynhyrchu diwydiannau a gofynion twf trefi
 
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garwder y tirwedd: {STRING}
@@ -1933,6 +1942,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Mae'r cy
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Gadael
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ydych chi'n siŵr eich bod eisiau gadael OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Iawn
 STR_QUIT_NO                                                     :{BLACK}Na
 
@@ -2251,6 +2261,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Mae {STRING
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Mae {STRING} wedi dechrau cwmni newydd (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {STRING} wedi gadael y gêm ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Mae {STRING} wedi newid ei (h)enw i {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Rhoddodd {0:STRING} {2:CURRENCY_LONG} i {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Fe gaewyd y sesiwn gan y gweinydd
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
 
@@ -2374,6 +2385,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uno pwyn
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Adeiladu pwynt llwybro annibynnol
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Analluogwyd gan nad oes cerbydau ar gael i'r tanadeiledd yma ar hyn o bryd
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Adeiladu Rheilffyrdd
@@ -2528,14 +2540,14 @@ STR_AIRPORT_METRO                                               :Maes awyr metro
 STR_AIRPORT_INTERNATIONAL                                       :Rhyngwladol
 STR_AIRPORT_COMMUTER                                            :Cymudol
 STR_AIRPORT_INTERCONTINENTAL                                    :Rhyng-gyfandirol
-STR_AIRPORT_HELIPORT                                            :Porth Hofrennydd
+STR_AIRPORT_HELIPORT                                            :Hofrenfa
 STR_AIRPORT_HELIDEPOT                                           :Depo Hofrennydd
 STR_AIRPORT_HELISTATION                                         :Gorsaf Hofrennydd
 
 STR_AIRPORT_CLASS_SMALL                                         :Meysydd awyr bach
 STR_AIRPORT_CLASS_LARGE                                         :Meysydd awyr mawr
 STR_AIRPORT_CLASS_HUB                                           :Meysydd awyr cyfnewid
-STR_AIRPORT_CLASS_HELIPORTS                                     :Meysydd awyr hofrennydd
+STR_AIRPORT_CLASS_HELIPORTS                                     :Hofrenfeydd
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Swn a gynhyrchir: {GOLD}{COMMA}
 
@@ -2619,6 +2631,7 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Côst: {
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Mwynchwilio
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Adeiladu
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ariannu
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ydych chi'n siŵr eich bod eisiau dileu pob diwydiant?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadwyn ddiwydiant ar gyfer diwydiant {STRING}
@@ -2799,6 +2812,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Manylion
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Dim gwybodaeth ar gael
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Plygell rhiant)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Rhowch enw ar gyfer y gêm a gadwyd
 
@@ -2859,6 +2873,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Enw'r Ma
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Maint:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Gorchudd eira (mewn %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Newid y flwyddyn gychwyn
 
 # SE Map generation
@@ -2995,6 +3010,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Rhybudd: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Gwall: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Angheuol: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Mae'r NewGRF "{STRING}" wedi dychwelyd gwall angheuol:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Ni fydd {1:STRING} yn gweithio gyda'r fersiwn o TTDPatch yr adroddir gan OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Mae {1:STRING} ar gyfer y fersiwn {STRING} o TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :Mae {1:STRING} wedi ei gynllunio i gael ei ddefnyddio gyda {STRING}
@@ -3141,6 +3157,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Llwgrw
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Amcanion {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Amcanion Bydol
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Dangos amcanion y cwmni
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Dim -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3283,6 +3300,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}Cyllid {
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
 ###length 3
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Costau Gweithredol
 
 
 ###length 13
@@ -3704,6 +3722,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Cerbydau Monore
 STR_REPLACE_MAGLEV_VEHICLES                                     :Cerbydau Maglef
 
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Tynnu wagenni: ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i awtoddisodli gadw hyd y trên yr un peth drwy dynnu wagenni (gan ddechrau yn y blaen), os byddai newid yr injan yn gwneud y trên yn hirach
 
 # Vehicle view
@@ -3794,6 +3813,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwys: {L
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwys: {LTBLUE}{WEIGHT_SHORT} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Elw eleni: {LTBLUE}{CURRENCY_LONG} (llynedd: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Elw eleni: {LTBLUE}{CURRENCY_LONG} (Elw llynedd : {CURRENCY_LONG}) {BLACK}Perfformiad isafsymol: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Toriadau ers gwasanaeth olaf: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Codi: {LTBLUE}{NUM}{BLACK} Pris: {LTBLUE}{CURRENCY_LONG}
@@ -4140,7 +4160,7 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Symud yr
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Sgript Gêm
 STR_AI_CONFIG_AI                                                :{SILVER}AIau
 
-STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK} Dewis AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Sgript Gêm
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Llwytho sgript arall
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ffurfweddu
@@ -4161,6 +4181,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Dewis y 
 STR_AI_LIST_CANCEL                                              :{BLACK}Canslo
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Peidio newid y sgript
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Creu ciplun
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
@@ -4421,6 +4442,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :math depo anghy
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Aeth gormod o amser heibio i allu adnewyddu {VEHICLE}
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ni weithredwyd unrhyw reolau awtogyfnewid/adnewyddu
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(terfyn arian)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Nid yw'r cerbyd newydd yn gallu cario {STRING}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Cyfuniad trac amhosib
@@ -4601,6 +4623,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... rhy 
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... nid yw o fewn cyrraedd yr awyren
 
 # Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Nid yw'r awyren yma'n gallu glanio yn yr hofrenfa yma
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Methu amserlennu cerbyd...
@@ -4743,7 +4766,7 @@ STR_SV_STNAME_SIDINGS                                           :Cilffordd {STRI
 STR_SV_STNAME_BRANCH                                            :Cangen {STRING}
 STR_SV_STNAME_UPPER                                             :Blaenau {STRING}
 STR_SV_STNAME_LOWER                                             :Dyffryn {STRING}
-STR_SV_STNAME_HELIPORT                                          :Hofrenyddborth {STRING}
+STR_SV_STNAME_HELIPORT                                          :Hofrenfa {STRING}
 STR_SV_STNAME_FOREST                                            :Coedwig {STRING}
 STR_SV_STNAME_FALLBACK                                          :{STRING} Gorsaf #{NUM}
 
