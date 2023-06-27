@@ -42,7 +42,7 @@
 
 static const SpriteID SPR_SELECT_TILE  = 752;
 static const SpriteID SPR_DOT          = 774; // corner marker for lower/raise land
-static const SpriteID SPR_DOT_SMALL    = 4078;
+static const SpriteID SPR_EMPTY        = 4078; // empty (transparent blue) sprite
 static const SpriteID SPR_WHITE_POINT  = 4079;
 
 /* ASCII */
