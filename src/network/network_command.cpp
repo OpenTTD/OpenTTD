@@ -392,6 +392,10 @@ static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owne
 	int to_go = UINT16_MAX;
 #else
 	int to_go = _settings_client.network.commands_per_frame;
+	if (owner == nullptr) {
+		/* This is the server, use the commands_per_frame_server setting if higher */
+		to_go = std::max<int>(to_go, _settings_client.network.commands_per_frame_server);
+	}
 #endif
 
 	CommandPacket *cp;

@@ -279,6 +279,7 @@ struct NetworkSettings {
 	uint16      sync_freq;                                ///< how often do we check whether we are still in-sync
 	uint8       frame_freq;                               ///< how often do we send commands to the clients
 	uint16      commands_per_frame;                       ///< how many commands may be sent each frame_freq frames?
+	uint16      commands_per_frame_server;                ///< how many commands may be sent each frame_freq frames? (server-originating commands)
 	uint16      max_commands_in_queue;                    ///< how many commands may there be in the incoming queue before dropping the connection?
 	uint16      bytes_per_frame;                          ///< how many bytes may, over a long period, be received per frame?
 	uint16      bytes_per_frame_burst;                    ///< how many bytes may, over a short period, be received?
