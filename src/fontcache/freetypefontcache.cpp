@@ -141,7 +141,9 @@ void LoadFreeTypeFont(FontSize fs)
 	FT_Face face = nullptr;
 
 	/* If font is an absolute path to a ttf, try loading that first. */
-	FT_Error error = FT_New_Face(_library, font_name, 0, &face);
+	int32_t index = 0;
+	if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
+	FT_Error error = FT_New_Face(_library, font_name, index, &face);
 
 	if (error != FT_Err_Ok) {
 		/* Check if font is a relative filename in one of our search-paths. */
