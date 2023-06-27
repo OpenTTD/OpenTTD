@@ -205,7 +205,10 @@ uint GetSpriteCountForFile(const std::string &filename, SpriteID begin, SpriteID
 	for (SpriteID i = begin; i != end; i++) {
 		if (SpriteExists(i)) {
 			SpriteCache *sc = GetSpriteCache(i);
-			if (sc->file == file) count++;
+			if (sc->file == file) {
+				count++;
+				Debug(sprite, 4, "Sprite: {}", i);
+			}
 		}
 	}
 	return count;
@@ -731,7 +734,7 @@ void IncreaseSpriteLRU()
 	if (_sprite_lru_counter > 16384) {
 		SpriteID i;
 
-		Debug(sprite, 3, "Fixing lru {}, inuse={}", _sprite_lru_counter, GetSpriteCacheUsage());
+		Debug(sprite, 5, "Fixing lru {}, inuse={}", _sprite_lru_counter, GetSpriteCacheUsage());
 
 		for (i = 0; i != _spritecache_items; i++) {
 			SpriteCache *sc = GetSpriteCache(i);
