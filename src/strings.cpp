@@ -859,8 +859,6 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
 	return _units_velocity[GetVelocityUnits(type)].c.FromDisplay(speed * 16, true, 10);
 }
 
-static std::vector<const char *> _game_script_raw_strings;
-
 /**
  * Parse most format codes within a string and write the result to a buffer.
  * @param builder The string builder to write the final string to.
@@ -926,9 +924,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		args.SetTypeOfNextParameter(b);
 		switch (b) {
 			case SCC_ENCODED: {
-				bool sub_args_need_free[20];
 				AllocatedStringParameters sub_args(20);
-				memset(sub_args_need_free, 0, sizeof(sub_args_need_free));
 
 				char *p;
 				uint32 stringid = std::strtoul(str, &p, 16);
@@ -998,25 +994,13 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						sub_args.SetParam(i++, param);
 					} else {
 						s++; // skip the leading \"
-						char *g = stredup(s);
-						g[p - s - 1] = '\0'; // skip the trailing \"
-
-						sub_args_need_free[i] = true;
-						sub_args.SetParam(i++, (uint64)(size_t)g);
-						_game_script_raw_strings.push_back(g);
+						sub_args.SetParam(i++, std::string(s, p - s - 1)); // also skip the trailing \".
 					}
 				}
 				/* If we didn't error out, we can actually print the string. */
 				if (*str != '\0') {
 					str = p;
 					GetStringWithArgs(builder, MakeStringID(TEXT_TAB_GAMESCRIPT_START, stringid), sub_args, true);
-				}
-
-				for (i = 0; i < 20; i++) {
-					if (sub_args_need_free[i]) {
-						free((void *)sub_args.GetParam(i));
-						_game_script_raw_strings.pop_back();
-					}
 				}
 				break;
 			}
@@ -1122,8 +1106,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
 				const char *raw_string = args.GetNextParameterString();
 				/* raw_string can be(come) nullptr when the parameter is out of range and 0 is returned instead. */
-				if (raw_string == nullptr ||
-						(game_script && std::find(_game_script_raw_strings.begin(), _game_script_raw_strings.end(), raw_string) == _game_script_raw_strings.end())) {
+				if (raw_string == nullptr) {
 					builder += "(invalid RAW_STRING parameter)";
 					break;
 				}
