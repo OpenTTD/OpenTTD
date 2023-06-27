@@ -248,8 +248,6 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 
 const std::string Text::GetDecodedText()
 {
-	const std::string &encoded_text = this->GetEncodedText();
-
-	::SetDParamStr(0, encoded_text);
+	::SetDParamStr(0, this->GetEncodedText());
 	return ::GetString(STR_JUST_RAW_STRING);
 }

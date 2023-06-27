@@ -641,8 +641,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 	if (error < (ptrdiff_t)lengthof(network_error_strings)) err = network_error_strings[error];
 	/* In case of kicking a client, we assume there is a kick message in the packet if we can read one byte */
 	if (error == NETWORK_ERROR_KICKED && p->CanReadFromPacket(1)) {
-		std::string kick_msg = p->Recv_string(NETWORK_CHAT_LENGTH);
-		SetDParamStr(0, kick_msg);
+		SetDParamStr(0, p->Recv_string(NETWORK_CHAT_LENGTH));
 		ShowErrorMessage(err, STR_NETWORK_ERROR_KICK_MESSAGE, WL_CRITICAL);
 	} else {
 		ShowErrorMessage(err, INVALID_STRING_ID, WL_CRITICAL);
