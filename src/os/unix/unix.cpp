@@ -20,6 +20,7 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <signal.h>
+#include <pthread.h>
 
 #ifdef WITH_SDL2
 #include <SDL.h>
@@ -45,10 +46,6 @@
 
 #ifdef HAS_SYSCTL
 #include <sys/sysctl.h>
-#endif
-
-#ifndef NO_THREADS
-#include <pthread.h>
 #endif
 
 #if defined(__APPLE__)
@@ -258,11 +255,9 @@ void OSOpenBrowser(const char *url)
 #endif /* __APPLE__ */
 
 void SetCurrentThreadName(const char *threadName) {
-#if !defined(NO_THREADS) && defined(__GLIBC__)
-#if __GLIBC_PREREQ(2, 12)
+#if defined(__GLIBC__)
 	if (threadName) pthread_setname_np(pthread_self(), threadName);
-#endif /* __GLIBC_PREREQ(2, 12) */
-#endif /* !defined(NO_THREADS) && defined(__GLIBC__) */
+#endif /* defined(__GLIBC__) */
 #if defined(__APPLE__)
 	MacOSSetThreadName(threadName);
 #endif /* defined(__APPLE__) */

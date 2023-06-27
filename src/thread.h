@@ -45,7 +45,6 @@ void SetCurrentThreadName(const char *name);
 template<class TFn, class... TArgs>
 inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&&... _Ax)
 {
-#ifndef NO_THREADS
 	try {
 		static std::mutex thread_startup_mutex;
 		std::lock_guard<std::mutex> lock(thread_startup_mutex);
@@ -79,7 +78,6 @@ inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&
 		/* Something went wrong, the system we are running on might not support threads. */
 		Debug(misc, 1, "Can't create thread '{}': {}", name, e.what());
 	}
-#endif
 
 	return false;
 }
