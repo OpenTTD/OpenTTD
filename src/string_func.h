@@ -19,7 +19,6 @@
 #include "string_type.h"
 
 char *strecpy(char *dst, const char *src, const char *last) NOACCESS(3);
-char *stredup(const char *src, const char *last = nullptr) NOACCESS(2);
 
 std::string FormatArrayAsHex(span<const byte> data);
 
