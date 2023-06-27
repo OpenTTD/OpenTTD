@@ -84,7 +84,7 @@ void SetDParamMaxDigits(size_t n, uint count, FontSize size = FS_NORMAL);
 
 void SetDParamStr(size_t n, const char *str);
 void SetDParamStr(size_t n, const std::string &str);
-void SetDParamStr(size_t n, std::string &&str) = delete; // block passing temporaries to SetDParamStr
+void SetDParamStr(size_t n, std::string &&str);
 
 void CopyInDParam(const span<const StringParameterBackup> backup);
 void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num);

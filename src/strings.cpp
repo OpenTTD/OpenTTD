@@ -364,6 +364,18 @@ void SetDParamStr(size_t n, const std::string &str)
 }
 
 /**
+ * This function is used to "bind" the std::string to a OpenTTD dparam slot.
+ * Contrary to the other \c SetDParamStr functions, this moves the string into
+ * the parameter slot.
+ * @param n slot of the string
+ * @param str string to bind
+ */
+void SetDParamStr(size_t n, std::string &&str)
+{
+	_global_string_params.SetParam(n, std::move(str));
+}
+
+/**
  * Format a number into a string.
  * @param builder   the string builder to write to
  * @param number    the number to write down
