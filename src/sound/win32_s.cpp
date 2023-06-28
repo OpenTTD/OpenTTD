@@ -98,8 +98,7 @@ void SoundDriver_Win32::Stop()
 
 	/* Stop the sound thread. */
 	_waveout = nullptr;
-	SetEvent(_event);
-	WaitForSingleObject(_thread, INFINITE);
+	SignalObjectAndWait(_event, _thread, INFINITE, FALSE);
 
 	/* Close the sound device. */
 	waveOutReset(waveout);

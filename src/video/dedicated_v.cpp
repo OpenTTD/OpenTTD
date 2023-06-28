@@ -64,10 +64,8 @@ static void WINAPI CheckForConsoleInput()
 		if (nb >= lengthof(_win_console_thread_buffer)) nb = lengthof(_win_console_thread_buffer) - 1;
 		_win_console_thread_buffer[nb] = '\0';
 
-		/* Signal input waiting that input is read and wait for it being handled
-		 * SignalObjectAndWait() should be used here, but it's unsupported in Win98< */
-		SetEvent(_hInputReady);
-		WaitForSingleObject(_hWaitForInputHandling, INFINITE);
+		/* Signal input waiting that input is read and wait for it being handled. */
+		SignalObjectAndWait(_hInputReady, _hWaitForInputHandling, INFINITE, FALSE);
 	}
 }
 
