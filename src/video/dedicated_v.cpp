@@ -162,7 +162,7 @@ static bool InputWaiting()
 	FD_SET(STDIN, &readfds);
 
 	/* don't care about writefds and exceptfds: */
-	return select(STDIN + 1, &readfds, nullptr, nullptr, &tv) > 0;
+	return select(1, &readfds, nullptr, nullptr, &tv) > 0;
 }
 
 #else
