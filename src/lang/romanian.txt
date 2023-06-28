@@ -343,9 +343,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Deschide
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauză joc
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Măreşte viteza de trecere a timpului
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opţiuni
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvare/abandon/ieşire joc
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afişează harta
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opțiuni și setări
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvare, încărcare sau abandon joc, ieșire program
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afișează harta, vizor adițional, flux de marfă sau lista de semne
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Afişează lista cu oraşele de pe hartă
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Afişează subvenţiile
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Afişează lista cu staţiile companiei
@@ -353,9 +353,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Afişeaz
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Afişează date generale despre companie
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Afişează cartea de poveste
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Afişează lista de scopuri
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Afişează grafice
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Afișează graficele și ratele plăților pentru marfă ale companiei
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Afişează clasamentul companiilor
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Listează sau fondează obiectivele industriale
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Examinează industriile sau fondează construcția unei noi industrii
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Afișează lista cu trenurile companiei. Ctrl+clic comută afișarea listei cu grupuri/vehicule
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Afișează lista cu autovehiculele companiei. Ctrl+clic comută afișarea listei cu grupuri/vehicule
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Afișează lista cu navele companiei. Ctrl+clic comută afișarea listei cu grupuri/vehicule
@@ -369,8 +369,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construi
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construieşte aeroporturi
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Afişează instrumentele pentru modelarea terenului, plantarea copacilor, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Afişează fereastra pentru configurarea sunetului/muzicii
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afişează ultimul mesaj (ultima ştire), opţiunile pentru mesaje
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informaţii despre teren, consolă, depanare IA, capturi ecran, despre OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afișează ultimul mesaj (ultima știre), istoricul de mesaje sau șterge toate mesajele
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informații despre teren, captură de ecran, despre OpenTTD și unelte de dezvoltare
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Comută bara de unelte
 
 # Extra tooltips for the scenario editor toolbar
@@ -449,7 +449,7 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Venituri
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Număr încărcături livrate
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Evoluţia performanţei
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Valoarea companiei
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Valorile plăţilor pe încărcături
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Valorile plăților pe mărfuri
 
 # Company league menu
 ###length 3
@@ -495,7 +495,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sunet/muzică
 
 # Message menu
 ###length 3
-STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimul mesaj/ultima ştire
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimul mesaj/ultima știre
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Lista ultimelor mesaje
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Șterge toate mesajele
 
@@ -605,13 +605,13 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unităţ
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Evaluarea performanţelor companiilor (maxim=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valorile companiilor
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Preţurile transportului de călători şi mărfuri
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Prețurile transportului de mărfuri
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Zile în tranzit
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Plata pentru livrarea a 10 unităţi (sau 10.000 de litri) de marfă pe o distanţă de 20 de pătrăţele
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Plata pentru livrarea a 10 unități (sau 10.000 de litri) de marfă pe o distanță de 20 de pătrățele
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activează tot
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dezactivează tot
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afişează toate mărfurile în graficul de plăţi
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nu afişa niciun tip de marfă în graficul de plăţi
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afișează toate mărfurile în graficul de plăți
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nu afișa niciun tip de marfă în graficul de plăți
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comută ascunderea/afișarea graficului de marfă
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -798,7 +798,7 @@ STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nu afiș
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Afișează toate tipurile de încărcătură pe hartă
 
 # Status bar messages
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Re-afişează ultimul mesaj
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Re-afișează ultimul mesaj sau ultima știre
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUZĂ  *  *
 STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  PAUZĂ (se actualizează graficul conexiunilor) *  *
@@ -1530,7 +1530,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Din gri în ro�
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Tonuri de gri
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Comportament derulare vizor: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamentul derulării hărții
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamentul derulării hărții. Opțiunile „poziție cursor fixă” nu funcționează pe toate sistemele, ca versiunile web, pe ecrane tactile, Linux cu Wayland, și altele
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mută fereastra de vizualizare ținând apăsat click dreapta, poziția cursorului rămânând fixă
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mută harta ținând apăsat click dreapta, poziția cursorului rămânând fixă
@@ -1711,7 +1711,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Câtă memorie 
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaluri de service în procente: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Alege dacă întreținerea vehiculelor este activată de trecerea unei anumite perioade de timp, sau scăzând un anumit procent din gradul de rezistență al vehiculului
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Dacă este activată, vehiculele încearcă să se repare când fiabilitatea le scade sub un anumit procent.{}{}De exemplu, dacă fiabilitatea maximă a unui vehicul este 90% și intervalul de service este 20%, vehiculul va încerca să intre în service când ajunge la 72% fiabilitate.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalul de întreținere implicit al trenurilor: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Alege perioada de întreținere implicită pentru noi vehicule feroviare, dacă nu există un interval de întreținere stabilit pentru vehicul
@@ -2056,6 +2056,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nu s-au 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Eroare în setările video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... GPU incompatibil. Accelerarea hardware este dezactivată
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Driverul GPU a dus la prăbușirea jocului. Accelerarea hardware a fost dezactivată
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2067,7 +2068,7 @@ STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Hartă t
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor hartă
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opţiuni
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opțiuni
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela cu scoruri maxime
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Setări
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
@@ -2907,7 +2908,7 @@ STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Case
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click pe industrie pentru a vedea furnizorii şi clienţii săi
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click pe cargo pentru a vedea furnizorii şi clienţii săi
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afişează lanţ
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afişează industriile care furnizează şi acceptă cargo
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afișează industriile care furnizează și acceptă marfă
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link către harta mică
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selectează industriile afişate şi pe harta mică
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Alege tipul de marfă
@@ -2916,7 +2917,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Alege in
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Alege industria pe care dorești să o afișezi:
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informaţii teren
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informații teren
 STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centrează vizorul principal pe locația dalei. Ctrl+clic deschide un vizor nou pe locația dalei
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Costul demolării: {LTBLUE}nu este cazul
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Costul demolării: {RED}{CURRENCY_LONG}
@@ -4175,10 +4176,10 @@ STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Schimbă
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Schimbă tipul de marfă transportat de aeronavă
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Afişează comenzile trenului. Ctrl-Click pentru a afişa orarul
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Afişează comenzile autovehiculului. Ctrl-Click pentru a afişa orarul
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Afişează comenzile navei. Ctrl-Click pentru a afişa orarul
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Afişează comenzile aeronavei. Ctrl-Click pentru a afişa orarul
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Afișează comenzile trenului. Ctrl-clic afișează orarul
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Afișează comenzile autovehiculului. Ctrl-clic afișează orarul
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Afișează comenzile navei. Ctrl-clic afișează orarul
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Afișează comenzile aeronavei. Ctrl-clic afișează orarul
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Afişează detaliile trenului

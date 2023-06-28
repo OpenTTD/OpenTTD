@@ -2056,6 +2056,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokera
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fel med video inställningarna...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... Inget kompatibelt grafikkort hittat. Hårdvaruacceleration inaktiverad
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-drivrutinen kraschade spelet. Maskinvaruacceleration inaktiverad
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -5087,6 +5088,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... flyg
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan inte lägga till fordonet i en tidtabell...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Fordon kan enbart vänta vid stationer
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Detta fordon stannar inte vid denna station
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... tidtabellen är ofullständig
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... för många skyltar

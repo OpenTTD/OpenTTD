@@ -1531,7 +1531,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Cinza para verm
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de cinza
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Comportamento de rolamento da janela: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento ao rolar o mapa
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento ao mover o mapa. A opção de "posição do mouse travada" não funciona em todos os sistemas, tais como versões baseadas na web, telas sensíveis ao toque, Linux com Wayland e outros.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mover vista com BDM, posição do mouse travada
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mover mapa com BDM, posição do mouse travada
@@ -2057,6 +2057,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}A aloca�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Erro nas configurações de vídeo...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nenhuma GPU compatível encontrada. Aceleração de hardware desativada
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... O driver gráfico (GPU) interrompeu o jogo. Aceleração por hardware desativada.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

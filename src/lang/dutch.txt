@@ -1530,7 +1530,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grijs naar rood
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Grijstinten
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Verplaatsingsgedrag voor kijkvensters: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Gedrag tijdens het verplaatsen van de kaart
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Gedrag tijdens het verplaatsen van de kaart. De opties over vergrendeling van de muis werken niet op alle systemen, bijv. webversies, aanraakschermen, Linux met Wayland en andere
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Kijkvenster verplaatsen met rechtermuisknop, muispositie vergrendeld
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Kaart verplaatsen met rechtermuisknop, muispositie vergrendeld
@@ -2056,6 +2056,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Toewijze
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fout met video-instellingen...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... geen compatibele GPU gevonden. Hardwareversnelling is uitgeschakeld
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Spel is vastgelopen door het GPU-stuurprogramma. Hardwareversnelling wordt uitgeschakeld
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

@@ -344,7 +344,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Auftrags
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Spiel anhalten
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Zeitraffer (Zeit vergeht schnellstmöglich)
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Einstellungen
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Optionen und Einstellungen
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spiel speichern, Spiel laden, Spiel abbrechen, (OpenTTD) Beenden
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Weltkarte, zusätzliche Fenster oder Schilderliste anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Städteverzeichnis anzeigen
@@ -5088,6 +5088,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... Luft
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Fahrplan kann nicht erstellt werden ...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Fahrzeuge halten nur an Stationen
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Das Fahrzeug hält nicht an dieser Station
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... Fahrplan ist unvollständig
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zu viele Schilder
