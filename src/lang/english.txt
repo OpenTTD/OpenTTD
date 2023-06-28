@@ -973,7 +973,7 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :Icelandic Krona
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italian Lira
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Dutch Guilder
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegian Krone
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polish Złoty
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polish Zloty
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian Leu
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russian Rubles
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar
