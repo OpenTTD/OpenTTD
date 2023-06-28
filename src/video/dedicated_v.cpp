@@ -23,6 +23,7 @@
 #include "../saveload/saveload.h"
 #include "../thread.h"
 #include "../window_func.h"
+#include <iostream>
 #include "dedicated_v.h"
 
 #if defined(UNIX)
@@ -50,19 +51,15 @@ static void DedicatedSignalHandler(int sig)
 
 static HANDLE _hInputReady, _hWaitForInputHandling;
 static HANDLE _hThread; // Thread to close
-static char _win_console_thread_buffer[200];
+static std::string _win_console_thread_buffer;
 
 /* Windows Console thread. Just loop and signal when input has been received */
 static void WINAPI CheckForConsoleInput()
 {
 	SetCurrentThreadName("ottd:win-console");
 
-	DWORD nb;
-	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
 	for (;;) {
-		ReadFile(hStdin, _win_console_thread_buffer, lengthof(_win_console_thread_buffer), &nb, nullptr);
-		if (nb >= lengthof(_win_console_thread_buffer)) nb = lengthof(_win_console_thread_buffer) - 1;
-		_win_console_thread_buffer[nb] = '\0';
+		std::getline(std::cin, _win_console_thread_buffer);
 
 		/* Signal input waiting that input is read and wait for it being handled. */
 		SignalObjectAndWait(_hInputReady, _hWaitForInputHandling, INFINITE, FALSE);
@@ -174,31 +171,23 @@ static bool InputWaiting()
 
 static void DedicatedHandleKeyInput()
 {
-	static char input_line[1024] = "";
-
 	if (!InputWaiting()) return;
 
 	if (_exit_game) return;
 
+	std::string input_line;
 #if defined(UNIX)
-	if (fgets(input_line, lengthof(input_line), stdin) == nullptr) return;
+	if (!std::getline(std::cin, input_line)) return;
 #else
 	/* Handle console input, and signal console thread, it can accept input again */
-	static_assert(lengthof(_win_console_thread_buffer) <= lengthof(input_line));
-	strecpy(input_line, _win_console_thread_buffer, lastof(input_line));
+	std::swap(input_line, _win_console_thread_buffer);
 	SetEvent(_hWaitForInputHandling);
 #endif
 
-	/* Remove trailing \r or \n */
-	for (char *c = input_line; *c != '\0'; c++) {
-		if (*c == '\n' || *c == '\r' || c == lastof(input_line)) {
-			*c = '\0';
-			break;
-		}
-	}
-	StrMakeValidInPlace(input_line, lastof(input_line));
-
-	IConsoleCmdExec(input_line); // execute command
+	/* Remove any trailing \r or \n, and ensure the string is valid. */
+	auto p = input_line.find_last_not_of("\r\n");
+	if (p != std::string::npos) p++;
+	IConsoleCmdExec(StrMakeValid(input_line.substr(0, p)));
 }
 
 void VideoDriver_Dedicated::MainLoop()
