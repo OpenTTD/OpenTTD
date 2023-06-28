@@ -47,7 +47,7 @@ static inline void IConsolePrint(TextColour colour_code, const T &format, A firs
 }
 
 /* Parser */
-void IConsoleCmdExec(const char *cmdstr, const uint recurse_count = 0);
+void IConsoleCmdExec(const std::string &command_string, const uint recurse_count = 0);
 
 bool IsValidConsoleColour(TextColour c);
 
