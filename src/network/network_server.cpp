@@ -1402,7 +1402,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet *p)
 	Debug(net, 3, "[rcon] Client-id {} executed: {}", this->client_id, command);
 
 	_redirect_console_to_client = this->client_id;
-	IConsoleCmdExec(command.c_str());
+	IConsoleCmdExec(command);
 	_redirect_console_to_client = INVALID_CLIENT_ID;
 	return NETWORK_RECV_STATUS_OKAY;
 }
