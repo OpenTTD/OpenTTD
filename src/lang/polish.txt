@@ -1910,7 +1910,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Od szarego do c
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Skala szarości
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Zachowanie przeciągania okna podglądu: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Zachowanie podczas przeciągania mapy
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Zachowanie podczas przeciągania mapy. Opcje „pozycja myszy zablokowana” nie działają na systemach, takich jak wersje internetowe, ekrany dotykowe, Linux z Waylandem i innych
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Przeciągnij okno podglądu prawym przyciskiem myszy, pozycja myszy zablokowana
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Przeciągnij mapę prawym przyciskiem myszy, pozycja myszy zablokowana
@@ -2436,6 +2436,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nie powi
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Błąd ustawień obrazu...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nie znaleziono kompatybilnego procesora graficznego. Przyspieszenie sprzętowe wyłączone.
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Sterownik GPU spowodował awarię gry. Wyłączono akcelerację sprzętową
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

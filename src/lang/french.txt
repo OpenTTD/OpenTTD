@@ -997,21 +997,21 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Cocher c
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Résolution
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Sélectionner la résolution d'écran à utiliser
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :autre
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Autre
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK} Accélération matérielle
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Accélération matérielle
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Cochez cette case permet à OpenTTD d'utiliser l'accélération matérielle, si possible. Un paramètre modifié ne sera pris en compte qu'au redémarrage du jeu
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Les paramètres ne prendront effet qu'après le redémarrage du jeu
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cochez cette case pour activer la synchronisation verticale de l'écran. La modification de ce paramètres ne sera effective qu'après le redémarrage du jeu. Fonctionne uniquement si l’accélération matérielle est active
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cochez cette case pour activer la synchronisation verticale de l'écran. La modification de ce paramètre ne sera effective qu'après le redémarrage du jeu. Fonctionne uniquement si l’accélération matérielle est active.
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Pilote actif{NBSP}: {STRING}
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Taille de l'interface
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Faites glisser la souris pour définir la taille de l'interface. Maintenir Ctrl pour un réglage en continu
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :détection automatique de la taille
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Détection automatique de la taille
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Cochez cette case pour détecter automatiquement la taille de l'interface
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Mettre à l’échelle les bordures
@@ -1025,7 +1025,7 @@ STR_GAME_OPTIONS_GUI_SCALE_5X                                   :x5
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK} Graphiques
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK} Taux de rafraîchissement de l'affichage
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Taux de rafraîchissement de l'affichage
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK} Sélectionnez la fréquence de rafraîchissement à utiliser
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE} Les taux de rafraîchissement supérieurs à 60Hz peuvent avoir un impact sur les performances.
@@ -2073,7 +2073,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options 
 STR_INTRO_HIGHSCORE                                             :{BLACK}Meilleurs scores
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Paramètres de jeu
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenue additionnel en ligne
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenu additionnel en ligne
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuration des IAs
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configuration du script de jeu
 STR_INTRO_QUIT                                                  :{BLACK}Quitter

@@ -1530,7 +1530,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Xám tới đ�
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Thang màu xám
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Kiểu cuộn khung nhìn: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Hành xử khi kéo, cuộn bản đồ
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Hành xử khi kéo, cuộn bản đồ. Tùy chọn "khóa vị trí chuột" không hoạt động ở một số phiên bản, như phiên bản web, phiên bản cảm ứng, Linux với Wayland, và một số phiên bản khác
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Kéo cuộn khung nhìn kiểu RMB, khoá vị trí con trỏ chuột
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Kéo cuộn kiểu RMB, khoá vị trí con trỏ chuột
@@ -2056,6 +2056,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Phân b�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Lỗi ở thiết lập hình ảnh...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... không tìm thấy GPU tương thích. Tăng tốc phần cứng đã được tắt
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... trình điều khiển GPU đã làm trò chơi bị lỗi. Tăng tốc phần cứng đã được tắt
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

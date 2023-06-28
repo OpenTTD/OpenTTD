@@ -584,7 +584,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Forigu ĉiujn m
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landkvadrataj informoj
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Baskuligi Konzolon
-STR_ABOUT_MENU_AI_DEBUG                                         :AI/Ludo skripto sencimigo
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/Ludoskripta sencimigo
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Montru bildrapidon
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pri 'OpenTTD'
@@ -1079,6 +1079,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aparatar
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Elektu tiun ĉi agordon por ke OpenTTD klopodu uzi aparataran akceladon. Se vi ŝanĝas tiun ĉi agordon, la nova agordo validos nur ekde restartigo de la ludo
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Tiu ĉi agordo ekefikos nur post restartigo de la ludo
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Vertikala sinkronigo
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuna pelilo: {STRING}
 
@@ -1094,8 +1095,10 @@ STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiko
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Montru aktualigoftecon
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Elektu ekranan aktualigoftecon
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Aktualigoftecoj pli altaj ol 60Hz povas kaŭzi malrapidiĝon.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Baza grafikaro
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektu la uzendan bazgrafikaron
@@ -1285,6 +1288,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Irkostoj: {STRI
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Ŝanĝu nivelon de bontenkostoj kaj irkostoj de veturiloj kaj infrastrukturo
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstrurapido: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limigu la kvanton de konstruaj agoj por AIoj
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Veturilpaneoj: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Regu kiom ofte povas panei maladekvate prizorgataj veturiloj
@@ -1326,6 +1330,7 @@ STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permesu terenŝ
 STR_CONFIG_SETTING_CATCHMENT                                    :Permesu pli realismajn grandecojn de servataj areoj: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Diversaj tipoj de stacioj kaj flughavenoj havas diversgrandajn servatajn areojn
 
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Kompaniaj stacioj povas servi fabrikojn kun alkroĉitaj neŭtralaj stacioj: {STRING}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Kiam tiu ĉi agordo estas aktiva, fabrikoj kun alkroĉitaj stacioj (ekzemple oleplatformoj) povas ankaŭ esti servataj de apudaj stacioj konstruitaj de kompanioj. Kiam tiu ĉi agordo estas malaktiva, tiaj ĉi fabrikoj serveblas nur per siaj alkroĉitaj stacioj. Apudaj stacioj konstruitaj de kompanioj ne povos servi ilin, kaj la alkroĉita stacio ankaŭ ne servos ion alian ol la fabrikon mem
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permesu forigon de pli da urbaj stratoj, pontoj ktp: {STRING}
@@ -1741,6 +1746,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Malebligu ŝipo
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Se tiu ĉi agordo estas aktiva, komputila ludanto ne povas konstrui ŝipojn
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Defaŭlta agorda profilo: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Elektu kiun agordaron uzi por hazardaj AIoj aŭ por komencaj valoroj dum aldonado de nova AI aŭ ludoskripto
 ###length 3
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Facila
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mezfacila
@@ -2363,6 +2369,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nomo
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Via ludantnomo
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Ŝanĝu vian ludantonomon
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Via ludantnomo
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administraj agoj fareblaj por tiu ĉi kliento
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administraj agoj fareblaj por tiu ĉi kompanio
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Aliĝu al tiu ĉi kompanio
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Sendu mesaĝon al tiu ĉi ludanto
@@ -3038,6 +3045,12 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Bildrapido
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Rapido de simulado: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nombro de tempopulsoj simulataj ĉiusekunde.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Grafika bildrapido: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nombro de bildokadroj montrataj ĉiusekunde.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Nuna ludrapideca faktoro: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Kiom rapide la ludo nun iras, kompare al la atendata rapideco je normala simuladrapido.
 STR_FRAMERATE_CURRENT                                           :{WHITE}Nuna
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Averaĝa
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memory
@@ -3053,21 +3066,36 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 
 ###length 15
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Luda iteracio ensume:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Traktado de ŝarĝoj:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Trajnaj tempopulsoj:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Stratveturilaj tempopulsoj:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ŝipaj tempopulsoj:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Aviadilaj tempopulsoj:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Mondaj tempopulsoj:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Ligografea prokrasto:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Grafika bildigo:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Mondaj vidujoj:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Videa eligo:
 STR_FRAMERATE_SOUND                                             :{BLACK}Sonmiksado:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Ludoskriptoj/AI ensume:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Ludoskripto:
 STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 
 ###length 15
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Luda iteracio
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Traktado de ŝarĝoj
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Trajnaj tempopulsoj
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Stratveturilaj tempopulsoj
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ŝipaj tempopulsoj
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Aviadilaj tempopulsoj
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Mondaj tempopulsoj
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Ligografea prokrasto
 STR_FRAMETIME_CAPTION_DRAWING                                   :Grafika bildigo
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Bildigo de mondaj vidujoj
 STR_FRAMETIME_CAPTION_VIDEO                                     :Videa eligo
 STR_FRAMETIME_CAPTION_SOUND                                     :Sonmiksado
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Ludoskriptoj/AIoj ensume
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Ludoskripto
 STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 
@@ -3295,6 +3323,8 @@ STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Movadi l
 
 STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Celkruco
 
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Restarigu la nunajn relativajn deŝovojn
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X-deŝovo: {NUM}, Y-deŝovo: {NUM} (Relativa)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Elektu bildeto
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Elektu bildeton ie el la ekrano
 
@@ -3452,6 +3482,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{Y
 STR_GOALS_CAPTION                                               :{WHITE}Celoj de {COMPANY}
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Kompanio
 STR_GOALS_COMPANY_BUTTON.n                                      :{BLACK}Kompanion
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Montru celojn de la kompanio
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nenia -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3526,7 +3557,10 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Montru s
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Ĉiumonata provizo kaj loka pritakso:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupigu laŭ
+STR_STATION_VIEW_WAITING_STATION                                :Stacio: Atendanta
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Kvanto: Atendanta
 STR_STATION_VIEW_PLANNED_STATION                                :Stacio: Planata
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Kvanto: Planita
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} de {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} tra {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} al {STATION}
@@ -4299,6 +4333,7 @@ STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Resta vivo (jar
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksimuma fidindeco
 ###next-name-looks-similar
 
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kiel kompari la veturilajn datumoj al la donita valoro
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :egalas al
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ne egalas al
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :estas malpli ol
@@ -4437,6 +4472,7 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu 
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ŝanĝu kiom da tempo devus postuli la markita ordono. Stir+Klak ŝanĝas la tempon por ĉiuj ordonoj
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Vakigi tempon
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Forviŝu la tempokvanton por la markita ordono. Ctrl+Klak forviŝas tempokvantojn por ĉiuj ordonoj
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Ŝanĝu rapideclimon
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ŝanĝu la maksimuman veturrapidecon de la markita ordono. Stir+Klak ŝanĝas la rapidecon por ĉiuj ordonoj
@@ -4448,6 +4484,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reigu ma
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reigu malfruan kalkulumon, tiel la veturilon estos akuratan
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Aŭtomata plenigo
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Aŭtomate plenigu la horaron per la valoroj de la sekva iro. Ctrl+Klak por klopodi konservi atendodaŭrojn
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Atendite
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planite
@@ -4467,7 +4504,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Elekti j
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI/Ludo Skripto Sencimigo
+STR_AI_DEBUG                                                    :{WHITE}AI/Ludoskripta Sencimigo
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nomo de la skripto
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Agordoj
@@ -4485,11 +4522,14 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu for
 STR_AI_GAME_SCRIPT                                              :{BLACK}Ludoskripto
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kontrolu la ludoskriptan protokolon
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Neniu taŭga AI estas ŝarĝebla.{}Tiu ĉi AI estas lokokupa AI kiu nenion faros.{}Vi povas elŝuti pliajn AIojn per la 'Enreta Enhavo'-sistemo
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Unu el la rulantaj skriptoj paneis. Bonvolu raporti tion ĉi al la aŭtoro de la skripto kun ekrankapto de la fenestro 'AI/Ludoskripta Sencimigo'
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI-agordoj
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Ludoskriptaj agordoj
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ludoskripto ŝarĝota en la sekva ludo
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}La AIoj ŝarĝotaj en la sekva ludo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Homa ludanto
 STR_AI_CONFIG_RANDOM_AI                                         :Hazarda AI
 STR_AI_CONFIG_NONE                                              :(neniu)
@@ -4504,11 +4544,13 @@ STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Ludoskr
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parametroj
 STR_AI_CONFIG_AI                                                :{SILVER}AIj
 
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Elektu AIon
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Elektu ludoskripton
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Agordi
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Agordi parametroj de la skripto
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Haveblaj {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AIoj
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Ludoskriptoj
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klaki por elekti skripto
@@ -5478,6 +5520,8 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1.n                                              :{STRING.n}
+STR_JUST_STRING2.n                                              :{STRING.n}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
