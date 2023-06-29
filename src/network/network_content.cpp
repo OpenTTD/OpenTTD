@@ -699,19 +699,19 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 		check_not_null(p);
 		p++; // Start after the '/'
 
-		char tmp[MAX_PATH];
-		if (strecpy(tmp, p, lastof(tmp)) == lastof(tmp)) {
-			this->OnFailure();
-			return;
-		}
+		std::string filename = p;
 		/* Remove the extension from the string. */
 		for (uint i = 0; i < 2; i++) {
-			p = strrchr(tmp, '.');
-			check_and_terminate(p);
+			auto pos = filename.find_last_of('.');
+			if (pos == std::string::npos) {
+				this->OnFailure();
+				return;
+			}
+			filename.erase(pos);
 		}
 
 		/* Copy the string, without extension, to the filename. */
-		this->curInfo->filename = tmp;
+		this->curInfo->filename = std::move(filename);
 
 		/* Request the next file. */
 		if (!this->BeforeDownload()) {
