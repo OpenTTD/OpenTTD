@@ -1034,7 +1034,7 @@ CommandCost CmdBuildLongRoad(DoCommandFlag flags, TileIndex end_tile, TileIndex 
 			last_error = ret;
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) {
 				if (is_ai) return last_error;
-				break;
+				if (had_success) break; // Keep going if we haven't constructed any road yet, skipping the start of the drag
 			}
 		} else {
 			had_success = true;

@@ -875,8 +875,8 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
  * @param railtype railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev), only used for building
  * @param track track-orientation
  * @param remove remove tracks?
- * @param auto_remove_signals false = build up to an obstacle, true = fail if an obstacle is found (used for AIs), only used for building
- * @param fail_on_obstacle false = error on signal in the way, true = auto remove signals when in the way, only used for building
+ * @param auto_remove_signals false = error on signal in the way, true = auto remove signals when in the way, only used for building
+ * @param fail_on_obstacle false = build starting from and up to an obstacle, true = fail if an obstacle is found (used for AIs)
  * @return the cost of this operation or an error
  */
 static CommandCost CmdRailTrackHelper(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, RailType railtype, Track track, bool remove, bool auto_remove_signals, bool fail_on_obstacle)
@@ -900,7 +900,7 @@ static CommandCost CmdRailTrackHelper(DoCommandFlag flags, TileIndex tile, TileI
 			last_error = ret;
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
 				if (fail_on_obstacle) return last_error;
-				break;
+				if (had_success) break; // Keep going if we haven't constructed any rail yet, skipping the start of the drag
 			}
 
 			/* Ownership errors are more important. */
