@@ -2111,10 +2111,10 @@ bool MissingGlyphSearcher::FindMissingGlyphs()
 				std::string size_name;
 
 				switch (size) {
-					case 0: size_name = "medium"; break;
-					case 1: size_name = "small"; break;
-					case 2: size_name = "large"; break;
-					case 3: size_name = "mono"; break;
+					case FS_NORMAL: size_name = "medium"; break;
+					case FS_SMALL: size_name = "small"; break;
+					case FS_LARGE: size_name = "large"; break;
+					case FS_MONO: size_name = "mono"; break;
 					default: NOT_REACHED();
 				}
 
