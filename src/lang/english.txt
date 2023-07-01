@@ -1059,12 +1059,12 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Refresh rates higher than 60Hz might impact performance.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use (cannot be changed in-game, only from the main menu)
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} missing/corrupted file{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Additional information about the base graphics set
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Base sounds set
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Select the base sounds set to use
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Select the base sounds set to use (cannot be changed in-game, only from the main menu)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Additional information about the base sounds set
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base music set
