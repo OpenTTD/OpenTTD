@@ -1,4 +1,4 @@
-name: Upload (AWS)
+name: Upload (CDN)
 
 on:
   workflow_call:
@@ -14,10 +14,10 @@ on:
         type: string
 
 jobs:
-  upload:
-    name: Upload (AWS)
+  prepare:
+    name: Prepare
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Download all bundles
@@ -54,23 +54,50 @@ jobs:
           done
         fi
 
-    - name: Upload bundles to AWS
-      run: |
-        aws s3 cp --recursive --only-show-errors bundles/ s3://${{ secrets.CDN_S3_BUCKET }}/${{ inputs.folder }}/${{ inputs.version }}/
+    - name: Store bundles
+      uses: actions/upload-artifact@v3
+      with:
+        name: cdn-bundles
+        path: bundles/*
+        retention-days: 5
 
-        # We do not invalidate the CloudFront distribution here. The trigger
-        # for "New OpenTTD release" first updated the manifest files and
-        # creates an index.html. We invalidate after that, so everything
-        # becomes visible at once.
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+  publish:
+    needs:
+    - prepare
 
-    - name: Trigger 'New OpenTTD release'
+    name: Publish
+    uses: OpenTTD/actions/.github/workflows/rw-cdn-upload.yml@v4
+    secrets:
+      CDN_SIGNING_KEY: ${{ secrets.CDN_SIGNING_KEY }}
+      DEPLOYMENT_APP_ID: ${{ secrets.DEPLOYMENT_APP_ID }}
+      DEPLOYMENT_APP_PRIVATE_KEY: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
+    with:
+      artifact-name: cdn-bundles
+      folder: ${{ inputs.folder }}
+      version: ${{ inputs.version }}
+
+  docs:
+    if: ${{ inputs.trigger_type == 'new-master' }}
+    needs:
+    - publish
+
+    name: Publish docs
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Generate access token
+      id: generate_token
+      uses: tibdex/github-app-token@v1
+      with:
+        app_id: ${{ secrets.DEPLOYMENT_APP_ID }}
+        private_key: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
+        repository: OpenTTD/workflows
+
+    - name: Trigger 'Publish Docs'
       uses: peter-evans/repository-dispatch@v2
       with:
         token: ${{ secrets.DEPLOYMENT_TOKEN }}
         repository: OpenTTD/workflows
-        event-type: ${{ inputs.trigger_type }}
+        event-type: publish-docs
         client-payload: '{"version": "${{ inputs.version }}", "folder": "${{ inputs.folder }}"}'

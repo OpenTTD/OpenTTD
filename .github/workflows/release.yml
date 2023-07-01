@@ -69,8 +69,8 @@ jobs:
     with:
       version: ${{ needs.source.outputs.version }}
 
-  upload-aws:
-    name: Upload (AWS)
+  upload-cdn:
+    name: Upload (CDN)
     needs:
     - source
     - docs
@@ -83,7 +83,7 @@ jobs:
     # The always() makes sure the rest is always evaluated.
     if: always() && needs.source.result == 'success' && needs.docs.result == 'success' && needs.linux.result == 'success' && needs.macos.result == 'success' && needs.windows.result == 'success' && (needs.windows-store.result == 'success' || needs.windows-store.result == 'skipped')
 
-    uses: ./.github/workflows/upload-aws.yml
+    uses: ./.github/workflows/upload-cdn.yml
     secrets: inherit
 
     with:
