@@ -7498,6 +7498,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRailDepot():              false
     BuildRailDepot():              false
     BuildRailDepot():              true
+    BuildRailDepot():              true
     BuildRailDepot():              false
     GetRailDepotFrontTile():       33412
     IsBuildable():                 false
@@ -7591,11 +7592,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRoadDepot():              false
     BuildRoadDepot():              false
     BuildRoadDepot():              true
+    BuildRoadDepot():              true
     BuildRoadDepot():              false
     HasRoadType(Road):             true
     HasRoadType(Tram):             false
-    GetLastError():                260
-    GetLastErrorString():          ERR_AREA_NOT_CLEAR
+    GetLastError():                259
+    GetLastErrorString():          ERR_ALREADY_BUILT
     GetErrorCategory():            1
     IsRoadTile():                  false
     GetRoadDepotFrontTile():       33412
@@ -9311,7 +9313,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsStoppedInDepot():   false
   --Accounting--
     GetCosts():         -5947
-    Should be:          -5947
+    Should be:          -5946
   GetName():            Road Vehicle #1
   SetName():            true
   GetName():            MyVehicleName
@@ -9408,11 +9410,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
-    14 => 1
-    13 => 1
     12 => 1
     17 => 0
     16 => 0
+    14 => 0
+    13 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -9421,9 +9423,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     12 => 5490
   AgeLeft ListDump:
     16 => 10980
-    14 => 10979
+    14 => 10980
     17 => 7320
-    13 => 5489
+    13 => 5490
     12 => 5489
   CurrentSpeed ListDump:
     12 => 27

@@ -1163,24 +1163,46 @@ CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, 
 		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 	}
 
-	cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
-	if (cost.Failed()) return cost;
+	/* Allow the user to rotate the depot instead of having to destroy it and build it again */
+	bool rotate_existing_depot = false;
+	if (IsRoadDepotTile(tile) && (HasRoadTypeTram(tile) ? rt == GetRoadTypeTram(tile) : rt == GetRoadTypeRoad(tile)))
+	{
+		CommandCost ret = CheckTileOwnership(tile);
+		if (ret.Failed()) return ret;
 
-	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+		if (dir == GetRoadDepotDirection(tile)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 
-	if (!Depot::CanAllocateItem()) return CMD_ERROR;
+		ret = EnsureNoVehicleOnGround(tile);
+		if (ret.Failed()) return ret;
+
+		rotate_existing_depot = true;
+	}
+
+	if (!rotate_existing_depot) {
+		cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
+		if (cost.Failed()) return cost;
+
+		if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+		if (!Depot::CanAllocateItem()) return CMD_ERROR;
+	}
 
 	if (flags & DC_EXEC) {
-		Depot *dep = new Depot(tile);
-		dep->build_date = TimerGameCalendar::date;
+		if (rotate_existing_depot) {
+			SetRoadDepotExitDirection(tile, dir);
+		} else {
+			Depot *dep = new Depot(tile);
+			dep->build_date = TimerGameCalendar::date;
+			MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
+			MakeDefaultName(dep);
+		}
+
+		MarkTileDirtyByTile(tile);
 
 		/* A road depot has two road bits. */
 		UpdateCompanyRoadInfrastructure(rt, _current_company, ROAD_DEPOT_TRACKBIT_FACTOR);
-
-		MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
-		MarkTileDirtyByTile(tile);
-		MakeDefaultName(dep);
 	}
+
 	cost.AddCost(_price[PR_BUILD_DEPOT_ROAD]);
 	return cost;
 }

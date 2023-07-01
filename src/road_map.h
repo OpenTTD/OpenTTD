@@ -673,26 +673,37 @@ static inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, 
 }
 
 /**
- * Make a road depot.
- * @param t     Tile to make a level crossing.
- * @param owner New owner of the depot.
- * @param did   New depot ID.
- * @param dir   Direction of the depot exit.*
- * @param rt    Road type of the depot.
+ * Sets the exit direction of a road depot.
+ * @param tile Tile of the depot.
+ * @param dir  Direction of the depot exit.
  */
-static inline void MakeRoadDepot(Tile t, Owner owner, DepotID did, DiagDirection dir, RoadType rt)
+static inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
 {
-	SetTileType(t, MP_ROAD);
-	SetTileOwner(t, owner);
-	t.m2() = did;
-	t.m3() = 0;
-	t.m4() = INVALID_ROADTYPE;
-	t.m5() = ROAD_TILE_DEPOT << 6 | dir;
-	SB(t.m6(), 2, 4, 0);
-	t.m7() = owner;
-	t.m8() = INVALID_ROADTYPE << 6;
-	SetRoadType(t, GetRoadTramType(rt), rt);
-	SetRoadOwner(t, RTT_TRAM, owner);
+	assert(IsRoadDepotTile(tile));
+	SB(tile.m5(), 0, 2, dir);
+}
+
+/**
+ * Make a road depot.
+ * @param tile      Tile to make a depot on.
+ * @param owner     New owner of the depot.
+ * @param depot_id  New depot ID.
+ * @param dir       Direction of the depot exit.
+ * @param rail_type Road type of the depot.
+ */
+static inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RoadType rail_type)
+{
+	SetTileType(tile, MP_ROAD);
+	SetTileOwner(tile, owner);
+	tile.m2() = depot_id;
+	tile.m3() = 0;
+	tile.m4() = INVALID_ROADTYPE;
+	tile.m5() = ROAD_TILE_DEPOT << 6 | dir;
+	SB(tile.m6(), 2, 4, 0);
+	tile.m7() = owner;
+	tile.m8() = INVALID_ROADTYPE << 6;
+	SetRoadType(tile, GetRoadTramType(rail_type), rail_type);
+	SetRoadOwner(tile, RTT_TRAM, owner);
 }
 
 #endif /* ROAD_MAP_H */
