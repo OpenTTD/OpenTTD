@@ -14,8 +14,25 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: Download all bundles
+    - name: Download bundle (Windows x86)
       uses: actions/download-artifact@v3
+      with:
+        name: openttd-windows-x86
+
+    - name: Download bundle (Windows x64)
+      uses: actions/download-artifact@v3
+      with:
+        name: openttd-windows-x64
+
+    - name: Download bundle (MacOS)
+      uses: actions/download-artifact@v3
+      with:
+        name: openttd-macos-universal
+
+    - name: Download bundle (Linux)
+      uses: actions/download-artifact@v3
+      with:
+        name: openttd-linux-generic
 
     - name: Install GOG Galaxy Build Creator
       run: |
