@@ -32,6 +32,7 @@
 #include "../../window_func.h"
 #include "../../window_gui.h"
 #include "../../spritecache.h"
+#include "../../textbuf_type.h"
 #include "../../toolbar_gui.h"
 
 #include "table/sprites.h"
@@ -932,7 +933,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	const char *replace_range = NULL;
 	if (replacementRange.location != NSNotFound) {
 		/* Calculate the part to be replaced. */
-		insert_point = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), replacementRange.location);
+		insert_point = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedTextbuf()->GetText(), replacementRange.location);
 		replace_range = Utf8AdvanceByUtf16Units(insert_point, replacementRange.length);
 	}
 
@@ -960,7 +961,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		if (replacementRange.location != NSNotFound) {
 			/* Calculate the part to be replaced. */
 			NSRange marked = [ self markedRange ];
-			insert_point = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), replacementRange.location + (marked.location != NSNotFound ? marked.location : 0u));
+			insert_point = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedTextbuf()->GetText(), replacementRange.location + (marked.location != NSNotFound ? marked.location : 0u));
 			replace_range = Utf8AdvanceByUtf16Units(insert_point, replacementRange.length);
 		}
 
@@ -988,7 +989,9 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (!EditBoxInGlobalFocus()) return NSMakeRange(NSNotFound, 0);
 
-	NSUInteger start = CountUtf16Units(_focused_window->GetFocusedText(), _focused_window->GetCaret());
+	const Textbuf *text_buf = _focused_window->GetFocusedTextbuf();
+	const char *text = text_buf->GetText();
+	NSUInteger start = CountUtf16Units(text, text + text_buf->caretpos);
 	return NSMakeRange(start, 0);
 }
 
@@ -997,11 +1000,12 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (!EditBoxInGlobalFocus()) return NSMakeRange(NSNotFound, 0);
 
-	size_t mark_len;
-	const char *mark = _focused_window->GetMarkedText(&mark_len);
-	if (mark != nullptr) {
-		NSUInteger start = CountUtf16Units(_focused_window->GetFocusedText(), mark);
-		NSUInteger len = CountUtf16Units(mark, mark + mark_len);
+	const Textbuf *text_buf = _focused_window->GetFocusedTextbuf();
+	if (text_buf->markend != 0) {
+		const char *text = text_buf->GetText();
+		const char *mark = text + text_buf->markpos;
+		NSUInteger start = CountUtf16Units(text, mark);
+		NSUInteger len = CountUtf16Units(mark, text + text_buf->markend);
 
 		return NSMakeRange(start, len);
 	}
@@ -1014,8 +1018,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (!EditBoxInGlobalFocus()) return NO;
 
-	size_t len;
-	return _focused_window->GetMarkedText(&len) != nullptr;
+	return _focused_window->GetFocusedTextbuf()->markend != 0;
 }
 
 /** Get a string corresponding to the given range. */
@@ -1023,7 +1026,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (!EditBoxInGlobalFocus()) return nil;
 
-	NSString *s = [ NSString stringWithUTF8String:_focused_window->GetFocusedText() ];
+	NSString *s = [ NSString stringWithUTF8String:_focused_window->GetFocusedTextbuf()->GetText() ];
 	NSRange valid_range = NSIntersectionRange(NSMakeRange(0, [ s length ]), theRange);
 
 	if (actualRange != nullptr) *actualRange = valid_range;
@@ -1043,7 +1046,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (!EditBoxInGlobalFocus()) return [ [ [ NSAttributedString alloc ] initWithString:@"" ] autorelease ];
 
-	return [ [ [ NSAttributedString alloc ] initWithString:[ NSString stringWithUTF8String:_focused_window->GetFocusedText() ] ] autorelease ];
+	return [ [ [ NSAttributedString alloc ] initWithString:[ NSString stringWithUTF8String:_focused_window->GetFocusedTextbuf()->GetText() ] ] autorelease ];
 }
 
 /** Get the character that is rendered at the given point. */
@@ -1058,7 +1061,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	auto index = _focused_window->GetTextCharacterAtPosition(pt);
 	if (index == -1) return NSNotFound;
 
-	auto text = _focused_window->GetFocusedText();
+	auto text = _focused_window->GetFocusedTextbuf()->GetText();
 	return CountUtf16Units(text, text + index);
 }
 
@@ -1067,9 +1070,10 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (!EditBoxInGlobalFocus()) return NSMakeRect(0, 0, 0, 0);
 
+	const char *focused_text = _focused_window->GetFocusedTextbuf()->GetText();
 	/* Convert range to UTF-8 string pointers. */
-	const char *start = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), aRange.location);
-	const char *end = aRange.length != 0 ? Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), aRange.location + aRange.length) : start;
+	const char *start = Utf8AdvanceByUtf16Units(focused_text, aRange.location);
+	const char *end = aRange.length != 0 ? Utf8AdvanceByUtf16Units(focused_text, aRange.location + aRange.length) : start;
 
 	/* Get the bounding rect for the text range.*/
 	Rect r = _focused_window->GetTextBoundingRect(start, end);

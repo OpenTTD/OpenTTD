@@ -47,37 +47,6 @@ public:
 	Point GetCaretPosition(const Window *w, int wid) const;
 	Rect GetBoundingRect(const Window *w, int wid, const char *from, const char *to) const;
 	ptrdiff_t GetCharAtPosition(const Window *w, int wid, const Point &pt) const;
-
-	/**
-	 * Get the current text.
-	 * @return Current text.
-	 */
-	const char *GetText() const
-	{
-		return this->text.buf;
-	}
-
-	/**
-	 * Get the position of the caret in the text buffer.
-	 * @return Pointer to the caret in the text buffer.
-	 */
-	const char *GetCaret() const
-	{
-		return this->text.buf + this->text.caretpos;
-	}
-
-	/**
-	 * Get the currently marked text.
-	 * @param[out] length Length of the marked text.
-	 * @return Beginning of the marked area or nullptr if no text is marked.
-	 */
-	const char *GetMarkedText(size_t *length) const
-	{
-		if (this->text.markend == 0) return nullptr;
-
-		*length = this->text.markend - this->text.markpos;
-		return this->text.buf + this->text.markpos;
-	}
 };
 
 void ShowOnScreenKeyboard(Window *parent, int button);

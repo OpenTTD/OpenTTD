@@ -65,6 +65,8 @@ struct Textbuf {
 
 	void DiscardMarkedText(bool update = true);
 
+	const char *GetText() const;
+
 private:
 	std::unique_ptr<StringIterator> char_iter;
 

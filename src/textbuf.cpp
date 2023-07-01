@@ -275,6 +275,15 @@ void Textbuf::DiscardMarkedText(bool update)
 	this->markpos = this->markend = this->markxoffs = this->marklength = 0;
 }
 
+/**
+ * Get the current text.
+ * @return Current text.
+ */
+const char *Textbuf::GetText() const
+{
+	return this->buf;
+}
+
 /** Update the character iter after the text has changed. */
 void Textbuf::UpdateStringIter()
 {

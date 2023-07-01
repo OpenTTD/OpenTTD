@@ -273,9 +273,7 @@ public:
 	QueryString *GetQueryString(uint widnum);
 	void UpdateQueryStringSize();
 
-	virtual const char *GetFocusedText() const;
-	virtual const char *GetCaret() const;
-	virtual const char *GetMarkedText(size_t *length) const;
+	virtual const struct Textbuf *GetFocusedTextbuf() const;
 	virtual Point GetCaretPosition() const;
 	virtual Rect GetTextBoundingRect(const char *from, const char *to) const;
 	virtual ptrdiff_t GetTextCharacterAtPosition(const Point &pt) const;
