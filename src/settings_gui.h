@@ -22,7 +22,18 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable);
 void DrawBoolButton(int x, int y, bool state, bool clickable);
 
-DropDownList BuildMusicSetDropDownList(int *selected_index);
+template <class T>
+DropDownList BuildSetDropDownList(int *selected_index)
+{
+	int n = T::GetNumSets();
+	*selected_index = T::GetIndexOfUsedSet();
+	DropDownList list;
+	for (int i = 0; i < n; i++) {
+		list.emplace_back(new DropDownListStringItem(T::GetSet(i)->name, i, false));
+	}
+	return list;
+}
+
 
 /* Actually implemented in music_gui.cpp */
 void ChangeMusicSet(int index);

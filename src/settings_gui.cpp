@@ -74,25 +74,6 @@ static uint GetCurrentResolutionIndex()
 
 static void ShowCustCurrency();
 
-template <class T>
-static DropDownList BuildSetDropDownList(int *selected_index, bool allow_selection)
-{
-	int n = T::GetNumSets();
-	*selected_index = T::GetIndexOfUsedSet();
-
-	DropDownList list;
-	for (int i = 0; i < n; i++) {
-		list.emplace_back(new DropDownListStringItem(T::GetSet(i)->name, i, !allow_selection && (*selected_index != i)));
-	}
-
-	return list;
-}
-
-DropDownList BuildMusicSetDropDownList(int *selected_index)
-{
-	return BuildSetDropDownList<BaseMusic>(selected_index, true);
-}
-
 /** Window for displaying the textfile of a BaseSet. */
 template <class TBaseSet>
 struct BaseSetTextfileWindow : public TextfileWindow {
@@ -291,15 +272,15 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_BASE_GRF_DROPDOWN:
-				list = BuildSetDropDownList<BaseGraphics>(selected_index, (_game_mode == GM_MENU));
+				list = BuildSetDropDownList<BaseGraphics>(selected_index);
 				break;
 
 			case WID_GO_BASE_SFX_DROPDOWN:
-				list = BuildSetDropDownList<BaseSounds>(selected_index, (_game_mode == GM_MENU));
+				list = BuildSetDropDownList<BaseSounds>(selected_index);
 				break;
 
 			case WID_GO_BASE_MUSIC_DROPDOWN:
-				list = BuildMusicSetDropDownList(selected_index);
+				list = BuildSetDropDownList<BaseMusic>(selected_index);
 				break;
 		}
 
@@ -739,6 +720,9 @@ struct GameOptionsWindow : Window {
 
 		this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, _gui_scale_cfg == -1);
 		this->SetWidgetLoweredState(WID_GO_GUI_SCALE_BEVEL_BUTTON, _settings_client.gui.scale_bevels);
+
+		this->SetWidgetDisabledState(WID_GO_BASE_GRF_DROPDOWN, _game_mode != GM_MENU);
+		this->SetWidgetDisabledState(WID_GO_BASE_SFX_DROPDOWN, _game_mode != GM_MENU);
 
 		bool missing_files = BaseGraphics::GetUsedSet()->GetNumMissing() == 0;
 		this->GetWidget<NWidgetCore>(WID_GO_BASE_GRF_STATUS)->SetDataTip(missing_files ? STR_EMPTY : STR_GAME_OPTIONS_BASE_GRF_STATUS, STR_NULL);
