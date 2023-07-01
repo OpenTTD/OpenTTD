@@ -280,22 +280,9 @@ struct IConsoleWindow : Window
 		}
 	}
 
-	const char *GetFocusedText() const override
+	Textbuf *GetFocusedTextbuf() const override
 	{
-		return _iconsole_cmdline.buf;
-	}
-
-	const char *GetCaret() const override
-	{
-		return _iconsole_cmdline.buf + _iconsole_cmdline.caretpos;
-	}
-
-	const char *GetMarkedText(size_t *length) const override
-	{
-		if (_iconsole_cmdline.markend == 0) return nullptr;
-
-		*length = _iconsole_cmdline.markend - _iconsole_cmdline.markpos;
-		return _iconsole_cmdline.buf + _iconsole_cmdline.markpos;
+		return &_iconsole_cmdline;
 	}
 
 	Point GetCaretPosition() const override
