@@ -17,6 +17,11 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+    - name: Download source
+      uses: actions/download-artifact@v3
+      with:
+        name: internal-source
+
     - name: Download bundle (Windows x86)
       uses: actions/download-artifact@v3
       with:
