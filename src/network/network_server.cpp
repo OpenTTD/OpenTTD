@@ -2086,7 +2086,6 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 
 	_network_company_states[c->index].months_empty = 0;
 	_network_company_states[c->index].password.clear();
-	//SB(_network_company_passworded, c->index, 1, false);
 	NetworkServerUpdateCompanyPassworded(c->index, false);
 
 	if (ci != nullptr) {
@@ -2095,9 +2094,6 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		NetworkUpdateClientInfo(ci->client_id);
 		Command<CMD_RENAME_PRESIDENT>::SendNet(STR_NULL, c->index, ci->client_name);
 	}
-
-	/* Announce new company on network. */
-	NetworkAdminCompanyInfo(c, true);
 
 	if (ci != nullptr) {
 		/* ci is nullptr when replaying, or for AIs. In neither case there is a client.
