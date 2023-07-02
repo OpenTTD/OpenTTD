@@ -1204,12 +1204,12 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}{NBSP}Гц
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Частота обновления выше 60{NBSP}Гц может отрицательно сказаться на производительности.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Основной графический пакет
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбор основного графического пакета
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбор основного графического пакета (его нельзя сменить в игре; только в главном меню)
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} отсутствующи{P й х х}/повреждённы{P й х х} файл{P "" а ов}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Дополнительная информация о выбранном графическом пакете
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Основной звуковой пакет
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Выбор основного пакета звуковых эффектов
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Выбор основного пакета звуковых эффектов (его нельзя сменить в игре; только в главном меню)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Дополнительная информация о выбранном пакете звуковых эффектов
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Основной музыкальный пакет
