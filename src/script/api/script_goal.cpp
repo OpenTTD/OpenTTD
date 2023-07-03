@@ -48,7 +48,7 @@
 
 	EnforceDeityMode(GOAL_INVALID);
 	EnforcePrecondition(GOAL_INVALID, goal != nullptr);
-	const std::string &text = goal->GetEncodedText();
+	std::string text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(GOAL_INVALID, text);
 	EnforcePrecondition(GOAL_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(GOAL_INVALID, IsValidGoalDestination(company, type, destination));
@@ -84,7 +84,7 @@
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, goal != nullptr);
-	const std::string &text = goal->GetEncodedText();
+	std::string text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
 
 	return ScriptObject::Command<CMD_SET_GOAL_TEXT>::Do(goal_id, text);
@@ -123,7 +123,7 @@
 
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, question != nullptr);
-	const std::string &text = question->GetEncodedText();
+	std::string text = question->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
 	uint min_buttons = (type == QT_QUESTION ? 1 : 0);
 	EnforcePrecondition(false, CountBits(buttons) >= min_buttons && CountBits(buttons) <= 3);
