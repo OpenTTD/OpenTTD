@@ -158,7 +158,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	return this->_SetParam(k, vm);
 }
 
-const std::string ScriptText::GetEncodedText()
+std::string ScriptText::GetEncodedText()
 {
 	static StringIDList seen_ids;
 	int param_count = 0;
