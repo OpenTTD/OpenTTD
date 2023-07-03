@@ -1332,15 +1332,20 @@ static uint GetWindowZPriority(WindowClass wc)
 	uint z_priority = 0;
 
 	switch (wc) {
+		case WC_TOOLTIPS:
+			++z_priority;
+			FALLTHROUGH;
+
+		case WC_ERRMSG:
+		case WC_CONFIRM_POPUP_QUERY:
+			++z_priority;
+			FALLTHROUGH;
+
 		case WC_ENDSCREEN:
 			++z_priority;
 			FALLTHROUGH;
 
 		case WC_HIGHSCORE:
-			++z_priority;
-			FALLTHROUGH;
-
-		case WC_TOOLTIPS:
 			++z_priority;
 			FALLTHROUGH;
 
@@ -1362,8 +1367,6 @@ static uint GetWindowZPriority(WindowClass wc)
 			++z_priority;
 			FALLTHROUGH;
 
-		case WC_ERRMSG:
-		case WC_CONFIRM_POPUP_QUERY:
 		case WC_NETWORK_ASK_RELAY:
 		case WC_MODAL_PROGRESS:
 		case WC_NETWORK_STATUS_WINDOW:
