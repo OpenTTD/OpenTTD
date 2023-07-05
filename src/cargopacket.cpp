@@ -44,7 +44,7 @@ CargoPacket::CargoPacket()
 CargoPacket::CargoPacket(StationID source, TileIndex source_xy, uint16 count, SourceType source_type, SourceID source_id) :
 	feeder_share(0),
 	count(count),
-	days_in_transit(0),
+	periods_in_transit(0),
 	source_id(source_id),
 	source(source),
 	source_xy(source_xy),
@@ -58,7 +58,7 @@ CargoPacket::CargoPacket(StationID source, TileIndex source_xy, uint16 count, So
  * Creates a new cargo packet. Initializes the fields that cannot be changed later.
  * Used when loading or splitting packets.
  * @param count           Number of cargo entities to put in this packet.
- * @param days_in_transit Number of days the cargo has been in transit.
+ * @param periods_in_transit Number of cargo aging periods the cargo has been in transit.
  * @param source          Station the cargo was initially loaded.
  * @param source_xy       Station location the cargo was initially loaded.
  * @param loaded_at_xy    Location the cargo was loaded last.
@@ -68,10 +68,10 @@ CargoPacket::CargoPacket(StationID source, TileIndex source_xy, uint16 count, So
  * @note We have to zero memory ourselves here because we are using a 'new'
  * that, in contrary to all other pools, does not memset to 0.
  */
-CargoPacket::CargoPacket(uint16 count, uint16 days_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
+CargoPacket::CargoPacket(uint16 count, uint16 periods_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
 		feeder_share(feeder_share),
 		count(count),
-		days_in_transit(days_in_transit),
+		periods_in_transit(periods_in_transit),
 		source_id(source_id),
 		source(source),
 		source_xy(source_xy),
@@ -91,7 +91,7 @@ CargoPacket *CargoPacket::Split(uint new_size)
 	if (!CargoPacket::CanAllocateItem()) return nullptr;
 
 	Money fs = this->FeederShare(new_size);
-	CargoPacket *cp_new = new CargoPacket(new_size, this->days_in_transit, this->source, this->source_xy, this->loaded_at_xy, fs, this->source_type, this->source_id);
+	CargoPacket *cp_new = new CargoPacket(new_size, this->periods_in_transit, this->source, this->source_xy, this->loaded_at_xy, fs, this->source_type, this->source_id);
 	this->feeder_share -= fs;
 	this->count -= new_size;
 	return cp_new;
@@ -171,7 +171,7 @@ void CargoList<Tinst, Tcont>::OnCleanPool()
 
 /**
  * Update the cached values to reflect the removal of this packet or part of it.
- * Decreases count and days_in_transit.
+ * Decreases count and periods_in_transit.
  * @param cp Packet to be removed from cache.
  * @param count Amount of cargo from the given packet to be removed.
  */
@@ -180,19 +180,19 @@ void CargoList<Tinst, Tcont>::RemoveFromCache(const CargoPacket *cp, uint count)
 {
 	assert(count <= cp->count);
 	this->count                 -= count;
-	this->cargo_days_in_transit -= static_cast<uint64_t>(cp->days_in_transit) * count;
+	this->cargo_periods_in_transit -= static_cast<uint64_t>(cp->periods_in_transit) * count;
 }
 
 /**
  * Update the cache to reflect adding of this packet.
- * Increases count and days_in_transit.
+ * Increases count and periods_in_transit.
  * @param cp New packet to be inserted.
  */
 template <class Tinst, class Tcont>
 void CargoList<Tinst, Tcont>::AddToCache(const CargoPacket *cp)
 {
 	this->count                 += cp->count;
-	this->cargo_days_in_transit += static_cast<uint64_t>(cp->days_in_transit) * cp->count;
+	this->cargo_periods_in_transit += static_cast<uint64_t>(cp->periods_in_transit) * cp->count;
 }
 
 /** Invalidates the cached data and rebuilds it. */
@@ -200,7 +200,7 @@ template <class Tinst, class Tcont>
 void CargoList<Tinst, Tcont>::InvalidateCache()
 {
 	this->count = 0;
-	this->cargo_days_in_transit = 0;
+	this->cargo_periods_in_transit = 0;
 
 	for (ConstIterator it(this->packets.begin()); it != this->packets.end(); it++) {
 		static_cast<Tinst *>(this)->AddToCache(*it);
@@ -326,7 +326,7 @@ void VehicleCargoList::PopCargo(Taction action)
 
 /**
  * Update the cached values to reflect the removal of this packet or part of it.
- * Decreases count, feeder share and days_in_transit.
+ * Decreases count, feeder share and periods_in_transit.
  * @param cp Packet to be removed from cache.
  * @param count Amount of cargo from the given packet to be removed.
  */
@@ -338,7 +338,7 @@ void VehicleCargoList::RemoveFromCache(const CargoPacket *cp, uint count)
 
 /**
  * Update the cache to reflect adding of this packet.
- * Increases count, feeder share and days_in_transit.
+ * Increases count, feeder share and periods_in_transit.
  * @param cp New packet to be inserted.
  */
 void VehicleCargoList::AddToCache(const CargoPacket *cp)
@@ -382,10 +382,10 @@ void VehicleCargoList::AgeCargo()
 {
 	for (const auto &cp : this->packets) {
 		/* If we're at the maximum, then we can't increase no more. */
-		if (cp->days_in_transit == UINT16_MAX) continue;
+		if (cp->periods_in_transit == UINT16_MAX) continue;
 
-		cp->days_in_transit++;
-		this->cargo_days_in_transit += cp->count;
+		cp->periods_in_transit++;
+		this->cargo_periods_in_transit += cp->count;
 	}
 }
 

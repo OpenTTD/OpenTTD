@@ -824,7 +824,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 		case 0x3C: return ClampTo<uint16_t>(v->cargo.StoredCount());
 		case 0x3D: return GB(ClampTo<uint16_t>(v->cargo.StoredCount()), 8, 8);
 		case 0x3E: return v->cargo.Source();
-		case 0x3F: return ClampTo<uint8_t>(v->cargo.DaysInTransit());
+		case 0x3F: return ClampTo<uint8_t>(v->cargo.PeriodsInTransit());
 		case 0x40: return ClampTo<uint16_t>(v->age);
 		case 0x41: return GB(ClampTo<uint16_t>(v->age), 8, 8);
 		case 0x42: return ClampTo<uint16_t>(v->max_age);
