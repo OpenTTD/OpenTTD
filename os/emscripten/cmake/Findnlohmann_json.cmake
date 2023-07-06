@@ -6,10 +6,10 @@ set(CMAKE_REQUIRED_FLAGS "-sUSE_NLOHMANN_JSON=1")
 check_cxx_source_compiles("
     #include <nlohmann/json.hpp>
     int main() { return 0; }"
-    NLOHMANN_JSON_FOUND
+    nlohmann_json_FOUND
 )
 
-if (NLOHMANN_JSON_FOUND)
+if (nlohmann_json_FOUND)
         add_library(nlohmann_json INTERFACE IMPORTED)
         set_target_properties(nlohmann_json PROPERTIES
                 INTERFACE_COMPILE_OPTIONS "-sUSE_NLOHMANN_JSON=1"

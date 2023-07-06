@@ -32,10 +32,11 @@ jobs:
         path: /emsdk/upstream/emscripten/cache
         key: 3.1.37-${{ runner.os }}
 
-    - name: Patch Emscripten to support LZMA
+    - name: Patch Emscripten to support LZMA and nlohmann-json
       run: |
         cd /emsdk/upstream/emscripten
         patch -p1 < ${GITHUB_WORKSPACE}/os/emscripten/emsdk-liblzma.patch
+        patch -p1 < ${GITHUB_WORKSPACE}/os/emscripten/emsdk-nlohmann-json.patch
 
     - name: Build (host tools)
       run: |
