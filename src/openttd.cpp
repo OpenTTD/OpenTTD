@@ -118,7 +118,6 @@ void UserErrorI(const std::string &str)
 	/* In effect, the game ends here. As emscripten_set_main_loop() caused
 	 * the stack to be unwound, the code after MainLoop() in
 	 * openttd_main() is never executed. */
-	EM_ASM(if (window["openttd_syncfs"]) openttd_syncfs());
 	EM_ASM(if (window["openttd_abort"]) openttd_abort());
 #endif
 

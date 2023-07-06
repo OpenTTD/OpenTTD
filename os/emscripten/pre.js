@@ -52,24 +52,26 @@ Module.preRun.push(function() {
     });
 
     window.openttd_syncfs_shown_warning = false;
-    window.openttd_syncfs = function() {
+    window.openttd_syncfs = function(callback) {
         /* Copy the virtual FS to the persistent storage. */
-        FS.syncfs(false, function (err) { });
+        FS.syncfs(false, function (err) {
+            /* On first time, warn the user about the volatile behaviour of
+             * persistent storage. */
+            if (!window.openttd_syncfs_shown_warning) {
+                window.openttd_syncfs_shown_warning = true;
+                Module.onWarningFs();
+            }
 
-        /* On first time, warn the user about the volatile behaviour of
-         * persistent storage. */
-        if (!window.openttd_syncfs_shown_warning) {
-            window.openttd_syncfs_shown_warning = true;
-            Module.onWarningFs();
-        }
+            if (callback) callback();
+        });
     }
 
     window.openttd_exit = function() {
-        Module.onExit();
+        window.openttd_syncfs(Module.onExit);
     }
 
     window.openttd_abort = function() {
-        Module.onAbort();
+        window.openttd_syncfs(Module.onAbort);
     }
 
     window.openttd_server_list = function() {
