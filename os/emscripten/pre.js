@@ -30,24 +30,6 @@ Module.preRun.push(function() {
 
     Module.addRunDependency('syncfs');
     FS.syncfs(true, function (err) {
-        /* FS.mkdir() tends to fail if parent folders do not exist. */
-        if (!FS.analyzePath(content_download_dir).exists) {
-            FS.mkdir(content_download_dir);
-        }
-        if (!FS.analyzePath(content_download_dir + '/baseset').exists) {
-            FS.mkdir(content_download_dir + '/baseset');
-        }
-
-        /* Check if the OpenGFX baseset is already downloaded. */
-        if (!FS.analyzePath(content_download_dir + '/baseset/opengfx-0.6.0.tar').exists) {
-            window.openttd_downloaded_opengfx = true;
-            FS.createPreloadedFile(content_download_dir + '/baseset', 'opengfx-0.6.0.tar', 'https://binaries.openttd.org/installer/emscripten/opengfx-0.6.0.tar', true, true);
-        } else {
-            /* Fake dependency increase, so the counter is stable. */
-            Module.addRunDependency('opengfx');
-            Module.removeRunDependency('opengfx');
-        }
-
         Module.removeRunDependency('syncfs');
     });
 
@@ -72,6 +54,23 @@ Module.preRun.push(function() {
 
     window.openttd_abort = function() {
         window.openttd_syncfs(Module.onAbort);
+    }
+
+    window.openttd_bootstrap = function(current, total) {
+        Module.onBootstrap(current, total);
+    }
+
+    window.openttd_bootstrap_failed = function() {
+        Module.onBootstrapFailed();
+    }
+
+    window.openttd_bootstrap_reload = function() {
+        window.openttd_syncfs(function() {
+            Module.onBootstrapReload();
+            setTimeout(function() {
+                location.reload();
+            }, 1000);
+        });
     }
 
     window.openttd_server_list = function() {
@@ -124,12 +123,4 @@ Module.preRun.push(function() {
        Module['websocket']['url'] = func;
        return ret;
    }
-});
-
-Module.postRun.push(function() {
-    /* Check if we downloaded OpenGFX; if so, sync the virtual FS back to the
-     * IDBFS so OpenGFX is stored persistent. */
-    if (window['openttd_downloaded_opengfx']) {
-        FS.syncfs(false, function (err) { });
-    }
 });

@@ -286,6 +286,76 @@ public:
 
 #endif /* defined(WITH_FREETYPE) */
 
+#if defined(__EMSCRIPTEN__)
+#	include <emscripten.h>
+#	include "network/network.h"
+#	include "network/network_content.h"
+#	include "openttd.h"
+#	include "video/video_driver.hpp"
+
+class BootstrapEmscripten : public ContentCallback {
+	bool downloading{false};
+	uint total_files{0};
+	uint total_bytes{0};
+	uint downloaded_bytes{0};
+
+public:
+	BootstrapEmscripten()
+	{
+		_network_content_client.AddCallback(this);
+		_network_content_client.Connect();
+	}
+
+	~BootstrapEmscripten()
+	{
+		_network_content_client.RemoveCallback(this);
+	}
+
+	void OnConnect(bool success) override
+	{
+		if (!success) {
+			EM_ASM({ if (window["openttd_bootstrap_failed"]) openttd_bootstrap_failed(); });
+			return;
+		}
+
+		/* Once connected, request the metadata. */
+		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
+	}
+
+	void OnReceiveContentInfo(const ContentInfo *ci) override
+	{
+		if (this->downloading) return;
+
+		/* And once the metadata is received, start downloading it. */
+		_network_content_client.Select(ci->id);
+		_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
+		this->downloading = true;
+
+		EM_ASM({ if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1); }, this->downloaded_bytes, this->total_bytes);
+	}
+
+	void OnDownloadProgress(const ContentInfo *ci, int bytes) override
+	{
+		/* A negative value means we are resetting; for example, when retrying or using a fallback. */
+		if (bytes < 0) {
+			this->downloaded_bytes = 0;
+		} else {
+			this->downloaded_bytes += bytes;
+		}
+
+		EM_ASM({ if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1); }, this->downloaded_bytes, this->total_bytes);
+	}
+
+	void OnDownloadComplete(ContentID cid) override
+	{
+		/* _exit_game is used to break out of the outer video driver's MainLoop. */
+		_exit_game = true;
+
+		delete this;
+	}
+};
+#endif /* __EMSCRIPTEN__ */
+
 /**
  * Handle all procedures for bootstrapping OpenTTD without a base graphics set.
  * This requires all kinds of trickery that is needed to avoid the use of
@@ -300,12 +370,15 @@ bool HandleBootstrap()
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) goto failure;
 
 	/* If there is no network or no non-sprite font, then there is nothing we can do. Go straight to failure. */
-#if (defined(_WIN32) && defined(WITH_UNISCRIBE)) || (defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(__APPLE__))) || defined(WITH_COCOA)
+#if defined(__EMSCRIPTEN__) || (defined(_WIN32) && defined(WITH_UNISCRIBE)) || (defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(__APPLE__))) || defined(WITH_COCOA)
 	if (!_network_available) goto failure;
 
 	/* First tell the game we're bootstrapping. */
 	_game_mode = GM_BOOTSTRAP;
 
+#if defined(__EMSCRIPTEN__)
+	new BootstrapEmscripten();
+#else
 	/* Initialise the font cache. */
 	InitializeUnicodeGlyphMap();
 	/* Next "force" finding a suitable non-sprite font as the local font is missing. */
@@ -324,6 +397,7 @@ bool HandleBootstrap()
 	/* Finally ask the question. */
 	new BootstrapBackground();
 	new BootstrapAskForDownloadWindow();
+#endif /* __EMSCRIPTEN__ */
 
 	/* Process the user events. */
 	VideoDriver::GetInstance()->MainLoop();
