@@ -615,7 +615,6 @@ void VideoDriver_SDL_Base::LoopOnce()
 		/* In effect, the game ends here. As emscripten_set_main_loop() caused
 		 * the stack to be unwound, the code after MainLoop() in
 		 * openttd_main() is never executed. */
-		EM_ASM(if (window["openttd_syncfs"]) openttd_syncfs());
 		EM_ASM(if (window["openttd_exit"]) openttd_exit());
 #endif
 		return;
