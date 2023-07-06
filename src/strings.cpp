@@ -1213,15 +1213,17 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				switch (cargo_str) {
 					case STR_TONS: {
 						assert(_settings_game.locale.units_weight < lengthof(_units_weight));
-						auto tmp_params = MakeParameters(_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetNextParameter<int64_t>()));
-						FormatString(builder, GetStringPtr(_units_weight[_settings_game.locale.units_weight].l), tmp_params);
+						const auto &x = _units_weight[_settings_game.locale.units_weight];
+						auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
+						FormatString(builder, GetStringPtr(x.l), tmp_params);
 						break;
 					}
 
 					case STR_LITERS: {
 						assert(_settings_game.locale.units_volume < lengthof(_units_volume));
-						auto tmp_params = MakeParameters(_units_volume[_settings_game.locale.units_volume].c.ToDisplay(args.GetNextParameter<int64_t>()));
-						FormatString(builder, GetStringPtr(_units_volume[_settings_game.locale.units_volume].l), tmp_params);
+						const auto &x = _units_volume[_settings_game.locale.units_volume];
+						auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
+						FormatString(builder, GetStringPtr(x.l), tmp_params);
 						break;
 					}
 
