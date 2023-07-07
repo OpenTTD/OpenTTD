@@ -192,7 +192,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 		dest = dest_orig.get();
 
 		for (int i = 0; i < sprite->width * sprite->height; i++) {
-			byte *pixel = dest[i * bpp];
+			byte *pixel = &dest[i * bpp];
 
 			if (colour_fmt & SCC_RGB) {
 				sprite->data[i].r = *pixel++;
