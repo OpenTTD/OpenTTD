@@ -15,6 +15,7 @@ if (nlohmann_json_FOUND)
                 INTERFACE_COMPILE_OPTIONS "-sUSE_NLOHMANN_JSON=1"
                 INTERFACE_LINK_LIBRARIES "-sUSE_NLOHMANN_JSON=1"
         )
+        set(nlohmann_json_LIBRARY "nlohmann_json")
 else()
         message(WARNING "You are using an emscripten SDK without nlohmann-json support. Please apply 'emsdk-nlohmann_json.patch' to your local emsdk installation.")
 endif()
