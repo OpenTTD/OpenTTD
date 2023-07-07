@@ -192,22 +192,22 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 		dest = dest_orig.get();
 
 		for (int i = 0; i < sprite->width * sprite->height; i++) {
-			byte &pixel = dest[i * bpp];
+			byte *pixel = dest[i * bpp];
 
 			if (colour_fmt & SCC_RGB) {
-				sprite->data[i].r = pixel++;
-				sprite->data[i].g = pixel++;
-				sprite->data[i].b = pixel++;
+				sprite->data[i].r = *pixel++;
+				sprite->data[i].g = *pixel++;
+				sprite->data[i].b = *pixel++;
 			}
-			sprite->data[i].a = (colour_fmt & SCC_ALPHA) ? pixel++ : 0xFF;
+			sprite->data[i].a = (colour_fmt & SCC_ALPHA) ? *pixel++ : 0xFF;
 			if (colour_fmt & SCC_PAL) {
 				switch (sprite_type) {
-					case SpriteType::Normal: sprite->data[i].m = file.NeedsPaletteRemap() ? _palmap_w2d[pixel] : pixel; break;
-					case SpriteType::Font:   sprite->data[i].m = std::min<byte>(pixel, 2u); break;
-					default:        sprite->data[i].m = pixel; break;
+					case SpriteType::Normal: sprite->data[i].m = file.NeedsPaletteRemap() ? _palmap_w2d[*pixel] : *pixel; break;
+					case SpriteType::Font:   sprite->data[i].m = std::min<byte>(*pixel, 2u); break;
+					default:        sprite->data[i].m = *pixel; break;
 				}
 				/* Magic blue. */
-				if (colour_fmt == SCC_PAL && pixel == 0) sprite->data[i].a = 0x00;
+				if (colour_fmt == SCC_PAL && *pixel == 0) sprite->data[i].a = 0x00;
 			}
 		}
 	}
