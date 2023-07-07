@@ -347,6 +347,7 @@ if(EMSCRIPTEN)
     target_link_libraries(WASM::WASM INTERFACE "-s ALLOW_MEMORY_GROWTH=1")
     target_link_libraries(WASM::WASM INTERFACE "-s INITIAL_MEMORY=33554432")
     target_link_libraries(WASM::WASM INTERFACE "-s DISABLE_EXCEPTION_CATCHING=0")
+    target_link_libraries(WASM::WASM INTERFACE "-s WASM_BIGINT")
     add_definitions(-s DISABLE_EXCEPTION_CATCHING=0)
 
     # Export functions to Javascript.
