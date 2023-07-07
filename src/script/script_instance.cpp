@@ -573,8 +573,7 @@ bool ScriptInstance::IsPaused()
 			SlObject(nullptr, _script_byte);
 			static char buf[std::numeric_limits<decltype(_script_sl_byte)>::max()];
 			SlCopy(buf, _script_sl_byte, SLE_CHAR);
-			StrMakeValidInPlace(buf, buf + _script_sl_byte);
-			if (data != nullptr) data->push_back(std::string(buf));
+			if (data != nullptr) data->push_back(StrMakeValid(std::string_view(buf, _script_sl_byte)));
 			return true;
 		}
 

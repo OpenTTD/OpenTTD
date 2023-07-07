@@ -1060,12 +1060,12 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Taxas de atualização maiores que 60Hz podem interferir no desempenho.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleccione o conjunto de gráficos base a usar
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecione o conjunto de gráficos base a usar (não pode ser alterado no jogo, só a partir do menu principal)
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ficheiro{P "" s} que falta{P "" m} / corrupto{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informação adicional sobre o conjunto de gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Seleccione o conjunto de sons base a usar
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecione o conjunto de sons base a usar (não pode ser alterado no jogo, só a partir do menu principal)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informação adicional sobre o conjunto de sons base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto de música base
@@ -2274,7 +2274,7 @@ STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Anos
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Número de anos{}que o jogo vai durar
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versão do servidor, etc.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clique num jogo da lista para o seleccionar
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clique num jogo da lista para o selecionar
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}O servidor em que entraste na última vez:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clique para indicar o servidor que jogaste a última vez
 

@@ -1059,12 +1059,12 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Tần số quét hơn 60Hz có thể làm ảnh hưởng đến hiệu năng
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gói đồ họa
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Chọn gói đồ họa để sử dụng
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Chọn gói đồ họa để sử dụng (không thể thay đổi khi trong ván chơi, chỉ đổi được khi ở menu chính)
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} thiếu/hỏng file
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về gói đồ họa
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Bộ âm thanh chuẩn
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Chọn bộ âm thanh chuẩn để dùng
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Chọn bộ âm thanh chuẩn để dùng (không thể thay đổi khi trong ván chơi, chỉ đổi được khi ở menu chính)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về bộ âm thanh chuẩn
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Gói nhạc chuẩn

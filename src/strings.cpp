@@ -154,47 +154,55 @@ void SetDParamMaxDigits(size_t n, uint count, FontSize size)
 }
 
 /**
- * Copy \a num string parameters from array \a src into the global string parameter array.
- * @param src  Source array of string parameters.
- * @param num  Number of string parameters to copy.
+ * Copy the parameters from the backup into the global string parameter array.
+ * @param backup The backup to copy from.
  */
-void CopyInDParam(const uint64 *src, int num)
+void CopyInDParam(const span<const StringParameterBackup> backup)
 {
-	for (int i = 0; i < num; i++) SetDParam(i, src[i]);
-}
-
-/**
- * Copy \a num string parameters from the global string parameter array to the \a dst array.
- * @param dst  Destination array of string parameters.
- * @param num  Number of string parameters to copy.
- */
-void CopyOutDParam(uint64 *dst, int num)
-{
-	for (int i = 0; i < num; i++) dst[i] = GetDParam(i);
-}
-
-/**
- * Copy \a num string parameters from the global string parameter array to the \a dst array.
- * Furthermore clone raw string parameters into \a strings and amend the data in \a dst.
- * @param dst     Destination array of string parameters.
- * @param strings Destination array for clone of the raw strings. Must be of same length as dst. Deallocation left to the caller.
- * @param string  The string used to determine where raw strings are and where there are no raw strings.
- * @param num     Number of string parameters to copy.
- */
-void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num)
-{
-	/* Just get the string to extract the type information. */
-	GetString(string);
-
-	for (int i = 0; i < num; i++) {
-		if (_global_string_params.GetTypeAtOffset(i) == SCC_RAW_STRING_POINTER) {
-			strings[i] = stredup((const char *)(size_t)_global_string_params.GetParam(i));
-			dst[i] = (size_t)strings[i];
+	for (size_t i = 0; i < backup.size(); i++) {
+		auto &value = backup[i];
+		if (value.string.has_value()) {
+			_global_string_params.SetParam(i, value.string.value());
 		} else {
-			strings[i] = nullptr;
-			dst[i] = _global_string_params.GetParam(i);
+			_global_string_params.SetParam(i, value.data);
 		}
 	}
+}
+
+/**
+ * Copy \a num string parameters from the global string parameter array to the \a backup.
+ * @param backup The backup to write to.
+ * @param num Number of string parameters to copy.
+ */
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num)
+{
+	backup.resize(num);
+	for (size_t i = 0; i < backup.size(); i++) {
+		const char *str = _global_string_params.GetParamStr(i);
+		if (str != nullptr) {
+			backup[i] = str;
+		} else {
+			backup[i] = _global_string_params.GetParam(i);
+		}
+	}
+}
+
+/**
+ * Checks whether the global string parameters have changed compared to the given backup.
+ * @param backup The backup to check against.
+ * @return True when the parameters have changed, otherwise false.
+ */
+bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup)
+{
+	bool changed = false;
+	for (size_t i = 0; !changed && i < backup.size(); i++) {
+		if (backup[i].string.has_value()) {
+			changed = backup[i].string.value() != (const char *)(size_t)_global_string_params.GetParam(i);
+		} else {
+			changed = backup[i].data != _global_string_params.GetParam(i);
+		}
+	}
+	return changed;
 }
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacility x);
@@ -353,6 +361,18 @@ void SetDParamStr(size_t n, const char *str)
 void SetDParamStr(size_t n, const std::string &str)
 {
 	_global_string_params.SetParam(n, str);
+}
+
+/**
+ * This function is used to "bind" the std::string to a OpenTTD dparam slot.
+ * Contrary to the other \c SetDParamStr functions, this moves the string into
+ * the parameter slot.
+ * @param n slot of the string
+ * @param str string to bind
+ */
+void SetDParamStr(size_t n, std::string &&str)
+{
+	_global_string_params.SetParam(n, std::move(str));
 }
 
 /**
@@ -839,8 +859,6 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
 	return _units_velocity[GetVelocityUnits(type)].c.FromDisplay(speed * 16, true, 10);
 }
 
-static std::vector<const char *> _game_script_raw_strings;
-
 /**
  * Parse most format codes within a string and write the result to a buffer.
  * @param builder The string builder to write the final string to.
@@ -906,9 +924,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		args.SetTypeOfNextParameter(b);
 		switch (b) {
 			case SCC_ENCODED: {
-				bool sub_args_need_free[20];
 				AllocatedStringParameters sub_args(20);
-				memset(sub_args_need_free, 0, sizeof(sub_args_need_free));
 
 				char *p;
 				uint32 stringid = std::strtoul(str, &p, 16);
@@ -978,25 +994,13 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						sub_args.SetParam(i++, param);
 					} else {
 						s++; // skip the leading \"
-						char *g = stredup(s);
-						g[p - s - 1] = '\0'; // skip the trailing \"
-
-						sub_args_need_free[i] = true;
-						sub_args.SetParam(i++, (uint64)(size_t)g);
-						_game_script_raw_strings.push_back(g);
+						sub_args.SetParam(i++, std::string(s, p - s - 1)); // also skip the trailing \".
 					}
 				}
 				/* If we didn't error out, we can actually print the string. */
 				if (*str != '\0') {
 					str = p;
 					GetStringWithArgs(builder, MakeStringID(TEXT_TAB_GAMESCRIPT_START, stringid), sub_args, true);
-				}
-
-				for (i = 0; i < 20; i++) {
-					if (sub_args_need_free[i]) {
-						free((void *)sub_args.GetParam(i));
-						_game_script_raw_strings.pop_back();
-					}
 				}
 				break;
 			}
@@ -1100,10 +1104,9 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				break;
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
-				const char *raw_string = (const char *)(size_t)args.GetNextParameter<size_t>();
+				const char *raw_string = args.GetNextParameterString();
 				/* raw_string can be(come) nullptr when the parameter is out of range and 0 is returned instead. */
-				if (raw_string == nullptr ||
-						(game_script && std::find(_game_script_raw_strings.begin(), _game_script_raw_strings.end(), raw_string) == _game_script_raw_strings.end())) {
+				if (raw_string == nullptr) {
 					builder += "(invalid RAW_STRING parameter)";
 					break;
 				}
@@ -1210,15 +1213,17 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				switch (cargo_str) {
 					case STR_TONS: {
 						assert(_settings_game.locale.units_weight < lengthof(_units_weight));
-						auto tmp_params = MakeParameters(_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args.GetNextParameter<int64_t>()));
-						FormatString(builder, GetStringPtr(_units_weight[_settings_game.locale.units_weight].l), tmp_params);
+						const auto &x = _units_weight[_settings_game.locale.units_weight];
+						auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
+						FormatString(builder, GetStringPtr(x.l), tmp_params);
 						break;
 					}
 
 					case STR_LITERS: {
 						assert(_settings_game.locale.units_volume < lengthof(_units_volume));
-						auto tmp_params = MakeParameters(_units_volume[_settings_game.locale.units_volume].c.ToDisplay(args.GetNextParameter<int64_t>()));
-						FormatString(builder, GetStringPtr(_units_volume[_settings_game.locale.units_volume].l), tmp_params);
+						const auto &x = _units_volume[_settings_game.locale.units_volume];
+						auto tmp_params = MakeParameters(x.c.ToDisplay(args.GetNextParameter<int64_t>()), x.decimal_places);
+						FormatString(builder, GetStringPtr(x.l), tmp_params);
 						break;
 					}
 

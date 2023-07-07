@@ -2,7 +2,7 @@ Module.arguments.push('-mnull', '-snull', '-vsdl:relative_mode');
 Module['websocket'] = { url: function(host, port, proto) {
     /* openttd.org hosts a WebSocket proxy for the content service. */
     if (host == "content.openttd.org" && port == 3978 && proto == "tcp") {
-        return "wss://content.openttd.org/";
+        return "wss://bananas-server.openttd.org/";
     }
 
     /* Everything else just tries to make a default WebSocket connection.
@@ -41,7 +41,7 @@ Module.preRun.push(function() {
         /* Check if the OpenGFX baseset is already downloaded. */
         if (!FS.analyzePath(content_download_dir + '/baseset/opengfx-0.6.0.tar').exists) {
             window.openttd_downloaded_opengfx = true;
-            FS.createPreloadedFile(content_download_dir + '/baseset', 'opengfx-0.6.0.tar', 'https://installer.cdn.openttd.org/emscripten/opengfx-0.6.0.tar', true, true);
+            FS.createPreloadedFile(content_download_dir + '/baseset', 'opengfx-0.6.0.tar', 'https://binaries.openttd.org/installer/emscripten/opengfx-0.6.0.tar', true, true);
         } else {
             /* Fake dependency increase, so the counter is stable. */
             Module.addRunDependency('opengfx');

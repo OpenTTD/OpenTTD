@@ -848,7 +848,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}La {STRING} è stata liquidata dai creditori e tutti i suoi beni sono stati venduti!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nuova compagnia di trasporti!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}La {STRING} inizia a costruire vicino a {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}La {STRING} è stata rilevata dalla {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} è stata rilevata da {STRING} per una cifra non rivelata!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Presidente)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}La {STRING} finanzia la costruzione della nuova cittadina di {TOWN}!
@@ -953,6 +953,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selezione della valuta
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlina britannica
@@ -1060,12 +1061,12 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Frequenze di aggiornamento maggiori di 60Hz potrebbero impattare le prestazioni.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pacchetto grafico di base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleziona il pacchetto grafico di base da utilizzare
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selezionare il pacchetto grafico di base da utilizzare (non può essere modificato in gioco, solo dal menu principale).
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} file mancant{P e i}/corrott{P o i}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informazioni aggiuntive sul pacchetto grafico di base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Pacchetto sonoro di base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Seleziona il pacchetto sonoro di base da utilizzare
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selezionare il pacchetto di suoni di base da utilizzare (non può essere modificato in gioco, solo dal menu principale).
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informazioni aggiuntive sul pacchetto sonoro di base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Pacchetto musicale di base
@@ -1594,7 +1595,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grigio a rosso
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Scala di grigi
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Scorrimento delle visuali: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento dello scorrimento della mappa
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento durante lo scorrimento della mappa. Le opzioni "posizione del mouse bloccata" non funzionano su tutti i sistemi, come le versioni basate sul web, gli schermi tattili, Linux con Wayland e altri.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Muovi visuale col pulsante destro, puntatore bloccato
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Muovi mappa col pulsante destro, puntatore bloccato
@@ -2116,6 +2117,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Impossib
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Errore nelle impostazioni video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... non è stata trovata alcuna GPU compatibile. L'accelerazione hardware è stata disabilitata
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Il driver della GPU ha mandato in crash il gioco. Accelerazione hardware disattivata
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3801,6 +3803,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Dettagli
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Visualizza i conteggi dettagliati delle infrastrutture
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Trasferisci denaro
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Trasferisci denaro a questa compagnia
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Acquisizione ostile
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Effettuare un'acquisizione ostile di questa azienda
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nuova faccia
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Seleziona una nuova faccia per il presidente
@@ -3816,6 +3820,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome del presid
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Inserisci l'ammontare di denaro che vuoi trasferire
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Stiamo cercando una società di trasporti disposta a rilevare la nostra compagnia.{}{} Vorrebbe acquistare {COMPANY} per {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}In un'acquisizione ostile di {COMPANY} acquisterete tutti i beni, estinguerete tutti i prestiti e pagherete due anni di profitti.{}{}Il totale è stimato in {CURRENCY_LONG}.{}{}Volete portare avanti questa acquisizione ostile?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastrutture della {COMPANY}
@@ -3887,6 +3892,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gestione
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Invia istruzioni a tutti i veicoli di questo elenco
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Rimpiazza veicoli
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Manutenzione
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Crea gruppo
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profitto quest'anno: {CURRENCY_LONG} (anno scorso: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4609,6 +4615,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Orari at
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Orari programmati
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna fra la visualizzazione degli orari attesi e degli orari programmati
 
+STR_TIMETABLE_ARRIVAL                                           :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :D: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -5663,6 +5671,8 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

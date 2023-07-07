@@ -14,6 +14,7 @@
 #include "string_type.h"
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
+#include "core/span_type.hpp"
 #include "vehicle_type.h"
 
 /**
@@ -83,11 +84,11 @@ void SetDParamMaxDigits(size_t n, uint count, FontSize size = FS_NORMAL);
 
 void SetDParamStr(size_t n, const char *str);
 void SetDParamStr(size_t n, const std::string &str);
-void SetDParamStr(size_t n, std::string &&str) = delete; // block passing temporaries to SetDParamStr
+void SetDParamStr(size_t n, std::string &&str);
 
-void CopyInDParam(const uint64 *src, int num);
-void CopyOutDParam(uint64 *dst, int num);
-void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num);
+void CopyInDParam(const span<const StringParameterBackup> backup);
+void CopyOutDParam(std::vector<StringParameterBackup> &backup, size_t num);
+bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup);
 
 uint64_t GetDParam(size_t n);
 

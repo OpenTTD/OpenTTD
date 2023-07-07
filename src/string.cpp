@@ -81,21 +81,6 @@ char *strecpy(char *dst, const char *src, const char *last)
 }
 
 /**
- * Create a duplicate of the given string.
- * @param s    The string to duplicate.
- * @param last The last character that is safe to duplicate. If nullptr, the whole string is duplicated.
- * @note The maximum length of the resulting string might therefore be last - s + 1.
- * @return The duplicate of the string.
- */
-char *stredup(const char *s, const char *last)
-{
-	size_t len = last == nullptr ? strlen(s) : ttd_strnlen(s, last - s + 1);
-	char *tmp = CallocT<char>(len + 1);
-	memcpy(tmp, s, len);
-	return tmp;
-}
-
-/**
  * Format a byte array into a continuous hex string.
  * @param data Array to format
  * @return Converted string.
@@ -113,8 +98,20 @@ std::string FormatArrayAsHex(span<const byte> data)
 }
 
 
+/**
+ * Copies the valid (UTF-8) characters from \c str up to \c last to the \c dst.
+ * Depending on the \c settings invalid characters can be replaced with a
+ * question mark, as well as determining what characters are deemed invalid.
+ *
+ * It is allowed for \c dst to be the same as \c src, in which case the string
+ * is make valid in place.
+ * @param dst The destination to write to.
+ * @param str The string to validate.
+ * @param last The last valid character of str.
+ * @param settings The settings for the string validation.
+ */
 template <class T>
-static void StrMakeValidInPlace(T &dst, const char *str, const char *last, StringValidationSettings settings)
+static void StrMakeValid(T &dst, const char *str, const char *last, StringValidationSettings settings)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
 
@@ -188,7 +185,7 @@ static void StrMakeValidInPlace(T &dst, const char *str, const char *last, Strin
 void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings settings)
 {
 	char *dst = str;
-	StrMakeValidInPlace(dst, str, last, settings);
+	StrMakeValid(dst, str, last, settings);
 	*dst = '\0';
 }
 
@@ -206,8 +203,9 @@ void StrMakeValidInPlace(char *str, StringValidationSettings settings)
 }
 
 /**
- * Scans the string for invalid characters and replaces then with a
- * question mark '?' (if not ignored).
+ * Copies the valid (UTF-8) characters from \c str to the returned string.
+ * Depending on the \c settings invalid characters can be replaced with a
+ * question mark, as well as determining what characters are deemed invalid.
  * @param str The string to validate.
  * @param settings The settings for the string validation.
  */
@@ -218,7 +216,7 @@ std::string StrMakeValid(std::string_view str, StringValidationSettings settings
 
 	std::ostringstream dst;
 	std::ostreambuf_iterator<char> dst_iter(dst);
-	StrMakeValidInPlace(dst_iter, buf, last, settings);
+	StrMakeValid(dst_iter, buf, last, settings);
 
 	return dst.str();
 }

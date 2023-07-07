@@ -846,7 +846,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} has been closed down by creditors and all assets sold off!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}New transport company launched!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} starts construction near {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} has been taken over by {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} has been taken over by {STRING} for an undisclosed amount!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(President)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponsored construction of new town {TOWN}!
@@ -951,6 +951,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Currency units
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency units selection
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :British Pound
@@ -972,7 +973,7 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :Icelandic Krona
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italian Lira
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Dutch Guilder
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegian Krone
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polish Złoty
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polish Zloty
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian Leu
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russian Ruble
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar
@@ -1058,12 +1059,12 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Refresh rates higher than 60Hz might impact performance.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use (cannot be changed in-game, only from the main menu)
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} missing/corrupted file{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Additional information about the base graphics set
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Base sounds set
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Select the base sounds set to use
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Select the base sounds set to use (cannot be changed in-game, only from the main menu)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Additional information about the base sounds set
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base music set
@@ -1559,7 +1560,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Gray to red
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Grayscale
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Viewport scroll behavior: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Behavior when scrolling the map
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Behavior when scrolling the map. The "mouse position locked" options don't work on all systems, like web-based versions, touchscreens, Linux with Wayland, and others
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Move viewport with RMB, mouse position locked
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Move map with RMB, mouse position locked
@@ -2081,6 +2082,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allocati
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Error with video settings...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no compatible GPU found. Hardware acceleration disabled
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU driver crashed the game. Hardware acceleration disabled
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3760,6 +3762,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Details
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}View detailed infrastructure counts
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Give money
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Give money to this company
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Hostile takeover
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Do a hostile takeover of this company
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}New Face
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Select new face for president
@@ -3775,6 +3779,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :President's Nam
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Enter the amount of money you want to give
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We are looking for a transport company to take-over our company.{}{}Do you want to purchase {COMPANY} for {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}In a hostile takeover of {COMPANY} you will purchase all assets, pay off all loans, and pay two years worth of profits.{}{}The total is estimated to be {CURRENCY_LONG}.{}{}Do you want to continue this hostile takeover?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastructure of {COMPANY}
@@ -3846,6 +3851,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Manage l
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Send instructions to all vehicles in this list
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Replace vehicles
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send for Maintenance
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Create group
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit this year: {CURRENCY_LONG} (last year: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4568,6 +4574,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Expected
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Scheduled
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and scheduled
 
+STR_TIMETABLE_ARRIVAL                                           :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :D: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -5622,6 +5630,8 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

@@ -28,7 +28,7 @@
 /* Use ReallocT instead. */
 #define realloc   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use stredup instead. */
+/* Use std::string instead. */
 #define strdup    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strndup   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 

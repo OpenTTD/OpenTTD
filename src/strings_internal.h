@@ -17,6 +17,8 @@
 /** The data required to format and validate a single parameter of a string. */
 struct StringParameter {
 	uint64_t data; ///< The data of the parameter.
+	const char *string_view; ///< The string value, if it has any.
+	std::unique_ptr<std::string> string; ///< Copied string value, if it has any.
 	WChar type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
 };
 
@@ -93,6 +95,19 @@ public:
 	}
 
 	/**
+	 * Get the next string parameter from our parameters.
+	 * This updates the offset, so the next time this is called the next parameter
+	 * will be read.
+	 * @return The next parameter's value.
+	 */
+	const char *GetNextParameterString()
+	{
+		auto ptr = GetNextParameterPointer();
+		if (ptr == nullptr) return nullptr;
+		return ptr->string != nullptr ? ptr->string->c_str() : ptr->string_view;
+	}
+
+	/**
 	 * Get a new instance of StringParameters that is a "range" into the
 	 * remaining existing parameters. Upon destruction the offset in the parent
 	 * is not updated. However, calls to SetDParam do update the parameters.
@@ -134,16 +149,45 @@ public:
 	{
 		assert(n < this->parameters.size());
 		this->parameters[n].data = v;
+		this->parameters[n].string.reset();
+		this->parameters[n].string_view = nullptr;
 	}
 
-	void SetParam(size_t n, const char *str) { this->SetParam(n, (uint64_t)(size_t)str); }
+	void SetParam(size_t n, const char *str)
+	{
+		assert(n < this->parameters.size());
+		this->parameters[n].data = 0;
+		this->parameters[n].string.reset();
+		this->parameters[n].string_view = str;
+	}
+
 	void SetParam(size_t n, const std::string &str) { this->SetParam(n, str.c_str()); }
-	void SetParam(size_t n, std::string &&str) = delete; // block passing temporaries to SetDParam
+
+	void SetParam(size_t n, std::string &&str)
+	{
+		assert(n < this->parameters.size());
+		this->parameters[n].data = 0;
+		this->parameters[n].string = std::make_unique<std::string>(std::move(str));
+		this->parameters[n].string_view = nullptr;
+	}
 
 	uint64 GetParam(size_t n) const
 	{
 		assert(n < this->parameters.size());
+		assert(this->parameters[n].string_view == nullptr && this->parameters[n].string == nullptr);
 		return this->parameters[n].data;
+	}
+
+	/**
+	 * Get the stored string of the parameter, or \c nullptr when there is none.
+	 * @param n The index into the parameters.
+	 * @return The stored string.
+	 */
+	const char *GetParamStr(size_t n) const
+	{
+		assert(n < this->parameters.size());
+		auto &param = this->parameters[n];
+		return param.string != nullptr ? param.string->c_str() : param.string_view;
 	}
 };
 
