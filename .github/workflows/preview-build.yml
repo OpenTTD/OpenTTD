@@ -10,10 +10,6 @@ on:
         description: Account ID to upload a preview to Cloudflare Pages
         required: true
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
-
 jobs:
   preview:
     name: Build preview
