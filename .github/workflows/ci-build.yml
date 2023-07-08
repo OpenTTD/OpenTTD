@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-20.04
     container:
       # If you change this version, change the number in the cache step too.
-      image: emscripten/emsdk:3.1.37
+      image: emscripten/emsdk:3.1.42
 
     steps:
     - name: Checkout
@@ -30,7 +30,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: /emsdk/upstream/emscripten/cache
-        key: 3.1.37-${{ runner.os }}
+        key: 3.1.42-${{ runner.os }}
 
     - name: Patch Emscripten to support LZMA and nlohmann-json
       run: |

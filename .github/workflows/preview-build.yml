@@ -1,0 +1,107 @@
+name: Preview build
+
+on:
+  workflow_call:
+    secrets:
+      PREVIEW_CLOUDFLARE_API_TOKEN:
+        description: API token to upload a preview to Cloudflare Pages
+        required: true
+      PREVIEW_CLOUDFLARE_ACCOUNT_ID:
+        description: Account ID to upload a preview to Cloudflare Pages
+        required: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    name: Build preview
+
+    environment:
+      name: preview
+      url: https://preview.openttd.org/pr${{ github.event.pull_request.number }}/
+
+    runs-on: ubuntu-latest
+    container:
+      # If you change this version, change the number in the cache step too.
+      image: emscripten/emsdk:3.1.42
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    - name: Name branch
+      run: |
+        git config --global --add safe.directory ${GITHUB_WORKSPACE}
+        git checkout -b pr${{ github.event.pull_request.number }}
+
+    - name: Setup cache
+      uses: actions/cache@v3
+      with:
+        path: /emsdk/upstream/emscripten/cache
+        key: 3.1.42-${{ runner.os }}
+
+    - name: Patch Emscripten to support LZMA and nlohmann_json
+      run: |
+        cd /emsdk/upstream/emscripten
+        patch -p1 < ${GITHUB_WORKSPACE}/os/emscripten/emsdk-liblzma.patch
+        patch -p1 < ${GITHUB_WORKSPACE}/os/emscripten/emsdk-nlohmann-json.patch
+
+    - name: Build (host tools)
+      run: |
+        mkdir build-host
+        cd build-host
+
+        echo "::group::CMake"
+        cmake .. -DOPTION_TOOLS_ONLY=ON
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        make -j$(nproc) tools
+        echo "::endgroup::"
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        emcmake cmake .. \
+          -DHOST_BINARY_DIR=../build-host \
+          -DCMAKE_BUILD_TYPE=Release \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        cmake --build . -j $(nproc) --target openttd
+        echo "::endgroup::"
+
+    - name: Prepare preview
+      run: |
+        mkdir public
+
+        cp build/openttd.data public/
+        cp build/openttd.html public/
+        cp build/openttd.js public/
+        cp build/openttd.wasm public/
+
+        # Ensure we use the latest version of npm; the one we get with current
+        # emscripten doesn't allow running "npx wrangler" as root.
+        npm install -g npm
+
+    - name: Publish preview
+      uses: cloudflare/pages-action@v1
+      with:
+        apiToken: ${{ secrets.PREVIEW_CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.PREVIEW_CLOUDFLARE_ACCOUNT_ID }}
+        projectName: ${{ vars.PREVIEW_CLOUDFLARE_PROJECT_NAME }}
+        directory: public
+        branch: pr${{ github.event.pull_request.number }}
