@@ -263,6 +263,14 @@ public:
 
 	void OnConnect(bool success) override
 	{
+		if (!success) {
+			UserError("Failed to connect to content server. Please acquire a graphics set for OpenTTD. See section 1.4 of README.md.");
+			/* _exit_game is used to break out of the outer video driver's MainLoop. */
+			_exit_game = true;
+			this->Close();
+			return;
+		}
+
 		/* Once connected, request the metadata. */
 		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
 	}
