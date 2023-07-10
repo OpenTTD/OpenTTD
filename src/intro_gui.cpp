@@ -517,7 +517,8 @@ void AskExitGame()
 		STR_QUIT_CAPTION,
 		STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD,
 		nullptr,
-		AskExitGameCallback
+		AskExitGameCallback,
+		true
 	);
 }
 
@@ -536,6 +537,7 @@ void AskExitToGameMenu()
 		STR_ABANDON_GAME_CAPTION,
 		(_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_ABANDON_SCENARIO_QUERY,
 		nullptr,
-		AskExitToGameMenuCallback
+		AskExitToGameMenuCallback,
+		true
 	);
 }
