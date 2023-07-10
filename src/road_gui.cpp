@@ -1681,7 +1681,7 @@ static const NWidgetPart _nested_road_station_picker_widgets[] = {
 };
 
 static WindowDesc _road_station_picker_desc(
-	WDP_AUTO, nullptr, 0, 0,
+	WDP_AUTO, "build_station_road", 0, 0,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_road_station_picker_widgets, lengthof(_nested_road_station_picker_widgets)
@@ -1766,7 +1766,7 @@ static const NWidgetPart _nested_tram_station_picker_widgets[] = {
 };
 
 static WindowDesc _tram_station_picker_desc(
-	WDP_AUTO, nullptr, 0, 0,
+	WDP_AUTO, "build_station_tram", 0, 0,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_tram_station_picker_widgets, lengthof(_nested_tram_station_picker_widgets)
