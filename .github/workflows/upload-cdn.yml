@@ -97,7 +97,7 @@ jobs:
     - name: Trigger 'Publish Docs'
       uses: peter-evans/repository-dispatch@v2
       with:
-        token: ${{ secrets.DEPLOYMENT_TOKEN }}
+        token: ${{ steps.generate_token.outputs.token }}
         repository: OpenTTD/workflows
         event-type: publish-docs
         client-payload: '{"version": "${{ inputs.version }}", "folder": "${{ inputs.folder }}"}'
