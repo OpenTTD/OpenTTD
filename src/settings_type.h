@@ -155,6 +155,7 @@ struct GUISettings {
 	uint8  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
 	bool   timetable_arrival_departure;      ///< show arrivals and departures in vehicle timetables
 	bool   right_mouse_wnd_close;            ///< close window with right click
+	bool   toolbar_dropdown_close;           ///< should toolbar dropdown buttons close immediately
 	bool   pause_on_newgame;                 ///< whether to start new games paused or not
 	SignalGUISettings signal_gui_mode;       ///< select which signal types are shown in the signal GUI
 	SignalCycleSettings cycle_signal_types;  ///< Which signal types to cycle with the build signal tool.
