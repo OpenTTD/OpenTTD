@@ -61,7 +61,7 @@ struct CargoSpec {
 	uint8 weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
 	uint16 multiplier;               ///< Capacity multiplier for vehicles. (8 fractional bits)
 	int32 initial_payment;           ///< Initial payment rate before inflation is applied.
-	uint8 transit_days[2];
+	uint8 transit_periods[2];
 
 	bool is_freight;                 ///< Cargo type is considered to be freight (affects train freight multiplier).
 	TownEffect town_effect;          ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.

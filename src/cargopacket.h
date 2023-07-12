@@ -43,7 +43,7 @@ struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 private:
 	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo.
 	uint16 count;           ///< The amount of cargo in this packet.
-	uint16 days_in_transit; ///< Amount of days this packet has been in transit.
+	uint16 periods_in_transit; ///< Amount of cargo aging periods this packet has been in transit.
 	SourceType source_type; ///< Type of \c source_id.
 	SourceID source_id;     ///< Index of source, INVALID_SOURCE if unknown/invalid.
 	StationID source;       ///< The station where the cargo came from first.
@@ -65,7 +65,7 @@ public:
 
 	CargoPacket();
 	CargoPacket(StationID source, TileIndex source_xy, uint16 count, SourceType source_type, SourceID source_id);
-	CargoPacket(uint16 count, uint16 days_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
+	CargoPacket(uint16 count, uint16 periods_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
 
 	/** Destroy the packet. */
 	~CargoPacket() { }
@@ -123,14 +123,15 @@ public:
 	}
 
 	/**
-	 * Gets the number of days this cargo has been in transit.
-	 * This number isn't really in days, but in 2.5 days (CARGO_AGING_TICKS = 185 ticks) and
-	 * it is capped at UINT16_MAX.
+	 * Gets the number of cargo aging periods this cargo has been in transit.
+	 * By default a period is 2.5 days (CARGO_AGING_TICKS = 185 ticks), however
+	 * vehicle NewGRFs can overide the length of the cargo aging period. The
+	 * value is capped at UINT16_MAX.
 	 * @return Length this cargo has been in transit.
 	 */
-	inline uint16 DaysInTransit() const
+	inline uint16 PeriodsInTransit() const
 	{
-		return this->days_in_transit;
+		return this->periods_in_transit;
 	}
 
 	/**
@@ -221,7 +222,7 @@ public:
 
 protected:
 	uint count;                   ///< Cache for the number of cargo entities.
-	uint64 cargo_days_in_transit; ///< Cache for the sum of number of days in transit of each entity; comparable to man-hours.
+	uint64 cargo_periods_in_transit; ///< Cache for the sum of number of cargo aging periods in transit of each entity; comparable to man-hours.
 
 	Tcont packets;              ///< The cargo packets in this list.
 
@@ -249,12 +250,12 @@ public:
 	}
 
 	/**
-	 * Returns average number of days in transit for a cargo entity.
+	 * Returns average number of cargo aging periods in transit for a cargo entity.
 	 * @return The before mentioned number.
 	 */
-	inline uint DaysInTransit() const
+	inline uint PeriodsInTransit() const
 	{
-		return this->count == 0 ? 0 : this->cargo_days_in_transit / this->count;
+		return this->count == 0 ? 0 : this->cargo_periods_in_transit / this->count;
 	}
 
 	void InvalidateCache();
@@ -431,11 +432,11 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy    == cp2->source_xy &&
-				cp1->days_in_transit == cp2->days_in_transit &&
-				cp1->source_type     == cp2->source_type &&
-				cp1->source_id       == cp2->source_id &&
-				cp1->loaded_at_xy    == cp2->loaded_at_xy;
+		return cp1->source_xy == cp2->source_xy &&
+				cp1->periods_in_transit == cp2->periods_in_transit &&
+				cp1->source_type == cp2->source_type &&
+				cp1->source_id == cp2->source_id &&
+				cp1->loaded_at_xy == cp2->loaded_at_xy;
 	}
 };
 
@@ -546,10 +547,10 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy    == cp2->source_xy &&
-				cp1->days_in_transit == cp2->days_in_transit &&
-				cp1->source_type     == cp2->source_type &&
-				cp1->source_id       == cp2->source_id;
+		return cp1->source_xy == cp2->source_xy &&
+				cp1->periods_in_transit == cp2->periods_in_transit &&
+				cp1->source_type == cp2->source_type &&
+				cp1->source_id == cp2->source_id;
 	}
 };
 

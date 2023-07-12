@@ -357,6 +357,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_STRING_GAMELOG,                     ///< 314  PR#10801 Use std::string in gamelog.
 
 	SLV_INDUSTRY_CARGO_REORGANISE,          ///< 315  PR#10853 Industry accepts/produced data reorganised.
+	SLV_PERIODS_IN_TRANSIT_RENAME,          ///< 316  PR#11112 Rename days in transit to (cargo) periods in transit.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
