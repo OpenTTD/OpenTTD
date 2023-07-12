@@ -45,18 +45,18 @@ static const int INDUSTRY_CUT_TREE_TICKS  = INDUSTRY_PRODUCE_TICKS * 2; ///< cyc
  */
 
 /** The minimum starting year/base year of the original TTD */
-static const TimerGameCalendar::Year ORIGINAL_BASE_YEAR = 1920;
+static constexpr TimerGameCalendar::Year ORIGINAL_BASE_YEAR = 1920;
 /** The original ending year */
-static const TimerGameCalendar::Year ORIGINAL_END_YEAR  = 2051;
+static constexpr TimerGameCalendar::Year ORIGINAL_END_YEAR = 2051;
 /** The maximum year of the original TTD */
-static const TimerGameCalendar::Year ORIGINAL_MAX_YEAR  = 2090;
+static constexpr TimerGameCalendar::Year ORIGINAL_MAX_YEAR = 2090;
 
 /**
  * Calculate the date of the first day of a given year.
  * @param year the year to get the first day of.
  * @return the date.
  */
-static inline TimerGameCalendar::Date DateAtStartOfYear(TimerGameCalendar::Year year)
+static constexpr TimerGameCalendar::Date DateAtStartOfYear(TimerGameCalendar::Year year)
 {
 	uint number_of_leap_years = (year == 0) ? 0 : ((year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400 + 1);
 
@@ -66,27 +66,27 @@ static inline TimerGameCalendar::Date DateAtStartOfYear(TimerGameCalendar::Year 
 /**
  * The date of the first day of the original base year.
  */
-static const TimerGameCalendar::Date DAYS_TILL_ORIGINAL_BASE_YEAR = DateAtStartOfYear(ORIGINAL_BASE_YEAR);
+static constexpr TimerGameCalendar::Date DAYS_TILL_ORIGINAL_BASE_YEAR = DateAtStartOfYear(ORIGINAL_BASE_YEAR);
 
 /** The absolute minimum & maximum years in OTTD */
-static const TimerGameCalendar::Year MIN_YEAR = 0;
+static constexpr TimerGameCalendar::Year MIN_YEAR = 0;
 
 /** The default starting year */
-static const TimerGameCalendar::Year DEF_START_YEAR = 1950;
+static constexpr TimerGameCalendar::Year DEF_START_YEAR = 1950;
 /** The default scoring end year */
-static const TimerGameCalendar::Year DEF_END_YEAR = ORIGINAL_END_YEAR - 1;
+static constexpr TimerGameCalendar::Year DEF_END_YEAR = ORIGINAL_END_YEAR - 1;
 
 /**
  * MAX_YEAR, nicely rounded value of the number of years that can
  * be encoded in a single 32 bits date, about 2^31 / 366 years.
  */
-static const TimerGameCalendar::Year MAX_YEAR  = 5000000;
+static constexpr TimerGameCalendar::Year MAX_YEAR = 5000000;
 
 /** The date of the last day of the max year. */
-static const TimerGameCalendar::Date MAX_DATE = DateAtStartOfYear(MAX_YEAR + 1) - 1;
+static constexpr TimerGameCalendar::Date MAX_DATE = DateAtStartOfYear(MAX_YEAR + 1) - 1;
 
-static const TimerGameCalendar::Year INVALID_YEAR = -1; ///< Representation of an invalid year
-static const TimerGameCalendar::Date INVALID_DATE = -1; ///< Representation of an invalid date
-static const Ticks INVALID_TICKS = -1; ///< Representation of an invalid number of ticks
+static constexpr TimerGameCalendar::Year INVALID_YEAR = -1; ///< Representation of an invalid year
+static constexpr TimerGameCalendar::Date INVALID_DATE = -1; ///< Representation of an invalid date
+static constexpr Ticks INVALID_TICKS = -1; ///< Representation of an invalid number of ticks
 
 #endif /* DATE_TYPE_H */
