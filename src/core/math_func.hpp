@@ -168,12 +168,12 @@ constexpr To ClampTo(From value)
 	static_assert(std::numeric_limits<To>::is_integer, "Do not clamp from non-integer values");
 	static_assert(std::numeric_limits<From>::is_integer, "Do not clamp to non-integer values");
 
-	if (sizeof(To) >= sizeof(From) && std::numeric_limits<To>::is_signed == std::numeric_limits<From>::is_signed) {
+	if constexpr (sizeof(To) >= sizeof(From) && std::numeric_limits<To>::is_signed == std::numeric_limits<From>::is_signed) {
 		/* Same signedness and To type is larger or equal than From type, no clamping is required. */
 		return static_cast<To>(value);
 	}
 
-	if (sizeof(To) > sizeof(From) && std::numeric_limits<To>::is_signed) {
+	if constexpr (sizeof(To) > sizeof(From) && std::numeric_limits<To>::is_signed) {
 		/* Signed destination and a larger To type, no clamping is required. */
 		return static_cast<To>(value);
 	}
