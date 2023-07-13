@@ -4612,8 +4612,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}One of t
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Game Script Debug window is only available for the server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI Configuration
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Game Script Configuration
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI Settings
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Game Script Settings
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}The Game Script that will be loaded in the next game
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}The AIs that will be loaded in the next game
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player
