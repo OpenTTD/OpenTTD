@@ -335,7 +335,7 @@ static const NWidgetPart _nested_osk_widgets[] = {
 };
 
 static WindowDesc _osk_desc(
-	WDP_CENTER, "query_osk", 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_OSK, WC_NONE,
 	0,
 	_nested_osk_widgets, lengthof(_nested_osk_widgets)

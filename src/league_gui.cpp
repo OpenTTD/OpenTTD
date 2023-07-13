@@ -197,7 +197,7 @@ static const NWidgetPart _nested_performance_league_widgets[] = {
 };
 
 static WindowDesc _performance_league_desc(
-	WDP_AUTO, "league", 0, 0,
+	WDP_AUTO, "performance_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
 	_nested_performance_league_widgets, lengthof(_nested_performance_league_widgets)
@@ -429,7 +429,7 @@ static const NWidgetPart _nested_script_league_widgets[] = {
 };
 
 static WindowDesc _script_league_desc(
-	WDP_AUTO, "league", 0, 0,
+	WDP_AUTO, "script_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
 	_nested_script_league_widgets, lengthof(_nested_script_league_widgets)

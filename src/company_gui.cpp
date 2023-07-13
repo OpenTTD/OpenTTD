@@ -1157,7 +1157,7 @@ static const NWidgetPart _nested_select_company_livery_widgets [] = {
 };
 
 static WindowDesc _select_company_livery_desc(
-	WDP_AUTO, "company_livery", 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_COMPANY_COLOUR, WC_NONE,
 	0,
 	_nested_select_company_livery_widgets, lengthof(_nested_select_company_livery_widgets)
@@ -1774,7 +1774,7 @@ public:
 
 /** Company manager face selection window description */
 static WindowDesc _select_company_manager_face_desc(
-	WDP_AUTO, "company_face", 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_select_company_manager_face_widgets, lengthof(_nested_select_company_manager_face_widgets)

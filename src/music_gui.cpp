@@ -642,7 +642,7 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 };
 
 static WindowDesc _music_track_selection_desc(
-	WDP_AUTO, "music_track", 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_MUSIC_TRACK_SELECTION, WC_NONE,
 	0,
 	_nested_music_track_selection_widgets, lengthof(_nested_music_track_selection_widgets)

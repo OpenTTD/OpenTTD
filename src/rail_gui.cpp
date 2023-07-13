@@ -1886,7 +1886,7 @@ static const NWidgetPart _nested_signal_builder_widgets[] = {
 
 /** Signal selection window description */
 static WindowDesc _signal_builder_desc(
-	WDP_AUTO, "build_signal", 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_SIGNAL, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_signal_builder_widgets, lengthof(_nested_signal_builder_widgets)

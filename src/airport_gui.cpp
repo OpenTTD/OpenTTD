@@ -619,7 +619,7 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 };
 
 static WindowDesc _build_airport_desc(
-	WDP_AUTO, "build_station_air", 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_build_airport_widgets, lengthof(_nested_build_airport_widgets)
