@@ -431,7 +431,7 @@ STR_FILE_MENU_EXIT                                              :Exit
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Map of world
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra viewport
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Cargo Flow Legend
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Cargo flow legend
 STR_MAP_MENU_SIGN_LIST                                          :Sign list
 
 # Town menu
