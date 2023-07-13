@@ -2921,7 +2921,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 grid
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Random
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fund new industry
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Industry Funding
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Choose the appropriate industry from this list
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Create random industries
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cover the map with randomly placed industries
