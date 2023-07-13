@@ -604,7 +604,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Operatin
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Income Graph
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Units of cargo delivered
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Company performance ratings (maximum rating=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Company values
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Company Value Graph
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Cargo Payment Rates
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Days in transit
