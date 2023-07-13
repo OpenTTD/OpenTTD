@@ -3850,16 +3850,16 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Available Aircr
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Manage list
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Send instructions to all vehicles in this list
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Replace vehicles
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send for Servicing
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send for servicing
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Create group
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit this year: {CURRENCY_LONG} (last year: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING1} {STRING1}
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Send to Depot
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Send to Depot
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Send to Depot
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Send to Hangar
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Send to depot
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Send to depot
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Send to depot
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Send to hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Click to stop all the vehicles in the list
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Click to start all the vehicles in the list
