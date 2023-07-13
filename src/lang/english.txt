@@ -3081,7 +3081,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{RAW_STRING} The OpenTTD team
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :{WHITE}Frame rate
+STR_FRAMERATE_CAPTION                                           :{WHITE}Frame Rate
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING2}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulation rate: {STRING2}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Number of game ticks simulated per second.
