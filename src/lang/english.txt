@@ -2937,8 +2937,8 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Remove a
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Are you sure you want to remove all industries?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industry chain for {STRING} industry
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industry chain for {STRING} cargo
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industry Chain - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cargo Chain - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producing industries
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepting industries
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Houses
