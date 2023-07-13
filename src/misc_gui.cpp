@@ -59,7 +59,7 @@ static const NWidgetPart _nested_land_info_widgets[] = {
 };
 
 static WindowDesc _land_info_desc(
-	WDP_AUTO, "land_info", 0, 0,
+	WDP_AUTO, nullptr, 0, 0,
 	WC_LAND_INFO, WC_NONE,
 	0,
 	_nested_land_info_widgets, lengthof(_nested_land_info_widgets)
@@ -1064,7 +1064,7 @@ static const NWidgetPart _nested_query_string_widgets[] = {
 };
 
 static WindowDesc _query_string_desc(
-	WDP_CENTER, "query_string", 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_QUERY_STRING, WC_NONE,
 	0,
 	_nested_query_string_widgets, lengthof(_nested_query_string_widgets)

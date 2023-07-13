@@ -43,7 +43,7 @@ static const NWidgetPart _nested_errmsg_widgets[] = {
 };
 
 static WindowDesc _errmsg_desc(
-	WDP_MANUAL, "error", 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,
 	_nested_errmsg_widgets, lengthof(_nested_errmsg_widgets)
@@ -63,7 +63,7 @@ static const NWidgetPart _nested_errmsg_face_widgets[] = {
 };
 
 static WindowDesc _errmsg_face_desc(
-	WDP_MANUAL, "error_face", 0, 0,
+	WDP_MANUAL, nullptr, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,
 	_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets)

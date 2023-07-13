@@ -899,7 +899,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 };
 
 static WindowDesc _game_options_desc(
-	WDP_CENTER, "settings_game", 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
 	_nested_game_options_widgets, lengthof(_nested_game_options_widgets)
