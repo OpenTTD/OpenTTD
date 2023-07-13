@@ -2944,7 +2944,7 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Acceptin
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Houses
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click at the industry to see its suppliers and customers
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click at the cargo to see its suppliers and customers
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Display chain
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industry Chain
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Display cargo supplying and accepting industries
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link to smallmap
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Select the displayed industries at the smallmap as well
