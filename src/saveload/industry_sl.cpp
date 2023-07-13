@@ -67,6 +67,12 @@ public:
 
 	void Save(Industry::ProducedCargo *p) const override
 	{
+		if (!IsValidCargoID(p->cargo)) {
+			/* Don't save any history if cargo slot isn't used. */
+			SlSetStructListLength(0);
+			return;
+		}
+
 		SlSetStructListLength(p->history.size());
 
 		for (auto &h : p->history) {
