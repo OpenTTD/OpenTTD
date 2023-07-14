@@ -39,11 +39,12 @@ public:
 
 	void Load(Industry *i) const override
 	{
-		size_t len = SlGetStructListLength(i->accepted.size());
+		size_t len = SlGetStructListLength(INDUSTRY_NUM_INPUTS);
 
-		for (auto &a : i->accepted) {
-			if (--len > i->accepted.size()) break; // unsigned so wraps after hitting zero.
-			SlObject(&a, this->GetDescription());
+		i->accepted.reserve(len);
+		for (size_t index = 0; index < len; ++index) {
+			auto &a = i->accepted.emplace_back();
+			SlObject(&a, this->GetLoadDescription());
 		}
 	}
 
@@ -115,11 +116,12 @@ public:
 
 	void Load(Industry *i) const override
 	{
-		size_t len = SlGetStructListLength(i->produced.size());
+		size_t len = SlGetStructListLength(INDUSTRY_NUM_OUTPUTS);
 
-		for (auto &p : i->produced) {
-			if (--len > i->produced.size()) break; // unsigned so wraps after hitting zero.
-			SlObject(&p, this->GetDescription());
+		i->produced.reserve(len);
+		for (size_t index = 0; index < len; ++index) {
+			auto &p = i->produced.emplace_back();
+			SlObject(&p, this->GetLoadDescription());
 		}
 	}
 
@@ -214,17 +216,19 @@ struct INDYChunkHandler : ChunkHandler {
 		}
 	}
 
-	void LoadMoveAcceptsProduced(Industry *i) const
+	void LoadMoveAcceptsProduced(Industry *i, uint inputs, uint outputs) const
 	{
-		for (uint j = 0; j != INDUSTRY_NUM_INPUTS; ++j) {
-			auto &a = i->accepted[j];
+		i->accepted.reserve(inputs);
+		for (uint j = 0; j != inputs; ++j) {
+			auto &a = i->accepted.emplace_back();
 			a.cargo = SlIndustryAccepted::old_cargo[j];
 			a.waiting = SlIndustryAccepted::old_waiting[j];
 			a.last_accepted = SlIndustryAccepted::old_last_accepted[j];
 		}
 
-		for (uint j = 0; j != INDUSTRY_NUM_OUTPUTS; ++j) {
-			auto &p = i->produced[j];
+		i->produced.reserve(outputs);
+		for (uint j = 0; j != outputs; ++j) {
+			auto &p = i->produced.emplace_back();
 			p.cargo = SlIndustryProduced::old_cargo[j];
 			p.waiting = SlIndustryProduced::old_waiting[j];
 			p.rate = SlIndustryProduced::old_rate[j];
@@ -256,8 +260,13 @@ struct INDYChunkHandler : ChunkHandler {
 				i->psa = new PersistentStorage(0, 0, 0);
 				std::copy(std::begin(_old_ind_persistent_storage.storage), std::end(_old_ind_persistent_storage.storage), std::begin(i->psa->storage));
 			}
-			if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) LoadMoveAcceptsProduced(i);
+			if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {
+				LoadMoveAcceptsProduced(i, 3, 2);
+			} else if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) {
+				LoadMoveAcceptsProduced(i, INDUSTRY_NUM_INPUTS, INDUSTRY_NUM_OUTPUTS);
+			}
 			Industry::IncIndustryTypeCount(i->type);
+			TrimIndustryAcceptedProduced(i);
 		}
 	}
 
