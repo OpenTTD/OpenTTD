@@ -804,6 +804,10 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 	return true;
 }
 
+/* Old save games always have 3 input and 2 output slots per industry. */
+static std::array<Industry::AcceptedCargo, 3> _old_accepted{};
+static std::array<Industry::ProducedCargo, 2> _old_produced{};
+
 static const OldChunks industry_chunk[] = {
 	OCL_SVAR(   OC_TILE, Industry, location.tile ),
 	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
@@ -811,29 +815,29 @@ static const OldChunks industry_chunk[] = {
 	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Industry, location.h ),
 	OCL_NULL( 2 ),  ///< used to be industry's produced_cargo
 
-	OCL_SVAR( OC_TTD | OC_UINT16, Industry, produced[0].waiting ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Industry, produced[1].waiting ),
-	OCL_SVAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, Industry, produced[0].waiting ),
-	OCL_SVAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, Industry, produced[1].waiting ),
+	OCL_VAR( OC_TTD | OC_UINT16, 1, &_old_produced[0].waiting ),
+	OCL_VAR( OC_TTD | OC_UINT16, 1, &_old_produced[1].waiting ),
+	OCL_VAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, 1, &_old_produced[0].waiting ),
+	OCL_VAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, 1, &_old_produced[1].waiting ),
 
-	OCL_SVAR(  OC_UINT8, Industry, produced[0].rate ),
-	OCL_SVAR(  OC_UINT8, Industry, produced[1].rate ),
+	OCL_VAR(  OC_UINT8, 1, &_old_produced[0].rate ),
+	OCL_VAR(  OC_UINT8, 1, &_old_produced[1].rate ),
 
 	OCL_NULL( 3 ),  ///< used to be industry's accepts_cargo
 
 	OCL_SVAR(  OC_UINT8, Industry, prod_level ),
 
-	OCL_SVAR( OC_UINT16, Industry, produced[0].history[THIS_MONTH].production ),
-	OCL_SVAR( OC_UINT16, Industry, produced[1].history[THIS_MONTH].production ),
-	OCL_SVAR( OC_UINT16, Industry, produced[0].history[THIS_MONTH].transported ),
-	OCL_SVAR( OC_UINT16, Industry, produced[1].history[THIS_MONTH].transported ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[0].history[THIS_MONTH].production ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[1].history[THIS_MONTH].production ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[0].history[THIS_MONTH].transported ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[1].history[THIS_MONTH].transported ),
 
 	OCL_NULL( 2 ), ///< last_month_pct_transported, now computed on the fly
 
-	OCL_SVAR( OC_UINT16, Industry, produced[0].history[LAST_MONTH].production ),
-	OCL_SVAR( OC_UINT16, Industry, produced[1].history[LAST_MONTH].production ),
-	OCL_SVAR( OC_UINT16, Industry, produced[0].history[LAST_MONTH].transported ),
-	OCL_SVAR( OC_UINT16, Industry, produced[1].history[LAST_MONTH].transported ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[0].history[LAST_MONTH].production ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[1].history[LAST_MONTH].production ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[0].history[LAST_MONTH].transported ),
+	OCL_VAR( OC_UINT16, 1, &_old_produced[1].history[LAST_MONTH].transported ),
 
 	OCL_SVAR(  OC_UINT8, Industry, type ),
 	OCL_SVAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, Industry, counter ),
@@ -854,6 +858,10 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
 	if (i->location.tile != 0) {
+		/* Copy data from old fixed arrays to industry. */
+		std::copy(std::begin(_old_accepted), std::end(_old_accepted), std::back_inserter(i->accepted));
+		std::copy(std::begin(_old_produced), std::end(_old_produced), std::back_inserter(i->produced));
+
 		i->town = RemapTown(i->location.tile);
 
 		if (_savegame_type == SGT_TTO) {
@@ -867,6 +875,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 		}
 
 		Industry::IncIndustryTypeCount(i->type);
+		TrimIndustryAcceptedProduced(i);
 	} else {
 		delete i;
 	}
