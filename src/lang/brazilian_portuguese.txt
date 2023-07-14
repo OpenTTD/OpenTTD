@@ -1947,9 +1947,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenhum
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador do tamanho inicial da cidade: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio das cidades grandes em relação às cidades no início do jogo
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Atualiza o gráfico de distribuição a cada {STRING}{NBSP}segundo{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo entre recálculos subseqüentes do gráfico de link. Cada recálculo calcula os planos para um componente do gráfico. Isso significa que um valor X para esta configuração não significa que todo o gráfico será atualizado a cada X segundos. Apenas algum componente o fará. Quanto mais curto você definir, mais tempo de CPU será necessário para calculá-lo. Quanto mais tempo você definir, mais tempo levará até que a distribuição de carga comece em novas rotas
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Usar {STRING}{NBSP}segundo{P 0:2 "" s} para recalcular o gráfico de distribuição
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto para cada recálculo de um componente de gráfico de link. Quando um recálculo é iniciado, um thread é gerado e pode ser executado por esse número de segundos. Quanto mais curto você definir, mais provável será que o encadeamento não seja concluído quando deveria. Então o jogo para até que seja ("lag"). Quanto mais tempo você definir, mais tempo levará para a distribuição ser atualizada quando as rotas mudarem.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para passageiros: {STRING}

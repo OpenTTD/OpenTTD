@@ -1982,8 +1982,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Neniom
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgrandeca multobligo: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Averaĝa grandeco de urbegoj rilate al normalaj urboj je la komenco de la ludo
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Ĝisdatigu la distribuan grafeon {P 0:2 "ĉiun" "ĉiujn"} {STRING}{NBSP}{P 0:2 "sekundon" "sekundojn"}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Uzu {STRING}{NBSP}sekundo{P 0:2 n jn} por rekalkulado de la distribua grafeo
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribua reĝimo por pasaĝeroj: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetria" signifas ke proksimume la sama nombro de pasaĝeroj iros de stacio A al stacio B kiel de B al A. "Malsimetria" signifas ke ajnaj nombroj de pasaĝeroj povas iri en ajnan direkton. "Permana" signifas ke ne estos aŭtomata distribuado de pasaĝeroj.

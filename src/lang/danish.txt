@@ -1946,9 +1946,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Startværdi for bystørrelsesfaktor: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gennemsnitlig størrelse af storbyer i forhold til normale byer ved start af spillet
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Opdater distributionsgraf hver {STRING}{NBSP}sekund{P 0:2 "" er}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellem efterfølgende genberegninger af linkgrafen. Hver genberegning beregner planerne for én komponent af grafen. Det betyder, at en værdi X for denne indstilling ikke betyder, at hele grafen vil blive opdateret hvert X sekund. Kun en komponent vil. Jo kortere du indstiller det, jo mere CPU-tid vil være nødvendigt for at beregne det. Jo længere du indstiller det, jo længere tid vil det tage, før godsfordelingen starter på nye ruter.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Tag {STRING}{NBSP}sekund{P 0:2 "" er} til genberegning af fordelingsgraf
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid det tager for hver genberegning af en linkgrafkomponent. Når en genberegning startes, dannes en tråd, som får lov til at køre i dette antal sekunder. Jo kortere du indstiller dette, jo mere sandsynligt er det, at tråden ikke er færdig, når den skal. Så stopper spillet, indtil det er ("lag"). Jo længere du indstiller det, jo længere tid tager det for distributionen at blive opdateret, når ruter ændres.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionsmodel for passagerer: {STRING}
