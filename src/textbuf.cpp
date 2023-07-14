@@ -476,6 +476,7 @@ HandleKeyPressResult Textbuf::HandleKeyPress(WChar key, uint16 keycode)
 		case WKC_BACKSPACE: case WKC_DELETE:
 		case WKC_CTRL | WKC_BACKSPACE: case WKC_CTRL | WKC_DELETE:
 			edited = this->DeleteChar(keycode);
+			if (!edited) return HKPR_NOT_HANDLED;
 			break;
 
 		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
