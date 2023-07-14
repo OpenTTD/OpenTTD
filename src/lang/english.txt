@@ -3539,8 +3539,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Fund the reconstruction of the urban road network.{}Causes considerable disruption to road traffic for up to 6 months.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Build a statue in honour of your company.{}Provides a permanent boost to station rating in this town.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Fund the construction of new buildings in the town.{}Provides a temporary boost to town growth in this town.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Buy 1 year's exclusive transport rights in town.{}Town authority will not allow passengers and cargo to use your competitors' stations.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Buy 1 year's exclusive transport rights in town.{}Town authority will not allow passengers and cargo to use your competitors' stations. A successful bribe from a competitor will cancel this contract.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Bribe the local authority to increase your rating and abort a competitor's exclusive transport rights, at the risk of a severe penalty if caught.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Goals
