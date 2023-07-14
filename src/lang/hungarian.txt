@@ -2002,7 +2002,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :nincs
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kezdeti városméret-szorzó: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Átlagos városméret a normál településekhez képest a játék kezdetén
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Kapcsolatgrafikon frissítése minden {STRING}{NBSP}másodpercben{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :A kapcsolatgrafikon következő újrakalkulálása között eltelt idő. Minden újrakalkulálás során egy komponens tervei kerülnek kiszámításra. Ez azt jelenti, hogy az X érték beállítása nem jelenti azt, hogy az egész grafikon X másodpercenként frissül. Csak néhány komponens lesz frissítve. Minél rövidebbre van állítva, annál több CPU időre van szükség a kiszámításhoz. Ha hosszabbra van állítva, akkor hosszabb időbe telik, amíg az áruelosztás elkezdődik az új útvonalakon.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Utasok szétosztása: {STRING}

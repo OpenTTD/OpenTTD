@@ -1816,7 +1816,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Dim
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lluosydd cychwynol maint dinas: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Maint cymhedrol dinasoedd o gymharu â threfi arferol ar ddechrau'r gêm
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Cymryd {STRING}{NBSP}eiliad ar gyfer ailgyfrifo'r graff dosraniad
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Dull dosrannu ar gyfer teithwyr: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Mae "cymesur" yn golygu y bydd tua'r un faint o deithwyr yn mynd o orsaf A i orsaf B ac yr aiff o B i A. Mae "anghymesur" yn golygu y gall niferoedd mympwyol fynd yn y naill cyfeiriad neu'r llall. Mae "â llaw" yn golygu ni fydd dosrannu diofyn yn digwydd ar gyfer teithwyr.

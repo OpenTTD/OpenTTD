@@ -1946,9 +1946,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Không
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Hệ số quy mô đô thị coi là thành phố: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kích thước trung bình của thành phố tỉ lệ với đô thị lúc bắt đầu trò chơi
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Cập nhật biểu đồ phân phối mỗi {STRING}{NBSP}giây
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Thời gian giữa các lần tính toán lại tiếp theo của biểu đồ liên kết. Mỗi lần tính toán lại sẽ tính toán các kế hoạch cho một thành phần của biểu đồ. Điều đó có nghĩa là giá trị X cho cài đặt này không có nghĩa là toàn bộ biểu đồ sẽ được cập nhật X giây một lần. Chỉ một số thành phần sẽ làm như vậy. Bạn đặt nó càng ngắn thì càng cần nhiều thời gian CPU để tính toán nó. Bạn đặt càng lâu thì càng mất nhiều thời gian cho đến khi việc phân phối hàng hóa bắt đầu trên các tuyến đường mới.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Mất {STRING}{NBSP}giây để tính toán lại biểu đồ phân phối
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Thời gian tiêu tốn cho mỗi lần tính toán lại một thành phần biểu đồ liên kết. Khi bắt đầu tính toán lại, một luồng sẽ được sinh ra và chạy trong số giây được thiết lập. Bạn đặt thông số này càng ngắn thì càng có nhiều khả luồng được tạo chưa hoàn thành công việc của nó. Sau đó, trò chơi dừng lại cho đến khi nó ("lag"). Bạn đặt càng lâu thì biểu đồ phân phối càng mất nhiều thời gian để cập nhật khi các tuyến thay đổi.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Chế độ phân phối đối với hành khách: {STRING}

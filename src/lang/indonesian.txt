@@ -1942,7 +1942,6 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Tidak ada
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Faktor kali ukuran kota awal: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Ukuran rata-rata kota besar terhadap kota kecil saat permainan dimulai
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Pembaruan grafik distribusi setiap {STRING}{NBSP} detikP 0:2 "" }
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modus distribusi untuk penumpang: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetris" berarti kira-kira jumlah penumpang sama akan pergi dari stasiun A ke stasiun B sebagaimana dari B ke A. "Asimetris" berarti jumlah penumpang pergi pada kedua arah bisa berbeda-beda. "Manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk penumpang.
