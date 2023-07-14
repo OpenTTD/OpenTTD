@@ -1218,15 +1218,16 @@ static WindowDesc _query_desc(
 );
 
 /**
- * Show a modal confirmation window with standard 'yes' and 'no' buttons
+ * Show a confirmation window with standard 'yes' and 'no' buttons
  * The window is aligned to the centre of its parent.
  * @param caption string shown as window caption
  * @param message string that will be shown for the window
  * @param parent pointer to parent window, if this pointer is nullptr the parent becomes
  * the main window WC_MAIN_WINDOW
  * @param callback callback function pointer to set in the window descriptor
+ * @param focus whether the window should be focussed (by default false)
  */
-void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback)
+void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback, bool focus)
 {
 	if (parent == nullptr) parent = GetMainWindow();
 
@@ -1240,5 +1241,6 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 		break;
 	}
 
-	new QueryWindow(&_query_desc, caption, message, parent, callback);
+	QueryWindow *q = new QueryWindow(&_query_desc, caption, message, parent, callback);
+	if (focus) SetFocusedWindow(q);
 }
