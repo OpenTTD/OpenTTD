@@ -80,7 +80,7 @@ void ResetHouseClassIDs()
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32_t grfid)
 {
 	/* Start from 1 because 0 means that no class has been assigned. */
-	for (int i = 1; i != lengthof(_class_mapping); i++) {
+	for (uint i = 1; i != std::size(_class_mapping); i++) {
 		HouseClassMapping *map = &_class_mapping[i];
 
 		if (map->class_id == grf_class_id && map->grfid == grfid) return (HouseClassID)i;
