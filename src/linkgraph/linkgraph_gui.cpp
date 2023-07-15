@@ -369,8 +369,8 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 
 			/* Check the distance from the cursor to the line defined by the two stations. */
 			Point ptb = this->GetStationMiddle(Station::Get(j->first));
-			float dist = std::abs((ptb.x - pta.x) * (pta.y - pt.y) - (pta.x - pt.x) * (ptb.y - pta.y)) /
-				std::sqrt((ptb.x - pta.x) * (ptb.x - pta.x) + (ptb.y - pta.y) * (ptb.y - pta.y));
+			float dist = std::abs((int64)(ptb.x - pta.x) * (int64)(pta.y - pt.y) - (int64)(pta.x - pt.x) * (int64)(ptb.y - pta.y)) /
+				std::sqrt((int64)(ptb.x - pta.x) * (int64)(ptb.x - pta.x) + (int64)(ptb.y - pta.y) * (int64)(ptb.y - pta.y));
 			const auto &link = j->second;
 			if (dist <= 4 && link.Usage() > 0 &&
 					pt.x + 2 >= std::min(pta.x, ptb.x) &&
