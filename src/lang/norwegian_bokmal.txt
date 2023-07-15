@@ -1188,6 +1188,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midtstilt
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høyre
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimalt innledende lån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Det maksimale beløp et selskap kan låne (uten å ta inflasjon i betraktning)
 ###setting-zero-is-special
@@ -1402,7 +1403,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minste pengemen
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighet av feilmelding: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Varighet for visning av feilmeldinger i et rødt vindu. Vær oppmerksom på at noen (kritiske) feilmeldinger ikke lukkes automatisk etter dette tidspunktet, men må lukkes manuelt
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Vis verktøytips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse før verktøytips vises når musen svever over elementer i grensesnittet. Alternativt kan verktøytips bindes til den høyre museknappen

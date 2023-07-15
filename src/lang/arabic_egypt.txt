@@ -1139,6 +1139,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :يسار
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :متوسط
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
 
+
 ###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :سعر الفائدة على القرض يتحكم أيضًا في التضخم ، إذا تم تمكينه
@@ -1279,7 +1280,6 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :عند التم
 
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :التجديد التلقائي عند توفر السيولة الدنيا للتجديد: {STRING}
 
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} ثانية
 
 ###setting-zero-is-special
 

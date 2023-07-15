@@ -1231,6 +1231,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum pinjaman awal: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jumlah maksimum yang dapat dipinjam (tanpa menghitung inflasi)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1445,7 +1446,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Jumlah uang min
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durasi pesan kesalahan: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durasi penampilan pesan kesalahan di jendela merah. Beberapa pesan kesalahan tidak ditutup secara otomatis setelah ini, tapi harus ditutup secara manual
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} detik
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Tampilkan tooltips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delay sebelum bantuan peralatan ditampilkan saat mouse diatas sebuah ikon. Selain itu bantuan peralatan juga dapat ditampilkan dengan klik kanan
@@ -1942,6 +1942,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Tidak ada
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Faktor kali ukuran kota awal: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Ukuran rata-rata kota besar terhadap kota kecil saat permainan dimulai
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Pembaruan grafik distribusi setiap {STRING}{NBSP} detikP 0:2 "" }
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modus distribusi untuk penumpang: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetris" berarti kira-kira jumlah penumpang sama akan pergi dari stasiun A ke stasiun B sebagaimana dari B ke A. "Asimetris" berarti jumlah penumpang pergi pada kedua arah bisa berbeda-beda. "Manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk penumpang.

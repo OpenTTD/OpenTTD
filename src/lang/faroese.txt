@@ -1087,6 +1087,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høgra
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Hægst loyvda byrjunar lán: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Mest loyvda upphæddin ein fyritøka kann lána (uttan at taka virðisminkan til eftirtektar)
 ###setting-zero-is-special
@@ -1285,7 +1286,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minsta nøgd av
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tíðarlongd av villuboðum: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tíðarbili ið villu boð verða víst í einum reyðum vindeyga. Legg til merkis at nøkur (umráðandi) villu boð ikki verða sjálvvirkandi afturlatin eftir hetta tíðarbil, men mugu latast aftur manuelt
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" ir}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Vís góð ráð: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Seinking áðrenn góð ráð vera víst tá músin sveimar yvur ein lut á takførisflatuni. Í øðrum lagi kunnu góðu ráðini bindast at høgra músa knøtti

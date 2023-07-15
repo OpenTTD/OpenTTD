@@ -472,6 +472,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 ###length 3
 
+
 ###setting-zero-is-special
 
 

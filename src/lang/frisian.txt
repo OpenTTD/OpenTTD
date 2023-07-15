@@ -1145,6 +1145,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lofts
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midden
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rjochts
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimale startersliening: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimale bedrach hokker troch in bedriuw lient wurde kin (sûnder acht te slaan op de ynflaasje)
 ###setting-zero-is-special
@@ -1347,7 +1348,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Bedrach wat oer
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Doer flatermeldings: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Doer fan reade flatermeldings. Guon krityske flater wurde net automatysk ôfsluten
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} seconde{P "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Arktips sjen litte: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiid wernei arktips sjen litten wurde at jo de mûs de boppe hâlde. Arktips kinne ek oan de rjochtermûsknop bûn wurde asto dizze wearde op 0 set

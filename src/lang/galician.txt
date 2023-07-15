@@ -1234,6 +1234,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dereita
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Crédito máximo inicial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidade máxima de cartos que unha compañía pode pedir (sen ter en conta a inflación)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1449,7 +1450,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Cantidade míni
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duración das mesaxes de erro: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duración das mesaxes de erro que aparecen nunha ventá vermella. Ten en conta que algunhas mesaxes de errores (críticos) non se pechan automáticamente despois deste tempo, senón que deben ser pechadas manualmente
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Amosar consellos sobre as ferramentas: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Retardo antes de que os consellos aparezan ao despraza-lo rato sobre algúns elementos da interface. Alternativamente, os consellos poden ser asignados ao botón dereito do rato
@@ -1946,7 +1946,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ningunha
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial do tamaño da cidade: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Relación entre o tamaño medio das cidades e o dos pobos ao inicio da partida
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualizar o grafo de distribución cada {STRING}{NBSP}segundo{P 0:2 "" s}.
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo entre recálculos sucesivos do grafo de ligazóns. Cada recálculo calcula os plans para un compoñente do grafo. Iso significa que un valor X para esta configuración non significa que o grafo completo sexa actualizado cada X segundos. Só algúns compoñentes o serán. Canto máis curto sexa o tempo establecido, máis tempo de CPU será necesario para calculalo. Canto máis longo sexa o tempo establecido, máis tempo levará ata que a distribución de carga comece a percorrer novas rutas.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Toma {STRING}{NBSP}segundo{P 0:2 "" s} para o recálculo do grafo de distribución.
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo necesario para cada recalculación dun compoñente do grafo de ligazóns. Cando se inicia unha recalculación, abrese un fío que se pode executar durante este número de segundos. Canto máis curto o establezas, máis probable é que o fío non remate cando se supón que debe facelo. Entón, o xogo detense ata que o fío remata («lag»). Canto máis longo o estabelezas, máis tempo levará actualizar a distribución cando cambien as rutas.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasaxeiros: {STRING}

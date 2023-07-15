@@ -584,6 +584,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Сулахай�
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Варринче
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Сылтӑмра
 
+
 ###setting-zero-is-special
 
 

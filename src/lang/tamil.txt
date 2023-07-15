@@ -1145,6 +1145,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :இடது
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :நடு
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :வலது
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :அதிகபட்ச ஆரம்ப கடன்: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :ஒரு நிறுவனத்தால் பெறமுடியும் கடன் (பணவீக்கத்தினைக் கணக்கில் எடுத்துக் கொள்ளாமல்)
 ###setting-zero-is-special
@@ -1322,7 +1323,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :காலாவ
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :தானாக புதுப்பிக்கும் வாகனங்களைக் கருத்தில் கொள்வதற்கு முன் வங்கியில் இருக்க வேண்டிய குறைந்தபட்ச பணம்
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :பிழை செய்திக்கான கால அளவு: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} விநாடி{P 0 "" கள்}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :tooltips இனை காட்டு: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} விநாடி{P 0 "" கள்} காட்டவும்

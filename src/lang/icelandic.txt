@@ -1086,6 +1086,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Hægri
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Hámarkslán: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hámarks upphæð sem fyrirtæki getur fengið lánað (ekki er gert ráð fyrir verðbólgu)
 ###setting-zero-is-special
@@ -1284,7 +1285,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Lágmarksupphæ
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tími sem villuskilaboð eru sýnileg: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tími sem villuboð í rauðu gluggunum eru sýnd. Athugið að sumum (alvarlegum) villuboðum er ekki lokað sjálfvirkt eftir þennan tíma, þeim verður að loka handvirkt
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekúnd{P 0 a ur}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Sýna vísbendingar: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Töf áður en vísbendingar eru birtar þegar músinni er haldið yfir einhverju af viðmóts atriðunum. Eins er stundum að finna vísbendingar með því að hægri smella

@@ -1281,6 +1281,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Najvišje začetno posojilo: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Najvišji znesek, ki si ga podjetje lahko izposodi (ni vključen izračun inflacije)
 ###setting-zero-is-special
@@ -1482,7 +1483,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalna vsota
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poročila o napaki: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trajanje sporočil o napakah v rdečem kvadratu. Kritična opozorila se ne zaprejo sama po tem času, ampak ročno.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 o i e ""}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Prikaz nasvetov orodij: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Čas do prikaza nasvetov orodij, ko je miška na orodju. Lahko se nasvete vidi tudi z desno tipko miške.

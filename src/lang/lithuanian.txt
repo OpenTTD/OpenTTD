@@ -1399,6 +1399,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kairėje
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centruoti
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dešinėje
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Didžiausia pradinė paskola: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Didžiausia paskola, kokią kompanija gali gauti iš banko (neatsižvelgiant į infliaciją)
 ###setting-zero-is-special
@@ -1612,7 +1613,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Mažiausias bū
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Klaidos pranešimo rodymo trukmė: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Klaidos pranešimų rodymo trukmė, po kurios pranešimas langas bus automatiškai užvertas. Atkreipkite dėmesį, kai kai kurie kritiniai pranešimai automatiškai nėra užveriami
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P ė ės žių}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Rodyti paaiškinimus: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delsos laikas prieš parodant paaiškinimą, kai pelės žymeklis yra užvedamas virš kurio nors vartotojo sąsajos elemento. Paaiškinimas taip pat gali būti susietas ir su dešiniuoju pelės klavišu, jei delsos laikas nustatomas į 0 milisekundžių

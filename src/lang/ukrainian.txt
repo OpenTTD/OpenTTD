@@ -1355,6 +1355,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ліворуч
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :по центру
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :праворуч
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальна сума позики: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальна сума позики для компанії (без урахування інфляції)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1569,7 +1570,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Мінімал�
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Тривалість повідомлення про помилку: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Тривалість відображення повідомлень про помилки (червоне вікно повідомлень). Деякі (критичні) повідомлення необхідно закривати власноруч.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} секунд{P а и ""}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Відображати підказки: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Затримка перед відображенням підказок при наведенні курсором на елементи інтерфейса. Окрім того, відображення підказок можна призначити на праву кнопку миші, якщо це значення поставити на 0.

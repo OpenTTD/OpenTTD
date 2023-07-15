@@ -1229,6 +1229,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vänster
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalt startlån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1444,7 +1445,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minsta belopp s
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid för felmeddelanden: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tid som felmeddelanden i ett rött fönster ska visas. Notera att vissa (kritiska) felmeddelanden inte stängs automatiskt efter denna tid, utan måste stängas manuellt
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Visa tooltips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen när detta värde är satt till 0.
@@ -1941,7 +1941,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks-multiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Uppdatera distributionsdiagram var {STRING}{NBSP}sekund{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det betyder att ett värde X för den här inställningen inte betyder att hela grafen kommer att uppdateras var X:e sekund. Bara viss komponent kommer att göra det. Ju kortare du ställer in den desto mer CPU-tid kommer att behövas för att beräkna den. Ju längre du ställer in den desto längre tid tar det tills lastdistributionen startar på nya rutter.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Ta {STRING}{NBSP}sekund{P 0:2 "" s} för omräkning av distributionsdiagrammet
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid som det tar för varje omräkning av en länkdiagramkomponent. När en omräkning startas skapas en tråd som tillåts köra i detta antal sekunder. Ju kortare du ställer in detta desto mer sannolikt är det att tråden inte är färdig när den ska. Sedan stannar spelet tills det är ("lag"). Ju längre du ställer in den desto längre tid tar det för distributionen att uppdateras när rutter ändras.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionssätt för passagerare: {STRING}

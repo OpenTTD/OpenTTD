@@ -1329,6 +1329,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ris an taobh ch
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sa mheadhan
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ris an taobh deas
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Iasad tòiseachaidh as motha: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :An t-airgead as motha as urrainn dha chompanaidh fhaighinn mar iasad (a' fàgail an atmhorachd dhan darna taobh)
 ###setting-zero-is-special
@@ -1532,7 +1533,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Feumaidh an uir
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :An ùine a mhaireas brath mearachd: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :An ùine a mhaireas brath mearachd ann an uinneag dearg. Thoir an aire nach dùin cuid dhe na brathan as cudromaiche leotha fhèin is gum feum thu an toirt air falbh a làimh.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P 0 diog dhiog diogan diog}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Seall gliocasan-sgrìn: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Dèan dàil mus tèid gliocasan-sgrìn a shealltainn nuair a chumas mi an luchag os cionn eileamaid na h-eadar-aghaidh. Mar roghainn eile, thèid gliocasan-sgrìn nasgadh ri putan deas na luchaige ma chuireas tu an luach air 0.

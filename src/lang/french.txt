@@ -1235,6 +1235,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :À gauche
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrée
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Emprunt initial maximum{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1450,7 +1451,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantité minim
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Temps d'affichage des messages d'erreur{NBSP}: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durée pour l'affichage des messages d'erreur dans une fenêtre rouge. Noter que certains messages d'erreur (critique) ne sont pas fermés automatiquement après ce délai, mais doivent être fermés manuellement
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} seconde{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Affichage des infobulles{NBSP}: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Délai avant que les infobulles soient affichées lorsque la souris survole certains éléments de l'interface. Les infobulles peuvent également être affectées au bouton droit de la souris en réglant cette valeur à 0.
@@ -1947,7 +1947,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Aucune
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicateur initial pour la taille des métropoles{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Taille moyenne des métropoles par rapport aux villes normales au début de la partie
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Mise à jour le graphe de distribution toutes les {STRING}{NBSP}seconde{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Intervalle entre les recalculs successifs du graphe de liaison. Chaque recalcul planifie un composant du graphe. Cela signifie qu'une valeur X pour ce paramètre ne signifie pas que l'ensemble du graphe sera mis à jour toutes les X secondes. Seul un composant le sera. Plus vous définissez cet intervalle court, plus le temps de processeur nécessaire pour le calcul sera important. Plus vous définissez cet intervalle long, plus il faudra de temps pour que la distribution de marchandises commence sur de nouveaux itinéraires.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Prend {STRING}{NBSP}seconde{P 0:2 "" s} pour le recalcul du graphe de distribution
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Temps pris pour chaque recalcul d'un composant du graphe de liaison. Lorsqu'un recalcul est lancé, un fil d'exécution est créé et autorisé à fonctionner pendant ce nombre de secondes. Plus vous définissez cette durée courte, plus il est probable que le fil ne soit pas terminé lorsqu'il est censé l'être. Ensuite, le jeu s'arrête jusqu'à ce qu'il le soit ("lag"). Plus vous définissez cette durée longue, plus il faut de temps pour que la distribution soit mise à jour lorsque les itinéraires changent.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Type de distribution pour les passagers{NBSP}: {STRING}

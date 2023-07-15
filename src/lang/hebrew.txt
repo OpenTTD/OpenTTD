@@ -1158,6 +1158,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :שמאל
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :מרכז
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :סכום הלוואה ראשוני: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :סכום מירבי שחברה יכולה ללוות (מבלי לקחת בחשבון אינפלציה)
 ###setting-zero-is-special
@@ -1364,7 +1365,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :סכום כסף
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :משך הצגת הודעת שגיאה: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :פרק הזמן להצגת הודעות שגיאה בחלון אדום. יש לשים לב כי כמה הודעות שגיאה (קריטיות) אינן נסגרות אוטומטית אחרי פרק זמן זה, אלא יש לסגור אותן ידנית
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{P 0 "שנייה " ""}{COMMA}{P "" " שניות"}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :הצג רמזים צצים: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :השהייה טרם הצגת רמזים צצים כאשר העכבר מרחף מעל חלק ממשק. לחלופין, ניתן לקשר רמזים צצים לכפתור העכבר הימני כאשר מוגדר 0.

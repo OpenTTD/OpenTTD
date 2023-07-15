@@ -1304,6 +1304,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Maldekstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dekstre
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimuma komenca prunto: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimuma monsumo kiun kompanio povas prunti (sen enkalkulado de inflacio)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1512,8 +1513,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimuma mono p
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimuma monkvanto kiu devas resti en la banko antaŭ eventuala aŭtomata renovigo de veturiloj
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Daŭro de erarmesaĝo: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekundo{P 0 "" j}
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE.n                      :{COMMA} sekundo{P 0 "" j}n
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Montri ŝpruchelpilojn: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Ŝvebu dum {COMMA} milisekundo{P 0 "" j}
@@ -1982,6 +1981,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Neniom
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgrandeca multobligo: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Averaĝa grandeco de urbegoj rilate al normalaj urboj je la komenco de la ludo
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Ĝisdatigu la distribuan grafeon {P 0:2 "ĉiun" "ĉiujn"} {STRING}{NBSP}{P 0:2 "sekundon" "sekundojn"}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Uzu {STRING}{NBSP}sekundo{P 0:2 n jn} por rekalkulado de la distribua grafeo
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribua reĝimo por pasaĝeroj: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetria" signifas ke proksimume la sama nombro de pasaĝeroj iros de stacio A al stacio B kiel de B al A. "Malsimetria" signifas ke ajnaj nombroj de pasaĝeroj povas iri en ajnan direkton. "Permana" signifas ke ne estos aŭtomata distribuado de pasaĝeroj.

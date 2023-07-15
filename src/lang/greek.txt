@@ -1312,6 +1312,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Αριστερ�
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Κέντρο
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Δεξιά
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Μέγιστο αρχικό δάνειο: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Μέγιστο ποσό που μπορεί να δανειστεί μία εταιρία (χωρίς να λαμβάνεται υπόψη ο πληθωρισμός)
 ###setting-zero-is-special
@@ -1525,7 +1526,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Ελάχιστ�
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Διάρκεια μηνύματος σφάλματος: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Διάρκεια εμφάνισης μηνύματων σφάλματος σε κόκκινο παράθυρο. Σημειώστε ότι μερικά (κρίσιμα) μηνύματα σφάλματος δεν κλείνουν αυτόματα μετά από αυτόν τον χρόνο, αλλά πρέπει να κλείσουν χειροκίνητα
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} δευτερόλεπτ{P 0 ο α}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Εμφάνιση αναδυόμενων μηνυμάτων: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Καθυστέρηση πριν την εμφάνιση των επεξηγήσεων όταν ο δείκτης του ποντικιού βρίσκεται πάνω από κάποιο στοιχείο της διεπαφής. Εναλλακτικά, οι επεξηγήσεις συνδέονται με το δεξί κουμπί του ποντικιού όταν η τιμή αυτού του πεδίου είναι 0.

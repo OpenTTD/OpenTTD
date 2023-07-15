@@ -1321,6 +1321,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Laevo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Medio
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dextro
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Creditum maximum in initio: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Copia crediti maxima (sine inflatione)
 ###setting-zero-is-special
@@ -1525,7 +1526,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Copia pecuniae 
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duratio nuntiorum errorum: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duratio nuntia errorum in fenestra rubra ostendendi. Cave, aliquae (severa) nuntia errorum non automatice clauditur, et necesse est lusori claudere
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} secund{P um a}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Ostendere nuntia adiuvantia: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Mora antequam nuntia adiuvantia ostenduntur cum mus elemento interfaciei superponitur. Etiam adiuvantia nuntia possunt ostendi globulo muris dextro cum hic valor 0 est

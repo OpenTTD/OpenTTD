@@ -1208,6 +1208,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :pa kreisi
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centrā
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimālais sākotnējais aizdevums: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimālais aizdevuma daudzums, ko uzņēmums var izsniegt (neskaitot inflāciju)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1423,7 +1424,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimālais nau
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Kļūdas ziņojuma ilgums: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Kļūdas ziņojuma sarkanā logā rādīšanas ilgums. Jāņem vērā ka daži (kritiskie) kļūdu ziņojumi pēc šī laika netiek slēgti automātiski, bet tos ir jāaizver manuāli
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekun{P 0 di des žu}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Rādīt rīku padomus: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Aizkaves ilgums, pirms tiek rādīti rīku padomi, kad peles kursors atrodas virs kāda saskarnes elementa. Rīku padomu rādīšanu pārmaiņus var saistīt ar peles labās pogas klikšķi

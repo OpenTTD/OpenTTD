@@ -1145,6 +1145,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Senter
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Regs
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum aanvanklike lening: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimum bedrag wat 'n maatskappy kan leen (sonder die inagneming van inflasie)
 ###setting-zero-is-special
@@ -1350,7 +1351,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimale bedrag
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tyd wat fout boodskap wys: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tydsduur vir die vertoning van foutboodskappe. Kritiese foutboodskappe word nie outomaties toegemaak nie.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekonde{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :wys sleutel-leidraad: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tydsduur voor nutswenke vertoon words as die muis oor koppelvlakelemente gehou word. Alternatiewelik kan die nutswenke ook aan die regter-muisknoppie verbind word indien die stelling na 0 gestel word.

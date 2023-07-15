@@ -1234,6 +1234,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima del préstec que pot demanar una companyia (sense tenir en compte la inflació)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1449,7 +1450,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Estableix la qu
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duració del missatge d'error: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duració dels missatges d'error mostrats en finestres vermelles. Alguns missatges d'error (crítics) no es tanquen automàticament i s'han de tancar manualment
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segon{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostra descripcions emergents: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Retard abans que les descripcions emergents siguin mostrades quan el ratolí sigui sobre algun element de la interfície. Alternativament, les descripcions emergents poden ser vinculades al botó dret del ratolí si aquest paràmetre s'estableix en 0.
@@ -1946,7 +1946,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida inicial de ciutats: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida.
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualitza el graf de distribució cada {STRING}{NBSP}segon{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Temps entre actualitzacions de les arestes del graf de distribució. Cada vegada es calcularan els plans d'un dels components del graf. Això vol dir que un valor X d'aquesta opció no significa que es recalculi el graf sencer cada X segons. Només ho farà algun component. Com més curt sigui, farà falta més temps de CPU per a calcular-lo. Com més llarg sigui, més es trigarà a què la distribució de càrrega s'apliqui a les rutes noves.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Triga {STRING}{NBSP}segon{P 0:2 "" s} per a recalcular el graf de distribució
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Temps emprat per a cada actualització del component d'una aresta del graf. Quan comença el recàlcul, s'inicia un fil que pot executar-se durant aquests segons. Com més curt sigui, més probable és que el fil no acabi a temps. Llavors, la partida para fins que finalitzi, provocant una interrupció del desenvolupament de la partida. Com més llarg sigui, més es trigarà a actualitzar el graf de distribució quan es facin canvis de rutes.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mode de distribució per passatgers: {STRING}

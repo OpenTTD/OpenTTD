@@ -1401,6 +1401,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Najveći zajam na početku: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Najveći iznos koji preduzeće može da pozajmi (ne uzimajući u obzir inflaciju)
 ###setting-zero-is-special
@@ -1614,7 +1615,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Najmanji iznos 
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poruke o greški: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trajanje prikazivanja poruka o greškama u crvenom prozoru. Neke (kritične) poruke o greškama se ne zatvaraju automatski posle ovog vremena nego moraju da se zatvore ručno
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P a e i}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Prikaži poruke u ispod strelice miša: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Kašnjenje pre prikaza objašnjenja alata kada se miš postavi iznad nekog elementa interfejsa. Alternativno, objašnjenja alata se mogu vezati uz desnu dugmetom na mišu kada je ova vrednost postavljena na 0.

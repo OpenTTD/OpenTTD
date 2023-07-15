@@ -1235,6 +1235,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Mitte
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Kreditlimit bei Spielbeginn: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1450,7 +1451,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Geldbetrag, der
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Anzeigedauer für Fehlermeldungen: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Anzeigedauer für Fehlermeldungen in einem roten Fenster. Bedenken Sie, dass einige (kritische) Fehlermeldungen nicht automatisch nach dieser Dauer geschlossen werden, sondern manuell geschlossen werden müssen
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} Sekunde{P 0 "" n}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Zeige kurzen Hilfetext: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Einstellen, wie lange man zum Aufruf von Hilfetexten zur Erklärung der Funktionen im Spiel mit dem Mauszeiger über der gewünschten Stelle stehenbleiben muss. Alternativ werden die Hilfetexte bei einem Rechtsklick sofort angezeigt, wenn dieser Wert auf 0 gesetzt wird.
@@ -1947,7 +1947,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Keine
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Größe von Großstädten bei Spielbeginn: {STRING}×
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Durchschnittliche Größe von Großstädten relativ zu normalen Städten bei Spielbeginn
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Verteilungsgraphen jede {STRING}{NBSP}Sekund{P 0:2 "" en} aktualisieren
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Zeit zwischen anfolgenden Neuberechnungen der Warenverteilung. Jede Neuberechnung berechnet die Pläne für eine Komponente des Graphen. Das bedeutet, dass ein Wert X für diese Einstellung nicht bedeutet, dass der gesamte Graph alle X Sekunden aktualisiert wird. Nur ein Teil wird es. Je kürzer du die Zeit festlegst, desto mehr CPU-Zeit wird nötig sein, um ihn zu berechnen. Je länger du die Zeit festlegst, desto länger wird es dauern, bis die Frachtverteilung auf neuen Strecken beginnt.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :{STRING}{NBSP}Sekund{P 0:2 "" en} für Neuberechnung des Verteilungsgraphen nehmen
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Zeit für jede Neuberechnung einer Warenverteilungskomponente. Wenn eine Neuberechnung gestartet wird, wird ein Thread gestartet, der für diese Anzahl von Sekunden laufen darf. Je kürzer du ihn festlegst, desto wahrscheinlicher ist es, dass der Thread nicht beendet ist, wenn er aber sein sollte. Dann wird das Spiel beendet, sobald dies der Fall ist („Lag“). Je länger du es festlegst, desto länger dauert es, bis die Verteilung aktualisiert wird, wenn sich Routen ändern.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Verteilungsschema für Passagiere: {STRING}

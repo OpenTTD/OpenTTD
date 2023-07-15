@@ -605,7 +605,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}경영 �
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}수익 그래프
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}수송 화물량
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}회사 성취도 (최고 1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}회사 가치
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}회사가치 그래프
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 운송단가 비율
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}통과시간
@@ -1235,6 +1235,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :왼쪽
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :가운데
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 대출금: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 대출금의 양을 조절할 수 있습니다. (여기서 설정한 값은 인플레이션에 의한 효과를 적용하지 않은 값입니다.)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1450,7 +1451,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :차량을 자�
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :오류 메시지 표시: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :오류 메시지를 표시할 시간을 설정합니다. 일부 (중요한) 오류 메시지는 이 시간이 지나도 자동으로 사라지지 않고 수동으로 꺼야할 수도 있음을 알아두십시오.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA}초 동안
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :도움말 보이기: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :마우스를 올려놓았을 때 도움말이 뜨는데 걸리는 시간을 설정합니다. 마우스 오른쪽 클릭으로 바로 뜨도록 할 수도 있습니다.
@@ -1947,7 +1947,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :없음
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :초기 대도시 크기 비율: 일반 도시보다 {STRING}배 크게 시작
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :게임을 시작했을 때 일반 도시에 대한 대도시의 평균 크기를 설정합니다
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :분배 그래프를 매 {STRING}초마다 업데이트
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :각 연결 그래프의 하위 시퀀스 재계산 사이의 시간입니다. 각 재계산은 그래프의 한 구성 요소에 대한 계획을 계산합니다. 즉, 이 설정을 X로 설정한다고 해서 전체 그래프를 X초마다 업데이트한다는 뜻은 아닙니다. 일부 구성 요소만 X초마다 업데이트됩니다. 이 값을 더 짧게 설정할 수록 계산하는데 더 많은 CPU 계산 시간이 필요합니다. 값을 더 길게 설정하면 화물 분배가 새 경로로 이뤄지기까지 더 오랜 시간이 걸리게 됩니다.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :분배 그래프의 재계산을 위해 {STRING}초 사용
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :각 연결 그래프의 구성 요소를 재계산하는데 걸리는 시간입니다. 재계산이 시작되면, 이 시간(초) 동안 실행할 수 있는 스레드가 생성됩니다. 이 값을 더 짧게 설정할수록 스레드가 완료되어야 할 때 완료되지 못할 가능성이 높아집니다. 그러면 이를 완료하기 전까지는 게임이 멈추게 됩니다. 값을 더 길게 설정하면 경로가 변경되었을 때 분배가 업데이트되는 데 더 오래 걸립니다.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :승객에 대한 분배 형식: {STRING}
@@ -2936,14 +2938,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}모든 �
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}정말 모든 산업시설을 제거하시겠습니까?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING}{G 0 "과" "와"} 관련된 산업시설 연계도
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING}{G 0 "과" "와"} 관련된 산업시설 연계망
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}화물 연계도 - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}화물 연계망 - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}생산 산업시설
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}소비 산업시설
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}도시 가구
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}이 산업시설의 공급자와 고객을 보려면 클릭하세요
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}이 화물의 공급자와 고객을 보려면 클릭하세요
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}산업시설 연계도 보기
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}산업시설 연계도
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}이 산업시설에서 생산/소비하는 화물을 보여줍니다
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}지도에 표시
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}위 산업망에 표시된 산업을 소형 지도에서 볼 수 있게 합니다
@@ -3538,8 +3540,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}도시 도로망 보수공사를 시행합니다.{}앞으로 6개월간 극심한 도로 혼잡을 일으킵니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}당신의 회사를 대표하는 '명예의 동상'을 건설합니다.{}이 도시에 있는 역 등급을 영구적으로 올려줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}도시 상업 건물의 건설에 투자합니다.{}도시의 성장을 일시적으로 빠르게 만들어줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}1년 간 수송 권한 독점권을 구입합니다.{}도시 당국은 오직 당신 회사의 역에만 승객과 화물을 실을 것입니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}1년 간 수송 권한 독점권을 구입합니다.{}도시 당국은 오직 당신 회사의 역에만 승객과 화물을 실을 것입니다.{}경쟁사의 뇌물 수수가 성공하면 이 독점권 계약은 취소됩니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}성취도를 올리고 경쟁사의 독점권을 무효화하기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}{POP_COLOUR}가격: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 목표

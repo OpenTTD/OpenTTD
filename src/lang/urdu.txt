@@ -1059,6 +1059,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :بائیں
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :درمیان
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
 
+
 ###setting-zero-is-special
 
 

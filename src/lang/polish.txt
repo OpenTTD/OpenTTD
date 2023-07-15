@@ -1614,6 +1614,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :z lewej strony
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :wyśrodkowany
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksymalna wysokość początkowej pożyczki: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki, jaką firma może zaciągnąć (bez uwzględnienia inflacji)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1829,7 +1830,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalna iloś
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Czas wyświetlania komunikatów o błędach: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Czas wyświetlania komunikatów o błędach w czerwonym oknie. Niektóre (krytyczne) komunikaty o błędach nie zamykają się automatycznie po tym czasie, tylko muszą zostać zamknięte ręcznie
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P a y ""}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Pokaż podpowiedzi: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Opóźnienie wyświetlania podpowiedzi po najechaniu myszą na element interfejsu. Ewentualnie podpowiedzi mogą być przypisane do prawego przycisku myszy, jeśli wartość ta będzie ustawiona na 0.
@@ -2326,7 +2326,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Żadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mnożnik rozmiarów metropolii: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar metropolii w porównaniu do normalnych miast na początku gry
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aktualizuj graf dystrybucji co {STRING}{NBSP}sekund{P 0:2 ę y ""}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Czas pomiędzy kolejnymi przeliczeniami grafu połączeń. Każde przeliczenie oblicza plany dla jednego komponentu grafu. Wartość X dla tego ustawienia nie oznacza, że cały graf będzie aktualizowany co X sekund. Aktualizowane będą tylko niektóre komponenty. Im mniejszą wartość ustawisz, tym więcej czasu będzie potrzebował procesor, aby wykonać obliczenia. Im większą wartość ustawisz, tym więcej czasu upłynie, zanim rozpocznie się dystrybucja ładunków po nowych trasach.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Przeznacz {STRING}{NBSP}sekund{P 0:2 ę y ""} na przeliczenie grafu dystrybucji
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Czas potrzebny na każde przeliczenie komponentu grafu połączeń. Po rozpoczęciu przeliczania, tworzony jest wątek, który może działać przez podaną liczbę sekund. Im mniejszą wartość ustawisz, tym większe prawdopodobieństwo, że wątek nie zostanie ukończony w wyznaczonym czasie. Wtedy gra zatrzymuje się do czasu jego zakończenia („lag”). Im większą wartość ustawisz, tym dłużej będzie trwała aktualizacja dystrybucji, gdy zmienią się trasy.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Tryb dystrybucji dla pasażerów: {STRING}

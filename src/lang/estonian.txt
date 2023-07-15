@@ -1262,6 +1262,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vasakul
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskel
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Stardilaenu ülempiirang: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Suurim summa, mida ettevõte saab laenata (arvestamata inflatsiooni)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1477,7 +1478,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Väikseim panga
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Veateadete kestvus: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Punases aknas olevate veateadete näitamise kestvus. On ka mõned (tähtsad) veateated, mis ise ei sulgu, vaid mis tuleb käsitsi sulgeda
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" it}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Vihjeid näidatakse pärast: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viivitus, kui kaua peab hiirega liidese osale osutama, enne kui selle kohta vihjet näidatakse. On ka võimalik vihjeid parema hiireklõpsuga näidata

@@ -1293,6 +1293,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlevo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :uprostřed
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximální půjčka: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jak moc si může společnost půjčit (bez ohledu na inflaci)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1508,7 +1509,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimální č�
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Doba zobrazení chybové zprávy: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Doba zobrazení chybových zpráv v červeném okně. Některé zprávy o (kritických) chybách však nejsou zavírány automaticky a musí být zavřeny ručně.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Zobrazení kontextové nápovědy: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Prodleva před zobrazením nápovědy, pokud kurzor leží nad nějakým ovládacím prvkem. Nápověda může být rovněž vyvolána pravým tlačítkem myši.

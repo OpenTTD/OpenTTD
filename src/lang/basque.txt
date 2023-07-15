@@ -1108,6 +1108,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ezkerra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Erdia
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Eskuina
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Gehienezko mailegua joko hasieran: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Konpainiek eskatu dezaketen gehienezko mailegua(inflazioa kontua hartu gabe)
 ###setting-zero-is-special
@@ -1306,7 +1307,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Bankuan gutxien
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Akats mezuen iraupena: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Lehio gorrian agertzen diren akats mezuen iraupena automatikoki itxi baino lehen. Kontuan hartu zeinbait akats mezu (Kritikoak) ez direla automatikoki itxiko ezarritako denbora pasa eta gero, eskuz itxi behako dira
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundu
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Erakutsi argibideak: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Sagua, interfazeko elementu batzuen gainean jartzerakoan, argibideak bistaratu aurretik pasa beharko den denbora. Elementu batzuetan saguko eskuineko botoia sakatu beharko da

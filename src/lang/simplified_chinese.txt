@@ -1206,6 +1206,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左侧
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :最大初始贷款: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最大贷款额（不考虑通货膨胀的影响）
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1421,7 +1422,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :启动自动更
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :错误信息持续时间{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :红色窗口显示错误信息的持续时间，在这个时间内一些紧急的错误信息不会自动关闭，必须手动关闭
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} 秒
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :显示提示信息：{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :此设置决定鼠标停留在图标、按键或功能时显示提示信息的时间。如果此设置被赋值为 0，您必须揿住鼠标右键来显示图标、按键或功能的提示信息。

@@ -1275,6 +1275,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vľavo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :v strede
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximálny počiatočný úver: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálna množstvo peňazí ktoré si môže spoločnosť požičať (bez inflácie)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1490,7 +1491,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimálna suma
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trvanie zobrazenia chybovej hlášky: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trvanie zobrazenia chybovej hlášky v červenom okne. Uvedomte si že niektoré "kritické" správy nezmiznú po uplynutí času, ale musia byť zatvorené ručne.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sek{P unda undy únd}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Ukázať nápovedu: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oneskorenie pred zobrazením nápovedy po prejdení prvku rozhrania myšou. Nápoveda môže byť eventuálne nastavené aj na kliknutie pravým tlačidlom myši pri hodnote 0.

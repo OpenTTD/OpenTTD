@@ -1206,6 +1206,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lénks
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Zentréiert
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Riets
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalen Ufanksloun: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalwäert den eng Firma kann léinen (ouni Inflatioun matzerechnen)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1421,7 +1422,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalt Geld w
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Dauer vun der Feelermeldung: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Zäit déi eng Feelermeldung an enger rouder Fënster ugewisen gëtt. E puer kritesch Meldungen ginn net zougemeet
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} Sekonn{P 0 "" en}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Weis Tooltips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Verzögerung bis d'Tooltips ugewisen ginn, wann een mat der Maus iwwert en Element geet. Alternativ kënnen d'Tooltips och op d'riets Maustast geluet ginn wann dësen Wäert op 0 gesat gouf.

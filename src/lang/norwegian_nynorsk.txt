@@ -1126,6 +1126,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midtstilt
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høgre
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimalt startlån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimalt lån eit firma kan ta opp (utan å reikne med inflasjon)
 ###setting-zero-is-special
@@ -1306,7 +1307,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} månad{
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum formue for autofornying av køyretøy: {STRING}
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighet for feilmelding: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Syn verktøytips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hold over i {COMMA} sekund{P 0 "" s}

@@ -1141,6 +1141,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ซ้าย
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :กลาง
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ขวา
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :เงินกู้เริ่มต้นสูงสุด: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :บริษัท สามารถกู้ยืมเงินจำนวนสูงสุด (โดยไม่คำนึงถึงอัตราเงินเฟ้อเข้าบัญชี)
 ###setting-zero-is-special
@@ -1342,7 +1343,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :จำนวน
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :ระยะเวลาแสดงของข้อความแจ้งความผิดพลาด: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :เป็นระยะเวลาที่จะคงแสดงข้อความแจ้งความผิดพลาดของเกม จะคงอยู่ตามระยะเวลาที่ตั้งค่าไว้ข้างต้น
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} วินาที
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :แสดงบอลลูนข้อความช่วยเหลือ: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :หน่วงระยะเวลาเป็นวินาทีเมื่อนำเมาส์วางไว้เหนือปุ่มต่างๆเพื่อแสดงข้อความช่วยเหลือ

@@ -432,7 +432,7 @@ STR_FILE_MENU_EXIT                                              :Sair
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa do mundo
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Visualizador extra
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda de fluxo de carga
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda do fluxo de carga
 STR_MAP_MENU_SIGN_LIST                                          :Lista de sinais
 
 # Town menu
@@ -456,7 +456,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas por car
 # Company league menu
 ###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Classificação de empresas
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Avaliação detalhada
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Classificação detalhada de desempenho
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela de classificações
 
 # Industry menu
@@ -604,8 +604,8 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico do Lucro Operacional
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfico de Rendimentos
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregues
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Avaliações da empresa (máximo=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor da empresa
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Classificações do desempenho da empresa (máximo=1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gráfico de Valor da Empresa
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas por carga
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dias em trânsito
@@ -617,7 +617,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não mos
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar/ocultar gráfico para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir detalhes de rendimentos
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir classificações detalhadas de desempenho
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Chave dos gráficos da empresa
@@ -637,7 +637,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnata
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalhes de rendimentos
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Classificação Detalhada de Desempenho
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -1235,6 +1235,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantia máxima que uma companhia pode pedir (sem ter em conta a inflação)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1276,7 +1277,7 @@ STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STR
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ativa desastres que podem ocasionalmente bloquear ou destruir veículos ou infraestruturas
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da autoridade local: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolha de que forma o ruído e dano ambiental causado pelas empresas afeta o rating da povoação e futuras ações de construção nessa povoação
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolha o quanto o ruído e os danos ambientais causados pelas empresas afetam a classificação da povoação e outras ações de construção na cidade
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite de altura do mapa: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Define a altura máxima do terreno do mapa. Com "(auto)" um bom valor será escolhido após a geração do terreno
@@ -1450,7 +1451,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantidade mín
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da mensagem de erro: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duração da visualização de mensagens de erro em janela vermelha. Note que algumas mensagens de erro (críticas) não são fechadas após este tempo e têm que ser fechadas manualmente
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar textos de ajuda: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Atraso após o qual os textos de ajuda são mostrados após parar o cursor sobre algum elemento da interface. Alternativamente, os textos de ajuda podem ser mostrados com o botão direito do rato quando este valor está definido como 0
@@ -1947,7 +1947,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenhum
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial para a dimensão das metrópoles: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho relativo das cidades em relação ao tamanho normal das localidades aquando o início do jogo
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Atualizar o gráfico de distribuição a cada {STRING}{NBSP}segundo{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo de intervalo entre recalculos subsequentes do gráfico de ligações. Cada recalculo calcula os planos para um componente do gráfico. Isso significa que um valor X para esta configuração não significa que todo o gráfico será atualizado a cada X segundos. Apenas algum componente será. Quanto mais curto escolher, mais tempo de CPU será necessário para calcular. Quanto mais tempo for definido, mais tempo levará até que a distribuição de carga inicie nas novas rotas.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Usar {STRING}{NBSP}segundo{P 0:2 "" s} para recalcular o gráfico de distribuição
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo gasto para cada recalculo de um componente de gráfico de ligação. Quando um recalculo é iniciado, um encadeamento é gerado e pode ser executado nesse número de segundos. Quanto mais curto você definir, mais provável será que o encadeamento não seja concluído quando deveria. Então o jogo pára até que seja ("lag"). Quanto mais tempo você definir, mais tempo levará para a distribuição ser atualizada quando as rotas mudarem.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribuição para os passageiros: {STRING}
@@ -2920,7 +2922,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}grelha 3
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatório
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financiar nova indústria
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financiar Indústria
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Escolha a indústria apropriada desta lista
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Criar indústrias aleatórias
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cobrir o mapa com indústrias colocadas aleatoriamente
@@ -2936,14 +2938,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Remover 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Tem a certeza que deseja remover todas as indústrias?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadeia de indústrias para a indústria {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadeia de indústrias para a mercadoria {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadeia da Indústria - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadeia de Carga - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Indústrias produtoras
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Indústrias que aceitam
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clique na indústria para ver os seus fornecedores e clientes
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clique na mercadoria para ver os seus fornecedores e clientes
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadeia
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadeia da Indústria
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar indústrias a fornecer e aceitar mercadorias
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ligar ao mapa pequeno
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Também seleccionar as indústrias mostradas no mapa pequeno
@@ -3080,7 +3082,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} A equipa do OpenTTD
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :{WHITE}Taxa de fotograma
+STR_FRAMERATE_CAPTION                                           :{WHITE}Taxa de fotogramas
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Taxa de simulação: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Numero de quantidades de atraso no percurso simulados por segundo.
@@ -3499,7 +3501,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Localida
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Localidade {RED}não{BLACK} está a crescer
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na localidade: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visualização na localidade. Ctrl+Clique abre um novo visualizador na localização da localidade
-STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade local
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade Local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Ver informações sobre a autoridade local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Alterar o nome da localidade
 
@@ -3514,7 +3516,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renomear Locali
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} autoridade local
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zona
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Mostrar a zona dentro dos limites da autoridade local
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Avaliações da empresa de transporte:
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Classificações de empresas de transporte:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Acções disponíveis:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista de acções disponíveis nesta localidade - fazer clique no item para mais detalhes
@@ -3538,8 +3540,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Financiar a reconstrução da rede rodoviária urbana.{}Causa engarrafamentos consideráveis ao tráfego rodoviário até 6 meses.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construir uma estátua em honra da sua empresa.{}Providencia um incremento permanente na avaliação das estações nesta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financiar a construção de novos edifícios na localidade.{}Providencia um incremento temporário no crescimento desta localidade.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Comprar 1 ano de direitos exclusivos de transportes nesta localidade.{}A autoridade local não permitirá que os passageiros e a carga usem as estações dos seus concorrentes.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subornar a autoridade local para aumentar a sua avaliação, correndo o risco de uma penalidade severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Comprar 1 ano de direitos exclusivos de transportes nesta localidade.{}A autoridade local não permitirá que os passageiros e a carga usem as estações dos seus concorrentes. Um suborno bem-sucedido de um concorrente irá cancelar este contrato.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Subornar a autoridade local para aumentar a sua avaliação e anular o direito de transporte exclusivo da concorrência, correndo o risco de uma penalidade severa se for apanhado.{}{POP_COLOUR}Custo: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objectivos
@@ -3627,9 +3629,9 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceita: 
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estação tem direitos de transporte exclusivos nesta localidade.
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} comprou direitos exclusivos de transporte nesta localidade.
 
-STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Avaliações
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostrar avaliações da estação
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Abastecimento mensal e classificação local:
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Classificações
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Exibir classificações da estação
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Fornecimento mensal e classificação local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
@@ -3849,16 +3851,16 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronaves Dispo
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gerir lista
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Enviar instruções a todos os veículos desta lista
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Substituir Veículos
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar para Serviço
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar para manutenção
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Criar grupo
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Lucro deste ano: {CURRENCY_LONG} (último ano: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Enviar para Depósito
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Enviar para Depósito
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Enviar para Depósito
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar para Hangar
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Enviar para depósito
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Enviar para depósito
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Enviar para depósito
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar para hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os veículos na lista
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos na lista
@@ -4611,8 +4613,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Houve um
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janela de Depuração de IA/Scripts de jogo está disponível apenas para o servidor
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configuração de IA
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configuração de Script de Jogo
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Definições de IA
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Definições de Script de Jogo
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}O Script de jogo que será carregado no próximo jogo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}As IAs que serão carregadas no próximo jogo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano

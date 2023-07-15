@@ -1290,6 +1290,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Balra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Középen
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximális kezdeti hitelkeret: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálisan kölcsönözhető összeg (az inflációtól eltekintve)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1505,7 +1506,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :A bankban marad
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Hibaüzenetek időtartama: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :A piros ablakban megjelenő hibaüzenetek kijelzésének időtartama. Bizonyos (kritikus) hibaüzenetek nem záródnak be automatikusan egy idő után, hanem kézzel kell őket bezárni
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} másodperc
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Leírás megjelenítése: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Késleltetés, mielőtt megjelenne az eszközleírás az egér ráhúzása után egy felületi elemen. A leírás elérhető még az egér jobb gombjával is, ha ennek értéke 0-ra van állítva.
@@ -2002,6 +2002,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :nincs
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kezdeti városméret-szorzó: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Átlagos városméret a normál településekhez képest a játék kezdetén
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Kapcsolatgrafikon frissítése minden {STRING}{NBSP}másodpercben{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :A kapcsolatgrafikon következő újrakalkulálása között eltelt idő. Minden újrakalkulálás során egy komponens tervei kerülnek kiszámításra. Ez azt jelenti, hogy az X érték beállítása nem jelenti azt, hogy az egész grafikon X másodpercenként frissül. Csak néhány komponens lesz frissítve. Minél rövidebbre van állítva, annál több CPU időre van szükség a kiszámításhoz. Ha hosszabbra van állítva, akkor hosszabb időbe telik, amíg az áruelosztás elkezdődik az új útvonalakon.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Utasok szétosztása: {STRING}

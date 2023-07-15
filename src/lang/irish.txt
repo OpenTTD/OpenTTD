@@ -1182,6 +1182,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ar chlé
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sa lár
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ar dheis
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Iasacht tosaigh uasta: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Uasmhéid is féidir le cuideachta a chur ar iasacht (gan boilsciú a chur san áireamh)
 ###setting-zero-is-special
@@ -1395,7 +1396,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :An t-íosmhéid
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Fad ama na teachtaireachta earráide: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :An fad a thaispeánfar teachtaireachtaí earráide i bhfuinneog dhearg. Tabhair faoi deara nach ndúnfar teachtaireachtaí (criticiúla) áirithe go huathoibríoch tar éis an fad ama se, agus nach mór iad a dhúnadh de láimh
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P sh sh sh s s}oicind
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Taispeáin leideanna uirlise: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :An mhoill sula dtaispeántar leideanna uirlise agus an luchóg os cionn eilimint den chomhéadan. Mar mhalairt, ceanglaítear leideanna uirlise don deaschlic luchóige má shocraítear an luach seo ag 0.

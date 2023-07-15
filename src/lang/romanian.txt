@@ -1233,6 +1233,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :stânga
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centru
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :dreapta
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valoarea maximă a împrumutului inițial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valoarea maximă pe care o companie o poate împrumuta (fără a ține cont de inflație)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1448,7 +1449,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Suma minimă ca
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durata de afișare a mesajelor de eroare: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata afișării mesajelor de eroare în fereastra roșie. Unele mesaje de eroare (cele critice) nu sunt închise automat după trecerea acestei perioade, și trebuie închise manual.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P 0 secundă secunde "de secunde"}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Afișează texte informative: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Durata dinaintea afișării sfaturilor când se ține mausul pe un element al interfeței. Alternativ, afișarea sfaturilor poate fi setată pentru clic-dreapta

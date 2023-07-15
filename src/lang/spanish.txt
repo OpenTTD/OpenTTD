@@ -1207,6 +1207,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Izquierda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstamo máximo inicial: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Cantidad máxima que una empresa puede recibir como préstamo (sin tener en cuenta la inflación)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1422,7 +1423,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Mínima cantida
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duración de mensajes de error: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duración de los mensajes de error mostrados en ventanas rojas. Algunos mensajes de error (críticos) no se cierran automáticamente, y deben de ser cerrados manualmente
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar mensajes de ayuda: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiempo necesario del ratón sobre un elemento de la interfaz para que ésta muestre su mensaje de ayuda. De forma alternativa, se puede escoger mostrar estos mensajes al pulsar el botón derecho si el valor de esta opción ha sido establecido a 0.

@@ -431,7 +431,7 @@ STR_FILE_MENU_EXIT                                              :Exit
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Map of world
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra viewport
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Cargo Flow Legend
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Cargo flow legend
 STR_MAP_MENU_SIGN_LIST                                          :Sign list
 
 # Town menu
@@ -604,7 +604,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Operatin
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Income Graph
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Units of cargo delivered
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Company performance ratings (maximum rating=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Company values
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Company Value Graph
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Cargo Payment Rates
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Days in transit
@@ -636,7 +636,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailed performance rating
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailed Performance Rating
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -1234,6 +1234,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Left
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Right
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximum initial loan: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximum amount a company can loan (without taking inflation into account)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1449,7 +1450,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimum amount 
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duration of error message: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duration for displaying error messages in a red window. Note that some (critical) error messages are not closed automatically after this time, but must be closed manually
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} second{P 0 "" s}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Show tooltips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delay before tooltips are displayed when hovering the mouse over some interface element. Alternatively tooltips can be bound to the right mouse button
@@ -1946,7 +1946,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :None
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial city size multiplier: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Average size of cities relative to normal towns at start of the game
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Update distribution graph every {STRING}{NBSP}second{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Time between subsequent recalculations of the link graph. Each recalculation calculates the plans for one component of the graph. That means that a value X for this setting does not mean the whole graph will be updated every X seconds. Only some component will. The shorter you set it the more CPU time will be necessary to calculate it. The longer you set it the longer it will take until the cargo distribution starts on new routes.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Take {STRING}{NBSP}second{P 0:2 "" s} for recalculation of distribution graph
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Time taken for each recalculation of a link graph component. When a recalculation is started, a thread is spawned which is allowed to run for this number of seconds. The shorter you set this the more likely it is that the thread is not finished when it's supposed to. Then the game stops until it is ("lag"). The longer you set it the longer it takes for the distribution to be updated when routes change.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribution mode for passengers: {STRING}
@@ -2919,7 +2921,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 grid
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Random
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fund new industry
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Industry Funding
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Choose the appropriate industry from this list
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Create random industries
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cover the map with randomly placed industries
@@ -2935,14 +2937,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Remove a
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Are you sure you want to remove all industries?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industry chain for {STRING} industry
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industry chain for {STRING} cargo
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industry Chain - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cargo Chain - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producing industries
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepting industries
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Houses
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click at the industry to see its suppliers and customers
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click at the cargo to see its suppliers and customers
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Display chain
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industry Chain
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Display cargo supplying and accepting industries
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link to smallmap
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Select the displayed industries at the smallmap as well
@@ -3079,7 +3081,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} The OpenTTD team
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :{WHITE}Frame rate
+STR_FRAMERATE_CAPTION                                           :{WHITE}Frame Rate
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulation rate: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Number of game ticks simulated per second.
@@ -3498,7 +3500,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Town gro
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Town is {RED}not{BLACK} growing
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centre the main view on town location. Ctrl+Click opens a new viewport on town location
-STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Local authority
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Local Authority
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Show information on local authority
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change town name
 
@@ -3537,8 +3539,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Fund the reconstruction of the urban road network.{}Causes considerable disruption to road traffic for up to 6 months.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Build a statue in honour of your company.{}Provides a permanent boost to station rating in this town.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Fund the construction of new buildings in the town.{}Provides a temporary boost to town growth in this town.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Buy 1 year's exclusive transport rights in town.{}Town authority will not allow passengers and cargo to use your competitors' stations.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Buy 1 year's exclusive transport rights in town.{}Town authority will not allow passengers and cargo to use your competitors' stations. A successful bribe from a competitor will cancel this contract.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Bribe the local authority to increase your rating and abort a competitor's exclusive transport rights, at the risk of a severe penalty if caught.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Goals
@@ -3848,16 +3850,16 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Available Aircr
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Manage list
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Send instructions to all vehicles in this list
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Replace vehicles
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send for Servicing
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send for servicing
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Create group
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit this year: {CURRENCY_LONG} (last year: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Send to Depot
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Send to Depot
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Send to Depot
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Send to Hangar
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Send to depot
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Send to depot
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Send to depot
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Send to hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Click to stop all the vehicles in the list
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Click to start all the vehicles in the list
@@ -4610,8 +4612,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}One of t
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / GameScript Debug window is only available for the server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI Configuration
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Game Script Configuration
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI Settings
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Game Script Settings
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}The Game Script that will be loaded in the next game
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}The AIs that will be loaded in the next game
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player

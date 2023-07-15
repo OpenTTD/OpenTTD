@@ -1206,6 +1206,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :靠左
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :置中
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :靠右
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :最大貸款額：{STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最多可借多少錢（此設定的值排除了通貨膨脹因素）。
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
@@ -1421,7 +1422,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :如果公司銀
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :錯誤訊息持續時間：{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :設定所有以紅色對話窗顯示的錯誤訊息之持續時間。請注意有些較嚴重的錯誤訊息必須手動關閉。
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} 秒
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :顯示工具提示：{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :設定游標需在工具按鈕之上停留多久才會顯示工具使用提示。如此選項的值為 0，您需在工具按鈕上右撳鼠键以顯示工具使用提示。
