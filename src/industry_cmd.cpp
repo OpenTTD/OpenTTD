@@ -68,6 +68,8 @@ IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 IndustryBuildData _industry_builder; ///< In-game manager of industries.
 
+static int WhoCanServiceIndustry(Industry *ind);
+
 /**
  * This function initialize the spec arrays of both
  * industry and industry tiles.
@@ -2116,6 +2118,59 @@ CommandCost CmdIndustrySetFlags(DoCommandFlag flags, IndustryID ind_id, Industry
 }
 
 /**
+ * Set industry production.
+ * @param flags Type of operation.
+ * @param ind_id IndustryID
+ * @param prod_level Production level.
+ * @param show_news Show a news message on production change.
+ * @return Empty cost or an error.
+ */
+CommandCost CmdIndustrySetProduction(DoCommandFlag flags, IndustryID ind_id, byte prod_level, bool show_news)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	if (prod_level < PRODLEVEL_MINIMUM || prod_level > PRODLEVEL_MAXIMUM) return CMD_ERROR;
+
+	Industry *ind = Industry::GetIfValid(ind_id);
+	if (ind == nullptr) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		StringID str = STR_NULL;
+		if (prod_level > ind->prod_level) {
+			str = GetIndustrySpec(ind->type)->production_up_text;
+		} else if (prod_level < ind->prod_level) {
+			str = GetIndustrySpec(ind->type)->production_down_text;
+		}
+
+		ind->ctlflags |= INDCTL_EXTERNAL_PROD_LEVEL;
+		ind->prod_level = prod_level;
+		ind->RecomputeProductionMultipliers();
+
+		/* Show news message if requested. */
+		if (show_news && str != STR_NULL) {
+			NewsType nt;
+			switch (WhoCanServiceIndustry(ind)) {
+				case 0: nt = NT_INDUSTRY_NOBODY;  break;
+				case 1: nt = NT_INDUSTRY_OTHER;   break;
+				case 2: nt = NT_INDUSTRY_COMPANY; break;
+				default: NOT_REACHED();
+			}
+
+			/* Set parameters of news string */
+			if (str > STR_LAST_STRINGID) {
+				SetDParam(0, STR_TOWN_NAME);
+				SetDParam(1, ind->town->index);
+				SetDParam(2, GetIndustrySpec(ind->type)->name);
+			} else {
+				SetDParam(0, ind->index);
+			}
+			AddIndustryNewsItem(str, nt, ind->index);
+		}
+	}
+
+	return CommandCost();
+}
+
+/**
  * Change exclusive consumer or supplier for the industry.
  * @param flags Type of operation.
  * @param ind_id IndustryID
@@ -2618,7 +2673,7 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
  * service the industry, and 1 otherwise (only competitors can service the
  * industry)
  */
-static int WhoCanServiceIndustry(Industry *ind)
+int WhoCanServiceIndustry(Industry *ind)
 {
 	if (ind->stations_near.size() == 0) return 0; // No stations found at all => nobody services
 
@@ -2820,6 +2875,11 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	/* If override flags are set, prevent actually changing production if any was decided on */
 	if ((i->ctlflags & INDCTL_NO_PRODUCTION_DECREASE) && (div > 0 || increment < 0)) return;
 	if ((i->ctlflags & INDCTL_NO_PRODUCTION_INCREASE) && (mul > 0 || increment > 0)) return;
+	if (i->ctlflags & INDCTL_EXTERNAL_PROD_LEVEL) {
+		div = 0;
+		mul = 0;
+		increment = 0;
+	}
 
 	if (!callback_enabled && (indspec->life_type & INDUSTRYLIFE_PROCESSING)) {
 		if (TimerGameCalendar::year - i->last_prod_year >= PROCESSING_INDUSTRY_ABANDONMENT_YEARS && Chance16(1, original_economy ? 2 : 180)) {

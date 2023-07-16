@@ -51,8 +51,10 @@ enum IndustryControlFlags : byte {
 	 * Industry can not close regardless of production level or time since last delivery.
 	 * This does not prevent a closure already announced. */
 	INDCTL_NO_CLOSURE             = 1 << 2,
+	/** Indicates that the production level of the industry is externally controlled. */
+	INDCTL_EXTERNAL_PROD_LEVEL    = 1 << 3,
 	/** Mask of all flags set */
-	INDCTL_MASK = INDCTL_NO_PRODUCTION_DECREASE | INDCTL_NO_PRODUCTION_INCREASE | INDCTL_NO_CLOSURE,
+	INDCTL_MASK = INDCTL_NO_PRODUCTION_DECREASE | INDCTL_NO_PRODUCTION_INCREASE | INDCTL_NO_CLOSURE | INDCTL_EXTERNAL_PROD_LEVEL,
 };
 DECLARE_ENUM_AS_BIT_SET(IndustryControlFlags);
 
