@@ -78,6 +78,8 @@
  * \li GSVehicleList_DefaultGroup
  * \li GSGoal::IsValidGoalDestination
  * \li GSGoal::SetDestination
+ * \li GSIndustry::GetProductionLevel
+ * \li GSIndustry::SetProductionLevel
  *
  * API removals:
  * \li GSError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
