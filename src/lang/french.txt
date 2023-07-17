@@ -605,7 +605,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graphiqu
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graphique du revenu
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Cargaison livrée
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Historique de performance (performance max. = 1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valeur de la compagnie
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Graphique de la valeur de la compagnie
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Valeur des marchandises
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Jours de transit
@@ -1235,6 +1235,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :À gauche
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrée
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}seconde{P 0 "" s}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Emprunt initial maximum{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation)
@@ -1947,9 +1948,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Aucune
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicateur initial pour la taille des métropoles{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Taille moyenne des métropoles par rapport aux villes normales au début de la partie
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Mise à jour le graphe de distribution toutes les {STRING}{NBSP}seconde{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Mise à jour le graphe de distribution toutes les {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Intervalle entre les recalculs successifs du graphe de liaison. Chaque recalcul planifie un composant du graphe. Cela signifie qu'une valeur X pour ce paramètre ne signifie pas que l'ensemble du graphe sera mis à jour toutes les X secondes. Seul un composant le sera. Plus vous définissez cet intervalle court, plus le temps de processeur nécessaire pour le calcul sera important. Plus vous définissez cet intervalle long, plus il faudra de temps pour que la distribution de marchandises commence sur de nouveaux itinéraires.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Prend {STRING}{NBSP}seconde{P 0:2 "" s} pour le recalcul du graphe de distribution
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Prend {STRING} pour le recalcul du graphe de distribution
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Temps pris pour chaque recalcul d'un composant du graphe de liaison. Lorsqu'un recalcul est lancé, un fil d'exécution est créé et autorisé à fonctionner pendant ce nombre de secondes. Plus vous définissez cette durée courte, plus il est probable que le fil ne soit pas terminé lorsqu'il est censé l'être. Ensuite, le jeu s'arrête jusqu'à ce qu'il le soit ("lag"). Plus vous définissez cette durée longue, plus il faut de temps pour que la distribution soit mise à jour lorsque les itinéraires changent.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Type de distribution pour les passagers{NBSP}: {STRING}
@@ -2387,7 +2388,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Créer u
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}C'est vous
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}C'est l'hôte du jeu
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} client{P "" s} - {NUM}/{NUM} companie{P "" s}
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Actuellement, le nombre de clients connectés, le nombre d'entreprises et le nombre d'entreprises maximum autorisées par l'administrateur du serveur est atteint.
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Actuellement, le nombre de clients connectés, le nombre de compagnies et le nombre de compagnies maximum autorisées par l'administrateur du serveur est atteint.
 
 # Matches ConnectionType
 ###length 5
@@ -2922,7 +2923,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Grille 3
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aléatoire
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financer une nouvelle industrie
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financement d'industrie
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Choisir l'industrie appropriée dans cette liste
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Créer des industries au hasard
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Couvrir la carte d'industries placées au hasard
@@ -2938,14 +2939,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Enlever 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Êtes-vous sûr de vouloir enlever toutes les industries{NBSP}?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chaîne industrielle pour l'industrie «{NBSP}{STRING}{NBSP}»
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chaîne industrielle pour le type de marchandise «{NBSP}{STRING}{NBSP}»
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chaîne industrielle - «{NBSP}{STRING}{NBSP}»
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chaîne de chargement - «{NBSP}{STRING}{NBSP}»
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industries fournisseuses
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industries clientes
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Maisons
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Cliquer sur l'industrie pour voir ses fournisseurs et ses clients
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Cliquer sur le type de marchandise pour voir ses fournisseurs et ses clients
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afficher la chaîne
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Chaîne d'industries
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afficher la chaîne des industries fournisseuses et clientes de ce type de marchandise
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Lier à la mini-carte
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Afficher les industries correspondantes sur la mini-carte
@@ -3540,8 +3541,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Financer la reconstruction du réseau routier.{}Provoque une perturbation considérable du trafic pendant 6 mois au maximum.{}{POP_COLOUR}Coût : {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construire une statue en l'honneur de votre compagnie.{}Augmente en permanence le classement de vos stations dans cette ville.{}{POP_COLOUR}Coût{NBSP}:{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financer la construction de nouveaux immeubles commerciaux.{}Stimule temporairement la croissance dans cette ville.{}{POP_COLOUR}Coût{NBSP}:{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Achetez les droits de transport exclusifs d'un an pour la ville.{} La municipalité n'autorisera pas les passagers et les marchandises à utiliser les gares de vos concurrents.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Corrompre la municipalité pour améliorer votre réputation. Risque de pénalisation si le pot-de-vin est dévoilé.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Achetez les droits de transport exclusifs d'un an pour la ville.{} La municipalité n'autorisera pas les passagers et les marchandises à utiliser les gares de vos concurrents. Un pot-de-vin réussi d'un concurrent annulera ce contrat.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Corrompre la municipalité pour améliorer votre réputation et annuler les droits de transports exclusifs d'un concurrent, au risque de pénalisation si le pot-de-vin est dévoilé.{}{POP_COLOUR}Coût{NBSP}: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Objectifs de {COMPANY}
@@ -4613,8 +4614,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fenêtre de débogage de scripts n'est disponible que pour le serveur
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configuration d'IA
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configuration du script de jeu
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Paramètres d'IA
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Paramètres du scripts de jeu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Le script de jeu qui sera chargé dans la prochaine partie
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs qui seront chargées dans la prochaine partie
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur humain

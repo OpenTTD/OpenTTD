@@ -605,7 +605,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Faaliyet
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gelir Grafiği
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Taşınan kargo
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Şirket performans değerlendirmeleri (azami=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Şirket Değerleri
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Şirket Değerleri Grafiği
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kargo Ödeme Seviyeleri
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Taşınma süresi
@@ -637,7 +637,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Genel Müdür
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Kodaman
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Ayrıntılı performans değerlendirmesi
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Ayrıntılı Performans Reğerlendirmesi
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detay
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -1065,7 +1065,7 @@ STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} kay�
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Temel grafik setiyle ilgili ilave bilgiler
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Temel ses kümesi
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kullanılacak temel ses kümesini seçin
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kullanılacak temel ses kümesini seçin (oyun içinde değiştirlemez sadece ana menüde değiştirebilinir)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Temel ses kümesiyle ilgili ilave bilgiler
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Temel müzik kümesi
@@ -1235,6 +1235,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Sol
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Orta
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Sağ
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}saniye{P 0 "ler"}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :En yüsek açılış borcu: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Bir şirketin alabileceği en fazla borç (enflasyon hesaba katılmadan)
@@ -1947,9 +1948,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Hiçbiri
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Birincil şehir büyüklüğü çarpanı: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Oyun başlangıcında şehirlerin normal kasabalara kıyasla ortalama büyüklüğü
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Dağıtım grafiğini her {STRING}{NBSP}saniyede{P 0:2 ""} güncelle
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Dağıtım grafiğini her {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Bağlantı grafiğinin sonraki yeniden hesaplamaları arasındaki süre. Her yeniden hesaplama, grafiğin bir bileşeni için planları hesaplar. Bu, bu ayar için bir X değerinin tüm grafiğin her X saniyede bir güncelleneceği anlamına gelmediği anlamına gelir. Sadece bazı bileşenler olacaktır. Ne kadar kısa ayarlarsanız, hesaplamak için o kadar fazla CPU süresi gerekir. Ne kadar uzun ayarlarsanız, kargo dağıtımının yeni rotalarda başlaması o kadar uzun sürer.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Dağıtım grafiğinin yeniden hesaplanması için {STRING}{NBSP}saniye{P 0:2 ""} bekleyin
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Dağılım grafiğinin yeniden hesaplanması için {STRING} bekleyin
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Bir bağlantı grafiği bileşeninin her yeniden hesaplanması için geçen süre. Bir yeniden hesaplama başlatıldığında, bu sayıda saniye boyunca çalışmasına izin verilen bir iş parçacığı oluşturulur. Bunu ne kadar kısa ayarlarsanız, iş parçacığının olması gerektiği zamanda bitmemiş olma olasılığı o kadar artar. Ardından oyun ("gecikme") olana kadar durur. Ne kadar uzun ayarlarsanız, rotalar değiştiğinde dağıtımın güncellenmesi o kadar uzun sürer.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Yolcular için dağıtım kipi: {STRING}
@@ -2922,7 +2923,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 şeb
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Rastgele
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Yeni fabrika aç
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Sanayi Fonla
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Bu listeden uygun fabrikayı seçin
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Rastgele endüstriler oluştur
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Haritayı rastgele fabrikalarla doldur
@@ -2938,14 +2939,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Bütün 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Bütün endüstrileri kaldırmak istediğinize emin misiniz?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING} fabrikası için sanayi zinciri
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} kargo türü için sanayi zinciri
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Sanayi Zinciri - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cargo Zinciri - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Üreten fabrikalar
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Kabul eden fabrikalar
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Evler
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Sağlayanlarını ve müşterilerini görmek için fabrikayı tıklayın
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Sağlayanlarını ve müşterilerini görmek için kargoyu tıklayın
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zinciri göster
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Sanayi Zinciri
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Kargo sağlayan ve kabul eden fabrikaları göster
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Küçük haritaya bağla
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Gösterilen fabrikaları küçük haritada da seç
@@ -3540,7 +3541,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW} Yol tamirleri için belediyeye bağış yap.{}6 ay boyunca şehrin yollarında önemli aksamalara sebep olur.{}{POP_COLOUR}Fiyat: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Şirket sahibinin heykelini dik.{}Şehirdeki istasyon derecelendirmesinde kalıcı bir yükseltme sağlar.{}{POP_COLOUR}Fiyatı: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Şehirde ticari binaların yapımı için bağış yap.{}Bu kasabanın büyümesine geçici bir yükseltme sağlar.{}{POP_COLOUR}Fiyatı: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW} Bir yıllık ayrıcalıklı nakliyat haklarını satın al.{} Belediye, rakip istasyonların yolcu ve kargo taşımasına izin vermez.{}{POP_COLOUR} Fiyat: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW} Bir yıllık ayrıcalıklı nakliyat haklarını satın al.{} Belediye, rakip istasyonların yolcu ve kargo taşımasına izin vermez. Bir rakipten alınan başarılı bir rüşvet, bu sözleşmeyi iptal edecektir.{}{POP_COLOUR} Fiyat: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Yakalanırsan şiddetli bir ceza alma riskini göze alarak yerel yönetime bölge derecelendirmesini arttırmak için rüşvet ver.{}{POP_COLOUR}Fiyat: {CURRENCY_LONG}
 
 # Goal window
@@ -4613,7 +4614,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalış
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}YZ Yapılandırması
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}YZ Ayarları
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Oyun Betiği Yapılandırması
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Bir sonraki oyunda yüklenecek Oyun Betiği
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Bir sonraki oyunda yüklenecek YZ'ler

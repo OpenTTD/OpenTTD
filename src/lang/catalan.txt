@@ -605,7 +605,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gràfic 
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gràfic d'ingressos
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unitats de càrrega entregada
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ratis de rendiment de la companyia (rati màxim: 1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valors de la companyia
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gràfic del valor de les companyies
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifes de pagament de càrregues
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dies en trànsit
@@ -847,7 +847,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} ha estat tancada pels creditors i s'han venut tots els seus actius
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Creada una nova companyia de transports
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} comença a treballar prop de {TOWN}
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} ha estat absorbida per {STRING}
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} ha estat absorbida per {STRING} per una quantitat de diners desconeguda!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(President)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} ha patrocinat la construcció d'una nova població, anomenada {TOWN}
@@ -952,6 +952,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100{NBSP}%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Moneda
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecció de la unitat monetària
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Lliura esterlina
@@ -1059,12 +1060,12 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}{NBSP}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratis de refresc major a 60{NBSP}Hz poden causar problemes de rendiment.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunt de gràfics base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics base a utilitzar
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics base a utilitzar (no es pot canviar des de dins de la partida; s'ha de canviar des del menú principal).
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arxiu{P "" s} absent{P "" s} o corromput{P "" s}.
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informació addicional sobre el conjunt de gràfics base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunt de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un conjunt de sons base a utilitzar
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un conjunt de sons base a utilitzar (no es pot canviar des de dins de la partida; s'ha de canviar des del menú principal).
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informació addicional sobre el joc de sons base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunt de peces de música base
@@ -1234,6 +1235,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}segon{P 0 "" s}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima del préstec que pot demanar una companyia (sense tenir en compte la inflació)
@@ -1560,7 +1562,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :De gris a verme
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de grisos
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Desplaçament del mapa: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportament quan es desplaça el mapa.
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportament quan es desplaça el mapa. Les opcions "amb la posició del ratolí fixada" no funcionen en tots els sistemes, com ara versions web, pantalles tàctils, Linux amb Wayland i altres.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mou la vista amb el botó dret del ratolí amb la posició del ratolí fixada
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mou el mapa amb el botó dret del ratolí amb la posició del ratolí fixada
@@ -1946,9 +1948,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida inicial de ciutats: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària mitjana de les ciutats en relació als pobles a l'inici de la partida.
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualitza el graf de distribució cada {STRING}{NBSP}segon{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualitza el graf de distribució cada {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Temps entre actualitzacions de les arestes del graf de distribució. Cada vegada es calcularan els plans d'un dels components del graf. Això vol dir que un valor X d'aquesta opció no significa que es recalculi el graf sencer cada X segons. Només ho farà algun component. Com més curt sigui, farà falta més temps de CPU per a calcular-lo. Com més llarg sigui, més es trigarà a què la distribució de càrrega s'apliqui a les rutes noves.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Triga {STRING}{NBSP}segon{P 0:2 "" s} per a recalcular el graf de distribució
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Deixa passar {STRING} per a recalcular el graf de distribució
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Temps emprat per a cada actualització del component d'una aresta del graf. Quan comença el recàlcul, s'inicia un fil que pot executar-se durant aquests segons. Com més curt sigui, més probable és que el fil no acabi a temps. Llavors, la partida para fins que finalitzi, provocant una interrupció del desenvolupament de la partida. Com més llarg sigui, més es trigarà a actualitzar el graf de distribució quan es facin canvis de rutes.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mode de distribució per passatgers: {STRING}
@@ -2082,6 +2084,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}L'assign
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}S'ha produït un error en la configuració de vídeo...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no s'ha trobat cap GPU compatible. Es desactiva l'acceleració per programari.
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... el controlador de la GPU ha fallat durant la partida. Es desactiva l'acceleració per maquinari.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2920,7 +2923,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Graella 
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatòria
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finança una nova indústria
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finançament d'indústries
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Escolleix el tipus d'indústria adequada d'aquesta llista
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Crea indústries aleatòries
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Omple el mapa amb indústries situades aleatòriament
@@ -2936,14 +2939,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Treu tot
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Esteu segur que voleu treure totes les indústries?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial per la indústria {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena industrial per la càrrega {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial ‒ {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena de càrrega ‒ {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Indústries productores
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Indústries acceptades
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Cases
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clica a la indústria per veure els seus proveïdors i clients
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clica a la càrrega per veure els proveïdors i clients
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostra cadena
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadena d'indústries
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostra les càrregues proveïdes i les indústries acceptades
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Enllaç al mapa petit
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selecciona les indústries mostrades també al mapa petit
@@ -3538,8 +3541,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Finança la reconstrucció de la xarxa local de carrers. Dificulta notablement el trànsit durant 6 mesos.{}Causa molèsties considerables al trànsit de vehicles de carretera durant 6 mesos.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Construeix una estàtua en honor a la teva companyia.{}Proporciona una millora permanent dels ratis d'estació de la població.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finança la construcció de nous edificis comercials a la població.{}Proporciona una millora temporal del creixement d'aquesta població.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Compra per 1 any els drets exclusius de transport en la població. L'autoritat local només permetrà utilitzar les instal·lacions de la teva companyia de transports als passatgers i les mercaderies.{}L'autoritat local no permetrà que els passatgers i càrregues locals usin les estacions dels oponents.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Suborna les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Compra per 1 any els drets exclusius de transport en la població.{}L'autoritat local no permetrà que els passatgers i càrregues locals facin servir les estacions dels oponents. Si un competidor suborna amb èxit les autoritats, el contracte quedarà cancel·lat.{}{POP_COLOUR}Cost:{NBSP}{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Suborna les autoritats locals per a incrementar el vostre rati i cancel·lar els drets exclusius de transport del competidor, amb el risc de sancions greus si us pesquen.{}{POP_COLOUR}Cost:{NBSP}{CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objectius
@@ -3761,6 +3764,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalls
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Veure els detalls de la infraestructura de la companyia.
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dóna diners
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Doneu diners a aquesta companyia.
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Absorció hostil
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Absorbeix aquesta companyia de manera hostil
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Modifica la cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Modifica la cara del president de la companyia.
@@ -3776,6 +3781,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom del preside
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Escriviu la quantitat de diners que voleu donar
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estem venent la nostra companyia de transports.{}{}Vols comprar {COMPANY} per {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}En una absorció hostil de {COMPANY} en comprareu totes les propietats, en pagareu tots els préstecs i beneficis per valors de dos anys.{}{}El total estimat és de {CURRENCY_LONG}.{}{}Voleu continuar amb l'absorció hostil?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestructura de {COMPANY}
@@ -3846,7 +3852,8 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Avions disponib
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administra la llista
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envia instruccions a tots els vehicles de la llista
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Substitueix vehicles
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envia a fer revisió
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envia a fer una revisió
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Crea un grup
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Benefici enguany: {CURRENCY_LONG} (darrer any: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4569,6 +4576,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperat
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planificat
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Canvia entre esperat i planificat
 
+STR_TIMETABLE_ARRIVAL                                           :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :S: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -4605,8 +4614,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels 
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració dels scripts d'IA/partida només està disponible al servidor.
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configuració de la IA
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configuració de l'script de partida
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Opcions de la IA
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Opcions de l'script de partida
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Aquest és l'script que s'usarà a la propera partida.
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Aquesta llista conté les IA que es carregaran a la propera partida.
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà
@@ -5623,6 +5632,8 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
