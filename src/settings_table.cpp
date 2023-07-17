@@ -343,7 +343,7 @@ static size_t ConvertLandscape(const char *value)
 {
 	/* try with the old values */
 	static std::vector<std::string> _old_landscape_values{"normal", "hilly", "desert", "candy"};
-	return OneOfManySettingDesc::ParseSingleValue(value, strlen(value), _old_landscape_values);
+	return OneOfManySettingDesc::ParseSingleValue(value, strlen(value), _old_landscape_values, nullptr);
 }
 
 static bool CheckFreeformEdges(int32 &new_value)

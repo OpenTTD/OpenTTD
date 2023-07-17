@@ -68,11 +68,11 @@ static size_t ConvertLandscape(const char *value);
 #define SDTG_SSTR(name, type, flags, var, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 	NSD(String, SLEG_GENERAL(name, SL_STDSTR, var, type, sizeof(var), from, to, extra), flags, startup, def, max_length, pre_check, post_callback)
 
-#define SDTG_OMANY(name, type, flags, var, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	NSD(OneOfMany, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, max, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
+#define SDTG_OMANY(name, type, flags, var, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, load, cat, extra, startup)\
+	NSD(OneOfMany, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, max, str, strhelp, strval, cat, pre_check, post_callback, full, load)
 
-#define SDTG_MMANY(name, type, flags, var, def, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	NSD(ManyOfMany, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
+#define SDTG_MMANY(name, type, flags, var, def, full, str, strhelp, strval, pre_check, post_callback, from, to, load, cat, extra, startup)\
+	NSD(ManyOfMany, SLEG_GENERAL(name, SL_VAR, var, type, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, load)
 
 /* Macros for various objects to go in the configuration file.
  * This section is for structures where their various members are saved */
@@ -94,8 +94,8 @@ static size_t ConvertLandscape(const char *value);
 #define SDT_OMANY(base, var, type, flags, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, load, cat, extra, startup)\
 	NSD(OneOfMany, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, max, str, strhelp, strval, cat, pre_check, post_callback, full, load)
 
-#define SDT_MMANY(base, var, type, flags, def, full, str, pre_check, post_callback, strhelp, strval, from, to, cat, extra, startup)\
-	NSD(ManyOfMany, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
+#define SDT_MMANY(base, var, type, flags, def, full, str, pre_check, post_callback, strhelp, strval, from, to, load, cat, extra, startup)\
+	NSD(ManyOfMany, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, load)
 
 
 #define SDTC_VAR(var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
@@ -110,5 +110,5 @@ static size_t ConvertLandscape(const char *value);
 #define SDTC_SSTR(var, type, flags, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 	SDTG_SSTR(#var, type, flags, _settings_client.var, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 
-#define SDTC_OMANY(var, type, flags, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
-	SDTG_OMANY(#var, type, flags, _settings_client.var, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)
+#define SDTC_OMANY(var, type, flags, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, load, cat, extra, startup)\
+	SDTG_OMANY(#var, type, flags, _settings_client.var, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, load, cat, extra, startup)

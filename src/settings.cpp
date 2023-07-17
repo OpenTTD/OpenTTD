@@ -171,18 +171,23 @@ const uint16 INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Curre
  * @param str the current value of the setting for which a value needs found
  * @param len length of the string
  * @param many full domain of values the ONEofMANY setting can have
+ * @param many_cnvt callback procedure when loading value mechanism fails
  * @return the integer index of the full-list, or -1 if not found
  */
-size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many)
+size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many, OnConvert *many_cnvt)
 {
-	/* check if it's an integer */
-	if (isdigit(*str)) return std::strtoul(str, nullptr, 0);
-
 	size_t idx = 0;
 	for (auto one : many) {
 		if (one.size() == len && strncmp(one.c_str(), str, len) == 0) return idx;
 		idx++;
 	}
+
+	/* We failed our lookup; try the conversion function next. */
+	idx = many_cnvt(str);
+	if (idx != (size_t)-1) return idx;
+
+	/* Both lookup and conversion function failed; check if it is a digit. */
+	if (isdigit(*str)) return std::strtoul(str, nullptr, 0);
 
 	return (size_t)-1;
 }
@@ -192,9 +197,10 @@ size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const
  * @param many full domain of values the MANYofMANY setting can have
  * @param str the current string value of the setting, each individual
  * of separated by a whitespace,tab or | character
+ * @param many_cnvt callback procedure when loading value mechanism fails
  * @return the 'fully' set integer, or -1 if a set is not found
  */
-static size_t LookupManyOfMany(const std::vector<std::string> &many, const char *str)
+static size_t LookupManyOfMany(const std::vector<std::string> &many, const char *str, OneOfManySettingDesc::OnConvert *many_cnvt)
 {
 	const char *s;
 	size_t r;
@@ -208,7 +214,7 @@ static size_t LookupManyOfMany(const std::vector<std::string> &many, const char 
 		s = str;
 		while (*s != 0 && *s != ' ' && *s != '\t' && *s != '|') s++;
 
-		r = OneOfManySettingDesc::ParseSingleValue(str, s - str, many);
+		r = OneOfManySettingDesc::ParseSingleValue(str, s - str, many, many_cnvt);
 		if (r == (size_t)-1) return r;
 
 		SetBit(res, (uint8)r); // value found, set it
@@ -396,10 +402,7 @@ size_t IntSettingDesc::ParseValue(const char *str) const
 
 size_t OneOfManySettingDesc::ParseValue(const char *str) const
 {
-	size_t r = OneOfManySettingDesc::ParseSingleValue(str, strlen(str), this->many);
-	/* if the first attempt of conversion from string to the appropriate value fails,
-		* look if we have defined a converter from old value to new value. */
-	if (r == (size_t)-1 && this->many_cnvt != nullptr) r = this->many_cnvt(str);
+	size_t r = OneOfManySettingDesc::ParseSingleValue(str, strlen(str), this->many, this->many_cnvt);
 	if (r != (size_t)-1) return r; // and here goes converted value
 
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
@@ -411,7 +414,7 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 
 size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 {
-	size_t r = LookupManyOfMany(this->many, str);
+	size_t r = LookupManyOfMany(this->many, str, this->many_cnvt);
 	if (r != (size_t)-1) return r;
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);

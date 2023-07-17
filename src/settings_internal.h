@@ -218,7 +218,7 @@ struct OneOfManySettingDesc : IntSettingDesc {
 	std::vector<std::string> many; ///< possible values for this type
 	OnConvert *many_cnvt;          ///< callback procedure when loading value mechanism fails
 
-	static size_t ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many);
+	static size_t ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many, OnConvert *many_cnvt);
 	std::string FormatSingleValue(uint id) const;
 
 	size_t ParseValue(const char *str) const override;
