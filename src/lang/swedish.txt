@@ -345,8 +345,8 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Öppna o
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa spelet
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Snabbspola spelet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Inställningar
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spara spelet, avsluta spelet, avsluta
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Visa karta, extra vyfönster eller skyltlista
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spara spelet, öppna spel, avsluta spelet eller avsluta programmet
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Visa karta, extra vyfönster, godsflöden eller skyltlista
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Visa lista över städer
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Visa subventioner
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Visa lista över företagets stationer
@@ -370,8 +370,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bygg ham
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg flygplatser
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna landskapsarkitektursverktygen för att höja/sänka land, plantera träd, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Visa ljud-/musikfönster
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsol, felsökning av skript, skärmdumpar, om OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, meddelandehistorik eller ta bort alla meddelanden
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, skärmdump, om OpenTTD och utvecklingsverktyg
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Byt verktygsrad
 
 # Extra tooltips for the scenario editor toolbar
@@ -846,7 +846,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} har avvecklats av investerarna och alla tillgångar har sålts ut!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nytt transportföretag startat!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} börjar bygga nära {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} har tagits över av {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} har tagits över av {STRING} för en hemlig summa!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(VD)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} har sponsrat byggnationen av den nya staden {TOWN}!
@@ -932,7 +932,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopiera 
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelinställningar
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Allmänt
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Välj generella inställningar
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafik
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Välj grafik inställningar
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ljud
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Väljd ljud- och musikinställningar
 
@@ -949,6 +951,7 @@ STR_GAME_OPTIONS_VOLUME_100                                     :100%
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenheter
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj valutaenhet
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brittiskt pund
@@ -1060,7 +1063,7 @@ STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} sakn
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om basgrafik-settet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grundljudspaket
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Välj vilket grundljudspaket som ska användas
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Välj vilket grundljudspaket som ska användas (kan inte ändras under spel, utom endast från huvudmenyn)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om grundljudpaketet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikpaket valt
@@ -1176,6 +1179,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utöka a
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Stäng alla
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Återställ alla värden
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen förklaring tillgänglig)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardvärde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ av inställning: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klientinställning (sparas ej i spel-filer och påverkar alla spel)
@@ -1555,7 +1559,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grå till röd
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Gråskala
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Vyfönsters skrollningsbeteende: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Beteende vid scrollning av kartan
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Beteende vid scrollning av kartan. Muspositionen låst valet funkar inte på alla system, som tillexempel webbaserade versioner, pekskärmar, Linux med Wayland, med mera
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Rör vyn med höger musknapp, musens position låst
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Rör kartan med höger musknapp, musens position låst
@@ -1941,9 +1945,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks-multiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Uppdatera distributionsdiagram var {STRING}{NBSP}sekund{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Uppdatera distributionsdiagram var {STRING}sekund{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det betyder att ett värde X för den här inställningen inte betyder att hela grafen kommer att uppdateras var X:e sekund. Bara viss komponent kommer att göra det. Ju kortare du ställer in den desto mer CPU-tid kommer att behövas för att beräkna den. Ju längre du ställer in den desto längre tid tar det tills lastdistributionen startar på nya rutter.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Ta {STRING}{NBSP}sekund{P 0:2 "" s} för omräkning av distributionsdiagrammet
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Ta {STRING} för omräkning av distributionsdiagrammet
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid som det tar för varje omräkning av en länkdiagramkomponent. När en omräkning startas skapas en tråd som tillåts köra i detta antal sekunder. Ju kortare du ställer in detta desto mer sannolikt är det att tråden inte är färdig när den ska. Sedan stannar spelet tills det är ("lag"). Ju längre du ställer in den desto längre tid tar det för distributionen att uppdateras när rutter ändras.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionssätt för passagerare: {STRING}
@@ -1970,7 +1974,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Genom att sätt
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta rutter innan rutter med hög kapacitet används: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenhet: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenhet (land)t: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Hastighetsenheter (nautical): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Närhelst en hastighet visas i användargränssnittet, visa den i den valda enheten
 ###length 5
@@ -2704,7 +2708,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Välj vilken stationsklass som ska visas
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Välj stationstyp att bygga
 
-STR_STATION_CLASS_DFLT                                          :Grundinställd station
+STR_STATION_CLASS_DFLT                                          :Original
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstation
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Standardvägstopp
 STR_STATION_CLASS_WAYP                                          :Riktmärken
@@ -2932,14 +2936,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Ta bort 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Är du säker på att du vill ta bort alla industrier?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja för industrin {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrikedja för godset {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Godskedja - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerande industrier
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Mottagande industrier
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hus
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klicka på industrin för att se dess leverantörer och kunder
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klicka på godset för att se dess leverantörer och kunder
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Visa kedja
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industrikedja
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Visa industrier som levererar och tar emot gods
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Koppla till minikartan
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Markera visade industrier även på minikartan
@@ -3846,7 +3850,9 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Hantera 
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Skicka instruktioner till alla fordon på denna lista
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Byt ut fordon
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Skicka på service
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Skapa grupp
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Vinst detta år: {CURRENCY_LONG} (förra året: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Skicka till depå
@@ -4567,6 +4573,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Förvän
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Schemalagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ändra mellan förväntat och schemalagt
 
+STR_TIMETABLE_DEPARTURE                                         :D: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -4625,7 +4632,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}Datorsp
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Välj datorspelare
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Välj spelskript
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Läs in ett annat skript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Läs in ett annat skript. Ctrl+klick visar alla tillgängliga versioner
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurera
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurera datorspelarens parametrar
 
