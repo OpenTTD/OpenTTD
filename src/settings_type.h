@@ -77,6 +77,13 @@ enum ParticipateSurvey {
 	PS_YES,
 };
 
+/** Right-click to close window actions. */
+enum RightClickClose : uint8_t {
+	RCC_NO = 0,
+	RCC_YES,
+	RCC_YES_EXCEPT_STICKY,
+};
+
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
 	byte   competitor_start_time;            ///< Unused value, used to load old savegames.
@@ -154,7 +161,7 @@ struct GUISettings {
 	uint8_t  scrollwheel_scrolling;            ///< scrolling using the scroll wheel?
 	uint8_t  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
 	bool   timetable_arrival_departure;      ///< show arrivals and departures in vehicle timetables
-	bool   right_mouse_wnd_close;            ///< close window with right click
+	RightClickClose  right_click_wnd_close;  ///< close window with right click
 	bool   pause_on_newgame;                 ///< whether to start new games paused or not
 	SignalGUISettings signal_gui_mode;       ///< select which signal types are shown in the signal GUI
 	SignalCycleSettings cycle_signal_types;  ///< Which signal types to cycle with the build signal tool.
