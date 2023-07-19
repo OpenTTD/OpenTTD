@@ -161,6 +161,8 @@ enum IniFileVersion : uint32 {
 	IFV_LINKGRAPH_SECONDS,                                 ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
 	IFV_NETWORK_PRIVATE_SETTINGS,                          ///< 4  PR#10762 Move no_http_content_downloads / use_relay_service to private settings.
 
+	IFV_AUTOSAVE_RENAME,                                   ///< 5  PR#11143 Renamed values of autosave to be in minutes.
+
 	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
 };
 
@@ -1316,6 +1318,20 @@ void LoadFromConfig(bool startup)
 		if (generic_version < IFV_GAME_TYPE && IsConversionNeeded(generic_ini, "network", "server_advertise", "server_game_type", &old_item)) {
 			auto old_value = BoolSettingDesc::ParseSingleValue(old_item->value->c_str());
 			_settings_client.network.server_game_type = old_value.value_or(false) ? SERVER_GAME_TYPE_PUBLIC : SERVER_GAME_TYPE_LOCAL;
+		}
+
+		if (generic_version < IFV_AUTOSAVE_RENAME && IsConversionNeeded(generic_ini, "gui", "autosave", "autosave_interval", &old_item)) {
+			static std::vector<std::string> _old_autosave_interval{"off", "monthly", "quarterly", "half year", "yearly"};
+			auto old_value = OneOfManySettingDesc::ParseSingleValue(old_item->value->c_str(), old_item->value->size(), _old_autosave_interval);
+
+			switch (old_value) {
+				case 0: _settings_client.gui.autosave_interval = std::chrono::minutes::zero(); break;
+				case 1: _settings_client.gui.autosave_interval = std::chrono::minutes(10); break;
+				case 2: _settings_client.gui.autosave_interval = std::chrono::minutes(30); break;
+				case 3: _settings_client.gui.autosave_interval = std::chrono::minutes(60); break;
+				case 4: _settings_client.gui.autosave_interval = std::chrono::minutes(120); break;
+				default: break;
+			}
 		}
 
 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);

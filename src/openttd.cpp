@@ -102,15 +102,6 @@ bool _save_config = false;
 bool _request_newgrf_scan = false;
 NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
 
-/** Available settings for autosave intervals. */
-static const std::chrono::milliseconds _autosave_ticks[] = {
-	std::chrono::minutes::zero(), ///< never
-	std::chrono::minutes(10),
-	std::chrono::minutes(30),
-	std::chrono::minutes(60),
-	std::chrono::minutes(120),
-};
-
 /**
  * Error handling for fatal user errors.
  * @param str the string to print.
@@ -1458,7 +1449,7 @@ static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::millise
  */
 void ChangeAutosaveFrequency(bool reset)
 {
-	_autosave_interval.SetInterval({_autosave_ticks[_settings_client.gui.autosave], TimerGameRealtime::AUTOSAVE}, reset);
+	_autosave_interval.SetInterval({_settings_client.gui.autosave_interval, TimerGameRealtime::AUTOSAVE}, reset);
 }
 
 /**
