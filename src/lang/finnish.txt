@@ -2921,7 +2921,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3×3-ruu
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Sattumanvarainen
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Rahoita uutta teollisuutta
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Teollisuuden rahoittaminen
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Valitse tehdas listasta
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Luo satunnaisia tuotantolaitoksia
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Sijoita teollisuuslaitokset satunnaisesti
@@ -2944,7 +2944,7 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Hyväksy
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Taloja
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Napsauta teollisuutta nähdäksesi sen tuottajat ja kuluttajat
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Napsauta rahtia nähdäksesi sen tuottajat ja kuluttajat
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Näytä ketju
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Teollisuusketju
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näytä rahtia tuottavat ja hyväksyvät teollisuudenhaarat
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Yhdistä karttaan
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Valitse näytetyt teollisuuslaitokset myös kartalla
@@ -3539,7 +3539,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Rahoita tieverkon uudelleenrakentamista.{}Aiheuttaa huomattavaa häiriötä tieliikenteessä jopa kuuden kuukauden ajan.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Rakenna patsas yhtiösi kunniaksi.{}Parantaa asemien arvioita pysyvästi tässä kunnassa.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Rahoita uusien rakennusten rakentamista kunnassa.{}Tämä kiihdyttää tämän kunnan kasvua tilapäisesti.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Osta vuodeksi yksinoikeudet kunnan liikennöintiin.{}Tällöin paikallisviranomaiset eivät salli matkustajien ja rahdin käyttää kilpailijoittesi asemia.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Osta vuodeksi yksinoikeudet liikennöintiin kunnassa.{}Tällöin paikallisviranomaiset eivät salli matkustajien ja rahdin käyttää kilpailijoittesi asemia. Sopimus raukeaa, jos kilpailija onnistuu lahjomaan viranomaiset.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi kuitenkin olla ankara, jos jäät kiinni.{}{POP_COLOUR}Kustannus: {CURRENCY_LONG}
 
 # Goal window

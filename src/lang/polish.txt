@@ -834,7 +834,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stawki płatno�
 # Company league menu
 ###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ranking firm
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegółowa tabela wydajności
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegóły oceny wydajności
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela wyników
 
 # Industry menu
@@ -983,7 +983,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Wykres z
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Wykres przychodów
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Dostarczone jednostki ładunku
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocena wydajności firmy (maks. ocena=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Wartości firm
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Wykres wartości firmy
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki płatności za ładunek
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dni w transporcie
@@ -1614,6 +1614,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :z lewej strony
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :wyśrodkowany
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P 0 ę y ""}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksymalna wysokość początkowej pożyczki: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki, jaką firma może zaciągnąć (bez uwzględnienia inflacji)
@@ -2326,9 +2327,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Żadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mnożnik rozmiarów metropolii: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar metropolii w porównaniu do normalnych miast na początku gry
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aktualizuj graf dystrybucji co {STRING}{NBSP}sekund{P 0:2 ę y ""}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aktualizuj graf dystrybucji co {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Czas pomiędzy kolejnymi przeliczeniami grafu połączeń. Każde przeliczenie oblicza plany dla jednego komponentu grafu. Wartość X dla tego ustawienia nie oznacza, że cały graf będzie aktualizowany co X sekund. Aktualizowane będą tylko niektóre komponenty. Im mniejszą wartość ustawisz, tym więcej czasu będzie potrzebował procesor, aby wykonać obliczenia. Im większą wartość ustawisz, tym więcej czasu upłynie, zanim rozpocznie się dystrybucja ładunków po nowych trasach.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Przeznacz {STRING}{NBSP}sekund{P 0:2 ę y ""} na przeliczenie grafu dystrybucji
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Przeznacz {STRING} na przeliczenie grafu dystrybucji
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Czas potrzebny na każde przeliczenie komponentu grafu połączeń. Po rozpoczęciu przeliczania, tworzony jest wątek, który może działać przez podaną liczbę sekund. Im mniejszą wartość ustawisz, tym większe prawdopodobieństwo, że wątek nie zostanie ukończony w wyznaczonym czasie. Wtedy gra zatrzymuje się do czasu jego zakończenia („lag”). Im większą wartość ustawisz, tym dłużej będzie trwała aktualizacja dystrybucji, gdy zmienią się trasy.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Tryb dystrybucji dla pasażerów: {STRING}
@@ -3301,7 +3302,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Siatka 3
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Losowo
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Ufunduj nowe przedsiębiorstwo
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fundowanie przedsiębiorstwa
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Wybierz przedsiębiorstwo z listy
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Utwórz losowe przedsiębiorstwa
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Pokryj mapę losowo położonymi przedsiębiorstwami
@@ -3317,14 +3318,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Usuń ws
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Czy na pewno chcesz usunąć wszystkie istniejące przedsiębiorstwa?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Kolejność przetwarzania dla {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Kolejność przetwarzania dla {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Łańcuch produkcji - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Łańcuch przetwarzania - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Przedsiębiorstwa produkujące
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Przedsiębiorstwa odbierające
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Kliknij na przedsiębiorstwo, aby zobaczyć jego dostawców i odbiorców
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Kliknij na ładunek, aby zobaczyć jego dostawców i odbiorców
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Łańcuch przetwarzania
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Łańcuch produkcji
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Wyświetl dostawców i odbiorców ładunku
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Pokaż na mapie
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pokazuje aktualnie wyświetlone przedsiębiorstwa na mapie
@@ -3461,7 +3462,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} Zespół OpenTTD
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :{WHITE}Liczba klatek na sekundę
+STR_FRAMERATE_CAPTION                                           :{WHITE}Klatkaż
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Tempo symulacji: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Liczba ticków gry symulowanych na sekundę.
@@ -3880,7 +3881,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miasto r
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Miasto {RED}nie{BLACK} rośnie
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Wyśrodkuj widok główny na lokalizacji miasta. Ctrl+klik otwiera nowy podgląd na jego lokalizację
-STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalne władze
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalne Władze
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Pokaż informacje o lokalnych władzach
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Zmień nazwę miasta
 
@@ -3919,8 +3920,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Ufunduj remont sieci dróg.{}Spowoduje to zakłócenia w ruchu ulicznym do 6 miesięcy.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Zbuduj statuę dla uczczenia swojej firmy.{}Trwale podniesie to ocenę twoich stacji w pobliżu tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Ufunduj nowe budynki w mieście.{}Zapewnia tymczasowe przyspieszenie rozwoju tego miasta.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście.{}Lokalne władze nie pozwolą pasażerom ani przedsiębiorstwom korzystać z usług innych firm.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Przekup lokalne władze, aby zwiększyć swoją ocenę, ryzykując surową karę w przypadku przyłapania.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście.{}Lokalne władze nie pozwolą pasażerom ani przedsiębiorstwom korzystać ze stacji innych firm. Skuteczna łapówka od konkurenta spowoduje anulowanie tego kontraktu.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Przekup lokalne władze, aby zwiększyć swoją ocenę i unieważnić wyłączność transportową konkurenta, ryzykując surową karę w przypadku przyłapania.{}{POP_COLOUR}Koszt: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Cele firmy {COMPANY}
@@ -4998,8 +4999,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z 
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / Game Script jest dostępne tylko na serwerze
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Konfiguracja SI
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Konfiguracja Game Script
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Ustawienia SI
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Ustawienia Game Script
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Game Script, który zostanie załadowany podczas kolejnej gry
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}SI, które zostaną załadowane podczas kolejnej gry
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ludzki gracz
