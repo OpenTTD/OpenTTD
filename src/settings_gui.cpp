@@ -58,6 +58,15 @@ static const StringID _autosave_dropdown[] = {
 	INVALID_STRING_ID,
 };
 
+/** Available settings for autosave intervals. */
+static const std::chrono::minutes _autosave_dropdown_to_minutes[] = {
+	std::chrono::minutes::zero(), ///< never
+	std::chrono::minutes(10),
+	std::chrono::minutes(30),
+	std::chrono::minutes(60),
+	std::chrono::minutes(120),
+};
+
 static Dimension _circle_size; ///< Dimension of the circle +/- icon. This is here as not all users are within the class of the settings window.
 
 static const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd);
@@ -220,7 +229,13 @@ struct GameOptionsWindow : Window {
 			}
 
 			case WID_GO_AUTOSAVE_DROPDOWN: { // Setup autosave dropdown
-				*selected_index = _settings_client.gui.autosave;
+				int index = 0;
+				for (auto &minutes : _autosave_dropdown_to_minutes) {
+					index++;
+					if (_settings_client.gui.autosave_interval <= minutes) break;
+				}
+				*selected_index = index - 1;
+
 				const StringID *items = _autosave_dropdown;
 				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
 					list.emplace_back(new DropDownListStringItem(*items, i, false));
@@ -301,7 +316,15 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 			}
-			case WID_GO_AUTOSAVE_DROPDOWN:     SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
+			case WID_GO_AUTOSAVE_DROPDOWN: {
+				int index = 0;
+				for (auto &minutes : _autosave_dropdown_to_minutes) {
+					index++;
+					if (_settings_client.gui.autosave_interval <= minutes) break;
+				}
+				SetDParam(0, _autosave_dropdown[index - 1]);
+				break;
+			}
 			case WID_GO_LANG_DROPDOWN:         SetDParamStr(0, _current_language->own_name); break;
 			case WID_GO_BASE_GRF_DROPDOWN:     SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
 			case WID_GO_BASE_GRF_STATUS:       SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
@@ -655,7 +678,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_AUTOSAVE_DROPDOWN: // Autosave options
-				_settings_client.gui.autosave = index;
+				_settings_client.gui.autosave_interval = _autosave_dropdown_to_minutes[index];
 				ChangeAutosaveFrequency(false);
 				this->SetDirty();
 				break;
@@ -1791,7 +1814,7 @@ static SettingsContainer &GetSettingsTree()
 			}
 
 			interface->Add(new SettingEntry("gui.fast_forward_speed_limit"));
-			interface->Add(new SettingEntry("gui.autosave"));
+			interface->Add(new SettingEntry("gui.autosave_interval"));
 			interface->Add(new SettingEntry("gui.toolbar_pos"));
 			interface->Add(new SettingEntry("gui.statusbar_pos"));
 			interface->Add(new SettingEntry("gui.prefer_teamchat"));
