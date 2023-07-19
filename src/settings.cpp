@@ -188,6 +188,20 @@ size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const
 }
 
 /**
+ * Find whether a string was a boolean true or a boolean false.
+ *
+ * @param str the current value of the setting for which a value needs found.
+ * @return Either true/false, or nullopt if no boolean value found.
+ */
+std::optional<bool> BoolSettingDesc::ParseSingleValue(const char *str)
+{
+	if (strcmp(str, "true") == 0 || strcmp(str, "on") == 0 || strcmp(str, "1") == 0) return true;
+	if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return false;
+
+	return std::nullopt;
+}
+
+/**
  * Find the set-integer value MANYofMANY type in a string
  * @param many full domain of values the MANYofMANY setting can have
  * @param str the current string value of the setting, each individual
@@ -422,8 +436,8 @@ size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 
 size_t BoolSettingDesc::ParseValue(const char *str) const
 {
-	if (strcmp(str, "true") == 0 || strcmp(str, "on") == 0 || strcmp(str, "1") == 0) return true;
-	if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return false;
+	auto r = BoolSettingDesc::ParseSingleValue(str);
+	if (r.has_value()) return *r;
 
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
@@ -1225,8 +1239,9 @@ void LoadFromConfig(bool startup)
 				IniGroup *network = generic_ini.GetGroup("network", false);
 				if (network != nullptr) {
 					IniItem *server_advertise = network->GetItem("server_advertise");
-					if (server_advertise != nullptr && server_advertise->value == "true") {
-						_settings_client.network.server_game_type = SERVER_GAME_TYPE_PUBLIC;
+					if (server_advertise != nullptr) {
+						auto old_value = BoolSettingDesc::ParseSingleValue(server_advertise->value->c_str());
+						_settings_client.network.server_game_type = old_value.value_or(false) ? SERVER_GAME_TYPE_PUBLIC : SERVER_GAME_TYPE_LOCAL;
 					}
 				}
 			}

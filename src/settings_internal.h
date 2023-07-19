@@ -196,6 +196,8 @@ struct BoolSettingDesc : IntSettingDesc {
 		IntSettingDesc(save, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat,
 			pre_check, post_callback) {}
 
+	static std::optional<bool> ParseSingleValue(const char *str);
+
 	bool IsBoolSetting() const override { return true; }
 	size_t ParseValue(const char *str) const override;
 	std::string FormatValue(const void *object) const override;
