@@ -1645,6 +1645,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Aken suletakse paremklõpsuga: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Sulgeb akna, kui selles paremklõps teha. Lülitab välja paremklõpsuga vihjed!
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Salvestusväłp: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vali välpsalvestuste vaheline ajavahemik

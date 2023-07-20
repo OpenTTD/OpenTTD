@@ -1553,6 +1553,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :As
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Dún an fhuinneog le deas-chliceáil: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Dúntar fuinneog trí dheas-chliceáil laistigh de. Díchumasaítear leis seo na leideanna uirlise deas-cliceála!
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Uathshábháil: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Roghnaigh an t-eatramh idir uathshábhálacha cluichí

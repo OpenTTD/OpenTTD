@@ -1589,6 +1589,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :关闭
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :右键关闭窗口： {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :使用在窗口内按右键关闭该窗口，本功能与右键工具提示不能共存！
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :自动保存: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :选择自动存档时间间隔

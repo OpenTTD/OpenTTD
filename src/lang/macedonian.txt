@@ -986,6 +986,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелин�
 
 ###length 3
 
+###length 3
 
 
 ###length 3

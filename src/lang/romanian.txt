@@ -1616,6 +1616,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Oprit
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Închidere fereastră la clic-dreapta: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Închide o fereastră prin clic-dreapta înăuntrul ei. Dezactivează sfatul oferit la clic-dreapta!
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autosalvare: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Alege intervalul de timp dintre salvările automate

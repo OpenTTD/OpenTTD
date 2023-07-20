@@ -1618,6 +1618,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fechar janela com botão direito do mouse: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janela ao clicar com o botão direito do mouse nela. Desativa o tooltip com o botão direito!
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Auto-salvar: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecione intervalo entre jogos salvos automaticamente

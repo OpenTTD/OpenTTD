@@ -1737,6 +1737,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :не емулю
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Закрити вікно правою кнопкою миші: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Закривати вікно кліком правої кнопки миші по ньому. При цьому віключається поява підказок за правою кнопкою.
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Автозбереження: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Оберіть проміжок між автоматичними збереженнями гри

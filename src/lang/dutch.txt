@@ -1617,6 +1617,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Vensters sluiten met rechtsklik: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Sluit vensters met de rechtermuisknop. Schakelt knopinfo met de rechtermuisknop uit!
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automatisch opslaan: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Tijdsduur kiezen voor automatische spelopslag

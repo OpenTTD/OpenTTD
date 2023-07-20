@@ -1666,6 +1666,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Ne
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fermu fenestron per dekstra klako: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fermas fenestron per dekstra klako ene de ĝi. Malebligas ŝpruchelpilon je dekstra klako!
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Aŭtomata konservado: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Elektu intervalon inter aŭtomataj konservadoj de la ludo

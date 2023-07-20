@@ -1658,6 +1658,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Žiadna
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zatvoriť okno kliknutím pravým tlačidlom: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zatvorí okno kliknutím pravým tlačidlom do vnútra. Prestane ukazovať nápovedu pri kliknutí pravým tlačidlom!
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automatické ukladanie: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vyberte interval pre automatické ukladanie hry

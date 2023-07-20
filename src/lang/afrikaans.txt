@@ -1493,6 +1493,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl-klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Maak venster toe met regter-klik: {STRING}
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Outostoor: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Tyd tussen outomatiese spelstore

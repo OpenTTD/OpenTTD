@@ -1516,6 +1516,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :I ffwrdd
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Cau ffenest wrth dde-glicio: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Cau ffenest wrth dde-glicio tu fewn iddo. Mae hyn yn analluogi dangos gwybodaeth ar dde-clicio!
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Awtogadw: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Dewis pa mor aml y dylid awtogadw gemau

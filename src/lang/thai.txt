@@ -1481,6 +1481,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :ปิด
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :ปิดหน้าต่างโดยกด คลิ๊กขวา: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :สามารถปิดแถบหน้าต่างด้วยการ คลิ๊กขวา โดยลากเมาส์ไปที่แถบที่ต้องการจะปิดก็พอ
+###length 3
 
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :ใช้รูปแบบวันที่ {STRING} เป็นชื่อเซฟของเกม
