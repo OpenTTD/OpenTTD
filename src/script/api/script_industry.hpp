@@ -82,6 +82,15 @@ public:
 	static std::optional<std::string> GetName(IndustryID industry_id);
 
 	/**
+	 * Get the construction date of an industry.
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return Date the industry was constructed.
+	 * @api -ai
+	 */
+	static ScriptDate::Date GetConstructionDate(IndustryID industry_id);
+
+	/**
 	 * Set the custom text of an industry, shown in the GUI.
 	 * @param industry_id The industry to set the custom text of.
 	 * @param text The text to set it to (can be either a raw string, or a ScriptText object). If null, or an empty string, is passed, the text will be removed.

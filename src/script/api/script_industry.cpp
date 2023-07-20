@@ -49,6 +49,13 @@
 	return GetString(STR_INDUSTRY_NAME);
 }
 
+/* static */ ScriptDate::Date ScriptIndustry::GetConstructionDate(IndustryID industry_id)
+{
+	Industry *i = Industry::GetIfValid(industry_id);
+	if (i == nullptr) return ScriptDate::DATE_INVALID;
+	return (ScriptDate::Date)i->construction_date;
+}
+
 /* static */ bool ScriptIndustry::SetText(IndustryID industry_id, Text *text)
 {
 	CCountedPtr<Text> counter(text);
