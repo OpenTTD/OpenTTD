@@ -254,7 +254,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título 
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - apenas mostra a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para guardar o tamanho atual como padrão
-STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique para tambem salvar o estado como por omissão
+STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique também guarda o estado como padrão.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para reajustar janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de deslize - desloca a lista para cima/baixo
@@ -1620,6 +1620,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fechar janelas ao fazer clique direito: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fecha uma janela ao fazer clique direito dentro dela. Desativa os textos de ajuda ao fazer clique direito!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Não
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sim
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Sim, exceto coladas
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Guardar automaticamente: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Seleccione o intervalo entre gravações automáticas
@@ -1907,8 +1910,8 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distância entr
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Desligado
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de janelas não-pegajosas: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas não-pegajosas abertas antes que janelas antigas comecem a ser fechadas para dar lugar a novas janelas
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de janelas não-coladas: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas abertas não-coladas antes que as janelas antigas sejam automaticamente fechadas para dar lugar a novas janelas
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desligado

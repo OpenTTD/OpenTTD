@@ -604,7 +604,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Biểu �
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Biểu Đồ Thu Nhập
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Số lượng hàng hóa đã giao
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Đánh giá năng suất công ty (cao nhất=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Giá trị công ty
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Biểu đồ giá trị công ty
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng Giá Cước Vận Chuyển Hàng Hóa
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Số ngày vận chuyển
@@ -1234,6 +1234,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Trái
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Giữa
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Phải
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}giây
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Khoảng vay khởi nghiệp tối đa: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức tối đa một công ty có thể vay (không tính lạm phát)
@@ -1618,6 +1619,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Tắt
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Đóng cửa số khi click chuột phải: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Đóng cửa sổ bằng cách bấm chuột phải vào đó. Ngăn tooltip bằng cách bấm phải!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Không
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Có
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Có, trừ cửa sổ đang neo
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Tự động save: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Chọn chu kỳ giữa mỗi lần tự động save
@@ -1947,9 +1951,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Không
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Hệ số quy mô đô thị coi là thành phố: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kích thước trung bình của thành phố tỉ lệ với đô thị lúc bắt đầu trò chơi
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Cập nhật biểu đồ phân phối mỗi {STRING}{NBSP}giây
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Cập nhật biểu đồ phân phối mỗi {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Thời gian giữa các lần tính toán lại tiếp theo của biểu đồ liên kết. Mỗi lần tính toán lại sẽ tính toán các kế hoạch cho một thành phần của biểu đồ. Điều đó có nghĩa là giá trị X cho cài đặt này không có nghĩa là toàn bộ biểu đồ sẽ được cập nhật X giây một lần. Chỉ một số thành phần sẽ làm như vậy. Bạn đặt nó càng ngắn thì càng cần nhiều thời gian CPU để tính toán nó. Bạn đặt càng lâu thì càng mất nhiều thời gian cho đến khi việc phân phối hàng hóa bắt đầu trên các tuyến đường mới.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Mất {STRING}{NBSP}giây để tính toán lại biểu đồ phân phối
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Mất {STRING} để tính toán lại biểu đồ phân phối
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Thời gian tiêu tốn cho mỗi lần tính toán lại một thành phần biểu đồ liên kết. Khi bắt đầu tính toán lại, một luồng sẽ được sinh ra và chạy trong số giây được thiết lập. Bạn đặt thông số này càng ngắn thì càng có nhiều khả luồng được tạo chưa hoàn thành công việc của nó. Sau đó, trò chơi dừng lại cho đến khi nó ("lag"). Bạn đặt càng lâu thì biểu đồ phân phối càng mất nhiều thời gian để cập nhật khi các tuyến thay đổi.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Chế độ phân phối đối với hành khách: {STRING}
@@ -2922,7 +2926,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}lưới 
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Ngẫu nhiên
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Góp vốn xây nhà máy
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Tài trợ xây nhà máy
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Chọn loại nhà máy thích hợp trong danh sách
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Tạo nhiều nhà máy ngẫu nhiên
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Phủ bản đồ bằng cách xây nhà máy ngẫu nhiên
@@ -2938,14 +2942,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Loại b
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Bạn có chắc chắn muốn loại bỏ tất cả các nhà máy?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chuỗi cung ứng cho nhà máy {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chuỗi cung ứng hàng hoá {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chuỗi cung ứng - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chuỗi cung ứng hàng hoá - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Nhà máy sản xuất
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Nhà máy nhận
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Nhà kho
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click vào nhà máy để xem nhà cung cấp cho nó và khách hàng của nó
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click vào hàng hoá để xem nhà sản xuất và khách hàng
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Hiển thị chuỗi cung ứng
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Chuỗi cung ứng
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Hiển thị khả năng cung ứng và chấp nhận hàng hoá của nhà máy
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Liên kết với bản đồ nhỏ
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Chọn các nhà máy hiển thị ở bản đồ nhỏ luôn thể
@@ -3540,7 +3544,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng lại đường sá của đô thị.{} Sẽ gây ách tắc giao thông đường bộ trong 6 tháng.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{} Tăng xếp hạng cho các trạm trong khu vực.{}{POP_COLOUR} Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng các toà nhà để thúc đẩy phát triển đô thị.{}Tăng sự phát triển đô thị trong một thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Mua 1 năm độc quyền kinh doanh vận tải của đô thị.{} Chính quyền địa phương sẽ ra luật chỉ cho phép hành khách và hàng hoá vào nhà ga, bến, cảng của công ty.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Mua 1 năm độc quyền kinh doanh vận tải của đô thị.{} Chính quyền địa phương sẽ ra luật chỉ cho phép hành khách và hàng hoá vào nhà ga, bến, cảng của công ty. Việc hối lộ thành công từ đối thủ cạnh tranh sẽ hủy hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi, có một tỉ lệ rủi ro nếu bại lộ và sẽ mất hết quyền lợi lẫn tiền hối lộ.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 
 # Goal window
@@ -3860,7 +3864,7 @@ STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRIN
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Gửi về xưởng
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Gửi về xưởng
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Gửi về xưởng
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Gửi về Hangar
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Gửi về xưởng
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Ấn để dừng mọi phương tiện trong danh sách
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Ấn để chạy mọi phương tiện trong danh sách

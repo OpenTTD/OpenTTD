@@ -431,7 +431,7 @@ STR_FILE_MENU_EXIT                                              :Afsluiten
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Wereldkaart
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra kijkvenster
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Vrachtstroomlegende
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda vrachtstroom
 STR_MAP_MENU_SIGN_LIST                                          :Bordjeslijst
 
 # Town menu
@@ -604,7 +604,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafiek 
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafiek van inkomsten
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Aantal eenheden afgeleverde vracht
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bedrijfsprestatiescore (maximale score = 1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Bedrijfswaarde
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Grafiek bedrijfswaarde
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vrachtprijzen
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dagen onderweg
@@ -1234,6 +1234,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midden
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}second{P 0 "" n}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximale beginlening: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaal bedrag dat een bedrijf kan lenen (zonder rekening te houden met de inflatie)
@@ -1618,6 +1619,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Vensters sluiten met rechtsklik: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Sluit vensters met de rechtermuisknop. Schakelt knopinfo met de rechtermuisknop uit!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nee
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ja, behalve gepind
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automatisch opslaan: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Tijdsduur kiezen voor automatische spelopslag
@@ -1947,9 +1951,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Beginfactor voor stadsgroei: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde grootte van steden in vergelijking tot normale steden bij het begin van het spel.
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Distributiegrafiek elke {STRING}{NBSP}second{P 0:2 "" en} bijwerken
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Distributiegrafiek elke {STRING} bijwerken
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :De tijd tussen opeenvolgende herberekeningen van de koppeling-grafiek. Elke berekening berekent de plannen voor één component van de grafiek. Dat betekent dat een waarde X voor deze instelling niet betekent dat de hele grafiek elke X seconden wordt bijgewerkt. Dat geldt alleen voor één component. Hoe korter je deze waarde instelt, hoe meer CPU-tijd er nodig is voor de berekening. Hoe langer je deze waarde instelt, hoe langer het duurt voordat de vrachtdistributie start op nieuwe routes.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Besteed {STRING}{NBSP}second{P 0:2 "" en} per herberekening van de distributiegrafiek
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :{STRING} per herberekening van de distributiegrafiek besteden
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :De benodigde tijd voor een herbereking van een koppeling-grafiekcomponent. Wanneer een herberekening wordt gestart, start een draad die dit aantal seconden mag lopen. Hoe korter je deze waarde maakt, hoe groter de kans dat de draad is niet op tijd is afgelopen. Het spel stopt dan totdat dit alsnog gebeurt (het 'hikt'). Hoe langer je deze waarde maakt, hoe langer het duurt voor de distributie wordt bijgewerkt wanneer een route wijzigt.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributiemodus voor passagiers: {STRING}
@@ -2922,7 +2926,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3-rast
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Willekeurig
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Nieuwe industrie financieren
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Industrie financieren
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Selecteer de gewenste industrie in de lijst
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Willekeurige industrieën maken
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Bedek de kaart met willekeurig geplaatste industrieën
@@ -2938,14 +2942,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Alle ind
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Weet je zeker dat je alle industrieën wilt verwijderen?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrieketen voor {STRING} industrie
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrieketen voor {STRING} vracht
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrieketen - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Vrachtketen - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerende industrieën
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepterende industrieën
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huizen
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik op de industrie om de leveranciers en klanten te zien
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik op de vracht om de leveranciers en klanten te zien
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Keten weergeven
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industrieketen
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Industrieën weergeven die vracht leveren en accepteren
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Koppeling naar de kleine kaart
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Weergegeven industrieën ook op de kleine kaart selecteren
@@ -3540,8 +3544,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Financier een reconstructie van het wegennetwerk.{}Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Bouw een standbeeld ter ere van jouw bedrijf.{}Zorgt voor een blijvend hogere stationswaardering in deze stad.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financier de bouw van nieuwe gebouwen in de stad.{}Zorgt voor een tijdelijk hogere groei van deze stad.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}1 jaar exclusieve transportrechten kopen in deze plaats.{}Het gemeentebestuur staat alleen passagiers en vracht toe bij jouw stations.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen met het risico op een ernstige sanctie wanneer je gepakt wordt.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}1 jaar exclusieve transportrechten kopen in deze plaats.{}Het gemeentebestuur staat alleen passagiers en vracht toe bij jouw stations. Concurrenten kunnen het gemeentebestuur op hun beurt omkopen en zo dit ongedaan maken.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Koop het plaatselijk gemeentebestuur om om je reputatie te verhogen en de exclusieve rechten van een concurrent te annuleren. Dit met het risico op een ernstige sanctie wanneer je gepakt wordt.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Doelen
@@ -3851,16 +3855,16 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Beschikbare vli
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Lijst beheren
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Stuur instructies naar alle voertuigen in de lijst
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Vervang voertuigen
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Stuur voor onderhoud
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Voor onderhoud sturen
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Groep maken
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Winst dit jaar: {CURRENCY_LONG} (vorig jaar: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Stuur naar depot
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Stuur naar garage
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Stuur naar dok
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Stuur naar hangar
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Naar remise sturen
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Naar garage sturen
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Naar dok sturen
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Naar hangar sturen
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klik om alle voertuigen in de lijst te stoppen
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klik om alle voertuigen in de lijst te starten
@@ -4188,7 +4192,7 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centreer
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centreer het hoofdscherm op de locatie van het vliegtuig. Met dubbelklik volg je het vliegtuig op het hoofdscherm. Ctrl+klik opent een nieuw scherm op de locatie van het vliegtuig.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar depot. Ctrl+klik voor alleen onderhoud
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar remise. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur wegvoertuig naar garage. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur schip naar dok. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig naar hangar. Ctrl+klik voor alleen onderhoud
@@ -4613,8 +4617,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI-/spelscript-probleemvenster is alleen beschikbaar voor de server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configuratie AI
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configuratie spelscript
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI-instellingen
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Spelscript-instellingen
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Het spelscript dat in het volgende spel geladen wordt
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}De AI's die in het volgende spel geladen worden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
@@ -5055,7 +5059,7 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan schi
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan vliegtuig niet starten of stoppen...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan trein niet naar depot sturen...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan trein niet naar remise sturen...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan wegvoertuig niet naar garage sturen...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan schip niet naar dok sturen...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan vliegtuig niet naar hangar sturen...

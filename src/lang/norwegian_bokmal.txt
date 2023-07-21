@@ -970,7 +970,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikansk peso
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny Taiwan Dollar
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminbi
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringgit
 
