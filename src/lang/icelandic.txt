@@ -897,7 +897,7 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litháenskt lit
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suðurkóreskt vonn
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suður-Afrískt rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sérsniðinn...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari (Gel)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálfvirk vistun

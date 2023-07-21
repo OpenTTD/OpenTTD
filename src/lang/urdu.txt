@@ -891,7 +891,7 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :ٹرکش لیر
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :سلواک کرونا
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :برازیلین رئیل
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :اِسٹونین کرونی
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :لتھوینیا کے لٹاس (لٹل)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :لتھوینیا کے لٹاس
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :جنوبی کوریا کے ون
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :جنوبی افریقہ کے رنڈ
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :اپنی مرضی کی ۔۔۔
