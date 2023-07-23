@@ -3545,7 +3545,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Dựng tượng đài tôn vinh để quảng bá hình ảnh công ty.{} Tăng xếp hạng cho các trạm trong khu vực.{}{POP_COLOUR} Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Tài trợ xây dựng các toà nhà để thúc đẩy phát triển đô thị.{}Tăng sự phát triển đô thị trong một thời gian ngắn.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Mua 1 năm độc quyền kinh doanh vận tải của đô thị.{} Chính quyền địa phương sẽ ra luật chỉ cho phép hành khách và hàng hoá vào nhà ga, bến, cảng của công ty. Việc hối lộ thành công từ đối thủ cạnh tranh sẽ hủy hợp đồng này.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi, có một tỉ lệ rủi ro nếu bại lộ và sẽ mất hết quyền lợi lẫn tiền hối lộ.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi và hủy bỏ độc quyền kinh doanh vận tải của đối thủ, có nguy cơ bị phạt nặng nếu vụ việc bị bại lộ.{}{POP_COLOUR}Chi phí: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Mục Tiêu Của {COMPANY}
