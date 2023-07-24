@@ -1620,6 +1620,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Désactivé
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fermer une fenêtre en cliquant droit{NBSP}: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fermer une fenêtre en cliquant droit à l’intérieur de celle-ci. Désactive l'infobulle sur clic droit{NBSP}!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Non
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Oui
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Oui, sauf les fenêtres punaisées
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Sauvegarde automatique{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Sélectionner l'intervalle de temps entre les sauvegardes automatiques
