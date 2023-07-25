@@ -1017,8 +1017,12 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnosti hry
 
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Zobrazit nastavení grafiky
 
+STR_GAME_OPTIONS_VOLUME                                         :Hlasitost
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Hudba
 
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Měna
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Výběr jednotek měny
@@ -1074,6 +1078,8 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Volba in
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Vypnuto
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Každých 10 minut
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Každých 120 minut
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jazyk
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Zvolit jazyk uživatelského rozhraní
@@ -1110,6 +1116,7 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Zobrazovat výsledek průzkumu z aktuálně běžící hry
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiky
 
@@ -1418,10 +1425,10 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Ukazovat finan�
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Na konci každého roku zobrazit okno s finančním přehledem pro snadnou kontrolu hospodaření společnosti.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Vydávat nové příkazy jako 'bez zastavení': {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálně vozidlo zastavuje na každé stanici kterou projíždí. Povolením této možnosti budou všechny nově vydané příkazy "Jeď do" vydávány jako "bez zastavení" a vozidlo tak každou stanicí po cestě do cíle pouze projede, bez zastavení. U jednotlivých příkazů lze pochopitelně možnost "bez zastavení" vypnout.
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálně vozidlo zastavuje v každé stanici, kterou projíždí. Zapnutím této možnosti budou všechny nově vydané příkazy "Jet do" vydávány jako "bez zastavení" a vozidlo tak každou stanicí po cestě do cíle pouze projede bez odbavení. U jednotlivých příkazů nicméně lze ručně nastavit odlišné chování.
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Vlaky normálně zastavují {STRING} nástupiště
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Místo kde vlaky obvykle zastavují ve stanicích. Toto je defaultní nastavení. U jednotlivých příkazů vozidel jde místo zastavení změnit
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Výchozí pozice pro zastavování vlaků ve stanicích. 'Na začátku' znamená, že konec vlaku je u začátku nástupiště, 'uprostřed' znamená, že střed vlaku je u středu nástupiště a 'na konci' znamená, že čelo vlaku je u konce nástupiště. Toto nastavení udává jen výchozí hodnotu pro nové příkazy; u jednotlivých příkazů lze místo zastavení změnit.
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :na začátku
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :uprostřed
@@ -2006,6 +2013,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Žádné
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Činitel základní velikosti města: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Průměrná velikost větších měst v porovnání s ostatními městy na začátku hry
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Přepočet grafu distribuce trvá {STRING}
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mód distribuce pro cestující: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Rovnoměrný" znamená, že téměř stejné množství cestujících chce cestovat ze stanice A do stanice B, jako ze stanice B do A. "Nerovnoměrný" znamená, že libovolné množství cestujících může cestovat v jakémkoliv směru. "Manuální" znamená, že zde nebude žádná automatická distribuce pro cestující.
@@ -2466,6 +2474,7 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Ne
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ano, toto jednou
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ano, znovu se neptat
 
+STR_NETWORK_ASK_SURVEY_YES                                      :Ano
 
 STR_NETWORK_SPECTATORS                                          :Pozorovatelé
 
@@ -2757,6 +2766,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vyber, k
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vyber typ stavěné stanice
 
 STR_STATION_CLASS_DFLT                                          :Původní stanice
+STR_STATION_CLASS_DFLT_STATION                                  :Původní stanice
 STR_STATION_CLASS_WAYP                                          :Směrování
 
 # Signal window
@@ -3898,6 +3908,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Upravit 
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Poslat příkazy všem vozidlům v tomto seznamu
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Vyměňování vozidel
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Provést údržbu
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Vytvořit skupinu
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Letošní zisk: {CURRENCY_LONG} (vloni: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Poslat do depa
@@ -4621,6 +4632,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Očekáv
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plánovaný
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Přepnout mezi očekávaným a plánovaným
 
+STR_TIMETABLE_ARRIVAL                                           :P: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -5782,11 +5794,13 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
