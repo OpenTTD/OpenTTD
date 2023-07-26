@@ -190,6 +190,9 @@ STR_COLOUR_GREY                                                 :Harmaa
 STR_COLOUR_WHITE                                                :Valkoinen
 STR_COLOUR_RANDOM                                               :Satunnainen
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1416,6 +1419,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Mikäli käytö
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Yhtiön väri alussa: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Valitse yhtiön aloitusväri
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lentokentät eivät vanhene: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mikäli käytössä, kaikki lentokenttätyypit ovat saatavilla ikuisesti niiden julkistamisen jälkeen

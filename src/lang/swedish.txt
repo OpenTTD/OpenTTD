@@ -190,6 +190,9 @@ STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Vit
 STR_COLOUR_RANDOM                                               :Slumpmässig
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1415,6 +1418,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Om det är akti
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Företagets startfärg: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Välj startfärg för företaget
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flygplatser blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denna inställning gör så att alla flygplatstyper finns kvar i obegränsad tid efter att de blivit tillgängliga

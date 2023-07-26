@@ -190,6 +190,9 @@ STR_COLOUR_GREY                                                 :浅灰色
 STR_COLOUR_WHITE                                                :白　色
 STR_COLOUR_RANDOM                                               :随机
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}英里/小时
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}千米/小时
@@ -1388,6 +1391,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :固定资产会
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :初创公司颜色：{STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :选定公司的初始配色方案
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :总允许建设小型机场： {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :“打开”此选项，每种类型机场出现后一直是可用的

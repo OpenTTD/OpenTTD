@@ -378,6 +378,9 @@ STR_COLOUR_GREY                                                 :Canus
 STR_COLOUR_WHITE                                                :Albus
 STR_COLOUR_RANDOM                                               :Fortuitus
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1492,6 +1495,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Electa, infrast
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Societatis color initialis: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Eligere colorem initialem societatis
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportus numquam recedunt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Electa, omnes aeroportuum typi permanent post introductionem

@@ -189,6 +189,9 @@ STR_COLOUR_BROWN                                                :بني
 STR_COLOUR_GREY                                                 :رمادي
 STR_COLOUR_WHITE                                                :ابيض
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}ميل/س
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}كم/س
@@ -1258,6 +1261,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :صيانة ال
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :لون الشركة البدائي: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :اختر اللون البدائي للشركة
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :المطارات لا تنتهي صلاحيتها {STRING}
 

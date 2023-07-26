@@ -189,6 +189,9 @@ STR_COLOUR_BROWN                                                :น้ำตา
 STR_COLOUR_GREY                                                 :เทา
 STR_COLOUR_WHITE                                                :ขาว
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} ไมล์/ชม.
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} กม./ชม.
@@ -1308,6 +1311,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}ไม�
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :ค่าบำรุงรักษาโครงสร้างพื้นฐาน: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :เมื่อเปิดใช้งาน สาธารณูประโภคที่สร้างโดยบริษัทจะมีค่าบำรุงรักษา ยิ่งเครือข่ายยิ่งมากจะยิ่งเสียค่าใช้จ่ายมากขึ้น
+
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :ท่าอากาศยานไม่มีวันหมดอายุ: {STRING}

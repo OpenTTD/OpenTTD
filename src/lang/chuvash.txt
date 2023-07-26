@@ -150,6 +150,9 @@ STR_COLOUR_BROWN                                                :Хӑмӑр
 STR_COLOUR_GREY                                                 :Сӑрӑ
 STR_COLOUR_WHITE                                                :Шурӑ
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} мил/с
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} км/с
@@ -640,6 +643,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ҫук
 
 ###length 3
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ҫук
+
 
 
 

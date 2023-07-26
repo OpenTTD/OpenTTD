@@ -376,6 +376,9 @@ STR_COLOUR_BROWN                                                :Donn
 STR_COLOUR_GREY                                                 :Liath
 STR_COLOUR_WHITE                                                :Geal
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1499,6 +1502,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Nuair a bhios s
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Dath tòiseachadh na companaidh: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Tagh dath tòiseachaidh airson na companaidh
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Chan fhalbh an ùine air puirt-adhair: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Nuair a chuireas tu an roghainn seo an comas, cumaidh gach port-adhair a' dol gu bràth an dèidh a thogail

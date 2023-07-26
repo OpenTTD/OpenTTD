@@ -316,6 +316,9 @@ STR_COLOUR_GREY                                                 :Серый
 STR_COLOUR_WHITE                                                :Белый
 STR_COLOUR_RANDOM                                               :Случайный
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}мил{P я и ь}/ч
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}км/ч
@@ -1568,6 +1571,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Включае�
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Фирменный цвет компании: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Выберите начальный фирменный цвет компании
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропорты не устаревают: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :При включении все типы аэропортов доступны для строительства в любое время после их первоначального появления

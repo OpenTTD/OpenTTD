@@ -188,6 +188,9 @@ STR_COLOUR_BROWN                                                :Кафена
 STR_COLOUR_GREY                                                 :Сива
 STR_COLOUR_WHITE                                                :Бела
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -922,6 +925,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Износ на
 
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраструктура за одржување: {STRING}
+
 
 
 

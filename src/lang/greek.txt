@@ -251,6 +251,9 @@ STR_COLOUR_GREY                                                 :Γκρι
 STR_COLOUR_WHITE                                                :Λευκό
 STR_COLOUR_RANDOM                                               :Τυχαία
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}μίλια/ώρα
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}χλμ/ώρα
@@ -1492,6 +1495,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Όταν είν
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Αρχικό χρώμα εταιρίας: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Επιλογή του αρχικού χρώματος της εταιρίας
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Τα αεροδρόμια δεν λήγουν ποτέ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ενεργοποιώντας αυτήν τη ρύθμιση κάθε τύπος αεροδρομίου παραμένει διαθέσιμο για πάντα μετά την παρουσίασή του

@@ -192,6 +192,9 @@ STR_COLOUR_GREY                                                 :Pelēka
 STR_COLOUR_WHITE                                                :Balta
 STR_COLOUR_RANDOM                                               :Nejaušs
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}jūdzes stundā
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1390,6 +1393,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kad ieslēgts, 
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Sākotnējā uzņēmuma krāsa: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Izvēlieties uzņēmuma sākotnējo krāsu
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lidostas darbosies mūžīgi: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ieslēdzot šo iestatījumu, katrs lidostas veids pēc tā ieviešanas vienmēr ir pieejams

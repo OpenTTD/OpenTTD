@@ -569,6 +569,9 @@ STR_COLOUR_GREY                                                 :Szary
 STR_COLOUR_WHITE                                                :Biały
 STR_COLOUR_RANDOM                                               :Losowy
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1797,6 +1800,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kiedy włączon
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Początkowy kolor firmy: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Wybierz początkowy kolor dla firmy
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Pozwól budować stare lotniska: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Włączona opcja sprawia, że każdy typ lotniska będzie dostępny na zawsze od chwili wprowadzenia

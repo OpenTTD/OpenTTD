@@ -254,6 +254,9 @@ STR_COLOUR_GREY                                                 :Šedá
 STR_COLOUR_WHITE                                                :Biela
 STR_COLOUR_RANDOM                                               :Náhodná
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -1457,6 +1460,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ak je zapnuté,
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Predvolená farba novej spoločnosti: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Zvoľte začiatočnú farbu pre spoločnosť
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Letiská nikdy neexiprujú: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Povoluje zachovať vsetky typy letísk navzdy.

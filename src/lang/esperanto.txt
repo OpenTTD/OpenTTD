@@ -268,6 +268,9 @@ STR_COLOUR_GREY                                                 :Griza
 STR_COLOUR_WHITE                                                :Blanka
 STR_COLOUR_RANDOM                                               :Hazarda
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1478,6 +1481,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kiam tiu ĉi ag
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Komenca kompania koloro: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Elektu komencan koloron por la kompanio
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughavenoj neniam antikviĝas: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Se tiu ĉi agordo estas aktiva, ĉiuj tipoj de flughavenoj restos konstrueblaj por ĉiam post ekhaveblo

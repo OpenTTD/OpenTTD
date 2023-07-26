@@ -189,6 +189,9 @@ STR_COLOUR_BROWN                                                :Brown
 STR_COLOUR_GREY                                                 :Llwyd
 STR_COLOUR_WHITE                                                :Gwyn
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1336,6 +1339,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cynnal a chadw 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pan fo wedi'i alluogi, mae tanadeiledd yn creu costau cynnal a chadw. Mae'r cost yn codi'n gyflymach na'i gyfradd gyda thŵf y rhwydwaith, gan effeithio'n fwy ar gwmniau mawr na rhai bychan
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Dewiswch liw dechreuol am y cwmni
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Maes awyr ddim yn dibennu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mae galluogi'r dewis yma'n peri i bob math o faes awyr aros ar gael am byth wedi ei gyflwyniad gyntaf

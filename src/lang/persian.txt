@@ -188,6 +188,9 @@ STR_COLOUR_BROWN                                                :قهوه‌ای
 STR_COLOUR_GREY                                                 :خاکستری
 STR_COLOUR_WHITE                                                :سفید
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}مایل بر ساعت
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}کیلومتر بر ساعت
@@ -1216,6 +1219,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :اجازه اس
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغییر دادن این تنظیم هنگامی که خودرو وجود دارد ممکن نیست
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :تعمیر و نگهداری زیرساخت ها: {STRING}
+
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :فرودگاه‌ها هیچ‌گاه از کار نیافتند: {STRING}

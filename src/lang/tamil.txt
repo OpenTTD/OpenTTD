@@ -190,6 +190,9 @@ STR_COLOUR_GREY                                                 :சாம்ப
 STR_COLOUR_WHITE                                                :வெள்ளை
 STR_COLOUR_RANDOM                                               :ஏதோவொரு
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1296,6 +1299,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :கட்டட
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :துவங்கும் நிறுவனத்தின் வண்ணம்: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :துவங்கும் நிறுவனத்தின் வண்ணம்
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :விமான நிலையங்கள் என்றும் காலாவதியாகாது: {STRING}
 

@@ -62,6 +62,9 @@ STR_ABBREV_COAL                                                 :कोयला
 STR_COLOUR_PINK                                                 :गुलाबी
 STR_COLOUR_RED                                                  :लाल
 
+###length 17
+
+
 # Units used in OpenTTD
 
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}hp
@@ -407,6 +410,7 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :कंपनि
 
 
 ###length 3
+
 
 
 

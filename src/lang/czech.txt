@@ -265,6 +265,9 @@ STR_COLOUR_GREY                                                 :Šedá
 STR_COLOUR_WHITE                                                :Bílá
 STR_COLOUR_RANDOM                                               :Náhodná
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}m{P íle íle il}/h
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1017,6 +1020,8 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnosti hry
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Obecné
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Zobrazit obecná nastavení
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Zobrazit nastavení grafiky
 
 STR_GAME_OPTIONS_VOLUME                                         :Hlasitost
@@ -1300,6 +1305,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlevo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :uprostřed
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P a y ""}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximální půjčka: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jak moc si může společnost půjčit (bez ohledu na inflaci)
@@ -1482,6 +1488,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pokud je zapnut
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Počáteční barva společnosti: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Vyberte počáteční barvu společnosti
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Žádný druh letiště nezastará: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Povolení této možnosti způsobí, že všechny druhy letišť zůstanou po uvedení dostupné napořád. (nezastarají).
@@ -2013,6 +2020,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Žádné
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Činitel základní velikosti města: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Průměrná velikost větších měst v porovnání s ostatními městy na začátku hry
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Čas mezi dvěma po sobě jdoucími přepočty grafu (distribučních) spojení. Každý přepočet se týká jedné části grafu; hodnota X tohoto nastavení tedy neznamená, že by se celý graf aktualizoval každých X sekund, jen jeho určitá část. Čím kratší čas nastavíš, tím více procesorového času bude na přepočet třeba. Čím delší čas nastavíš, tím déle potrvá, než distribuce začne působit na nových trasách.
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Přepočet grafu distribuce trvá {STRING}
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Mód distribuce pro cestující: {STRING}
@@ -2767,6 +2775,7 @@ STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vyber ty
 
 STR_STATION_CLASS_DFLT                                          :Původní stanice
 STR_STATION_CLASS_DFLT_STATION                                  :Původní stanice
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Původní silniční stanoviště
 STR_STATION_CLASS_WAYP                                          :Směrování
 
 # Signal window
@@ -4677,6 +4686,7 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Lidský hráč
 STR_AI_CONFIG_RANDOM_AI                                         :Náhodná AI
 STR_AI_CONFIG_NONE                                              :(žádný)
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maximální počet protivníků: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Interval zakládání konkurenčních AI společností: {ORANGE}{COMMA} minut{P a y ""}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Přesunout nahoru
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Přesunout vybranou AI v seznamu výše

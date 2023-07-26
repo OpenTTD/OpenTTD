@@ -190,6 +190,9 @@ STR_COLOUR_GREY                                                 :Xám
 STR_COLOUR_WHITE                                                :Trắng
 STR_COLOUR_RANDOM                                               :Ngẫu nhiên
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1417,6 +1420,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Khi mở, thì 
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Màu bắt đầu của công ty: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Thay đổi màu sắc mặc định khi bắt đầu công ty
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bật tùy chọn này cho phép tất cả các loại sân bay không bị lỗi thời

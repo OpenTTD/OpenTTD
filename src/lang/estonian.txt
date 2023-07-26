@@ -247,6 +247,9 @@ STR_COLOUR_GREY                                                 :Hall
 STR_COLOUR_WHITE                                                :Valge
 STR_COLOUR_RANDOM                                               :Suvaline
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} miili tunnis
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -1444,6 +1447,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Taristuga kaasn
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Ettevõtte esialgne värv: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Vali ettevõttele esialgne värvus
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aegumatud lennuväljad: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Selle seade sisse lülitamine jätab kõik lennujaamade tüübid avatuks lõpmata ajaks peale nende avanemist

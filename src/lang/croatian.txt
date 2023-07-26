@@ -286,6 +286,9 @@ STR_COLOUR_GREY                                                 :Siva
 STR_COLOUR_WHITE                                                :Bijela
 STR_COLOUR_RANDOM                                               :Nasumično
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1421,6 +1424,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kada je omoguć
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Početna boja za kompaniju: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Odaberi početnu boju za kompaniju
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Zračne luke nikad ne ističu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Uključivanjem ove postavke čini svaku vrstu zračne luke dostupnom zauvijek nakon uvođenja

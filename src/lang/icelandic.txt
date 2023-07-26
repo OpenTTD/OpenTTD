@@ -189,6 +189,9 @@ STR_COLOUR_BROWN                                                :Brúnn
 STR_COLOUR_GREY                                                 :Grár
 STR_COLOUR_WHITE                                                :Hvítur
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mílur/klst
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/klst
@@ -1250,6 +1253,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ekki er 
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Viðhald á innviðum: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ef þessi stilling er virk kostar að reka innviði fyrirtækisins. Kostnaður eykst í auknu hlutfalli við stærð fyrirtækisins, því eru áhrifin meiri á stór fyrirtæki en lítil
+
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Alltaf hægt að byggja allar gerðir flugvalla: {STRING}

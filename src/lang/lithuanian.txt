@@ -385,6 +385,9 @@ STR_COLOUR_GREY                                                 :Pilka
 STR_COLOUR_WHITE                                                :Balta
 STR_COLOUR_RANDOM                                               :Atsitiktinė
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1579,6 +1582,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Infrastruktūro
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Kompanijos pradinė spalva: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Pasirinkite pradinę kompanijos spalvą
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Oro uostai niekada nepasensta: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Kartą atsiradę, oro uostų tipai niekada nebepasens ir galimybė juos statyti niekuomet nebus pašalinta

@@ -378,6 +378,9 @@ STR_COLOUR_GREY                                                 :Siva
 STR_COLOUR_WHITE                                                :Bela
 STR_COLOUR_RANDOM                                               :Nasumična
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} milja na sat
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -1581,6 +1584,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ako je omoguće
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Početna boja preduzeća: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Izaberi početnu boju za preduzeće
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Nezastarevanje aerodroma: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Omogućavanje ovog podešavanja čini svaki tip aerodroma zauvek pristupan nakon njegovog uvođenja

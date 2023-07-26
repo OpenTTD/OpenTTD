@@ -341,6 +341,9 @@ STR_COLOUR_BROWN                                                :Rjava
 STR_COLOUR_GREY                                                 :Siva
 STR_COLOUR_WHITE                                                :Bela
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -1448,6 +1451,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sprememb
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Vzdrževanje infrastrukture: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Če je omogočeno, infrastruktura upošteva vzdrževalne stroške, ki rastejo skozi čas proporcionalno z velikostjo omrežja.
+
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Letališča nikoli ne potečejo: {STRING}

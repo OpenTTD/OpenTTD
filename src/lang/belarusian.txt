@@ -502,6 +502,9 @@ STR_COLOUR_GREY                                                 :Шэры
 STR_COLOUR_WHITE                                                :Белы
 STR_COLOUR_RANDOM                                               :Выпадковы
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}мiл{P я i яў}/г
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}км/г
@@ -1629,6 +1632,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Утрыман�
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Калі ўключана, інфраструктура патрабуе выдаткаў на ўтрыманьне. Кошт расьце прапарцыянальна памерам сеткі, таму гэта больш датычыць вялікіх кампаніяў, ніж малых.
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Фірмовы колер кампаніі: {STRING}
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Малыя аэрапорты ніколі не састарэюць: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Уключэньне гэтай наладкі робіць усе віды аэрапортаў даступнымі назаўжды.

@@ -190,6 +190,9 @@ STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Hvid
 STR_COLOUR_RANDOM                                               :Tilfældig
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} miles/t
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/t
@@ -1234,6 +1237,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Center
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P 0 "" er}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum startlån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimumbeløb et selskab kan låne (uden at tage inflation i betragtning)
@@ -1416,6 +1420,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Når aktiveret,
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Foretrukken selskabsfarve: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Vælg den foretrukne farve egne selskaber skal starte med
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lufthavnenes levealder udløber aldrig: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktiveres denne indstilling gøres at hver lufthavnstype forbliver tilgængelig for evigt efter dens indførelse
@@ -1618,6 +1623,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Fra
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Luk vindue ved højre-klik: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Lukker vinduet ved at højreklikke inde i det. Deaktiverer værktøjstip ved at højreklikke!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nej
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ja, undtagen klistret
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Auto gem: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vælg interval mellem automatisk gemte spil
@@ -2945,7 +2953,7 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepter
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huse
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik på industrien for at se dens leverandører og kunder
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik på godset for at se dens leverandører og kunder
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vis kæde
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vis Industrikæde
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vis godsforsynende og -accepterende industrier
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link til lille kort
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vælg også de viste industrier på lille kort
@@ -3082,7 +3090,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD teamet
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :{WHITE}Spilhastighed
+STR_FRAMERATE_CAPTION                                           :{WHITE}Billedhastighed
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulationshastighed: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal spil-trin simuleret i sekundet.

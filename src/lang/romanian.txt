@@ -190,6 +190,9 @@ STR_COLOUR_GREY                                                 :Gri
 STR_COLOUR_WHITE                                                :Alb
 STR_COLOUR_RANDOM                                               :Aleator
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -1415,6 +1418,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cand este activ
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Culoarea de început a companiei: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Alege culoarea de început pentru companie
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroporturile nu expiră niciodată: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activarea acestei opțiuni determina ca fiecare tip de aeroport sa fie disponibil permanent, după ce a fost introdus.

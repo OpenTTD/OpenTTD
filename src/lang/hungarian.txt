@@ -253,6 +253,9 @@ STR_COLOUR_GREY                                                 :Szürke
 STR_COLOUR_WHITE                                                :Fehér
 STR_COLOUR_RANDOM                                               :Véletlenszerű
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mi/h
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1472,6 +1475,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Bekapcsolva az 
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :A vállalat kezdő színsémája: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :A vállalat színsémája a játék kezdetén
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Repülőterek nem avulnak el: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bekapcsolva minden repülőtértípus örökké elérhető marad bevezetése után

@@ -190,6 +190,9 @@ STR_COLOUR_GREY                                                 :Liath
 STR_COLOUR_WHITE                                                :Bán
 STR_COLOUR_RANDOM                                               :Randamach
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}m/u
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/u
@@ -1362,6 +1365,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Má tá sé cum
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Dath tosaigh na cuideachta: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Roghnaigh dath tosaigh don chuideachta
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Ní imíonn aerfoirt as dáta riamh: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Má dhéantar an socrú seo a chumasú beidh gach cineál aerfoirt ar fáil go deo tar éis é a thabhairt isteach

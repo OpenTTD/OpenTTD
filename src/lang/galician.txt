@@ -191,6 +191,9 @@ STR_COLOUR_GREY                                                 :Gris
 STR_COLOUR_WHITE                                                :Branco
 STR_COLOUR_RANDOM                                               :Ao chou
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/h
@@ -1416,6 +1419,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cando se activa
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Cor inicial da compañía: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolle a cor inicial da túa compañía
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Os aeroportos nunca caducan: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activar esta opción fai que cada tipo de aeroporto siga estando dispoñíbel para sempre dende a súa aparición

@@ -191,6 +191,9 @@ STR_COLOUR_GREY                                                 :Grau
 STR_COLOUR_WHITE                                                :Weiß
 STR_COLOUR_RANDOM                                               :Zufällig
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
@@ -1417,6 +1420,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Unterhaltskoste
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Firmenfarbe zu Spielbeginn: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Wähle die Firmenfarbe zu Spielbeginn
+
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughäfen veralten nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wird diese Option aktiviert, können Flughäfen, die einmal eingeführt wurden, das ganze Spiel über gebaut werden und veralten nie

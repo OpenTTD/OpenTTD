@@ -191,6 +191,9 @@ STR_COLOUR_BROWN                                                :Кафяво
 STR_COLOUR_GREY                                                 :Сиво
 STR_COLOUR_WHITE                                                :Бяло
 
+###length 17
+
+
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} мил{P я и}/ч
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} км/ч
@@ -1295,6 +1298,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Пром
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Поддръжка на инфраструктурата: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Когато е разрешено, съществуват разходи за поддръжка на инфраструктурата. Разходите се увеличават пропорционално на размера на пътната мрежа, влияейки повече на големите компании отколкото на по-малките
+
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Летишата не губят валидност: {STRING}
