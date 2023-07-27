@@ -191,6 +191,17 @@ STR_COLOUR_WHITE                                                :Trắng
 STR_COLOUR_RANDOM                                               :Ngẫu nhiên
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Xanh da trời đậm
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Xanh lá cây nhạt
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Hồng
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Xanh da trời nhạt
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Xanh lá cây đậm
+STR_COLOUR_SECONDARY_BLUE                                       :Xanh da trời
+STR_COLOUR_SECONDARY_MAUVE                                      :Tím nhạt
+STR_COLOUR_SECONDARY_PURPLE                                     :Tím
+STR_COLOUR_SECONDARY_ORANGE                                     :Cam
+STR_COLOUR_SECONDARY_GREY                                       :Xám
+STR_COLOUR_SECONDARY_WHITE                                      :Trắng
 
 
 # Units used in OpenTTD
@@ -1421,6 +1432,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Khi mở, thì 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Màu bắt đầu của công ty: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Thay đổi màu sắc mặc định khi bắt đầu công ty
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Thay đổi màu sắc phụ khi bắt đầu công ty, nếu sử dụng NewGRF bật tính năng này
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bật tùy chọn này cho phép tất cả các loại sân bay không bị lỗi thời

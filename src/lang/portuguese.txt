@@ -192,6 +192,23 @@ STR_COLOUR_WHITE                                                :Branco
 STR_COLOUR_RANDOM                                               :Aleatório
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Azul Escuro
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Verde Claro
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Rosa
+STR_COLOUR_SECONDARY_YELLOW                                     :Amarelo
+STR_COLOUR_SECONDARY_RED                                        :Vermelho
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Azul Claro
+STR_COLOUR_SECONDARY_GREEN                                      :Verde
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Verde Escuro
+STR_COLOUR_SECONDARY_BLUE                                       :Azul
+STR_COLOUR_SECONDARY_CREAM                                      :Creme
+STR_COLOUR_SECONDARY_MAUVE                                      :Lilás
+STR_COLOUR_SECONDARY_PURPLE                                     :Roxo
+STR_COLOUR_SECONDARY_ORANGE                                     :Laranja
+STR_COLOUR_SECONDARY_BROWN                                      :Castanho
+STR_COLOUR_SECONDARY_GREY                                       :Cinzento
+STR_COLOUR_SECONDARY_WHITE                                      :Branco
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Igual à Primária
 
 
 # Units used in OpenTTD
@@ -1422,6 +1439,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativo, a
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Cor inicial da empresa: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolher a cor inicial da empresa
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Cor secundária da empresa inicial: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Escolha a cor inicial secundária para a empresa, se estiver a usar um NewGRF que a permita.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca expiram: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ativar esta preferência torna cada tipo de aeroporto disponível para sempre após a sua introdução
@@ -2172,7 +2191,7 @@ STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Exibir e
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Exibir esquemas de cores dos navios
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Exibir esquema de cores da aeronave
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seleccione a cor primária para o veículo seleccionado. Ctrl+Clique vai usar esta cor para todos os esquemas
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Seleccione a cor secundária para o esquema seleccionado. Ctrl+Click afetará esta escolha para todos os esquemas
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Selecione a cor secundária para o esquema selecionado. Ctrl+Clique seleciona essa cor para todos os esquemas
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Seleccione o esquema de cores a alterar, ou esquemas múltiplos utilizando a tecla Ctrl com o botão esquerdo do rato. Marque a caixa para comutar a utilização do esquema de cores
 
 ###length 23

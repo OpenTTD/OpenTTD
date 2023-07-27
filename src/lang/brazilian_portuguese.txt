@@ -192,6 +192,23 @@ STR_COLOUR_WHITE                                                :Branco
 STR_COLOUR_RANDOM                                               :Aleatório
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Azul Escuro
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Verde Claro
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Rosa
+STR_COLOUR_SECONDARY_YELLOW                                     :Amarelo
+STR_COLOUR_SECONDARY_RED                                        :Vermelho
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Azul Claro
+STR_COLOUR_SECONDARY_GREEN                                      :Verde
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Verde Escuro
+STR_COLOUR_SECONDARY_BLUE                                       :Azul
+STR_COLOUR_SECONDARY_CREAM                                      :Creme
+STR_COLOUR_SECONDARY_MAUVE                                      :Malva
+STR_COLOUR_SECONDARY_PURPLE                                     :Roxo
+STR_COLOUR_SECONDARY_ORANGE                                     :Laranja
+STR_COLOUR_SECONDARY_BROWN                                      :Marrom
+STR_COLOUR_SECONDARY_GREY                                       :Cinza
+STR_COLOUR_SECONDARY_WHITE                                      :Branco
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Igual à primária
 
 
 # Units used in OpenTTD
@@ -1422,6 +1439,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativado,
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Cor inicial para a empresa: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolha a cor inicial para a empresa
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Cor inicial secundária para a empresa: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Escolha a cor inicial secundária para a empresa, se um NewGRF precisar usá-la.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca saem de linha: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ativando essa config. mantém todos os tipos de aeroportos disponíveis à construção após sua introdução
