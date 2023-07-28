@@ -191,6 +191,23 @@ STR_COLOUR_WHITE                                                :White
 STR_COLOUR_RANDOM                                               :Random
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Dark Blue
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Pale Green
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Pink
+STR_COLOUR_SECONDARY_YELLOW                                     :Yellow
+STR_COLOUR_SECONDARY_RED                                        :Red
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Light Blue
+STR_COLOUR_SECONDARY_GREEN                                      :Green
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Dark Green
+STR_COLOUR_SECONDARY_BLUE                                       :Blue
+STR_COLOUR_SECONDARY_CREAM                                      :Cream
+STR_COLOUR_SECONDARY_MAUVE                                      :Mauve
+STR_COLOUR_SECONDARY_PURPLE                                     :Purple
+STR_COLOUR_SECONDARY_ORANGE                                     :Orange
+STR_COLOUR_SECONDARY_BROWN                                      :Brown
+STR_COLOUR_SECONDARY_GREY                                       :Gray
+STR_COLOUR_SECONDARY_WHITE                                      :White
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Same As Primary
 
 
 # Units used in OpenTTD
@@ -1421,6 +1438,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, i
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Starting company color: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Choose starting color for the company
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Starting company secondary color: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Choose starting secondary color for the company, if using a NewGRF that enables it.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Airports never expire: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Enabling this setting makes each airport type stay available forever after its introduction

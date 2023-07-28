@@ -191,6 +191,23 @@ STR_COLOUR_WHITE                                                :Wit
 STR_COLOUR_RANDOM                                               :Willekeurig
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Donkerblauw
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Lichtgroen
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Roze
+STR_COLOUR_SECONDARY_YELLOW                                     :Geel
+STR_COLOUR_SECONDARY_RED                                        :Rood
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Lichtblauw
+STR_COLOUR_SECONDARY_GREEN                                      :Groen
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Donkergroen
+STR_COLOUR_SECONDARY_BLUE                                       :Blauw
+STR_COLOUR_SECONDARY_CREAM                                      :Crème
+STR_COLOUR_SECONDARY_MAUVE                                      :Mauve
+STR_COLOUR_SECONDARY_PURPLE                                     :Paars
+STR_COLOUR_SECONDARY_ORANGE                                     :Oranje
+STR_COLOUR_SECONDARY_BROWN                                      :Bruin
+STR_COLOUR_SECONDARY_GREY                                       :Grijs
+STR_COLOUR_SECONDARY_WHITE                                      :Wit
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Zelfde als primaire
 
 
 # Units used in OpenTTD
@@ -1421,6 +1438,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wanneer dit is 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Beginkleur voor bedrijf: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Beginkleur voor het bedrijf kiezen
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Secundaire kleur voor bedrijf bij begin: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Kies de secundaire kleur bij het begin voor het bedrijf als je een NewGRF gebruikt waarbij dat mogelijk is.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Vliegvelden verlopen niet: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Het inschakelen van deze instelling zorgt ervoor dat elke luchthaven soort altijd beschikbaar blijft na de introductie
@@ -1553,7 +1572,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Landkleur gebru
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kleur van het terrein op de kleine kaart.
 ###length 3
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Groen
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker groen
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donkergroen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Kleuren vrachtstroomweergave: {STRING}
