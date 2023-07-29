@@ -1565,7 +1565,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grigio a rosso
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Scala di grigi
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Scorrimento delle visuali: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento dello scorrimento della mappa
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportamento durante lo scorrimento della mappa. Le opzioni "posizione del mouse bloccata" non funzionano su tutti i sistemi, come le versioni basate sul web, gli schermi tattili, Linux con Wayland e altri.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Muovi visuale col pulsante destro, puntatore bloccato
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Muovi mappa col pulsante destro, puntatore bloccato
@@ -2091,6 +2091,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Impossib
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Errore nelle impostazioni video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... non è stata trovata alcuna GPU compatibile. L'accelerazione hardware è stata disabilitata
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Il driver della GPU ha mandato in crash il gioco. Accelerazione hardware disattivata
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

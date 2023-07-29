@@ -1415,10 +1415,10 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Ukazovat finan�
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Na konci každého roku zobrazit okno s finančním přehledem pro snadnou kontrolu hospodaření společnosti.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Vydávat nové příkazy jako 'bez zastavení': {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálně vozidlo zastavuje na každé stanici kterou projíždí. Povolením této možnosti budou všechny nově vydané příkazy "Jeď do" vydávány jako "bez zastavení" a vozidlo tak každou stanicí po cestě do cíle pouze projede, bez zastavení. U jednotlivých příkazů lze pochopitelně možnost "bez zastavení" vypnout.
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálně vozidlo zastavuje v každé stanici, kterou projíždí. Zapnutím této možnosti budou všechny nově vydané příkazy "Jet do" vydávány jako "bez zastavení" a vozidlo tak každou stanicí po cestě do cíle pouze projede bez odbavení. U jednotlivých příkazů nicméně lze ručně nastavit odlišné chování.
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Vlaky normálně zastavují {STRING} nástupiště
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Místo kde vlaky obvykle zastavují ve stanicích. Toto je defaultní nastavení. U jednotlivých příkazů vozidel jde místo zastavení změnit
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Výchozí pozice pro zastavování vlaků ve stanicích. 'Na začátku' znamená, že konec vlaku je u začátku nástupiště, 'uprostřed' znamená, že střed vlaku je u středu nástupiště a 'na konci' znamená, že čelo vlaku je u konce nástupiště. Toto nastavení udává jen výchozí hodnotu pro nové příkazy; u jednotlivých příkazů lze místo zastavení změnit.
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :na začátku
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :uprostřed

@@ -1531,7 +1531,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :De gris a verme
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Escala de grisos
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Desplaçament del mapa: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportament quan es desplaça el mapa.
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Comportament quan es desplaça el mapa. Les opcions "amb la posició del ratolí fixada" no funcionen en tots els sistemes, com ara versions web, pantalles tàctils, Linux amb Wayland i altres.
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Mou la vista amb el botó dret del ratolí amb la posició del ratolí fixada
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mou el mapa amb el botó dret del ratolí amb la posició del ratolí fixada
@@ -2057,6 +2057,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}L'assign
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}S'ha produït un error en la configuració de vídeo...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no s'ha trobat cap GPU compatible. Es desactiva l'acceleració per programari.
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... el controlador de la GPU ha fallat durant la partida. Es desactiva l'acceleració per maquinari.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

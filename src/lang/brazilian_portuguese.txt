@@ -1212,7 +1212,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo {RED}Requer Script de Jogo para fornecer fundos iniciais
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de Juros: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Juros de empréstimo; também controla inflação, se ativado
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Juros de empréstimo; se ativado também controla a inflação
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos de Operação: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Define o nível e custos de manutenção de veículos e infraestrutura
@@ -1401,7 +1401,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sim, mas exclui
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De todos os veículos
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o lucro de um veículo se torna negativo: {STRING}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quando ativado, uma mensagem é enviada quando um veículo não gerou lucro durante um ano-calendário
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Se ativado, uma mensagem é enviada quando um veículo não gerou lucro durante um ano-calendário
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca saem de linha: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quanto ativado, mantém todos os modelos de veículos disponíveis após serem introduzidos
