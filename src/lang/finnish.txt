@@ -181,7 +181,7 @@ STR_COLOUR_LIGHT_BLUE                                           :Vaaleansininen
 STR_COLOUR_GREEN                                                :Vihreä
 STR_COLOUR_DARK_GREEN                                           :Tummanvihreä
 STR_COLOUR_BLUE                                                 :Sininen
-STR_COLOUR_CREAM                                                :Kerma
+STR_COLOUR_CREAM                                                :Kermankeltainen
 STR_COLOUR_MAUVE                                                :Malvanvärinen
 STR_COLOUR_PURPLE                                               :Violetti
 STR_COLOUR_ORANGE                                               :Oranssi
@@ -4406,7 +4406,7 @@ STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Lopeta k
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mene
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mene lähimmälle varikolle
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimmälle varikolle
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimpään lentokonehalliin
 STR_ORDER_CONDITIONAL                                           :Ehdollinen hyppykäsky
 STR_ORDER_SHARE                                                 :Jaa käskyt
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uuden käskyn ennen valittua, tai lisää listan viimeiseksi. Ctrl:n painalluksella asemakäskyistä tulee ”lastaa täyteen mikä tahansa rahti”, reittipistekäskyistä ”pysähtymättä” ja varikkokäskyistä ”huolto”. ”Jaa käskyt” tai Ctrl jakaa käskyt valitun kulkuneuvon kanssa. Kulkuneuvon napsauttaminen kopioi käskyt kyseisestä kulkuneuvosta. Varikkokäsky estää kulkuneuvon automaattiset huollot
@@ -4421,7 +4421,7 @@ STR_ORDER_SERVICE_AT                                            :Huolto
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Huolto pysäytyksettä
 
 STR_ORDER_NEAREST_DEPOT                                         :lähin
-STR_ORDER_NEAREST_HANGAR                                        :lähin varikko
+STR_ORDER_NEAREST_HANGAR                                        :lähin lentokonehalli
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Veturitalli
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Varikko

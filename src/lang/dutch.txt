@@ -1518,7 +1518,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Landkleur gebru
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kleur van het terrein op de kleine kaart.
 ###length 3
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Groen
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker groen
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donkergroen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Kleuren vrachtstroomweergave: {STRING}
@@ -4153,7 +4153,7 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centreer
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centreer het hoofdscherm op de locatie van het vliegtuig. Met dubbelklik volg je het vliegtuig op het hoofdscherm. Ctrl+klik opent een nieuw scherm op de locatie van het vliegtuig.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar depot. Ctrl+klik voor alleen onderhoud
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar remise. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur wegvoertuig naar garage. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur schip naar dok. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig naar hangar. Ctrl+klik voor alleen onderhoud
@@ -5019,7 +5019,7 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan schi
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan vliegtuig niet starten of stoppen...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan trein niet naar depot sturen...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan trein niet naar remise sturen...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan wegvoertuig niet naar garage sturen...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan schip niet naar dok sturen...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan vliegtuig niet naar hangar sturen...

@@ -833,7 +833,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stawki płatno�
 # Company league menu
 ###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ranking firm
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegółowa tabela wydajności
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegóły oceny wydajności
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela wyników
 
 # Industry menu
@@ -2928,7 +2928,7 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... pobieranie zawartości nie jest możliwe!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafiki bazowe
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Podstawowa grafika
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :SI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteka SI

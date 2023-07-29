@@ -268,7 +268,6 @@ STR_COLOUR_GREY                                                 :Griza
 STR_COLOUR_WHITE                                                :Blanka
 STR_COLOUR_RANDOM                                               :Hazarda
 
-# Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
@@ -301,6 +300,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}ft
 STR_UNITS_HEIGHT_METRIC                                         :{COMMA}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
+# Units used in OpenTTD
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}kaheloj tage
 STR_UNITS_VELOCITY_GAMEUNITS.n                                  :{DECIMAL}{NBSP}kahelojn tage
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}ĉp/t
@@ -1485,7 +1485,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimuma monkva
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Daŭro de erarmesaĝo: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekundo{P 0 "" j}
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE.n                      :{COMMA} sekundo{P 0 "" j}n
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Montri ŝpruchelpilojn: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Ŝvebu dum {COMMA} milisekundo{P 0 "" j}
