@@ -200,8 +200,10 @@ STR_COLOUR_SECONDARY_BLUE                                       :Xanh da trời
 STR_COLOUR_SECONDARY_MAUVE                                      :Tím nhạt
 STR_COLOUR_SECONDARY_PURPLE                                     :Tím
 STR_COLOUR_SECONDARY_ORANGE                                     :Cam
+STR_COLOUR_SECONDARY_BROWN                                      :Nâu
 STR_COLOUR_SECONDARY_GREY                                       :Xám
 STR_COLOUR_SECONDARY_WHITE                                      :Trắng
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Như màu chủ đạo
 
 
 # Units used in OpenTTD

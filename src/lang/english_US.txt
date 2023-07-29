@@ -1313,7 +1313,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Allow more real
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Have differently sized catchment areas for different types of stations and airports
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Company stations can serve industries that have built-in neutral stations: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :When enabled, industries with attached stations (such as Oil Rigs) may also be served by company owned stations built nearby. When disabled, these industries may only be served by their attached stations. Any nearby company stations won't be able to serve them, nor will the attached station serve anything else other than the industry
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :When enabled, industries with attached stations (such as Oil Rigs) may also be served by company-owned stations built nearby. When disabled, these industries may only be served by their attached stations. Any nearby company stations won't be able to serve them, nor will the attached station serve anything else other than the industry
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Allow removal of more town-owned roads, bridges and tunnels: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Make it easier to remove town-owned infrastructure and buildings
@@ -1426,8 +1426,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :None*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduced
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-through road stops on town owned roads: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construction of drive-through road stops on town-owned roads
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-through road stops on roads owned by towns: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construction of drive-through road stops on roads owned by towns
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Allow drive-through road stops on roads owned by competitors: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Allow construction of drive-through road stops on roads owned by other companies
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles
@@ -4891,7 +4891,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Too many
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Too close to another dock
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Too close to another airport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Can't rename station...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... this is a town owned road
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... road owned by a town
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... road facing in the wrong direction
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... drive through stops can't have corners
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... drive through stops can't have junctions

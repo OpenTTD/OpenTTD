@@ -1227,7 +1227,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Configuração 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Configuração do jogo (guardado; afeta apenas novos jogos)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Configuração do jogo (guardado; afeta apenas jogo atual)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Configurações de empresa (guardado; afeta apenas novos jogos)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Configurações de empresa (guardado; afeta apenas companhia actual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Configurações de empresa ( armazenado em guardar; afeta apenas empresa atual)
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nenhum -
 ###length 3
@@ -1258,7 +1258,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}segundo{P 0 "" s}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantia máxima que uma companhia pode pedir (sem ter em conta a inflação)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valor máximo do empréstimo para cada empresa (sem ter em conta a inflação)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo {RED}Requer Script de Jogo para fornecer fundos iniciais
@@ -1298,7 +1298,7 @@ STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STR
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ativa desastres que podem ocasionalmente bloquear ou destruir veículos ou infraestruturas
 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da autoridade local: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolha o quanto o ruído e os danos ambientais causados pelas empresas afetam a classificação da povoação e outras ações de construção na cidade
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolha de que forma o ruído e os danos ambientais causados pelas empresas afetam a classificação da sua localidade e futuras ações de construção na localidade
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limite de altura do mapa: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Define a altura máxima do terreno do mapa. Com "(auto)" um bom valor será escolhido após a geração do terreno
@@ -1313,8 +1313,8 @@ STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite altera�
 STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista de áreas de abrangência: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Haver diferentes áreas de cobertura para diferentes tipos de estações e aeroportos
 
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Estações da companhia podem servir industrias equipadas com estações neutras: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Quando ativo, industrias com estações incluídas (com as Petrolíferas) podem ser servidas por estações da companhia construídas nas redondezas. Quando inativo, estas industrias só podem ser servidas pela sua própria estação. Qualquer estação da companhia não poderá servir a industria, nem a estação incluída pode servir outra entidade senão a própria industria
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Estações da empresa podem servir indústrias com estações neutras anexadas: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Quando ativo, indústrias com estações incluídas (com as Petrolíferas) podem ser servidas por estações-da-empresa construídas nas redondezas. Quando inativo, estas indústrias só podem ser servidas pela sua própria estação. Qualquer estação da empresa não poderá servir a indústria, nem a estação incluída pode servir outra entidade senão a própria indústria
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite remover mais estradas, pontes e túneis detidos pela cidade: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitar a remoçar de edifícios e infraestruturas detidas pela localidade
@@ -1399,7 +1399,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Visualizador pr
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todos os visualizadores
 
 STR_CONFIG_SETTING_BRIBE                                        :Permite o suborno da autoridade local: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite que as companhias tentem subornar a autoridade local. Se o suborno for descoberto por um inspector, a companhia não poderá construir nessa localidade durante seis meses
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite que as empresas tentem subornar a autoridade local. Se o suborno for descoberto por um inspetor, a empresa não poderá atuar nessa localidade durante seis meses
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permite comprar direitos de transporte em exclusividade: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se uma empresa compra direitos exclusivos de transporte para uma localidade, as estações dos concorrentes (passageiros e carga) não receberão cargo durante um ano
@@ -1408,7 +1408,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite investi
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite que empresas doem dinheiro às localidades para financiar novas casas
 
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permite financiar a reconstrução de estradas locais:{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite que as companhias financiem reparações de estrada para sabotar serviços rodoviários dos oponentes.
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite que as empresas financiem reconstruções de estradas para sabotar o tráfego rodoviário na localidade.
 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permite enviar dinheiro para outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite transferências de dinheiro entre empresas em modo multi-jogador
@@ -1427,14 +1427,14 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nenhum*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzido
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite estações de passagem em estradas das localidades: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construção de paragens drive-through em ruas que são prorpiedade das povoações
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permite estações de passagem em estradas do adversário: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite construção de paragens drive-through em ruas que são prorpiedade de outras companhias
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite estações de passagem nas estradas pertencentes às localidades: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite a construção de estações de passagem nas ruas pertencentes a localidades.
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações de passagem nas estradas detidas pelos competidores: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite a construção de estações de passagem nas estradas que são de outras empresas
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Não é possível mudar quando já existem veículos.
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de infraestruturas: {STRING}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativo, as infraestruturas têm custos de manutenção. O custo cresce mais do que proporcionalmente com o tamanho da rede e com isso afeta mais as companhias maiores comparando com as mais pequenas
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativo, as infraestruturas têm custos de manutenção. O custo cresce mais do que o proporcional com o tamanho da rede e assim afeta mais as empresas maiores do que as mais pequenas
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Cor inicial da empresa: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolher a cor inicial da empresa
@@ -1483,7 +1483,7 @@ STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Parar o rato po
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Clique com botão direito
 
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra população da localidade na identificação da mesma: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostrar a população das povoações na sua etiqueta no mapa
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostrar a população das localidades na sua etiqueta no mapa
 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das linhas nos gráficos: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Largura da linha nos gráficos. Uma linha mais estreita é de leitura mais precisa, enquanto uma linha mais espessa é mais fácil de ver e as cores distinguem-se melhor.
@@ -1599,14 +1599,14 @@ STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distâncias em quadrados e diferenças de altura enquanto arrasta o rato durante tarefas de construção
 
 STR_CONFIG_SETTING_LIVERIES                                     :Mostrar estampagens da empresa: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controlar a utilização de decorações específicas por tipo de veículo (em vez de decorações por companhia)
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla a utilização de decorações específicas por tipo de veículo (em vez de decorações por empresa)
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Própria empresa
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Todas as empresas
 
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Escolher chat de equipa com <ENTER>: {STRING}
-STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Trocar o mapeamento do chat da companhia e do chat público para <ENTER> e <Ctrl+ENTER> respectivamente
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Trocar o mapeamento entre o chat interno da empresa e o chat público para <ENTER> e <Ctrl+ENTER> respetivamente
 
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidade da roda do rato no mapa: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlo de sensibilidade da roda de rolagem do rato
@@ -1730,16 +1730,16 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiente: {STRI
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproduzir efeitos sonoros da paisagem, indústrias e localidades
 
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Máximo de comboios por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de comboios que uma companhia pode ter
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de comboios que uma empresa pode ter
 
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Máximo de veículos rodoviários por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de veículos de estrada que uma companhia pode ter
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de veículos de estrada que uma empresa pode ter
 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Máximo de aeronaves por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Número máximo de aeronaves que uma companhia pode ter
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Número máximo de aeronaves que uma empresa pode ter
 
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Máximo de navios por empresa: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Número máximo de navios que uma companhia pode ter
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Número máximo de navios que uma empresa pode ter
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desativar comboios para o computador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ativar esta preferência impossibilita a criação de comboios por jogadores controlados pelo computador
@@ -1904,7 +1904,7 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir que a 
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Com esta preferência desativada, podem haver dois aeroportos em cada localidade. Com esta preferência ativa, o número de aeroportos numa localidade é limitado pela aceitação do ruído na mesma, que depende da população, do tamanho do aeroporto e da sua distância
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar localidades no jogo: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ativar esta preferência permite aos jogadores fundar novas povoações no jogo
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ativar esta preferência permite aos jogadores fundar novas localidades no jogo
 ###length 3
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
@@ -2661,7 +2661,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir 
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda de Fluxo de Carga
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todos
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nenhuma
-STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecione as companhias a serem mostradas
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecione as empresas a serem exibidas
 STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
@@ -3432,7 +3432,7 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :ficheiro GRF co
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs carregados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como NewGRF estático com {2:STRING} pode causar dessincronização
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Gráfico inválido (sprite {3:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Action 0 desconhecida {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade de Ação 0 desconhecida {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de uso de ID Inválido (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um objecto gráfico corrompido. Todos os objectos gráficos corrompidos serão apresentados como um ponto de interrogação (?) vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Action 8 - (sprite {3:NUM})
@@ -4892,7 +4892,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiad
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Muito perto de outra doca
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado perto de outro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Não pode alterar o nome da estação...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta estrada é detida pela localidade.
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... estrada pertence a uma localidade
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... estrada orientada na direcção incorrecta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... estações de passagem não podem ter curvas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... estações de passagem não podem ter cruzamentos
@@ -5242,7 +5242,7 @@ STR_INDUSTRY_NAME_FARM                                          :{G=f}Quinta
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Mina de Cobre
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=mp}Poços de Petróleo
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Banco
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Companhia Alimentar
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Indústria Alimentar
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Fábrica de Papel
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Mina de Ouro
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Banco

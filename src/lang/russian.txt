@@ -317,6 +317,23 @@ STR_COLOUR_WHITE                                                :Белый
 STR_COLOUR_RANDOM                                               :Случайный
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Тёмно-синий
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Светло-зелёный
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Розовый
+STR_COLOUR_SECONDARY_YELLOW                                     :Жёлтый
+STR_COLOUR_SECONDARY_RED                                        :Красный
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Голубой
+STR_COLOUR_SECONDARY_GREEN                                      :Зелёный
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Тёмно-зелёный
+STR_COLOUR_SECONDARY_BLUE                                       :Синий
+STR_COLOUR_SECONDARY_CREAM                                      :Кремовый
+STR_COLOUR_SECONDARY_MAUVE                                      :Лиловый
+STR_COLOUR_SECONDARY_PURPLE                                     :Пурпурный
+STR_COLOUR_SECONDARY_ORANGE                                     :Оранжевый
+STR_COLOUR_SECONDARY_BROWN                                      :Коричневый
+STR_COLOUR_SECONDARY_GREY                                       :Серый
+STR_COLOUR_SECONDARY_WHITE                                      :Белый
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Тот же, что и основной
 
 
 # Units used in OpenTTD
@@ -1560,8 +1577,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :отсутст�
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :сниженная
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :обычная
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Позволять строить остановки на городских дорогах: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Разрешить компаниям строить сквозные остановки на муниципальных дорогах
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Позволять строить остановки на муниципальных дорогах: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Разрешить компаниям строить сквозные остановки на дорогах, построенных за счёт городского бюджета
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Разрешить проезд через остановки соперников по их дорогам: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Разрешить компаниям строить сквозные остановки на дорогах, принадлежащих другим транспортным компаниям
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изменение этого параметра невозможно, если в игре есть транспортные средства.
@@ -1572,6 +1589,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Включае�
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Фирменный цвет компании: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Выберите начальный фирменный цвет компании
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Дополнительный цвет компании: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Дополнительный цвет транспорта компании. Он будет использоваться, если подключён модуль NewGRF с поддержкой дополнительного цвета.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропорты не устаревают: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :При включении все типы аэропортов доступны для строительства в любое время после их первоначального появления

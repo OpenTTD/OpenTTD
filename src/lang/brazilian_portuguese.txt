@@ -1264,7 +1264,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Sem empréstimo {RED}Requer Script de Jogo para fornecer fundos iniciais
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de Juros: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Juros de empréstimo; também controla inflação, se ativado
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Juros de empréstimo; se ativado também controla a inflação
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos de Operação: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Define o nível e custos de manutenção de veículos e infraestrutura
@@ -1314,7 +1314,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Exibe áreas de abrangência de para diferentes tipos de estações e aeroportos
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Estações de companhias podem servir indústrias com estações neutras conectadas: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Quando habilitado, os setores com estações conectadas (como plataformas de petróleo) também podem ser atendidos por estações de propriedade da empresa construídas nas proximidades. Quando desativados, esses setores só podem ser atendidos por suas estações anexas. Qualquer estação próxima da empresa não será capaz de atendê-los, nem a estação anexa servirá qualquer outra coisa que não seja a indústria
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Se ativado, indústrias com estações incluídas (como as Petrolíferas) podem ser servidas por estações da empresa que estão nas redondezas. Quando desativado, essas indústrias só podem ser servidas pela sua própria estação. Qualquer estação da empresa nas redondezas não poderá servir as indústrias e a estação incluída não poderá servir outra entidade senão a própria indústria
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir a remoção de mais rodovias, pontes, etc. das cidades: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Torna mais fácil remover infraestrutura e edifícios de cidades
@@ -1427,8 +1427,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nenhum
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzido
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações drive-through em ruas locais: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite a construção de paradas nas laterais das ruas em vias locais
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações de passagem nas estradas pertencentes às localidades: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permitir a construção de estações de passagem com paradas nas ruas pertencentes a localidades.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações drive-through nas ruas de outros competidores: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite a construção de paradas nas laterais das ruas em vias de outras companhias
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossível alterar essa configuração enquanto houverem veículos
@@ -1456,7 +1456,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sim, mas exclui
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De todos os veículos
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o lucro de um veículo se torna negativo: {STRING}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quando ativado, uma mensagem é enviada quando um veículo não gerou lucro durante um ano-calendário
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Se ativado, uma mensagem é enviada quando um veículo não gerou lucro durante um ano-calendário
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca saem de linha: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quanto ativado, mantém todos os modelos de veículos disponíveis após serem introduzidos
@@ -4892,7 +4892,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Áreas d
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Muito perto de outra doca
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Muito perto de outro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Impossível renomear a estação...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... é uma rua local
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... estrada pertence a uma localidade
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... rua na direção errada
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... paradas "drive-thru" não podem ter esquinas
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... paradas "drive-thru" não podem ter junções
