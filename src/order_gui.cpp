@@ -287,7 +287,12 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 					SetDParam(4, order->IsAutoRefit() ? STR_ORDER_AUTO_REFIT_ANY : CargoSpec::Get(order->GetRefitCargo())->name);
 				}
 				if (v->type == VEH_TRAIN && (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) == 0) {
-					SetDParam(5, order->GetStopLocation() + STR_ORDER_STOP_LOCATION_NEAR_END);
+					/* Only show the stopping location if other than the default chosen by the player. */
+					if (order->GetStopLocation() != (OrderStopLocation)(_settings_client.gui.stop_location)) {
+						SetDParam(5, order->GetStopLocation() + STR_ORDER_STOP_LOCATION_NEAR_END);
+					} else {
+						SetDParam(5, STR_EMPTY);
+					}
 				}
 			}
 			break;
