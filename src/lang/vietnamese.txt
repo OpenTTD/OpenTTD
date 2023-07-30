@@ -194,9 +194,13 @@ STR_COLOUR_RANDOM                                               :Ngẫu nhiên
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :Xanh da trời đậm
 STR_COLOUR_SECONDARY_PALE_GREEN                                 :Xanh lá cây nhạt
 STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Hồng
+STR_COLOUR_SECONDARY_YELLOW                                     :Vàng
+STR_COLOUR_SECONDARY_RED                                        :Đỏ
 STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Xanh da trời nhạt
+STR_COLOUR_SECONDARY_GREEN                                      :Xanh lá cây
 STR_COLOUR_SECONDARY_DARK_GREEN                                 :Xanh lá cây đậm
 STR_COLOUR_SECONDARY_BLUE                                       :Xanh da trời
+STR_COLOUR_SECONDARY_CREAM                                      :Kem
 STR_COLOUR_SECONDARY_MAUVE                                      :Tím nhạt
 STR_COLOUR_SECONDARY_PURPLE                                     :Tím
 STR_COLOUR_SECONDARY_ORANGE                                     :Cam
@@ -1422,8 +1426,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :không*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :giảm bớt
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :bình thường
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Cho phép xây điểm dừng xe buýt trên đường của thị trấn: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Cho phép xây dựng điểm dừng xe buýt trên đường sở hữu bởi địa phương
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Cho phép xây điểm dừng xe buýt trên đường sở hữu bởi thị trấn: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Cho phép xây dựng điểm dừng xe buýt trên đường thuộc sở hữu của địa phương
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Cho phép xây điểm dừng xe buýt trên đường của đối thủ: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Cho phép xây dựng điểm dừng xe buýt trên đường sở hữu bởi công ty khác
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không thể đổi thiết đặt này khi vẫn còn các phương tiện giao thông.
@@ -1431,9 +1435,10 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không t
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Phí bảo trì cơ sở hạ tầng: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Khi mở, thì hạ tầng công ty sẽ sinh ra chi phí bảo trì. Chi phí sẽ tăng theo mạng lưới giao thông bạn xây dựng, và sẽ tiêu tốn của công ty lớn nhiều hơn công ty nhỏ
 
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Màu bắt đầu của công ty: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Thay đổi màu sắc mặc định khi bắt đầu công ty
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Màu chủ đạo của công ty: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Thay đổi màu sắc chủ đạo của công ty
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Màu phụ của công ty: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Thay đổi màu sắc phụ khi bắt đầu công ty, nếu sử dụng NewGRF bật tính năng này
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ hết hạn sử dụng: {STRING}
@@ -4886,7 +4891,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Quá nhi
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Quá sát với hải cảng khác
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Quá sát với sân bay khác
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Không thể đổi tên ga, bến,cảng...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... đây là đường của địa phương
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... đây là đường sở hữu bởi địa phương
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... đường quay mặt sai hướng
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... đi qua điểm dừng không thể đi qua góc
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... đi qua điểm dừng không thể có ngã rẽ
