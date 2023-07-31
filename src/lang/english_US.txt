@@ -1383,7 +1383,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :New orders are 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normally, a vehicle will stop at every station it passes. By enabling this setting, it will drive through all stations on the way to its final destination without stopping. Note, that this setting only defines a default value for new orders. Individual orders can be set explicitly to either behavior nevertheless
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :New train orders stop by default at the {STRING} of the platform
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Place where a train will stop at the platform by default. The 'near end' means close to the entry point, 'middle' means in the middle of the platform, and 'far end' means far away from the entry point. Note, that this setting only defines a default value for new orders. Individual orders can be set explicitly to either behavior nevertheless
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Place where a train will stop at the platform by default. The 'near end' means close to the entry point, 'middle' means in the middle of the platform, and 'far end' means far away from the entry point. Note, that this setting only defines a default value for new orders. Individual orders can have their stop location set by clicking on the order text
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :near end
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :middle
