@@ -2256,6 +2256,11 @@ bool GenerateTowns(TownLayout layout)
 
 	SetGeneratingWorldProgress(GWP_TOWN, total);
 
+	/* Pre-populate the town names list with the names of any towns already on the map */
+	for (const Town *town : Town::Iterate()) {
+		town_names.insert(town->GetCachedName());
+	}
+
 	/* First attempt will be made at creating the suggested number of towns.
 	 * Note that this is really a suggested value, not a required one.
 	 * We would not like the system to lock up just because the user wanted 100 cities on a 64*64 map, would we? */
