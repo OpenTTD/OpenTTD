@@ -1384,7 +1384,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Les nouveaux or
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalement, un véhicule s'arrête dans chaque station qu'il traverse. En activant ce paramètre, il traversera toutes les stations sur le chemin de sa destination finale sans s'arrêter. Noter que ce paramètre définit uniquement une valeur par défaut pour les nouveaux ordres. Les ordres peuvent par après être réglés individuellement avec un autre comportement
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Les nouveaux ordres arrêtent les trains {G 0 au au "à la"} {STRING} du quai par défaut
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Endroit du quai où un train s'arrête par défaut. "queue" signifie proche du point d'entrée. "milieu" signifie au milieu du quai. "tête" signifie à l'opposé du point d'entrée. Noter que ce paramètre défini uniquement une valeur par défaut pour les nouveaux ordres. Les ordres peuvent par ailleurs être réglés individuellement avec un autre comportement
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Endroit du quai où un train s'arrête par défaut. "queue" signifie proche du point d'entrée. "milieu" signifie au milieu du quai. "tête" signifie à l'opposé du point d'entrée. Noter que ce paramètre défini uniquement une valeur par défaut pour les nouveaux ordres. Les ordres peuvent avoir leur emplacement d'arrêt défini individuellement en cliquant sur le texte de l'ordre
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :{G=f}queue
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :{G=m}milieu

@@ -1383,7 +1383,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nye ordrer er '
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalt vil et køretøj stoppe ved hver station den passerer. Ved at aktivere denne indstilling, vil det passere alle stationer på vej til sin endelige destination uden at stoppe. Bemærk, at denne indstilling kun definerer en standardværdi for nye ordrer. Individuelle ordrer kan indstilles udtrykkeligt til en specific adfærd alligevel
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nye togordrer stopper som standard ved {STRING} af perronen
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Stedet hvor et tog vil standse ved perronen som standard. Den "nærmeste ende" forstås tæt på indgangen, 'midten' betyder i midten af platformen, og "fjerneste ende" forstås længest væk fra indgang. Bemærk, at denne indstilling kun definerer en standardværdi for nye ordrer. Individuelle ordrer kan indstilles udtrykkeligt til anden adfærd alligevel
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Der hvor et tog vil standse ved perronen som standard. Den "nærmeste ende" forstås tæt på indgangen, 'midten' betyder i midten af platformen, og "fjerneste ende" forstås længest væk fra indgang. Bemærk, at denne indstilling kun definerer en standardværdi for nye ordrer. Individuelle ordrer kan indstilles udtrykkeligt til anden adfærd alligevel
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :den nærmeste ende
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten

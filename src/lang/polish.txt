@@ -570,6 +570,23 @@ STR_COLOUR_WHITE                                                :Biały
 STR_COLOUR_RANDOM                                               :Losowy
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Ciemnoniebieski
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Bladozielony
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Różowy
+STR_COLOUR_SECONDARY_YELLOW                                     :Żółty
+STR_COLOUR_SECONDARY_RED                                        :Czerwony
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Jasnoniebieski
+STR_COLOUR_SECONDARY_GREEN                                      :Zielony
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Ciemnozielony
+STR_COLOUR_SECONDARY_BLUE                                       :Niebieski
+STR_COLOUR_SECONDARY_CREAM                                      :Kremowy
+STR_COLOUR_SECONDARY_MAUVE                                      :Fiołkoworóżowy
+STR_COLOUR_SECONDARY_PURPLE                                     :Purpurowy
+STR_COLOUR_SECONDARY_ORANGE                                     :Pomarańczowy
+STR_COLOUR_SECONDARY_BROWN                                      :Brązowy
+STR_COLOUR_SECONDARY_GREY                                       :Szary
+STR_COLOUR_SECONDARY_WHITE                                      :Biały
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Taki jak podstawowy
 
 
 # Units used in OpenTTD
@@ -1801,6 +1818,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kiedy włączon
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Początkowy kolor firmy: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Wybierz początkowy kolor dla firmy
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Początkowy kolor dodatkowy firmy: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Wybierz początkowy kolor dodatkowy dla firmy, jeśli używany jest NewGRF, który go wykorzystuje.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Pozwól budować stare lotniska: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Włączona opcja sprawia, że każdy typ lotniska będzie dostępny na zawsze od chwili wprowadzenia
@@ -2551,7 +2570,7 @@ STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Pokaż s
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Pokaż schematy koloru statków
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Pokaż schematy koloru samolotów
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wybierz główny kolor dla wybranego schematu. Ctrl+klik ustawi ten kolor dla wszystkich schematów
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wybierz drugi kolor dla wybranego schematu. Ctrl+klik ustawi ten kolor dla wszystkich schematów
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wybierz dodatkowy kolor dla wybranego schematu. Ctrl+klik ustawi ten kolor dla wszystkich schematów
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wybierz schemat kolorów do zmiany, albo wiele schematów z CTRL+klik. Kliknij na okienku aby wł./wył. używanie schematu.
 
 ###length 23
@@ -5258,7 +5277,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zbyt wie
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zbyt blisko innego portu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zbyt blisko innego lotniska
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nie można zmienić nazwy stacji...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ta droga należy do miasta
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... droga należąca do miasta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... droga jest zorientowana w złym kierunku
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... przystanki przelotowe nie mogą mieć zakrętów
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... przystanki przelotowe nie mogą mieć skrzyżowań
