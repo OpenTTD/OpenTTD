@@ -192,6 +192,23 @@ STR_COLOUR_WHITE                                                :흰색
 STR_COLOUR_RANDOM                                               :무작위
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :어두운 파랑
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :연한 녹색
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :분홍
+STR_COLOUR_SECONDARY_YELLOW                                     :노랑
+STR_COLOUR_SECONDARY_RED                                        :빨강
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :밝은 파랑
+STR_COLOUR_SECONDARY_GREEN                                      :녹색
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :어두운 녹색
+STR_COLOUR_SECONDARY_BLUE                                       :파랑
+STR_COLOUR_SECONDARY_CREAM                                      :연한 분홍
+STR_COLOUR_SECONDARY_MAUVE                                      :연한 보라
+STR_COLOUR_SECONDARY_PURPLE                                     :보라
+STR_COLOUR_SECONDARY_ORANGE                                     :주황
+STR_COLOUR_SECONDARY_BROWN                                      :갈색
+STR_COLOUR_SECONDARY_GREY                                       :회색
+STR_COLOUR_SECONDARY_WHITE                                      :흰색
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :주 색상과 같게
 
 
 # Units used in OpenTTD
@@ -1367,7 +1384,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :새로 지정�
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :일반적으로 차량은 경로 상에 있는 모든 역에 정차하게 되어있습니다. 이 설정을 켜면, 차량이 마지막 목적지까지 정차없이 모든 역을 통과할 것입니다. 이 설정은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 하지만 각 차량의 경로는 두 가지 방법 중에 원하는 대로 다시 설정할 수 있습니다.
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :새로 지정하는 역 정차 경로는 기본적으로 역의 {STRING}에 정지하도록 설정
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :열차가 기본적으로 정거장의 어느 위치에 정차할 것인지를 설정합니다. '가까운 쪽'은 역에 진입하는 곳과 가까운 곳에, '중간'은 역 중앙에, '먼쪽'은 진입하는 곳과 먼 곳에 정차합니다. 이 설정은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 하지만 각 차량의 경로는 두 가지 방법 중에 원하는 대로 다시 설정할 수 있습니다.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :열차가 기본적으로 정거장의 어느 위치에 정차할 것인지를 설정합니다. '가까운 쪽'은 역에 진입하는 곳과 가까운 곳에, '중간'은 역 중앙에, '먼쪽'은 진입하는 곳과 먼 곳에 정차합니다. 이 설정은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 개별 경로의 정차 위치는 그 경로를 클릭해서 변경할 수 있습니다.
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :가까운쪽
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :중간
@@ -1422,6 +1439,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :이 설정을 �
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :시작시 회사 색상: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :새 회사에서 사용할 색상을 선택합니다
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :시작시 회사 부 색상: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :부 색상을 지원하는 NewGRF를 사용할 경우, 새 회사에서 사용할 부 색상을 선택합니다.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :이 설정을 켜면, 소형 공항을 포함한 모든 공항 종류를 도입 이후에 계속 사용할 수 있게 됩니다.
@@ -4873,7 +4892,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}트럭 �
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}다른 항구와 너무 가깝습니다
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}다른 공항과 너무 가깝습니다
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}역 이름을 바꿀 수 없습니다...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 여기는 도시 소유의 도로 입니다
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 도시 소유의 도로입니다
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 도로의 방향과 일치하지 않습니다
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... 통과식 도로 정류장은 굽은 도로에 건설할 수 없습니다
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 통과식 도로 정류장은 교차로에 건설할 수 없습니다

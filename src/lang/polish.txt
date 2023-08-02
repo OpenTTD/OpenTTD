@@ -1763,7 +1763,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nowe polecenia 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalnie pojazd zatrzyma się na każdej stacji, przez którą przejeżdża. Po włączeniu tej opcji, pojazd przejedzie do swojego celu bez zatrzymywania się. Zwróć uwagę na to, że to ustawienie ma wpływ tylko na nowe polecenia. Pojedyncze polecenia mogą być ustalane bez względu na wartość tej opcji
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nowe rozkazy pociągu kończą się domyślnie na {STRING} peronu
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Miejsce, w którym pociąg domyślnie zatrzyma się na peronie. 'Początek' oznacza blisko kierunku przyjazdu, 'środek' oznacza środkową część peronu, a 'koniec' oznacza daleko od kierunku przyjazdu. Zapamiętaj, że to ustawienie określa tylko domyślną wartość dla nowych poleceń. Wszystkie rozkazy mogą być zmienione, bez względu na wartość ustawienia
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Miejsce, w którym pociąg domyślnie zatrzyma się na peronie. „Początek” oznacza blisko wjazdu, „środek” oznacza środkową część peronu, a „koniec” oznacza daleko od wjazdu. Pamiętaj, że to ustawienie określa tylko domyślną wartość dla nowych poleceń. Miejsce zatrzymania poszczególnych poleceń można ustawić, klikając na tekst danego polecenia
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :początku
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :środku
