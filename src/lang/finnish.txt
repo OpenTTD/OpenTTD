@@ -1383,7 +1383,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uudet käskyt o
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaalisti kulkuneuvo pysähtyy jokaisella läpikulkemallaan asemalla. Mikäli tämä asetus on käytössä kulkuneuvot eivät pysähdy ajaessaan asemien läpi. Huomioi, että tämä asetus määrittää oletusarvoisen toiminnon uusille kulkuneuvoille. Asetusta voidaan muuttaa erikseen kunkin kulkuneuvon kohdalla
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Uudet junien käskyt pysäyttävät junan aseman {STRING}
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Paikka, johon juna pysähtyy oletuksena asemalla. ”Alkuun” tarkoittaa, että junan viimeinen vaunu pysähtyy laiturin alkuun; ”keskelle” tarkoittaa junan pysähtymistä keskelle laituria; ja ”loppuun” tarkoittaa, että veturi pysähtyy laiturin päähän. Huomaa, että tämä asetus määrittää vain oletusarvon uusille käskyille. Yksittäisten käskyjen kohdalla käyttäytymistä voi muuttaa tästä asetuksesta huolimatta
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Paikka, johon juna pysähtyy oletuksena asemalla. ”Alkuun” tarkoittaa, että juna pysähtyy laiturin alkuun; ”keskelle” tarkoittaa junan pysähtymistä keskelle laituria; ja ”loppuun” tarkoittaa, että juna pysähtyy laiturin päähän. Huomaa, että tämä asetus määrittää vain oletusarvon uusille käskyille – yksittäisen käskyn osalta pysähtymispaikkaa voi muuttaa napsauttamalla käskyn tekstiä
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :alkuun
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskelle

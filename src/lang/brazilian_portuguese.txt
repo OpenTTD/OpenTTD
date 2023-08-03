@@ -1384,7 +1384,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens s�
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo para em todas as estações por qual passa. Ativando essa configuração fará com que o veículo pule todas as estações até chegar no seu destino final. Note que isso se aplica para novas ordens padrão. É possível alterar esse comportamento individualmente para cada ordem
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Novas ordens de trem param no {STRING} da plataforma
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Define onde um trem irá parar na plataforma por padrão. 'Fim' significa parar próximo da saída da estação. 'Meio' significa no meio da plataforma e 'Início' significa próximo à entrada da estação. Isso apenas afeta as novas ordens padrão. Esse comportamento pode ser definido individualmente para cada ordem
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local onde um trem irá parar na plataforma. 'Início' significa próximo à entrada da estação, 'Meio' significa no meio da plataforma e 'Fim' significa parar próximo da saída da estação. Isso define um padrão que afeta apenas as novas ordens. Ordens individuais podem ter o local de parada definido clicando no texto da ordem
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :início
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meio
