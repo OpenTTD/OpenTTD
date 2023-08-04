@@ -1383,7 +1383,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nieuwe orders z
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaal gesproken stopt een voertuig op elk station dat wordt gepasseerd. Wanneer je deze instelling inschakelt, passeert het alle stations op weg naar de eindbestemming zonder te stoppen. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Individuele opdrachten kunnen expliciet worden ingesteld op elk gewenst gedrag.
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nieuwe treinorders stoppen de trein standaard {STRING} van het perron
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plaats waar een trein standaard stopt aan het perron. 'Aan het begin' betekent in de buurt van de ingang, 'In het midden' betekent in het midden van het perron, en 'Aan het einde' betekent ver weg van de ingang. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Je kunt opdrachten expliciet instellen op elk gewenst gedrag.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plaats waar een trein standaard stopt aan het perron. 'Aan het begin' betekent in de buurt van de ingang, 'In het midden' betekent in het midden van het perron, en 'Aan het einde' betekent ver weg van de ingang. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Je kunt individuele stoplocaties per opdracht instellen door op de opdrachttekst te klikken
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :aan het begin
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in het midden
@@ -1426,7 +1426,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normaal
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Haltes plaatsen op door stad beheerde wegen toestaan: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Doorrijhaltes op stedelijke wegen toestaan: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Bouwen van doorrijhaltes op stedelijke wegen toestaan
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Haltes op wegen van tegenstanders toestaan: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Bouwen van doorrijhaltes op wegen van andere bedrijven toestaan
@@ -4891,7 +4891,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te dicht bij een andere haven
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te dicht bij een ander vliegveld
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan stationsnaam niet veranderen...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... deze weg is eigendom van een plaats
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... weg in eigendom van een stad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... weg is in de verkeerde richting
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... doorrij haltes kunnen geen bochten hebben
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... doorrij haltes kunnen geen kruisingen hebben
