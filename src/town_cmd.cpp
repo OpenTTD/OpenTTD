@@ -457,6 +457,20 @@ uint32_t GetWorldPopulation()
 }
 
 /**
+ * Get the number of towns or cities on the map.
+ * @param cities Count cities instead of towns.
+ * @return The number of towns or cities.
+ */
+uint CountTowns(bool cities)
+{
+	uint total = 0;
+	for (const Town *t : Town::Iterate()) {
+		if (cities == t->larger_town) total++;
+	}
+	return total;
+}
+
+/**
  * Remove stations from nearby station list if a town is no longer in the catchment area of each.
  * To improve performance only checks stations that cover the provided house area (doesn't need to contain an actual house).
  * @param t Town to work on

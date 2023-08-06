@@ -3510,7 +3510,9 @@ STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- None 
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Town names - click on name to centre main view on town. Ctrl+Click opens a new viewport on town location
-STR_TOWN_POPULATION                                             :{BLACK}World population: {COMMA}
+STR_NUM_TOWNS                                                   :{BLACK}Towns: {ORANGE}{COMMA}
+STR_NUM_CITIES                                                  :{BLACK}Cities: {ORANGE}{COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}World population: {ORANGE}{COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}

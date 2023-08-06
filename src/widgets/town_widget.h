@@ -17,6 +17,8 @@ enum TownDirectoryWidgets {
 	WID_TD_FILTER,           ///< Filter of name.
 	WID_TD_LIST,             ///< List of towns.
 	WID_TD_SCROLLBAR,        ///< Scrollbar for the town list.
+	WID_TD_NUM_TOWNS,        ///< Total number of towns.
+	WID_TD_NUM_CITIES,       ///< Total number of cities.
 	WID_TD_WORLD_POPULATION, ///< The world's population.
 };
 

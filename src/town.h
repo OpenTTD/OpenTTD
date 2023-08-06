@@ -143,6 +143,7 @@ private:
 	void FillCachedName() const;
 };
 
+uint CountTowns(bool cities);
 uint32_t GetWorldPopulation();
 
 void UpdateAllTownVirtCoords();

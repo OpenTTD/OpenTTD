@@ -692,7 +692,9 @@ static const NWidgetPart _nested_town_directory_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_BROWN, WID_TD_LIST), SetDataTip(0x0, STR_TOWN_DIRECTORY_LIST_TOOLTIP),
 							SetFill(1, 0), SetResize(1, 1), SetScrollbar(WID_TD_SCROLLBAR), EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_BROWN),
-				NWidget(WWT_TEXT, COLOUR_BROWN, WID_TD_WORLD_POPULATION), SetPadding(2, 0, 2, 2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TOWN_POPULATION, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_BROWN, WID_TD_NUM_TOWNS), SetPadding(2, 0, 0, 2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_NUM_TOWNS, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_BROWN, WID_TD_NUM_CITIES), SetPadding(0, 0, 0, 2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_NUM_CITIES, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_BROWN, WID_TD_WORLD_POPULATION), SetPadding(0, 0, 2, 2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TOWN_POPULATION, STR_NULL),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
@@ -801,6 +803,14 @@ public:
 	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
+			case WID_TD_NUM_TOWNS:
+				SetDParam(0, CountTowns(false));
+				break;
+
+			case WID_TD_NUM_CITIES:
+				SetDParam(0, CountTowns(true));
+				break;
+
 			case WID_TD_WORLD_POPULATION:
 				SetDParam(0, GetWorldPopulation());
 				break;
@@ -904,6 +914,22 @@ public:
 				d.height = std::max(d.height, icon_size.height);
 				resize->height = d.height;
 				d.height *= 5;
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+			case WID_TD_NUM_TOWNS: {
+				SetDParamMaxDigits(0, 5);
+				Dimension d = GetStringBoundingBox(STR_NUM_TOWNS);
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+			case WID_TD_NUM_CITIES: {
+				SetDParamMaxDigits(0, 5);
+				Dimension d = GetStringBoundingBox(STR_NUM_CITIES);
 				d.width += padding.width;
 				d.height += padding.height;
 				*size = maxdim(*size, d);
