@@ -3234,6 +3234,13 @@ bool AfterLoadGame()
 		_new_competitor_timeout.fired = _new_competitor_timeout.period == 0;
 	}
 
+	if (IsSavegameVersionBefore(SLV_NEWGRF_LAST_SERVICE)) {
+		/* Set service date provided to NewGRF. */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			v->date_of_last_service_newgrf = v->date_of_last_service;
+		}
+	}
+
 	AfterLoadLabelMaps();
 	AfterLoadCompanyStats();
 	AfterLoadStoryBook();
