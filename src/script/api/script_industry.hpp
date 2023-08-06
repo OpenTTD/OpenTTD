@@ -341,13 +341,14 @@ public:
 	 * @param industry_id The index of the industry.
 	 * @param prod_level The production level to set.
 	 * @param show_news If set to true and the production changed, generate a production change news message. If set to false, no news message is shown.
+	 * @param custom_news Custom news message text to override the default news text with. Pass null to use the default text. Only used if \c show_news is set to true.
 	 * @pre IsValidIndustry(industry_id).
 	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre prod_level >= 4 && prod_level <= 128.
 	 * @return True if the action succeeded.
 	 * @api -ai
 	 */
-	static bool SetProductionLevel(IndustryID industry_id, SQInteger prod_level, bool show_news);
+	static bool SetProductionLevel(IndustryID industry_id, SQInteger prod_level, bool show_news, Text *custom_news);
 };
 
 #endif /* SCRIPT_INDUSTRY_HPP */

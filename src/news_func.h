@@ -47,9 +47,9 @@ static inline void AddTileNewsItem(StringID string, NewsType type, TileIndex til
 	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_TILE, static_cast<uint32_t>(tile), station == INVALID_STATION ? NR_NONE : NR_STATION, station, data);
 }
 
-static inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID industry)
+static inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID industry, const NewsAllocatedData *data = nullptr)
 {
-	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_INDUSTRY, industry);
+	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_INDUSTRY, industry, NR_NONE, UINT32_MAX, data);
 }
 
 void NewsLoop();
