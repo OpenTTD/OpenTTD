@@ -1769,14 +1769,14 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Utilização m�
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Definir o volume máximo de memória que pode ser utilizada por um script antes de este ser terminado. Para mapas maiores é possível que este parâmetro tenha de ser aumentado.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de serviço são em percentagem: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de manutenção são em percentagem: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Quando ativado, os veículos procuram fazer a manutenção quando sua fiabilidade reduz para uma determinada percentagem da fiabilidade máxima.{}{}Por exemplo, se a fiabilidade máxima de um veículo for 90% e o intervalo de manutenção for 20%, o veículo tentará fazer a manutenção quando atinge 72% de fiabilidade.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de serviço para comboios por omissão: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Definir o intervalo de manutenção por omissão para novos veículos sobre carris, se não for configurado um intervalo de manutenção explícito para o veículo
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de serviço para veículos de estrada por omissão: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Definir o intervalo de manutenção por omissão para novos veículos de estrada, se não for configurado um intervalo de manutenção explícito para o veículo
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de serviço para aeronaves padrão: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de manutenção para aeronaves por omissão: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Definir o intervalo de manutenção por omissão para novas aeronaves, se não for configurado um intervalo de manutenção explícito para o veículo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de serviço para navios por omissão: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Definir o intervalo de manutenção por omissão para novos navios, se não for configurado um intervalo de manutenção explícito para o veículo
@@ -2700,14 +2700,14 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construção de
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construir monocarril
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construir Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl alterna a construção/remoção de linha férrea. Shift alterna contruir/mostrar custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl alterna a construção/remoção de caminhos-de-ferro. Shift alterna contruir/mostrar custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de comboios). Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl alterna a construção/remoção de linha férrea. Shift alterna construir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl alterna a construção/remoção de caminhos-de-ferro. Shift alterna construir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de comboios). Shift alterna construir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de controlo. Ctrl permite juntar pontos de controlo. Shift alterna construir/mostrar custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl permite juntar estações. Shift alterna construir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna entre semáforos/sinais elétricos{}Arrastar constrói sinais ao longo de uma linha reta de carris. Ctrl constrói sinais até a próxima junção ou sinal{}Ctrl+Clique alterna entre abrir a janela de seleção de sinais. Shift alterna construir/mostrar custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift alterna contruir/mostrar custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift alterna construir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Shift alterna construir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de passagem e estações. Fixar o Ctrl também remove a linha férrea de pontos de passagem e estações
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de linha. Shift alterna construir/mostrar custo estimado
 
@@ -2717,8 +2717,8 @@ STR_RAIL_NAME_MONORAIL                                          :Monocarril
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientação do depósito
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccionar a orientação do depósito
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientação do Depósito Ferroviário
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selecionar a orientação do depósito ferroviário
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Ponto de controlo
@@ -2786,20 +2786,20 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construção de estradas
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de eléctricos
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir estradas. Ctrl alterna a construção/remoção de estradas
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir secção de carris para eléctricos. Ctrl alterna a construção/remoção de carris para eléctricos. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estradas usando o modo automático. Ctrl alterna a construção/remoção de estradas. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir carris para eléctricos usando o modo automático. Ctrl alterna a construção/remoção de carris para eléctricos. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de veículos rodoviários (para compra e manutenção de veículos rodoviários). Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de eléctricos (para compra e manutenção). Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de autocarros. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir paragem de eléctricos para passageiros. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir área de carregamento de camiões. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir paragem de eléctricos para carga. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir secção de carris para elétricos. Ctrl alterna a construção/remoção de carris para elétricos. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estradas usando o modo automático. Ctrl alterna a construção/remoção de estradas. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir carris para elétricos usando o modo automático. Ctrl alterna a construção/remoção de carris para elétricos. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir garagem rodoviária (para compra e manutenção de veículos rodoviários). Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir garagem para elétricos (para compra e manutenção). Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de autocarros. Ctrl permite juntar estações. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir paragem de elétricos para passageiros. Ctrl permite juntar estações. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir área de carregamento de camiões. Ctrl permite juntar estações. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir paragem de elétricos para carga. Ctrl permite juntar estações. Shift alterna construir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ativar/Desativar estradas de sentido único
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte de estrada. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para eléctricos. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel de estrada. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para eléctricos. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte rodoviária. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para elétricos. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel rodoviário. Shift alterna construir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para elétricos. Shift alterna construir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alternar entre construir/remover estradas
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alternar construir/remover linhas de eléctricos e sinais
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/Atualizar tipo de estrada. Shift alterna construir/mostrar custo estimado
@@ -2809,10 +2809,10 @@ STR_ROAD_NAME_ROAD                                              :Estrada
 STR_ROAD_NAME_TRAM                                              :Carris para elétricos
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientação do depósito
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleccionar a orientação do depósito
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientação do depósito para eléctricos
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Escolher a orientação do depósito de eléctricos
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientação da Garagem
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecionar a orientação da garagem
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientação da Garagem de Elétricos
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecionar a orientação da garagem de elétricos
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientação da estação de autocarros
@@ -2828,24 +2828,24 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleccio
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de hidrovia
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canais
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Shift alterna construção/estimativa de custos
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir diques. Shift alterna contruir/mostrar custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito naval (para compra e manutenção de navio). Shift alterna contruir/mostrar custo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl permite juntar estações. Shift alterna contruir/mostar custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Shift alterna construir/mostrar custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir estaleiro naval (para compra e manutenção de navios). Shift alterna construir/mostrar custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl permite juntar estações. Shift alterna construir/mostar custo estimado
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Esta bóia de posição pode ser usada para marcar pontos de rota adicionais. Shift alterna construção/mostra de custos estimados
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Shift alterna contruir/mostrar custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Shift alterna construir/mostrar custo estimado
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definir área de água.{}Construir um canal, a não ser que a tecla Ctrl esteja pressionada a nível do mar, nesse caso inundará as zonas circundantes
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar rios. Tecla "Ctrl" seleciona a área diagonalmente
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientação do Depósito
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Seleccione a orientação do depósito naval
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientação do Estaleiro Naval
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Selecionar a orientação do estaleiro naval
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Doca
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroportos
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl permite juntar estações. Shift alterna construir/mostrar custo estimado
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selecção de Aeroporto
@@ -3043,12 +3043,12 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Linha de caminh
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Linha de caminhos-de-ferro com sinais combinados e de rota
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Linha de caminhos-de-ferro com sinais combinados e de sentido único
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Linha de caminhos-de-ferro com sinais de rota e de sentido único
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito de comboios de caminhos-de-ferro
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito ferroviário para comboios
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Estrada
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Estrada com iluminação
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Estrada com árvores
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depósito de veículos rodoviários
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Garagem para veículos rodoviários
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Passagem de nível
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Linha de eléctrico
 
@@ -3073,7 +3073,7 @@ STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Dique
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Rio
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Costa ou margem
-STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Depósito naval
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Estaleiro naval
 
 # Industries come directly from their industry names
 
@@ -3885,9 +3885,9 @@ STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLA
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Enviar para depósito
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Enviar para depósito
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Enviar para depósito
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Mandar para o depósito
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Mandar para a garagem
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Mandar para o estaleiro
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar para hangar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os veículos na lista
@@ -4058,33 +4058,33 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Comboios - arraste o veículo com o botão esquerdo do rato para adicionar/remover do comboio, clique com o botão direito do rato para informações. Fixe o Ctrl para fazer com que as duas funções se apliquem à seguinte cadeia
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veículos - faça clique direito num veículo para informações
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navios - faça clique direito num navio para informações
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - faça clique direito na aeronave para informações
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Comboios - arraste o veículo com o botão esquerdo do rato para acrescentar/retirar do comboio; clique com o botão direito para informações. Pressionando a tecla Ctrl aplica ambas as funções à cadeia seguinte
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veículos - clique com o botão direito num veículo para informações
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navios - clique com o botão direito num navio para informações
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - Clique com o botão direito na aeronave para informações
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arraste o veículo ferroviário para aqui para o vender
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arraste o veículo rodoviário para aqui para o vender
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arraste o navio para aqui para o vender
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arraste a aeronave para aqui para a vender
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arraste para aqui o veículo ferroviário para vendê-lo
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arraste para aqui o veículo rodoviário para vendê-lo
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arraste para aqui o navio para vendê-lo
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arraste para aqui a aeronave para vendê-la
 
 ###length VEHICLE_TYPES
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vender todos os comboios no depósito
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vender todos os veículos no depósito
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Vender todos os navios no depósito
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vender todos os veículos na garagem
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Vender todos os navios no estaleiro naval
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Vender todas as aeronaves no hangar
 
 ###length VEHICLE_TYPES
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Autosubstituir todos os comboios no depósito
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Autosubstituir todos os veículos rodoviários no depósito
-STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Autosubstituir todos os navios no depósito
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autosubstituir todas as aeronaves no hangar
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Auto-substituir todos os comboios no depósito
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Auto-substituir todos os veículos rodoviários na garagem
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Auto-substituir todos os navios no estaleiro naval
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Auto-substituir todas as aeronaves no hangar
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novos Veículos
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Novos Veículos
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novos navios
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novos Navios
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nova Aeronave
 
 ###length VEHICLE_TYPES
@@ -4100,37 +4100,37 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar n
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esta acção comprará uma cópia de um comboio, incluindo todas as carruagens. Clique neste botão e, de seguida, num comboio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta ação comprará uma cópia de um veículo rodoviário. Clique neste botão e de seguida, num veículo que se encontre dentro ou fora de um depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta ação comprará uma cópia de um navio. Clique neste botão e de seguida, num navio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta ação comprará uma cópia de uma aeronave. Clique neste botão e de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique ira partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esta ação irá comprar uma cópia de um comboio, incluindo todas as carruagens. Clique neste botão e, de seguida, num comboio que se encontre dentro ou fora do depósito ferroviário. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra a estimativa de custo, sem comprar
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta ação irá comprar uma cópia de um veículo rodoviário. Clique neste botão e de seguida, num veículo rodoviário que se encontre dentro ou fora da garagem. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra a estimativa de custo, sem comprar
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta ação irá comprar uma cópia de um navio. Clique neste botão e de seguida, num navio que se encontre dentro ou fora do estaleiro naval. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra a estimativa de custo, sem comprar
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta ação irá comprar uma cópia de uma aeronave. Clique neste botão e de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra a estimativa de custo, sem comprar
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visualização na localização de um depósito ferroviário. Ctrl+Clique abre um novo visualizador na localização do depósito ferroviário
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar visualização na localização do depósito de veículos rodoviários. Ctrl+Clique abre um novo visualizador na localização do depósito de veículos
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar visualização na localização do depósito naval. Ctrl+Clique abre um novo visualizador na localização do depósito naval
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visualização na localização do depósito ferroviário. Ctrl+Clique abre um novo visualizador na localização do depósito ferroviário
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar visualização na localização da garagem de veículos rodoviários. Ctrl+Clique abre um novo visualizador na localização da garagem
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar visualização na localização do estaleiro naval. Ctrl+Clique abre um novo visualizador na localização do estaleiro naval
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar visualização na localização do hangar. Ctrl+Clique abre um novo visualizador na localização do hangar
 
 ###length VEHICLE_TYPES
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obter uma lista de todos os comboios em cujas ordens conste este depósito
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obter uma lista de todos os veículos em cujas ordens conste este depósito
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Obter uma lista de todos os navios em cujas ordens conste este depósito
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Obter uma lista de todas as aeronaves em cujas ordens conste um hangar deste aeroporto
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obter a lista de todos os comboios com este depósito nas suas ordens
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obter a lista de todos os veículos rodoviários com esta garagem nas suas ordens
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Obter a lista de todos os navios com este estaleiro naval nas suas ordens
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Obter a lista de todas as aeronaves com qualquer hangar deste aeroporto nas suas ordens
 
 ###length VEHICLE_TYPES
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Pressione o botão esquerdo do rato para imobilizar todos os comboios no depósito
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Pressione o botão esquerdo do rato para imobilizar todos os veículos no depósito
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Pressione o botão esquerdo do rato para imobilizar todos os navios no depósito
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Pressione botão esquerdo do rato para imobilizar todas as aeronaves no hangar
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Clique para parar todos os comboios dentro do depósito
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Clique para parar todos os veículos rodoviários dentro da garagem
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Clique para parar todos os navios dentro do estaleiro naval
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Clique para parar todas as aeronaves dentro do hangar
 
 ###length VEHICLE_TYPES
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Pressione botão esquerdo do rato para iniciar todos os comboios no depósito
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos rodoviários no depósito
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Pressione o botão esquerdo do rato para iniciar todos os navios no depósito
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Pressione botão esquerdo do rato para iniciar todas as aeronaves no hangar
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Clique para saírem todos os comboios deste depósito
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Clique para saírem todos os veículos rodoviários desta garagem
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Clique para saírem todos os navios deste estaleiro naval
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Clique para saírem todas as aeronaves deste hangar
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Arrastar locomotiva para aqui para vender todo o comboio
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está prestes a vender todos os veículos no depósito. Tem a certeza?
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Arraste para aqui a locomotiva para vender todo o comboio
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está prestes a vender todos os veículos imobilizados aqui. Tem a certeza?
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
@@ -4216,10 +4216,10 @@ STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrar 
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK} Centralize a vista principal na localização da aeronave. Um clique duplo seguirá a aeronave na visualização principal. Ctrl + Clique abre uma nova janela de visualização na localização da aeronave
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mandar comboio para o depósito
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mandar veículo para o depósito
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Mandar navio para o depósito
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Mandar aeronave para o hangar
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mandar comboio para o depósito. Ctrl+Clique fará apenas manutenção
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mandar veículo para a garagem. Ctrl+Clique fará apenas manutenção
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Mandar navio para o estaleiro. Ctrl+Clique fará apenas manutenção
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Mandar aeronave para o hangar. Ctrl+Clique fará apenas manutenção
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Esta ação comprará uma cópia do comboio, incluindo as carruagens. Ctrl+Clique irá partilhar as ordens. Shift + Clique mostra estimativa de custo, sem comprar
@@ -4271,7 +4271,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Dirige-
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sem ordens, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Dirige-se a {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Dirige-se para {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Efetuar manutenção em {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manutenção em {DEPOT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}Não é possível chegar a {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}Não é possível chegar a {WAYPOINT}, {VELOCITY}
@@ -4426,9 +4426,9 @@ STR_ORDER_DROP_REFIT_AUTO                                       :Mercadoria fixa
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Mercadoria disponível
 
 STR_ORDER_SERVICE                                               :{BLACK}Manutenção
-STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vai sempre
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Serviço caso necessário
-STR_ORDER_DROP_HALT_DEPOT                                       :Pare
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir sempre
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Manutenção, se necessária
+STR_ORDER_DROP_HALT_DEPOT                                       :Parar
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Saltar esta ordem a menos que seja necessário manutenção
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados de veículo para ida à base
@@ -4483,12 +4483,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ir sem parar po
 STR_ORDER_SERVICE_AT                                            :Serviço em
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Serviço sem parar em
 
-STR_ORDER_NEAREST_DEPOT                                         :o mais próximo
+STR_ORDER_NEAREST_DEPOT                                         :o mais perto
 STR_ORDER_NEAREST_HANGAR                                        :o hangar mais próximo
 ###length 3
-STR_ORDER_TRAIN_DEPOT                                           :Depósito ferroviário
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de veículos rodoviários
-STR_ORDER_SHIP_DEPOT                                            :Depósito naval
+STR_ORDER_TRAIN_DEPOT                                           :Depósito Ferroviário
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Garagem Rodoviária
+STR_ORDER_SHIP_DEPOT                                            :Estaleiro Naval
 ###next-name-looks-similar
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
@@ -4929,19 +4929,19 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bói
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso por outra empresa!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Não é possível construir depósito aqui...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Não é possível construir depósito de veículos rodoviários aqui...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Não é possível construir depósito para eléctricos neste local...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Não é possível construir depósito naval aqui...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Não é possível construir um depósito ferroviário aqui...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Não é possível construir uma garagem aqui...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Não é possível construir uma garagem para elétricos aqui...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Não é possível construir um estaleiro naval aqui...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Não é possível alterar o nome do depósito...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... tem que estar parado dentro do depósito
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve estar parado num depósito de veículos rodoviários
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... tem que estar parado no depósito
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... tem que estar parado dentro do depósito ferroviário
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... tem que estar parado dentro da garagem
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... tem que estar parado dentro do estaleiro naval
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... tem que estar parado no hangar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os comboios só podem ser alterados quando parados num depósito
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os comboios só podem ser modificados quando parados num depósito ferroviário
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Comboio muito longo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Impossível inverter a direcção do veículo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... compostos por unidades múltiplas
@@ -4995,7 +4995,7 @@ STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Linha de
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Não é possível construir canais aqui...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Não é possível construir diques aqui...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Não é possível construir eclusas aqui...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Não se pode pôr rio aqui...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... deverá ser construído na água
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... não é possível construir na água
@@ -5083,9 +5083,9 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Não é 
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Não é possível iniciar/parar aeronave...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Não é possível mandar o comboio para o depósito...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Não é possível mandar o veículo para o depósito...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Não é possível mandar navio para o depósito...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Não é possível mandar o comboio para o depósito ferroviário...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Não é possível mandar o veículo para a garagem...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Não é possível mandar navio para o estaleiro naval...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Não é possível mandar aeronave para o hangar...
 
 ###length VEHICLE_TYPES
@@ -5597,12 +5597,12 @@ STR_FORMAT_WAYPOINT_NAME                                        :Ponto de contro
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Ponto de controlo {TOWN}#{COMMA}
 
 ###length 6
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de Comboios de {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de Comboios de {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de Veículos Rodoviários de {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de Veículos Rodoviários de {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :Depósito naval de {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Depósito naval de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito Ferroviário de {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito Ferroviário de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Garagem Rodoviária de {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Garagem Rodoviária de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Estaleiro Naval de {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Estaleiro Naval de {TOWN} #{COMMA}
 ###next-name-looks-similar
 
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STATION}
