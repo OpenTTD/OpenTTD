@@ -255,8 +255,21 @@ STR_COLOUR_WHITE                                                :Biela
 STR_COLOUR_RANDOM                                               :Náhodná
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Tmavomodrá
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Svetlozelená
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Ružová
+STR_COLOUR_SECONDARY_YELLOW                                     :Žltá
+STR_COLOUR_SECONDARY_RED                                        :Červená
 STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Svetlomodrá
+STR_COLOUR_SECONDARY_GREEN                                      :Zelená
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Tmavozelená
 STR_COLOUR_SECONDARY_BLUE                                       :Modrá
+STR_COLOUR_SECONDARY_CREAM                                      :Krémová
+STR_COLOUR_SECONDARY_MAUVE                                      :Svetlofialová
+STR_COLOUR_SECONDARY_PURPLE                                     :Fialová
+STR_COLOUR_SECONDARY_ORANGE                                     :Oranžová
+STR_COLOUR_SECONDARY_BROWN                                      :Hnedá
+STR_COLOUR_SECONDARY_GREY                                       :Šedá
 STR_COLOUR_SECONDARY_WHITE                                      :Biela
 
 
@@ -920,7 +933,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} bola zavretá veriteľmi a celý majetok bol rozpredaný!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Založená nová dopravná spoločnosť!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}Príchod nového konkurenta {STRING} pri meste {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} bola kúpená spoločnosťou {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} bola kúpená spoločnosťou {STRING} za nezverejnenú sumu!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Prezident)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponzoroval výstavbu nového mesta {TOWN}!
@@ -1005,9 +1018,19 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavi�
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnosti hry
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Všeobecné
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafika
+STR_GAME_OPTIONS_TAB_SOUND                                      :Zvuk
 
+STR_GAME_OPTIONS_VOLUME                                         :Hlasitosť
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Zvukové efekty
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Hudba
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0 %
+STR_GAME_OPTIONS_VOLUME_25                                      :25 %
+STR_GAME_OPTIONS_VOLUME_50                                      :50 %
+STR_GAME_OPTIONS_VOLUME_75                                      :75 %
+STR_GAME_OPTIONS_VOLUME_100                                     :100 %
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Mena
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Výber menovej jednotky
@@ -1064,7 +1087,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Výber i
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Vypnuté
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Každých 10 minút
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Každých 30 minút
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Každých 60 minút
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Každých 120 minút
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jazyk
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Výber jazyka rozhrania
@@ -1101,6 +1127,8 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatizovaný prieskum
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Zúčastniť sa automatizovaného prieskumu
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
@@ -1110,12 +1138,12 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Obnovovacia frekvencia vyššia ako 60Hz môže znížiť výkon.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základná sada grafiky
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Výber sady grafiky, ktorá má byť použitá
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Výber sady grafiky, ktorá má byť použitá (nie je možné zmeniť v hre, iba z hlavného menu)
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatočné informácie o základnej sade grafiky
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Základná sada zvukov
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Výber sady zvukov, ktorá má byť použitá
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Výber sady zvukov, ktorá má byť použitá (nie je možné zmeniť v hre, iba z hlavného menu)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatočné informácie o základnej sade zvukov
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Základná sada hudby
@@ -1285,6 +1313,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vľavo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :v strede
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sek{P 0 "unda" "undy" "únd"}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximálny počiatočný úver: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálna množstvo peňazí ktoré si môže spoločnosť požičať (bez inflácie)
@@ -1413,7 +1442,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nové príkazy 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálne, vlak vždy zastaví v každej stanici cez ktorú prechádza. Povolením tohoto nastavenia, vlak bude pokračovať cez všetky stanice ktoré má v ceste až do svojej cieľovej stanice. Uvedomte si to, že toto nastavenie definuje "pôvodné" nastavenie LEN pre nové trasy. Samostatne zadávané cesty môžu byť nastavené aj inak.
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Vlaky zastavujú štandardne {STRING} stanice.
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Zvoľte kde zastaví vlak po príjazde do stanice. "Blízky koniec" znamená že vlak zastaví najbližšie ku vstupnému bodu, "Stred" že zastaví v strede stanice a "daleký koniec" že zastaví čo najďalej od vstupného bodu.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Zvoľte kde zastaví vlak po príjazde do stanice. "Blízky koniec" znamená že vlak zastaví najbližšie ku vstupnému bodu, "Stred" že zastaví v strede stanice a "daleký koniec" že zastaví čo najďalej od vstupného bodu. Uvedomte si to, že toto nastavenie definuje "pôvodné" nastavenie len pre nové trasy. Samostatne zadávané cesty môžu mať nastavené ich pozíciu zastavenia v stanici kliknutím na text príkazu
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :na začiatku
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :v strede
@@ -1457,7 +1486,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Obmedzené
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normálny
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Povoliť prejazdné zastávky na mestských cestách: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povoliť budovanie "prejazdných" nakládok a zastávok na cestách vlastnených mestom.
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povoliť budovanie "prejazdných" nakládok a zastávok na cestách vlastnených mestom
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Výstavba zastávok na cestách vlastnených konkurenciou: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Povoliť budovanie "prejazdných" nakládok a zastávok na cestách vlastnených iným hráčom.
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmena nastavenia nie je možná, pokiaľ sa tu nachádzajú vozidlá
@@ -2461,6 +2490,8 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nie
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Áno, tentokrát
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Áno, znova sa nepýtať
 
+STR_NETWORK_ASK_SURVEY_NO                                       :Nie
+STR_NETWORK_ASK_SURVEY_YES                                      :Áno
 
 STR_NETWORK_SPECTATORS                                          :Pozorovatelia
 
@@ -2751,7 +2782,8 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Automati
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vyberte druh stanice pre zobrazenie
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vyberte typ stanice pre vystavbu
 
-STR_STATION_CLASS_DFLT                                          :Pôvodná stanica
+STR_STATION_CLASS_DFLT                                          :Pôvodná
+STR_STATION_CLASS_DFLT_STATION                                  :Predvolená stanica
 STR_STATION_CLASS_WAYP                                          :Smerové body
 
 # Signal window
@@ -2960,7 +2992,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 mrie
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Náhodný
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financovať nový priemysel
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financovanie priemyslu
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Vyberte vhodný typ priemyslu zo zoznamu
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Vytvoriť náhodný priemysel
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Pokryť mapu náhodne umiestneným priemyslom
@@ -2976,14 +3008,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Odstrán
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ste si istý, že chcete odstrániť všetok priemysel?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Reťazec pre priemysel: {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Reťazec pre náklad: {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Reťazec pre priemysel - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Reťazec pre náklad - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produkujúci priemysel
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Podporovaný priemysel
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikni na priemysel pre zobrazenie dodávateľov a zákazníkov
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikni na náklad pre zobrazenie dodávateľov a zákazníkov
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zobraziť reťazec
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Priemyselné reťaze
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zobraziť náklad dodávaného a prijímaného priemyslu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Odkaz na malú mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vybrať zobrazený priemysel taktiež v malej mape
@@ -3578,8 +3610,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Financovať rekonštrukciu mestskej cestnej siete.{}Spôsobí dopravný chaos a zápchy trvajúce ďalších 6 mesiacov.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Postaviť sochu na počesť vašej spoločnosti.{}Zabezpečí trvalé zvýšenie hodnotenia staníc v tomto meste.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Financovať výstavbu nových budov v meste.{}Zabezpečí dočasné zrýchlenie rastu tohto mesta.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Zakúpiť exkluzívne dopravné práva v meste na 1 rok.{}Miestna správa nedovolí cestujúcim a nákladu používať stanice konkurentov.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Podplatiť miestnu správu pre zvýšenie hodnotenia vašej spoločnosti, s rizikom ťažkého postihu pri odhalení.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Zakúpiť exkluzívne dopravné práva v meste na 1 rok.{}Miestna správa nedovolí cestujúcim a nákladu používať stanice konkurentov. Úspešný úplatok od konkurenta túto zmluvu zruší.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Podplatiť miestnu správu pre zvýšenie hodnotenia vašej spoločnosti a zrušiť exkluzívne prepravné práva konkurenta, s rizikom prísneho trestu pri odhalení.{}{POP_COLOUR}Cena: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ciele
@@ -3887,6 +3919,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Možnost
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Zadať príkazy všetkým vozidlám v zozname
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Vymeniť vozidlá
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Vykonať servis
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Vytvoriť skupinu
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Zisk tento rok: {CURRENCY_LONG} (minulý rok: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4609,6 +4642,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Očakáv
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plánované
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prepnúť medzi očakávaným a plánovaným
 
+STR_TIMETABLE_ARRIVAL                                           :P: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :O: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -4645,8 +4680,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z 
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno ladenia AI/skriptu je dostupné len pre server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Konfigurácia AI
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Konfigurácia skriptu
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Nastavenia AI
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Nastavenia skriptu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skript, ktorý bude načítaný v ďalšej hre
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI, ktoré budú načítané v ďalšiej hre
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Človek
@@ -5648,17 +5683,21 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
