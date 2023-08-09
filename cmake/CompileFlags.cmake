@@ -56,8 +56,8 @@ macro(compile_flags)
 
     if(MSVC)
         add_compile_options(/W3)
-        if(MSVC_VERSION GREATER 1929 AND CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-            # Starting with version 19.30, there is an optimisation bug, see #9966 for details
+        if(MSVC_VERSION GREATER 1929 AND MSVC_VERSION LESS 1937 AND CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+            # Starting with version 19.30 (fixed in version 19.37), there is an optimisation bug, see #9966 for details
             # This flag disables the broken optimisation to work around the bug
             add_compile_options(/d2ssa-rse-)
         endif()
