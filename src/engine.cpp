@@ -437,8 +437,7 @@ uint Engine::GetDisplayMaxTractiveEffort() const
  */
 TimerGameCalendar::Date Engine::GetLifeLengthInDays() const
 {
-	/* Assume leap years; this gives the player a bit more than the given amount of years, but never less. */
-	return (this->info.lifelength + _settings_game.vehicle.extend_vehicle_life) * DAYS_IN_LEAP_YEAR;
+	return DateAtStartOfYear(this->info.lifelength + _settings_game.vehicle.extend_vehicle_life);
 }
 
 /**
@@ -663,7 +662,7 @@ void SetYearEngineAgingStops()
 
 		/* Base year ending date on half the model life */
 		TimerGameCalendar::YearMonthDay ymd;
-		TimerGameCalendar::ConvertDateToYMD(ei->base_intro + (ei->lifelength * DAYS_IN_LEAP_YEAR) / 2, &ymd);
+		TimerGameCalendar::ConvertDateToYMD(ei->base_intro + DateAtStartOfYear(ei->lifelength) / 2, &ymd);
 
 		_year_engine_aging_stops = std::max(_year_engine_aging_stops, ymd.year);
 	}
