@@ -1360,7 +1360,7 @@ static bool VehicleNameSorter(const Vehicle * const &a, const Vehicle * const &b
 /** Sort vehicles by their age */
 static bool VehicleAgeSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
-	int r = a->age - b->age;
+	auto r = a->age - b->age;
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 

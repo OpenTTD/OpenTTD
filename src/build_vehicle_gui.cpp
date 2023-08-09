@@ -125,9 +125,9 @@ static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListIt
  */
 static bool EngineIntroDateSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	const int va = Engine::Get(a.engine_id)->intro_date;
-	const int vb = Engine::Get(b.engine_id)->intro_date;
-	const int r = va - vb;
+	const auto va = Engine::Get(a.engine_id)->intro_date;
+	const auto vb = Engine::Get(b.engine_id)->intro_date;
+	const auto r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
 	if (r == 0) return EngineNumberSorter(a, b);
