@@ -104,12 +104,12 @@ extern void EnginesMonthlyLoop();
 static int32_t ClickChangeDateCheat(int32_t new_value, int32_t change_direction)
 {
 	/* Don't allow changing to an invalid year, or the current year. */
-	new_value = Clamp(new_value, MIN_YEAR, MAX_YEAR);
-	if (new_value == TimerGameCalendar::year) return TimerGameCalendar::year;
+	auto new_year = Clamp(TimerGameCalendar::Year(new_value), MIN_YEAR, MAX_YEAR);
+	if (new_year == TimerGameCalendar::year) return TimerGameCalendar::year;
 
 	TimerGameCalendar::YearMonthDay ymd;
 	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
-	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(new_value, ymd.month, ymd.day);
+	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(new_year, ymd.month, ymd.day);
 
 	/* Shift cached dates before we change the date. */
 	for (auto v : Vehicle::Iterate()) v->ShiftDates(new_date - TimerGameCalendar::date);
