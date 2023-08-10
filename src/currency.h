@@ -14,8 +14,9 @@
 #include "string_func.h"
 #include "strings_type.h"
 
-static const int CF_NOEURO = 0; ///< Currency never switches to the Euro (as far as known).
-static const int CF_ISEURO = 1; ///< Currency _is_ the Euro.
+static constexpr TimerGameCalendar::Year CF_NOEURO = 0; ///< Currency never switches to the Euro (as far as known).
+static constexpr TimerGameCalendar::Year CF_ISEURO = 1; ///< Currency _is_ the Euro.
+static constexpr TimerGameCalendar::Year MIN_EURO_YEAR = 2000; ///< The earliest year custom currencies may switch to the Euro.
 
 /**
  * This enum gives the currencies a unique id which must be maintained for

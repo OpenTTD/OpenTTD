@@ -2505,7 +2505,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		/* Was 'cancel' pressed? */
 		if (str == nullptr) return;
 
-		int32_t value;
+		TimerGameCalendar::Year value;
 		if (!StrEmpty(str)) {
 			value = atoi(str);
 		} else {

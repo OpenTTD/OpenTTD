@@ -582,7 +582,7 @@ public:
 		}
 
 		int mo = (TimerGameCalendar::month / 3 - nums) * 3;
-		int yr = TimerGameCalendar::year;
+		auto yr = TimerGameCalendar::year;
 		while (mo < 0) {
 			yr--;
 			mo += 12;

@@ -6512,7 +6512,7 @@ bool GetGlobalVariable(byte param, uint32_t *value, const GRFFile *grffile)
 {
 	switch (param) {
 		case 0x00: // current date
-			*value = std::max(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
+			*value = std::max(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::Date(0));
 			return true;
 
 		case 0x01: // current year
