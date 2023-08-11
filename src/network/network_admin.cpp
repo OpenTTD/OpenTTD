@@ -11,7 +11,7 @@
 #include "../strings_func.h"
 #include "../timer/timer_game_calendar.h"
 #include "../timer/timer_game_calendar.h"
-#include "core/game_info.h"
+#include "core/network_game_info.h"
 #include "network_admin.h"
 #include "network_base.h"
 #include "network_server.h"

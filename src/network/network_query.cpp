@@ -8,7 +8,7 @@
 /** @file network_query.cpp Query part of the network protocol. */
 
 #include "../stdafx.h"
-#include "core/game_info.h"
+#include "core/network_game_info.h"
 #include "network_query.h"
 #include "network_gamelist.h"
 #include "../error.h"

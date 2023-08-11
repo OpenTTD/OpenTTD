@@ -15,7 +15,7 @@
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "packet.h"
-#include "game_info.h"
+#include "network_game_info.h"
 
 /** Enum with all types of TCP TURN packets. The order MUST not be changed. **/
 enum PacketTurnType {

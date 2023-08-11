@@ -11,7 +11,7 @@
 #define NETWORK_GAMELIST_H
 
 #include "core/address.h"
-#include "core/game_info.h"
+#include "core/network_game_info.h"
 #include "network_type.h"
 
 /** The status a server can be in. */
