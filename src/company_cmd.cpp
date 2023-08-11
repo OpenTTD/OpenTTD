@@ -600,12 +600,12 @@ TimeoutTimer<TimerGameTick> _new_competitor_timeout(0, []() {
 	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
 
 	/* count number of competitors */
-	uint n = 0;
+	uint8_t n = 0;
 	for (const Company *c : Company::Iterate()) {
 		if (c->is_ai) n++;
 	}
 
-	if (n >= (uint)_settings_game.difficulty.max_no_competitors) return;
+	if (n >= _settings_game.difficulty.max_no_competitors) return;
 
 	/* Send a command to all clients to start up a new AI.
 	 * Works fine for Multiplayer and Singleplayer */
@@ -720,8 +720,15 @@ void OnTick_Companies()
 		int32_t timeout = _settings_game.difficulty.competitors_interval * 60 * TICKS_PER_SECOND;
 		/* If the interval is zero, start as many competitors as needed then check every ~10 minutes if a company went bankrupt and needs replacing. */
 		if (timeout == 0) {
+			/* count number of competitors */
+			uint8_t n = 0;
+			for (const Company *cc : Company::Iterate()) {
+				if (cc->is_ai) n++;
+			}
+
 			for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
 				if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) break;
+				if (n++ >= _settings_game.difficulty.max_no_competitors) break;
 				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
 			}
 			timeout = 10 * 60 * TICKS_PER_SECOND;
