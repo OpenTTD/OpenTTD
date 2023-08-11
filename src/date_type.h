@@ -64,6 +64,16 @@ static constexpr TimerGameCalendar::Date DateAtStartOfYear(TimerGameCalendar::Ye
 }
 
 /**
+ * Calculate the year of a given date.
+ * @param date The date to consider.
+ * @return the year.
+ */
+static inline TimerGameCalendar::Year DateToYear(TimerGameCalendar::Date date)
+{
+	return date / DAYS_IN_LEAP_YEAR;
+}
+
+/**
  * The date of the first day of the original base year.
  */
 static constexpr TimerGameCalendar::Date DAYS_TILL_ORIGINAL_BASE_YEAR = DateAtStartOfYear(ORIGINAL_BASE_YEAR);
