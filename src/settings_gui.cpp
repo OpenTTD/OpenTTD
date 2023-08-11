@@ -2844,13 +2844,13 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			case WID_CC_YEAR_DOWN:
-				_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ? CF_NOEURO : _custom_currency.to_euro - 1;
+				_custom_currency.to_euro = (_custom_currency.to_euro <= MIN_EURO_YEAR) ? CF_NOEURO : _custom_currency.to_euro - 1;
 				if (_custom_currency.to_euro == CF_NOEURO) this->DisableWidget(WID_CC_YEAR_DOWN);
 				this->EnableWidget(WID_CC_YEAR_UP);
 				break;
 
 			case WID_CC_YEAR_UP:
-				_custom_currency.to_euro = Clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
+				_custom_currency.to_euro = Clamp(_custom_currency.to_euro + 1, MIN_EURO_YEAR, MAX_YEAR);
 				if (_custom_currency.to_euro == MAX_YEAR) this->DisableWidget(WID_CC_YEAR_UP);
 				this->EnableWidget(WID_CC_YEAR_DOWN);
 				break;
@@ -2895,9 +2895,9 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			case WID_CC_YEAR: { // Year to switch to euro
-				int val = atoi(str);
+				TimerGameCalendar::Year val = atoi(str);
 
-				_custom_currency.to_euro = (val < 2000 ? CF_NOEURO : std::min(val, MAX_YEAR));
+				_custom_currency.to_euro = (val < MIN_EURO_YEAR ? CF_NOEURO : std::min(val, MAX_YEAR));
 				break;
 			}
 		}

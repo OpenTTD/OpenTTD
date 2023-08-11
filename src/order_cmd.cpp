@@ -1944,7 +1944,7 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
 		case OCV_AGE:                skip_order = OrderConditionCompare(occ, DateToYear(v->age),                value); break;
 		case OCV_REQUIRES_SERVICE:   skip_order = OrderConditionCompare(occ, v->NeedsServicing(),               value); break;
 		case OCV_UNCONDITIONALLY:    skip_order = true; break;
-		case OCV_REMAINING_LIFETIME: skip_order = OrderConditionCompare(occ, std::max(DateToYear(v->max_age - v->age + DAYS_IN_LEAP_YEAR - 1), 0), value); break;
+		case OCV_REMAINING_LIFETIME: skip_order = OrderConditionCompare(occ, std::max(DateToYear(v->max_age - v->age + DAYS_IN_LEAP_YEAR - 1), TimerGameCalendar::Date(0)), value); break;
 		default: NOT_REACHED();
 	}
 
