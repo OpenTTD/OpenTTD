@@ -1377,9 +1377,11 @@ void AgeVehicle(Vehicle *v)
 	if (!v->IsPrimaryVehicle() && (v->type != VEH_TRAIN || !Train::From(v)->IsEngine())) return;
 
 	int age = v->age - v->max_age;
-	if (age == DAYS_IN_LEAP_YEAR * 0 || age == DAYS_IN_LEAP_YEAR * 1 ||
-			age == DAYS_IN_LEAP_YEAR * 2 || age == DAYS_IN_LEAP_YEAR * 3 || age == DAYS_IN_LEAP_YEAR * 4) {
-		v->reliability_spd_dec <<= 1;
+	for (int32_t i = 0; i <= 4; i++) {
+		if (age == DateAtStartOfYear(i)) {
+			v->reliability_spd_dec <<= 1;
+			break;
+		}
 	}
 
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
