@@ -324,14 +324,14 @@ protected:
 	/** Sort servers by current date */
 	static bool NGameDateSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
-		int r = a->info.game_date - b->info.game_date;
+		auto r = a->info.game_date - b->info.game_date;
 		return (r != 0) ? r < 0 : NGameClientSorter(a, b);
 	}
 
 	/** Sort servers by the number of days the game is running */
 	static bool NGameYearsSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
-		int r = a->info.game_date - a->info.start_date - b->info.game_date + b->info.start_date;
+		auto r = a->info.game_date - a->info.start_date - b->info.game_date + b->info.start_date;
 		return (r != 0) ? r < 0: NGameDateSorter(a, b);
 	}
 
