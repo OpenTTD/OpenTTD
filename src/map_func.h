@@ -426,7 +426,7 @@ debug_inline static TileIndex TileVirtXY(uint x, uint y)
  */
 debug_inline static uint TileX(TileIndex tile)
 {
-	return tile.value & Map::MaxX();
+	return static_cast<uint32_t>(tile) & Map::MaxX();
 }
 
 /**
@@ -436,7 +436,7 @@ debug_inline static uint TileX(TileIndex tile)
  */
 debug_inline static uint TileY(TileIndex tile)
 {
-	return tile.value >> Map::LogX();
+	return static_cast<uint32_t>(tile) >> Map::LogX();
 }
 
 /**
