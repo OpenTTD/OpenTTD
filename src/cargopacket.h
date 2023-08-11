@@ -34,7 +34,12 @@ template <class Tinst, class Tcont> class CargoList;
 class StationCargoList; // forward-declare, so we can use it in VehicleCargoList.
 extern SaveLoadTable GetCargoPacketDesc();
 
-typedef uint32_t TileOrStationID;
+/**
+ * To make alignment in the union in CargoPacket a bit easier, create a new type
+ * that is a StationID, but stored as 32bit.
+ */
+typedef uint32_t StationID_32bit;
+static_assert(sizeof(TileIndex) == sizeof(StationID_32bit));
 
 /**
  * Container for cargo from the same location and time.
@@ -49,8 +54,8 @@ private:
 	StationID source;       ///< The station where the cargo came from first.
 	TileIndex source_xy;    ///< The origin of the cargo (first station in feeder chain).
 	union {
-		TileOrStationID loaded_at_xy; ///< Location where this cargo has been loaded into the vehicle.
-		TileOrStationID next_station; ///< Station where the cargo wants to go next.
+		TileIndex loaded_at_xy;       ///< Location where this cargo has been loaded into the vehicle.
+		StationID_32bit next_station; ///< Station where the cargo wants to go next.
 	};
 
 	/** The CargoList caches, thus needs to know about it. */
@@ -416,7 +421,7 @@ public:
 	 * applicable), return value is amount of cargo actually moved. */
 
 	template<MoveToAction Tfrom, MoveToAction Tto>
-	uint Reassign(uint max_move, TileOrStationID update = INVALID_TILE);
+	uint Reassign(uint max_move, StationID update = INVALID_STATION);
 	uint Return(uint max_move, StationCargoList *dest, StationID next_station);
 	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment);
 	uint Shift(uint max_move, VehicleCargoList *dest);
