@@ -2510,7 +2510,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			value = atoi(str);
 		} else {
 			/* An empty string means revert to the default */
-			value = DEF_START_YEAR;
+			value = static_cast<int32_t>(DEF_START_YEAR);
 		}
 		SetStartingYear(value);
 

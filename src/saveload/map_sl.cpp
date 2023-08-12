@@ -169,7 +169,7 @@ struct MAP2ChunkHandler : ChunkHandler {
 		std::array<uint16_t, MAP_SL_BUF_SIZE> buf;
 		TileIndex size = Map::Size();
 
-		SlSetLength(size * sizeof(uint16_t));
+		SlSetLength(static_cast<uint32_t>(size) * sizeof(uint16_t));
 		for (TileIndex i = 0; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m2();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);
@@ -344,7 +344,7 @@ struct MAP8ChunkHandler : ChunkHandler {
 		std::array<uint16_t, MAP_SL_BUF_SIZE> buf;
 		TileIndex size = Map::Size();
 
-		SlSetLength(size * sizeof(uint16_t));
+		SlSetLength(static_cast<uint32_t>(size) * sizeof(uint16_t));
 		for (TileIndex i = 0; i != size;) {
 			for (uint j = 0; j != MAP_SL_BUF_SIZE; j++) buf[j] = Tile(i++).m8();
 			SlCopy(buf.data(), MAP_SL_BUF_SIZE, SLE_UINT16);

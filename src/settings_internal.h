@@ -149,12 +149,46 @@ struct IntSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(int32_t value);
 
-	IntSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, int32_t def,
-			int32_t min, uint32_t max, int32_t interval, StringID str, StringID str_help, StringID str_val,
+	template <
+		typename Tdef,
+		typename Tmin,
+		typename Tmax,
+		typename Tinterval,
+		std::enable_if_t<std::disjunction_v<std::is_convertible<Tdef, int32_t>, std::is_base_of<StrongTypedefBase, Tdef>>, int> = 0,
+		std::enable_if_t<std::disjunction_v<std::is_convertible<Tmin, int32_t>, std::is_base_of<StrongTypedefBase, Tmin>>, int> = 0,
+		std::enable_if_t<std::disjunction_v<std::is_convertible<Tmax, uint32_t>, std::is_base_of<StrongTypedefBase, Tmax>>, int> = 0,
+		std::enable_if_t<std::disjunction_v<std::is_convertible<Tinterval, int32_t>, std::is_base_of<StrongTypedefBase, Tinterval>>, int> = 0
+	>
+	IntSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, Tdef def,
+			Tmin min, Tmax max, Tinterval interval, StringID str, StringID str_help, StringID str_val,
 			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback) :
-		SettingDesc(save, flags, startup), def(def), min(min), max(max), interval(interval),
+		SettingDesc(save, flags, startup),
 			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
-			post_callback(post_callback) {}
+			post_callback(post_callback) {
+		if constexpr (std::is_base_of_v<StrongTypedefBase, Tdef>) {
+			this->def = static_cast<typename Tdef::BaseType>(def);
+		} else {
+			this->def = def;
+		}
+
+		if constexpr (std::is_base_of_v<StrongTypedefBase, Tmin>) {
+			this->min = static_cast<typename Tmin::BaseType>(min);
+		} else {
+			this->min = min;
+		}
+
+		if constexpr (std::is_base_of_v<StrongTypedefBase, Tmax>) {
+			this->max = static_cast<typename Tmax::BaseType>(max);
+		} else {
+			this->max = max;
+		}
+
+		if constexpr (std::is_base_of_v<StrongTypedefBase, Tinterval>) {
+			this->interval = static_cast<typename Tinterval::BaseType>(interval);
+		} else {
+			this->interval = interval;
+		}
+	}
 
 	int32_t def;              ///< default value given when none is present
 	int32_t min;              ///< minimum values
@@ -193,7 +227,7 @@ struct BoolSettingDesc : IntSettingDesc {
 	BoolSettingDesc(const SaveLoad &save, SettingFlag flags, bool startup, bool def,
 			StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback) :
-		IntSettingDesc(save, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat,
+		IntSettingDesc(save, flags, startup, def ? 1 : 0, 0, 1, 0, str, str_help, str_val, cat,
 			pre_check, post_callback) {}
 
 	static std::optional<bool> ParseSingleValue(const char *str);

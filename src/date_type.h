@@ -58,9 +58,10 @@ static constexpr TimerGameCalendar::Year ORIGINAL_MAX_YEAR = 2090;
  */
 static constexpr TimerGameCalendar::Date DateAtStartOfYear(TimerGameCalendar::Year year)
 {
-	uint number_of_leap_years = (year == 0) ? 0 : ((year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400 + 1);
+	int32_t year_as_int = static_cast<int32_t>(year);
+	uint number_of_leap_years = (year == 0) ? 0 : ((year_as_int - 1) / 4 - (year_as_int - 1) / 100 + (year_as_int - 1) / 400 + 1);
 
-	return (DAYS_IN_YEAR * year) + number_of_leap_years;
+	return (DAYS_IN_YEAR * year_as_int) + number_of_leap_years;
 }
 
 /**
@@ -70,7 +71,7 @@ static constexpr TimerGameCalendar::Date DateAtStartOfYear(TimerGameCalendar::Ye
  */
 static inline TimerGameCalendar::Year DateToYear(TimerGameCalendar::Date date)
 {
-	return date / DAYS_IN_LEAP_YEAR;
+	return static_cast<int32_t>(date) / DAYS_IN_LEAP_YEAR;
 }
 
 /**

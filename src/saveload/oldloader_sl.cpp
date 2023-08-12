@@ -57,8 +57,8 @@ static void FixTTDMapArray()
 	/* _old_map3 is moved to _m::m3 and _m::m4 */
 	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
 		Tile tile(t);
-		tile.m3() = _old_map3[t * 2];
-		tile.m4() = _old_map3[t * 2 + 1];
+		tile.m3() = _old_map3[static_cast<uint32_t>(t) * 2];
+		tile.m4() = _old_map3[static_cast<uint32_t>(t) * 2 + 1];
 	}
 
 	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
@@ -416,7 +416,7 @@ static bool FixTTOEngines()
 			if (TimerGameCalendar::date >= e->intro_date && HasBit(e->info.climates, 0)) {
 				e->flags |= ENGINE_AVAILABLE;
 				e->company_avail = MAX_UVALUE(CompanyMask);
-				e->age = TimerGameCalendar::date > e->intro_date ? (TimerGameCalendar::date - e->intro_date) / 30 : 0;
+				e->age = TimerGameCalendar::date > e->intro_date ? static_cast<int32_t>(TimerGameCalendar::date - e->intro_date) / 30 : 0;
 			}
 		} else {
 			/* Using data from TTO savegame */

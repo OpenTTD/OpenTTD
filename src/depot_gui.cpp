@@ -360,7 +360,7 @@ struct DepotWindow : Window {
 			DrawSpriteIgnorePadding((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, flag, false, SA_CENTER);
 
 			SetDParam(0, v->unitnumber);
-			DrawString(text, STR_JUST_COMMA, (uint16_t)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? TC_BLACK : TC_RED);
+			DrawString(text, STR_JUST_COMMA, (v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? TC_BLACK : TC_RED);
 		}
 	}
 

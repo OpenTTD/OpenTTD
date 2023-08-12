@@ -430,7 +430,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		MusicDriver::GetInstance()->SetVolume(_settings_client.music.music_vol);
 		SetEffectVolume(_settings_client.music.effect_vol);
 
-		if (startyear != INVALID_YEAR) IConsoleSetSetting("game_creation.starting_year", startyear);
+		if (startyear != INVALID_YEAR) IConsoleSetSetting("game_creation.starting_year", static_cast<int32_t>(startyear));
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
 
 		if (!dedicated_host.empty()) {
@@ -1389,7 +1389,7 @@ void StateGameLoop()
 		CallWindowGameTickEvent();
 		NewsLoop();
 	} else {
-		if (_debug_desync_level > 2 && TimerGameCalendar::date_fract == 0 && (TimerGameCalendar::date & 0x1F) == 0) {
+		if (_debug_desync_level > 2 && TimerGameCalendar::date_fract == 0 && (static_cast<int32_t>(TimerGameCalendar::date) & 0x1F) == 0) {
 			/* Save the desync savegame if needed. */
 			std::string name = fmt::format("dmp_cmds_{:08x}_{:08x}.sav", _settings_game.game_creation.generation_seed, TimerGameCalendar::date);
 			SaveOrLoad(name, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
