@@ -260,7 +260,7 @@ static Money DrawYearCategory (const Rect &r, int start_y, ExpensesList list, co
  * @param tbl  Reference to table of amounts for \a year.
  * @note The environment must provide padding at the left and right of \a r.
  */
-static void DrawYearColumn(const Rect &r, int year, const Money (&tbl)[EXPENSES_END])
+static void DrawYearColumn(const Rect &r, TimerGameCalendar::Year year, const Money (&tbl)[EXPENSES_END])
 {
 	int y = r.top;
 	Money sum;
@@ -434,7 +434,7 @@ struct CompanyFinancesWindow : Window {
 			case WID_CF_EXPS_PRICE2:
 			case WID_CF_EXPS_PRICE3: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
-				int age = std::min(TimerGameCalendar::year - c->inaugurated_year, 2);
+				auto age = std::min(TimerGameCalendar::year - c->inaugurated_year, TimerGameCalendar::Year(2));
 				int wid_offset = widget - WID_CF_EXPS_PRICE1;
 				if (wid_offset <= age) {
 					DrawYearColumn(r, TimerGameCalendar::year - (age - wid_offset), c->yearly_expenses[age - wid_offset]);
