@@ -77,7 +77,7 @@ public:
 	/**
 	 * Implicit conversion to the uint for bounds checking.
 	 */
-	debug_inline constexpr operator uint() const { return tile; }
+	debug_inline constexpr operator uint() const { return static_cast<uint32_t>(tile); }
 
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
@@ -88,7 +88,7 @@ public:
 	 */
 	debug_inline byte &type()
 	{
-		return base_tiles[tile].type;
+		return base_tiles[static_cast<uint32_t>(tile)].type;
 	}
 
 	/**
@@ -100,7 +100,7 @@ public:
 	 */
 	debug_inline byte &height()
 	{
-		return base_tiles[tile].height;
+		return base_tiles[static_cast<uint32_t>(tile)].height;
 	}
 
 	/**
@@ -112,7 +112,7 @@ public:
 	 */
 	debug_inline byte &m1()
 	{
-		return base_tiles[tile].m1;
+		return base_tiles[static_cast<uint32_t>(tile)].m1;
 	}
 
 	/**
@@ -124,7 +124,7 @@ public:
 	 */
 	debug_inline uint16_t &m2()
 	{
-		return base_tiles[tile].m2;
+		return base_tiles[static_cast<uint32_t>(tile)].m2;
 	}
 
 	/**
@@ -136,7 +136,7 @@ public:
 	 */
 	debug_inline byte &m3()
 	{
-		return base_tiles[tile].m3;
+		return base_tiles[static_cast<uint32_t>(tile)].m3;
 	}
 
 	/**
@@ -148,7 +148,7 @@ public:
 	 */
 	debug_inline byte &m4()
 	{
-		return base_tiles[tile].m4;
+		return base_tiles[static_cast<uint32_t>(tile)].m4;
 	}
 
 	/**
@@ -160,7 +160,7 @@ public:
 	 */
 	debug_inline byte &m5()
 	{
-		return base_tiles[tile].m5;
+		return base_tiles[static_cast<uint32_t>(tile)].m5;
 	}
 
 	/**
@@ -172,7 +172,7 @@ public:
 	 */
 	debug_inline byte &m6()
 	{
-		return extended_tiles[tile].m6;
+		return extended_tiles[static_cast<uint32_t>(tile)].m6;
 	}
 
 	/**
@@ -184,7 +184,7 @@ public:
 	 */
 	debug_inline byte &m7()
 	{
-		return extended_tiles[tile].m7;
+		return extended_tiles[static_cast<uint32_t>(tile)].m7;
 	}
 
 	/**
@@ -196,7 +196,7 @@ public:
 	 */
 	debug_inline uint16_t &m8()
 	{
-		return extended_tiles[tile].m8;
+		return extended_tiles[static_cast<uint32_t>(tile)].m8;
 	}
 };
 
@@ -314,9 +314,9 @@ public:
 	 * It does this by masking the 'high' bits of.
 	 * @param tile the tile to 'wrap'
 	 */
-	static inline TileIndex WrapToMap(uint tile)
+	static inline TileIndex WrapToMap(TileIndex tile)
 	{
-		return tile & Map::tile_mask;
+		return static_cast<uint32_t>(tile) & Map::tile_mask;
 	}
 
 	/**

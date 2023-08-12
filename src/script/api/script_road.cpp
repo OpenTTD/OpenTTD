@@ -382,8 +382,8 @@ static bool NormaliseTileOffset(int32_t *tile)
 /* static */ SQInteger ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::Slope slope_, Array<> &&existing, TileIndex start_, TileIndex end_)
 {
 	::Slope slope = (::Slope)slope_;
-	int32_t start = start_;
-	int32_t end = end_;
+	int32_t start = static_cast<uint32_t>(start_);
+	int32_t end = static_cast<uint32_t>(end_);
 
 	/* The start tile and end tile cannot be the same tile either. */
 	if (start == end) return -1;

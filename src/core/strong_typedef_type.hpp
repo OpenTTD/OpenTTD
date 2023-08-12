@@ -133,33 +133,6 @@ namespace StrongType {
 	};
 
 	/**
-	 * Mix-in which makes the new Typedef implicitly convertible to its base type.
-	 *
-	 * Be careful: when allowing implicit conversion, you won't notice if this type is assigned to a compatible, but different, type.
-	 * For example:
-	 *
-	 *   StrongType::Typedef<int, struct MyTypeTag, Implicit> a = 1;
-	 *   StrongType::Typedef<int, struct MyTypeTag, Implicit> b = 2;
-	 *   a = b; // OK
-	 */
-	struct Implicit {
-		template <typename TType, typename TBaseType>
-		struct mixin {
-			constexpr operator TBaseType () const { return static_cast<const TType &>(*this).value; }
-		};
-	};
-
-	/**
-	 * Mix-in which makes the new Typedef explicitly convertible to its base type.
-	 */
-	struct Explicit {
-		template <typename TType, typename TBaseType>
-		struct mixin {
-			explicit constexpr operator TBaseType () const { return static_cast<const TType &>(*this).value; }
-		};
-	};
-
-	/**
 	 * Templated helper to make a type-safe 'typedef' representing a single POD value.
 	 * A normal 'typedef' is not distinct from its base type and will be treated as
 	 * identical in many contexts. This class provides a distinct type that can still
@@ -187,9 +160,10 @@ namespace StrongType {
 		constexpr Typedef &operator =(Typedef &&rhs) { this->value = std::move(rhs.value); return *this; }
 		constexpr Typedef &operator =(const TBaseType &rhs) { this->value = rhs; return *this; }
 
+		/* Only allow explicit conversions to BaseType. */
+		explicit constexpr operator TBaseType () const { return this->value; }
+
 		/* Only allow TProperties classes access to the internal value. Everyone else needs to do an explicit cast. */
-		friend struct Explicit;
-		friend struct Implicit;
 		friend struct Compare;
 		friend struct Integer;
 		template <typename TCompatibleType> friend struct Compatible;

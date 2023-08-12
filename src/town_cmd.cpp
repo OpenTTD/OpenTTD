@@ -2714,7 +2714,7 @@ static void DoClearTownHouseHelper(TileIndex tile, Town *t, HouseID house)
 	DoClearSquare(tile);
 	DeleteAnimatedTile(tile);
 
-	DeleteNewGRFInspectWindow(GSF_HOUSES, tile);
+	DeleteNewGRFInspectWindow(GSF_HOUSES, static_cast<uint32_t>(tile));
 }
 
 /**

@@ -284,6 +284,12 @@ public:
 	void CreateNestedTree(bool fill_nested = true);
 	void FinishInitNested(WindowNumber window_number = 0);
 
+	template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
+	void FinishInitNested(T number)
+	{
+		this->FinishInitNested(static_cast<typename T::BaseType>(number));
+	}
+
 	/**
 	 * Set the timeout flag of the window and initiate the timer.
 	 */
@@ -879,6 +885,12 @@ public:
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);
+
+template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
+Window *BringWindowToFrontById(WindowClass cls, T number)
+{
+	return BringWindowToFrontById(cls, static_cast<typename T::BaseType>(number));
+}
 
 /**
  * Open a new window.
