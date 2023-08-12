@@ -1286,7 +1286,7 @@ static const uint RIVER_HASH_SIZE = 8; ///< The number of bits the hash for rive
  * @param dir The unused direction.
  * @return The hash for the tile.
  */
-static uint River_Hash(uint tile, uint dir)
+static uint River_Hash(TileIndex tile, Trackdir dir)
 {
 	return GB(TileHash(TileX(tile), TileY(tile)), 0, RIVER_HASH_SIZE);
 }

@@ -132,20 +132,20 @@ static uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
 
 /**
  * Calculates a hash value for use in the NPF.
- * @param key1 The TileIndex of the tile to hash
- * @param key2 The Trackdir of the track on the tile.
+ * @param tile The TileIndex of the tile to hash
+ * @param dir The Trackdir of the track on the tile.
  *
  * @todo Think of a better hash.
  */
-static uint NPFHash(uint key1, uint key2)
+static uint NPFHash(TileIndex tile, Trackdir dir)
 {
 	/* TODO: think of a better hash? */
-	uint part1 = TileX(key1) & NPF_HASH_HALFMASK;
-	uint part2 = TileY(key1) & NPF_HASH_HALFMASK;
+	uint part1 = TileX(tile) & NPF_HASH_HALFMASK;
+	uint part2 = TileY(tile) & NPF_HASH_HALFMASK;
 
-	assert(IsValidTrackdir((Trackdir)key2));
-	assert(IsValidTile((TileIndex)key1));
-	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * key2 / TRACKDIR_END)) % NPF_HASH_SIZE;
+	assert(IsValidTrackdir(dir));
+	assert(IsValidTile(tile));
+	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * dir / TRACKDIR_END)) % NPF_HASH_SIZE;
 }
 
 static int32_t NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
