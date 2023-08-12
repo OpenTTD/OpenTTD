@@ -213,13 +213,11 @@ void DeleteWindowViewport(Window *w)
  * @param y Offset of top edge of viewport with respect to top edge window \a w
  * @param width Width of the viewport
  * @param height Height of the viewport
- * @param follow_flags Flags controlling the viewport.
- *        - If bit 31 is set, the lower 20 bits are the vehicle that the viewport should follow.
- *        - If bit 31 is clear, it is a #TileIndex.
+ * @param focus Either the tile index or vehicle ID to focus.
  * @param zoom Zoomlevel to display
  */
 void InitializeWindowViewport(Window *w, int x, int y,
-	int width, int height, uint32_t follow_flags, ZoomLevel zoom)
+	int width, int height, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom)
 {
 	assert(w->viewport == nullptr);
 
@@ -237,15 +235,15 @@ void InitializeWindowViewport(Window *w, int x, int y,
 
 	Point pt;
 
-	if (follow_flags & 0x80000000) {
+	if (std::holds_alternative<VehicleID>(focus)) {
 		const Vehicle *veh;
 
-		vp->follow_vehicle = (VehicleID)(follow_flags & 0xFFFFF);
+		vp->follow_vehicle = std::get<VehicleID>(focus);
 		veh = Vehicle::Get(vp->follow_vehicle);
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 	} else {
-		x = TileX(follow_flags) * TILE_SIZE;
-		y = TileY(follow_flags) * TILE_SIZE;
+		x = TileX(std::get<TileIndex>(focus)) * TILE_SIZE;
+		y = TileY(std::get<TileIndex>(focus)) * TILE_SIZE;
 
 		vp->follow_vehicle = INVALID_VEHICLE;
 		pt = MapXYZToViewport(vp, x, y, GetSlopePixelZ(x, y));

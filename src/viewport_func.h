@@ -15,13 +15,14 @@
 #include "window_type.h"
 #include "tile_map.h"
 #include "station_type.h"
+#include "vehicle_type.h"
 
 static const int TILE_HEIGHT_STEP = 50; ///< One Z unit tile height difference is displayed as 50m.
 
 void SetSelectionRed(bool);
 
 void DeleteWindowViewport(Window *w);
-void InitializeWindowViewport(Window *w, int x, int y, int width, int height, uint32_t follow_flags, ZoomLevel zoom);
+void InitializeWindowViewport(Window *w, int x, int y, int width, int height, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom);
 Viewport *IsPtInWindowViewport(const Window *w, int x, int y);
 Point TranslateXYToTileCoord(const Viewport *vp, int x, int y, bool clamp_to_map = true);
 Point GetTileBelowCursor();

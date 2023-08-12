@@ -2333,12 +2333,12 @@ void NWidgetViewport::Draw(const Window *w)
 /**
  * Initialize the viewport of the window.
  * @param w            Window owning the viewport.
- * @param follow_flags Type of viewport, see #InitializeWindowViewport().
+ * @param focus        Either the tile index or vehicle ID to focus.
  * @param zoom         Zoom level.
  */
-void NWidgetViewport::InitializeViewport(Window *w, uint32_t follow_flags, ZoomLevel zoom)
+void NWidgetViewport::InitializeViewport(Window *w, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom)
 {
-	InitializeWindowViewport(w, this->pos_x, this->pos_y, this->current_x, this->current_y, follow_flags, zoom);
+	InitializeWindowViewport(w, this->pos_x, this->pos_y, this->current_x, this->current_y, focus, zoom);
 }
 
 /**
