@@ -171,10 +171,10 @@ public:
 	static const uint MIN_TIMEOUT_DISTANCE = 32;
 
 	/** Number of days before deleting links served only by vehicles stopped in depot. */
-	static const uint STALE_LINK_DEPOT_TIMEOUT = 1024;
+	static constexpr TimerGameCalendar::Date STALE_LINK_DEPOT_TIMEOUT = 1024;
 
 	/** Minimum number of days between subsequent compressions of a LG. */
-	static const uint COMPRESSION_INTERVAL = 256;
+	static constexpr TimerGameCalendar::Date COMPRESSION_INTERVAL = 256;
 
 	/**
 	 * Scale a value from a link graph of age orig_age for usage in one of age
@@ -184,7 +184,7 @@ public:
 	 * @param orig_age Age of the original link graph.
 	 * @return scaled value.
 	 */
-	inline static uint Scale(uint val, uint target_age, uint orig_age)
+	inline static uint Scale(uint val, TimerGameCalendar::Date target_age, TimerGameCalendar::Date orig_age)
 	{
 		return val > 0 ? std::max(1U, val * target_age / orig_age) : 0;
 	}
@@ -198,7 +198,7 @@ public:
 	LinkGraph(CargoID cargo) : cargo(cargo), last_compression(TimerGameCalendar::date) {}
 
 	void Init(uint size);
-	void ShiftDates(int interval);
+	void ShiftDates(TimerGameCalendar::Date interval);
 	void Compress();
 	void Merge(LinkGraph *other);
 
