@@ -215,9 +215,21 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 		timer->Elapsed(TimerGameCalendar::DAY);
 	}
 
+	if ((TimerGameCalendar::date % 7) == 3) {
+		for (auto timer : timers) {
+			timer->Elapsed(TimerGameCalendar::WEEK);
+		}
+	}
+
 	if (new_month) {
 		for (auto timer : timers) {
 			timer->Elapsed(TimerGameCalendar::MONTH);
+		}
+
+		if ((TimerGameCalendar::month % 3) == 0) {
+			for (auto timer : timers) {
+				timer->Elapsed(TimerGameCalendar::QUARTER);
+			}
 		}
 	}
 

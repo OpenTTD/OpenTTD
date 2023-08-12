@@ -34,7 +34,9 @@ class TimerGameCalendar {
 public:
 	enum Trigger {
 		DAY,
+		WEEK,
 		MONTH,
+		QUARTER,
 		YEAR,
 	};
 	enum Priority {

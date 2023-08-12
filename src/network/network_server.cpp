@@ -1822,6 +1822,15 @@ static IntervalTimer<TimerGameCalendar> _network_yearly({TimerGameCalendar::YEAR
 	NetworkAdminUpdate(ADMIN_FREQUENCY_ANUALLY);
 });
 
+/** Quarterly "callback". Called whenever the quarter changes. */
+static IntervalTimer<TimerGameCalendar> _network_quarterly({TimerGameCalendar::QUARTER, TimerGameCalendar::Priority::NONE}, [](auto)
+{
+	if (!_network_server) return;
+
+	NetworkAutoCleanCompanies();
+	NetworkAdminUpdate(ADMIN_FREQUENCY_QUARTERLY);
+});
+
 /** Monthly "callback". Called whenever the month changes. */
 static IntervalTimer<TimerGameCalendar> _network_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto)
 {
@@ -1829,7 +1838,14 @@ static IntervalTimer<TimerGameCalendar> _network_monthly({TimerGameCalendar::MON
 
 	NetworkAutoCleanCompanies();
 	NetworkAdminUpdate(ADMIN_FREQUENCY_MONTHLY);
-	if ((TimerGameCalendar::month % 3) == 0) NetworkAdminUpdate(ADMIN_FREQUENCY_QUARTERLY);
+});
+
+/** Weekly "callback". Called whenever the week changes. */
+static IntervalTimer<TimerGameCalendar> _network_weekly({TimerGameCalendar::WEEK, TimerGameCalendar::Priority::NONE}, [](auto)
+{
+	if (!_network_server) return;
+
+	NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
 });
 
 /** Daily "callback". Called whenever the date changes. */
@@ -1838,7 +1854,6 @@ static IntervalTimer<TimerGameCalendar> _network_daily({TimerGameCalendar::DAY, 
 	if (!_network_server) return;
 
 	NetworkAdminUpdate(ADMIN_FREQUENCY_DAILY);
-	if ((TimerGameCalendar::date % 7) == 3) NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
 });
 
 /**
