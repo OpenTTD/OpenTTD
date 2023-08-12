@@ -987,7 +987,7 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_START_DATE_TEXT:
 				this->SetWidgetDirty(WID_GL_START_DATE_TEXT);
-				_settings_newgame.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
+				_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), MIN_YEAR, MAX_YEAR);
 				break;
 
 			case WID_GL_SNOW_COVERAGE_TEXT:
@@ -1258,7 +1258,7 @@ struct CreateScenarioWindow : public Window
 			switch (this->widget_id) {
 				case WID_CS_START_DATE_TEXT:
 					this->SetWidgetDirty(WID_CS_START_DATE_TEXT);
-					_settings_newgame.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
+					_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), MIN_YEAR, MAX_YEAR);
 					break;
 
 				case WID_CS_FLAT_LAND_HEIGHT_TEXT:
