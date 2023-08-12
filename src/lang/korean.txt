@@ -1190,7 +1190,7 @@ STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :사용자 지�
 STR_CITY_APPROVAL_LENIENT                                       :관대함
 STR_CITY_APPROVAL_TOLERANT                                      :신경 씀
 STR_CITY_APPROVAL_HOSTILE                                       :싫어함
-STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안씀 (회사 행동에 영향 없음)
+STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안 씀 (회사 행동에 영향 없음)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용할 수 있는 인공지능이 없습니다...{}'온라인 콘텐츠' 시스템을 통해 인공지능을 다운로드받을 수 있습니다.
 
@@ -1900,8 +1900,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :도시가 성�
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :도시가 회사 소유의 선로에 건널목을 만드는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :도시가 회사 소유의 선로에 건널목을 건설할 수 있도록 허용합니다
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :도시가 공항에서 나오는 소음을 제한하도록 함: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :이 설정을 끄면, 한 도시에는 공항을 2개까지 지을 수 있습니다. 이 설정을 켜면, 한 도시에 지을 수 있는 공항의 수는 도시가 허용 가능한 소음 기준에 따라 달라집니다. 소음 기준은 도시 인구, 공항의 크기와 거리에 따라 다릅니다.
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :소음 수준에 따라 공항 설치를 제한: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :도시의 인구와 공항 크기 및 거리에 따라 달라지는 도시의 소음 허용 수준에 따라, 도시가 공항 건설을 막을 수 있게 만듭니다. 이 설정을 끄면, 지역 당국의 태도 설정을 "신경 안 씀"으로 설정하지 않은 경우 한 도시에는 공항을 2개까지만 지을 수 있습니다.
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :게임 도중에 도시 건설: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :플레이어가 게임 중에 새로운 도시를 설립하는 것을 허용합니다.
