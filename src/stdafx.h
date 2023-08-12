@@ -80,6 +80,7 @@
 #include <stdexcept>
 #include <string>
 #include <type_traits>
+#include <variant>
 #include <vector>
 
 #if defined(UNIX) || defined(__MINGW32__)

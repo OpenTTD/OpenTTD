@@ -629,7 +629,7 @@ public:
 	void SetupSmallestSize(Window *w, bool init_array) override;
 	void Draw(const Window *w) override;
 
-	void InitializeViewport(Window *w, uint32_t follow_flags, ZoomLevel zoom);
+	void InitializeViewport(Window *w, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom);
 	void UpdateViewportCoordinates(Window *w);
 };
 
