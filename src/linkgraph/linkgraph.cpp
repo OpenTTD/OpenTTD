@@ -50,7 +50,7 @@ LinkGraph::BaseEdge::BaseEdge(NodeID dest_node)
  * This is useful if the date has been modified with the cheat menu.
  * @param interval Number of days to be added or subtracted.
  */
-void LinkGraph::ShiftDates(int interval)
+void LinkGraph::ShiftDates(TimerGameCalendar::Date interval)
 {
 	this->last_compression += interval;
 	for (NodeID node1 = 0; node1 < this->Size(); ++node1) {

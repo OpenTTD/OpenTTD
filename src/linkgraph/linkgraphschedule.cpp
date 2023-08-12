@@ -132,7 +132,7 @@ void LinkGraphSchedule::SpawnAll()
  * graph jobs by the number of days given.
  * @param interval Number of days to be added or subtracted.
  */
-void LinkGraphSchedule::ShiftDates(int interval)
+void LinkGraphSchedule::ShiftDates(TimerGameCalendar::Date interval)
 {
 	for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(interval);
 	for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) lgj->ShiftJoinDate(interval);

@@ -3806,8 +3806,8 @@ void DeleteStaleLinks(Station *from)
 			Station *to = Station::Get((*lg)[edge.dest_node].station);
 			assert(to->goods[c].node == edge.dest_node);
 			assert(TimerGameCalendar::date >= edge.LastUpdate());
-			uint timeout = LinkGraph::MIN_TIMEOUT_DISTANCE + (DistanceManhattan(from->xy, to->xy) >> 3);
-			if ((uint)(TimerGameCalendar::date - edge.LastUpdate()) > timeout) {
+			auto timeout = TimerGameCalendar::Date(LinkGraph::MIN_TIMEOUT_DISTANCE + (DistanceManhattan(from->xy, to->xy) >> 3));
+			if (TimerGameCalendar::date - edge.LastUpdate() > timeout) {
 				bool updated = false;
 
 				if (auto_distributed) {
@@ -3835,8 +3835,7 @@ void DeleteStaleLinks(Station *from)
 					while (iter != vehicles.end()) {
 						Vehicle *v = *iter;
 						/* Do not refresh links of vehicles that have been stopped in depot for a long time. */
-						if (!v->IsStoppedInDepot() || static_cast<uint>(TimerGameCalendar::date - v->date_of_last_service) <=
-								LinkGraph::STALE_LINK_DEPOT_TIMEOUT) {
+						if (!v->IsStoppedInDepot() || TimerGameCalendar::date - v->date_of_last_service <= LinkGraph::STALE_LINK_DEPOT_TIMEOUT) {
 							LinkRefresher::Run(v, false); // Don't allow merging. Otherwise lg might get deleted.
 						}
 						if (edge.LastUpdate() == TimerGameCalendar::date) {
@@ -3862,11 +3861,11 @@ void DeleteStaleLinks(Station *from)
 					ge.flows.DeleteFlows(to->index);
 					RerouteCargo(from, c, to->index, from->index);
 				}
-			} else if (edge.last_unrestricted_update != INVALID_DATE && (uint)(TimerGameCalendar::date - edge.last_unrestricted_update) > timeout) {
+			} else if (edge.last_unrestricted_update != INVALID_DATE && TimerGameCalendar::date - edge.last_unrestricted_update > timeout) {
 				edge.Restrict();
 				ge.flows.RestrictFlows(to->index);
 				RerouteCargo(from, c, to->index, from->index);
-			} else if (edge.last_restricted_update != INVALID_DATE && (uint)(TimerGameCalendar::date - edge.last_restricted_update) > timeout) {
+			} else if (edge.last_restricted_update != INVALID_DATE && TimerGameCalendar::date - edge.last_restricted_update > timeout) {
 				edge.Release();
 			}
 		}
@@ -3874,7 +3873,7 @@ void DeleteStaleLinks(Station *from)
 		for (NodeID r : to_remove) (*lg)[ge.node].RemoveEdge(r);
 
 		assert(TimerGameCalendar::date >= lg->LastCompression());
-		if ((uint)(TimerGameCalendar::date - lg->LastCompression()) > LinkGraph::COMPRESSION_INTERVAL) {
+		if (TimerGameCalendar::date - lg->LastCompression() > LinkGraph::COMPRESSION_INTERVAL) {
 			lg->Compress();
 		}
 	}

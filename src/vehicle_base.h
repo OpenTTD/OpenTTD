@@ -575,7 +575,7 @@ public:
 	 */
 	virtual void OnNewDay() {};
 
-	void ShiftDates(int interval);
+	void ShiftDates(TimerGameCalendar::Date interval);
 
 	/**
 	 * Crash the (whole) vehicle chain.

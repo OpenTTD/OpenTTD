@@ -759,7 +759,7 @@ uint32_t Vehicle::GetGRFID() const
  * This is useful if the date has been modified with the cheat menu.
  * @param interval Number of days to be added or substracted.
  */
-void Vehicle::ShiftDates(int interval)
+void Vehicle::ShiftDates(TimerGameCalendar::Date interval)
 {
 	this->date_of_last_service = std::max(this->date_of_last_service + interval, TimerGameCalendar::Date(0));
 	/* date_of_last_service_newgrf is not updated here as it must stay stable
