@@ -1900,8 +1900,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite cidades
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Permitir cidades construirem cruzamentos de nível: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Se ativado, permite as cidades construírem ruas que atravessam ferrovias
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir controle de ruído de aeronaves pelas cidades: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Se desativado, podem haver 2 aeroportos por cidade. Se ativado, o número de aeroportos é limitado pelo controle de ruído da cidade, que depende da população, tamanho e distância do aeroporto
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limitar a localização do aeroporto em função do nível de ruído: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Permitir que as localidades bloqueiem a construção de aeroportos em função da aceitação do nível de ruído, que é baseado no total de habitantes da localidade e no tamanho e distância do aeroporto. Se esta definição estiver desativada, as localidades permitirão apenas dois aeroportos, a menos que a atitude da autoridade local esteja definida como "Permissiva"
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundação de cidades no jogo: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Se ativado, permite jogadores construírem novas cidades
