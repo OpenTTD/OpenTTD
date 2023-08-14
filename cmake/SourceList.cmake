@@ -9,7 +9,17 @@ function(_add_files_tgt tgt)
     endif()
 
     foreach(FILE IN LISTS PARAM_FILES)
-        target_sources(openttd_lib PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${FILE})
+        # Some IDEs are not happy with duplicated filenames, so we detect that before adding the file.
+        get_target_property(${tgt}_FILES ${tgt} SOURCES)
+        if(${tgt}_FILES MATCHES "/${FILE}(;|$)")
+            string(REGEX REPLACE "(^|.+;)([^;]+/${FILE})(;.+|$)" "\\2" RES "${${tgt}_FILES}")
+            # Ignore header files duplicates in 3rdparty.
+            if(NOT (${FILE} MATCHES "\.h" AND (${RES} MATCHES "3rdparty" OR ${CMAKE_CURRENT_SOURCE_DIR} MATCHES "3rdparty")))
+                message(FATAL_ERROR "${tgt}: ${CMAKE_CURRENT_SOURCE_DIR}/${FILE} filename is a duplicate of ${RES}")
+            endif()
+        endif()
+
+        target_sources(${tgt} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${FILE})
     endforeach()
 endfunction()
 
