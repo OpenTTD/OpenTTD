@@ -1,0 +1,42 @@
+name: No duplicate filenames
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  no-duplicate-filenames:
+    name: No duplicate filenames
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Check if there are files with a duplicate name
+      shell: bash
+      run: |
+        duplicates=$(find src -type d \( -name 'tests' -o -name '3rdparty' \) -prune -o -type f -print \
+          | sed 's#.*/##' \
+          | grep -v 'CMakeLists.txt' \
+          | sort \
+          | uniq -d)
+        if [[ "$duplicates" ]]; then
+          echo -e "Duplicate file names found:\n$duplicates" >&2;
+          exit 1;
+        fi
+
+    - name: Check if there are test files with a duplicate name
+      shell: bash
+      run: |
+        duplicates=$(find src/tests -type f -print \
+            | sed 's#.*/##' \
+            | sort \
+            | uniq -d)
+        if [[ "$duplicates" ]]; then
+          echo -e "Duplicate file names found:\n$duplicates" >&2;
+          exit 1;
+        fi
