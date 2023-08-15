@@ -649,7 +649,7 @@ uint16_t GetStationCallback(CallbackID callback, uint32_t param1, uint32_t param
  */
 CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, byte plat_len, byte numtracks)
 {
-	TileIndexDiff diff = cur_tile - north_tile;
+	TileIndex diff = cur_tile - north_tile;
 	Slope slope = GetTileSlope(cur_tile);
 
 	StationResolverObject object(statspec, nullptr, cur_tile, CBID_STATION_LAND_SLOPE_CHECK,

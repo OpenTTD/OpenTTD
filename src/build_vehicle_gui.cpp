@@ -1177,7 +1177,7 @@ struct BuildVehicleWindow : Window {
 	{
 		this->vehicle_type = type;
 		this->listview_mode = tile == INVALID_TILE;
-		this->window_number = this->listview_mode ? (int)type : (int)tile;
+		this->window_number = this->listview_mode ? (int)type : static_cast<uint32_t>(tile);
 
 		this->sel_engine = INVALID_ENGINE;
 
@@ -1212,7 +1212,11 @@ struct BuildVehicleWindow : Window {
 
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9);
 
-		this->FinishInitNested(tile == INVALID_TILE ? (int)type : (int)tile);
+		if (tile == INVALID_TILE) {
+			this->FinishInitNested(type);
+		} else {
+			this->FinishInitNested(tile);
+		}
 
 		this->querystrings[WID_BV_FILTER] = &this->vehicle_editbox;
 		this->vehicle_editbox.cancel_button = QueryString::ACTION_CLEAR;
@@ -1891,7 +1895,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 	 *  so if tile == INVALID_TILE (Available XXX Window), use 'type' as unique number.
 	 *  As it always is a low value, it won't collide with any real tile
 	 *  number. */
-	uint num = (tile == INVALID_TILE) ? (int)type : (int)tile;
+	uint num = (tile == INVALID_TILE) ? (int)type : static_cast<uint32_t>(tile);
 
 	assert(IsCompanyBuildableVehicleType(type));
 

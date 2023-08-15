@@ -78,13 +78,13 @@ public:
 	};
 
 	/** The type to store our dates in. */
-	using Date = StrongType::Typedef<int32_t, struct DateTag, StrongType::Explicit, StrongType::Compare, StrongType::Integer>;
+	using Date = StrongType::Typedef<int32_t, struct DateTag, StrongType::Compare, StrongType::Integer>;
 
 	/** The fraction of a date we're in, i.e. the number of ticks since the last date changeover. */
 	using DateFract = uint16_t;
 
 	/** Type for the year, note: 0 based, i.e. starts at the year 0. */
-	using Year = StrongType::Typedef<int32_t, struct YearTag, StrongType::Explicit, StrongType::Compare, StrongType::Integer>;
+	using Year = StrongType::Typedef<int32_t, struct YearTag, StrongType::Compare, StrongType::Integer>;
 	/** Type for the month, note: 0 based, i.e. 0 = January, 11 = December. */
 	using Month = uint8_t;
 	/** Type for the day of the month, note: 1 based, first day of a month is 1. */

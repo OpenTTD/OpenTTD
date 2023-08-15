@@ -19,7 +19,7 @@
  */
 class ScriptMap : public ScriptObject {
 public:
-	static const int TILE_INVALID = (int)INVALID_TILE; ///< Invalid TileIndex.
+	static const int TILE_INVALID = static_cast<uint32_t>(INVALID_TILE); ///< Invalid TileIndex.
 
 	/**
 	 * Checks whether the given tile is valid.

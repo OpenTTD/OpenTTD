@@ -305,7 +305,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte local_id, uint32_t grf
 	switch (variable) {
 		/* Relative position. */
 		case 0x40: {
-			uint offset = this->tile - this->obj->location.tile;
+			TileIndex offset = this->tile - this->obj->location.tile;
 			uint offset_x = TileX(offset);
 			uint offset_y = TileY(offset);
 			return offset_y << 20 | offset_x << 16 | offset_y << 8 | offset_x;

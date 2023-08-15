@@ -84,7 +84,7 @@ enum TropicZone {
  *
  * It is compatible with int32 / int64 for easy math throughout the code.
  */
-using TileIndex = StrongType::Typedef<uint32_t, struct TileIndexTag, StrongType::Implicit, StrongType::Compare, StrongType::Integer, StrongType::Compatible<int32_t>, StrongType::Compatible<int64_t>>;
+using TileIndex = StrongType::Typedef<uint32_t, struct TileIndexTag, StrongType::Compare, StrongType::Integer, StrongType::Compatible<int32_t>, StrongType::Compatible<int64_t>>;
 
 /* Make sure the size is as expected. */
 static_assert(sizeof(TileIndex) == 4);

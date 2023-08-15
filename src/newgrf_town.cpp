@@ -43,7 +43,7 @@
 		}
 
 		/* Town properties */
-		case 0x80: return this->t->xy;
+		case 0x80: return static_cast<uint32_t>(this->t->xy);
 		case 0x81: return GB(static_cast<uint32_t>(this->t->xy), 8, 8);
 		case 0x82: return ClampTo<uint16_t>(this->t->cache.population);
 		case 0x83: return GB(ClampTo<uint16_t>(this->t->cache.population), 8, 8);

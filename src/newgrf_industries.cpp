@@ -162,7 +162,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 		/* Variables available during construction check. */
 
 		switch (variable) {
-			case 0x80: return this->tile;
+			case 0x80: return static_cast<uint32_t>(this->tile);
 			case 0x81: return GB(static_cast<uint32_t>(this->tile), 8, 8);
 
 			/* Pointer to the town the industry is associated with */
@@ -347,7 +347,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 		case 0x7C: return (this->industry->psa != nullptr) ? this->industry->psa->GetValue(parameter) : 0;
 
 		/* Industry structure access*/
-		case 0x80: return this->industry->location.tile;
+		case 0x80: return static_cast<uint32_t>(this->industry->location.tile);
 		case 0x81: return GB(static_cast<uint32_t>(this->industry->location.tile), 8, 8);
 		/* Pointer to the town the industry is associated with */
 		case 0x82: return this->industry->town->index;
