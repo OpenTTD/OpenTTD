@@ -1835,7 +1835,7 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		SetDParam(0, rti->strings.menu_text);
-		SetDParam(1, rti->max_speed);
+		SetDParam(1, rti->max_speed / 2);
 		if (for_replacement) {
 			list.emplace_back(new DropDownListStringItem(rti->strings.replace_text, rt, !HasBit(avail_roadtypes, rt)));
 		} else {
@@ -1879,7 +1879,7 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		SetDParam(0, rti->strings.menu_text);
-		SetDParam(1, rti->max_speed);
+		SetDParam(1, rti->max_speed / 2);
 		StringID str = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
 		DropDownListIconItem *item = new DropDownListIconItem(rti->gui_sprites.build_x_road, PAL_NONE, str, rt, !HasBit(avail_roadtypes, rt));
 		item->SetDimension(d);
