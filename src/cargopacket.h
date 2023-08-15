@@ -46,17 +46,17 @@ static_assert(sizeof(TileIndex) == sizeof(StationID_32bit));
  */
 struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 private:
-	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo.
 	uint16_t count;           ///< The amount of cargo in this packet.
 	uint16_t periods_in_transit; ///< Amount of cargo aging periods this packet has been in transit.
-	SourceType source_type; ///< Type of \c source_id.
-	SourceID source_id;     ///< Index of source, INVALID_SOURCE if unknown/invalid.
-	StationID source;       ///< The station where the cargo came from first.
+	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo.
 	TileIndex source_xy;    ///< The origin of the cargo (first station in feeder chain).
 	union {
 		TileIndex loaded_at_xy;       ///< Location where this cargo has been loaded into the vehicle.
 		StationID_32bit next_station; ///< Station where the cargo wants to go next.
 	};
+	SourceID source_id;     ///< Index of source, INVALID_SOURCE if unknown/invalid.
+	StationID source;       ///< The station where the cargo came from first.
+	SourceType source_type; ///< Type of \c source_id.
 
 	/** The CargoList caches, thus needs to know about it. */
 	template <class Tinst, class Tcont> friend class CargoList;
