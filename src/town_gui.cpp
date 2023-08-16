@@ -711,12 +711,29 @@ private:
 	}
 
 	/** Sort by population (default descending, as big towns are of the most interest). */
-	static bool TownPopulationSorter(const Town * const &a, const Town * const &b)
+	static bool TownPopulationSorter(const Town* const& a, const Town* const& b)
 	{
 		uint32 a_population = a->cache.population;
 		uint32 b_population = b->cache.population;
 		if (a_population == b_population) return TownDirectoryWindow::TownNameSorter(a, b);
 		return a_population < b_population;
+	}
+
+	/** Sort by growth (default descending, as high growth towns are of the most interest). */
+	static bool TownGrowthSorter(const Town* const& a, const Town* const& b)
+	{
+		uint32 a_growth = std::numeric_limits<int>::max();
+		if (HasBit(a->flags, TOWN_IS_GROWING)) {
+			a_growth = a->growth_rate;
+		}
+
+		uint32 b_growth = std::numeric_limits<int>::max();
+		if (HasBit(b->flags, TOWN_IS_GROWING)) {
+			b_growth = b->growth_rate;
+		}
+		if (a_growth == b_growth) return TownDirectoryWindow::TownNameSorter(a, b);
+
+		return a_growth < b_growth;
 	}
 
 	/** Sort by town rating */
@@ -985,6 +1002,7 @@ const StringID TownDirectoryWindow::sorter_names[] = {
 	STR_SORT_BY_NAME,
 	STR_SORT_BY_POPULATION,
 	STR_SORT_BY_RATING,
+	STR_SORT_BY_GROWTH,
 	INVALID_STRING_ID
 };
 
@@ -993,6 +1011,7 @@ GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
 	&TownNameSorter,
 	&TownPopulationSorter,
 	&TownRatingSorter,
+	&TownGrowthSorter
 };
 
 static WindowDesc _town_directory_desc(
