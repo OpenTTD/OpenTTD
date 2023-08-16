@@ -17,7 +17,6 @@
 #include "economy_func.h"
 #include "slope_type.h"
 #include "strings_type.h"
-#include "date_type.h"
 #include "timer/timer_game_calendar.h"
 #include "signal_type.h"
 #include "settings_type.h"

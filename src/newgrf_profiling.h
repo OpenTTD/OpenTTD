@@ -11,7 +11,6 @@
 #define NEWGRF_PROFILING_H
 
 #include "stdafx.h"
-#include "date_type.h"
 #include "timer/timer_game_calendar.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"

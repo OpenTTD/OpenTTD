@@ -11,7 +11,6 @@
 #define NEWGRF_AIRPORT_H
 
 #include "airport.h"
-#include "date_type.h"
 #include "timer/timer_game_calendar.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"

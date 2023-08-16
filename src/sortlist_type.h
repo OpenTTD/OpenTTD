@@ -13,7 +13,6 @@
 #include "core/enum_type.hpp"
 #include "core/bitmath_func.hpp"
 #include "core/mem_func.hpp"
-#include "date_type.h"
 #include "timer/timer_game_tick.h"
 
 /** Flags of the sort list. */

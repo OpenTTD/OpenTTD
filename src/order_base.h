@@ -18,7 +18,6 @@
 #include "station_type.h"
 #include "vehicle_type.h"
 #include "timer/timer_game_tick.h"
-#include "date_type.h"
 #include "saveload/saveload.h"
 
 typedef Pool<Order, OrderID, 256, 0xFF0000> OrderPool;

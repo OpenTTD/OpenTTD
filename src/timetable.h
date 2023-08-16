@@ -11,7 +11,6 @@
 #define TIMETABLE_H
 
 #include "timer/timer_game_tick.h"
-#include "date_type.h"
 #include "timer/timer_game_calendar.h"
 #include "vehicle_type.h"
 

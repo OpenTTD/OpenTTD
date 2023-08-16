@@ -13,7 +13,6 @@
 #include "window_func.h"
 #include "window_gui.h"
 #include "date_gui.h"
-#include "date_type.h"
 #include "core/geometry_func.hpp"
 
 #include "widgets/dropdown_type.h"
