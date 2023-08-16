@@ -18,6 +18,7 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "company_func.h"
+#include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 #include "date_gui.h"
 #include "vehicle_gui.h"
@@ -34,8 +35,8 @@
 
 /** Container for the arrival/departure dates of a vehicle */
 struct TimetableArrivalDeparture {
-	Ticks arrival;   ///< The arrival time
-	Ticks departure; ///< The departure time
+	TimerGameTick::Ticks arrival;   ///< The arrival time
+	TimerGameTick::Ticks departure; ///< The departure time
 };
 
 /**
@@ -44,14 +45,14 @@ struct TimetableArrivalDeparture {
  * @param param2 the second DParam to fill
  * @param ticks  the number of ticks to 'draw'
  */
-void SetTimetableParams(int param1, int param2, Ticks ticks)
+void SetTimetableParams(int param1, int param2, TimerGameTick::Ticks ticks)
 {
 	if (_settings_client.gui.timetable_in_ticks) {
 		SetDParam(param1, STR_TIMETABLE_TICKS);
 		SetDParam(param2, ticks);
 	} else {
 		SetDParam(param1, STR_TIMETABLE_DAYS);
-		SetDParam(param2, ticks / DAY_TICKS);
+		SetDParam(param2, ticks / Ticks::DAY_TICKS);
 	}
 }
 
@@ -85,7 +86,7 @@ static bool CanDetermineTimeTaken(const Order *order, bool travelling)
  * @param table Fill in arrival and departures including intermediate orders
  * @param offset Add this value to result and all arrivals and departures
  */
-static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID start, bool travelling, std::vector<TimetableArrivalDeparture> &table, Ticks offset)
+static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID start, bool travelling, std::vector<TimetableArrivalDeparture> &table, TimerGameTick::Ticks offset)
 {
 	assert(!table.empty());
 	assert(v->GetNumOrders() >= 2);
@@ -93,10 +94,10 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
 
 	/* Pre-initialize with unknown time */
 	for (int i = 0; i < v->GetNumOrders(); ++i) {
-		table[i].arrival = table[i].departure = INVALID_TICKS;
+		table[i].arrival = table[i].departure = Ticks::INVALID_TICKS;
 	}
 
-	Ticks sum = offset;
+	TimerGameTick::Ticks sum = offset;
 	VehicleOrderID i = start;
 	const Order *order = v->GetOrder(i);
 
@@ -182,7 +183,7 @@ struct TimetableWindow : Window {
 		assert(HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED));
 
 		bool travelling = (!v->current_order.IsType(OT_LOADING) || v->current_order.GetNonStopType() == ONSF_STOP_EVERYWHERE);
-		Ticks start_time = TimerGameCalendar::date_fract - v->current_order_time;
+		TimerGameTick::Ticks start_time = TimerGameCalendar::date_fract - v->current_order_time;
 
 		FillTimetableArrivalDepartureTable(v, v->cur_real_order_index % v->GetNumOrders(), travelling, table, start_time);
 
@@ -425,7 +426,7 @@ struct TimetableWindow : Window {
 		/* Arrival and departure times are handled in an all-or-nothing approach,
 		 * i.e. are only shown if we can calculate all times.
 		 * Excluding order lists with only one order makes some things easier. */
-		Ticks total_time = v->orders != nullptr ? v->orders->GetTimetableDurationIncomplete() : 0;
+		TimerGameTick::Ticks total_time = v->orders != nullptr ? v->orders->GetTimetableDurationIncomplete() : 0;
 		if (total_time <= 0 || v->GetNumOrders() <= 1 || !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;
 
 		std::vector<TimetableArrivalDeparture> arr_dep(v->GetNumOrders());
@@ -435,8 +436,8 @@ struct TimetableWindow : Window {
 		int selected = this->sel_index;
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-		bool show_late = this->show_expected && v->lateness_counter > DAY_TICKS;
-		Ticks offset = show_late ? 0 : -v->lateness_counter;
+		bool show_late = this->show_expected && v->lateness_counter > Ticks::DAY_TICKS;
+		TimerGameTick::Ticks offset = show_late ? 0 : -v->lateness_counter;
 
 		for (int i = this->vscroll->GetPosition(); i / 2 < v->GetNumOrders(); ++i) { // note: i is also incremented in the loop
 			/* Don't draw anything if it extends past the end of the window. */
@@ -446,9 +447,9 @@ struct TimetableWindow : Window {
 			SetDParam(0, show_late ? TC_RED : TC_INVALID);
 			if (i % 2 == 0) {
 				/* Draw an arrival time. */
-				if (arr_dep[i / 2].arrival != INVALID_TICKS) {
+				if (arr_dep[i / 2].arrival != Ticks::INVALID_TICKS) {
 					/* First set the offset and text colour based on the expected/scheduled mode and some other things. */
-					Ticks this_offset;
+					TimerGameTick::Ticks this_offset;
 					if (this->show_expected && i / 2 == earlyID) {
 						/* Show expected arrival. */
 						this_offset = 0;
@@ -459,13 +460,13 @@ struct TimetableWindow : Window {
 					}
 
 					/* Now actually draw the arrival time. */
-					SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].arrival + this_offset) / DAY_TICKS);
+					SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].arrival + this_offset) / Ticks::DAY_TICKS);
 					DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_ARRIVAL, i == selected ? TC_WHITE : TC_BLACK);
 				}
 			} else {
 				/* Draw a departure time. */
-				if (arr_dep[i / 2].departure != INVALID_TICKS) {
-					SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].departure + offset) / DAY_TICKS);
+				if (arr_dep[i / 2].departure != Ticks::INVALID_TICKS) {
+					SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].departure + offset) / Ticks::DAY_TICKS);
 					DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE, i == selected ? TC_WHITE : TC_BLACK);
 				}
 			}
@@ -482,7 +483,7 @@ struct TimetableWindow : Window {
 		const Vehicle *v = this->vehicle;
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
-		Ticks total_time = v->orders != nullptr ? v->orders->GetTimetableDurationIncomplete() : 0;
+		TimerGameTick::Ticks total_time = v->orders != nullptr ? v->orders->GetTimetableDurationIncomplete() : 0;
 		if (total_time != 0) {
 			SetTimetableParams(0, 1, total_time);
 			DrawString(tr, v->orders->IsCompleteTimetable() ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE);
@@ -499,7 +500,7 @@ struct TimetableWindow : Window {
 			/* We aren't running on a timetable yet, so how can we be "on time"
 			 * when we aren't even "on service"/"on duty"? */
 			DrawString(tr, STR_TIMETABLE_STATUS_NOT_STARTED);
-		} else if (v->lateness_counter == 0 || (!_settings_client.gui.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
+		} else if (v->lateness_counter == 0 || (!_settings_client.gui.timetable_in_ticks && v->lateness_counter / Ticks::DAY_TICKS == 0)) {
 			DrawString(tr, STR_TIMETABLE_STATUS_ON_TIME);
 		} else {
 			SetTimetableParams(0, 1, abs(v->lateness_counter));
@@ -570,7 +571,7 @@ struct TimetableWindow : Window {
 
 				if (order != nullptr) {
 					uint time = (selected % 2 != 0) ? order->GetTravelTime() : order->GetWaitTime();
-					if (!_settings_client.gui.timetable_in_ticks) time /= DAY_TICKS;
+					if (!_settings_client.gui.timetable_in_ticks) time /= Ticks::DAY_TICKS;
 
 					if (time != 0) {
 						SetDParam(0, time);
@@ -666,7 +667,7 @@ struct TimetableWindow : Window {
 			}
 
 			case WID_VT_CHANGE_TIME:
-				if (!_settings_client.gui.timetable_in_ticks) val *= DAY_TICKS;
+				if (!_settings_client.gui.timetable_in_ticks) val *= Ticks::DAY_TICKS;
 
 				if (this->change_timetable_all) {
 					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, ClampTo<uint16_t>(val));

@@ -918,7 +918,7 @@ static void RunVehicleDayProc()
 	if (_game_mode != GM_NORMAL) return;
 
 	/* Run the day_proc for every DAY_TICKS vehicle starting at TimerGameCalendar::date_fract. */
-	for (size_t i = TimerGameCalendar::date_fract; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
+	for (size_t i = TimerGameCalendar::date_fract; i < Vehicle::GetPoolSize(); i += Ticks::DAY_TICKS) {
 		Vehicle *v = Vehicle::Get(i);
 		if (v == nullptr) continue;
 
@@ -2108,7 +2108,7 @@ void Vehicle::BeginLoading()
 {
 	assert(IsTileType(this->tile, MP_STATION) || this->type == VEH_SHIP);
 
-	Ticks travel_time = TimerGameTick::counter - this->last_loading_tick;
+	TimerGameTick::Ticks travel_time = TimerGameTick::counter - this->last_loading_tick;
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
 			this->current_order.GetDestination() == this->last_station_visited) {
 		this->DeleteUnreachedImplicitOrders();

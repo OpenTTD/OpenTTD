@@ -12,6 +12,7 @@
 
 #include "viewport_type.h"
 #include "date_type.h"
+#include "timer/timer_game_tick.h"
 #include "town_map.h"
 #include "subsidy_type.h"
 #include "newgrf_storage.h"
@@ -305,7 +306,7 @@ void MakeDefaultName(T *obj)
  * tick 0 is a valid tick so actual amount is one more than the counter value.
  */
 static inline uint16_t TownTicksToGameTicks(uint16_t ticks) {
-	return (std::min(ticks, MAX_TOWN_GROWTH_TICKS) + 1) * TOWN_GROWTH_TICKS - 1;
+	return (std::min(ticks, MAX_TOWN_GROWTH_TICKS) + 1) * Ticks::TOWN_GROWTH_TICKS - 1;
 }
 
 

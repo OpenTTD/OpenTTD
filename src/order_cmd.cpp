@@ -619,8 +619,8 @@ void OrderList::DebugCheckSanity() const
 	VehicleOrderID check_num_orders = 0;
 	VehicleOrderID check_num_manual_orders = 0;
 	uint check_num_vehicles = 0;
-	Ticks check_timetable_duration = 0;
-	Ticks check_total_duration = 0;
+	TimerGameTick::Ticks check_timetable_duration = 0;
+	TimerGameTick::Ticks check_total_duration = 0;
 
 	Debug(misc, 6, "Checking OrderList {} for sanity...", this->index);
 

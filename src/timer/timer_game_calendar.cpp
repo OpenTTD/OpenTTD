@@ -151,7 +151,7 @@ static const uint16_t _accum_days_for_month[] = {
  */
 /* static */ void TimerGameCalendar::SetDate(TimerGameCalendar::Date date, TimerGameCalendar::DateFract fract)
 {
-	assert(fract < DAY_TICKS);
+	assert(fract < Ticks::DAY_TICKS);
 
 	YearMonthDay ymd;
 
@@ -189,7 +189,7 @@ void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
 	if (_game_mode == GM_MENU) return;
 
 	TimerGameCalendar::date_fract++;
-	if (TimerGameCalendar::date_fract < DAY_TICKS) return;
+	if (TimerGameCalendar::date_fract < Ticks::DAY_TICKS) return;
 	TimerGameCalendar::date_fract = 0;
 
 	/* increase day counter */

@@ -453,7 +453,7 @@ public:
 		}
 
 		if (HasBit(this->town->flags, TOWN_IS_GROWING)) {
-			SetDParam(0, RoundDivSU(this->town->growth_rate + 1, DAY_TICKS));
+			SetDParam(0, RoundDivSU(this->town->growth_rate + 1, Ticks::DAY_TICKS));
 			DrawString(tr, this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY : STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED);
 			tr.top += FONT_HEIGHT_NORMAL;
 		} else {

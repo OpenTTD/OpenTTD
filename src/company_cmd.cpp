@@ -659,7 +659,7 @@ static void HandleBankruptcyTakeover(Company *c)
 	 * number of companies. The minimum number of days in a quarter
 	 * is 90: 31 in January, 28 in February and 31 in March.
 	 * Note that the company going bankrupt can't buy itself. */
-	static const int TAKE_OVER_TIMEOUT = 3 * 30 * DAY_TICKS / (MAX_COMPANIES - 1);
+	static const int TAKE_OVER_TIMEOUT = 3 * 30 * Ticks::DAY_TICKS / (MAX_COMPANIES - 1);
 
 	assert(c->bankrupt_asked != 0);
 
@@ -717,7 +717,7 @@ void OnTick_Companies()
 	}
 
 	if (_new_competitor_timeout.HasFired() && _game_mode != GM_MENU && AI::CanStartNew()) {
-		int32_t timeout = _settings_game.difficulty.competitors_interval * 60 * TICKS_PER_SECOND;
+		int32_t timeout = _settings_game.difficulty.competitors_interval * 60 * Ticks::TICKS_PER_SECOND;
 		/* If the interval is zero, start as many competitors as needed then check every ~10 minutes if a company went bankrupt and needs replacing. */
 		if (timeout == 0) {
 			/* count number of competitors */
@@ -731,7 +731,7 @@ void OnTick_Companies()
 				if (n++ >= _settings_game.difficulty.max_no_competitors) break;
 				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
 			}
-			timeout = 10 * 60 * TICKS_PER_SECOND;
+			timeout = 10 * 60 * Ticks::TICKS_PER_SECOND;
 		}
 		/* Randomize a bit when the AI is actually going to start; ranges from 87.5% .. 112.5% of indicated value. */
 		timeout += ScriptObject::GetRandomizer(OWNER_NONE).Next(timeout / 4) - timeout / 8;

@@ -12,6 +12,7 @@
 #include "../window_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
+#include "../timer/timer_game_tick.h"
 #include "../timer/timer_game_calendar.h"
 #include "../viewport_func.h"
 #include "../zoom_func.h"
@@ -221,7 +222,7 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 			ConstEdge &edge = lg[ge.node][to->goods[c].node];
 			this->AddStats(c, lg.Monthly(edge.capacity), lg.Monthly(edge.usage),
 					ge.flows.GetFlowVia(to->index),
-					edge.TravelTime() / DAY_TICKS,
+					edge.TravelTime() / Ticks::DAY_TICKS,
 					from->owner == OWNER_NONE || to->owner == OWNER_NONE,
 					this->cached_links[from->index][to->index]);
 		}

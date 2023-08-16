@@ -727,7 +727,7 @@ bool AfterLoadGame()
 	}
 
 	/* The value of TimerGameCalendar::date_fract got divided, so make sure that old games are converted correctly. */
-	if (IsSavegameVersionBefore(SLV_11, 1) || (IsSavegameVersionBefore(SLV_147) && TimerGameCalendar::date_fract > DAY_TICKS)) TimerGameCalendar::date_fract /= 885;
+	if (IsSavegameVersionBefore(SLV_11, 1) || (IsSavegameVersionBefore(SLV_147) && TimerGameCalendar::date_fract > Ticks::DAY_TICKS)) TimerGameCalendar::date_fract /= 885;
 
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */
@@ -2999,7 +2999,7 @@ bool AfterLoadGame()
 				t->growth_rate = TownTicksToGameTicks(t->growth_rate & ~0x8000);
 			}
 			/* Add t->index % TOWN_GROWTH_TICKS to spread growth across ticks. */
-			t->grow_counter = TownTicksToGameTicks(t->grow_counter) + t->index % TOWN_GROWTH_TICKS;
+			t->grow_counter = TownTicksToGameTicks(t->grow_counter) + t->index % Ticks::TOWN_GROWTH_TICKS;
 		}
 	}
 

@@ -14,6 +14,7 @@
 #include "core/bitmath_func.hpp"
 #include "core/mem_func.hpp"
 #include "date_type.h"
+#include "timer/timer_game_tick.h"
 
 /** Flags of the sort list. */
 enum SortListFlags {
@@ -72,7 +73,7 @@ protected:
 	void ResetResortTimer()
 	{
 		/* Resort every 10 days */
-		this->resort_timer = DAY_TICKS * 10;
+		this->resort_timer = Ticks::DAY_TICKS * 10;
 	}
 
 public:

@@ -22,6 +22,7 @@
 #include "currency.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 #include "zoom_func.h"
 
@@ -1130,7 +1131,7 @@ struct PerformanceRatingDetailWindow : Window {
 			UpdateCompanyRatingAndValue(c, false);
 		}
 
-		this->timeout = DAY_TICKS * 5;
+		this->timeout = Ticks::DAY_TICKS * 5;
 	}
 
 	uint score_info_left;

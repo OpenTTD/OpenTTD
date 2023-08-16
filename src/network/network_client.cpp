@@ -20,6 +20,7 @@
 #include "../company_gui.h"
 #include "../company_cmd.h"
 #include "../core/random_func.hpp"
+#include "../timer/timer_game_tick.h"
 #include "../timer/timer_game_calendar.h"
 #include "../gfx_func.h"
 #include "../error.h"
@@ -876,7 +877,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FRAME(Packet *p
 	/* Let the server know that we received this frame correctly
 	 *  We do this only once per day, to save some bandwidth ;) */
 	if (!_network_first_time && last_ack_frame < _frame_counter) {
-		last_ack_frame = _frame_counter + DAY_TICKS;
+		last_ack_frame = _frame_counter + Ticks::DAY_TICKS;
 		Debug(net, 7, "Sent ACK at {}", _frame_counter);
 		SendAck();
 	}

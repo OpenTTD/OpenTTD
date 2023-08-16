@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "command_func.h"
 #include "company_func.h"
+#include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 #include "window_func.h"
 #include "vehicle_base.h"
@@ -307,7 +308,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 	if (start_date - TimerGameCalendar::date > DateAtStartOfYear(MAX_TIMETABLE_START_YEARS)) return CMD_ERROR;
 	if (TimerGameCalendar::date - start_date > DAYS_IN_LEAP_YEAR) return CMD_ERROR;
 	if (timetable_all && !v->orders->IsCompleteTimetable()) return CommandCost(STR_ERROR_TIMETABLE_INCOMPLETE);
-	if (timetable_all && start_date + total_duration / DAY_TICKS > MAX_DATE) return CMD_ERROR;
+	if (timetable_all && start_date + total_duration / Ticks::DAY_TICKS > MAX_DATE) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		std::vector<Vehicle *> vehs;
@@ -333,7 +334,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 			w->lateness_counter = 0;
 			ClrBit(w->vehicle_flags, VF_TIMETABLE_STARTED);
 			/* Do multiplication, then division to reduce rounding errors. */
-			w->timetable_start = start_date + idx * total_duration / num_vehs / DAY_TICKS;
+			w->timetable_start = start_date + idx * total_duration / num_vehs / Ticks::DAY_TICKS;
 			SetWindowDirty(WC_VEHICLE_TIMETABLE, w->index);
 			++idx;
 		}
@@ -426,7 +427,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		just_started = !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
 
 		if (v->timetable_start != 0) {
-			v->lateness_counter = static_cast<int32_t>(TimerGameCalendar::date - v->timetable_start) * DAY_TICKS + TimerGameCalendar::date_fract;
+			v->lateness_counter = static_cast<int32_t>(TimerGameCalendar::date - v->timetable_start) * Ticks::DAY_TICKS + TimerGameCalendar::date_fract;
 			v->timetable_start = 0;
 		}
 
@@ -460,7 +461,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		 * the timetable entry like is done for road vehicles/ships.
 		 * Thus always make sure at least one tick is used between the
 		 * processing of different orders when filling the timetable. */
-		uint time_to_set = CeilDiv(std::max(time_taken, 1U), DAY_TICKS) * DAY_TICKS;
+		uint time_to_set = CeilDiv(std::max(time_taken, 1U), Ticks::DAY_TICKS) * Ticks::DAY_TICKS;
 
 		if (travelling && (autofilling || !real_current_order->IsTravelTimetabled())) {
 			ChangeTimetable(v, v->cur_real_order_index, time_to_set, MTF_TRAVEL_TIME, autofilling);
@@ -493,10 +494,10 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	 * check how many ticks the (fully filled) timetable has. If a timetable cycle is
 	 * shorter than the amount of ticks we are late we reduce the lateness by the
 	 * length of a full cycle till lateness is less than the length of a timetable
-	 * cycle. When the timetable isn't fully filled the cycle will be INVALID_TICKS. */
+	 * cycle. When the timetable isn't fully filled the cycle will be Tick::INVALID_TICKS. */
 	if (v->lateness_counter > (int)timetabled) {
-		Ticks cycle = v->orders->GetTimetableTotalDuration();
-		if (cycle != INVALID_TICKS && v->lateness_counter > cycle) {
+		TimerGameTick::Ticks cycle = v->orders->GetTimetableTotalDuration();
+		if (cycle != Ticks::INVALID_TICKS && v->lateness_counter > cycle) {
 			v->lateness_counter %= cycle;
 		}
 	}

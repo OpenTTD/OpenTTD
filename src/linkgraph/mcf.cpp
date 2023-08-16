@@ -2,6 +2,7 @@
 
 #include "../stdafx.h"
 #include "../core/math_func.hpp"
+#include "../timer/timer_game_tick.h"
 #include "mcf.h"
 
 #include "../safeguards.h"
@@ -290,7 +291,7 @@ void MultiCommodityFlow::Dijkstra(NodeID source_node, PathVector &paths)
 				IsCargoInClass(this->job.Cargo(), CC_EXPRESS);
 			uint distance = DistanceMaxPlusManhattan(this->job[from].base.xy, this->job[to].base.xy) + 1;
 			/* Compute a default travel time from the distance and an average speed of 1 tile/day. */
-			uint time = (edge.base.TravelTime() != 0) ? edge.base.TravelTime() + DAY_TICKS : distance * DAY_TICKS;
+			uint time = (edge.base.TravelTime() != 0) ? edge.base.TravelTime() + Ticks::DAY_TICKS : distance * Ticks::DAY_TICKS;
 			uint distance_anno = express ? time : distance;
 
 			Tannotation *dest = static_cast<Tannotation *>(paths[to]);
