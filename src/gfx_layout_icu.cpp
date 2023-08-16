@@ -206,7 +206,7 @@ void ICURun::Shape(UChar *buff, size_t buff_length) {
 			x_advance = glyph_pos[i].x_advance / FONT_SCALE;
 		}
 
-		this->glyph_to_char.push_back(glyph_info[i].cluster - this->start);
+		this->glyph_to_char.push_back(glyph_info[i].cluster);
 		this->advance.push_back(x_advance);
 		advance += x_advance;
 	}
@@ -465,7 +465,7 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 			/* There is no suitable line-break and this is the only run on the
 			 * line. So we break at the cluster. This is not pretty, but the
 			 * best we can do. */
-			new_partial_length = char_pos - this->partial_offset;
+			new_partial_length = char_pos - overflow_run->start - this->partial_offset;
 		}
 	}
 
