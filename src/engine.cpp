@@ -30,6 +30,7 @@
 #include "error.h"
 #include "engine_base.h"
 #include "timer/timer.h"
+#include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
@@ -94,7 +95,7 @@ Engine::Engine(VehicleType type, EngineID base)
 			default: break; // The aircraft, disasters and especially visual effects have no NewGRF configured visual effects
 		}
 		/* Set cargo aging period to the default value. */
-		this->info.cargo_age_period = CARGO_AGING_TICKS;
+		this->info.cargo_age_period = Ticks::CARGO_AGING_TICKS;
 		/* Not a variant */
 		this->info.variant_id = INVALID_ENGINE;
 		return;

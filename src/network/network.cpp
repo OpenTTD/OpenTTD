@@ -11,6 +11,7 @@
 
 #include "../strings_func.h"
 #include "../command_func.h"
+#include "../timer/timer_game_tick.h"
 #include "../timer/timer_game_calendar.h"
 #include "network_admin.h"
 #include "network_client.h"
@@ -274,8 +275,8 @@ uint NetworkCalculateLag(const NetworkClientSocket *cs)
 	/* This client has missed their ACK packet after 1 DAY_TICKS..
 	 *  so we increase their lag for every frame that passes!
 	 * The packet can be out by a max of _net_frame_freq */
-	if (cs->last_frame_server + DAY_TICKS + _settings_client.network.frame_freq < _frame_counter) {
-		lag += _frame_counter - (cs->last_frame_server + DAY_TICKS + _settings_client.network.frame_freq);
+	if (cs->last_frame_server + Ticks::DAY_TICKS + _settings_client.network.frame_freq < _frame_counter) {
+		lag += _frame_counter - (cs->last_frame_server + Ticks::DAY_TICKS + _settings_client.network.frame_freq);
 	}
 	return lag;
 }

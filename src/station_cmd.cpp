@@ -3964,7 +3964,7 @@ static void StationHandleSmallTick(BaseStation *st)
 	if ((st->facilities & FACIL_WAYPOINT) != 0 || !st->IsInUse()) return;
 
 	byte b = st->delete_ctr + 1;
-	if (b >= STATION_RATING_TICKS) b = 0;
+	if (b >= Ticks::STATION_RATING_TICKS) b = 0;
 	st->delete_ctr = b;
 
 	if (b == 0) UpdateStationRating(Station::From(st));
@@ -3978,18 +3978,18 @@ void OnTick_Station()
 		StationHandleSmallTick(st);
 
 		/* Clean up the link graph about once a week. */
-		if (Station::IsExpected(st) && (TimerGameTick::counter + st->index) % STATION_LINKGRAPH_TICKS == 0) {
+		if (Station::IsExpected(st) && (TimerGameTick::counter + st->index) % Ticks::STATION_LINKGRAPH_TICKS == 0) {
 			DeleteStaleLinks(Station::From(st));
 		};
 
 		/* Spread out big-tick over STATION_ACCEPTANCE_TICKS ticks. */
-		if ((TimerGameTick::counter + st->index) % STATION_ACCEPTANCE_TICKS == 0) {
+		if ((TimerGameTick::counter + st->index) % Ticks::STATION_ACCEPTANCE_TICKS == 0) {
 			/* Stop processing this station if it was deleted */
 			if (!StationHandleBigTick(st)) continue;
 		}
 
 		/* Spread out station animation over STATION_ACCEPTANCE_TICKS ticks. */
-		if ((TimerGameTick::counter + st->index) % STATION_ACCEPTANCE_TICKS == 0) {
+		if ((TimerGameTick::counter + st->index) % Ticks::STATION_ACCEPTANCE_TICKS == 0) {
 			TriggerStationAnimation(st, st->xy, SAT_250_TICKS);
 			TriggerRoadStopAnimation(st, st->xy, SAT_250_TICKS);
 			if (Station::IsExpected(st)) AirportAnimationTrigger(Station::From(st), AAT_STATION_250_TICKS);

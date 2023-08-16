@@ -1155,7 +1155,7 @@ static void ProduceIndustryGoods(Industry *i)
 	i->counter--;
 
 	/* produce some cargo */
-	if ((i->counter % INDUSTRY_PRODUCE_TICKS) == 0) {
+	if ((i->counter % Ticks::INDUSTRY_PRODUCE_TICKS) == 0) {
 		if (HasBit(indsp->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) IndustryProductionCallback(i, 1);
 
 		IndustryBehaviour indbehav = indsp->behaviour;
@@ -1188,7 +1188,7 @@ static void ProduceIndustryGoods(Industry *i)
 			if (cb_res != CALLBACK_FAILED) {
 				cut = ConvertBooleanCallback(indsp->grf_prop.grffile, CBID_INDUSTRY_SPECIAL_EFFECT, cb_res);
 			} else {
-				cut = ((i->counter % INDUSTRY_CUT_TREE_TICKS) == 0);
+				cut = ((i->counter % Ticks::INDUSTRY_CUT_TREE_TICKS) == 0);
 			}
 
 			if (cut) ChopLumberMillTrees(i);

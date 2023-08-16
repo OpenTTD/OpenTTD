@@ -171,9 +171,9 @@
 			break;
 
 		default:
-			EnforcePrecondition(false, (days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS) <= MAX_TOWN_GROWTH_TICKS);
+			EnforcePrecondition(false, (days_between_town_growth * ::Ticks::DAY_TICKS / ::Ticks::TOWN_GROWTH_TICKS) <= MAX_TOWN_GROWTH_TICKS);
 			/* Don't use growth_rate 0 as it means GROWTH_NORMAL */
-			growth_rate = std::max<SQInteger>(days_between_town_growth * DAY_TICKS, 2u) - 1;
+			growth_rate = std::max<SQInteger>(days_between_town_growth * ::Ticks::DAY_TICKS, 2u) - 1;
 			break;
 	}
 
@@ -188,7 +188,7 @@
 
 	if (t->growth_rate == TOWN_GROWTH_RATE_NONE) return TOWN_GROWTH_NONE;
 
-	return RoundDivSU(t->growth_rate + 1, DAY_TICKS);
+	return RoundDivSU(t->growth_rate + 1, ::Ticks::DAY_TICKS);
 }
 
 /* static */ SQInteger ScriptTown::GetDistanceManhattanToTile(TownID town_id, TileIndex tile)

@@ -12,30 +12,11 @@
 
 #include "timer/timer_game_calendar.h"
 
-typedef int32_t  Ticks;     ///< The type to store ticks in
-
-
-/**
- * 1 day is 74 ticks; TimerGameCalendar::date_fract used to be uint16_t and incremented by 885. On
- *                    an overflow the new day begun and 65535 / 885 = 74.
- * 1 tick is approximately 27 ms.
- * 1 day is thus about 2 seconds (74 * 27 = 1998) on a machine that can run OpenTTD normally
- */
-static const int DAY_TICKS         =  74; ///< ticks per day
 static const int DAYS_IN_YEAR      = 365; ///< days per year
 static const int DAYS_IN_LEAP_YEAR = 366; ///< sometimes, you need one day more...
 static const int MONTHS_IN_YEAR    =  12; ///< months per year
 
 static const int SECONDS_PER_DAY   = 2;   ///< approximate seconds per day, not for precise calculations
-
-static const int STATION_RATING_TICKS     = 185; ///< cycle duration for updating station rating
-static const int STATION_ACCEPTANCE_TICKS = 250; ///< cycle duration for updating station acceptance
-static const int STATION_LINKGRAPH_TICKS  = 504; ///< cycle duration for cleaning dead links
-static const int CARGO_AGING_TICKS        = 185; ///< cycle duration for aging cargo
-static const int INDUSTRY_PRODUCE_TICKS   = 256; ///< cycle duration for industry production
-static const int TOWN_GROWTH_TICKS        = 70;  ///< cycle duration for towns trying to grow. (this originates from the size of the town array in TTD
-static const int INDUSTRY_CUT_TREE_TICKS  = INDUSTRY_PRODUCE_TICKS * 2; ///< cycle duration for lumber mill's extra action
-
 
 /*
  * ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR and DAYS_TILL_ORIGINAL_BASE_YEAR are
@@ -98,6 +79,5 @@ static constexpr TimerGameCalendar::Date MAX_DATE = DateAtStartOfYear(MAX_YEAR +
 
 static constexpr TimerGameCalendar::Year INVALID_YEAR = -1; ///< Representation of an invalid year
 static constexpr TimerGameCalendar::Date INVALID_DATE = -1; ///< Representation of an invalid date
-static constexpr Ticks INVALID_TICKS = -1; ///< Representation of an invalid number of ticks
 
 #endif /* DATE_TYPE_H */

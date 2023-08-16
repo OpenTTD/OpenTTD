@@ -17,6 +17,7 @@
 #include "depot_type.h"
 #include "station_type.h"
 #include "vehicle_type.h"
+#include "timer/timer_game_tick.h"
 #include "date_type.h"
 #include "saveload/saveload.h"
 
@@ -268,8 +269,8 @@ private:
 	uint num_vehicles;                ///< NOSAVE: Number of vehicles that share this order list.
 	Vehicle *first_shared;            ///< NOSAVE: pointer to the first vehicle in the shared order chain.
 
-	Ticks timetable_duration;         ///< NOSAVE: Total timetabled duration of the order list.
-	Ticks total_duration;             ///< NOSAVE: Total (timetabled or not) duration of the order list.
+	TimerGameTick::Ticks timetable_duration;         ///< NOSAVE: Total timetabled duration of the order list.
+	TimerGameTick::Ticks total_duration;             ///< NOSAVE: Total (timetabled or not) duration of the order list.
 
 public:
 	/** Default constructor producing an invalid order list. */
@@ -366,34 +367,34 @@ public:
 	bool IsCompleteTimetable() const;
 
 	/**
-	 * Gets the total duration of the vehicles timetable or INVALID_TICKS is the timetable is not complete.
-	 * @return total timetable duration or INVALID_TICKS for incomplete timetables
+	 * Gets the total duration of the vehicles timetable or Tick::INVALID_TICKS is the timetable is not complete.
+	 * @return total timetable duration or Tick::INVALID_TICKS for incomplete timetables
 	 */
-	inline Ticks GetTimetableTotalDuration() const { return this->IsCompleteTimetable() ? this->timetable_duration : INVALID_TICKS; }
+	inline TimerGameTick::Ticks GetTimetableTotalDuration() const { return this->IsCompleteTimetable() ? this->timetable_duration : Ticks::INVALID_TICKS; }
 
 	/**
 	 * Gets the known duration of the vehicles timetable even if the timetable is not complete.
 	 * @return known timetable duration
 	 */
-	inline Ticks GetTimetableDurationIncomplete() const { return this->timetable_duration; }
+	inline TimerGameTick::Ticks GetTimetableDurationIncomplete() const { return this->timetable_duration; }
 
 	/**
 	 * Gets the known duration of the vehicles orders, timetabled or not.
 	 * @return  known order duration.
 	 */
-	inline Ticks GetTotalDuration() const { return this->total_duration; }
+	inline TimerGameTick::Ticks GetTotalDuration() const { return this->total_duration; }
 
 	/**
 	 * Must be called if an order's timetable is changed to update internal book keeping.
 	 * @param delta By how many ticks has the timetable duration changed
 	 */
-	void UpdateTimetableDuration(Ticks delta) { this->timetable_duration += delta; }
+	void UpdateTimetableDuration(TimerGameTick::Ticks delta) { this->timetable_duration += delta; }
 
 	/**
 	 * Must be called if an order's timetable is changed to update internal book keeping.
 	 * @param delta By how many ticks has the total duration changed
 	 */
-	void UpdateTotalDuration(Ticks delta) { this->total_duration += delta; }
+	void UpdateTotalDuration(TimerGameTick::Ticks delta) { this->total_duration += delta; }
 
 	void FreeChain(bool keep_orderlist = false);
 
