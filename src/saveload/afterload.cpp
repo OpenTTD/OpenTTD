@@ -259,7 +259,7 @@ static void InitializeWindowsAndCaches()
 		/* For each company, verify (while loading a scenario) that the inauguration date is the current year and set it
 		 * accordingly if it is not the case.  No need to set it on companies that are not been used already,
 		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
-		if (_file_to_saveload.abstract_ftype == FT_SCENARIO && c->inaugurated_year != MIN_YEAR) {
+		if (_file_to_saveload.abstract_ftype == FT_SCENARIO && c->inaugurated_year != CalendarTime::MIN_YEAR) {
 			c->inaugurated_year = TimerGameCalendar::year;
 		}
 	}
@@ -776,13 +776,13 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_ENDING_YEAR)) {
-		_settings_game.game_creation.ending_year = DEF_END_YEAR;
+		_settings_game.game_creation.ending_year = CalendarTime::DEF_END_YEAR;
 	}
 
 	/* Convert linkgraph update settings from days to seconds. */
 	if (IsSavegameVersionBefore(SLV_LINKGRAPH_SECONDS)) {
-		_settings_game.linkgraph.recalc_interval *= SECONDS_PER_DAY;
-		_settings_game.linkgraph.recalc_time     *= SECONDS_PER_DAY;
+		_settings_game.linkgraph.recalc_interval *= CalendarTime::SECONDS_PER_DAY;
+		_settings_game.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
 	}
 
 	/* Load the sprites */
@@ -1422,18 +1422,18 @@ bool AfterLoadGame()
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
 	if (IsSavegameVersionBefore(SLV_31)) {
-		TimerGameCalendar::date += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		TimerGameCalendar::year += ORIGINAL_BASE_YEAR;
+		TimerGameCalendar::date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+		TimerGameCalendar::year += CalendarTime::ORIGINAL_BASE_YEAR;
 
-		for (Station *st : Station::Iterate())   st->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		for (Waypoint *wp : Waypoint::Iterate()) wp->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		for (Engine *e : Engine::Iterate())      e->intro_date       += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		for (Company *c : Company::Iterate()) c->inaugurated_year += ORIGINAL_BASE_YEAR;
-		for (Industry *i : Industry::Iterate())  i->last_prod_year   += ORIGINAL_BASE_YEAR;
+		for (Station *st : Station::Iterate())   st->build_date      += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+		for (Waypoint *wp : Waypoint::Iterate()) wp->build_date      += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+		for (Engine *e : Engine::Iterate())      e->intro_date       += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+		for (Company *c : Company::Iterate()) c->inaugurated_year += CalendarTime::ORIGINAL_BASE_YEAR;
+		for (Industry *i : Industry::Iterate())  i->last_prod_year   += CalendarTime::ORIGINAL_BASE_YEAR;
 
 		for (Vehicle *v : Vehicle::Iterate()) {
-			v->date_of_last_service += DAYS_TILL_ORIGINAL_BASE_YEAR;
-			v->build_year += ORIGINAL_BASE_YEAR;
+			v->date_of_last_service += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+			v->build_year += CalendarTime::ORIGINAL_BASE_YEAR;
 		}
 	}
 
@@ -1925,7 +1925,7 @@ bool AfterLoadGame()
 
 			/* Replace "house construction year" with "house age" */
 			if (IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)) {
-				t.m5() = ClampTo<uint8_t>(TimerGameCalendar::year - (t.m5() + ORIGINAL_BASE_YEAR));
+				t.m5() = ClampTo<uint8_t>(TimerGameCalendar::year - (t.m5() + CalendarTime::ORIGINAL_BASE_YEAR));
 			}
 		}
 	}

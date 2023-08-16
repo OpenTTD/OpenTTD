@@ -380,7 +380,7 @@ void OpenBrowser(const char *url)
 
 /** Callback structure of statements to be executed after the NewGRF scan. */
 struct AfterNewGRFScan : NewGRFScanCallback {
-	TimerGameCalendar::Year startyear = INVALID_YEAR; ///< The start year.
+	TimerGameCalendar::Year startyear = CalendarTime::INVALID_YEAR; ///< The start year.
 	uint32_t generation_seed = GENERATE_NEW_SEED; ///< Seed for the new game.
 	std::string dedicated_host;                 ///< Hostname for the dedicated server.
 	uint16_t dedicated_port = 0;                  ///< Port for the dedicated server.
@@ -429,7 +429,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		MusicDriver::GetInstance()->SetVolume(_settings_client.music.music_vol);
 		SetEffectVolume(_settings_client.music.effect_vol);
 
-		if (startyear != INVALID_YEAR) IConsoleSetSetting("game_creation.starting_year", static_cast<int32_t>(startyear));
+		if (startyear != CalendarTime::INVALID_YEAR) IConsoleSetSetting("game_creation.starting_year", static_cast<int32_t>(startyear));
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
 
 		if (!dedicated_host.empty()) {

@@ -56,7 +56,7 @@
 {
 	if (month < 1 || month > 12) return DATE_INVALID;
 	if (day_of_month < 1 || day_of_month > 31) return DATE_INVALID;
-	if (year < 0 || year > MAX_YEAR) return DATE_INVALID;
+	if (year < 0 || year > CalendarTime::MAX_YEAR) return DATE_INVALID;
 
 	return (ScriptDate::Date)(int32_t)::TimerGameCalendar::ConvertYMDToDate(year, month - 1, day_of_month);
 }

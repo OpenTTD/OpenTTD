@@ -194,7 +194,7 @@ struct TimetableWindow : Window {
 	{
 		switch (widget) {
 			case WID_VT_ARRIVAL_DEPARTURE_PANEL:
-				SetDParamMaxValue(1, DateAtStartOfYear(MAX_YEAR), 0, FS_SMALL);
+				SetDParamMaxValue(1, TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR), 0, FS_SMALL);
 				size->width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE).width) + WidgetDimensions::scaled.hsep_wide + padding.width;
 				FALLTHROUGH;
 

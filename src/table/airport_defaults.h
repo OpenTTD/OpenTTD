@@ -10,7 +10,7 @@
 #ifndef AIRPORT_DEFAULTS_H
 #define AIRPORT_DEFAULTS_H
 
-#include "date_type.h"
+#include "timer/timer_game_calendar.h"
 
 /**
  * Definition of an airport tiles layout.
@@ -397,20 +397,20 @@ static const Direction _default_airports_rotation[] = {
 /* The helidepot and helistation have ATP_TTDP_SMALL because they are at ground level */
 extern const AirportSpec _origin_airport_specs[] = {
 	AS(country,          4, 3,     0,     1959,  4,  3,  7, ATP_TTDP_SMALL,    APC_SMALL,    STR_AIRPORT_SMALL,            SPR_AIRPORT_PREVIEW_SMALL),
-	AS(city,             6, 6,  1955, MAX_YEAR,  5,  5, 24, ATP_TTDP_LARGE,    APC_LARGE,    STR_AIRPORT_CITY,             SPR_AIRPORT_PREVIEW_LARGE),
-	AS_ND(heliport,      1, 1,  1963, MAX_YEAR,  4,  1,  4, ATP_TTDP_HELIPORT, APC_HELIPORT, STR_AIRPORT_HELIPORT,         SPR_AIRPORT_PREVIEW_HELIPORT),
-	AS(metropolitan,     6, 6,  1980, MAX_YEAR,  6,  8, 28, ATP_TTDP_LARGE,    APC_LARGE,    STR_AIRPORT_METRO,            SPR_AIRPORT_PREVIEW_METROPOLITAN),
-	AS(international,    7, 7,  1990, MAX_YEAR,  8, 17, 42, ATP_TTDP_LARGE,    APC_HUB,      STR_AIRPORT_INTERNATIONAL,    SPR_AIRPORT_PREVIEW_INTERNATIONAL),
-	AS(commuter,         5, 4,  1983, MAX_YEAR,  4,  4, 20, ATP_TTDP_SMALL,    APC_SMALL,    STR_AIRPORT_COMMUTER,         SPR_AIRPORT_PREVIEW_COMMUTER),
-	AS(helidepot,        2, 2,  1976, MAX_YEAR,  4,  2,  7, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELIDEPOT,        SPR_AIRPORT_PREVIEW_HELIDEPOT),
-	AS(intercontinental, 9, 11, 2002, MAX_YEAR, 10, 25, 72, ATP_TTDP_LARGE,    APC_HUB,      STR_AIRPORT_INTERCONTINENTAL, SPR_AIRPORT_PREVIEW_INTERCONTINENTAL),
-	AS(helistation,      4, 2,  1980, MAX_YEAR,  4,  3, 14, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELISTATION,      SPR_AIRPORT_PREVIEW_HELISTATION),
+	AS(city,             6, 6,  1955, CalendarTime::MAX_YEAR,  5,  5, 24, ATP_TTDP_LARGE,    APC_LARGE,    STR_AIRPORT_CITY,             SPR_AIRPORT_PREVIEW_LARGE),
+	AS_ND(heliport,      1, 1,  1963, CalendarTime::MAX_YEAR,  4,  1,  4, ATP_TTDP_HELIPORT, APC_HELIPORT, STR_AIRPORT_HELIPORT,         SPR_AIRPORT_PREVIEW_HELIPORT),
+	AS(metropolitan,     6, 6,  1980, CalendarTime::MAX_YEAR,  6,  8, 28, ATP_TTDP_LARGE,    APC_LARGE,    STR_AIRPORT_METRO,            SPR_AIRPORT_PREVIEW_METROPOLITAN),
+	AS(international,    7, 7,  1990, CalendarTime::MAX_YEAR,  8, 17, 42, ATP_TTDP_LARGE,    APC_HUB,      STR_AIRPORT_INTERNATIONAL,    SPR_AIRPORT_PREVIEW_INTERNATIONAL),
+	AS(commuter,         5, 4,  1983, CalendarTime::MAX_YEAR,  4,  4, 20, ATP_TTDP_SMALL,    APC_SMALL,    STR_AIRPORT_COMMUTER,         SPR_AIRPORT_PREVIEW_COMMUTER),
+	AS(helidepot,        2, 2,  1976, CalendarTime::MAX_YEAR,  4,  2,  7, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELIDEPOT,        SPR_AIRPORT_PREVIEW_HELIDEPOT),
+	AS(intercontinental, 9, 11, 2002, CalendarTime::MAX_YEAR, 10, 25, 72, ATP_TTDP_LARGE,    APC_HUB,      STR_AIRPORT_INTERCONTINENTAL, SPR_AIRPORT_PREVIEW_INTERCONTINENTAL),
+	AS(helistation,      4, 2,  1980, CalendarTime::MAX_YEAR,  4,  3, 14, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELISTATION,      SPR_AIRPORT_PREVIEW_HELISTATION),
 	AS_GENERIC(&_airportfta_oilrig, nullptr, _default_airports_rotation, 0, nullptr, 0, 1, 1, 0, 4, 0, 0, 0, ATP_TTDP_OILRIG, APC_HELIPORT, STR_NULL, 0, false),
 };
 
 static_assert(NEW_AIRPORT_OFFSET == lengthof(_origin_airport_specs));
 
-const AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, nullptr, _default_airports_rotation, 0, nullptr, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, 0, ATP_TTDP_LARGE, APC_BEGIN, STR_NULL, 0, false);
+const AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, nullptr, _default_airports_rotation, 0, nullptr, 0, 0, 0, 0, 0, CalendarTime::MIN_YEAR, CalendarTime::MIN_YEAR, 0, ATP_TTDP_LARGE, APC_BEGIN, STR_NULL, 0, false);
 
 #undef AS
 #undef AS_ND

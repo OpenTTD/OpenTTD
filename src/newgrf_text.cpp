@@ -23,6 +23,7 @@
 #include "newgrf_text.h"
 #include "newgrf_cargo.h"
 #include "string_func.h"
+#include "timer/timer_game_calendar.h"
 #include "date_type.h"
 #include "debug.h"
 #include "core/alloc_type.hpp"
@@ -912,7 +913,7 @@ uint RemapNewGRFStringControlCode(uint scc, const char **str, StringParameters &
 
 			/* Dates from NewGRFs have 1920-01-01 as their zero point, convert it to OpenTTD's epoch. */
 			case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
-			case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR); break;
+			case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedWord() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); break;
 
 			case SCC_NEWGRF_DISCARD_WORD:           _newgrf_textrefstack.PopUnsignedWord(); break;
 

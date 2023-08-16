@@ -367,8 +367,8 @@ public:
 	bool IsCompleteTimetable() const;
 
 	/**
-	 * Gets the total duration of the vehicles timetable or Tick::INVALID_TICKS is the timetable is not complete.
-	 * @return total timetable duration or Tick::INVALID_TICKS for incomplete timetables
+	 * Gets the total duration of the vehicles timetable or Ticks::INVALID_TICKS is the timetable is not complete.
+	 * @return total timetable duration or Ticks::INVALID_TICKS for incomplete timetables
 	 */
 	inline TimerGameTick::Ticks GetTimetableTotalDuration() const { return this->IsCompleteTimetable() ? this->timetable_duration : Ticks::INVALID_TICKS; }
 

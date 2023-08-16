@@ -178,7 +178,7 @@ public:
 	 * settings have to be brutally const-casted in order to populate them.
 	 */
 	LinkGraphJob() : settings(_settings_game.linkgraph),
-			join_date(INVALID_DATE), job_completed(false), job_aborted(false) {}
+			join_date(CalendarTime::INVALID_DATE), job_completed(false), job_aborted(false) {}
 
 	LinkGraphJob(const LinkGraph &orig);
 	~LinkGraphJob();

@@ -569,8 +569,8 @@ struct GenerateLandscapeWindow : public Window {
 			this->SetWidgetDisabledState(WID_GL_HEIGHTMAP_HEIGHT_DOWN, _settings_newgame.game_creation.heightmap_height <= MIN_HEIGHTMAP_HEIGHT);
 			this->SetWidgetDisabledState(WID_GL_HEIGHTMAP_HEIGHT_UP, _settings_newgame.game_creation.heightmap_height >= GetMapHeightLimit());
 		}
-		this->SetWidgetDisabledState(WID_GL_START_DATE_DOWN, _settings_newgame.game_creation.starting_year <= MIN_YEAR);
-		this->SetWidgetDisabledState(WID_GL_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(WID_GL_START_DATE_DOWN, _settings_newgame.game_creation.starting_year <= CalendarTime::MIN_YEAR);
+		this->SetWidgetDisabledState(WID_GL_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= CalendarTime::MAX_YEAR);
 		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_DOWN, _settings_newgame.game_creation.snow_coverage <= 0 || _settings_newgame.game_creation.landscape != LT_ARCTIC);
 		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_UP,   _settings_newgame.game_creation.snow_coverage >= 100 || _settings_newgame.game_creation.landscape != LT_ARCTIC);
 		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_DOWN, _settings_newgame.game_creation.desert_coverage <= 0 || _settings_newgame.game_creation.landscape != LT_TROPIC);
@@ -599,7 +599,7 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_START_DATE_TEXT:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 0, 1));
+				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
 				d = GetStringBoundingBox(STR_JUST_DATE_LONG);
 				break;
 
@@ -763,7 +763,7 @@ struct GenerateLandscapeWindow : public Window {
 				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 
-					_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + widget - WID_GL_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
+					_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + widget - WID_GL_START_DATE_TEXT, CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 					this->InvalidateData();
 				}
 				_left_button_clicked = false;
@@ -968,7 +968,7 @@ struct GenerateLandscapeWindow : public Window {
 			/* An empty string means revert to the default */
 			switch (this->widget_id) {
 				case WID_GL_HEIGHTMAP_HEIGHT_TEXT: value = MAP_HEIGHT_LIMIT_AUTO_MINIMUM; break;
-				case WID_GL_START_DATE_TEXT: value = static_cast<int32_t>(DEF_START_YEAR); break;
+				case WID_GL_START_DATE_TEXT: value = static_cast<int32_t>(CalendarTime::DEF_START_YEAR); break;
 				case WID_GL_SNOW_COVERAGE_TEXT: value = DEF_SNOW_COVERAGE; break;
 				case WID_GL_DESERT_COVERAGE_TEXT: value = DEF_DESERT_COVERAGE; break;
 				case WID_GL_TOWN_PULLDOWN: value = 1; break;
@@ -987,7 +987,7 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_START_DATE_TEXT:
 				this->SetWidgetDirty(WID_GL_START_DATE_TEXT);
-				_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), MIN_YEAR, MAX_YEAR);
+				_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 				break;
 
 			case WID_GL_SNOW_COVERAGE_TEXT:
@@ -1125,8 +1125,8 @@ struct CreateScenarioWindow : public Window
 
 	void OnPaint() override
 	{
-		this->SetWidgetDisabledState(WID_CS_START_DATE_DOWN,       _settings_newgame.game_creation.starting_year <= MIN_YEAR);
-		this->SetWidgetDisabledState(WID_CS_START_DATE_UP,         _settings_newgame.game_creation.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(WID_CS_START_DATE_DOWN,       _settings_newgame.game_creation.starting_year <= CalendarTime::MIN_YEAR);
+		this->SetWidgetDisabledState(WID_CS_START_DATE_UP,         _settings_newgame.game_creation.starting_year >= CalendarTime::MAX_YEAR);
 		this->SetWidgetDisabledState(WID_CS_FLAT_LAND_HEIGHT_DOWN, _settings_newgame.game_creation.se_flat_world_height <= 0);
 		this->SetWidgetDisabledState(WID_CS_FLAT_LAND_HEIGHT_UP,   _settings_newgame.game_creation.se_flat_world_height >= GetMapHeightLimit());
 
@@ -1143,7 +1143,7 @@ struct CreateScenarioWindow : public Window
 		StringID str = STR_JUST_INT;
 		switch (widget) {
 			case WID_CS_START_DATE_TEXT:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 0, 1));
+				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
 				str = STR_JUST_DATE_LONG;
 				break;
 
@@ -1199,7 +1199,7 @@ struct CreateScenarioWindow : public Window
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 
-					_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + widget - WID_CS_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
+					_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + widget - WID_CS_START_DATE_TEXT, CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 				}
 				_left_button_clicked = false;
 				break;
@@ -1258,7 +1258,7 @@ struct CreateScenarioWindow : public Window
 			switch (this->widget_id) {
 				case WID_CS_START_DATE_TEXT:
 					this->SetWidgetDirty(WID_CS_START_DATE_TEXT);
-					_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), MIN_YEAR, MAX_YEAR);
+					_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 					break;
 
 				case WID_CS_FLAT_LAND_HEIGHT_TEXT:

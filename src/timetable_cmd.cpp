@@ -304,11 +304,11 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 	int total_duration = v->orders->GetTimetableTotalDuration();
 
 	/* Don't let a timetable start more than 15 years into the future or 1 year in the past. */
-	if (start_date < 0 || start_date > MAX_DATE) return CMD_ERROR;
-	if (start_date - TimerGameCalendar::date > DateAtStartOfYear(MAX_TIMETABLE_START_YEARS)) return CMD_ERROR;
-	if (TimerGameCalendar::date - start_date > DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+	if (start_date < 0 || start_date > CalendarTime::MAX_DATE) return CMD_ERROR;
+	if (start_date - TimerGameCalendar::date > TimerGameCalendar::DateAtStartOfYear(MAX_TIMETABLE_START_YEARS)) return CMD_ERROR;
+	if (TimerGameCalendar::date - start_date > CalendarTime::DAYS_IN_LEAP_YEAR) return CMD_ERROR;
 	if (timetable_all && !v->orders->IsCompleteTimetable()) return CommandCost(STR_ERROR_TIMETABLE_INCOMPLETE);
-	if (timetable_all && start_date + total_duration / Ticks::DAY_TICKS > MAX_DATE) return CMD_ERROR;
+	if (timetable_all && start_date + total_duration / Ticks::DAY_TICKS > CalendarTime::MAX_DATE) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		std::vector<Vehicle *> vehs;
@@ -494,7 +494,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	 * check how many ticks the (fully filled) timetable has. If a timetable cycle is
 	 * shorter than the amount of ticks we are late we reduce the lateness by the
 	 * length of a full cycle till lateness is less than the length of a timetable
-	 * cycle. When the timetable isn't fully filled the cycle will be Tick::INVALID_TICKS. */
+	 * cycle. When the timetable isn't fully filled the cycle will be Ticks::INVALID_TICKS. */
 	if (v->lateness_counter > (int)timetabled) {
 		TimerGameTick::Ticks cycle = v->orders->GetTimetableTotalDuration();
 		if (cycle != Ticks::INVALID_TICKS && v->lateness_counter > cycle) {

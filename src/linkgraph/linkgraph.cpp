@@ -29,7 +29,7 @@ LinkGraph::BaseNode::BaseNode(TileIndex xy, StationID st, uint demand)
 	this->supply = 0;
 	this->demand = demand;
 	this->station = st;
-	this->last_update = INVALID_DATE;
+	this->last_update = CalendarTime::INVALID_DATE;
 }
 
 /**
@@ -40,8 +40,8 @@ LinkGraph::BaseEdge::BaseEdge(NodeID dest_node)
 	this->capacity = 0;
 	this->usage = 0;
 	this->travel_time_sum = 0;
-	this->last_unrestricted_update = INVALID_DATE;
-	this->last_restricted_update = INVALID_DATE;
+	this->last_unrestricted_update = CalendarTime::INVALID_DATE;
+	this->last_restricted_update = CalendarTime::INVALID_DATE;
 	this->dest_node = dest_node;
 }
 
@@ -55,10 +55,10 @@ void LinkGraph::ShiftDates(TimerGameCalendar::Date interval)
 	this->last_compression += interval;
 	for (NodeID node1 = 0; node1 < this->Size(); ++node1) {
 		BaseNode &source = this->nodes[node1];
-		if (source.last_update != INVALID_DATE) source.last_update += interval;
+		if (source.last_update != CalendarTime::INVALID_DATE) source.last_update += interval;
 		for (BaseEdge &edge : this->nodes[node1].edges) {
-			if (edge.last_unrestricted_update != INVALID_DATE) edge.last_unrestricted_update += interval;
-			if (edge.last_restricted_update != INVALID_DATE) edge.last_restricted_update += interval;
+			if (edge.last_unrestricted_update != CalendarTime::INVALID_DATE) edge.last_unrestricted_update += interval;
+			if (edge.last_restricted_update != CalendarTime::INVALID_DATE) edge.last_restricted_update += interval;
 		}
 	}
 }

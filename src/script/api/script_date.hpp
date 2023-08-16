@@ -11,6 +11,7 @@
 #define SCRIPT_DATE_HPP
 
 #include "script_object.hpp"
+#include "timer/timer_game_calendar.h"
 #include "../../date_type.h"
 
 /**
@@ -31,7 +32,7 @@ public:
 	 * compose valid date values for a known year, month and day.
 	 */
 	enum Date {
-		DATE_INVALID = (int32_t)::INVALID_DATE, ///< A value representing an invalid date.
+		DATE_INVALID = (int32_t)::CalendarTime::INVALID_DATE, ///< A value representing an invalid date.
 	};
 
 	/**

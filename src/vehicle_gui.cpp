@@ -1733,7 +1733,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 				if (v->IsChainInDepot()) {
 					tc = TC_BLUE;
 				} else {
-					tc = (v->age > v->max_age - DAYS_IN_LEAP_YEAR) ? TC_RED : TC_BLACK;
+					tc = (v->age > v->max_age - CalendarTime::DAYS_IN_LEAP_YEAR) ? TC_RED : TC_BLACK;
 				}
 
 				SetDParam(0, v->unitnumber);
@@ -2438,7 +2438,7 @@ struct VehicleDetailsWindow : Window {
 
 			case WID_VD_SERVICING_INTERVAL:
 				SetDParamMaxValue(0, MAX_SERVINT_DAYS); // Roughly the maximum interval
-				SetDParamMaxValue(1, DateAtStartOfYear(MAX_YEAR)); // Roughly the maximum year
+				SetDParamMaxValue(1, TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR)); // Roughly the maximum year
 				size->width = std::max(
 					GetStringBoundingBox(STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT).width,
 					GetStringBoundingBox(STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS).width
@@ -2495,9 +2495,9 @@ struct VehicleDetailsWindow : Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 				/* Draw running cost */
-				SetDParam(1, DateToYear(v->age));
-				SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_VEHICLE_INFO_AGE : STR_VEHICLE_INFO_AGE_RED);
-				SetDParam(2, DateToYear(v->max_age));
+				SetDParam(1, TimerGameCalendar::DateToYear(v->age));
+				SetDParam(0, (v->age + CalendarTime::DAYS_IN_YEAR < v->max_age) ? STR_VEHICLE_INFO_AGE : STR_VEHICLE_INFO_AGE_RED);
+				SetDParam(2, TimerGameCalendar::DateToYear(v->max_age));
 				SetDParam(3, v->GetDisplayRunningCost());
 				DrawString(tr, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR);
 				tr.top += FONT_HEIGHT_NORMAL;

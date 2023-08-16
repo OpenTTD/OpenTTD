@@ -1821,7 +1821,7 @@ static const HouseSpec _original_house_specs[] = {
 	 *                                                                              remove_rating_decrease
 	 *                                                                              |    mail_generation
 	 *     min_year                                                                 |    |    1st CargoID acceptance
-	 *     |         max_year                                                       |    |    |    2nd CargoID acceptance
+	 *     |         CalendarTime::MAX_YEAR                                                       |    |    |    2nd CargoID acceptance
 	 *     |         |    population                                                |    |    |    |    3th CargoID acceptance
 	 *     |         |    |    removal_cost                                         |    |    |    |    |
 	 *     |         |    |    |    building_name                                   |    |    |    |    |
@@ -1832,59 +1832,59 @@ static const HouseSpec _original_house_specs[] = {
 	 * +-cargoID accepted |    |    |                                               |    |    |    |    |
 	 * |   |         |    |    |    |                                               |    |    |    |    |
 	 */
-	MS(1963, MAX_YEAR, 187, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  70,   8,   3,   4,
+	MS(1963, CalendarTime::MAX_YEAR, 187, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  70,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 00
-	MS(1957, MAX_YEAR,  85, 140, STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1,           130,  55,   8,   3,   4,
+	MS(1957, CalendarTime::MAX_YEAR,  85, 140, STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1,           130,  55,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 01
-	MS(1968, MAX_YEAR,  40, 100, STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1,    90,  20,   8,   3,   1,
+	MS(1968, CalendarTime::MAX_YEAR,  40, 100, STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1,    90,  20,   8,   3,   1,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 02
-	MS(   0, MAX_YEAR,   5,  90, STR_TOWN_BUILDING_NAME_CHURCH_1,                 230,   2,   2,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,   5,  90, STR_TOWN_BUILDING_NAME_CHURCH_1,                 230,   2,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 03
-	MS(1975, MAX_YEAR, 220, 160, STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1,     160,  85,  10,   4,   6,
+	MS(1975, CalendarTime::MAX_YEAR, 220, 160, STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1,     160,  85,  10,   4,   6,
 	   BUILDING_IS_ANIMATED | TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 04
-	MS(1975, MAX_YEAR, 220, 160, STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1,     160,  85,  10,   4,   6,
+	MS(1975, CalendarTime::MAX_YEAR, 220, 160, STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1,     160,  85,  10,   4,   6,
 	   BUILDING_IS_ANIMATED | TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE  | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 05
-	MS(   0, MAX_YEAR,  30,  80, STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1,             80,  12,   4,   1,   0,
+	MS(   0, CalendarTime::MAX_YEAR,  30,  80, STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1,             80,  12,   4,   1,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 06
-	MS(1959, MAX_YEAR, 140, 180, STR_TOWN_BUILDING_NAME_HOTEL_1,                  150,  22,   6,   1,   2,
+	MS(1959, CalendarTime::MAX_YEAR, 140, 180, STR_TOWN_BUILDING_NAME_HOTEL_1,                  150,  22,   6,   1,   2,
 	   TILE_SIZE_1x2,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 07
-	MS(1959, MAX_YEAR,   0, 180, STR_TOWN_BUILDING_NAME_HOTEL_1,                  150,  22,   6,   1,   2,
+	MS(1959, CalendarTime::MAX_YEAR,   0, 180, STR_TOWN_BUILDING_NAME_HOTEL_1,                  150,  22,   6,   1,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 08
-	MS(1945, MAX_YEAR,   0,  65, STR_TOWN_BUILDING_NAME_STATUE_1,                  40,   0,   2,   0,   0,
+	MS(1945, CalendarTime::MAX_YEAR,   0,  65, STR_TOWN_BUILDING_NAME_STATUE_1,                  40,   0,   2,   0,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 09
-	MS(1945, MAX_YEAR,   0,  65, STR_TOWN_BUILDING_NAME_FOUNTAIN_1,                40,   0,   2,   0,   0,
+	MS(1945, CalendarTime::MAX_YEAR,   0,  65, STR_TOWN_BUILDING_NAME_FOUNTAIN_1,                40,   0,   2,   0,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 0A
-	MS(   0, MAX_YEAR,   0,  60, STR_TOWN_BUILDING_NAME_PARK_1,                    75,   0,   2,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,   0,  60, STR_TOWN_BUILDING_NAME_PARK_1,                    75,   0,   2,   0,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 0B
-	MS(1935, MAX_YEAR,   0,  60, STR_TOWN_BUILDING_NAME_PARK_1,                    75,   0,   2,   0,   0,
+	MS(1935, CalendarTime::MAX_YEAR,   0,  60, STR_TOWN_BUILDING_NAME_PARK_1,                    75,   0,   2,   0,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 0C
-	MS(1951, MAX_YEAR, 150, 130, STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2,           110,  65,   8,   2,   4,
+	MS(1951, CalendarTime::MAX_YEAR, 150, 130, STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2,           110,  65,   8,   2,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 0D
@@ -1900,31 +1900,31 @@ static const HouseSpec _original_house_specs[] = {
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 10
-	MS(1977, MAX_YEAR, 130, 200, STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1, 150,  50,  10,   3,   6,
+	MS(1977, CalendarTime::MAX_YEAR, 130, 200, STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1, 150,  50,  10,   3,   6,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 11
-	MS(1983, MAX_YEAR,   6, 145, STR_TOWN_BUILDING_NAME_WAREHOUSE_1,              110,  10,   6,   3,   8,
+	MS(1983, CalendarTime::MAX_YEAR,   6, 145, STR_TOWN_BUILDING_NAME_WAREHOUSE_1,              110,  10,   6,   3,   8,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 12
-	MS(1985, MAX_YEAR, 110, 155, STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3,           110,  55,   6,   2,   6,
+	MS(1985, CalendarTime::MAX_YEAR, 110, 155, STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3,           110,  55,   6,   2,   6,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 13
-	MS(   0, MAX_YEAR,  65, 250, STR_TOWN_BUILDING_NAME_STADIUM_1,                300,   5,   4,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,  65, 250, STR_TOWN_BUILDING_NAME_STADIUM_1,                300,   5,   4,   0,   0,
 	   BUILDING_IS_STADIUM | TILE_SIZE_2x2,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 14
-	MS(   0, MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_1,                300,   5,   4,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_1,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 15
-	MS(   0, MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_1,                300,   5,   4,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_1,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 16
-	MS(   0, MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_1,                300,   5,   4,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_1,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 17
@@ -1936,15 +1936,15 @@ static const HouseSpec _original_house_specs[] = {
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 19
-	MS(1931, MAX_YEAR,  13,  71, STR_TOWN_BUILDING_NAME_HOUSES_1,                  75,   8,   3,   1,   0,
+	MS(1931, CalendarTime::MAX_YEAR,  13,  71, STR_TOWN_BUILDING_NAME_HOUSES_1,                  75,   8,   3,   1,   0,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 1A
-	MS(1935, MAX_YEAR, 100, 135, STR_TOWN_BUILDING_NAME_FLATS_1,                  100,  35,   7,   2,   2,
+	MS(1935, CalendarTime::MAX_YEAR, 100, 135, STR_TOWN_BUILDING_NAME_FLATS_1,                  100,  35,   7,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 1B
-	MS(1963, MAX_YEAR, 170, 145, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2,      170,  50,   8,   3,   3,
+	MS(1963, CalendarTime::MAX_YEAR, 170, 145, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2,      170,  50,   8,   3,   3,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 1C
@@ -1952,31 +1952,31 @@ static const HouseSpec _original_house_specs[] = {
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 1D
-	MS(1973, MAX_YEAR, 180, 155, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3,      180,  64,   8,   3,   3,
+	MS(1973, CalendarTime::MAX_YEAR, 180, 155, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3,      180,  64,   8,   3,   3,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 1E
-	MS(   0, MAX_YEAR,  35, 220, STR_TOWN_BUILDING_NAME_THEATER_1,                230,  23,   8,   2,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  35, 220, STR_TOWN_BUILDING_NAME_THEATER_1,                230,  23,   8,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 1F
-	MS(1958, MAX_YEAR,  65, 250, STR_TOWN_BUILDING_NAME_STADIUM_2,                300,   5,   4,   0,   0,
+	MS(1958, CalendarTime::MAX_YEAR,  65, 250, STR_TOWN_BUILDING_NAME_STADIUM_2,                300,   5,   4,   0,   0,
 	   BUILDING_IS_STADIUM | TILE_SIZE_2x2,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 20
-	MS(1958, MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_2,                300,   5,   4,   0,   0,
+	MS(1958, CalendarTime::MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_2,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 21
-	MS(1958, MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_2,                300,   5,   4,   0,   0,
+	MS(1958, CalendarTime::MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_2,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 22
-	MS(1958, MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_2,                300,   5,   4,   0,   0,
+	MS(1958, CalendarTime::MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_STADIUM_2,                300,   5,   4,   0,   0,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 23
-	MS(2000, MAX_YEAR, 140, 170, STR_TOWN_BUILDING_NAME_OFFICES_1,                250,  65,   8,   3,   2,
+	MS(2000, CalendarTime::MAX_YEAR, 140, 170, STR_TOWN_BUILDING_NAME_OFFICES_1,                250,  65,   8,   3,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 24
@@ -1988,39 +1988,39 @@ static const HouseSpec _original_house_specs[] = {
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 26
-	MS(1945, MAX_YEAR,  35, 210, STR_TOWN_BUILDING_NAME_CINEMA_1,                 230,  23,   8,   2,   2,
+	MS(1945, CalendarTime::MAX_YEAR,  35, 210, STR_TOWN_BUILDING_NAME_CINEMA_1,                 230,  23,   8,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 27
-	MS(1983, MAX_YEAR, 180, 250, STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1,          300,   5,   8,   2,   3,
+	MS(1983, CalendarTime::MAX_YEAR, 180, 250, STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1,          300,   5,   8,   2,   3,
 	   TILE_SIZE_2x2,
 	   HZ_TEMP | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 |HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 28
-	MS(1983, MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1,          300,   5,   8,   2,   3,
+	MS(1983, CalendarTime::MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1,          300,   5,   8,   2,   3,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 29
-	MS(1983, MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1,          300,   5,   8,   2,   3,
+	MS(1983, CalendarTime::MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1,          300,   5,   8,   2,   3,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 2A
-	MS(1983, MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1,          300,   5,   8,   2,   3,
+	MS(1983, CalendarTime::MAX_YEAR,   0, 250, STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1,          300,   5,   8,   2,   3,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 2B
-	MS(   0, MAX_YEAR,  80, 100, STR_TOWN_BUILDING_NAME_FLATS_1,                   90,  20,   5,   2,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  80, 100, STR_TOWN_BUILDING_NAME_FLATS_1,                   90,  20,   5,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 2C
-	MS(   0, MAX_YEAR,  80, 100, STR_TOWN_BUILDING_NAME_FLATS_1,                   90,  20,   5,   2,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  80, 100, STR_TOWN_BUILDING_NAME_FLATS_1,                   90,  20,   5,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE  | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 2D
-	MS(   0, MAX_YEAR,  16,  70, STR_TOWN_BUILDING_NAME_HOUSES_2,                  70,   6,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  16,  70, STR_TOWN_BUILDING_NAME_HOUSES_2,                  70,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 2E
-	MS(   0, MAX_YEAR,  16,  70, STR_TOWN_BUILDING_NAME_HOUSES_2,                  70,   6,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  16,  70, STR_TOWN_BUILDING_NAME_HOUSES_2,                  70,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 2F
@@ -2032,59 +2032,59 @@ static const HouseSpec _original_house_specs[] = {
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 31
-	MS(1966, MAX_YEAR, 135, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      120,  60,   8,   3,   4,
+	MS(1966, CalendarTime::MAX_YEAR, 135, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      120,  60,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 32
-	MS(1966, MAX_YEAR, 135, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      120,  60,   8,   3,   4,
+	MS(1966, CalendarTime::MAX_YEAR, 135, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      120,  60,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 33
-	MS(1970, MAX_YEAR, 170, 170, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  70,   9,   3,   4,
+	MS(1970, CalendarTime::MAX_YEAR, 170, 170, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  70,   9,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 34
-	MS(1970, MAX_YEAR, 170, 170, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  70,   9,   3,   4,
+	MS(1970, CalendarTime::MAX_YEAR, 170, 170, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  70,   9,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 35
-	MS(1974, MAX_YEAR, 210, 200, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  80,  10,   3,   5,
+	MS(1974, CalendarTime::MAX_YEAR, 210, 200, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  80,  10,   3,   5,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 36
-	MS(1974, MAX_YEAR, 210, 200, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  80,  10,   3,   5,
+	MS(1974, CalendarTime::MAX_YEAR, 210, 200, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  80,  10,   3,   5,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 37
-	MS(   0, MAX_YEAR,  10,  60, STR_TOWN_BUILDING_NAME_HOUSES_2,                  60,   5,   2,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  10,  60, STR_TOWN_BUILDING_NAME_HOUSES_2,                  60,   5,   2,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 38
-	MS(   0, MAX_YEAR,  10,  60, STR_TOWN_BUILDING_NAME_HOUSES_2,                  60,   5,   2,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  10,  60, STR_TOWN_BUILDING_NAME_HOUSES_2,                  60,   5,   2,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 39
-	MS(   0, MAX_YEAR,  25, 100, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,       80,  20,   3,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  25, 100, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,       80,  20,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 3A
-	MS(   0, MAX_YEAR,  25, 100, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,       80,  20,   3,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  25, 100, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,       80,  20,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 3B
-	MS(   0, MAX_YEAR,   6,  85, STR_TOWN_BUILDING_NAME_CHURCH_1,                 230,   2,   2,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,   6,  85, STR_TOWN_BUILDING_NAME_CHURCH_1,                 230,   2,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 3C
-	MS(   0, MAX_YEAR,   6,  85, STR_TOWN_BUILDING_NAME_CHURCH_1,                 230,   2,   2,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,   6,  85, STR_TOWN_BUILDING_NAME_CHURCH_1,                 230,   2,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 3D
-	MS(   0, MAX_YEAR,  17,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   7,   3,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  17,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   7,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 3E
-	MS(   0, MAX_YEAR,  17,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   7,   3,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  17,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   7,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 3F
@@ -2096,179 +2096,179 @@ static const HouseSpec _original_house_specs[] = {
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 41
-	MS(1972, MAX_YEAR, 140, 160, STR_TOWN_BUILDING_NAME_HOTEL_1,                  160,  25,   6,   1,   3,
+	MS(1972, CalendarTime::MAX_YEAR, 140, 160, STR_TOWN_BUILDING_NAME_HOTEL_1,                  160,  25,   6,   1,   3,
 	   TILE_SIZE_1x2,
 	   HZ_SUBARTC_BELOW| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 42
-	MS(1972, MAX_YEAR,   0, 160, STR_TOWN_BUILDING_NAME_HOTEL_1,                  160,  25,   6,   1,   2,
+	MS(1972, CalendarTime::MAX_YEAR,   0, 160, STR_TOWN_BUILDING_NAME_HOTEL_1,                  160,  25,   6,   1,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 43
-	MS(1972, MAX_YEAR, 140, 160, STR_TOWN_BUILDING_NAME_HOTEL_1,                  160,  25,   6,   1,   3,
+	MS(1972, CalendarTime::MAX_YEAR, 140, 160, STR_TOWN_BUILDING_NAME_HOTEL_1,                  160,  25,   6,   1,   3,
 	   TILE_SIZE_1x2,
 	   HZ_SUBARTC_ABOVE| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 44
-	MS(1972, MAX_YEAR,   0, 160, STR_TOWN_BUILDING_NAME_HOTEL_1,                  160,  25,   6,   1,   2,
+	MS(1972, CalendarTime::MAX_YEAR,   0, 160, STR_TOWN_BUILDING_NAME_HOTEL_1,                  160,  25,   6,   1,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 45
-	MS(1963, MAX_YEAR, 105, 130, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,      105,  50,   7,   2,   3,
+	MS(1963, CalendarTime::MAX_YEAR, 105, 130, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,      105,  50,   7,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 46
-	MS(1963, MAX_YEAR, 105, 130, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,      105,  50,   7,   2,   3,
+	MS(1963, CalendarTime::MAX_YEAR, 105, 130, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,      105,  50,   7,   2,   3,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 47
-	MS(1978, MAX_YEAR, 190, 190, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      135,  75,   9,   3,   4,
+	MS(1978, CalendarTime::MAX_YEAR, 190, 190, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      135,  75,   9,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_BELOW | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 48
-	MS(1978, MAX_YEAR, 190, 190, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      135,  75,   9,   3,   4,
+	MS(1978, CalendarTime::MAX_YEAR, 190, 190, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      135,  75,   9,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 49
-	MS(1967, MAX_YEAR, 250, 140, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      200,  60,   7,   2,   2,
+	MS(1967, CalendarTime::MAX_YEAR, 250, 140, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      200,  60,   7,   2,   2,
 	   TILE_SIZE_2x1,
 	   HZ_SUBARTC_BELOW| HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 4A
-	MS(1967, MAX_YEAR,   0, 140, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      200,  60,   7,   2,   2,
+	MS(1967, CalendarTime::MAX_YEAR,   0, 140, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      200,  60,   7,   2,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 4B
-	MS(1967, MAX_YEAR, 250, 140, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      200,  60,   7,   2,   2,
+	MS(1967, CalendarTime::MAX_YEAR, 250, 140, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      200,  60,   7,   2,   2,
 	   TILE_SIZE_2x1,
 	   HZ_SUBARTC_ABOVE | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 4C
-	MS(1967, MAX_YEAR,   0, 140, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      200,  60,   7,   2,   2,
+	MS(1967, CalendarTime::MAX_YEAR,   0, 140, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      200,  60,   7,   2,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 4D
-	MS(   0, MAX_YEAR,  16,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   6,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  16,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 4E
-	MS(   0, MAX_YEAR,  16,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   6,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  16,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 4F
-	MS(   0, MAX_YEAR,  16,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   5,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  16,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   5,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 50
-	MS(   0, MAX_YEAR,   7,  30, STR_TOWN_BUILDING_NAME_HOUSES_2,                  30,   4,   3,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,   7,  30, STR_TOWN_BUILDING_NAME_HOUSES_2,                  30,   4,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 51
-	MS(   0, MAX_YEAR,  45, 130, STR_TOWN_BUILDING_NAME_FLATS_1,                   95,  15,   6,   2,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  45, 130, STR_TOWN_BUILDING_NAME_FLATS_1,                   95,  15,   6,   2,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 52
-	MS(   0, MAX_YEAR,   8,  90, STR_TOWN_BUILDING_NAME_CHURCH_1,                 200,   3,   2,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,   8,  90, STR_TOWN_BUILDING_NAME_CHURCH_1,                 200,   3,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 53
-	MS(   0, MAX_YEAR,  18,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   7,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  18,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   7,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2,
 	   CT_PASSENGERS, CT_MAIL, CT_FOOD), // 54
-	MS(1973, MAX_YEAR,  90, 110, STR_TOWN_BUILDING_NAME_FLATS_1,                   95,  24,   6,   2,   1,
+	MS(1973, CalendarTime::MAX_YEAR,  90, 110, STR_TOWN_BUILDING_NAME_FLATS_1,                   95,  24,   6,   2,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 55
-	MS(1962, MAX_YEAR, 120, 120, STR_TOWN_BUILDING_NAME_FLATS_1,                   95,  25,   6,   2,   1,
+	MS(1962, CalendarTime::MAX_YEAR, 120, 120, STR_TOWN_BUILDING_NAME_FLATS_1,                   95,  25,   6,   2,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 56
-	MS(1984, MAX_YEAR, 250, 190, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  80,   8,   3,   4,
+	MS(1984, CalendarTime::MAX_YEAR, 250, 190, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  80,   8,   3,   4,
 	   TILE_SIZE_2x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 57
-	MS(1984, MAX_YEAR,   0, 190, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  80,   8,   3,   4,
+	MS(1984, CalendarTime::MAX_YEAR,   0, 190, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  80,   8,   3,   4,
 	   TILE_NO_FLAG,
 	   HZ_SUBTROPIC,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 58
-	MS(   0, MAX_YEAR,  80, 110, STR_TOWN_BUILDING_NAME_FLATS_1,                   95,  23,   6,   2,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  80, 110, STR_TOWN_BUILDING_NAME_FLATS_1,                   95,  23,   6,   2,   1,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 59
-	MS(1993, MAX_YEAR, 180, 180, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      150,  90,   8,   3,   4,
+	MS(1993, CalendarTime::MAX_YEAR, 180, 180, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      150,  90,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_SUBTROPIC | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_GOODS), // 5A
-	MS(   0, MAX_YEAR,   8,  90, STR_TOWN_BUILDING_NAME_CHURCH_1,                 200,   3,   2,   0,   0,
+	MS(   0, CalendarTime::MAX_YEAR,   8,  90, STR_TOWN_BUILDING_NAME_CHURCH_1,                 200,   3,   2,   0,   0,
 	   BUILDING_IS_CHURCH | TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 5B
-	MS(   0, MAX_YEAR,  18,  90, STR_TOWN_BUILDING_NAME_HOUSES_2,                  90,   5,   6,   2,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  18,  90, STR_TOWN_BUILDING_NAME_HOUSES_2,                  90,   5,   6,   2,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 5C
-	MS(   0, MAX_YEAR,   7,  70, STR_TOWN_BUILDING_NAME_HOUSES_2,                  50,   3,   3,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,   7,  70, STR_TOWN_BUILDING_NAME_HOUSES_2,                  50,   3,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 5D
-	MS(   0, MAX_YEAR,  15,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  75,   6,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  15,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  75,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 5E
-	MS(   0, MAX_YEAR,  17,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  75,   6,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  17,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  75,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 5F
-	MS(   0, MAX_YEAR,  19,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  75,   6,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  19,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  75,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 60
-	MS(   0, MAX_YEAR,  21,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  75,   6,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  21,  80, STR_TOWN_BUILDING_NAME_HOUSES_2,                  75,   6,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 61
-	MS(   0, MAX_YEAR,  75, 160, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  20,   8,   4,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  75, 160, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  20,   8,   4,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 62
-	MS(   0, MAX_YEAR,  35,  90, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   9,   4,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  35,  90, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   9,   4,   1,   2,
 	   TILE_SIZE_1x2,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 63
-	MS(   0, MAX_YEAR,   0,  90, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   0,   4,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,   0,  90, STR_TOWN_BUILDING_NAME_HOUSES_2,                  80,   0,   4,   1,   2,
 	   TILE_NO_FLAG,
 	   HZ_NOZNS,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 64
-	MS(   0, MAX_YEAR,  85, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  18,   8,   4,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  85, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  18,   8,   4,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 65
-	MS(   0, MAX_YEAR,  11,  60, STR_TOWN_BUILDING_NAME_IGLOO_1,                   45,   3,   3,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  11,  60, STR_TOWN_BUILDING_NAME_IGLOO_1,                   45,   3,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 66
-	MS(   0, MAX_YEAR,  10,  60, STR_TOWN_BUILDING_NAME_TEPEES_1,                  45,   3,   3,   1,   1,
+	MS(   0, CalendarTime::MAX_YEAR,  10,  60, STR_TOWN_BUILDING_NAME_TEPEES_1,                  45,   3,   3,   1,   1,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 67
-	MS(   0, MAX_YEAR,  67, 140, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,      130,  22,   8,   4,   4,
+	MS(   0, CalendarTime::MAX_YEAR,  67, 140, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,      130,  22,   8,   4,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FIZZY_DRINKS), // 68
-	MS(   0, MAX_YEAR,  86, 145, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,      130,  23,   8,   4,   4,
+	MS(   0, CalendarTime::MAX_YEAR,  86, 145, STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1,      130,  23,   8,   4,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_FIZZY_DRINKS), // 69
-	MS(   0, MAX_YEAR,  95, 165, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  28,   8,   4,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  95, 165, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      130,  28,   8,   4,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 6A
-	MS(   0, MAX_YEAR,  30,  90, STR_TOWN_BUILDING_NAME_STATUE_1,                  70,  10,   4,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  30,  90, STR_TOWN_BUILDING_NAME_STATUE_1,                  70,  10,   4,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 6B
-	MS(   0, MAX_YEAR,  25,  75, STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1,            65,   8,   3,   1,   2,
+	MS(   0, CalendarTime::MAX_YEAR,  25,  75, STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1,            65,   8,   3,   1,   2,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_CANDY), // 6C
-	MS(   0, MAX_YEAR,  18,  85, STR_TOWN_BUILDING_NAME_PIGGY_BANK_1,              95,   7,   3,   2,   4,
+	MS(   0, CalendarTime::MAX_YEAR,  18,  85, STR_TOWN_BUILDING_NAME_PIGGY_BANK_1,              95,   7,   3,   2,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TOYLND | HZ_ZON5 | HZ_ZON4 | HZ_ZON3 | HZ_ZON2 | HZ_ZON1,
 	   CT_PASSENGERS, CT_MAIL, CT_FIZZY_DRINKS), // 6D

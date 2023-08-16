@@ -255,8 +255,6 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
  */
 void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {
-	static const TimerGameCalendar::Date MAX_DATE = TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
-
 	byte game_info_version = p->Recv_uint8();
 	NewGRFSerializationType newgrf_serialisation = NST_GRFID_MD5;
 
@@ -323,8 +321,8 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 		}
 
 		case 3:
-			info->game_date      = Clamp(p->Recv_uint32(), 0, static_cast<int32_t>(MAX_DATE));
-			info->start_date     = Clamp(p->Recv_uint32(), 0, static_cast<int32_t>(MAX_DATE));
+			info->game_date      = Clamp(p->Recv_uint32(), 0, static_cast<int32_t>(CalendarTime::MAX_DATE));
+			info->start_date     = Clamp(p->Recv_uint32(), 0, static_cast<int32_t>(CalendarTime::MAX_DATE));
 			FALLTHROUGH;
 
 		case 2:
@@ -342,8 +340,8 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 			info->clients_on     = p->Recv_uint8 ();
 			info->spectators_on  = p->Recv_uint8 ();
 			if (game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
-				info->game_date    = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
-				info->start_date   = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
+				info->game_date    = p->Recv_uint16() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+				info->start_date   = p->Recv_uint16() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 			}
 			if (game_info_version < 6) while (p->Recv_uint8() != 0) {} // Used to contain the map-name.
 			info->map_width      = p->Recv_uint16();
