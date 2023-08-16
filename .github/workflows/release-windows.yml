@@ -65,6 +65,7 @@ jobs:
       shell: bash
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-windows-static \
+          breakpad \
           liblzma \
           libpng \
           lzo \

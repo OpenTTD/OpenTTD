@@ -134,6 +134,11 @@ else()
     find_package(CURL)
 endif()
 
+# Breakpad doesn't support emscripten.
+if(NOT EMSCRIPTEN)
+    find_package(unofficial-breakpad)
+endif()
+
 if(NOT OPTION_DEDICATED)
     if(NOT WIN32)
         find_package(Allegro)
@@ -308,6 +313,10 @@ link_package(nlohmann_json ENCOURAGED)
 
 if(NOT WIN32 AND NOT EMSCRIPTEN)
     link_package(CURL ENCOURAGED)
+endif()
+
+if(NOT EMSCRIPTEN)
+    link_package(unofficial-breakpad TARGET unofficial::breakpad::libbreakpad_client ENCOURAGED)
 endif()
 
 if(NOT OPTION_DEDICATED)

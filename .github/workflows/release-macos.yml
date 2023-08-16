@@ -53,6 +53,8 @@ jobs:
     - name: Prepare vcpkg
       run: |
         vcpkg install \
+          breakpad:x64-osx \
+          breakpad:arm64-osx \
           curl:x64-osx \
           curl:arm64-osx \
           liblzma:x64-osx \

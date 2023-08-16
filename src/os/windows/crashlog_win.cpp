@@ -23,6 +23,14 @@
 #include <signal.h>
 #include <psapi.h>
 
+#if defined(_MSC_VER)
+#	include <dbghelp.h>
+#endif
+
+#ifdef WITH_UNOFFICIAL_BREAKPAD
+#	include <client/windows/handler/exception_handler.h>
+#endif
+
 #include "../../safeguards.h"
 
 /**
@@ -38,8 +46,24 @@ class CrashLogWindows : public CrashLog {
 	void LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const override;
 	void LogModules(std::back_insert_iterator<std::string> &output_iterator) const override;
 public:
+
+#ifdef WITH_UNOFFICIAL_BREAKPAD
+	static bool MinidumpCallback(const wchar_t *dump_dir, const wchar_t *minidump_id, void *context, EXCEPTION_POINTERS *exinfo, MDRawAssertionInfo *assertion, bool succeeded)
+	{
+		CrashLogWindows *crashlog = reinterpret_cast<CrashLogWindows *>(context);
+
+		crashlog->crashdump_filename = crashlog->CreateFileName(".dmp");
+		std::rename(fmt::format("{}/{}.dmp", FS2OTTD(dump_dir), FS2OTTD(minidump_id)).c_str(), crashlog->crashdump_filename.c_str());
+		return succeeded;
+	}
+
+	int WriteCrashDump() override
+	{
+		return google_breakpad::ExceptionHandler::WriteMinidump(OTTD2FS(_personal_dir), MinidumpCallback, this) ? 1 : -1;
+	}
+#endif
+
 #if defined(_MSC_VER)
-	int WriteCrashDump() override;
 	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const;
 #else
 	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const {}
@@ -332,10 +356,6 @@ static void PrintModuleInfo(std::back_insert_iterator<std::string> &output_itera
 static const uint MAX_SYMBOL_LEN = 512;
 static const uint MAX_FRAMES     = 64;
 
-#pragma warning(disable:4091)
-#include <dbghelp.h>
-#pragma warning(default:4091)
-
 void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
 {
 	DllLoader dbghelp(L"dbghelp.dll");
@@ -447,46 +467,6 @@ void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::str
 	}
 
 	fmt::format_to(output_iterator, "\n*** End of additional info ***\n");
-}
-
-/* virtual */ int CrashLogWindows::WriteCrashDump()
-{
-	int ret = 0;
-	DllLoader dbghelp(L"dbghelp.dll");
-	if (dbghelp.Success()) {
-		typedef BOOL (WINAPI *MiniDumpWriteDump_t)(HANDLE, DWORD, HANDLE,
-				MINIDUMP_TYPE,
-				CONST PMINIDUMP_EXCEPTION_INFORMATION,
-				CONST PMINIDUMP_USER_STREAM_INFORMATION,
-				CONST PMINIDUMP_CALLBACK_INFORMATION);
-		MiniDumpWriteDump_t funcMiniDumpWriteDump = dbghelp.GetProcAddress("MiniDumpWriteDump");
-		if (funcMiniDumpWriteDump != nullptr) {
-			this->crashdump_filename = this->CreateFileName(".dmp");
-			HANDLE file  = CreateFile(OTTD2FS(this->crashdump_filename).c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
-			HANDLE proc  = GetCurrentProcess();
-			DWORD procid = GetCurrentProcessId();
-			MINIDUMP_EXCEPTION_INFORMATION mdei;
-			MINIDUMP_USER_STREAM userstream;
-			MINIDUMP_USER_STREAM_INFORMATION musi;
-
-			userstream.Type        = LastReservedStream + 1;
-			userstream.Buffer      = (void*)this->crashlog.data();
-			userstream.BufferSize  = (ULONG)this->crashlog.size() + 1;
-
-			musi.UserStreamCount   = 1;
-			musi.UserStreamArray   = &userstream;
-
-			mdei.ThreadId = GetCurrentThreadId();
-			mdei.ExceptionPointers  = ep;
-			mdei.ClientPointers     = false;
-
-			funcMiniDumpWriteDump(proc, procid, file, MiniDumpWithDataSegs, &mdei, &musi, nullptr);
-			ret = 1;
-		} else {
-			ret = -1;
-		}
-	}
-	return ret;
 }
 #endif /* _MSC_VER */
 

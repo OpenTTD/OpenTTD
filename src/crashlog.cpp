@@ -375,9 +375,14 @@ bool CrashLog::WriteCrashLog()
 	return len == written;
 }
 
+/**
+ * Write the (crash) dump to a file.
+ *
+ * @note Sets \c crashdump_filename when there is a successful return.
+ * @return 1 iff the crashdump was successfully created, -1 if it failed, 0 if not implemented.
+ */
 /* virtual */ int CrashLog::WriteCrashDump()
 {
-	/* Stub implementation; not all OSes support this. */
 	return 0;
 }
 
@@ -458,13 +463,15 @@ bool CrashLog::MakeCrashLog()
 		ret = false;
 	}
 
-	/* Don't mention writing crash dumps because not all platforms support it. */
+	fmt::print("Writing crash dump to disk...\n");
 	int dret = this->WriteCrashDump();
 	if (dret < 0) {
 		fmt::print("Writing crash dump failed.\n\n");
 		ret = false;
 	} else if (dret > 0) {
 		fmt::print("Crash dump written to {}. Please add this file to any bug reports.\n\n", this->crashdump_filename);
+	} else {
+		fmt::print("Skipped; missing dependency to create crash dump.\n");
 	}
 
 	fmt::print("Writing crash savegame...\n");
