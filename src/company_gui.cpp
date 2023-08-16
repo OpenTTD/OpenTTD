@@ -1861,7 +1861,7 @@ struct CompanyInfrastructureWindow : Window
 		}
 
 		/* Get the date introduced railtypes as well. */
-		this->railtypes = AddDateIntroducedRailTypes(this->railtypes, MAX_DATE);
+		this->railtypes = AddDateIntroducedRailTypes(this->railtypes, CalendarTime::MAX_DATE);
 
 		/* Find the used roadtypes. */
 		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
@@ -1871,7 +1871,7 @@ struct CompanyInfrastructureWindow : Window
 		}
 
 		/* Get the date introduced roadtypes as well. */
-		this->roadtypes = AddDateIntroducedRoadTypes(this->roadtypes, MAX_DATE);
+		this->roadtypes = AddDateIntroducedRoadTypes(this->roadtypes, CalendarTime::MAX_DATE);
 		this->roadtypes &= ~_roadtypes_hidden_mask;
 	}
 

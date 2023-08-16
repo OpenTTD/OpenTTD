@@ -99,7 +99,7 @@ static const RailtypeInfo _original_railtypes[] = {
 		0x0A,
 
 		/* introduction date */
-		INVALID_DATE,
+		CalendarTime::INVALID_DATE,
 
 		/* railtypes required for this to be introduced */
 		RAILTYPES_NONE,
@@ -200,7 +200,7 @@ static const RailtypeInfo _original_railtypes[] = {
 		0x0A,
 
 		/* introduction date */
-		INVALID_DATE,
+		CalendarTime::INVALID_DATE,
 
 		/* railtypes required for this to be introduced */
 		RAILTYPES_NONE,
@@ -297,7 +297,7 @@ static const RailtypeInfo _original_railtypes[] = {
 		0x0A,
 
 		/* introduction date */
-		INVALID_DATE,
+		CalendarTime::INVALID_DATE,
 
 		/* railtypes required for this to be introduced */
 		RAILTYPES_NONE,
@@ -394,7 +394,7 @@ static const RailtypeInfo _original_railtypes[] = {
 		0x0A,
 
 		/* introduction date */
-		INVALID_DATE,
+		CalendarTime::INVALID_DATE,
 
 		/* railtypes required for this to be introduced */
 		RAILTYPES_NONE,

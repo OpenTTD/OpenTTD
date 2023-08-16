@@ -438,7 +438,7 @@ uint Engine::GetDisplayMaxTractiveEffort() const
  */
 TimerGameCalendar::Date Engine::GetLifeLengthInDays() const
 {
-	return DateAtStartOfYear(this->info.lifelength + _settings_game.vehicle.extend_vehicle_life);
+	return TimerGameCalendar::DateAtStartOfYear(this->info.lifelength + _settings_game.vehicle.extend_vehicle_life);
 }
 
 /**
@@ -663,7 +663,7 @@ void SetYearEngineAgingStops()
 
 		/* Base year ending date on half the model life */
 		TimerGameCalendar::YearMonthDay ymd;
-		TimerGameCalendar::ConvertDateToYMD(ei->base_intro + static_cast<int32_t>(DateAtStartOfYear(ei->lifelength)) / 2, &ymd);
+		TimerGameCalendar::ConvertDateToYMD(ei->base_intro + static_cast<int32_t>(TimerGameCalendar::DateAtStartOfYear(ei->lifelength)) / 2, &ymd);
 
 		_year_engine_aging_stops = std::max(_year_engine_aging_stops, ymd.year);
 	}
@@ -1103,7 +1103,7 @@ void EnginesMonthlyLoop()
 			/* Do not introduce invalid engines */
 			if (!e->IsEnabled()) continue;
 
-			if (!(e->flags & ENGINE_AVAILABLE) && TimerGameCalendar::date >= (e->intro_date + DAYS_IN_YEAR)) {
+			if (!(e->flags & ENGINE_AVAILABLE) && TimerGameCalendar::date >= (e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
 			} else if (!(e->flags & (ENGINE_AVAILABLE | ENGINE_EXCLUSIVE_PREVIEW)) && TimerGameCalendar::date >= e->intro_date) {

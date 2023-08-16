@@ -115,7 +115,7 @@ bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 		if (rti->label == 0) return false;
 
 		/* Not yet introduced at this date. */
-		if (IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(MAX_DATE)) && rti->introduction_date > TimerGameCalendar::date) return false;
+		if (IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(CalendarTime::MAX_DATE)) && rti->introduction_date > TimerGameCalendar::date) return false;
 
 		/*
 		 * Do not allow building hidden road types, except when a town may build it.
@@ -173,7 +173,7 @@ RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date 
 		if (rti->label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(MAX_DATE))) continue;
+		if (!IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(CalendarTime::MAX_DATE))) continue;
 
 		/* Not yet introduced at this date. */
 		if (rti->introduction_date > date) continue;
@@ -204,7 +204,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
-				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + DAYS_IN_YEAR)) {
+				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 			const RoadVehicleInfo *rvi = &e->u.road;
 			assert(rvi->roadtype < ROADTYPE_END);
 			if (introduces) {
@@ -241,7 +241,7 @@ RoadTypes GetRoadTypes(bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRoadTypes(rts, MAX_DATE);
+	if (introduces) return AddDateIntroducedRoadTypes(rts, CalendarTime::MAX_DATE);
 	return rts;
 }
 
@@ -302,7 +302,7 @@ RoadTypes ExistingRoadTypes(CompanyID c)
 	}
 
 	/* Get the date introduced roadtypes as well. */
-	known_roadtypes = AddDateIntroducedRoadTypes(known_roadtypes, MAX_DATE);
+	known_roadtypes = AddDateIntroducedRoadTypes(known_roadtypes, CalendarTime::MAX_DATE);
 
 	return known_roadtypes;
 }

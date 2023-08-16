@@ -104,7 +104,7 @@ extern void EnginesMonthlyLoop();
 static int32_t ClickChangeDateCheat(int32_t new_value, int32_t change_direction)
 {
 	/* Don't allow changing to an invalid year, or the current year. */
-	auto new_year = Clamp(TimerGameCalendar::Year(new_value), MIN_YEAR, MAX_YEAR);
+	auto new_year = Clamp(TimerGameCalendar::Year(new_value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 	if (new_year == TimerGameCalendar::year) return static_cast<int32_t>(TimerGameCalendar::year);
 
 	TimerGameCalendar::YearMonthDay ymd;
@@ -320,7 +320,7 @@ struct CheatWindow : Window {
 					switch (ce->str) {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE:
-							SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 11, 31));
+							SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 11, 31));
 							width = std::max(width, GetStringBoundingBox(ce->str).width);
 							break;
 

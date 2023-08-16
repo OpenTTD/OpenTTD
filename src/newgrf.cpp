@@ -996,7 +996,7 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteRe
 {
 	switch (prop) {
 		case 0x00: // Introduction date
-			ei->base_intro = buf->ReadWord() + DAYS_TILL_ORIGINAL_BASE_YEAR;
+			ei->base_intro = buf->ReadWord() + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 			break;
 
 		case 0x02: // Decay speed
@@ -2197,7 +2197,7 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 			case 0x08: { // Year of availability
 				/* We treat '0' as always available */
 				byte year = buf->ReadByte();
-				bridge->avail_year = (year > 0 ? ORIGINAL_BASE_YEAR + year : 0);
+				bridge->avail_year = (year > 0 ? CalendarTime::ORIGINAL_BASE_YEAR + year : 0);
 				break;
 			}
 
@@ -2257,7 +2257,7 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 				break;
 
 			case 0x0F: // Long format year of availability (year since year 0)
-				bridge->avail_year = Clamp(TimerGameCalendar::Year(buf->ReadDWord()), MIN_YEAR, MAX_YEAR);
+				bridge->avail_year = Clamp(TimerGameCalendar::Year(buf->ReadDWord()), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 				break;
 
 			case 0x10: { // purchase string
@@ -2430,8 +2430,8 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 
 			case 0x0A: { // Availability years
 				uint16_t years = buf->ReadWord();
-				housespec->min_year = GB(years, 0, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 0, 8);
-				housespec->max_year = GB(years, 8, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 8, 8);
+				housespec->min_year = GB(years, 0, 8) > 150 ? CalendarTime::MAX_YEAR : CalendarTime::ORIGINAL_BASE_YEAR + GB(years, 0, 8);
+				housespec->max_year = GB(years, 8, 8) > 150 ? CalendarTime::MAX_YEAR : CalendarTime::ORIGINAL_BASE_YEAR + GB(years, 8, 8);
 				break;
 			}
 
@@ -3991,7 +3991,7 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 			case 0x0C:
 				as->min_year = buf->ReadWord();
 				as->max_year = buf->ReadWord();
-				if (as->max_year == 0xFFFF) as->max_year = MAX_YEAR;
+				if (as->max_year == 0xFFFF) as->max_year = CalendarTime::MAX_YEAR;
 				break;
 
 			case 0x0D:
@@ -6512,11 +6512,11 @@ bool GetGlobalVariable(byte param, uint32_t *value, const GRFFile *grffile)
 {
 	switch (param) {
 		case 0x00: // current date
-			*value = static_cast<int32_t>(std::max(TimerGameCalendar::date - DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::Date(0)));
+			*value = static_cast<int32_t>(std::max(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::Date(0)));
 			return true;
 
 		case 0x01: // current year
-			*value = static_cast<int32_t>(Clamp(TimerGameCalendar::year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR);
+			*value = static_cast<int32_t>(Clamp(TimerGameCalendar::year, CalendarTime::ORIGINAL_BASE_YEAR, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR);
 			return true;
 
 		case 0x02: { // detailed date information: month of year (bit 0-7), day of month (bit 8-12), leap year (bit 15), day of year (bit 16-24)
@@ -7228,7 +7228,7 @@ static uint32_t GetPatchVariable(uint8_t param)
 {
 	switch (param) {
 		/* start year - 1920 */
-		case 0x0B: return static_cast<int32_t>(std::max(_settings_game.game_creation.starting_year, ORIGINAL_BASE_YEAR) - ORIGINAL_BASE_YEAR);
+		case 0x0B: return static_cast<int32_t>(std::max(_settings_game.game_creation.starting_year, CalendarTime::ORIGINAL_BASE_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR);
 
 		/* freight trains weight factor */
 		case 0x0E: return _settings_game.vehicle.freight_trains;
@@ -9237,7 +9237,7 @@ static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseS
  */
 static void EnsureEarlyHouse(HouseZones bitmask)
 {
-	TimerGameCalendar::Year min_year = MAX_YEAR;
+	TimerGameCalendar::Year min_year = CalendarTime::MAX_YEAR;
 
 	for (int i = 0; i < NUM_HOUSES; i++) {
 		HouseSpec *hs = HouseSpec::Get(i);

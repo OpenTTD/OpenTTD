@@ -63,8 +63,8 @@ public:
 		TimerGameCalendar::Date LastUpdate() const { return std::max(this->last_unrestricted_update, this->last_restricted_update); }
 
 		void Update(uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode);
-		void Restrict() { this->last_unrestricted_update = INVALID_DATE; }
-		void Release() { this->last_restricted_update = INVALID_DATE; }
+		void Restrict() { this->last_unrestricted_update = CalendarTime::INVALID_DATE; }
+		void Release() { this->last_restricted_update = CalendarTime::INVALID_DATE; }
 
 		/** Comparison operator based on \c dest_node. */
 		bool operator <(const BaseEdge &rhs) const

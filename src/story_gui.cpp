@@ -699,7 +699,7 @@ public:
 		int y_offset = -scrollpos;
 
 		/* Date */
-		if (page->date != INVALID_DATE) {
+		if (page->date != CalendarTime::INVALID_DATE) {
 			SetDParam(0, page->date);
 			DrawString(0, fr.right, y_offset, STR_JUST_DATE_LONG, TC_BLACK);
 		}

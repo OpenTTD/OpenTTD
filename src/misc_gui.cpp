@@ -138,7 +138,7 @@ public:
 		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
 		TileDesc td;
 
-		td.build_date = INVALID_DATE;
+		td.build_date = CalendarTime::INVALID_DATE;
 
 		/* Most tiles have only one owner, but
 		 *  - drivethrough roadstops can be build on town owned roads (up to 2 owners) and
@@ -224,7 +224,7 @@ public:
 		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY));
 
 		/* Build date */
-		if (td.build_date != INVALID_DATE) {
+		if (td.build_date != CalendarTime::INVALID_DATE) {
 			SetDParam(0, td.build_date);
 			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_BUILD_DATE));
 		}

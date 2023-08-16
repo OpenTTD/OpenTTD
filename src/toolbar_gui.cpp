@@ -1148,7 +1148,7 @@ void ToggleDirtyBlocks()
  */
 void SetStartingYear(TimerGameCalendar::Year year)
 {
-	_settings_game.game_creation.starting_year = Clamp(year, MIN_YEAR, MAX_YEAR);
+	_settings_game.game_creation.starting_year = Clamp(year, CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 	TimerGameCalendar::Date new_date = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	/* If you open a savegame as scenario there may already be link graphs.*/
 	LinkGraphSchedule::instance.ShiftDates(new_date - TimerGameCalendar::date);
@@ -2357,8 +2357,8 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	void OnPaint() override
 	{
-		this->SetWidgetDisabledState(WID_TE_DATE_BACKWARD, _settings_game.game_creation.starting_year <= MIN_YEAR);
-		this->SetWidgetDisabledState(WID_TE_DATE_FORWARD, _settings_game.game_creation.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(WID_TE_DATE_BACKWARD, _settings_game.game_creation.starting_year <= CalendarTime::MIN_YEAR);
+		this->SetWidgetDisabledState(WID_TE_DATE_FORWARD, _settings_game.game_creation.starting_year >= CalendarTime::MAX_YEAR);
 		this->SetWidgetDisabledState(WID_TE_ROADS, (GetRoadTypes(true) & ~_roadtypes_type) == ROADTYPES_NONE);
 		this->SetWidgetDisabledState(WID_TE_TRAMS, (GetRoadTypes(true) & _roadtypes_type) == ROADTYPES_NONE);
 
@@ -2398,7 +2398,7 @@ struct ScenarioEditorToolbarWindow : Window {
 				break;
 
 			case WID_TE_DATE:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 0, 1));
+				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
 				*size = GetStringBoundingBox(STR_JUST_DATE_LONG);
 				break;
 		}
@@ -2512,7 +2512,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			value = atoi(str);
 		} else {
 			/* An empty string means revert to the default */
-			value = static_cast<int32_t>(DEF_START_YEAR);
+			value = static_cast<int32_t>(CalendarTime::DEF_START_YEAR);
 		}
 		SetStartingYear(value);
 

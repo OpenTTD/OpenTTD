@@ -150,7 +150,7 @@ RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 			rti->label = label;
 			rti->alternate_labels.clear();
 			rti->flags = ROTFB_NONE;
-			rti->introduction_date = INVALID_DATE;
+			rti->introduction_date = CalendarTime::INVALID_DATE;
 
 			/* Make us compatible with ourself. */
 			rti->powered_roadtypes = (RoadTypes)(1ULL << rt);

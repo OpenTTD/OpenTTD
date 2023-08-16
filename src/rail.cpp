@@ -225,7 +225,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date 
 		if (rti->label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(MAX_DATE))) continue;
+		if (!IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(CalendarTime::MAX_DATE))) continue;
 
 		/* Not yet introduced at this date. */
 		if (rti->introduction_date > date) continue;
@@ -256,7 +256,7 @@ RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
-				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + DAYS_IN_YEAR)) {
+				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 			const RailVehicleInfo *rvi = &e->u.rail;
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
@@ -298,7 +298,7 @@ RailTypes GetRailTypes(bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRailTypes(rts, MAX_DATE);
+	if (introduces) return AddDateIntroducedRailTypes(rts, CalendarTime::MAX_DATE);
 	return rts;
 }
 

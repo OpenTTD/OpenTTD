@@ -45,7 +45,7 @@ void Subsidy::AwardTo(CompanyID company)
 	assert(!this->IsAwarded());
 
 	this->awarded = company;
-	this->remaining = _settings_game.difficulty.subsidy_duration * MONTHS_IN_YEAR;
+	this->remaining = _settings_game.difficulty.subsidy_duration * CalendarTime::MONTHS_IN_YEAR;
 
 	SetDParam(0, company);
 	NewsStringData *company_name = new NewsStringData(GetString(STR_COMPANY_NAME));

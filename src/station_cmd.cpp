@@ -3863,11 +3863,11 @@ void DeleteStaleLinks(Station *from)
 					ge.flows.DeleteFlows(to->index);
 					RerouteCargo(from, c, to->index, from->index);
 				}
-			} else if (edge.last_unrestricted_update != INVALID_DATE && TimerGameCalendar::date - edge.last_unrestricted_update > timeout) {
+			} else if (edge.last_unrestricted_update != CalendarTime::INVALID_DATE && TimerGameCalendar::date - edge.last_unrestricted_update > timeout) {
 				edge.Restrict();
 				ge.flows.RestrictFlows(to->index);
 				RerouteCargo(from, c, to->index, from->index);
-			} else if (edge.last_restricted_update != INVALID_DATE && TimerGameCalendar::date - edge.last_restricted_update > timeout) {
+			} else if (edge.last_restricted_update != CalendarTime::INVALID_DATE && TimerGameCalendar::date - edge.last_restricted_update > timeout) {
 				edge.Release();
 			}
 		}

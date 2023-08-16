@@ -82,7 +82,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		0x01,
 
 		/* introduction date */
-		static_cast<int32_t>(MIN_YEAR),
+		static_cast<int32_t>(CalendarTime::MIN_YEAR),
 
 		/* roadtypes required for this to be introduced */
 		ROADTYPES_NONE,
@@ -162,7 +162,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		0x01,
 
 		/* introduction date */
-		INVALID_DATE,
+		CalendarTime::INVALID_DATE,
 
 		/* roadtypes required for this to be introduced */
 		ROADTYPES_NONE,

@@ -735,7 +735,7 @@ bool AddInflation(bool check_year)
 	 * inflation doesn't add anything after that either; it even makes playing
 	 * it impossible due to the diverging cost and income rates.
 	 */
-	if (check_year && (TimerGameCalendar::year < ORIGINAL_BASE_YEAR || TimerGameCalendar::year >= ORIGINAL_MAX_YEAR)) return true;
+	if (check_year && (TimerGameCalendar::year < CalendarTime::ORIGINAL_BASE_YEAR || TimerGameCalendar::year >= CalendarTime::ORIGINAL_MAX_YEAR)) return true;
 
 	if (_economy.inflation_prices == MAX_INFLATION || _economy.inflation_payment == MAX_INFLATION) return true;
 
@@ -928,7 +928,7 @@ void StartupEconomy()
 
 	if (_settings_game.economy.inflation) {
 		/* Apply inflation that happened before our game start year. */
-		int months = static_cast<int32_t>(std::min(TimerGameCalendar::year, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR) * 12;
+		int months = static_cast<int32_t>(std::min(TimerGameCalendar::year, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR) * 12;
 		for (int i = 0; i < months; i++) {
 			AddInflation(false);
 		}

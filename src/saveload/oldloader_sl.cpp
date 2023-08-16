@@ -398,7 +398,7 @@ static bool FixTTOEngines()
 		for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
 	}
 
-	TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date + DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::ConvertYMDToDate(2050, 0, 1));
+	TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::ConvertYMDToDate(2050, 0, 1));
 
 	for (EngineID i = 0; i < 256; i++) {
 		int oi = ttd_to_tto[i];
@@ -406,11 +406,11 @@ static bool FixTTOEngines()
 
 		if (oi == 255) {
 			/* Default engine is used */
-			TimerGameCalendar::date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+			TimerGameCalendar::date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 			StartupOneEngine(e, aging_date, 0);
 			CalcEngineReliability(e, false);
-			e->intro_date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
-			TimerGameCalendar::date -= DAYS_TILL_ORIGINAL_BASE_YEAR;
+			e->intro_date -= CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
+			TimerGameCalendar::date -= CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 
 			/* Make sure for example monorail and maglev are available when they should be */
 			if (TimerGameCalendar::date >= e->intro_date && HasBit(e->info.climates, 0)) {
@@ -1020,7 +1020,7 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 	}
 
 	_company_colours[num] = (Colours)c->colour;
-	c->inaugurated_year -= ORIGINAL_BASE_YEAR;
+	c->inaugurated_year -= CalendarTime::ORIGINAL_BASE_YEAR;
 
 	return true;
 }
