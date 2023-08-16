@@ -12,7 +12,6 @@
 
 #include "script_object.hpp"
 #include "timer/timer_game_calendar.h"
-#include "../../date_type.h"
 
 /**
  * Class that handles all date related (calculation) functions.

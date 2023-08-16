@@ -20,7 +20,6 @@
 #include "../gfx_func.h"
 #include "../core/random_func.hpp"
 #include "../fios.h"
-#include "../date_type.h"
 #include "../timer/timer.h"
 #include "../timer/timer_game_tick.h"
 

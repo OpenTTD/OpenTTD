@@ -25,7 +25,6 @@
 #include "toolbar_gui.h"
 #include "core/geometry_func.hpp"
 #include "zoom_func.h"
-#include "date_type.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_window.h"

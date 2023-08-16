@@ -13,7 +13,6 @@
 #include "../core/pool_type.hpp"
 #include "../station_base.h"
 #include "../cargotype.h"
-#include "../date_type.h"
 #include "../timer/timer_game_calendar.h"
 #include "../saveload/saveload.h"
 #include "linkgraph_type.h"

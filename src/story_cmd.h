@@ -12,7 +12,6 @@
 
 #include "command_type.h"
 #include "company_type.h"
-#include "date_type.h"
 #include "story_type.h"
 #include "vehicle_type.h"
 

@@ -16,7 +16,6 @@
 #include "cargotype.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "date_type.h"
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
 #include "currency.h"

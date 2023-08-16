@@ -11,7 +11,6 @@
 #define TOWN_H
 
 #include "viewport_type.h"
-#include "date_type.h"
 #include "timer/timer_game_tick.h"
 #include "town_map.h"
 #include "subsidy_type.h"
