@@ -1254,7 +1254,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midden
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
-STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}second{P 0 "" n}
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}seconde{P 0 "" n}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximale beginlening: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaal bedrag dat een bedrijf kan lenen (zonder rekening te houden met de inflatie)
