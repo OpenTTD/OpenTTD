@@ -8,6 +8,7 @@ add_files(
     endian_func.hpp
     endian_type.hpp
     enum_type.hpp
+    format.hpp
     geometry_func.cpp
     geometry_func.hpp
     geometry_type.hpp
@@ -22,9 +23,8 @@ add_files(
     pool_type.hpp
     random_func.cpp
     random_func.hpp
-    smallmap_type.hpp
-    smallmatrix_type.hpp
     smallstack_type.hpp
-    smallvec_type.hpp
-    string_compare_type.hpp
+    container_func.hpp
+    span_type.hpp
+    strong_typedef_type.hpp
 )

@@ -15,18 +15,22 @@
 #include "../widget_type.h"
 #include "../window_gui.h"
 #include "linkgraph_base.h"
-#include <map>
-#include <vector>
 
 /**
- * Properties of a link between two stations.
+ * Monthly statistics for a link between two stations.
+ * Only the cargo type of the most saturated linkgraph is taken into account.
  */
 struct LinkProperties {
-	LinkProperties() : capacity(0), usage(0), planned(0), shared(false) {}
+	LinkProperties() : cargo(CT_INVALID), capacity(0), usage(0), planned(0), shared(false) {}
 
+	/** Return the usage of the link to display. */
+	uint Usage() const { return std::max(this->usage, this->planned); }
+
+	CargoID cargo; ///< Cargo type of the link.
 	uint capacity; ///< Capacity of the link.
 	uint usage;    ///< Actual usage of the link.
 	uint planned;  ///< Planned usage of the link.
+	uint32_t time;   ///< Travel time of the link.
 	bool shared;   ///< If this is a shared link to be drawn dashed.
 };
 
@@ -40,7 +44,7 @@ public:
 	typedef std::map<StationID, StationLinkMap> LinkMap;
 	typedef std::vector<std::pair<StationID, uint> > StationSupplyList;
 
-	static const uint8 LINK_COLOURS[];
+	static const uint8_t LINK_COLOURS[][12];
 
 	/**
 	 * Create a link graph overlay for the specified window.
@@ -50,13 +54,15 @@ public:
 	 * @param company_mask Bitmask of companies to be shown.
 	 * @param scale Desired thickness of lines and size of station dots.
 	 */
-	LinkGraphOverlay(const Window *w, uint wid, CargoTypes cargo_mask, uint32 company_mask, uint scale) :
+	LinkGraphOverlay(Window *w, uint wid, CargoTypes cargo_mask, CompanyMask company_mask, uint scale) :
 			window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale)
 	{}
 
 	void Draw(const DrawPixelInfo *dpi);
 	void SetCargoMask(CargoTypes cargo_mask);
-	void SetCompanyMask(uint32 company_mask);
+	void SetCompanyMask(CompanyMask company_mask);
+
+	bool ShowTooltip(Point pt, TooltipCloseCondition close_cond);
 
 	/** Mark the linkgraph dirty to be rebuilt next time Draw() is called. */
 	void SetDirty() { this->dirty = true; }
@@ -65,13 +71,13 @@ public:
 	CargoTypes GetCargoMask() { return this->cargo_mask; }
 
 	/** Get a bitmask of the currently shown companies. */
-	uint32 GetCompanyMask() { return this->company_mask; }
+	CompanyMask GetCompanyMask() { return this->company_mask; }
 
 protected:
-	const Window *window;              ///< Window to be drawn into.
+	Window *window;                    ///< Window to be drawn into.
 	const uint widget_id;              ///< ID of Widget in Window to be drawn to.
 	CargoTypes cargo_mask;             ///< Bitmask of cargos to be displayed.
-	uint32 company_mask;               ///< Bitmask of companies to be displayed.
+	CompanyMask company_mask;          ///< Bitmask of companies to be displayed.
 	LinkMap cached_links;              ///< Cache for links to reduce recalculation.
 	StationSupplyList cached_stations; ///< Cache for stations to be drawn.
 	uint scale;                        ///< Width of link lines.
@@ -88,7 +94,7 @@ protected:
 	void GetWidgetDpi(DrawPixelInfo *dpi) const;
 	void RebuildCache();
 
-	static void AddStats(uint new_cap, uint new_usg, uint new_flow, bool new_shared, LinkProperties &cargo);
+	static void AddStats(CargoID new_cargo, uint new_cap, uint new_usg, uint new_flow, uint32_t time, bool new_shared, LinkProperties &cargo);
 	static void DrawVertex(int x, int y, int size, int colour, int border_colour);
 };
 
@@ -100,7 +106,7 @@ void ShowLinkGraphLegend();
 struct LinkGraphLegendWindow : Window {
 public:
 	LinkGraphLegendWindow(WindowDesc *desc, int window_number);
-	void SetOverlay(LinkGraphOverlay *overlay);
+	void SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay);
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override;
 	void DrawWidget(const Rect &r, int widget) const override;
@@ -109,7 +115,8 @@ public:
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 
 private:
-	LinkGraphOverlay *overlay;
+	std::shared_ptr<LinkGraphOverlay> overlay;
+	size_t num_cargo;
 
 	void UpdateOverlayCompanies();
 	void UpdateOverlayCargoes();

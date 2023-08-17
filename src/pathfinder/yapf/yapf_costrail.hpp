@@ -10,7 +10,6 @@
 #ifndef YAPF_COSTRAIL_HPP
 #define YAPF_COSTRAIL_HPP
 
-#include <vector>
 
 #include "../../pbs.h"
 

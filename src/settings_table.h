@@ -12,7 +12,6 @@
 #ifndef SETTINGS_TABLE_H
 #define SETTINGS_TABLE_H
 
-#include <array>
 #include "settings_internal.h"
 
 extern SettingTable _company_settings;
@@ -40,6 +39,6 @@ extern SettingTable _win32_settings;
 
 static const uint GAME_DIFFICULTY_NUM = 18;
 extern const std::array<std::string, GAME_DIFFICULTY_NUM> _old_diff_settings;
-extern uint16 _old_diff_custom[GAME_DIFFICULTY_NUM];
+extern uint16_t _old_diff_custom[GAME_DIFFICULTY_NUM];
 
 #endif /* SETTINGS_TABLE_H */

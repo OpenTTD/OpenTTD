@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap6="http://schemas.microsoft.com/appx/manifest/uap/windows10/6" IgnorableNamespaces="uap uap6">
+   <Identity Name="$IDENTITY_NAME$" Publisher="$PUBLISHER$" Version="$VERSION$" ResourceId="OpenTTD-common" />
+   <Properties>
+      <uap6:AllowExecution>false</uap6:AllowExecution>
+      <DisplayName>OpenTTD (official)</DisplayName>
+      <PublisherDisplayName>OpenTTD Developers</PublisherDisplayName>
+      <Logo>Assets\StoreLogoCommon.png</Logo>
+   </Properties>
+   <Resources>
+      <Resource Language="en-gb" />
+      <Resource Language="en-us" />
+      <Resource Language="en-au" />
+      <Resource Language="af-za" />
+      <Resource Language="ar-eg" />
+      <Resource Language="eu-es" />
+      <Resource Language="be-by" />
+      <Resource Language="pt-br" />
+      <Resource Language="bg-bg" />
+      <Resource Language="ca-es" />
+      <Resource Language="hr-hr" />
+      <Resource Language="cs-cz" />
+      <Resource Language="da-dk" />
+      <Resource Language="nl-nl" />
+      <Resource Language="et-ee" />
+      <Resource Language="fo-fo" />
+      <Resource Language="fr-fr" />
+      <Resource Language="gd-gb" />
+      <Resource Language="gl-es" />
+      <Resource Language="de-de" />
+      <Resource Language="el-gr" />
+      <Resource Language="he-il" />
+      <Resource Language="hu-hu" />
+      <Resource Language="is-is" />
+      <Resource Language="id-id" />
+      <Resource Language="ga-ie" />
+      <Resource Language="it-it" />
+      <Resource Language="ja-jp" />
+      <Resource Language="ko-kr" />
+      <Resource Language="lv-lv" />
+      <Resource Language="lt-lt" />
+      <Resource Language="lb-lu" />
+      <Resource Language="ms-my" />
+      <Resource Language="nb-no" />
+      <Resource Language="no-no" />
+      <Resource Language="pl-pl" />
+      <Resource Language="pt-pt" />
+      <Resource Language="ro-ro" />
+      <Resource Language="ru-ru" />
+      <Resource Language="sr-latn-rs" />
+      <Resource Language="zh-cn" />
+      <Resource Language="sk-sk" />
+      <Resource Language="sl-si" />
+      <Resource Language="es-es" />
+      <Resource Language="es-mx" />
+      <Resource Language="sv-se" />
+      <Resource Language="ta-in" />
+      <Resource Language="th-th" />
+      <Resource Language="zh-tw" />
+      <Resource Language="tr-tr" />
+      <Resource Language="uk-ua" />
+      <Resource Language="vi-vn" />
+      <Resource Language="cy-gb" />
+   </Resources>
+   <Dependencies>
+      <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17134.0" MaxVersionTested="10.0.18363.0" />
+   </Dependencies>
+</Package>

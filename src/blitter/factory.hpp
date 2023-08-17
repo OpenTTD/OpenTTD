@@ -13,8 +13,6 @@
 #include "base.hpp"
 #include "../debug.h"
 #include "../string_func.h"
-#include "../core/string_compare_type.hpp"
-#include <map>
 
 
 /**
@@ -125,10 +123,9 @@ public:
 		if (GetBlitters().size() == 0) return nullptr;
 		const char *bname = name.empty() ? default_blitter : name.c_str();
 
-		Blitters::iterator it = GetBlitters().begin();
-		for (; it != GetBlitters().end(); it++) {
-			BlitterFactory *b = (*it).second;
-			if (strcasecmp(bname, b->name.c_str()) == 0) {
+		for (auto &it : GetBlitters()) {
+			BlitterFactory *b = it.second;
+			if (StrEqualsIgnoreCase(bname, b->name)) {
 				return b->IsUsable() ? b : nullptr;
 			}
 		}
@@ -149,17 +146,14 @@ public:
 	 * @param last The last element of the buffer.
 	 * @return p The location till where we filled the buffer.
 	 */
-	static char *GetBlittersInfo(char *p, const char *last)
+	static void GetBlittersInfo(std::back_insert_iterator<std::string> &output_iterator)
 	{
-		p += seprintf(p, last, "List of blitters:\n");
-		Blitters::iterator it = GetBlitters().begin();
-		for (; it != GetBlitters().end(); it++) {
-			BlitterFactory *b = (*it).second;
-			p += seprintf(p, last, "%18s: %s\n", b->name.c_str(), b->GetDescription().c_str());
+		fmt::format_to(output_iterator, "List of blitters:\n");
+		for (auto &it : GetBlitters()) {
+			BlitterFactory *b = it.second;
+			fmt::format_to(output_iterator, "{:>18}: {}\n", b->name, b->GetDescription());
 		}
-		p += seprintf(p, last, "\n");
-
-		return p;
+		fmt::format_to(output_iterator, "\n");
 	}
 
 	/**

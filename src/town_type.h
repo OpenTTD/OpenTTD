@@ -12,11 +12,11 @@
 
 #include "core/enum_type.hpp"
 
-typedef uint16 TownID;
+typedef uint16_t TownID;
 struct Town;
 
 /** Supported initial town sizes */
-enum TownSize {
+enum TownSize : byte {
 	TSZ_SMALL,  ///< Small town.
 	TSZ_MEDIUM, ///< Medium town.
 	TSZ_LARGE,  ///< Large town.
@@ -24,7 +24,6 @@ enum TownSize {
 
 	TSZ_END,    ///< Number of available town sizes.
 };
-template <> struct EnumPropsT<TownSize> : MakeEnumPropsT<TownSize, byte, TSZ_SMALL, TSZ_END, TSZ_END, 2> {};
 
 enum Ratings {
 	/* These refer to the maximums, so Appalling is -1000 to -400
@@ -56,16 +55,18 @@ enum Ratings {
 
 	RATING_TUNNEL_BRIDGE_DOWN_STEP = -250, ///< penalty for removing town owned tunnel or bridge
 	RATING_TUNNEL_BRIDGE_MINIMUM   =    0, ///< minimum rating after removing tunnel or bridge
-	RATING_TUNNEL_BRIDGE_NEEDED_PERMISSIVE = 144, ///< rating needed, "Permissive" difficulty settings
-	RATING_TUNNEL_BRIDGE_NEEDED_NEUTRAL    = 208, ///< "Neutral"
-	RATING_TUNNEL_BRIDGE_NEEDED_HOSTILE    = 400, ///< "Hostile"
+	RATING_TUNNEL_BRIDGE_NEEDED_LENIENT    =            144, ///< rating needed, "Lenient" difficulty settings
+	RATING_TUNNEL_BRIDGE_NEEDED_NEUTRAL    =            208, ///< "Neutral"
+	RATING_TUNNEL_BRIDGE_NEEDED_HOSTILE    =            400, ///< "Hostile"
+	RATING_TUNNEL_BRIDGE_NEEDED_PERMISSIVE = RATING_MINIMUM, ///< "Permissive" (local authority disabled)
 
 	RATING_ROAD_DOWN_STEP_INNER =  -50, ///< removing a roadpiece in the middle
 	RATING_ROAD_DOWN_STEP_EDGE  =  -18, ///< removing a roadpiece at the edge
 	RATING_ROAD_MINIMUM         = -100, ///< minimum rating after removing town owned road
-	RATING_ROAD_NEEDED_PERMISSIVE =  16, ///< rating needed, "Permissive" difficulty settings
-	RATING_ROAD_NEEDED_NEUTRAL    =  64, ///< "Neutral"
-	RATING_ROAD_NEEDED_HOSTILE    = 112, ///< "Hostile"
+	RATING_ROAD_NEEDED_LENIENT    =             16, ///< rating needed, "Lenient" difficulty settings
+	RATING_ROAD_NEEDED_NEUTRAL    =             64, ///< "Neutral"
+	RATING_ROAD_NEEDED_HOSTILE    =            112, ///< "Hostile"
+	RATING_ROAD_NEEDED_PERMISSIVE = RATING_MINIMUM, ///< "Permissive" (local authority disabled)
 
 	RATING_HOUSE_MINIMUM  = RATING_MINIMUM,
 
@@ -86,7 +87,6 @@ enum TownLayout : byte {
 
 	NUM_TLS,             ///< Number of town layouts
 };
-template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_BEGIN, NUM_TLS, NUM_TLS, 3> {};
 
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */
 enum TownFounding : byte {

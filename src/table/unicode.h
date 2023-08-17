@@ -8,7 +8,7 @@
 /** @file unicode.h Character mapping for using Unicode characters in OTTD. */
 
 struct DefaultUnicodeMapping {
-	WChar code; ///< Unicode value
+	char32_t code; ///< Unicode value
 	byte key;   ///< Character index of sprite
 };
 
@@ -17,7 +17,7 @@ static const byte CLRA = 0; ///< Identifier to clear all glyphs at this codepoin
 /* Default unicode mapping table for sprite based glyphs.
  * This table allows us use unicode characters even though the glyphs don't
  * exist, or are in the wrong place, in the standard sprite fonts.
- * This is not used for FreeType rendering */
+ * This is not used for TrueType rendering */
 
 static const DefaultUnicodeMapping _default_unicode_map[] = {
 	{ 0x00A0, 0x20 }, // Non-breaking space / Up arrow

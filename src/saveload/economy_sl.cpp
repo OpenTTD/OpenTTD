@@ -23,7 +23,7 @@ struct PRICChunkHandler : ChunkHandler {
 
 	void Load() const override
 	{
-		/* Old games store 49 base prices, very old games store them as int32 */
+		/* Old games store 49 base prices, very old games store them as int32_t */
 		int vt = IsSavegameVersionBefore(SLV_65) ? SLE_FILE_I32 : SLE_FILE_I64;
 		SlCopy(nullptr, 49, vt | SLE_VAR_NULL);
 		SlCopy(nullptr, 49, SLE_FILE_U16 | SLE_VAR_NULL);

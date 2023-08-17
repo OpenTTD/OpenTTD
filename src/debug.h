@@ -12,7 +12,7 @@
 
 #include "cpu.h"
 #include <chrono>
-#include "3rdparty/fmt/format.h"
+#include "core/format.hpp"
 
 /* Debugging messages policy:
  * These should be the severities used for direct Debug() calls
@@ -46,7 +46,7 @@ extern int _debug_sprite_level;
 extern int _debug_oldloader_level;
 extern int _debug_npf_level;
 extern int _debug_yapf_level;
-extern int _debug_freetype_level;
+extern int _debug_fontcache_level;
 extern int _debug_script_level;
 extern int _debug_sl_level;
 extern int _debug_gamelog_level;
@@ -56,9 +56,9 @@ extern int _debug_console_level;
 extern int _debug_random_level;
 #endif
 
-char *DumpDebugFacilityNames(char *buf, char *last);
-void SetDebugString(const char *s);
-const char *GetDebugString();
+void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator);
+void SetDebugString(const char *s, void (*error_func)(const std::string &));
+std::string GetDebugString();
 
 /* Shorter form for passing filename and linenumber */
 #define FILE_LINE __FILE__, __LINE__
@@ -88,9 +88,9 @@ const char *GetDebugString();
  *  machines. Mainly useful for local optimisations.
  **/
 #define TIC() {\
-	uint64 _xxx_ = ottd_rdtsc();\
-	static uint64 _sum_ = 0;\
-	static uint32 _i_ = 0;
+	uint64_t _xxx_ = ottd_rdtsc();\
+	static uint64_t _sum_ = 0;\
+	static uint32_t _i_ = 0;
 
 #define TOC(str, count)\
 	_sum_ += ottd_rdtsc() - _xxx_;\
@@ -104,8 +104,8 @@ const char *GetDebugString();
 /* Chrono based version. The output is in microseconds. */
 #define TICC() {\
 	auto _start_ = std::chrono::high_resolution_clock::now();\
-	static uint64 _sum_ = 0;\
-	static uint32 _i_ = 0;
+	static uint64_t _sum_ = 0;\
+	static uint32_t _i_ = 0;
 
 #define TOCC(str, _count_)\
 	_sum_ += (std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - _start_)).count();\
@@ -117,8 +117,8 @@ const char *GetDebugString();
 }
 
 
-void ShowInfo(const char *str);
-void CDECL ShowInfoF(const char *str, ...) WARN_FORMAT(1, 2);
+void ShowInfoI(const std::string &str);
+#define ShowInfo(format_string, ...) ShowInfoI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 
 const char *GetLogPrefix();
 

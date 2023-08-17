@@ -69,7 +69,7 @@ public:
 	/**
 	 * Formatting data for button page elements.
 	 */
-	typedef uint32 StoryPageButtonFormatting;
+	typedef uint32_t StoryPageButtonFormatting;
 
 	/**
 	 * Formatting and layout flags for story page buttons.
@@ -184,7 +184,7 @@ public:
 	 * @param company The company to create the story page for, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param title Page title (can be either a raw string, a ScriptText object, or null).
 	 * @return The new StoryPageID, or STORY_PAGE_INVALID if it failed.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 */
 	static StoryPageID New(ScriptCompany::CompanyID company, Text *title);
@@ -200,14 +200,14 @@ public:
 	 *                  use the #BuildPushButtonReference, #BuildTileButtonReference, or #BuildVehicleButtonReference functions to make the values.
 	 * @param text The body text of page elements that allow custom text. (SPET_TEXT and SPET_LOCATION)
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page).
-	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != nullptr && len(text) != 0).
+	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
 	 * @pre type != SPET_GOAL || ScriptGoal::IsValidGoal(reference).
 	 * @pre if type is SPET_GOAL and story_page is a global page, then referenced goal must be global.
 	 */
-	static StoryPageElementID NewElement(StoryPageID story_page_id, StoryPageElementType type, uint32 reference, Text *text);
+	static StoryPageElementID NewElement(StoryPageID story_page_id, StoryPageElementType type, SQInteger reference, Text *text);
 
 	/**
 	 * Update the content of a page element
@@ -215,14 +215,14 @@ public:
 	 * @param reference A reference value to the object that is referred to by some page element types. See also NewElement.
 	 * @param text The body text of page elements that allow custom text. See also NewElement.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page).
-	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != nullptr && len(text) != 0).
+	 * @pre (type != SPET_TEXT && type != SPET_LOCATION) || (text != null && len(text) != 0).
 	 * @pre type != SPET_LOCATION || ScriptMap::IsValidTile(reference).
 	 * @pre type != SPET_GOAL || ScriptGoal::IsValidGoal(reference).
 	 * @pre if type is SPET_GOAL and story_page is a global page, then referenced goal must be global.
 	 */
-	static bool UpdateElement(StoryPageElementID story_page_element_id, uint32 reference, Text *text);
+	static bool UpdateElement(StoryPageElementID story_page_element_id, SQInteger reference, Text *text);
 
 	/**
 	 * Get story page sort value. Each page has a sort value that is internally assigned and used
@@ -232,7 +232,7 @@ public:
 	 * @param story_page_id The story page to get the sort value of.
 	 * @return Page sort value.
 	 */
-	static uint32 GetPageSortValue(StoryPageID story_page_id);
+	static SQInteger GetPageSortValue(StoryPageID story_page_id);
 
 	/**
 	 * Get story page element sort value. Each page element has a sort value that is internally
@@ -243,7 +243,7 @@ public:
 	 * @param story_page_element_id The story page element to get the sort value of.
 	 * @return Page element sort value.
 	 */
-	static uint32 GetPageElementSortValue(StoryPageElementID story_page_element_id);
+	static SQInteger GetPageElementSortValue(StoryPageElementID story_page_element_id);
 
 	/**
 	 * Get the company which the page belongs to. If the page is global,
@@ -267,7 +267,7 @@ public:
 	 * @param story_page_id The story page to set the date for.
 	 * @param date Date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
 	static bool SetDate(StoryPageID story_page_id, ScriptDate::Date date);
@@ -277,7 +277,7 @@ public:
 	 * @param story_page_id The story page to update.
 	 * @param title Page title (can be either a raw string, a ScriptText object, or null).
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
 	static bool SetTitle(StoryPageID story_page_id, Text *title);
@@ -288,7 +288,7 @@ public:
 	 * companies are affecetd. Otherwise only the clients of the company which the page belongs
 	 * to are affected.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
 	static bool Show(StoryPageID story_page_id);
@@ -298,7 +298,7 @@ public:
 	 * associated with it.
 	 * @param story_page_id The story page to remove.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
 	static bool Remove(StoryPageID story_page_id);
@@ -307,7 +307,7 @@ public:
 	 * Removes a story page element.
 	 * @param story_page_element_id The story page element to remove.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPageElement(story_page_element_id).
 	 */
 	static bool RemoveElement(StoryPageElementID story_page_element_id);
@@ -315,6 +315,7 @@ public:
 	/**
 	 * Create a reference value for SPET_BUTTON_PUSH element parameters.
 	 * @param colour The colour for the face of the button.
+	 * @param flags The formatting and layout flags for the button.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
 	static StoryPageButtonFormatting MakePushButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags);
@@ -322,6 +323,7 @@ public:
 	/**
 	 * Create a reference value for SPET_BUTTON_TILE element parameters.
 	 * @param colour The colour for the face of the button.
+	 * @param flags The formatting and layout flags for the button.
 	 * @param cursor The mouse cursor to use when the player clicks the button and the game is ready for the player to select a tile.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
 	 */
@@ -330,6 +332,7 @@ public:
 	/**
 	 * Create a reference value for SPET_BUTTON_VEHICLE element parameters.
 	 * @param colour  The colour for the face of the button.
+	 * @param flags The formatting and layout flags for the button.
 	 * @param cursor  The mouse cursor to use when the player clicks the button and the game is ready for the player to select a vehicle.
 	 * @param vehtype The type of vehicle that will be selectable, or \c VT_INVALID to allow all types.
 	 * @return A reference value usable with the #NewElement and #UpdateElement functions.

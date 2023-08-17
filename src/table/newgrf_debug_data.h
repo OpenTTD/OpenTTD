@@ -10,6 +10,7 @@
 #include "../newgrf_house.h"
 #include "../newgrf_engine.h"
 #include "../newgrf_roadtype.h"
+#include "../newgrf_roadstop.h"
 
 /* Helper for filling property tables */
 #define NIP(prop, base, variable, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), prop, type }
@@ -42,6 +43,7 @@ static const NICallback _nic_vehicles[] = {
 	NICV(CBID_VEHICLE_SOUND_EFFECT,          CBM_VEHICLE_SOUND_EFFECT),
 	NICV(CBID_VEHICLE_AUTOREPLACE_SELECTION, CBM_NO_BIT),
 	NICV(CBID_VEHICLE_MODIFY_PROPERTY,       CBM_NO_BIT),
+	NICV(CBID_VEHICLE_NAME,                  CBM_VEHICLE_NAME),
 	NIC_END()
 };
 
@@ -74,7 +76,7 @@ class NIHVehicle : public NIHelper {
 	const void *GetInstance(uint index)const override    { return Vehicle::Get(index); }
 	const void *GetSpec(uint index) const override       { return Vehicle::Get(index)->GetEngine(); }
 	void SetStringParameters(uint index) const override  { this->SetSimpleStringParameters(STR_VEHICLE_NAME, index); }
-	uint32 GetGRFID(uint index) const override                   { return Vehicle::Get(index)->GetGRFID(); }
+	uint32_t GetGRFID(uint index) const override                   { return Vehicle::Get(index)->GetGRFID(); }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -138,7 +140,7 @@ class NIHStation : public NIHelper {
 	const void *GetInstance(uint index)const override    { return nullptr; }
 	const void *GetSpec(uint index) const override       { return GetStationSpec(index); }
 	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_STATION_NAME, GetStationIndex(index), index); }
-	uint32 GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? GetStationSpec(index)->grf_prop.grffile->grfid : 0; }
+	uint32_t GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? GetStationSpec(index)->grf_prop.grffile->grfid : 0; }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -203,7 +205,7 @@ class NIHHouse : public NIHelper {
 	const void *GetInstance(uint index)const override    { return nullptr; }
 	const void *GetSpec(uint index) const override       { return HouseSpec::Get(GetHouseType(index)); }
 	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_TOWN_NAME, GetTownIndex(index), index); }
-	uint32 GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? HouseSpec::Get(GetHouseType(index))->grf_prop.grffile->grfid : 0; }
+	uint32_t GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? HouseSpec::Get(GetHouseType(index))->grf_prop.grffile->grfid : 0; }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -253,7 +255,7 @@ class NIHIndustryTile : public NIHelper {
 	const void *GetInstance(uint index)const override    { return nullptr; }
 	const void *GetSpec(uint index) const override       { return GetIndustryTileSpec(GetIndustryGfx(index)); }
 	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_INDUSTRY_NAME, GetIndustryIndex(index), index); }
-	uint32 GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? GetIndustryTileSpec(GetIndustryGfx(index))->grf_prop.grffile->grfid : 0; }
+	uint32_t GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? GetIndustryTileSpec(GetIndustryGfx(index))->grf_prop.grffile->grfid : 0; }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -273,38 +275,38 @@ static const NIFeature _nif_industrytile = {
 /*** NewGRF industries ***/
 
 static const NIProperty _nip_industries[] = {
-	NIP(0x25, Industry, produced_cargo[ 0], NIT_CARGO, "produced cargo 0"),
-	NIP(0x25, Industry, produced_cargo[ 1], NIT_CARGO, "produced cargo 1"),
-	NIP(0x25, Industry, produced_cargo[ 2], NIT_CARGO, "produced cargo 2"),
-	NIP(0x25, Industry, produced_cargo[ 3], NIT_CARGO, "produced cargo 3"),
-	NIP(0x25, Industry, produced_cargo[ 4], NIT_CARGO, "produced cargo 4"),
-	NIP(0x25, Industry, produced_cargo[ 5], NIT_CARGO, "produced cargo 5"),
-	NIP(0x25, Industry, produced_cargo[ 6], NIT_CARGO, "produced cargo 6"),
-	NIP(0x25, Industry, produced_cargo[ 7], NIT_CARGO, "produced cargo 7"),
-	NIP(0x25, Industry, produced_cargo[ 8], NIT_CARGO, "produced cargo 8"),
-	NIP(0x25, Industry, produced_cargo[ 9], NIT_CARGO, "produced cargo 9"),
-	NIP(0x25, Industry, produced_cargo[10], NIT_CARGO, "produced cargo 10"),
-	NIP(0x25, Industry, produced_cargo[11], NIT_CARGO, "produced cargo 11"),
-	NIP(0x25, Industry, produced_cargo[12], NIT_CARGO, "produced cargo 12"),
-	NIP(0x25, Industry, produced_cargo[13], NIT_CARGO, "produced cargo 13"),
-	NIP(0x25, Industry, produced_cargo[14], NIT_CARGO, "produced cargo 14"),
-	NIP(0x25, Industry, produced_cargo[15], NIT_CARGO, "produced cargo 15"),
-	NIP(0x26, Industry, accepts_cargo[ 0],  NIT_CARGO, "accepted cargo 0"),
-	NIP(0x26, Industry, accepts_cargo[ 1],  NIT_CARGO, "accepted cargo 1"),
-	NIP(0x26, Industry, accepts_cargo[ 2],  NIT_CARGO, "accepted cargo 2"),
-	NIP(0x26, Industry, accepts_cargo[ 3],  NIT_CARGO, "accepted cargo 3"),
-	NIP(0x26, Industry, accepts_cargo[ 4],  NIT_CARGO, "accepted cargo 4"),
-	NIP(0x26, Industry, accepts_cargo[ 5],  NIT_CARGO, "accepted cargo 5"),
-	NIP(0x26, Industry, accepts_cargo[ 6],  NIT_CARGO, "accepted cargo 6"),
-	NIP(0x26, Industry, accepts_cargo[ 7],  NIT_CARGO, "accepted cargo 7"),
-	NIP(0x26, Industry, accepts_cargo[ 8],  NIT_CARGO, "accepted cargo 8"),
-	NIP(0x26, Industry, accepts_cargo[ 9],  NIT_CARGO, "accepted cargo 9"),
-	NIP(0x26, Industry, accepts_cargo[10],  NIT_CARGO, "accepted cargo 10"),
-	NIP(0x26, Industry, accepts_cargo[11],  NIT_CARGO, "accepted cargo 11"),
-	NIP(0x26, Industry, accepts_cargo[12],  NIT_CARGO, "accepted cargo 12"),
-	NIP(0x26, Industry, accepts_cargo[13],  NIT_CARGO, "accepted cargo 13"),
-	NIP(0x26, Industry, accepts_cargo[14],  NIT_CARGO, "accepted cargo 14"),
-	NIP(0x26, Industry, accepts_cargo[15],  NIT_CARGO, "accepted cargo 15"),
+	NIP(0x25, Industry, produced[ 0].cargo, NIT_CARGO, "produced cargo 0"),
+	NIP(0x25, Industry, produced[ 1].cargo, NIT_CARGO, "produced cargo 1"),
+	NIP(0x25, Industry, produced[ 2].cargo, NIT_CARGO, "produced cargo 2"),
+	NIP(0x25, Industry, produced[ 3].cargo, NIT_CARGO, "produced cargo 3"),
+	NIP(0x25, Industry, produced[ 4].cargo, NIT_CARGO, "produced cargo 4"),
+	NIP(0x25, Industry, produced[ 5].cargo, NIT_CARGO, "produced cargo 5"),
+	NIP(0x25, Industry, produced[ 6].cargo, NIT_CARGO, "produced cargo 6"),
+	NIP(0x25, Industry, produced[ 7].cargo, NIT_CARGO, "produced cargo 7"),
+	NIP(0x25, Industry, produced[ 8].cargo, NIT_CARGO, "produced cargo 8"),
+	NIP(0x25, Industry, produced[ 9].cargo, NIT_CARGO, "produced cargo 9"),
+	NIP(0x25, Industry, produced[10].cargo, NIT_CARGO, "produced cargo 10"),
+	NIP(0x25, Industry, produced[11].cargo, NIT_CARGO, "produced cargo 11"),
+	NIP(0x25, Industry, produced[12].cargo, NIT_CARGO, "produced cargo 12"),
+	NIP(0x25, Industry, produced[13].cargo, NIT_CARGO, "produced cargo 13"),
+	NIP(0x25, Industry, produced[14].cargo, NIT_CARGO, "produced cargo 14"),
+	NIP(0x25, Industry, produced[15].cargo, NIT_CARGO, "produced cargo 15"),
+	NIP(0x26, Industry, accepted[ 0].cargo, NIT_CARGO, "accepted cargo 0"),
+	NIP(0x26, Industry, accepted[ 1].cargo, NIT_CARGO, "accepted cargo 1"),
+	NIP(0x26, Industry, accepted[ 2].cargo, NIT_CARGO, "accepted cargo 2"),
+	NIP(0x26, Industry, accepted[ 3].cargo, NIT_CARGO, "accepted cargo 3"),
+	NIP(0x26, Industry, accepted[ 4].cargo, NIT_CARGO, "accepted cargo 4"),
+	NIP(0x26, Industry, accepted[ 5].cargo, NIT_CARGO, "accepted cargo 5"),
+	NIP(0x26, Industry, accepted[ 6].cargo, NIT_CARGO, "accepted cargo 6"),
+	NIP(0x26, Industry, accepted[ 7].cargo, NIT_CARGO, "accepted cargo 7"),
+	NIP(0x26, Industry, accepted[ 8].cargo, NIT_CARGO, "accepted cargo 8"),
+	NIP(0x26, Industry, accepted[ 9].cargo, NIT_CARGO, "accepted cargo 9"),
+	NIP(0x26, Industry, accepted[10].cargo, NIT_CARGO, "accepted cargo 10"),
+	NIP(0x26, Industry, accepted[11].cargo, NIT_CARGO, "accepted cargo 11"),
+	NIP(0x26, Industry, accepted[12].cargo, NIT_CARGO, "accepted cargo 12"),
+	NIP(0x26, Industry, accepted[13].cargo, NIT_CARGO, "accepted cargo 13"),
+	NIP(0x26, Industry, accepted[14].cargo, NIT_CARGO, "accepted cargo 14"),
+	NIP(0x26, Industry, accepted[15].cargo, NIT_CARGO, "accepted cargo 15"),
 	NIP_END()
 };
 
@@ -361,7 +363,7 @@ class NIHIndustry : public NIHelper {
 	const void *GetInstance(uint index)const override    { return Industry::Get(index); }
 	const void *GetSpec(uint index) const override       { return GetIndustrySpec(Industry::Get(index)->type); }
 	void SetStringParameters(uint index) const override  { this->SetSimpleStringParameters(STR_INDUSTRY_NAME, index); }
-	uint32 GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? GetIndustrySpec(Industry::Get(index)->type)->grf_prop.grffile->grfid : 0; }
+	uint32_t GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? GetIndustrySpec(Industry::Get(index)->type)->grf_prop.grffile->grfid : 0; }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -370,13 +372,13 @@ class NIHIndustry : public NIHelper {
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
-	uint GetPSASize(uint index, uint32 grfid) const override { return cpp_lengthof(PersistentStorage, storage); }
+	uint GetPSASize(uint index, uint32_t grfid) const override { return cpp_lengthof(PersistentStorage, storage); }
 
-	const int32 *GetPSAFirstPosition(uint index, uint32 grfid) const override
+	const int32_t *GetPSAFirstPosition(uint index, uint32_t grfid) const override
 	{
 		const Industry *i = (const Industry *)this->GetInstance(index);
 		if (i->psa == nullptr) return nullptr;
-		return (int32 *)(&i->psa->storage);
+		return (int32_t *)(&i->psa->storage);
 	}
 };
 
@@ -426,7 +428,7 @@ class NIHObject : public NIHelper {
 	const void *GetInstance(uint index)const override    { return Object::GetByTile(index); }
 	const void *GetSpec(uint index) const override       { return ObjectSpec::GetByTile(index); }
 	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT, INVALID_STRING_ID, index); }
-	uint32 GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? ObjectSpec::GetByTile(index)->grf_prop.grffile->grfid : 0; }
+	uint32_t GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? ObjectSpec::GetByTile(index)->grf_prop.grffile->grfid : 0; }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -460,7 +462,7 @@ class NIHRailType : public NIHelper {
 	const void *GetInstance(uint index)const override    { return nullptr; }
 	const void *GetSpec(uint index) const override       { return nullptr; }
 	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE, INVALID_STRING_ID, index); }
-	uint32 GetGRFID(uint index) const override           { return 0; }
+	uint32_t GetGRFID(uint index) const override           { return 0; }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -496,7 +498,7 @@ class NIHAirportTile : public NIHelper {
 	const void *GetInstance(uint index)const override    { return nullptr; }
 	const void *GetSpec(uint index) const override       { return AirportTileSpec::Get(GetAirportGfx(index)); }
 	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_STATION_NAME, GetStationIndex(index), index); }
-	uint32 GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? AirportTileSpec::Get(GetAirportGfx(index))->grf_prop.grffile->grfid : 0; }
+	uint32_t GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? AirportTileSpec::Get(GetAirportGfx(index))->grf_prop.grffile->grfid : 0; }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -534,9 +536,9 @@ class NIHTown : public NIHelper {
 	const void *GetInstance(uint index)const override    { return Town::Get(index); }
 	const void *GetSpec(uint index) const override       { return nullptr; }
 	void SetStringParameters(uint index) const override  { this->SetSimpleStringParameters(STR_TOWN_NAME, index); }
-	uint32 GetGRFID(uint index) const override           { return 0; }
+	uint32_t GetGRFID(uint index) const override           { return 0; }
 	bool PSAWithParameter() const override               { return true; }
-	uint GetPSASize(uint index, uint32 grfid) const override { return cpp_lengthof(PersistentStorage, storage); }
+	uint GetPSASize(uint index, uint32_t grfid) const override { return cpp_lengthof(PersistentStorage, storage); }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -544,13 +546,12 @@ class NIHTown : public NIHelper {
 		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
-	const int32 *GetPSAFirstPosition(uint index, uint32 grfid) const override
+	const int32_t *GetPSAFirstPosition(uint index, uint32_t grfid) const override
 	{
 		Town *t = Town::Get(index);
 
-		std::list<PersistentStorage *>::iterator iter;
-		for (iter = t->psa_list.begin(); iter != t->psa_list.end(); iter++) {
-			if ((*iter)->grfid == grfid) return (int32 *)(&(*iter)->storage[0]);
+		for (const auto &it : t->psa_list) {
+			if (it->grfid == grfid) return &it->storage[0];
 		}
 
 		return nullptr;
@@ -581,7 +582,7 @@ class NIHRoadType : public NIHelper {
 	const void *GetInstance(uint index) const override   { return nullptr; }
 	const void *GetSpec(uint index) const override       { return nullptr; }
 	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE, INVALID_STRING_ID, index); }
-	uint32 GetGRFID(uint index) const override           { return 0; }
+	uint32_t GetGRFID(uint index) const override           { return 0; }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
 	{
@@ -606,6 +607,64 @@ static const NIFeature _nif_tramtype = {
 	new NIHRoadType(),
 };
 
+#define NICRS(cb_id, bit) NIC(cb_id, RoadStopSpec, callback_mask, bit)
+static const NICallback _nic_roadstops[] = {
+	NICRS(CBID_STATION_AVAILABILITY,     CBM_ROAD_STOP_AVAIL),
+	NICRS(CBID_STATION_ANIM_START_STOP,  CBM_NO_BIT),
+	NICRS(CBID_STATION_ANIM_NEXT_FRAME,  CBM_ROAD_STOP_ANIMATION_NEXT_FRAME),
+	NICRS(CBID_STATION_ANIMATION_SPEED,  CBM_ROAD_STOP_ANIMATION_SPEED),
+	NIC_END()
+};
+
+static const NIVariable _nif_roadstops[] = {
+	NIV(0x40, "view/rotation"),
+	NIV(0x41, "stop type"),
+	NIV(0x42, "terrain type"),
+	NIV(0x43, "road type"),
+	NIV(0x44, "tram type"),
+	NIV(0x45, "town zone and Manhattan distance of town"),
+	NIV(0x46, "square of Euclidean distance of town"),
+	NIV(0x47, "player info"),
+	NIV(0x48, "bitmask of accepted cargoes"),
+	NIV(0x49, "current animation frame"),
+	NIV(0x60, "amount of cargo waiting"),
+	NIV(0x61, "time since last cargo pickup"),
+	NIV(0x62, "rating of cargo"),
+	NIV(0x63, "time spent on route"),
+	NIV(0x64, "information about last vehicle picking cargo up"),
+	NIV(0x65, "amount of cargo acceptance"),
+	NIV(0x66, "animation frame of nearby tile"),
+	NIV(0x67, "land info of nearby tiles"),
+	NIV(0x68, "road stop info of nearby tiles"),
+	NIV(0x69, "information about cargo accepted in the past"),
+	NIV(0x6A, "GRFID of nearby road stop tiles"),
+	NIV_END(),
+};
+
+class NIHRoadStop : public NIHelper {
+	bool IsInspectable(uint index) const override        { return GetRoadStopSpec(index) != nullptr; }
+	uint GetParent(uint index) const override            { return GetInspectWindowNumber(GSF_FAKE_TOWNS, BaseStation::GetByTile(index)->town->index); }
+	const void *GetInstance(uint index)const override    { return nullptr; }
+	const void *GetSpec(uint index) const override       { return GetRoadStopSpec(index); }
+	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_STATION_NAME, GetStationIndex(index), index); }
+	uint32_t GetGRFID(uint index) const override           { return (this->IsInspectable(index)) ? GetRoadStopSpec(index)->grf_prop.grffile->grfid : 0; }
+
+	uint Resolve(uint index, uint var, uint32_t param, bool *avail) const override
+	{
+		int view = GetRoadStopDir(index);
+		if (IsDriveThroughStopTile(index)) view += 4;
+		RoadStopResolverObject ro(GetRoadStopSpec(index), BaseStation::GetByTile(index), index, INVALID_ROADTYPE, GetStationType(index), view);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+	}
+};
+
+static const NIFeature _nif_roadstop = {
+	nullptr,
+	_nic_roadstops,
+	_nif_roadstops,
+	new NIHRoadStop(),
+};
+
 /** Table with all NIFeatures. */
 static const NIFeature * const _nifeatures[] = {
 	&_nif_vehicle,      // GSF_TRAINS
@@ -628,6 +687,7 @@ static const NIFeature * const _nifeatures[] = {
 	&_nif_airporttile,  // GSF_AIRPORTTILES
 	&_nif_roadtype,     // GSF_ROADTYPES
 	&_nif_tramtype,     // GSF_TRAMTYPES
+	&_nif_roadstop,     // GSF_ROADSTOPS
 	&_nif_town,         // GSF_FAKE_TOWNS
 };
 static_assert(lengthof(_nifeatures) == GSF_FAKE_END);

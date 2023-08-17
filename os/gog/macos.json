@@ -1,0 +1,65 @@
+{
+    "project": {
+        "baseProductId": "1293297882",
+        "clientId": "CLIENT_ID",
+        "clientSecret": "CLIENT_SECRET",
+        "version": "VERSION",
+        "installDirectory": "OpenTTD",
+        "name": "OpenTTD",
+        "platform": "osx",
+        "tags": [
+            "editor_v_1_4_0"
+        ],
+        "languageMode": "together",
+        "products": [
+            {
+                "name": "OpenTTD",
+                "productId": "1293297882",
+                "depots": [
+                    {
+                        "name": "MacOS",
+                        "folder": "macos",
+                        "languages": [
+                            "en-US"
+                        ]
+                    },
+                    {
+                        "name": "OpenGFX",
+                        "folder": "opengfx",
+                        "languages": [
+                            "en-US"
+                        ]
+                    },
+                    {
+                        "name": "OpenMSX",
+                        "folder": "openmsx",
+                        "languages": [
+                            "en-US"
+                        ]
+                    },
+                    {
+                        "name": "OpenSFX",
+                        "folder": "opensfx",
+                        "languages": [
+                            "en-US"
+                        ]
+                    }
+                ],
+                "tasks": [
+                    {
+                        "type": "FileTask",
+                        "name": "OpenTTD",
+                        "languages": [
+                            "en-US"
+                        ],
+                        "category": "game",
+                        "path": "OpenTTD.app/Contents/MacOS/openttd",
+                        "isPrimary": true
+                    }
+                ],
+                "supportDepots": []
+            }
+        ]
+    }
+}
+

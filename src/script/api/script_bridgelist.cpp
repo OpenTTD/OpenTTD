@@ -21,11 +21,11 @@ ScriptBridgeList::ScriptBridgeList()
 	}
 }
 
-ScriptBridgeList_Length::ScriptBridgeList_Length(uint length)
+ScriptBridgeList_Length::ScriptBridgeList_Length(SQInteger length)
 {
 	for (byte j = 0; j < MAX_BRIDGES; j++) {
 		if (ScriptBridge::IsValidBridge(j)) {
-			if (length >= (uint)ScriptBridge::GetMinLength(j) && length <= (uint)ScriptBridge::GetMaxLength(j)) this->AddItem(j);
+			if (length >= ScriptBridge::GetMinLength(j) && length <= ScriptBridge::GetMaxLength(j)) this->AddItem(j);
 		}
 	}
 }

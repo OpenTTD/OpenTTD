@@ -56,6 +56,7 @@ enum StringControlCode {
 	SCC_CARGO_TINY,
 	SCC_CARGO_LIST,
 	SCC_POWER,
+	SCC_POWER_TO_WEIGHT,
 	SCC_VOLUME_LONG,
 	SCC_VOLUME_SHORT,
 	SCC_WEIGHT_LONG,
@@ -113,6 +114,7 @@ enum StringControlCode {
 	SCC_GRAY,
 	SCC_DKBLUE,
 	SCC_BLACK,
+	SCC_COLOUR,
 	SCC_PUSH_COLOUR,
 	SCC_POP_COLOUR,
 
@@ -147,8 +149,8 @@ enum StringControlCode {
 	SCC_NEWGRF_PRINT_WORD_CARGO_SHORT,                ///< 9A 1C: Read 2 + 2 bytes from the stack as cargo type (translated) and unsigned cargo amount
 	SCC_NEWGRF_PRINT_WORD_CARGO_TINY,                 ///< 9A 1D: Read 2 + 2 bytes from the stack as cargo type (translated) and unsigned cargo amount
 	SCC_NEWGRF_PRINT_WORD_CARGO_NAME,                 ///< 9A 1E: Read 2 bytes from the stack as cargo name
+	SCC_NEWGRF_PRINT_DWORD_FORCE,                     ///< 9A 21: Read 4 bytes from the stack as unsigned force
 	SCC_NEWGRF_PUSH_WORD,                             ///< 9A 03: Pushes 2 bytes onto the stack
-	SCC_NEWGRF_UNPRINT,                               ///< 9A 04: "Unprints" the given number of bytes from the string
 	SCC_NEWGRF_DISCARD_WORD,                          ///< 85: Discard the next two bytes
 	SCC_NEWGRF_ROTATE_TOP_4_WORDS,                    ///< 86: Rotate the top 4 words of the stack (W4 W1 W2 W3)
 	SCC_NEWGRF_LAST = SCC_NEWGRF_ROTATE_TOP_4_WORDS,

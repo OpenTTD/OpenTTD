@@ -35,7 +35,7 @@ ScriptPriorityQueue::~ScriptPriorityQueue()
 SQInteger ScriptPriorityQueue::Insert(HSQUIRRELVM vm)
 {
 	HSQOBJECT item;
-	int64 priority;
+	SQInteger priority;
 	sq_resetobject(&item);
 	sq_getstackobj(vm, 2, &item);
 	sq_getinteger(vm, 3, &priority);
@@ -45,7 +45,7 @@ SQInteger ScriptPriorityQueue::Insert(HSQUIRRELVM vm)
 	this->queue.emplace_back(priority, item);
 	std::push_heap(this->queue.begin(), this->queue.end(), this->comp);
 
-	return SQConvert::Return(vm, true);
+	return SQConvert::Return<bool>::Set(vm, true);
 }
 
 SQInteger ScriptPriorityQueue::Pop(HSQUIRRELVM vm)
@@ -61,7 +61,7 @@ SQInteger ScriptPriorityQueue::Pop(HSQUIRRELVM vm)
 	this->queue.pop_back();
 
 	/* Store the object on the Squirrel stack before releasing it to make sure the ref count can't drop to zero. */
-	auto ret = SQConvert::Return(vm, item);
+	auto ret = SQConvert::Return<HSQOBJECT>::Set(vm, item);
 	sq_release(vm, &item);
 	return ret;
 }
@@ -74,7 +74,7 @@ SQInteger ScriptPriorityQueue::Peek(HSQUIRRELVM vm)
 		return 1;
 	}
 
-	return SQConvert::Return(vm, this->queue.front().second);
+	return SQConvert::Return<HSQOBJECT>::Set(vm, this->queue.front().second);
 }
 
 SQInteger ScriptPriorityQueue::Exists(HSQUIRRELVM vm)
@@ -83,7 +83,7 @@ SQInteger ScriptPriorityQueue::Exists(HSQUIRRELVM vm)
 	sq_resetobject(&item);
 	sq_getstackobj(vm, 2, &item);
 
-	return SQConvert::Return(vm, std::find(this->queue.cbegin(), this->queue.cend(), item) != this->queue.cend());
+	return SQConvert::Return<bool>::Set(vm, std::find(this->queue.cbegin(), this->queue.cend(), item) != this->queue.cend());
 }
 
 SQInteger ScriptPriorityQueue::Clear(HSQUIRRELVM vm)

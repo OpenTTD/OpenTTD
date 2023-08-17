@@ -20,6 +20,8 @@
 
 #include "../../safeguards.h"
 
+static std::vector<std::unique_ptr<NetworkGameSocketHandler>> _deferred_deletions;
+
 /**
  * Create a new socket for the game connection.
  * @param s The socket to connect with.
@@ -42,7 +44,6 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool error)
 {
 	/* Clients drop back to the main menu */
 	if (!_network_server && _networking) {
-		extern void ClientNetworkEmergencySave(); // from network_client.cpp
 		ClientNetworkEmergencySave();
 		_switch_mode = SM_MENU;
 		_networking = false;
@@ -64,9 +65,15 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 {
 	PacketGameType type = (PacketGameType)p->Recv_uint8();
 
+	if (this->HasClientQuit()) {
+		Debug(net, 0, "[tcp/game] Received invalid packet from client {}", this->client_id);
+		this->CloseConnection();
+		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	}
+
 	this->last_packet = std::chrono::steady_clock::now();
 
-	switch (this->HasClientQuit() ? PACKET_END : type) {
+	switch (type) {
 		case PACKET_SERVER_FULL:                  return this->Receive_SERVER_FULL(p);
 		case PACKET_SERVER_BANNED:                return this->Receive_SERVER_BANNED(p);
 		case PACKET_CLIENT_JOIN:                  return this->Receive_CLIENT_JOIN(p);
@@ -113,13 +120,8 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 		case PACKET_SERVER_CONFIG_UPDATE:         return this->Receive_SERVER_CONFIG_UPDATE(p);
 
 		default:
+			Debug(net, 0, "[tcp/game] Received invalid packet type {} from client {}", type, this->client_id);
 			this->CloseConnection();
-
-			if (this->HasClientQuit()) {
-				Debug(net, 0, "[tcp/game] Received invalid packet type {} from client {}", type, this->client_id);
-			} else {
-				Debug(net, 0, "[tcp/game] Received illegal packet from client {}", this->client_id);
-			}
 			return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 }
@@ -198,3 +200,15 @@ NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_MOVE(Packet *p) { ret
 NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_MOVE); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_COMPANY_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_COMPANY_UPDATE); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_CONFIG_UPDATE); }
+
+void NetworkGameSocketHandler::DeferDeletion()
+{
+	_deferred_deletions.emplace_back(this);
+	this->is_pending_deletion = true;
+}
+
+/* static */ void NetworkGameSocketHandler::ProcessDeferredDeletions()
+{
+	/* Calls deleter on all items */
+	_deferred_deletions.clear();
+}

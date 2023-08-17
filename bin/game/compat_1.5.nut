@@ -20,3 +20,16 @@ GSCompany.ChangeBankBalance <- function(company, delta, expenses_type)
 {
 	return GSCompany._ChangeBankBalance(company, delta, expenses_type, GSMap.TILE_INVALID);
 }
+
+/* 13 really checks RoadType against RoadType */
+GSRoad._HasRoadType <- GSRoad.HasRoadType;
+GSRoad.HasRoadType <- function(tile, road_type)
+{
+	local list = GSRoadTypeList(GSRoad.GetRoadTramType(road_type));
+	foreach (rt, _ in list) {
+		if (GSRoad._HasRoadType(tile, rt)) {
+			return true;
+		}
+	}
+	return false;
+}

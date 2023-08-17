@@ -66,7 +66,7 @@ struct AIPLChunkHandler : ChunkHandler {
 
 		/* Free all current data */
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-			AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(nullptr);
+			AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(std::nullopt);
 		}
 
 		CompanyID index;
@@ -77,7 +77,7 @@ struct AIPLChunkHandler : ChunkHandler {
 			_ai_saveload_version = -1;
 			SlObject(nullptr, slt);
 
-			if (_networking && !_network_server) {
+			if (_game_mode == GM_MENU || (_networking && !_network_server)) {
 				if (Company::IsValidAiID(index)) AIInstance::LoadEmpty();
 				continue;
 			}
@@ -85,13 +85,13 @@ struct AIPLChunkHandler : ChunkHandler {
 			AIConfig *config = AIConfig::GetConfig(index, AIConfig::SSS_FORCE_GAME);
 			if (_ai_saveload_name.empty()) {
 				/* A random AI. */
-				config->Change(nullptr, -1, false, true);
+				config->Change(std::nullopt, -1, false, true);
 			} else {
-				config->Change(_ai_saveload_name.c_str(), _ai_saveload_version, false, _ai_saveload_is_random);
+				config->Change(_ai_saveload_name, _ai_saveload_version, false, _ai_saveload_is_random);
 				if (!config->HasScript()) {
 					/* No version of the AI available that can load the data. Try to load the
 					 * latest version of the AI instead. */
-					config->Change(_ai_saveload_name.c_str(), -1, false, _ai_saveload_is_random);
+					config->Change(_ai_saveload_name, -1, false, _ai_saveload_is_random);
 					if (!config->HasScript()) {
 						if (_ai_saveload_name.compare("%_dummy") != 0) {
 							Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
@@ -112,11 +112,8 @@ struct AIPLChunkHandler : ChunkHandler {
 
 			config->StringToSettings(_ai_saveload_settings);
 
-			/* Start the AI directly if it was active in the savegame */
-			if (Company::IsValidAiID(index)) {
-				AI::StartNew(index, false);
-				AI::Load(index, _ai_saveload_version);
-			}
+			/* Load the AI saved data */
+			if (Company::IsValidAiID(index)) config->SetToLoadData(AIInstance::Load(_ai_saveload_version));
 		}
 	}
 

@@ -9,7 +9,7 @@
 
 #include "../../stdafx.h"
 #include "script_date.hpp"
-#include "../../date_func.h"
+#include "../../timer/timer_game_calendar.h"
 
 #include <time.h>
 
@@ -22,46 +22,46 @@
 
 /* static */ ScriptDate::Date ScriptDate::GetCurrentDate()
 {
-	return (ScriptDate::Date)_date;
+	return (ScriptDate::Date)(int32_t)TimerGameCalendar::date;
 }
 
-/* static */ int32 ScriptDate::GetYear(ScriptDate::Date date)
+/* static */ SQInteger ScriptDate::GetYear(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
-	::ConvertDateToYMD(date, &ymd);
-	return ymd.year;
+	::TimerGameCalendar::YearMonthDay ymd;
+	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	return (int32_t)ymd.year;
 }
 
-/* static */ int32 ScriptDate::GetMonth(ScriptDate::Date date)
+/* static */ SQInteger ScriptDate::GetMonth(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
-	::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd;
+	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 	return ymd.month + 1;
 }
 
-/* static */ int32 ScriptDate::GetDayOfMonth(ScriptDate::Date date)
+/* static */ SQInteger ScriptDate::GetDayOfMonth(ScriptDate::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
-	::YearMonthDay ymd;
-	::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd;
+	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
 	return ymd.day;
 }
 
-/* static */ ScriptDate::Date ScriptDate::GetDate(int32 year, int32 month, int32 day_of_month)
+/* static */ ScriptDate::Date ScriptDate::GetDate(SQInteger year, SQInteger month, SQInteger day_of_month)
 {
 	if (month < 1 || month > 12) return DATE_INVALID;
 	if (day_of_month < 1 || day_of_month > 31) return DATE_INVALID;
 	if (year < 0 || year > MAX_YEAR) return DATE_INVALID;
 
-	return (ScriptDate::Date)::ConvertYMDToDate(year, month - 1, day_of_month);
+	return (ScriptDate::Date)(int32_t)::TimerGameCalendar::ConvertYMDToDate(year, month - 1, day_of_month);
 }
 
-/* static */ int32 ScriptDate::GetSystemTime()
+/* static */ SQInteger ScriptDate::GetSystemTime()
 {
 	time_t t;
 	time(&t);

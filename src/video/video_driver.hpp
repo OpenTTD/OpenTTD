@@ -21,8 +21,6 @@
 #include <condition_variable>
 #include <mutex>
 #include <thread>
-#include <vector>
-#include <functional>
 
 extern std::string _ini_videodriver;
 extern std::vector<Dimension> _resolutions;
@@ -142,7 +140,7 @@ public:
 	 * Get a pointer to the animation buffer of the video back-end.
 	 * @return Pointer to the buffer or nullptr if no animation buffer is supported.
 	 */
-	virtual uint8 *GetAnimBuffer()
+	virtual uint8_t *GetAnimBuffer()
 	{
 		return nullptr;
 	}
@@ -167,15 +165,18 @@ public:
 	}
 
 	/**
-	 * Get a suggested default GUI zoom taking screen DPI into account.
+	 * Get a suggested default GUI scale taking screen DPI into account.
 	 */
-	virtual ZoomLevel GetSuggestedUIZoom()
+	virtual int GetSuggestedUIScale()
 	{
 		float dpi_scale = this->GetDPIScale();
 
-		if (dpi_scale >= 3.0f) return ZOOM_LVL_NORMAL;
-		if (dpi_scale >= 1.5f) return ZOOM_LVL_OUT_2X;
-		return ZOOM_LVL_OUT_4X;
+		return Clamp(dpi_scale * 100, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
+	}
+
+	virtual const char *GetInfoString() const
+	{
+		return this->GetName();
 	}
 
 	/**
@@ -199,6 +200,8 @@ public:
 	static VideoDriver *GetInstance() {
 		return static_cast<VideoDriver*>(*DriverFactoryBase::GetActiveDriver(Driver::DT_VIDEO));
 	}
+
+	static std::string GetCaption();
 
 	/**
 	 * Helper struct to ensure the video buffer is locked and ready for drawing. The destructor

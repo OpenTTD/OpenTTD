@@ -44,7 +44,7 @@ public:
 	 * @note Results achieved in the past offer no guarantee for the future.
 	 * @return True if and only if the setting is valid.
 	 */
-	static bool IsValid(const char *setting);
+	static bool IsValid(const std::string &setting);
 
 	/**
 	 * Gets the value of the game setting.
@@ -57,24 +57,24 @@ public:
 	 * @note Results achieved in the past offer no guarantee for the future.
 	 * @return The value for the setting.
 	 */
-	static int32 GetValue(const char *setting);
+	static SQInteger GetValue(const std::string &setting);
 
 	/**
 	 * Sets the value of the game setting.
 	 * @param setting The setting to set the value of.
 	 * @param value The value to set the setting to.
+	 *              The value will be clamped to MIN(int32_t) .. MAX(int32_t).
 	 * @pre IsValid(setting).
 	 * @return True if the action succeeded.
 	 * @note Results achieved in the past offer no guarantee for the future.
 	 * @api -ai
 	 */
-	static bool SetValue(const char *setting, int value);
+	static bool SetValue(const std::string &setting, SQInteger value);
 
 	/**
 	 * Checks whether the given vehicle-type is disabled for companies.
 	 * @param vehicle_type The vehicle-type to check.
 	 * @return True if the vehicle-type is disabled.
-	 * @api -game
 	 */
 	static bool IsDisabledVehicleType(ScriptVehicle::VehicleType vehicle_type);
 };

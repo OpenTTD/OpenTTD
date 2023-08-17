@@ -11,7 +11,7 @@
 #define NETWORK_GUI_H
 
 #include "../company_type.h"
-#include "../date_type.h"
+#include "../timer/timer_game_calendar.h"
 #include "../economy_type.h"
 #include "../window_type.h"
 #include "network_type.h"
@@ -24,16 +24,17 @@ void ShowNetworkGameWindow();
 void ShowClientList();
 void ShowNetworkCompanyPasswordWindow(Window *parent);
 void ShowNetworkAskRelay(const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token);
-
+void ShowNetworkAskSurvey();
+void ShowSurveyResultTextfileWindow();
 
 /** Company information stored at the client side */
 struct NetworkCompanyInfo : NetworkCompanyStats {
 	std::string company_name; ///< Company name
-	Year inaugurated_year;    ///< What year the company started in
+	TimerGameCalendar::Year inaugurated_year; ///< What year the company started in
 	Money company_value;      ///< The company value
 	Money money;              ///< The amount of money the company has
 	Money income;             ///< How much did the company earn last year
-	uint16 performance;       ///< What was his performance last month?
+	uint16_t performance;       ///< What was his performance last month?
 	bool use_password;        ///< Is there a password
 	std::string clients;      ///< The clients that control this company (Name1, name2, ..)
 };

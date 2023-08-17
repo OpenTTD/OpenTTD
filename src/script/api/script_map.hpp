@@ -19,7 +19,7 @@
  */
 class ScriptMap : public ScriptObject {
 public:
-	static const int TILE_INVALID = (int)INVALID_TILE; ///< Invalid TileIndex.
+	static const int TILE_INVALID = static_cast<uint32_t>(INVALID_TILE); ///< Invalid TileIndex.
 
 	/**
 	 * Checks whether the given tile is valid.
@@ -33,21 +33,21 @@ public:
 	 * @return The size of the map in tiles.
 	 * @post Return value is always positive.
 	 */
-	static TileIndex GetMapSize();
+	static SQInteger GetMapSize();
 
 	/**
 	 * Gets the amount of tiles along the SW and NE border.
 	 * @return The length along the SW and NE borders.
 	 * @post Return value is always positive.
 	 */
-	static uint32 GetMapSizeX();
+	static SQInteger GetMapSizeX();
 
 	/**
 	 * Gets the amount of tiles along the SE and NW border.
 	 * @return The length along the SE and NW borders.
 	 * @post Return value is always positive.
 	 */
-	static uint32 GetMapSizeY();
+	static SQInteger GetMapSizeY();
 
 	/**
 	 * Gets the place along the SW/NE border (X-value).
@@ -56,7 +56,7 @@ public:
 	 * @return The X-value.
 	 * @post Return value is always lower than GetMapSizeX().
 	 */
-	static int32 GetTileX(TileIndex tile);
+	static SQInteger GetTileX(TileIndex tile);
 
 	/**
 	 * Gets the place along the SE/NW border (Y-value).
@@ -65,17 +65,18 @@ public:
 	 * @return The Y-value.
 	 * @post Return value is always lower than GetMapSizeY().
 	 */
-	static int32 GetTileY(TileIndex tile);
+	static SQInteger GetTileY(TileIndex tile);
 
 	/**
 	 * Gets the TileIndex given a x,y-coordinate.
 	 * @param x The X coordinate.
 	 * @param y The Y coordinate.
-	 * @pre x < GetMapSizeX().
-	 * @pre y < GetMapSizeY().
 	 * @return The TileIndex for the given (x,y) coordinate.
+	 * @post When 0 <= x && x < GetMapSizeX() && 0 <= y && y < GetMapSizeY(), then a valid tile index is returned.
+	 *       Otherwise it may be invalid, but could be used to calculated neighbouring tiles, e.g. tile + AIMap.GetTileIndex(-1, -1) gets
+	 *       the tile index of the tile to the north. But be aware that even when tile is a valid tile, the result might not be a valid tile.
 	 */
-	static TileIndex GetTileIndex(uint32 x, uint32 y);
+	static TileIndex GetTileIndex(SQInteger x, SQInteger y);
 
 	/**
 	 * Calculates the Manhattan distance; the difference of
@@ -86,7 +87,7 @@ public:
 	 * @pre IsValidTile(tile_to).
 	 * @return The Manhattan distance between the tiles.
 	 */
-	static int32 DistanceManhattan(TileIndex tile_from, TileIndex tile_to);
+	static SQInteger DistanceManhattan(TileIndex tile_from, TileIndex tile_to);
 
 	/**
 	 * Calculates the distance between two tiles via 1D calculation.
@@ -98,7 +99,7 @@ public:
 	 * @pre IsValidTile(tile_to).
 	 * @return The maximum distance between the tiles.
 	 */
-	static int32 DistanceMax(TileIndex tile_from, TileIndex tile_to);
+	static SQInteger DistanceMax(TileIndex tile_from, TileIndex tile_to);
 
 	/**
 	 * The squared distance between the two tiles.
@@ -110,7 +111,7 @@ public:
 	 * @pre IsValidTile(tile_to).
 	 * @return The squared distance between the tiles.
 	 */
-	static int32 DistanceSquare(TileIndex tile_from, TileIndex tile_to);
+	static SQInteger DistanceSquare(TileIndex tile_from, TileIndex tile_to);
 
 	/**
 	 * Calculates the shortest distance to the edge.
@@ -118,7 +119,7 @@ public:
 	 * @pre IsValidTile(tile).
 	 * @return The distances to the closest edge.
 	 */
-	static int32 DistanceFromEdge(TileIndex tile);
+	static SQInteger DistanceFromEdge(TileIndex tile);
 };
 
 #endif /* SCRIPT_MAP_HPP */

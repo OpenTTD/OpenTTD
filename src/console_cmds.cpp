@@ -23,12 +23,13 @@
 #include "settings_func.h"
 #include "fios.h"
 #include "fileio_func.h"
+#include "fontcache.h"
 #include "screenshot.h"
 #include "genworld.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "company_func.h"
 #include "gamelog.h"
 #include "ai/ai.hpp"
@@ -41,7 +42,11 @@
 #include "rail.h"
 #include "game/game.hpp"
 #include "table/strings.h"
-#include "walltime_func.h"
+#include "3rdparty/fmt/chrono.h"
+#include "company_cmd.h"
+#include "misc_cmd.h"
+
+#include <sstream>
 
 #include "safeguards.h"
 
@@ -240,7 +245,7 @@ DEF_CONSOLE_CMD(ConResetTile)
 	}
 
 	if (argc == 2) {
-		uint32 result;
+		uint32_t result;
 		if (GetArgumentInteger(&result, argv[1])) {
 			DoClearSquare((TileIndex)result);
 			return true;
@@ -250,6 +255,63 @@ DEF_CONSOLE_CMD(ConResetTile)
 	return false;
 }
 #endif /* _DEBUG */
+
+/**
+ * Zoom map to given level.
+ * param level As defined by ZoomLevel and as limited by zoom_min/zoom_max from GUISettings.
+ * @return True when either console help was shown or a proper amount of parameters given.
+ */
+DEF_CONSOLE_CMD(ConZoomToLevel)
+{
+	switch (argc) {
+		case 0:
+			IConsolePrint(CC_HELP, "Set the current zoom level of the main viewport.");
+			IConsolePrint(CC_HELP, "Usage: 'zoomto <level>'.");
+			IConsolePrint(
+				CC_HELP,
+				ZOOM_LVL_MIN < _settings_client.gui.zoom_min ?
+					"The lowest zoom-in level allowed by current client settings is {}." :
+					"The lowest supported zoom-in level is {}.",
+				std::max(ZOOM_LVL_MIN, _settings_client.gui.zoom_min)
+			);
+			IConsolePrint(
+				CC_HELP,
+				_settings_client.gui.zoom_max < ZOOM_LVL_MAX ?
+					"The highest zoom-out level allowed by current client settings is {}." :
+					"The highest supported zoom-out level is {}.",
+				std::min(_settings_client.gui.zoom_max, ZOOM_LVL_MAX)
+			);
+			return true;
+
+		case 2: {
+			uint32_t level;
+			if (GetArgumentInteger(&level, argv[1])) {
+				/* In case ZOOM_LVL_MIN is more than 0, the next if statement needs to be amended.
+				 * A simple check for less than ZOOM_LVL_MIN does not work here because we are
+				 * reading an unsigned integer from the console, so just check for a '-' char. */
+				static_assert(ZOOM_LVL_MIN == 0);
+				if (argv[1][0] == '-') {
+					IConsolePrint(CC_ERROR, "Zoom-in levels below {} are not supported.", ZOOM_LVL_MIN);
+				} else if (level < _settings_client.gui.zoom_min) {
+					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming in below level {}.", _settings_client.gui.zoom_min);
+				} else if (level > ZOOM_LVL_MAX) {
+					IConsolePrint(CC_ERROR, "Zoom-in levels above {} are not supported.", ZOOM_LVL_MAX);
+				} else if (level > _settings_client.gui.zoom_max) {
+					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming out beyond level {}.", _settings_client.gui.zoom_max);
+				} else {
+					Window *w = GetMainWindow();
+					Viewport *vp = w->viewport;
+					while (vp->zoom > level) DoZoomInOutWindow(ZOOM_IN, w);
+					while (vp->zoom < level) DoZoomInOutWindow(ZOOM_OUT, w);
+				}
+				return true;
+			}
+			break;
+		}
+	}
+
+	return false;
+}
 
 /**
  * Scroll to a tile on the map.
@@ -262,34 +324,44 @@ DEF_CONSOLE_CMD(ConResetTile)
  */
 DEF_CONSOLE_CMD(ConScrollToTile)
 {
-	switch (argc) {
-		case 0:
-			IConsolePrint(CC_HELP, "Center the screen on a given tile.");
-			IConsolePrint(CC_HELP, "Usage: 'scrollto <tile>' or 'scrollto <x> <y>'.");
-			IConsolePrint(CC_HELP, "Numbers can be either decimal (34161) or hexadecimal (0x4a5B).");
-			return true;
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Center the screen on a given tile.");
+		IConsolePrint(CC_HELP, "Usage: 'scrollto [instant] <tile>' or 'scrollto [instant] <x> <y>'.");
+		IConsolePrint(CC_HELP, "Numbers can be either decimal (34161) or hexadecimal (0x4a5B).");
+		IConsolePrint(CC_HELP, "'instant' will immediately move and redraw viewport without smooth scrolling.");
+		return true;
+	}
+	if (argc < 2) return false;
 
-		case 2: {
-			uint32 result;
-			if (GetArgumentInteger(&result, argv[1])) {
-				if (result >= MapSize()) {
+	uint32_t arg_index = 1;
+	bool instant = false;
+	if (strcmp(argv[arg_index], "instant") == 0) {
+		++arg_index;
+		instant = true;
+	}
+
+	switch (argc - arg_index) {
+		case 1: {
+			uint32_t result;
+			if (GetArgumentInteger(&result, argv[arg_index])) {
+				if (result >= Map::Size()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
-				ScrollMainWindowToTile((TileIndex)result);
+				ScrollMainWindowToTile((TileIndex)result, instant);
 				return true;
 			}
 			break;
 		}
 
-		case 3: {
-			uint32 x, y;
-			if (GetArgumentInteger(&x, argv[1]) && GetArgumentInteger(&y, argv[2])) {
-				if (x >= MapSizeX() || y >= MapSizeY()) {
+		case 2: {
+			uint32_t x, y;
+			if (GetArgumentInteger(&x, argv[arg_index]) && GetArgumentInteger(&y, argv[arg_index + 1])) {
+				if (x >= Map::SizeX() || y >= Map::SizeY()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
-				ScrollMainWindowToTile(TileXY(x, y));
+				ScrollMainWindowToTile(TileXY(x, y), instant);
 				return true;
 			}
 			break;
@@ -312,7 +384,8 @@ DEF_CONSOLE_CMD(ConSave)
 	}
 
 	if (argc == 2) {
-		char *filename = str_fmt("%s.sav", argv[1]);
+		std::string filename = argv[1];
+		filename += ".sav";
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
 		if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
@@ -320,7 +393,6 @@ DEF_CONSOLE_CMD(ConSave)
 		} else {
 			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);
 		}
-		free(filename);
 		return true;
 	}
 
@@ -359,9 +431,7 @@ DEF_CONSOLE_CMD(ConLoad)
 	if (item != nullptr) {
 		if (GetAbstractFileType(item->type) == FT_SAVEGAME) {
 			_switch_mode = SM_LOAD_GAME;
-			_file_to_saveload.SetMode(item->type);
-			_file_to_saveload.SetName(FiosBrowseTo(item));
-			_file_to_saveload.SetTitle(item->title);
+			_file_to_saveload.Set(*item);
 		} else {
 			IConsolePrint(CC_ERROR, "'{}' is not a savegame.", file);
 		}
@@ -386,8 +456,8 @@ DEF_CONSOLE_CMD(ConRemove)
 	_console_file_list.ValidateFileList();
 	const FiosItem *item = _console_file_list.FindItem(file);
 	if (item != nullptr) {
-		if (!FiosDelete(item->name)) {
-			IConsolePrint(CC_ERROR, "Failed to delete '{}'.", file);
+		if (unlink(item->name.c_str()) != 0) {
+			IConsolePrint(CC_ERROR, "Failed to delete '{}'.", item->name);
 		}
 	} else {
 		IConsolePrint(CC_ERROR, "'{}' could not be found.", file);
@@ -444,8 +514,6 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 
 DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 {
-	const char *path;
-
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Print out the current working directory. Usage: 'pwd'.");
 		return true;
@@ -455,8 +523,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	_console_file_list.ValidateFileList(true);
 	_console_file_list.InvalidateFileList();
 
-	FiosGetDescText(&path, nullptr);
-	IConsolePrint(CC_DEFAULT, path);
+	IConsolePrint(CC_DEFAULT, FiosGetCurrentPath());
 	return true;
 }
 
@@ -630,7 +697,7 @@ DEF_CONSOLE_CMD(ConPauseGame)
 	}
 
 	if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
-		DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+		Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
 		if (!_networking) IConsolePrint(CC_DEFAULT, "Game paused.");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Game is already paused.");
@@ -652,7 +719,7 @@ DEF_CONSOLE_CMD(ConUnpauseGame)
 	}
 
 	if ((_pause_mode & PM_PAUSED_NORMAL) != PM_UNPAUSED) {
-		DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE);
+		Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, false);
 		if (!_networking) IConsolePrint(CC_DEFAULT, "Game unpaused.");
 	} else if ((_pause_mode & PM_PAUSED_ERROR) != PM_UNPAUSED) {
 		IConsolePrint(CC_DEFAULT, "Game is in error state and cannot be unpaused via console.");
@@ -857,13 +924,14 @@ DEF_CONSOLE_CMD(ConResetCompany)
 		return false;
 	}
 	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
+	assert(ci != nullptr);
 	if (ci->client_playas == index) {
 		IConsolePrint(CC_ERROR, "Cannot remove company: the server is connected to that company.");
 		return true;
 	}
 
 	/* It is safe to remove this company */
-	DoCommandP(0, CCA_DELETE | index << 16 | CRR_MANUAL << 24, 0, CMD_COMPANY_CTRL);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, index, CRR_MANUAL, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "Company deleted.");
 
 	return true;
@@ -996,6 +1064,9 @@ DEF_CONSOLE_CMD(ConReturn)
  *  default console commands
  ******************************/
 extern bool CloseConsoleLogIfActive();
+extern const std::vector<GRFFile *> &GetAllGRFFiles();
+extern void ConPrintFramerate(); // framerate_gui.cpp
+extern void ShowFramerateWindow();
 
 DEF_CONSOLE_CMD(ConScript)
 {
@@ -1054,7 +1125,7 @@ DEF_CONSOLE_CMD(ConNewGame)
 		return true;
 	}
 
-	StartNewGameWithoutGUI((argc == 2) ? strtoul(argv[1], nullptr, 10) : GENERATE_NEW_SEED);
+	StartNewGameWithoutGUI((argc == 2) ? std::strtoul(argv[1], nullptr, 10) : GENERATE_NEW_SEED);
 	return true;
 }
 
@@ -1070,8 +1141,8 @@ DEF_CONSOLE_CMD(ConRestart)
 	}
 
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
-	_settings_game.game_creation.map_x = MapLogX();
-	_settings_game.game_creation.map_y = FindFirstBit(MapSizeY());
+	_settings_game.game_creation.map_x = Map::LogX();
+	_settings_game.game_creation.map_y = Map::LogY();
 	_switch_mode = SM_RESTARTGAME;
 	return true;
 }
@@ -1087,68 +1158,74 @@ DEF_CONSOLE_CMD(ConReload)
 	}
 
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
-	_settings_game.game_creation.map_x = MapLogX();
-	_settings_game.game_creation.map_y = FindFirstBit(MapSizeY());
+	_settings_game.game_creation.map_x = Map::LogX();
+	_settings_game.game_creation.map_y = Map::LogY();
 	_switch_mode = SM_RELOADGAME;
 	return true;
 }
 
 /**
  * Print a text buffer line by line to the console. Lines are separated by '\n'.
- * @param buf The buffer to print.
- * @note All newlines are replace by '\0' characters.
+ * @param full_string The multi-line string to print.
  */
-static void PrintLineByLine(char *buf)
+static void PrintLineByLine(const std::string &full_string)
 {
-	char *p = buf;
-	/* Print output line by line */
-	for (char *p2 = buf; *p2 != '\0'; p2++) {
-		if (*p2 == '\n') {
-			*p2 = '\0';
-			IConsolePrint(CC_DEFAULT, p);
-			p = p2 + 1;
-		}
+	std::istringstream in(full_string);
+	std::string line;
+	while (std::getline(in, line)) {
+		IConsolePrint(CC_DEFAULT, line);
 	}
+}
+
+template <typename F, typename ... Args>
+bool PrintList(F list_function, Args... args)
+{
+	std::string output_str;
+	auto inserter = std::back_inserter(output_str);
+	list_function(inserter, args...);
+	PrintLineByLine(output_str);
+
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConListAILibs)
 {
-	char buf[4096];
-	AI::GetConsoleLibraryList(buf, lastof(buf));
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed AI libraries. Usage: 'list_ai_libs'.");
+		return true;
+	}
 
-	PrintLineByLine(buf);
-
-	return true;
+	return PrintList(AI::GetConsoleLibraryList);
 }
 
 DEF_CONSOLE_CMD(ConListAI)
 {
-	char buf[4096];
-	AI::GetConsoleList(buf, lastof(buf));
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed AIs. Usage: 'list_ai'.");
+		return true;
+	}
 
-	PrintLineByLine(buf);
-
-	return true;
+	return PrintList(AI::GetConsoleList, false);
 }
 
 DEF_CONSOLE_CMD(ConListGameLibs)
 {
-	char buf[4096];
-	Game::GetConsoleLibraryList(buf, lastof(buf));
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed Game Script libraries. Usage: 'list_game_libs'.");
+		return true;
+	}
 
-	PrintLineByLine(buf);
-
-	return true;
+	return PrintList(Game::GetConsoleLibraryList);
 }
 
 DEF_CONSOLE_CMD(ConListGame)
 {
-	char buf[4096];
-	Game::GetConsoleList(buf, lastof(buf));
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "List installed Game Scripts. Usage: 'list_game'.");
+		return true;
+	}
 
-	PrintLineByLine(buf);
-
-	return true;
+	return PrintList(Game::GetConsoleList, false);
 }
 
 DEF_CONSOLE_CMD(ConStartAI)
@@ -1198,16 +1275,14 @@ DEF_CONSOLE_CMD(ConStartAI)
 		 * try again with the assumption everything right of the dot is
 		 * the version the user wants to load. */
 		if (!config->HasScript()) {
-			char *name = stredup(argv[1]);
-			char *e = strrchr(name, '.');
+			const char *e = strrchr(argv[1], '.');
 			if (e != nullptr) {
-				*e = '\0';
+				size_t name_length = e - argv[1];
 				e++;
 
 				int version = atoi(e);
-				config->Change(name, version, true);
+				config->Change(std::string(argv[1], name_length), version, true);
 			}
-			free(name);
 		}
 
 		if (!config->HasScript()) {
@@ -1220,7 +1295,7 @@ DEF_CONSOLE_CMD(ConStartAI)
 	}
 
 	/* Start a new AI company */
-	DoCommandP(0, CCA_NEW_AI | INVALID_COMPANY << 16, 0, CMD_COMPANY_CTRL);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
 
 	return true;
 }
@@ -1256,8 +1331,8 @@ DEF_CONSOLE_CMD(ConReloadAI)
 	}
 
 	/* First kill the company of the AI, then start a new one. This should start the current AI again */
-	DoCommandP(0, CCA_DELETE | company_id << 16 | CRR_MANUAL << 24, 0, CMD_COMPANY_CTRL);
-	DoCommandP(0, CCA_NEW_AI | company_id << 16, 0, CMD_COMPANY_CTRL);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, company_id, CRR_MANUAL, INVALID_CLIENT_ID);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, company_id, CRR_NONE, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "AI reloaded.");
 
 	return true;
@@ -1294,7 +1369,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 	}
 
 	/* Now kill the company of the AI. */
-	DoCommandP(0, CCA_DELETE | company_id << 16 | CRR_MANUAL << 24, 0, CMD_COMPANY_CTRL);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, company_id, CRR_MANUAL, INVALID_CLIENT_ID);
 	IConsolePrint(CC_DEFAULT, "AI stopped, company deleted.");
 
 	return true;
@@ -1367,8 +1442,8 @@ DEF_CONSOLE_CMD(ConGetDate)
 		return true;
 	}
 
-	YearMonthDay ymd;
-	ConvertDateToYMD(_date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd;
+	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 	IConsolePrint(CC_DEFAULT, "Date: {:04d}-{:02d}-{:02d}", ymd.year, ymd.month + 1, ymd.day);
 	return true;
 }
@@ -1380,9 +1455,7 @@ DEF_CONSOLE_CMD(ConGetSysDate)
 		return true;
 	}
 
-	char buffer[lengthof("2000-01-02 03:04:05")];
-	LocalTime::Format(buffer, lastof(buffer), "%Y-%m-%d %H:%M:%S");
-	IConsolePrint(CC_DEFAULT, "System Date: {}", buffer);
+	IConsolePrint(CC_DEFAULT, "System Date: {:%Y-%m-%d %H:%M:%S}", fmt::localtime(time(nullptr)));
 	return true;
 }
 
@@ -1419,16 +1492,17 @@ DEF_CONSOLE_CMD(ConScreenShot)
 		IConsolePrint(CC_HELP, "  'minimap' makes a top-viewed minimap screenshot of the whole world which represents one tile by one pixel.");
 		IConsolePrint(CC_HELP, "  'no_con' hides the console to create the screenshot (only useful in combination with 'viewport').");
 		IConsolePrint(CC_HELP, "  'size' sets the width and height of the viewport to make a screenshot of (only useful in combination with 'normal' or 'big').");
+		IConsolePrint(CC_HELP, "  A filename ending in # will prevent overwriting existing files and will number files counting upwards.");
 		return true;
 	}
 
 	if (argc > 7) return false;
 
 	ScreenshotType type = SC_VIEWPORT;
-	uint32 width = 0;
-	uint32 height = 0;
+	uint32_t width = 0;
+	uint32_t height = 0;
 	std::string name{};
-	uint32 arg_index = 1;
+	uint32_t arg_index = 1;
 
 	if (argc > arg_index) {
 		if (strcmp(argv[arg_index], "viewport") == 0) {
@@ -1522,7 +1596,7 @@ DEF_CONSOLE_CMD(ConDebugLevel)
 	if (argc == 1) {
 		IConsolePrint(CC_DEFAULT, "Current debug-level: '{}'", GetDebugString());
 	} else {
-		SetDebugString(argv[1]);
+		SetDebugString(argv[1], [](const std::string &err) { IConsolePrint(CC_ERROR, err); });
 	}
 
 	return true;
@@ -1636,9 +1710,8 @@ DEF_CONSOLE_CMD(ConCompanies)
 
 	for (const Company *c : Company::Iterate()) {
 		/* Grab the company name */
-		char company_name[512];
 		SetDParam(0, c->index);
-		GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+		std::string company_name = GetString(STR_COMPANY_NAME);
 
 		const char *password_state = "";
 		if (c->is_ai) {
@@ -1647,11 +1720,10 @@ DEF_CONSOLE_CMD(ConCompanies)
 			password_state = _network_company_states[c->index].password.empty() ? "unprotected" : "protected";
 		}
 
-		char colour[512];
-		GetString(colour, STR_COLOUR_DARK_BLUE + _company_colours[c->index], lastof(colour));
+		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
-			c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
+			c->inaugurated_year, (int64_t)c->money, (int64_t)c->current_loan, (int64_t)CalculateCompanyValue(c),
 			c->group_all[VEH_TRAIN].num_vehicle,
 			c->group_all[VEH_ROAD].num_vehicle,
 			c->group_all[VEH_AIRCRAFT].num_vehicle,
@@ -1783,7 +1855,7 @@ static ContentType StringToContentType(const char *str)
 {
 	static const char * const inv_lookup[] = { "", "base", "newgrf", "ai", "ailib", "scenario", "heightmap" };
 	for (uint i = 1 /* there is no type 0 */; i < lengthof(inv_lookup); i++) {
-		if (strcasecmp(str, inv_lookup[i]) == 0) return (ContentType)i;
+		if (StrEqualsIgnoreCase(str, inv_lookup[i])) return (ContentType)i;
 	}
 	return CONTENT_TYPE_END;
 }
@@ -1817,9 +1889,7 @@ static void OutputContentState(const ContentInfo *const ci)
 	static const char * const states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
 	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
-	char buf[sizeof(ci->md5sum) * 2 + 1];
-	md5sumToString(buf, lastof(buf), ci->md5sum);
-	IConsolePrint(state_to_colour[ci->state], "{}, {}, {}, {}, {:08X}, {}", ci->id, types[ci->type - 1], states[ci->state], ci->name, ci->unique_id, buf);
+	IConsolePrint(state_to_colour[ci->state], "{}, {}, {}, {}, {:08X}, {}", ci->id, types[ci->type - 1], states[ci->state], ci->name, ci->unique_id, FormatArrayAsHex(ci->md5sum));
 }
 
 DEF_CONSOLE_CMD(ConContent)
@@ -1841,17 +1911,17 @@ DEF_CONSOLE_CMD(ConContent)
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "update") == 0) {
+	if (StrEqualsIgnoreCase(argv[1], "update")) {
 		_network_content_client.RequestContentList((argc > 2) ? StringToContentType(argv[2]) : CONTENT_TYPE_END);
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "upgrade") == 0) {
+	if (StrEqualsIgnoreCase(argv[1], "upgrade")) {
 		_network_content_client.SelectUpgrade();
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "select") == 0) {
+	if (StrEqualsIgnoreCase(argv[1], "select")) {
 		if (argc <= 2) {
 			/* List selected content */
 			IConsolePrint(CC_WHITE, "id, type, state, name");
@@ -1859,7 +1929,7 @@ DEF_CONSOLE_CMD(ConContent)
 				if ((*iter)->state != ContentInfo::SELECTED && (*iter)->state != ContentInfo::AUTOSELECTED) continue;
 				OutputContentState(*iter);
 			}
-		} else if (strcasecmp(argv[2], "all") == 0) {
+		} else if (StrEqualsIgnoreCase(argv[2], "all")) {
 			/* The intention of this function was that you could download
 			 * everything after a filter was applied; but this never really
 			 * took off. Instead, a select few people used this functionality
@@ -1873,12 +1943,12 @@ DEF_CONSOLE_CMD(ConContent)
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "unselect") == 0) {
+	if (StrEqualsIgnoreCase(argv[1], "unselect")) {
 		if (argc <= 2) {
 			IConsolePrint(CC_ERROR, "You must enter the id.");
 			return false;
 		}
-		if (strcasecmp(argv[2], "all") == 0) {
+		if (StrEqualsIgnoreCase(argv[2], "all")) {
 			_network_content_client.UnselectAll();
 		} else {
 			_network_content_client.Unselect((ContentID)atoi(argv[2]));
@@ -1886,7 +1956,7 @@ DEF_CONSOLE_CMD(ConContent)
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "state") == 0) {
+	if (StrEqualsIgnoreCase(argv[1], "state")) {
 		IConsolePrint(CC_WHITE, "id, type, state, name");
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
 			if (argc > 2 && strcasestr((*iter)->name.c_str(), argv[2]) == nullptr) continue;
@@ -1895,7 +1965,7 @@ DEF_CONSOLE_CMD(ConContent)
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "download") == 0) {
+	if (StrEqualsIgnoreCase(argv[1], "download")) {
 		uint files;
 		uint bytes;
 		_network_content_client.DownloadSelectedContent(files, bytes);
@@ -1906,6 +1976,79 @@ DEF_CONSOLE_CMD(ConContent)
 	return false;
 }
 #endif /* defined(WITH_ZLIB) */
+
+DEF_CONSOLE_CMD(ConFont)
+{
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Manage the fonts configuration.");
+		IConsolePrint(CC_HELP, "Usage 'font'.");
+		IConsolePrint(CC_HELP, "  Print out the fonts configuration.");
+		IConsolePrint(CC_HELP, "Usage 'font [medium|small|large|mono] [<name>] [<size>] [aa|noaa]'.");
+		IConsolePrint(CC_HELP, "  Change the configuration for a font.");
+		IConsolePrint(CC_HELP, "  Omitting an argument will keep the current value.");
+		IConsolePrint(CC_HELP, "  Set <name> to \"\" for the sprite font (size and aa have no effect on sprite font).");
+		return true;
+	}
+
+	FontSize argfs;
+	for (argfs = FS_BEGIN; argfs < FS_END; argfs++) {
+		if (argc > 1 && StrEqualsIgnoreCase(argv[1], FontSizeToName(argfs))) break;
+	}
+
+	/* First argument must be a FontSize. */
+	if (argc > 1 && argfs == FS_END) return false;
+
+	if (argc > 2) {
+		FontCacheSubSetting *setting = GetFontCacheSubSetting(argfs);
+		std::string font = setting->font;
+		uint size = setting->size;
+		bool aa = setting->aa;
+
+		byte arg_index = 2;
+		/* We may encounter "aa" or "noaa" but it must be the last argument. */
+		if (StrEqualsIgnoreCase(argv[arg_index], "aa") || StrEqualsIgnoreCase(argv[arg_index], "noaa")) {
+			aa = !StrStartsWithIgnoreCase(argv[arg_index++], "no");
+			if (argc > arg_index) return false;
+		} else {
+			/* For <name> we want a string. */
+			uint v;
+			if (!GetArgumentInteger(&v, argv[arg_index])) {
+				font = argv[arg_index++];
+			}
+		}
+
+		if (argc > arg_index) {
+			/* For <size> we want a number. */
+			uint v;
+			if (GetArgumentInteger(&v, argv[arg_index])) {
+				size = v;
+				arg_index++;
+			}
+		}
+
+		if (argc > arg_index) {
+			/* Last argument must be "aa" or "noaa". */
+			if (!StrEqualsIgnoreCase(argv[arg_index], "aa") && !StrEqualsIgnoreCase(argv[arg_index], "noaa")) return false;
+			aa = !StrStartsWithIgnoreCase(argv[arg_index++], "no");
+			if (argc > arg_index) return false;
+		}
+
+		SetFont(argfs, font, size, aa);
+	}
+
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		FontCache *fc = FontCache::Get(fs);
+		FontCacheSubSetting *setting = GetFontCacheSubSetting(fs);
+		/* Make sure all non sprite fonts are loaded. */
+		if (!setting->font.empty() && !fc->HasParent()) {
+			InitFontCache(fs == FS_MONO);
+			fc = FontCache::Get(fs);
+		}
+		IConsolePrint(CC_DEFAULT, "{}: \"{}\" {} {} [\"{}\" {} {}]", FontSizeToName(fs), fc->GetFontName(), fc->GetFontSize(), GetFontAAState(fs) ? "aa" : "noaa", setting->font, setting->size, setting->aa ? "aa" : "noaa");
+	}
+
+	return true;
+}
 
 DEF_CONSOLE_CMD(ConSetting)
 {
@@ -1960,7 +2103,12 @@ DEF_CONSOLE_CMD(ConListSettings)
 
 DEF_CONSOLE_CMD(ConGamelogPrint)
 {
-	GamelogPrintConsole();
+	if (argc == 0) {
+		IConsolePrint(CC_HELP, "Print logged fundamental changes to the game since the start. Usage: 'gamelog'.");
+		return true;
+	}
+
+	_gamelog.PrintConsole();
 	return true;
 }
 
@@ -2013,7 +2161,7 @@ DEF_CONSOLE_CMD(ConListDirs)
 
 	std::set<std::string> seen_dirs;
 	for (const SubdirNameMap &sdn : subdir_name_map) {
-		if (strcasecmp(argv[1], sdn.name) != 0)  continue;
+		if (!StrEqualsIgnoreCase(argv[1], sdn.name))  continue;
 		bool found = false;
 		for (Searchpath sp : _valid_searchpaths) {
 			/* Get the directory */
@@ -2050,8 +2198,8 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		IConsolePrint(CC_HELP, "  Select one or more GRFs for profiling.");
 		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile unselect <grf-num>...':");
 		IConsolePrint(CC_HELP, "  Unselect one or more GRFs from profiling. Use the keyword \"all\" instead of a GRF number to unselect all. Removing an active profiler aborts data collection.");
-		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile start [<num-days>]':");
-		IConsolePrint(CC_HELP, "  Begin profiling all selected GRFs. If a number of days is provided, profiling stops after that many in-game days.");
+		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile start [<num-ticks>]':");
+		IConsolePrint(CC_HELP, "  Begin profiling all selected GRFs. If a number of ticks is provided, profiling stops after that many game ticks. There are 74 ticks in a calendar day.");
 		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile stop':");
 		IConsolePrint(CC_HELP, "  End profiling and write the collected data to CSV files.");
 		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile abort':");
@@ -2059,11 +2207,10 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		return true;
 	}
 
-	extern const std::vector<GRFFile *> &GetAllGRFFiles();
 	const std::vector<GRFFile *> &files = GetAllGRFFiles();
 
 	/* "list" sub-command */
-	if (argc == 1 || strncasecmp(argv[1], "lis", 3) == 0) {
+	if (argc == 1 || StrStartsWithIgnoreCase(argv[1], "lis")) {
 		IConsolePrint(CC_INFO, "Loaded GRF files:");
 		int i = 1;
 		for (GRFFile *grf : files) {
@@ -2079,7 +2226,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	}
 
 	/* "select" sub-command */
-	if (strncasecmp(argv[1], "sel", 3) == 0 && argc >= 3) {
+	if (StrStartsWithIgnoreCase(argv[1], "sel") && argc >= 3) {
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > (int)files.size()) { // safe cast, files.size() should not be larger than a few hundred in the most extreme cases
@@ -2097,9 +2244,9 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	}
 
 	/* "unselect" sub-command */
-	if (strncasecmp(argv[1], "uns", 3) == 0 && argc >= 3) {
+	if (StrStartsWithIgnoreCase(argv[1], "uns") && argc >= 3) {
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
-			if (strcasecmp(argv[argnum], "all") == 0) {
+			if (StrEqualsIgnoreCase(argv[argnum], "all")) {
 				_newgrf_profilers.clear();
 				break;
 			}
@@ -2116,7 +2263,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	}
 
 	/* "start" sub-command */
-	if (strncasecmp(argv[1], "sta", 3) == 0) {
+	if (StrStartsWithIgnoreCase(argv[1], "sta")) {
 		std::string grfids;
 		size_t started = 0;
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
@@ -2125,23 +2272,16 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				started++;
 
 				if (!grfids.empty()) grfids += ", ";
-				char grfidstr[12]{ 0 };
-				seprintf(grfidstr, lastof(grfidstr), "[%08X]", BSWAP32(pr.grffile->grfid));
-				grfids += grfidstr;
+				fmt::format_to(std::back_inserter(grfids), "[{%:08X}]", BSWAP32(pr.grffile->grfid));
 			}
 		}
 		if (started > 0) {
 			IConsolePrint(CC_DEBUG, "Started profiling for GRFID{} {}.", (started > 1) ? "s" : "", grfids);
-			if (argc >= 3) {
-				int days = std::max(atoi(argv[2]), 1);
-				_newgrf_profile_end_date = _date + days;
 
-				char datestrbuf[32]{ 0 };
-				SetDParam(0, _newgrf_profile_end_date);
-				GetString(datestrbuf, STR_JUST_DATE_ISO, lastof(datestrbuf));
-				IConsolePrint(CC_DEBUG, "Profiling will automatically stop on game date {}.", datestrbuf);
-			} else {
-				_newgrf_profile_end_date = MAX_DAY;
+			if (argc >= 3) {
+				uint64_t ticks = std::max(atoi(argv[2]), 1);
+				NewGRFProfiler::StartTimer(ticks);
+				IConsolePrint(CC_DEBUG, "Profiling will automatically stop after {} ticks.", ticks);
 			}
 		} else if (_newgrf_profilers.empty()) {
 			IConsolePrint(CC_ERROR, "No GRFs selected for profiling, did not start.");
@@ -2152,17 +2292,17 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	}
 
 	/* "stop" sub-command */
-	if (strncasecmp(argv[1], "sto", 3) == 0) {
+	if (StrStartsWithIgnoreCase(argv[1], "sto")) {
 		NewGRFProfiler::FinishAll();
 		return true;
 	}
 
 	/* "abort" sub-command */
-	if (strncasecmp(argv[1], "abo", 3) == 0) {
+	if (StrStartsWithIgnoreCase(argv[1], "abo")) {
 		for (NewGRFProfiler &pr : _newgrf_profilers) {
 			pr.Abort();
 		}
-		_newgrf_profile_end_date = MAX_DAY;
+		NewGRFProfiler::AbortTimer();
 		return true;
 	}
 
@@ -2184,8 +2324,6 @@ static void IConsoleDebugLibRegister()
 
 DEF_CONSOLE_CMD(ConFramerate)
 {
-	extern void ConPrintFramerate(); // framerate_gui.cpp
-
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Show frame rate and game speed information.");
 		return true;
@@ -2197,8 +2335,6 @@ DEF_CONSOLE_CMD(ConFramerate)
 
 DEF_CONSOLE_CMD(ConFramerateWindow)
 {
-	extern void ShowFramerateWindow();
-
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Open the frame rate window.");
 		return true;
@@ -2222,11 +2358,11 @@ static void ConDumpRoadTypes()
 	IConsolePrint(CC_DEFAULT, "    h = hidden");
 	IConsolePrint(CC_DEFAULT, "    T = buildable by towns");
 
-	std::map<uint32, const GRFFile *> grfs;
+	std::map<uint32_t, const GRFFile *> grfs;
 	for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		if (rti->label == 0) continue;
-		uint32 grfid = 0;
+		uint32_t grfid = 0;
 		const GRFFile *grf = rti->grffile[ROTSG_GROUND];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
@@ -2260,11 +2396,11 @@ static void ConDumpRailTypes()
 	IConsolePrint(CC_DEFAULT, "    a = always allow 90 degree turns");
 	IConsolePrint(CC_DEFAULT, "    d = always disallow 90 degree turns");
 
-	std::map<uint32, const GRFFile *> grfs;
+	std::map<uint32_t, const GRFFile *> grfs;
 	for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
 		const RailtypeInfo *rti = GetRailTypeInfo(rt);
 		if (rti->label == 0) continue;
-		uint32 grfid = 0;
+		uint32_t grfid = 0;
 		const GRFFile *grf = rti->grffile[RTSG_GROUND];
 		if (grf != nullptr) {
 			grfid = grf->grfid;
@@ -2303,11 +2439,11 @@ static void ConDumpCargoTypes()
 	IConsolePrint(CC_DEFAULT, "    c = covered/sheltered");
 	IConsolePrint(CC_DEFAULT, "    S = special");
 
-	std::map<uint32, const GRFFile *> grfs;
+	std::map<uint32_t, const GRFFile *> grfs;
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		const CargoSpec *spec = CargoSpec::Get(i);
 		if (!spec->IsValid()) continue;
-		uint32 grfid = 0;
+		uint32_t grfid = 0;
 		const GRFFile *grf = spec->grffile;
 		if (grf != nullptr) {
 			grfid = grf->grfid;
@@ -2348,17 +2484,17 @@ DEF_CONSOLE_CMD(ConDumpInfo)
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "roadtypes") == 0) {
+	if (StrEqualsIgnoreCase(argv[1], "roadtypes")) {
 		ConDumpRoadTypes();
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "railtypes") == 0) {
+	if (StrEqualsIgnoreCase(argv[1], "railtypes")) {
 		ConDumpRailTypes();
 		return true;
 	}
 
-	if (strcasecmp(argv[1], "cargotypes") == 0) {
+	if (StrEqualsIgnoreCase(argv[1], "cargotypes")) {
 		ConDumpCargoTypes();
 		return true;
 	}
@@ -2394,6 +2530,7 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("return",                  ConReturn);
 	IConsole::CmdRegister("screenshot",              ConScreenShot);
 	IConsole::CmdRegister("script",                  ConScript);
+	IConsole::CmdRegister("zoomto",                  ConZoomToLevel);
 	IConsole::CmdRegister("scrollto",                ConScrollToTile);
 	IConsole::CmdRegister("alias",                   ConAlias);
 	IConsole::CmdRegister("load",                    ConLoad);
@@ -2404,6 +2541,7 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("cd",                      ConChangeDirectory);
 	IConsole::CmdRegister("pwd",                     ConPrintWorkingDirectory);
 	IConsole::CmdRegister("clear",                   ConClearBuffer);
+	IConsole::CmdRegister("font",                    ConFont);
 	IConsole::CmdRegister("setting",                 ConSetting);
 	IConsole::CmdRegister("setting_newgame",         ConSettingNewgame);
 	IConsole::CmdRegister("list_settings",           ConListSettings);

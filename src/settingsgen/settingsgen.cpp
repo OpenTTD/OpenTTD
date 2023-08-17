@@ -12,9 +12,8 @@
 #include "../strings_type.h"
 #include "../misc/getoptdata.h"
 #include "../ini_type.h"
-#include "../core/smallvec_type.hpp"
-
-#include <stdarg.h>
+#include "../core/mem_func.hpp"
+#include "../error_func.h"
 
 #if !defined(_WIN32) || defined(__CYGWIN__)
 #include <unistd.h>
@@ -28,14 +27,9 @@
  * @param s Format string.
  * @note Function does not return.
  */
-void NORETURN CDECL error(const char *s, ...)
+void NORETURN FatalErrorI(const std::string &msg)
 {
-	char buf[1024];
-	va_list va;
-	va_start(va, s);
-	vseprintf(buf, lastof(buf), s, va);
-	va_end(va);
-	fprintf(stderr, "FATAL: %s\n", buf);
+	fmt::print(stderr, "settingsgen: FATAL: {}\n", msg);
 	exit(1);
 }
 
@@ -72,7 +66,7 @@ public:
 	void Write(FILE *out_fp) const
 	{
 		if (fwrite(this->data, 1, this->size, out_fp) != this->size) {
-			fprintf(stderr, "Error: Cannot write output\n");
+			FatalError("Cannot write output");
 		}
 	}
 
@@ -181,7 +175,7 @@ struct SettingsIniFile : IniLoadFile {
 
 	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post)
 	{
-		error("%s%s%s", pre, buffer, post);
+		FatalError("{}{}{}", pre, buffer, post);
 	}
 };
 
@@ -235,8 +229,8 @@ static void DumpGroup(IniLoadFile *ifile, const char * const group_name)
  */
 static const char *FindItemValue(const char *name, IniGroup *grp, IniGroup *defaults)
 {
-	IniItem *item = grp->GetItem(name, false);
-	if (item == nullptr && defaults != nullptr) item = defaults->GetItem(name, false);
+	IniItem *item = grp->GetItem(name);
+	if (item == nullptr && defaults != nullptr) item = defaults->GetItem(name);
 	if (item == nullptr || !item->value.has_value()) return nullptr;
 	return item->value->c_str();
 }
@@ -327,15 +321,14 @@ static void DumpSections(IniLoadFile *ifile)
 		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (grp->name == *sgn) break;
 		if (*sgn != nullptr) continue;
 
-		IniItem *template_item = templates_grp->GetItem(grp->name, false); // Find template value.
+		IniItem *template_item = templates_grp->GetItem(grp->name); // Find template value.
 		if (template_item == nullptr || !template_item->value.has_value()) {
-			fprintf(stderr, "settingsgen: Warning: Cannot find template %s\n", grp->name.c_str());
-			continue;
+			FatalError("Cannot find template {}", grp->name);
 		}
 		DumpLine(template_item, grp, default_grp, _stored_output);
 
 		if (validation_grp != nullptr) {
-			IniItem *validation_item = validation_grp->GetItem(grp->name, false); // Find template value.
+			IniItem *validation_item = validation_grp->GetItem(grp->name); // Find template value.
 			if (validation_item != nullptr && validation_item->value.has_value()) {
 				DumpLine(validation_item, grp, default_grp, _post_amble_output);
 			}
@@ -354,8 +347,7 @@ static void CopyFile(const char *fname, FILE *out_fp)
 
 	FILE *in_fp = fopen(fname, "r");
 	if (in_fp == nullptr) {
-		fprintf(stderr, "settingsgen: Warning: Cannot open file %s for copying\n", fname);
-		return;
+		FatalError("Cannot open file {} for copying", fname);
 	}
 
 	char buffer[4096];
@@ -363,8 +355,7 @@ static void CopyFile(const char *fname, FILE *out_fp)
 	do {
 		length = fread(buffer, 1, lengthof(buffer), in_fp);
 		if (fwrite(buffer, 1, length, out_fp) != length) {
-			fprintf(stderr, "Error: Cannot copy file\n");
-			break;
+			FatalError("Cannot copy file");
 		}
 	} while (length == lengthof(buffer));
 
@@ -385,7 +376,7 @@ static bool CompareFiles(const char *n1, const char *n2)
 	FILE *f1 = fopen(n1, "rb");
 	if (f1 == nullptr) {
 		fclose(f2);
-		error("can't open %s", n1);
+		FatalError("can't open {}", n1);
 	}
 
 	size_t l1, l2;
@@ -409,7 +400,6 @@ static bool CompareFiles(const char *n1, const char *n2)
 
 /** Options of settingsgen. */
 static const OptionData _opts[] = {
-	  GETOPT_NOVAL(     'v', "--version"),
 	  GETOPT_NOVAL(     'h', "--help"),
 	GETOPT_GENERAL('h', '?', nullptr, ODF_NO_VALUE),
 	  GETOPT_VALUE(     'o', "--output"),
@@ -464,15 +454,10 @@ int CDECL main(int argc, char *argv[])
 		if (i == -1) break;
 
 		switch (i) {
-			case 'v':
-				puts("$Revision$");
-				return 0;
-
 			case 'h':
-				puts("settingsgen - $Revision$\n"
+				fmt::print("settingsgen\n"
 						"Usage: settingsgen [options] ini-file...\n"
 						"with options:\n"
-						"   -v, --version           Print version information and exit\n"
 						"   -h, -?, --help          Print this help message and exit\n"
 						"   -b FILE, --before FILE  Copy FILE before all settings\n"
 						"   -a FILE, --after FILE   Copy FILE after all settings\n"
@@ -492,7 +477,7 @@ int CDECL main(int argc, char *argv[])
 				break;
 
 			case -2:
-				fprintf(stderr, "Invalid arguments\n");
+				fmt::print(stderr, "Invalid arguments\n");
 				return 1;
 		}
 	}
@@ -513,8 +498,7 @@ int CDECL main(int argc, char *argv[])
 
 		FILE *fp = fopen(tmp_output, "w");
 		if (fp == nullptr) {
-			fprintf(stderr, "settingsgen: Warning: Cannot open file %s\n", tmp_output);
-			return 1;
+			FatalError("Cannot open file {}", tmp_output);
 		}
 		CopyFile(before_file, fp);
 		_stored_output.Write(fp);
@@ -530,7 +514,7 @@ int CDECL main(int argc, char *argv[])
 #if defined(_WIN32)
 			unlink(output_file);
 #endif
-			if (rename(tmp_output, output_file) == -1) error("rename() failed");
+			if (rename(tmp_output, output_file) == -1) FatalError("rename() failed");
 		}
 	}
 	return 0;

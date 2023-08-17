@@ -17,9 +17,10 @@
 
 bool MayCompanyTakeOver(CompanyID cbig, CompanyID small);
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
-void GetNameOfOwner(Owner owner, TileIndex tile);
+static const int OWNED_BY_OWNER_IN_PARAMETERS_OFFSET = 2; ///< The index in the parameters for the owner information.
+void SetDParamsForOwnedBy(Owner owner, TileIndex tile);
 void SetLocalCompany(CompanyID new_company);
-void ShowBuyCompanyDialog(CompanyID company);
+void ShowBuyCompanyDialog(CompanyID company, bool hostile_takeover);
 void CompanyAdminUpdate(const Company *company);
 void CompanyAdminBankrupt(CompanyID company_id);
 void UpdateLandscapingLimits();
@@ -27,7 +28,7 @@ void UpdateLandscapingLimits();
 bool CheckCompanyHasMoney(CommandCost &cost);
 void SubtractMoneyFromCompany(const CommandCost& cost);
 void SubtractMoneyFromCompanyFract(CompanyID company, const CommandCost& cost);
-CommandCost CheckOwnership(Owner owner, TileIndex tile = 0);
+CommandCost CheckOwnership(Owner owner, TileIndex tile = 0U);
 CommandCost CheckTileOwnership(TileIndex tile);
 
 extern CompanyID _local_company;
@@ -56,5 +57,6 @@ static inline bool IsInteractiveCompany(CompanyID company)
 }
 
 int CompanyServiceInterval(const Company *c, VehicleType type);
+CompanyID GetFirstPlayableCompanyID();
 
 #endif /* COMPANY_FUNC_H */

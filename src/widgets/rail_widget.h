@@ -117,9 +117,11 @@ enum BuildRailDepotWidgets {
 
 /** Widgets of the #BuildRailWaypointWindow class. */
 enum BuildRailWaypointWidgets {
+	WID_BRW_FILTER,          ///< Text filter.
 	WID_BRW_WAYPOINT_MATRIX, ///< Matrix with waypoints.
 	WID_BRW_WAYPOINT,        ///< A single waypoint.
 	WID_BRW_SCROLL,          ///< Scrollbar for the matrix.
+	WID_BRW_NAME,            ///< Name of selected waypoint.
 };
 
 #endif /* WIDGETS_RAIL_WIDGET_H */

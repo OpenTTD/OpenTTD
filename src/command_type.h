@@ -21,14 +21,15 @@ struct GRFFile;
  * a possible error message/state together.
  */
 class CommandCost {
-	ExpensesType expense_type; ///< the type of expence as shown on the finances view
-	Money cost;       ///< The cost of this action
-	StringID message; ///< Warning message for when success is unset
-	bool success;     ///< Whether the comment went fine up to this moment
-	const GRFFile *textref_stack_grffile; ///< NewGRF providing the #TextRefStack content.
-	uint textref_stack_size;   ///< Number of uint32 values to put on the #TextRefStack for the error message.
+	ExpensesType expense_type;                  ///< the type of expence as shown on the finances view
+	Money cost;                                 ///< The cost of this action
+	StringID message;                           ///< Warning message for when success is unset
+	bool success;                               ///< Whether the command went fine up to this moment
+	const GRFFile *textref_stack_grffile;       ///< NewGRF providing the #TextRefStack content.
+	uint textref_stack_size;                    ///< Number of uint32_t values to put on the #TextRefStack for the error message.
+	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset
 
-	static uint32 textref_stack[16];
+	static uint32_t textref_stack[16];
 
 public:
 	/**
@@ -37,9 +38,9 @@ public:
 	CommandCost() : expense_type(INVALID_EXPENSES), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_grffile(nullptr), textref_stack_size(0) {}
 
 	/**
-	 * Creates a command return value the is failed with the given message
+	 * Creates a command return value with one, or optionally two, error message strings.
 	 */
-	explicit CommandCost(StringID msg) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false), textref_stack_grffile(nullptr), textref_stack_size(0) {}
+	explicit CommandCost(StringID msg, StringID extra_msg = INVALID_STRING_ID) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false), textref_stack_grffile(nullptr), textref_stack_size(0), extra_message(extra_msg) {}
 
 	/**
 	 * Creates a command cost with given expense type and start cost of 0
@@ -97,11 +98,12 @@ public:
 	 * Makes this #CommandCost behave like an error command.
 	 * @param message The error message.
 	 */
-	void MakeError(StringID message)
+	void MakeError(StringID message, StringID extra_message = INVALID_STRING_ID)
 	{
 		assert(message != INVALID_STRING_ID);
 		this->success = false;
 		this->message = message;
+		this->extra_message = extra_message;
 	}
 
 	void UseTextRefStack(const GRFFile *grffile, uint num_registers);
@@ -116,8 +118,8 @@ public:
 	}
 
 	/**
-	 * Returns the number of uint32 values for the #TextRefStack of the error message.
-	 * @return number of uint32 values.
+	 * Returns the number of uint32_t values for the #TextRefStack of the error message.
+	 * @return number of uint32_t values.
 	 */
 	uint GetTextRefStackSize() const
 	{
@@ -126,9 +128,9 @@ public:
 
 	/**
 	 * Returns a pointer to the values for the #TextRefStack of the error message.
-	 * @return uint32 values for the #TextRefStack
+	 * @return uint32_t values for the #TextRefStack
 	 */
-	const uint32 *GetTextRefStack() const
+	const uint32_t *GetTextRefStack() const
 	{
 		return textref_stack;
 	}
@@ -141,6 +143,16 @@ public:
 	{
 		if (this->success) return INVALID_STRING_ID;
 		return this->message;
+	}
+
+	/**
+	 * Returns the extra error message of a command
+	 * @return the extra error message, if succeeded #INVALID_STRING_ID
+	 */
+	StringID GetExtraErrorMessage() const
+	{
+		if (this->success) return INVALID_STRING_ID;
+		return this->extra_message;
 	}
 
 	/**
@@ -172,7 +184,7 @@ public:
  *
  * @see _command_proc_table
  */
-enum Commands {
+enum Commands : uint16_t {
 	CMD_BUILD_RAILROAD_TRACK,         ///< build a rail track
 	CMD_REMOVE_RAILROAD_TRACK,        ///< remove a rail track
 	CMD_BUILD_SINGLE_RAIL,            ///< build a single rail track
@@ -185,6 +197,7 @@ enum Commands {
 	CMD_REMOVE_SIGNALS,               ///< remove a signal
 	CMD_TERRAFORM_LAND,               ///< terraform a tile
 	CMD_BUILD_OBJECT,                 ///< build an object
+	CMD_BUILD_OBJECT_AREA,            ///< build an area of objects
 	CMD_BUILD_TUNNEL,                 ///< build a tunnel
 
 	CMD_REMOVE_FROM_RAIL_STATION,     ///< remove a (rectangle of) tiles from a rail station
@@ -230,7 +243,9 @@ enum Commands {
 	CMD_CHANGE_SERVICE_INT,           ///< change the server interval of a vehicle
 
 	CMD_BUILD_INDUSTRY,               ///< build a new industry
-	CMD_INDUSTRY_CTRL,                ///< change industry properties
+	CMD_INDUSTRY_SET_FLAGS,           ///< change industry control flags
+	CMD_INDUSTRY_SET_EXCLUSIVITY,     ///< change industry exclusive consumer/supplier
+	CMD_INDUSTRY_SET_TEXT,            ///< change additional text for the industry
 
 	CMD_SET_COMPANY_MANAGER_FACE,     ///< set the manager's face of the company
 	CMD_SET_COMPANY_COLOUR,           ///< set the colour of the company
@@ -255,8 +270,6 @@ enum Commands {
 
 	CMD_PAUSE,                        ///< pause the game
 
-	CMD_BUY_SHARE_IN_COMPANY,         ///< buy a share from a company
-	CMD_SELL_SHARE_IN_COMPANY,        ///< sell a share from a company
 	CMD_BUY_COMPANY,                  ///< buy a company which is bankrupt
 
 	CMD_FOUND_TOWN,                   ///< found a town
@@ -282,6 +295,7 @@ enum Commands {
 	CMD_CUSTOM_NEWS_ITEM,             ///< create a custom news message
 	CMD_CREATE_GOAL,                  ///< create a new goal
 	CMD_REMOVE_GOAL,                  ///< remove a goal
+	CMD_SET_GOAL_DESTINATION,         ///< update goal destination of a goal
 	CMD_SET_GOAL_TEXT,                ///< update goal text of a goal
 	CMD_SET_GOAL_PROGRESS,            ///< update goal progress text of a goal
 	CMD_SET_GOAL_COMPLETED,           ///< update goal completed status of a goal
@@ -329,11 +343,18 @@ enum Commands {
 
 	CMD_MOVE_ORDER,                   ///< move an order
 	CMD_CHANGE_TIMETABLE,             ///< change the timetable for a vehicle
+	CMD_BULK_CHANGE_TIMETABLE,        ///< change the timetable for all orders of a vehicle
 	CMD_SET_VEHICLE_ON_TIME,          ///< set the vehicle on time feature (timetable)
 	CMD_AUTOFILL_TIMETABLE,           ///< autofill the timetable
 	CMD_SET_TIMETABLE_START,          ///< set the date that a timetable should start
 
 	CMD_OPEN_CLOSE_AIRPORT,           ///< open/close an airport to incoming aircraft
+
+	CMD_CREATE_LEAGUE_TABLE,               ///< create a new league table
+	CMD_CREATE_LEAGUE_TABLE_ELEMENT,       ///< create a new element in a league table
+	CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA,  ///< update the data fields of a league table element
+	CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE, ///< update the score of a league table element
+	CMD_REMOVE_LEAGUE_TABLE_ELEMENT,       ///< remove a league table element
 
 	CMD_END,                          ///< Must ALWAYS be on the end of this list!! (period)
 };
@@ -361,28 +382,6 @@ enum DoCommandFlag {
 DECLARE_ENUM_AS_BIT_SET(DoCommandFlag)
 
 /**
- * Used to combine a StringID with the command.
- *
- * This macro can be used to add a StringID (the error message to show) on a command-id
- * (CMD_xxx). Use the binary or-operator "|" to combine the command with the result from
- * this macro.
- *
- * @param x The StringID to combine with a command-id
- */
-#define CMD_MSG(x) ((x) << 16)
-
-/**
- * Defines some flags.
- *
- * This enumeration defines some flags which are binary-or'ed on a command.
- */
-enum FlaggedCommands {
-	CMD_NETWORK_COMMAND       = 0x0100, ///< execute the command without sending it on the network
-	CMD_FLAGS_MASK            = 0xFF00, ///< mask for all command flags
-	CMD_ID_MASK               = 0x00FF, ///< mask for the command ID
-};
-
-/**
  * Command flags for the command table _command_proc_table.
  *
  * This enumeration defines flags for the _command_proc_table.
@@ -399,6 +398,7 @@ enum CommandFlags {
 	CMD_DEITY     = 0x100, ///< the command may be executed by COMPANY_DEITY
 	CMD_STR_CTRL  = 0x200, ///< the command's string may contain control strings
 	CMD_NO_EST    = 0x400, ///< the command is never estimated.
+	CMD_LOCATION  = 0x800, ///< the command has implicit location argument.
 };
 DECLARE_ENUM_AS_BIT_SET(CommandFlags)
 
@@ -406,7 +406,7 @@ DECLARE_ENUM_AS_BIT_SET(CommandFlags)
 enum CommandType {
 	CMDT_LANDSCAPE_CONSTRUCTION, ///< Construction and destruction of objects on the map.
 	CMDT_VEHICLE_CONSTRUCTION,   ///< Construction, modification (incl. refit) and destruction of vehicles.
-	CMDT_MONEY_MANAGEMENT,       ///< Management of money, i.e. loans and shares.
+	CMDT_MONEY_MANAGEMENT,       ///< Management of money, i.e. loans.
 	CMDT_VEHICLE_MANAGEMENT,     ///< Stopping, starting, sending to depot, turning around, replace orders etc.
 	CMDT_ROUTE_MANAGEMENT,       ///< Modifications to route management (orders, groups, etc).
 	CMDT_OTHER_MANAGEMENT,       ///< Renaming stuff, changing company colours, placing signs, etc.
@@ -425,38 +425,42 @@ enum CommandPauseLevel {
 	CMDPL_ALL_ACTIONS,     ///< All actions may be executed.
 };
 
-/**
- * Defines the callback type for all command handler functions.
- *
- * This type defines the function header for all functions which handles a CMD_* command.
- * A command handler use the parameters to act according to the meaning of the command.
- * The tile parameter defines the tile to perform an action on.
- * The flag parameter is filled with flags from the DC_* enumeration. The parameters
- * p1 and p2 are filled with parameters for the command like "which road type", "which
- * order" or "direction". Each function should mentioned in there doxygen comments
- * the usage of these parameters.
- *
- * @param tile The tile to apply a command on
- * @param flags Flags for the command, from the DC_* enumeration
- * @param p1 Additional data for the command
- * @param p2 Additional data for the command
- * @param text Additional text
- * @return The CommandCost of the command, which can be succeeded or failed.
- */
-typedef CommandCost CommandProc(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text);
 
-/**
- * Define a command with the flags which belongs to it.
- *
- * This struct connect a command handler function with the flags created with
- * the #CMD_AUTO, #CMD_OFFLINE and #CMD_SERVER values.
- */
-struct Command {
-	CommandProc *proc;  ///< The procedure to actually executing
-	const char *name;   ///< A human readable name for the procedure
-	CommandFlags flags; ///< The (command) flags to that apply to this command
-	CommandType type;   ///< The type of command.
+template <typename T> struct CommandFunctionTraitHelper;
+template <typename... Targs>
+struct CommandFunctionTraitHelper<CommandCost(*)(DoCommandFlag, Targs...)> {
+	using Args = std::tuple<std::decay_t<Targs>...>;
+	using RetTypes = void;
+	using CbArgs = Args;
+	using CbProcType = void(*)(Commands, const CommandCost &);
 };
+template <template <typename...> typename Tret, typename... Tretargs, typename... Targs>
+struct CommandFunctionTraitHelper<Tret<CommandCost, Tretargs...>(*)(DoCommandFlag, Targs...)> {
+	using Args = std::tuple<std::decay_t<Targs>...>;
+	using RetTypes = std::tuple<std::decay_t<Tretargs>...>;
+	using CbArgs = std::tuple<std::decay_t<Tretargs>..., std::decay_t<Targs>...>;
+	using CbProcType = void(*)(Commands, const CommandCost &, Tretargs...);
+};
+
+/** Defines the traits of a command. */
+template <Commands Tcmd> struct CommandTraits;
+
+#define DEF_CMD_TRAIT(cmd_, proc_, flags_, type_) \
+	template<> struct CommandTraits<cmd_> { \
+		using ProcType = decltype(&proc_); \
+		using Args = typename CommandFunctionTraitHelper<ProcType>::Args; \
+		using RetTypes = typename CommandFunctionTraitHelper<ProcType>::RetTypes; \
+		using CbArgs = typename CommandFunctionTraitHelper<ProcType>::CbArgs; \
+		using RetCallbackProc = typename CommandFunctionTraitHelper<ProcType>::CbProcType; \
+		static constexpr Commands cmd = cmd_; \
+		static constexpr auto &proc = proc_; \
+		static constexpr CommandFlags flags = (CommandFlags)(flags_); \
+		static constexpr CommandType type = type_; \
+		static inline constexpr const char *name = #proc_; \
+	};
+
+/** Storage buffer for serialized command data. */
+typedef std::vector<byte> CommandDataBuffer;
 
 /**
  * Define a callback function for the client, after the command is finished.
@@ -465,24 +469,27 @@ struct Command {
  * are from the #CommandProc callback type. The boolean parameter indicates if the
  * command succeeded or failed.
  *
+ * @param cmd The command that was executed
  * @param result The result of the executed command
  * @param tile The tile of the command action
- * @param p1 Additional data of the command
- * @param p1 Additional data of the command
  * @see CommandProc
  */
-typedef void CommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd);
+typedef void CommandCallback(Commands cmd, const CommandCost &result, TileIndex tile);
 
 /**
- * Structure for buffering the build command when selecting a station to join.
+ * Define a callback function for the client, after the command is finished.
+ *
+ * Functions of this type are called after the command is finished. The parameters
+ * are from the #CommandProc callback type. The boolean parameter indicates if the
+ * command succeeded or failed.
+ *
+ * @param cmd The command that was executed
+ * @param result The result of the executed command
+ * @param tile The tile of the command action
+ * @param data Additional data of the command
+ * @param result_data Additional returned data from the command
+ * @see CommandProc
  */
-struct CommandContainer {
-	TileIndex tile;                  ///< tile command being executed on.
-	uint32 p1;                       ///< parameter p1.
-	uint32 p2;                       ///< parameter p2.
-	uint32 cmd;                      ///< command being executed.
-	CommandCallback *callback;       ///< any callback function executed upon successful completion of the command.
-	std::string text;                ///< possible text sent for name changes etc.
-};
+typedef void CommandCallbackData(Commands cmd, const CommandCost &result, const CommandDataBuffer &data, CommandDataBuffer result_data);
 
 #endif /* COMMAND_TYPE_H */

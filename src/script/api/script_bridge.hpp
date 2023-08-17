@@ -69,7 +69,7 @@ public:
 	 * @pre vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER
 	 * @return The name the bridge has.
 	 */
-	static char *GetName(BridgeID bridge_id, ScriptVehicle::VehicleType vehicle_type);
+	static std::optional<std::string> GetName(BridgeID bridge_id, ScriptVehicle::VehicleType vehicle_type);
 
 	/**
 	 * Get the maximum speed of a bridge.
@@ -80,16 +80,17 @@ public:
 	 *       This is mph / 1.6, which is roughly km/h.
 	 *       To get km/h multiply this number by 1.00584.
 	 */
-	static int32 GetMaxSpeed(BridgeID bridge_id);
+	static SQInteger GetMaxSpeed(BridgeID bridge_id);
 
 	/**
 	 * Get the new cost of a bridge, excluding the road and/or rail.
 	 * @param bridge_id The bridge to get the new cost of.
 	 * @param length The length of the bridge.
+	 *               The value will be clamped to 0 .. MAX(int32_t).
 	 * @pre IsValidBridge(bridge_id).
 	 * @return The new cost the bridge has.
 	 */
-	static Money GetPrice(BridgeID bridge_id, uint length);
+	static Money GetPrice(BridgeID bridge_id, SQInteger length);
 
 	/**
 	 * Get the maximum length of a bridge.
@@ -97,7 +98,7 @@ public:
 	 * @pre IsValidBridge(bridge_id).
 	 * @returns The maximum length the bridge has.
 	 */
-	static int32 GetMaxLength(BridgeID bridge_id);
+	static SQInteger GetMaxLength(BridgeID bridge_id);
 
 	/**
 	 * Get the minimum length of a bridge.
@@ -105,7 +106,7 @@ public:
 	 * @pre IsValidBridge(bridge_id).
 	 * @returns The minimum length the bridge has.
 	 */
-	static int32 GetMinLength(BridgeID bridge_id);
+	static SQInteger GetMinLength(BridgeID bridge_id);
 
 	/**
 	 * Internal function to help BuildBridge in case of road.
@@ -136,7 +137,7 @@ public:
 	 * @pre vehicle_type == ScriptVehicle::VT_WATER ||
 	 *   (vehicle_type == ScriptVehicle::VT_ROAD && ScriptRoad::IsRoadTypeAvailable(ScriptRoad::GetCurrentRoadType())) ||
 	 *   (vehicle_type == ScriptVehicle::VT_RAIL && ScriptRail::IsRailTypeAvailable(ScriptRail::GetCurrentRailType())).
-	 * @game @pre Outside CompanyMode: vehicle_type == ScriptVehicle::VT_ROAD.
+	 * @game @pre ScriptCompanyMode::IsValid() || vehicle_type == ScriptVehicle::VT_ROAD.
 	 * @exception ScriptError::ERR_ALREADY_BUILT
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
@@ -145,7 +146,7 @@ public:
 	 * @exception ScriptBridge::ERR_BRIDGE_CANNOT_END_IN_WATER
 	 * @exception ScriptBridge::ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT
 	 * @return Whether the bridge has been/can be build or not.
-	 * @game @note Building a bridge (without CompanyMode) results in a bridge owned by towns.
+	 * @game @note Building a bridge as deity (ScriptCompanyMode::IsDeity()) results in a bridge owned by towns.
 	 * @note No matter if the road pieces were build or not, if building the
 	 *  bridge succeeded, this function returns true.
 	 */
@@ -155,7 +156,7 @@ public:
 	 * Removes a bridge, by executing it on either the start or end tile.
 	 * @param tile An end or start tile of the bridge.
 	 * @pre ScriptMap::IsValidTile(tile).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the bridge has been/can be removed or not.
 	 */

@@ -24,7 +24,7 @@
 typedef LinkGraph::BaseNode Node;
 typedef LinkGraph::BaseEdge Edge;
 
-static uint16 _num_nodes;
+static uint16_t _num_nodes;
 static LinkGraph *_linkgraph; ///< Contains the current linkgraph being saved/loaded.
 static NodeID _linkgraph_from; ///< Contains the current "from" node being saved/loaded.
 
@@ -36,47 +36,60 @@ public:
 		SLE_CONDVAR(Edge, travel_time_sum,          SLE_UINT64, SLV_LINKGRAPH_TRAVEL_TIME, SL_MAX_VERSION),
 		    SLE_VAR(Edge, last_unrestricted_update, SLE_INT32),
 		SLE_CONDVAR(Edge, last_restricted_update,   SLE_INT32, SLV_187, SL_MAX_VERSION),
-		    SLE_VAR(Edge, next_edge,                SLE_UINT16),
+		    SLE_VAR(Edge, dest_node,                SLE_UINT16),
+		SLE_CONDVARNAME(Edge, dest_node, "next_edge", SLE_UINT16, SL_MIN_VERSION, SLV_LINKGRAPH_EDGES),
 	};
 	inline const static SaveLoadCompatTable compat_description = _linkgraph_edge_sl_compat;
 
 	void Save(Node *bn) const override
 	{
-		uint16 size = 0;
-		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->edges[_linkgraph_from][to].next_edge) {
-			size++;
-		}
-
-		SlSetStructListLength(size);
-		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->edges[_linkgraph_from][to].next_edge) {
-			SlObject(&_linkgraph->edges[_linkgraph_from][to], this->GetDescription());
+		SlSetStructListLength(bn->edges.size());
+		for (Edge &e : bn->edges) {
+			SlObject(&e, this->GetDescription());
 		}
 	}
 
 	void Load(Node *bn) const override
 	{
-		uint16 max_size = _linkgraph->Size();
+		if (IsSavegameVersionBefore(SLV_LINKGRAPH_EDGES)) {
+			uint16_t max_size = _linkgraph->Size();
+			std::vector<Edge> edges(max_size);
 
-		if (IsSavegameVersionBefore(SLV_191)) {
-			/* We used to save the full matrix ... */
-			for (NodeID to = 0; to < max_size; ++to) {
-				SlObject(&_linkgraph->edges[_linkgraph_from][to], this->GetLoadDescription());
+			if (IsSavegameVersionBefore(SLV_191)) {
+				/* We used to save the full matrix ... */
+				for (NodeID to = 0; to < max_size; ++to) {
+					SlObject(&edges[to], this->GetLoadDescription());
+				}
+			} else {
+				size_t used_size = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? max_size : SlGetStructListLength(UINT16_MAX);
+
+				/* ... but as that wasted a lot of space we save a sparse matrix now. */
+				for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = edges[to].dest_node) {
+					if (used_size == 0) SlErrorCorrupt("Link graph structure overflow");
+					used_size--;
+
+					if (to >= max_size) SlErrorCorrupt("Link graph structure overflow");
+					SlObject(&edges[to], this->GetLoadDescription());
+				}
+
+				if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) && used_size > 0) SlErrorCorrupt("Corrupted link graph");
 			}
-			return;
+
+			/* Build edge list from edge matrix. */
+			for (NodeID to = edges[_linkgraph_from].dest_node; to != INVALID_NODE; to = edges[to].dest_node) {
+				bn->edges.push_back(edges[to]);
+				bn->edges.back().dest_node = to;
+			}
+			/* Sort by destination. */
+			std::sort(bn->edges.begin(), bn->edges.end());
+		} else {
+			/* Edge data is now a simple vector and not any kind of matrix. */
+			size_t size = SlGetStructListLength(UINT16_MAX);
+			for (size_t i = 0; i < size; i++) {
+				bn->edges.emplace_back();
+				SlObject(&bn->edges.back(), this->GetLoadDescription());
+			}
 		}
-
-		size_t used_size = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? max_size : SlGetStructListLength(UINT16_MAX);
-
-		/* ... but as that wasted a lot of space we save a sparse matrix now. */
-		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->edges[_linkgraph_from][to].next_edge) {
-			if (used_size == 0) SlErrorCorrupt("Link graph structure overflow");
-			used_size--;
-
-			if (to >= max_size) SlErrorCorrupt("Link graph structure overflow");
-			SlObject(&_linkgraph->edges[_linkgraph_from][to], this->GetLoadDescription());
-		}
-
-		if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) && used_size > 0) SlErrorCorrupt("Corrupted link graph");
 	}
 };
 
@@ -107,7 +120,7 @@ public:
 	{
 		_linkgraph = lg;
 
-		uint16 length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _num_nodes : (uint16)SlGetStructListLength(UINT16_MAX);
+		uint16_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _num_nodes : (uint16_t)SlGetStructListLength(UINT16_MAX);
 		lg->Init(length);
 		for (NodeID from = 0; from < length; ++from) {
 			_linkgraph_from = from;
@@ -221,7 +234,7 @@ void AfterLoadLinkGraphs()
 	if (IsSavegameVersionBefore(SLV_191)) {
 		for (LinkGraph *lg : LinkGraph::Iterate()) {
 			for (NodeID node_id = 0; node_id < lg->Size(); ++node_id) {
-				const Station *st = Station::GetIfValid((*lg)[node_id].Station());
+				const Station *st = Station::GetIfValid((*lg)[node_id].station);
 				if (st != nullptr) (*lg)[node_id].UpdateLocation(st->xy);
 			}
 		}
@@ -229,7 +242,7 @@ void AfterLoadLinkGraphs()
 		for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) {
 			LinkGraph *lg = &(const_cast<LinkGraph &>(lgj->Graph()));
 			for (NodeID node_id = 0; node_id < lg->Size(); ++node_id) {
-				const Station *st = Station::GetIfValid((*lg)[node_id].Station());
+				const Station *st = Station::GetIfValid((*lg)[node_id].station);
 				if (st != nullptr) (*lg)[node_id].UpdateLocation(st->xy);
 			}
 		}

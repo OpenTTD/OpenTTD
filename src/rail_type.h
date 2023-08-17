@@ -12,7 +12,7 @@
 
 #include "core/enum_type.hpp"
 
-typedef uint32 RailTypeLabel;
+typedef uint32_t RailTypeLabel;
 
 static const RailTypeLabel RAILTYPE_RAIL_LABEL     = 'RAIL';
 static const RailTypeLabel RAILTYPE_ELECTRIC_LABEL = 'ELRL';
@@ -36,14 +36,12 @@ enum RailType : byte {
 
 /** Allow incrementing of Track variables */
 DECLARE_POSTFIX_INCREMENT(RailType)
-/** Define basic enum properties */
-template <> struct EnumPropsT<RailType> : MakeEnumPropsT<RailType, byte, RAILTYPE_BEGIN, RAILTYPE_END, INVALID_RAILTYPE, 6> {};
 
 /**
  * The different railtypes we support, but then a bitmask of them.
- * @note Must be treated as a uint64 type, narrowing it causes bit membership tests to give wrong results, as in bug #6951.
+ * @note Must be treated as a uint64_t type, narrowing it causes bit membership tests to give wrong results, as in bug #6951.
  */
-enum RailTypes : uint64 {
+enum RailTypes : uint64_t {
 	RAILTYPES_NONE     = 0,                      ///< No rail types
 	RAILTYPES_RAIL     = 1 << RAILTYPE_RAIL,     ///< Non-electrified rails
 	RAILTYPES_ELECTRIC = 1 << RAILTYPE_ELECTRIC, ///< Electrified rails

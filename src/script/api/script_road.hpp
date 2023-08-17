@@ -11,6 +11,7 @@
 #define SCRIPT_ROAD_HPP
 
 #include "script_tile.hpp"
+#include "../squirrel_helper_type.hpp"
 #include "../../../road.h"
 
 /**
@@ -60,7 +61,7 @@ public:
 	/**
 	 * Road/tram types
 	 */
-	enum RoadTramTypes : uint8 {
+	enum RoadTramTypes : uint8_t {
 		ROADTRAMTYPES_ROAD = ::RTTB_ROAD, ///< Road road types.
 		ROADTRAMTYPES_TRAM = ::RTTB_TRAM, ///< Tram road types.
 	};
@@ -89,7 +90,7 @@ public:
 	 * @pre IsRoadTypeAvailable(road_type).
 	 * @return The name the road type has.
 	 */
-	static char *GetName(RoadType road_type);
+	static std::optional<std::string> GetName(RoadType road_type);
 
 	/**
 	 * Determines whether a busstop or a truckstop is needed to transport a certain cargo.
@@ -140,7 +141,7 @@ public:
 	/**
 	 * Check if a given RoadType is available.
 	 * @param road_type The RoadType to check for.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True if this RoadType can be used.
 	 */
 	static bool IsRoadTypeAvailable(RoadType road_type);
@@ -160,7 +161,7 @@ public:
 	/**
 	 * Check if a road vehicle built for a road type can run on another road type.
 	 * @param engine_road_type The road type the road vehicle is built for.
-	 * @param track_road_type The road type you want to check.
+	 * @param road_road_type The road type you want to check.
 	 * @pre ScriptRoad::IsRoadTypeAvailable(engine_road_type).
 	 * @pre ScriptRoad::IsRoadTypeAvailable(road_road_type).
 	 * @return Whether a road vehicle built for 'engine_road_type' can run on 'road_road_type'.
@@ -186,7 +187,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(start_tile).
 	 * @pre ScriptMap::IsValidTile(end_tile).
 	 * @pre IsRoadTypeAvailable(road_type).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptRoad::ERR_UNSUITABLE_ROAD
 	 * @return Whether at least some road has been converted successfully.
 	 */
@@ -245,7 +246,7 @@ public:
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
 	 */
-	static int32 CanBuildConnectedRoadParts(ScriptTile::Slope slope, struct Array *existing, TileIndex start, TileIndex end);
+	static SQInteger CanBuildConnectedRoadParts(ScriptTile::Slope slope, Array<> &&existing, TileIndex start, TileIndex end);
 
 	/**
 	 * Lookup function for building road parts independent of whether the
@@ -266,7 +267,7 @@ public:
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
 	 */
-	static int32 CanBuildConnectedRoadPartsHere(TileIndex tile, TileIndex start, TileIndex end);
+	static SQInteger CanBuildConnectedRoadPartsHere(TileIndex tile, TileIndex start, TileIndex end);
 
 	/**
 	 * Count how many neighbours are road.
@@ -275,7 +276,7 @@ public:
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @return 0 means no neighbour road; max value is 4.
 	 */
-	static int32 GetNeighbourRoadCount(TileIndex tile);
+	static SQInteger GetNeighbourRoadCount(TileIndex tile);
 
 	/**
 	 * Gets the tile in front of a road depot.
@@ -321,7 +322,7 @@ public:
 	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
-	 * @game @note Building a piece of road (without CompanyMode) results in a piece of road owned by towns.
+	 * @game @note Building a piece of road as deity (ScriptCompanyMode::IsDeity()) results in a piece of road owned by towns.
 	 * @return Whether the road has been/can be build or not.
 	 */
 	static bool BuildRoad(TileIndex start, TileIndex end);
@@ -342,7 +343,7 @@ public:
 	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
 	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_ALREADY_BUILT
 	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
@@ -373,7 +374,7 @@ public:
 	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
-	 * @game @note Building a piece of road (without CompanyMode) results in a piece of road owned by towns.
+	 * @game @note Building a piece of road as deity (ScriptCompanyMode::IsDeity()) results in a piece of road owned by towns.
 	 * @return Whether the road has been/can be build or not.
 	 */
 	static bool BuildRoadFull(TileIndex start, TileIndex end);
@@ -386,7 +387,6 @@ public:
 	 *  one-way in the other direction, it's made a 'no'-way road (it's
 	 *  forbidden to enter the tile from any direction).
 	 * @param start The start tile of the road.
-	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
 	 * @pre 'start' is not equal to 'end'.
 	 * @pre ScriptMap::IsValidTile(start).
@@ -395,7 +395,7 @@ public:
 	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
 	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_ALREADY_BUILT
 	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
@@ -415,7 +415,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(front).
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @return Whether the road depot has been/can be build or not.
@@ -433,7 +433,7 @@ public:
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
 	 * @pre station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id).
 	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
@@ -458,7 +458,7 @@ public:
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
 	 * @pre station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
@@ -483,7 +483,7 @@ public:
 	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
 	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
@@ -503,7 +503,7 @@ public:
 	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
 	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
@@ -516,7 +516,7 @@ public:
 	 * @param tile Place to remove the depot from.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre Tile is a road depot.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @return Whether the road depot has been/can be removed or not.
@@ -528,7 +528,7 @@ public:
 	 * @param tile Place to remove the station from.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre Tile is a road station.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @return Whether the station has been/can be removed or not.
@@ -561,7 +561,7 @@ public:
 	 *       This is mph / 0.8, which is roughly 0.5 km/h.
 	 *       To get km/h multiply this number by 2.01168.
 	 */
-	static int32 GetMaxSpeed(RoadType road_type);
+	static SQInteger GetMaxSpeed(RoadType road_type);
 
 	/**
 	 * Get the maintenance cost factor of a road type.
@@ -569,7 +569,7 @@ public:
 	 * @pre IsRoadTypeAvailable(roadtype)
 	 * @return Maintenance cost factor of the roadtype.
 	 */
-	static uint16 GetMaintenanceCostFactor(RoadType roadtype);
+	static SQInteger GetMaintenanceCostFactor(RoadType roadtype);
 
 private:
 

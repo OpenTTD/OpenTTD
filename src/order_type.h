@@ -13,9 +13,9 @@
 #include "core/enum_type.hpp"
 
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
-typedef uint32 OrderID;
-typedef uint16 OrderListID;
-typedef uint16 DestinationID;
+typedef uint32_t OrderID;
+typedef uint16_t OrderListID;
+typedef uint16_t DestinationID;
 
 /** Invalid vehicle order index (sentinel) */
 static const VehicleOrderID INVALID_VEH_ORDER_ID = 0xFF;
@@ -140,7 +140,7 @@ enum OrderConditionComparator {
 /**
  * Enumeration for the data to set in #CmdModifyOrder.
  */
-enum ModifyOrderFlags {
+enum ModifyOrderFlags : byte {
 	MOF_NON_STOP,        ///< Passes an OrderNonStopFlags.
 	MOF_STOP_LOCATION,   ///< Passes an OrderStopLocation.
 	MOF_UNLOAD,          ///< Passes an OrderUnloadType.
@@ -152,7 +152,6 @@ enum ModifyOrderFlags {
 	MOF_COND_DESTINATION,///< Change the destination of a conditional order.
 	MOF_END
 };
-template <> struct EnumPropsT<ModifyOrderFlags> : MakeEnumPropsT<ModifyOrderFlags, byte, MOF_NON_STOP, MOF_END, MOF_END, 4> {};
 
 /**
  * Depot action to switch to when doing a #MOF_DEPOT_ACTION.
@@ -167,17 +166,15 @@ enum OrderDepotAction {
 /**
  * Enumeration for the data to set in #CmdChangeTimetable.
  */
-enum ModifyTimetableFlags {
+enum ModifyTimetableFlags : byte {
 	MTF_WAIT_TIME,    ///< Set wait time.
 	MTF_TRAVEL_TIME,  ///< Set travel time.
 	MTF_TRAVEL_SPEED, ///< Set max travel speed.
 	MTF_END
 };
-template <> struct EnumPropsT<ModifyTimetableFlags> : MakeEnumPropsT<ModifyTimetableFlags, byte, MTF_WAIT_TIME, MTF_END, MTF_END, 2> {};
-
 
 /** Clone actions. */
-enum CloneOptions {
+enum CloneOptions : byte {
 	CO_SHARE   = 0,
 	CO_COPY    = 1,
 	CO_UNSHARE = 2

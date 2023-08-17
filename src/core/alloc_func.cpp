@@ -9,6 +9,8 @@
 
 #include "../stdafx.h"
 
+#include "../error_func.h"
+
 #include "../safeguards.h"
 
 /**
@@ -17,7 +19,7 @@
  */
 void NORETURN MallocError(size_t size)
 {
-	error("Out of memory. Cannot allocate " PRINTF_SIZE " bytes", size);
+	FatalError("Out of memory. Cannot allocate {} bytes", size);
 }
 
 /**
@@ -26,5 +28,5 @@ void NORETURN MallocError(size_t size)
  */
 void NORETURN ReallocError(size_t size)
 {
-	error("Out of memory. Cannot reallocate " PRINTF_SIZE " bytes", size);
+	FatalError("Out of memory. Cannot reallocate {} bytes", size);
 }

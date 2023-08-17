@@ -218,20 +218,27 @@ public:
 	 *    store the current configuration of Scripts. Required.
 	 *  - description A single line describing the setting. Required.
 	 *  - min_value The minimum value of this setting. Required for integer
-	 *    settings and not allowed for boolean settings.
+	 *    settings and not allowed for boolean settings. The value will be
+	 *    clamped in the range [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - max_value The maximum value of this setting. Required for integer
-	 *    settings and not allowed for boolean settings.
+	 *    settings and not allowed for boolean settings. The value will be
+	 *    clamped in the range [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - easy_value The default value if the easy difficulty level
-	 *    is selected. Required.
+	 *    is selected. Required. The value will be clamped in the range
+	 *    [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - medium_value The default value if the medium difficulty level
-	 *    is selected. Required.
+	 *    is selected. Required. The value will be clamped in the range
+	 *    [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - hard_value The default value if the hard difficulty level
-	 *    is selected. Required.
+	 *    is selected. Required. The value will be clamped in the range
+	 *    [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - custom_value The default value if the custom difficulty level
-	 *    is selected. Required.
+	 *    is selected. Required. The value will be clamped in the range
+	 *    [MIN(int32_t), MAX(int32_t)] (inclusive).
 	 *  - random_deviation If this property has a nonzero value, then the
 	 *    actual value of the setting in game will be randomized in the range
 	 *    [user_configured_value - random_deviation, user_configured_value + random_deviation] (inclusive).
+	 *    random_deviation sign is ignored and the value is clamped in the range [0, MAX(int32_t)] (inclusive).
 	 *    Not allowed if the CONFIG_RANDOM flag is set, otherwise optional.
 	 *  - step_size The increase/decrease of the value every time the user
 	 *    clicks one of the up/down arrow buttons. Optional, default is 1.
@@ -247,13 +254,16 @@ public:
 	 *  user will see the corresponding name.
 	 * @param setting_name The name of the setting.
 	 * @param value_names A table that maps values to names. The first
-	 *   character of every identifier is ignored and the rest should
+	 *   character of every identifier is ignored, the second character
+	 *   could be '_' to indicate the value is negative, and the rest should
 	 *   be an integer of the value you define a name for. The value
 	 *   is a short description of that value.
 	 * To define labels for a setting named "competition_level" you could
 	 * for example call it like this:
 	 * AddLabels("competition_level", {_0 = "no competition", _1 = "some competition",
 	 * _2 = "a lot of competition"});
+	 * Another example, for a setting with a negative value:
+	 * AddLabels("amount", {__1 = "less than one", _0 = "none", _1 = "more than one"});
 	 *
 	 * @note This is a function provided by OpenTTD, you don't have to
 	 * include it in your Script but should just call it from GetSettings.

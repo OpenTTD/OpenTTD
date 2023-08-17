@@ -18,900 +18,85 @@ jobs:
   source:
     name: Source
 
-    runs-on: ubuntu-20.04
-
-    outputs:
-      version: ${{ steps.metadata.outputs.version }}
-      is_tag: ${{ steps.metadata.outputs.is_tag }}
-      trigger_type: ${{ steps.metadata.outputs.trigger_type }}
-      folder: ${{ steps.metadata.outputs.folder }}
-
-    steps:
-    - name: Checkout (Release)
-      if: github.event_name == 'release'
-      uses: actions/checkout@v2
-      with:
-        # We generate a changelog; for this we need the full git log.
-        fetch-depth: 0
-
-    - name: Checkout (Manual)
-      if: github.event_name == 'workflow_dispatch'
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.inputs.ref }}
-        # We generate a changelog; for this we need the full git log.
-        fetch-depth: 0
-
-    - name: Checkout (Trigger)
-      if: github.event_name == 'repository_dispatch'
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.client_payload.ref }}
-        # We generate a changelog; for this we need the full git log.
-        fetch-depth: 0
-
-    - name: Check valid branch name
-      run: |
-        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-          REF="${{ github.event.inputs.ref }}"
-        elif [ "${{ github.event_name }}" = "repository_dispatch" ]; then
-          REF="${{ github.event.client_payload.ref }}"
-        else
-          REF="${{ github.ref }}"
-        fi
-
-        # Check if we are a tag.
-        if [ -n "$(git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || false)" ]; then
-          exit 0
-        fi
-
-        # Check if the checkout caused the branch to be named.
-        if [ "$(git rev-parse --abbrev-ref HEAD)" != "HEAD" ]; then
-          exit 0
-        fi
-
-        # Check if this was a pull request.
-        if [ -n "$(echo ${REF} | grep '^refs/pull/[0-9]*')" ]; then
-          PULL=$(echo ${REF} | cut -d/ -f3)
-          git checkout -b pr${PULL}
-        fi
-
-        # Are we still in a detached state? Error out.
-        if [ "$(git rev-parse --abbrev-ref HEAD)" == "HEAD" ]; then
-          echo "The 'ref' given resulted in a checkout of a detached HEAD."
-          echo "We cannot detect the version for these checkout accurate."
-          echo ""
-          echo "If you want to build a Pull Request, make sure you use 'refs/pull/NNN/head'."
-          echo ""
-          echo "Cancelling build, as without a version we cannot store the artifacts."
-          exit 1
-        fi
-
-    - name: Generate metadata
-      id: metadata
-      run: |
-        echo "::group::Prepare metadata files"
-        cmake -DGENERATE_OTTDREV=1 -P cmake/scripts/FindVersion.cmake
-        ./.github/changelog.sh > .changelog
-        TZ='UTC' date +"%Y-%m-%d %H:%M UTC" > .release_date
-        cat .ottdrev | cut -f 1 -d$'\t' > .version
-
-        if [ $(cat .ottdrev | cut -f 5 -d$'\t') = '1' ]; then
-          # Assume that all tags are always releases. Why else make a tag?
-          IS_TAG="true"
-
-          FOLDER="${{ env.FOLDER_RELEASES }}"
-          TRIGGER_TYPE="new-tag"
-        else
-          IS_TAG="false"
-
-          BRANCH=$(git symbolic-ref -q HEAD | sed 's@.*/@@')
-          if [ -z "${BRANCH}" ]; then
-            echo "Internal error: branch name is empty."
-            echo "An earlier step should have prevented this from happening."
-            echo "Cancelling build, as without a branch name we cannot store the artifacts"
-            exit 1
-          fi
-
-          if [ "${BRANCH}" = "${{ env.NIGHTLIES_BRANCH }}" ]; then
-            # The "master" branch is special, and we call a nightly.
-            FOLDER="${{ env.FOLDER_NIGHTLIES }}/$(date +%Y)"
-            TRIGGER_TYPE="new-master"
-          else
-            # All other branches, which can be builds of Pull Requests, are
-            # put in their own folder.
-            FOLDER="${{ env.FOLDER_BRANCHES }}/${BRANCH}"
-            TRIGGER_TYPE="new-branch"
-          fi
-        fi
-
-        mkdir -p build/bundles
-        cp .changelog build/bundles/changelog.txt
-        cp .release_date build/bundles/released.txt
-        cp README.md build/bundles/README.md
-        echo "::endgroup::"
-
-        echo "Release Date: $(cat .release_date)"
-        echo "Revision: $(cat .ottdrev)"
-        echo "Version: $(cat .version)"
-        echo "Is tag: ${IS_TAG}"
-        echo "Folder on CDN: ${FOLDER}"
-        echo "Workflow trigger: ${TRIGGER_TYPE}"
-
-        echo "::set-output name=version::$(cat .version)"
-        echo "::set-output name=is_tag::${IS_TAG}"
-        echo "::set-output name=folder::${FOLDER}"
-        echo "::set-output name=trigger_type::${TRIGGER_TYPE}"
-      env:
-        NIGHTLIES_BRANCH: master
-        FOLDER_RELEASES: openttd-releases
-        FOLDER_NIGHTLIES: openttd-nightlies
-        FOLDER_BRANCHES: openttd-branches
-
-    - name: Remove VCS information
-      run: |
-        rm -rf .git
-
-    - name: Create bundles
-      run: |
-        FOLDER_NAME=openttd-${{ steps.metadata.outputs.version }}
-
-        # Rename the folder to openttd-NNN
-        mkdir ${FOLDER_NAME}
-        find . -maxdepth 1 -not -name . -not -name build -not -name ${FOLDER_NAME} -exec mv {} ${FOLDER_NAME}/ \;
-
-        echo "::group::Create tarball (xz) bundle"
-        tar --xz -cvf build/bundles/${FOLDER_NAME}-source.tar.xz ${FOLDER_NAME}
-        echo "::endgroup::"
-
-        # This tarball is only to be used within this workflow.
-        echo "::group::Create tarball (gz) bundle"
-        tar --gzip -cvf source.tar.gz ${FOLDER_NAME}
-        echo "::endgroup::"
-
-        echo "::group::Create zip bundle"
-        zip -9 -r build/bundles/${FOLDER_NAME}-source.zip ${FOLDER_NAME}
-        echo "::endgroup::"
-
-    - name: Store bundles
-      uses: actions/upload-artifact@v2
-      with:
-        name: openttd-source
-        path: build/bundles/*
-        retention-days: 5
-
-    - name: Store source (for other jobs)
-      uses: actions/upload-artifact@v2
-      with:
-        name: internal-source
-        path: source.tar.gz
-        retention-days: 1
+    uses: ./.github/workflows/release-source.yml
+    secrets: inherit
 
   docs:
     name: Docs
     needs: source
 
-    runs-on: ubuntu-20.04
+    uses: ./.github/workflows/release-docs.yml
+    secrets: inherit
 
-    steps:
-    - name: Download source
-      uses: actions/download-artifact@v2
-      with:
-        name: internal-source
-
-    - name: Unpack source
-      run: |
-        tar -xf source.tar.gz --strip-components=1
-
-    - name: Install dependencies
-      run: |
-        echo "::group::Update apt"
-        sudo apt-get update
-        echo "::endgroup::"
-
-        echo "::group::Install dependencies"
-        sudo apt-get install -y --no-install-recommends \
-          doxygen \
-          # EOF
-        echo "::endgroup::"
-      env:
-        DEBIAN_FRONTEND: noninteractive
-
-    - name: Build
-      run: |
-        mkdir -p ${GITHUB_WORKSPACE}/build
-        cd ${GITHUB_WORKSPACE}/build
-
-        echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DOPTION_DOCS_ONLY=ON \
-          # EOF
-        echo "::endgroup::"
-
-        echo "::group::Build"
-        cmake --build . --target docs
-        echo "::endgroup::"
-
-    - name: Create bundles
-      run: |
-        BASENAME=openttd-${{ needs.source.outputs.version }}
-
-        cd ${GITHUB_WORKSPACE}/build
-
-        mv docs/source ${BASENAME}-docs
-        mv docs/ai-api ${BASENAME}-docs-ai
-        mv docs/gs-api ${BASENAME}-docs-gs
-
-        mkdir -p bundles
-
-        echo "::group::Create docs bundle"
-        tar --xz -cf bundles/${BASENAME}-docs.tar.xz ${BASENAME}-docs
-        echo "::endgroup::"
-
-        echo "::group::Create AI API docs bundle"
-        tar --xz -cf bundles/${BASENAME}-docs-ai.tar.xz ${BASENAME}-docs-ai
-        echo "::endgroup::"
-
-        echo "::group::Create GameScript API docs bundle"
-        tar --xz -cf bundles/${BASENAME}-docs-gs.tar.xz ${BASENAME}-docs-gs
-        echo "::endgroup::"
-
-    - name: Store bundles
-      uses: actions/upload-artifact@v2
-      with:
-        name: openttd-docs
-        path: build/bundles/*.tar.xz
-        retention-days: 5
+    with:
+      version: ${{ needs.source.outputs.version }}
 
   linux:
     name: Linux (Generic)
     needs: source
 
-    runs-on: ubuntu-20.04
-    container:
-      # manylinux2014 is based on CentOS 7, but already has a lot of things
-      # installed and preconfigured. It makes it easier to build OpenTTD.
-      image: quay.io/pypa/manylinux2014_x86_64
+    uses: ./.github/workflows/release-linux.yml
+    secrets: inherit
 
-    steps:
-    - name: Download source
-      uses: actions/download-artifact@v2
-      with:
-        name: internal-source
-
-    - name: Unpack source
-      run: |
-        tar -xf source.tar.gz --strip-components=1
-
-    - name: Install dependencies
-      run: |
-        echo "::group::Install dependencies"
-        yum install -y \
-          fontconfig-devel \
-          freetype-devel \
-          libicu-devel \
-          libpng-devel \
-          libpng-devel \
-          lzo-devel \
-          SDL2-devel \
-          wget \
-          xz-devel \
-          zlib-devel \
-          # EOF
-        echo "::endgroup::"
-
-        # The yum variant of fluidsynth depends on all possible audio drivers,
-        # like jack, ALSA, pulseaudio, etc. This is not really useful for us,
-        # as we route the output of fluidsynth back via our sound driver, and
-        # as such do not use these audio driver outputs at all. So instead,
-        # we compile fluidsynth ourselves, with as little dependencies as
-        # possible. This currently means it picks up SDL2, but this is fine,
-        # as we need SDL2 anyway.
-        echo "::group::Install fluidsynth"
-        wget https://github.com/FluidSynth/fluidsynth/archive/v2.1.6.tar.gz
-        tar xf v2.1.6.tar.gz
-        (
-          cd fluidsynth-2.1.6
-          mkdir build
-          cd build
-          cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
-          cmake --build . -j $(nproc)
-          cmake --install .
-        )
-        echo "::endgroup::"
-
-    - name: Install GCC problem matcher
-      uses: ammaraskar/gcc-problem-matcher@master
-
-    - name: Build
-      run: |
-        mkdir -p build
-        cd build
-
-        echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DOPTION_PACKAGE_DEPENDENCIES=ON \
-          # EOF
-        echo "::endgroup::"
-
-        echo "::group::Build"
-        echo "Running on $(nproc) cores"
-        cmake --build . -j $(nproc)
-        echo "::endgroup::"
-
-    - name: Create bundles
-      run: |
-        cd ${GITHUB_WORKSPACE}/build
-        echo "::group::Run CPack"
-        cpack
-        echo "::endgroup::"
-
-        echo "::group::Cleanup"
-        # Remove the sha256 files CPack generates; we will do this ourself at
-        # the end of this workflow.
-        rm -f bundles/*.sha256
-        echo "::endgroup::"
-
-    - name: Store bundles
-      uses: actions/upload-artifact@v2
-      with:
-        name: openttd-linux-generic
-        path: build/bundles
-        retention-days: 5
-
-  linux-distro:
-    name: Linux (Distros)
-    needs: source
-
-    if: needs.source.outputs.is_tag == 'true'
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - container_image: "ubuntu:18.04"
-          bundle_name: "bionic"
-          compiler: "g++-8"
-        - container_image: "ubuntu:20.04"
-          bundle_name: "focal"
-          compiler: "g++"
-        - container_image: "ubuntu:20.10"
-          bundle_name: "groovy"
-          compiler: "g++"
-        - container_image: "debian:buster"
-          bundle_name: "buster"
-          compiler: "g++"
-        - container_image: "debian:bullseye"
-          bundle_name: "bullseye"
-          compiler: "g++"
-
-    runs-on: ubuntu-20.04
-    container:
-      image: ${{ matrix.container_image }}
-
-    steps:
-    - name: Download source
-      uses: actions/download-artifact@v2
-      with:
-        name: internal-source
-
-    - name: Unpack source
-      run: |
-        tar -xf source.tar.gz --strip-components=1
-
-    - name: Install dependencies
-      run: |
-        echo "::group::Update apt"
-        apt-get update
-        echo "::endgroup::"
-
-        echo "::group::Install dependencies"
-        apt-get install -y --no-install-recommends \
-          cmake \
-          debhelper \
-          ${{ matrix.compiler }} \
-          git \
-          make \
-          openssl \
-          libfontconfig-dev \
-          libfluidsynth-dev \
-          libicu-dev \
-          liblzma-dev \
-          liblzo2-dev \
-          libsdl2-dev \
-          lsb-release \
-          zlib1g-dev \
-          # EOF
-        echo "::endgroup::"
-      env:
-        DEBIAN_FRONTEND: noninteractive
-
-    - name: Install GCC problem matcher
-      uses: ammaraskar/gcc-problem-matcher@master
-
-    - name: Build
-      run: |
-        mkdir -p build
-        cd build
-
-        echo "::group::CMake"
-        CXX=${{ matrix.compiler }} cmake ${GITHUB_WORKSPACE} \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DCMAKE_INSTALL_PREFIX=/usr \
-          # EOF
-        echo "::endgroup::"
-
-        echo "::group::Build"
-        echo "Running on $(nproc) cores"
-        # Ubuntu 18.04 cmake does not support -j so we pass the option to the native tool
-        cmake --build . -- -j $(nproc)
-        echo "::endgroup::"
-
-    - name: Create bundles
-      run: |
-        cd ${GITHUB_WORKSPACE}/build
-        echo "::group::Run CPack"
-        cpack
-        echo "::endgroup::"
-
-        echo "::group::Cleanup"
-        # Remove the sha256 files CPack generates; we will do this ourself at
-        # the end of this workflow.
-        rm -f bundles/*.sha256
-        echo "::endgroup::"
-
-    - name: Store bundles
-      uses: actions/upload-artifact@v2
-      with:
-        name: openttd-linux-${{ matrix.bundle_name }}
-        path: build/bundles
-        retention-days: 5
+    with:
+      survey_key: ${{ needs.source.outputs.survey_key }}
 
   macos:
     name: MacOS
     needs: source
 
-    runs-on: macos-11
-    env:
-      MACOSX_DEPLOYMENT_TARGET: 10.14
+    uses: ./.github/workflows/release-macos.yml
+    secrets: inherit
 
-    steps:
-    - name: Download source
-      uses: actions/download-artifact@v2
-      with:
-        name: internal-source
-
-    - name: Unpack source
-      run: |
-        tar -xf source.tar.gz --strip-components=1
-
-    - name: Install dependencies
-      env:
-        HOMEBREW_NO_AUTO_UPDATE: 1
-        HOMEBREW_NO_INSTALL_CLEANUP: 1
-      run: |
-        brew install pandoc
-
-    - name: Prepare cache key
-      id: key
-      run: |
-        echo "::set-output name=image::$ImageOS-$ImageVersion"
-
-    - name: Enable vcpkg cache
-      uses: actions/cache@v2
-      with:
-        path: /usr/local/share/vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-release-0 # Increase the number whenever dependencies are modified
-        restore-keys: |
-          ${{ steps.key.outputs.image }}-vcpkg-release
-          ${{ steps.key.outputs.image }}-vcpkg-x64
-
-    - name: Prepare vcpkg
-      run: |
-        vcpkg install \
-          liblzma:x64-osx \
-          liblzma:arm64-osx \
-          libpng:x64-osx \
-          libpng:arm64-osx \
-          lzo:x64-osx \
-          lzo:arm64-osx \
-          zlib:x64-osx \
-          zlib:arm64-osx \
-          # EOF
-
-    - name: Install GCC problem matcher
-      uses: ammaraskar/gcc-problem-matcher@master
-
-    - name: Build tools
-      run: |
-        mkdir build-host
-        cd build-host
-
-        echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DOPTION_TOOLS_ONLY=ON \
-          # EOF
-        echo "::endgroup::"
-
-        echo "::group::Build tools"
-        echo "Running on $(sysctl -n hw.logicalcpu) cores"
-        cmake --build . -j $(sysctl -n hw.logicalcpu) --target tools
-        echo "::endgroup::"
-
-    - name: Import code signing certificates
-      uses: Apple-Actions/import-codesign-certs@v1
-      with:
-        # The certificates in a PKCS12 file encoded as a base64 string
-        p12-file-base64: ${{ secrets.APPLE_DEVELOPER_CERTIFICATE_P12_BASE64 }}
-        # The password used to import the PKCS12 file.
-        p12-password: ${{ secrets.APPLE_DEVELOPER_CERTIFICATE_PASSWORD }}
-      # If this is run on a fork, there may not be a certificate set up - continue in this case
-      continue-on-error: true
-
-    - name: Build arm64
-      run: |
-        mkdir build-arm64
-        cd build-arm64
-
-        echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
-          -DCMAKE_OSX_ARCHITECTURES=arm64 \
-          -DVCPKG_TARGET_TRIPLET=arm64-osx \
-          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
-          -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          # EOF
-        echo "::endgroup::"
-
-        echo "::group::Build"
-        echo "Running on $(sysctl -n hw.logicalcpu) cores"
-        cmake --build . -j $(sysctl -n hw.logicalcpu)
-        echo "::endgroup::"
-
-    - name: Build x64
-      run: |
-        mkdir build-x64
-        cd build-x64
-
-        echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
-          -DCMAKE_OSX_ARCHITECTURES=x86_64 \
-          -DVCPKG_TARGET_TRIPLET=x64-osx \
-          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
-          -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DCPACK_BUNDLE_APPLE_CERT_APP=${{ secrets.APPLE_DEVELOPER_CERTIFICATE_ID }} \
-          "-DCPACK_BUNDLE_APPLE_CODESIGN_PARAMETER=--deep -f --options runtime" \
-          -DAPPLE_UNIVERSAL_PACKAGE=1 \
-          # EOF
-        echo "::endgroup::"
-
-        echo "::group::Build"
-        echo "Running on $(sysctl -n hw.logicalcpu) cores"
-        cmake --build . -j $(sysctl -n hw.logicalcpu)
-        echo "::endgroup::"
-
-    - name: Create bundles
-      run: |
-        cd build-x64
-
-        echo "::group::Create universal binary"
-        # Combine the `openttd` binaries from each build into a single file
-        lipo -create -output openttd-universal ../build-*/openttd
-        mv openttd-universal openttd
-        echo "::endgroup::"
-
-        echo "::group::Run CPack"
-        cpack
-        echo "::endgroup::"
-
-        echo "::group::Cleanup"
-        # Remove the sha256 files CPack generates; we will do this ourself at
-        # the end of this workflow.
-        rm -f bundles/*.sha256
-        echo "::endgroup::"
-
-    - name: Install gon
-      env:
-        HOMEBREW_NO_AUTO_UPDATE: 1
-        HOMEBREW_NO_INSTALL_CLEANUP: 1
-      run: |
-        brew tap mitchellh/gon
-        brew install mitchellh/gon/gon
-
-    - name: Notarize
-      env:
-        AC_USERNAME: ${{ secrets.APPLE_DEVELOPER_APP_USERNAME }}
-        AC_PASSWORD: ${{ secrets.APPLE_DEVELOPER_APP_PASSWORD }}
-      run: |
-        cd build-x64
-        ../os/macosx/notarize.sh
-
-    - name: Build zip
-      run: |
-        cd build-x64
-
-        pushd _CPack_Packages/*/Bundle/openttd-*/
-
-        # Remove the Applications symlink from the staging folder
-        rm -f Applications
-
-        # Remove the original dmg built by CPack to avoid a conflict when resolving
-        # the zip_filename variable below
-        rm -f ../*.dmg
-
-        zip_filename=(../openttd-*)
-
-        # Package up the existing, notarised .app into a zip file
-        zip -r -9 ${zip_filename}.zip OpenTTD.app
-
-        popd
-
-        # Now move it into place to be uploaded
-        mv _CPack_Packages/*/Bundle/openttd-*.zip bundles/
-
-    - name: Store bundles
-      uses: actions/upload-artifact@v2
-      with:
-        name: openttd-macos-universal
-        path: build-x64/bundles
-        retention-days: 5
+    with:
+      survey_key: ${{ needs.source.outputs.survey_key }}
 
   windows:
     name: Windows
     needs: source
 
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - arch: x86
-          host: x86
-        - arch: x64
-          host: x64
-        - arch: arm64
-          host: x64_arm64
+    uses: ./.github/workflows/release-windows.yml
+    secrets: inherit
 
-    runs-on: windows-latest
+    with:
+      is_tag: ${{ needs.source.outputs.is_tag }}
+      survey_key: ${{ needs.source.outputs.survey_key }}
 
-    steps:
-    - name: Download source
-      uses: actions/download-artifact@v2
-      with:
-        name: internal-source
+  windows-store:
+    name: Windows Store
+    needs:
+    - source
+    - windows
 
-    - name: Unpack source
-      shell: bash
-      run: |
-        tar -xf source.tar.gz --strip-components=1
+    if: needs.source.outputs.is_tag == 'true'
 
-    - name: Install dependencies
-      shell: bash
-      run: |
-        choco install pandoc
+    uses: ./.github/workflows/release-windows-store.yml
+    secrets: inherit
 
-    - name: Prepare cache key
-      id: key
-      shell: powershell
-      run: |
-        # Work around caching failure with GNU tar
-        New-Item -Type Junction -Path vcpkg -Target c:\vcpkg
+    with:
+      version: ${{ needs.source.outputs.version }}
 
-        Write-Output "::set-output name=image::$env:ImageOS-$env:ImageVersion"
-
-    - name: Enable vcpkg cache
-      uses: actions/cache@v2
-      with:
-        path: vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
-        restore-keys: |
-          ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
-
-    - name: Prepare vcpkg
-      shell: bash
-      run: |
-        vcpkg install --triplet=${{ matrix.arch }}-windows-static \
-          liblzma \
-          libpng \
-          lzo \
-          zlib \
-          # EOF
-
-    - name: Install MSVC problem matcher
-      uses: ammaraskar/msvc-problem-matcher@master
-
-    - name: Configure developer command prompt for tools
-      uses: ilammy/msvc-dev-cmd@v1
-      with:
-        arch: x64
-
-    - name: Build tools
-      shell: bash
-      run: |
-        mkdir build-host
-        cd build-host
-
-        echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
-          -GNinja \
-          -DOPTION_TOOLS_ONLY=ON \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          # EOF
-        echo "::endgroup::"
-
-        echo "::group::Build"
-        cmake --build . --target tools
-        echo "::endgroup::"
-
-    - name: Configure developer command prompt for ${{ matrix.arch }}
-      uses: ilammy/msvc-dev-cmd@v1
-      with:
-        arch: ${{ matrix.host }}
-
-    - name: Import code signing certificate
-      shell: powershell
-      # If this is run on a fork, there may not be a certificate set up - continue in this case
-      continue-on-error: true
-      run: |
-        $tempFile = [System.IO.Path]::GetTempFileName()
-        $bytes = [System.Convert]::FromBase64String($env:WINDOWS_CERTIFICATE_P12)
-        [IO.File]::WriteAllBytes($tempFile, $bytes)
-        $pwd = ConvertTo-SecureString $env:WINDOWS_CERTIFICATE_PASSWORD -AsPlainText -Force
-        Import-PfxCertificate -FilePath $tempFile -CertStoreLocation Cert:\CurrentUser\My -Password $pwd
-        Remove-Item $tempFile
-      env:
-        WINDOWS_CERTIFICATE_P12: ${{ secrets.WINDOWS_CERTIFICATE_P12 }}
-        WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
-
-    - name: Build (with installer)
-      if: needs.source.outputs.is_tag == 'true'
-      shell: bash
-      run: |
-        mkdir build
-        cd build
-
-        echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
-          -GNinja \
-          -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
-          -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
-          -DOPTION_USE_NSIS=ON \
-          -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
-          # EOF
-        echo "::endgroup::"
-
-        echo "::group::Build"
-        cmake --build .
-        echo "::endgroup::"
-      env:
-        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
-
-    - name: Build (without installer)
-      if: needs.source.outputs.is_tag != 'true'
-      shell: bash
-      run: |
-        mkdir build
-        cd build
-
-        echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
-          -GNinja \
-          -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
-          -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
-          -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
-          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-          -DWINDOWS_CERTIFICATE_COMMON_NAME="${WINDOWS_CERTIFICATE_COMMON_NAME}" \
-          # EOF
-        echo "::endgroup::"
-
-        echo "::group::Build"
-        cmake --build .
-        echo "::endgroup::"
-      env:
-        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
-
-    - name: Create bundles
-      shell: bash
-      run: |
-        cd ${GITHUB_WORKSPACE}/build
-        echo "::group::Run CPack"
-        cpack
-        echo "::endgroup::"
-
-        echo "::group::Prepare PDB to be bundled"
-        PDB=$(ls bundles/*.zip | cut -d/ -f2 | sed 's/.zip$/.pdb/')
-        cp openttd.pdb bundles/${PDB}
-        xz -9 bundles/${PDB}
-        echo "::endgroup::"
-
-        echo "::group::Cleanup"
-        # Remove the sha256 files CPack generates; we will do this ourself at
-        # the end of this workflow.
-        rm -f bundles/*.sha256
-        echo "::endgroup::"
-
-    - name: Sign installer
-      if: needs.source.outputs.is_tag == 'true'
-      shell: bash
-      # If this is run on a fork, there may not be a certificate set up - continue in this case
-      continue-on-error: true
-      run: |
-        cd ${GITHUB_WORKSPACE}/build/bundles
-        ../../os/windows/sign.bat *.exe "${WINDOWS_CERTIFICATE_COMMON_NAME}"
-      env:
-        WINDOWS_CERTIFICATE_COMMON_NAME: ${{ secrets.WINDOWS_CERTIFICATE_COMMON_NAME }}
-
-    - name: Store bundles
-      uses: actions/upload-artifact@v2
-      with:
-        name: openttd-windows-${{ matrix.arch }}
-        path: build/bundles
-        retention-days: 5
-
-  upload:
-    name: Upload (AWS)
+  upload-cdn:
+    name: Upload (CDN)
     needs:
     - source
     - docs
     - linux
-    - linux-distro
     - macos
     - windows
+    - windows-store
 
-    # The 'linux' job can be skipped if it is a nightly. That normally causes
-    # this job to be skipped too, unless we have this length boy :)
-    # "always()" is important here, it is the keyword to use to stop skipping
-    # this job if any dependency is skipped. It looks a bit silly, but it is
-    # how GitHub Actions work ;)
-    if: always() && needs.source.result == 'success' && needs.docs.result == 'success' && needs.linux.result == 'success' && (needs.linux-distro.result == 'success' || needs.linux-distro.result == 'skipped') && needs.macos.result == 'success' && needs.windows.result == 'success'
+    # As windows-store is condition, we need to check ourselves if we need to run.
+    # The always() makes sure the rest is always evaluated.
+    if: always() && needs.source.result == 'success' && needs.docs.result == 'success' && needs.linux.result == 'success' && needs.macos.result == 'success' && needs.windows.result == 'success' && (needs.windows-store.result == 'success' || needs.windows-store.result == 'skipped')
 
-    runs-on: ubuntu-20.04
+    uses: ./.github/workflows/upload-cdn.yml
+    secrets: inherit
 
-    steps:
-    - name: Download all bundles
-      uses: actions/download-artifact@v2
-
-    - name: Calculate checksums
-      run: |
-        echo "::group::Move bundles to a single folder"
-        mkdir bundles
-        mv openttd-*/* bundles/
-        cd bundles
-        echo "::group::Build"
-
-        for i in $(ls openttd-*); do
-          echo "::group::Calculating checksums for ${i}"
-          openssl dgst -r -md5 -hex $i > $i.md5sum
-          openssl dgst -r -sha1 -hex $i > $i.sha1sum
-          openssl dgst -r -sha256 -hex $i > $i.sha256sum
-          echo "::endgroup::"
-        done
-
-    - name: Upload bundles to AWS
-      run: |
-        aws s3 cp --recursive --only-show-errors bundles/ s3://${{ secrets.CDN_S3_BUCKET }}/${{ needs.source.outputs.folder }}/${{ needs.source.outputs.version }}/
-
-        # We do not invalidate the CloudFront distribution here. The trigger
-        # for "New OpenTTD release" first updated the manifest files and
-        # creates an index.html. We invalidate after that, so everything
-        # becomes visible at once.
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-
-    - name: Trigger 'New OpenTTD release'
-      uses: peter-evans/repository-dispatch@v1
-      with:
-        token: ${{ secrets.DEPLOYMENT_TOKEN }}
-        repository: OpenTTD/workflows
-        event-type: ${{ needs.source.outputs.trigger_type }}
-        client-payload: '{"version": "${{ needs.source.outputs.version }}", "folder": "${{ needs.source.outputs.folder }}"}'
+    with:
+      version: ${{ needs.source.outputs.version }}
+      folder: ${{ needs.source.outputs.folder }}
+      trigger_type: ${{ needs.source.outputs.trigger_type }}
 
   upload-steam:
     name: Upload (Steam)
@@ -923,69 +108,25 @@ jobs:
 
     if: needs.source.outputs.trigger_type == 'new-master' || needs.source.outputs.trigger_type == 'new-tag'
 
-    runs-on: ubuntu-20.04
+    uses: ./.github/workflows/upload-steam.yml
+    secrets: inherit
 
-    steps:
-    - name: Download all bundles
-      uses: actions/download-artifact@v2
+    with:
+      version: ${{ needs.source.outputs.version }}
+      trigger_type: ${{ needs.source.outputs.trigger_type }}
 
-    - name: Setup steamcmd
-      uses: CyberAndrii/setup-steamcmd@v1
+  upload-gog:
+    name: Upload (GOG)
+    needs:
+    - source
+    - linux
+    - macos
+    - windows
 
-    - name: Generate Steam auth code
-      id: steam-totp
-      uses: CyberAndrii/steam-totp@v1
-      with:
-        shared_secret: ${{ secrets.STEAM_SHARED_SECRET }}
+    if: needs.source.outputs.trigger_type == 'new-tag'
 
-    - name: Upload to Steam
-      run: |
-        echo "::group::Extracting source"
-        mkdir source
-        (
-          cd source
-          tar -xf ../internal-source/source.tar.gz --strip-components=1
-        )
-        echo "::endgroup::"
+    uses: ./.github/workflows/upload-gog.yml
+    secrets: inherit
 
-        mkdir steam
-        (
-          cd steam
-
-          echo "::group::Prepare Win32"
-          unzip ../openttd-windows-x86/openttd-*-windows-win32.zip
-          mv openttd-*-windows-win32 steam-win32
-          echo "::endgroup::"
-
-          echo "::group::Prepare Win64"
-          unzip ../openttd-windows-x64/openttd-*-windows-win64.zip
-          mv openttd-*-windows-win64 steam-win64
-          echo "::endgroup::"
-
-          echo "::group::Prepare macOS"
-          mkdir steam-macos
-          (
-            cd steam-macos
-            unzip ../../openttd-macos-universal/openttd-*-macos-universal.zip
-          )
-          echo "::endgroup::"
-
-          echo "::group::Prepare Linux"
-          tar xvf ../openttd-linux-generic/openttd-*-linux-generic-amd64.tar.xz
-          mv openttd-*-linux-generic-amd64 steam-linux
-          echo "::endgroup::"
-
-          echo "::group::Preparing build file"
-          if [ "${{ needs.source.outputs.trigger_type }}" = "new-tag" ]; then
-            BRANCH="testing"
-          else
-            BRANCH="nightly"
-          fi
-          cat ../source/os/steam/release.vdf | sed 's/@@DESCRIPTION@@/openttd-${{ needs.source.outputs.version }}/;s/@@BRANCH@@/'${BRANCH}'/' > release.vdf
-          cat release.vdf
-          echo "::endgroup::"
-
-          echo "::group::Upload to Steam"
-          steamcmd +login ${{ secrets.STEAM_USERNAME }} ${{ secrets.STEAM_PASSWORD }} ${{ steps.steam-totp.outputs.code }} +run_app_build $(pwd)/release.vdf +quit
-          echo "::endgroup::"
-        )
+    with:
+      version: ${{ needs.source.outputs.version }}

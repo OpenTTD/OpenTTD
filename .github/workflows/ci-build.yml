@@ -9,6 +9,10 @@ on:
 env:
   CTEST_OUTPUT_ON_FAILURE: 1
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
 jobs:
   emscripten:
     name: Emscripten
@@ -16,22 +20,23 @@ jobs:
     runs-on: ubuntu-20.04
     container:
       # If you change this version, change the number in the cache step too.
-      image: emscripten/emsdk:2.0.31
+      image: emscripten/emsdk:3.1.42
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: /emsdk/upstream/emscripten/cache
-        key: 2.0.31-${{ runner.os }}
+        key: 3.1.42-${{ runner.os }}
 
-    - name: Patch Emscripten to support LZMA
+    - name: Patch Emscripten to support LZMA and nlohmann-json
       run: |
         cd /emsdk/upstream/emscripten
         patch -p1 < ${GITHUB_WORKSPACE}/os/emscripten/emsdk-liblzma.patch
+        patch -p1 < ${GITHUB_WORKSPACE}/os/emscripten/emsdk-nlohmann-json.patch
 
     - name: Build (host tools)
       run: |
@@ -61,28 +66,33 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(nproc) cores"
-        cmake --build . -j $(nproc)
+        cmake --build . -j $(nproc) --target openttd
         echo "::endgroup::"
 
   linux:
-    name: Linux
-
     strategy:
       fail-fast: false
       matrix:
         include:
-        - compiler: clang
+        - name: Clang
+          compiler: clang
           cxxcompiler: clang++
-          libsdl: libsdl2-dev
-        - compiler: gcc
+          libraries: libsdl2-dev nlohmann-json3-dev
+        - name: GCC - SDL2
+          compiler: gcc
           cxxcompiler: g++
-          libsdl: libsdl2-dev
-        - compiler: gcc
+          libraries: libsdl2-dev nlohmann-json3-dev
+        - name: GCC - SDL1.2
+          compiler: gcc
           cxxcompiler: g++
-          libsdl: libsdl1.2-dev
-        - compiler: gcc
+          libraries: libsdl1.2-dev nlohmann-json3-dev
+        - name: GCC - Dedicated
+          compiler: gcc
           cxxcompiler: g++
-          extra-cmake-parameters: -DOPTION_DEDICATED=ON -DCMAKE_CXX_FLAGS_INIT="-DRANDOM_DEBUG"
+          extra-cmake-parameters: -DOPTION_DEDICATED=ON -DCMAKE_CXX_FLAGS_INIT="-DRANDOM_DEBUG" -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
+          # Compile without SDL / SDL2 / nlohmann-json, as that should compile fine too.
+
+    name: Linux (${{ matrix.name }})
 
     runs-on: ubuntu-20.04
     env:
@@ -91,7 +101,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install dependencies
       run: |
@@ -102,11 +112,13 @@ jobs:
         echo "::group::Install dependencies"
         sudo apt-get install -y --no-install-recommends \
           liballegro4-dev \
+          libcurl4-openssl-dev \
           libfontconfig-dev \
+          libharfbuzz-dev \
           libicu-dev \
           liblzma-dev \
           liblzo2-dev \
-          ${{ matrix.libsdl }} \
+          ${{ matrix.libraries }} \
           zlib1g-dev \
           # EOF
         echo "::endgroup::"
@@ -151,8 +163,6 @@ jobs:
         ctest -j $(nproc) --timeout 120
 
   macos:
-    name: Mac OS
-
     strategy:
       fail-fast: false
       matrix:
@@ -160,40 +170,53 @@ jobs:
         - arch: x64
           full_arch: x86_64
 
+    name: Mac OS (${{ matrix.arch }})
+
     runs-on: macos-latest
     env:
-      MACOSX_DEPLOYMENT_TARGET: 10.14
+      MACOSX_DEPLOYMENT_TARGET: 10.13
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      env:
+        HOMEBREW_NO_AUTO_UPDATE: 1
+        HOMEBREW_NO_INSTALL_CLEANUP: 1
+      run: |
+        brew install \
+          pkg-config \
+          # EOF
 
     - name: Prepare cache key
       id: key
       run: |
-        echo "::set-output name=image::$ImageOS-$ImageVersion"
+        echo "image=$ImageOS-$ImageVersion" >> $GITHUB_OUTPUT
 
     - name: Enable vcpkg cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: /usr/local/share/vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-1 # Increase the number whenever dependencies are modified
         restore-keys: |
           ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
 
     - name: Prepare vcpkg
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-osx \
+          curl \
           liblzma \
           libpng \
           lzo \
+          nlohmann-json \
           zlib \
           # EOF
 
     - name: Install OpenGFX
       run: |
         mkdir -p ~/Documents/OpenTTD/baseset
-        cd ~/Documents//OpenTTD/baseset
+        cd ~/Documents/OpenTTD/baseset
 
         echo "::group::Download OpenGFX"
         curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
@@ -214,7 +237,7 @@ jobs:
         cd build
 
         echo "::group::CMake"
-        cmake ${GITHUB_WORKSPACE} \
+        cmake .. \
           -DCMAKE_OSX_ARCHITECTURES=${{ matrix.full_arch }} \
           -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-osx \
           -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
@@ -232,19 +255,19 @@ jobs:
         ctest -j $(sysctl -n hw.logicalcpu) --timeout 120
 
   windows:
-    name: Windows
-
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, windows-2016]
+        os: [windows-latest, windows-2019]
         arch: [x86, x64]
+
+    name: Windows (${{ matrix.os }} / ${{ matrix.arch }})
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Prepare cache key
       id: key
@@ -253,13 +276,13 @@ jobs:
         # Work around caching failure with GNU tar
         New-Item -Type Junction -Path vcpkg -Target c:\vcpkg
 
-        Write-Output "::set-output name=image::$env:ImageOS-$env:ImageVersion"
+        Write-Output "image=$env:ImageOS-$env:ImageVersion" >> $env:GITHUB_OUTPUT
 
     - name: Enable vcpkg cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-1 # Increase the number whenever dependencies are modified
         restore-keys: |
           ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
 
@@ -270,6 +293,7 @@ jobs:
           liblzma \
           libpng \
           lzo \
+          nlohmann-json \
           zlib \
           # EOF
 
@@ -299,6 +323,8 @@ jobs:
 
     - name: Build
       shell: bash
+      env:
+        NINJA_STATUS: "[%f/%t -- %e] " # [finished_edges/total_edges -- elapsed_time], default value is "[%f/%t] "
       run: |
         mkdir build
         cd build
@@ -318,13 +344,11 @@ jobs:
     - name: Test
       shell: bash
       run: |
-        cd ${GITHUB_WORKSPACE}/build
+        cd build
         ctest --timeout 120
 
 
   msys2:
-    name: msys2
-
     strategy:
       fail-fast: false
       matrix:
@@ -334,11 +358,13 @@ jobs:
           - msystem: MINGW32
             arch: i686
 
+    name: MinGW (${{ matrix.arch }})
+
     runs-on: windows-latest
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup MSYS2
       uses: msys2/setup-msys2@v2
@@ -352,6 +378,9 @@ jobs:
           mingw-w64-${{ matrix.arch }}-gcc
           mingw-w64-${{ matrix.arch }}-lzo2
           mingw-w64-${{ matrix.arch }}-libpng
+          mingw-w64-${{ matrix.arch }}-lld
+          mingw-w64-${{ matrix.arch }}-ninja
+          mingw-w64-${{ matrix.arch }}-nlohmann-json
 
     - name: Install OpenGFX
       shell: bash
@@ -374,24 +403,28 @@ jobs:
 
     - name: Build
       shell: msys2 {0}
+      env:
+        NINJA_STATUS: "[%f/%t -- %e] " # [finished_edges/total_edges -- elapsed_time], default value is "[%f/%t] "
       run: |
         mkdir build
         cd build
 
         echo "::group::CMake"
-        cmake .. -G"MSYS Makefiles"
+        cmake .. \
+          -GNinja \
+          -DCMAKE_CXX_FLAGS="-fuse-ld=lld" \
+          # EOF
         echo "::endgroup::"
 
         echo "::group::Build"
-        echo "Running on $(nproc) cores"
-        cmake --build . -j $(nproc)
+        cmake --build .
         echo "::endgroup::"
 
     - name: Test
       shell: msys2 {0}
       run: |
         cd build
-        ctest -j $(nproc) --timeout 120
+        ctest --timeout 120
 
   check_annotations:
     name: Check Annotations
@@ -408,4 +441,4 @@ jobs:
 
     steps:
     - name: Check annotations
-      uses: OpenTTD/actions/annotation-check@v2
+      uses: OpenTTD/actions/annotation-check@v3

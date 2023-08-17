@@ -3,6 +3,7 @@
  */
 
 #include "../../../stdafx.h"
+#include "../../fmt/format.h"
 
 #include "sqpcheader.h"
 #include "sqvm.h"
@@ -283,7 +284,7 @@ bool WriteObject(HSQUIRRELVM v,SQUserPointer up,SQWRITEFUNC write,SQObjectPtr &o
 	case OT_NULL:
 		break;
 	default:
-		v->Raise_Error("cannot serialize a %s",GetTypeName(o));
+		v->Raise_Error(fmt::format("cannot serialize a {}",GetTypeName(o)));
 		return false;
 	}
 	return true;
@@ -313,7 +314,7 @@ bool ReadObject(HSQUIRRELVM v,SQUserPointer up,SQREADFUNC read,SQObjectPtr &o)
 		o=_null_;
 		break;
 	default:
-		v->Raise_Error("cannot serialize a %s",IdType2Name(t));
+		v->Raise_Error(fmt::format("cannot serialize a {}",IdType2Name(t)));
 		return false;
 	}
 	return true;
@@ -446,11 +447,11 @@ bool SQFunctionProto::Load(SQVM *v,SQUserPointer up,SQREADFUNC read,SQObjectPtr 
 
 	for(i = 0; i < noutervalues; i++){
 		SQUnsignedInteger type;
-		SQObjectPtr name;
+		SQObjectPtr value_name;
 		_CHECK_IO(SafeRead(v,read,up, &type, sizeof(SQUnsignedInteger)));
 		_CHECK_IO(ReadObject(v, up, read, o));
-		_CHECK_IO(ReadObject(v, up, read, name));
-		f->_outervalues[i] = SQOuterVar(name,o, (SQOuterType)type);
+		_CHECK_IO(ReadObject(v, up, read, value_name));
+		f->_outervalues[i] = SQOuterVar(value_name,o, (SQOuterType)type);
 	}
 	_CHECK_IO(CheckTag(v,read,up,SQ_CLOSURESTREAM_PART));
 

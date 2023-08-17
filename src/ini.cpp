@@ -132,5 +132,5 @@ bool IniFile::SaveToDisk(const std::string &filename)
 
 /* virtual */ void IniFile::ReportFileError(const char * const pre, const char * const buffer, const char * const post)
 {
-	ShowInfoF("%s%s%s", pre, buffer, post);
+	ShowInfo("{}{}{}", pre, buffer, post);
 }

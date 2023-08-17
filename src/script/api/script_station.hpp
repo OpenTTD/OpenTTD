@@ -82,7 +82,7 @@ public:
 	 * @pre IsValidCargo(cargo_id).
 	 * @return The amount of units waiting at the station.
 	 */
-	static int32 GetCargoWaiting(StationID station_id, CargoID cargo_id);
+	static SQInteger GetCargoWaiting(StationID station_id, CargoID cargo_id);
 
 	/**
 	 * See how much cargo with a specific source station there is waiting on a station.
@@ -95,7 +95,7 @@ public:
 	 * @return The amount of units waiting at the station originating from from_station_id.
 	 * @note source station means, the station where cargo was first loaded.
 	 */
-	static int32 GetCargoWaitingFrom(StationID station_id, StationID from_station_id, CargoID cargo_id);
+	static SQInteger GetCargoWaitingFrom(StationID station_id, StationID from_station_id, CargoID cargo_id);
 
 	/**
 	 * See how much cargo with a specific via-station there is waiting on a station.
@@ -108,7 +108,7 @@ public:
 	 * @return The amount of units waiting at the station with via_station_id as next hop.
 	 * @note if ScriptCargo.GetCargoDistributionType(cargo_id) == ScriptCargo.DT_MANUAL, then all waiting cargo will have STATION_INVALID as next hop.
 	 */
-	static int32 GetCargoWaitingVia(StationID station_id, StationID via_station_id, CargoID cargo_id);
+	static SQInteger GetCargoWaitingVia(StationID station_id, StationID via_station_id, CargoID cargo_id);
 
 	/**
 	 * See how much cargo with a specific via-station and source station there is waiting on a station.
@@ -123,7 +123,7 @@ public:
 	 * @return The amount of units waiting at the station with from_station_id as source and via_station_id as next hop.
 	 * @note if ScriptCargo.GetCargoDistributionType(cargo_id) == ScriptCargo.DT_MANUAL, then all waiting cargo will have STATION_INVALID as next hop.
 	 */
-	static int32 GetCargoWaitingFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoID cargo_id);
+	static SQInteger GetCargoWaitingFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoID cargo_id);
 
 	/**
 	 * See how much cargo was planned to pass (including production and consumption) this station per month.
@@ -133,7 +133,7 @@ public:
 	 * @pre IsValidCargo(cargo_id).
 	 * @return The amount of cargo units planned to pass the station per month.
 	 */
-	static int32 GetCargoPlanned(StationID station_id, CargoID cargo_id);
+	static SQInteger GetCargoPlanned(StationID station_id, CargoID cargo_id);
 
 	/**
 	 * See how much cargo from the specified origin was planned to pass (including production and consumption) this station per month.
@@ -145,7 +145,7 @@ public:
 	 * @pre IsValidCargo(cargo_id).
 	 * @return The amount of cargo units from the specified origin planned to pass the station per month.
 	 */
-	static int32 GetCargoPlannedFrom(StationID station_id, StationID from_station_id, CargoID cargo_id);
+	static SQInteger GetCargoPlannedFrom(StationID station_id, StationID from_station_id, CargoID cargo_id);
 
 	/**
 	 * See how much cargo was planned to pass (including production and consumption) this station per month, heading for the specified next hop.
@@ -158,7 +158,7 @@ public:
 	 * @return The amount of cargo units planned to pass the station per month, going via the specified next hop.
 	 * @note Cargo planned to go "via" the same station that's being queried is actually planned to be consumed there.
 	 */
-	static int32 GetCargoPlannedVia(StationID station_id, StationID via_station_id, CargoID cargo_id);
+	static SQInteger GetCargoPlannedVia(StationID station_id, StationID via_station_id, CargoID cargo_id);
 
 	/**
 	 * See how much cargo from the specified origin was planned to pass this station per month,
@@ -175,7 +175,7 @@ public:
 	 * @note Cargo planned to go "via" the same station that's being queried is actually planned to be consumed there.
 	 * @note Cargo planned to pass "from" the same station that's being queried is actually produced there.
 	 */
-	static int32 GetCargoPlannedFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoID cargo_id);
+	static SQInteger GetCargoPlannedFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoID cargo_id);
 
 	/**
 	 * Check whether the given cargo at the given station a rating.
@@ -196,7 +196,7 @@ public:
 	 * @pre HasCargoRating(station_id, cargo_id).
 	 * @return The rating in percent of the cargo on the station.
 	 */
-	static int32 GetCargoRating(StationID station_id, CargoID cargo_id);
+	static SQInteger GetCargoRating(StationID station_id, CargoID cargo_id);
 
 	/**
 	 * Get the coverage radius of this type of station.
@@ -205,7 +205,7 @@ public:
 	 * @return The radius in tiles.
 	 * @note Coverage radius of airports needs to be requested via ScriptAirport::GetAirportCoverageRadius(), as it requires AirportType.
 	 */
-	static int32 GetCoverageRadius(ScriptStation::StationType station_type);
+	static SQInteger GetCoverageRadius(ScriptStation::StationType station_type);
 
 	/**
 	 * Get the coverage radius of this station.
@@ -213,7 +213,7 @@ public:
 	 * @pre IsValidStation(station_id).
 	 * @return The radius in tiles.
 	 */
-	static int32 GetStationCoverageRadius(StationID station_id);
+	static SQInteger GetStationCoverageRadius(StationID station_id);
 
 	/**
 	 * Get the manhattan distance from the tile to the ScriptStation::GetLocation()
@@ -223,7 +223,7 @@ public:
 	 * @pre IsValidStation(station_id).
 	 * @return The distance between station and tile.
 	 */
-	static int32 GetDistanceManhattanToTile(StationID station_id, TileIndex tile);
+	static SQInteger GetDistanceManhattanToTile(StationID station_id, TileIndex tile);
 
 	/**
 	 * Get the square distance from the tile to the ScriptStation::GetLocation()
@@ -233,7 +233,7 @@ public:
 	 * @pre IsValidStation(station_id).
 	 * @return The distance between station and tile.
 	 */
-	static int32 GetDistanceSquareToTile(StationID station_id, TileIndex tile);
+	static SQInteger GetDistanceSquareToTile(StationID station_id, TileIndex tile);
 
 	/**
 	 * Find out if this station is within the rating influence of a town.
@@ -287,6 +287,7 @@ public:
 	/**
 	 * Toggle the open/closed state of an airport.
 	 * @param station_id The airport to modify.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @pre IsValidStation(station_id).
 	 * @pre HasStationType(station_id, STATION_AIRPORT).
 	 * @return True if the state was toggled successfully.
@@ -299,11 +300,11 @@ private:
 			StationID via_station_id, CargoID cargo_id);
 
 	template<bool Tfrom, bool Tvia>
-	static int32 CountCargoWaiting(StationID station_id, StationID from_station_id,
+	static SQInteger CountCargoWaiting(StationID station_id, StationID from_station_id,
 			StationID via_station_id, CargoID cargo_id);
 
 	template<bool Tfrom, bool Tvia>
-	static int32 CountCargoPlanned(StationID station_id, StationID from_station_id,
+	static SQInteger CountCargoPlanned(StationID station_id, StationID from_station_id,
 			StationID via_station_id, CargoID cargo_id);
 
 };

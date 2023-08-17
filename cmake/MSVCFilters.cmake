@@ -3,6 +3,7 @@
 source_group("AI Core" REGULAR_EXPRESSION "src/ai/")
 source_group("Blitters" REGULAR_EXPRESSION "src/blitter/")
 source_group("Core Source Code" REGULAR_EXPRESSION "src/core/")
+source_group("Font Cache" REGULAR_EXPRESSION "src/fontcache/")
 source_group("Game Core" REGULAR_EXPRESSION "src/game/")
 source_group("MD5" REGULAR_EXPRESSION "src/3rdparty/md5/")
 source_group("Misc" REGULAR_EXPRESSION "src/misc/")

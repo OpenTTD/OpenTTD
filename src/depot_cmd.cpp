@@ -16,6 +16,7 @@
 #include "vehicle_gui.h"
 #include "vehiclelist.h"
 #include "window_func.h"
+#include "depot_cmd.h"
 
 #include "table/strings.h"
 
@@ -37,16 +38,14 @@ static bool IsUniqueDepotName(const std::string &name)
 
 /**
  * Rename a depot.
- * @param tile unused
  * @param flags type of operation
- * @param p1 id of depot
- * @param p2 unused
+ * @param depot_id id of depot
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::string &text)
 {
-	Depot *d = Depot::GetIfValid(p1);
+	Depot *d = Depot::GetIfValid(depot_id);
 	if (d == nullptr) return CMD_ERROR;
 
 	CommandCost ret = CheckTileOwnership(d->xy);

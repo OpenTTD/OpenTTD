@@ -1,0 +1,202 @@
+name: Release (Source)
+
+on:
+  workflow_call:
+    outputs:
+      version:
+        value: ${{ jobs.source.outputs.version }}
+      is_tag:
+        value: ${{ jobs.source.outputs.is_tag }}
+      trigger_type:
+        value: ${{ jobs.source.outputs.trigger_type }}
+      folder:
+        value: ${{ jobs.source.outputs.folder }}
+      survey_key:
+        value: ${{ jobs.source.outputs.survey_key }}
+
+jobs:
+  source:
+    name: Source
+
+    runs-on: ubuntu-20.04
+
+    outputs:
+      version: ${{ steps.metadata.outputs.version }}
+      is_tag: ${{ steps.metadata.outputs.is_tag }}
+      trigger_type: ${{ steps.metadata.outputs.trigger_type }}
+      folder: ${{ steps.metadata.outputs.folder }}
+      survey_key: ${{ steps.survey_key.outputs.survey_key }}
+
+    steps:
+    - name: Checkout (Release)
+      if: github.event_name == 'release'
+      uses: actions/checkout@v3
+      with:
+        # We generate a changelog; for this we need the full git log.
+        fetch-depth: 0
+
+    - name: Checkout (Manual)
+      if: github.event_name == 'workflow_dispatch'
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.inputs.ref }}
+        # We generate a changelog; for this we need the full git log.
+        fetch-depth: 0
+
+    - name: Checkout (Trigger)
+      if: github.event_name == 'repository_dispatch'
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.client_payload.ref }}
+        # We generate a changelog; for this we need the full git log.
+        fetch-depth: 0
+
+    - name: Check valid branch name
+      run: |
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          REF="${{ github.event.inputs.ref }}"
+        elif [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+          REF="${{ github.event.client_payload.ref }}"
+        else
+          REF="${{ github.ref }}"
+        fi
+
+        # Check if we are a tag.
+        if [ -n "$(git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || false)" ]; then
+          exit 0
+        fi
+
+        # Check if the checkout caused the branch to be named.
+        if [ "$(git rev-parse --abbrev-ref HEAD)" != "HEAD" ]; then
+          exit 0
+        fi
+
+        # Check if this was a pull request.
+        if [ -n "$(echo ${REF} | grep '^refs/pull/[0-9]*')" ]; then
+          PULL=$(echo ${REF} | cut -d/ -f3)
+          git checkout -b pr${PULL}
+        fi
+
+        # Are we still in a detached state? Error out.
+        if [ "$(git rev-parse --abbrev-ref HEAD)" == "HEAD" ]; then
+          echo "The 'ref' given resulted in a checkout of a detached HEAD."
+          echo "We cannot detect the version for these checkout accurate."
+          echo ""
+          echo "If you want to build a Pull Request, make sure you use 'refs/pull/NNN/head'."
+          echo ""
+          echo "Cancelling build, as without a version we cannot store the artifacts."
+          exit 1
+        fi
+
+    - name: Generate metadata
+      id: metadata
+      run: |
+        echo "::group::Prepare metadata files"
+        cmake -DGENERATE_OTTDREV=1 -P cmake/scripts/FindVersion.cmake
+        ./.github/changelog.sh > .changelog
+        TZ='UTC' date +"%Y-%m-%d %H:%M UTC" > .release_date
+        cat .ottdrev | cut -f 1 -d$'\t' > .version
+
+        if [ $(cat .ottdrev | cut -f 5 -d$'\t') = '1' ]; then
+          # Assume that all tags are always releases. Why else make a tag?
+          IS_TAG="true"
+
+          FOLDER="${{ env.FOLDER_RELEASES }}"
+          TRIGGER_TYPE="new-tag"
+        else
+          IS_TAG="false"
+
+          BRANCH=$(git symbolic-ref -q HEAD | sed 's@.*/@@')
+          if [ -z "${BRANCH}" ]; then
+            echo "Internal error: branch name is empty."
+            echo "An earlier step should have prevented this from happening."
+            echo "Cancelling build, as without a branch name we cannot store the artifacts"
+            exit 1
+          fi
+
+          if [ "${BRANCH}" = "${{ env.NIGHTLIES_BRANCH }}" ]; then
+            # The "master" branch is special, and we call a nightly.
+            FOLDER="${{ env.FOLDER_NIGHTLIES }}/$(date +%Y)"
+            TRIGGER_TYPE="new-master"
+          else
+            # All other branches, which can be builds of Pull Requests, are
+            # put in their own folder.
+            FOLDER="${{ env.FOLDER_BRANCHES }}/${BRANCH}"
+            TRIGGER_TYPE="new-branch"
+          fi
+        fi
+
+        mkdir -p build/bundles
+        cp .changelog build/bundles/changelog.txt
+        cp .release_date build/bundles/released.txt
+        cp README.md build/bundles/README.md
+        echo "::endgroup::"
+
+        echo "Release Date: $(cat .release_date)"
+        echo "Revision: $(cat .ottdrev)"
+        echo "Version: $(cat .version)"
+        echo "Is tag: ${IS_TAG}"
+        echo "Folder on CDN: ${FOLDER}"
+        echo "Workflow trigger: ${TRIGGER_TYPE}"
+
+        echo "version=$(cat .version)" >> $GITHUB_OUTPUT
+        echo "is_tag=${IS_TAG}" >> $GITHUB_OUTPUT
+        echo "folder=${FOLDER}" >> $GITHUB_OUTPUT
+        echo "trigger_type=${TRIGGER_TYPE}" >> $GITHUB_OUTPUT
+      env:
+        NIGHTLIES_BRANCH: master
+        FOLDER_RELEASES: openttd-releases
+        FOLDER_NIGHTLIES: openttd-nightlies
+        FOLDER_BRANCHES: openttd-branches
+
+    - name: Generate survey key
+      id: survey_key
+      run: |
+        PAYLOAD='{"version":"${{ steps.metadata.outputs.version }}","type":"${{ vars.SURVEY_TYPE }}"}'
+
+        echo "${{ secrets.SURVEY_SIGNING_KEY }}" > survey_signing_key.pem
+        SIGNATURE=$(echo -n "${PAYLOAD}" | openssl dgst -sha256 -sign survey_signing_key.pem | base64 -w0)
+        rm -f survey_signing_key.pem
+
+        SURVEY_KEY=$(curl -f -s -X POST -d "${PAYLOAD}" -H "Content-Type: application/json" -H "X-Signature: ${SIGNATURE}" https://survey-participate.openttd.org/create-survey-key/${{ vars.SURVEY_TYPE }})
+
+        echo "survey_key=${SURVEY_KEY}" >> $GITHUB_OUTPUT
+
+    - name: Remove VCS information
+      run: |
+        rm -rf .git
+
+    - name: Create bundles
+      run: |
+        FOLDER_NAME=openttd-${{ steps.metadata.outputs.version }}
+
+        # Rename the folder to openttd-NNN
+        mkdir ${FOLDER_NAME}
+        find . -maxdepth 1 -not -name . -not -name build -not -name ${FOLDER_NAME} -exec mv {} ${FOLDER_NAME}/ \;
+
+        echo "::group::Create tarball (xz) bundle"
+        tar --xz -cvf build/bundles/${FOLDER_NAME}-source.tar.xz ${FOLDER_NAME}
+        echo "::endgroup::"
+
+        # This tarball is only to be used within this workflow.
+        echo "::group::Create tarball (gz) bundle"
+        tar --gzip -cvf source.tar.gz ${FOLDER_NAME}
+        echo "::endgroup::"
+
+        echo "::group::Create zip bundle"
+        zip -9 -r build/bundles/${FOLDER_NAME}-source.zip ${FOLDER_NAME}
+        echo "::endgroup::"
+
+    - name: Store bundles
+      uses: actions/upload-artifact@v3
+      with:
+        name: openttd-source
+        path: build/bundles/*
+        retention-days: 5
+
+    - name: Store source (for other jobs)
+      uses: actions/upload-artifact@v3
+      with:
+        name: internal-source
+        path: source.tar.gz
+        retention-days: 1

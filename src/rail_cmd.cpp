@@ -8,7 +8,6 @@
 /** @file rail_cmd.cpp Handling of rail tiles. */
 
 #include "stdafx.h"
-#include "cmd_helper.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "depot_base.h"
@@ -27,10 +26,13 @@
 #include "pbs.h"
 #include "company_base.h"
 #include "core/backup_type.hpp"
-#include "date_func.h"
+#include "core/container_func.hpp"
+#include "timer/timer_game_calendar.h"
 #include "strings_func.h"
 #include "company_gui.h"
 #include "object_map.h"
+#include "rail_cmd.h"
+#include "landscape_cmd.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"
@@ -425,20 +427,15 @@ static inline bool ValParamTrackOrientation(Track track)
 
 /**
  * Build a single piece of rail
- * @param tile tile  to build on
  * @param flags operation to perform
- * @param p1 railtype of being built piece (normal, mono, maglev)
- * @param p2 various bitstuffed elements
- *           - (bit  0- 2) - track-orientation, valid values: 0-5 (@see Track)
- *           - (bit  3)    - 0 = error on signal in the way, 1 = auto remove signals when in the way
- * @param text unused
+ * @param tile tile  to build on
+ * @param railtype railtype of being built piece (normal, mono, maglev)
+ * @param track track-orientation
+ * @param auto_remove_signals false = error on signal in the way, true = auto remove signals when in the way
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType railtype, Track track, bool auto_remove_signals)
 {
-	RailType railtype = Extract<RailType, 0, 6>(p1);
-	Track track = Extract<Track, 0, 3>(p2);
-	bool auto_remove_signals = HasBit(p2, 3);
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
@@ -451,7 +448,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			CommandCost ret = CheckTileOwnership(tile);
 			if (ret.Failed()) return ret;
 
-			if (!IsPlainRail(tile)) return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR); // just get appropriate error message
+			if (!IsPlainRail(tile)) return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile); // just get appropriate error message
 
 			if (!IsCompatibleRail(GetRailType(tile), railtype)) return_cmd_error(STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION);
 
@@ -469,7 +466,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 				for (Track track_it = TRACK_BEGIN; track_it < TRACK_END; track_it++) {
 					if (HasTrack(tile, track_it) && HasSignalOnTrack(tile, track_it)) {
-						CommandCost ret_remove_signals = DoCommand(tile, track_it, 0, flags, CMD_REMOVE_SIGNALS);
+						CommandCost ret_remove_signals = Command<CMD_REMOVE_SIGNALS>::Do(flags, tile, track_it);
 						if (ret_remove_signals.Failed()) return ret_remove_signals;
 						cost.AddCost(ret_remove_signals);
 					}
@@ -481,7 +478,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			 * the present rail type are powered on the new rail type. */
 			if (GetRailType(tile) != railtype && !HasPowerOnRail(railtype, GetRailType(tile))) {
 				if (HasPowerOnRail(GetRailType(tile), railtype)) {
-					ret = DoCommand(tile, tile, railtype, flags, CMD_CONVERT_RAIL);
+					ret = Command<CMD_CONVERT_RAIL>::Do(flags, tile, tile, railtype, false);
 					if (ret.Failed()) return ret;
 					cost.AddCost(ret);
 				} else {
@@ -535,7 +532,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 					/* Disallow breaking end-of-line of someone else
 					 * so trams can still reverse on this tile. */
 					if (Company::IsValidID(tram_owner) && HasExactlyOneBit(tram)) {
-						CommandCost ret = CheckOwnership(tram_owner);
+						ret = CheckOwnership(tram_owner);
 						if (ret.Failed()) return ret;
 					}
 
@@ -552,6 +549,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 					if (flags & DC_EXEC) {
 						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtype_road, roadtype_tram, GetTownIndex(tile));
 						UpdateLevelCrossing(tile, false);
+						MarkDirtyAdjacentLevelCrossingTiles(tile, GetCrossingRoadAxis(tile));
 						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
 						DirtyCompanyInfrastructureWindows(_current_company);
 						if (num_new_road_pieces > 0 && Company::IsValidID(road_owner)) {
@@ -581,7 +579,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 
-			ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 
@@ -615,16 +613,13 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 /**
  * Remove a single piece of track
- * @param tile tile to remove track from
  * @param flags operation to perform
- * @param p1 unused
- * @param p2 rail orientation
- * @param text unused
+ * @param tile tile to remove track from
+ * @param track rail orientation
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRemoveSingleRail(DoCommandFlag flags, TileIndex tile, Track track)
 {
-	Track track = Extract<Track, 0, 3>(p2);
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool crossing = false;
 
@@ -656,6 +651,8 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			cost.AddCost(RailClearCost(GetRailType(tile)));
 
 			if (flags & DC_EXEC) {
+				UpdateAdjacentLevelCrossingTilesOnLevelCrossingRemoval(tile, GetCrossingRoadAxis(tile));
+
 				if (HasReservedTracks(tile, trackbit)) {
 					v = GetTrainForReservation(tile, track);
 					if (v != nullptr) FreeTrainTrackReservation(v);
@@ -665,7 +662,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR;
 				DirtyCompanyInfrastructureWindows(owner);
 				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypeRoad(tile), GetRoadTypeTram(tile), GetTownIndex(tile), GetRoadOwner(tile, RTT_ROAD), GetRoadOwner(tile, RTT_TRAM));
-				DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile);
+				DeleteNewGRFInspectWindow(GSF_RAILTYPES, static_cast<uint32_t>(tile));
 			}
 			break;
 		}
@@ -691,7 +688,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 			/* Charge extra to remove signals on the track, if they are there */
 			if (HasSignalOnTrack(tile, track)) {
-				cost.AddCost(DoCommand(tile, track, 0, flags, CMD_REMOVE_SIGNALS));
+				cost.AddCost(Command<CMD_REMOVE_SIGNALS>::Do(flags, tile, track));
 			}
 
 			if (flags & DC_EXEC) {
@@ -723,7 +720,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 					} else {
 						DoClearSquare(tile);
 					}
-					DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile);
+					DeleteNewGRFInspectWindow(GSF_RAILTYPES, static_cast<uint32_t>(tile));
 				} else {
 					SetTrackBits(tile, present);
 					SetTrackReservation(tile, GetRailReservationTrackBits(tile) & present);
@@ -784,7 +781,7 @@ bool FloodHalftile(TileIndex t)
 		TrackBits to_remove = lower_track & rail_bits;
 		if (to_remove != 0) {
 			Backup<CompanyID> cur_company(_current_company, OWNER_WATER, FILE_LINE);
-			flooded = DoCommand(t, 0, FIND_FIRST_BIT(to_remove), DC_EXEC, CMD_REMOVE_SINGLE_RAIL).Succeeded();
+			flooded = Command<CMD_REMOVE_SINGLE_RAIL>::Do(DC_EXEC, t, FindFirstTrack(to_remove)).Succeeded();
 			cur_company.Restore();
 			if (!flooded) return flooded; // not yet floodable
 			rail_bits = rail_bits & ~to_remove;
@@ -872,29 +869,23 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 
 /**
  * Build or remove a stretch of railroad tracks.
- * @param tile start tile of drag
  * @param flags operation to perform
- * @param p1 end tile of drag
- * @param p2 various bitstuffed elements
- * - p2 = (bit 0-5) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev), only used for building
- * - p2 = (bit 6-8) - track-orientation, valid values: 0-5 (Track enum)
- * - p2 = (bit 9)   - 0 = build, 1 = remove tracks
- * - p2 = (bit 10)  - 0 = build up to an obstacle, 1 = fail if an obstacle is found (used for AIs).
- * - p2 = (bit 11)  - 0 = error on signal in the way, 1 = auto remove signals when in the way
- * @param text unused
+ * @param tile start tile of drag
+ * @param end_tile end tile of drag
+ * @param railtype railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev), only used for building
+ * @param track track-orientation
+ * @param remove remove tracks?
+ * @param auto_remove_signals false = error on signal in the way, true = auto remove signals when in the way, only used for building
+ * @param fail_on_obstacle false = build starting from and up to an obstacle, true = fail if an obstacle is found (used for AIs)
  * @return the cost of this operation or an error
  */
-static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+static CommandCost CmdRailTrackHelper(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, RailType railtype, Track track, bool remove, bool auto_remove_signals, bool fail_on_obstacle)
 {
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
-	Track track = Extract<Track, 6, 3>(p2);
-	bool remove = HasBit(p2, 9);
-	bool auto_remove_signals = HasBit(p2, 11);
-	RailType railtype = Extract<RailType, 0, 6>(p2);
 
 	if ((!remove && !ValParamRailtype(railtype)) || !ValParamTrackOrientation(track)) return CMD_ERROR;
-	if (p1 >= MapSize()) return CMD_ERROR;
-	TileIndex end_tile = p1;
+	if (end_tile >= Map::Size() || tile >= Map::Size()) return CMD_ERROR;
+
 	Trackdir trackdir = TrackToTrackdir(track);
 
 	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
@@ -903,13 +894,13 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 	bool had_success = false;
 	CommandCost last_error = CMD_ERROR;
 	for (;;) {
-		CommandCost ret = DoCommand(tile, remove ? 0 : railtype, TrackdirToTrack(trackdir) | (auto_remove_signals << 3), flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL);
+		ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
 
 		if (ret.Failed()) {
 			last_error = ret;
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
-				if (HasBit(p2, 10)) return last_error;
-				break;
+				if (fail_on_obstacle) return last_error;
+				if (had_success) break; // Keep going if we haven't constructed any rail yet, skipping the start of the drag
 			}
 
 			/* Ownership errors are more important. */
@@ -934,62 +925,53 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 /**
  * Build rail on a stretch of track.
  * Stub for the unified rail builder/remover
- * @param tile start tile of drag
  * @param flags operation to perform
- * @param p1 end tile of drag
- * @param p2 various bitstuffed elements
- * - p2 = (bit 0-5) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev)
- * - p2 = (bit 6-8) - track-orientation, valid values: 0-5 (Track enum)
- * - p2 = (bit 9)   - 0 = build, 1 = remove tracks
- * @param text unused
- * @return the cost of this operation or an error
+ * @param end_tile end tile of drag
+ * @param start_tile start tile of drag
+ * @param railtype railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev), only used for building
+ * @param track track-orientation
+ * @param auto_remove_signals false = build up to an obstacle, true = fail if an obstacle is found (used for AIs).
+ * @param fail_on_obstacle false = error on signal in the way, true = auto remove signals when in the way
+
  * @see CmdRailTrackHelper
  */
-CommandCost CmdBuildRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildRailroadTrack(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, RailType railtype, Track track, bool auto_remove_signals, bool fail_on_obstacle)
 {
-	return CmdRailTrackHelper(tile, flags, p1, ClrBit(p2, 9), text);
+	return CmdRailTrackHelper(flags, start_tile, end_tile, railtype, track, false, auto_remove_signals, fail_on_obstacle);
 }
 
 /**
  * Build rail on a stretch of track.
  * Stub for the unified rail builder/remover
- * @param tile start tile of drag
  * @param flags operation to perform
- * @param p1 end tile of drag
- * @param p2 various bitstuffed elements
- * - p2 = (bit 0-5) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev), only used for building
- * - p2 = (bit 6-8) - track-orientation, valid values: 0-5 (Track enum)
- * - p2 = (bit 9)   - 0 = build, 1 = remove tracks
- * @param text unused
+ * @param end_tile end tile of drag
+ * @param start_tile start tile of drag
+ * @param track track-orientation
  * @return the cost of this operation or an error
  * @see CmdRailTrackHelper
  */
-CommandCost CmdRemoveRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, Track track)
 {
-	return CmdRailTrackHelper(tile, flags, p1, SetBit(p2, 9), text);
+	return CmdRailTrackHelper(flags, start_tile, end_tile, INVALID_RAILTYPE, track, true, false, false);
 }
 
 /**
  * Build a train depot
- * @param tile position of the train depot
  * @param flags operation to perform
- * @param p1 rail type
- * @param p2 bit 0..1 entrance direction (DiagDirection)
- * @param text unused
+ * @param tile position of the train depot
+ * @param railtype rail type
+ * @param dir entrance direction
  * @return the cost of this operation or an error
  *
  * @todo When checking for the tile slope,
  * distinguish between "Flat land required" and "land sloped in wrong direction"
  */
-CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir)
 {
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
-	RailType railtype = Extract<RailType, 0, 6>(p1);
-	if (!ValParamRailtype(railtype)) return CMD_ERROR;
+	if (!ValParamRailtype(railtype) || !IsValidDiagDirection(dir)) return CMD_ERROR;
 
 	Slope tileh = GetTileSlope(tile);
-
-	DiagDirection dir = Extract<DiagDirection, 0, 2>(p2);
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -1007,24 +989,44 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
 	}
 
-	cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
-	if (cost.Failed()) return cost;
+	/* Allow the user to rotate the depot instead of having to destroy it and build it again */
+	bool rotate_existing_depot = false;
+	if (IsRailDepotTile(tile) && railtype == GetRailType(tile)) {
+		CommandCost ret = CheckTileOwnership(tile);
+		if (ret.Failed()) return ret;
 
-	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+		if (dir == GetRailDepotDirection(tile)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 
-	if (!Depot::CanAllocateItem()) return CMD_ERROR;
+		ret = EnsureNoVehicleOnGround(tile);
+		if (ret.Failed()) return ret;
+
+		rotate_existing_depot = true;
+	}
+
+	if (!rotate_existing_depot) {
+		cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile));
+		if (cost.Failed()) return cost;
+
+		if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+		if (!Depot::CanAllocateItem()) return CMD_ERROR;
+	}
 
 	if (flags & DC_EXEC) {
-		Depot *d = new Depot(tile);
-		d->build_date = _date;
+		if (rotate_existing_depot) {
+			SetRailDepotExitDirection(tile, dir);
+		} else {
+			Depot *d = new Depot(tile);
+			d->build_date = TimerGameCalendar::date;
 
-		MakeRailDepot(tile, _current_company, d->index, dir, railtype);
+			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
+			MakeDefaultName(d);
+
+			Company::Get(_current_company)->infrastructure.rail[railtype]++;
+			DirtyCompanyInfrastructureWindows(_current_company);
+		}
+
 		MarkTileDirtyByTile(tile);
-		MakeDefaultName(d);
-
-		Company::Get(_current_company)->infrastructure.rail[railtype]++;
-		DirtyCompanyInfrastructureWindows(_current_company);
-
 		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_company);
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 	}
@@ -1037,37 +1039,28 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 /**
  * Build signals, alternate between double/single, signal/semaphore,
  * pre/exit/combo-signals, and what-else not. If the rail piece does not
- * have any signals, bit 4 (cycle signal-type) is ignored
- * @param tile tile where to build the signals
+ * have any signals, signal cycling is ignored
  * @param flags operation to perform
- * @param p1 various bitstuffed elements
- * - p1 = (bit 0-2) - track-orientation, valid values: 0-5 (Track enum)
- * - p1 = (bit 3)   - 1 = override signal/semaphore, or pre/exit/combo signal or (for bit 7) toggle variant (CTRL-toggle)
- * - p1 = (bit 4)   - 0 = signals, 1 = semaphores
- * - p1 = (bit 5-7) - type of the signal, for valid values see enum SignalType in rail_map.h
- * - p1 = (bit 8)   - convert the present signal type and variant
- * - p1 = (bit 9-11)- start cycle from this signal type
- * - p1 = (bit 12-14)-wrap around after this signal type
- * - p1 = (bit 15-16)-cycle the signal direction this many times
- * - p1 = (bit 17)  - 1 = don't modify an existing signal but don't fail either, 0 = always set new signal type
- * @param p2 used for CmdBuildManySignals() to copy direction of first signal
- * @param text unused
+ * @param tile tile where to build the signals
+ * @param track track-orientation
+ * @param sigtype type of the signal
+ * @param sigvar variant of signal type (normal/semaphore)
+ * @param ctrl_pressed true = override signal/semaphore, or pre/exit/combo signal or toggle variant (CTRL-toggle)
+ * @param convert_signal convert the present signal type and variant
+ * @param cycle_start start cycle from this signal type
+ * @param cycle_stop wrap around after this signal type
+ * @param num_dir_cycle cycle the signal direction this many times
+ * @param skip_existing_signals true = don't modify an existing signal but don't fail either, false = always set new signal type
+ * @param signals_copy used for CmdBuildManySignals() to copy direction of first signal
  * @return the cost of this operation or an error
  * @todo p2 should be replaced by two bits for "along" and "against" the track.
  */
-CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8_t num_dir_cycle, byte signals_copy)
 {
-	Track track = Extract<Track, 0, 3>(p1);
-	bool ctrl_pressed = HasBit(p1, 3); // was the CTRL button pressed
-	SignalVariant sigvar = (ctrl_pressed ^ HasBit(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC; // the signal variant of the new signal
-	SignalType sigtype = Extract<SignalType, 5, 3>(p1); // the signal type of the new signal
-	bool convert_signal = HasBit(p1, 8); // convert button pressed
-	SignalType cycle_start = Extract<SignalType, 9, 3>(p1);
-	SignalType cycle_stop = Extract<SignalType, 12, 3>(p1);
-	uint num_dir_cycle = GB(p1, 15, 2);
-
-	if (sigtype > SIGTYPE_LAST) return CMD_ERROR;
+	if (sigtype > SIGTYPE_LAST || sigvar > SIG_SEMAPHORE) return CMD_ERROR;
 	if (cycle_start > cycle_stop || cycle_stop > SIGTYPE_LAST) return CMD_ERROR;
+
+	if (ctrl_pressed) sigvar = (SignalVariant)(sigvar ^ SIG_SEMAPHORE);
 
 	/* You can only build signals on plain rail tiles, and the selected track must exist */
 	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) ||
@@ -1075,7 +1068,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 	}
 	/* Protect against invalid signal copying */
-	if (p2 != 0 && (p2 & SignalOnTrack(track)) == 0) return CMD_ERROR;
+	if (signals_copy != 0 && (signals_copy & SignalOnTrack(track)) == 0) return CMD_ERROR;
 
 	CommandCost ret = CheckTileOwnership(tile);
 	if (ret.Failed()) return ret;
@@ -1084,7 +1077,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (TracksOverlap(GetTrackBits(tile))) return_cmd_error(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK);
 
 	/* In case we don't want to change an existing signal, return without error. */
-	if (HasBit(p1, 17) && HasSignalOnTrack(tile, track)) return CommandCost();
+	if (skip_existing_signals && HasSignalOnTrack(tile, track)) return CommandCost();
 
 	/* you can not convert a signal if no signal is on track */
 	if (convert_signal && !HasSignalOnTrack(tile, track)) return_cmd_error(STR_ERROR_THERE_ARE_NO_SIGNALS);
@@ -1094,7 +1087,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		/* build new signals */
 		cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_SIGNALS]);
 	} else {
-		if (p2 != 0 && sigvar != GetSignalVariant(tile, track)) {
+		if (signals_copy != 0 && sigvar != GetSignalVariant(tile, track)) {
 			/* convert signals <-> semaphores */
 			cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_SIGNALS] + _price[PR_CLEAR_SIGNALS]);
 
@@ -1136,7 +1129,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		/* Subtract old signal infrastructure count. */
 		Company::Get(GetTileOwner(tile))->infrastructure.signal -= CountBits(GetPresentSignals(tile));
 
-		if (p2 == 0) {
+		if (signals_copy == 0) {
 			if (!HasSignalOnTrack(tile, track)) {
 				/* build new signals */
 				SetPresentSignals(tile, GetPresentSignals(tile) | (IsPbsSignal(sigtype) ? KillFirstBit(SignalOnTrack(track)) : SignalOnTrack(track)));
@@ -1180,7 +1173,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		} else {
 			/* If CmdBuildManySignals is called with copying signals, just copy the
 			 * direction of the first signal given as parameter by CmdBuildManySignals */
-			SetPresentSignals(tile, (GetPresentSignals(tile) & ~SignalOnTrack(track)) | (p2 & SignalOnTrack(track)));
+			SetPresentSignals(tile, (GetPresentSignals(tile) & ~SignalOnTrack(track)) | (signals_copy & SignalOnTrack(track)));
 			SetSignalVariant(tile, track, sigvar);
 			SetSignalType(tile, track, sigtype);
 		}
@@ -1209,8 +1202,11 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	return cost;
 }
 
-static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal_ctr, bool remove)
+static bool AdvanceSignalAutoFill(TileIndex &tile, Trackdir &trackdir, bool remove)
 {
+	/* We only process starting tiles of tunnels or bridges so jump to the other end before moving further. */
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) tile = GetOtherTunnelBridgeEnd(tile);
+
 	tile = AddTileIndexDiffCWrap(tile, _trackdelta[trackdir]);
 	if (tile == INVALID_TILE) return false;
 
@@ -1233,76 +1229,51 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 		case MP_RAILWAY:
 			if (IsRailDepot(tile)) return false;
 			if (!remove && HasSignalOnTrack(tile, TrackdirToTrack(trackdir))) return false;
-			signal_ctr++;
-			if (IsDiagonalTrackdir(trackdir)) {
-				signal_ctr++;
-				/* Ensure signal_ctr even so X and Y pieces get signals */
-				ClrBit(signal_ctr, 0);
-			}
-			return true;
+			break;
 
 		case MP_ROAD:
 			if (!IsLevelCrossing(tile)) return false;
-			signal_ctr += 2;
-			return true;
+			break;
 
 		case MP_TUNNELBRIDGE: {
-			TileIndex orig_tile = tile; // backup old value
-
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
 			if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(trackdir)) return false;
-
-			/* Skip to end of tunnel or bridge
-			 * note that tile is a parameter by reference, so it must be updated */
-			tile = GetOtherTunnelBridgeEnd(tile);
-
-			signal_ctr += (GetTunnelBridgeLength(orig_tile, tile) + 2) * 2;
-			return true;
+			break;
 		}
 
 		default: return false;
 	}
+	return true;
 }
 
 /**
  * Build many signals by dragging; AutoSignals
- * @param tile start tile of drag
  * @param flags operation to perform
- * @param p1  end tile of drag
- * @param p2 various bitstuffed elements
- * - p2 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
- * - p2 = (bit  3)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
- * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
- * - p2 = (bit  5)    - 0 = build, 1 = remove signals
- * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
- * - p2 = (bit  7- 9) - default signal type
- * - p2 = (bit 10)    - 0 = keep fixed distance, 1 = minimise gaps between signals
- * - p2 = (bit 24-31) - user defined signals_density
- * @param text unused
+ * @param tile start tile of drag
+ * @param end_tile end tile of drag
+ * @param track track-orientation
+ * @param sigtype default signal type
+ * @param sigvar signal variant to build
+ * @param mode true = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * @param remove remove signals?
+ * @param autofill fill beyond selected stretch?
+ * @param minimise_gaps false = keep fixed distance, true = minimise gaps between signals
+ * @param signal_density user defined signals_density
  * @return the cost of this operation or an error
  */
-static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool remove, bool autofill, bool minimise_gaps, int signal_density)
 {
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
-	TileIndex start_tile = tile;
 
-	Track track = Extract<Track, 0, 3>(p2);
-	bool mode = HasBit(p2, 3);
-	bool semaphores = HasBit(p2, 4);
-	bool remove = HasBit(p2, 5);
-	bool autofill = HasBit(p2, 6);
-	bool minimise_gaps = HasBit(p2, 10);
-	byte signal_density = GB(p2, 24, 8);
-
-	if (p1 >= MapSize() || !ValParamTrackOrientation(track)) return CMD_ERROR;
-	TileIndex end_tile = p1;
+	if (end_tile >= Map::Size() || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
+	if (!remove && (sigtype > SIGTYPE_LAST || sigvar > SIG_SEMAPHORE)) return CMD_ERROR;
 
 	if (!IsPlainRailTile(tile)) return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
+	TileIndex start_tile = tile;
 
-	/* for vertical/horizontal tracks, double the given signals density
-	 * since the original amount will be too dense (shorter tracks) */
-	signal_density *= 2;
+	/* Interpret signal_density as the logical length of said amount of tiles in X/Y direction. */
+	signal_density *= TILE_AXIAL_DISTANCE;
 
 	Trackdir trackdir = TrackToTrackdir(track);
 	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
@@ -1314,9 +1285,6 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	/* Must start on a valid track to be able to avoid loops */
 	if (!HasTrack(tile, track)) return CMD_ERROR;
 
-	SignalType sigtype = (SignalType)GB(p2, 7, 3);
-	if (sigtype > SIGTYPE_LAST) return CMD_ERROR;
-
 	byte signals;
 	/* copy the signal-style of the first rail-piece if existing */
 	if (HasSignalOnTrack(tile, track)) {
@@ -1324,7 +1292,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 		assert(signals != 0);
 
 		/* copy signal/semaphores style (independent of CTRL) */
-		semaphores = GetSignalVariant(tile, track) != SIG_ELECTRIC;
+		sigvar = GetSignalVariant(tile, track);
 
 		sigtype = GetSignalType(tile, track);
 		/* Don't but copy entry or exit-signal type */
@@ -1350,84 +1318,119 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	 *              and convert all others to semaphore/signal
 	 * remove     - 1 remove signals, 0 build signals */
 	int signal_ctr = 0;
-	int last_used_ctr = INT_MIN; // initially INT_MIN to force building/removing at the first tile
+	int last_used_ctr = -signal_density; // to force signal at first tile
 	int last_suitable_ctr = 0;
 	TileIndex last_suitable_tile = INVALID_TILE;
 	Trackdir last_suitable_trackdir = INVALID_TRACKDIR;
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
-	for (;;) {
-		/* only build/remove signals with the specified density */
-		if (remove || minimise_gaps || signal_ctr % signal_density == 0) {
-			uint32 param1 = GB(TrackdirToTrack(trackdir), 0, 3);
-			SB(param1, 3, 1, mode);
-			SB(param1, 4, 1, semaphores);
-			SB(param1, 5, 3, sigtype);
-			if (!remove && signal_ctr == 0) SetBit(param1, 17);
+	auto build_signal = [&](TileIndex tile, Trackdir trackdir, bool test_only) {
+		/* Pick the correct orientation for the track direction */
+		byte signals = 0;
+		if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
+		if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
 
-			/* Pick the correct orientation for the track direction */
-			signals = 0;
-			if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
-			if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
+		DoCommandFlag do_flags = test_only ? flags & ~DC_EXEC : flags;
+		CommandCost ret = remove ? Command<CMD_REMOVE_SIGNALS>::Do(do_flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SIGNALS>::Do(do_flags, tile, TrackdirToTrack(trackdir), sigtype, sigvar, false, signal_ctr == 0, mode, SIGTYPE_NORMAL, SIGTYPE_NORMAL, 0, signals);
 
-			/* Test tiles in between for suitability as well if minimising gaps. */
-			bool test_only = !remove && minimise_gaps && signal_ctr < (last_used_ctr + signal_density);
-			CommandCost ret = DoCommand(tile, param1, signals, test_only ? flags & ~DC_EXEC : flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
+		if (test_only) return ret.Succeeded();
 
-			if (ret.Succeeded()) {
-				/* Remember last track piece where we can place a signal. */
-				last_suitable_ctr = signal_ctr;
-				last_suitable_tile = tile;
-				last_suitable_trackdir = trackdir;
-			} else if (!test_only && last_suitable_tile != INVALID_TILE) {
-				/* If a signal can't be placed, place it at the last possible position. */
-				SB(param1, 0, 3, TrackdirToTrack(last_suitable_trackdir));
-				ClrBit(param1, 17);
-
-				/* Pick the correct orientation for the track direction. */
-				signals = 0;
-				if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(last_suitable_trackdir);
-				if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(last_suitable_trackdir);
-
-				ret = DoCommand(last_suitable_tile, param1, signals, flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
+		if (ret.Succeeded()) {
+			had_success = true;
+			total_cost.AddCost(ret);
+		} else {
+			/* The "No railway" error is the least important one. */
+			if (ret.GetErrorMessage() != STR_ERROR_THERE_IS_NO_RAILROAD_TRACK ||
+					last_error.GetErrorMessage() == INVALID_STRING_ID) {
+				last_error = ret;
 			}
+		}
+		return ret.Succeeded();
+	};
 
-			/* Collect cost. */
-			if (!test_only) {
-				/* Be user-friendly and try placing signals as much as possible */
-				if (ret.Succeeded()) {
-					had_success = true;
-					total_cost.AddCost(ret);
-					last_used_ctr = last_suitable_ctr;
+	for (;;) {
+		if (remove) {
+			/* In remove mode last_* stuff doesn't matter, we simply try to clear every tile. */
+			build_signal(tile, trackdir, false);
+		} else if (minimise_gaps) {
+			/* We're trying to minimize gaps wherever possible, so keep track of last suitable
+			 * position and use it if current gap exceeds required signal density. */
+
+			if (signal_ctr > last_used_ctr + signal_density && last_suitable_tile != INVALID_TILE) {
+				/* We overshot so build a signal in last good location. */
+				if (build_signal(last_suitable_tile, last_suitable_trackdir, false)) {
 					last_suitable_tile = INVALID_TILE;
-				} else {
-					/* The "No railway" error is the least important one. */
-					if (ret.GetErrorMessage() != STR_ERROR_THERE_IS_NO_RAILROAD_TRACK ||
-							last_error.GetErrorMessage() == INVALID_STRING_ID) {
-						last_error = ret;
-					}
+					last_used_ctr = last_suitable_ctr;
 				}
 			}
+
+			if (signal_ctr == last_used_ctr + signal_density) {
+				/* Current gap matches the required density, build a signal.  */
+				if (build_signal(tile, trackdir, false)) {
+					last_used_ctr = signal_ctr;
+					last_suitable_tile = INVALID_TILE;
+				}
+			} else {
+				/* Test tile for a potential signal spot. */
+				if (build_signal(tile, trackdir, true)) {
+					last_suitable_tile = tile;
+					last_suitable_ctr = signal_ctr;
+					last_suitable_trackdir = trackdir;
+				}
+			}
+		} else if(signal_ctr >= last_used_ctr + signal_density) {
+			/* We're always keeping regular interval between signals so doesn't matter whether we succeed or not. */
+			build_signal(tile, trackdir, false);
+			last_used_ctr = signal_ctr;
 		}
 
 		if (autofill) {
-			if (!CheckSignalAutoFill(tile, trackdir, signal_ctr, remove)) break;
+			switch (GetTileType(tile)) {
+				case MP_RAILWAY:
+					signal_ctr += (IsDiagonalTrackdir(trackdir) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE);
+					break;
+
+				case MP_ROAD:
+					signal_ctr += TILE_AXIAL_DISTANCE;
+					break;
+
+				case MP_TUNNELBRIDGE: {
+					uint len = (GetTunnelBridgeLength(tile, GetOtherTunnelBridgeEnd(tile)) + 2) * TILE_AXIAL_DISTANCE;
+					if (remove || minimise_gaps) {
+						signal_ctr += len;
+					} else {
+						/* To keep regular interval we need to emulate placing signals on a bridge.
+						 * We start with TILE_AXIAL_DISTANCE as one bridge tile gets processed in the main loop. */
+						signal_ctr += TILE_AXIAL_DISTANCE;
+						for(uint i = TILE_AXIAL_DISTANCE; i < len; i += TILE_AXIAL_DISTANCE) {
+							if (signal_ctr >= last_used_ctr + signal_density) last_used_ctr = signal_ctr;
+							signal_ctr += TILE_AXIAL_DISTANCE;
+						}
+					}
+					break;
+				}
+
+				default: break;
+			}
+
+			if (!AdvanceSignalAutoFill(tile, trackdir, remove)) break;
 
 			/* Prevent possible loops */
 			if (tile == start_tile && trackdir == start_trackdir) break;
 		} else {
 			if (tile == end_tile) break;
 
-			tile += ToTileIndexDiff(_trackdelta[trackdir]);
-			signal_ctr++;
-
+			signal_ctr += (IsDiagonalTrackdir(trackdir) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE);
 			/* toggle railbit for the non-diagonal tracks (|, -- tracks) */
-			if (IsDiagonalTrackdir(trackdir)) {
-				signal_ctr++;
-			} else {
-				ToggleBit(trackdir, 0);
-			}
+
+			tile += ToTileIndexDiff(_trackdelta[trackdir]);
+			if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
 		}
+	}
+
+	/* We may end up with the current gap exceeding the signal density so fix that if needed. */
+	if (!remove && minimise_gaps && signal_ctr > last_used_ctr + signal_density && last_suitable_tile != INVALID_TILE) {
+		build_signal(last_suitable_tile, last_suitable_trackdir, false);
 	}
 
 	return had_success ? total_cost : last_error;
@@ -1436,42 +1439,33 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 /**
  * Build signals on a stretch of track.
  * Stub for the unified signal builder/remover
- * @param tile start tile of drag
  * @param flags operation to perform
- * @param p1  end tile of drag
- * @param p2 various bitstuffed elements
- * - p2 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
- * - p2 = (bit  3)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
- * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
- * - p2 = (bit  5)    - 0 = build, 1 = remove signals
- * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
- * - p2 = (bit  7- 9) - default signal type
- * - p2 = (bit 24-31) - user defined signals_density
- * @param text unused
+ * @param tile start tile of drag
+ * @param end_tile end tile of drag
+ * @param track track-orientation
+ * @param sigtype default signal type
+ * @param sigvar signal variant to build
+ * @param mode true = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * @param autofill fill beyond selected stretch?
+ * @param minimise_gaps false = keep fixed distance, true = minimise gaps between signals
+ * @param signal_density user defined signals_density
  * @return the cost of this operation or an error
  * @see CmdSignalTrackHelper
  */
-CommandCost CmdBuildSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdBuildSignalTrack(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool autofill, bool minimise_gaps, byte signal_density)
 {
-	return CmdSignalTrackHelper(tile, flags, p1, p2, text);
+	return CmdSignalTrackHelper(flags, tile, end_tile, track, sigtype, sigvar, mode, false, autofill, minimise_gaps, signal_density);
 }
 
 /**
  * Remove signals
- * @param tile coordinates where signal is being deleted from
  * @param flags operation to perform
- * @param p1 various bitstuffed elements, only track information is used
- *           - (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
- *           - (bit  3)    - override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
- *           - (bit  4)    - 0 = signals, 1 = semaphores
- * @param p2 unused
- * @param text unused
+ * @param tile coordinates where signal is being deleted from
+ * @param track track-orientation
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRemoveSingleSignal(DoCommandFlag flags, TileIndex tile, Track track)
 {
-	Track track = Extract<Track, 0, 3>(p1);
-
 	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) || !HasTrack(tile, track)) {
 		return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 	}
@@ -1528,24 +1522,17 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 /**
  * Remove signals on a stretch of track.
  * Stub for the unified signal builder/remover
- * @param tile start tile of drag
  * @param flags operation to perform
- * @param p1  end tile of drag
- * @param p2 various bitstuffed elements
- * - p2 = (bit  0- 2) - track-orientation, valid values: 0-5 (Track enum)
- * - p2 = (bit  3)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
- * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
- * - p2 = (bit  5)    - 0 = build, 1 = remove signals
- * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
- * - p2 = (bit  7- 9) - default signal type
- * - p2 = (bit 24-31) - user defined signals_density
- * @param text unused
+ * @param tile start tile of drag
+ * @param end_tile end tile of drag
+ * @param track track-orientation
+ * @param autofill fill beyond selected stretch?
  * @return the cost of this operation or an error
  * @see CmdSignalTrackHelper
  */
-CommandCost CmdRemoveSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRemoveSignalTrack(DoCommandFlag flags, TileIndex tile, TileIndex end_tile, Track track, bool autofill)
 {
-	return CmdSignalTrackHelper(tile, flags, p1, SetBit(p2, 5), text); // bit 5 is remove bit
+	return CmdSignalTrackHelper(flags, tile, end_tile, track, SIGTYPE_NORMAL, SIG_ELECTRIC, false, true, autofill, false, 1); // bit 5 is remove bit
 }
 
 /** Update power of train under which is the railtype being converted */
@@ -1562,24 +1549,19 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 /**
  * Convert one rail type to the other. You can convert normal rail to
  * monorail/maglev easily or vice-versa.
- * @param tile end tile of rail conversion drag
  * @param flags operation to perform
- * @param p1 start tile of drag
- * @param p2 various bitstuffed elements:
- * - p2 = (bit  0- 5) new railtype to convert to.
- * - p2 = (bit  6)    build diagonally or not.
- * @param text unused
+ * @param tile end tile of rail conversion drag
+ * @param area_start start tile of drag
+ * @param totype new railtype to convert to.
+ * @param diagonal build diagonally or not.
  * @return the cost of this operation or an error
  */
-CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_start, RailType totype, bool diagonal)
 {
-	RailType totype = Extract<RailType, 0, 6>(p2);
-	TileIndex area_start = p1;
 	TileIndex area_end = tile;
-	bool diagonal = HasBit(p2, 6);
 
 	if (!ValParamRailtype(totype)) return CMD_ERROR;
-	if (area_start >= MapSize()) return CMD_ERROR;
+	if (area_start >= Map::Size()) return CMD_ERROR;
 
 	TrainList affected_trains;
 
@@ -1587,7 +1569,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	CommandCost error = CommandCost(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK); // by default, there is no track to convert.
 	bool found_convertible_track = false; // whether we actually did convert some track (see bug #7633)
 
-	TileIterator *iter = diagonal ? (TileIterator *)new DiagonalTileIterator(area_start, area_end) : new OrthogonalTileIterator(area_start, area_end);
+	std::unique_ptr<TileIterator> iter = TileIterator::Create(area_start, area_end, diagonal);
 	for (; (tile = *iter) != INVALID_TILE; ++(*iter)) {
 		TileType tt = GetTileType(tile);
 
@@ -1630,7 +1612,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		 * Tunnels and bridges have special check later */
 		if (tt != MP_TUNNELBRIDGE) {
 			if (!IsCompatibleRail(type, totype)) {
-				CommandCost ret = IsPlainRailTile(tile) ? EnsureNoTrainOnTrackBits(tile, GetTrackBits(tile)) : EnsureNoVehicleOnGround(tile);
+				ret = IsPlainRailTile(tile) ? EnsureNoTrainOnTrackBits(tile, GetTrackBits(tile)) : EnsureNoVehicleOnGround(tile);
 				if (ret.Failed()) {
 					error = ret;
 					continue;
@@ -1714,7 +1696,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 				/* When not converting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
 				if (!IsCompatibleRail(GetRailType(tile), totype)) {
-					CommandCost ret = TunnelBridgeIsFree(tile, endtile);
+					ret = TunnelBridgeIsFree(tile, endtile);
 					if (ret.Failed()) {
 						error = ret;
 						continue;
@@ -1784,7 +1766,6 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 	}
 
-	delete iter;
 	return found_convertible_track ? cost : error;
 }
 
@@ -1848,7 +1829,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 			TrackBits tracks = GetTrackBits(tile);
 			while (tracks != TRACK_BIT_NONE) {
 				Track track = RemoveFirstTrack(&tracks);
-				CommandCost ret = DoCommand(tile, 0, track, flags, CMD_REMOVE_SINGLE_RAIL);
+				CommandCost ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, track);
 				if (ret.Failed()) return ret;
 				cost.AddCost(ret);
 			}
@@ -1861,9 +1842,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 
 				/* The track was removed, and left a coast tile. Now also clear the water. */
 				if (flags & DC_EXEC) {
-					bool remove = IsDockingTile(tile);
 					DoClearSquare(tile);
-					if (remove) RemoveDockingTile(tile);
 				}
 				cost.AddCost(_price[PR_CLEAR_WATER]);
 			}
@@ -1935,7 +1914,7 @@ static void DrawSingleSignal(TileIndex tile, const RailtypeInfo *rti, Track trac
 	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSaveSlopeZ(x, y, track));
 }
 
-static uint32 _drawtile_track_palette;
+static uint32_t _drawtile_track_palette;
 
 
 
@@ -2570,7 +2549,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	const DrawTileSprites *dts = &_depot_gfx_table[dir];
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID image = rti->UsesOverlay() ? SPR_FLAT_GRASS_TILE : dts->ground.sprite;
-	uint32 offset = rti->GetRailtypeSpriteOffset();
+	uint32_t offset = rti->GetRailtypeSpriteOffset();
 
 	if (image != SPR_FLAT_GRASS_TILE) image += offset;
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
@@ -2592,7 +2571,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	DrawRailTileSeqInGUI(x, y, dts, offset, 0, palette);
 }
 
-static int GetSlopePixelZ_Track(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_Track(TileIndex tile, uint x, uint y, bool ground_vehicle)
 {
 	if (IsPlainRail(tile)) {
 		int z;
@@ -2885,7 +2864,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 			td->str = STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
 			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
 				if (td->rail_speed > 0) {
-					td->rail_speed = std::min<uint16>(td->rail_speed, 61);
+					td->rail_speed = std::min<uint16_t>(td->rail_speed, 61);
 				} else {
 					td->rail_speed = 61;
 				}
@@ -2922,13 +2901,13 @@ static void ChangeTileOwner_Track(TileIndex tile, Owner old_owner, Owner new_own
 
 		SetTileOwner(tile, new_owner);
 	} else {
-		DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
+		Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_BANKRUPT, tile);
 	}
 }
 
 static const byte _fractcoords_behind[4] = { 0x8F, 0x8, 0x80, 0xF8 };
 static const byte _fractcoords_enter[4] = { 0x8A, 0x48, 0x84, 0xA8 };
-static const int8 _deltacoord_leaveoffset[8] = {
+static const int8_t _deltacoord_leaveoffset[8] = {
 	-1,  0,  1,  0, /* x */
 	 0,  1,  0, -1  /* y */
 };
@@ -3110,7 +3089,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, int 
 			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
 		return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
-	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
 

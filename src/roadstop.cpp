@@ -336,8 +336,8 @@ Vehicle *FindVehiclesInRoadStop(Vehicle *v, void *data)
 	if (rv->state < RVSB_IN_ROAD_STOP) return nullptr;
 
 	/* Do not add duplicates! */
-	for (RVList::iterator it = rserh->vehicles.begin(); it != rserh->vehicles.end(); it++) {
-		if (rv == *it) return nullptr;
+	for (const auto &it : rserh->vehicles) {
+		if (rv == it) return nullptr;
 	}
 
 	rserh->vehicles.push_back(rv);
@@ -367,8 +367,8 @@ void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
 	}
 
 	this->occupied = 0;
-	for (RVList::iterator it = rserh.vehicles.begin(); it != rserh.vehicles.end(); it++) {
-		this->occupied += (*it)->gcache.cached_total_length;
+	for (const auto &it : rserh.vehicles) {
+		this->occupied += it->gcache.cached_total_length;
 	}
 }
 

@@ -26,9 +26,9 @@ public:
 	 * Create a new iterator instance.
 	 * @return New iterator instance.
 	 */
-	static StringIterator *Create();
+	static std::unique_ptr<StringIterator> Create();
 
-	virtual ~StringIterator() {}
+	virtual ~StringIterator() = default;
 
 	/**
 	 * Set a new iteration string. Must also be called if the string contents

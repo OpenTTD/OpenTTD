@@ -114,7 +114,7 @@ public:
 
 		/* take care of listener port */
 		for (auto &s : sockets) {
-			FD_SET(s.second, &read_fd);
+			FD_SET(s.first, &read_fd);
 		}
 
 		tv.tv_sec = tv.tv_usec = 0; // don't block at all.
@@ -122,7 +122,7 @@ public:
 
 		/* accept clients.. */
 		for (auto &s : sockets) {
-			if (FD_ISSET(s.second, &read_fd)) AcceptClient(s.second);
+			if (FD_ISSET(s.first, &read_fd)) AcceptClient(s.first);
 		}
 
 		/* read stuff from clients */
@@ -140,7 +140,7 @@ public:
 	 * @param port The port to listen on.
 	 * @return true if listening succeeded.
 	 */
-	static bool Listen(uint16 port)
+	static bool Listen(uint16_t port)
 	{
 		assert(sockets.size() == 0);
 
@@ -164,7 +164,7 @@ public:
 	static void CloseListeners()
 	{
 		for (auto &s : sockets) {
-			closesocket(s.second);
+			closesocket(s.first);
 		}
 		sockets.clear();
 		Debug(net, 5, "[{}] Closed listeners", Tsocket::GetName());

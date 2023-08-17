@@ -8,6 +8,7 @@
 /** @file stringfilter.cpp Searching and filtering using a stringterm. */
 
 #include "stdafx.h"
+#include "core/alloc_func.hpp"
 #include "string_func.h"
 #include "strings_func.h"
 #include "stringfilter_type.h"
@@ -15,10 +16,10 @@
 
 #include "safeguards.h"
 
-static const WChar STATE_WHITESPACE = ' ';
-static const WChar STATE_WORD = 'w';
-static const WChar STATE_QUOTE1 = '\'';
-static const WChar STATE_QUOTE2 = '"';
+static const char32_t STATE_WHITESPACE = ' ';
+static const char32_t STATE_WORD = 'w';
+static const char32_t STATE_QUOTE1 = '\'';
+static const char32_t STATE_QUOTE2 = '"';
 
 /**
  * Set the term to filter on.
@@ -36,12 +37,12 @@ void StringFilter::SetFilterTerm(const char *str)
 	char *dest = MallocT<char>(strlen(str) + 1);
 	this->filter_buffer = dest;
 
-	WChar state = STATE_WHITESPACE;
+	char32_t state = STATE_WHITESPACE;
 	const char *pos = str;
 	WordState *word = nullptr;
 	size_t len;
 	for (;; pos += len) {
-		WChar c;
+		char32_t c;
 		len = Utf8Decode(&c, pos);
 
 		if (c == 0 || (state == STATE_WORD && IsWhitespace(c))) {
@@ -80,6 +81,15 @@ void StringFilter::SetFilterTerm(const char *str)
 		memcpy(dest, pos, len);
 		dest += len;
 	}
+}
+
+/**
+ * Set the term to filter on.
+ * @param str Filter term
+ */
+void StringFilter::SetFilterTerm(const std::string &str)
+{
+	this->SetFilterTerm(str.c_str());
 }
 
 /**
@@ -124,9 +134,20 @@ void StringFilter::AddLine(const char *str)
  *
  * @param str Another line from the item.
  */
+void StringFilter::AddLine(const std::string &str)
+{
+	AddLine(str.c_str());
+}
+
+/**
+ * Pass another text line from the current item to the filter.
+ *
+ * You can call this multiple times for a single item, if the filter shall apply to multiple things.
+ * Before processing the next item you have to call ResetState().
+ *
+ * @param str Another line from the item.
+ */
 void StringFilter::AddLine(StringID str)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, str, lastof(buffer));
-	AddLine(buffer);
+	AddLine(GetString(str));
 }

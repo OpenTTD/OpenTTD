@@ -14,7 +14,7 @@ In return, they should reciprocate that respect in addressing your issue or asse
 The [issue tracker](https://github.com/OpenTTD/OpenTTD/issues) is the preferred channel for [bug reports](#bug-reports), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for help playing or using OpenTTD.
-Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel), or the [forums](https://www.tt-forums.net/)
+Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel), [Discord](https://discord.gg/openttd), or the [forums](https://www.tt-forums.net/)
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and respect the opinions of others.
 
@@ -23,7 +23,7 @@ Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to
 We reserve the right to delete comments which violate this rule.
 
 * Please **do not** open issues or pull requests regarding add-on content in NewGRF, GameScripts, AIs, etc.
-These are created by third-parties.  Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel) or the [forums](https://www.tt-forums.net/) to discuss these.
+These are created by third-parties.  Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel), [Discord](https://discord.gg/openttd), or the [forums](https://www.tt-forums.net/) to discuss these.
 
 * Please use [the web translator](https://translator.openttd.org/) to submit corrections and improvements to translations of the game.
 
@@ -94,8 +94,8 @@ Although we really appreciate feedback and ideas, we will close feature requests
 
 Many of those ideas etc do have a place on the [forums](https://www.tt-forums.net); and if enough people like it, someone will stand up and make it.
 
-It's usually best discuss in [irc](https://wiki.openttd.org/en/Development/IRC%20channel) before opening a feature request or working on a large feature in a fork.
-Discussion in irc can take time, but it can be productive and avoid disappointment :)
+It's usually best to discuss on [Discord](https://discord.gg/openttd) before opening a feature request or working on a large feature in a fork.
+Discussion can take time, but it can be productive and avoid disappointment. :)
 
 
 ## Pull requests
@@ -108,7 +108,7 @@ Pull requests should fit with the [goals of the project](./CONTRIBUTING.md#proje
 
 Every pull request should have a clear scope, with no unrelated commits.
 
-[Code style](https://wiki.openttd.org/en/Development/Coding%20style) must be complied with for pull requests to be accepted; this also includes [commit message format](https://wiki.openttd.org/en/Development/Coding%20style#commit-message).
+[Code style](./CODINGSTYLE.md) must be complied with for pull requests to be accepted; this also includes [commit message format](./CODINGSTYLE.md#commit-message).
 
 Adhering to the following process is the best way to get your work included in the project:
 
@@ -136,8 +136,8 @@ contain your feature, change, or fix:
 git checkout upstream/master -b <topic-branch-name>
 ```
 
-4. Commit your changes in logical chunks. Please adhere to these [git commit message guidelines](https://wiki.openttd.org/en/Development/Coding%20style#commit-message) or your code is unlikely to be merged into the main project.
-Use Git's [interactive rebase](https://help.github.com/articles/interactive-rebase) feature to tidy up your commits before making them public.
+4. Commit your changes in logical chunks. Please adhere to these [git commit message guidelines](./CODINGSTYLE.md#commit-message) or your code is unlikely to be merged into the main project.
+Use Git's [interactive rebase](https://docs.github.com/en/get-started/using-git/about-git-rebase) feature to tidy up your commits before making them public.
 
 5. Locally rebase the upstream development branch into your topic branch:
 
@@ -172,7 +172,7 @@ The results of the CI tests will show on your pull request.
 By clicking on Details you can further zoom in; in case of a failure it will show you why it failed.
 In case of success it will report how awesome you were.
 
-Tip: [commit message format](https://wiki.openttd.org/en/Development/Coding%20style#commit-message) is a common reason for pull requests to fail validation.
+Tip: [commit message format](./CODINGSTYLE.md#commit-message) is a common reason for pull requests to fail validation.
 
 
 ### Are there any development docs?
@@ -212,8 +212,8 @@ When it comes to gameplay features there are at least these groups of interests:
 - *Control freak:* micromanagement like conditional orders, refitting and loading etc.
 - *Casual:* automatisation like cargodist, path based signalling etc.
 
-To please everyone, the official branch tries to stay close to the original gameplay; after all, that is what everyone brought here.
-The preferred method to alter and extent the gameplay is via add-ons like NewGRF and GameScripts.
+To please everyone, the official branch tries to stay close to the original gameplay; after all, that is what brought everyone here.
+The preferred method to alter and extend the gameplay is via add-ons like NewGRF and GameScripts.
 
 For a long time, the official branch was also open to features which could be enabled/disabled, but the corner-cases that came with some configurations have rendered some parts of the code very complicated.
 Today, new features have to work with all the already existing features, which is not only challenging in corner cases, but also requires spending considerable more work than just "making it work in the game mode that I play".
@@ -265,5 +265,5 @@ If you would not like to accept this risk, please do either commit anonymously o
 
 ### Attribution of this Contributing Guide
 
-This contributing guide is adapted from [Bootstrap](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md) under the [Creative Commons Attribution 3.0 Unported License](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE) terms for Bootstrap documentation.
+This contributing guide is adapted from [Bootstrap](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md) under the [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/) terms for Bootstrap documentation.
 The GDPR notice is adapted from [rsyslog](https://github.com/rsyslog/rsyslog/blob/master/CONTRIBUTING.md) under the [GNU General Public License](https://github.com/rsyslog/rsyslog/blob/master/COPYING).

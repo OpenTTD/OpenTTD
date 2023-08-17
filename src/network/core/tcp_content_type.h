@@ -12,6 +12,8 @@
 #ifndef NETWORK_CORE_TCP_CONTENT_TYPE_H
 #define NETWORK_CORE_TCP_CONTENT_TYPE_H
 
+#include "../../3rdparty/md5/md5.h"
+
 /** The values in the enum are important; they are used as database 'keys' */
 enum ContentType {
 	CONTENT_TYPE_BEGIN         = 1, ///< Helper to mark the begin of the types
@@ -60,14 +62,14 @@ struct ContentInfo {
 
 	ContentType type = INVALID_CONTENT_TYPE; ///< Type of content
 	ContentID id = INVALID_CONTENT_ID;       ///< Unique (server side) ID for the content
-	uint32 filesize = 0;                     ///< Size of the file
+	uint32_t filesize = 0;                     ///< Size of the file
 	std::string filename;                    ///< Filename (for the .tar.gz; only valid on download)
 	std::string name;                        ///< Name of the content
 	std::string version;                     ///< Version of the content
 	std::string url;                         ///< URL related to the content
 	std::string description;                 ///< Description of the content
-	uint32 unique_id = 0;                    ///< Unique ID; either GRF ID or shortname
-	byte md5sum[16] = {0};                   ///< The MD5 checksum
+	uint32_t unique_id = 0;                    ///< Unique ID; either GRF ID or shortname
+	MD5Hash md5sum;                          ///< The MD5 checksum
 	std::vector<ContentID> dependencies;     ///< The dependencies (unique server side ids)
 	StringList tags;                         ///< Tags associated with the content
 	State state = State::UNSELECTED;         ///< Whether the content info is selected (for download)
@@ -75,7 +77,7 @@ struct ContentInfo {
 
 	bool IsSelected() const;
 	bool IsValid() const;
-	const char *GetTextfile(TextfileType type) const;
+	std::optional<std::string> GetTextfile(TextfileType type) const;
 };
 
 #endif /* NETWORK_CORE_TCP_CONTENT_TYPE_H */

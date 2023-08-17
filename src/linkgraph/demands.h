@@ -14,9 +14,9 @@ public:
 	DemandCalculator(LinkGraphJob &job);
 
 private:
-	int32 max_distance; ///< Maximum distance possible on the map.
-	int32 mod_dist;     ///< Distance modifier, determines how much demands decrease with distance.
-	int32 accuracy;     ///< Accuracy of the calculation.
+	int32_t max_distance; ///< Maximum distance possible on the map.
+	int32_t mod_dist;     ///< Distance modifier, determines how much demands decrease with distance.
+	int32_t accuracy;     ///< Accuracy of the calculation.
 
 	template<class Tscaler>
 	void CalcDemand(LinkGraphJob &job, Tscaler scaler);
@@ -37,7 +37,7 @@ public:
 	/**
 	 * Virtual destructor has to be defined because of virtual Run().
 	 */
-	virtual ~DemandHandler() {}
+	virtual ~DemandHandler() = default;
 };
 
 #endif /* DEMANDS_H */

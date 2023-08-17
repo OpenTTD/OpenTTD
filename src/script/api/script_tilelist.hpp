@@ -37,7 +37,7 @@ public:
 	void AddTile(TileIndex tile);
 
 	/**
-	 * Remove the tiles inside the rectangle between tile_from and tile_to form the list.
+	 * Remove the tiles inside the rectangle between tile_from and tile_to from the list.
 	 * @param tile_from One corner of the tiles to remove.
 	 * @param tile_to The other corner of the files to remove.
 	 * @pre ScriptMap::IsValidTile(tile_from).
@@ -68,7 +68,7 @@ public:
 	 * @pre radius > 0.
 	 * @note A station part built on any of the returned tiles will give you coverage.
 	 */
-	ScriptTileList_IndustryAccepting(IndustryID industry_id, int radius);
+	ScriptTileList_IndustryAccepting(IndustryID industry_id, SQInteger radius);
 };
 
 /**
@@ -86,7 +86,7 @@ public:
 	 * @pre radius > 0.
 	 * @note A station part built on any of the returned tiles will give you acceptance.
 	 */
-	ScriptTileList_IndustryProducing(IndustryID industry_id, int radius);
+	ScriptTileList_IndustryProducing(IndustryID industry_id, SQInteger radius);
 };
 
 /**

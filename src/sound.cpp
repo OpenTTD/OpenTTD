@@ -23,7 +23,7 @@
 
 static SoundEntry _original_sounds[ORIGINAL_SAMPLE_COUNT];
 
-static void OpenBankFile(const char *filename)
+static void OpenBankFile(const std::string &filename)
 {
 	/**
 	 * The sound file for the original sounds, i.e. those not defined/overridden by a NewGRF.
@@ -34,7 +34,7 @@ static void OpenBankFile(const char *filename)
 	memset(_original_sounds, 0, sizeof(_original_sounds));
 
 	/* If there is no sound file (nosound set), don't load anything */
-	if (filename == nullptr) return;
+	if (filename.empty()) return;
 
 	original_sound_file.reset(new RandomAccessFile(filename, BASESET_DIR));
 	size_t pos = original_sound_file->GetPos();
@@ -75,8 +75,8 @@ static void OpenBankFile(const char *filename)
 
 			/* Read riff tags */
 			for (;;) {
-				uint32 tag = original_sound_file->ReadDword();
-				uint32 size = original_sound_file->ReadDword();
+				uint32_t tag = original_sound_file->ReadDword();
+				uint32_t size = original_sound_file->ReadDword();
 
 				if (tag == ' tmf') {
 					original_sound_file->ReadWord();                          // wFormatTag
@@ -119,7 +119,7 @@ static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 	/* Check for valid sound size. */
 	if (sound->file_size == 0 || sound->file_size > ((size_t)-1) - 2) return false;
 
-	int8 *mem = MallocT<int8>(sound->file_size + 2);
+	int8_t *mem = MallocT<int8_t>(sound->file_size + 2);
 	/* Add two extra bytes so rate conversion can read these
 	 * without reading out of its input buffer. */
 	mem[sound->file_size    ] = 0;
@@ -139,7 +139,7 @@ static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 #if TTD_ENDIAN == TTD_BIG_ENDIAN
 	if (sound->bits_per_sample == 16) {
 		uint num_samples = sound->file_size / 2;
-		int16 *samples = (int16 *)mem;
+		int16_t *samples = (int16_t *)mem;
 		for (uint i = 0; i < num_samples; i++) {
 			samples[i] = BSWAP16(samples[i]);
 		}
@@ -235,6 +235,7 @@ void SndCopyToPool()
 
 /**
  * Decide 'where' (between left and right speaker) to play the sound effect.
+ * Note: Callers must determine if sound effects are enabled. This plays a sound regardless of the setting.
  * @param sound Sound effect to play
  * @param left   Left edge of virtual coordinates where the sound is produced
  * @param right  Right edge of virtual coordinates where the sound is produced
@@ -243,8 +244,6 @@ void SndCopyToPool()
  */
 static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, int bottom)
 {
-	if (_settings_client.music.effect_vol == 0) return;
-
 	/* Iterate from back, so that main viewport is checked first */
 	for (const Window *w : Window::IterateFromBack()) {
 		const Viewport *vp = w->viewport;
@@ -269,8 +268,8 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 void SndPlayTileFx(SoundID sound, TileIndex tile)
 {
 	/* emits sound from center of the tile */
-	int x = std::min(MapMaxX() - 1, TileX(tile)) * TILE_SIZE + TILE_SIZE / 2;
-	int y = std::min(MapMaxY() - 1, TileY(tile)) * TILE_SIZE - TILE_SIZE / 2;
+	int x = std::min(Map::MaxX() - 1, TileX(tile)) * TILE_SIZE + TILE_SIZE / 2;
+	int y = std::min(Map::MaxY() - 1, TileY(tile)) * TILE_SIZE - TILE_SIZE / 2;
 	int z = (y < 0 ? 0 : GetSlopePixelZ(x, y));
 	Point pt = RemapCoords(x, y, z);
 	y += 2 * TILE_SIZE;

@@ -125,12 +125,6 @@ public:
 		return m_pT == nullptr;
 	}
 
-	/** another way how to test for nullptr value */
-	//inline bool operator == (const CCountedPtr &sp) const {return m_pT == sp.m_pT;}
-
-	/** yet another way how to test for nullptr value */
-	//inline bool operator != (const CCountedPtr &sp) const {return m_pT != sp.m_pT;}
-
 	/** assign pointer w/o incrementing ref count */
 	inline void Attach(Tcls *pT)
 	{
@@ -202,7 +196,7 @@ template <class T> struct AdaptT {
  *  @see misc/countedobj.cpp for implementation.
  */
 struct SimpleCountedObject {
-	int32 m_ref_cnt;
+	int32_t m_ref_cnt;
 
 	SimpleCountedObject()
 		: m_ref_cnt(0)
@@ -211,8 +205,8 @@ struct SimpleCountedObject {
 	virtual ~SimpleCountedObject()
 	{}
 
-	virtual int32 AddRef();
-	virtual int32 Release();
+	virtual int32_t AddRef();
+	virtual int32_t Release();
 	virtual void FinalRelease() {};
 };
 

@@ -45,7 +45,7 @@ enum Corner {
  * slopes would mean that it is not a steep slope as halftile
  * slopes only span one height level.
  */
-enum Slope {
+enum Slope : byte {
 	SLOPE_FLAT     = 0x00,                                  ///< a flat tile
 	SLOPE_W        = 0x01,                                  ///< the west corner of the tile is raised
 	SLOPE_S        = 0x02,                                  ///< the south corner of the tile is raised
@@ -81,9 +81,9 @@ DECLARE_ENUM_AS_BIT_SET(Slope)
  * Helper for creating a bitset of slopes.
  * @param x The slope to convert into a bitset.
  */
-#define M(x) (1 << (x))
+#define M(x) (1U << (x))
 /** Constant bitset with safe slopes for building a level crossing. */
-static const uint32 VALID_LEVEL_CROSSING_SLOPES = M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT);
+static const uint32_t VALID_LEVEL_CROSSING_SLOPES = M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT);
 #undef M
 
 

@@ -8,7 +8,6 @@
 /** @file debug.cpp Handling of printing debug messages. */
 
 #include "stdafx.h"
-#include <stdarg.h>
 #include "console_func.h"
 #include "debug.h"
 #include "string_func.h"
@@ -20,7 +19,7 @@
 #include "os/windows/win32.h"
 #endif
 
-#include "walltime_func.h"
+#include "3rdparty/fmt/chrono.h"
 
 #include "network/network_admin.h"
 SOCKET _debug_socket = INVALID_SOCKET;
@@ -46,7 +45,7 @@ int _debug_sprite_level;
 int _debug_oldloader_level;
 int _debug_npf_level;
 int _debug_yapf_level;
-int _debug_freetype_level;
+int _debug_fontcache_level;
 int _debug_script_level;
 int _debug_sl_level;
 int _debug_gamelog_level;
@@ -72,7 +71,7 @@ struct DebugLevel {
 	DEBUG_LEVEL(oldloader),
 	DEBUG_LEVEL(npf),
 	DEBUG_LEVEL(yapf),
-	DEBUG_LEVEL(freetype),
+	DEBUG_LEVEL(fontcache),
 	DEBUG_LEVEL(script),
 	DEBUG_LEVEL(sl),
 	DEBUG_LEVEL(gamelog),
@@ -86,27 +85,23 @@ struct DebugLevel {
 
 /**
  * Dump the available debug facility names in the help text.
- * @param buf Start address for storing the output.
- * @param last Last valid address for storing the output.
- * @return Next free position in the output.
+ * @param output_iterator The iterator to write the string to.
  */
-char *DumpDebugFacilityNames(char *buf, char *last)
+void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator)
 {
-	size_t length = 0;
+	bool written = false;
 	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
-		if (length == 0) {
-			buf = strecpy(buf, "List of debug facility names:\n", last);
+		if (!written) {
+			fmt::format_to(output_iterator, "List of debug facility names:\n");
 		} else {
-			buf = strecpy(buf, ", ", last);
-			length += 2;
+			fmt::format_to(output_iterator, ", ");
 		}
-		buf = strecpy(buf, i->name, last);
-		length += strlen(i->name);
+		fmt::format_to(output_iterator, i->name);
+		written = true;
 	}
-	if (length > 0) {
-		buf = strecpy(buf, "\n\n", last);
+	if (written) {
+		fmt::format_to(output_iterator, "\n\n");
 	}
-	return buf;
 }
 
 /**
@@ -132,19 +127,18 @@ void DebugPrint(const char *level, const std::string &message)
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
-		fprintf(f, "%s%s\n", GetLogPrefix(), message.c_str());
+		fmt::print(f, "{}{}\n", GetLogPrefix(), message);
 		fflush(f);
 #ifdef RANDOM_DEBUG
 	} else if (strcmp(level, "random") == 0) {
 		static FILE *f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
-		fprintf(f, "%s\n", message.c_str());
+		fmt::print(f, "{}\n", message);
 		fflush(f);
 #endif
 	} else {
-		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
-		fputs(msg.c_str(), stderr);
+		fmt::print(stderr, "{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
 
 		if (_debug_remote_console.load()) {
 			/* Only add to the queue when there is at least one consumer of the data. */
@@ -159,28 +153,31 @@ void DebugPrint(const char *level, const std::string &message)
  * For setting individual levels a string like \c "net=3,grf=6" should be used.
  * If the string starts with a number, the number is used as global debugging level.
  * @param s Text describing the wanted debugging levels.
+ * @param error_func The function to call if a parse error occurs.
  */
-void SetDebugString(const char *s)
+void SetDebugString(const char *s, void (*error_func)(const std::string &))
 {
 	int v;
 	char *end;
 	const char *t;
 
-	/* global debugging level? */
+	/* Store planned changes into map during parse */
+	std::map<const char *, int> new_levels;
+
+	/* Global debugging level? */
 	if (*s >= '0' && *s <= '9') {
 		const DebugLevel *i;
 
-		v = strtoul(s, &end, 0);
+		v = std::strtoul(s, &end, 0);
 		s = end;
 
-		for (i = debug_level; i != endof(debug_level); ++i) *i->level = v;
+		for (i = debug_level; i != endof(debug_level); ++i) {
+			new_levels[i->name] = v;
+		}
 	}
 
-	/* individual levels */
+	/* Individual levels */
 	for (;;) {
-		const DebugLevel *i;
-		int *p;
-
 		/* skip delimiters */
 		while (*s == ' ' || *s == ',' || *s == '\t') s++;
 		if (*s == '\0') break;
@@ -189,22 +186,31 @@ void SetDebugString(const char *s)
 		while (*s >= 'a' && *s <= 'z') s++;
 
 		/* check debugging levels */
-		p = nullptr;
-		for (i = debug_level; i != endof(debug_level); ++i) {
+		const DebugLevel *found = nullptr;
+		for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
 			if (s == t + strlen(i->name) && strncmp(t, i->name, s - t) == 0) {
-				p = i->level;
+				found = i;
 				break;
 			}
 		}
 
 		if (*s == '=') s++;
-		v = strtoul(s, &end, 0);
+		v = std::strtoul(s, &end, 0);
 		s = end;
-		if (p != nullptr) {
-			*p = v;
+		if (found != nullptr) {
+			new_levels[found->name] = v;
 		} else {
-			ShowInfoF("Unknown debug level '%.*s'", (int)(s - t), t);
+			std::string error_string = fmt::format("Unknown debug level '{}'", std::string(t, s - t));
+			error_func(error_string);
 			return;
+		}
+	}
+
+	/* Apply the changes after parse is successful */
+	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
+		const auto &nl = new_levels.find(i->name);
+		if (nl != new_levels.end()) {
+			*i->level = nl->second;
 		}
 	}
 }
@@ -214,22 +220,14 @@ void SetDebugString(const char *s)
  * Just return a string with the values of all the debug categories.
  * @return string with debug-levels
  */
-const char *GetDebugString()
+std::string GetDebugString()
 {
-	const DebugLevel *i;
-	static char dbgstr[150];
-	char dbgval[20];
-
-	memset(dbgstr, 0, sizeof(dbgstr));
-	i = debug_level;
-	seprintf(dbgstr, lastof(dbgstr), "%s=%d", i->name, *i->level);
-
-	for (i++; i != endof(debug_level); i++) {
-		seprintf(dbgval, lastof(dbgval), ", %s=%d", i->name, *i->level);
-		strecat(dbgstr, dbgval, lastof(dbgstr));
+	std::string result;
+	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
+		if (!result.empty()) result += ", ";
+		fmt::format_to(std::back_inserter(result), "{}={}", i->name, *i->level);
 	}
-
-	return dbgstr;
+	return result;
 }
 
 /**
@@ -239,13 +237,13 @@ const char *GetDebugString()
  */
 const char *GetLogPrefix()
 {
-	static char _log_prefix[24];
+	static std::string _log_prefix;
 	if (_settings_client.gui.show_date_in_logs) {
-		LocalTime::Format(_log_prefix, lastof(_log_prefix), "[%Y-%m-%d %H:%M:%S] ");
+		_log_prefix = fmt::format("[{:%Y-%m-%d %H:%M:%S}] ", fmt::localtime(time(nullptr)));
 	} else {
-		*_log_prefix = '\0';
+		_log_prefix.clear();
 	}
-	return _log_prefix;
+	return _log_prefix.c_str();
 }
 
 /**

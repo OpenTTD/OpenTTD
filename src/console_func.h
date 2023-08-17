@@ -11,7 +11,7 @@
 #define CONSOLE_FUNC_H
 
 #include "console_type.h"
-#include "3rdparty/fmt/format.h"
+#include "core/format.hpp"
 
 /* console modes */
 extern IConsoleModes _iconsole_mode;
@@ -47,7 +47,7 @@ static inline void IConsolePrint(TextColour colour_code, const T &format, A firs
 }
 
 /* Parser */
-void IConsoleCmdExec(const char *cmdstr, const uint recurse_count = 0);
+void IConsoleCmdExec(const std::string &command_string, const uint recurse_count = 0);
 
 bool IsValidConsoleColour(TextColour c);
 

@@ -15,6 +15,7 @@
 #include "cargo_type.h"
 #include "track_type.h"
 #include "tile_map.h"
+#include "timer/timer_game_calendar.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -40,8 +41,8 @@ DECLARE_ENUM_AS_BIT_SET(VehicleEnterTileStatus)
 
 /** Tile information, used while rendering the tile */
 struct TileInfo {
-	uint x;         ///< X position of the tile in unit coordinates
-	uint y;         ///< Y position of the tile in unit coordinates
+	int x;          ///< X position of the tile in unit coordinates
+	int y;          ///< Y position of the tile in unit coordinates
 	Slope tileh;    ///< Slope of the tile
 	TileIndex tile; ///< Tile index
 	int z;          ///< Height
@@ -50,22 +51,22 @@ struct TileInfo {
 /** Tile description for the 'land area information' tool */
 struct TileDesc {
 	StringID str;               ///< Description of the tile
+	uint64_t dparam;            ///< Parameter of the \a str string
 	Owner owner[4];             ///< Name of the owner(s)
 	StringID owner_type[4];     ///< Type of each owner
-	Date build_date;            ///< Date of construction of tile contents
+	TimerGameCalendar::Date build_date; ///< Date of construction of tile contents
 	StringID station_class;     ///< Class of station
 	StringID station_name;      ///< Type of station within the class
 	StringID airport_class;     ///< Name of the airport class
 	StringID airport_name;      ///< Name of the airport
 	StringID airport_tile_name; ///< Name of the airport tile
 	const char *grf;            ///< newGRF used for the tile contents
-	uint64 dparam[2];           ///< Parameters of the \a str string
 	StringID railtype;          ///< Type of rail on the tile.
-	uint16 rail_speed;          ///< Speed limit of rail (bridges and track)
+	uint16_t rail_speed;          ///< Speed limit of rail (bridges and track)
 	StringID roadtype;          ///< Type of road on the tile.
-	uint16 road_speed;          ///< Speed limit of road (bridges and track)
+	uint16_t road_speed;          ///< Speed limit of road (bridges and track)
 	StringID tramtype;          ///< Type of tram on the tile.
-	uint16 tram_speed;          ///< Speed limit of tram (bridges and track)
+	uint16_t tram_speed;          ///< Speed limit of tram (bridges and track)
 };
 
 /**
@@ -73,7 +74,19 @@ struct TileDesc {
  * @param ti Information about the tile to draw
  */
 typedef void DrawTileProc(TileInfo *ti);
-typedef int GetSlopeZProc(TileIndex tile, uint x, uint y);
+
+/**
+ * Tile callback function signature for obtaining the world \c Z coordinate of a given
+ * point of a tile.
+ *
+ * @param tile The queries tile for the Z coordinate.
+ * @param x World X coordinate in tile "units".
+ * @param y World Y coordinate in tile "units".
+ * @param ground_vehicle Whether to get the Z coordinate of the ground vehicle, or the ground.
+ * @return World Z coordinate at tile ground (vehicle) level, including slopes and foundations.
+ * @see GetSlopePixelZ
+ */
+typedef int GetSlopeZProc(TileIndex tile, uint x, uint y, bool ground_vehicle);
 typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlag flags);
 
 /**

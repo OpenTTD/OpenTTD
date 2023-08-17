@@ -10,7 +10,6 @@
 #ifndef BITMAP_TYPE_HPP
 #define BITMAP_TYPE_HPP
 
-#include <vector>
 
 /** Represents a tile area containing containing individually set tiles.
  * Each tile must be contained within the preallocated area.
@@ -58,8 +57,8 @@ public:
 	void Initialize(const Rect &r)
 	{
 		this->tile = TileXY(r.left, r.top);
-		this->w = r.right - r.left + 1;
-		this->h = r.bottom - r.top + 1;
+		this->w = r.Width();
+		this->h = r.Height();
 		this->data.clear();
 		this->data.resize(Index(w, h));
 	}
@@ -126,9 +125,9 @@ public:
 		return *this;
 	}
 
-	virtual TileIterator *Clone() const
+	virtual std::unique_ptr<TileIterator> Clone() const
 	{
-		return new BitmapTileIterator(*this);
+		return std::make_unique<BitmapTileIterator>(*this);
 	}
 };
 

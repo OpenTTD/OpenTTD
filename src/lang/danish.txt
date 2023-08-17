@@ -128,39 +128,39 @@ STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
-STR_ABBREV_COAL                                                 :{TINY_FONT}KU
-STR_ABBREV_MAIL                                                 :{TINY_FONT}PO
-STR_ABBREV_OIL                                                  :{TINY_FONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}KV
-STR_ABBREV_GOODS                                                :{TINY_FONT}SG
-STR_ABBREV_GRAIN                                                :{TINY_FONT}KN
-STR_ABBREV_WOOD                                                 :{TINY_FONT}TR
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}JM
-STR_ABBREV_STEEL                                                :{TINY_FONT}ST
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}VÆ
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}KO
-STR_ABBREV_MAIZE                                                :{TINY_FONT}MS
-STR_ABBREV_FRUIT                                                :{TINY_FONT}FR
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DI
-STR_ABBREV_FOOD                                                 :{TINY_FONT}MD
-STR_ABBREV_PAPER                                                :{TINY_FONT}PR
-STR_ABBREV_GOLD                                                 :{TINY_FONT}GU
-STR_ABBREV_WATER                                                :{TINY_FONT}VA
-STR_ABBREV_WHEAT                                                :{TINY_FONT}HV
-STR_ABBREV_RUBBER                                               :{TINY_FONT}GM
-STR_ABBREV_SUGAR                                                :{TINY_FONT}SU
-STR_ABBREV_TOYS                                                 :{TINY_FONT}LT
-STR_ABBREV_SWEETS                                               :{TINY_FONT}SL
-STR_ABBREV_COLA                                                 :{TINY_FONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CF
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}BO
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}KA
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}SV
-STR_ABBREV_NONE                                                 :{TINY_FONT}INT
-STR_ABBREV_ALL                                                  :{TINY_FONT}ALT
+STR_ABBREV_PASSENGERS                                           :PS
+STR_ABBREV_COAL                                                 :KU
+STR_ABBREV_MAIL                                                 :PO
+STR_ABBREV_OIL                                                  :OL
+STR_ABBREV_LIVESTOCK                                            :KV
+STR_ABBREV_GOODS                                                :SG
+STR_ABBREV_GRAIN                                                :KN
+STR_ABBREV_WOOD                                                 :TR
+STR_ABBREV_IRON_ORE                                             :JM
+STR_ABBREV_STEEL                                                :ST
+STR_ABBREV_VALUABLES                                            :VÆ
+STR_ABBREV_COPPER_ORE                                           :KO
+STR_ABBREV_MAIZE                                                :MS
+STR_ABBREV_FRUIT                                                :FR
+STR_ABBREV_DIAMONDS                                             :DI
+STR_ABBREV_FOOD                                                 :MD
+STR_ABBREV_PAPER                                                :PR
+STR_ABBREV_GOLD                                                 :GU
+STR_ABBREV_WATER                                                :VA
+STR_ABBREV_WHEAT                                                :HV
+STR_ABBREV_RUBBER                                               :GM
+STR_ABBREV_SUGAR                                                :SU
+STR_ABBREV_TOYS                                                 :LT
+STR_ABBREV_SWEETS                                               :SL
+STR_ABBREV_COLA                                                 :CL
+STR_ABBREV_CANDYFLOSS                                           :CF
+STR_ABBREV_BUBBLES                                              :BO
+STR_ABBREV_TOFFEE                                               :KA
+STR_ABBREV_BATTERIES                                            :BA
+STR_ABBREV_PLASTIC                                              :PL
+STR_ABBREV_FIZZY_DRINKS                                         :SV
+STR_ABBREV_NONE                                                 :INT
+STR_ABBREV_ALL                                                  :ALT
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passagerer{P "" s}
@@ -190,44 +190,75 @@ STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Hvid
 STR_COLOUR_RANDOM                                               :Tilfældig
 
+###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Mørkblå
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Lysegrøn
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Lyserød
+STR_COLOUR_SECONDARY_YELLOW                                     :Gul
+STR_COLOUR_SECONDARY_RED                                        :Rød
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Lyseblå
+STR_COLOUR_SECONDARY_GREEN                                      :Grøn
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Mørkegrøn
+STR_COLOUR_SECONDARY_BLUE                                       :Blå
+STR_COLOUR_SECONDARY_CREAM                                      :Fløde
+STR_COLOUR_SECONDARY_MAUVE                                      :Lilla
+STR_COLOUR_SECONDARY_PURPLE                                     :Violet
+STR_COLOUR_SECONDARY_ORANGE                                     :Orange
+STR_COLOUR_SECONDARY_BROWN                                      :Brun
+STR_COLOUR_SECONDARY_GREY                                       :Grå
+STR_COLOUR_SECONDARY_WHITE                                      :Hvid
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Samme som Primær
+
+
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} miles/t
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/t
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} miles/t
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/t
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}felter/dag
+STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}knob
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
-STR_UNITS_POWER_METRIC                                          :{COMMA}hk
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hk
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}hk
+STR_UNITS_POWER_SI                                              :{DECIMAL}kW
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI                           :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL                       :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC                         :{DECIMAL}{NBSP}hp/t
+STR_UNITS_POWER_METRIC_TO_WEIGHT_SI                             :{DECIMAL}{NBSP}hp/Mg
+STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
+STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P "" s}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} kg
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} kp
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL} gallon
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL} liter
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fod
-STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL} lbf
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL} kp
+STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
+
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} fod
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer udtryk:
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Indtast filter-udtryk
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Indtast nøgleord til at filtrere listen efter
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Indtast filterstreng
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Angiv et nøgleord, som listen skal filtreres efter
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Vælg grupperingssortering
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vælg sorteringsorden (faldende/stigende)
@@ -333,9 +364,9 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Åbn ord
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Sæt spillet på pause
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Kør spillet hurtigere
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Valg
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Valgmuligheder og indstillinger
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Gem spillet, forlad spillet, afslut
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kortet
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kort, ekstra viewport eller liste over skilte
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vis byoversigten
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis tilskudsordninger
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vis liste over selskabets stationer
@@ -359,8 +390,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Byg havn
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byg lufthavne
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åbn landskabsværktøjslinjen for at hæve/sænke terræn, plante træer, osv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikvindue
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis seneste besked/nyhedsrapport, vis beskedvalg
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Information om landområde, konsol, debug af script, skærmbillede, om OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis sidste besked/nyhedsrapport, beskedhistorik eller slet alle beskeder
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landområde information, konsol, script debug, skærmbilleder, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift værktøjslinier
 
 # Extra tooltips for the scenario editor toolbar
@@ -376,9 +407,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bygenere
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrigenerering
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bygning af vej
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Sporvejskonstruktion
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant træer. Shift skifter mellem at bygge og vise prisoverslag.
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant træer. Ctrl vælger området diagonalt. Skift skifter bygning/viser omkostningsestimat
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placér skilt
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placér objekt. Shift viser tidsestimat
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placer objekt. Skift viser bygnings omkostningsestimat
 
 # Scenario editor file menu
 ###length 7
@@ -391,15 +422,16 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opsætning
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Indstillinger
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/spilscript-indstillinger
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI indstillinger
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Indstillinger for spilscript
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnavne vist
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Waypointnavne vist
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rutepunkt-navne vist
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Viste skilte
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Modstander skilte og navne vist
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Fuld animation
@@ -497,7 +529,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Computerspiller
 STR_ABOUT_MENU_SCREENSHOT                                       :Skærmbillede (Ctrl-S)
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Vis spilhastighed
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spritejustering
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite justering
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Slå afgrænsningsrammerne til/fra
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Slå farvning af beskidte blokke til/fra
 
@@ -704,7 +736,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik på
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Bedste virksomheder, som har nået {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Selskabsoversigt i {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsdriver
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmand
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenør
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialist
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalist
@@ -834,7 +866,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} er blevet lukket af kreditorerne og alle ejendomme er solgt!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nyt transportselskab er startet!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} starter konstruktion i nærheden af {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} er blevet overtaget af {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} er blevet overtaget af {STRING} til et ikke oplyst beløb!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Direktør)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} har sponsoreret stiftelsen af en ny by, {TOWN}!
@@ -852,7 +884,7 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} øger produktionen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Ny kulåre fundet tæt på {INDUSTRY}!{}Produktionen forventes fordoblet!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Ny kulmine fundet tæt på {INDUSTRY}!{}Produktionen forventes fordoblet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nye oliereserver fundet tæt ved {INDUSTRY}!{}Produktionen forventes fordoblet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Forbedrede landbrugsmetoder ved {INDUSTRY} gør at produktionen forventes fordoblet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}produktionen på {INDUSTRY} vokser med {COMMA}%!
@@ -861,7 +893,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}produktionen på {INDUSTRY} sænkes med {COMMA}%!
 
 ###length VEHICLE_TYPES
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} afventer i remisen
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} afventer i depotet
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter på værkstedet
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} venter i skibsdokken
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} venter i hangaren
@@ -872,7 +904,7 @@ STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en ugyldig ordre
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har dublerede ordrer
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har en ugyldig station i sine ordrer
-STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} har i sine ordrer en lufthavn, hvis bane er for kort
+STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} har en lufthavn i sine ordrer, hvis bane er for kort
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} er gammel
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er meget gammel
@@ -898,7 +930,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Licitation af tilskudsordning udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse tilskud.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Tilskudsordning tilbagetrukket:{}{}{STRING} fra {STRING} til {STRING} modtager ikke længere tilskud.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tilskudsordning i licitation:{}{}Første {STRING} tjeneste fra {STRING} til {STRING} vil udløse {NUM} års tilskud fra de lokale myndigheder!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tilskudsordning i licitation:{}{}Første {STRING} fra {STRING} til {STRING} vil udløse {NUM} års tilskud fra de lokale myndigheder!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil give {NUM} års 50% forøget udbytte!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Tilskudsordning tildelt {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil give {NUM} års dobbelt udbytte!
@@ -918,82 +950,72 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Bevæg h
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opsætning
+
+STR_GAME_OPTIONS_TAB_GENERAL                                    :Generel
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}Vælg generelle indstillinger
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafik
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}Vælg grafikindstillinger
+STR_GAME_OPTIONS_TAB_SOUND                                      :Lyd
+STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}Vælg lyd og musik indstillinger
+
+STR_GAME_OPTIONS_VOLUME                                         :Lydstyrke
+STR_GAME_OPTIONS_SFX_VOLUME                                     :Lydeffekter
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :musik
+
+STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25%
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
+STR_GAME_OPTIONS_VOLUME_75                                      :75%
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhed
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valg af valutaenhed
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britiske Pund (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikanske dollars ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanske Yen (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Østrisk Shilling (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiske Franc (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sweiziske Franc (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjekkiske Koruna (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danske Kroner (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanske Peseta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finske Markka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franske Franc (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Græske Drachmer (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarnske Forint (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandske Kroner (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italienske Lire (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollandske Guilder (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norske Kroner (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polske Zloty (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumænske Lei (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russiske Rubel (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenske Tolare (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svenske Kroner (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkiske Lira (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakiske Koruna (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilianske Real (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estiske Kroon (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sydkoreansk Won (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sydafrikansk Rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britiske Pund
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikanske dollars
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanske Yen
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Østrisk Shilling
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiske Franc
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sweiziske Franc
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjekkiske Koruna
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danske Kroner
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanske Peseta
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finske Markka
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franske Franc
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Græske Drachmer
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarnske Forint
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandske Kroner
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italienske Lire
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollandske Guilder
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norske Kroner
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polske Zloty
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumænske Lei
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russiske Rubel
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenske Tolare
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svenske Kroner
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkiske Lira
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakiske Koruna
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilianske Real
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estiske Kroon
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske Litas
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sydkoreansk Won
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sydafrikansk Rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Brugerdefineret...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rialer (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ny Russisk Rubel (RUB)
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikansk Peso (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny Taiwan dollar (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinesisk Renminbi (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
-STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupiah (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringgit (MYR)
-
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kør i venstre side
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Kør i højre side
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bynavne:
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vælg stil for bynavne
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engelske
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Franske
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Tyske
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engelske (ekstra)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikanske
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Fjollede
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svenske
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollandske
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finske
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polske
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakiske
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norske
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarske
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Østrigske
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumænske
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tjekkiske
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Schweiziske
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danske
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Tyrkiske
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italienske
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanske
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rialer
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ny Russisk Rubel
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikansk Peso
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny Taiwan dollar
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinesisk Renminbi
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupiah
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringgit
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk gemning
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vælg interval imellem automatisk gemning
@@ -1001,10 +1023,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vælg in
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Fra
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hver måned
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Hver 3. måned
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Hver 6. måned
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Hver 12. måned
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :Hvert 10. minut
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Hvert 30. minut
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Hvert 60. minut
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Hvert 120. minut
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Sprog
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Vælg sprog til brugerfladen
@@ -1025,21 +1047,29 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Indstill
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Afmærk dette felt for at v-synkronisere skærmen. Ændringer af indstillingen er først effektiv efter spillet er genstartet. Fungerer kun med hardware-acceleration aktiveret.
 
-STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}grænseflade størrelse
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vælg den grænseflade størrelse du ønsker at benytte
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuværende fører: {STRING}
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(auto-bestem)
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobbelt størrelse
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quad (4x) størrelse
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interface størrelse
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Træk skyderen for at indstille grænsefladestørrelsen. Hold Ctrl nede for kontinuerlig justering
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Automatisk registrering af størrelse
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marker dette felt for automatisk at registrere grænsefladestørrelse
 
-STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Skriftstørrelse
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Vælg skriftstørrelsen du ønsker i grænsefladen
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skalere facetter
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marker dette afkrydsningsfelt for at skalere facetter efter grænsefladestørrelse
 
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-bestem)
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dobbelt størrelse
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quad (4x) størrelse
+STR_GAME_OPTIONS_GUI_SCALE_1X                                   :1x
+STR_GAME_OPTIONS_GUI_SCALE_2X                                   :2x
+STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
+STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
+STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
+
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatiseret undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Deltag i automatiseret undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Når det er aktiveret, sender OpenTTD en undersøgelse, når du forlader et spil
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Om GPDR og privatliv
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Dette åbner en browser med mere information om den automatiserede undersøgelse
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Forhåndsvisning af undersøgelsesresultat
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Vis undersøgelsesresultatet af det aktuelle spil
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
@@ -1049,12 +1079,12 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Opdateringshastigheder over 60Hz kan påvirke ydeevnen.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafiksæt
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vælg det basis-grafiksæt der skal bruges
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vælg det grundlæggende grafiksæt, der skal bruges
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} forsvund{P en ne}/ødelagt{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Yderligere information om basis-grafiksættet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis-lydsæt
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vælg basis-lydsættet der skal bruges
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vælg det grundlæggende lyd sæt, der skal bruges
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Mere information om basis-lydsættet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis-musiksæt
@@ -1090,8 +1120,6 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skift ti
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Skift brugerdefinerede møntfodsparametre
-
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimalt antal modstandere: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Ingen
 STR_FUNDING_ONLY                                                :Kun finansiering
@@ -1142,6 +1170,12 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Tempereret klima
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Arktisk klima
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Tropisk klima
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Legetøjsland
+
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Meget fladt
 STR_TERRAIN_TYPE_FLAT                                           :Fladt
@@ -1151,10 +1185,11 @@ STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
 STR_TERRAIN_TYPE_CUSTOM                                         :Brugerdefineret højde
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Brugerdefineret højde ({NUM})
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv
+###length 4
+STR_CITY_APPROVAL_LENIENT                                       :Lempelig
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fjendtlig
+STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv (ingen indvirkning på virksomhedens handlinger)
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'.
 
@@ -1165,6 +1200,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Udvid al
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Nulstil alle værdier
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgængelig)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Indstillingstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klient indstilling (ikke lagret i gemt spil, påvirker alle spil)
@@ -1218,8 +1254,13 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Center
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}sekund{P 0 "" er}
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum startlån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimumbeløb et selskab kan låne (uden at tage inflation i betragtning)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
+###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :No loan {RED}Kræver, at Game Script leverer indledende midler
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Lånerente: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kontrollerer også inflationen hvis aktiveret
@@ -1247,7 +1288,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionspr
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Indstil prisniveau for køb og konstruktion
 
 STR_CONFIG_SETTING_RECESSIONS                                   :Kriser: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Lavkonjunkturer forekomme hvert 5. år hvis denne indstilling er slået til. Ved lavkonjunktur falder produktionen markant (produktionen returnerer til tidligere niveau når lavkonjunkturen er ovre)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktiveret, kan lavkonjunktur forekomme hvert par år. Under en lavkonjunktur er al produktion væsentligt lavere (den vender tilbage til tidligere niveau, når recessionen er forbi)
 
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Forbyd toge at køre baglængs i stationer: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvis aktiveret, vil tog ikke vende på stationer der ikke er endestationer, også selvom der er en kortere rute til deres næste destination ved at vende
@@ -1255,8 +1296,8 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvis aktiveret,
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slå katastrofer, som lejlighedsvis kan blokere eller ødelægge køretøjer eller infrastruktur, til og fra
 
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til omstrukturering: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vælg hvor meget selskaber støj og miljømæssige skader påvirker byvurdering og fremtidige byggeretigheder i området
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til områdeomlægning: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vælg, hvor meget støj- og miljøskader fra virksomheder påvirker deres byvurdering og yderligere byggehandlinger i byen
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Højdegrænse for kortet: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Indstil den maksimale højde af kortets landskab. Med "(auto)" bliver en god værdi valgt efter landskabsgenerering
@@ -1342,7 +1383,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nye ordrer er '
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalt vil et køretøj stoppe ved hver station den passerer. Ved at aktivere denne indstilling, vil det passere alle stationer på vej til sin endelige destination uden at stoppe. Bemærk, at denne indstilling kun definerer en standardværdi for nye ordrer. Individuelle ordrer kan indstilles udtrykkeligt til en specific adfærd alligevel
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nye togordrer stopper som standard ved {STRING} af perronen
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Stedet hvor et tog vil standse ved perronen som standard. Den "nærmeste ende" forstås tæt på indgangen, 'midten' betyder i midten af platformen, og "fjerneste ende" forstås længest væk fra indgang. Bemærk, at denne indstilling kun definerer en standardværdi for nye ordrer. Individuelle ordrer kan indstilles udtrykkeligt til anden adfærd alligevel
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Der hvor et tog vil standse ved perronen som standard. Den "nærmeste ende" forstås tæt på indgangen, 'midten' betyder i midten af platformen, og "fjerneste ende" forstås længest væk fra indgang. Bemærk, at denne indstilling kun definerer en standardværdi for nye ordrer. Individuelle ordrer kan indstilles udtrykkeligt til anden adfærd alligevel
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :den nærmeste ende
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
@@ -1397,6 +1438,9 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Når aktiveret,
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Foretrukken selskabsfarve: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Vælg den foretrukne farve egne selskaber skal starte med
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Startfirma sekundær farve: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Vælg startende sekundær farve for virksomheden, hvis du bruger en NewGRF, der aktiverer det.
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lufthavnenes levealder udløber aldrig: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktiveres denne indstilling gøres at hver lufthavnstype forbliver tilgængelig for evigt efter dens indførelse
 
@@ -1430,7 +1474,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimal mængde
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighed af fejlmeddelelse: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Varighed for visning fejlmeddelelser i en rød vindue. Bemærk, at nogle (kritisk) fejlmeddelelser ikke lukkes automatisk efter dette tidspunkt, men skal lukkes manuelt
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Vis værktøjstip: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse inden tooltips vises, når musen føres over nogle den grænseflade . Alternativt tooltips er bundet til den højre museknap, når denne værdi er sat til 0.
@@ -1446,6 +1489,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Bredde af linje
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Vis navn på NewGRF i byg fartøj vinduet: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Tilføjer en linje til byg fartøj vinduet som viser, hvilken NewGRF det valgte fartøj stammer fra.
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Vis de laster, køretøjerne kan bære i listevinduerne {STRING}
+STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Hvis det er aktiveret, vises køretøjets transportable last over det på køretøjslisterne
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landskab: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landskaber definerer grundlæggende gameplay-scenarier med forskellige godstyper og krav for byers vækst. NewGRF og spilscripts giver dog mulighed for yderligere styring.
@@ -1500,6 +1545,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Forbedret
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Vejkøretøjer: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Vælg køre side
 
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Kør i venstre side
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Kør i højre side
+
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotér højdekort: {STRING}
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mod uret
@@ -1526,8 +1575,16 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :Overlejringsfarver til lastflow: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :Indstil det farveskema, der bruges til laststrømsoverlejringen.
+###length 4
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :Grøn til rød (original)
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :Grøn til blå
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Grå til rød
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Gråtoner
+
 STR_CONFIG_SETTING_SCROLLMODE                                   :Visningsport bevægelse: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Virkemåde for bevægelse af kortet
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Virkemåde for bevægelse af kortet. "Museposition låst"-mulighederne virker ikke på alle systemer, såsom webbaserede versioner, berøringsskærme, Linux med Wayland og andre
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Bevæg syns vinduet med højre mussetast, musse position låst
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Bevæg kortet med højre mussetast, musse position låst
@@ -1584,6 +1641,10 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Fra
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Luk vindue ved højre-klik: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Lukker vinduet ved at højreklikke inde i det. Deaktiverer værktøjstip ved at højreklikke!
+###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nej
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ja, undtagen klistret
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Auto gem: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vælg interval mellem automatisk gemte spil
@@ -1633,9 +1694,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Giv reserverede
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Hold byggeværktøjer aktive efter brug: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Hold bygnings-værktøjer til broer, tunneler, mv. åben efter brug
-
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupper udgifter i firmaets finansvindue: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definer layout for firmaets udgifter-vindue
 
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Fjern automatisk signaler under jernbane-bygning: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Fjerner automatisk signaler under jernbane-bygning, hvis signalerne er i vejen. Bemærk at dette potentielt kan føre til togsammenstød.
@@ -1711,7 +1769,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Hvor meget huko
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Service intervaller er i procent: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Vælg om vedligeholdelse bliver udløst af forløbet tid, eller pålideligheden som falder en givet procenttal i forhold til maximum pålideligheden
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Når den er aktiveret, forsøger køretøjer at servicere, når deres pålidelighed falder med en given procentdel af den maksimale pålidelighed.Hvis f.eks. et køretøjs maksimale pålidelighed er 90 %, og serviceintervallet er 20 %, vil køretøjet forsøge at servicere, når den når 72 % pålidelighed.
 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard vedligeholdelses interval for tog: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Sæt serviceintervallets standardværdi for nye skinnekøretøjer.
@@ -1742,6 +1800,9 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Vis en avis nå
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Uheld / katastrofer: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Vis en avis når ulykker eller katastrofer forekommer
+
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Ulykker med konkurrenters fartøjer: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Vis en avis om forulykkede fartøjer der tilhører konkurrenter
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Selskabsinformation: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vis en avis når nye selskaber starter, eller når selskaber er i risiko for at gå konkurs
@@ -1799,12 +1860,6 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Udjævnet økon
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Udjævnet
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Frossen
-
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillad at købe aktier i andre selskaber: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Hvis aktiveret, tillades køb og salg af selskabsaktier. Aktier vil kun være tilgængelige for selskaber der er nået en hvis alder
-
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Mindste selskabsalder for aktiehandel: {STRING}
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Indstil mindste alder på selskaber, før andre kan købe og sælge aktier i dem.
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentdel af deloverskud som skal betales i hovedsystemer: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentdel af indkomst givet til de mellemliggende dele i hovedsystemer, giver mere kontrol over indkomst
@@ -1919,19 +1974,19 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Startværdi for bystørrelsesfaktor: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gennemsnitlig størrelse af storbyer i forhold til normale byer ved start af spillet
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Opdatér distributionsgraf hver {STRING} dag{P 0:2 "" e}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellem efterfølgende genberegninger af forbindelsesgrafen. Hver genberegning beregner planerne for et komponent af grafen. Det betyder, at en værdi X for denne indstilling ikke betyder at hele grafen vil blive opdateret hver X dage. Kun nogle komponenter vil. Jo kortere du sætter indstillingen, jo mere CPU-tid vil være nødvendig for at beregne forbindelsesgrafen. Jo længere du sætter indstillingen, jo længere vil det tage før lastdistribution starter på nye ruter.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Tag {STRING} dag{P 0:2 "" e} for genberegning af distributionsgraf
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tid taget for hver genberegning af et forbindelsesgrafkomponent. Når en genberegning startes, skabes en tråd som er tilladt at køre dette antal dage. Jo kortere du sætter denne indstilling, jo mere sandsynligt er det at tråden ikke er færdig når det er meningen. Så stopper spillet indtil den er ("lag"). Jo længere du sætter denne indstilling, jo længere tager det for distributionen at blive opdateret når ruter ændres.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Opdater distributionsgraf hver {STRING}{NBSP}sekund{P 0:2 "" er}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tid mellem efterfølgende genberegninger af linkgrafen. Hver genberegning beregner planerne for én komponent af grafen. Det betyder, at en værdi X for denne indstilling ikke betyder, at hele grafen vil blive opdateret hvert X sekund. Kun en komponent vil. Jo kortere du indstiller det, jo mere CPU-tid vil være nødvendigt for at beregne det. Jo længere du indstiller det, jo længere tid vil det tage, før godsfordelingen starter på nye ruter.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Tag {STRING}{NBSP}sekund{P 0:2 "" er} til genberegning af fordelingsgraf
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tid det tager for hver genberegning af en linkgrafkomponent. Når en genberegning startes, dannes en tråd, som får lov til at køre i dette antal sekunder. Jo kortere du indstiller dette, jo mere sandsynligt er det, at tråden ikke er færdig, når den skal. Så stopper spillet, indtil det er ("lag"). Jo længere du indstiller det, jo længere tid tager det for distributionen at blive opdateret, når ruter ændres.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributionsmodel for passagerer: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrisk" betyder at omtrent det samme antal passagerer vil rejse fra en station A til en station B som fra B til A. "asymmetrisk" betyder at vilkårlige antal passagerer kan rejse i hver retning. "manuel" betyder at ingen automatisk distribution vil finde sted for passagerer.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetrisk" betyder, at omtrent det samme antal passagerer vil gå fra en station A til en station B som fra B til A. "Asymmetrisk" betyder, at vilkårlige antal passagerer kan gå i begge retninger. "Manuel" betyder, at der ikke finder nogen automatisk distribution sted for passagerer.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributionsmodel for post: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisk" betyder at omtrent den samme mængde post vil blive sendt fra en station A til en station B som fra B til A. "asymmetrisk" betyder at vilkårlige mængder post kan blive sendt i hver retning. "manuel" betyder at ingen automatisk distribution vil finde sted for post.
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributionsmodel for PANSRET lastklasse: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :PANSRET lastklassen indeholder værdigenstande i det tempererede klima, diamanter i det subtropiske klima, eller guld i det subarktiske klima. NewGRF kan ændre dette. "symmetrisk" betyder at omtrent den samme mængde af denne last vil blive sendt fra en station A til en station B som fra B til A. "asymmetrisk" betyder at vilkårlige mængder af denne last kan blive sendt i hver retning. "manuel" betyder at ingen automatisk distribution vil finde sted for denne last. Det anbefales at sætte denne indstilling til assymetrisk eller manuel når der spilles subarktisk, da banker ikke sender guld tilbage til guldminer. For tempereret og subtropisk kan du også vælge symmetrisk, da banker vil sende værdigenstande tilbage til oprindelsesbanken for et læs værdigenstande.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisk" betyder, at der sendes omtrent den samme mængde post fra en station A til en station B som fra B til A. "asymmetrisk" betyder, at vilkårlige mængder post kan sendes i begge retninger. "Manuel" betyder, at der ikke finder automatisk distribution sted for post.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributionsmodel for PANSRET last-klasse: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :PANSRET last-klasse indeholder værdigenstande i tempereret, diamanter i det subtropiske eller guld i det subarktiske klima. NewGRF'er kan ændre det. "Symmetrisk" betyder, at omtrent den samme mængde af denne last vil blive sendt fra en station A til en station B som fra B til A. "Asymmetrisk" betyder, at vilkårlige mængder af denne last kan sendes i begge retninger. "Manuel" betyder, at der ikke finder nogen automatisk distribution sted for den pågældende last. Det anbefales at indstille dette til asymmetrisk eller manuel, når du spiller subarktisk eller subtropisk, da banker kun modtager gods i disse klimaer. For tempereret kan du også vælge symmetrisk, da banker sender værdigenstande tilbage til oprindelsesbanken.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributionsmodel for andre lastklasser: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrisk" betyder at omtrent den samme mængde last vil blive sendt fra en station A til en station B som fra B til A. "asymmetrisk" betyder at vilkårlige mængder last kan blive sendt i hver retning. "manuel" betyder at ingen automatisk distribution vil finde sted for disse laster. Du vil nok ønske at sætte dette til "asymmetrisk" eller manuel.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymmetrisk" betyder, at vilkårlige mængder last kan sendes i begge retninger. "manuel" betyder, at der ikke finder nogen automatisk distribution sted for disse laster.
 ###length 3
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuel
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
@@ -1949,12 +2004,14 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Mætning af kor
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Der er ofte flere veje mellem to givne stationer. Cargodist vil mætte den korteste vej først, så bruge den næstkorteste vej indtil den er mættet, osv.. Mætning bestemmes af en vurdering af kapacitet og planlagt brug. Når den har mættet alle veje, og hvis der stadig er efterspørgsel tilbage, vil den overbelaste alle veje, og foretrække vejene med høj kapacitet. Det meste af tiden vil algoritmen dog ikke vurdere kapaciteten nøjagtigt. Denne indstilling giver dig mulighed for at bestemme op til hvilken procentdel en kortere vej skal være mættet i første omgang før den næste, længere vej vælges. Sæt denne indstilling til mindre end 100% for at undgå overfyldte stationer i tilfælde af overvurderet kapacitet.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighedsenheder: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Hastighedsenheder (nautisk): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Når en hastighed er vist i brugergrænsefladen, så vis dem i de valgte enheder
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperisk (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisk (km/t)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Spil-enheder (felter/dag)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :Knob
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Køretøjskraftenheder: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Når et køretøjs kraft er vist i brugergrænsefladen, så vis dem i de valgte enheder
@@ -1991,30 +2048,30 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperisk (fod)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
-STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafiksæt / Manglende grafik
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Lydeffekter
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Brugerflade
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
-STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Viewports
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Nyheder / Rådgivere
-STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Firma
-STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Regnskab
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køretøjer
-STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}Fysik / Tilstand
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruteplanlægning
-STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Begrænsninger
-STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastrofer / Ulykker
-STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Verden generation
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Miljø
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Myndigheder
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Byer
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrier
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Fragtdistribution
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstandere
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerstyrede spillere
-STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Netværk
+STR_CONFIG_SETTING_LOCALISATION                                 :Lokalisering
+STR_CONFIG_SETTING_GRAPHICS                                     :Grafiksæt / Manglende grafik
+STR_CONFIG_SETTING_SOUND                                        :Lydeffekter
+STR_CONFIG_SETTING_INTERFACE                                    :Brugerflade
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :Generelt
+STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :Viewports
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Konstruktion
+STR_CONFIG_SETTING_ADVISORS                                     :Nyheder / Rådgivere
+STR_CONFIG_SETTING_COMPANY                                      :Firma
+STR_CONFIG_SETTING_ACCOUNTING                                   :Regnskab
+STR_CONFIG_SETTING_VEHICLES                                     :Køretøjer
+STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :Fysik / Tilstand
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Ruteplanlægning
+STR_CONFIG_SETTING_LIMITATIONS                                  :Begrænsninger
+STR_CONFIG_SETTING_ACCIDENTS                                    :Katastrofer / Ulykker
+STR_CONFIG_SETTING_GENWORLD                                     :Verden generation
+STR_CONFIG_SETTING_ENVIRONMENT                                  :Miljø
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :Myndigheder
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Byer
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Industrier
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :Fragtdistribution
+STR_CONFIG_SETTING_AI                                           :Modstandere
+STR_CONFIG_SETTING_AI_NPC                                       :Computerstyrede spillere
+STR_CONFIG_SETTING_NETWORK                                      :Netværk
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Stifinder til tog: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Stifinder til brug for toge
@@ -2026,7 +2083,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Vend automatisk
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillad tog at vende ved et signal, hvis det har ventet i lang tid
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalet)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Anbefalet)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Skift indstillingsværdi
 
@@ -2053,6 +2110,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokeri
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fejl med grafikindstillinger...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ingen kompatibel GPU fundet. Hardware-acceleration deaktiveret
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-driver fik spillet til at gå ned. Hardwareacceleration deaktiveret
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2069,7 +2127,8 @@ STR_INTRO_HIGHSCORE                                             :{BLACK} Topresu
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spilscript indstillinger
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Indstillinger
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Indstillinger for spilscript
 STR_INTRO_QUIT                                                  :{BLACK}Afslut
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil. Ctrl+Klik springer kortindstillingerne over.
@@ -2089,7 +2148,8 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hvis top
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Skærm indstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-indstillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for nyt og opdateret indhold til download
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis computerspiller/spilscript indstillinger
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Vis AI indstillinger
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Vis indstillinger for spilscript
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Afslut 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK} Det aktuelt valgte base grafiksæt mangler {NUM} sprite {P "" s}. Se venligst efter opdateringer til basesættet.
@@ -2109,7 +2169,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Snydefunktioner
 STR_CHEATS_TOOLTIP                                              :{BLACK}Checkbokse viser, om du har brugt denne snydefunktion før
-STR_CHEATS_NOTE                                                 :{BLACK}Bemærk: Al anvendelse af disse indstillinger bliver registreret i det gemte spil
+STR_CHEATS_NOTE                                                 :{BLACK}Bemærk: Alle anvendelser af disse indstillinger bliver registreret i det gemte spil
 STR_CHEAT_MONEY                                                 :{LTBLUE}Forøg kassebeholdning med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som firmaet: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
@@ -2120,12 +2180,6 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Rediger 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ændre dato: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Skift år
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifikation af produktion: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tempereret klima
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktisk klima
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropisk klima
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Legetøjsland
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Farvetema
@@ -2257,6 +2311,7 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Klima: 
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Størrelse: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Server version: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradresse: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}Invitationskode: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Start dato: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Nuværende dato: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}Spilscript: {WHITE}{STRING} (v{NUM})
@@ -2358,7 +2413,8 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nyt selskab)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Etabler et nyt selskab og tilslut dig det
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dette er dig
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dette er værten for dette spil
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" er} / {NUM} selskab{P "" er}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" er} - {NUM}/{NUM} selska{P b er}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Antallet af aktuelt tilsluttede klienter, antal virksomheder og maksimalt antal virksomheder tilladt af serveradministratoren
 
 # Matches ConnectionType
 ###length 5
@@ -2384,6 +2440,13 @@ STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Det lyk
 STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nej
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ja, denne gang
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Ja, spørg ikke igen
+
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Deltag i automatiseret undersøgelse?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Kunne du tænke dig at deltage i den automatiske undersøgelse?{}OpenTTD sender en undersøgelse, når du forlader et spil.{}Du kan til enhver tid ændre dette under "Spilindstillinger".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Forhåndsvisning af undersøgelsesresultat
+STR_NETWORK_ASK_SURVEY_LINK                                     :Om undersøgelse og privatliv
+STR_NETWORK_ASK_SURVEY_NO                                       :Nej
+STR_NETWORK_ASK_SURVEY_YES                                      :Ja
 
 STR_NETWORK_SPECTATORS                                          :Tilskuere
 
@@ -2518,13 +2581,13 @@ STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Søg på
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Søgeresultat ikke tilgængeligt på OpenTTD's indholdstjeneste for websteder som ikke er associeret med OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Du forlader OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Betingelserne for download af indhold fra eksterne websteder varierer.{}Du må referere til de eksterne sites for vejledning i hvordan indholdet skal installeres i OpenTTD.{} Ønsker du at fortsætte?
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/navngiv filter:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}søge filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Besøg hjemmeside
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besøg hjemmesiden for dette indhold
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Download det valgte indhold
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total størrelse af download: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INDHOLDSINFO
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INDHOLDS INFORMATION
 
 ###length 5
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Du har ikke valgt denne til download
@@ -2586,7 +2649,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Skift ge
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Skift gennemsigtighed for træer. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Skift gennemsigtighed for huse. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Skift gennemsigtighed for industrier. CTRL+Klik for at låse værdi.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Skift gennemsigtighed for konstruktioner som stationer, remiser og waypoint. Ctrl+klik låser.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Skift gennemsigtighed for konstruktioner som stationer, remiser og rutepunkt. Ctrl+klik låser.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Skift gennemsigtighed for broer. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Skift gennemsigtighed for strukturer som fyrtårne og antenner. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Slå transparens til/fra for køreledninger. CTRL+klik for at låse.
@@ -2605,6 +2668,11 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}mættet
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}overbelastet
 
+# Linkgraph tooltip
+STR_LINKGRAPH_STATS_TOOLTIP                                     :{BLACK}{CARGO_LONG} transporteres pr. måned fra {STATION} to {STATION} ({COMMA}% of capacity){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} transporteres tilbage ({COMMA}% of capacity)
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Gennemsnitlig rejsetid: {NUM}{NBSP}dag{P "" s}
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Vis dækningsområde
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Fra
@@ -2613,13 +2681,14 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Marker i
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Marker dækningsområdet af den foreslåede placering
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepterer: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Forsyner: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Vedligeholdelsesomkostninger: {GOLD}{CURRENCY_SHORT}/yr
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Sammenkæd station
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Byg en separat station
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Forbind waypoint
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Byg et separat waypoint
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Forbind rutepunkt
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Byg et separat rutepunkt
 
 # Generic toolbar
 STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Deaktiveret da der aktuelt ikke er nogen fartøjer tilgængelige for denne infrastruktur
@@ -2633,12 +2702,12 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnetskinnekon
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Byg jernbane. Ctrl skifter mellem at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Byg jernbane med auto-jernbane-værktøj. Ctrl skifter mellem at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byg en remise (til køb og servicering af tog). Shift skifter mellem at bygge og vise prisoverslag.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ombyg jernbane til waypoint. Ctrl muliggør sammenslutning af waypoint. Shift skifter mellem at bygge og vise prisoverslag.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ombyg jernbane til rutepunkt. Ctrl muliggør sammenslutning af rutepunkt. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byg en banegård. Ctrl muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byg jernbanesignaler. Ctrl skifter mellem semaforer og lyssignaler.{}Hvis musen trækkes langs en lige strækning, bygges signaler med jævne mellemrum. Hold Ctrl nede for at bygge signaler indtil næste kryds.{}Ctrl+klik skifter mellem at åbne eller ikke åbne signalvælgeren. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byg jernbanebro. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byg jernbanetunnel. Shift skifter mellem at bygge og vise prisoverslag.
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skift mellem at bygge og fjerne jernbaneskinner, signaler, waypoints og stationer. Hold Ctrl nede for også at fjerne togspor fra waypoints og stationer.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skift mellem at bygge og fjerne jernbaneskinner, signaler, rutepunkter og stationer. Hold Ctrl nede for også at fjerne togspor fra rutepunkter og stationer.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Ombyg/opgradér typen af jernbane. Shift skifter mellem at bygge og vise prisoverslag.
 
 STR_RAIL_NAME_RAILROAD                                          :Jernbane
@@ -2651,8 +2720,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Retning 
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vælg orientering af remise
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vælg udseende af waypoint
+STR_WAYPOINT_CAPTION                                            :{WHITE}Rutepunkt
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vælg udseende af rutepunkt
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Valg af banegård
@@ -2669,10 +2738,14 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vælg hv
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vælg hvilken stationstype du vil bygge
 
 STR_STATION_CLASS_DFLT                                          :Standard station
-STR_STATION_CLASS_WAYP                                          :Waypoints
+STR_STATION_CLASS_DFLT_STATION                                  :Standard station
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :Standard vejstop
+STR_STATION_CLASS_WAYP                                          :Rutepunkt
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standard rutepunkt
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalvælger
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Vis eller skjul avancerede signaltyper
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Dette er den mest almindelige type signal, og tillader kun et tog ad gangen på den samme signalblok
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Indgangssignal (semafor){}Grønt så længe der er et eller flere grønne udgangssignaler fra den efterfølgende sporsektion. Ellers vises rødt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Udgangssignal (semafor){}Fungerer som et normalt signal men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.
@@ -2682,7 +2755,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Ensrette
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standardsignal (elektrisk){}Dette er den mest almindelige type signal, og tillader kun et tog ad gangen på den samme signalblok
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Indgangssignal (elektrisk){}Grønt så længe der er et eller flere grønne udgangssignaler fra den efterfølgende sporsektion. Ellers vises rødt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Udgangssignal (elektrisk){}Fungerer som et normalt signal, men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombisignal (elektrisk){}Kombisignalet fungerer både som indgangs- og udgangssignal. Dette muliggør opbygning af store forgreninger af signaler.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombi signal (elektrisk){}Kombi signalet fungerer både som indgangs- og udgangssignal. Dette muliggør opbygning af store forgreninger af signaler.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Togvejssignal (elektrisk){}Et togvejssignal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en togvej til et sikkert sted at stoppe. Togvejssignaler kan passeres fra bagsiden.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Ensrettet togvejssignal (elektrisk){}Et togvejssignal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en togvej til et sikkert sted at stoppe. Ensrettede togvejssignaler kan ikke passeres fra bagsiden.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalombygning{}Når denne er valgt, vil klik på et eksisterende signal ombygge det til den valgte signaltype og -variant. Ctrl vil skifte den eksisterende signalvariant. Shift skifter mellem at bygge og vise prisoverslag.
@@ -2694,8 +2767,10 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Forøg t
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Vælg jernbanebro
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Vælg vejbro
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Valg af bro - klik på din foretrukne brotype for at bygge den
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
+STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hængebro, stål
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Bjælkebro, stål
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Gerberbro, stål
@@ -2781,7 +2856,7 @@ STR_AIRPORT_SMALL                                               :Lille
 STR_AIRPORT_CITY                                                :By
 STR_AIRPORT_METRO                                               :Metropollufthavn
 STR_AIRPORT_INTERNATIONAL                                       :International lufthavn
-STR_AIRPORT_COMMUTER                                            :Pendler
+STR_AIRPORT_COMMUTER                                            :Pendler lufthavn
 STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
 STR_AIRPORT_HELIPORT                                            :Helikopterlandingsplads
 STR_AIRPORT_HELIDEPOT                                           :Helikopterværksted
@@ -2789,8 +2864,8 @@ STR_AIRPORT_HELISTATION                                         :Helikopterplads
 
 STR_AIRPORT_CLASS_SMALL                                         :Små lufthavne
 STR_AIRPORT_CLASS_LARGE                                         :Store lufthavne
-STR_AIRPORT_CLASS_HUB                                           :Central lufthavn
-STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterlufthavn
+STR_AIRPORT_CLASS_HUB                                           :Central lufthavne
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopter lufthavne
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Genereret støj: {GOLD}{COMMA}
 
@@ -2803,7 +2878,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Køb lan
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekt valg
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vælg objektet der skal bygges. Shift skifter mellem at bygge og vise prisoverslag.
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vælg objektet der skal bygges. Shift skifter mellem at bygge og vise prisoverslag
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vælg hvilken objekttype du vil bygge
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Forvisning af objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM} x {NUM} felter
@@ -2847,6 +2922,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tilfæld
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grundlæg et tilfældigt sted
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfældige byer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dæk kortet med tilfældigt placerede byer
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}Udvid alle byer
+STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}Få alle byer til at vokse lidt
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Bynavn:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Indtast bynavn
@@ -2895,7 +2972,7 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepter
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huse
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik på industrien for at se dens leverandører og kunder
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik på godset for at se dens leverandører og kunder
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vis kæde
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vis Industrikæde
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vis godsforsynende og -accepterende industrier
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link til lille kort
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vælg også de viste industrier på lille kort
@@ -2988,7 +3065,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Fragtcentral
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Rutebilstation
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Havn
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Bøje
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Waypoint
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Rutepunkt
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Vand
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanal
@@ -3032,7 +3109,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD teamet
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :{WHITE}Spilhastighed
+STR_FRAMERATE_CAPTION                                           :{WHITE}Billedhastighed
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Simulationshastighed: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Antal spil-trin simuleret i sekundet.
@@ -3111,7 +3188,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spil Det
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information til rådighed
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
-STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter-udtryk:
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter udtryk:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Overskriv fil
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Er du sikker på du vil overskrive den eksisterende fil?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (Mappe)
@@ -3125,6 +3202,8 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kortstø
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Vælg kortets størrelse i fliser. Antallet af tilgængelige fliser vil være en anelse mindre
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal byer:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Bynavne:
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vælg stil for bynavne
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industrier:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Højeste bjergtop:
@@ -3138,13 +3217,41 @@ STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Ørkend�
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Forøger ørkendækningen med ti procent
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Sænker ørkendækningen med ti procent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Terrængenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terræntype:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havniveau
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Havniveau
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Floder:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Blødhed:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varietet af distributionen:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generer
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF indstillinger
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Vis indstillinger for NewGRF
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI indstillinger
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Vis AI indstillinger
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Indstillinger for spilscript
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Vis indstillinger for spilscript
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Engelske
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Franske
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Tyske
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Engelske (ekstra)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Latin-Amerikanske
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Fjollede
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Svenske
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollandske
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finske
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Polske
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slovakiske
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norske
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungarske
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Østrigske
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rumænske
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tjekkiske
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Schweiziske
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Danske
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrkiske
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Italienske
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanske
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kortkanter:
@@ -3156,7 +3263,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri udfo
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vand
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfældige
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfældige
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelle
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Højdekortets rotation:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Højdekortets navn:
@@ -3253,12 +3360,12 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ikke kompa
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Gem forudindstilling
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK} Liste over tilgængelige presets, skal du vælge en til at kopiere det til gemte navn nedenfor
-STR_SAVE_PRESET_TITLE                                           :{BLACK}Indtast et navn til den forudindstillede
+STR_SAVE_PRESET_TITLE                                           :{BLACK}Indtast et navn til det forudindstillede
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Aktuelt valgte navn til den forudindstillede at gemme
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}Annuller
 STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Du må ikke ændre den forudindstillede
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Gem
-STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Gem forudindstilling til den aktuelle valgte navn
+STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Gem forudindstilling til det valgte navn
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ændre NewGRF parameterne
@@ -3290,6 +3397,13 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Forrige 
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsæt til den forrige normal sprite, spring pseudo/omfarvning/font-sprites over og omløb fra starten til slutningen
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Repræsentation af den markerede sprite. Justeringen ignoreres når denne sprite tegnes.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flyt spriten rundt for at ændre X- og Y-forskydningen. Ctrl+Klik for at flytte spriten otte enheder af gangen
+
+###length 2
+STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Forskudt centreret
+STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}Sprite centreret
+
+STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}Crosshair
+
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Nulstil relativ
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Nulstil den nuværende relative forskydning
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X-forskydning: {NUM}, Y-forskydning: {NUM} (Absolut)
@@ -3304,13 +3418,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Advarsel: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fejl: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}En fatal NewGRF-fejl er opstået:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Der er opstået en NewGRF-fejl:{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF "{STRING}" har returneret med en fatal fejl:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF "{STRING}" har returneret en fejl:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} virker ikke med TTDPatch-versionen rapporteret af OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er beregnet til {STRING}-versionen af TTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er beregnet til {STRING}-version af TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er designet til brug sammen med {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {1:STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} skal indlæses før {STRING}.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} skal indlæses inden {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} skal indlæses efter {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} kræver OpenTTD version {STRING} eller højere.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen, som den er lavet til at oversætte,
@@ -3447,14 +3561,14 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Køb eksklusive
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bestik de lokale myndigheder
 
 ###length 8
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Start en lille reklamekampagne for at tiltrække flere passagerer og last til dine stationer.{}Giver en midlertidig forbedring af stationsbedømmelsen i en lille radius omkring bymidten.{}Pris: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Start en mellem reklamekampagne, for at tiltrække flere passagerer og last til dine stationer.{}Giver en midlertidig forbedring af stationsbedømmelsen i en mellemstor radius omkring bymidten.{}Pris: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Start en stor reklamekampagne, for at tiltrække flere passagerer og last til dine stationer.{}Giver en midlertidig forbedring af stationsbedømmelsen i en stor radius omkring bymidten.{}Pris: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansiér vejfornyelse i midtbyen.{}Forårsager store forstyrrelser for vejtrafikken i de næste 6 måneder.{}Pris: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Byg en statue til ære for dit selskab.{}Giver en permanent forbedring af stationsbedømmelser i denne by.{}Pris: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansiér opførelse af nye bygninger i byen.{}Giver en midlertidig forøgelse af byens væksthastighed.{}Pris: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Køb et års eksklusive rettigheder til transport i byen.{}De lokale myndigheder vil forbyde passagerer og last at bruge dine konkurrenters stationer.{}Prist: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bestik de lokale myndigheder til at hæve din bedømmelse, med risiko for en stor straf hvis det bliver opdaget.{}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW} Start en lille reklamekampagne for at tiltrække flere passagerer og last til dine stationer.{}Giver en midlertidig forbedring af stationsbedømmelsen i en lille radius omkring bymidten.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}Start en mellem reklamekampagne, for at tiltrække flere passagerer og last til dine stationer.{}Giver en midlertidig forbedring af stationsbedømmelsen i en mellemstor radius omkring bymidten.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}Start en stor reklamekampagne, for at tiltrække flere passagerer og last til dine stationer.{}Giver en midlertidig forbedring af stationsbedømmelsen i en stor radius omkring bymidten.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Finansiér vejfornyelse i midtbyen.{}Forårsager store forstyrrelser for vejtrafikken i de næste 6 måneder.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Byg en statue til ære for dit selskab.{}Giver en permanent forbedring af stationsbedømmelser i denne by.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finansiér opførelse af nye bygninger i byen.{}Giver en midlertidig forøgelse af byens væksthastighed.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Køb et års eksklusive rettigheder til transport i byen.{}De lokale myndigheder vil forbyde passagerer og last at bruge dine konkurrenters stationer.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Bestik de lokale myndigheder til at hæve din bedømmelse, med risiko for en stor straf hvis det bliver opdaget.{}{POP_COLOUR}Pris: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Mål
@@ -3595,40 +3709,50 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Forhindr
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over vejpunktets lokalitet. Ctrl+Klik åbner et nyt vindue ved waypointets lokalitet.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Omdøb waypoint
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over rutepunktets lokalitet. Ctrl+Klik åbner et nyt vindue ved rutepunktets lokalitet.
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Omdøb rutepunkt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrér skærmen ved bøjens placering. Ctrl+klik åbner et nyt vindue ved bøjens placering
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ændre navnet på bøjen
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Omdøb waypoint
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Omdøb rutepunkt
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanser {BLACK}{COMPANY_NUM}
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Udgifter/Indkomst
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
+###length 3
+STR_FINANCES_REVENUE_TITLE                                      :{WHITE}Indtægt
+STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}Driftsudgifter
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}Kapitaludgifter
+
+
 ###length 13
-STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruktion
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Byggeri
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nye køretøjer
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Togdriftsomkostning
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Køretøjsdriftsomkostning
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Flydriftsomkostning
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Skibsdriftsomkostning
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Vedligeholdelse af ejendom
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Togindkomst
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Køretøjsindkomst
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Flyindkomst
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Skibsindkomst
+STR_FINANCES_SECTION_INFRASTRUCTURE                             :{GOLD}Infrastruktur
+STR_FINANCES_SECTION_TRAIN_REVENUE                              :{GOLD}Tog
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}Vejkøretøjer
+STR_FINANCES_SECTION_AIRCRAFT_REVENUE                           :{GOLD}Luftfartøj
+STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}Skibe
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Renter
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Andet
 
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total
+STR_FINANCES_NEGATIVE_INCOME                                    :-{CURRENCY_LONG}
+STR_FINANCES_ZERO_INCOME                                        :{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :+{CURRENCY_LONG}
+STR_FINANCES_PROFIT                                             :{WHITE}Overskud
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bank balance
+STR_FINANCES_OWN_FUNDS_TITLE                                    :{WHITE}Egenkapital
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
+STR_FINANCES_INTEREST_RATE                                      :{WHITE}Renter på lån: {BLACK}{NUM}%
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks. lån: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BANK_BALANCE                                       :{WHITE}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Lån {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Forøg lånet. Ctrl+Klik låner så meget som muligt
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Tilbagebetal {CURRENCY_LONG}
@@ -3648,7 +3772,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} skib{P "" e}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ingen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Selskabsværdi: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% ejes af {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktur:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spor-stykke{P "" r}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} vej-stykke{P "" r}
@@ -3667,6 +3790,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljer
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Se detaljerede infrastruktur-tal
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Giv penge
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Giv penge til dette selskab
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Fjendtlig overtagelse
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Foretag en fjendtlig overtagelse af dette firma
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nyt ansigt
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Vælg nyt ansigt til direktøren
@@ -3677,16 +3802,12 @@ STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Skift se
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Direktørnavn
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Skift direktørens navn
 
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Køb 25% aktier i selskabet
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sælg 25% aktier i selskabet
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Køb 25% aktier i dette selskab. Shift+Klik viser de anslåede omkostninger uden at købe nogle aktier
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sælg 25% aktier i dette selskab. Shift+Klik viser de anslåede indtægter uden at sælge nogle aktier
-
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Selskabsnavn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktørens navn
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Skriv hvor mange penge du ønsker at give
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vi leder efter et selskab til at overtage vores{}{}Vil du købe {COMPANY} for {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}I en fjendtlig overtagelse af {COMPANY} du vil købe alle aktiver, betale af på alle lån og betale to års overskud.{}{}Det samlede anslås at være {CURRENCY_LONG}.{}{}Ønsker du at fortsætte denne fjendtlige overtagelse?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktur for {COMPANY}
@@ -3758,7 +3879,10 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administ
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Send instruktioner til alle køretøjer i denne liste
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Udskift køretøjer
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send til eftersyn
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Opret gruppe
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Afkast i år: {CURRENCY_LONG} (sidste år: {CURRENCY_LONG})
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Send til remise
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Send til værksted
@@ -3850,6 +3974,11 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. tr
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rækkevidde: {GOLD}{COMMA} felter
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Fly type: {GOLD}{STRING}
 
+###length 3
+STR_CARGO_TYPE_FILTER_ALL                                       :Alle fragttyper
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :Fragt
+STR_CARGO_TYPE_FILTER_NONE                                      :Ingen
+
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Togvalgsliste - klik på et køretøj for mere information
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Liste over køretøjstyper - klik på køretøj for information
@@ -3890,7 +4019,7 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Omdøb
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Omdøb tog-/togvognstypen
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Omdøb køretøjstypen
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Omdøb skibstypen
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Ømdøb flytypen
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Omdøb flytypen
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}skjule
@@ -3902,12 +4031,12 @@ STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}skjul
 STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON                        :{BLACK}Vis
 STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}Vis
 STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}Vis
-STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Display
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Vis
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Toggle skjule / vise af tog type
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Toggle skjule / vise af kørtøjstype
-STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Toggle skjule / vise af skibstype
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Skift skjul/visning af skibstypen
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Toggle skjule / vise af flytype
 
 ###length VEHICLE_TYPES
@@ -3919,8 +4048,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ømdøb 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ændere depotets navn
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Omdøb depot
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Skift navn på depot
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Omdøb værksted
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -4177,6 +4306,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Overskud i år: {LTBLUE}{CURRENCY_LONG} (sidste år: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Årets resultat: {LTBLUE}{CURRENCY_LONG} (sidste år: {CURRENCY_LONG}) {BLACK}Mindste ydeevne: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY_LONG}
@@ -4341,7 +4471,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmes
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Flyv til nærmeste hangar
 STR_ORDER_CONDITIONAL                                           :Betinget ordrespring
 STR_ORDER_SHARE                                                 :Del ordrer
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede, eller i slutningen af ordrelisten. Ctrl laver stationsordrer med 'Vilkårlig fuld last', waypoint ordrer med 'Uden stop', og depotordrer med 'Service'. 'Deleordrer' eller Ctrl lader dette køretøj dele ordrer med det valgte køretøj. At klikke på et køretøj kopierer ordrer fra det pågældende køretøj. En depot ordre deaktiverer automatisk servicering af køretøjet
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede, eller i slutningen af ordrelisten. Ctrl laver stationsordrer med 'Vilkårlig fuld last', rutepunkt ordrer med 'Uden stop', og depotordrer med 'Service'. 'Deleordrer' eller Ctrl lader dette køretøj dele ordrer med det valgte køretøj. At klikke på et køretøj kopierer ordrer fra det pågældende køretøj. En depot ordre deaktiverer automatisk servicering af køretøjet
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Vis alle transportmidler, der deler denne ruteplan
 
@@ -4451,19 +4581,19 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdat
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vælg en dato som starttidspunkt for denne køreplan. Ctrl+Klik sætter starttidspunkt for denne køreplan, og distribuerer alle køretøjer der deler denne ordre ligeligt baseret på deres relative rækkefølge, hvis ordren er fuldstændigt tidsplanlagt
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ændre tid
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre hvor lang tid den markerede ordre skal tage
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre den tid, som den fremhævede rækkefølge skal tage. Ctrl+Click angiver tidspunktet for alle ordrer
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Nulstil tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil tiden for den markerede ordre
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Ændr hastighedsbegrænsning
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ændr den maksimale rejsehastighed for den markerede ordre
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ændre den maksimale rejsehastighed for den fremhævede rækkefølge
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Nulstil hastighedsbegrænsning
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Nulstil den maksimale rejsehastighed for den markerede ordre
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nulstil forsinkelse
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulstil forsinkelses-tæller, så transportmidlet kommer til tiden
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulstil forsinkelsestælleren, så køretøjet kommer til tiden
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-udfyld
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Udfyld automatisk tidsplanen med tider for den næste tur (CTRL-klik for at forsøge at bevare ventetider)
@@ -4472,8 +4602,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Forvente
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skift mellem forventet og tidslagt
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ank:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Afg:
+STR_TIMETABLE_ARRIVAL                                           :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :D: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -4510,12 +4640,16 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En af de
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspiller/script-debugvindue er kun tilgængeligt for serveren
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguration af computerspiller/spilscript
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}AI konfiguration
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Konfiguration af spilscript
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spilscriptet der vil bliver indlæst i næste spil
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIer der vil bliver loaded i næste spil
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI`er der vil bliver indlæst i næste spil
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskelig spiller
 STR_AI_CONFIG_RANDOM_AI                                         :Tilfældig computerspiller
 STR_AI_CONFIG_NONE                                              :(ingen)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Maksimalt antal modstandere: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Interval mellem konkurrenternes start: {ORANGE}{COMMA} minut{P "" er}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flyt op
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flyt valgte computerspiller op i listen
@@ -4523,13 +4657,12 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Flyt ned
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flyt valgte computerspiller ned i listen
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spilscript
-STR_AI_CONFIG_AI                                                :{SILVER}KI'er
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parametre
+STR_AI_CONFIG_AI                                                :{SILVER}AI'er
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Vælg {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :Ingen ændringer
-STR_AI_CONFIG_CHANGE_AI                                         :AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spilscript
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Indlæs et andet script
+STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Vælg AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Vælg Spilscript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Indlæs et andet script. Ctrl+klik for at vise alle tilgængelige versioner
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurer computerspiller
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurer parametre for script'et
 
@@ -4543,7 +4676,7 @@ STR_AI_LIST_AUTHOR                                              :{LTBLUE}Skaber:
 STR_AI_LIST_VERSION                                             :{LTBLUE}Version: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
-STR_AI_LIST_ACCEPT                                              :{BLACK}Accepter
+STR_AI_LIST_ACCEPT                                              :{BLACK}Godkend
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vælg markeret script
 STR_AI_LIST_CANCEL                                              :{BLACK}Afbryd
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skift ikke script'et
@@ -4556,14 +4689,13 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Fuldt ko
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Højdekort skærmbillede
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minikort skærmbillede
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spilscript
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spil Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Luk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulstil
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Antal dage denne AI skal starte efter den forrige (plus/minus): {ORANGE}{STRING}
 
 
 # Textfile window
@@ -4572,10 +4704,11 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ombryd t
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ændringslog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme for {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licens for {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :Forhåndsvisning af undersøgelsesresultat
 
 
 # Vehicle loading indicators
@@ -4700,9 +4833,6 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Du kan i
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Kan ikke give penge til dette selskab...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikke købe selskab...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikke bygge selskabets hovedkvarter...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan ikke købe 25% aktier i dette selskab...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan ikke sælge 25% aktier i dette selskab...
-STR_ERROR_PROTECTED                                             :{WHITE}Dette selskab sælger ikke aktier endnu...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikke bygge nogen byer
@@ -4723,6 +4853,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... for 
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikke lave industrier...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan ikke bygge {STRING} her...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan ikke bygge denne industritype her...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Kan ikke se industri
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... for tæt på en anden industribygning
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... det er nødvendigt at bygge en by først
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... kun en tilladt per by
@@ -4737,6 +4868,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skov
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE} ... kan kun bygges over snegrænsen
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE} ... kan kun bygges under snegrænsen
 
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Finansieringen mislykkedes. Prøv igen
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Der er ingen egnede steder at placere denne industri
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Der var ingen egnede steder for '{STRING}' industrier
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Skift kort generations parametre for at få et bedre kort
 
@@ -4782,15 +4915,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Det er n
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Det er nødvendigt at rive lufthavnen ned først
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Støder op til mere end et eksisterende waypoint
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}For tæt på et andet waypoint
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Støder op til mere end et eksisterende rutepunkt
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}For tæt på et andet rutepunkt
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan ikke bygge waypoint for tog her...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan ikke bygge rutepunkt for tog her...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan ikke placere en bøje her...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke omdøbe waypoint...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke omdøbe rutepunkt...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne waypoint for tog her...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Jernbanewaypoint skal fjernes først
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne rutepunkt for tog her...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Jernbane-rutepunkt skal fjernes først
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... der er en bøje i vejen
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøjen er i brug af et andet firma!
 
@@ -4904,6 +5037,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Der er e
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... selskabets hovedkontor i vejen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikke købe dette landområde...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du ejer det allerede!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... grænse for objekt-konstruktion nået
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan ikke oprette gruppe...
@@ -4976,6 +5110,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... fartøjet er ødelagt
 
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... Ikke alle køretøjer er identiske
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ingen køretøjer vil være tilgængelige overhovedet
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Skift din NewGRF-konfiguration
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ingen køretøjer er tilgængelige endnu
@@ -5002,6 +5138,8 @@ STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kan ikke
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... køretøj kan ikke køre til alle stationer
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... køretøj kan ikke køre til denne station
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... et køretøj, der deler denne ordre, kan ikke køre til den station
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... ikke alle køretøjer har de samme ordrer
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... Ikke alle køretøjer deler ordrer
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan ikke dele ordreliste...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kan ikke ophøre med at dele ordrer-liste...
@@ -5009,10 +5147,25 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan ikke
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... for langt fra forrige destination
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... fly har ikke nok rækkevidde
 
+# Extra messages which go on the third line of errors, explaining why orders failed
+STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Der er ingen togstation her
+STR_ERROR_NO_BUS_STATION                                        :{WHITE}Der er ingen bus station her
+STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Der er ingen lastbilstation her
+STR_ERROR_NO_DOCK                                               :{WHITE}Der er ingen skibsdok
+STR_ERROR_NO_AIRPORT                                            :{WHITE}Der er ingen Lufthavn/Helikopterplads
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Der er ingen stop med en kompatibel vejtype
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Der er ingen stop med en kompatibel sporvognstype
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Der er ingen stop, der er egnede til leddelte vejkøretøjer.{}Leddelte vejkøretøjer kræver et gennemkørselsstop, ikke et slutstop
+STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Dette fly kan ikke lande på denne heliport
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Denne helikopter kan ikke lande i denne lufthavn
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Der er ikke noget Jernbane vejpunkt
+STR_ERROR_NO_BUOY                                               :{WHITE}Der er ingen bøje
+
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan ikke lave køreplan for transportmiddel...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Transportmidler kan kun vente ved stationer.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dette transportmiddel stopper ikke ved denne station.
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... tidsplanen er ufuldstændig
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... for mange skilte
@@ -5424,10 +5577,10 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut Helik
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Gruppe {COMMA}
@@ -5439,8 +5592,8 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} Bøje
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Bøje #{COMMA}
 
 ###length 2
-STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Waypoint
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Waypoint #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Rutepunkt
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Rutepunkt #{COMMA}
 
 ###length 6
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tog Depot
@@ -5492,49 +5645,28 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
-STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
-STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
-STR_BLACK_INT                                                   :{BLACK}{NUM}
-STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
-STR_BLACK_STRING                                                :{BLACK}{STRING}
-STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
-STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING}{WHITE}
-STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

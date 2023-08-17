@@ -129,39 +129,39 @@ STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
-STR_ABBREV_COAL                                                 :{TINY_FONT}CL
-STR_ABBREV_MAIL                                                 :{TINY_FONT}ML
-STR_ABBREV_OIL                                                  :{TINY_FONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LV
-STR_ABBREV_GOODS                                                :{TINY_FONT}GD
-STR_ABBREV_GRAIN                                                :{TINY_FONT}KR
-STR_ABBREV_WOOD                                                 :{TINY_FONT}VI
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}OR
-STR_ABBREV_STEEL                                                :{TINY_FONT}ST
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CO
-STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
-STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
-STR_ABBREV_FOOD                                                 :{TINY_FONT}FD
-STR_ABBREV_PAPER                                                :{TINY_FONT}PR
-STR_ABBREV_GOLD                                                 :{TINY_FONT}GD
-STR_ABBREV_WATER                                                :{TINY_FONT}WR
-STR_ABBREV_WHEAT                                                :{TINY_FONT}WH
-STR_ABBREV_RUBBER                                               :{TINY_FONT}RB
-STR_ABBREV_SUGAR                                                :{TINY_FONT}SG
-STR_ABBREV_TOYS                                                 :{TINY_FONT}TY
-STR_ABBREV_SWEETS                                               :{TINY_FONT}SW
-STR_ABBREV_COLA                                                 :{TINY_FONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CF
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}FZ
-STR_ABBREV_NONE                                                 :{TINY_FONT}EKKERT
-STR_ABBREV_ALL                                                  :{TINY_FONT}ALLT
+STR_ABBREV_PASSENGERS                                           :PS
+STR_ABBREV_COAL                                                 :CL
+STR_ABBREV_MAIL                                                 :ML
+STR_ABBREV_OIL                                                  :OL
+STR_ABBREV_LIVESTOCK                                            :LV
+STR_ABBREV_GOODS                                                :GD
+STR_ABBREV_GRAIN                                                :KR
+STR_ABBREV_WOOD                                                 :VI
+STR_ABBREV_IRON_ORE                                             :OR
+STR_ABBREV_STEEL                                                :ST
+STR_ABBREV_VALUABLES                                            :VL
+STR_ABBREV_COPPER_ORE                                           :CO
+STR_ABBREV_MAIZE                                                :MZ
+STR_ABBREV_FRUIT                                                :FT
+STR_ABBREV_DIAMONDS                                             :DM
+STR_ABBREV_FOOD                                                 :FD
+STR_ABBREV_PAPER                                                :PR
+STR_ABBREV_GOLD                                                 :GD
+STR_ABBREV_WATER                                                :WR
+STR_ABBREV_WHEAT                                                :WH
+STR_ABBREV_RUBBER                                               :RB
+STR_ABBREV_SUGAR                                                :SG
+STR_ABBREV_TOYS                                                 :TY
+STR_ABBREV_SWEETS                                               :SW
+STR_ABBREV_COLA                                                 :CL
+STR_ABBREV_CANDYFLOSS                                           :CF
+STR_ABBREV_BUBBLES                                              :BU
+STR_ABBREV_TOFFEE                                               :TF
+STR_ABBREV_BATTERIES                                            :BA
+STR_ABBREV_PLASTIC                                              :PL
+STR_ABBREV_FIZZY_DRINKS                                         :FZ
+STR_ABBREV_NONE                                                 :EKKERT
+STR_ABBREV_ALL                                                  :ALLT
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} farþeg{P i ar}
@@ -189,31 +189,35 @@ STR_COLOUR_BROWN                                                :Brúnn
 STR_COLOUR_GREY                                                 :Grár
 STR_COLOUR_WHITE                                                :Hvítur
 
+###length 17
+
+
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mílur/klst
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/klst
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mílur/klst
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} km/klst
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hö.
-STR_UNITS_POWER_METRIC                                          :{COMMA}hö.
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hö.
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}hö.
+STR_UNITS_POWER_SI                                              :{DECIMAL}kW
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}tonn
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}tonn
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} tonn
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} kg
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lítr{P i ar}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
 
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL} lítr{P i ar}
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
+
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Sía:
@@ -354,9 +358,8 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Hætta
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Gervigreind/leikjaforskrift
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gegnsæisstillingar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bæjanöfn sýnd
@@ -856,74 +859,49 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Afrita s
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Stillingar
+
+
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldmiðill
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Val á gjaldmiðli
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlingspund (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Bandaríkjadalur (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evra (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanskt jen (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austurrískur skildingur (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgískur franki (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svissneskur franki (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tékknesk kóróna (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Þýskt mark (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dönsk króna (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spænskir pesetar (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnskt mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franskur franki (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grísk drakma (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungversk forinta (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Íslensk króna (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Ítölsk líra (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollensk gyllini (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk króna (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Pólskt slot (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rúmensk leu (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rússnesk rúbla (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slóvensk tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Sænsk króna (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrknesk líra (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slóvakísk kórúna (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilísk ríla (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Eistnesk Króna (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litháenskt litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suðurkóreskt vonn (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suður-Afrískt rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlingspund
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Bandaríkjadalur
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evra
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanskt jen
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austurrískur skildingur
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgískur franki
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svissneskur franki
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tékknesk kóróna
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Þýskt mark
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dönsk króna
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spænskir pesetar
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnskt mark
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franskur franki
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grísk drakma
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungversk forinta
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Íslensk króna
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Ítölsk líra
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollensk gyllini
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk króna
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Pólskt slot
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rúmensk leu
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rússnesk rúbla
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slóvensk tolar
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Sænsk króna
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrknesk líra
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slóvakísk kórúna
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilísk ríla
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Eistnesk Króna
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litháenskt litas
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suðurkóreskt vonn
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suður-Afrískt rand
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sérsniðinn...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari (Gel)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal (IRR)
-
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vinstristefna
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Hægristefna
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bæjanöfn
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Tungumál bæjarnafna
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ensk (Upphafleg)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frönsk
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Þýsk
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ensk (Aukaleg)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Rómönsk-Amerísk
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Fáránleg
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sænsk
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollensk
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnsk
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pólsk
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slóvakísk
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norsk
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungversk
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austurrísk
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rúmensk
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tékknesk
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Svissnesk
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dönsk
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Tyrknesk
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Ítölsk
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalónsk
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálfvirk vistun
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tíðni sjálfvirkra vistana
@@ -931,10 +909,6 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tíðni 
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Aldrei
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Mánaðarlega
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Ársfjórðungslega
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Hálfsárslega
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Árlega
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Tungumál
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Tungumál viðmóts
@@ -945,6 +919,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Smelltu 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Stilla skjáupplausn
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
+
 
 
 
@@ -996,8 +971,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Dæmi: 
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 pund (£) í þessum gjaldmiðli
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta sérsniðnum gjaldmiðli
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
-
 STR_NONE                                                        :Engin
 STR_FUNDING_ONLY                                                :Með fjármögnun
 STR_MINIMAL                                                     :Lágmark
@@ -1047,16 +1020,22 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temprað landslag
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Heimskautalandslag
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Miðjarðarlandslag
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Leikfangalandslag
+
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Mjög slétt
 STR_TERRAIN_TYPE_FLAT                                           :Slétt
 STR_TERRAIN_TYPE_HILLY                                          :Hæðótt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Fjallótt
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :Umburðarlynd
 STR_CITY_APPROVAL_HOSTILE                                       :Fjandsamleg
+STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Engin nothæf gervigreind í boði...{}Þú getur hlaðið niður mörgum gervigreindum í gegnum 'Ná í viðbætur af netinu' viðmótið
 
@@ -1110,8 +1089,10 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Hægri
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Hámarkslán: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hámarks upphæð sem fyrirtæki getur fengið lánað (ekki er gert ráð fyrir verðbólgu)
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Vextir: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Vextir á lánum, stjórnar einnig verðbólgu, ef hún er virk
@@ -1274,6 +1255,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Viðhald á inn
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ef þessi stilling er virk kostar að reka innviði fyrirtækisins. Kostnaður eykst í auknu hlutfalli við stærð fyrirtækisins, því eru áhrifin meiri á stór fyrirtæki en lítil
 
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Alltaf hægt að byggja allar gerðir flugvalla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ef þessi stilling er virk þá er hver tegund flugvallar alltaf aðgengileg eftir að hann verður fyrst aðgengilegur
 
@@ -1307,7 +1289,6 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Lágmarksupphæ
 
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tími sem villuskilaboð eru sýnileg: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tími sem villuboð í rauðu gluggunum eru sýnd. Athugið að sumum (alvarlegum) villuboðum er ekki lokað sjálfvirkt eftir þennan tíma, þeim verður að loka handvirkt
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekúnd{P 0 a ur}
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Sýna vísbendingar: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Töf áður en vísbendingar eru birtar þegar músinni er haldið yfir einhverju af viðmóts atriðunum. Eins er stundum að finna vísbendingar með því að hægri smella
@@ -1353,6 +1334,10 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Venjulega
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Nýstárlega
 
 
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vinstristefna
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Hægristefna
+
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Snúningur hæðakorts: {STRING}
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Rangsælis
@@ -1378,6 +1363,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Litur á landsl
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grænn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dökkgrænn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fjólublátt
+
+###length 4
 
 ###length 4
 
@@ -1424,6 +1411,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+smella
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+smella
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
 
+###length 3
 
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Nota dagsetningar á {STRING} formi fyrir vistaða leiki.
@@ -1471,9 +1459,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Frátekin spor 
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Halda byggingartólum virkum eftir notkun: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Halda byggingartólum fyrir brýr, gögn og fleira opnum eftir notkun
-
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Hópa saman útgjöld í fjármálaglugga: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Skilgreinir útlit fjármálaglugga
 
 
 ###setting-zero-is-special
@@ -1572,6 +1557,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Birta dagblöð
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Slys / hamfarir: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Birta dagblöð þegar slys eða hörmungar gerast
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Fyrirtækisupplýsingar: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Birta dagblöð þegar nýtt fyrirtæki byrjar, eða þegar fyrirtæki eru í hættu á gjaldþroti
 
@@ -1619,10 +1605,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Upphafsár: {ST
 ###setting-zero-is-special
 
 ###length 3
-
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leyfa hlutabréfakaup í öðrum fyrirtækjum: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ef þessi stilling er virk er hægt að kaupa og selja hlutabréf í fyrirtækjum. Hlutabréf eru aðeins aðgengileg fyrir fyrirtæki sem hafa náð ákveðnum aldri
-
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Hlutfall hagnaðar sem greiðist til tengiþjónustu: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Hlutfall hagnaðar sem greiðist til tengiþjónustu, farartækja sem eru milliliðir. Gefur meiri stjórn á tekjunum
@@ -1726,7 +1708,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meðalstærð b
 
 
 
-###length 4
+###length 5
 
 ###length 3
 
@@ -1738,15 +1720,15 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meðalstærð b
 
 ###length 3
 
-STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hljóð
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Viðmót
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Bygging
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Farartæki
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Leiðarvísun farartækja
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Bæir
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Iðnaður
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Mótherji
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gervigreind
+STR_CONFIG_SETTING_SOUND                                        :Hljóð
+STR_CONFIG_SETTING_INTERFACE                                    :Viðmót
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :Bygging
+STR_CONFIG_SETTING_VEHICLES                                     :Farartæki
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :Leiðarvísun farartækja
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :Bæir
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :Iðnaður
+STR_CONFIG_SETTING_AI                                           :Mótherji
+STR_CONFIG_SETTING_AI_NPC                                       :Gervigreind
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Leiðsögukerfi lesta: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Leiðsögukerfi sem nota á fyrir lestir
@@ -1758,7 +1740,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Snúa járnbrau
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Leyfa járnbrautarlestum að snúa við á umferðarmerkjum ef þau hafa beðið þar í langan tíma
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ráðlegt)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Ráðlegt)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Breyta gildi stillingar
 
@@ -1798,7 +1780,6 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Stilling
 STR_INTRO_HIGHSCORE                                             :{BLACK}Stigatafla
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}GG/forskriftar stillingar
 STR_INTRO_QUIT                                                  :{BLACK}Hætta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hefja nýjan leik. Ctrl+smella sleppir kortastillingum
@@ -1817,7 +1798,6 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Stilla O
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Birta stigatöflu
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Sýna NewGRF stillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Birta stillingar fyrir gervigreind/forskrift
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Hætta í OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Það vantar {NUM} þýðing{P u ar} í þetta tungumál. Vinsamlegast hjálpaðu við að gera OpenTTD betra með því að skrá þig sem þýðanda. Nánari upplýsingar í readme.txt.
@@ -1843,12 +1823,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Þotur 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Breyta dagsetningu: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Breyta um ár
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leyfa breytingar á verðmæti framleiðslu: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temprað landslag
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Heimskautalandslag
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Miðjarðarlandslag
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Leikfangalandslag
 
 # Livery window
 
@@ -2041,6 +2015,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yfir leik
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -2240,6 +2215,8 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gera hlu
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Svæði sem tilheyrir stöð
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Fela
@@ -2328,8 +2305,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Auka þ�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Veldu tegund brúar
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Veldu vegabrú
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brúarval - smelltu á brú að eigin vali til að reysa hana
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hengibrú, stál
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Burðarbitabrú, stál
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Svifbitabrú, stál
@@ -2680,15 +2655,39 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kortast�
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Veldu stærð kortsins í reitum. Fjöldi reita verða aðeins færri
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Fjöldi bæja:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Bæjanöfn
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Tungumál bæjarnafna
 STR_MAPGEN_DATE                                                 :{BLACK}Dags.:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fjöldi iðnaða:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landmyndun:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Gerð lands:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Magn sjávar:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Magn sjávar:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ár:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Sléttleiki lands:
 STR_MAPGEN_VARIETY                                              :{BLACK}Fjölbreytileikadreifing:
 STR_MAPGEN_GENERATE                                             :{WHITE}Mynda land
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Ensk (Upphafleg)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :Frönsk
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :Þýsk
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Ensk (Aukaleg)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :Rómönsk-Amerísk
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Fáránleg
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Sænsk
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :Hollensk
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finnsk
+STR_MAPGEN_TOWN_NAME_POLISH                                     :Pólsk
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :Slóvakísk
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :Norsk
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :Ungversk
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :Austurrísk
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :Rúmensk
+STR_MAPGEN_TOWN_NAME_CZECH                                      :Tékknesk
+STR_MAPGEN_TOWN_NAME_SWISS                                      :Svissnesk
+STR_MAPGEN_TOWN_NAME_DANISH                                     :Dönsk
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :Tyrknesk
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :Ítölsk
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalónsk
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Hliðar korts:
@@ -2815,6 +2814,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Fyrri hr
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fara á fyrri venjulegu hreyfimynd, sleppir gervi/endurlitun/letur hreyfimyndum og fer aftast í listen þegar upphafi er náð.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Framsetning á valinni hreyfimynd. Samstillingu er sleppt við teikningu á þessari hreyfimynd.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Færðu hreyfimyndina, breytir X og Y hliðrun
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Veldu hreyfimynd
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Veldu hreyfimynd hvaðan sem er af skjánum
 
@@ -2825,7 +2828,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aðvörun: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Villa: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Banvænt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Alvarleg NewGRF villa átti sér stað:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} Mun ekki virka með útgáfu TTDPatch sem OpenTTD gefur til kynna.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er fyrir {STRING} útgáfu af TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er hannað til að notast með {STRING}
@@ -3072,8 +3074,10 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Breyta n
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Fjármál {BLACK}{COMPANY_NUM}
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Útgjöld/Tekjur
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 3
+
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Framkvæmdir
@@ -3082,17 +3086,11 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Rekstur l
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Rekstrarkostnaður bifreiða
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Rekstur flugvéla
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Rekstur skipa
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Viðhald eigna
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Tekjur lesta
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Tekjur bifreiða
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Tekjur flugvéla
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Tekjur skipa
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Vextir lána
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Annað
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Summa:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bankainnistæða
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lán
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Hámarkslán: {BLACK}{CURRENCY_LONG}
@@ -3116,7 +3114,6 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} skip
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Engin
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Heildarverðmæti fyrirtækis: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% í eigu {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Innviðir:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} járnbrautarspor
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} veg{P ur ir}
@@ -3142,11 +3139,6 @@ STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nafn fyr
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Breyta nafni fyrirtækisins
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nafn forstjóra
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Breyta nafni forstjóra
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kaupa 25% hlut í fyrirtæki
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Selja 25% hlut í fyrirtæki
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kaupa 25% hlut í þessu fyrirtæki. Shift+smella sýnir áætlaðan kostnað
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Selja 25% hlut í þessu fyrirtæki. Shift+smella sýnir áætlaðan kostnað
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nafn Fyrirtækis
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nafn forstjóra
@@ -3282,6 +3274,8 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Allar tegundir 
 STR_PURCHASE_INFO_ALL_BUT                                       :Allt nema {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Hámarks togkrafur: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Drægni: {GOLD}{COMMA} reitir
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
@@ -3846,8 +3840,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Væntanl
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Áætluð
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skifta á milli væntanlegs og áætlaðs
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :K:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 
 
 # Date window (for timetable)
@@ -3884,12 +3876,12 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein af f
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsunargluggi gervigreindar/forskriftar er aðeins aðgengilegur á þjóni
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Stilling gervigreindar/forskriftar
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Forskriftin sem verður hlaðin í næsta leik
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Gervigreindin sem verður hlaðin í næsta leik
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mennskur leikmaður
 STR_AI_CONFIG_RANDOM_AI                                         :Gervigreind af handahófi
 STR_AI_CONFIG_NONE                                              :(engin)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Færa upp
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Færa valda gerfigreind upp listann
@@ -3899,8 +3891,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Færa va
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Forskrift
 STR_AI_CONFIG_AI                                                :{SILVER}Gervigreindir
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Veldu {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :gervigreind
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Forskrift
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Hlaða annarri forskrift
@@ -3923,21 +3913,18 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Hætta v
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta við breytingar forskriftar
 
 
-# AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} breytur
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :Gervigreindar
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Leikja forskriftar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Hversu mörgum dögum eftir síðustu gervigreind á að hlaða þessari (sirka): {ORANGE}{STRING}
 
 
 # Textfile window
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Skoða lesskrá
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Breytiskrá
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Leyfi
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} lesskrá (readme) fyrir {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} breytiskrá (changelog) fyrir {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} leyfi fyrir {STRING}
@@ -4061,9 +4048,6 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Getur ek
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Það er ekki hægt að gefa peninga sem teknir eru að láni frá bankanum...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Get ekki keypt fyrirtæki...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ekki hægt að byggja höfuðstöðvar...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Get ekki keypt 25% hlut í þessu fyrirtæki...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Get ekki selt 25% hlut í þessu fyrirtæki...
-STR_ERROR_PROTECTED                                             :{WHITE}Þetta fyrirtæki er ekki nógu gamalt til að versla með hluti ...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Get ekki stofnað nýja borg
@@ -4325,6 +4309,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Get ekki
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ökutæki er eyðilagt
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Engin farartæki verða í boði
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Breyta NewGRF stillingunum þínum
 
@@ -4355,6 +4340,8 @@ STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Get ekki
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Get ekki afritað skipana lista...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... of langt frá fyrri stað
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... flugvél hefur ekki næga drægni
+
+# Extra messages which go on the third line of errors, explaining why orders failed
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Get ekki gert áætlun farartækis...
@@ -4769,10 +4756,10 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut Þyrl
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(Fyrirtæki {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Hópur {COMMA}
@@ -4850,33 +4837,8 @@ STR_JUST_STRING_STRING                                          :{STRING}{STRING
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
-STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
-STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
-STR_BLACK_INT                                                   :{BLACK}{NUM}
-STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
-STR_BLACK_STRING                                                :{BLACK}{STRING}
-STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
-STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING}{WHITE}
-STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

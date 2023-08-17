@@ -10,6 +10,8 @@
 #ifndef TILE_TYPE_H
 #define TILE_TYPE_H
 
+#include "core/strong_typedef_type.hpp"
+
 static const uint TILE_SIZE           = 16;                    ///< Tile size in world coordinates.
 static const uint TILE_UNIT_MASK      = TILE_SIZE - 1;         ///< For masking in/out the inner-tile world coordinate units.
 static const uint TILE_PIXELS         = 32;                    ///< Pixel distance between tile columns/rows in #ZOOM_LVL_BASE.
@@ -79,12 +81,17 @@ enum TropicZone {
 
 /**
  * The index/ID of a Tile.
+ *
+ * It is compatible with int32 / int64 for easy math throughout the code.
  */
-typedef uint32 TileIndex;
+using TileIndex = StrongType::Typedef<uint32_t, struct TileIndexTag, StrongType::Compare, StrongType::Integer, StrongType::Compatible<int32_t>, StrongType::Compatible<int64_t>>;
+
+/* Make sure the size is as expected. */
+static_assert(sizeof(TileIndex) == 4);
 
 /**
  * The very nice invalid tile marker
  */
-static const TileIndex INVALID_TILE = (TileIndex)-1;
+static inline constexpr TileIndex INVALID_TILE = TileIndex{ (uint32_t)-1 };
 
 #endif /* TILE_TYPE_H */

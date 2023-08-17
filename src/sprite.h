@@ -23,9 +23,9 @@
 
 /** A tile child sprite and palette to draw for stations etc, with 3D bounding box */
 struct DrawTileSeqStruct {
-	int8 delta_x; ///< \c 0x80 is sequence terminator
-	int8 delta_y;
-	int8 delta_z; ///< \c 0x80 identifies child sprites
+	int8_t delta_x; ///< \c 0x80 is sequence terminator
+	int8_t delta_y;
+	int8_t delta_z; ///< \c 0x80 identifies child sprites
 	byte size_x;
 	byte size_y;
 	byte size_z;
@@ -34,7 +34,7 @@ struct DrawTileSeqStruct {
 	/** Make this struct a sequence terminator. */
 	void MakeTerminator()
 	{
-		this->delta_x = (int8)0x80;
+		this->delta_x = (int8_t)0x80;
 	}
 
 	/** Check whether this is a sequence terminator. */
@@ -78,15 +78,15 @@ struct DrawBuildingsTileStruct {
 /** Iterate through all DrawTileSeqStructs in DrawTileSprites. */
 #define foreach_draw_tile_seq(idx, list) for (idx = list; !idx->IsTerminator(); idx++)
 
-void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
-void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig_offset, uint32 newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
+void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
+void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
 
 /**
  * Draw tile sprite sequence on tile with railroad specifics.
  * @param total_offset Spriteoffset from normal rail to current railtype.
  * @param newgrf_offset Startsprite of the Action1 to use.
  */
-static inline void DrawRailTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 total_offset, uint32 newgrf_offset, PaletteID default_palette)
+static inline void DrawRailTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t total_offset, uint32_t newgrf_offset, PaletteID default_palette)
 {
 	DrawCommonTileSeq(ti, dts, to, total_offset, newgrf_offset, default_palette, false);
 }
@@ -96,7 +96,7 @@ static inline void DrawRailTileSeq(const struct TileInfo *ti, const DrawTileSpri
  * @param total_offset Spriteoffset from normal rail to current railtype.
  * @param newgrf_offset Startsprite of the Action1 to use.
  */
-static inline void DrawRailTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 total_offset, uint32 newgrf_offset, PaletteID default_palette)
+static inline void DrawRailTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t total_offset, uint32_t newgrf_offset, PaletteID default_palette)
 {
 	DrawCommonTileSeqInGUI(x, y, dts, total_offset, newgrf_offset, default_palette, false);
 }
@@ -121,7 +121,7 @@ static inline void DrawOrigTileSeqInGUI(int x, int y, const DrawTileSprites *dts
  * Draw NewGRF industrytile or house sprite layout
  * @param stage Sprite inside the Action1 spritesets to use, i.e. construction stage.
  */
-static inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, uint32 stage, PaletteID default_palette)
+static inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, uint32_t stage, PaletteID default_palette)
 {
 	DrawCommonTileSeq(ti, dts, to, 0, stage, default_palette, true);
 }
@@ -130,7 +130,7 @@ static inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSp
  * Draw NewGRF object in GUI
  * @param stage Sprite inside the Action1 spritesets to use, i.e. construction stage.
  */
-static inline void DrawNewGRFTileSeqInGUI(int x, int y, const DrawTileSprites *dts, uint32 stage, PaletteID default_palette)
+static inline void DrawNewGRFTileSeqInGUI(int x, int y, const DrawTileSprites *dts, uint32_t stage, PaletteID default_palette)
 {
 	DrawCommonTileSeqInGUI(x, y, dts, 0, stage, default_palette, true);
 }

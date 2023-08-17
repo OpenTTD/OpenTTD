@@ -1,40 +1,39 @@
 ## How to build with Emscripten
 
-Building with Emscripten works with emsdk 2.0.31 and above.
+Please use docker with the supplied `Dockerfile` to build for emscripten.
+It takes care of a few things:
+- Use a version of emscripten we know works
+- Patch in LibLZMA support (as this is not supported by upstream)
+- Patch in nlohmann-json support (as this is not supported by upstream)
 
-Currently there is no LibLZMA support upstream; for this we suggest to apply
-the provided patch in this folder to your emsdk installation.
-
-For convenience, a Dockerfile is supplied that does this patches for you
-against upstream emsdk docker. Best way to use it:
-
-Build the docker image:
+First, build the docker image by navigating in the folder this `README.md` is in, and executing:
 ```
-  docker build -t emsdk-lzma .
+  docker build -t emsdk-openttd .
 ```
 
-Build the host tools first:
+Next, navigate back to the root folder of this project.
+
+Now we build the host tools first:
 ```
   mkdir build-host
-  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build-host emsdk-lzma cmake .. -DOPTION_TOOLS_ONLY=ON
-  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build-host emsdk-lzma make -j5 tools
+  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build-host emsdk-openttd cmake .. -DOPTION_TOOLS_ONLY=ON
+  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build-host emsdk-openttd make -j$(nproc) tools
 ```
 
-Next, build the game with emscripten:
-
+Finally, we build the actual game:
 ```
   mkdir build
-  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build emsdk-lzma emcmake cmake .. -DHOST_BINARY_DIR=$(pwd)/build-host -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPTION_USE_ASSERTS=OFF
-  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build emsdk-lzma emmake make -j5
+  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build emsdk-openttd emcmake cmake .. -DHOST_BINARY_DIR=../build-host -DCMAKE_BUILD_TYPE=Release -DOPTION_USE_ASSERTS=OFF
+  docker run -it --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) --workdir $(pwd)/build emsdk-openttd emmake make -j$(nproc)
 ```
 
-And now you have in your build folder files like "openttd.html".
+In the `build` folder you will now see `openttd.html`.
 
-To run it locally, you would have to start a local webserver, like:
+To run it locally, you would have to start a local webserver; something like:
 
 ```
   cd build
   python3 -m http.server
 ````
 
-Now you can play the game via http://127.0.0.1:8000/openttd.html .
+You can now play the game via http://127.0.0.1:8000/openttd.html .

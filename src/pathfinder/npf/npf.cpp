@@ -132,23 +132,23 @@ static uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
 
 /**
  * Calculates a hash value for use in the NPF.
- * @param key1 The TileIndex of the tile to hash
- * @param key2 The Trackdir of the track on the tile.
+ * @param tile The TileIndex of the tile to hash
+ * @param dir The Trackdir of the track on the tile.
  *
  * @todo Think of a better hash.
  */
-static uint NPFHash(uint key1, uint key2)
+static uint NPFHash(TileIndex tile, Trackdir dir)
 {
 	/* TODO: think of a better hash? */
-	uint part1 = TileX(key1) & NPF_HASH_HALFMASK;
-	uint part2 = TileY(key1) & NPF_HASH_HALFMASK;
+	uint part1 = TileX(tile) & NPF_HASH_HALFMASK;
+	uint part2 = TileY(tile) & NPF_HASH_HALFMASK;
 
-	assert(IsValidTrackdir((Trackdir)key2));
-	assert(IsValidTile(key1));
-	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * key2 / TRACKDIR_END)) % NPF_HASH_SIZE;
+	assert(IsValidTrackdir(dir));
+	assert(IsValidTile(tile));
+	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * dir / TRACKDIR_END)) % NPF_HASH_SIZE;
 }
 
-static int32 NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	return 0;
 }
@@ -156,7 +156,7 @@ static int32 NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
 /* Calculates the heuristic to the target station or tile. For train stations, it
  * takes into account the direction of approach.
  */
-static int32 NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
 	NPFFoundTargetData *ftd = (NPFFoundTargetData*)as->user_path;
@@ -245,8 +245,8 @@ static uint NPFSlopeCost(AyStarNode *current)
 	/* Get the height on both sides of the tile edge.
 	 * Avoid testing the height on the tile-center. This will fail for halftile-foundations.
 	 */
-	int z1 = GetSlopePixelZ(x1 + dx4, y1 + dy4);
-	int z2 = GetSlopePixelZ(x2 - dx4, y2 - dy4);
+	int z1 = GetSlopePixelZ(x1 + dx4, y1 + dy4, true);
+	int z2 = GetSlopePixelZ(x2 - dx4, y2 - dy4, true);
 
 	if (z2 - z1 > 1) {
 		/* Slope up */
@@ -312,10 +312,9 @@ static Vehicle *CountShipProc(Vehicle *v, void *data)
 	return nullptr;
 }
 
-static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
-	/* TileIndex tile = current->tile; */
-	int32 cost = 0;
+	int32_t cost = 0;
 	Trackdir trackdir = current->direction;
 
 	cost = _trackdir_length[trackdir]; // Should be different for diagonal tracks
@@ -341,10 +340,10 @@ static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *par
 }
 
 /* Determine the cost of this node, for road tracks */
-static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	TileIndex tile = current->tile;
-	int32 cost = 0;
+	int32_t cost = 0;
 
 	/* Determine base length */
 	switch (GetTileType(tile)) {
@@ -400,11 +399,11 @@ static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 
 
 /* Determine the cost of this node, for railway tracks */
-static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	TileIndex tile = current->tile;
 	Trackdir trackdir = current->direction;
-	int32 cost = 0;
+	int32_t cost = 0;
 	/* HACK: We create a OpenListNode manually, so we can call EndNodeCheck */
 	OpenListNode new_node;
 
@@ -551,7 +550,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 }
 
 /* Will find any depot */
-static int32 NPFFindDepot(const AyStar *as, const OpenListNode *current)
+static int32_t NPFFindDepot(const AyStar *as, const OpenListNode *current)
 {
 	AyStarUserData *user = (AyStarUserData *)as->user_data;
 	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
@@ -561,7 +560,7 @@ static int32 NPFFindDepot(const AyStar *as, const OpenListNode *current)
 }
 
 /** Find any safe and free tile. */
-static int32 NPFFindSafeTile(const AyStar *as, const OpenListNode *current)
+static int32_t NPFFindSafeTile(const AyStar *as, const OpenListNode *current)
 {
 	const Train *v = Train::From(((NPFFindStationOrTileData *)as->user_target)->v);
 
@@ -571,7 +570,7 @@ static int32 NPFFindSafeTile(const AyStar *as, const OpenListNode *current)
 }
 
 /* Will find a station identified using the NPFFindStationOrTileData */
-static int32 NPFFindStationOrTile(const AyStar *as, const OpenListNode *current)
+static int32_t NPFFindStationOrTile(const AyStar *as, const OpenListNode *current)
 {
 	NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
 	const AyStarNode *node = &current->path.node;
@@ -1114,7 +1113,6 @@ void InitializeNPF()
 	}
 	_npf_aystar.loops_per_tick = 0;
 	_npf_aystar.max_path_cost = 0;
-	//_npf_aystar.max_search_nodes = 0;
 	/* We will limit the number of nodes for now, until we have a better
 	 * solution to really fix performance */
 	_npf_aystar.max_search_nodes = _settings_game.pf.npf.npf_max_search_nodes;
@@ -1225,9 +1223,12 @@ bool NPFShipCheckReverse(const Ship *v, Trackdir *best_td)
 
 	AyStarUserData user = { v->owner, TRANSPORT_WATER, RAILTYPES_NONE, ROADTYPES_NONE, 0 };
 	if (best_td != nullptr) {
-		TrackdirBits rtds = DiagdirReachesTrackdirs(ReverseDiagDir(VehicleExitDir(v->direction, v->state)));
+		DiagDirection entry = ReverseDiagDir(VehicleExitDir(v->direction, v->state));
+		TrackdirBits rtds = DiagdirReachesTrackdirs(entry) & TrackStatusToTrackdirBits(GetTileTrackStatus(v->tile, TRANSPORT_WATER, 0, entry));
 		Trackdir best = (Trackdir)FindFirstBit2x64(rtds);
-		for (rtds = KillFirstBit(rtds); rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
+		rtds = KillFirstBit(rtds);
+		if (rtds == TRACKDIR_BIT_NONE) return false; /* At most one choice. */
+		for (; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
 			Trackdir td = (Trackdir)FindFirstBit2x64(rtds);
 			ftd = NPFRouteToStationOrTileTwoWay(v->tile, best, false, v->tile, td, false, &fstd, &user);
 			if (ftd.best_bird_dist == 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) best = td;

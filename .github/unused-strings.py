@@ -210,11 +210,10 @@ def main():
             errors.append(f"ERROR: {string} is (possibly) no longer needed.")
 
     if errors:
-        for error in errors:
-            print(error)
+        print("\n".join(errors))
         sys.exit(1)
-    else:
-        print("OK")
+
+    print("OK")
 
 
 if __name__ == "__main__":

@@ -9,12 +9,14 @@
 
 #include "../../stdafx.h"
 #include "script_industrytype.hpp"
+#include "script_base.hpp"
 #include "script_map.hpp"
 #include "script_error.hpp"
 #include "../../strings_func.h"
 #include "../../industry.h"
 #include "../../newgrf_industries.h"
 #include "../../core/random_func.hpp"
+#include "../../industry_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -55,9 +57,9 @@
 	return ::GetIndustrySpec(industry_type)->GetConstructionCost();
 }
 
-/* static */ char *ScriptIndustryType::GetName(IndustryType industry_type)
+/* static */ std::optional<std::string> ScriptIndustryType::GetName(IndustryType industry_type)
 {
-	if (!IsValidIndustryType(industry_type)) return nullptr;
+	if (!IsValidIndustryType(industry_type)) return std::nullopt;
 
 	return GetString(::GetIndustrySpec(industry_type)->name);
 }
@@ -70,7 +72,7 @@
 
 	ScriptList *list = new ScriptList();
 	for (size_t i = 0; i < lengthof(ins->produced_cargo); i++) {
-		if (ins->produced_cargo[i] != CT_INVALID) list->AddItem(ins->produced_cargo[i]);
+		if (::IsValidCargoID(ins->produced_cargo[i])) list->AddItem(ins->produced_cargo[i]);
 	}
 
 	return list;
@@ -84,7 +86,7 @@
 
 	ScriptList *list = new ScriptList();
 	for (size_t i = 0; i < lengthof(ins->accepts_cargo); i++) {
-		if (ins->accepts_cargo[i] != CT_INVALID) list->AddItem(ins->accepts_cargo[i]);
+		if (::IsValidCargoID(ins->accepts_cargo[i])) list->AddItem(ins->accepts_cargo[i]);
 	}
 
 	return list;
@@ -94,7 +96,7 @@
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	const bool deity = ScriptObject::GetCompany() == OWNER_DEITY;
+	const bool deity = ScriptCompanyMode::IsDeity();
 	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
 	if (deity) return true;
 	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return true;
@@ -107,7 +109,7 @@
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	const bool deity = ScriptObject::GetCompany() == OWNER_DEITY;
+	const bool deity = ScriptCompanyMode::IsDeity();
 	if (!deity && !::GetIndustrySpec(industry_type)->IsRawIndustry()) return false;
 	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
 
@@ -117,20 +119,22 @@
 
 /* static */ bool ScriptIndustryType::BuildIndustry(IndustryType industry_type, TileIndex tile)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, CanBuildIndustry(industry_type));
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
-	uint32 seed = ::InteractiveRandom();
-	uint32 layout_index = ::InteractiveRandomRange((uint32)::GetIndustrySpec(industry_type)->layouts.size());
-	return ScriptObject::DoCommand(tile, (1 << 16) | (layout_index << 8) | industry_type, seed, CMD_BUILD_INDUSTRY);
+	uint32_t seed = ScriptBase::Rand();
+	uint32_t layout_index = ScriptBase::RandRange((uint32_t)::GetIndustrySpec(industry_type)->layouts.size());
+	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(tile, industry_type, layout_index, true, seed);
 }
 
 /* static */ bool ScriptIndustryType::ProspectIndustry(IndustryType industry_type)
 {
+	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, CanProspectIndustry(industry_type));
 
-	uint32 seed = ::InteractiveRandom();
-	return ScriptObject::DoCommand(0, industry_type, seed, CMD_BUILD_INDUSTRY);
+	uint32_t seed = ScriptBase::Rand();
+	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(0, industry_type, 0, false, seed);
 }
 
 /* static */ bool ScriptIndustryType::IsBuiltOnWater(IndustryType industry_type)
@@ -152,4 +156,12 @@
 	if (!IsValidIndustryType(industry_type)) return false;
 
 	return (::GetIndustrySpec(industry_type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
+}
+
+/* static */ IndustryType ScriptIndustryType::ResolveNewGRFID(SQInteger grfid, SQInteger grf_local_id)
+{
+	EnforcePrecondition(INVALID_INDUSTRYTYPE, IsInsideBS(grf_local_id, 0x00, NUM_INDUSTRYTYPES_PER_GRF));
+
+	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
+	return _industry_mngr.GetID(grf_local_id, grfid);
 }

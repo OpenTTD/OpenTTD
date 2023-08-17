@@ -9,12 +9,14 @@
 
 #include "../../stdafx.h"
 #include "script_grouplist.hpp"
+#include "script_error.hpp"
 #include "../../group.h"
 
 #include "../../safeguards.h"
 
 ScriptGroupList::ScriptGroupList()
 {
+	EnforceCompanyModeValid_Void();
 	for (const Group *g : Group::Iterate()) {
 		if (g->owner == ScriptObject::GetCompany()) this->AddItem(g->index);
 	}

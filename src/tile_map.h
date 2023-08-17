@@ -24,12 +24,12 @@
  *
  * @param tile The tile to get the height from
  * @return the height of the tile
- * @pre tile < MapSize()
+ * @pre tile < Map::Size()
  */
-static inline uint TileHeight(TileIndex tile)
+debug_inline static uint TileHeight(Tile tile)
 {
-	assert(tile < MapSize());
-	return _m[tile].height;
+	assert(tile < Map::Size());
+	return tile.height();
 }
 
 /**
@@ -41,7 +41,7 @@ static inline uint TileHeight(TileIndex tile)
  */
 static inline uint TileHeightOutsideMap(int x, int y)
 {
-	return TileHeight(TileXY(Clamp(x, 0, MapMaxX()), Clamp(y, 0, MapMaxY())));
+	return TileHeight(TileXY(Clamp(x, 0, Map::MaxX()), Clamp(y, 0, Map::MaxY())));
 }
 
 /**
@@ -51,14 +51,14 @@ static inline uint TileHeightOutsideMap(int x, int y)
  *
  * @param tile The tile to change the height
  * @param height The new height value of the tile
- * @pre tile < MapSize()
+ * @pre tile < Map::Size()
  * @pre height <= MAX_TILE_HEIGHT
  */
-static inline void SetTileHeight(TileIndex tile, uint height)
+static inline void SetTileHeight(Tile tile, uint height)
 {
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 	assert(height <= MAX_TILE_HEIGHT);
-	_m[tile].height = height;
+	tile.height() = height;
 }
 
 /**
@@ -69,7 +69,7 @@ static inline void SetTileHeight(TileIndex tile, uint height)
  * @param tile The tile to get the height
  * @return The height of the tile in pixel
  */
-static inline uint TilePixelHeight(TileIndex tile)
+static inline uint TilePixelHeight(Tile tile)
 {
 	return TileHeight(tile) * TILE_HEIGHT;
 }
@@ -91,12 +91,12 @@ static inline uint TilePixelHeightOutsideMap(int x, int y)
  *
  * @param tile The tile to get the TileType
  * @return The tiletype of the tile
- * @pre tile < MapSize()
+ * @pre tile < Map::Size()
  */
-static inline TileType GetTileType(TileIndex tile)
+debug_inline static TileType GetTileType(Tile tile)
 {
-	assert(tile < MapSize());
-	return (TileType)GB(_m[tile].type, 4, 4);
+	assert(tile < Map::Size());
+	return (TileType)GB(tile.type(), 4, 4);
 }
 
 /**
@@ -104,16 +104,16 @@ static inline TileType GetTileType(TileIndex tile)
  *
  * @param tile The tile to check
  * @return Whether the tile is in the interior of the map
- * @pre tile < MapSize()
+ * @pre tile < Map::Size()
  */
-static inline bool IsInnerTile(TileIndex tile)
+static inline bool IsInnerTile(Tile tile)
 {
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 
 	uint x = TileX(tile);
 	uint y = TileY(tile);
 
-	return x < MapMaxX() && y < MapMaxY() && ((x > 0 && y > 0) || !_settings_game.construction.freeform_edges);
+	return x < Map::MaxX() && y < Map::MaxY() && ((x > 0 && y > 0) || !_settings_game.construction.freeform_edges);
 }
 
 /**
@@ -125,17 +125,17 @@ static inline bool IsInnerTile(TileIndex tile)
  *
  * @param tile The tile to save the new type
  * @param type The type to save
- * @pre tile < MapSize()
+ * @pre tile < Map::Size()
  * @pre type MP_VOID <=> tile is on the south-east or south-west edge.
  */
-static inline void SetTileType(TileIndex tile, TileType type)
+static inline void SetTileType(Tile tile, TileType type)
 {
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 	/* VOID tiles (and no others) are exactly allowed at the lower left and right
 	 * edges of the map. If _settings_game.construction.freeform_edges is true,
 	 * the upper edges of the map are also VOID tiles. */
 	assert(IsInnerTile(tile) == (type != MP_VOID));
-	SB(_m[tile].type, 4, 4, type);
+	SB(tile.type(), 4, 4, type);
 }
 
 /**
@@ -147,7 +147,7 @@ static inline void SetTileType(TileIndex tile, TileType type)
  * @param type The type to check against
  * @return true If the type matches against the type of the tile
  */
-static inline bool IsTileType(TileIndex tile, TileType type)
+debug_inline static bool IsTileType(Tile tile, TileType type)
 {
 	return GetTileType(tile) == type;
 }
@@ -158,9 +158,9 @@ static inline bool IsTileType(TileIndex tile, TileType type)
  * @param tile The tile to check
  * @return True if the tile is on the map and not one of MP_VOID.
  */
-static inline bool IsValidTile(TileIndex tile)
+static inline bool IsValidTile(Tile tile)
 {
-	return tile < MapSize() && !IsTileType(tile, MP_VOID);
+	return tile < Map::Size() && !IsTileType(tile, MP_VOID);
 }
 
 /**
@@ -175,13 +175,13 @@ static inline bool IsValidTile(TileIndex tile)
  * @pre IsValidTile(tile)
  * @pre The type of the tile must not be MP_HOUSE and MP_INDUSTRY
  */
-static inline Owner GetTileOwner(TileIndex tile)
+static inline Owner GetTileOwner(Tile tile)
 {
 	assert(IsValidTile(tile));
 	assert(!IsTileType(tile, MP_HOUSE));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
-	return (Owner)GB(_m[tile].m1, 0, 5);
+	return (Owner)GB(tile.m1(), 0, 5);
 }
 
 /**
@@ -195,13 +195,13 @@ static inline Owner GetTileOwner(TileIndex tile)
  * @pre IsValidTile(tile)
  * @pre The type of the tile must not be MP_HOUSE and MP_INDUSTRY
  */
-static inline void SetTileOwner(TileIndex tile, Owner owner)
+static inline void SetTileOwner(Tile tile, Owner owner)
 {
 	assert(IsValidTile(tile));
 	assert(!IsTileType(tile, MP_HOUSE));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
-	SB(_m[tile].m1, 0, 5, owner);
+	SB(tile.m1(), 0, 5, owner);
 }
 
 /**
@@ -211,7 +211,7 @@ static inline void SetTileOwner(TileIndex tile, Owner owner)
  * @param owner The owner to check against
  * @return True if a tile belongs the the given owner
  */
-static inline bool IsTileOwner(TileIndex tile, Owner owner)
+static inline bool IsTileOwner(Tile tile, Owner owner)
 {
 	return GetTileOwner(tile) == owner;
 }
@@ -220,25 +220,25 @@ static inline bool IsTileOwner(TileIndex tile, Owner owner)
  * Set the tropic zone
  * @param tile the tile to set the zone of
  * @param type the new type
- * @pre tile < MapSize()
+ * @pre tile < Map::Size()
  */
-static inline void SetTropicZone(TileIndex tile, TropicZone type)
+static inline void SetTropicZone(Tile tile, TropicZone type)
 {
-	assert(tile < MapSize());
+	assert(tile < Map::Size());
 	assert(!IsTileType(tile, MP_VOID) || type == TROPICZONE_NORMAL);
-	SB(_m[tile].type, 0, 2, type);
+	SB(tile.type(), 0, 2, type);
 }
 
 /**
  * Get the tropic zone
  * @param tile the tile to get the zone of
- * @pre tile < MapSize()
+ * @pre tile < Map::Size()
  * @return the zone type
  */
-static inline TropicZone GetTropicZone(TileIndex tile)
+static inline TropicZone GetTropicZone(Tile tile)
 {
-	assert(tile < MapSize());
-	return (TropicZone)GB(_m[tile].type, 0, 2);
+	assert(tile < Map::Size());
+	return (TropicZone)GB(tile.type(), 0, 2);
 }
 
 /**
@@ -247,10 +247,10 @@ static inline TropicZone GetTropicZone(TileIndex tile)
  * @pre IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION)
  * @return frame number
  */
-static inline byte GetAnimationFrame(TileIndex t)
+static inline byte GetAnimationFrame(Tile t)
 {
 	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION));
-	return _me[t].m7;
+	return t.m7();
 }
 
 /**
@@ -259,10 +259,10 @@ static inline byte GetAnimationFrame(TileIndex t)
  * @param frame the new frame number
  * @pre IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION)
  */
-static inline void SetAnimationFrame(TileIndex t, byte frame)
+static inline void SetAnimationFrame(Tile t, byte frame)
 {
 	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION));
-	_me[t].m7 = frame;
+	t.m7() = frame;
 }
 
 Slope GetTileSlope(TileIndex tile, int *h = nullptr);

@@ -128,39 +128,39 @@ STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
-STR_ABBREV_COAL                                                 :{TINY_FONT}زس
-STR_ABBREV_MAIL                                                 :{TINY_FONT}ML
-STR_ABBREV_OIL                                                  :{TINY_FONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LV
-STR_ABBREV_GOODS                                                :{TINY_FONT}GD
-STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
-STR_ABBREV_WOOD                                                 :{TINY_FONT}چوب
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}OR
-STR_ABBREV_STEEL                                                :{TINY_FONT}ST
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}قیمتی ها
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CO
-STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
-STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
-STR_ABBREV_FOOD                                                 :{TINY_FONT}FD
-STR_ABBREV_PAPER                                                :{TINY_FONT}PR
-STR_ABBREV_GOLD                                                 :{TINY_FONT}GD
-STR_ABBREV_WATER                                                :{TINY_FONT}آب
-STR_ABBREV_WHEAT                                                :{TINY_FONT}گندم
-STR_ABBREV_RUBBER                                               :{TINY_FONT}RB
-STR_ABBREV_SUGAR                                                :{TINY_FONT}شکر
-STR_ABBREV_TOYS                                                 :{TINY_FONT}اسباب بازی
-STR_ABBREV_SWEETS                                               :{TINY_FONT}شیرینی
-STR_ABBREV_COLA                                                 :{TINY_FONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CF
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}آبنبات
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}FZ
-STR_ABBREV_NONE                                                 :{TINY_FONT}NO
-STR_ABBREV_ALL                                                  :{TINY_FONT}همه
+STR_ABBREV_PASSENGERS                                           :PS
+STR_ABBREV_COAL                                                 :زس
+STR_ABBREV_MAIL                                                 :ML
+STR_ABBREV_OIL                                                  :OL
+STR_ABBREV_LIVESTOCK                                            :LV
+STR_ABBREV_GOODS                                                :GD
+STR_ABBREV_GRAIN                                                :GR
+STR_ABBREV_WOOD                                                 :چوب
+STR_ABBREV_IRON_ORE                                             :OR
+STR_ABBREV_STEEL                                                :ST
+STR_ABBREV_VALUABLES                                            :قیمتی ها
+STR_ABBREV_COPPER_ORE                                           :CO
+STR_ABBREV_MAIZE                                                :MZ
+STR_ABBREV_FRUIT                                                :FT
+STR_ABBREV_DIAMONDS                                             :DM
+STR_ABBREV_FOOD                                                 :FD
+STR_ABBREV_PAPER                                                :PR
+STR_ABBREV_GOLD                                                 :GD
+STR_ABBREV_WATER                                                :آب
+STR_ABBREV_WHEAT                                                :گندم
+STR_ABBREV_RUBBER                                               :RB
+STR_ABBREV_SUGAR                                                :شکر
+STR_ABBREV_TOYS                                                 :اسباب بازی
+STR_ABBREV_SWEETS                                               :شیرینی
+STR_ABBREV_COLA                                                 :CL
+STR_ABBREV_CANDYFLOSS                                           :CF
+STR_ABBREV_BUBBLES                                              :BU
+STR_ABBREV_TOFFEE                                               :آبنبات
+STR_ABBREV_BATTERIES                                            :BA
+STR_ABBREV_PLASTIC                                              :PL
+STR_ABBREV_FIZZY_DRINKS                                         :FZ
+STR_ABBREV_NONE                                                 :NO
+STR_ABBREV_ALL                                                  :همه
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}مسافر{P "" s}
@@ -188,31 +188,35 @@ STR_COLOUR_BROWN                                                :قهوه‌ای
 STR_COLOUR_GREY                                                 :خاکستری
 STR_COLOUR_WHITE                                                :سفید
 
+###length 17
+
+
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}مایل بر ساعت
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}کیلومتر بر ساعت
-STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}متر بر ثانیه
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}مایل بر ساعت
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}کیلومتر بر ساعت
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}متر بر ثانیه
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}اسب بخار
-STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}اسب بخار
-STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}کیلووات
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}اسب بخار
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}اسب بخار
+STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}کیلووات
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}تن
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}کیلوگرم
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}تن
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}کیلوگرم
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}تن
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}کیلوگرم
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}لیتر
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}متر مکعب
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}تن
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}کیلوگرم
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}لیتر{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}متر مکعب
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}لیتر
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}متر مکعب
 
-STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}کیلو نیوتن
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}لیتر{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}متر مکعب
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}پا
-STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}متر
+STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}کیلو نیوتن
+
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}پا
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}متر
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}متن فیلتر:
@@ -366,9 +370,8 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :هوش مصنوعی / تنظیمات بازی
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :تنظیمات NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :گزینه های شفافیت
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :نام شهرها نشان داده شود
@@ -877,74 +880,49 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}موقع
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}تنظیمات بازی
+
+
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}واحد پول
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}انتخب واحد پول
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :پوند (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :دلار ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :یورو (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :ین (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :شیلینگ استرالیا (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :فرانک بلژیک (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :فرانک سوییس (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :کرونای چک (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :مارک آلمان (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :کرون دانمارک (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :پزوتا (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :مارک فنلاند (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :فرانک (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :دراخمای یونان (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :فورینت مجارستان (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :کرون ایسلندی (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :لیره ایتالیا (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :گیلدر هلندی (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :کرون نروژ (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :زلتای لهستانی (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :لئو رومانیایی (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :روبل روسیه (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :تولار اسلونی (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :کرون سوییس (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :لیره ترکیه (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :کرونای اسلواکی (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :رئال برزیل (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :کرونی استونی (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :لیتاس لیتوانی (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :وان کره جنوبی (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :رند آفریقای جنوبی (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :پوند
+STR_GAME_OPTIONS_CURRENCY_USD                                   :دلار
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :یورو
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :ین
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :شیلینگ استرالیا
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :فرانک بلژیک
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :فرانک سوییس
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :کرونای چک
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :مارک آلمان
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :کرون دانمارک
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :پزوتا
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :مارک فنلاند
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :فرانک
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :دراخمای یونان
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :فورینت مجارستان
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :کرون ایسلندی
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :لیره ایتالیا
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :گیلدر هلندی
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :کرون نروژ
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :زلتای لهستانی
+STR_GAME_OPTIONS_CURRENCY_RON                                   :لئو رومانیایی
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :روبل روسیه
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :تولار اسلونی
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :کرون سوییس
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :لیره ترکیه
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :کرونای اسلواکی
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :رئال برزیل
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :کرونی استونی
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :لیتاس لیتوانی
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :وان کره جنوبی
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :رند آفریقای جنوبی
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :دلخواه...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :لیره گرجستان (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :ریال ایران (IRR)
-
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :چپ فرمان
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :راست فرمان
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK} نام شهرها
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}انتخاب نوع نام شهرها
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :انگلیسی (اصلی)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :فرانسوی
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :آلمانی
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :انگلیسی (اضافه)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :آمریکای لاتین
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :سیلی
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :سوئدی
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :هلندی
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :فنلاند
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :لهستان
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :اسلواکی
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :نروژی
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :مجاری
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :اتریشی
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :رومانیایی
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :چکی
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :سوییسی
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :دانمارکی
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :ترکیه ای
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :ایتالیایی
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :کاتالانی
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :لیره گرجستان
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :ریال ایران
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK} ذخیره اتوماتیک
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK} انتخاب فاصله زمانی بین ذخیره کردن های اتوماتیک
@@ -952,10 +930,6 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK} انت�
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :خاموش
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :هر ماه
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :هر ۳ ماه
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :هر ۶ ماه
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :هر ۱۲ ماه
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}زبان
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}زبان واسط کاربری را برای استفاده انتخاب کنید
@@ -970,7 +944,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
 
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :دو برابر
+
 
 
 
@@ -1018,8 +992,6 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}دیرت
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}پیشنما: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}۱۰۰۰۰ پوند (£) به واحد پول شما می شود
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}تغییر دلخواه پارامترهای واحد پول
-
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
 
 STR_NONE                                                        :هیچکدام
 STR_FUNDING_ONLY                                                :فقط سرمایه گذاری
@@ -1070,16 +1042,22 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :آب و هوای معتدل
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :آب و هوای قطبی
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :آب و هوای استوایی
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :دنیای اسباب بازی ها
+
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :بسیار یکدست
 STR_TERRAIN_TYPE_FLAT                                           :یکدست
 STR_TERRAIN_TYPE_HILLY                                          :تپه مانند
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :کوه مانند
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :آسان گیر
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :سخت گیر
 STR_CITY_APPROVAL_HOSTILE                                       :دشمنانه
+STR_CITY_APPROVAL_PERMISSIVE                                    :آسان گیر
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}هیچ بسته هوش مصنوعی موجود نیست...{}شما می توانید چندین بسته هوش مصنوعی(AI) را از قسمت محتویات برخط بارگیری کنید
 
@@ -1131,7 +1109,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :چپ
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :مرکز
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :راست
 
+
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :حداکثر اعتبار اولیه: {STRING}
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :نرخ سود: {STRING}
 
@@ -1241,6 +1221,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغیی
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :تعمیر و نگهداری زیرساخت ها: {STRING}
 
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :فرودگاه‌ها هیچ‌گاه از کار نیافتند: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :اعلام هشدار هنگام گم شدن وسیله نقلیه: {STRING}
@@ -1315,6 +1296,10 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :بهبودیا�
 STR_CONFIG_SETTING_ROAD_SIDE                                    :خودروهای جاده ای: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :انتخاب جهت رانندگی
 
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :چپ فرمان
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :راست فرمان
+
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :جهت چرخش نقشه بلندی: {STRING}
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :پادساعت‌گرد
@@ -1335,6 +1320,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :رنگ استف
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :سبز
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :سبز تیره
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفش
+
+###length 4
 
 ###length 4
 
@@ -1369,6 +1356,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :دستور+کل
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :کنترل+کلیک
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :خاموش
 
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :ذخیره خودکار: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :انتخاب فاصله زمانی بین ذخیره کردن های خودکار
@@ -1409,8 +1397,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :نمایش ری
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :فعال ماندن ابزار ساخت و ساز پس از استفاده: {STRING}
 
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :گروه‌بندی هزینه‌ها در پنجره مالی شرکت: {STRING}
-
 
 ###setting-zero-is-special
 
@@ -1418,6 +1404,7 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :گروه‌بن
 
 
 
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :هنگام کلیک دکمه ها بوق بزن
 
 
 
@@ -1455,10 +1442,12 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :فعال کرد
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :غیر فعال کردن ریل برقی: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :رسیدن اولین وسیله نقلیه به یکی ازایستگاه های بازیکن: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :هنگام رسیدن هر وسیله به ایستگاه برای اولین بار روزنامه را نشان بده
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :رسیدن اولین وسیله نقلیه به یکی ازایستگاه ها کامپوتر: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حوادث / بلایا: {STRING}
+
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :اطلاعات شرکت: {STRING}
 
@@ -1494,9 +1483,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :سال شروع
 ###setting-zero-is-special
 
 ###length 3
-
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :قابلیت خرید سهام بقیه شرکت‌ها: {STRING}
-
 
 
 
@@ -1570,7 +1556,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضرب ابت
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :واحدهای سرعت: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :هر زمان که سرعت در محیط بازی نمایش داده شود، آن را با واحد انتخاب شده نمایش بده
-###length 4
+###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :امپریال (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :متریک (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
@@ -1605,18 +1591,18 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :امپریال 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :متریک (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :متر (m)
 
-STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}بومی سازی
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}واسط کاربری
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}ساخت و ساز
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}وسایل نقلیه
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}مسیریابی
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}محیط زیست
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}مقامات
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}شهرها
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}صنایع
-STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}توزیع محموله
-STR_CONFIG_SETTING_AI                                           :{ORANGE}رقیبان
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}بازیگران رایانه
+STR_CONFIG_SETTING_LOCALISATION                                 :بومی سازی
+STR_CONFIG_SETTING_INTERFACE                                    :واسط کاربری
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :ساخت و ساز
+STR_CONFIG_SETTING_VEHICLES                                     :وسایل نقلیه
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :مسیریابی
+STR_CONFIG_SETTING_ENVIRONMENT                                  :محیط زیست
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :مقامات
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :شهرها
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :صنایع
+STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :توزیع محموله
+STR_CONFIG_SETTING_AI                                           :رقیبان
+STR_CONFIG_SETTING_AI_NPC                                       :بازیگران رایانه
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :مسیریاب برای قطارها: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :مسیریاب برای خودروهای جاده ای: {STRING}
@@ -1624,7 +1610,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :مسیریاب 
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :برگشت خودکار با رسیدن به نشانه ها: {STRING}
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(توصیه می گردد)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(توصیه می گردد)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}تغییر مقدار
 
@@ -1658,7 +1644,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}بازی
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}تنضیمات بازی
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}تنظیمات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK} تنظیمات هوش مصنوعی / اسکریپت
 STR_INTRO_QUIT                                                  :{BLACK}خروج
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}شروع بازی جدید. Ctrl+Click پیش تنظیمات نقشه را رد و از تنظیمات گذشته استفاده می کند.
@@ -1677,7 +1662,6 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}نشان
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}نمایش جدول بالاترین امتیازات
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}نمایش تنظیمات NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}نمایش تنظیمات هوش مصنوعی و اسکریپت های بازی
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} خروج از 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}این ترجمه {NUM} رشته{P ی های}ترجمه نشده دارد. با ثبت نام کردن به عنوان مترجم ما را در بهتر سازی OpenTTD یاری نمایید. فایل readme.txt را برای جزییات بیشتر بخوانید.
@@ -1704,12 +1688,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}هوا�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}تغییر تاریخ: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}تغییر سال جاری
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}قابلیت تغییر سطح تولید صنایع: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :آب و هوای معتدل
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :آب و هوای قطبی
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :آب و هوای استوایی
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :دنیای اسباب بازی ها
 
 # Livery window
 
@@ -1902,6 +1880,8 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}لیست
 # Matches ConnectionType
 ###length 5
 
+
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}آیا از حذف شرکت «{COMPANY}» مطمئنید؟
 
 
 
@@ -2102,6 +2082,8 @@ STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}اشباع شده
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}بیش از ظرفیت
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}نور ناحیه ی اطراف ایستگاه
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}خاموش
@@ -2190,8 +2172,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}زیاد
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}انتخب پل راه آهن
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}ساخت پل ماشین رو
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK} ساخت پل - بر روی پل مورد نظر خود کلیک کنید تا ساخته شود
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :معلق، فولادی
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :پیوسته، فولادی
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :پایه دار، فولادی
@@ -2310,6 +2290,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}درخت
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}نشاندن درختان با نوع تصادفی.گرفتن دکمه شیفت برآورد هزینه ساخت را نمایش می دهد
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK} درخت های تصادفی
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK} به شکل تصافی در تمام محل درخت بکار
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK} با کشیدن بر روی زمین به شکل تکی درخت بکار
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
@@ -2540,15 +2521,39 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}ساخت
 STR_MAPGEN_MAPSIZE                                              :{BLACK}اندازه نقشه:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}تعداد شهرها:
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK} نام شهرها
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}انتخاب نوع نام شهرها
 STR_MAPGEN_DATE                                                 :{BLACK}تاریخ:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}تعداد صنایع:
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}سازنده زمین:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}نوع پستی/بلندی:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}سطح دریا:
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}سطح دریا:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}رودخانه ها:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}همواری:
 STR_MAPGEN_VARIETY                                              :{BLACK}توزیع انواع:
 STR_MAPGEN_GENERATE                                             :{WHITE}بساز
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :انگلیسی (اصلی)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :فرانسوی
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :آلمانی
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :انگلیسی (اضافه)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :آمریکای لاتین
+STR_MAPGEN_TOWN_NAME_SILLY                                      :سیلی
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :سوئدی
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :هلندی
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :فنلاند
+STR_MAPGEN_TOWN_NAME_POLISH                                     :لهستان
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :اسلواکی
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :نروژی
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :مجاری
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :اتریشی
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :رومانیایی
+STR_MAPGEN_TOWN_NAME_CZECH                                      :چکی
+STR_MAPGEN_TOWN_NAME_SWISS                                      :سوییسی
+STR_MAPGEN_TOWN_NAME_DANISH                                     :دانمارکی
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :ترکیه ای
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ایتالیایی
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :کاتالانی
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}لبه های نقشه:
@@ -2685,6 +2690,10 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}تصوی
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}نمایش تصویر عادی قبلی، بدون انجام دادن هر گونه تغییرات
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}نمایش تصویر انتخاب شده. تغییر مکان تصویر در زمان بارگزاری اعمال نمی شود
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}تغییر مکان تصویر، تغییر مقدار اضافه شونده به X و Y
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}برداشتن تصویر
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}برداشتن یک تصویر از یک نقطه از صفحه نمایش
 
@@ -2695,7 +2704,6 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}هشدار: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}خطا: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}خطای وخیم: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}یک خطای وخیم در NewGRF اتفاق افتاده:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} با TTDPatch که ویرایش آن توسط OpenTTD گزارش شده کار نمی کند
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} برای ویرایش {STRING}TTD می باشد
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} طراحی شده برای استفاده با {STRING}
@@ -2840,6 +2848,7 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}روی �
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}سوال
+STR_GOAL_QUESTION_CAPTION_WARNING                               :هشدار
 
 # Goal Question button list
 ###length 18
@@ -2945,8 +2954,10 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}تغیی
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ویرایش نام نقطه راه
 
 # Finances window
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}هزینه/دریافتی
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 3
+
 
 ###length 13
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}ساخت و ساز
@@ -2955,8 +2966,6 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}هزین�
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}هزینه های نگهداری خودروهای جاده
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}هزینه های نگهداری هواپیما
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}هزینه های نگهداری کشتی
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}هزینه های نگهداری مستغلات
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}درآمد قطارها
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
@@ -2966,7 +2975,6 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}زیرس
 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} هواپیما
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}ارزش شرکت: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% توسط {COMPANY} خریداری شده)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}زیرساخت:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} قطعه {P ی های} ریل
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} قطعه{P ی های}راه
@@ -2980,11 +2988,7 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}دیدن
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}جزییات
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}مشاهده جزییات تعداد زیرساخت ها
 
-
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}25% سهام شرکت را بخر
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}25% سهام شرکت را بفروش
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}25% سهام این شرکت را بخر.Shift+Click برآورد قیمت سهام را بدون فروش سهام نشان می دهد.
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25% سهام این شرکت را بفروش.دکمه Shift+Clickبرآورد قیمت را بدون فروش سهام نمایش می دهد
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}پالت رنگی
 
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :مدیر عامل
 
@@ -3006,6 +3010,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :کارخانه ها
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- هیچ -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3055,6 +3060,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}مشاه
 
 
 
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}حذف گروه
 
 
 
@@ -3077,6 +3083,8 @@ STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}سرعت
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}سرعت در کانال/رودخانه: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_REFITTABLE                                    :(قابل تعمیر)
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}برد: {GOLD}{COMMA} قطعه
+
+###length 3
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید. برای مخفی یا پدیدار کردن انواع قطار کنترل+کلیک کنید
@@ -3181,6 +3189,7 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}نمای
 
 ###length VEHICLE_TYPES
 
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW} آیا از فروش تمامی وسایل انبار اطمینان دارید؟
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}پیغام از سازنده ی وسیله نقلیه
@@ -3195,6 +3204,7 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ماشین جا
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :هواپیما
 STR_ENGINE_PREVIEW_SHIP                                         :کشتی
 
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}قیمت: {CURRENCY_LONG} وزن: {WEIGHT_SHORT}{}سرعت: {VELOCITY}  قدرت: {POWER}  Max. T.E.: {6:FORCE}{}هزینه استهلاک {4:CURRENCY_LONG}/yr{}ظرفیت: {5:CARGO_LONG}
 
 # Autoreplace window
 
@@ -3341,6 +3351,7 @@ STR_ORDERS_END_OF_ORDERS                                        :- - پایان 
 # Order bottom buttons
 
 
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :درصورت پذیرش تخلیه کن
 
 
 
@@ -3350,6 +3361,7 @@ STR_ORDERS_END_OF_ORDERS                                        :- - پایان 
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :عمر مفید باقی مانده (سال)
 ###next-name-looks-similar
 
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :کمتر است از
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :صحیح است
 
 
@@ -3358,6 +3370,7 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}لغو �
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}پاک کردن
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}پاک کردن دستور مشخص شده
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}همگی دستورات را پاک کن
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}برو به
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}وارد کردن دستور جدید قبل از دستور مشخص شده. یا اضافه کردن آن به آخر لیست. فرستادن به مرکز تعمیر، دستور سرویس خودکار را غیرفعال می کند
@@ -3426,12 +3439,12 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}دیدن
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}پنجره رفع اشکال کد فقط برای سرور قابل دسترس است
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}تنظیمات هوش مصنوعی / بازی
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}کد بازی که در بازی بعدی بارگذاری می شود
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}هوش مصنوعی که در بازی بعدی بارگذاری می شود
 STR_AI_CONFIG_HUMAN_PLAYER                                      :بازیکن آدمیزاد
 STR_AI_CONFIG_RANDOM_AI                                         :انتخاب هوش مصنوعی به صورت اتفاقی
 STR_AI_CONFIG_NONE                                              :(هیچکدام)
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :حرکت به بالا
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}حرکت دادن AI انتخاب شده به سمت بالا در لیست
@@ -3441,8 +3454,6 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}حرکت
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کدبازی
 STR_AI_CONFIG_AI                                                :{SILVER}هوشهای مصنوعی
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}انتخاب {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :هوش مصنوعی(AI)
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :کد بازی
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}بارگزاری کد دیگر
@@ -3464,13 +3475,10 @@ STR_AI_LIST_CANCEL                                              :{BLACK}لغو
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}کد را تغییر نده
 
 
-# AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} پارامترها
+# Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :هوش مصنوعی(AI)
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :کد بازی
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}بستن
 STR_AI_SETTINGS_RESET                                           :{BLACK}بازنشاندن
-STR_AI_SETTINGS_START_DELAY                                     :تعداد روزهایی که این بازیگر هوش مصنوعی پس از بازیگر هوش مصنوعی قبلی قبل از اتصال صبر می کند(کم و بیش): {ORANGE}{STRING}
 
 
 # Textfile window
@@ -3479,7 +3487,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}متن �
 STR_TEXTFILE_VIEW_README                                        :{BLACK}مشاهده راهنما
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}گزارش تغییر
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}گواهی
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}راهنمای {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} گزارش تغییرات {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} گواهی {STRING}
@@ -3546,8 +3554,6 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}بیش �
 # Company related errors
 
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}ساختمان مرکزی را نمی شود اینجا ساخت ...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}نمی شود 25% سهام این شرکت را خرید
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}نمی شود 25% سهام این شرکت را فروخت
 
 # Town related errors
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}نمی توان اسم شهر را تغییر داد
@@ -3555,6 +3561,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}اینج
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}به حاشیه ی نقشه زیادی نزدیک است
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}به شهر دیگری بسیار نزدیک است
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}تعداد شهر ها بسیار زیاد شده
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}مکان مناسبی برای قرار دادن مجسمه در مرکز این شهر وجود ندارد
 
 # Industry related errors
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}نمی شود {STRING} اینجا ساخت
@@ -3595,6 +3602,7 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}اول �
 
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}نمیتوان اینجا شناوری قرار داد
 
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}ابتدا باید مقصد ریل حذف شود
 
 # Depot related errors
 
@@ -3607,6 +3615,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}متشک
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}... این وسیله را نمی توان حرکت داد
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}مخزن یافت نشد
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :نوع تعمیرگاه اشتباه
 
@@ -3746,6 +3755,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکا
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... وسیله نقلیه منهدم شد
 
+
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}بطور کلی هیچ خودرویی در دسترس نخواهد بود
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}تنظیمات مربوط به NewGRF را تغییر دهید
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}هنوز خودرویی در دسترس نیست
@@ -3777,6 +3787,8 @@ STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}نمی �
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}نمی توان برنامه حرکت را کپی کرد...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است...
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... هواپیما برد کافی ندارد
+
+# Extra messages which go on the third line of errors, explaining why orders failed
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}نمی شود مدیریت زمانی وسیله را تغییر داد...
@@ -4191,10 +4203,10 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :هلیکوپت�
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(شرکت {COMMA})
 STR_FORMAT_GROUP_NAME                                           :گروه {COMMA}
@@ -4274,33 +4286,8 @@ STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
-STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
-STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
-STR_BLACK_INT                                                   :{BLACK}{NUM}
-STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
-STR_BLACK_STRING                                                :{BLACK}{STRING}
-STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
-STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING}{WHITE}
-STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

@@ -14,6 +14,7 @@
 #include "../vehicle_base.h"
 #include "../town.h"
 #include "../newgrf.h"
+#include "../timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -27,13 +28,13 @@ struct OldWaypoint {
 	TileIndex xy;
 	TownID town_index;
 	Town *town;
-	uint16 town_cn;
+	uint16_t town_cn;
 	StringID string_id;
 	std::string name;
-	uint8 delete_ctr;
-	Date build_date;
-	uint8 localidx;
-	uint32 grfid;
+	uint8_t delete_ctr;
+	TimerGameCalendar::Date build_date;
+	uint8_t localidx;
+	uint32_t grfid;
 	const StationSpec *spec;
 	Owner owner;
 
@@ -74,10 +75,11 @@ void MoveWaypointsToBaseStations()
 			if (wp.delete_ctr != 0) continue; // The waypoint was deleted
 
 			/* Waypoint indices were not added to the map prior to this. */
-			_m[wp.xy].m2 = (StationID)wp.index;
+			Tile tile = wp.xy;
+			tile.m2() = (StationID)wp.index;
 
-			if (HasBit(_m[wp.xy].m3, 4)) {
-				wp.spec = StationClass::Get(STAT_CLASS_WAYP)->GetSpec(_m[wp.xy].m4 + 1);
+			if (HasBit(tile.m3(), 4)) {
+				wp.spec = StationClass::Get(STAT_CLASS_WAYP)->GetSpec(tile.m4() + 1);
 			}
 		}
 	} else {
@@ -102,16 +104,16 @@ void MoveWaypointsToBaseStations()
 		TileIndex t = wp.xy;
 		/* Sometimes waypoint (sign) locations became disconnected from their actual location in
 		 * the map array. If this is the case, try to locate the actual location in the map array */
-		if (!IsTileType(t, MP_RAILWAY) || GetRailTileType(t) != 2 /* RAIL_TILE_WAYPOINT */ || _m[t].m2 != wp.index) {
+		if (!IsTileType(t, MP_RAILWAY) || GetRailTileType(t) != 2 /* RAIL_TILE_WAYPOINT */ || Tile(t).m2() != wp.index) {
 			Debug(sl, 0, "Found waypoint tile {} with invalid position", t);
-			for (t = 0; t < MapSize(); t++) {
-				if (IsTileType(t, MP_RAILWAY) && GetRailTileType(t) == 2 /* RAIL_TILE_WAYPOINT */ && _m[t].m2 == wp.index) {
+			for (t = 0; t < Map::Size(); t++) {
+				if (IsTileType(t, MP_RAILWAY) && GetRailTileType(t) == 2 /* RAIL_TILE_WAYPOINT */ && Tile(t).m2() == wp.index) {
 					Debug(sl, 0, "Found actual waypoint position at {}", t);
 					break;
 				}
 			}
 		}
-		if (t == MapSize()) {
+		if (t == Map::Size()) {
 			SlErrorCorrupt("Waypoint with invalid tile");
 		}
 
@@ -125,19 +127,20 @@ void MoveWaypointsToBaseStations()
 		new_wp->string_id  = STR_SV_STNAME_WAYPOINT;
 
 		/* The tile might've been reserved! */
-		bool reserved = !IsSavegameVersionBefore(SLV_100) && HasBit(_m[t].m5, 4);
+		Tile tile(t);
+		bool reserved = !IsSavegameVersionBefore(SLV_100) && HasBit(tile.m5(), 4);
 
 		/* The tile really has our waypoint, so reassign the map array */
-		MakeRailWaypoint(t, GetTileOwner(t), new_wp->index, (Axis)GB(_m[t].m5, 0, 1), 0, GetRailType(t));
+		MakeRailWaypoint(tile, GetTileOwner(tile), new_wp->index, (Axis)GB(tile.m5(), 0, 1), 0, GetRailType(tile));
 		new_wp->facilities |= FACIL_TRAIN;
-		new_wp->owner = GetTileOwner(t);
+		new_wp->owner = GetTileOwner(tile);
 
-		SetRailStationReservation(t, reserved);
+		SetRailStationReservation(tile, reserved);
 
 		if (wp.spec != nullptr) {
-			SetCustomStationSpecIndex(t, AllocateSpecToStation(wp.spec, new_wp, true));
+			SetCustomStationSpecIndex(tile, AllocateSpecToStation(wp.spec, new_wp, true));
 		}
-		new_wp->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
+		new_wp->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 
 		wp.new_index = new_wp->index;
 	}

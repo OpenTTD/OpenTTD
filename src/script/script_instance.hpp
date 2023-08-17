@@ -10,8 +10,10 @@
 #ifndef SCRIPT_INSTANCE_HPP
 #define SCRIPT_INSTANCE_HPP
 
+#include <variant>
 #include <squirrel.h>
 #include "script_suspend.hpp"
+#include "script_log_types.hpp"
 
 #include "../command_type.h"
 #include "../company_type.h"
@@ -21,9 +23,24 @@ static const uint SQUIRREL_MAX_DEPTH = 25; ///< The maximum recursive depth for 
 
 /** Runtime information about a script like a pointer to the squirrel vm and the current state. */
 class ScriptInstance {
+private:
+	/** The type of the data that follows in the savegame. */
+	enum SQSaveLoadType {
+		SQSL_INT             = 0x00, ///< The following data is an integer.
+		SQSL_STRING          = 0x01, ///< The following data is an string.
+		SQSL_ARRAY           = 0x02, ///< The following data is an array.
+		SQSL_TABLE           = 0x03, ///< The following data is an table.
+		SQSL_BOOL            = 0x04, ///< The following data is a boolean.
+		SQSL_NULL            = 0x05, ///< A null variable.
+		SQSL_ARRAY_TABLE_END = 0xFF, ///< Marks the end of an array or table, no data follows.
+	};
+
 public:
 	friend class ScriptObject;
 	friend class ScriptController;
+
+	typedef std::variant<SQInteger, std::string, SQBool, SQSaveLoadType> ScriptDataVariant;
+	typedef std::list<ScriptDataVariant> ScriptData;
 
 	/**
 	 * Create a new script.
@@ -37,14 +54,14 @@ public:
 	 * @param instance_name The name of the instance out of the script to load.
 	 * @param company Which company this script is serving.
 	 */
-	void Initialize(const char *main_script, const char *instance_name, CompanyID company);
+	void Initialize(const std::string &main_script, const std::string &instance_name, CompanyID company);
 
 	/**
 	 * Get the value of a setting of the current instance.
 	 * @param name The name of the setting.
 	 * @return the value for the setting, or -1 if the setting is not known.
 	 */
-	virtual int GetSetting(const char *name) = 0;
+	virtual int GetSetting(const std::string &name) = 0;
 
 	/**
 	 * Find a library.
@@ -52,7 +69,7 @@ public:
 	 * @param version The version the library should have.
 	 * @return The library if found, nullptr otherwise.
 	 */
-	virtual class ScriptInfo *FindLibrary(const char *library, int version) = 0;
+	virtual class ScriptInfo *FindLibrary(const std::string &library, int version) = 0;
 
 	/**
 	 * A script in multiplayer waits for the server to handle its DoCommand.
@@ -78,7 +95,7 @@ public:
 	/**
 	 * Get the log pointer of this script.
 	 */
-	void *GetLogPointer();
+	ScriptLogTypes::LogData &GetLogData();
 
 	/**
 	 * Return a true/false reply for a DoCommand.
@@ -116,6 +133,16 @@ public:
 	static void DoCommandReturnStoryPageElementID(ScriptInstance *instance);
 
 	/**
+	 * Return a LeagueTableID reply for a DoCommand.
+	 */
+	static void DoCommandReturnLeagueTableID(ScriptInstance *instance);
+
+	/**
+	 * Return a LeagueTableElementID reply for a DoCommand.
+	 */
+	static void DoCommandReturnLeagueTableElementID(ScriptInstance *instance);
+
+	/**
 	 * Get the controller attached to the instance.
 	 */
 	class ScriptController *GetController() { return controller; }
@@ -136,11 +163,18 @@ public:
 	static void SaveEmpty();
 
 	/**
-	 * Load data from a savegame and store it on the stack.
+	 * Load data from a savegame.
 	 * @param version The version of the script when saving, or -1 if this was
 	 *  not the original script saving the game.
+	 * @return a pointer to loaded data.
 	 */
-	void Load(int version);
+	static ScriptData *Load(int version);
+
+	/**
+	 * Store loaded data on the stack.
+	 * @param data The loaded data to store on the stack.
+	 */
+	void LoadOnStack(ScriptData *data);
 
 	/**
 	 * Load and discard data from a savegame.
@@ -178,12 +212,12 @@ public:
 	 * DoCommand callback function for all commands executed by scripts.
 	 * @param result The result of the command.
 	 * @param tile The tile on which the command was executed.
-	 * @param p1 p1 as given to DoCommandPInternal.
-	 * @param p2 p2 as given to DoCommandPInternal.
+	 * @param data Command data as given to DoCommandPInternal.
+	 * @param result_data Extra data return from the command.
 	 * @param cmd cmd as given to DoCommandPInternal.
 	 * @return true if we handled result.
 	 */
-	bool DoCommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd);
+	bool DoCommandCallback(const CommandCost &result, const CommandDataBuffer &data, CommandDataBuffer result_data, Commands cmd);
 
 	/**
 	 * Insert an event for this script.
@@ -213,7 +247,7 @@ public:
 
 protected:
 	class Squirrel *engine;               ///< A wrapper around the squirrel vm.
-	const char *versionAPI;               ///< Current API used by this script.
+	std::string versionAPI;               ///< Current API used by this script.
 
 	/**
 	 * Register all API functions to the VM.
@@ -226,7 +260,7 @@ protected:
 	 * @param dir Subdirectory to find the scripts in
 	 * @return true iff script loading should proceed
 	 */
-	bool LoadCompatibilityScripts(const char *api_version, Subdirectory dir);
+	bool LoadCompatibilityScripts(const std::string &api_version, Subdirectory dir);
 
 	/**
 	 * Tell the script it died.
@@ -236,7 +270,7 @@ protected:
 	/**
 	 * Get the callback handling DoCommands in case of networking.
 	 */
-	virtual CommandCallback *GetDoCommandCallback() = 0;
+	virtual CommandCallbackData *GetDoCommandCallback() = 0;
 
 	/**
 	 * Load the dummy script.
@@ -279,7 +313,9 @@ private:
 	 * Load all objects from a savegame.
 	 * @return True if the loading was successful.
 	 */
-	static bool LoadObjects(HSQUIRRELVM vm);
+	static bool LoadObjects(ScriptData *data);
+
+	static bool LoadObjects(HSQUIRRELVM vm, ScriptData *data);
 };
 
 #endif /* SCRIPT_INSTANCE_HPP */

@@ -31,5 +31,7 @@
         <string>NSApplication</string>
         <key>NSHighResolutionCapable</key>
         <string>True</string>
+        <key>LSMinimumSystemVersion</key>
+        <string>10.13.0</string>
 </dict>
 </plist>

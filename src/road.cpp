@@ -15,7 +15,7 @@
 #include "company_func.h"
 #include "company_base.h"
 #include "engine_base.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "landscape.h"
 #include "road.h"
 #include "road_func.h"
@@ -111,7 +111,18 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 {
 	if (company == OWNER_DEITY || company == OWNER_TOWN || _game_mode == GM_EDITOR || _generating_world) {
-		return true; // TODO: should there be a proper check?
+		const RoadTypeInfo *rti = GetRoadTypeInfo(roadtype);
+		if (rti->label == 0) return false;
+
+		/* Not yet introduced at this date. */
+		if (IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(MAX_DATE)) && rti->introduction_date > TimerGameCalendar::date) return false;
+
+		/*
+		 * Do not allow building hidden road types, except when a town may build it.
+		 * The GS under deity mode, as well as anybody in the editor builds roads that are
+		 * owned by towns. So if a town may build it, it should be buildable by them too.
+		 */
+		return (rti->flags & ROTFB_HIDDEN) == 0 || (rti->flags & ROTFB_TOWN_BUILD) != 0;
 	} else {
 		const Company *c = Company::GetIfValid(company);
 		if (c == nullptr) return false;
@@ -141,7 +152,7 @@ bool HasAnyRoadTypesAvail(CompanyID company, RoadTramType rtt)
  */
 bool ValParamRoadType(RoadType roadtype)
 {
-	return roadtype != INVALID_ROADTYPE && HasRoadTypeAvail(_current_company, roadtype);
+	return roadtype < ROADTYPE_END && HasRoadTypeAvail(_current_company, roadtype);
 }
 
 /**
@@ -152,7 +163,7 @@ bool ValParamRoadType(RoadType roadtype)
  * @return The road types that should be available when date
  *         introduced road types are taken into account as well.
  */
-RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, Date date)
+RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, TimerGameCalendar::Date date)
 {
 	RoadTypes rts = current;
 
@@ -162,7 +173,7 @@ RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, Date date)
 		if (rti->label == 0) continue;
 
 		/* Not date introduced. */
-		if (!IsInsideMM(rti->introduction_date, 0, MAX_DAY)) continue;
+		if (!IsInsideMM(rti->introduction_date, 0, static_cast<int32_t>(MAX_DATE))) continue;
 
 		/* Not yet introduced at this date. */
 		if (rti->introduction_date > date) continue;
@@ -193,7 +204,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
-				(HasBit(e->company_avail, company) || _date >= e->intro_date + DAYS_IN_YEAR)) {
+				(HasBit(e->company_avail, company) || TimerGameCalendar::date >= e->intro_date + DAYS_IN_YEAR)) {
 			const RoadVehicleInfo *rvi = &e->u.road;
 			assert(rvi->roadtype < ROADTYPE_END);
 			if (introduces) {
@@ -204,7 +215,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRoadTypes(rts, _date);
+	if (introduces) return AddDateIntroducedRoadTypes(rts, TimerGameCalendar::date);
 	return rts;
 }
 
@@ -230,7 +241,7 @@ RoadTypes GetRoadTypes(bool introduces)
 		}
 	}
 
-	if (introduces) return AddDateIntroducedRoadTypes(rts, MAX_DAY);
+	if (introduces) return AddDateIntroducedRoadTypes(rts, MAX_DATE);
 	return rts;
 }
 
@@ -285,13 +296,13 @@ RoadTypes ExistingRoadTypes(CompanyID c)
 		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
 		/* Check whether available for all potential companies */
-		if (e->company_avail != (CompanyMask)-1) continue;
+		if (e->company_avail != MAX_UVALUE(CompanyMask)) continue;
 
 		known_roadtypes |= GetRoadTypeInfo(e->u.road.roadtype)->introduces_roadtypes;
 	}
 
 	/* Get the date introduced roadtypes as well. */
-	known_roadtypes = AddDateIntroducedRoadTypes(known_roadtypes, MAX_DAY);
+	known_roadtypes = AddDateIntroducedRoadTypes(known_roadtypes, MAX_DATE);
 
 	return known_roadtypes;
 }

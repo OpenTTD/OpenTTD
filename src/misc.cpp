@@ -11,11 +11,12 @@
 #include "landscape.h"
 #include "news_func.h"
 #include "ai/ai.hpp"
-#include "ai/ai_gui.hpp"
+#include "script/script_gui.h"
 #include "newgrf.h"
 #include "newgrf_house.h"
 #include "economy_func.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 #include "texteff.hpp"
 #include "gfx_func.h"
 #include "gamelog.h"
@@ -30,9 +31,11 @@
 #include "town_kdtree.h"
 #include "viewport_kdtree.h"
 #include "newgrf_profiling.h"
+#include "3rdparty/md5/md5.h"
 
 #include "safeguards.h"
 
+std::string _savegame_id; ///< Unique ID of the current savegame.
 
 extern TileIndex _cur_tileloop_tile;
 extern void MakeNewgameSettingsLive();
@@ -55,17 +58,51 @@ void InitializeCheats();
 void InitializeNPF();
 void InitializeOldNames();
 
+/**
+ * Generate an unique ID.
+ *
+ * It isn't as much of an unique ID as we would like, but our random generator
+ * can only produce 32bit random numbers.
+ * That is why we combine InteractiveRandom with the current (steady) clock.
+ * The first to add a bit of randomness, the second to ensure you can't get
+ * the same unique ID when you run it twice from the same state at different
+ * times.
+ *
+ * This makes it unlikely that two users generate the same ID for different
+ * subjects. But as this is not an UUID, so it can't be ruled out either.
+ */
+std::string GenerateUid(std::string_view subject)
+{
+	auto current_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+	std::string coding_string = fmt::format("{}{}{}", InteractiveRandom(), current_time, subject);
+
+	Md5 checksum;
+	MD5Hash digest;
+	checksum.Append(coding_string.c_str(), coding_string.length());
+	checksum.Finish(digest);
+
+	return FormatArrayAsHex(digest);
+}
+
+/**
+ * Generate an unique savegame ID.
+ */
+void GenerateSavegameId()
+{
+	_savegame_id = GenerateUid("OpenTTD Savegame ID");
+}
+
 void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settings)
 {
 	/* Make sure there isn't any window that can influence anything
 	 * related to the new game we're about to start/load. */
 	UnInitWindowSystem();
 
-	AllocateMap(size_x, size_y);
+	Map::Allocate(size_x, size_y);
 
 	_pause_mode = PM_UNPAUSED;
 	_game_speed = 100;
-	_tick_counter = 0;
+	TimerGameTick::counter = 0;
 	_cur_tileloop_tile = 1;
 	_thd.redsq = INVALID_TILE;
 	if (reset_settings) MakeNewgameSettingsLive();
@@ -73,7 +110,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	_newgrf_profilers.clear();
 
 	if (reset_date) {
-		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
+		TimerGameCalendar::SetDate(TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
 		InitializeOldNames();
 	}
 
@@ -100,7 +137,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	InitializeGraphGui();
 	InitializeObjectGui();
 	InitializeTownGui();
-	InitializeAIGui();
+	InitializeScriptGui();
 	InitializeTrees();
 	InitializeIndustries();
 	InitializeObjects();
@@ -121,10 +158,10 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 
 	ResetObjectToPlace();
 
-	GamelogReset();
-	GamelogStartAction(GLAT_START);
-	GamelogRevision();
-	GamelogMode();
-	GamelogGRFAddList(_grfconfig);
-	GamelogStopAction();
+	_gamelog.Reset();
+	_gamelog.StartAction(GLAT_START);
+	_gamelog.Revision();
+	_gamelog.Mode();
+	_gamelog.GRFAddList(_grfconfig);
+	_gamelog.StopAction();
 }

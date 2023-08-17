@@ -13,9 +13,15 @@
 #include "../window_type.h"
 #include "../gfx_func.h"
 
+void DrawSliderWidget(Rect r, int min_value, int max_value, int value, const std::map<int, StringID> &labels);
+bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int &value);
 
-void DrawVolumeSliderWidget(Rect r, byte value);
-bool ClickVolumeSliderWidget(Rect r, Point pt, byte &value);
-
+inline bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, byte &value)
+{
+	int tmp_value = value;
+	if (!ClickSliderWidget(r, pt, min_value, max_value, tmp_value)) return false;
+	value = tmp_value;
+	return true;
+}
 
 #endif /* WIDGETS_SLIDER_TYPE_H */

@@ -12,15 +12,15 @@
 
 #include "strings_type.h"
 
+
 /**
  * Struct containing information relating to NewGRF classes for stations and airports.
  */
 template <typename Tspec, typename Tid, Tid Tmax>
 struct NewGRFClass {
 private:
-	uint count;       ///< Number of specs in this class.
-	uint ui_count;    ///< Number of specs in this class potentially available to the user.
-	Tspec **spec;     ///< Array of specifications.
+	uint ui_count;             ///< Number of specs in this class potentially available to the user.
+	std::vector<Tspec *> spec; ///< List of specifications.
 
 	/**
 	 * The actual classes.
@@ -35,13 +35,13 @@ private:
 	static void InsertDefaults();
 
 public:
-	uint32 global_id; ///< Global ID for class, e.g. 'DFLT', 'WAYP', etc.
+	uint32_t global_id; ///< Global ID for class, e.g. 'DFLT', 'WAYP', etc.
 	StringID name;    ///< Name of this class.
 
 	void Insert(Tspec *spec);
 
 	/** Get the number of allocated specs within the class. */
-	uint GetSpecCount() const { return this->count; }
+	uint GetSpecCount() const { return static_cast<uint>(this->spec.size()); }
 	/** Get the number of potentially user-available specs within the class. */
 	uint GetUISpecCount() const { return this->ui_count; }
 	int GetUIFromIndex(int index) const;
@@ -53,14 +53,14 @@ public:
 	bool IsUIAvailable(uint index) const;
 
 	static void Reset();
-	static Tid Allocate(uint32 global_id);
+	static Tid Allocate(uint32_t global_id);
 	static void Assign(Tspec *spec);
 	static uint GetClassCount();
 	static uint GetUIClassCount();
 	static Tid GetUIClass(uint index);
 	static NewGRFClass *Get(Tid cls_id);
 
-	static const Tspec *GetByGrf(uint32 grfid, byte local_id, int *index);
+	static const Tspec *GetByGrf(uint32_t grfid, uint16_t local_id, int *index);
 };
 
 #endif /* NEWGRF_CLASS_H */

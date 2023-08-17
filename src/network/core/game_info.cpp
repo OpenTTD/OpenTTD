@@ -13,7 +13,7 @@
 #include "game_info.h"
 #include "../../core/bitmath_func.hpp"
 #include "../../company_base.h"
-#include "../../date_func.h"
+#include "../../timer/timer_game_calendar.h"
 #include "../../debug.h"
 #include "../../map_func.h"
 #include "../../game/game.hpp"
@@ -123,11 +123,11 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
 void FillStaticNetworkServerGameInfo()
 {
 	_network_game_info.use_password   = !_settings_client.network.server_password.empty();
-	_network_game_info.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+	_network_game_info.start_date     = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	_network_game_info.clients_max    = _settings_client.network.max_clients;
 	_network_game_info.companies_max  = _settings_client.network.max_companies;
-	_network_game_info.map_width      = MapSizeX();
-	_network_game_info.map_height     = MapSizeY();
+	_network_game_info.map_width      = Map::SizeX();
+	_network_game_info.map_height     = Map::SizeY();
 	_network_game_info.landscape      = _settings_game.game_creation.landscape;
 	_network_game_info.dedicated      = _network_dedicated;
 	_network_game_info.grfconfig      = _grfconfig;
@@ -149,7 +149,7 @@ const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
 	 */
 	_network_game_info.companies_on  = (byte)Company::GetNumItems();
 	_network_game_info.spectators_on = NetworkSpectatorCount();
-	_network_game_info.game_date     = _date;
+	_network_game_info.game_date     = TimerGameCalendar::date;
 	return &_network_game_info;
 }
 
@@ -164,7 +164,7 @@ const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
 static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config, std::string name)
 {
 	/* Find the matching GRF file */
-	const GRFConfig *f = FindGRFConfig(config->ident.grfid, FGCM_EXACT, config->ident.md5sum);
+	const GRFConfig *f = FindGRFConfig(config->ident.grfid, FGCM_EXACT, &config->ident.md5sum);
 	if (f == nullptr) {
 		AddGRFTextToList(config->name, name.empty() ? GetString(STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN) : name);
 		config->status = GCS_NOT_FOUND;
@@ -199,7 +199,7 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
 
 	/* NETWORK_GAME_INFO_VERSION = 5 */
 	GameInfo *game_info = Game::GetInfo();
-	p->Send_uint32(game_info == nullptr ? -1 : (uint32)game_info->GetVersion());
+	p->Send_uint32(game_info == nullptr ? -1 : (uint32_t)game_info->GetVersion());
 	p->Send_string(game_info == nullptr ? "" : game_info->GetName());
 
 	/* NETWORK_GAME_INFO_VERSION = 4 */
@@ -227,8 +227,8 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
 	}
 
 	/* NETWORK_GAME_INFO_VERSION = 3 */
-	p->Send_uint32(info->game_date);
-	p->Send_uint32(info->start_date);
+	p->Send_uint32(static_cast<int32_t>(info->game_date));
+	p->Send_uint32(static_cast<int32_t>(info->start_date));
 
 	/* NETWORK_GAME_INFO_VERSION = 2 */
 	p->Send_uint8 (info->companies_max);
@@ -255,7 +255,7 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
  */
 void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {
-	static const Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
+	static const TimerGameCalendar::Date MAX_DATE = TimerGameCalendar::ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
 
 	byte game_info_version = p->Recv_uint8();
 	NewGRFSerializationType newgrf_serialisation = NST_GRFID_MD5;
@@ -281,14 +281,14 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 		}
 
 		case 4: {
-			GRFConfig **dst = &info->grfconfig;
-			uint i;
+			/* Ensure that the maximum number of NewGRFs and the field in the network
+			 * protocol are matched to eachother. If that is not the case anymore a
+			 * check must be added to ensure the received data is still valid. */
+			static_assert(std::numeric_limits<uint8_t>::max() == NETWORK_MAX_GRF_COUNT);
 			uint num_grfs = p->Recv_uint8();
 
-			/* Broken/bad data. It cannot have that many NewGRFs. */
-			if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
-
-			for (i = 0; i < num_grfs; i++) {
+			GRFConfig **dst = &info->grfconfig;
+			for (uint i = 0; i < num_grfs; i++) {
 				NamedGRFIdentifier grf;
 				switch (newgrf_serialisation) {
 					case NST_GRFID_MD5:
@@ -323,8 +323,8 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 		}
 
 		case 3:
-			info->game_date      = Clamp(p->Recv_uint32(), 0, MAX_DATE);
-			info->start_date     = Clamp(p->Recv_uint32(), 0, MAX_DATE);
+			info->game_date      = Clamp(p->Recv_uint32(), 0, static_cast<int32_t>(MAX_DATE));
+			info->start_date     = Clamp(p->Recv_uint32(), 0, static_cast<int32_t>(MAX_DATE));
 			FALLTHROUGH;
 
 		case 2:
@@ -362,9 +362,8 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
  */
 void SerializeGRFIdentifier(Packet *p, const GRFIdentifier *grf)
 {
-	uint j;
 	p->Send_uint32(grf->grfid);
-	for (j = 0; j < sizeof(grf->md5sum); j++) {
+	for (size_t j = 0; j < grf->md5sum.size(); j++) {
 		p->Send_uint8(grf->md5sum[j]);
 	}
 }
@@ -376,9 +375,8 @@ void SerializeGRFIdentifier(Packet *p, const GRFIdentifier *grf)
  */
 void DeserializeGRFIdentifier(Packet *p, GRFIdentifier *grf)
 {
-	uint j;
 	grf->grfid = p->Recv_uint32();
-	for (j = 0; j < sizeof(grf->md5sum); j++) {
+	for (size_t j = 0; j < grf->md5sum.size(); j++) {
 		grf->md5sum[j] = p->Recv_uint8();
 	}
 }

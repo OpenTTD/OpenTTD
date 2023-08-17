@@ -83,9 +83,10 @@ const std::string &NetworkError::AsString() const
 		char buffer[512];
 		if (FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, NULL, this->error,
 			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, sizeof(buffer), NULL) == 0) {
-			seprintf(buffer, lastof(buffer), "Unknown error %d", this->error);
+			this->message.assign(fmt::format("Unknown error {}", this->error));
+		} else {
+			this->message.assign(buffer);
 		}
-		this->message.assign(buffer);
 #else
 		/* Make strerror thread safe by locking access to it. There is a thread safe strerror_r, however
 		 * the non-POSIX variant is available due to defining _GNU_SOURCE meaning it is not portable.
@@ -117,8 +118,6 @@ bool NetworkError::HasError() const
 {
 #if defined(_WIN32)
 	return NetworkError(WSAGetLastError());
-#elif defined(__OS2__)
-	return NetworkError(sock_errno());
 #else
 	return NetworkError(errno);
 #endif

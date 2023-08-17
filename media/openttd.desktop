@@ -6,6 +6,6 @@ Name=OpenTTD
 Icon=${BINARY_NAME}
 Exec=${BINARY_NAME}
 Terminal=false
-Categories=Game;
+Categories=Game;Simulation;
 Keywords=game;simulation;transport;tycoon;deluxe;economics;multiplayer;money;train;ship;bus;truck;aircraft;cargo;
 @Comment_STR_DESKTOP_SHORTCUT_COMMENT@

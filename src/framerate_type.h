@@ -80,7 +80,7 @@ enum PerformanceElement {
 DECLARE_POSTFIX_INCREMENT(PerformanceElement)
 
 /** Type used to hold a performance timing measurement */
-typedef uint64 TimingMeasurement;
+typedef uint64_t TimingMeasurement;
 
 /**
  * RAII class for measuring simple elements of performance.
@@ -121,5 +121,6 @@ public:
 };
 
 void ShowFramerateWindow();
+void ProcessPendingPerformanceMeasurements();
 
 #endif /* FRAMERATE_TYPE_H */

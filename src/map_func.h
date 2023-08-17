@@ -15,143 +15,365 @@
 #include "map_type.h"
 #include "direction_func.h"
 
-extern uint _map_tile_mask;
-
 /**
- * 'Wraps' the given tile to it is within the map. It does
- * this by masking the 'high' bits of.
- * @param x the tile to 'wrap'
- */
-
-#define TILE_MASK(x) ((x) & _map_tile_mask)
-
-/**
- * Pointer to the tile-array.
+ * Wrapper class to abstract away the way the tiles are stored. It is
+ * intended to be used to access the "map" data of a single tile.
  *
- * This variable points to the tile-array which contains the tiles of
- * the map.
+ * The wrapper is expected to be fully optimized away by the compiler, even
+ * with low optimization levels except when completely disabling it.
  */
-extern Tile *_m;
+class Tile {
+private:
+	friend struct Map;
+	/**
+	 * Data that is stored per tile. Also used TileExtended for this.
+	 * Look at docs/landscape.html for the exact meaning of the members.
+	 */
+	struct TileBase {
+		byte   type;   ///< The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
+		byte   height; ///< The height of the northern corner.
+		uint16_t m2;     ///< Primarily used for indices to towns, industries and stations
+		byte   m1;     ///< Primarily used for ownership information
+		byte   m3;     ///< General purpose
+		byte   m4;     ///< General purpose
+		byte   m5;     ///< General purpose
+	};
+
+	static_assert(sizeof(TileBase) == 8);
+
+	/**
+	 * Data that is stored per tile. Also used TileBase for this.
+	 * Look at docs/landscape.html for the exact meaning of the members.
+	 */
+	struct TileExtended {
+		byte m6;   ///< General purpose
+		byte m7;   ///< Primarily used for newgrf support
+		uint16_t m8; ///< General purpose
+	};
+
+	static TileBase *base_tiles;         ///< Pointer to the tile-array.
+	static TileExtended *extended_tiles; ///< Pointer to the extended tile-array.
+
+	TileIndex tile; ///< The tile to access the map data for.
+
+public:
+	/**
+	 * Create the tile wrapper for the given tile.
+	 * @param tile The tile to access the map for.
+	 */
+	debug_inline Tile(TileIndex tile) : tile(tile) {}
+
+	/**
+	 * Create the tile wrapper for the given tile.
+	 * @param tile The tile to access the map for.
+	 */
+	Tile(uint tile) : tile(tile) {}
+
+	/**
+	 * Implicit conversion to the TileIndex.
+	 */
+	debug_inline constexpr operator TileIndex() const { return tile; }
+
+	/**
+	 * Implicit conversion to the uint for bounds checking.
+	 */
+	debug_inline constexpr operator uint() const { return static_cast<uint32_t>(tile); }
+
+	/**
+	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &type()
+	{
+		return base_tiles[static_cast<uint32_t>(tile)].type;
+	}
+
+	/**
+	 * The height of the northern corner
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the height for.
+	 * @return reference to the byte holding the height.
+	 */
+	debug_inline byte &height()
+	{
+		return base_tiles[static_cast<uint32_t>(tile)].height;
+	}
+
+	/**
+	 * Primarily used for ownership information
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m1()
+	{
+		return base_tiles[static_cast<uint32_t>(tile)].m1;
+	}
+
+	/**
+	 * Primarily used for indices to towns, industries and stations
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the uint16_t holding the data.
+	 */
+	debug_inline uint16_t &m2()
+	{
+		return base_tiles[static_cast<uint32_t>(tile)].m2;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m3()
+	{
+		return base_tiles[static_cast<uint32_t>(tile)].m3;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m4()
+	{
+		return base_tiles[static_cast<uint32_t>(tile)].m4;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m5()
+	{
+		return base_tiles[static_cast<uint32_t>(tile)].m5;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m6()
+	{
+		return extended_tiles[static_cast<uint32_t>(tile)].m6;
+	}
+
+	/**
+	 * Primarily used for newgrf support
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the byte holding the data.
+	 */
+	debug_inline byte &m7()
+	{
+		return extended_tiles[static_cast<uint32_t>(tile)].m7;
+	}
+
+	/**
+	 * General purpose
+	 *
+	 * Look at docs/landscape.html for the exact meaning of the data.
+	 * @param tile The tile to get the data for.
+	 * @return reference to the uint16_t holding the data.
+	 */
+	debug_inline uint16_t &m8()
+	{
+		return extended_tiles[static_cast<uint32_t>(tile)].m8;
+	}
+};
 
 /**
- * Pointer to the extended tile-array.
- *
- * This variable points to the extended tile-array which contains the tiles
- * of the map.
+ * Size related data of the map.
  */
-extern TileExtended *_me;
+struct Map {
+private:
+	/**
+	 * Iterator to iterate all Tiles
+	 */
+	struct Iterator {
+		typedef Tile value_type;
+		typedef Tile *pointer;
+		typedef Tile &reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
 
-void AllocateMap(uint size_x, uint size_y);
+		explicit Iterator(TileIndex index) : index(index) {}
+		bool operator==(const Iterator &other) const { return this->index == other.index; }
+		bool operator!=(const Iterator &other) const { return !(*this == other); }
+		Tile operator*() const { return this->index; }
+		Iterator & operator++() { this->index++; return *this; }
+	private:
+		TileIndex index;
+	};
+
+	/*
+	 * Iterable ensemble of all Tiles
+	 */
+	struct IterateWrapper {
+		Iterator begin() { return Iterator(0); }
+		Iterator end() { return Iterator(Map::Size()); }
+		bool empty() { return false; }
+	};
+
+	static uint log_x;     ///< 2^_map_log_x == _map_size_x
+	static uint log_y;     ///< 2^_map_log_y == _map_size_y
+	static uint size_x;    ///< Size of the map along the X
+	static uint size_y;    ///< Size of the map along the Y
+	static uint size;      ///< The number of tiles on the map
+	static uint tile_mask; ///< _map_size - 1 (to mask the mapsize)
+
+public:
+	static void Allocate(uint size_x, uint size_y);
+
+	/**
+	 * Logarithm of the map size along the X side.
+	 * @note try to avoid using this one
+	 * @return 2^"return value" == Map::SizeX()
+	 */
+	debug_inline static uint LogX()
+	{
+		return Map::log_x;
+	}
+
+	/**
+	 * Logarithm of the map size along the y side.
+	 * @note try to avoid using this one
+	 * @return 2^"return value" == Map::SizeY()
+	 */
+	static inline uint LogY()
+	{
+		return Map::log_y;
+	}
+
+	/**
+	 * Get the size of the map along the X
+	 * @return the number of tiles along the X of the map
+	 */
+	debug_inline static uint SizeX()
+	{
+		return Map::size_x;
+	}
+
+	/**
+	 * Get the size of the map along the Y
+	 * @return the number of tiles along the Y of the map
+	 */
+	static inline uint SizeY()
+	{
+		return Map::size_y;
+	}
+
+	/**
+	 * Get the size of the map
+	 * @return the number of tiles of the map
+	 */
+	debug_inline static uint Size()
+	{
+		return Map::size;
+	}
+
+	/**
+	 * Gets the maximum X coordinate within the map, including MP_VOID
+	 * @return the maximum X coordinate
+	 */
+	debug_inline static uint MaxX()
+	{
+		return Map::SizeX() - 1;
+	}
+
+	/**
+	 * Gets the maximum Y coordinate within the map, including MP_VOID
+	 * @return the maximum Y coordinate
+	 */
+	static inline uint MaxY()
+	{
+		return Map::SizeY() - 1;
+	}
+
+
+	/**
+	 * 'Wraps' the given "tile" so it is within the map.
+	 * It does this by masking the 'high' bits of.
+	 * @param tile the tile to 'wrap'
+	 */
+	static inline TileIndex WrapToMap(TileIndex tile)
+	{
+		return static_cast<uint32_t>(tile) & Map::tile_mask;
+	}
+
+	/**
+	 * Scales the given value by the map size, where the given value is
+	 * for a 256 by 256 map.
+	 * @param n the value to scale
+	 * @return the scaled size
+	 */
+	static inline uint ScaleBySize(uint n)
+	{
+		/* Subtract 12 from shift in order to prevent integer overflow
+		 * for large values of n. It's safe since the min mapsize is 64x64. */
+		return CeilDiv(n << (Map::LogX() + Map::LogY() - 12), 1 << 4);
+	}
+
+	/**
+	 * Scales the given value by the maps circumference, where the given
+	 * value is for a 256 by 256 map
+	 * @param n the value to scale
+	 * @return the scaled size
+	 */
+	static inline uint ScaleBySize1D(uint n)
+	{
+		/* Normal circumference for the X+Y is 256+256 = 1<<9
+		 * Note, not actually taking the full circumference into account,
+		 * just half of it. */
+		return CeilDiv((n << Map::LogX()) + (n << Map::LogY()), 1 << 9);
+	}
+
+	/**
+	 * Check whether the map has been initialized, as to not try to save the map
+	 * during crashlog when the map is not there yet.
+	 * @return true when the map has been allocated/initialized.
+	 */
+	static bool IsInitialized()
+	{
+		return Tile::base_tiles != nullptr;
+	}
+
+	/**
+	 * Returns an iterable ensemble of all Tiles
+	 * @return an iterable ensemble of all Tiles
+	 */
+	static IterateWrapper Iterate() { return IterateWrapper(); }
+};
 
 /**
- * Logarithm of the map size along the X side.
- * @note try to avoid using this one
- * @return 2^"return value" == MapSizeX()
- */
-static inline uint MapLogX()
-{
-	extern uint _map_log_x;
-	return _map_log_x;
-}
-
-/**
- * Logarithm of the map size along the y side.
- * @note try to avoid using this one
- * @return 2^"return value" == MapSizeY()
- */
-static inline uint MapLogY()
-{
-	extern uint _map_log_y;
-	return _map_log_y;
-}
-
-/**
- * Get the size of the map along the X
- * @return the number of tiles along the X of the map
- */
-static inline uint MapSizeX()
-{
-	extern uint _map_size_x;
-	return _map_size_x;
-}
-
-/**
- * Get the size of the map along the Y
- * @return the number of tiles along the Y of the map
- */
-static inline uint MapSizeY()
-{
-	extern uint _map_size_y;
-	return _map_size_y;
-}
-
-/**
- * Get the size of the map
- * @return the number of tiles of the map
- */
-static inline uint MapSize()
-{
-	extern uint _map_size;
-	return _map_size;
-}
-
-/**
- * Gets the maximum X coordinate within the map, including MP_VOID
- * @return the maximum X coordinate
- */
-static inline uint MapMaxX()
-{
-	return MapSizeX() - 1;
-}
-
-/**
- * Gets the maximum Y coordinate within the map, including MP_VOID
- * @return the maximum Y coordinate
- */
-static inline uint MapMaxY()
-{
-	return MapSizeY() - 1;
-}
-
-/**
- * Scales the given value by the map size, where the given value is
- * for a 256 by 256 map.
- * @param n the value to scale
- * @return the scaled size
- */
-static inline uint ScaleByMapSize(uint n)
-{
-	/* Subtract 12 from shift in order to prevent integer overflow
-	 * for large values of n. It's safe since the min mapsize is 64x64. */
-	return CeilDiv(n << (MapLogX() + MapLogY() - 12), 1 << 4);
-}
-
-
-/**
- * Scales the given value by the maps circumference, where the given
- * value is for a 256 by 256 map
- * @param n the value to scale
- * @return the scaled size
- */
-static inline uint ScaleByMapSize1D(uint n)
-{
-	/* Normal circumference for the X+Y is 256+256 = 1<<9
-	 * Note, not actually taking the full circumference into account,
-	 * just half of it. */
-	return CeilDiv((n << MapLogX()) + (n << MapLogY()), 1 << 9);
-}
-
-/**
- * An offset value between to tiles.
+ * An offset value between two tiles.
  *
  * This value is used for the difference between
- * two tiles. It can be added to a tileindex to get
- * the resulting tileindex of the start tile applied
+ * two tiles. It can be added to a TileIndex to get
+ * the resulting TileIndex of the start tile applied
  * with this saved difference.
  *
  * @see TileDiffXY(int, int)
  */
-typedef int32 TileIndexDiff;
+typedef int32_t TileIndexDiff;
 
 /**
  * Returns the TileIndex of a coordinate.
@@ -160,15 +382,15 @@ typedef int32 TileIndexDiff;
  * @param y The y coordinate of the tile
  * @return The TileIndex calculated by the coordinate
  */
-static inline TileIndex TileXY(uint x, uint y)
+debug_inline static TileIndex TileXY(uint x, uint y)
 {
-	return (y << MapLogX()) + x;
+	return (y << Map::LogX()) + x;
 }
 
 /**
  * Calculates an offset for the given coordinate(-offset).
  *
- * This function calculate an offset value which can be added to an
+ * This function calculate an offset value which can be added to a
  * #TileIndex. The coordinates can be negative.
  *
  * @param x The offset in x direction
@@ -182,7 +404,7 @@ static inline TileIndexDiff TileDiffXY(int x, int y)
 	 * 0 << shift isn't optimized to 0 properly.
 	 * Typically x and y are constants, and then this doesn't result
 	 * in any actual multiplication in the assembly code.. */
-	return (y * MapSizeX()) + x;
+	return (y * Map::SizeX()) + x;
 }
 
 /**
@@ -191,9 +413,9 @@ static inline TileIndexDiff TileDiffXY(int x, int y)
  * @param y The virtual y coordinate of the tile.
  * @return The TileIndex calculated by the coordinate.
  */
-static inline TileIndex TileVirtXY(uint x, uint y)
+debug_inline static TileIndex TileVirtXY(uint x, uint y)
 {
-	return (y >> 4 << MapLogX()) + (x >> 4);
+	return (y >> 4 << Map::LogX()) + (x >> 4);
 }
 
 
@@ -202,9 +424,9 @@ static inline TileIndex TileVirtXY(uint x, uint y)
  * @param tile the tile to get the X component of
  * @return the X component
  */
-static inline uint TileX(TileIndex tile)
+debug_inline static uint TileX(TileIndex tile)
 {
-	return tile & MapMaxX();
+	return static_cast<uint32_t>(tile) & Map::MaxX();
 }
 
 /**
@@ -212,13 +434,13 @@ static inline uint TileX(TileIndex tile)
  * @param tile the tile to get the Y component of
  * @return the Y component
  */
-static inline uint TileY(TileIndex tile)
+debug_inline static uint TileY(TileIndex tile)
 {
-	return tile >> MapLogX();
+	return static_cast<uint32_t>(tile) >> Map::LogX();
 }
 
 /**
- * Return the offset between to tiles from a TileIndexDiffC struct.
+ * Return the offset between two tiles from a TileIndexDiffC struct.
  *
  * This function works like #TileDiffXY(int, int) and returns the
  * difference between two tiles.
@@ -229,13 +451,13 @@ static inline uint TileY(TileIndex tile)
  */
 static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 {
-	return (tidc.y << MapLogX()) + tidc.x;
+	return (tidc.y << Map::LogX()) + tidc.x;
 }
 
 
 #ifndef _DEBUG
 	/**
-	 * Adds to tiles together.
+	 * Adds two tiles together.
 	 *
 	 * @param x One tile
 	 * @param y Another tile to add
@@ -302,7 +524,7 @@ static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC dif
 	int x = TileX(tile) + diff.x;
 	int y = TileY(tile) + diff.y;
 	/* Negative value will become big positive value after cast */
-	if ((uint)x >= MapSizeX() || (uint)y >= MapSizeY()) return INVALID_TILE;
+	if ((uint)x >= Map::SizeX() || (uint)y >= Map::SizeY()) return INVALID_TILE;
 	return TileXY(x, y);
 }
 
@@ -421,9 +643,9 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
  * @param r the random 'seed'
  * @return a valid tile
  */
-static inline TileIndex RandomTileSeed(uint32 r)
+static inline TileIndex RandomTileSeed(uint32_t r)
 {
-	return TILE_MASK(r);
+	return Map::WrapToMap(r);
 }
 
 /**

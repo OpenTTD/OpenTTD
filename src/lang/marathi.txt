@@ -128,39 +128,39 @@ STR_QUANTITY_N_A                                                :उपलब्
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}प्र
-STR_ABBREV_COAL                                                 :{TINY_FONT}को
-STR_ABBREV_MAIL                                                 :{TINY_FONT}टपाल
-STR_ABBREV_OIL                                                  :{TINY_FONT}तेल
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}पशु
-STR_ABBREV_GOODS                                                :{TINY_FONT}वस्तू
-STR_ABBREV_GRAIN                                                :{TINY_FONT}धान्य
-STR_ABBREV_WOOD                                                 :{TINY_FONT}ला
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}लोह
-STR_ABBREV_STEEL                                                :{TINY_FONT}पो
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}मौल्य
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}तांबे
-STR_ABBREV_MAIZE                                                :{TINY_FONT}मका
-STR_ABBREV_FRUIT                                                :{TINY_FONT}फळ
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}हिरे
-STR_ABBREV_FOOD                                                 :{TINY_FONT}अन्न
-STR_ABBREV_PAPER                                                :{TINY_FONT}का
-STR_ABBREV_GOLD                                                 :{TINY_FONT}सोनं
-STR_ABBREV_WATER                                                :{TINY_FONT}पाणी
-STR_ABBREV_WHEAT                                                :{TINY_FONT}गहू
-STR_ABBREV_RUBBER                                               :{TINY_FONT}रबर
-STR_ABBREV_SUGAR                                                :{TINY_FONT}सा
-STR_ABBREV_TOYS                                                 :{TINY_FONT}खे
-STR_ABBREV_SWEETS                                               :{TINY_FONT}गोड
-STR_ABBREV_COLA                                                 :{TINY_FONT}कोला
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}म्हाता
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}बु
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}टॉ
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}बॅ
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}प्लॅ
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}फस
-STR_ABBREV_NONE                                                 :{TINY_FONT}NO
-STR_ABBREV_ALL                                                  :{TINY_FONT}सर्व
+STR_ABBREV_PASSENGERS                                           :प्र
+STR_ABBREV_COAL                                                 :को
+STR_ABBREV_MAIL                                                 :टपाल
+STR_ABBREV_OIL                                                  :तेल
+STR_ABBREV_LIVESTOCK                                            :पशु
+STR_ABBREV_GOODS                                                :वस्तू
+STR_ABBREV_GRAIN                                                :धान्य
+STR_ABBREV_WOOD                                                 :ला
+STR_ABBREV_IRON_ORE                                             :लोह
+STR_ABBREV_STEEL                                                :पो
+STR_ABBREV_VALUABLES                                            :मौल्य
+STR_ABBREV_COPPER_ORE                                           :तांबे
+STR_ABBREV_MAIZE                                                :मका
+STR_ABBREV_FRUIT                                                :फळ
+STR_ABBREV_DIAMONDS                                             :हिरे
+STR_ABBREV_FOOD                                                 :अन्न
+STR_ABBREV_PAPER                                                :का
+STR_ABBREV_GOLD                                                 :सोनं
+STR_ABBREV_WATER                                                :पाणी
+STR_ABBREV_WHEAT                                                :गहू
+STR_ABBREV_RUBBER                                               :रबर
+STR_ABBREV_SUGAR                                                :सा
+STR_ABBREV_TOYS                                                 :खे
+STR_ABBREV_SWEETS                                               :गोड
+STR_ABBREV_COLA                                                 :कोला
+STR_ABBREV_CANDYFLOSS                                           :म्हाता
+STR_ABBREV_BUBBLES                                              :बु
+STR_ABBREV_TOFFEE                                               :टॉ
+STR_ABBREV_BATTERIES                                            :बॅ
+STR_ABBREV_PLASTIC                                              :प्लॅ
+STR_ABBREV_FIZZY_DRINKS                                         :फस
+STR_ABBREV_NONE                                                 :NO
+STR_ABBREV_ALL                                                  :सर्व
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} प्रवासी
@@ -188,27 +188,31 @@ STR_COLOUR_BROWN                                                :तपकिर
 STR_COLOUR_GREY                                                 :करडा
 STR_COLOUR_WHITE                                                :पांढरा
 
+###length 17
+
+
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} किमी / तास
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} mph
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} किमी / तास
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}hp
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}hp
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ट
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}ट
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} किलो
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} टन
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} किलो
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}ट
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}ट
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL} किलो
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}गॅलन
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}लि
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} टन
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} किलो
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} लिटर
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}गॅलन
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}लि
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
+
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL} लिटर
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
 
 
 
@@ -346,9 +350,8 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :बंद करा
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :खेळाचे पर्याय
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ए.आय. / गेम स्क्रिप्ट सेटिंग्ज
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF पर्याय
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :पारदर्शकता पर्याय
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :शहरांची नावे दाखवा
@@ -697,66 +700,47 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 # Game options window
 
+
+
+
+
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :पौंड (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :डोल्लर ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :युरो (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :येन (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :ओस्त्रिअन शिल्लिंग (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :बेल्गीअन फ्रांक (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :स्विस फ्रांक (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :झेख कोरुना (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :दोइश्मार्क (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :डेनिष क्रोन (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :पेसेटा (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिन्निश मार्क्का (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :फ्रांक (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :ग्रीक द्रक्मा (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :हंगेरियन फोरिन्त (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :आईसलेंडीक क्रोना (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :ईटेलिअन लिरा (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :डच गिल्डर (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :नोर्वेगीअन क्रोन (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :पोलिश झ्लोटी (PLN)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :रशिअन रुबल्स (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :स्लोवेनिअन तोलार (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :स्वीडीश क्रोना (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :तुर्की लिरा (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोवाक कोरुना (SKK)
-
-###length 2
-
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :फ्रेंच
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :जर्मन
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :स्वीडीश
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :डच
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :फिन्निश
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :पोलिश
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :स्लोवाक
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :नोर्वेगीअन
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :हंगेरियन
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :ओस्त्रिअन
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :रोमेनिअन
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :झेख
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :स्विस
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :डेनिष
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :तुर्की
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :ईटेलिअन
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :पौंड
+STR_GAME_OPTIONS_CURRENCY_USD                                   :डोल्लर
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :युरो
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :येन
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :ओस्त्रिअन शिल्लिंग
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :बेल्गीअन फ्रांक
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :स्विस फ्रांक
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :झेख कोरुना
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :दोइश्मार्क
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :डेनिष क्रोन
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :पेसेटा
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिन्निश मार्क्का
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :फ्रांक
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :ग्रीक द्रक्मा
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :हंगेरियन फोरिन्त
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :आईसलेंडीक क्रोना
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :ईटेलिअन लिरा
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :डच गिल्डर
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :नोर्वेगीअन क्रोन
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :पोलिश झ्लोटी
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :रशिअन रुबल्स
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :स्लोवेनिअन तोलार
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :स्वीडीश क्रोना
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :तुर्की लिरा
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोवाक कोरुना
 
 
 # Autosave dropdown
 ###length 5
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :दर महिने
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :दर ३ महिने
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :दर ६ महिने
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :दर १२ महिने
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}भाषा
 
 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
+
 
 
 
@@ -779,7 +763,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
-
 ###length 5
 
 ###length 6
@@ -794,9 +777,11 @@ STR_SUBSIDY_X2                                                  :x२
 STR_SUBSIDY_X3                                                  :x३
 STR_SUBSIDY_X4                                                  :x४
 
+###length 4
+
 ###length 7
 
-###length 3
+###length 4
 
 
 # Settings tree window
@@ -816,6 +801,8 @@ STR_CONFIG_SETTING_REALISTIC                                    :खरेखु
 
 ###length 3
 
+
+###setting-zero-is-special
 
 
 
@@ -874,6 +861,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :वाहना
 
 
 
+
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन हरवल्यास सूचित करा: {STRING}
 
 ###length 3
@@ -910,10 +898,14 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 ###length 2
 
+###length 2
+
 
 
 
 ###length 3
+
+###length 4
 
 ###length 4
 
@@ -931,6 +923,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 ###length 3
 
+###length 3
 
 
 ###length 3
@@ -950,7 +943,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 
-
 ###setting-zero-is-special
 
 
@@ -993,14 +985,13 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 
+
 ###length 3
 
 
 ###setting-zero-is-special
 
 ###length 3
-
-
 
 
 
@@ -1037,7 +1028,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :स्टेट
 
 
 
-###length 4
+###length 5
 
 ###length 3
 
@@ -1072,8 +1063,6 @@ STR_INTRO_CAPTION                                               :{WHITE}ओप�
 
 # Cheat window
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}चालू वर्ष बदला
-
-###length 4
 
 # Livery window
 
@@ -1158,6 +1147,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 
 
+
 # Network set password
 
 # Network company info join/password
@@ -1198,6 +1188,8 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 
 # Join station window
@@ -1220,8 +1212,6 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Signal window
 
 # Bridge selection window
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_WOODEN                                          :लाकडी
 
 
@@ -1323,6 +1313,24 @@ STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_DATE                                                 :{BLACK}तिथी:
 
+###length 21
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :फ्रेंच
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :जर्मन
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :स्वीडीश
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :डच
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :फिन्निश
+STR_MAPGEN_TOWN_NAME_POLISH                                     :पोलिश
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :स्लोवाक
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :नोर्वेगीअन
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :हंगेरियन
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :ओस्त्रिअन
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :रोमेनिअन
+STR_MAPGEN_TOWN_NAME_CZECH                                      :झेख
+STR_MAPGEN_TOWN_NAME_SWISS                                      :स्विस
+STR_MAPGEN_TOWN_NAME_DANISH                                     :डेनिष
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :तुर्की
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :ईटेलिअन
+
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}पाणी
 
@@ -1353,6 +1361,10 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :वस्तू
 
 
 # Sprite aligner window
+
+###length 2
+
+
 
 
 # NewGRF (self) generated warnings/errors
@@ -1442,17 +1454,17 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 
 # Finances window
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}खर्च/कमाई
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+
+###length 3
+
 
 ###length 13
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}विमान चालवण्याचा खर्च
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}विमानाची कमाई
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}अन्य
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}संपूर्ण:
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}कर्ज
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 
@@ -1469,7 +1481,6 @@ STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}नव�
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}व्यवस्थापका साठी नवीन चेहरा निवडा
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}व्यवस्थापकाचे नाव
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}व्यवस्थापकाच नाव बदला
-
 
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :व्यवस्थापकाचे नाव
 
@@ -1531,6 +1542,8 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}गत�
 STR_PURCHASE_INFO_COST                                          :{BLACK}किंमत: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}वजन: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}किंमत: {GOLD}{CURRENCY_LONG}{BLACK} गती: {GOLD}{VELOCITY}
+
+###length 3
 
 ###length VEHICLE_TYPES
 
@@ -1738,19 +1751,18 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}वे�
 
 
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
 
 
 
-# AI Parameters
+# Script Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 
 # Textfile window
-###length 3
+###length 4
 
 
 # Vehicle loading indicators
@@ -1860,12 +1872,15 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}पू�
 
 
 
+
 # Specific vehicle errors
 
 
 
 # Order related errors
 
+
+# Extra messages which go on the third line of errors, explaining why orders failed
 
 # Timetable related errors
 
@@ -2028,10 +2043,10 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :पॉवरन
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_GROUP_NAME                                           :गट्टा {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
@@ -2102,33 +2117,8 @@ STR_JUST_STRING_STRING                                          :{STRING}{STRING
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
-STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
-STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
-STR_BLACK_INT                                                   :{BLACK}{NUM}
-STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
-STR_BLACK_STRING                                                :{BLACK}{STRING}
-STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
-STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING}{WHITE}
-STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

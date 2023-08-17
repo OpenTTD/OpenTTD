@@ -47,7 +47,13 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 {
 	PacketAdminType type = (PacketAdminType)p->Recv_uint8();
 
-	switch (this->HasClientQuit() ? INVALID_ADMIN_PACKET : type) {
+	if (this->HasClientQuit()) {
+		Debug(net, 0, "[tcp/admin] Received invalid packet from '{}' ({})", this->admin_name, this->admin_version);
+		this->CloseConnection();
+		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	}
+
+	switch (type) {
 		case ADMIN_PACKET_ADMIN_JOIN:             return this->Receive_ADMIN_JOIN(p);
 		case ADMIN_PACKET_ADMIN_QUIT:             return this->Receive_ADMIN_QUIT(p);
 		case ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY: return this->Receive_ADMIN_UPDATE_FREQUENCY(p);
@@ -87,12 +93,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 		case ADMIN_PACKET_SERVER_PONG:            return this->Receive_SERVER_PONG(p);
 
 		default:
-			if (this->HasClientQuit()) {
-				Debug(net, 0, "[tcp/admin] Received invalid packet type {} from '{}' ({})", type, this->admin_name, this->admin_version);
-			} else {
-				Debug(net, 0, "[tcp/admin] Received illegal packet from '{}' ({})", this->admin_name, this->admin_version);
-			}
-
+			Debug(net, 0, "[tcp/admin] Received invalid packet type {} from '{}' ({})", type, this->admin_name, this->admin_version);
 			this->CloseConnection();
 			return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}

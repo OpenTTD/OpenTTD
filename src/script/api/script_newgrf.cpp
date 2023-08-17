@@ -24,9 +24,9 @@ ScriptNewGRFList::ScriptNewGRFList()
 	}
 }
 
-/* static */ bool ScriptNewGRF::IsLoaded(uint32 grfid)
+/* static */ bool ScriptNewGRF::IsLoaded(SQInteger grfid)
 {
-	grfid = BSWAP32(grfid); // Match people's expectations.
+	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
 
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
@@ -37,9 +37,9 @@ ScriptNewGRFList::ScriptNewGRFList()
 	return false;
 }
 
-/* static */ uint32 ScriptNewGRF::GetVersion(uint32 grfid)
+/* static */ SQInteger ScriptNewGRF::GetVersion(SQInteger grfid)
 {
-	grfid = BSWAP32(grfid); // Match people's expectations.
+	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
 
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
@@ -50,15 +50,15 @@ ScriptNewGRFList::ScriptNewGRFList()
 	return 0;
 }
 
-/* static */ char *ScriptNewGRF::GetName(uint32 grfid)
+/* static */ std::optional<std::string> ScriptNewGRF::GetName(SQInteger grfid)
 {
-	grfid = BSWAP32(grfid); // Match people's expectations.
+	grfid = BSWAP32(GB(grfid, 0, 32)); // Match people's expectations.
 
 	for (auto c = _grfconfig; c != nullptr; c = c->next) {
 		if (!HasBit(c->flags, GCF_STATIC) && c->ident.grfid == grfid) {
-			return ::stredup(c->GetName());
+			return c->GetName();
 		}
 	}
 
-	return nullptr;
+	return std::nullopt;
 }

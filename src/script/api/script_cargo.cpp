@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "script_cargo.hpp"
 #include "../../economy_func.h"
+#include "../../core/alloc_func.hpp"
 #include "../../core/bitmath_func.hpp"
 #include "../../strings_func.h"
 #include "../../settings_type.h"
@@ -27,26 +28,25 @@
 	return (towneffect_type >= (TownEffect)TE_BEGIN && towneffect_type < (TownEffect)TE_END);
 }
 
-/* static */ char *ScriptCargo::GetName(CargoID cargo_type)
+/* static */ std::optional<std::string> ScriptCargo::GetName(CargoID cargo_type)
 {
-	if (!IsValidCargo(cargo_type)) return nullptr;
+	if (!IsValidCargo(cargo_type)) return std::nullopt;
 
 	::SetDParam(0, 1ULL << cargo_type);
 	return GetString(STR_JUST_CARGO_LIST);
 }
 
-/* static */ char *ScriptCargo::GetCargoLabel(CargoID cargo_type)
+/* static */ std::optional<std::string> ScriptCargo::GetCargoLabel(CargoID cargo_type)
 {
-	if (!IsValidCargo(cargo_type)) return nullptr;
+	if (!IsValidCargo(cargo_type)) return std::nullopt;
 	const CargoSpec *cargo = ::CargoSpec::Get(cargo_type);
 
-	/* cargo->label is a uint32 packing a 4 character non-terminated string,
+	/* cargo->label is a uint32_t packing a 4 character non-terminated string,
 	 * like "PASS", "COAL", "OIL_". New ones can be defined by NewGRFs */
-	char *cargo_label = MallocT<char>(sizeof(cargo->label) + 1);
+	std::string cargo_label;
 	for (uint i = 0; i < sizeof(cargo->label); i++) {
-		cargo_label[i] = GB(cargo->label, (uint8)(sizeof(cargo->label) - i - 1) * 8, 8);
+		cargo_label.push_back(GB(cargo->label, (uint8_t)(sizeof(cargo->label) - i - 1) * 8, 8));
 	}
-	cargo_label[sizeof(cargo->label)] = '\0';
 	return cargo_label;
 }
 
@@ -70,14 +70,26 @@
 	return (ScriptCargo::TownEffect)::CargoSpec::Get(cargo_type)->town_effect;
 }
 
-/* static */ Money ScriptCargo::GetCargoIncome(CargoID cargo_type, uint32 distance, uint32 days_in_transit)
+/* static */ Money ScriptCargo::GetCargoIncome(CargoID cargo_type, SQInteger distance, SQInteger days_in_transit)
 {
 	if (!IsValidCargo(cargo_type)) return -1;
-	return ::GetTransportedGoodsIncome(1, distance, Clamp(days_in_transit * 2 / 5, 0, 255), cargo_type);
+
+	distance = Clamp<SQInteger>(distance, 0, UINT32_MAX);
+
+	return ::GetTransportedGoodsIncome(1, distance, Clamp(days_in_transit * 2 / 5, 0, UINT16_MAX), cargo_type);
 }
 
 /* static */ ScriptCargo::DistributionType ScriptCargo::GetDistributionType(CargoID cargo_type)
 {
 	if (!ScriptCargo::IsValidCargo(cargo_type)) return INVALID_DISTRIBUTION_TYPE;
 	return (ScriptCargo::DistributionType)_settings_game.linkgraph.GetDistributionType(cargo_type);
+}
+
+/* static */ SQInteger ScriptCargo::GetWeight(CargoID cargo_type, SQInteger amount)
+{
+	if (!IsValidCargo(cargo_type)) return -1;
+
+	amount = Clamp<SQInteger>(amount, 0, UINT32_MAX);
+
+	return ::CargoSpec::Get(cargo_type)->WeightOfNUnits(amount);
 }

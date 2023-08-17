@@ -37,7 +37,7 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 		 * This is on purpose. */
 		link_graph(orig),
 		settings(_settings_game.linkgraph),
-		join_date(_date + _settings_game.linkgraph.recalc_time),
+		join_date(TimerGameCalendar::date + (_settings_game.linkgraph.recalc_time / SECONDS_PER_DAY)),
 		job_completed(false),
 		job_aborted(false)
 {
@@ -50,7 +50,7 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 void LinkGraphJob::EraseFlows(NodeID from)
 {
 	for (NodeID node_id = 0; node_id < this->Size(); ++node_id) {
-		(*this)[node_id].Flows().erase(from);
+		(*this)[node_id].flows.erase(from);
 	}
 }
 
@@ -101,12 +101,12 @@ LinkGraphJob::~LinkGraphJob()
 	/* Link graph has been merged into another one. */
 	if (!LinkGraph::IsValidID(this->link_graph.index)) return;
 
-	uint16 size = this->Size();
+	uint16_t size = this->Size();
 	for (NodeID node_id = 0; node_id < size; ++node_id) {
-		Node from = (*this)[node_id];
+		NodeAnnotation &from = this->nodes[node_id];
 
 		/* The station can have been deleted. Remove all flows originating from it then. */
-		Station *st = Station::GetIfValid(from.Station());
+		Station *st = Station::GetIfValid(from.base.station);
 		if (st == nullptr) {
 			this->EraseFlows(node_id);
 			continue;
@@ -121,22 +121,24 @@ LinkGraphJob::~LinkGraphJob()
 		}
 
 		LinkGraph *lg = LinkGraph::Get(ge.link_graph);
-		FlowStatMap &flows = from.Flows();
+		FlowStatMap &flows = from.flows;
 
-		for (EdgeIterator it(from.Begin()); it != from.End(); ++it) {
-			if (from[it->first].Flow() == 0) continue;
-			StationID to = (*this)[it->first].Station();
+		for (const auto &edge : from.edges) {
+			if (edge.Flow() == 0) continue;
+			NodeID dest_id = edge.base.dest_node;
+			StationID to = this->nodes[dest_id].base.station;
 			Station *st2 = Station::GetIfValid(to);
 			if (st2 == nullptr || st2->goods[this->Cargo()].link_graph != this->link_graph.index ||
-					st2->goods[this->Cargo()].node != it->first ||
-					(*lg)[node_id][it->first].LastUpdate() == INVALID_DATE) {
+					st2->goods[this->Cargo()].node != dest_id ||
+					!(*lg)[node_id].HasEdgeTo(dest_id) ||
+					(*lg)[node_id][dest_id].LastUpdate() == INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
 				StationIDStack erased = flows.DeleteFlows(to);
 				/* Delete old flows for source stations which have been deleted
 				 * from the new flows. This avoids flow cycles between old and
 				 * new flows. */
 				while (!erased.IsEmpty()) ge.flows.erase(erased.Pop());
-			} else if ((*lg)[node_id][it->first].LastUnrestrictedUpdate() == INVALID_DATE) {
+			} else if ((*lg)[node_id][dest_id].last_restricted_update == INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);
 			}
@@ -180,37 +182,10 @@ LinkGraphJob::~LinkGraphJob()
 void LinkGraphJob::Init()
 {
 	uint size = this->Size();
-	this->nodes.resize(size);
-	this->edges.Resize(size, size);
+	this->nodes.reserve(size);
 	for (uint i = 0; i < size; ++i) {
-		this->nodes[i].Init(this->link_graph[i].Supply());
-		EdgeAnnotation *node_edges = this->edges[i];
-		for (uint j = 0; j < size; ++j) {
-			node_edges[j].Init();
-		}
+		this->nodes.emplace_back(this->link_graph.nodes[i], this->link_graph.Size());
 	}
-}
-
-/**
- * Initialize a linkgraph job edge.
- */
-void LinkGraphJob::EdgeAnnotation::Init()
-{
-	this->demand = 0;
-	this->flow = 0;
-	this->unsatisfied_demand = 0;
-}
-
-/**
- * Initialize a Linkgraph job node. The underlying memory is expected to be
- * freshly allocated, without any constructors having been called.
- * @param supply Initial undelivered supply.
- */
-void LinkGraphJob::NodeAnnotation::Init(uint supply)
-{
-	this->undelivered_supply = supply;
-	new (&this->flows) FlowStatMap;
-	new (&this->paths) PathList;
 }
 
 /**
@@ -246,9 +221,9 @@ void Path::Fork(Path *base, uint cap, int free_cap, uint dist)
 uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
 {
 	if (this->parent != nullptr) {
-		LinkGraphJob::Edge edge = job[this->parent->node][this->node];
+		LinkGraphJob::EdgeAnnotation edge = job[this->parent->node][this->node];
 		if (max_saturation != UINT_MAX) {
-			uint usable_cap = edge.Capacity() * max_saturation / 100;
+			uint usable_cap = edge.base.capacity * max_saturation / 100;
 			if (usable_cap > edge.Flow()) {
 				new_flow = std::min(new_flow, usable_cap - edge.Flow());
 			} else {
@@ -257,7 +232,7 @@ uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
 		}
 		new_flow = this->parent->AddFlow(new_flow, job, max_saturation);
 		if (this->flow == 0 && new_flow > 0) {
-			job[this->parent->node].Paths().push_front(this);
+			job[this->parent->node].paths.push_front(this);
 		}
 		edge.AddFlow(new_flow);
 	}

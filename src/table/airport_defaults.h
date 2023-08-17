@@ -10,6 +10,8 @@
 #ifndef AIRPORT_DEFAULTS_H
 #define AIRPORT_DEFAULTS_H
 
+#include "date_type.h"
+
 /**
  * Definition of an airport tiles layout.
  * @param x offset x of this tile

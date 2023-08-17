@@ -10,7 +10,7 @@
 #ifndef YAPF_COSTCACHE_HPP
 #define YAPF_COSTCACHE_HPP
 
-#include "../../date_func.h"
+#include "../../timer/timer_game_calendar.h"
 
 /**
  * CYapfSegmentCostCacheNoneT - the formal only yapf cost cache provider that implements

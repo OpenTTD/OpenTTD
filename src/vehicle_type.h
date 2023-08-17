@@ -13,7 +13,7 @@
 #include "core/enum_type.hpp"
 
 /** The type all our vehicle IDs have. */
-typedef uint32 VehicleID;
+typedef uint32_t VehicleID;
 
 static const int GROUND_ACCELERATION = 9800; ///< Acceleration due to gravity, 9.8 m/s^2
 
@@ -35,8 +35,6 @@ enum VehicleType : byte {
 	VEH_INVALID = 0xFF,           ///< Non-existing type of vehicle.
 };
 DECLARE_POSTFIX_INCREMENT(VehicleType)
-/** Helper information for extract tool. */
-template <> struct EnumPropsT<VehicleType> : MakeEnumPropsT<VehicleType, byte, VEH_TRAIN, VEH_END, VEH_INVALID, 3> {};
 
 struct Vehicle;
 struct Train;
@@ -61,14 +59,15 @@ enum VehiclePathFinders {
 	VPF_YAPF = 2, ///< Yet Another PathFinder
 };
 
-/** Flags to add to p1 for goto depot commands. */
-enum DepotCommand {
-	DEPOT_SERVICE       = (1U << 28), ///< The vehicle will leave the depot right after arrival (service only)
-	DEPOT_MASS_SEND     = (1U << 29), ///< Tells that it's a mass send to depot command (type in VLW flag)
-	DEPOT_DONT_CANCEL   = (1U << 30), ///< Don't cancel current goto depot command if any
-	DEPOT_LOCATE_HANGAR = (1U << 31), ///< Find another airport if the target one lacks a hangar
-	DEPOT_COMMAND_MASK  = 0xFU << 28,
+/** Flags for goto depot commands. */
+enum class DepotCommand : byte {
+	None         = 0,         ///< No special flags.
+	Service      = (1U << 0), ///< The vehicle will leave the depot right after arrival (service only)
+	MassSend     = (1U << 1), ///< Tells that it's a mass send to depot command (type in VLW flag)
+	DontCancel   = (1U << 2), ///< Don't cancel current goto depot command if any
+	LocateHangar = (1U << 3), ///< Find another airport if the target one lacks a hangar
 };
+DECLARE_ENUM_AS_BIT_SET(DepotCommand)
 
 static const uint MAX_LENGTH_VEHICLE_NAME_CHARS = 32; ///< The maximum length of a vehicle name in characters including '\0'
 

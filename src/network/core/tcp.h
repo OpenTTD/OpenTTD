@@ -17,7 +17,6 @@
 
 #include <atomic>
 #include <chrono>
-#include <map>
 #include <thread>
 
 /** The states of sending the packets. */
@@ -78,15 +77,15 @@ private:
 	 * lock on the game-state.
 	 */
 	enum class Status {
-		INIT,       ///< TCPConnecter is created but resolving hasn't started.
-		RESOLVING,  ///< The hostname is being resolved (threaded).
-		FAILURE,    ///< Resolving failed.
-		CONNECTING, ///< We are currently connecting.
-		CONNECTED,  ///< The connection is established.
+		Init,       ///< TCPConnecter is created but resolving hasn't started.
+		Resolving,  ///< The hostname is being resolved (threaded).
+		Failure,    ///< Resolving failed.
+		Connecting, ///< We are currently connecting.
+		Connected,  ///< The connection is established.
 	};
 
 	std::thread resolve_thread;                         ///< Thread used during resolving.
-	std::atomic<Status> status = Status::INIT;          ///< The current status of the connecter.
+	std::atomic<Status> status = Status::Init;          ///< The current status of the connecter.
 	std::atomic<bool> killed = false;                   ///< Whether this connecter is marked as killed.
 
 	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
@@ -115,7 +114,7 @@ private:
 
 public:
 	TCPConnecter() {};
-	TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address = {}, int family = AF_UNSPEC);
+	TCPConnecter(const std::string &connection_string, uint16_t default_port, const NetworkAddress &bind_address = {}, int family = AF_UNSPEC);
 	virtual ~TCPConnecter();
 
 	/**
@@ -144,7 +143,7 @@ private:
 public:
 	ServerAddress server_address; ///< Address we are connecting to.
 
-	TCPServerConnecter(const std::string &connection_string, uint16 default_port);
+	TCPServerConnecter(const std::string &connection_string, uint16_t default_port);
 
 	void SetConnected(SOCKET sock);
 	void SetFailure();

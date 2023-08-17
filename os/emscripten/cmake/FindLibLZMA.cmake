@@ -1,5 +1,5 @@
-# LibLZMA is a recent addition to the emscripten SDK, so it is possible
-# someone hasn't updated their SDK yet. Test out if the SDK supports LibLZMA.
+# LibLZMA is a custom addition to the emscripten SDK, so it is possible
+# someone patched their SDK. Test out if the SDK supports LibLZMA.
 include(CheckCXXSourceCompiles)
 set(CMAKE_REQUIRED_FLAGS "-sUSE_LIBLZMA=1")
 

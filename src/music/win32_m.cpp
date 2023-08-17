@@ -17,12 +17,13 @@
 #include "midifile.hpp"
 #include "midi.h"
 #include "../base_media_base.h"
+#include "../core/mem_func.hpp"
 #include <mutex>
 
 #include "../safeguards.h"
 
 struct PlaybackSegment {
-	uint32 start, end;
+	uint32_t start, end;
 	size_t start_block;
 	bool loop;
 };

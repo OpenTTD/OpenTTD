@@ -245,11 +245,11 @@ static const Direction PPPorder[DIAGDIR_END][TLG_END][DIR_END] = {    //  X  -  
 	}
 };
 /* Geometric placement of the PCP relative to the tile origin */
-static const int8 x_pcp_offsets[DIAGDIR_END] = {0,  8, 16, 8};
-static const int8 y_pcp_offsets[DIAGDIR_END] = {8, 16,  8, 0};
+static const int8_t x_pcp_offsets[DIAGDIR_END] = {0,  8, 16, 8};
+static const int8_t y_pcp_offsets[DIAGDIR_END] = {8, 16,  8, 0};
 /* Geometric placement of the PPP relative to the PCP*/
-static const int8 x_ppp_offsets[DIR_END] = {-2, -4, -2,  0,  2,  4,  2,  0};
-static const int8 y_ppp_offsets[DIR_END] = {-2,  0,  2,  4,  2,  0, -2, -4};
+static const int8_t x_ppp_offsets[DIR_END] = {-2, -4, -2,  0,  2,  4,  2,  0};
+static const int8_t y_ppp_offsets[DIR_END] = {-2,  0,  2,  4,  2,  0, -2, -4};
 
 /**
  * Offset for pylon sprites from the base pylon sprite.
@@ -266,7 +266,7 @@ enum PylonSpriteOffset {
 };
 
 /* The type of pylon to draw at each PPP */
-static const uint8 pylon_sprites[] = {
+static const uint8_t pylon_sprites[] = {
 	PSO_EW_N,
 	PSO_Y_NE,
 	PSO_NS_E,
@@ -315,19 +315,21 @@ enum WireSpriteOffset {
 };
 
 struct SortableSpriteStruct {
-	uint8 image_offset;
-	int8 x_offset;
-	int8 y_offset;
-	int8 x_size;
-	int8 y_size;
-	int8 z_size;
-	int8 z_offset;
+	uint8_t image_offset;
+	int8_t x_offset;
+	int8_t y_offset;
+	int8_t x_size;
+	int8_t y_size;
+	int8_t z_size;
+	int8_t z_offset;
 };
 
 /** Distance between wire and rail */
 static const uint ELRAIL_ELEVATION = 10;
 /** Wires that a draw one level higher than the north corner. */
-static const uint ELRAIL_ELEVRAISE = ELRAIL_ELEVATION + TILE_HEIGHT;
+static const uint ELRAIL_ELEVRAISE = ELRAIL_ELEVATION + TILE_HEIGHT + 1;
+/** Wires that a draw one level lower than the north corner. */
+static const uint ELRAIL_ELEVLOWER = ELRAIL_ELEVATION - 1;
 
 static const SortableSpriteStruct RailCatenarySpriteData[] = {
 /* X direction
@@ -345,9 +347,9 @@ static const SortableSpriteStruct RailCatenarySpriteData[] = {
 
 	/* "down" tiles
 		 * Wires */
-	{ WSO_X_SW_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 6: Wire in X pitch down, pylon on the SW end
-	{ WSO_X_NE_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 7: Wire in X pitch down, pylon on the NE end
-	{ WSO_X_SHORT_DOWN,  0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 8: Wire in X pitch down, pylon on both ends
+	{ WSO_X_SW_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVLOWER }, //! 6: Wire in X pitch down, pylon on the SW end
+	{ WSO_X_NE_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVLOWER }, //! 7: Wire in X pitch down, pylon on the NE end
+	{ WSO_X_SHORT_DOWN,  0,  7, 15,  8,  1, ELRAIL_ELEVLOWER }, //! 8: Wire in X pitch down, pylon on both ends
 
 
 /* Y direction
@@ -365,9 +367,9 @@ static const SortableSpriteStruct RailCatenarySpriteData[] = {
 
 	/* "down" tiles
 		 * Wires */
-	{ WSO_Y_SE_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!15: Wire in Y pitch down, pylon on the SE end
-	{ WSO_Y_NW_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!16: Wire in Y pitch down, pylon on the NW end
-	{ WSO_Y_SHORT_DOWN,  7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!17: Wire in Y pitch down, pylon on both ends
+	{ WSO_Y_SE_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVLOWER }, //!15: Wire in Y pitch down, pylon on the SE end
+	{ WSO_Y_NW_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVLOWER }, //!16: Wire in Y pitch down, pylon on the NW end
+	{ WSO_Y_SHORT_DOWN,  7,  0,  8, 15,  1, ELRAIL_ELEVLOWER }, //!17: Wire in Y pitch down, pylon on both ends
 
 /* NS Direction */
 	{ WSO_NS_SHORT,      8,  0,  8,  8,  1, ELRAIL_ELEVATION }, //!18: LEFT  trackbit wire, pylon on both ends

@@ -26,16 +26,11 @@ enum CompanyWidgets {
 	WID_C_DESC_INFRASTRUCTURE,        ///< Infrastructure.
 	WID_C_DESC_INFRASTRUCTURE_COUNTS, ///< Infrastructure count.
 
-	WID_C_SELECT_DESC_OWNERS,         ///< Owners.
-	WID_C_DESC_OWNERS,                ///< Owner in Owners.
-
 	WID_C_SELECT_BUTTONS,             ///< Selection widget for the button bar.
 	WID_C_NEW_FACE,                   ///< Button to make new face.
 	WID_C_COLOUR_SCHEME,              ///< Button to change colour scheme.
 	WID_C_PRESIDENT_NAME,             ///< Button to change president name.
 	WID_C_COMPANY_NAME,               ///< Button to change company name.
-	WID_C_BUY_SHARE,                  ///< Button to buy a share.
-	WID_C_SELL_SHARE,                 ///< Button to sell a share.
 
 	WID_C_SELECT_VIEW_BUILD_HQ,       ///< Panel about HQ.
 	WID_C_VIEW_HQ,                    ///< Button to view the HQ.
@@ -48,6 +43,9 @@ enum CompanyWidgets {
 
 	WID_C_SELECT_GIVE_MONEY,          ///< Selection widget for the give money button.
 	WID_C_GIVE_MONEY,                 ///< Button to give money.
+
+	WID_C_SELECT_HOSTILE_TAKEOVER,    ///< Selection widget for the hostile takeover button.
+	WID_C_HOSTILE_TAKEOVER,           ///< Button to hostile takeover another company.
 
 	WID_C_HAS_PASSWORD,               ///< Has company password lock.
 	WID_C_SELECT_MULTIPLAYER,         ///< Multiplayer selection panel.
@@ -68,9 +66,9 @@ enum CompanyFinancesWidgets {
 	WID_CF_SEL_MAXLOAN,    ///< Selection of maxloan column.
 	WID_CF_BALANCE_VALUE,  ///< Bank balance value.
 	WID_CF_LOAN_VALUE,     ///< Loan.
-	WID_CF_LOAN_LINE,      ///< Line for summing bank balance and loan.
-	WID_CF_TOTAL_VALUE,    ///< Total.
-	WID_CF_MAXLOAN_GAP,    ///< Gap above max loan widget.
+	WID_CF_BALANCE_LINE,   ///< Available cash.
+	WID_CF_OWN_VALUE,      ///< Own funds, not including loan.
+	WID_CF_INTEREST_RATE,  ///< Loan interest rate.
 	WID_CF_MAXLOAN_VALUE,  ///< Max loan widget.
 	WID_CF_SEL_BUTTONS,    ///< Selection of buttons.
 	WID_CF_INCREASE_LOAN,  ///< Increase loan.

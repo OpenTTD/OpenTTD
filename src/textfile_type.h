@@ -12,13 +12,15 @@
 
 /** Additional text files accompanying Tar archives */
 enum TextfileType {
-	TFT_BEGIN,
+	TFT_CONTENT_BEGIN,
 
-	TFT_README = TFT_BEGIN, ///< NewGRF readme
-	TFT_CHANGELOG,          ///< NewGRF changelog
-	TFT_LICENSE,            ///< NewGRF license
+	TFT_README = TFT_CONTENT_BEGIN, ///< Content readme
+	TFT_CHANGELOG,                  ///< Content changelog
+	TFT_LICENSE,                    ///< Content license
 
-	TFT_END,
+	TFT_CONTENT_END, // This marker is used to generate the above three buttons in sequence by various of places in the code.
+
+	TFT_SURVEY_RESULT = TFT_CONTENT_END, ///< Survey result (preview)
 };
 DECLARE_POSTFIX_INCREMENT(TextfileType)
 

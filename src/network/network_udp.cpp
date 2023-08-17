@@ -13,7 +13,7 @@
  */
 
 #include "../stdafx.h"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "../map_func.h"
 #include "../debug.h"
 #include "core/game_info.h"
@@ -33,7 +33,7 @@
 #include "../safeguards.h"
 
 static bool _network_udp_server;         ///< Is the UDP server started?
-static uint16 _network_udp_broadcast;    ///< Timeout for the UDP broadcasts.
+static uint16_t _network_udp_broadcast;    ///< Timeout for the UDP broadcasts.
 
 /** Some information about a socket, which exists before the actual socket has been created to provide locking and the likes. */
 struct UDPSocket {
@@ -70,7 +70,7 @@ public:
 	 * @param addresses The addresses to bind on.
 	 */
 	ServerNetworkUDPSocketHandler(NetworkAddressList *addresses) : NetworkUDPSocketHandler(addresses) {}
-	virtual ~ServerNetworkUDPSocketHandler() {}
+	virtual ~ServerNetworkUDPSocketHandler() = default;
 };
 
 void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr)
@@ -88,7 +88,7 @@ class ClientNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
 	void Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr) override;
 public:
-	virtual ~ClientNetworkUDPSocketHandler() {}
+	virtual ~ClientNetworkUDPSocketHandler() = default;
 };
 
 void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr)

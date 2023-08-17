@@ -94,8 +94,9 @@ enum ClientListWidgets {
 
 /** Widgets of the #NetworkJoinStatusWindow class. */
 enum NetworkJoinStatusWidgets {
-	WID_NJS_BACKGROUND, ///< Background of the window.
-	WID_NJS_CANCELOK,   ///< Cancel / OK button.
+	WID_NJS_PROGRESS_BAR,  ///< Simple progress bar.
+	WID_NJS_PROGRESS_TEXT, ///< Text explaining what is happening.
+	WID_NJS_CANCELOK,      ///< Cancel / OK button.
 };
 
 /** Widgets of the #NetworkCompanyPasswordWindow class. */
@@ -116,6 +117,16 @@ enum NetworkAskRelayWidgets {
 	WID_NAR_NO,         ///< "No" button.
 	WID_NAR_YES_ONCE,   ///< "Yes, once" button.
 	WID_NAR_YES_ALWAYS, ///< "Yes, always" button.
+};
+
+/** Widgets of the #NetworkAskSurveyWindow class. */
+enum NetworkAskSurveyWidgets {
+	WID_NAS_CAPTION,    ///< Caption of the window.
+	WID_NAS_TEXT,       ///< Text in the window.
+	WID_NAS_PREVIEW,    ///< "Preview" button.
+	WID_NAS_LINK,       ///< "Details & Privacy" button.
+	WID_NAS_NO,         ///< "No" button.
+	WID_NAS_YES,        ///< "Yes" button.
 };
 
 #endif /* WIDGETS_NETWORK_WIDGET_H */

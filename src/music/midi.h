@@ -14,9 +14,9 @@
 
 /** Header of a Stanard MIDI File */
 struct SMFHeader {
-	uint16 format;
-	uint16 tracks;
-	uint16 tickdiv;
+	uint16_t format;
+	uint16_t tracks;
+	uint16_t tickdiv;
 };
 
 /** MIDI status byte codes */

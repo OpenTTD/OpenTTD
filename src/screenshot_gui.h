@@ -11,5 +11,6 @@
 #define SCREENSHOT_GUI_H
 
 void ShowScreenshotWindow();
+void SetScreenshotWindowVisibility(bool hide);
 
 #endif /* SCREENSHOT_GUI_H */

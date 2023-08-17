@@ -12,7 +12,7 @@ REM URL of the timestamp server
 IF NOT DEFINED SIGNTOOL_TIMESTAMP_URL (SET SIGNTOOL_TIMESTAMP_URL=http://timestamp.digicert.com)
 
 REM Sign with SHA-1 for Windows 7 and below
-"%SIGNTOOL_PATH%" sign -v -n %2 -t %SIGNTOOL_TIMESTAMP_URL% %1
+"%SIGNTOOL_PATH%" sign -v -n %2 -t %SIGNTOOL_TIMESTAMP_URL% -fd sha1 %1
 
 REM Sign with SHA-256 for Windows 8 and above
 "%SIGNTOOL_PATH%" sign -v -n %2 -tr %SIGNTOOL_TIMESTAMP_URL% -fd sha256 -td sha256 -as %1

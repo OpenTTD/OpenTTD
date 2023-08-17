@@ -28,9 +28,9 @@ public:
 	/**
 	 * The goal IDs.
 	 */
-	enum GoalID {
+	enum GoalID : uint16_t {
 		/* Note: these values represent part of the in-game GoalID enum */
-		GOAL_INVALID = ::INVALID_GOALTYPE, ///< An invalid goal id.
+		GOAL_INVALID = ::INVALID_GOAL, ///< An invalid goal id.
 	};
 
 	/**
@@ -90,37 +90,58 @@ public:
 	static bool IsValidGoal(GoalID goal_id);
 
 	/**
+	 * Check whether this is a valid goal destination.
+	 * @param company The relevant company if a story page is the destination.
+	 * @param type The type of the goal.
+	 * @param destination The destination of the \a type type.
+	 * @return True if and only if this goal destination is valid.
+	 */
+	static bool IsValidGoalDestination(ScriptCompany::CompanyID company, GoalType type, SQInteger destination);
+
+	/**
 	 * Create a new goal.
 	 * @param company The company to create the goal for, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param goal The goal to add to the GUI (can be either a raw string, or a ScriptText object).
 	 * @param type The type of the goal.
 	 * @param destination The destination of the \a type type.
 	 * @return The new GoalID, or GOAL_INVALID if it failed.
-	 * @pre No ScriptCompanyMode may be in scope.
-	 * @pre goal != nullptr && len(goal) != 0.
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre goal != null && len(goal) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre if type is GT_STORY_PAGE, the company of the goal and the company of the story page need to match:
 	 *       \li Global goals can only reference global story pages.
 	 *       \li Company specific goals can reference global story pages and story pages of the same company.
 	 */
-	static GoalID New(ScriptCompany::CompanyID company, Text *goal, GoalType type, uint32 destination);
+	static GoalID New(ScriptCompany::CompanyID company, Text *goal, GoalType type, SQInteger destination);
 
 	/**
 	 * Remove a goal from the list.
 	 * @param goal_id The goal to remove.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool Remove(GoalID goal_id);
+
+	/**
+	 * Update goal destination of a goal.
+	 * @param goal_id The goal to update.
+	 * @param type The type of the goal.
+	 * @param destination The destination of the \a type type.
+	 * @return True if the action succeeded.
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre IsValidGoal(goal_id).
+	 * @pre IsValidGoalDestination(g->company, type, destination).
+	 */
+	static bool SetDestination(GoalID goal_id, GoalType type, SQInteger destination);
 
 	/**
 	 * Update goal text of a goal.
 	 * @param goal_id The goal to update.
 	 * @param goal The new goal text (can be either a raw string, or a ScriptText object).
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
-	 * @pre goal != nullptr && len(goal) != 0.
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre goal != null && len(goal) != 0.
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool SetText(GoalID goal_id, Text *goal);
@@ -131,10 +152,10 @@ public:
 	 * the progress string short.
 	 * @param goal_id The goal to update.
 	 * @param progress The new progress text for the goal (can be either a raw string,
-	 * or a ScriptText object). To clear the progress string you can pass nullptr or an
+	 * or a ScriptText object). To clear the progress string you can pass null or an
 	 * empty string.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool SetProgress(GoalID goal_id, Text *progress);
@@ -144,7 +165,7 @@ public:
 	 * @param goal_id The goal to update.
 	 * @param complete The new goal completed status.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool SetCompleted(GoalID goal_id, bool complete);
@@ -153,7 +174,7 @@ public:
 	 * Checks if a given goal have been marked as completed.
 	 * @param goal_id The goal to check complete status.
 	 * @return True if the goal is completed, otherwise false.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidGoal(goal_id).
 	 */
 	static bool IsCompleted(GoalID goal_id);
@@ -166,14 +187,15 @@ public:
 	 * @param type The type of question that is being asked.
 	 * @param buttons Any combinations (at least 1, up to 3) of buttons defined in QuestionButton. Like BUTTON_YES + BUTTON_NO.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
-	 * @pre question != nullptr && len(question) != 0.
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre question != null && len(question) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
-	 * @note Replies to the question are given by you via the event ScriptEvent_GoalQuestionAnswer.
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16_t)
+	 * @note Replies to the question are given by you via the event ScriptEventGoalQuestionAnswer.
 	 * @note There is no guarantee you ever get a reply on your question.
 	 */
-	static bool Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, int buttons);
+	static bool Question(SQInteger uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, SQInteger buttons);
 
 	/**
 	 * Ask client a question.
@@ -183,33 +205,35 @@ public:
 	 * @param type The type of question that is being asked.
 	 * @param buttons Any combinations (at least 1, up to 3) of buttons defined in QuestionButton. Like BUTTON_YES + BUTTON_NO.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre ScriptGame::IsMultiplayer()
-	 * @pre question != nullptr && len(question) != 0.
+	 * @pre question != null && len(question) != 0.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
 	 * @pre CountBits(buttons) >= 1 && CountBits(buttons) <= 3.
-	 * @note Replies to the question are given by you via the event ScriptEvent_GoalQuestionAnswer.
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16_t)
+	 * @note Replies to the question are given by you via the event ScriptEventGoalQuestionAnswer.
 	 * @note There is no guarantee you ever get a reply on your question.
 	 */
-	static bool QuestionClient(uint16 uniqueid, ScriptClient::ClientID client, Text *question, QuestionType type, int buttons);
+	static bool QuestionClient(SQInteger uniqueid, ScriptClient::ClientID client, Text *question, QuestionType type, SQInteger buttons);
 
 	/**
 	 * Close the question on all clients.
 	 * @param uniqueid The uniqueid of the question you want to close.
 	 * @return True if the action succeeded.
-	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre ScriptCompanyMode::IsDeity().
+	 * @pre uniqueid >= 0 && uniqueid <= MAX(uint16_t)
 	 * @note If you send a question to a single company, and get a reply for them,
 	 *   the question is already closed on all clients. Only use this function if
 	 *   you want to timeout a question, or if you send the question to all
 	 *   companies, but you are only interested in the reply of the first.
 	 */
-	static bool CloseQuestion(uint16 uniqueid);
+	static bool CloseQuestion(SQInteger uniqueid);
 
 protected:
 	/**
 	 * Does common checks and asks the question.
 	 */
-	static bool DoQuestion(uint16 uniqueid, uint32 target, bool is_client, Text *question, QuestionType type, uint32 buttons);
+	static bool DoQuestion(SQInteger uniqueid, uint32_t target, bool is_client, Text *question, QuestionType type, SQInteger buttons);
 };
 
 #endif /* SCRIPT_GOAL_HPP */

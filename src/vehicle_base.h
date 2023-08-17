@@ -10,7 +10,6 @@
 #ifndef VEHICLE_BASE_H
 #define VEHICLE_BASE_H
 
-#include "core/smallmap_type.hpp"
 #include "track_type.h"
 #include "command_type.h"
 #include "order_base.h"
@@ -23,8 +22,11 @@
 #include "base_consist.h"
 #include "network/network.h"
 #include "saveload/saveload.h"
-#include <list>
-#include <map>
+#include "timer/timer_game_calendar.h"
+#include "core/mem_func.hpp"
+
+const uint TILE_AXIAL_DISTANCE = 192;  // Logical length of the tile in any DiagDirection used in vehicle movement.
+const uint TILE_CORNER_DISTANCE = 128;  // Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.
 
 /** Vehicle status bits in #Vehicle::vehstatus. */
 enum VehStatus {
@@ -65,12 +67,12 @@ enum NewGRFCacheValidValues {
 /** Cached often queried (NewGRF) values */
 struct NewGRFCache {
 	/* Values calculated when they are requested for the first time after invalidating the NewGRF cache. */
-	uint32 position_consist_length;   ///< Cache for NewGRF var 40.
-	uint32 position_same_id_length;   ///< Cache for NewGRF var 41.
-	uint32 consist_cargo_information; ///< Cache for NewGRF var 42. (Note: The cargotype is untranslated in the cache because the accessing GRF is yet unknown.)
-	uint32 company_information;       ///< Cache for NewGRF var 43.
-	uint32 position_in_vehicle;       ///< Cache for NewGRF var 4D.
-	uint8  cache_valid;               ///< Bitset that indicates which cache values are valid.
+	uint32_t position_consist_length;   ///< Cache for NewGRF var 40.
+	uint32_t position_same_id_length;   ///< Cache for NewGRF var 41.
+	uint32_t consist_cargo_information; ///< Cache for NewGRF var 42. (Note: The cargotype is untranslated in the cache because the accessing GRF is yet unknown.)
+	uint32_t company_information;       ///< Cache for NewGRF var 43.
+	uint32_t position_in_vehicle;       ///< Cache for NewGRF var 4D.
+	uint8_t  cache_valid;               ///< Bitset that indicates which cache values are valid.
 };
 
 /** Meaning of the various bits of the visual effect. */
@@ -119,15 +121,15 @@ enum GroundVehicleSubtypeFlags {
 
 /** Cached often queried values common to all vehicles. */
 struct VehicleCache {
-	uint16 cached_max_speed;        ///< Maximum speed of the consist (minimum of the max speed of all vehicles in the consist).
-	uint16 cached_cargo_age_period; ///< Number of ticks before carried cargo is aged.
+	uint16_t cached_max_speed;        ///< Maximum speed of the consist (minimum of the max speed of all vehicles in the consist).
+	uint16_t cached_cargo_age_period; ///< Number of ticks before carried cargo is aged.
 
 	byte cached_vis_effect;  ///< Visual effect to show (see #VisualEffect)
 };
 
 /** Sprite sequence for a vehicle part. */
 struct VehicleSpriteSeq {
-	PalSpriteID seq[4];
+	PalSpriteID seq[8];
 	uint count;
 
 	bool operator==(const VehicleSpriteSeq &other) const
@@ -211,17 +213,33 @@ struct GRFFile;
  */
 struct RefitDesc {
 	CargoID cargo;    ///< Cargo type the vehicle will be carrying.
-	uint16 capacity;  ///< Capacity the vehicle will have.
-	uint16 remaining; ///< Capacity remaining from before the previous refit.
-	RefitDesc(CargoID cargo, uint16 capacity, uint16 remaining) :
+	uint16_t capacity;  ///< Capacity the vehicle will have.
+	uint16_t remaining; ///< Capacity remaining from before the previous refit.
+	RefitDesc(CargoID cargo, uint16_t capacity, uint16_t remaining) :
 			cargo(cargo), capacity(capacity), remaining(remaining) {}
+};
+
+/**
+ * Structure to return information about the closest depot location,
+ * and whether it could be found.
+ */
+struct ClosestDepot {
+	TileIndex location;
+	DestinationID destination; ///< The DestinationID as used for orders.
+	bool reverse;
+	bool found;
+
+	ClosestDepot() :
+		location(INVALID_TILE), destination(0), reverse(false), found(false) {}
+
+	ClosestDepot(TileIndex location, DestinationID destination, bool reverse = false) :
+		location(location), destination(destination), reverse(reverse), found(true) {}
 };
 
 /** %Vehicle data structure. */
 struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle, BaseConsist {
 private:
 	typedef std::list<RefitDesc> RefitList;
-	typedef std::map<CargoID, uint> CapacitiesMap;
 
 	Vehicle *next;                      ///< pointer to the next vehicle in the chain
 	Vehicle *previous;                  ///< NOSAVE: pointer to the previous vehicle in the chain
@@ -266,20 +284,21 @@ public:
 	SpriteID colourmap;                 ///< NOSAVE: cached colour mapping
 
 	/* Related to age and service time */
-	Year build_year;                    ///< Year the vehicle has been built.
-	Date age;                           ///< Age in days
-	Date max_age;                       ///< Maximum age
-	Date date_of_last_service;          ///< Last date the vehicle had a service at a depot.
-	uint16 reliability;                 ///< Reliability.
-	uint16 reliability_spd_dec;         ///< Reliability decrease speed.
+	TimerGameCalendar::Year build_year;           ///< Year the vehicle has been built.
+	TimerGameCalendar::Date age;                  ///< Age in days
+	TimerGameCalendar::Date max_age;              ///< Maximum age
+	TimerGameCalendar::Date date_of_last_service; ///< Last date the vehicle had a service at a depot.
+	TimerGameCalendar::Date date_of_last_service_newgrf; ///< Last date the vehicle had a service at a depot, unchanged by the date cheat to protect against unsafe NewGRF behavior.
+	uint16_t reliability;                 ///< Reliability.
+	uint16_t reliability_spd_dec;         ///< Reliability decrease speed.
 	byte breakdown_ctr;                 ///< Counter for managing breakdown events. @see Vehicle::HandleBreakdown
 	byte breakdown_delay;               ///< Counter for managing breakdown length.
 	byte breakdowns_since_last_service; ///< Counter for the amount of breakdowns.
 	byte breakdown_chance;              ///< Current chance of breakdowns.
 
-	int32 x_pos;                        ///< x coordinate.
-	int32 y_pos;                        ///< y coordinate.
-	int32 z_pos;                        ///< z coordinate.
+	int32_t x_pos;                        ///< x coordinate.
+	int32_t y_pos;                        ///< y coordinate.
+	int32_t z_pos;                        ///< z coordinate.
 	Direction direction;                ///< facing
 
 	Owner owner;                        ///< Which company owns the vehicle?
@@ -292,34 +311,35 @@ public:
 	byte x_extent;                      ///< x-extent of vehicle bounding box
 	byte y_extent;                      ///< y-extent of vehicle bounding box
 	byte z_extent;                      ///< z-extent of vehicle bounding box
-	int8 x_bb_offs;                     ///< x offset of vehicle bounding box
-	int8 y_bb_offs;                     ///< y offset of vehicle bounding box
-	int8 x_offs;                        ///< x offset for vehicle sprite
-	int8 y_offs;                        ///< y offset for vehicle sprite
+	int8_t x_bb_offs;                     ///< x offset of vehicle bounding box
+	int8_t y_bb_offs;                     ///< y offset of vehicle bounding box
+	int8_t x_offs;                        ///< x offset for vehicle sprite
+	int8_t y_offs;                        ///< y offset for vehicle sprite
 	EngineID engine_type;               ///< The type of engine used for this vehicle.
 
 	TextEffectID fill_percent_te_id;    ///< a text-effect id to a loading indicator object
 	UnitID unitnumber;                  ///< unit number, for display purposes only
 
-	uint16 cur_speed;                   ///< current speed
+	uint16_t cur_speed;                   ///< current speed
 	byte subspeed;                      ///< fractional speed
 	byte acceleration;                  ///< used by train & aircraft
-	uint32 motion_counter;              ///< counter to occasionally play a vehicle sound.
+	uint32_t motion_counter;              ///< counter to occasionally play a vehicle sound.
 	byte progress;                      ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
 
-	byte random_bits;                   ///< Bits used for determining which randomized variational spritegroups to use when drawing.
+	uint16_t random_bits; ///< Bits used for randomized variational spritegroups.
 	byte waiting_triggers;              ///< Triggers to be yet matched before rerandomizing the random bits.
 
 	StationID last_station_visited;     ///< The last station we stopped at.
 	StationID last_loading_station;     ///< Last station the vehicle has stopped at and could possibly leave from with any cargo loaded.
+	uint64_t last_loading_tick;         ///< Last time (based on TimerGameTick counter) the vehicle has stopped at a station and could possibly leave with any cargo loaded.
 
 	CargoID cargo_type;                 ///< type of cargo this vehicle is carrying
 	byte cargo_subtype;                 ///< Used for livery refits (NewGRF variations)
-	uint16 cargo_cap;                   ///< total capacity
-	uint16 refit_cap;                   ///< Capacity left over from before last refit.
+	uint16_t cargo_cap;                   ///< total capacity
+	uint16_t refit_cap;                   ///< Capacity left over from before last refit.
 	VehicleCargoList cargo;             ///< The cargo this vehicle is carrying
-	uint16 cargo_age_counter;           ///< Ticks till cargo is aged next.
-	int8 trip_occupancy;                ///< NOSAVE: Occupancy of vehicle of the current trip (updated after leaving a station).
+	uint16_t cargo_age_counter;           ///< Ticks till cargo is aged next.
+	int8_t trip_occupancy;                ///< NOSAVE: Occupancy of vehicle of the current trip (updated after leaving a station).
 
 	byte day_counter;                   ///< Increased by one for each day
 	byte tick_counter;                  ///< Increased by one for each tick
@@ -329,11 +349,11 @@ public:
 	Order current_order;                ///< The current order (+ status, like: loading)
 
 	union {
-		OrderList *list;            ///< Pointer to the order list for this vehicle
-		Order     *old;             ///< Only used during conversion of old save games
-	} orders;                           ///< The orders currently assigned to the vehicle.
+		OrderList *orders;              ///< Pointer to the order list for this vehicle
+		Order *old_orders;              ///< Only used during conversion of old save games
+	};
 
-	uint16 load_unload_ticks;           ///< Ticks to wait before starting next cycle.
+	uint16_t load_unload_ticks;           ///< Ticks to wait before starting next cycle.
 	GroupID group_id;                   ///< Index of group Pool array
 	byte subtype;                       ///< subtype (Filled with values from #AircraftSubType/#DisasterSubType/#EffectVehicleType/#GroundVehicleSubtypeFlags)
 
@@ -341,6 +361,15 @@ public:
 	VehicleCache vcache;                ///< Cache of often used vehicle values.
 
 	mutable MutableSpriteCache sprite_cache; ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
+
+	/**
+	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.
+	 * @return Weight value in tonnes.
+	 */
+	virtual uint16_t GetMaxWeight() const
+	{
+		return 0;
+	}
 
 	Vehicle(VehicleType type = VEH_INVALID);
 
@@ -355,14 +384,14 @@ public:
 	GroundVehicleCache *GetGroundVehicleCache();
 	const GroundVehicleCache *GetGroundVehicleCache() const;
 
-	uint16 &GetGroundVehicleFlags();
-	const uint16 &GetGroundVehicleFlags() const;
+	uint16_t &GetGroundVehicleFlags();
+	const uint16_t &GetGroundVehicleFlags() const;
 
 	void DeleteUnreachedImplicitOrders();
 
 	void HandleLoading(bool mode = false);
 
-	void GetConsistFreeCapacities(SmallMap<CargoID, uint> &capacities) const;
+	void GetConsistFreeCapacities(std::map<CargoID, uint> &capacities) const;
 
 	uint GetConsistTotalCapacity() const;
 
@@ -426,7 +455,7 @@ public:
 	 */
 	inline uint GetAdvanceDistance()
 	{
-		return (this->direction & 1) ? 192 : 256;
+		return (this->direction & 1) ? TILE_AXIAL_DISTANCE : TILE_CORNER_DISTANCE * 2;
 	}
 
 	/**
@@ -437,8 +466,9 @@ public:
 
 	/**
 	 * Play the sound associated with leaving the station
+	 * @param force Should we play the sound even if sound effects are muted? (horn hotkey)
 	 */
-	virtual void PlayLeaveStationSound() const {}
+	virtual void PlayLeaveStationSound(bool force = false) const {}
 
 	/**
 	 * Whether this is the primary vehicle in the chain.
@@ -455,7 +485,7 @@ public:
 	virtual void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const { result->Clear(); }
 
 	const GRFFile *GetGRF() const;
-	uint32 GetGRFID() const;
+	uint32_t GetGRFID() const;
 
 	/**
 	 * Invalidates cached NewGRF variables
@@ -481,7 +511,7 @@ public:
 	 * Check if the vehicle is a ground vehicle.
 	 * @return True iff the vehicle is a train or a road vehicle.
 	 */
-	inline bool IsGroundVehicle() const
+	debug_inline bool IsGroundVehicle() const
 	{
 		return this->type == VEH_TRAIN || this->type == VEH_ROAD;
 	}
@@ -544,6 +574,8 @@ public:
 	 * Calls the new day handler of the vehicle
 	 */
 	virtual void OnNewDay() {};
+
+	void ShiftDates(TimerGameCalendar::Date interval);
 
 	/**
 	 * Crash the (whole) vehicle chain.
@@ -664,7 +696,7 @@ public:
 	 * Get the first order of the vehicles order list.
 	 * @return first order of order list.
 	 */
-	inline Order *GetFirstOrder() const { return (this->orders.list == nullptr) ? nullptr : this->orders.list->GetFirstOrder(); }
+	inline Order *GetFirstOrder() const { return (this->orders == nullptr) ? nullptr : this->orders->GetFirstOrder(); }
 
 	void AddToShared(Vehicle *shared_chain);
 	void RemoveFromShared();
@@ -685,25 +717,25 @@ public:
 	 * Get the first vehicle of this vehicle chain.
 	 * @return the first vehicle of the chain.
 	 */
-	inline Vehicle *FirstShared() const { return (this->orders.list == nullptr) ? this->First() : this->orders.list->GetFirstSharedVehicle(); }
+	inline Vehicle *FirstShared() const { return (this->orders == nullptr) ? this->First() : this->orders->GetFirstSharedVehicle(); }
 
 	/**
 	 * Check if we share our orders with another vehicle.
 	 * @return true if there are other vehicles sharing the same order
 	 */
-	inline bool IsOrderListShared() const { return this->orders.list != nullptr && this->orders.list->IsShared(); }
+	inline bool IsOrderListShared() const { return this->orders != nullptr && this->orders->IsShared(); }
 
 	/**
 	 * Get the number of orders this vehicle has.
 	 * @return the number of orders this vehicle has.
 	 */
-	inline VehicleOrderID GetNumOrders() const { return (this->orders.list == nullptr) ? 0 : this->orders.list->GetNumOrders(); }
+	inline VehicleOrderID GetNumOrders() const { return (this->orders == nullptr) ? 0 : this->orders->GetNumOrders(); }
 
 	/**
 	 * Get the number of manually added orders this vehicle has.
 	 * @return the number of manually added orders this vehicle has.
 	 */
-	inline VehicleOrderID GetNumManualOrders() const { return (this->orders.list == nullptr) ? 0 : this->orders.list->GetNumManualOrders(); }
+	inline VehicleOrderID GetNumManualOrders() const { return (this->orders == nullptr) ? 0 : this->orders->GetNumManualOrders(); }
 
 	/**
 	 * Get the next station the vehicle will stop at.
@@ -711,7 +743,7 @@ public:
 	 */
 	inline StationIDStack GetNextStoppingStation() const
 	{
-		return (this->orders.list == nullptr) ? INVALID_STATION : this->orders.list->GetNextStoppingStation(this);
+		return (this->orders == nullptr) ? INVALID_STATION : this->orders->GetNextStoppingStation(this);
 	}
 
 	void ResetRefitCaps();
@@ -755,12 +787,9 @@ public:
 	/**
 	 * Find the closest depot for this vehicle and tell us the location,
 	 * DestinationID and whether we should reverse.
-	 * @param location    where do we go to?
-	 * @param destination what hangar do we go to?
-	 * @param reverse     should the vehicle be reversed?
-	 * @return true if a depot could be found.
+	 * @return A structure with information about the closest depot, if found.
 	 */
-	virtual bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse) { return false; }
+	virtual ClosestDepot FindClosestDepot() { return {}; }
 
 	virtual void SetDestTile(TileIndex tile) { this->dest_tile = tile; }
 
@@ -775,9 +804,9 @@ public:
 	void UpdatePositionAndViewport();
 	bool MarkAllViewportsDirty() const;
 
-	inline uint16 GetServiceInterval() const { return this->service_interval; }
+	inline uint16_t GetServiceInterval() const { return this->service_interval; }
 
-	inline void SetServiceInterval(uint16 interval) { this->service_interval = interval; }
+	inline void SetServiceInterval(uint16_t interval) { this->service_interval = interval; }
 
 	inline bool ServiceIntervalIsCustom() const { return HasBit(this->vehicle_flags, VF_SERVINT_IS_CUSTOM); }
 
@@ -873,7 +902,7 @@ public:
 	 */
 	inline Order *GetOrder(int index) const
 	{
-		return (this->orders.list == nullptr) ? nullptr : this->orders.list->GetOrderAt(index);
+		return (this->orders == nullptr) ? nullptr : this->orders->GetOrderAt(index);
 	}
 
 	/**
@@ -882,7 +911,7 @@ public:
 	 */
 	inline Order *GetLastOrder() const
 	{
-		return (this->orders.list == nullptr) ? nullptr : this->orders.list->GetLastOrder();
+		return (this->orders == nullptr) ? nullptr : this->orders->GetLastOrder();
 	}
 
 	bool IsEngineCountable() const;
@@ -894,7 +923,7 @@ public:
 	 * Check if the vehicle is a front engine.
 	 * @return Returns true if the vehicle is a front engine.
 	 */
-	inline bool IsFrontEngine() const
+	debug_inline bool IsFrontEngine() const
 	{
 		return this->IsGroundVehicle() && HasBit(this->subtype, GVSF_FRONT);
 	}
@@ -1033,7 +1062,10 @@ public:
 	 * Returns an iterable ensemble of orders of a vehicle
 	 * @return an iterable ensemble of orders of a vehicle
 	 */
-	IterateWrapper Orders() const { return IterateWrapper(this->orders.list); }
+	IterateWrapper Orders() const { return IterateWrapper(this->orders); }
+
+	uint32_t GetDisplayMaxWeight() const;
+	uint32_t GetDisplayMinPowerToWeight() const;
 };
 
 /**
@@ -1247,6 +1279,6 @@ struct FreeUnitIDGenerator {
 };
 
 /** Sentinel for an invalid coordinate. */
-static const int32 INVALID_COORD = 0x7fffffff;
+static const int32_t INVALID_COORD = 0x7fffffff;
 
 #endif /* VEHICLE_BASE_H */

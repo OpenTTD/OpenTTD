@@ -38,6 +38,8 @@ enum SpriteAlignerWidgets {
 	WID_SA_LIST,        ///< Queried sprite list.
 	WID_SA_SCROLLBAR,   ///< Scrollbar for sprite list.
 	WID_SA_RESET_REL,   ///< Reset relative sprite offset
+	WID_SA_CENTRE,      ///< Toggle centre sprite.
+	WID_SA_CROSSHAIR,   ///< Toggle crosshair.
 };
 
 #endif /* WIDGETS_NEWGRF_DEBUG_WIDGET_H */

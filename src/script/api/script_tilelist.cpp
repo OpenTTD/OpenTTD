@@ -21,14 +21,14 @@ void ScriptTileList::AddRectangle(TileIndex t1, TileIndex t2)
 	if (!::IsValidTile(t2)) return;
 
 	TileArea ta(t1, t2);
-	for (TileIndex t : ta) this->AddItem(t);
+	for (TileIndex t : ta) this->AddItem(static_cast<uint32_t>(t));
 }
 
 void ScriptTileList::AddTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return;
 
-	this->AddItem(tile);
+	this->AddItem(static_cast<uint32_t>(tile));
 }
 
 void ScriptTileList::RemoveRectangle(TileIndex t1, TileIndex t2)
@@ -37,14 +37,14 @@ void ScriptTileList::RemoveRectangle(TileIndex t1, TileIndex t2)
 	if (!::IsValidTile(t2)) return;
 
 	TileArea ta(t1, t2);
-	for (TileIndex t : ta) this->RemoveItem(t);
+	for (TileIndex t : ta) this->RemoveItem(static_cast<uint32_t>(t));
 }
 
 void ScriptTileList::RemoveTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return;
 
-	this->RemoveItem(tile);
+	this->RemoveItem(static_cast<uint32_t>(tile));
 }
 
 /**
@@ -53,7 +53,7 @@ void ScriptTileList::RemoveTile(TileIndex tile)
  * @param radius Catchment radius to test
  * @param bta BitmapTileArea to fill
  */
-static void FillIndustryCatchment(const Industry *i, int radius, BitmapTileArea &bta)
+static void FillIndustryCatchment(const Industry *i, SQInteger radius, BitmapTileArea &bta)
 {
 	for (TileIndex cur_tile : i->location) {
 		if (!::IsTileType(cur_tile, MP_INDUSTRY) || ::GetIndustryIndex(cur_tile) != i->index) continue;
@@ -61,9 +61,9 @@ static void FillIndustryCatchment(const Industry *i, int radius, BitmapTileArea 
 		int tx = TileX(cur_tile);
 		int ty = TileY(cur_tile);
 		for (int y = -radius; y <= radius; y++) {
-			if (ty + y < 0 || ty + y > (int)MapMaxY()) continue;
+			if (ty + y < 0 || ty + y > (int)Map::MaxY()) continue;
 			for (int x = -radius; x <= radius; x++) {
-				if (tx + x < 0 || tx + x > (int)MapMaxX()) continue;
+				if (tx + x < 0 || tx + x > (int)Map::MaxX()) continue;
 				TileIndex tile = TileXY(tx + x, ty + y);
 				if (!IsValidTile(tile)) continue;
 				if (::IsTileType(tile, MP_INDUSTRY) && ::GetIndustryIndex(tile) == i->index) continue;
@@ -73,7 +73,7 @@ static void FillIndustryCatchment(const Industry *i, int radius, BitmapTileArea 
 	}
 }
 
-ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID industry_id, int radius)
+ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID industry_id, SQInteger radius)
 {
 	if (!ScriptIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
 
@@ -83,13 +83,7 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 	if (i->neutral_station != nullptr && !_settings_game.station.serve_neutral_industries) return;
 
 	/* Check if this industry accepts anything */
-	{
-		bool cargo_accepts = false;
-		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-			if (i->accepts_cargo[j] != CT_INVALID) cargo_accepts = true;
-		}
-		if (!cargo_accepts) return;
-	}
+	if (!i->IsCargoAccepted()) return;
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
@@ -101,19 +95,13 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 		/* Only add the tile if it accepts the cargo (sometimes just 1 tile of an
 		 *  industry triggers the acceptance). */
 		CargoArray acceptance = ::GetAcceptanceAroundTiles(cur_tile, 1, 1, radius);
-		{
-			bool cargo_accepts = false;
-			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-				if (i->accepts_cargo[j] != CT_INVALID && acceptance[i->accepts_cargo[j]] != 0) cargo_accepts = true;
-			}
-			if (!cargo_accepts) continue;
-		}
+		if (std::none_of(std::begin(i->accepted), std::end(i->accepted), [&acceptance](const auto &a) { return ::IsValidCargoID(a.cargo) && acceptance[a.cargo] != 0; })) continue;
 
 		this->AddTile(cur_tile);
 	}
 }
 
-ScriptTileList_IndustryProducing::ScriptTileList_IndustryProducing(IndustryID industry_id, int radius)
+ScriptTileList_IndustryProducing::ScriptTileList_IndustryProducing(IndustryID industry_id, SQInteger radius)
 {
 	if (!ScriptIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
 
@@ -123,11 +111,7 @@ ScriptTileList_IndustryProducing::ScriptTileList_IndustryProducing(IndustryID in
 	if (i->neutral_station != nullptr && !_settings_game.station.serve_neutral_industries) return;
 
 	/* Check if this industry produces anything */
-	bool cargo_produces = false;
-	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-		if (i->produced_cargo[j] != CT_INVALID) cargo_produces = true;
-	}
-	if (!cargo_produces) return;
+	if (!i->IsCargoProduced()) return;
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
@@ -155,7 +139,7 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_type_value |= (1 << ::STATION_AIRPORT) | (1 << ::STATION_OILRIG);
 	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_type_value |= (1 << ::STATION_DOCK)    | (1 << ::STATION_OILRIG);
 
-	TileArea ta(::TileXY(rect->left, rect->top), rect->right - rect->left + 1, rect->bottom - rect->top + 1);
+	TileArea ta(::TileXY(rect->left, rect->top), rect->Width(), rect->Height());
 	for (TileIndex cur_tile : ta) {
 		if (!::IsTileType(cur_tile, MP_STATION)) continue;
 		if (::GetStationIndex(cur_tile) != station_id) continue;

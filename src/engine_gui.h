@@ -14,12 +14,25 @@
 #include "sortlist_type.h"
 #include "gfx_type.h"
 #include "vehicle_type.h"
+#include "engine_base.h"
 
-typedef GUIList<EngineID, CargoID> GUIEngineList;
+struct GUIEngineListItem {
+	EngineID engine_id;       ///< Engine to display in build purchase list
+	EngineID variant_id;      ///< Variant group of the engine.
+	EngineDisplayFlags flags; ///< Flags for toggling/drawing (un)folded status and controlling indentation.
+	int8_t indent;              ///< Display indentation level.
 
-typedef bool EngList_SortTypeFunction(const EngineID&, const EngineID&); ///< argument type for #EngList_Sort.
-void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare);
-void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items);
+	GUIEngineListItem(EngineID engine_id, EngineID variant_id, EngineDisplayFlags flags, int indent) : engine_id(engine_id), variant_id(variant_id), flags(flags), indent(indent) {}
+
+	/* Used when searching list only by engine_id. */
+	bool operator == (const EngineID &other) const { return this->engine_id == other; }
+};
+
+typedef GUIList<GUIEngineListItem, CargoID> GUIEngineList;
+
+typedef bool EngList_SortTypeFunction(const GUIEngineListItem&, const GUIEngineListItem&); ///< argument type for #EngList_Sort.
+void EngList_Sort(GUIEngineList &el, EngList_SortTypeFunction compare);
+void EngList_SortPartial(GUIEngineList &el, EngList_SortTypeFunction compare, size_t begin, size_t num_items);
 
 StringID GetEngineCategoryName(EngineID engine);
 StringID GetEngineInfoString(EngineID engine);

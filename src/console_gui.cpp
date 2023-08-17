@@ -12,7 +12,6 @@
 #include "window_gui.h"
 #include "console_gui.h"
 #include "console_internal.h"
-#include "guitimer_func.h"
 #include "window_func.h"
 #include "string_func.h"
 #include "strings_func.h"
@@ -21,6 +20,8 @@
 #include "console_func.h"
 #include "rev.h"
 #include "video/video_driver.hpp"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 
 #include "widgets/console_widget.h"
 
@@ -29,7 +30,6 @@
 #include "safeguards.h"
 
 static const uint ICON_HISTORY_SIZE       = 20;
-static const uint ICON_LINE_SPACING       =  2;
 static const uint ICON_RIGHT_BORDERWIDTH  = 10;
 static const uint ICON_BOTTOM_BORDERWIDTH = 12;
 
@@ -37,100 +37,42 @@ static const uint ICON_BOTTOM_BORDERWIDTH = 12;
  * Container for a single line of console output
  */
 struct IConsoleLine {
-	static IConsoleLine *front; ///< The front of the console backlog buffer
-	static int size;            ///< The amount of items in the backlog
-
-	IConsoleLine *previous; ///< The previous console message.
-	char *buffer;           ///< The data to store.
+	std::string buffer;     ///< The data to store.
 	TextColour colour;      ///< The colour of the line.
-	uint16 time;            ///< The amount of time the line is in the backlog.
+	uint16_t time;            ///< The amount of time the line is in the backlog.
+
+	IConsoleLine() : buffer(), colour(TC_BEGIN), time(0)
+	{
+
+	}
 
 	/**
 	 * Initialize the console line.
 	 * @param buffer the data to print.
 	 * @param colour the colour of the line.
 	 */
-	IConsoleLine(char *buffer, TextColour colour) :
-			previous(IConsoleLine::front),
-			buffer(buffer),
+	IConsoleLine(std::string buffer, TextColour colour) :
+			buffer(std::move(buffer)),
 			colour(colour),
 			time(0)
 	{
-		IConsoleLine::front = this;
-		IConsoleLine::size++;
 	}
 
-	/**
-	 * Clear this console line and any further ones.
-	 */
 	~IConsoleLine()
 	{
-		IConsoleLine::size--;
-		free(buffer);
-
-		delete previous;
-	}
-
-	/**
-	 * Get the index-ed item in the list.
-	 */
-	static const IConsoleLine *Get(uint index)
-	{
-		const IConsoleLine *item = IConsoleLine::front;
-		while (index != 0 && item != nullptr) {
-			index--;
-			item = item->previous;
-		}
-
-		return item;
-	}
-
-	/**
-	 * Truncate the list removing everything older than/more than the amount
-	 * as specified in the config file.
-	 * As a side effect also increase the time the other lines have been in
-	 * the list.
-	 * @return true if and only if items got removed.
-	 */
-	static bool Truncate()
-	{
-		IConsoleLine *cur = IConsoleLine::front;
-		if (cur == nullptr) return false;
-
-		int count = 1;
-		for (IConsoleLine *item = cur->previous; item != nullptr; count++, cur = item, item = item->previous) {
-			if (item->time > _settings_client.gui.console_backlog_timeout &&
-					count > _settings_client.gui.console_backlog_length) {
-				delete item;
-				cur->previous = nullptr;
-				return true;
-			}
-
-			if (item->time != MAX_UVALUE(uint16)) item->time++;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Reset the complete console line backlog.
-	 */
-	static void Reset()
-	{
-		delete IConsoleLine::front;
-		IConsoleLine::front = nullptr;
-		IConsoleLine::size = 0;
 	}
 };
 
-/* static */ IConsoleLine *IConsoleLine::front = nullptr;
-/* static */ int IConsoleLine::size  = 0;
+/** The console backlog buffer. Item index 0 is the newest line. */
+static std::deque<IConsoleLine> _iconsole_buffer;
+
+static bool TruncateBuffer();
 
 
 /* ** main console cmd buffer ** */
 static Textbuf _iconsole_cmdline(ICON_CMDLN_SIZE);
-static char *_iconsole_history[ICON_HISTORY_SIZE];
-static int _iconsole_historypos;
+static std::deque<std::string> _iconsole_history;
+static ptrdiff_t _iconsole_historypos;
 IConsoleModes _iconsole_mode;
 
 /* *************** *
@@ -169,20 +111,22 @@ static WindowDesc _console_window_desc(
 
 struct IConsoleWindow : Window
 {
-	static int scroll;
+	static size_t scroll;
 	int line_height;   ///< Height of one line of text in the console.
 	int line_offset;
-	GUITimer truncate_timer;
 
 	IConsoleWindow() : Window(&_console_window_desc)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
-		this->line_height = FONT_HEIGHT_NORMAL + ICON_LINE_SPACING;
-		this->line_offset = GetStringBoundingBox("] ").width + 5;
 
 		this->InitNested(0);
-		this->truncate_timer.SetInterval(3000);
 		ResizeWindow(this, _screen.width, _screen.height / 3);
+	}
+
+	void OnInit() override
+	{
+		this->line_height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.hsep_normal;
+		this->line_offset = GetStringBoundingBox("] ").width + WidgetDimensions::scaled.frametext.left;
 	}
 
 	void Close() override
@@ -198,26 +142,34 @@ struct IConsoleWindow : Window
 	 */
 	void Scroll(int amount)
 	{
-		int max_scroll = std::max(0, IConsoleLine::size + 1 - this->height / this->line_height);
-		IConsoleWindow::scroll = Clamp<int>(IConsoleWindow::scroll + amount, 0, max_scroll);
+		if (amount < 0) {
+			size_t namount = (size_t) -amount;
+			IConsoleWindow::scroll = (namount > IConsoleWindow::scroll) ? 0 : IConsoleWindow::scroll - namount;
+		} else {
+			assert(this->height >= 0 && this->line_height > 0);
+			size_t visible_lines = (size_t)(this->height / this->line_height);
+			size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;
+			IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll + amount, max_scroll);
+		}
 		this->SetDirty();
 	}
 
 	void OnPaint() override
 	{
-		const int right = this->width - 5;
+		const int right = this->width - WidgetDimensions::scaled.frametext.right;
 
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, PC_BLACK);
 		int ypos = this->height - this->line_height;
-		for (const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll); print != nullptr; print = print->previous) {
-			SetDParamStr(0, print->buffer);
-			ypos = DrawStringMultiLine(5, right, -this->line_height, ypos, STR_JUST_RAW_STRING, print->colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - ICON_LINE_SPACING;
+		for (size_t line_index = IConsoleWindow::scroll; line_index < _iconsole_buffer.size(); line_index++) {
+			const IConsoleLine &print = _iconsole_buffer[line_index];
+			SetDParamStr(0, print.buffer);
+			ypos = DrawStringMultiLine(WidgetDimensions::scaled.frametext.left, right, -this->line_height, ypos, STR_JUST_RAW_STRING, print.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - WidgetDimensions::scaled.hsep_normal;
 			if (ypos < 0) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
 		int delta = this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
-			DrawString(5, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
+			DrawString(WidgetDimensions::scaled.frametext.left, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
 			delta = 0;
 		}
 
@@ -231,23 +183,24 @@ struct IConsoleWindow : Window
 		}
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
-		if (this->truncate_timer.CountElapsed(delta_ms) == 0) return;
+	/** Check on a regular interval if the console buffer needs truncating. */
+	IntervalTimer<TimerWindow> truncate_interval = {std::chrono::seconds(3), [this](auto) {
+		assert(this->height >= 0 && this->line_height > 0);
+		size_t visible_lines = (size_t)(this->height / this->line_height);
 
-		if (IConsoleLine::Truncate() &&
-				(IConsoleWindow::scroll > IConsoleLine::size)) {
-			IConsoleWindow::scroll = std::max(0, IConsoleLine::size - (this->height / this->line_height) + 1);
+		if (TruncateBuffer() && IConsoleWindow::scroll + visible_lines > _iconsole_buffer.size()) {
+			size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;
+			IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll, max_scroll);
 			this->SetDirty();
 		}
-	}
+	}};
 
 	void OnMouseLoop() override
 	{
 		if (_iconsole_cmdline.HandleCaret()) this->SetDirty();
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPress(char32_t key, uint16_t keycode) override
 	{
 		if (_focused_window != this) return ES_NOT_HANDLED;
 
@@ -364,11 +317,11 @@ struct IConsoleWindow : Window
 		return r;
 	}
 
-	const char *GetTextCharacterAtPosition(const Point &pt) const override
+	ptrdiff_t GetTextCharacterAtPosition(const Point &pt) const override
 	{
 		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
-		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return nullptr;
+		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return -1;
 
 		return GetCharAtPosition(_iconsole_cmdline.buf, pt.x - delta);
 	}
@@ -383,21 +336,20 @@ struct IConsoleWindow : Window
 		VideoDriver::GetInstance()->EditBoxGainedFocus();
 	}
 
-	void OnFocusLost() override
+	void OnFocusLost(bool closing) override
 	{
 		VideoDriver::GetInstance()->EditBoxLostFocus();
 	}
 };
 
-int IConsoleWindow::scroll = 0;
+size_t IConsoleWindow::scroll = 0;
 
 void IConsoleGUIInit()
 {
 	IConsoleResetHistoryPos();
 	_iconsole_mode = ICONSOLE_CLOSED;
 
-	IConsoleLine::Reset();
-	memset(_iconsole_history, 0, sizeof(_iconsole_history));
+	IConsoleClearBuffer();
 
 	IConsolePrint(TC_LIGHT_BLUE, "OpenTTD Game Console Revision 7 - {}", _openttd_revision);
 	IConsolePrint(CC_WHITE, "------------------------------------");
@@ -408,7 +360,7 @@ void IConsoleGUIInit()
 
 void IConsoleClearBuffer()
 {
-	IConsoleLine::Reset();
+	_iconsole_buffer.clear();
 }
 
 void IConsoleGUIFree()
@@ -471,15 +423,14 @@ static const char *IConsoleHistoryAdd(const char *cmd)
 	if (StrEmpty(cmd)) return nullptr;
 
 	/* Do not put in history if command is same as previous */
-	if (_iconsole_history[0] == nullptr || strcmp(_iconsole_history[0], cmd) != 0) {
-		free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
-		memmove(&_iconsole_history[1], &_iconsole_history[0], sizeof(_iconsole_history[0]) * (ICON_HISTORY_SIZE - 1));
-		_iconsole_history[0] = stredup(cmd);
+	if (_iconsole_history.empty() || _iconsole_history.front() != cmd) {
+		_iconsole_history.emplace_front(cmd);
+		while (_iconsole_history.size() > ICON_HISTORY_SIZE) _iconsole_history.pop_back();
 	}
 
 	/* Reset the history position */
 	IConsoleResetHistoryPos();
-	return _iconsole_history[0];
+	return _iconsole_history.front().c_str();
 }
 
 /**
@@ -488,10 +439,8 @@ static const char *IConsoleHistoryAdd(const char *cmd)
  */
 static void IConsoleHistoryNavigate(int direction)
 {
-	if (_iconsole_history[0] == nullptr) return; // Empty history
-	_iconsole_historypos = Clamp(_iconsole_historypos + direction, -1, ICON_HISTORY_SIZE - 1);
-
-	if (direction > 0 && _iconsole_history[_iconsole_historypos] == nullptr) _iconsole_historypos--;
+	if (_iconsole_history.empty()) return; // Empty history
+	_iconsole_historypos = Clamp<ptrdiff_t>(_iconsole_historypos + direction, -1, _iconsole_history.size() - 1);
 
 	if (_iconsole_historypos == -1) {
 		_iconsole_cmdline.DeleteAll();
@@ -509,10 +458,38 @@ static void IConsoleHistoryNavigate(int direction)
  * @param colour_code the colour of the command. Red in case of errors, etc.
  * @param str the message entered or output on the console (notice, error, etc.)
  */
-void IConsoleGUIPrint(TextColour colour_code, char *str)
+void IConsoleGUIPrint(TextColour colour_code, const std::string &str)
 {
-	new IConsoleLine(str, colour_code);
+	_iconsole_buffer.push_front(IConsoleLine(str, colour_code));
 	SetWindowDirty(WC_CONSOLE, 0);
+}
+
+/**
+ * Remove old lines from the backlog buffer.
+ * The buffer is limited by a maximum size and a minimum age. Every time truncation runs,
+ * all lines in the buffer are aged by one. When a line exceeds both the maximum position
+ * and also the maximum age, it gets removed.
+ * @return true if any lines were removed
+*/
+static bool TruncateBuffer()
+{
+	bool need_truncation = false;
+	size_t count = 0;
+	for (IConsoleLine &line : _iconsole_buffer) {
+		count++;
+		line.time++;
+		if (line.time > _settings_client.gui.console_backlog_timeout && count > _settings_client.gui.console_backlog_length) {
+			/* Any messages after this are older and need to be truncated */
+			need_truncation = true;
+			break;
+		}
+	}
+
+	if (need_truncation) {
+		_iconsole_buffer.resize(count - 1);
+	}
+
+	return need_truncation;
 }
 
 

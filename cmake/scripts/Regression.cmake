@@ -35,6 +35,7 @@ execute_process(COMMAND ${OPENTTD_EXECUTABLE}
                         -vnull:ticks=30000
                         -d script=2
                         -d misc=9
+                        -Q
                 OUTPUT_VARIABLE REGRESSION_OUTPUT
                 ERROR_VARIABLE REGRESSION_RESULT
                 OUTPUT_STRIP_TRAILING_WHITESPACE

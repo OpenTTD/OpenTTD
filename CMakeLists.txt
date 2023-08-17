@@ -1,11 +1,12 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.16)
 
 if(NOT BINARY_NAME)
     set(BINARY_NAME openttd)
 endif()
 
 project(${BINARY_NAME}
-    VERSION 13.0
+    VERSION 14.0
+    LANGUAGES CXX
 )
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
@@ -22,7 +23,7 @@ if (EMSCRIPTEN)
 endif()
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
-set(CMAKE_OSX_DEPLOYMENT_TARGET 10.14)
+set(CMAKE_OSX_DEPLOYMENT_TARGET 10.15)
 
 # Use GNUInstallDirs to allow customisation
 # but set our own default data and bin dir
@@ -123,6 +124,15 @@ find_package(ZLIB)
 find_package(LibLZMA)
 find_package(LZO)
 find_package(PNG)
+find_package(nlohmann_json)
+
+if(WIN32 OR EMSCRIPTEN)
+    # Windows uses WinHttp for HTTP requests.
+    # Emscripten uses Javascript for HTTP requests.
+else()
+    # All other targets use libcurl.
+    find_package(CURL)
+endif()
 
 if(NOT OPTION_DEDICATED)
     if(NOT WIN32)
@@ -134,12 +144,17 @@ if(NOT OPTION_DEDICATED)
                 find_package(SDL)
             endif()
             find_package(Fluidsynth)
-            find_package(Fontconfig)
-            find_package(ICU OPTIONAL_COMPONENTS i18n lx)
+            if(Freetype_FOUND)
+                find_package(Fontconfig)
+            endif()
+            find_package(Harfbuzz)
+            find_package(ICU OPTIONAL_COMPONENTS i18n)
         endif()
     endif()
 endif()
 if(APPLE)
+    enable_language(OBJCXX)
+
     find_package(Iconv)
 
     find_library(AUDIOTOOLBOX_LIBRARY AudioToolbox)
@@ -169,6 +184,12 @@ show_options()
 if(UNIX AND NOT APPLE AND NOT OPTION_DEDICATED)
     if(NOT SDL_FOUND AND NOT SDL2_FOUND AND NOT ALLEGRO_FOUND)
         message(FATAL_ERROR "SDL, SDL2 or Allegro is required for this platform")
+    endif()
+    if(HARFBUZZ_FOUND AND NOT ICU_i18n_FOUND)
+        message(WARNING "HarfBuzz depends on ICU i18n to function; HarfBuzz will be disabled")
+    endif()
+    if(NOT HARFBUZZ_FOUND)
+        message(WARNING "Without HarfBuzz and ICU i18n the game will not be able to render right-to-left languages correctly")
     endif()
 endif()
 if(APPLE)
@@ -207,6 +228,7 @@ if(OPTION_PACKAGE_DEPENDENCIES)
     set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 endif()
 
+include(CTest)
 include(SourceList)
 
 # Needed by rev.cpp
@@ -216,7 +238,9 @@ include_directories(${CMAKE_SOURCE_DIR}/src/3rdparty/squirrel/include)
 
 include(MSVCFilters)
 
-add_executable(openttd WIN32 ${GENERATED_SOURCE_FILES})
+add_library(openttd_lib OBJECT ${GENERATED_SOURCE_FILES})
+add_executable(openttd WIN32)
+add_executable(openttd_test)
 set_target_properties(openttd PROPERTIES OUTPUT_NAME "${BINARY_NAME}")
 # All other files are added via target_sources()
 
@@ -225,6 +249,12 @@ if(MSVC)
     target_sources(openttd PRIVATE "${CMAKE_SOURCE_DIR}/os/windows/openttd.manifest")
 endif()
 
+target_precompile_headers(openttd_lib
+    PRIVATE
+    src/stdafx.h
+    src/core/format.hpp
+)
+
 add_subdirectory(${CMAKE_SOURCE_DIR}/bin)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src)
 add_subdirectory(${CMAKE_SOURCE_DIR}/media)
@@ -232,17 +262,25 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/media)
 add_dependencies(openttd
     find_version)
 
-target_link_libraries(openttd
+target_link_libraries(openttd_lib
     openttd::languages
     openttd::settings
-    openttd::media
-    openttd::basesets
     openttd::script_api
     Threads::Threads
 )
 
+target_link_libraries(openttd
+    openttd_lib
+    openttd::media
+    openttd::basesets
+)
+
+target_link_libraries(openttd_test PRIVATE openttd_lib)
+include(Catch)
+catch_discover_tests(openttd_test)
+
 if(HAIKU)
-    target_link_libraries(openttd "be" "network" "midi")
+    target_link_libraries(openttd_lib "be" "network" "midi")
 endif()
 
 if(IPO_FOUND)
@@ -258,6 +296,11 @@ link_package(PNG TARGET PNG::PNG ENCOURAGED)
 link_package(ZLIB TARGET ZLIB::ZLIB ENCOURAGED)
 link_package(LIBLZMA TARGET LibLZMA::LibLZMA ENCOURAGED)
 link_package(LZO)
+link_package(nlohmann_json ENCOURAGED)
+
+if(NOT WIN32 AND NOT EMSCRIPTEN)
+    link_package(CURL ENCOURAGED)
+endif()
 
 if(NOT OPTION_DEDICATED)
     link_package(Fluidsynth)
@@ -266,7 +309,7 @@ if(NOT OPTION_DEDICATED)
     link_package(Allegro)
     link_package(FREETYPE TARGET Freetype::Freetype)
     link_package(Fontconfig TARGET Fontconfig::Fontconfig)
-    link_package(ICU_lx)
+    link_package(Harfbuzz TARGET harfbuzz::harfbuzz)
     link_package(ICU_i18n)
 
     if(SDL2_FOUND AND OPENGL_FOUND AND UNIX)
@@ -280,10 +323,12 @@ if(NOT OPTION_DEDICATED)
     endif()
 endif()
 
+include(CheckAtomic)
+
 if(APPLE)
     link_package(Iconv TARGET Iconv::Iconv)
 
-    target_link_libraries(openttd
+    target_link_libraries(openttd_lib
         ${AUDIOTOOLBOX_LIBRARY}
         ${AUDIOUNIT_LIBRARY}
         ${COCOA_LIBRARY}
@@ -302,6 +347,7 @@ if(EMSCRIPTEN)
     target_link_libraries(WASM::WASM INTERFACE "-s ALLOW_MEMORY_GROWTH=1")
     target_link_libraries(WASM::WASM INTERFACE "-s INITIAL_MEMORY=33554432")
     target_link_libraries(WASM::WASM INTERFACE "-s DISABLE_EXCEPTION_CATCHING=0")
+    target_link_libraries(WASM::WASM INTERFACE "-s WASM_BIGINT")
     add_definitions(-s DISABLE_EXCEPTION_CATCHING=0)
 
     # Export functions to Javascript.
@@ -362,12 +408,13 @@ if(WIN32)
         -DPSAPI_VERSION=1
     )
 
-    target_link_libraries(openttd
+    target_link_libraries(openttd_lib
         ws2_32
         winmm
         imm32
         usp10
         psapi
+        winhttp
     )
 endif()
 

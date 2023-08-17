@@ -14,6 +14,7 @@
 #include "slope_func.h"
 
 void ShowDepotWindow(TileIndex tile, VehicleType type);
+void InitDepotWindowBlockSizes();
 
 void DeleteDepotHighlightOfVehicle(const Vehicle *v);
 

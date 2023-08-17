@@ -3,6 +3,7 @@
  */
 
 #include "../../../stdafx.h"
+#include "../../fmt/format.h"
 
 #include <squirrel.h>
 #include "sqpcheader.h"
@@ -65,16 +66,11 @@ public:
 	}
 	NORETURN static void ThrowError(void *ud, const SQChar *s) {
 		SQCompiler *c = (SQCompiler *)ud;
-		c->Error("%s", s);
+		c->Error(s);
 	}
-	NORETURN void Error(const SQChar *s, ...) WARN_FORMAT(2, 3)
+	NORETURN void Error(const std::string &msg)
 	{
-		static SQChar temp[256];
-		va_list vl;
-		va_start(vl, s);
-		vseprintf(temp, lastof(temp), s, vl);
-		va_end(vl);
-		throw temp;
+		throw msg;
 	}
 	void Lex(){	_token = _lex.Lex();}
 	void PushExpState(){ _expstates.push_back(ExpState()); }
@@ -120,9 +116,9 @@ public:
 					default:
 						etypename = _lex.Tok2Str(tok);
 					}
-					Error("expected '%s'", etypename);
+					Error(fmt::format("expected '{}'", etypename));
 				}
-				Error("expected '%c'", (char)tok);
+				Error(fmt::format("expected '{:c}'", tok));
 			}
 		}
 		SQObjectPtr ret;
@@ -186,12 +182,12 @@ public:
 #endif
 			return true;
 		}
-		catch (SQChar *compilererror) {
+		catch (const std::string &compilererror) {
 			if(_raiseerror && _ss(_vm)->_compilererrorhandler) {
-				_ss(_vm)->_compilererrorhandler(_vm, compilererror, type(_sourcename) == OT_STRING?_stringval(_sourcename):"unknown",
+				_ss(_vm)->_compilererrorhandler(_vm, compilererror.c_str(), type(_sourcename) == OT_STRING ? _stringval(_sourcename) : "unknown",
 					_lex._currentline, _lex._currentcolumn);
 			}
-			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror, -1);
+			_vm->_lasterror = SQString::Create(_ss(_vm), compilererror);
 			return false;
 		}
 	}
@@ -607,7 +603,6 @@ public:
 		switch(_token)
 		{
 		case TK_STRING_LITERAL: {
-				//SQObjectPtr id(SQString::Create(_ss(_vm), _lex._svalue,_lex._longstr.size()-1));
 				_fs->AddInstruction(_OP_LOAD, _fs->PushTarget(), _fs->GetConstant(_fs->CreateString(_lex._svalue,_lex._longstr.size()-1)));
 				Lex();
 			}
@@ -648,7 +643,7 @@ public:
 							Expect('.'); constid = Expect(TK_IDENTIFIER);
 							if(!_table(constant)->Get(constid,constval)) {
 								constval.Null();
-								Error("invalid constant [%s.%s]", _stringval(id),_stringval(constid));
+								Error(fmt::format("invalid constant [{}.{}]", _stringval(id),_stringval(constid)));
 							}
 						}
 						else {
@@ -840,7 +835,6 @@ public:
 			unsigned char flags = (hasattrs?NEW_SLOT_ATTRIBUTES_FLAG:0)|(isstatic?NEW_SLOT_STATIC_FLAG:0);
 			SQInteger table = _fs->TopTarget(); //<<BECAUSE OF THIS NO COMMON EMIT FUNC IS POSSIBLE
 			_fs->AddInstruction(_OP_NEWSLOTA, flags, table, key, val);
-			//_fs->PopTarget();
 		}
 		if(separator == ',') //hack recognizes a table from the separator
 			_fs->SetIntructionParam(tpos, 1, nkeys);
@@ -1053,7 +1047,6 @@ public:
 		if(tonextcondjmp != -1)
 			_fs->SetIntructionParam(tonextcondjmp, 1, _fs->GetCurrentPos() - tonextcondjmp);
 		if(_token == TK_DEFAULT) {
-		//	_fs->AddLineInfos(_lex._currentline, _lineinfo);
 			Lex(); Expect(':');
 			SQInteger stacksize = _fs->GetStackSize();
 			_last_stacksize = _fs->GetStackSize();
@@ -1167,11 +1160,6 @@ public:
 		}
 		SQTable *enums = _table(_ss(_vm)->_consts);
 		SQObjectPtr strongid = id;
-		/*SQObjectPtr dummy;
-		if(enums->Get(strongid,dummy)) {
-			dummy.Null(); strongid.Null();
-			Error("enumeration already exists");
-		}*/
 		enums->NewSlot(SQObjectPtr(strongid),SQObjectPtr(table));
 		strongid.Null();
 		Lex();
@@ -1318,7 +1306,6 @@ public:
 		funcstate->AddLineInfos(_lex._prevtoken == '\n'?_lex._lasttokenline:_lex._currentline, _lineinfo, true);
         funcstate->AddInstruction(_OP_RETURN, -1);
 		funcstate->SetStackSize(0);
-		//_fs->->_stacksize = _fs->_stacksize;
 		SQFunctionProto *func = funcstate->BuildProto();
 #ifdef _DEBUG_DUMP
 		funcstate->Dump(func);

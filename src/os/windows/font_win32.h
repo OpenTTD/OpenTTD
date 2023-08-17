@@ -10,7 +10,7 @@
 #ifndef FONT_WIN32_H
 #define FONT_WIN32_H
 
-#include "../../fontcache_internal.h"
+#include "../../fontcache/truetypefontcache.h"
 #include "win32.h"
 
 /** Font cache for fonts that are based on a Win32 font. */
@@ -21,20 +21,20 @@ private:
 	HDC dc = nullptr;     ///< Cached GDI device context.
 	HGDIOBJ old_font;     ///< Old font selected into the GDI context.
 	SIZE glyph_size;      ///< Maximum size of regular glyphs.
-	std::string fontname; ///< Cached copy of this->logfont.lfFaceName
+	std::string fontname; ///< Cached copy of loaded font facename
 
 	void SetFontSize(FontSize fs, int pixels);
 
 protected:
-	const void *InternalGetFontTable(uint32 tag, size_t &length) override;
+	const void *InternalGetFontTable(uint32_t tag, size_t &length) override;
 	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
 
 public:
 	Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels);
 	~Win32FontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(WChar key) override;
-	const char *GetFontName() override { return this->fontname.c_str(); }
+	GlyphID MapCharToGlyph(char32_t key) override;
+	std::string GetFontName() override { return this->fontname; }
 	const void *GetOSHandle() override { return &this->logfont; }
 };
 

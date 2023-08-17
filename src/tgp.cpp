@@ -8,7 +8,6 @@
 /** @file tgp.cpp OTTD Perlin Noise Landscape Generator, aka TerraGenesis Perlin */
 
 #include "stdafx.h"
-#include <math.h>
 #include "clear_map.h"
 #include "void_map.h"
 #include "genworld.h"
@@ -25,7 +24,7 @@
  * and starting X & Y, is entirely predictable. On the face of it, that may not
  * be useful. However, it means that if you want to replay a map in a different
  * terrain, or just vary the sea level, you just re-run the generator with the
- * same seed. The seed is an int32, and is randomised on each run of New Game.
+ * same seed. The seed is an int32_t, and is randomised on each run of New Game.
  * The Scenario Generator does not randomise the value, so that you can
  * experiment with one terrain until you are happy, or click "Random" for a new
  * random seed.
@@ -151,22 +150,22 @@
  */
 
 /** Fixed point type for heights */
-typedef int16 height_t;
+using Height = int16_t;
 static const int height_decimal_bits = 4;
 
 /** Fixed point array for amplitudes (and percent values) */
-typedef int amplitude_t;
+using Amplitude = int;
 static const int amplitude_decimal_bits = 10;
 
 /** Height map - allocated array of heights (MapSizeX() + 1) x (MapSizeY() + 1) */
 struct HeightMap
 {
-	std::vector<height_t> h; //< array of heights
+	std::vector<Height> h; //< array of heights
 	/* Even though the sizes are always positive, there are many cases where
 	 * X and Y need to be signed integers due to subtractions. */
-	int      dim_x;      //< height map size_x MapSizeX() + 1
-	int      size_x;     //< MapSizeX()
-	int      size_y;     //< MapSizeY()
+	int      dim_x;      //< height map size_x Map::SizeX() + 1
+	int      size_x;     //< Map::SizeX()
+	int      size_y;     //< Map::SizeY()
 
 	/**
 	 * Height map accessor
@@ -174,7 +173,7 @@ struct HeightMap
 	 * @param y Y position
 	 * @return height as fixed point number
 	 */
-	inline height_t &height(uint x, uint y)
+	inline Height &height(uint x, uint y)
 	{
 		return h[x + y * dim_x];
 	}
@@ -183,24 +182,24 @@ struct HeightMap
 /** Global height map instance */
 static HeightMap _height_map = { {}, 0, 0, 0 };
 
-/** Conversion: int to height_t */
+/** Conversion: int to Height */
 #define I2H(i) ((i) << height_decimal_bits)
-/** Conversion: height_t to int */
+/** Conversion: Height to int */
 #define H2I(i) ((i) >> height_decimal_bits)
 
-/** Conversion: int to amplitude_t */
+/** Conversion: int to Amplitude */
 #define I2A(i) ((i) << amplitude_decimal_bits)
-/** Conversion: amplitude_t to int */
+/** Conversion: Amplitude to int */
 #define A2I(i) ((i) >> amplitude_decimal_bits)
 
-/** Conversion: amplitude_t to height_t */
+/** Conversion: Amplitude to Height */
 #define A2H(a) ((a) >> (amplitude_decimal_bits - height_decimal_bits))
 
 /** Maximum number of TGP noise frequencies. */
 static const int MAX_TGP_FREQUENCIES = 10;
 
 /** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
-static const amplitude_t _water_percent[4] = {70, 170, 270, 420};
+static const Amplitude _water_percent[4] = {70, 170, 270, 420};
 
 /**
  * Gets the maximum allowed height while generating a map based on
@@ -208,7 +207,7 @@ static const amplitude_t _water_percent[4] = {70, 170, 270, 420};
  * @return The maximum height for the map generation.
  * @note Values should never be lower than 3 since the minimum snowline height is 2.
  */
-static height_t TGPGetMaxHeight()
+static Height TGPGetMaxHeight()
 {
 	if (_settings_game.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
 		/* TGP never reaches this height; this means that if a user inputs "2",
@@ -220,7 +219,7 @@ static height_t TGPGetMaxHeight()
 	/**
 	 * Desired maximum height - indexed by:
 	 *  - _settings_game.difficulty.terrain_type
-	 *  - min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS
+	 *  - min(Map::LogX(), Map::LogY()) - MIN_MAP_SIZE_BITS
 	 *
 	 * It is indexed by map size as well as terrain type since the map size limits the height of
 	 * a usable mountain. For example, on a 64x64 map a 24 high single peak mountain (as if you
@@ -236,7 +235,7 @@ static height_t TGPGetMaxHeight()
 		{  12,  19,  25,  31,  67,  75,  87 }, ///< Alpinist
 	};
 
-	int map_size_bucket = std::min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS;
+	int map_size_bucket = std::min(Map::LogX(), Map::LogY()) - MIN_MAP_SIZE_BITS;
 	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][map_size_bucket];
 
 	/* If there is a manual map height limit, clamp to it. */
@@ -261,10 +260,10 @@ uint GetEstimationTGPMapHeight()
  * @param frequency The frequency to get the amplitudes for
  * @return The amplitudes to apply to the map.
  */
-static amplitude_t GetAmplitude(int frequency)
+static Amplitude GetAmplitude(int frequency)
 {
 	/* Base noise amplitudes (multiplied by 1024) and indexed by "smoothness setting" and log2(frequency). */
-	static const amplitude_t amplitudes[][7] = {
+	static const Amplitude amplitudes[][7] = {
 		/* lowest frequency ...... highest (every corner) */
 		{16000,  5600,  1968,   688,   240,    16,    16}, ///< Very smooth
 		{24000, 12800,  6400,  2700,  1024,   128,    16}, ///< Smooth
@@ -287,14 +286,14 @@ static amplitude_t GetAmplitude(int frequency)
 
 	/* Get the table index, and return that value if possible. */
 	int index = frequency - MAX_TGP_FREQUENCIES + lengthof(amplitudes[smoothness]);
-	amplitude_t amplitude = amplitudes[smoothness][std::max(0, index)];
+	Amplitude amplitude = amplitudes[smoothness][std::max(0, index)];
 	if (index >= 0) return amplitude;
 
 	/* We need to extrapolate the amplitude. */
 	double extrapolation_factor = extrapolation_factors[smoothness];
 	int height_range = I2H(16);
 	do {
-		amplitude = (amplitude_t)(extrapolation_factor * (double)amplitude);
+		amplitude = (Amplitude)(extrapolation_factor * (double)amplitude);
 		height_range <<= 1;
 		index++;
 	} while (index < 0);
@@ -322,11 +321,11 @@ static inline bool AllocHeightMap()
 {
 	assert(_height_map.h.empty());
 
-	_height_map.size_x = MapSizeX();
-	_height_map.size_y = MapSizeY();
+	_height_map.size_x = Map::SizeX();
+	_height_map.size_y = Map::SizeY();
 
 	/* Allocate memory block for height map row pointers */
-	size_t total_size = (_height_map.size_x + 1) * (_height_map.size_y + 1);
+	size_t total_size = static_cast<size_t>(_height_map.size_x + 1) * (_height_map.size_y + 1);
 	_height_map.dim_x = _height_map.size_x + 1;
 	_height_map.h.resize(total_size);
 
@@ -344,7 +343,7 @@ static inline void FreeHeightMap()
  * @param rMax Limit of result
  * @return generated height
  */
-static inline height_t RandomHeight(amplitude_t rMax)
+static inline Height RandomHeight(Amplitude rMax)
 {
 	/* Spread height into range -rMax..+rMax */
 	return A2H(RandomRange(2 * rMax + 1) - rMax);
@@ -362,11 +361,11 @@ static void HeightMapGenerate()
 	/* Trying to apply noise to uninitialized height map */
 	assert(!_height_map.h.empty());
 
-	int start = std::max(MAX_TGP_FREQUENCIES - (int)std::min(MapLogX(), MapLogY()), 0);
+	int start = std::max(MAX_TGP_FREQUENCIES - (int)std::min(Map::LogX(), Map::LogY()), 0);
 	bool first = true;
 
 	for (int frequency = start; frequency < MAX_TGP_FREQUENCIES; frequency++) {
-		const amplitude_t amplitude = GetAmplitude(frequency);
+		const Amplitude amplitude = GetAmplitude(frequency);
 
 		/* Ignore zero amplitudes; it means our map isn't height enough for this
 		 * amplitude, so ignore it and continue with the next set of amplitude. */
@@ -378,7 +377,7 @@ static void HeightMapGenerate()
 			/* This is first round, we need to establish base heights with step = size_min */
 			for (int y = 0; y <= _height_map.size_y; y += step) {
 				for (int x = 0; x <= _height_map.size_x; x += step) {
-					height_t height = (amplitude > 0) ? RandomHeight(amplitude) : 0;
+					Height height = (amplitude > 0) ? RandomHeight(amplitude) : 0;
 					_height_map.height(x, y) = height;
 				}
 			}
@@ -390,9 +389,9 @@ static void HeightMapGenerate()
 		 * Interpolate height values at odd x, even y tiles */
 		for (int y = 0; y <= _height_map.size_y; y += 2 * step) {
 			for (int x = 0; x <= _height_map.size_x - 2 * step; x += 2 * step) {
-				height_t h00 = _height_map.height(x + 0 * step, y);
-				height_t h02 = _height_map.height(x + 2 * step, y);
-				height_t h01 = (h00 + h02) / 2;
+				Height h00 = _height_map.height(x + 0 * step, y);
+				Height h02 = _height_map.height(x + 2 * step, y);
+				Height h01 = (h00 + h02) / 2;
 				_height_map.height(x + 1 * step, y) = h01;
 			}
 		}
@@ -400,9 +399,9 @@ static void HeightMapGenerate()
 		/* Interpolate height values at odd y tiles */
 		for (int y = 0; y <= _height_map.size_y - 2 * step; y += 2 * step) {
 			for (int x = 0; x <= _height_map.size_x; x += step) {
-				height_t h00 = _height_map.height(x, y + 0 * step);
-				height_t h20 = _height_map.height(x, y + 2 * step);
-				height_t h10 = (h00 + h20) / 2;
+				Height h00 = _height_map.height(x, y + 0 * step);
+				Height h20 = _height_map.height(x, y + 2 * step);
+				Height h10 = (h00 + h20) / 2;
 				_height_map.height(x, y + 1 * step) = h10;
 			}
 		}
@@ -417,21 +416,21 @@ static void HeightMapGenerate()
 }
 
 /** Returns min, max and average height from height map */
-static void HeightMapGetMinMaxAvg(height_t *min_ptr, height_t *max_ptr, height_t *avg_ptr)
+static void HeightMapGetMinMaxAvg(Height *min_ptr, Height *max_ptr, Height *avg_ptr)
 {
-	height_t h_min, h_max, h_avg;
-	int64 h_accu = 0;
+	Height h_min, h_max, h_avg;
+	int64_t h_accu = 0;
 	h_min = h_max = _height_map.height(0, 0);
 
 	/* Get h_min, h_max and accumulate heights into h_accu */
-	for (const height_t &h : _height_map.h) {
+	for (const Height &h : _height_map.h) {
 		if (h < h_min) h_min = h;
 		if (h > h_max) h_max = h;
 		h_accu += h;
 	}
 
 	/* Get average height */
-	h_avg = (height_t)(h_accu / (_height_map.size_x * _height_map.size_y));
+	h_avg = (Height)(h_accu / (_height_map.size_x * _height_map.size_y));
 
 	/* Return required results */
 	if (min_ptr != nullptr) *min_ptr = h_min;
@@ -440,12 +439,12 @@ static void HeightMapGetMinMaxAvg(height_t *min_ptr, height_t *max_ptr, height_t
 }
 
 /** Dill histogram and return pointer to its base point - to the count of zero heights */
-static int *HeightMapMakeHistogram(height_t h_min, height_t h_max, int *hist_buf)
+static int *HeightMapMakeHistogram(Height h_min, Height h_max, int *hist_buf)
 {
 	int *hist = hist_buf - h_min;
 
 	/* Count the heights and fill the histogram */
-	for (const height_t &h : _height_map.h){
+	for (const Height &h : _height_map.h){
 		assert(h >= h_min);
 		assert(h <= h_max);
 		hist[h]++;
@@ -454,9 +453,9 @@ static int *HeightMapMakeHistogram(height_t h_min, height_t h_max, int *hist_buf
 }
 
 /** Applies sine wave redistribution onto height map */
-static void HeightMapSineTransform(height_t h_min, height_t h_max)
+static void HeightMapSineTransform(Height h_min, Height h_max)
 {
-	for (height_t &h : _height_map.h) {
+	for (Height &h : _height_map.h) {
 		double fheight;
 
 		if (h < h_min) continue;
@@ -522,7 +521,7 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
 				break;
 		}
 		/* Transform it back into h_min..h_max space */
-		h = (height_t)(fheight * (h_max - h_min) + h_min);
+		h = (Height)(fheight * (h_max - h_min) + h_min);
 		if (h < 0) h = I2H(0);
 		if (h >= h_max) h = h_max - 1;
 	}
@@ -546,41 +545,41 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
  */
 static void HeightMapCurves(uint level)
 {
-	height_t mh = TGPGetMaxHeight() - I2H(1); // height levels above sea level only
+	Height mh = TGPGetMaxHeight() - I2H(1); // height levels above sea level only
 
 	/** Basically scale height X to height Y. Everything in between is interpolated. */
-	struct control_point_t {
-		height_t x; ///< The height to scale from.
-		height_t y; ///< The height to scale to.
+	struct ControlPoint {
+		Height x; ///< The height to scale from.
+		Height y; ///< The height to scale to.
 	};
 	/* Scaled curve maps; value is in height_ts. */
-#define F(fraction) ((height_t)(fraction * mh))
-	const control_point_t curve_map_1[] = { { F(0.0), F(0.0) },                       { F(0.8), F(0.13) },                       { F(1.0), F(0.4)  } };
-	const control_point_t curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.13) }, { F(0.8), F(0.27) },                       { F(1.0), F(0.6)  } };
-	const control_point_t curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.27) }, { F(0.8), F(0.57) },                       { F(1.0), F(0.8)  } };
-	const control_point_t curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.4),  F(0.3)  }, { F(0.7), F(0.8)  }, { F(0.92), F(0.99) }, { F(1.0), F(0.99) } };
+#define F(fraction) ((Height)(fraction * mh))
+	const ControlPoint curve_map_1[] = { { F(0.0), F(0.0) },                       { F(0.8), F(0.13) },                       { F(1.0), F(0.4)  } };
+	const ControlPoint curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.13) }, { F(0.8), F(0.27) },                       { F(1.0), F(0.6)  } };
+	const ControlPoint curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.27) }, { F(0.8), F(0.57) },                       { F(1.0), F(0.8)  } };
+	const ControlPoint curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.4),  F(0.3)  }, { F(0.7), F(0.8)  }, { F(0.92), F(0.99) }, { F(1.0), F(0.99) } };
 #undef F
 
 	/** Helper structure to index the different curve maps. */
-	struct control_point_list_t {
-		size_t length;               ///< The length of the curve map.
-		const control_point_t *list; ///< The actual curve map.
+	struct ControlPointList {
+		size_t length;            ///< The length of the curve map.
+		const ControlPoint *list; ///< The actual curve map.
 	};
-	const control_point_list_t curve_maps[] = {
+	static const ControlPointList curve_maps[] = {
 		{ lengthof(curve_map_1), curve_map_1 },
 		{ lengthof(curve_map_2), curve_map_2 },
 		{ lengthof(curve_map_3), curve_map_3 },
 		{ lengthof(curve_map_4), curve_map_4 },
 	};
 
-	height_t ht[lengthof(curve_maps)];
+	Height ht[lengthof(curve_maps)];
 	MemSetT(ht, 0, lengthof(ht));
 
 	/* Set up a grid to choose curve maps based on location; attempt to get a somewhat square grid */
 	float factor = sqrt((float)_height_map.size_x / (float)_height_map.size_y);
 	uint sx = Clamp((int)(((1 << level) * factor) + 0.5), 1, 128);
 	uint sy = Clamp((int)(((1 << level) / factor) + 0.5), 1, 128);
-	byte *c = AllocaM(byte, sx * sy);
+	std::vector<byte> c(static_cast<size_t>(sx) * sy);
 
 	for (uint i = 0; i < sx * sy; i++) {
 		c[i] = Random() % lengthof(curve_maps);
@@ -634,7 +633,7 @@ static void HeightMapCurves(uint level)
 			corner_bits |= 1 << corner_c;
 			corner_bits |= 1 << corner_d;
 
-			height_t *h = &_height_map.height(x, y);
+			Height *h = &_height_map.height(x, y);
 
 			/* Do not touch sea level */
 			if (*h < I2H(1)) continue;
@@ -647,10 +646,10 @@ static void HeightMapCurves(uint level)
 				if (!HasBit(corner_bits, t)) continue;
 
 				[[maybe_unused]] bool found = false;
-				const control_point_t *cm = curve_maps[t].list;
+				const ControlPoint *cm = curve_maps[t].list;
 				for (uint i = 0; i < curve_maps[t].length - 1; i++) {
-					const control_point_t &p1 = cm[i];
-					const control_point_t &p2 = cm[i + 1];
+					const ControlPoint &p1 = cm[i];
+					const ControlPoint &p2 = cm[i + 1];
 
 					if (*h >= p1.x && *h < p2.x) {
 						ht[t] = p1.y + (*h - p1.x) * (p2.y - p1.y) / (p2.x - p1.x);
@@ -664,7 +663,7 @@ static void HeightMapCurves(uint level)
 			}
 
 			/* Apply interpolation of curve map results. */
-			*h = (height_t)((ht[corner_a] * yri + ht[corner_b] * yr) * xri + (ht[corner_c] * yri + ht[corner_d] * yr) * xr);
+			*h = (Height)((ht[corner_a] * yri + ht[corner_b] * yr) * xri + (ht[corner_c] * yri + ht[corner_d] * yr) * xr);
 
 			/* Readd sea level */
 			*h += I2H(1);
@@ -673,10 +672,10 @@ static void HeightMapCurves(uint level)
 }
 
 /** Adjusts heights in height map to contain required amount of water tiles */
-static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_new)
+static void HeightMapAdjustWaterLevel(Amplitude water_percent, Height h_max_new)
 {
-	height_t h_min, h_max, h_avg, h_water_level;
-	int64 water_tiles, desired_water_tiles;
+	Height h_min, h_max, h_avg, h_water_level;
+	int64_t water_tiles, desired_water_tiles;
 	int *hist;
 
 	HeightMapGetMinMaxAvg(&h_min, &h_max, &h_avg);
@@ -687,7 +686,7 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 	hist = HeightMapMakeHistogram(h_min, h_max, hist_buf);
 
 	/* How many water tiles do we want? */
-	desired_water_tiles = A2I(((int64)water_percent) * (int64)(_height_map.size_x * _height_map.size_y));
+	desired_water_tiles = A2I(((int64_t)water_percent) * (int64_t)(_height_map.size_x * _height_map.size_y));
 
 	/* Raise water_level and accumulate values from histogram until we reach required number of water tiles */
 	for (h_water_level = h_min, water_tiles = 0; h_water_level < h_max; h_water_level++) {
@@ -701,9 +700,9 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 	 *   values from range: h_water_level..h_max are transformed into 0..h_max_new
 	 *   where h_max_new is depending on terrain type and map size.
 	 */
-	for (height_t &h : _height_map.h) {
+	for (Height &h : _height_map.h) {
 		/* Transform height from range h_water_level..h_max into 0..h_max_new range */
-		h = (height_t)(((int)h_max_new) * (h - h_water_level) / (h_max - h_water_level)) + I2H(1);
+		h = (Height)(((int)h_max_new) * (h - h_water_level) / (h_max - h_water_level)) + I2H(1);
 		/* Make sure all values are in the proper range (0..h_max_new) */
 		if (h < 0) h = I2H(0);
 		if (h >= h_max_new) h = h_max_new - 1;
@@ -734,7 +733,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  * Please note that all the small numbers; 53, 101, 167, etc. are small primes
  * to help give the perlin noise a bit more of a random feel.
  */
-static void HeightMapCoastLines(uint8 water_borders)
+static void HeightMapCoastLines(uint8_t water_borders)
 {
 	int smallest_size = std::min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
 	const int margin = 4;
@@ -799,8 +798,8 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 	int ed; // coast distance from edge
 	int depth;
 
-	height_t h_prev = I2H(1);
-	height_t h;
+	Height h_prev = I2H(1);
+	Height h;
 
 	assert(IsValidXY(org_x, org_y));
 
@@ -820,14 +819,14 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 	 * Soften the coast slope */
 	for (depth = 0; IsValidXY(x, y) && depth <= max_coast_Smooth_depth; depth++, x += dir_x, y += dir_y) {
 		h = _height_map.height(x, y);
-		h = std::min<uint>(h, h_prev + (4 + depth)); // coast softening formula
+		h = static_cast<Height>(std::min<uint>(h, h_prev + (4 + depth))); // coast softening formula
 		_height_map.height(x, y) = h;
 		h_prev = h;
 	}
 }
 
 /** Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge */
-static void HeightMapSmoothCoasts(uint8 water_borders)
+static void HeightMapSmoothCoasts(uint8_t water_borders)
 {
 	int x, y;
 	/* First Smooth NW and SE coasts (y close to 0 and y close to size_y) */
@@ -849,17 +848,17 @@ static void HeightMapSmoothCoasts(uint8 water_borders)
  * the most it can change is one level. When OTTD can support cliffs, this
  * routine may not be necessary.
  */
-static void HeightMapSmoothSlopes(height_t dh_max)
+static void HeightMapSmoothSlopes(Height dh_max)
 {
 	for (int y = 0; y <= (int)_height_map.size_y; y++) {
 		for (int x = 0; x <= (int)_height_map.size_x; x++) {
-			height_t h_max = std::min(_height_map.height(x > 0 ? x - 1 : x, y), _height_map.height(x, y > 0 ? y - 1 : y)) + dh_max;
+			Height h_max = std::min(_height_map.height(x > 0 ? x - 1 : x, y), _height_map.height(x, y > 0 ? y - 1 : y)) + dh_max;
 			if (_height_map.height(x, y) > h_max) _height_map.height(x, y) = h_max;
 		}
 	}
 	for (int y = _height_map.size_y; y >= 0; y--) {
 		for (int x = _height_map.size_x; x >= 0; x--) {
-			height_t h_max = std::min(_height_map.height(x < _height_map.size_x ? x + 1 : x, y), _height_map.height(x, y < _height_map.size_y ? y + 1 : y)) + dh_max;
+			Height h_max = std::min(_height_map.height(x < _height_map.size_x ? x + 1 : x, y), _height_map.height(x, y < _height_map.size_y ? y + 1 : y)) + dh_max;
 			if (_height_map.height(x, y) > h_max) _height_map.height(x, y) = h_max;
 		}
 	}
@@ -875,9 +874,9 @@ static void HeightMapSmoothSlopes(height_t dh_max)
 static void HeightMapNormalize()
 {
 	int sea_level_setting = _settings_game.difficulty.quantity_sea_lakes;
-	const amplitude_t water_percent = sea_level_setting != (int)CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[sea_level_setting] : _settings_game.game_creation.custom_sea_level * 1024 / 100;
-	const height_t h_max_new = TGPGetMaxHeight();
-	const height_t roughness = 7 + 3 * _settings_game.game_creation.tgen_smoothness;
+	const Amplitude water_percent = sea_level_setting != (int)CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[sea_level_setting] : _settings_game.game_creation.custom_sea_level * 1024 / 100;
+	const Height h_max_new = TGPGetMaxHeight();
+	const Height roughness = 7 + 3 * _settings_game.game_creation.tgen_smoothness;
 
 	HeightMapAdjustWaterLevel(water_percent, h_max_new);
 
@@ -1004,8 +1003,8 @@ void GenerateTerrainPerlin()
 
 	/* First make sure the tiles at the north border are void tiles if needed. */
 	if (_settings_game.construction.freeform_edges) {
-		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
-		for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
+		for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, 0));
+		for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(0, y));
 	}
 
 	int max_height = H2I(TGPGetMaxHeight());

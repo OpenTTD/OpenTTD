@@ -35,7 +35,7 @@ public:
 	 * @param railtype Rail type to get the count of.
 	 * @return Count for the rail type.
 	 */
-	static uint32 GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype);
+	static SQInteger GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype);
 
 	/**
 	 * Return the number of road pieces of a specific road type for a company.
@@ -43,7 +43,7 @@ public:
 	 * @param roadtype Road type to get the count of.
 	 * @return Count for the road type.
 	 */
-	static uint32 GetRoadPieceCount(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype);
+	static SQInteger GetRoadPieceCount(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype);
 
 	/**
 	 * Return the number of pieces of an infrastructure category for a company.
@@ -52,7 +52,7 @@ public:
 	 * @return Count for the wanted category.
 	 * @note #INFRASTRUCTURE_RAIL and #INFRASTRUCTURE_ROAD return the total count for all rail/road types.
 	 */
-	static uint32 GetInfrastructurePieceCount(ScriptCompany::CompanyID company, Infrastructure infra_type);
+	static SQInteger GetInfrastructurePieceCount(ScriptCompany::CompanyID company, Infrastructure infra_type);
 
 	/**
 	 * Return the monthly maintenance costs of a specific rail type for a company.

@@ -26,8 +26,8 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 	uint offset = sprite_src->offset[zoom];
 
 	/* Find where to start reading in the source sprite */
-	const uint8 *src = sprite_src->data + offset;
-	uint8 *dst_line = (uint8 *)bp->dst + bp->top * bp->pitch + bp->left;
+	const uint8_t *src = sprite_src->data + offset;
+	uint8_t *dst_line = (uint8_t *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	/* Skip over the top lines in the source image */
 	for (int y = 0; y < bp->skip_top; y++) {
@@ -39,10 +39,10 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 		}
 	}
 
-	const uint8 *src_next = src;
+	const uint8_t *src_next = src;
 
 	for (int y = 0; y < bp->height; y++) {
-		uint8 *dst = dst_line;
+		uint8_t *dst = dst_line;
 		dst_line += bp->pitch;
 
 		uint skip_left = bp->skip_left;
@@ -86,7 +86,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 			switch (mode) {
 				case BM_COLOUR_REMAP:
 				case BM_CRASH_REMAP: {
-					const uint8 *remap = bp->remap;
+					const uint8_t *remap = bp->remap;
 					do {
 						uint m = remap[*src];
 						if (m != 0) *dst = m;
@@ -101,7 +101,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 					break;
 
 				case BM_TRANSPARENT: {
-					const uint8 *remap = bp->remap;
+					const uint8_t *remap = bp->remap;
 					src += pixels;
 					do {
 						*dst = remap[*dst];
@@ -127,7 +127,7 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::Sprite *sprite, Alloca
 	ZoomLevel zoom_min;
 	ZoomLevel zoom_max;
 
-	if (sprite->type == ST_FONT) {
+	if (sprite->type == SpriteType::Font) {
 		zoom_min = ZOOM_LVL_NORMAL;
 		zoom_max = ZOOM_LVL_NORMAL;
 	} else {

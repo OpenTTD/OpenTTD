@@ -8,6 +8,7 @@
 /** @file textfile_gui.cpp Implementation of textfile window. */
 
 #include "stdafx.h"
+#include "core/backup_type.hpp"
 #include "fileio_func.h"
 #include "fontcache.h"
 #include "gfx_type.h"
@@ -69,11 +70,6 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 	this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
 }
 
-/* virtual */ TextfileWindow::~TextfileWindow()
-{
-	free(this->text);
-}
-
 /**
  * Get the total height of the content displayed in this window, if wrapping is disabled.
  * @return the height in pixels
@@ -88,7 +84,7 @@ uint TextfileWindow::ReflowContent()
 			line.bottom = height;
 		}
 	} else {
-		int max_width = this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMERECT_RIGHT;
+		int max_width = this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WidgetDimensions::scaled.frametext.Horizontal();
 		for (auto &line : this->lines) {
 			line.top = height;
 			height += GetStringHeight(line.text, max_width, FS_MONO) / FONT_HEIGHT_MONO;
@@ -111,7 +107,7 @@ uint TextfileWindow::GetContentHeight()
 		case WID_TF_BACKGROUND:
 			resize->height = FONT_HEIGHT_MONO;
 
-			size->height = 4 * resize->height + TOP_SPACING + BOTTOM_SPACING; // At least 4 lines are visible.
+			size->height = 4 * resize->height + WidgetDimensions::scaled.frametext.Vertical(); // At least 4 lines are visible.
 			size->width = std::max(200u, size->width); // At least 200 pixels wide.
 			break;
 	}
@@ -123,12 +119,12 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
 		/* Reflow is mandatory if text wrapping is on */
 		uint height = this->ReflowContent();
-		this->vscroll->SetCount(std::min<uint>(UINT16_MAX, height));
+		this->vscroll->SetCount(ClampTo<uint16_t>(height));
 		this->hscroll->SetCount(0);
 	} else {
 		uint height = force_reflow ? this->ReflowContent() : this->GetContentHeight();
-		this->vscroll->SetCount(std::min<uint>(UINT16_MAX, height));
-		this->hscroll->SetCount(this->max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+		this->vscroll->SetCount(ClampTo<uint16_t>(height));
+		this->hscroll->SetCount(this->max_length + WidgetDimensions::scaled.frametext.Horizontal());
 	}
 
 	this->SetWidgetDisabledState(WID_TF_HSCROLLBAR, IsWidgetLowered(WID_TF_WRAPTEXT));
@@ -148,17 +144,14 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 {
 	if (widget != WID_TF_BACKGROUND) return;
 
-	const int x = r.left + WD_FRAMETEXT_LEFT;
-	const int y = r.top + WD_FRAMETEXT_TOP;
-	const int right = r.right - WD_FRAMETEXT_RIGHT;
-	const int bottom = r.bottom - WD_FRAMETEXT_BOTTOM;
+	Rect fr = r.Shrink(WidgetDimensions::scaled.frametext);
 
 	DrawPixelInfo new_dpi;
-	if (!FillDrawPixelInfo(&new_dpi, x, y, right - x + 1, bottom - y + 1)) return;
-	DrawPixelInfo *old_dpi = _cur_dpi;
-	_cur_dpi = &new_dpi;
+	if (!FillDrawPixelInfo(&new_dpi, fr.left, fr.top, fr.Width(), fr.Height())) return;
+	AutoRestoreBackup dpi_backup(_cur_dpi, &new_dpi);
 
 	/* Draw content (now coordinates given to DrawString* are local to the new clipping region). */
+	fr = fr.Translate(-fr.left, -fr.top);
 	int line_height = FONT_HEIGHT_MONO;
 	int pos = this->vscroll->GetPosition();
 	int cap = this->vscroll->GetCapacity();
@@ -169,18 +162,16 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 
 		int y_offset = (line.top - pos) * line_height;
 		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-			DrawStringMultiLine(0, right - x, y_offset, bottom - y, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawStringMultiLine(0, fr.right, y_offset, fr.bottom, line.text, TC_BLACK, SA_TOP | SA_LEFT, false, FS_MONO);
 		} else {
-			DrawString(-this->hscroll->GetPosition(), right - x, y_offset, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawString(-this->hscroll->GetPosition(), fr.right, y_offset, line.text, TC_BLACK, SA_TOP | SA_LEFT, false, FS_MONO);
 		}
 	}
-
-	_cur_dpi = old_dpi;
 }
 
 /* virtual */ void TextfileWindow::OnResize()
 {
-	this->vscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND, TOP_SPACING + BOTTOM_SPACING);
+	this->vscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND, WidgetDimensions::scaled.frametext.Vertical());
 	this->hscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND);
 
 	this->SetupScrollbars(false);
@@ -203,9 +194,9 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 	return FS_MONO;
 }
 
-/* virtual */ const char *TextfileWindow::NextString()
+/* virtual */ std::optional<std::string_view> TextfileWindow::NextString()
 {
-	if (this->search_iterator >= this->lines.size()) return nullptr;
+	if (this->search_iterator >= this->lines.size()) return std::nullopt;
 
 	return this->lines[this->search_iterator++].text;
 }
@@ -215,7 +206,7 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 	return true;
 }
 
-/* virtual */ void TextfileWindow::SetFontNames(FreeTypeSettings *settings, const char *font_name, const void *os_data)
+/* virtual */ void TextfileWindow::SetFontNames(FontCacheSettings *settings, const char *font_name, const void *os_data)
 {
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	settings->mono.font = font_name;
@@ -337,9 +328,9 @@ static void Xunzip(byte **bufp, size_t *sizep)
 /**
  * Loads the textfile text from file and setup #lines.
  */
-/* virtual */ void TextfileWindow::LoadTextfile(const char *textfile, Subdirectory dir)
+/* virtual */ void TextfileWindow::LoadTextfile(const std::string &textfile, Subdirectory dir)
 {
-	if (textfile == nullptr) return;
+	if (textfile.empty()) return;
 
 	this->lines.clear();
 
@@ -348,53 +339,61 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	FILE *handle = FioFOpenFile(textfile, "rb", dir, &filesize);
 	if (handle == nullptr) return;
 
-	this->text = ReallocT(this->text, filesize);
-	size_t read = fread(this->text, 1, filesize, handle);
+	char *buf = MallocT<char>(filesize);
+	size_t read = fread(buf, 1, filesize, handle);
 	fclose(handle);
 
-	if (read != filesize) return;
-
-#if defined(WITH_ZLIB) || defined(WITH_LIBLZMA)
-	const char *suffix = strrchr(textfile, '.');
-	if (suffix == nullptr) return;
-#endif
+	if (read != filesize) {
+		free(buf);
+		return;
+	}
 
 #if defined(WITH_ZLIB)
 	/* In-place gunzip */
-	if (strcmp(suffix, ".gz") == 0) Gunzip((byte**)&this->text, &filesize);
+	if (StrEndsWith(textfile, ".gz")) Gunzip((byte**)&buf, &filesize);
 #endif
 
 #if defined(WITH_LIBLZMA)
 	/* In-place xunzip */
-	if (strcmp(suffix, ".xz") == 0) Xunzip((byte**)&this->text, &filesize);
+	if (StrEndsWith(textfile, ".xz")) Xunzip((byte**)&buf, &filesize);
 #endif
 
-	if (!this->text) return;
+	if (buf == nullptr) return;
 
-	/* Add space for trailing \0 */
-	this->text = ReallocT(this->text, filesize + 1);
-	this->text[filesize] = '\0';
-
-	/* Replace tabs and line feeds with a space since StrMakeValidInPlace removes those. */
-	for (char *p = this->text; *p != '\0'; p++) {
-		if (*p == '\t' || *p == '\r') *p = ' ';
-	}
+	std::string_view sv_buf(buf, filesize);
 
 	/* Check for the byte-order-mark, and skip it if needed. */
-	char *p = this->text + (strncmp(u8"\ufeff", this->text, 3) == 0 ? 3 : 0);
+	if (StrStartsWith(sv_buf, u8"\ufeff")) sv_buf.remove_prefix(3);
 
-	/* Make sure the string is a valid UTF-8 sequence. */
-	StrMakeValidInPlace(p, this->text + filesize, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
+	/* Replace any invalid characters with a question-mark. This copies the buf in the process. */
+	this->LoadText(sv_buf);
+	free(buf);
+}
+
+/**
+ * Load a text into the textfile viewer.
+ *
+ * This will split the text into newlines and stores it for fast drawing.
+ *
+ * @param buf The text to load.
+ */
+void TextfileWindow::LoadText(std::string_view buf)
+{
+	this->text = StrMakeValid(buf, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE | SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	this->lines.clear();
 
 	/* Split the string on newlines. */
+	std::string_view p(this->text);
 	int row = 0;
-	this->lines.emplace_back(row, p);
-	for (; *p != '\0'; p++) {
-		if (*p == '\n') {
-			*p = '\0';
-			this->lines.emplace_back(++row, p + 1);
-		}
+	auto next = p.find_first_of('\n');
+	while (next != std::string_view::npos) {
+		this->lines.emplace_back(row, p.substr(0, next));
+		p.remove_prefix(next + 1);
+
+		row++;
+		next = p.find_first_of('\n');
 	}
+	this->lines.emplace_back(row, p);
 
 	/* Calculate maximum text line length. */
 	uint max_length = 0;
@@ -413,26 +412,25 @@ static void Xunzip(byte **bufp, size_t *sizep)
  * @param filename The filename of the content to look for.
  * @return The path to the textfile, \c nullptr otherwise.
  */
-const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filename)
+std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, const std::string &filename)
 {
 	static const char * const prefixes[] = {
 		"readme",
 		"changelog",
 		"license",
 	};
-	static_assert(lengthof(prefixes) == TFT_END);
+	static_assert(lengthof(prefixes) == TFT_CONTENT_END);
 
-	const char *prefix = prefixes[type];
+	std::string_view prefix = prefixes[type];
 
-	if (filename == nullptr) return nullptr;
+	if (filename.empty()) return std::nullopt;
 
-	static char file_path[MAX_PATH];
-	strecpy(file_path, filename, lastof(file_path));
+	auto slash = filename.find_last_of(PATHSEPCHAR);
+	if (slash == std::string::npos) return std::nullopt;
 
-	char *slash = strrchr(file_path, PATHSEPCHAR);
-	if (slash == nullptr) return nullptr;
+	std::string_view base_path(filename.data(), slash + 1);
 
-	static const char * const exts[] = {
+	static const std::initializer_list<std::string_view> extensions{
 		"txt",
 #if defined(WITH_ZLIB)
 		"txt.gz",
@@ -442,15 +440,15 @@ const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filenam
 #endif
 	};
 
-	for (size_t i = 0; i < lengthof(exts); i++) {
-		seprintf(slash + 1, lastof(file_path), "%s_%s.%s", prefix, GetCurrentLanguageIsoCode(), exts[i]);
+	for (auto &extension : extensions) {
+		std::string file_path = fmt::format("{}{}_{}.{}", base_path, prefix, GetCurrentLanguageIsoCode(), extension);
 		if (FioCheckFileExists(file_path, dir)) return file_path;
 
-		seprintf(slash + 1, lastof(file_path), "%s_%.2s.%s", prefix, GetCurrentLanguageIsoCode(), exts[i]);
+		file_path = fmt::format("{}{}_{:.2s}.{}", base_path, prefix, GetCurrentLanguageIsoCode(), extension);
 		if (FioCheckFileExists(file_path, dir)) return file_path;
 
-		seprintf(slash + 1, lastof(file_path), "%s.%s", prefix, exts[i]);
+		file_path = fmt::format("{}{}.{}", base_path, prefix, extension);
 		if (FioCheckFileExists(file_path, dir)) return file_path;
 	}
-	return nullptr;
+	return std::nullopt;
 }

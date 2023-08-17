@@ -25,7 +25,7 @@ public:
 	 */
 	enum SubsidyParticipantType {
 		/* Values are important, as they represent the internal state of the game.
-		 *  It is originally named SourceType. ST_HEADQUARTERS is intentionally
+		 *  It is originally named SourceType. SourceType::Headquarters is intentionally
 		 *  left out, as it cannot be used for Subsidies. */
 		SPT_INDUSTRY =    0, ///< Subsidy participant is an industry
 		SPT_TOWN     =    1, ///< Subsidy participant is a town
@@ -55,6 +55,7 @@ public:
 	 * @param to_type The type of the subsidy on the 'to' side.
 	 * @param to_id The ID of the 'to' side.
 	 * @return True if the action succeeded.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre ScriptCargo::IsValidCargo(cargo_type)
 	 * @pre from_type == SPT_INDUSTRY || from_type == SPT_TOWN.
 	 * @pre to_type   == SPT_INDUSTRY || to_type   == SPT_TOWN.
@@ -62,7 +63,7 @@ public:
 	 * @pre (to_type   == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(to_id))   || (to_type   == SPT_TOWN && ScriptTown::IsValidTown(to_id))
 	 * @api -ai
 	 */
-	static bool Create(CargoID cargo_type, SubsidyParticipantType from_type, uint16 from_id, SubsidyParticipantType to_type, uint16 to_id);
+	static bool Create(CargoID cargo_type, SubsidyParticipantType from_type, SQInteger from_id, SubsidyParticipantType to_type, SQInteger to_id);
 
 	/**
 	 * Get the company index of the company this subsidy is awarded to.
@@ -109,7 +110,7 @@ public:
 	 * @pre IsValidSubsidy(subsidy_id).
 	 * @return One of TownID/IndustryID.
 	 */
-	static int32 GetSourceIndex(SubsidyID subsidy_id);
+	static SQInteger GetSourceIndex(SubsidyID subsidy_id);
 
 	/**
 	 * Returns the type of destination of subsidy.
@@ -127,7 +128,7 @@ public:
 	 * @pre IsValidSubsidy(subsidy_id).
 	 * @return One of TownID/IndustryID.
 	 */
-	static int32 GetDestinationIndex(SubsidyID subsidy_id);
+	static SQInteger GetDestinationIndex(SubsidyID subsidy_id);
 };
 
 #endif /* SCRIPT_SUBSIDY_HPP */

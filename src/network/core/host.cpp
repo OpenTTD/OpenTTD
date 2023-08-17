@@ -9,6 +9,7 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
+#include "../../core/alloc_func.hpp"
 #include "address.h"
 
 #include "../../safeguards.h"
@@ -20,25 +21,7 @@
  */
 static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast);
 
-#if defined(HAVE_GETIFADDRS)
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // GETIFADDRS implementation
-{
-	struct ifaddrs *ifap, *ifa;
-
-	if (getifaddrs(&ifap) != 0) return;
-
-	for (ifa = ifap; ifa != nullptr; ifa = ifa->ifa_next) {
-		if (!(ifa->ifa_flags & IFF_BROADCAST)) continue;
-		if (ifa->ifa_broadaddr == nullptr) continue;
-		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
-
-		NetworkAddress addr(ifa->ifa_broadaddr, sizeof(sockaddr));
-		if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
-	}
-	freeifaddrs(ifap);
-}
-
-#elif defined(_WIN32)
+#ifdef _WIN32
 static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Win32 implementation
 {
 	SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);
@@ -76,48 +59,22 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Wi
 	closesocket(sock);
 }
 
-#else /* not HAVE_GETIFADDRS */
-
-#include "../../string_func.h"
-
-static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // !GETIFADDRS implementation
+#else /* not WIN32 */
+static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast)
 {
-	SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);
-	if (sock == INVALID_SOCKET) return;
+	struct ifaddrs *ifap, *ifa;
 
-	char buf[4 * 1024]; // Arbitrary buffer size
-	struct ifconf ifconf;
+	if (getifaddrs(&ifap) != 0) return;
 
-	ifconf.ifc_len = sizeof(buf);
-	ifconf.ifc_buf = buf;
-	if (ioctl(sock, SIOCGIFCONF, &ifconf) == -1) {
-		closesocket(sock);
-		return;
+	for (ifa = ifap; ifa != nullptr; ifa = ifa->ifa_next) {
+		if (!(ifa->ifa_flags & IFF_BROADCAST)) continue;
+		if (ifa->ifa_broadaddr == nullptr) continue;
+		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
+
+		NetworkAddress addr(ifa->ifa_broadaddr, sizeof(sockaddr));
+		if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
 	}
-
-	const char *buf_end = buf + ifconf.ifc_len;
-	for (const char *p = buf; p < buf_end;) {
-		const struct ifreq *req = (const struct ifreq*)p;
-
-		if (req->ifr_addr.sa_family == AF_INET) {
-			struct ifreq r;
-
-			strecpy(r.ifr_name, req->ifr_name, lastof(r.ifr_name));
-			if (ioctl(sock, SIOCGIFFLAGS, &r) != -1 &&
-					(r.ifr_flags & IFF_BROADCAST) &&
-					ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {
-				NetworkAddress addr(&r.ifr_broadaddr, sizeof(sockaddr));
-				if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const& elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
-			}
-		}
-
-		p += sizeof(struct ifreq);
-#if defined(AF_LINK) && !defined(SUNOS)
-		p += req->ifr_addr.sa_len - sizeof(struct sockaddr);
-#endif
-	}
-
-	closesocket(sock);
+	freeifaddrs(ifap);
 }
 #endif /* all NetworkFindBroadcastIPsInternals */
 

@@ -12,6 +12,7 @@
 
 #include "airport.h"
 #include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "tilearea_type.h"
@@ -58,9 +59,9 @@ public:
 		return this->att->gfx;
 	}
 
-	virtual AirportTileTableIterator *Clone() const
+	virtual std::unique_ptr<TileIterator> Clone() const
 	{
-		return new AirportTileTableIterator(*this);
+		return std::make_unique<AirportTileTableIterator>(*this);
 	}
 };
 
@@ -106,13 +107,13 @@ struct AirportSpec {
 	byte size_y;                           ///< size of airport in y direction
 	byte noise_level;                      ///< noise that this airport generates
 	byte catchment;                        ///< catchment area of this airport
-	Year min_year;                         ///< first year the airport is available
-	Year max_year;                         ///< last year the airport is available
+	TimerGameCalendar::Year min_year;      ///< first year the airport is available
+	TimerGameCalendar::Year max_year;      ///< last year the airport is available
 	StringID name;                         ///< name of this airport
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 	AirportClassID cls_id;                 ///< the class to which this airport type belongs
 	SpriteID preview_sprite;               ///< preview sprite for this airport
-	uint16 maintenance_cost;               ///< maintenance cost multiplier
+	uint16_t maintenance_cost;               ///< maintenance cost multiplier
 	/* Newgrf data */
 	bool enabled;                          ///< Entity still available (by default true). Newgrf can disable it, though.
 	struct GRFFileProps grf_prop;          ///< Properties related to the grf file.
@@ -143,6 +144,6 @@ typedef NewGRFClass<AirportSpec, AirportClassID, APC_MAX> AirportClass;
 
 void BindAirportSpecs();
 
-StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callback);
+StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16_t callback);
 
 #endif /* NEWGRF_AIRPORT_H */

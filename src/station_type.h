@@ -12,10 +12,9 @@
 
 #include "core/smallstack_type.hpp"
 #include "tilearea_type.h"
-#include <set>
 
-typedef uint16 StationID;
-typedef uint16 RoadStopID;
+typedef uint16_t StationID;
+typedef uint16_t RoadStopID;
 
 struct BaseStation;
 struct Station;
@@ -41,9 +40,10 @@ enum StationType {
 };
 
 /** Types of RoadStops */
-enum RoadStopType {
+enum RoadStopType : byte {
 	ROADSTOP_BUS,    ///< A standard stop for buses
 	ROADSTOP_TRUCK,  ///< A standard stop for trucks
+	ROADSTOP_END,    ///< End of valid types
 };
 
 /** The facilities a station might be having */

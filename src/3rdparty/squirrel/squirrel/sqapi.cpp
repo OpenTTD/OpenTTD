@@ -3,6 +3,7 @@
  */
 
 #include "../../../stdafx.h"
+#include "../../fmt/format.h"
 
 #include <squirrel.h>
 #include "sqpcheader.h"
@@ -26,7 +27,7 @@ bool sq_aux_gettypedarg(HSQUIRRELVM v,SQInteger idx,SQObjectType type,SQObjectPt
 	*o = &stack_get(v,idx);
 	if(type(**o) != type){
 		SQObjectPtr oval = v->PrintObjVal(**o);
-		v->Raise_Error("wrong argument type, expected '%s' got '%.50s'",IdType2Name(type),_stringval(oval));
+		v->Raise_Error(fmt::format("wrong argument type, expected '{}' got '{:.50s}'",IdType2Name(type),_stringval(oval)));
 		return false;
 	}
 	return true;
@@ -47,9 +48,7 @@ SQInteger sq_aux_throwobject(HSQUIRRELVM v,SQObjectPtr &e)
 
 SQInteger sq_aux_invalidtype(HSQUIRRELVM v,SQObjectType type)
 {
-	char buf[100];
-	seprintf(buf, lastof(buf), "unexpected type %s", IdType2Name(type));
-	return sq_throwerror(v, buf);
+	return sq_throwerror(v, fmt::format("unexpected type {}", IdType2Name(type)));
 }
 
 HSQUIRRELVM sq_open(SQInteger initialstacksize)
@@ -932,9 +931,9 @@ void sq_resetobject(HSQOBJECT *po)
 	po->_unVal.pUserPointer=nullptr;po->_type=OT_NULL;
 }
 
-SQRESULT sq_throwerror(HSQUIRRELVM v,const SQChar *err)
+SQRESULT sq_throwerror(HSQUIRRELVM v,const SQChar *err, SQInteger len)
 {
-	v->_lasterror=SQString::Create(_ss(v),err);
+	v->_lasterror=SQString::Create(_ss(v),err, len);
 	return -1;
 }
 
@@ -1260,9 +1259,9 @@ struct BufState{
 	SQInteger size;
 };
 
-WChar buf_lexfeed(SQUserPointer file)
+char32_t buf_lexfeed(SQUserPointer file)
 {
-	/* Convert an UTF-8 character into a WChar */
+	/* Convert an UTF-8 character into a char32_t */
 	BufState *buf = (BufState *)file;
 	const char *p = &buf->buf[buf->ptr];
 
@@ -1280,7 +1279,7 @@ WChar buf_lexfeed(SQUserPointer file)
 	buf->ptr += len;
 
 	/* Convert the character, and when definitely invalid, bail out as well. */
-	WChar c;
+	char32_t c;
 	if (Utf8Decode(&c, p) != len) return -1;
 
 	return c;

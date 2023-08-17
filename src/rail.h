@@ -18,6 +18,7 @@
 #include "slope_type.h"
 #include "strings_type.h"
 #include "date_type.h"
+#include "timer/timer_game_calendar.h"
 #include "signal_type.h"
 #include "settings_type.h"
 
@@ -210,22 +211,22 @@ public:
 	/**
 	 * Cost multiplier for building this rail type
 	 */
-	uint16 cost_multiplier;
+	uint16_t cost_multiplier;
 
 	/**
 	 * Cost multiplier for maintenance of this rail type
 	 */
-	uint16 maintenance_multiplier;
+	uint16_t maintenance_multiplier;
 
 	/**
 	 * Acceleration type of this rail type
 	 */
-	uint8 acceleration_type;
+	uint8_t acceleration_type;
 
 	/**
 	 * Maximum speed for vehicles travelling on this rail type
 	 */
-	uint16 max_speed;
+	uint16_t max_speed;
 
 	/**
 	 * Unique 32 bit rail type identifier
@@ -249,7 +250,7 @@ public:
 	 * The introduction at this date is furthermore limited by the
 	 * #introduction_required_railtypes.
 	 */
-	Date introduction_date;
+	TimerGameCalendar::Date introduction_date;
 
 	/**
 	 * Bitmask of railtypes that are required for this railtype to be introduced
@@ -424,7 +425,7 @@ static inline Money RailConvertCost(RailType from, RailType to)
  * @param total_num Total number of track bits of all railtypes.
  * @return Total cost.
  */
-static inline Money RailMaintenanceCost(RailType railtype, uint32 num, uint32 total_num)
+static inline Money RailMaintenanceCost(RailType railtype, uint32_t num, uint32_t total_num)
 {
 	assert(railtype < RAILTYPE_END);
 	return (_price[PR_INFRASTRUCTURE_RAIL] * GetRailTypeInfo(railtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 11; // 4 bits fraction for the multiplier and 7 bits scaling.
@@ -435,7 +436,7 @@ static inline Money RailMaintenanceCost(RailType railtype, uint32 num, uint32 to
  * @param num Number of signals.
  * @return Total cost.
  */
-static inline Money SignalMaintenanceCost(uint32 num)
+static inline Money SignalMaintenanceCost(uint32_t num)
 {
 	return (_price[PR_INFRASTRUCTURE_RAIL] * 15 * num * (1 + IntSqrt(num))) >> 8; // 1 bit fraction for the multiplier and 7 bits scaling.
 }
@@ -450,7 +451,7 @@ bool HasRailtypeAvail(const CompanyID company, const RailType railtype);
 bool HasAnyRailtypesAvail(const CompanyID company);
 bool ValParamRailtype(const RailType rail);
 
-RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date);
+RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date date);
 
 RailTypes GetCompanyRailtypes(CompanyID company, bool introduces = true);
 RailTypes GetRailTypes(bool introduces);

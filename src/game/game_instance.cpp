@@ -13,7 +13,8 @@
 #include "../script/squirrel_class.hpp"
 
 #include "../script/script_storage.hpp"
-#include "../ai/ai_gui.hpp"
+#include "../script/script_cmd.h"
+#include "../script/script_gui.h"
 #include "game_config.hpp"
 #include "game_info.hpp"
 #include "game_instance.hpp"
@@ -52,12 +53,12 @@ void GameInstance::RegisterAPI()
 	if (!this->LoadCompatibilityScripts(this->versionAPI, GAME_DIR)) this->Died();
 }
 
-int GameInstance::GetSetting(const char *name)
+int GameInstance::GetSetting(const std::string &name)
 {
 	return GameConfig::GetConfig()->GetSetting(name);
 }
 
-ScriptInfo *GameInstance::FindLibrary(const char *library, int version)
+ScriptInfo *GameInstance::FindLibrary(const std::string &library, int version)
 {
 	return (ScriptInfo *)Game::FindLibrary(library, version);
 }
@@ -66,13 +67,13 @@ void GameInstance::Died()
 {
 	ScriptInstance::Died();
 
-	ShowAIDebugWindow(OWNER_DEITY);
+	ShowScriptDebugWindow(OWNER_DEITY);
 
 	const GameInfo *info = Game::GetInfo();
 	if (info != nullptr) {
 		ShowErrorMessage(STR_ERROR_AI_PLEASE_REPORT_CRASH, INVALID_STRING_ID, WL_WARNING);
 
-		if (info->GetURL() != nullptr) {
+		if (!info->GetURL().empty()) {
 			ScriptLog::Info("Please report the error to the following URL:");
 			ScriptLog::Info(info->GetURL());
 		}
@@ -81,20 +82,19 @@ void GameInstance::Died()
 
 /**
  * DoCommand callback function for all commands executed by Game Scripts.
- * @param result The result of the command.
- * @param tile The tile on which the command was executed.
- * @param p1 p1 as given to DoCommandPInternal.
- * @param p2 p2 as given to DoCommandPInternal.
  * @param cmd cmd as given to DoCommandPInternal.
+ * @param result The result of the command.
+ * @param data Command data as given to Command<>::Post.
+ * @param result_data Additional returned data from the command.
  */
-void CcGame(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcGame(Commands cmd, const CommandCost &result, const CommandDataBuffer &data, CommandDataBuffer result_data)
 {
-	if (Game::GetGameInstance()->DoCommandCallback(result, tile, p1, p2, cmd)) {
+	if (Game::GetGameInstance()->DoCommandCallback(result, data, std::move(result_data), cmd)) {
 		Game::GetGameInstance()->Continue();
 	}
 }
 
-CommandCallback *GameInstance::GetDoCommandCallback()
+CommandCallbackData *GameInstance::GetDoCommandCallback()
 {
 	return &CcGame;
 }

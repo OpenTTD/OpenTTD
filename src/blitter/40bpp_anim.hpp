@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -20,10 +18,9 @@
 class Blitter_40bppAnim : public Blitter_32bppOptimized {
 public:
 
-	// void *MoveTo(void *video, int x, int y) override;
-	void SetPixel(void *video, int x, int y, uint8 colour) override;
-	void DrawRect(void *video, int width, int height, uint8 colour) override;
-	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash) override;
+	void SetPixel(void *video, int x, int y, uint8_t colour) override;
+	void DrawRect(void *video, int width, int height, uint8_t colour) override;
+	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash) override;
 	void CopyFromBuffer(void *video, const void *src, int width, int height) override;
 	void CopyToBuffer(const void *video, void *dst, int width, int height) override;
 	void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) override;
@@ -31,7 +28,7 @@ public:
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override;
 	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override;
-	int BufferSize(int width, int height) override;
+	size_t BufferSize(uint width, uint height) override;
 	Blitter::PaletteAnimation UsePaletteAnimation() override;
 	bool NeedsAnimationBuffer() override;
 
@@ -41,7 +38,7 @@ public:
 	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 
 protected:
-	static inline Colour RealizeBlendedColour(uint8 anim, Colour c)
+	static inline Colour RealizeBlendedColour(uint8_t anim, Colour c)
 	{
 		return anim != 0 ? AdjustBrightness(LookupColourInPalette(anim), GetColourBrightness(c)) : c;
 	}

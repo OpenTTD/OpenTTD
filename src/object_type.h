@@ -11,7 +11,7 @@
 #define OBJECT_TYPE_H
 
 /** Types of objects. */
-typedef uint16 ObjectType;
+typedef uint16_t ObjectType;
 
 static const ObjectType OBJECT_TRANSMITTER  =   0;    ///< The large antenna
 static const ObjectType OBJECT_LIGHTHOUSE   =   1;    ///< The nice lighthouse
@@ -19,14 +19,13 @@ static const ObjectType OBJECT_STATUE       =   2;    ///< Statue in towns
 static const ObjectType OBJECT_OWNED_LAND   =   3;    ///< Owned land 'flag'
 static const ObjectType OBJECT_HQ           =   4;    ///< HeadQuarter of a player
 
-static const ObjectType NUM_OBJECTS_PER_GRF = 255;    ///< Number of supported objects per NewGRF; limited to 255 to allow extending Action3 with an extended byte later on.
-
 static const ObjectType NEW_OBJECT_OFFSET   =   5;    ///< Offset for new objects
 static const ObjectType NUM_OBJECTS         = 64000;  ///< Number of supported objects overall
+static const ObjectType NUM_OBJECTS_PER_GRF = NUM_OBJECTS; ///< Number of supported objects per NewGRF
 static const ObjectType INVALID_OBJECT_TYPE = 0xFFFF; ///< An invalid object
 
 /** Unique identifier for an object. */
-typedef uint32 ObjectID;
+typedef uint32_t ObjectID;
 
 struct Object;
 struct ObjectSpec;

@@ -11,8 +11,9 @@
 #define NETWORK_CONTENT_H
 
 #include "core/tcp_content.h"
-#include "core/tcp_http.h"
+#include "core/http.h"
 #include <unordered_map>
+#include "../core/container_func.hpp"
 
 /** Vector with content info */
 typedef std::vector<ContentInfo *> ContentVector;
@@ -57,7 +58,7 @@ struct ContentCallback {
 	virtual void OnDownloadComplete(ContentID cid) {}
 
 	/** Silentium */
-	virtual ~ContentCallback() {}
+	virtual ~ContentCallback() = default;
 };
 
 /**
@@ -76,6 +77,7 @@ protected:
 	FILE *curFile;        ///< Currently downloaded file
 	ContentInfo *curInfo; ///< Information about the currently downloaded file
 	bool isConnecting;    ///< Whether we're connecting
+	bool isCancelled;     ///< Whether the download has been cancelled
 	std::chrono::steady_clock::time_point lastActivity;  ///< The last time there was network activity
 
 	friend class NetworkContentConnecter;
@@ -94,6 +96,7 @@ protected:
 
 	void OnFailure() override;
 	void OnReceiveData(const char *data, size_t length) override;
+	bool IsCancelled() const override;
 
 	bool BeforeDownload();
 	void AfterDownload();
@@ -133,7 +136,7 @@ public:
 	/** Get the begin of the content inf iterator. */
 	ConstContentIterator Begin() const { return this->infos.data(); }
 	/** Get the nth position of the content inf iterator. */
-	ConstContentIterator Get(uint32 index) const { return this->infos.data() + index; }
+	ConstContentIterator Get(uint32_t index) const { return this->infos.data() + index; }
 	/** Get the end of the content inf iterator. */
 	ConstContentIterator End() const { return this->Begin() + this->Length(); }
 

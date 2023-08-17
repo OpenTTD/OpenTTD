@@ -14,6 +14,7 @@
 #include "script_map.hpp"
 #include "../script_instance.hpp"
 #include "../../viewport_func.h"
+#include "../../viewport_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -27,31 +28,31 @@
 
 /* static */ bool ScriptViewport::ScrollEveryoneTo(TileIndex tile)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
-	return ScriptObject::DoCommand(tile, VST_EVERYONE, 0, CMD_SCROLL_VIEWPORT);
+	return ScriptObject::Command<CMD_SCROLL_VIEWPORT>::Do(tile, VST_EVERYONE, 0);
 }
 
 /* static */ bool ScriptViewport::ScrollCompanyClientsTo(ScriptCompany::CompanyID company, TileIndex tile)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
 	company = ScriptCompany::ResolveCompanyID(company);
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
-	return ScriptObject::DoCommand(tile, VST_COMPANY, company, CMD_SCROLL_VIEWPORT);
+	return ScriptObject::Command<CMD_SCROLL_VIEWPORT>::Do(tile, VST_COMPANY, company);
 }
 
 /* static */ bool ScriptViewport::ScrollClientTo(ScriptClient::ClientID client, TileIndex tile)
 {
 	EnforcePrecondition(false, ScriptGame::IsMultiplayer());
-	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
 	client = ScriptClient::ResolveClientID(client);
 	EnforcePrecondition(false, client != ScriptClient::CLIENT_INVALID);
 
-	return ScriptObject::DoCommand(tile, VST_CLIENT, client, CMD_SCROLL_VIEWPORT);
+	return ScriptObject::Command<CMD_SCROLL_VIEWPORT>::Do(tile, VST_CLIENT, client);
 }

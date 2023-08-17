@@ -12,7 +12,6 @@
 
 #include "math_func.hpp"
 
-#include <limits>
 
 #ifdef __has_builtin
 #	if __has_builtin(__builtin_add_overflow) && __has_builtin(__builtin_sub_overflow) && __has_builtin(__builtin_mul_overflow)
@@ -22,8 +21,8 @@
 
 /**
  * Overflow safe template for integers, i.e. integers that will never overflow
- * you multiply the maximum value with 2, or add 2, or subtract something from
- * the minimum value, etc.
+ * when you multiply the maximum value with 2, or add 2, or subtract something
+ * from the minimum value, etc.
  * @param T     the type these integers are stored with.
  */
 template <class T>
@@ -39,9 +38,10 @@ public:
 	constexpr OverflowSafeInt() : m_value(0) { }
 
 	constexpr OverflowSafeInt(const OverflowSafeInt& other) : m_value(other.m_value) { }
-	constexpr OverflowSafeInt(const int64 int_) : m_value(int_) { }
+	constexpr OverflowSafeInt(const T int_) : m_value(int_) { }
 
 	inline constexpr OverflowSafeInt& operator = (const OverflowSafeInt& other) { this->m_value = other.m_value; return *this; }
+	inline constexpr OverflowSafeInt& operator = (T other) { this->m_value = other; return *this; }
 
 	inline constexpr OverflowSafeInt operator - () const { return OverflowSafeInt(this->m_value == T_MIN ? T_MAX : -this->m_value); }
 
@@ -93,11 +93,11 @@ public:
 
 	/* Operators for addition and subtraction. */
 	inline constexpr OverflowSafeInt  operator +  (const OverflowSafeInt& other) const { OverflowSafeInt result = *this; result += other; return result; }
-	inline constexpr OverflowSafeInt  operator +  (const int              other) const { OverflowSafeInt result = *this; result += (int64)other; return result; }
-	inline constexpr OverflowSafeInt  operator +  (const uint             other) const { OverflowSafeInt result = *this; result += (int64)other; return result; }
+	inline constexpr OverflowSafeInt  operator +  (const int              other) const { OverflowSafeInt result = *this; result += (int64_t)other; return result; }
+	inline constexpr OverflowSafeInt  operator +  (const uint             other) const { OverflowSafeInt result = *this; result += (int64_t)other; return result; }
 	inline constexpr OverflowSafeInt  operator -  (const OverflowSafeInt& other) const { OverflowSafeInt result = *this; result -= other; return result; }
-	inline constexpr OverflowSafeInt  operator -  (const int              other) const { OverflowSafeInt result = *this; result -= (int64)other; return result; }
-	inline constexpr OverflowSafeInt  operator -  (const uint             other) const { OverflowSafeInt result = *this; result -= (int64)other; return result; }
+	inline constexpr OverflowSafeInt  operator -  (const int              other) const { OverflowSafeInt result = *this; result -= (int64_t)other; return result; }
+	inline constexpr OverflowSafeInt  operator -  (const uint             other) const { OverflowSafeInt result = *this; result -= (int64_t)other; return result; }
 
 	inline constexpr OverflowSafeInt& operator ++ () { return *this += 1; }
 	inline constexpr OverflowSafeInt& operator -- () { return *this += -1; }
@@ -136,14 +136,14 @@ public:
 	}
 
 	/* Operators for multiplication. */
-	inline constexpr OverflowSafeInt operator * (const int64  factor) const { OverflowSafeInt result = *this; result *= factor; return result; }
-	inline constexpr OverflowSafeInt operator * (const int    factor) const { OverflowSafeInt result = *this; result *= (int64)factor; return result; }
-	inline constexpr OverflowSafeInt operator * (const uint   factor) const { OverflowSafeInt result = *this; result *= (int64)factor; return result; }
-	inline constexpr OverflowSafeInt operator * (const uint16 factor) const { OverflowSafeInt result = *this; result *= (int64)factor; return result; }
-	inline constexpr OverflowSafeInt operator * (const byte   factor) const { OverflowSafeInt result = *this; result *= (int64)factor; return result; }
+	inline constexpr OverflowSafeInt operator * (const int64_t  factor) const { OverflowSafeInt result = *this; result *= factor; return result; }
+	inline constexpr OverflowSafeInt operator * (const int    factor) const { OverflowSafeInt result = *this; result *= (int64_t)factor; return result; }
+	inline constexpr OverflowSafeInt operator * (const uint   factor) const { OverflowSafeInt result = *this; result *= (int64_t)factor; return result; }
+	inline constexpr OverflowSafeInt operator * (const uint16_t factor) const { OverflowSafeInt result = *this; result *= (int64_t)factor; return result; }
+	inline constexpr OverflowSafeInt operator * (const byte   factor) const { OverflowSafeInt result = *this; result *= (int64_t)factor; return result; }
 
 	/* Operators for division. */
-	inline constexpr OverflowSafeInt& operator /= (const int64            divisor)       { this->m_value /= divisor; return *this; }
+	inline constexpr OverflowSafeInt& operator /= (const int64_t            divisor)       { this->m_value /= divisor; return *this; }
 	inline constexpr OverflowSafeInt  operator /  (const OverflowSafeInt& divisor) const { OverflowSafeInt result = *this; result /= divisor.m_value; return result; }
 	inline constexpr OverflowSafeInt  operator /  (const int              divisor) const { OverflowSafeInt result = *this; result /= divisor; return result; }
 	inline constexpr OverflowSafeInt  operator /  (const uint             divisor) const { OverflowSafeInt result = *this; result /= (int)divisor; return result; }
@@ -174,15 +174,18 @@ public:
 	inline constexpr bool operator <  (const int other) const { return !(*this >= other); }
 	inline constexpr bool operator <= (const int other) const { return !(*this > other); }
 
-	inline constexpr operator int64 () const { return this->m_value; }
+	inline constexpr operator T () const { return this->m_value; }
+
+	static inline constexpr OverflowSafeInt<T> max() { return T_MAX; }
+	static inline constexpr OverflowSafeInt<T> min() { return T_MIN; }
 };
 
 
-/* Sometimes we got int64 operator OverflowSafeInt instead of vice versa. Handle that properly. */
-template <class T> inline constexpr OverflowSafeInt<T> operator + (const int64 a, const OverflowSafeInt<T> b) { return b + a; }
-template <class T> inline constexpr OverflowSafeInt<T> operator - (const int64 a, const OverflowSafeInt<T> b) { return -b + a; }
-template <class T> inline constexpr OverflowSafeInt<T> operator * (const int64 a, const OverflowSafeInt<T> b) { return b * a; }
-template <class T> inline constexpr OverflowSafeInt<T> operator / (const int64 a, const OverflowSafeInt<T> b) { return (OverflowSafeInt<T>)a / (int)b; }
+/* Sometimes we got int64_t operator OverflowSafeInt instead of vice versa. Handle that properly. */
+template <class T> inline constexpr OverflowSafeInt<T> operator + (const int64_t a, const OverflowSafeInt<T> b) { return b + a; }
+template <class T> inline constexpr OverflowSafeInt<T> operator - (const int64_t a, const OverflowSafeInt<T> b) { return -b + a; }
+template <class T> inline constexpr OverflowSafeInt<T> operator * (const int64_t a, const OverflowSafeInt<T> b) { return b * a; }
+template <class T> inline constexpr OverflowSafeInt<T> operator / (const int64_t a, const OverflowSafeInt<T> b) { return (OverflowSafeInt<T>)a / (int)b; }
 
 /* Sometimes we got int operator OverflowSafeInt instead of vice versa. Handle that properly. */
 template <class T> inline constexpr OverflowSafeInt<T> operator + (const int   a, const OverflowSafeInt<T> b) { return b + a; }
@@ -202,14 +205,18 @@ template <class T> inline constexpr OverflowSafeInt<T> operator - (const byte  a
 template <class T> inline constexpr OverflowSafeInt<T> operator * (const byte  a, const OverflowSafeInt<T> b) { return b * (uint)a; }
 template <class T> inline constexpr OverflowSafeInt<T> operator / (const byte  a, const OverflowSafeInt<T> b) { return (OverflowSafeInt<T>)a / (int)b; }
 
-typedef OverflowSafeInt<int64> OverflowSafeInt64;
-typedef OverflowSafeInt<int32> OverflowSafeInt32;
+typedef OverflowSafeInt<int64_t> OverflowSafeInt64;
+typedef OverflowSafeInt<int32_t> OverflowSafeInt32;
 
 /* Some basic "unit tests". Also has the bonus of confirming that constexpr is working. */
 static_assert(OverflowSafeInt32(INT32_MIN) - 1 == OverflowSafeInt32(INT32_MIN));
 static_assert(OverflowSafeInt32(INT32_MAX) + 1 == OverflowSafeInt32(INT32_MAX));
 static_assert(OverflowSafeInt32(INT32_MAX) * 2 == OverflowSafeInt32(INT32_MAX));
 static_assert(OverflowSafeInt32(INT32_MIN) * 2 == OverflowSafeInt32(INT32_MIN));
+
+/* Specialisation of the generic ClampTo function for overflow safe integers to normal integers. */
+template <typename To, typename From>
+constexpr To ClampTo(OverflowSafeInt<From> value) { return ClampTo<To>(From(value)); }
 
 #undef HAS_OVERFLOW_BUILTINS
 

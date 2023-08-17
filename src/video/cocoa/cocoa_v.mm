@@ -27,6 +27,7 @@
 
 #include "../../openttd.h"
 #include "../../debug.h"
+#include "../../error_func.h"
 #include "../../core/geometry_func.hpp"
 #include "../../core/math_func.hpp"
 #include "cocoa_v.h"
@@ -43,7 +44,6 @@
 
 #import <sys/param.h> /* for MAXPATHLEN */
 #import <sys/time.h> /* gettimeofday */
-#include <array>
 
 /* The 10.12 SDK added new names for some enum constants and
  * deprecated the old ones. As there's no functional change in any
@@ -98,6 +98,8 @@ VideoDriver_Cocoa::VideoDriver_Cocoa()
 {
 	this->setup         = false;
 	this->buffer_locked = false;
+
+	this->refresh_sys_sprites = true;
 
 	this->window    = nil;
 	this->cocoaview = nil;
@@ -219,6 +221,19 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 	}
 
 	return false;
+}
+
+void VideoDriver_Cocoa::ClearSystemSprites()
+{
+	this->refresh_sys_sprites = true;
+}
+
+void VideoDriver_Cocoa::PopulateSystemSprites()
+{
+	if (this->refresh_sys_sprites && this->window != nil) {
+		[ this->window refreshSystemSprites ];
+		this->refresh_sys_sprites = false;
+	}
 }
 
 /**
@@ -432,7 +447,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	CGColorSpaceRelease(this->color_space);
 	this->color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
 	if (this->color_space == nullptr) this->color_space = CGColorSpaceCreateDeviceRGB();
-	if (this->color_space == nullptr) error("Could not get a valid colour space for drawing.");
+	if (this->color_space == nullptr) FatalError("Could not get a valid colour space for drawing.");
 
 	this->setup = false;
 
@@ -469,11 +484,7 @@ void VideoDriver_Cocoa::InputLoop()
 	_ctrl_pressed = (cur_mods & ( _settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSEventModifierFlagControl : NSEventModifierFlagCommand)) != 0;
 	_shift_pressed = (cur_mods & NSEventModifierFlagShift) != 0;
 
-#if defined(_DEBUG)
-	this->fast_forward_key_pressed = _shift_pressed;
-#else
 	this->fast_forward_key_pressed = _tab_is_down;
-#endif
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }
@@ -562,11 +573,11 @@ void VideoDriver_Cocoa::MainLoopReal()
 static FVideoDriver_CocoaQuartz iFVideoDriver_CocoaQuartz;
 
 /** Clear buffer to opaque black. */
-static void ClearWindowBuffer(uint32 *buffer, uint32 pitch, uint32 height)
+static void ClearWindowBuffer(uint32_t *buffer, uint32_t pitch, uint32_t height)
 {
-	uint32 fill = Colour(0, 0, 0).data;
-	for (uint32 y = 0; y < height; y++) {
-		for (uint32 x = 0; x < pitch; x++) {
+	uint32_t fill = Colour(0, 0, 0).data;
+	for (uint32_t y = 0; y < height; y++) {
+		for (uint32_t x = 0; x < pitch; x++) {
 			buffer[y * pitch + x] = fill;
 		}
 	}
@@ -640,14 +651,14 @@ void VideoDriver_CocoaQuartz::AllocateBackingStore(bool force)
 
 	this->window_width = (int)newframe.size.width;
 	this->window_height = (int)newframe.size.height;
-	this->window_pitch = Align(this->window_width, 16 / sizeof(uint32)); // Quartz likes lines that are multiple of 16-byte.
+	this->window_pitch = Align(this->window_width, 16 / sizeof(uint32_t)); // Quartz likes lines that are multiple of 16-byte.
 	this->buffer_depth = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	/* Create Core Graphics Context */
 	free(this->window_buffer);
-	this->window_buffer = malloc(this->window_pitch * this->window_height * sizeof(uint32));
+	this->window_buffer = malloc(this->window_pitch * this->window_height * sizeof(uint32_t));
 	/* Initialize with opaque black. */
-	ClearWindowBuffer((uint32 *)this->window_buffer, this->window_pitch, this->window_height);
+	ClearWindowBuffer((uint32_t *)this->window_buffer, this->window_pitch, this->window_height);
 
 	CGContextRelease(this->cgcontext);
 	this->cgcontext = CGBitmapContextCreate(
@@ -668,7 +679,7 @@ void VideoDriver_CocoaQuartz::AllocateBackingStore(bool force)
 	if (this->buffer_depth == 8) {
 		free(this->pixel_buffer);
 		this->pixel_buffer = malloc(this->window_width * this->window_height);
-		if (this->pixel_buffer == nullptr) usererror("Out of memory allocating pixel buffer");
+		if (this->pixel_buffer == nullptr) UserError("Out of memory allocating pixel buffer");
 	} else {
 		free(this->pixel_buffer);
 		this->pixel_buffer = nullptr;
@@ -695,9 +706,9 @@ void VideoDriver_CocoaQuartz::AllocateBackingStore(bool force)
  */
 void VideoDriver_CocoaQuartz::BlitIndexedToView32(int left, int top, int right, int bottom)
 {
-	const uint32 *pal   = this->palette;
-	const uint8  *src   = (uint8*)this->pixel_buffer;
-	uint32       *dst   = (uint32*)this->window_buffer;
+	const uint32_t *pal   = this->palette;
+	const uint8_t  *src   = (uint8_t*)this->pixel_buffer;
+	uint32_t       *dst   = (uint32_t*)this->window_buffer;
 	uint          width = this->window_width;
 	uint          pitch = this->window_pitch;
 
@@ -714,10 +725,10 @@ void VideoDriver_CocoaQuartz::UpdatePalette(uint first_color, uint num_colors)
 	if (this->buffer_depth != 8) return;
 
 	for (uint i = first_color; i < first_color + num_colors; i++) {
-		uint32 clr = 0xff000000;
-		clr |= (uint32)_local_palette.palette[i].r << 16;
-		clr |= (uint32)_local_palette.palette[i].g << 8;
-		clr |= (uint32)_local_palette.palette[i].b;
+		uint32_t clr = 0xff000000;
+		clr |= (uint32_t)_local_palette.palette[i].r << 16;
+		clr |= (uint32_t)_local_palette.palette[i].g << 8;
+		clr |= (uint32_t)_local_palette.palette[i].b;
 		this->palette[i] = clr;
 	}
 

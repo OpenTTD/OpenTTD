@@ -25,6 +25,9 @@ typedef Pool<OrderList, OrderListID, 128, 64000> OrderListPool;
 extern OrderPool _order_pool;
 extern OrderListPool _orderlist_pool;
 
+template <typename, typename>
+class EndianBufferWriter;
+
 /* If you change this, keep in mind that it is saved on 3 places:
  * - Load_ORDR, all the global orders
  * - Vehicle -> current_order
@@ -38,23 +41,27 @@ private:
 	friend class SlVehicleCommon;
 	friend class SlVehicleDisaster;
 
-	uint8 type;           ///< The type of order + non-stop flags
-	uint8 flags;          ///< Load/unload types, depot order/action types.
+	template <typename Tcont, typename Titer>
+	friend EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &data);
+	friend class EndianBufferReader &operator >>(class EndianBufferReader &buffer, Order &order);
+
+	uint8_t type;           ///< The type of order + non-stop flags
+	uint8_t flags;          ///< Load/unload types, depot order/action types.
 	DestinationID dest;   ///< The destination of the order.
 
 	CargoID refit_cargo;  ///< Refit CargoID
 
-	uint16 wait_time;    ///< How long in ticks to wait at the destination.
-	uint16 travel_time;  ///< How long in ticks the journey to this destination should take.
-	uint16 max_speed;    ///< How fast the vehicle may go on the way to the destination.
+	uint16_t wait_time;    ///< How long in ticks to wait at the destination.
+	uint16_t travel_time;  ///< How long in ticks the journey to this destination should take.
+	uint16_t max_speed;    ///< How fast the vehicle may go on the way to the destination.
 
 public:
 	Order *next;          ///< Pointer to next order. If nullptr, end of list
 
-	Order() : flags(0), refit_cargo(CT_NO_REFIT), max_speed(UINT16_MAX) {}
+	Order() : flags(0), refit_cargo(CT_NO_REFIT), wait_time(0), travel_time(0), max_speed(UINT16_MAX) {}
 	~Order();
 
-	Order(uint32 packed);
+	Order(uint32_t packed);
 
 	/**
 	 * Check whether this order is of the given type.
@@ -145,7 +152,7 @@ public:
 	/** Get the order to skip to. */
 	inline VehicleOrderID GetConditionSkipToOrder() const { return this->flags; }
 	/** Get the value to base the skip on. */
-	inline uint16 GetConditionValue() const { return GB(this->dest, 0, 11); }
+	inline uint16_t GetConditionValue() const { return GB(this->dest, 0, 11); }
 
 	/** Set how the consist must be loaded. */
 	inline void SetLoadType(OrderLoadFlags load_type) { SB(this->flags, 4, 3, load_type); }
@@ -166,7 +173,7 @@ public:
 	/** Get the order to skip to. */
 	inline void SetConditionSkipToOrder(VehicleOrderID order_id) { this->flags = order_id; }
 	/** Set the value to base the skip on. */
-	inline void SetConditionValue(uint16 value) { SB(this->dest, 0, 11, value); }
+	inline void SetConditionValue(uint16_t value) { SB(this->dest, 0, 11, value); }
 
 	/* As conditional orders write their "skip to" order all over the flags, we cannot check the
 	 * flags to find out if timetabling is enabled. However, as conditional orders are never
@@ -179,20 +186,20 @@ public:
 	inline bool IsTravelTimetabled() const { return this->IsType(OT_CONDITIONAL) ? this->travel_time > 0 : HasBit(this->flags, 7); }
 
 	/** Get the time in ticks a vehicle should wait at the destination or 0 if it's not timetabled. */
-	inline uint16 GetTimetabledWait() const { return this->IsWaitTimetabled() ? this->wait_time : 0; }
+	inline uint16_t GetTimetabledWait() const { return this->IsWaitTimetabled() ? this->wait_time : 0; }
 	/** Get the time in ticks a vehicle should take to reach the destination or 0 if it's not timetabled. */
-	inline uint16 GetTimetabledTravel() const { return this->IsTravelTimetabled() ? this->travel_time : 0; }
+	inline uint16_t GetTimetabledTravel() const { return this->IsTravelTimetabled() ? this->travel_time : 0; }
 	/** Get the time in ticks a vehicle will probably wait at the destination (timetabled or not). */
-	inline uint16 GetWaitTime() const { return this->wait_time; }
+	inline uint16_t GetWaitTime() const { return this->wait_time; }
 	/** Get the time in ticks a vehicle will probably take to reach the destination (timetabled or not). */
-	inline uint16 GetTravelTime() const { return this->travel_time; }
+	inline uint16_t GetTravelTime() const { return this->travel_time; }
 
 	/**
 	 * Get the maxmimum speed in km-ish/h a vehicle is allowed to reach on the way to the
 	 * destination.
 	 * @return maximum speed.
 	 */
-	inline uint16 GetMaxSpeed() const { return this->max_speed; }
+	inline uint16_t GetMaxSpeed() const { return this->max_speed; }
 
 	/** Set if the wait time is explicitly timetabled (unless the order is conditional). */
 	inline void SetWaitTimetabled(bool timetabled) { if (!this->IsType(OT_CONDITIONAL)) SB(this->flags, 3, 1, timetabled ? 1 : 0); }
@@ -203,20 +210,20 @@ public:
 	 * Set the time in ticks to wait at the destination.
 	 * @param time Time to set as wait time.
 	 */
-	inline void SetWaitTime(uint16 time) { this->wait_time = time;  }
+	inline void SetWaitTime(uint16_t time) { this->wait_time = time;  }
 
 	/**
 	 * Set the time in ticks to take for travelling to the destination.
 	 * @param time Time to set as travel time.
 	 */
-	inline void SetTravelTime(uint16 time) { this->travel_time = time; }
+	inline void SetTravelTime(uint16_t time) { this->travel_time = time; }
 
 	/**
 	 * Set the maxmimum speed in km-ish/h a vehicle is allowed to reach on the way to the
 	 * destination.
 	 * @param speed Speed to be set.
 	 */
-	inline void SetMaxSpeed(uint16 speed) { this->max_speed = speed; }
+	inline void SetMaxSpeed(uint16_t speed) { this->max_speed = speed; }
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
 	bool CanLoadOrUnload() const;
@@ -238,8 +245,8 @@ public:
 	void AssignOrder(const Order &other);
 	bool Equals(const Order &other) const;
 
-	uint32 Pack() const;
-	uint16 MapOldOrder() const;
+	uint32_t Pack() const;
+	uint16_t MapOldOrder() const;
 	void ConvertFromOldSavegame();
 };
 
@@ -254,8 +261,6 @@ struct OrderList : OrderListPool::PoolItem<&_orderlist_pool> {
 private:
 	friend void AfterLoadVehicles(bool part_of_load); ///< For instantiating the shared vehicle chain
 	friend SaveLoadTable GetOrderListDescription(); ///< Saving and loading of order lists.
-
-	StationID GetBestLoadableNext(const Vehicle *v, const Order *o1, const Order *o2) const;
 
 	Order *first;                     ///< First order of the order list.
 	VehicleOrderID num_orders;        ///< NOSAVE: How many orders there are in the list.

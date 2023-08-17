@@ -23,6 +23,8 @@
 #include "roadveh.h"
 #include "ship.h"
 #include "aircraft.h"
+#include "engine_cmd.h"
+#include "zoom_func.h"
 
 #include "widgets/engine_widget.h"
 
@@ -93,11 +95,11 @@ struct EnginePreviewWindow : Window {
 			case VEH_SHIP:     GetShipSpriteSize(    engine, x, y, x_offs, y_offs, image_type); break;
 			case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
 		}
-		this->vehicle_space = std::max<int>(40, y - y_offs);
+		this->vehicle_space = std::max<int>(ScaleSpriteTrad(40), y - y_offs);
 
 		size->width = std::max(size->width, x - x_offs);
 		SetDParam(0, GetEngineCategoryName(engine));
-		size->height = GetStringHeight(STR_ENGINE_PREVIEW_MESSAGE, size->width) + WD_PAR_VSEP_WIDE + FONT_HEIGHT_NORMAL + this->vehicle_space;
+		size->height = GetStringHeight(STR_ENGINE_PREVIEW_MESSAGE, size->width) + WidgetDimensions::scaled.vsep_wide + FONT_HEIGHT_NORMAL + this->vehicle_space;
 		SetDParam(0, engine);
 		size->height += GetStringHeight(GetEngineInfoString(engine), size->width);
 	}
@@ -108,24 +110,23 @@ struct EnginePreviewWindow : Window {
 
 		EngineID engine = this->window_number;
 		SetDParam(0, GetEngineCategoryName(engine));
-		int y = r.top + GetStringHeight(STR_ENGINE_PREVIEW_MESSAGE, r.right - r.left + 1);
-		y = DrawStringMultiLine(r.left, r.right, r.top, y, STR_ENGINE_PREVIEW_MESSAGE, TC_FROMSTRING, SA_CENTER) + WD_PAR_VSEP_WIDE;
+		int y = DrawStringMultiLine(r, STR_ENGINE_PREVIEW_MESSAGE, TC_FROMSTRING, SA_HOR_CENTER | SA_TOP) + WidgetDimensions::scaled.vsep_wide;
 
-		SetDParam(0, engine);
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_ENGINE_NAME, TC_BLACK, SA_HOR_CENTER);
+		SetDParam(0, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
+		DrawString(r.left, r.right, y, STR_ENGINE_NAME, TC_BLACK, SA_HOR_CENTER);
 		y += FONT_HEIGHT_NORMAL;
 
-		DrawVehicleEngine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, this->width >> 1, y + this->vehicle_space / 2, engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
+		DrawVehicleEngine(r.left, r.right, this->width >> 1, y + this->vehicle_space / 2, engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
 
 		y += this->vehicle_space;
-		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, r.bottom, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r.left, r.right, y, r.bottom, GetEngineInfoString(engine), TC_FROMSTRING, SA_CENTER);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
 			case WID_EP_YES:
-				DoCommandP(0, this->window_number, 0, CMD_WANT_ENGINE_PREVIEW);
+				Command<CMD_WANT_ENGINE_PREVIEW>::Post(this->window_number);
 				FALLTHROUGH;
 			case WID_EP_NO:
 				if (!_shift_pressed) this->Close();
@@ -143,7 +144,7 @@ struct EnginePreviewWindow : Window {
 };
 
 static WindowDesc _engine_preview_desc(
-	WDP_CENTER, "engine_preview", 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_engine_preview_widgets, lengthof(_nested_engine_preview_widgets)
@@ -169,7 +170,7 @@ uint GetTotalCapacityOfArticulatedParts(EngineID engine)
 static StringID GetTrainEngineInfoString(const Engine *e)
 {
 	SetDParam(0, e->GetCost());
-	SetDParam(2, e->GetDisplayMaxSpeed());
+	SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 	SetDParam(3, e->GetPower());
 	SetDParam(1, e->GetDisplayWeight());
 	SetDParam(7, e->GetDisplayMaxTractiveEffort());
@@ -189,13 +190,13 @@ static StringID GetTrainEngineInfoString(const Engine *e)
 static StringID GetAircraftEngineInfoString(const Engine *e)
 {
 	CargoID cargo = e->GetDefaultCargoType();
-	uint16 mail_capacity;
+	uint16_t mail_capacity;
 	uint capacity = e->GetDisplayDefaultCapacity(&mail_capacity);
-	uint16 range = e->GetRange();
+	uint16_t range = e->GetRange();
 
 	uint i = 0;
 	SetDParam(i++, e->GetCost());
-	SetDParam(i++, e->GetDisplayMaxSpeed());
+	SetDParam(i++, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 	SetDParam(i++, e->GetAircraftTypeText());
 	if (range > 0) SetDParam(i++, range);
 	SetDParam(i++, cargo);
@@ -216,7 +217,7 @@ static StringID GetRoadVehEngineInfoString(const Engine *e)
 {
 	if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) {
 		SetDParam(0, e->GetCost());
-		SetDParam(1, e->GetDisplayMaxSpeed());
+		SetDParam(1, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 		uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
 		if (capacity != 0) {
 			SetDParam(2, e->GetDefaultCargoType());
@@ -228,7 +229,7 @@ static StringID GetRoadVehEngineInfoString(const Engine *e)
 		return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST;
 	} else {
 		SetDParam(0, e->GetCost());
-		SetDParam(2, e->GetDisplayMaxSpeed());
+		SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 		SetDParam(3, e->GetPower());
 		SetDParam(1, e->GetDisplayWeight());
 		SetDParam(7, e->GetDisplayMaxTractiveEffort());
@@ -249,7 +250,7 @@ static StringID GetRoadVehEngineInfoString(const Engine *e)
 static StringID GetShipEngineInfoString(const Engine *e)
 {
 	SetDParam(0, e->GetCost());
-	SetDParam(1, e->GetDisplayMaxSpeed());
+	SetDParam(1, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
 	SetDParam(2, e->GetDefaultCargoType());
 	SetDParam(3, e->GetDisplayDefaultCapacity());
 	SetDParam(4, e->GetRunningCost());
@@ -323,10 +324,10 @@ void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID eng
  * @param el list to be sorted
  * @param compare function for evaluation of the quicksort
  */
-void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
+void EngList_Sort(GUIEngineList &el, EngList_SortTypeFunction compare)
 {
-	if (el->size() < 2) return;
-	std::sort(el->begin(), el->end(), compare);
+	if (el.size() < 2) return;
+	std::sort(el.begin(), el.end(), compare);
 }
 
 /**
@@ -336,11 +337,11 @@ void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
  * @param begin start of sorting
  * @param num_items count of items to be sorted
  */
-void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items)
+void EngList_SortPartial(GUIEngineList &el, EngList_SortTypeFunction compare, size_t begin, size_t num_items)
 {
 	if (num_items < 2) return;
-	assert(begin < el->size());
-	assert(begin + num_items <= el->size());
-	std::sort(el->begin() + begin, el->begin() + begin + num_items, compare);
+	assert(begin < el.size());
+	assert(begin + num_items <= el.size());
+	std::sort(el.begin() + begin, el.begin() + begin + num_items, compare);
 }
 

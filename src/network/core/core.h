@@ -48,7 +48,7 @@ public:
 	NetworkSocketHandler() { this->has_quit = false; }
 
 	/** Close the socket when destructing the socket handler */
-	virtual ~NetworkSocketHandler() {}
+	virtual ~NetworkSocketHandler() = default;
 
 	/**
 	 * Mark the connection as closed.

@@ -16,6 +16,10 @@
 #define SSE_VERSION 4
 #endif
 
+#ifndef SSE_TARGET
+#define SSE_TARGET "sse4.1"
+#endif
+
 #ifndef FULL_ANIMATION
 #define FULL_ANIMATION 0
 #endif

@@ -64,6 +64,10 @@ const char *VideoDriver_SDL_OpenGL::Start(const StringList &param)
 		return error;
 	}
 
+	this->driver_info += " (";
+	this->driver_info += OpenGLBackend::Get()->GetDriverName();
+	this->driver_info += ")";
+
 	/* Now we have a OpenGL context, force a client-size-changed event,
 	 * so all buffers are allocated correctly. */
 	int w, h;

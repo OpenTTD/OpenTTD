@@ -26,9 +26,9 @@ protected:
 	/**
 	 * Client requesting a list of content info:
 	 *  byte    type
-	 *  uint32  openttd version (or 0xFFFFFFFF if using a list)
+	 *  uint32_t  openttd version (or 0xFFFFFFFF if using a list)
 	 * Only if the above value is 0xFFFFFFFF:
-	 *  uint8   count
+	 *  uint8_t   count
 	 *  string  branch-name ("vanilla" for upstream OpenTTD)
 	 *  string  release version (like "12.0")
 	 * @param p The packet that was just received.
@@ -38,8 +38,8 @@ protected:
 
 	/**
 	 * Client requesting a list of content info:
-	 *  uint16  count of ids
-	 *  uint32  id (count times)
+	 *  uint16_t  count of ids
+	 *  uint32_t  id (count times)
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
@@ -50,10 +50,10 @@ protected:
 	 * 'unique' id; GRF ID for NewGRFS, shortname and for base
 	 * graphics and AIs.
 	 * Scenarios and AI libraries are not supported
-	 *  uint8   count of requests
+	 *  uint8_t   count of requests
 	 *  for each request:
-	 *    uint8 type
-	 *    unique id (uint32)
+	 *    uint8_t type
+	 *    unique id (uint32_t)
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
@@ -64,10 +64,10 @@ protected:
 	 * 'unique' id; GRF ID + MD5 checksum for NewGRFS, shortname and
 	 * xor-ed MD5 checksums for base graphics and AIs.
 	 * Scenarios and AI libraries are not supported
-	 *  uint8   count of requests
+	 *  uint8_t   count of requests
 	 *  for each request:
-	 *    uint8 type
-	 *    unique id (uint32)
+	 *    uint8_t type
+	 *    unique id (uint32_t)
 	 *    md5 (16 bytes)
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -77,15 +77,15 @@ protected:
 	/**
 	 * Server sending list of content info:
 	 *  byte    type (invalid ID == does not exist)
-	 *  uint32  id
-	 *  uint32  file_size
+	 *  uint32_t  id
+	 *  uint32_t  file_size
 	 *  string  name (max 32 characters)
 	 *  string  version (max 16 characters)
-	 *  uint32  unique id
-	 *  uint8   md5sum (16 bytes)
-	 *  uint8   dependency count
-	 *  uint32  unique id of dependency (dependency count times)
-	 *  uint8   tag count
+	 *  uint32_t  unique id
+	 *  uint8_t   md5sum (16 bytes)
+	 *  uint8_t   dependency count
+	 *  uint32_t  unique id of dependency (dependency count times)
+	 *  uint8_t   tag count
 	 *  string  tag (max 32 characters for tag count times)
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -94,8 +94,8 @@ protected:
 
 	/**
 	 * Client requesting the actual content:
-	 *  uint16  count of unique ids
-	 *  uint32  unique id (count times)
+	 *  uint16_t  count of unique ids
+	 *  uint32_t  unique id (count times)
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
 	 */
@@ -103,8 +103,8 @@ protected:
 
 	/**
 	 * Server sending list of content info:
-	 *  uint32  unique id
-	 *  uint32  file size (0 == does not exist)
+	 *  uint32_t  unique id
+	 *  uint32_t  file size (0 == does not exist)
 	 *  string  file name (max 48 characters)
 	 * After this initial packet, packets with the actual data are send using
 	 * the same packet type.

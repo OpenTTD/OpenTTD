@@ -15,7 +15,6 @@
 #include "../debug.h"
 #include "../string_func.h"
 #include "../rev.h"
-#include <set>
 
 #include "../safeguards.h"
 
@@ -23,21 +22,21 @@
  * Check if the API version provided by the AI is supported.
  * @param api_version The API version as provided by the AI.
  */
-static bool CheckAPIVersion(const char *api_version)
+static bool CheckAPIVersion(const std::string &api_version)
 {
-	static const std::set<std::string> versions = { "0.7", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13" };
+	static const std::set<std::string> versions = { "0.7", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13", "14" };
 	return versions.find(api_version) != versions.end();
 }
 
 #if defined(_WIN32)
 #undef GetClassName
 #endif /* _WIN32 */
-template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
+template <> const char *GetClassName<AIInfo, ScriptType::AI>() { return "AIInfo"; }
 
 /* static */ void AIInfo::RegisterAPI(Squirrel *engine)
 {
 	/* Create the AIInfo class, and add the RegisterAI function */
-	DefSQClass<AIInfo, ST_AI> SQAIInfo("AIInfo");
+	DefSQClass<AIInfo, ScriptType::AI> SQAIInfo("AIInfo");
 	SQAIInfo.PreRegister(engine);
 	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
 	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddSetting, "AddSetting");
@@ -69,31 +68,26 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 	SQInteger res = ScriptInfo::Constructor(vm, info);
 	if (res != 0) return res;
 
-	ScriptConfigItem config = _start_date_config;
-	config.name = stredup(config.name);
-	config.description = stredup(config.description);
-	info->config_list.push_front(config);
-
-	if (info->engine->MethodExists(*info->SQ_instance, "MinVersionToLoad")) {
-		if (!info->engine->CallIntegerMethod(*info->SQ_instance, "MinVersionToLoad", &info->min_loadable_version, MAX_GET_OPS)) return SQ_ERROR;
+	if (info->engine->MethodExists(info->SQ_instance, "MinVersionToLoad")) {
+		if (!info->engine->CallIntegerMethod(info->SQ_instance, "MinVersionToLoad", &info->min_loadable_version, MAX_GET_OPS)) return SQ_ERROR;
 	} else {
 		info->min_loadable_version = info->GetVersion();
 	}
 	/* When there is an UseAsRandomAI function, call it. */
-	if (info->engine->MethodExists(*info->SQ_instance, "UseAsRandomAI")) {
-		if (!info->engine->CallBoolMethod(*info->SQ_instance, "UseAsRandomAI", &info->use_as_random, MAX_GET_OPS)) return SQ_ERROR;
+	if (info->engine->MethodExists(info->SQ_instance, "UseAsRandomAI")) {
+		if (!info->engine->CallBoolMethod(info->SQ_instance, "UseAsRandomAI", &info->use_as_random, MAX_GET_OPS)) return SQ_ERROR;
 	} else {
 		info->use_as_random = true;
 	}
 	/* Try to get the API version the AI is written for. */
-	if (info->engine->MethodExists(*info->SQ_instance, "GetAPIVersion")) {
-		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
+	if (info->engine->MethodExists(info->SQ_instance, "GetAPIVersion")) {
+		if (!info->engine->CallStringMethod(info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
 		if (!CheckAPIVersion(info->api_version)) {
 			Debug(script, 1, "Loading info.nut from ({}.{}): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
 			return SQ_ERROR;
 		}
 	} else {
-		info->api_version = stredup("0.7");
+		info->api_version = "0.7";
 	}
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
@@ -109,14 +103,10 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 	SQUserPointer instance;
 	sq_getinstanceup(vm, 2, &instance, nullptr);
 	AIInfo *info = (AIInfo *)instance;
-	info->api_version = nullptr;
+	info->api_version = fmt::format("{}.{}", GB(_openttd_newgrf_version, 28, 4), GB(_openttd_newgrf_version, 24, 4));
 
 	SQInteger res = ScriptInfo::Constructor(vm, info);
 	if (res != 0) return res;
-
-	char buf[8];
-	seprintf(buf, lastof(buf), "%d.%d", GB(_openttd_newgrf_version, 28, 4), GB(_openttd_newgrf_version, 24, 4));
-	info->api_version = stredup(buf);
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
 	sq_setinstanceup(vm, 2, nullptr);
@@ -127,14 +117,8 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 
 AIInfo::AIInfo() :
 	min_loadable_version(0),
-	use_as_random(false),
-	api_version(nullptr)
+	use_as_random(false)
 {
-}
-
-AIInfo::~AIInfo()
-{
-	free(this->api_version);
 }
 
 bool AIInfo::CanLoadFromVersion(int version) const
@@ -143,11 +127,6 @@ bool AIInfo::CanLoadFromVersion(int version) const
 	return version >= this->min_loadable_version && version <= this->GetVersion();
 }
 
-
-AILibrary::~AILibrary()
-{
-	free(this->category);
-}
 
 /* static */ void AILibrary::RegisterAPI(Squirrel *engine)
 {
@@ -169,7 +148,7 @@ AILibrary::~AILibrary()
 	}
 
 	/* Cache the category */
-	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
+	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethod(library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
 		delete library;
 		return SQ_ERROR;
 	}

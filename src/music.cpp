@@ -13,9 +13,9 @@
 /** The type of set we're replacing */
 #define SET_TYPE "music"
 #include "base_media_func.h"
+#include "random_access_file_type.h"
 
 #include "safeguards.h"
-#include "random_access_file_type.h"
 
 
 /**
@@ -25,12 +25,12 @@
  * @return Pointer to string, caller is responsible for freeing memory,
  *         nullptr if entrynum does not exist.
  */
-char *GetMusicCatEntryName(const char *filename, size_t entrynum)
+char *GetMusicCatEntryName(const std::string &filename, size_t entrynum)
 {
 	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
 
 	RandomAccessFile file(filename, BASESET_DIR);
-	uint32 ofs = file.ReadDword();
+	uint32_t ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
 	if (entrynum < entry_count) {
 		file.SeekTo(entrynum * 8, SEEK_SET);
@@ -52,13 +52,13 @@ char *GetMusicCatEntryName(const char *filename, size_t entrynum)
  * @return Pointer to buffer with data read, caller is responsible for freeind memory,
  *         nullptr if entrynum does not exist.
  */
-byte *GetMusicCatEntryData(const char *filename, size_t entrynum, size_t &entrylen)
+byte *GetMusicCatEntryData(const std::string &filename, size_t entrynum, size_t &entrylen)
 {
 	entrylen = 0;
 	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
 
 	RandomAccessFile file(filename, BASESET_DIR);
-	uint32 ofs = file.ReadDword();
+	uint32_t ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
 	if (entrynum < entry_count) {
 		file.SeekTo(entrynum * 8, SEEK_SET);
@@ -116,7 +116,7 @@ template <class Tbase_set>
 	return BaseMedia<Tbase_set>::used_set != nullptr;
 }
 
-bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_filename)
+bool MusicSet::FillSetDetails(IniFile *ini, const std::string &path, const std::string &full_filename)
 {
 	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false>::FillSetDetails(ini, path, full_filename);
 	if (ret) {
@@ -126,15 +126,14 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 		IniGroup *timingtrim = ini->GetGroup("timingtrim");
 		uint tracknr = 1;
 		for (uint i = 0; i < lengthof(this->songinfo); i++) {
-			const char *filename = this->files[i].filename;
-			if (names == nullptr || StrEmpty(filename) || this->files[i].check_result == MD5File::CR_NO_FILE) {
-				this->songinfo[i].songname[0] = '\0';
+			const std::string &filename = this->files[i].filename;
+			if (filename.empty() || this->files[i].check_result == MD5File::CR_NO_FILE) {
 				continue;
 			}
 
 			this->songinfo[i].filename = filename; // non-owned pointer
 
-			IniItem *item = catindex->GetItem(_music_file_names[i], false);
+			IniItem *item = catindex->GetItem(_music_file_names[i]);
 			if (item != nullptr && item->value.has_value() && !item->value->empty()) {
 				/* Song has a CAT file index, assume it's MPS MIDI format */
 				this->songinfo[i].filetype = MTT_MPSMIDI;
@@ -142,16 +141,15 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				char *songname = GetMusicCatEntryName(filename, this->songinfo[i].cat_index);
 				if (songname == nullptr) {
 					Debug(grf, 0, "Base music set song missing from CAT file: {}/{}", filename, this->songinfo[i].cat_index);
-					this->songinfo[i].songname[0] = '\0';
 					continue;
 				}
-				strecpy(this->songinfo[i].songname, songname, lastof(this->songinfo[i].songname));
+				this->songinfo[i].songname = songname;
 				free(songname);
 			} else {
 				this->songinfo[i].filetype = MTT_STANDARDMIDI;
 			}
 
-			const char *trimmed_filename = filename;
+			const char *trimmed_filename = filename.c_str();
 			/* As we possibly add a path to the filename and we compare
 			 * on the filename with the path as in the .obm, we need to
 			 * keep stripping path elements until we find a match. */
@@ -160,13 +158,13 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				 * the beginning, so we don't start reading e.g. root. */
 				while (*trimmed_filename == PATHSEPCHAR) trimmed_filename++;
 
-				item = names->GetItem(trimmed_filename, false);
+				item = names->GetItem(trimmed_filename);
 				if (item != nullptr && item->value.has_value() && !item->value->empty()) break;
 			}
 
 			if (this->songinfo[i].filetype == MTT_STANDARDMIDI) {
 				if (item != nullptr && item->value.has_value() && !item->value->empty()) {
-					strecpy(this->songinfo[i].songname, item->value->c_str(), lastof(this->songinfo[i].songname));
+					this->songinfo[i].songname = item->value.value();
 				} else {
 					Debug(grf, 0, "Base music set song name missing: {}", filename);
 					return false;
@@ -181,7 +179,7 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				this->songinfo[i].tracknr = tracknr++;
 			}
 
-			item = trimmed_filename != nullptr ? timingtrim->GetItem(trimmed_filename, false) : nullptr;
+			item = trimmed_filename != nullptr ? timingtrim->GetItem(trimmed_filename) : nullptr;
 			if (item != nullptr && item->value.has_value() && !item->value->empty()) {
 				auto endpos = item->value->find(':');
 				if (endpos != std::string::npos) {

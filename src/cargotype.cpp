@@ -12,6 +12,7 @@
 #include "newgrf_cargo.h"
 #include "string_func.h"
 #include "strings_func.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -87,7 +88,7 @@ CargoID GetDefaultCargoID(LandscapeID l, CargoType ct)
 {
 	assert(l < lengthof(_default_climate_cargo));
 
-	if (ct == CT_INVALID) return CT_INVALID;
+	if (!IsValidCargoType(ct)) return CT_INVALID;
 
 	assert(ct < lengthof(_default_climate_cargo[0]));
 	CargoLabel cl = _default_climate_cargo[l][ct];
@@ -120,7 +121,7 @@ CargoID GetCargoIDByLabel(CargoLabel cl)
  * @param bitnum 'bitnum' to find.
  * @return First CargoID with the given bitnum, or #CT_INVALID if not found or if the provided \a bitnum is invalid.
  */
-CargoID GetCargoIDByBitnum(uint8 bitnum)
+CargoID GetCargoIDByBitnum(uint8_t bitnum)
 {
 	if (bitnum == INVALID_CARGO) return CT_INVALID;
 
@@ -155,13 +156,10 @@ span<const CargoSpec *> _sorted_standard_cargo_specs; ///< Standard cargo specif
 /** Sort cargo specifications by their name. */
 static bool CargoSpecNameSorter(const CargoSpec * const &a, const CargoSpec * const &b)
 {
-	static char a_name[64];
-	static char b_name[64];
+	std::string a_name = GetString(a->name);
+	std::string b_name = GetString(b->name);
 
-	GetString(a_name, a->name, lastof(a_name));
-	GetString(b_name, b->name, lastof(b_name));
-
-	int res = strnatcmp(a_name, b_name); // Sort by name (natural sorting).
+	int res = StrNaturalCompare(a_name, b_name); // Sort by name (natural sorting).
 
 	/* If the names are equal, sort by cargo bitnum. */
 	return (res != 0) ? res < 0 : (a->bitnum < b->bitnum);
@@ -198,7 +196,7 @@ void InitializeSortedCargoSpecs()
 
 	/* Count the number of standard cargos and fill the mask. */
 	_standard_cargo_mask = 0;
-	uint8 nb_standard_cargo = 0;
+	uint8_t nb_standard_cargo = 0;
 	for (const auto &cargo : _sorted_cargo_specs) {
 		if (cargo->classes & CC_SPECIAL) break;
 		nb_standard_cargo++;
@@ -209,3 +207,8 @@ void InitializeSortedCargoSpecs()
 	_sorted_standard_cargo_specs = { _sorted_cargo_specs.data(), nb_standard_cargo };
 }
 
+uint64_t CargoSpec::WeightOfNUnitsInTrain(uint32_t n) const
+{
+	if (this->is_freight) n *= _settings_game.vehicle.freight_trains;
+	return this->WeightOfNUnits(n);
+}

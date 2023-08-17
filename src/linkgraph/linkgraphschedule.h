@@ -23,7 +23,7 @@ public:
 	/**
 	 * Destroy the handler. Must be given due to virtual Run.
 	 */
-	virtual ~ComponentHandler() {}
+	virtual ~ComponentHandler() = default;
 
 	/**
 	 * Run the handler. A link graph handler must not read or write any data
@@ -58,7 +58,7 @@ public:
 	bool IsJoinWithUnfinishedJobDue() const;
 	void JoinNext();
 	void SpawnAll();
-	void ShiftDates(int interval);
+	void ShiftDates(TimerGameCalendar::Date interval);
 
 	/**
 	 * Queue a link graph for execution.

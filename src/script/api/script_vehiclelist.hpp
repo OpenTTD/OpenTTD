@@ -69,26 +69,28 @@ public:
 
 /**
  * Creates a list of vehicles that are in a group.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptVehicleList_Group : public ScriptList {
 public:
 	/**
 	 * @param group_id The ID of the group the vehicles are in.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 */
 	ScriptVehicleList_Group(GroupID group_id);
 };
 
 /**
  * Creates a list of vehicles that are in the default group.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptVehicleList_DefaultGroup : public ScriptList {
 public:
 	/**
 	 * @param vehicle_type The VehicleType to get the list of vehicles for.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 */
 	ScriptVehicleList_DefaultGroup(ScriptVehicle::VehicleType vehicle_type);
 };

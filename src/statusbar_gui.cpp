@@ -8,7 +8,7 @@
 /** @file statusbar_gui.cpp The GUI for the bottom status bar. */
 
 #include "stdafx.h"
-#include "date_func.h"
+#include "core/backup_type.hpp"
 #include "gfx_func.h"
 #include "news_func.h"
 #include "company_func.h"
@@ -24,8 +24,11 @@
 #include "statusbar_gui.h"
 #include "toolbar_gui.h"
 #include "core/geometry_func.hpp"
-#include "guitimer_func.h"
 #include "zoom_func.h"
+#include "date_type.h"
+#include "timer/timer.h"
+#include "timer/timer_game_calendar.h"
+#include "timer/timer_window.h"
 
 #include "widgets/statusbar_widget.h"
 
@@ -36,42 +39,19 @@
 
 static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left, int right, int top, int bottom)
 {
-	CopyInDParam(0, ni->params, lengthof(ni->params));
-	StringID str = ni->string_id;
+	CopyInDParam(ni->params);
 
-	char buf[512];
-	GetString(buf, str, lastof(buf));
-	const char *s = buf;
-
-	char buffer[256];
-	char *d = buffer;
-	const char *last = lastof(buffer);
-
-	for (;;) {
-		WChar c = Utf8Consume(&s);
-		if (c == 0) {
-			break;
-		} else if (c == '\n') {
-			if (d + 4 >= last) break;
-			d[0] = d[1] = d[2] = d[3] = ' ';
-			d += 4;
-		} else if (IsPrintable(c)) {
-			if (d + Utf8CharLen(c) >= last) break;
-			d += Utf8Encode(d, c);
-		}
-	}
-	*d = '\0';
+	/* Replace newlines and the likes with spaces. */
+	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
 
 	DrawPixelInfo tmp_dpi;
 	if (!FillDrawPixelInfo(&tmp_dpi, left, top, right - left, bottom)) return true;
 
-	int width = GetStringBoundingBox(buffer).width;
+	int width = GetStringBoundingBox(message).width;
 	int pos = (_current_text_dir == TD_RTL) ? (scroll_pos - width) : (right - scroll_pos - left);
 
-	DrawPixelInfo *old_dpi = _cur_dpi;
-	_cur_dpi = &tmp_dpi;
-	DrawString(pos, INT16_MAX, 0, buffer, TC_LIGHT_BLUE, SA_LEFT | SA_FORCE);
-	_cur_dpi = old_dpi;
+	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+	DrawString(pos, INT16_MAX, 0, message, TC_LIGHT_BLUE, SA_LEFT | SA_FORCE);
 
 	return (_current_text_dir == TD_RTL) ? (pos < right - left) : (pos + width > 0);
 }
@@ -79,26 +59,21 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left
 struct StatusBarWindow : Window {
 	bool saving;
 	int ticker_scroll;
-	GUITimer ticker_timer;
-	GUITimer reminder_timeout;
 
 	static const int TICKER_STOP    = 1640; ///< scrolling is finished when counter reaches this value
-	static const int REMINDER_START = 1350; ///< time in ms for reminder notification (red dot on the right) to stay
-	static const int REMINDER_STOP  =    0; ///< reminder disappears when counter reaches this value
 	static const int COUNTER_STEP   =    2; ///< this is subtracted from active counters every tick
+	static constexpr auto REMINDER_START = std::chrono::milliseconds(1350); ///< time in ms for reminder notification (red dot on the right) to stay
 
 	StatusBarWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->ticker_scroll = TICKER_STOP;
-		this->ticker_timer.SetInterval(15);
-		this->reminder_timeout.SetInterval(REMINDER_STOP);
 
 		this->InitNested();
 		CLRBITS(this->flags, WF_WHITE_BORDER);
 		PositionStatusbar(this);
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number) override
 	{
 		Point pt = { 0, _screen.height - sm_height };
 		return pt;
@@ -114,15 +89,15 @@ struct StatusBarWindow : Window {
 		Dimension d;
 		switch (widget) {
 			case WID_S_LEFT:
-				SetDParamMaxValue(0, MAX_YEAR * DAYS_IN_YEAR);
-				d = GetStringBoundingBox(STR_WHITE_DATE_LONG);
+				SetDParamMaxValue(0, DateAtStartOfYear(MAX_YEAR));
+				d = GetStringBoundingBox(STR_JUST_DATE_LONG);
 				break;
 
 			case WID_S_RIGHT: {
-				int64 max_money = UINT32_MAX;
-				for (const Company *c : Company::Iterate()) max_money = std::max<int64>(c->money, max_money);
+				int64_t max_money = UINT32_MAX;
+				for (const Company *c : Company::Iterate()) max_money = std::max<int64_t>(c->money, max_money);
 				SetDParam(0, 100LL * max_money);
-				d = GetStringBoundingBox(STR_COMPANY_MONEY);
+				d = GetStringBoundingBox(STR_JUST_CURRENCY_LONG);
 				break;
 			}
 
@@ -137,24 +112,24 @@ struct StatusBarWindow : Window {
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
-		int text_offset = std::max(0, ((int)(r.bottom - r.top + 1) - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
-		int text_top = r.top + text_offset;
+		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
+		tr.top = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
 		switch (widget) {
 			case WID_S_LEFT:
 				/* Draw the date */
-				SetDParam(0, _date);
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_WHITE_DATE_LONG, TC_FROMSTRING, SA_HOR_CENTER);
+				SetDParam(0, TimerGameCalendar::date);
+				DrawString(tr, STR_JUST_DATE_LONG, TC_WHITE, SA_HOR_CENTER);
 				break;
 
 			case WID_S_RIGHT: {
 				if (_local_company == COMPANY_SPECTATOR) {
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_STATUSBAR_SPECTATOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(tr, STR_STATUSBAR_SPECTATOR, TC_FROMSTRING, SA_HOR_CENTER);
 				} else {
 					/* Draw company money, if any */
 					const Company *c = Company::GetIfValid(_local_company);
 					if (c != nullptr) {
 						SetDParam(0, c->money);
-						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_COMPANY_MONEY, TC_FROMSTRING, SA_HOR_CENTER);
+						DrawString(tr, STR_JUST_CURRENCY_LONG, TC_WHITE, SA_HOR_CENTER);
 					}
 				}
 				break;
@@ -163,33 +138,33 @@ struct StatusBarWindow : Window {
 			case WID_S_MIDDLE:
 				/* Draw status bar */
 				if (this->saving) { // true when saving is active
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_STATUSBAR_SAVING_GAME, TC_FROMSTRING, SA_HOR_CENTER | SA_VERT_CENTER);
+					DrawString(tr, STR_STATUSBAR_SAVING_GAME, TC_FROMSTRING, SA_HOR_CENTER | SA_VERT_CENTER);
 				} else if (_do_autosave) {
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(tr, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_HOR_CENTER);
 				} else if (_pause_mode != PM_UNPAUSED) {
 					StringID msg = (_pause_mode & PM_PAUSED_LINK_GRAPH) ? STR_STATUSBAR_PAUSED_LINK_GRAPH : STR_STATUSBAR_PAUSED;
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, msg, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(tr, msg, TC_FROMSTRING, SA_HOR_CENTER);
 				} else if (this->ticker_scroll < TICKER_STOP && _statusbar_news_item != nullptr && _statusbar_news_item->string_id != 0) {
 					/* Draw the scrolling news text */
-					if (!DrawScrollingStatusText(_statusbar_news_item, ScaleGUITrad(this->ticker_scroll), r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom)) {
+					if (!DrawScrollingStatusText(_statusbar_news_item, ScaleGUITrad(this->ticker_scroll), tr.left, tr.right, tr.top, tr.bottom)) {
 						InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED);
 						if (Company::IsValidID(_local_company)) {
 							/* This is the default text */
 							SetDParam(0, _local_company);
-							DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_HOR_CENTER);
+							DrawString(tr, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_HOR_CENTER);
 						}
 					}
 				} else {
 					if (Company::IsValidID(_local_company)) {
 						/* This is the default text */
 						SetDParam(0, _local_company);
-						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, text_top, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_HOR_CENTER);
+						DrawString(tr, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_HOR_CENTER);
 					}
 				}
 
-				if (!this->reminder_timeout.HasElapsed()) {
+				if (!this->reminder_timeout.HasFired()) {
 					Dimension icon_size = GetSpriteSize(SPR_UNREAD_NEWS);
-					DrawSprite(SPR_UNREAD_NEWS, PAL_NONE, r.right - WD_FRAMERECT_RIGHT - icon_size.width, r.top + std::max(0, ((int)(r.bottom - r.top + 1) - (int)icon_size.height) / 2));
+					DrawSprite(SPR_UNREAD_NEWS, PAL_NONE, tr.right - icon_size.width, CenterBounds(r.top, r.bottom, icon_size.height));
 				}
 				break;
 		}
@@ -208,10 +183,10 @@ struct StatusBarWindow : Window {
 			case SBI_SAVELOAD_START:  this->saving = true;  break;
 			case SBI_SAVELOAD_FINISH: this->saving = false; break;
 			case SBI_SHOW_TICKER:     this->ticker_scroll = 0; break;
-			case SBI_SHOW_REMINDER:   this->reminder_timeout.SetInterval(REMINDER_START); break;
+			case SBI_SHOW_REMINDER:   this->reminder_timeout.Reset(); break;
 			case SBI_NEWS_DELETED:
 				this->ticker_scroll    =   TICKER_STOP; // reset ticker ...
-				this->reminder_timeout.SetInterval(REMINDER_STOP); // ... and reminder
+				this->reminder_timeout.Abort(); // ... and reminder
 				break;
 		}
 	}
@@ -225,23 +200,23 @@ struct StatusBarWindow : Window {
 		}
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
-	{
+	/** Move information on the ticker slowly from one side to the other. */
+	IntervalTimer<TimerWindow> ticker_scroll_interval = {std::chrono::milliseconds(15), [this](uint count) {
 		if (_pause_mode != PM_UNPAUSED) return;
 
-		if (this->ticker_scroll < TICKER_STOP) { // Scrolling text
-			uint count = this->ticker_timer.CountElapsed(delta_ms);
-			if (count > 0) {
-				this->ticker_scroll += count;
-				this->SetWidgetDirty(WID_S_MIDDLE);
-			}
-		}
-
-		// Red blot to show there are new unread newsmessages
-		if (this->reminder_timeout.Elapsed(delta_ms)) {
+		if (this->ticker_scroll < TICKER_STOP) {
+			this->ticker_scroll += count;
 			this->SetWidgetDirty(WID_S_MIDDLE);
 		}
-	}
+	}};
+
+	TimeoutTimer<TimerWindow> reminder_timeout = {REMINDER_START, [this]() {
+		this->SetWidgetDirty(WID_S_MIDDLE);
+	}};
+
+	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
+		this->SetWidgetDirty(WID_S_LEFT);
+	}};
 };
 
 static const NWidgetPart _nested_main_status_widgets[] = {
@@ -255,7 +230,7 @@ static const NWidgetPart _nested_main_status_widgets[] = {
 static WindowDesc _main_status_desc(
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_STATUS_BAR, WC_NONE,
-	WDF_NO_FOCUS,
+	WDF_NO_FOCUS | WDF_NO_CLOSE,
 	_nested_main_status_widgets, lengthof(_nested_main_status_widgets)
 );
 

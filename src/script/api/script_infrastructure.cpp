@@ -18,7 +18,7 @@
 #include "../../safeguards.h"
 
 
-/* static */ uint32 ScriptInfrastructure::GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
+/* static */ SQInteger ScriptInfrastructure::GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID || (::RailType)railtype >= RAILTYPE_END) return 0;
@@ -26,7 +26,7 @@
 	return ::Company::Get((::CompanyID)company)->infrastructure.rail[railtype];
 }
 
-/* static */ uint32 ScriptInfrastructure::GetRoadPieceCount(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
+/* static */ SQInteger ScriptInfrastructure::GetRoadPieceCount(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END) return 0;
@@ -34,7 +34,7 @@
 	return ::Company::Get((::CompanyID)company)->infrastructure.road[roadtype];
 }
 
-/* static */ uint32 ScriptInfrastructure::GetInfrastructurePieceCount(ScriptCompany::CompanyID company, Infrastructure infra_type)
+/* static */ SQInteger ScriptInfrastructure::GetInfrastructurePieceCount(ScriptCompany::CompanyID company, Infrastructure infra_type)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID) return 0;
@@ -42,7 +42,7 @@
 	::Company *c = ::Company::Get((::CompanyID)company);
 	switch (infra_type) {
 		case INFRASTRUCTURE_RAIL: {
-			uint32 count = 0;
+			uint32_t count = 0;
 			for (::RailType rt = ::RAILTYPE_BEGIN; rt != ::RAILTYPE_END; rt++) {
 				count += c->infrastructure.rail[rt];
 			}
@@ -53,7 +53,7 @@
 			return c->infrastructure.signal;
 
 		case INFRASTRUCTURE_ROAD: {
-			uint32 count = 0;
+			uint32_t count = 0;
 			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
 				count += c->infrastructure.road[rt];
 			}
@@ -101,7 +101,7 @@
 	switch (infra_type) {
 		case INFRASTRUCTURE_RAIL: {
 			Money cost;
-			uint32 rail_total = c->infrastructure.GetRailTotal();
+			uint32_t rail_total = c->infrastructure.GetRailTotal();
 			for (::RailType rt = ::RAILTYPE_BEGIN; rt != ::RAILTYPE_END; rt++) {
 				cost += RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total);
 			}
@@ -113,7 +113,7 @@
 
 		case INFRASTRUCTURE_ROAD: {
 			Money cost;
-			uint32 road_total = c->infrastructure.GetRoadTotal();
+			uint32_t road_total = c->infrastructure.GetRoadTotal();
 			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
 				cost += RoadMaintenanceCost(rt, c->infrastructure.road[rt], road_total);
 			}

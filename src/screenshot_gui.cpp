@@ -13,6 +13,7 @@
 #include "screenshot.h"
 #include "widgets/screenshot_widget.h"
 #include "table/strings.h"
+#include "gfx_func.h"
 
 struct ScreenshotWindow : Window {
 	ScreenshotWindow(WindowDesc *desc) : Window(desc)
@@ -71,4 +72,25 @@ void ShowScreenshotWindow()
 {
 	CloseWindowById(WC_SCREENSHOT, 0);
 	new ScreenshotWindow(&_screenshot_window_desc);
+}
+
+/**
+ * Set the visibility of the screenshot window when taking a screenshot.
+ * @param hide Are we hiding the window or showing it again after the screenshot is taken?
+ */
+void SetScreenshotWindowVisibility(bool hide)
+{
+	ScreenshotWindow *scw = (ScreenshotWindow *)FindWindowById(WC_SCREENSHOT, 0);
+
+	if (scw == nullptr) return;
+
+	if (hide) {
+		/* Set dirty the screen area where the window is covering (not the window itself), then move window off screen. */
+		scw->SetDirty();
+		scw->left += 2 * _screen.width;
+	} else {
+		/* Return window to original position. */
+		scw->left -= 2 * _screen.width;
+		scw->SetDirty();
+	}
 }

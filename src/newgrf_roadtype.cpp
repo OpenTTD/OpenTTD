@@ -8,28 +8,29 @@
 /** @file newgrf_roadtype.cpp NewGRF handling of road types. */
 
 #include "stdafx.h"
+#include "core/container_func.hpp"
 #include "debug.h"
 #include "newgrf_roadtype.h"
-#include "date_func.h"
+#include "timer/timer_game_calendar.h"
 #include "depot_base.h"
 #include "town.h"
 
 #include "safeguards.h"
 
-/* virtual */ uint32 RoadTypeScopeResolver::GetRandomBits() const
+/* virtual */ uint32_t RoadTypeScopeResolver::GetRandomBits() const
 {
-	uint tmp = CountBits(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE);
+	uint tmp = CountBits(static_cast<uint32_t>(this->tile + (TileX(this->tile) + TileY(this->tile)) * TILE_SIZE));
 	return GB(tmp, 0, 2);
 }
 
-/* virtual */ uint32 RoadTypeScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
+/* virtual */ uint32_t RoadTypeScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
 {
 	if (this->tile == INVALID_TILE) {
 		switch (variable) {
 			case 0x40: return 0;
 			case 0x41: return 0;
 			case 0x42: return 0;
-			case 0x43: return _date;
+			case 0x43: return static_cast<int32_t>(TimerGameCalendar::date);
 			case 0x44: return HZB_TOWN_EDGE;
 		}
 	}
@@ -39,8 +40,8 @@
 		case 0x41: return 0;
 		case 0x42: return IsLevelCrossingTile(this->tile) && IsCrossingBarred(this->tile);
 		case 0x43:
-			if (IsRoadDepotTile(this->tile)) return Depot::GetByTile(this->tile)->build_date;
-			return _date;
+			if (IsRoadDepotTile(this->tile)) return static_cast<int32_t>(Depot::GetByTile(this->tile)->build_date);
+			return static_cast<int32_t>(TimerGameCalendar::date);
 		case 0x44: {
 			const Town *t = nullptr;
 			if (IsRoadDepotTile(this->tile)) {
@@ -68,22 +69,9 @@ GrfSpecFeature RoadTypeResolverObject::GetFeature() const
 	}
 }
 
-uint32 RoadTypeResolverObject::GetDebugID() const
+uint32_t RoadTypeResolverObject::GetDebugID() const
 {
 	return this->roadtype_scope.rti->label;
-}
-
-/**
- * Constructor of the roadtype scope resolvers.
- * @param ro Surrounding resolver.
- * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
- * @param context Are we resolving sprites for the upper halftile, or on a bridge?
- */
-RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeInfo *rti, TileIndex tile, TileContext context) : ScopeResolver(ro)
-{
-	this->tile = tile;
-	this->context = context;
-	this->rti = rti;
 }
 
 /**
@@ -95,7 +83,7 @@ RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeI
  * @param param1 Extra parameter (first parameter of the callback, except roadtypes do not have callbacks).
  * @param param2 Extra parameter (second parameter of the callback, except roadtypes do not have callbacks).
  */
-RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32 param1, uint32 param2)
+RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32_t param1, uint32_t param2)
 	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), roadtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
@@ -132,7 +120,7 @@ SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSp
  * @param grffile   Originating GRF file.
  * @return RoadType or INVALID_ROADTYPE if the roadtype is unknown.
  */
-RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8 tracktype, const GRFFile *grffile)
+RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8_t tracktype, const GRFFile *grffile)
 {
 	/* Because OpenTTD mixes RoadTypes and TramTypes into the same type,
 	 * the mapping of the original road- and tramtypes does not match the default GRF-local mapping.
@@ -162,7 +150,7 @@ RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8 tracktype, const GRFFile
  * @param grffile The GRF to do the lookup for.
  * @return the GRF internal ID.
  */
-uint8 GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile)
+uint8_t GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile)
 {
 	/* No road type table present, return road type as-is */
 	if (grffile == nullptr) return roadtype;

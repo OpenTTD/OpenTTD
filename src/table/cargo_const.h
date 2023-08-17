@@ -33,8 +33,8 @@
  * @param weight       Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
  * @param mult         Capacity multiplier for vehicles. (8 fractional bits).
  * @param ip           CargoSpec->initial_payment.
- * @param td1          CargoSpec->transit_days[0].
- * @param td2          CargoSpec->transit_days[1].
+ * @param td1          CargoSpec->transit_periods[0].
+ * @param td2          CargoSpec->transit_periods[1].
  * @param freight      Cargo type is considered to be freight (affects train freight multiplier).
  * @param te           The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
  * @param str_plural   The name suffix used to populate CargoSpec->name, CargoSpec->quantifier,
@@ -44,7 +44,7 @@
  * @param classes      Classes of this cargo type. @see CargoClass
  */
 #define MK(bt, label, colour, weight, mult, ip, td1, td2, freight, te, str_plural, str_singular, str_volume, classes) \
-		{bt, label, colour, colour, weight, mult, ip, {td1, td2}, freight, te, 0, 0, \
+		{bt, label, colour, colour, weight, mult, ip, {td1, td2}, freight, te, 0, \
 		MK_STR_CARGO_PLURAL(str_plural), MK_STR_CARGO_SINGULAR(str_singular), str_volume, MK_STR_QUANTITY(str_plural), MK_STR_ABBREV(str_plural), \
 		MK_SPRITE(str_plural), classes, nullptr, nullptr, 0}
 

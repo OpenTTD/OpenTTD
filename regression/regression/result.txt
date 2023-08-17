@@ -88,21 +88,21 @@
  abs( 21): 21
 
 --AIBase--
-  Rand():       -54346916
-  Rand():       -937374575
-  Rand():       823953997
+  Rand():       2113409458
+  Rand():       2000129769
+  Rand():       1788051963
   RandRange(0): 0
   RandRange(0): 0
   RandRange(0): 0
   RandRange(1): 0
   RandRange(1): 0
   RandRange(1): 0
+  RandRange(2): 0
+  RandRange(2): 0
   RandRange(2): 1
-  RandRange(2): 1
-  RandRange(2): 1
-  RandRange(1000000): 966676
-  RandRange(1000000): 289525
-  RandRange(1000000): 170283
+  RandRange(1000000): 338687
+  RandRange(1000000): 274895
+  RandRange(1000000): 217539
   Chance(1, 2): false
   Chance(1, 2): true
   Chance(1, 2): false
@@ -420,144 +420,144 @@
     1098 => 46116
     1099 => 46158
   Randomize ListDump:
-    1 => -200078348
-    2 => -29799264
-    1000 => 1630721656
-    1001 => 959306175
-    1002 => 1527421791
-    1003 => 1259692483
-    1004 => -1289244298
-    1005 => -1572996668
-    1006 => -2069479746
-    1007 => -1819131606
-    1008 => -1007163964
-    1009 => -1185394870
-    1010 => -1471365065
-    1011 => 364354366
-    1012 => -1478084253
-    1013 => 405281367
-    1014 => -11170062
-    1015 => 156767750
-    1016 => 1288924796
-    1017 => 1796884876
-    1018 => -1947073702
-    1019 => -1999614238
-    1020 => -231292809
-    1021 => 966621566
-    1022 => -606766557
-    1023 => -1138727825
-    1024 => -749544262
-    1025 => 2004771271
-    1026 => 686734186
-    1027 => 923274744
-    1028 => -1672035149
-    1029 => -1642064950
-    1030 => 1363389551
-    1031 => -559500928
-    1032 => 1656196991
-    1033 => 1655354425
-    1034 => -1027156689
-    1035 => 1952644328
-    1036 => 1217870217
-    1037 => 242274100
-    1038 => 201816080
-    1039 => 2127464758
-    1040 => 446043650
-    1041 => -319728455
-    1042 => 204701002
-    1043 => -571265398
-    1044 => -1422217131
-    1045 => -391208397
-    1046 => -1822628371
-    1047 => -1499755350
-    1048 => -1422137641
-    1049 => 1621693134
-    1051 => -1428728134
-    1052 => -147587573
-    1053 => 681719500
-    1054 => 1172011190
-    1055 => -1834344882
-    1056 => 1157634586
-    1057 => 1902133676
-    1058 => -1967780161
-    1059 => -1618025531
-    1060 => -810220453
-    1061 => 1582854921
-    1062 => -410004643
-    1063 => 1159917159
-    1064 => -1377804984
-    1065 => -738843914
-    1066 => -1578756103
-    1067 => -464090986
-    1068 => 1711504679
-    1069 => 545330655
-    1070 => 379462570
-    1071 => 514511099
-    1072 => -1813251176
-    1073 => 1424958266
-    1074 => -825255131
-    1075 => 539054595
-    1076 => -1764192010
-    1077 => -1243277769
-    1078 => 2017874281
-    1079 => -1972353607
-    1080 => 1879761467
-    1081 => 1638986560
-    1082 => -1832287507
-    1083 => -492411882
-    1084 => 658940812
-    1085 => -1044199400
-    1086 => 1586504918
-    1087 => -125492611
-    1088 => -1562883174
-    1089 => -1013778441
-    1090 => 1560228607
-    1091 => -550265689
-    1092 => 524767105
-    1093 => -713387661
-    1094 => 1425927738
-    1095 => 942653932
-    1096 => 1233220698
-    1097 => 1313602368
-    1098 => -140318584
-    1099 => 1199179892
+    1 => 1667006376
+    2 => 814756458
+    1000 => 2792131700
+    1001 => 3417650573
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
+    1006 => 2312121797
+    1007 => 1357932132
+    1008 => 1603755907
+    1009 => 1718096015
+    1010 => 3850074449
+    1011 => 2711130211
+    1012 => 2371249199
+    1013 => 881020769
+    1014 => 3366660077
+    1015 => 808768948
+    1016 => 3035331984
+    1017 => 2813590961
+    1018 => 2745021820
+    1019 => 3075151719
+    1020 => 2553774560
+    1021 => 4267762096
+    1022 => 3863175846
+    1023 => 4198397908
+    1024 => 817599906
+    1025 => 3149240362
+    1026 => 3003005979
+    1027 => 1214815375
+    1028 => 3784363817
+    1029 => 3181864540
+    1030 => 325341059
+    1031 => 1011889231
+    1032 => 3142617173
+    1033 => 1197220206
+    1034 => 4060510885
+    1035 => 3596342467
+    1036 => 219406671
+    1037 => 3695508783
+    1038 => 2823603997
+    1039 => 2625659720
+    1040 => 4113498476
+    1041 => 1125297786
+    1042 => 671905104
+    1043 => 1231077134
+    1044 => 892292375
+    1045 => 2441486929
+    1046 => 1804593432
+    1047 => 2536560053
+    1048 => 1896826021
+    1049 => 1672512966
+    1051 => 977884299
+    1052 => 681948608
+    1053 => 3853505792
+    1054 => 4118706553
+    1055 => 3581698138
+    1056 => 3073782502
+    1057 => 1084753140
+    1058 => 2266056077
+    1059 => 1239805090
+    1060 => 1183528423
+    1061 => 501361238
+    1062 => 66542127
+    1063 => 775638990
+    1064 => 1111474321
+    1065 => 3465462871
+    1066 => 2317535037
+    1067 => 878310882
+    1068 => 2231368582
+    1069 => 2353633007
+    1070 => 179259867
+    1071 => 1322707275
+    1072 => 1474105363
+    1073 => 619989187
+    1074 => 3221603092
+    1075 => 2400416540
+    1076 => 3926392705
+    1077 => 1122978123
+    1078 => 3266139701
+    1079 => 2948697341
+    1080 => 3262493501
+    1081 => 2200252596
+    1082 => 4091101485
+    1083 => 2797438343
+    1084 => 2608201933
+    1085 => 2577605442
+    1086 => 1178956760
+    1087 => 3047709109
+    1088 => 1065186815
+    1089 => 841440515
+    1090 => 842182476
+    1091 => 289059855
+    1092 => 2114106829
+    1093 => 436435334
+    1094 => 111052607
+    1095 => 81827083
+    1096 => 1961213887
+    1097 => 1374385392
+    1098 => 3255118186
+    1099 => 2245402931
   KeepTop(10):
-    1 => -200078348
-    2 => -29799264
-    1000 => 1630721656
-    1001 => 959306175
-    1002 => 1527421791
-    1003 => 1259692483
-    1004 => -1289244298
-    1005 => -1572996668
-    1006 => -2069479746
-    1007 => -1819131606
+    1 => 1667006376
+    2 => 814756458
+    1000 => 2792131700
+    1001 => 3417650573
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
+    1006 => 2312121797
+    1007 => 1357932132
   KeepBottom(8):
-    1000 => 1630721656
-    1001 => 959306175
-    1002 => 1527421791
-    1003 => 1259692483
-    1004 => -1289244298
-    1005 => -1572996668
-    1006 => -2069479746
-    1007 => -1819131606
+    1000 => 2792131700
+    1001 => 3417650573
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
+    1006 => 2312121797
+    1007 => 1357932132
   RemoveBottom(2):
-    1000 => 1630721656
-    1001 => 959306175
-    1002 => 1527421791
-    1003 => 1259692483
-    1004 => -1289244298
-    1005 => -1572996668
+    1000 => 2792131700
+    1001 => 3417650573
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
   RemoveTop(2):
-    1002 => 1527421791
-    1003 => 1259692483
-    1004 => -1289244298
-    1005 => -1572996668
+    1002 => 1856129988
+    1003 => 1800973341
+    1004 => 4197962148
+    1005 => 2463509731
   RemoveList({1003, 1004}):
-    1002 => 1527421791
-    1005 => -1572996668
+    1002 => 1856129988
+    1005 => 2463509731
   KeepList({1003, 1004, 1005}):
-    1005 => -1572996668
+    1005 => 2463509731
   AddList({1005, 4000, 4001, 4002}):
     1005 => 1005
     4000 => 8000
@@ -588,7 +588,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   SetName():            false
   GetLastErrorString(): ERR_NAME_IS_NOT_UNIQUE
   GetName():                         Regression
-  GetPresidentName():                E. McAlpine
+  GetPresidentName():                F. Gribble
   SetPresidentName():                true
   GetPresidentName():                Regression AI
   GetBankBalance():                  100000
@@ -639,7 +639,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetQuarterlyCompanyValue():      -1
   Quarter: 0
     GetQuarterlyIncome():            0
-    GetQuarterlyExpenses():          -210
+    GetQuarterlyExpenses():          0
     GetQuarterlyCargoDelivered():    0
     GetQuarterlyPerformanceRating(): -1
     GetQuarterlyCompanyValue():      1
@@ -787,6 +787,13 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetQuarterlyCargoDelivered():    0
     GetQuarterlyPerformanceRating(): 0
     GetQuarterlyCompanyValue():      0
+
+--Commands--
+ -Command accounting-
+  Command cost:              7500
+  New inner cost scope:      0
+  Further command cost:      30
+  Saved cost of outer scope: 7500
 
 --AIAirport--
   IsHangarTile():       false
@@ -1118,6 +1125,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  -1
     GetCargoIncome(100, 10): -1
     GetCargoIncome(10, 100): -1
+    GetWeight(100):          -1
     GetRoadVehicleTypeForCargo(): 1
   Cargo 0
     IsValidCargo():          true
@@ -1130,6 +1138,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  3
     GetCargoIncome(100, 10): 38
     GetCargoIncome(10, 100): 3
+    GetWeight(100):          6
     GetRoadVehicleTypeForCargo(): 0
   Cargo 1
     IsValidCargo():          true
@@ -1142,6 +1151,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  7
     GetCargoIncome(100, 10): 71
     GetCargoIncome(10, 100): 6
+    GetWeight(100):          100
     GetRoadVehicleTypeForCargo(): 1
   Cargo 2
     IsValidCargo():          true
@@ -1154,6 +1164,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  5
     GetCargoIncome(100, 10): 55
     GetCargoIncome(10, 100): 5
+    GetWeight(100):          25
     GetRoadVehicleTypeForCargo(): 1
   Cargo 3
     IsValidCargo():          true
@@ -1166,6 +1177,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  5
     GetCargoIncome(100, 10): 53
     GetCargoIncome(10, 100): 5
+    GetWeight(100):          100
     GetRoadVehicleTypeForCargo(): 1
   Cargo 4
     IsValidCargo():          true
@@ -1178,6 +1190,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  5
     GetCargoIncome(100, 10): 52
     GetCargoIncome(10, 100): 4
+    GetWeight(100):          18
     GetRoadVehicleTypeForCargo(): 1
   Cargo 5
     IsValidCargo():          true
@@ -1190,6 +1203,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  7
     GetCargoIncome(100, 10): 74
     GetCargoIncome(10, 100): 6
+    GetWeight(100):          50
     GetRoadVehicleTypeForCargo(): 1
   Cargo 6
     IsValidCargo():          true
@@ -1202,6 +1216,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  5
     GetCargoIncome(100, 10): 58
     GetCargoIncome(10, 100): 4
+    GetWeight(100):          100
     GetRoadVehicleTypeForCargo(): 1
   Cargo 7
     IsValidCargo():          true
@@ -1214,6 +1229,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  6
     GetCargoIncome(100, 10): 60
     GetCargoIncome(10, 100): 5
+    GetWeight(100):          100
     GetRoadVehicleTypeForCargo(): 1
   Cargo 8
     IsValidCargo():          true
@@ -1226,6 +1242,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  6
     GetCargoIncome(100, 10): 62
     GetCargoIncome(10, 100): 5
+    GetWeight(100):          100
     GetRoadVehicleTypeForCargo(): 1
   Cargo 9
     IsValidCargo():          true
@@ -1238,6 +1255,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  6
     GetCargoIncome(100, 10): 69
     GetCargoIncome(10, 100): 6
+    GetWeight(100):          100
     GetRoadVehicleTypeForCargo(): 1
   Cargo 10
     IsValidCargo():          true
@@ -1250,6 +1268,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  9
     GetCargoIncome(100, 10): 90
     GetCargoIncome(10, 100): 7
+    GetWeight(100):          12
     GetRoadVehicleTypeForCargo(): 1
   Cargo 11
     IsValidCargo():          false
@@ -1262,6 +1281,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  -1
     GetCargoIncome(100, 10): -1
     GetCargoIncome(10, 100): -1
+    GetWeight(100):          -1
     GetRoadVehicleTypeForCargo(): 1
   Cargo 12
     IsValidCargo():          false
@@ -1274,6 +1294,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  -1
     GetCargoIncome(100, 10): -1
     GetCargoIncome(10, 100): -1
+    GetWeight(100):          -1
     GetRoadVehicleTypeForCargo(): 1
   Cargo 13
     IsValidCargo():          false
@@ -1286,6 +1307,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  -1
     GetCargoIncome(100, 10): -1
     GetCargoIncome(10, 100): -1
+    GetWeight(100):          -1
     GetRoadVehicleTypeForCargo(): 1
   Cargo 14
     IsValidCargo():          false
@@ -1298,6 +1320,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetCargoIncome(10, 10):  -1
     GetCargoIncome(100, 10): -1
     GetCargoIncome(10, 100): -1
+    GetWeight(100):          -1
     GetRoadVehicleTypeForCargo(): 1
 
 --CargoList--
@@ -1365,7 +1388,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   75
     GetMaxSpeed():      64
     GetPrice():         8203
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   820
     GetPower():         300
     GetWeight():        47
@@ -1509,7 +1532,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   80
     GetMaxSpeed():      112
     GetPrice():         15234
-    GetMaxAge():        7686
+    GetMaxAge():        7671
     GetRunningCost():   1968
     GetPower():         1000
     GetWeight():        131
@@ -1527,7 +1550,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   84
     GetMaxSpeed():      128
     GetPrice():         22265
-    GetMaxAge():        7320
+    GetMaxAge():        7305
     GetRunningCost():   2296
     GetPower():         1200
     GetWeight():        162
@@ -3453,7 +3476,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   78
     GetMaxSpeed():      56
     GetPrice():         4921
-    GetMaxAge():        4392
+    GetMaxAge():        4383
     GetRunningCost():   426
     GetPower():         90
     GetWeight():        10
@@ -3579,7 +3602,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   77
     GetMaxSpeed():      48
     GetPrice():         4429
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3633,7 +3656,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   92
     GetMaxSpeed():      48
     GetPrice():         4716
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3741,7 +3764,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   98
     GetMaxSpeed():      48
     GetPrice():         4511
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3795,7 +3818,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   97
     GetMaxSpeed():      48
     GetPrice():         4306
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3849,7 +3872,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   87
     GetMaxSpeed():      48
     GetPrice():         4388
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3903,7 +3926,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   97
     GetMaxSpeed():      48
     GetPrice():         4675
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3957,7 +3980,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   98
     GetMaxSpeed():      48
     GetPrice():         4839
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -4011,7 +4034,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   97
     GetMaxSpeed():      48
     GetPrice():         4962
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -4065,7 +4088,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   82
     GetMaxSpeed():      48
     GetPrice():         4593
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -4119,7 +4142,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   76
     GetMaxSpeed():      48
     GetPrice():         5947
-    GetMaxAge():        5490
+    GetMaxAge():        5479
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -5037,7 +5060,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   99
     GetMaxSpeed():      24
     GetPrice():         30468
-    GetMaxAge():        10980
+    GetMaxAge():        10958
     GetRunningCost():   2296
     GetPower():         -1
     GetWeight():        -1
@@ -5073,7 +5096,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   88
     GetMaxSpeed():      32
     GetPrice():         18281
-    GetMaxAge():        10980
+    GetMaxAge():        10958
     GetRunningCost():   1476
     GetPower():         -1
     GetWeight():        -1
@@ -5163,7 +5186,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   81
     GetMaxSpeed():      24
     GetPrice():         24375
-    GetMaxAge():        10980
+    GetMaxAge():        10958
     GetRunningCost():   2460
     GetPower():         -1
     GetWeight():        -1
@@ -5235,7 +5258,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   58
     GetMaxSpeed():      236
     GetPrice():         28710
-    GetMaxAge():        7320
+    GetMaxAge():        7305
     GetRunningCost():   2390
     GetPower():         -1
     GetWeight():        -1
@@ -5253,7 +5276,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   95
     GetMaxSpeed():      236
     GetPrice():         30761
-    GetMaxAge():        8784
+    GetMaxAge():        8766
     GetRunningCost():   2812
     GetPower():         -1
     GetWeight():        -1
@@ -5307,7 +5330,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   77
     GetMaxSpeed():      236
     GetPrice():         30761
-    GetMaxAge():        10980
+    GetMaxAge():        10958
     GetRunningCost():   2756
     GetPower():         -1
     GetWeight():        -1
@@ -7411,8 +7434,32 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRailTile():                  false
     BuildRailTrack():              true
     BuildSignal():                 true
+    GetSignalType():               4
+    GetSignalType():               255
+    RemoveSignal():                true
+    BuildSignal():                 true
+    GetSignalType():               255
+    GetSignalType():               1
+    RemoveSignal():                true
+    BuildSignal():                 true
+    GetSignalType():               10
+    GetSignalType():               10
     RemoveRailTrack():             false
     RemoveRailTrack():             true
+    BuildRailTrack():              true
+    BuildSignal():                 false
+    GetSignalType():               255
+    GetSignalType():               255
+    RemoveSignal():                false
+    BuildSignal():                 true
+    GetSignalType():               255
+    GetSignalType():               1
+    RemoveSignal():                true
+    BuildSignal():                 true
+    GetSignalType():               255
+    GetSignalType():               10
+    RemoveRailTrack():             true
+    RemoveRailTrack():             false
     BuildRail():                   true
     HasTransportType():            true
     HasTransportType():            false
@@ -7450,6 +7497,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRailTile():                  false
     BuildRailDepot():              false
     BuildRailDepot():              false
+    BuildRailDepot():              true
     BuildRailDepot():              true
     BuildRailDepot():              false
     GetRailDepotFrontTile():       33412
@@ -7544,11 +7592,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRoadDepot():              false
     BuildRoadDepot():              false
     BuildRoadDepot():              true
+    BuildRoadDepot():              true
     BuildRoadDepot():              false
     HasRoadType(Road):             true
     HasRoadType(Tram):             false
-    GetLastError():                260
-    GetLastErrorString():          ERR_AREA_NOT_CLEAR
+    GetLastError():                259
+    GetLastErrorString():          ERR_ALREADY_BUILT
     GetErrorCategory():            1
     IsRoadTile():                  false
     GetRoadDepotFrontTile():       33412
@@ -9248,6 +9297,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   BuildVehicle():       12
   IsValidVehicle(12):   true
   CloneVehicle():       13
+  BuildVehicle():       1048575
   --Accounting--
     GetCosts():         11894
     Should be:          11894
@@ -9263,7 +9313,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsStoppedInDepot():   false
   --Accounting--
     GetCosts():         -5947
-    Should be:          -5947
+    Should be:          -5946
   GetName():            Road Vehicle #1
   SetName():            true
   GetName():            MyVehicleName
@@ -9273,8 +9323,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetEngineType():     153
     GetUnitNumber():     1
     GetAge():            1
-    GetMaxAge():         5490
-    GetAgeLeft():        5489
+    GetMaxAge():         5479
+    GetAgeLeft():        5478
     GetCurrentSpeed():   7
     GetRunningCost():    421
     GetProfitThisYear(): -1
@@ -9360,23 +9410,23 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
-    13 => 1
     12 => 1
     17 => 0
     16 => 0
     14 => 0
+    13 => 0
   MaxAge ListDump:
-    16 => 10980
-    14 => 10980
-    17 => 7320
-    13 => 5490
-    12 => 5490
+    16 => 10958
+    14 => 10958
+    17 => 7305
+    13 => 5479
+    12 => 5479
   AgeLeft ListDump:
-    16 => 10980
-    14 => 10980
-    17 => 7320
-    13 => 5489
-    12 => 5489
+    16 => 10958
+    14 => 10958
+    17 => 7305
+    13 => 5479
+    12 => 5478
   CurrentSpeed ListDump:
     12 => 27
     17 => 0

@@ -11,8 +11,10 @@
 #define COCOA_WND_H
 
 #import <Cocoa/Cocoa.h>
-#include "toolbar_gui.h"
-#include "table/sprites.h"
+
+#ifdef MAC_OS_X_VERSION_10_12_2
+#	define HAVE_TOUCHBAR_SUPPORT
+#endif
 
 class VideoDriver_Cocoa;
 
@@ -30,70 +32,17 @@ extern NSString *OTTDMainLaunchGameEngine;
 + (NSCursor *) clearCocoaCursor;
 @end
 
-#ifdef HAVE_OSX_1015_SDK
-/* 9 items can be displayed on the touch bar when using default buttons. */
-static NSArray *touchBarButtonIdentifiers = @[
-	@"openttd.pause",
-	@"openttd.fastforward",
-	@"openttd.zoom_in",
-	@"openttd.zoom_out",
-	@"openttd.build_rail",
-	@"openttd.build_road",
-	@"openttd.build_tram",
-	@"openttd.build_docks",
-	@"openttd.build_airport",
-	NSTouchBarItemIdentifierOtherItemsProxy
-];
-
-static NSDictionary *touchBarButtonSprites = @{
-	@"openttd.pause":           [NSNumber numberWithInt:SPR_IMG_PAUSE],
-	@"openttd.fastforward":     [NSNumber numberWithInt:SPR_IMG_FASTFORWARD],
-	@"openttd.zoom_in":         [NSNumber numberWithInt:SPR_IMG_ZOOMIN],
-	@"openttd.zoom_out":        [NSNumber numberWithInt:SPR_IMG_ZOOMOUT],
-	@"openttd.build_rail":      [NSNumber numberWithInt:SPR_IMG_BUILDRAIL],
-	@"openttd.build_road":      [NSNumber numberWithInt:SPR_IMG_BUILDROAD],
-	@"openttd.build_tram":      [NSNumber numberWithInt:SPR_IMG_BUILDTRAMS],
-	@"openttd.build_docks":     [NSNumber numberWithInt:SPR_IMG_BUILDWATER],
-	@"openttd.build_airport":   [NSNumber numberWithInt:SPR_IMG_BUILDAIR],
-};
-
-static NSDictionary *touchBarButtonActions = @{
-	@"openttd.pause":           [NSNumber numberWithInt:MTHK_PAUSE],
-	@"openttd.fastforward":     [NSNumber numberWithInt:MTHK_FASTFORWARD],
-	@"openttd.zoom_in":         [NSNumber numberWithInt:MTHK_ZOOM_IN],
-	@"openttd.zoom_out":        [NSNumber numberWithInt:MTHK_ZOOM_OUT],
-	@"openttd.build_rail":      [NSNumber numberWithInt:MTHK_BUILD_RAIL],
-	@"openttd.build_road":      [NSNumber numberWithInt:MTHK_BUILD_ROAD],
-	@"openttd.build_tram":      [NSNumber numberWithInt:MTHK_BUILD_TRAM],
-	@"openttd.build_docks":     [NSNumber numberWithInt:MTHK_BUILD_DOCKS],
-	@"openttd.build_airport":   [NSNumber numberWithInt:MTHK_BUILD_AIRPORT],
-};
-
-static NSDictionary *touchBarFallbackText = @{
-	@"openttd.pause":           @"Pause",
-	@"openttd.fastforward":     @"Fast Forward",
-	@"openttd.zoom_in":         @"Zoom In",
-	@"openttd.zoom_out":        @"Zoom Out",
-	@"openttd.build_rail":      @"Rail",
-	@"openttd.build_road":      @"Road",
-	@"openttd.build_tram":      @"Tram",
-	@"openttd.build_docks":     @"Docks",
-	@"openttd.build_airport":   @"Airport",
-};
-#endif
-
 /** Subclass of NSWindow to cater our special needs */
-#ifdef HAVE_OSX_1015_SDK
-@interface OTTD_CocoaWindow : NSWindow <NSTouchBarDelegate>
-@property (strong) NSSet *touchbarItems;
-- (NSImage*)generateImage:(int)spriteId;
-#else
 @interface OTTD_CocoaWindow : NSWindow
+#ifdef HAVE_TOUCHBAR_SUPPORT
+	<NSTouchBarDelegate>
 #endif
 
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv;
 
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
+
+- (void)refreshSystemSprites;
 @end
 
 /** Subclass of NSView to support mouse awareness and text input. */

@@ -129,39 +129,39 @@ STR_QUANTITY_N_A                                                :-
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}مسافر
-STR_ABBREV_COAL                                                 :{TINY_FONT} کل
-STR_ABBREV_MAIL                                                 :{TINY_FONT} ڈاک
-STR_ABBREV_OIL                                                  :{TINY_FONT} تیل
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT} م ش
-STR_ABBREV_GOODS                                                :{TINY_FONT} س م
-STR_ABBREV_GRAIN                                                :{TINY_FONT}اناج
-STR_ABBREV_WOOD                                                 :{TINY_FONT}لکڑی
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}خام لوہا
-STR_ABBREV_STEEL                                                :{TINY_FONT}اسٹیل
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}قیمتی اشیاء
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}خام تانبا
-STR_ABBREV_MAIZE                                                :{TINY_FONT}مکئی
-STR_ABBREV_FRUIT                                                :{TINY_FONT}پھل
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}ہیرے
-STR_ABBREV_FOOD                                                 :{TINY_FONT}خوراک
-STR_ABBREV_PAPER                                                :{TINY_FONT}کاغذ
-STR_ABBREV_GOLD                                                 :{TINY_FONT}سونا
-STR_ABBREV_WATER                                                :{TINY_FONT}پانی
-STR_ABBREV_WHEAT                                                :{TINY_FONT}گندم
-STR_ABBREV_RUBBER                                               :{TINY_FONT}ربڑ
-STR_ABBREV_SUGAR                                                :{TINY_FONT}چینی
-STR_ABBREV_TOYS                                                 :{TINY_FONT}کھلونے
-STR_ABBREV_SWEETS                                               :{TINY_FONT}مٹھائی
-STR_ABBREV_COLA                                                 :{TINY_FONT}کولا
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}میٹھی گولیاں
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}بُلبُلے
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}ٹافی
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}سیل
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}پلاسٹِک
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}سوڈا واٹر
-STR_ABBREV_NONE                                                 :{TINY_FONT}نہیں
-STR_ABBREV_ALL                                                  :{TINY_FONT}تمام
+STR_ABBREV_PASSENGERS                                           :مسافر
+STR_ABBREV_COAL                                                 : کل
+STR_ABBREV_MAIL                                                 : ڈاک
+STR_ABBREV_OIL                                                  : تیل
+STR_ABBREV_LIVESTOCK                                            : م ش
+STR_ABBREV_GOODS                                                : س م
+STR_ABBREV_GRAIN                                                :اناج
+STR_ABBREV_WOOD                                                 :لکڑی
+STR_ABBREV_IRON_ORE                                             :خام لوہا
+STR_ABBREV_STEEL                                                :اسٹیل
+STR_ABBREV_VALUABLES                                            :قیمتی اشیاء
+STR_ABBREV_COPPER_ORE                                           :خام تانبا
+STR_ABBREV_MAIZE                                                :مکئی
+STR_ABBREV_FRUIT                                                :پھل
+STR_ABBREV_DIAMONDS                                             :ہیرے
+STR_ABBREV_FOOD                                                 :خوراک
+STR_ABBREV_PAPER                                                :کاغذ
+STR_ABBREV_GOLD                                                 :سونا
+STR_ABBREV_WATER                                                :پانی
+STR_ABBREV_WHEAT                                                :گندم
+STR_ABBREV_RUBBER                                               :ربڑ
+STR_ABBREV_SUGAR                                                :چینی
+STR_ABBREV_TOYS                                                 :کھلونے
+STR_ABBREV_SWEETS                                               :مٹھائی
+STR_ABBREV_COLA                                                 :کولا
+STR_ABBREV_CANDYFLOSS                                           :میٹھی گولیاں
+STR_ABBREV_BUBBLES                                              :بُلبُلے
+STR_ABBREV_TOFFEE                                               :ٹافی
+STR_ABBREV_BATTERIES                                            :سیل
+STR_ABBREV_PLASTIC                                              :پلاسٹِک
+STR_ABBREV_FIZZY_DRINKS                                         :سوڈا واٹر
+STR_ABBREV_NONE                                                 :نہیں
+STR_ABBREV_ALL                                                  :تمام
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} مسافرین
@@ -189,31 +189,35 @@ STR_COLOUR_BROWN                                                :بھورا
 STR_COLOUR_GREY                                                 :سلیٹی
 STR_COLOUR_WHITE                                                :سفید
 
+###length 17
+
+
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} میل فی گھنٹھ
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} کلو میٹر فی گھنٹھ
-STR_UNITS_VELOCITY_SI                                           :{COMMA} میٹر فی سیکنڈ
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL} میل فی گھنٹھ
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL} کلو میٹر فی گھنٹھ
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL} میٹر فی سیکنڈ
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ھارس پآور
-STR_UNITS_POWER_METRIC                                          :{COMMA} ھارس پآور
-STR_UNITS_POWER_SI                                              :{COMMA} کلو واٹ
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL} ھارس پآور
+STR_UNITS_POWER_METRIC                                          :{DECIMAL} ھارس پآور
+STR_UNITS_POWER_SI                                              :{DECIMAL} کلو واٹ
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} من
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} من
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL} من
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL} kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :I{NBSP}{COMMA}
-STR_UNITS_VOLUME_SHORT_SI                                       :{NBSP}{COMMA}کیوبک میٹر
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL} من
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL} kg
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{NBSP}{COMMA} لیٹر
-STR_UNITS_VOLUME_LONG_SI                                        :{NBSP}{COMMA}کیوبک میٹر
+STR_UNITS_VOLUME_SHORT_METRIC                                   :I{NBSP}{DECIMAL}
+STR_UNITS_VOLUME_SHORT_SI                                       :{NBSP}{DECIMAL}کیوبک میٹر
 
-STR_UNITS_FORCE_SI                                              :{NBSP}{COMMA}کلو نیوٹن
+STR_UNITS_VOLUME_LONG_METRIC                                    :{NBSP}{DECIMAL} لیٹر
+STR_UNITS_VOLUME_LONG_SI                                        :{NBSP}{DECIMAL}کیوبک میٹر
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{NBSP}{COMMA} فٹ
-STR_UNITS_HEIGHT_SI                                             :{NBSP}{COMMA} میٹر
+STR_UNITS_FORCE_SI                                              :{NBSP}{DECIMAL}کلو نیوٹن
+
+STR_UNITS_HEIGHT_IMPERIAL                                       :{NBSP}{DECIMAL} فٹ
+STR_UNITS_HEIGHT_SI                                             :{NBSP}{DECIMAL} میٹر
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} چھان کے الفاظ درج کیجیئے
@@ -360,9 +364,8 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
 
 # Settings menu
-###length 14
+###length 15
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / کھیل کے اختیارات
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF اختیارات
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency کے اختیارات
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :آبادیوں کے نام دکھائے جائیں
@@ -854,72 +857,47 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}دیکھ
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}کھیل کے اختیارات
+
+
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}کرنسی کی اکائیاں
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}کرنسی کی اکائی اختیار کریں
 
+
 ###length 42
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :برطانوی پاونڈ (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :امریکی ڈالر (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :یورو (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :جاپانی ین (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :آسٹرین شِلنگ (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :بیلجیم کا فرانک (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :سوئس فرانک (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :چیک کرونا (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :ڈچ مارک (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :ڈینش کرونے (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :اسپینی پیسیتا (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :فِنش مارکہ (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :فرنچ فرانک (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :یونانی دراچما (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :ہینگرین فورِنٹ (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :آئس لینڈ کا کرونا (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :اِٹالین لیرا (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :ڈچ گِلڈر (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :ناروئیجین کرونے (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :پولش زلوٹے (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :رومانین لیو (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :رشین روبل (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :سلوئینین تولار (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :سوئیڈش کرونا (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :ٹرکش لیرا (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :سلواک کرونا (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :برازیلین رئیل (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :اِسٹونین کرونی (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :لتھوینیا کے لٹاس (لٹل)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :جنوبی کوریا کے ون(KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :جنوبی افریقہ کے رنڈ (ZAR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :برطانوی پاونڈ
+STR_GAME_OPTIONS_CURRENCY_USD                                   :امریکی ڈالر
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :یورو
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :جاپانی ین
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :آسٹرین شِلنگ
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :بیلجیم کا فرانک
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :سوئس فرانک
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :چیک کرونا
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :ڈچ مارک
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :ڈینش کرونے
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :اسپینی پیسیتا
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :فِنش مارکہ
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :فرنچ فرانک
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :یونانی دراچما
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :ہینگرین فورِنٹ
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :آئس لینڈ کا کرونا
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :اِٹالین لیرا
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :ڈچ گِلڈر
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :ناروئیجین کرونے
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :پولش زلوٹے
+STR_GAME_OPTIONS_CURRENCY_RON                                   :رومانین لیو
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :رشین روبل
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :سلوئینین تولار
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :سوئیڈش کرونا
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :ٹرکش لیرا
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :سلواک کرونا
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :برازیلین رئیل
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :اِسٹونین کرونی
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :لتھوینیا کے لٹاس
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :جنوبی کوریا کے ون
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :جنوبی افریقہ کے رنڈ
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :اپنی مرضی کی ۔۔۔
-
-###length 2
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :بائیں طرف چلے
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :دائیں طرف چلے
-
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}شہروں کے نام
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}شہروں کے نام کی طرز اختیار کریں
-
-###length 21
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :انگریزی (اصلی)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :فرانسیسی
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :جرمن
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :انگریزی (اضافی)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :لاطینی امریکی
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :سِلی
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :سوئیڈش
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :ڈچ
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :فِنش
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :پولش
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :سلواک
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :ناروئیجین
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :ہینگرین
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :آسٹرین
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :رومانین
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :چیک
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :سوئس
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :ڈینش
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :ٹرکش
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :اِٹالین
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :کاٹالن
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}خود مختار بچاو
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}خودمختار کھیل بچانے کے درمیان وقفہ اختیار کریں
@@ -927,10 +905,6 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}خودم
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :بند
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :ہر مہینے
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :ہر سہ ماہی
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :ہر شش ماہی
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :ہر سال
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}زبان
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}استعمال کرنے کےلئے زبان اختیار کئیجیے
@@ -941,6 +915,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}مُکم
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}اسکرین کی resolution
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اسکرین کی resolution اختیار کریں
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
+
 
 
 
@@ -992,8 +967,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}جائ�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}اپنی کرنسی میں 10000 پاونڈ (£)
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}اپنی مرضی کے کرنسی پیرامیٹر کو تبدیل کریں
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}مدمقابلوں کی زیادہ سے زیادہ تعداد: {ORANGE}{COMMA}
-
 STR_NONE                                                        :کوئی نہیں
 STR_FUNDING_ONLY                                                :صرف فنڈنگ
 STR_MINIMAL                                                     :کم از کم
@@ -1043,16 +1016,22 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+###length 4
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Temperate منظر کشی
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Sub-arctic منظر کشی
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Sub-tropical منظر کشی
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Toyland منظر کشی
+
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :بہت سیدھا
 STR_TERRAIN_TYPE_FLAT                                           :سیدھا
 STR_TERRAIN_TYPE_HILLY                                          :ٹیلوں والا
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :پہاڑی
 
-###length 3
-STR_CITY_APPROVAL_PERMISSIVE                                    :اجازت دینے والا
+###length 4
 STR_CITY_APPROVAL_TOLERANT                                      :برداشت کرنے والا
 STR_CITY_APPROVAL_HOSTILE                                       :مخالفانہ
+STR_CITY_APPROVAL_PERMISSIVE                                    :اجازت دینے والا
 
 
 # Settings tree window
@@ -1083,6 +1062,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :بائیں
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :درمیان
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
 
+
+###setting-zero-is-special
 
 
 
@@ -1184,6 +1165,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}جب گ�
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :انفراسٹرکچر کی بحالی: {STRING}
 
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :ہوائی اڈوں کی معیاد کبھی ختم نہ ہو: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :اگر گاڑی کھو جاے تو انتباہ کیجئیے: {STRING}
@@ -1242,6 +1224,10 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :اصلی
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :بہتر بنایا ہوا
 
 
+###length 2
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :بائیں طرف چلے
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :دائیں طرف چلے
+
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :اونچائی والے نقشے کو گھمانا: {STRING}
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :الٹی گھڑی وار
@@ -1262,6 +1248,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :چھوٹے نق
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :سبز
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :گہرا سبز
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفشی
+
+###length 4
 
 ###length 4
 
@@ -1293,6 +1281,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :آف
 
+###length 3
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autosave: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :گیم بچانے کا وقفا چنیں
@@ -1331,8 +1320,6 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :زیادہ اس
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :مخصوص پٹریاں دکھائیں: {STRING}
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :تعمیراتی ٹول کو استعمال کے بعد فعال رکھیں: {STRING}
-
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :کمپنی کی مالیاتی ونڈو میں اخراجات کو اکٹھا دکھائیں: {STRING}
 
 
 ###setting-zero-is-special
@@ -1384,6 +1371,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :مقابل کے
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حادثے / تباہیاں: {STRING}
 
+
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :کمپنی کی معلومات: {STRING}
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :صنعتوں کا افتتاح: {STRING}
@@ -1418,9 +1406,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :شروعاتی 
 ###setting-zero-is-special
 
 ###length 3
-
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :دوسری کمپنیوں کے حصص خریدنے کی اجازت: {STRING}
-
 
 
 
@@ -1491,7 +1476,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا ش�
 
 
 
-###length 4
+###length 5
 
 ###length 3
 
@@ -1503,14 +1488,14 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا ش�
 
 ###length 3
 
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}انٹرفیس
-STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}تعمیرات
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}گاڑیاں
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}روٹنگ
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}شہر
-STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}صنعتیں
-STR_CONFIG_SETTING_AI                                           :{ORANGE}مد مقابل
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}کمپیوٹر کے کھلاڑی
+STR_CONFIG_SETTING_INTERFACE                                    :انٹرفیس
+STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :تعمیرات
+STR_CONFIG_SETTING_VEHICLES                                     :گاڑیاں
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :روٹنگ
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :شہر
+STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :صنعتیں
+STR_CONFIG_SETTING_AI                                           :مد مقابل
+STR_CONFIG_SETTING_AI_NPC                                       :کمپیوٹر کے کھلاڑی
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :ریل گاڑیوں کے لئے راستہ ڈھونڈنے والا: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :گاڑیوں کا راستہ تلاش کرنے والا: {STRING}
@@ -1518,7 +1503,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :بحری جہا
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :اشاروں پر خودکار ریورس ہونا: {STRING}
 ###length 2
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
+STR_CONFIG_SETTING_PATHFINDER_YAPF                              :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}سیٹنگ کی ولیو بدلیں
 
@@ -1552,7 +1537,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}زیاد
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}کھیل کے اختیارات
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF چنئے
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}آن لائن مواد دیکھیں
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / کھیل کے اختیارات
 STR_INTRO_QUIT                                                  :{BLACK}باہر نکلو
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}نیا کھیل شروع کریں۔ Ctrl+Click نقشے کی ترتیب کو چھوڑ دے گا
@@ -1570,7 +1554,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}منظر
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}کھیل کے اختیارات دکھائیں
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF سیٹنگز دیکھیئے
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}نئے اور ترمیم شدہ مواد کو ڈاون لوڈ کرنے کے لئے چیک کریں
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK} AI اور کھیل کے اختیارات دکھائیں
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' سے باہر نکلو
 
 STR_INTRO_TRANSLATION                                           :{BLACK}اس ترجمے میں {NUM} لائنین{P "" یں} غیر ترجمہ سدہ ہیں۔ براہ مہربانی ترجمہ کُنندہ بن کر OpenTTD کی مدد کریں۔ تفصیلات کے لئے readme.txt دیکھیں
@@ -1596,12 +1579,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}ہوا�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}تاریخ بدلیں: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}موجودہ سال بدلیں
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}پیداوار میں تبدیلی کو فعال کریں: {ORANGE}{STRING}
-
-###length 4
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperate منظر کشی
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arctic منظر کشی
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropical منظر کشی
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Toyland منظر کشی
 
 # Livery window
 
@@ -1792,6 +1769,7 @@ STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائ
 
 # Matches ConnectionType
 ###length 5
+
 
 
 
@@ -1987,6 +1965,8 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}چیزو
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
+# Linkgraph tooltip
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}کوریج والے علاقے کو واضح کریں
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}بند
@@ -2061,8 +2041,6 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}کھین
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}ریل کا پل منتخب کریں
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}سڑک کا پل منتخب کریں
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}پل کا انتخاب - تعمیر کرنے کے لئے اپنی مرضی کے پل پر کلک کریں
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :لٹکا ہوا، سٹیل کا
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :گارڈر، سٹیل کا
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever، سٹیل
@@ -2254,6 +2232,31 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 
 # World generation
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}شہروں کے نام
+STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}شہروں کے نام کی طرز اختیار کریں
+
+###length 21
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :انگریزی (اصلی)
+STR_MAPGEN_TOWN_NAME_FRENCH                                     :فرانسیسی
+STR_MAPGEN_TOWN_NAME_GERMAN                                     :جرمن
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :انگریزی (اضافی)
+STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :لاطینی امریکی
+STR_MAPGEN_TOWN_NAME_SILLY                                      :سِلی
+STR_MAPGEN_TOWN_NAME_SWEDISH                                    :سوئیڈش
+STR_MAPGEN_TOWN_NAME_DUTCH                                      :ڈچ
+STR_MAPGEN_TOWN_NAME_FINNISH                                    :فِنش
+STR_MAPGEN_TOWN_NAME_POLISH                                     :پولش
+STR_MAPGEN_TOWN_NAME_SLOVAK                                     :سلواک
+STR_MAPGEN_TOWN_NAME_NORWEGIAN                                  :ناروئیجین
+STR_MAPGEN_TOWN_NAME_HUNGARIAN                                  :ہینگرین
+STR_MAPGEN_TOWN_NAME_AUSTRIAN                                   :آسٹرین
+STR_MAPGEN_TOWN_NAME_ROMANIAN                                   :رومانین
+STR_MAPGEN_TOWN_NAME_CZECH                                      :چیک
+STR_MAPGEN_TOWN_NAME_SWISS                                      :سوئس
+STR_MAPGEN_TOWN_NAME_DANISH                                     :ڈینش
+STR_MAPGEN_TOWN_NAME_TURKISH                                    :ٹرکش
+STR_MAPGEN_TOWN_NAME_ITALIAN                                    :اِٹالین
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :کاٹالن
 
 # Strings for map borders at game generation
 
@@ -2299,6 +2302,10 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK} جای�
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK} پچھلا sprite
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK} منتخب sprite کا اظھار۔ اس sprite کے نقش میں سف بندی نظر اندازکی جائے گی۔
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK} ارد گرد sprite ھلایئے، X اور Y offset تبدیل کیجئے
+
+###length 2
+
+
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK} منتخب sprite کیجئے
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK} اسکرین سے کسی sprite کو منتخب کیجئے
 
@@ -2403,8 +2410,10 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 
+###length 3
+
+
 ###length 13
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}پراپرٹی کی بحالی
 
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
@@ -2416,7 +2425,6 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{COMMA}{WHITE} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}کوئی نہیں
 
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}تفصیلات
-
 
 
 
@@ -2478,6 +2486,8 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}گروپ
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :نیا طیارہ
 
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}پہنچ: {GOLD}{COMMA} ٹائلیں
+
+###length 3
 
 ###length VEHICLE_TYPES
 
@@ -2711,25 +2721,25 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK} وقف�
 
 
 # AI configuration window
+STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}مدمقابلوں کی زیادہ سے زیادہ تعداد: {ORANGE}{COMMA}
 
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کھیل کا سکرپٹ
 
-STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
 
 
 
-# AI Parameters
+# Script Parameters
 
 
 # Textfile window
 STR_TEXTFILE_VIEW_README                                        :{BLACK}مجھے پڑھیے فائل دیکھیں
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}تبدیلیوں کا ریکارڈ
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}لائسنس
-###length 3
+###length 4
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} میں سے {STRING} مجھے پڑھیے
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} میں سے {STRING} تبدیلی کا ریکارڈ
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} میں سے {STRING} لائسنس
@@ -2897,6 +2907,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}مرمت
 
 
 
+
 # Specific vehicle errors
 
 
@@ -2904,6 +2915,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}مرمت
 # Order related errors
 
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE} ۔ ۔ ۔ ہوائی جہاز کی اتنی پہنچ نہیں ہے
+
+# Extra messages which go on the third line of errors, explaining why orders failed
 
 # Timetable related errors
 
@@ -3090,10 +3103,10 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut ہی�
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(کمپنی {COMMA})
 STR_FORMAT_GROUP_NAME                                           :گروہ {COMMA}
@@ -3170,33 +3183,8 @@ STR_JUST_STRING_STRING                                          :{STRING}{STRING
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
-STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
-STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
-STR_BLACK_INT                                                   :{BLACK}{NUM}
-STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
-STR_BLACK_STRING                                                :{BLACK}{STRING}
-STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
-STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_ORANGE_STRING1_WHITE                                        :{ORANGE}{STRING}{WHITE}
-STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}۱
 STR_BLACK_2                                                     :{BLACK}۲

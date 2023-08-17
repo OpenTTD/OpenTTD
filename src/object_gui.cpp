@@ -24,6 +24,9 @@
 #include "window_gui.h"
 #include "window_func.h"
 #include "zoom_func.h"
+#include "terraform_cmd.h"
+#include "object_cmd.h"
+#include "road_cmd.h"
 
 #include "widgets/object_widget.h"
 
@@ -33,7 +36,7 @@
 
 static ObjectClassID _selected_object_class; ///< Currently selected available object class.
 static int _selected_object_index;           ///< Index of the currently selected object if existing, else \c -1.
-static uint8 _selected_object_view;          ///< the view of the selected object
+static uint8_t _selected_object_view;          ///< the view of the selected object
 
 /** Enum referring to the Hotkeys in the build object window */
 enum BuildObjectHotkeys {
@@ -45,8 +48,8 @@ class BuildObjectWindow : public Window {
 	typedef GUIList<ObjectClassID, StringFilter &> GUIObjectClassList; ///< Type definition for the list to hold available object classes.
 
 	static const uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
-	static const int OBJECT_MARGIN = 4;    ///< The margin (in pixels) around an object.
 
+	int object_margin;                     ///< The margin (in pixels) around an object.
 	int line_height;                       ///< The height of a single line.
 	int info_height;                       ///< The height of the info box.
 	Scrollbar *vscroll;                    ///< The scrollbar.
@@ -116,12 +119,13 @@ public:
 
 		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
 		matrix->SetScrollbar(this->GetScrollbar(WID_BO_SELECT_SCROLL));
+		matrix->SetCount(ObjectClass::Get(_selected_object_class)->GetUISpecCount());
 
 		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetCount(4);
 
 		ResetObjectToPlace();
 
-		this->vscroll->SetCount((int)this->object_classes.size());
+		this->vscroll->SetCount(this->object_classes.size());
 
 		EnsureSelectedObjectClassIsVisible();
 
@@ -138,11 +142,9 @@ public:
 	static bool CDECL TagNameFilter(ObjectClassID const *oc, StringFilter &filter)
 	{
 		ObjectClass *objclass = ObjectClass::Get(*oc);
-		char buffer[DRAW_STRING_BUFFER];
-		GetString(buffer, objclass->name, lastof(buffer));
 
 		filter.ResetState();
-		filter.AddLine(buffer);
+		filter.AddLine(GetString(objclass->name));
 		return filter.GetState();
 	}
 
@@ -164,7 +166,7 @@ public:
 		this->object_classes.RebuildDone();
 		this->object_classes.Sort();
 
-		this->vscroll->SetCount((uint)this->object_classes.size());
+		this->vscroll->SetCount(this->object_classes.size());
 	}
 
 	/**
@@ -180,19 +182,8 @@ public:
 		} else {
 			/* Check if the previously selected object class is not available anymore as a
 			 * result of starting a new game without the corresponding NewGRF. */
-			bool available = false;
-			for (uint i = 0; ObjectClass::GetClassCount(); ++i) {
-				if ((ObjectClassID)i == _selected_object_class) {
-					available = true;
-					break;
-				}
-			}
-
-			if (available) {
-				this->SelectOtherClass(_selected_object_class);
-			} else {
-				this->SelectOtherClass(this->object_classes[0]);
-			}
+			bool available = _selected_object_class < ObjectClass::GetClassCount();
+			this->SelectOtherClass(available ? _selected_object_class : this->object_classes[0]);
 		}
 
 		if (this->CanRestoreSelectedObject()) {
@@ -226,6 +217,11 @@ public:
 		}
 	}
 
+	void OnInit() override
+	{
+		this->object_margin = ScaleGUITrad(4);
+	}
+
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
@@ -233,10 +229,9 @@ public:
 				for (auto object_class_id : this->object_classes) {
 					ObjectClass *objclass = ObjectClass::Get(object_class_id);
 					if (objclass->GetUISpecCount() == 0) continue;
-					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width);
+					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width + padding.width);
 				}
-				size->width += padding.width;
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
 				resize->height = this->line_height;
 				size->height = 5 * this->line_height;
 				break;
@@ -263,39 +258,40 @@ public:
 
 			case WID_BO_OBJECT_SPRITE: {
 				bool two_wide = false;  // Whether there will be two widgets next to each other in the matrix or not.
-				int height[2] = {0, 0}; // The height for the different views; in this case views 1/2 and 4.
+				uint height[2] = {0, 0}; // The height for the different views; in this case views 1/2 and 4.
 
 				/* Get the height and view information. */
-				for (int i = 0; i < NUM_OBJECTS; i++) {
-					const ObjectSpec *spec = ObjectSpec::Get(i);
-					if (!spec->IsEverAvailable()) continue;
-					two_wide |= spec->views >= 2;
-					height[spec->views / 4] = std::max<int>(ObjectSpec::Get(i)->height, height[spec->views / 4]);
+				for (const auto &spec : ObjectSpec::Specs()) {
+					if (!spec.IsEverAvailable()) continue;
+					two_wide |= spec.views >= 2;
+					height[spec.views / 4] = std::max<int>(spec.height, height[spec.views / 4]);
 				}
 
 				/* Determine the pixel heights. */
 				for (size_t i = 0; i < lengthof(height); i++) {
 					height[i] *= ScaleGUITrad(TILE_HEIGHT);
-					height[i] += ScaleGUITrad(TILE_PIXELS) + 2 * OBJECT_MARGIN;
+					height[i] += ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin;
 				}
 
 				/* Now determine the size of the minimum widgets. When there are two columns, then
 				 * we want these columns to be slightly less wide. When there are two rows, then
 				 * determine the size of the widgets based on the maximum size for a single row
 				 * of widgets, or just the twice the widget height of the two row ones. */
-				size->height = std::max(height[0], height[1] * 2 + 2);
+				size->height = std::max(height[0], height[1] * 2);
 				if (two_wide) {
-					size->width  = (3 * ScaleGUITrad(TILE_PIXELS) + 2 * OBJECT_MARGIN) * 2 + 2;
+					size->width  = (3 * ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin) * 2;
 				} else {
-					size->width  = 4 * ScaleGUITrad(TILE_PIXELS) + 2 * OBJECT_MARGIN;
+					size->width  = 4 * ScaleGUITrad(TILE_PIXELS) + 2 * this->object_margin;
 				}
 
 				/* Get the right size for the single widget based on the current spec. */
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
 				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				if (spec != nullptr) {
-					if (spec->views >= 2) size->width  = size->width  / 2 - 1;
-					if (spec->views >= 4) size->height = size->height / 2 - 1;
+					if (spec->views <= 1) size->width  += WidgetDimensions::scaled.hsep_normal;
+					if (spec->views <= 2) size->height += WidgetDimensions::scaled.vsep_normal;
+					if (spec->views >= 2) size->width  /= 2;
+					if (spec->views >= 4) size->height /= 2;
 				}
 				break;
 			}
@@ -310,8 +306,8 @@ public:
 				break;
 
 			case WID_BO_SELECT_IMAGE:
-				size->width  = ScaleGUITrad(64) + 2;
-				size->height = ScaleGUITrad(58) + 2;
+				size->width  = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Horizontal();
+				size->height = ScaleGUITrad(58) + WidgetDimensions::scaled.fullbevel.Vertical();
 				break;
 
 			default: break;
@@ -322,15 +318,15 @@ public:
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
-				int y = r.top;
+				Rect mr = r.Shrink(WidgetDimensions::scaled.matrix);
 				uint pos = 0;
 				for (auto object_class_id : this->object_classes) {
 					ObjectClass *objclass = ObjectClass::Get(object_class_id);
 					if (objclass->GetUISpecCount() == 0) continue;
 					if (!this->vscroll->IsVisible(pos++)) continue;
-					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, objclass->name,
+					DrawString(mr, objclass->name,
 							(object_class_id == _selected_object_class) ? TC_WHITE : TC_BLACK);
-					y += this->line_height;
+					mr.top += this->line_height;
 				}
 				break;
 			}
@@ -351,17 +347,15 @@ public:
 
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */
-				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) {
-					DrawPixelInfo *old_dpi = _cur_dpi;
-					_cur_dpi = &tmp_dpi;
+				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 					if (spec->grf_prop.grffile == nullptr) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, (r.bottom - r.top + matrix_height / 2) / 2 - OBJECT_MARGIN - ScaleGUITrad(TILE_PIXELS), dts, PAL_NONE);
+						DrawOrigTileSeqInGUI(r.Width() / 2 - 1, (r.Height() + matrix_height / 2) / 2 - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, (r.bottom - r.top + matrix_height / 2) / 2 - OBJECT_MARGIN - ScaleGUITrad(TILE_PIXELS), spec, GB(widget, 16, 16));
+						DrawNewObjectTileInGUI(r.Width() / 2 - 1, (r.Height() + matrix_height / 2) / 2 - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), spec, GB(widget, 16, 16));
 					}
-					_cur_dpi = old_dpi;
 				}
 				break;
 			}
@@ -374,22 +368,20 @@ public:
 				if (spec == nullptr) break;
 
 				if (!spec->IsAvailable()) {
-					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK, FILLRECT_CHECKER);
+					GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK, FILLRECT_CHECKER);
 				}
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */
-				if (FillDrawPixelInfo(&tmp_dpi, r.left + 1, r.top, (r.right - 1) - (r.left + 1) + 1, r.bottom - r.top + 1)) {
-					DrawPixelInfo *old_dpi = _cur_dpi;
-					_cur_dpi = &tmp_dpi;
+				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 					if (spec->grf_prop.grffile == nullptr) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - ScaleGUITrad(TILE_PIXELS), dts, PAL_NONE);
+						DrawOrigTileSeqInGUI(r.Width() / 2 - 1, r.Height() - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - ScaleGUITrad(TILE_PIXELS), spec,
+						DrawNewObjectTileInGUI(r.Width() / 2 - 1, r.Height() - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), spec,
 								std::min<int>(_selected_object_view, spec->views - 1));
 					}
-					_cur_dpi = old_dpi;
 				}
 				break;
 			}
@@ -401,7 +393,7 @@ public:
 
 				/* Get the extra message for the GUI */
 				if (HasBit(spec->callback_mask, CBM_OBJ_FUND_MORE_TEXT)) {
-					uint16 callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, _selected_object_view);
+					uint16_t callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, _selected_object_view);
 					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 						if (callback_res > 0x400) {
 							ErrorUnknownCallbackResult(spec->grf_prop.grffile->grfid, CBID_OBJECT_FUND_MORE_TEXT, callback_res);
@@ -412,11 +404,11 @@ public:
 								/* Use all the available space left from where we stand up to the
 								 * end of the window. We ALSO enlarge the window if needed, so we
 								 * can 'go' wild with the bottom of the window. */
-								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message, TC_ORANGE) - r.top;
+								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message, TC_ORANGE) - r.top - 1;
 								StopTextRefStackUsage();
 								if (y > this->info_height) {
 									BuildObjectWindow *bow = const_cast<BuildObjectWindow *>(this);
-									bow->info_height = y + 2;
+									bow->info_height = y;
 									bow->ReInit();
 								}
 							}
@@ -455,7 +447,7 @@ public:
 		}
 
 		if (_selected_object_index != -1) {
-			SetObjectToPlaceWnd(SPR_CURSOR_TRANSMITTER, PAL_NONE, HT_RECT, this);
+			SetObjectToPlaceWnd(SPR_CURSOR_TRANSMITTER, PAL_NONE, HT_RECT | HT_DIAGONAL, this);
 		}
 
 		this->UpdateButtons(_selected_object_class, _selected_object_index, _selected_object_view);
@@ -514,10 +506,10 @@ public:
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
-				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / this->line_height;
-				if (num_clicked >= (int)this->object_classes.size()) break;
+				auto it = this->vscroll->GetScrolledItemFromWidget(this->object_classes, pt.y, this, widget);
+				if (it == this->object_classes.end()) break;
 
-				this->SelectOtherClass(this->object_classes[num_clicked]);
+				this->SelectOtherClass(*it);
 				this->SelectFirstAvailableObject(false);
 				break;
 			}
@@ -540,9 +532,35 @@ public:
 
 	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
-		ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-		DoCommandP(tile, objclass->GetSpec(_selected_object_index)->Index(),
-				_selected_object_view, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
+		const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
+
+		if (spec->size == OBJECT_SIZE_1X1) {
+			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_BUILD_OBJECT);
+		} else {
+			Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), _selected_object_view);
+		}
+	}
+
+	void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt) override
+	{
+		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
+	}
+
+	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
+	{
+		if (pt.x == -1) return;
+
+		assert(select_proc == DDSP_BUILD_OBJECT);
+
+		if (!_settings_game.construction.freeform_edges) {
+			/* When end_tile is MP_VOID, the error tile will not be visible to the
+			 * user. This happens when terraforming at the southern border. */
+			if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
+			if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
+		}
+		const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
+		Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER,
+			end_tile, start_tile, spec->Index(), _selected_object_view, (_ctrl_pressed ? true : false));
 	}
 
 	void OnPlaceObjectAbort() override
@@ -619,27 +637,24 @@ public:
 		this->SelectOtherObject(-1);
 	}
 
-	static HotkeyList hotkeys;
+	/**
+	 * Handler for global hotkeys of the BuildObjectWindow.
+	 * @param hotkey Hotkey
+	 * @return ES_HANDLED if hotkey was accepted.
+	 */
+	static EventState BuildObjectGlobalHotkeys(int hotkey)
+	{
+		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
+		Window *w = ShowBuildObjectPicker();
+		if (w == nullptr) return ES_NOT_HANDLED;
+		return w->OnHotkey(hotkey);
+	}
+
+	static inline HotkeyList hotkeys{"buildobject", {
+		Hotkey('F', "focus_filter_box", BOHK_FOCUS_FILTER_BOX),
+	}, BuildObjectGlobalHotkeys};
 };
 
-/**
- * Handler for global hotkeys of the BuildObjectWindow.
- * @param hotkey Hotkey
- * @return ES_HANDLED if hotkey was accepted.
- */
-static EventState BuildObjectGlobalHotkeys(int hotkey)
-{
-	if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
-	Window *w = ShowBuildObjectPicker();
-	if (w == nullptr) return ES_NOT_HANDLED;
-	return w->OnHotkey(hotkey);
-}
-
-static Hotkey buildobject_hotkeys[] = {
-	Hotkey('F', "focus_filter_box", BOHK_FOCUS_FILTER_BOX),
-	HOTKEY_LIST_END
-};
-HotkeyList BuildObjectWindow::hotkeys("buildobject", buildobject_hotkeys, BuildObjectGlobalHotkeys);
 
 Listing BuildObjectWindow::last_sorting = { false, 0 };
 Filtering BuildObjectWindow::last_filtering = { false, 0 };
@@ -656,7 +671,9 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_OBJECT_BUILD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 		NWidget(NWID_HORIZONTAL), SetPadding(2, 0, 0, 2),
@@ -675,7 +692,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 						NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
 					EndContainer(),
 				EndContainer(),
-				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_NAME), SetDataTip(STR_ORANGE_STRING, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_NAME), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_ORANGE),
 				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_BO_SELECT_SCROLL),
@@ -690,7 +707,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BO_INFO), SetPadding(0, 5, 0, 1), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BO_INFO), SetPadding(0, 5, 2, 2), SetFill(1, 0), SetResize(1, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(0, 1), EndContainer(),
 				NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),

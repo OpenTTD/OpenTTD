@@ -43,15 +43,15 @@ public:
 	 * @pre IsValidBaseStation(station_id).
 	 * @return The name of the station.
 	 */
-	static char *GetName(StationID station_id);
+	static std::optional<std::string> GetName(StationID station_id);
 
 	/**
 	 * Set the name this basestation.
 	 * @param station_id The basestation to set the name of.
 	 * @param name The new name of the station (can be either a raw string, or a ScriptText object).
 	 * @pre IsValidBaseStation(station_id).
-	 * @pre name != nullptr && len(name) != 0.
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @pre name != null && len(name) != 0.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
 	 */

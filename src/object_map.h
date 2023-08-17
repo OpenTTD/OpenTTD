@@ -13,7 +13,7 @@
 #include "water_map.h"
 #include "object_type.h"
 
-ObjectType GetObjectType(TileIndex t);
+ObjectType GetObjectType(Tile t);
 
 /**
  * Check whether the object on a tile is of a specific type.
@@ -22,7 +22,7 @@ ObjectType GetObjectType(TileIndex t);
  * @pre IsTileType(t, MP_OBJECT)
  * @return True if type matches.
  */
-static inline bool IsObjectType(TileIndex t, ObjectType type)
+static inline bool IsObjectType(Tile t, ObjectType type)
 {
 	return GetObjectType(t) == type;
 }
@@ -33,7 +33,7 @@ static inline bool IsObjectType(TileIndex t, ObjectType type)
  * @param type Type to test.
  * @return True if type matches.
  */
-static inline bool IsObjectTypeTile(TileIndex t, ObjectType type)
+static inline bool IsObjectTypeTile(Tile t, ObjectType type)
 {
 	return IsTileType(t, MP_OBJECT) && GetObjectType(t) == type;
 }
@@ -44,10 +44,10 @@ static inline bool IsObjectTypeTile(TileIndex t, ObjectType type)
  * @pre IsTileType(t, MP_OBJECT)
  * @return The ObjectID of the object.
  */
-static inline ObjectID GetObjectIndex(TileIndex t)
+static inline ObjectID GetObjectIndex(Tile t)
 {
 	assert(IsTileType(t, MP_OBJECT));
-	return _m[t].m2 | _m[t].m5 << 16;
+	return t.m2() | t.m5() << 16;
 }
 
 /**
@@ -56,10 +56,10 @@ static inline ObjectID GetObjectIndex(TileIndex t)
  * @pre IsTileType(t, MP_OBJECT)
  * @return The random bits.
  */
-static inline byte GetObjectRandomBits(TileIndex t)
+static inline byte GetObjectRandomBits(Tile t)
 {
 	assert(IsTileType(t, MP_OBJECT));
-	return _m[t].m3;
+	return t.m3();
 }
 
 
@@ -71,17 +71,17 @@ static inline byte GetObjectRandomBits(TileIndex t)
  * @param wc     Water class for this object.
  * @param random Random data to store on the tile
  */
-static inline void MakeObject(TileIndex t, Owner o, ObjectID index, WaterClass wc, byte random)
+static inline void MakeObject(Tile t, Owner o, ObjectID index, WaterClass wc, byte random)
 {
 	SetTileType(t, MP_OBJECT);
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
-	_m[t].m2 = index;
-	_m[t].m3 = random;
-	_m[t].m4 = 0;
-	_m[t].m5 = index >> 16;
-	SB(_me[t].m6, 2, 4, 0);
-	_me[t].m7 = 0;
+	t.m2() = index;
+	t.m3() = random;
+	t.m4() = 0;
+	t.m5() = index >> 16;
+	SB(t.m6(), 2, 4, 0);
+	t.m7() = 0;
 }
 
 #endif /* OBJECT_MAP_H */

@@ -51,7 +51,7 @@ static_assert(MAX_HEIGHTMAP_SIZE_PIXELS < UINT32_MAX / 8);
  */
 static inline bool IsValidHeightmapDimension(size_t width, size_t height)
 {
-	return (uint64)width * height <= MAX_HEIGHTMAP_SIZE_PIXELS &&
+	return (uint64_t)width * height <= MAX_HEIGHTMAP_SIZE_PIXELS &&
 		width > 0 && width <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS &&
 		height > 0 && height <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS;
 }
@@ -188,7 +188,7 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, byte **map)
 	}
 
 	if (map != nullptr) {
-		*map = MallocT<byte>(width * height);
+		*map = MallocT<byte>(static_cast<size_t>(width) * height);
 		ReadHeightmapPNGImageData(*map, png_ptr, info_ptr);
 	}
 
@@ -303,7 +303,7 @@ static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, byte **map)
 			return false;
 		}
 
-		*map = MallocT<byte>(info.width * info.height);
+		*map = MallocT<byte>(static_cast<size_t>(info.width) * info.height);
 		ReadHeightmapBMPImageData(*map, &info, &data);
 	}
 
@@ -341,12 +341,12 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 	switch (_settings_game.game_creation.heightmap_rotation) {
 		default: NOT_REACHED();
 		case HM_COUNTER_CLOCKWISE:
-			width   = MapSizeX();
-			height  = MapSizeY();
+			width   = Map::SizeX();
+			height  = Map::SizeY();
 			break;
 		case HM_CLOCKWISE:
-			width   = MapSizeY();
-			height  = MapSizeX();
+			width   = Map::SizeY();
+			height  = Map::SizeX();
 			break;
 	}
 
@@ -361,8 +361,8 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 	}
 
 	if (_settings_game.construction.freeform_edges) {
-		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
-		for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
+		for (uint x = 0; x < Map::SizeX(); x++) MakeVoid(TileXY(x, 0));
+		for (uint y = 0; y < Map::SizeY(); y++) MakeVoid(TileXY(0, y));
 	}
 
 	/* Form the landscape */
@@ -426,8 +426,8 @@ void FixSlopes()
 	byte current_tile;
 
 	/* Adjust height difference to maximum one horizontal/vertical change. */
-	width   = MapSizeX();
-	height  = MapSizeY();
+	width   = Map::SizeX();
+	height  = Map::SizeY();
 
 	/* Top and left edge */
 	for (row = 0; (uint)row < height; row++) {
@@ -544,8 +544,8 @@ void LoadHeightmap(DetailedFileType dft, const char *filename)
 void FlatEmptyWorld(byte tile_height)
 {
 	int edge_distance = _settings_game.construction.freeform_edges ? 0 : 2;
-	for (uint row = edge_distance; row < MapSizeY() - edge_distance; row++) {
-		for (uint col = edge_distance; col < MapSizeX() - edge_distance; col++) {
+	for (uint row = edge_distance; row < Map::SizeY() - edge_distance; row++) {
+		for (uint col = edge_distance; col < Map::SizeX() - edge_distance; col++) {
 			SetTileHeight(TileXY(col, row), tile_height);
 		}
 	}

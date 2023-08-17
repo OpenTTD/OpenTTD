@@ -23,13 +23,13 @@ public:
 	 */
 	void Initialize(class GameInfo *info);
 
-	int GetSetting(const char *name) override;
-	ScriptInfo *FindLibrary(const char *library, int version) override;
+	int GetSetting(const std::string &name) override;
+	ScriptInfo *FindLibrary(const std::string &library, int version) override;
 
 private:
 	void RegisterAPI() override;
 	void Died() override;
-	CommandCallback *GetDoCommandCallback() override;
+	CommandCallbackData *GetDoCommandCallback() override;
 	void LoadDummyScript() override {}
 };
 

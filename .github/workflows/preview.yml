@@ -1,0 +1,20 @@
+name: Preview
+
+on:
+  pull_request_target:
+    types:
+    - labeled
+    - synchronize
+    branches:
+    - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    if: ${{ (github.event.action == 'labeled' && github.event.label.name == 'preview') || (github.event.action != 'labeled' && contains(github.event.pull_request.labels.*.name, 'preview')) }}
+    name: Preview
+    uses: ./.github/workflows/preview-build.yml
+    secrets: inherit

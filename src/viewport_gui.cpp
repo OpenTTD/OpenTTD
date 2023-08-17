@@ -57,13 +57,13 @@ public:
 		this->InitNested(window_number);
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_EV_VIEWPORT);
-		nvp->InitializeViewport(this, 0, ZOOM_LVL_VIEWPORT);
-		if (_settings_client.gui.zoom_min == ZOOM_LVL_VIEWPORT) this->DisableWidget(WID_EV_ZOOM_IN);
+		nvp->InitializeViewport(this, 0, ScaleZoomGUI(ZOOM_LVL_VIEWPORT));
+		if (_settings_client.gui.zoom_min == viewport->zoom) this->DisableWidget(WID_EV_ZOOM_IN);
 
 		Point pt;
 		if (tile == INVALID_TILE) {
 			/* No tile? Use center of main viewport. */
-			const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+			const Window *w = GetMainWindow();
 
 			/* center on same place as main window (zoom is maximum, no adjustment needed) */
 			pt.x = w->viewport->scrollpos_x + w->viewport->virtual_width / 2;
@@ -95,7 +95,7 @@ public:
 			case WID_EV_ZOOM_OUT: DoZoomInOutWindow(ZOOM_OUT, this); break;
 
 			case WID_EV_MAIN_TO_VIEW: { // location button (move main view to same spot as this view) 'Paste Location'
-				Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+				Window *w = GetMainWindow();
 				int x = this->viewport->scrollpos_x; // Where is the main looking at
 				int y = this->viewport->scrollpos_y;
 
@@ -107,7 +107,7 @@ public:
 			}
 
 			case WID_EV_VIEW_TO_MAIN: { // inverse location button (move this view to same spot as main view) 'Copy Location'
-				const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+				const Window *w = GetMainWindow();
 				int x = w->viewport->scrollpos_x;
 				int y = w->viewport->scrollpos_y;
 
@@ -132,6 +132,11 @@ public:
 		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
 		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
+	}
+
+	bool OnRightClick(Point pt, int widget) override
+	{
+		return widget == WID_EV_VIEWPORT;
 	}
 
 	void OnMouseWheel(int wheel) override

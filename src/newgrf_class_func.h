@@ -28,11 +28,9 @@ DEFINE_NEWGRF_CLASS_METHOD(void)::ResetClass()
 {
 	this->global_id = 0;
 	this->name      = STR_EMPTY;
-	this->count     = 0;
 	this->ui_count  = 0;
 
-	free(this->spec);
-	this->spec = nullptr;
+	this->spec.clear();
 }
 
 /** Reset the classes, i.e. clear everything. */
@@ -52,7 +50,7 @@ DEFINE_NEWGRF_CLASS_METHOD(void)::Reset()
  * @note Upon allocating the same global class ID for a
  *       second time, this first allocation will be given.
  */
-DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
+DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32_t global_id)
 {
 	for (Tid i = (Tid)0; i < Tmax; i++) {
 		if (classes[i].global_id == global_id) {
@@ -65,7 +63,7 @@ DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
 		}
 	}
 
-	grfmsg(2, "ClassAllocate: already allocated %d classes, using default", Tmax);
+	GrfMsg(2, "ClassAllocate: already allocated {} classes, using default", Tmax);
 	return (Tid)0;
 }
 
@@ -75,12 +73,9 @@ DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
  */
 DEFINE_NEWGRF_CLASS_METHOD(void)::Insert(Tspec *spec)
 {
-	uint i = this->count++;
-	this->spec = ReallocT(this->spec, this->count);
+	this->spec.push_back(spec);
 
-	this->spec[i] = spec;
-
-	if (this->IsUIAvailable(i)) this->ui_count++;
+	if (this->IsUIAvailable(static_cast<uint>(this->spec.size() - 1))) this->ui_count++;
 }
 
 /**
@@ -192,12 +187,13 @@ DEFINE_NEWGRF_CLASS_METHOD(int)::GetUIFromIndex(int index) const
  * @param index    Pointer to return the index of the spec in its class. If nullptr then not used.
  * @return The spec.
  */
-DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id, int *index)
+DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32_t grfid, uint16_t local_id, int *index)
 {
 	uint j;
 
 	for (Tid i = (Tid)0; i < Tmax; i++) {
-		for (j = 0; j < classes[i].count; j++) {
+		uint count = static_cast<uint>(classes[i].spec.size());
+		for (j = 0; j < count; j++) {
 			const Tspec *spec = classes[i].spec[j];
 			if (spec == nullptr) continue;
 			if (spec->grf_prop.grffile->grfid == grfid && spec->grf_prop.local_id == local_id) {
@@ -216,7 +212,7 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 #define INSTANTIATE_NEWGRF_CLASS_METHODS(name, Tspec, Tid, Tmax) \
 	template void name::ResetClass(); \
 	template void name::Reset(); \
-	template Tid name::Allocate(uint32 global_id); \
+	template Tid name::Allocate(uint32_t global_id); \
 	template void name::Insert(Tspec *spec); \
 	template void name::Assign(Tspec *spec); \
 	template NewGRFClass<Tspec, Tid, Tmax> *name::Get(Tid cls_id); \
@@ -226,4 +222,4 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 	template const Tspec *name::GetSpec(uint index) const; \
 	template int name::GetUIFromIndex(int index) const; \
 	template int name::GetIndexFromUI(int ui_index) const; \
-	template const Tspec *name::GetByGrf(uint32 grfid, byte localidx, int *index);
+	template const Tspec *name::GetByGrf(uint32_t grfid, uint16_t local_id, int *index);

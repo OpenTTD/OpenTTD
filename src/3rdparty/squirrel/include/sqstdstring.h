@@ -18,8 +18,6 @@ SQBool sqstd_rex_searchrange(SQRex* exp,const SQChar* text_begin,const SQChar* t
 SQInteger sqstd_rex_getsubexpcount(SQRex* exp);
 SQBool sqstd_rex_getsubexp(SQRex* exp, SQInteger n, SQRexMatch *subexp);
 
-SQRESULT sqstd_format(HSQUIRRELVM v,SQInteger nformatstringidx,SQInteger *outlen,SQChar **output);
-
 SQRESULT sqstd_register_stringlib(HSQUIRRELVM v);
 
 #endif /*_SQSTD_STRING_H_*/

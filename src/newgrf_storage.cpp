@@ -12,7 +12,6 @@
 #include "core/pool_func.hpp"
 #include "core/endian_func.hpp"
 #include "debug.h"
-#include <set>
 
 #include "safeguards.h"
 
@@ -91,9 +90,9 @@ void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
 	}
 
 	/* Discard all temporary changes */
-	for (std::set<BasePersistentStorageArray*>::iterator it = _changed_storage_arrays->begin(); it != _changed_storage_arrays->end(); it++) {
-		Debug(desync, 1, "Discarding persistent storage changes: Feature {}, GrfID {:08X}, Tile {}", (*it)->feature, BSWAP32((*it)->grfid), (*it)->tile);
-		(*it)->ClearChanges();
+	for (auto &it : *_changed_storage_arrays) {
+		Debug(desync, 1, "Discarding persistent storage changes: Feature {}, GrfID {:08X}, Tile {}", it->feature, BSWAP32(it->grfid), it->tile);
+		it->ClearChanges();
 	}
 	_changed_storage_arrays->clear();
 }

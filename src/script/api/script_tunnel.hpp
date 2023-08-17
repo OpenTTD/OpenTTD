@@ -85,7 +85,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(start).
 	 * @pre (vehicle_type == ScriptVehicle::VT_ROAD && ScriptRoad::IsRoadTypeAvailable(ScriptRoad::GetCurrentRoadType())) ||
 	 *      (vehicle_type == ScriptVehicle::VT_RAIL && ScriptRail::IsRailTypeAvailable(ScriptRail::GetCurrentRailType())).
-	 * @game @pre Outside CompanyMode: vehicle_type == ScriptVehicle::VT_ROAD.
+	 * @game @pre ScriptCompanyMode::IsValid() || vehicle_type == ScriptVehicle::VT_ROAD.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptTunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER
 	 * @exception ScriptTunnel::ERR_TUNNEL_START_SITE_UNSUITABLE
@@ -95,7 +95,7 @@ public:
 	 * @note The slope of a tile can be determined by ScriptTile::GetSlope(TileIndex).
 	 * @note No matter if the road pieces were build or not, if building the
 	 *  tunnel succeeded, this function returns true.
-	 * @game @note Building a bridge (without CompanyMode) results in a bridge owned by towns.
+	 * @game @note Building a tunnel as deity (ScriptCompanyMode::IsDeity()) results in a tunnel owned by towns.
 	 */
 	static bool BuildTunnel(ScriptVehicle::VehicleType vehicle_type, TileIndex start);
 
@@ -103,7 +103,7 @@ public:
 	 * Remove the tunnel whose entrance is located at tile.
 	 * @param tile The tile that is an entrance to a tunnel.
 	 * @pre ScriptMap::IsValidTile(tile) && IsTunnelTile(tile).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
+	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the tunnel has been/can be removed or not.
 	 */

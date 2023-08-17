@@ -20,17 +20,19 @@
 
 ScriptVehicleList::ScriptVehicleList()
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()))) this->AddItem(v->index);
+		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()))) this->AddItem(v->index);
 	}
 }
 
 ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	if (!ScriptBaseStation::IsValidBaseStation(station_id)) return;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle()) {
+		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && v->IsPrimaryVehicle()) {
 			for (const Order *order : v->Orders()) {
 				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id) {
 					this->AddItem(v->index);
@@ -43,6 +45,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 
 ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	if (!ScriptMap::IsValidTile(tile)) return;
 
 	DestinationID dest;
@@ -78,7 +81,7 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 	}
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle() && v->type == type) {
+		if ((v->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && v->IsPrimaryVehicle() && v->type == type) {
 			for (const Order *order : v->Orders()) {
 				if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == dest) {
 					this->AddItem(v->index);
@@ -91,7 +94,7 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 
 ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle_id)
 {
-	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return;
+	if (!ScriptVehicle::IsPrimaryVehicle(vehicle_id)) return;
 
 	for (const Vehicle *v = Vehicle::Get(vehicle_id)->FirstShared(); v != nullptr; v = v->NextShared()) {
 		this->AddItem(v->index);
@@ -100,6 +103,7 @@ ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle
 
 ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 {
+	EnforceCompanyModeValid_Void();
 	if (!ScriptGroup::IsValidGroup((ScriptGroup::GroupID)group_id)) return;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
@@ -111,6 +115,7 @@ ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 
 ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::VehicleType vehicle_type)
 {
+	EnforceCompanyModeValid_Void();
 	if (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR) return;
 
 	for (const Vehicle *v : Vehicle::Iterate()) {

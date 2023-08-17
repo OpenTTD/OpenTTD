@@ -13,9 +13,9 @@
 #include <squirrel.h>
 
 /** The type of script we're working with, i.e. for who is it? */
-enum ScriptType {
-	ST_AI, ///< The script is for AI scripts.
-	ST_GS, ///< The script is for Game scripts.
+enum class ScriptType {
+	AI, ///< The script is for AI scripts.
+	GS, ///< The script is for Game scripts.
 };
 
 struct ScriptAllocator;
@@ -24,7 +24,7 @@ class Squirrel {
 	friend class ScriptAllocatorScope;
 
 private:
-	typedef void (SQPrintFunc)(bool error_msg, const SQChar *message);
+	typedef void (SQPrintFunc)(bool error_msg, const std::string &message);
 
 	HSQUIRRELVM vm;          ///< The VirtualMachine instance for squirrel
 	void *global_pointer;    ///< Can be set by who ever initializes Squirrel
@@ -63,12 +63,12 @@ protected:
 	/**
 	 * If a user runs 'print' inside a script, this function gets the params.
 	 */
-	static void PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...) WARN_FORMAT(2, 3);
+	static void PrintFunc(HSQUIRRELVM vm, const std::string &s);
 
 	/**
 	 * If an error has to be print, this function is called.
 	 */
-	static void ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...) WARN_FORMAT(2, 3);
+	static void ErrorPrintFunc(HSQUIRRELVM vm, const std::string &s);
 
 public:
 	Squirrel(const char *APIName);
@@ -84,13 +84,13 @@ public:
 	 * @param script The full script-name to load.
 	 * @return False if loading failed.
 	 */
-	bool LoadScript(const char *script);
-	bool LoadScript(HSQUIRRELVM vm, const char *script, bool in_root = true);
+	bool LoadScript(const std::string &script);
+	bool LoadScript(HSQUIRRELVM vm, const std::string &script, bool in_root = true);
 
 	/**
 	 * Load a file to a given VM.
 	 */
-	SQRESULT LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printerror);
+	SQRESULT LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool printerror);
 
 	/**
 	 * Adds a function to the stack. Depending on the current state this means
@@ -159,7 +159,7 @@ public:
 	 */
 	bool CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend);
 	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend) { return this->CallMethod(instance, method_name, nullptr, suspend); }
-	bool CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, const char **res, int suspend);
+	bool CallStringMethod(HSQOBJECT instance, const char *method_name, std::string *res, int suspend);
 	bool CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend);
 	bool CallBoolMethod(HSQOBJECT instance, const char *method_name, bool *res, int suspend);
 
@@ -178,12 +178,12 @@ public:
 	 * @param prepend_API_name Optional parameter; if true, the class_name is prefixed with the current API name.
 	 * @return False if creating failed.
 	 */
-	static bool CreateClassInstanceVM(HSQUIRRELVM vm, const char *class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name = false);
+	static bool CreateClassInstanceVM(HSQUIRRELVM vm, const std::string &class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name = false);
 
 	/**
 	 * Exactly the same as CreateClassInstanceVM, only callable without instance of Squirrel.
 	 */
-	bool CreateClassInstance(const char *class_name, void *real_instance, HSQOBJECT *instance);
+	bool CreateClassInstance(const std::string &class_name, void *real_instance, HSQOBJECT *instance);
 
 	/**
 	 * Get the real-instance pointer.
@@ -233,7 +233,7 @@ public:
 	/**
 	 * Throw a Squirrel error that will be nicely displayed to the user.
 	 */
-	void ThrowError(const char *error) { sq_throwerror(this->vm, error); }
+	void ThrowError(const std::string_view error) { sq_throwerror(this->vm, error); }
 
 	/**
 	 * Release a SQ object.

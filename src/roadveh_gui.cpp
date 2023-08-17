@@ -8,6 +8,7 @@
 /** @file roadveh_gui.cpp GUI for road vehicles. */
 
 #include "stdafx.h"
+#include "core/backup_type.hpp"
 #include "roadveh.h"
 #include "window_gui.h"
 #include "strings_func.h"
@@ -23,25 +24,23 @@
  * Draw the details for the given vehicle at the given position
  *
  * @param v     current vehicle
- * @param left  The left most coordinate to draw
- * @param right The right most coordinate to draw
- * @param y     The y coordinate
+ * @param r     the Rect to draw within
  */
-void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
+void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 {
-	uint y_offset = v->HasArticulatedPart() ? ScaleGUITrad(15) : 0; // Draw the first line below the sprite of an articulated RV instead of after it.
+	int y = r.top + (v->HasArticulatedPart() ? ScaleSpriteTrad(15) : 0); // Draw the first line below the sprite of an articulated RV instead of after it.
 	StringID str;
 	Money feeder_share = 0;
 
-	SetDParam(0, v->engine_type);
+	SetDParam(0, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails));
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
-	DrawString(left, right, y + y_offset, STR_VEHICLE_INFO_BUILT_VALUE);
+	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_BUILT_VALUE);
+	y += FONT_HEIGHT_NORMAL;
 
 	if (v->HasArticulatedPart()) {
-		CargoArray max_cargo;
+		CargoArray max_cargo{};
 		StringID subtype_text[NUM_CARGO];
-		char capacity[512];
 
 		memset(subtype_text, 0, sizeof(subtype_text));
 
@@ -53,30 +52,27 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 			}
 		}
 
-		GetString(capacity, STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY, lastof(capacity));
+		std::string capacity = GetString(STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY);
 
 		bool first = true;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0) {
-				char buffer[128];
+				if (!first) capacity += ", ";
 
 				SetDParam(0, i);
 				SetDParam(1, max_cargo[i]);
-				GetString(buffer, STR_JUST_CARGO, lastof(buffer));
-
-				if (!first) strecat(capacity, ", ", lastof(capacity));
-				strecat(capacity, buffer, lastof(capacity));
+				capacity += GetString(STR_JUST_CARGO);
 
 				if (subtype_text[i] != 0) {
-					GetString(buffer, subtype_text[i], lastof(buffer));
-					strecat(capacity, buffer, lastof(capacity));
+					capacity += GetString(subtype_text[i]);
 				}
 
 				first = false;
 			}
 		}
 
-		DrawString(left, right, y + FONT_HEIGHT_NORMAL + y_offset, capacity, TC_BLUE);
+		DrawString(r.left, r.right, y, capacity, TC_BLUE);
+		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			if (u->cargo_cap == 0) continue;
@@ -89,17 +85,16 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 				str = STR_VEHICLE_DETAILS_CARGO_FROM;
 				feeder_share += u->cargo.FeederShare();
 			}
-			DrawString(left, right, y + 2 * FONT_HEIGHT_NORMAL + 1 + y_offset, str);
-
-			y_offset += FONT_HEIGHT_NORMAL + 1;
+			DrawString(r.left, r.right, y, str);
+			y += FONT_HEIGHT_NORMAL;
 		}
-
-		y_offset -= FONT_HEIGHT_NORMAL + 1;
+		y += WidgetDimensions::scaled.vsep_normal;
 	} else {
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
 		SetDParam(4, GetCargoSubtypeText(v));
-		DrawString(left, right, y + FONT_HEIGHT_NORMAL + y_offset, STR_VEHICLE_INFO_CAPACITY);
+		DrawString(r.left, r.right, y, STR_VEHICLE_INFO_CAPACITY);
+		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 
 		str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 		if (v->cargo.StoredCount() > 0) {
@@ -109,39 +104,39 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 			str = STR_VEHICLE_DETAILS_CARGO_FROM;
 			feeder_share += v->cargo.FeederShare();
 		}
-		DrawString(left, right, y + 2 * FONT_HEIGHT_NORMAL + 1 + y_offset, str);
+		DrawString(r.left, r.right, y, str);
+		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 	}
 
 	/* Draw Transfer credits text */
 	SetDParam(0, feeder_share);
-	DrawString(left, right, y + 3 * FONT_HEIGHT_NORMAL + 3 + y_offset, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
+	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }
 
 /**
  * Draws an image of a road vehicle chain
  * @param v         Front vehicle
- * @param left      The minimum horizontal position
- * @param right     The maximum horizontal position
- * @param y         Vertical position to draw at
+ * @param r         Rect to draw at
  * @param selection Selected vehicle to draw a frame around
  * @param skip      Number of pixels to skip at the front (for scrolling)
  */
-void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip)
+void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	Direction dir = rtl ? DIR_E : DIR_W;
 	const RoadVehicle *u = RoadVehicle::From(v);
 
-	DrawPixelInfo tmp_dpi, *old_dpi;
-	int max_width = right - left + 1;
+	DrawPixelInfo tmp_dpi;
+	int max_width = r.Width();
 
-	if (!FillDrawPixelInfo(&tmp_dpi, left, y, max_width, ScaleGUITrad(14))) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) return;
 
-	old_dpi = _cur_dpi;
-	_cur_dpi = &tmp_dpi;
+	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
 	int px = rtl ? max_width + skip : -skip;
-	for (; u != nullptr && (rtl ? px > 0 : px < max_width); u = u->Next()) {
+	int y = r.Height() / 2;
+	for (; u != nullptr && (rtl ? px > 0 : px < max_width); u = u->Next())
+	{
 		Point offset;
 		int width = u->GetDisplayImageWidth(&offset);
 
@@ -149,15 +144,15 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 			PaletteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
 			VehicleSpriteSeq seq;
 			u->GetImage(dir, image_type, &seq);
-			seq.Draw(px + (rtl ? -offset.x : offset.x), ScaleGUITrad(6) + offset.y, pal, (u->vehstatus & VS_CRASHED) != 0);
+			seq.Draw(px + (rtl ? -offset.x : offset.x), y + offset.y, pal, (u->vehstatus & VS_CRASHED) != 0);
 		}
 
 		px += rtl ? -width : width;
 	}
 
 	if (v->index == selection) {
-		DrawFrameRect((rtl ? px : 0), 0, (rtl ? max_width : px) - 1, ScaleGUITrad(13) - 1, COLOUR_WHITE, FR_BORDERONLY);
+		int height = ScaleSpriteTrad(12);
+		Rect hr = {(rtl ? px : 0), 0, (rtl ? max_width : px) - 1, height - 1};
+		DrawFrameRect(hr.Translate(r.left, CenterBounds(r.top, r.bottom, height)).Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FR_BORDERONLY);
 	}
-
-	_cur_dpi = old_dpi;
 }

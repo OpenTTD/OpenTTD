@@ -52,18 +52,20 @@ public:
 			case WID_TT_CATENARY:
 			case WID_TT_LOADING: {
 				uint i = widget - WID_TT_BEGIN;
-				if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, r.left + 1, r.top + 1);
+				if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, r.left + WidgetDimensions::scaled.fullbevel.left, r.top + WidgetDimensions::scaled.fullbevel.top);
 				break;
 			}
-			case WID_TT_BUTTONS:
+			case WID_TT_BUTTONS: {
+				const Rect fr = r.Shrink(WidgetDimensions::scaled.framerect);
 				for (uint i = WID_TT_BEGIN; i < WID_TT_END; i++) {
 					if (i == WID_TT_LOADING) continue; // Do not draw button for invisible loading indicators.
 
-					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(i);
-					DrawFrameRect(wi->pos_x + 1, r.top + 2, wi->pos_x + wi->current_x - 2, r.bottom - 2, COLOUR_PALE_GREEN,
+					const Rect wr = this->GetWidget<NWidgetBase>(i)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
+					DrawFrameRect(wr.left, fr.top, wr.right, fr.bottom, COLOUR_PALE_GREEN,
 							HasBit(_invisibility_opt, i - WID_TT_BEGIN) ? FR_LOWERED : FR_NONE);
 				}
 				break;
+			}
 		}
 	}
 
@@ -102,7 +104,7 @@ public:
 		}
 	}
 
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
+	Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number) override
 	{
 		Point pt = GetToolbarAlignedWindowPosition(sm_width);
 		pt.y += 2 * (sm_height - this->GetWidget<NWidgetBase>(WID_TT_BUTTONS)->current_y);

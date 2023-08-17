@@ -62,14 +62,14 @@ struct GSDTChunkHandler : ChunkHandler {
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_game_script_desc, _game_script_sl_compat);
 
 		/* Free all current data */
-		GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME)->Change(nullptr);
+		GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME)->Change(std::nullopt);
 
 		if (SlIterateArray() == -1) return;
 
 		_game_saveload_version = -1;
 		SlObject(nullptr, slt);
 
-		if (_networking && !_network_server) {
+		if (_game_mode == GM_MENU || (_networking && !_network_server)) {
 			GameInstance::LoadEmpty();
 			if (SlIterateArray() != -1) SlErrorCorrupt("Too many GameScript configs");
 			return;
@@ -77,11 +77,11 @@ struct GSDTChunkHandler : ChunkHandler {
 
 		GameConfig *config = GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME);
 		if (!_game_saveload_name.empty()) {
-			config->Change(_game_saveload_name.c_str(), _game_saveload_version, false, _game_saveload_is_random);
+			config->Change(_game_saveload_name, _game_saveload_version, false, _game_saveload_is_random);
 			if (!config->HasScript()) {
 				/* No version of the GameScript available that can load the data. Try to load the
 				 * latest version of the GameScript instead. */
-				config->Change(_game_saveload_name.c_str(), -1, false, _game_saveload_is_random);
+				config->Change(_game_saveload_name, -1, false, _game_saveload_is_random);
 				if (!config->HasScript()) {
 					if (_game_saveload_name.compare("%_dummy") != 0) {
 						Debug(script, 0, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
@@ -102,9 +102,8 @@ struct GSDTChunkHandler : ChunkHandler {
 
 		config->StringToSettings(_game_saveload_settings);
 
-		/* Start the GameScript directly if it was active in the savegame */
-		Game::StartNew();
-		Game::Load(_game_saveload_version);
+		/* Load the GameScript saved data */
+		config->SetToLoadData(GameInstance::Load(_game_saveload_version));
 
 		if (SlIterateArray() != -1) SlErrorCorrupt("Too many GameScript configs");
 	}
@@ -120,7 +119,7 @@ struct GSDTChunkHandler : ChunkHandler {
 extern GameStrings *_current_data;
 
 static std::string _game_saveload_string;
-static uint32 _game_saveload_strings;
+static uint32_t _game_saveload_strings;
 
 class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
 public:
@@ -141,9 +140,9 @@ public:
 
 	void Load(LanguageStrings *ls) const override
 	{
-		uint32 length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _game_saveload_strings : (uint32)SlGetStructListLength(UINT32_MAX);
+		uint32_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _game_saveload_strings : (uint32_t)SlGetStructListLength(UINT32_MAX);
 
-		for (uint32 i = 0; i < length; i++) {
+		for (uint32_t i = 0; i < length; i++) {
 			SlObject(nullptr, this->GetLoadDescription());
 			ls->lines.emplace_back(_game_saveload_string);
 		}

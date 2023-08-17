@@ -15,7 +15,7 @@
 
 #include "../../safeguards.h"
 
-/* static */ void ScriptWindow::Close(WindowClass window, uint32 number)
+/* static */ void ScriptWindow::Close(WindowClass window, SQInteger number)
 {
 	if (ScriptGame::IsMultiplayer()) return;
 
@@ -24,10 +24,12 @@
 		return;
 	}
 
+	number = Clamp<SQInteger>(number, 0, INT32_MAX);
+
 	CloseWindowById((::WindowClass)window, number);
 }
 
-/* static */ bool ScriptWindow::IsOpen(WindowClass window, uint32 number)
+/* static */ bool ScriptWindow::IsOpen(WindowClass window, SQInteger number)
 {
 	if (ScriptGame::IsMultiplayer()) return false;
 
@@ -35,23 +37,30 @@
 		return (FindWindowByClass((::WindowClass)window) != nullptr);
 	}
 
+	number = Clamp<SQInteger>(number, 0, INT32_MAX);
+
 	return FindWindowById((::WindowClass)window, number) != nullptr;
 }
 
-/* static */ void ScriptWindow::Highlight(WindowClass window, uint32 number, uint8 widget, TextColour colour)
+/* static */ void ScriptWindow::Highlight(WindowClass window, SQInteger number, SQInteger widget, TextColour colour)
 {
 	if (ScriptGame::IsMultiplayer()) return;
 	if (number == NUMBER_ALL) return;
 	if (!IsOpen(window, number)) return;
 	if (colour != TC_INVALID && (::TextColour)colour >= ::TC_END) return;
 
+	number = Clamp<SQInteger>(number, 0, INT32_MAX);
+
 	Window *w = FindWindowById((::WindowClass)window, number);
+	assert(w != nullptr);
 
 	if (widget == WIDGET_ALL) {
 		if (colour != TC_INVALID) return;
 		w->DisableAllWidgetHighlight();
 		return;
 	}
+
+	widget = Clamp<SQInteger>(widget, 0, UINT8_MAX);
 
 	const NWidgetBase *wid = w->GetWidget<NWidgetBase>(widget);
 	if (wid == nullptr) return;

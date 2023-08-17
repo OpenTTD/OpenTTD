@@ -211,7 +211,7 @@ void AyStar::Free()
 	this->openlist_hash.Delete(true);
 	this->closedlist_hash.Delete(true);
 #ifdef AYSTAR_DEBUG
-	printf("[AyStar] Memory free'd\n");
+	Debug(misc, 0, "[AyStar] Memory free'd");
 #endif
 }
 
@@ -229,7 +229,7 @@ void AyStar::Clear()
 	this->closedlist_hash.Clear(true);
 
 #ifdef AYSTAR_DEBUG
-	printf("[AyStar] Cleared AyStar\n");
+	Debug(misc, 0, "[AyStar] Cleared AyStar");
 #endif
 }
 
@@ -250,9 +250,9 @@ int AyStar::Main()
 	while ((r = this->Loop()) == AYSTAR_STILL_BUSY && (this->loops_per_tick == 0 || ++i < this->loops_per_tick)) { }
 #ifdef AYSTAR_DEBUG
 	switch (r) {
-		case AYSTAR_FOUND_END_NODE: printf("[AyStar] Found path!\n"); break;
-		case AYSTAR_EMPTY_OPENLIST: printf("[AyStar] OpenList run dry, no path found\n"); break;
-		case AYSTAR_LIMIT_REACHED:  printf("[AyStar] Exceeded search_nodes, no path found\n"); break;
+		case AYSTAR_FOUND_END_NODE: Debug(misc, 0, "[AyStar] Found path!"); break;
+		case AYSTAR_EMPTY_OPENLIST: Debug(misc, 0, "[AyStar] OpenList run dry, no path found"); break;
+		case AYSTAR_LIMIT_REACHED:  Debug(misc, 0, "[AyStar] Exceeded search_nodes, no path found"); break;
 		default: break;
 	}
 #endif
@@ -280,7 +280,7 @@ int AyStar::Main()
 void AyStar::AddStartNode(AyStarNode *start_node, uint g)
 {
 #ifdef AYSTAR_DEBUG
-	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n",
+	Debug(misc, 0, "[AyStar] Starting A* Algorithm from node ({}, {}, {})\n",
 		TileX(start_node->tile), TileY(start_node->tile), start_node->direction);
 #endif
 	this->OpenListAdd(nullptr, start_node, 0, g);

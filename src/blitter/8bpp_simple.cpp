@@ -18,12 +18,12 @@ static FBlitter_8bppSimple iFBlitter_8bppSimple;
 
 void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
-	const uint8 *src, *src_line;
-	uint8 *dst, *dst_line;
+	const uint8_t *src, *src_line;
+	uint8_t *dst, *dst_line;
 
 	/* Find where to start reading in the source sprite */
-	src_line = (const uint8 *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
-	dst_line = (uint8 *)bp->dst + bp->top * bp->pitch + bp->left;
+	src_line = (const uint8_t *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
+	dst_line = (uint8_t *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	for (int y = 0; y < bp->height; y++) {
 		dst = dst_line;

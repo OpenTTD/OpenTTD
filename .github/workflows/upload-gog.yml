@@ -1,0 +1,151 @@
+name: Upload (GOG)
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+
+jobs:
+  upload:
+    name: Upload (GOG)
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Download source
+      uses: actions/download-artifact@v3
+      with:
+        name: internal-source
+        path: internal-source
+
+    - name: Download bundle (Windows x86)
+      uses: actions/download-artifact@v3
+      with:
+        name: openttd-windows-x86
+        path: openttd-windows-x86
+
+    - name: Download bundle (Windows x64)
+      uses: actions/download-artifact@v3
+      with:
+        name: openttd-windows-x64
+        path: openttd-windows-x64
+
+    - name: Download bundle (MacOS)
+      uses: actions/download-artifact@v3
+      with:
+        name: openttd-macos-universal
+        path: openttd-macos-universal
+
+    - name: Download bundle (Linux)
+      uses: actions/download-artifact@v3
+      with:
+        name: openttd-linux-generic
+        path: openttd-linux-generic
+
+    - name: Install GOG Galaxy Build Creator
+      run: |
+        wget https://cdn.gog.com/open/galaxy/pipeline/build_creator/gnu-linux/GOGGalaxyBuildCreator-1.4.0.AppImage
+        7z x GOGGalaxyBuildCreator-1.4.0.AppImage
+        chmod +x ./app/GOGGalaxyPipelineBuilder
+
+    - name: Install OpenGFX
+      shell: bash
+      run: |
+        mkdir -p gog/opengfx/baseset
+        cd gog/opengfx/baseset
+
+        echo "::group::Download OpenGFX"
+        curl -L https://cdn.openttd.org/opengfx-releases/7.1/opengfx-7.1-all.zip -o opengfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip opengfx-all.zip
+        echo "::endgroup::"
+
+        rm -f opengfx-all.zip
+
+    - name: Install OpenMSX
+      shell: bash
+      run: |
+        mkdir -p gog/openmsx/baseset
+        cd gog/openmsx/baseset
+
+        echo "::group::Download OpenMSX"
+        curl -L https://cdn.openttd.org/openmsx-releases/0.4.2/openmsx-0.4.2-all.zip -o openmsx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip openmsx-all.zip
+        tar xf openmsx-*.tar
+        echo "::endgroup::"
+
+        rm -f openmsx-all.zip openmsx-*.tar
+
+    - name: Install OpenSFX
+      shell: bash
+      run: |
+        mkdir -p gog/opensfx/baseset
+        cd gog/opensfx/baseset
+
+        echo "::group::Download OpenSFX"
+        curl -L https://cdn.openttd.org/opensfx-releases/1.0.3/opensfx-1.0.3-all.zip -o opensfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenSFX"
+        unzip opensfx-all.zip
+        tar xf opensfx-*.tar
+        echo "::endgroup::"
+
+        rm -f opensfx-all.zip opensfx-*.tar
+
+    - name: Upload to GOG
+      run: |
+        echo "::group::Extracting source"
+        mkdir source
+        (
+          cd source
+          tar -xf ../internal-source/source.tar.gz --strip-components=1
+        )
+        echo "::endgroup::"
+
+        (
+          cd gog
+
+          echo "::group::Prepare Win32"
+          unzip ../openttd-windows-x86/openttd-*-windows-win32.zip
+          mv openttd-*-windows-win32 win32
+          echo "::endgroup::"
+
+          echo "::group::Prepare Win64"
+          unzip ../openttd-windows-x64/openttd-*-windows-win64.zip
+          mv openttd-*-windows-win64 win64
+          echo "::endgroup::"
+
+          echo "::group::Prepare macOS"
+          mkdir macos
+          (
+            cd macos
+            unzip ../../openttd-macos-universal/openttd-*-macos-universal.zip
+          )
+          echo "::endgroup::"
+
+          echo "::group::Prepare Linux"
+          tar xvf ../openttd-linux-generic/openttd-*-linux-generic-amd64.tar.xz
+          mv openttd-*-linux-generic-amd64 linux
+          echo "::endgroup::"
+
+          echo "::group::Preparing build files"
+          cp ../source/os/gog/*.json .
+          for json in $(ls *.json); do
+            sed -i 's/VERSION/${{ inputs.version }}/g;s/CLIENT_ID/${{ secrets.GOG_CLIENT_ID }}/g;s/CLIENT_SECRET/${{ secrets.GOG_CLIENT_SECRET }}/g' ${json}
+          done
+          echo "::endgroup::"
+
+          echo "::group::Upload to GOG"
+          ../app/GOGGalaxyPipelineBuilder build-game --username "${{ secrets.GOG_USERNAME }}" --password "${{ secrets.GOG_PASSWORD }}" --branch Testing windows.json
+          ../app/GOGGalaxyPipelineBuilder build-game --username "${{ secrets.GOG_USERNAME }}" --password "${{ secrets.GOG_PASSWORD }}" --branch Testing macos.json
+          ../app/GOGGalaxyPipelineBuilder build-game --username "${{ secrets.GOG_USERNAME }}" --password "${{ secrets.GOG_PASSWORD }}" --branch Testing linux.json
+          echo "::endgroup::"
+        )

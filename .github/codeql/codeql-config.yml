@@ -1,0 +1,12 @@
+name: openttd
+queries:
+- uses: security-and-quality
+query-filters:
+- exclude:
+    id:
+    # Only feasible way is to move away from fopen; fopen_s is optional C11 and not implemented on most platforms.
+    - cpp/world-writable-file-creation
+    # Basically OpenTTD's coding style for adding things like ..._INVALID to enumerations
+    - cpp/irregular-enum-init
+    # Our GUI code tends to use switches for OnClick handlers, DrawWidget, and UpdateWidgetSize. Sometimes GUIs just don't have many elements, but we want to keep consistency.
+    - cpp/trivial-switch

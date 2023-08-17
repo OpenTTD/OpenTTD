@@ -12,7 +12,7 @@
 
 #include "core/enum_type.hpp"
 #include "core/bitmath_func.hpp"
-#include "core/smallvec_type.hpp"
+#include "core/mem_func.hpp"
 #include "date_type.h"
 
 /** Flags of the sort list. */
@@ -52,9 +52,9 @@ protected:
 	SortFunction * const *sort_func_list;     ///< the sort criteria functions
 	FilterFunction * const *filter_func_list; ///< the filter criteria functions
 	SortListFlags flags;                      ///< used to control sorting/resorting/etc.
-	uint8 sort_type;                          ///< what criteria to sort on
-	uint8 filter_type;                        ///< what criteria to filter on
-	uint16 resort_timer;                      ///< resort list after a given amount of ticks if set
+	uint8_t sort_type;                          ///< what criteria to sort on
+	uint8_t filter_type;                        ///< what criteria to filter on
+	uint16_t resort_timer;                      ///< resort list after a given amount of ticks if set
 
 	/**
 	 * Check if the list is sortable
@@ -90,7 +90,7 @@ public:
 	 *
 	 * @return The current sorttype
 	 */
-	uint8 SortType() const
+	uint8_t SortType() const
 	{
 		return this->sort_type;
 	}
@@ -100,7 +100,7 @@ public:
 	 *
 	 * @param n_type the new sort type
 	 */
-	void SetSortType(uint8 n_type)
+	void SetSortType(uint8_t n_type)
 	{
 		if (this->sort_type != n_type) {
 			SETBITS(this->flags, VL_RESORT);
@@ -142,7 +142,7 @@ public:
 	 *
 	 * @return The current filtertype
 	 */
-	uint8 FilterType() const
+	uint8_t FilterType() const
 	{
 		return this->filter_type;
 	}
@@ -152,7 +152,7 @@ public:
 	 *
 	 * @param n_type the new filter type
 	 */
-	void SetFilterType(uint8 n_type)
+	void SetFilterType(uint8_t n_type)
 	{
 		if (this->filter_type != n_type) {
 			this->filter_type = n_type;
@@ -234,7 +234,7 @@ public:
 	{
 		this->flags ^= VL_DESC;
 
-		if (this->IsSortable()) MemReverseT(std::vector<T>::data(), std::vector<T>::size());
+		if (this->IsSortable()) std::reverse(std::vector<T>::begin(), std::vector<T>::end());
 	}
 
 	/**

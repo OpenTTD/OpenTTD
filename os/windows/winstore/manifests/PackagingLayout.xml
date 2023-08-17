@@ -1,0 +1,35 @@
+<PackagingLayout xmlns="http://schemas.microsoft.com/appx/makeappx/2017">
+    <!-- Main game -->
+    <PackageFamily ID="OpenTTD" FlatBundle="false" ManifestPath="manifests\Package.appxmanifest" ResourceManager="false">
+        <!-- x86 code package-->
+        <Package ID="OpenTTD-x86" ProcessorArchitecture="x86" ManifestPath="manifests\Package-x86.appxmanifest">
+            <Files>
+                <File DestinationPath="**" SourcePath="x86-binaries\**"/>
+                <File DestinationPath="Assets\**" SourcePath="Assets\**"/>
+            </Files>
+        </Package>
+
+        <!-- x64 code package-->
+        <Package ID="OpenTTD-x64" ProcessorArchitecture="x64" ManifestPath="manifests\Package-x64.appxmanifest">
+            <Files>
+                <File DestinationPath="**" SourcePath="x64-binaries\**"/>
+                <File DestinationPath="Assets\**" SourcePath="Assets\**"/>
+            </Files>
+        </Package>
+
+        <!-- ARM64 code package-->
+        <Package ID="OpenTTD-ARM64" ProcessorArchitecture="arm64" ManifestPath="manifests\Package-ARM64.appxmanifest">
+            <Files>
+                <File DestinationPath="**" SourcePath="ARM64-binaries\**"/>
+                <File DestinationPath="Assets\**" SourcePath="Assets\**"/>
+            </Files>
+        </Package>
+
+        <!-- Common asset package-->
+        <AssetPackage ID="OpenTTD-common" AllowExecution="false" ManifestPath="manifests\AssetsPackage.appxmanifest">
+            <Files>
+                <File DestinationPath="**" SourcePath="common-binaries\**"/>
+            </Files>
+        </AssetPackage>
+    </PackageFamily>
+</PackagingLayout>

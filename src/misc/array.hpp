@@ -108,9 +108,7 @@ public:
 		dmp.WriteValue("num_items", num_items);
 		for (uint i = 0; i < num_items; i++) {
 			const T &item = (*this)[i];
-			char name[32];
-			seprintf(name, lastof(name), "item[%d]", i);
-			dmp.WriteStructT(name, &item);
+			dmp.WriteStructT(fmt::format("item[{}]", i), &item);
 		}
 	}
 };

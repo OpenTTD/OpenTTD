@@ -10,7 +10,6 @@
 #ifndef STRINGFILTER_TYPE_H
 #define STRINGFILTER_TYPE_H
 
-#include "core/smallvec_type.hpp"
 #include "strings_type.h"
 
 /**
@@ -51,6 +50,7 @@ public:
 	~StringFilter() { free(this->filter_buffer); }
 
 	void SetFilterTerm(const char *str);
+	void SetFilterTerm(const std::string &str);
 
 	/**
 	 * Check whether any filter words were entered.
@@ -60,6 +60,7 @@ public:
 
 	void ResetState();
 	void AddLine(const char *str);
+	void AddLine(const std::string &str);
 	void AddLine(StringID str);
 
 	/**

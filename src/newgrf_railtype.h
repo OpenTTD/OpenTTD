@@ -31,15 +31,15 @@ struct RailTypeScopeResolver : public ScopeResolver {
 	{
 	}
 
-	uint32 GetRandomBits() const override;
-	uint32 GetVariable(byte variable, uint32 parameter, bool *available) const override;
+	uint32_t GetRandomBits() const override;
+	uint32_t GetVariable(byte variable, uint32_t parameter, bool *available) const override;
 };
 
 /** Resolver object for rail types. */
 struct RailTypeResolverObject : public ResolverObject {
 	RailTypeScopeResolver railtype_scope; ///< Resolver for the railtype scope.
 
-	RailTypeResolverObject(const RailtypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32 param1 = 0, uint32 param2 = 0);
+	RailTypeResolverObject(const RailtypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32_t param1 = 0, uint32_t param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
 	{
@@ -50,13 +50,13 @@ struct RailTypeResolverObject : public ResolverObject {
 	}
 
 	GrfSpecFeature GetFeature() const override;
-	uint32 GetDebugID() const override;
+	uint32_t GetDebugID() const override;
 };
 
 SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context = TCX_NORMAL, uint *num_results = nullptr);
 SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalType type, SignalVariant var, SignalState state, bool gui = false);
 
-RailType GetRailTypeTranslation(uint8 railtype, const GRFFile *grffile);
-uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile);
+RailType GetRailTypeTranslation(uint8_t railtype, const GRFFile *grffile);
+uint8_t GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile);
 
 #endif /* NEWGRF_RAILTYPE_H */

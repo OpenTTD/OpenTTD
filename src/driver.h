@@ -11,9 +11,7 @@
 #define DRIVER_H
 
 #include "core/enum_type.hpp"
-#include "core/string_compare_type.hpp"
 #include "string_type.h"
-#include <map>
 
 const char *GetDriverParam(const StringList &parm, const char *name);
 bool GetDriverParamBool(const StringList &parm, const char *name);
@@ -34,7 +32,7 @@ public:
 	 */
 	virtual void Stop() = 0;
 
-	virtual ~Driver() { }
+	virtual ~Driver() = default;
 
 	/** The type of driver */
 	enum Type {
@@ -102,6 +100,8 @@ private:
 
 	static bool SelectDriverImpl(const std::string &name, Driver::Type type);
 
+	static void MarkVideoDriverOperational();
+
 protected:
 	DriverFactoryBase(Driver::Type type, int priority, const char *name, const char *description);
 
@@ -129,7 +129,7 @@ public:
 	}
 
 	static void SelectDriver(const std::string &name, Driver::Type type);
-	static char *GetDriversInfo(char *p, const char *last);
+	static void GetDriversInfo(std::back_insert_iterator<std::string> &output_iterator);
 
 	/**
 	 * Get a nice description of the driver-class.

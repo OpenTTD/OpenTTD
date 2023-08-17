@@ -59,11 +59,12 @@ public:
 	 *  - For #NR_TOWN this parameter should be a valid townID (ScriptTown::IsValidTown).
 	 * @return True if the action succeeded.
 	 * @pre type must be #NT_ECONOMY, #NT_SUBSIDIES, or #NT_GENERAL.
-	 * @pre text != nullptr.
+	 * @pre text != null.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre The \a reference condition must be fulfilled.
+	 * @pre ScriptCompanyMode::IsDeity().
 	 */
-	static bool Create(NewsType type, Text *text, ScriptCompany::CompanyID company, NewsReferenceType ref_type, uint32 reference);
+	static bool Create(NewsType type, Text *text, ScriptCompany::CompanyID company, NewsReferenceType ref_type, SQInteger reference);
 };
 
 #endif /* SCRIPT_NEWS_HPP */

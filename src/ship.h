@@ -10,8 +10,6 @@
 #ifndef SHIP_H
 #define SHIP_H
 
-#include <deque>
-
 #include "vehicle_base.h"
 #include "water_map.h"
 
@@ -27,32 +25,32 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 	TrackBits state;      ///< The "track" the ship is following.
 	ShipPathCache path;   ///< Cached path.
 	Direction rotation;   ///< Visible direction.
-	int16 rotation_x_pos; ///< NOSAVE: X Position before rotation.
-	int16 rotation_y_pos; ///< NOSAVE: Y Position before rotation.
+	int16_t rotation_x_pos; ///< NOSAVE: X Position before rotation.
+	int16_t rotation_y_pos; ///< NOSAVE: Y Position before rotation.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Ship() : SpecializedVehicleBase() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~Ship() { this->PreDestructor(); }
 
-	void MarkDirty();
-	void UpdateDeltaXY();
-	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_SHIP_INC : EXPENSES_SHIP_RUN; }
-	void PlayLeaveStationSound() const;
-	bool IsPrimaryVehicle() const { return true; }
-	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const;
-	int GetDisplaySpeed() const { return this->cur_speed / 2; }
-	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed / 2; }
-	int GetCurrentMaxSpeed() const { return std::min<int>(this->vcache.cached_max_speed, this->current_order.GetMaxSpeed() * 2); }
-	Money GetRunningCost() const;
-	bool IsInDepot() const { return this->state == TRACK_BIT_DEPOT; }
-	bool Tick();
-	void OnNewDay();
-	Trackdir GetVehicleTrackdir() const;
-	TileIndex GetOrderStationLocation(StationID station);
-	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+	void MarkDirty() override;
+	void UpdateDeltaXY() override;
+	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_SHIP_REVENUE : EXPENSES_SHIP_RUN; }
+	void PlayLeaveStationSound(bool force = false) const override;
+	bool IsPrimaryVehicle() const override { return true; }
+	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
+	int GetDisplaySpeed() const override { return this->cur_speed / 2; }
+	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed / 2; }
+	int GetCurrentMaxSpeed() const override { return std::min<int>(this->vcache.cached_max_speed, this->current_order.GetMaxSpeed() * 2); }
+	Money GetRunningCost() const override;
+	bool IsInDepot() const override { return this->state == TRACK_BIT_DEPOT; }
+	bool Tick() override;
+	void OnNewDay() override;
+	Trackdir GetVehicleTrackdir() const override;
+	TileIndex GetOrderStationLocation(StationID station) override;
+	ClosestDepot FindClosestDepot() override;
 	void UpdateCache();
-	void SetDestTile(TileIndex tile);
+	void SetDestTile(TileIndex tile) override;
 };
 
 bool IsShipDestinationTile(TileIndex tile, StationID station);

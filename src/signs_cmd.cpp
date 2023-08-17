@@ -17,13 +17,11 @@
 #include "viewport_kdtree.h"
 #include "window_func.h"
 #include "string_func.h"
+#include "signs_cmd.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
-
-/** The last built sign. */
-SignID _new_sign_id;
 
 /**
  * Place a sign at the given coordinates. Ownership of sign has
@@ -31,18 +29,16 @@ SignID _new_sign_id;
  * but everybody is able to rename/remove it.
  * @param tile tile to place sign at
  * @param flags type of operation
- * @param p1 unused
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
+ * @param text contents of the sign
+ * @return the cost of this operation + the ID of the new sign or an error
  */
-CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlag flags, TileIndex tile, const std::string &text)
 {
 	/* Try to locate a new sign */
-	if (!Sign::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_SIGNS);
+	if (!Sign::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_SIGNS), INVALID_SIGN };
 
 	/* Check sign text length if any */
-	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return CMD_ERROR;
+	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return { CMD_ERROR, INVALID_SIGN };
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
@@ -58,28 +54,26 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		}
 		si->UpdateVirtCoord();
 		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
-		_new_sign_id = si->index;
+		return { CommandCost(), si->index };
 	}
 
-	return CommandCost();
+	return { CommandCost(), INVALID_SIGN };
 }
 
 /**
  * Rename a sign. If the new name of the sign is empty, we assume
  * the user wanted to delete it. So delete it. Ownership of signs
  * has no meaning/effect whatsoever except for eyecandy
- * @param tile unused
  * @param flags type of operation
- * @param p1 index of the sign to be renamed/removed
- * @param p2 unused
+ * @param sign_id index of the sign to be renamed/removed
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
+CommandCost CmdRenameSign(DoCommandFlag flags, SignID sign_id, const std::string &text)
 {
-	Sign *si = Sign::GetIfValid(p1);
+	Sign *si = Sign::GetIfValid(sign_id);
 	if (si == nullptr) return CMD_ERROR;
-	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY && _game_mode != GM_EDITOR) return CMD_ERROR;
+	if (!CompanyCanRenameSign(si)) return CMD_ERROR;
 
 	/* Rename the signs when empty, otherwise remove it */
 	if (!text.empty()) {
@@ -108,17 +102,15 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 /**
  * Callback function that is called after a sign is placed
- * @param result of the operation
- * @param tile unused
- * @param p1 unused
- * @param p2 unused
  * @param cmd unused
+ * @param result of the operation
+ * @param new_sign ID of the placed sign.
  */
-void CcPlaceSign(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcPlaceSign(Commands cmd, const CommandCost &result, SignID new_sign)
 {
 	if (result.Failed()) return;
 
-	ShowRenameSignWindow(Sign::Get(_new_sign_id));
+	ShowRenameSignWindow(Sign::Get(new_sign));
 	ResetObjectToPlace();
 }
 
@@ -130,5 +122,5 @@ void CcPlaceSign(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
  */
 void PlaceProc_Sign(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CMD_PLACE_SIGN | CMD_MSG(STR_ERROR_CAN_T_PLACE_SIGN_HERE), CcPlaceSign);
+	Command<CMD_PLACE_SIGN>::Post(STR_ERROR_CAN_T_PLACE_SIGN_HERE, CcPlaceSign, tile, {});
 }

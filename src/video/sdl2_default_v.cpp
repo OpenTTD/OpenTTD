@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
+#include "../error_func.h"
 #include "../gfx_func.h"
 #include "../rev.h"
 #include "../blitter/factory.hpp"
@@ -59,7 +60,7 @@ void VideoDriver_SDL_Default::MakePalette()
 {
 	if (_sdl_palette == nullptr) {
 		_sdl_palette = SDL_AllocPalette(256);
-		if (_sdl_palette == nullptr) usererror("SDL2: Couldn't allocate palette: %s", SDL_GetError());
+		if (_sdl_palette == nullptr) UserError("SDL2: Couldn't allocate palette: {}", SDL_GetError());
 	}
 
 	CopyPalette(this->local_palette, true);
@@ -133,7 +134,7 @@ bool VideoDriver_SDL_Default::AllocateBackingStore(int w, int h, bool force)
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	_sdl_real_surface = SDL_GetWindowSurface(this->sdl_window);
-	if (_sdl_real_surface == nullptr) usererror("SDL2: Couldn't get window surface: %s", SDL_GetError());
+	if (_sdl_real_surface == nullptr) UserError("SDL2: Couldn't get window surface: {}", SDL_GetError());
 
 	if (!force && w == _sdl_real_surface->w && h == _sdl_real_surface->h) return false;
 
@@ -145,7 +146,7 @@ bool VideoDriver_SDL_Default::AllocateBackingStore(int w, int h, bool force)
 
 	if (bpp == 8) {
 		_sdl_rgb_surface = SDL_CreateRGBSurface(0, w, h, 8, 0, 0, 0, 0);
-		if (_sdl_rgb_surface == nullptr) usererror("SDL2: Couldn't allocate shadow surface: %s", SDL_GetError());
+		if (_sdl_rgb_surface == nullptr) UserError("SDL2: Couldn't allocate shadow surface: {}", SDL_GetError());
 
 		_sdl_surface = _sdl_rgb_surface;
 	} else {

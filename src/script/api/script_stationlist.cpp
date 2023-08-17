@@ -18,14 +18,15 @@
 
 ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
+	EnforceDeityOrCompanyModeValid_Void();
 	for (Station *st : Station::Iterate()) {
-		if ((st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && (st->facilities & station_type) != 0) this->AddItem(st->index);
+		if ((st->owner == ScriptObject::GetCompany() || ScriptCompanyMode::IsDeity()) && (st->facilities & station_type) != 0) this->AddItem(st->index);
 	}
 }
 
 ScriptStationList_Vehicle::ScriptStationList_Vehicle(VehicleID vehicle_id)
 {
-	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return;
+	if (!ScriptVehicle::IsPrimaryVehicle(vehicle_id)) return;
 
 	Vehicle *v = ::Vehicle::Get(vehicle_id);
 

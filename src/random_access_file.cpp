@@ -11,6 +11,7 @@
 #include "random_access_file_type.h"
 
 #include "debug.h"
+#include "error_func.h"
 #include "fileio_func.h"
 #include "string_func.h"
 
@@ -24,11 +25,11 @@
 RandomAccessFile::RandomAccessFile(const std::string &filename, Subdirectory subdir) : filename(filename)
 {
 	this->file_handle = FioFOpenFile(filename, "rb", subdir);
-	if (this->file_handle == nullptr) usererror("Cannot open file '%s'", filename.c_str());
+	if (this->file_handle == nullptr) UserError("Cannot open file '{}'", filename);
 
 	/* When files are in a tar-file, the begin of the file might not be at 0. */
 	long pos = ftell(this->file_handle);
-	if (pos < 0) usererror("Cannot read file '%s'", filename.c_str());
+	if (pos < 0) UserError("Cannot read file '{}'", filename);
 
 	/* Store the filename without path and extension */
 	auto t = filename.rfind(PATHSEPCHAR);
@@ -114,7 +115,7 @@ byte RandomAccessFile::ReadByte()
  * Read a word (16 bits) from the file (in low endian format).
  * @return Read word.
  */
-uint16 RandomAccessFile::ReadWord()
+uint16_t RandomAccessFile::ReadWord()
 {
 	byte b = this->ReadByte();
 	return (this->ReadByte() << 8) | b;
@@ -124,7 +125,7 @@ uint16 RandomAccessFile::ReadWord()
  * Read a double word (32 bits) from the file (in low endian format).
  * @return Read word.
  */
-uint32 RandomAccessFile::ReadDword()
+uint32_t RandomAccessFile::ReadDword()
 {
 	uint b = this->ReadWord();
 	return (this->ReadWord() << 16) | b;

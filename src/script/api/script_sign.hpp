@@ -43,7 +43,7 @@ public:
 	 * @param sign_id The sign to set the name for.
 	 * @param name The name for the sign (can be either a raw string, or a ScriptText object).
 	 * @pre IsValidSign(sign_id).
-	 * @pre name != nullptr && len(name) != 0.
+	 * @pre name != null && len(name) != 0.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
 	 */
@@ -55,7 +55,7 @@ public:
 	 * @pre IsValidSign(sign_id).
 	 * @return The name of the sign.
 	 */
-	static char *GetName(SignID sign_id);
+	static std::optional<std::string> GetName(SignID sign_id);
 
 	/**
 	 * Get the owner of a sign.
@@ -79,7 +79,7 @@ public:
 	 * @param location The place to build the sign.
 	 * @param name The text to place on the sign (can be either a raw string, or a ScriptText object).
 	 * @pre ScriptMap::IsValidTile(location).
-	 * @pre name != nullptr && len(name) != 0.
+	 * @pre name != null && len(name) != 0.
 	 * @exception ScriptSign::ERR_SIGN_TOO_MANY_SIGNS
 	 * @return The SignID of the build sign (use IsValidSign() to check for validity).
 	 *   In test-mode it returns 0 if successful, or any other value to indicate

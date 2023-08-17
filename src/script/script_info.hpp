@@ -31,38 +31,29 @@ class ScriptInfo : public SimpleCountedObject {
 public:
 	ScriptInfo() :
 		engine(nullptr),
-		SQ_instance(nullptr),
-		author(nullptr),
-		name(nullptr),
-		short_name(nullptr),
-		description(nullptr),
-		date(nullptr),
-		instance_name(nullptr),
 		version(0),
-		url(nullptr),
 		scanner(nullptr)
 	{}
-	~ScriptInfo();
 
 	/**
 	 * Get the Author of the script.
 	 */
-	const char *GetAuthor() const { return this->author; }
+	const std::string &GetAuthor() const { return this->author; }
 
 	/**
 	 * Get the Name of the script.
 	 */
-	const char *GetName() const { return this->name; }
+	const std::string &GetName() const { return this->name; }
 
 	/**
 	 * Get the 4 character long short name of the script.
 	 */
-	const char *GetShortName() const { return this->short_name; }
+	const std::string &GetShortName() const { return this->short_name; }
 
 	/**
 	 * Get the description of the script.
 	 */
-	const char *GetDescription() const { return this->description; }
+	const std::string &GetDescription() const { return this->description; }
 
 	/**
 	 * Get the version of the script.
@@ -72,27 +63,27 @@ public:
 	/**
 	 * Get the last-modified date of the script.
 	 */
-	const char *GetDate() const { return this->date; }
+	const std::string &GetDate() const { return this->date; }
 
 	/**
 	 * Get the name of the instance of the script to create.
 	 */
-	const char *GetInstanceName() const { return this->instance_name; }
+	const std::string &GetInstanceName() const { return this->instance_name; }
 
 	/**
 	 * Get the website for this script.
 	 */
-	const char *GetURL() const { return this->url; }
+	const std::string &GetURL() const { return this->url; }
 
 	/**
 	 * Get the filename of the main.nut script.
 	 */
-	const char *GetMainScript() const { return this->main_script.c_str(); }
+	const std::string &GetMainScript() const { return this->main_script; }
 
 	/**
 	 * Get the filename of the tar the script is in.
 	 */
-	std::string GetTarFile() const { return this->tar_file; }
+	const std::string &GetTarFile() const { return this->tar_file; }
 
 	/**
 	 * Check if a given method exists.
@@ -122,7 +113,7 @@ public:
 	/**
 	 * Get the description of a certain Script config option.
 	 */
-	const ScriptConfigItem *GetConfigItem(const char *name) const;
+	const ScriptConfigItem *GetConfigItem(const std::string_view name) const;
 
 	/**
 	 * Set a setting.
@@ -137,7 +128,7 @@ public:
 	/**
 	 * Get the default value for a setting.
 	 */
-	int GetSettingDefaultValue(const char *name) const;
+	int GetSettingDefaultValue(const std::string &name) const;
 
 	/**
 	 * Can this script be selected by developers only?
@@ -146,22 +137,25 @@ public:
 
 protected:
 	class Squirrel *engine;           ///< Engine used to register for Squirrel.
-	HSQOBJECT *SQ_instance;           ///< The Squirrel instance created for this info.
+	HSQOBJECT SQ_instance;            ///< The Squirrel instance created for this info.
 	ScriptConfigItemList config_list; ///< List of settings from this Script.
 
 private:
 	std::string main_script;      ///< The full path of the script.
 	std::string tar_file;         ///< If, which tar file the script was in.
-	const char *author;           ///< Author of the script.
-	const char *name;             ///< Full name of the script.
-	const char *short_name;       ///< Short name (4 chars) which uniquely identifies the script.
-	const char *description;      ///< Small description of the script.
-	const char *date;             ///< The date the script was written at.
-	const char *instance_name;    ///< Name of the main class in the script.
+	std::string author;           ///< Author of the script.
+	std::string name;             ///< Full name of the script.
+	std::string short_name;       ///< Short name (4 chars) which uniquely identifies the script.
+	std::string description;      ///< Small description of the script.
+	std::string date;             ///< The date the script was written at.
+	std::string instance_name;    ///< Name of the main class in the script.
 	int version;                  ///< Version of the script.
-	const char *url;              ///< URL of the script.
+	std::string url;              ///< URL of the script.
 
 	class ScriptScanner *scanner; ///< ScriptScanner object that was used to scan this script info.
 };
+
+void Script_CreateDummyInfo(HSQUIRRELVM vm, const char *type, const char *dir);
+void Script_CreateDummy(HSQUIRRELVM vm, StringID string, const char *type);
 
 #endif /* SCRIPT_INFO_HPP */

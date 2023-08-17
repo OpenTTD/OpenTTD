@@ -16,6 +16,7 @@
 #include "../framerate_type.h"
 #include "../command_func.h"
 #include "../network/network.h"
+#include "../misc_cmd.h"
 
 #include "../safeguards.h"
 
@@ -109,8 +110,8 @@ void LinkGraphSchedule::JoinNext()
  */
 void LinkGraphSchedule::SpawnAll()
 {
-	for (JobList::iterator i = this->running.begin(); i != this->running.end(); ++i) {
-		(*i)->SpawnThread();
+	for (auto &it : this->running) {
+		it->SpawnThread();
 	}
 }
 
@@ -119,8 +120,8 @@ void LinkGraphSchedule::SpawnAll()
  */
 /* static */ void LinkGraphSchedule::Clear()
 {
-	for (JobList::iterator i(instance.running.begin()); i != instance.running.end(); ++i) {
-		(*i)->AbortJob();
+	for (auto &it : instance.running) {
+		it->AbortJob();
 	}
 	instance.running.clear();
 	instance.schedule.clear();
@@ -131,7 +132,7 @@ void LinkGraphSchedule::SpawnAll()
  * graph jobs by the number of days given.
  * @param interval Number of days to be added or subtracted.
  */
-void LinkGraphSchedule::ShiftDates(int interval)
+void LinkGraphSchedule::ShiftDates(TimerGameCalendar::Date interval)
 {
 	for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(interval);
 	for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) lgj->ShiftJoinDate(interval);
@@ -162,10 +163,10 @@ LinkGraphSchedule::~LinkGraphSchedule()
 }
 
 /**
- * Pause the game if in 2 _date_fract ticks, we would do a join with the next
+ * Pause the game if in 2 TimerGameCalendar::date_fract ticks, we would do a join with the next
  * link graph job, but it is still running.
- * The check is done 2 _date_fract ticks early instead of 1, as in multiplayer
- * calls to DoCommandP are executed after a delay of 1 _date_fract tick.
+ * The check is done 2 TimerGameCalendar::date_fract ticks early instead of 1, as in multiplayer
+ * calls to DoCommandP are executed after a delay of 1 TimerGameCalendar::date_fract tick.
  * If we previously paused, unpause if the job is now ready to be joined with.
  */
 void StateGameLoop_LinkGraphPauseControl()
@@ -173,15 +174,15 @@ void StateGameLoop_LinkGraphPauseControl()
 	if (_pause_mode & PM_PAUSED_LINK_GRAPH) {
 		/* We are paused waiting on a job, check the job every tick. */
 		if (!LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
-			DoCommandP(0, PM_PAUSED_LINK_GRAPH, 0, CMD_PAUSE);
+			Command<CMD_PAUSE>::Post(PM_PAUSED_LINK_GRAPH, false);
 		}
 	} else if (_pause_mode == PM_UNPAUSED &&
-			_date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
-			_date % _settings_game.linkgraph.recalc_interval == _settings_game.linkgraph.recalc_interval / 2 &&
+			TimerGameCalendar::date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
+			static_cast<int32_t>(TimerGameCalendar::date) % (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) == (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) / 2 &&
 			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
-		/* Perform check two _date_fract ticks before we would join, to make
+		/* Perform check two TimerGameCalendar::date_fract ticks before we would join, to make
 		 * sure it also works in multiplayer. */
-		DoCommandP(0, PM_PAUSED_LINK_GRAPH, 1, CMD_PAUSE);
+		Command<CMD_PAUSE>::Post(PM_PAUSED_LINK_GRAPH, true);
 	}
 }
 
@@ -203,11 +204,11 @@ void AfterLoad_LinkGraphPauseControl()
  */
 void OnTick_LinkGraph()
 {
-	if (_date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
-	Date offset = _date % _settings_game.linkgraph.recalc_interval;
+	if (TimerGameCalendar::date_fract != LinkGraphSchedule::SPAWN_JOIN_TICK) return;
+	TimerGameCalendar::Date offset = static_cast<int32_t>(TimerGameCalendar::date) % (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY);
 	if (offset == 0) {
 		LinkGraphSchedule::instance.SpawnNext();
-	} else if (offset == _settings_game.linkgraph.recalc_interval / 2) {
+	} else if (offset == (_settings_game.linkgraph.recalc_interval / SECONDS_PER_DAY) / 2) {
 		if (!_networking || _network_server) {
 			PerformanceMeasurer::SetInactive(PFE_GL_LINKGRAPH);
 			LinkGraphSchedule::instance.JoinNext();

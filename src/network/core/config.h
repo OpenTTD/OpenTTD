@@ -15,21 +15,20 @@
 const char *NetworkCoordinatorConnectionString();
 const char *NetworkStunConnectionString();
 const char *NetworkContentServerConnectionString();
-const char *NetworkContentMirrorConnectionString();
+const char *NetworkContentMirrorUriString();
+const char *NetworkSurveyUriString();
 
-/** URL of the HTTP mirror system */
-static const char * const NETWORK_CONTENT_MIRROR_URL            = "/bananas";
+static const uint16_t NETWORK_COORDINATOR_SERVER_PORT = 3976;           ///< The default port of the Game Coordinator server (TCP)
+static const uint16_t NETWORK_STUN_SERVER_PORT        = 3975;           ///< The default port of the STUN server (TCP)
+static const uint16_t NETWORK_TURN_SERVER_PORT        = 3974;           ///< The default port of the TURN server (TCP)
+static const uint16_t NETWORK_CONTENT_SERVER_PORT     = 3978;           ///< The default port of the content server (TCP)
+static const uint16_t NETWORK_DEFAULT_PORT            = 3979;           ///< The default port of the game server (TCP & UDP)
+static const uint16_t NETWORK_ADMIN_PORT              = 3977;           ///< The default port for admin network
+static const uint16_t NETWORK_DEFAULT_DEBUGLOG_PORT   = 3982;           ///< The default port debug-log is sent to (TCP)
 
-static const uint16 NETWORK_COORDINATOR_SERVER_PORT = 3976;           ///< The default port of the Game Coordinator server (TCP)
-static const uint16 NETWORK_STUN_SERVER_PORT        = 3975;           ///< The default port of the STUN server (TCP)
-static const uint16 NETWORK_TURN_SERVER_PORT        = 3974;           ///< The default port of the TURN server (TCP)
-static const uint16 NETWORK_CONTENT_SERVER_PORT     = 3978;           ///< The default port of the content server (TCP)
-static const uint16 NETWORK_CONTENT_MIRROR_PORT     =   80;           ///< The default port of the content mirror (TCP)
-static const uint16 NETWORK_DEFAULT_PORT            = 3979;           ///< The default port of the game server (TCP & UDP)
-static const uint16 NETWORK_ADMIN_PORT              = 3977;           ///< The default port for admin network
-static const uint16 NETWORK_DEFAULT_DEBUGLOG_PORT   = 3982;           ///< The default port debug-log is sent to (TCP)
+static const uint16_t UDP_MTU                         = 1460;           ///< Number of bytes we can pack in a single UDP packet
 
-static const uint16 UDP_MTU                         = 1460;           ///< Number of bytes we can pack in a single UDP packet
+static const std::string NETWORK_SURVEY_DETAILS_LINK = "https://survey.openttd.org/participate"; ///< Link with more details & privacy statement of the survey.
 /*
  * Technically a TCP packet could become 64kiB, however the high bit is kept so it becomes possible in the future
  * to go to (significantly) larger packets if needed. This would entail a strategy such as employed for UTF-8.
@@ -38,19 +37,19 @@ static const uint16 UDP_MTU                         = 1460;           ///< Numbe
  * 00000000 00000000 0bbbbbbb aaaaaaaa -> aaaaaaaa 0bbbbbbb
  * Send_uint16(GB(size, 0, 15)
  *
- * Packets up to 1 GiB, first uint16 has high bit set so it knows to read a
- * next uint16 for the remaining bits of the size.
+ * Packets up to 1 GiB, first uint16_t has high bit set so it knows to read a
+ * next uint16_t for the remaining bits of the size.
  * 00dddddd cccccccc bbbbbbbb aaaaaaaa -> cccccccc 10dddddd aaaaaaaa bbbbbbbb
  * Send_uint16(GB(size, 16, 14) | 0b10 << 14)
  * Send_uint16(GB(size,  0, 16))
  */
-static const uint16 TCP_MTU                         = 32767;          ///< Number of bytes we can pack in a single TCP packet
-static const uint16 COMPAT_MTU                      = 1460;           ///< Number of bytes we can pack in a single packet for backward compatibility
+static const uint16_t TCP_MTU                         = 32767;          ///< Number of bytes we can pack in a single TCP packet
+static const uint16_t COMPAT_MTU                      = 1460;           ///< Number of bytes we can pack in a single packet for backward compatibility
 
-static const byte NETWORK_GAME_ADMIN_VERSION        =    1;           ///< What version of the admin network do we use?
+static const byte NETWORK_GAME_ADMIN_VERSION        =    3;           ///< What version of the admin network do we use?
 static const byte NETWORK_GAME_INFO_VERSION         =    6;           ///< What version of game-info do we use?
-static const byte NETWORK_COMPANY_INFO_VERSION      =    6;           ///< What version of company info is this?
 static const byte NETWORK_COORDINATOR_VERSION       =    6;           ///< What version of game-coordinator-protocol do we use?
+static const byte NETWORK_SURVEY_VERSION            =    1;           ///< What version of the survey do we use?
 
 static const uint NETWORK_NAME_LENGTH               =   80;           ///< The maximum length of the server name and map name, in bytes including '\0'
 static const uint NETWORK_COMPANY_NAME_LENGTH       =  128;           ///< The maximum length of the company name, in bytes including '\0'
@@ -59,7 +58,6 @@ static const uint NETWORK_HOSTNAME_PORT_LENGTH      =   80 + 6;       ///< The m
 static const uint NETWORK_SERVER_ID_LENGTH          =   33;           ///< The maximum length of the network id of the servers, in bytes including '\0'
 static const uint NETWORK_REVISION_LENGTH           =   33;           ///< The maximum length of the revision, in bytes including '\0'
 static const uint NETWORK_PASSWORD_LENGTH           =   33;           ///< The maximum length of the password, in bytes including '\0' (must be >= NETWORK_SERVER_ID_LENGTH)
-static const uint NETWORK_CLIENTS_LENGTH            =  200;           ///< The maximum length for the list of clients that controls a company, in bytes including '\0'
 static const uint NETWORK_CLIENT_NAME_LENGTH        =   25;           ///< The maximum length of a client's name, in bytes including '\0'
 static const uint NETWORK_RCONCOMMAND_LENGTH        =  500;           ///< The maximum length of a rconsole command, in bytes including '\0'
 static const uint NETWORK_GAMESCRIPT_JSON_LENGTH    = COMPAT_MTU - 3; ///< The maximum length of a gamescript json string, in bytes including '\0'. Must not be longer than COMPAT_MTU including header (3 bytes)

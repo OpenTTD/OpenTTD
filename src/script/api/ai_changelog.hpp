@@ -13,9 +13,26 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
- * \b 13.0
+ * \b 14.0
  *
  * This version is not yet released. The following changes are not set in stone yet.
+ *
+ * API additions:
+ * \li AITown::ROAD_LAYOUT_RANDOM
+ * \li AIVehicle::IsPrimaryVehicle
+ *
+ * API removals:
+ * \li AIError::ERR_PRECONDITION_TOO_MANY_PARAMETERS, that error is never returned anymore.
+ *
+ * \b 13.0
+ *
+ * API additions:
+ * \li AICargo::GetWeight
+ * \li AIIndustryType::ResolveNewGRFID
+ * \li AIObjectType::ResolveNewGRFID
+ *
+ * Other changes:
+ * \li AIRoad::HasRoadType now correctly checks RoadType against RoadType
  *
  * \b 12.0
  *

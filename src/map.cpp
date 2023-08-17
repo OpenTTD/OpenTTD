@@ -11,6 +11,7 @@
 #include "debug.h"
 #include "core/alloc_func.hpp"
 #include "water_map.h"
+#include "error_func.h"
 #include "string_func.h"
 
 #include "safeguards.h"
@@ -20,15 +21,15 @@
 extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 #endif
 
-uint _map_log_x;     ///< 2^_map_log_x == _map_size_x
-uint _map_log_y;     ///< 2^_map_log_y == _map_size_y
-uint _map_size_x;    ///< Size of the map along the X
-uint _map_size_y;    ///< Size of the map along the Y
-uint _map_size;      ///< The number of tiles on the map
-uint _map_tile_mask; ///< _map_size - 1 (to mask the mapsize)
+/* static */ uint Map::log_x;     ///< 2^_map_log_x == _map_size_x
+/* static */ uint Map::log_y;     ///< 2^_map_log_y == _map_size_y
+/* static */ uint Map::size_x;    ///< Size of the map along the X
+/* static */ uint Map::size_y;    ///< Size of the map along the Y
+/* static */ uint Map::size;      ///< The number of tiles on the map
+/* static */ uint Map::tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
-Tile *_m = nullptr;          ///< Tiles of the map
-TileExtended *_me = nullptr; ///< Extended Tiles of the map
+/* static */ Tile::TileBase *Tile::base_tiles = nullptr;         ///< Base tiles of the map
+/* static */ Tile::TileExtended *Tile::extended_tiles = nullptr; ///< Extended tiles of the map
 
 
 /**
@@ -36,7 +37,7 @@ TileExtended *_me = nullptr; ///< Extended Tiles of the map
  * @param size_x the width of the map along the NE/SW edge
  * @param size_y the 'height' of the map along the SE/NW edge
  */
-void AllocateMap(uint size_x, uint size_y)
+/* static */ void Map::Allocate(uint size_x, uint size_y)
 {
 	/* Make sure that the map size is within the limits and that
 	 * size of both axes is a power of 2. */
@@ -44,23 +45,23 @@ void AllocateMap(uint size_x, uint size_y)
 			!IsInsideMM(size_y, MIN_MAP_SIZE, MAX_MAP_SIZE + 1) ||
 			(size_x & (size_x - 1)) != 0 ||
 			(size_y & (size_y - 1)) != 0) {
-		error("Invalid map size");
+		FatalError("Invalid map size");
 	}
 
 	Debug(map, 1, "Allocating map of size {}x{}", size_x, size_y);
 
-	_map_log_x = FindFirstBit(size_x);
-	_map_log_y = FindFirstBit(size_y);
-	_map_size_x = size_x;
-	_map_size_y = size_y;
-	_map_size = size_x * size_y;
-	_map_tile_mask = _map_size - 1;
+	Map::log_x = FindFirstBit(size_x);
+	Map::log_y = FindFirstBit(size_y);
+	Map::size_x = size_x;
+	Map::size_y = size_y;
+	Map::size = size_x * size_y;
+	Map::tile_mask = Map::size - 1;
 
-	free(_m);
-	free(_me);
+	free(Tile::base_tiles);
+	free(Tile::extended_tiles);
 
-	_m = CallocT<Tile>(_map_size);
-	_me = CallocT<TileExtended>(_map_size);
+	Tile::base_tiles = CallocT<Tile::TileBase>(Map::size);
+	Tile::extended_tiles = CallocT<Tile::TileExtended>(Map::size);
 }
 
 
@@ -73,26 +74,24 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 	uint x;
 	uint y;
 
-	dx = add & MapMaxX();
-	if (dx >= (int)MapSizeX() / 2) dx -= MapSizeX();
-	dy = (add - dx) / (int)MapSizeX();
+	dx = add & Map::MaxX();
+	if (dx >= (int)Map::SizeX() / 2) dx -= Map::SizeX();
+	dy = (add - dx) / (int)Map::SizeX();
 
 	x = TileX(tile) + dx;
 	y = TileY(tile) + dy;
 
-	if (x >= MapSizeX() || y >= MapSizeY()) {
-		char buf[512];
-
-		seprintf(buf, lastof(buf), "TILE_ADD(%s) when adding 0x%.4X and 0x%.4X failed",
-			exp, tile, add);
+	if (x >= Map::SizeX() || y >= Map::SizeY()) {
+		std::string message = fmt::format("TILE_ADD({}) when adding 0x{:04X} and 0x{%04X} failed",
+			exp, (uint32_t)tile, add);
 #if !defined(_MSC_VER)
-		fprintf(stderr, "%s:%d %s\n", file, line, buf);
+		fmt::print(stderr, "{}:{} {}\n", file, line, message);
 #else
-		_assert(buf, (char*)file, line);
+		_assert(message.data(), (char*)file, line);
 #endif
 	}
 
-	assert(TileXY(x, y) == TILE_MASK(tile + add));
+	assert(TileXY(x, y) == Map::WrapToMap(tile + add));
 
 	return TileXY(x, y);
 }
@@ -120,7 +119,7 @@ TileIndex TileAddWrap(TileIndex tile, int addx, int addy)
 	if ((x == 0 || y == 0) && _settings_game.construction.freeform_edges) return INVALID_TILE;
 
 	/* Are we about to wrap? */
-	if (x >= MapMaxX() || y >= MapMaxY()) return INVALID_TILE;
+	if (x >= Map::MaxX() || y >= Map::MaxY()) return INVALID_TILE;
 
 	return TileXY(x, y);
 }
@@ -218,8 +217,8 @@ uint DistanceFromEdge(TileIndex tile)
 {
 	const uint xl = TileX(tile);
 	const uint yl = TileY(tile);
-	const uint xh = MapSizeX() - 1 - xl;
-	const uint yh = MapSizeY() - 1 - yl;
+	const uint xh = Map::SizeX() - 1 - xl;
+	const uint yh = Map::SizeY() - 1 - yl;
 	const uint minl = std::min(xl, yl);
 	const uint minh = std::min(xh, yh);
 	return std::min(minl, minh);
@@ -236,8 +235,8 @@ uint DistanceFromEdgeDir(TileIndex tile, DiagDirection dir)
 	switch (dir) {
 		case DIAGDIR_NE: return             TileX(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
 		case DIAGDIR_NW: return             TileY(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
-		case DIAGDIR_SW: return MapMaxX() - TileX(tile) - 1;
-		case DIAGDIR_SE: return MapMaxY() - TileY(tile) - 1;
+		case DIAGDIR_SW: return Map::MaxX() - TileX(tile) - 1;
+		case DIAGDIR_SE: return Map::MaxY() - TileY(tile) - 1;
 		default: NOT_REACHED();
 	}
 }
@@ -307,7 +306,7 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
 		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
 			/* Is the tile within the map? */
 			for (uint j = extent[dir] + n * 2 + 1; j != 0; j--) {
-				if (x < MapSizeX() && y < MapSizeY()) {
+				if (x < Map::SizeX() && y < Map::SizeY()) {
 					TileIndex t = TileXY(x, y);
 					/* Is the callback successful? */
 					if (proc(t, user_data)) {
@@ -346,8 +345,8 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 	int x = TileX(tile);
 	int y = TileY(tile);
 
-	uint max_x = MapMaxX();
-	uint max_y = MapMaxY();
+	uint max_x = Map::MaxX();
+	uint max_y = Map::MaxY();
 	uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
 
 	/* go in a 'spiral' with increasing manhattan distance in each iteration */
@@ -357,8 +356,8 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 		/* going counter-clockwise around this square */
 		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
-			static const int8 ddx[DIAGDIR_END] = { -1,  1,  1, -1};
-			static const int8 ddy[DIAGDIR_END] = {  1,  1, -1, -1};
+			static const int8_t ddx[DIAGDIR_END] = { -1,  1,  1, -1};
+			static const int8_t ddy[DIAGDIR_END] = {  1,  1, -1, -1};
 
 			int dx = ddx[dir];
 			int dy = ddy[dir];
@@ -378,7 +377,7 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 	if (!water) {
 		/* no land found - is this a water-only map? */
-		for (TileIndex t = 0; t < MapSize(); t++) {
+		for (TileIndex t = 0; t < Map::Size(); t++) {
 			if (!IsTileType(t, MP_VOID) && !IsTileType(t, MP_WATER)) return 0x1FF;
 		}
 	}

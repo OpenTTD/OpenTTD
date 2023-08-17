@@ -217,6 +217,8 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
  */
 bool NetworkTCPSocketHandler::CanSendReceive()
 {
+	assert(this->sock != INVALID_SOCKET);
+
 	fd_set read_fd, write_fd;
 	struct timeval tv;
 

@@ -1,0 +1,209 @@
+name: Release (MacOS)
+
+on:
+  workflow_call:
+    inputs:
+      survey_key:
+        required: false
+        type: string
+        default: ""
+
+jobs:
+  macos:
+    name: MacOS
+
+    runs-on: macos-11
+    env:
+      MACOSX_DEPLOYMENT_TARGET: 10.13
+
+    steps:
+    - name: Download source
+      uses: actions/download-artifact@v3
+      with:
+        name: internal-source
+
+    - name: Unpack source
+      run: |
+        tar -xf source.tar.gz --strip-components=1
+
+    - name: Install dependencies
+      env:
+        HOMEBREW_NO_AUTO_UPDATE: 1
+        HOMEBREW_NO_INSTALL_CLEANUP: 1
+      run: |
+        brew install \
+          pandoc \
+          pkg-config \
+          # EOF
+
+    - name: Prepare cache key
+      id: key
+      run: |
+        echo "image=$ImageOS-$ImageVersion" >> $GITHUB_OUTPUT
+
+    - name: Enable vcpkg cache
+      uses: actions/cache@v3
+      with:
+        path: /usr/local/share/vcpkg/installed
+        key: ${{ steps.key.outputs.image }}-vcpkg-release-1 # Increase the number whenever dependencies are modified
+        restore-keys: |
+          ${{ steps.key.outputs.image }}-vcpkg-release
+          ${{ steps.key.outputs.image }}-vcpkg-x64
+
+    - name: Prepare vcpkg
+      run: |
+        vcpkg install \
+          curl:x64-osx \
+          curl:arm64-osx \
+          liblzma:x64-osx \
+          liblzma:arm64-osx \
+          libpng:x64-osx \
+          libpng:arm64-osx \
+          lzo:x64-osx \
+          lzo:arm64-osx \
+          nlohmann-json:x64-osx \
+          nlohmann-json:arm64-osx \
+          zlib:x64-osx \
+          zlib:arm64-osx \
+          # EOF
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build tools
+      run: |
+        mkdir build-host
+        cd build-host
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_TOOLS_ONLY=ON \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build tools"
+        echo "Running on $(sysctl -n hw.logicalcpu) cores"
+        cmake --build . -j $(sysctl -n hw.logicalcpu) --target tools
+        echo "::endgroup::"
+
+    - name: Import code signing certificates
+      uses: Apple-Actions/import-codesign-certs@v2
+      with:
+        # The certificates in a PKCS12 file encoded as a base64 string
+        p12-file-base64: ${{ secrets.APPLE_DEVELOPER_CERTIFICATE_P12_BASE64 }}
+        # The password used to import the PKCS12 file.
+        p12-password: ${{ secrets.APPLE_DEVELOPER_CERTIFICATE_PASSWORD }}
+      # If this is run on a fork, there may not be a certificate set up - continue in this case
+      continue-on-error: true
+
+    - name: Build arm64
+      run: |
+        mkdir build-arm64
+        cd build-arm64
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -DCMAKE_OSX_ARCHITECTURES=arm64 \
+          -DVCPKG_TARGET_TRIPLET=arm64-osx \
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(sysctl -n hw.logicalcpu) cores"
+        cmake --build . -j $(sysctl -n hw.logicalcpu) --target openttd
+        echo "::endgroup::"
+
+    - name: Build x64
+      run: |
+        mkdir build-x64
+        cd build-x64
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+          -DVCPKG_TARGET_TRIPLET=x64-osx \
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_SURVEY_KEY=${{ inputs.survey_key }} \
+          -DCPACK_BUNDLE_APPLE_CERT_APP=${{ secrets.APPLE_DEVELOPER_CERTIFICATE_ID }} \
+          "-DCPACK_BUNDLE_APPLE_CODESIGN_PARAMETER=--deep -f --options runtime" \
+          -DAPPLE_UNIVERSAL_PACKAGE=1 \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(sysctl -n hw.logicalcpu) cores"
+        cmake --build . -j $(sysctl -n hw.logicalcpu) --target openttd
+        echo "::endgroup::"
+
+    - name: Create bundles
+      run: |
+        cd build-x64
+
+        echo "::group::Create universal binary"
+        # Combine the `openttd` binaries from each build into a single file
+        lipo -create -output openttd-universal ../build-*/openttd
+        mv openttd-universal openttd
+        echo "::endgroup::"
+
+        echo "::group::Run CPack"
+        cpack
+        echo "::endgroup::"
+
+        echo "::group::Cleanup"
+        # Remove the sha256 files CPack generates; we will do this ourself at
+        # the end of this workflow.
+        rm -f bundles/*.sha256
+        echo "::endgroup::"
+
+    - name: Notarize
+      env:
+        AC_USERNAME: ${{ secrets.APPLE_DEVELOPER_APP_USERNAME }}
+        AC_PASSWORD: ${{ secrets.APPLE_DEVELOPER_APP_PASSWORD }}
+        AC_TEAM_ID: ${{ secrets.APPLE_DEVELOPER_TEAM_ID }}
+      run: |
+        if [ -z "${AC_USERNAME}" ]; then
+            # We may be running on a fork that doesn't have notarization secrets set up; skip this step
+            echo No notarization secrets set up, skipping.
+            exit 0
+        fi
+
+        xcrun notarytool store-credentials --apple-id "${AC_USERNAME}" --password "${AC_PASSWORD}" --team-id "${AC_TEAM_ID}" openttd
+        cd build-x64
+        ../os/macosx/notarize.sh
+
+    - name: Build zip
+      run: |
+        cd build-x64
+
+        pushd _CPack_Packages/*/Bundle/openttd-*/
+
+        # Remove the Applications symlink from the staging folder
+        rm -f Applications
+
+        # Remove the original dmg built by CPack to avoid a conflict when resolving
+        # the zip_filename variable below
+        rm -f ../*.dmg
+
+        zip_filename=(../openttd-*)
+
+        # Package up the existing, notarised .app into a zip file
+        zip -r -9 ${zip_filename}.zip OpenTTD.app
+
+        popd
+
+        # Now move it into place to be uploaded
+        mv _CPack_Packages/*/Bundle/openttd-*.zip bundles/
+
+    - name: Store bundles
+      uses: actions/upload-artifact@v3
+      with:
+        name: openttd-macos-universal
+        path: build-x64/bundles
+        retention-days: 5

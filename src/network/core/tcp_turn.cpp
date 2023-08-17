@@ -10,7 +10,7 @@
  */
 
 #include "../../stdafx.h"
-#include "../../date_func.h"
+#include "../../timer/timer_game_calendar.h"
 #include "../../debug.h"
 #include "tcp_turn.h"
 

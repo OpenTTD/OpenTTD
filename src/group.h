@@ -16,21 +16,19 @@
 #include "vehicle_type.h"
 #include "engine_type.h"
 #include "livery.h"
-#include <string>
 
 typedef Pool<Group, GroupID, 16, 64000> GroupPool;
 extern GroupPool _group_pool; ///< Pool of groups.
 
 /** Statistics and caches on the vehicles in a group. */
 struct GroupStatistics {
-	uint16 num_vehicle;                     ///< Number of vehicles.
-	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns.
-
+	Money profit_last_year;                 ///< Sum of profits for all vehicles.
+	Money profit_last_year_min_age;         ///< Sum of profits for vehicles considered for profit statistics.
+	uint16_t *num_engines;                    ///< Caches the number of engines of each type the company owns.
+	uint16_t num_vehicle;                     ///< Number of vehicles.
+	uint16_t num_vehicle_min_age;             ///< Number of vehicles considered for profit statistics;
 	bool autoreplace_defined;               ///< Are any autoreplace rules set?
 	bool autoreplace_finished;              ///< Have all autoreplacement finished?
-
-	uint16 num_profit_vehicle;              ///< Number of vehicles considered for profit statistics;
-	Money profit_last_year;                 ///< Sum of profits for all vehicles.
 
 	GroupStatistics();
 	~GroupStatistics();
@@ -39,8 +37,10 @@ struct GroupStatistics {
 
 	void ClearProfits()
 	{
-		this->num_profit_vehicle = 0;
 		this->profit_last_year = 0;
+
+		this->num_vehicle_min_age = 0;
+		this->profit_last_year_min_age = 0;
 	}
 
 	void ClearAutoreplace()
@@ -55,14 +55,15 @@ struct GroupStatistics {
 
 	static void CountVehicle(const Vehicle *v, int delta);
 	static void CountEngine(const Vehicle *v, int delta);
-	static void VehicleReachedProfitAge(const Vehicle *v);
+	static void AddProfitLastYear(const Vehicle *v);
+	static void VehicleReachedMinAge(const Vehicle *v);
 
 	static void UpdateProfits();
 	static void UpdateAfterLoad();
 	static void UpdateAutoreplace(CompanyID company);
 };
 
-enum GroupFlags : uint8 {
+enum GroupFlags : uint8_t {
 	GF_REPLACE_PROTECTION,    ///< If set to true, the global autoreplace has no effect on the group
 	GF_REPLACE_WAGON_REMOVAL, ///< If set, autoreplace will perform wagon removal on vehicles in this group.
 	GF_END,
@@ -74,7 +75,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	Owner owner;                ///< Group Owner
 	VehicleType vehicle_type;   ///< Vehicle type of the group
 
-	uint8 flags;                ///< Group flags
+	uint8_t flags;                ///< Group flags
 	Livery livery;              ///< Custom colour scheme for vehicles in this group
 	GroupStatistics statistics; ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
@@ -104,15 +105,13 @@ static inline bool IsAllGroupID(GroupID id_g)
 
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 uint GetGroupNumVehicle(CompanyID company, GroupID id_g, VehicleType type);
-uint GetGroupNumProfitVehicle(CompanyID company, GroupID id_g, VehicleType type);
-Money GetGroupProfitLastYear(CompanyID company, GroupID id_g, VehicleType type);
+uint GetGroupNumVehicleMinAge(CompanyID company, GroupID id_g, VehicleType type);
+Money GetGroupProfitLastYearMinAge(CompanyID company, GroupID id_g, VehicleType type);
 
 void SetTrainGroupID(Train *v, GroupID grp);
 void UpdateTrainGroupID(Train *v);
 void RemoveVehicleFromGroup(const Vehicle *v);
 void RemoveAllGroupsForCompany(const CompanyID company);
 bool GroupIsInGroup(GroupID search, GroupID group);
-
-extern GroupID _new_group_id;
 
 #endif /* GROUP_H */

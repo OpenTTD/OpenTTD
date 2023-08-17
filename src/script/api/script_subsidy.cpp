@@ -15,6 +15,7 @@
 #include "script_error.hpp"
 #include "../../subsidy_base.h"
 #include "../../station_base.h"
+#include "../../subsidy_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -30,15 +31,16 @@
 	return ::Subsidy::Get(subsidy_id)->IsAwarded();
 }
 
-/* static */ bool ScriptSubsidy::Create(CargoID cargo_type, SubsidyParticipantType from_type, uint16 from_id, SubsidyParticipantType to_type, uint16 to_id)
+/* static */ bool ScriptSubsidy::Create(CargoID cargo_type, SubsidyParticipantType from_type, SQInteger from_id, SubsidyParticipantType to_type, SQInteger to_id)
 {
+	EnforceDeityMode(false);
 	EnforcePrecondition(false, ScriptCargo::IsValidCargo(cargo_type));
 	EnforcePrecondition(false, from_type == SPT_INDUSTRY || from_type == SPT_TOWN);
 	EnforcePrecondition(false, to_type == SPT_INDUSTRY || to_type == SPT_TOWN);
 	EnforcePrecondition(false, (from_type == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(from_id)) || (from_type == SPT_TOWN && ScriptTown::IsValidTown(from_id)));
 	EnforcePrecondition(false, (to_type == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(to_id)) || (to_type == SPT_TOWN && ScriptTown::IsValidTown(to_id)));
 
-	return ScriptObject::DoCommand(0, from_type | (from_id << 8) | (cargo_type << 24), to_type | (to_id << 8), CMD_CREATE_SUBSIDY);
+	return ScriptObject::Command<CMD_CREATE_SUBSIDY>::Do(cargo_type, (::SourceType)from_type, from_id, (::SourceType)to_type, to_id);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptSubsidy::GetAwardedTo(SubsidyID subsidy_id)
@@ -77,9 +79,9 @@
 	return (SubsidyParticipantType)(uint)::Subsidy::Get(subsidy_id)->src_type;
 }
 
-/* static */ int32 ScriptSubsidy::GetSourceIndex(SubsidyID subsidy_id)
+/* static */ SQInteger ScriptSubsidy::GetSourceIndex(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
+	if (!IsValidSubsidy(subsidy_id)) return INVALID_SOURCE;
 
 	return ::Subsidy::Get(subsidy_id)->src;
 }
@@ -91,9 +93,9 @@
 	return (SubsidyParticipantType)(uint)::Subsidy::Get(subsidy_id)->dst_type;
 }
 
-/* static */ int32 ScriptSubsidy::GetDestinationIndex(SubsidyID subsidy_id)
+/* static */ SQInteger ScriptSubsidy::GetDestinationIndex(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
+	if (!IsValidSubsidy(subsidy_id)) return INVALID_SOURCE;
 
 	return ::Subsidy::Get(subsidy_id)->dst;
 }

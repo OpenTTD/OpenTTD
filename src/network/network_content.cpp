@@ -37,7 +37,7 @@ ClientNetworkContentSocketHandler _network_content_client;
 /** Wrapper function for the HasProc */
 static bool HasGRFConfig(const ContentInfo *ci, bool md5sum)
 {
-	return FindGRFConfig(BSWAP32(ci->unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? ci->md5sum : nullptr) != nullptr;
+	return FindGRFConfig(BSWAP32(ci->unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? &ci->md5sum : nullptr) != nullptr;
 }
 
 /**
@@ -62,7 +62,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 	ci->description = p->Recv_string(NETWORK_CONTENT_DESC_LENGTH, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	ci->unique_id = p->Recv_uint32();
-	for (uint j = 0; j < sizeof(ci->md5sum); j++) {
+	for (size_t j = 0; j < ci->md5sum.size(); j++) {
 		ci->md5sum[j] = p->Recv_uint8();
 	}
 
@@ -144,8 +144,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 
 	/* Do we already have a stub for this? */
 	for (ContentInfo *ici : this->infos) {
-		if (ici->type == ci->type && ici->unique_id == ci->unique_id &&
-				memcmp(ci->md5sum, ici->md5sum, sizeof(ci->md5sum)) == 0) {
+		if (ici->type == ci->type && ici->unique_id == ci->unique_id && ci->md5sum == ici->md5sum) {
 			/* Preserve the name if possible */
 			if (ci->name.empty()) ci->name = ici->name;
 			if (ici->IsSelected()) ci->state = ici->state;
@@ -237,9 +236,9 @@ void ClientNetworkContentSocketHandler::RequestContentList(uint count, const Con
 	while (count > 0) {
 		/* We can "only" send a limited number of IDs in a single packet.
 		 * A packet begins with the packet size and a byte for the type.
-		 * Then this packet adds a uint16 for the count in this packet.
+		 * Then this packet adds a uint16_t for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16_t)) / sizeof(uint32_t));
 
 		Packet *p = new Packet(PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
 		p->Send_uint16(p_count);
@@ -266,18 +265,18 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	this->Connect();
 
 	assert(cv->size() < 255);
-	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
-			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? /*sizeof(ContentInfo::md5sum)*/16 : 0)));
+	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8_t)) /
+			(sizeof(uint8_t) + sizeof(uint32_t) + (send_md5sum ? MD5_HASH_BYTES : 0)));
 
 	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
-	p->Send_uint8((uint8)cv->size());
+	p->Send_uint8((uint8_t)cv->size());
 
 	for (const ContentInfo *ci : *cv) {
 		p->Send_uint8((byte)ci->type);
 		p->Send_uint32(ci->unique_id);
 		if (!send_md5sum) continue;
 
-		for (uint j = 0; j < sizeof(ci->md5sum); j++) {
+		for (size_t j = 0; j < ci->md5sum.size(); j++) {
 			p->Send_uint8(ci->md5sum[j]);
 		}
 	}
@@ -288,7 +287,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 		bool found = false;
 		for (ContentInfo *ci2 : this->infos) {
 			if (ci->type == ci2->type && ci->unique_id == ci2->unique_id &&
-					(!send_md5sum || memcmp(ci->md5sum, ci2->md5sum, sizeof(ci->md5sum)) == 0)) {
+					(!send_md5sum || ci->md5sum == ci2->md5sum)) {
 				found = true;
 				break;
 			}
@@ -311,13 +310,6 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 {
 	bytes = 0;
 
-#ifdef __EMSCRIPTEN__
-	/* Emscripten is loaded via an HTTPS connection. As such, it is very
-	 * difficult to make HTTP connections. So always use the TCP method of
-	 * downloading content. */
-	fallback = true;
-#endif
-
 	ContentIDList content;
 	for (const ContentInfo *ci : this->infos) {
 		if (!ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) continue;
@@ -330,6 +322,8 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 
 	/* If there's nothing to download, do nothing. */
 	if (files == 0) return;
+
+	this->isCancelled = false;
 
 	if (_settings_client.network.no_http_content_downloads || fallback) {
 		this->DownloadSelectedContentFallback(content);
@@ -344,25 +338,14 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
  */
 void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const ContentIDList &content)
 {
-	uint count = (uint)content.size();
-
-	/* Allocate memory for the whole request.
-	 * Requests are "id\nid\n..." (as strings), so assume the maximum ID,
-	 * which is uint32 so 10 characters long. Then the newlines and
-	 * multiply that all with the count and then add the '\0'. */
-	uint bytes = (10 + 1) * count + 1;
-	char *content_request = MallocT<char>(bytes);
-	const char *lastof = content_request + bytes - 1;
-
-	char *p = content_request;
+	std::string content_request;
 	for (const ContentID &id : content) {
-		p += seprintf(p, lastof, "%d\n", id);
+		content_request += std::to_string(id) + "\n";
 	}
 
 	this->http_response_index = -1;
 
-	new NetworkHTTPContentConnecter(NetworkContentMirrorConnectionString(), this, NETWORK_CONTENT_MIRROR_URL, content_request);
-	/* NetworkHTTPContentConnecter takes over freeing of content_request! */
+	NetworkHTTPSocketHandler::Connect(NetworkContentMirrorUriString(), this, content_request);
 }
 
 /**
@@ -378,9 +361,9 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
 	while (count > 0) {
 		/* We can "only" send a limited number of IDs in a single packet.
 		 * A packet begins with the packet size and a byte for the type.
-		 * Then this packet adds a uint16 for the count in this packet.
+		 * Then this packet adds a uint16_t for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16_t)) / sizeof(uint32_t));
 
 		Packet *p = new Packet(PACKET_CONTENT_CLIENT_CONTENT, TCP_MTU);
 		p->Send_uint16(p_count);
@@ -592,24 +575,30 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	}
 }
 
+bool ClientNetworkContentSocketHandler::IsCancelled() const
+{
+	return this->isCancelled;
+}
+
 /* Also called to just clean up the mess. */
 void ClientNetworkContentSocketHandler::OnFailure()
 {
-	/* If we fail, download the rest via the 'old' system. */
-	uint files, bytes;
-	this->DownloadSelectedContent(files, bytes, true);
-
 	this->http_response.clear();
 	this->http_response.shrink_to_fit();
 	this->http_response_index = -2;
 
 	if (this->curFile != nullptr) {
-		/* Revert the download progress when we are going for the old system. */
-		long size = ftell(this->curFile);
-		if (size > 0) this->OnDownloadProgress(this->curInfo, (int)-size);
+		this->OnDownloadProgress(this->curInfo, -1);
 
 		fclose(this->curFile);
 		this->curFile = nullptr;
+	}
+
+	/* If we fail, download the rest via the 'old' system. */
+	if (!this->isCancelled) {
+		uint files, bytes;
+
+		this->DownloadSelectedContent(files, bytes, true);
 	}
 }
 
@@ -710,19 +699,19 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 		check_not_null(p);
 		p++; // Start after the '/'
 
-		char tmp[MAX_PATH];
-		if (strecpy(tmp, p, lastof(tmp)) == lastof(tmp)) {
-			this->OnFailure();
-			return;
-		}
+		std::string filename = p;
 		/* Remove the extension from the string. */
 		for (uint i = 0; i < 2; i++) {
-			p = strrchr(tmp, '.');
-			check_and_terminate(p);
+			auto pos = filename.find_last_of('.');
+			if (pos == std::string::npos) {
+				this->OnFailure();
+				return;
+			}
+			filename.erase(pos);
 		}
 
 		/* Copy the string, without extension, to the filename. */
-		this->curInfo->filename = tmp;
+		this->curInfo->filename = std::move(filename);
 
 		/* Request the next file. */
 		if (!this->BeforeDownload()) {
@@ -746,7 +735,8 @@ ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 	http_response_index(-2),
 	curFile(nullptr),
 	curInfo(nullptr),
-	isConnecting(false)
+	isConnecting(false),
+	isCancelled(false)
 {
 	this->lastActivity = std::chrono::steady_clock::now();
 }
@@ -792,7 +782,10 @@ public:
 void ClientNetworkContentSocketHandler::Connect()
 {
 	if (this->sock != INVALID_SOCKET || this->isConnecting) return;
+
+	this->isCancelled = false;
 	this->isConnecting = true;
+
 	new NetworkContentConnecter(NetworkContentServerConnectionString());
 }
 
@@ -801,6 +794,7 @@ void ClientNetworkContentSocketHandler::Connect()
  */
 NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool error)
 {
+	this->isCancelled = true;
 	NetworkContentSocketHandler::CloseConnection();
 
 	if (this->sock == INVALID_SOCKET) return NETWORK_RECV_STATUS_OKAY;
@@ -1054,11 +1048,11 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		 * After that's done run over them once again to test their children
 		 * to unselect. Don't do it immediately because it'll do exactly what
 		 * we're doing now. */
-		for (const ContentInfo *c : parents) {
-			if (c->state == ContentInfo::AUTOSELECTED) this->Unselect(c->id);
+		for (const ContentInfo *parent : parents) {
+			if (parent->state == ContentInfo::AUTOSELECTED) this->Unselect(parent->id);
 		}
-		for (const ContentInfo *c : parents) {
-			this->CheckDependencyState(this->GetContent(c->id));
+		for (const ContentInfo *parent : parents) {
+			this->CheckDependencyState(this->GetContent(parent->id));
 		}
 	}
 }

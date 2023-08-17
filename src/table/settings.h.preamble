@@ -36,7 +36,7 @@ static size_t ConvertLandscape(const char *value);
  *
  * The something part defines the type of variable to store. There are a
  * lot of types. Easy ones are:
- * - VAR:  any number type, 'type' field specifies what number. eg int8 or uint32
+ * - VAR:  any number type, 'type' field specifies what number. eg int8_t or uint32
  * - BOOL: a boolean number type
  * - STR:  a string or character. 'type' field specifies what string. Normal, string, or quoted
  * A bit more difficult to use are MMANY (meaning ManyOfMany) and OMANY (OneOfMany)
@@ -78,6 +78,9 @@ static size_t ConvertLandscape(const char *value);
  * This section is for structures where their various members are saved */
 #define SDT_VAR(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
 	NSD(Int, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback)
+
+#define SDT_VAR_NAME(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup, name)\
+	NSD(Int, SLE_GENERAL_NAME(SL_VAR, name, base, var, type, 1, from, to, extra), flags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback)
 
 #define SDT_BOOL(base, var, flags, def, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
 	NSD(Bool, SLE_GENERAL(SL_VAR, base, var, SLE_BOOL, 1, from, to, extra), flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback)

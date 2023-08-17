@@ -11,7 +11,7 @@
 
 #include "../strings_func.h"
 #include "../command_func.h"
-#include "../date_func.h"
+#include "../timer/timer_game_calendar.h"
 #include "network_admin.h"
 #include "network_client.h"
 #include "network_query.h"
@@ -35,6 +35,7 @@
 #include "../core/pool_func.hpp"
 #include "../gfx_func.h"
 #include "../error.h"
+#include "../misc_cmd.h"
 #include <charconv>
 #include <sstream>
 #include <iomanip>
@@ -62,20 +63,20 @@ bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkCompanyState *_network_company_states = nullptr; ///< Statistics about some companies.
 ClientID _network_own_client_id;      ///< Our client identifier.
 ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
-uint8 _network_reconnect;             ///< Reconnect timeout
+uint8_t _network_reconnect;             ///< Reconnect timeout
 StringList _network_bind_list;        ///< The addresses to bind on.
 StringList _network_host_list;        ///< The servers we know.
 StringList _network_ban_list;         ///< The banned clients.
-uint32 _frame_counter_server;         ///< The frame_counter of the server, if in network-mode
-uint32 _frame_counter_max;            ///< To where we may go with our clients
-uint32 _frame_counter;                ///< The current frame.
-uint32 _last_sync_frame;              ///< Used in the server to store the last time a sync packet was sent to clients.
+uint32_t _frame_counter_server;         ///< The frame_counter of the server, if in network-mode
+uint32_t _frame_counter_max;            ///< To where we may go with our clients
+uint32_t _frame_counter;                ///< The current frame.
+uint32_t _last_sync_frame;              ///< Used in the server to store the last time a sync packet was sent to clients.
 NetworkAddressList _broadcast_list;   ///< List of broadcast addresses.
-uint32 _sync_seed_1;                  ///< Seed to compare during sync checks.
+uint32_t _sync_seed_1;                  ///< Seed to compare during sync checks.
 #ifdef NETWORK_SEND_DOUBLE_SEED
-uint32 _sync_seed_2;                  ///< Second part of the seed.
+uint32_t _sync_seed_2;                  ///< Second part of the seed.
 #endif
-uint32 _sync_frame;                   ///< The frame to perform the sync check.
+uint32_t _sync_frame;                   ///< The frame to perform the sync check.
 bool _network_first_time;             ///< Whether we have finished joining or not.
 CompanyMask _network_company_passworded; ///< Bitmask of the password status of all companies.
 
@@ -84,8 +85,7 @@ static_assert((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_CHARS 
 /** The amount of clients connected */
 byte _network_clients_connected = 0;
 
-/* Some externs / forwards */
-extern void StateGameLoop();
+extern std::string GenerateUid(std::string_view subject);
 
 /**
  * Return whether there is any client connected or trying to connect at all.
@@ -173,7 +173,7 @@ std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string passw
  * @param password_game_seed Game seed.
  * @return The hashed password.
  */
-std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32 password_game_seed)
+std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32_t password_game_seed)
 {
 	if (password.empty()) return password;
 
@@ -190,18 +190,14 @@ std::string GenerateCompanyPasswordHash(const std::string &password, const std::
 	}
 
 	Md5 checksum;
-	uint8 digest[16];
+	MD5Hash digest;
 
 	/* Generate the MD5 hash */
 	std::string salted_password_string = salted_password.str();
 	checksum.Append(salted_password_string.data(), salted_password_string.size());
 	checksum.Finish(digest);
 
-	std::ostringstream hashed_password;
-	hashed_password << std::hex << std::setfill('0');
-	for (int di = 0; di < 16; di++) hashed_password << std::setw(2) << (int)digest[di]; // Cast needed, otherwise interpreted as character to add
-
-	return hashed_password.str();
+	return FormatArrayAsHex(digest);
 }
 
 /**
@@ -217,7 +213,7 @@ bool NetworkCompanyIsPassworded(CompanyID company_id)
 /* This puts a text-message to the console, or in the future, the chat-box,
  *  (to keep it all a bit more general)
  * If 'self_send' is true, this is the client who is sending the message */
-void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str, int64 data, const std::string &data_str)
+void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str, int64_t data, const std::string &data_str)
 {
 	StringID strid;
 	switch (action) {
@@ -252,7 +248,6 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 		default:                            strid = STR_NETWORK_CHAT_ALL; break;
 	}
 
-	char message[1024];
 	SetDParamStr(0, name);
 	SetDParamStr(1, str);
 	SetDParam(2, data);
@@ -262,10 +257,12 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 	 * right-to-left characters depending on the context. As the next text might be an user's name, the
 	 * user name's characters will influence the direction of the "***" instead of the language setting
 	 * of the game. Manually set the direction of the "***" by inserting a text-direction marker. */
-	char *msg_ptr = message + Utf8Encode(message, _current_text_dir == TD_LTR ? CHAR_TD_LRM : CHAR_TD_RLM);
-	GetString(msg_ptr, strid, lastof(message));
+	std::ostringstream stream;
+	std::ostreambuf_iterator<char> iterator(stream);
+	Utf8Encode(iterator, _current_text_dir == TD_LTR ? CHAR_TD_LRM : CHAR_TD_RLM);
+	std::string message = stream.str() + GetString(strid);
 
-	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", _date, _date_fract, message);
+	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", TimerGameCalendar::date, TimerGameCalendar::date_fract, message);
 	IConsolePrint(colour, message);
 	NetworkAddChatMessage(colour, _settings_client.gui.network_chat_timeout, message);
 }
@@ -394,7 +391,7 @@ static void CheckPauseHelper(bool pause, PauseMode pm)
 {
 	if (pause == ((_pause_mode & pm) != PM_UNPAUSED)) return;
 
-	DoCommandP(0, pm, pause ? 1 : 0, CMD_PAUSE);
+	Command<CMD_PAUSE>::Post(pm, pause);
 }
 
 /**
@@ -469,7 +466,7 @@ std::string_view ParseCompanyFromConnectionString(const std::string &connection_
 		std::string_view company_string = ip.substr(offset + 1);
 		ip = ip.substr(0, offset);
 
-		uint8 company_value;
+		uint8_t company_value;
 		auto [_, err] = std::from_chars(company_string.data(), company_string.data() + company_string.size(), company_value);
 		if (err == std::errc()) {
 			if (company_value != COMPANY_NEW_COMPANY && company_value != COMPANY_SPECTATOR) {
@@ -503,7 +500,7 @@ std::string_view ParseCompanyFromConnectionString(const std::string &connection_
  * @param company_id        The company ID to set, if available.
  * @return A std::string_view into the connection string with the (IP) address part.
  */
-std::string_view ParseFullConnectionString(const std::string &connection_string, uint16 &port, CompanyID *company_id)
+std::string_view ParseFullConnectionString(const std::string &connection_string, uint16_t &port, CompanyID *company_id)
 {
 	std::string_view ip = ParseCompanyFromConnectionString(connection_string, company_id);
 
@@ -523,9 +520,9 @@ std::string_view ParseFullConnectionString(const std::string &connection_string,
  * @param default_port The port to use if none is given.
  * @return The normalized connection string.
  */
-std::string NormalizeConnectionString(const std::string &connection_string, uint16 default_port)
+std::string NormalizeConnectionString(const std::string &connection_string, uint16_t default_port)
 {
-	uint16 port = default_port;
+	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port);
 	return std::string(ip) + ":" + std::to_string(port);
 }
@@ -538,9 +535,9 @@ std::string NormalizeConnectionString(const std::string &connection_string, uint
  * @param default_port The default port to set port to if not in connection_string.
  * @return A valid NetworkAddress of the parsed information.
  */
-NetworkAddress ParseConnectionString(const std::string &connection_string, uint16 default_port)
+NetworkAddress ParseConnectionString(const std::string &connection_string, uint16_t default_port)
 {
-	uint16 port = default_port;
+	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port);
 	return NetworkAddress(ip, port);
 }
@@ -598,6 +595,7 @@ void NetworkClose(bool close_admins)
 
 		_network_coordinator_client.CloseAllConnections();
 	}
+	NetworkGameSocketHandler::ProcessDeferredDeletions();
 
 	TCPConnecter::KillAll();
 
@@ -608,6 +606,7 @@ void NetworkClose(bool close_admins)
 
 	delete[] _network_company_states;
 	_network_company_states = nullptr;
+	_network_company_passworded = 0;
 
 	InitializeNetworkPools(close_admins);
 }
@@ -696,7 +695,7 @@ NetworkGameList *NetworkAddServer(const std::string &connection_string, bool man
  * @param addresses the list to write to.
  * @param port the port to bind to.
  */
-void GetBindAddresses(NetworkAddressList *addresses, uint16 port)
+void GetBindAddresses(NetworkAddressList *addresses, uint16_t port)
 {
 	for (const auto &iter : _network_bind_list) {
 		addresses->emplace_back(iter.c_str(), port);
@@ -994,12 +993,15 @@ void NetworkUpdateServerGameType()
  */
 static bool NetworkReceive()
 {
+	bool result;
 	if (_network_server) {
 		ServerNetworkAdminSocketHandler::Receive();
-		return ServerNetworkGameSocketHandler::Receive();
+		result = ServerNetworkGameSocketHandler::Receive();
 	} else {
-		return ClientNetworkGameSocketHandler::Receive();
+		result = ClientNetworkGameSocketHandler::Receive();
 	}
+	NetworkGameSocketHandler::ProcessDeferredDeletions();
+	return result;
 }
 
 /* This sends all buffered commands (if possible) */
@@ -1011,6 +1013,7 @@ static void NetworkSend()
 	} else {
 		ClientNetworkGameSocketHandler::Send();
 	}
+	NetworkGameSocketHandler::ProcessDeferredDeletions();
 }
 
 /**
@@ -1025,6 +1028,7 @@ void NetworkBackgroundLoop()
 	TCPConnecter::CheckCallbacks();
 	NetworkHTTPSocketHandler::HTTPReceive();
 	QueryNetworkGameSocketHandler::SendReceive();
+	NetworkGameSocketHandler::ProcessDeferredDeletions();
 
 	NetworkBackgroundUDPLoop();
 }
@@ -1039,12 +1043,12 @@ void NetworkGameLoop()
 
 	if (_network_server) {
 		/* Log the sync state to check for in-syncedness of replays. */
-		if (_date_fract == 0) {
+		if (TimerGameCalendar::date_fract == 0) {
 			/* We don't want to log multiple times if paused. */
-			static Date last_log;
-			if (last_log != _date) {
-				Debug(desync, 1, "sync: {:08x}; {:02x}; {:08x}; {:08x}", _date, _date_fract, _random.state[0], _random.state[1]);
-				last_log = _date;
+			static TimerGameCalendar::Date last_log;
+			if (last_log != TimerGameCalendar::date) {
+				Debug(desync, 1, "sync: {:08x}; {:02x}; {:08x}; {:08x}", TimerGameCalendar::date, TimerGameCalendar::date_fract, _random.state[0], _random.state[1]);
+				last_log = TimerGameCalendar::date;
 			}
 		}
 
@@ -1052,29 +1056,29 @@ void NetworkGameLoop()
 		/* Loading of the debug commands from -ddesync>=1 */
 		static FILE *f = FioFOpenFile("commands.log", "rb", SAVE_DIR);
 		static Date next_date = 0;
-		static uint32 next_date_fract;
+		static uint32_t next_date_fract;
 		static CommandPacket *cp = nullptr;
 		static bool check_sync_state = false;
-		static uint32 sync_state[2];
+		static uint32_t sync_state[2];
 		if (f == nullptr && next_date == 0) {
 			Debug(desync, 0, "Cannot open commands.log");
 			next_date = 1;
 		}
 
 		while (f != nullptr && !feof(f)) {
-			if (_date == next_date && _date_fract == next_date_fract) {
+			if (TimerGameCalendar::date == next_date && TimerGameCalendar::date_fract == next_date_fract) {
 				if (cp != nullptr) {
-					NetworkSendCommand(cp->tile, cp->p1, cp->p2, cp->cmd & ~CMD_FLAGS_MASK, nullptr, cp->text, cp->company);
-					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:06x}; {:08x}; {:08x}; {:08x}; \"{}\" ({})", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, GetCommandName(cp->cmd));
+					NetworkSendCommand(cp->cmd, cp->err_msg, nullptr, cp->company, cp->data);
+					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {:06x}; {} ({})", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)_current_company, cp->cmd, cp->tile, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
 				}
 				if (check_sync_state) {
 					if (sync_state[0] == _random.state[0] && sync_state[1] == _random.state[1]) {
-						Debug(desync, 0, "Sync check: {:08x}; {:02x}; match", _date, _date_fract);
+						Debug(desync, 0, "Sync check: {:08x}; {:02x}; match", TimerGameCalendar::date, TimerGameCalendar::date_fract);
 					} else {
-						Debug(desync, 0, "Sync check: {:08x}; {:02x}; mismatch expected {{:08x}, {:08x}}, got {{:08x}, {:08x}}",
-									_date, _date_fract, sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
+						Debug(desync, 0, "Sync check: {:08x}; {:02x}; mismatch expected {{{:08x}, {:08x}}}, got {{{:08x}, {:08x}}}",
+									TimerGameCalendar::date, TimerGameCalendar::date_fract, sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
 						NOT_REACHED();
 					}
 					check_sync_state = false;
@@ -1103,14 +1107,22 @@ void NetworkGameLoop()
 				if (*p == ' ') p++;
 				cp = new CommandPacket();
 				int company;
-				char buffer[128];
-				int ret = sscanf(p, "%x; %x; %x; %x; %x; %x; %x; \"%127[^\"]\"", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, buffer);
-				cp->text = buffer;
-				/* There are 8 pieces of data to read, however the last is a
-				 * string that might or might not exist. Ignore it if that
-				 * string misses because in 99% of the time it's not used. */
-				assert(ret == 8 || ret == 7);
+				uint cmd;
+				char buffer[256];
+				int ret = sscanf(p, "%x; %x; %x; %x; %x; %x; %255s", &next_date, &next_date_fract, &company, &cmd, &cp->err_msg, &cp->tile, buffer);
+				assert(ret == 6);
 				cp->company = (CompanyID)company;
+				cp->cmd = (Commands)cmd;
+
+				/* Parse command data. */
+				std::vector<byte> args;
+				size_t arg_len = strlen(buffer);
+				for (size_t i = 0; i + 1 < arg_len; i += 2) {
+					byte e = 0;
+					std::from_chars(buffer + i, buffer + i + 1, e, 16);
+					args.emplace_back(e);
+				}
+				cp->data = args;
 			} else if (strncmp(p, "join: ", 6) == 0) {
 				/* Manually insert a pause when joining; this way the client can join at the exact right time. */
 				int ret = sscanf(p + 6, "%x; %x", &next_date, &next_date_fract);
@@ -1119,8 +1131,7 @@ void NetworkGameLoop()
 				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
 				cp->cmd = CMD_PAUSE;
-				cp->p1 = PM_PAUSED_NORMAL;
-				cp->p2 = 1;
+				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{ PM_PAUSED_NORMAL, true });
 				_ddc_fastforward = false;
 			} else if (strncmp(p, "sync: ", 6) == 0) {
 				int ret = sscanf(p + 6, "%x; %x; %x; %x", &next_date, &next_date_fract, &sync_state[0], &sync_state[1]);
@@ -1198,24 +1209,7 @@ void NetworkGameLoop()
 
 static void NetworkGenerateServerId()
 {
-	Md5 checksum;
-	uint8 digest[16];
-	char hex_output[16 * 2 + 1];
-	char coding_string[NETWORK_NAME_LENGTH];
-	int di;
-
-	seprintf(coding_string, lastof(coding_string), "%d%s", (uint)Random(), "OpenTTD Server ID");
-
-	/* Generate the MD5 hash */
-	checksum.Append((const uint8*)coding_string, strlen(coding_string));
-	checksum.Finish(digest);
-
-	for (di = 0; di < 16; ++di) {
-		seprintf(hex_output + di * 2, lastof(hex_output), "%02x", digest[di]);
-	}
-
-	/* _settings_client.network.network_id is our id */
-	_settings_client.network.network_id = hex_output;
+	_settings_client.network.network_id = GenerateUid("OpenTTD Server ID");
 }
 
 class TCPNetworkDebugConnecter : TCPConnecter {
@@ -1262,12 +1256,14 @@ void NetworkStartUp()
 	NetworkUDPInitialize();
 	Debug(net, 3, "Network online, multiplayer available");
 	NetworkFindBroadcastIPs(&_broadcast_list);
+	NetworkHTTPInitialize();
 }
 
 /** This shuts the network down */
 void NetworkShutDown()
 {
 	NetworkDisconnect(true);
+	NetworkHTTPUninitialize();
 	NetworkUDPClose();
 
 	Debug(net, 3, "Shutting down network");

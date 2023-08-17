@@ -25,15 +25,15 @@ enum ScreenshotType {
 	SC_MINIMAP,     ///< Minimap screenshot.
 };
 
-void SetupScreenshotViewport(ScreenshotType t, struct Viewport *vp, uint32 width = 0, uint32 height = 0);
+void SetupScreenshotViewport(ScreenshotType t, struct Viewport *vp, uint32_t width = 0, uint32_t height = 0);
 bool MakeHeightmapScreenshot(const char *filename);
 void MakeScreenshotWithConfirm(ScreenshotType t);
-bool MakeScreenshot(ScreenshotType t, std::string name, uint32 width = 0, uint32 height = 0);
+bool MakeScreenshot(ScreenshotType t, std::string name, uint32_t width = 0, uint32_t height = 0);
 bool MakeMinimapWorldScreenshot();
 
 extern std::string _screenshot_format_name;
 extern uint _num_screenshot_formats;
 extern uint _cur_screenshot_format;
-extern char _full_screenshot_name[MAX_PATH];
+extern std::string _full_screenshot_path;
 
 #endif /* SCREENSHOT_H */

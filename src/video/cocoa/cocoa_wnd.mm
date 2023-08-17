@@ -24,7 +24,6 @@
 
 #include "../../openttd.h"
 #include "../../debug.h"
-#include "../../rev.h"
 #include "cocoa_v.h"
 #include "cocoa_wnd.h"
 #include "../../settings_type.h"
@@ -32,7 +31,10 @@
 #include "../../gfx_func.h"
 #include "../../window_func.h"
 #include "../../window_gui.h"
-#include "spritecache.h"
+#include "../../spritecache.h"
+#include "../../toolbar_gui.h"
+
+#include "table/sprites.h"
 
 /* Table data for key mapping. */
 #include "cocoa_keys.h"
@@ -55,6 +57,31 @@
  * C++ and objective C code can't be joined in all cases (classes stuff).
  * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
  */
+
+#ifdef HAVE_TOUCHBAR_SUPPORT
+struct TouchBarButton {
+	NSTouchBarItemIdentifier key;
+	SpriteID                 sprite;
+	MainToolbarHotkeys       hotkey;
+	NSString                *fallback_text;
+
+	bool operator ==(const NSTouchBarItemIdentifier other) const { return this->key == other; }
+};
+
+/* 9 items can be displayed on the touch bar when using default buttons. */
+static const std::array<TouchBarButton, 9> _touchbar_buttons{{
+	{ @"openttd.pause",         SPR_IMG_PAUSE,       MTHK_PAUSE,         @"Pause" },
+	{ @"openttd.fastforward",   SPR_IMG_FASTFORWARD, MTHK_FASTFORWARD,   @"Fast Forward" },
+	{ @"openttd.zoom_in",       SPR_IMG_ZOOMIN,      MTHK_ZOOM_IN,       @"Zoom In" },
+	{ @"openttd.zoom_out",      SPR_IMG_ZOOMOUT,     MTHK_ZOOM_OUT,      @"Zoom Out" },
+	{ @"openttd.build_rail",    SPR_IMG_BUILDRAIL,   MTHK_BUILD_RAIL,    @"Rail" },
+	{ @"openttd.build_road",    SPR_IMG_BUILDROAD,   MTHK_BUILD_ROAD,    @"Road" },
+	{ @"openttd.build_tram",    SPR_IMG_BUILDTRAMS,  MTHK_BUILD_TRAM,    @"Tram" },
+	{ @"openttd.build_docks",   SPR_IMG_BUILDWATER,  MTHK_BUILD_DOCKS,   @"Docks" },
+	{ @"openttd.build_airport", SPR_IMG_BUILDAIR,    MTHK_BUILD_AIRPORT, @"Airport" }
+}};
+
+#endif
 
 bool _allow_hidpi_window = true; // Referenced from table/misc_settings.ini
 
@@ -80,7 +107,7 @@ static NSUInteger CountUtf16Units(const char *from, const char *to)
 	NSUInteger i = 0;
 
 	while (from < to) {
-		WChar c;
+		char32_t c;
 		size_t len = Utf8Decode(&c, from);
 		i += len < 4 ? 1 : 2; // Watch for surrogate pairs.
 		from += len;
@@ -98,7 +125,7 @@ static NSUInteger CountUtf16Units(const char *from, const char *to)
 static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 {
 	for (NSUInteger i = 0; i < count && *str != '\0'; ) {
-		WChar c;
+		char32_t c;
 		size_t len = Utf8Decode(&c, str);
 		i += len < 4 ? 1 : 2; // Watch for surrogates.
 		str += len;
@@ -112,9 +139,9 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
  * @param s String to convert.
  * @return Vector of UTF-32 characters.
  */
-static std::vector<WChar> NSStringToUTF32(NSString *s)
+static std::vector<char32_t> NSStringToUTF32(NSString *s)
 {
-	std::vector<WChar> unicode_str;
+	std::vector<char32_t> unicode_str;
 
 	unichar lead = 0;
 	for (NSUInteger i = 0; i < s.length; i++) {
@@ -130,6 +157,37 @@ static std::vector<WChar> NSStringToUTF32(NSString *s)
 	}
 
 	return unicode_str;
+}
+
+static void CGDataFreeCallback(void *, const void *data, size_t)
+{
+	delete[] (const uint32_t *)data;
+}
+
+/**
+ * Render an OTTD sprite to a Cocoa image.
+ * @param sprite_id Sprite to make a NSImage from.
+ * @param zoom Zoom level to render the sprite in.
+ * @return Autorelease'd image or nullptr on any error.
+ */
+static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
+{
+	if (!SpriteExists(sprite_id)) return nullptr;
+
+	/* Fetch the sprite and create a new bitmap */
+	Dimension dim = GetSpriteSize(sprite_id, nullptr, zoom);
+	std::unique_ptr<uint32_t[]> buffer = DrawSpriteToRgbaBuffer(sprite_id, zoom);
+	if (!buffer) return nullptr; // Failed to blit sprite for some reason.
+
+	CFAutoRelease<CGDataProvider> data(CGDataProviderCreateWithData(nullptr, buffer.release(), dim.width * dim.height * 4, &CGDataFreeCallback));
+	if (!data) return nullptr;
+
+	CGBitmapInfo info = kCGImageAlphaFirst | kCGBitmapByteOrder32Host;
+	CFAutoRelease<CGColorSpaceRef> color_space(CGColorSpaceCreateWithName(kCGColorSpaceSRGB));
+	CFAutoRelease<CGImage> bitmap(CGImageCreate(dim.width, dim.height, 8, 32, dim.width * 4, color_space.get(), info, data.get(), nullptr, false, kCGRenderingIntentDefault));
+	if (!bitmap) return nullptr;
+
+	return [ [ [ NSImage alloc ] initWithCGImage:bitmap.get() size:NSZeroSize ] autorelease ];
 }
 
 
@@ -338,7 +396,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	if (VideoDriver::GetInstance() == nullptr) {
 		CocoaSetupApplication(); // Setup application before showing dialog
 	} else if (!_cocoa_video_started && VideoDriver::GetInstance()->Start({}) != nullptr) {
-		fprintf(stderr, "%s: %s\n", title, message);
+		fmt::print(stderr, "{}: {}\n", title, message);
 		return;
 	}
 
@@ -383,6 +441,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 @implementation OTTD_CocoaWindow {
 	VideoDriver_Cocoa *driver;
+	bool touchbar_created;
 }
 
 /**
@@ -392,10 +451,11 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (self = [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ]) {
 		self->driver = drv;
+		self->touchbar_created = false;
 
 		[ self setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
 
-		std::string caption = std::string{"OpenTTD "} + _openttd_revision;
+		std::string caption = VideoDriver::GetCaption();
 		NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption.c_str() ];
 		[ self setTitle:nsscaption ];
 		[ self setMiniwindowTitle:nsscaption ];
@@ -405,87 +465,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	return self;
 }
 
-#ifdef HAVE_OSX_1015_SDK
-
-- (void)touchBarButtonAction:(id)sender
-{
-	if (@available(macOS 10.15, *)) {
-		NSButtonTouchBarItem *btn = (NSButtonTouchBarItem *)sender;
-		NSNumber *hotkeyIndex = [ touchBarButtonActions objectForKey:btn.identifier ];
-		HandleToolbarHotkey(hotkeyIndex.intValue);
-	}
-}
-
-#pragma mark NSTouchBarProvider
-- (nullable NSTouchBar *)makeTouchBar
-{
-	NSTouchBar *bar = [ [ NSTouchBar alloc ] init ];
-	bar.delegate = self;
-	bar.defaultItemIdentifiers = touchBarButtonIdentifiers;
-
-	return bar;
-}
-
--(NSImage *)generateImage:(int)spriteId
-{
-	if (!SpriteExists(spriteId)) {
-		return nullptr;
-	}
-
-	/* Fetch the sprite and create a new bitmap */
-	const Sprite *fullspr = GetSprite(spriteId, ST_NORMAL);
-	const std::unique_ptr<uint32[]> buffer = DrawSpriteToRgbaBuffer(spriteId);
-	if (!buffer) {
-		return nullptr; // failed to blit sprite or we're using an 8bpp blitter.
-	}
-
-	NSBitmapImageRep *bitmap = [ [ NSBitmapImageRep alloc ] initWithBitmapDataPlanes:nil pixelsWide:fullspr->width pixelsHigh:fullspr->height bitsPerSample:8 samplesPerPixel:4 hasAlpha:YES isPlanar:NO colorSpaceName:NSCalibratedRGBColorSpace bytesPerRow:0 bitsPerPixel:0 ];
-
-	/* Copy the sprite to the NSBitmapImageRep image buffer */
-	const Colour *src = (const Colour *)buffer.get();
-	for (int y = 0; y < fullspr->height; y++) {
-		for (int x = 0; x < fullspr->width; x++) {
-			NSUInteger pixel[4];
-			pixel[0] = src->r;
-			pixel[1] = src->g;
-			pixel[2] = src->b;
-			pixel[3] = src->a;
-			[ bitmap setPixel:pixel atX:x y:y ];
-
-			src += 1;
-		}
-	}
-
-	/* Finally, convert the NSBitmapImageRep we created to a NSimage we can put on the button and clean up. */
-	NSImage *outImage = [ [ NSImage alloc ] initWithSize:NSMakeSize(fullspr->width, fullspr->height) ];
-	[ outImage addRepresentation:bitmap ];
-	[ bitmap release ];
-
-	return outImage;
-}
-
-#pragma mark NSTouchBarDelegate
-- (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
-{
-	if (@available(macOS 10.15, *)) {
-		NSButtonTouchBarItem *button = [ [ NSButtonTouchBarItem alloc ] initWithIdentifier:identifier ];
-		button.target = self;
-		button.action = @selector(touchBarButtonAction:);
-
-		NSNumber *num = touchBarButtonSprites[identifier];
-		NSImage *generatedImage = [ self generateImage:num.unsignedIntValue ];
-		if (generatedImage != nullptr) {
-			button.image = generatedImage;
-		} else {
-			button.title = NSLocalizedString(touchBarFallbackText[identifier], @"");
-		}
-		return button;
-	} else {
-		return nullptr;
-	}
-}
-#endif
-
 /**
  * Define the rectangle we draw our window in
  */
@@ -494,6 +473,83 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	[ super setFrame:frameRect display:flag ];
 
 	driver->AllocateBackingStore();
+}
+
+#ifdef HAVE_TOUCHBAR_SUPPORT
+
+- (void)touchBarButtonAction:(id)sender
+{
+	NSButton *btn = (NSButton *)sender;
+	if (auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), (NSTouchBarItemIdentifier)btn.identifier); item != _touchbar_buttons.cend()) {
+		HandleToolbarHotkey(item->hotkey);
+	}
+}
+
+- (nullable NSTouchBar *)makeTouchBar
+{
+	/* Make button identifier array. */
+	NSMutableArray<NSTouchBarItemIdentifier> *button_ids = [ [ NSMutableArray alloc ] init ];
+	for (const auto &button : _touchbar_buttons) {
+		[ button_ids addObject:button.key ];
+	}
+	[ button_ids addObject:NSTouchBarItemIdentifierOtherItemsProxy ];
+
+	NSTouchBar *bar = [ [ NSTouchBar alloc ] init ];
+	bar.delegate = self;
+	bar.defaultItemIdentifiers = button_ids;
+	[ button_ids release ];
+
+	self->touchbar_created = true;
+
+	return bar;
+}
+
+- (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
+{
+	auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), identifier);
+	assert(item != _touchbar_buttons.cend());
+
+	NSButton *button = [ NSButton buttonWithTitle:item->fallback_text target:self action:@selector(touchBarButtonAction:) ];
+	button.identifier = identifier;
+	button.imageScaling = NSImageScaleProportionallyDown;
+
+	NSCustomTouchBarItem *tb_item = [ [ NSCustomTouchBarItem alloc] initWithIdentifier:identifier ];
+	tb_item.view = button;
+	return tb_item;
+}
+
+#endif /* HAVE_TOUCHBAR_SUPPORT */
+
+- (void)refreshSystemSprites
+{
+#ifdef HAVE_TOUCHBAR_SUPPORT
+	if (!self->touchbar_created || ![ self respondsToSelector:@selector(touchBar) ] || self.touchBar == nil) return;
+
+	/* Re-create button images from OTTD sprites. */
+	for (NSTouchBarItemIdentifier ident in self.touchBar.itemIdentifiers) {
+		auto item = std::find(_touchbar_buttons.cbegin(), _touchbar_buttons.cend(), ident);
+		if (item == _touchbar_buttons.cend()) continue;
+
+		NSCustomTouchBarItem *tb_item = [ self.touchBar itemForIdentifier:ident ];
+		NSButton *button = tb_item.view;
+
+		NSImage *image = NSImageFromSprite(item->sprite, _settings_client.gui.zoom_min);
+		if (image != nil) {
+			/* Human Interface Guidelines: Maximum touch bar glyph size 22 pt. */
+			CGFloat max_dim = std::max(image.size.width, image.size.height);
+			if (max_dim > 0.0) {
+				CGFloat scale = 22.0 / max_dim;
+				image.size = NSMakeSize(image.size.width * scale, image.size.height * scale);
+			}
+
+			button.image = image;
+			button.imagePosition = NSImageOnly;
+		} else {
+			button.image = nil;
+			button.imagePosition = NSNoImage;
+		}
+	}
+#endif /* HAVE_TOUCHBAR_SUPPORT */
 }
 
 @end
@@ -601,7 +657,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		_cursor.UpdateCursorPositionRelative(event.deltaX * self.getContentsScale, event.deltaY * self.getContentsScale);
 	} else {
 		NSPoint pt = [ self mousePositionFromEvent:event ];
-		_cursor.UpdateCursorPosition(pt.x, pt.y, false);
+		_cursor.UpdateCursorPosition(pt.x, pt.y);
 	}
 
 	HandleMouseEvents();
@@ -618,7 +674,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 - (BOOL)emulateRightButton:(NSEvent *)event
 {
-	uint32 keymask = 0;
+	uint32_t keymask = 0;
 	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSEventModifierFlagCommand;
 	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSEventModifierFlagControl;
 
@@ -724,7 +780,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 }
 
 
-- (BOOL)internalHandleKeycode:(unsigned short)keycode unicode:(WChar)unicode pressed:(BOOL)down modifiers:(NSUInteger)modifiers
+- (BOOL)internalHandleKeycode:(unsigned short)keycode unicode:(char32_t)unicode pressed:(BOOL)down modifiers:(NSUInteger)modifiers
 {
 	switch (keycode) {
 		case QZ_UP:    SB(_dirkeys, 1, 1, down); break;
@@ -757,7 +813,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	if (down) {
 		/* Map keycode to OTTD code. */
 		auto vk = std::find_if(std::begin(_vk_mapping), std::end(_vk_mapping), [=](const CocoaVkMapping &m) { return m.vk_from == keycode; });
-		uint32 pressed_key = vk != std::end(_vk_mapping) ? vk->map_to : 0;
+		uint32_t pressed_key = vk != std::end(_vk_mapping) ? vk->map_to : 0;
 
 		if (modifiers & NSEventModifierFlagShift)   pressed_key |= WKC_SHIFT;
 		if (modifiers & NSEventModifierFlagControl) pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
@@ -805,7 +861,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	}
 
 	/* Convert UTF-16 characters to UCS-4 chars. */
-	std::vector<WChar> unicode_str = NSStringToUTF32([ event characters ]);
+	std::vector<char32_t> unicode_str = NSStringToUTF32([ event characters ]);
 	if (unicode_str.empty()) unicode_str.push_back(0);
 
 	if (EditBoxInGlobalFocus()) {
@@ -834,7 +890,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	}
 
 	/* Convert UTF-16 characters to UCS-4 chars. */
-	std::vector<WChar> unicode_str = NSStringToUTF32([ event characters ]);
+	std::vector<char32_t> unicode_str = NSStringToUTF32([ event characters ]);
 	if (unicode_str.empty()) unicode_str.push_back(0);
 
 	[ self internalHandleKeycode:event.keyCode unicode:unicode_str[0] pressed:NO modifiers:event.modifierFlags ];
@@ -999,10 +1055,11 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	Point pt = { (int)view_pt.x, (int)[ self frame ].size.height - (int)view_pt.y };
 
-	const char *ch = _focused_window->GetTextCharacterAtPosition(pt);
-	if (ch == nullptr) return NSNotFound;
+	auto index = _focused_window->GetTextCharacterAtPosition(pt);
+	if (index == -1) return NSNotFound;
 
-	return CountUtf16Units(_focused_window->GetFocusedText(), ch);
+	auto text = _focused_window->GetFocusedText();
+	return CountUtf16Units(text, text + index);
 }
 
 /** Get the bounding rect for the given range. */
@@ -1211,11 +1268,15 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 /** Screen the window is on changed. */
 - (void)windowDidChangeBackingProperties:(NSNotification *)notification
 {
+	bool did_adjust = AdjustGUIZoom(true);
+
 	/* Reallocate screen buffer if necessary. */
 	driver->AllocateBackingStore();
+
+	if (did_adjust) ReInitAllWindows(true);
 }
 
-/** Presentation options to use for fullsreen mode. */
+/** Presentation options to use for full screen mode. */
 - (NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions
 {
 	return NSApplicationPresentationFullScreen | NSApplicationPresentationHideMenuBar | NSApplicationPresentationHideDock;

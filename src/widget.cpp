@@ -8,6 +8,7 @@
 /** @file widget.cpp Handling of the default/simple widgets. */
 
 #include "stdafx.h"
+#include "core/backup_type.hpp"
 #include "company_func.h"
 #include "window_gui.h"
 #include "viewport_func.h"
@@ -24,6 +25,211 @@
 
 #include "safeguards.h"
 
+/** Distances used in drawing widgets. */
+enum WidgetDrawDistances {
+	/* WWT_IMGBTN(_2) */
+	WD_IMGBTN_LEFT    = 1,      ///< Left offset of the image in the button.
+	WD_IMGBTN_RIGHT   = 2,      ///< Right offset of the image in the button.
+	WD_IMGBTN_TOP     = 1,      ///< Top offset of image in the button.
+	WD_IMGBTN_BOTTOM  = 2,      ///< Bottom offset of image in the button.
+
+	/* WWT_INSET */
+	WD_INSET_LEFT  = 2,         ///< Left offset of string.
+	WD_INSET_RIGHT = 2,         ///< Right offset of string.
+	WD_INSET_TOP   = 1,         ///< Top offset of string.
+
+	WD_VSCROLLBAR_LEFT   = 2,   ///< Left offset of vertical scrollbar.
+	WD_VSCROLLBAR_RIGHT  = 2,   ///< Right offset of vertical scrollbar.
+	WD_VSCROLLBAR_TOP    = 3,   ///< Top offset of vertical scrollbar.
+	WD_VSCROLLBAR_BOTTOM = 3,   ///< Bottom offset of vertical scrollbar.
+
+	WD_HSCROLLBAR_LEFT   = 3,   ///< Left offset of horizontal scrollbar.
+	WD_HSCROLLBAR_RIGHT  = 3,   ///< Right offset of horizontal scrollbar.
+	WD_HSCROLLBAR_TOP    = 2,   ///< Top offset of horizontal scrollbar.
+	WD_HSCROLLBAR_BOTTOM = 2,   ///< Bottom offset of horizontal scrollbar.
+
+	/* Size of the pure frame bevel without any padding. */
+	WD_BEVEL_LEFT       = 1,    ///< Width of left bevel border.
+	WD_BEVEL_RIGHT      = 1,    ///< Width of right bevel border.
+	WD_BEVEL_TOP        = 1,    ///< Height of top bevel border.
+	WD_BEVEL_BOTTOM     = 1,    ///< Height of bottom bevel border.
+
+	/* FrameRect widgets, all text buttons, panel, editbox */
+	WD_FRAMERECT_LEFT   = 2,    ///< Offset at left to draw the frame rectangular area
+	WD_FRAMERECT_RIGHT  = 2,    ///< Offset at right to draw the frame rectangular area
+	WD_FRAMERECT_TOP    = 1,    ///< Offset at top to draw the frame rectangular area
+	WD_FRAMERECT_BOTTOM = 1,    ///< Offset at bottom to draw the frame rectangular area
+
+	/* WWT_FRAME */
+	WD_FRAMETEXT_LEFT   = 6,    ///< Left offset of the text of the frame.
+	WD_FRAMETEXT_RIGHT  = 6,    ///< Right offset of the text of the frame.
+	WD_FRAMETEXT_TOP    = 6,    ///< Top offset of the text of the frame
+	WD_FRAMETEXT_BOTTOM = 6,    ///< Bottom offset of the text of the frame
+
+	/* WWT_MATRIX */
+	WD_MATRIX_LEFT   = 2,       ///< Offset at left of a matrix cell.
+	WD_MATRIX_RIGHT  = 2,       ///< Offset at right of a matrix cell.
+	WD_MATRIX_TOP    = 3,       ///< Offset at top of a matrix cell.
+	WD_MATRIX_BOTTOM = 1,       ///< Offset at bottom of a matrix cell.
+
+	/* WWT_SHADEBOX */
+	WD_SHADEBOX_WIDTH  = 12,    ///< Width of a standard shade box widget.
+	WD_SHADEBOX_LEFT   = 2,     ///< Left offset of shade sprite.
+	WD_SHADEBOX_RIGHT  = 2,     ///< Right offset of shade sprite.
+	WD_SHADEBOX_TOP    = 3,     ///< Top offset of shade sprite.
+	WD_SHADEBOX_BOTTOM = 3,     ///< Bottom offset of shade sprite.
+
+	/* WWT_STICKYBOX */
+	WD_STICKYBOX_WIDTH  = 12,   ///< Width of a standard sticky box widget.
+	WD_STICKYBOX_LEFT   = 2,    ///< Left offset of sticky sprite.
+	WD_STICKYBOX_RIGHT  = 2,    ///< Right offset of sticky sprite.
+	WD_STICKYBOX_TOP    = 3,    ///< Top offset of sticky sprite.
+	WD_STICKYBOX_BOTTOM = 3,    ///< Bottom offset of sticky sprite.
+
+	/* WWT_DEBUGBOX */
+	WD_DEBUGBOX_WIDTH  = 12,    ///< Width of a standard debug box widget.
+	WD_DEBUGBOX_LEFT   = 2,     ///< Left offset of debug sprite.
+	WD_DEBUGBOX_RIGHT  = 2,     ///< Right offset of debug sprite.
+	WD_DEBUGBOX_TOP    = 3,     ///< Top offset of debug sprite.
+	WD_DEBUGBOX_BOTTOM = 3,     ///< Bottom offset of debug sprite.
+
+	/* WWT_DEFSIZEBOX */
+	WD_DEFSIZEBOX_WIDTH  = 12,  ///< Width of a standard defsize box widget.
+	WD_DEFSIZEBOX_LEFT   = 2,   ///< Left offset of defsize sprite.
+	WD_DEFSIZEBOX_RIGHT  = 2,   ///< Right offset of defsize sprite.
+	WD_DEFSIZEBOX_TOP    = 3,   ///< Top offset of defsize sprite.
+	WD_DEFSIZEBOX_BOTTOM = 3,   ///< Bottom offset of defsize sprite.
+
+	/* WWT_RESIZEBOX */
+	WD_RESIZEBOX_WIDTH  = 12,   ///< Width of a resize box widget.
+	WD_RESIZEBOX_LEFT   = 2,    ///< Left offset of resize sprite.
+	WD_RESIZEBOX_RIGHT  = 2,    ///< Right offset of resize sprite.
+	WD_RESIZEBOX_TOP    = 2,    ///< Top offset of resize sprite.
+	WD_RESIZEBOX_BOTTOM = 2,    ///< Bottom offset of resize sprite.
+
+	/* WWT_CLOSEBOX */
+	WD_CLOSEBOX_WIDTH  = 11,    ///< Width of a close box widget.
+	WD_CLOSEBOX_LEFT   = 2,     ///< Left offset of closebox string.
+	WD_CLOSEBOX_RIGHT  = 1,     ///< Right offset of closebox string.
+	WD_CLOSEBOX_TOP    = 2,     ///< Top offset of closebox string.
+	WD_CLOSEBOX_BOTTOM = 2,     ///< Bottom offset of closebox string.
+
+	/* WWT_CAPTION */
+	WD_CAPTION_HEIGHT     = 14, ///< Height of a title bar.
+	WD_CAPTIONTEXT_LEFT   = 2,  ///< Offset of the caption text at the left.
+	WD_CAPTIONTEXT_RIGHT  = 2,  ///< Offset of the caption text at the right.
+	WD_CAPTIONTEXT_TOP    = 2,  ///< Offset of the caption text at the top.
+	WD_CAPTIONTEXT_BOTTOM = 2,  ///< Offset of the caption text at the bottom.
+
+	/* Dropdown widget. */
+	WD_DROPDOWN_HEIGHT     = 12, ///< Height of a drop down widget.
+	WD_DROPDOWNTEXT_LEFT   = 2,  ///< Left offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_RIGHT  = 2,  ///< Right offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_TOP    = 1,  ///< Top offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_BOTTOM = 1,  ///< Bottom offset of the dropdown widget string.
+
+	WD_PAR_VSEP_NORMAL = 2,      ///< Normal amount of vertical space between two paragraphs of text.
+	WD_PAR_VSEP_WIDE   = 8,      ///< Large amount of vertical space between two paragraphs of text.
+};
+
+const WidgetDimensions WidgetDimensions::unscaled = {
+	{WD_IMGBTN_LEFT,       WD_IMGBTN_TOP,       WD_IMGBTN_RIGHT,       WD_IMGBTN_BOTTOM},       ///< imgbtn
+	{WD_INSET_LEFT,        WD_INSET_TOP,        WD_INSET_RIGHT,        WD_BEVEL_BOTTOM},        ///< inset
+	{WD_VSCROLLBAR_LEFT,   WD_VSCROLLBAR_TOP,   WD_VSCROLLBAR_RIGHT,   WD_VSCROLLBAR_BOTTOM},   ///< vscrollbar
+	{WD_HSCROLLBAR_LEFT,   WD_HSCROLLBAR_TOP,   WD_HSCROLLBAR_RIGHT,   WD_HSCROLLBAR_BOTTOM},   ///< hscrollbar
+	{WD_BEVEL_LEFT,        WD_BEVEL_TOP,        WD_BEVEL_RIGHT,        WD_BEVEL_BOTTOM},        ///< bevel
+	{WD_BEVEL_LEFT,        WD_BEVEL_TOP,        WD_BEVEL_RIGHT,        WD_BEVEL_BOTTOM},        ///< fullbevel
+	{WD_FRAMERECT_LEFT,    WD_FRAMERECT_TOP,    WD_FRAMERECT_RIGHT,    WD_FRAMERECT_BOTTOM},    ///< framerect
+	{WD_FRAMETEXT_LEFT,    WD_FRAMETEXT_TOP,    WD_FRAMETEXT_RIGHT,    WD_FRAMETEXT_BOTTOM},    ///< frametext
+	{WD_MATRIX_LEFT,       WD_MATRIX_TOP,       WD_MATRIX_RIGHT,       WD_MATRIX_BOTTOM},       ///< matrix
+	{WD_SHADEBOX_LEFT,     WD_SHADEBOX_TOP,     WD_SHADEBOX_RIGHT,     WD_SHADEBOX_BOTTOM},     ///< shadebox
+	{WD_STICKYBOX_LEFT,    WD_STICKYBOX_TOP,    WD_STICKYBOX_RIGHT,    WD_STICKYBOX_BOTTOM},    ///< stickybox
+	{WD_DEBUGBOX_LEFT,     WD_DEBUGBOX_TOP,     WD_DEBUGBOX_RIGHT,     WD_DEBUGBOX_BOTTOM},     ///< debugbox
+	{WD_DEFSIZEBOX_LEFT,   WD_DEFSIZEBOX_TOP,   WD_DEFSIZEBOX_RIGHT,   WD_DEFSIZEBOX_BOTTOM},   ///< defsizebox
+	{WD_RESIZEBOX_LEFT,    WD_RESIZEBOX_TOP,    WD_RESIZEBOX_RIGHT,    WD_RESIZEBOX_BOTTOM},    ///< resizebox
+	{WD_CLOSEBOX_LEFT,     WD_CLOSEBOX_TOP,     WD_CLOSEBOX_RIGHT,     WD_CLOSEBOX_BOTTOM},     ///< closebox
+	{WD_CAPTIONTEXT_LEFT,  WD_CAPTIONTEXT_TOP,  WD_CAPTIONTEXT_RIGHT,  WD_CAPTIONTEXT_BOTTOM},  ///< captiontext
+	{WD_DROPDOWNTEXT_LEFT, WD_DROPDOWNTEXT_TOP, WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_BOTTOM}, ///< dropdowntext
+	{20, 10, 20, 10},    ///< modalpopup
+	1,                   ///< pressed
+	WD_PAR_VSEP_NORMAL,  ///< vsep_normal
+	WD_PAR_VSEP_WIDE,    ///< vsep_wide
+	2,                   ///< hsep_normal
+	6,                   ///< hsep_wide
+	10,                  ///< hsep_indent
+};
+
+WidgetDimensions WidgetDimensions::scaled = {};
+
+/**
+ * Scale a RectPadding to GUI zoom level.
+ * @param r RectPadding at ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @return RectPadding at #ZOOM_LVL_GUI (current interface size).
+ */
+static inline RectPadding ScaleGUITrad(const RectPadding &r)
+{
+	return {(uint8_t)ScaleGUITrad(r.left), (uint8_t)ScaleGUITrad(r.top), (uint8_t)ScaleGUITrad(r.right), (uint8_t)ScaleGUITrad(r.bottom)};
+}
+
+/**
+ * Scale a Dimension to GUI zoom level.
+ * @param d Dimension at ZOOM_LVL_BASE (traditional "normal" interface size).
+ * @return Dimension at #ZOOM_LVL_GUI (current interface size).
+ */
+static inline Dimension ScaleGUITrad(const Dimension &dim)
+{
+	return {(uint)ScaleGUITrad(dim.width), (uint)ScaleGUITrad(dim.height)};
+}
+
+/**
+ * Scale sprite size for GUI.
+ * Offset is ignored.
+ */
+Dimension GetScaledSpriteSize(SpriteID sprid)
+{
+	Point offset;
+	Dimension d = GetSpriteSize(sprid, &offset, ZOOM_LVL_OUT_4X);
+	d.width  -= offset.x;
+	d.height -= offset.y;
+	return ScaleGUITrad(d);
+}
+
+/**
+ * Set up pre-scaled versions of Widget Dimensions.
+ */
+void SetupWidgetDimensions()
+{
+	WidgetDimensions::scaled.imgbtn       = ScaleGUITrad(WidgetDimensions::unscaled.imgbtn);
+	WidgetDimensions::scaled.inset        = ScaleGUITrad(WidgetDimensions::unscaled.inset);
+	WidgetDimensions::scaled.vscrollbar   = ScaleGUITrad(WidgetDimensions::unscaled.vscrollbar);
+	WidgetDimensions::scaled.hscrollbar   = ScaleGUITrad(WidgetDimensions::unscaled.hscrollbar);
+	if (_settings_client.gui.scale_bevels) {
+		WidgetDimensions::scaled.bevel    = ScaleGUITrad(WidgetDimensions::unscaled.bevel);
+	} else {
+		WidgetDimensions::scaled.bevel    = WidgetDimensions::unscaled.bevel;
+	}
+	WidgetDimensions::scaled.fullbevel    = ScaleGUITrad(WidgetDimensions::unscaled.fullbevel);
+	WidgetDimensions::scaled.framerect    = ScaleGUITrad(WidgetDimensions::unscaled.framerect);
+	WidgetDimensions::scaled.frametext    = ScaleGUITrad(WidgetDimensions::unscaled.frametext);
+	WidgetDimensions::scaled.matrix       = ScaleGUITrad(WidgetDimensions::unscaled.matrix);
+	WidgetDimensions::scaled.shadebox     = ScaleGUITrad(WidgetDimensions::unscaled.shadebox);
+	WidgetDimensions::scaled.stickybox    = ScaleGUITrad(WidgetDimensions::unscaled.stickybox);
+	WidgetDimensions::scaled.debugbox     = ScaleGUITrad(WidgetDimensions::unscaled.debugbox);
+	WidgetDimensions::scaled.defsizebox   = ScaleGUITrad(WidgetDimensions::unscaled.defsizebox);
+	WidgetDimensions::scaled.resizebox    = ScaleGUITrad(WidgetDimensions::unscaled.resizebox);
+	WidgetDimensions::scaled.closebox     = ScaleGUITrad(WidgetDimensions::unscaled.closebox);
+	WidgetDimensions::scaled.captiontext  = ScaleGUITrad(WidgetDimensions::unscaled.captiontext);
+	WidgetDimensions::scaled.dropdowntext = ScaleGUITrad(WidgetDimensions::unscaled.dropdowntext);
+	WidgetDimensions::scaled.modalpopup   = ScaleGUITrad(WidgetDimensions::unscaled.modalpopup);
+
+	WidgetDimensions::scaled.pressed      = ScaleGUITrad(WidgetDimensions::unscaled.pressed);
+	WidgetDimensions::scaled.vsep_normal  = ScaleGUITrad(WidgetDimensions::unscaled.vsep_normal);
+	WidgetDimensions::scaled.vsep_wide    = ScaleGUITrad(WidgetDimensions::unscaled.vsep_wide);
+	WidgetDimensions::scaled.hsep_normal  = ScaleGUITrad(WidgetDimensions::unscaled.hsep_normal);
+	WidgetDimensions::scaled.hsep_wide    = ScaleGUITrad(WidgetDimensions::unscaled.hsep_wide);
+	WidgetDimensions::scaled.hsep_indent  = ScaleGUITrad(WidgetDimensions::unscaled.hsep_indent);
+}
+
 /**
  * Calculate x and y coordinates for an aligned object within a window.
  * @param r     Rectangle of the widget to be drawn in.
@@ -39,13 +245,13 @@ static inline Point GetAlignedPosition(const Rect &r, const Dimension &d, String
 	switch (align & SA_HOR_MASK) {
 		case SA_LEFT:       p.x = r.left; break;
 		case SA_HOR_CENTER: p.x = CenterBounds(r.left, r.right, d.width); break;
-		case SA_RIGHT:      p.x = r.right - d.width; break;
+		case SA_RIGHT:      p.x = r.right + 1 - d.width; break;
 		default: NOT_REACHED();
 	}
 	switch (align & SA_VERT_MASK) {
 		case SA_TOP:         p.y = r.top; break;
 		case SA_VERT_CENTER: p.y = CenterBounds(r.top, r.bottom, d.height); break;
-		case SA_BOTTOM:      p.y = r.bottom - d.height; break;
+		case SA_BOTTOM:      p.y = r.bottom + 1 - d.height; break;
 		default: NOT_REACHED();
 	}
 	return p;
@@ -220,23 +426,38 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 	} else {
 		uint interior;
 
+		Rect outer = {left, top, right, bottom};                   // Outside rectangle
+		Rect inner = outer.Shrink(WidgetDimensions::scaled.bevel); // Inside rectangle
+
 		if (flags & FR_LOWERED) {
-			GfxFillRect(left,                 top,                left,                   bottom,                   dark);
-			GfxFillRect(left + WD_BEVEL_LEFT, top,                right,                  top,                      dark);
-			GfxFillRect(right,                top + WD_BEVEL_TOP, right,                  bottom - WD_BEVEL_BOTTOM, light);
-			GfxFillRect(left + WD_BEVEL_LEFT, bottom,             right,                  bottom,                   light);
+			GfxFillRect(outer.left,      outer.top,        inner.left - 1,  outer.bottom, dark);   // Left
+			GfxFillRect(inner.left,      outer.top,        outer.right,     inner.top - 1, dark);  // Top
+			GfxFillRect(inner.right + 1, inner.top,        outer.right,     inner.bottom,  light); // Right
+			GfxFillRect(inner.left,      inner.bottom + 1, outer.right,     outer.bottom, light);  // Bottom
 			interior = (flags & FR_DARKENED ? medium_dark : medium_light);
 		} else {
-			GfxFillRect(left,                 top,                left,                   bottom - WD_BEVEL_BOTTOM, light);
-			GfxFillRect(left + WD_BEVEL_LEFT, top,                right - WD_BEVEL_RIGHT, top,                      light);
-			GfxFillRect(right,                top,                right,                  bottom - WD_BEVEL_BOTTOM, dark);
-			GfxFillRect(left,                 bottom,             right,                  bottom,                   dark);
+			GfxFillRect(outer.left,      outer.top,        inner.left - 1, inner.bottom,  light); // Left
+			GfxFillRect(inner.left,      outer.top,        inner.right,    inner.top - 1, light); // Top
+			GfxFillRect(inner.right + 1, outer.top,        outer.right,    inner.bottom,  dark);  // Right
+			GfxFillRect(outer.left,      inner.bottom + 1, outer.right,    outer.bottom, dark);   // Bottom
 			interior = medium_dark;
 		}
 		if (!(flags & FR_BORDERONLY)) {
-			GfxFillRect(left + WD_BEVEL_LEFT, top + WD_BEVEL_TOP, right - WD_BEVEL_RIGHT, bottom - WD_BEVEL_BOTTOM, interior);
+			GfxFillRect(inner.left,  inner.top, inner.right, inner.bottom, interior); // Inner
 		}
 	}
+}
+
+void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, bool clicked, StringAlignment align)
+{
+	Point offset;
+	Dimension d = GetSpriteSize(img, &offset);
+	d.width  -= offset.x;
+	d.height -= offset.y;
+
+	Point p = GetAlignedPosition(r, d, align);
+	int o = clicked ? WidgetDimensions::scaled.pressed : 0;
+	DrawSprite(img, pal, p.x + o - offset.x, p.y + o - offset.y);
 }
 
 /**
@@ -254,9 +475,7 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
 	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
-	Dimension d = GetSpriteSize(img);
-	Point p = GetAlignedPosition(r, d, align);
-	DrawSprite(img, PAL_NONE, p.x + clicked, p.y + clicked);
+	DrawSpriteIgnorePadding(img, PAL_NONE, r, clicked, align);
 }
 
 /**
@@ -267,14 +486,16 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
  * @param colour  Colour of the text.
  * @param str     Text to draw.
  * @param align   Alignment of the text.
+ * @param fs      Font size of the text.
  */
-static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextColour colour, StringID str, StringAlignment align)
+static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextColour colour, StringID str, StringAlignment align, FontSize fs)
 {
 	if (str == STR_NULL) return;
 	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
-	Dimension d = GetStringBoundingBox(str);
+	Dimension d = GetStringBoundingBox(str, fs);
 	Point p = GetAlignedPosition(r, d, align);
-	DrawString(r.left + clicked, r.right + clicked, p.y + clicked, str, colour, align);
+	int o = clicked ? WidgetDimensions::scaled.pressed : 0;
+	DrawString(r.left + o, r.right + o, p.y + o, str, colour, align, false, fs);
 }
 
 /**
@@ -283,12 +504,13 @@ static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextC
  * @param colour Colour of the text.
  * @param str    Text to draw.
  * @param align  Alignment of the text.
+ * @param fs     Font size of the text.
  */
-static inline void DrawText(const Rect &r, TextColour colour, StringID str, StringAlignment align)
+static inline void DrawText(const Rect &r, TextColour colour, StringID str, StringAlignment align, FontSize fs)
 {
-	Dimension d = GetStringBoundingBox(str);
+	Dimension d = GetStringBoundingBox(str, fs);
 	Point p = GetAlignedPosition(r, d, align);
-	if (str != STR_NULL) DrawString(r.left, r.right, p.y, str, colour, align);
+	if (str != STR_NULL) DrawString(r.left, r.right, p.y, str, colour, align, false, fs);
 }
 
 /**
@@ -298,11 +520,12 @@ static inline void DrawText(const Rect &r, TextColour colour, StringID str, Stri
  * @param text_colour Colour of the text.
  * @param str         Text to draw.
  * @param align       Alignment of the text.
+ * @param fs          Font size of the text.
  */
-static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
+static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align, FontSize fs)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_LOWERED | FR_DARKENED);
-	if (str != STR_NULL) DrawString(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + WD_INSET_TOP, str, text_colour, align);
+	if (str != STR_NULL) DrawString(r.Shrink(WidgetDimensions::scaled.inset), str, text_colour, align, false, fs);
 }
 
 /**
@@ -314,7 +537,7 @@ static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colo
  * @param resize_x Matrix resize unit size.
  * @param resize_y Matrix resize unit size.
  */
-static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint16 data, uint resize_x, uint resize_y)
+static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint16_t data, uint resize_x, uint resize_y)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
@@ -322,18 +545,18 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
 	int column_width; // Width of a single column in the matrix.
 	if (num_columns == 0) {
 		column_width = resize_x;
-		num_columns = (r.right - r.left + 1) / column_width;
+		num_columns = r.Width() / column_width;
 	} else {
-		column_width = (r.right - r.left + 1) / num_columns;
+		column_width = r.Width() / num_columns;
 	}
 
 	int num_rows = GB(data, MAT_ROW_START, MAT_ROW_BITS); // Upper 8 bits of the widget data: Number of rows in the matrix.
 	int row_height; // Height of a single row in the matrix.
 	if (num_rows == 0) {
 		row_height = resize_y;
-		num_rows = (r.bottom - r.top + 1) / row_height;
+		num_rows = r.Height() / row_height;
 	} else {
-		row_height = (r.bottom - r.top + 1) / num_rows;
+		row_height = r.Height() / num_rows;
 	}
 
 	int col = _colour_gradient[colour & 0xF][6];
@@ -341,13 +564,13 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
 	int x = r.left;
 	for (int ctr = num_columns; ctr > 1; ctr--) {
 		x += column_width;
-		GfxFillRect(x, r.top + 1, x, r.bottom - 1, col);
+		GfxFillRect(x, r.top + WidgetDimensions::scaled.bevel.top, x + WidgetDimensions::scaled.bevel.left - 1, r.bottom - WidgetDimensions::scaled.bevel.bottom, col);
 	}
 
 	x = r.top;
 	for (int ctr = num_rows; ctr > 1; ctr--) {
 		x += row_height;
-		GfxFillRect(r.left + 1, x, r.right - 1, x, col);
+		GfxFillRect(r.left + WidgetDimensions::scaled.bevel.left, x, r.right - WidgetDimensions::scaled.bevel.right, x + WidgetDimensions::scaled.bevel.top - 1, col);
 	}
 
 	col = _colour_gradient[colour & 0xF][4];
@@ -355,13 +578,13 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
 	x = r.left - 1;
 	for (int ctr = num_columns; ctr > 1; ctr--) {
 		x += column_width;
-		GfxFillRect(x, r.top + 1, x, r.bottom - 1, col);
+		GfxFillRect(x - WidgetDimensions::scaled.bevel.right + 1, r.top + WidgetDimensions::scaled.bevel.top, x, r.bottom - WidgetDimensions::scaled.bevel.bottom, col);
 	}
 
 	x = r.top - 1;
 	for (int ctr = num_rows; ctr > 1; ctr--) {
 		x += row_height;
-		GfxFillRect(r.left + 1, x, r.right - 1, x, col);
+		GfxFillRect(r.left + WidgetDimensions::scaled.bevel.left, x - WidgetDimensions::scaled.bevel.bottom + 1, r.right - WidgetDimensions::scaled.bevel.right, x, col);
 	}
 }
 
@@ -376,15 +599,11 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
  */
 static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_clicked, bool bar_dragged, bool down_clicked, const Scrollbar *scrollbar)
 {
-	int centre = (r.right - r.left) / 2;
 	int height = NWidgetScrollbar::GetVerticalDimension().height;
 
 	/* draw up/down buttons */
-	DrawFrameRect(r.left, r.top, r.right, r.top + height - 1, colour, (up_clicked) ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_UP, PAL_NONE, r.left + 1 + up_clicked, r.top + 1 + up_clicked);
-
-	DrawFrameRect(r.left, r.bottom - (height - 1), r.right, r.bottom, colour, (down_clicked) ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.left + 1 + down_clicked, r.bottom - (height - 2) + down_clicked);
+	DrawImageButtons(r.WithHeight(height, false),  NWID_VSCROLLBAR, colour, up_clicked,   SPR_ARROW_UP,   SA_CENTER);
+	DrawImageButtons(r.WithHeight(height, true),   NWID_VSCROLLBAR, colour, down_clicked, SPR_ARROW_DOWN, SA_CENTER);
 
 	int c1 = _colour_gradient[colour & 0xF][3];
 	int c2 = _colour_gradient[colour & 0xF][7];
@@ -393,11 +612,17 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	GfxFillRect(r.left, r.top + height, r.right, r.bottom - height, c2);
 	GfxFillRect(r.left, r.top + height, r.right, r.bottom - height, c1, FILLRECT_CHECKER);
 
+	/* track positions. These fractions are based on original 1x dimensions, but scale better. */
+	int left  = r.left + r.Width() * 3 / 11; /*  left track is positioned 3/11ths from the left */
+	int right = r.left + r.Width() * 8 / 11; /* right track is positioned 8/11ths from the left */
+	const uint8_t bl = WidgetDimensions::scaled.bevel.left;
+	const uint8_t br = WidgetDimensions::scaled.bevel.right;
+
 	/* draw shaded lines */
-	GfxFillRect(r.left + centre - 3, r.top + height, r.left + centre - 3, r.bottom - height, c1);
-	GfxFillRect(r.left + centre - 2, r.top + height, r.left + centre - 2, r.bottom - height, c2);
-	GfxFillRect(r.left + centre + 2, r.top + height, r.left + centre + 2, r.bottom - height, c1);
-	GfxFillRect(r.left + centre + 3, r.top + height, r.left + centre + 3, r.bottom - height, c2);
+	GfxFillRect(left - bl,  r.top + height, left       - 1, r.bottom - height, c1);
+	GfxFillRect(left,       r.top + height, left + br  - 1, r.bottom - height, c2);
+	GfxFillRect(right - bl, r.top + height, right      - 1, r.bottom - height, c1);
+	GfxFillRect(right,      r.top + height, right + br - 1, r.bottom - height, c2);
 
 	Point pt = HandleScrollbarHittest(scrollbar, r.top, r.bottom, false);
 	DrawFrameRect(r.left, pt.x, r.right, pt.y, colour, bar_dragged ? FR_LOWERED : FR_NONE);
@@ -414,14 +639,10 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
  */
 static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool left_clicked, bool bar_dragged, bool right_clicked, const Scrollbar *scrollbar)
 {
-	int centre = (r.bottom - r.top) / 2;
 	int width = NWidgetScrollbar::GetHorizontalDimension().width;
 
-	DrawFrameRect(r.left, r.top, r.left + width - 1, r.bottom, colour, left_clicked ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + left_clicked, r.top + 1 + left_clicked);
-
-	DrawFrameRect(r.right - (width - 1), r.top, r.right, r.bottom, colour, right_clicked ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, r.right - (width - 2) + right_clicked, r.top + 1 + right_clicked);
+	DrawImageButtons(r.WithWidth(width, false), NWID_HSCROLLBAR, colour, left_clicked,  SPR_ARROW_LEFT,  SA_CENTER);
+	DrawImageButtons(r.WithWidth(width, true),  NWID_HSCROLLBAR, colour, right_clicked, SPR_ARROW_RIGHT, SA_CENTER);
 
 	int c1 = _colour_gradient[colour & 0xF][3];
 	int c2 = _colour_gradient[colour & 0xF][7];
@@ -430,11 +651,17 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	GfxFillRect(r.left + width, r.top, r.right - width, r.bottom, c2);
 	GfxFillRect(r.left + width, r.top, r.right - width, r.bottom, c1, FILLRECT_CHECKER);
 
+	/* track positions. These fractions are based on original 1x dimensions, but scale better. */
+	int top    = r.top + r.Height() * 3 / 11; /*    top track is positioned 3/11ths from the top */
+	int bottom = r.top + r.Height() * 8 / 11; /* bottom track is positioned 8/11ths from the top */
+	const uint8_t bt = WidgetDimensions::scaled.bevel.top;
+	const uint8_t bb = WidgetDimensions::scaled.bevel.bottom;
+
 	/* draw shaded lines */
-	GfxFillRect(r.left + width, r.top + centre - 3, r.right - width, r.top + centre - 3, c1);
-	GfxFillRect(r.left + width, r.top + centre - 2, r.right - width, r.top + centre - 2, c2);
-	GfxFillRect(r.left + width, r.top + centre + 2, r.right - width, r.top + centre + 2, c1);
-	GfxFillRect(r.left + width, r.top + centre + 3, r.right - width, r.top + centre + 3, c2);
+	GfxFillRect(r.left + width, top - bt,    r.right - width, top         - 1, c1);
+	GfxFillRect(r.left + width, top,         r.right - width, top + bb    - 1, c2);
+	GfxFillRect(r.left + width, bottom - bt, r.right - width, bottom      - 1, c1);
+	GfxFillRect(r.left + width, bottom,      r.right - width, bottom + bb - 1, c2);
 
 	/* draw actual scrollbar */
 	Point pt = HandleScrollbarHittest(scrollbar, r.left, r.right, true);
@@ -448,49 +675,53 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
  * @param text_colour Colour of the text.
  * @param str         Text of the frame.
  * @param align       Alignment of the text in the frame.
+ * @param fs          Font size of the text.
  */
-static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
+static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align, FontSize fs)
 {
 	int x2 = r.left; // by default the left side is the left side of the widget
 
-	if (str != STR_NULL) x2 = DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top, str, text_colour, align);
+	if (str != STR_NULL) x2 = DrawString(r.left + WidgetDimensions::scaled.frametext.left, r.right - WidgetDimensions::scaled.frametext.right, r.top, str, text_colour, align, false, fs);
 
 	int c1 = _colour_gradient[colour][3];
 	int c2 = _colour_gradient[colour][7];
 
 	/* If the frame has text, adjust the top bar to fit half-way through */
-	int dy1 = 4;
-	if (str != STR_NULL) dy1 = FONT_HEIGHT_NORMAL / 2 - 1;
-	int dy2 = dy1 + 1;
+	Rect inner = r.Shrink(ScaleGUITrad(1));
+	if (str != STR_NULL) inner.top = r.top + FONT_HEIGHT_NORMAL / 2;
+
+	Rect outer  = inner.Expand(WidgetDimensions::scaled.bevel);
+	Rect inside = inner.Shrink(WidgetDimensions::scaled.bevel);
 
 	if (_current_text_dir == TD_LTR) {
 		/* Line from upper left corner to start of text */
-		GfxFillRect(r.left, r.top + dy1, r.left + 4, r.top + dy1, c1);
-		GfxFillRect(r.left + 1, r.top + dy2, r.left + 4, r.top + dy2, c2);
+		GfxFillRect(outer.left, outer.top, r.left + WidgetDimensions::scaled.frametext.left - WidgetDimensions::scaled.bevel.left - 1, inner.top  - 1, c1);
+		GfxFillRect(inner.left, inner.top, r.left + WidgetDimensions::scaled.frametext.left - WidgetDimensions::scaled.bevel.left - 1, inside.top - 1, c2);
 
 		/* Line from end of text to upper right corner */
-		GfxFillRect(x2, r.top + dy1, r.right - 1, r.top + dy1, c1);
-		GfxFillRect(x2, r.top + dy2, r.right - 2, r.top + dy2, c2);
+		GfxFillRect(x2 + WidgetDimensions::scaled.bevel.right, outer.top, inner.right,  inner.top  - 1, c1);
+		GfxFillRect(x2 + WidgetDimensions::scaled.bevel.right, inner.top, inside.right, inside.top - 1, c2);
 	} else {
 		/* Line from upper left corner to start of text */
-		GfxFillRect(r.left, r.top + dy1, x2 - 2, r.top + dy1, c1);
-		GfxFillRect(r.left + 1, r.top + dy2, x2 - 2, r.top + dy2, c2);
+		GfxFillRect(outer.left, outer.top, x2 - WidgetDimensions::scaled.bevel.left - 1, inner.top  - 1, c1);
+		GfxFillRect(inner.left, inner.top, x2 - WidgetDimensions::scaled.bevel.left - 1, inside.top - 1, c2);
 
 		/* Line from end of text to upper right corner */
-		GfxFillRect(r.right - 5, r.top + dy1, r.right - 1, r.top + dy1, c1);
-		GfxFillRect(r.right - 5, r.top + dy2, r.right - 2, r.top + dy2, c2);
+		GfxFillRect(r.right - WidgetDimensions::scaled.frametext.right + WidgetDimensions::scaled.bevel.right, outer.top, inner.right,  inner.top  - 1, c1);
+		GfxFillRect(r.right - WidgetDimensions::scaled.frametext.right + WidgetDimensions::scaled.bevel.right, inner.top, inside.right, inside.top - 1, c2);
 	}
 
 	/* Line from upper left corner to bottom left corner */
-	GfxFillRect(r.left, r.top + dy2, r.left, r.bottom - 1, c1);
-	GfxFillRect(r.left + 1, r.top + dy2 + 1, r.left + 1, r.bottom - 2, c2);
+	GfxFillRect(outer.left, inner.top,  inner.left  - 1, inner.bottom,  c1);
+	GfxFillRect(inner.left, inside.top, inside.left - 1, inside.bottom, c2);
 
 	/* Line from upper right corner to bottom right corner */
-	GfxFillRect(r.right - 1, r.top + dy2, r.right - 1, r.bottom - 2, c1);
-	GfxFillRect(r.right, r.top + dy1, r.right, r.bottom - 1, c2);
+	GfxFillRect(inside.right + 1, inner.top, inner.right, inside.bottom, c1);
+	GfxFillRect(inner.right  + 1, outer.top, outer.right, inner.bottom,  c2);
 
-	GfxFillRect(r.left + 1, r.bottom - 1, r.right - 1, r.bottom - 1, c1);
-	GfxFillRect(r.left, r.bottom, r.right, r.bottom, c2);
+	/* Line from bottom left corner to bottom right corner */
+	GfxFillRect(inner.left, inside.bottom + 1, inner.right, inner.bottom, c1);
+	GfxFillRect(outer.left, inner.bottom  + 1, outer.right, outer.bottom, c2);
 }
 
 /**
@@ -547,28 +778,23 @@ static inline void DrawDebugBox(const Rect &r, Colours colour, bool clicked)
 static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
-	if (at_left) {
-		Dimension d = GetSpriteSize(SPR_WINDOW_RESIZE_LEFT);
-		DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + WD_RESIZEBOX_RIGHT + clicked,
-				 r.bottom + 1 - WD_RESIZEBOX_BOTTOM - d.height + clicked);
-	} else {
-		Dimension d = GetSpriteSize(SPR_WINDOW_RESIZE_RIGHT);
-		DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.right + 1 - WD_RESIZEBOX_RIGHT - d.width + clicked,
-				 r.bottom + 1 - WD_RESIZEBOX_BOTTOM - d.height + clicked);
-	}
+	DrawSpriteIgnorePadding(at_left ? SPR_WINDOW_RESIZE_LEFT : SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.Shrink(ScaleGUITrad(2)), clicked, at_left ? (SA_LEFT | SA_BOTTOM | SA_FORCE) : (SA_RIGHT | SA_BOTTOM | SA_FORCE));
 }
 
 /**
  * Draw a close box.
- * @param r      Rectangle of the box.
+ * @param r      Rectangle of the box.`
  * @param colour Colour of the close box.
  */
 static inline void DrawCloseBox(const Rect &r, Colours colour)
 {
 	if (colour != COLOUR_WHITE) DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_NONE);
-	Dimension d = GetSpriteSize(SPR_CLOSEBOX);
-	int s = UnScaleGUI(1); /* Offset to account for shadow of SPR_CLOSEBOX */
-	DrawSprite(SPR_CLOSEBOX, (colour != COLOUR_WHITE ? TC_BLACK : TC_SILVER) | (1 << PALETTE_TEXT_RECOLOUR), CenterBounds(r.left, r.right, d.width - s), CenterBounds(r.top, r.bottom, d.height - s));
+	Point offset;
+	Dimension d = GetSpriteSize(SPR_CLOSEBOX, &offset);
+	d.width  -= offset.x;
+	d.height -= offset.y;
+	int s = ScaleSpriteTrad(1); /* Offset to account for shadow of SPR_CLOSEBOX */
+	DrawSprite(SPR_CLOSEBOX, (colour != COLOUR_WHITE ? TC_BLACK : TC_SILVER) | (1U << PALETTE_TEXT_RECOLOUR), CenterBounds(r.left, r.right, d.width - s) - offset.x, CenterBounds(r.top, r.bottom, d.height - s) - offset.y);
 }
 
 /**
@@ -579,22 +805,24 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
  * @param text_colour Colour of the text.
  * @param str         Text to draw in the bar.
  * @param align       Alignment of the text.
+ * @param fs          Font size of the text.
  */
-void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align)
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align, FontSize fs)
 {
 	bool company_owned = owner < MAX_COMPANIES;
 
-	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_BORDERONLY);
-	DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, colour, company_owned ? FR_LOWERED | FR_DARKENED | FR_BORDERONLY : FR_LOWERED | FR_DARKENED);
+	DrawFrameRect(r, colour, FR_BORDERONLY);
+	Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
+	DrawFrameRect(ir, colour, company_owned ? FR_LOWERED | FR_DARKENED | FR_BORDERONLY : FR_LOWERED | FR_DARKENED);
 
 	if (company_owned) {
-		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[owner]][4]);
+		GfxFillRect(ir.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[_company_colours[owner]][4]);
 	}
 
 	if (str != STR_NULL) {
 		Dimension d = GetStringBoundingBox(str);
 		Point p = GetAlignedPosition(r, d, align);
-		DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, p.y, str, text_colour, align);
+		DrawString(r.left + WidgetDimensions::scaled.captiontext.left, r.right - WidgetDimensions::scaled.captiontext.left, p.y, str, text_colour, align, false, fs);
 	}
 }
 
@@ -611,22 +839,22 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
  */
 static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, StringID str, StringAlignment align)
 {
-	int text_offset = std::max(0, ((int)(r.bottom - r.top + 1) - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
-
 	int dd_width  = NWidgetLeaf::dropdown_dimension.width;
-	int dd_height = NWidgetLeaf::dropdown_dimension.height;
-	int image_offset = std::max(0, ((int)(r.bottom - r.top + 1) - dd_height) / 2);
 
 	if (_current_text_dir == TD_LTR) {
 		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
-		DrawFrameRect(r.right + 1 - dd_width, r.top, r.right, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
-		DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.right - (dd_width - 2) + clicked_dropdown, r.top + image_offset + clicked_dropdown);
-		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - dd_width - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK, align);
+		DrawImageButtons(r.WithWidth(dd_width, true), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
+		if (str != STR_NULL) {
+			int o = clicked_button ? WidgetDimensions::scaled.pressed : 0;
+			DrawString(r.left + WidgetDimensions::scaled.dropdowntext.left + o, r.right - dd_width - WidgetDimensions::scaled.dropdowntext.right + o, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL) + o, str, TC_BLACK, align);
+		}
 	} else {
 		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
-		DrawFrameRect(r.left, r.top, r.left + dd_width - 1, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
-		DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.left + 1 + clicked_dropdown, r.top + image_offset + clicked_dropdown);
-		if (str != STR_NULL) DrawString(r.left + dd_width + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK, align);
+		DrawImageButtons(r.WithWidth(dd_width, false), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
+		if (str != STR_NULL) {
+			int o = clicked_button ? WidgetDimensions::scaled.pressed : 0;
+			DrawString(r.left + dd_width + WidgetDimensions::scaled.dropdowntext.left + o, r.right - WidgetDimensions::scaled.dropdowntext.right + o, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL) + o, str, TC_BLACK, align);
+		}
 	}
 }
 
@@ -647,17 +875,15 @@ void Window::DrawWidgets() const
 			const NWidgetBase *widget = this->GetWidget<NWidgetBase>(i);
 			if (widget == nullptr || !widget->IsHighlighted()) continue;
 
-			int left = widget->pos_x;
-			int top  = widget->pos_y;
-			int right  = left + widget->current_x - 1;
-			int bottom = top  + widget->current_y - 1;
+			Rect outer = widget->GetCurrentRect();
+			Rect inner = outer.Shrink(WidgetDimensions::scaled.bevel).Expand(1);
 
 			int colour = _string_colourmap[_window_highlight_colour ? widget->GetHighlightColour() : TC_WHITE];
 
-			GfxFillRect(left,                 top,    left,                   bottom - WD_BEVEL_BOTTOM, colour);
-			GfxFillRect(left + WD_BEVEL_LEFT, top,    right - WD_BEVEL_RIGHT, top,                      colour);
-			GfxFillRect(right,                top,    right,                  bottom - WD_BEVEL_BOTTOM, colour);
-			GfxFillRect(left,                 bottom, right,                  bottom,                   colour);
+			GfxFillRect(outer.left,     outer.top,    inner.left,      inner.bottom, colour);
+			GfxFillRect(inner.left + 1, outer.top,    inner.right - 1, inner.top,    colour);
+			GfxFillRect(inner.right,    outer.top,    outer.right,     inner.bottom, colour);
+			GfxFillRect(outer.left + 1, inner.bottom, outer.right - 1, outer.bottom, colour);
 		}
 	}
 }
@@ -672,15 +898,12 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	if (state == SBS_OFF) return;
 
 	assert(this->nested_array != nullptr);
-	const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
+	Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect();
 
 	/* Sort button uses the same sprites as vertical scrollbar */
 	Dimension dim = NWidgetScrollbar::GetVerticalDimension();
-	int offset = this->IsWidgetLowered(widget) ? 1 : 0;
-	int x = offset + nwid->pos_x + (_current_text_dir == TD_LTR ? nwid->current_x - dim.width : 0);
-	int y = offset + nwid->pos_y + (nwid->current_y - dim.height) / 2;
 
-	DrawSprite(state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, PAL_NONE, x, y);
+	DrawSpriteIgnorePadding(state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, PAL_NONE, r.WithWidth(dim.width, _current_text_dir == TD_LTR), this->IsWidgetLowered(widget), SA_CENTER);
 }
 
 /**
@@ -831,10 +1054,7 @@ NWidgetBase *NWidgetBase::GetWidgetOfType(WidgetType tp)
 
 void NWidgetBase::AdjustPaddingForZoom()
 {
-	this->padding_top    = ScaleGUITrad(this->uz_padding_top);
-	this->padding_right  = ScaleGUITrad(this->uz_padding_right);
-	this->padding_bottom = ScaleGUITrad(this->uz_padding_bottom);
-	this->padding_left   = ScaleGUITrad(this->uz_padding_left);
+	this->padding = ScaleGUITrad(this->uz_padding);
 }
 
 /**
@@ -886,10 +1106,10 @@ void NWidgetResizeBase::SetMinimalSizeAbsolute(uint min_x, uint min_y)
 /**
  * Set minimal text lines for the widget.
  * @param min_lines Number of text lines of the widget.
- * @param spacing   Extra spacing (eg WD_FRAMERECT_TOP + _BOTTOM) of the widget.
+ * @param spacing   Extra unscaled spacing (eg WidgetDimensions::unscaled.framerect.Vertical()) of the widget.
  * @param size      Font size of text.
  */
-void NWidgetResizeBase::SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size)
+void NWidgetResizeBase::SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, FontSize size)
 {
 	this->uz_text_lines = min_lines;
 	this->uz_text_spacing = spacing;
@@ -919,6 +1139,18 @@ void NWidgetResizeBase::SetResize(uint resize_x, uint resize_y)
 	this->resize_y = resize_y;
 }
 
+/**
+ * Set absolute (post-scaling) minimal size of the widget.
+ * @param min_y Vertical minimal size of the widget.
+ * @return true iff the widget minimum size has changed.
+ */
+bool NWidgetResizeBase::UpdateVerticalSize(uint min_y)
+{
+	if (min_y == this->min_y) return false;
+	this->min_y = min_y;
+	return true;
+}
+
 void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
 {
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
@@ -933,14 +1165,15 @@ void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, ui
  * @param widget_data Data component of the widget. @see Widget::data
  * @param tool_tip    Tool tip of the widget. @see Widget::tooltips
  */
-NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y)
+NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y)
 {
 	this->colour = colour;
 	this->index = -1;
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
 	this->scrollbar_index = -1;
-	this->text_colour = TC_FROMSTRING;
+	this->text_colour = tp == WWT_CAPTION ? TC_WHITE : TC_BLACK;
+	this->text_size = FS_NORMAL;
 	this->align = SA_CENTER;
 }
 
@@ -959,19 +1192,21 @@ void NWidgetCore::SetIndex(int index)
  * @param widget_data Data to use.
  * @param tool_tip    Tool tip string to use.
  */
-void NWidgetCore::SetDataTip(uint32 widget_data, StringID tool_tip)
+void NWidgetCore::SetDataTip(uint32_t widget_data, StringID tool_tip)
 {
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
 }
 
 /**
- * Set the text colour of the nested widget.
+ * Set the text style of the nested widget.
  * @param colour TextColour to use.
+ * @param size Font size to use.
  */
-void NWidgetCore::SetTextColour(TextColour colour)
+void NWidgetCore::SetTextStyle(TextColour colour, FontSize size)
 {
 	this->text_colour = colour;
+	this->text_size = size;
 }
 
 /**
@@ -1124,8 +1359,8 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		child_wid->SetupSmallestSize(w, init_array);
 
-		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
-		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
+		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.Horizontal());
+		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
 		this->fill_x = LeastCommonMultiple(this->fill_x, child_wid->fill_x);
 		this->fill_y = LeastCommonMultiple(this->fill_y, child_wid->fill_y);
 		this->resize_x = LeastCommonMultiple(this->resize_x, child_wid->resize_x);
@@ -1142,12 +1377,12 @@ void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint 
 
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		uint hor_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetHorizontalStepSize(sizing);
-		uint child_width = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
-		uint child_pos_x = (rtl ? child_wid->padding_right : child_wid->padding_left);
+		uint child_width = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding.Horizontal(), hor_step);
+		uint child_pos_x = (rtl ? child_wid->padding.right : child_wid->padding.left);
 
 		uint vert_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetVerticalStepSize(sizing);
-		uint child_height = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
-		uint child_pos_y = child_wid->padding_top;
+		uint child_height = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding.Vertical(), vert_step);
+		uint child_pos_y = child_wid->padding.top;
 
 		child_wid->AssignSizePosition(sizing, x + child_pos_x, y + child_pos_y, child_width, child_height, rtl);
 	}
@@ -1219,7 +1454,7 @@ void NWidgetPIPContainer::AdjustPaddingForZoom()
  * @param pip_post  Additional space after the last child widget (below for the
  *                  vertical container, at the right for the horizontal container).
  */
-void NWidgetPIPContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
+void NWidgetPIPContainer::SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post)
 {
 	this->uz_pip_pre = pip_pre;
 	this->uz_pip_inter = pip_inter;
@@ -1269,7 +1504,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		child_wid->SetupSmallestSize(w, init_array);
 		longest = std::max(longest, child_wid->smallest_x);
 		max_vert_fill = std::max(max_vert_fill, child_wid->GetVerticalStepSize(ST_SMALLEST));
-		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
+		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
 	}
 	/* 1b. Make the container higher if needed to accommodate all children nicely. */
 	[[maybe_unused]] uint max_smallest = this->smallest_y + 3 * max_vert_fill; // Upper limit to computing smallest height.
@@ -1277,7 +1512,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 			uint step_size = child_wid->GetVerticalStepSize(ST_SMALLEST);
-			uint child_height = child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
+			uint child_height = child_wid->smallest_y + child_wid->padding.Vertical();
 			if (step_size > 1 && child_height < cur_height) { // Small step sizes or already fitting children are not interesting.
 				uint remainder = (cur_height - child_height) % step_size;
 				if (remainder > 0) { // Child did not fit entirely, widen the container.
@@ -1297,15 +1532,15 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		}
 	}
 	/* 3. Move PIP space to the children, compute smallest, fill, and resize values of the container. */
-	if (this->head != nullptr) this->head->padding_left += this->pip_pre;
+	if (this->head != nullptr) this->head->padding.left += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		if (child_wid->next != nullptr) {
-			child_wid->padding_right += this->pip_inter;
+			child_wid->padding.right += this->pip_inter;
 		} else {
-			child_wid->padding_right += this->pip_post;
+			child_wid->padding.right += this->pip_post;
 		}
 
-		this->smallest_x += child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right;
+		this->smallest_x += child_wid->smallest_x + child_wid->padding.Horizontal();
 		if (child_wid->fill_x > 0) {
 			if (this->fill_x == 0 || this->fill_x > child_wid->fill_x) this->fill_x = child_wid->fill_x;
 		}
@@ -1329,7 +1564,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
 		/* For EQUALSIZE containers this does not sum to smallest_x during initialisation */
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			additional_length -= child_wid->smallest_x + child_wid->padding_right + child_wid->padding_left;
+			additional_length -= child_wid->smallest_x + child_wid->padding.Horizontal();
 		}
 	} else {
 		additional_length -= this->smallest_x;
@@ -1356,14 +1591,24 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		uint hor_step = child_wid->GetHorizontalStepSize(sizing);
 		if (hor_step > 0) {
-			num_changing_childs++;
+			if (!(flags & NC_BIGFIRST)) num_changing_childs++;
 			biggest_stepsize = std::max(biggest_stepsize, hor_step);
 		} else {
 			child_wid->current_x = child_wid->smallest_x;
 		}
 
 		uint vert_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetVerticalStepSize(sizing);
-		child_wid->current_y = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
+		child_wid->current_y = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding.Vertical(), vert_step);
+	}
+
+	/* First.5 loop: count how many children are of the biggest step size. */
+	if ((flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+			uint hor_step = child_wid->GetHorizontalStepSize(sizing);
+			if (hor_step == biggest_stepsize) {
+				num_changing_childs++;
+			}
+		}
 	}
 
 	/* Second loop: Allocate the additional horizontal space over the resizing children, starting with the biggest resize steps. */
@@ -1383,6 +1628,16 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 			next_biggest_stepsize = std::max(next_biggest_stepsize, hor_step);
 		}
 		biggest_stepsize = next_biggest_stepsize;
+
+		if (num_changing_childs == 0 && (flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+			/* Second.5 loop: count how many children are of the updated biggest step size. */
+			for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+				uint hor_step = child_wid->GetHorizontalStepSize(sizing);
+				if (hor_step == biggest_stepsize) {
+					num_changing_childs++;
+				}
+			}
+		}
 	}
 	assert(num_changing_childs == 0);
 
@@ -1391,11 +1646,11 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	NWidgetBase *child_wid = this->head;
 	while (child_wid != nullptr) {
 		uint child_width = child_wid->current_x;
-		uint child_x = x + (rtl ? position - child_width - child_wid->padding_left : position + child_wid->padding_left);
-		uint child_y = y + child_wid->padding_top;
+		uint child_x = x + (rtl ? position - child_width - child_wid->padding.left : position + child_wid->padding.left);
+		uint child_y = y + child_wid->padding.top;
 
 		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, rtl);
-		uint padded_child_width = child_width + child_wid->padding_right + child_wid->padding_left;
+		uint padded_child_width = child_width + child_wid->padding.Horizontal();
 		position = rtl ? position - padded_child_width : position + padded_child_width;
 
 		child_wid = child_wid->next;
@@ -1434,7 +1689,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		child_wid->SetupSmallestSize(w, init_array);
 		highest = std::max(highest, child_wid->smallest_y);
 		max_hor_fill = std::max(max_hor_fill, child_wid->GetHorizontalStepSize(ST_SMALLEST));
-		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
+		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.Horizontal());
 	}
 	/* 1b. Make the container wider if needed to accommodate all children nicely. */
 	[[maybe_unused]] uint max_smallest = this->smallest_x + 3 * max_hor_fill; // Upper limit to computing smallest height.
@@ -1442,7 +1697,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 			uint step_size = child_wid->GetHorizontalStepSize(ST_SMALLEST);
-			uint child_width = child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right;
+			uint child_width = child_wid->smallest_x + child_wid->padding.Horizontal();
 			if (step_size > 1 && child_width < cur_width) { // Small step sizes or already fitting children are not interesting.
 				uint remainder = (cur_width - child_width) % step_size;
 				if (remainder > 0) { // Child did not fit entirely, widen the container.
@@ -1462,15 +1717,15 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		}
 	}
 	/* 3. Move PIP space to the child, compute smallest, fill, and resize values of the container. */
-	if (this->head != nullptr) this->head->padding_top += this->pip_pre;
+	if (this->head != nullptr) this->head->padding.top += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		if (child_wid->next != nullptr) {
-			child_wid->padding_bottom += this->pip_inter;
+			child_wid->padding.bottom += this->pip_inter;
 		} else {
-			child_wid->padding_bottom += this->pip_post;
+			child_wid->padding.bottom += this->pip_post;
 		}
 
-		this->smallest_y += child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
+		this->smallest_y += child_wid->smallest_y + child_wid->padding.Vertical();
 		if (child_wid->fill_y > 0) {
 			if (this->fill_y == 0 || this->fill_y > child_wid->fill_y) this->fill_y = child_wid->fill_y;
 		}
@@ -1494,7 +1749,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
 		/* For EQUALSIZE containers this does not sum to smallest_y during initialisation */
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			additional_length -= child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
+			additional_length -= child_wid->smallest_y + child_wid->padding.Vertical();
 		}
 	} else {
 		additional_length -= this->smallest_y;
@@ -1512,14 +1767,24 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		uint vert_step = child_wid->GetVerticalStepSize(sizing);
 		if (vert_step > 0) {
-			num_changing_childs++;
+			if (!(flags & NC_BIGFIRST)) num_changing_childs++;
 			biggest_stepsize = std::max(biggest_stepsize, vert_step);
 		} else {
 			child_wid->current_y = child_wid->smallest_y;
 		}
 
 		uint hor_step = (sizing == ST_SMALLEST) ? 1 : child_wid->GetHorizontalStepSize(sizing);
-		child_wid->current_x = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
+		child_wid->current_x = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding.Horizontal(), hor_step);
+	}
+
+	/* First.5 loop: count how many children are of the biggest step size. */
+	if ((this->flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+			uint vert_step = child_wid->GetVerticalStepSize(sizing);
+			if (vert_step == biggest_stepsize) {
+				num_changing_childs++;
+			}
+		}
 	}
 
 	/* Second loop: Allocate the additional vertical space over the resizing children, starting with the biggest resize steps. */
@@ -1539,17 +1804,27 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 			next_biggest_stepsize = std::max(next_biggest_stepsize, vert_step);
 		}
 		biggest_stepsize = next_biggest_stepsize;
+
+		if (num_changing_childs == 0 && (flags & NC_BIGFIRST) && biggest_stepsize > 0) {
+			/* Second.5 loop: count how many children are of the updated biggest step size. */
+			for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+				uint vert_step = child_wid->GetVerticalStepSize(sizing);
+				if (vert_step == biggest_stepsize) {
+					num_changing_childs++;
+				}
+			}
+		}
 	}
 	assert(num_changing_childs == 0);
 
 	/* Third loop: Compute position and call the child. */
 	uint position = 0; // Place to put next child relative to origin of the container.
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		uint child_x = x + (rtl ? child_wid->padding_right : child_wid->padding_left);
+		uint child_x = x + (rtl ? child_wid->padding.right : child_wid->padding.left);
 		uint child_height = child_wid->current_y;
 
-		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding_top, child_wid->current_x, child_height, rtl);
-		position += child_height + child_wid->padding_top + child_wid->padding_bottom;
+		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding.top, child_wid->current_x, child_height, rtl);
+		position += child_height + child_wid->padding.Vertical();
 	}
 }
 
@@ -1725,11 +2000,11 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 	bool rtl = _current_text_dir == TD_RTL;
 
 	int widget_col = (rtl ?
-				-x + (int)this->pip_post + (int)this->pos_x + base_offs_x + (int)this->widget_w - 1 - (int)this->pip_inter :
-				 x - (int)this->pip_pre  - (int)this->pos_x - base_offs_x
+				-x + (int)this->pip_post + this->pos_x + base_offs_x + this->widget_w - 1 - (int)this->pip_inter :
+				 x - (int)this->pip_pre  - this->pos_x - base_offs_x
 			) / this->widget_w;
 
-	int widget_row = (y - base_offs_y - (int)this->pip_pre - (int)this->pos_y) / this->widget_h;
+	int widget_row = (y - base_offs_y - (int)this->pip_pre - this->pos_y) / this->widget_h;
 
 	int sub_wid = (widget_row + start_y) * this->widgets_x + start_x + widget_col;
 	if (sub_wid >= this->count) return nullptr;
@@ -1755,8 +2030,7 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 	bool rtl = _current_text_dir == TD_RTL;
 	DrawPixelInfo tmp_dpi;
 	if (!FillDrawPixelInfo(&tmp_dpi, this->pos_x + (rtl ? this->pip_post : this->pip_pre), this->pos_y + this->pip_pre, this->current_x - this->pip_pre - this->pip_post, this->current_y - this->pip_pre - this->pip_post)) return;
-	DrawPixelInfo *old_dpi = _cur_dpi;
-	_cur_dpi = &tmp_dpi;
+	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
 	/* Get the appropriate offsets so we can draw the right widgets. */
 	NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
@@ -1789,9 +2063,6 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 			child->Draw(w);
 		}
 	}
-
-	/* Restore the clipping area. */
-	_cur_dpi = old_dpi;
 }
 
 /**
@@ -1870,7 +2141,7 @@ void NWidgetBackground::Add(NWidgetBase *nwid)
  *                  vertical container, at the right for the horizontal container).
  * @note Using this function implies that the widget has (or will have) child widgets.
  */
-void NWidgetBackground::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
+void NWidgetBackground::SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post)
 {
 	if (this->child == nullptr) {
 		this->child = new NWidgetVertical();
@@ -1905,25 +2176,20 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 
 		if (this->type == WWT_FRAME) {
 			/* Account for the size of the frame's text if that exists */
-			this->child->padding_left   = WD_FRAMETEXT_LEFT;
-			this->child->padding_right  = WD_FRAMETEXT_RIGHT;
-			this->child->padding_top    = std::max((int)WD_FRAMETEXT_TOP, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WD_FRAMETEXT_TOP / 2 : 0);
-			this->child->padding_bottom = WD_FRAMETEXT_BOTTOM;
+			this->child->padding     = WidgetDimensions::scaled.frametext;
+			this->child->padding.top = std::max<uint8_t>(WidgetDimensions::scaled.frametext.top, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.frametext.top / 2 : 0);
 
-			this->smallest_x += this->child->padding_left + this->child->padding_right;
-			this->smallest_y += this->child->padding_top + this->child->padding_bottom;
+			this->smallest_x += this->child->padding.Horizontal();
+			this->smallest_y += this->child->padding.Vertical();
 
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(this->widget_data).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(this->widget_data, this->text_size).width + WidgetDimensions::scaled.frametext.Horizontal());
 		} else if (this->type == WWT_INSET) {
 			/* Apply automatic padding for bevel thickness. */
-			this->child->padding_left   = WD_BEVEL_LEFT;
-			this->child->padding_right  = WD_BEVEL_RIGHT;
-			this->child->padding_top    = WD_BEVEL_TOP;
-			this->child->padding_bottom = WD_BEVEL_BOTTOM;
+			this->child->padding = WidgetDimensions::scaled.bevel;
 
-			this->smallest_x += this->child->padding_left + this->child->padding_right;
-			this->smallest_y += this->child->padding_top + this->child->padding_bottom;
+			this->smallest_x += this->child->padding.Horizontal();
+			this->smallest_y += this->child->padding.Vertical();
 		}
 	} else {
 		Dimension d = {this->min_x, this->min_y};
@@ -1932,12 +2198,18 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		if (w != nullptr) { // A non-nullptr window pointer acts as switch to turn dynamic widget size on.
 			if (this->type == WWT_FRAME || this->type == WWT_INSET) {
 				if (this->index >= 0) w->SetStringParameters(this->index);
-				Dimension background = GetStringBoundingBox(this->widget_data);
-				background.width += (this->type == WWT_FRAME) ? (WD_FRAMETEXT_LEFT + WD_FRAMERECT_RIGHT) : (WD_INSET_LEFT + WD_INSET_RIGHT);
+				Dimension background = GetStringBoundingBox(this->widget_data, this->text_size);
+				background.width += (this->type == WWT_FRAME) ? (WidgetDimensions::scaled.frametext.Horizontal()) : (WidgetDimensions::scaled.inset.Horizontal());
 				d = maxdim(d, background);
 			}
 			if (this->index >= 0) {
-				static const Dimension padding = {0, 0};
+				Dimension padding;
+				switch (this->type) {
+					default: NOT_REACHED();
+					case WWT_PANEL: padding = {WidgetDimensions::scaled.framerect.Horizontal(), WidgetDimensions::scaled.framerect.Vertical()}; break;
+					case WWT_FRAME: padding = {WidgetDimensions::scaled.frametext.Horizontal(), WidgetDimensions::scaled.frametext.Vertical()}; break;
+					case WWT_INSET: padding = {WidgetDimensions::scaled.inset.Horizontal(),     WidgetDimensions::scaled.inset.Vertical()};     break;
+				}
 				w->UpdateWidgetSize(this->index, &d, padding, &fill, &resize);
 			}
 		}
@@ -1955,10 +2227,10 @@ void NWidgetBackground::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
 	if (this->child != nullptr) {
-		uint x_offset = (rtl ? this->child->padding_right : this->child->padding_left);
-		uint width = given_width - this->child->padding_right - this->child->padding_left;
-		uint height = given_height - this->child->padding_top - this->child->padding_bottom;
-		this->child->AssignSizePosition(sizing, x + x_offset, y + this->child->padding_top, width, height, rtl);
+		uint x_offset = (rtl ? this->child->padding.right : this->child->padding.left);
+		uint width = given_width - this->child->padding.Horizontal();
+		uint height = given_height - this->child->padding.Vertical();
+		this->child->AssignSizePosition(sizing, x + x_offset, y + this->child->padding.top, width, height, rtl);
 	}
 }
 
@@ -1985,12 +2257,12 @@ void NWidgetBackground::Draw(const Window *w)
 
 		case WWT_FRAME:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawFrame(r, this->colour, this->text_colour, this->widget_data, this->align);
+			DrawFrame(r, this->colour, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_INSET:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawInset(r, this->colour, this->text_colour, this->widget_data, this->align);
+			DrawInset(r, this->colour, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		default:
@@ -2001,7 +2273,7 @@ void NWidgetBackground::Draw(const Window *w)
 	if (this->child != nullptr) this->child->Draw(w);
 
 	if (this->IsDisabled()) {
-		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
 	}
 }
 
@@ -2061,12 +2333,12 @@ void NWidgetViewport::Draw(const Window *w)
 /**
  * Initialize the viewport of the window.
  * @param w            Window owning the viewport.
- * @param follow_flags Type of viewport, see #InitializeWindowViewport().
+ * @param focus        Either the tile index or vehicle ID to focus.
  * @param zoom         Zoom level.
  */
-void NWidgetViewport::InitializeViewport(Window *w, uint32 follow_flags, ZoomLevel zoom)
+void NWidgetViewport::InitializeViewport(Window *w, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom)
 {
-	InitializeWindowViewport(w, this->pos_x, this->pos_y, this->current_x, this->current_y, follow_flags, zoom);
+	InitializeWindowViewport(w, this->pos_x, this->pos_y, this->current_x, this->current_y, focus, zoom);
 }
 
 /**
@@ -2093,11 +2365,12 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
  * @param w           The window the click was in.
  * @param widget      Widget number of the widget clicked in.
  * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
+ * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
  * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
  */
-int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding) const
+int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding, int line_height) const
 {
-	uint pos = w->GetRowFromWidget(clickpos, widget, padding, -1);
+	uint pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
 	if (pos != INT_MAX) pos += this->GetPosition();
 	return (pos >= this->GetCount()) ? INT_MAX : pos;
 }
@@ -2116,7 +2389,7 @@ int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, in
  * @param key_code      The pressed key code.
  * @return ES_NOT_HANDLED when another key than the 6 specific keys was pressed, otherwise ES_HANDLED.
  */
-EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16 keycode) const
+EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16_t keycode) const
 {
 	int new_pos = list_position;
 	switch (keycode) {
@@ -2252,7 +2525,7 @@ void NWidgetScrollbar::Draw(const Window *w)
 	}
 
 	if (this->IsDisabled()) {
-		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
 	}
 }
 
@@ -2264,22 +2537,20 @@ void NWidgetScrollbar::Draw(const Window *w)
 
 /* static */ Dimension NWidgetScrollbar::GetVerticalDimension()
 {
-	static const Dimension extra = {WD_SCROLLBAR_LEFT + WD_SCROLLBAR_RIGHT, WD_SCROLLBAR_TOP + WD_SCROLLBAR_BOTTOM};
 	if (vertical_dimension.width == 0) {
-		vertical_dimension = maxdim(GetSpriteSize(SPR_ARROW_UP), GetSpriteSize(SPR_ARROW_DOWN));
-		vertical_dimension.width += extra.width;
-		vertical_dimension.height += extra.height;
+		vertical_dimension = maxdim(GetScaledSpriteSize(SPR_ARROW_UP), GetScaledSpriteSize(SPR_ARROW_DOWN));
+		vertical_dimension.width += WidgetDimensions::scaled.vscrollbar.Horizontal();
+		vertical_dimension.height += WidgetDimensions::scaled.vscrollbar.Vertical();
 	}
 	return vertical_dimension;
 }
 
 /* static */ Dimension NWidgetScrollbar::GetHorizontalDimension()
 {
-	static const Dimension extra = {WD_SCROLLBAR_LEFT + WD_SCROLLBAR_RIGHT, WD_SCROLLBAR_TOP + WD_SCROLLBAR_BOTTOM};
 	if (horizontal_dimension.width == 0) {
-		horizontal_dimension = maxdim(GetSpriteSize(SPR_ARROW_LEFT), GetSpriteSize(SPR_ARROW_RIGHT));
-		horizontal_dimension.width += extra.width;
-		horizontal_dimension.height += extra.height;
+		horizontal_dimension = maxdim(GetScaledSpriteSize(SPR_ARROW_LEFT), GetScaledSpriteSize(SPR_ARROW_RIGHT));
+		horizontal_dimension.width += WidgetDimensions::scaled.hscrollbar.Horizontal();
+		horizontal_dimension.height += WidgetDimensions::scaled.hscrollbar.Vertical();
 	}
 	return horizontal_dimension;
 }
@@ -2315,7 +2586,7 @@ Dimension NWidgetLeaf::dropdown_dimension   = {0, 0};
  * @param data   Data of the widget.
  * @param tip    Tooltip of the widget.
  */
-NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
+NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32_t data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
 {
 	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_DEFSIZEBOX || tp == WWT_DEBUGBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
 	if (index >= 0) this->SetIndex(index);
@@ -2356,7 +2627,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 			this->SetFill(1, 0);
 			this->SetResize(1, 0);
 			this->SetMinimalSize(0, WD_CAPTION_HEIGHT);
-			this->SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, FS_NORMAL);
+			this->SetMinimalTextLines(1, WidgetDimensions::unscaled.framerect.Vertical(), FS_NORMAL);
 			this->SetDataTip(data, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 			break;
 
@@ -2414,41 +2685,35 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		w->nested_array[this->index] = this;
 	}
 
+	Dimension padding = {0, 0};
 	Dimension size = {this->min_x, this->min_y};
 	Dimension fill = {this->fill_x, this->fill_y};
 	Dimension resize = {this->resize_x, this->resize_y};
-	/* Get padding, and update size with the real content size if appropriate. */
-	const Dimension *padding = nullptr;
 	switch (this->type) {
 		case WWT_EMPTY: {
-			static const Dimension extra = {0, 0};
-			padding = &extra;
 			break;
 		}
 		case WWT_MATRIX: {
-			static const Dimension extra = {WD_MATRIX_LEFT + WD_MATRIX_RIGHT, WD_MATRIX_TOP + WD_MATRIX_BOTTOM};
-			padding = &extra;
+			padding = {WidgetDimensions::scaled.matrix.Horizontal(), WidgetDimensions::scaled.matrix.Vertical()};
 			break;
 		}
 		case WWT_SHADEBOX: {
-			static const Dimension extra = {WD_SHADEBOX_LEFT + WD_SHADEBOX_RIGHT, WD_SHADEBOX_TOP + WD_SHADEBOX_BOTTOM};
-			padding = &extra;
+			padding = {WidgetDimensions::scaled.shadebox.Horizontal(), WidgetDimensions::scaled.shadebox.Vertical()};
 			if (NWidgetLeaf::shadebox_dimension.width == 0) {
-				NWidgetLeaf::shadebox_dimension = maxdim(GetSpriteSize(SPR_WINDOW_SHADE), GetSpriteSize(SPR_WINDOW_UNSHADE));
-				NWidgetLeaf::shadebox_dimension.width += extra.width;
-				NWidgetLeaf::shadebox_dimension.height += extra.height;
+				NWidgetLeaf::shadebox_dimension = maxdim(GetScaledSpriteSize(SPR_WINDOW_SHADE), GetScaledSpriteSize(SPR_WINDOW_UNSHADE));
+				NWidgetLeaf::shadebox_dimension.width += padding.width;
+				NWidgetLeaf::shadebox_dimension.height += padding.height;
 			}
 			size = maxdim(size, NWidgetLeaf::shadebox_dimension);
 			break;
 		}
 		case WWT_DEBUGBOX:
 			if (_settings_client.gui.newgrf_developer_tools && w->IsNewGRFInspectable()) {
-				static const Dimension extra = {WD_DEBUGBOX_LEFT + WD_DEBUGBOX_RIGHT, WD_DEBUGBOX_TOP + WD_DEBUGBOX_BOTTOM};
-				padding = &extra;
+				padding = {WidgetDimensions::scaled.debugbox.Horizontal(), WidgetDimensions::scaled.debugbox.Vertical()};
 				if (NWidgetLeaf::debugbox_dimension.width == 0) {
-					NWidgetLeaf::debugbox_dimension = GetSpriteSize(SPR_WINDOW_DEBUG);
-					NWidgetLeaf::debugbox_dimension.width += extra.width;
-					NWidgetLeaf::debugbox_dimension.height += extra.height;
+					NWidgetLeaf::debugbox_dimension = GetScaledSpriteSize(SPR_WINDOW_DEBUG);
+					NWidgetLeaf::debugbox_dimension.width += padding.width;
+					NWidgetLeaf::debugbox_dimension.height += padding.height;
 				}
 				size = maxdim(size, NWidgetLeaf::debugbox_dimension);
 			} else {
@@ -2460,81 +2725,74 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			break;
 
 		case WWT_STICKYBOX: {
-			static const Dimension extra = {WD_STICKYBOX_LEFT + WD_STICKYBOX_RIGHT, WD_STICKYBOX_TOP + WD_STICKYBOX_BOTTOM};
-			padding = &extra;
+			padding = {WidgetDimensions::scaled.stickybox.Horizontal(), WidgetDimensions::scaled.stickybox.Vertical()};
 			if (NWidgetLeaf::stickybox_dimension.width == 0) {
-				NWidgetLeaf::stickybox_dimension = maxdim(GetSpriteSize(SPR_PIN_UP), GetSpriteSize(SPR_PIN_DOWN));
-				NWidgetLeaf::stickybox_dimension.width += extra.width;
-				NWidgetLeaf::stickybox_dimension.height += extra.height;
+				NWidgetLeaf::stickybox_dimension = maxdim(GetScaledSpriteSize(SPR_PIN_UP), GetScaledSpriteSize(SPR_PIN_DOWN));
+				NWidgetLeaf::stickybox_dimension.width += padding.width;
+				NWidgetLeaf::stickybox_dimension.height += padding.height;
 			}
 			size = maxdim(size, NWidgetLeaf::stickybox_dimension);
 			break;
 		}
 
 		case WWT_DEFSIZEBOX: {
-			static const Dimension extra = {WD_DEFSIZEBOX_LEFT + WD_DEFSIZEBOX_RIGHT, WD_DEFSIZEBOX_TOP + WD_DEFSIZEBOX_BOTTOM};
-			padding = &extra;
+			padding = {WidgetDimensions::scaled.defsizebox.Horizontal(), WidgetDimensions::scaled.defsizebox.Vertical()};
 			if (NWidgetLeaf::defsizebox_dimension.width == 0) {
-				NWidgetLeaf::defsizebox_dimension = GetSpriteSize(SPR_WINDOW_DEFSIZE);
-				NWidgetLeaf::defsizebox_dimension.width += extra.width;
-				NWidgetLeaf::defsizebox_dimension.height += extra.height;
+				NWidgetLeaf::defsizebox_dimension = GetScaledSpriteSize(SPR_WINDOW_DEFSIZE);
+				NWidgetLeaf::defsizebox_dimension.width += padding.width;
+				NWidgetLeaf::defsizebox_dimension.height += padding.height;
 			}
 			size = maxdim(size, NWidgetLeaf::defsizebox_dimension);
 			break;
 		}
 
 		case WWT_RESIZEBOX: {
-			static const Dimension extra = {WD_RESIZEBOX_LEFT + WD_RESIZEBOX_RIGHT, WD_RESIZEBOX_TOP + WD_RESIZEBOX_BOTTOM};
-			padding = &extra;
+			padding = {WidgetDimensions::scaled.resizebox.Horizontal(), WidgetDimensions::scaled.resizebox.Vertical()};
 			if (NWidgetLeaf::resizebox_dimension.width == 0) {
-				NWidgetLeaf::resizebox_dimension = maxdim(GetSpriteSize(SPR_WINDOW_RESIZE_LEFT), GetSpriteSize(SPR_WINDOW_RESIZE_RIGHT));
-				NWidgetLeaf::resizebox_dimension.width += extra.width;
-				NWidgetLeaf::resizebox_dimension.height += extra.height;
+				NWidgetLeaf::resizebox_dimension = maxdim(GetScaledSpriteSize(SPR_WINDOW_RESIZE_LEFT), GetScaledSpriteSize(SPR_WINDOW_RESIZE_RIGHT));
+				NWidgetLeaf::resizebox_dimension.width += padding.width;
+				NWidgetLeaf::resizebox_dimension.height += padding.height;
 			}
 			size = maxdim(size, NWidgetLeaf::resizebox_dimension);
 			break;
 		}
 		case WWT_EDITBOX: {
-			Dimension sprite_size = GetSpriteSize(_current_text_dir == TD_RTL ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
-			size.width = std::max(size.width, 30 + sprite_size.width);
-			size.height = std::max(sprite_size.height, GetStringBoundingBox("_").height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+			Dimension sprite_size = GetScaledSpriteSize(_current_text_dir == TD_RTL ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+			size.width = std::max(size.width, ScaleGUITrad(30) + sprite_size.width);
+			size.height = std::max(sprite_size.height, GetStringBoundingBox("_").height + WidgetDimensions::scaled.framerect.Vertical());
 		}
 		FALLTHROUGH;
 		case WWT_PUSHBTN: {
-			static const Dimension extra = {WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM};
-			padding = &extra;
+			padding = {WidgetDimensions::scaled.frametext.Horizontal(), WidgetDimensions::scaled.framerect.Vertical()};
 			break;
 		}
 		case WWT_IMGBTN:
 		case WWT_IMGBTN_2:
 		case WWT_PUSHIMGBTN: {
-			static const Dimension extra = {WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT,  WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM};
-			padding = &extra;
-			Dimension d2 = GetSpriteSize(this->widget_data);
-			if (this->type == WWT_IMGBTN_2) d2 = maxdim(d2, GetSpriteSize(this->widget_data + 1));
-			d2.width += extra.width;
-			d2.height += extra.height;
+			padding = {WidgetDimensions::scaled.imgbtn.Horizontal(), WidgetDimensions::scaled.imgbtn.Vertical()};
+			Dimension d2 = GetScaledSpriteSize(this->widget_data);
+			if (this->type == WWT_IMGBTN_2) d2 = maxdim(d2, GetScaledSpriteSize(this->widget_data + 1));
+			d2.width += padding.width;
+			d2.height += padding.height;
 			size = maxdim(size, d2);
 			break;
 		}
 		case WWT_ARROWBTN:
 		case WWT_PUSHARROWBTN: {
-			static const Dimension extra = {WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT,  WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM};
-			padding = &extra;
-			Dimension d2 = maxdim(GetSpriteSize(SPR_ARROW_LEFT), GetSpriteSize(SPR_ARROW_RIGHT));
-			d2.width += extra.width;
-			d2.height += extra.height;
+			padding = {WidgetDimensions::scaled.imgbtn.Horizontal(), WidgetDimensions::scaled.imgbtn.Vertical()};
+			Dimension d2 = maxdim(GetScaledSpriteSize(SPR_ARROW_LEFT), GetScaledSpriteSize(SPR_ARROW_RIGHT));
+			d2.width += padding.width;
+			d2.height += padding.height;
 			size = maxdim(size, d2);
 			break;
 		}
 
 		case WWT_CLOSEBOX: {
-			static const Dimension extra = {WD_CLOSEBOX_LEFT + WD_CLOSEBOX_RIGHT, WD_CLOSEBOX_TOP + WD_CLOSEBOX_BOTTOM};
-			padding = &extra;
+			padding = {WidgetDimensions::scaled.closebox.Horizontal(), WidgetDimensions::scaled.closebox.Vertical()};
 			if (NWidgetLeaf::closebox_dimension.width == 0) {
-				NWidgetLeaf::closebox_dimension = GetSpriteSize(SPR_CLOSEBOX);
-				NWidgetLeaf::closebox_dimension.width += extra.width;
-				NWidgetLeaf::closebox_dimension.height += extra.height;
+				NWidgetLeaf::closebox_dimension = GetScaledSpriteSize(SPR_CLOSEBOX);
+				NWidgetLeaf::closebox_dimension.width += padding.width;
+				NWidgetLeaf::closebox_dimension.height += padding.height;
 			}
 			size = maxdim(size, NWidgetLeaf::closebox_dimension);
 			break;
@@ -2542,48 +2800,42 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		case WWT_TEXTBTN:
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2: {
-			static const Dimension extra = {WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT,  WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM};
-			padding = &extra;
+			padding = {WidgetDimensions::scaled.framerect.Horizontal(), WidgetDimensions::scaled.framerect.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			Dimension d2 = GetStringBoundingBox(this->widget_data);
-			d2.width += extra.width;
-			d2.height += extra.height;
+			Dimension d2 = GetStringBoundingBox(this->widget_data, this->text_size);
+			d2.width += padding.width;
+			d2.height += padding.height;
 			size = maxdim(size, d2);
 			break;
 		}
 		case WWT_LABEL:
 		case WWT_TEXT: {
-			static const Dimension extra = {0, 0};
-			padding = &extra;
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			size = maxdim(size, GetStringBoundingBox(this->widget_data));
+			size = maxdim(size, GetStringBoundingBox(this->widget_data, this->text_size));
 			break;
 		}
 		case WWT_CAPTION: {
-			static const Dimension extra = {WD_CAPTIONTEXT_LEFT + WD_CAPTIONTEXT_RIGHT, WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM};
-			padding = &extra;
+			padding = {WidgetDimensions::scaled.captiontext.Horizontal(), WidgetDimensions::scaled.captiontext.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			Dimension d2 = GetStringBoundingBox(this->widget_data);
-			d2.width += extra.width;
-			d2.height += extra.height;
+			Dimension d2 = GetStringBoundingBox(this->widget_data, this->text_size);
+			d2.width += padding.width;
+			d2.height += padding.height;
 			size = maxdim(size, d2);
 			break;
 		}
 		case WWT_DROPDOWN:
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN: {
-			static Dimension extra = {WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM};
-			padding = &extra;
 			if (NWidgetLeaf::dropdown_dimension.width == 0) {
-				NWidgetLeaf::dropdown_dimension = GetSpriteSize(SPR_ARROW_DOWN);
-				NWidgetLeaf::dropdown_dimension.width += WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT;
-				NWidgetLeaf::dropdown_dimension.height += WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM;
-				extra.width = WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT + NWidgetLeaf::dropdown_dimension.width;
+				NWidgetLeaf::dropdown_dimension = GetScaledSpriteSize(SPR_ARROW_DOWN);
+				NWidgetLeaf::dropdown_dimension.width += WidgetDimensions::scaled.vscrollbar.Horizontal();
+				NWidgetLeaf::dropdown_dimension.height += WidgetDimensions::scaled.vscrollbar.Vertical();
 			}
+			padding = {WidgetDimensions::scaled.dropdowntext.Horizontal() + NWidgetLeaf::dropdown_dimension.width + WidgetDimensions::scaled.fullbevel.Horizontal(), WidgetDimensions::scaled.dropdowntext.Vertical()};
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			Dimension d2 = GetStringBoundingBox(this->widget_data);
-			d2.width += extra.width;
-			d2.height = std::max(d2.height, NWidgetLeaf::dropdown_dimension.height) + extra.height;
+			Dimension d2 = GetStringBoundingBox(this->widget_data, this->text_size);
+			d2.width += padding.width;
+			d2.height = std::max(d2.height + padding.height, NWidgetLeaf::dropdown_dimension.height);
 			size = maxdim(size, d2);
 			break;
 		}
@@ -2591,7 +2843,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			NOT_REACHED();
 	}
 
-	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, *padding, &fill, &resize);
+	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
 
 	this->smallest_x = size.width;
 	this->smallest_y = size.height;
@@ -2605,15 +2857,15 @@ void NWidgetLeaf::Draw(const Window *w)
 {
 	if (this->current_x == 0 || this->current_y == 0) return;
 
-	/* Setup a clipping rectangle... */
+	/* Setup a clipping rectangle... for WWT_EMPTY or WWT_TEXT, an extra scaled pixel is allowed in case text shadow encroaches. */
+	int extra = (this->type == WWT_EMPTY || this->type == WWT_TEXT) ? ScaleGUITrad(1) : 0;
 	DrawPixelInfo new_dpi;
-	if (!FillDrawPixelInfo(&new_dpi, this->pos_x, this->pos_y, this->current_x, this->current_y)) return;
+	if (!FillDrawPixelInfo(&new_dpi, this->pos_x, this->pos_y, this->current_x + extra, this->current_y + extra)) return;
 	/* ...but keep coordinates relative to the window. */
 	new_dpi.left += this->pos_x;
 	new_dpi.top += this->pos_y;
 
-	DrawPixelInfo *old_dpi = _cur_dpi;
-	_cur_dpi = &new_dpi;
+	AutoRestoreBackup dpi_backup(_cur_dpi, &new_dpi);
 
 	Rect r = this->GetCurrentRect();
 
@@ -2638,7 +2890,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_TEXTBTN_2:
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_ARROWBTN:
@@ -2657,12 +2909,12 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_LABEL:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_TEXT:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawText(r, this->text_colour, this->widget_data, this->align);
+			DrawText(r, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_MATRIX:
@@ -2677,7 +2929,7 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_CAPTION:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawCaption(r, this->colour, w->owner, this->text_colour, this->widget_data, this->align);
+			DrawCaption(r, this->colour, w->owner, this->text_colour, this->widget_data, this->align, this->text_size);
 			break;
 
 		case WWT_SHADEBOX:
@@ -2725,10 +2977,8 @@ void NWidgetLeaf::Draw(const Window *w)
 	if (this->index >= 0) w->DrawWidget(r, this->index);
 
 	if (this->IsDisabled()) {
-		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
 	}
-
-	_cur_dpi = old_dpi;
 }
 
 /**
@@ -2855,10 +3105,10 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				break;
 			}
 
-			case WPT_TEXTCOLOUR: {
+			case WPT_TEXTSTYLE: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
 				if (nwc != nullptr) {
-					nwc->SetTextColour(parts->u.colour.colour);
+					nwc->SetTextStyle(parts->u.text_style.colour, parts->u.text_style.size);
 				}
 				break;
 			}
@@ -2887,7 +3137,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 			}
 
 			case WPT_PADDING:
-				if (*dest != nullptr) (*dest)->SetPadding(parts->u.padding.top, parts->u.padding.right, parts->u.padding.bottom, parts->u.padding.left);
+				if (*dest != nullptr) (*dest)->SetPadding(parts->u.padding);
 				break;
 
 			case WPT_PIPSPACE: {
@@ -2980,7 +3230,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase **par
 		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == NWID_MATRIX
 							|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION)) {
 			NWidgetBase *sub_ptr = sub_widget;
-			int num_used = MakeWidgetTree(parts, count - total_used, &sub_ptr, biggest_index);
+			num_used = MakeWidgetTree(parts, count - total_used, &sub_ptr, biggest_index);
 			parts += num_used;
 			total_used += num_used;
 		}
@@ -3093,8 +3343,8 @@ NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int wid
 	int hor_length = 0;
 
 	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_OUT_4X);
-	sprite_size.width  += WD_MATRIX_LEFT + WD_MATRIX_RIGHT;
-	sprite_size.height += WD_MATRIX_TOP + WD_MATRIX_BOTTOM + 1; // 1 for the 'offset' of being pressed
+	sprite_size.width  += WidgetDimensions::unscaled.matrix.Horizontal();
+	sprite_size.height += WidgetDimensions::unscaled.matrix.Vertical() + 1; // 1 for the 'offset' of being pressed
 
 	for (int widnum = widget_first; widnum <= widget_last; widnum++) {
 		/* Ensure there is room in 'hor' for another button. */

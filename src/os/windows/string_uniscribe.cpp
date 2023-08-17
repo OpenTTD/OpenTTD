@@ -14,8 +14,8 @@
 #include "../../strings_func.h"
 #include "../../string_func.h"
 #include "../../table/control_codes.h"
+#include "../../zoom_func.h"
 #include "win32.h"
-#include <vector>
 
 #include <windows.h>
 #include <usp10.h>
@@ -54,7 +54,7 @@ struct UniscribeRun {
 };
 
 /** Break a string into language formatting ranges. */
-static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutFactory::CharType *buff, int32 length);
+static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutFactory::CharType *buff, int32_t length);
 /** Generate and place glyphs for a run of characters. */
 static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *buff, UniscribeRun &range);
 
@@ -110,7 +110,7 @@ public:
 		int CountRuns() const override { return (uint)this->size();  }
 		const VisualRun &GetVisualRun(int run) const override { return this->at(run);  }
 
-		int GetInternalCharLength(WChar c) const override
+		int GetInternalCharLength(char32_t c) const override
 		{
 			/* Uniscribe uses UTF-16 internally which means we need to account for surrogate pairs. */
 			return c >= 0x010000U ? 2 : 1;
@@ -195,7 +195,7 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 					if (buff[range.pos + i] >= SCC_SPRITE_START && buff[range.pos + i] <= SCC_SPRITE_END) {
 						auto pos = range.char_to_glyph[i];
 						range.ft_glyphs[pos] = range.font->fc->MapCharToGlyph(buff[range.pos + i]);
-						range.offsets[pos].dv = range.font->fc->GetAscender() - range.font->fc->GetGlyph(range.ft_glyphs[pos])->height - 1; // Align sprite glyphs to font baseline.
+						range.offsets[pos].dv = (range.font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(range.font->fc->GetSize()))) / 2; // Align sprite font to centre
 						range.advances[pos] = range.font->fc->GetGlyphWidth(range.ft_glyphs[pos]);
 					}
 				}
@@ -247,7 +247,7 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 	return true;
 }
 
-static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutFactory::CharType *buff, int32 length)
+static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutFactory::CharType *buff, int32_t length)
 {
 	/* Itemize text. */
 	SCRIPT_CONTROL control;
@@ -280,7 +280,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 
 /* static */ ParagraphLayouter *UniscribeParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping)
 {
-	int32 length = buff_end - buff;
+	int32_t length = buff_end - buff;
 	/* Can't layout an empty string. */
 	if (length == 0) return nullptr;
 
@@ -340,13 +340,14 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	}
 
 	/* Gather runs until the line is full. */
-	while (last_run != this->ranges.end() && cur_width < max_width) {
+	while (last_run != this->ranges.end() && cur_width <= max_width) {
 		cur_width += last_run->total_advance;
 		++last_run;
 	}
 
 	/* If the text does not fit into the available width, find a suitable breaking point. */
-	int remaing_offset = (last_run - 1)->len;
+	int remaining_offset = (last_run - 1)->len + 1;
+	int whitespace_count = 0;
 	if (cur_width > max_width) {
 		std::vector<SCRIPT_LOGATTR> log_attribs;
 
@@ -379,19 +380,19 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 			num_chars = last_cluster;
 		}
 
-		/* Include whitespace characters after the breaking point. */
-		while (num_chars < (int)log_attribs.size() && log_attribs[num_chars].fWhiteSpace) {
-			num_chars++;
-		}
+		/* Eat any whitespace characters before the breaking point. */
+		while (num_chars - 1 > this->cur_range_offset && log_attribs[num_chars - 1].fWhiteSpace) num_chars--;
+		/* Count whitespace after the breaking point. */
+		while (num_chars + whitespace_count < (int)log_attribs.size() && log_attribs[num_chars + whitespace_count].fWhiteSpace) whitespace_count++;
 
 		/* Get last run that corresponds to the number of characters to show. */
 		for (std::vector<UniscribeRun>::iterator run = start_run; run != last_run; run++) {
 			num_chars -= run->len;
 
 			if (num_chars <= 0) {
-				remaing_offset = num_chars + run->len + 1;
+				remaining_offset = num_chars + run->len + 1;
 				last_run = run + 1;
-				assert(remaing_offset - 1 > 0);
+				assert(remaining_offset - 1 > 0);
 				break;
 			}
 		}
@@ -414,8 +415,8 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		UniscribeRun run = *i_run;
 
 		/* Partial run after line break (either start or end)? Reshape run to get the first/last glyphs right. */
-		if (i_run == last_run - 1 && remaing_offset < (last_run - 1)->len) {
-			run.len = remaing_offset - 1;
+		if (i_run == last_run - 1 && remaining_offset < (last_run - 1)->len) {
+			run.len = remaining_offset - 1;
 
 			if (!UniscribeShapeRun(this->text_buffer, run)) return nullptr;
 		}
@@ -431,9 +432,9 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 		cur_pos += run.total_advance;
 	}
 
-	if (remaing_offset < (last_run - 1)->len) {
+	if (remaining_offset + whitespace_count - 1 < (last_run - 1)->len) {
 		/* We didn't use up all of the last run, store remainder for the next line. */
-		this->cur_range_offset = remaing_offset - 1;
+		this->cur_range_offset = remaining_offset + whitespace_count - 1;
 		this->cur_range = last_run - 1;
 		assert(this->cur_range->len > this->cur_range_offset);
 	} else {
@@ -533,7 +534,7 @@ const int *UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() con
 	while (*s != '\0') {
 		size_t idx = s - string_base;
 
-		WChar c = Utf8Consume(&s);
+		char32_t c = Utf8Consume(&s);
 		if (c < 0x10000) {
 			utf16_str.push_back((wchar_t)c);
 		} else {
@@ -551,7 +552,7 @@ const int *UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() con
 
 	if (utf16_str.size() > 0) {
 		/* Itemize string into language runs. */
-		std::vector<SCRIPT_ITEM> runs = UniscribeItemizeString(&utf16_str[0], (int32)utf16_str.size());
+		std::vector<SCRIPT_ITEM> runs = UniscribeItemizeString(&utf16_str[0], (int32_t)utf16_str.size());
 
 		for (std::vector<SCRIPT_ITEM>::const_iterator run = runs.begin(); runs.size() > 0 && run != runs.end() - 1; run++) {
 			/* Get information on valid word and character break.s */

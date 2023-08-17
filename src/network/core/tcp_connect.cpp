@@ -16,8 +16,6 @@
 #include "../network_coordinator.h"
 #include "../network_internal.h"
 
-#include <deque>
-
 #include "../../safeguards.h"
 
 /** List of connections that are currently being created */
@@ -29,7 +27,7 @@ static std::vector<TCPConnecter *> _tcp_connecters;
  * @param default_port If not indicated in connection_string, what port to use.
  * @param bind_address The local bind address to use. Defaults to letting the OS find one.
  */
-TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address, int family) :
+TCPConnecter::TCPConnecter(const std::string &connection_string, uint16_t default_port, const NetworkAddress &bind_address, int family) :
 	bind_address(bind_address),
 	family(family)
 {
@@ -43,7 +41,7 @@ TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_
  * @param connection_string The address to connect to.
  * @param default_port If not indicated in connection_string, what port to use.
  */
-TCPServerConnecter::TCPServerConnecter(const std::string &connection_string, uint16 default_port) :
+TCPServerConnecter::TCPServerConnecter(const std::string &connection_string, uint16_t default_port) :
 	server_address(ServerAddress::Parse(connection_string, default_port))
 {
 	switch (this->server_address.type) {
@@ -52,7 +50,7 @@ TCPServerConnecter::TCPServerConnecter(const std::string &connection_string, uin
 			break;
 
 		case SERVER_ADDRESS_INVITE_CODE:
-			this->status = Status::CONNECTING;
+			this->status = Status::Connecting;
 			_network_coordinator_client.ConnectToServer(this->server_address.connection_string, this);
 			break;
 
@@ -235,14 +233,13 @@ void TCPConnecter::Resolve()
 	hints.ai_flags = AI_ADDRCONFIG;
 	hints.ai_socktype = SOCK_STREAM;
 
-	char port_name[6];
-	seprintf(port_name, lastof(port_name), "%u", address.GetPort());
+	std::string port_name = std::to_string(address.GetPort());
 
 	static bool getaddrinfo_timeout_error_shown = false;
 	auto start = std::chrono::steady_clock::now();
 
 	addrinfo *ai;
-	int error = getaddrinfo(address.GetHostname().c_str(), port_name, &hints, &ai);
+	int error = getaddrinfo(address.GetHostname().c_str(), port_name.c_str(), &hints, &ai);
 
 	auto end = std::chrono::steady_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
@@ -254,14 +251,14 @@ void TCPConnecter::Resolve()
 
 	if (error != 0) {
 		Debug(net, 0, "Failed to resolve DNS for {}", this->connection_string);
-		this->status = Status::FAILURE;
+		this->status = Status::Failure;
 		return;
 	}
 
 	this->ai = ai;
 	this->OnResolved(ai);
 
-	this->status = Status::CONNECTING;
+	this->status = Status::Connecting;
 }
 
 /**
@@ -281,11 +278,11 @@ bool TCPConnecter::CheckActivity()
 	if (this->killed) return true;
 
 	switch (this->status) {
-		case Status::INIT:
+		case Status::Init:
 			/* Start the thread delayed, so the vtable is loaded. This allows classes
 			 * to overload functions used by Resolve() (in case threading is disabled). */
 			if (StartNewThread(&this->resolve_thread, "ottd:resolve", &TCPConnecter::ResolveThunk, this)) {
-				this->status = Status::RESOLVING;
+				this->status = Status::Resolving;
 				return false;
 			}
 
@@ -296,18 +293,18 @@ bool TCPConnecter::CheckActivity()
 			 * connection. The rest of this function handles exactly that. */
 			break;
 
-		case Status::RESOLVING:
+		case Status::Resolving:
 			/* Wait till Resolve() comes back with an answer (in case it runs threaded). */
 			return false;
 
-		case Status::FAILURE:
+		case Status::Failure:
 			/* Ensure the OnFailure() is called from the game-thread instead of the
 			 * resolve-thread, as otherwise we can get into some threading issues. */
 			this->OnFailure();
 			return true;
 
-		case Status::CONNECTING:
-		case Status::CONNECTED:
+		case Status::Connecting:
+		case Status::Connected:
 			break;
 	}
 
@@ -363,7 +360,10 @@ bool TCPConnecter::CheckActivity()
 		return true;
 	}
 
-	/* Check for errors on any of the sockets. */
+	/* If a socket is writeable, it is either in error-state or connected.
+	 * Remove all sockets that are in error-state and mark the first that is
+	 * not in error-state as the socket we will use for our connection. */
+	SOCKET connected_socket = INVALID_SOCKET;
 	for (auto it = this->sockets.begin(); it != this->sockets.end(); /* nothing */) {
 		NetworkError socket_error = GetSocketError(*it);
 		if (socket_error.HasError()) {
@@ -371,34 +371,28 @@ bool TCPConnecter::CheckActivity()
 			closesocket(*it);
 			this->sock_to_address.erase(*it);
 			it = this->sockets.erase(it);
-		} else {
-			it++;
+			continue;
 		}
-	}
 
-	/* In case all sockets had an error, queue a new one. */
-	if (this->sockets.empty()) {
-		if (!this->TryNextAddress()) {
-			/* There were no more addresses to try, so we failed. */
-			this->OnFailure();
-			return true;
-		}
-		return false;
-	}
-
-	/* At least one socket is connected. The first one that does is the one
-	 * we will be using, and we close all other sockets. */
-	SOCKET connected_socket = INVALID_SOCKET;
-	for (auto it = this->sockets.begin(); it != this->sockets.end(); /* nothing */) {
+		/* No error but writeable means connected. */
 		if (connected_socket == INVALID_SOCKET && FD_ISSET(*it, &write_fd)) {
 			connected_socket = *it;
-		} else {
+		}
+
+		it++;
+	}
+
+	/* All the writable sockets were in error state. So nothing is connected yet. */
+	if (connected_socket == INVALID_SOCKET) return false;
+
+	/* Close all sockets except the one we picked for our connection. */
+	for (auto it = this->sockets.begin(); it != this->sockets.end(); /* nothing */) {
+		if (connected_socket != *it) {
 			closesocket(*it);
 		}
 		this->sock_to_address.erase(*it);
 		it = this->sockets.erase(it);
 	}
-	assert(connected_socket != INVALID_SOCKET);
 
 	Debug(net, 3, "Connected to {}", this->connection_string);
 	if (_debug_net_level >= 5) {
@@ -406,7 +400,7 @@ bool TCPConnecter::CheckActivity()
 	}
 
 	this->OnConnect(connected_socket);
-	this->status = Status::CONNECTED;
+	this->status = Status::Connected;
 	return true;
 }
 
@@ -425,11 +419,11 @@ bool TCPServerConnecter::CheckActivity()
 		case SERVER_ADDRESS_INVITE_CODE:
 			/* Check if a result has come in. */
 			switch (this->status) {
-				case Status::FAILURE:
+				case Status::Failure:
 					this->OnFailure();
 					return true;
 
-				case Status::CONNECTED:
+				case Status::Connected:
 					this->OnConnect(this->socket);
 					return true;
 
@@ -451,8 +445,10 @@ bool TCPServerConnecter::CheckActivity()
  */
 void TCPServerConnecter::SetConnected(SOCKET sock)
 {
+	assert(sock != INVALID_SOCKET);
+
 	this->socket = sock;
-	this->status = Status::CONNECTED;
+	this->status = Status::Connected;
 }
 
 /**
@@ -460,7 +456,7 @@ void TCPServerConnecter::SetConnected(SOCKET sock)
  */
 void TCPServerConnecter::SetFailure()
 {
-	this->status = Status::FAILURE;
+	this->status = Status::Failure;
 }
 
 /**

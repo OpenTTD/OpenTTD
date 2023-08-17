@@ -5,11 +5,8 @@ set -e
 # If you are building an unofficial branch of OpenTTD, please change the bundle
 # ID in Info.plist and below.
 #
-# This uses `gon' to perform notarization:
-#
-#   https://github.com/mitchellh/gon
-#
-# Follow the setup instructions on the gon site to install.
+# This uses the Xcode notarytool to perform notarization. You must set up a keychain
+# profile called "openttd" using the "store-credentials" notarytool command beforehand.
 #
 # Before executing this script, you must first configure CMake with at least the following
 # parameters:
@@ -22,18 +19,10 @@ set -e
 # This will sign the application with your signing certificate, and will enable
 # the hardened runtime.
 #
-# You also need to set your Apple Developer username and password (app-specific password
-# is recommended) in the AC_USERNAME and AC_PASSWORD environment variables.
-#
 # Then, ensuring you're in your build directory and that the "bundles" directory
 # exists with a .dmg in it (clear out any old DMGs first), run:
 #
 # ../os/macosx/notarize.sh
-
-if [ -z "${AC_USERNAME}" ]; then
-    echo AC_USERNAME not set, skipping notarization.
-    exit 0
-fi;
 
 dmg_filename=(bundles/*.dmg)
 
@@ -43,24 +32,15 @@ if [ "${dmg_filename}" = "bundles/*.dmg" ]; then
     exit 1
 fi;
 
-cat <<EOF > notarize.json
-{
-   "notarize": [
-      {
-         "path": "${dmg_filename[0]}",
-         "bundle_id": "org.openttd.openttd",
-         "staple": true
-      }
-   ]
-}
-EOF
+xcrun notarytool submit ${dmg_filename[0]} --keychain-profile "openttd" --wait
 
-gon notarize.json
+# Staple the ticket to the .dmg
+xcrun stapler staple "${dmg_filename[0]}"
 
 app_filename=(_CPack_Packages/*/Bundle/openttd-*/OpenTTD.app)
 
 if [ "${app_filename}" = "_CPack_Packages/*/Bundle/openttd-*/OpenTTD.app" ]; then
-    echo "No .app found in the _CPack_Packages directory, skipping stapling."
+    echo "No .app found in the _CPack_Packages directory, skipping app stapling."
     exit 0
 fi;
 

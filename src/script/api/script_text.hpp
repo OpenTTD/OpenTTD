@@ -13,6 +13,8 @@
 #include "script_object.hpp"
 #include "../../core/alloc_type.hpp"
 
+#include <variant>
+
 /**
  * Internal parent object of all Text-like objects.
  * @api -all
@@ -21,17 +23,17 @@ class Text : public ScriptObject {
 public:
 	/**
 	 * Convert a ScriptText to a normal string.
-	 * @return A string (in a static buffer), or nullptr.
+	 * @return A string.
 	 * @api -all
 	 */
-	virtual const char *GetEncodedText() = 0;
+	virtual std::string GetEncodedText() = 0;
 
 	/**
 	 * Convert a #ScriptText into a decoded normal string.
-	 * @return A string (in a static buffer), or nullptr.
+	 * @return A string.
 	 * @api -all
 	 */
-	const char *GetDecodedText();
+	const std::string GetDecodedText();
 };
 
 /**
@@ -40,12 +42,11 @@ public:
  */
 class RawText : public Text {
 public:
-	RawText(const char *text);
-	~RawText();
+	RawText(const std::string &text);
 
-	const char *GetEncodedText() override { return this->text; }
+	std::string GetEncodedText() override { return this->text; }
 private:
-	const char *text;
+	const std::string text;
 };
 
 /**
@@ -89,7 +90,6 @@ public:
 	 */
 	ScriptText(StringID string, ...);
 #endif /* DOXYGEN_API */
-	~ScriptText();
 
 #ifndef DOXYGEN_API
 	/**
@@ -125,24 +125,24 @@ public:
 	/**
 	 * @api -all
 	 */
-	virtual const char *GetEncodedText();
+	virtual std::string GetEncodedText();
 
 private:
+	using ScriptTextRef = ScriptObjectRef<ScriptText>;
+	using StringIDList = std::vector<StringID>;
+
 	StringID string;
-	char *params[SCRIPT_TEXT_MAX_PARAMETERS];
-	int64 parami[SCRIPT_TEXT_MAX_PARAMETERS];
-	ScriptText *paramt[SCRIPT_TEXT_MAX_PARAMETERS];
+	std::variant<SQInteger, std::string, ScriptTextRef> param[SCRIPT_TEXT_MAX_PARAMETERS];
 	int paramc;
 
 	/**
 	 * Internal function for recursive calling this function over multiple
 	 *  instances, while writing in the same buffer.
-	 * @param p The current position in the buffer.
-	 * @param lastofp The last position valid in the buffer.
+	 * @param output The output to write the encoded text to.
 	 * @param param_count The number of parameters that are in the string.
-	 * @return The new current position in the buffer.
+	 * @param seen_ids The list of seen StringID.
 	 */
-	char *_GetEncodedText(char *p, char *lastofp, int &param_count);
+	void _GetEncodedText(std::back_insert_iterator<std::string> &output, int &param_count, StringIDList &seen_ids);
 
 	/**
 	 * Set a parameter, where the value is the first item on the stack.

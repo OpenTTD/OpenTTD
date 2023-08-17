@@ -18,10 +18,9 @@
 #include "vehicle_type.h"
 #include "core/multimap.hpp"
 #include "saveload/saveload.h"
-#include <list>
 
 /** Unique identifier for a single cargo packet. */
-typedef uint32 CargoPacketID;
+typedef uint32_t CargoPacketID;
 struct CargoPacket;
 
 /** Type of the pool for cargo packets for a little over 16 million packets. */
@@ -35,7 +34,12 @@ template <class Tinst, class Tcont> class CargoList;
 class StationCargoList; // forward-declare, so we can use it in VehicleCargoList.
 extern SaveLoadTable GetCargoPacketDesc();
 
-typedef uint32 TileOrStationID;
+/**
+ * To make alignment in the union in CargoPacket a bit easier, create a new type
+ * that is a StationID, but stored as 32bit.
+ */
+typedef uint32_t StationID_32bit;
+static_assert(sizeof(TileIndex) == sizeof(StationID_32bit));
 
 /**
  * Container for cargo from the same location and time.
@@ -43,15 +47,15 @@ typedef uint32 TileOrStationID;
 struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 private:
 	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo.
-	uint16 count;           ///< The amount of cargo in this packet.
-	byte days_in_transit;   ///< Amount of days this packet has been in transit.
+	uint16_t count;           ///< The amount of cargo in this packet.
+	uint16_t periods_in_transit; ///< Amount of cargo aging periods this packet has been in transit.
 	SourceType source_type; ///< Type of \c source_id.
 	SourceID source_id;     ///< Index of source, INVALID_SOURCE if unknown/invalid.
 	StationID source;       ///< The station where the cargo came from first.
 	TileIndex source_xy;    ///< The origin of the cargo (first station in feeder chain).
 	union {
-		TileOrStationID loaded_at_xy; ///< Location where this cargo has been loaded into the vehicle.
-		TileOrStationID next_station; ///< Station where the cargo wants to go next.
+		TileIndex loaded_at_xy;       ///< Location where this cargo has been loaded into the vehicle.
+		StationID_32bit next_station; ///< Station where the cargo wants to go next.
 	};
 
 	/** The CargoList caches, thus needs to know about it. */
@@ -62,11 +66,11 @@ private:
 	friend SaveLoadTable GetCargoPacketDesc();
 public:
 	/** Maximum number of items in a single cargo packet. */
-	static const uint16 MAX_COUNT = UINT16_MAX;
+	static const uint16_t MAX_COUNT = UINT16_MAX;
 
 	CargoPacket();
-	CargoPacket(StationID source, TileIndex source_xy, uint16 count, SourceType source_type, SourceID source_id);
-	CargoPacket(uint16 count, byte days_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share = 0, SourceType source_type = ST_INDUSTRY, SourceID source_id = INVALID_SOURCE);
+	CargoPacket(StationID source, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id);
+	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
 
 	/** Destroy the packet. */
 	~CargoPacket() { }
@@ -97,7 +101,7 @@ public:
 	 * Gets the number of 'items' in this packet.
 	 * @return Item count.
 	 */
-	inline uint16 Count() const
+	inline uint16_t Count() const
 	{
 		return this->count;
 	}
@@ -124,14 +128,15 @@ public:
 	}
 
 	/**
-	 * Gets the number of days this cargo has been in transit.
-	 * This number isn't really in days, but in 2.5 days (CARGO_AGING_TICKS = 185 ticks) and
-	 * it is capped at 255.
+	 * Gets the number of cargo aging periods this cargo has been in transit.
+	 * By default a period is 2.5 days (CARGO_AGING_TICKS = 185 ticks), however
+	 * vehicle NewGRFs can overide the length of the cargo aging period. The
+	 * value is capped at UINT16_MAX.
 	 * @return Length this cargo has been in transit.
 	 */
-	inline byte DaysInTransit() const
+	inline uint16_t PeriodsInTransit() const
 	{
-		return this->days_in_transit;
+		return this->periods_in_transit;
 	}
 
 	/**
@@ -221,8 +226,8 @@ public:
 	};
 
 protected:
-	uint count;                 ///< Cache for the number of cargo entities.
-	uint cargo_days_in_transit; ///< Cache for the sum of number of days in transit of each entity; comparable to man-hours.
+	uint count;                   ///< Cache for the number of cargo entities.
+	uint64_t cargo_periods_in_transit; ///< Cache for the sum of number of cargo aging periods in transit of each entity; comparable to man-hours.
 
 	Tcont packets;              ///< The cargo packets in this list.
 
@@ -250,12 +255,12 @@ public:
 	}
 
 	/**
-	 * Returns average number of days in transit for a cargo entity.
+	 * Returns average number of cargo aging periods in transit for a cargo entity.
 	 * @return The before mentioned number.
 	 */
-	inline uint DaysInTransit() const
+	inline uint PeriodsInTransit() const
 	{
-		return this->count == 0 ? 0 : this->cargo_days_in_transit / this->count;
+		return this->count == 0 ? 0 : this->cargo_periods_in_transit / this->count;
 	}
 
 	void InvalidateCache();
@@ -398,7 +403,7 @@ public:
 
 	void SetTransferLoadPlace(TileIndex xy);
 
-	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8 order_flags, const GoodsEntry *ge, CargoPayment *payment);
+	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoPayment *payment);
 
 	/**
 	 * Marks all cargo in the vehicle as to be kept. This is mostly useful for
@@ -416,7 +421,7 @@ public:
 	 * applicable), return value is amount of cargo actually moved. */
 
 	template<MoveToAction Tfrom, MoveToAction Tto>
-	uint Reassign(uint max_move, TileOrStationID update = INVALID_TILE);
+	uint Reassign(uint max_move, StationID update = INVALID_STATION);
 	uint Return(uint max_move, StationCargoList *dest, StationID next_station);
 	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment);
 	uint Shift(uint max_move, VehicleCargoList *dest);
@@ -432,11 +437,11 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy    == cp2->source_xy &&
-				cp1->days_in_transit == cp2->days_in_transit &&
-				cp1->source_type     == cp2->source_type &&
-				cp1->source_id       == cp2->source_id &&
-				cp1->loaded_at_xy    == cp2->loaded_at_xy;
+		return cp1->source_xy == cp2->source_xy &&
+				cp1->periods_in_transit == cp2->periods_in_transit &&
+				cp1->source_type == cp2->source_type &&
+				cp1->source_id == cp2->source_id &&
+				cp1->loaded_at_xy == cp2->loaded_at_xy;
 	}
 };
 
@@ -547,10 +552,10 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy    == cp2->source_xy &&
-				cp1->days_in_transit == cp2->days_in_transit &&
-				cp1->source_type     == cp2->source_type &&
-				cp1->source_id       == cp2->source_id;
+		return cp1->source_xy == cp2->source_xy &&
+				cp1->periods_in_transit == cp2->periods_in_transit &&
+				cp1->source_type == cp2->source_type &&
+				cp1->source_id == cp2->source_id;
 	}
 };
 

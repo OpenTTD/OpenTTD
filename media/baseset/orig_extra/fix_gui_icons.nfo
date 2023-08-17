@@ -1,0 +1,12 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Fix alignment of button icons."
+
+// Fix alignment of button icons.
+   -1 * 11	 0A 03 01 DC 02 01 E2 02 01 E6 02
+   -1 sprites/fix_gui_icons.png 8bpp   8  13  20  20  0  0 normal nocrop
+   -1 sprites/fix_gui_icons.png 8bpp  40  13  20  20  0  0 normal nocrop
+   -1 sprites/fix_gui_icons.png 8bpp  72  13  20  20  0  0 normal nocrop

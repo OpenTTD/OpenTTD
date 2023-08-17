@@ -63,7 +63,7 @@ void HandleOldDiffCustom(bool savegame)
 			continue;
 		}
 
-		int32 value = (int32)((name == "max_loan" ? 1000 : 1) * _old_diff_custom[i++]);
+		int32_t value = (int32_t)((name == "max_loan" ? 1000 : 1) * _old_diff_custom[i++]);
 		sd->AsIntSetting()->MakeValueValidAndWrite(savegame ? &_settings_game : &_settings_newgame, value);
 	}
 }

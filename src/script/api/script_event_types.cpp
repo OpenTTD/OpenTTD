@@ -16,6 +16,8 @@
 #include "../../engine_base.h"
 #include "../../articulated_vehicles.h"
 #include "../../string_func.h"
+#include "../../economy_cmd.h"
+#include "../../engine_cmd.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -26,9 +28,9 @@ bool ScriptEventEnginePreview::IsEngineValid() const
 	return e != nullptr && e->IsEnabled();
 }
 
-char *ScriptEventEnginePreview::GetName()
+std::optional<std::string> ScriptEventEnginePreview::GetName()
 {
-	if (!this->IsEngineValid()) return nullptr;
+	if (!this->IsEngineValid()) return std::nullopt;
 
 	::SetDParam(0, this->engine);
 	return GetString(STR_ENGINE_NAME);
@@ -51,7 +53,7 @@ CargoID ScriptEventEnginePreview::GetCargoType()
 	return most_cargo;
 }
 
-int32 ScriptEventEnginePreview::GetCapacity()
+int32_t ScriptEventEnginePreview::GetCapacity()
 {
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
@@ -74,11 +76,11 @@ int32 ScriptEventEnginePreview::GetCapacity()
 	}
 }
 
-int32 ScriptEventEnginePreview::GetMaxSpeed()
+int32_t ScriptEventEnginePreview::GetMaxSpeed()
 {
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
-	int32 max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
+	int32_t max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
 	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
 	return max_speed;
 }
@@ -95,7 +97,7 @@ Money ScriptEventEnginePreview::GetRunningCost()
 	return ::Engine::Get(this->engine)->GetRunningCost();
 }
 
-int32 ScriptEventEnginePreview::GetVehicleType()
+int32_t ScriptEventEnginePreview::GetVehicleType()
 {
 	if (!this->IsEngineValid()) return ScriptVehicle::VT_INVALID;
 	switch (::Engine::Get(this->engine)->type) {
@@ -109,13 +111,15 @@ int32 ScriptEventEnginePreview::GetVehicleType()
 
 bool ScriptEventEnginePreview::AcceptPreview()
 {
+	EnforceCompanyModeValid(false);
 	if (!this->IsEngineValid()) return false;
-	return ScriptObject::DoCommand(0, this->engine, 0, CMD_WANT_ENGINE_PREVIEW);
+	return ScriptObject::Command<CMD_WANT_ENGINE_PREVIEW>::Do(this->engine);
 }
 
 bool ScriptEventCompanyAskMerger::AcceptMerger()
 {
-	return ScriptObject::DoCommand(0, this->owner, 0, CMD_BUY_COMPANY);
+	EnforceCompanyModeValid(false);
+	return ScriptObject::Command<CMD_BUY_COMPANY>::Do((::CompanyID)this->owner, false);
 }
 
 ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :

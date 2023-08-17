@@ -15,19 +15,19 @@
 /** Blitter that does nothing. */
 class Blitter_Null : public Blitter {
 public:
-	uint8 GetScreenDepth() override { return 0; }
+	uint8_t GetScreenDepth() override { return 0; }
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override {};
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override {};
 	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override;
 	void *MoveTo(void *video, int x, int y) override { return nullptr; };
-	void SetPixel(void *video, int x, int y, uint8 colour) override {};
-	void DrawRect(void *video, int width, int height, uint8 colour) override {};
-	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash) override {};
+	void SetPixel(void *video, int x, int y, uint8_t colour) override {};
+	void DrawRect(void *video, int width, int height, uint8_t colour) override {};
+	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash) override {};
 	void CopyFromBuffer(void *video, const void *src, int width, int height) override {};
 	void CopyToBuffer(const void *video, void *dst, int width, int height) override {};
 	void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) override {};
 	void ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y) override {};
-	int BufferSize(int width, int height) override { return 0; };
+	size_t BufferSize(uint width, uint height) override { return 0; };
 	void PaletteAnimate(const Palette &palette) override { };
 	Blitter::PaletteAnimation UsePaletteAnimation() override { return Blitter::PALETTE_ANIMATION_NONE; };
 

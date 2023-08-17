@@ -25,7 +25,7 @@
 #include "safeguards.h"
 
 std::string _keyboard_opt[2];
-static WChar _keyboard[2][OSK_KEYBOARD_ENTRIES];
+static char32_t _keyboard[2][OSK_KEYBOARD_ENTRIES];
 
 enum KeyStateBits {
 	KEYS_NONE,
@@ -39,7 +39,7 @@ struct OskWindow : public Window {
 	QueryString *qs;       ///< text-input
 	int text_btn;          ///< widget number of parent's text field
 	Textbuf *text;         ///< pointer to parent's textbuffer (to update caret position)
-	char *orig_str_buf;    ///< Original string.
+	std::string orig_str;  ///< Original string.
 	bool shift;            ///< Is the shift effectively pressed?
 
 	OskWindow(WindowDesc *desc, Window *parent, int button) : Window(desc)
@@ -50,15 +50,15 @@ struct OskWindow : public Window {
 		NWidgetCore *par_wid = parent->GetWidget<NWidgetCore>(button);
 		assert(par_wid != nullptr);
 
-		assert(parent->querystrings.Contains(button));
-		this->qs         = parent->querystrings.Find(button)->second;
+		assert(parent->querystrings.count(button) != 0);
+		this->qs         = parent->querystrings.find(button)->second;
 		this->caption = (par_wid->widget_data != STR_NULL) ? par_wid->widget_data : this->qs->caption;
 		this->text_btn   = button;
 		this->text       = &this->qs->text;
 		this->querystrings[WID_OSK_TEXT] = this->qs;
 
 		/* make a copy in case we need to reset later */
-		this->orig_str_buf = stredup(this->qs->text.buf);
+		this->orig_str = this->qs->text.buf;
 
 		this->InitNested(0);
 		this->SetFocusedWidget(WID_OSK_TEXT);
@@ -67,11 +67,6 @@ struct OskWindow : public Window {
 		this->DisableWidget(WID_OSK_SPECIAL);
 
 		this->UpdateOskState();
-	}
-
-	~OskWindow()
-	{
-		free(this->orig_str_buf);
 	}
 
 	/**
@@ -110,7 +105,7 @@ struct OskWindow : public Window {
 	{
 		/* clicked a letter */
 		if (widget >= WID_OSK_LETTERS) {
-			WChar c = _keyboard[this->shift][widget - WID_OSK_LETTERS];
+			char32_t c = _keyboard[this->shift][widget - WID_OSK_LETTERS];
 
 			if (!IsValidChar(c, this->qs->text.afilter)) return;
 
@@ -162,7 +157,7 @@ struct OskWindow : public Window {
 				break;
 
 			case WID_OSK_OK:
-				if (this->qs->orig == nullptr || strcmp(this->qs->text.buf, this->qs->orig) != 0) {
+				if (!this->qs->orig.has_value() || this->qs->text.buf != this->qs->orig) {
 					/* pass information by simulating a button press on parent window */
 					if (this->qs->ok_button >= 0) {
 						this->parent->OnClick(pt, this->qs->ok_button, 1);
@@ -179,7 +174,7 @@ struct OskWindow : public Window {
 					/* Window gets deleted when the parent window removes itself. */
 					return;
 				} else { // or reset to original string
-					qs->text.Assign(this->orig_str_buf);
+					qs->text.Assign(this->orig_str);
 					qs->text.MovePos(WKC_END);
 					this->OnEditboxChanged(WID_OSK_TEXT);
 					this->Close();
@@ -202,10 +197,10 @@ struct OskWindow : public Window {
 		this->parent->SetWidgetDirty(this->text_btn);
 	}
 
-	void OnFocusLost() override
+	void OnFocusLost(bool closing) override
 	{
 		VideoDriver::GetInstance()->EditBoxLostFocus();
-		this->Close();
+		if (!closing) this->Close();
 	}
 };
 
@@ -226,7 +221,7 @@ static const int KEY_PADDING = 6;     // Vertical padding for remaining key rows
  * @param biggest_index Collected biggest widget index so far.
  * @note Key width is measured in 1/2 keys to allow for 1/2 key shifting between rows.
  */
-static void AddKey(NWidgetHorizontal *hor, int pad_y, int num_half, WidgetType widtype, int widnum, uint16 widdata, int *biggest_index)
+static void AddKey(NWidgetHorizontal *hor, int pad_y, int num_half, WidgetType widtype, int widnum, uint16_t widdata, int *biggest_index)
 {
 	int key_width = HALF_KEY_WIDTH + (INTER_KEY_SPACE + HALF_KEY_WIDTH) * (num_half - 1);
 
@@ -325,7 +320,7 @@ static NWidgetBase *MakeSpacebarKeys(int *biggest_index)
 
 
 static const NWidgetPart _nested_osk_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, WID_OSK_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
+	NWidget(WWT_CAPTION, COLOUR_GREY, WID_OSK_CAPTION), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_WHITE),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_OSK_TEXT), SetMinimalSize(252, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),
@@ -340,7 +335,7 @@ static const NWidgetPart _nested_osk_widgets[] = {
 };
 
 static WindowDesc _osk_desc(
-	WDP_CENTER, "query_osk", 0, 0,
+	WDP_CENTER, nullptr, 0, 0,
 	WC_OSK, WC_NONE,
 	0,
 	_nested_osk_widgets, lengthof(_nested_osk_widgets)
@@ -352,27 +347,18 @@ static WindowDesc _osk_desc(
  */
 void GetKeyboardLayout()
 {
-	char keyboard[2][OSK_KEYBOARD_ENTRIES * 4 + 1];
-	char errormark[2][OSK_KEYBOARD_ENTRIES + 1]; // used for marking invalid chars
+	std::string keyboard[2];
+	std::string errormark[2]; // used for marking invalid chars
 	bool has_error = false; // true when an invalid char is detected
 
-	if (_keyboard_opt[0].empty()) {
-		GetString(keyboard[0], STR_OSK_KEYBOARD_LAYOUT, lastof(keyboard[0]));
-	} else {
-		strecpy(keyboard[0], _keyboard_opt[0].c_str(), lastof(keyboard[0]));
-	}
-
-	if (_keyboard_opt[1].empty()) {
-		GetString(keyboard[1], STR_OSK_KEYBOARD_LAYOUT_CAPS, lastof(keyboard[1]));
-	} else {
-		strecpy(keyboard[1], _keyboard_opt[1].c_str(), lastof(keyboard[1]));
-	}
+	keyboard[0] = _keyboard_opt[0].empty() ? GetString(STR_OSK_KEYBOARD_LAYOUT) : _keyboard_opt[0];
+	keyboard[1] = _keyboard_opt[1].empty() ? GetString(STR_OSK_KEYBOARD_LAYOUT_CAPS) : _keyboard_opt[1];
 
 	for (uint j = 0; j < 2; j++) {
-		const char *kbd = keyboard[j];
+		auto kbd = keyboard[j].begin();
 		bool ended = false;
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
-			_keyboard[j][i] = Utf8Consume(&kbd);
+			_keyboard[j][i] = Utf8Consume(kbd);
 
 			/* Be lenient when the last characters are missing (is quite normal) */
 			if (_keyboard[j][i] == '\0' || ended) {
@@ -382,21 +368,21 @@ void GetKeyboardLayout()
 			}
 
 			if (IsPrintable(_keyboard[j][i])) {
-				errormark[j][i] = ' ';
+				errormark[j] += ' ';
 			} else {
 				has_error = true;
-				errormark[j][i] = '^';
+				errormark[j] += '^';
 				_keyboard[j][i] = ' ';
 			}
 		}
 	}
 
 	if (has_error) {
-		ShowInfoF("The keyboard layout you selected contains invalid chars. Please check those chars marked with ^.");
-		ShowInfoF("Normal keyboard:  %s", keyboard[0]);
-		ShowInfoF("                  %s", errormark[0]);
-		ShowInfoF("Caps Lock:        %s", keyboard[1]);
-		ShowInfoF("                  %s", errormark[1]);
+		ShowInfo("The keyboard layout you selected contains invalid chars. Please check those chars marked with ^.");
+		ShowInfo("Normal keyboard:  {}", keyboard[0]);
+		ShowInfo("                  {}", errormark[0]);
+		ShowInfo("Caps Lock:        {}", keyboard[1]);
+		ShowInfo("                  {}", errormark[1]);
 	}
 }
 
@@ -425,8 +411,7 @@ void UpdateOSKOriginalText(const Window *parent, int button)
 	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WC_OSK, 0));
 	if (osk == nullptr || osk->parent != parent || osk->text_btn != button) return;
 
-	free(osk->orig_str_buf);
-	osk->orig_str_buf = stredup(osk->qs->text.buf);
+	osk->orig_str = osk->qs->text.buf;
 
 	osk->SetDirty();
 }

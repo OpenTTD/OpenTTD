@@ -24,8 +24,8 @@ struct CmdStruct {
 	const char *cmd;
 	ParseCmdProc proc;
 	long value;
-	uint8 consumes;
-	int8 default_plural_offset;
+	uint8_t consumes;
+	int8_t default_plural_offset;
 	CmdFlags flags;
 };
 
@@ -58,6 +58,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"GRAY",              EmitSingleChar, SCC_GRAY,               0, -1, C_DONTCOUNT},
 	{"DKBLUE",            EmitSingleChar, SCC_DKBLUE,             0, -1, C_DONTCOUNT},
 	{"BLACK",             EmitSingleChar, SCC_BLACK,              0, -1, C_DONTCOUNT},
+	{"COLOUR",            EmitSingleChar, SCC_COLOUR,             1, -1, C_NONE},
 	{"PUSH_COLOUR",       EmitSingleChar, SCC_PUSH_COLOUR,        0, -1, C_DONTCOUNT},
 	{"POP_COLOUR",        EmitSingleChar, SCC_POP_COLOUR,         0, -1, C_DONTCOUNT},
 
@@ -74,10 +75,11 @@ static const CmdStruct _cmd_structs[] = {
 	{"STATION_FEATURES",  EmitSingleChar, SCC_STATION_FEATURES,   1, -1, C_NONE}, // station features string, icons of the features
 	{"INDUSTRY",          EmitSingleChar, SCC_INDUSTRY_NAME,      1, -1, C_CASE | C_GENDER}, // industry, takes an industry #, can have cases
 	{"CARGO_LONG",        EmitSingleChar, SCC_CARGO_LONG,         2,  1, C_NONE | C_GENDER},
-	{"CARGO_SHORT",       EmitSingleChar, SCC_CARGO_SHORT,        2,  1, C_NONE}, // short cargo description, only ### tons, or ### litres
+	{"CARGO_SHORT",       EmitSingleChar, SCC_CARGO_SHORT,        2,  1, C_NONE | C_GENDER}, // short cargo description, only ### tons, or ### litres
 	{"CARGO_TINY",        EmitSingleChar, SCC_CARGO_TINY,         2,  1, C_NONE}, // tiny cargo description with only the amount, not a specifier for the amount or the actual cargo name
 	{"CARGO_LIST",        EmitSingleChar, SCC_CARGO_LIST,         1, -1, C_CASE},
 	{"POWER",             EmitSingleChar, SCC_POWER,              1,  0, C_NONE},
+	{"POWER_TO_WEIGHT",   EmitSingleChar, SCC_POWER_TO_WEIGHT,    1,  0, C_NONE},
 	{"VOLUME_LONG",       EmitSingleChar, SCC_VOLUME_LONG,        1,  0, C_NONE},
 	{"VOLUME_SHORT",      EmitSingleChar, SCC_VOLUME_SHORT,       1,  0, C_NONE},
 	{"WEIGHT_LONG",       EmitSingleChar, SCC_WEIGHT_LONG,        1,  0, C_NONE},

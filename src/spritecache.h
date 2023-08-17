@@ -15,11 +15,18 @@
 
 /** Data structure describing a sprite. */
 struct Sprite {
-	uint16 height; ///< Height of the sprite.
-	uint16 width;  ///< Width of the sprite.
-	int16 x_offs;  ///< Number of pixels to shift the sprite to the right.
-	int16 y_offs;  ///< Number of pixels to shift the sprite downwards.
+	uint16_t height; ///< Height of the sprite.
+	uint16_t width;  ///< Width of the sprite.
+	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
+	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
 	byte data[];   ///< Sprite data.
+};
+
+enum SpriteCacheCtrlFlags {
+	SCCF_ALLOW_ZOOM_MIN_1X_PAL    = 0, ///< Allow use of sprite min zoom setting at 1x in palette mode.
+	SCCF_ALLOW_ZOOM_MIN_1X_32BPP  = 1, ///< Allow use of sprite min zoom setting at 1x in 32bpp mode.
+	SCCF_ALLOW_ZOOM_MIN_2X_PAL    = 2, ///< Allow use of sprite min zoom setting at 2x in palette mode.
+	SCCF_ALLOW_ZOOM_MIN_2X_32BPP  = 3, ///< Allow use of sprite min zoom setting at 2x in 32bpp mode.
 };
 
 extern uint _sprite_cache_size;
@@ -32,33 +39,34 @@ bool SpriteExists(SpriteID sprite);
 
 SpriteType GetSpriteType(SpriteID sprite);
 SpriteFile *GetOriginFile(SpriteID sprite);
-uint32 GetSpriteLocalID(SpriteID sprite);
+uint32_t GetSpriteLocalID(SpriteID sprite);
 uint GetSpriteCountForFile(const std::string &filename, SpriteID begin, SpriteID end);
 uint GetMaxSpriteID();
 
 
 static inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)
 {
-	assert(type != ST_RECOLOUR);
+	assert(type != SpriteType::Recolour);
 	return (Sprite*)GetRawSprite(sprite, type);
 }
 
 static inline const byte *GetNonSprite(SpriteID sprite, SpriteType type)
 {
-	assert(type == ST_RECOLOUR);
+	assert(type == SpriteType::Recolour);
 	return (byte*)GetRawSprite(sprite, type);
 }
 
 void GfxInitSpriteMem();
 void GfxClearSpriteCache();
+void GfxClearFontSpriteCache();
 void IncreaseSpriteLRU();
 
 SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdir, bool palette_remap);
 
 void ReadGRFSpriteOffsets(SpriteFile &file);
-size_t GetGRFSpriteOffset(uint32 id);
+size_t GetGRFSpriteOffset(uint32_t id);
 bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id);
-bool SkipSpriteData(SpriteFile &file, byte type, uint16 num);
+bool SkipSpriteData(SpriteFile &file, byte type, uint16_t num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
 
 #endif /* SPRITECACHE_H */

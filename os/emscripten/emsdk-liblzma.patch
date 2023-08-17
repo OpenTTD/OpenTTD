@@ -1,47 +1,36 @@
-From 90dd4d4c6b1cedec338ff5b375fffca93700f7bc Mon Sep 17 00:00:00 2001
+From 84d0e9112d5c87a714abd21ec8547921f46f37b5 Mon Sep 17 00:00:00 2001
 From: milek7 <me@milek7.pl>
 Date: Tue, 8 Dec 2020 01:03:31 +0100
 Subject: [PATCH] Add liblzma port
 
 ---
-Source: https://github.com/emscripten-core/emscripten/pull/12990
+ src/settings.js        |   4 ++
+ tools/ports/liblzma.py | 151 +++++++++++++++++++++++++++++++++++++++++
+ tools/settings.py      |   1 +
+ 3 files changed, 156 insertions(+)
+ create mode 100644 tools/ports/liblzma.py
 
-Modifed by OpenTTD to have the bare minimum needed to work. Otherwise there
-are constantly conflicts when trying to apply this patch to different versions
-of emsdk.
-
-diff --git a/tools/settings.py b/tools/settings.py
---- a/tools/settings.py
-+++ b/tools/settings.py
-@@ -38,6 +38,7 @@
-     'USE_SDL_NET',
-     'USE_SDL_GFX',
-     'USE_LIBJPEG',
-+    'USE_LIBLZMA',
-     'USE_OGG',
-     'USE_REGAL',
-     'USE_BOOST_HEADERS',
 diff --git a/src/settings.js b/src/settings.js
+index f93140d..7b6bec9 100644
 --- a/src/settings.js
 +++ b/src/settings.js
-@@ -1382,8 +1382,12 @@ var USE_BZIP2 = 0;
- // 1 = use libjpeg from emscripten-ports
- // [link]
- var USE_LIBJPEG = 0;
+@@ -1451,6 +1451,10 @@ var USE_GIFLIB = false;
+ // [compile+link]
+ var USE_LIBJPEG = false;
 
 +// 1 = use liblzma from emscripten-ports
-+// [link]
-+var USE_LIBLZMA = 0;
++// [compile+link]
++var USE_LIBLZMA = false;
 +
  // 1 = use libpng from emscripten-ports
- // [link]
- var USE_LIBPNG = 0;
-
+ // [compile+link]
+ var USE_LIBPNG = false;
 diff --git a/tools/ports/liblzma.py b/tools/ports/liblzma.py
 new file mode 100644
+index 0000000..6872a8b
 --- /dev/null
 +++ b/tools/ports/liblzma.py
-@@ -0,0 +1,160 @@
+@@ -0,0 +1,151 @@
 +# Copyright 2020 The Emscripten Authors.  All rights reserved.
 +# Emscripten is available under two separate licenses, the MIT license and the
 +# University of Illinois/NCSA Open Source License.  Both these licenses can be
@@ -52,8 +41,8 @@ new file mode 100644
 +import logging
 +from pathlib import Path
 +
-+VERSION = '5.2.5'
-+HASH = '7443674247deda2935220fbc4dfc7665e5bb5a260be8ad858c8bd7d7b9f0f868f04ea45e62eb17c0a5e6a2de7c7500ad2d201e2d668c48ca29bd9eea5a73a3ce'
++VERSION = '5.4.2'
++HASH = '149f980338bea3d66de1ff5994b2b236ae1773135eda68b62b009df0c9dcdf5467f8cb2c06da95a71b6556d60bd3d21f475feced34d5dfdb80ee95416a2f9737'
 +
 +
 +def needed(settings):
@@ -61,40 +50,31 @@ new file mode 100644
 +
 +
 +def get(ports, settings, shared):
-+  ports.fetch_project('liblzma', 'https://tukaani.org/xz/xz-' + VERSION + '.tar.gz', 'xz-' + VERSION, sha512hash=HASH)
++  ports.fetch_project('liblzma', f'https://tukaani.org/xz/xz-{VERSION}.tar.gz', sha512hash=HASH)
 +
 +  def create(final):
 +    logging.info('building port: liblzma')
 +
 +    ports.clear_project_build('liblzma')
 +
-+    source_path = os.path.join(ports.get_dir(), 'liblzma', 'xz-' + VERSION)
-+    dest_path = os.path.join(ports.get_build_dir(), 'liblzma')
-+
-+    shared.try_delete(dest_path)
-+    os.makedirs(dest_path)
-+    shutil.rmtree(dest_path, ignore_errors=True)
-+    shutil.copytree(source_path, dest_path)
++    source_path = os.path.join(ports.get_dir(), 'liblzma', f'xz-{VERSION}', 'src', 'liblzma')
++    ports.write_file(os.path.join(source_path, 'config.h'), config_h)
++    ports.install_headers(os.path.join(source_path, 'api'), pattern='lzma.h')
++    ports.install_headers(os.path.join(source_path, 'api', 'lzma'), pattern='*.h', target='lzma')
 +
 +    build_flags = ['-DHAVE_CONFIG_H', '-DTUKLIB_SYMBOL_PREFIX=lzma_', '-fvisibility=hidden']
-+    exclude_dirs = ['xzdec', 'xz', 'lzmainfo']
-+    exclude_files = ['crc32_small.c', 'crc64_small.c', 'crc32_tablegen.c', 'crc64_tablegen.c', 'price_tablegen.c', 'fastpos_tablegen.c'
++    exclude_files = ['crc32_small.c', 'crc64_small.c', 'crc32_tablegen.c', 'crc64_tablegen.c', 'price_tablegen.c', 'fastpos_tablegen.c',
 +                     'tuklib_exit.c', 'tuklib_mbstr_fw.c', 'tuklib_mbstr_width.c', 'tuklib_open_stdxxx.c', 'tuklib_progname.c']
-+    include_dirs_rel = ['../common', 'api', 'common', 'check', 'lz', 'rangecoder', 'lzma', 'delta', 'simple']
++    include_dirs_rel = ['../common', 'api', 'check', 'common', 'delta', 'lz', 'lzma', 'rangecoder', 'simple']
 +
-+    Path(dest_path, os.path.join('src', 'config.h')).write_text(config_h)
++    include_dirs = [os.path.join(source_path, p) for p in include_dirs_rel]
++    ports.build_port(source_path, final, 'liblzma', flags=build_flags, exclude_files=exclude_files, includes=include_dirs)
 +
-+    include_dirs = [os.path.join(dest_path, 'src', 'liblzma', p) for p in include_dirs_rel]
-+    ports.build_port(os.path.join(dest_path, 'src'), final, flags=build_flags, exclude_dirs=exclude_dirs, exclude_files=exclude_files, includes=include_dirs)
-+
-+    ports.install_headers(os.path.join(dest_path, 'src', 'liblzma', 'api'), 'lzma.h')
-+    ports.install_headers(os.path.join(dest_path, 'src', 'liblzma', 'api', 'lzma'), '*.h', 'lzma')
-+
-+  return [shared.Cache.get_lib('liblzma.a', create, what='port')]
++  return [shared.cache.get_lib('liblzma.a', create, what='port')]
 +
 +
 +def clear(ports, settings, shared):
-+  shared.Cache.erase_lib('liblzma.a')
++  shared.cache.erase_lib('liblzma.a')
 +
 +
 +def process_args(ports):
@@ -105,7 +85,7 @@ new file mode 100644
 +  return 'liblzma (USE_LIBLZMA=1; public domain)'
 +
 +
-+config_h = r'''
++config_h = '''
 +#define ASSUME_RAM 128
 +#define ENABLE_NLS 1
 +#define HAVE_CHECK_CRC32 1
@@ -177,9 +157,9 @@ new file mode 100644
 +#define PACKAGE "xz"
 +#define PACKAGE_BUGREPORT "lasse.collin@tukaani.org"
 +#define PACKAGE_NAME "XZ Utils"
-+#define PACKAGE_STRING "XZ Utils 5.2.5"
++#define PACKAGE_STRING "XZ Utils 5.4.0"
 +#define PACKAGE_TARNAME "xz"
-+#define PACKAGE_VERSION "5.2.5"
++#define PACKAGE_VERSION "5.4.0"
 +#define SIZEOF_SIZE_T 4
 +#define STDC_HEADERS 1
 +#define TUKLIB_CPUCORES_SYSCONF 1
@@ -200,5 +180,19 @@ new file mode 100644
 +#ifndef __EXTENSIONS__
 +# define __EXTENSIONS__ 1
 +#endif
-+#define VERSION "5.2.5"
++#define VERSION "5.4.0"
 +'''
+diff --git a/tools/settings.py b/tools/settings.py
+index 10d6ca0..827e4a9 100644
+--- a/tools/settings.py
++++ b/tools/settings.py
+@@ -40,6 +40,7 @@ PORTS_SETTINGS = {
+     'USE_SDL_NET',
+     'USE_SDL_GFX',
+     'USE_LIBJPEG',
++    'USE_LIBLZMA',
+     'USE_OGG',
+     'USE_REGAL',
+     'USE_BOOST_HEADERS',
+--
+2.34.1

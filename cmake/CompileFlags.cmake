@@ -43,6 +43,11 @@ macro(compile_flags)
         add_link_options(
             "$<$<NOT:$<CONFIG:Debug>>:-fstack-protector>" # Prevent undefined references when _FORTIFY_SOURCE > 0
         )
+        if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+            add_compile_options(
+                "$<$<CONFIG:Debug>:-Wa,-mbig-obj>" # Switch to pe-bigobj-x86-64 as x64 Debug builds push pe-x86-64 to the limits (linking errors with ASLR, ...)
+            )
+        endif()
     endif()
 
     # Prepare a generator that checks if we are not a debug, and don't have asserts
@@ -51,6 +56,11 @@ macro(compile_flags)
 
     if(MSVC)
         add_compile_options(/W3)
+        if(MSVC_VERSION GREATER 1929 AND MSVC_VERSION LESS 1937 AND CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+            # Starting with version 19.30 (fixed in version 19.37), there is an optimisation bug, see #9966 for details
+            # This flag disables the broken optimisation to work around the bug
+            add_compile_options(/d2ssa-rse-)
+        endif()
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
         add_compile_options(
             -W
@@ -126,6 +136,10 @@ macro(compile_flags)
                 # -flifetime-dse=2 (default since GCC 6) doesn't play
                 # well with our custom pool item allocator
                 "$<$<BOOL:${LIFETIME_DSE_FOUND}>:-flifetime-dse=1>"
+
+                # We have a fight between clang wanting std::move() and gcc not wanting it
+                # and of course they both warn when the other compiler is happy
+                "-Wno-redundant-move"
             )
         endif()
 

@@ -33,8 +33,9 @@ public:
 	 * Scroll the viewport of all players to the given tile,
 	 *  where the tile will be in the center of the screen.
 	 * @param tile The tile to put in the center of the screen.
-	 * @pre ScriptObject::GetCompany() == OWNER_DEITY
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre ScriptMap::IsValidTile(tile)
+	 * @return True iff the command was executed successfully.
 	 */
 	static bool ScrollEveryoneTo(TileIndex tile);
 
@@ -43,9 +44,10 @@ public:
 	 *  where the tile will be in the center of the screen.
 	 * @param company The company which players to scroll the viewport of.
 	 * @param tile The tile to put in the center of the screen.
-	 * @pre ScriptObject::GetCompany() == OWNER_DEITY
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre ScriptMap::IsValidTile(tile)
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
+	 * @return True iff the command was executed successfully.
 	 */
 	static bool ScrollCompanyClientsTo(ScriptCompany::CompanyID company, TileIndex tile);
 
@@ -55,9 +57,10 @@ public:
 	 * @param client The client to scroll the viewport of.
 	 * @param tile The tile to put in the center of the screen.
 	 * @pre ScriptGame::IsMultiplayer()
-	 * @pre ScriptObject::GetCompany() == OWNER_DEITY
+	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre ScriptMap::IsValidTile(tile)
 	 * @pre ResolveClientID(client) != CLIENT_INVALID
+	 * @return True iff the command was executed successfully.
 	 */
 	static bool ScrollClientTo(ScriptClient::ClientID client, TileIndex tile);
 };
