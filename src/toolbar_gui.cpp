@@ -287,6 +287,8 @@ static CallBackFunction ToolbarPauseClick(Window *w)
  */
 static CallBackFunction ToolbarFastForwardClick(Window *w)
 {
+	if (_networking) return CBF_NONE; // no fast forward in network game
+
 	ChangeGameSpeed(_game_speed == 100);
 
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
