@@ -750,7 +750,7 @@ private:
 	}
 
 	/** Sort by population (default descending, as big towns are of the most interest). */
-	static bool TownPopulationSorter(const Town *const &a, const Town *const &b)
+	static bool TownPopulationSorter(const Town * const &a, const Town * const &b)
 	{
 		uint32_t a_population = a->cache.population;
 		uint32_t b_population = b->cache.population;
