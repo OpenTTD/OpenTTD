@@ -1900,7 +1900,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Städer tillåt
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Om denna inställning aktiveras så blir det tillåtet för städer att bygga plankorsningar
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Begränsa var flygplatser kan placeras baserat på ljudnivå: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Med denna inställning avstängd kan det finnas max två flygplatser i varje stad. Med inställningen påslagen begränsas antalet flygplatser i en stad istället av vilken bullernivå staden accepterar, vilket styrs av populationen, flygplatsens storlek och avstånd till staden
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Tillåt städer att stoppa flygplatsbyggen med hänvisning till den bullernivå staden accepterar, vilket styrs av populationen, flygplatsens storlek och avstånd till staden. Om denna inställning inaktiveras tillåter städer endast två flygplatser, såvida de lokala myndigheternas inställning inte är satt till "Tillåtande"
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Grunda städer i spelet: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Om denna inställning aktiveras blir det möjligt för spelare att grunda nya städer i spelet
