@@ -759,7 +759,7 @@ private:
 	}
 
 	/** Sort by growth (default descending, as high growth towns are of the most interest). */
-	static bool TownGrowthSorter(const Town *const &a, const Town *const &b)
+	static bool TownGrowthSorter(const Town * const &a, const Town * const &b)
 	{
 		uint32_t a_growth = std::numeric_limits<int>::max();
 		if (HasBit(a->flags, TOWN_IS_GROWING)) {
