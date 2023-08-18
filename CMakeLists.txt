@@ -247,6 +247,14 @@ set_target_properties(openttd PROPERTIES OUTPUT_NAME "${BINARY_NAME}")
 if(MSVC)
     # Add DPI manifest to project; other WIN32 targets get this via ottdres.rc
     target_sources(openttd PRIVATE "${CMAKE_SOURCE_DIR}/os/windows/openttd.manifest")
+
+    # If target -static is used, switch our project to static (/MT) too.
+    # If the target ends on -static-md, it will remain dynamic (/MD).
+    if(VCPKG_TARGET_TRIPLET MATCHES "-static" AND NOT VCPKG_TARGET_TRIPLET MATCHES "-md")
+        set_property(TARGET openttd_lib PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+        set_property(TARGET openttd PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+        set_property(TARGET openttd_test PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+     endif()
 endif()
 
 target_precompile_headers(openttd_lib
