@@ -64,13 +64,6 @@
  * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
  */
 
-/* On some old versions of MAC OS this may not be defined.
- * Those versions generally only produce code for PPC. So it should be safe to
- * set this to 0. */
-#ifndef kCGBitmapByteOrder32Host
-#define kCGBitmapByteOrder32Host 0
-#endif
-
 bool _cocoa_video_started = false;
 static Palette _local_palette; ///< Current palette to use for drawing.
 
