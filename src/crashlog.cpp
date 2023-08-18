@@ -344,7 +344,6 @@ void CrashLog::FillCrashLog(std::back_insert_iterator<std::string> &output_itera
 	this->LogError(output_iterator, CrashLog::message);
 	this->LogOpenTTDVersion(output_iterator);
 	this->LogRegisters(output_iterator);
-	this->LogStacktrace(output_iterator);
 	this->LogOSVersion(output_iterator);
 	this->LogCompiler(output_iterator);
 	this->LogConfiguration(output_iterator);

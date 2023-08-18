@@ -34,15 +34,11 @@ class CrashLogWindows : public CrashLog {
 
 	void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const override;
 	void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const override;
-	void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const override;
 	void LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const override;
 	void LogModules(std::back_insert_iterator<std::string> &output_iterator) const override;
 public:
 #if defined(_MSC_VER)
 	int WriteCrashDump() override;
-	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const;
-#else
-	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const {}
 #endif /* _MSC_VER */
 
 	/**
@@ -304,150 +300,11 @@ static void PrintModuleInfo(std::back_insert_iterator<std::string> &output_itera
 	fmt::format_to(output_iterator, "\n\n");
 }
 
-/* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	fmt::format_to(output_iterator, "Stack trace:\n");
-#ifdef _M_AMD64
-	uint32_t *b = (uint32_t*)ep->ContextRecord->Rsp;
-#elif defined(_M_IX86)
-	uint32_t *b = (uint32_t*)ep->ContextRecord->Esp;
-#elif defined(_M_ARM64)
-	uint32_t *b = (uint32_t*)ep->ContextRecord->Sp;
-#endif
-	for (int j = 0; j != 24; j++) {
-		for (int i = 0; i != 8; i++) {
-			if (IsBadReadPtr(b, sizeof(uint32_t))) {
-				fmt::format_to(output_iterator, " ????????"); // OCR: WAS - , 0);
-			} else {
-				fmt::format_to(output_iterator, " {:08X}", *b);
-			}
-			b++;
-		}
-		fmt::format_to(output_iterator, "\n");
-	}
-	fmt::format_to(output_iterator, "\n");
-}
-
 #if defined(_MSC_VER)
-static const uint MAX_SYMBOL_LEN = 512;
-static const uint MAX_FRAMES     = 64;
 
 #pragma warning(disable:4091)
 #include <dbghelp.h>
 #pragma warning(default:4091)
-
-void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	DllLoader dbghelp(L"dbghelp.dll");
-	struct ProcPtrs {
-		BOOL (WINAPI * pSymInitialize)(HANDLE, PCSTR, BOOL);
-		BOOL (WINAPI * pSymSetOptions)(DWORD);
-		BOOL (WINAPI * pSymCleanup)(HANDLE);
-		BOOL (WINAPI * pStackWalk64)(DWORD, HANDLE, HANDLE, LPSTACKFRAME64, PVOID, PREAD_PROCESS_MEMORY_ROUTINE64, PFUNCTION_TABLE_ACCESS_ROUTINE64, PGET_MODULE_BASE_ROUTINE64, PTRANSLATE_ADDRESS_ROUTINE64);
-		PVOID (WINAPI * pSymFunctionTableAccess64)(HANDLE, DWORD64);
-		DWORD64 (WINAPI * pSymGetModuleBase64)(HANDLE, DWORD64);
-		BOOL (WINAPI * pSymGetModuleInfo64)(HANDLE, DWORD64, PIMAGEHLP_MODULE64);
-		BOOL (WINAPI * pSymGetSymFromAddr64)(HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64);
-		BOOL (WINAPI * pSymGetLineFromAddr64)(HANDLE, DWORD64, PDWORD, PIMAGEHLP_LINE64);
-	} proc = {
-		dbghelp.GetProcAddress("SymInitialize"),
-		dbghelp.GetProcAddress("SymSetOptions"),
-		dbghelp.GetProcAddress("SymCleanup"),
-		dbghelp.GetProcAddress("StackWalk64"),
-		dbghelp.GetProcAddress("SymFunctionTableAccess64"),
-		dbghelp.GetProcAddress("SymGetModuleBase64"),
-		dbghelp.GetProcAddress("SymGetModuleInfo64"),
-		dbghelp.GetProcAddress("SymGetSymFromAddr64"),
-		dbghelp.GetProcAddress("SymGetLineFromAddr64"),
-	};
-
-	fmt::format_to(output_iterator, "\nDecoded stack trace:\n");
-
-	/* Try to load the functions from the DLL, if that fails because of a too old dbghelp.dll, just skip it. */
-	if (dbghelp.Success()) {
-		/* Initialize symbol handler. */
-		HANDLE hCur = GetCurrentProcess();
-		proc.pSymInitialize(hCur, nullptr, TRUE);
-		/* Load symbols only when needed, fail silently on errors, demangle symbol names. */
-		proc.pSymSetOptions(SYMOPT_DEFERRED_LOADS | SYMOPT_FAIL_CRITICAL_ERRORS | SYMOPT_UNDNAME);
-
-		/* Initialize starting stack frame from context record. */
-		STACKFRAME64 frame;
-		memset(&frame, 0, sizeof(frame));
-#ifdef _M_AMD64
-		frame.AddrPC.Offset = ep->ContextRecord->Rip;
-		frame.AddrFrame.Offset = ep->ContextRecord->Rbp;
-		frame.AddrStack.Offset = ep->ContextRecord->Rsp;
-#elif defined(_M_IX86)
-		frame.AddrPC.Offset = ep->ContextRecord->Eip;
-		frame.AddrFrame.Offset = ep->ContextRecord->Ebp;
-		frame.AddrStack.Offset = ep->ContextRecord->Esp;
-#elif defined(_M_ARM64)
-		frame.AddrPC.Offset = ep->ContextRecord->Pc;
-		frame.AddrFrame.Offset = ep->ContextRecord->Fp;
-		frame.AddrStack.Offset = ep->ContextRecord->Sp;
-#endif
-		frame.AddrPC.Mode = AddrModeFlat;
-		frame.AddrFrame.Mode = AddrModeFlat;
-		frame.AddrStack.Mode = AddrModeFlat;
-
-		/* Copy context record as StackWalk64 may modify it. */
-		CONTEXT ctx;
-		memcpy(&ctx, ep->ContextRecord, sizeof(ctx));
-
-		/* Allocate space for symbol info. */
-		char sym_info_raw[sizeof(IMAGEHLP_SYMBOL64) + MAX_SYMBOL_LEN - 1];
-		IMAGEHLP_SYMBOL64 *sym_info = (IMAGEHLP_SYMBOL64*)sym_info_raw;
-		sym_info->SizeOfStruct = sizeof(IMAGEHLP_SYMBOL64);
-		sym_info->MaxNameLength = MAX_SYMBOL_LEN;
-
-		/* Walk stack at most MAX_FRAMES deep in case the stack is corrupt. */
-		for (uint num = 0; num < MAX_FRAMES; num++) {
-			if (!proc.pStackWalk64(
-#ifdef _M_AMD64
-				IMAGE_FILE_MACHINE_AMD64,
-#else
-				IMAGE_FILE_MACHINE_I386,
-#endif
-				hCur, GetCurrentThread(), &frame, &ctx, nullptr, proc.pSymFunctionTableAccess64, proc.pSymGetModuleBase64, nullptr)) break;
-
-			if (frame.AddrPC.Offset == frame.AddrReturn.Offset) {
-				fmt::format_to(output_iterator, " <infinite loop>\n");
-				break;
-			}
-
-			/* Get module name. */
-			const char *mod_name = "???";
-
-			IMAGEHLP_MODULE64 module;
-			module.SizeOfStruct = sizeof(module);
-			if (proc.pSymGetModuleInfo64(hCur, frame.AddrPC.Offset, &module)) {
-				mod_name = module.ModuleName;
-			}
-
-			/* Print module and instruction pointer. */
-			fmt::format_to(output_iterator, "[{:02}] {:20s} {:X}", num, mod_name, frame.AddrPC.Offset);
-
-			/* Get symbol name and line info if possible. */
-			DWORD64 offset;
-			if (proc.pSymGetSymFromAddr64(hCur, frame.AddrPC.Offset, &offset, sym_info)) {
-				fmt::format_to(output_iterator, " {} + {}", sym_info->Name, offset);
-
-				DWORD line_offs;
-				IMAGEHLP_LINE64 line;
-				line.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
-				if (proc.pSymGetLineFromAddr64(hCur, frame.AddrPC.Offset, &line_offs, &line)) {
-					fmt::format_to(output_iterator, " ({}:{})", line.FileName, line.LineNumber);
-				}
-			}
-			fmt::format_to(output_iterator, "\n");
-		}
-
-		proc.pSymCleanup(hCur);
-	}
-
-	fmt::format_to(output_iterator, "\n*** End of additional info ***\n");
-}
 
 /* virtual */ int CrashLogWindows::WriteCrashDump()
 {
@@ -534,7 +391,6 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	auto output_iterator = std::back_inserter(log->crashlog);
 	log->FillCrashLog(output_iterator);
 	log->WriteCrashDump();
-	log->AppendDecodedStacktrace(output_iterator);
 	log->WriteCrashLog();
 	log->WriteScreenshot();
 	log->SendSurvey();
