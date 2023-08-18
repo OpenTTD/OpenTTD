@@ -45,13 +45,6 @@ protected:
 	virtual void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const = 0;
 
 	/**
-	 * Writes information about the data in the registers, if there is
-	 * information about it available.
-	 * @param output_iterator Iterator to write the output to.
-	 */
-	virtual void LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const;
-
-	/**
 	 * Writes the dynamically linked libraries/modules to the buffer, if there
 	 * is information about it available.
 	 * @param output_iterator Iterator to write the output to.

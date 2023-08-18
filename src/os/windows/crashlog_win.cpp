@@ -35,7 +35,6 @@ class CrashLogWindows : public CrashLog {
 	void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const override;
 	void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const override;
 	void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const override;
-	void LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const override;
 	void LogModules(std::back_insert_iterator<std::string> &output_iterator) const override;
 public:
 #if defined(_MSC_VER)
@@ -194,114 +193,6 @@ static void PrintModuleInfo(std::back_insert_iterator<std::string> &output_itera
 	}
 	PrintModuleInfo(output_iterator, nullptr);
 	fmt::format_to(output_iterator, "\n");
-}
-
-/* virtual */ void CrashLogWindows::LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	fmt::format_to(output_iterator, "Registers:\n");
-#ifdef _M_AMD64
-	fmt::format_to(output_iterator,
-		" RAX: {:016X} RBX: {:016X} RCX: {:016X} RDX: {:016X}\n"
-		" RSI: {:016X} RDI: {:016X} RBP: {:016X} RSP: {:016X}\n"
-		" R8:  {:016X} R9:  {:016X} R10: {:016X} R11: {:016X}\n"
-		" R12: {:016X} R13: {:016X} R14: {:016X} R15: {:016X}\n"
-		" RIP: {:016X} EFLAGS: {:08X}\n",
-		ep->ContextRecord->Rax,
-		ep->ContextRecord->Rbx,
-		ep->ContextRecord->Rcx,
-		ep->ContextRecord->Rdx,
-		ep->ContextRecord->Rsi,
-		ep->ContextRecord->Rdi,
-		ep->ContextRecord->Rbp,
-		ep->ContextRecord->Rsp,
-		ep->ContextRecord->R8,
-		ep->ContextRecord->R9,
-		ep->ContextRecord->R10,
-		ep->ContextRecord->R11,
-		ep->ContextRecord->R12,
-		ep->ContextRecord->R13,
-		ep->ContextRecord->R14,
-		ep->ContextRecord->R15,
-		ep->ContextRecord->Rip,
-		ep->ContextRecord->EFlags
-	);
-#elif defined(_M_IX86)
-	fmt::format_to(output_iterator,
-		" EAX: {:08X} EBX: {:08X} ECX: {:08X} EDX: {:08X}\n"
-		" ESI: {:08X} EDI: {:08X} EBP: {:08X} ESP: {:08X}\n"
-		" EIP: {:08X} EFLAGS: {:08X}\n",
-		(int)ep->ContextRecord->Eax,
-		(int)ep->ContextRecord->Ebx,
-		(int)ep->ContextRecord->Ecx,
-		(int)ep->ContextRecord->Edx,
-		(int)ep->ContextRecord->Esi,
-		(int)ep->ContextRecord->Edi,
-		(int)ep->ContextRecord->Ebp,
-		(int)ep->ContextRecord->Esp,
-		(int)ep->ContextRecord->Eip,
-		(int)ep->ContextRecord->EFlags
-	);
-#elif defined(_M_ARM64)
-	fmt::format_to(output_iterator,
-		" X0:  {:016X} X1:  {:016X} X2:  {:016X} X3:  {:016X}\n"
-		" X4:  {:016X} X5:  {:016X} X6:  {:016X} X7:  {:016X}\n"
-		" X8:  {:016X} X9:  {:016X} X10: {:016X} X11: {:016X}\n"
-		" X12: {:016X} X13: {:016X} X14: {:016X} X15: {:016X}\n"
-		" X16: {:016X} X17: {:016X} X18: {:016X} X19: {:016X}\n"
-		" X20: {:016X} X21: {:016X} X22: {:016X} X23: {:016X}\n"
-		" X24: {:016X} X25: {:016X} X26: {:016X} X27: {:016X}\n"
-		" X28: {:016X} Fp:  {:016X} Lr:  {:016X}\n",
-		ep->ContextRecord->X0,
-		ep->ContextRecord->X1,
-		ep->ContextRecord->X2,
-		ep->ContextRecord->X3,
-		ep->ContextRecord->X4,
-		ep->ContextRecord->X5,
-		ep->ContextRecord->X6,
-		ep->ContextRecord->X7,
-		ep->ContextRecord->X8,
-		ep->ContextRecord->X9,
-		ep->ContextRecord->X10,
-		ep->ContextRecord->X11,
-		ep->ContextRecord->X12,
-		ep->ContextRecord->X13,
-		ep->ContextRecord->X14,
-		ep->ContextRecord->X15,
-		ep->ContextRecord->X16,
-		ep->ContextRecord->X17,
-		ep->ContextRecord->X18,
-		ep->ContextRecord->X19,
-		ep->ContextRecord->X20,
-		ep->ContextRecord->X21,
-		ep->ContextRecord->X22,
-		ep->ContextRecord->X23,
-		ep->ContextRecord->X24,
-		ep->ContextRecord->X25,
-		ep->ContextRecord->X26,
-		ep->ContextRecord->X27,
-		ep->ContextRecord->X28,
-		ep->ContextRecord->Fp,
-		ep->ContextRecord->Lr
-	);
-#endif
-
-	fmt::format_to(output_iterator, "\n Bytes at instruction pointer:\n");
-#ifdef _M_AMD64
-	byte *b = (byte*)ep->ContextRecord->Rip;
-#elif defined(_M_IX86)
-	byte *b = (byte*)ep->ContextRecord->Eip;
-#elif defined(_M_ARM64)
-	byte *b = (byte*)ep->ContextRecord->Pc;
-#endif
-	for (int i = 0; i != 24; i++) {
-		if (IsBadReadPtr(b, 1)) {
-			fmt::format_to(output_iterator, " ??"); // OCR: WAS: , 0);
-		} else {
-			fmt::format_to(output_iterator, " {:02X}", *b);
-		}
-		b++;
-	}
-	fmt::format_to(output_iterator, "\n\n");
 }
 
 /* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
