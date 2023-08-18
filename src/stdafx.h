@@ -42,14 +42,8 @@
  * does not have stdint.h.
  * For OSX the inclusion is already done in osx_stdafx.h. */
 #if !defined(__APPLE__) && (!defined(_MSC_VER) || _MSC_VER >= 1600)
-#	if defined(SUNOS)
-		/* SunOS/Solaris does not have stdint.h, but inttypes.h defines everything
-		 * stdint.h defines and we need. */
-#		include <inttypes.h>
-#	else
-#		define __STDC_LIMIT_MACROS
-#		include <stdint.h>
-#	endif
+#	define __STDC_LIMIT_MACROS
+#	include <stdint.h>
 #endif
 
 #include <algorithm>
