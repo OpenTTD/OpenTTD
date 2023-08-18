@@ -1899,8 +1899,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Steden toestaan
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Steden mogen gelijkvloerse kruisingen bouwen: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Door deze optie in te schakelen kunnen steden gelijkvloerse kruisingen bouwen
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Geluidsniveaucontrole door steden voor vliegvelden toestaan: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Als je deze instelling uitschakelt, mogen er twee luchthavens per stad zijn. Als je deze instelling ingeschakelt, wordt het aantal luchthavens in een stad beperkt door de lawaaitolerantie van de stad; deze is afhankelijk van de bevolking en de grootte en afstand van de luchthaven.
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Plaatsing van vliegvelden beperken op basis van het lawaainiveau: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Hiermee wordt het aantal luchthavens in een stad beperkt door de lawaaitolerantie van de stad; deze is afhankelijk van de bevolking en de grootte en afstand van de luchthaven. Als deze instelling is uitgeschakeld, staat de stad slechts twee luchthavens toe, tenzij de houding van het gemeentebestuur is ingesteld op 'Toegeeflijk'.
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Steden stichten in spel: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Wanneer deze instelling is ingeschakeld kunnen spelers nieuwe steden stichten tijdens het spel
