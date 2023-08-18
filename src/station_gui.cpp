@@ -1603,9 +1603,23 @@ struct StationViewWindow : public Window {
 				continue;
 			}
 
-			for (CargoDataSet::iterator dest_it = via_entry->Begin(); dest_it != via_entry->End(); ++dest_it) {
+			uint remaining = cp->Count();
+			for (CargoDataSet::iterator dest_it = via_entry->Begin(); dest_it != via_entry->End();) {
 				CargoDataEntry *dest_entry = *dest_it;
-				uint val = DivideApprox(cp->Count() * dest_entry->GetCount(), via_entry->GetCount());
+
+				/* Advance iterator here instead of in the for statement to test whether this is the last entry */
+				++dest_it;
+
+				uint val;
+				if (dest_it == via_entry->End()) {
+					/* Allocate all remaining waiting cargo to the last destination to avoid
+					 * waiting cargo being "lost", and the displayed total waiting cargo
+					 * not matching GoodsEntry::TotalCount() */
+					val = remaining;
+				} else {
+					val = std::min<uint>(remaining, DivideApprox(cp->Count() * dest_entry->GetCount(), via_entry->GetCount()));
+					remaining -= val;
+				}
 				this->ShowCargo(cargo, i, cp->SourceStation(), next, dest_entry->GetStation(), val);
 			}
 		}
