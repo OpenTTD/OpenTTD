@@ -192,6 +192,23 @@ STR_COLOUR_WHITE                                                :Weiß
 STR_COLOUR_RANDOM                                               :Zufällig
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Dunkelblau
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Hellgrün
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Rosa
+STR_COLOUR_SECONDARY_YELLOW                                     :Gelb
+STR_COLOUR_SECONDARY_RED                                        :Rot
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Hellblau
+STR_COLOUR_SECONDARY_GREEN                                      :Grün
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Dunkelgrün
+STR_COLOUR_SECONDARY_BLUE                                       :Blau
+STR_COLOUR_SECONDARY_CREAM                                      :Beige
+STR_COLOUR_SECONDARY_MAUVE                                      :Helllila
+STR_COLOUR_SECONDARY_PURPLE                                     :Lila
+STR_COLOUR_SECONDARY_ORANGE                                     :Orange
+STR_COLOUR_SECONDARY_BROWN                                      :Braun
+STR_COLOUR_SECONDARY_GREY                                       :Grau
+STR_COLOUR_SECONDARY_WHITE                                      :Weiß
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Wie primär
 
 
 # Units used in OpenTTD
@@ -608,7 +625,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Betriebs
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Einkommen
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Beförderte Frachteinheiten
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bewertung der Firmenleistung (Höchstwert: 1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwert
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwertdiagramm
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbeförderungspreise
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Tage unterwegs
@@ -1238,6 +1255,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Mitte
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}Sekunde{P 0 "" n}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Kreditlimit bei Spielbeginn: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation)
@@ -1366,7 +1384,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Aufträge stand
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalerweise hält ein Fahrzeug an jeder Station, die es passiert. Wird diese Einstellung aktiviert, hält das Fahrzeug nur an den Stationen, die explizit in den Aufträgen angeführt sind. Bedenke, dass dieses nur das Standard-Verhalten für neue Aufträge beschreibt. Einzelne Aufträge können explizit auf jedes gewünschte Verhalten geändert werden
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Neue Aufträge: Zug hält standardmäßig {STRING} des Bahnsteigs
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Die Position, an der Züge standardmäßig am Bahnsteig anhalten. Bei „am Anfang“ hält der Zug an, sobald er mit allen Waggons in den Bahnhof eingefahren ist. Bei „in der Mitte“ hält er zentral in der Mitte des Bahnsteigs und bei „am Ende“ durchfährt der Zug den Bahnhof soweit wie möglich. Die hier gewählte Einstellung wird bei allen neu erstellten Aufträgen verwendet. Bei bestehenden Aufträgen kann der Haltepunkt jederzeit im Auftragsfenster verändert werden.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Die Position, an der Züge standardmäßig am Bahnsteig anhalten. Bei „am Anfang“ hält der Zug an, sobald er mit allen Waggons in den Bahnhof eingefahren ist. Bei „in der Mitte“ hält er zentral in der Mitte des Bahnsteigs und bei „am Ende“ durchfährt der Zug den Bahnhof soweit wie möglich. Diese Einstellung definiert nur den Standardwert für neue Aufträge. Bei einzelnen Aufträgen kann ihr Halteort gesetzt werden, in dem man auf den Auftragstext klickt
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :am Anfang
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in der Mitte
@@ -1409,8 +1427,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Keine
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verringert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Bus- und Lkw-Haltestellen auf städtischen Straßen erlauben: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaubt die Errichtung von Bus- und Lkw-Haltestellen auf städtischen Straßen
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Bus- und Lkw-Haltestellen auf Straßen im Stadteigentum erlauben: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaubt die Errichtung von Bus- und Lkw-Haltestellen auf Straßen im Stadteigentum
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Bus- und Lkw-Haltestellen auf Straßen von Mitbewerbern erlauben: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Erlaube die Errichtung von Bus- und Lkw-Haltestellen auf Straßen, die Mitbewerbern gehören
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Diese Einstellung kann nicht geändert werden, solange Fahrzeuge im Spiel sind
@@ -1421,6 +1439,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Unterhaltskoste
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Firmenfarbe zu Spielbeginn: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Wähle die Firmenfarbe zu Spielbeginn
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Sekundärfirmenfarbe zu Spielbeginn: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Initiale Sekundärfarbe für das Unternehmen wählen, falls ein NewGRF verwendet wird, welches sie verwendet.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughäfen veralten nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wird diese Option aktiviert, können Flughäfen, die einmal eingeführt wurden, das ganze Spiel über gebaut werden und veralten nie
@@ -1623,6 +1643,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fenster mit Rechtsklick schließen: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Schließt ein Fenster mittels Rechtsklick. Schaltet Tooltip mit Rechtsklick ab!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nein
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ja, außer angeheftete
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autosicherung: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Intervall zwischen automatischen Speicherungen wählen
@@ -1877,8 +1900,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Erlaube Städte
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Städte dürfen Bahnübergänge bauen: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Erlaube Städten, Bahnübergänge zu bauen
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Stadt kontrolliert Lärmbelastung durch Flughäfen: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Wird diese Option deaktiviert, erlaubt jede Stadt den Bau von maximal zwei Flughäfen (nicht pro Spieler, sondern insgesamt). Wenn aktiviert, ist der Bau von Flughäfen durch die Lärmbelastung begrenzt. Die maximal zumutbare Lärmbelastung hängt von der Stadtgröße, der Flughafengröße und dem Abstand des Flughafens von der Stadtmitte ab
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Flughafenplatzierung anhand des Lärmpegels begrenzen: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Erlaubt Städten, den Bau von Flughäfen aufgrund von Lärmbelastung zu blockieren. Dies basiert auf der Bevölkerungsgröße, der Flughafengröße und dem Abstand des Flughafens von der Stadt. Ist diese Einstellung deaktiviert, werden Städte nur zwei Flughäfen erlauben, es sei denn, die Toleranz der Stadtverwaltung ist auf „Hoch“ gesetzt.
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Städte im Spiel gründen: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Erlaube Spielern die Gründung neuer Städte während des Spiels
@@ -1910,7 +1933,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Abstand zwische
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} Pixel
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :deaktiviert
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximale Fensteranzahl (nicht angepinnte): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximale Fensteranzahl (nicht angehefteter): {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Anzahl nicht angehefteter, offener Fenster, bevor alte Fenster automatisch geschlossen werden, um Platz für neue Fenster zu schaffen
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
@@ -1952,9 +1975,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Keine
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Größe von Großstädten bei Spielbeginn: {STRING}×
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Durchschnittliche Größe von Großstädten relativ zu normalen Städten bei Spielbeginn
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Verteilungsgraphen jede {STRING}{NBSP}Sekund{P 0:2 "" en} aktualisieren
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Verteilungsgraphen alle {STRING} aktualisieren
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Zeit zwischen anfolgenden Neuberechnungen der Warenverteilung. Jede Neuberechnung berechnet die Pläne für eine Komponente des Graphen. Das bedeutet, dass ein Wert X für diese Einstellung nicht bedeutet, dass der gesamte Graph alle X Sekunden aktualisiert wird. Nur ein Teil wird es. Je kürzer du die Zeit festlegst, desto mehr CPU-Zeit wird nötig sein, um ihn zu berechnen. Je länger du die Zeit festlegst, desto länger wird es dauern, bis die Frachtverteilung auf neuen Strecken beginnt.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :{STRING}{NBSP}Sekund{P 0:2 "" en} für Neuberechnung des Verteilungsgraphen nehmen
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :{STRING} für Neuberechnung des Verteilungsgraphen nehmen
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Zeit für jede Neuberechnung einer Warenverteilungskomponente. Wenn eine Neuberechnung gestartet wird, wird ein Thread gestartet, der für diese Anzahl von Sekunden laufen darf. Je kürzer du ihn festlegst, desto wahrscheinlicher ist es, dass der Thread nicht beendet ist, wenn er aber sein sollte. Dann wird das Spiel beendet, sobald dies der Fall ist („Lag“). Je länger du es festlegst, desto länger dauert es, bis die Verteilung aktualisiert wird, wenn sich Routen ändern.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Verteilungsschema für Passagiere: {STRING}
@@ -2927,7 +2950,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3×3-Mus
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Zufall
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Neue Industrie finanzieren
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Industriefinanzierung
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Gewünschte Industrie aus der Liste auswählen
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Zufallsindustrien erzeugen
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Das Spielfeld mit zufällig platzierten Industrien füllen
@@ -2943,8 +2966,8 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Alle Ind
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Sind Sie sich sicher, dass Sie alle Industrien entfernen wollen?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Produktionskette für {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Produktionskette für {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Produktionskette – {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Produktionskette – {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Zulieferer
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Abnehmer
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Häuser
@@ -3545,8 +3568,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Die örtlichen Straßenreparaturen finanzieren.{}Der Straßenverkehr wird bis zu 6 Monate beeinträchtigt.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Eine Statue zu Ehren der eigenen Firma errichten.{}Bewirkt eine permanente Steigerung der Stationsbewertung in diesem Ort.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Bau von neuen Gebäuden im Ort finanzieren.{}Bewirkt eine temporäre Steigerung des Ortswachstums in diesem Ort.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Für ein Jahr die exklusiven Transportrechte in der Stadt kaufen.{}Die Stadtverwaltung erlaubt dann nur Passagier- und Frachttransporte der eigenen Firma.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Die Stadtverwaltung bestechen, um die eigene Bewertung zu verbessern. Dabei riskiert man allerdings eine harte Strafe, falls man ertappt wird.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Für ein Jahr die exklusiven Transportrechte in der Stadt kaufen.{}Die Stadtverwaltung erlaubt dann nur Passagier- und Frachttransporte der eigenen Firma. Ein erfolgreicher Bestechungsversuch eines Wettbewerbers wird diesen Vertrag widerrufen.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Die Stadtverwaltung bestechen, um die eigene Bewertung zu verbessern und die exklusiven Transportrechte eines Wettbewerbers zu widerrufen. Dabei riskiert man allerdings eine harte Strafe, falls man ertappt wird.{}{POP_COLOUR}Kosten: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ziele
@@ -4618,8 +4641,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debugfenster für KI oder Skripte ist nur auf dem Server verfügbar
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}KI Konfiguration
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Spielskriptkonfiguration
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}KI-Einstellungen
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Spielskripteinstellungen
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Das Skript, das im nächsten Spiel geladen wird
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die KIs, die im nächsten Spiel geladen werden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menschlicher Spieler
@@ -4869,7 +4892,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zu viele
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zu dicht an einem anderen Hafen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zu dicht an einem anderen Flughafen
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Station kann nicht umbenannt werden ...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... diese Straße ist in kommunaler Trägerschaft
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... Staße im Stadteigentum
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... Straße verläuft in die falsche Richtung
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... Bus- und Lkw-Haltestellen können nicht um die Kurve gehen
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... Bus- und Lkw-Haltestellen können keine Abzweigung haben
