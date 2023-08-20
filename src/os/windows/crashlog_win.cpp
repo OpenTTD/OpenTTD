@@ -61,12 +61,6 @@ public:
 	}
 #endif
 
-#if defined(_MSC_VER)
-	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const;
-#else
-	void AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const {}
-#endif /* _MSC_VER */
-
 	/**
 	 * A crash log is always generated when it's generated.
 	 * @param ep the data related to the exception.
@@ -111,17 +105,11 @@ public:
 	);
 }
 
-/* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	fmt::format_to(output_iterator, "Stack trace:\n");
-	fmt::format_to(output_iterator, " Not supported.\n");
-}
-
 #if defined(_MSC_VER)
 static const uint MAX_SYMBOL_LEN = 512;
 static const uint MAX_FRAMES     = 64;
 
-void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
+/* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
 {
 	DllLoader dbghelp(L"dbghelp.dll");
 	struct ProcPtrs {
@@ -146,7 +134,7 @@ void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::str
 		dbghelp.GetProcAddress("SymGetLineFromAddr64"),
 	};
 
-	fmt::format_to(output_iterator, "\nDecoded stack trace:\n");
+	fmt::format_to(output_iterator, "Stack trace:\n");
 
 	/* Try to load the functions from the DLL, if that fails because of a too old dbghelp.dll, just skip it. */
 	if (dbghelp.Success()) {
@@ -231,7 +219,13 @@ void CrashLogWindows::AppendDecodedStacktrace(std::back_insert_iterator<std::str
 		proc.pSymCleanup(hCur);
 	}
 
-	fmt::format_to(output_iterator, "\n*** End of additional info ***\n");
+	fmt::format_to(output_iterator, "\n");
+}
+#else
+/* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
+{
+	fmt::format_to(output_iterator, "Stack trace:\n");
+	fmt::format_to(output_iterator, " Not supported.\n");
 }
 #endif /* _MSC_VER */
 
@@ -279,7 +273,6 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	auto output_iterator = std::back_inserter(log->crashlog);
 	log->FillCrashLog(output_iterator);
 	log->WriteCrashDump();
-	log->AppendDecodedStacktrace(output_iterator);
 	log->WriteCrashLog();
 	log->WriteScreenshot();
 	log->SendSurvey();
