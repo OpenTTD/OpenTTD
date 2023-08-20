@@ -1678,9 +1678,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Claudere fenest
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Facit ut globulus muris dexter fenestras claudat. Cave: hac electa, non apparent nuntia adiuvantia globulo dextro.
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Servare automatice: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Eligere crebritatem automatice ludum servandi
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Forma {STRING} diei adhibenda in nominibus ludorum servatorum
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Forma diei in nominibus ludorum servatorum
 ###length 3

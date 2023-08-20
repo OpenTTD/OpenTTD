@@ -1518,9 +1518,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :סגירת חל
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :סוגר חלון על-ידי לחיצה ימנית בתוכו. מבטל הצגת מידע בלחיצה ימנית!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :שמירה אוטומטית: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :בחר פרק זמן בין שמירות אוטומטיות
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :השתמש במבנה התאריך {STRING} בשביל שמות קבצי השמירה.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :פורמט התאריך בשמות קבצים של משחקים שמורים
 ###length 3

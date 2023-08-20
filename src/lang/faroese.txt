@@ -1414,7 +1414,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Sløkt
 
 ###length 3
 
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Nýt {STRING} dato sniði til nøvnini á goymdum spølum
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Sniði fyri dato í fíla navninum á goymdum spølum
 ###length 3

@@ -1614,9 +1614,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :右クリック
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :ウィンドウ内で右クリックしてウィンドウを閉じられます。右クリックでツールチップも無効にできます。
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :オートセーブ: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :オートセーブの間隔を設定します
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :セーブ時の日付フォーマット: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :セーブデータ名にデフォルトで付けられる日付の表記法を指定します。注: 日本の場合、「短」と「ISO標準」に違いはありません
 ###length 3

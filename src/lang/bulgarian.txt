@@ -1465,9 +1465,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключе�
 
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Автоматично запазване: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Изберете интервал между автоматично запаметяване на играта
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Използвай {STRING} формат на датата за имена на записаните игри.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат на датата във файловете за запис на играта
 ###length 3

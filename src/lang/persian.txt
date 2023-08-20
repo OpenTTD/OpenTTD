@@ -1358,9 +1358,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :خاموش
 
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :ذخیره خودکار: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :انتخاب فاصله زمانی بین ذخیره کردن های خودکار
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :از این {STRING} برای نام فایل‌های ذخیره استفاده کن
 ###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طولانی (31st Dec 2008)

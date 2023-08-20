@@ -1743,9 +1743,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Закрити 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Закривати вікно кліком правої кнопки миші по ньому. При цьому віключається поява підказок за правою кнопкою.
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Автозбереження: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Оберіть проміжок між автоматичними збереженнями гри
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Формат дати в іменах файлів збереження: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат дати в іменах файлів збереження
 ###length 3

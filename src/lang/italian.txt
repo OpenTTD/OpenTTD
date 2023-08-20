@@ -1658,9 +1658,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Chiudi finestra
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Consente di chiudere una finestra facendo clic col pulsante destro al suo interno. Disabilita i suggerimenti attivati al clic col pulsante destro!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Salvataggi automatici: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Seleziona l'intervallo fra i salvataggi automatici della partita
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Formato data nei nomi dei salvataggi: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato della data nei nomi dei file delle partite salvate
 ###length 3

@@ -1646,9 +1646,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nej
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ja, undtagen klistret
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Auto gem: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vælg interval mellem automatisk gemte spil
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Brug {STRING} datoformat til navne på gemte spil.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formatet af datoen i gemte spil filnavne
 ###length 3

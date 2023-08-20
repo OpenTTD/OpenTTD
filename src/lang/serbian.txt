@@ -1788,9 +1788,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zatvori prozor 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zatvara prozor tako što klikne desnim klikom unutar nje. Onemogućava dodir sa desnim tasterom miša!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autočuvanje: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Odabir vremenskog intervala između dve automatski sačuvane igre
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Koristiti {STRING} oblik datuma u nazivima sačuvanih igara
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format datuma u imenima fajlova sačuvanih igara
 ###length 3

@@ -1625,9 +1625,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Tanca la finest
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Tanca una finestra fent-hi un clic amb el botó dret del ratolí. Aquesta opció desactiva els indicadors de funció amb el mateix botó.
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Desada automàtica: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecciona l'interval entre desades automàtiques de les partides.
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utilitza el format de data {STRING} per a guardar partides
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la data en els noms dels arxius de les partides que es guardin
 ###length 3

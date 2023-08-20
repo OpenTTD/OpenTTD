@@ -1645,9 +1645,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nu
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Da
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Da, mai puțin cele lipite
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autosalvare: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Alege intervalul de timp dintre salvările automate
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Foloseşte formatul datei {STRING} pentru numele salvărilor
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formatul datei in numele salvărilor
 ###length 3

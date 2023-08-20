@@ -1454,9 +1454,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :அணை
 
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :தானியங்கிபதிவு: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :தானியங்கி விளையாட்டு சேமிப்புகளுக்கு இடையில் இடைவெளியைத் தேர்ந்தெடுக்கவும்
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{STRING} தேதி வகையினை பதிவுஆட்டங்கள் பெயர்களுக்கு பயன்படுத்தவும்
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :பதிவு ஆட்டங்கள் கோப்புப் பெயர்களில் உள்ள தேதி வகையினை அமை
 ###length 3

@@ -1413,7 +1413,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
 
 ###length 3
 
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Nota dagsetningar á {STRING} formi fyrir vistaða leiki.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Snið á dagsetningu í nöfnum á vistuðum leikjum
 ###length 3

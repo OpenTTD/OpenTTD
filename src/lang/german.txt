@@ -1647,9 +1647,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nein
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ja, außer angeheftete
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autosicherung: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Intervall zwischen automatischen Speicherungen wählen
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Datumsformat für Spielstandsnamen: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Das Datumsformat für Spielstandsdateien festlegen
 ###length 3

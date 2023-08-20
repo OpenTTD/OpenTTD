@@ -1559,9 +1559,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Dún an fhuinne
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Dúntar fuinneog trí dheas-chliceáil laistigh de. Díchumasaítear leis seo na leideanna uirlise deas-cliceála!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Uathshábháil: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Roghnaigh an t-eatramh idir uathshábhálacha cluichí
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Úsáid an formáid dáta {STRING} d'ainmneacha na gcluichí sábháilte
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formáid an dáta i gcomhadainmneacha na gcluichí sábháilte
 ###length 3

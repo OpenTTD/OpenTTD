@@ -2026,9 +2026,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nie
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Tak
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Tak, z wyjątkiem przypiętych
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autozapis: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Częstotliwość automatycznego zapisu stanu gry
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Użyj {STRING} formatu daty dla nazw zapisów gry
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format daty w nazwach plików zapisu gry
 ###length 3

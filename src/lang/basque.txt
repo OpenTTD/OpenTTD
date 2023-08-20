@@ -1442,9 +1442,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Itzalita
 
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Auto-gordea: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Partida gordetze automatikoaren bitartea aukeratu
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gordetako jokoen izenetan {STRING} data fomatua erabili
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Gordetako fitxeroen dataren formatoa
 ###length 3

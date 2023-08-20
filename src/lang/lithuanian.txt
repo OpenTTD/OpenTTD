@@ -1782,9 +1782,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Užverti langą
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Užveria langą dešiniuoju pelės klavišu spustelėjus ant jo. Išjungia patarimą dešiniuoju pelės klavišu spustelėjimu!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Automatinis saugojimas: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Laiko tarpsnis tarp automatinių žaidimo išsaugojimų
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Išsaugant žaidimą, pavadinimuose naudoti {STRING} datos formatą
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datos formatas išsaugoto žaidimo failo pavadinime
 ###length 3

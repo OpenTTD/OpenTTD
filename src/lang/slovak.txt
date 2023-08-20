@@ -1700,9 +1700,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zatvoriť okno 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zatvorí okno kliknutím pravým tlačidlom do vnútra. Prestane ukazovať nápovedu pri kliknutí pravým tlačidlom!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Automatické ukladanie: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vyberte interval pre automatické ukladanie hry
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Použiť {STRING} formát dátumu v názve uloženej hry
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formát dátumu v názvoch uložených hier
 ###length 3

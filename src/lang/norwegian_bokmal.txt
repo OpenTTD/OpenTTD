@@ -1568,9 +1568,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Lukk vinduet me
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Lukker et vindu ved å høyreklikke i det. Deaktiverer verktøytipset med høyreklikk!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autolagring: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Velg intervall mellom automatiske lagringer av spillet
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Bruk {STRING} datoformat i navn på lagrede spill.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datoformat i lagrede spills filnavn
 ###length 3

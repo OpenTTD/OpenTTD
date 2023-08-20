@@ -1610,9 +1610,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zatvori prozor 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zatvara prozor nakon desnog klika unutar prozora. S desnim klikom zatvaraju se i upute alata!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Automatsko snimanje: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Odaberite interval između automatskog snimanja igre
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Koristi {STRING} format datuma za ime snimljene pozicije
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format datuma u imenima datoteka sa snimljenom igrom
 ###length 3

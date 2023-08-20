@@ -1797,9 +1797,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :нет
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :да
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :да, кроме закреплённых
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Автосохранение: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Укажите интервал между автоматическими сохранениями
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Использовать {STRING} формат даты для имён сохранений
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат даты, использующийся в названиях сохранённых игр
 ###length 3

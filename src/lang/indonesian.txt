@@ -1619,9 +1619,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Tutup jendela d
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Menutup jendela dengan mengklik kanan di dalamnya. Menonaktifkan keterangan alat saat klik kanan!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Simpan otomatis: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Memilih jarak waktu antara menyimpan data game
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gunakan format tanggal {STRING} untuk berkas simpanan
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format tanggal di nama berkas permainan tersimpan
 ###length 3

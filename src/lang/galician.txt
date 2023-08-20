@@ -1623,9 +1623,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Pechar a fiestr
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Pecha a fiestra facendo botón dereito dentro de ela. Deshabilita a axuda contextual facendo click-dereito!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autogravado: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecciona o intervalo entre gravados automáticos das partidas
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Empregar o formato de data {STRING} para os nomes das partidas gravadas
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato da data nos nomes das partidas gravadas
 ###length 3

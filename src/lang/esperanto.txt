@@ -1672,9 +1672,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Fermu fenestron
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Fermas fenestron per dekstra klako ene de ĝi. Malebligas ŝpruchelpilon je dekstra klako!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Aŭtomata konservado: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Elektu intervalon inter aŭtomataj konservadoj de la ludo
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Uzu la {STRING.n} datformon por nomoj de konservludoj.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Dataranĝo en dosiernomoj de konservitaj ludoj
 ###length 3

@@ -1647,9 +1647,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Hayır
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Evet
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Evet, yapışkan hariç
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Otomatik kaydet: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Otomatik oyun kaydetme sıklığını seçin
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Kaydedilen oyun isimlerinde {STRING} tarih biçimini kullan
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Kaydedilen oyun isimlerinde kullanılan tarih biçimi
 ###length 3
@@ -1900,8 +1897,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Şehirlerin bü
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Şehirlerde hemzemin geçit yapmaya izin ver: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Etkinleştirildiğinde şehirlerin demiryolu ile karayolunun kesiştiği kavşaklar yapmasına izin verilir
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Kasabalar tarafından kontrol edilen havaalanı gürültü seviyesine izin ver: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Etkisiz hale getirildiğinde, her şehirde iki havaalanı olabilir. Etkinleştirildiğinde ise, bir şehirdeki havaalanı sayısı o şehrin ne kadar gürültüye tahammül edebildiğiyle sınırlıdır; bu da nüfus miktarına, havaalanının büyüklüğüne ve uzaklığına bağlıdır
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Gürültü seviyesine göre havaalanı yerleşimini sınırlayın: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kasabaların, şehrin nüfusuna ve havalimanı büyüklüğüne ve mesafesine bağlı kabul ettiği gürültü seviyelerine göre havalimanı inşaatını engellemesine izin verin. Bu ayar devre dışı bırakılırsa,kasabaların tutumu "Hoşgörülü" olmadığı sürece kasabalar yalnızca iki havalimanına izin verir.
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Oyunda yeni şehirler kurma: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Bu seçeneği etkinleştirmek, oyuncuların yeni şehirler kurmasına izin verir

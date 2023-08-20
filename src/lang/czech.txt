@@ -1692,9 +1692,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zavírat okno k
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Zavírat okno kliknutím pravým tlačítkem na něj. Znemožňuje využívat nápovědu zobrazující se při stisknutí pravého tlačítka myši!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Automaticky ukládat: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Zvol frekvenci automatického ukládání
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Pro jméno uložené hry použít {STRING} formát
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formát data v názvu uložené hry
 ###length 3

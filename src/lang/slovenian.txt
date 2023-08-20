@@ -1629,9 +1629,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izklop
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Zapri okno z desnim klikom: {STRING}
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Samodejno shrani: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Izberi časovni interval samodejnega shranjevanja igre
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Uporabi {STRING} format datuma za imena shranjevanja igre
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format datuma v imenih shranjenih iger
 ###length 3

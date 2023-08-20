@@ -1647,9 +1647,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Não
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sim
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Sim, exceto coladas
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Auto-salvar: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecione intervalo entre jogos salvos automaticamente
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Use o formato de data {STRING} para criar arquivos de salvamento
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato da data nos nomes dos jogos salvos
 ###length 3

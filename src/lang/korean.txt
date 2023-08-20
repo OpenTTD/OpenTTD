@@ -1647,9 +1647,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :아니요
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :예
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :예 (고정한 창 제외)
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :자동 저장: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :게임을 자동으로 저장할 간격을 선택하세요
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :저장 파일 이름으로 {STRING} 날짜 형식을 사용
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :게임 저장 파일 이름에 사용할 날짜 형식을 선택합니다
 ###length 3

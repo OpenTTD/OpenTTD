@@ -1522,9 +1522,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Cau ffenest wrt
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Cau ffenest wrth dde-glicio tu fewn iddo. Mae hyn yn analluogi dangos gwybodaeth ar dde-clicio!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Awtogadw: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Dewis pa mor aml y dylid awtogadw gemau
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Defnyddio'r fformat dyddiad {STRING} ar gyfer enwau gemau wedi'u cadw
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Fformat y dyddiad mewn enwau ffeiliau cadw
 ###length 3

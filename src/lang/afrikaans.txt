@@ -1499,9 +1499,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Maak venster toe met regter-klik: {STRING}
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Outostoor: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Tyd tussen outomatiese spelstore
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gebruik die {STRING} datum formaat vir gestoorde spel name.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formaat van datum van spaar-speletjie naam
 ###length 3

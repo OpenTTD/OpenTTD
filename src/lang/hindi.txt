@@ -485,7 +485,6 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :अक्षम
 
 ###length 3
 
-
 ###length 3
 
 

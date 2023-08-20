@@ -1596,9 +1596,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Cerrar ventana 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Cierra una ventana al hacer clic derecho dentro. ¡Desactiva la descripción emergente al hacer clic derecho!
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autoguardado: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selecciona el intervalo entre guardados automáticos del juego
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Usar formato de fecha {STRING} para los nombres de partidas guardadas
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato de la fecha en el nombre de partidas guardadas
 ###length 3

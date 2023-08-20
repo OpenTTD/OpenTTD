@@ -1489,9 +1489,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Ut
 
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Automatysk bewarje: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Selektearje de tiid tusken automatysk bewarje fan it spul
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Brûk it {STRING} datumformaat yn de nammen fan bewarre spullen
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datumformaat foar de bestânsnammen fan bewarre spullen
 ###length 3

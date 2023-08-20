@@ -1646,9 +1646,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Không
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Có
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Có, trừ cửa sổ đang neo
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Tự động save: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Chọn chu kỳ giữa mỗi lần tự động save
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Sử dụng định dạng ngày {STRING} cho tên file lưu ván chơi.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Định dạng ngày trong tên file lưu
 ###length 3

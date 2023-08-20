@@ -1646,9 +1646,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nej
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ja, förutom klistrade
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autospara: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Välj intervall mellan automatisk sparande
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Använd {STRING} som datumformat för sparfilsnamn
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format för datum i filnamnen för sparade spel
 ###length 3

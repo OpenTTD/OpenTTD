@@ -1646,9 +1646,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nee
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ja
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ja, behalve gepind
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Automatisch opslaan: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Tijdsduur kiezen voor automatische spelopslag
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Datumindeling {STRING} gebruiken voor naamgeving van opgeslagen spellen
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datumindeling in bestandsnamen van opgeslagen spellen
 ###length 3

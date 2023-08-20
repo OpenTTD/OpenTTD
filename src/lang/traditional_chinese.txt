@@ -1595,9 +1595,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :右鍵關閉視
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :在視窗內以右鍵點擊可關閉視窗。可用右鍵關閉工具提示。
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :自動儲存：{STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :選擇自動存檔的週期。
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :使用 {STRING} 時間格式作為存檔檔名
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :在存檔的檔名中使用的日期格式。
 ###length 3

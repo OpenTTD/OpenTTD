@@ -1646,9 +1646,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Ei
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Kyllä
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Vain ei-säilyvät
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Automaattitallennus: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Valitse aikaväli automaattisille pelitallennuksille
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Käytä {STRING} päivämäärämuotoa tallennettujen pelien niminä
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Pelitallenteiden tiedostonimissä käytettävä päivämäärän muoto
 ###length 3

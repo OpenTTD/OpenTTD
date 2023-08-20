@@ -1283,9 +1283,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :آف
 
 ###length 3
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Autosave: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :گیم بچانے کا وقفا چنیں
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :کھیل کو محفوظ کرنے کے لئے تاریخ کا {STRING} طریقہ استعمال کریں
 ###length 3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)

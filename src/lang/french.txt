@@ -1647,9 +1647,6 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Non
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Oui
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Oui, sauf les fenêtres punaisées
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Sauvegarde automatique{NBSP}: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Sélectionner l'intervalle de temps entre les sauvegardes automatiques
-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utiliser le format de date {STRING} pour le nom des sauvegardes
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la date dans les noms des fichiers de sauvegarde
 ###length 3
