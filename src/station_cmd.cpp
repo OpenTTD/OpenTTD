@@ -3174,8 +3174,10 @@ draw_default_foundation:
 			SpriteID image = t->ground.sprite;
 			PaletteID pal  = t->ground.pal;
 			image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
-			if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += ground_relocation;
-			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
+			if (GB(image, 0, SPRITE_WIDTH) != 0) {
+				if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += ground_relocation;
+				DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
+			}
 		}
 
 		if (IsDriveThroughStopTile(ti->tile)) {
