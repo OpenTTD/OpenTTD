@@ -44,14 +44,6 @@ protected:
 	 */
 	virtual void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const = 0;
 
-	/**
-	 * Writes the dynamically linked libraries/modules to the buffer, if there
-	 * is information about it available.
-	 * @param output_iterator Iterator to write the output to.
-	 */
-	virtual void LogModules(std::back_insert_iterator<std::string> &output_iterator) const;
-
-
 	void LogOpenTTDVersion(std::back_insert_iterator<std::string> &output_iterator) const;
 	void LogConfiguration(std::back_insert_iterator<std::string> &output_iterator) const;
 	void LogLibraries(std::back_insert_iterator<std::string> &output_iterator) const;

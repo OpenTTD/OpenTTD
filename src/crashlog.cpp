@@ -99,11 +99,6 @@ void CrashLog::LogCompiler(std::back_insert_iterator<std::string> &output_iterat
 #endif
 }
 
-/* virtual */ void CrashLog::LogModules(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	/* Stub implementation; not all OSes support this. */
-}
-
 /**
  * Writes OpenTTD's version to the buffer.
  * @param output_iterator Iterator to write the output to.
@@ -343,7 +338,6 @@ void CrashLog::FillCrashLog(std::back_insert_iterator<std::string> &output_itera
 	this->LogCompiler(output_iterator);
 	this->LogConfiguration(output_iterator);
 	this->LogLibraries(output_iterator);
-	this->LogModules(output_iterator);
 	this->LogGamelog(output_iterator);
 	this->LogRecentNews(output_iterator);
 
