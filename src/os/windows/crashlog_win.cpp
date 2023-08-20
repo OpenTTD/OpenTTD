@@ -43,7 +43,6 @@ class CrashLogWindows : public CrashLog {
 	void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const override;
 	void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const override;
 	void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const override;
-	void LogModules(std::back_insert_iterator<std::string> &output_iterator) const override;
 public:
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD
@@ -110,113 +109,6 @@ public:
 			(size_t)ep->ExceptionRecord->ExceptionAddress,
 			message
 	);
-}
-
-struct DebugFileInfo {
-	uint32_t size;
-	uint32_t crc32;
-	SYSTEMTIME file_time;
-};
-
-static uint32_t _crc_table[256];
-
-static void MakeCRCTable()
-{
-	uint32_t crc, poly = 0xEDB88320L;
-	int i;
-	int j;
-
-	for (i = 0; i != 256; i++) {
-		crc = i;
-		for (j = 8; j != 0; j--) {
-			crc = (crc & 1 ? (crc >> 1) ^ poly : crc >> 1);
-		}
-		_crc_table[i] = crc;
-	}
-}
-
-static uint32_t CalcCRC(byte *data, uint size, uint32_t crc)
-{
-	for (; size > 0; size--) {
-		crc = ((crc >> 8) & 0x00FFFFFF) ^ _crc_table[(crc ^ *data++) & 0xFF];
-	}
-	return crc;
-}
-
-static void GetFileInfo(DebugFileInfo *dfi, const wchar_t *filename)
-{
-	HANDLE file;
-	memset(dfi, 0, sizeof(*dfi));
-
-	file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING, 0, 0);
-	if (file != INVALID_HANDLE_VALUE) {
-		byte buffer[1024];
-		DWORD numread;
-		uint32_t filesize = 0;
-		FILETIME write_time;
-		uint32_t crc = (uint32_t)-1;
-
-		for (;;) {
-			if (ReadFile(file, buffer, sizeof(buffer), &numread, nullptr) == 0 || numread == 0) {
-				break;
-			}
-			filesize += numread;
-			crc = CalcCRC(buffer, numread, crc);
-		}
-		dfi->size = filesize;
-		dfi->crc32 = crc ^ (uint32_t)-1;
-
-		if (GetFileTime(file, nullptr, nullptr, &write_time)) {
-			FileTimeToSystemTime(&write_time, &dfi->file_time);
-		}
-		CloseHandle(file);
-	}
-}
-
-
-static void PrintModuleInfo(std::back_insert_iterator<std::string> &output_iterator, HMODULE mod)
-{
-	wchar_t buffer[MAX_PATH];
-	DebugFileInfo dfi;
-
-	GetModuleFileName(mod, buffer, MAX_PATH);
-	GetFileInfo(&dfi, buffer);
-	fmt::format_to(output_iterator, " {:20s} handle: {:X} size: {} crc: {:8X} date: {}-{:02}-{:02} {:02}:{:02}:{:02}\n",
-		FS2OTTD(buffer),
-		(size_t)mod,
-		dfi.size,
-		dfi.crc32,
-		dfi.file_time.wYear,
-		dfi.file_time.wMonth,
-		dfi.file_time.wDay,
-		dfi.file_time.wHour,
-		dfi.file_time.wMinute,
-		dfi.file_time.wSecond
-	);
-}
-
-/* virtual */ void CrashLogWindows::LogModules(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	MakeCRCTable();
-
-	fmt::format_to(output_iterator, "Module information:\n");
-
-	HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
-	if (proc != nullptr) {
-		HMODULE modules[100];
-		DWORD needed;
-		BOOL res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
-		CloseHandle(proc);
-		if (res) {
-			size_t count = std::min<DWORD>(needed / sizeof(HMODULE), lengthof(modules));
-
-			for (size_t i = 0; i != count; i++) PrintModuleInfo(output_iterator, modules[i]);
-			fmt::format_to(output_iterator, "\n");
-			return;
-		}
-	}
-	PrintModuleInfo(output_iterator, nullptr);
-	fmt::format_to(output_iterator, "\n");
 }
 
 /* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
