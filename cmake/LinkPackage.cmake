@@ -3,6 +3,9 @@ function(link_package NAME)
 
     if(${NAME}_FOUND)
         string(TOUPPER "${NAME}" UCNAME)
+        # Some libraries have a dash, which is not allowed in a preprocessor macro.
+        string(REPLACE "-" "_" UCNAME "${UCNAME}")
+
         add_definitions(-DWITH_${UCNAME})
         # Some libraries' cmake packages (looking at you, SDL2) leave trailing whitespace in the link commands,
         # which (later) cmake considers to be an error. Work around this with by stripping the incoming string.

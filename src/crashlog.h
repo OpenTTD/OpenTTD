@@ -73,12 +73,6 @@ public:
 	void FillCrashLog(std::back_insert_iterator<std::string> &output_iterator) const;
 	bool WriteCrashLog();
 
-	/**
-	 * Write the (crash) dump to a file.
-	 * @note Sets \c crashdump_filename when there is a successful return.
-	 * @return if less than 0, error. If 0 no dump is made, otherwise the dump
-	 *         was successful (not all OSes support dumping files).
-	 */
 	virtual int WriteCrashDump();
 	bool WriteSavegame();
 	bool WriteScreenshot();

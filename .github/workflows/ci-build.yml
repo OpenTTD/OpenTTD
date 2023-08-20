@@ -121,6 +121,10 @@ jobs:
           ${{ matrix.libraries }} \
           zlib1g-dev \
           # EOF
+
+        sudo vcpkg install \
+          breakpad \
+          # EOF
         echo "::endgroup::"
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -149,7 +153,7 @@ jobs:
         cd build
 
         echo "::group::CMake"
-        cmake .. ${{ matrix.extra-cmake-parameters }}
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake ${{ matrix.extra-cmake-parameters }}
         echo "::endgroup::"
 
         echo "::group::Build"
@@ -205,6 +209,7 @@ jobs:
     - name: Prepare vcpkg
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-osx \
+          breakpad \
           curl \
           liblzma \
           libpng \
@@ -290,6 +295,7 @@ jobs:
       shell: bash
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-windows-static \
+          breakpad \
           liblzma \
           libpng \
           lzo \
