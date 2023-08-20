@@ -196,8 +196,11 @@ bool HaveDParamChanged(const std::vector<StringParameterBackup> &backup)
 {
 	bool changed = false;
 	for (size_t i = 0; !changed && i < backup.size(); i++) {
-		if (backup[i].string.has_value()) {
-			changed = backup[i].string.value() != (const char *)(size_t)_global_string_params.GetParam(i);
+		bool global_has_string = _global_string_params.GetParamStr(i) != nullptr;
+		if (global_has_string != backup[i].string.has_value()) return true;
+
+		if (global_has_string) {
+			changed = backup[i].string.value() != _global_string_params.GetParamStr(i);
 		} else {
 			changed = backup[i].data != _global_string_params.GetParam(i);
 		}
