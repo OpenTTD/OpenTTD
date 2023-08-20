@@ -99,11 +99,6 @@ void CrashLog::LogCompiler(std::back_insert_iterator<std::string> &output_iterat
 #endif
 }
 
-/* virtual */ void CrashLog::LogRegisters(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	/* Stub implementation; not all OSes support this. */
-}
-
 /* virtual */ void CrashLog::LogModules(std::back_insert_iterator<std::string> &output_iterator) const
 {
 	/* Stub implementation; not all OSes support this. */
@@ -343,7 +338,6 @@ void CrashLog::FillCrashLog(std::back_insert_iterator<std::string> &output_itera
 
 	this->LogError(output_iterator, CrashLog::message);
 	this->LogOpenTTDVersion(output_iterator);
-	this->LogRegisters(output_iterator);
 	this->LogStacktrace(output_iterator);
 	this->LogOSVersion(output_iterator);
 	this->LogCompiler(output_iterator);
