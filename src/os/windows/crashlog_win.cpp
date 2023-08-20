@@ -198,25 +198,7 @@ static void PrintModuleInfo(std::back_insert_iterator<std::string> &output_itera
 /* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
 {
 	fmt::format_to(output_iterator, "Stack trace:\n");
-#ifdef _M_AMD64
-	uint32_t *b = (uint32_t*)ep->ContextRecord->Rsp;
-#elif defined(_M_IX86)
-	uint32_t *b = (uint32_t*)ep->ContextRecord->Esp;
-#elif defined(_M_ARM64)
-	uint32_t *b = (uint32_t*)ep->ContextRecord->Sp;
-#endif
-	for (int j = 0; j != 24; j++) {
-		for (int i = 0; i != 8; i++) {
-			if (IsBadReadPtr(b, sizeof(uint32_t))) {
-				fmt::format_to(output_iterator, " ????????"); // OCR: WAS - , 0);
-			} else {
-				fmt::format_to(output_iterator, " {:08X}", *b);
-			}
-			b++;
-		}
-		fmt::format_to(output_iterator, "\n");
-	}
-	fmt::format_to(output_iterator, "\n");
+	fmt::format_to(output_iterator, " Not supported.\n");
 }
 
 #if defined(_MSC_VER)
