@@ -352,10 +352,9 @@ struct NewGRFParametersWindow : public Window {
 
 			case WID_NP_BACKGROUND: {
 				if (!this->editable) break;
-				auto it = this->vscroll->GetScrolledItemFromWidget(this->grf_config->param_info, pt.y, this, WID_NP_BACKGROUND);
-				if (it == this->grf_config->param_info.end()) break;
+				uint num = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NP_BACKGROUND);
+				if (num >= this->vscroll->GetCount()) break;
 
-				uint num = it - this->grf_config->param_info.begin();
 				if (this->clicked_row != num) {
 					this->CloseChildWindows(WC_QUERY_STRING);
 					this->CloseChildWindows(WC_DROPDOWN_MENU);
@@ -367,7 +366,7 @@ struct NewGRFParametersWindow : public Window {
 				int x = pt.x - r.left;
 				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
 
-				GRFParameterInfo &par_info = it->has_value() ? it->value() : GetDummyParameterInfo(num);
+				GRFParameterInfo &par_info = this->GetParameterInfo(num);
 
 				/* One of the arrows is clicked */
 				uint32_t old_val = par_info.GetValue(this->grf_config);
