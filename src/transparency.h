@@ -28,7 +28,7 @@ enum TransparencyOption {
 	TO_BRIDGES,    ///< bridges
 	TO_STRUCTURES, ///< other objects such as transmitters and lighthouses
 	TO_CATENARY,   ///< catenary
-	TO_LOADING,    ///< loading indicators
+	TO_TEXT,       ///< loading and cost/income text
 	TO_END,
 	TO_INVALID,    ///< Invalid transparency option
 };
