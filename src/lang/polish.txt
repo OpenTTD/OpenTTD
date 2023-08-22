@@ -2276,8 +2276,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Pozwalaj miasto
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Miasta, które mogą budować przejazdy kolejowe: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Aktywacja tej opcji pozwala miastom budować przejazdy kolejowe
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Pozwól miastom kontrolować poziom hałasu dla lotnisk: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kiedy ta opcja jest wyłączona, w miastach można zbudować 2 lotniska. Kiedy ta opcja jest włączona, liczba lotnisk jest ograniczona przez tolerancję hałasu tego miasta, która zależna jest od populacji oraz rozmiaru lotniska i jego odległości
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ograniczenie umieszczania lotnisk zależne od poziomu hałasu: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Umożliwia miastom zablokowanie budowy lotnisk ze względu na poziom akceptacji hałasu, który zależy od liczby mieszkańców miasta oraz wielkości i odległości lotniska. Jeśli to ustawienie jest wyłączone, miasta zezwalają tylko na dwa lotniska, chyba że nastawienie władz lokalnych jest ustawione na „Przyjazne”
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Zakładanie miast w grze: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Aktywacja tej opcji umożliwia graczom zakładanie nowych miast w grze
