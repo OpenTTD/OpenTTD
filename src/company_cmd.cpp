@@ -96,6 +96,16 @@ void Company::PostDestructor(size_t index)
 }
 
 /**
+ * Calculate the max allowed loan for this company.
+ * @return the max loan amount.
+ */
+Money Company::GetMaxLoan() const
+{
+	if (this->max_loan == COMPANY_MAX_LOAN_DEFAULT) return _economy.max_loan;
+	return this->max_loan;
+}
+
+/**
  * Sets the local company and updates the settings that are set on a
  * per-company basis to reflect the core's state in the GUI.
  * @param new_company the new company

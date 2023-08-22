@@ -373,6 +373,8 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CALENDAR_SUB_DATE_FRACT,            ///< 328  PR#11428 Add sub_date_fract to measure calendar days.
 	SLV_SHIP_ACCELERATION,                  ///< 329  PR#10734 Start using Vehicle's acceleration field for ships too.
 
+	SLV_MAX_LOAN_FOR_COMPANY,               ///< 330  PR#11224 Separate max loan for each company.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

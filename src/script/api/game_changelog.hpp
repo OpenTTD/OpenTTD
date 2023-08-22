@@ -47,6 +47,8 @@
  * \li GSCompany::SetAutoRenewStatus
  * \li GSCompany::SetAutoRenewMonths
  * \li GSCompany::SetAutoRenewMoney
+ * \li GSCompany::SetMaxLoanAmountForCompany
+ * \li GSCompany::ResetMaxLoanAmountForCompany
  * \li GSGameSettings::IsDisabledVehicleType
  * \li GSGroup::GroupID
  * \li GSGroup::IsValidGroup
