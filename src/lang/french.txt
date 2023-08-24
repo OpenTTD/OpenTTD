@@ -1898,7 +1898,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Autoriser la co
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activer ce paramètre pour autoriser les villes à construire des passages à niveau
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limiter les placements des aéroports en fonction du niveau sonore{NBSP}: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Avec ce paramètre désactivé, il peut y avoir deux aéroports dans chaque ville. Avec ce paramètre activé, le nombre d'aéroports dans une ville est limité par le bruit qu'elle accepte, celui-ci dépend de la population, de la taille de l'aéroport et de la distance
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Permettre aux villes de bloquer la construction d'aéroports si le niveau sonore est trop élevé pour celle-ci, ce paramètre est basé sur la population de la ville, la taille de l'aéroport et la distance à laquelle il sera construit. Si ce paramètre est désactivé, chaque ville ne tolérera que deux aéroports sauf si la tolérance des municipalités est définie sur "permissive"
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fonder des villes en cours de jeu{NBSP}: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activer ce paramètre permet aux joueurs de fonder de nouvelles villes dans la partie

@@ -193,6 +193,23 @@ STR_COLOUR_WHITE                                                :Bianco
 STR_COLOUR_RANDOM                                               :Casuale
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Blu scuro
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Verde chiaro
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Rosa
+STR_COLOUR_SECONDARY_YELLOW                                     :Giallo
+STR_COLOUR_SECONDARY_RED                                        :Rosso
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Azzurro
+STR_COLOUR_SECONDARY_GREEN                                      :Verde
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Verde scuro
+STR_COLOUR_SECONDARY_BLUE                                       :Blu
+STR_COLOUR_SECONDARY_CREAM                                      :Crema
+STR_COLOUR_SECONDARY_MAUVE                                      :Malva
+STR_COLOUR_SECONDARY_PURPLE                                     :Viola
+STR_COLOUR_SECONDARY_ORANGE                                     :Arancione
+STR_COLOUR_SECONDARY_BROWN                                      :Marrone
+STR_COLOUR_SECONDARY_GREY                                       :Grigio
+STR_COLOUR_SECONDARY_WHITE                                      :Bianco
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Come il primario
 
 
 # Units used in OpenTTD
@@ -436,7 +453,7 @@ STR_FILE_MENU_EXIT                                              :Esci
 ###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mappa del mondo
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Mini visuale extra
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda rotte commerciali
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda del flusso di merci
 STR_MAP_MENU_SIGN_LIST                                          :Elenco cartelli
 
 # Town menu
@@ -609,7 +626,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafico 
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafico ricavi
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unità di carico consegnate
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Valutazione prestazioni compagnie (massima valutazione=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valore delle compagnie
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Grafico del valore aziendale
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento carichi
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Giorni di viaggio
@@ -641,7 +658,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnate
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Valutazione dettagliata prestazioni
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Valutazione dettagliata delle prestazioni
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Dettagli
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -1272,6 +1289,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Sinistra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Destra
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}second{P 0 "o" i}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Prestito massimo iniziale: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Ammontare massimo di denaro che una compagnia può chiedere in prestito (senza tenere conto dell'inflazione).
@@ -1330,7 +1348,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Consenti aree d
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Usa aree di copertura di dimensioni differenti a seconda del tipo di stazione o aeroporto.
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Le stazioni delle compagnie possono servire le industrie con stazioni neutrali: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Se abilitata, le industrie con una stazione incorporata (come le piattaforme petrolifere) possono essere servite anche dalle stazioni di proprietà delle compagnie costruite nelle vicinanze. Se disabilitata, queste industrie possono essere servite dalla loro stazione incorporata. Nessuna stazione vicina potrà servirle, né la stazione incorporata potrà servire altro che la sua industria.
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Se attivata, le industrie con stazioni annesse (come le piattaforme petrolifere) possono essere servite anche da stazioni di proprietà dell'azienda costruite nelle vicinanze. Quando è disattivato, queste industrie possono essere servite solo dalle stazioni annesse. Tutte le stazioni aziendali vicine non saranno in grado di servirle e la stazione annessa servirà esclusivamente l'industria a cui è annessa.
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Consenti la rimozione di strade, ponti, etc. delle città: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Rende più facile la rimozione di infrastrutture ed edifici di proprietà delle città.
@@ -1443,8 +1461,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nessuno*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Ridotto
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normale
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Consenti fermate passanti sulle strade delle città: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Consente la costruzione di fermate stradali passanti sulle strade di proprietà della città.
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Consenti fermate passanti sulle strade di proprietà delle città: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permettere la costruzione di fermate stradali passanti sulle strade di proprietà delle città.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Consenti fermate passanti sulle strade di proprietà degli avversari: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Consente la costruzione di fermate stradali passanti sulle strade di proprietà delle altre compagnie.
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non è possibile modificare questa impostazione quando esistono veicoli
@@ -1455,6 +1473,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Se abilitata, l
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Colore iniziale compagnia: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Imposta il colore predefinito della compagnia, che volendo potrà essere modificato successivamente, anche  durante la partità.
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Colore secondario della compagnia di partenza: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Scegliere il colore secondario iniziale per l'azienda, se si utilizza un NewGRF che lo consente.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Non rendere mai obsoleti i tipi di aeroporto: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Se abilitata, dopo la loro introduzione, tutti i tipi di aeroporto rimarranno sempre disponibili.
@@ -1657,6 +1677,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Nessuna
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Chiudi finestra con clic destro: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Consente di chiudere una finestra facendo clic col pulsante destro al suo interno. Disabilita i suggerimenti attivati al clic col pulsante destro!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :No
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sì
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Sì, ma non appiccicoso
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Formato data nei nomi dei salvataggi: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato della data nei nomi dei file delle partite salvate
@@ -1908,8 +1931,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Consente alle c
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Consenti alle città di costruire passaggi a livello: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Abilitando questa impostazione si consente alle città di costruire passaggi a livello
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Consenti controllo rumore aeroporti da parte delle città: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Se disabilitata, ci possono essere al massimo due aeroporti in ogni città. Se abilitata, il numero di aeroporti in città è limitato dal rumore tollerato dalla città, dipendendo così dalla popolazione, dalla distanza e dalla dimensione degli aeroporti
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limitare il posizionamento dell'aeroporto in base al livello di rumore: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Consente alle città di bloccare la costruzione di aeroporti in base al loro livello di accettazione del rumore, che si basa sulla popolazione della città e sulle dimensioni e la distanza dell'aeroporto. Se questa impostazione è disattivata, le città consentono solo due aeroporti, a meno che l'atteggiamento delle autorità locali non sia impostato su "Permissivo".
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fondazione città durante la partita: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Abilitando questa impostazione si consente ai giocatori di fondare nuove città durante una partita
@@ -1983,9 +2006,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nessuna
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Moltiplicatore iniziale dimensioni metropoli: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensione media delle metropoli in rapporto alle normali città all'inizio della partita.
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aggiornare il grafico di distribuzione ogni {STRING}{NBSP}{P 0:2 "secondo" secondi}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aggiornare il grafico di distribuzione ogni {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo tra i successivi ricalcoli del grafico dei collegamenti. Ogni ricalcolo calcola i piani per un componente del grafico. Ciò significa che un valore X per questa impostazione non significa che l'intero grafico verrà aggiornato ogni X secondi. Solo alcuni componenti lo saranno. Quanto più breve è l'impostazione, tanto più tempo di CPU sarà necessario per il calcolo. Più lungo è il valore impostato, più tempo ci vorrà prima che la distribuzione del carico inizi su nuove rotte.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Prendere {STRING}{NBSP}{P 0:2 "secondo" secondi} per il ricalcolo del grafico di distribuzione
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Prendere {STRING} per il ricalcolo del grafico di distribuzione
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo necessario per ogni ricalcolo di un componente del grafo dei collegamenti. Quando viene avviato un ricalcolo, viene generato un thread che può essere eseguito per questo numero di secondi. Quanto più breve è il tempo impostato, tanto più è probabile che il thread non finisca quando dovrebbe. In questo caso il gioco si ferma finché non viene terminato ("lag"). Più lungo è il valore impostato, più tempo ci vuole per aggiornare la distribuzione quando i percorsi cambiano.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modalità di distribuzione dei passeggeri: {STRING}
@@ -2964,7 +2987,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Griglia 
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Casuale
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finanzia nuova industria
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finanziamento dell'industria
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Selezionare l'industria appropriata dalla lista
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Crea industrie casuali
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Copre la mappa con industrie posizionate casualmente
@@ -2980,14 +3003,14 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Rimuovi 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Si è sicuri di voler rimuovere tutte le industrie?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Catena di distribuzione di {G un un' una} {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Catena di distribuzione dei carichi di {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Filiera industriale di {G un un' una} {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Catena di carico {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produttori
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Consumatori
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Case
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Fare clic sull'industria per visualizzarne fornitori e clienti
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Fare clic sul carico per visualizzarne fornitori e clienti
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Catena distributiva
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Catena di distribuzione
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostra la catena di industrie fornitrici e clienti
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Collega alla minimappa
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Seleziona le industrie visualizzate anche sulla minimappa
@@ -3582,8 +3605,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{PUSH_COLOUR}{YELLOW}Finanziare la ricostruzione della rete stradale urbana.{}Provoca notevoli disagi al traffico stradale per un periodo fino a 6 mesi.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}Costruite una statua in onore della vostra compagnia.{}Fornisce un aumento permanente della valutazione della stazione in questa città..{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}Finanziare la costruzione di nuovi edifici in città.{}Fornisce un incremento temporaneo alla crescita di questa città.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Acquistate 1 anno di diritti esclusivi di trasporto in città..{}Le autorità cittadine non permetteranno a passeggeri e merci di utilizzare le stazioni dei vostri concorrenti..{}{POP_COLOUR}Costo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Corrompere l'autorità locale per aumentare la valutazione, con il rischio di una severa sanzione se si viene scoperti.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{PUSH_COLOUR}{YELLOW}Acquistate 1 anno di diritti esclusivi di trasporto in città..{}Le autorità cittadine non permetteranno a passeggeri e merci di utilizzare le stazioni dei vostri concorrenti. Un concorrente che riuscisse a corrompere le autorità cittadine per acquisire i diritti esclusivi di trasporto causerà l'annullamento di questo contratto.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Corrompere l'autorità locale per aumentare il proprio rating e interrompere i diritti di trasporto esclusivi di un concorrente, con il rischio di una severa sanzione se si viene scoperti.{}{POP_COLOUR}Costo: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Obiettivi della {COMPANY}
@@ -3893,7 +3916,7 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeromobili disp
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gestione veicoli
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Invia istruzioni a tutti i veicoli di questo elenco
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Rimpiazza veicoli
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Manutenzione
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Inviare alla manutenzione
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Crea gruppo
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profitto quest'anno: {CURRENCY_LONG} (anno scorso: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
@@ -4655,8 +4678,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno degl
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra di debug IA/Script è disponibile soltanto per il server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Configurazione IA
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Configurazione script di gioco
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Impostazioni IA
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Impostazioni dello script di gioco
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Lista degli Script che saranno caricati nella prossima partita
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Lista delle IA che saranno caricate nella prossima partita
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Giocatore umano
@@ -4906,7 +4929,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Troppe a
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Troppo vicino ad un altro molo
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Troppo vicino ad un altro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Impossibile rinominare la stazione...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... questa è una strada di proprietà della città
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... strada di proprietà della città
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... strada rivolta nella direzione sbagliata
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... le fermate passanti non possono trovarsi in curva
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... le fermate passanti non possono avere raccordi
