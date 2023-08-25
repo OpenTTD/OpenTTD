@@ -14,6 +14,7 @@ typedef uint16_t DepotID; ///< Type for the unique identifier of depots.
 struct Depot;
 
 static const DepotID INVALID_DEPOT = UINT16_MAX;
+static const DepotID NEW_DEPOT     = INVALID_DEPOT - 1;
 
 static const uint MAX_LENGTH_DEPOT_NAME_CHARS = 32; ///< The maximum length of a depot name in characters including '\0'
 

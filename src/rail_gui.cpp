@@ -804,6 +804,7 @@ struct BuildRailToolbarWindow : Window {
 		CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_RAIL);
 		CloseWindowById(WC_BUILD_WAYPOINT, TRANSPORT_RAIL);
 		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
 		CloseWindowByClass(WC_BUILD_BRIDGE);
 	}
 
@@ -1705,6 +1706,12 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 		this->LowerWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
 	}
 
+	void Close([[maybe_unused]] int data = 0) override
+	{
+		CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
+		this->PickerWindowBase::Close();
+	}
+
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (!IsInsideMM(widget, WID_BRAD_DEPOT_NE, WID_BRAD_DEPOT_NW + 1)) return;
@@ -1734,6 +1741,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 			case WID_BRAD_DEPOT_SE:
 			case WID_BRAD_DEPOT_SW:
 			case WID_BRAD_DEPOT_NW:
+				CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
 				this->RaiseWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
 				_build_depot_direction = (DiagDirection)(widget - WID_BRAD_DEPOT_NE);
 				this->LowerWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
