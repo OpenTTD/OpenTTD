@@ -297,7 +297,7 @@ uint Vehicle::Crash(bool)
 	InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type), 0);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
-	SetWindowDirty(WC_VEHICLE_DEPOT, this->tile);
+	if (IsDepotTile(this->tile)) SetWindowDirty(WC_VEHICLE_DEPOT, GetDepotIndex(this->tile));
 
 	delete this->cargo_payment;
 	assert(this->cargo_payment == nullptr); // cleared by ~CargoPayment
@@ -868,8 +868,8 @@ void Vehicle::PreDestructor()
 		if (v->disaster_vehicle != INVALID_VEHICLE) ReleaseDisasterVehicle(v->disaster_vehicle);
 	}
 
-	if (this->Previous() == nullptr) {
-		InvalidateWindowData(WC_VEHICLE_DEPOT, this->tile);
+	if (this->Previous() == nullptr && IsDepotTile(this->tile)) {
+		InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(this->tile));
 	}
 
 	if (this->IsPrimaryVehicle()) {
@@ -1554,6 +1554,7 @@ void VehicleEnterDepot(Vehicle *v)
 	/* Always work with the front of the vehicle */
 	assert(v == v->First());
 
+	DepotID depot_id = GetDepotIndex(v->tile);
 	switch (v->type) {
 		case VEH_TRAIN: {
 			Train *t = Train::From(v);
@@ -1580,7 +1581,7 @@ void VehicleEnterDepot(Vehicle *v)
 			ship->state = TRACK_BIT_DEPOT;
 			ship->UpdateCache();
 			ship->UpdateViewport(true, true);
-			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+			SetWindowDirty(WC_VEHICLE_DEPOT, depot_id);
 			break;
 		}
 
@@ -1595,9 +1596,9 @@ void VehicleEnterDepot(Vehicle *v)
 	if (v->type != VEH_TRAIN) {
 		/* Trains update the vehicle list when the first unit enters the depot and calls VehicleEnterDepot() when the last unit enters.
 		 * We only increase the number of vehicles when the first one enters, so we will not need to search for more vehicles in the depot */
-		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+		InvalidateWindowData(WC_VEHICLE_DEPOT, depot_id);
 	}
-	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+	SetWindowDirty(WC_VEHICLE_DEPOT, depot_id);
 
 	v->vehstatus |= VS_HIDDEN;
 	v->cur_speed = 0;

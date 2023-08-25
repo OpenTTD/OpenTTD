@@ -424,12 +424,13 @@ static bool CheckShipLeaveDepot(Ship *v)
 
 	v->cur_speed = 0;
 	v->UpdateViewport(true, true);
-	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
+	DepotID depot_id = GetDepotIndex(v->tile);
+	SetWindowDirty(WC_VEHICLE_DEPOT, depot_id);
 
 	VehicleServiceInDepot(v);
 	v->LeaveUnbunchingDepot();
 	v->PlayLeaveStationSound();
-	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+	InvalidateWindowData(WC_VEHICLE_DEPOT, depot_id);
 	SetWindowClassesDirty(WC_SHIPS_LIST);
 
 	return false;
