@@ -386,6 +386,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ADD_DEPOTS_TO_HANGARS,              ///< 339  PR#10691 Add depots to airports that have a hangar.
 
 	SLV_DEPOTID_IN_HANGAR_ORDERS,           ///< 340  PR#10691 Go to hangar orders store the DepotID instead of StationID.
+	SLV_DEPOTID_BACKUP_ORDERS,              ///< 341  PR#XXXXX Backup orders are indexed through DepotIDs.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

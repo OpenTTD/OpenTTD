@@ -2679,10 +2679,6 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		for (uint i = 0; i < st->airport.GetNumHangars(); ++i) {
-			TileIndex tile_cur = st->airport.GetHangarTile(i);
-			OrderBackup::Reset(tile_cur, false);
-		}
 		st->airport.RemoveHangar();
 
 		/* The noise level is the noise from the airport and reduce it to account for the distance to the town center.

@@ -35,7 +35,7 @@ Depot::~Depot()
 	}
 
 	/* Clear the order backup. */
-	OrderBackup::Reset(this->xy, false);
+	OrderBackup::Reset(this->index, false);
 
 	/* Clear the depot from all order-lists */
 	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->index);
