@@ -100,6 +100,7 @@ void Depot::AfterAddRemove(TileArea ta, bool adding)
 		this->ta.Add(tile);
 	}
 
+	VehicleType veh_type = this->veh_type;
 	if (this->ta.tile != INVALID_TILE) {
 		this->RescanDepotTiles();
 		assert(!this->depot_tiles.empty());
@@ -107,6 +108,8 @@ void Depot::AfterAddRemove(TileArea ta, bool adding)
 	} else {
 		delete this;
 	}
+
+	InvalidateWindowData(WC_SELECT_DEPOT, veh_type);
 }
 
 /**

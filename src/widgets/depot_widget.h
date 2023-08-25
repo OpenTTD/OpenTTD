@@ -32,4 +32,11 @@ enum DepotWidgets : WidgetID {
 	WID_D_START_ALL,       ///< Start all button.
 };
 
+/** Widgets of the #SelectDepotWindow class. */
+enum JoinDepotWidgets {
+	WID_JD_CAPTION,   // Caption of the window.
+	WID_JD_PANEL,     // Main panel.
+	WID_JD_SCROLLBAR, // Scrollbar of the panel.
+};
+
 #endif /* WIDGETS_DEPOT_WIDGET_H */

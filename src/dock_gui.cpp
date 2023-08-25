@@ -275,6 +275,7 @@ struct BuildDocksToolbarWindow : Window {
 		CloseWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
 		CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
 		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WC_SELECT_DEPOT, VEH_SHIP);
 		CloseWindowByClass(WC_BUILD_BRIDGE);
 	}
 
@@ -529,6 +530,12 @@ public:
 		UpdateDocksDirection();
 	}
 
+	void Close([[maybe_unused]] int data = 0) override
+	{
+		CloseWindowById(WC_SELECT_DEPOT, VEH_SHIP);
+		this->PickerWindowBase::Close();
+	}
+
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
@@ -569,6 +576,7 @@ public:
 		switch (widget) {
 			case WID_BDD_X:
 			case WID_BDD_Y:
+				CloseWindowById(WC_SELECT_DEPOT, VEH_SHIP);
 				this->RaiseWidget(WID_BDD_X + _ship_depot_direction);
 				_ship_depot_direction = (widget == WID_BDD_X ? AXIS_X : AXIS_Y);
 				this->LowerWidget(WID_BDD_X + _ship_depot_direction);
