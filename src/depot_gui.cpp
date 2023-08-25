@@ -32,6 +32,7 @@
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
 #include "core/geometry_func.hpp"
+#include "depot_func.h"
 
 #include "widgets/depot_widget.h"
 
@@ -1167,5 +1168,252 @@ void DeleteDepotHighlightOfVehicle(const Vehicle *v)
 	w = dynamic_cast<DepotWindow*>(FindWindowById(WC_VEHICLE_DEPOT, GetDepotIndex(v->tile)));
 	if (w != nullptr) {
 		if (w->sel == v->index) ResetObjectToPlace();
+	}
+}
+
+static std::vector<DepotID> _depots_nearby_list;
+
+/**
+ * Add depot on this tile to _depots_nearby_list if it's fully within the
+ * depot spread.
+ * @param tile Tile just being checked
+ * @param user_data Pointer to TileArea context
+ */
+static bool AddNearbyDepot(TileIndex tile, void *user_data)
+{
+	TileArea *ctx = (TileArea *)user_data;
+
+	/* Check if own depot and if we stay within station spread */
+	if (!IsDepotTile(tile)) return false;
+	Depot *dep = Depot::GetByTile(tile);
+	if (dep->owner != _local_company ||
+			(find(_depots_nearby_list.begin(), _depots_nearby_list.end(), dep->index) != _depots_nearby_list.end())) {
+		return false;
+	}
+
+	CommandCost cost = dep->BeforeAddTiles(*ctx);
+	if (cost.Succeeded()) {
+		_depots_nearby_list.push_back(dep->index);
+	}
+
+	return false; // We want to include *all* nearby depots
+}
+
+/**
+ * Circulate around the to-be-built depot to find depots we could join.
+ * Make sure that only depots are returned where joining wouldn't exceed
+ * depot spread and are our own depot.
+ * @param ta Base tile area of the to-be-built depot
+ * @param veh_type Vehicle type depots to look for
+ * @param distant_join Search for adjacent depots (false) or depots fully
+ *                     within depot spread
+ */
+static const Depot *FindDepotsNearby(TileArea ta, VehicleType veh_type, bool distant_join)
+{
+	TileArea ctx = ta;
+
+	_depots_nearby_list.clear();
+
+	/* Check the inside, to return, if we sit on another big depot */
+	Depot *depot;
+	for (TileIndex t : ta) {
+		if (!IsDepotTile(t)) continue;
+		depot = Depot::GetByTile(t);
+		if (depot->veh_type == veh_type && depot->owner == _current_company) return depot;
+	}
+
+	/* Only search tiles where we have a chance to stay within the depot spread.
+	 * The complete check needs to be done in the callback as we don't know the
+	 * extent of the found depot, yet. */
+	if (distant_join && std::min(ta.w, ta.h) >= _settings_game.depot.depot_spread) return nullptr;
+	uint max_dist = distant_join ? _settings_game.depot.depot_spread - std::min(ta.w, ta.h) : 1;
+
+	TileIndex tile = TileAddByDir(ctx.tile, DIR_N);
+	CircularTileSearch(&tile, max_dist, ta.w, ta.h, AddNearbyDepot, &ctx);
+
+	for (std::vector<DepotID>::iterator it = _depots_nearby_list.begin(); it != _depots_nearby_list.end(); ) {
+		DepotID depot_id = *it;
+		if (Depot::Get(depot_id)->veh_type != veh_type) {
+			_depots_nearby_list.erase(it);
+		} else {
+			++it;
+		}
+	}
+
+	return nullptr;
+}
+
+/**
+ * Check whether we need to show the depot selection window.
+ * @param ta Tile area of the to-be-built depot.
+ * @param proc The procedure for the depot picker.
+ * @param veh_type the vehicle type of the depot.
+ * @return whether we need to show the depot selection window.
+ */
+static bool DepotJoinerNeeded(TileArea ta, VehicleType veh_type)
+{
+	/* If a window is already opened and we didn't ctrl-click,
+	 * return true (i.e. just flash the old window) */
+	Window *selection_window = FindWindowById(WC_SELECT_DEPOT, veh_type);
+	if (selection_window != nullptr) {
+		/* Abort current distant-join and start new one */
+		selection_window->Close();
+		UpdateTileSelection();
+	}
+
+	/* Only show the popup if we press ctrl. */
+	if (!_ctrl_pressed) return false;
+
+	/* Test for adjacent depot or depot below selection.
+	 * If adjacent-stations is disabled and we are building next to a depot, do not show the selection window.
+	 * but join the other depot immediately. */
+	const Depot *depot = FindDepotsNearby(ta, veh_type, false);
+	return depot == nullptr && (_settings_game.depot.adjacent_depots || _depots_nearby_list.empty());
+}
+
+/**
+ * Window for selecting depots to (distant) join to.
+ */
+struct SelectDepotWindow : Window {
+	DepotPickerCmdProc select_depot_proc; ///< The procedure params
+	TileArea area;                        ///< Location of new depot
+	Scrollbar *vscroll;                   ///< Vertical scrollbar for the window
+
+	SelectDepotWindow(WindowDesc *desc, TileArea ta, DepotPickerCmdProc& proc, VehicleType veh_type) :
+		Window(desc),
+		select_depot_proc(std::move(proc)),
+		area(ta)
+	{
+		this->CreateNestedTree();
+		this->vscroll = this->GetScrollbar(WID_JD_SCROLLBAR);
+		this->FinishInitNested(veh_type);
+		this->OnInvalidateData(0);
+	}
+
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, [[maybe_unused]] Dimension *fill, Dimension *resize) override
+	{
+		if (widget != WID_JD_PANEL) return;
+
+		resize->height = GetCharacterHeight(FS_NORMAL);
+		size->height = 5 * resize->height + padding.height;
+
+		/* Determine the widest string. */
+		Dimension d = GetStringBoundingBox(STR_JOIN_DEPOT_CREATE_SPLITTED_DEPOT);
+		for (uint i = 0; i < _depots_nearby_list.size(); i++) {
+			assert(Depot::IsValidID(_depots_nearby_list[i]));
+			SetDParam(0, this->window_number);
+			SetDParam(1, _depots_nearby_list[i]);
+			d = maxdim(d, GetStringBoundingBox(STR_DEPOT_LIST_DEPOT));
+		}
+
+		d.height = 5 * resize->height;
+		d.width += padding.width;
+		d.height += padding.height;
+		*size = d;
+	}
+
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		if (widget != WID_JD_PANEL) return;
+
+		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
+
+		uint y = tr.top;
+		if (this->vscroll->GetPosition() == 0) {
+			DrawString(r.left, r.right, y, STR_JOIN_DEPOT_CREATE_SPLITTED_DEPOT);
+			y += this->resize.step_height;
+		}
+
+		for (uint i = std::max<uint>(1, this->vscroll->GetPosition()); i <= _depots_nearby_list.size(); ++i, y += this->resize.step_height) {
+			/* Don't draw anything if it extends past the end of the window. */
+			if (i - this->vscroll->GetPosition() >= this->vscroll->GetCapacity()) break;
+
+			SetDParam(0, this->window_number);
+			SetDParam(1, _depots_nearby_list[i - 1]);
+			[[maybe_unused]] Depot *depot = Depot::GetIfValid(_depots_nearby_list[i - 1]);
+			assert(depot != nullptr);
+			DrawString(r.left, r.right, y, STR_DEPOT_LIST_DEPOT);
+		}
+	}
+
+	void OnClick(Point pt, int widget, [[maybe_unused]] int click_count) override
+	{
+		if (widget != WID_JD_PANEL) return;
+
+		uint dep_index = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_JD_PANEL, WidgetDimensions::scaled.framerect.top);
+		bool distant_join = (dep_index > 0);
+		if (distant_join) dep_index--;
+
+		if (distant_join && dep_index >= _depots_nearby_list.size()) return;
+
+		/* Execute stored Command */
+		this->select_depot_proc(distant_join ? _depots_nearby_list[dep_index] : NEW_DEPOT);
+
+		InvalidateWindowData(WC_SELECT_DEPOT, window_number);
+		this->Close();
+	}
+
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
+	{
+		if (_thd.dirty & 2) {
+			_thd.dirty &= ~2;
+			this->SetDirty();
+		}
+	}
+
+	void OnResize() override
+	{
+		this->vscroll->SetCapacityFromWidget(this, WID_JD_PANEL, WidgetDimensions::scaled.framerect.Vertical());
+	}
+
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	void OnInvalidateData([[maybe_unused]] int data = 0, bool gui_scope = true) override
+	{
+		if (!gui_scope) return;
+		FindDepotsNearby(this->area, (VehicleType)this->window_number, true);
+		this->vscroll->SetCount((uint)_depots_nearby_list.size() + 1);
+		this->SetDirty();
+	}
+};
+
+static const NWidgetPart _nested_select_depot_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, WID_JD_CAPTION), SetDataTip(STR_JOIN_DEPOT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_JD_PANEL), SetResize(1, 0), SetScrollbar(WID_JD_SCROLLBAR), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_JD_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
+		EndContainer(),
+	EndContainer(),
+};
+
+static WindowDesc _select_depot_desc(__FILE__, __LINE__,
+	WDP_AUTO, "build_depot_join", 200, 180,
+	WC_SELECT_DEPOT, WC_NONE,
+	WDF_CONSTRUCTION,
+	std::begin(_nested_select_depot_widgets), std::end(_nested_select_depot_widgets)
+);
+
+/**
+ * Show the depot selection window when needed. If not, build the depot.
+ * @param ta Area to build the depot in.
+ * @param proc Details of the procedure for the depot picker.
+ * @param veh_type Vehicle type of the depot to be built.
+ */
+void ShowSelectDepotIfNeeded(TileArea ta, DepotPickerCmdProc proc, VehicleType veh_type)
+{
+	if (DepotJoinerNeeded(ta, veh_type)) {
+		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
+		new SelectDepotWindow(&_select_depot_desc, ta, proc, veh_type);
+	} else {
+		proc(INVALID_DEPOT);
 	}
 }
