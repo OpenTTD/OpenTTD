@@ -346,7 +346,7 @@ enum WindowClass {
 
 	/**
 	 * Depot view; %Window numbers:
-	 *   - #TileIndex = #DepotWidgets
+	 *   - #DepotID = #DepotWidgets
 	 */
 	WC_VEHICLE_DEPOT,
 
