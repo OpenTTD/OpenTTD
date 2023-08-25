@@ -1013,7 +1013,7 @@ DepotID _viewport_highlight_depot = INVALID_DEPOT; ///< Currently selected depot
 static TileHighlightType GetTileHighlightType(TileIndex t)
 {
 	if (_viewport_highlight_depot != INVALID_DEPOT) {
-		if (IsDepotTile(t) && GetDepotIndex(t) == _viewport_highlight_depot) return THT_WHITE;
+		if (IsDepotTile(t) && GetDepotIndex(t) == _viewport_highlight_depot) return THT_BLUE;
 	}
 
 	if (_viewport_highlight_station != nullptr) {
