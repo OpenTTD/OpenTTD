@@ -387,6 +387,8 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_DEPOTID_IN_HANGAR_ORDERS,           ///< 320  PR#10691 Go to hangar orders store the DepotID instead of StationID.
 
+	SLV_DEPOTID_BACKUP_ORDERS,              ///< 314  PR#XXXXX Backup orders are indexed through DepotIDs.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
