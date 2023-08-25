@@ -32,6 +32,7 @@
 #include "waypoint_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "depot_func.h"
 
 #include "widgets/dock_widget.h"
 
@@ -112,6 +113,8 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
+		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_DT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
+
 		this->Window::Close();
 	}
 
@@ -269,6 +272,8 @@ struct BuildDocksToolbarWindow : Window {
 	void OnPlaceObjectAbort() override
 	{
 		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
+
+		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_DT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
 
 		this->RaiseButtons();
 
@@ -585,6 +590,11 @@ public:
 				this->SetDirty();
 				break;
 		}
+	}
+
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
+	{
+		CheckRedrawDepotHighlight(this, VEH_SHIP);
 	}
 };
 
