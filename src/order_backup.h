@@ -16,6 +16,7 @@
 #include "vehicle_type.h"
 #include "base_consist.h"
 #include "saveload/saveload.h"
+#include "depot_type.h"
 
 /** Unique identifier for an order backup. */
 typedef uint8_t OrderBackupID;
@@ -34,8 +35,8 @@ struct OrderBackup : OrderBackupPool::PoolItem<&_order_backup_pool>, BaseConsist
 private:
 	friend SaveLoadTable GetOrderBackupDescription(); ///< Saving and loading of order backups.
 	friend struct BKORChunkHandler; ///< Creating empty orders upon savegame loading.
-	uint32_t user;               ///< The user that requested the backup.
-	TileIndex tile;            ///< Tile of the depot where the order was changed.
+	uint32_t user;             ///< The user that requested the backup.
+	DepotID depot_id;          ///< Depot where the order was changed.
 	GroupID group;             ///< The group the vehicle was part of.
 
 	const Vehicle *clone;      ///< Vehicle this vehicle was a clone of.
@@ -53,9 +54,9 @@ public:
 	static void Backup(const Vehicle *v, uint32_t user);
 	static void Restore(Vehicle *v, uint32_t user);
 
-	static void ResetOfUser(TileIndex tile, uint32_t user);
+	static void ResetOfUser(DepotID depot_id, uint32_t user);
 	static void ResetUser(uint32_t user);
-	static void Reset(TileIndex tile = INVALID_TILE, bool from_gui = true);
+	static void Reset(DepotID depot = INVALID_DEPOT, bool from_gui = true);
 
 	static void ClearGroup(GroupID group);
 	static void ClearVehicle(const Vehicle *v);
