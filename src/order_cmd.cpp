@@ -666,7 +666,7 @@ TileIndex Order::GetLocation(const Vehicle *v, bool airport) const
 
 		case OT_GOTO_DEPOT:
 			if (this->GetDestination() == INVALID_DEPOT) return INVALID_TILE;
-			return (v->type == VEH_AIRCRAFT) ? Station::Get(this->GetDestination())->xy : Depot::Get(this->GetDestination())->xy;
+			return Depot::Get(this->GetDestination())->xy;
 
 		default:
 			return INVALID_TILE;
@@ -699,6 +699,28 @@ uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int
 	if (prev_tile == INVALID_TILE || cur_tile == INVALID_TILE) return 0;
 	return v->type == VEH_AIRCRAFT ? DistanceSquare(prev_tile, cur_tile) : DistanceManhattan(prev_tile, cur_tile);
 }
+
+/**
+ * Get the station or depot index associated to an order of a vehicle.
+ * For aircraft, it will return the index of the associated station, even for go to hangar orders.
+ * @param v Vehicle
+ * @param o Order to check.
+ * @return index associated to a station or depot, or INVALID_STATION.
+ */
+DestinationID GetTargetDestination(const Vehicle &v, const Order &o)
+{
+	DestinationID destination_id = o.GetDestination();
+	switch (o.GetType()) {
+		case OT_GOTO_STATION:
+			return destination_id;
+		case OT_GOTO_DEPOT:
+			assert(Depot::IsValidID(destination_id));
+			return v.type == VEH_AIRCRAFT ? GetStationIndex(Depot::Get(destination_id)->xy) : destination_id;
+		default:
+			return INVALID_STATION;
+	}
+}
+
 
 /**
  * Add an order to the orderlist of a vehicle.
@@ -779,40 +801,31 @@ CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 
 		case OT_GOTO_DEPOT: {
 			if ((new_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) == 0) {
-				if (v->type == VEH_AIRCRAFT) {
-					const Station *st = Station::GetIfValid(new_order.GetDestination());
+				const Depot *dp = Depot::GetIfValid(new_order.GetDestination());
 
-					if (st == nullptr) return CMD_ERROR;
+				if (dp == nullptr) return CMD_ERROR;
 
-					ret = CheckOwnership(st->owner);
-					if (ret.Failed()) return ret;
+				ret = CheckOwnership(GetTileOwner(dp->xy));
+				if (ret.Failed()) return ret;
 
-					if (!CanVehicleUseStation(v, st) || !st->airport.HasHangar()) {
-						return CMD_ERROR;
-					}
-				} else {
-					const Depot *dp = Depot::GetIfValid(new_order.GetDestination());
+				switch (v->type) {
+					case VEH_TRAIN:
+						if (!IsRailDepotTile(dp->xy)) return CMD_ERROR;
+						break;
 
-					if (dp == nullptr) return CMD_ERROR;
+					case VEH_ROAD:
+						if (!IsRoadDepotTile(dp->xy)) return CMD_ERROR;
+						break;
 
-					ret = CheckOwnership(GetTileOwner(dp->xy));
-					if (ret.Failed()) return ret;
+					case VEH_SHIP:
+						if (!IsShipDepotTile(dp->xy)) return CMD_ERROR;
+						break;
 
-					switch (v->type) {
-						case VEH_TRAIN:
-							if (!IsRailDepotTile(dp->xy)) return CMD_ERROR;
-							break;
-
-						case VEH_ROAD:
-							if (!IsRoadDepotTile(dp->xy)) return CMD_ERROR;
-							break;
-
-						case VEH_SHIP:
-							if (!IsShipDepotTile(dp->xy)) return CMD_ERROR;
-							break;
+					case VEH_AIRCRAFT:
+						if (!CanVehicleUseStation(v, Station::GetByTile(dp->xy))) return CMD_ERROR;
+						break;
 
 						default: return CMD_ERROR;
-					}
 				}
 			}
 
@@ -1781,24 +1794,11 @@ void CheckOrders(const Vehicle *v)
  * Removes an order from all vehicles. Triggers when, say, a station is removed.
  * @param type The type of the order (OT_GOTO_[STATION|DEPOT|WAYPOINT]).
  * @param destination The destination. Can be a StationID, DepotID or WaypointID.
- * @param hangar Only used for airports in the destination.
- *               When false, remove airport and hangar orders.
- *               When true, remove either airport or hangar order.
  */
-void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, bool hangar)
+void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 {
-	/* Aircraft have StationIDs for depot orders and never use DepotIDs
-	 * This fact is handled specially below
-	 */
-
 	/* Go through all vehicles */
 	for (Vehicle *v : Vehicle::Iterate()) {
-		if ((v->type == VEH_AIRCRAFT && v->current_order.IsType(OT_GOTO_DEPOT) && !hangar ? OT_GOTO_STATION : v->current_order.GetType()) == type &&
-				(!hangar || v->type == VEH_AIRCRAFT) && v->current_order.GetDestination() == destination) {
-			v->current_order.MakeDummy();
-			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		}
-
 		/* Clear the order from the order-list */
 		int id = -1;
 		for (Order *order : v->Orders()) {
@@ -1807,8 +1807,7 @@ restart:
 
 			OrderType ot = order->GetType();
 			if (ot == OT_GOTO_DEPOT && (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
-			if (ot == OT_GOTO_DEPOT && hangar && v->type != VEH_AIRCRAFT) continue; // Not an aircraft? Can't have a hangar order.
-			if (ot == OT_IMPLICIT || (v->type == VEH_AIRCRAFT && ot == OT_GOTO_DEPOT && !hangar)) ot = OT_GOTO_STATION;
+			if (ot == OT_IMPLICIT) ot = OT_GOTO_STATION;
 			if (ot == type && order->GetDestination() == destination) {
 				/* We want to clear implicit orders, but we don't want to make them
 				 * dummy orders. They should just vanish. Also check the actual order
@@ -1842,7 +1841,7 @@ restart:
 		}
 	}
 
-	OrderBackup::RemoveOrder(type, destination, hangar);
+	OrderBackup::RemoveOrder(type, destination);
 }
 
 /**
@@ -2055,7 +2054,8 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 					v->SetDestTile(Depot::Get(order->GetDestination())->xy);
 				} else {
 					Aircraft *a = Aircraft::From(v);
-					DestinationID destination = a->current_order.GetDestination();
+					DestinationID destination_depot = a->current_order.GetDestination();
+					StationID destination = GetStationIndex(Depot::Get(destination_depot)->xy);
 					if (a->targetairport != destination) {
 						/* The aircraft is now heading for a different hangar than the next in the orders */
 						a->SetDestTile(a->GetOrderStationLocation(destination));
