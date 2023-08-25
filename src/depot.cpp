@@ -68,6 +68,9 @@ CommandCost Depot::BeforeAddTiles(TileArea ta)
 		ta.Add(TileAddXY(this->ta.tile, this->ta.w - 1, this->ta.h - 1));
 	}
 
+	if ((ta.w > _settings_game.depot.depot_spread) || (ta.h > _settings_game.depot.depot_spread)) {
+		return_cmd_error(STR_ERROR_DEPOT_TOO_SPREAD_OUT);
+	}
 	return CommandCost();
 }
 
