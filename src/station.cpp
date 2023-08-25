@@ -747,8 +747,23 @@ void Airport::AddHangar()
  */
 void Airport::RemoveHangar()
 {
+	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->hangar->index);
+
+	for (Aircraft *a : Aircraft::Iterate()) {
+		if (!a->IsNormalAircraft()) continue;
+		if (!a->current_order.IsType(OT_GOTO_DEPOT)) continue;
+		if (a->current_order.GetDestination() != this->hangar->index) continue;
+		a->current_order.MakeDummy();
+	}
+
 	delete this->hangar;
 	this->hangar = nullptr;
+}
+
+DepotID GetHangarIndex(TileIndex t) {
+	assert(IsAirportTile(t));
+	assert(Station::GetByTile(t)->airport.hangar != nullptr);
+	return Station::GetByTile(t)->airport.hangar->index;
 }
 
 bool StationCompare::operator() (const Station *lhs, const Station *rhs) const

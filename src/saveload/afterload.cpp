@@ -2785,6 +2785,35 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(SLV_DEPOTID_IN_HANGAR_ORDERS)) {
+		/* Update go to hangar orders so they store the DepotID instead of StationID. */
+		for (Aircraft *a : Aircraft::Iterate()) {
+			if (!a->IsNormalAircraft()) continue;
+
+			/* Update current order. */
+			if (a->current_order.IsType(OT_GOTO_DEPOT)) {
+				Depot *dep = Station::Get(a->current_order.GetDestination())->airport.hangar;
+				if (dep == nullptr) {
+					/* Aircraft heading to a removed hangar. */
+					a->current_order.MakeDummy();
+				} else {
+					a->current_order.SetDestination(dep->index);
+				}
+			}
+
+			/* Update each aircraft order list once. */
+			if (a->orders == nullptr) continue;
+			if (a->orders->GetFirstSharedVehicle() != a) continue;
+
+			for (Order *order : a->Orders()) {
+				if (!order->IsType(OT_GOTO_DEPOT)) continue;
+				StationID station_id = order->GetDestination();
+				Station *st = Station::Get(station_id);
+				order->SetDestination(st->airport.hangar->index);
+			}
+		}
+	}
+
 	/* In old versions it was possible to remove an airport while a plane was
 	 * taking off or landing. This gives all kind of problems when building
 	 * another airport in the same station so we don't allow that anymore.
