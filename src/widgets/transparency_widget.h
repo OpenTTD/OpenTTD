@@ -22,7 +22,7 @@ enum TransparencyToolbarWidgets {
 	WID_TT_BRIDGES,                  ///< Bridges transparency toggle button.
 	WID_TT_STRUCTURES,               ///< Object structure transparency toggle button.
 	WID_TT_CATENARY,                 ///< Catenary transparency toggle button.
-	WID_TT_LOADING,                  ///< Loading indicators transparency toggle button.
+	WID_TT_TEXT,                     ///< Loading and cost/income text transparency toggle button.
 	WID_TT_END,                      ///< End of toggle buttons.
 
 	/* Panel with buttons for invisibility */
