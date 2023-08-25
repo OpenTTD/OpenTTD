@@ -1195,12 +1195,12 @@ CommandCost CmdBuildRoadDepot(DoCommandFlag flags, TileIndex tile, RoadType rt, 
 			dep->build_date = TimerGameCalendar::date;
 			MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
 			MakeDefaultName(dep);
+
+			/* A road depot has two road bits. */
+			UpdateCompanyRoadInfrastructure(rt, _current_company, ROAD_DEPOT_TRACKBIT_FACTOR);
 		}
 
 		MarkTileDirtyByTile(tile);
-
-		/* A road depot has two road bits. */
-		UpdateCompanyRoadInfrastructure(rt, _current_company, ROAD_DEPOT_TRACKBIT_FACTOR);
 	}
 
 	cost.AddCost(_price[PR_BUILD_DEPOT_ROAD]);
