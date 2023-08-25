@@ -726,6 +726,16 @@ void Airport::AddHangar()
 	this->hangar = new Depot(this->GetHangarTile(0));
 	this->hangar->build_date = st->build_date;
 	this->hangar->town = st->town;
+	this->hangar->owner = st->owner;
+	this->hangar->veh_type = VEH_AIRCRAFT;
+
+	this->hangar->ta.tile = st->airport.tile;
+	this->hangar->ta.w = st->airport.w;
+	this->hangar->ta.h = st->airport.h;
+
+	for (uint i = 0; i < this->GetNumHangars(); i++) {
+		this->hangar->depot_tiles.push_back(this->GetHangarTile(i));
+	}
 }
 
 /**

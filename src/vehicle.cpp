@@ -2991,6 +2991,7 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
 {
 	const Engine *e = Engine::GetIfValid(engine_type);
 	assert(e != nullptr);
+	assert(st != nullptr);
 
 	switch (e->type) {
 		case VEH_TRAIN:

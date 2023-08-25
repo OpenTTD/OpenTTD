@@ -270,13 +270,13 @@ struct DepotWindow : Window {
 	{
 		assert(Depot::IsValidID(depot_id));
 		Depot *depot = Depot::Get(depot_id);
-		assert(IsCompanyBuildableVehicleType(GetDepotVehicleType(depot->xy)));
+		assert(IsCompanyBuildableVehicleType(depot->veh_type));
 
 		this->sel = INVALID_VEHICLE;
 		this->vehicle_over = INVALID_VEHICLE;
 		this->generate_list = true;
 		this->hovered_widget = -1;
-		this->type = GetDepotVehicleType(depot->xy);
+		this->type = depot->veh_type;
 		this->num_columns = 1; // for non-trains this gets set in FinishInitNested()
 		this->unitnumber_digits = 2;
 
@@ -292,7 +292,7 @@ struct DepotWindow : Window {
 		this->SetupWidgetData(this->type);
 		this->FinishInitNested(depot_id);
 
-		this->owner = GetTileOwner(depot->xy);
+		this->owner = depot->owner;
 		OrderBackup::Reset();
 	}
 
@@ -1121,7 +1121,7 @@ static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
 	if (confirmed) {
 		assert(Depot::IsValidID(win->window_number));
 		Depot *d = Depot::Get(win->window_number);
-		Command<CMD_DEPOT_SELL_ALL_VEHICLES>::Post(d->xy, GetDepotVehicleType(d->xy));
+		Command<CMD_DEPOT_SELL_ALL_VEHICLES>::Post(d->xy, d->veh_type);
 	}
 }
 
@@ -1136,7 +1136,7 @@ void ShowDepotWindow(DepotID depot_id)
 
 	WindowDesc *desc;
 	Depot *d = Depot::Get(depot_id);
-	switch (GetDepotVehicleType(d->xy)) {
+	switch (d->veh_type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:    desc = &_train_depot_desc;    break;
 		case VEH_ROAD:     desc = &_road_depot_desc;     break;

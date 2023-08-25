@@ -136,6 +136,8 @@ CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis)
 	if (flags & DC_EXEC) {
 		Depot *depot = new Depot(tile);
 		depot->build_date = TimerGameCalendar::date;
+		depot->owner = _current_company;
+		depot->veh_type = VEH_SHIP;
 
 		uint new_water_infra = 2 * LOCK_DEPOT_TILE_FACTOR;
 		/* Update infrastructure counts after the tile clears earlier.

@@ -1022,6 +1022,8 @@ CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType rai
 		} else {
 			Depot *d = new Depot(tile);
 			d->build_date = TimerGameCalendar::date;
+			d->owner = _current_company;
+			d->veh_type = VEH_TRAIN;
 
 			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
 			MakeDefaultName(d);
