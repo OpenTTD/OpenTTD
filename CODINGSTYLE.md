@@ -180,7 +180,7 @@ switch (a) {
 
 	case 1:
 		DoSomething();
-		/* FALL THROUGH */
+		FALLTHROUGH;
 
 	case 2:
 		DoMore();
@@ -191,7 +191,7 @@ switch (a) {
 		int r = 2;
 
 		DoEvenMore(a);
-		/* FALL THROUGH */
+		FALLTHROUGH;
 	}
 
 	case 4: {
