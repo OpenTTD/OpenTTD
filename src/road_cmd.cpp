@@ -2081,7 +2081,7 @@ static bool ClickTile_Road(TileIndex tile)
 {
 	if (!IsRoadDepot(tile)) return false;
 
-	ShowDepotWindow(tile, VEH_ROAD);
+	ShowDepotWindow(GetDepotIndex(tile));
 	return true;
 }
 
@@ -2269,7 +2269,7 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int,
 				if (rv->Next() == nullptr) VehicleEnterDepot(rv->First());
 				rv->tile = tile;
 
-				InvalidateWindowData(WC_VEHICLE_DEPOT, rv->tile);
+				InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(rv->tile));
 				return VETSB_ENTERED_WORMHOLE;
 			}
 			break;
@@ -2543,8 +2543,8 @@ CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 
 				if (IsRoadDepotTile(tile)) {
 					/* Update build vehicle window related to this depot */
-					InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
-					InvalidateWindowData(WC_BUILD_VEHICLE, tile);
+					InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(tile));
+					InvalidateWindowData(WC_BUILD_VEHICLE, GetDepotIndex(tile));
 				}
 			}
 		} else {
