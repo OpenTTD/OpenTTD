@@ -377,8 +377,8 @@ enum WindowClass {
 
 	/**
 	 * Build vehicle; %Window numbers:
-	 *   - #VehicleType = #BuildVehicleWidgets
-	 *   - #TileIndex = #BuildVehicleWidgets
+	 *   - #INVALID_DEPOT - VehicleType = #BuildVehicleWidgets
+	 *   - #DepotID = #BuildVehicleWidgets
 	 */
 	WC_BUILD_VEHICLE,
 
