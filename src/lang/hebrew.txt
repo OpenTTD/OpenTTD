@@ -2425,7 +2425,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}שנה �
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}שנה שקיפות עבור גשרים. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}שנה שקיפות עבור מבנים כגון מיגדלור ואנטנה. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}שנה שקיפות עבור עמודי חשמל. Ctrl+לחיצה לנעילה
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}שנה שקיפות עבור מצביעי הטענה. Ctrl+לחיצה לנעילה
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}הסתר במקום הפוך לשקוף
 
 # Linkgraph legend window

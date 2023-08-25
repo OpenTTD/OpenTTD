@@ -2418,7 +2418,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toglu tr
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Toglu tryloywder ar gyfer pontydd. Ctrl+Clic i gloi
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toglu tryloywder ar gyfer adeiledau fel goleudai ac antenau. Ctrl+Clic i gloi
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toglu tryloywder ar gyfer gwifrau. Ctrl+Clic i gloi
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Toglu tryloywder ar gyfer dangosyddion llwytho. Ctrl+Clic i gloi
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gosod gwrthrychau'n anweledig yn hytrach nac yn dryloyw
 
 # Linkgraph legend window

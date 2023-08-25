@@ -2695,7 +2695,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Prepnú�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Prepnúť priehľadnosť mostov. Ctrl+klik uzamkne nastavenie
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Prepnúť priehľadnosť objektov ako sú majáky a vysielače. Ctrl+klik uzamkne nastavenie
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Prepnúť priehľadnosť trakčného vedenia. Ctrl+klik uzamkne nastavenie
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Prepnúť priehľadnosť ukazateľov nakladania. Ctrl+klik uzamkne nastavenie
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nastaviť objekty neviditeľné namiesto priehľadných
 
 # Linkgraph legend window

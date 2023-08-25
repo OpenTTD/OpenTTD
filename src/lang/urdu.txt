@@ -1955,7 +1955,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}تعمی
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}پلوں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}بنیادی ڈھانچوں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}catenary کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}لوڈ کرنے کے نشانوں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}چیزوں کو شفاف کی بجائے غائب کر دیں
 
 # Linkgraph legend window

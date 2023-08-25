@@ -2651,7 +2651,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}정거�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}다리를 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}등대나 안테나 같은 구조물을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}전차선을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}적재율을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}반투명 대신 아예 안 보이게 할 항목을 선택하세요
 
 # Linkgraph legend window

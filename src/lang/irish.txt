@@ -2539,7 +2539,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Scorána
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Scoránaigh trédhearcacht do dhroichid. Ctrl+Cliceáil le glasáil.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Scoránaigh trédhearcacht do struchtúir cosúil le tithe solais agus aeróga. Ctrl+Cliceáil le glasáil.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Scoránaigh trédhearcacht do chuair. Ctrl+Cliceáil le glasáil.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Scoránaigh trédhearcacht do tháscairí lódála. Ctrl+Cliceáil le glasáil.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Socraigh go bhfuil nithe dofheicthe seachas trédhearcach
 
 # Linkgraph legend window

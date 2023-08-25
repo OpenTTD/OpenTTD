@@ -2720,7 +2720,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Пера
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Пераключыць празрыстасьць для мастоў. Ctrl+клік — заблякаваць.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Пераключыць празрыстасьць для пабудоў кшталту маякоў і антэнаў. Ctrl+клік — заблякаваць.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Пераключыць празрыстасьць для кантактнай сеткі. Ctrl+клік — заблякаваць.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Пераключыць празрыстасьць для індыкатараў загрузкі. Ctrl+клік — заблякаваць.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Зрабіць аб'екты не празрыстымі, а цалкам нябачнымі
 
 # Linkgraph legend window

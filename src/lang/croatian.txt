@@ -2516,7 +2516,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Namjesti
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Namjesti prozirnost za mostove. Ctrl+klik za zaključavanje
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Namjesti prozirnost za strukture poput svjetionika i antena. Ctrl+klik za zaključavanje.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Aktiviraj prozirnost za viseće žice. Ctrl+klik za zaključavanje
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Namjesti prozirnost za indikatore učitavanja. Ctrl+klik za zaključavanje
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Učini objekte nevidljivima umjesto prozirnima
 
 # Linkgraph legend window

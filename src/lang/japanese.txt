@@ -2611,7 +2611,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}社有�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}橋の透過表示を切り替えます。{}Ctrl+クリックでロックします
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}灯台、電波塔などの透過表示を切り替えます。{}Ctrl+クリックでロックします
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}架線の透過表示を切り替えます。{}Ctrl+クリックでロックします
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}積み降ろしインジケーターの透過表示を切り替えます。{}Ctrl+クリックでロックします
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}透過表示でなく表示オフにする
 
 # Linkgraph legend window

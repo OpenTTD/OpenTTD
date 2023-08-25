@@ -2639,7 +2639,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Baskulig
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Baskuligi travideblecon de pontoj. Ctrl+Klaku por ŝlosi
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Baskuligi travideblecon de aĵoj kiel lumturoj kaj antenoj. Ctrl+Klaku por ŝlosi
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Baskuligi travideblecon de katenarion. Ctrl+Klaku por ŝlosi
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Baskuligi travideblecon de ŝarĝindikiloj. Ctrl+Klaku por ŝlosi
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Igu objektojn nevideblaj anstataŭ travideblaj
 
 # Linkgraph legend window

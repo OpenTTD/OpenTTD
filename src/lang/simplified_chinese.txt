@@ -2585,7 +2585,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}调整�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}调整桥梁是否为透明{}CTRL+点击 锁定
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}调整灯塔及信号发射塔是否为透明{}CTRL+点击 锁定
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}调整电气铁路电线是否为透明{}CTRL+点击 锁定
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}调整装载进度显示是否为透明{}CTRL+点击 锁定
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}选择设置为：不显示或透明
 
 # Linkgraph legend window

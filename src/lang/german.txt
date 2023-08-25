@@ -2651,7 +2651,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transpar
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparenz für Oberleitungen einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparenz für Ladestandsanzeige einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objekte unsichtbar statt transparent machen
 
 # Linkgraph legend window

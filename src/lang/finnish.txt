@@ -2650,7 +2650,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Muuta as
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Muuta siltojen läpinäkyvyyttä. Ctrl+napsautus lukitsee.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Muuta majakoiden ja lähetysmastojen tapaisten rakennelmien läpinäkyvyyttä. Ctrl+napsautus lukitsee.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Muuta sähköratarakenteiden läpinäkyvyyttä. Ctrl+napsautus lukitsee.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Muuta lastausilmaisimien läpinäkyvyyttä. Ctrl+napsautus lukitsee.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Tee kohteista läpinäkyvyyden sijaan näkymättömiä
 
 # Linkgraph legend window

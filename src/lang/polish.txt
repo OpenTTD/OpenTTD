@@ -3030,7 +3030,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Przełą
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Przełącz przeźroczystość dla mostów. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Przełącz przeźroczystość dla obiektów takich jak latarnie morskie i anteny. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Przełącz przeźroczystość dla trakcji (linii nośnych). Ctrl+klik, aby zablokować
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Przełącz przeźroczystość dla wskaźników załadunku. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ustaw obiekty jako niewidoczne zamiast przeźroczyste
 
 # Linkgraph legend window

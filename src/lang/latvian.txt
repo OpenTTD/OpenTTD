@@ -2588,7 +2588,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Pārslē
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Pārslēgt tiltu caurspīdību. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Pārslēgt caurspīdību tādām celtnēm kā bākas un antenas. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Pārslēgt piekartroses caurspīdību. Ctrl+klikšķis, lai slēgtu
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Pārslēgt piekraušanas rādītāju caurspīdību. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Caurspīdības vietā objektus padarīt neredzamus
 
 # Linkgraph legend window

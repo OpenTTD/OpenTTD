@@ -2065,7 +2065,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}فعال
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}فعال/غیر فعال کردن شفافیت برای پل ها. کنترل+کلیک برای قفل کردن
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}فعال/غیر فعال کردن شفافیت برای دستگاه ها نظیر فانوس دریایی و آنتن ها.کنترل+کلیک برای قفل کردن
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}فعال/غیر فعال کردن شفافیت برای جاده ها و ریل ها.کنترل+کلیک برای قفل کردن
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}فعال/غیر فعال کردن شفافیت برای نشانه پر و خالی شدن بار. کنترل+کلیک برای قفل کردن
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}اشیاء به جای شفاف، نامرئی شوند
 
 # Linkgraph legend window

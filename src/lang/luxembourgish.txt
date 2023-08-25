@@ -2584,7 +2584,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Wiesselt
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Wiesselt d'Transparenz fir d'Brécken. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Wiesselt d'Transparenz fir d'Gebaier wéi d'Liichttierm oder Antennen. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Wiesselt d'Transparenz fir d'Catenaire. Ctrl+Klick fir festzesetzen
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Wiesselt d'Transparenz fir d'Luedungsindikatoren. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setzt d'Objeten op onsichtbar amplaz transparent
 
 # Linkgraph legend window

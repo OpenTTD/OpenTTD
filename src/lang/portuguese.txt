@@ -2651,7 +2651,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Comutar 
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Comutar transparência para pontes. Ctrl+Clique para bloquear.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas. Ctrl+Clique parabloquear.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comutar transparência para catenária. Ctrl+Clique para bloquear.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Alterar transparência para indicadores de carga. Ctrl+Clique para bloquear.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir objectos como invisíveis em vez de transparentes
 
 # Linkgraph legend window

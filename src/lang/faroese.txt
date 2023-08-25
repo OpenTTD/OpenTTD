@@ -2168,7 +2168,6 @@ STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Tendra/s
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Tendra/sløkk gjøgnumskygni fyri brúgvar. Ctrl+trýst fyri at læsa
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tendra/sløkk gjøgnumskygni fyri konstruktiónir sum vitar og antennur. Ctrl+trýst fyri at læsa
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Tendra/sløkk gjøgnumskygni fyri ketulinju. Ctrl+trýst fyri at læsa
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Tendra/sløkk gjøgnumskygni fyri lessingar vísarar. Ctrl+trýst fyri at læsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ger lutir ósjónligar heldur enn gjøgnumskygdar
 
 # Linkgraph legend window

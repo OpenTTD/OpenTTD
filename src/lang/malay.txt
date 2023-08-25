@@ -2100,7 +2100,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Teluskan
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Teluskan jambatan atau tidak. Ctrl+Klik untuk mengunci
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Teluskan objek seperti rumah api atau menara pemancar. Ctrl+Klik untuk mengunci
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Teluskan sistem aliran elektrik atau tidak. Ctrl+Klik untuk mengunci
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Teluskan penunjuk muatan atau tidak. Ctrl+Klik untuk mengunci
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ghaibkan objek dan bukan telus
 
 # Linkgraph legend window

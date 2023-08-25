@@ -192,6 +192,23 @@ STR_COLOUR_WHITE                                                :{G=Masculin}Bla
 STR_COLOUR_RANDOM                                               :Aleatori
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Blau marí
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Verd clar
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Rosa
+STR_COLOUR_SECONDARY_YELLOW                                     :Groc
+STR_COLOUR_SECONDARY_RED                                        :Roig
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Blau cel
+STR_COLOUR_SECONDARY_GREEN                                      :Verd
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Verd fosc
+STR_COLOUR_SECONDARY_BLUE                                       :Blau
+STR_COLOUR_SECONDARY_CREAM                                      :Crema
+STR_COLOUR_SECONDARY_MAUVE                                      :Malva
+STR_COLOUR_SECONDARY_PURPLE                                     :Porpra
+STR_COLOUR_SECONDARY_ORANGE                                     :Taronja
+STR_COLOUR_SECONDARY_BROWN                                      :Marró
+STR_COLOUR_SECONDARY_GREY                                       :Gris
+STR_COLOUR_SECONDARY_WHITE                                      :Blanc
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :El mateix que el primari
 
 
 # Units used in OpenTTD
@@ -1367,7 +1384,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :«Sense parada�
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalment, un vehicle para a cada estació per la que passa. Activant aquest paràmetre, no pararà a cap estació fins arribar al seu destí. Nota: aquest paràmetre només defineix el valor predeterminat per a les noves ordres. Un cop creada una ordre, aquesta es pot establir manualment al comportament desitjat.
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Noves ordres de trens: parar per defecte {STRING} de la plataforma
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Estableix en quin lloc de la plataforma els trens pararan per defecte. «Extrem més proper» significa a prop del punt d'entrada, «Al mig» significa al mig de la plataforma, i «Extrem més llunyà» significa lluny del punt d'entrada. Nota: aquest paràmetre només defineix el valor predeterminat per les noves ordres. Un cop creada una ordre, es pot modificar el comportament de forma manual.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Estableix en quin lloc de la plataforma els trens pararan per defecte. «Extrem més proper» significa a prop del punt d'entrada, «Al mig» significa al mig de la plataforma, i «Extrem més llunyà» significa lluny del punt d'entrada. Nota: aquest paràmetre només defineix el valor predeterminat per les noves ordres. Un cop creada una ordre, es pot modificar el lloc de parada a la plataforma si es fa clic al text de l'ordre.
 ###length 3
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :A l'extrem més proper
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :Al mig
@@ -1410,8 +1427,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Cap*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduït
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permet situar parades en carreteres que són propietat de la població: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permet la construcció de passos a nivell en els carrers propietat de les poblacions
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permet situar parades en carreteres que són propietat de les poblacions: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permet la construcció de passos a nivell als carrers propietat de les poblacions
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permet circular a través de les parades en carreteres propietat de competidors: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permet la construcció de passos a nivell en els carrers propietat d'altres companyies
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles
@@ -1422,6 +1439,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quan està acti
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Color inicial de la companyia: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolliu el color inicial de la vostra companyia.
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Color secundari inicial de la companyia: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Escolliu un color secundari inicial per a la companyia, per si feu servir un NewGRF que l'habiliti.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Els aeroports mai caduquen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activant aquesta opció fa que cada tipus d'aeroport estigui disponible per sempre després de la seva introducció
@@ -1624,6 +1643,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivat
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Tanca la finestra amb un clic dret del ratolí: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Tanca una finestra fent-hi un clic amb el botó dret del ratolí. Aquesta opció desactiva els indicadors de funció amb el mateix botó.
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :No
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Sí
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Sí, excepte les finestres enganxades
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utilitza el format de data {STRING} per a guardar partides
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la data en els noms dels arxius de les partides que es guardin
@@ -1875,8 +1897,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permet a les po
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Les poblacions poden construir passos a nivell: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activant aquesta opció, les poblacions podran construir passos a nivell.
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permet a la ciutat controlar el nivell de soroll dels aeroports: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Amb aquesta opció desactivada, no podran haver-hi més de dos aeroports en una mateixa població. Amb aquesta opció activada, el nombre d'aeroports en cada població està limitat pel límit d'acceptació de soroll de la població, que depèn de la mida de l'aeroport i de la distància
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limita la construcció d'aeroports segons el nivell de soroll: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Permet que les poblacions puguin impedir la construcció d'aeroports a la seva zona en funció del nivell de soroll tolerat, que es basa amb el nombre d'habitants de la població i de la distància i característiques de l'aeroport. Si es desactiva, les poblacions només permetran que es construeixin dos aeroports a la seva zona, excepte si s'estableix l'actitud de l'autoritat local a "Permissiva".
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar poblacions durant la partida: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activant aquesta opció permets els jugadors fundar noves poblacions durant la partida
@@ -2629,7 +2651,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Commuta 
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Commuta la transparència dels ponts. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Commuta la transparència de les estructures com ara fars i antenes. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Commuta la transparència de la catenària. CTRL+clic per bloquejar
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Commuta la transparència dels indicadors de càrrega. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Alternar entre transparència i invisibilitat dels objectes
 
 # Linkgraph legend window
@@ -2941,8 +2962,8 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Treu tot
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Esteu segur que voleu treure totes les indústries?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial ‒ {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena de càrrega ‒ {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena de càrrega - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Indústries productores
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Indústries acceptades
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Cases
@@ -4867,7 +4888,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Masses e
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa prop d'un altre moll
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa prop d'un altre aeroport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No es pot canviar el nom de l'estació...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... aquesta carretera és propietat de la població
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... aquesta carretera és propietat d'una població.
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... sentit de la carretera en la direcció incorrecta
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... les estacions d'autobús de pas no poden tenir cantonades
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... les estacions d'autobús de pas no poden tenir interseccions

@@ -2543,7 +2543,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toglaich
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Toglaich trìd-shoilleireachd nan drochaidean. Ctrl+Briogadh airson glasadh
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toglaich trìd-shoilleireachd nan structaran a leithid thaighean-solais is tùir chraobh-sgaoilidh. Ctrl+Briogadh airson glasadh
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toglaich trìd-shoilleireachd nan càballan-rèile. Ctrl+Briogadh airson glasadh
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Toglaich trìd-shoillearachd nan comharraidhean luchdaidh. Ctrl+Briogadh airson glasadh
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Falaich nithean an àite an dèanamh trìd-shoilleir
 
 # Linkgraph legend window

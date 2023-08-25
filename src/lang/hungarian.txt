@@ -2674,7 +2674,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Építhe
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidak átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tereptárgyak (adótornyok, világítótornyok stb.) átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Átlátszó rakodásjelző bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Az objektum ne átlátszó legyen, hanem láthatatlan
 
 # Linkgraph legend window

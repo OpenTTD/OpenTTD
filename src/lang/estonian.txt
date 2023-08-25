@@ -2641,7 +2641,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Vaheta l
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Vaheta sildade läbipaistvust. Ctrl+klõps lukustab
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Vaheta läbipaistvust rajatistel, nagu majakad ja antennid. Ctrl+klõps lukustab
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Õhuliinide läbipaistvuse vahetamine. Ctrl+klõps lukustab
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Vaheta laadimisnäidikute läbipaistvust. Ctrl+klõps lukustab
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Muuda esemed nähtamatuks, mitte läbipaistvaks
 
 # Linkgraph legend window

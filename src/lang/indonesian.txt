@@ -2616,7 +2616,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Hidup/ma
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidup/matikan transparansi jembatan. CTRL+klik untuk mengunci
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Hidup/matikan transparansi struktur bangunan semacam mercusuar dan antena. CTRL+klik untuk mengunci
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Hidup/matikan transparansi katenari CTRL+klik untuk mengunci
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Hidup/matikan indikator proses pemuatan kargo. CTRL+klik untuk mengunci
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Atur obyek menjadi sama sekali tidak nampak daripada transparan.
 
 # Linkgraph legend window

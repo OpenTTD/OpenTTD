@@ -2813,7 +2813,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Пере
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Переключение прозрачности мостов. Ctrl+щелчок - заблокировать.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Переключение прозрачности таких сооружений, как маяки и антенны. Ctrl+щелчок - заблокировать.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Переключение прозрачности контактной сети. Ctrl+щелчок - заблокировать.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Переключение прозрачности индикаторов загрузки. Ctrl+щелчок - заблокировать.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Сделать объекты не прозрачными, а полностью невидимыми
 
 # Linkgraph legend window

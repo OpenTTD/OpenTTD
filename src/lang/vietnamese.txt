@@ -2650,7 +2650,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Bật hi
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Bật hiệu ứng trong suốt cho cầu. Ctrl+Click để khoá.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Bật hiệu ứng trong suốt cho đèn biển, ăn-ten... Ctrl+Click để khoá.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Bật hiệu ứng trong suốt cho các mắt xích. Ctrl+Click để khoá.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Bật hiệu ứng trong suốt cho bảng báo hiệu nạp. Ctrl+Click để khoá.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Đặt các đối ẩn đi thay vì trong suốt
 
 # Linkgraph legend window

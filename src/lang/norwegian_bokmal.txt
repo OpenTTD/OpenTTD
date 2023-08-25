@@ -2556,7 +2556,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Gjennoms
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Gjennomsiktige broer. Ctrl+klikk for å låse
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Gjennomsiktige bygg som fyrtårn og antenner. Ctrl+klikk for å låse
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Gjennomsiktige kontaktledninger. Ctrl+klikk for å låse
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Gjennomsiktige lastingsindikatorer. Ctrl+klikk for å låse
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gjør objekter usynlige i stedet for gjennomsiktige
 
 # Linkgraph legend window

@@ -2186,7 +2186,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}بدل �
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK} بدل الشفافية للجسور. مفتاح كنترول للاغلاق.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}بدل بين الشفافية للعلامات مثل المنارات الضوئية و هواائيات الارسال. مفتاح كنترول لالغلاق.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK} غير شفافية سكك الحديد. مفتاح كنترول للاغلاق.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}غير الشفافية لنسبة التحميل. مفتاح كنترول للاغلاق.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}اخفاء الاجرام تماما بدلا من الشفافية
 
 # Linkgraph legend window

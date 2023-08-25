@@ -2777,7 +2777,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Promena 
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Promena prozirnosti mostova. Sa Ctrl+klik se zaključava
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Promena prozirnosti građevina poput svetionika i repetitora. Sa Ctrl+klik se zaključava
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Promena prozirnosti kontaktnih mreža. Sa Ctrl+klik se zaključava
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Promena prozirnosti pokazatelja utovara. Sa Ctrl+klik se zaključava
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Čini objekte nevidljivim umesto prozirnim
 
 # Linkgraph legend window

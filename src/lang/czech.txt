@@ -2686,7 +2686,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Změna p
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Změna průhlednosti mostů. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Změna průhlednosti staveb jako majáků a vysílačů. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Změna průhlednosti elektrifikace. Nastavení se zamkne Ctrl+kliknutím
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Přepnout zobrazení ukazatelů naložení. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objekty budou neviditelné, ne průhledné
 
 # Linkgraph legend window

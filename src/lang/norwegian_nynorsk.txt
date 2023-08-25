@@ -2262,7 +2262,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Byt gjen
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Byt gjennomsyn for bruer. Ctrl+klikk for å låsa.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Byt gjennomsyn for bygningar, som fyrtårn og antenner. Ctrl+klikk for å låsa.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Byt gjennomsyn for kjeder. Ctrl+klikk for å låsa.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Byt gjennomsyn for lasteindikatorar. Ctrl+klikk for å låsa.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gjer objekter usynlege istanden for gjennomsiktige
 
 # Linkgraph legend window

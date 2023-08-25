@@ -2738,7 +2738,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Пере
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Переключити прозорість для мостів. Утримуйте Ctrl, щоб заблокувати
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Переключити прозорість для споруд, таких як маяки та антени. Утримуйте Ctrl, щоб заблокувати
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Переключити прозорість для ЛЕП. Утримуйте Ctrl, щоб заблокувати
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Змінити прозорість індикаторів завантаження. Утримуйте Ctrl, щоб заблокувати
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Зробити об'єкти невидимими, а не прозорими
 
 # Linkgraph legend window

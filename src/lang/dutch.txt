@@ -2650,7 +2650,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transpar
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparantie voor bruggen aan-uit. Ctrl+klik om vast te zetten.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparantie voor gebouwen zoals vuurtorens en zendmasten aan-uit. Ctrl+klik om vast te zetten.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparantie voor bovenleiding aan-uit. Ctrl+klik om vast te zetten.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparantie voor laadpercentages aan-uit. Ctrl+klik om vast te zetten.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Maak objecten onzichtbaar in plaats van transparant
 
 # Linkgraph legend window

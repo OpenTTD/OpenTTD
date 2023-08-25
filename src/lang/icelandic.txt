@@ -2207,7 +2207,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Virkja/a
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Virkja/afvirkja gegnsæji brúa. Ctrl+smella til að læsa
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Virkja/afvirkja gegnsæji bygginga á borð við vita og möstur. Ctrl+smella til að læsa
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Virkja/afvirkja gegnsæji raflína. CTRL+smella til að læsa.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Virkja/afvirkja gegnsæji hleðslumæla. Ctrl+smella til að læsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gera hluti ósýnilega en ekki gagnsæja
 
 # Linkgraph legend window

@@ -2585,7 +2585,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transpar
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparencia de puentes. Ctrl+Clic para bloquear
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparencia de estructuras como faros o antenas. Ctrl+Clic para bloquear
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparencia de catenaria. Ctrl+Clic para bloquear
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparencia de indicadores de embarque. Ctrl+Clic para bloquear
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ocultar objetos totalmente
 
 # Linkgraph legend window

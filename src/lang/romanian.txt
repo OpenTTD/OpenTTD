@@ -2649,7 +2649,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Comută 
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Comută transparenţa pentru poduri. Ctrl+Click pentru blocare
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comută transparenţa pentru structuri de tip faruri şi antene. Ctrl+Click pentru blocare
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comută transparenţa pentru catenar. Ctrl+Click pentru blocare
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Comută transparenţa pentru indicatorii de încarcare. Ctrl+Click pentru blocare
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setează obiectele ca invizibile în loc de transparente
 
 # Linkgraph legend window

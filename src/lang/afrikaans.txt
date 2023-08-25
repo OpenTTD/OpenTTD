@@ -2373,7 +2373,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Skakel d
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Wissel deursigtigheid vir brûe. Ctrl+klik om te sluit
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Wissel deursigtigheid vir strukture soos vuurtorings en seintorings. Ctrl+klik om te sluit
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Wissel deursigtigheid van kraglyne. Ctrl+klik om te sluit.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Wissel deursigtigheid vir laai aanwysers. Ctrl+klik om te sluit
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Stel voorwerpe onsigbaar inplaas van deursigtig
 
 # Linkgraph legend window

@@ -2688,7 +2688,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Εναλ
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Εναλλαγή διαφάνειας για γέφυρες. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνειας για κτίρια όπως φάρους και κεραίες. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Εναλλαγή διαφάνειας για τις συνδέσεις. Ctrl+Κλικ για να την κλειδώσετε
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Εναλλαγή διαφάνειας για τις ενδείξεις φόρτωσης. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλέξτε τα αντικείμενα που θα είναι αόρατα αντί για διάφανα
 
 # Linkgraph legend window

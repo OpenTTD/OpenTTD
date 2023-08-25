@@ -2586,7 +2586,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}切換�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}切換橋樑是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}切換公用設施是否透明，如燈塔、天線塔等。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}切換供電線是否透明。按住 CTRL 點選可鎖定
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}切換裝載進度指示是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}讓物件完全隱藏，而非透明顯示
 
 # Linkgraph legend window

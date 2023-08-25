@@ -2500,7 +2500,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Prozoren
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Prozoren ali navaden pogled mostov. Ctrl+Klik za zaklepanje
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki... Ctrl+Klik za zaklepanje
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Preklop prosojnosti za pogone. Ctrl+Klik za zaklepanje
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Preklop na prosojnost za prikaz polnenja. Ctrl+Klik za zaklepanje
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nastavi predmete nevidne namesto prosojne
 
 # Linkgraph legend window

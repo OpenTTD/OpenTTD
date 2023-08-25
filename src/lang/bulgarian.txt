@@ -2300,7 +2300,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Изпо
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Използвай прозрачност за мостове. Ctrl+Click за заключване
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Използвай прозрачност за сгради като фарове и антени, може би в бъдеще за украси
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Активирай прозрачност за висящите. CTRL+клик за фиксиране.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Вклучи прозрачност за товарещи указатели. Ctrl+Click за заключване
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Направи обектите невидими вместо прозрачни
 
 # Linkgraph legend window

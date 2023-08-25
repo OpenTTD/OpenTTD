@@ -2555,7 +2555,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Mutare p
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Mutare perluciditatem pontium. Ctrl+Preme ut figatur (non mutabitur globulo perluciditatem mutandi presso)
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Mutare perluciditatem ornamentorum sicut phari et emissoria. Ctrl+Preme ut figatur (non mutabitur globulo perluciditatem mutandi presso)
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Mutare perluciditatem catenariae. Ctrl+Preme ut figatur (non mutabitur globulo perluciditatem mutandi presso)
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Mutare perluciditatem signorum onerandi. Ctrl+Preme ut figatur (non mutabitur globulo perluciditatem mutandi presso)
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Facere ut res invisibles sint, non tantum perlucidae
 
 # Linkgraph legend window

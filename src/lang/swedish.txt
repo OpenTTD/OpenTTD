@@ -2650,7 +2650,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Växla g
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Växla genomskinlighet för broar. Ctrl+klick för att låsa
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner. Ctrl+klick för att låsa
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Växla genomskinlighet för kontaktledning. Ctrl+klick för att låsa
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Växla genomskinlighet för lastningsindikatorer. Ctrl+klick för att låsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gör object osynliga istället för genomskinliga
 
 # Linkgraph legend window

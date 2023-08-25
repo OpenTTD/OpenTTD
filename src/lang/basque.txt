@@ -2255,7 +2255,6 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Geltoki,
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Zubien gardentasuna aldatu. Ktrl+Klik blokeatzeko
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Itsasargi eta antenen gardentasuna aldatu. Ktrl+Klik blokeatzeko
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}katenariaren gardentasuna aldatu. Ktrl+Klik blokeatzeko
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Zama adierazleen gardentasuna aldatu. Ktrl+Klik blokeatzeko
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objektuak ikusezinak egin, gardenak izan ordez
 
 # Linkgraph legend window
