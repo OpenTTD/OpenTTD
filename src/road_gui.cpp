@@ -43,6 +43,7 @@
 #include "picker_gui.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "depot_func.h"
 
 #include "widgets/road_widget.h"
 
@@ -368,6 +369,7 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		if (_game_mode == GM_NORMAL && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
+		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_ROT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
 		this->Window::Close();
 	}
 
@@ -672,6 +674,8 @@ struct BuildRoadToolbarWindow : Window {
 	void OnPlaceObjectAbort() override
 	{
 		if (_game_mode != GM_EDITOR && (this->IsWidgetLowered(WID_ROT_BUS_STATION) || this->IsWidgetLowered(WID_ROT_TRUCK_STATION))) SetViewportCatchmentStation(nullptr, true);
+
+		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_ROT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
 
 		this->RaiseButtons();
 		this->SetWidgetDisabledState(WID_ROT_REMOVE, true);
@@ -1153,6 +1157,11 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			default:
 				break;
 		}
+	}
+
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
+	{
+		CheckRedrawDepotHighlight(this, VEH_ROAD);
 	}
 };
 

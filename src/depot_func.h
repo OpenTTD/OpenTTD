@@ -41,4 +41,7 @@ CommandCost FindJoiningDepot(TileArea ta, VehicleType veh_type, DepotID &join_to
 using DepotPickerCmdProc = std::function<bool(DepotID join_to)>;
 void ShowSelectDepotIfNeeded(TileArea ta, DepotPickerCmdProc proc, VehicleType veh_type);
 
+struct Window;
+void CheckRedrawDepotHighlight(const Window *w, VehicleType veh_type);
+
 #endif /* DEPOT_FUNC_H */

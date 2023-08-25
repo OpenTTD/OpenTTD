@@ -41,6 +41,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "picker_gui.h"
+#include "depot_func.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -454,6 +455,7 @@ struct BuildRailToolbarWindow : Window {
 		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) SetViewportCatchmentWaypoint(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
 		CloseWindowById(WC_SELECT_STATION, 0);
+		if (this->IsWidgetLowered(WID_RAT_BUILD_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
 		this->Window::Close();
 	}
 
@@ -794,6 +796,8 @@ struct BuildRailToolbarWindow : Window {
 	{
 		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT)) SetViewportCatchmentWaypoint(nullptr, true);
+
+		if (this->IsWidgetLowered(WID_RAT_BUILD_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
 
 		this->RaiseButtons();
 		this->DisableWidget(WID_RAT_REMOVE);
@@ -1749,6 +1753,11 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 				this->SetDirty();
 				break;
 		}
+	}
+
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
+	{
+		CheckRedrawDepotHighlight(this, VEH_TRAIN);
 	}
 };
 
