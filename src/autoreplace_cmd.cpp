@@ -373,13 +373,13 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	if (refit_cargo != CARGO_NO_REFIT) {
 		uint8_t subtype = GetBestFittingSubType(old_veh, new_veh, refit_cargo);
 
-		cost.AddCost(std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, new_veh->index, refit_cargo, subtype, false, false, 0)));
+		cost.AddCost(std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, new_veh->index, refit_cargo, subtype, false, false, 0)));
 		assert(cost.Succeeded()); // This should be ensured by GetNewCargoTypeForReplace()
 	}
 
 	/* Try to reverse the vehicle, but do not care if it fails as the new type might not be reversible */
 	if (new_veh->type == VEH_TRAIN && HasBit(Train::From(old_veh)->flags, VRF_REVERSE_DIRECTION)) {
-		Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DC_EXEC, new_veh->index, true);
+		Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DC_EXEC | DC_AUTOREPLACE, new_veh->index, true);
 	}
 
 	return cost;
@@ -474,7 +474,7 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, b
 
 		if ((flags & DC_EXEC) != 0) {
 			/* Move the new vehicle behind the old */
-			CmdMoveVehicle(new_v, old_v, DC_EXEC, false);
+			CmdMoveVehicle(new_v, old_v, DC_EXEC | DC_AUTOREPLACE, false);
 
 			/* Take over cargo
 			 * Note: We do only transfer cargo from the old to the new vehicle.
@@ -494,7 +494,7 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, b
 
 		/* If we are not in DC_EXEC undo everything */
 		if ((flags & DC_EXEC) == 0) {
-			Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, new_v->index, false, false, INVALID_CLIENT_ID);
+			Command<CMD_SELL_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, new_v->index, false, false, INVALID_CLIENT_ID);
 		}
 	}
 
@@ -545,6 +545,8 @@ void CopyShipStatusInExtendedDepot(const Ship *old_ship, Ship *new_ship)
  */
 static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon_removal, bool *nothing_to_do)
 {
+	assert(flags & DC_AUTOREPLACE);
+
 	Vehicle *old_head = *chain;
 	assert(old_head->IsPrimaryVehicle());
 	TileIndex tile = old_head->tile;
@@ -598,7 +600,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					}
 
 					if (last_engine == nullptr) last_engine = append;
-					cost.AddCost(CmdMoveVehicle(append, new_head, DC_EXEC, false));
+					cost.AddCost(CmdMoveVehicle(append, new_head, DC_EXEC | DC_AUTOREPLACE, false));
 					if (cost.Failed()) break;
 				}
 				if (last_engine == nullptr) last_engine = new_head;
@@ -617,7 +619,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 					if (RailVehInfo(append->engine_type)->railveh_type == RAILVEH_WAGON) {
 						/* Insert wagon after 'last_engine' */
-						CommandCost res = CmdMoveVehicle(append, last_engine, DC_EXEC, false);
+						CommandCost res = CmdMoveVehicle(append, last_engine, DC_EXEC | DC_AUTOREPLACE, false);
 
 						/* When we allow removal of wagons, either the move failing due
 						 * to the train becoming too long, or the train becoming longer
@@ -648,7 +650,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					assert(RailVehInfo(wagon->engine_type)->railveh_type == RAILVEH_WAGON);
 
 					/* Sell wagon */
-					[[maybe_unused]] CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, wagon->index, false, false, INVALID_CLIENT_ID);
+					[[maybe_unused]] CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, wagon->index, false, false, INVALID_CLIENT_ID);
 					assert(ret.Succeeded());
 					it->new_veh = nullptr;
 
@@ -714,7 +716,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 		if ((flags & DC_EXEC) == 0) {
 			for (auto it = std::rbegin(replacements); it != std::rend(replacements); ++it) {
 				if (it->new_veh != nullptr) {
-					Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, it->new_veh->index, false, false, INVALID_CLIENT_ID);
+					Command<CMD_SELL_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, it->new_veh->index, false, false, INVALID_CLIENT_ID);
 					it->new_veh = nullptr;
 				}
 			}
@@ -751,7 +753,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 			/* If we are not in DC_EXEC undo everything */
 			if ((flags & DC_EXEC) == 0) {
-				Command<CMD_SELL_VEHICLE>::Do(DC_EXEC, new_head->index, false, false, INVALID_CLIENT_ID);
+				Command<CMD_SELL_VEHICLE>::Do(DC_EXEC | DC_AUTOREPLACE, new_head->index, false, false, INVALID_CLIENT_ID);
 			}
 		}
 	}
@@ -816,6 +818,9 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, VehicleID veh_id)
 	assert(free_wagon || v->IsStoppedInDepot());
 
 	if (IsExtendedDepotTile(v->tile)) UpdateExtendedDepotReservation(v, false);
+
+	/* Start autoreplacing the vehicle. */
+	flags |= DC_AUTOREPLACE;
 
 	/* We have to construct the new vehicle chain to test whether it is valid.
 	 * Vehicle construction needs random bits, so we have to save the random seeds
