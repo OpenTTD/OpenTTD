@@ -113,7 +113,12 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
-		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_DT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
+
+		if (_game_mode == GM_NORMAL &&
+				((this->HasWidget(WID_DT_DEPOT) && this->IsWidgetLowered(WID_DT_DEPOT)) ||
+				(this->HasWidget(WID_DT_EXTENDED_DEPOT) && this->IsWidgetLowered(WID_DT_EXTENDED_DEPOT)))) {
+			SetViewportHighlightDepot(INVALID_DEPOT, true);
+		}
 
 		this->Window::Close();
 	}
@@ -130,6 +135,7 @@ struct BuildDocksToolbarWindow : Window {
 		bool can_build = CanBuildVehicleInfrastructure(VEH_SHIP);
 		this->SetWidgetsDisabledState(!can_build,
 			WID_DT_DEPOT,
+			WID_DT_EXTENDED_DEPOT,
 			WID_DT_STATION,
 			WID_DT_BUOY);
 		if (!can_build) {
@@ -140,11 +146,13 @@ struct BuildDocksToolbarWindow : Window {
 		if (_game_mode != GM_EDITOR) {
 			if (!can_build) {
 				/* Show in the tooltip why this button is disabled. */
-				this->GetWidget<NWidgetCore>(WID_DT_DEPOT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
+				if (this->HasWidget(WID_DT_DEPOT)) this->GetWidget<NWidgetCore>(WID_DT_DEPOT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
+				if (this->HasWidget(WID_DT_EXTENDED_DEPOT)) this->GetWidget<NWidgetCore>(WID_DT_EXTENDED_DEPOT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
 				this->GetWidget<NWidgetCore>(WID_DT_STATION)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
 				this->GetWidget<NWidgetCore>(WID_DT_BUOY)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
 			} else {
-				this->GetWidget<NWidgetCore>(WID_DT_DEPOT)->SetToolTip(STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP);
+				if (this->HasWidget(WID_DT_DEPOT)) this->GetWidget<NWidgetCore>(WID_DT_DEPOT)->SetToolTip(STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP);
+				if (this->HasWidget(WID_DT_EXTENDED_DEPOT)) this->GetWidget<NWidgetCore>(WID_DT_EXTENDED_DEPOT)->SetToolTip(STR_WATERWAYS_TOOLBAR_BUILD_EXTENDED_DEPOT_TOOLTIP);
 				this->GetWidget<NWidgetCore>(WID_DT_STATION)->SetToolTip(STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP);
 				this->GetWidget<NWidgetCore>(WID_DT_BUOY)->SetToolTip(STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP);
 			}
@@ -167,6 +175,7 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_DEPOT: // Build depot button
+			case WID_DT_EXTENDED_DEPOT:
 				if (HandlePlacePushButton(this, widget, SPR_CURSOR_SHIP_DEPOT, HT_RECT)) {
 					ShowBuildDocksDepotPicker(this);
 				}
@@ -209,7 +218,8 @@ struct BuildDocksToolbarWindow : Window {
 				PlaceProc_DemolishArea(tile);
 				break;
 
-			case WID_DT_DEPOT: { // Build depot button
+			case WID_DT_DEPOT: // Build depot button
+			case WID_DT_EXTENDED_DEPOT: {
 				CloseWindowById(WC_SELECT_DEPOT, VEH_SHIP);
 
 				ViewportPlaceMethod vpm = _ship_depot_direction != AXIS_X ? VPM_LIMITED_X_FIXED_Y : VPM_LIMITED_Y_FIXED_X;
@@ -274,8 +284,10 @@ struct BuildDocksToolbarWindow : Window {
 					break;
 				case DDSP_BUILD_DEPOT: {
 					bool adjacent = _ctrl_pressed;
+					bool extended = this->last_clicked_widget == WID_DT_EXTENDED_DEPOT;
+
 					auto proc = [=](DepotID join_to) -> bool {
-						return Command<CMD_BUILD_SHIP_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, start_tile, _ship_depot_direction, adjacent, join_to, end_tile);
+						return Command<CMD_BUILD_SHIP_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT, CcBuildDocks, start_tile, _ship_depot_direction, adjacent, extended, join_to, end_tile);
 					};
 
 					ShowSelectDepotIfNeeded(TileArea(start_tile, end_tile), proc, VEH_SHIP);
@@ -291,7 +303,11 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
 
-		if (_game_mode != GM_EDITOR && this->IsWidgetLowered(WID_DT_DEPOT)) SetViewportHighlightDepot(INVALID_DEPOT, true);
+		if (_game_mode != GM_EDITOR &&
+				((this->HasWidget(WID_DT_DEPOT) && this->IsWidgetLowered(WID_DT_DEPOT)) ||
+				(this->HasWidget(WID_DT_EXTENDED_DEPOT) && this->IsWidgetLowered(WID_DT_EXTENDED_DEPOT)))) {
+			SetViewportHighlightDepot(INVALID_DEPOT, true);
+		}
 
 		this->RaiseButtons();
 
@@ -347,6 +363,25 @@ struct BuildDocksToolbarWindow : Window {
 };
 
 /**
+ * Add the depot icons depending on availability of construction.
+ * @return Panel with water depot buttons.
+ */
+static std::unique_ptr<NWidgetBase> MakeNWidgetWaterDepot()
+{
+	auto hor = std::make_unique<NWidgetHorizontal>();
+
+	if (HasBit(_settings_game.depot.water_depot_types, 0)) {
+		hor->Add(std::make_unique<NWidgetLeaf>(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_DEPOT, SPR_IMG_SHIP_DEPOT, STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP));
+	}
+
+	if (HasBit(_settings_game.depot.water_depot_types, 1)) {
+		hor->Add(std::make_unique<NWidgetLeaf>(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_EXTENDED_DEPOT, SPR_IMG_SHIP_DEPOT, STR_WATERWAYS_TOOLBAR_BUILD_EXTENDED_DEPOT_TOOLTIP));
+	}
+
+	return hor;
+}
+
+/**
  * Nested widget parts of docks toolbar, game version.
  * Position of #WID_DT_RIVER widget has changed.
  */
@@ -361,7 +396,7 @@ static constexpr NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_LOCK), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_LOCK, STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(5, 22), SetFill(1, 1), EndContainer(),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_DEMOLISH), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_DEPOT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIP_DEPOT, STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP),
+		NWidgetFunction(MakeNWidgetWaterDepot),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_STATION), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIP_DOCK, STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_BUOY), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUOY, STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_BUILD_AQUEDUCT), SetMinimalSize(23, 22), SetFill(0, 1), SetDataTip(SPR_IMG_AQUEDUCT, STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP),
