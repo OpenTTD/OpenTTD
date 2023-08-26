@@ -138,9 +138,10 @@ static const DiagDirection _place_depot_extra_dir[12] = {
 	DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_NW, DIAGDIR_NE,
 };
 
-void CcRailDepot(Commands, const CommandCost &result, TileIndex start_tile, RailType, DiagDirection dir, bool, DepotID, TileIndex end_tile)
+void CcRailDepot(Commands, const CommandCost &result, TileIndex start_tile, RailType, DiagDirection dir, bool, bool extended, DepotID, TileIndex end_tile)
 {
 	if (result.Failed()) return;
+	if (extended) return;
 
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_CONSTRUCTION_RAIL, start_tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
@@ -613,7 +614,8 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case WID_RAT_BUILD_DEPOT:
-				if (HandlePlacePushButton(this, WID_RAT_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT)) {
+			case WID_RAT_BUILD_EXTENDED_DEPOT:
+				if (HandlePlacePushButton(this, widget, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT)) {
 					ShowBuildTrainDepotPicker(this);
 					this->last_user_action = widget;
 				}
@@ -700,10 +702,14 @@ struct BuildRailToolbarWindow : Window {
 				PlaceProc_DemolishArea(tile);
 				break;
 
-			case WID_RAT_BUILD_DEPOT: {
+			case WID_RAT_BUILD_DEPOT:
+			case WID_RAT_BUILD_EXTENDED_DEPOT: {
 				CloseWindowById(WC_SELECT_DEPOT, VEH_TRAIN);
 
-				ViewportPlaceMethod vpm = (DiagDirToAxis(_build_depot_direction) == 0) ? VPM_X_LIMITED : VPM_Y_LIMITED;
+				ViewportPlaceMethod vpm = VPM_X_AND_Y_LIMITED;
+				if (this->last_user_action == WID_RAT_BUILD_DEPOT) {
+					vpm = (DiagDirToAxis(_build_depot_direction) == 0) ? VPM_X_LIMITED : VPM_Y_LIMITED;
+				}
 				VpStartPlaceSizing(tile, vpm, _remove_button_clicked ? DDSP_REMOVE_DEPOT : DDSP_BUILD_DEPOT);
 				VpSetPlaceSizingLimit(_settings_game.depot.depot_spread);
 				break;
@@ -805,13 +811,15 @@ struct BuildRailToolbarWindow : Window {
 					break;
 
 				case DDSP_BUILD_DEPOT:
+				case DDSP_REMOVE_DEPOT:
 					if (_remove_button_clicked) {
 						Command<CMD_REMOVE_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_REMOVE_TRAIN_DEPOT, CcPlaySound_CONSTRUCTION_RAIL, start_tile, end_tile);
 					} else {
 						bool adjacent = _ctrl_pressed;
+						bool extended = this->last_user_action == WID_RAT_BUILD_EXTENDED_DEPOT;
 
 						auto proc = [=](DepotID join_to) -> bool {
-								return Command<CMD_BUILD_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, start_tile, _cur_railtype, _build_depot_direction, adjacent, join_to, end_tile);
+							return Command<CMD_BUILD_TRAIN_DEPOT>::Post(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT, CcRailDepot, start_tile, _cur_railtype, _build_depot_direction, adjacent, extended, join_to, end_tile);
 						};
 
 						ShowSelectDepotIfNeeded(TileArea(start_tile, end_tile), proc, VEH_TRAIN);
