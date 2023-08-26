@@ -19,7 +19,7 @@ CommandCost CmdBuildRailroadTrack(DoCommandFlag flags, TileIndex end_tile, TileI
 CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex end_tile, TileIndex start_tile, Track track);
 CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType railtype, Track track, bool auto_remove_signals);
 CommandCost CmdRemoveSingleRail(DoCommandFlag flags, TileIndex tile, Track track);
-CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir, bool adjacent, DepotID depot_id, TileIndex end_tile);
+CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir, bool adjacent, bool extended, DepotID depot_id, TileIndex end_tile);
 CommandCost CmdRemoveTrainDepot(DoCommandFlag flags, TileIndex start_tile, TileIndex end_tile);
 CommandCost CmdBuildSingleSignal(DoCommandFlag flags, TileIndex tile, Track track, SignalType sigtype, SignalVariant sigvar, bool convert_signal, bool skip_existing_signals, bool ctrl_pressed, SignalType cycle_start, SignalType cycle_stop, uint8_t num_dir_cycle, uint8_t signals_copy);
 CommandCost CmdRemoveSingleSignal(DoCommandFlag flags, TileIndex tile, Track track);
@@ -42,6 +42,6 @@ DEF_CMD_TRAIT(CMD_REMOVE_SIGNAL_TRACK,   CmdRemoveSignalTrack,   CMD_AUTO,      
 CommandCallback CcPlaySound_CONSTRUCTION_RAIL;
 CommandCallback CcStation;
 CommandCallback CcBuildRailTunnel;
-void CcRailDepot(Commands cmd, const CommandCost &result, TileIndex tile, RailType rt, DiagDirection dir, bool adjacent, DepotID join_to, TileIndex end_tile);
+void CcRailDepot(Commands cmd, const CommandCost &result, TileIndex tile, RailType rt, DiagDirection dir, bool adjacent, bool extended, DepotID join_to, TileIndex end_tile);
 
 #endif /* RAIL_CMD_H */
