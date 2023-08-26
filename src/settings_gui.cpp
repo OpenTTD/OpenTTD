@@ -2136,6 +2136,9 @@ static SettingsContainer &GetSettingsTree()
 			{
 				depots->Add(new SettingEntry("depot.depot_spread"));
 				depots->Add(new SettingEntry("depot.distant_join_depots"));
+
+				depots->Add(new SettingEntry("depot.allow_no_comp_railtype_replacements"));
+				depots->Add(new SettingEntry("depot.allow_no_comp_roadtype_replacements"));
 			}
 
 			limitations->Add(new SettingEntry("construction.command_pause_level"));
