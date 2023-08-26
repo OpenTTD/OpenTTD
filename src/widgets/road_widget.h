@@ -18,7 +18,8 @@ enum RoadToolbarWidgets : WidgetID {
 	WID_ROT_ROAD_Y,         ///< Build road in y-direction.
 	WID_ROT_AUTOROAD,       ///< Autorail.
 	WID_ROT_DEMOLISH,       ///< Demolish.
-	WID_ROT_DEPOT,          ///< Build depot.
+	WID_ROT_DEPOT,          ///< Build standard depot.
+	WID_ROT_EXTENDED_DEPOT, ///< Build extended depot.
 	WID_ROT_BUS_STATION,    ///< Build bus station.
 	WID_ROT_TRUCK_STATION,  ///< Build truck station.
 	WID_ROT_ONE_WAY,        ///< Build one-way road.
