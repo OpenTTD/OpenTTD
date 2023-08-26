@@ -2651,6 +2651,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}İstasyo
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Köprüler için şeffaflık. Kilitlemek için Ctrl ile tıklayın
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Antenler ve deniz fenerleri için şeffaflık. Kilitlemek için Ctrl ile tıklayın
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Tren elektrik hatları için şeffaflığı aç/kapat. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Yükleme ve maliyet/gelir metni için şeffaflığı değiştirin. Kitlemek için Ctrl+Tıkla
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nesneleri şeffaf değil görünmez yap
 
 # Linkgraph legend window

@@ -3026,10 +3026,11 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Przełą
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Przełącz przeźroczystość dla drzew. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Przełącz przeźroczystość dla budynków miejskich. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Przełącz przeźroczystość dla przedsiębiorstw. Ctrl+klik, aby zablokować
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Przełącz przeźroczystość dla infrastruktury takiej jak stacje, zajezdnie i posterunki. Ctrl+klik, aby zablokować
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Przełącz przeźroczystość dla infrastruktury, takiej jak stacje, zajezdnie i posterunki. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Przełącz przeźroczystość dla mostów. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Przełącz przeźroczystość dla obiektów takich jak latarnie morskie i anteny. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Przełącz przeźroczystość dla trakcji (linii nośnych). Ctrl+klik, aby zablokować
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Przełącz przeźroczystość dla informacji o ładowaniu oraz kosztach/przychodach. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ustaw obiekty jako niewidoczne zamiast przeźroczyste
 
 # Linkgraph legend window
@@ -3121,7 +3122,7 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Standardowy pos
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Wybór sygnałów
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Przełącznik pokazujący zaawansowane typy sygnałów
+STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Przełącz wyświetlanie zaawansowanych typów sygnałów
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału pozwalający na przebywanie w jednym bloku wyłącznie jednemu pociągowi naraz
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sygnalizator wejściowy (semafor){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym wypadku czerwony.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sygnalizator wyjściowy (semafor){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
