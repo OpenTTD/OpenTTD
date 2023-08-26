@@ -1785,6 +1785,8 @@ CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 
 static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 {
+	assert(IsRailDepotTile(tile));
+
 	if (_current_company != OWNER_WATER) {
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Failed()) return ret;
@@ -1820,6 +1822,30 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_DEPOT_TRAIN]);
+}
+
+/**
+ * Remove train depots from an area
+ * @param flags operation to perform
+ * @param start_tile start tile of the area
+ * @param end_tile end tile of the area
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdRemoveTrainDepot(DoCommandFlag flags, TileIndex start_tile, TileIndex end_tile)
+{
+	assert(IsValidTile(start_tile));
+	assert(IsValidTile(end_tile));
+
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	TileArea ta(start_tile, end_tile);
+	for (TileIndex t : ta) {
+		if (!IsRailDepotTile(t)) continue;
+		CommandCost ret = RemoveTrainDepot(t, flags);
+		if (ret.Failed()) return ret;
+		cost.AddCost(ret);
+	}
+
+	return cost;
 }
 
 static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
