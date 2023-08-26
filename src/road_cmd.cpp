@@ -2270,27 +2270,21 @@ static const uint8_t _roadveh_enter_depot_dir[4] = {
 
 static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int, int)
 {
-	switch (GetRoadTileType(tile)) {
-		case ROAD_TILE_DEPOT: {
-			if (v->type != VEH_ROAD) break;
+	if (GetRoadTileType(tile) != ROAD_TILE_DEPOT || v->type != VEH_ROAD) return VETSB_CONTINUE;
 
-			RoadVehicle *rv = RoadVehicle::From(v);
-			if (rv->frame == RVC_DEPOT_STOP_FRAME &&
-					_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == rv->state) {
-				rv->state = RVSB_IN_DEPOT;
-				rv->vehstatus |= VS_HIDDEN;
-				rv->direction = ReverseDir(rv->direction);
-				if (rv->Next() == nullptr) VehicleEnterDepot(rv->First());
-				rv->tile = tile;
+	RoadVehicle *rv = RoadVehicle::From(v);
+	if (rv->frame == RVC_DEPOT_STOP_FRAME &&
+			_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == rv->state) {
+		rv->state = RVSB_IN_DEPOT;
+		rv->vehstatus |= VS_HIDDEN;
+		rv->direction = ReverseDir(rv->direction);
+		if (rv->Next() == nullptr) VehicleEnterDepot(rv->First());
+		rv->tile = tile;
 
-				InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(rv->tile));
-				return VETSB_ENTERED_WORMHOLE;
-			}
-			break;
-		}
-
-		default: break;
+		InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(rv->tile));
+		return VETSB_ENTERED_WORMHOLE;
 	}
+
 	return VETSB_CONTINUE;
 }
 

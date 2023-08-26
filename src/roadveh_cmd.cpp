@@ -654,29 +654,30 @@ struct RoadVehFindData {
 
 static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 {
-	static const int8_t dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
-	static const int8_t dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
+	if (v->type != VEH_ROAD || v->IsInDepot()) return nullptr;
 
 	RoadVehFindData *rvf = (RoadVehFindData*)data;
 
+	if (abs(v->z_pos - rvf->veh->z_pos) >= 6 ||
+			v->direction != rvf->dir ||
+			rvf->veh->First() == v->First()) return nullptr;
+
+	static const int8_t dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
+	static const int8_t dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
 	short x_diff = v->x_pos - rvf->x;
 	short y_diff = v->y_pos - rvf->y;
 
-	if (v->type == VEH_ROAD &&
-			!v->IsInDepot() &&
-			abs(v->z_pos - rvf->veh->z_pos) < 6 &&
-			v->direction == rvf->dir &&
-			rvf->veh->First() != v->First() &&
-			(dist_x[v->direction] >= 0 || (x_diff > dist_x[v->direction] && x_diff <= 0)) &&
-			(dist_x[v->direction] <= 0 || (x_diff < dist_x[v->direction] && x_diff >= 0)) &&
-			(dist_y[v->direction] >= 0 || (y_diff > dist_y[v->direction] && y_diff <= 0)) &&
-			(dist_y[v->direction] <= 0 || (y_diff < dist_y[v->direction] && y_diff >= 0))) {
-		uint diff = abs(x_diff) + abs(y_diff);
+	/* Check if vehicle is not close. */
+	if ((dist_x[v->direction] < 0 && (x_diff > 0 || x_diff <= dist_x[v->direction]))) return nullptr;
+	if ((dist_x[v->direction] > 0 && (x_diff < 0 || x_diff >= dist_x[v->direction]))) return nullptr;
+	if ((dist_y[v->direction] < 0 && (y_diff > 0 || y_diff <= dist_y[v->direction]))) return nullptr;
+	if ((dist_y[v->direction] > 0 && (y_diff < 0 || y_diff >= dist_y[v->direction]))) return nullptr;
 
-		if (diff < rvf->best_diff || (diff == rvf->best_diff && v->index < rvf->best->index)) {
-			rvf->best = v;
-			rvf->best_diff = diff;
-		}
+	uint diff = abs(x_diff) + abs(y_diff);
+
+	if (diff < rvf->best_diff || (diff == rvf->best_diff && v->index < rvf->best->index)) {
+		rvf->best = v;
+		rvf->best_diff = diff;
 	}
 
 	return nullptr;
