@@ -42,6 +42,7 @@
 #include "road_cmd.h"
 #include "landscape_cmd.h"
 #include "rail_cmd.h"
+#include "platform_func.h"
 
 #include "table/strings.h"
 #include "table/roadtypes.h"
@@ -2476,21 +2477,51 @@ static const uint8_t _roadveh_enter_depot_dir[4] = {
 	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
 };
 
-static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int, int)
+static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (GetRoadTileType(tile) != ROAD_TILE_DEPOT || v->type != VEH_ROAD) return VETSB_CONTINUE;
 
-	RoadVehicle *rv = RoadVehicle::From(v);
-	if (rv->frame == RVC_DEPOT_STOP_FRAME &&
-			_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == rv->state) {
-		rv->state = RVSB_IN_DEPOT;
-		rv->vehstatus |= VS_HIDDEN;
-		rv->direction = ReverseDir(rv->direction);
-		if (rv->Next() == nullptr) VehicleEnterDepot(rv->First());
-		rv->tile = tile;
+	if (IsExtendedRoadDepot(tile)) {
+		v = v->First();
+		if (!IsExtendedRoadDepotTile(v->tile)) return VETSB_CONTINUE;
+		DepotID depot_id = GetDepotIndex(v->tile);
+		if (!v->current_order.IsType(OT_GOTO_DEPOT) ||
+			v->current_order.GetDestination() != depot_id) {
+			return VETSB_CONTINUE;
+		}
+		for (Vehicle *u = v; u != nullptr; u = u->Next()) {
+			if (!IsExtendedRoadDepotTile(u->tile) || GetDepotIndex(u->tile) != depot_id) return VETSB_CONTINUE;
+			if (!IsDiagonalDirection(u->direction)) return VETSB_CONTINUE;
+			if (DiagDirToAxis(DirToDiagDir(u->direction)) !=
+					DiagDirToAxis(GetRoadDepotDirection(v->tile))) {
+				return VETSB_CONTINUE;
+			}
+		}
 
-		InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(rv->tile));
-		return VETSB_ENTERED_WORMHOLE;
+		/* Stop position on platform is half the front vehicle length of the road vehicle. */
+		int stop_pos = RoadVehicle::From(v)->gcache.cached_veh_length / 2;
+			DiagDirection dir = DirToDiagDir(v->direction);
+		int depot_ahead  = (GetPlatformLength(tile, dir, GetRoadTramType(RoadVehicle::From(v)->roadtype)) - 1) * TILE_SIZE;
+		if (depot_ahead > stop_pos) return VETSB_CONTINUE;
+
+		x = v->x_pos & 0xF;
+		y = v->y_pos & 0xF;
+
+		if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
+		if (dir == DIAGDIR_SE || dir == DIAGDIR_SW) x = TILE_SIZE - x;
+		if (abs(stop_pos - x) <= 1) return VETSB_ENTERED_DEPOT_PLATFORM;
+	} else {
+		RoadVehicle *rv = RoadVehicle::From(v);
+		if (rv->frame == RVC_DEPOT_STOP_FRAME &&
+				_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == rv->state) {
+			rv->state = RVSB_IN_DEPOT;
+			rv->vehstatus |= VS_HIDDEN;
+			rv->direction = ReverseDir(rv->direction);
+			if (rv->Next() == nullptr) VehicleEnterDepot(rv->First());
+			rv->tile = tile;
+				InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(rv->tile));
+			return VETSB_ENTERED_WORMHOLE;
+		}
 	}
 
 	return VETSB_CONTINUE;
