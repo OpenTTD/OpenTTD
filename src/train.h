@@ -100,9 +100,6 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 	RailType railtype;
 	RailTypes compatible_railtypes;
 
-	/** Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals. */
-	uint16_t wait_counter;
-
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Train() : GroundVehicleBase() {}
 	/** We want to 'destruct' the right class. */

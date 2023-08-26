@@ -320,10 +320,11 @@ public:
 	TextEffectID fill_percent_te_id;    ///< a text-effect id to a loading indicator object
 	UnitID unitnumber;                  ///< unit number, for display purposes only
 
-	uint16_t cur_speed;                   ///< current speed
+	uint16_t cur_speed;                 ///< current speed
 	byte subspeed;                      ///< fractional speed
 	byte acceleration;                  ///< used by train & aircraft
-	uint32_t motion_counter;              ///< counter to occasionally play a vehicle sound.
+	uint16_t wait_counter;              ///< waiting ticks (servicing, waiting in front of a signal or forced proceeding)
+	uint32_t motion_counter;            ///< counter to occasionally play a vehicle sound.
 	byte progress;                      ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
 
 	uint16_t random_bits; ///< Bits used for randomized variational spritegroups.
