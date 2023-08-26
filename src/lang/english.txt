@@ -1464,6 +1464,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construct
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Allow drive-through road stops on roads owned by competitors: {STRING2}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Allow construction of drive-through road stops on roads owned by other companies
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles
+STR_CONFIG_SETTING_REPLACEMENTS_DIFF_TYPE                       :{WHITE}Disabling this setting is not possible during a game
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastructure maintenance: {STRING2}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, infrastructure causes maintenance costs. The cost grows over-proportional with the network size, thus affecting bigger companies more than smaller ones
@@ -1621,6 +1622,10 @@ STR_CONFIG_SETTING_DISTANT_JOIN_DEPOTS                          :Allow to join d
 STR_CONFIG_SETTING_DISTANT_JOIN_DEPOTS_HELPTEXT                 :Allow adding parts to a depot without directly touching the existing parts. Needs Ctrl+Click while placing the new parts
 STR_CONFIG_SETTING_DEPOT_SPREAD                                 :Maximum depot spread: {STRING2}
 STR_CONFIG_SETTING_DEPOT_SPREAD_HELPTEXT                        :Maximum area the parts of a single depot may be spread out on.
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_RAIL                    :Allow replacing rail vehicles with incompatible rail types: {STRING2}
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_RAIL_HELPTEXT           :Allow replacing rail vehicles even if they are not compatible by rail type.
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_ROAD                    :Allow replacing road vehicles with incompatible road types: {STRING2}
+STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_ROAD_HELPTEXT           :Allow replacing road vehicles even if they are not compatible by road type.
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maximum station spread: {STRING2}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximum area the parts of a single station may be spread out on. Note that high values will slow the game
