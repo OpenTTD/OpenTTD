@@ -313,23 +313,24 @@ public:
 	 * 0xff == reserved for another custom sprite
 	 */
 	uint8_t spritenum;
-	uint8_t x_extent;                      ///< x-extent of vehicle bounding box
-	uint8_t y_extent;                      ///< y-extent of vehicle bounding box
-	uint8_t z_extent;                      ///< z-extent of vehicle bounding box
-	int8_t x_bb_offs;                     ///< x offset of vehicle bounding box
-	int8_t y_bb_offs;                     ///< y offset of vehicle bounding box
-	int8_t x_offs;                        ///< x offset for vehicle sprite
-	int8_t y_offs;                        ///< y offset for vehicle sprite
+	uint8_t x_extent;                   ///< x-extent of vehicle bounding box
+	uint8_t y_extent;                   ///< y-extent of vehicle bounding box
+	uint8_t z_extent;                   ///< z-extent of vehicle bounding box
+	int8_t x_bb_offs;                   ///< x offset of vehicle bounding box
+	int8_t y_bb_offs;                   ///< y offset of vehicle bounding box
+	int8_t x_offs;                      ///< x offset for vehicle sprite
+	int8_t y_offs;                      ///< y offset for vehicle sprite
 	EngineID engine_type;               ///< The type of engine used for this vehicle.
 
 	TextEffectID fill_percent_te_id;    ///< a text-effect id to a loading indicator object
 	UnitID unitnumber;                  ///< unit number, for display purposes only
 
-	uint16_t cur_speed;                   ///< current speed
-	uint8_t subspeed;                      ///< fractional speed
-	uint8_t acceleration;                  ///< used by train & aircraft
-	uint32_t motion_counter;              ///< counter to occasionally play a vehicle sound.
-	uint8_t progress;                      ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
+	uint16_t cur_speed;                 ///< current speed
+	uint8_t subspeed;                   ///< fractional speed
+	uint8_t acceleration;               ///< used by train & aircraft
+	uint32_t motion_counter;            ///< counter to occasionally play a vehicle sound.
+	uint16_t wait_counter;              ///< waiting ticks (servicing, waiting in front of a signal or forced proceeding)
+	uint8_t progress;                   ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
 
 	uint8_t waiting_triggers;              ///< Triggers to be yet matched before rerandomizing the random bits.
 	uint16_t random_bits; ///< Bits used for randomized variational spritegroups.
