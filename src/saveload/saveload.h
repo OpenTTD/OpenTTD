@@ -397,6 +397,8 @@ enum SaveLoadVersion : uint16_t {
 
 	SLV_KEEP_REMOVED_DEPOTS,                ///< 320  PR#XXXXX Keep remove depots for a while.
 
+	SLV_EXTENDED_DEPOTS,                    ///< 321  PR#8480 Extended depots for rail, road and water transport.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

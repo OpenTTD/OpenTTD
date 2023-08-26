@@ -1622,6 +1622,19 @@ STR_CONFIG_SETTING_DISTANT_JOIN_DEPOTS                          :Allow to join d
 STR_CONFIG_SETTING_DISTANT_JOIN_DEPOTS_HELPTEXT                 :Allow adding parts to a depot without directly touching the existing parts. Needs Ctrl+Click while placing the new parts
 STR_CONFIG_SETTING_DEPOT_SPREAD                                 :Maximum depot spread: {STRING2}
 STR_CONFIG_SETTING_DEPOT_SPREAD_HELPTEXT                        :Maximum area the parts of a single depot may be spread out on.
+
+STR_CONFIG_SETTING_RAIL_DEPOT_TYPES                             :Rail depot types: {STRING2}
+STR_CONFIG_SETTING_RAIL_DEPOT_TYPES_HELPTEXT                    :Available rail depot types for construction for human players.
+STR_CONFIG_SETTING_ROAD_DEPOT_TYPES                             :Road depot types: {STRING2}
+STR_CONFIG_SETTING_ROAD_DEPOT_TYPES_HELPTEXT                    :Available road depot types for construction for human players.
+STR_CONFIG_SETTING_WATER_DEPOT_TYPES                            :Water depot types: {STRING2}
+STR_CONFIG_SETTING_WATER_DEPOT_TYPES_HELPTEXT                   :Available water depot types for construction for human players.
+###length 3
+STR_CONFIG_SETTING_ONLY_STANDARD_DEPOT                          :Standard depots
+STR_CONFIG_SETTING_ONLY_EXTENDED_DEPOT                          :Extended depots
+STR_CONFIG_SETTING_BOTH_DEPOT_TYPES                             :Both depot types
+###next-name-looks-similar
+
 STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_RAIL                    :Allow replacing rail vehicles with incompatible rail types: {STRING2}
 STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_RAIL_HELPTEXT           :Allow replacing rail vehicles even if they are not compatible by rail type.
 STR_CONFIG_SETTING_REPLACE_INCOMPATIBLE_ROAD                    :Allow replacing road vehicles with incompatible road types: {STRING2}
@@ -5134,6 +5147,8 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Can't build ship depot here...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING_DEPOT                  :{WHITE}... adjoins more than one existing depot
+STR_ERROR_DEPOT_TYPE_NOT_AVAILABLE                              :{WHITE}... depot type not available
+
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Can't rename depot...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... must be stopped inside a depot

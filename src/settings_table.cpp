@@ -396,6 +396,11 @@ static void InvalidateReplacementWindows(int32_t)
 	InvalidateWindowClassesData(WC_REPLACE_VEHICLE);
 }
 
+static void DepotSettingsChanged(int32_t)
+{
+	CloseWindowByClass(WC_BUILD_TOOLBAR);
+}
+
 /**
  * Update any possible saveload window and delete any newgrf dialogue as
  * its widget parts might change. Reinit all windows as it allows access to the
