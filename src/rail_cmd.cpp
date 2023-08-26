@@ -1659,32 +1659,26 @@ CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 
 		switch (tt) {
 			case MP_RAILWAY:
-				switch (GetRailTileType(tile)) {
-					case RAIL_TILE_DEPOT:
-						if (flags & DC_EXEC) {
-							/* notify YAPF about the track layout change */
-							YapfNotifyTrackLayoutChange(tile, GetRailDepotTrack(tile));
+				found_convertible_track = true;
+				if (GetRailTileType(tile) == RAIL_TILE_DEPOT) {
+					if (flags & DC_EXEC) {
+						/* notify YAPF about the track layout change */
+						YapfNotifyTrackLayoutChange(tile, GetRailDepotTrack(tile));
 
-							if (find(affected_depots.begin(), affected_depots.end(), (tile)) == affected_depots.end()) {
-								affected_depots.push_back(GetDepotIndex(tile));
-							}
+						if (find(affected_depots.begin(), affected_depots.end(), (tile)) == affected_depots.end()) {
+							affected_depots.push_back(GetDepotIndex(tile));
 						}
-
-						found_convertible_track = true;
-						cost.AddCost(RailConvertCost(type, totype));
-						break;
-
-					default: // RAIL_TILE_NORMAL, RAIL_TILE_SIGNALS
-						if (flags & DC_EXEC) {
-							/* notify YAPF about the track layout change */
-							TrackBits tracks = GetTrackBits(tile);
-							while (tracks != TRACK_BIT_NONE) {
-								YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
-							}
+					}
+					cost.AddCost(RailConvertCost(type, totype));
+				} else { // RAIL_TILE_NORMAL, RAIL_TILE_SIGNALS
+					if (flags & DC_EXEC) {
+						/* notify YAPF about the track layout change */
+						TrackBits tracks = GetTrackBits(tile);
+						while (tracks != TRACK_BIT_NONE) {
+							YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
 						}
-						found_convertible_track = true;
-						cost.AddCost(RailConvertCost(type, totype) * CountBits(GetTrackBits(tile)));
-						break;
+					}
+					cost.AddCost(RailConvertCost(type, totype) * CountBits(GetTrackBits(tile)));
 				}
 				break;
 
