@@ -367,11 +367,12 @@ bool CrashLog::WriteCrashLog()
  * Write the (crash) dump to a file.
  *
  * @note Sets \c crashdump_filename when there is a successful return.
- * @return 1 iff the crashdump was successfully created, -1 if it failed, 0 if not implemented.
+ * @return True iff the crashdump was successfully created.
  */
-/* virtual */ int CrashLog::WriteCrashDump()
+/* virtual */ bool CrashLog::WriteCrashDump()
 {
-	return 0;
+	fmt::print("No method to create a crash.dmp available.\n");
+	return false;
 }
 
 /**
@@ -443,7 +444,7 @@ bool CrashLog::MakeCrashLog()
 	fmt::print("Crash log generated.\n\n");
 
 	fmt::print("Writing crash log to disk...\n");
-	bool bret = this->WriteCrashLog();
+	bool bret = this->TryExecute("crashlog", [this]() { return this->WriteCrashLog(); });
 	if (bret) {
 		fmt::print("Crash log written to {}. Please add this file to any bug reports.\n\n", this->crashlog_filename);
 	} else {
@@ -452,18 +453,15 @@ bool CrashLog::MakeCrashLog()
 	}
 
 	fmt::print("Writing crash dump to disk...\n");
-	int dret = this->WriteCrashDump();
-	if (dret < 0) {
-		fmt::print("Writing crash dump failed.\n\n");
-		ret = false;
-	} else if (dret > 0) {
+	bret = this->TryExecute("crashdump", [this]() { return this->WriteCrashDump(); });
+	if (bret) {
 		fmt::print("Crash dump written to {}. Please add this file to any bug reports.\n\n", this->crashdump_filename);
 	} else {
-		fmt::print("Skipped; missing dependency to create crash dump.\n");
+		fmt::print("Writing crash dump failed.\n\n");
 	}
 
 	fmt::print("Writing crash savegame...\n");
-	bret = this->WriteSavegame();
+	bret = this->TryExecute("savegame", [this]() { return this->WriteSavegame(); });
 	if (bret) {
 		fmt::print("Crash savegame written to {}. Please add this file and the last (auto)save to any bug reports.\n\n", this->savegame_filename);
 	} else {
@@ -472,7 +470,7 @@ bool CrashLog::MakeCrashLog()
 	}
 
 	fmt::print("Writing crash screenshot...\n");
-	bret = this->WriteScreenshot();
+	bret = this->TryExecute("screenshot", [this]() { return this->WriteScreenshot(); });
 	if (bret) {
 		fmt::print("Crash screenshot written to {}. Please add this file to any bug reports.\n\n", this->screenshot_filename);
 	} else {
@@ -480,7 +478,7 @@ bool CrashLog::MakeCrashLog()
 		fmt::print("Writing crash screenshot failed.\n\n");
 	}
 
-	this->SendSurvey();
+	this->TryExecute("survey", [this]() { this->SendSurvey(); return true; });
 
 	return ret;
 }

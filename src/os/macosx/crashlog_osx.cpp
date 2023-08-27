@@ -16,6 +16,7 @@
 #include "../../video/video_driver.hpp"
 #include "macos.h"
 
+#include <setjmp.h>
 #include <signal.h>
 #include <mach-o/arch.h>
 #include <dlfcn.h>
@@ -36,6 +37,9 @@
 #endif
 
 #define MAX_STACK_FRAMES 64
+
+/** The signals we want our crash handler to handle. */
+static constexpr int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS, SIGILL, SIGSYS, SIGQUIT };
 
 /**
  * OSX implementation for the crash logger.
@@ -154,11 +158,36 @@ class CrashLogOSX : public CrashLog {
 		return succeeded;
 	}
 
-	int WriteCrashDump() override
+	bool WriteCrashDump() override
 	{
-		return google_breakpad::ExceptionHandler::WriteMinidump(_personal_dir, MinidumpCallback, this) ? 1 : -1;
+		return google_breakpad::ExceptionHandler::WriteMinidump(_personal_dir, MinidumpCallback, this);
 	}
 #endif
+
+	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	{
+		this->try_execute_active = true;
+
+		/* Setup a longjump in case a crash happens. */
+		if (setjmp(this->internal_fault_jmp_buf) != 0) {
+			fmt::print("Something went wrong when attempting to fill {} section of the crash log.\n", section_name);
+
+			/* Reset the signals and continue on. The handler is responsible for dealing with the crash. */
+			sigset_t sigs;
+			sigemptyset(&sigs);
+			for (int signum : _signals_to_handle) {
+				sigaddset(&sigs, signum);
+			}
+			sigprocmask(SIG_UNBLOCK, &sigs, nullptr);
+
+			this->try_execute_active = false;
+			return false;
+		}
+
+		bool res = func();
+		this->try_execute_active = false;
+		return res;
+	}
 
 public:
 	/**
@@ -182,52 +211,108 @@ public:
 
 		ShowMacDialog(crash_title, message.c_str(), "Quit");
 	}
+
+	/** Buffer to track the long jump set setup. */
+	jmp_buf internal_fault_jmp_buf;
+
+	/** Whether we are in a TryExecute block. */
+	bool try_execute_active = false;
+
+	/** Points to the current crash log. */
+	static CrashLogOSX *current;
 };
 
-/** The signals we want our crash handler to handle. */
-static const int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS, SIGILL, SIGSYS };
+/* static */ CrashLogOSX *CrashLogOSX::current = nullptr;
+
+/**
+ * Set a signal handler for all signals we want to capture.
+ *
+ * @param handler The handler to use.
+ * @return sigset_t A sigset_t containing all signals we want to capture.
+ */
+static sigset_t SetSignals(void(*handler)(int))
+{
+	sigset_t sigs;
+	sigemptyset(&sigs);
+	for (int signum : _signals_to_handle) {
+		sigaddset(&sigs, signum);
+	}
+
+	struct sigaction sa;
+	memset(&sa, 0, sizeof(sa));
+	sa.sa_flags = SA_RESTART;
+
+	sigemptyset(&sa.sa_mask);
+	sa.sa_handler = handler;
+	sa.sa_mask = sigs;
+
+	for (int signum : _signals_to_handle) {
+		sigaction(signum, &sa, nullptr);
+	}
+
+	return sigs;
+}
+
+/**
+ * Entry point for a crash that happened during the handling of a crash.
+ *
+ * @param signum the signal that caused us to crash.
+ */
+static void CDECL HandleInternalCrash(int signum)
+{
+	if (CrashLogOSX::current == nullptr || !CrashLogOSX::current->try_execute_active) {
+		fmt::print("Something went seriously wrong when creating the crash log. Aborting.\n");
+		_exit(1);
+	}
+
+	longjmp(CrashLogOSX::current->internal_fault_jmp_buf, 1);
+}
 
 /**
  * Entry point for the crash handler.
- * @note Not static so it shows up in the backtrace.
+ *
  * @param signum the signal that caused us to crash.
  */
-void CDECL HandleCrash(int signum)
+static void CDECL HandleCrash(int signum)
 {
-	/* Disable all handling of signals by us, so we don't go into infinite loops. */
-	for (const int *i = _signals_to_handle; i != endof(_signals_to_handle); i++) {
-		signal(*i, SIG_DFL);
+	if (CrashLogOSX::current != nullptr) {
+		CrashLog::AfterCrashLogCleanup();
+		_exit(2);
 	}
+
+	/* Capture crashing during the handling of a crash. */
+	sigset_t sigs = SetSignals(HandleInternalCrash);
+	sigset_t old_sigset;
+	sigprocmask(SIG_UNBLOCK, &sigs, &old_sigset);
 
 	if (_gamelog.TestEmergency()) {
 		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.",
 				"As you loaded an emergency savegame no crash information will be generated.\n",
 				"Quit");
-		abort();
+		_exit(3);
 	}
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
 		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.",
 				"As you loaded an savegame for which you do not have the required NewGRFs no crash information will be generated.\n",
 				"Quit");
-		abort();
+		_exit(3);
 	}
 
-	CrashLogOSX log(signum);
-	log.MakeCrashLog();
+	CrashLogOSX *log = new CrashLogOSX(signum);
+	CrashLogOSX::current = log;
+	log->MakeCrashLog();
 	if (VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->HasGUI()) {
-		log.DisplayCrashDialog();
+		log->DisplayCrashDialog();
 	}
 
 	CrashLog::AfterCrashLogCleanup();
-	abort();
+	_exit(2);
 }
 
 /* static */ void CrashLog::InitialiseCrashLog()
 {
-	for (const int *i = _signals_to_handle; i != endof(_signals_to_handle); i++) {
-		signal(*i, HandleCrash);
-	}
+	SetSignals(HandleCrash);
 }
 
 /* static */ void CrashLog::InitThread()
