@@ -21,6 +21,7 @@
 #include <mach-o/arch.h>
 #include <dlfcn.h>
 #include <cxxabi.h>
+#include <execinfo.h>
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD
 #	include <client/mac/handler/exception_handler.h>
@@ -83,67 +84,16 @@ class CrashLogOSX : public CrashLog {
 
 	void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const override
 	{
-		/* As backtrace() is only implemented in 10.5 or later,
-		 * we're rolling our own here. Mostly based on
-		 * http://stackoverflow.com/questions/289820/getting-the-current-stack-trace-on-mac-os-x
-		 * and some details looked up in the Darwin sources. */
 		fmt::format_to(output_iterator, "\nStacktrace:\n");
 
-		void **frame;
-#if defined(__ppc__) || defined(__ppc64__)
-		/* Apple says __builtin_frame_address can be broken on PPC. */
-		__asm__ volatile("mr %0, r1" : "=r" (frame));
-#else
-		frame = (void **)__builtin_frame_address(0);
-#endif
+		void *trace[64];
+		int trace_size = backtrace(trace, lengthof(trace));
 
-		for (int i = 0; frame != nullptr && i < MAX_STACK_FRAMES; i++) {
-			/* Get IP for current stack frame. */
-#if defined(__ppc__) || defined(__ppc64__)
-			void *ip = frame[2];
-#else
-			void *ip = frame[1];
-#endif
-			if (ip == nullptr) break;
-
-			/* Print running index. */
-			fmt::format_to(output_iterator, " [{:02}]", i);
-
-			Dl_info dli;
-			bool dl_valid = dladdr(ip, &dli) != 0;
-
-			const char *fname = "???";
-			if (dl_valid && dli.dli_fname) {
-				/* Valid image name? Extract filename from the complete path. */
-				const char *s = strrchr(dli.dli_fname, '/');
-				if (s != nullptr) {
-					fname = s + 1;
-				} else {
-					fname = dli.dli_fname;
-				}
-			}
-			/* Print image name and IP. */
-			fmt::format_to(output_iterator, " {:20s} {}", fname, (uintptr_t)ip);
-
-			/* Print function offset if information is available. */
-			if (dl_valid && dli.dli_sname != nullptr && dli.dli_saddr != nullptr) {
-				/* Try to demangle a possible C++ symbol. */
-				int status = -1;
-				char *func_name = abi::__cxa_demangle(dli.dli_sname, nullptr, 0, &status);
-
-				long int offset = (intptr_t)ip - (intptr_t)dli.dli_saddr;
-				fmt::format_to(output_iterator, " ({} + {})", func_name != nullptr ? func_name : dli.dli_sname, offset);
-
-				free(func_name);
-			}
-			fmt::format_to(output_iterator, "\n");
-
-			/* Get address of next stack frame. */
-			void **next = (void **)frame[0];
-			/* Frame address not increasing or not aligned? Broken stack, exit! */
-			if (next <= frame || !IS_ALIGNED(next)) break;
-			frame = next;
+		char **messages = backtrace_symbols(trace, trace_size);
+		for (int i = 0; i < trace_size; i++) {
+			fmt::format_to(output_iterator, "{}\n", messages[i]);
 		}
+		free(messages);
 
 		fmt::format_to(output_iterator, "\n");
 	}
