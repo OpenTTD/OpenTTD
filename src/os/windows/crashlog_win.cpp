@@ -25,6 +25,8 @@
 
 #if defined(_MSC_VER)
 #	include <dbghelp.h>
+#else
+#	include <setjmp.h>
 #endif
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD
@@ -32,6 +34,21 @@
 #endif
 
 #include "../../safeguards.h"
+
+/** Exception code used for custom abort. */
+static constexpr DWORD CUSTOM_ABORT_EXCEPTION = 0xE1212012;
+
+/**
+ * Forcefully try to terminate the application.
+ *
+ * @param exit_code The exit code to return.
+ */
+static void NORETURN ImmediateExitProcess(uint exit_code)
+{
+	/* TerminateProcess may fail in some special edge cases; fall back to ExitProcess in this case. */
+	TerminateProcess(GetCurrentProcess(), exit_code);
+	ExitProcess(exit_code);
+}
 
 /**
  * Windows implementation for the crash logger.
@@ -55,21 +72,65 @@ public:
 		return succeeded;
 	}
 
-	int WriteCrashDump() override
+	bool WriteCrashDump() override
 	{
-		return google_breakpad::ExceptionHandler::WriteMinidump(OTTD2FS(_personal_dir), MinidumpCallback, this) ? 1 : -1;
+		return google_breakpad::ExceptionHandler::WriteMinidump(OTTD2FS(_personal_dir), MinidumpCallback, this);
 	}
 #endif
+
+#if defined(_MSC_VER)
+	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	{
+		this->try_execute_active = true;
+		bool res;
+
+		__try {
+			res = func();
+		} __except (EXCEPTION_EXECUTE_HANDLER) {
+			fmt::print("Something went wrong when attempting to fill {} section of the crash log.\n", section_name);
+			res = false;
+		}
+
+		this->try_execute_active = false;
+		return res;
+	}
+#else
+	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	{
+		this->try_execute_active = true;
+
+		/* Setup a longjump in case a crash happens. */
+		if (setjmp(this->internal_fault_jmp_buf) != 0) {
+			fmt::print("Something went wrong when attempting to fill {} section of the crash log.\n", section_name);
+
+			this->try_execute_active = false;
+			return false;
+		}
+
+		bool res = func();
+		this->try_execute_active = false;
+		return res;
+	}
+#endif /* _MSC_VER */
 
 	/**
 	 * A crash log is always generated when it's generated.
 	 * @param ep the data related to the exception.
 	 */
-	CrashLogWindows(EXCEPTION_POINTERS *ep = nullptr) : ep(ep) {}
+	CrashLogWindows(EXCEPTION_POINTERS *ep = nullptr) :
+		ep(ep)
+	{
+	}
 
-	/**
-	 * Points to the current crash log.
-	 */
+#if !defined(_MSC_VER)
+	/** Buffer to track the long jump set setup. */
+	jmp_buf internal_fault_jmp_buf;
+#endif
+
+	/** Whether we are in a TryExecute block. */
+	bool try_execute_active = false;
+
+	/** Points to the current crash log. */
 	static CrashLogWindows *current;
 };
 
@@ -248,7 +309,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	if (CrashLogWindows::current != nullptr) {
 		CrashLog::AfterCrashLogCleanup();
-		ExitProcess(2);
+		ImmediateExitProcess(2);
 	}
 
 	if (_gamelog.TestEmergency()) {
@@ -256,7 +317,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			L"A serious fault condition occurred in the game. The game will shut down.\n"
 			L"As you loaded an emergency savegame no crash information will be generated.\n";
 		MessageBox(nullptr, _emergency_crash, L"Fatal Application Failure", MB_ICONERROR);
-		ExitProcess(3);
+		ImmediateExitProcess(3);
 	}
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
@@ -265,7 +326,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			L"As you loaded an savegame for which you do not have the required NewGRFs\n"
 			L"no crash information will be generated.\n";
 		MessageBox(nullptr, _saveload_crash, L"Fatal Application Failure", MB_ICONERROR);
-		ExitProcess(3);
+		ImmediateExitProcess(3);
 	}
 
 	CrashLogWindows *log = new CrashLogWindows(ep);
@@ -293,9 +354,32 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	return EXCEPTION_EXECUTE_HANDLER;
 }
 
+static LONG WINAPI VectoredExceptionHandler(EXCEPTION_POINTERS *ep)
+{
+	if (CrashLogWindows::current != nullptr && CrashLogWindows::current->try_execute_active) {
+#if defined(_MSC_VER)
+		return EXCEPTION_CONTINUE_SEARCH;
+#else
+		longjmp(CrashLogWindows::current->internal_fault_jmp_buf, 1);
+#endif
+	}
+
+	if (ep->ExceptionRecord->ExceptionCode == 0xC0000374 /* heap corruption */) {
+		return ExceptionHandler(ep);
+	}
+	if (ep->ExceptionRecord->ExceptionCode == EXCEPTION_STACK_OVERFLOW) {
+		return ExceptionHandler(ep);
+	}
+	if (ep->ExceptionRecord->ExceptionCode == CUSTOM_ABORT_EXCEPTION) {
+		return ExceptionHandler(ep);
+	}
+
+	return EXCEPTION_CONTINUE_SEARCH;
+}
+
 static void CDECL CustomAbort(int signal)
 {
-	RaiseException(0xE1212012, 0, 0, nullptr);
+	RaiseException(CUSTOM_ABORT_EXCEPTION, 0, 0, nullptr);
 }
 
 /* static */ void CrashLog::InitialiseCrashLog()
@@ -309,6 +393,7 @@ static void CDECL CustomAbort(int signal)
 	_set_abort_behavior(0, _WRITE_ABORT_MSG);
 #endif
 	SetUnhandledExceptionFilter(ExceptionHandler);
+	AddVectoredExceptionHandler(1, VectoredExceptionHandler);
 }
 
 /* static */ void CrashLog::InitThread()
@@ -422,7 +507,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			switch (wParam) {
 				case 12: // Close
 					CrashLog::AfterCrashLogCleanup();
-					ExitProcess(2);
+					ImmediateExitProcess(2);
 				case 15: // Expand window to show crash-message
 					_expanded = !_expanded;
 					SetWndSize(wnd, _expanded);
@@ -431,7 +516,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			return TRUE;
 		case WM_CLOSE:
 			CrashLog::AfterCrashLogCleanup();
-			ExitProcess(2);
+			ImmediateExitProcess(2);
 	}
 
 	return FALSE;

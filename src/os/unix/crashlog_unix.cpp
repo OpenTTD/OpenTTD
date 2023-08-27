@@ -14,6 +14,7 @@
 #include "../../gamelog.h"
 #include "../../saveload/saveload.h"
 
+#include <setjmp.h>
 #include <signal.h>
 #include <sys/utsname.h>
 
@@ -30,7 +31,16 @@
 #	include <client/linux/handler/exception_handler.h>
 #endif
 
+#if defined(__EMSCRIPTEN__)
+#	include <emscripten.h>
+/* We avoid abort(), as it is a SIGBART, and use _exit() instead. But emscripten doesn't know _exit(). */
+#	define _exit emscripten_force_exit
+#endif
+
 #include "../../safeguards.h"
+
+/** The signals we want our crash handler to handle. */
+static constexpr int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS, SIGILL, SIGQUIT };
 
 /**
  * Unix implementation for the crash logger.
@@ -100,11 +110,36 @@ class CrashLogUnix : public CrashLog {
 		return succeeded;
 	}
 
-	int WriteCrashDump() override
+	bool WriteCrashDump() override
 	{
-		return google_breakpad::ExceptionHandler::WriteMinidump(_personal_dir, MinidumpCallback, this) ? 1 : -1;
+		return google_breakpad::ExceptionHandler::WriteMinidump(_personal_dir, MinidumpCallback, this);
 	}
 #endif
+
+	/* virtual */ bool TryExecute(std::string_view section_name, std::function<bool()> &&func) override
+	{
+		this->try_execute_active = true;
+
+		/* Setup a longjump in case a crash happens. */
+		if (setjmp(this->internal_fault_jmp_buf) != 0) {
+			fmt::print("Something went wrong when attempting to fill {} section of the crash log.\n", section_name);
+
+			/* Reset the signals and continue on. The handler is responsible for dealing with the crash. */
+			sigset_t sigs;
+			sigemptyset(&sigs);
+			for (int signum : _signals_to_handle) {
+				sigaddset(&sigs, signum);
+			}
+			sigprocmask(SIG_UNBLOCK, &sigs, nullptr);
+
+			this->try_execute_active = false;
+			return false;
+		}
+
+		bool res = func();
+		this->try_execute_active = false;
+		return res;
+	}
 
 public:
 	/**
@@ -115,48 +150,104 @@ public:
 		signum(signum)
 	{
 	}
+
+	/** Buffer to track the long jump set setup. */
+	jmp_buf internal_fault_jmp_buf;
+
+	/** Whether we are in a TryExecute block. */
+	bool try_execute_active = false;
+
+	/** Points to the current crash log. */
+	static CrashLogUnix *current;
 };
 
-/** The signals we want our crash handler to handle. */
-static const int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS, SIGILL };
+/* static */ CrashLogUnix *CrashLogUnix::current = nullptr;
+
+/**
+ * Set a signal handler for all signals we want to capture.
+ *
+ * @param handler The handler to use.
+ * @return sigset_t A sigset_t containing all signals we want to capture.
+ */
+static sigset_t SetSignals(void(*handler)(int))
+{
+	sigset_t sigs;
+	sigemptyset(&sigs);
+	for (int signum : _signals_to_handle) {
+		sigaddset(&sigs, signum);
+	}
+
+	struct sigaction sa;
+	memset(&sa, 0, sizeof(sa));
+	sa.sa_flags = SA_RESTART;
+
+	sigemptyset(&sa.sa_mask);
+	sa.sa_handler = handler;
+	sa.sa_mask = sigs;
+
+	for (int signum : _signals_to_handle) {
+		sigaction(signum, &sa, nullptr);
+	}
+
+	return sigs;
+}
+
+/**
+ * Entry point for a crash that happened during the handling of a crash.
+ *
+ * @param signum the signal that caused us to crash.
+ */
+static void CDECL HandleInternalCrash(int signum)
+{
+	if (CrashLogUnix::current == nullptr || !CrashLogUnix::current->try_execute_active) {
+		fmt::print("Something went seriously wrong when creating the crash log. Aborting.\n");
+		_exit(1);
+	}
+
+	longjmp(CrashLogUnix::current->internal_fault_jmp_buf, 1);
+}
 
 /**
  * Entry point for the crash handler.
- * @note Not static so it shows up in the backtrace.
+ *
  * @param signum the signal that caused us to crash.
  */
 static void CDECL HandleCrash(int signum)
 {
-	/* Disable all handling of signals by us, so we don't go into infinite loops. */
-	for (const int *i = _signals_to_handle; i != endof(_signals_to_handle); i++) {
-		signal(*i, SIG_DFL);
+	if (CrashLogUnix::current != nullptr) {
+		CrashLog::AfterCrashLogCleanup();
+		_exit(2);
 	}
+
+	/* Capture crashing during the handling of a crash. */
+	sigset_t sigs = SetSignals(HandleInternalCrash);
+	sigset_t old_sigset;
+	sigprocmask(SIG_UNBLOCK, &sigs, &old_sigset);
 
 	if (_gamelog.TestEmergency()) {
 		fmt::print("A serious fault condition occurred in the game. The game will shut down.\n");
 		fmt::print("As you loaded an emergency savegame no crash information will be generated.\n");
-		abort();
+		_exit(3);
 	}
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
 		fmt::print("A serious fault condition occurred in the game. The game will shut down.\n");
 		fmt::print("As you loaded an savegame for which you do not have the required NewGRFs\n");
 		fmt::print("no crash information will be generated.\n");
-		abort();
+		_exit(3);
 	}
 
-	CrashLogUnix log(signum);
-	log.MakeCrashLog();
+	CrashLogUnix *log = new CrashLogUnix(signum);
+	CrashLogUnix::current = log;
+	log->MakeCrashLog();
 
 	CrashLog::AfterCrashLogCleanup();
-	abort();
+	_exit(2);
 }
 
 /* static */ void CrashLog::InitialiseCrashLog()
 {
-	for (const int *i = _signals_to_handle; i != endof(_signals_to_handle); i++) {
-		signal(*i, HandleCrash);
-	}
+	SetSignals(HandleCrash);
 }
 
 /* static */ void CrashLog::InitThread()

@@ -52,6 +52,17 @@ protected:
 
 	std::string CreateFileName(const char *ext, bool with_dir = true) const;
 
+	/**
+	 * Execute the func() and return its value. If any exception / signal / crash happens,
+	 * catch it and return false. This function should, in theory, never not return, even
+	 * in the worst conditions.
+	 *
+	 * @param section_name The name of the section to be executed. Printed when a crash happens.
+	 * @param func The function to call.
+	 * @return true iff the function returned true.
+	 */
+	virtual bool TryExecute(std::string_view section_name, std::function<bool()> &&func) = 0;
+
 public:
 	/** Stub destructor to silence some compilers. */
 	virtual ~CrashLog() = default;
@@ -65,7 +76,7 @@ public:
 	void FillCrashLog(std::back_insert_iterator<std::string> &output_iterator) const;
 	bool WriteCrashLog();
 
-	virtual int WriteCrashDump();
+	virtual bool WriteCrashDump();
 	bool WriteSavegame();
 	bool WriteScreenshot();
 
