@@ -41,24 +41,14 @@
 
 	::Company *c = ::Company::Get((::CompanyID)company);
 	switch (infra_type) {
-		case INFRASTRUCTURE_RAIL: {
-			uint32_t count = 0;
-			for (::RailType rt = ::RAILTYPE_BEGIN; rt != ::RAILTYPE_END; rt++) {
-				count += c->infrastructure.rail[rt];
-			}
-			return count;
-		}
+		case INFRASTRUCTURE_RAIL:
+			return c->infrastructure.GetRailTotal();
 
 		case INFRASTRUCTURE_SIGNALS:
 			return c->infrastructure.signal;
 
-		case INFRASTRUCTURE_ROAD: {
-			uint32_t count = 0;
-			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
-				count += c->infrastructure.road[rt];
-			}
-			return count;
-		}
+		case INFRASTRUCTURE_ROAD:
+			return c->infrastructure.GetRoadTotal() + c->infrastructure.GetTramTotal();
 
 		case INFRASTRUCTURE_CANAL:
 			return c->infrastructure.water;
