@@ -249,6 +249,21 @@ static void SurveyCompanies(nlohmann::json &survey)
 }
 
 /**
+ * Convert timer information to JSON.
+ *
+ * @param survey The JSON object.
+ */
+static void SurveyTimers(nlohmann::json &survey)
+{
+	survey["ticks"] = TimerGameTick::counter;
+	survey["seconds"] = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - _switch_mode_time).count();
+
+	TimerGameCalendar::YearMonthDay ymd;
+	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	survey["calendar"] = fmt::format("{:04}-{:02}-{:02} ({})", ymd.year, ymd.month + 1, ymd.day, TimerGameCalendar::date_fract);
+}
+
+/**
  * Convert GRF information to JSON.
  *
  * @param survey The JSON object.
@@ -356,8 +371,7 @@ std::string NetworkSurveyHandler::CreatePayload(Reason reason, bool for_preview)
 
 	{
 		auto &game = survey["game"];
-		game["ticks"] = TimerGameTick::counter;
-		game["time"] = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - _switch_mode_time).count();
+		SurveyTimers(game["timers"]);
 		SurveyCompanies(game["companies"]);
 		SurveySettings(game["settings"]);
 		SurveyGrfs(game["grfs"]);
