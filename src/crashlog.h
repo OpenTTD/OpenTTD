@@ -10,6 +10,8 @@
 #ifndef CRASHLOG_H
 #define CRASHLOG_H
 
+#include "3rdparty/nlohmann/json.hpp"
+
 /**
  * Helper class for creating crash logs.
  */
@@ -17,40 +19,20 @@ class CrashLog {
 private:
 	/** Error message coming from #FatalError(format, ...). */
 	static std::string message;
-protected:
-	/**
-	 * Writes OS' version to the buffer.
-	 * @param output_iterator Iterator to write the output to.
-	 */
-	virtual void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const = 0;
 
 	/**
-	 * Writes compiler (and its version, if available) to the buffer.
-	 * @param output_iterator Iterator to write the output to.
+	 * Convert system crash reason to JSON.
+	 *
+	 * @param survey The JSON object.
 	 */
-	virtual void LogCompiler(std::back_insert_iterator<std::string> &output_iterator) const;
+	virtual void SurveyCrash(nlohmann::json &survey) const = 0;
 
 	/**
-	 * Writes actually encountered error to the buffer.
-	 * @param output_iterator Iterator to write the output to.
-	 * @param message Message passed to use for errors.
+	 * Convert stacktrace to JSON.
+	 *
+	 * @param survey The JSON object.
 	 */
-	virtual void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const = 0;
-
-	/**
-	 * Writes the stack trace to the buffer, if there is information about it
-	 * available.
-	 * @param output_iterator Iterator to write the output to.
-	 */
-	virtual void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const = 0;
-
-	void LogOpenTTDVersion(std::back_insert_iterator<std::string> &output_iterator) const;
-	void LogConfiguration(std::back_insert_iterator<std::string> &output_iterator) const;
-	void LogLibraries(std::back_insert_iterator<std::string> &output_iterator) const;
-	void LogGamelog(std::back_insert_iterator<std::string> &output_iterator) const;
-	void LogRecentNews(std::back_insert_iterator<std::string> &output_iterator) const;
-
-	std::string CreateFileName(const char *ext, bool with_dir = true) const;
+	virtual void SurveyStacktrace(nlohmann::json &survey) const = 0;
 
 	/**
 	 * Execute the func() and return its value. If any exception / signal / crash happens,
@@ -63,19 +45,23 @@ protected:
 	 */
 	virtual bool TryExecute(std::string_view section_name, std::function<bool()> &&func) = 0;
 
+protected:
+	std::string CreateFileName(const char *ext, bool with_dir = true) const;
+
 public:
 	/** Stub destructor to silence some compilers. */
 	virtual ~CrashLog() = default;
 
-	std::string crashlog;
+	nlohmann::json survey;
 	std::string crashlog_filename;
 	std::string crashdump_filename;
 	std::string savegame_filename;
 	std::string screenshot_filename;
 
-	void FillCrashLog(std::back_insert_iterator<std::string> &output_iterator) const;
-	bool WriteCrashLog();
+	void FillCrashLog();
+	void PrintCrashLog() const;
 
+	bool WriteCrashLog();
 	virtual bool WriteCrashDump();
 	bool WriteSavegame();
 	bool WriteScreenshot();

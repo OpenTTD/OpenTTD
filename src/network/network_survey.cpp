@@ -43,6 +43,7 @@ std::string NetworkSurveyHandler::CreatePayload(Reason reason, bool for_preview)
 	survey["schema"] = NETWORK_SURVEY_VERSION;
 	survey["reason"] = reason;
 	survey["id"] = _savegame_id;
+	survey["date"] = fmt::format("{:%Y-%m-%d %H:%M:%S} (UTC)", fmt::gmtime(time(nullptr)));
 
 #ifdef SURVEY_KEY
 	/* We censor the key to avoid people trying to be "clever" and use it to send their own surveys. */
@@ -57,6 +58,8 @@ std::string NetworkSurveyHandler::CreatePayload(Reason reason, bool for_preview)
 		SurveyOpenTTD(info["openttd"]);
 		SurveyConfiguration(info["configuration"]);
 		SurveyFont(info["font"]);
+		SurveyCompiler(info["compiler"]);
+		SurveyLibraries(info["libraries"]);
 	}
 
 	{

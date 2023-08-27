@@ -9,297 +9,60 @@
 
 #include "stdafx.h"
 #include "crashlog.h"
+#include "survey.h"
 #include "gamelog.h"
-#include "timer/timer_game_calendar.h"
 #include "map_func.h"
-#include "rev.h"
-#include "strings_func.h"
-#include "blitter/factory.hpp"
-#include "base_media_base.h"
 #include "music/music_driver.hpp"
 #include "sound/sound_driver.hpp"
 #include "video/video_driver.hpp"
 #include "saveload/saveload.h"
 #include "screenshot.h"
-#include "gfx_func.h"
-#include "network/network.h"
 #include "network/network_survey.h"
-#include "language.h"
-#include "fontcache.h"
 #include "news_gui.h"
+#include "fileio_func.h"
+#include "fileio_type.h"
 
-#include "ai/ai_info.hpp"
-#include "game/game.hpp"
-#include "game/game_info.hpp"
-#include "company_base.h"
 #include "company_func.h"
 #include "3rdparty/fmt/chrono.h"
 #include "3rdparty/fmt/std.h"
-
-#ifdef WITH_ALLEGRO
-#	include <allegro.h>
-#endif /* WITH_ALLEGRO */
-#ifdef WITH_FONTCONFIG
-#	include <fontconfig/fontconfig.h>
-#endif /* WITH_FONTCONFIG */
-#ifdef WITH_PNG
-	/* pngconf.h, included by png.h doesn't like something in the
-	 * freetype headers. As such it's not alphabetically sorted. */
-#	include <png.h>
-#endif /* WITH_PNG */
-#ifdef WITH_FREETYPE
-#	include <ft2build.h>
-#	include FT_FREETYPE_H
-#endif /* WITH_FREETYPE */
-#ifdef WITH_HARFBUZZ
-#	include <hb.h>
-#endif /* WITH_HARFBUZZ */
-#ifdef WITH_ICU_I18N
-#	include <unicode/uversion.h>
-#endif /* WITH_ICU_I18N */
-#ifdef WITH_LIBLZMA
-#	include <lzma.h>
-#endif
-#ifdef WITH_LZO
-#include <lzo/lzo1x.h>
-#endif
-#if defined(WITH_SDL) || defined(WITH_SDL2)
-#	include <SDL.h>
-#endif /* WITH_SDL || WITH_SDL2 */
-#ifdef WITH_ZLIB
-# include <zlib.h>
-#endif
-#ifdef WITH_CURL
-# include <curl/curl.h>
-#endif
+#include "core/format.hpp"
 
 #include "safeguards.h"
 
-/* static */ std::string CrashLog::message{ "<none>" };
+/* static */ std::string CrashLog::message{};
 
-void CrashLog::LogCompiler(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	fmt::format_to(output_iterator, " Compiler: "
-#if defined(_MSC_VER)
-			"MSVC {}", _MSC_VER
-#elif defined(__ICC) && defined(__GNUC__)
-			"ICC {} (GCC {}.{}.{} mode)", __ICC,  __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__
-#elif defined(__ICC)
-			"ICC {}", __ICC
-#elif defined(__GNUC__)
-			"GCC {}.{}.{}", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__
-#else
-			"<unknown>"
-#endif
-			);
-#if defined(__VERSION__)
-	fmt::format_to(output_iterator, " \"" __VERSION__ "\"\n\n");
-#else
-	fmt::format_to(output_iterator, "\n\n");
-#endif
-}
-
-/**
- * Writes OpenTTD's version to the buffer.
- * @param output_iterator Iterator to write the output to.
- */
-void CrashLog::LogOpenTTDVersion(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	fmt::format_to(output_iterator,
-			"OpenTTD version:\n"
-			" Version:    {} ({})\n"
-			" NewGRF ver: {:08x}\n"
-			" Bits:       {}\n"
-			" Endian:     {}\n"
-			" Dedicated:  {}\n"
-			" Build date: {}\n\n",
-			_openttd_revision,
-			_openttd_revision_modified,
-			_openttd_newgrf_version,
-#ifdef POINTER_IS_64BIT
-			64,
-#else
-			32,
-#endif
-#if (TTD_ENDIAN == TTD_LITTLE_ENDIAN)
-			"little",
-#else
-			"big",
-#endif
-#ifdef DEDICATED
-			"yes",
-#else
-			"no",
-#endif
-			_openttd_build_date
-	);
-}
-
-/**
- * Writes the (important) configuration settings to the buffer.
- * E.g. graphics set, sound set, blitter and AIs.
- * @param output_iterator Iterator to write the output to.
- */
-void CrashLog::LogConfiguration(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	fmt::format_to(output_iterator,
-			"Configuration:\n"
-			" Blitter:      {}\n"
-			" Graphics set: {} ({})\n"
-			" Language:     {}\n"
-			" Music driver: {}\n"
-			" Music set:    {} ({})\n"
-			" Network:      {}\n"
-			" Sound driver: {}\n"
-			" Sound set:    {} ({})\n"
-			" Video driver: {}\n\n",
-			BlitterFactory::GetCurrentBlitter() == nullptr ? "none" : BlitterFactory::GetCurrentBlitter()->GetName(),
-			BaseGraphics::GetUsedSet() == nullptr ? "none" : BaseGraphics::GetUsedSet()->name,
-			BaseGraphics::GetUsedSet() == nullptr ? UINT32_MAX : BaseGraphics::GetUsedSet()->version,
-			_current_language == nullptr ? "none" : _current_language->file.filename(),
-			MusicDriver::GetInstance() == nullptr ? "none" : MusicDriver::GetInstance()->GetName(),
-			BaseMusic::GetUsedSet() == nullptr ? "none" : BaseMusic::GetUsedSet()->name,
-			BaseMusic::GetUsedSet() == nullptr ? UINT32_MAX : BaseMusic::GetUsedSet()->version,
-			_networking ? (_network_server ? "server" : "client") : "no",
-			SoundDriver::GetInstance() == nullptr ? "none" : SoundDriver::GetInstance()->GetName(),
-			BaseSounds::GetUsedSet() == nullptr ? "none" : BaseSounds::GetUsedSet()->name,
-			BaseSounds::GetUsedSet() == nullptr ? UINT32_MAX : BaseSounds::GetUsedSet()->version,
-			VideoDriver::GetInstance() == nullptr ? "none" : VideoDriver::GetInstance()->GetInfoString()
-	);
-
-	fmt::format_to(output_iterator,
-			"Fonts:\n"
-			" Small:  {}\n"
-			" Medium: {}\n"
-			" Large:  {}\n"
-			" Mono:   {}\n\n",
-			FontCache::GetName(FS_SMALL),
-			FontCache::GetName(FS_NORMAL),
-			FontCache::GetName(FS_LARGE),
-			FontCache::GetName(FS_MONO)
-	);
-
-	fmt::format_to(output_iterator, "AI Configuration (local: {}) (current: {}):\n", _local_company, _current_company);
-	for (const Company *c : Company::Iterate()) {
-		if (c->ai_info == nullptr) {
-			fmt::format_to(output_iterator, " {:2}: Human\n", c->index);
-		} else {
-			fmt::format_to(output_iterator, " {:2}: {} (v{})\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
-		}
-	}
-
-	if (Game::GetInfo() != nullptr) {
-		fmt::format_to(output_iterator, " GS: {} (v{})\n", Game::GetInfo()->GetName(), Game::GetInfo()->GetVersion());
-	}
-	fmt::format_to(output_iterator, "\n");
-}
-
-/**
- * Writes information (versions) of the used libraries.
- * @param output_iterator Iterator to write the output to.
- */
-void CrashLog::LogLibraries(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	fmt::format_to(output_iterator, "Libraries:\n");
-
-#ifdef WITH_ALLEGRO
-	fmt::format_to(output_iterator, " Allegro:    {}\n", allegro_id);
-#endif /* WITH_ALLEGRO */
-
-#ifdef WITH_FONTCONFIG
-	int version = FcGetVersion();
-	fmt::format_to(output_iterator, " FontConfig: {}.{}.{}\n", version / 10000, (version / 100) % 100, version % 100);
-#endif /* WITH_FONTCONFIG */
-
-#ifdef WITH_FREETYPE
-	FT_Library library;
-	int major, minor, patch;
-	FT_Init_FreeType(&library);
-	FT_Library_Version(library, &major, &minor, &patch);
-	FT_Done_FreeType(library);
-	fmt::format_to(output_iterator, " FreeType:   {}.{}.{}\n", major, minor, patch);
-#endif /* WITH_FREETYPE */
-
-#if defined(WITH_HARFBUZZ)
-	fmt::format_to(output_iterator, " HarfBuzz:   {}\n", hb_version_string());
-#endif /* WITH_HARFBUZZ */
-
-#if defined(WITH_ICU_I18N)
-	/* 4 times 0-255, separated by dots (.) and a trailing '\0' */
-	char buf[4 * 3 + 3 + 1];
-	UVersionInfo ver;
-	u_getVersion(ver);
-	u_versionToString(ver, buf);
-	fmt::format_to(output_iterator, " ICU i18n:   {}\n", buf);
-#endif /* WITH_ICU_I18N */
-
-#ifdef WITH_LIBLZMA
-	fmt::format_to(output_iterator, " LZMA:       {}\n", lzma_version_string());
-#endif
-
-#ifdef WITH_LZO
-	fmt::format_to(output_iterator, " LZO:        {}\n", lzo_version_string());
-#endif
-
-#ifdef WITH_PNG
-	fmt::format_to(output_iterator, " PNG:        {}\n", png_get_libpng_ver(nullptr));
-#endif /* WITH_PNG */
-
-#ifdef WITH_SDL
-	const SDL_version *sdl_v = SDL_Linked_Version();
-	fmt::format_to(output_iterator, " SDL1:       {}.{}.{}\n", sdl_v->major, sdl_v->minor, sdl_v->patch);
-#elif defined(WITH_SDL2)
-	SDL_version sdl2_v;
-	SDL_GetVersion(&sdl2_v);
-	fmt::format_to(output_iterator, " SDL2:       {}.{}.{}\n", sdl2_v.major, sdl2_v.minor, sdl2_v.patch);
-#endif
-
-#ifdef WITH_ZLIB
-	fmt::format_to(output_iterator, " Zlib:       {}\n", zlibVersion());
-#endif
-
-#ifdef WITH_CURL
-	auto *curl_v = curl_version_info(CURLVERSION_NOW);
-	fmt::format_to(output_iterator, " Curl:       {}\n", curl_v->version);
-	if (curl_v->ssl_version != nullptr) {
-		fmt::format_to(output_iterator, " Curl SSL:   {}\n", curl_v->ssl_version);
-	} else {
-		fmt::format_to(output_iterator, " Curl SSL:   none\n");
-	}
-#endif
-
-	fmt::format_to(output_iterator, "\n");
-}
+/** The version of the schema of the JSON information. */
+constexpr uint8_t CRASHLOG_SURVEY_VERSION = 1;
 
 /**
  * Writes the gamelog data to the buffer.
  * @param output_iterator Iterator to write the output to.
  */
-void CrashLog::LogGamelog(std::back_insert_iterator<std::string> &output_iterator) const
+static void SurveyGamelog(nlohmann::json &json)
 {
-	_gamelog.Print([&output_iterator](const std::string &s) {
-		fmt::format_to(output_iterator, "{}\n", s);
+	json = nlohmann::json::array();
+
+	_gamelog.Print([&json](const std::string &s) {
+		json.push_back(s);
 	});
-	fmt::format_to(output_iterator, "\n");
 }
 
 /**
  * Writes up to 32 recent news messages to the buffer, with the most recent first.
  * @param output_iterator Iterator to write the output to.
  */
-void CrashLog::LogRecentNews(std::back_insert_iterator<std::string> &output_iterator) const
+static void SurveyRecentNews(nlohmann::json &json)
 {
-	fmt::format_to(output_iterator, "Recent news messages:\n");
+	json = nlohmann::json::array();
 
 	int i = 0;
 	for (NewsItem *news = _latest_news; i < 32 && news != nullptr; news = news->prev, i++) {
 		TimerGameCalendar::YearMonthDay ymd;
 		TimerGameCalendar::ConvertDateToYMD(news->date, &ymd);
-		fmt::format_to(output_iterator, "({}-{:02}-{:02}) StringID: {}, Type: {}, Ref1: {}, {}, Ref2: {}, {}\n",
-		                   ymd.year, ymd.month + 1, ymd.day, news->string_id, news->type,
-		                   news->reftype1, news->ref1, news->reftype2, news->ref2);
+		json.push_back(fmt::format("({}-{:02}-{:02}) StringID: {}, Type: {}, Ref1: {}, {}, Ref2: {}, {}",
+		               ymd.year, ymd.month + 1, ymd.day, news->string_id, news->type,
+		               news->reftype1, news->ref1, news->reftype2, news->ref2));
 	}
-	fmt::format_to(output_iterator, "\n");
 }
 
 /**
@@ -320,28 +83,95 @@ std::string CrashLog::CreateFileName(const char *ext, bool with_dir) const
 
 /**
  * Fill the crash log buffer with all data of a crash log.
- * @param output_iterator Iterator to write the output to.
  */
-void CrashLog::FillCrashLog(std::back_insert_iterator<std::string> &output_iterator) const
+void CrashLog::FillCrashLog()
 {
-	fmt::format_to(output_iterator, "*** OpenTTD Crash Report ***\n\n");
-	fmt::format_to(output_iterator, "Crash at: {:%Y-%m-%d %H:%M:%S} (UTC)\n", fmt::gmtime(time(nullptr)));
+	/* Reminder: this JSON is read in an automated fashion.
+	 * If any structural changes are applied, please bump the version. */
+	this->survey["schema"] = CRASHLOG_SURVEY_VERSION;
+	this->survey["date"] = fmt::format("{:%Y-%m-%d %H:%M:%S} (UTC)", fmt::gmtime(time(nullptr)));
 
-	TimerGameCalendar::YearMonthDay ymd;
-	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
-	fmt::format_to(output_iterator, "In game date: {}-{:02}-{:02} ({})\n\n", ymd.year, ymd.month + 1, ymd.day, TimerGameCalendar::date_fract);
+	/* If no internal reason was logged, it must be a crash. */
+	if (CrashLog::message.empty()) {
+		this->SurveyCrash(this->survey["crash"]);
+	} else {
+		this->survey["crash"]["reason"] = CrashLog::message;
+		CrashLog::message.clear();
+	}
 
-	this->LogError(output_iterator, CrashLog::message);
-	this->LogOpenTTDVersion(output_iterator);
-	this->LogStacktrace(output_iterator);
-	this->LogOSVersion(output_iterator);
-	this->LogCompiler(output_iterator);
-	this->LogConfiguration(output_iterator);
-	this->LogLibraries(output_iterator);
-	this->LogGamelog(output_iterator);
-	this->LogRecentNews(output_iterator);
+	if (!this->TryExecute("stacktrace", [this]() { this->SurveyStacktrace(this->survey["stacktrace"]); return true; })) {
+		this->survey["stacktrace"] = "crashed while gathering information";
+	}
 
-	fmt::format_to(output_iterator, "*** End of OpenTTD Crash Report ***\n");
+	{
+		auto &info = this->survey["info"];
+		if (!this->TryExecute("os", [&info]() { SurveyOS(info["os"]); return true; })) {
+			info["os"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("openttd", [&info]() { SurveyOpenTTD(info["openttd"]); return true; })) {
+			info["openttd"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("configuration", [&info]() { SurveyConfiguration(info["configuration"]); return true; })) {
+			info["configuration"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("font", [&info]() { SurveyFont(info["font"]); return true; })) {
+			info["font"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("compiler", [&info]() { SurveyCompiler(info["compiler"]); return true; })) {
+			info["compiler"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("libraries", [&info]() { SurveyLibraries(info["libraries"]); return true; })) {
+			info["libraries"] = "crashed while gathering information";
+		}
+	}
+
+	{
+		auto &game = this->survey["game"];
+		game["local_company"] = _local_company;
+		game["current_company"] = _current_company;
+
+		if (!this->TryExecute("timers", [&game]() { SurveyTimers(game["timers"]); return true; })) {
+			game["libraries"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("companies", [&game]() { SurveyCompanies(game["companies"]); return true; })) {
+			game["companies"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("settings", [&game]() { SurveySettings(game["settings"]); return true; })) {
+			game["settings"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("grfs", [&game]() { SurveyGrfs(game["grfs"]); return true; })) {
+			game["grfs"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("game_script", [&game]() { SurveyGameScript(game["game_script"]); return true; })) {
+			game["game_script"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("gamelog", [&game]() { SurveyGamelog(game["gamelog"]); return true; })) {
+			game["gamelog"] = "crashed while gathering information";
+		}
+		if (!this->TryExecute("news", [&game]() { SurveyRecentNews(game["news"]); return true; })) {
+			game["news"] = "crashed while gathering information";
+		}
+	}
+}
+
+void CrashLog::PrintCrashLog() const
+{
+	fmt::print("  OpenTTD version:\n");
+	fmt::print("    Version: {}\n", this->survey["info"]["openttd"]["version"]["revision"].get<std::string>());
+	fmt::print("    Hash: {}\n", this->survey["info"]["openttd"]["version"]["hash"].get<std::string>());
+	fmt::print("    NewGRF ver: {}\n", this->survey["info"]["openttd"]["version"]["newgrf"].get<std::string>());
+	fmt::print("    Content ver: {}\n", this->survey["info"]["openttd"]["version"]["content"].get<std::string>());
+	fmt::print("\n");
+
+	fmt::print("  Crash:\n");
+	fmt::print("    Reason: {}\n", this->survey["crash"]["reason"].get<std::string>());
+	fmt::print("\n");
+
+	fmt::print("  Stacktrace:\n");
+	for (const auto &line : this->survey["stacktrace"]) {
+		fmt::print("    {}\n", line.get<std::string>());
+	}
+	fmt::print("\n");
 }
 
 /**
@@ -351,13 +181,15 @@ void CrashLog::FillCrashLog(std::back_insert_iterator<std::string> &output_itera
  */
 bool CrashLog::WriteCrashLog()
 {
-	this->crashlog_filename = this->CreateFileName(".log");
+	this->crashlog_filename = this->CreateFileName(".json.log");
 
 	FILE *file = FioFOpenFile(this->crashlog_filename, "w", NO_DIRECTORY);
 	if (file == nullptr) return false;
 
-	size_t len = this->crashlog.size();
-	size_t written = fwrite(this->crashlog.data(), 1, len, file);
+	std::string survey_json = this->survey.dump(4);
+
+	size_t len = survey_json.size();
+	size_t written = fwrite(survey_json.data(), 1, len, file);
 
 	FioFCloseFile(file);
 	return len == written;
@@ -414,6 +246,9 @@ bool CrashLog::WriteScreenshot()
 	return res;
 }
 
+/**
+ * Send the survey result, noting it was a crash.
+ */
 void CrashLog::SendSurvey() const
 {
 	if (_game_mode == GM_NORMAL) {
@@ -433,13 +268,12 @@ void CrashLog::MakeCrashLog()
 	if (crashlogged) return;
 	crashlogged = true;
 
-	crashlog.reserve(65536);
-	auto output_iterator = std::back_inserter(crashlog);
-
 	fmt::print("Crash encountered, generating crash log...\n");
-	this->FillCrashLog(output_iterator);
-	fmt::print("{}\n", crashlog);
+	this->FillCrashLog();
 	fmt::print("Crash log generated.\n\n");
+
+	fmt::print("Crash in summary:\n");
+	this->TryExecute("crashlog", [this]() { this->PrintCrashLog(); return true; });
 
 	fmt::print("Writing crash log to disk...\n");
 	bool ret = this->TryExecute("crashlog", [this]() { return this->WriteCrashLog(); });

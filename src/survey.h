@@ -15,10 +15,12 @@
 std::string SurveyMemoryToText(uint64_t memory);
 
 void SurveyCompanies(nlohmann::json &survey);
+void SurveyCompiler(nlohmann::json &survey);
 void SurveyConfiguration(nlohmann::json &survey);
 void SurveyFont(nlohmann::json &survey);
 void SurveyGameScript(nlohmann::json &survey);
 void SurveyGrfs(nlohmann::json &survey);
+void SurveyLibraries(nlohmann::json &survey);
 void SurveyOpenTTD(nlohmann::json &survey);
 void SurveySettings(nlohmann::json &survey);
 void SurveyTimers(nlohmann::json &survey);

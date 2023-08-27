@@ -32,6 +32,43 @@
 #include "base_media_base.h"
 #include "blitter/factory.hpp"
 
+#ifdef WITH_ALLEGRO
+#	include <allegro.h>
+#endif /* WITH_ALLEGRO */
+#ifdef WITH_FONTCONFIG
+#	include <fontconfig/fontconfig.h>
+#endif /* WITH_FONTCONFIG */
+#ifdef WITH_PNG
+	/* pngconf.h, included by png.h doesn't like something in the
+	 * freetype headers. As such it's not alphabetically sorted. */
+#	include <png.h>
+#endif /* WITH_PNG */
+#ifdef WITH_FREETYPE
+#	include <ft2build.h>
+#	include FT_FREETYPE_H
+#endif /* WITH_FREETYPE */
+#ifdef WITH_HARFBUZZ
+#	include <hb.h>
+#endif /* WITH_HARFBUZZ */
+#ifdef WITH_ICU_I18N
+#	include <unicode/uversion.h>
+#endif /* WITH_ICU_I18N */
+#ifdef WITH_LIBLZMA
+#	include <lzma.h>
+#endif
+#ifdef WITH_LZO
+#include <lzo/lzo1x.h>
+#endif
+#if defined(WITH_SDL) || defined(WITH_SDL2)
+#	include <SDL.h>
+#endif /* WITH_SDL || WITH_SDL2 */
+#ifdef WITH_ZLIB
+# include <zlib.h>
+#endif
+#ifdef WITH_CURL
+# include <curl/curl.h>
+#endif
+
 #include "safeguards.h"
 
 NLOHMANN_JSON_SERIALIZE_ENUM(GRFStatus, {
@@ -114,6 +151,34 @@ void SurveySettings(nlohmann::json &survey)
 	}
 	SurveySettingsTable(survey, _currency_settings, &_custom_currency);
 	SurveySettingsTable(survey, _company_settings, &_settings_client.company);
+}
+
+/**
+ * Convert compiler information to JSON.
+ *
+ * @param survey The JSON object.
+ */
+void SurveyCompiler(nlohmann::json &survey)
+{
+#if defined(_MSC_VER)
+	survey["name"] = "MSVC";
+	survey["version"] = _MSC_VER;
+#elif defined(__ICC) && defined(__GNUC__)
+	survey["name"] = "ICC";
+	survey["version"] = __ICC;
+#	if defined(__GNUC__)
+		survey["extra"] = fmt::format("GCC {}.{}.{} mode", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
+#	endif
+#elif defined(__GNUC__)
+	survey["name"] = "GCC";
+	survey["version"] = fmt::format("{}.{}.{}", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
+#else
+	survey["name"] = "unknown";
+#endif
+
+#if defined(__VERSION__)
+	survey["extra"] = __VERSION__;
+#endif
 }
 
 /**
@@ -291,6 +356,76 @@ void SurveyGameScript(nlohmann::json &survey)
 	if (Game::GetInfo() == nullptr) return;
 
 	survey = fmt::format("{}.{}", Game::GetInfo()->GetName(), Game::GetInfo()->GetVersion());
+}
+
+/**
+ * Convert compiled libraries information to JSON.
+ *
+ * @param survey The JSON object.
+ */
+void SurveyLibraries(nlohmann::json &survey)
+{
+#ifdef WITH_ALLEGRO
+	survey["allegro"] = std::string(allegro_id);
+#endif /* WITH_ALLEGRO */
+
+#ifdef WITH_FONTCONFIG
+	int version = FcGetVersion();
+	survey["fontconfig"] = fmt::format("{}.{}.{}", version / 10000, (version / 100) % 100, version % 100);
+#endif /* WITH_FONTCONFIG */
+
+#ifdef WITH_FREETYPE
+	FT_Library library;
+	int major, minor, patch;
+	FT_Init_FreeType(&library);
+	FT_Library_Version(library, &major, &minor, &patch);
+	FT_Done_FreeType(library);
+	survey["freetype"] = fmt::format("{}.{}.{}", major, minor, patch);
+#endif /* WITH_FREETYPE */
+
+#if defined(WITH_HARFBUZZ)
+	survey["harfbuzz"] = hb_version_string();
+#endif /* WITH_HARFBUZZ */
+
+#if defined(WITH_ICU_I18N)
+	/* 4 times 0-255, separated by dots (.) and a trailing '\0' */
+	char buf[4 * 3 + 3 + 1];
+	UVersionInfo ver;
+	u_getVersion(ver);
+	u_versionToString(ver, buf);
+	survey["icu_i18n"] = buf;
+#endif /* WITH_ICU_I18N */
+
+#ifdef WITH_LIBLZMA
+	survey["lzma"] = lzma_version_string();
+#endif
+
+#ifdef WITH_LZO
+	survey["lzo"] = lzo_version_string();
+#endif
+
+#ifdef WITH_PNG
+	survey["png"] = png_get_libpng_ver(nullptr);
+#endif /* WITH_PNG */
+
+#ifdef WITH_SDL
+	const SDL_version *sdl_v = SDL_Linked_Version();
+	survey["sdl"] = fmt::format("{}.{}.{}", sdl_v->major, sdl_v->minor, sdl_v->patch);
+#elif defined(WITH_SDL2)
+	SDL_version sdl2_v;
+	SDL_GetVersion(&sdl2_v);
+	survey["sdl2"] = fmt::format("{}.{}.{}", sdl2_v.major, sdl2_v.minor, sdl2_v.patch);
+#endif
+
+#ifdef WITH_ZLIB
+	survey["zlib"] = zlibVersion();
+#endif
+
+#ifdef WITH_CURL
+	auto *curl_v = curl_version_info(CURLVERSION_NOW);
+	survey["curl"] = curl_v->version;
+	survey["curl_ssl"] = curl_v->ssl_version == nullptr ? "none" : curl_v->ssl_version;
+#endif
 }
 
 /**

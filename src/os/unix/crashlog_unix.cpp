@@ -49,55 +49,26 @@ class CrashLogUnix : public CrashLog {
 	/** Signal that has been thrown. */
 	int signum;
 
-	void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const override
+	void SurveyCrash(nlohmann::json &survey) const override
 	{
-		struct utsname name;
-		if (uname(&name) < 0) {
-			 fmt::format_to(output_iterator, "Could not get OS version: {}\n", strerror(errno));
-			 return;
-		}
-
-		fmt::format_to(output_iterator,
-				"Operating system:\n"
-				" Name:     {}\n"
-				" Release:  {}\n"
-				" Version:  {}\n"
-				" Machine:  {}\n",
-				name.sysname,
-				name.release,
-				name.version,
-				name.machine
-		);
+		survey["id"] = signum;
+		survey["reason"] = strsignal(signum);
 	}
 
-	void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const override
+	void SurveyStacktrace(nlohmann::json &survey) const override
 	{
-		fmt::format_to(output_iterator,
-			   "Crash reason:\n"
-				" Signal:  {} ({})\n"
-				" Message: {}\n\n",
-				strsignal(this->signum),
-				this->signum,
-				message
-		);
-	}
-
-	void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const override
-	{
-		fmt::format_to(output_iterator, "Stacktrace:\n");
 #if defined(__GLIBC__)
 		void *trace[64];
 		int trace_size = backtrace(trace, lengthof(trace));
 
+		survey = nlohmann::json::array();
+
 		char **messages = backtrace_symbols(trace, trace_size);
 		for (int i = 0; i < trace_size; i++) {
-			fmt::format_to(output_iterator, " [{:02}] {}\n", i, messages[i]);
+			survey.push_back(messages[i]);
 		}
 		free(messages);
-#else
-		fmt::format_to(output_iterator, " Not supported.\n");
 #endif
-		fmt::format_to(output_iterator, "\n");
 	}
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD

@@ -38,6 +38,33 @@
 /** Exception code used for custom abort. */
 static constexpr DWORD CUSTOM_ABORT_EXCEPTION = 0xE1212012;
 
+/** A map between exception code and its name. */
+static const std::map<DWORD, std::string> exception_code_to_name{
+	{EXCEPTION_ACCESS_VIOLATION, "EXCEPTION_ACCESS_VIOLATION"},
+	{EXCEPTION_ARRAY_BOUNDS_EXCEEDED, "EXCEPTION_ARRAY_BOUNDS_EXCEEDED"},
+	{EXCEPTION_BREAKPOINT, "EXCEPTION_BREAKPOINT"},
+	{EXCEPTION_DATATYPE_MISALIGNMENT, "EXCEPTION_DATATYPE_MISALIGNMENT"},
+	{EXCEPTION_FLT_DENORMAL_OPERAND, "EXCEPTION_FLT_DENORMAL_OPERAND"},
+	{EXCEPTION_FLT_DIVIDE_BY_ZERO, "EXCEPTION_FLT_DIVIDE_BY_ZERO"},
+	{EXCEPTION_FLT_INEXACT_RESULT, "EXCEPTION_FLT_INEXACT_RESULT"},
+	{EXCEPTION_FLT_INVALID_OPERATION, "EXCEPTION_FLT_INVALID_OPERATION"},
+	{EXCEPTION_FLT_OVERFLOW, "EXCEPTION_FLT_OVERFLOW"},
+	{EXCEPTION_FLT_STACK_CHECK, "EXCEPTION_FLT_STACK_CHECK"},
+	{EXCEPTION_FLT_UNDERFLOW, "EXCEPTION_FLT_UNDERFLOW"},
+	{EXCEPTION_GUARD_PAGE, "EXCEPTION_GUARD_PAGE"},
+	{EXCEPTION_ILLEGAL_INSTRUCTION, "EXCEPTION_ILLEGAL_INSTRUCTION"},
+	{EXCEPTION_IN_PAGE_ERROR, "EXCEPTION_IN_PAGE_ERROR"},
+	{EXCEPTION_INT_DIVIDE_BY_ZERO, "EXCEPTION_INT_DIVIDE_BY_ZERO"},
+	{EXCEPTION_INT_OVERFLOW, "EXCEPTION_INT_OVERFLOW"},
+	{EXCEPTION_INVALID_DISPOSITION, "EXCEPTION_INVALID_DISPOSITION"},
+	{EXCEPTION_INVALID_HANDLE, "EXCEPTION_INVALID_HANDLE"},
+	{EXCEPTION_NONCONTINUABLE_EXCEPTION, "EXCEPTION_NONCONTINUABLE_EXCEPTION"},
+	{EXCEPTION_PRIV_INSTRUCTION, "EXCEPTION_PRIV_INSTRUCTION"},
+	{EXCEPTION_SINGLE_STEP, "EXCEPTION_SINGLE_STEP"},
+	{EXCEPTION_STACK_OVERFLOW, "EXCEPTION_STACK_OVERFLOW"},
+	{STATUS_UNWIND_CONSOLIDATE, "STATUS_UNWIND_CONSOLIDATE"},
+};
+
 /**
  * Forcefully try to terminate the application.
  *
@@ -57,9 +84,17 @@ class CrashLogWindows : public CrashLog {
 	/** Information about the encountered exception */
 	EXCEPTION_POINTERS *ep;
 
-	void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const override;
-	void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const override;
-	void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const override;
+	void SurveyCrash(nlohmann::json &survey) const override
+	{
+		survey["id"] = ep->ExceptionRecord->ExceptionCode;
+		if (exception_code_to_name.count(ep->ExceptionRecord->ExceptionCode) > 0) {
+			survey["reason"] = exception_code_to_name.at(ep->ExceptionRecord->ExceptionCode);
+		} else {
+			survey["reason"] = "Unknown exception code";
+		}
+	}
+
+	void SurveyStacktrace(nlohmann::json &survey) const override;
 public:
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD
@@ -136,41 +171,11 @@ public:
 
 /* static */ CrashLogWindows *CrashLogWindows::current = nullptr;
 
-/* virtual */ void CrashLogWindows::LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const
-{
-	_OSVERSIONINFOA os;
-	os.dwOSVersionInfoSize = sizeof(os);
-	GetVersionExA(&os);
-
-	fmt::format_to(output_iterator,
-			"Operating system:\n"
-			" Name:     Windows\n"
-			" Release:  {}.{}.{} ({})\n",
-			os.dwMajorVersion,
-			os.dwMinorVersion,
-			os.dwBuildNumber,
-			os.szCSDVersion
-	);
-}
-
-/* virtual */ void CrashLogWindows::LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const
-{
-	fmt::format_to(output_iterator,
-			"Crash reason:\n"
-			" Exception: {:08X}\n"
-			" Location:  {:X}\n"
-			" Message:   {}\n\n",
-			ep->ExceptionRecord->ExceptionCode,
-			(size_t)ep->ExceptionRecord->ExceptionAddress,
-			message
-	);
-}
-
 #if defined(_MSC_VER)
 static const uint MAX_SYMBOL_LEN = 512;
 static const uint MAX_FRAMES     = 64;
 
-/* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
+/* virtual */ void CrashLogWindows::SurveyStacktrace(nlohmann::json &survey) const
 {
 	DllLoader dbghelp(L"dbghelp.dll");
 	struct ProcPtrs {
@@ -195,7 +200,7 @@ static const uint MAX_FRAMES     = 64;
 		dbghelp.GetProcAddress("SymGetLineFromAddr64"),
 	};
 
-	fmt::format_to(output_iterator, "Stack trace:\n");
+	survey = nlohmann::json::array();
 
 	/* Try to load the functions from the DLL, if that fails because of a too old dbghelp.dll, just skip it. */
 	if (dbghelp.Success()) {
@@ -246,7 +251,7 @@ static const uint MAX_FRAMES     = 64;
 				hCur, GetCurrentThread(), &frame, &ctx, nullptr, proc.pSymFunctionTableAccess64, proc.pSymGetModuleBase64, nullptr)) break;
 
 			if (frame.AddrPC.Offset == frame.AddrReturn.Offset) {
-				fmt::format_to(output_iterator, " <infinite loop>\n");
+				survey.push_back("<infinite loop>");
 				break;
 			}
 
@@ -260,33 +265,31 @@ static const uint MAX_FRAMES     = 64;
 			}
 
 			/* Print module and instruction pointer. */
-			fmt::format_to(output_iterator, "[{:02}] {:20s} {:X}", num, mod_name, frame.AddrPC.Offset);
+			std::string message = fmt::format("{:20s} {:X}",  mod_name, frame.AddrPC.Offset);
 
 			/* Get symbol name and line info if possible. */
 			DWORD64 offset;
 			if (proc.pSymGetSymFromAddr64(hCur, frame.AddrPC.Offset, &offset, sym_info)) {
-				fmt::format_to(output_iterator, " {} + {}", sym_info->Name, offset);
+				message += fmt::format(" {} + {}", sym_info->Name, offset);
 
 				DWORD line_offs;
 				IMAGEHLP_LINE64 line;
 				line.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
 				if (proc.pSymGetLineFromAddr64(hCur, frame.AddrPC.Offset, &line_offs, &line)) {
-					fmt::format_to(output_iterator, " ({}:{})", line.FileName, line.LineNumber);
+					message += fmt::format(" ({}:{})", line.FileName, line.LineNumber);
 				}
 			}
-			fmt::format_to(output_iterator, "\n");
+
+			survey.push_back(message);
 		}
 
 		proc.pSymCleanup(hCur);
 	}
-
-	fmt::format_to(output_iterator, "\n");
 }
 #else
-/* virtual */ void CrashLogWindows::LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const
+/* virtual */ void CrashLogWindows::SurveyStacktrace(nlohmann::json &survey) const
 {
-	fmt::format_to(output_iterator, "Stack trace:\n");
-	fmt::format_to(output_iterator, " Not supported.\n");
+	/* Not supported. */
 }
 #endif /* _MSC_VER */
 
@@ -430,7 +433,7 @@ static bool _expanded;
 
 static const wchar_t _crash_desc[] =
 	L"A serious fault condition occurred in the game. The game will shut down.\n"
-	L"Please send crash.log, crash.dmp, and crash.sav to the developers.\n"
+	L"Please send crash.json.log, crash.dmp, and crash.sav to the developers.\n"
 	L"This will greatly help debugging.\n\n"
 	L"https://github.com/OpenTTD/OpenTTD/issues\n\n"
 	L"%s\n%s\n%s\n%s\n";
@@ -462,9 +465,10 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 {
 	switch (msg) {
 		case WM_INITDIALOG: {
-			size_t crashlog_length = CrashLogWindows::current->crashlog.size() + 1;
+			std::string crashlog = CrashLogWindows::current->survey.dump(4);
+			size_t crashlog_length = crashlog.size() + 1;
 			/* Reserve extra space for LF to CRLF conversion. */
-			crashlog_length += std::count(CrashLogWindows::current->crashlog.begin(), CrashLogWindows::current->crashlog.end(), '\n');
+			crashlog_length += std::count(crashlog.begin(), crashlog.end(), '\n');
 
 			const size_t filename_count = 4;
 			const size_t filename_buf_length = MAX_PATH + 1;
@@ -486,7 +490,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			char *crashlog_dos_nl = reinterpret_cast<char *>(filename_buf + filename_buf_length * filename_count);
 
 			/* Convert unix -> dos newlines because the edit box only supports that properly. */
-			const char *crashlog_unix_nl = CrashLogWindows::current->crashlog.data();
+			const char *crashlog_unix_nl = crashlog.data();
 			char *p = crashlog_dos_nl;
 			char32_t c;
 			while ((c = Utf8Consume(&crashlog_unix_nl))) {

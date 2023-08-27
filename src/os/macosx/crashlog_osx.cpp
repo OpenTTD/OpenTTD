@@ -49,53 +49,24 @@ class CrashLogOSX : public CrashLog {
 	/** Signal that has been thrown. */
 	int signum;
 
-	void LogOSVersion(std::back_insert_iterator<std::string> &output_iterator) const override
+	void SurveyCrash(nlohmann::json &survey) const override
 	{
-		int ver_maj, ver_min, ver_bug;
-		GetMacOSVersion(&ver_maj, &ver_min, &ver_bug);
-
-		const NXArchInfo *arch = NXGetLocalArchInfo();
-
-		fmt::format_to(output_iterator,
-				"Operating system:\n"
-				" Name:     Mac OS X\n"
-				" Release:  {}.{}.{}\n"
-				" Machine:  {}\n"
-				" Min Ver:  {}\n"
-				" Max Ver:  {}\n",
-				ver_maj, ver_min, ver_bug,
-				arch != nullptr ? arch->description : "unknown",
-				MAC_OS_X_VERSION_MIN_REQUIRED,
-				MAC_OS_X_VERSION_MAX_ALLOWED
-		);
+		survey["id"] = signum;
+		survey["reason"] = strsignal(signum);
 	}
 
-	void LogError(std::back_insert_iterator<std::string> &output_iterator, const std::string_view message) const override
+	void SurveyStacktrace(nlohmann::json &survey) const override
 	{
-		fmt::format_to(output_iterator,
-				"Crash reason:\n"
-				" Signal:  {} ({})\n"
-				" Message: {}\n\n",
-				strsignal(this->signum),
-				this->signum,
-				message
-		);
-	}
-
-	void LogStacktrace(std::back_insert_iterator<std::string> &output_iterator) const override
-	{
-		fmt::format_to(output_iterator, "\nStacktrace:\n");
-
 		void *trace[64];
 		int trace_size = backtrace(trace, lengthof(trace));
 
+		survey = nlohmann::json::array();
+
 		char **messages = backtrace_symbols(trace, trace_size);
 		for (int i = 0; i < trace_size; i++) {
-			fmt::format_to(output_iterator, "{}\n", messages[i]);
+			survey.push_back(messages[i]);
 		}
 		free(messages);
-
-		fmt::format_to(output_iterator, "\n");
 	}
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD
@@ -153,7 +124,7 @@ public:
 			"A serious fault condition occurred in the game. The game will shut down.";
 
 		std::string message = fmt::format(
-				 "Please send crash.log, crash.dmp, and crash.sav to the developers. "
+				 "Please send crash.json.log, crash.dmp, and crash.sav to the developers. "
 				 "This will greatly help debugging.\n\n"
 				 "https://github.com/OpenTTD/OpenTTD/issues.\n\n"
 				 "{}\n{}\n{}\n{}",
