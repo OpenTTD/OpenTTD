@@ -425,18 +425,16 @@ void CrashLog::SendSurvey() const
  * Makes the crash log, writes it to a file and then subsequently tries
  * to make a crash dump and crash savegame. It uses DEBUG to write
  * information like paths to the console.
- * @return true when everything is made successfully.
  */
-bool CrashLog::MakeCrashLog()
+void CrashLog::MakeCrashLog()
 {
 	/* Don't keep looping logging crashes. */
 	static bool crashlogged = false;
-	if (crashlogged) return false;
+	if (crashlogged) return;
 	crashlogged = true;
 
 	crashlog.reserve(65536);
 	auto output_iterator = std::back_inserter(crashlog);
-	bool ret = true;
 
 	fmt::print("Crash encountered, generating crash log...\n");
 	this->FillCrashLog(output_iterator);
@@ -444,43 +442,42 @@ bool CrashLog::MakeCrashLog()
 	fmt::print("Crash log generated.\n\n");
 
 	fmt::print("Writing crash log to disk...\n");
-	bool bret = this->TryExecute("crashlog", [this]() { return this->WriteCrashLog(); });
-	if (bret) {
+	bool ret = this->TryExecute("crashlog", [this]() { return this->WriteCrashLog(); });
+	if (ret) {
 		fmt::print("Crash log written to {}. Please add this file to any bug reports.\n\n", this->crashlog_filename);
 	} else {
 		fmt::print("Writing crash log failed. Please attach the output above to any bug reports.\n\n");
-		ret = false;
+		this->crashlog_filename = "(failed to write crash log)";
 	}
 
 	fmt::print("Writing crash dump to disk...\n");
-	bret = this->TryExecute("crashdump", [this]() { return this->WriteCrashDump(); });
-	if (bret) {
+	ret = this->TryExecute("crashdump", [this]() { return this->WriteCrashDump(); });
+	if (ret) {
 		fmt::print("Crash dump written to {}. Please add this file to any bug reports.\n\n", this->crashdump_filename);
 	} else {
 		fmt::print("Writing crash dump failed.\n\n");
+		this->crashdump_filename = "(failed to write crash dump)";
 	}
 
 	fmt::print("Writing crash savegame...\n");
-	bret = this->TryExecute("savegame", [this]() { return this->WriteSavegame(); });
-	if (bret) {
+	ret = this->TryExecute("savegame", [this]() { return this->WriteSavegame(); });
+	if (ret) {
 		fmt::print("Crash savegame written to {}. Please add this file and the last (auto)save to any bug reports.\n\n", this->savegame_filename);
 	} else {
-		ret = false;
 		fmt::print("Writing crash savegame failed. Please attach the last (auto)save to any bug reports.\n\n");
+		this->savegame_filename = "(failed to write crash savegame)";
 	}
 
 	fmt::print("Writing crash screenshot...\n");
-	bret = this->TryExecute("screenshot", [this]() { return this->WriteScreenshot(); });
-	if (bret) {
+	ret = this->TryExecute("screenshot", [this]() { return this->WriteScreenshot(); });
+	if (ret) {
 		fmt::print("Crash screenshot written to {}. Please add this file to any bug reports.\n\n", this->screenshot_filename);
 	} else {
-		ret = false;
 		fmt::print("Writing crash screenshot failed.\n\n");
+		this->screenshot_filename = "(failed to write crash screenshot)";
 	}
 
 	this->TryExecute("survey", [this]() { this->SendSurvey(); return true; });
-
-	return ret;
 }
 
 /**

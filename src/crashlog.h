@@ -82,7 +82,7 @@ public:
 
 	void SendSurvey() const;
 
-	bool MakeCrashLog();
+	void MakeCrashLog();
 
 	/**
 	 * Initialiser for crash logs; do the appropriate things so crashes are
