@@ -174,9 +174,10 @@ public:
 			"A serious fault condition occurred in the game. The game will shut down.";
 
 		std::string message = fmt::format(
-				 "Please send the generated crash information and the last (auto)save to the developers. "
-				 "This will greatly help debugging. The correct place to do this is https://github.com/OpenTTD/OpenTTD/issues.\n\n"
-				 "Generated file(s):\n{}\n{}\n{}\n{}",
+				 "Please send crash.log, crash.dmp, and crash.sav to the developers. "
+				 "This will greatly help debugging.\n\n"
+				 "https://github.com/OpenTTD/OpenTTD/issues.\n\n"
+				 "{}\n{}\n{}\n{}",
 				 this->crashlog_filename, this->crashdump_filename, this->savegame_filename, this->screenshot_filename);
 
 		ShowMacDialog(crash_title, message.c_str(), "Quit");

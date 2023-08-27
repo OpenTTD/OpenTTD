@@ -50,7 +50,6 @@ CAPTION "Fatal Application Failure"
 FONT 8, "MS Sans Serif"
 BEGIN
     PUSHBUTTON      "&Close",12,7,82,60,14
-    PUSHBUTTON      "&Emergency save",13,158,82,60,14
     PUSHBUTTON      "",15,238,82,60,14
     EDITTEXT        11,7,103,291,118,ES_MULTILINE | ES_READONLY | WS_VSCROLL |
                     WS_HSCROLL | NOT WS_TABSTOP
