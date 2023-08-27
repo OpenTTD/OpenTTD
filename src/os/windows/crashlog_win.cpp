@@ -270,12 +270,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	CrashLogWindows *log = new CrashLogWindows(ep);
 	CrashLogWindows::current = log;
-	auto output_iterator = std::back_inserter(log->crashlog);
-	log->FillCrashLog(output_iterator);
-	log->WriteCrashDump();
-	log->WriteCrashLog();
-	log->WriteScreenshot();
-	log->SendSurvey();
+	log->MakeCrashLog();
 
 	/* Close any possible log files */
 	CloseConsoleLogIfActive();
@@ -350,16 +345,10 @@ static bool _expanded;
 
 static const wchar_t _crash_desc[] =
 	L"A serious fault condition occurred in the game. The game will shut down.\n"
-	L"Please send the crash information and the crash.dmp file (if any) to the developers.\n"
-	L"This will greatly help debugging. The correct place to do this is https://github.com/OpenTTD/OpenTTD/issues. "
-	L"The information contained in the report is displayed below.\n"
-	L"Press \"Emergency save\" to attempt saving the game. Generated file(s):\n"
+	L"Please send crash.log, crash.dmp, and crash.sav to the developers.\n"
+	L"This will greatly help debugging.\n\n"
+	L"https://github.com/OpenTTD/OpenTTD/issues\n\n"
 	L"%s";
-
-static const wchar_t _save_succeeded[] =
-	L"Emergency save succeeded.\nIts location is '%s'.\n"
-	L"Be aware that critical parts of the internal game state may have become "
-	L"corrupted. The saved game is not guaranteed to work.";
 
 static const wchar_t * const _expand_texts[] = {L"S&how report >>", L"&Hide report <<" };
 
@@ -403,7 +392,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			}
 			*p = '\0';
 
-			/* Add path to crash.log and crash.dmp (if any) to the crash window text */
+			/* Add path to all files to the crash window text */
 			size_t len = wcslen(_crash_desc) + 2;
 			len += wcslen(convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf))) + 2;
 			len += wcslen(convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf))) + 2;
@@ -434,18 +423,6 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 				case 12: // Close
 					CrashLog::AfterCrashLogCleanup();
 					ExitProcess(2);
-				case 13: // Emergency save
-					wchar_t filenamebuf[MAX_PATH * 2];
-					if (CrashLogWindows::current->WriteSavegame()) {
-						convert_to_fs(CrashLogWindows::current->savegame_filename, filenamebuf, lengthof(filenamebuf));
-						size_t len = lengthof(_save_succeeded) + wcslen(filenamebuf) + 1;
-						static wchar_t text[lengthof(_save_succeeded) + MAX_PATH * 2 + 1];
-						_snwprintf(text, len, _save_succeeded, filenamebuf);
-						MessageBox(wnd, text, L"Save successful", MB_ICONINFORMATION);
-					} else {
-						MessageBox(wnd, L"Save failed", L"Save failed", MB_ICONINFORMATION);
-					}
-					break;
 				case 15: // Expand window to show crash-message
 					_expanded = !_expanded;
 					SetWndSize(wnd, _expanded);
