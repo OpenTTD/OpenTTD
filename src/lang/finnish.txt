@@ -1896,8 +1896,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Salli kuntien r
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Kunnat saavat rakentaa tasoristeyksiä: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Mikäli käytössä, kunnat voivat rakentaa tasoristeyksiä
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Käytä kuntien hallitsemaa melutasoa lentokentille: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Mikäli pois käytöstä, kunnassa voi olla kaksi lentokentää. Mikäli käytössä, lentokenttien määrä kunnassa rajoittuu kunnan melurajan mukaan. Meluraja riippuu asukasluvusta ja lentokentän koosta sekä etäisyydestä
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Rajoita lentokenttien sijoittamista melutason perusteella: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Salli kuntien estää lentokenttien rakentaminen asukaslukuun sekä kentän kokoon ja etäisyyteen perustuvan melunsietotason perusteella. Mikäli ei käytössä, kunnat sallivat vain kaksi lentokenttää, paitsi jos paikallisviranomaisten asenteeksi on asetettu ”salliva”
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Kuntien perustaminen pelissä: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mikäli käytössä, pelaajat voivat perustaa uusia kuntia
@@ -2650,6 +2650,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Muuta as
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Muuta siltojen läpinäkyvyyttä. Ctrl+napsautus lukitsee.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Muuta majakoiden ja lähetysmastojen tapaisten rakennelmien läpinäkyvyyttä. Ctrl+napsautus lukitsee.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Muuta sähköratarakenteiden läpinäkyvyyttä. Ctrl+napsautus lukitsee.
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Muuta lastausilmaisinten sekä kustannus- ja tulotekstien läpinäkyvyyttä. Ctrl+napsautus lukitsee.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Tee kohteista läpinäkyvyyden sijaan näkymättömiä
 
 # Linkgraph legend window

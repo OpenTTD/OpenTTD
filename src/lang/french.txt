@@ -2651,6 +2651,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transpar
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparence des ponts.{}Ctrl-clic pour verrouiller.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparence des structures telles que phares et antennes.{}Ctrl-clic pour verrouiller.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparence des caténaires.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Transparence des indicateurs de chargement et des coûts/revenus des véhicules.{}Ctrl-clic pour verrouiller.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Alterner entre transparence et invisibilité des objets
 
 # Linkgraph legend window

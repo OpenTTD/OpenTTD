@@ -2650,6 +2650,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Skift ge
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Skift gennemsigtighed for broer. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Skift gennemsigtighed for strukturer som fyrtårne og antenner. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Slå transparens til/fra for køreledninger. CTRL+klik for at låse.
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Skift gennemsigtighed for indlæsning og pris/indtægtstekst. Ctrl+klik for at låse
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gør objekter usynlige i stedet for gennemsigtige
 
 # Linkgraph legend window

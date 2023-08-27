@@ -2651,6 +2651,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Alternar
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Alternar transparência para pontes. Ctrl+Clique para travar
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Alternar transparência para estruturas como faróis e antenas. Ctrl+Clique para travar
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Alternar transparência para catenária. Ctrl+Clique para travar
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Alternar transparência do texto de carregamento e custo/receita. Ctrl+Clique para travar.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir objetivos como invisíveis ao invés de transparentes.
 
 # Linkgraph legend window
