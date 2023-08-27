@@ -36,12 +36,7 @@ public:
 
 	constexpr static bool IsSurveyPossible()
 	{
-#ifndef WITH_NLOHMANN_JSON
-		/* Without JSON library, we cannot send a payload; so we disable the survey. */
-		return false;
-#else
 		return true;
-#endif /* WITH_NLOHMANN_JSON */
 	}
 
 private:

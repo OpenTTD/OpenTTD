@@ -77,20 +77,20 @@ jobs:
         - name: Clang
           compiler: clang
           cxxcompiler: clang++
-          libraries: libsdl2-dev nlohmann-json3-dev
+          libraries: libsdl2-dev
         - name: GCC - SDL2
           compiler: gcc
           cxxcompiler: g++
-          libraries: libsdl2-dev nlohmann-json3-dev
+          libraries: libsdl2-dev
         - name: GCC - SDL1.2
           compiler: gcc
           cxxcompiler: g++
-          libraries: libsdl1.2-dev nlohmann-json3-dev
+          libraries: libsdl1.2-dev
         - name: GCC - Dedicated
           compiler: gcc
           cxxcompiler: g++
           extra-cmake-parameters: -DOPTION_DEDICATED=ON -DCMAKE_CXX_FLAGS_INIT="-DRANDOM_DEBUG" -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
-          # Compile without SDL / SDL2 / nlohmann-json, as that should compile fine too.
+          # Compile without SDL / SDL2, as that should compile fine too.
 
     name: Linux (${{ matrix.name }})
 
@@ -118,6 +118,7 @@ jobs:
           libicu-dev \
           liblzma-dev \
           liblzo2-dev \
+          nlohmann-json3-dev \
           ${{ matrix.libraries }} \
           zlib1g-dev \
           # EOF

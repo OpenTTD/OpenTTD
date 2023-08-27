@@ -31,17 +31,13 @@
 #include "../base_media_base.h"
 #include "../blitter/factory.hpp"
 
-#ifdef WITH_NLOHMANN_JSON
 #include <nlohmann/json.hpp>
-#endif /* WITH_NLOHMANN_JSON */
 
 #include "../safeguards.h"
 
 extern std::string _savegame_id;
 
 NetworkSurveyHandler _survey = {};
-
-#ifdef WITH_NLOHMANN_JSON
 
 NLOHMANN_JSON_SERIALIZE_ENUM(NetworkSurveyHandler::Reason, {
 	{NetworkSurveyHandler::Reason::PREVIEW, "preview"},
@@ -319,8 +315,6 @@ std::string SurveyMemoryToText(uint64_t memory)
 	return fmt::format("{} MiB", Ceil(memory, 4));
 }
 
-#endif /* WITH_NLOHMANN_JSON */
-
 /**
  * Create the payload for the survey.
  *
@@ -330,9 +324,6 @@ std::string SurveyMemoryToText(uint64_t memory)
  */
 std::string NetworkSurveyHandler::CreatePayload(Reason reason, bool for_preview)
 {
-#ifndef WITH_NLOHMANN_JSON
-	return "";
-#else
 	nlohmann::json survey;
 
 	survey["schema"] = NETWORK_SURVEY_VERSION;
@@ -367,7 +358,6 @@ std::string NetworkSurveyHandler::CreatePayload(Reason reason, bool for_preview)
 	/* For preview, we indent with 4 whitespaces to make things more readable. */
 	int indent = for_preview ? 4 : -1;
 	return survey.dump(indent);
-#endif /* WITH_NLOHMANN_JSON */
 }
 
 /**
