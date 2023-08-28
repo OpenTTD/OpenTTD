@@ -36,7 +36,7 @@ struct CAPRChunkHandler : ChunkHandler {
 
 	void Load() const override
 	{
-		uint num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
+		uint num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES_2) ? 64 : NUM_CARGO;
 		int vt = IsSavegameVersionBefore(SLV_65) ? SLE_FILE_I32 : SLE_FILE_I64;
 		SlCopy(nullptr, num_cargo, vt | SLE_VAR_NULL);
 		SlCopy(nullptr, num_cargo, SLE_FILE_U16 | SLE_VAR_NULL);
