@@ -1187,7 +1187,7 @@ STR_TERRAIN_TYPE_CUSTOM                                         :Alçada persona
 STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Alçada personalitzada ({NUM})
 
 ###length 4
-STR_CITY_APPROVAL_LENIENT                                       :Tolerant
+STR_CITY_APPROVAL_LENIENT                                       :Indulgent
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiva (les accions de les companyies no l'afecten)
@@ -2651,6 +2651,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Commuta 
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Commuta la transparència dels ponts. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Commuta la transparència de les estructures com ara fars i antenes. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Commuta la transparència de la catenària. CTRL+clic per bloquejar
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Commuta la transparència dels indicadors de càrrega i el text de despesa/ingrés. Ctrl+Clic per a blocar.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Alternar entre transparència i invisibilitat dels objectes
 
 # Linkgraph legend window
