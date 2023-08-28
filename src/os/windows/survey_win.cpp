@@ -7,8 +7,6 @@
 
 /** @file survey_win.cpp Windows implementation of OS-specific survey information. */
 
-#ifdef WITH_NLOHMANN_JSON
-
 #include "../../stdafx.h"
 
 #include "../../3rdparty/fmt/format.h"
@@ -37,5 +35,3 @@ void SurveyOS(nlohmann::json &json)
 	json["memory"] = SurveyMemoryToText(status.ullTotalPhys);
 	json["hardware_concurrency"] = std::thread::hardware_concurrency();
 }
-
-#endif /* WITH_NLOHMANN_JSON */
