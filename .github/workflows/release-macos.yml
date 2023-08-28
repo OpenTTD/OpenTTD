@@ -26,15 +26,27 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Enable Rust cache
+      uses: Swatinem/rust-cache@v2
+
     - name: Install dependencies
       env:
         HOMEBREW_NO_AUTO_UPDATE: 1
         HOMEBREW_NO_INSTALL_CLEANUP: 1
       run: |
+        echo "::group::Install brew dependencies"
         brew install \
           pandoc \
           pkg-config \
           # EOF
+        echo "::endgroup::"
+
+        echo "::group::Install breakpad dependencies"
+        cargo install dump_syms
+        echo "::endgroup::"
 
     - name: Prepare cache key
       id: key
@@ -144,6 +156,18 @@ jobs:
         cmake --build . -j $(sysctl -n hw.logicalcpu) --target openttd
         echo "::endgroup::"
 
+    - name: Create breakpad symbols
+      run: |
+        cd build-x64
+        mkdir dSYM
+        dsymutil ./openttd -o dSYM/openttd
+        dump_syms ./dSYM/openttd --inlines --store symbols
+
+        cd ../build-arm64
+        mkdir dSYM
+        dsymutil ./openttd -o dSYM/openttd
+        dump_syms ./dSYM/openttd --inlines --store ../build-x64/symbols
+
     - name: Create bundles
       run: |
         cd build-x64
@@ -208,4 +232,11 @@ jobs:
       with:
         name: openttd-macos-universal
         path: build-x64/bundles
+        retention-days: 5
+
+    - name: Store symbols
+      uses: actions/upload-artifact@v3
+      with:
+        name: symbols-macos-universal
+        path: build-x64/symbols
         retention-days: 5

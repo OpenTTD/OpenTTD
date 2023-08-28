@@ -28,6 +28,19 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
+    # dtolnay/rust-toolchain uses a curl argument (--retry-connrefused) that the curl shipped with our container doesn't support.
+    # So we need to do one part ourselves; the action takes over the rest and prepares the setup further.
+    - name: Prepare Rust toolchain
+      run: |
+        curl --proto '=https' --tlsv1.2 --retry 10 --location --silent --show-error --fail "https://sh.rustup.rs" | sh -s -- --default-toolchain none -y
+        echo "${CARGO_HOME:-$HOME/.cargo}/bin" >> $GITHUB_PATH
+
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Enable Rust cache
+      uses: Swatinem/rust-cache@v2
+
     - name: Enable vcpkg cache
       uses: actions/cache@v3
       with:
@@ -124,6 +137,10 @@ jobs:
         )
         echo "::endgroup::"
 
+        echo "::group::Install breakpad dependencies"
+        cargo install dump_syms
+        echo "::endgroup::"
+
     - name: Install GCC problem matcher
       uses: ammaraskar/gcc-problem-matcher@master
 
@@ -146,6 +163,11 @@ jobs:
         cmake --build . -j $(nproc) --target openttd
         echo "::endgroup::"
 
+    - name: Create breakpad symbols
+      run: |
+        cd build
+        dump_syms ./openttd --inlines --store symbols
+
     - name: Create bundles
       run: |
         cd ${GITHUB_WORKSPACE}/build
@@ -164,4 +186,11 @@ jobs:
       with:
         name: openttd-linux-generic
         path: build/bundles
+        retention-days: 5
+
+    - name: Store symbols
+      uses: actions/upload-artifact@v3
+      with:
+        name: symbols-linux-generic
+        path: build/symbols
         retention-days: 5
