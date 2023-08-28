@@ -359,6 +359,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_INDUSTRY_CARGO_REORGANISE,          ///< 315  PR#10853 Industry accepts/produced data reorganised.
 	SLV_PERIODS_IN_TRANSIT_RENAME,          ///< 316  PR#11112 Rename days in transit to (cargo) periods in transit.
 	SLV_NEWGRF_LAST_SERVICE,                ///< 317  PR#11124 Added stable date_of_last_service to avoid NewGRF trouble.
+	SLV_EXTEND_CARGOTYPES_2,                ///< 318  PR#NOPULLREQUESTYET Extend cargotypes to 128
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
