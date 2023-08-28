@@ -433,7 +433,7 @@ static const wchar_t _crash_desc[] =
 	L"Please send crash.log, crash.dmp, and crash.sav to the developers.\n"
 	L"This will greatly help debugging.\n\n"
 	L"https://github.com/OpenTTD/OpenTTD/issues\n\n"
-	L"%s";
+	L"%s\n%s\n%s\n%s\n";
 
 static const wchar_t * const _expand_texts[] = {L"S&how report >>", L"&Hide report <<" };
 
@@ -462,44 +462,51 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 {
 	switch (msg) {
 		case WM_INITDIALOG: {
+			size_t crashlog_length = CrashLogWindows::current->crashlog.size() + 1;
+			/* Reserve extra space for LF to CRLF conversion. */
+			crashlog_length += std::count(CrashLogWindows::current->crashlog.begin(), CrashLogWindows::current->crashlog.end(), '\n');
+
+			const size_t filename_count = 4;
+			const size_t filename_buf_length = MAX_PATH + 1;
+			const size_t crash_desc_buf_length = lengthof(_crash_desc) + filename_buf_length * filename_count + 1;
+
 			/* We need to put the crash-log in a separate buffer because the default
-			 * buffer in MB_TO_WIDE is not large enough (512 chars) */
-			wchar_t filenamebuf[MAX_PATH * 2];
-			wchar_t crash_msgW[65536];
-			/* Convert unix -> dos newlines because the edit box only supports that properly :( */
-			const char *unix_nl = CrashLogWindows::current->crashlog.data();
-			char dos_nl[65536];
-			char *p = dos_nl;
+			 * buffer in MB_TO_WIDE is not large enough (512 chars).
+			 * Use VirtualAlloc to allocate pages for the buffer to avoid overflowing the stack.
+			 * Avoid the heap in case the crash is because the heap became corrupted. */
+			const size_t total_length = crash_desc_buf_length * sizeof(wchar_t) +
+										crashlog_length * sizeof(wchar_t) +
+										filename_buf_length * sizeof(wchar_t) * filename_count +
+										crashlog_length;
+			void *raw_buffer = VirtualAlloc(nullptr, total_length, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+
+			wchar_t *crash_desc_buf = reinterpret_cast<wchar_t *>(raw_buffer);
+			wchar_t *crashlog_buf = crash_desc_buf + crash_desc_buf_length;
+			wchar_t *filename_buf = crashlog_buf + crashlog_length;
+			char *crashlog_dos_nl = reinterpret_cast<char *>(filename_buf + filename_buf_length * filename_count);
+
+			/* Convert unix -> dos newlines because the edit box only supports that properly. */
+			const char *crashlog_unix_nl = CrashLogWindows::current->crashlog.data();
+			char *p = crashlog_dos_nl;
 			char32_t c;
-			while ((c = Utf8Consume(&unix_nl)) && p < lastof(dos_nl) - 4) { // 4 is max number of bytes per character
+			while ((c = Utf8Consume(&crashlog_unix_nl))) {
 				if (c == '\n') p += Utf8Encode(p, '\r');
 				p += Utf8Encode(p, c);
 			}
 			*p = '\0';
 
-			/* Add path to all files to the crash window text */
-			size_t len = wcslen(_crash_desc) + 2;
-			len += wcslen(convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf))) + 2;
-			len += wcslen(convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf))) + 2;
-			len += wcslen(convert_to_fs(CrashLogWindows::current->screenshot_filename, filenamebuf, lengthof(filenamebuf))) + 1;
+			_snwprintf(
+				crash_desc_buf,
+				crash_desc_buf_length,
+				_crash_desc,
+				convert_to_fs(CrashLogWindows::current->crashlog_filename,   filename_buf + filename_buf_length * 0, filename_buf_length),
+				convert_to_fs(CrashLogWindows::current->crashdump_filename,  filename_buf + filename_buf_length * 1, filename_buf_length),
+				convert_to_fs(CrashLogWindows::current->savegame_filename,   filename_buf + filename_buf_length * 2, filename_buf_length),
+				convert_to_fs(CrashLogWindows::current->screenshot_filename, filename_buf + filename_buf_length * 3, filename_buf_length)
+			);
 
-			static wchar_t text[lengthof(_crash_desc) + 3 * MAX_PATH * 2 + 7];
-			int printed = _snwprintf(text, len, _crash_desc, convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf)));
-			if (printed < 0 || (size_t)printed > len) {
-				MessageBox(wnd, L"Catastrophic failure trying to display crash message. Could not perform text formatting.", L"OpenTTD", MB_ICONERROR);
-				return FALSE;
-			}
-			if (convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf))[0] != L'\0') {
-				wcscat(text, L"\n");
-				wcscat(text, filenamebuf);
-			}
-			if (convert_to_fs(CrashLogWindows::current->screenshot_filename, filenamebuf, lengthof(filenamebuf))[0] != L'\0') {
-				wcscat(text, L"\n");
-				wcscat(text, filenamebuf);
-			}
-
-			SetDlgItemText(wnd, 10, text);
-			SetDlgItemText(wnd, 11, convert_to_fs(dos_nl, crash_msgW, lengthof(crash_msgW)));
+			SetDlgItemText(wnd, 10, crash_desc_buf);
+			SetDlgItemText(wnd, 11, convert_to_fs(crashlog_dos_nl, crashlog_buf, crashlog_length));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 			SetWndSize(wnd, -1);
 		} return TRUE;
