@@ -461,7 +461,7 @@ public:
 	{
 		Station *st = Station::From(bst);
 
-		uint num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
+		uint num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES_2) ? 64 : NUM_CARGO;
 		for (CargoID i = 0; i < num_cargo; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			if (IsSavegameVersionBefore(SLV_183)) {
