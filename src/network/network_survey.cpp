@@ -137,8 +137,12 @@ static void SurveySettings(nlohmann::json &survey)
  */
 static void SurveyOpenTTD(nlohmann::json &survey)
 {
-	survey["version"] = std::string(_openttd_revision);
-	survey["newgrf_version"] = _openttd_newgrf_version;
+	survey["version"]["revision"] = std::string(_openttd_revision);
+	survey["version"]["modified"] = _openttd_revision_modified;
+	survey["version"]["tagged"] = _openttd_revision_tagged;
+	survey["version"]["hash"] = std::string(_openttd_revision_hash);
+	survey["version"]["newgrf"] = fmt::format("{:X}", _openttd_newgrf_version);
+	survey["version"]["content"] = std::string(_openttd_content_version);
 	survey["build_date"] = std::string(_openttd_build_date);
 	survey["bits"] =
 #ifdef POINTER_IS_64BIT
