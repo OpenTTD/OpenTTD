@@ -54,6 +54,21 @@ jobs:
           done
         fi
 
+    - name: Merge symbols
+      run: |
+        mkdir symbols
+        cp -R symbols-*/* symbols/
+
+        # Compress all files as gzip, to reduce cost of storage on the CDN.
+        for i in $(find symbols -mindepth 2 -type f); do
+          gzip ${i}
+        done
+
+        # Leave a mark in each folder what version actually created the symbol file.
+        for i in $(find symbols -mindepth 2 -type d); do
+          touch ${i}/.${{ inputs.version }}.txt
+        done
+
     - name: Store bundles
       uses: actions/upload-artifact@v3
       with:
@@ -61,11 +76,18 @@ jobs:
         path: bundles/*
         retention-days: 5
 
-  publish:
+    - name: Store breakpad symbols
+      uses: actions/upload-artifact@v3
+      with:
+        name: cdn-symbols
+        path: symbols/*
+        retention-days: 5
+
+  publish-bundles:
     needs:
     - prepare
 
-    name: Publish
+    name: Publish bundles
     uses: OpenTTD/actions/.github/workflows/rw-cdn-upload.yml@v4
     secrets:
       CDN_SIGNING_KEY: ${{ secrets.CDN_SIGNING_KEY }}
@@ -76,10 +98,22 @@ jobs:
       folder: ${{ inputs.folder }}
       version: ${{ inputs.version }}
 
+  publish-symbols:
+    needs:
+    - prepare
+
+    name: Publish symbols
+    uses: OpenTTD/actions/.github/workflows/rw-symbols-upload.yml@v4
+    secrets:
+      SYMBOLS_SIGNING_KEY: ${{ secrets.SYMBOLS_SIGNING_KEY }}
+    with:
+      artifact-name: cdn-symbols
+      repository: OpenTTD
+
   docs:
     if: ${{ inputs.trigger_type == 'new-master' }}
     needs:
-    - publish
+    - publish-bundles
 
     name: Publish docs
 
