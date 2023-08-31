@@ -11,6 +11,7 @@
 #define SCRIPT_ADMIN_HPP
 
 #include "script_object.hpp"
+#include <nlohmann/json.hpp>
 
 /**
  * Class that handles communication with the AdminPort.
@@ -38,13 +39,14 @@ public:
 
 protected:
 	/**
-	 * Convert a Squirrel structure into a JSON string.
+	 * Convert a Squirrel structure into a JSON object.
+	 * @param json The resulting JSON object.
 	 * @param vm The VM to operate on.
 	 * @param index The index we are currently working for.
-	 * @param max_depth The maximal depth to follow the squirrel struct.
-	 * @param data The resulting json string.
+	 * @param depth The current depth in the squirrel struct.
+	 * @return True iff the conversion was successful.
 	 */
-	static bool MakeJSON(HSQUIRRELVM vm, SQInteger index, int max_depth, std::string &data);
+	static bool MakeJSON(nlohmann::json &data, HSQUIRRELVM vm, SQInteger index, int depth = 0);
 };
 
 #endif /* SCRIPT_ADMIN_HPP */

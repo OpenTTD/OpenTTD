@@ -557,11 +557,6 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const std::string
  */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(const std::string_view json)
 {
-	/* At the moment we cannot transmit anything larger than MTU. So we limit
-	 *  the maximum amount of json data that can be sent. Account also for
-	 *  the trailing \0 of the string */
-	if (json.size() + 1 >= NETWORK_GAMESCRIPT_JSON_LENGTH) return NETWORK_RECV_STATUS_OKAY;
-
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_GAMESCRIPT);
 
 	p->Send_string(json);

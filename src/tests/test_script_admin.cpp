@@ -72,14 +72,14 @@ public:
 		REQUIRE(sq_gettype(vm, -1) == OT_TABLE);
 
 		/* Feed the snippet into the MakeJSON function. */
-		std::string json;
-		if (!ScriptAdmin::MakeJSON(vm, -1, SQUIRREL_MAX_DEPTH, json)) {
+		nlohmann::json json;
+		if (!ScriptAdmin::MakeJSON(json, vm, -1)) {
 			sq_close(vm);
 			return std::nullopt;
 		}
 
 		sq_close(vm);
-		return json;
+		return json.dump();
 	}
 
 	/**
@@ -111,11 +111,11 @@ public:
 		}
 		REQUIRE(sq_gettype(vm, -1) == OT_TABLE);
 
-		std::string squirrel_json;
-		REQUIRE(ScriptAdmin::MakeJSON(vm, -1, SQUIRREL_MAX_DEPTH, squirrel_json) == true);
+		nlohmann::json squirrel_json;
+		REQUIRE(ScriptAdmin::MakeJSON(squirrel_json, vm, -1) == true);
 
 		sq_close(vm);
-		return squirrel_json;
+		return squirrel_json.dump();
 	}
 
 };
@@ -124,18 +124,18 @@ TEST_CASE("Squirrel -> JSON conversion")
 {
 	TestScriptController controller;
 
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = null })sq") == R"json({ "test": null })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = 1 })sq") == R"json({ "test": 1 })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = -1 })sq") == R"json({ "test": -1 })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = true })sq") == R"json({ "test": true })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = "a" })sq") == R"json({ "test": "a" })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = [ ] })sq") == R"json({ "test": [  ] })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = [ 1 ] })sq") == R"json({ "test": [ 1 ] })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = [ 1, "a", true, { test = 1 }, [], null ] })sq") == R"json({ "test": [ 1, "a", true, { "test": 1 }, [  ], null ] })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = { } })sq") == R"json({ "test": {  } })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = { test = 1 } })sq") == R"json({ "test": { "test": 1 } })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = { test = 1, test = 2 } })sq") == R"json({ "test": { "test": 2 } })json");
-	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = { test = 1, test2 = [ 2 ] } })sq") == R"json({ "test": { "test": 1, "test2": [ 2 ] } })json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = null })sq") == R"json({"test":null})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = 1 })sq") == R"json({"test":1})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = -1 })sq") == R"json({"test":-1})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = true })sq") == R"json({"test":true})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = "a" })sq") == R"json({"test":"a"})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = [ ] })sq") == R"json({"test":[]})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = [ 1 ] })sq") == R"json({"test":[1]})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = [ 1, "a", true, { test = 1 }, [], null ] })sq") == R"json({"test":[1,"a",true,{"test":1},[],null]})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = { } })sq") == R"json({"test":{}})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = { test = 1 } })sq") == R"json({"test":{"test":1}})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = { test = 1, test = 2 } })sq") == R"json({"test":{"test":2}})json");
+	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = { test = 1, test2 = [ 2 ] } })sq") == R"json({"test":{"test":1,"test2":[2]}})json");
 
 	/* Cases that should fail, as we cannot convert a class to JSON. */
 	CHECK(TestScriptAdmin::MakeJSON(R"sq({ test = DummyClass })sq") == std::nullopt);
@@ -147,23 +147,33 @@ TEST_CASE("JSON -> Squirrel conversion")
 {
 	TestScriptController controller;
 
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": null })json") == R"json({ "test": null })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": 1 })json") == R"json({ "test": 1 })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": -1 })json") == R"json({ "test": -1 })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": true })json") == R"json({ "test": true })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": "a" })json") == R"json({ "test": "a" })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": [] })json") == R"json({ "test": [  ] })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": [ 1 ] })json") == R"json({ "test": [ 1 ] })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": [ 1, "a", true, { "test": 1 }, [], null ] })json") == R"json({ "test": [ 1, "a", true, { "test": 1 }, [  ], null ] })json");
-	// BUG -- This should work, but doesn't.
-	// CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": {} })json") == R"json({ "test": {  } })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": { "test": 1 } })json") == R"json({ "test": { "test": 1 } })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": { "test": 2 } })json") == R"json({ "test": { "test": 2 } })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": { "test": 1, "test2": [ 2 ] } })json") == R"json({ "test": { "test": 1, "test2": [ 2 ] } })json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": null })json") == R"json({"test":null})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": 1 })json") == R"json({"test":1})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": -1 })json") == R"json({"test":-1})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": true })json") == R"json({"test":true})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": "a" })json") == R"json({"test":"a"})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": [] })json") == R"json({"test":[]})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": [ 1 ] })json") == R"json({"test":[1]})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": [ 1, "a", true, { "test": 1 }, [], null ] })json") == R"json({"test":[1,"a",true,{"test":1},[],null]})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": {} })json") == R"json({"test":{}})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": { "test": 1 } })json") == R"json({"test":{"test":1}})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": { "test": 2 } })json") == R"json({"test":{"test":2}})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": { "test": 1, "test2": [ 2 ] } })json") == R"json({"test":{"test":1,"test2":[2]}})json");
 
 	/* Check if spaces are properly ignored. */
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({"test":1})json") == R"json({ "test": 1 })json");
-	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({"test":        1})json") == R"json({ "test": 1 })json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({"test":1})json") == R"json({"test":1})json");
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({"test":        1})json") == R"json({"test":1})json");
+
+	/* Valid JSON but invalid Squirrel (read: floats). */
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": 1.1 })json") == std::nullopt);
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({ "test": [ 1, 3, 1.1 ] })json") == std::nullopt);
+
+	/* Root element has to be an object. */
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json( 1 )json") == std::nullopt);
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json( "a" )json") == std::nullopt);
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json( [ 1 ] )json") == std::nullopt);
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json( null )json") == std::nullopt);
+	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json( true )json") == std::nullopt);
 
 	/* Cases that should fail, as it is invalid JSON. */
 	CHECK(TestScriptAdmin::TestScriptEventAdminPort(R"json({"test":test})json") == std::nullopt);

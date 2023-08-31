@@ -16,9 +16,9 @@
 
 #include "../../safeguards.h"
 
-/* static */ bool ScriptAdmin::MakeJSON(HSQUIRRELVM vm, SQInteger index, int max_depth, std::string &data)
+/* static */ bool ScriptAdmin::MakeJSON(nlohmann::json &json, HSQUIRRELVM vm, SQInteger index, int depth)
 {
-	if (max_depth == 0) {
+	if (depth == SQUIRREL_MAX_DEPTH) {
 		ScriptLog::Error("Send parameters can only be nested to 25 deep. No data sent."); // SQUIRREL_MAX_DEPTH = 25
 		return false;
 	}
@@ -28,7 +28,7 @@
 			SQInteger res;
 			sq_getinteger(vm, index, &res);
 
-			data = fmt::format("{}", res);
+			json = res;
 			return true;
 		}
 
@@ -36,63 +36,52 @@
 			const SQChar *buf;
 			sq_getstring(vm, index, &buf);
 
-			size_t len = strlen(buf) + 1;
-			if (len >= 255) {
-				ScriptLog::Error("Maximum string length is 254 chars. No data sent.");
-				return false;
-			}
-
-			data = fmt::format("\"{}\"", buf);
+			json = std::string(buf);
 			return true;
 		}
 
 		case OT_ARRAY: {
-			data = "[ ";
+			json = nlohmann::json::array();
 
-			bool first = true;
 			sq_pushnull(vm);
 			while (SQ_SUCCEEDED(sq_next(vm, index - 1))) {
-				if (!first) data += ", ";
-				if (first) first = false;
+				nlohmann::json tmp;
 
-				std::string tmp;
-
-				bool res = MakeJSON(vm, -1, max_depth - 1, tmp);
+				bool res = MakeJSON(tmp, vm, -1, depth + 1);
 				sq_pop(vm, 2);
 				if (!res) {
 					sq_pop(vm, 1);
 					return false;
 				}
-				data += tmp;
+
+				json.push_back(tmp);
 			}
 			sq_pop(vm, 1);
-			data += " ]";
 			return true;
 		}
 
 		case OT_TABLE: {
-			data = "{ ";
+			json = nlohmann::json::object();
 
-			bool first = true;
 			sq_pushnull(vm);
 			while (SQ_SUCCEEDED(sq_next(vm, index - 1))) {
-				if (!first) data += ", ";
-				if (first) first = false;
+				/* Squirrel ensure the key is a string. */
+				assert(sq_gettype(vm, -2) == OT_STRING);
+				const SQChar *buf;
+				sq_getstring(vm, -2, &buf);
+				std::string key = std::string(buf);
 
-				std::string key;
-				std::string value;
-
-				/* Store the key + value */
-				bool res = MakeJSON(vm, -2, max_depth - 1, key) && MakeJSON(vm, -1, max_depth - 1, value);
+				nlohmann::json value;
+				bool res = MakeJSON(value, vm, -1, depth + 1);
 				sq_pop(vm, 2);
 				if (!res) {
 					sq_pop(vm, 1);
 					return false;
 				}
-				data += key + ": " + value;
+
+				json[key] = value;
 			}
 			sq_pop(vm, 1);
-			data += " }";
 			return true;
 		}
 
@@ -100,17 +89,12 @@
 			SQBool res;
 			sq_getbool(vm, index, &res);
 
-			if (res) {
-				data = "true";
-				return true;
-			}
-
-			data = "false";
+			json = res ? true : false;
 			return true;
 		}
 
 		case OT_NULL: {
-			data = "null";
+			json = nullptr;
 			return true;
 		}
 
@@ -128,19 +112,13 @@
 		return sq_throwerror(vm, "ScriptAdmin::Send requires a table as first parameter. No data sent.");
 	}
 
-	std::string json;
-	if (!ScriptAdmin::MakeJSON(vm, -1, SQUIRREL_MAX_DEPTH, json)) {
+	nlohmann::json json;
+	if (!ScriptAdmin::MakeJSON(json, vm, -1)) {
 		sq_pushinteger(vm, 0);
 		return 1;
 	}
 
-	if (json.length() > NETWORK_GAMESCRIPT_JSON_LENGTH) {
-		ScriptLog::Error("You are trying to send a table that is too large to the AdminPort. No data sent.");
-		sq_pushinteger(vm, 0);
-		return 1;
-	}
-
-	NetworkAdminGameScript(json);
+	NetworkAdminGameScript(json.dump());
 
 	sq_pushinteger(vm, 1);
 	return 1;
