@@ -607,6 +607,9 @@ void VideoDriver_SDL_Base::LoopOnce()
 		 * normally done at the end of the main loop for non-Emscripten.
 		 * After that, Emscripten just halts, and the HTML shows a nice
 		 * "bye, see you next time" message. */
+		extern void PostMainLoop();
+		PostMainLoop();
+
 		emscripten_cancel_main_loop();
 		emscripten_exit_pointerlock();
 		/* In effect, the game ends here. As emscripten_set_main_loop() caused
