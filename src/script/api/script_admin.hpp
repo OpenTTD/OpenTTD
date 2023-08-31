@@ -36,7 +36,7 @@ public:
 	static bool Send(void *table);
 #endif /* DOXYGEN_API */
 
-private:
+protected:
 	/**
 	 * Convert a Squirrel structure into a JSON string.
 	 * @param vm The VM to operate on.
