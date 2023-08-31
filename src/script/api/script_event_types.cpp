@@ -222,11 +222,11 @@ const char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, const char *p)
 	SKIP_EMPTY(p);
 
 	if (strncmp(p, "false", 5) == 0) {
-		sq_pushinteger(vm, 0);
+		sq_pushbool(vm, 0);
 		return p + 5;
 	}
 	if (strncmp(p, "true", 4) == 0) {
-		sq_pushinteger(vm, 1);
+		sq_pushbool(vm, 1);
 		return p + 4;
 	}
 	if (strncmp(p, "null", 4) == 0) {

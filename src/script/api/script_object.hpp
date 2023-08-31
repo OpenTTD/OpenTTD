@@ -44,6 +44,7 @@ typedef bool (ScriptAsyncModeProc)();
 class ScriptObject : public SimpleCountedObject {
 friend class ScriptInstance;
 friend class ScriptController;
+friend class TestScriptController;
 protected:
 	/**
 	 * A class that handles the current active instance. By instantiating it at

@@ -4,4 +4,5 @@ add_test_files(
     string_func.cpp
     strings_func.cpp
     test_main.cpp
+    test_script_admin.cpp
 )
