@@ -129,7 +129,10 @@
 	}
 
 	std::string json;
-	ScriptAdmin::MakeJSON(vm, -1, SQUIRREL_MAX_DEPTH, json);
+	if (!ScriptAdmin::MakeJSON(vm, -1, SQUIRREL_MAX_DEPTH, json)) {
+		sq_pushinteger(vm, 0);
+		return 1;
+	}
 
 	if (json.length() > NETWORK_GAMESCRIPT_JSON_LENGTH) {
 		ScriptLog::Error("You are trying to send a table that is too large to the AdminPort. No data sent.");
