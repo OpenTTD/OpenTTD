@@ -459,6 +459,22 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	}
 };
 
+void PostMainLoop()
+{
+	WaitTillSaved();
+
+	/* only save config if we have to */
+	if (_save_config) {
+		SaveToConfig();
+		SaveHotkeysToConfig();
+		WindowDesc::SaveToConfig();
+		SaveToHighScore();
+	}
+
+	/* Reset windowing system, stop drivers, free used memory, ... */
+	ShutdownGame();
+}
+
 #if defined(UNIX)
 extern void DedicatedFork();
 #endif
@@ -785,18 +801,7 @@ int openttd_main(int argc, char *argv[])
 
 	VideoDriver::GetInstance()->MainLoop();
 
-	WaitTillSaved();
-
-	/* only save config if we have to */
-	if (_save_config) {
-		SaveToConfig();
-		SaveHotkeysToConfig();
-		WindowDesc::SaveToConfig();
-		SaveToHighScore();
-	}
-
-	/* Reset windowing system, stop drivers, free used memory, ... */
-	ShutdownGame();
+	PostMainLoop();
 	return ret;
 }
 
