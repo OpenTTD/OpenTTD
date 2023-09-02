@@ -21,7 +21,6 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "tunnelbridge.h"
-#include "cheat_type.h"
 #include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
 #include "elrail_func.h"
@@ -287,7 +286,7 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
 
 	if (!town_check) return CommandCost();
 
-	if (_cheats.magic_bulldozer.value) return CommandCost();
+	if (IsMagicBulldozeCommand(flags)) return CommandCost();
 
 	Town *t = ClosestTownFromTile(tile, UINT_MAX);
 	if (t == nullptr) return CommandCost();

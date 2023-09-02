@@ -652,6 +652,8 @@ void ClearSnowLine()
  */
 CommandCost CmdLandscapeClear(DoCommandFlag flags, TileIndex tile)
 {
+	if ((flags & DC_MAGIC_BULLDOZER) != 0 &&_current_company != OWNER_DEITY) return CMD_ERROR;
+
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool do_clear = false;
 	/* Test for stuff which results in water when cleared. Then add the cost to also clear the water. */

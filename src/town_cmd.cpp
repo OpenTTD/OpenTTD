@@ -32,7 +32,6 @@
 #include "window_func.h"
 #include "string_func.h"
 #include "newgrf_cargo.h"
-#include "cheat_type.h"
 #include "animated_tile_func.h"
 #include "subsidy_func.h"
 #include "core/pool_func.hpp"
@@ -676,7 +675,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 
 	if (Company::IsValidID(_current_company)) {
 		if (rating > t->ratings[_current_company] && !(flags & DC_NO_TEST_TOWN_RATING) &&
-				!_cheats.magic_bulldozer.value && _settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE) {
+				!IsMagicBulldozeCommand(flags) && _settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE) {
 			SetDParam(0, t->index);
 			return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 		}
@@ -3703,7 +3702,7 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 	/* if magic_bulldozer cheat is active, town doesn't penalize for removing stuff */
 	if (t == nullptr || (flags & DC_NO_MODIFY_TOWN_RATING) ||
 			!Company::IsValidID(_current_company) ||
-			(_cheats.magic_bulldozer.value && add < 0)) {
+			(IsMagicBulldozeCommand(flags) && add < 0)) {
 		return;
 	}
 
@@ -3739,7 +3738,7 @@ CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType
 {
 	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
 	if (t == nullptr || !Company::IsValidID(_current_company) ||
-			_cheats.magic_bulldozer.value || (flags & DC_NO_TEST_TOWN_RATING)) {
+			IsMagicBulldozeCommand(flags) || (flags & DC_NO_TEST_TOWN_RATING)) {
 		return CommandCost();
 	}
 

@@ -200,6 +200,16 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->allow_do_command;
 }
 
+/* static */ void ScriptObject::SetMagicBulldozerMode(bool mode)
+{
+	GetStorage()->magic_bulldozer_mode = mode;
+}
+
+/* static */ bool ScriptObject::GetMagicBulldozerMode()
+{
+	return GetStorage()->magic_bulldozer_mode;
+}
+
 /* static */ void ScriptObject::SetCompany(CompanyID company)
 {
 	if (GetStorage()->root_company == INVALID_OWNER) GetStorage()->root_company = company;

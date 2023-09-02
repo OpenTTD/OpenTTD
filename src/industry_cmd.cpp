@@ -16,7 +16,6 @@
 #include "command_func.h"
 #include "town.h"
 #include "news_func.h"
-#include "cheat_type.h"
 #include "company_base.h"
 #include "genworld.h"
 #include "tree_map.h"
@@ -496,7 +495,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 	 * (area around OILRIG is water, so water shouldn't flood it
 	 */
 	if ((_current_company != OWNER_WATER && _game_mode != GM_EDITOR &&
-			!_cheats.magic_bulldozer.value) ||
+			!IsMagicBulldozeCommand(flags)) ||
 			((flags & DC_AUTO) != 0) ||
 			(_current_company == OWNER_WATER &&
 				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||

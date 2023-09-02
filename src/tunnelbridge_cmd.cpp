@@ -29,7 +29,6 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "tunnelbridge.h"
-#include "cheat_type.h"
 #include "elrail_func.h"
 #include "pbs.h"
 #include "company_base.h"
@@ -794,9 +793,10 @@ CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportT
 /**
  * Are we allowed to remove the tunnel or bridge at \a tile?
  * @param tile End point of the tunnel or bridge.
+ * @param flags Command flags.
  * @return A succeeded command if the tunnel or bridge may be removed, a failed command otherwise.
  */
-static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
+static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile, DoCommandFlag flags)
 {
 	/* Floods can remove anything as well as the scenario editor */
 	if (_current_company == OWNER_WATER || _game_mode == GM_EDITOR) return CommandCost();
@@ -812,7 +812,7 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 			if (tram_rt != INVALID_ROADTYPE) tram_owner = GetRoadOwner(tile, RTT_TRAM);
 
 			/* We can remove unowned road and if the town allows it */
-			if (road_owner == OWNER_TOWN && _current_company != OWNER_TOWN && !(_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value)) {
+			if (road_owner == OWNER_TOWN && _current_company != OWNER_TOWN && !(_settings_game.construction.extra_dynamite || IsMagicBulldozeCommand(flags))) {
 				/* Town does not allow */
 				return CheckTileOwnership(tile);
 			}
@@ -846,7 +846,7 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
  */
 static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 {
-	CommandCost ret = CheckAllowRemoveTunnelBridge(tile);
+	CommandCost ret = CheckAllowRemoveTunnelBridge(tile, flags);
 	if (ret.Failed()) return ret;
 
 	TileIndex endtile = GetOtherTunnelEnd(tile);
@@ -926,7 +926,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
  */
 static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 {
-	CommandCost ret = CheckAllowRemoveTunnelBridge(tile);
+	CommandCost ret = CheckAllowRemoveTunnelBridge(tile, flags);
 	if (ret.Failed()) return ret;
 
 	TileIndex endtile = GetOtherBridgeEnd(tile);
