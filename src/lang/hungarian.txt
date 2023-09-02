@@ -1464,6 +1464,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nincs*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentett
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normál
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Áthaladó megállóhelyek engedélyezése települési tulajdonú utakon: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Áthaladó megállóhelyek építésének engedélyezése települési tulajdonú utakon
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Áthaladó megállóhelyek engedélyezése ellenfél tulajdonában lévő utakon: {STRING}

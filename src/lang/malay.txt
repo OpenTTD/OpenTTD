@@ -1243,6 +1243,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Tiada
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Dikurangkan
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Benarkan hentian pandu-lalu di jalanraya bandar: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Benarkan pembinaan untuk jalan pemanduan berhenti di jalan milik bandaran
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Benarkan hentian pandu-lalu di jalanraya yang dimiliki oleh pesaing: {STRING}

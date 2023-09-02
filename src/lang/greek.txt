@@ -1484,6 +1484,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Κανένα*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Μειωμένη
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Κανονική
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Επιτρέπονται οι στάσεις σε δρόμους που είναι ιδιοκτησία των πόλεων : {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους που είναι ιδιοκτησία των πόλεων
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Επιτρέπονται οι στάσεις σε δρόμους που ανήκουν σε ανταγωνιστές: {STRING}

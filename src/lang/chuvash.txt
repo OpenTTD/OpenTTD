@@ -648,6 +648,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ҫук
 
 
 
+
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропорт кивел мар: {STRING}
 
 

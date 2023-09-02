@@ -1484,6 +1484,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Numquam*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Raro
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Mediocriter
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Sinere stationes viarias pervias esse in viis oppidorum: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Sinere struere stationes viarias pervias in viis quas oppida possident
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Sinere stationes viarias pervias esse in viis competitorum: {STRING}

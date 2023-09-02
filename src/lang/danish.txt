@@ -1426,6 +1426,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ingen*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduceret
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillad gennemkørsels-stop på veje ejet af en by: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillad konstruktion af gennemkørsels-stop på by-ejede veje
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillad gennemkørsels-stoppesteder på veje ejet af konkurrenter: {STRING}

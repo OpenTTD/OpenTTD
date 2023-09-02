@@ -1577,6 +1577,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :отсутст�
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :сниженная
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :обычная
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Позволять строить остановки на муниципальных дорогах: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Разрешить компаниям строить сквозные остановки на дорогах, построенных за счёт городского бюджета
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Разрешить проезд через остановки соперников по их дорогам: {STRING}

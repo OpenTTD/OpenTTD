@@ -1427,6 +1427,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Hiç
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Azaltılmış
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Kasabaların sahip olduğu yollarda arabalı yol duraklarına izin ver: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Kasabaların sahip olduğu yollarda arabalı yol duraklarının inşasına izin ver
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Rakiplerin yolu üzerinde durak yapmaya izin ver: {STRING}

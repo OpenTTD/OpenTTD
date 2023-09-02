@@ -1329,6 +1329,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Dim
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Llai
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Arferol
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i drefi: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Caniatáu adeiladu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i drefi
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i gystadleuwyr: {STRING}

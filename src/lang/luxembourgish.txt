@@ -1380,6 +1380,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Keng*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzéiert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Erlaabt d'Iwwerfueren vu Stopschëlder op Stroossen vun der Stad: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaabt d'Bauen vu säitlechen Busarrêten op Stroossen déi der Stad gehéieren
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Erlaabt d'Iwwerfueren vu Stopschëlder op Stroossen vun der Konkurrenz: {STRING}

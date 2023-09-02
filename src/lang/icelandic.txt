@@ -1245,6 +1245,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Engin
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :fækkuð
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :miðlungs
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leyfa stoppistöðvar sem keyrt er í gegnum, á vegum í eigu bæja: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Leyfa byggingu stoppistöðvar sem keyrt er í gegnum, á vegum í eigu bæja
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leyfa stoppistöðvar sem keyrt er í gegnum, á vegum í eigu samkeppnisaðila: {STRING}

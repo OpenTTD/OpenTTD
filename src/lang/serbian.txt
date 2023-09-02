@@ -1573,6 +1573,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nikakav
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :umanjen
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalan
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Dozvoljene ulične stanice na kolovozima u vlasništvu naselja: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Dozvoljava izgradnju protočnih drumskih stanica na putevima čiji je vlasnik naselje
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Dozvoljene ulične stanice na kolovozima u vlasništvu drugih preduzeća: {STRING}

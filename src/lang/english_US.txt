@@ -1426,6 +1426,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :None*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduced
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-through road stops on roads owned by towns: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construction of drive-through road stops on roads owned by towns
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Allow drive-through road stops on roads owned by competitors: {STRING}

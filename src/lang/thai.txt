@@ -1303,6 +1303,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ไม่มี
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :ลดลง
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :ปกติ
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :อนุญาตให้มีที่หยุดรถแบบขับผ่านบนถนนที่เมืองเป็นเจ้าของ: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :สามารถสร้างป้ายหยุดรถบนถนนของเมืองได้
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :อนุญาตให้มีที่หยุดรถแบบขับผ่านบนถนนของบริษัทอื่นๆ: {STRING}

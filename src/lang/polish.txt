@@ -1806,6 +1806,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Brak*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Zredukowana
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalna
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Pozwól na budowę przystanków przelotowych na drogach miejskich: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Pozwalaj budować przystanki przelotowe na drogach będących własnością miast
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Pozwól na budowę przystanków przelotowych na drogach innych firm: {STRING}

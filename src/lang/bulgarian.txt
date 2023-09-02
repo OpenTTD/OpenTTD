@@ -1290,6 +1290,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Никакви
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Намалени
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Нормални
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Преминаване през спирки на градски пътища: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Позволява строежа на ЖП линии пресичащи път притежаван от даден град
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Преминаване през спирки на пътища, собственост на конкуренти: {STRING}

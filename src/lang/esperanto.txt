@@ -1470,6 +1470,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neniu
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduktita
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permesu trairajn bushaltejojn sur urboposedataj stratoj: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permesu konstrui trairajn strathaltejojn sur stratoj posedataj de urboj
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permesu trairajn strathaltejojn sur stratoj posedataj de konkurantoj: {STRING}

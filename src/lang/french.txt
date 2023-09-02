@@ -1427,6 +1427,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Aucun*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Réduit
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Autoriser les arrêts de bus sur les routes appartenant aux municipalités{NBSP}: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Autoriser la construction des arrêts de bus sur les routes appartenant aux municipalités
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Autoriser les arrêts de bus sur les routes des concurrents{NBSP}: {STRING}

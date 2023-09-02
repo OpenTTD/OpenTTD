@@ -1571,6 +1571,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Jokių
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Retesni
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalus
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leisti pravažiuojamąsias stoteles miesto keliuose: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Leidžia statyti pravažiuojamojo tipo stoteles miestams priklausiančiuose keliuose
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leisti pravažiuojamąsias stoteles priešininko keliuose: {STRING}

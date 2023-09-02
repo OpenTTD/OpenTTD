@@ -1426,6 +1426,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normaal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Doorrijhaltes op stedelijke wegen toestaan: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Bouwen van doorrijhaltes op stedelijke wegen toestaan
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Haltes op wegen van tegenstanders toestaan: {STRING}

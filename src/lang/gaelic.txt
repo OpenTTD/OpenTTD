@@ -1491,6 +1491,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Cha tachair seo
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Ainneamh
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Àbhaisteach
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ceadaich stèiseanan ri taobh an rathaid air rathaidean a bhuineas ri baile: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ceadaich gun tèid stèiseanan ri taobh an rathaid a thogail air rathaidean a bhuineas ri baile
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ceadaich stèiseanan ri taobh an rathaid air rathaidean a bhuineas ri co-fharpaisiche: {STRING}

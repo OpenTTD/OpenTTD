@@ -1477,6 +1477,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Žádná*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Redukovaný
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Obvyklý
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stavba průjezdných zastávek na obecních silnicích: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povoluje stavbu průjezdných stanic na městem vlastněných silnicích
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {STRING}

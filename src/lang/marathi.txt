@@ -862,6 +862,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :वाहना
 
 
 
+
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन हरवल्यास सूचित करा: {STRING}
 
 ###length 3

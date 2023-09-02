@@ -1426,6 +1426,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :không*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :giảm bớt
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :bình thường
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Cho phép xây điểm dừng xe buýt trên đường sở hữu bởi thị trấn: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Cho phép xây dựng điểm dừng xe buýt trên đường thuộc sở hữu của địa phương
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Cho phép xây điểm dừng xe buýt trên đường của đối thủ: {STRING}

@@ -1382,6 +1382,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nav*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :parasts
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Atļaut caurbraucamas pieturvietas uz pilsētai piederošiem ceļiem: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ļauj būvēt caurbraucamas pieturvietas uz pilsētai piederošiem ceļiem
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Atļaut caurbraucamas pieturvietas uz sāncenšu ceļiem: {STRING}

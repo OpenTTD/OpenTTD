@@ -1267,6 +1267,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ezer ez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Mugatua
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Arrunta
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Herrien errepideetan zehar-pasatzeko geltokiak baimendu: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Herrien menpe dauden errepideetan zehar-pasatzeko geltokiak baimendu
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Arerioen errepideetan zehar-pasatzeko geltokiak baimendu: {STRING}

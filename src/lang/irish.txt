@@ -1354,6 +1354,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ceann ar bith
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Laghdaithe
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Gnáth
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ceadaigh stadanna bóthair 'tiomáin tríd' ar bhóithre ar le bailte iad: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ceadaigh stopann bóthair 'tiomáin tríd' a thógáil ar bhóithre ar le bailte iad
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ceadaigh stopanna bóthair 'tiomáin tríd' ar bhóithre ar le hiomaitheoirí iad: {STRING}

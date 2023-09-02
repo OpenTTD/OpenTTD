@@ -1485,6 +1485,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Žiadne
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Obmedzené
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normálny
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Povoliť prejazdné zastávky na mestských cestách: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povoliť budovanie "prejazdných" nakládok a zastávok na cestách vlastnených mestom
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Výstavba zastávok na cestách vlastnených konkurenciou: {STRING}

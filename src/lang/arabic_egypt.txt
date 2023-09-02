@@ -1252,6 +1252,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :بدون
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :منخفض
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :طبيعي
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :السماح للعربات بالعبور خلال المواقف المملوكة داخل المدن: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :السماح بمرور العربات خلال المحطات المملوكة للمنافسين: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :السماح ببناء مواقف السيارات على الطرق المملوكة لشركات أخرى

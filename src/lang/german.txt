@@ -1427,6 +1427,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Keine
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verringert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Bus- und Lkw-Haltestellen auf Straßen im Stadteigentum erlauben: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaubt die Errichtung von Bus- und Lkw-Haltestellen auf Straßen im Stadteigentum
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Bus- und Lkw-Haltestellen auf Straßen von Mitbewerbern erlauben: {STRING}

@@ -1246,6 +1246,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Einki
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Færri
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Vanligt
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Loyv gjøgnumkoyrings steðgum á vegum ið bygdir eiga: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Loyv bygging av gjøgnumkoyrings steðgum á vegum ið bygdir eiga
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Loyv gjøgnumkoyrings steðgum á vegum ið kappingarneytar eiga: {STRING}

@@ -1436,6 +1436,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ei
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Vähem
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Keskmiselt
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läbisõidupeatused asulate kuuluvatel teedel: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Lubab asulatele kuuluvatele teedele ehitada läbisõidupeatuseid
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Läbisõidupeatused konkurentide teedel: {STRING}

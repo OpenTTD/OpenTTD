@@ -1308,6 +1308,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Gjin
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Minder
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Gewoan
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stean it bouwen fan haltes op troch de stêd behearde diken ta: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Stean it bouwen fan haltes op troch de stêd behearde diken ta
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stean it bouwen fan haltes op troch in tsjinstanner behearde diken ta {STRING}

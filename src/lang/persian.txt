@@ -1214,6 +1214,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :هیچکدام
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :کاهش
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :عادی
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :اجازه رانندگی در خیابان‌های شهر{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :اجازه استفاده از جاده یک بازیکن توسط دیگر رقیبان: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغییر دادن این تنظیم هنگامی که خودرو وجود دارد ممکن نیست

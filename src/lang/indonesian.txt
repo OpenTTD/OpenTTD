@@ -1404,6 +1404,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nihil
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Dikurangi
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ijinkan terminal drive-thru pada jalan milik kota: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Membolehkan konstruksi halte di jalan kota
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ijinkan terminal drive-thru pada jalan milik pesaing: {STRING}

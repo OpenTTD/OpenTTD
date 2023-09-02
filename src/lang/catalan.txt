@@ -1427,6 +1427,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Cap*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduït
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permet situar parades en carreteres que són propietat de les poblacions: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permet la construcció de passos a nivell als carrers propietat de les poblacions
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permet circular a través de les parades en carreteres propietat de competidors: {STRING}

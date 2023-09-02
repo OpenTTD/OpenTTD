@@ -1291,6 +1291,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ஒன்று
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :குறைக்கப்பட்ட
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :இயல்பான
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :வழிசெல்லக்கூடிய சாலை நிறுத்தங்களை நகராட்சியின் சாலைகளில் அமைக்க அனுமதி: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :நகரத்திற்குச் சொந்தமான சாலைகளில் டிரைவ்-த்ரோ சாலை நிறுத்தங்களை உருவாக்க அனுமதிக்கவும்
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}வாகனங்கள் இருக்கும் பொது இந்த அமைப்பினை மாற்ற இயலாது

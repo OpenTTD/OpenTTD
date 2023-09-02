@@ -1158,6 +1158,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :کوئی نہی
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :کم
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :نارمل
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :شہر کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :مد مقابلوں کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}جب گاڑیاں موجود ہوں تو یہ سیٹنگ بدلنا ممکن نہیں

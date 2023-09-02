@@ -1381,6 +1381,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ninguno*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir construcción de paradas de paso en localidades: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Se podrán construir paradas de paso en las carreteras que sean propiedad de las localidades
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir construcción de paradas de paso en carreteras de la competencia: {STRING}

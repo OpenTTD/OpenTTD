@@ -1399,6 +1399,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :なし
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :軽減
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :普通
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :街有道路での路側型バス停/荷役所建設: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :路側型バス停/荷役所を街が所有する道路上に建設できるようにします
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :他社の道路上での路側型バス停/荷役所設置: {STRING}

@@ -1425,6 +1425,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :niciunul
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :redus
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite construirea stațiilor pe drumurile deținute de orașe: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construirea de stații pe drumurile aflate în proprietatea orașelor
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permite construirea staţiilor pe drumurile competitorilor: {STRING}

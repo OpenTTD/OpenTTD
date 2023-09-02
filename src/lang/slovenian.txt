@@ -1443,6 +1443,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Brez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Zmanjšano
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalno
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Dovoli prehodne postaje na cestah v lasti mest: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Dovoli gradnjo pretočnih postaj na cesti, ki je v lasti mesta.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Dovoli prevoženja postaj na tekmečevih cestah: {STRING}

@@ -1309,6 +1309,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normaal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Laat deur-ry padhalte op dorp besite paaie toe: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Laat Bouery van deur-ry pad stasies op dorp beheerde paaie
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Laat deur-ry padhalte toe op paaie wat deur ander deelnemers besit word: {STRING}

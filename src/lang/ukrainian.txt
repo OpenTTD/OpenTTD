@@ -1528,6 +1528,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Немає
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Низька
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Нормальна
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Дозволити встановлення зупинок на дорогах міста: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Дозволяє встановлення зупинок на дорогах, якими володіє місто.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Дозволити встановлення зупинок на дорогах конкурентів: {STRING}

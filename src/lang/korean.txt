@@ -1427,6 +1427,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :적음
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :보통
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :도시 소유의 도로 위에 버스 정류장 건설 허용: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :도시 소유의 도로 위에 버스 정류장 건설을 허용합니다.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :경쟁자 소유의 도로 위에 버스 정류장 건설 허용: {STRING}

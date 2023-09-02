@@ -924,6 +924,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Износ на
 ###length 3
 
 
+
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраструктура за одржување: {STRING}
 
 

@@ -1427,6 +1427,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nenhum
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzido
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações de passagem nas estradas pertencentes às localidades: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permitir a construção de estações de passagem com paradas nas ruas pertencentes a localidades.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações drive-through nas ruas de outros competidores: {STRING}

@@ -1380,6 +1380,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :無
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :減少
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :正常
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :可在市鎮所屬道路上建設路邊車站：{STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :容許在市鎮擁有的道路上建造直通型車站。
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :可在競爭對手所有的道路上建設路邊車站：{STRING}

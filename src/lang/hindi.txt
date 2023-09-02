@@ -417,6 +417,7 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :कंपनि
 
 
 
+
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :सक्षम होने पर वाहनों के निर्देशों की आवधिक जाँच की जाती है, और कुछ सुस्पष्ट मामलों का पता चलते ही एक संदेश द्वारा बताया जाता है।
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :नहीं

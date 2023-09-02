@@ -1461,6 +1461,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nessuno*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Ridotto
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normale
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Consenti fermate passanti sulle strade di proprietà delle città: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permettere la costruzione di fermate stradali passanti sulle strade di proprietà delle città.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Consenti fermate passanti sulle strade di proprietà degli avversari: {STRING}

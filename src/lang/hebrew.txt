@@ -1324,6 +1324,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ללא
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :מופחת
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :רגיל
 
+
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{STRING} :אפשר מעבר דרך תחנות על כבישים בבעלות עירונית
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :אפשר בנייה של תחנות "על הדרך" בכבישים בבעלות עיירות
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :אפשר נסיעה דרך תמרורי-עצירה על דרכים בבעלות מתחרים: {STRING}
