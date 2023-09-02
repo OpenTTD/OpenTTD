@@ -206,28 +206,23 @@ struct GoodsEntry {
 		GES_ACCEPTED_BIGTICK,
 	};
 
-	GoodsEntry() :
-		status(0),
-		time_since_pickup(255),
-		rating(INITIAL_STATION_RATING),
-		last_speed(0),
-		last_age(255),
-		amount_fract(0),
-		link_graph(INVALID_LINK_GRAPH),
-		node(INVALID_NODE),
-		max_waiting_cargo(0)
-	{}
+	StationCargoList cargo{}; ///< The cargo packets of cargo waiting in this station
+	FlowStatMap flows{}; ///< Planned flows through this station.
 
-	byte status; ///< Status of this cargo, see #GoodsEntryStatus.
+	uint max_waiting_cargo{0}; ///< Max cargo from this station waiting at any station.
+	NodeID node{INVALID_NODE}; ///< ID of node in link graph referring to this goods entry.
+	LinkGraphID link_graph{INVALID_LINK_GRAPH}; ///< Link graph this station belongs to.
+
+	byte status{0}; ///< Status of this cargo, see #GoodsEntryStatus.
 
 	/**
 	 * Number of rating-intervals (up to 255) since the last vehicle tried to load this cargo.
 	 * The unit used is STATION_RATING_TICKS.
 	 * This does not imply there was any cargo to load.
 	 */
-	byte time_since_pickup;
+	uint8_t time_since_pickup{255};
 
-	byte rating;            ///< %Station rating for this cargo.
+	uint8_t rating{INITIAL_STATION_RATING}; ///< %Station rating for this cargo.
 
 	/**
 	 * Maximum speed (up to 255) of the last vehicle that tried to load this cargo.
@@ -238,21 +233,15 @@ struct GoodsEntry {
 	 *  - Ships: 0.5 * km-ish/h
 	 *  - Aircraft: 8 * mph
 	 */
-	byte last_speed;
+	uint8_t last_speed{0};
 
 	/**
 	 * Age in years (up to 255) of the last vehicle that tried to load this cargo.
 	 * This does not imply there was any cargo to load.
 	 */
-	byte last_age;
+	uint8_t last_age{255};
 
-	byte amount_fract;      ///< Fractional part of the amount in the cargo list
-	StationCargoList cargo; ///< The cargo packets of cargo waiting in this station
-
-	LinkGraphID link_graph; ///< Link graph this station belongs to.
-	NodeID node;            ///< ID of node in link graph referring to this goods entry.
-	FlowStatMap flows;      ///< Planned flows through this station.
-	uint max_waiting_cargo; ///< Max cargo from this station waiting at any station.
+	uint8_t amount_fract{0}; ///< Fractional part of the amount in the cargo list
 
 	/**
 	 * Reports whether a vehicle has ever tried to load the cargo at this station.
