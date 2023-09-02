@@ -9,7 +9,7 @@
 
 #include "../stdafx.h"
 #include "../strings_func.h"
-#include "core/game_info.h"
+#include "core/network_game_info.h"
 #include "network_admin.h"
 #include "network_server.h"
 #include "network_udp.h"

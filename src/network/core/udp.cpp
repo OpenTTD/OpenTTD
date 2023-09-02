@@ -12,7 +12,7 @@
 #include "../../stdafx.h"
 #include "../../timer/timer_game_calendar.h"
 #include "../../debug.h"
-#include "game_info.h"
+#include "network_game_info.h"
 #include "udp.h"
 
 #include "../../safeguards.h"

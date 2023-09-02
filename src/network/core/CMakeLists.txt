@@ -5,8 +5,8 @@ add_files(
     config.h
     core.cpp
     core.h
-    game_info.cpp
-    game_info.h
+    network_game_info.cpp
+    network_game_info.h
     host.cpp
     host.h
     http.h

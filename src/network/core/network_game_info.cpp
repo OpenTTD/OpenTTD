@@ -10,7 +10,7 @@
  */
 
 #include "../../stdafx.h"
-#include "game_info.h"
+#include "network_game_info.h"
 #include "../../core/bitmath_func.hpp"
 #include "../../company_base.h"
 #include "../../timer/timer_game_calendar.h"
