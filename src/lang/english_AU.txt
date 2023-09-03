@@ -1426,6 +1426,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :None
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduced
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Allow level crossings with roads or rails owned by competitors: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Allow construction of level crossings on roads or rails owned by competitors
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-through road stops on roads owned by towns: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construction of drive-through road stops on roads owned by towns

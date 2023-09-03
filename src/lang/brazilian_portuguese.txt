@@ -1427,6 +1427,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nenhum
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzido
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir passagens de nível com estradas ou linhas de outras companhias: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permitir a construção de passagens de nível nas estradas ou linhas de outras companhias
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações de passagem nas estradas pertencentes às localidades: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permitir a construção de estações de passagem com paradas nas ruas pertencentes a localidades.

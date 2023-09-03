@@ -1426,6 +1426,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ei yhtään¹
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Vähennetty
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Tavallinen
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Salli kilpailijoiden teiden tai raiteiden kanssa risteävät tasoristeykset: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Sallii tasoristeysten rakentamisen kilpailijoiden omistamille teille ja raiteille
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Salli läpiajettavat pysäkit kuntien omistamilla teillä: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Sallii läpiajettavien pysäkkien rakentamisen kuntien omistamille teille
