@@ -200,7 +200,7 @@ static WindowDesc _set_date_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_SET_DATE, WC_NONE,
 	0,
-	_nested_set_date_widgets, lengthof(_nested_set_date_widgets)
+	std::begin(_nested_set_date_widgets), std::end(_nested_set_date_widgets)
 );
 
 /**

@@ -720,7 +720,7 @@ static WindowDesc _build_object_desc(
 	WDP_AUTO, "build_object", 0, 0,
 	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	_nested_build_object_widgets, lengthof(_nested_build_object_widgets),
+	std::begin(_nested_build_object_widgets), std::end(_nested_build_object_widgets),
 	&BuildObjectWindow::hotkeys
 );
 

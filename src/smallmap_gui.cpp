@@ -1833,8 +1833,8 @@ static NWidgetBase *SmallMapDisplay(int *biggest_index)
 {
 	NWidgetContainer *map_display = new NWidgetSmallmapDisplay;
 
-	MakeNWidgets(_nested_smallmap_display, lengthof(_nested_smallmap_display), biggest_index, map_display);
-	MakeNWidgets(_nested_smallmap_bar, lengthof(_nested_smallmap_bar), biggest_index, map_display);
+	MakeNWidgets(std::begin(_nested_smallmap_display), std::end(_nested_smallmap_display), biggest_index, map_display);
+	MakeNWidgets(std::begin(_nested_smallmap_bar), std::end(_nested_smallmap_bar), biggest_index, map_display);
 	return map_display;
 }
 
@@ -1869,7 +1869,7 @@ static WindowDesc _smallmap_desc(
 	WDP_AUTO, "smallmap", 484, 314,
 	WC_SMALLMAP, WC_NONE,
 	0,
-	_nested_smallmap_widgets, lengthof(_nested_smallmap_widgets)
+	std::begin(_nested_smallmap_widgets), std::end(_nested_smallmap_widgets)
 );
 
 /**

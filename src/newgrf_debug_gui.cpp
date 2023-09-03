@@ -682,14 +682,14 @@ static WindowDesc _newgrf_inspect_chain_desc(
 	WDP_AUTO, "newgrf_inspect_chain", 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
 	0,
-	_nested_newgrf_inspect_chain_widgets, lengthof(_nested_newgrf_inspect_chain_widgets)
+	std::begin(_nested_newgrf_inspect_chain_widgets), std::end(_nested_newgrf_inspect_chain_widgets)
 );
 
 static WindowDesc _newgrf_inspect_desc(
 	WDP_AUTO, "newgrf_inspect", 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
 	0,
-	_nested_newgrf_inspect_widgets, lengthof(_nested_newgrf_inspect_widgets)
+	std::begin(_nested_newgrf_inspect_widgets), std::end(_nested_newgrf_inspect_widgets)
 );
 
 /**
@@ -1124,7 +1124,7 @@ static WindowDesc _sprite_aligner_desc(
 	WDP_AUTO, "sprite_aligner", 400, 300,
 	WC_SPRITE_ALIGNER, WC_NONE,
 	0,
-	_nested_sprite_aligner_widgets, lengthof(_nested_sprite_aligner_widgets)
+	std::begin(_nested_sprite_aligner_widgets), std::end(_nested_sprite_aligner_widgets)
 );
 
 /**

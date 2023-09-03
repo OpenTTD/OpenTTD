@@ -320,7 +320,7 @@ static WindowDesc _build_trees_desc(
 	WDP_AUTO, "build_tree", 0, 0,
 	WC_BUILD_TREES, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_trees_widgets, lengthof(_nested_build_trees_widgets)
+	std::begin(_nested_build_trees_widgets), std::end(_nested_build_trees_widgets)
 );
 
 void ShowBuildTreesToolbar()

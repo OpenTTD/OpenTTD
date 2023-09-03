@@ -432,7 +432,7 @@ static WindowDesc _cheats_desc(
 	WDP_AUTO, "cheats", 0, 0,
 	WC_CHEATS, WC_NONE,
 	0,
-	_nested_cheat_widgets, lengthof(_nested_cheat_widgets)
+	std::begin(_nested_cheat_widgets), std::end(_nested_cheat_widgets)
 );
 
 /** Open cheat window. */

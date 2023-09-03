@@ -541,7 +541,7 @@ static WindowDesc _newgrf_parameters_desc(
 	WDP_CENTER, "settings_newgrf_config", 500, 208,
 	WC_GRF_PARAMETERS, WC_NONE,
 	0,
-	_nested_newgrf_parameter_widgets, lengthof(_nested_newgrf_parameter_widgets)
+	std::begin(_nested_newgrf_parameter_widgets), std::end(_nested_newgrf_parameter_widgets)
 );
 
 static void OpenGRFParameterWindow(GRFConfig *c, bool editable)
@@ -1926,13 +1926,13 @@ static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 /** Construct nested container widget for managing the lists and the info panel of the NewGRF GUI. */
 NWidgetBase* NewGRFDisplay(int *biggest_index)
 {
-	NWidgetBase *avs = MakeNWidgets(_nested_newgrf_availables_widgets, lengthof(_nested_newgrf_availables_widgets), biggest_index, nullptr);
+	NWidgetBase *avs = MakeNWidgets(std::begin(_nested_newgrf_availables_widgets), std::end(_nested_newgrf_availables_widgets), biggest_index, nullptr);
 
 	int biggest2;
-	NWidgetBase *acs = MakeNWidgets(_nested_newgrf_actives_widgets, lengthof(_nested_newgrf_actives_widgets), &biggest2, nullptr);
+	NWidgetBase *acs = MakeNWidgets(std::begin(_nested_newgrf_actives_widgets), std::end(_nested_newgrf_actives_widgets), &biggest2, nullptr);
 	*biggest_index = std::max(*biggest_index, biggest2);
 
-	NWidgetBase *inf = MakeNWidgets(_nested_newgrf_infopanel_widgets, lengthof(_nested_newgrf_infopanel_widgets), &biggest2, nullptr);
+	NWidgetBase *inf = MakeNWidgets(std::begin(_nested_newgrf_infopanel_widgets), std::end(_nested_newgrf_infopanel_widgets), &biggest2, nullptr);
 	*biggest_index = std::max(*biggest_index, biggest2);
 
 	return new NWidgetNewGRFDisplay(avs, acs, inf);
@@ -1960,7 +1960,7 @@ static WindowDesc _newgrf_desc(
 	WDP_CENTER, "settings_newgrf", 300, 263,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	_nested_newgrf_widgets, lengthof(_nested_newgrf_widgets)
+	std::begin(_nested_newgrf_widgets), std::end(_nested_newgrf_widgets)
 );
 
 /**
@@ -2044,7 +2044,7 @@ static WindowDesc _save_preset_desc(
 	WDP_CENTER, "save_preset", 140, 110,
 	WC_SAVE_PRESET, WC_GAME_OPTIONS,
 	WDF_MODAL,
-	_nested_save_preset_widgets, lengthof(_nested_save_preset_widgets)
+	std::begin(_nested_save_preset_widgets), std::end(_nested_save_preset_widgets)
 );
 
 /** Class for the save preset window. */
@@ -2189,7 +2189,7 @@ static WindowDesc _scan_progress_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
 	0,
-	_nested_scan_progress_widgets, lengthof(_nested_scan_progress_widgets)
+	std::begin(_nested_scan_progress_widgets), std::end(_nested_scan_progress_widgets)
 );
 
 /** Window for showing the progress of NewGRF scanning. */

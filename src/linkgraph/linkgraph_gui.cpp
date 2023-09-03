@@ -541,7 +541,7 @@ static WindowDesc _linkgraph_legend_desc(
 	WDP_AUTO, "toolbar_linkgraph", 0, 0,
 	WC_LINKGRAPH_LEGEND, WC_NONE,
 	0,
-	_nested_linkgraph_legend_widgets, lengthof(_nested_linkgraph_legend_widgets)
+	std::begin(_nested_linkgraph_legend_widgets), std::end(_nested_linkgraph_legend_widgets)
 );
 
 /**

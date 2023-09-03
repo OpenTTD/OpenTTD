@@ -213,7 +213,7 @@ static WindowDesc _air_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_air", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_air_toolbar_widgets, lengthof(_nested_air_toolbar_widgets),
+	std::begin(_nested_air_toolbar_widgets), std::end(_nested_air_toolbar_widgets),
 	&BuildAirToolbarWindow::hotkeys
 );
 
@@ -622,7 +622,7 @@ static WindowDesc _build_airport_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	_nested_build_airport_widgets, lengthof(_nested_build_airport_widgets)
+	std::begin(_nested_build_airport_widgets), std::end(_nested_build_airport_widgets)
 );
 
 static void ShowBuildAirportPicker(Window *parent)

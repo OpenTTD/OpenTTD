@@ -265,7 +265,7 @@ static WindowDesc _script_list_desc(
 	WDP_CENTER, "settings_script_list", 200, 234,
 	WC_SCRIPT_LIST, WC_NONE,
 	0,
-	_nested_script_list_widgets, lengthof(_nested_script_list_widgets)
+	std::begin(_nested_script_list_widgets), std::end(_nested_script_list_widgets)
 );
 
 /**
@@ -608,7 +608,7 @@ static WindowDesc _script_settings_desc(
 	WDP_CENTER, "settings_script", 500, 208,
 	WC_SCRIPT_SETTINGS, WC_NONE,
 	0,
-	_nested_script_settings_widgets, lengthof(_nested_script_settings_widgets)
+	std::begin(_nested_script_settings_widgets), std::end(_nested_script_settings_widgets)
 );
 
 /**
@@ -1195,7 +1195,7 @@ static WindowDesc _script_debug_desc(
 	WDP_AUTO, "script_debug", 600, 450,
 	WC_SCRIPT_DEBUG, WC_NONE,
 	0,
-	_nested_script_debug_widgets, lengthof(_nested_script_debug_widgets),
+	std::begin(_nested_script_debug_widgets), std::end(_nested_script_debug_widgets),
 	&ScriptDebugWindow::hotkeys
 );
 
