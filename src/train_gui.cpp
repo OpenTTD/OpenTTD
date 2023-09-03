@@ -267,9 +267,9 @@ static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int 
  * @param v Vehicle to process
  * @param summary Space for the result
  */
-static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary *summary)
+static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary &summary)
 {
-	summary->clear();
+	summary.clear();
 	do {
 		if (!v->GetEngine()->CanCarryCargo()) continue;
 
@@ -278,10 +278,10 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary *su
 		new_item.subtype = GetCargoSubtypeText(v);
 		if (!IsValidCargoID(new_item.cargo) && new_item.subtype == STR_EMPTY) continue;
 
-		auto item = std::find(summary->begin(), summary->end(), new_item);
-		if (item == summary->end()) {
-			summary->emplace_back();
-			item = summary->end() - 1;
+		auto item = std::find(std::begin(summary), std::end(summary), new_item);
+		if (item == std::end(summary)) {
+			summary.emplace_back();
+			item = std::end(summary) - 1;
 			item->cargo = new_item.cargo;
 			item->subtype = new_item.subtype;
 			item->capacity = 0;
@@ -331,7 +331,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 		num++; // needs one more because first line is description string
 	} else {
 		for (const Train *v = Train::Get(veh_id); v != nullptr; v = v->GetNextVehicle()) {
-			GetCargoSummaryOfArticulatedVehicle(v, &_cargo_summary);
+			GetCargoSummaryOfArticulatedVehicle(v, _cargo_summary);
 			num += std::max(1u, (unsigned)_cargo_summary.size());
 
 			uint length = GetLengthOfArticulatedVehicle(v);
@@ -363,7 +363,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 		Direction dir = rtl ? DIR_E : DIR_W;
 		int x = rtl ? r.right : r.left;
 		for (; v != nullptr && vscroll_pos > -vscroll_cap; v = v->GetNextVehicle()) {
-			GetCargoSummaryOfArticulatedVehicle(v, &_cargo_summary);
+			GetCargoSummaryOfArticulatedVehicle(v, _cargo_summary);
 
 			/* Draw sprites */
 			uint dx = 0;
