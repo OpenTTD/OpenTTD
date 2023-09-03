@@ -64,15 +64,14 @@ enum GRFExtendedLanguages {
  * since it is NOT SUPPOSED to happen.
  */
 struct GRFTextEntry {
+	GRFTextList textholder;
+	StringID def_string;
 	uint32_t grfid;
 	uint16_t stringid;
-	StringID def_string;
-	GRFTextList textholder;
 };
 
 
-static uint _num_grf_texts = 0;
-static GRFTextEntry _grf_text[TAB_SIZE_NEWGRF];
+static std::vector<GRFTextEntry> _grf_text;
 static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 
 /**
@@ -561,27 +560,21 @@ StringID AddGRFString(uint32_t grfid, uint16_t stringid, byte langid_to_add, boo
 		}
 	}
 
-	uint id;
-	for (id = 0; id < _num_grf_texts; id++) {
-		if (_grf_text[id].grfid == grfid && _grf_text[id].stringid == stringid) {
-			break;
-		}
-	}
+	auto it = std::find_if(std::begin(_grf_text), std::end(_grf_text), [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
+	if (it == std::end(_grf_text)) {
+		/* Too many strings allocated, return empty. */
+		if (_grf_text.size() == TAB_SIZE_NEWGRF) return STR_EMPTY;
 
-	/* Too many strings allocated, return empty */
-	if (id == lengthof(_grf_text)) return STR_EMPTY;
+		/* We didn't find our stringid and grfid in the list, allocate a new id. */
+		it = _grf_text.emplace(std::end(_grf_text));
+		it->grfid      = grfid;
+		it->stringid   = stringid;
+		it->def_string = def_string;
+	}
+	uint id = static_cast<uint>(it - std::begin(_grf_text));
 
 	std::string newtext = TranslateTTDPatchCodes(grfid, langid_to_add, allow_newlines, text_to_add);
-
-	/* If we didn't find our stringid and grfid in the list, allocate a new id */
-	if (id == _num_grf_texts) _num_grf_texts++;
-
-	if (_grf_text[id].textholder.empty()) {
-		_grf_text[id].grfid      = grfid;
-		_grf_text[id].stringid   = stringid;
-		_grf_text[id].def_string = def_string;
-	}
-	AddGRFTextToList(_grf_text[id].textholder, langid_to_add, newtext);
+	AddGRFTextToList(it->textholder, langid_to_add, newtext);
 
 	GrfMsg(3, "Added 0x{:X} grfid {:08X} string 0x{:X} lang 0x{:X} string '{}' ({:X})", id, grfid, stringid, langid_to_add, newtext, MakeStringID(TEXT_TAB_NEWGRF_START, id));
 
@@ -593,10 +586,10 @@ StringID AddGRFString(uint32_t grfid, uint16_t stringid, byte langid_to_add, boo
  */
 StringID GetGRFStringID(uint32_t grfid, StringID stringid)
 {
-	for (uint id = 0; id < _num_grf_texts; id++) {
-		if (_grf_text[id].grfid == grfid && _grf_text[id].stringid == stringid) {
-			return MakeStringID(TEXT_TAB_NEWGRF_START, id);
-		}
+	auto it = std::find_if(std::begin(_grf_text), std::end(_grf_text), [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
+	if (it != std::end(_grf_text)) {
+		uint id = static_cast<uint>(it - std::begin(_grf_text));
+		return MakeStringID(TEXT_TAB_NEWGRF_START, id);
 	}
 
 	return STR_UNDEFINED;
@@ -645,6 +638,7 @@ const char *GetGRFStringFromGRFText(const GRFTextWrapper &text)
  */
 const char *GetGRFStringPtr(uint16_t stringid)
 {
+	assert(stringid < _grf_text.size());
 	assert(_grf_text[stringid].grfid != 0);
 
 	const char *str = GetGRFStringFromGRFText(_grf_text[stringid].textholder);
@@ -683,19 +677,11 @@ bool CheckGrfLangID(byte lang_id, byte grf_version)
 
 /**
  * House cleaning.
- * Remove all strings and reset the text counter.
+ * Remove all strings.
  */
 void CleanUpStrings()
 {
-	uint id;
-
-	for (id = 0; id < _num_grf_texts; id++) {
-		_grf_text[id].grfid      = 0;
-		_grf_text[id].stringid   = 0;
-		_grf_text[id].textholder.clear();
-	}
-
-	_num_grf_texts = 0;
+	_grf_text.clear();
 }
 
 struct TextRefStack {
