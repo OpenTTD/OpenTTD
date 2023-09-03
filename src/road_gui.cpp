@@ -858,7 +858,7 @@ static WindowDesc _build_road_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_road", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_road_widgets, lengthof(_nested_build_road_widgets),
+	std::begin(_nested_build_road_widgets), std::end(_nested_build_road_widgets),
 	&BuildRoadToolbarWindow::road_hotkeys
 );
 
@@ -899,7 +899,7 @@ static WindowDesc _build_tramway_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_tramway", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_tramway_widgets, lengthof(_nested_build_tramway_widgets),
+	std::begin(_nested_build_tramway_widgets), std::end(_nested_build_tramway_widgets),
 	&BuildRoadToolbarWindow::tram_hotkeys
 );
 
@@ -954,7 +954,7 @@ static WindowDesc _build_road_scen_desc(
 	WDP_AUTO, "toolbar_road_scen", 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_road_scen_widgets, lengthof(_nested_build_road_scen_widgets),
+	std::begin(_nested_build_road_scen_widgets), std::end(_nested_build_road_scen_widgets),
 	&BuildRoadToolbarWindow::road_hotkeys
 );
 
@@ -989,7 +989,7 @@ static WindowDesc _build_tramway_scen_desc(
 	WDP_AUTO, "toolbar_tram_scen", 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_tramway_scen_widgets, lengthof(_nested_build_tramway_scen_widgets),
+	std::begin(_nested_build_tramway_scen_widgets), std::end(_nested_build_tramway_scen_widgets),
 	&BuildRoadToolbarWindow::tram_hotkeys
 );
 
@@ -1087,7 +1087,7 @@ static WindowDesc _build_road_depot_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	_nested_build_road_depot_widgets, lengthof(_nested_build_road_depot_widgets)
+	std::begin(_nested_build_road_depot_widgets), std::end(_nested_build_road_depot_widgets)
 );
 
 static void ShowRoadDepotPicker(Window *parent)
@@ -1684,7 +1684,7 @@ static WindowDesc _road_station_picker_desc(
 	WDP_AUTO, "build_station_road", 0, 0,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	_nested_road_station_picker_widgets, lengthof(_nested_road_station_picker_widgets)
+	std::begin(_nested_road_station_picker_widgets), std::end(_nested_road_station_picker_widgets)
 );
 
 /** Widget definition of the build tram station window */
@@ -1769,7 +1769,7 @@ static WindowDesc _tram_station_picker_desc(
 	WDP_AUTO, "build_station_tram", 0, 0,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	_nested_tram_station_picker_widgets, lengthof(_nested_tram_station_picker_widgets)
+	std::begin(_nested_tram_station_picker_widgets), std::end(_nested_tram_station_picker_widgets)
 );
 
 static void ShowRVStationPicker(Window *parent, RoadStopType rs)

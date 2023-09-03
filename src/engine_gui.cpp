@@ -147,7 +147,7 @@ static WindowDesc _engine_preview_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_engine_preview_widgets, lengthof(_nested_engine_preview_widgets)
+	std::begin(_nested_engine_preview_widgets), std::end(_nested_engine_preview_widgets)
 );
 
 

@@ -56,7 +56,7 @@ static WindowDesc _textfile_desc(
 	WDP_CENTER, "textfile", 630, 460,
 	WC_TEXTFILE, WC_NONE,
 	0,
-	_nested_textfile_widgets, lengthof(_nested_textfile_widgets)
+	std::begin(_nested_textfile_widgets), std::end(_nested_textfile_widgets)
 );
 
 TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc), file_type(file_type)

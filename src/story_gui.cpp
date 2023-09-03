@@ -972,7 +972,7 @@ static WindowDesc _story_book_desc(
 	WDP_CENTER, "view_story", 400, 300,
 	WC_STORY_BOOK, WC_NONE,
 	0,
-	_nested_story_book_widgets, lengthof(_nested_story_book_widgets)
+	std::begin(_nested_story_book_widgets), std::end(_nested_story_book_widgets)
 );
 
 static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor)

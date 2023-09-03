@@ -495,7 +495,7 @@ static WindowDesc _select_game_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_SELECT_GAME, WC_NONE,
 	WDF_NO_CLOSE,
-	_nested_select_game_widgets, lengthof(_nested_select_game_widgets)
+	std::begin(_nested_select_game_widgets), std::end(_nested_select_game_widgets)
 );
 
 void ShowSelectGameWindow()

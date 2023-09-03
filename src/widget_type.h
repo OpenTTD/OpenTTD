@@ -1296,8 +1296,8 @@ static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 	return part;
 }
 
-NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest_index, NWidgetContainer *container);
-NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *parts, int count, int *biggest_index, NWidgetStacked **shade_select);
+NWidgetContainer *MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, int *biggest_index, NWidgetContainer *container);
+NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, int *biggest_index, NWidgetStacked **shade_select);
 
 NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int widget_last, Colours button_colour, int max_length, StringID button_tooltip);
 

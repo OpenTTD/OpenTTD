@@ -925,7 +925,7 @@ static WindowDesc _game_options_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	_nested_game_options_widgets, lengthof(_nested_game_options_widgets)
+	std::begin(_nested_game_options_widgets), std::end(_nested_game_options_widgets)
 );
 
 /** Open the game options window. */
@@ -2657,7 +2657,7 @@ static WindowDesc _settings_selection_desc(
 	WDP_CENTER, "settings", 510, 450,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	_nested_settings_selection_widgets, lengthof(_nested_settings_selection_widgets)
+	std::begin(_nested_settings_selection_widgets), std::end(_nested_settings_selection_widgets)
 );
 
 /** Open advanced settings window. */
@@ -2956,7 +2956,7 @@ static WindowDesc _cust_currency_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	0,
-	_nested_cust_currency_widgets, lengthof(_nested_cust_currency_widgets)
+	std::begin(_nested_cust_currency_widgets), std::end(_nested_cust_currency_widgets)
 );
 
 /** Open custom currency window. */

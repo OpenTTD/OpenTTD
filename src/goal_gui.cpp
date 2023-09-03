@@ -306,7 +306,7 @@ static WindowDesc _goals_list_desc(
 	WDP_AUTO, "list_goals", 500, 127,
 	WC_GOALS_LIST, WC_NONE,
 	0,
-	_nested_goals_list_widgets, lengthof(_nested_goals_list_widgets)
+	std::begin(_nested_goals_list_widgets), std::end(_nested_goals_list_widgets)
 );
 
 /**
@@ -521,25 +521,25 @@ static WindowDesc _goal_question_list_desc[] = {
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
-		_nested_goal_question_widgets_question, lengthof(_nested_goal_question_widgets_question),
+		std::begin(_nested_goal_question_widgets_question), std::end(_nested_goal_question_widgets_question),
 	},
 	{
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
-		_nested_goal_question_widgets_info, lengthof(_nested_goal_question_widgets_info),
+		std::begin(_nested_goal_question_widgets_info), std::end(_nested_goal_question_widgets_info),
 	},
 	{
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
-		_nested_goal_question_widgets_warning, lengthof(_nested_goal_question_widgets_warning),
+		std::begin(_nested_goal_question_widgets_warning), std::end(_nested_goal_question_widgets_warning),
 	},
 	{
 		WDP_CENTER, nullptr, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WDF_CONSTRUCTION,
-		_nested_goal_question_widgets_error, lengthof(_nested_goal_question_widgets_error),
+		std::begin(_nested_goal_question_widgets_error), std::end(_nested_goal_question_widgets_error),
 	},
 };
 

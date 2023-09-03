@@ -62,7 +62,7 @@ static WindowDesc _land_info_desc(
 	WDP_AUTO, nullptr, 0, 0,
 	WC_LAND_INFO, WC_NONE,
 	0,
-	_nested_land_info_widgets, lengthof(_nested_land_info_widgets)
+	std::begin(_nested_land_info_widgets), std::end(_nested_land_info_widgets)
 );
 
 class LandInfoWindow : public Window {
@@ -396,7 +396,7 @@ static WindowDesc _about_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	_nested_about_widgets, lengthof(_nested_about_widgets)
+	std::begin(_nested_about_widgets), std::end(_nested_about_widgets)
 );
 
 static const char * const _credits[] = {
@@ -654,7 +654,7 @@ static WindowDesc _tool_tips_desc(
 	WDP_MANUAL, nullptr, 0, 0, // Coordinates and sizes are not used,
 	WC_TOOLTIPS, WC_NONE,
 	WDF_NO_FOCUS | WDF_NO_CLOSE,
-	_nested_tooltips_widgets, lengthof(_nested_tooltips_widgets)
+	std::begin(_nested_tooltips_widgets), std::end(_nested_tooltips_widgets)
 );
 
 /** Window for displaying a tooltip. */
@@ -1067,7 +1067,7 @@ static WindowDesc _query_string_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_QUERY_STRING, WC_NONE,
 	0,
-	_nested_query_string_widgets, lengthof(_nested_query_string_widgets)
+	std::begin(_nested_query_string_widgets), std::end(_nested_query_string_widgets)
 );
 
 /**
@@ -1214,7 +1214,7 @@ static WindowDesc _query_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_MODAL,
-	_nested_query_widgets, lengthof(_nested_query_widgets)
+	std::begin(_nested_query_widgets), std::end(_nested_query_widgets)
 );
 
 /**

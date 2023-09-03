@@ -163,7 +163,7 @@ static WindowDesc _extra_viewport_desc(
 	WDP_AUTO, "extra_viewport", 300, 268,
 	WC_EXTRA_VIEWPORT, WC_NONE,
 	0,
-	_nested_extra_viewport_widgets, lengthof(_nested_extra_viewport_widgets)
+	std::begin(_nested_extra_viewport_widgets), std::end(_nested_extra_viewport_widgets)
 );
 
 /**

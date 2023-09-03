@@ -22,7 +22,7 @@ def scan_source_files(path, ini_keys=None):
         with open(new_path) as fp:
             output = fp.read()
 
-        for (name, ini_key, widgets) in re.findall(r"^static WindowDesc ([a-zA-Z0-9_]*).*?, (?:\"(.*?)\")?.*?,(?:\s+(.*?),){6}", output, re.S|re.M):
+        for (name, ini_key, widgets) in re.findall(r"^static WindowDesc ([a-zA-Z0-9_]*).*?, (?:\"(.*?)\")?.*?,(?:\s+.*?,){6}\s+[^\s]+\((.*?)\)", output, re.S|re.M):
             if ini_key:
                 if ini_key in ini_keys:
                     errors.append(f"{new_path}: {name} ini_key is a duplicate")

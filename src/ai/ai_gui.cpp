@@ -77,7 +77,7 @@ static WindowDesc _ai_config_desc(
 	WDP_CENTER, "settings_script_config", 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
-	_nested_ai_config_widgets, lengthof(_nested_ai_config_widgets)
+	std::begin(_nested_ai_config_widgets), std::end(_nested_ai_config_widgets)
 );
 
 /**

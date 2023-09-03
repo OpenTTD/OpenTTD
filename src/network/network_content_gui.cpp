@@ -96,7 +96,7 @@ static WindowDesc _network_content_download_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL,
-	_nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets)
+	std::begin(_nested_network_content_download_status_window_widgets), std::end(_nested_network_content_download_status_window_widgets)
 );
 
 BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(WindowDesc *desc) :
@@ -1113,7 +1113,7 @@ static WindowDesc _network_content_list_desc(
 	WDP_CENTER, "list_content", 630, 460,
 	WC_NETWORK_WINDOW, WC_NONE,
 	0,
-	_nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets)
+	std::begin(_nested_network_content_list_widgets), std::end(_nested_network_content_list_widgets)
 );
 
 /**
