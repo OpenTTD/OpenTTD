@@ -1427,6 +1427,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Aucun*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Réduit
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Autoriser les passages à niveau sur les routes ou rails possédés par les concurrents{NBSP}: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Autoriser la construction de passages à niveau sur les routes ou rails possédés par les concurrents
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Autoriser les arrêts de bus sur les routes appartenant aux municipalités{NBSP}: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Autoriser la construction des arrêts de bus sur les routes appartenant aux municipalités
