@@ -33,7 +33,7 @@ StringID AddGRFString(uint32_t grfid, uint16_t stringid, byte langid, bool new_s
 StringID GetGRFStringID(uint32_t grfid, StringID stringid);
 const char *GetGRFStringFromGRFText(const GRFTextList &text_list);
 const char *GetGRFStringFromGRFText(const GRFTextWrapper &text);
-const char *GetGRFStringPtr(uint16_t stringid);
+const char *GetGRFStringPtr(uint32_t stringid);
 void CleanUpStrings();
 void SetCurrentGrfLangID(byte language_id);
 std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool allow_newlines, const std::string &str, StringControlCode byte80 = SCC_NEWGRF_PRINT_WORD_STRING_ID);
