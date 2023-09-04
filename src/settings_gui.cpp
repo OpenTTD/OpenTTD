@@ -1814,7 +1814,6 @@ static SettingsContainer &GetSettingsTree()
 			}
 
 			interface->Add(new SettingEntry("gui.fast_forward_speed_limit"));
-			interface->Add(new SettingEntry("gui.autosave_interval"));
 			interface->Add(new SettingEntry("gui.toolbar_pos"));
 			interface->Add(new SettingEntry("gui.statusbar_pos"));
 			interface->Add(new SettingEntry("gui.prefer_teamchat"));
