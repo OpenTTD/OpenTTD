@@ -1366,7 +1366,7 @@ struct BuildVehicleWindow : Window {
 		return CargoAndEngineFilter(&item, filter_type);
 	}
 
-	/** Filter by name and NewGRF extra text */
+	/** Filter by name, cargo type and NewGRF extra text */
 	bool FilterByText(const Engine *e)
 	{
 		/* Do not filter if the filter text box is empty */
@@ -1376,6 +1376,12 @@ struct BuildVehicleWindow : Window {
 		this->string_filter.ResetState();
 		SetDParam(0, PackEngineNameDParam(e->index, EngineNameContext::PurchaseList));
 		this->string_filter.AddLine(GetString(STR_ENGINE_NAME));
+
+		/* Filter by cargo type. This includes cargo types that the engine can be refitted to. */
+		const CargoTypes refit_mask = GetUnionOfArticulatedRefitMasks(e->index, true) &_standard_cargo_mask;
+		for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
+			if (HasBit(refit_mask, cargo)) this->string_filter.AddLine(GetString(CargoSpec::Get(cargo)->name));
+		}
 
 		/* Filter NewGRF extra text */
 		auto text = GetNewGRFAdditionalText(e->index);
@@ -1408,7 +1414,7 @@ struct BuildVehicleWindow : Window {
 			/* Filter now! So num_engines and num_wagons is valid */
 			if (!FilterSingleEngine(eid)) continue;
 
-			/* Filter by name or NewGRF extra text */
+			/* Filter by name, cargo or NewGRF extra text */
 			if (!FilterByText(e)) continue;
 
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
@@ -1457,7 +1463,7 @@ struct BuildVehicleWindow : Window {
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
 
-			/* Filter by name or NewGRF extra text */
+			/* Filter by name, cargo or NewGRF extra text */
 			if (!FilterByText(e)) continue;
 
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
@@ -1478,7 +1484,7 @@ struct BuildVehicleWindow : Window {
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
 
-			/* Filter by name or NewGRF extra text */
+			/* Filter by name, cargo or NewGRF extra text */
 			if (!FilterByText(e)) continue;
 
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
@@ -1508,7 +1514,7 @@ struct BuildVehicleWindow : Window {
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 
-			/* Filter by name or NewGRF extra text */
+			/* Filter by name, cargo or NewGRF extra text */
 			if (!FilterByText(e)) continue;
 
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
