@@ -122,8 +122,9 @@ static auto &GenericSettingTables()
  * @param survey The JSON object.
  * @param table The settings table to convert.
  * @param object The object to get the settings from.
+ * @param skip_if_default If true, skip any settings that are on their default value.
  */
-static void SurveySettingsTable(nlohmann::json &survey, const SettingTable &table, void *object)
+static void SurveySettingsTable(nlohmann::json &survey, const SettingTable &table, void *object, bool skip_if_default)
 {
 	for (auto &desc : table) {
 		const SettingDesc *sd = GetSettingDesc(desc);
@@ -131,6 +132,7 @@ static void SurveySettingsTable(nlohmann::json &survey, const SettingTable &tabl
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 
 		auto name = sd->GetName();
+		if (skip_if_default && sd->IsDefaultValue(object)) continue;
 		survey[name] = sd->FormatValue(object);
 	}
 }
@@ -140,17 +142,17 @@ static void SurveySettingsTable(nlohmann::json &survey, const SettingTable &tabl
  *
  * @param survey The JSON object.
  */
-void SurveySettings(nlohmann::json &survey)
+void SurveySettings(nlohmann::json &survey, bool skip_if_default)
 {
-	SurveySettingsTable(survey, _misc_settings, nullptr);
+	SurveySettingsTable(survey, _misc_settings, nullptr, skip_if_default);
 #if defined(_WIN32) && !defined(DEDICATED)
-	SurveySettingsTable(survey, _win32_settings, nullptr);
+	SurveySettingsTable(survey, _win32_settings, nullptr, skip_if_default);
 #endif
 	for (auto &table : GenericSettingTables()) {
-		SurveySettingsTable(survey, table, &_settings_game);
+		SurveySettingsTable(survey, table, &_settings_game, skip_if_default);
 	}
-	SurveySettingsTable(survey, _currency_settings, &_custom_currency);
-	SurveySettingsTable(survey, _company_settings, &_settings_client.company);
+	SurveySettingsTable(survey, _currency_settings, &_custom_currency, skip_if_default);
+	SurveySettingsTable(survey, _company_settings, &_settings_client.company, skip_if_default);
 }
 
 /**

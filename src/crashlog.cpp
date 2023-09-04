@@ -136,7 +136,7 @@ void CrashLog::FillCrashLog()
 		if (!this->TryExecute("companies", [&game]() { SurveyCompanies(game["companies"]); return true; })) {
 			game["companies"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("settings", [&game]() { SurveySettings(game["settings"]); return true; })) {
+		if (!this->TryExecute("settings", [&game]() { SurveySettings(game["settings_changed"], true); return true; })) {
 			game["settings"] = "crashed while gathering information";
 		}
 		if (!this->TryExecute("grfs", [&game]() { SurveyGrfs(game["grfs"]); return true; })) {

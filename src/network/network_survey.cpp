@@ -66,7 +66,7 @@ std::string NetworkSurveyHandler::CreatePayload(Reason reason, bool for_preview)
 		auto &game = survey["game"];
 		SurveyTimers(game["timers"]);
 		SurveyCompanies(game["companies"]);
-		SurveySettings(game["settings"]);
+		SurveySettings(game["settings"], false);
 		SurveyGrfs(game["grfs"]);
 		SurveyGameScript(game["game_script"]);
 	}
