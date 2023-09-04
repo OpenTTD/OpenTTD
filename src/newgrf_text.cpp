@@ -636,7 +636,7 @@ const char *GetGRFStringFromGRFText(const GRFTextWrapper &text)
 /**
  * Get a C-string from a stringid set by a newgrf.
  */
-const char *GetGRFStringPtr(uint16_t stringid)
+const char *GetGRFStringPtr(uint32_t stringid)
 {
 	assert(stringid < _grf_text.size());
 	assert(_grf_text[stringid].grfid != 0);
