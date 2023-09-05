@@ -180,6 +180,16 @@ void HttpThread()
 		});
 		curl_easy_setopt(curl, CURLOPT_XFERINFODATA, request->callback);
 
+		/* Pass the proxy to curl explicitly. */
+		if (const char *proxy = std::getenv("http_proxy")) {
+			if (std::getenv("no_proxy") != NULL) {
+				Debug(net, 3, "no_proxy environment variable set, ignoring http_proxy");
+			} else {
+				Debug(net, 3, "Using proxy from environment http_proxy={}", proxy);
+				curl_easy_setopt(curl, CURLOPT_PROXY, proxy);
+			}
+		}
+
 		/* Perform the request. */
 		CURLcode res = curl_easy_perform(curl);
 
