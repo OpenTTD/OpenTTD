@@ -1426,6 +1426,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :None*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduced
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Allow grade crossings with roads or rails owned by competitors: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Allow construction of grade crossings on roads or rails owned by competitors
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-through road stops on roads owned by towns: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construction of drive-through road stops on roads owned by towns
@@ -2651,6 +2653,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toggle t
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Toggle transparency for bridges. Ctrl+Click to lock
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toggle transparency for structures like lighthouses and antennas. Ctrl+Click to lock
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toggle transparency for catenary. Ctrl+Click to lock
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Toggle transparency for loading and cost/income text. Ctrl+Click to lock
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Set objects invisible instead of transparent
 
 # Linkgraph legend window
@@ -4964,7 +4967,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}No suita
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Must remove railroad track first
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Road is one way or blocked
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Grade crossings not allowed for this rail type
-STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Level crossings not allowed for this road type
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Grade crossings not allowed for this road type
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Can't build signals here...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Can't build railroad track here...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Can't remove railroad track from here...
