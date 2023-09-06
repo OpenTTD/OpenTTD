@@ -91,7 +91,8 @@ jobs:
 
         # Ensure we use the latest version of npm; the one we get with current
         # emscripten doesn't allow running "npx wrangler" as root.
-        npm install -g npm
+        # Current emscripten can't install npm>=10.0.0 because node is too old.
+        npm install -g npm@9
 
     - name: Publish preview
       uses: cloudflare/pages-action@v1
