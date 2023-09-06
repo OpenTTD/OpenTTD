@@ -14,6 +14,8 @@
 #include "script_goal.hpp"
 #include "script_window.hpp"
 
+#include <nlohmann/json.hpp>
+
 /**
  * Event Vehicle Crash, indicating a vehicle of yours is crashed.
  *  It contains the crash site, the crashed vehicle and the reason for the crash.
@@ -912,25 +914,11 @@ private:
 	std::string json; ///< The JSON string.
 
 	/**
-	 * Read a table from a JSON string.
+	 * Convert a JSON part fo Squirrel.
 	 * @param vm The VM used.
-	 * @param p The (part of the) JSON string reading.
+	 * @param json The JSON part to convert to Squirrel.
 	 */
-	const char *ReadTable(HSQUIRRELVM vm, const char *p);
-
-	/**
-	 * Read a value from a JSON string.
-	 * @param vm The VM used.
-	 * @param p The (part of the) JSON string reading.
-	 */
-	const char *ReadValue(HSQUIRRELVM vm, const char *p);
-
-	/**
-	 * Read a string from a JSON string.
-	 * @param vm The VM used.
-	 * @param p The (part of the) JSON string reading.
-	 */
-	const char *ReadString(HSQUIRRELVM vm, const char *p);
+	bool ReadValue(HSQUIRRELVM vm, nlohmann::json &json);
 };
 
 /**

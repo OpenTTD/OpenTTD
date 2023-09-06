@@ -128,14 +128,24 @@ ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :
 {
 }
 
-#define SKIP_EMPTY(p) while (*(p) == ' ' || *(p) == '\n' || *(p) == '\r') (p)++;
-#define RETURN_ERROR(stack) { ScriptLog::Error("Received invalid JSON data from AdminPort."); if (stack != 0) sq_pop(vm, stack); return nullptr; }
-
 SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
 {
-	const char *p = this->json.c_str();
+	auto json = nlohmann::json::parse(this->json, nullptr, false);
 
-	if (this->ReadTable(vm, p) == nullptr) {
+	if (!json.is_object()) {
+		ScriptLog::Error("The root element in the JSON data from AdminPort has to be an object.");
+
+		sq_pushnull(vm);
+		return 1;
+	}
+
+	auto top = sq_gettop(vm);
+	if (!this->ReadValue(vm, json)) {
+		/* Rewind the stack, removing anything that might be left on top. */
+		sq_settop(vm, top);
+
+		ScriptLog::Error("Received invalid JSON data from AdminPort.");
+
 		sq_pushnull(vm);
 		return 1;
 	}
@@ -143,177 +153,59 @@ SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
 	return 1;
 }
 
-const char *ScriptEventAdminPort::ReadString(HSQUIRRELVM vm, const char *p)
+bool ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, nlohmann::json &json)
 {
-	const char *value = p;
+	switch (json.type()) {
+		case nlohmann::json::value_t::null:
+			sq_pushnull(vm);
+			break;
 
-	bool escape = false;
-	for (;;) {
-		if (*p == '\\') {
-			escape = true;
-			p++;
-			continue;
-		}
-		if (*p == '"' && escape) {
-			escape = false;
-			p++;
-			continue;
-		}
-		escape = false;
+		case nlohmann::json::value_t::boolean:
+			sq_pushbool(vm, json.get<bool>() ? 1 : 0);
+			break;
 
-		if (*p == '"') break;
-		if (*p == '\0') RETURN_ERROR(0);
-
-		p++;
-	}
-
-	size_t len = p - value;
-	sq_pushstring(vm, value, len);
-	p++; // Step past the end-of-string marker (")
-
-	return p;
-}
-
-const char *ScriptEventAdminPort::ReadTable(HSQUIRRELVM vm, const char *p)
-{
-	sq_newtable(vm);
-
-	SKIP_EMPTY(p);
-	if (*p++ != '{') RETURN_ERROR(1);
-
-	for (;;) {
-		SKIP_EMPTY(p);
-		if (*p++ != '"') RETURN_ERROR(1);
-
-		p = ReadString(vm, p);
-		if (p == nullptr) {
-			sq_pop(vm, 1);
-			return nullptr;
-		}
-
-		SKIP_EMPTY(p);
-		if (*p++ != ':') RETURN_ERROR(2);
-
-		p = this->ReadValue(vm, p);
-		if (p == nullptr) {
-			sq_pop(vm, 2);
-			return nullptr;
-		}
-
-		sq_rawset(vm, -3);
-		/* The key (-2) and value (-1) are popped from the stack by squirrel. */
-
-		SKIP_EMPTY(p);
-		if (*p == ',') {
-			p++;
-			continue;
-		}
-		break;
-	}
-
-	SKIP_EMPTY(p);
-	if (*p++ != '}') RETURN_ERROR(1);
-
-	return p;
-}
-
-const char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, const char *p)
-{
-	SKIP_EMPTY(p);
-
-	if (strncmp(p, "false", 5) == 0) {
-		sq_pushbool(vm, 0);
-		return p + 5;
-	}
-	if (strncmp(p, "true", 4) == 0) {
-		sq_pushbool(vm, 1);
-		return p + 4;
-	}
-	if (strncmp(p, "null", 4) == 0) {
-		sq_pushnull(vm);
-		return p + 4;
-	}
-
-	switch (*p) {
-		case '"': {
-			/* String */
-			p = ReadString(vm, ++p);
-			if (p == nullptr) return nullptr;
-
+		case nlohmann::json::value_t::string: {
+			auto value = json.get<std::string>();
+			sq_pushstring(vm, value.data(), value.size());
 			break;
 		}
 
-		case '{': {
-			/* Table */
-			p = this->ReadTable(vm, p);
-			if (p == nullptr) return nullptr;
-
+		case nlohmann::json::value_t::number_integer:
+		case nlohmann::json::value_t::number_unsigned:
+			sq_pushinteger(vm, json.get<int64_t>());
 			break;
-		}
 
-		case '[': {
-			/* Array */
+		case nlohmann::json::value_t::object:
+			sq_newtable(vm);
+
+			for (auto &[key, value] : json.items()) {
+				sq_pushstring(vm, key.data(), key.size());
+
+				if (!this->ReadValue(vm, value)) {
+					return false;
+				}
+
+				sq_rawset(vm, -3);
+			}
+			break;
+
+		case nlohmann::json::value_t::array:
 			sq_newarray(vm, 0);
 
-			/* Empty array? */
-			const char *p2 = p + 1;
-			SKIP_EMPTY(p2);
-			if (*p2 == ']') {
-				p = p2 + 1;
-				break;
-			}
-
-			while (*p++ != ']') {
-				p = this->ReadValue(vm, p);
-				if (p == nullptr) {
-					sq_pop(vm, 1);
-					return nullptr;
+			for (auto &value : json) {
+				if (!this->ReadValue(vm, value)) {
+					return false;
 				}
+
 				sq_arrayappend(vm, -2);
-
-				SKIP_EMPTY(p);
-				if (*p == ',') continue;
-				if (*p == ']') break;
-				RETURN_ERROR(1);
 			}
-
-			p++;
-
 			break;
-		}
 
-		case '1': case '2': case '3': case '4': case '5':
-		case '6': case '7': case '8': case '9': case '0':
-		case '-': {
-			/* Integer */
-
-			const char *value = p++;
-			for (;;) {
-				switch (*p++) {
-					case '1': case '2': case '3': case '4': case '5':
-					case '6': case '7': case '8': case '9': case '0':
-						continue;
-
-					default:
-						break;
-				}
-
-				p--;
-				break;
-			}
-
-			int res = atoi(value);
-			sq_pushinteger(vm, (SQInteger)res);
-
-			break;
-		}
-
+		/* These types are not supported by Squirrel. */
+		case nlohmann::json::value_t::number_float:
 		default:
-			RETURN_ERROR(0);
+			return false;
 	}
 
-	return p;
+	return true;
 }
-
-#undef SKIP_EMPTY
-#undef RETURN_ERROR
