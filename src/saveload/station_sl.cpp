@@ -426,7 +426,7 @@ public:
 			/* Store the old persistent storage. The GRFID will be added later. */
 			assert(PersistentStorage::CanAllocateItem());
 			st->airport.psa = new PersistentStorage(0, 0, 0);
-			memcpy(st->airport.psa->storage, _old_st_persistent_storage.storage, sizeof(_old_st_persistent_storage.storage));
+			std::copy(std::begin(_old_st_persistent_storage.storage), std::end(_old_st_persistent_storage.storage), std::begin(st->airport.psa->storage));
 		}
 
 		size_t num_cargo = this->GetNumCargo();
