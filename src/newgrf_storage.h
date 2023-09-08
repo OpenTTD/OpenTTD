@@ -131,17 +131,12 @@ struct PersistentStorageArray : BasePersistentStorageArray {
  */
 template <typename TYPE, uint SIZE>
 struct TemporaryStorageArray {
-	TYPE storage[SIZE]; ///< Memory to for the storage array
-	uint16_t init[SIZE];  ///< Storage has been assigned, if this equals 'init_key'.
-	uint16_t init_key;    ///< Magic key to 'init'.
+	using StorageType = std::array<TYPE, SIZE>;
+	using StorageInitType = std::array<uint16_t, SIZE>;
 
-	/** Simply construct the array */
-	TemporaryStorageArray()
-	{
-		memset(this->storage, 0, sizeof(this->storage)); // not exactly needed, but makes code analysers happy
-		memset(this->init, 0, sizeof(this->init));
-		this->init_key = 1;
-	}
+	StorageType storage{}; ///< Memory for the storage array
+	StorageInitType init{}; ///< Storage has been assigned, if this equals 'init_key'.
+	uint16_t init_key{1}; ///< Magic key to 'init'.
 
 	/**
 	 * Stores some value at a given position.
@@ -181,7 +176,7 @@ struct TemporaryStorageArray {
 		this->init_key++;
 		if (this->init_key == 0) {
 			/* When init_key wraps around, we need to reset everything */
-			memset(this->init, 0, sizeof(this->init));
+			this->init = {};
 			this->init_key = 1;
 		}
 	}
