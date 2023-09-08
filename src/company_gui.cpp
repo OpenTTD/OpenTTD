@@ -229,7 +229,7 @@ static void DrawPrice(Money amount, int left, int right, int top, TextColour col
  * Draw a category of expenses/revenues in the year column.
  * @return The income sum of the category.
  */
-static Money DrawYearCategory (const Rect &r, int start_y, ExpensesList list, const Money(&tbl)[EXPENSES_END])
+static Money DrawYearCategory(const Rect &r, int start_y, ExpensesList list, const Expenses &tbl)
 {
 	int y = start_y;
 	ExpensesType et;
@@ -260,7 +260,7 @@ static Money DrawYearCategory (const Rect &r, int start_y, ExpensesList list, co
  * @param tbl  Reference to table of amounts for \a year.
  * @note The environment must provide padding at the left and right of \a r.
  */
-static void DrawYearColumn(const Rect &r, TimerGameCalendar::Year year, const Money (&tbl)[EXPENSES_END])
+static void DrawYearColumn(const Rect &r, TimerGameCalendar::Year year, const Expenses &tbl)
 {
 	int y = r.top;
 	Money sum;
