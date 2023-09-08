@@ -14,9 +14,22 @@
 #include "../script_instance.hpp"
 #include "../../string_func.h"
 
+#include <nlohmann/json.hpp>
+
 #include "../../safeguards.h"
 
-/* static */ bool ScriptAdmin::MakeJSON(nlohmann::json &json, HSQUIRRELVM vm, SQInteger index, int depth)
+/**
+ * Convert a Squirrel structure into a JSON object.
+ *
+ * This function is not "static", so it can be tested in unittests.
+ *
+ * @param json The resulting JSON object.
+ * @param vm The VM to operate on.
+ * @param index The index we are currently working for.
+ * @param depth The current depth in the squirrel struct.
+ * @return True iff the conversion was successful.
+ */
+bool ScriptAdminMakeJSON(nlohmann::json &json, HSQUIRRELVM vm, SQInteger index, int depth = 0)
 {
 	if (depth == SQUIRREL_MAX_DEPTH) {
 		ScriptLog::Error("Send parameters can only be nested to 25 deep. No data sent."); // SQUIRREL_MAX_DEPTH = 25
@@ -47,7 +60,7 @@
 			while (SQ_SUCCEEDED(sq_next(vm, index - 1))) {
 				nlohmann::json tmp;
 
-				bool res = MakeJSON(tmp, vm, -1, depth + 1);
+				bool res = ScriptAdminMakeJSON(tmp, vm, -1, depth + 1);
 				sq_pop(vm, 2);
 				if (!res) {
 					sq_pop(vm, 1);
@@ -72,7 +85,7 @@
 				std::string key = std::string(buf);
 
 				nlohmann::json value;
-				bool res = MakeJSON(value, vm, -1, depth + 1);
+				bool res = ScriptAdminMakeJSON(value, vm, -1, depth + 1);
 				sq_pop(vm, 2);
 				if (!res) {
 					sq_pop(vm, 1);
@@ -113,7 +126,7 @@
 	}
 
 	nlohmann::json json;
-	if (!ScriptAdmin::MakeJSON(json, vm, -1)) {
+	if (!ScriptAdminMakeJSON(json, vm, -1)) {
 		sq_pushinteger(vm, 0);
 		return 1;
 	}

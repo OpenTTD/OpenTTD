@@ -11,7 +11,6 @@
 #define SCRIPT_ADMIN_HPP
 
 #include "script_object.hpp"
-#include <nlohmann/json.hpp>
 
 /**
  * Class that handles communication with the AdminPort.
@@ -36,17 +35,6 @@ public:
 	 */
 	static bool Send(void *table);
 #endif /* DOXYGEN_API */
-
-protected:
-	/**
-	 * Convert a Squirrel structure into a JSON object.
-	 * @param json The resulting JSON object.
-	 * @param vm The VM to operate on.
-	 * @param index The index we are currently working for.
-	 * @param depth The current depth in the squirrel struct.
-	 * @return True iff the conversion was successful.
-	 */
-	static bool MakeJSON(nlohmann::json &data, HSQUIRRELVM vm, SQInteger index, int depth = 0);
 };
 
 #endif /* SCRIPT_ADMIN_HPP */
