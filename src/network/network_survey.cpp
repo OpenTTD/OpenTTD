@@ -31,7 +31,7 @@
 #include "../base_media_base.h"
 #include "../blitter/factory.hpp"
 
-#include <nlohmann/json.hpp>
+#include "../3rdparty/nlohmann/json.hpp"
 
 #include "../safeguards.h"
 

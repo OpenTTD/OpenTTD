@@ -10,10 +10,10 @@
 #include "../../stdafx.h"
 
 #include "../../3rdparty/fmt/format.h"
+#include "../../3rdparty/nlohmann/json.hpp"
 #include "macos.h"
 
 #include <mach-o/arch.h>
-#include <nlohmann/json.hpp>
 #include <thread>
 
 #include "../../safeguards.h"
