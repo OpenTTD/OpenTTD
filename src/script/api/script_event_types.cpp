@@ -20,6 +20,8 @@
 #include "../../engine_cmd.h"
 #include "table/strings.h"
 
+#include <nlohmann/json.hpp>
+
 #include "../../safeguards.h"
 
 bool ScriptEventEnginePreview::IsEngineValid() const
@@ -127,33 +129,12 @@ ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :
 		json(json)
 {
 }
-
-SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
-{
-	auto json = nlohmann::json::parse(this->json, nullptr, false);
-
-	if (!json.is_object()) {
-		ScriptLog::Error("The root element in the JSON data from AdminPort has to be an object.");
-
-		sq_pushnull(vm);
-		return 1;
-	}
-
-	auto top = sq_gettop(vm);
-	if (!this->ReadValue(vm, json)) {
-		/* Rewind the stack, removing anything that might be left on top. */
-		sq_settop(vm, top);
-
-		ScriptLog::Error("Received invalid JSON data from AdminPort.");
-
-		sq_pushnull(vm);
-		return 1;
-	}
-
-	return 1;
-}
-
-bool ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, nlohmann::json &json)
+/**
+ * Convert a JSON part fo Squirrel.
+ * @param vm The VM used.
+ * @param json The JSON part to convert to Squirrel.
+ */
+static bool ScriptEventAdminPortReadValue(HSQUIRRELVM vm, nlohmann::json &json)
 {
 	switch (json.type()) {
 		case nlohmann::json::value_t::null:
@@ -181,7 +162,7 @@ bool ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, nlohmann::json &json)
 			for (auto &[key, value] : json.items()) {
 				sq_pushstring(vm, key.data(), key.size());
 
-				if (!this->ReadValue(vm, value)) {
+				if (!ScriptEventAdminPortReadValue(vm, value)) {
 					return false;
 				}
 
@@ -193,7 +174,7 @@ bool ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, nlohmann::json &json)
 			sq_newarray(vm, 0);
 
 			for (auto &value : json) {
-				if (!this->ReadValue(vm, value)) {
+				if (!ScriptEventAdminPortReadValue(vm, value)) {
 					return false;
 				}
 
@@ -208,4 +189,29 @@ bool ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, nlohmann::json &json)
 	}
 
 	return true;
+}
+
+SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
+{
+	auto json = nlohmann::json::parse(this->json, nullptr, false);
+
+	if (!json.is_object()) {
+		ScriptLog::Error("The root element in the JSON data from AdminPort has to be an object.");
+
+		sq_pushnull(vm);
+		return 1;
+	}
+
+	auto top = sq_gettop(vm);
+	if (!ScriptEventAdminPortReadValue(vm, json)) {
+		/* Rewind the stack, removing anything that might be left on top. */
+		sq_settop(vm, top);
+
+		ScriptLog::Error("Received invalid JSON data from AdminPort.");
+
+		sq_pushnull(vm);
+		return 1;
+	}
+
+	return 1;
 }
