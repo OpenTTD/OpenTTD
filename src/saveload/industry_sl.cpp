@@ -246,7 +246,7 @@ struct INDYChunkHandler : ChunkHandler {
 				/* Store the old persistent storage. The GRFID will be added later. */
 				assert(PersistentStorage::CanAllocateItem());
 				i->psa = new PersistentStorage(0, 0, 0);
-				memcpy(i->psa->storage, _old_ind_persistent_storage.storage, sizeof(_old_ind_persistent_storage.storage));
+				std::copy(std::begin(_old_ind_persistent_storage.storage), std::end(_old_ind_persistent_storage.storage), std::begin(i->psa->storage));
 			}
 			if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) LoadMoveAcceptsProduced(i);
 			Industry::IncIndustryTypeCount(i->type);
