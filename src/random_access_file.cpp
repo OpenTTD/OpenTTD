@@ -146,9 +146,10 @@ void RandomAccessFile::ReadBlock(void *ptr, size_t size)
  * Skip \a n bytes ahead in the file.
  * @param n Number of bytes to skip reading.
  */
-void RandomAccessFile::SkipBytes(int n)
+void RandomAccessFile::SkipBytes(size_t n)
 {
-	int remaining = this->buffer_end - this->buffer;
+	assert(this->buffer_end >= this->buffer);
+	size_t remaining = this->buffer_end - this->buffer;
 	if (n <= remaining) {
 		this->buffer += n;
 	} else {
