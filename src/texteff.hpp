@@ -20,11 +20,11 @@
 enum TextEffectMode {
 	TE_RISING, ///< Make the text effect slowly go upwards
 	TE_STATIC, ///< Keep the text effect static
-
-	INVALID_TE_ID = 0xFFFF,
 };
 
 typedef size_t TextEffectID;
+
+static const TextEffectID INVALID_TE_ID = UINT16_MAX;
 
 TextEffectID AddTextEffect(StringID msg, int x, int y, uint8_t duration, TextEffectMode mode);
 void InitTextEffects();
