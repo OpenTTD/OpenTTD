@@ -63,12 +63,12 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8_t duration, Te
 void UpdateTextEffect(TextEffectID te_id, StringID msg)
 {
 	/* Update details */
-	TextEffect *te = _text_effects.data() + te_id;
-	if (msg == te->string_id && !HaveDParamChanged(te->params)) return;
-	te->string_id = msg;
-	CopyOutDParam(te->params, 2);
+	TextEffect &te = _text_effects[te_id];
+	if (msg == te.string_id && !HaveDParamChanged(te.params)) return;
+	te.string_id = msg;
+	CopyOutDParam(te.params, 2);
 
-	te->UpdatePosition(te->center, te->top, te->string_id, te->string_id - 1);
+	te.UpdatePosition(te.center, te.top, te.string_id, te.string_id - 1);
 }
 
 void UpdateAllTextEffectVirtCoords()
