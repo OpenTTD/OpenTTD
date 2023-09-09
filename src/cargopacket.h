@@ -39,14 +39,17 @@ extern SaveLoadTable GetCargoPacketDesc();
  */
 struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 private:
-	uint16_t count;           ///< The amount of cargo in this packet.
-	uint16_t periods_in_transit; ///< Amount of cargo aging periods this packet has been in transit.
-	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo.
-	TileIndex source_xy;    ///< The origin of the cargo (first station in feeder chain).
-	StationID next_station; ///< Station where the cargo wants to go next.
-	SourceID source_id;     ///< Index of source, INVALID_SOURCE if unknown/invalid.
-	StationID source;       ///< The station where the cargo came from first.
-	SourceType source_type; ///< Type of \c source_id.
+	uint16_t count{0}; ///< The amount of cargo in this packet.
+	uint16_t periods_in_transit{0}; ///< Amount of cargo aging periods this packet has been in transit.
+
+	Money feeder_share{0}; ///< Value of feeder pickup to be paid for on delivery of cargo.
+
+	TileIndex source_xy{0}; ///< The origin of the cargo.
+	SourceID source_id{INVALID_SOURCE}; ///< Index of industry/town/HQ, INVALID_SOURCE if unknown/invalid.
+	SourceType source_type{SourceType::Industry}; ///< Type of \c source_id.
+
+	StationID first_station{INVALID_STATION}; ///< The station where the cargo came from first.
+	StationID next_station{INVALID_STATION}; ///< Station where the cargo wants to go next.
 
 	/** The CargoList caches, thus needs to know about it. */
 	template <class Tinst, class Tcont> friend class CargoList;
@@ -59,7 +62,7 @@ public:
 	static const uint16_t MAX_COUNT = UINT16_MAX;
 
 	CargoPacket();
-	CargoPacket(StationID source, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id);
+	CargoPacket(StationID first_station, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id);
 	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID source, TileIndex source_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
 
 	/** Destroy the packet. */
@@ -73,13 +76,19 @@ public:
 	 * Sets the station where the packet is supposed to go next.
 	 * @param next_station Next station the packet should go to.
 	 */
-	void SetNextStation(StationID next_station) { this->next_station = next_station; }
+	void SetNextStation(StationID next_station)
+	{
+		this->next_station = next_station;
+	}
 
 	/**
 	 * Adds some feeder share to the packet.
 	 * @param new_share Feeder share to be added.
 	 */
-	void AddFeederShare(Money new_share) { this->feeder_share += new_share; }
+	void AddFeederShare(Money new_share)
+	{
+		this->feeder_share += new_share;
+	}
 
 	/**
 	 * Gets the number of 'items' in this packet.
@@ -95,7 +104,7 @@ public:
 	 * the feeder chain.
 	 * @return Feeder share.
 	 */
-	inline Money FeederShare() const
+	inline Money GetFeederShare() const
 	{
 		return this->feeder_share;
 	}
@@ -106,7 +115,7 @@ public:
 	 * @param part Amount of cargo to get the share for.
 	 * @return Feeder share for the given amount of cargo.
 	 */
-	inline Money FeederShare(uint part) const
+	inline Money GetFeederShare(uint part) const
 	{
 		return this->feeder_share * part / static_cast<uint>(this->count);
 	}
@@ -118,7 +127,7 @@ public:
 	 * value is capped at UINT16_MAX.
 	 * @return Length this cargo has been in transit.
 	 */
-	inline uint16_t PeriodsInTransit() const
+	inline uint16_t GetPeriodsInTransit() const
 	{
 		return this->periods_in_transit;
 	}
@@ -127,7 +136,7 @@ public:
 	 * Gets the type of the cargo's source. industry, town or head quarter.
 	 * @return Source type.
 	 */
-	inline SourceType SourceSubsidyType() const
+	inline SourceType GetSourceType() const
 	{
 		return this->source_type;
 	}
@@ -136,7 +145,7 @@ public:
 	 * Gets the ID of the cargo's source. An IndustryID, TownID or CompanyID.
 	 * @return Source ID.
 	 */
-	inline SourceID SourceSubsidyID() const
+	inline SourceID GetSourceID() const
 	{
 		return this->source_id;
 	}
@@ -145,16 +154,16 @@ public:
 	 * Gets the ID of the station where the cargo was loaded for the first time.
 	 * @return StationID.
 	 */
-	inline StationID SourceStation() const
+	inline StationID GetFirstStation() const
 	{
-		return this->source;
+		return this->first_station;
 	}
 
 	/**
-	 * Gets the coordinates of the cargo's source station.
-	 * @return Source station's coordinates.
+	 * Gets the coordinates of the cargo's source.
+	 * @return Source coordinates of cargo.
 	 */
-	inline TileIndex SourceStationXY() const
+	inline TileIndex GetSourceXY() const
 	{
 		return this->source_xy;
 	}
@@ -163,7 +172,7 @@ public:
 	 * Gets the ID of station the cargo wants to go next.
 	 * @return Next station for this packets.
 	 */
-	inline StationID NextStation() const
+	inline StationID GetNextStation() const
 	{
 		return this->next_station;
 	}
@@ -297,19 +306,19 @@ public:
 	friend class VehicleCargoReroute;
 
 	/**
-	 * Returns source of the first cargo packet in this list.
-	 * @return The before mentioned source.
+	 * Returns the first station of the first cargo packet in this list.
+	 * @return The before mentioned station.
 	 */
-	inline StationID Source() const
+	inline StationID GetFirstStation() const
 	{
-		return this->count == 0 ? INVALID_STATION : this->packets.front()->source;
+		return this->count == 0 ? INVALID_STATION : this->packets.front()->first_station;
 	}
 
 	/**
 	 * Returns total sum of the feeder share for all packets.
 	 * @return The before mentioned number.
 	 */
-	inline Money FeederShare() const
+	inline Money GetFeederShare() const
 	{
 		return this->feeder_share;
 	}
@@ -469,12 +478,12 @@ public:
 	}
 
 	/**
-	 * Returns source of the first cargo packet in this list.
-	 * @return The before mentioned source.
+	 * Returns first station of the first cargo packet in this list.
+	 * @return The before mentioned station.
 	 */
-	inline StationID Source() const
+	inline StationID GetFirstStation() const
 	{
-		return this->count == 0 ? INVALID_STATION : this->packets.begin()->second.front()->source;
+		return this->count == 0 ? INVALID_STATION : this->packets.begin()->second.front()->first_station;
 	}
 
 	/**

@@ -69,7 +69,7 @@ template<bool Tfrom, bool Tvia>
 						StationCargoList::ConstIterator(cargo_list.Packets()->end()));
 	for (StationCargoList::ConstIterator it = range.first; it != range.second; it++) {
 		const CargoPacket *cp = *it;
-		if (!Tfrom || cp->SourceStation() == from_station_id) cargo_count += cp->Count();
+		if (!Tfrom || cp->GetFirstStation() == from_station_id) cargo_count += cp->Count();
 	}
 
 	return cargo_count;

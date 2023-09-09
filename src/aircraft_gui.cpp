@@ -56,10 +56,10 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 				/* Cargo names (fix pluralness) */
 				SetDParam(0, u->cargo_type);
 				SetDParam(1, cargo_count);
-				SetDParam(2, u->cargo.Source());
+				SetDParam(2, u->cargo.GetFirstStation());
 				DrawString(r.left, r.right, y, STR_VEHICLE_DETAILS_CARGO_FROM);
 				y += FONT_HEIGHT_NORMAL;
-				feeder_share += u->cargo.FeederShare();
+				feeder_share += u->cargo.GetFeederShare();
 			}
 		}
 	}

@@ -32,23 +32,21 @@ CargoPacket::CargoPacket()
 
 /**
  * Creates a new cargo packet.
- * @param source      Source station of the packet.
- * @param source_xy   Source location of the packet.
- * @param count       Number of cargo entities to put in this packet.
- * @param source_type 'Type' of source the packet comes from (for subsidies).
- * @param source_id   Actual source of the packet (for subsidies).
+ * @param first_station Source station of the packet.
+ * @param source_xy     Source location of the packet.
+ * @param count         Number of cargo entities to put in this packet.
+ * @param source_type   'Type' of source the packet comes from (for subsidies).
+ * @param source_id     Actual source of the packet (for subsidies).
  * @pre count != 0
  * @note We have to zero memory ourselves here because we are using a 'new'
  * that, in contrary to all other pools, does not memset to 0.
  */
-CargoPacket::CargoPacket(StationID source, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id) :
+CargoPacket::CargoPacket(StationID first_station, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id) :
 	count(count),
-	periods_in_transit(0),
-	feeder_share(0),
 	source_xy(source_xy),
 	source_id(source_id),
-	source(source),
-	source_type(source_type)
+	source_type(source_type),
+	first_station(first_station)
 {
 	assert(count != 0);
 }
@@ -56,24 +54,24 @@ CargoPacket::CargoPacket(StationID source, TileIndex source_xy, uint16_t count, 
 /**
  * Creates a new cargo packet. Initializes the fields that cannot be changed later.
  * Used when loading or splitting packets.
- * @param count           Number of cargo entities to put in this packet.
+ * @param count              Number of cargo entities to put in this packet.
  * @param periods_in_transit Number of cargo aging periods the cargo has been in transit.
- * @param source          Station the cargo was initially loaded.
- * @param source_xy       Station location the cargo was initially loaded.
- * @param feeder_share    Feeder share the packet has already accumulated.
- * @param source_type     'Type' of source the packet comes from (for subsidies).
- * @param source_id       Actual source of the packet (for subsidies).
+ * @param first_station      Station the cargo was initially loaded.
+ * @param source_xy          Station location the cargo was initially loaded.
+ * @param feeder_share       Feeder share the packet has already accumulated.
+ * @param source_type        'Type' of source the packet comes from (for subsidies).
+ * @param source_id          Actual source of the packet (for subsidies).
  * @note We have to zero memory ourselves here because we are using a 'new'
  * that, in contrary to all other pools, does not memset to 0.
  */
-CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID source, TileIndex source_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
+CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
 		count(count),
 		periods_in_transit(periods_in_transit),
 		feeder_share(feeder_share),
 		source_xy(source_xy),
 		source_id(source_id),
-		source(source),
-		source_type(source_type)
+		source_type(source_type),
+		first_station(first_station)
 {
 	assert(count != 0);
 }
@@ -87,8 +85,8 @@ CargoPacket *CargoPacket::Split(uint new_size)
 {
 	if (!CargoPacket::CanAllocateItem()) return nullptr;
 
-	Money fs = this->FeederShare(new_size);
-	CargoPacket *cp_new = new CargoPacket(new_size, this->periods_in_transit, this->source, this->source_xy,  fs, this->source_type, this->source_id);
+	Money fs = this->GetFeederShare(new_size);
+	CargoPacket *cp_new = new CargoPacket(new_size, this->periods_in_transit, this->first_station, this->source_xy,  fs, this->source_type, this->source_id);
 	this->feeder_share -= fs;
 	this->count -= new_size;
 	return cp_new;
@@ -112,7 +110,7 @@ void CargoPacket::Merge(CargoPacket *cp)
 void CargoPacket::Reduce(uint count)
 {
 	assert(count < this->count);
-	this->feeder_share -= this->FeederShare(count);
+	this->feeder_share -= this->GetFeederShare(count);
 	this->count -= count;
 }
 
@@ -135,7 +133,7 @@ void CargoPacket::Reduce(uint count)
 /* static */ void CargoPacket::InvalidateAllFrom(StationID sid)
 {
 	for (CargoPacket *cp : CargoPacket::Iterate()) {
-		if (cp->source == sid) cp->source = INVALID_STATION;
+		if (cp->first_station == sid) cp->first_station = INVALID_STATION;
 	}
 }
 
@@ -176,7 +174,7 @@ template <class Tinst, class Tcont>
 void CargoList<Tinst, Tcont>::RemoveFromCache(const CargoPacket *cp, uint count)
 {
 	assert(count <= cp->count);
-	this->count                 -= count;
+	this->count -= count;
 	this->cargo_periods_in_transit -= static_cast<uint64_t>(cp->periods_in_transit) * count;
 }
 
@@ -188,7 +186,7 @@ void CargoList<Tinst, Tcont>::RemoveFromCache(const CargoPacket *cp, uint count)
 template <class Tinst, class Tcont>
 void CargoList<Tinst, Tcont>::AddToCache(const CargoPacket *cp)
 {
-	this->count                 += cp->count;
+	this->count += cp->count;
 	this->cargo_periods_in_transit += static_cast<uint64_t>(cp->periods_in_transit) * cp->count;
 }
 
@@ -329,7 +327,7 @@ void VehicleCargoList::PopCargo(Taction action)
  */
 void VehicleCargoList::RemoveFromCache(const CargoPacket *cp, uint count)
 {
-	this->feeder_share -= cp->FeederShare(count);
+	this->feeder_share -= cp->GetFeederShare(count);
 	this->Parent::RemoveFromCache(cp, count);
 }
 
@@ -399,7 +397,7 @@ void VehicleCargoList::AgeCargo()
 		StationID current_station, bool accepted, StationIDStack next_station)
 {
 	if (cargo_next == INVALID_STATION) {
-		return (accepted && cp->source != current_station) ? MTA_DELIVER : MTA_KEEP;
+		return (accepted && cp->first_station != current_station) ? MTA_DELIVER : MTA_KEEP;
 	} else if (cargo_next == current_station) {
 		return MTA_DELIVER;
 	} else if (next_station.Contains(cargo_next)) {
@@ -443,13 +441,13 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 		MoveToAction action = MTA_LOAD;
 		if (force_keep) {
 			action = MTA_KEEP;
-		} else if (force_unload && accepted && cp->source != current_station) {
+		} else if (force_unload && accepted && cp->first_station != current_station) {
 			action = MTA_DELIVER;
 		} else if (force_transfer) {
 			action = MTA_TRANSFER;
 			/* We cannot send the cargo to any of the possible next hops and
 			 * also not to the current station. */
-			FlowStatMap::const_iterator flow_it(ge->flows.find(cp->source));
+			FlowStatMap::const_iterator flow_it(ge->flows.find(cp->first_station));
 			if (flow_it == ge->flows.end()) {
 				cargo_next = INVALID_STATION;
 			} else {
@@ -468,11 +466,11 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 		} else {
 			/* Rewrite an invalid source station to some random other one to
 			 * avoid keeping the cargo in the vehicle forever. */
-			if (cp->source == INVALID_STATION && !ge->flows.empty()) {
-				cp->source = ge->flows.begin()->first;
+			if (cp->first_station == INVALID_STATION && !ge->flows.empty()) {
+				cp->first_station = ge->flows.begin()->first;
 			}
 			bool restricted = false;
-			FlowStatMap::const_iterator flow_it(ge->flows.find(cp->source));
+			FlowStatMap::const_iterator flow_it(ge->flows.find(cp->first_station));
 			if (flow_it == ge->flows.end()) {
 				cargo_next = INVALID_STATION;
 			} else {
@@ -757,7 +755,7 @@ uint StationCargoList::Truncate(uint max_move, StationCargoAmountMap *cargo_per_
 			CargoPacket *cp = *it;
 			if (prev_count > max_move && RandomRange(prev_count) < prev_count - max_move) {
 				if (do_count && loop == 0) {
-					(*cargo_per_source)[cp->source] += cp->count;
+					(*cargo_per_source)[cp->first_station] += cp->count;
 				}
 				++it;
 				continue;
@@ -770,16 +768,16 @@ uint StationCargoList::Truncate(uint max_move, StationCargoAmountMap *cargo_per_
 					moved += diff;
 				}
 				if (loop > 0) {
-					if (do_count) (*cargo_per_source)[cp->source] -= diff;
+					if (do_count) (*cargo_per_source)[cp->first_station] -= diff;
 					return moved;
 				} else {
-					if (do_count) (*cargo_per_source)[cp->source] += cp->count;
+					if (do_count) (*cargo_per_source)[cp->first_station] += cp->count;
 					++it;
 				}
 			} else {
 				it = this->packets.erase(it);
 				if (do_count && loop > 0) {
-					(*cargo_per_source)[cp->source] -= cp->count;
+					(*cargo_per_source)[cp->first_station] -= cp->count;
 				}
 				moved += cp->count;
 				this->RemoveFromCache(cp, cp->count);

@@ -167,7 +167,7 @@ bool CargoTransfer::operator()(CargoPacket *cp)
 	if (cp_new == nullptr) return false;
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
 	/* No transfer credits here as they were already granted during Stage(). */
-	this->destination->Append(cp_new, cp_new->NextStation());
+	this->destination->Append(cp_new, cp_new->GetNextStation());
 	return cp_new == cp;
 }
 
@@ -194,7 +194,7 @@ bool StationCargoReroute::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) cp_new = cp;
-	StationID next = this->ge->GetVia(cp_new->SourceStation(), this->avoid, this->avoid2);
+	StationID next = this->ge->GetVia(cp_new->GetFirstStation(), this->avoid, this->avoid2);
 	assert(next != this->avoid && next != this->avoid2);
 	if (this->source != this->destination) {
 		this->source->RemoveFromCache(cp_new, cp_new->Count());
@@ -217,8 +217,8 @@ bool VehicleCargoReroute::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) cp_new = cp;
-	if (cp_new->NextStation() == this->avoid || cp_new->NextStation() == this->avoid2) {
-		cp->SetNextStation(this->ge->GetVia(cp_new->SourceStation(), this->avoid, this->avoid2));
+	if (cp_new->GetNextStation() == this->avoid || cp_new->GetNextStation() == this->avoid2) {
+		cp->SetNextStation(this->ge->GetVia(cp_new->GetFirstStation(), this->avoid, this->avoid2));
 	}
 	if (this->source != this->destination) {
 		this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());

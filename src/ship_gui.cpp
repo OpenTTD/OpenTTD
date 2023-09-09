@@ -79,13 +79,13 @@ void DrawShipDetails(const Vehicle *v, const Rect &r)
 	if (v->cargo.StoredCount() > 0) {
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo.StoredCount());
-		SetDParam(2, v->cargo.Source());
+		SetDParam(2, v->cargo.GetFirstStation());
 		str = STR_VEHICLE_DETAILS_CARGO_FROM;
 	}
 	DrawString(r.left, r.right, y, str);
 	y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
 
 	/* Draw Transfer credits text */
-	SetDParam(0, v->cargo.FeederShare());
+	SetDParam(0, v->cargo.GetFeederShare());
 	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }
