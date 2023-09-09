@@ -173,6 +173,11 @@ enum ExpensesType : byte {
 };
 
 /**
+ * Data type for storage of Money for each #ExpensesType category.
+ */
+using Expenses = std::array<Money, EXPENSES_END>;
+
+/**
  * Categories of a price bases.
  */
 enum PriceCategory {

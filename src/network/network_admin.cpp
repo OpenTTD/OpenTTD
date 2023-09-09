@@ -383,10 +383,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
 {
 	for (const Company *company : Company::Iterate()) {
 		/* Get the income. */
-		Money income = 0;
-		for (uint i = 0; i < lengthof(company->yearly_expenses[0]); i++) {
-			income -= company->yearly_expenses[0][i];
-		}
+		Money income = -std::reduce(std::begin(company->yearly_expenses[0]), std::end(company->yearly_expenses[0]));
 
 		Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_ECONOMY);
 
