@@ -87,6 +87,7 @@ struct HouseClassMapping {
 	uint8_t  class_id;  ///< The class id within the grf file
 };
 
+void ResetHouseClassIDs();
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32_t grfid);
 
 void InitializeBuildingCounts();
