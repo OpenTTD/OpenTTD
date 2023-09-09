@@ -42,13 +42,10 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8_t duration, Te
 {
 	if (_game_mode == GM_MENU) return INVALID_TE_ID;
 
-	TextEffectID i;
-	for (i = 0; i < _text_effects.size(); i++) {
-		if (_text_effects[i].string_id == INVALID_STRING_ID) break;
-	}
-	if (i == _text_effects.size()) _text_effects.emplace_back();
+	auto it = std::find_if(std::begin(_text_effects), std::end(_text_effects), [](const TextEffect &te) { return te.string_id == INVALID_STRING_ID; });
+	if (it == std::end(_text_effects)) it = _text_effects.emplace(std::end(_text_effects));
 
-	TextEffect &te = _text_effects[i];
+	TextEffect &te = *it;
 
 	/* Start defining this object */
 	te.string_id = msg;
@@ -60,7 +57,7 @@ TextEffectID AddTextEffect(StringID msg, int center, int y, uint8_t duration, Te
 	te.width_normal = 0;
 	te.UpdatePosition(center, y, msg);
 
-	return i;
+	return static_cast<TextEffectID>(it - std::begin(_text_effects));
 }
 
 void UpdateTextEffect(TextEffectID te_id, StringID msg)
