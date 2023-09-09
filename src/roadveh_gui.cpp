@@ -81,9 +81,9 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 			if (u->cargo.StoredCount() > 0) {
 				SetDParam(0, u->cargo_type);
 				SetDParam(1, u->cargo.StoredCount());
-				SetDParam(2, u->cargo.Source());
+				SetDParam(2, u->cargo.GetFirstStation());
 				str = STR_VEHICLE_DETAILS_CARGO_FROM;
-				feeder_share += u->cargo.FeederShare();
+				feeder_share += u->cargo.GetFeederShare();
 			}
 			DrawString(r.left, r.right, y, str);
 			y += FONT_HEIGHT_NORMAL;
@@ -100,9 +100,9 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 		if (v->cargo.StoredCount() > 0) {
 			SetDParam(0, v->cargo_type);
 			SetDParam(1, v->cargo.StoredCount());
-			SetDParam(2, v->cargo.Source());
+			SetDParam(2, v->cargo.GetFirstStation());
 			str = STR_VEHICLE_DETAILS_CARGO_FROM;
-			feeder_share += v->cargo.FeederShare();
+			feeder_share += v->cargo.GetFeederShare();
 		}
 		DrawString(r.left, r.right, y, str);
 		y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;

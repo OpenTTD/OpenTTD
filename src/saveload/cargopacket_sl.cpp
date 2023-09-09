@@ -33,7 +33,7 @@
 			const CargoPacketList *packets = v->cargo.Packets();
 			for (VehicleCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 				CargoPacket *cp = *it;
-				cp->source_xy = Station::IsValidID(cp->source) ? Station::Get(cp->source)->xy : v->tile;
+				cp->source_xy = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : v->tile;
 			}
 		}
 
@@ -49,7 +49,7 @@
 				const StationCargoPacketMap *packets = ge->cargo.Packets();
 				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 					CargoPacket *cp = *it;
-					cp->source_xy = Station::IsValidID(cp->source) ? Station::Get(cp->source)->xy : st->xy;
+					cp->source_xy = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : st->xy;
 				}
 			}
 		}
@@ -58,7 +58,7 @@
 	if (IsSavegameVersionBefore(SLV_120)) {
 		/* CargoPacket's source should be either INVALID_STATION or a valid station */
 		for (CargoPacket *cp : CargoPacket::Iterate()) {
-			if (!Station::IsValidID(cp->source)) cp->source = INVALID_STATION;
+			if (!Station::IsValidID(cp->first_station)) cp->first_station = INVALID_STATION;
 		}
 	}
 
@@ -86,7 +86,7 @@
 SaveLoadTable GetCargoPacketDesc()
 {
 	static const SaveLoad _cargopacket_desc[] = {
-		SLE_VAR(CargoPacket, source,          SLE_UINT16),
+		SLE_VARNAME(CargoPacket, first_station, "source", SLE_UINT16),
 		SLE_VAR(CargoPacket, source_xy,       SLE_UINT32),
 		SLE_VAR(CargoPacket, count,           SLE_UINT16),
 		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_MORE_CARGO_AGE),

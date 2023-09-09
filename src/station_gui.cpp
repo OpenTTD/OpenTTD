@@ -1591,15 +1591,15 @@ struct StationViewWindow : public Window {
 			const CargoPacket *cp = *it;
 			StationID next = it.GetKey();
 
-			const CargoDataEntry *source_entry = source_dest->Retrieve(cp->SourceStation());
+			const CargoDataEntry *source_entry = source_dest->Retrieve(cp->GetFirstStation());
 			if (source_entry == nullptr) {
-				this->ShowCargo(cargo, i, cp->SourceStation(), next, INVALID_STATION, cp->Count());
+				this->ShowCargo(cargo, i, cp->GetFirstStation(), next, INVALID_STATION, cp->Count());
 				continue;
 			}
 
 			const CargoDataEntry *via_entry = source_entry->Retrieve(next);
 			if (via_entry == nullptr) {
-				this->ShowCargo(cargo, i, cp->SourceStation(), next, INVALID_STATION, cp->Count());
+				this->ShowCargo(cargo, i, cp->GetFirstStation(), next, INVALID_STATION, cp->Count());
 				continue;
 			}
 
@@ -1620,7 +1620,7 @@ struct StationViewWindow : public Window {
 					val = std::min<uint>(remaining, DivideApprox(cp->Count() * dest_entry->GetCount(), via_entry->GetCount()));
 					remaining -= val;
 				}
-				this->ShowCargo(cargo, i, cp->SourceStation(), next, dest_entry->GetStation(), val);
+				this->ShowCargo(cargo, i, cp->GetFirstStation(), next, dest_entry->GetStation(), val);
 			}
 		}
 		this->ShowCargo(cargo, i, NEW_STATION, NEW_STATION, NEW_STATION, packets.ReservedCount());

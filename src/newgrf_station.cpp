@@ -445,7 +445,7 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, byte variable,
 			case 1: return GB(std::min(g->cargo.TotalCount(), 4095u), 0, 4) | (GB(g->status, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
 			case 2: return g->time_since_pickup;
 			case 3: return g->rating;
-			case 4: return g->cargo.Source();
+			case 4: return g->cargo.GetFirstStation();
 			case 5: return g->cargo.PeriodsInTransit();
 			case 6: return g->last_speed;
 			case 7: return g->last_age;
