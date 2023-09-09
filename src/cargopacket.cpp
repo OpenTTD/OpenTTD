@@ -46,7 +46,6 @@ CargoPacket::CargoPacket(StationID source, TileIndex source_xy, uint16_t count, 
 	periods_in_transit(0),
 	feeder_share(0),
 	source_xy(source_xy),
-	loaded_at_xy(0),
 	source_id(source_id),
 	source(source),
 	source_type(source_type)
@@ -61,19 +60,17 @@ CargoPacket::CargoPacket(StationID source, TileIndex source_xy, uint16_t count, 
  * @param periods_in_transit Number of cargo aging periods the cargo has been in transit.
  * @param source          Station the cargo was initially loaded.
  * @param source_xy       Station location the cargo was initially loaded.
- * @param loaded_at_xy    Location the cargo was loaded last.
  * @param feeder_share    Feeder share the packet has already accumulated.
  * @param source_type     'Type' of source the packet comes from (for subsidies).
  * @param source_id       Actual source of the packet (for subsidies).
  * @note We have to zero memory ourselves here because we are using a 'new'
  * that, in contrary to all other pools, does not memset to 0.
  */
-CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
+CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID source, TileIndex source_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
 		count(count),
 		periods_in_transit(periods_in_transit),
 		feeder_share(feeder_share),
 		source_xy(source_xy),
-		loaded_at_xy(loaded_at_xy),
 		source_id(source_id),
 		source(source),
 		source_type(source_type)
@@ -91,7 +88,7 @@ CargoPacket *CargoPacket::Split(uint new_size)
 	if (!CargoPacket::CanAllocateItem()) return nullptr;
 
 	Money fs = this->FeederShare(new_size);
-	CargoPacket *cp_new = new CargoPacket(new_size, this->periods_in_transit, this->source, this->source_xy, this->loaded_at_xy, fs, this->source_type, this->source_id);
+	CargoPacket *cp_new = new CargoPacket(new_size, this->periods_in_transit, this->source, this->source_xy,  fs, this->source_type, this->source_id);
 	this->feeder_share -= fs;
 	this->count -= new_size;
 	return cp_new;
@@ -386,23 +383,6 @@ void VehicleCargoList::AgeCargo()
 
 		cp->periods_in_transit++;
 		this->cargo_periods_in_transit += cp->count;
-	}
-}
-
-/**
- * Sets loaded_at_xy to the current station for all cargo to be transferred.
- * This is done when stopping or skipping while the vehicle is unloading. In
- * that case the vehicle will get part of its transfer credits early and it may
- * get more transfer credits than it's entitled to.
- * @param xy New loaded_at_xy for the cargo.
- */
-void VehicleCargoList::SetTransferLoadPlace(TileIndex xy)
-{
-	uint sum = 0;
-	for (Iterator it = this->packets.begin(); sum < this->action_counts[MTA_TRANSFER]; ++it) {
-		CargoPacket *cp = *it;
-		cp->loaded_at_xy = xy;
-		sum += cp->count;
 	}
 }
 
@@ -815,13 +795,12 @@ uint StationCargoList::Truncate(uint max_move, StationCargoAmountMap *cargo_per_
  * Reserves cargo for loading onto the vehicle.
  * @param max_move Maximum amount of cargo to reserve.
  * @param dest VehicleCargoList to reserve for.
- * @param load_place Tile index of the current station.
  * @param next_station Next station(s) the loading vehicle will visit.
  * @return Amount of cargo actually reserved.
  */
-uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, TileIndex load_place, StationIDStack next_station)
+uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next_station)
 {
-	return this->ShiftCargo(CargoReservation(this, dest, max_move, load_place), next_station, true);
+	return this->ShiftCargo(CargoReservation(this, dest, max_move), next_station, true);
 }
 
 /**
@@ -829,14 +808,13 @@ uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, TileIndex 
  * Otherwise load cargo from the station.
  * @param max_move Amount of cargo to load.
  * @param dest Vehicle cargo list where the cargo resides.
- * @param load_place The new loaded_at_xy to be assigned to packets being moved.
  * @param next_station Next station(s) the loading vehicle will visit.
  * @return Amount of cargo actually loaded.
  * @note Vehicles may or may not reserve, depending on their orders. The two
  *       modes of loading are exclusive, though. If cargo is reserved we don't
  *       need to load unreserved cargo.
  */
-uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, TileIndex load_place, StationIDStack next_station)
+uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, StationIDStack next_station)
 {
 	uint move = std::min(dest->ActionCount(VehicleCargoList::MTA_LOAD), max_move);
 	if (move > 0) {
@@ -844,7 +822,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, TileIndex loa
 		dest->Reassign<VehicleCargoList::MTA_LOAD, VehicleCargoList::MTA_KEEP>(move);
 		return move;
 	} else {
-		return this->ShiftCargo(CargoLoad(this, dest, max_move, load_place), next_station, true);
+		return this->ShiftCargo(CargoLoad(this, dest, max_move), next_station, true);
 	}
 }
 

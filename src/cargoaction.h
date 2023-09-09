@@ -77,19 +77,17 @@ public:
 
 /** Action of loading cargo from a station onto a vehicle. */
 class CargoLoad : public CargoMovement<StationCargoList, VehicleCargoList> {
-protected:
-	TileIndex load_place; ///< TileIndex to be saved in the packets' loaded_at_xy.
 public:
-	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex load_place) :
-			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move), load_place(load_place) {}
+	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move) :
+			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move) {}
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of reserving cargo from a station to be loaded onto a vehicle. */
 class CargoReservation : public CargoLoad {
 public:
-	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex load_place) :
-			CargoLoad(source, destination, max_move, load_place) {}
+	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move) :
+			CargoLoad(source, destination, max_move) {}
 	bool operator()(CargoPacket *cp);
 };
 

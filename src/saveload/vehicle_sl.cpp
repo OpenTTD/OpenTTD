@@ -577,7 +577,6 @@ static uint32_t _cargo_source_xy;
 static uint16_t _cargo_count;
 static uint16_t _cargo_paid_for;
 static Money  _cargo_feeder_share;
-static uint32_t _cargo_loaded_at_xy;
 
 class SlVehicleCommon : public DefaultSaveLoadHandler<SlVehicleCommon, Vehicle> {
 public:
@@ -699,7 +698,6 @@ public:
 		SLE_CONDVAR(Vehicle, profit_last_year,      SLE_INT64,                   SLV_65, SL_MAX_VERSION),
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_FILE_I32 | SLE_VAR_I64,  SLV_51,  SLV_65),
 		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_INT64,                   SLV_65,  SLV_68),
-		SLEG_CONDVAR("cargo_loaded_at_xy", _cargo_loaded_at_xy, SLE_UINT32,                  SLV_51,  SLV_68),
 		SLE_CONDVAR(Vehicle, value,                 SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
 		SLE_CONDVAR(Vehicle, value,                 SLE_INT64,                   SLV_65, SL_MAX_VERSION),
 
@@ -1043,7 +1041,7 @@ struct VEHSChunkHandler : ChunkHandler {
 
 			if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v) && CargoPacket::CanAllocateItem()) {
 				/* Don't construct the packet with station here, because that'll fail with old savegames */
-				CargoPacket *cp = new CargoPacket(_cargo_count, _cargo_periods, _cargo_source, _cargo_source_xy, _cargo_loaded_at_xy, _cargo_feeder_share);
+				CargoPacket *cp = new CargoPacket(_cargo_count, _cargo_periods, _cargo_source, _cargo_source_xy, _cargo_feeder_share);
 				v->cargo.Append(cp);
 			}
 

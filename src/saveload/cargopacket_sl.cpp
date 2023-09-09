@@ -34,7 +34,6 @@
 			for (VehicleCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 				CargoPacket *cp = *it;
 				cp->source_xy = Station::IsValidID(cp->source) ? Station::Get(cp->source)->xy : v->tile;
-				cp->loaded_at_xy = cp->source_xy;
 			}
 		}
 
@@ -51,7 +50,6 @@
 				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 					CargoPacket *cp = *it;
 					cp->source_xy = Station::IsValidID(cp->source) ? Station::Get(cp->source)->xy : st->xy;
-					cp->loaded_at_xy = cp->source_xy;
 				}
 			}
 		}
@@ -90,7 +88,6 @@ SaveLoadTable GetCargoPacketDesc()
 	static const SaveLoad _cargopacket_desc[] = {
 		SLE_VAR(CargoPacket, source,          SLE_UINT16),
 		SLE_VAR(CargoPacket, source_xy,       SLE_UINT32),
-		SLE_VAR(CargoPacket, loaded_at_xy,    SLE_UINT32),
 		SLE_VAR(CargoPacket, count,           SLE_UINT16),
 		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_MORE_CARGO_AGE),
 		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_UINT16, SLV_MORE_CARGO_AGE, SLV_PERIODS_IN_TRANSIT_RENAME),
