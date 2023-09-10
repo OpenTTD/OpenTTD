@@ -167,7 +167,7 @@ bool CargoTransfer::operator()(CargoPacket *cp)
 	if (cp_new == nullptr) return false;
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
 	/* No transfer credits here as they were already granted during Stage(). */
-	this->destination->Append(cp_new, cp_new->GetNextStation());
+	this->destination->Append(cp_new, cp_new->GetNextHop());
 	return cp_new == cp;
 }
 
@@ -217,8 +217,8 @@ bool VehicleCargoReroute::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) cp_new = cp;
-	if (cp_new->GetNextStation() == this->avoid || cp_new->GetNextStation() == this->avoid2) {
-		cp->SetNextStation(this->ge->GetVia(cp_new->GetFirstStation(), this->avoid, this->avoid2));
+	if (cp_new->GetNextHop() == this->avoid || cp_new->GetNextHop() == this->avoid2) {
+		cp->SetNextHop(this->ge->GetVia(cp_new->GetFirstStation(), this->avoid, this->avoid2));
 	}
 	if (this->source != this->destination) {
 		this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
