@@ -1353,7 +1353,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		if (_cargo_count != 0 && CargoPacket::CanAllocateItem()) {
 			StationID source =    (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
 			TileIndex source_xy = (source != INVALID_STATION) ? Station::Get(source)->xy : (TileIndex)0;
-			v->cargo.Append(new CargoPacket(_cargo_count, _cargo_periods, source, source_xy));
+			v->cargo.Append(new CargoPacket(_cargo_count, _cargo_periods, source, INVALID_STATION, source_xy));
 		}
 	}
 

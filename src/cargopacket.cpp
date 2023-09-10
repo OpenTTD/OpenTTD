@@ -57,6 +57,7 @@ CargoPacket::CargoPacket(StationID first_station, TileIndex source_xy, uint16_t 
  * @param count              Number of cargo entities to put in this packet.
  * @param periods_in_transit Number of cargo aging periods the cargo has been in transit.
  * @param first_station      Station the cargo was initially loaded.
+ * @param next_station       Next station the cargo wants to go.
  * @param source_xy          Station location the cargo was initially loaded.
  * @param feeder_share       Feeder share the packet has already accumulated.
  * @param source_type        'Type' of source the packet comes from (for subsidies).
@@ -64,14 +65,15 @@ CargoPacket::CargoPacket(StationID first_station, TileIndex source_xy, uint16_t 
  * @note We have to zero memory ourselves here because we are using a 'new'
  * that, in contrary to all other pools, does not memset to 0.
  */
-CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
+CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, StationID next_station, TileIndex source_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
 		count(count),
 		periods_in_transit(periods_in_transit),
 		feeder_share(feeder_share),
 		source_xy(source_xy),
 		source_id(source_id),
 		source_type(source_type),
-		first_station(first_station)
+		first_station(first_station),
+		next_station(next_station)
 {
 	assert(count != 0);
 }
@@ -86,7 +88,7 @@ CargoPacket *CargoPacket::Split(uint new_size)
 	if (!CargoPacket::CanAllocateItem()) return nullptr;
 
 	Money fs = this->GetFeederShare(new_size);
-	CargoPacket *cp_new = new CargoPacket(new_size, this->periods_in_transit, this->first_station, this->source_xy,  fs, this->source_type, this->source_id);
+	CargoPacket *cp_new = new CargoPacket(new_size, this->periods_in_transit, this->first_station, this->next_station, this->source_xy, fs, this->source_type, this->source_id);
 	this->feeder_share -= fs;
 	this->count -= new_size;
 	return cp_new;
