@@ -161,12 +161,14 @@ public:
 	}
 
 	/**
-	 * Gets the coordinates of the cargo's source.
-	 * @return Source coordinates of cargo.
+	 * Get the current distance the cargo has traveled.
+	 *
+	 * @param current_tile Current tile of the cargo.
+	 * @return uint The distance (in tiles) traveled.
 	 */
-	inline TileIndex GetSourceXY() const
+	inline uint GetDistance(TileIndex current_tile) const
 	{
-		return this->source_xy;
+		return DistanceManhattan(this->source_xy, current_tile);
 	}
 
 	/**
@@ -386,7 +388,7 @@ public:
 
 	void InvalidateCache();
 
-	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoPayment *payment);
+	bool Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoPayment *payment, TileIndex current_tile);
 
 	/**
 	 * Marks all cargo in the vehicle as to be kept. This is mostly useful for
@@ -406,7 +408,7 @@ public:
 	template<MoveToAction Tfrom, MoveToAction Tto>
 	uint Reassign(uint max_move);
 	uint Return(uint max_move, StationCargoList *dest, StationID next_station);
-	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment);
+	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment, TileIndex current_tile);
 	uint Shift(uint max_move, VehicleCargoList *dest);
 	uint Truncate(uint max_move = UINT_MAX);
 	uint Reroute(uint max_move, VehicleCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);

@@ -38,10 +38,11 @@ public:
 /** Action of final delivery of cargo. */
 class CargoDelivery : public CargoRemoval<VehicleCargoList> {
 protected:
+	TileIndex current_tile; ///< Current tile cargo delivery is happening.
 	CargoPayment *payment; ///< Payment object where payments will be registered.
 public:
-	CargoDelivery(VehicleCargoList *source, uint max_move, CargoPayment *payment) :
-			CargoRemoval<VehicleCargoList>(source, max_move), payment(payment) {}
+	CargoDelivery(VehicleCargoList *source, uint max_move, CargoPayment *payment, TileIndex current_tile) :
+			CargoRemoval<VehicleCargoList>(source, max_move), current_tile(current_tile), payment(payment) {}
 	bool operator()(CargoPacket *cp);
 };
 
