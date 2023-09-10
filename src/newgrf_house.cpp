@@ -25,7 +25,7 @@
 #include "safeguards.h"
 
 static BuildingCounts<uint32_t> _building_counts;
-static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
+static std::array<HouseClassMapping, HOUSE_CLASS_MAX> _class_mapping;
 
 HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, NUM_HOUSES, INVALID_HOUSE_ID);
 
@@ -70,6 +70,11 @@ GrfSpecFeature HouseResolverObject::GetFeature() const
 uint32_t HouseResolverObject::GetDebugID() const
 {
 	return HouseSpec::Get(this->house_scope.house_id)->grf_prop.local_id;
+}
+
+void ResetHouseClassIDs()
+{
+	_class_mapping = {};
 }
 
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32_t grfid)

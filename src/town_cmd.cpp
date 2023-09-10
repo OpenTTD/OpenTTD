@@ -3842,6 +3842,8 @@ HouseSpec _house_specs[NUM_HOUSES];
 
 void ResetHouses()
 {
+	ResetHouseClassIDs();
+
 	auto insert = std::copy(std::begin(_original_house_specs), std::end(_original_house_specs), std::begin(_house_specs));
 	std::fill(insert, std::end(_house_specs), HouseSpec{});
 
