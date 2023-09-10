@@ -710,7 +710,7 @@ static bool LoadOldGood(LoadgameState *ls, int num)
 	SB(ge->status, GoodsEntry::GES_ACCEPTANCE, 1, HasBit(_waiting_acceptance, 15));
 	SB(ge->status, GoodsEntry::GES_RATING, 1, _cargo_source != 0xFF);
 	if (GB(_waiting_acceptance, 0, 12) != 0 && CargoPacket::CanAllocateItem()) {
-		ge->cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, INVALID_STATION, 0),
+		ge->cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, INVALID_TILE, 0),
 				INVALID_STATION);
 	}
 
@@ -1353,7 +1353,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		if (_cargo_count != 0 && CargoPacket::CanAllocateItem()) {
 			StationID source =    (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
 			TileIndex source_xy = (source != INVALID_STATION) ? Station::Get(source)->xy : (TileIndex)0;
-			v->cargo.Append(new CargoPacket(_cargo_count, _cargo_periods, source, INVALID_STATION, source_xy));
+			v->cargo.Append(new CargoPacket(_cargo_count, _cargo_periods, source, source_xy, 0));
 		}
 	}
 

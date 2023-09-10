@@ -32,48 +32,59 @@ CargoPacket::CargoPacket()
 
 /**
  * Creates a new cargo packet.
+ *
  * @param first_station Source station of the packet.
  * @param source_xy     Source location of the packet.
  * @param count         Number of cargo entities to put in this packet.
  * @param source_type   'Type' of source the packet comes from (for subsidies).
  * @param source_id     Actual source of the packet (for subsidies).
  * @pre count != 0
- * @note We have to zero memory ourselves here because we are using a 'new'
- * that, in contrary to all other pools, does not memset to 0.
  */
 CargoPacket::CargoPacket(StationID first_station, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id) :
-	count(count),
-	source_xy(source_xy),
-	source_id(source_id),
-	source_type(source_type),
-	first_station(first_station)
+		count(count),
+		source_xy(source_xy),
+		source_id(source_id),
+		source_type(source_type),
+		first_station(first_station)
 {
 	assert(count != 0);
 }
 
 /**
- * Creates a new cargo packet. Initializes the fields that cannot be changed later.
- * Used when loading or splitting packets.
+ * Create a new cargo packet. Used for older savegames to load in their partial data.
+ *
  * @param count              Number of cargo entities to put in this packet.
  * @param periods_in_transit Number of cargo aging periods the cargo has been in transit.
  * @param first_station      Station the cargo was initially loaded.
- * @param next_hop           Next station the cargo wants to go.
  * @param source_xy          Station location the cargo was initially loaded.
  * @param feeder_share       Feeder share the packet has already accumulated.
- * @param source_type        'Type' of source the packet comes from (for subsidies).
- * @param source_id          Actual source of the packet (for subsidies).
- * @note We have to zero memory ourselves here because we are using a 'new'
- * that, in contrary to all other pools, does not memset to 0.
  */
-CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, StationID next_hop, TileIndex source_xy, Money feeder_share, SourceType source_type, SourceID source_id) :
+CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share) :
 		count(count),
 		periods_in_transit(periods_in_transit),
 		feeder_share(feeder_share),
 		source_xy(source_xy),
-		source_id(source_id),
-		source_type(source_type),
-		first_station(first_station),
-		next_hop(next_hop)
+		first_station(first_station)
+{
+	assert(count != 0);
+}
+
+/**
+ * Creates a new cargo packet. Used when loading or splitting packets.
+ *
+ * @param count         Number of cargo entities to put in this packet.
+ * @param feeder_share  Feeder share the packet has already accumulated.
+ * @param original      The original packet we are splitting.
+ */
+CargoPacket::CargoPacket(uint16_t count, Money feeder_share, CargoPacket &original) :
+		count(count),
+		periods_in_transit(original.periods_in_transit),
+		feeder_share(feeder_share),
+		source_xy(original.source_xy),
+		source_id(original.source_id),
+		source_type(original.source_type),
+		first_station(original.first_station),
+		next_hop(original.next_hop)
 {
 	assert(count != 0);
 }
@@ -88,7 +99,7 @@ CargoPacket *CargoPacket::Split(uint new_size)
 	if (!CargoPacket::CanAllocateItem()) return nullptr;
 
 	Money fs = this->GetFeederShare(new_size);
-	CargoPacket *cp_new = new CargoPacket(new_size, this->periods_in_transit, this->first_station, this->next_hop, this->source_xy, fs, this->source_type, this->source_id);
+	CargoPacket *cp_new = new CargoPacket(new_size, fs, *this);
 	this->feeder_share -= fs;
 	this->count -= new_size;
 	return cp_new;

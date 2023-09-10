@@ -63,7 +63,8 @@ public:
 
 	CargoPacket();
 	CargoPacket(StationID first_station, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id);
-	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, StationID next_station, TileIndex source_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
+	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share);
+	CargoPacket(uint16_t count, Money feeder_share, CargoPacket &original);
 
 	/** Destroy the packet. */
 	~CargoPacket() { }
