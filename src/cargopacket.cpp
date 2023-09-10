@@ -34,15 +34,13 @@ CargoPacket::CargoPacket()
  * Creates a new cargo packet.
  *
  * @param first_station Source station of the packet.
- * @param source_xy     Source location of the packet.
  * @param count         Number of cargo entities to put in this packet.
  * @param source_type   'Type' of source the packet comes from (for subsidies).
  * @param source_id     Actual source of the packet (for subsidies).
  * @pre count != 0
  */
-CargoPacket::CargoPacket(StationID first_station, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id) :
+CargoPacket::CargoPacket(StationID first_station,uint16_t count, SourceType source_type, SourceID source_id) :
 		count(count),
-		source_xy(source_xy),
 		source_id(source_id),
 		source_type(source_type),
 		first_station(first_station)
@@ -808,11 +806,12 @@ uint StationCargoList::Truncate(uint max_move, StationCargoAmountMap *cargo_per_
  * @param max_move Maximum amount of cargo to reserve.
  * @param dest VehicleCargoList to reserve for.
  * @param next_station Next station(s) the loading vehicle will visit.
+ * @param current_tile Current tile the cargo handling is happening on.
  * @return Amount of cargo actually reserved.
  */
-uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next_station)
+uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next_station, TileIndex current_tile)
 {
-	return this->ShiftCargo(CargoReservation(this, dest, max_move), next_station, true);
+	return this->ShiftCargo(CargoReservation(this, dest, max_move, current_tile), next_station, true);
 }
 
 /**
@@ -821,12 +820,13 @@ uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, StationIDS
  * @param max_move Amount of cargo to load.
  * @param dest Vehicle cargo list where the cargo resides.
  * @param next_station Next station(s) the loading vehicle will visit.
+ * @param current_tile Current tile the cargo handling is happening on.
  * @return Amount of cargo actually loaded.
  * @note Vehicles may or may not reserve, depending on their orders. The two
  *       modes of loading are exclusive, though. If cargo is reserved we don't
  *       need to load unreserved cargo.
  */
-uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, StationIDStack next_station)
+uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, StationIDStack next_station, TileIndex current_tile)
 {
 	uint move = std::min(dest->ActionCount(VehicleCargoList::MTA_LOAD), max_move);
 	if (move > 0) {
@@ -834,7 +834,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, StationIDStac
 		dest->Reassign<VehicleCargoList::MTA_LOAD, VehicleCargoList::MTA_KEEP>(move);
 		return move;
 	} else {
-		return this->ShiftCargo(CargoLoad(this, dest, max_move), next_station, true);
+		return this->ShiftCargo(CargoLoad(this, dest, max_move, current_tile), next_station, true);
 	}
 }
 

@@ -78,17 +78,19 @@ public:
 
 /** Action of loading cargo from a station onto a vehicle. */
 class CargoLoad : public CargoMovement<StationCargoList, VehicleCargoList> {
+protected:
+	TileIndex current_tile; ///< Current tile cargo loading is happening.
 public:
-	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move) :
-			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move) {}
+	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex current_tile) :
+			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move), current_tile(current_tile) {}
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of reserving cargo from a station to be loaded onto a vehicle. */
 class CargoReservation : public CargoLoad {
 public:
-	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move) :
-			CargoLoad(source, destination, max_move) {}
+	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex current_tile) :
+			CargoLoad(source, destination, max_move, current_tile) {}
 	bool operator()(CargoPacket *cp);
 };
 

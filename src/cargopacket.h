@@ -44,7 +44,7 @@ private:
 
 	Money feeder_share{0}; ///< Value of feeder pickup to be paid for on delivery of cargo.
 
-	TileIndex source_xy{0}; ///< The origin of the cargo.
+	TileIndex source_xy{INVALID_TILE}; ///< The origin of the cargo.
 	SourceID source_id{INVALID_SOURCE}; ///< Index of industry/town/HQ, INVALID_SOURCE if unknown/invalid.
 	SourceType source_type{SourceType::Industry}; ///< Type of \c source_id.
 
@@ -62,7 +62,7 @@ public:
 	static const uint16_t MAX_COUNT = UINT16_MAX;
 
 	CargoPacket();
-	CargoPacket(StationID first_station, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id);
+	CargoPacket(StationID first_station, uint16_t count, SourceType source_type, SourceID source_id);
 	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share);
 	CargoPacket(uint16_t count, Money feeder_share, CargoPacket &original);
 
@@ -80,6 +80,25 @@ public:
 	void SetNextHop(StationID next_hop)
 	{
 		this->next_hop = next_hop;
+	}
+
+	/**
+	 * Set the origin of the packet.
+	 *
+	 * Can only be set once.
+	 *
+	 * When a packet is created, it is moved to a station. But at that moment
+	 * in time it is not known yet at which tile the cargo will be picked up.
+	 * As this tile is used for payment information, we delay setting the
+	 * source_xy till first pickup.
+	 *
+	 * @param tile Tile the cargo is being picked up from.
+	 */
+	void SetSourceXY(TileIndex tile)
+	{
+		if (this->source_xy == INVALID_TILE) {
+			this->source_xy = tile;
+		}
 	}
 
 	/**
@@ -168,6 +187,7 @@ public:
 	 */
 	inline uint GetDistance(TileIndex current_tile) const
 	{
+		assert(this->source_xy != INVALID_TILE);
 		return DistanceManhattan(this->source_xy, current_tile);
 	}
 
@@ -425,6 +445,7 @@ public:
 		return cp1->source_xy == cp2->source_xy &&
 				cp1->periods_in_transit == cp2->periods_in_transit &&
 				cp1->source_type == cp2->source_type &&
+				cp1->first_station == cp2->first_station &&
 				cp1->source_id == cp2->source_id;
 	}
 };
@@ -522,8 +543,8 @@ public:
 	 * amount of cargo to be moved. Second parameter is destination (if
 	 * applicable), return value is amount of cargo actually moved. */
 
-	uint Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next);
-	uint Load(uint max_move, VehicleCargoList *dest, StationIDStack next);
+	uint Reserve(uint max_move, VehicleCargoList *dest, StationIDStack next, TileIndex current_tile);
+	uint Load(uint max_move, VehicleCargoList *dest, StationIDStack next, TileIndex current_tile);
 	uint Truncate(uint max_move = UINT_MAX, StationCargoAmountMap *cargo_per_source = nullptr);
 	uint Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);
 
@@ -539,6 +560,7 @@ public:
 		return cp1->source_xy == cp2->source_xy &&
 				cp1->periods_in_transit == cp2->periods_in_transit &&
 				cp1->source_type == cp2->source_type &&
+				cp1->first_station == cp2->first_station &&
 				cp1->source_id == cp2->source_id;
 	}
 };
