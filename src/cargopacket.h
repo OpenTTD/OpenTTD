@@ -63,7 +63,7 @@ public:
 
 	CargoPacket();
 	CargoPacket(StationID first_station, TileIndex source_xy, uint16_t count, SourceType source_type, SourceID source_id);
-	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID source, TileIndex source_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
+	CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, StationID next_station, TileIndex source_xy, Money feeder_share = 0, SourceType source_type = SourceType::Industry, SourceID source_id = INVALID_SOURCE);
 
 	/** Destroy the packet. */
 	~CargoPacket() { }
@@ -422,6 +422,7 @@ public:
 		return cp1->source_xy == cp2->source_xy &&
 				cp1->periods_in_transit == cp2->periods_in_transit &&
 				cp1->source_type == cp2->source_type &&
+				cp1->next_station == cp2->next_station &&
 				cp1->source_id == cp2->source_id;
 	}
 };
@@ -536,6 +537,7 @@ public:
 		return cp1->source_xy == cp2->source_xy &&
 				cp1->periods_in_transit == cp2->periods_in_transit &&
 				cp1->source_type == cp2->source_type &&
+				cp1->next_station == cp2->next_station &&
 				cp1->source_id == cp2->source_id;
 	}
 };
