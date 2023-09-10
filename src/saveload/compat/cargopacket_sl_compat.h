@@ -16,7 +16,7 @@
 const SaveLoadCompat _cargopacket_sl_compat[] = {
 	SLC_VAR("source"),
 	SLC_VAR("source_xy"),
-	SLC_NULL(4, SL_MIN_VERSION, SLV_REMOVE_LOADED_AT_XY),
+	SLC_VAR("loaded_at_xy"),
 	SLC_VAR("count"),
 	SLC_VAR("days_in_transit"),
 	SLC_VAR("feeder_share"),
