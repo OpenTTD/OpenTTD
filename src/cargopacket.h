@@ -403,7 +403,7 @@ public:
 	 * applicable), return value is amount of cargo actually moved. */
 
 	template<MoveToAction Tfrom, MoveToAction Tto>
-	uint Reassign(uint max_move, StationID update = INVALID_STATION);
+	uint Reassign(uint max_move);
 	uint Return(uint max_move, StationCargoList *dest, StationID next_station);
 	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment);
 	uint Shift(uint max_move, VehicleCargoList *dest);

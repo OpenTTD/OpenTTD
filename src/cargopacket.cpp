@@ -533,7 +533,7 @@ void VehicleCargoList::InvalidateCache()
  * @return Amount of cargo actually reassigned.
  */
 template<VehicleCargoList::MoveToAction Tfrom, VehicleCargoList::MoveToAction Tto>
-uint VehicleCargoList::Reassign(uint max_move, StationID)
+uint VehicleCargoList::Reassign(uint max_move)
 {
 	static_assert(Tfrom != MTA_TRANSFER && Tto != MTA_TRANSFER);
 	static_assert(Tfrom - Tto == 1 || Tto - Tfrom == 1);
@@ -547,11 +547,10 @@ uint VehicleCargoList::Reassign(uint max_move, StationID)
  * Reassign cargo from MTA_DELIVER to MTA_TRANSFER and take care of the next
  * station the cargo wants to visit.
  * @param max_move Maximum amount of cargo to reassign.
- * @param next_station Station to record as next hop in the reassigned packets.
  * @return Amount of cargo actually reassigned.
  */
 template<>
-uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_TRANSFER>(uint max_move, StationID next_station)
+uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_TRANSFER>(uint max_move)
 {
 	max_move = std::min(this->action_counts[MTA_DELIVER], max_move);
 
@@ -565,7 +564,7 @@ uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList:
 			sum -= cp_split->Count();
 			this->packets.insert(it, cp_split);
 		}
-		cp->next_station = next_station;
+		cp->next_station = INVALID_STATION;
 	}
 
 	this->action_counts[MTA_DELIVER] -= max_move;
@@ -844,4 +843,4 @@ uint StationCargoList::Reroute(uint max_move, StationCargoList *dest, StationID 
  */
 template class CargoList<VehicleCargoList, CargoPacketList>;
 template class CargoList<StationCargoList, StationCargoPacketMap>;
-template uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_KEEP>(uint, StationID);
+template uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_KEEP>(uint);
