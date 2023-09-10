@@ -204,22 +204,33 @@ void BaseVehicleListWindow::BuildVehicleList()
 	} else {
 		/* Sort by the primary vehicle; we just want all vehicles that share the same orders to form a contiguous range. */
 		std::stable_sort(this->vehicles.begin(), this->vehicles.end(), [](const Vehicle * const &u, const Vehicle * const &v) {
+			if (u->FirstShared() == v->FirstShared()) {
+				return u->cargo_type < v->cargo_type;
+			}
 			return u->FirstShared() < v->FirstShared();
 		});
 
+		for (auto it = this->vehicles.begin(); it != this->vehicles.end(); ++it) {
+			this->vehgroups.emplace_back(it, it + 1);
+		}
+
+		this->FilterVehicleList();
+
 		uint max_num_vehicles = 0;
 
-		VehicleList::const_iterator begin = this->vehicles.begin();
-		while (begin != this->vehicles.end()) {
-			VehicleList::const_iterator end = std::find_if_not(begin, this->vehicles.cend(), [first_shared = (*begin)->FirstShared()](const Vehicle * const &v) {
-				return v->FirstShared() == first_shared;
-			});
+		GUIVehicleGroupList::iterator begin = this->vehgroups.begin();
+		GUIVehicleGroupList::iterator end = begin;
+		std::advance(end, 1);
 
-			this->vehgroups.emplace_back(begin, end);
-
+		while (begin != this->vehgroups.end()) {
+			while (end != this->vehgroups.end() && begin->vehicles_begin[0]->FirstShared() == end->vehicles_begin[0]->FirstShared()) {
+				begin->vehicles_end = end->vehicles_end;
+				end = this->vehgroups.erase(end);
+			}
 			max_num_vehicles = std::max<uint>(max_num_vehicles, static_cast<uint>(end - begin));
 
 			begin = end;
+			std::advance(end, 1);
 		}
 
 		this->unitnumber_digits = CountDigitsForAllocatingSpace(max_num_vehicles);
