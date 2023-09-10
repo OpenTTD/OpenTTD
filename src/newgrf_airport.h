@@ -15,6 +15,7 @@
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
+#include "newgrf_town.h"
 #include "tilearea_type.h"
 
 /** Copy from station_map.h */
@@ -173,14 +174,23 @@ struct AirportScopeResolver : public ScopeResolver {
 /** Resolver object for airports. */
 struct AirportResolverObject : public ResolverObject {
 	AirportScopeResolver airport_scope;
+	std::unique_ptr<TownScopeResolver> town_scope; ///< The town scope resolver (created on the first call).
 
 	AirportResolverObject(TileIndex tile, Station *st, byte airport_id, byte layout,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
+
+	TownScopeResolver *GetTown();
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &this->airport_scope;
+			case VSG_SCOPE_PARENT:
+			{
+				TownScopeResolver *tsr = this->GetTown();
+				if (tsr != nullptr) return tsr;
+				FALLTHROUGH;
+			}
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}

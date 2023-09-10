@@ -44,6 +44,7 @@ struct AirportTileScopeResolver : public ScopeResolver {
 /** Resolver for tiles of an airport. */
 struct AirportTileResolverObject : public ResolverObject {
 	AirportTileScopeResolver tiles_scope; ///< Scope resolver for the tiles.
+	AirportScopeResolver airport_scope;   ///< Scope resolver for the airport owning the tile.
 
 	AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
@@ -52,6 +53,7 @@ struct AirportTileResolverObject : public ResolverObject {
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &tiles_scope;
+			case VSG_SCOPE_PARENT: return &airport_scope;
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
