@@ -14,6 +14,7 @@
 #include "newgrf_text.h"
 #include "station_base.h"
 #include "newgrf_class_func.h"
+#include "town.h"
 
 #include "safeguards.h"
 
@@ -208,6 +209,26 @@ uint32_t AirportResolverObject::GetDebugID() const
 		this->st->airport.psa = new PersistentStorage(grfid, GSF_AIRPORTS, this->st->airport.tile);
 	}
 	this->st->airport.psa->StoreValue(pos, value);
+}
+
+/**
+ * Get the town scope associated with a station, if it exists.
+ * On the first call, the town scope is created (if possible).
+ * @return Town scope, if available.
+ */
+TownScopeResolver *AirportResolverObject::GetTown()
+{
+	if (!this->town_scope) {
+		Town *t = nullptr;
+		if (this->airport_scope.st != nullptr) {
+			t = this->airport_scope.st->town;
+		} else if (this->airport_scope.tile != INVALID_TILE) {
+			t = ClosestTownFromTile(this->airport_scope.tile, UINT_MAX);
+		}
+		if (t == nullptr) return nullptr;
+		this->town_scope.reset(new TownScopeResolver(*this, t, this->airport_scope.st == nullptr));
+	}
+	return this->town_scope.get();
 }
 
 /**
