@@ -28,6 +28,7 @@
 #include "train.h"
 #include "roadveh.h"
 
+#include "newgrf_airport.h"
 #include "newgrf_airporttiles.h"
 #include "newgrf_debug.h"
 #include "newgrf_object.h"
