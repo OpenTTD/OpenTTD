@@ -66,18 +66,8 @@ void ResetRailTypes()
 {
 	static_assert(lengthof(_original_railtypes) <= lengthof(_railtypes));
 
-	uint i = 0;
-	for (; i < lengthof(_original_railtypes); i++) _railtypes[i] = _original_railtypes[i];
-
-	static const RailtypeInfo empty_railtype = {
-		{0,0,0,0,0,0,0,0,0,0,0,0},
-		{0,0,0,0,0,0,0,0,{}},
-		{0,0,0,0,0,0,0,0},
-		{0,0,0,0,0,0},
-		0, RAILTYPES_NONE, RAILTYPES_NONE, 0, 0, 0, RTFB_NONE, 0, 0, 0, 0, 0,
-		RailTypeLabelList(), 0, 0, RAILTYPES_NONE, RAILTYPES_NONE, 0,
-		{}, {} };
-	for (; i < lengthof(_railtypes);          i++) _railtypes[i] = empty_railtype;
+	auto insert = std::copy(std::begin(_original_railtypes), std::end(_original_railtypes), std::begin(_railtypes));
+	std::fill(insert, std::end(_railtypes), RailtypeInfo{});
 
 	_railtypes_hidden_mask = RAILTYPES_NONE;
 }

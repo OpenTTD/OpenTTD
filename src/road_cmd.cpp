@@ -67,17 +67,8 @@ void ResetRoadTypes()
 {
 	static_assert(lengthof(_original_roadtypes) <= lengthof(_roadtypes));
 
-	uint i = 0;
-	for (; i < lengthof(_original_roadtypes); i++) _roadtypes[i] = _original_roadtypes[i];
-
-	static const RoadTypeInfo empty_roadtype = {
-		{ 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, {}, {}, 0, {}, {} },
-		ROADTYPES_NONE, ROTFB_NONE, 0, 0, 0, 0,
-		RoadTypeLabelList(), 0, 0, ROADTYPES_NONE, ROADTYPES_NONE, 0,
-		{}, {} };
-	for (; i < lengthof(_roadtypes);          i++) _roadtypes[i] = empty_roadtype;
+	auto insert = std::copy(std::begin(_original_roadtypes), std::end(_original_roadtypes), std::begin(_roadtypes));
+	std::fill(insert, std::end(_roadtypes), RoadTypeInfo{});
 
 	_roadtypes_hidden_mask = ROADTYPES_NONE;
 	_roadtypes_type        = ROADTYPES_TRAM;
