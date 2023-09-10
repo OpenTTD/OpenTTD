@@ -494,7 +494,7 @@ static const NICallback _nic_airporttiles[] = {
 
 class NIHAirportTile : public NIHelper {
 	bool IsInspectable(uint index) const override        { return AirportTileSpec::Get(GetAirportGfx(index))->grf_prop.grffile != nullptr; }
-	uint GetParent(uint index) const override            { return GetInspectWindowNumber(GSF_FAKE_TOWNS, Station::GetByTile(index)->town->index); }
+	uint GetParent(uint index) const override            { return GetInspectWindowNumber(GSF_AIRPORTS, GetStationIndex(index)); }
 	const void *GetInstance(uint index)const override    { return nullptr; }
 	const void *GetSpec(uint index) const override       { return AirportTileSpec::Get(GetAirportGfx(index)); }
 	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_STATION_NAME, GetStationIndex(index), index); }
@@ -512,6 +512,57 @@ static const NIFeature _nif_airporttile = {
 	_nic_airporttiles,
 	_niv_industrytiles, // Yes, they share this (at least now)
 	new NIHAirportTile(),
+};
+
+
+/*** NewGRF airports ***/
+
+static const NIVariable _niv_airports[] = {
+	NIV(0x40, "Layout number"),
+	NIV(0x48, "bitmask of accepted cargoes"),
+	NIV(0x60, "amount of cargo waiting"),
+	NIV(0x61, "time since last cargo pickup"),
+	NIV(0x62, "rating of cargo"),
+	NIV(0x63, "time spent on route"),
+	NIV(0x64, "information about last vehicle picking cargo up"),
+	NIV(0x65, "amount of cargo acceptance"),
+	NIV(0x69, "information about cargo accepted in the past"),
+	NIV(0xF1, "type of the airport"),
+	NIV(0xF6, "airport block status"),
+	NIV(0xFA, "built date"),
+	NIV_END()
+};
+
+class NIHAiport : public NIHelper {
+	bool IsInspectable(uint index) const override        { return AirportSpec::Get(Station::Get(index)->airport.type)->grf_prop.grffile != nullptr; }
+	uint GetParent(uint index) const override            { return GetInspectWindowNumber(GSF_FAKE_TOWNS, Station::Get(index)->town->index); }
+	const void *GetInstance(uint index)const override    { return Station::Get(index); }
+	const void *GetSpec(uint index) const override       { return AirportSpec::Get(Station::Get(index)->airport.type); }
+	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_STATION_NAME, index, Station::Get(index)->airport.tile); }
+	uint32_t GetGRFID(uint index) const override         { return (this->IsInspectable(index)) ? AirportSpec::Get(Station::Get(index)->airport.type)->grf_prop.grffile->grfid : 0; }
+
+	uint Resolve(uint index, uint var, uint param, bool *avail) const override
+	{
+		Station *st = Station::Get(index);
+		AirportResolverObject ro(st->airport.tile, st, st->airport.type, st->airport.layout);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
+	}
+
+	uint GetPSASize(uint index, uint32_t grfid) const override { return cpp_lengthof(PersistentStorage, storage); }
+
+	const int32_t *GetPSAFirstPosition(uint index, uint32_t grfid) const override
+	{
+		const Station *st = (const Station *)this->GetInstance(index);
+		if (st->airport.psa == nullptr) return nullptr;
+		return (int32_t *)(&st->airport.psa->storage);
+	}
+};
+
+static const NIFeature _nif_airport = {
+	nullptr,
+	nullptr,
+	_niv_airports,
+	new NIHAiport(),
 };
 
 
@@ -680,7 +731,7 @@ static const NIFeature * const _nifeatures[] = {
 	&_nif_industry,     // GSF_INDUSTRIES
 	nullptr,               // GSF_CARGOES (has no "physical" objects)
 	nullptr,               // GSF_SOUNDFX (has no "physical" objects)
-	nullptr,               // GSF_AIRPORTS (feature not implemented)
+	&_nif_airport,      // GSF_AIRPORTS
 	nullptr,               // GSF_SIGNALS (feature not implemented)
 	&_nif_object,       // GSF_OBJECTS
 	&_nif_railtype,     // GSF_RAILTYPES

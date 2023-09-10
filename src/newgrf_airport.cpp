@@ -17,50 +17,6 @@
 
 #include "safeguards.h"
 
-/** Resolver for the airport scope. */
-struct AirportScopeResolver : public ScopeResolver {
-	struct Station *st; ///< Station of the airport for which the callback is run, or \c nullptr for build gui.
-	byte airport_id;    ///< Type of airport for which the callback is run.
-	byte layout;        ///< Layout of the airport to build.
-	TileIndex tile;     ///< Tile for the callback, only valid for airporttile callbacks.
-
-	/**
-	 * Constructor of the scope resolver for an airport.
-	 * @param ro Surrounding resolver.
-	 * @param tile %Tile for the callback, only valid for airporttile callbacks.
-	 * @param st %Station of the airport for which the callback is run, or \c nullptr for build gui.
-	 * @param airport_id Type of airport for which the callback is run.
-	 * @param layout Layout of the airport to build.
-	 */
-	AirportScopeResolver(ResolverObject &ro, TileIndex tile, Station *st, byte airport_id, byte layout)
-			: ScopeResolver(ro), st(st), airport_id(airport_id), layout(layout), tile(tile)
-	{
-	}
-
-	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, uint32_t parameter, bool *available) const override;
-	void StorePSA(uint pos, int32_t value) override;
-};
-
-/** Resolver object for airports. */
-struct AirportResolverObject : public ResolverObject {
-	AirportScopeResolver airport_scope;
-
-	AirportResolverObject(TileIndex tile, Station *st, byte airport_id, byte layout,
-			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
-
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override
-	{
-		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->airport_scope;
-			default: return ResolverObject::GetScope(scope, relative);
-		}
-	}
-
-	GrfSpecFeature GetFeature() const override;
-	uint32_t GetDebugID() const override;
-};
-
 /**
  * Reset airport classes to their default state.
  * This includes initialising the defaults classes with an empty
