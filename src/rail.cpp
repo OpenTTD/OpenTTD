@@ -183,7 +183,7 @@ RailType GetTileRailType(Tile tile)
  * @param railtype requested RailType
  * @return true if company has requested RailType available
  */
-bool HasRailtypeAvail(const CompanyID company, const RailType railtype)
+bool HasRailTypeAvail(const CompanyID company, const RailType railtype)
 {
 	return !HasBit(_railtypes_hidden_mask, railtype) && HasBit(Company::Get(company)->avail_railtypes, railtype);
 }
@@ -193,7 +193,7 @@ bool HasRailtypeAvail(const CompanyID company, const RailType railtype)
  * @param company the company in question
  * @return true if company has any RailTypes available
  */
-bool HasAnyRailtypesAvail(const CompanyID company)
+bool HasAnyRailTypesAvail(const CompanyID company)
 {
 	return (Company::Get(company)->avail_railtypes & ~_railtypes_hidden_mask) != 0;
 }
@@ -203,9 +203,9 @@ bool HasAnyRailtypesAvail(const CompanyID company)
  * @param rail the railtype to check.
  * @return true if the current company may build the rail.
  */
-bool ValParamRailtype(const RailType rail)
+bool ValParamRailType(const RailType rail)
 {
-	return rail < RAILTYPE_END && HasRailtypeAvail(_current_company, rail);
+	return rail < RAILTYPE_END && HasRailTypeAvail(_current_company, rail);
 }
 
 /**
@@ -220,7 +220,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date 
 	RailTypes rts = current;
 
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		const RailtypeInfo *rti = GetRailTypeInfo(rt);
+		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		/* Unused rail type. */
 		if (rti->label == 0) continue;
 
@@ -248,7 +248,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date 
  * @param introduces If true, include rail types introduced by other rail types
  * @return the rail types.
  */
-RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
+RailTypes GetCompanyRailTypes(CompanyID company, bool introduces)
 {
 	RailTypes rts = RAILTYPES_NONE;
 
@@ -312,14 +312,14 @@ RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels)
 {
 	/* Loop through each rail type until the label is found */
 	for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
-		const RailtypeInfo *rti = GetRailTypeInfo(r);
+		const RailTypeInfo *rti = GetRailTypeInfo(r);
 		if (rti->label == label) return r;
 	}
 
 	if (allow_alternate_labels) {
 		/* Test if any rail type defines the label as an alternate. */
 		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
-			const RailtypeInfo *rti = GetRailTypeInfo(r);
+			const RailTypeInfo *rti = GetRailTypeInfo(r);
 			if (std::find(rti->alternate_labels.begin(), rti->alternate_labels.end(), label) != rti->alternate_labels.end()) return r;
 		}
 	}

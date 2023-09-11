@@ -121,7 +121,7 @@ typedef std::vector<RailTypeLabel> RailTypeLabelList;
 /**
  * This struct contains all the info that is needed to draw and construct tracks.
  */
-class RailtypeInfo {
+class RailTypeInfo {
 public:
 	/**
 	 * Struct containing the main sprites. @note not all sprites are listed, but only
@@ -299,11 +299,11 @@ public:
 /**
  * Returns a pointer to the Railtype information for a given railtype
  * @param railtype the rail type which the information is requested for
- * @return The pointer to the RailtypeInfo
+ * @return The pointer to the RailTypeInfo
  */
-static inline const RailtypeInfo *GetRailTypeInfo(RailType railtype)
+static inline const RailTypeInfo *GetRailTypeInfo(RailType railtype)
 {
-	extern RailtypeInfo _railtypes[RAILTYPE_END];
+	extern RailTypeInfo _railtypes[RAILTYPE_END];
 	assert(railtype < RAILTYPE_END);
 	return &_railtypes[railtype];
 }
@@ -355,8 +355,8 @@ static inline bool Rail90DegTurnDisallowed(RailType rt1, RailType rt2, bool def 
 {
 	if (rt1 == INVALID_RAILTYPE || rt2 == INVALID_RAILTYPE) return def;
 
-	const RailtypeInfo *rti1 = GetRailTypeInfo(rt1);
-	const RailtypeInfo *rti2 = GetRailTypeInfo(rt2);
+	const RailTypeInfo *rti1 = GetRailTypeInfo(rt1);
+	const RailTypeInfo *rti2 = GetRailTypeInfo(rt2);
 
 	bool rt1_90deg = HasBit(rti1->flags, RTF_DISALLOW_90DEG) || (!HasBit(rti1->flags, RTF_ALLOW_90DEG) && def);
 	bool rt2_90deg = HasBit(rti2->flags, RTF_DISALLOW_90DEG) || (!HasBit(rti2->flags, RTF_ALLOW_90DEG) && def);
@@ -446,13 +446,13 @@ int TicksToLeaveDepot(const Train *v);
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);
 
 
-bool HasRailtypeAvail(const CompanyID company, const RailType railtype);
-bool HasAnyRailtypesAvail(const CompanyID company);
-bool ValParamRailtype(const RailType rail);
+bool HasRailTypeAvail(const CompanyID company, const RailType railtype);
+bool HasAnyRailTypesAvail(const CompanyID company);
+bool ValParamRailType(const RailType rail);
 
 RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date date);
 
-RailTypes GetCompanyRailtypes(CompanyID company, bool introduces = true);
+RailTypes GetCompanyRailTypes(CompanyID company, bool introduces = true);
 RailTypes GetRailTypes(bool introduces);
 
 RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels = true);

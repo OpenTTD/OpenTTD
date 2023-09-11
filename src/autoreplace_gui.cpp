@@ -357,7 +357,7 @@ public:
 				switch (this->window_number) {
 					case VEH_TRAIN:
 						for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-							const RailtypeInfo *rti = GetRailTypeInfo(rt);
+							const RailTypeInfo *rti = GetRailTypeInfo(rt);
 							/* Skip rail type if it has no label */
 							if (rti->label == 0) continue;
 							d = maxdim(d, GetStringBoundingBox(rti->strings.replace_text));

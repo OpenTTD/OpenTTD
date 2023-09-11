@@ -1313,7 +1313,7 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile_org, flags);
 	if (ret.Failed()) return ret;
 
-	if (!ValParamRailtype(rt) || !IsValidAxis(axis)) return CMD_ERROR;
+	if (!ValParamRailType(rt) || !IsValidAxis(axis)) return CMD_ERROR;
 
 	/* Check if the given station class is valid */
 	if ((uint)spec_class >= StationClass::GetClassCount() || spec_class == STAT_CLASS_WAYP) return CMD_ERROR;
@@ -2924,7 +2924,7 @@ static void DrawTile_Station(TileInfo *ti)
 	DrawTileSprites tmp_rail_layout;
 	const DrawTileSprites *t = nullptr;
 	int32_t total_offset;
-	const RailtypeInfo *rti = nullptr;
+	const RailTypeInfo *rti = nullptr;
 	uint32_t relocation = 0;
 	uint32_t ground_relocation = 0;
 	BaseStation *st = nullptr;
@@ -3213,7 +3213,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	int32_t total_offset = 0;
 	PaletteID pal = COMPANY_SPRITE_COLOUR(_local_company);
 	const DrawTileSprites *t = GetStationTileLayout(st, image);
-	const RailtypeInfo *railtype_info = nullptr;
+	const RailTypeInfo *railtype_info = nullptr;
 
 	if (railtype != INVALID_RAILTYPE) {
 		railtype_info = GetRailTypeInfo(railtype);
@@ -3321,7 +3321,7 @@ void FillTileDescRailStation(TileIndex tile, TileDesc *td)
 		}
 	}
 
-	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	td->rail_speed = rti->max_speed;
 	td->railtype = rti->strings.name;
 }
