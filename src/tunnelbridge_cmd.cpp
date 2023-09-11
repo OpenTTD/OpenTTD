@@ -275,7 +275,7 @@ CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex ti
 
 		case TRANSPORT_RAIL:
 			railtype = (RailType)road_rail_type;
-			if (!ValParamRailtype(railtype)) return CMD_ERROR;
+			if (!ValParamRailType(railtype)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_WATER:
@@ -631,7 +631,7 @@ CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportT
 	switch (transport_type) {
 		case TRANSPORT_RAIL:
 			railtype = (RailType)road_rail_type;
-			if (!ValParamRailtype(railtype)) return CMD_ERROR;
+			if (!ValParamRailType(railtype)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_ROAD:
@@ -1285,7 +1285,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		SpriteID image;
 		SpriteID railtype_overlay = 0;
 		if (transport_type == TRANSPORT_RAIL) {
-			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			image = rti->base_sprites.tunnel;
 			if (rti->UsesOverlay()) {
 				/* Check if the railtype has custom tunnel portals. */
@@ -1354,7 +1354,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				AddSortableSpriteToDraw(catenary_sprite_base + tunnelbridge_direction, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, IsTransparencySet(TO_CATENARY), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
 			}
 		} else {
-			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			if (rti->UsesOverlay()) {
 				SpriteID surface = GetCustomRailSprite(rti, ti->tile, RTSG_TUNNEL);
 				if (surface != 0) DrawGroundSprite(surface + tunnelbridge_direction, PAL_NONE);
@@ -1459,7 +1459,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 			EndSpriteCombine();
 		} else if (transport_type == TRANSPORT_RAIL) {
-			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			if (rti->UsesOverlay()) {
 				SpriteID surface = GetCustomRailSprite(rti, ti->tile, RTSG_BRIDGE);
 				if (surface != 0) {
@@ -1617,7 +1617,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 		/* DrawBridgeRoadBits() calls EndSpriteCombine() and StartSpriteCombine() */
 		DrawBridgeRoadBits(rampsouth, x, y, bridge_z, axis ^ 1, false);
 	} else if (transport_type == TRANSPORT_RAIL) {
-		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(rampsouth));
+		const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(rampsouth));
 		if (rti->UsesOverlay() && !IsInvisibilitySet(TO_BRIDGES)) {
 			SpriteID surface = GetCustomRailSprite(rti, rampsouth, RTSG_BRIDGE, TCX_ON_BRIDGE);
 			if (surface != 0) {
@@ -1744,7 +1744,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 	}
 
 	if (tt == TRANSPORT_RAIL) {
-		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+		const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 		td->rail_speed = rti->max_speed;
 		td->railtype = rti->strings.name;
 

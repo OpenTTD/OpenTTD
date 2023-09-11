@@ -176,7 +176,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
  */
 static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
-	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	SpriteID wires = GetCustomRailSprite(rti, tile, RTSG_WIRES, context);
 	return wires == 0 ? SPR_WIRE_BASE : wires;
 }
@@ -186,7 +186,7 @@ static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NOR
  */
 static inline SpriteID GetPylonBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
-	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	SpriteID pylons = GetCustomRailSprite(rti, tile, RTSG_PYLONS, context);
 	return pylons == 0 ? SPR_PYLON_BASE : pylons;
 }
@@ -633,7 +633,7 @@ void SettingsDisableElrail(int32_t new_value)
 		}
 	}
 
-	for (Company *c : Company::Iterate()) c->avail_railtypes = GetCompanyRailtypes(c->index);
+	for (Company *c : Company::Iterate()) c->avail_railtypes = GetCompanyRailTypes(c->index);
 
 	/* This resets the _last_built_railtype, which will be invalid for electric
 	 * rails. It may have unintended consequences if that function is ever

@@ -4212,7 +4212,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	extern RailtypeInfo _railtypes[RAILTYPE_END];
+	extern RailTypeInfo _railtypes[RAILTYPE_END];
 
 	if (id + numinfo > RAILTYPE_END) {
 		GrfMsg(1, "RailTypeChangeInfo: Rail type {} is invalid, max {}, ignoring", id + numinfo, RAILTYPE_END);
@@ -4223,7 +4223,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 		RailType rt = _cur.grffile->railtype_map[id + i];
 		if (rt == INVALID_RAILTYPE) return CIR_INVALID_ID;
 
-		RailtypeInfo *rti = &_railtypes[rt];
+		RailTypeInfo *rti = &_railtypes[rt];
 
 		switch (prop) {
 			case 0x08: // Label of rail type
@@ -4342,7 +4342,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
-	extern RailtypeInfo _railtypes[RAILTYPE_END];
+	extern RailTypeInfo _railtypes[RAILTYPE_END];
 
 	if (id + numinfo > RAILTYPE_END) {
 		GrfMsg(1, "RailTypeReserveInfo: Rail type {} is invalid, max {}, ignoring", id + numinfo, RAILTYPE_END);
@@ -5929,10 +5929,10 @@ static void RailTypeMapSpriteGroup(ByteReader *buf, uint8_t idcount)
 
 		if (ctype >= RTSG_END) continue;
 
-		extern RailtypeInfo _railtypes[RAILTYPE_END];
+		extern RailTypeInfo _railtypes[RAILTYPE_END];
 		for (auto &railtype : railtypes) {
 			if (railtype != INVALID_RAILTYPE) {
-				RailtypeInfo *rti = &_railtypes[railtype];
+				RailTypeInfo *rti = &_railtypes[railtype];
 
 				rti->grffile[ctype] = _cur.grffile;
 				rti->group[ctype] = _cur.spritegroups[groupid];
@@ -7595,7 +7595,7 @@ static void ParamSet(ByteReader *buf)
 			break;
 
 		case 0x8F: { // Rail track type cost factors
-			extern RailtypeInfo _railtypes[RAILTYPE_END];
+			extern RailTypeInfo _railtypes[RAILTYPE_END];
 			_railtypes[RAILTYPE_RAIL].cost_multiplier = GB(res, 0, 8);
 			if (_settings_game.vehicle.disable_elrails) {
 				_railtypes[RAILTYPE_ELECTRIC].cost_multiplier = GB(res, 0, 8);

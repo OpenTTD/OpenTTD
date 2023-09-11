@@ -2398,7 +2398,7 @@ static void ConDumpRailTypes()
 
 	std::map<uint32_t, const GRFFile *> grfs;
 	for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
-		const RailtypeInfo *rti = GetRailTypeInfo(rt);
+		const RailTypeInfo *rti = GetRailTypeInfo(rt);
 		if (rti->label == 0) continue;
 		uint32_t grfid = 0;
 		const GRFFile *grf = rti->grffile[RTSG_GROUND];

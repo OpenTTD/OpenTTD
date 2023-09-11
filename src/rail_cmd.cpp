@@ -43,7 +43,7 @@
 /** Helper type for lists/vectors of trains */
 typedef std::vector<Train *> TrainList;
 
-RailtypeInfo _railtypes[RAILTYPE_END];
+RailTypeInfo _railtypes[RAILTYPE_END];
 std::vector<RailType> _sorted_railtypes;
 RailTypes _railtypes_hidden_mask;
 
@@ -67,12 +67,12 @@ void ResetRailTypes()
 	static_assert(lengthof(_original_railtypes) <= lengthof(_railtypes));
 
 	auto insert = std::copy(std::begin(_original_railtypes), std::end(_original_railtypes), std::begin(_railtypes));
-	std::fill(insert, std::end(_railtypes), RailtypeInfo{});
+	std::fill(insert, std::end(_railtypes), RailTypeInfo{});
 
 	_railtypes_hidden_mask = RAILTYPES_NONE;
 }
 
-void ResolveRailTypeGUISprites(RailtypeInfo *rti)
+void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 {
 	SpriteID cursors_base = GetCustomRailSprite(rti, INVALID_TILE, RTSG_CURSORS);
 	if (cursors_base != 0) {
@@ -130,7 +130,7 @@ static bool CompareRailTypes(const RailType &first, const RailType &second)
 void InitRailTypes()
 {
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		RailtypeInfo *rti = &_railtypes[rt];
+		RailTypeInfo *rti = &_railtypes[rt];
 		ResolveRailTypeGUISprites(rti);
 		if (HasBit(rti->flags, RTF_HIDDEN)) SetBit(_railtypes_hidden_mask, rt);
 	}
@@ -150,7 +150,7 @@ void InitRailTypes()
 RailType AllocateRailType(RailTypeLabel label)
 {
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		RailtypeInfo *rti = &_railtypes[rt];
+		RailTypeInfo *rti = &_railtypes[rt];
 
 		if (rti->label == 0) {
 			/* Set up new rail type */
@@ -428,7 +428,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlag flags, TileIndex tile, RailType rai
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
+	if (!ValParamRailType(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 
 	Slope tileh = GetTileSlope(tile);
 	TrackBits trackbit = TrackToTrackBits(track);
@@ -878,7 +878,7 @@ static CommandCost CmdRailTrackHelper(DoCommandFlag flags, TileIndex tile, TileI
 {
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 
-	if ((!remove && !ValParamRailtype(railtype)) || !ValParamTrackOrientation(track)) return CMD_ERROR;
+	if ((!remove && !ValParamRailType(railtype)) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (end_tile >= Map::Size() || tile >= Map::Size()) return CMD_ERROR;
 
 	Trackdir trackdir = TrackToTrackdir(track);
@@ -964,7 +964,7 @@ CommandCost CmdRemoveRailroadTrack(DoCommandFlag flags, TileIndex end_tile, Tile
 CommandCost CmdBuildTrainDepot(DoCommandFlag flags, TileIndex tile, RailType railtype, DiagDirection dir)
 {
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
-	if (!ValParamRailtype(railtype) || !IsValidDiagDirection(dir)) return CMD_ERROR;
+	if (!ValParamRailType(railtype) || !IsValidDiagDirection(dir)) return CMD_ERROR;
 
 	Slope tileh = GetTileSlope(tile);
 
@@ -1555,7 +1555,7 @@ CommandCost CmdConvertRail(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 {
 	TileIndex area_end = tile;
 
-	if (!ValParamRailtype(totype)) return CMD_ERROR;
+	if (!ValParamRailType(totype)) return CMD_ERROR;
 	if (area_start >= Map::Size()) return CMD_ERROR;
 
 	TrainList affected_trains;
@@ -1869,7 +1869,7 @@ static uint GetSaveSlopeZ(uint x, uint y, Track track)
 	return GetSlopePixelZ(x, y);
 }
 
-static void DrawSingleSignal(TileIndex tile, const RailtypeInfo *rti, Track track, SignalState condition, SignalOffsets image, uint pos)
+static void DrawSingleSignal(TileIndex tile, const RailTypeInfo *rti, Track track, SignalState condition, SignalOffsets image, uint pos)
 {
 	bool side;
 	switch (_settings_game.construction.train_signal_side) {
@@ -2008,7 +2008,7 @@ static void DrawTrackFence_SW(const TileInfo *ti, SpriteID base_image, uint num_
  * @param ti Tile drawing information.
  * @param rti Rail type information.
  */
-static void DrawTrackDetails(const TileInfo *ti, const RailtypeInfo *rti)
+static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti)
 {
 	/* Base sprite for track fences.
 	 * Note: Halftile slopes only have fences on the upper part. */
@@ -2070,7 +2070,7 @@ static inline void DrawTrackSprite(SpriteID sprite, PaletteID pal, const TileInf
 	DrawGroundSprite(sprite, pal, nullptr, 0, (ti->tileh & s) ? -8 : 0);
 }
 
-static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeInfo *rti)
+static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeInfo *rti)
 {
 	RailGroundType rgt = GetRailGroundType(ti->tile);
 	Foundation f = GetRailFoundation(ti->tileh, track);
@@ -2237,7 +2237,7 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeIn
  */
 static void DrawTrackBits(TileInfo *ti, TrackBits track)
 {
-	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 
 	if (rti->UsesOverlay()) {
 		DrawTrackBitsOverlay(ti, track, rti);
@@ -2386,7 +2386,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 	}
 }
 
-static void DrawSignals(TileIndex tile, TrackBits rails, const RailtypeInfo *rti)
+static void DrawSignals(TileIndex tile, TrackBits rails, const RailTypeInfo *rti)
 {
 #define MAYBE_DRAW_SIGNAL(x, y, z, t) if (IsSignalPresent(tile, x)) DrawSingleSignal(tile, rti, t, GetSingleSignalState(tile, x), y, z)
 
@@ -2420,7 +2420,7 @@ static void DrawSignals(TileIndex tile, TrackBits rails, const RailtypeInfo *rti
 
 static void DrawTile_Track(TileInfo *ti)
 {
-	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 
 	_drawtile_track_palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
@@ -2542,7 +2542,7 @@ static void DrawTile_Track(TileInfo *ti)
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 {
 	const DrawTileSprites *dts = &_depot_gfx_table[dir];
-	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
+	const RailTypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID image = rti->UsesOverlay() ? SPR_FLAT_GRASS_TILE : dts->ground.sprite;
 	uint32_t offset = rti->GetRailtypeSpriteOffset();
 
@@ -2781,7 +2781,7 @@ static bool ClickTile_Track(TileIndex tile)
 
 static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 {
-	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	td->rail_speed = rti->max_speed;
 	td->railtype = rti->strings.name;
 	td->owner[0] = GetTileOwner(tile);

@@ -768,7 +768,7 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex)
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station)
 {
 	const DrawTileSprites *sprites = nullptr;
-	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
+	const RailTypeInfo *rti = GetRailTypeInfo(railtype);
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 	uint tile = 2;
 

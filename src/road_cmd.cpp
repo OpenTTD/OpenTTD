@@ -1687,7 +1687,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			Axis axis = GetCrossingRailAxis(ti->tile);
 
-			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 
 			RoadType road_rt = GetRoadTypeRoad(ti->tile);
 			RoadType tram_rt = GetRoadTypeTram(ti->tile);
@@ -2174,7 +2174,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 			td->str = STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING;
 			rail_owner = GetTileOwner(tile);
 
-			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 			td->railtype = rti->strings.name;
 			td->rail_speed = rti->max_speed;
 

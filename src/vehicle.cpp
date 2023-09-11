@@ -1835,7 +1835,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, byte subtype)
 	UnitID max;
 	switch (type) {
 		case VEH_TRAIN:
-			if (!HasAnyRailtypesAvail(_local_company)) return false;
+			if (!HasAnyRailTypesAvail(_local_company)) return false;
 			max = _settings_game.vehicle.max_trains;
 			break;
 		case VEH_ROAD:

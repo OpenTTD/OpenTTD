@@ -1413,7 +1413,7 @@ bool AfterLoadGame()
 	}
 
 	for (Company *c : Company::Iterate()) {
-		c->avail_railtypes = GetCompanyRailtypes(c->index);
+		c->avail_railtypes = GetCompanyRailTypes(c->index);
 		c->avail_roadtypes = GetCompanyRoadTypes(c->index);
 	}
 
