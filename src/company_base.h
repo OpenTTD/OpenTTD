@@ -42,9 +42,7 @@ struct CompanyInfrastructure {
 	/** Get total sum of all owned track bits. */
 	uint32_t GetRailTotal() const
 	{
-		uint32_t total = 0;
-		for (RailType rt =  RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) total += this->rail[rt];
-		return total;
+		return std::accumulate(std::begin(this->rail), std::end(this->rail), 0U);
 	}
 
 	uint32_t GetRoadTotal() const;
