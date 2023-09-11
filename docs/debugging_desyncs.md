@@ -53,4 +53,7 @@ Do NOT remove the dmp_cmds savegames of a desync you have reported until the
 desync has been fixed; if you, by accident, send us the wrong savegames we
 will not be able to reproduce the desync and thus will be unable to fix it.
 
+## More information
 
+You can find more theory on the causes and debugging of desyncs in the
+[desync documentation](./desync.md).

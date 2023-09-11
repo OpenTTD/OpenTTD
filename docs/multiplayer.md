@@ -193,6 +193,9 @@ If it is, and your server still isn't showing up, start OpenTTD with
 `-d net=4` as extra argument. This will show debug message related to the
 network, including communication to/from the Game Coordinator.
 
+See the [Game Coordinator documentation](./game_coordinator.md) for more
+technical information about the Game Coordinator service.
+
 ### My server warns a lot about getaddrinfo taking N seconds
 
 This could be a transient issue with your (local) DNS server, but if the

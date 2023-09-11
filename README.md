@@ -11,9 +11,10 @@
     - 1.6) [OpenTTD directories](#16-openttd-directories)
     - 1.7) [Compiling OpenTTD](#17-compiling-openttd)
 - 2.0) [Contact and community](#20-contact-and-community)
-    - 2.1) [Contributing to OpenTTD](#21-contributing-to-openttd)
-    - 2.2) [Reporting bugs](#22-reporting-bugs)
-    - 2.3) [Translating](#23-translating)
+    - 2.1) [Multiplayer games](#21-multiplayer-games)
+    - 2.2) [Contributing to OpenTTD](#22-contributing-to-openttd)
+    - 2.3) [Reporting bugs](#23-reporting-bugs)
+    - 2.4) [Translating](#24-translating)
 - 3.0) [Licensing](#30-licensing)
 - 4.0) [Credits](#40-credits)
 
@@ -144,12 +145,19 @@ If you want to compile OpenTTD from source, instructions can be found in [COMPIL
 - the OpenTTD wiki has a [page listing OpenTTD communities](https://wiki.openttd.org/en/Community/Community) including some in languages other than English
 
 
-### 2.1) Contributing to OpenTTD
+### 2.1) Multiplayer games
+
+You can play OpenTTD with others, either cooperatively or competitively.
+
+See the [multiplayer documentation](./docs/multiplayer.md) for more details.
+
+
+### 2.2) Contributing to OpenTTD
 
 We welcome contributors to OpenTTD.  More information for contributors can be found in [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 
-### 2.2) Reporting bugs
+### 2.3) Reporting bugs
 
 Good bug reports are very helpful.  We have a [guide to reporting bugs](./CONTRIBUTING.md#bug-reports) to help with this.
 
@@ -157,7 +165,7 @@ Desyncs in multiplayer are complex to debug and report (some software developmen
 Instructions can be found in [debugging and reporting desyncs](./docs/debugging_desyncs.md).
 
 
-### 2.3) Translating
+### 2.4) Translating
 
 OpenTTD is translated into many languages.  Translations are added and updated via the [online translation tool](https://translator.openttd.org).
 
