@@ -1425,6 +1425,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :niciunul
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :redus
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permite treceri la nivel cu drumuri sau șine deținute de concurenți: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permite construirea de treceri la nivel pe drumuri sau șine deținute de concurenți
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite construirea stațiilor pe drumurile deținute de orașe: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construirea de stații pe drumurile aflate în proprietatea orașelor
@@ -1896,8 +1898,8 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite ca ora�
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Orașele au voie să construiască treceri la nivel cu calea ferată: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Dacă este activată, orașele vor putea să construiască treceri la nivel cu calea ferată
 
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permite controlarea nivelului de zgomot al aeroportului de către oras: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Dacă această opțiune este dezactivată, pot exista două aeroporturi în fiecare oraș. Când opțiunea este activată, numărul de aeroporturi este limitat de nivelul de zgomot acceptat de oraș, care depinde de populație, mărimea aeroportului și distanța față de oraș
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limitează amplasarea aeroportului în funcție de nivelul de zgomot: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Permiteți orașelor să blocheze construcția aeroportului pe baza nivelului de acceptare a zgomotului, care se bazează pe populația orașului și pe dimensiunea și distanța aeroportului. Dacă această setare este dezactivată, orașele permit doar două aeroporturi, cu excepția cazului în care atitudinea autorităților locale este setată la „Permisiv”.
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Crearea oraşelor în joc: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Dacă este activată, jucătorii pot fonda noi orașe în joc
@@ -2650,6 +2652,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Comută 
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Comută transparenţa pentru poduri. Ctrl+Click pentru blocare
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comută transparenţa pentru structuri de tip faruri şi antene. Ctrl+Click pentru blocare
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comută transparenţa pentru catenar. Ctrl+Click pentru blocare
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Comută transparența textului pentru încărcare și cost/venit. Ctrl+Clic pentru a bloca
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setează obiectele ca invizibile în loc de transparente
 
 # Linkgraph legend window

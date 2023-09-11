@@ -1426,6 +1426,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normaal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Gelijkvloerse kruisingen met wegen of spoorwegen van tegenstanders toestaan: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Bouwen van gelijkvloerse kruisingen met wegen of spoorwegen van tegenstanders toestaan
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Doorrijhaltes op stedelijke wegen toestaan: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Bouwen van doorrijhaltes op stedelijke wegen toestaan

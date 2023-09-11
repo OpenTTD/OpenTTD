@@ -538,12 +538,12 @@ STR_ABBREV_ALL                                                  :+
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}pasażer{P "" ów ów}
 STR_BAGS                                                        :{COMMA}{NBSP}wor{P ek ki ków}
-STR_BAGS.d                                                      :{COMMA} worków
-STR_BAGS.c                                                      :{COMMA} workom
-STR_BAGS.b                                                      :{COMMA} worki
-STR_BAGS.n                                                      :{COMMA} workami
-STR_BAGS.m                                                      :{COMMA} workach
-STR_BAGS.w                                                      :{COMMA} worki
+STR_BAGS.d                                                      :{COMMA}{NBSP}worków
+STR_BAGS.c                                                      :{COMMA}{NBSP}workom
+STR_BAGS.b                                                      :{COMMA}{NBSP}worki
+STR_BAGS.n                                                      :{COMMA}{NBSP}workami
+STR_BAGS.m                                                      :{COMMA}{NBSP}workach
+STR_BAGS.w                                                      :{COMMA}{NBSP}worki
 STR_TONS                                                        :{COMMA}{NBSP}ton{P a y ""}
 STR_LITERS                                                      :{COMMA}{NBSP}litr{P "" y ów}
 STR_ITEMS                                                       :{COMMA}{NBSP}sztuk{P a i ""}
@@ -1806,6 +1806,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Brak*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Zredukowana
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalna
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Pozwól na skrzyżowania dróg z torami kolejowymi należącymi do konkurentów: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Pozwala budować przejazdy kolejowe przez drogi lub tory należące do konkurentów
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Pozwól na budowę przystanków przelotowych na drogach miejskich: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Pozwalaj budować przystanki przelotowe na drogach będących własnością miast
@@ -5179,7 +5181,7 @@ STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Należy 
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nie można wyczyścić terenu...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... niewłaściwa parcela
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... już zbudowano
-STR_ERROR_OWNED_BY                                              :{WHITE}... w posiadaniu {STRING}
+STR_ERROR_OWNED_BY                                              :{WHITE}... własność {STRING.d}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... teren jest własnością innej firmy
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... osiągnięto limit kształtowania terenu
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... osiągnięto limit czyszczenia pól
@@ -6031,6 +6033,12 @@ STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar {STATION
 STR_UNKNOWN_STATION                                             :Nieznana stacja
 STR_DEFAULT_SIGN_NAME                                           :Napis
 STR_COMPANY_SOMEONE                                             :ktoś
+STR_COMPANY_SOMEONE.d                                           :kogoś
+STR_COMPANY_SOMEONE.c                                           :komuś
+STR_COMPANY_SOMEONE.b                                           :kogoś
+STR_COMPANY_SOMEONE.n                                           :kimś
+STR_COMPANY_SOMEONE.m                                           :kimś
+STR_COMPANY_SOMEONE.w                                           :ktoś
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Obserwator, {1:STRING}
