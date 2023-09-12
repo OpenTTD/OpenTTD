@@ -90,7 +90,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		0,
 
 		/* rail type label */
-		'RAIL',
+		RAILTYPE_RAIL_LABEL,
 
 		/* alternate labels */
 		RailTypeLabelList(),
@@ -191,7 +191,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		0,
 
 		/* rail type label */
-		'ELRL',
+		RAILTYPE_ELECTRIC_LABEL,
 
 		/* alternate labels */
 		RailTypeLabelList(),
@@ -288,7 +288,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		0,
 
 		/* rail type label */
-		'MONO',
+		RAILTYPE_MONO_LABEL,
 
 		/* alternate labels */
 		RailTypeLabelList(),
@@ -385,7 +385,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		0,
 
 		/* rail type label */
-		'MGLV',
+		RAILTYPE_MAGLEV_LABEL,
 
 		/* alternate labels */
 		RailTypeLabelList(),
