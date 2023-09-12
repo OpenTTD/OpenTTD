@@ -1427,6 +1427,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducerad
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Tillåt korsningar med vägar och räls ägda av andra företag: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Tillåt konstruktion av korsningar på vägar och järnvägar som ägs av motståndare
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfartshållplatser på vägar som ägs av städer: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfartshållplatser på vägar som ägs av städer
