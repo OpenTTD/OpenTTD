@@ -107,7 +107,7 @@ bool CargoDelivery::operator()(CargoPacket *cp)
 {
 	uint remove = this->Preprocess(cp);
 	this->source->RemoveFromMeta(cp, VehicleCargoList::MTA_DELIVER, remove);
-	this->payment->PayFinalDelivery(cp, remove);
+	this->payment->PayFinalDelivery(cp, remove, this->current_tile);
 	return this->Postprocess(cp, remove);
 }
 
@@ -120,6 +120,7 @@ bool CargoLoad::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) return false;
+	cp_new->SetSourceXY(this->current_tile);
 	this->source->RemoveFromCache(cp_new, cp_new->Count());
 	this->destination->Append(cp_new, VehicleCargoList::MTA_KEEP);
 	return cp_new == cp;
@@ -134,6 +135,7 @@ bool CargoReservation::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) return false;
+	cp_new->SetSourceXY(this->current_tile);
 	this->source->reserved_count += cp_new->Count();
 	this->source->RemoveFromCache(cp_new, cp_new->Count());
 	this->destination->Append(cp_new, VehicleCargoList::MTA_LOAD);

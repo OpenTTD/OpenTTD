@@ -38,10 +38,11 @@ public:
 /** Action of final delivery of cargo. */
 class CargoDelivery : public CargoRemoval<VehicleCargoList> {
 protected:
+	TileIndex current_tile; ///< Current tile cargo delivery is happening.
 	CargoPayment *payment; ///< Payment object where payments will be registered.
 public:
-	CargoDelivery(VehicleCargoList *source, uint max_move, CargoPayment *payment) :
-			CargoRemoval<VehicleCargoList>(source, max_move), payment(payment) {}
+	CargoDelivery(VehicleCargoList *source, uint max_move, CargoPayment *payment, TileIndex current_tile) :
+			CargoRemoval<VehicleCargoList>(source, max_move), current_tile(current_tile), payment(payment) {}
 	bool operator()(CargoPacket *cp);
 };
 
@@ -77,17 +78,19 @@ public:
 
 /** Action of loading cargo from a station onto a vehicle. */
 class CargoLoad : public CargoMovement<StationCargoList, VehicleCargoList> {
+protected:
+	TileIndex current_tile; ///< Current tile cargo loading is happening.
 public:
-	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move) :
-			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move) {}
+	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex current_tile) :
+			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move), current_tile(current_tile) {}
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of reserving cargo from a station to be loaded onto a vehicle. */
 class CargoReservation : public CargoLoad {
 public:
-	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move) :
-			CargoLoad(source, destination, max_move) {}
+	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex current_tile) :
+			CargoLoad(source, destination, max_move, current_tile) {}
 	bool operator()(CargoPacket *cp);
 };
 
