@@ -1026,7 +1026,15 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 	int count_width = 0;
 	if (show_count) {
 		replace_icon = GetSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
-		SetDParamMaxDigits(0, 3, FS_SMALL);
+
+		uint biggest_num_engines = 0;
+		for (auto i = min; i < max; i++) {
+			const auto &item = eng_list[i];
+			const uint num_engines = GetGroupNumEngines(_local_company, selected_group, item.engine_id);
+			biggest_num_engines = std::max(biggest_num_engines, num_engines);
+		}
+
+		SetDParam(0, biggest_num_engines);
 		count_width = GetStringBoundingBox(STR_JUST_COMMA, FS_SMALL).width;
 	}
 
