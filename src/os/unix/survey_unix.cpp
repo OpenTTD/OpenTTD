@@ -9,7 +9,8 @@
 
 #include "../../stdafx.h"
 
-#include <nlohmann/json.hpp>
+#include "../../3rdparty/nlohmann/json.hpp"
+
 #include <sys/utsname.h>
 #include <thread>
 #include <unistd.h>

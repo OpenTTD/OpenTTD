@@ -18,9 +18,9 @@
 #include "../script/squirrel.hpp"
 
 #include "../3rdparty/fmt/format.h"
+#include "../3rdparty/nlohmann/json.hpp"
 
 #include <squirrel.h>
-#include <nlohmann/json.hpp>
 
 /**
  * A controller to start enough so we can use Squirrel for testing.

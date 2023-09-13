@@ -75,8 +75,6 @@ jobs:
           libpng:arm64-osx \
           lzo:x64-osx \
           lzo:arm64-osx \
-          nlohmann-json:x64-osx \
-          nlohmann-json:arm64-osx \
           zlib:x64-osx \
           zlib:arm64-osx \
           # EOF

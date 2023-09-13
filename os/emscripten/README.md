@@ -4,7 +4,6 @@ Please use docker with the supplied `Dockerfile` to build for emscripten.
 It takes care of a few things:
 - Use a version of emscripten we know works
 - Patch in LibLZMA support (as this is not supported by upstream)
-- Patch in nlohmann-json support (as this is not supported by upstream)
 
 First, build the docker image by navigating in the folder this `README.md` is in, and executing:
 ```
