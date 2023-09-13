@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Lista ultimelor
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Șterge toate mesajele
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informaţii despre teren
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Consolă pornit/oprit
@@ -2164,6 +2164,8 @@ STR_QUIT_NO                                                     :{BLACK}Nu
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ieșire din joc
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sigur vrei să renunți la acest joc?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Sigur vrei să renunți la acest scenariu?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheat-uri
@@ -4703,7 +4705,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Încadre
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Listă modificări
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenţă
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}, fișier readme al {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}, lista de modificări a {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}, licența fișierului {STRING}

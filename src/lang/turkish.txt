@@ -522,7 +522,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaj geçmişi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Tüm mesajları sil
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolu aç/kapa
@@ -2164,6 +2164,8 @@ STR_QUIT_NO                                                     :{BLACK}Hayır
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Oyunu Terk Et
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bu oyunu terk etmek istediğinize emin misiniz?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryoyu terk etmek istediğinize emin misiniz?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Hileler
@@ -4703,7 +4705,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Metni, o
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Benioku dosyasını göster
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Değişiklik kayıtları
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisans
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} adlı {STRING}'nin benioku dosyası
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} adlı {STRING}'nin değişiklik kaydı
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} adlı {STRING}'nin lisansı

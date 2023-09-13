@@ -629,7 +629,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія 
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Видалити всі повідомлення
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Інформація про ділянку
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
@@ -2255,6 +2255,8 @@ STR_QUIT_NO                                                     :{BLACK}Ні
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Покинути гру
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ви дійсно хочете покинути гру?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ви дійсно бажаєте вийти з цього сценарію?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Гратиму нечесно
@@ -4784,7 +4786,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Розм
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Інструкція
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Зміни
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцензія
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ліцензія до {STRING} {STRING}

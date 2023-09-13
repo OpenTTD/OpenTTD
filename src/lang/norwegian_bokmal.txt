@@ -496,7 +496,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidligere meldi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Slett alle meldinger
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll
@@ -2076,6 +2076,8 @@ STR_QUIT_NO                                                     :{BLACK}Nei
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Avslutt spill
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på at du vil avslutte dette spillet?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du sikker på at du vil forlate dette scenariet?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juksekoder
@@ -4552,7 +4554,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Bryt tek
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se på hjelpefilen
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Endringslogg
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisens
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} hjelpefil til {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} endringslogg til {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisens til {STRING}

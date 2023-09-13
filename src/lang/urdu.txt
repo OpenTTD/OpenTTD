@@ -456,7 +456,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :پچھلا پی
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخِ پیغامات
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :زمینی رقبہ کی معلومات
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :حائطھ تدویم
@@ -1565,6 +1565,8 @@ STR_QUIT_NO                                                     :{BLACK}نہیں
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}کھیل چھوڑ دو
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا آپ کو یقین ہے کہ آپ اس کھیل کو چھوڑنا چاہ رہے ہیں؟
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}کیا آپ کو یقین ہے کہ آپ اس scenario کو چھوڑنا چاہ رہے ہیں؟
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}دھوکے
@@ -2736,7 +2738,7 @@ STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کھی�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}مجھے پڑھیے فائل دیکھیں
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}تبدیلیوں کا ریکارڈ
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}لائسنس
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} میں سے {STRING} مجھے پڑھیے
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} میں سے {STRING} تبدیلی کا ریکارڈ
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} میں سے {STRING} لائسنس

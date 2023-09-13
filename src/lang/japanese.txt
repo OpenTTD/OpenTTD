@@ -504,7 +504,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :メッセージ
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :メッセージをすべて削除
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :地域情報
 STR_ABOUT_MENU_SEPARATOR                                        :―――――――――――――――――
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :コンソールの表示切替
@@ -2130,6 +2130,8 @@ STR_QUIT_NO                                                     :{BLACK}いい�
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ゲームを放棄
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}このゲームを終了してもよろしいですか?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}このシナリオを終了してもよろしいですか?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}チート
@@ -4651,7 +4653,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}ウィ�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readmeを見る
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}変更履歴を見る
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}ライセンス
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}のReadme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}の変更履歴
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}のライセンス

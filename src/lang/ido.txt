@@ -346,7 +346,7 @@ STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Livrita kargajo
 ###length 3
 
 # About menu
-###length 10
+###length 11
 
 # Place in highscore window
 ###length 15
@@ -826,6 +826,8 @@ STR_QUIT_YES                                                    :{BLACK}Yes
 STR_QUIT_NO                                                     :{BLACK}Ne
 
 # Abandon game
+
+# Help window
 
 # Cheat window
 
@@ -1468,7 +1470,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-###length 4
+###length 5
 
 
 # Vehicle loading indicators

@@ -491,7 +491,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :הודעה אח
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :היסטורית הודעות
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :מידע על שטח קרקע
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :פתח/סגור קונסולה
@@ -1995,6 +1995,8 @@ STR_QUIT_NO                                                     :{BLACK}לא
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}עזיבת משחק
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}?האם אתה בטוח שברצונך לעזוב את המשחק
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}האם אתה בטוח שברצונך לצאת משלב זה?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}(cheats) טריקים
@@ -4330,7 +4332,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}אפשר
 STR_TEXTFILE_VIEW_README                                        :{BLACK}צפה ב-"קרא אותי"
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}רשימת שינויים
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}רשיון
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "קרא אותי" של {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} רשימת שינויים של {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} רשיון של {STRING}

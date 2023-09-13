@@ -522,7 +522,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :과거 메시�
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :모든 뉴스 메시지 삭제
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :지형 정보
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
@@ -2164,6 +2164,8 @@ STR_QUIT_NO                                                     :{BLACK}아니�
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}게임 그만하기
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}정말 이 게임을 종료하고 메인으로 이동하시겠습니까?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}정말 이 시나리오를 종료하시겠습니까?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}치트
@@ -4702,7 +4704,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}본문 �
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme 보기
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}변경기록
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}저작권
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}의 Readme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}의 변경기록
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}의 저작권

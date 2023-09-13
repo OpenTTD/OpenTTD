@@ -170,7 +170,7 @@ STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्य
 ###length 3
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_SEPARATOR                                        :
 
 # Place in highscore window
@@ -636,6 +636,8 @@ STR_QUIT_YES                                                    :{BLACK}हा�
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}खेल छोड़ें
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}क्या आप वास्तव में खेल छोड़ना चाहते हैं?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}क्या आप वास्तव में यह परिदृश्य छोड़ना चाहते हैं?
+
+# Help window
 
 # Cheat window
 
@@ -1272,7 +1274,7 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 
 
 # Textfile window
-###length 4
+###length 5
 
 
 # Vehicle loading indicators

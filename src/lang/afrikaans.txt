@@ -483,7 +483,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Boodskapgeskied
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Vee alle boodskappe uit
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terreininligting
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skakel terminaal
@@ -1972,6 +1972,8 @@ STR_QUIT_NO                                                     :{BLACK}Nee
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Verlaat Spel
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Is jy seker jy wil die speletjie verlaat?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Is jy seker jy wil die scenario verlaat?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Kullery
@@ -4285,7 +4287,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Omvou di
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Besigtig readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Veranderinge-log
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensie
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme van {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} veranderinge-log van {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisensie van {STRING}

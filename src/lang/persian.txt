@@ -465,7 +465,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :گزارش آخ
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخچه پیام ها
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :اطلاعات زمین ها
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :باز و بسته کردن کنسول
@@ -1674,6 +1674,8 @@ STR_QUIT_NO                                                     :{BLACK}خیر
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}رها کردن بازی
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا مطمئن هستی که میخواهی این بازی را از بین ببری؟
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}آیا مطمئنید که می خواهید این سناریو را رها کنید؟
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}تقلبها
@@ -3484,7 +3486,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}متن �
 STR_TEXTFILE_VIEW_README                                        :{BLACK}مشاهده راهنما
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}گزارش تغییر
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}گواهی
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}راهنمای {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} گزارش تغییرات {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} گواهی {STRING}

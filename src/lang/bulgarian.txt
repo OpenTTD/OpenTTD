@@ -475,7 +475,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :История 
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Изтрий всички съобщения
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Информация за терена
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Показване/скриване на конзола
@@ -1903,6 +1903,8 @@ STR_QUIT_NO                                                     :{BLACK}Не
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Прекъсване на играта
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Искате ли да прекъснете играта?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Искате ли да прекъснете сценария?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Кодове
@@ -4114,7 +4116,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Реор
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Отвори readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Дневник на промените
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лиценз
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme of {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Дневник на промените на {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лиценз на {STRING}

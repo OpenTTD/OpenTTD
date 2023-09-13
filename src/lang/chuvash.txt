@@ -281,7 +281,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Сасӑ/Юрӑ
 ###length 3
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_SCREENSHOT                                       :Экран сӑнӗ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' çинчен
@@ -881,6 +881,8 @@ STR_QUIT_NO                                                     :{BLACK}Ҫук
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Вӑййи ан килӗш
+
+# Help window
 
 # Cheat window
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Тӳрлет кун: {ORANGE}{DATE_SHORT}
@@ -1607,7 +1609,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-###length 4
+###length 5
 
 
 # Vehicle loading indicators

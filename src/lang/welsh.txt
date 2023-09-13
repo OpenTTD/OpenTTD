@@ -482,7 +482,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Neges/Adroddiad
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Hanes negeseuon
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gwybodaeth ardal tir
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglu Consol
@@ -1998,6 +1998,8 @@ STR_QUIT_NO                                                     :{BLACK}Na
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Rhoi'r gorau i Gêm
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ydych chi'n siwr eich bod chi eisiau rhoi'r gorau i'r gêm?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ydych chi'n siwr eich bod chi eisiau gadael y senario hwn?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Twyllo
@@ -4303,7 +4305,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Amlapio 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Gweld dogfenyddiaeth
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log Newidiadau
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Trwydded
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Dogfenyddiaeth {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Log newidiadau {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Trwydded {STRING} {STRING}

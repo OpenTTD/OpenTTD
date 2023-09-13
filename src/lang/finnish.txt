@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Viestihistoria
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Poista kaikki viestit
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-alueen tiedot
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsoli
@@ -2165,6 +2165,8 @@ STR_QUIT_NO                                                     :{BLACK}Ei
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Pelin lopetus
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Lopetetaanko peli?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Haluatko varmasti hylätä tämän skenaarion?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Huijaukset
@@ -4704,7 +4706,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Rivitä 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Näytä readme-tiedosto
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Muutosloki
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisenssi
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}:n {STRING} readme-tiedosto
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}:n {STRING} muutosloki
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}:n {STRING} lisenssi

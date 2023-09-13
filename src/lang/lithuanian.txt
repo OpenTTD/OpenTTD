@@ -694,7 +694,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Žinučių isto
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Pašalinti visas žinutes
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Žemės ploto informacija
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Perjungti konsolę
@@ -2303,6 +2303,8 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Palikti Žaidimą
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ar tikrai norite išeiti iš žaidimo?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ar tikrai norite išeiti iš šio scenarijaus?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Sukčiavimai
@@ -4824,7 +4826,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Skaidyti
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Peržiūrėti SKAITYKMANE
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Pasikeitimai
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencija
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} aprašymas {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} pasikeitimai {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licencija {STRING}

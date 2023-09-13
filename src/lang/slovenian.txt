@@ -628,7 +628,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Zadnje sporoči
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Zgodovina sporočil
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacije o terenu
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vklopi/Izklopi konzolo
@@ -2095,6 +2095,8 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Zapusti igro
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Zagotovo želiš zapustiti igro?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Zagotovo želiš zapustiti ta scenarij?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Goljufije
@@ -4310,7 +4312,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Prilagod
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Prikaži preberi-me datoteko
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Zamenjaj dnevnik
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenca
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} preberi-me od {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} zamenjaj dnevnik od {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licenca od {STRING}

@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Thông báo cũ
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Xoá tất cả thông điệp
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Thông tin vùng đất
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
@@ -2165,6 +2165,8 @@ STR_QUIT_NO                                                     :{BLACK}Không �
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Bỏ Màn Chơi
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn bỏ màn chơi này không?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bạn có chắc bạn muốn bỏ màn chơi kịch bản này?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
@@ -4704,7 +4706,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ép ch�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Xem readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lịch sử thay đổi
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Giấy phép
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Readme của {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lịch sử thay đổi của {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Giấy phép của {STRING} {STRING}

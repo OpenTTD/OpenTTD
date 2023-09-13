@@ -470,7 +470,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Azken mezua/alb
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mezuen historia
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Lur arearen informazioa
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsola aktibatu
@@ -1861,6 +1861,8 @@ STR_QUIT_NO                                                     :{BLACK}Ez
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Jokoa Utzi
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ziur zaude joko hau utzi nahi duzula?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Seguru al zaude eszenario hau utzi nahi duzula?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trukoak
@@ -4035,7 +4037,7 @@ STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Testua t
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ikusi "irakur nazazu"
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Aldaketak
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizentzia
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} ren "irakur nazazu" artxiboa
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}-aren aldaketak
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} rako lizentzia

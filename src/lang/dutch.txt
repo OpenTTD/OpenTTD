@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berichtengeschi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Alle berichten verwijderen
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatie
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Console in-uitschakelen
@@ -2165,6 +2165,8 @@ STR_QUIT_NO                                                     :{BLACK}Nee
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spel sluiten
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Weet je zeker dat je dit spel wilt sluiten?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Weet je zeker dat je dit scenario wilt sluiten?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Valsspelen
@@ -4704,7 +4706,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Tekst aa
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Leesmij-bestand bekijken
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Wijzigingen
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licentie
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} leesmij van {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} wijzigingen van {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licentie van {STRING}

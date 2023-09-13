@@ -315,7 +315,7 @@ STR_FILE_MENU_SEPARATOR                                         :
 ###length 3
 
 # About menu
-###length 10
+###length 11
 
 # Place in highscore window
 ###length 15
@@ -751,6 +751,8 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 # Quit window
 
 # Abandon game
+
+# Help window
 
 # Cheat window
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ibdel is-sena
@@ -1340,7 +1342,7 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Исчи
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Прикажи ги чита-ми
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Промени се најавите
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лиценца
-###length 4
+###length 5
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лиценца за {STRING}
 
 

@@ -900,7 +900,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Poprzednie wiad
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Usuń wszystkie wiadomości
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacje o terenie
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
@@ -2545,6 +2545,8 @@ STR_QUIT_NO                                                     :{BLACK}Nie
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Wyjście
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Czy na pewno chcesz porzucić tę rozgrywkę?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy na pewno chcesz porzucić ten scenariusz?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Oszustwa
@@ -5090,7 +5092,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zawiń t
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Odczytaj plik „readme”
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista zmian
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencja
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} - plik „readme”
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} - lista zmian
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} - licencja

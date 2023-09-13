@@ -504,7 +504,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berita Lampau
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Hapus semua pesan
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi area daratan
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Hidup/matikan Layar Konsol
@@ -2132,6 +2132,8 @@ STR_QUIT_NO                                                     :{BLACK}Tidak
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Tinggalkan Permainan
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah anda yakin untuk meninggalkan permainan?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apakah anda yakin untuk mengabaikan skenario ini ?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Kode Curang
@@ -4662,7 +4664,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Mengebat
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Catatan Perubahan
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensi
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}keterangan {STRING} dari {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Catatan perubahan {STRING} dari {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Lisensi {STRING} dari {STRING}

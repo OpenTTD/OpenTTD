@@ -476,7 +476,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Siste melding/n
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidlegare meldingar
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll
@@ -1864,6 +1864,8 @@ STR_QUIT_NO                                                     :{BLACK}Nei
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Avslutt spel
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på at du vil forlata spelet?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du sikker på at du vil avslutte scenariet?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juks
@@ -4057,7 +4059,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Bryt tek
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vis lesmeg
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Endringslogg
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisens
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} lesmeg for {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} endringslogg for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisens for {STRING}

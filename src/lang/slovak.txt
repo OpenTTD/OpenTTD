@@ -584,7 +584,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Archív správ
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Vymazať všetky správy
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informácie o pozemku
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Zobraziť / skryť konzolu
@@ -2212,6 +2212,8 @@ STR_QUIT_NO                                                     :{BLACK}Nie
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Opustiť hru
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ste si istý, že chcete opustiť túto hru?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ste si istý, že chcete opustiť tento scenár?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
@@ -4740,7 +4742,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zalamova
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Zobraziť readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log zmien
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencia
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "čítajma" {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} log zmien {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licencia {STRING}

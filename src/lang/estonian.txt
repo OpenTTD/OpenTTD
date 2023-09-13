@@ -560,7 +560,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Teadete ajalugu
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Kustuta kõik teated
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-ala andmed
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
@@ -2161,6 +2161,8 @@ STR_QUIT_NO                                                     :{BLACK}Ei
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Mängu lõpetamine
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Kas lõpetada mäng?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Kas sa oled kindel, et sa tahad stsenaariumi tegemise lõpetada?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Petmine
@@ -4680,7 +4682,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Murrab t
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vaata abi
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Muudatuste logi
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Litsents
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} abi.
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} muudatuste logi {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} litsents {STRING}

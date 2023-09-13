@@ -505,7 +505,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de me
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Borrar tódalas mensaxes
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Información de área de terreo
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :(Des)Activar consola
@@ -2139,6 +2139,8 @@ STR_QUIT_NO                                                     :{BLACK}Non
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Saír da partida
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Estás seguro de que queres saír desta partida?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Estás seguro de que queres saír deste escenario?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampulladas
@@ -4671,7 +4673,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Axusta o
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver "readme"
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Rexistro de cambios
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenza
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE} "readme" de {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Rexistro de cambios de {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE} licenza de {STRING}{STRING}

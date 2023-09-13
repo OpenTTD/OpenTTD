@@ -522,7 +522,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Vergangene Nach
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Alle Nachrichten löschen
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebietsinformationen
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole öffnen/schließen
@@ -2164,6 +2164,8 @@ STR_QUIT_NO                                                     :{BLACK}Nein
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spiel beenden
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Das Spiel wirklich beenden?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Soll das Szenario wirklich verlassen werden?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
@@ -4702,7 +4704,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Text des
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Liesmich anzeigen
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Änderungen
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizenz
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}-Liesmich von {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}-Änderungen von {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}-Lizenz von {STRING}

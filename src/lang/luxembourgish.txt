@@ -503,7 +503,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meldungshistori
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :All Message läschen
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatiounen
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole un/aus
@@ -2105,6 +2105,8 @@ STR_QUIT_NO                                                     :{BLACK}Nee
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spill ofbriechen
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bass du sécher, dass du des Partie ofbrieche wëlls?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bass du sécher, dass du dëse Szenario ofbrieche wëlls?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheater
@@ -4622,7 +4624,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ännert 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme liesen
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizenz
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme vun {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Changelog vun {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} Lizenz vun {STRING}

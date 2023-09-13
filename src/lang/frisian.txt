@@ -475,7 +475,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Lêtste (nijs)b
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berjochtenskiednis
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebietsynformaasje
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skeakel console oan/ût
@@ -1908,6 +1908,8 @@ STR_QUIT_NO                                                     :{BLACK}Nee
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ferlit Spul
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Wolsto echt dit lânskip slúte?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Wolsto echt dit lânskip slúte?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Falsk spielje
@@ -3885,7 +3887,7 @@ STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Omwikkel
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Besjoch readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Feroarings
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisinsje
-###length 4
+###length 5
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} feroarings fan {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisinsje fan {STRING}
 

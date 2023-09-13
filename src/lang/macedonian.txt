@@ -448,7 +448,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Последн�
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :порака историјата
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Земјиште во областа
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вклучи конзола
@@ -1180,6 +1180,8 @@ STR_QUIT_NO                                                     :{BLACK}Не
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Напушти ја Играта
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Дали сте сигурни дека сакате да ја напуштите играта?
+
+# Help window
 
 # Cheat window
 
@@ -1975,7 +1977,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-###length 4
+###length 5
 
 
 # Vehicle loading indicators

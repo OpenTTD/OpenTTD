@@ -479,7 +479,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :ข้อคว
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :ดูข้อความย้อนหลัง
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :ข้อมูลพื้นที่
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :เปิด/ปิด คอนโซล
@@ -1962,6 +1962,8 @@ STR_QUIT_NO                                                     :{BLACK}ไม�
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ออกไปสู่เมนูหลัก
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}เกมยังดำเนินอยู่แน่ใจหรือไม่ว่าจะกลับไปสู่เมนูหลัก?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}คุณแน่ใจหรือที่จะยกเลิกแผนที่นี้?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}สูตรโกงเกม
@@ -4273,7 +4275,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}จั�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}แสดง readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}ข้อมูลการอัพเดต
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}การอนุญาต
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme ของ {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog ของ {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} การอนุญาตของ {STRING}

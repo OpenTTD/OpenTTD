@@ -662,7 +662,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Am brath/aithri
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Eachdraidh nam brath
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Fiosrachadh raon tìre
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglaich a' chonsoil
@@ -2144,6 +2144,8 @@ STR_QUIT_NO                                                     :{BLACK}Chan eil
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Fàg an geama
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}A bheil thu cinnteach gu bheil thu airson an geama seo fhàgail?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}A bheil thu cinnteach gu bheil thu airson an cnàmh-sgeul seo fhàgail?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cealgaireachd
@@ -4428,7 +4430,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Paisg te
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Seall “Leugh mi”
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Loga nan atharraichean
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ceadachas
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}“Leugh mi” {STRING} aig {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Loga atharraichean {STRING} aig {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ceadachas {STRING} aig {STRING}

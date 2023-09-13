@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidligere beske
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Slet alle beskeder
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landområde information
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Tænd/Sluk konsol
@@ -2165,6 +2165,8 @@ STR_QUIT_NO                                                     :{BLACK}Nej
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Forlad spillet
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på du vil forlade dette spil ?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du sikker på, at du vil afslutte dette scenarie ?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Snydefunktioner
@@ -4704,7 +4706,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ombryd t
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ændringslog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme for {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licens for {STRING}

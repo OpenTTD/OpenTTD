@@ -523,7 +523,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Cronologia mess
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Elimina tutti i messaggi
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informazioni sull'area di terreno
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Apri/chiudi console
@@ -2198,6 +2198,8 @@ STR_QUIT_NO                                                     :{BLACK}No
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abbandona partita
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si è sicuri di voler abbandonare la partita in corso?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si è sicuri di voler abbandonare questo scenario?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucchi
@@ -4742,7 +4744,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Manda au
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Visualizza file leggimi
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenza
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}File leggimi del {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Changelog del {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licenza del {STRING} {STRING}

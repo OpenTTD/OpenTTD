@@ -503,7 +503,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :訊息記錄
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :刪除所有訊息
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :土地資訊
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切換主控台
@@ -2105,6 +2105,8 @@ STR_QUIT_NO                                                     :{BLACK}否
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}放棄遊戲
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}你要放棄這個遊戲嗎？
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}你確定要離開這個場景嗎？
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
@@ -4624,7 +4626,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}強迫�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}檢視Readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}修訂紀錄
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}授權條款
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}{STRING}的 Readme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}{STRING}的修訂紀錄
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}{STRING}的授權條款

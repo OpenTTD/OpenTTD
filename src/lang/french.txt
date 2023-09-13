@@ -522,7 +522,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historique des 
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Effacer tous les messages
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Outil d'inspection du paysage
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Afficher/Cacher la console
@@ -2166,6 +2166,8 @@ STR_QUIT_NO                                                     :{BLACK}Non
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonner la partie
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Êtes-vous sûr de vouloir abandonner cette partie{NBSP}?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Êtes-vous sûr de vouloir abandonner ce scénario{NBSP}?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Triches
@@ -4705,7 +4707,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Insérer
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Voir le Lisez-moi
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Journal des modifications
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Lisez-moi du module {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Journal des modifications pour le module {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licence du module {STRING} {STRING}

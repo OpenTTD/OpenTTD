@@ -503,7 +503,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :消息历史
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :删除全部消息
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :查询地块信息
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制台模式
@@ -2105,6 +2105,8 @@ STR_QUIT_NO                                                     :{BLACK}否
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}放弃游戏
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}你确定要放弃当前的游戏吗？
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}你确定要退出当前场景吗？
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
@@ -4622,7 +4624,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}強迫�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}查看说明
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}更新日志
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}版权信息
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} 的说明
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} 的更新日志
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} 的版权信息

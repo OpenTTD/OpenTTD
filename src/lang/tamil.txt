@@ -485,7 +485,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :செய்த
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :எல்லா செய்திகளையும் நீக்கு
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :நிலா பகுதி விவரம்
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :முனையத்தை மாற்று
@@ -1883,6 +1883,8 @@ STR_QUIT_NO                                                     :{BLACK}இல�
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ஆட்டத்தை கைவிடு
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}நீங்கள் இந்த ஆட்டத்தினை விட்டு வெளியேறுவதில் உறுதியா?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}நீங்கள் இந்த சித்திரக்காட்சியினை விட்டு வெளியேறுவதில் உறுதியா?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}ஏமாற்றுகள்
@@ -4141,7 +4143,7 @@ STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}உர�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}படிக்க வேண்டியதை பார்வையிடு
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}மாற்றங்கள் பதிவேடு
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}அனுமதி
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} இன் படிப்பு அறி
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} இன் மாற்றங்கள் பதிவேடு
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} இன் அனுமதி

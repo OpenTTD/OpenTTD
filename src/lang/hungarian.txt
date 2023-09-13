@@ -567,7 +567,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Előző üzenet
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Az összes üzenet törlése
 
 # About menu
-###length 10
+###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terület-információ
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
@@ -2193,6 +2193,8 @@ STR_QUIT_NO                                                     :{BLACK}Nem
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Kilépés a játékból
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Biztosan kilépsz ebből a játékból?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését?
+
+# Help window
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Csalások
@@ -4719,7 +4721,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Szöveg 
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme megtekintése
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Változások listája
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenc
-###length 4
+###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} readme-je
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}A(z) {STRING} {STRING} változásainak listája
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}A(z) {STRING} {STRING} licence
