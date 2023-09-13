@@ -10,14 +10,12 @@
 #include "../../stdafx.h"
 
 #include "../../3rdparty/fmt/format.h"
-#include "../../3rdparty/nlohmann/json.hpp"
+#include "../../survey.h"
 
 #include <thread>
 #include <windows.h>
 
 #include "../../safeguards.h"
-
-extern std::string SurveyMemoryToText(uint64_t memory);
 
 void SurveyOS(nlohmann::json &json)
 {

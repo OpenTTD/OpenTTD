@@ -432,6 +432,8 @@ add_files(
     subsidy_func.h
     subsidy_gui.cpp
     subsidy_type.h
+    survey.cpp
+    survey.h
     tar_type.h
     terraform_cmd.cpp
     terraform_cmd.h
