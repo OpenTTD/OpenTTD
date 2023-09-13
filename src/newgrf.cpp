@@ -9946,6 +9946,11 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	TimerGameCalendar::Date date            = TimerGameCalendar::date;
 	TimerGameCalendar::Year year            = TimerGameCalendar::year;
 	TimerGameCalendar::DateFract date_fract = TimerGameCalendar::date_fract;
+
+	TimerGameEconomy::Date economy_date = TimerGameEconomy::date;
+	TimerGameEconomy::Year economy_year = TimerGameEconomy::year;
+	TimerGameEconomy::DateFract economy_date_fract = TimerGameEconomy::date_fract;
+
 	uint64_t tick_counter  = TimerGameTick::counter;
 	byte display_opt     = _display_opt;
 
@@ -9953,6 +9958,11 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 		TimerGameCalendar::year = _settings_game.game_creation.starting_year;
 		TimerGameCalendar::date = TimerGameCalendar::ConvertYMDToDate(TimerGameCalendar::year, 0, 1);
 		TimerGameCalendar::date_fract = 0;
+
+		TimerGameEconomy::year = _settings_game.game_creation.starting_year.base();
+		TimerGameEconomy::date = TimerGameEconomy::ConvertYMDToDate(TimerGameEconomy::year, 0, 1);
+		TimerGameEconomy::date_fract = 0;
+
 		TimerGameTick::counter = 0;
 		_display_opt  = 0;
 	}
@@ -10050,6 +10060,11 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	TimerGameCalendar::year = year;
 	TimerGameCalendar::date = date;
 	TimerGameCalendar::date_fract = date_fract;
+
+	TimerGameEconomy::year = economy_year;
+	TimerGameEconomy::date = economy_date;
+	TimerGameEconomy::date_fract = economy_date_fract;
+
 	TimerGameTick::counter = tick_counter;
 	_display_opt  = display_opt;
 }
