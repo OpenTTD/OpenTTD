@@ -247,14 +247,21 @@ void Textbuf::DeleteText(uint16_t from, uint16_t to, bool update)
 	this->bytes -= to - from;
 	this->chars -= c;
 
-	/* Fixup caret if needed. */
-	if (this->caretpos > from) {
-		if (this->caretpos <= to) {
-			this->caretpos = from;
+	auto fixup = [&](uint16_t &pos) {
+		if (pos <= from) return;
+		if (pos <= to) {
+			pos = from;
 		} else {
-			this->caretpos -= to - from;
+			pos -= to - from;
 		}
-	}
+	};
+
+	/* Fixup caret if needed. */
+	fixup(this->caretpos);
+
+	/* Fixup marked text if needed. */
+	fixup(this->markpos);
+	fixup(this->markend);
 
 	if (update) {
 		this->UpdateStringIter();
