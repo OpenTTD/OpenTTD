@@ -130,6 +130,14 @@ struct SettingDesc {
 	 * @return True if the value is definitely the same (might be false when the same).
 	 */
 	virtual bool IsSameValue(const IniItem *item, void *object) const = 0;
+
+	/**
+	 * Check whether the value is the same as the default value.
+	 *
+	 * @param object The object the setting is in.
+	 * @return true iff the value is the default value.
+	 */
+	virtual bool IsDefaultValue(void *object) const = 0;
 };
 
 /** Base integer type, including boolean, settings. Only these are shown in the settings UI. */
@@ -215,6 +223,7 @@ struct IntSettingDesc : SettingDesc {
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
+	bool IsDefaultValue(void *object) const override;
 	int32_t Read(const void *object) const;
 
 private:
@@ -307,6 +316,7 @@ struct StringSettingDesc : SettingDesc {
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
+	bool IsDefaultValue(void *object) const override;
 	const std::string &Read(const void *object) const;
 
 private:
@@ -324,6 +334,7 @@ struct ListSettingDesc : SettingDesc {
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
+	bool IsDefaultValue(void *object) const override;
 };
 
 /** Placeholder for settings that have been removed, but might still linger in the savegame. */
@@ -334,6 +345,7 @@ struct NullSettingDesc : SettingDesc {
 	std::string FormatValue(const void *object) const override { NOT_REACHED(); }
 	void ParseValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
 	bool IsSameValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
+	bool IsDefaultValue(void *object) const override { NOT_REACHED(); }
 };
 
 typedef std::variant<IntSettingDesc, BoolSettingDesc, OneOfManySettingDesc, ManyOfManySettingDesc, StringSettingDesc, ListSettingDesc, NullSettingDesc> SettingVariant;
