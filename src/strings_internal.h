@@ -129,7 +129,7 @@ public:
 	 */
 	StringParameters GetRemainingParameters(size_t offset)
 	{
-		return StringParameters(this->parameters.subspan(this->offset, GetDataLeft()));
+		return StringParameters(this->parameters.subspan(offset, GetDataLeft()));
 	}
 
 	/** Return the amount of elements which can still be read. */
