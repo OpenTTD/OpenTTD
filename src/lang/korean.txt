@@ -524,6 +524,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :모든 뉴스 �
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :지형 정보
+STR_ABOUT_MENU_HELP                                             :도움말 & 매뉴얼
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
 STR_ABOUT_MENU_AI_DEBUG                                         :인공지능/게임 스크립트 디버그
@@ -1427,11 +1428,13 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :적음
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :보통
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :경쟁사 소유의 도로나 선로에 건널목 건설 허용: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :다른 회사 소유의 도로나 선로에 건널목을 건설하는 것을 허용합니다
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :도시 소유의 도로 위에 버스 정류장 건설 허용: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :도시 소유의 도로 위에 버스 정류장 건설을 허용합니다.
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :도시 소유의 도로 위에 버스 정류장 건설을 허용합니다
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :경쟁자 소유의 도로 위에 버스 정류장 건설 허용: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :다른 회사 소유의 도로 위에 버스 정류장을 건설하는 것을 허용합니다.
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :다른 회사 소유의 도로 위에 버스 정류장을 건설하는 것을 허용합니다
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 차량이 존재하면 이 설정을 변경하실 수 없습니다.
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :기반시설 유지비: {STRING}
@@ -2123,6 +2126,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 �
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
 STR_INTRO_HIGHSCORE                                             :{BLACK}고득점 순위표
+STR_INTRO_HELP                                                  :{BLACK}도움말 & 매뉴얼
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
@@ -2144,6 +2148,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 기본 설정 창을 보여줍니다
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}고득점 순위표를 보여줍니다
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}각종 문서와 온라인 링크를 확인합니다
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}설정 창을 엽니다
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다
@@ -2166,6 +2171,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}정말 
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}정말 이 시나리오를 종료하시겠습니까?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}도움말 & 매뉴얼
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}웹사이트
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}문서
+STR_HELP_WINDOW_README                                          :{BLACK}Readme
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}변경기록
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}알려진 버그
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}라이선스
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}매뉴얼 / 위키
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}버그 신고
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}커뮤니티
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}치트
@@ -2654,6 +2670,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}정거�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}다리를 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}등대나 안테나 같은 구조물을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}전차선을 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}적재/하차 및 수입/지출 텍스트를 보여줄 지 선택합니다. 고정하려면 CTRL+클릭하세요
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}반투명 대신 아예 안 보이게 할 항목을 선택하세요
 
 # Linkgraph legend window
@@ -4699,6 +4716,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}목차
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}이 목록을 이용하여 표시된 파일의 특정 단락으로 빠르게 이동합니다
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}탐색 기록 뒤로 가기
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}탐색 기록 앞으로 가기
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}자동 줄 바꿈
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}본문 내용에 자동 줄 바꿈을 설정하여 스크롤하지 않고도 본문의 모든 내용을 볼 수 있게 합니다.
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme 보기
@@ -4709,6 +4731,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}의 변경기록
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}의 저작권
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}설문조사 결과 미리보기
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD '{STRING}' 문서
 
 
 # Vehicle loading indicators

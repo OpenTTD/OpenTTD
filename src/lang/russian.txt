@@ -649,6 +649,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Удалить 
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Информация об участке земли
+STR_ABOUT_MENU_HELP                                             :Помощь и документация
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Консоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Отладка ИИ / скриптов
@@ -2275,6 +2276,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Сете
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Основные настройки
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблица рекордов
+STR_INTRO_HELP                                                  :{BLACK}Помощь и документация
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Расширенные настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Проверить онлайн-контент
@@ -2296,6 +2298,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбр
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Изменить основные настройки игры
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показать таблицу рекордов
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Ссылки на документацию и интернет-ресурсы
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Изменить расширенные настройки игры
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показать настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для загрузки
@@ -2318,6 +2321,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Вы д
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Вы уверены, что хотите выйти из этого сценария?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Помощь и документация
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Веб-сайты
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Документы
+STR_HELP_WINDOW_README                                          :{BLACK}Readme
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}История изменений
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Известные ошибки
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Лицензия
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Инструкция / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Сообщить об ошибке
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Сообщество
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Читы
@@ -4888,6 +4902,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Содержание
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Список для быстрого перехода к определённой секции отображаемого файла
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Назад
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Вперёд
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Переносить текст
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Переносить текст так, чтобы он помещался в окне без необходимости прокрутки
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Посмотреть инструкцию
@@ -4898,6 +4917,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}Инст
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Список изменений к {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Лицензия к {STRING} {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Собранные данные
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Документ OpenTTD «{STRING}»
 
 
 # Vehicle loading indicators

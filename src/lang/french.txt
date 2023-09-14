@@ -524,6 +524,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Effacer tous le
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Outil d'inspection du paysage
+STR_ABOUT_MENU_HELP                                             :Aide et manuels
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Afficher/Cacher la console
 STR_ABOUT_MENU_AI_DEBUG                                         :Débogage de scripts
@@ -2125,6 +2126,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Jouer en
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options globales
 STR_INTRO_HIGHSCORE                                             :{BLACK}Meilleurs scores
+STR_INTRO_HELP                                                  :{BLACK}Aide et manuels
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Paramètres de jeu
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenu additionnel en ligne
@@ -2146,6 +2148,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Sélecti
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afficher les options du jeu
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Afficher le tableau des meilleurs scores
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Accéder à la documentation et aux ressources en ligne
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Afficher les paramètres
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afficher la configuration des NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus nouveaux ou mis à jour téléchargeables
@@ -2168,6 +2171,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Êtes-v
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Êtes-vous sûr de vouloir abandonner ce scénario{NBSP}?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Aide et manuels
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Sites web
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Documents
+STR_HELP_WINDOW_README                                          :{BLACK}Lisez-moi
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Journal des modifications
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Bugs connus
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licence
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manuel / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Rapporter un bug
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Communauté
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Triches
@@ -4702,6 +4716,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}:
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Table des matières
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Sauter rapidement à une section dans le fichier affiché via cette liste
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Reculer dans l'historique de navigation
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Avancer dans l'historique de navigation
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Retour à la ligne automatique
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Insérer des retours à la ligne dans le texte de la fenêtre afin qu'il s'affiche entièrement sans faire défiler
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Voir le Lisez-moi
@@ -4712,6 +4731,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}Lisez-mo
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Journal des modifications pour le module {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licence du module {STRING} {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Prévisualisation des données d'analyse
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Document OpenTTD '{STRING}'
 
 
 # Vehicle loading indicators

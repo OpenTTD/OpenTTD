@@ -524,6 +524,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informação da área do terreno
+STR_ABOUT_MENU_HELP                                             :Ajuda & manuais
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Alternar console
 STR_ABOUT_MENU_AI_DEBUG                                         :Depurar IA/Script do jogo
@@ -2125,6 +2126,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jo
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções do Jogo
 STR_INTRO_HIGHSCORE                                             :{BLACK}Pontuações
+STR_INTRO_HELP                                                  :{BLACK}Ajuda & Manuais
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configurações
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configurar NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Checar conteúdo on-line
@@ -2146,6 +2148,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecion
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Exibir opções de jogo
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Exibe as pontuações
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Obter acesso à documentação e recursos online
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Config. de exibição
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Exibir configs. dos NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar por conteúdo novo e atualizado para baixar
@@ -2168,6 +2171,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Você t
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Você tem certeza que quer abandonar este cenário?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Ajuda & Manuais
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Sites na Web
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Documentos
+STR_HELP_WINDOW_README                                          :{BLACK}Leia-me
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Log de mudanças
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Erros conhecidos
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licença
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Relatar um erro
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunidade
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trapaças
@@ -4702,6 +4716,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Tabela de Conteúdo
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Acesso rápido a uma seção do arquivo mostrado nesta lista
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Retornar no histórico de navegação
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Retornar adiante no histórico de navegação
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Quebra de linha
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :[BLACK}Quebra linhas automaticamente para que o texto caiba na janela
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver o leia-me
@@ -4712,6 +4731,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} log de mudanças de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licença de {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Visualização do resultado da pesquisa
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD documento '{STRING}'
 
 
 # Vehicle loading indicators
