@@ -524,6 +524,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Tüm mesajları
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
+STR_ABOUT_MENU_HELP                                             :Yardım & Kılavuzlar
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolu aç/kapa
 STR_ABOUT_MENU_AI_DEBUG                                         :YZ/Oyun betik hata ayıklama
@@ -1427,6 +1428,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Hiç
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Azaltılmış
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Rakiplere ait karayolları veya demiryolları ile hemzemin geçitlere izin ver: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Rakiplerin sahip olduğu yol veya raylarda hemzemin geçitlerin inşasına izin verilmesi
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Kasabaların sahip olduğu yollarda arabalı yol duraklarına izin ver: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Kasabaların sahip olduğu yollarda arabalı yol duraklarının inşasına izin ver
@@ -2123,6 +2126,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Çok Oyu
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Seçenekler
 STR_INTRO_HIGHSCORE                                             :{BLACK}Puan Tablosu
+STR_INTRO_HELP                                                  :{BLACK}Yardım ve Kılavuzlar
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ayarlar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
@@ -2144,6 +2148,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'Oyuncak
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Seçenekleri göster
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puan tablosunu göster
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Belgelere ve çevrimiçi kaynaklara erişin
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Görüntü ayarları
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ayarlarını göster
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
@@ -2166,6 +2171,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bu oyun
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu senaryoyu terk etmek istediğinize emin misiniz?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Yardım & Kılavuzlar
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Websiteler
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Belgeler
+STR_HELP_WINDOW_README                                          :{BLACK}Beni oku
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Değişiklik günlüğü
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Bilinen Hatalar
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Lisans
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Kılavuz / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Hata Bildir
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Toplum
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Hileler
@@ -4700,6 +4716,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}İçerik Tabelası
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Bu liste aracılığıyla görüntülenen dosyadaki bir bölüme hızlı bir şekilde atlayın
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Gezinme geçmişine geri dönme
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Gezinme geçmişinde ileri dönme
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Metni kaydır
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Metni, okumak için gezinmeyi önlemek üzere kaydır
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Benioku dosyasını göster
@@ -4710,6 +4731,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} adlı {STRING}'nin değişiklik kaydı
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} adlı {STRING}'nin lisansı
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Anket sonucunun önizlemesi
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD belgesi '{STRING}'
 
 
 # Vehicle loading indicators

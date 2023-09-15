@@ -523,6 +523,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Alle berichten 
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatie
+STR_ABOUT_MENU_HELP                                             :Help en handleidingen
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Console in-uitschakelen
 STR_ABOUT_MENU_AI_DEBUG                                         :Probleemoplossing AI/spelscript
@@ -2124,6 +2125,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Netwerks
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelopties
 STR_INTRO_HIGHSCORE                                             :{BLACK}Scoretabel
+STR_INTRO_HELP                                                  :{BLACK}Help en handleiding
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken
@@ -2145,6 +2147,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Speelgoe
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spelopties weergeven
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Scoretabel weergeven
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Toegang tot documentatie en online-hulpbronnen
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Scherminstellingen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-instellingen weergeven
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
@@ -2167,6 +2170,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Weet je
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Weet je zeker dat je dit scenario wilt sluiten?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Help en handleidingen
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Websites
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Documenten
+STR_HELP_WINDOW_README                                          :{BLACK}Leesmij
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Overzicht van wijzigingen
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Bekende fouten
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licentie
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Handleiding/wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Een fout rapporteren
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Gemeenschap
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Valsspelen
@@ -4701,6 +4715,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Inhoud
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Met deze lijst kun je snel naar een gedeelte in het weergegeven bestand springen
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Terug in de bladergeschiedenis
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Vooruit in de bladergeschiedenis
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Tekst afbreken
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Tekst aanpassen aan venster zodat je niet hoeft te bladeren
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Leesmij-bestand bekijken
@@ -4711,6 +4730,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} wijzigingen van {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licentie van {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Voorbeeld van resultaten van onderzoek
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD-document '{STRING}'
 
 
 # Vehicle loading indicators

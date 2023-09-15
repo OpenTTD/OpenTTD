@@ -523,6 +523,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Șterge toate m
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informaţii despre teren
+STR_ABOUT_MENU_HELP                                             :Ajutor și manuale
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Consolă pornit/oprit
 STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenţă Artificială / Script Joc
@@ -2123,6 +2124,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opțiuni
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela cu scoruri maxime
+STR_INTRO_HELP                                                  :{BLACK}Ajutor și manuale
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Setări
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online
@@ -2144,6 +2146,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Alege pe
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afişează opţiunile jocului
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Afișează tabela cu scoruri maxime
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Obțineți acces la documentație și resurse online
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Setări afişare
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afişează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
@@ -2166,6 +2169,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sigur v
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Sigur vrei să renunți la acest scenariu?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Ajutor și manuale
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Site-uri web
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Documente
+STR_HELP_WINDOW_README                                          :{BLACK}Citiți-mă
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Jurnalul modificărilor
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Erori cunoscute
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licență
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Raportați o eroare
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunitate
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheat-uri
@@ -4700,6 +4714,9 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Cuprins
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Săriți rapid la o secțiune din fișierul afișat prin această listă
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Încadrează textul
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Încadrează textul ferestrei ca să fie vizibil integral, fără derulare
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
@@ -4710,6 +4727,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}, lista de modificări a {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}, licența fișierului {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Previzualizare a rezultatului sondajului
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Deschide document OpenTTD '{STRING}'
 
 
 # Vehicle loading indicators
