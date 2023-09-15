@@ -689,9 +689,9 @@ static inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
  * @param owner     New owner of the depot.
  * @param depot_id  New depot ID.
  * @param dir       Direction of the depot exit.
- * @param rail_type Road type of the depot.
+ * @param rt        Road type of the depot.
  */
-static inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RoadType rail_type)
+static inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirection dir, RoadType rt)
 {
 	SetTileType(tile, MP_ROAD);
 	SetTileOwner(tile, owner);
@@ -702,7 +702,7 @@ static inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagD
 	SB(tile.m6(), 2, 4, 0);
 	tile.m7() = owner;
 	tile.m8() = INVALID_ROADTYPE << 6;
-	SetRoadType(tile, GetRoadTramType(rail_type), rail_type);
+	SetRoadType(tile, GetRoadTramType(rt), rt);
 	SetRoadOwner(tile, RTT_TRAM, owner);
 }
 
