@@ -199,8 +199,6 @@ void BaseVehicleListWindow::BuildVehicleList()
 			max_unitnumber = std::max<uint>(max_unitnumber, (*it)->unitnumber);
 		}
 		this->unitnumber_digits = CountDigitsForAllocatingSpace(max_unitnumber);
-
-		this->FilterVehicleList();
 	} else {
 		/* Sort by the primary vehicle; we just want all vehicles that share the same orders to form a contiguous range. */
 		std::stable_sort(this->vehicles.begin(), this->vehicles.end(), [](const Vehicle * const &u, const Vehicle * const &v) {
@@ -224,22 +222,21 @@ void BaseVehicleListWindow::BuildVehicleList()
 
 		this->unitnumber_digits = CountDigitsForAllocatingSpace(max_num_vehicles);
 	}
+	this->FilterVehicleList();
 
 	this->vehgroups.RebuildDone();
 	this->vscroll->SetCount(this->vehgroups.size());
 }
 
-
-/** Cargo filter functions */
 /**
- * Check whether a vehicle can carry a specific cargo.
- * @param vehgroup The vehicle group which contains the vehicle to be checked
- * @param cid The cargo what we are looking for
- * @return Whether the vehicle can carry the specified cargo or not
+ * Check whether a single vehicle should pass the filter.
+ *
+ * @param v The vehicle to check.
+ * @param cid The cargo to filter for.
+ * @return true iff the vehicle carries the cargo.
  */
-static bool CDECL CargoFilter(const GUIVehicleGroup *vehgroup, const CargoID cid)
+static bool CargoFilterSingle(const Vehicle *v, const CargoID cid)
 {
-	const Vehicle *v = (*vehgroup).GetSingleVehicle();
 	if (cid == BaseVehicleListWindow::CF_ANY) {
 		return true;
 	} else if (cid == BaseVehicleListWindow::CF_NONE) {
@@ -269,6 +266,25 @@ static bool CDECL CargoFilter(const GUIVehicleGroup *vehgroup, const CargoID cid
 		}
 		return false;
 	}
+}
+
+/**
+ * Check whether a vehicle can carry a specific cargo.
+ *
+ * @param vehgroup The vehicle group which contains the vehicle to be checked
+ * @param cid The cargo what we are looking for
+ * @return Whether the vehicle can carry the specified cargo or not
+ */
+static bool CargoFilter(const GUIVehicleGroup *vehgroup, const CargoID cid)
+{
+	auto it = vehgroup->vehicles_begin;
+
+	/* Check if any vehicle in the group matches; if so, the whole group does. */
+	for (; it != vehgroup->vehicles_end; it++) {
+		if (CargoFilterSingle(*it, cid)) return true;
+	}
+
+	return false;
 }
 
 static GUIVehicleGroupList::FilterFunction * const _filter_funcs[] = {
