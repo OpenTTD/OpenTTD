@@ -522,6 +522,7 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 
 /* static */ size_t ICUParagraphLayoutFactory::AppendToBuffer(UChar *buff, const UChar *buffer_last, char32_t c)
 {
+	assert(buff < buffer_last);
 	/* Transform from UTF-32 to internal ICU format of UTF-16. */
 	int32_t length = 0;
 	UErrorCode err = U_ZERO_ERROR;

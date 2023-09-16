@@ -96,8 +96,9 @@ public:
  * @param c           The character to add.
  * @return The number of buffer spaces that were used.
  */
-/* static */ size_t FallbackParagraphLayoutFactory::AppendToBuffer(char32_t *buff, const char32_t *buffer_last, char32_t c)
+/* static */ size_t FallbackParagraphLayoutFactory::AppendToBuffer(char32_t *buff, [[maybe_unused]] const char32_t *buffer_last, char32_t c)
 {
+	assert(buff < buffer_last);
 	*buff = c;
 	return 1;
 }
