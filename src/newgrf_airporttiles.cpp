@@ -237,7 +237,7 @@ uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t p
 	return object.ResolveCallback();
 }
 
-static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte colour, StationGfx gfx)
+static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte colour)
 {
 	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
 
@@ -255,7 +255,7 @@ static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGrou
 	DrawNewGRFTileSeq(ti, dts, TO_BUILDINGS, 0, GENERAL_SPRITE_COLOUR(colour));
 }
 
-bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const AirportTileSpec *airts)
+bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 {
 	if (ti->tileh != SLOPE_FLAT) {
 		bool draw_old_one = true;
@@ -275,7 +275,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const Airport
 	}
 
 	const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
-	AirportDrawTileLayout(ti, tlgroup, Company::Get(st->owner)->colour, gfx);
+	AirportDrawTileLayout(ti, tlgroup, Company::Get(st->owner)->colour);
 	return true;
 }
 
