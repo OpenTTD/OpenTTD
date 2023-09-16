@@ -38,7 +38,11 @@ macro(compile_flags)
     set(IS_STABLE_RELEASE "$<AND:$<NOT:$<CONFIG:Debug>>,$<NOT:$<BOOL:${OPTION_USE_ASSERTS}>>>")
 
     if(MSVC)
-        add_compile_options(/W3)
+        add_compile_options(
+            /W3
+            /w34100 # 'identifier' : unreferenced formal parameter
+            /w34189 # 'identifier' : local variable is initialized but not referenced
+        )
         if(MSVC_VERSION GREATER 1929 AND MSVC_VERSION LESS 1937 AND CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
             # Starting with version 19.30 (fixed in version 19.37), there is an optimisation bug, see #9966 for details
             # This flag disables the broken optimisation to work around the bug
@@ -60,8 +64,6 @@ macro(compile_flags)
             -Winit-self
             -Wnon-virtual-dtor
 
-            # Often parameters are unused, which is fine.
-            -Wno-unused-parameter
             # We use 'ABCD' multichar for SaveLoad chunks identifiers
             -Wno-multichar
 
@@ -71,22 +73,6 @@ macro(compile_flags)
             #  compiler all happy.
             -fno-strict-aliasing
         )
-
-        # When we are a stable release (Release build + USE_ASSERTS not set),
-        # assertations are off, which trigger a lot of warnings. We disable
-        # these warnings for these releases.
-        if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-            add_compile_options(
-                "$<${IS_STABLE_RELEASE}:-Wno-unused-variable>"
-                "$<${IS_STABLE_RELEASE}:-Wno-unused-but-set-parameter>"
-                "$<${IS_STABLE_RELEASE}:-Wno-unused-but-set-variable>"
-            )
-        else()
-            add_compile_options(
-                "$<${IS_STABLE_RELEASE}:-Wno-unused-variable>"
-                "$<${IS_STABLE_RELEASE}:-Wno-unused-parameter>"
-            )
-        endif()
 
         # Ninja processes the output so the output from the compiler
         # isn't directly to a terminal; hence, the default is
