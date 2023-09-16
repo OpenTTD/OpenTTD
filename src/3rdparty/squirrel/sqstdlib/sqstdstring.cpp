@@ -1,7 +1,6 @@
 /* see copyright notice in squirrel.h */
 #include <squirrel.h>
 #include <sqstdstring.h>
-#include <stdarg.h>
 
 #define scstrchr strchr
 #define scatoi atoi

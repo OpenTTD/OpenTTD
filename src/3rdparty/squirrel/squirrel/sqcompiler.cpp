@@ -7,7 +7,6 @@
 
 #include <squirrel.h>
 #include "sqpcheader.h"
-#include <stdarg.h>
 #include "sqopcodes.h"
 #include "sqstring.h"
 #include "sqfuncproto.h"

@@ -53,7 +53,6 @@
 #include <cerrno>
 #include <climits>
 #include <cmath>
-#include <cstdarg>
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
