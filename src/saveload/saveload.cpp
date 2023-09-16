@@ -1767,7 +1767,7 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 			}
 
 			while (true) {
-				uint8_t type;
+				uint8_t type = 0;
 				SlSaveLoadConv(&type, SLE_UINT8);
 				if (type == SLE_FILE_END) break;
 
