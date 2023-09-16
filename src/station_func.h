@@ -40,7 +40,6 @@ void DeleteOilRig(TileIndex t);
 void UpdateStationDockingTiles(Station *st);
 void RemoveDockingTile(TileIndex t);
 void ClearDockingTilesCheckingNeighbours(TileIndex tile);
-bool IsValidDockingDirectionForDock(TileIndex t, DiagDirection d);
 
 /* Check if a rail station tile is traversable. */
 bool IsStationTileBlocked(TileIndex tile);

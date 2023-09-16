@@ -2741,20 +2741,6 @@ void ClearDockingTilesCheckingNeighbours(TileIndex tile)
 }
 
 /**
- * Check if a dock tile can be docked from the given direction.
- * @param t Tile index of dock.
- * @param d DiagDirection adjacent to dock being tested. (unused)
- * @return True iff the dock can be docked from the given direction.
- */
-bool IsValidDockingDirectionForDock(TileIndex t, DiagDirection d)
-{
-	assert(IsDockTile(t));
-
-	StationGfx gfx = GetStationGfx(t);
-	return gfx >= GFX_DOCK_BASE_WATER_PART;
-}
-
-/**
  * Find the part of a dock that is land-based
  * @param t Dock tile to find land part of
  * @return tile of land part of dock

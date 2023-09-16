@@ -624,7 +624,7 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 	for (DiagDirection d = DIAGDIR_BEGIN; d != DIAGDIR_END; d++) {
 		TileIndex t = tile + TileOffsByDiagDir(d);
 		if (!IsValidTile(t)) continue;
-		if (IsDockTile(t) && GetStationIndex(t) == station && IsValidDockingDirectionForDock(t, d)) return true;
+		if (IsDockTile(t) && GetStationIndex(t) == station && IsDockWaterPart(t)) return true;
 		if (IsTileType(t, MP_INDUSTRY)) {
 			const Industry *i = Industry::GetByTile(t);
 			if (i->neutral_station != nullptr && i->neutral_station->index == station) return true;
