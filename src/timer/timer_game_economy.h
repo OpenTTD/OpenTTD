@@ -38,6 +38,7 @@ public:
 	static DateFract date_fract; ///< Fractional part of the day.
 
 	static void SetDate(Date date, DateFract fract);
+	static bool UsingWallclockUnits(bool newgame = false);
 };
 
 /**

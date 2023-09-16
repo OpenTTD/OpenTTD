@@ -54,6 +54,18 @@ TimerGameEconomy::DateFract TimerGameEconomy::date_fract = {};
 	TimerGameEconomy::month = ymd.month;
 }
 
+/**
+ * Check if we are using wallclock units.
+ * @param newgame Should we check the settings for a new game (since we are in the main menu)?
+ * @return True if the game is using wallclock units, or false if the game is using calendar units.
+ */
+/* static */ bool TimerGameEconomy::UsingWallclockUnits(bool newgame)
+{
+	if (newgame) return (_settings_newgame.economy.timekeeping_units == TKU_WALLCLOCK);
+
+	return (_settings_game.economy.timekeeping_units == TKU_WALLCLOCK);
+}
+
 template<>
 void IntervalTimer<TimerGameEconomy>::Elapsed(TimerGameEconomy::TElapsed trigger)
 {

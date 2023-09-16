@@ -64,6 +64,12 @@ enum IndustryDensity {
 	ID_END,       ///< Number of industry density settings.
 };
 
+/** Possible values for the "timekeeping_units" setting. */
+enum TimekeepingUnits : uint8_t {
+	TKU_CALENDAR = 0,
+	TKU_WALLCLOCK,
+};
+
 /** Possible values for "use_relay_service" setting. */
 enum UseRelayService : uint8_t {
 	URS_NEVER = 0,
@@ -551,6 +557,7 @@ struct EconomySettings {
 	uint16_t town_noise_population[4];         ///< population to base decision on noise evaluation (@see town_council_tolerance)
 	bool   allow_town_level_crossings;       ///< towns are allowed to build level crossings
 	bool   infrastructure_maintenance;       ///< enable monthly maintenance fee for owner infrastructure
+	TimekeepingUnits timekeeping_units;      ///< time units to use for the game economy, either calendar or wallclock
 };
 
 struct LinkGraphSettings {
