@@ -435,30 +435,13 @@ static inline DiagDirection GetDockDirection(Tile t)
 }
 
 /**
- * Get the tileoffset from this tile a ship should target to get to this dock.
- * @param t Tile to query
- * @pre IsTileType(t, MP_STATION)
- * @pre IsBuoy(t) || IsOilRig(t) || IsDock(t)
- * @return The offset from this tile that should be used as destination for ships.
+ * Check whether a dock tile is the tile on water.
  */
-static inline TileIndexDiffC GetDockOffset(Tile t)
+static inline bool IsDockWaterPart(Tile t)
 {
-	static const TileIndexDiffC buoy_offset = {0, 0};
-	static const TileIndexDiffC oilrig_offset = {2, 0};
-	static const TileIndexDiffC dock_offset[DIAGDIR_END] = {
-		{-2,  0},
-		{ 0,  2},
-		{ 2,  0},
-		{ 0, -2},
-	};
-	assert(IsTileType(t, MP_STATION));
-
-	if (IsBuoy(t)) return buoy_offset;
-	if (IsOilRig(t)) return oilrig_offset;
-
-	assert(IsDock(t));
-
-	return dock_offset[GetDockDirection(t)];
+	assert(IsDockTile(t));
+	StationGfx gfx = GetStationGfx(t);
+	return gfx >= GFX_DOCK_BASE_WATER_PART;
 }
 
 /**
