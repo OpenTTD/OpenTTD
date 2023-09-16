@@ -128,8 +128,7 @@ struct BuildDocksToolbarWindow : Window {
 		this->SetWidgetsDisabledState(!can_build,
 			WID_DT_DEPOT,
 			WID_DT_STATION,
-			WID_DT_BUOY,
-			WIDGET_LIST_END);
+			WID_DT_BUOY);
 		if (!can_build) {
 			CloseWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
 			CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);

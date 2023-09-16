@@ -434,8 +434,30 @@ public:
 	int GetRowFromWidget(int clickpos, int widget, int padding, int line_height = -1) const;
 
 	void RaiseButtons(bool autoraise = false);
-	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
-	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
+
+	/**
+	 * Sets the enabled/disabled status of a list of widgets.
+	 * By default, widgets are enabled.
+	 * On certain conditions, they have to be disabled.
+	 * @param disab_stat status to use ie: disabled = true, enabled = false
+	 * @param widgets list of widgets
+	 */
+	template<typename... Args>
+	void SetWidgetsDisabledState(bool disab_stat, Args... widgets)
+	{
+		(SetWidgetDisabledState(widgets, disab_stat), ...);
+	}
+
+	/**
+	 * Sets the lowered/raised status of a list of widgets.
+	 * @param lowered_stat status to use ie: lowered = true, raised = false
+	 * @param widgets list of widgets
+	 */
+	template<typename... Args>
+	void SetWidgetsLoweredState(bool lowered_stat, Args... widgets)
+	{
+		(SetWidgetLoweredState(widgets, lowered_stat), ...);
+	}
 	void SetWidgetDirty(byte widget_index) const;
 
 	void DrawWidgets() const;

@@ -755,8 +755,7 @@ struct DepotWindow : Window {
 			WID_D_BUILD,
 			WID_D_CLONE,
 			WID_D_RENAME,
-			WID_D_AUTOREPLACE,
-			WIDGET_LIST_END);
+			WID_D_AUTOREPLACE);
 
 		this->DrawWidgets();
 	}

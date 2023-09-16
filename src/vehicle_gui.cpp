@@ -2005,8 +2005,7 @@ public:
 			this->SetWidgetsDisabledState(this->vehicles.size() == 0,
 				WID_VL_MANAGE_VEHICLES_DROPDOWN,
 				WID_VL_STOP_ALL,
-				WID_VL_START_ALL,
-				WIDGET_LIST_END);
+				WID_VL_START_ALL);
 		}
 
 		/* Set text of group by dropdown widget. */

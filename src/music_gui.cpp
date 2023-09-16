@@ -670,8 +670,7 @@ struct MusicWindow : public Window {
 		this->SetWidgetsDisabledState(
 			BaseMusic::GetUsedSet()->num_available == 0,
 			WID_M_PREV, WID_M_NEXT, WID_M_STOP, WID_M_PLAY, WID_M_SHUFFLE,
-			WID_M_ALL, WID_M_OLD, WID_M_NEW, WID_M_EZY, WID_M_CUSTOM1, WID_M_CUSTOM2,
-			WIDGET_LIST_END
+			WID_M_ALL, WID_M_OLD, WID_M_NEW, WID_M_EZY, WID_M_CUSTOM1, WID_M_CUSTOM2
 			);
 	}
 
