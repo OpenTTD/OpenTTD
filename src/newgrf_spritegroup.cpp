@@ -103,7 +103,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  * @param[out] available Set to false, in case the variable does not exist.
  * @return Value
  */
-/* virtual */ uint32_t ScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
+/* virtual */ uint32_t ScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	Debug(grf, 1, "Unhandled scope variable 0x{:X}", variable);
 	*available = false;
@@ -112,10 +112,8 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 
 /**
  * Store a value into the persistent storage area (PSA). Default implementation does nothing (for newgrf classes without storage).
- * @param reg Position to store into.
- * @param value Value to store.
  */
-/* virtual */ void ScopeResolver::StorePSA(uint reg, int32_t value) {}
+/* virtual */ void ScopeResolver::StorePSA(uint, int32_t) {}
 
 /**
  * Get the real sprites of the grf.
@@ -132,11 +130,9 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 
 /**
  * Get a resolver for the \a scope.
- * @param scope Scope to return.
- * @param relative Additional parameter for #VSG_SCOPE_RELATIVE.
  * @return The resolver for the requested scope.
  */
-/* virtual */ ScopeResolver *ResolverObject::GetScope(VarSpriteGroupScope scope, byte relative)
+/* virtual */ ScopeResolver *ResolverObject::GetScope(VarSpriteGroupScope, byte)
 {
 	return &this->default_scope;
 }

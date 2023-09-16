@@ -86,7 +86,7 @@ public:
 static ConsoleFileList _console_file_list; ///< File storage cache for the console.
 
 /* console command defines */
-#define DEF_CONSOLE_CMD(function) static bool function(byte argc, char *argv[])
+#define DEF_CONSOLE_CMD(function) static bool function([[maybe_unused]] byte argc, [[maybe_unused]] char *argv[])
 #define DEF_CONSOLE_HOOK(function) static ConsoleHookResult function(bool echo)
 
 

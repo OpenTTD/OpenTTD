@@ -155,9 +155,8 @@ Town::~Town()
 /**
  * Invalidating of the "nearest town cache" has to be done
  * after removing item from the pool.
- * @param index index of deleted item
  */
-void Town::PostDestructor(size_t index)
+void Town::PostDestructor(size_t)
 {
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, TDIWD_FORCE_REBUILD);
 	UpdateNearestTownForRoadTiles(false);
@@ -306,7 +305,7 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 }
 
-static int GetSlopePixelZ_Town(TileIndex tile, uint x, uint y, bool ground_vehicle)
+static int GetSlopePixelZ_Town(TileIndex tile, uint, uint, bool)
 {
 	return GetTileMaxPixelZ(tile);
 }
@@ -800,13 +799,13 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 	td->owner[0] = OWNER_TOWN;
 }
 
-static TrackStatus GetTileTrackStatus_Town(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Town(TileIndex, TransportType, uint, DiagDirection)
 {
 	/* not used */
 	return 0;
 }
 
-static void ChangeTileOwner_Town(TileIndex tile, Owner old_owner, Owner new_owner)
+static void ChangeTileOwner_Town(TileIndex, Owner, Owner)
 {
 	/* not used */
 }
@@ -2159,9 +2158,8 @@ static bool FindFurthestFromWater(TileIndex tile, void *user_data)
  * CircularTileSearch callback; finds the nearest land tile
  *
  * @param tile Start looking from this tile
- * @param user_data not used
  */
-static bool FindNearestEmptyLand(TileIndex tile, void *user_data)
+static bool FindNearestEmptyLand(TileIndex tile, void *)
 {
 	return IsTileType(tile, MP_CLEAR);
 }
@@ -2358,7 +2356,7 @@ static void MakeTownHouse(TileIndex t, Town *town, byte counter, byte stage, Hou
 	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(t + TileDiffXY(1, 0), town, counter, stage, ++type, random_bits);
 	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(t + TileDiffXY(1, 1), town, counter, stage, ++type, random_bits);
 
-	ForAllStationsAroundTiles(TileArea(t, (size & BUILDING_2_TILES_X) ? 2 : 1, (size & BUILDING_2_TILES_Y) ? 2 : 1), [town](Station *st, TileIndex tile) {
+	ForAllStationsAroundTiles(TileArea(t, (size & BUILDING_2_TILES_X) ? 2 : 1, (size & BUILDING_2_TILES_Y) ? 2 : 1), [town](Station *st, TileIndex) {
 		town->stations_near.insert(st);
 		return true;
 	});

@@ -33,7 +33,7 @@ struct RoadTypeScopeResolver : public ScopeResolver {
 	}
 
 	/* virtual */ uint32_t GetRandomBits() const;
-	/* virtual */ uint32_t GetVariable(byte variable, uint32_t parameter, bool *available) const;
+	/* virtual */ uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const;
 };
 
 /** Resolver object for road types. */

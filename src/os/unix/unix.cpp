@@ -59,7 +59,7 @@ bool FiosIsRoot(const std::string &path)
 	return path == PATHSEP;
 }
 
-void FiosGetDrives(FileList &file_list)
+void FiosGetDrives(FileList &)
 {
 	return;
 }
@@ -199,7 +199,7 @@ void ShowInfoI(const std::string &str)
 }
 
 #if !defined(__APPLE__)
-void ShowOSErrorBox(const char *buf, bool system)
+void ShowOSErrorBox(const char *buf, bool)
 {
 	/* All unix systems, except OSX. Only use escape codes on a TTY. */
 	if (isatty(fileno(stderr))) {
@@ -251,7 +251,7 @@ void OSOpenBrowser(const char *url)
 }
 #endif /* __APPLE__ */
 
-void SetCurrentThreadName(const char *threadName) {
+void SetCurrentThreadName([[maybe_unused]] const char *threadName) {
 #if defined(__GLIBC__)
 	if (threadName) pthread_setname_np(pthread_self(), threadName);
 #endif /* defined(__GLIBC__) */

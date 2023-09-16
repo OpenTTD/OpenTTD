@@ -3259,12 +3259,12 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	DrawRailTileSeqInGUI(x, y, t, st == STATION_WAYPOINT ? 0 : total_offset, 0, pal);
 }
 
-static int GetSlopePixelZ_Station(TileIndex tile, uint x, uint y, bool ground_vehicle)
+static int GetSlopePixelZ_Station(TileIndex tile, uint, uint, bool)
 {
 	return GetTileMaxPixelZ(tile);
 }
 
-static Foundation GetFoundation_Station(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Station(TileIndex, Slope tileh)
 {
 	return FlatteningFoundation(tileh);
 }
@@ -4137,7 +4137,7 @@ const StationList *StationFinder::GetStations()
 			assert(this->w == 1 && this->h == 1);
 			AddNearbyStationsByCatchment(this->tile, &this->stations, Town::GetByTile(this->tile)->stations_near);
 		} else {
-			ForAllStationsAroundTiles(*this, [this](Station *st, TileIndex tile) {
+			ForAllStationsAroundTiles(*this, [this](Station *st, TileIndex) {
 				this->stations.insert(st);
 				return true;
 			});

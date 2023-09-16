@@ -149,7 +149,7 @@ size_t Blitter_8bppBase::BufferSize(uint width, uint height)
 	return static_cast<size_t>(width) * height;
 }
 
-void Blitter_8bppBase::PaletteAnimate(const Palette &palette)
+void Blitter_8bppBase::PaletteAnimate(const Palette &)
 {
 	/* Video backend takes care of the palette animation */
 }

@@ -282,13 +282,13 @@ private:
 	QueryString filter_editbox; ///< Filter editbox;
 	std::vector<FiosItem *> display_list; ///< Filtered display list
 
-	static void SaveGameConfirmationCallback(Window *w, bool confirmed)
+	static void SaveGameConfirmationCallback(Window *, bool confirmed)
 	{
 		/* File name has already been written to _file_to_saveload */
 		if (confirmed) _switch_mode = SM_SAVE_GAME;
 	}
 
-	static void SaveHeightmapConfirmationCallback(Window *w, bool confirmed)
+	static void SaveHeightmapConfirmationCallback(Window *, bool confirmed)
 	{
 		/* File name has already been written to _file_to_saveload */
 		if (confirmed) _switch_mode = SM_SAVE_HEIGHTMAP;
@@ -561,7 +561,7 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SL_BACKGROUND:
@@ -594,7 +594,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_SL_SORT_BYNAME: // Sort save names by name
@@ -716,7 +716,7 @@ public:
 		}
 	}
 
-	void OnMouseOver(Point pt, int widget) override
+	void OnMouseOver([[maybe_unused]] Point pt, int widget) override
 	{
 		if (widget == WID_SL_DRIVES_DIRECTORIES_LIST) {
 			auto it = this->vscroll->GetScrolledItemFromWidget(this->display_list, pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WidgetDimensions::scaled.inset.top);
@@ -735,7 +735,7 @@ public:
 		}
 	}
 
-	EventState OnKeyPress(char32_t key, uint16_t keycode) override
+	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
 		if (keycode == WKC_ESC) {
 			this->Close();

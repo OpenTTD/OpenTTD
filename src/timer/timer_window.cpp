@@ -61,7 +61,7 @@ void TimerManager<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 
 #ifdef WITH_ASSERT
 template<>
-void TimerManager<TimerWindow>::Validate(TimerWindow::TPeriod period)
+void TimerManager<TimerWindow>::Validate(TimerWindow::TPeriod)
 {
 }
 #endif /* WITH_ASSERT */

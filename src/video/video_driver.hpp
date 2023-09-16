@@ -70,7 +70,7 @@ public:
 	 * Change the vsync setting.
 	 * @param vsync The new setting.
 	 */
-	virtual void ToggleVsync(bool vsync) {}
+	virtual void ToggleVsync([[maybe_unused]] bool vsync) {}
 
 	/**
 	 * Callback invoked after the blitter was changed.

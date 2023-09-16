@@ -1711,7 +1711,7 @@ void SlObject(void *object, const SaveLoadTable &slt)
  * is not known to the code. This means we are going to skip it.
  */
 class SlSkipHandler : public SaveLoadHandler {
-	void Save(void *object) const override
+	void Save(void *) const override
 	{
 		NOT_REACHED();
 	}
@@ -2339,9 +2339,8 @@ struct LZOSaveFilter : SaveFilter {
 	/**
 	 * Initialise this filter.
 	 * @param chain             The next filter in this chain.
-	 * @param compression_level The requested level of compression.
 	 */
-	LZOSaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain)
+	LZOSaveFilter(SaveFilter *chain, byte) : SaveFilter(chain)
 	{
 		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
@@ -2396,9 +2395,8 @@ struct NoCompSaveFilter : SaveFilter {
 	/**
 	 * Initialise this filter.
 	 * @param chain             The next filter in this chain.
-	 * @param compression_level The requested level of compression.
 	 */
-	NoCompSaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain)
+	NoCompSaveFilter(SaveFilter *chain, byte) : SaveFilter(chain)
 	{
 	}
 

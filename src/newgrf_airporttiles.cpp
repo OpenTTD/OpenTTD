@@ -159,7 +159,7 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 	return 0xFF << 8 | ats->grf_prop.subst_id; // so just give it the substitute
 }
 
-/* virtual */ uint32_t AirportTileScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
+/* virtual */ uint32_t AirportTileScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	assert(this->st != nullptr);
 
@@ -231,7 +231,7 @@ uint32_t AirportTileResolverObject::GetDebugID() const
 	return this->tiles_scope.ats->grf_prop.local_id;
 }
 
-uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, const AirportTileSpec *ats, Station *st, TileIndex tile, int extra_data = 0)
+uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, const AirportTileSpec *ats, Station *st, TileIndex tile, [[maybe_unused]] int extra_data = 0)
 {
 	AirportTileResolverObject object(ats, tile, st, callback, param1, param2);
 	return object.ResolveCallback();

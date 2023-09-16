@@ -690,7 +690,7 @@ static bool DisasterTick_Submarine(DisasterVehicle *v)
 }
 
 
-static bool DisasterTick_NULL(DisasterVehicle *v)
+static bool DisasterTick_NULL(DisasterVehicle *)
 {
 	return true;
 }

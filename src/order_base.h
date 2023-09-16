@@ -359,7 +359,7 @@ public:
 	 *       into the shared vehicle chain.
 	 * @param v vehicle to add to the list
 	 */
-	inline void AddVehicle(Vehicle *v) { ++this->num_vehicles; }
+	inline void AddVehicle([[maybe_unused]] Vehicle *v) { ++this->num_vehicles; }
 
 	void RemoveVehicle(Vehicle *v);
 

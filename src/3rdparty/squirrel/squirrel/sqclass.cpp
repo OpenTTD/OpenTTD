@@ -187,7 +187,7 @@ SQInstance::~SQInstance()
 	if(_class){ Finalize(); } //if _class is null it was already finalized by the GC
 }
 
-bool SQInstance::GetMetaMethod(SQVM *v,SQMetaMethod mm,SQObjectPtr &res)
+bool SQInstance::GetMetaMethod(SQVM *,SQMetaMethod mm,SQObjectPtr &res)
 {
 	if(type(_class->_metamethods[mm]) != OT_NULL) {
 		res = _class->_metamethods[mm];

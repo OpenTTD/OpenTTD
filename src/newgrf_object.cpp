@@ -253,7 +253,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte local_id, uint32_t grf
 }
 
 /** Used by the resolver to get values for feature 0F deterministic spritegroups. */
-/* virtual */ uint32_t ObjectScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
+/* virtual */ uint32_t ObjectScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	/* We get the town from the object, or we calculate the closest
 	 * town if we need to when there's no object. */
@@ -524,10 +524,9 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
  * @param spec     The specification of the object / the entry point.
  * @param o        The object to call the callback for.
  * @param tile     The tile the callback is called for.
- * @param extra_data Ignored.
  * @return The result of the callback.
  */
-uint16_t StubGetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, int extra_data)
+uint16_t StubGetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, int)
 {
 	return GetObjectCallback(callback, param1, param2, spec, o, tile);
 }

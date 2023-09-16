@@ -121,10 +121,9 @@ CommandCost CmdDecreaseLoan(DoCommandFlag flags, LoanCommand cmd, Money amount)
 /**
  * In case of an unsafe unpause, we want the
  * user to confirm that it might crash.
- * @param w         unused
  * @param confirmed whether the user confirmed their action
  */
-static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
+static void AskUnsafeUnpauseCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
 		Command<CMD_PAUSE>::Post(PM_PAUSED_ERROR, false);
@@ -191,11 +190,10 @@ CommandCost CmdPause(DoCommandFlag flags, PauseMode mode, bool pause)
 
 /**
  * Change the financial flow of your company.
- * @param flags operation to perform
  * @param amount the amount of money to receive (if positive), or spend (if negative)
  * @return the cost of this operation or an error
  */
-CommandCost CmdMoneyCheat(DoCommandFlag flags, Money amount)
+CommandCost CmdMoneyCheat(DoCommandFlag, Money amount)
 {
 	return CommandCost(EXPENSES_OTHER, -amount);
 }

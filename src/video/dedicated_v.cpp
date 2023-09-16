@@ -103,7 +103,7 @@ extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, Detaile
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 
 
-const char *VideoDriver_Dedicated::Start(const StringList &parm)
+const char *VideoDriver_Dedicated::Start(const StringList &)
 {
 	this->UpdateAutoResolution();
 
@@ -140,9 +140,9 @@ void VideoDriver_Dedicated::Stop()
 	free(_dedicated_video_mem);
 }
 
-void VideoDriver_Dedicated::MakeDirty(int left, int top, int width, int height) {}
-bool VideoDriver_Dedicated::ChangeResolution(int w, int h) { return false; }
-bool VideoDriver_Dedicated::ToggleFullscreen(bool fs) { return false; }
+void VideoDriver_Dedicated::MakeDirty(int, int, int, int) {}
+bool VideoDriver_Dedicated::ChangeResolution(int, int) { return false; }
+bool VideoDriver_Dedicated::ToggleFullscreen(bool) { return false; }
 
 #if defined(UNIX)
 static bool InputWaiting()

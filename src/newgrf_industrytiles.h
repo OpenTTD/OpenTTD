@@ -31,7 +31,7 @@ struct IndustryTileScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetVariable(byte variable, uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 	uint32_t GetTriggers() const override;
 };
 

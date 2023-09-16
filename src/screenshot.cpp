@@ -599,7 +599,7 @@ void InitializeScreenshotFormats()
  * Callback of the screenshot generator that dumps the current video buffer.
  * @see ScreenshotCallback
  */
-static void CurrentScreenCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
+static void CurrentScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	void *src = blitter->MoveTo(_screen.dst_ptr, 0, y);
@@ -811,14 +811,12 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint3
 
 /**
  * Callback for generating a heightmap. Supports 8bpp grayscale only.
- * @param userdata Pointer to user data.
  * @param buffer   Destination buffer.
  * @param y        Line number of the first line to write.
- * @param pitch    Number of pixels to write (1 byte for 8bpp, 4 bytes for 32bpp). @see Colour
  * @param n        Number of lines to write.
  * @see ScreenshotCallback
  */
-static void HeightmapCallback(void *userdata, void *buffer, uint y, uint pitch, uint n)
+static void HeightmapCallback(void *, void *buffer, uint y, uint, uint n)
 {
 	byte *buf = (byte *)buffer;
 	while (n > 0) {
@@ -862,10 +860,9 @@ static ScreenshotType _confirmed_screenshot_type; ///< Screenshot type the curre
 
 /**
  * Callback on the confirmation window for huge screenshots.
- * @param w Window with viewport
  * @param confirmed true on confirmation
  */
-static void ScreenshotConfirmationCallback(Window *w, bool confirmed)
+static void ScreenshotConfirmationCallback(Window *, bool confirmed)
 {
 	if (confirmed) MakeScreenshot(_confirmed_screenshot_type, {});
 }
@@ -996,7 +993,7 @@ bool MakeScreenshot(ScreenshotType t, std::string name, uint32_t width, uint32_t
 }
 
 
-static void MinimapScreenCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
+static void MinimapScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
 {
 	uint32_t *ubuf = (uint32_t *)buf;
 	uint num = (pitch * n);

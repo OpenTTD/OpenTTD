@@ -15,17 +15,17 @@
 /** The music player that does nothing. */
 class MusicDriver_Null : public MusicDriver {
 public:
-	const char *Start(const StringList &param) override { return nullptr; }
+	const char *Start(const StringList &) override { return nullptr; }
 
 	void Stop() override { }
 
-	void PlaySong(const MusicSongInfo &song) override { }
+	void PlaySong(const MusicSongInfo &) override { }
 
 	void StopSong() override { }
 
 	bool IsSongPlaying() override { return true; }
 
-	void SetVolume(byte vol) override { }
+	void SetVolume(byte) override { }
 	const char *GetName() const override { return "null"; }
 };
 

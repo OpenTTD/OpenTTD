@@ -136,7 +136,7 @@ public:
 
 	virtual bool IsHighlighted() const { return false; }
 	virtual TextColour GetHighlightColour() const { return TC_INVALID; }
-	virtual void SetHighlighted(TextColour highlight_colour) {}
+	virtual void SetHighlighted([[maybe_unused]] TextColour highlight_colour) {}
 
 	/**
 	 * Set additional space (padding) around the widget.

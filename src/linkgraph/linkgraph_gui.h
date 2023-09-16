@@ -108,10 +108,10 @@ public:
 	LinkGraphLegendWindow(WindowDesc *desc, int window_number);
 	void SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay);
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override;
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override;
 	void DrawWidget(const Rect &r, int widget) const override;
-	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond) override;
-	void OnClick(Point pt, int widget, int click_count) override;
+	bool OnTooltip([[maybe_unused]] Point pt, int widget, TooltipCloseCondition close_cond) override;
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 
 private:

@@ -36,12 +36,12 @@ struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
 
 	void GetTileArea(TileArea *ta, StationType type) const override;
 
-	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const override
+	uint GetPlatformLength(TileIndex, DiagDirection) const override
 	{
 		return 1;
 	}
 
-	uint GetPlatformLength(TileIndex tile) const override
+	uint GetPlatformLength(TileIndex) const override
 	{
 		return 1;
 	}

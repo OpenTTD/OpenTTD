@@ -168,13 +168,13 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 }
 
 
-/* virtual */ void LoggedChangeMode::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeMode::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &, GamelogActionType)
 {
 	/* Changing landscape, or going from scenario editor to game or back. */
 	fmt::format_to(output_iterator, "New game mode: {} landscape: {}", this->mode, this->landscape);
 }
 
-/* virtual */ void LoggedChangeRevision::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeRevision::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &, GamelogActionType)
 {
 	/* The game was loaded in a diffferent version than before. */
 	fmt::format_to(output_iterator, "Revision text changed to {}, savegame version {}, ",
@@ -189,7 +189,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	fmt::format_to(output_iterator, "modified, _openttd_newgrf_version = 0x{:08x}", this->newgrf);
 }
 
-/* virtual */ void LoggedChangeOldVersion::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeOldVersion::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &, GamelogActionType)
 {
 	/* The game was loaded from before 0.7.0-beta1. */
 	fmt::format_to(output_iterator, "Conversion from ");
@@ -221,13 +221,13 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	}
 }
 
-/* virtual */ void LoggedChangeSettingChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeSettingChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &, GamelogActionType)
 {
 	/* A setting with the SF_NO_NETWORK flag got changed; these settings usually affect NewGRFs, such as road side or wagon speed limits. */
 	fmt::format_to(output_iterator, "Setting changed: {} : {} -> {}", this->name, this->oldval, this->newval);
 }
 
-/* virtual */ void LoggedChangeGRFAdd::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeGRFAdd::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType)
 {
 	/* A NewGRF got added to the game, either at the start of the game (never an issue), or later on when it could be an issue. */
 	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, &this->md5sum);
@@ -256,7 +256,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	}
 }
 
-/* virtual */ void LoggedChangeGRFChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeGRFChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType)
 {
 	/* Another version of the same NewGRF got loaded. */
 	const GRFConfig *gc = FindGRFConfig(this->grfid, FGCM_EXACT, &this->md5sum);
@@ -266,7 +266,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	grf_names[this->grfid] = gc;
 }
 
-/* virtual */ void LoggedChangeGRFParameterChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeGRFParameterChanged::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType)
 {
 	/* A parameter of a NewGRF got changed after the game was started. */
 	auto gm = grf_names.find(this->grfid);
@@ -275,7 +275,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	if (gm == grf_names.end()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 }
 
-/* virtual */ void LoggedChangeGRFMoved::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeGRFMoved::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType)
 {
 	/* The order of NewGRFs got changed, which might cause some other NewGRFs to behave differently. */
 	auto gm = grf_names.find(this->grfid);
@@ -285,7 +285,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	if (gm == grf_names.end()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 }
 
-/* virtual */ void LoggedChangeGRFBug::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeGRFBug::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType)
 {
 	/* A specific bug in a NewGRF, that could cause wide spread problems, has been noted during the execution of the game. */
 	auto gm = grf_names.find(this->grfid);
@@ -296,7 +296,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	if (gm == grf_names.end()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 }
 
-/* virtual */ void LoggedChangeEmergencySave::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type)
+/* virtual */ void LoggedChangeEmergencySave::FormatTo(std::back_insert_iterator<std::string> &, GrfIDMapping &, GamelogActionType)
 {
 	/* At one point the savegame was made during the handling of a game crash.
 	 * The generic code already mentioned the emergency savegame, and there is no extra information to log. */

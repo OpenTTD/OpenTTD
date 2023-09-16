@@ -157,7 +157,7 @@ protected:
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
 	void *GetVideoPointer() override;
 	void ReleaseVideoPointer() override;
-	void PaletteChanged(HWND hWnd) override {}
+	void PaletteChanged(HWND) override {}
 
 	const char *AllocateContext();
 	void DestroyContext();

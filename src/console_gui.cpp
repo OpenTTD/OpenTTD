@@ -200,7 +200,7 @@ struct IConsoleWindow : Window
 		if (_iconsole_cmdline.HandleCaret()) this->SetDirty();
 	}
 
-	EventState OnKeyPress(char32_t key, uint16_t keycode) override
+	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
 		if (_focused_window != this) return ES_NOT_HANDLED;
 
@@ -271,7 +271,7 @@ struct IConsoleWindow : Window
 		return ES_HANDLED;
 	}
 
-	void InsertTextString(int wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end) override
+	void InsertTextString(int, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end) override
 	{
 		if (_iconsole_cmdline.InsertString(str, marked, caret, insert_location, replacement_end)) {
 			IConsoleWindow::scroll = 0;
@@ -323,7 +323,7 @@ struct IConsoleWindow : Window
 		VideoDriver::GetInstance()->EditBoxGainedFocus();
 	}
 
-	void OnFocusLost(bool closing) override
+	void OnFocusLost(bool) override
 	{
 		VideoDriver::GetInstance()->EditBoxLostFocus();
 	}

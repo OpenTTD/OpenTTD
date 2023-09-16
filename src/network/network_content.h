@@ -31,7 +31,7 @@ struct ContentCallback {
 	 * Callback for when the connection has finished
 	 * @param success whether the connection was made or that we failed to make it
 	 */
-	virtual void OnConnect(bool success) {}
+	virtual void OnConnect([[maybe_unused]] bool success) {}
 
 	/**
 	 * Callback for when the connection got disconnected.
@@ -42,20 +42,20 @@ struct ContentCallback {
 	 * We received a content info.
 	 * @param ci the content info
 	 */
-	virtual void OnReceiveContentInfo(const ContentInfo *ci) {}
+	virtual void OnReceiveContentInfo([[maybe_unused]] const ContentInfo *ci) {}
 
 	/**
 	 * We have progress in the download of a file
 	 * @param ci the content info of the file
 	 * @param bytes the number of bytes downloaded since the previous call
 	 */
-	virtual void OnDownloadProgress(const ContentInfo *ci, int bytes) {}
+	virtual void OnDownloadProgress([[maybe_unused]] const ContentInfo *ci, [[maybe_unused]] int bytes) {}
 
 	/**
 	 * We have finished downloading a file
 	 * @param cid the ContentID of the downloaded file
 	 */
-	virtual void OnDownloadComplete(ContentID cid) {}
+	virtual void OnDownloadComplete([[maybe_unused]] ContentID cid) {}
 
 	/** Silentium */
 	virtual ~ContentCallback() = default;

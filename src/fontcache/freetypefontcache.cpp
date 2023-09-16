@@ -63,7 +63,7 @@ FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : Tr
 	this->SetFontSize(fs, face, pixels);
 }
 
-void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
+void FreeTypeFontCache::SetFontSize(FontSize, FT_Face, int pixels)
 {
 	if (pixels == 0) {
 		/* Try to determine a good height based on the minimal height recommended by the font. */

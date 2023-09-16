@@ -27,7 +27,7 @@ public:
 	virtual ~DropDownListItem() = default;
 
 	virtual bool Selectable() const { return false; }
-	virtual uint Height(uint width) const { return FONT_HEIGHT_NORMAL; }
+	virtual uint Height([[maybe_unused]] uint) const { return FONT_HEIGHT_NORMAL; }
 	virtual uint Width() const { return 0; }
 	virtual void Draw(const Rect &r, bool sel, Colours bg_colour) const;
 };

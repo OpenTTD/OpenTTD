@@ -492,25 +492,25 @@ public:
 	 * Save the object to disk.
 	 * @param object The object to store.
 	 */
-	virtual void Save(void *object) const {}
+	virtual void Save([[maybe_unused]] void *object) const {}
 
 	/**
 	 * Load the object from disk.
 	 * @param object The object to load.
 	 */
-	virtual void Load(void *object) const {}
+	virtual void Load([[maybe_unused]] void *object) const {}
 
 	/**
 	 * Similar to load, but used only to validate savegames.
 	 * @param object The object to load.
 	 */
-	virtual void LoadCheck(void *object) const {}
+	virtual void LoadCheck([[maybe_unused]] void *object) const {}
 
 	/**
 	 * A post-load callback to fix #SL_REF integers into pointers.
 	 * @param object The object to fix.
 	 */
-	virtual void FixPointers(void *object) const {}
+	virtual void FixPointers([[maybe_unused]] void *object) const {}
 
 	/**
 	 * Get the description of the fields in the savegame.
@@ -547,16 +547,16 @@ public:
 	SaveLoadTable GetDescription() const override { return static_cast<const TImpl *>(this)->description; }
 	SaveLoadCompatTable GetCompatDescription() const override { return static_cast<const TImpl *>(this)->compat_description; }
 
-	virtual void Save(TObject *object) const {}
+	virtual void Save([[maybe_unused]] TObject *object) const {}
 	void Save(void *object) const override { this->Save(static_cast<TObject *>(object)); }
 
-	virtual void Load(TObject *object) const {}
+	virtual void Load([[maybe_unused]] TObject *object) const {}
 	void Load(void *object) const override { this->Load(static_cast<TObject *>(object)); }
 
-	virtual void LoadCheck(TObject *object) const {}
+	virtual void LoadCheck([[maybe_unused]] TObject *object) const {}
 	void LoadCheck(void *object) const override { this->LoadCheck(static_cast<TObject *>(object)); }
 
-	virtual void FixPointers(TObject *object) const {}
+	virtual void FixPointers([[maybe_unused]] TObject *object) const {}
 	void FixPointers(void *object) const override { this->FixPointers(static_cast<TObject *>(object)); }
 };
 

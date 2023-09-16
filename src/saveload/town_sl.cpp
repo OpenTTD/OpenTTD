@@ -190,7 +190,7 @@ public:
 	};
 	inline const static SaveLoadCompatTable compat_description = _town_acceptance_matrix_sl_compat;
 
-	void Load(Town *t) const override
+	void Load(Town *) const override
 	{
 		/* Discard now unused acceptance matrix. */
 		AcceptanceMatrix dummy;

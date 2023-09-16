@@ -19,8 +19,8 @@
 
 template <typename Tobj>
 struct TileAnimationFrameAnimationHelper {
-	static byte Get(Tobj *obj, TileIndex tile) { return GetAnimationFrame(tile); }
-	static void Set(Tobj *obj, TileIndex tile, byte frame) { SetAnimationFrame(tile, frame); }
+	static byte Get(Tobj *, TileIndex tile) { return GetAnimationFrame(tile); }
+	static void Set(Tobj *, TileIndex tile, byte frame) { SetAnimationFrame(tile, frame); }
 };
 
 /**

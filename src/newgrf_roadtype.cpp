@@ -23,7 +23,7 @@
 	return GB(tmp, 0, 2);
 }
 
-/* virtual */ uint32_t RoadTypeScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
+/* virtual */ uint32_t RoadTypeScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	if (this->tile == INVALID_TILE) {
 		switch (variable) {

@@ -520,7 +520,7 @@ struct GenerateLandscapeWindow : public Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		/* Update the climate buttons */
@@ -588,7 +588,7 @@ struct GenerateLandscapeWindow : public Window {
 
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		Dimension d{0, (uint)FONT_HEIGHT_NORMAL};
 		const StringID *strs = nullptr;
@@ -681,7 +681,7 @@ struct GenerateLandscapeWindow : public Window {
 		*size = maxdim(*size, d);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_GL_TEMPERATE:
@@ -1132,7 +1132,7 @@ struct CreateScenarioWindow : public Window
 		this->DrawWidgets();
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		StringID str = STR_JUST_INT;
 		switch (widget) {
@@ -1159,7 +1159,7 @@ struct CreateScenarioWindow : public Window
 		*size = maxdim(*size, d);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_CS_TEMPERATE:
@@ -1372,7 +1372,7 @@ static const StringID _generation_class_table[]  = {
 static_assert(lengthof(_generation_class_table) == GWP_CLASS_COUNT);
 
 
-static void AbortGeneratingWorldCallback(Window *w, bool confirmed)
+static void AbortGeneratingWorldCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
 		AbortGeneratingWorld();
@@ -1388,7 +1388,7 @@ struct GenerateProgressWindow : public Window {
 		this->InitNested();
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_GP_ABORT:
@@ -1403,7 +1403,7 @@ struct GenerateProgressWindow : public Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_GP_PROGRESS_BAR: {

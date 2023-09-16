@@ -38,7 +38,7 @@ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
 }
 
 template <typename Tspec, typename Tid, Tid Tmax>
-bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint index) const
+bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint) const
 {
 	return true;
 }
@@ -63,7 +63,7 @@ uint32_t RoadStopScopeResolver::GetTriggers() const
 	return this->st == nullptr ? 0 : this->st->waiting_triggers;
 }
 
-uint32_t RoadStopScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
+uint32_t RoadStopScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	auto get_road_type_variable = [&](RoadTramType rtt) -> uint32_t {
 		RoadType rt;
@@ -305,7 +305,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 }
 
 /** Wrapper for animation control, see GetRoadStopCallback. */
-uint16_t GetAnimRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, int extra_data)
+uint16_t GetAnimRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, int)
 {
 	return GetRoadStopCallback(callback, param1, param2, roadstopspec, st, tile, INVALID_ROADTYPE, GetStationType(tile), GetStationGfx(tile));
 }

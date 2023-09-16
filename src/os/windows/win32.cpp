@@ -45,7 +45,7 @@ bool MyShowCursor(bool show, bool toggle)
 	return !show;
 }
 
-void ShowOSErrorBox(const char *buf, bool system)
+void ShowOSErrorBox(const char *buf, bool)
 {
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), OTTD2FS(buf).c_str(), L"Error!", MB_ICONSTOP | MB_TASKMODAL);
@@ -190,7 +190,7 @@ void FiosGetDrives(FileList &file_list)
 	}
 }
 
-bool FiosIsValidFile(const std::string &path, const struct dirent *ent, struct stat *sb)
+bool FiosIsValidFile(const std::string &, const struct dirent *ent, struct stat *sb)
 {
 	/* hectonanoseconds between Windows and POSIX epoch */
 	static const int64_t posix_epoch_hns = 0x019DB1DED53E8000LL;
@@ -283,7 +283,7 @@ void CreateConsole()
 static const char *_help_msg;
 
 /** Callback function to handle the window */
-static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
+static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM)
 {
 	switch (msg) {
 		case WM_INITDIALOG: {

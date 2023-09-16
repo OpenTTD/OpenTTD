@@ -274,7 +274,7 @@ void SQSharedState::EnqueueMarkObject(SQObjectPtr &o,SQGCMarkerQueue &queue)
 }
 
 
-SQInteger SQSharedState::CollectGarbage(SQVM *vm)
+SQInteger SQSharedState::CollectGarbage(SQVM *)
 {
 	SQInteger n=0;
 	SQVM *vms = _thread(_root_vm);

@@ -41,7 +41,7 @@ struct GenericScopeResolver : public ScopeResolver {
 	{
 	}
 
-	uint32_t GetVariable(byte variable, uint32_t parameter, bool *available) const override;
+	uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const override;
 
 private:
 	bool ai_callback; ///< Callback comes from the AI.
@@ -118,7 +118,7 @@ void AddGenericCallback(uint8_t feature, const GRFFile *file, const SpriteGroup 
 	_gcl[feature].push_front(GenericCallback(file, group));
 }
 
-/* virtual */ uint32_t GenericScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
+/* virtual */ uint32_t GenericScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	if (this->ai_callback) {
 		switch (variable) {

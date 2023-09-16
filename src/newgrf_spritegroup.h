@@ -58,7 +58,7 @@ struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
 	SpriteGroup(SpriteGroupType type) : nfo_line(0), type(type) {}
 	/** Base sprite group resolver */
-	virtual const SpriteGroup *Resolve(ResolverObject &object) const { return this; };
+	virtual const SpriteGroup *Resolve([[maybe_unused]] ResolverObject &object) const { return this; };
 
 public:
 	virtual ~SpriteGroup() = default;
@@ -294,7 +294,7 @@ struct ScopeResolver {
 	virtual uint32_t GetRandomBits() const;
 	virtual uint32_t GetTriggers() const;
 
-	virtual uint32_t GetVariable(byte variable, uint32_t parameter, bool *available) const;
+	virtual uint32_t GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const;
 	virtual void StorePSA(uint reg, int32_t value);
 };
 

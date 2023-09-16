@@ -934,7 +934,7 @@ void VideoDriver_Win32Base::EditBoxLostFocus()
 	SetCandidatePos(this->main_wnd);
 }
 
-static BOOL CALLBACK MonitorEnumProc(HMONITOR hMonitor, HDC hDC, LPRECT rc, LPARAM data)
+static BOOL CALLBACK MonitorEnumProc(HMONITOR hMonitor, HDC, LPRECT, LPARAM data)
 {
 	auto &list = *reinterpret_cast<std::vector<int>*>(data);
 

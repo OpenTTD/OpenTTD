@@ -45,7 +45,7 @@ public:
 	}
 };
 
-bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *p)
+bool ClientNetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *)
 {
 	this->ConnectFailure();
 

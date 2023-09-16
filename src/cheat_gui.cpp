@@ -51,11 +51,10 @@ static int32_t _money_cheat_amount = 10000000;
  * Note that the amount of money of a company must be changed through a command
  * rather than by setting a variable. Since the cheat data structure expects a
  * variable, the amount of given/taken money is used for this purpose.
- * @param new_value not used.
  * @param change_direction is -1 or +1 (down/up)
  * @return Amount of money cheat.
  */
-static int32_t ClickMoneyCheat(int32_t new_value, int32_t change_direction)
+static int32_t ClickMoneyCheat(int32_t, int32_t change_direction)
 {
 	Command<CMD_MONEY_CHEAT>::Post(Money(_money_cheat_amount) * change_direction);
 	return _money_cheat_amount;
@@ -83,10 +82,9 @@ static int32_t ClickChangeCompanyCheat(int32_t new_value, int32_t change_directi
 /**
  * Allow (or disallow) changing production of all industries.
  * @param new_value new value
- * @param change_direction unused
  * @return New value allowing change of industry production.
  */
-static int32_t ClickSetProdCheat(int32_t new_value, int32_t change_direction)
+static int32_t ClickSetProdCheat(int32_t new_value, int32_t)
 {
 	_cheats.setup_prod.value = (new_value != 0);
 	InvalidateWindowClassesData(WC_INDUSTRY_VIEW);
@@ -98,10 +96,9 @@ extern void EnginesMonthlyLoop();
 /**
  * Handle changing of the current year.
  * @param new_value The chosen year to change to.
- * @param change_direction +1 (increase) or -1 (decrease).
  * @return New year.
  */
-static int32_t ClickChangeDateCheat(int32_t new_value, int32_t change_direction)
+static int32_t ClickChangeDateCheat(int32_t new_value, int32_t)
 {
 	/* Don't allow changing to an invalid year, or the current year. */
 	auto new_year = Clamp(TimerGameCalendar::Year(new_value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
@@ -131,11 +128,10 @@ static int32_t ClickChangeDateCheat(int32_t new_value, int32_t change_direction)
 /**
  * Allow (or disallow) a change of the maximum allowed heightlevel.
  * @param new_value new value
- * @param change_direction unused
  * @return New value (or unchanged old value) of the maximum
  *         allowed heightlevel value.
  */
-static int32_t ClickChangeMaxHlCheat(int32_t new_value, int32_t change_direction)
+static int32_t ClickChangeMaxHlCheat(int32_t new_value, int32_t)
 {
 	new_value = Clamp(new_value, MIN_MAP_HEIGHT_LIMIT, MAX_MAP_HEIGHT_LIMIT);
 
@@ -301,7 +297,7 @@ struct CheatWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_C_PANEL) return;
 
@@ -347,7 +343,7 @@ struct CheatWindow : Window {
 		size->height = WidgetDimensions::scaled.framerect.Vertical() + this->line_height * lengthof(_cheats_ui);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		Rect r = this->GetWidget<NWidgetBase>(WID_C_PANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		uint btn = (pt.y - r.top) / this->line_height;

@@ -79,7 +79,7 @@ static void DoSetVolume()
 /**
  * Initialized the MIDI player, including QuickTime initialization.
  */
-const char *MusicDriver_Cocoa::Start(const StringList &parm)
+const char *MusicDriver_Cocoa::Start(const StringList &)
 {
 	if (NewMusicPlayer(&_player) != noErr) return "failed to create music player";
 

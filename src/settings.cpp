@@ -754,13 +754,13 @@ bool StringSettingDesc::IsDefaultValue(void *object) const
 	return this->def == str;
 }
 
-bool ListSettingDesc::IsSameValue(const IniItem *item, void *object) const
+bool ListSettingDesc::IsSameValue(const IniItem *, void *) const
 {
 	/* Checking for equality is way more expensive than just writing the value. */
 	return false;
 }
 
-bool ListSettingDesc::IsDefaultValue(void *object) const
+bool ListSettingDesc::IsDefaultValue(void *) const
 {
 	/* Defaults of lists are often complicated, and hard to compare. */
 	return false;

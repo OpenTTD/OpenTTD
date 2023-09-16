@@ -280,11 +280,10 @@ void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, 
 /**
  * Prepare for the test run of a command proc call.
  * @param cmd_flags Command flags.
- * @param tile Tile of command execution.
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex tile, Backup<CompanyID> &cur_company)
+bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex, Backup<CompanyID> &cur_company)
 {
 	/* Always execute server and spectator commands as spectator */
 	bool exec_as_spectator = (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0;
@@ -314,7 +313,7 @@ bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileInde
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, Backup<CompanyID> &cur_company)
+std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, [[maybe_unused]] Backup<CompanyID> &cur_company)
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_TESTMODE);
 	SetTownRatingTestMode(false);
@@ -354,7 +353,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return Final command result.
  */
-CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company)
+CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, [[maybe_unused]] const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company)
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 

@@ -53,7 +53,7 @@ class CrashLogUnix : public CrashLog {
 		survey["reason"] = strsignal(signum);
 	}
 
-	void SurveyStacktrace(nlohmann::json &survey) const override
+	void SurveyStacktrace([[maybe_unused]] nlohmann::json &survey) const override
 	{
 #if defined(__GLIBC__)
 		void *trace[64];
@@ -166,7 +166,7 @@ static sigset_t SetSignals(void(*handler)(int))
  *
  * @param signum the signal that caused us to crash.
  */
-static void CDECL HandleInternalCrash(int signum)
+static void CDECL HandleInternalCrash([[maybe_unused]] int signum)
 {
 	if (CrashLogUnix::current == nullptr || !CrashLogUnix::current->try_execute_active) {
 		fmt::print("Something went seriously wrong when creating the crash log. Aborting.\n");

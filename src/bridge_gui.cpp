@@ -50,12 +50,11 @@ typedef GUIList<BuildBridgeData> GUIBridgeList; ///< List of bridges, used in #B
  * Callback executed after a build Bridge CMD has been called
  *
  * @param result Whether the build succeeded
- * @param cmd unused
  * @param end_tile End tile of the bridge.
  * @param tile_start start tile
  * @param transport_type transport type.
  */
-void CcBuildBridge(Commands cmd, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, byte)
+void CcBuildBridge(Commands, const CommandCost &result, TileIndex end_tile, TileIndex tile_start, TransportType transport_type, BridgeType, byte)
 {
 	if (result.Failed()) return;
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_27_CONSTRUCTION_BRIDGE, end_tile);
@@ -175,7 +174,7 @@ public:
 		this->last_sorting = this->bridges.GetListing();
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_BBS_DROPDOWN_ORDER: {
@@ -212,7 +211,7 @@ public:
 		}
 	}
 
-	Point OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number) override
+	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
 		/* Position the window so hopefully the first bridge from the list is under the mouse pointer. */
 		NWidgetBase *list = this->GetWidget<NWidgetBase>(WID_BBS_BRIDGE_LIST);
@@ -244,7 +243,7 @@ public:
 		}
 	}
 
-	EventState OnKeyPress(char32_t key, uint16_t keycode) override
+	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
 		const uint8_t i = keycode - '1';
 		if (i < 9 && i < this->bridges.size()) {
@@ -256,7 +255,7 @@ public:
 		return ES_NOT_HANDLED;
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			default: break;

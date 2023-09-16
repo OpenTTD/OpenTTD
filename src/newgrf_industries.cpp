@@ -156,7 +156,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 	return count << 16 | GB(closest_dist, 0, 16);
 }
 
-/* virtual */ uint32_t IndustriesScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
+/* virtual */ uint32_t IndustriesScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	if (this->ro.callback == CBID_INDUSTRY_LOCATION) {
 		/* Variables available during construction check. */

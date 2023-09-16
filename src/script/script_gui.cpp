@@ -102,7 +102,7 @@ struct ScriptListWindow : public Window {
 		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_LIST_CAPTION_GAMESCRIPT : STR_AI_LIST_CAPTION_AI);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_SCRL_LIST) return;
 
@@ -184,7 +184,7 @@ struct ScriptListWindow : public Window {
 		InvalidateWindowClassesData(WC_TEXTFILE);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_SCRL_LIST: { // Select one of the Scripts
@@ -222,7 +222,7 @@ struct ScriptListWindow : public Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) {
 			this->Close();
@@ -342,7 +342,7 @@ struct ScriptSettingsWindow : public Window {
 		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_SCRS_BACKGROUND) return;
 
@@ -421,7 +421,7 @@ struct ScriptSettingsWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_SCRS_BACKGROUND: {
@@ -530,7 +530,7 @@ struct ScriptSettingsWindow : public Window {
 		SetValue(index);
 	}
 
-	void OnDropdownClose(Point pt, int widget, int index, bool instant_close) override
+	void OnDropdownClose(Point, int widget, int, bool) override
 	{
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
 		 * the same dropdown button was clicked again, and then not open the dropdown again.
@@ -557,7 +557,7 @@ struct ScriptSettingsWindow : public Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		this->RebuildVisibleSettings();
 		this->CloseChildWindows(WC_DROPDOWN_MENU);
@@ -640,7 +640,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
 		}
 	}
 
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		auto textfile = GetConfig(slot)->GetTextfile(file_type, slot);
 		if (!textfile.has_value()) {
@@ -788,7 +788,7 @@ struct ScriptDebugWindow : public Window {
 		this->InvalidateData(-1);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_SCRD_LOG_PANEL) {
 			resize->height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
@@ -948,7 +948,7 @@ struct ScriptDebugWindow : public Window {
 		this->last_vscroll_pos = this->vscroll->GetPosition();
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		/* Also called for hotkeys, so check for disabledness */
 		if (this->IsWidgetDisabled(widget)) return;
@@ -1032,7 +1032,7 @@ struct ScriptDebugWindow : public Window {
 	 *             This is the company ID of the AI/GS which wrote a new log message, or -1 in other cases.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		/* If the log message is related to the active company tab, check the break string.
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */

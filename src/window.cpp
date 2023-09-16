@@ -518,7 +518,7 @@ void Window::OnFocus()
 /**
  * Called when window loses focus
  */
-void Window::OnFocusLost(bool closing)
+void Window::OnFocusLost(bool)
 {
 	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) VideoDriver::GetInstance()->EditBoxLostFocus();
 }
@@ -1716,7 +1716,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16_t sm_width, i
 	return pt;
 }
 
-/* virtual */ Point Window::OnInitialPosition(int16_t sm_width, int16_t sm_height, int window_number)
+/* virtual */ Point Window::OnInitialPosition([[maybe_unused]]int16_t sm_width, [[maybe_unused]]int16_t sm_height, [[maybe_unused]]int window_number)
 {
 	return LocalGetWindowPlacement(this->window_desc, sm_width, sm_height, window_number);
 }

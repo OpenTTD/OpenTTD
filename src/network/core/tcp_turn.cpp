@@ -66,6 +66,6 @@ bool NetworkTurnSocketHandler::ReceiveInvalidPacket(PacketTurnType type)
 	return false;
 }
 
-bool NetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *p) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_ERROR); }
-bool NetworkTurnSocketHandler::Receive_SERCLI_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_TURN_SERCLI_CONNECT); }
-bool NetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_CONNECTED); }
+bool NetworkTurnSocketHandler::Receive_TURN_ERROR(Packet *) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_ERROR); }
+bool NetworkTurnSocketHandler::Receive_SERCLI_CONNECT(Packet *) { return this->ReceiveInvalidPacket(PACKET_TURN_SERCLI_CONNECT); }
+bool NetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet *) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_CONNECTED); }

@@ -101,7 +101,7 @@ struct OskWindow : public Window {
 		DrawCharCentered(_keyboard[this->shift][widget], r, TC_BLACK);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		/* clicked a letter */
 		if (widget >= WID_OSK_LETTERS) {
@@ -190,7 +190,7 @@ struct OskWindow : public Window {
 		this->parent->SetWidgetDirty(this->text_btn);
 	}
 
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->SetWidgetDirty(WID_OSK_TEXT);
