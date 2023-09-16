@@ -13,7 +13,6 @@
 #include "sqfuncproto.h"
 #include "sqclosure.h"
 #include "sqclass.h"
-#include <stdarg.h>
 #include <ctype.h>
 
 #include "../../../safeguards.h"
