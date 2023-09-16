@@ -1072,10 +1072,9 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
  * Check whether we can expand the rail part of the given station.
  * @param st the station to expand
  * @param new_ta the current (and if all is fine new) tile area of the rail part of the station
- * @param axis the axis of the newly build rail
  * @return Succeeded or failed command.
  */
-CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis)
+CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta)
 {
 	TileArea cur_ta = st->train_station;
 
@@ -1355,7 +1354,7 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 	if (ret.Failed()) return ret;
 
 	if (st != nullptr && st->train_station.tile != INVALID_TILE) {
-		ret = CanExpandRailStation(st, new_location, axis);
+		ret = CanExpandRailStation(st, new_location);
 		if (ret.Failed()) return ret;
 	}
 
@@ -2967,7 +2966,7 @@ static void DrawTile_Station(TileInfo *ti)
 		gfx = GetAirportGfx(ti->tile);
 		if (gfx >= NEW_AIRPORTTILE_OFFSET) {
 			const AirportTileSpec *ats = AirportTileSpec::Get(gfx);
-			if (ats->grf_prop.spritegroup[0] != nullptr && DrawNewAirportTile(ti, Station::GetByTile(ti->tile), gfx, ats)) {
+			if (ats->grf_prop.spritegroup[0] != nullptr && DrawNewAirportTile(ti, Station::GetByTile(ti->tile), ats)) {
 				return;
 			}
 			/* No sprite group (or no valid one) found, meaning no graphics associated.

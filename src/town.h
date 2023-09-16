@@ -309,6 +309,6 @@ static inline uint16_t TownTicksToGameTicks(uint16_t ticks) {
 }
 
 
-RoadType GetTownRoadType(const Town *t);
+RoadType GetTownRoadType();
 
 #endif /* TOWN_H */

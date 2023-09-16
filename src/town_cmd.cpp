@@ -852,7 +852,7 @@ static RoadBits GetTownRoadBits(TileIndex tile)
 	return GetAnyRoadBits(tile, RTT_ROAD, true);
 }
 
-RoadType GetTownRoadType(const Town *t)
+RoadType GetTownRoadType()
 {
 	RoadType best_rt = ROADTYPE_ROAD;
 	const RoadTypeInfo *best = nullptr;
@@ -939,7 +939,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 		/* No, try if we are able to build a road piece there.
 		 * If that fails clear the land, and if that fails exit.
 		 * This is to make sure that we can build a road here later. */
-		RoadType rt = GetTownRoadType(t);
+		RoadType rt = GetTownRoadType();
 		if (Command<CMD_BUILD_ROAD>::Do(DC_AUTO | DC_NO_WATER, tile, (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X, rt, DRD_NONE, 0).Failed() &&
 				Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, tile).Failed()) {
 			return false;
@@ -1108,7 +1108,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
  */
 static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
 {
-	RoadType rt = GetTownRoadType(t);
+	RoadType rt = GetTownRoadType();
 	if (Command<CMD_BUILD_ROAD>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER, tile, rcmd, rt, DRD_NONE, t->index).Succeeded()) {
 		_grow_town_result = GROWTH_SUCCEED;
 		return true;
@@ -1130,7 +1130,7 @@ static bool CanRoadContinueIntoNextTile(const Town *t, const TileIndex tile, con
 	const int delta = TileOffsByDiagDir(road_dir); // +1 tile in the direction of the road
 	TileIndex next_tile = tile + delta; // The tile beyond which must be connectable to the target tile
 	RoadBits rcmd = DiagDirToRoadBits(ReverseDiagDir(road_dir));
-	RoadType rt = GetTownRoadType(t);
+	RoadType rt = GetTownRoadType();
 
 	/* Before we try anything, make sure the tile is on the map and not the void. */
 	if (!IsValidTile(next_tile)) return false;
@@ -1250,7 +1250,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 		byte bridge_type = RandomRange(MAX_BRIDGES - 1);
 
 		/* Can we actually build the bridge? */
-		RoadType rt = GetTownRoadType(t);
+		RoadType rt = GetTownRoadType();
 		if (Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt).Succeeded()) {
 			Command<CMD_BUILD_BRIDGE>::Do(DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt);
 			_grow_town_result = GROWTH_SUCCEED;
@@ -1321,7 +1321,7 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 	if (!CanRoadContinueIntoNextTile(t, tunnel_tile, tunnel_dir)) return false;
 
 	/* Attempt to build the tunnel. Return false if it fails to let the town build a road instead. */
-	RoadType rt = GetTownRoadType(t);
+	RoadType rt = GetTownRoadType();
 	if (Command<CMD_BUILD_TUNNEL>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt).Succeeded()) {
 		Command<CMD_BUILD_TUNNEL>::Do(DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt);
 		_grow_town_result = GROWTH_SUCCEED;
@@ -1362,17 +1362,16 @@ static inline bool RoadTypesAllowHouseHere(TileIndex t)
 }
 
 /** Test if town can grow road onto a specific tile.
- * @param town Town that is building.
  * @param tile Tile to build upon.
  * @return true iff the tile's road type don't prevent extending the road.
  */
-static bool TownCanGrowRoad(const Town *town, TileIndex tile)
+static bool TownCanGrowRoad(TileIndex tile)
 {
 	if (!IsTileType(tile, MP_ROAD)) return true;
 
 	/* Allow extending on roadtypes which can be built by town, or if the road type matches the type the town will build. */
 	RoadType rt = GetRoadTypeRoad(tile);
-	return HasBit(GetRoadTypeInfo(rt)->flags, ROTF_TOWN_BUILD) || GetTownRoadType(town) == rt;
+	return HasBit(GetRoadTypeInfo(rt)->flags, ROTF_TOWN_BUILD) || GetTownRoadType() == rt;
 }
 
 /**
@@ -1451,7 +1450,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		}
 
 	} else if (target_dir < DIAGDIR_END && !(cur_rb & DiagDirToRoadBits(ReverseDiagDir(target_dir)))) {
-		if (!TownCanGrowRoad(t1, tile)) return;
+		if (!TownCanGrowRoad(tile)) return;
 
 		/* Continue building on a partial road.
 		 * Should be always OK, so we only generate
@@ -1572,7 +1571,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 			return;
 		}
 
-		if (!TownCanGrowRoad(t1, tile)) return;
+		if (!TownCanGrowRoad(tile)) return;
 
 		_grow_town_result = GROWTH_SEARCH_STOPPED;
 	}
@@ -1780,7 +1779,7 @@ static bool GrowTown(Town *t)
 			/* Only work with plain land that not already has a house */
 			if (!IsTileType(tile, MP_HOUSE) && IsTileFlat(tile)) {
 				if (Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, tile).Succeeded()) {
-					RoadType rt = GetTownRoadType(t);
+					RoadType rt = GetTownRoadType();
 					Command<CMD_BUILD_ROAD>::Do(DC_EXEC | DC_AUTO, tile, GenRandomRoadBits(), rt, DRD_NONE, t->index);
 					cur_company.Restore();
 					return true;

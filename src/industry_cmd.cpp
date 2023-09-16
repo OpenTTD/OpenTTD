@@ -1585,7 +1585,7 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
  * This function tries to flatten out the land below an industry, without
  *  damaging the surroundings too much.
  */
-static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags, const IndustryTileLayout &layout, int type)
+static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags, const IndustryTileLayout &layout)
 {
 	int max_x = 0;
 	int max_y = 0;
@@ -1990,7 +1990,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 	if (ret.Failed()) return ret;
 
 	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world &&
-			!_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, layout, type)) {
+			!_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, layout)) {
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
@@ -1998,7 +1998,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 
 	if (flags & DC_EXEC) {
 		*ip = new Industry(tile);
-		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER | DC_EXEC, layout, type);
+		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER | DC_EXEC, layout);
 		DoCreateNewIndustry(*ip, tile, type, layout, layout_index, t, founder, random_initial_bits);
 	}
 

@@ -1237,10 +1237,9 @@ static OGLProc GetOGLProcAddressCallback(const char *proc)
 /**
  * Set the pixel format of a window-
  * @param dc Device context to set the pixel format of.
- * @param fullscreen Should the pixel format be used for fullscreen drawing?
  * @return nullptr on success, error message otherwise.
  */
-static const char *SelectPixelFormat(HDC dc, bool fullscreen)
+static const char *SelectPixelFormat(HDC dc)
 {
 	PIXELFORMATDESCRIPTOR pfd = {
 		sizeof(PIXELFORMATDESCRIPTOR), // Size of this struct.
@@ -1281,7 +1280,7 @@ static void LoadWGLExtensions()
 	HDC dc = GetDC(wnd);
 
 	/* Set pixel format of the window. */
-	if (SelectPixelFormat(dc, false) == nullptr) {
+	if (SelectPixelFormat(dc) == nullptr) {
 		/* Create rendering context. */
 		HGLRC rc = wglCreateContext(dc);
 		if (rc != nullptr) {
@@ -1396,7 +1395,7 @@ const char *VideoDriver_Win32OpenGL::AllocateContext()
 {
 	this->dc = GetDC(this->main_wnd);
 
-	const char *err = SelectPixelFormat(this->dc, this->fullscreen);
+	const char *err = SelectPixelFormat(this->dc);
 	if (err != nullptr) return err;
 
 	HGLRC rc = nullptr;

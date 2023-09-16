@@ -126,7 +126,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &, int winla
 Win32FontCache::Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels) : TrueTypeFontCache(fs, pixels), logfont(logfont)
 {
 	this->dc = CreateCompatibleDC(nullptr);
-	this->SetFontSize(fs, pixels);
+	this->SetFontSize(pixels);
 }
 
 Win32FontCache::~Win32FontCache()
@@ -136,7 +136,7 @@ Win32FontCache::~Win32FontCache()
 	DeleteObject(this->font);
 }
 
-void Win32FontCache::SetFontSize(FontSize fs, int pixels)
+void Win32FontCache::SetFontSize(int pixels)
 {
 	if (pixels == 0) {
 		/* Try to determine a good height based on the minimal height recommended by the font. */
@@ -202,7 +202,7 @@ void Win32FontCache::SetFontSize(FontSize fs, int pixels)
 void Win32FontCache::ClearFontCache()
 {
 	/* GUI scaling might have changed, determine font size anew if it was automatically selected. */
-	if (this->font != nullptr) this->SetFontSize(this->fs, this->req_size);
+	if (this->font != nullptr) this->SetFontSize(this->req_size);
 
 	this->TrueTypeFontCache::ClearFontCache();
 }

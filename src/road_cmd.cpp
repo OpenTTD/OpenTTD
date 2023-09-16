@@ -319,10 +319,9 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
  * @param flags operation to perform
  * @param pieces roadbits to remove
  * @param rt roadtype to remove
- * @param crossing_check should we check if there is a tram track when we are removing road from crossing?
  * @param town_check should we check if the town allows removal?
  */
-static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits pieces, RoadTramType rtt, bool crossing_check, bool town_check = true)
+static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits pieces, RoadTramType rtt, bool town_check)
 {
 	assert(pieces != ROAD_NONE);
 
@@ -1110,7 +1109,7 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlag flags, TileIndex 
 					if (money_spent > 0 && money_spent > money_available) {
 						return { cost, std::get<0>(Command<CMD_REMOVE_LONG_ROAD>::Do(flags & ~DC_EXEC, end_tile, start_tile, rt, axis, start_half, end_half)).GetCost() };
 					}
-					RemoveRoad(tile, flags, bits, rtt, true, false);
+					RemoveRoad(tile, flags, bits, rtt, false);
 				}
 				cost.AddCost(ret);
 				had_success = true;
@@ -1261,7 +1260,7 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 			for (RoadTramType rtt : { RTT_TRAM, RTT_ROAD }) {
 				if (!MayHaveRoad(tile) || GetRoadType(tile, rtt) == INVALID_ROADTYPE) continue;
 
-				CommandCost tmp_ret = RemoveRoad(tile, flags, GetCrossingRoadBits(tile), rtt, false);
+				CommandCost tmp_ret = RemoveRoad(tile, flags, GetCrossingRoadBits(tile), rtt, true);
 				if (tmp_ret.Failed()) return tmp_ret;
 				ret.AddCost(tmp_ret);
 			}
@@ -2035,7 +2034,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		/* Possibly change road type */
 		if (GetRoadOwner(tile, RTT_ROAD) == OWNER_TOWN) {
-			RoadType rt = GetTownRoadType(t);
+			RoadType rt = GetTownRoadType();
 			if (rt != GetRoadTypeRoad(tile)) {
 				SetRoadType(tile, RTT_ROAD, rt);
 			}
