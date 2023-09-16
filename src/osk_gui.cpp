@@ -185,9 +185,11 @@ struct OskWindow : public Window {
 
 	void OnEditboxChanged(int widget) override
 	{
-		this->SetWidgetDirty(WID_OSK_TEXT);
-		this->parent->OnEditboxChanged(this->text_btn);
-		this->parent->SetWidgetDirty(this->text_btn);
+		if (widget == WID_OSK_TEXT) {
+			this->SetWidgetDirty(WID_OSK_TEXT);
+			this->parent->OnEditboxChanged(this->text_btn);
+			this->parent->SetWidgetDirty(this->text_btn);
+		}
 	}
 
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override

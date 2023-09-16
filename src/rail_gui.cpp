@@ -1127,12 +1127,14 @@ public:
 		return ES_HANDLED;
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(int widget) override
 	{
-		string_filter.SetFilterTerm(this->filter_editbox.text.buf);
-		this->station_classes.SetFilterState(!string_filter.IsEmpty());
-		this->station_classes.ForceRebuild();
-		this->InvalidateData();
+		if (widget == WID_BRAS_FILTER_EDITBOX) {
+			string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			this->station_classes.SetFilterState(!string_filter.IsEmpty());
+			this->station_classes.ForceRebuild();
+			this->InvalidateData();
+		}
 	}
 
 	void OnPaint() override

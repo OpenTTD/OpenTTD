@@ -474,9 +474,11 @@ struct NetworkChatWindow : public Window {
 		return state;
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(int widget) override
 	{
-		_chat_tab_completion_active = false;
+		if (widget == WID_NC_TEXTBOX) {
+			_chat_tab_completion_active = false;
+		}
 	}
 
 	/**

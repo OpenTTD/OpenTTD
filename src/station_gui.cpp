@@ -638,13 +638,15 @@ public:
 
 	void OnDropdownSelect(int widget, int index) override
 	{
-		if (this->stations.SortType() != index) {
-			this->stations.SetSortType(index);
+		if (widget == WID_STL_SORTDROPBTN) {
+			if (this->stations.SortType() != index) {
+				this->stations.SetSortType(index);
 
-			/* Display the current sort variant */
-			this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->widget_data = this->sorter_names[this->stations.SortType()];
+				/* Display the current sort variant */
+				this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->widget_data = this->sorter_names[this->stations.SortType()];
 
-			this->SetDirty();
+				this->SetDirty();
+			}
 		}
 	}
 
@@ -1466,9 +1468,11 @@ struct StationViewWindow : public Window {
 
 	void SetStringParameters(int widget) const override
 	{
-		const Station *st = Station::Get(this->window_number);
-		SetDParam(0, st->index);
-		SetDParam(1, st->facilities);
+		if (widget == WID_SV_CAPTION) {
+			const Station *st = Station::Get(this->window_number);
+			SetDParam(0, st->index);
+			SetDParam(1, st->facilities);
+		}
 	}
 
 	/**

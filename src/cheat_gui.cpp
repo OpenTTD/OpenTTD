@@ -345,6 +345,8 @@ struct CheatWindow : Window {
 
 	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
+		if (widget != WID_C_PANEL) return;
+
 		Rect r = this->GetWidget<NWidgetBase>(WID_C_PANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		uint btn = (pt.y - r.top) / this->line_height;
 		uint x = pt.x - r.left;

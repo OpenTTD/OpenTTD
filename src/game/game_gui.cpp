@@ -367,12 +367,14 @@ struct GSConfigWindow : public Window {
 
 	void OnDropdownSelect(int widget, int index) override
 	{
+		if (widget >= 0) return;
 		assert(this->clicked_dropdown);
 		SetValue(index);
 	}
 
 	void OnDropdownClose(Point, int widget, int, bool) override
 	{
+		if (widget >= 0) return;
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
 		 * the same dropdown button was clicked again, and then not open the dropdown again.
 		 * So, we only remember that it was closed, and process it on the next OnPaint, which is

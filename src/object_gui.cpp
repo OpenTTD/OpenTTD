@@ -480,7 +480,7 @@ public:
 			object_number = -1;
 		} else {
 			view_number = sel_view;
-			ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+			ObjectClass *objclass = ObjectClass::Get(object_class);
 			object_number = objclass->GetUIFromIndex(sel_index);
 		}
 
@@ -583,12 +583,14 @@ public:
 		return ES_HANDLED;
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(int widget) override
 	{
-		string_filter.SetFilterTerm(this->filter_editbox.text.buf);
-		this->object_classes.SetFilterState(!string_filter.IsEmpty());
-		this->object_classes.ForceRebuild();
-		this->InvalidateData();
+		if (widget == WID_BO_FILTER) {
+			string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			this->object_classes.SetFilterState(!string_filter.IsEmpty());
+			this->object_classes.ForceRebuild();
+			this->InvalidateData();
+		}
 	}
 
 	/**

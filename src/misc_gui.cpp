@@ -698,7 +698,7 @@ struct TooltipsWindow : public Window
 
 	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
-		/* There is only one widget. */
+		if (widget != WID_TT_BACKGROUND) return;
 		CopyInDParam(this->params);
 
 		size->width  = std::min<uint>(GetStringBoundingBox(this->string_id).width, ScaleGUITrad(194));
@@ -711,7 +711,7 @@ struct TooltipsWindow : public Window
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
-		/* There is only one widget. */
+		if (widget != WID_TT_BACKGROUND) return;
 		GfxFillRect(r, PC_BLACK);
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_LIGHT_YELLOW);
 

@@ -1306,12 +1306,14 @@ public:
 		return ES_NOT_HANDLED;
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(int widget) override
 	{
-		string_filter.SetFilterTerm(this->filter_editbox.text.buf);
-		this->roadstop_classes.SetFilterState(!string_filter.IsEmpty());
-		this->roadstop_classes.ForceRebuild();
-		this->InvalidateData();
+		if (widget == WID_BROS_FILTER_EDITBOX) {
+			string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			this->roadstop_classes.SetFilterState(!string_filter.IsEmpty());
+			this->roadstop_classes.ForceRebuild();
+			this->InvalidateData();
+		}
 	}
 
 	void OnPaint() override

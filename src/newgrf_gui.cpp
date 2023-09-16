@@ -453,6 +453,7 @@ struct NewGRFParametersWindow : public Window {
 
 	void OnDropdownSelect(int widget, int index) override
 	{
+		if (widget >= 0) return;
 		assert(this->clicked_dropdown);
 		GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
 		par_info.SetValue(this->grf_config, index);
@@ -461,6 +462,7 @@ struct NewGRFParametersWindow : public Window {
 
 	void OnDropdownClose(Point, int widget, int, bool) override
 	{
+		if (widget >= 0) return;
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
 		 * the same dropdown button was clicked again, and then not open the dropdown again.
 		 * So, we only remember that it was closed, and process it on the next OnPaint, which is
@@ -1169,6 +1171,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	void OnDropdownSelect(int widget, int index) override
 	{
+		if (widget >= 0) return;
 		if (!this->editable) return;
 
 		ClearGRFConfigList(&this->actives);
@@ -1352,14 +1355,16 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		return ES_HANDLED;
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(int widget) override
 	{
 		if (!this->editable) return;
 
-		string_filter.SetFilterTerm(this->filter_editbox.text.buf);
-		this->avails.SetFilterState(!string_filter.IsEmpty());
-		this->avails.ForceRebuild();
-		this->InvalidateData(0);
+		if (widget == WID_NS_FILTER) {
+			string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+			this->avails.SetFilterState(!string_filter.IsEmpty());
+			this->avails.ForceRebuild();
+			this->InvalidateData(0);
+		}
 	}
 
 	void OnDragDrop(Point pt, int widget) override
