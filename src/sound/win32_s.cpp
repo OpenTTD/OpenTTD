@@ -40,7 +40,7 @@ static void PrepareHeader(WAVEHDR *hdr)
 	if (waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) throw "waveOutPrepareHeader failed";
 }
 
-static DWORD WINAPI SoundThread(LPVOID arg)
+static DWORD WINAPI SoundThread(LPVOID)
 {
 	SetCurrentThreadName("ottd:win-sound");
 

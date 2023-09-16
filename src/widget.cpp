@@ -1151,7 +1151,7 @@ bool NWidgetResizeBase::UpdateVerticalSize(uint min_y)
 	return true;
 }
 
-void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool)
 {
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
 }
@@ -1663,7 +1663,7 @@ NWidgetHorizontalLTR::NWidgetHorizontalLTR(NWidContainerFlags flags) : NWidgetHo
 	this->type = NWID_HORIZONTAL_LTR;
 }
 
-void NWidgetHorizontalLTR::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+void NWidgetHorizontalLTR::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool)
 {
 	NWidgetHorizontal::AssignSizePosition(sizing, x, y, given_width, given_height, false);
 }
@@ -1839,27 +1839,27 @@ NWidgetSpacer::NWidgetSpacer(int width, int height) : NWidgetResizeBase(NWID_SPA
 	this->SetResize(0, 0);
 }
 
-void NWidgetSpacer::SetupSmallestSize(Window *w, bool init_array)
+void NWidgetSpacer::SetupSmallestSize(Window *, bool)
 {
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
 }
 
-void NWidgetSpacer::FillNestedArray(NWidgetBase **array, uint length)
+void NWidgetSpacer::FillNestedArray(NWidgetBase **, uint)
 {
 }
 
-void NWidgetSpacer::Draw(const Window *w)
+void NWidgetSpacer::Draw(const Window *)
 {
 	/* Spacer widget is never visible. */
 }
 
-void NWidgetSpacer::SetDirty(const Window *w) const
+void NWidgetSpacer::SetDirty(const Window *) const
 {
 	/* Spacer widget never need repainting. */
 }
 
-NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int x, int y)
+NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int, int)
 {
 	return nullptr;
 }
@@ -1959,7 +1959,7 @@ void NWidgetMatrix::SetupSmallestSize(Window *w, bool init_array)
 	this->resize_y = resize.height;
 }
 
-void NWidgetMatrix::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+void NWidgetMatrix::AssignSizePosition(SizingType, uint x, uint y, uint given_width, uint given_height, bool)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 

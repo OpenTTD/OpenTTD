@@ -154,7 +154,7 @@ static inline Colour AdjustBrightneSSE(Colour colour, uint8_t brightness)
 }
 
 GNU_TARGET(SSE_TARGET)
-static inline __m128i AdjustBrightnessOfTwoPixels(__m128i from, uint32_t brightness)
+static inline __m128i AdjustBrightnessOfTwoPixels([[maybe_unused]] __m128i from, [[maybe_unused]] uint32_t brightness)
 {
 #if (SSE_VERSION < 3)
 	NOT_REACHED();

@@ -108,7 +108,7 @@ public:
 		return DropDownListStringItem::Width() + this->checkmark_width;
 	}
 
-	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
+	void Draw(const Rect &r, bool sel, Colours) const override
 	{
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
@@ -147,12 +147,12 @@ public:
 		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + WidgetDimensions::scaled.dropdowntext.Horizontal() + WidgetDimensions::scaled.hsep_wide;
 	}
 
-	uint Height(uint width) const override
+	uint Height(uint) const override
 	{
 		return std::max(std::max(this->icon_size.height, this->lock_size.height) + WidgetDimensions::scaled.imgbtn.Vertical(), (uint)FONT_HEIGHT_NORMAL);
 	}
 
-	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
+	void Draw(const Rect &r, bool sel, Colours) const override
 	{
 		CompanyID company = (CompanyID)this->result;
 		bool rtl = _current_text_dir == TD_RTL;
@@ -270,7 +270,7 @@ static CallBackFunction SelectSignTool()
 
 /* --- Pausing --- */
 
-static CallBackFunction ToolbarPauseClick(Window *w)
+static CallBackFunction ToolbarPauseClick(Window *)
 {
 	if (_networking && !_network_server) return CBF_NONE; // only server can pause the game
 
@@ -283,10 +283,9 @@ static CallBackFunction ToolbarPauseClick(Window *w)
 /**
  * Toggle fast forward mode.
  *
- * @param w Unused.
  * @return #CBF_NONE
  */
-static CallBackFunction ToolbarFastForwardClick(Window *w)
+static CallBackFunction ToolbarFastForwardClick(Window *)
 {
 	if (_networking) return CBF_NONE; // no fast forward in network game
 
@@ -551,10 +550,9 @@ static CallBackFunction ToolbarSubsidiesClick(Window *w)
 /**
  * Handle click on the entry in the Subsidies menu.
  *
- * @param index Unused.
  * @return #CBF_NONE
  */
-static CallBackFunction MenuClickSubsidies(int index)
+static CallBackFunction MenuClickSubsidies(int)
 {
 	ShowSubsidiesList();
 	return CBF_NONE;
@@ -985,10 +983,9 @@ static CallBackFunction ToolbarBuildWaterClick(Window *w)
 /**
  * Handle click on the entry in the Build Waterways menu.
  *
- * @param index Unused.
  * @return #CBF_NONE
  */
-static CallBackFunction MenuClickBuildWater(int index)
+static CallBackFunction MenuClickBuildWater(int)
 {
 	ShowBuildDocksToolbar();
 	return CBF_NONE;
@@ -1008,10 +1005,9 @@ static CallBackFunction ToolbarBuildAirClick(Window *w)
 /**
  * Handle click on the entry in the Build Air menu.
  *
- * @param index Unused.
  * @return #CBF_NONE
  */
-static CallBackFunction MenuClickBuildAir(int index)
+static CallBackFunction MenuClickBuildAir(int)
 {
 	ShowBuildAirToolbar();
 	return CBF_NONE;
@@ -1057,10 +1053,9 @@ static CallBackFunction ToolbarMusicClick(Window *w)
 /**
  * Handle click on the entry in the Music menu.
  *
- * @param index Unused.
  * @return #CBF_NONE
  */
-static CallBackFunction MenuClickMusicWindow(int index)
+static CallBackFunction MenuClickMusicWindow(int)
 {
 	ShowMusicWindow();
 	return CBF_NONE;
@@ -1321,7 +1316,7 @@ static CallBackFunction ToolbarScenPlaceSign(Window *w)
 	return SelectSignTool();
 }
 
-static CallBackFunction ToolbarBtn_NULL(Window *w)
+static CallBackFunction ToolbarBtn_NULL(Window *)
 {
 	return CBF_NONE;
 }
@@ -2009,7 +2004,7 @@ struct MainToolbarWindow : Window {
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}
 
-	void FindWindowPlacementAndResize(int def_width, int def_height) override
+	void FindWindowPlacementAndResize([[maybe_unused]] int def_width, [[maybe_unused]] int def_height) override
 	{
 		Window::FindWindowPlacementAndResize(_toolbar_width, def_height);
 	}
@@ -2029,7 +2024,7 @@ struct MainToolbarWindow : Window {
 		this->DrawWidgets();
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		if (_game_mode != GM_MENU && !this->IsWidgetDisabled(widget)) _toolbar_button_procs[widget](this);
 	}
@@ -2090,7 +2085,7 @@ struct MainToolbarWindow : Window {
 		return ES_HANDLED;
 	}
 
-	void OnPlaceObject(Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		switch (_last_started_action) {
 			case CBF_PLACE_SIGN:
@@ -2137,7 +2132,7 @@ struct MainToolbarWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		HandleZoomMessage(this, GetMainWindow()->viewport, WID_TN_ZOOM_IN, WID_TN_ZOOM_OUT);
@@ -2349,7 +2344,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}
 
-	void FindWindowPlacementAndResize(int def_width, int def_height) override
+	void FindWindowPlacementAndResize([[maybe_unused]] int def_width, [[maybe_unused]] int def_height) override
 	{
 		Window::FindWindowPlacementAndResize(_toolbar_width, def_height);
 	}
@@ -2389,7 +2384,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_TE_SPACER:
@@ -2403,7 +2398,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		if (_game_mode == GM_MENU) return;
 		CallBackFunction cbf = _scen_toolbar_button_procs[widget](this);
@@ -2450,7 +2445,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		return ES_HANDLED;
 	}
 
-	void OnPlaceObject(Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
 		switch (_last_started_action) {
 			case CBF_PLACE_SIGN:
@@ -2495,7 +2490,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		HandleZoomMessage(this, GetMainWindow()->viewport, WID_TE_ZOOM_IN, WID_TE_ZOOM_OUT);

@@ -177,9 +177,8 @@ static sigset_t SetSignals(void(*handler)(int))
 /**
  * Entry point for a crash that happened during the handling of a crash.
  *
- * @param signum the signal that caused us to crash.
  */
-static void CDECL HandleInternalCrash(int signum)
+static void CDECL HandleInternalCrash(int)
 {
 	if (CrashLogOSX::current == nullptr || !CrashLogOSX::current->try_execute_active) {
 		fmt::print("Something went seriously wrong when creating the crash log. Aborting.\n");

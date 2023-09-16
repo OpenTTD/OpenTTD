@@ -190,7 +190,7 @@ struct SelectGameWindow : public Window {
 		this->mouse_idle_pos = _cursor.pos;
 	}
 
-	void OnRealtimeTick(uint delta_ms) override
+	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
 	{
 		/* Move the main game viewport according to intro viewport commands. */
 
@@ -264,7 +264,7 @@ struct SelectGameWindow : public Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
 		this->SetWidgetLoweredState(WID_SGI_TEMPERATE_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
@@ -297,7 +297,7 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		StringID str = 0;
 		switch (widget) {
@@ -326,7 +326,7 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		/* Do not create a network server when you (just) have closed one of the game
 		 * creation/load windows for the network server. */
@@ -507,7 +507,7 @@ void ShowSelectGameWindow()
 	new SelectGameWindow(&_select_game_desc);
 }
 
-static void AskExitGameCallback(Window *w, bool confirmed)
+static void AskExitGameCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
 		_survey.Transmit(NetworkSurveyHandler::Reason::EXIT, true);
@@ -527,7 +527,7 @@ void AskExitGame()
 }
 
 
-static void AskExitToGameMenuCallback(Window *w, bool confirmed)
+static void AskExitToGameMenuCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
 		_switch_mode = SM_MENU;

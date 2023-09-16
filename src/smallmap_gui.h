@@ -204,12 +204,12 @@ public:
 	void OnInit() override;
 	void OnPaint() override;
 	void DrawWidget(const Rect &r, int widget) const override;
-	void OnClick(Point pt, int widget, int click_count) override;
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 	bool OnRightClick(Point pt, int widget) override;
 	void OnMouseWheel(int wheel) override;
 	void OnScroll(Point delta) override;
-	void OnMouseOver(Point pt, int widget) override;
+	void OnMouseOver([[maybe_unused]] Point pt, int widget) override;
 };
 
 #endif /* SMALLMAP_GUI_H */

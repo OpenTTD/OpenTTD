@@ -257,7 +257,7 @@ public:
 protected:
 	/** Helper to process a single ClientID argument. */
 	template <class T>
-	static inline void SetClientIdHelper(T &data)
+	static inline void SetClientIdHelper([[maybe_unused]] T &data)
 	{
 		if constexpr (std::is_same_v<ClientID, T>) {
 			if (data == INVALID_CLIENT_ID) data = CLIENT_ID_SERVER;
@@ -333,7 +333,7 @@ protected:
 
 	/** Helper to process a single ClientID argument. */
 	template <class T>
-	static inline bool ClientIdIsSet(T &data)
+	static inline bool ClientIdIsSet([[maybe_unused]] T &data)
 	{
 		if constexpr (std::is_same_v<ClientID, T>) {
 			return data != INVALID_CLIENT_ID;
@@ -350,7 +350,7 @@ protected:
 	}
 
 	template<class Ttuple>
-	static inline Money ExtractAdditionalMoney(Ttuple &values)
+	static inline Money ExtractAdditionalMoney([[maybe_unused]] Ttuple &values)
 	{
 		if constexpr (std::is_same_v<std::tuple_element_t<1, Tret>, Money>) {
 			return std::get<1>(values);
@@ -359,7 +359,7 @@ protected:
 		}
 	}
 
-	static Tret Execute(StringID err_message, CommandCallback *callback, bool my_cmd, bool estimate_only, bool network_command, TileIndex tile, std::tuple<Targs...> args)
+	static Tret Execute(StringID err_message, CommandCallback *callback, bool, bool estimate_only, bool network_command, TileIndex tile, std::tuple<Targs...> args)
 	{
 		/* Prevent recursion; it gives a mess over the network */
 		RecursiveCommandCounter counter{};

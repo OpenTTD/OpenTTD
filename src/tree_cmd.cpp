@@ -586,7 +586,7 @@ static void DrawTile_Trees(TileInfo *ti)
 }
 
 
-static int GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y, bool ground_vehicle)
+static int GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y, bool)
 {
 	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);
@@ -594,7 +594,7 @@ static int GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y, bool ground_vehi
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Foundation GetFoundation_Trees(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Trees(TileIndex, Slope)
 {
 	return FOUNDATION_NONE;
 }
@@ -864,12 +864,12 @@ void OnTick_Trees()
 	}
 }
 
-static TrackStatus GetTileTrackStatus_Trees(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Trees(TileIndex, TransportType, uint, DiagDirection)
 {
 	return 0;
 }
 
-static void ChangeTileOwner_Trees(TileIndex tile, Owner old_owner, Owner new_owner)
+static void ChangeTileOwner_Trees(TileIndex, Owner, Owner)
 {
 	/* not used */
 }
@@ -879,7 +879,7 @@ void InitializeTrees()
 	_trees_tick_ctr = 0;
 }
 
-static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
+static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlag flags, int, Slope)
 {
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }

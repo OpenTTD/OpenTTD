@@ -121,7 +121,7 @@ public:
 	 * Callback when the connection succeeded.
 	 * @param s the socket that we opened
 	 */
-	virtual void OnConnect(SOCKET s) {}
+	virtual void OnConnect([[maybe_unused]] SOCKET s) {}
 
 	/**
 	 * Callback for when the connection attempt failed.

@@ -424,7 +424,7 @@ static inline uint32_t GetSmallMapContoursPixels(TileIndex tile, TileType t)
  * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile in the small map in mode "Vehicles"
  */
-static inline uint32_t GetSmallMapVehiclesPixels(TileIndex tile, TileType t)
+static inline uint32_t GetSmallMapVehiclesPixels(TileIndex, TileType t)
 {
 	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 	return ApplyMask(cs->default_colour, &_smallmap_vehicles_andor[t]);
@@ -1404,7 +1404,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	return (column * number_of_rows) + line;
 }
 
-/* virtual */ void SmallMapWindow::OnMouseOver(Point pt, int widget)
+/* virtual */ void SmallMapWindow::OnMouseOver([[maybe_unused]] Point pt, int widget)
 {
 	IndustryType new_highlight = INVALID_INDUSTRYTYPE;
 	if (widget == WID_SM_LEGEND && this->map_type == SMT_INDUSTRY) {
@@ -1420,7 +1420,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	}
 }
 
-/* virtual */ void SmallMapWindow::OnClick(Point pt, int widget, int click_count)
+/* virtual */ void SmallMapWindow::OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count)
 {
 	switch (widget) {
 		case WID_SM_MAP: { // Map window
@@ -1565,7 +1565,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	this->SetDirty();
 }
 
-/* virtual */ bool SmallMapWindow::OnRightClick(Point pt, int widget)
+/* virtual */ bool SmallMapWindow::OnRightClick([[maybe_unused]] Point pt, int widget)
 {
 	if (widget != WID_SM_MAP || _scrolling_viewport) return false;
 

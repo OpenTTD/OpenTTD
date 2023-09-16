@@ -197,7 +197,7 @@ protected:
 	uint16_t max_entities; ///< what is the amount of entities, old and new summed
 
 	uint16_t invalid_id;   ///< ID used to detected invalid entities
-	virtual bool CheckValidNewID(uint16_t testid) { return true; }
+	virtual bool CheckValidNewID([[maybe_unused]] uint16_t testid) { return true; }
 
 public:
 	std::vector<EntityIDMapping> mappings; ///< mapping of ids from grf files.  Public out of convenience

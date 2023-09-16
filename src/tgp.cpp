@@ -439,7 +439,7 @@ static void HeightMapGetMinMaxAvg(Height *min_ptr, Height *max_ptr, Height *avg_
 }
 
 /** Dill histogram and return pointer to its base point - to the count of zero heights */
-static int *HeightMapMakeHistogram(Height h_min, Height h_max, int *hist_buf)
+static int *HeightMapMakeHistogram(Height h_min, [[maybe_unused]] Height h_max, int *hist_buf)
 {
 	int *hist = hist_buf - h_min;
 

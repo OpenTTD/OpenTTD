@@ -75,7 +75,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::SendGameInfo()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p)
+NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *)
 {
 	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NGLS_FULL;
@@ -86,7 +86,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p)
 	return NETWORK_RECV_STATUS_CLOSE_QUERY;
 }
 
-NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *p)
+NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *)
 {
 	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NGLS_BANNED;

@@ -87,20 +87,20 @@ bool NetworkCoordinatorSocketHandler::ReceiveInvalidPacket(PacketCoordinatorType
 	return false;
 }
 
-bool NetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_ERROR); }
-bool NetworkCoordinatorSocketHandler::Receive_SERVER_REGISTER(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERVER_REGISTER); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_REGISTER_ACK); }
-bool NetworkCoordinatorSocketHandler::Receive_SERVER_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERVER_UPDATE); }
-bool NetworkCoordinatorSocketHandler::Receive_CLIENT_LISTING(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_LISTING); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_LISTING); }
-bool NetworkCoordinatorSocketHandler::Receive_CLIENT_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_CONNECT); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_CONNECTING(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_CONNECTING); }
-bool NetworkCoordinatorSocketHandler::Receive_SERCLI_CONNECT_FAILED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERCLI_CONNECT_FAILED); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_CONNECT_FAILED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_CONNECT_FAILED); }
-bool NetworkCoordinatorSocketHandler::Receive_CLIENT_CONNECTED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_CONNECTED); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_DIRECT_CONNECT); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_REQUEST(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_REQUEST); }
-bool NetworkCoordinatorSocketHandler::Receive_SERCLI_STUN_RESULT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERCLI_STUN_RESULT); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_CONNECT); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_NEWGRF_LOOKUP(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_NEWGRF_LOOKUP); }
-bool NetworkCoordinatorSocketHandler::Receive_GC_TURN_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_TURN_CONNECT); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_ERROR); }
+bool NetworkCoordinatorSocketHandler::Receive_SERVER_REGISTER(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERVER_REGISTER); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_REGISTER_ACK); }
+bool NetworkCoordinatorSocketHandler::Receive_SERVER_UPDATE(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERVER_UPDATE); }
+bool NetworkCoordinatorSocketHandler::Receive_CLIENT_LISTING(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_LISTING); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_LISTING); }
+bool NetworkCoordinatorSocketHandler::Receive_CLIENT_CONNECT(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_CONNECT); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_CONNECTING(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_CONNECTING); }
+bool NetworkCoordinatorSocketHandler::Receive_SERCLI_CONNECT_FAILED(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERCLI_CONNECT_FAILED); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_CONNECT_FAILED(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_CONNECT_FAILED); }
+bool NetworkCoordinatorSocketHandler::Receive_CLIENT_CONNECTED(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_CONNECTED); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_DIRECT_CONNECT); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_REQUEST(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_REQUEST); }
+bool NetworkCoordinatorSocketHandler::Receive_SERCLI_STUN_RESULT(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERCLI_STUN_RESULT); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_CONNECT(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_CONNECT); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_NEWGRF_LOOKUP(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_NEWGRF_LOOKUP); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_TURN_CONNECT(Packet *) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_TURN_CONNECT); }

@@ -462,13 +462,13 @@ public:
 	 * Sets the expense type associated to this vehicle type
 	 * @param income whether this is income or (running) expenses of the vehicle
 	 */
-	virtual ExpensesType GetExpenseType(bool income) const { return EXPENSES_OTHER; }
+	virtual ExpensesType GetExpenseType([[maybe_unused]] bool income) const { return EXPENSES_OTHER; }
 
 	/**
 	 * Play the sound associated with leaving the station
 	 * @param force Should we play the sound even if sound effects are muted? (horn hotkey)
 	 */
-	virtual void PlayLeaveStationSound(bool force = false) const {}
+	virtual void PlayLeaveStationSound([[maybe_unused]] bool force = false) const {}
 
 	/**
 	 * Whether this is the primary vehicle in the chain.
@@ -482,7 +482,7 @@ public:
 	 * @param direction the direction the vehicle is facing
 	 * @param[out] result Vehicle sprite sequence.
 	 */
-	virtual void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const { result->Clear(); }
+	virtual void GetImage([[maybe_unused]] Direction direction, [[maybe_unused]] EngineImageType image_type, [[maybe_unused]] VehicleSpriteSeq *result) const { result->Clear(); }
 
 	const GRFFile *GetGRF() const;
 	uint32_t GetGRFID() const;
@@ -782,7 +782,7 @@ public:
 	 * @param station the station to make the next location of the vehicle.
 	 * @return the location (tile) to aim for.
 	 */
-	virtual TileIndex GetOrderStationLocation(StationID station) { return INVALID_TILE; }
+	virtual TileIndex GetOrderStationLocation([[maybe_unused]] StationID station) { return INVALID_TILE; }
 
 	/**
 	 * Find the closest depot for this vehicle and tell us the location,

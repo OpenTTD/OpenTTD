@@ -129,7 +129,7 @@ struct HelpWindow : public Window {
 		this->EnableTextfileButton(LICENSE_FILENAME, WID_HW_LICENSE);
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_HW_README:

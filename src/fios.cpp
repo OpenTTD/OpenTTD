@@ -275,10 +275,9 @@ public:
 /**
  * Try to add a fios item set with the given filename.
  * @param filename        the full path to the file to read
- * @param basepath_length amount of characters to chop of before to get a relative filename
  * @return true if the file is added.
  */
-bool FiosFileScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
+bool FiosFileScanner::AddFile(const std::string &filename, size_t, const std::string &)
 {
 	auto sep = filename.rfind('.');
 	if (sep == std::string::npos) return false;
@@ -531,7 +530,7 @@ void FiosGetScenarioList(SaveLoadOperation fop, FileList &file_list)
 	FiosGetFileList(fop, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
-static std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext)
+static std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation, const std::string &file, const std::string_view ext)
 {
 	/* Show heightmap files
 	 * .PNG PNG Based heightmap files
@@ -640,7 +639,7 @@ public:
 		this->scanned = true;
 	}
 
-	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override
+	bool AddFile(const std::string &filename, size_t, const std::string &) override
 	{
 		FILE *f = FioFOpenFile(filename, "r", SCENARIO_DIR);
 		if (f == nullptr) return false;
@@ -729,7 +728,7 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 	static std::string _prefix; ///< Static as the lambda needs access to it.
 
 	/* Callback for FiosFileScanner. */
-	static FiosGetTypeAndNameProc *proc = [](SaveLoadOperation fop, const std::string &file, const std::string_view ext) {
+	static FiosGetTypeAndNameProc *proc = [](SaveLoadOperation, const std::string &file, const std::string_view ext) {
 		if (StrEqualsIgnoreCase(ext, ".sav") && StrStartsWith(file, _prefix)) return std::tuple(FIOS_TYPE_FILE, std::string{});
 		return std::tuple(FIOS_TYPE_INVALID, std::string{});
 	};

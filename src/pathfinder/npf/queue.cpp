@@ -130,7 +130,7 @@ bool BinaryHeap::Push(void *item, int priority)
  * known, which speeds up the deleting for some queue's. Should be -1
  * if not known.
  */
-bool BinaryHeap::Delete(void *item, int priority)
+bool BinaryHeap::Delete(void *item, int)
 {
 	uint i = 0;
 

@@ -73,7 +73,7 @@ public:
 	virtual ~ServerNetworkUDPSocketHandler() = default;
 };
 
-void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr)
+void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *, NetworkAddress *client_addr)
 {
 	Packet packet(PACKET_UDP_SERVER_RESPONSE);
 	this->SendPacket(&packet, client_addr);
@@ -91,7 +91,7 @@ public:
 	virtual ~ClientNetworkUDPSocketHandler() = default;
 };
 
-void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr)
+void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *, NetworkAddress *client_addr)
 {
 	Debug(net, 3, "Server response from {}", client_addr->GetAddressAsString());
 

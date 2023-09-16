@@ -63,7 +63,7 @@ void TimerManager<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 
 #ifdef WITH_ASSERT
 template<>
-void TimerManager<TimerGameRealtime>::Validate(TimerGameRealtime::TPeriod period)
+void TimerManager<TimerGameRealtime>::Validate(TimerGameRealtime::TPeriod)
 {
 }
 #endif /* WITH_ASSERT */

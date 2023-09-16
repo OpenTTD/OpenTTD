@@ -978,10 +978,9 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 /**
  * Find the spring of a river.
  * @param tile The tile to consider for being the spring.
- * @param user_data Ignored data.
  * @return True iff it is suitable as a spring.
  */
-static bool FindSpring(TileIndex tile, void *user_data)
+static bool FindSpring(TileIndex tile, void *)
 {
 	int referenceHeight;
 	if (!IsTileFlat(tile, &referenceHeight) || IsWaterTile(tile)) return false;
@@ -1216,13 +1215,13 @@ static int32_t River_EndNodeCheck(const AyStar *aystar, const OpenListNode *curr
 }
 
 /* AyStar callback for getting the cost of the current node. */
-static int32_t River_CalculateG(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
+static int32_t River_CalculateG(AyStar *, AyStarNode *, OpenListNode *)
 {
 	return 1 + RandomRange(_settings_game.game_creation.river_route_random);
 }
 
 /* AyStar callback for getting the estimated cost to the destination. */
-static int32_t River_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
+static int32_t River_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *)
 {
 	return DistanceManhattan(*(TileIndex*)aystar->user_target, current->tile);
 }
@@ -1283,10 +1282,9 @@ static const uint RIVER_HASH_SIZE = 8; ///< The number of bits the hash for rive
 /**
  * Simple hash function for river tiles to be used by AyStar.
  * @param tile The tile to hash.
- * @param dir The unused direction.
  * @return The hash for the tile.
  */
-static uint River_Hash(TileIndex tile, Trackdir dir)
+static uint River_Hash(TileIndex tile, Trackdir)
 {
 	return GB(TileHash(TileX(tile), TileY(tile)), 0, RIVER_HASH_SIZE);
 }

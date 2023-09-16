@@ -34,7 +34,7 @@ static const SaveLoad _game_script_desc[] = {
 	    SLEG_VAR("is_random", _game_saveload_is_random,   SLE_BOOL),
 };
 
-static void SaveReal_GSDT(int *index_ptr)
+static void SaveReal_GSDT(int *)
 {
 	GameConfig *config = GameConfig::GetConfig();
 

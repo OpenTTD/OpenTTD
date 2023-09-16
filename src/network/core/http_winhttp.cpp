@@ -186,7 +186,7 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 	}
 }
 
-static void CALLBACK StaticWinHttpCallback(HINTERNET handle, DWORD_PTR context, DWORD code, void *info, DWORD length)
+static void CALLBACK StaticWinHttpCallback(HINTERNET, DWORD_PTR context, DWORD code, void *info, DWORD length)
 {
 	if (context == 0) return;
 

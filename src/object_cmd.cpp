@@ -486,7 +486,7 @@ static void DrawTile_Object(TileInfo *ti)
 	DrawBridgeMiddle(ti);
 }
 
-static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y, bool ground_vehicle)
+static int GetSlopePixelZ_Object(TileIndex tile, uint x, uint y, bool)
 {
 	if (IsObjectType(tile, OBJECT_OWNED_LAND)) {
 		int z;
@@ -700,7 +700,7 @@ static void TileLoop_Object(TileIndex tile)
 }
 
 
-static TrackStatus GetTileTrackStatus_Object(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Object(TileIndex, TransportType, uint, DiagDirection)
 {
 	return 0;
 }
@@ -721,10 +721,9 @@ static void AnimateTile_Object(TileIndex tile)
 /**
  * Helper function for \c CircularTileSearch.
  * @param tile The tile to check.
- * @param user Ignored.
  * @return True iff the tile has a radio tower.
  */
-static bool HasTransmitter(TileIndex tile, void *user)
+static bool HasTransmitter(TileIndex tile, void *)
 {
 	return IsObjectTypeTile(tile, OBJECT_TRANSMITTER);
 }

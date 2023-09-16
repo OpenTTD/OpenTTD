@@ -405,7 +405,7 @@ static bool BindPersistentBufferExtensions()
 }
 
 /** Callback to receive OpenGL debug messages. */
-void APIENTRY DebugOutputCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam)
+void APIENTRY DebugOutputCallback([[maybe_unused]] GLenum source, GLenum type, [[maybe_unused]] GLuint id, GLenum severity, [[maybe_unused]] GLsizei length, const GLchar *message, [[maybe_unused]] const void *userParam)
 {
 	/* Make severity human readable. */
 	const char *severity_str = "";

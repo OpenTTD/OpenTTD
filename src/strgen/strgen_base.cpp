@@ -325,7 +325,7 @@ static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words,
 	}
 }
 
-void EmitPlural(Buffer *buffer, char *buf, int value)
+void EmitPlural(Buffer *buffer, char *buf, int)
 {
 	int argidx = _cur_argidx;
 	int offset = -1;
@@ -378,7 +378,7 @@ void EmitPlural(Buffer *buffer, char *buf, int value)
 }
 
 
-void EmitGender(Buffer *buffer, char *buf, int value)
+void EmitGender(Buffer *buffer, char *buf, int)
 {
 	int argidx = _cur_argidx;
 	int offset = 0;
@@ -531,7 +531,7 @@ StringReader::StringReader(StringData &data, const std::string &file, bool maste
 {
 }
 
-ParsedCommandStruct ExtractCommandString(const char *s, bool warnings)
+ParsedCommandStruct ExtractCommandString(const char *s, bool)
 {
 	char param[MAX_COMMAND_PARAM_SIZE];
 	int argno;

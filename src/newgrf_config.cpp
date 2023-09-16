@@ -226,9 +226,8 @@ void GRFParameterInfo::Finalize()
 /**
  * Update the palettes of the graphics from the config file.
  * Called when changing the default palette in advanced settings.
- * @param new_value Unused.
  */
-void UpdateNewGRFConfigPalette(int32_t new_value)
+void UpdateNewGRFConfigPalette(int32_t)
 {
 	for (GRFConfig *c = _grfconfig_newgame; c != nullptr; c = c->next) c->SetSuitablePalette();
 	for (GRFConfig *c = _grfconfig_static;  c != nullptr; c = c->next) c->SetSuitablePalette();
@@ -542,7 +541,7 @@ public:
 	}
 };
 
-bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
+bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &)
 {
 	/* Abort if the user stopped the game during a scan. */
 	if (_exit_game) return false;

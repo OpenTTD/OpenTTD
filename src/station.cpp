@@ -162,9 +162,8 @@ Station::~Station()
 /**
  * Invalidating of the JoinStation window has to be done
  * after removing item from the pool.
- * @param index index of deleted item
  */
-void BaseStation::PostDestructor(size_t index)
+void BaseStation::PostDestructor(size_t)
 {
 	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 }

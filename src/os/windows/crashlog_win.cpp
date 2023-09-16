@@ -98,7 +98,7 @@ class CrashLogWindows : public CrashLog {
 public:
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD
-	static bool MinidumpCallback(const wchar_t *dump_dir, const wchar_t *minidump_id, void *context, EXCEPTION_POINTERS *exinfo, MDRawAssertionInfo *assertion, bool succeeded)
+	static bool MinidumpCallback(const wchar_t *dump_dir, const wchar_t *minidump_id, void *context, EXCEPTION_POINTERS *, MDRawAssertionInfo *, bool succeeded)
 	{
 		CrashLogWindows *crashlog = reinterpret_cast<CrashLogWindows *>(context);
 
@@ -287,7 +287,7 @@ static const uint MAX_FRAMES     = 64;
 	}
 }
 #else
-/* virtual */ void CrashLogWindows::SurveyStacktrace(nlohmann::json &survey) const
+/* virtual */ void CrashLogWindows::SurveyStacktrace(nlohmann::json &) const
 {
 	/* Not supported. */
 }
@@ -380,7 +380,7 @@ static LONG WINAPI VectoredExceptionHandler(EXCEPTION_POINTERS *ep)
 	return EXCEPTION_CONTINUE_SEARCH;
 }
 
-static void CDECL CustomAbort(int signal)
+static void CDECL CustomAbort(int)
 {
 	RaiseException(CUSTOM_ABORT_EXCEPTION, 0, 0, nullptr);
 }
@@ -461,7 +461,7 @@ static void SetWndSize(HWND wnd, int mode)
 	}
 }
 
-static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
+static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM)
 {
 	switch (msg) {
 		case WM_INITDIALOG: {

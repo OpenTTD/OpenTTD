@@ -474,7 +474,7 @@ static std::string ExtractString(char *buffer, size_t buffer_length)
 	return StrMakeValid(std::string(buffer, length));
 }
 
-bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
+bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] const std::string &tar_filename)
 {
 	/* No tar within tar. */
 	assert(tar_filename.empty());

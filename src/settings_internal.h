@@ -342,10 +342,10 @@ struct NullSettingDesc : SettingDesc {
 	NullSettingDesc(const SaveLoad &save) :
 		SettingDesc(save, SF_NOT_IN_CONFIG, false) {}
 
-	std::string FormatValue(const void *object) const override { NOT_REACHED(); }
-	void ParseValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
-	bool IsSameValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
-	bool IsDefaultValue(void *object) const override { NOT_REACHED(); }
+	std::string FormatValue(const void *) const override { NOT_REACHED(); }
+	void ParseValue(const IniItem *, void *) const override { NOT_REACHED(); }
+	bool IsSameValue(const IniItem *, void *) const override { NOT_REACHED(); }
+	bool IsDefaultValue(void *) const override { NOT_REACHED(); }
 };
 
 typedef std::variant<IntSettingDesc, BoolSettingDesc, OneOfManySettingDesc, ManyOfManySettingDesc, StringSettingDesc, ListSettingDesc, NullSettingDesc> SettingVariant;

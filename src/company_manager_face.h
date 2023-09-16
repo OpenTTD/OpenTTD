@@ -93,7 +93,7 @@ static_assert(lengthof(_cmf_info) == CMFV_END);
  * @pre _cmf_info[cmfv].valid_values[ge] != 0
  * @return the requested bits
  */
-static inline uint GetCompanyManagerFaceBits(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge)
+static inline uint GetCompanyManagerFaceBits(CompanyManagerFace cmf, CompanyManagerFaceVariable cmfv, [[maybe_unused]] GenderEthnicity ge)
 {
 	assert(_cmf_info[cmfv].valid_values[ge] != 0);
 
@@ -108,7 +108,7 @@ static inline uint GetCompanyManagerFaceBits(CompanyManagerFace cmf, CompanyMana
  * @param val  the new value
  * @pre val < _cmf_info[cmfv].valid_values[ge]
  */
-static inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, GenderEthnicity ge, uint val)
+static inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFaceVariable cmfv, [[maybe_unused]] GenderEthnicity ge, uint val)
 {
 	assert(val < _cmf_info[cmfv].valid_values[ge]);
 

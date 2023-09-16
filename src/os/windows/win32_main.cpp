@@ -51,7 +51,7 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 
 void CreateConsole();
 
-int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+int APIENTRY WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
 	/* Set system timer resolution to 1ms. */
 	timeBeginPeriod(1);

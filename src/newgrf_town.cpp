@@ -15,7 +15,7 @@
 
 #include "safeguards.h"
 
-/* virtual */ uint32_t TownScopeResolver::GetVariable(byte variable, uint32_t parameter, bool *available) const
+/* virtual */ uint32_t TownScopeResolver::GetVariable(byte variable, [[maybe_unused]] uint32_t parameter, bool *available) const
 {
 	switch (variable) {
 		/* Larger towns */

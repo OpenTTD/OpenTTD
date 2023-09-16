@@ -348,7 +348,7 @@ void SaveHotkeysToConfig()
 	SaveLoadHotkeys(true);
 }
 
-void HandleGlobalHotkeys(char32_t key, uint16_t keycode)
+void HandleGlobalHotkeys([[maybe_unused]] char32_t key, uint16_t keycode)
 {
 	for (HotkeyList *list : *_hotkey_lists) {
 		if (list->global_hotkey_handler == nullptr) continue;

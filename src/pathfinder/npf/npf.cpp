@@ -148,7 +148,7 @@ static uint NPFHash(TileIndex tile, Trackdir dir)
 	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * dir / TRACKDIR_END)) % NPF_HASH_SIZE;
 }
 
-static int32_t NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFCalcZero(AyStar *, AyStarNode *, OpenListNode *)
 {
 	return 0;
 }
@@ -156,7 +156,7 @@ static int32_t NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent
 /* Calculates the heuristic to the target station or tile. For train stations, it
  * takes into account the direction of approach.
  */
-static int32_t NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, OpenListNode *)
 {
 	NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
 	NPFFoundTargetData *ftd = (NPFFoundTargetData*)as->user_path;
@@ -312,7 +312,7 @@ static Vehicle *CountShipProc(Vehicle *v, void *data)
 	return nullptr;
 }
 
-static int32_t NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFWaterPathCost(AyStar *, AyStarNode *current, OpenListNode *parent)
 {
 	int32_t cost = 0;
 	Trackdir trackdir = current->direction;
@@ -340,7 +340,7 @@ static int32_t NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *p
 }
 
 /* Determine the cost of this node, for road tracks */
-static int32_t NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
+static int32_t NPFRoadPathCost(AyStar *, AyStarNode *current, OpenListNode *)
 {
 	TileIndex tile = current->tile;
 	int32_t cost = 0;

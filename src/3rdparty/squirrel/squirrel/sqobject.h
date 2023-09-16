@@ -76,7 +76,7 @@ struct SQRefCounted
 	}
 
 	/* Never used but required. */
-	inline void operator delete(void *ptr) { NOT_REACHED(); }
+	inline void operator delete(void *) { NOT_REACHED(); }
 
 private:
 	size_t size;

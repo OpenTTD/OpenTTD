@@ -182,7 +182,7 @@ void TimeoutTimer<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed trigge
 }
 
 template<>
-void TimerManager<TimerGameCalendar>::Elapsed(TimerGameCalendar::TElapsed delta)
+void TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar::TElapsed delta)
 {
 	assert(delta == 1);
 

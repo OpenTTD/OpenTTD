@@ -634,7 +634,7 @@ NSView *VideoDriver_CocoaQuartz::AllocateDrawView()
 }
 
 /** Resize the window. */
-void VideoDriver_CocoaQuartz::AllocateBackingStore(bool force)
+void VideoDriver_CocoaQuartz::AllocateBackingStore(bool)
 {
 	if (this->window == nil || this->cocoaview == nil || this->setup) return;
 

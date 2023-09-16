@@ -275,13 +275,12 @@ struct Pool : PoolBase {
 
 		/**
 		 * Allocates space for new Titem at given memory address
-		 * @param size size of Titem
 		 * @param ptr where are we allocating the item?
 		 * @return pointer to allocated memory (== ptr)
 		 * @note use of this is strongly discouraged
 		 * @pre the memory must not be allocated in the Pool!
 		 */
-		inline void *operator new(size_t size, void *ptr)
+		inline void *operator new(size_t, void *ptr)
 		{
 			for (size_t i = 0; i < Tpool->first_unused; i++) {
 				/* Don't allow creating new objects over existing.
@@ -375,7 +374,7 @@ struct Pool : PoolBase {
 		 * @note when this function is called, PoolItem::Get(index) == nullptr.
 		 * @note it's called only when !CleaningPool()
 		 */
-		static inline void PostDestructor(size_t index) { }
+		static inline void PostDestructor([[maybe_unused]] size_t index) { }
 
 		/**
 		 * Returns an iterable ensemble of all valid Titem

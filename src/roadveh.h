@@ -166,7 +166,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns a value if this articulated part is powered.
 	 * @return Zero, because road vehicles don't have powered parts.
 	 */
-	inline uint16_t GetPoweredPartPower(const RoadVehicle *head) const
+	inline uint16_t GetPoweredPartPower(const RoadVehicle *) const
 	{
 		return 0;
 	}

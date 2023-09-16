@@ -174,7 +174,7 @@ void HttpThread()
 		 * up to a second before this callback is called. There is little we can
 		 * do about this. */
 		curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
-		curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, +[](void *userdata, curl_off_t dltotal, curl_off_t dlnow, curl_off_t ultotal, curl_off_t ulnow) -> int {
+		curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, +[](void *userdata, curl_off_t /*dltotal*/, curl_off_t /*dlnow*/, curl_off_t /*ultotal*/, curl_off_t /*ulnow*/) -> int {
 			const HTTPCallback *callback = static_cast<HTTPCallback *>(userdata);
 			return (callback->IsCancelled() || _http_thread_exit) ? 1 : 0;
 		});

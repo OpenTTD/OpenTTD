@@ -792,7 +792,7 @@ void ClientNetworkContentSocketHandler::Connect()
 /**
  * Disconnect from the content server.
  */
-NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool error)
+NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool)
 {
 	this->isCancelled = true;
 	NetworkContentSocketHandler::CloseConnection();

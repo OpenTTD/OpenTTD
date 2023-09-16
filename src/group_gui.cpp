@@ -384,7 +384,7 @@ public:
 		*this->sorting = this->vehgroups.GetListing();
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_GL_LIST_GROUP:
@@ -442,7 +442,7 @@ public:
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (data == 0) {
 			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
@@ -651,7 +651,7 @@ public:
 		}
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override
+	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_GL_SORT_BY_ORDER: // Flip sorting method ascending/descending
@@ -1169,14 +1169,12 @@ static void CcCreateGroup(GroupID gid, VehicleType veh_type)
 
 /**
  * Opens a 'Rename group' window for newly created group.
- * @param cmd Unused.
  * @param result Did command succeed?
  * @param new_group ID of the created group.
  * @param vt Vehicle type.
- * @param parent_group Parent group of the new group.
  * @see CmdCreateGroup
  */
-void CcCreateGroup(Commands cmd, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID parent_group)
+void CcCreateGroup(Commands, const CommandCost &result, GroupID new_group, VehicleType vt, GroupID)
 {
 	if (result.Failed()) return;
 
@@ -1186,12 +1184,10 @@ void CcCreateGroup(Commands cmd, const CommandCost &result, GroupID new_group, V
 
 /**
  * Open rename window after adding a vehicle to a new group via drag and drop.
- * @param cmd Unused.
  * @param result Did command succeed?
  * @param new_group ID of the created group.
- * @param veh_id vehicle to add to a group
  */
-void CcAddVehicleNewGroup(Commands cmd, const CommandCost &result, GroupID new_group, GroupID, VehicleID veh_id, bool, const VehicleListIdentifier &)
+void CcAddVehicleNewGroup(Commands, const CommandCost &result, GroupID new_group, GroupID, VehicleID, bool, const VehicleListIdentifier &)
 {
 	if (result.Failed()) return;
 

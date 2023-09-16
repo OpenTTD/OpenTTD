@@ -65,7 +65,7 @@ public:
 		int CountRuns() const override;
 		const ParagraphLayouter::VisualRun &GetVisualRun(int run) const override;
 
-		int GetInternalCharLength(char32_t c) const override { return 1; }
+		int GetInternalCharLength(char32_t) const override { return 1; }
 	};
 
 	const char32_t *buffer_begin; ///< Begin of the buffer.
@@ -265,7 +265,7 @@ const ParagraphLayouter::VisualRun &FallbackParagraphLayout::FallbackLine::GetVi
  * @param length The length of the paragraph.
  * @param runs   The font mapping of this paragraph.
  */
-FallbackParagraphLayout::FallbackParagraphLayout(char32_t *buffer, int length, FontMap &runs) : buffer_begin(buffer), buffer(buffer), runs(runs)
+FallbackParagraphLayout::FallbackParagraphLayout(char32_t *buffer, [[maybe_unused]] int length, FontMap &runs) : buffer_begin(buffer), buffer(buffer), runs(runs)
 {
 	assert(runs.rbegin()->first == length);
 }

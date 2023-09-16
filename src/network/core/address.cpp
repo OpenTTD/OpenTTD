@@ -98,10 +98,9 @@ std::string NetworkAddress::GetAddressAsString(bool with_family)
 
 /**
  * Helper function to resolve without opening a socket.
- * @param runp information about the socket to try not
  * @return the opened socket or INVALID_SOCKET
  */
-static SOCKET ResolveLoopProc(addrinfo *runp)
+static SOCKET ResolveLoopProc(addrinfo *)
 {
 	/* We just want the first 'entry', so return a valid socket. */
 	return !INVALID_SOCKET;

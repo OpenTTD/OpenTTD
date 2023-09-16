@@ -638,7 +638,7 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 	return true;
 }
 
-static bool LoadOldAnimTileList(LoadgameState *ls, int num)
+static bool LoadOldAnimTileList(LoadgameState *ls, int)
 {
 	TileIndex anim_list[256];
 	const OldChunks anim_chunk[] = {
@@ -894,7 +894,7 @@ static const OldChunks _company_economy_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldCompanyEconomy(LoadgameState *ls, int num)
+static bool LoadOldCompanyEconomy(LoadgameState *ls, int)
 {
 	Company *c = Company::Get(_current_company_id);
 
@@ -1097,7 +1097,7 @@ static const OldChunks vehicle_empty_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
+static bool LoadOldVehicleUnion(LoadgameState *ls, int)
 {
 	Vehicle *v = Vehicle::GetIfValid(_current_vehicle_id);
 	uint temp = ls->total_read;
@@ -1464,7 +1464,7 @@ static const OldChunks game_difficulty_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldGameDifficulty(LoadgameState *ls, int num)
+static bool LoadOldGameDifficulty(LoadgameState *ls, int)
 {
 	bool ret = LoadChunk(ls, &_settings_game.difficulty, game_difficulty_chunk);
 	_settings_game.difficulty.max_loan *= 1000;
@@ -1472,7 +1472,7 @@ static bool LoadOldGameDifficulty(LoadgameState *ls, int num)
 }
 
 
-static bool LoadOldMapPart1(LoadgameState *ls, int num)
+static bool LoadOldMapPart1(LoadgameState *ls, int)
 {
 	if (_savegame_type == SGT_TTO) {
 		Map::Allocate(OLD_MAP_SIZE, OLD_MAP_SIZE);
@@ -1502,7 +1502,7 @@ static bool LoadOldMapPart1(LoadgameState *ls, int num)
 	return true;
 }
 
-static bool LoadOldMapPart2(LoadgameState *ls, int num)
+static bool LoadOldMapPart2(LoadgameState *ls, int)
 {
 	uint i;
 
@@ -1516,7 +1516,7 @@ static bool LoadOldMapPart2(LoadgameState *ls, int num)
 	return true;
 }
 
-static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
+static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int)
 {
 	ReadTTDPatchFlags();
 

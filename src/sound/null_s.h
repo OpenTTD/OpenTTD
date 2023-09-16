@@ -15,7 +15,7 @@
 /** Implementation of the null sound driver. */
 class SoundDriver_Null : public SoundDriver {
 public:
-	const char *Start(const StringList &param) override { return nullptr; }
+	const char *Start(const StringList &) override { return nullptr; }
 
 	void Stop() override { }
 	const char *GetName() const override { return "null"; }
