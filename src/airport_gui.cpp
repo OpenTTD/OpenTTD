@@ -563,10 +563,11 @@ public:
 
 	void OnDropdownSelect(int widget, int index) override
 	{
-		assert(widget == WID_AP_CLASS_DROPDOWN);
-		_selected_airport_class = (AirportClassID)index;
-		this->vscroll->SetCount(AirportClass::Get(_selected_airport_class)->GetSpecCount());
-		this->SelectFirstAvailableAirport(false);
+		if (widget == WID_AP_CLASS_DROPDOWN) {
+			_selected_airport_class = (AirportClassID)index;
+			this->vscroll->SetCount(AirportClass::Get(_selected_airport_class)->GetSpecCount());
+			this->SelectFirstAvailableAirport(false);
+		}
 	}
 
 	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
