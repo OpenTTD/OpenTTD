@@ -524,46 +524,6 @@ void Window::OnFocusLost(bool closing)
 }
 
 /**
- * Sets the enabled/disabled status of a list of widgets.
- * By default, widgets are enabled.
- * On certain conditions, they have to be disabled.
- * @param disab_stat status to use ie: disabled = true, enabled = false
- * @param widgets list of widgets ended by WIDGET_LIST_END
- */
-void CDECL Window::SetWidgetsDisabledState(bool disab_stat, int widgets, ...)
-{
-	va_list wdg_list;
-
-	va_start(wdg_list, widgets);
-
-	while (widgets != WIDGET_LIST_END) {
-		SetWidgetDisabledState(widgets, disab_stat);
-		widgets = va_arg(wdg_list, int);
-	}
-
-	va_end(wdg_list);
-}
-
-/**
- * Sets the lowered/raised status of a list of widgets.
- * @param lowered_stat status to use ie: lowered = true, raised = false
- * @param widgets list of widgets ended by WIDGET_LIST_END
- */
-void CDECL Window::SetWidgetsLoweredState(bool lowered_stat, int widgets, ...)
-{
-	va_list wdg_list;
-
-	va_start(wdg_list, widgets);
-
-	while (widgets != WIDGET_LIST_END) {
-		SetWidgetLoweredState(widgets, lowered_stat);
-		widgets = va_arg(wdg_list, int);
-	}
-
-	va_end(wdg_list);
-}
-
-/**
  * Raise the buttons of the window.
  * @param autoraise Raise only the push buttons of the window.
  */

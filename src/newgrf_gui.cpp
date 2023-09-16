@@ -1280,8 +1280,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->SetWidgetDisabledState(WID_NS_APPLY_CHANGES, !((this->editable && this->modified) || _settings_client.gui.newgrf_developer_tools));
 		this->SetWidgetsDisabledState(!this->editable,
 			WID_NS_PRESET_LIST,
-			WID_NS_TOGGLE_PALETTE,
-			WIDGET_LIST_END
+			WID_NS_TOGGLE_PALETTE
 		);
 		this->SetWidgetDisabledState(WID_NS_ADD, !this->editable || this->avail_sel == nullptr || HasBit(this->avail_sel->flags, GCF_INVALID));
 		this->SetWidgetDisabledState(WID_NS_UPGRADE, !this->editable || this->actives == nullptr || !this->CanUpgradeCurrent());
@@ -1290,8 +1289,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->SetWidgetsDisabledState(disable_all,
 			WID_NS_REMOVE,
 			WID_NS_MOVE_UP,
-			WID_NS_MOVE_DOWN,
-			WIDGET_LIST_END
+			WID_NS_MOVE_DOWN
 		);
 
 		const GRFConfig *selected_config = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
