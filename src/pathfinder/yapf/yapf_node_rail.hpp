@@ -130,6 +130,7 @@ struct CYapfRailNodeT
 			bool          m_targed_seen : 1;
 			bool          m_choice_seen : 1;
 			bool          m_last_signal_was_red : 1;
+			bool          m_last_was_reserved : 1;
 		} flags_s;
 	} flags_u;
 	SignalType        m_last_red_signal_type;

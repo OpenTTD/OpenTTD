@@ -154,16 +154,26 @@ public:
 	inline int ReservationCost(Node &n, TileIndex tile, Trackdir trackdir, int skipped)
 	{
 		if (n.m_num_signals_passed >= m_sig_look_ahead_costs.size() / 2) return 0;
-		if (!IsPbsSignal(n.m_last_signal_type)) return 0;
-
-		if (IsRailStationTile(tile) && IsAnyStationTileReserved(tile, trackdir, skipped)) {
-			return Yapf().PfGetSettings().rail_pbs_station_penalty * (skipped + 1);
-		} else if (TrackOverlapsTracks(GetReservedTrackbits(tile), TrackdirToTrack(trackdir))) {
-			int cost = Yapf().PfGetSettings().rail_pbs_cross_penalty;
-			if (!IsDiagonalTrackdir(trackdir)) cost = (cost * YAPF_TILE_CORNER_LENGTH) / YAPF_TILE_LENGTH;
-			return cost * (skipped + 1);
+		if(!IsPbsSignal(n.m_last_signal_type)) {
+			n.flags_u.flags_s.m_last_was_reserved = false;
+			return 0;
 		}
-		return 0;
+
+		bool station_reservation = IsRailStationTile(tile) && IsAnyStationTileReserved(tile, trackdir, skipped);
+		bool reservation = TrackOverlapsTracks(GetReservedTrackbits(tile), TrackdirToTrack(trackdir));
+		int cost = 0;
+
+		/* only apply the cost once per reserved segment */
+		if(!n.flags_u.flags_s.m_last_was_reserved) {
+			if (station_reservation) {
+				cost = Yapf().PfGetSettings().rail_pbs_station_penalty;
+			} else if (reservation) {
+				cost = Yapf().PfGetSettings().rail_pbs_cross_penalty;
+			}
+		}
+
+		n.flags_u.flags_s.m_last_was_reserved = station_reservation | reservation;
+		return cost;
 	}
 
 	int SignalCost(Node &n, TileIndex tile, Trackdir trackdir)
