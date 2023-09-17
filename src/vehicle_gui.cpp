@@ -2616,8 +2616,7 @@ struct VehicleDetailsWindow : Window {
 		/* Disable service-scroller when interval is set to disabled */
 		this->SetWidgetsDisabledState(!IsVehicleServiceIntervalEnabled(v->type, v->owner),
 			WID_VD_INCREASE_SERVICING_INTERVAL,
-			WID_VD_DECREASE_SERVICING_INTERVAL,
-			WIDGET_LIST_END);
+			WID_VD_DECREASE_SERVICING_INTERVAL);
 
 		StringID str = v->ServiceIntervalIsCustom() ?
 			(v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_PERCENT : STR_VEHICLE_DETAILS_DAYS) :
@@ -2657,9 +2656,7 @@ struct VehicleDetailsWindow : Window {
 					WID_VD_DETAILS_CARGO_CARRIED,
 					WID_VD_DETAILS_TRAIN_VEHICLES,
 					WID_VD_DETAILS_CAPACITY_OF_EACH,
-					WID_VD_DETAILS_TOTAL_CARGO,
-					widget,
-					WIDGET_LIST_END);
+					WID_VD_DETAILS_TOTAL_CARGO);
 
 				this->tab = (TrainDetailsWindowTabs)(widget - WID_VD_DETAILS_CARGO_CARRIED);
 				this->SetDirty();
