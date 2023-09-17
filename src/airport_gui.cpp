@@ -87,7 +87,7 @@ struct BuildAirToolbarWindow : Window {
 		this->InitNested(window_number);
 		this->OnInvalidateData();
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
-		this->last_user_action = WIDGET_LIST_END;
+		this->last_user_action = INVALID_WID_AT;
 	}
 
 	void Close() override

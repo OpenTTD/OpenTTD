@@ -14,6 +14,8 @@
 enum AirportToolbarWidgets {
 	WID_AT_AIRPORT,  ///< Build airport button.
 	WID_AT_DEMOLISH, ///< Demolish button.
+
+	INVALID_WID_AT = -1,
 };
 
 /** Widgets of the #BuildAirportWindow class. */
