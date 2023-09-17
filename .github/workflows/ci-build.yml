@@ -73,10 +73,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - name: Clang
+        - name: Clang - Debug
           compiler: clang
           cxxcompiler: clang++
           libraries: libsdl2-dev
+        - name: Clang - Release
+          compiler: clang
+          cxxcompiler: clang++
+          libraries: libsdl2-dev
+          extra-cmake-parameters: -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPTION_USE_ASSERTS=OFF
         - name: GCC - SDL2
           compiler: gcc
           cxxcompiler: g++
