@@ -2922,10 +2922,7 @@ struct IndustryCargoesWindow : public Window {
 	{
 		if (!gui_scope) return;
 		if (data == NUM_INDUSTRYTYPES) {
-			if (this->IsWidgetLowered(WID_IC_NOTIFY)) {
-				this->RaiseWidget(WID_IC_NOTIFY);
-				this->SetWidgetDirty(WID_IC_NOTIFY);
-			}
+			this->RaiseWidgetWhenLowered(WID_IC_NOTIFY);
 			return;
 		}
 

@@ -414,6 +414,18 @@ public:
 	}
 
 	/**
+	 * Marks a widget as raised and dirty (redraw), when it is marked as lowered.
+	 * @param widget_index index of this widget in the window
+	 */
+	inline void RaiseWidgetWhenLowered(byte widget_index)
+	{
+		if (this->IsWidgetLowered(widget_index)) {
+			this->RaiseWidget(widget_index);
+			this->SetWidgetDirty(widget_index);
+		}
+	}
+
+	/**
 	 * Gets the lowered state of a widget.
 	 * @param widget_index index of this widget in the window
 	 * @return status of the widget ie: lowered = true, raised= false
@@ -458,6 +470,16 @@ public:
 	{
 		(SetWidgetLoweredState(widgets, lowered_stat), ...);
 	}
+
+	/**
+	 * Raises the widgets and sets widgets dirty that are lowered.
+	 * @param widgets list of widgets
+	 */
+	template<typename... Args>
+	void RaiseWidgetsWhenLowered(Args... widgets) {
+		(this->RaiseWidgetWhenLowered(widgets), ...);
+	}
+
 	void SetWidgetDirty(byte widget_index) const;
 
 	void DrawWidgets() const;
