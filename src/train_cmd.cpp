@@ -1421,16 +1421,18 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, bool sell_chain, b
 		/* First normalise the sub types of the chain. */
 		NormaliseSubtypes(new_head);
 
-		if (v == first && v->IsEngine() && !sell_chain && new_head != nullptr && new_head->IsFrontEngine()) {
-			/* We are selling the front engine. In this case we want to
-			 * 'give' the order, unit number and such to the new head. */
-			new_head->orders = first->orders;
-			new_head->AddToShared(first);
-			DeleteVehicleOrders(first);
+		if (v == first && !sell_chain && new_head != nullptr && new_head->IsFrontEngine()) {
+			if (v->IsEngine()) {
+				/* We are selling the front engine. In this case we want to
+				 * 'give' the order, unit number and such to the new head. */
+				new_head->orders = first->orders;
+				new_head->AddToShared(first);
+				DeleteVehicleOrders(first);
 
-			/* Copy other important data from the front engine */
-			new_head->CopyVehicleConfigAndStatistics(first);
-			GroupStatistics::CountVehicle(new_head, 1); // after copying over the profit
+				/* Copy other important data from the front engine */
+				new_head->CopyVehicleConfigAndStatistics(first);
+			}
+			GroupStatistics::CountVehicle(new_head, 1); // after copying over the profit, if required
 		} else if (v->IsPrimaryVehicle() && backup_order) {
 			OrderBackup::Backup(v, user);
 		}
