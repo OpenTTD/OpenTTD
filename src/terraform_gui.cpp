@@ -649,10 +649,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		for (uint i = WID_ETT_START; i < this->nested_array_size; i++) {
 			if (i == WID_ETT_BUTTONS_START) i = WID_ETT_BUTTONS_END; // skip the buttons
-			if (this->IsWidgetLowered(i)) {
-				this->RaiseWidget(i);
-				this->SetWidgetDirty(i);
-			}
+			this->RaiseWidgetWhenLowered(i);
 		}
 	}
 

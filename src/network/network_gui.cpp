@@ -1180,13 +1180,7 @@ struct NetworkStartServerWindow : public Window {
 
 	void OnTimeout() override
 	{
-		static const int raise_widgets[] = {WID_NSS_CLIENTS_BTND, WID_NSS_CLIENTS_BTNU, WID_NSS_COMPANIES_BTND, WID_NSS_COMPANIES_BTNU, WIDGET_LIST_END};
-		for (const int *widget = raise_widgets; *widget != WIDGET_LIST_END; widget++) {
-			if (this->IsWidgetLowered(*widget)) {
-				this->RaiseWidget(*widget);
-				this->SetWidgetDirty(*widget);
-			}
-		}
+		this->RaiseWidgetsWhenLowered(WID_NSS_CLIENTS_BTND, WID_NSS_CLIENTS_BTNU, WID_NSS_COMPANIES_BTND, WID_NSS_COMPANIES_BTNU);
 	}
 
 	void OnQueryTextFinished(char *str) override

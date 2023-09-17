@@ -2128,10 +2128,7 @@ struct MainToolbarWindow : Window {
 		/* We do not want to automatically raise the pause, fast forward and
 		 * switchbar buttons; they have to stay down when pressed etc. */
 		for (uint i = WID_TN_SETTINGS; i < WID_TN_SWITCH_BAR; i++) {
-			if (this->IsWidgetLowered(i)) {
-				this->RaiseWidget(i);
-				this->SetWidgetDirty(i);
-			}
+			this->RaiseWidgetWhenLowered(i);
 		}
 	}
 
