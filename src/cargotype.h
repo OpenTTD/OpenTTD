@@ -54,12 +54,13 @@ static const byte INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invali
 
 /** Specification of a cargo type. */
 struct CargoSpec {
-	uint8_t bitnum{INVALID_CARGO_BITNUM}; ///< Cargo bit number, is #INVALID_CARGO_BITNUM for a non-used spec.
 	CargoLabel label;                ///< Unique label of the cargo type.
+	uint8_t bitnum{INVALID_CARGO_BITNUM}; ///< Cargo bit number, is #INVALID_CARGO_BITNUM for a non-used spec.
 	uint8_t legend_colour;
 	uint8_t rating_colour;
 	uint8_t weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
 	uint16_t multiplier{0x100}; ///< Capacity multiplier for vehicles. (8 fractional bits)
+	uint16_t classes;                  ///< Classes of this cargo type. @see CargoClass
 	int32_t initial_payment;           ///< Initial payment rate before inflation is applied.
 	uint8_t transit_periods[2];
 
@@ -75,7 +76,6 @@ struct CargoSpec {
 
 	SpriteID sprite;                 ///< Icon to display this cargo type, may be \c 0xFFF (which means to resolve an action123 chain).
 
-	uint16_t classes;                  ///< Classes of this cargo type. @see CargoClass
 	const struct GRFFile *grffile;   ///< NewGRF where #group belongs to.
 	const struct SpriteGroup *group;
 
