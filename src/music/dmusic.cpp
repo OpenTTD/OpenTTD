@@ -565,19 +565,19 @@ static void TransmitStandardSysex(IDirectMusicBuffer *buffer, REFERENCE_TIME rt,
 static void TransmitNotesOff(IDirectMusicBuffer *buffer, REFERENCE_TIME block_time, REFERENCE_TIME cur_time)
 {
 	for (int ch = 0; ch < 16; ch++) {
-		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_ALLNOTESOFF, 0);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_SUSTAINSW, 0);
-		TransmitChannelMsg(_buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_RESETALLCTRL, 0);
+		TransmitChannelMsg(buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_ALLNOTESOFF, 0);
+		TransmitChannelMsg(buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_SUSTAINSW, 0);
+		TransmitChannelMsg(buffer, block_time + 10, MIDIST_CONTROLLER | ch, MIDICT_MODE_RESETALLCTRL, 0);
 	}
 
 	/* Performing a GM reset stops all sound and resets all parameters. */
-	TransmitStandardSysex(_buffer, block_time + 20, MidiSysexMessage::ResetGM);
-	TransmitStandardSysex(_buffer, block_time + 30, MidiSysexMessage::RolandSetReverb);
+	TransmitStandardSysex(buffer, block_time + 20, MidiSysexMessage::ResetGM);
+	TransmitStandardSysex(buffer, block_time + 30, MidiSysexMessage::RolandSetReverb);
 
 	/* Explicitly flush buffer to make sure the messages are processed,
 	 * as we want sound to stop immediately. */
-	_port->PlayBuffer(_buffer);
-	_buffer->Flush();
+	_port->PlayBuffer(buffer);
+	buffer->Flush();
 
 	/* Wait until message time has passed. */
 	Sleep(Clamp((block_time - cur_time) / MS_TO_REFTIME, 5, 1000));
