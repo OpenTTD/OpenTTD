@@ -27,7 +27,7 @@ public:
 	virtual ~DropDownListItem() = default;
 
 	virtual bool Selectable() const { return false; }
-	virtual uint Height([[maybe_unused]] uint) const { return FONT_HEIGHT_NORMAL; }
+	virtual uint Height() const { return FONT_HEIGHT_NORMAL; }
 	virtual uint Width() const { return 0; }
 	virtual void Draw(const Rect &r, bool sel, Colours bg_colour) const;
 };
@@ -61,7 +61,7 @@ class DropDownListIconItem : public DropDownListStringItem {
 public:
 	DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked);
 
-	uint Height(uint width) const override;
+	uint Height() const override;
 	uint Width() const override;
 	void Draw(const Rect &r, bool sel, Colours bg_colour) const override;
 	void SetDimension(Dimension d);

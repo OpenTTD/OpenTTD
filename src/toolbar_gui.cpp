@@ -147,7 +147,7 @@ public:
 		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + WidgetDimensions::scaled.dropdowntext.Horizontal() + WidgetDimensions::scaled.hsep_wide;
 	}
 
-	uint Height(uint) const override
+	uint Height() const override
 	{
 		return std::max(std::max(this->icon_size.height, this->lock_size.height) + WidgetDimensions::scaled.imgbtn.Vertical(), (uint)FONT_HEIGHT_NORMAL);
 	}

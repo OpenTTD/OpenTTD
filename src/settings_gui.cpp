@@ -475,7 +475,7 @@ struct GameOptionsWindow : Window {
 						Dimension string_dim;
 						int width = ddli->Width();
 						string_dim.width = width + padding.width;
-						string_dim.height = ddli->Height(width) + padding.height;
+						string_dim.height = ddli->Height() + padding.height;
 						*size = maxdim(*size, string_dim);
 					}
 				}
