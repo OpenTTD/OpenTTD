@@ -1122,6 +1122,9 @@ static bool SearchLumberMillTrees(TileIndex tile, void *user_data)
  */
 static void ChopLumberMillTrees(Industry *i)
 {
+	/* Skip production if cargo slot is invalid. */
+	if (!IsValidCargoID(i->produced[0].cargo)) return;
+
 	/* We only want to cut trees if all tiles are completed. */
 	for (TileIndex tile_cur : i->location) {
 		if (i->TileBelongsToIndustry(tile_cur)) {
@@ -1160,6 +1163,7 @@ static void ProduceIndustryGoods(Industry *i)
 
 		IndustryBehaviour indbehav = indsp->behaviour;
 		for (auto &p : i->produced) {
+			if (!IsValidCargoID(p.cargo)) continue;
 			p.waiting = ClampTo<uint16_t>(p.waiting + p.rate);
 		}
 
