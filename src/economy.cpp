@@ -1169,9 +1169,10 @@ static void TriggerIndustryProduction(Industry *i)
 		}
 	} else {
 		for (auto ita = std::begin(i->accepted); ita != std::end(i->accepted); ++ita) {
-			if (ita->waiting == 0) continue;
+			if (ita->waiting == 0 || !IsValidCargoID(ita->cargo)) continue;
 
 			for (auto itp = std::begin(i->produced); itp != std::end(i->produced); ++itp) {
+				if (!IsValidCargoID(itp->cargo)) continue;
 				itp->waiting = ClampTo<uint16_t>(itp->waiting + (ita->waiting * indspec->input_cargo_multiplier[ita - std::begin(i->accepted)][itp - std::begin(i->produced)] / 256));
 			}
 
