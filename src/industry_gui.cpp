@@ -1948,11 +1948,11 @@ struct CargoesField {
 		} industry; ///< Industry data (for #CFT_INDUSTRY).
 		struct {
 			CargoID vertical_cargoes[MAX_CARGOES]; ///< Cargoes running from top to bottom (cargo ID or #CT_INVALID).
-			byte num_cargoes;                      ///< Number of cargoes.
+			uint8_t num_cargoes;                   ///< Number of cargoes.
 			CargoID supp_cargoes[MAX_CARGOES];     ///< Cargoes entering from the left (index in #vertical_cargoes, or #CT_INVALID).
-			byte top_end;                          ///< Stop at the top of the vertical cargoes.
+			uint8_t top_end;                       ///< Stop at the top of the vertical cargoes.
 			CargoID cust_cargoes[MAX_CARGOES];     ///< Cargoes leaving to the right (index in #vertical_cargoes, or #CT_INVALID).
-			byte bottom_end;                       ///< Stop at the bottom of the vertical cargoes.
+			uint8_t bottom_end;                    ///< Stop at the bottom of the vertical cargoes.
 		} cargo; ///< Cargo data (for #CFT_CARGO).
 		struct {
 			CargoID cargoes[MAX_CARGOES];          ///< Cargoes to display (or #CT_INVALID).
