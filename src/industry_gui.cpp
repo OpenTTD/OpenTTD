@@ -1979,8 +1979,8 @@ struct CargoesField {
 	{
 		this->type = CFT_INDUSTRY;
 		this->u.industry.ind_type = ind_type;
-		MemSetT(this->u.industry.other_accepted, CT_INVALID, MAX_CARGOES);
-		MemSetT(this->u.industry.other_produced, CT_INVALID, MAX_CARGOES);
+		std::fill(std::begin(this->u.industry.other_accepted), std::end(this->u.industry.other_accepted), CT_INVALID);
+		std::fill(std::begin(this->u.industry.other_produced), std::end(this->u.industry.other_produced), CT_INVALID);
 	}
 
 	/**
@@ -2053,8 +2053,8 @@ struct CargoesField {
 		for (; num < MAX_CARGOES; num++) this->u.cargo.vertical_cargoes[num] = CT_INVALID;
 		this->u.cargo.top_end = top_end;
 		this->u.cargo.bottom_end = bottom_end;
-		MemSetT(this->u.cargo.supp_cargoes, CT_INVALID, MAX_CARGOES);
-		MemSetT(this->u.cargo.cust_cargoes, CT_INVALID, MAX_CARGOES);
+		std::fill(std::begin(this->u.cargo.supp_cargoes), std::end(this->u.cargo.supp_cargoes), CT_INVALID);
+		std::fill(std::begin(this->u.cargo.cust_cargoes), std::end(this->u.cargo.cust_cargoes), CT_INVALID);
 	}
 
 	/**
@@ -2370,7 +2370,7 @@ struct CargoesRow {
 		CargoesField *cargo_fld = this->columns + column + 1;
 		assert(ind_fld->type == CFT_INDUSTRY && cargo_fld->type == CFT_CARGO);
 
-		MemSetT(ind_fld->u.industry.other_produced, CT_INVALID, MAX_CARGOES);
+		std::fill(std::begin(ind_fld->u.industry.other_produced), std::end(ind_fld->u.industry.other_produced), CT_INVALID);
 
 		if (ind_fld->u.industry.ind_type < NUM_INDUSTRYTYPES) {
 			CargoID others[MAX_CARGOES]; // Produced cargoes not carried in the cargo column.
@@ -2404,7 +2404,7 @@ struct CargoesRow {
 	void MakeCargoLabel(int column, bool accepting)
 	{
 		CargoID cargoes[MAX_CARGOES];
-		MemSetT(cargoes, CT_INVALID, lengthof(cargoes));
+		std::fill(std::begin(cargoes), std::end(cargoes), CT_INVALID);
 
 		CargoesField *label_fld = this->columns + column;
 		CargoesField *cargo_fld = this->columns + (accepting ? column - 1 : column + 1);
@@ -2428,7 +2428,7 @@ struct CargoesRow {
 		CargoesField *cargo_fld = this->columns + column - 1;
 		assert(ind_fld->type == CFT_INDUSTRY && cargo_fld->type == CFT_CARGO);
 
-		MemSetT(ind_fld->u.industry.other_accepted, CT_INVALID, MAX_CARGOES);
+		std::fill(std::begin(ind_fld->u.industry.other_accepted), std::end(ind_fld->u.industry.other_accepted), CT_INVALID);
 
 		if (ind_fld->u.industry.ind_type < NUM_INDUSTRYTYPES) {
 			CargoID others[MAX_CARGOES]; // Accepted cargoes not carried in the cargo column.
