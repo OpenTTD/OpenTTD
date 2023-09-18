@@ -187,6 +187,7 @@ CargoID GetCargoIDByBitnum(uint8_t bitnum);
 CargoID GetDefaultCargoID(LandscapeID l, CargoType ct);
 
 void InitializeSortedCargoSpecs();
+extern std::array<uint8_t, NUM_CARGO> _sorted_cargo_types;
 extern std::vector<const CargoSpec *> _sorted_cargo_specs;
 extern span<const CargoSpec *> _sorted_standard_cargo_specs;
 
