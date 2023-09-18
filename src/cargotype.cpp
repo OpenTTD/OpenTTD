@@ -142,6 +142,7 @@ SpriteID CargoSpec::GetCargoIcon() const
 	return sprite;
 }
 
+std::array<uint8_t, NUM_CARGO> _sorted_cargo_types; ///< Sort order of cargoes by cargo ID.
 std::vector<const CargoSpec *> _sorted_cargo_specs;   ///< Cargo specifications sorted alphabetically by name.
 span<const CargoSpec *> _sorted_standard_cargo_specs; ///< Standard cargo specifications sorted alphabetically by name.
 
@@ -185,6 +186,11 @@ void InitializeSortedCargoSpecs()
 
 	/* Sort cargo specifications by cargo class and name. */
 	std::sort(_sorted_cargo_specs.begin(), _sorted_cargo_specs.end(), &CargoSpecClassSorter);
+
+	/* Populate */
+	for (auto it = std::begin(_sorted_cargo_specs); it != std::end(_sorted_cargo_specs); ++it) {
+		_sorted_cargo_types[(*it)->Index()] = static_cast<uint8_t>(it - std::begin(_sorted_cargo_specs));
+	}
 
 	/* Count the number of standard cargos and fill the mask. */
 	_standard_cargo_mask = 0;
