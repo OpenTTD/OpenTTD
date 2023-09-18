@@ -2041,16 +2041,15 @@ struct CargoesField {
 	void MakeCargo(const CargoID *cargoes, uint length, int count = -1, bool top_end = false, bool bottom_end = false)
 	{
 		this->type = CFT_CARGO;
-		uint i;
-		uint num = 0;
-		for (i = 0; i < MAX_CARGOES && i < length; i++) {
+		auto insert = std::begin(this->u.cargo.vertical_cargoes);
+		for (uint i = 0; insert != std::end(this->u.cargo.vertical_cargoes) && i < length; i++) {
 			if (IsValidCargoID(cargoes[i])) {
-				this->u.cargo.vertical_cargoes[num] = cargoes[i];
-				num++;
+				*insert = cargoes[i];
+				++insert;
 			}
 		}
-		this->u.cargo.num_cargoes = (count < 0) ? num : count;
-		for (; num < MAX_CARGOES; num++) this->u.cargo.vertical_cargoes[num] = CT_INVALID;
+		this->u.cargo.num_cargoes = (count < 0) ? static_cast<uint8_t>(insert - std::begin(this->u.cargo.vertical_cargoes)) : count;
+		std::fill(insert, std::end(this->u.cargo.vertical_cargoes), CT_INVALID);
 		this->u.cargo.top_end = top_end;
 		this->u.cargo.bottom_end = bottom_end;
 		std::fill(std::begin(this->u.cargo.supp_cargoes), std::end(this->u.cargo.supp_cargoes), CT_INVALID);
