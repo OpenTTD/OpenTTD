@@ -76,6 +76,42 @@
 	if (IsSavegameVersionBefore(SLV_181)) {
 		for (Vehicle *v : Vehicle::Iterate()) v->cargo.KeepAll();
 	}
+
+	/* Before this version, we didn't track how far cargo actually traveled in vehicles. Make best-effort estimates of this. */
+	if (IsSavegameVersionBefore(SLV_CARGO_TRAVELLED)) {
+		/* Update the cargo-traveled in stations as if they arrived from the source tile. */
+		for (Station *st : Station::Iterate()) {
+			for (size_t i = 0; i < NUM_CARGO; i++) {
+				GoodsEntry *ge = &st->goods[i];
+				for (auto it = ge->cargo.Packets()->begin(); it != ge->cargo.Packets()->end(); it++) {
+					for (CargoPacket *cp : it->second) {
+						if (cp->source_xy != INVALID_TILE && cp->source_xy != st->xy) {
+							cp->travelled.x = TileX(cp->source_xy) - TileX(st->xy);
+							cp->travelled.y = TileY(cp->source_xy) - TileY(st->xy);
+						}
+					}
+				}
+			}
+		}
+
+		/* Update the cargo-traveled in vehicles as if they were loaded at the source tile. */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			for (auto it = v->cargo.Packets()->begin(); it != v->cargo.Packets()->end(); it++) {
+				if ((*it)->source_xy != INVALID_TILE) {
+					(*it)->UpdateLoadingTile((*it)->source_xy);
+				}
+			}
+		}
+	}
+
+#ifdef WITH_ASSERT
+	/* in_vehicle is a NOSAVE; it tells if cargo is in a vehicle or not. Restore the value in here. */
+	for (Vehicle *v : Vehicle::Iterate()) {
+		for (auto it = v->cargo.Packets()->begin(); it != v->cargo.Packets()->end(); it++) {
+			(*it)->in_vehicle = true;
+		}
+	}
+#endif /* WITH_ASSERT */
 }
 
 /**
@@ -97,6 +133,8 @@ SaveLoadTable GetCargoPacketDesc()
 		SLE_VAR(CargoPacket, feeder_share,    SLE_INT64),
 		SLE_CONDVAR(CargoPacket, source_type,     SLE_UINT8,  SLV_125, SL_MAX_VERSION),
 		SLE_CONDVAR(CargoPacket, source_id,       SLE_UINT16, SLV_125, SL_MAX_VERSION),
+		SLE_CONDVAR(CargoPacket, travelled.x, SLE_INT16, SLV_CARGO_TRAVELLED, SL_MAX_VERSION),
+		SLE_CONDVAR(CargoPacket, travelled.y, SLE_INT16, SLV_CARGO_TRAVELLED, SL_MAX_VERSION),
 	};
 	return _cargopacket_desc;
 }

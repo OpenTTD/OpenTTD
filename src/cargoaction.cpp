@@ -120,7 +120,7 @@ bool CargoLoad::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) return false;
-	cp_new->SetSourceXY(this->current_tile);
+	cp_new->UpdateLoadingTile(this->current_tile);
 	this->source->RemoveFromCache(cp_new, cp_new->Count());
 	this->destination->Append(cp_new, VehicleCargoList::MTA_KEEP);
 	return cp_new == cp;
@@ -135,7 +135,7 @@ bool CargoReservation::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) return false;
-	cp_new->SetSourceXY(this->current_tile);
+	cp_new->UpdateLoadingTile(this->current_tile);
 	this->source->reserved_count += cp_new->Count();
 	this->source->RemoveFromCache(cp_new, cp_new->Count());
 	this->destination->Append(cp_new, VehicleCargoList::MTA_LOAD);
@@ -152,6 +152,7 @@ bool CargoReturn::operator()(CargoPacket *cp)
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) cp_new = cp;
 	assert(cp_new->Count() <= this->destination->reserved_count);
+	cp_new->UpdateUnloadingTile(this->current_tile);
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_LOAD, cp_new->Count());
 	this->destination->reserved_count -= cp_new->Count();
 	this->destination->Append(cp_new, this->next);
@@ -167,6 +168,7 @@ bool CargoTransfer::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == nullptr) return false;
+	cp_new->UpdateUnloadingTile(this->current_tile);
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
 	/* No transfer credits here as they were already granted during Stage(). */
 	this->destination->Append(cp_new, cp_new->GetNextHop());
