@@ -930,7 +930,7 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION}에서 이제 {STRING}{G 1 "을" "를"} 받을 수 있습니다.
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}에서 이제 {STRING}/{STRING}{G 2 "을" "를"} 받을 수 있습니다.
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}보조금 지급 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은{}더 이상 보조금을 지급하지 않습니다.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}보조금 지급 종료:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은{}더 이상 보조금을 지급하지 않습니다.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}보조금 지급 만료:{}{}{1:STRING}에서 {2:STRING}까지의{}{0:STRING} 수송 보조금은 더 이상 지급되지 않습니다.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}보조금 지급 안내{}{}처음으로 {1:STRING}에서 {2:STRING}까지{}{0:STRING}{G 0 "을" "를"} 수송하는 회사는{}지역 당국으로부터 {3:NUM}년 동안 보조금을 받게 될 것입니다!
 ###length 4
