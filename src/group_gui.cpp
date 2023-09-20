@@ -358,9 +358,6 @@ public:
 		this->group_rename = INVALID_GROUP;
 		this->group_over = INVALID_GROUP;
 
-		this->BuildVehicleList();
-		this->SortVehicleList();
-
 		this->groups.ForceRebuild();
 		this->groups.NeedResort();
 		this->BuildGroupList(vli.company);
@@ -377,6 +374,9 @@ public:
 
 		this->FinishInitNested(window_number);
 		this->owner = vli.company;
+
+		this->BuildVehicleList();
+		this->SortVehicleList();
 	}
 
 	~VehicleGroupWindow()
