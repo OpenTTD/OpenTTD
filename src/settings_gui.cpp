@@ -2394,7 +2394,7 @@ struct GameSettingsWindow : Window {
 						list.emplace_back(new DropDownListStringItem(sd->str_val + i - sd->min, i, false));
 					}
 
-					ShowDropDownListAt(this, std::move(list), value, -1, wi_rect, COLOUR_ORANGE);
+					ShowDropDownListAt(this, std::move(list), value, WID_GS_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
 				}
 			}
 			this->SetDirty();
@@ -2526,23 +2526,21 @@ struct GameSettingsWindow : Window {
 				this->InvalidateData();
 				break;
 
-			default:
-				if (widget < 0) {
-					/* Deal with drop down boxes on the panel. */
-					assert(this->valuedropdown_entry != nullptr);
-					const IntSettingDesc *sd = this->valuedropdown_entry->setting;
-					assert(sd->flags & SF_GUI_DROPDOWN);
+			case WID_GS_SETTING_DROPDOWN:
+				/* Deal with drop down boxes on the panel. */
+				assert(this->valuedropdown_entry != nullptr);
+				const IntSettingDesc *sd = this->valuedropdown_entry->setting;
+				assert(sd->flags & SF_GUI_DROPDOWN);
 
-					SetSettingValue(sd, index);
-					this->SetDirty();
-				}
+				SetSettingValue(sd, index);
+				this->SetDirty();
 				break;
 		}
 	}
 
 	void OnDropdownClose(Point pt, int widget, int index, bool instant_close) override
 	{
-		if (widget >= 0) {
+		if (widget != WID_GS_SETTING_DROPDOWN) {
 			/* Normally the default implementation of OnDropdownClose() takes care of
 			 * a few things. We want that behaviour here too, but only for
 			 * "normal" dropdown boxes. The special dropdown boxes added for every

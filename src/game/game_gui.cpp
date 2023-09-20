@@ -314,7 +314,7 @@ struct GSConfigWindow : public Window {
 								list.emplace_back(new DropDownListStringItem(config_item.labels.find(i)->second, i, false));
 							}
 
-							ShowDropDownListAt(this, std::move(list), old_val, -1, wi_rect, COLOUR_ORANGE);
+							ShowDropDownListAt(this, std::move(list), old_val, WID_GSC_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
 						}
 					}
 				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
@@ -367,14 +367,14 @@ struct GSConfigWindow : public Window {
 
 	void OnDropdownSelect(int widget, int index) override
 	{
-		if (widget >= 0) return;
+		if (widget != WID_GSC_SETTING_DROPDOWN) return;
 		assert(this->clicked_dropdown);
 		SetValue(index);
 	}
 
 	void OnDropdownClose(Point, int widget, int, bool) override
 	{
-		if (widget >= 0) return;
+		if (widget != WID_GSC_SETTING_DROPDOWN) return;
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
 		 * the same dropdown button was clicked again, and then not open the dropdown again.
 		 * So, we only remember that it was closed, and process it on the next OnPaint, which is

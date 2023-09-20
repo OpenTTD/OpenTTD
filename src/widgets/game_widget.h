@@ -23,6 +23,8 @@ enum GSConfigWidgets {
 	WID_GSC_CONTENT_DOWNLOAD = WID_GSC_TEXTFILE + TFT_CONTENT_END, ///< Download content button.
 	WID_GSC_ACCEPT,           ///< Accept ("Close") button
 	WID_GSC_RESET,            ///< Reset button.
+
+	WID_GSC_SETTING_DROPDOWN = -1, ///< Dynamically created dropdown for changing setting value.
 };
 
 #endif /* WIDGETS_GS_WIDGET_H */

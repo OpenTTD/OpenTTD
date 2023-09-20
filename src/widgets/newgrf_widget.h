@@ -26,6 +26,8 @@ enum NewGRFParametersWidgets {
 	WID_NP_RESET,            ///< Reset button.
 	WID_NP_SHOW_DESCRIPTION, ///< #NWID_SELECTION to optionally display parameter descriptions.
 	WID_NP_DESCRIPTION,      ///< Multi-line description of a parameter.
+
+	WID_NP_SETTING_DROPDOWN = -1, ///< Dynamically created dropdown for changing setting value.
 };
 
 /** Widgets of the #NewGRFWindow class. */
