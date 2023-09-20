@@ -533,7 +533,7 @@ static const NIVariable _niv_airports[] = {
 	NIV_END()
 };
 
-class NIHAiport : public NIHelper {
+class NIHAirport : public NIHelper {
 	bool IsInspectable(uint index) const override        { return AirportSpec::Get(Station::Get(index)->airport.type)->grf_prop.grffile != nullptr; }
 	uint GetParent(uint index) const override            { return GetInspectWindowNumber(GSF_FAKE_TOWNS, Station::Get(index)->town->index); }
 	const void *GetInstance(uint index)const override    { return Station::Get(index); }
@@ -562,7 +562,7 @@ static const NIFeature _nif_airport = {
 	nullptr,
 	nullptr,
 	_niv_airports,
-	new NIHAiport(),
+	new NIHAirport(),
 };
 
 
