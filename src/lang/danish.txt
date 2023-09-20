@@ -523,6 +523,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Slet alle beske
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landområde information
+STR_ABOUT_MENU_HELP                                             :Hjælp & manualer
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Tænd/Sluk konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :Computerspiller/spilscript debug
@@ -2124,6 +2125,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Netværk
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opsætning
 STR_INTRO_HIGHSCORE                                             :{BLACK} Topresultater
+STR_INTRO_HELP                                                  :{BLACK}Hjælp og manualer
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
@@ -2145,6 +2147,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vælg 'l
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Sæt spillet op
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hvis topscoreliste
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Få adgang til dokumentation og online ressourcer
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Skærm indstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-indstillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for nyt og opdateret indhold til download
@@ -2167,6 +2170,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du s
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du sikker på, at du vil afslutte dette scenarie ?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Hjælp og manualer
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Hjemmesider
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Dokumenter
+STR_HELP_WINDOW_README                                          :{BLACK}Læs mig
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Ændringslog
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Kendte Bugs
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licens
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Anmeld en fejl
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Fællesskab
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Snydefunktioner
@@ -4701,6 +4715,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Indholdsfortegnelse
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Spring hurtigt til en sektion i den viste fil via denne liste
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Gå tilbage i navigationshistorikken
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Vend tilbage i navigationshistorikken
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Ombryd tekst
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ombryd teksten i vinduet, så det hele passer uden at skulle rulle
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se readme
@@ -4711,6 +4730,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licens for {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :Forhåndsvisning af undersøgelsesresultat
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD dokument '{STRING}'
 
 
 # Vehicle loading indicators
