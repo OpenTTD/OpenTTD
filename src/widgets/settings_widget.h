@@ -64,6 +64,8 @@ enum GameSettingsWidgets {
 	WID_GS_RESTRICT_TYPE,      ///< Label upfront to the type drop-down box to restrict the list of settings to show
 	WID_GS_RESTRICT_DROPDOWN,  ///< The drop down box to restrict the list of settings
 	WID_GS_TYPE_DROPDOWN,      ///< The drop down box to choose client/game/company/all settings
+
+	WID_GS_SETTING_DROPDOWN = -1, ///< Dynamically created dropdown for changing setting value.
 };
 
 /** Widgets of the #CustomCurrencyWindow class. */
