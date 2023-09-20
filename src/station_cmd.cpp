@@ -354,7 +354,23 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 		(TileX(tile) < TileX(t->xy)) +
 		(TileY(tile) < TileY(t->xy)) * 2];
 
-	tmp = free_names & ((1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 6) | (1 << 7) | (1 << 12) | (1 << 26) | (1 << 27) | (1 << 28) | (1 << 29) | (1 << 30));
+	/** Bitmask of remaining station names that can be used when a more specific name has not been used. */
+	static const uint32_t fallback_names = (
+		(1U << M(STR_SV_STNAME_NORTH)) |
+		(1U << M(STR_SV_STNAME_SOUTH)) |
+		(1U << M(STR_SV_STNAME_EAST)) |
+		(1U << M(STR_SV_STNAME_WEST)) |
+		(1U << M(STR_SV_STNAME_TRANSFER)) |
+		(1U << M(STR_SV_STNAME_HALT)) |
+		(1U << M(STR_SV_STNAME_EXCHANGE)) |
+		(1U << M(STR_SV_STNAME_ANNEXE)) |
+		(1U << M(STR_SV_STNAME_SIDINGS)) |
+		(1U << M(STR_SV_STNAME_BRANCH)) |
+		(1U << M(STR_SV_STNAME_UPPER)) |
+		(1U << M(STR_SV_STNAME_LOWER))
+	);
+
+	tmp = free_names & fallback_names;
 	return (tmp == 0) ? STR_SV_STNAME_FALLBACK : (STR_SV_STNAME + FindFirstBit(tmp));
 }
 #undef M
