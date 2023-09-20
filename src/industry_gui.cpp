@@ -1624,9 +1624,10 @@ public:
 		this->industries.SetListing(this->last_sorting);
 		this->industries.SetSortFuncs(IndustryDirectoryWindow::sorter_funcs);
 		this->industries.ForceRebuild();
-		this->BuildSortIndustriesList();
 
 		this->FinishInitNested(0);
+
+		this->BuildSortIndustriesList();
 
 		this->querystrings[WID_ID_FILTER] = &this->industry_editbox;
 		this->industry_editbox.cancel_button = QueryString::ACTION_CLEAR;

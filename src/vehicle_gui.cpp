@@ -1842,9 +1842,6 @@ public:
 
 		this->vscroll = this->GetScrollbar(WID_VL_SCROLLBAR);
 
-		this->BuildVehicleList();
-		this->SortVehicleList();
-
 		/* Set up the window widgets */
 		this->GetWidget<NWidgetCore>(WID_VL_LIST)->tool_tip = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vli.vtype;
 
@@ -1863,6 +1860,9 @@ public:
 
 		this->FinishInitNested(window_number);
 		if (this->vli.company != OWNER_NONE) this->owner = this->vli.company;
+
+		this->BuildVehicleList();
+		this->SortVehicleList();
 	}
 
 	~VehicleListWindow()
