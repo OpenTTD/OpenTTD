@@ -29,10 +29,9 @@ struct ScreenshotWindow : Window {
 
 	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
-		if (widget < 0) return;
 		ScreenshotType st;
 		switch (widget) {
-			default:
+			default: return;
 			case WID_SC_TAKE:             st = SC_VIEWPORT;    break;
 			case WID_SC_TAKE_ZOOMIN:      st = SC_ZOOMEDIN;    break;
 			case WID_SC_TAKE_DEFAULTZOOM: st = SC_DEFAULTZOOM; break;

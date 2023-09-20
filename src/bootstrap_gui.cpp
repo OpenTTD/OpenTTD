@@ -239,7 +239,7 @@ public:
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
-		if (widget != 0) return;
+		if (widget != WID_BAFD_QUESTION) return;
 
 		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_MISSING_GRAPHICS_SET_MESSAGE, TC_FROMSTRING, SA_CENTER);
 	}
