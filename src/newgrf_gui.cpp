@@ -1171,7 +1171,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	void OnDropdownSelect(int widget, int index) override
 	{
-		if (widget >= 0) return;
+		if (widget != WID_NS_PRESET_LIST) return;
 		if (!this->editable) return;
 
 		ClearGRFConfigList(&this->actives);
