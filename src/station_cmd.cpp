@@ -67,6 +67,8 @@
 
 #include "table/strings.h"
 
+#include <bitset>
+
 #include "safeguards.h"
 
 /**
@@ -216,7 +218,7 @@ enum StationNaming {
 /** Information to handle station action 0 property 24 correctly */
 struct StationNameInformation {
 	uint32_t free_names; ///< Current bitset of free names (we can remove names).
-	bool *indtypes;    ///< Array of bools telling whether an industry type has been found.
+	std::bitset<NUM_INDUSTRYTYPES> indtypes; ///< Bit set indicating when an industry type has been found.
 };
 
 /**
@@ -257,19 +259,18 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	const Town *t = st->town;
 	uint32_t free_names = UINT32_MAX;
 
-	bool indtypes[NUM_INDUSTRYTYPES];
-	memset(indtypes, 0, sizeof(indtypes));
+	StationNameInformation sni{};
 
 	for (const Station *s : Station::Iterate()) {
 		if (s != st && s->town == t) {
 			if (s->indtype != IT_INVALID) {
-				indtypes[s->indtype] = true;
+				sni.indtypes[s->indtype] = true;
 				StringID name = GetIndustrySpec(s->indtype)->station_name;
 				if (name != STR_UNDEFINED) {
 					/* Filter for other industrytypes with the same name */
 					for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 						const IndustrySpec *indsp = GetIndustrySpec(it);
-						if (indsp->enabled && indsp->station_name == name) indtypes[it] = true;
+						if (indsp->enabled && indsp->station_name == name) sni.indtypes[it] = true;
 					}
 				}
 				continue;
@@ -285,7 +286,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	}
 
 	TileIndex indtile = tile;
-	StationNameInformation sni = { free_names, indtypes };
+	sni.free_names = free_names;
 	if (CircularTileSearch(&indtile, 7, FindNearIndustryName, &sni)) {
 		/* An industry has been found nearby */
 		IndustryType indtype = GetIndustryType(indtile);
