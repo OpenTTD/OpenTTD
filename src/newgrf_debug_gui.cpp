@@ -775,7 +775,7 @@ GrfSpecFeature GetGrfSpecFeature(TileIndex tile)
 	switch (GetTileType(tile)) {
 		default:              return GSF_INVALID;
 		case MP_RAILWAY:      return GSF_RAILTYPES;
-		case MP_ROAD:         return IsLevelCrossing(tile) ? GSF_RAILTYPES : GSF_INVALID;
+		case MP_ROAD:         return IsLevelCrossing(tile) ? GSF_RAILTYPES : GSF_ROADTYPES;
 		case MP_HOUSE:        return GSF_HOUSES;
 		case MP_INDUSTRY:     return GSF_INDUSTRYTILES;
 		case MP_OBJECT:       return GSF_OBJECTS;

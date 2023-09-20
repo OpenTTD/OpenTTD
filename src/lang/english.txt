@@ -3400,6 +3400,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspect 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING1} at {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Object
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Rail type
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Road type
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x parameter (hexadecimal)
 

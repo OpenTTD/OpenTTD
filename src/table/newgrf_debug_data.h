@@ -632,7 +632,7 @@ class NIHRoadType : public NIHelper {
 	uint GetParent(uint) const override                  { return UINT32_MAX; }
 	const void *GetInstance(uint) const override         { return nullptr; }
 	const void *GetSpec(uint) const override             { return nullptr; }
-	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE, INVALID_STRING_ID, index); }
+	void SetStringParameters(uint index) const override  { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE, INVALID_STRING_ID, index); }
 	uint32_t GetGRFID(uint) const override               { return 0; }
 
 	uint Resolve(uint index, uint var, uint param, bool *avail) const override
