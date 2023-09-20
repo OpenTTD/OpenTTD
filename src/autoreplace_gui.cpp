@@ -229,6 +229,7 @@ class ReplaceVehicleWindow : public Window {
 				/* Always empty the right engines list when nothing is selected in the left engines list */
 				this->engines[1].clear();
 				this->sel_engine[1] = INVALID_ENGINE;
+				this->vscroll[1]->SetCount(this->engines[1].size());
 			} else {
 				if (this->reset_sel_engine && this->sel_engine[0] != INVALID_ENGINE) {
 					/* Select the current replacement for sel_engine[0]. */
