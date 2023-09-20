@@ -1323,7 +1323,7 @@ struct BuildVehicleWindow : Window {
 	void SelectEngine(EngineID engine)
 	{
 		CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
-		if (cargo == CF_ANY) cargo = CF_NONE;
+		if (cargo == CF_ANY || cargo == CF_ENGINES || cargo == CF_NONE) cargo = CT_INVALID;
 
 		this->sel_engine = engine;
 		this->SetBuyVehicleText();
@@ -1647,7 +1647,7 @@ struct BuildVehicleWindow : Window {
 				EngineID sel_eng = this->sel_engine;
 				if (sel_eng != INVALID_ENGINE) {
 					CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
-					if (cargo == CF_ANY || cargo == CF_ENGINES) cargo = CF_NONE;
+					if (cargo == CF_ANY || cargo == CF_ENGINES || cargo == CF_NONE) cargo = CT_INVALID;
 					if (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) {
 						Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
 					} else {
