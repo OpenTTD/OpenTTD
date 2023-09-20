@@ -257,9 +257,9 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	};
 
 	const Town *t = st->town;
-	uint32_t free_names = UINT32_MAX;
 
 	StationNameInformation sni{};
+	sni.free_names = UINT32_MAX;
 
 	for (const Station *s : Station::Iterate()) {
 		if (s != st && s->town == t) {
@@ -280,13 +280,12 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 				if (str == M(STR_SV_STNAME_FOREST)) {
 					str = M(STR_SV_STNAME_WOODS);
 				}
-				ClrBit(free_names, str);
+				ClrBit(sni.free_names, str);
 			}
 		}
 	}
 
 	TileIndex indtile = tile;
-	sni.free_names = free_names;
 	if (CircularTileSearch(&indtile, 7, FindNearIndustryName, &sni)) {
 		/* An industry has been found nearby */
 		IndustryType indtype = GetIndustryType(indtile);
@@ -299,14 +298,13 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	}
 
 	/* Oil rigs/mines name could be marked not free by looking for a near by industry. */
-	free_names = sni.free_names;
 
 	/* check default names */
-	uint32_t tmp = free_names & _gen_station_name_bits[name_class];
+	uint32_t tmp = sni.free_names & _gen_station_name_bits[name_class];
 	if (tmp != 0) return STR_SV_STNAME + FindFirstBit(tmp);
 
 	/* check mine? */
-	if (HasBit(free_names, M(STR_SV_STNAME_MINES))) {
+	if (HasBit(sni.free_names, M(STR_SV_STNAME_MINES))) {
 		if (CountMapSquareAround(tile, CMSAMine) >= 2) {
 			return STR_SV_STNAME_MINES;
 		}
@@ -314,20 +312,20 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 
 	/* check close enough to town to get central as name? */
 	if (DistanceMax(tile, t->xy) < 8) {
-		if (HasBit(free_names, M(STR_SV_STNAME))) return STR_SV_STNAME;
+		if (HasBit(sni.free_names, M(STR_SV_STNAME))) return STR_SV_STNAME;
 
-		if (HasBit(free_names, M(STR_SV_STNAME_CENTRAL))) return STR_SV_STNAME_CENTRAL;
+		if (HasBit(sni.free_names, M(STR_SV_STNAME_CENTRAL))) return STR_SV_STNAME_CENTRAL;
 	}
 
 	/* Check lakeside */
-	if (HasBit(free_names, M(STR_SV_STNAME_LAKESIDE)) &&
+	if (HasBit(sni.free_names, M(STR_SV_STNAME_LAKESIDE)) &&
 			DistanceFromEdge(tile) < 20 &&
 			CountMapSquareAround(tile, CMSAWater) >= 5) {
 		return STR_SV_STNAME_LAKESIDE;
 	}
 
 	/* Check woods */
-	if (HasBit(free_names, M(STR_SV_STNAME_WOODS)) && (
+	if (HasBit(sni.free_names, M(STR_SV_STNAME_WOODS)) && (
 				CountMapSquareAround(tile, CMSATree) >= 8 ||
 				CountMapSquareAround(tile, IsTileForestIndustry) >= 2)
 			) {
@@ -338,9 +336,9 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	int z = GetTileZ(tile);
 	int z2 = GetTileZ(t->xy);
 	if (z < z2) {
-		if (HasBit(free_names, M(STR_SV_STNAME_VALLEY))) return STR_SV_STNAME_VALLEY;
+		if (HasBit(sni.free_names, M(STR_SV_STNAME_VALLEY))) return STR_SV_STNAME_VALLEY;
 	} else if (z > z2) {
-		if (HasBit(free_names, M(STR_SV_STNAME_HEIGHTS))) return STR_SV_STNAME_HEIGHTS;
+		if (HasBit(sni.free_names, M(STR_SV_STNAME_HEIGHTS))) return STR_SV_STNAME_HEIGHTS;
 	}
 
 	/* check direction compared to town */
@@ -351,7 +349,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 		~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_WEST)) | (1 << M(STR_SV_STNAME_EAST)) ),
 	};
 
-	free_names &= _direction_and_table[
+	sni.free_names &= _direction_and_table[
 		(TileX(tile) < TileX(t->xy)) +
 		(TileY(tile) < TileY(t->xy)) * 2];
 
@@ -371,8 +369,8 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 		(1U << M(STR_SV_STNAME_LOWER))
 	);
 
-	tmp = free_names & fallback_names;
-	return (tmp == 0) ? STR_SV_STNAME_FALLBACK : (STR_SV_STNAME + FindFirstBit(tmp));
+	sni.free_names &= fallback_names;
+	return (sni.free_names == 0) ? STR_SV_STNAME_FALLBACK : (STR_SV_STNAME + FindFirstBit(sni.free_names));
 }
 #undef M
 
