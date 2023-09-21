@@ -492,7 +492,7 @@ void ClearAllStationCachedNames()
  * @param st Station to query
  * @return the expected mask
  */
-static CargoTypes GetAcceptanceMask(const Station *st)
+CargoTypes GetAcceptanceMask(const Station *st)
 {
 	CargoTypes mask = 0;
 

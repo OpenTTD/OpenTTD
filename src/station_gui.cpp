@@ -1835,11 +1835,7 @@ struct StationViewWindow : public Window {
 		const Station *st = Station::Get(this->window_number);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
-		CargoTypes cargo_mask = 0;
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (HasBit(st->goods[i].status, GoodsEntry::GES_ACCEPTANCE)) SetBit(cargo_mask, i);
-		}
-		SetDParam(0, cargo_mask);
+		SetDParam(0, GetAcceptanceMask(st));
 		int bottom = DrawStringMultiLine(tr.left, tr.right, tr.top, INT32_MAX, STR_STATION_VIEW_ACCEPTS_CARGO);
 		return CeilDiv(bottom - r.top - WidgetDimensions::scaled.framerect.top, FONT_HEIGHT_NORMAL);
 	}

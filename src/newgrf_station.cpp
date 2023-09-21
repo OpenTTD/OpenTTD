@@ -391,12 +391,7 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, byte variable,
 {
 	switch (variable) {
 		case 0x48: { // Accepted cargo types
-			CargoID cargo_type;
-			uint32_t value = 0;
-
-			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				if (HasBit(this->goods[cargo_type].status, GoodsEntry::GES_ACCEPTANCE)) SetBit(value, cargo_type);
-			}
+			uint32_t value = GetAcceptanceMask(this);
 			return value;
 		}
 
