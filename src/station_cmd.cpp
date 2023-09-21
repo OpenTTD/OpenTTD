@@ -503,6 +503,21 @@ CargoTypes GetAcceptanceMask(const Station *st)
 }
 
 /**
+ * Get a mask of the cargo types that are empty at the station.
+ * @param st Station to query
+ * @return the empty mask
+ */
+CargoTypes GetEmptyMask(const Station *st)
+{
+	CargoTypes mask = 0;
+
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
+		if (st->goods[i].cargo.TotalCount() == 0) SetBit(mask, i);
+	}
+	return mask;
+}
+
+/**
  * Items contains the two cargo names that are to be accepted or rejected.
  * msg is the string id of the message to display.
  */
