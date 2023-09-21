@@ -962,15 +962,8 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 	uint32_t whole_reseed = 0;
 	ETileArea area = ETileArea(st, trigger_tile, tas[trigger]);
 
-	CargoTypes empty_mask = 0;
-	if (trigger == SRT_CARGO_TAKEN) {
-		/* Create a bitmask of completely empty cargo types to be matched */
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (st->goods[i].cargo.TotalCount() == 0) {
-				SetBit(empty_mask, i);
-			}
-		}
-	}
+	/* Bitmask of completely empty cargo types to be matched. */
+	CargoTypes empty_mask = (trigger == SRT_CARGO_TAKEN) ? GetEmptyMask(st) : 0;
 
 	/* Store triggers now for var 5F */
 	SetBit(st->waiting_triggers, trigger);
