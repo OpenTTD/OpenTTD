@@ -3401,6 +3401,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecci
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} em {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objecto
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de ferrovia
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipo de estrada
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável 60+x do NewGRF (hexadecimal)
 

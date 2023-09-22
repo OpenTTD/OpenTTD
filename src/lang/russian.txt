@@ -3575,6 +3575,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Прос
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} в {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Объект
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Тип рельсов
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Тип дороги
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Параметр переменной NewGRF 60+x (шестнадцатеричный)
 

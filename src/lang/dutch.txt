@@ -3400,6 +3400,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecte
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} bij {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Object
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spoortype
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Wegtype
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parameter 60+x voor NewGRF-variabele (hexadecimaal)
 

@@ -902,6 +902,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Usuń wszystkie
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacje o terenie
+STR_ABOUT_MENU_HELP                                             :Pomoc i instrukcje
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / Game Script
@@ -1023,7 +1024,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Kliknij 
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ranking firm
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} „{STRING}”
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inżynier
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Administrator Ruchu
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Koordynator Transportu
@@ -1123,9 +1124,9 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnat
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Potentat
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon Stulecia
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} osiąga status: '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} z {COMPANY} osiągnęło status '{STRING}'!
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}„{STRING}” ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} osiąga status: „{STRING}”!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} z {COMPANY} osiągnęło status „{STRING}”!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
@@ -1231,10 +1232,10 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLAC
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Wypadek lotniczy!{}Samolot rozbił się z powodu braku paliwa, zginęł{P 0 a y o} {COMMA} os{P oba oby ób}!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Katastrofa Zeppelina na {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Pojazd zniszczony w kolizji z 'UFO'!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Pojazd zniszczony w kolizji z „UFO”!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Eksplozja rafinerii w pobliżu {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabryka zniszczona w podejrzanych okolicznościach w pobliżu {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' wylądowało w pobliżu {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}„UFO” wylądowało w pobliżu {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Tąpnięcie przy kopalni pozostawiło pas zniszczenia blisko {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Powódź!{}Przynajmniej {COMMA} zaginęło lub utonęło w czasie powodzi!
 
@@ -1571,7 +1572,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
 STR_CITY_APPROVAL_HOSTILE                                       :Wrogie
 STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne (bez wpływu na działania firmy)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pasujących SI...{}Możesz pobrać wszystkie SI przez system "Dodatki online"
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pasujących SI...{}Możesz pobrać wszystkie SI przez przeglądarkę „Dodatków Online”
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ustawienia
@@ -1680,7 +1681,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Nastawienie wł
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wybierz, jak bardzo hałas i niszczenie środowiska przez firmy wpływają na ich ocenę w mieście i na dalsze działania związane z budową na jego obszarze
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limit wysokości mapy: {STRING}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Ustawia limit wysokości mapy. Z ustawieniem "(automatyczna)" odpowiednia wartość zostanie dobrana po wygenerowaniu terenu
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Ustawia limit wysokości mapy. Z ustawieniem „(automatyczna)” odpowiednia wartość zostanie dobrana po wygenerowaniu terenu
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatyczna)
@@ -1759,7 +1760,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Po prawej
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Pokazuj okno finansów na koniec roku: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jeśli włączone, to okienko finansowe pokazuje się na zakończenie każdego roku, by ułatwić śledzenie sytuacji finansowej firmy
 
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nowe polecenia są domyślnie 'bez zatrzymywania się': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nowe polecenia są domyślnie „bez zatrzymywania się”: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalnie pojazd zatrzyma się na każdej stacji, przez którą przejeżdża. Po włączeniu tej opcji, pojazd przejedzie do swojego celu bez zatrzymywania się. Zwróć uwagę na to, że to ustawienie ma wpływ tylko na nowe polecenia. Pojedyncze polecenia mogą być ustalane bez względu na wartość tej opcji
 
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nowe rozkazy pociągu kończą się domyślnie na {STRING} peronu
@@ -1894,7 +1895,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksymalna odle
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerie są budowane tylko w pobliżu krawędzi map, to znaczy na wybrzeżach dla map wyspiarskich. To ustawienie pozwala ograniczyć jak daleko od krawędzi mapy mogą być budowane rafinerie i platformy wiertnicze. Na mapach większych niż 256 pól, wartość ta jest skalowana w górę.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Wysokość granicy wiecznych śniegów: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wysokość linii śniegu w klimacie arktycznym. Poziom pokrywy śnieżnej wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Może być zmodyfikowana wyłącznie poprzez Edytor scenariusza, normalnie jest obliczana za pomocą ustawienia "pokrycia śniegiem"
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wysokość linii śniegu w klimacie arktycznym. Poziom pokrywy śnieżnej wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Może być zmodyfikowana poprzez Edytor Scenariuszy, w innym przypadku jest obliczana za pomocą ustawienia „pokrycie śniegiem”
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Pokrycie śniegiem: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Ustawia przybliżoną ilość śniegu w krajobrazie arktycznym. Śnieg wpływa również wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Używane tylko podczas generowania mapy. Teren tuż ponad poziomem morza jest zawsze bez śniegu
@@ -1919,7 +1920,7 @@ STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Liczba rzek: {S
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Określa liczbę rzek na mapie
 
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algorytm rozmieszczenia drzew: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Metoda generowania terenów zalesionych. Algorytm "Oryginalny" rozmieszcza drzewa równomiernie na całej mapie, a "Ulepszony" gromadzi je w skupiska
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Metoda generowania terenów zalesionych. Algorytm „oryginalny” rozmieszcza drzewa równomiernie na całej mapie, a „ulepszony” gromadzi je w skupiska
 ###length 3
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Brak
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Oryginalny
@@ -2009,7 +2010,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pojedyncze klik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Pojedyncze kliknięcie (natychmiast)
 
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Używanie usługi przekaźnika: {STRING}
-STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Jeśli nawiązanie połączenia z serwerem nie powiedzie się, można użyć usługi przekaźnika do nawiązania połączenia. „Nigdy" nie zezwoli na to, „pytaj” najpierw zapyta, „zezwól” pozwoli na to bez pytania
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :Jeśli nawiązanie połączenia z serwerem nie powiedzie się, można użyć usługi przekaźnika do nawiązania połączenia. „Nigdy” nie zezwoli na to, „pytaj” najpierw zapyta, „zezwól” pozwoli na to bez pytania
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Nigdy
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Pytaj
@@ -2029,11 +2030,11 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nie
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Tak
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Tak, z wyjątkiem przypiętych
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Użyj {STRING} formatu daty dla nazw zapisów gry
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Użyj daty w formacie {STRING} dla nazw zapisów gry
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format daty w nazwach plików zapisu gry
 ###length 3
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :długiego (31 grudnia 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krótkiego (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :długim (31 grudnia 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krótkim (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {STRING}
@@ -2060,10 +2061,10 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokazuj przyjaz
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie przewidywanego przyjazdu i odjazdu w rozkładach
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Szybkie tworzenie poleceń pojazdu: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po wybraniu stacji docelowej automatycznie włącz ponownie narzędzie 'idź do'
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Po wybraniu stacji docelowej automatycznie włącz ponownie narzędzie „idź do”
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Domyślny typ torów: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Rodzaj torów wybierany przy rozpoczęciu lub załadowaniu gry. 'Pierwszy dostępny' wybiera najstarszy rodzaj torów, 'najnowszy' wybiera najnowszy rodzaj torów, a 'najczęściej używany' wybiera ten, który jest używany najczęściej
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Rodzaj torów wybierany przy rozpoczęciu lub załadowaniu gry. „Pierwszy dostępny” wybiera najstarszy rodzaj torów, „najnowszy” wybiera najnowszy rodzaj torów, a „najczęściej używany” wybiera ten, który jest używany najczęściej
 ###length 3
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pierwszy dostępny
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :najnowszy
@@ -2469,21 +2470,21 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmiana w
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Błąd w pliku konfiguracyjnym
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... błąd w tablicy '{STRING}'
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nieprawidłowa wartość '{STRING}' dla '{STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... zbędne znaki na końcu ustawienia '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorowanie NewGRF-a '{STRING}': zduplikowany GRF ID z '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... pominięcie nieprawidłowych NewGRF-ów '{STRING}': {STRING}
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... błąd w tablicy „{STRING}”
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nieprawidłowa wartość „{STRING}” dla „{STRING}”
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... zbędne znaki na końcu ustawienia „{STRING}”
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorowanie NewGRF-a „{STRING}”: zduplikowany GRF ID z „{STRING}”
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... pominięcie nieprawidłowych NewGRF-ów „{STRING}”: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nie znaleziono
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :{G=n}niebezpieczne w stałym użyciu
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :systemowe NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :niezgodne z tą wersją OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nieznany
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... poziom kompresji '{STRING}' nie jest poprawny
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format zapisu gry '{STRING}' jest niedostępny. Powracanie do '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoruję zestaw Base Graphics '{STRING}': nie odnaleziono
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoruję zestaw Base Sounds '{STRING}': nie odnaleziono
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoruję zestaw Base Music '{STRING}': nie odnaleziono
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... poziom kompresji „{STRING}” jest niepoprawny
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format zapisu gry „{STRING}” jest niedostępny. Powracanie do „{STRING}”
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoruję zestaw Base Graphics „{STRING}”: nie odnaleziono
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoruję zestaw Base Sounds „{STRING}”: nie odnaleziono
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoruję zestaw Base Music „{STRING}”: nie odnaleziono
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Brak pamięci
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nie powiodła się rezerwacja pamięci cache dla sprite'ów od wielkości {BYTES}. Pamięć cache sprite'ów została zredukowana do {BYTES}. Obniży to wydajność OpenTTD. By zmniejszyć zapotrzebowanie pamięci, możesz spróbować wyłączyć grafikę 32bpp i/lub poziomy zbliżenia
 
@@ -2504,9 +2505,10 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Gra wiel
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcje gry
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela wyników
+STR_INTRO_HELP                                                  :{BLACK}Pomoc i Instrukcje
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ustawienia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ustawienia NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sprawdź dodatki online
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sprawdź Dodatki Online
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ustawienia SI
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ustawienia Game Script
 STR_INTRO_QUIT                                                  :{BLACK}Wyjście
@@ -2525,6 +2527,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wybierz 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Wyświetl opcje gry
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Wyświetl tabelę wyników
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Uzyskaj dostęp do dokumentacji i zasobów online
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Wyświetl ustawienia gry
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wyświetl ustawienia NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych lub zaktualizowanych dodatków do pobrania
@@ -2547,6 +2550,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Czy na 
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy na pewno chcesz porzucić ten scenariusz?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Pomoc i Instrukcje
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Strony internetowe
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Dokumenty
+STR_HELP_WINDOW_README                                          :{BLACK}Plik „readme”
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Lista Zmian
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Znane Błędy
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licencja
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Podręcznik / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Zgłoś Błąd
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Społeczność
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Oszustwa
@@ -2623,7 +2637,7 @@ STR_FACE_FACECODE                                               :{BLACK}Numer tw
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Obejrzyj i/lub ustaw numer twarzy prezesa firmy
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Obejrzyj i/lub ustaw numer twarzy prezesa
 STR_FACE_FACECODE_SET                                           :{WHITE}Ustawiono nowy numer twarzy gracza
-STR_FACE_FACECODE_ERR                                           :{WHITE}Nie można ustawić numeru twarzy prezesa - musi być liczbą pomiędzy 0 a 4'294'967'295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nie można ustawić numeru twarzy prezesa - musi być liczbą pomiędzy 0 a 4{NBSP}294{NBSP}967{NBSP}295!
 STR_FACE_SAVE                                                   :{BLACK}Zapisz
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Zapisz ulubioną twarz
 STR_FACE_SAVE_DONE                                              :{WHITE}Ta twarz będzie zapisana w pliku konfiguracyjnym OpenTTD jako twoja ulubiona
@@ -2858,7 +2872,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STR
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] Do {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Wpisz tekst do chat'u
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Wprowadź tekst do czatu sieciowego
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nie znaleziono urządzeń sieciowych
@@ -2988,7 +3002,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Rozmiar
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Zaznaczono z powodu: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Zależności: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tagi: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD jest zbudowany bez wsparcia dla "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD jest zbudowany bez wsparcia dla „zlib”...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... pobieranie zawartości nie jest możliwe!
 
 # Order of these is important!
@@ -3114,7 +3128,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Wybierz 
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Długość peronu
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Wybierz długość stacji
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Przeciągnij i upuść
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Buduj stację używając "przeciągnij i upuść"
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Buduj stację używając „przeciągnij i upuść”
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Wybierz rodzaj stacji do pokazania
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Wybierz typ stacji do zbudowania
@@ -3131,13 +3145,13 @@ STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Przełą
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału pozwalający na przebywanie w jednym bloku wyłącznie jednemu pociągowi naraz
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sygnalizator wejściowy (semafor){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym wypadku czerwony.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sygnalizator wyjściowy (semafor){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sygnalizator złożony (semafor){}Sygnalizator złożony zachowuje się jak kombinacja sygnalizatorów wejściowych oraz wyjściowych. Umożliwia to budowę wielkich "drzew" presygnalizatorów
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sygnalizator złożony (semafor){}Sygnalizator złożony zachowuje się jak kombinacja sygnalizatorów wejściowych oraz wyjściowych. Umożliwia to budowę wielkich „drzew” presygnalizatorów
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednokierunkowy sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sygnalizator bloku (elektryczny){}Najprostszy typ sygnału pozwalający na przebywanie w jednym bloku wyłącznie jednemu pociągowi naraz
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sygnalizator wejściowy (elektryczny){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym przypadku czerwony
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sygnalizator wyjściowy (elektryczny){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sygnalizator złożony (elektryczny){}Sygnalizator złożony działa jako sygnał wejściowy i wyjściowy. Umożliwia to budowę wielkich "drzew" presygnalizatorów
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sygnalizator złożony (elektryczny){}Sygnalizator złożony działa jako sygnał wejściowy i wyjściowy. Umożliwia to budowę wielkich „drzew” presygnalizatorów
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatorów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę go na wybrany typ i wariant. Ctrl+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
@@ -3766,6 +3780,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Zbadaj o
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} w {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Obiekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Typ szyn
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Rodzaj drogi
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGFR zmienna 60+parametr x (heksadecymalnie)
 
@@ -3822,7 +3837,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Potrzebne źró
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} został wyłączony przez {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Niepoprawny/nieznany format układu sprite'u (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Zbyt wiele elementów na liście wartości właściwości (sprite {3:NUM}, właściwość {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Niewłaściwy wywołanie produkcji przedsiębiorstwa (sprite {3:NUM}, "{2:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Nieprawidłowe wywołanie zwrotne produkcji przedsiębiorstwa (sprite {3:NUM}, „{2:STRING}”)
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!
@@ -3845,17 +3860,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Znalezi
 STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące pliki
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniony stan wagonu silnikowego '{1:ENGINE}', gdy był poza halą warsztatów
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmiana długości pojazdu '{1:ENGINE}' , który nie jest zatrzymany w hali
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono ładowność pojazdu na '{1:ENGINE}', kiedy nie był w hali warsztatów lub w trakcie przebudowy
+STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF „{0:STRING}” może powodować desynchronizacje i/lub błędy
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmieniony stan wagonu silnikowego „{1:ENGINE}”, gdy był poza halą warsztatów
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmiana długości pojazdu „{1:ENGINE}”, który nie jest zatrzymany w hali warsztatów
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Zmieniono ładowność pojazdu na „{1:ENGINE}”, kiedy nie był w hali warsztatów lub w trakcie przebudowy
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg „{VEHICLE}” należący do „{COMPANY}” ma nieprawidłową długość. Prawdopodobnie jest to spowodowane problemami z NewGRF-ami. Gra może się desychronizować lub zawiesić
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/naprawie dla '{1:ENGINE}' różnią się od listy zakupu po zbudowaniu. Może to spowodować, że autoodnowienie/-zamiana nie wykona remontu poprawnie
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spowodował nieskończoną pętlę w wywołaniu produkcji
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Wywołanie {1:HEX} zwróciło nieznany/błędny wynik {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' zwrócił niewłaściwy typ ładunku w wywołaniu produkcji w {2:HEX}
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF „{0:STRING}” dostarcza niepoprawne dane
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/naprawie dla „{1:ENGINE}” różnią się od listy zakupu po zbudowaniu. Może to spowodować, że autoodnowienie/-zamiana nie wykona remontu poprawnie
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}„{1:STRING}” spowodował nieskończoną pętlę w wywołaniu zwrotnym produkcji
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Wywołanie zwrotne {1:HEX} zwróciło nieznany/błędny wynik {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}„{1:STRING}” zwrócił niewłaściwy typ ładunku w wywołaniu zwrotnym produkcji w {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
@@ -5023,7 +5038,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Pokaż o
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź log Game Script
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz ściągnąć SI z 'Dodatki Online' w głównym menu gry
+STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz pobrać kilka SI z przeglądarki „Dodatków Online”
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut ekranu okna debugowania SI / GameScript
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / Game Script jest dostępne tylko na serwerze
 
@@ -5087,6 +5102,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Spis Treści
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Przeskocz do wybranej sekcji w wyświetlanym pliku za pomocą tej listy
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Cofnij się w historii nawigacji
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Powrót do przodu w historii nawigacji
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Zawijaj tekst
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zawiń tekst w oknie, aby zmieścił się bez konieczności przewijania
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Odczytaj plik „readme”
@@ -5097,6 +5117,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} - lista zmian
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} - licencja
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Podgląd wyniku ankiety
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Dokument OpenTTD „{STRING}”
 
 
 # Vehicle loading indicators
@@ -5164,8 +5185,8 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znalezio
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromny zrzut ekranu
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Zrzut ekranu będzie miał rozdzielczość {COMMA} x {COMMA} pikseli. Zrzut ekranu może zająć chwilę. Kontynuować?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa wysokości pomyślnie zapisana jako '{STRING}'. Najwyższy szczyt wynosi {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut ekranu zapisany na dysk z powodzeniem '{STRING}'
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa wysokości pomyślnie zapisana jako „{STRING}”. Najwyższy szczyt wynosi {NUM}
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut ekranu zapisany na dysk z powodzeniem „{STRING}”
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Błąd zrzutu ekranu!
 
 # Error message titles
