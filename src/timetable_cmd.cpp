@@ -505,16 +505,15 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	/* Before modifying waiting times, check whether we want to preserve bigger ones. */
 	if (!real_current_order->IsType(OT_CONDITIONAL) &&
 			(travelling || time_taken > real_current_order->GetWaitTime() || remeasure_wait_time)) {
-		/* Round the time taken up to the nearest day, as this will avoid
-		 * confusion for people who are timetabling in days, and can be
-		 * adjusted later by people who aren't.
+		/* Round up to the smallest unit of time commonly shown in the GUI (seconds) to avoid confusion.
+		 * Players timetabling in Ticks can adjust later.
 		 * For trains/aircraft multiple movement cycles are done in one
 		 * tick. This makes it possible to leave the station and process
 		 * e.g. a depot order in the same tick, causing it to not fill
 		 * the timetable entry like is done for road vehicles/ships.
 		 * Thus always make sure at least one tick is used between the
 		 * processing of different orders when filling the timetable. */
-		uint time_to_set = CeilDiv(std::max(time_taken, 1), Ticks::DAY_TICKS) * Ticks::DAY_TICKS;
+		uint time_to_set = CeilDiv(std::max(time_taken, 1), Ticks::TICKS_PER_SECOND) * Ticks::TICKS_PER_SECOND;
 
 		if (travelling && (autofilling || !real_current_order->IsTravelTimetabled())) {
 			ChangeTimetable(v, v->cur_real_order_index, time_to_set, MTF_TRAVEL_TIME, autofilling);

@@ -18,8 +18,10 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "company_func.h"
+#include "timer/timer.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_window.h"
 #include "date_gui.h"
 #include "vehicle_gui.h"
 #include "settings_type.h"
@@ -47,12 +49,59 @@ struct TimetableArrivalDeparture {
  */
 void SetTimetableParams(int param1, int param2, TimerGameTick::Ticks ticks)
 {
-	if (_settings_client.gui.timetable_in_ticks) {
-		SetDParam(param1, STR_TIMETABLE_TICKS);
-		SetDParam(param2, ticks);
-	} else {
-		SetDParam(param1, STR_TIMETABLE_DAYS);
-		SetDParam(param2, ticks / Ticks::DAY_TICKS);
+	switch (_settings_client.gui.timetable_mode) {
+		case TimetableMode::Days:
+			SetDParam(param1, STR_UNITS_DAYS);
+			SetDParam(param2, ticks / Ticks::DAY_TICKS);
+			break;
+		case TimetableMode::Seconds:
+			SetDParam(param1, STR_UNITS_SECONDS);
+			SetDParam(param2, ticks / Ticks::TICKS_PER_SECOND);
+			break;
+		case TimetableMode::Ticks:
+			SetDParam(param1, STR_UNITS_TICKS);
+			SetDParam(param2, ticks);
+			break;
+		default:
+			NOT_REACHED();
+	}
+}
+
+/**
+ * Get the number of ticks in the current timetable display unit.
+ * @return The number of ticks per day, second, or tick, to match the timetable display.
+ */
+static inline TimerGameTick::Ticks TicksPerTimetableUnit()
+{
+	switch (_settings_client.gui.timetable_mode) {
+		case TimetableMode::Days:
+			return Ticks::DAY_TICKS;
+		case TimetableMode::Seconds:
+			return Ticks::TICKS_PER_SECOND;
+		case TimetableMode::Ticks:
+			return 1;
+		default:
+			NOT_REACHED();
+	}
+}
+
+/**
+ * Determine if a vehicle should be shown as late, depending on the timetable display setting.
+ * @param v The vehicle in question.
+ * @param round_to_day When using ticks, if we should round up to the nearest day.
+ * @return True if the vehicle is later than the threshold.
+ */
+bool VehicleIsAboveLatenessThreshold(const Vehicle *v, bool round_to_day)
+{
+	switch (_settings_client.gui.timetable_mode) {
+		case TimetableMode::Days:
+			return v->lateness_counter > Ticks::DAY_TICKS;
+		case TimetableMode::Seconds:
+			return v->lateness_counter > Ticks::TICKS_PER_SECOND;
+		case TimetableMode::Ticks:
+			return v->lateness_counter > (round_to_day ? Ticks::DAY_TICKS : 0);
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -183,7 +232,10 @@ struct TimetableWindow : Window {
 		assert(HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED));
 
 		bool travelling = (!v->current_order.IsType(OT_LOADING) || v->current_order.GetNonStopType() == ONSF_STOP_EVERYWHERE);
-		TimerGameTick::Ticks start_time = TimerGameCalendar::date_fract - v->current_order_time;
+		TimerGameTick::Ticks start_time = -v->current_order_time;
+
+		/* If arrival and departure times are in days, compensate for the current date_fract. */
+		if (_settings_client.gui.timetable_mode != TimetableMode::Seconds) start_time += TimerGameCalendar::date_fract;
 
 		FillTimetableArrivalDepartureTable(v, v->cur_real_order_index % v->GetNumOrders(), travelling, table, start_time);
 
@@ -194,8 +246,15 @@ struct TimetableWindow : Window {
 	{
 		switch (widget) {
 			case WID_VT_ARRIVAL_DEPARTURE_PANEL:
-				SetDParamMaxValue(1, TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR), 0, FS_SMALL);
-				size->width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE).width) + WidgetDimensions::scaled.hsep_wide + padding.width;
+				/* We handle this differently depending on the timetable mode. */
+				if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
+					/* A five-digit number would fit a timetable lasting 2.7 real-world hours, which should be plenty. */
+					SetDParamMaxDigits(1, 4, FS_SMALL);
+					size->width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE).width) + WidgetDimensions::scaled.hsep_wide + padding.width;
+				} else {
+					SetDParamMaxValue(1, TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR), 0, FS_SMALL);
+					size->width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL_DATE).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE_DATE).width) + WidgetDimensions::scaled.hsep_wide + padding.width;
+				}
 				FALLTHROUGH;
 
 			case WID_VT_ARRIVAL_DEPARTURE_SELECTION:
@@ -436,7 +495,7 @@ struct TimetableWindow : Window {
 		int selected = this->sel_index;
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-		bool show_late = this->show_expected && v->lateness_counter > Ticks::DAY_TICKS;
+		bool show_late = this->show_expected && VehicleIsAboveLatenessThreshold(v, true);
 		TimerGameTick::Ticks offset = show_late ? 0 : -v->lateness_counter;
 
 		for (int i = this->vscroll->GetPosition(); i / 2 < v->GetNumOrders(); ++i) { // note: i is also incremented in the loop
@@ -460,14 +519,28 @@ struct TimetableWindow : Window {
 					}
 
 					/* Now actually draw the arrival time. */
-					SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].arrival + this_offset) / Ticks::DAY_TICKS);
-					DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_ARRIVAL, i == selected ? TC_WHITE : TC_BLACK);
+					if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
+						/* Display seconds from now. */
+						SetDParam(1, ((arr_dep[i / 2].arrival + offset) / Ticks::TICKS_PER_SECOND));
+						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE, i == selected ? TC_WHITE : TC_BLACK);
+					} else {
+						/* Show a date. */
+						SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].arrival + this_offset) / Ticks::DAY_TICKS);
+						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_ARRIVAL_DATE, i == selected ? TC_WHITE : TC_BLACK);
+					}
 				}
 			} else {
 				/* Draw a departure time. */
 				if (arr_dep[i / 2].departure != Ticks::INVALID_TICKS) {
-					SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].departure + offset) / Ticks::DAY_TICKS);
-					DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE, i == selected ? TC_WHITE : TC_BLACK);
+					if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
+						/* Display seconds from now. */
+						SetDParam(1, ((arr_dep[i / 2].departure + offset) / Ticks::TICKS_PER_SECOND));
+						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE, i == selected ? TC_WHITE : TC_BLACK);
+					} else {
+						/* Show a date. */
+						SetDParam(1, TimerGameCalendar::date + (arr_dep[i / 2].departure + offset) / Ticks::DAY_TICKS);
+						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE_DATE, i == selected ? TC_WHITE : TC_BLACK);
+					}
 				}
 			}
 			tr.top += GetCharacterHeight(FS_NORMAL);
@@ -490,19 +563,28 @@ struct TimetableWindow : Window {
 		}
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
+		/* Draw the lateness display, or indicate that the timetable has not started yet. */
 		if (v->timetable_start != 0) {
 			/* We are running towards the first station so we can start the
 			 * timetable at the given time. */
-			SetDParam(0, STR_JUST_DATE_TINY);
-			SetDParam(1, GetDateFromStartTick(v->timetable_start));
-			DrawString(tr, STR_TIMETABLE_STATUS_START_AT);
+			if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
+				/* Real time units use seconds relative to now. */
+				SetDParam(0, (static_cast<TimerGameTick::Ticks>(v->timetable_start - TimerGameTick::counter) / Ticks::TICKS_PER_SECOND));
+				DrawString(tr, STR_TIMETABLE_STATUS_START_IN_SECONDS);
+			} else {
+				/* Calendar units use dates. */
+				SetDParam(0, STR_JUST_DATE_TINY);
+				SetDParam(1, GetDateFromStartTick(v->timetable_start));
+				DrawString(tr, STR_TIMETABLE_STATUS_START_AT_DATE);
+			}
 		} else if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
-			/* We aren't running on a timetable yet, so how can we be "on time"
-			 * when we aren't even "on service"/"on duty"? */
+			/* We aren't running on a timetable yet. */
 			DrawString(tr, STR_TIMETABLE_STATUS_NOT_STARTED);
-		} else if (v->lateness_counter == 0 || (!_settings_client.gui.timetable_in_ticks && v->lateness_counter / Ticks::DAY_TICKS == 0)) {
+		} else if (!VehicleIsAboveLatenessThreshold(v, false)) {
+			/* We are on time. */
 			DrawString(tr, STR_TIMETABLE_STATUS_ON_TIME);
 		} else {
+			/* We are late. */
 			SetTimetableParams(0, 1, abs(v->lateness_counter));
 			DrawString(tr, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE);
 		}
@@ -556,7 +638,13 @@ struct TimetableWindow : Window {
 			}
 
 			case WID_VT_START_DATE: // Change the date that the timetable starts.
-				ShowSetDateWindow(this, v->index, TimerGameCalendar::date, TimerGameCalendar::year, TimerGameCalendar::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void *>(static_cast<uintptr_t>(_ctrl_pressed)));
+				if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
+					this->query_widget = WID_VT_START_DATE;
+					this->change_timetable_all = _ctrl_pressed;
+					ShowQueryString(STR_EMPTY, STR_TIMETABLE_START_SECONDS_QUERY, 6, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+				} else {
+					ShowSetDateWindow(this, v->index, TimerGameCalendar::date, TimerGameCalendar::year, TimerGameCalendar::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void*>(static_cast<uintptr_t>(_ctrl_pressed)));
+				}
 				break;
 
 			case WID_VT_CHANGE_TIME: { // "Wait For" button.
@@ -571,7 +659,7 @@ struct TimetableWindow : Window {
 
 				if (order != nullptr) {
 					uint time = (selected % 2 != 0) ? order->GetTravelTime() : order->GetWaitTime();
-					if (!_settings_client.gui.timetable_in_ticks) time /= Ticks::DAY_TICKS;
+					time /= TicksPerTimetableUnit();
 
 					if (time != 0) {
 						SetDParam(0, time);
@@ -667,7 +755,7 @@ struct TimetableWindow : Window {
 			}
 
 			case WID_VT_CHANGE_TIME:
-				if (!_settings_client.gui.timetable_in_ticks) val *= Ticks::DAY_TICKS;
+				val *= TicksPerTimetableUnit();
 
 				if (this->change_timetable_all) {
 					Command<CMD_BULK_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, mtf, ClampTo<uint16_t>(val));
@@ -675,6 +763,12 @@ struct TimetableWindow : Window {
 					Command<CMD_CHANGE_TIMETABLE>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, order_id, mtf, ClampTo<uint16_t>(val));
 				}
 				break;
+
+			case WID_VT_START_DATE: {
+				TimerGameTick::TickCounter start_tick = TimerGameTick::counter + (val * Ticks::TICKS_PER_SECOND);
+				Command<CMD_SET_TIMETABLE_START>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, v->index, this->change_timetable_all, start_tick);
+				break;
+			}
 
 			default:
 				NOT_REACHED();
@@ -695,6 +789,15 @@ struct TimetableWindow : Window {
 		this->GetWidget<NWidgetStacked>(WID_VT_ARRIVAL_DEPARTURE_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure ? 0 : SZSP_NONE);
 		this->GetWidget<NWidgetStacked>(WID_VT_EXPECTED_SELECTION)->SetDisplayedPlane(_settings_client.gui.timetable_arrival_departure ? 0 : 1);
 	}
+
+	/**
+	 * In real-time mode, the timetable GUI shows relative times and needs to be redrawn every second.
+	 */
+	IntervalTimer<TimerGameTick> redraw_interval = {Ticks::TICKS_PER_SECOND, [this](auto) {
+		if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
+			this->SetDirty();
+		}
+	}};
 };
 
 static const NWidgetPart _nested_timetable_widgets[] = {
@@ -725,7 +828,7 @@ static const NWidgetPart _nested_timetable_widgets[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_VT_CLEAR_SPEED), SetResize(1, 0), SetFill(1, 1), SetDataTip(STR_TIMETABLE_CLEAR_SPEED, STR_TIMETABLE_CLEAR_SPEED_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_VERTICAL, NC_EQUALSIZE),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_VT_START_DATE), SetResize(1, 0), SetFill(1, 1), SetDataTip(STR_TIMETABLE_STARTING_DATE, STR_TIMETABLE_STARTING_DATE_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_VT_START_DATE), SetResize(1, 0), SetFill(1, 1), SetDataTip(STR_TIMETABLE_START, STR_TIMETABLE_START_TOOLTIP),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_VT_RESET_LATENESS), SetResize(1, 0), SetFill(1, 1), SetDataTip(STR_TIMETABLE_RESET_LATENESS, STR_TIMETABLE_RESET_LATENESS_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_VERTICAL, NC_EQUALSIZE),
