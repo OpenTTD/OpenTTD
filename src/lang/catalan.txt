@@ -524,6 +524,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Esborra tots el
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de la casella
+STR_ABOUT_MENU_HELP                                             :Ajuda i manuals
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Commuta la consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuració de les IA i l'script de partida
@@ -1427,6 +1428,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Cap*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduït
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permet passos a nivell amb carreteres o rails dels competidors: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Permet la construcció de passos a nivell en carreteres o vies ferroviàries que siguin propietat d'altres jugadors.
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permet situar parades en carreteres que són propietat de les poblacions: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permet la construcció de passos a nivell als carrers propietat de les poblacions
@@ -2123,6 +2126,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijug
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcions del joc
 STR_INTRO_HIGHSCORE                                             :{BLACK}Taula de rècords
+STR_INTRO_HELP                                                  :{BLACK}Ajuda i manuals
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configuració
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Extensions NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contingut en línia
@@ -2144,6 +2148,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Seleccio
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostra les opcions del joc
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostra la taula de rècords
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Accediu a la documentació i recursos en línia.
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostra la finestra de configuració
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra la configuració de les extensions NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
@@ -2166,6 +2171,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Esteu s
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esteu segur que voleu sortir de l'escenari?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Ajuda i manuals
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Llocs web
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Documents
+STR_HELP_WINDOW_README                                          :{BLACK}Llegeix-me
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Registre de canvis
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Errors coneguts
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Llicència
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Informeu d'un error
+STR_HELP_WINDOW_COMMUNITY                                       :Comunitat
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampes
@@ -3385,6 +3401,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecci
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} a {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objecte
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipus de via
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipus de carretera
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paràmetre NewGRF variable 60+x (hexadecimal)
 
@@ -4700,6 +4717,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Taula de continguts
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Salteu a una secció del fitxer que es mostra amb aquesta llista.
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Torneu enrere segons l'historial de navegació.
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Aneu avant segons l'historial de navegació.
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Ajusta text
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ajusta el text afegint-hi canvis de línia, de manera que sigui més fàcil desplaçar-se pel text
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeix-me
@@ -4710,6 +4732,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeix-
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Llicència del {STRING} de {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Vista prèvia del resultat del sondeig
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Document '{STRING}' de l'OpenTTD
 
 
 # Vehicle loading indicators
