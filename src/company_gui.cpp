@@ -138,7 +138,7 @@ static uint GetTotalCategoriesHeight()
  */
 static uint GetMaxCategoriesWidth()
 {
-	uint max_width = 0;
+	uint max_width = GetStringBoundingBox(STR_FINANCES_YEAR_CAPTION).width;
 
 	/* Loop through categories to check max widths. */
 	for (const ExpensesList &list : _expenses_list_types) {
@@ -173,8 +173,10 @@ static void DrawCategory(const Rect &r, int start_y, const ExpensesList &list)
  */
 static void DrawCategories(const Rect &r)
 {
-	/* Start with an empty space in the year row, plus the blockspace under the year. */
-	int y = r.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
+	int y = r.top;
+	/* Draw description of 12-minute economic period. */
+	DrawString(r.left, r.right, y, (STR_FINANCES_YEAR_CAPTION), TC_FROMSTRING, SA_LEFT, true);
+	y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
 
 	for (const ExpensesList &list : _expenses_list_types) {
 		/* Draw category title and advance y */
