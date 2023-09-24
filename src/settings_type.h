@@ -22,6 +22,7 @@
 #include "openttd.h"
 #include "rail_gui.h"
 #include "signal_type.h"
+#include "timetable.h"
 
 /* Used to validate sizes of "max" value in settings. */
 const size_t MAX_SLE_UINT8 = UINT8_MAX;
@@ -167,7 +168,7 @@ struct GUISettings {
 	SignalCycleSettings cycle_signal_types;  ///< Which signal types to cycle with the build signal tool.
 	SignalType default_signal_type;          ///< The default signal type, which is set automatically by the last signal used. Not available in Settings.
 	TimerGameCalendar::Year coloured_news_year; ///< when does newspaper become coloured?
-	bool   timetable_in_ticks;               ///< whether to show the timetable in ticks rather than days
+	TimetableMode timetable_mode;            ///< Time units for timetables: days, seconds, or ticks
 	bool   quick_goto;                       ///< Allow quick access to 'goto button' in vehicle orders window
 	bool   auto_euro;                        ///< automatically switch to euro in 2002
 	byte   drag_signals_density;             ///< many signals density

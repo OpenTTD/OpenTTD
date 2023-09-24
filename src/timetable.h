@@ -16,6 +16,12 @@
 
 static const TimerGameCalendar::Year MAX_TIMETABLE_START_YEARS = 15; ///< The maximum start date offset, in years.
 
+enum class TimetableMode : uint8_t {
+	Days,
+	Seconds,
+	Ticks,
+};
+
 TimerGameTick::TickCounter GetStartTickFromDate(TimerGameCalendar::Date start_date);
 TimerGameCalendar::Date GetDateFromStartTick(TimerGameTick::TickCounter start_tick);
 
