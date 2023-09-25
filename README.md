@@ -185,6 +185,12 @@ See the comments in the source files in `src/3rdparty/md5` for the complete lice
 The fmt implementation in `src/3rdparty/fmt` is licensed under the MIT license.
 See `src/3rdparty/fmt/LICENSE.rst` for the complete license text.
 
+The nlohmann json implementation in `src/3rdparty/nlohmann` is licensed under the MIT license.
+See `src/3rdparty/nlohmann/LICENSE.MIT` for the complete license text.
+
+The OpenGL API in `src/3rdparty/opengl` is licensed under the MIT license.
+See `src/3rdparty/opengl/khrplatform.h` for the complete license text.
+
 The catch2 implementation in `src/3rdparty/catch2` is licensed under the Boost Software License, Version 1.0.
 See `src/3rdparty/catch2/LICENSE.txt` for the complete license text.
 
