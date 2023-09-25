@@ -63,6 +63,7 @@ macro(compile_flags)
             -Wformat=2
             -Winit-self
             -Wnon-virtual-dtor
+            -Wsuggest-override
 
             # We use 'ABCD' multichar for SaveLoad chunks identifiers
             -Wno-multichar
