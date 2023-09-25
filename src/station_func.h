@@ -43,12 +43,6 @@ void UpdateStationDockingTiles(Station *st);
 void RemoveDockingTile(TileIndex t);
 void ClearDockingTilesCheckingNeighbours(TileIndex tile);
 
-/* Check if a rail station tile is traversable. */
-bool IsStationTileBlocked(TileIndex tile);
-
-bool CanStationTileHavePylons(TileIndex tile);
-bool CanStationTileHaveWires(TileIndex tile);
-
 void UpdateAirportsNoise();
 
 bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrackOffset *overlay_offset);

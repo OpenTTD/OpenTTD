@@ -277,6 +277,18 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 					HasStationReservation(tile);
 			MakeRailWaypoint(tile, wp->owner, wp->index, axis, layout_ptr[i], GetRailType(tile));
 			SetCustomStationSpecIndex(tile, map_spec_index);
+
+			/* Should be the same as layout but axis component could be wrong... */
+			StationGfx gfx = GetStationGfx(tile);
+			bool blocked = spec != nullptr && HasBit(spec->blocked, gfx);
+			/* Default stations do not draw pylons under roofs (gfx >= 4) */
+			bool pylons = spec != nullptr ? HasBit(spec->pylons, gfx) : gfx < 4;
+			bool wires = spec == nullptr || !HasBit(spec->wires, gfx);
+
+			SetStationTileBlocked(tile, blocked);
+			SetStationTileHavePylons(tile, pylons);
+			SetStationTileHaveWires(tile, wires);
+
 			SetRailStationReservation(tile, reserved);
 			MarkTileDirtyByTile(tile);
 
