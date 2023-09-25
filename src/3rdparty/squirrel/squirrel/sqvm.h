@@ -112,16 +112,16 @@ public:
 #endif
 
 #ifndef NO_GARBAGE_COLLECTOR
-	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue) override;
 #endif
-	void Finalize();
+	void Finalize() override;
 	void GrowCallStack() {
 		SQInteger newsize = _alloccallsstacksize*2;
 		_callstackdata.resize(newsize);
 		_callsstack = &_callstackdata[0];
 		_alloccallsstacksize = newsize;
 	}
-	void Release(){ sq_delete(this,SQVM); } //does nothing
+	void Release() override { sq_delete(this,SQVM); } //does nothing
 ////////////////////////////////////////////////////////////////////////////
 	//stack functions for the api
 	void Remove(SQInteger n);

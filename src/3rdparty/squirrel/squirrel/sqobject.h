@@ -84,7 +84,7 @@ private:
 
 struct SQWeakRef : SQRefCounted
 {
-	void Release();
+	void Release() override;
 	SQObject _obj;
 };
 
@@ -362,7 +362,7 @@ struct SQCollectable : public SQRefCounted {
 	SQCollectable *_next;
 	SQCollectable *_prev;
 	SQSharedState *_sharedstate;
-	virtual void Release()=0;
+	void Release() override=0;
 	virtual void EnqueueMarkObjectForChildren(class SQGCMarkerQueue &queue)=0;
 	void UnMark();
 	virtual void Finalize()=0;

@@ -18,10 +18,10 @@ struct SQUserData : SQDelegable
 		return ud;
 	}
 #ifndef NO_GARBAGE_COLLECTOR
-	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
-	void Finalize(){SetDelegate(nullptr);}
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue) override;
+	void Finalize() override {SetDelegate(nullptr);}
 #endif
-	void Release() {
+	void Release() override {
 		if (_hook) _hook(_val,_size);
 		SQInteger tsize = _size - 1;
 		this->~SQUserData();
