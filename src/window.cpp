@@ -614,11 +614,18 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 
 	bool focused_widget_changed = false;
 	/* If clicked on a window that previously did not have focus */
-	if (_focused_window != w &&                 // We already have focus, right?
-			(w->window_desc.flags & WDF_NO_FOCUS) == 0 &&  // Don't lose focus to toolbars
-			widget_type != WWT_CLOSEBOX) {          // Don't change focused window if 'X' (close button) was clicked
-		focused_widget_changed = true;
-		SetFocusedWindow(w);
+	if (_focused_window != w) {
+		bool allowed_focus_change =
+			(w->window_desc.flags & WDF_NO_FOCUS) == 0 &&  // Don't lose focus to toolbar
+			widget_type != WWT_CLOSEBOX;                    // Don't change focused window if 'X' (close button) was clicked
+		// if we're switching away from a dropdown menu always let it get the lost focus notification
+		if (_focused_window != nullptr && _focused_window->window_class == WC_DROPDOWN_MENU) {
+			allowed_focus_change = true;
+		}
+		if (allowed_focus_change) {
+			focused_widget_changed = true;
+			SetFocusedWindow(w);
+		}
 	}
 
 	if (nw == nullptr) return; // exit if clicked outside of widgets
