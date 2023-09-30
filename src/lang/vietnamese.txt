@@ -523,6 +523,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Xoá tất cả
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Thông tin vùng đất
+STR_ABOUT_MENU_HELP                                             :Trợ giúp & hướng dẫn
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
 STR_ABOUT_MENU_AI_DEBUG                                         :Gỡ rối AI / Game script
@@ -2124,6 +2125,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Nhiều 
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Cấu Hình Trò Chơi
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bảng điểm chơi cao nhất
+STR_INTRO_HELP                                                  :{BLACK}Trợ giúp & hướng dẫn
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Thiết lập
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng
@@ -2145,6 +2147,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Chọn k
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị cấu hình của trò chơi
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hiện bảng điểm chơi cao nhất
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Truy cập vào tài liệu và tài nguyên trực tuyến
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Thiết lập hiển thị
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kiểm tra những nội dung mới & cập nhật để tải về
@@ -2167,6 +2170,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn c
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bạn có chắc bạn muốn bỏ màn chơi kịch bản này?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Trợ giúp & hướng dẫn
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Websites
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Tài liệu
+STR_HELP_WINDOW_README                                          :{BLACK}Readme
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Lịch sử thay đổi
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Các lỗi đã biết
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Giấy phép
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Hướng dẫn / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Báo cáo lỗi
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Cộng đồng
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
@@ -3386,6 +3400,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Phân t�
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} tại {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Đối Tượng
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Kiểu ray
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Loại đường
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Biến số NewGRF là 60+x (dạng hexa)
 
@@ -4701,6 +4716,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Danh mục
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Dùng danh sách này để chuyển nhanh tới một phần trong tập tin được hiển thị
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Trở về trước trong lịch sử điều hướng
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Trở về sau trong lịch sử điều hướng
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Ép văn bản
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ép chữ cái vừa khung cửa sổ để khỏi phải cuộn chuột
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Xem readme
@@ -4711,6 +4731,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}Readme c
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lịch sử thay đổi của {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Giấy phép của {STRING} {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Xem trước kết quả khảo sát
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}Tài liệu OpenTTD '{STRING}'
 
 
 # Vehicle loading indicators
