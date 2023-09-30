@@ -840,46 +840,6 @@ const StationSpec *GetStationSpec(TileIndex t)
 	return specindex < st->speclist.size() ? st->speclist[specindex].spec : nullptr;
 }
 
-
-/**
- * Check whether a rail station tile is NOT traversable.
- * @param tile %Tile to test.
- * @return Station tile is blocked.
- * @note This could be cached (during build) in the map array to save on all the dereferencing.
- */
-bool IsStationTileBlocked(TileIndex tile)
-{
-	const StationSpec *statspec = GetStationSpec(tile);
-
-	return statspec != nullptr && HasBit(statspec->blocked, GetStationGfx(tile));
-}
-
-/**
- * Check if a rail station tile shall have pylons when electrified.
- * @param tile %Tile to test.
- * @return Tile shall have pylons.
- * @note This could be cached (during build) in the map array to save on all the dereferencing.
- */
-bool CanStationTileHavePylons(TileIndex tile)
-{
-	const StationSpec *statspec = GetStationSpec(tile);
-	uint gfx = GetStationGfx(tile);
-	/* Default stations do not draw pylons under roofs (gfx >= 4) */
-	return statspec != nullptr ? HasBit(statspec->pylons, gfx) : gfx < 4;
-}
-
-/**
- * Check if a rail station tile shall have wires when electrified.
- * @param tile %Tile to test.
- * @return Tile shall have wires.
- * @note This could be cached (during build) in the map array to save on all the dereferencing.
- */
-bool CanStationTileHaveWires(TileIndex tile)
-{
-	const StationSpec *statspec = GetStationSpec(tile);
-	return statspec == nullptr || !HasBit(statspec->wires, GetStationGfx(tile));
-}
-
 /** Wrapper for animation control, see GetStationCallback. */
 uint16_t GetAnimStationCallback(CallbackID callback, uint32_t param1, uint32_t param2, const StationSpec *statspec, BaseStation *st, TileIndex tile, int)
 {
