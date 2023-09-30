@@ -179,7 +179,13 @@ class ReplaceVehicleWindow : public Window {
 			if (side == 1 && eid == this->sel_engine[0]) flags |= EngineDisplayFlags::Shaded;
 			list.emplace_back(eid, e->info.variant_id, flags, 0);
 
-			if (side == 1 && e->info.variant_id != INVALID_ENGINE) variants.push_back(e->info.variant_id);
+			if (side == 1) {
+				EngineID parent = e->info.variant_id;
+				while (parent != INVALID_ENGINE) {
+					variants.push_back(parent);
+					parent = Engine::Get(parent)->info.variant_id;
+				}
+			}
 			if (eid == this->sel_engine[side]) selected_engine = eid; // The selected engine is still in the list
 		}
 

@@ -1422,7 +1422,14 @@ struct BuildVehicleWindow : Window {
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
 			if (rvi->railveh_type != RAILVEH_WAGON) num_engines++;
-			if (e->info.variant_id != INVALID_ENGINE) variants.push_back(e->info.variant_id);
+
+			/* Add all parent variants of this engine to the variant list */
+			EngineID parent = e->info.variant_id;
+			while (parent != INVALID_ENGINE) {
+				variants.push_back(parent);
+				parent = Engine::Get(parent)->info.variant_id;
+			}
+
 			if (eid == this->sel_engine) sel_id = eid;
 		}
 
@@ -1563,8 +1570,13 @@ struct BuildVehicleWindow : Window {
 		/* ensure primary engine of variant group is in list after filtering */
 		std::vector<EngineID> variants;
 		for (const auto &item : this->eng_list) {
-			if (item.engine_id != item.variant_id && item.variant_id != INVALID_ENGINE) variants.push_back(item.variant_id);
+			EngineID parent = item.variant_id;
+			while (parent != INVALID_ENGINE) {
+				variants.push_back(parent);
+				parent = Engine::Get(parent)->info.variant_id;
+			}
 		}
+
 		for (const auto &variant : variants) {
 			if (std::find(this->eng_list.begin(), this->eng_list.end(), variant) == this->eng_list.end()) {
 				const Engine *e = Engine::Get(variant);
