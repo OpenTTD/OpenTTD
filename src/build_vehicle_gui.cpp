@@ -1422,7 +1422,7 @@ struct BuildVehicleWindow : Window {
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
 			if (rvi->railveh_type != RAILVEH_WAGON) num_engines++;
-			if (e->info.variant_id != eid && e->info.variant_id != INVALID_ENGINE) variants.push_back(e->info.variant_id);
+			if (e->info.variant_id != INVALID_ENGINE) variants.push_back(e->info.variant_id);
 			if (eid == this->sel_engine) sel_id = eid;
 		}
 
@@ -1654,13 +1654,14 @@ struct BuildVehicleWindow : Window {
 						Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildPrimaryVehicle, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
 					}
 
-					/* Update last used variant and refresh if necessary. */
+					/* Update last used variant in hierarchy and refresh if necessary. */
 					bool refresh = false;
-					int recursion = 10; /* In case of infinite loop */
-					for (Engine *e = Engine::Get(sel_eng); recursion > 0; e = Engine::Get(e->info.variant_id), --recursion) {
+					EngineID parent = sel_eng;
+					while (parent != INVALID_ENGINE) {
+						Engine *e = Engine::Get(parent);
 						refresh |= (e->display_last_variant != sel_eng);
 						e->display_last_variant = sel_eng;
-						if (e->info.variant_id == INVALID_ENGINE) break;
+						parent = e->info.variant_id;
 					}
 					if (refresh) {
 						InvalidateWindowData(WC_REPLACE_VEHICLE, this->vehicle_type, 0); // Update the autoreplace window
