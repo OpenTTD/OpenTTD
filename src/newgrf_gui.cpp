@@ -723,7 +723,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			while (*c != iter->second) c = &(*c)->next;
 			GRFConfig *d = new GRFConfig(*a);
 			d->next = (*c)->next;
-			d->CopyParams(**c);
+			if (d->IsCompatible((*c)->version)) {
+				d->CopyParams(**c);
+			} else {
+				d->SetParameterDefaults();
+			}
 			if (this->active_sel == *c) {
 				CloseWindowByClass(WC_GRF_PARAMETERS);
 				CloseWindowByClass(WC_TEXTFILE);

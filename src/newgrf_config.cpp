@@ -67,6 +67,14 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 }
 
 /**
+ * Return whether this NewGRF can replace an older version of the same NewGRF.
+ */
+bool GRFConfig::IsCompatible(uint32_t old_version) const
+{
+	return this->min_loadable_version <= old_version && old_version <= this->version;
+}
+
+/**
  * Copy the parameter information from the \a src config.
  * @param src Source config.
  */
@@ -685,7 +693,7 @@ const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5
 		/* Skip incompatible stuff, unless explicitly allowed */
 		if (mode != FGCM_NEWEST && HasBit(c->flags, GCF_INVALID)) continue;
 		/* check version compatibility */
-		if (mode == FGCM_COMPATIBLE && (c->version < desired_version || c->min_loadable_version > desired_version)) continue;
+		if (mode == FGCM_COMPATIBLE && !c->IsCompatible(desired_version)) continue;
 		/* remember the newest one as "the best" */
 		if (best == nullptr || c->version > best->version) best = c;
 	}
