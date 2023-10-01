@@ -435,19 +435,11 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 		case 0x42: { // Consist cargo information
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_CONSIST_CARGO_INFORMATION)) {
-				const Vehicle *u;
+				std::array<uint8_t, NUM_CARGO> common_cargoes{};
 				byte cargo_classes = 0;
-				uint8_t common_cargoes[NUM_CARGO];
-				uint8_t common_subtypes[256];
 				byte user_def_data = 0;
-				CargoID common_cargo_type = CT_INVALID;
-				uint8_t common_subtype = 0xFF; // Return 0xFF if nothing is carried
 
-				/* Reset our arrays */
-				memset(common_cargoes, 0, sizeof(common_cargoes));
-				memset(common_subtypes, 0, sizeof(common_subtypes));
-
-				for (u = v; u != nullptr; u = u->Next()) {
+				for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 					if (v->type == VEH_TRAIN) user_def_data |= Train::From(u)->tcache.user_def_data;
 
 					/* Skip empty engines */
@@ -458,16 +450,13 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				}
 
 				/* Pick the most common cargo type */
-				uint common_cargo_best_amount = 0;
-				for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
-					if (common_cargoes[cargo] > common_cargo_best_amount) {
-						common_cargo_best_amount = common_cargoes[cargo];
-						common_cargo_type = cargo;
-					}
-				}
+				auto cargo_it = std::max_element(std::begin(common_cargoes), std::end(common_cargoes));
+				/* Return CT_INVALID if nothing is carried */
+				CargoID common_cargo_type = (*cargo_it == 0) ? (CargoID)CT_INVALID : static_cast<CargoID>(std::distance(std::begin(common_cargoes), cargo_it));
 
 				/* Count subcargo types of common_cargo_type */
-				for (u = v; u != nullptr; u = u->Next()) {
+				std::array<uint8_t, UINT8_MAX + 1> common_subtypes{};
+				for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 					/* Skip empty engines and engines not carrying common_cargo_type */
 					if (u->cargo_type != common_cargo_type || !u->GetEngine()->CanCarryCargo()) continue;
 
@@ -475,13 +464,9 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				}
 
 				/* Pick the most common subcargo type*/
-				uint common_subtype_best_amount = 0;
-				for (uint i = 0; i < lengthof(common_subtypes); i++) {
-					if (common_subtypes[i] > common_subtype_best_amount) {
-						common_subtype_best_amount = common_subtypes[i];
-						common_subtype = i;
-					}
-				}
+				auto subtype_it = std::max_element(std::begin(common_subtypes), std::end(common_subtypes));
+				/* Return UINT8_MAX if nothing is carried */
+				uint8_t common_subtype = (*subtype_it == 0) ? UINT8_MAX : static_cast<uint8_t>(std::distance(std::begin(common_subtypes), subtype_it));
 
 				/* Note: We have to store the untranslated cargotype in the cache as the cache can be read by different NewGRFs,
 				 *       which will need different translations */
