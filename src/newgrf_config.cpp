@@ -73,7 +73,6 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 void GRFConfig::CopyParams(const GRFConfig &src)
 {
 	this->num_params = src.num_params;
-	this->num_valid_params = src.num_valid_params;
 	this->param = src.param;
 }
 
