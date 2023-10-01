@@ -173,6 +173,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 
 	struct GRFConfig *next; ///< NOSAVE: Next item in the linked list
 
+	bool IsCompatible(uint32_t old_version) const;
 	void CopyParams(const GRFConfig &src);
 
 	std::optional<std::string> GetTextfile(TextfileType type) const;
