@@ -198,6 +198,9 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 				*prev = set;
 				set->next = duplicate->next;
 
+				/* Keep baseset configuration, if compatible */
+				set->CopyCompatibleConfig(*duplicate);
+
 				/* If the duplicate set is currently used (due to rescanning this can happen)
 				 * update the currently used set to the new one. This will 'lie' about the
 				 * version number until a new game is started which isn't a big problem */

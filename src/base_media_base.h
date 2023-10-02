@@ -96,6 +96,7 @@ struct BaseSet {
 	}
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);
+	void CopyCompatibleConfig([[maybe_unused]] const T &src) {}
 
 	/**
 	 * Get the description for the given ISO code.
@@ -253,6 +254,7 @@ public:
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
 	GRFConfig *GetExtraConfig() const { return this->extra_cfg.get(); }
 	GRFConfig &GetOrCreateExtraConfig() const;
+	void CopyCompatibleConfig(const GraphicsSet &src);
 
 	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir);
 };
@@ -264,6 +266,8 @@ public:
 	struct Ini {
 		std::string name;
 		uint32_t shortname;                 ///< unique key for base set
+		uint32_t extra_version;             ///< version of the extra GRF
+		std::vector<uint32_t> extra_params; ///< parameters for the extra GRF
 	};
 	static inline Ini ini_data;
 
