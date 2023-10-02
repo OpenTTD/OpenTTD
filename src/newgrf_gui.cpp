@@ -155,7 +155,7 @@ struct NewGRFParametersWindow : public Window {
 	bool action14present;  ///< True if action14 information is present.
 	bool editable;         ///< Allow editing parameters.
 
-	NewGRFParametersWindow(WindowDesc *desc, GRFConfig *c, bool editable) : Window(desc),
+	NewGRFParametersWindow(WindowDesc *desc, bool is_baseset, GRFConfig *c, bool editable) : Window(desc),
 		grf_config(c),
 		clicked_button(UINT_MAX),
 		clicked_dropdown(false),
@@ -166,6 +166,7 @@ struct NewGRFParametersWindow : public Window {
 		this->action14present = (c->num_valid_params != c->param.size() || !c->param_info.empty());
 
 		this->CreateNestedTree();
+		this->GetWidget<NWidgetCore>(WID_NP_CAPTION)->SetDataTip(is_baseset ? STR_BASEGRF_PARAMETERS_CAPTION : STR_NEWGRF_PARAMETERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 		this->vscroll = this->GetScrollbar(WID_NP_SCROLLBAR);
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_NUMPAR)->SetDisplayedPlane(this->action14present ? SZSP_HORIZONTAL : 0);
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_DESCRIPTION)->SetDisplayedPlane(this->action14present ? 0 : SZSP_HORIZONTAL);
@@ -509,7 +510,7 @@ GRFParameterInfo NewGRFParametersWindow::dummy_parameter_info(0);
 static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_PARAMETERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_NP_CAPTION),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NP_SHOW_NUMPAR),
@@ -546,10 +547,10 @@ static WindowDesc _newgrf_parameters_desc(
 	std::begin(_nested_newgrf_parameter_widgets), std::end(_nested_newgrf_parameter_widgets)
 );
 
-static void OpenGRFParameterWindow(GRFConfig *c, bool editable)
+void OpenGRFParameterWindow(bool is_baseset, GRFConfig *c, bool editable)
 {
 	CloseWindowByClass(WC_GRF_PARAMETERS);
-	new NewGRFParametersWindow(&_newgrf_parameters_desc, c, editable);
+	new NewGRFParametersWindow(&_newgrf_parameters_desc, is_baseset, c, editable);
 }
 
 /** Window for displaying the textfile of a NewGRF. */
@@ -1133,7 +1134,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_SET_PARAMETERS: { // Edit parameters
 				if (this->active_sel == nullptr || !this->show_params || this->active_sel->num_valid_params == 0) break;
 
-				OpenGRFParameterWindow(this->active_sel, this->editable);
+				OpenGRFParameterWindow(false, this->active_sel, this->editable);
 				this->InvalidateData(GOID_NEWGRF_CHANGES_MADE);
 				break;
 			}

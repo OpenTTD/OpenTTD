@@ -254,6 +254,7 @@ public:
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
 	GRFConfig *GetExtraConfig() const { return this->extra_cfg.get(); }
 	GRFConfig &GetOrCreateExtraConfig() const;
+	bool IsConfigurable() const;
 	void CopyCompatibleConfig(const GraphicsSet &src);
 
 	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir);

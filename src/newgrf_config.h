@@ -226,6 +226,7 @@ std::string GRFBuildParamList(const GRFConfig *c);
 
 /* In newgrf_gui.cpp */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);
+void OpenGRFParameterWindow(bool is_baseset, GRFConfig *c, bool editable);
 
 void UpdateNewGRFScanStatus(uint num, const char *name);
 void UpdateNewGRFConfigPalette(int32_t new_value = 0);
