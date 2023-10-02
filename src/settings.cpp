@@ -42,6 +42,7 @@
 #include "ai/ai_config.hpp"
 #include "game/game_config.hpp"
 #include "newgrf_config.h"
+#include "base_media_base.h"
 #include "fios.h"
 #include "fileio_func.h"
 #include "settings_cmd.h"
@@ -982,6 +983,22 @@ static bool DecodeHexText(const char *pos, uint8_t *dest, size_t dest_size)
 }
 
 /**
+ * Load BaseGraphics set selection and configuration.
+ */
+static void GraphicsSetLoadConfig(IniFile &ini)
+{
+	if (const IniGroup *group = ini.GetGroup("misc"); group != nullptr) {
+		/* Load old setting first. */
+		if (const IniItem *item = group->GetItem("graphicsset"); item != nullptr && item->value) BaseGraphics::ini_data.name = *item->value;
+	}
+
+	if (const IniGroup *group = ini.GetGroup("graphicsset"); group != nullptr) {
+		/* Load new settings. */
+		if (const IniItem *item = group->GetItem("name"); item != nullptr && item->value) BaseGraphics::ini_data.name = *item->value;
+	}
+}
+
+/**
  * Load a GRF configuration
  * @param ini       The configuration to read from.
  * @param grpname   Group name containing the configuration of the GRF.
@@ -1153,6 +1170,20 @@ static void SaveVersionInConfig(IniFile &ini)
 	group.GetOrCreateItem("ini_version").SetValue(std::to_string(INIFILE_VERSION));
 }
 
+/**
+ * Save BaseGraphics set selection and configuration.
+ */
+static void GraphicsSetSaveConfig(IniFile &ini)
+{
+	const GraphicsSet *used_set = BaseGraphics::GetUsedSet();
+	if (used_set == nullptr) return;
+
+	IniGroup &group = ini.GetOrCreateGroup("graphicsset");
+	group.Clear();
+
+	group.GetOrCreateItem("name").SetValue(used_set->name);
+}
+
 /* Save a GRF configuration to the given group name */
 static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfig *list)
 {
@@ -1285,6 +1316,10 @@ void LoadFromConfig(bool startup)
 
 	IniFileVersion generic_version = LoadVersionFromConfig(generic_ini);
 
+	if (startup) {
+		GraphicsSetLoadConfig(generic_ini);
+	}
+
 	/* Before the split of private/secrets, we have to look in the generic for these settings. */
 	if (generic_version < IFV_PRIVATE_SECRETS) {
 		HandleSettingDescs(generic_ini, generic_ini, generic_ini, IniLoadSettings, IniLoadSettingList, startup);
@@ -1416,6 +1451,7 @@ void SaveToConfig()
 	}
 
 	HandleSettingDescs(generic_ini, private_ini, secrets_ini, IniSaveSettings, IniSaveSettingList);
+	GraphicsSetSaveConfig(generic_ini);
 	GRFSaveConfig(generic_ini, "newgrf", _grfconfig_newgame);
 	GRFSaveConfig(generic_ini, "newgrf-static", _grfconfig_static);
 	AISaveConfig(generic_ini, "ai_players");
