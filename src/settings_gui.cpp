@@ -649,25 +649,6 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
-	/**
-	 * Set the base media set.
-	 * @param index the index of the media set
-	 * @tparam T class of media set
-	 */
-	template <class T>
-	void SetMediaSet(int index)
-	{
-		if (_game_mode == GM_MENU) {
-			auto name = T::GetSet(index)->name;
-
-			T::ini_set = name;
-
-			T::SetSet(name);
-			this->reload = true;
-			this->InvalidateData();
-		}
-	}
-
 	void OnDropdownSelect(int widget, int index) override
 	{
 		switch (widget) {
@@ -710,11 +691,22 @@ struct GameOptionsWindow : Window {
 			}
 
 			case WID_GO_BASE_GRF_DROPDOWN:
-				this->SetMediaSet<BaseGraphics>(index);
+				if (_game_mode == GM_MENU) {
+					auto* set = BaseGraphics::GetSet(index);
+					BaseGraphics::SetSet(set->name);
+					this->reload = true;
+					this->InvalidateData();
+				}
 				break;
 
 			case WID_GO_BASE_SFX_DROPDOWN:
-				this->SetMediaSet<BaseSounds>(index);
+				if (_game_mode == GM_MENU) {
+					auto* set = BaseSounds::GetSet(index);
+					BaseSounds::ini_set = set->name;
+					BaseSounds::SetSet(set->name);
+					this->reload = true;
+					this->InvalidateData();
+				}
 				break;
 
 			case WID_GO_BASE_MUSIC_DROPDOWN:

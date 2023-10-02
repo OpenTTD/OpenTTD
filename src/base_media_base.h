@@ -170,9 +170,6 @@ protected:
 	 */
 	static const char *GetExtension();
 public:
-	/** The set as saved in the config file. */
-	static std::string ini_set;
-
 	/**
 	 * Determine the graphics pack that has to be used.
 	 * The one with the most correct files wins.
@@ -207,7 +204,6 @@ public:
 	static bool HasSet(const ContentInfo *ci, bool md5sum);
 };
 
-template <class Tbase_set> /* static */ std::string BaseMedia<Tbase_set>::ini_set;
 template <class Tbase_set> /* static */ const Tbase_set *BaseMedia<Tbase_set>::used_set;
 template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::available_sets;
 template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplicate_sets;
@@ -252,6 +248,12 @@ struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, true> {
 /** All data/functions related with replacing the base graphics. */
 class BaseGraphics : public BaseMedia<GraphicsSet> {
 public:
+	/** Values loaded from config file. */
+	struct Ini {
+		std::string name;
+	};
+	static inline Ini ini_data;
+
 };
 
 /** All data of a sounds set. */
@@ -261,6 +263,9 @@ struct SoundsSet : BaseSet<SoundsSet, 1, true> {
 /** All data/functions related with replacing the base sounds */
 class BaseSounds : public BaseMedia<SoundsSet> {
 public:
+	/** The set as saved in the config file. */
+	static inline std::string ini_set;
+
 };
 
 /** Maximum number of songs in the 'class' playlists. */
@@ -307,6 +312,9 @@ struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
 /** All data/functions related with replacing the base music */
 class BaseMusic : public BaseMedia<MusicSet> {
 public:
+	/** The set as saved in the config file. */
+	static inline std::string ini_set;
+
 };
 
 #endif /* BASE_MEDIA_BASE_H */

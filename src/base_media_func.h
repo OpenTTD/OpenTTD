@@ -373,7 +373,6 @@ template <class Tbase_set>
  * @param set_type  the type of the BaseSet to instantiate
  */
 #define INSTANTIATE_BASE_MEDIA_METHODS(repl_type, set_type) \
-	template std::string repl_type::ini_set; \
 	template const char *repl_type::GetExtension(); \
 	template bool repl_type::AddFile(const std::string &filename, size_t pathlength, const std::string &tar_filename); \
 	template bool repl_type::HasSet(const struct ContentInfo *ci, bool md5sum); \
