@@ -15,6 +15,7 @@
 
 /** Widgets of the #NewGRFParametersWindow class. */
 enum NewGRFParametersWidgets {
+	WID_NP_CAPTION,          ///< Caption of the window.
 	WID_NP_SHOW_NUMPAR,      ///< #NWID_SELECTION to optionally display #WID_NP_NUMPAR.
 	WID_NP_NUMPAR_DEC,       ///< Button to decrease number of parameters.
 	WID_NP_NUMPAR_INC,       ///< Button to increase number of parameters.

@@ -389,6 +389,14 @@ GRFConfig &GraphicsSet::GetOrCreateExtraConfig() const
 	return *this->extra_cfg;
 }
 
+bool GraphicsSet::IsConfigurable() const
+{
+	const GRFConfig &cfg = this->GetOrCreateExtraConfig();
+	/* This check is more strict than the one for NewGRF Settings.
+	 * There are no legacy basesets with parameters, but without Action14 */
+	return !cfg.param_info.empty();
+}
+
 void GraphicsSet::CopyCompatibleConfig(const GraphicsSet &src)
 {
 	const GRFConfig *src_cfg = src.GetExtraConfig();

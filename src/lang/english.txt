@@ -3384,6 +3384,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Save
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Save the preset to the current selected name
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Change base graphics parameters
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Change NewGRF parameters
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Close
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
