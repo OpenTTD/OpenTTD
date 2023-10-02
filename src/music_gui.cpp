@@ -173,7 +173,7 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
  */
 void MusicSystem::ChangeMusicSet(const std::string &set_name)
 {
-	BaseMusic::SetSet(set_name);
+	BaseMusic::SetSetByName(set_name);
 	BaseMusic::ini_set = set_name;
 
 	this->BuildPlaylists();

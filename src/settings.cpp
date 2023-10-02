@@ -995,6 +995,10 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 	if (const IniGroup *group = ini.GetGroup("graphicsset"); group != nullptr) {
 		/* Load new settings. */
 		if (const IniItem *item = group->GetItem("name"); item != nullptr && item->value) BaseGraphics::ini_data.name = *item->value;
+
+		if (const IniItem *item = group->GetItem("shortname"); item != nullptr && item->value && item->value->size() == 8) {
+			BaseGraphics::ini_data.shortname = BSWAP32(std::strtoul(item->value->c_str(), nullptr, 16));
+		}
 	}
 }
 
@@ -1182,6 +1186,7 @@ static void GraphicsSetSaveConfig(IniFile &ini)
 	group.Clear();
 
 	group.GetOrCreateItem("name").SetValue(used_set->name);
+	group.GetOrCreateItem("shortname").SetValue(fmt::format("{:08X}", BSWAP32(used_set->shortname)));
 }
 
 /* Save a GRF configuration to the given group name */
