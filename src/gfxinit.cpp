@@ -192,18 +192,7 @@ static void LoadSpriteTables()
 	ClrBit(master->flags, GCF_INIT_ONLY);
 
 	/* Baseset extra graphics */
-	GRFConfig *extra = new GRFConfig(used_set->files[GFT_EXTRA].filename.c_str());
-
-	/* We know the palette of the base set, so if the base NewGRF is not
-	 * setting one, use the palette of the base set and not the global
-	 * one which might be the wrong palette for this base NewGRF.
-	 * The value set here might be overridden via action14 later. */
-	switch (used_set->palette) {
-		case PAL_DOS:     extra->palette |= GRFP_GRF_DOS;     break;
-		case PAL_WINDOWS: extra->palette |= GRFP_GRF_WINDOWS; break;
-		default: break;
-	}
-	FillGRFDetails(extra, false, BASESET_DIR);
+	GRFConfig *extra = new GRFConfig(used_set->GetOrCreateExtraConfig());
 	ClrBit(extra->flags, GCF_INIT_ONLY);
 
 	extra->next = top;
@@ -347,6 +336,17 @@ void GfxLoadSprites()
 	UpdateCursorSize();
 }
 
+GraphicsSet::GraphicsSet()
+	: BaseSet<GraphicsSet, MAX_GFT, true>{}, palette{}, blitter{}
+{
+	// instantiate here, because unique_ptr needs a complete type
+}
+
+GraphicsSet::~GraphicsSet()
+{
+	// instantiate here, because unique_ptr needs a complete type
+}
+
 bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename)
 {
 	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, true>::FillSetDetails(ini, path, full_filename, false);
@@ -363,6 +363,29 @@ bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, co
 		this->blitter = (item != nullptr && (*item->value)[0] == '3') ? BLT_32BPP : BLT_8BPP;
 	}
 	return ret;
+}
+
+/**
+ * Return configuration for the extra GRF, or lazily create it.
+ * @return NewGRF configuration
+ */
+GRFConfig &GraphicsSet::GetOrCreateExtraConfig() const
+{
+	if (!this->extra_cfg) {
+		this->extra_cfg.reset(new GRFConfig(this->files[GFT_EXTRA].filename));
+
+		/* We know the palette of the base set, so if the base NewGRF is not
+		 * setting one, use the palette of the base set and not the global
+		 * one which might be the wrong palette for this base NewGRF.
+		 * The value set here might be overridden via action14 later. */
+		switch (this->palette) {
+			case PAL_DOS:     this->extra_cfg->palette |= GRFP_GRF_DOS;     break;
+			case PAL_WINDOWS: this->extra_cfg->palette |= GRFP_GRF_WINDOWS; break;
+			default: break;
+		}
+		FillGRFDetails(this->extra_cfg.get(), false, BASESET_DIR);
+	}
+	return *this->extra_cfg;
 }
 
 /**
