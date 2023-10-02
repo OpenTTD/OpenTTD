@@ -237,12 +237,22 @@ enum BlitterType {
 	BLT_32BPP,      ///< Base set has both 8 bpp and 32 bpp sprites.
 };
 
+struct GRFConfig;
+
 /** All data of a graphics set. */
 struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, true> {
+private:
+	mutable std::unique_ptr<GRFConfig> extra_cfg; ///< Parameters for extra GRF
+public:
 	PaletteType palette;       ///< Palette of this graphics set
 	BlitterType blitter;       ///< Blitter of this graphics set
 
+	GraphicsSet();
+	~GraphicsSet();
+
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
+	GRFConfig *GetExtraConfig() const { return this->extra_cfg.get(); }
+	GRFConfig &GetOrCreateExtraConfig() const;
 
 	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir);
 };
