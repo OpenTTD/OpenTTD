@@ -66,6 +66,12 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 {
 }
 
+void GRFConfig::SetParams(const std::vector<uint32_t> &pars)
+{
+	this->num_params = static_cast<uint8_t>(std::min(this->param.size(), pars.size()));
+	std::copy(pars.begin(), pars.begin() + this->num_params, this->param.begin());
+}
+
 /**
  * Return whether this NewGRF can replace an older version of the same NewGRF.
  */

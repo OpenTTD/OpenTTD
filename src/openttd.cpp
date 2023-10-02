@@ -706,6 +706,12 @@ int openttd_main(int argc, char *argv[])
 	} else if (BaseGraphics::ini_data.shortname != 0) {
 		graphics_set = BaseGraphics::ini_data.name;
 		valid_graphics_set = BaseGraphics::SetSetByShortname(BaseGraphics::ini_data.shortname);
+		if (valid_graphics_set && !BaseGraphics::ini_data.extra_params.empty()) {
+			GRFConfig &extra_cfg = BaseGraphics::GetUsedSet()->GetOrCreateExtraConfig();
+			if (extra_cfg.IsCompatible(BaseGraphics::ini_data.extra_version)) {
+				extra_cfg.SetParams(BaseGraphics::ini_data.extra_params);
+			}
+		}
 	} else if (!BaseGraphics::ini_data.name.empty()) {
 		graphics_set = BaseGraphics::ini_data.name;
 		valid_graphics_set = BaseGraphics::SetSetByName(BaseGraphics::ini_data.name);

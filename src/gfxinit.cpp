@@ -193,6 +193,7 @@ static void LoadSpriteTables()
 
 	/* Baseset extra graphics */
 	GRFConfig *extra = new GRFConfig(used_set->GetOrCreateExtraConfig());
+	if (extra->num_params == 0) extra->SetParameterDefaults();
 	ClrBit(extra->flags, GCF_INIT_ONLY);
 
 	extra->next = top;
@@ -386,6 +387,15 @@ GRFConfig &GraphicsSet::GetOrCreateExtraConfig() const
 		FillGRFDetails(this->extra_cfg.get(), false, BASESET_DIR);
 	}
 	return *this->extra_cfg;
+}
+
+void GraphicsSet::CopyCompatibleConfig(const GraphicsSet &src)
+{
+	const GRFConfig *src_cfg = src.GetExtraConfig();
+	if (src_cfg == nullptr || src_cfg->num_params == 0) return;
+	GRFConfig &dest_cfg = this->GetOrCreateExtraConfig();
+	if (dest_cfg.IsCompatible(src_cfg->version)) return;
+	dest_cfg.CopyParams(*src_cfg);
 }
 
 /**

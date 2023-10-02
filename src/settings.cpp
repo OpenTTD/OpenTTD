@@ -999,6 +999,20 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 		if (const IniItem *item = group->GetItem("shortname"); item != nullptr && item->value && item->value->size() == 8) {
 			BaseGraphics::ini_data.shortname = BSWAP32(std::strtoul(item->value->c_str(), nullptr, 16));
 		}
+
+		if (const IniItem *item = group->GetItem("extra_version"); item != nullptr && item->value) BaseGraphics::ini_data.extra_version = std::strtoul(item->value->c_str(), nullptr, 10);
+
+		if (const IniItem *item = group->GetItem("extra_params"); item != nullptr && item->value) {
+			auto &extra_params = BaseGraphics::ini_data.extra_params;
+			extra_params.resize(lengthof(GRFConfig::param));
+			int count = ParseIntList(item->value->c_str(), &extra_params.front(), extra_params.size());
+			if (count < 0) {
+				SetDParamStr(0, BaseGraphics::ini_data.name);
+				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
+				count = 0;
+			}
+			extra_params.resize(count);
+		}
 	}
 }
 
@@ -1187,6 +1201,12 @@ static void GraphicsSetSaveConfig(IniFile &ini)
 
 	group.GetOrCreateItem("name").SetValue(used_set->name);
 	group.GetOrCreateItem("shortname").SetValue(fmt::format("{:08X}", BSWAP32(used_set->shortname)));
+
+	const GRFConfig *extra_cfg = used_set->GetExtraConfig();
+	if (extra_cfg != nullptr && extra_cfg->num_params > 0) {
+		group.GetOrCreateItem("extra_version").SetValue(fmt::format("{}", extra_cfg->version));
+		group.GetOrCreateItem("extra_params").SetValue(GRFBuildParamList(extra_cfg));
+	}
 }
 
 /* Save a GRF configuration to the given group name */
