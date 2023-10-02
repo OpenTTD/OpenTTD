@@ -188,7 +188,9 @@ public:
 
 	static Tbase_set *GetAvailableSets();
 
-	static bool SetSet(const std::string &name);
+	static bool SetSet(const Tbase_set *set);
+	static bool SetSetByName(const std::string &name);
+	static bool SetSetByShortname(uint32_t shortname);
 	static void GetSetsList(std::back_insert_iterator<std::string> &output_iterator);
 	static int GetNumSets();
 	static int GetIndexOfUsedSet();
@@ -251,6 +253,7 @@ public:
 	/** Values loaded from config file. */
 	struct Ini {
 		std::string name;
+		uint32_t shortname;                 ///< unique key for base set
 	};
 	static inline Ini ini_data;
 

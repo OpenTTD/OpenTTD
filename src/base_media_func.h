@@ -228,23 +228,56 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 
 /**
  * Set the set to be used.
+ * @param set the set to use
+ * @return true if it could be loaded
+ */
+template <class Tbase_set>
+/* static */ bool BaseMedia<Tbase_set>::SetSet(const Tbase_set *set)
+{
+	if (set == nullptr) {
+		if (!BaseMedia<Tbase_set>::DetermineBestSet()) return false;
+	} else {
+		BaseMedia<Tbase_set>::used_set = set;
+	}
+	CheckExternalFiles();
+	return true;
+}
+
+/**
+ * Set the set to be used.
  * @param name of the set to use
  * @return true if it could be loaded
  */
 template <class Tbase_set>
-/* static */ bool BaseMedia<Tbase_set>::SetSet(const std::string &name)
+/* static */ bool BaseMedia<Tbase_set>::SetSetByName(const std::string &name)
 {
 	if (name.empty()) {
-		if (!BaseMedia<Tbase_set>::DetermineBestSet()) return false;
-		CheckExternalFiles();
-		return true;
+		return SetSet(nullptr);
 	}
 
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != nullptr; s = s->next) {
 		if (name == s->name) {
-			BaseMedia<Tbase_set>::used_set = s;
-			CheckExternalFiles();
-			return true;
+			return SetSet(s);
+		}
+	}
+	return false;
+}
+
+/**
+ * Set the set to be used.
+ * @param shortname of the set to use
+ * @return true if it could be loaded
+ */
+template <class Tbase_set>
+/* static */ bool BaseMedia<Tbase_set>::SetSetByShortname(uint32_t shortname)
+{
+	if (shortname == 0) {
+		return SetSet(nullptr);
+	}
+
+	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != nullptr; s = s->next) {
+		if (shortname == s->shortname) {
+			return SetSet(s);
 		}
 	}
 	return false;
@@ -376,7 +409,9 @@ template <class Tbase_set>
 	template const char *repl_type::GetExtension(); \
 	template bool repl_type::AddFile(const std::string &filename, size_t pathlength, const std::string &tar_filename); \
 	template bool repl_type::HasSet(const struct ContentInfo *ci, bool md5sum); \
-	template bool repl_type::SetSet(const std::string &name); \
+	template bool repl_type::SetSet(const set_type *set); \
+	template bool repl_type::SetSetByName(const std::string &name); \
+	template bool repl_type::SetSetByShortname(uint32_t shortname); \
 	template void repl_type::GetSetsList(std::back_insert_iterator<std::string> &output_iterator); \
 	template int repl_type::GetNumSets(); \
 	template int repl_type::GetIndexOfUsedSet(); \

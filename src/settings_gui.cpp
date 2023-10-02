@@ -693,7 +693,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_BASE_GRF_DROPDOWN:
 				if (_game_mode == GM_MENU) {
 					auto* set = BaseGraphics::GetSet(index);
-					BaseGraphics::SetSet(set->name);
+					BaseGraphics::SetSet(set);
 					this->reload = true;
 					this->InvalidateData();
 				}
@@ -703,7 +703,7 @@ struct GameOptionsWindow : Window {
 				if (_game_mode == GM_MENU) {
 					auto* set = BaseSounds::GetSet(index);
 					BaseSounds::ini_set = set->name;
-					BaseSounds::SetSet(set->name);
+					BaseSounds::SetSet(set);
 					this->reload = true;
 					this->InvalidateData();
 				}
