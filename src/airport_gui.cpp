@@ -544,13 +544,14 @@ public:
 		}
 		if (change_class) {
 			/* If that fails, select the first available airport
-			 * from a random class. */
+			 * from the first class where airports are available. */
 			for (AirportClassID j = APC_BEGIN; j < APC_MAX; j++) {
 				AirportClass *apclass = AirportClass::Get(j);
 				for (uint i = 0; i < apclass->GetSpecCount(); i++) {
 					const AirportSpec *as = apclass->GetSpec(i);
 					if (as->IsAvailable()) {
 						_selected_airport_class = j;
+						this->vscroll->SetCount(apclass->GetSpecCount());
 						this->SelectOtherAirport(i);
 						return;
 					}
