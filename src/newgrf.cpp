@@ -9125,12 +9125,9 @@ static void FinaliseEngineArray()
 			}
 		}
 
-		/* Do final mapping on variant engine ID and set appropriate flags on variant engine */
+		/* Do final mapping on variant engine ID. */
 		if (e->info.variant_id != INVALID_ENGINE) {
 			e->info.variant_id = GetNewEngineID(e->grf_prop.grffile, e->type, e->info.variant_id);
-			if (e->info.variant_id != INVALID_ENGINE) {
-				Engine::Get(e->info.variant_id)->display_flags |= EngineDisplayFlags::HasVariants | EngineDisplayFlags::IsFolded;
-			}
 		}
 
 		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
@@ -9160,6 +9157,26 @@ static void FinaliseEngineArray()
 					default: NOT_REACHED();
 				}
 			}
+		}
+	}
+
+	/* Check engine variants don't point back on themselves (either directly or via a loop) then set appropriate flags
+	 * on variant engine. This is performed separately as all variant engines need to have been resolved. */
+	for (Engine *e : Engine::Iterate()) {
+		EngineID parent = e->info.variant_id;
+		while (parent != INVALID_ENGINE) {
+			parent = Engine::Get(parent)->info.variant_id;
+			if (parent != e->index) continue;
+
+			/* Engine looped back on itself, so clear the variant. */
+			e->info.variant_id = INVALID_ENGINE;
+
+			GrfMsg(1, "FinaliseEngineArray: Variant of engine {:x} in '{}' loops back on itself", _engine_mngr[e->index].internal_id, e->GetGRF()->filename);
+			break;
+		}
+
+		if (e->info.variant_id != INVALID_ENGINE) {
+			Engine::Get(e->info.variant_id)->display_flags |= EngineDisplayFlags::HasVariants | EngineDisplayFlags::IsFolded;
 		}
 	}
 }

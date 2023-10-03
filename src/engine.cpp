@@ -491,7 +491,7 @@ bool Engine::IsVariantHidden(CompanyID c) const
 	 * the last display variant rather than the actual parent variant. */
 	const Engine *re = this;
 	const Engine *ve = re->GetDisplayVariant();
-	while (!(ve->IsHidden(c)) && re->info.variant_id != INVALID_ENGINE && re->info.variant_id != re->index) {
+	while (!(ve->IsHidden(c)) && re->info.variant_id != INVALID_ENGINE) {
 		re = Engine::Get(re->info.variant_id);
 		ve = re->GetDisplayVariant();
 	}
@@ -607,7 +607,7 @@ void CalcEngineReliability(Engine *e, bool new_month)
 {
 	/* Get source engine for reliability age. This is normally our engine unless variant reliability syncing is requested. */
 	Engine *re = e;
-	while (re->info.variant_id != INVALID_ENGINE && re->info.variant_id != re->index && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
+	while (re->info.variant_id != INVALID_ENGINE && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
 		re = Engine::Get(re->info.variant_id);
 	}
 
@@ -706,7 +706,7 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32_t se
 
 	/* Get parent variant index for syncing reliability via random seed. */
 	const Engine *re = e;
-	while (re->info.variant_id != INVALID_ENGINE && re->info.variant_id != re->index && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
+	while (re->info.variant_id != INVALID_ENGINE && (re->info.extra_flags & ExtraEngineFlags::SyncReliability) != ExtraEngineFlags::None) {
 		re = Engine::Get(re->info.variant_id);
 	}
 
