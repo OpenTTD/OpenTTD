@@ -3399,6 +3399,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Analizea
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} la {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Obiect
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tip şină
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tip de drum
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parametru variabilă 60+x NewGRF (hexadecimal)
 
@@ -4717,6 +4718,8 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 STR_TEXTFILE_JUMPLIST                                           :{WHITE}Cuprins
 STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Săriți rapid la o secțiune din fișierul afișat prin această listă
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Reveniți în istoricul navigației
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Reveniți înainte în istoricul navigației
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Încadrează textul
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Încadrează textul ferestrei ca să fie vizibil integral, fără derulare
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
