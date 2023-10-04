@@ -191,6 +191,9 @@ STR_COLOUR_WHITE                                                :Putih
 STR_COLOUR_RANDOM                                               :Acak
 
 ###length 17
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :Hijau Pucat
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Merah Muda
+STR_COLOUR_SECONDARY_BROWN                                      :Cokelat
 
 
 # Units used in OpenTTD
@@ -506,6 +509,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Hapus semua pes
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi area daratan
+STR_ABOUT_MENU_HELP                                             :Bantuan & panduan
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Hidup/matikan Layar Konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :Debug skrip AI/Permainan
@@ -2091,6 +2095,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi Pe
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pengaturan Permainan
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabel Nilai Tertinggi
+STR_INTRO_HELP                                                  :{BLACK}Bantuan & Panduan
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Pengaturan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari Konten Daring
@@ -2134,6 +2139,9 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah 
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apakah anda yakin untuk mengabaikan skenario ini ?
 
 # Help window
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Situs web
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Dokumen
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Komunitas
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Kode Curang
@@ -3769,6 +3777,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Manajer
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Masukkan jumlah uang yang ingin anda berikan
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Dengan mengambil alih {COMPANY} secara agresif, kamu akan membeli seluruh aset, membayarkan seluruh hutang, dan membayar profit selama dua tahun.{}{}Estimasi jumlahnya adalah {CURRENCY_LONG}.{}{}Apa kamu ingin melanjutkan pengambilalihan ini?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktur milik {COMPANY}
@@ -4601,8 +4610,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Salah sa
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Jendela "Debug" skrip AI hanya tersedia untuk server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Konfigurasi AI
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Konfigurasi Game Script
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Pengaturan AI
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Pengaturan Game Script
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skrip Permainan yang akan di jalankan di permainan berikutnya
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI yg akan dijalankan pada permainan berikutnya
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain Manusia
@@ -4659,6 +4668,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Mengebatkan teks
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Mengebatkan teks dari jendela sehingga akan muat tanpa menggulir
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme

@@ -2216,7 +2216,7 @@ STR_LIVERY_DIESEL                                               :内燃机车
 STR_LIVERY_ELECTRIC                                             :电力机车
 STR_LIVERY_MONORAIL                                             :单轨机车
 STR_LIVERY_MAGLEV                                               :磁悬浮机车
-STR_LIVERY_DMU                                                  :DMU 机车
+STR_LIVERY_DMU                                                  :内燃动车组
 STR_LIVERY_EMU                                                  :电力动车组
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :客运机车（蒸汽）
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :客运机车（内燃机）
