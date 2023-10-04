@@ -10,14 +10,14 @@
  * This file implements the timer logic for the game-calendar-timer.
  */
 
-#include "stdafx.h"
-#include "openttd.h"
+#include "../stdafx.h"
+#include "../openttd.h"
 #include "timer.h"
 #include "timer_game_calendar.h"
-#include "vehicle_base.h"
-#include "linkgraph/linkgraph.h"
+#include "../vehicle_base.h"
+#include "../linkgraph/linkgraph.h"
 
-#include "safeguards.h"
+#include "../safeguards.h"
 
 TimerGameCalendar::Year TimerGameCalendar::year = {};
 TimerGameCalendar::Month TimerGameCalendar::month = {};

@@ -10,7 +10,7 @@
 #ifndef TIMER_GAME_CALENDAR_H
 #define TIMER_GAME_CALENDAR_H
 
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "../core/strong_typedef_type.hpp"
 
 /**

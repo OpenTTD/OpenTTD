@@ -10,7 +10,7 @@
 #ifndef TIMER_GAME_TICK_H
 #define TIMER_GAME_TICK_H
 
-#include "gfx_type.h"
+#include "../gfx_type.h"
 
 #include <chrono>
 
