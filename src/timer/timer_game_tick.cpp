@@ -10,11 +10,11 @@
  * This file implements the timer logic for the tick-based game-timer.
  */
 
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "timer.h"
 #include "timer_game_tick.h"
 
-#include "safeguards.h"
+#include "../safeguards.h"
 
 uint64_t TimerGameTick::counter = 0;
 

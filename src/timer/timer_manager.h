@@ -11,7 +11,7 @@
 #ifndef TIMER_MANAGER_H
 #define TIMER_MANAGER_H
 
-#include "stdafx.h"
+#include "../stdafx.h"
 
 template <typename TTimerType>
 class BaseTimer;
