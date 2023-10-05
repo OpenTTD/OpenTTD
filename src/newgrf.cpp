@@ -8850,7 +8850,7 @@ void ResetPersistentNewGRFData()
  */
 static void BuildCargoTranslationMap()
 {
-	std::fill(std::begin(_cur.grffile->cargo_map), std::end(_cur.grffile->cargo_map), uint8_t{UINT8_MAX});
+	_cur.grffile->cargo_map.fill(UINT8_MAX);
 
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		const CargoSpec *cs = CargoSpec::Get(c);
