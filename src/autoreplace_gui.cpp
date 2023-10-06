@@ -175,9 +175,7 @@ class ReplaceVehicleWindow : public Window {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
 			}
 
-			EngineDisplayFlags flags = (side == 0) ? EngineDisplayFlags::None : e->display_flags;
-			if (side == 1 && eid == this->sel_engine[0]) flags |= EngineDisplayFlags::Shaded;
-			list.emplace_back(eid, e->info.variant_id, flags, 0);
+			list.emplace_back(eid, e->info.variant_id, (side == 0) ? EngineDisplayFlags::None : e->display_flags, 0);
 
 			if (side == 1) {
 				EngineID parent = e->info.variant_id;
