@@ -191,6 +191,23 @@ STR_COLOUR_WHITE                                                :白
 STR_COLOUR_RANDOM                                               :隨機
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :暗藍
+STR_COLOUR_SECONDARY_PALE_GREEN                                 :淡綠
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :粉紅
+STR_COLOUR_SECONDARY_YELLOW                                     :黃
+STR_COLOUR_SECONDARY_RED                                        :紅
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :淺藍
+STR_COLOUR_SECONDARY_GREEN                                      :綠
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :暗綠
+STR_COLOUR_SECONDARY_BLUE                                       :藍
+STR_COLOUR_SECONDARY_CREAM                                      :奶黃
+STR_COLOUR_SECONDARY_MAUVE                                      :淡紫
+STR_COLOUR_SECONDARY_PURPLE                                     :紫
+STR_COLOUR_SECONDARY_ORANGE                                     :橙
+STR_COLOUR_SECONDARY_BROWN                                      :棕
+STR_COLOUR_SECONDARY_GREY                                       :灰
+STR_COLOUR_SECONDARY_WHITE                                      :白
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :與主色調相同
 
 
 # Units used in OpenTTD
@@ -198,6 +215,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}
 STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}公里/小時
 STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}米/秒
 STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}格/日
+STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}節
 
 STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}匹
 STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}匹
@@ -505,6 +523,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :刪除所有訊
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :土地資訊
+STR_ABOUT_MENU_HELP                                             :幫助和手冊
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切換主控台
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/遊戲腳本除錯
@@ -933,12 +952,26 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}將主�
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}遊戲選項
 
+STR_GAME_OPTIONS_TAB_GENERAL                                    :基本
+STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}選擇基本設定
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :圖形集
+STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}選擇圖形設定
+STR_GAME_OPTIONS_TAB_SOUND                                      :音效
 
+STR_GAME_OPTIONS_VOLUME                                         :音量
+STR_GAME_OPTIONS_SFX_VOLUME                                     :音效
+STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音樂
 
+STR_GAME_OPTIONS_VOLUME_0                                       :0%
+STR_GAME_OPTIONS_VOLUME_25                                      :25%
+STR_GAME_OPTIONS_VOLUME_50                                      :50%
+STR_GAME_OPTIONS_VOLUME_75                                      :75%
+STR_GAME_OPTIONS_VOLUME_100                                     :100%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}幣值單位
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}選擇幣值單位
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 42
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :英鎊
@@ -990,6 +1023,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}選擇�
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :關閉
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :每10分鐘
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :每30分鐘
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :每60分鐘
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :每120分鐘
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}語言
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}選擇要用的介面語言
@@ -1026,6 +1063,9 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3倍
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4倍
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5倍
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}自動問卷
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}參與自動問卷
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}關於問卷和隱私
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}圖形
 
@@ -1156,6 +1196,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}展開�
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}折疊所有選項
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}重設所有數值
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(沒有適用的解釋)
+STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}預設值：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}設定種類：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :用戶端設定 (存檔時不保存；影響所有遊戲)
@@ -1209,6 +1250,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :靠左
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :置中
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :靠右
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}秒
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :最大貸款額：{STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最多可借多少錢（此設定的值排除了通貨膨脹因素）。
@@ -1380,6 +1422,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :無
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :減少
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :正常
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :可在競爭對手所有的道路或鐵路上建造平交道：{STRING}
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :可在市鎮所屬道路上建設路邊車站：{STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :容許在市鎮擁有的道路上建造直通型車站。
@@ -1393,6 +1436,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :如啟用此選
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :初始公司顏色：{STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :選擇公司的初始顏色。
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :初始公司副色調：{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :機場永不過期：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :如啟用此選項，所有機場一經面世，就永遠可以選擇建設。
@@ -1595,6 +1639,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :無
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :右鍵關閉視窗：{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :在視窗內以右鍵點擊可關閉視窗。可用右鍵關閉工具提示。
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :否
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :是
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :使用 {STRING} 時間格式作為存檔檔名
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :在存檔的檔名中使用的日期格式。
@@ -1921,6 +1967,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :無
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市規模倍率：{STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :設定遊戲開始時城市的大小 (相對於一般市鎮而言)。
 
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :每{STRING}更新貨物分配圖
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :乘客分配方式：{STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的乘客數量與乙站往甲站的乘客數量大致相同。「不對稱」指任何一站往另一站的乘客數量皆由系統隨意決定。「手動」指系統不會自動分配乘客的目的地。
@@ -1947,12 +1994,14 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :貨物分配功能在派送貨物時，會優先使用最短路徑，至其飽和後改用第二短的路徑，如此類推。當所有路徑皆飽和但仍未滿足需求，系統會由容量較大的路徑開始繼續加載貨物。{}由於路徑飽和度難以準確估算，此設定容許您定義一值，使短路徑達至該飽和度後，系統便開始加載容量較大的路徑。{}如果此設定的值少於100%，即使系統高估路徑容量，也不會使過多的貨物滯留車站。
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度單位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :速度單位（航海）：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :在界面上以所選擇的單位表示速度。
 ###length 5
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :英制（英里/小時）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :米制（公里/小時）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :國際單位（米/秒）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :遊戲單位 (格/日)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :節
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :車輛功率單位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所選擇的單位表示車輛的功率。
@@ -2064,6 +2113,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}多人�
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}遊戲選項
 STR_INTRO_HIGHSCORE                                             :{BLACK}積分排行榜
+STR_INTRO_HELP                                                  :{BLACK}幫助和手冊
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查線上內容
@@ -2107,6 +2157,16 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}你要�
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}你確定要離開這個場景嗎？
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}幫助和手冊
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}網站
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}文檔
+STR_HELP_WINDOW_README                                          :{BLACK}Readme
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}修訂紀錄
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}許可協議
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}手冊／維基
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}回報漏洞
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}社區
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
@@ -2383,6 +2443,10 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，僅此一次
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，且不再詢問
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :是否參與自動問卷？
+STR_NETWORK_ASK_SURVEY_LINK                                     :關於問卷和隱私
+STR_NETWORK_ASK_SURVEY_NO                                       :否
+STR_NETWORK_ASK_SURVEY_YES                                      :是
 
 STR_NETWORK_SPECTATORS                                          :旁觀者
 
@@ -2673,7 +2737,9 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}選擇�
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}選擇要興建的車站種類
 
 STR_STATION_CLASS_DFLT                                          :預設車站
+STR_STATION_CLASS_DFLT_STATION                                  :預設車站
 STR_STATION_CLASS_WAYP                                          :號誌站
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :預設號誌站
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}號誌選擇
@@ -3316,6 +3382,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}檢查�
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} 於 {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :物件
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :鐵路種類
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :道路類型
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x 參數（16 進位）
 
@@ -3722,6 +3789,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}詳情
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}顯示基礎建設數目的詳細資料
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}給予資金
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}將資金給予此公司
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}敵意收購
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新臉孔
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}選擇總經理的新臉孔
@@ -3808,6 +3876,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}管理�
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}向清單所有車輛發出指示
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :替換車輛
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :送去維護
+STR_VEHICLE_LIST_CREATE_GROUP                                   :建立群組
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}今年盈利：{CURRENCY_LONG} (去年盈利：{CURRENCY_LONG})
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :送到機廠
@@ -4528,6 +4597,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}實際�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}表定時間
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}切換顯示 (根據實際情況的) 預期時間 或 表定時間
 
+STR_TIMETABLE_ARRIVAL                                           :到: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE                                         :發: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)
@@ -4571,6 +4642,7 @@ STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}下局�
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人類玩家
 STR_AI_CONFIG_RANDOM_AI                                         :隨機 AI
 STR_AI_CONFIG_NONE                                              :(無)
+STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}競爭對手數目上限：{ORANGE}{COMMA}
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}向上移
@@ -4621,6 +4693,8 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}：{ORA
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}目錄
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}強迫文字換行
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}強迫寬於視窗的文字自動換行
 STR_TEXTFILE_VIEW_README                                        :{BLACK}檢視Readme
@@ -4630,6 +4704,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}授權�
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}{STRING}的 Readme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}{STRING}的修訂紀錄
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}{STRING}的授權條款
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD 文檔 '{STRING}'
 
 
 # Vehicle loading indicators
@@ -5086,6 +5161,7 @@ STR_ERROR_NO_BUOY                                               :{WHITE}沒有�
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}無法為車輛加入時刻表...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}車輛只能在車站停靠等候
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此車輛不會停靠此站
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... 時刻表並不完整
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 已有太多標誌
@@ -5565,17 +5641,21 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_JUST_DECIMAL                                                :{DECIMAL}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING1                                                :{STRING}
+STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

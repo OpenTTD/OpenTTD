@@ -954,7 +954,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}游戏�
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :通用
 STR_GAME_OPTIONS_TAB_GENERAL_TT                                 :{BLACK}选择通用设定
-STR_GAME_OPTIONS_TAB_GRAPHICS                                   :图形包
+STR_GAME_OPTIONS_TAB_GRAPHICS                                   :图像
 STR_GAME_OPTIONS_TAB_GRAPHICS_TT                                :{BLACK}选择图形组设定
 STR_GAME_OPTIONS_TAB_SOUND                                      :音效
 STR_GAME_OPTIONS_TAB_SOUND_TT                                   :{BLACK}选择音乐和音效的设定
