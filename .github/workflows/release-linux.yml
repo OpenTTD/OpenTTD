@@ -41,14 +41,6 @@ jobs:
     - name: Enable Rust cache
       uses: Swatinem/rust-cache@v2
 
-    - name: Enable vcpkg cache
-      uses: actions/cache@v3
-      with:
-        path: /vcpkg/installed
-        key: ubuntu-20.04-vcpkg-release-1 # Increase the number whenever dependencies are modified
-        restore-keys: |
-          ubuntu-20.04-vcpkg-release
-
     - name: Install dependencies
       run: |
         echo "::group::Install system dependencies"
