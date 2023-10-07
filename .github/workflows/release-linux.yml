@@ -54,11 +54,13 @@ jobs:
         echo "::group::Install system dependencies"
         # perl-IPC-Cmd, wget, and zip are needed to run vcpkg.
         # autoconf-archive is needed to build ICU.
+        # libXdmcp-devel is needed to build dbus (dependency of sdl2)
         yum install -y \
           autoconf-archive \
           perl-IPC-Cmd \
           wget \
           zip \
+          libXdmcp-devel \
           # EOF
 
         # aclocal looks first in /usr/local/share/aclocal, and if that doesn't
