@@ -127,9 +127,9 @@ struct CYapfRailNodeT
 	union {
 		uint32_t          m_inherited_flags;
 		struct {
-			bool          m_targed_seen : 1;
-			bool          m_choice_seen : 1;
-			bool          m_last_signal_was_red : 1;
+			bool          m_targed_seen;
+			bool          m_choice_seen;
+			bool          m_last_signal_was_red;
 		} flags_s;
 	} flags_u;
 	SignalType        m_last_red_signal_type;
