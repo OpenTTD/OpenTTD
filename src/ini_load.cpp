@@ -107,6 +107,16 @@ IniItem &IniGroup::GetOrCreateItem(const std::string &name)
 	}
 
 	/* Item doesn't exist, make a new one. */
+	return this->CreateItem(name);
+}
+
+/**
+ * Create an item with the given name. This does not reuse an existing item of the same name.
+ * @param name name of the item to create.
+ * @return the created item.
+ */
+IniItem &IniGroup::CreateItem(const std::string &name)
+{
 	return *(new IniItem(this, name));
 }
 
@@ -180,9 +190,19 @@ IniGroup *IniLoadFile::GetGroup(const std::string &name, bool create_new)
 	if (!create_new) return nullptr;
 
 	/* otherwise make a new one */
+	return &this->CreateGroup(name);
+}
+
+/**
+ * Create an group with the given name. This does not reuse an existing group of the same name.
+ * @param name name of the group to create.
+ * @return the created group.
+ */
+IniGroup &IniLoadFile::CreateGroup(const std::string &name)
+{
 	IniGroup *group = new IniGroup(this, name);
 	group->comment = "\n";
-	return group;
+	return *group;
 }
 
 /**
@@ -275,7 +295,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 				e--;
 			}
 			s++; // skip [
-			group = new IniGroup(this, std::string(s, e - s));
+			group = &this->CreateGroup(std::string(s, e - s));
 			if (comment_size != 0) {
 				group->comment.assign(comment, comment_size);
 				comment_size = 0;
@@ -283,9 +303,9 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 		} else if (group != nullptr) {
 			if (group->type == IGT_SEQUENCE) {
 				/* A sequence group, use the line as item name without further interpretation. */
-				IniItem *item = new IniItem(group, std::string(buffer, e - buffer));
+				IniItem &item = group->CreateItem(std::string(buffer, e - buffer));
 				if (comment_size) {
-					item->comment.assign(comment, comment_size);
+					item.comment.assign(comment, comment_size);
 					comment_size = 0;
 				}
 				continue;
@@ -301,9 +321,9 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 			}
 
 			/* it's an item in an existing group */
-			IniItem *item = new IniItem(group, std::string(s, t - s));
+			IniItem &item = group->CreateItem(std::string(s, t - s));
 			if (comment_size != 0) {
-				item->comment.assign(comment, comment_size);
+				item.comment.assign(comment, comment_size);
 				comment_size = 0;
 			}
 
@@ -320,9 +340,9 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 
 			/* If the value was not quoted and empty, it must be nullptr */
 			if (!quoted && e == t) {
-				item->value.reset();
+				item.value.reset();
 			} else {
-				item->value = StrMakeValid(std::string(t));
+				item.value = StrMakeValid(std::string(t));
 			}
 		} else {
 			/* it's an orphan item */

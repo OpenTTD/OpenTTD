@@ -46,6 +46,7 @@ struct IniGroup {
 
 	IniItem *GetItem(const std::string &name) const;
 	IniItem &GetOrCreateItem(const std::string &name);
+	IniItem &CreateItem(const std::string &name);
 	void RemoveItem(const std::string &name);
 	void Clear();
 };
@@ -62,6 +63,7 @@ struct IniLoadFile {
 	virtual ~IniLoadFile();
 
 	IniGroup *GetGroup(const std::string &name, bool create_new = true);
+	IniGroup &CreateGroup(const std::string &name);
 	void RemoveGroup(const std::string &name);
 
 	void LoadFromDisk(const std::string &filename, Subdirectory subdir);
