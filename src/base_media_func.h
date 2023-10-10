@@ -42,6 +42,11 @@ template <class T, size_t Tnum_files, bool Tsearch_in_tars>
 bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename)
 {
 	IniGroup *metadata = ini.GetGroup("metadata");
+	if (metadata == nullptr) {
+		Debug(grf, 0, "Base " SET_TYPE "set detail loading: metadata missing.");
+		Debug(grf, 0, "  Is {} readable for the user running OpenTTD?", full_filename);
+		return false;
+	}
 	IniItem *item;
 
 	fetch_metadata("name");
@@ -75,7 +80,7 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile &ini, const
 	for (uint i = 0; i < Tnum_files; i++) {
 		MD5File *file = &this->files[i];
 		/* Find the filename first. */
-		item = files->GetItem(BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names[i]);
+		item = files != nullptr ? files->GetItem(BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names[i]) : nullptr;
 		if (item == nullptr || (!item->value.has_value() && !allow_empty_filename)) {
 			Debug(grf, 0, "No " SET_TYPE " file for: {} (in {})", BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names[i], full_filename);
 			return false;
@@ -93,7 +98,7 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile &ini, const
 		file->filename = path + filename;
 
 		/* Then find the MD5 checksum */
-		item = md5s->GetItem(filename);
+		item = md5s != nullptr ? md5s->GetItem(filename) : nullptr;
 		if (item == nullptr || !item->value.has_value()) {
 			Debug(grf, 0, "No MD5 checksum specified for: {} (in {})", filename, full_filename);
 			return false;
@@ -119,8 +124,8 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile &ini, const
 		}
 
 		/* Then find the warning message when the file's missing */
-		item = origin->GetItem(filename);
-		if (item == nullptr) item = origin->GetItem("default");
+		item = origin != nullptr ? origin->GetItem(filename) : nullptr;
+		if (item == nullptr) item = origin != nullptr ? origin->GetItem("default") : nullptr;
 		if (item == nullptr || !item->value.has_value()) {
 			Debug(grf, 1, "No origin warning message specified for: {}", filename);
 			file->missing_warning.clear();

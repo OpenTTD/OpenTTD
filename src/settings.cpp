@@ -600,13 +600,15 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 		auto sc = s.find('.');
 		if (sc != std::string::npos) {
 			group = ini.GetGroup(s.substr(0, sc));
+			if (group == nullptr) group = group_def;
 			s = s.substr(sc + 1);
 		} else {
 			group = group_def;
 		}
 
-		IniItem *item = group->GetItem(s);
-		if (item == nullptr && group != group_def) {
+		IniItem *item = nullptr;
+		if (group != nullptr) item = group->GetItem(s);
+		if (item == nullptr && group != group_def && group_def != nullptr) {
 			/* For settings.xx.yy load the settings from [settings] yy = ? in case the previous
 			 * did not exist (e.g. loading old config files with a [settings] section */
 			item = group_def->GetItem(s);
@@ -615,7 +617,9 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 			/* For settings.xx.zz.yy load the settings from [zz] yy = ? in case the previous
 			 * did not exist (e.g. loading old config files with a [yapf] section */
 			sc = s.find('.');
-			if (sc != std::string::npos) item = ini.GetGroup(s.substr(0, sc))->GetItem(s.substr(sc + 1));
+			if (sc != std::string::npos) {
+				if (group = ini.GetGroup(s.substr(0, sc)); group != nullptr) item = group->GetItem(s.substr(sc + 1));
+			}
 		}
 
 		sd->ParseValue(item, object);
@@ -1087,6 +1091,7 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 static IniFileVersion LoadVersionFromConfig(IniFile &ini)
 {
 	IniGroup *group = ini.GetGroup("version");
+	if (group == nullptr) return IFV_0;
 
 	auto version_number = group->GetItem("ini_version");
 	/* Older ini-file versions don't have this key yet. */
@@ -1212,6 +1217,7 @@ static void RemoveEntriesFromIni(IniFile &ini, const SettingTable &table)
 		if (sc == std::string::npos) continue;
 
 		IniGroup *group = ini.GetGroup(s.substr(0, sc));
+		if (group == nullptr) continue;
 		s = s.substr(sc + 1);
 
 		group->RemoveItem(s);
@@ -1245,7 +1251,7 @@ bool IsConversionNeeded(ConfigIniFile &ini, std::string group, std::string old_v
 {
 	*old_item = nullptr;
 
-	IniGroup *igroup = ini.GetGroup(group, false);
+	IniGroup *igroup = ini.GetGroup(group);
 	/* If the group doesn't exist, there is nothing to convert. */
 	if (igroup == nullptr) return false;
 
@@ -1295,7 +1301,7 @@ void LoadFromConfig(bool startup)
 
 		/* Move no_http_content_downloads and use_relay_service from generic_ini to private_ini. */
 		if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
-			IniGroup *network = generic_ini.GetGroup("network", false);
+			IniGroup *network = generic_ini.GetGroup("network");
 			if (network != nullptr) {
 				IniItem *no_http_content_downloads = network->GetItem("no_http_content_downloads");
 				if (no_http_content_downloads != nullptr) {
@@ -1377,8 +1383,8 @@ void SaveToConfig()
 	 * just so we can add a comment before it (that is how IniFile works).
 	 * This to explain what the file is about. After doing it once, never touch
 	 * it again, as otherwise we might be reverting user changes. */
-	if (IniGroup *group = private_ini.GetGroup("private", false); group != nullptr) group->comment = "; This file possibly contains private information which can identify you as person.\n";
-	if (IniGroup *group = secrets_ini.GetGroup("secrets", false); group != nullptr) group->comment = "; Do not share this file with others, not even if they claim to be technical support.\n; This file contains saved passwords and other secrets that should remain private to you!\n";
+	if (IniGroup *group = private_ini.GetGroup("private"); group != nullptr) group->comment = "; This file possibly contains private information which can identify you as person.\n";
+	if (IniGroup *group = secrets_ini.GetGroup("secrets"); group != nullptr) group->comment = "; Do not share this file with others, not even if they claim to be technical support.\n; This file contains saved passwords and other secrets that should remain private to you!\n";
 
 	if (generic_version == IFV_0) {
 		/* Remove some obsolete groups. These have all been loaded into other groups. */
@@ -1402,7 +1408,7 @@ void SaveToConfig()
 
 	/* These variables are migrated from generic ini to private ini now. */
 	if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
-		IniGroup *network = generic_ini.GetGroup("network", false);
+		IniGroup *network = generic_ini.GetGroup("network");
 		if (network != nullptr) {
 			network->RemoveItem("no_http_content_downloads");
 			network->RemoveItem("use_relay_service");
