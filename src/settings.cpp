@@ -676,10 +676,10 @@ static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, co
 		std::string s{ sd->GetName() };
 		auto sc = s.find('.');
 		if (sc != std::string::npos) {
-			group = ini.GetGroup(s.substr(0, sc));
+			group = &ini.GetOrCreateGroup(s.substr(0, sc));
 			s = s.substr(sc + 1);
 		} else {
-			if (group_def == nullptr) group_def = ini.GetGroup(grpname);
+			if (group_def == nullptr) group_def = &ini.GetOrCreateGroup(grpname);
 			group = group_def;
 		}
 
@@ -799,13 +799,11 @@ static void IniLoadSettingList(IniFile &ini, const char *grpname, StringList &li
  */
 static void IniSaveSettingList(IniFile &ini, const char *grpname, StringList &list)
 {
-	IniGroup *group = ini.GetGroup(grpname);
-
-	if (group == nullptr) return;
-	group->Clear();
+	IniGroup &group = ini.GetOrCreateGroup(grpname);
+	group.Clear();
 
 	for (const auto &iter : list) {
-		group->GetOrCreateItem(iter).SetValue("");
+		group.GetOrCreateItem(iter).SetValue("");
 	}
 }
 
@@ -1105,10 +1103,8 @@ static IniFileVersion LoadVersionFromConfig(IniFile &ini)
 
 static void AISaveConfig(IniFile &ini, const char *grpname)
 {
-	IniGroup *group = ini.GetGroup(grpname);
-
-	if (group == nullptr) return;
-	group->Clear();
+	IniGroup &group = ini.GetOrCreateGroup(grpname);
+	group.Clear();
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
@@ -1121,16 +1117,14 @@ static void AISaveConfig(IniFile &ini, const char *grpname)
 			name = "none";
 		}
 
-		group->CreateItem(name).SetValue(value);
+		group.CreateItem(name).SetValue(value);
 	}
 }
 
 static void GameSaveConfig(IniFile &ini, const char *grpname)
 {
-	IniGroup *group = ini.GetGroup(grpname);
-
-	if (group == nullptr) return;
-	group->Clear();
+	IniGroup &group = ini.GetOrCreateGroup(grpname);
+	group.Clear();
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
 	std::string name;
@@ -1142,7 +1136,7 @@ static void GameSaveConfig(IniFile &ini, const char *grpname)
 		name = "none";
 	}
 
-	group->CreateItem(name).SetValue(value);
+	group.CreateItem(name).SetValue(value);
 }
 
 /**
@@ -1151,23 +1145,23 @@ static void GameSaveConfig(IniFile &ini, const char *grpname)
  */
 static void SaveVersionInConfig(IniFile &ini)
 {
-	IniGroup *group = ini.GetGroup("version");
-	group->GetOrCreateItem("version_string").SetValue(_openttd_revision);
-	group->GetOrCreateItem("version_number").SetValue(fmt::format("{:08X}", _openttd_newgrf_version));
-	group->GetOrCreateItem("ini_version").SetValue(std::to_string(INIFILE_VERSION));
+	IniGroup &group = ini.GetOrCreateGroup("version");
+	group.GetOrCreateItem("version_string").SetValue(_openttd_revision);
+	group.GetOrCreateItem("version_number").SetValue(fmt::format("{:08X}", _openttd_newgrf_version));
+	group.GetOrCreateItem("ini_version").SetValue(std::to_string(INIFILE_VERSION));
 }
 
 /* Save a GRF configuration to the given group name */
 static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfig *list)
 {
-	ini.RemoveGroup(grpname);
-	IniGroup *group = ini.GetGroup(grpname);
+	IniGroup &group = ini.GetOrCreateGroup(grpname);
+	group.Clear();
 	const GRFConfig *c;
 
 	for (c = list; c != nullptr; c = c->next) {
 		std::string key = fmt::format("{:08X}|{}|{}", BSWAP32(c->ident.grfid),
 				FormatArrayAsHex(c->ident.md5sum), c->filename);
-		group->GetOrCreateItem(key).SetValue(GRFBuildParamList(c));
+		group.GetOrCreateItem(key).SetValue(GRFBuildParamList(c));
 	}
 }
 
