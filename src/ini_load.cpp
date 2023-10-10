@@ -49,9 +49,9 @@ IniGroup::IniGroup(const std::string &name, IniGroupType type) : type(type)
  * @param name   name of the item to find.
  * @return the requested item or nullptr if not found.
  */
-IniItem *IniGroup::GetItem(const std::string &name)
+const IniItem *IniGroup::GetItem(const std::string &name) const
 {
-	for (IniItem &item : this->items) {
+	for (const IniItem &item : this->items) {
 		if (item.name == name) return &item;
 	}
 
@@ -109,6 +109,20 @@ IniLoadFile::IniLoadFile(const IniGroupNameList &list_group_names, const IniGrou
 		list_group_names(list_group_names),
 		seq_group_names(seq_group_names)
 {
+}
+
+/**
+ * Get the group with the given name.
+ * @param name name of the group to find.
+ * @return The requested group or \c nullptr if not found.
+ */
+const IniGroup *IniLoadFile::GetGroup(const std::string &name) const
+{
+	for (const IniGroup &group : this->groups) {
+		if (group.name == name) return &group;
+	}
+
+	return nullptr;
 }
 
 /**

@@ -586,8 +586,8 @@ const std::string &StringSettingDesc::Read(const void *object) const
  */
 static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, const char *grpname, void *object, bool only_startup)
 {
-	IniGroup *group;
-	IniGroup *group_def = ini.GetGroup(grpname);
+	const IniGroup *group;
+	const IniGroup *group_def = ini.GetGroup(grpname);
 
 	for (auto &desc : settings_table) {
 		const SettingDesc *sd = GetSettingDesc(desc);
@@ -605,7 +605,7 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 			group = group_def;
 		}
 
-		IniItem *item = nullptr;
+		const IniItem *item = nullptr;
 		if (group != nullptr) item = group->GetItem(s);
 		if (item == nullptr && group != group_def && group_def != nullptr) {
 			/* For settings.xx.yy load the settings from [settings] yy = ? in case the previous
@@ -780,7 +780,7 @@ bool ListSettingDesc::IsDefaultValue(void *) const
  */
 static void IniLoadSettingList(IniFile &ini, const char *grpname, StringList &list)
 {
-	IniGroup *group = ini.GetGroup(grpname);
+	const IniGroup *group = ini.GetGroup(grpname);
 
 	if (group == nullptr) return;
 
@@ -894,9 +894,9 @@ static void ValidateSettings()
 	}
 }
 
-static void AILoadConfig(IniFile &ini, const char *grpname)
+static void AILoadConfig(const IniFile &ini, const char *grpname)
 {
-	IniGroup *group = ini.GetGroup(grpname);
+	const IniGroup *group = ini.GetGroup(grpname);
 
 	/* Clean any configured AI */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
@@ -923,9 +923,9 @@ static void AILoadConfig(IniFile &ini, const char *grpname)
 	}
 }
 
-static void GameLoadConfig(IniFile &ini, const char *grpname)
+static void GameLoadConfig(const IniFile &ini, const char *grpname)
 {
-	IniGroup *group = ini.GetGroup(grpname);
+	const IniGroup *group = ini.GetGroup(grpname);
 
 	/* Clean any configured GameScript */
 	GameConfig::GetConfig(GameConfig::SSS_FORCE_NEWGAME)->Change(std::nullopt);
@@ -933,7 +933,7 @@ static void GameLoadConfig(IniFile &ini, const char *grpname)
 	/* If no group exists, return */
 	if (group == nullptr || group->items.empty()) return;
 
-	IniItem &item = group->items.front();
+	const IniItem &item = group->items.front();
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
 
@@ -987,9 +987,9 @@ static bool DecodeHexText(const char *pos, uint8_t *dest, size_t dest_size)
  * @param grpname   Group name containing the configuration of the GRF.
  * @param is_static GRF is static.
  */
-static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_static)
+static GRFConfig *GRFLoadConfig(const IniFile &ini, const char *grpname, bool is_static)
 {
-	IniGroup *group = ini.GetGroup(grpname);
+	const IniGroup *group = ini.GetGroup(grpname);
 	GRFConfig *first = nullptr;
 	GRFConfig **curr = &first;
 
@@ -1088,9 +1088,9 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 	return first;
 }
 
-static IniFileVersion LoadVersionFromConfig(IniFile &ini)
+static IniFileVersion LoadVersionFromConfig(const IniFile &ini)
 {
-	IniGroup *group = ini.GetGroup("version");
+	const IniGroup *group = ini.GetGroup("version");
 	if (group == nullptr) return IFV_0;
 
 	auto version_number = group->GetItem("ini_version");
@@ -1247,16 +1247,16 @@ static void RemoveEntriesFromIni(IniFile &ini, const SettingTable &table)
  * @param[out] old_item The old item to base upgrading on.
  * @return Whether upgrading should happen; if false, old_item is a nullptr.
  */
-bool IsConversionNeeded(ConfigIniFile &ini, std::string group, std::string old_var, std::string new_var, IniItem **old_item)
+bool IsConversionNeeded(const ConfigIniFile &ini, const std::string &group, const std::string &old_var, const std::string &new_var, const IniItem **old_item)
 {
 	*old_item = nullptr;
 
-	IniGroup *igroup = ini.GetGroup(group);
+	const IniGroup *igroup = ini.GetGroup(group);
 	/* If the group doesn't exist, there is nothing to convert. */
 	if (igroup == nullptr) return false;
 
-	IniItem *tmp_old_item = igroup->GetItem(old_var);
-	IniItem *new_item = igroup->GetItem(new_var);
+	const IniItem *tmp_old_item = igroup->GetItem(old_var);
+	const IniItem *new_item = igroup->GetItem(new_var);
 
 	/* If the old item doesn't exist, there is nothing to convert. */
 	if (tmp_old_item == nullptr) return false;
@@ -1301,9 +1301,9 @@ void LoadFromConfig(bool startup)
 
 		/* Move no_http_content_downloads and use_relay_service from generic_ini to private_ini. */
 		if (generic_version < IFV_NETWORK_PRIVATE_SETTINGS) {
-			IniGroup *network = generic_ini.GetGroup("network");
+			const IniGroup *network = generic_ini.GetGroup("network");
 			if (network != nullptr) {
-				IniItem *no_http_content_downloads = network->GetItem("no_http_content_downloads");
+				const IniItem *no_http_content_downloads = network->GetItem("no_http_content_downloads");
 				if (no_http_content_downloads != nullptr) {
 					if (no_http_content_downloads->value == "true") {
 						_settings_client.network.no_http_content_downloads = true;
@@ -1312,7 +1312,7 @@ void LoadFromConfig(bool startup)
 					}
 				}
 
-				IniItem *use_relay_service = network->GetItem("use_relay_service");
+				const IniItem *use_relay_service = network->GetItem("use_relay_service");
 				if (use_relay_service != nullptr) {
 					if (use_relay_service->value == "never") {
 						_settings_client.network.use_relay_service = UseRelayService::URS_NEVER;
@@ -1325,7 +1325,7 @@ void LoadFromConfig(bool startup)
 			}
 		}
 
-		IniItem *old_item;
+		const IniItem *old_item;
 
 		if (generic_version < IFV_GAME_TYPE && IsConversionNeeded(generic_ini, "network", "server_advertise", "server_game_type", &old_item)) {
 			auto old_value = BoolSettingDesc::ParseSingleValue(old_item->value->c_str());

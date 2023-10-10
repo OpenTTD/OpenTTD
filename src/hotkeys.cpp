@@ -274,12 +274,12 @@ HotkeyList::~HotkeyList()
  * Load HotkeyList from IniFile.
  * @param ini IniFile to load from.
  */
-void HotkeyList::Load(IniFile &ini)
+void HotkeyList::Load(const IniFile &ini)
 {
-	IniGroup *group = ini.GetGroup(this->ini_group);
+	const IniGroup *group = ini.GetGroup(this->ini_group);
 	if (group == nullptr) return;
 	for (Hotkey &hotkey : this->items) {
-		IniItem *item = group->GetItem(hotkey.name);
+		const IniItem *item = group->GetItem(hotkey.name);
 		if (item != nullptr) {
 			hotkey.keycodes.clear();
 			if (item->value.has_value()) ParseHotkeys(hotkey, item->value->c_str());
