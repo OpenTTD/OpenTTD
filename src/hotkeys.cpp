@@ -292,9 +292,9 @@ void HotkeyList::Load(IniFile &ini)
  */
 void HotkeyList::Save(IniFile &ini) const
 {
-	IniGroup *group = ini.GetGroup(this->ini_group);
+	IniGroup &group = ini.GetOrCreateGroup(this->ini_group);
 	for (const Hotkey &hotkey : this->items) {
-		IniItem &item = group->GetOrCreateItem(hotkey.name);
+		IniItem &item = group.GetOrCreateItem(hotkey.name);
 		item.SetValue(SaveKeycodes(hotkey));
 	}
 }

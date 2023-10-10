@@ -194,6 +194,21 @@ IniGroup *IniLoadFile::GetGroup(const std::string &name, bool create_new)
 }
 
 /**
+ * Get the group with the given name, and if it doesn't exist create a new group.
+ * @param name name of the group to find.
+ * @return the requested group.
+ */
+IniGroup &IniLoadFile::GetOrCreateGroup(const std::string &name)
+{
+	for (IniGroup *group = this->group; group != nullptr; group = group->next) {
+		if (group->name == name) return *group;
+	}
+
+	/* Group doesn't exist, make a new one. */
+	return this->CreateGroup(name);
+}
+
+/**
  * Create an group with the given name. This does not reuse an existing group of the same name.
  * @param name name of the group to create.
  * @return the created group.
