@@ -131,12 +131,11 @@ static bool IsSignedVarMemType(VarType vt)
  */
 class ConfigIniFile : public IniFile {
 private:
-	inline static const char * const list_group_names[] = {
+	inline static const IniGroupNameList list_group_names = {
 		"bans",
 		"newgrf",
 		"servers",
 		"server_bind_addresses",
-		nullptr,
 	};
 
 public:

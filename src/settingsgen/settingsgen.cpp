@@ -151,10 +151,10 @@ private:
 struct SettingsIniFile : IniLoadFile {
 	/**
 	 * Construct a new ini loader.
-	 * @param list_group_names A \c nullptr terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
-	 * @param seq_group_names  A \c nullptr terminated list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
+	 * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+	 * @param seq_group_names  A list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
 	 */
-	SettingsIniFile(const char * const *list_group_names = nullptr, const char * const *seq_group_names = nullptr) :
+	SettingsIniFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {}) :
 			IniLoadFile(list_group_names, seq_group_names)
 	{
 	}
@@ -416,9 +416,9 @@ static const OptionData _opts[] = {
  */
 static void ProcessIniFile(const char *fname)
 {
-	static const char * const seq_groups[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, nullptr};
+	static const IniLoadFile::IniGroupNameList seq_groups = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME};
 
-	SettingsIniFile ini{nullptr, seq_groups};
+	SettingsIniFile ini{{}, seq_groups};
 	ini.LoadFromDisk(fname, NO_DIRECTORY);
 
 	DumpGroup(ini, PREAMBLE_GROUP_NAME);

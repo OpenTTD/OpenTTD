@@ -53,13 +53,15 @@ struct IniGroup {
 
 /** Ini file that only supports loading. */
 struct IniLoadFile {
+	using IniGroupNameList = std::initializer_list<std::string_view>;
+
 	IniGroup *group;                      ///< the first group in the ini
 	IniGroup **last_group;                ///< the last group in the ini
 	std::string comment;                  ///< last comment in file
-	const char * const *list_group_names; ///< nullptr terminated list with group names that are lists
-	const char * const *seq_group_names;  ///< nullptr terminated list with group names that are sequences.
+	const IniGroupNameList list_group_names; ///< list of group names that are lists
+	const IniGroupNameList seq_group_names;  ///< list of group names that are sequences.
 
-	IniLoadFile(const char * const *list_group_names = nullptr, const char * const *seq_group_names = nullptr);
+	IniLoadFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {});
 	virtual ~IniLoadFile();
 
 	IniGroup *GetGroup(const std::string &name) const;
@@ -89,7 +91,7 @@ struct IniLoadFile {
 
 /** Ini file that supports both loading and saving. */
 struct IniFile : IniLoadFile {
-	IniFile(const char * const *list_group_names = nullptr);
+	IniFile(const IniGroupNameList &list_group_names = {});
 
 	bool SaveToDisk(const std::string &filename);
 
