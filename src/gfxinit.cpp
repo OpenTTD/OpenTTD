@@ -352,6 +352,7 @@ bool GraphicsSet::FillSetDetails(IniFile &ini, const std::string &path, const st
 	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, true>::FillSetDetails(ini, path, full_filename, false);
 	if (ret) {
 		IniGroup *metadata = ini.GetGroup("metadata");
+		assert(metadata != nullptr); /* ret can't be true if metadata isn't present. */
 		IniItem *item;
 
 		fetch_metadata("palette");

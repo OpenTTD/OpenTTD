@@ -277,6 +277,7 @@ HotkeyList::~HotkeyList()
 void HotkeyList::Load(IniFile &ini)
 {
 	IniGroup *group = ini.GetGroup(this->ini_group);
+	if (group == nullptr) return;
 	for (Hotkey &hotkey : this->items) {
 		IniItem *item = group->GetItem(hotkey.name);
 		if (item != nullptr) {

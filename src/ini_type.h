@@ -62,7 +62,7 @@ struct IniLoadFile {
 	IniLoadFile(const char * const *list_group_names = nullptr, const char * const *seq_group_names = nullptr);
 	virtual ~IniLoadFile();
 
-	IniGroup *GetGroup(const std::string &name, bool create_new = true);
+	IniGroup *GetGroup(const std::string &name) const;
 	IniGroup &GetOrCreateGroup(const std::string &name);
 	IniGroup &CreateGroup(const std::string &name);
 	void RemoveGroup(const std::string &name);

@@ -195,7 +195,7 @@ static const char *DEFAULTS_GROUP_NAME  = "defaults"; ///< Name of the group con
  */
 static void DumpGroup(IniLoadFile &ifile, const char * const group_name)
 {
-	IniGroup *grp = ifile.GetGroup(group_name, false);
+	IniGroup *grp = ifile.GetGroup(group_name);
 	if (grp != nullptr && grp->type == IGT_SEQUENCE) {
 		for (IniItem *item = grp->item; item != nullptr; item = item->next) {
 			if (!item->name.empty()) {
@@ -296,9 +296,9 @@ static void DumpSections(IniLoadFile &ifile)
 {
 	static const char * const special_group_names[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, VALIDATION_GROUP_NAME, nullptr};
 
-	IniGroup *default_grp = ifile.GetGroup(DEFAULTS_GROUP_NAME, false);
-	IniGroup *templates_grp = ifile.GetGroup(TEMPLATES_GROUP_NAME, false);
-	IniGroup *validation_grp = ifile.GetGroup(VALIDATION_GROUP_NAME, false);
+	IniGroup *default_grp = ifile.GetGroup(DEFAULTS_GROUP_NAME);
+	IniGroup *templates_grp = ifile.GetGroup(TEMPLATES_GROUP_NAME);
+	IniGroup *validation_grp = ifile.GetGroup(VALIDATION_GROUP_NAME);
 	if (templates_grp == nullptr) return;
 
 	/* Output every group, using its name as template name. */
