@@ -347,11 +347,11 @@ void GfxLoadSprites()
 	UpdateCursorSize();
 }
 
-bool GraphicsSet::FillSetDetails(IniFile *ini, const std::string &path, const std::string &full_filename)
+bool GraphicsSet::FillSetDetails(IniFile &ini, const std::string &path, const std::string &full_filename)
 {
 	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, true>::FillSetDetails(ini, path, full_filename, false);
 	if (ret) {
-		IniGroup *metadata = ini->GetGroup("metadata");
+		IniGroup *metadata = ini.GetGroup("metadata");
 		IniItem *item;
 
 		fetch_metadata("palette");

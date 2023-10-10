@@ -274,9 +274,9 @@ HotkeyList::~HotkeyList()
  * Load HotkeyList from IniFile.
  * @param ini IniFile to load from.
  */
-void HotkeyList::Load(IniFile *ini)
+void HotkeyList::Load(IniFile &ini)
 {
-	IniGroup *group = ini->GetGroup(this->ini_group);
+	IniGroup *group = ini.GetGroup(this->ini_group);
 	for (Hotkey &hotkey : this->items) {
 		IniItem *item = group->GetItem(hotkey.name);
 		if (item != nullptr) {
@@ -290,9 +290,9 @@ void HotkeyList::Load(IniFile *ini)
  * Save HotkeyList to IniFile.
  * @param ini IniFile to save to.
  */
-void HotkeyList::Save(IniFile *ini) const
+void HotkeyList::Save(IniFile &ini) const
 {
-	IniGroup *group = ini->GetGroup(this->ini_group);
+	IniGroup *group = ini.GetGroup(this->ini_group);
 	for (const Hotkey &hotkey : this->items) {
 		IniItem &item = group->GetOrCreateItem(hotkey.name);
 		item.SetValue(SaveKeycodes(hotkey));
@@ -320,8 +320,8 @@ int HotkeyList::CheckMatch(uint16_t keycode, bool global_only) const
 
 static void SaveLoadHotkeys(bool save)
 {
-	IniFile *ini = new IniFile();
-	ini->LoadFromDisk(_hotkeys_file, NO_DIRECTORY);
+	IniFile ini{};
+	ini.LoadFromDisk(_hotkeys_file, NO_DIRECTORY);
 
 	for (HotkeyList *list : *_hotkey_lists) {
 		if (save) {
@@ -331,8 +331,7 @@ static void SaveLoadHotkeys(bool save)
 		}
 	}
 
-	if (save) ini->SaveToDisk(_hotkeys_file);
-	delete ini;
+	if (save) ini.SaveToDisk(_hotkeys_file);
 }
 
 

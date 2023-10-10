@@ -189,27 +189,13 @@ static const char *VALIDATION_GROUP_NAME = "validation"; ///< Name of the group 
 static const char *DEFAULTS_GROUP_NAME  = "defaults"; ///< Name of the group containing default values for the template variables.
 
 /**
- * Load the INI file.
- * @param filename Name of the file to load.
- * @return         Loaded INI data.
- */
-static IniLoadFile *LoadIniFile(const char *filename)
-{
-	static const char * const seq_groups[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, nullptr};
-
-	IniLoadFile *ini = new SettingsIniFile(nullptr, seq_groups);
-	ini->LoadFromDisk(filename, NO_DIRECTORY);
-	return ini;
-}
-
-/**
  * Dump a #IGT_SEQUENCE group into #_stored_output.
  * @param ifile      Loaded INI data.
  * @param group_name Name of the group to copy.
  */
-static void DumpGroup(IniLoadFile *ifile, const char * const group_name)
+static void DumpGroup(IniLoadFile &ifile, const char * const group_name)
 {
-	IniGroup *grp = ifile->GetGroup(group_name, false);
+	IniGroup *grp = ifile.GetGroup(group_name, false);
 	if (grp != nullptr && grp->type == IGT_SEQUENCE) {
 		for (IniItem *item = grp->item; item != nullptr; item = item->next) {
 			if (!item->name.empty()) {
@@ -306,17 +292,17 @@ static void DumpLine(IniItem *item, IniGroup *grp, IniGroup *default_grp, Output
  * Output all non-special sections through the template / template variable expansion system.
  * @param ifile Loaded INI data.
  */
-static void DumpSections(IniLoadFile *ifile)
+static void DumpSections(IniLoadFile &ifile)
 {
 	static const char * const special_group_names[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, VALIDATION_GROUP_NAME, nullptr};
 
-	IniGroup *default_grp = ifile->GetGroup(DEFAULTS_GROUP_NAME, false);
-	IniGroup *templates_grp  = ifile->GetGroup(TEMPLATES_GROUP_NAME, false);
-	IniGroup *validation_grp  = ifile->GetGroup(VALIDATION_GROUP_NAME, false);
+	IniGroup *default_grp = ifile.GetGroup(DEFAULTS_GROUP_NAME, false);
+	IniGroup *templates_grp = ifile.GetGroup(TEMPLATES_GROUP_NAME, false);
+	IniGroup *validation_grp = ifile.GetGroup(VALIDATION_GROUP_NAME, false);
 	if (templates_grp == nullptr) return;
 
 	/* Output every group, using its name as template name. */
-	for (IniGroup *grp = ifile->group; grp != nullptr; grp = grp->next) {
+	for (IniGroup *grp = ifile.group; grp != nullptr; grp = grp->next) {
 		const char * const *sgn;
 		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (grp->name == *sgn) break;
 		if (*sgn != nullptr) continue;
@@ -430,11 +416,14 @@ static const OptionData _opts[] = {
  */
 static void ProcessIniFile(const char *fname)
 {
-	IniLoadFile *ini_data = LoadIniFile(fname);
-	DumpGroup(ini_data, PREAMBLE_GROUP_NAME);
-	DumpSections(ini_data);
-	DumpGroup(ini_data, POSTAMBLE_GROUP_NAME);
-	delete ini_data;
+	static const char * const seq_groups[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, nullptr};
+
+	SettingsIniFile ini{nullptr, seq_groups};
+	ini.LoadFromDisk(fname, NO_DIRECTORY);
+
+	DumpGroup(ini, PREAMBLE_GROUP_NAME);
+	DumpSections(ini);
+	DumpGroup(ini, POSTAMBLE_GROUP_NAME);
 }
 
 /**
