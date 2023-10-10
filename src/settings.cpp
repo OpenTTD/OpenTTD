@@ -786,8 +786,8 @@ static void IniLoadSettingList(IniFile &ini, const char *grpname, StringList &li
 
 	list.clear();
 
-	for (const IniItem *item = group->item; item != nullptr; item = item->next) {
-		if (!item->name.empty()) list.push_back(item->name);
+	for (const IniItem &item : group->items) {
+		if (!item.name.empty()) list.push_back(item.name);
 	}
 }
 
@@ -907,17 +907,19 @@ static void AILoadConfig(IniFile &ini, const char *grpname)
 	if (group == nullptr) return;
 
 	CompanyID c = COMPANY_FIRST;
-	for (IniItem *item = group->item; c < MAX_COMPANIES && item != nullptr; c++, item = item->next) {
+	for (const IniItem &item : group->items) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 
-		config->Change(item->name);
+		config->Change(item.name);
 		if (!config->HasScript()) {
-			if (item->name != "none") {
-				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", item->name);
+			if (item.name != "none") {
+				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", item.name);
 				continue;
 			}
 		}
-		if (item->value.has_value()) config->StringToSettings(*item->value);
+		if (item.value.has_value()) config->StringToSettings(*item.value);
+		c++;
+		if (c >= MAX_COMPANIES) break;
 	}
 }
 
@@ -929,21 +931,20 @@ static void GameLoadConfig(IniFile &ini, const char *grpname)
 	GameConfig::GetConfig(GameConfig::SSS_FORCE_NEWGAME)->Change(std::nullopt);
 
 	/* If no group exists, return */
-	if (group == nullptr) return;
+	if (group == nullptr || group->items.empty()) return;
 
-	IniItem *item = group->item;
-	if (item == nullptr) return;
+	IniItem &item = group->items.front();
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
 
-	config->Change(item->name);
+	config->Change(item.name);
 	if (!config->HasScript()) {
-		if (item->name != "none") {
-			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", item->name);
+		if (item.name != "none") {
+			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", item.name);
 			return;
 		}
 	}
-	if (item->value.has_value()) config->StringToSettings(*item->value);
+	if (item.value.has_value()) config->StringToSettings(*item.value);
 }
 
 /**
@@ -995,12 +996,12 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 	if (group == nullptr) return nullptr;
 
 	uint num_grfs = 0;
-	for (IniItem *item = group->item; item != nullptr; item = item->next) {
+	for (const IniItem &item : group->items) {
 		GRFConfig *c = nullptr;
 
 		uint8_t grfid_buf[4];
 		MD5Hash md5sum;
-		const char *filename = item->name.c_str();
+		const char *filename = item.name.c_str();
 		bool has_grfid = false;
 		bool has_md5sum = false;
 
@@ -1024,8 +1025,8 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 		if (c == nullptr) c = new GRFConfig(filename);
 
 		/* Parse parameters */
-		if (item->value.has_value() && !item->value->empty()) {
-			int count = ParseIntList(item->value->c_str(), c->param.data(), c->param.size());
+		if (item.value.has_value() && !item.value->empty()) {
+			int count = ParseIntList(item.value->c_str(), c->param.data(), c->param.size());
 			if (count < 0) {
 				SetDParamStr(0, filename);
 				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
@@ -1048,7 +1049,7 @@ static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_stati
 				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN);
 			}
 
-			SetDParamStr(0, StrEmpty(filename) ? item->name.c_str() : filename);
+			SetDParamStr(0, StrEmpty(filename) ? item.name.c_str() : filename);
 			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_GRF, WL_CRITICAL);
 			delete c;
 			continue;
@@ -1438,9 +1439,9 @@ StringList GetGRFPresetList()
 	StringList list;
 
 	ConfigIniFile ini(_config_file);
-	for (IniGroup *group = ini.group; group != nullptr; group = group->next) {
-		if (group->name.compare(0, 7, "preset-") == 0) {
-			list.push_back(group->name.substr(7));
+	for (const IniGroup &group : ini.groups) {
+		if (group.name.compare(0, 7, "preset-") == 0) {
+			list.push_back(group.name.substr(7));
 		}
 	}
 

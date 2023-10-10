@@ -56,20 +56,20 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	std::ofstream os(OTTD2FS(file_new).c_str());
 	if (os.fail()) return false;
 
-	for (const IniGroup *group = this->group; group != nullptr; group = group->next) {
-		os << group->comment << "[" << group->name << "]\n";
-		for (const IniItem *item = group->item; item != nullptr; item = item->next) {
-			os << item->comment;
+	for (const IniGroup &group : this->groups) {
+		os << group.comment << "[" << group.name << "]\n";
+		for (const IniItem &item : group.items) {
+			os << item.comment;
 
 			/* protect item->name with quotes if needed */
-			if (item->name.find(' ') != std::string::npos ||
-				item->name[0] == '[') {
-				os << "\"" << item->name << "\"";
+			if (item.name.find(' ') != std::string::npos ||
+				item.name[0] == '[') {
+				os << "\"" << item.name << "\"";
 			} else {
-				os << item->name;
+				os << item.name;
 			}
 
-			os << " = " << item->value.value_or("") << "\n";
+			os << " = " << item.value.value_or("") << "\n";
 		}
 	}
 	os << this->comment;

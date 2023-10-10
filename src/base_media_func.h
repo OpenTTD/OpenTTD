@@ -56,10 +56,10 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile &ini, const
 	this->description[std::string{}] = *item->value;
 
 	/* Add the translations of the descriptions too. */
-	for (item = metadata->item; item != nullptr; item = item->next) {
-		if (item->name.compare(0, 12, "description.") != 0) continue;
+	for (const IniItem &titem : metadata->items) {
+		if (titem.name.compare(0, 12, "description.") != 0) continue;
 
-		this->description[item->name.substr(12)] = item->value.value_or("");
+		this->description[titem.name.substr(12)] = titem.value.value_or("");
 	}
 
 	fetch_metadata("shortname");
