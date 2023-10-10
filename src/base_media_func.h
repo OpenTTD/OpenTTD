@@ -39,9 +39,9 @@ extern void CheckExternalFiles();
  * @return true if loading was successful.
  */
 template <class T, size_t Tnum_files, bool Tsearch_in_tars>
-bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename)
+bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename)
 {
-	IniGroup *metadata = ini->GetGroup("metadata");
+	IniGroup *metadata = ini.GetGroup("metadata");
 	IniItem *item;
 
 	fetch_metadata("name");
@@ -69,9 +69,9 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 	this->fallback = (item != nullptr && item->value && *item->value != "0" && *item->value != "false");
 
 	/* For each of the file types we want to find the file, MD5 checksums and warning messages. */
-	IniGroup *files  = ini->GetGroup("files");
-	IniGroup *md5s   = ini->GetGroup("md5s");
-	IniGroup *origin = ini->GetGroup("origin");
+	IniGroup *files  = ini.GetGroup("files");
+	IniGroup *md5s   = ini.GetGroup("md5s");
+	IniGroup *origin = ini.GetGroup("origin");
 	for (uint i = 0; i < Tnum_files; i++) {
 		MD5File *file = &this->files[i];
 		/* Find the filename first. */
@@ -159,9 +159,9 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 	Debug(grf, 1, "Checking {} for base " SET_TYPE " set", filename);
 
 	Tbase_set *set = new Tbase_set();
-	IniFile *ini = new IniFile();
+	IniFile ini{};
 	std::string path{ filename, basepath_length };
-	ini->LoadFromDisk(path, BASESET_DIR);
+	ini.LoadFromDisk(path, BASESET_DIR);
 
 	auto psep = path.rfind(PATHSEPCHAR);
 	if (psep != std::string::npos) {
@@ -218,7 +218,6 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 		delete set;
 	}
 
-	delete ini;
 	return ret;
 }
 

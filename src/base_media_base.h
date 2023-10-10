@@ -95,7 +95,7 @@ struct BaseSet {
 		return Tnum_files - this->valid_files;
 	}
 
-	bool FillSetDetails(IniFile *ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);
+	bool FillSetDetails(IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);
 
 	/**
 	 * Get the description for the given ISO code.
@@ -244,7 +244,7 @@ struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, true> {
 	PaletteType palette;       ///< Palette of this graphics set
 	BlitterType blitter;       ///< Blitter of this graphics set
 
-	bool FillSetDetails(struct IniFile *ini, const std::string &path, const std::string &full_filename);
+	bool FillSetDetails(IniFile &ini, const std::string &path, const std::string &full_filename);
 
 	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir);
 };
@@ -301,7 +301,7 @@ struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
 	/** Number of valid songs in set. */
 	byte num_available;
 
-	bool FillSetDetails(struct IniFile *ini, const std::string &path, const std::string &full_filename);
+	bool FillSetDetails(IniFile &ini, const std::string &path, const std::string &full_filename);
 };
 
 /** All data/functions related with replacing the base music */

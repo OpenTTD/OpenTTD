@@ -116,14 +116,14 @@ template <class Tbase_set>
 	return BaseMedia<Tbase_set>::used_set != nullptr;
 }
 
-bool MusicSet::FillSetDetails(IniFile *ini, const std::string &path, const std::string &full_filename)
+bool MusicSet::FillSetDetails(IniFile &ini, const std::string &path, const std::string &full_filename)
 {
 	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false>::FillSetDetails(ini, path, full_filename);
 	if (ret) {
 		this->num_available = 0;
-		IniGroup *names = ini->GetGroup("names");
-		IniGroup *catindex = ini->GetGroup("catindex");
-		IniGroup *timingtrim = ini->GetGroup("timingtrim");
+		IniGroup *names = ini.GetGroup("names");
+		IniGroup *catindex = ini.GetGroup("catindex");
+		IniGroup *timingtrim = ini.GetGroup("timingtrim");
 		uint tracknr = 1;
 		for (uint i = 0; i < lengthof(this->songinfo); i++) {
 			const std::string &filename = this->files[i].filename;

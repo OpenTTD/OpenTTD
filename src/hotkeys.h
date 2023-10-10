@@ -40,8 +40,8 @@ struct HotkeyList {
 	HotkeyList(const std::string &ini_group, const std::vector<Hotkey> &items, GlobalHotkeyHandlerFunc global_hotkey_handler = nullptr);
 	~HotkeyList();
 
-	void Load(IniFile *ini);
-	void Save(IniFile *ini) const;
+	void Load(IniFile &ini);
+	void Save(IniFile &ini) const;
 
 	int CheckMatch(uint16_t keycode, bool global_only = false) const;
 
