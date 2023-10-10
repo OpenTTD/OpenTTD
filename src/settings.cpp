@@ -894,7 +894,6 @@ static void ValidateSettings()
 static void AILoadConfig(IniFile &ini, const char *grpname)
 {
 	IniGroup *group = ini.GetGroup(grpname);
-	IniItem *item;
 
 	/* Clean any configured AI */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
@@ -905,7 +904,7 @@ static void AILoadConfig(IniFile &ini, const char *grpname)
 	if (group == nullptr) return;
 
 	CompanyID c = COMPANY_FIRST;
-	for (item = group->item; c < MAX_COMPANIES && item != nullptr; c++, item = item->next) {
+	for (IniItem *item = group->item; c < MAX_COMPANIES && item != nullptr; c++, item = item->next) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 
 		config->Change(item->name);
@@ -922,7 +921,6 @@ static void AILoadConfig(IniFile &ini, const char *grpname)
 static void GameLoadConfig(IniFile &ini, const char *grpname)
 {
 	IniGroup *group = ini.GetGroup(grpname);
-	IniItem *item;
 
 	/* Clean any configured GameScript */
 	GameConfig::GetConfig(GameConfig::SSS_FORCE_NEWGAME)->Change(std::nullopt);
@@ -930,7 +928,7 @@ static void GameLoadConfig(IniFile &ini, const char *grpname)
 	/* If no group exists, return */
 	if (group == nullptr) return;
 
-	item = group->item;
+	IniItem *item = group->item;
 	if (item == nullptr) return;
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
@@ -988,14 +986,13 @@ static bool DecodeHexText(const char *pos, uint8_t *dest, size_t dest_size)
 static GRFConfig *GRFLoadConfig(IniFile &ini, const char *grpname, bool is_static)
 {
 	IniGroup *group = ini.GetGroup(grpname);
-	IniItem *item;
 	GRFConfig *first = nullptr;
 	GRFConfig **curr = &first;
 
 	if (group == nullptr) return nullptr;
 
 	uint num_grfs = 0;
-	for (item = group->item; item != nullptr; item = item->next) {
+	for (IniItem *item = group->item; item != nullptr; item = item->next) {
 		GRFConfig *c = nullptr;
 
 		uint8_t grfid_buf[4];
