@@ -233,13 +233,13 @@ static void DumpLine(IniItem *item, IniGroup *grp, IniGroup *default_grp, Output
 	static const int MAX_VAR_LENGTH = 64;
 
 	/* Prefix with #if/#ifdef/#ifndef */
-	static const char * const pp_lines[] = {"if", "ifdef", "ifndef", nullptr};
+	static const auto pp_lines = {"if", "ifdef", "ifndef"};
 	int count = 0;
-	for (const char * const *name = pp_lines; *name != nullptr; name++) {
-		const char *condition = FindItemValue(*name, grp, default_grp);
+	for (const auto &name : pp_lines) {
+		const char *condition = FindItemValue(name, grp, default_grp);
 		if (condition != nullptr) {
 			output.Add("#", 1);
-			output.Add(*name);
+			output.Add(name);
 			output.Add(" ", 1);
 			output.Add(condition);
 			output.Add("\n", 1);
@@ -294,7 +294,7 @@ static void DumpLine(IniItem *item, IniGroup *grp, IniGroup *default_grp, Output
  */
 static void DumpSections(IniLoadFile &ifile)
 {
-	static const char * const special_group_names[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, VALIDATION_GROUP_NAME, nullptr};
+	static const auto special_group_names = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, VALIDATION_GROUP_NAME};
 
 	IniGroup *default_grp = ifile.GetGroup(DEFAULTS_GROUP_NAME);
 	IniGroup *templates_grp = ifile.GetGroup(TEMPLATES_GROUP_NAME);
@@ -303,9 +303,8 @@ static void DumpSections(IniLoadFile &ifile)
 
 	/* Output every group, using its name as template name. */
 	for (IniGroup &grp : ifile.groups) {
-		const char * const *sgn;
-		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (grp.name == *sgn) break;
-		if (*sgn != nullptr) continue;
+		/* Exclude special group names. */
+		if (std::find(std::begin(special_group_names), std::end(special_group_names), grp.name) != std::end(special_group_names)) continue;
 
 		IniItem *template_item = templates_grp->GetItem(grp.name); // Find template value.
 		if (template_item == nullptr || !template_item->value.has_value()) {
