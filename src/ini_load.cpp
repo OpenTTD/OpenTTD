@@ -20,18 +20,9 @@
  * @param parent the group we belong to
  * @param name   the name of the item
  */
-IniItem::IniItem(IniGroup *parent, const std::string &name) : next(nullptr)
+IniItem::IniItem(const std::string &name)
 {
 	this->name = StrMakeValid(name);
-
-	*parent->last_item = this;
-	parent->last_item = &this->next;
-}
-
-/** Free everything we loaded. */
-IniItem::~IniItem()
-{
-	delete this->next;
 }
 
 /**
@@ -48,20 +39,9 @@ void IniItem::SetValue(const std::string_view value)
  * @param parent the file we belong to
  * @param name   the name of the group
  */
-IniGroup::IniGroup(IniLoadFile *parent, const std::string &name, IniGroupType type) : next(nullptr), type(type), item(nullptr)
+IniGroup::IniGroup(const std::string &name, IniGroupType type) : type(type)
 {
 	this->name = StrMakeValid(name);
-
-	this->last_item = &this->item;
-	*parent->last_group = this;
-	parent->last_group = &this->next;
-}
-
-/** Free everything we loaded. */
-IniGroup::~IniGroup()
-{
-	delete this->item;
-	delete this->next;
 }
 
 /**
@@ -69,10 +49,10 @@ IniGroup::~IniGroup()
  * @param name   name of the item to find.
  * @return the requested item or nullptr if not found.
  */
-IniItem *IniGroup::GetItem(const std::string &name) const
+IniItem *IniGroup::GetItem(const std::string &name)
 {
-	for (IniItem *item = this->item; item != nullptr; item = item->next) {
-		if (item->name == name) return item;
+	for (IniItem &item : this->items) {
+		if (item.name == name) return &item;
 	}
 
 	return nullptr;
@@ -85,8 +65,8 @@ IniItem *IniGroup::GetItem(const std::string &name) const
  */
 IniItem &IniGroup::GetOrCreateItem(const std::string &name)
 {
-	for (IniItem *item = this->item; item != nullptr; item = item->next) {
-		if (item->name == name) return *item;
+	for (IniItem &item : this->items) {
+		if (item.name == name) return item;
 	}
 
 	/* Item doesn't exist, make a new one. */
@@ -100,7 +80,7 @@ IniItem &IniGroup::GetOrCreateItem(const std::string &name)
  */
 IniItem &IniGroup::CreateItem(const std::string &name)
 {
-	return *(new IniItem(this, name));
+	return this->items.emplace_back(name);
 }
 
 /**
@@ -109,22 +89,7 @@ IniItem &IniGroup::CreateItem(const std::string &name)
  */
 void IniGroup::RemoveItem(const std::string &name)
 {
-	IniItem **prev = &this->item;
-
-	for (IniItem *item = this->item; item != nullptr; prev = &item->next, item = item->next) {
-		if (item->name != name) continue;
-
-		*prev = item->next;
-		/* "last_item" is a pointer to the "real-last-item"->next. */
-		if (this->last_item == &item->next) {
-			this->last_item = prev;
-		}
-
-		item->next = nullptr;
-		delete item;
-
-		return;
-	}
+	this->items.remove_if([&name](const IniItem &item) { return item.name == name; });
 }
 
 /**
@@ -132,9 +97,7 @@ void IniGroup::RemoveItem(const std::string &name)
  */
 void IniGroup::Clear()
 {
-	delete this->item;
-	this->item = nullptr;
-	this->last_item = &this->item;
+	this->items.clear();
 }
 
 /**
@@ -143,17 +106,9 @@ void IniGroup::Clear()
  * @param seq_group_names  A list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
  */
 IniLoadFile::IniLoadFile(const IniGroupNameList &list_group_names, const IniGroupNameList &seq_group_names) :
-		group(nullptr),
 		list_group_names(list_group_names),
 		seq_group_names(seq_group_names)
 {
-	this->last_group = &this->group;
-}
-
-/** Free everything we loaded. */
-IniLoadFile::~IniLoadFile()
-{
-	delete this->group;
 }
 
 /**
@@ -161,10 +116,10 @@ IniLoadFile::~IniLoadFile()
  * @param name name of the group to find.
  * @return The requested group or \c nullptr if not found.
  */
-IniGroup *IniLoadFile::GetGroup(const std::string &name) const
+IniGroup *IniLoadFile::GetGroup(const std::string &name)
 {
-	for (IniGroup *group = this->group; group != nullptr; group = group->next) {
-		if (group->name == name) return group;
+	for (IniGroup &group : this->groups) {
+		if (group.name == name) return &group;
 	}
 
 	return nullptr;
@@ -177,8 +132,8 @@ IniGroup *IniLoadFile::GetGroup(const std::string &name) const
  */
 IniGroup &IniLoadFile::GetOrCreateGroup(const std::string &name)
 {
-	for (IniGroup *group = this->group; group != nullptr; group = group->next) {
-		if (group->name == name) return *group;
+	for (IniGroup &group : this->groups) {
+		if (group.name == name) return group;
 	}
 
 	/* Group doesn't exist, make a new one. */
@@ -196,9 +151,7 @@ IniGroup &IniLoadFile::CreateGroup(const std::string &name)
 	if (std::find(this->list_group_names.begin(), this->list_group_names.end(), name) != this->list_group_names.end()) type = IGT_LIST;
 	if (std::find(this->seq_group_names.begin(), this->seq_group_names.end(), name) != this->seq_group_names.end()) type = IGT_SEQUENCE;
 
-	IniGroup *group = new IniGroup(this, name, type);
-	group->comment = "\n";
-	return *group;
+	return this->groups.emplace_back(name, type);
 }
 
 /**
@@ -208,28 +161,7 @@ IniGroup &IniLoadFile::CreateGroup(const std::string &name)
 void IniLoadFile::RemoveGroup(const std::string &name)
 {
 	size_t len = name.length();
-	IniGroup *prev = nullptr;
-	IniGroup *group;
-
-	/* does it exist already? */
-	for (group = this->group; group != nullptr; prev = group, group = group->next) {
-		if (group->name.compare(0, len, name) == 0) {
-			break;
-		}
-	}
-
-	if (group == nullptr) return;
-
-	if (prev != nullptr) {
-		prev->next = prev->next->next;
-		if (this->last_group == &group->next) this->last_group = &prev->next;
-	} else {
-		this->group = this->group->next;
-		if (this->last_group == &group->next) this->last_group = &this->group;
-	}
-
-	group->next = nullptr;
-	delete group;
+	this->groups.remove_if([&name, &len](const IniGroup &group) { return group.name.compare(0, len, name) == 0; });
 }
 
 /**
@@ -240,7 +172,7 @@ void IniLoadFile::RemoveGroup(const std::string &name)
  */
 void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 {
-	assert(this->last_group == &this->group);
+	assert(this->groups.empty());
 
 	char buffer[1024];
 	IniGroup *group = nullptr;

@@ -197,9 +197,9 @@ static void DumpGroup(IniLoadFile &ifile, const char * const group_name)
 {
 	IniGroup *grp = ifile.GetGroup(group_name);
 	if (grp != nullptr && grp->type == IGT_SEQUENCE) {
-		for (IniItem *item = grp->item; item != nullptr; item = item->next) {
-			if (!item->name.empty()) {
-				_stored_output.Add(item->name.c_str());
+		for (IniItem &item : grp->items) {
+			if (!item.name.empty()) {
+				_stored_output.Add(item.name.c_str());
 				_stored_output.Add("\n", 1);
 			}
 		}
@@ -302,21 +302,21 @@ static void DumpSections(IniLoadFile &ifile)
 	if (templates_grp == nullptr) return;
 
 	/* Output every group, using its name as template name. */
-	for (IniGroup *grp = ifile.group; grp != nullptr; grp = grp->next) {
+	for (IniGroup &grp : ifile.groups) {
 		const char * const *sgn;
-		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (grp->name == *sgn) break;
+		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (grp.name == *sgn) break;
 		if (*sgn != nullptr) continue;
 
-		IniItem *template_item = templates_grp->GetItem(grp->name); // Find template value.
+		IniItem *template_item = templates_grp->GetItem(grp.name); // Find template value.
 		if (template_item == nullptr || !template_item->value.has_value()) {
-			FatalError("Cannot find template {}", grp->name);
+			FatalError("Cannot find template {}", grp.name);
 		}
-		DumpLine(template_item, grp, default_grp, _stored_output);
+		DumpLine(template_item, &grp, default_grp, _stored_output);
 
 		if (validation_grp != nullptr) {
-			IniItem *validation_item = validation_grp->GetItem(grp->name); // Find template value.
+			IniItem *validation_item = validation_grp->GetItem(grp.name); // Find template value.
 			if (validation_item != nullptr && validation_item->value.has_value()) {
-				DumpLine(validation_item, grp, default_grp, _post_amble_output);
+				DumpLine(validation_item, &grp, default_grp, _post_amble_output);
 			}
 		}
 	}
