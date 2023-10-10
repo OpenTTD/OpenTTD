@@ -56,22 +56,8 @@ IniGroup::IniGroup(IniLoadFile *parent, const std::string &name) : next(nullptr)
 	*parent->last_group = this;
 	parent->last_group = &this->next;
 
-	if (parent->list_group_names != nullptr) {
-		for (uint i = 0; parent->list_group_names[i] != nullptr; i++) {
-			if (this->name == parent->list_group_names[i]) {
-				this->type = IGT_LIST;
-				return;
-			}
-		}
-	}
-	if (parent->seq_group_names != nullptr) {
-		for (uint i = 0; parent->seq_group_names[i] != nullptr; i++) {
-			if (this->name == parent->seq_group_names[i]) {
-				this->type = IGT_SEQUENCE;
-				return;
-			}
-		}
-	}
+	if (std::find(parent->list_group_names.begin(), parent->list_group_names.end(), name) != parent->list_group_names.end()) this->type = IGT_LIST;
+	if (std::find(parent->seq_group_names.begin(), parent->seq_group_names.end(), name) != parent->seq_group_names.end()) this->type = IGT_SEQUENCE;
 }
 
 /** Free everything we loaded. */
@@ -156,10 +142,10 @@ void IniGroup::Clear()
 
 /**
  * Construct a new in-memory Ini file representation.
- * @param list_group_names A \c nullptr terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
- * @param seq_group_names  A \c nullptr terminated list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
+ * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+ * @param seq_group_names  A list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
  */
-IniLoadFile::IniLoadFile(const char * const *list_group_names, const char * const *seq_group_names) :
+IniLoadFile::IniLoadFile(const IniGroupNameList &list_group_names, const IniGroupNameList &seq_group_names) :
 		group(nullptr),
 		list_group_names(list_group_names),
 		seq_group_names(seq_group_names)
