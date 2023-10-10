@@ -1386,8 +1386,8 @@ void SaveToConfig()
 	 * just so we can add a comment before it (that is how IniFile works).
 	 * This to explain what the file is about. After doing it once, never touch
 	 * it again, as otherwise we might be reverting user changes. */
-	if (!private_ini.GetGroup("private", false)) private_ini.GetGroup("private")->comment = "; This file possibly contains private information which can identify you as person.\n";
-	if (!secrets_ini.GetGroup("secrets", false)) secrets_ini.GetGroup("secrets")->comment = "; Do not share this file with others, not even if they claim to be technical support.\n; This file contains saved passwords and other secrets that should remain private to you!\n";
+	if (IniGroup *group = private_ini.GetGroup("private", false); group != nullptr) group->comment = "; This file possibly contains private information which can identify you as person.\n";
+	if (IniGroup *group = secrets_ini.GetGroup("secrets", false); group != nullptr) group->comment = "; Do not share this file with others, not even if they claim to be technical support.\n; This file contains saved passwords and other secrets that should remain private to you!\n";
 
 	if (generic_version == IFV_0) {
 		/* Remove some obsolete groups. These have all been loaded into other groups. */
