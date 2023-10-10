@@ -41,7 +41,7 @@ struct IniGroup {
 	std::string name;    ///< name of group
 	std::string comment; ///< comment for group
 
-	IniGroup(struct IniLoadFile *parent, const std::string &name);
+	IniGroup(struct IniLoadFile *parent, const std::string &name, IniGroupType type);
 	~IniGroup();
 
 	IniItem *GetItem(const std::string &name) const;

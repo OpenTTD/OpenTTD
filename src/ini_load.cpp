@@ -48,16 +48,13 @@ void IniItem::SetValue(const std::string_view value)
  * @param parent the file we belong to
  * @param name   the name of the group
  */
-IniGroup::IniGroup(IniLoadFile *parent, const std::string &name) : next(nullptr), type(IGT_VARIABLES), item(nullptr)
+IniGroup::IniGroup(IniLoadFile *parent, const std::string &name, IniGroupType type) : next(nullptr), type(type), item(nullptr)
 {
 	this->name = StrMakeValid(name);
 
 	this->last_item = &this->item;
 	*parent->last_group = this;
 	parent->last_group = &this->next;
-
-	if (std::find(parent->list_group_names.begin(), parent->list_group_names.end(), name) != parent->list_group_names.end()) this->type = IGT_LIST;
-	if (std::find(parent->seq_group_names.begin(), parent->seq_group_names.end(), name) != parent->seq_group_names.end()) this->type = IGT_SEQUENCE;
 }
 
 /** Free everything we loaded. */
@@ -195,7 +192,11 @@ IniGroup &IniLoadFile::GetOrCreateGroup(const std::string &name)
  */
 IniGroup &IniLoadFile::CreateGroup(const std::string &name)
 {
-	IniGroup *group = new IniGroup(this, name);
+	IniGroupType type = IGT_VARIABLES;
+	if (std::find(this->list_group_names.begin(), this->list_group_names.end(), name) != this->list_group_names.end()) type = IGT_LIST;
+	if (std::find(this->seq_group_names.begin(), this->seq_group_names.end(), name) != this->seq_group_names.end()) type = IGT_SEQUENCE;
+
+	IniGroup *group = new IniGroup(this, name, type);
 	group->comment = "\n";
 	return *group;
 }
