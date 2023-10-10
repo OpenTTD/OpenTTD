@@ -39,15 +39,15 @@ extern void CheckExternalFiles();
  * @return true if loading was successful.
  */
 template <class T, size_t Tnum_files, bool Tsearch_in_tars>
-bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename)
+bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename)
 {
-	IniGroup *metadata = ini.GetGroup("metadata");
+	const IniGroup *metadata = ini.GetGroup("metadata");
 	if (metadata == nullptr) {
 		Debug(grf, 0, "Base " SET_TYPE "set detail loading: metadata missing.");
 		Debug(grf, 0, "  Is {} readable for the user running OpenTTD?", full_filename);
 		return false;
 	}
-	IniItem *item;
+	const IniItem *item;
 
 	fetch_metadata("name");
 	this->name = *item->value;
@@ -74,9 +74,9 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile &ini, const
 	this->fallback = (item != nullptr && item->value && *item->value != "0" && *item->value != "false");
 
 	/* For each of the file types we want to find the file, MD5 checksums and warning messages. */
-	IniGroup *files  = ini.GetGroup("files");
-	IniGroup *md5s   = ini.GetGroup("md5s");
-	IniGroup *origin = ini.GetGroup("origin");
+	const IniGroup *files  = ini.GetGroup("files");
+	const IniGroup *md5s   = ini.GetGroup("md5s");
+	const IniGroup *origin = ini.GetGroup("origin");
 	for (uint i = 0; i < Tnum_files; i++) {
 		MD5File *file = &this->files[i];
 		/* Find the filename first. */

@@ -39,7 +39,7 @@ struct IniGroup {
 
 	IniGroup(const std::string &name, IniGroupType type);
 
-	IniItem *GetItem(const std::string &name);
+	const IniItem *GetItem(const std::string &name) const;
 	IniItem &GetOrCreateItem(const std::string &name);
 	IniItem &CreateItem(const std::string &name);
 	void RemoveItem(const std::string &name);
@@ -58,6 +58,7 @@ struct IniLoadFile {
 	IniLoadFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {});
 	virtual ~IniLoadFile() { }
 
+	const IniGroup *GetGroup(const std::string &name) const;
 	IniGroup *GetGroup(const std::string &name);
 	IniGroup &GetOrCreateGroup(const std::string &name);
 	IniGroup &CreateGroup(const std::string &name);
