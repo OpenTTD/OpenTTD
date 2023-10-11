@@ -62,7 +62,7 @@ struct IniLoadFile {
 	virtual ~IniLoadFile();
 
 	IniGroup *GetGroup(const std::string &name, bool create_new = true);
-	void RemoveGroup(const char *name);
+	void RemoveGroup(const std::string &name);
 
 	void LoadFromDisk(const std::string &filename, Subdirectory subdir);
 
