@@ -189,9 +189,9 @@ IniGroup *IniLoadFile::GetGroup(const std::string &name, bool create_new)
  * Remove the group with the given name.
  * @param name name of the group to remove.
  */
-void IniLoadFile::RemoveGroup(const char *name)
+void IniLoadFile::RemoveGroup(const std::string &name)
 {
-	size_t len = strlen(name);
+	size_t len = name.length();
 	IniGroup *prev = nullptr;
 	IniGroup *group;
 
