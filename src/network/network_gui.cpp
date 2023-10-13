@@ -2413,6 +2413,12 @@ struct NetworkAskRelayWindow : public Window {
 		this->InitNested(0);
 	}
 
+	void Close(int data = 0) override
+	{
+		if (data == NRWCD_UNHANDLED) _network_coordinator_client.ConnectFailure(this->token, 0);
+		this->Window::Close();
+	}
+
 	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_NAR_TEXT) {
@@ -2452,18 +2458,18 @@ struct NetworkAskRelayWindow : public Window {
 		switch (widget) {
 			case WID_NAR_NO:
 				_network_coordinator_client.ConnectFailure(this->token, 0);
-				this->Close();
+				this->Close(NRWCD_HANDLED);
 				break;
 
 			case WID_NAR_YES_ONCE:
 				_network_coordinator_client.StartTurnConnection(this->token);
-				this->Close();
+				this->Close(NRWCD_HANDLED);
 				break;
 
 			case WID_NAR_YES_ALWAYS:
 				_settings_client.network.use_relay_service = URS_ALLOW;
 				_network_coordinator_client.StartTurnConnection(this->token);
-				this->Close();
+				this->Close(NRWCD_HANDLED);
 				break;
 		}
 	}
@@ -2499,7 +2505,7 @@ static WindowDesc _network_ask_relay_desc(
  */
 void ShowNetworkAskRelay(const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token)
 {
-	CloseWindowByClass(WC_NETWORK_ASK_RELAY);
+	CloseWindowByClass(WC_NETWORK_ASK_RELAY, NRWCD_HANDLED);
 
 	Window *parent = GetMainWindow();
 	new NetworkAskRelayWindow(&_network_ask_relay_desc, parent, server_connection_string, relay_connection_string, token);
