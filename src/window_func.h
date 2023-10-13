@@ -73,13 +73,13 @@ void SetWindowDirty(WindowClass cls, T number)
 	SetWindowDirty(cls, static_cast<typename T::BaseType>(number));
 }
 
-void CloseWindowById(WindowClass cls, WindowNumber number, bool force = true);
-void CloseWindowByClass(WindowClass cls);
+void CloseWindowById(WindowClass cls, WindowNumber number, bool force = true, int data = 0);
+void CloseWindowByClass(WindowClass cls, int data = 0);
 
 template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
-void CloseWindowById(WindowClass cls, T number, bool force = true)
+void CloseWindowById(WindowClass cls, T number, bool force = true, int data = 0)
 {
-	CloseWindowById(cls, static_cast<typename T::BaseType>(number), force);
+	CloseWindowById(cls, static_cast<typename T::BaseType>(number), force, data);
 }
 
 bool EditBoxInGlobalFocus();

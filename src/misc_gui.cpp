@@ -1036,7 +1036,7 @@ struct QueryStringWindow : public Window
 		}
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		if (!this->editbox.handled && this->parent != nullptr) {
 			Window *parent = this->parent;
@@ -1109,7 +1109,7 @@ struct QueryWindow : public Window {
 		this->FinishInitNested(WN_CONFIRM_POPUP_QUERY);
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		if (this->proc != nullptr) this->proc(this->parent, false);
 		this->Window::Close();

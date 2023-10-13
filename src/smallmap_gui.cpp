@@ -1096,7 +1096,7 @@ SmallMapWindow::~SmallMapWindow()
 	delete this->overlay;
 }
 
-/* virtual */ void SmallMapWindow::Close()
+/* virtual */ void SmallMapWindow::Close([[maybe_unused]] int data)
 {
 	this->BreakIndustryChainLink();
 	this->Window::Close();

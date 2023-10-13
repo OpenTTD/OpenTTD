@@ -672,7 +672,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->OnInvalidateData(GOID_NEWGRF_CURRENT_LOADED);
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowByClass(WC_GRF_PARAMETERS);
 		CloseWindowByClass(WC_TEXTFILE);

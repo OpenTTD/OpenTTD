@@ -32,7 +32,7 @@ public:
 	 */
 	BaseNetworkContentDownloadStatusWindow(WindowDesc *desc);
 
-	void Close() override;
+	void Close([[maybe_unused]] int data = 0) override;
 	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override;
 	void DrawWidget(const Rect &r, int widget) const override;
 	void OnDownloadProgress(const ContentInfo *ci, int bytes) override;

@@ -488,7 +488,7 @@ public:
 	static int SortButtonWidth();
 
 	void CloseChildWindows(WindowClass wc = WC_INVALID) const;
-	virtual void Close();
+	virtual void Close(int data = 0);
 	static void DeleteClosedWindows();
 
 	void SetDirty() const;
@@ -922,7 +922,7 @@ public:
 		this->parent = parent;
 	}
 
-	void Close() override;
+	void Close([[maybe_unused]] int data = 0) override;
 };
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);

@@ -92,7 +92,7 @@ public:
 		this->InitNested(1);
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		_exit_game = true;
 		this->Window::Close();
@@ -150,7 +150,7 @@ public:
 	{
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		/* If we are not set to exit the game, it means the bootstrap failed. */
 		if (!_exit_game) {
@@ -208,7 +208,7 @@ public:
 	}
 
 	/** Stop listening to the content client events. */
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		_network_content_client.RemoveCallback(this);
 		this->Window::Close();
