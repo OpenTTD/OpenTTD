@@ -648,7 +648,7 @@ void ClientNetworkCoordinatorSocketHandler::CloseStunHandler(const std::string &
  */
 void ClientNetworkCoordinatorSocketHandler::CloseTurnHandler(const std::string &token)
 {
-	CloseWindowByClass(WC_NETWORK_ASK_RELAY);
+	CloseWindowByClass(WC_NETWORK_ASK_RELAY, NRWCD_HANDLED);
 
 	auto turn_it = this->turn_handlers.find(token);
 	if (turn_it == this->turn_handlers.end()) return;
