@@ -76,7 +76,7 @@ public:
 		this->OnInvalidateData(0);
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowById(GetWindowClassForVehicleType(this->vt), VehicleListIdentifier(VL_STATION_LIST, this->vt, this->owner, this->window_number).Pack(), false);
 		SetViewportCatchmentWaypoint(Waypoint::Get(this->window_number), false);

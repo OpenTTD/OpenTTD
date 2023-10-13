@@ -186,7 +186,7 @@ struct GameOptionsWindow : Window {
 		if constexpr (!NetworkSurveyHandler::IsSurveyPossible()) this->GetWidget<NWidgetStacked>(WID_GO_SURVEY_SEL)->SetDisplayedPlane(SZSP_NONE);
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowById(WC_CUSTOM_CURRENCY, 0);
 		CloseWindowByClass(WC_TEXTFILE);

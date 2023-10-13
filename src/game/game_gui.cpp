@@ -105,7 +105,7 @@ struct GSConfigWindow : public Window {
 		this->RebuildVisibleSettings();
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowByClass(WC_SCRIPT_LIST);
 		this->Window::Close();

@@ -99,7 +99,7 @@ struct AIConfigWindow : public Window {
 		this->OnInvalidateData(0);
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowByClass(WC_SCRIPT_LIST);
 		CloseWindowByClass(WC_SCRIPT_SETTINGS);

@@ -302,7 +302,7 @@ struct NetworkChatWindow : public Window {
 		PositionNetworkChatWindow(this);
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, 0);
 		this->Window::Close();

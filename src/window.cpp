@@ -1045,7 +1045,7 @@ void Window::CloseChildWindows(WindowClass wc) const
 /**
  * Hide the window and all its child windows, and mark them for a later deletion.
  */
-void Window::Close()
+void Window::Close([[maybe_unused]] int data)
 {
 	/* Don't close twice. */
 	if (*this->z_position == nullptr) return;
@@ -1141,11 +1141,11 @@ Window *GetMainWindow()
  * @param number Number of the window within the window class
  * @param force force closing; if false don't close when stickied
  */
-void CloseWindowById(WindowClass cls, WindowNumber number, bool force)
+void CloseWindowById(WindowClass cls, WindowNumber number, bool force, int data)
 {
 	Window *w = FindWindowById(cls, number);
 	if (w != nullptr && (force || (w->flags & WF_STICKY) == 0)) {
-		w->Close();
+		w->Close(data);
 	}
 }
 
@@ -1153,12 +1153,12 @@ void CloseWindowById(WindowClass cls, WindowNumber number, bool force)
  * Close all windows of a given class
  * @param cls Window class of windows to delete
  */
-void CloseWindowByClass(WindowClass cls)
+void CloseWindowByClass(WindowClass cls, int data)
 {
 	/* Note: the container remains stable, even when deleting windows. */
 	for (Window *w : Window::Iterate()) {
 		if (w->window_class == cls) {
-			w->Close();
+			w->Close(data);
 		}
 	}
 }
@@ -3486,7 +3486,7 @@ void RelocateAllWindows(int neww, int newh)
  * Hide the window and all its child windows, and mark them for a later deletion.
  * Always call ResetObjectToPlace() when closing a PickerWindow.
  */
-void PickerWindowBase::Close()
+void PickerWindowBase::Close([[maybe_unused]] int data)
 {
 	ResetObjectToPlace();
 	this->Window::Close();

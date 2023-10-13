@@ -2935,7 +2935,7 @@ public:
 		this->UpdateButtonStatus();
 	}
 
-	void Close() override
+	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowById(WC_VEHICLE_ORDERS, this->window_number, false);
 		CloseWindowById(WC_VEHICLE_REFIT, this->window_number, false);
