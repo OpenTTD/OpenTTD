@@ -175,7 +175,7 @@ STR_COLOUR_DEFAULT                                              :默认
 STR_COLOUR_DARK_BLUE                                            :深蓝色
 STR_COLOUR_PALE_GREEN                                           :浅绿色
 STR_COLOUR_PINK                                                 :粉红色
-STR_COLOUR_YELLOW                                               :黄 色
+STR_COLOUR_YELLOW                                               :黄　色
 STR_COLOUR_RED                                                  :红　色
 STR_COLOUR_LIGHT_BLUE                                           :淡蓝色
 STR_COLOUR_GREEN                                                :绿　色
@@ -193,13 +193,13 @@ STR_COLOUR_RANDOM                                               :随机
 ###length 17
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :深蓝色
 STR_COLOUR_SECONDARY_PALE_GREEN                                 :浅绿色
-STR_COLOUR_SECONDARY_SECONDARY_PINK                             :粉色
-STR_COLOUR_SECONDARY_YELLOW                                     :黄 色
-STR_COLOUR_SECONDARY_RED                                        :红  色
+STR_COLOUR_SECONDARY_SECONDARY_PINK                             :粉红色
+STR_COLOUR_SECONDARY_YELLOW                                     :黄　色
+STR_COLOUR_SECONDARY_RED                                        :红　色
 STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :淡蓝色
 STR_COLOUR_SECONDARY_GREEN                                      :绿　色
 STR_COLOUR_SECONDARY_DARK_GREEN                                 :深绿色
-STR_COLOUR_SECONDARY_BLUE                                       :蓝  色
+STR_COLOUR_SECONDARY_BLUE                                       :蓝　色
 STR_COLOUR_SECONDARY_CREAM                                      :奶油色
 STR_COLOUR_SECONDARY_MAUVE                                      :深紫色
 STR_COLOUR_SECONDARY_PURPLE                                     :紫　色
