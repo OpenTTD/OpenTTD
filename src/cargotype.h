@@ -204,4 +204,9 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 
 using SetCargoBitIterator = SetBitIterator<CargoID, CargoTypes>;
 
+/** Comparator to sort CargoID by according to desired order. */
+struct CargoIDComparator {
+	bool operator() (const CargoID &lhs, const CargoID &rhs) const { return _sorted_cargo_types[lhs] < _sorted_cargo_types[rhs]; }
+};
+
 #endif /* CARGOTYPE_H */

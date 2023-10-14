@@ -1920,11 +1920,6 @@ enum CargoesFieldType {
 
 static const uint MAX_CARGOES = 16; ///< Maximum number of cargoes carried in a #CFT_CARGO field in #CargoesField.
 
-static bool CargoIDSorter(const CargoID &a, const CargoID &b)
-{
-	return _sorted_cargo_types[a] < _sorted_cargo_types[b];
-}
-
 /** Data about a single field in the #IndustryCargoesWindow panel. */
 struct CargoesField {
 	static int vert_inter_industry_space;
@@ -2054,7 +2049,8 @@ struct CargoesField {
 			}
 		}
 		this->u.cargo.num_cargoes = (count < 0) ? static_cast<uint8_t>(insert - std::begin(this->u.cargo.vertical_cargoes)) : count;
-		std::sort(std::begin(this->u.cargo.vertical_cargoes), insert, &CargoIDSorter);
+		CargoIDComparator comparator;
+		std::sort(std::begin(this->u.cargo.vertical_cargoes), insert, comparator);
 		std::fill(insert, std::end(this->u.cargo.vertical_cargoes), CT_INVALID);
 		this->u.cargo.top_end = top_end;
 		this->u.cargo.bottom_end = bottom_end;
