@@ -254,6 +254,9 @@ STR_COLOUR_WHITE                                                :Fehér
 STR_COLOUR_RANDOM                                               :Véletlenszerű
 
 ###length 17
+STR_COLOUR_SECONDARY_ORANGE                                     :Narancssárga
+STR_COLOUR_SECONDARY_GREY                                       :Szürke
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Ugyanaz mint az elsődleges
 
 
 # Units used in OpenTTD
@@ -569,6 +572,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Az összes üze
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terület-információ
+STR_ABOUT_MENU_HELP                                             :Súgó és útmutatók
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
 STR_ABOUT_MENU_AI_DEBUG                                         :MI / Játékszkript nyomkövetés
@@ -1109,6 +1113,13 @@ STR_GAME_OPTIONS_GUI_SCALE_3X                                   :3x
 STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automata felmérés
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Részvétel automata felmérésben
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Ha engedélyezve van, az OpenTTD továbbít egy felmérést a játékból kilépéskor
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Felmérésről és titoktartásról
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Ezzel megnyithatsz egy oldalt a böngészőben ahol további információt érhetsz el az automata felmérésről.
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Felmérés eredményének előnézete
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mutasd a jelenleg futó játékhoz tartozó felmérés eredményeit.
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
@@ -1293,6 +1304,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Balra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Középen
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}másodperc{P 0 "" ek}
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximális kezdeti hitelkeret: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálisan kölcsönözhető összeg (az inflációtól eltekintve)
@@ -1464,6 +1476,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nincs*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentett
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normál
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Más vállalat tulajdonában lévő utak és sínek egyszintű kereszteződésének engedélyezése: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Engedélyezd más vállalat tulajdonában lévő utak és sínek egyszintű kereszteződésének építését
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Áthaladó megállóhelyek engedélyezése települési tulajdonú utakon: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Áthaladó megállóhelyek építésének engedélyezése települési tulajdonú utakon
@@ -1477,6 +1491,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Bekapcsolva az 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :A vállalat kezdő színsémája: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :A vállalat színsémája a játék kezdetén
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Kezdő vállalat másodlagos színe: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Válassz egy másodlagos színt a vállalatnak, ha NewGRF-et használsz ami ezt lehetővé teszi.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Repülőterek nem avulnak el: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bekapcsolva minden repülőtértípus örökké elérhető marad bevezetése után
@@ -1679,6 +1695,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Kikapcsolva
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Ablakok bezárása jobb gombbal: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :A jobb gombbal való kattintás az ablak területén bezárja az ablakot. Ez a beállítás kikapcsolja a segédletek jobb gombbal való megjelenítését!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Nem
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Igen
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Igen, a zároltakat kivéve
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Játékmentés dátumformátuma: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :A játékmentésekben használt dátum formátuma
@@ -2007,6 +2026,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Átlagos város
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Kapcsolatgrafikon frissítése minden {STRING}{NBSP}másodpercben{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :A kapcsolatgrafikon következő újrakalkulálása között eltelt idő. Minden újrakalkulálás során egy komponens tervei kerülnek kiszámításra. Ez azt jelenti, hogy az X érték beállítása nem jelenti azt, hogy az egész grafikon X másodpercenként frissül. Csak néhány komponens lesz frissítve. Minél rövidebbre van állítva, annál több CPU időre van szükség a kiszámításhoz. Ha hosszabbra van állítva, akkor hosszabb időbe telik, amíg az áruelosztás elkezdődik az új útvonalakon.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :A kapcsolatgrafikon újrakalkulálására szánt idő, {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :A kapcsolatgrafikon újrakalkulálására szánt idő. Egy újrakalkulálás megkezdésekor létrejön egy új szál ami ennyi másodpercig futhat. Minél rövidebbre állítod ezt a paramétert annál valószínűbb hogy a számítás nem készül el mire kellene. Ha ez megtörténik akkor a játék megáll amíg el nem készül a számítással ("laggol"). Minél hosszabbra állítod ezt az időt annál hosszabb idő telik el az útvonalak változása és az eloszlás frissítése között.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Utasok szétosztása: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :A "Szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi utas megy majd A-ból B-be, mint B-ből A-ba. Az "Aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű utas mehet. "Kézi" esetben az utasok nem lesznek automatikusan szétosztva.
@@ -2139,6 +2160,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Hiba a videobeállításokban...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nem található kompatibilis GPU. Hardveres gyorsítás kikapcsolva.
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... A videókártya illesztőprogram hibát okozott. Hardveres gyorsítás kikapcsolva
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2152,6 +2174,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Hálóza
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Alapbeállítások
 STR_INTRO_HIGHSCORE                                             :{BLACK}Rekord tábla
+STR_INTRO_HELP                                                  :{BLACK}Súgó és útmutatók
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Beállítások
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF beállítások
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölthető tartalmak
@@ -2173,6 +2196,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Játékv
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}A játék alapvető beállításainak (pl. nyelv, grafikus alapcsomag, stb.) megjelenítése
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rekord tábla megjelenítése
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Férj hozzá a dokumentációhoz és az online tartalmakhoz
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}A beállítások megjelenítése
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF beállítások megjelenítése
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése
@@ -2195,6 +2219,14 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Biztosa
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{BLACK}Súgó és útmutatók
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Weboldalak
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Dokumentumok
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Változtatások listája
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Ismert hibák
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Útmutató / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Hiba jelentése
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Közösség
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Csalások
@@ -2471,6 +2503,12 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Nem
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Igen, most az egyszer
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Igen, ne kérdezd újra
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Részvétel automata felmérésben?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Szeretnél részt venni az automata felmérésben?{}Az OpenTTD a játékból kilépéskor egy felmérést fog továbbítani.{}Ezt a beállítást bármikor megváltoztathatod a "Játék beállítások" menüpontban.
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Felmérés eredményének előnézete
+STR_NETWORK_ASK_SURVEY_LINK                                     :Felmérésről és titoktartásról
+STR_NETWORK_ASK_SURVEY_NO                                       :Nem
+STR_NETWORK_ASK_SURVEY_YES                                      :Igen
 
 STR_NETWORK_SPECTATORS                                          :Megfigyelők
 
@@ -2677,6 +2715,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Építhe
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidak átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tereptárgyak (adótornyok, világítótornyok stb.) átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :BLACK}Töltő és ár/bevétel feliratok átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Az objektum ne átlátszó legyen, hanem láthatatlan
 
 # Linkgraph legend window
@@ -3407,6 +3446,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Objektum
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} {HEX}-ban
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objektum
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Pályatípus
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Út típus
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF változó 60+x paraméter (hexadecimális)
 
@@ -3813,6 +3853,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Részlet
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Részletes információk megtekintése az infrastruktúráról
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Adományozz pénzt
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Utalj pénzt ennek a vállalatnak
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Erőszakos átvétel
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Vedd át erőszakkal a vállalat vezetését
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Új arc
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Új arc választása az elnöknek
@@ -3828,6 +3870,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Elnök neve
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Mennyi pénzt szeretnél adományozni?
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vállalatunk vagyontárgyait eladásra kínáljuk: járművek, terület és hálózat tulajdonok, bankszámla{}{}Megveszed {COMPANY} vállalatot {CURRENCY_LONG}-ért?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}A {COMPANY} erőszakos átvételével megvásárolod minden vagyonát, visszafizeted minden adósságát és kifizeted 2 évi nyereségét.{}{}Mindezek becsült értéke {CURRENCY_LONG}.{}{}Biztosan folytatni akarod ezt az átvételt?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} infrastruktúrája
@@ -3899,6 +3942,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Lista ke
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}A listán szereplő járműveknek utasítás küldése
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Járművek lecserélése
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Javításra küld
+STR_VEHICLE_LIST_CREATE_GROUP                                   :Csoport létrehozása
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Idei nyereség: {CURRENCY_LONG} (Tavalyi: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
@@ -4716,6 +4760,10 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Tartalomjegyzék
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Ugrás egy fejezetre a jelenlegi fileban ezzel a listával
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Lépj vissza a navigáció történetben
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Lépj előre a navigáció történetben
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Szöveg törése
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Szöveg törése az ablakban, hogy minden kiférjen és ne kelljen görgetni
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme megtekintése
@@ -4725,6 +4773,8 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenc
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} readme-je
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}A(z) {STRING} {STRING} változásainak listája
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}A(z) {STRING} {STRING} licence
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Felmérés eredményének előnézete
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD dokumentum '{STRING}'
 
 
 # Vehicle loading indicators
