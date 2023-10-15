@@ -1388,7 +1388,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   75
     GetMaxSpeed():      64
     GetPrice():         8203
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   820
     GetPower():         300
     GetWeight():        47
@@ -1532,7 +1532,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   80
     GetMaxSpeed():      112
     GetPrice():         15234
-    GetMaxAge():        7671
+    GetMaxAge():        7686
     GetRunningCost():   1968
     GetPower():         1000
     GetWeight():        131
@@ -1550,7 +1550,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   84
     GetMaxSpeed():      128
     GetPrice():         22265
-    GetMaxAge():        7305
+    GetMaxAge():        7320
     GetRunningCost():   2296
     GetPower():         1200
     GetWeight():        162
@@ -3476,7 +3476,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   78
     GetMaxSpeed():      56
     GetPrice():         4921
-    GetMaxAge():        4383
+    GetMaxAge():        4392
     GetRunningCost():   426
     GetPower():         90
     GetWeight():        10
@@ -3602,7 +3602,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   77
     GetMaxSpeed():      48
     GetPrice():         4429
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3656,7 +3656,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   92
     GetMaxSpeed():      48
     GetPrice():         4716
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3764,7 +3764,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   98
     GetMaxSpeed():      48
     GetPrice():         4511
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3818,7 +3818,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   97
     GetMaxSpeed():      48
     GetPrice():         4306
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3872,7 +3872,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   87
     GetMaxSpeed():      48
     GetPrice():         4388
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3926,7 +3926,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   97
     GetMaxSpeed():      48
     GetPrice():         4675
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -3980,7 +3980,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   98
     GetMaxSpeed():      48
     GetPrice():         4839
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -4034,7 +4034,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   97
     GetMaxSpeed():      48
     GetPrice():         4962
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -4088,7 +4088,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   82
     GetMaxSpeed():      48
     GetPrice():         4593
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -4142,7 +4142,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   76
     GetMaxSpeed():      48
     GetPrice():         5947
-    GetMaxAge():        5479
+    GetMaxAge():        5490
     GetRunningCost():   421
     GetPower():         120
     GetWeight():        9
@@ -5060,7 +5060,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   99
     GetMaxSpeed():      24
     GetPrice():         30468
-    GetMaxAge():        10958
+    GetMaxAge():        10980
     GetRunningCost():   2296
     GetPower():         -1
     GetWeight():        -1
@@ -5096,7 +5096,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   88
     GetMaxSpeed():      32
     GetPrice():         18281
-    GetMaxAge():        10958
+    GetMaxAge():        10980
     GetRunningCost():   1476
     GetPower():         -1
     GetWeight():        -1
@@ -5186,7 +5186,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   81
     GetMaxSpeed():      24
     GetPrice():         24375
-    GetMaxAge():        10958
+    GetMaxAge():        10980
     GetRunningCost():   2460
     GetPower():         -1
     GetWeight():        -1
@@ -5258,7 +5258,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   58
     GetMaxSpeed():      236
     GetPrice():         28710
-    GetMaxAge():        7305
+    GetMaxAge():        7320
     GetRunningCost():   2390
     GetPower():         -1
     GetWeight():        -1
@@ -5276,7 +5276,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   95
     GetMaxSpeed():      236
     GetPrice():         30761
-    GetMaxAge():        8766
+    GetMaxAge():        8784
     GetRunningCost():   2812
     GetPower():         -1
     GetWeight():        -1
@@ -5330,7 +5330,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetReliability():   77
     GetMaxSpeed():      236
     GetPrice():         30761
-    GetMaxAge():        10958
+    GetMaxAge():        10980
     GetRunningCost():   2756
     GetPower():         -1
     GetWeight():        -1
@@ -9323,8 +9323,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetEngineType():     153
     GetUnitNumber():     1
     GetAge():            1
-    GetMaxAge():         5479
-    GetAgeLeft():        5478
+    GetMaxAge():         5490
+    GetAgeLeft():        5489
     GetCurrentSpeed():   7
     GetRunningCost():    421
     GetProfitThisYear(): -1
@@ -9416,17 +9416,17 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 0
     13 => 0
   MaxAge ListDump:
-    16 => 10958
-    14 => 10958
-    17 => 7305
-    13 => 5479
-    12 => 5479
+    16 => 10980
+    14 => 10980
+    17 => 7320
+    13 => 5490
+    12 => 5490
   AgeLeft ListDump:
-    16 => 10958
-    14 => 10958
-    17 => 7305
-    13 => 5479
-    12 => 5478
+    16 => 10980
+    14 => 10980
+    17 => 7320
+    13 => 5490
+    12 => 5489
   CurrentSpeed ListDump:
     12 => 27
     17 => 0
