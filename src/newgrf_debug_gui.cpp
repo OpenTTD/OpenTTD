@@ -826,6 +826,7 @@ struct SpriteAlignerWindow : Window {
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SA_SCROLLBAR);
+		this->vscroll->SetCount(_newgrf_debug_sprite_picker.sprites.size());
 		this->FinishInitNested(wno);
 
 		this->SetWidgetLoweredState(WID_SA_CENTRE, SpriteAlignerWindow::centre);
