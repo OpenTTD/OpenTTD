@@ -646,9 +646,9 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 	void OnTimeout() override
 	{
-		for (uint i = WID_ETT_START; i < this->nested_array_size; i++) {
-			if (i == WID_ETT_BUTTONS_START) i = WID_ETT_BUTTONS_END; // skip the buttons
-			this->RaiseWidgetWhenLowered(i);
+		for (const auto &pair : this->widget_lookup) {
+			if (pair.first < WID_ETT_START || (pair.first >= WID_ETT_BUTTONS_START && pair.first < WID_ETT_BUTTONS_END)) continue; // skip the buttons
+			this->RaiseWidgetWhenLowered(pair.first);
 		}
 	}
 

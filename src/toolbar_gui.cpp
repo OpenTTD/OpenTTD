@@ -2120,7 +2120,7 @@ struct MainToolbarWindow : Window {
 	}};
 };
 
-static NWidgetBase *MakeMainToolbar(int *biggest_index)
+static NWidgetBase *MakeMainToolbar()
 {
 	/** Sprites to use for the different toolbar buttons */
 	static const SpriteID toolbar_button_sprites[] = {
@@ -2174,7 +2174,6 @@ static NWidgetBase *MakeMainToolbar(int *biggest_index)
 		hor->Add(leaf);
 	}
 
-	*biggest_index = std::max<int>(*biggest_index, WID_TN_SWITCH_BAR);
 	return hor;
 }
 
@@ -2513,9 +2512,9 @@ static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SWITCH_BAR), SetDataTip(SPR_IMG_SWITCH_TOOLBAR, STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR),
 };
 
-static NWidgetBase *MakeScenarioToolbar(int *biggest_index)
+static NWidgetBase *MakeScenarioToolbar()
 {
-	return MakeNWidgets(std::begin(_nested_toolb_scen_inner_widgets), std::end(_nested_toolb_scen_inner_widgets), biggest_index, new NWidgetScenarioToolbarContainer());
+	return MakeNWidgets(std::begin(_nested_toolb_scen_inner_widgets), std::end(_nested_toolb_scen_inner_widgets), new NWidgetScenarioToolbarContainer());
 }
 
 static const NWidgetPart _nested_toolb_scen_widgets[] = {

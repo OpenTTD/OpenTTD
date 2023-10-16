@@ -107,11 +107,9 @@ struct GraphLegendWindow : Window {
 
 /**
  * Construct a vertical list of buttons, one for each company.
- * @param biggest_index Storage for collecting the biggest index used in the returned tree.
  * @return Panel with company buttons.
- * @post \c *biggest_index contains the largest used index in the tree.
  */
-static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
+static NWidgetBase *MakeNWidgetCompanyLines()
 {
 	NWidgetVertical *vert = new NWidgetVertical(NC_EQUALSIZE);
 	vert->SetPadding(2, 2, 2, 2);
@@ -125,7 +123,6 @@ static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
 		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		vert->Add(panel);
 	}
-	*biggest_index = WID_GL_LAST_COMPANY;
 	return vert;
 }
 
@@ -1338,11 +1335,9 @@ CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 
 /**
  * Make a vertical list of panels for outputting score details.
- * @param biggest_index Storage for collecting the biggest index used in the returned tree.
  * @return Panel with performance details.
- * @post \c *biggest_index contains the largest used index in the tree.
  */
-static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
+static NWidgetBase *MakePerformanceDetailPanels()
 {
 	const StringID performance_tips[] = {
 		STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP,
@@ -1366,14 +1361,13 @@ static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 		panel->SetDataTip(0x0, performance_tips[widnum - WID_PRD_SCORE_FIRST]);
 		vert->Add(panel);
 	}
-	*biggest_index = WID_PRD_SCORE_LAST;
 	return vert;
 }
 
 /** Make a number of rows with buttons for each company for the performance rating detail window. */
-NWidgetBase *MakeCompanyButtonRowsGraphGUI(int *biggest_index)
+NWidgetBase *MakeCompanyButtonRowsGraphGUI()
 {
-	return MakeCompanyButtonRows(biggest_index, WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST, COLOUR_BROWN, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
+	return MakeCompanyButtonRows(WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST, COLOUR_BROWN, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
 }
 
 static const NWidgetPart _nested_performance_rating_detail_widgets[] = {

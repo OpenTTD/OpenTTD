@@ -855,9 +855,8 @@ GUIGameServerList::FilterFunction * const NetworkGameWindow::filter_funcs[] = {
 	&NGameSearchFilter
 };
 
-static NWidgetBase *MakeResizableHeader(int *biggest_index)
+static NWidgetBase *MakeResizableHeader()
 {
-	*biggest_index = std::max<int>(*biggest_index, WID_NG_INFO);
 	return new NWidgetServerListHeader();
 }
 

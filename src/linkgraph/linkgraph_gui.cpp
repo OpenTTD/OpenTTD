@@ -454,12 +454,12 @@ void LinkGraphOverlay::SetCompanyMask(CompanyMask company_mask)
 }
 
 /** Make a number of rows with buttons for each company for the linkgraph legend window. */
-NWidgetBase *MakeCompanyButtonRowsLinkGraphGUI(int *biggest_index)
+NWidgetBase *MakeCompanyButtonRowsLinkGraphGUI()
 {
-	return MakeCompanyButtonRows(biggest_index, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST, COLOUR_GREY, 3, STR_NULL);
+	return MakeCompanyButtonRows(WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST, COLOUR_GREY, 3, STR_NULL);
 }
 
-NWidgetBase *MakeSaturationLegendLinkGraphGUI(int *biggest_index)
+NWidgetBase *MakeSaturationLegendLinkGraphGUI()
 {
 	NWidgetVertical *panel = new NWidgetVertical(NC_EQUALSIZE);
 	for (uint i = 0; i < lengthof(LinkGraphOverlay::LINK_COLOURS[0]); ++i) {
@@ -470,11 +470,10 @@ NWidgetBase *MakeSaturationLegendLinkGraphGUI(int *biggest_index)
 		wid->SetResize(0, 0);
 		panel->Add(wid);
 	}
-	*biggest_index = WID_LGL_SATURATION_LAST;
 	return panel;
 }
 
-NWidgetBase *MakeCargoesLegendLinkGraphGUI(int *biggest_index)
+NWidgetBase *MakeCargoesLegendLinkGraphGUI()
 {
 	uint num_cargo = static_cast<uint>(_sorted_cargo_specs.size());
 	static const uint ENTRIES_PER_COL = 5;
@@ -503,7 +502,6 @@ NWidgetBase *MakeCargoesLegendLinkGraphGUI(int *biggest_index)
 	}
 	/* If there are no cargo specs defined, then col won't have been created so don't add it. */
 	if (col != nullptr) panel->Add(col);
-	*biggest_index = WID_LGL_CARGO_LAST;
 	return panel;
 }
 
