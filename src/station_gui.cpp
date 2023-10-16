@@ -714,10 +714,9 @@ const StringID CompanyStationsWindow::sorter_names[] = {
 
 /**
  * Make a horizontal row of cargo buttons, starting at widget #WID_STL_CARGOSTART.
- * @param biggest_index Pointer to store biggest used widget number of the buttons.
  * @return Horizontal row.
  */
-static NWidgetBase *CargoWidgets(int *biggest_index)
+static NWidgetBase *CargoWidgets()
 {
 	NWidgetHorizontal *container = new NWidgetHorizontal();
 
@@ -730,7 +729,6 @@ static NWidgetBase *CargoWidgets(int *biggest_index)
 		panel->SetDataTip(0, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE);
 		container->Add(panel);
 	}
-	*biggest_index = WID_STL_CARGOSTART + static_cast<int>(_sorted_standard_cargo_specs.size());
 	return container;
 }
 

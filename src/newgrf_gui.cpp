@@ -1937,16 +1937,11 @@ static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 };
 
 /** Construct nested container widget for managing the lists and the info panel of the NewGRF GUI. */
-NWidgetBase* NewGRFDisplay(int *biggest_index)
+NWidgetBase* NewGRFDisplay()
 {
-	NWidgetBase *avs = MakeNWidgets(std::begin(_nested_newgrf_availables_widgets), std::end(_nested_newgrf_availables_widgets), biggest_index, nullptr);
-
-	int biggest2;
-	NWidgetBase *acs = MakeNWidgets(std::begin(_nested_newgrf_actives_widgets), std::end(_nested_newgrf_actives_widgets), &biggest2, nullptr);
-	*biggest_index = std::max(*biggest_index, biggest2);
-
-	NWidgetBase *inf = MakeNWidgets(std::begin(_nested_newgrf_infopanel_widgets), std::end(_nested_newgrf_infopanel_widgets), &biggest2, nullptr);
-	*biggest_index = std::max(*biggest_index, biggest2);
+	NWidgetBase *avs = MakeNWidgets(std::begin(_nested_newgrf_availables_widgets), std::end(_nested_newgrf_availables_widgets), nullptr);
+	NWidgetBase *acs = MakeNWidgets(std::begin(_nested_newgrf_actives_widgets), std::end(_nested_newgrf_actives_widgets), nullptr);
+	NWidgetBase *inf = MakeNWidgets(std::begin(_nested_newgrf_infopanel_widgets), std::end(_nested_newgrf_infopanel_widgets), nullptr);
 
 	return new NWidgetNewGRFDisplay(avs, acs, inf);
 }

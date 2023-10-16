@@ -224,10 +224,8 @@ int Window::GetRowFromWidget(int clickpos, int widget, int padding, int line_hei
  */
 void Window::DisableAllWidgetHighlight()
 {
-	for (uint i = 0; i < this->nested_array_size; i++) {
-		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(i);
-		if (nwid == nullptr) continue;
-
+	for (auto &pair : this->widget_lookup) {
+		NWidgetBase *nwid = pair.second;
 		if (nwid->IsHighlighted()) {
 			nwid->SetHighlighted(TC_INVALID);
 			nwid->SetDirty(this);
@@ -244,8 +242,6 @@ void Window::DisableAllWidgetHighlight()
  */
 void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour)
 {
-	assert(widget_index < this->nested_array_size);
-
 	NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget_index);
 	if (nwid == nullptr) return;
 
@@ -258,9 +254,8 @@ void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour
 	} else {
 		/* If we disable a highlight, check all widgets if anyone still has a highlight */
 		bool valid = false;
-		for (uint i = 0; i < this->nested_array_size; i++) {
-			nwid = this->GetWidget<NWidgetBase>(i);
-			if (nwid == nullptr) continue;
+		for (const auto &pair : this->widget_lookup) {
+			nwid = pair.second;
 			if (!nwid->IsHighlighted()) continue;
 
 			valid = true;
@@ -277,8 +272,6 @@ void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour
  */
 bool Window::IsWidgetHighlighted(byte widget_index) const
 {
-	assert(widget_index < this->nested_array_size);
-
 	const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget_index);
 	if (nwid == nullptr) return false;
 
@@ -493,18 +486,19 @@ void Window::UnfocusFocusedWidget()
  */
 bool Window::SetFocusedWidget(int widget_index)
 {
-	/* Do nothing if widget_index is already focused, or if it wasn't a valid widget. */
-	if ((uint)widget_index >= this->nested_array_size) return false;
+	NWidgetCore *widget = this->GetWidget<NWidgetCore>(widget_index);
+	assert(widget != nullptr); /* Setting focus to a non-existing widget is a bad idea. */
 
-	assert(this->widget_lookup[widget_index] != nullptr); // Setting focus to a non-existing widget is a bad idea.
 	if (this->nested_focus != nullptr) {
-		if (this->GetWidget<NWidgetCore>(widget_index) == this->nested_focus) return false;
+		/* Do nothing if widget_index is already focused. */
+		if (widget == this->nested_focus) return false;
 
 		/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
 		this->nested_focus->SetDirty(this);
 		if (this->nested_focus->type == WWT_EDITBOX) VideoDriver::GetInstance()->EditBoxLostFocus();
 	}
-	this->nested_focus = this->GetWidget<NWidgetCore>(widget_index);
+
+	this->nested_focus = widget;
 	if (this->nested_focus->type == WWT_EDITBOX) VideoDriver::GetInstance()->EditBoxGainedFocus();
 	return true;
 }
@@ -531,21 +525,23 @@ void Window::OnFocusLost(bool)
  */
 void Window::RaiseButtons(bool autoraise)
 {
-	for (uint i = 0; i < this->nested_array_size; i++) {
-		if (this->widget_lookup[i] == nullptr) continue;
-		WidgetType type = this->widget_lookup[i]->type;
+	for (auto &pair : this->widget_lookup) {
+		WidgetType type = pair.second->type;
+		NWidgetCore *wid = dynamic_cast<NWidgetCore *>(pair.second);
 		if (((type & ~WWB_PUSHBUTTON) < WWT_LAST || type == NWID_PUSHBUTTON_DROPDOWN) &&
-				(!autoraise || (type & WWB_PUSHBUTTON) || type == WWT_EDITBOX) && this->IsWidgetLowered(i)) {
-			this->RaiseWidget(i);
-			this->SetWidgetDirty(i);
+				(!autoraise || (type & WWB_PUSHBUTTON) || type == WWT_EDITBOX) && wid->IsLowered()) {
+			wid->SetLowered(false);
+			wid->SetDirty(this);
 		}
 	}
 
 	/* Special widgets without widget index */
-	NWidgetCore *wid = this->nested_root != nullptr ? (NWidgetCore*)this->nested_root->GetWidgetOfType(WWT_DEFSIZEBOX) : nullptr;
-	if (wid != nullptr) {
-		wid->SetLowered(false);
-		wid->SetDirty(this);
+	{
+		NWidgetCore *wid = this->nested_root != nullptr ? dynamic_cast<NWidgetCore *>(this->nested_root->GetWidgetOfType(WWT_DEFSIZEBOX)) : nullptr;
+		if (wid != nullptr) {
+			wid->SetLowered(false);
+			wid->SetDirty(this);
+		}
 	}
 }
 
@@ -556,9 +552,10 @@ void Window::RaiseButtons(bool autoraise)
 void Window::SetWidgetDirty(byte widget_index) const
 {
 	/* Sometimes this function is called before the window is even fully initialized */
-	if (this->widget_lookup == nullptr) return;
+	auto it = this->widget_lookup.find(widget_index);
+	if (it == std::end(this->widget_lookup)) return;
 
-	this->widget_lookup[widget_index]->SetDirty(this);
+	it->second->SetDirty(this);
 }
 
 /**
@@ -635,7 +632,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	/* Clicked on a widget that is not disabled.
 	 * So unless the clicked widget is the caption bar, change focus to this widget.
 	 * Exception: In the OSK we always want the editbox to stay focused. */
-	if (widget_type != WWT_CAPTION && w->window_class != WC_OSK) {
+	if (widget_index >= 0 && widget_type != WWT_CAPTION && w->window_class != WC_OSK) {
 		/* focused_widget_changed is 'now' only true if the window this widget
 		 * is in gained focus. In that case it must remain true, also if the
 		 * local widget focus did not change. As such it's the logical-or of
@@ -1091,8 +1088,6 @@ Window::~Window()
 	assert(*this->z_position == nullptr);
 
 	if (this->viewport != nullptr) DeleteWindowViewport(this);
-
-	free(this->widget_lookup); // Contents is released through deletion of #nested_root.
 	delete this->nested_root;
 }
 
@@ -1729,12 +1724,8 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16_t sm_width, i
  */
 void Window::CreateNestedTree()
 {
-	int biggest_index = -1;
-	this->nested_root = MakeWindowNWidgetTree(this->window_desc->nwid_begin, this->window_desc->nwid_end, &biggest_index, &this->shade_select);
-	this->nested_array_size = (uint)(biggest_index + 1);
-
-	this->widget_lookup = CallocT<NWidgetBase *>(this->nested_array_size);
-	this->nested_root->FillWidgetLookup(this->widget_lookup, this->nested_array_size);
+	this->nested_root = MakeWindowNWidgetTree(this->window_desc->nwid_begin, this->window_desc->nwid_end, &this->shade_select);
+	this->nested_root->FillWidgetLookup(this->widget_lookup);
 }
 
 /**
@@ -1840,9 +1831,9 @@ static void DecreaseWindowCounters()
 	for (Window *w : Window::Iterate()) {
 		if (_scroller_click_timeout == 0) {
 			/* Unclick scrollbar buttons if they are pressed. */
-			for (uint i = 0; i < w->nested_array_size; i++) {
-				NWidgetBase *nwid = w->widget_lookup[i];
-				if (nwid != nullptr && (nwid->type == NWID_HSCROLLBAR || nwid->type == NWID_VSCROLLBAR)) {
+			for (auto &pair : w->widget_lookup) {
+				NWidgetBase *nwid = pair.second;
+				if (nwid->type == NWID_HSCROLLBAR || nwid->type == NWID_VSCROLLBAR) {
 					NWidgetScrollbar *sb = static_cast<NWidgetScrollbar*>(nwid);
 					if (sb->disp_flags & (ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN)) {
 						sb->disp_flags &= ~(ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN);
@@ -3155,8 +3146,8 @@ void Window::ProcessHighlightedInvalidations()
 {
 	if ((this->flags & WF_HIGHLIGHTED) == 0) return;
 
-	for (uint i = 0; i < this->nested_array_size; i++) {
-		if (this->IsWidgetHighlighted(i)) this->SetWidgetDirty(i);
+	for (const auto &pair : this->widget_lookup) {
+		if (pair.second->IsHighlighted()) pair.second->SetDirty(this);
 	}
 }
 

@@ -1229,9 +1229,9 @@ struct ScriptDebugWindow : public Window {
 };
 
 /** Make a number of rows with buttons for each company for the Script debug window. */
-NWidgetBase *MakeCompanyButtonRowsScriptDebug(int *biggest_index)
+NWidgetBase *MakeCompanyButtonRowsScriptDebug()
 {
-	return MakeCompanyButtonRows(biggest_index, WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END, COLOUR_GREY, 8, STR_AI_DEBUG_SELECT_AI_TOOLTIP);
+	return MakeCompanyButtonRows(WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END, COLOUR_GREY, 8, STR_AI_DEBUG_SELECT_AI_TOOLTIP);
 }
 
 /** Widgets for the Script debug window. */

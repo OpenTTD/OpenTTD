@@ -877,9 +877,9 @@ void Window::DrawWidgets() const
 
 	if (this->flags & WF_HIGHLIGHTED) {
 		extern bool _window_highlight_colour;
-		for (uint i = 0; i < this->nested_array_size; i++) {
-			const NWidgetBase *widget = this->GetWidget<NWidgetBase>(i);
-			if (widget == nullptr || !widget->IsHighlighted()) continue;
+		for (const auto &pair : this->widget_lookup) {
+			const NWidgetBase *widget = pair.second;
+			if (!widget->IsHighlighted()) continue;
 
 			Rect outer = widget->GetCurrentRect();
 			Rect inner = outer.Shrink(WidgetDimensions::scaled.bevel).Expand(1);
@@ -903,7 +903,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 {
 	if (state == SBS_OFF) return;
 
-	assert(this->widget_lookup != nullptr);
+	assert(!this->widget_lookup.empty());
 	Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect();
 
 	/* Sort button uses the same sprites as vertical scrollbar */
@@ -1023,10 +1023,9 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  */
 
 /**
- * @fn void NWidgetBase::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
- * Fill the Window::widget_lookup array with pointers to nested widgets in the tree.
- * @param array Base pointer of the array.
- * @param length Length of the array.
+ * @fn void NWidgetBase::FillWidgetLookup(WidgetLookup &widget_lookup)
+ * Fill the Window::widget_lookup with pointers to nested widgets in the tree.
+ * @param widget_lookup The WidgetLookup.
  */
 
 /**
@@ -1276,9 +1275,9 @@ void NWidgetCore::SetAlignment(StringAlignment align)
 	this->align = align;
 }
 
-void NWidgetCore::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
+void NWidgetCore::FillWidgetLookup(WidgetLookup &widget_lookup)
 {
-	if (this->index >= 0 && (uint)(this->index) < length) widget_lookup[this->index] = this;
+	if (this->index >= 0) widget_lookup[this->index] = this;
 }
 
 NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
@@ -1345,10 +1344,10 @@ void NWidgetContainer::Add(NWidgetBase *wid)
 	}
 }
 
-void NWidgetContainer::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
+void NWidgetContainer::FillWidgetLookup(WidgetLookup &widget_lookup)
 {
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		child_wid->FillWidgetLookup(widget_lookup, length);
+		child_wid->FillWidgetLookup(widget_lookup);
 	}
 }
 
@@ -1452,10 +1451,10 @@ void NWidgetStacked::AssignSizePosition(SizingType sizing, int x, int y, uint gi
 	}
 }
 
-void NWidgetStacked::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
+void NWidgetStacked::FillWidgetLookup(WidgetLookup &widget_lookup)
 {
-	if (this->index >= 0 && (uint)(this->index) < length) widget_lookup[this->index] = this;
-	NWidgetContainer::FillWidgetLookup(widget_lookup, length);
+	if (this->index >= 0) widget_lookup[this->index] = this;
+	NWidgetContainer::FillWidgetLookup(widget_lookup);
 }
 
 void NWidgetStacked::Draw(const Window *w)
@@ -1564,7 +1563,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w)
 	this->resize_y = 1;   // smallest common child resize step.
 	this->gaps = 0;
 
-	/* 1a. Forward call, collect biggest nested array index, and longest/widest child length. */
+	/* 1a. Forward call, collect longest/widest child length. */
 	uint longest = 0; // Longest child found.
 	uint max_vert_fill = 0; // Biggest vertical fill step.
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
@@ -1756,7 +1755,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w)
 	this->resize_y = 0;   // smallest non-zero child widget resize step.
 	this->gaps = 0;
 
-	/* 1a. Forward call, collect biggest nested array index, and longest/widest child length. */
+	/* 1a. Forward call, collect longest/widest child length. */
 	uint highest = 0; // Highest child found.
 	uint max_hor_fill = 0; // Biggest horizontal fill step.
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
@@ -1925,7 +1924,7 @@ void NWidgetSpacer::SetupSmallestSize(Window *)
 	this->smallest_y = this->min_y;
 }
 
-void NWidgetSpacer::FillWidgetLookup(NWidgetBase **, uint)
+void NWidgetSpacer::FillWidgetLookup(WidgetLookup &)
 {
 }
 
@@ -2065,10 +2064,10 @@ void NWidgetMatrix::AssignSizePosition(SizingType, int x, int y, uint given_widt
 	this->SetCount(this->count);
 }
 
-void NWidgetMatrix::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
+void NWidgetMatrix::FillWidgetLookup(WidgetLookup &widget_lookup)
 {
-	if (this->index >= 0 && (uint)(this->index) < length) widget_lookup[this->index] = this;
-	NWidgetContainer::FillWidgetLookup(widget_lookup, length);
+	if (this->index >= 0) widget_lookup[this->index] = this;
+	NWidgetContainer::FillWidgetLookup(widget_lookup);
 }
 
 NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
@@ -2185,7 +2184,7 @@ void NWidgetMatrix::GetScrollOffsets(int &start_x, int &start_y, int &base_offs_
  * Constructor parent nested widgets.
  * @param tp     Type of parent widget.
  * @param colour Colour of the parent widget.
- * @param index  Index in the widget array used by the window system.
+ * @param index  Index of the widget.
  * @param child  Child container widget (if supplied). If not supplied, a
  *               vertical container will be inserted while adding the first
  *               child widget.
@@ -2335,10 +2334,10 @@ void NWidgetBackground::AssignSizePosition(SizingType sizing, int x, int y, uint
 	}
 }
 
-void NWidgetBackground::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
+void NWidgetBackground::FillWidgetLookup(WidgetLookup &widget_lookup)
 {
-	if (this->index >= 0 && (uint)(this->index) < length) widget_lookup[this->index] = this;
-	if (this->child != nullptr) this->child->FillWidgetLookup(widget_lookup, length);
+	if (this->index >= 0) widget_lookup[this->index] = this;
+	if (this->child != nullptr) this->child->FillWidgetLookup(widget_lookup);
 }
 
 void NWidgetBackground::Draw(const Window *w)
@@ -2556,7 +2555,7 @@ void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
  * Scrollbar widget.
  * @param tp     Scrollbar type. (horizontal/vertical)
  * @param colour Colour of the scrollbar.
- * @param index  Index in the widget array used by the window system.
+ * @param index  Index of the widget.
  */
 NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL), Scrollbar(tp != NWID_HSCROLLBAR)
 {
@@ -2680,7 +2679,7 @@ Dimension NWidgetLeaf::dropdown_dimension   = {0, 0};
  * Nested leaf widget.
  * @param tp     Type of leaf widget.
  * @param colour Colour of the leaf widget.
- * @param index  Index in the widget array used by the window system.
+ * @param index  Index of the widget.
  * @param data   Data of the widget.
  * @param tip    Tooltip of the widget.
  */
@@ -3110,11 +3109,9 @@ bool NWidgetLeaf::ButtonHit(const Point &pt)
  * @param nwid_end Pointer to ending of nested widget parts.
  * @param dest  Address of pointer to use for returning the composed widget.
  * @param fill_dest Fill the composed widget with child widgets.
- * @param biggest_index Pointer to biggest nested widget index in the tree encountered so far.
  * @return Pointer to remaining nested widget parts.
- * @pre \c biggest_index != nullptr.
  */
-static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetBase **dest, bool *fill_dest, int *biggest_index)
+static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetBase **dest, bool *fill_dest)
 {
 	*dest = nullptr;
 	*fill_dest = false;
@@ -3143,7 +3140,6 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 			case WWT_FRAME:
 				if (*dest != nullptr) return nwid_begin;
 				*dest = new NWidgetBackground(nwid_begin->type, nwid_begin->u.widget.colour, nwid_begin->u.widget.index);
-				*biggest_index = std::max(*biggest_index, (int)nwid_begin->u.widget.index);
 				*fill_dest = true;
 				break;
 
@@ -3160,16 +3156,12 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 				*fill_dest = true;
 				nwm->SetIndex(nwid_begin->u.widget.index);
 				nwm->SetColour(nwid_begin->u.widget.colour);
-				*biggest_index = std::max(*biggest_index, (int)nwid_begin->u.widget.index);
 				break;
 			}
 
 			case WPT_FUNCTION: {
 				if (*dest != nullptr) return nwid_begin;
-				/* Ensure proper functioning even when the called code simply writes its largest index. */
-				int biggest = -1;
-				*dest = nwid_begin->u.func_ptr(&biggest);
-				*biggest_index = std::max(*biggest_index, biggest);
+				*dest = nwid_begin->u.func_ptr();
 				*fill_dest = false;
 				break;
 			}
@@ -3267,14 +3259,12 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 			case NWID_VIEWPORT:
 				if (*dest != nullptr) return nwid_begin;
 				*dest = new NWidgetViewport(nwid_begin->u.widget.index);
-				*biggest_index = std::max(*biggest_index, (int)nwid_begin->u.widget.index);
 				break;
 
 			case NWID_HSCROLLBAR:
 			case NWID_VSCROLLBAR:
 				if (*dest != nullptr) return nwid_begin;
 				*dest = new NWidgetScrollbar(nwid_begin->type, nwid_begin->u.widget.colour, nwid_begin->u.widget.index);
-				*biggest_index = std::max(*biggest_index, (int)nwid_begin->u.widget.index);
 				break;
 
 			case NWID_SELECTION: {
@@ -3283,7 +3273,6 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 				*dest = nws;
 				*fill_dest = true;
 				nws->SetIndex(nwid_begin->u.widget.index);
-				*biggest_index = std::max(*biggest_index, (int)nwid_begin->u.widget.index);
 				break;
 			}
 
@@ -3291,7 +3280,6 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 				if (*dest != nullptr) return nwid_begin;
 				assert((nwid_begin->type & WWT_MASK) < WWT_LAST || (nwid_begin->type & WWT_MASK) == NWID_BUTTON_DROPDOWN);
 				*dest = new NWidgetLeaf(nwid_begin->type, nwid_begin->u.widget.colour, nwid_begin->u.widget.index, 0x0, STR_NULL);
-				*biggest_index = std::max(*biggest_index, (int)nwid_begin->u.widget.index);
 				break;
 		}
 		nwid_begin++;
@@ -3316,11 +3304,9 @@ bool IsContainerWidgetType(WidgetType tp)
  * @param nwid_begin Pointer to beginning of nested widget parts.
  * @param nwid_end Pointer to ending of nested widget parts.
  * @param parent Pointer or container to use for storing the child widgets (*parent == nullptr or *parent == container or background widget).
- * @param biggest_index Pointer to biggest nested widget index in the tree.
  * @return Pointer to remaining nested widget parts.
- * @post \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
  */
-static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetBase **parent, int *biggest_index)
+static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetBase **parent)
 {
 	/* If *parent == nullptr, only the first widget is read and returned. Otherwise, *parent must point to either
 	 * a #NWidgetContainer or a #NWidgetBackground object, and parts are added as much as possible. */
@@ -3331,7 +3317,7 @@ static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NW
 	for (;;) {
 		NWidgetBase *sub_widget = nullptr;
 		bool fill_sub = false;
-		nwid_begin = MakeNWidget(nwid_begin, nwid_end, &sub_widget, &fill_sub, biggest_index);
+		nwid_begin = MakeNWidget(nwid_begin, nwid_end, &sub_widget, &fill_sub);
 
 		/* Break out of loop when end reached */
 		if (sub_widget == nullptr) break;
@@ -3339,7 +3325,7 @@ static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NW
 		/* If sub-widget is a container, recursively fill that container. */
 		if (fill_sub && IsContainerWidgetType(sub_widget->type)) {
 			NWidgetBase *sub_ptr = sub_widget;
-			nwid_begin = MakeWidgetTree(nwid_begin, nwid_end, &sub_ptr, biggest_index);
+			nwid_begin = MakeWidgetTree(nwid_begin, nwid_end, &sub_ptr);
 		}
 
 		/* Add sub_widget to parent container if available, otherwise return the widget to the caller. */
@@ -3362,19 +3348,15 @@ static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NW
  * Construct a nested widget tree from an array of parts.
  * @param nwid_begin Pointer to beginning of nested widget parts.
  * @param nwid_end Pointer to ending of nested widget parts.
- * @param biggest_index Pointer to biggest nested widget index collected in the tree.
  * @param container Container to add the nested widgets to. In case it is nullptr a vertical container is used.
  * @return Root of the nested widget tree, a vertical container containing the entire GUI.
  * @ingroup NestedWidgetParts
- * @pre \c biggest_index != nullptr
- * @post \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
  */
-NWidgetContainer *MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, int *biggest_index, NWidgetContainer *container)
+NWidgetContainer *MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetContainer *container)
 {
-	*biggest_index = -1;
 	if (container == nullptr) container = new NWidgetVertical();
 	NWidgetBase *cont_ptr = container;
-	[[maybe_unused]] const NWidgetPart *nwid_part = MakeWidgetTree(nwid_begin, nwid_end, &cont_ptr, biggest_index);
+	[[maybe_unused]] const NWidgetPart *nwid_part = MakeWidgetTree(nwid_begin, nwid_end, &cont_ptr);
 #ifdef WITH_ASSERT
 	if (unlikely(nwid_part != nwid_end)) throw std::runtime_error("Did not consume all NWidgetParts");
 #endif
@@ -3387,20 +3369,15 @@ NWidgetContainer *MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart 
  * container with a caption widget) and has a shade box widget.
  * @param nwid_begin Pointer to beginning of nested widget parts.
  * @param nwid_end Pointer to ending of nested widget parts.
- * @param biggest_index Pointer to biggest nested widget index collected in the tree.
  * @param[out] shade_select Pointer to the inserted shade selection widget (\c nullptr if not unserted).
  * @return Root of the nested widget tree, a vertical container containing the entire GUI.
  * @ingroup NestedWidgetParts
- * @pre \c biggest_index != nullptr
- * @post \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
  */
-NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, int *biggest_index, NWidgetStacked **shade_select)
+NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetStacked **shade_select)
 {
-	*biggest_index = -1;
-
 	/* Read the first widget recursively from the array. */
 	NWidgetBase *nwid = nullptr;
-	nwid_begin = MakeWidgetTree(nwid_begin, nwid_end, &nwid, biggest_index);
+	nwid_begin = MakeWidgetTree(nwid_begin, nwid_end, &nwid);
 	assert(nwid != nullptr);
 
 	NWidgetContainer *root = new NWidgetVertical;
@@ -3425,25 +3402,21 @@ NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWi
 	}
 
 	/* Load the remaining parts into 'body'. */
-	int biggest2 = -1;
-	MakeNWidgets(nwid_begin, nwid_end, &biggest2, body);
+	MakeNWidgets(nwid_begin, nwid_end, body);
 
-	*biggest_index = std::max(*biggest_index, biggest2);
 	return root;
 }
 
 /**
  * Make a number of rows with button-like graphics, for enabling/disabling each company.
- * @param biggest_index Storage for collecting the biggest index used in the returned tree.
  * @param widget_first The first widget index to use.
  * @param widget_last The last widget index to use.
  * @param colour The colour in which to draw the button.
  * @param max_length Maximal number of company buttons in one row.
  * @param button_tooltip The tooltip-string of every button.
  * @return Panel with rows of company buttons.
- * @post \c *biggest_index contains the largest used index in the tree.
  */
-NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int widget_last, Colours button_colour, int max_length, StringID button_tooltip)
+NWidgetBase *MakeCompanyButtonRows(int widget_first, int widget_last, Colours button_colour, int max_length, StringID button_tooltip)
 {
 	assert(max_length >= 1);
 	NWidgetVertical *vert = nullptr; // Storage for all rows.
@@ -3475,7 +3448,6 @@ NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int wid
 		hor->Add(panel);
 		hor_length++;
 	}
-	*biggest_index = widget_last;
 	if (vert == nullptr) return hor; // All buttons fit in a single row.
 
 	if (hor_length > 0 && hor_length < max_length) {

@@ -260,8 +260,7 @@ public:
 	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
 	std::map<int, QueryString*> querystrings; ///< QueryString associated to WWT_EDITBOX widgets.
 	NWidgetBase *nested_root;        ///< Root of the nested tree.
-	NWidgetBase **widget_lookup;      ///< Array of pointers into the tree. Do not access directly, use #Window::GetWidget() instead.
-	uint nested_array_size;          ///< Size of the nested array.
+	WidgetLookup widget_lookup; ///< Indexed access to the nested widget tree. Do not access directly, use #Window::GetWidget() instead.
 	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c nullptr, window cannot shade.
 	Dimension unshaded_size;         ///< Last known unshaded size (only valid while shaded).
 
@@ -328,8 +327,7 @@ public:
 	 */
 	inline void SetWidgetDisabledState(byte widget_index, bool disab_stat)
 	{
-		assert(widget_index < this->nested_array_size);
-		if (this->widget_lookup[widget_index] != nullptr) this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
+		this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
 	}
 
 	/**
@@ -357,7 +355,6 @@ public:
 	 */
 	inline bool IsWidgetDisabled(byte widget_index) const
 	{
-		assert(widget_index < this->nested_array_size);
 		return this->GetWidget<NWidgetCore>(widget_index)->IsDisabled();
 	}
 
@@ -389,7 +386,6 @@ public:
 	 */
 	inline void SetWidgetLoweredState(byte widget_index, bool lowered_stat)
 	{
-		assert(widget_index < this->nested_array_size);
 		this->GetWidget<NWidgetCore>(widget_index)->SetLowered(lowered_stat);
 	}
 
@@ -399,7 +395,6 @@ public:
 	 */
 	inline void ToggleWidgetLoweredState(byte widget_index)
 	{
-		assert(widget_index < this->nested_array_size);
 		bool lowered_state = this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
 		this->GetWidget<NWidgetCore>(widget_index)->SetLowered(!lowered_state);
 	}
@@ -441,7 +436,6 @@ public:
 	 */
 	inline bool IsWidgetLowered(byte widget_index) const
 	{
-		assert(widget_index < this->nested_array_size);
 		return this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
 	}
 
@@ -894,8 +888,9 @@ inline bool AllEqual(It begin, It end, Pred pred)
 template <class NWID>
 inline NWID *Window::GetWidget(uint widnum)
 {
-	if (widnum >= this->nested_array_size || this->widget_lookup[widnum] == nullptr) return nullptr;
-	NWID *nwid = dynamic_cast<NWID *>(this->widget_lookup[widnum]);
+	auto it = this->widget_lookup.find(widnum);
+	if (it == std::end(this->widget_lookup)) return nullptr;
+	NWID *nwid = dynamic_cast<NWID *>(it->second);
 	assert(nwid != nullptr);
 	return nwid;
 }
@@ -904,8 +899,9 @@ inline NWID *Window::GetWidget(uint widnum)
 template <>
 inline const NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
 {
-	if (widnum >= this->nested_array_size) return nullptr;
-	return this->widget_lookup[widnum];
+	auto it = this->widget_lookup.find(widnum);
+	if (it == std::end(this->widget_lookup)) return nullptr;
+	return it->second;
 }
 
 /**

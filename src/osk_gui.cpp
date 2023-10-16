@@ -220,10 +220,9 @@ static const int KEY_PADDING = 6;     // Vertical padding for remaining key rows
  * @param widtype Widget type of the key. Must be either \c NWID_SPACER for an invisible key, or a \c WWT_* widget.
  * @param widnum  Widget number of the key.
  * @param widdata Data value of the key widget.
- * @param biggest_index Collected biggest widget index so far.
  * @note Key width is measured in 1/2 keys to allow for 1/2 key shifting between rows.
  */
-static void AddKey(NWidgetHorizontal *hor, int pad_y, int num_half, WidgetType widtype, int widnum, uint16_t widdata, int *biggest_index)
+static void AddKey(NWidgetHorizontal *hor, int pad_y, int num_half, WidgetType widtype, int widnum, uint16_t widdata)
 {
 	int key_width = HALF_KEY_WIDTH + (INTER_KEY_SPACE + HALF_KEY_WIDTH) * (num_half - 1);
 
@@ -243,80 +242,78 @@ static void AddKey(NWidgetHorizontal *hor, int pad_y, int num_half, WidgetType w
 		leaf->SetMinimalTextLines(1, pad_y, FS_NORMAL);
 		hor->Add(leaf);
 	}
-
-	*biggest_index = std::max(*biggest_index, widnum);
 }
 
 /** Construct the top row keys (cancel, ok, backspace). */
-static NWidgetBase *MakeTopKeys(int *biggest_index)
+static NWidgetBase *MakeTopKeys()
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontal();
 
-	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    STR_BUTTON_CANCEL, biggest_index);
-	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        STR_BUTTON_OK,     biggest_index);
-	AddKey(hor, TOP_KEY_PADDING, 2 * 2, WWT_PUSHIMGBTN, WID_OSK_BACKSPACE, SPR_OSK_BACKSPACE, biggest_index);
+	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    STR_BUTTON_CANCEL);
+	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        STR_BUTTON_OK    );
+	AddKey(hor, TOP_KEY_PADDING, 2 * 2, WWT_PUSHIMGBTN, WID_OSK_BACKSPACE, SPR_OSK_BACKSPACE);
 	return hor;
 }
 
 /** Construct the row containing the digit keys. */
-static NWidgetBase *MakeNumberKeys(int *biggest_index)
+static NWidgetBase *MakeNumberKeys()
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 
 	for (int widnum = WID_OSK_NUMBERS_FIRST; widnum <= WID_OSK_NUMBERS_LAST; widnum++) {
-		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
 	}
 	return hor;
 }
 
 /** Construct the qwerty row keys. */
-static NWidgetBase *MakeQwertyKeys(int *biggest_index)
+static NWidgetBase *MakeQwertyKeys()
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 
-	AddKey(hor, KEY_PADDING, 3, WWT_PUSHIMGBTN, WID_OSK_SPECIAL, SPR_OSK_SPECIAL, biggest_index);
+	AddKey(hor, KEY_PADDING, 3, WWT_PUSHIMGBTN, WID_OSK_SPECIAL, SPR_OSK_SPECIAL);
 	for (int widnum = WID_OSK_QWERTY_FIRST; widnum <= WID_OSK_QWERTY_LAST; widnum++) {
-		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
 	}
-	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, 0, biggest_index);
+	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, 0);
 	return hor;
 }
 
 /** Construct the asdfg row keys. */
-static NWidgetBase *MakeAsdfgKeys(int *biggest_index)
+static NWidgetBase *MakeAsdfgKeys()
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 
-	AddKey(hor, KEY_PADDING, 4, WWT_IMGBTN, WID_OSK_CAPS, SPR_OSK_CAPS, biggest_index);
+	AddKey(hor, KEY_PADDING, 4, WWT_IMGBTN, WID_OSK_CAPS, SPR_OSK_CAPS);
 	for (int widnum = WID_OSK_ASDFG_FIRST; widnum <= WID_OSK_ASDFG_LAST; widnum++) {
-		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
 	}
 	return hor;
 }
 
 /** Construct the zxcvb row keys. */
-static NWidgetBase *MakeZxcvbKeys(int *biggest_index)
+static NWidgetBase *MakeZxcvbKeys()
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 
-	AddKey(hor, KEY_PADDING, 3, WWT_IMGBTN, WID_OSK_SHIFT, SPR_OSK_SHIFT, biggest_index);
+	AddKey(hor, KEY_PADDING, 3, WWT_IMGBTN, WID_OSK_SHIFT, SPR_OSK_SHIFT);
 	for (int widnum = WID_OSK_ZXCVB_FIRST; widnum <= WID_OSK_ZXCVB_LAST; widnum++) {
-		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
 	}
-	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, 0, biggest_index);
+	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, 0);
 	return hor;
 }
 
 /** Construct the spacebar row keys. */
-static NWidgetBase *MakeSpacebarKeys(int *biggest_index)
+static NWidgetBase *MakeSpacebarKeys()
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontal();
 
-	AddKey(hor, KEY_PADDING,  8, NWID_SPACER, 0, 0, biggest_index);
-	AddKey(hor, KEY_PADDING, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, STR_EMPTY, biggest_index);
-	AddKey(hor, KEY_PADDING,  3, NWID_SPACER, 0, 0, biggest_index);
-	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_LEFT,  SPR_OSK_LEFT, biggest_index);
-	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_RIGHT, SPR_OSK_RIGHT, biggest_index);
+	AddKey(hor, KEY_PADDING,  8, NWID_SPACER, 0, 0);
+	AddKey(hor, KEY_PADDING, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, STR_EMPTY);
+	AddKey(hor, KEY_PADDING,  3, NWID_SPACER, 0, 0);
+	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_LEFT,  SPR_OSK_LEFT);
+	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_RIGHT, SPR_OSK_RIGHT);
 	return hor;
 }
 

@@ -256,7 +256,7 @@ public:
  * get producing the correct result than dynamically building the widgets is.
  * @see NWidgetFunctionType
  */
-static NWidgetBase *MakeTreeTypeButtons(int *biggest_index)
+static NWidgetBase *MakeTreeTypeButtons()
 {
 	const byte type_base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
 	const byte type_count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
@@ -278,7 +278,6 @@ static NWidgetBase *MakeTreeTypeButtons(int *biggest_index)
 			NWidgetBackground *button = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_BUTTON_FIRST + cur_type);
 			button->SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP);
 			hstack->Add(button);
-			*biggest_index = WID_BT_TYPE_BUTTON_FIRST + cur_type;
 			cur_type++;
 		}
 	}

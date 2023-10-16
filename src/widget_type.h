@@ -47,7 +47,7 @@ enum ResizeWidgetValues {
  */
 enum WidgetType {
 	/* Window widget types. */
-	WWT_EMPTY,      ///< Empty widget, place holder to reserve space in widget array
+	WWT_EMPTY,      ///< Empty widget, place holder to reserve space in widget tree.
 
 	WWT_PANEL,      ///< Simple depressed panel
 	WWT_INSET,      ///< Pressed (inset) panel, most commonly used as combo box _text_ area
@@ -122,6 +122,9 @@ enum SizingType {
 class NWidgetCore;
 class Scrollbar;
 
+/** Lookup between widget IDs and NWidget objects. */
+using WidgetLookup = std::map<int, class NWidgetBase *>;
+
 /**
  * Baseclass for nested widgets.
  * @invariant After initialization, \f$current\_x = smallest\_x + n * resize\_x, for n \geq 0\f$.
@@ -136,7 +139,7 @@ public:
 	virtual void SetupSmallestSize(Window *w) = 0;
 	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
 
-	virtual void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) = 0;
+	virtual void FillWidgetLookup(WidgetLookup &widget_lookup) = 0;
 
 	virtual NWidgetCore *GetWidgetFromPos(int x, int y) = 0;
 	virtual NWidgetBase *GetWidgetOfType(WidgetType tp);
@@ -337,7 +340,7 @@ public:
 	inline void SetDisabled(bool disabled);
 	inline bool IsDisabled() const;
 
-	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
+	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	bool IsHighlighted() const override;
 	TextColour GetHighlightColour() const override;
@@ -345,7 +348,7 @@ public:
 
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
-	int index;                 ///< Index of the nested widget in the widget array of the window (\c -1 means 'not used').
+	int index;                 ///< Index of the nested widget (\c -1 means 'not used').
 	uint32_t widget_data;        ///< Data of the widget. @see Widget::data
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
 	int scrollbar_index;       ///< Index of an attached scrollbar.
@@ -419,7 +422,7 @@ public:
 
 	void AdjustPaddingForZoom() override;
 	void Add(NWidgetBase *wid);
-	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
+	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
@@ -462,7 +465,7 @@ public:
 	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
-	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
+	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
@@ -564,7 +567,7 @@ public:
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
-	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
+	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	void Draw(const Window *w) override;
@@ -593,7 +596,7 @@ public:
 	NWidgetSpacer(int width, int height);
 
 	void SetupSmallestSize(Window *w) override;
-	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
+	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	void Draw(const Window *w) override;
 	void SetDirty(const Window *w) const override;
@@ -617,7 +620,7 @@ public:
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 
-	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
+	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
@@ -955,7 +958,7 @@ struct NWidgetPartDataTip {
  */
 struct NWidgetPartWidget {
 	Colours colour; ///< Widget colour.
-	int16_t index;    ///< Widget index in the widget array.
+	int16_t index; ///< Index of the widget.
 };
 
 /**
@@ -1002,11 +1005,9 @@ struct NWidgetPartAlignment {
 
 /**
  * Pointer to function returning a nested widget.
- * @param biggest_index Pointer to storage for collecting the biggest index used in the nested widget.
  * @return Nested widget (tree).
- * @post \c *biggest_index must contain the value of the biggest index in the returned tree.
  */
-typedef NWidgetBase *NWidgetFunctionType(int *biggest_index);
+typedef NWidgetBase *NWidgetFunctionType();
 
 /**
  * Partial widget specification to allow NWidgets to be written nested.
@@ -1282,7 +1283,7 @@ static inline NWidgetPart SetScrollbar(int index)
  * Widget part function for starting a new 'real' widget.
  * @param tp  Type of the new nested widget.
  * @param col Colour of the new widget.
- * @param idx Index of the widget in the widget array.
+ * @param idx Index of the widget.
  * @note with #WWT_PANEL, #WWT_FRAME, #WWT_INSET, a new container is started.
  *       Child widgets must have a index bigger than the parent index.
  * @ingroup NestedWidgetParts
@@ -1330,10 +1331,10 @@ static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 }
 
 bool IsContainerWidgetType(WidgetType tp);
-NWidgetContainer *MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, int *biggest_index, NWidgetContainer *container);
-NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, int *biggest_index, NWidgetStacked **shade_select);
+NWidgetContainer *MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetContainer *container);
+NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetStacked **shade_select);
 
-NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int widget_last, Colours button_colour, int max_length, StringID button_tooltip);
+NWidgetBase *MakeCompanyButtonRows(int widget_first, int widget_last, Colours button_colour, int max_length, StringID button_tooltip);
 
 void SetupWidgetDimensions();
 
