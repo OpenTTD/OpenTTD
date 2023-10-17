@@ -1623,16 +1623,16 @@ public:
 		this->editable = true; // Temporary setting, 'real' value is set in SetupSmallestSize().
 	}
 
-	void SetupSmallestSize(Window *w, bool init_array) override
+	void SetupSmallestSize(Window *w) override
 	{
 		/* Copy state flag from the window. */
 		assert(dynamic_cast<NewGRFWindow *>(w) != nullptr);
 		NewGRFWindow *ngw = (NewGRFWindow *)w;
 		this->editable = ngw->editable;
 
-		this->avs->SetupSmallestSize(w, init_array);
-		this->acs->SetupSmallestSize(w, init_array);
-		this->inf->SetupSmallestSize(w, init_array);
+		this->avs->SetupSmallestSize(w);
+		this->acs->SetupSmallestSize(w);
+		this->inf->SetupSmallestSize(w);
 
 		uint min_avs_width = this->avs->smallest_x + this->avs->padding.Horizontal();
 		uint min_acs_width = this->acs->smallest_x + this->acs->padding.Horizontal();

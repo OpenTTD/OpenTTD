@@ -995,7 +995,7 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
 /* ~NWidgetContainer() takes care of #next and #prev data members. */
 
 /**
- * @fn void NWidgetBase::SetupSmallestSize(Window *w, bool init_array)
+ * @fn void NWidgetBase::SetupSmallestSize(Window *w)
  * Compute smallest size needed by the widget.
  *
  * The smallest size of a widget is the smallest size that a widget needs to
@@ -1004,7 +1004,6 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  * background widget without child with a non-negative index.
  *
  * @param w          Window owning the widget.
- * @param init_array Initialize the \c w->nested_array.
  *
  * @note After the computation, the results can be queried by accessing the #smallest_x and #smallest_y data members of the widget.
  */
@@ -1394,13 +1393,8 @@ void NWidgetStacked::AdjustPaddingForZoom()
 	NWidgetContainer::AdjustPaddingForZoom();
 }
 
-void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
+void NWidgetStacked::SetupSmallestSize(Window *w)
 {
-	if (this->index >= 0 && init_array) { // Fill w->nested_array[]
-		assert(w->nested_array_size > (uint)this->index);
-		w->nested_array[this->index] = this;
-	}
-
 	/* Zero size plane selected */
 	if (this->shown_plane >= SZSP_BEGIN) {
 		Dimension size    = {0, 0};
@@ -1427,7 +1421,7 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 	this->resize_x = (this->head != nullptr) ? 1 : 0;
 	this->resize_y = (this->head != nullptr) ? 1 : 0;
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		child_wid->SetupSmallestSize(w, init_array);
+		child_wid->SetupSmallestSize(w);
 
 		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.Horizontal());
 		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
@@ -1560,7 +1554,7 @@ NWidgetHorizontal::NWidgetHorizontal(NWidContainerFlags flags) : NWidgetPIPConta
 {
 }
 
-void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
+void NWidgetHorizontal::SetupSmallestSize(Window *w)
 {
 	this->smallest_x = 0; // Sum of minimal size of all children.
 	this->smallest_y = 0; // Biggest child.
@@ -1574,7 +1568,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 	uint longest = 0; // Longest child found.
 	uint max_vert_fill = 0; // Biggest vertical fill step.
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		child_wid->SetupSmallestSize(w, init_array);
+		child_wid->SetupSmallestSize(w);
 		longest = std::max(longest, child_wid->smallest_x);
 		max_vert_fill = std::max(max_vert_fill, child_wid->GetVerticalStepSize(ST_SMALLEST));
 		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
@@ -1752,7 +1746,7 @@ NWidgetVertical::NWidgetVertical(NWidContainerFlags flags) : NWidgetPIPContainer
 {
 }
 
-void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
+void NWidgetVertical::SetupSmallestSize(Window *w)
 {
 	this->smallest_x = 0; // Biggest child.
 	this->smallest_y = 0; // Sum of minimal size of all children.
@@ -1766,7 +1760,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 	uint highest = 0; // Highest child found.
 	uint max_hor_fill = 0; // Biggest horizontal fill step.
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		child_wid->SetupSmallestSize(w, init_array);
+		child_wid->SetupSmallestSize(w);
 		highest = std::max(highest, child_wid->smallest_y);
 		max_hor_fill = std::max(max_hor_fill, child_wid->GetHorizontalStepSize(ST_SMALLEST));
 		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.Horizontal());
@@ -1925,7 +1919,7 @@ NWidgetSpacer::NWidgetSpacer(int width, int height) : NWidgetResizeBase(NWID_SPA
 	this->SetResize(0, 0);
 }
 
-void NWidgetSpacer::SetupSmallestSize(Window *, bool)
+void NWidgetSpacer::SetupSmallestSize(Window *)
 {
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
@@ -2021,21 +2015,16 @@ void NWidgetMatrix::SetScrollbar(Scrollbar *sb)
 	this->sb = sb;
 }
 
-void NWidgetMatrix::SetupSmallestSize(Window *w, bool init_array)
+void NWidgetMatrix::SetupSmallestSize(Window *w)
 {
 	assert(this->head != nullptr);
 	assert(this->head->next == nullptr);
-
-	if (this->index >= 0 && init_array) { // Fill w->nested_array[]
-		assert(w->nested_array_size > (uint)this->index);
-		w->nested_array[this->index] = this;
-	}
 
 	/* Reset the widget number. */
 	NWidgetCore *nw = dynamic_cast<NWidgetCore *>(this->head);
 	assert(nw != nullptr);
 	SB(nw->index, 16, 16, 0);
-	this->head->SetupSmallestSize(w, init_array);
+	this->head->SetupSmallestSize(w);
 
 	Dimension padding = { (uint)this->pip_pre + this->pip_post, (uint)this->pip_pre + this->pip_post};
 	Dimension size    = {this->head->smallest_x + padding.width, this->head->smallest_y + padding.height};
@@ -2271,14 +2260,10 @@ void NWidgetBackground::AdjustPaddingForZoom()
 	NWidgetCore::AdjustPaddingForZoom();
 }
 
-void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
+void NWidgetBackground::SetupSmallestSize(Window *w)
 {
-	if (init_array && this->index >= 0) {
-		assert(w->nested_array_size > (uint)this->index);
-		w->nested_array[this->index] = this;
-	}
 	if (this->child != nullptr) {
-		this->child->SetupSmallestSize(w, init_array);
+		this->child->SetupSmallestSize(w);
 
 		this->smallest_x = this->child->smallest_x;
 		this->smallest_y = this->child->smallest_y;
@@ -2418,12 +2403,8 @@ NWidgetViewport::NWidgetViewport(int index) : NWidgetCore(NWID_VIEWPORT, INVALID
 	this->SetIndex(index);
 }
 
-void NWidgetViewport::SetupSmallestSize(Window *w, bool init_array)
+void NWidgetViewport::SetupSmallestSize(Window *)
 {
-	if (init_array && this->index >= 0) {
-		assert(w->nested_array_size > (uint)this->index);
-		w->nested_array[this->index] = this;
-	}
 	this->smallest_x = this->min_x;
 	this->smallest_y = this->min_y;
 }
@@ -2599,12 +2580,8 @@ NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : N
 	}
 }
 
-void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
+void NWidgetScrollbar::SetupSmallestSize(Window *)
 {
-	if (init_array && this->index >= 0) {
-		assert(w->nested_array_size > (uint)this->index);
-		w->nested_array[this->index] = this;
-	}
 	this->min_x = 0;
 	this->min_y = 0;
 
@@ -2799,13 +2776,8 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32_t data
 	}
 }
 
-void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
+void NWidgetLeaf::SetupSmallestSize(Window *w)
 {
-	if (this->index >= 0 && init_array) { // Fill w->nested_array[]
-		assert(w->nested_array_size > (uint)this->index);
-		w->nested_array[this->index] = this;
-	}
-
 	Dimension padding = {0, 0};
 	Dimension size = {this->min_x, this->min_y};
 	Dimension fill = {this->fill_x, this->fill_y};

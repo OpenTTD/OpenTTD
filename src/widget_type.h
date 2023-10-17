@@ -133,7 +133,7 @@ public:
 	NWidgetBase(WidgetType tp);
 
 	virtual void AdjustPaddingForZoom();
-	virtual void SetupSmallestSize(Window *w, bool init_array) = 0;
+	virtual void SetupSmallestSize(Window *w) = 0;
 	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
 
 	virtual void FillNestedArray(NWidgetBase **array, uint length) = 0;
@@ -460,7 +460,7 @@ public:
 	void SetIndex(int index);
 
 	void AdjustPaddingForZoom() override;
-	void SetupSmallestSize(Window *w, bool init_array) override;
+	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
@@ -517,7 +517,7 @@ class NWidgetHorizontal : public NWidgetPIPContainer {
 public:
 	NWidgetHorizontal(NWidContainerFlags flags = NC_NONE);
 
-	void SetupSmallestSize(Window *w, bool init_array) override;
+	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 };
 
@@ -540,7 +540,7 @@ class NWidgetVertical : public NWidgetPIPContainer {
 public:
 	NWidgetVertical(NWidContainerFlags flags = NC_NONE);
 
-	void SetupSmallestSize(Window *w, bool init_array) override;
+	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 };
 
@@ -562,7 +562,7 @@ public:
 	void SetCount(int count);
 	void SetScrollbar(Scrollbar *sb);
 
-	void SetupSmallestSize(Window *w, bool init_array) override;
+	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
@@ -592,7 +592,7 @@ class NWidgetSpacer : public NWidgetResizeBase {
 public:
 	NWidgetSpacer(int width, int height);
 
-	void SetupSmallestSize(Window *w, bool init_array) override;
+	void SetupSmallestSize(Window *w) override;
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
 	void Draw(const Window *w) override;
@@ -614,7 +614,7 @@ public:
 	void SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_inter, uint8_t pip_ratio_post);
 
 	void AdjustPaddingForZoom() override;
-	void SetupSmallestSize(Window *w, bool init_array) override;
+	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 
 	void FillNestedArray(NWidgetBase **array, uint length) override;
@@ -640,7 +640,7 @@ class NWidgetViewport : public NWidgetCore {
 public:
 	NWidgetViewport(int index);
 
-	void SetupSmallestSize(Window *w, bool init_array) override;
+	void SetupSmallestSize(Window *w) override;
 	void Draw(const Window *w) override;
 
 	void InitializeViewport(Window *w, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom);
@@ -840,7 +840,7 @@ class NWidgetScrollbar : public NWidgetCore, public Scrollbar {
 public:
 	NWidgetScrollbar(WidgetType tp, Colours colour, int index);
 
-	void SetupSmallestSize(Window *w, bool init_array) override;
+	void SetupSmallestSize(Window *w) override;
 	void Draw(const Window *w) override;
 
 	static void InvalidateDimensionCache();
@@ -860,7 +860,7 @@ class NWidgetLeaf : public NWidgetCore {
 public:
 	NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32_t data, StringID tip);
 
-	void SetupSmallestSize(Window *w, bool init_array) override;
+	void SetupSmallestSize(Window *w) override;
 	void Draw(const Window *w) override;
 
 	bool ButtonHit(const Point &pt);
