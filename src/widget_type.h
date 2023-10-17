@@ -127,7 +127,7 @@ public:
 
 	virtual void AdjustPaddingForZoom();
 	virtual void SetupSmallestSize(Window *w, bool init_array) = 0;
-	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) = 0;
+	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
 
 	virtual void FillNestedArray(NWidgetBase **array, uint length) = 0;
 
@@ -204,7 +204,7 @@ public:
 	RectPadding uz_padding; ///< Unscaled padding, for resize calculation.
 
 protected:
-	inline void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height);
+	inline void StoreSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height);
 };
 
 /**
@@ -233,7 +233,7 @@ inline uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
  * @param given_width  Width allocated to the widget.
  * @param given_height Height allocated to the widget.
  */
-inline void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height)
+inline void NWidgetBase::StoreSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height)
 {
 	this->pos_x = x;
 	this->pos_y = y;
@@ -263,7 +263,7 @@ public:
 
 	bool UpdateVerticalSize(uint min_y);
 
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 
 	uint min_x; ///< Minimal horizontal size of only this widget.
 	uint min_y; ///< Minimal vertical size of only this widget.
@@ -452,7 +452,7 @@ public:
 
 	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w, bool init_array) override;
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
 	void Draw(const Window *w) override;
@@ -503,7 +503,7 @@ public:
 	NWidgetHorizontal(NWidContainerFlags flags = NC_NONE);
 
 	void SetupSmallestSize(Window *w, bool init_array) override;
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 };
 
 /**
@@ -514,7 +514,7 @@ class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
 	NWidgetHorizontalLTR(NWidContainerFlags flags = NC_NONE);
 
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 };
 
 /**
@@ -526,7 +526,7 @@ public:
 	NWidgetVertical(NWidContainerFlags flags = NC_NONE);
 
 	void SetupSmallestSize(Window *w, bool init_array) override;
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 };
 
 /**
@@ -548,7 +548,7 @@ public:
 	void SetScrollbar(Scrollbar *sb);
 
 	void SetupSmallestSize(Window *w, bool init_array) override;
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
@@ -599,7 +599,7 @@ public:
 
 	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w, bool init_array) override;
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
