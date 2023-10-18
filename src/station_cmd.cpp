@@ -496,8 +496,8 @@ CargoTypes GetAcceptanceMask(const Station *st)
 {
 	CargoTypes mask = 0;
 
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (HasBit(st->goods[i].status, GoodsEntry::GES_ACCEPTANCE)) SetBit(mask, i);
+	for (auto it = std::begin(st->goods); it != std::end(st->goods); ++it) {
+		if (HasBit(it->status, GoodsEntry::GES_ACCEPTANCE)) SetBit(mask, std::distance(std::begin(st->goods), it));
 	}
 	return mask;
 }
@@ -511,8 +511,8 @@ CargoTypes GetEmptyMask(const Station *st)
 {
 	CargoTypes mask = 0;
 
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (st->goods[i].cargo.TotalCount() == 0) SetBit(mask, i);
+	for (auto it = std::begin(st->goods); it != std::end(st->goods); ++it) {
+		if (it->cargo.TotalCount() == 0) SetBit(mask, std::distance(std::begin(st->goods), it));
 	}
 	return mask;
 }
@@ -704,10 +704,10 @@ static void UpdateStationSignCoord(BaseStation *st)
 
 	if (!Station::IsExpected(st)) return;
 	Station *full_station = Station::From(st);
-	for (CargoID c = 0; c < NUM_CARGO; ++c) {
-		LinkGraphID lg = full_station->goods[c].link_graph;
+	for (const GoodsEntry &ge : full_station->goods) {
+		LinkGraphID lg = ge.link_graph;
 		if (!LinkGraph::IsValidID(lg)) continue;
-		(*LinkGraph::Get(lg))[full_station->goods[c].node].UpdateLocation(st->xy);
+		(*LinkGraph::Get(lg))[ge.node].UpdateLocation(st->xy);
 	}
 }
 
@@ -3595,8 +3595,8 @@ static bool StationHandleBigTick(BaseStation *st)
 	if (Station::IsExpected(st)) {
 		TriggerWatchedCargoCallbacks(Station::From(st));
 
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			ClrBit(Station::From(st)->goods[i].status, GoodsEntry::GES_ACCEPTED_BIGTICK);
+		for (GoodsEntry &ge : Station::From(st)->goods) {
+			ClrBit(ge.status, GoodsEntry::GES_ACCEPTED_BIGTICK);
 		}
 	}
 
@@ -4027,10 +4027,9 @@ void OnTick_Station()
 static IntervalTimer<TimerGameCalendar> _stations_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::STATION}, [](auto)
 {
 	for (Station *st : Station::Iterate()) {
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			GoodsEntry *ge = &st->goods[i];
-			SB(ge->status, GoodsEntry::GES_LAST_MONTH, 1, GB(ge->status, GoodsEntry::GES_CURRENT_MONTH, 1));
-			ClrBit(ge->status, GoodsEntry::GES_CURRENT_MONTH);
+		for (GoodsEntry &ge : st->goods) {
+			SB(ge.status, GoodsEntry::GES_LAST_MONTH, 1, GB(ge.status, GoodsEntry::GES_CURRENT_MONTH, 1));
+			ClrBit(ge.status, GoodsEntry::GES_CURRENT_MONTH);
 		}
 	}
 });
@@ -4039,11 +4038,9 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 {
 	ForAllStationsRadius(tile, radius, [&](Station *st) {
 		if (st->owner == owner && DistanceManhattan(tile, st->xy) <= radius) {
-			for (CargoID i = 0; i < NUM_CARGO; i++) {
-				GoodsEntry *ge = &st->goods[i];
-
-				if (ge->status != 0) {
-					ge->rating = ClampTo<uint8_t>(ge->rating + amount);
+			for (GoodsEntry &ge : st->goods) {
+				if (ge.status != 0) {
+					ge.rating = ClampTo<uint8_t>(ge.rating + amount);
 				}
 			}
 		}
