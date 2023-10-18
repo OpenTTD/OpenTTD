@@ -2566,8 +2566,7 @@ struct IndustryCargoesWindow : public Window {
 		/* Compute max size of the cargo texts. */
 		this->cargo_textsize.width = 0;
 		this->cargo_textsize.height = 0;
-		for (uint i = 0; i < NUM_CARGO; i++) {
-			const CargoSpec *csp = CargoSpec::Get(i);
+		for (const CargoSpec *csp : CargoSpec::Iterate()) {
 			if (!csp->IsValid()) continue;
 			this->cargo_textsize = maxdim(this->cargo_textsize, GetStringBoundingBox(csp->name));
 		}

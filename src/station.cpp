@@ -83,8 +83,8 @@ Station::Station(TileIndex tile) :
 Station::~Station()
 {
 	if (CleaningPool()) {
-		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			this->goods[c].cargo.OnCleanPool();
+		for (GoodsEntry &ge : this->goods) {
+			ge.cargo.OnCleanPool();
 		}
 		return;
 	}
@@ -148,8 +148,8 @@ Station::~Station()
 	/* Remove all news items */
 	DeleteStationNews(this->index);
 
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		this->goods[c].cargo.Truncate();
+	for (GoodsEntry &ge : this->goods) {
+		ge.cargo.Truncate();
 	}
 
 	CargoPacket::InvalidateAllFrom(this->index);

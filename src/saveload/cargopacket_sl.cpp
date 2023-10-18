@@ -43,10 +43,8 @@
 		 * information is lost. In that case we set it to the position of this
 		 * station */
 		for (Station *st : Station::Iterate()) {
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
-				GoodsEntry *ge = &st->goods[c];
-
-				const StationCargoPacketMap *packets = ge->cargo.Packets();
+			for (GoodsEntry &ge : st->goods) {
+				const StationCargoPacketMap *packets = ge.cargo.Packets();
 				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 					CargoPacket *cp = *it;
 					cp->source_xy = Station::IsValidID(cp->first_station) ? Station::Get(cp->first_station)->xy : st->xy;
@@ -69,7 +67,7 @@
 		for (Vehicle *v : Vehicle::Iterate()) v->cargo.InvalidateCache();
 
 		for (Station *st : Station::Iterate()) {
-			for (CargoID c = 0; c < NUM_CARGO; c++) st->goods[c].cargo.InvalidateCache();
+			for (GoodsEntry &ge : st->goods) ge.cargo.InvalidateCache();
 		}
 	}
 
@@ -81,9 +79,8 @@
 	if (IsSavegameVersionBefore(SLV_CARGO_TRAVELLED)) {
 		/* Update the cargo-traveled in stations as if they arrived from the source tile. */
 		for (Station *st : Station::Iterate()) {
-			for (size_t i = 0; i < NUM_CARGO; i++) {
-				GoodsEntry *ge = &st->goods[i];
-				for (auto it = ge->cargo.Packets()->begin(); it != ge->cargo.Packets()->end(); it++) {
+			for (GoodsEntry &ge : st->goods) {
+				for (auto it = ge.cargo.Packets()->begin(); it != ge.cargo.Packets()->end(); ++it) {
 					for (CargoPacket *cp : it->second) {
 						if (cp->source_xy != INVALID_TILE && cp->source_xy != st->xy) {
 							cp->travelled.x = TileX(cp->source_xy) - TileX(st->xy);

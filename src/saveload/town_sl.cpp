@@ -139,9 +139,9 @@ public:
 
 	void Save(Town *t) const override
 	{
-		SlSetStructListLength(NUM_CARGO);
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			SlObject(&t->supplied[i], this->GetDescription());
+		SlSetStructListLength(std::size(t->supplied));
+		for (auto &supplied : t->supplied) {
+			SlObject(&supplied, this->GetDescription());
 		}
 	}
 
@@ -166,9 +166,9 @@ public:
 
 	void Save(Town *t) const override
 	{
-		SlSetStructListLength(NUM_TE);
-		for (size_t i = TE_BEGIN; i < TE_END; i++) {
-			SlObject(&t->received[i], this->GetDescription());
+		SlSetStructListLength(std::size(t->received));
+		for (auto &received : t->received) {
+			SlObject(&received, this->GetDescription());
 		}
 	}
 

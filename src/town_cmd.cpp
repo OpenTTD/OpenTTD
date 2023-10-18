@@ -3277,7 +3277,7 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 			/* set all close by station ratings to 0 */
 			for (Station *st : Station::Iterate()) {
 				if (st->town == t && st->owner == _current_company) {
-					for (CargoID i = 0; i < NUM_CARGO; i++) st->goods[i].rating = 0;
+					for (GoodsEntry &ge : st->goods) ge.rating = 0;
 				}
 			}
 
@@ -3554,8 +3554,8 @@ static void UpdateTownGrowth(Town *t)
 
 static void UpdateTownAmounts(Town *t)
 {
-	for (CargoID i = 0; i < NUM_CARGO; i++) t->supplied[i].NewMonth();
-	for (int i = TE_BEGIN; i < TE_END; i++) t->received[i].NewMonth();
+	for (auto &supplied : t->supplied) supplied.NewMonth();
+	for (auto &received : t->received) received.NewMonth();
 	if (t->fund_buildings_months != 0) t->fund_buildings_months--;
 
 	SetWindowDirty(WC_TOWN_VIEW, t->index);

@@ -1690,9 +1690,9 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_74)) {
 		for (Station *st : Station::Iterate()) {
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
-				st->goods[c].last_speed = 0;
-				if (st->goods[c].cargo.AvailableCount() != 0) SetBit(st->goods[c].status, GoodsEntry::GES_RATING);
+			for (GoodsEntry &ge : st->goods) {
+				ge.last_speed = 0;
+				if (ge.cargo.AvailableCount() != 0) SetBit(ge.status, GoodsEntry::GES_RATING);
 			}
 		}
 	}

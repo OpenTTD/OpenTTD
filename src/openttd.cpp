@@ -1300,11 +1300,11 @@ static void CheckCaches()
 	for (Industry *ind : Industry::Iterate())  old_industry_stations_near.push_back(ind->stations_near);
 
 	for (Station *st : Station::Iterate()) {
-		for (CargoID c = 0; c < NUM_CARGO; c++) {
+		for (GoodsEntry &ge : st->goods) {
 			byte buff[sizeof(StationCargoList)];
-			memcpy(buff, &st->goods[c].cargo, sizeof(StationCargoList));
-			st->goods[c].cargo.InvalidateCache();
-			assert(memcmp(&st->goods[c].cargo, buff, sizeof(StationCargoList)) == 0);
+			memcpy(buff, &ge.cargo, sizeof(StationCargoList));
+			ge.cargo.InvalidateCache();
+			assert(memcmp(&ge.cargo, buff, sizeof(StationCargoList)) == 0);
 		}
 
 		/* Check docking tiles */

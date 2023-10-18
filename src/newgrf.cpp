@@ -8852,17 +8852,16 @@ static void BuildCargoTranslationMap()
 {
 	memset(_cur.grffile->cargo_map, 0xFF, sizeof(_cur.grffile->cargo_map));
 
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		const CargoSpec *cs = CargoSpec::Get(c);
+	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		if (!cs->IsValid()) continue;
 
 		if (_cur.grffile->cargo_list.size() == 0) {
 			/* Default translation table, so just a straight mapping to bitnum */
-			_cur.grffile->cargo_map[c] = cs->bitnum;
+			_cur.grffile->cargo_map[cs->Index()] = cs->bitnum;
 		} else {
 			/* Check the translation table for this cargo's label */
 			int idx = find_index(_cur.grffile->cargo_list, {cs->label});
-			if (idx >= 0) _cur.grffile->cargo_map[c] = idx;
+			if (idx >= 0) _cur.grffile->cargo_map[cs->Index()] = idx;
 		}
 	}
 }
@@ -9184,8 +9183,7 @@ static void FinaliseEngineArray()
 /** Check for invalid cargoes */
 static void FinaliseCargoArray()
 {
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		CargoSpec *cs = CargoSpec::Get(c);
+	for (CargoSpec *cs : CargoSpec::Iterate()) {
 		if (!cs->IsValid()) {
 			cs->name = cs->name_single = cs->units_volume = STR_NEWGRF_INVALID_CARGO;
 			cs->quantifier = STR_NEWGRF_INVALID_CARGO_QUANTITY;

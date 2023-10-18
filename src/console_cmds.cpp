@@ -2440,8 +2440,7 @@ static void ConDumpCargoTypes()
 	IConsolePrint(CC_DEFAULT, "    S = special");
 
 	std::map<uint32_t, const GRFFile *> grfs;
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		const CargoSpec *spec = CargoSpec::Get(i);
+	for (const CargoSpec *spec : CargoSpec::Iterate()) {
 		if (!spec->IsValid()) continue;
 		uint32_t grfid = 0;
 		const GRFFile *grf = spec->grffile;
@@ -2450,7 +2449,7 @@ static void ConDumpCargoTypes()
 			grfs.emplace(grfid, grf);
 		}
 		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {:c}{:c}{:c}{:c}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}, GRF: {:08X}, {}",
-				(uint)i,
+				spec->Index(),
 				spec->bitnum,
 				spec->label >> 24, spec->label >> 16, spec->label >> 8, spec->label,
 				spec->callback_mask,

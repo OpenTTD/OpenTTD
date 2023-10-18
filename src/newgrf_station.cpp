@@ -502,8 +502,8 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, byte variable, [[ma
 			break;
 
 		case CT_DEFAULT:
-			for (CargoID cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				cargo += st->goods[cargo_type].cargo.TotalCount();
+			for (const GoodsEntry &ge : st->goods) {
+				cargo += ge.cargo.TotalCount();
 			}
 			break;
 

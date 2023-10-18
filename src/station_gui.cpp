@@ -330,8 +330,7 @@ protected:
 		byte minr1 = 255;
 		byte minr2 = 255;
 
-		for (CargoID j = 0; j < NUM_CARGO; j++) {
-			if (!HasBit(cargo_filter, j)) continue;
+		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
 			if (a->goods[j].HasRating()) minr1 = std::min(minr1, a->goods[j].rating);
 			if (b->goods[j].HasRating()) minr2 = std::min(minr2, b->goods[j].rating);
 		}
