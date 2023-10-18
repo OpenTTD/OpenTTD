@@ -284,7 +284,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 	CargoTypes real_refit_union = 0;
 	CargoTypes real_refit_intersection = ALL_CARGOTYPES;
-	CargoArray real_default_capacity{};
+	CargoTypes real_default_cargoes = 0;
 
 	do {
 		CargoTypes refit_mask = GetAvailableVehicleCargoTypes(v->engine_type, true);
@@ -292,15 +292,15 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 		if (refit_mask != 0) real_refit_intersection &= refit_mask;
 
 		assert(v->cargo_type < NUM_CARGO);
-		real_default_capacity[v->cargo_type] += v->cargo_cap;
+		if (v->cargo_cap > 0) SetBit(real_default_cargoes, v->cargo_type);
 
 		v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : nullptr;
 	} while (v != nullptr);
 
 	/* Check whether the vehicle carries more cargoes than expected */
 	bool carries_more = false;
-	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-		if (real_default_capacity[cid] != 0 && purchase_default_capacity[cid] == 0) {
+	for (CargoID cid : SetCargoBitIterator(real_default_cargoes)) {
+		if (purchase_default_capacity[cid] == 0) {
 			carries_more = true;
 			break;
 		}
