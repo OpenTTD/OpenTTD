@@ -1763,21 +1763,6 @@ public:
 		display->AssignSizePosition(ST_RESIZE, x, y, given_width, display_height, rtl);
 		bar->AssignSizePosition(ST_RESIZE, x, y + display_height, given_width, bar_height, rtl);
 	}
-
-	NWidgetCore *GetWidgetFromPos(int x, int y) override
-	{
-		if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return nullptr;
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			NWidgetCore *widget = child_wid->GetWidgetFromPos(x, y);
-			if (widget != nullptr) return widget;
-		}
-		return nullptr;
-	}
-
-	void Draw(const Window *w) override
-	{
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) child_wid->Draw(w);
-	}
 };
 
 /** Widget parts of the smallmap display. */
