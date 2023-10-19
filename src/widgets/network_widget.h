@@ -19,7 +19,6 @@ enum NetworkGameWidgets {
 	WID_NG_FILTER_LABEL,       ///< Label in front of the filter/search edit box.
 	WID_NG_FILTER,             ///< Panel with the edit box to enter the search text.
 
-	WID_NG_HEADER,             ///< Header container of the matrix.
 	WID_NG_NAME,               ///< 'Name' button.
 	WID_NG_CLIENTS,            ///< 'Clients' button.
 	WID_NG_MAPSIZE,            ///< 'Map size' button.
