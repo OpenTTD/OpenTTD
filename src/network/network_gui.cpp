@@ -86,7 +86,6 @@ static const ServerListPosition SLP_INVALID = -1;
 /** Full blown container to make it behave exactly as we want :) */
 class NWidgetServerListHeader : public NWidgetContainer {
 	static const uint MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER = 150; ///< Minimum width before adding a new header
-	bool visible[6]; ///< The visible headers
 public:
 	NWidgetServerListHeader() : NWidgetContainer(NWID_HORIZONTAL)
 	{
@@ -105,17 +104,10 @@ public:
 		                        + GetSpriteSize(SPR_BLOT, nullptr, ZOOM_LVL_OUT_4X).width, 12);
 		leaf->SetFill(0, 1);
 		this->Add(leaf);
-
-		/* First and last are always visible, the rest is implicitly zeroed */
-		this->visible[0] = true;
-		*lastof(this->visible) = true;
 	}
 
 	void SetupSmallestSize(Window *w, bool init_array) override
 	{
-		/* Oh yeah, we ought to be findable! */
-		w->nested_array[WID_NG_HEADER] = this;
-
 		this->smallest_y = 0; // Biggest child.
 		this->fill_x = 1;
 		this->fill_y = 0;
@@ -147,16 +139,14 @@ public:
 		this->current_y = given_height;
 
 		given_width -= this->tail->smallest_x;
-		NWidgetBase *child_wid = this->head->next;
 		/* The first and last widget are always visible, determine which other should be visible */
-		for (uint i = 1; i < lengthof(this->visible) - 1; i++) {
-			if (given_width > ScaleGUITrad(MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER) + child_wid->smallest_x && this->visible[i - 1]) {
-				this->visible[i] = true;
+		for (NWidgetBase *child_wid = this->head->next; child_wid->next != nullptr; child_wid = child_wid->next) {
+			if (given_width > ScaleGUITrad(MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER) + child_wid->smallest_x && child_wid->prev->current_x != 0) {
 				given_width -= child_wid->smallest_x;
+				child_wid->current_x = child_wid->smallest_x; /* Make visible. */
 			} else {
-				this->visible[i] = false;
+				child_wid->current_x = 0; /* Make invisible. */
 			}
-			child_wid = child_wid->next;
 		}
 
 		/* All remaining space goes to the first (name) widget */
@@ -164,25 +154,17 @@ public:
 
 		/* Now assign the widgets to their rightful place */
 		uint position = 0; // Place to put next child relative to origin of the container.
-		uint i = rtl ? lengthof(this->visible) - 1 : 0;
-		child_wid = rtl ? this->tail : this->head;
-		while (child_wid != nullptr) {
-			if (this->visible[i]) {
+		for (NWidgetBase *child_wid = rtl ? this->tail : this->head; child_wid != nullptr; child_wid = rtl ? child_wid->prev : child_wid->next) {
+			if (child_wid->current_x != 0) {
 				child_wid->AssignSizePosition(sizing, x + position, y, child_wid->current_x, this->current_y, rtl);
 				position += child_wid->current_x;
 			}
-
-			child_wid = rtl ? child_wid->prev : child_wid->next;
-			i += rtl ? -1 : 1;
 		}
 	}
 
 	void Draw(const Window *w) override
 	{
-		int i = 0;
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			if (!this->visible[i++]) continue;
-
 			child_wid->Draw(w);
 		}
 	}
@@ -191,24 +173,11 @@ public:
 	{
 		if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return nullptr;
 
-		int i = 0;
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			if (!this->visible[i++]) continue;
 			NWidgetCore *nwid = child_wid->GetWidgetFromPos(x, y);
 			if (nwid != nullptr) return nwid;
 		}
 		return nullptr;
-	}
-
-	/**
-	 * Checks whether the given widget is actually visible.
-	 * @param widget the widget to check for visibility
-	 * @return true iff the widget is visible.
-	 */
-	bool IsWidgetVisible(NetworkGameWidgets widget) const
-	{
-		assert((uint)(widget - WID_NG_NAME) < lengthof(this->visible));
-		return this->visible[widget - WID_NG_NAME];
 	}
 };
 
@@ -410,10 +379,8 @@ protected:
 
 		/* only draw details if the server is online */
 		if (cur_item->status == NGLS_ONLINE) {
-			const NWidgetServerListHeader *nwi_header = this->GetWidget<NWidgetServerListHeader>(WID_NG_HEADER);
-
-			if (nwi_header->IsWidgetVisible(WID_NG_CLIENTS)) {
-				Rect clients = this->GetWidget<NWidgetBase>(WID_NG_CLIENTS)->GetCurrentRect();
+			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_CLIENTS); nwid->current_x != 0) {
+				Rect clients = nwid->GetCurrentRect();
 				SetDParam(0, cur_item->info.clients_on);
 				SetDParam(1, cur_item->info.clients_max);
 				SetDParam(2, cur_item->info.companies_on);
@@ -421,26 +388,26 @@ protected:
 				DrawString(clients.left, clients.right, y + text_y_offset, STR_NETWORK_SERVER_LIST_GENERAL_ONLINE, TC_FROMSTRING, SA_HOR_CENTER);
 			}
 
-			if (nwi_header->IsWidgetVisible(WID_NG_MAPSIZE)) {
+			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_MAPSIZE); nwid->current_x != 0) {
 				/* map size */
-				Rect mapsize = this->GetWidget<NWidgetBase>(WID_NG_MAPSIZE)->GetCurrentRect();
+				Rect mapsize = nwid->GetCurrentRect();
 				SetDParam(0, cur_item->info.map_width);
 				SetDParam(1, cur_item->info.map_height);
 				DrawString(mapsize.left, mapsize.right, y + text_y_offset, STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT, TC_FROMSTRING, SA_HOR_CENTER);
 			}
 
-			if (nwi_header->IsWidgetVisible(WID_NG_DATE)) {
+			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_DATE); nwid->current_x != 0) {
 				/* current date */
-				Rect date = this->GetWidget<NWidgetBase>(WID_NG_DATE)->GetCurrentRect();
+				Rect date = nwid->GetCurrentRect();
 				TimerGameCalendar::YearMonthDay ymd;
 				TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date, &ymd);
 				SetDParam(0, ymd.year);
 				DrawString(date.left, date.right, y + text_y_offset, STR_JUST_INT, TC_BLACK, SA_HOR_CENTER);
 			}
 
-			if (nwi_header->IsWidgetVisible(WID_NG_YEARS)) {
+			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_YEARS); nwid->current_x != 0) {
 				/* number of years the game is running */
-				Rect years = this->GetWidget<NWidgetBase>(WID_NG_YEARS)->GetCurrentRect();
+				Rect years = nwid->GetCurrentRect();
 				TimerGameCalendar::YearMonthDay ymd_cur, ymd_start;
 				TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date, &ymd_cur);
 				TimerGameCalendar::ConvertDateToYMD(cur_item->info.start_date, &ymd_start);
