@@ -1375,6 +1375,15 @@ static bool TownCanGrowRoad(TileIndex tile)
 }
 
 /**
+ * Check if the town is allowed to build roads.
+ * @return true If the town is allowed to build roads.
+ */
+static inline bool TownAllowedToBuildRoads()
+{
+	return _settings_game.economy.allow_town_roads || _generating_world || _game_mode == GM_EDITOR;
+}
+
+/**
  * Grows the given town.
  * There are at the moment 3 possible way's for
  * the town expansion:
@@ -1403,7 +1412,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		 * to say that this is the last iteration. */
 		_grow_town_result = GROWTH_SEARCH_STOPPED;
 
-		if (!_settings_game.economy.allow_town_roads && !_generating_world) return;
+		if (!TownAllowedToBuildRoads()) return;
 		if (!_settings_game.economy.allow_town_level_crossings && IsTileType(tile, MP_RAILWAY)) return;
 
 		/* Remove hills etc */
@@ -1457,7 +1466,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		 * the fitting RoadBits */
 		_grow_town_result = GROWTH_SEARCH_STOPPED;
 
-		if (!_settings_game.economy.allow_town_roads && !_generating_world) return;
+		if (!TownAllowedToBuildRoads()) return;
 
 		switch (t1->layout) {
 			default: NOT_REACHED();
@@ -1528,7 +1537,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 		if (!IsValidTile(house_tile)) return;
 
-		if (target_dir != DIAGDIR_END && (_settings_game.economy.allow_town_roads || _generating_world)) {
+		if (target_dir != DIAGDIR_END && TownAllowedToBuildRoads()) {
 			switch (t1->layout) {
 				default: NOT_REACHED();
 
@@ -1606,7 +1615,7 @@ static bool CanFollowRoad(TileIndex tile, DiagDirection dir)
 	if (HasTileWaterGround(target_tile)) return false;
 
 	RoadBits target_rb = GetTownRoadBits(target_tile);
-	if (_settings_game.economy.allow_town_roads || _generating_world) {
+	if (TownAllowedToBuildRoads()) {
 		/* Check whether a road connection exists or can be build. */
 		switch (GetTileType(target_tile)) {
 			case MP_ROAD:
@@ -1773,7 +1782,7 @@ static bool GrowTown(Town *t)
 
 	/* No road available, try to build a random road block by
 	 * clearing some land and then building a road there. */
-	if (_settings_game.economy.allow_town_roads || _generating_world) {
+	if (TownAllowedToBuildRoads()) {
 		tile = t->xy;
 		for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 			/* Only work with plain land that not already has a house */
@@ -2437,7 +2446,7 @@ static bool CheckFree2x2Area(TileIndex tile, int z, bool noslope)
 static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
 {
 	/* Allow towns everywhere when we don't build roads */
-	if (!_settings_game.economy.allow_town_roads && !_generating_world) return true;
+	if (!TownAllowedToBuildRoads()) return true;
 
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
 
@@ -2468,7 +2477,7 @@ static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
 static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
 {
 	/* Allow towns everywhere when we don't build roads */
-	if (!_settings_game.economy.allow_town_roads && !_generating_world) return true;
+	if (!TownAllowedToBuildRoads()) return true;
 
 	/* Compute relative position of tile. (Positive offsets are towards north) */
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
