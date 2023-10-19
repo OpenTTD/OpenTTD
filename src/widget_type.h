@@ -412,6 +412,9 @@ public:
 	void Add(NWidgetBase *wid);
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
+	void Draw(const Window *w) override;
+	NWidgetCore *GetWidgetFromPos(int x, int y) override;
+
 	/** Return whether the container is empty. */
 	inline bool IsEmpty() { return head == nullptr; }
 
@@ -479,9 +482,6 @@ public:
 
 	void AdjustPaddingForZoom() override;
 	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
-
-	void Draw(const Window *w) override;
-	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 
 protected:
 	NWidContainerFlags flags; ///< Flags of the container.

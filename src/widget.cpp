@@ -1303,6 +1303,24 @@ void NWidgetContainer::FillNestedArray(NWidgetBase **array, uint length)
 	}
 }
 
+void NWidgetContainer::Draw(const Window *w)
+{
+	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		child_wid->Draw(w);
+	}
+}
+
+NWidgetCore *NWidgetContainer::GetWidgetFromPos(int x, int y)
+{
+	if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return nullptr;
+
+	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		NWidgetCore *nwid = child_wid->GetWidgetFromPos(x, y);
+		if (nwid != nullptr) return nwid;
+	}
+	return nullptr;
+}
+
 /**
  * Widgets stacked on top of each other.
  */
@@ -1463,24 +1481,6 @@ void NWidgetPIPContainer::SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip
 	this->pip_pre = ScaleGUITrad(this->uz_pip_pre);
 	this->pip_inter = ScaleGUITrad(this->uz_pip_inter);
 	this->pip_post = ScaleGUITrad(this->uz_pip_post);
-}
-
-void NWidgetPIPContainer::Draw(const Window *w)
-{
-	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		child_wid->Draw(w);
-	}
-}
-
-NWidgetCore *NWidgetPIPContainer::GetWidgetFromPos(int x, int y)
-{
-	if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return nullptr;
-
-	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		NWidgetCore *nwid = child_wid->GetWidgetFromPos(x, y);
-		if (nwid != nullptr) return nwid;
-	}
-	return nullptr;
 }
 
 /** Horizontal container widget. */
