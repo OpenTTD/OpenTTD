@@ -150,7 +150,7 @@ public:
 		NWidgetBase *child_wid = this->head->next;
 		/* The first and last widget are always visible, determine which other should be visible */
 		for (uint i = 1; i < lengthof(this->visible) - 1; i++) {
-			if (given_width > MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER + child_wid->smallest_x && this->visible[i - 1]) {
+			if (given_width > ScaleGUITrad(MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER) + child_wid->smallest_x && this->visible[i - 1]) {
 				this->visible[i] = true;
 				given_width -= child_wid->smallest_x;
 			} else {
