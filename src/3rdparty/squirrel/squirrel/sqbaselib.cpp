@@ -763,7 +763,7 @@ static SQInteger closure_getinfos(HSQUIRRELVM v) {
 		res->NewSlot(SQString::Create(_ss(v),"name",-1),nc->_name);
 		res->NewSlot(SQString::Create(_ss(v),"paramscheck",-1),nc->_nparamscheck);
 		SQObjectPtr typecheck;
-		if(nc->_typecheck.size() > 0) {
+		if(!nc->_typecheck.empty()) {
 			typecheck =
 				SQArray::Create(_ss(v), nc->_typecheck.size());
 			for(SQUnsignedInteger n = 0; n<nc->_typecheck.size(); n++) {

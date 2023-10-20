@@ -139,7 +139,7 @@ void DumpTarget::BeginStruct(size_t type_id, const std::string &name, const void
 {
 	/* make composite name */
 	std::string cur_name = GetCurrentStructName();
-	if (cur_name.size() > 0) {
+	if (!cur_name.empty()) {
 		/* add name delimiter (we use structured names) */
 		cur_name += ".";
 	}

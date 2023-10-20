@@ -1008,7 +1008,7 @@ public:
 					this->groups.ForceRebuild();
 					this->BuildGroupList((CompanyID)this->window_number);
 
-					if (this->groups.size() > 0) {
+					if (!this->groups.empty()) {
 						this->sel = this->groups[0]->index;
 					}
 				}
@@ -1095,7 +1095,7 @@ public:
 
 				if (!Group::IsValidID(this->sel)) {
 					this->sel = INVALID_GROUP;
-					if (this->groups.size() > 0) this->sel = this->groups[0]->index;
+					if (!this->groups.empty()) this->sel = this->groups[0]->index;
 				}
 
 				this->SetDirty();

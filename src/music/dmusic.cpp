@@ -939,14 +939,14 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 
 			/* Calculate download size for the instrument. */
 			size_t i_size = sizeof(DMUS_DOWNLOADINFO) + sizeof(DMUS_INSTRUMENT);
-			if (dls_file.instruments[i].articulators.size() > 0) {
+			if (!dls_file.instruments[i].articulators.empty()) {
 				/* Articulations are stored as two chunks, one containing meta data and one with the actual articulation data. */
 				offsets += 2;
 				i_size += sizeof(DMUS_ARTICULATION2) + sizeof(CONNECTIONLIST) + sizeof(CONNECTION) * dls_file.instruments[i].articulators.size();
 			}
 
 			for (std::vector<DLSFile::DLSRegion>::iterator rgn = dls_file.instruments[i].regions.begin(); rgn != dls_file.instruments[i].regions.end(); rgn++) {
-				if (rgn->articulators.size() > 0) {
+				if (!rgn->articulators.empty()) {
 					offsets += 2;
 					i_size += sizeof(DMUS_ARTICULATION2) + sizeof(CONNECTIONLIST) + sizeof(CONNECTION) * rgn->articulators.size();
 				}
@@ -999,7 +999,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 			instrument = inst_data + 1;
 
 			/* Write global articulations. */
-			if (dls_file.instruments[i].articulators.size() > 0) {
+			if (!dls_file.instruments[i].articulators.empty()) {
 				inst_data->ulGlobalArtIdx = last_offset;
 				offset_table[last_offset++] = (char *)instrument - inst_base;
 				offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
@@ -1028,18 +1028,18 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 				/* The wave sample data will be taken from the region, if defined, otherwise from the wave itself. */
 				if (rgn.wave_sample.cbSize != 0) {
 					inst_region->WSMP = rgn.wave_sample;
-					if (rgn.wave_loops.size() > 0) MemCpyT(inst_region->WLOOP, &rgn.wave_loops.front(), rgn.wave_loops.size());
+					if (!rgn.wave_loops.empty()) MemCpyT(inst_region->WLOOP, &rgn.wave_loops.front(), rgn.wave_loops.size());
 
 					instrument = (char *)(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * rgn.wave_loops.size();
 				} else {
 					inst_region->WSMP = rgn.wave_sample;
-					if (dls_file.waves[wave_id].wave_loops.size() > 0) MemCpyT(inst_region->WLOOP, &dls_file.waves[wave_id].wave_loops.front(), dls_file.waves[wave_id].wave_loops.size());
+					if (!dls_file.waves[wave_id].wave_loops.empty()) MemCpyT(inst_region->WLOOP, &dls_file.waves[wave_id].wave_loops.front(), dls_file.waves[wave_id].wave_loops.size());
 
 					instrument = (char *)(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * dls_file.waves[wave_id].wave_loops.size();
 				}
 
 				/* Write local articulator data. */
-				if (rgn.articulators.size() > 0) {
+				if (!rgn.articulators.empty()) {
 					inst_region->ulRegionArtIdx = last_offset;
 					offset_table[last_offset++] = (char *)instrument - inst_base;
 					offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
@@ -1168,7 +1168,7 @@ void MusicDriver_DMusic::Stop()
 	}
 
 	/* Unloaded any instruments we loaded. */
-	if (_dls_downloads.size() > 0) {
+	if (!_dls_downloads.empty()) {
 		IDirectMusicPortDownload *download_port = nullptr;
 		_port->QueryInterface(IID_IDirectMusicPortDownload, (LPVOID *)&download_port);
 

@@ -550,11 +550,11 @@ const int *UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() con
 	/* Query Uniscribe for word and cluster break information. */
 	this->str_info.resize(utf16_to_utf8.size());
 
-	if (utf16_str.size() > 0) {
+	if (!utf16_str.empty()) {
 		/* Itemize string into language runs. */
 		std::vector<SCRIPT_ITEM> runs = UniscribeItemizeString(&utf16_str[0], (int32_t)utf16_str.size());
 
-		for (std::vector<SCRIPT_ITEM>::const_iterator run = runs.begin(); runs.size() > 0 && run != runs.end() - 1; run++) {
+		for (std::vector<SCRIPT_ITEM>::const_iterator run = runs.begin(); !runs.empty() && run != runs.end() - 1; run++) {
 			/* Get information on valid word and character break.s */
 			int len = (run + 1)->iCharPos - run->iCharPos;
 			std::vector<SCRIPT_LOGATTR> attr(len);
