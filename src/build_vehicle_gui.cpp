@@ -574,11 +574,12 @@ static uint GetCargoWeight(const CargoArray &cap, VehicleType vtype)
 
 static int DrawCargoCapacityInfo(int left, int right, int y, TestedEngineDetails &te, bool refittable)
 {
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		if (te.all_capacities[c] == 0) continue;
+	for (const CargoSpec *cs : _sorted_cargo_specs) {
+		CargoID cid = cs->Index();
+		if (te.all_capacities[cid] == 0) continue;
 
-		SetDParam(0, c);
-		SetDParam(1, te.all_capacities[c]);
+		SetDParam(0, cid);
+		SetDParam(1, te.all_capacities[cid]);
 		SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
 		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
 		y += FONT_HEIGHT_NORMAL;

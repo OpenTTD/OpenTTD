@@ -876,7 +876,8 @@ struct DepotWindow : Window {
 		static std::string details;
 		details.clear();
 
-		for (CargoID cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
+		for (const CargoSpec *cs : _sorted_cargo_specs) {
+			CargoID cargo_type = cs->Index();
 			if (capacity[cargo_type] == 0) continue;
 
 			SetDParam(0, cargo_type);           // {CARGO} #1
