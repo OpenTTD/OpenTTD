@@ -152,8 +152,8 @@ struct IndustrySpec {
  * @note A tile can at most accept 3 types of cargo, even if an industry as a whole can accept more types.
  */
 struct IndustryTileSpec {
-	CargoID accepts_cargo[INDUSTRY_NUM_INPUTS]; ///< Cargo accepted by this tile
-	int8_t acceptance[INDUSTRY_NUM_INPUTS]; ///< Level of acceptance per cargo type (signed, may be negative!)
+	std::array<CargoID, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< Cargo accepted by this tile
+	std::array<int8_t, INDUSTRY_NUM_INPUTS> acceptance; ///< Level of acceptance per cargo type (signed, may be negative!)
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
 	byte anim_production;                 ///< Animation frame to start when goods are produced
 	byte anim_next;                       ///< Next frame in an animation

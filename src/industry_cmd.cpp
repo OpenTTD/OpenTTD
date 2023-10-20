@@ -415,22 +415,20 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 	const Industry *ind = Industry::GetByTile(tile);
 
 	/* Starting point for acceptance */
-	CargoID accepts_cargo[lengthof(itspec->accepts_cargo)];
-	int8_t cargo_acceptance[lengthof(itspec->acceptance)];
-	MemCpyT(accepts_cargo, itspec->accepts_cargo, lengthof(accepts_cargo));
-	MemCpyT(cargo_acceptance, itspec->acceptance, lengthof(cargo_acceptance));
+	auto accepts_cargo = itspec->accepts_cargo;
+	auto cargo_acceptance = itspec->acceptance;
 
 	if (itspec->special_flags & INDTILE_SPECIAL_ACCEPTS_ALL_CARGO) {
 		/* Copy all accepted cargoes from industry itself */
 		for (const auto &a : ind->accepted) {
-			CargoID *pos = std::find(accepts_cargo, endof(accepts_cargo), a.cargo);
-			if (pos == endof(accepts_cargo)) {
+			auto pos = std::find(std::begin(accepts_cargo), std::end(accepts_cargo), a.cargo);
+			if (pos == std::end(accepts_cargo)) {
 				/* Not found, insert */
-				pos = std::find(accepts_cargo, endof(accepts_cargo), CT_INVALID);
-				if (pos == endof(accepts_cargo)) continue; // nowhere to place, give up on this one
+				pos = std::find(std::begin(accepts_cargo), std::end(accepts_cargo), CT_INVALID);
+				if (pos == std::end(accepts_cargo)) continue; // nowhere to place, give up on this one
 				*pos = a.cargo;
 			}
-			cargo_acceptance[pos - accepts_cargo] += 8;
+			cargo_acceptance[std::distance(std::begin(accepts_cargo), pos)] += 8;
 		}
 	}
 
@@ -438,7 +436,7 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 		/* Try callback for accepts list, if success override all existing accepts */
 		uint16_t res = GetIndustryTileCallback(CBID_INDTILE_ACCEPT_CARGO, 0, 0, gfx, Industry::GetByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
-			MemSetT(accepts_cargo, CT_INVALID, lengthof(accepts_cargo));
+			accepts_cargo.fill(CT_INVALID);
 			for (uint i = 0; i < 3; i++) accepts_cargo[i] = GetCargoTranslation(GB(res, i * 5, 5), itspec->grf_prop.grffile);
 		}
 	}
@@ -447,12 +445,12 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 		/* Try callback for acceptance list, if success override all existing acceptance */
 		uint16_t res = GetIndustryTileCallback(CBID_INDTILE_CARGO_ACCEPTANCE, 0, 0, gfx, Industry::GetByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
-			MemSetT(cargo_acceptance, 0, lengthof(cargo_acceptance));
+			cargo_acceptance.fill(0);
 			for (uint i = 0; i < 3; i++) cargo_acceptance[i] = GB(res, i * 4, 4);
 		}
 	}
 
-	for (byte i = 0; i < lengthof(itspec->accepts_cargo); i++) {
+	for (byte i = 0; i < std::size(itspec->accepts_cargo); i++) {
 		CargoID a = accepts_cargo[i];
 		if (!IsValidCargoID(a) || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
 

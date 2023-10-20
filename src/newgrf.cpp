@@ -3295,12 +3295,12 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 
 			case 0x13: { // variable length cargo acceptance
 				byte num_cargoes = buf->ReadByte();
-				if (num_cargoes > lengthof(tsp->acceptance)) {
+				if (num_cargoes > std::size(tsp->acceptance)) {
 					GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG);
 					error->param_value[1] = prop;
 					return CIR_DISABLED;
 				}
-				for (uint i = 0; i < lengthof(tsp->acceptance); i++) {
+				for (uint i = 0; i < std::size(tsp->acceptance); i++) {
 					if (i < num_cargoes) {
 						tsp->accepts_cargo[i] = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 						/* Tile acceptance can be negative to counteract the INDTILE_SPECIAL_ACCEPTS_ALL_CARGO flag */
