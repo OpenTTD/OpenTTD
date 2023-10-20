@@ -564,7 +564,7 @@ void SQFuncState::PopChildState()
 
 SQFuncState::~SQFuncState()
 {
-	while(_childstates.size() > 0)
+	while(!_childstates.empty())
 	{
 		PopChildState();
 	}

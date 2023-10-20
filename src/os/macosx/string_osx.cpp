@@ -367,7 +367,7 @@ int MacOSStringCompare(std::string_view s1, std::string_view s2)
 	/* Query CoreText for word and cluster break information. */
 	this->str_info.resize(utf16_to_utf8.size());
 
-	if (utf16_str.size() > 0) {
+	if (!utf16_str.empty()) {
 		CFAutoRelease<CFStringRef> str(CFStringCreateWithCharactersNoCopy(kCFAllocatorDefault, &utf16_str[0], utf16_str.size(), kCFAllocatorNull));
 
 		/* Get cluster breaks. */

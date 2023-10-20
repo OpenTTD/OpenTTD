@@ -87,7 +87,7 @@ public:
 	 */
 	bool IsValid() const
 	{
-		return this->buf.size() > 0;
+		return !this->buf.empty();
 	}
 
 	/**

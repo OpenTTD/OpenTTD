@@ -134,7 +134,7 @@ struct DropdownWindow : Window {
 	DropdownWindow(Window *parent, DropDownList &&list, int selected, int button, bool instant_close, const Point &position, const Dimension &size, Colours wi_colour, bool scroll)
 			: Window(&_dropdown_desc), list(std::move(list))
 	{
-		assert(this->list.size() > 0);
+		assert(!this->list.empty());
 
 		this->position = position;
 

@@ -86,7 +86,7 @@ CargoID GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit)
 
 	/* Other cases use (possibly translated) cargobits */
 
-	if (grffile->cargo_list.size() > 0) {
+	if (!grffile->cargo_list.empty()) {
 		/* ...and the cargo is in bounds, then get the cargo ID for
 		 * the label */
 		if (cargo < grffile->cargo_list.size()) return GetCargoIDByLabel(grffile->cargo_list[cargo]);
