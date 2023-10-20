@@ -518,16 +518,16 @@ CargoTypes GetEmptyMask(const Station *st)
 }
 
 /**
- * Items contains the two cargo names that are to be accepted or rejected.
- * msg is the string id of the message to display.
+ * Add news item for when a station changes which cargoes it accepts.
+ * @param st Station of cargo change.
+ * @param cargoes Bit mask of cargo types to list.
+ * @param reject True iff the station rejects the cargo types.
  */
-static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *cargo, StringID msg)
+static void ShowRejectOrAcceptNews(const Station *st, CargoTypes cargoes, bool reject)
 {
-	for (uint i = 0; i < num_items; i++) {
-		SetDParam(i + 1, CargoSpec::Get(cargo[i])->name);
-	}
-
 	SetDParam(0, st->index);
+	SetDParam(1, cargoes);
+	StringID msg = reject ? STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST : STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST;
 	AddNewsItem(msg, NT_ACCEPTANCE, NF_INCOLOUR | NF_SMALL, NR_STATION, st->index);
 }
 
@@ -651,41 +651,13 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 
 	/* show a message to report that the acceptance was changed? */
 	if (show_msg && st->owner == _local_company && st->IsInUse()) {
-		/* List of accept and reject strings for different number of
-		 * cargo types */
-		static const StringID accept_msg[] = {
-			STR_NEWS_STATION_NOW_ACCEPTS_CARGO,
-			STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO,
-		};
-		static const StringID reject_msg[] = {
-			STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO,
-			STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO,
-		};
-
-		/* Array of accepted and rejected cargo types */
-		CargoID accepts[2] = { CT_INVALID, CT_INVALID };
-		CargoID rejects[2] = { CT_INVALID, CT_INVALID };
-		uint num_acc = 0;
-		uint num_rej = 0;
-
-		/* Test each cargo type to see if its acceptance has changed */
-		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (HasBit(new_acc, i)) {
-				if (!HasBit(old_acc, i) && num_acc < lengthof(accepts)) {
-					/* New cargo is accepted */
-					accepts[num_acc++] = i;
-				}
-			} else {
-				if (HasBit(old_acc, i) && num_rej < lengthof(rejects)) {
-					/* Old cargo is no longer accepted */
-					rejects[num_rej++] = i;
-				}
-			}
-		}
+		/* Combine old and new masks to get changes */
+		CargoTypes accepts = new_acc & ~old_acc;
+		CargoTypes rejects = ~new_acc & old_acc;
 
 		/* Show news message if there are any changes */
-		if (num_acc > 0) ShowRejectOrAcceptNews(st, num_acc, accepts, accept_msg[num_acc - 1]);
-		if (num_rej > 0) ShowRejectOrAcceptNews(st, num_rej, rejects, reject_msg[num_rej - 1]);
+		if (accepts != 0) ShowRejectOrAcceptNews(st, accepts, false);
+		if (rejects != 0) ShowRejectOrAcceptNews(st, rejects, true);
 	}
 
 	/* redraw the station view since acceptance changed */
