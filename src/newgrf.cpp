@@ -9069,7 +9069,7 @@ static void CalculateRefitMasks()
 			/* Figure out which CTT to use for the default cargo, if it is 'first refittable'. */
 			const GRFFile *file = _gted[engine].defaultcargo_grf;
 			if (file == nullptr) file = e->GetGRF();
-			if (file != nullptr && file->grf_version >= 8 && file->cargo_list.size() != 0) {
+			if (file != nullptr && file->grf_version >= 8 && !file->cargo_list.empty()) {
 				/* Use first refittable cargo from cargo translation table */
 				byte best_local_slot = UINT8_MAX;
 				for (CargoID cargo_type : SetCargoBitIterator(ei->refit_mask)) {

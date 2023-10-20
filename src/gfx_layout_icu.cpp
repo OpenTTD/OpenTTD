@@ -132,7 +132,7 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
 	glyphs(run.glyphs), glyph_to_char(run.glyph_to_char), total_advance(run.total_advance), font(run.font)
 {
 	/* If there are no positions, the ICURun was not Shaped; that should never happen. */
-	assert(run.positions.size() != 0);
+	assert(!run.positions.empty());
 	this->positions.reserve(run.positions.size());
 
 	/* "positions" is an array of x/y. So we need to alternate. */

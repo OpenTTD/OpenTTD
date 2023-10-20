@@ -50,7 +50,7 @@ bool NetworkUDPSocketHandler::Listen()
 		addr.Listen(SOCK_DGRAM, &this->sockets);
 	}
 
-	return this->sockets.size() != 0;
+	return !this->sockets.empty();
 }
 
 /**

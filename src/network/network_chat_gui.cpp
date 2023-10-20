@@ -67,7 +67,7 @@ static uint8_t *_chatmessage_backup = nullptr; ///< Backup in case text is moved
  */
 static inline bool HaveChatMessages(bool show_all)
 {
-	if (show_all) return _chatmsg_list.size() != 0;
+	if (show_all) return !_chatmsg_list.empty();
 
 	auto now = std::chrono::steady_clock::now();
 	for (auto &cmsg : _chatmsg_list) {
