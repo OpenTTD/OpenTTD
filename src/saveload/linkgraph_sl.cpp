@@ -197,7 +197,7 @@ SaveLoadTable GetLinkGraphJobDesc()
 	static SaveLoadAddrProc * const proc = [](void *b, size_t extra) -> void * { return const_cast<void *>(static_cast<const void *>(reinterpret_cast<const char *>(std::addressof(static_cast<LinkGraphJob *>(b)->settings)) + extra)); };
 
 	/* Build the SaveLoad array on first call and don't touch it later on */
-	if (saveloads.size() == 0) {
+	if (saveloads.empty()) {
 		GetSaveLoadFromSettingTable(_linkgraph_settings, saveloads);
 
 		for (auto &sl : saveloads) {

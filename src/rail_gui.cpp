@@ -2384,7 +2384,7 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		}
 	}
 
-	if (list.size() == 0) {
+	if (list.empty()) {
 		/* Empty dropdowns are not allowed */
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_NONE, INVALID_RAILTYPE, true));
 	}

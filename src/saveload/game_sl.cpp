@@ -172,7 +172,7 @@ struct GSTRChunkHandler : ChunkHandler {
 		}
 
 		/* If there were no strings in the savegame, set GameStrings to nullptr */
-		if (_current_data->raw_strings.size() == 0) {
+		if (_current_data->raw_strings.empty()) {
 			delete _current_data;
 			_current_data = nullptr;
 			return;

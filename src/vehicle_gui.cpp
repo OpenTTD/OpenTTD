@@ -349,7 +349,7 @@ void BaseVehicleListWindow::SetCargoFilterArray()
 void BaseVehicleListWindow::FilterVehicleList()
 {
 	this->vehgroups.Filter(this->cargo_filter[this->cargo_filter_criteria]);
-	if (this->vehicles.size() == 0) {
+	if (this->vehicles.empty()) {
 		/* No vehicle passed through the filter, invalidate the previously selected vehicle */
 		this->vehicle_sel = INVALID_VEHICLE;
 	} else if (this->vehicle_sel != INVALID_VEHICLE && std::find(this->vehicles.begin(), this->vehicles.end(), Vehicle::Get(this->vehicle_sel)) == this->vehicles.end()) { // previously selected engine didn't pass the filter, remove selection
@@ -668,7 +668,7 @@ struct RefitWindow : public Window {
 				if (!HasBit(cmask, cid)) continue;
 
 				auto &list = this->refit_list[cid];
-				bool first_vehicle = list.size() == 0;
+				bool first_vehicle = list.empty();
 				if (first_vehicle) {
 					/* Keeping the current subtype is always an option. It also serves as the option in case of no subtypes */
 					list.push_back({cid, UINT8_MAX, STR_EMPTY});
@@ -1949,7 +1949,7 @@ public:
 		this->BuildVehicleList();
 		this->SortVehicleList();
 
-		if (this->vehicles.size() == 0 && this->IsWidgetLowered(WID_VL_MANAGE_VEHICLES_DROPDOWN)) {
+		if (this->vehicles.empty() && this->IsWidgetLowered(WID_VL_MANAGE_VEHICLES_DROPDOWN)) {
 			this->CloseChildWindows(WC_DROPDOWN_MENU);
 		}
 
@@ -1963,7 +1963,7 @@ public:
 		}
 		if (this->owner == _local_company) {
 			this->SetWidgetDisabledState(WID_VL_AVAILABLE_VEHICLES, this->vli.type != VL_STANDARD);
-			this->SetWidgetsDisabledState(this->vehicles.size() == 0,
+			this->SetWidgetsDisabledState(this->vehicles.empty(),
 				WID_VL_MANAGE_VEHICLES_DROPDOWN,
 				WID_VL_STOP_ALL,
 				WID_VL_START_ALL);

@@ -2044,7 +2044,7 @@ void InitializeLanguagePacks()
 	for (Searchpath sp : _valid_searchpaths) {
 		FillLanguageList(FioGetDirectory(sp, LANG_DIR));
 	}
-	if (_languages.size() == 0) UserError("No available language packs (invalid versions?)");
+	if (_languages.empty()) UserError("No available language packs (invalid versions?)");
 
 	/* Acquire the locale of the current system */
 	const char *lang = GetCurrentLocale("LC_MESSAGES");

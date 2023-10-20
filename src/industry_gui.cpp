@@ -1670,7 +1670,7 @@ public:
 			case WID_ID_INDUSTRY_LIST: {
 				int n = 0;
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
-				if (this->industries.size() == 0) {
+				if (this->industries.empty()) {
 					DrawString(ir, STR_INDUSTRY_DIRECTORY_NONE);
 					break;
 				}

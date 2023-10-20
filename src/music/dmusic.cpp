@@ -873,7 +873,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 			}
 
 			/* If we couldn't load the file from the registry, try again at the default install path of the GM DLS file. */
-			if (dls_file.instruments.size() == 0) {
+			if (dls_file.instruments.empty()) {
 				static const wchar_t *DLS_GM_FILE = L"%windir%\\System32\\drivers\\gm.dls";
 				wchar_t path[MAX_PATH];
 				ExpandEnvironmentStrings(DLS_GM_FILE, path, lengthof(path));

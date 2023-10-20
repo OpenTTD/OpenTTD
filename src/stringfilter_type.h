@@ -56,7 +56,7 @@ public:
 	 * Check whether any filter words were entered.
 	 * @return true if no words were entered.
 	 */
-	bool IsEmpty() const { return this->word_index.size() == 0; }
+	bool IsEmpty() const { return this->word_index.empty(); }
 
 	void ResetState();
 	void AddLine(const char *str);

@@ -172,7 +172,7 @@ struct ScriptAllocator {
 	~ScriptAllocator()
 	{
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
-		assert(this->allocations.size() == 0);
+		assert(this->allocations.empty());
 #endif
 	}
 };
