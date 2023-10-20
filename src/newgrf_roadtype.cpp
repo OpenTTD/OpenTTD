@@ -156,7 +156,7 @@ uint8_t GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile)
 	if (grffile == nullptr) return roadtype;
 
 	const std::vector<RoadTypeLabel> *list = RoadTypeIsRoad(roadtype) ? &grffile->roadtype_list : &grffile->tramtype_list;
-	if (list->size() == 0) return roadtype;
+	if (list->empty()) return roadtype;
 
 	/* Look for a matching road type label in the table */
 	RoadTypeLabel label = GetRoadTypeInfo(roadtype)->label;

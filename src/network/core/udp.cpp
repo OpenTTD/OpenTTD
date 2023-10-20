@@ -73,7 +73,7 @@ void NetworkUDPSocketHandler::CloseSocket()
  */
 void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool all, bool broadcast)
 {
-	if (this->sockets.size() == 0) this->Listen();
+	if (this->sockets.empty()) this->Listen();
 
 	for (auto &s : this->sockets) {
 		/* Make a local copy because if we resolve it we cannot

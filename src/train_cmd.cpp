@@ -854,7 +854,7 @@ static void MakeTrainBackup(TrainList &list, Train *t)
 static void RestoreTrainBackup(TrainList &list)
 {
 	/* No train, nothing to do. */
-	if (list.size() == 0) return;
+	if (list.empty()) return;
 
 	Train *prev = nullptr;
 	/* Iterate over the list and rebuild it. */

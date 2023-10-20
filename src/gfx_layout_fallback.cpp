@@ -155,7 +155,7 @@ int FallbackParagraphLayout::FallbackLine::GetLeading() const
  */
 int FallbackParagraphLayout::FallbackLine::GetWidth() const
 {
-	if (this->size() == 0) return 0;
+	if (this->empty()) return 0;
 
 	/*
 	 * The last X position of a run contains is the end of that run.
@@ -293,7 +293,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		this->buffer++;
 	}
 
-	if (l->size() == 0 || last_char - begin > 0) {
+	if (l->empty() || last_char - begin > 0) {
 		int w = l->GetWidth();
 		l->emplace_back(iter->second, begin, last_char - begin, begin - this->buffer_begin, w);
 	}

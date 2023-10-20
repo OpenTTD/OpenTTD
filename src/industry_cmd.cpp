@@ -2683,7 +2683,7 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
  */
 int WhoCanServiceIndustry(Industry *ind)
 {
-	if (ind->stations_near.size() == 0) return 0; // No stations found at all => nobody services
+	if (ind->stations_near.empty()) return 0; // No stations found at all => nobody services
 
 	int result = 0;
 	for (const Vehicle *v : Vehicle::Iterate()) {

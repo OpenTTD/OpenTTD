@@ -53,7 +53,7 @@ class Kdtree {
 	/** Create one new node in the tree, return its index in the pool */
 	size_t AddNode(const T &element)
 	{
-		if (this->free_list.size() == 0) {
+		if (this->free_list.empty()) {
 			this->nodes.emplace_back(element);
 			return this->nodes.size() - 1;
 		} else {

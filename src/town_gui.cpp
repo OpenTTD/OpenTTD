@@ -823,7 +823,7 @@ public:
 			case WID_TD_LIST: {
 				int n = 0;
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-				if (this->towns.size() == 0) { // No towns available.
+				if (this->towns.empty()) { // No towns available.
 					DrawString(tr, STR_TOWN_DIRECTORY_NONE);
 					break;
 				}

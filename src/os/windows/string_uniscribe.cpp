@@ -291,7 +291,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 
 	/* Itemize text. */
 	std::vector<SCRIPT_ITEM> items = UniscribeItemizeString(buff, length);
-	if (items.size() == 0) return nullptr;
+	if (items.empty()) return nullptr;
 
 	/* Build ranges from the items and the font map. A range is a run of text
 	 * that is part of a single item and formatted using a single font style. */

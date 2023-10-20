@@ -380,7 +380,7 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 	runs = ItemizeScript(buff, length, runs);
 	runs = ItemizeStyle(runs, font_mapping);
 
-	if (runs.size() == 0) return nullptr;
+	if (runs.empty()) return nullptr;
 
 	for (auto &run : runs) {
 		run.Shape(buff, length);

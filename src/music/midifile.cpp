@@ -347,7 +347,7 @@ static bool FixupMidiData(MidiFile &target)
 	std::sort(target.tempos.begin(), target.tempos.end(), TicktimeAscending<MidiFile::TempoChange>);
 	std::sort(target.blocks.begin(), target.blocks.end(), TicktimeAscending<MidiFile::DataBlock>);
 
-	if (target.tempos.size() == 0) {
+	if (target.tempos.empty()) {
 		/* No tempo information, assume 120 bpm (500,000 microseconds per beat */
 		target.tempos.push_back(MidiFile::TempoChange(0, 500000));
 	}
@@ -359,9 +359,9 @@ static bool FixupMidiData(MidiFile &target)
 	uint32_t last_ticktime = 0;
 	for (size_t i = 0; i < target.blocks.size(); i++) {
 		MidiFile::DataBlock &block = target.blocks[i];
-		if (block.data.size() == 0) {
+		if (block.data.empty()) {
 			continue;
-		} else if (block.ticktime > last_ticktime || merged_blocks.size() == 0) {
+		} else if (block.ticktime > last_ticktime || merged_blocks.empty()) {
 			merged_blocks.push_back(block);
 			last_ticktime = block.ticktime;
 		} else {

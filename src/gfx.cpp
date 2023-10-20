@@ -658,7 +658,7 @@ int DrawString(int left, int right, int top, std::string_view str, TextColour co
 	}
 
 	Layouter layout(str, INT32_MAX, colour, fontsize);
-	if (layout.size() == 0) return 0;
+	if (layout.empty()) return 0;
 
 	return DrawLayoutLine(*layout.front(), top, left, right, align, underline, true);
 }

@@ -309,7 +309,7 @@ static void DifficultyNoiseChange(int32_t)
 static void MaxNoAIsChange(int32_t)
 {
 	if (GetGameSettings().difficulty.max_no_competitors != 0 &&
-			AI::GetInfoList()->size() == 0 &&
+			AI::GetInfoList()->empty() &&
 			(!_networking || _network_server)) {
 		ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, WL_CRITICAL);
 	}

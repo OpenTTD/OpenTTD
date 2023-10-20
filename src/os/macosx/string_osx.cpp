@@ -276,7 +276,7 @@ int CoreTextParagraphLayout::CoreTextLine::GetLeading() const
  */
 int CoreTextParagraphLayout::CoreTextLine::GetWidth() const
 {
-	if (this->size() == 0) return 0;
+	if (this->empty()) return 0;
 
 	int total_width = 0;
 	for (const auto &run : *this) {

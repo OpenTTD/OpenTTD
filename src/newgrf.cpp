@@ -1192,7 +1192,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 					break;
 				}
 
-				if (_cur.grffile->railtype_list.size() == 0) {
+				if (_cur.grffile->railtype_list.empty()) {
 					/* Use traction type to select between normal and electrified
 					 * rail only when no translation list is in place. */
 					if (_gted[e->index].railtypelabel == RAILTYPE_RAIL_LABEL     && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_ELECTRIC_LABEL;
@@ -5242,7 +5242,7 @@ static void NewSpriteGroup(ByteReader *buf)
 			group->default_group = GetGroupFromGroupID(setid, type, buf->ReadWord());
 			group->error_group = ranges.size() > 0 ? ranges[0].group : group->default_group;
 			/* nvar == 0 is a special case -- we turn our value into a callback result */
-			group->calculated_result = ranges.size() == 0;
+			group->calculated_result = ranges.empty();
 
 			/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
 			std::vector<uint32_t> bounds;
@@ -5511,7 +5511,7 @@ static CargoID TranslateCargo(uint8_t feature, uint8_t ctype)
 	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return CT_DEFAULT_NA;
 	if (ctype == 0xFF) return CT_PURCHASE;
 
-	if (_cur.grffile->cargo_list.size() == 0) {
+	if (_cur.grffile->cargo_list.empty()) {
 		/* No cargo table, so use bitnum values */
 		if (ctype >= 32) {
 			GrfMsg(1, "TranslateCargo: Cargo bitnum {} out of range (max 31), skipping.", ctype);
@@ -8855,7 +8855,7 @@ static void BuildCargoTranslationMap()
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		if (!cs->IsValid()) continue;
 
-		if (_cur.grffile->cargo_list.size() == 0) {
+		if (_cur.grffile->cargo_list.empty()) {
 			/* Default translation table, so just a straight mapping to bitnum */
 			_cur.grffile->cargo_map[cs->Index()] = cs->bitnum;
 		} else {

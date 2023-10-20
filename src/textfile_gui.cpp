@@ -122,7 +122,7 @@ uint TextfileWindow::ReflowContent()
 
 uint TextfileWindow::GetContentHeight()
 {
-	if (this->lines.size() == 0) return 0;
+	if (this->lines.empty()) return 0;
 	return this->lines.back().bottom;
 }
 

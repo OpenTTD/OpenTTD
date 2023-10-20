@@ -253,7 +253,7 @@ void Station::MarkTilesDirty(bool cargo_change) const
 		/* Don't waste time updating if there are no custom station graphics
 		 * that might change. Even if there are custom graphics, they might
 		 * not change. Unfortunately we have no way of telling. */
-		if (this->speclist.size() == 0) return;
+		if (this->speclist.empty()) return;
 	}
 
 	for (h = 0; h < train_station.h; h++) {

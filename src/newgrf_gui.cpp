@@ -1578,7 +1578,7 @@ void ShowMissingContentWindow(const GRFConfig *list)
 		ci->md5sum = HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum;
 		cv.push_back(ci);
 	}
-	ShowNetworkContentListWindow(cv.size() == 0 ? nullptr : &cv, CONTENT_TYPE_NEWGRF);
+	ShowNetworkContentListWindow(cv.empty() ? nullptr : &cv, CONTENT_TYPE_NEWGRF);
 }
 
 Listing NewGRFWindow::last_sorting     = {false, 0};

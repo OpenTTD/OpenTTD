@@ -1845,7 +1845,7 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		}
 	}
 
-	if (list.size() == 0) {
+	if (list.empty()) {
 		/* Empty dropdowns are not allowed */
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_NONE, INVALID_ROADTYPE, true));
 	}
@@ -1885,7 +1885,7 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 		list.push_back(std::move(item));
 	}
 
-	if (list.size() == 0) {
+	if (list.empty()) {
 		/* Empty dropdowns are not allowed */
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_NONE, -1, true));
 	}

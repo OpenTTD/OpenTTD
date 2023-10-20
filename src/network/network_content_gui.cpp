@@ -899,7 +899,7 @@ public:
 			}
 		}
 
-		if (this->content.size() == 0) {
+		if (this->content.empty()) {
 			if (this->UpdateFilterState()) {
 				this->content.ForceRebuild();
 				this->InvalidateData();
