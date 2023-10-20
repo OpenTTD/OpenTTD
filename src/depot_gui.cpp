@@ -810,7 +810,7 @@ struct DepotWindow : Window {
 
 			case WID_D_SELL_ALL:
 				/* Only open the confirmation window if there are anything to sell */
-				if (this->vehicle_list.size() != 0 || this->wagon_list.size() != 0) {
+				if (!this->vehicle_list.empty() || !this->wagon_list.empty()) {
 					SetDParam(0, this->type);
 					SetDParam(1, this->GetDepotIndex());
 					ShowQuery(

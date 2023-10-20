@@ -222,7 +222,7 @@ class ReplaceVehicleWindow : public Window {
 			/* We need to rebuild the left engines list */
 			this->GenerateReplaceVehList(true);
 			this->vscroll[0]->SetCount(this->engines[0].size());
-			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && this->engines[0].size() != 0) {
+			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && !this->engines[0].empty()) {
 				this->sel_engine[0] = this->engines[0][0].engine_id;
 			}
 		}

@@ -1747,7 +1747,7 @@ void ViewportDoDraw(const Viewport *vp, int left, int top, int right, int bottom
 
 	DrawTextEffects(&_vd.dpi);
 
-	if (_vd.tile_sprites_to_draw.size() != 0) ViewportDrawTileSprites(&_vd.tile_sprites_to_draw);
+	if (!_vd.tile_sprites_to_draw.empty()) ViewportDrawTileSprites(&_vd.tile_sprites_to_draw);
 
 	for (auto &psd : _vd.parent_sprites_to_draw) {
 		_vd.parent_sprites_to_sort.push_back(&psd);
@@ -1773,7 +1773,7 @@ void ViewportDoDraw(const Viewport *vp, int left, int top, int right, int bottom
 		vp->overlay->Draw(&dp);
 	}
 
-	if (_vd.string_sprites_to_draw.size() != 0) {
+	if (!_vd.string_sprites_to_draw.empty()) {
 		/* translate to world coordinates */
 		dp.left = UnScaleByZoom(_vd.dpi.left, zoom);
 		dp.top = UnScaleByZoom(_vd.dpi.top, zoom);
