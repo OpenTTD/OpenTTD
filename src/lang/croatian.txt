@@ -4609,7 +4609,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... preb
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... preblizu drugome gradu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... previše gradova
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nema više mjesta na karti
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Grad neće graditi ceste. Možete uključiti gradnju cesta putem Postavki->Okolina->Gradovi
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Cestovni radovi u tijeku
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nije moguće izbrisati ovaj grad...{}Postaja ili spremište se pozivaju na grad ili polja u vlasništvu grada nije moguće ukloniti
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nema odgovarajućeg mjesta za kip u središtu ovog grada

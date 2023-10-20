@@ -4866,7 +4866,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liia
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liian lähellä toista kuntaa
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liian monta kuntaa
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... kartalla ei ole enää tilaa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kunta ei rakenna teitä. Voit sallia teiden rakentamisen valikosta Asetukset->Ympäristö->Kunnat
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tietyöt ovat käynnissä.
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kuntaa ei voida poistaa...{}Asema tai varikko viittaa kuntaan tai kunnan omistamaa ruutua ei voida poistaa
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tämän kunnan keskustassa ei ole sopivaa paikkaa patsaalle

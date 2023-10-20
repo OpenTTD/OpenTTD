@@ -4865,7 +4865,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... prea
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... prea aproape de alt oraş
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... prea multe oraşe
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nu mai este loc pe hartă
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Orașul nu va construi drumuri. Poți activa construirea drumurilor din Setări avansate -> Economie -> Orașe
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lucrari la drum in curs de desfasurare
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest oraș nu poate fi șters...{}O stație sau un depou face referire la acest oraș, sau o parcelă deținută de oraș nu poate fi eliminată
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nu există niciun loc potrivit pentru o statuie în centrul acestui oraș

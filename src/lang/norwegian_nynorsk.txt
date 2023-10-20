@@ -4194,7 +4194,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... for 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for nær ein annan by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byar
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det er ikkje meir plass på kartet
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen byggjer ikkje vegar. Du kan tillete veg-bygging i Avanserte innstillingar -> Økonomi -> Byar
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegarbeid pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller ei by-egd rute som ikkje kan fjernast
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det er ingen passande plass til statue i sentrum av denne byen

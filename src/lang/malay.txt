@@ -3965,7 +3965,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terl
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu hampir ke bandar lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... bandar terlalu banyak
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ruang tidak mencukupi di dalam peta
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bandar ini tidak akan membina jalan. Anda boleh membenarkan pembinaan jalan melalui Tetapan Lanjutan->Ekonomi->Bandar
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Kerja-kerja jalanraya sedang berjalan
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Tidak boleh padam bandar ini...{}Tidak boleh dipadamkan kerana terdapat sebuah stesen atau depoh yang dipunyai bandar atau petak bandar
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tiada lokasi sesuai untuk arca di tengah bandar

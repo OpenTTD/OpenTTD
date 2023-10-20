@@ -4468,7 +4468,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... קר
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... קרוב מידי לעיר אחרת
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... יותר מידי ערים
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... אין יותר מקום על המפה
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}העיר לא תבנה כבישים. באפשרותך לאפשר בניית כבישים בעזרת תפריט הגדרות מתקמדות->כלכלה->ערים
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}עבודות כביש בפעולה
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}לא ניתן למחוק עיר זו...{}תחנה או מוסך מקושר לעיר או שמשבצת בבעלות העיר לא ניתנת להסרה
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... אין אף מיקום מתאים לפסל במרכז עיירה זו

@@ -4813,7 +4813,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terl
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu dekat dengan kota lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... terlalu banyak kota
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... tidak ada lagi ruang tersisa dalam peta
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kota tidak akan membangun jalan. Anda dapat mengaktifkan pembangunan jalan pada menu Pengaturan Lanjutan->Ekonomi->Kota
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Jalan sedang dikerjakan
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Tidak dapat menghancurkan kota ini...{}Suatu stasiun atau depo tergantung pada kota ini atau kotak milik kota tidak dapat dihapus
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tidak ada tempat yang cocok untuk patung di tengah kota ini

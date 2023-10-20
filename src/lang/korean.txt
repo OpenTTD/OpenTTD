@@ -4867,7 +4867,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 지�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 다른 도시와 너무 가깝습니다
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 도시가 너무 많습니다
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 지도에 더 이상 공간이 없습니다
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [설정→환경→도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행 중입니다
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시나 도시 소유의 땅에 역, 정류장, 항구, 공항 또는 차량기지, 차고지, 정박소 등이 존재하면 도시를 삭제할 수 없습니다.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 이 도시의 중심에 동상을 세우기 적합한 장소가 없습니다

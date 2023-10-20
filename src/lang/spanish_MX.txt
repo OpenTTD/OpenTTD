@@ -4760,7 +4760,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... dema
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cerca de otra localidad
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiadas localidades
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ya no hay espacio en el mapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La localidad no construirá carreteras. Se puede activar esta función en Configuración->Entorno->Localidades
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras de carretera en progreso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede eliminar esta localidad...{}Aún tiene una estación o depósito, o una de sus casillas no se puede quitar
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hay lugar apto para una estatua en el centro de esta localidad

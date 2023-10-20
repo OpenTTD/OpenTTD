@@ -4963,7 +4963,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... prev
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... drugo naselje je previše blizu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ima previše naselja
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... više ne postoji slobodnog prostora na terenu
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Naselje neće graditi kolovoze. Možete uključiti gradnju kolovoza preko Napredna Podešavanja->Okruženje->Naselja
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Putni radovi u toku
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nije moguće obrisati naselje...{}Stanica ili depo na zemljištvu naselja se ne može ukloniti
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ne postoji odgovarajuće mesto za spomenik u centru ovog naselja

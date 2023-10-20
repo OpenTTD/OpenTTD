@@ -4443,7 +4443,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... rhy 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... rhy agos i dref arall
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... gormod o drefi
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nid oes mwy o le ar y map
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Ni fydd y dref yn adeiladu ffyrdd. Gallwch alluogi adeiladu ffyrdd yn Gosodiadau->Amgylchedd->Trefi
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Mae gwaith yn cael ei wneud ar y ffordd
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Methu dileu'r dref...{}Mae gorsaf neu depo sy'n cyfeirio i'r dref neu deil ym mherchnogaeth y dref na ellir ei ddileu
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nid oes man addas i'r cerflun yn nghanol y ddinas yma

@@ -3826,7 +3826,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... ov t
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ov tætt við eina aðra bygd
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ov nógvar bygdir
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... tað er einki pláss eftir á kortinum
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bygdin byggir ikki vegir. Tú kanst tendra vega byggjing í Víðkaðir Innstillingar->Búðskapur->Bygdir
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Veg arbeiði í gongd
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kann ikki strika hesa bygdina...{}Ein støð ella goymsla vísur til bygdina, ella ein puntur ið er ogn hjá bygdini kann ikki beinast burtur
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... einki hóskandi stað til eina standmynd í miðjuni av hesi bygdini

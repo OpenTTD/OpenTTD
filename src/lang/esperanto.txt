@@ -4768,7 +4768,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... tro 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... tro proksime al alia urbo
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tro da urboj
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... spaco mankas sur la mapo
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La urbo ne konstruos stratojn. Vi povas ebligi stratkonstruadon per Avancitaj Agordoj->Ekonomio->Urboj
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Aktivas vojprilaborado
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ne eblas forviŝi ĉi tiun urbon...{}Stacidomo aŭ garaĝo havas referencon al la urbo, aŭ ne eblas forviŝi kahelon posedatan de la urbo
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ne jen estas konvenan lokon por statuo en la centro de ĉi tiu urbo

@@ -4778,7 +4778,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... за
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... занадта блізка да іншага горада
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... занадта шмат гарадоў
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма месца на мапе
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Гарады ня будуць будаваць дарогі самі. Вы можаце ўключыць будаўніцтва дарог у раздзеле «Наладкі -> Навак.{NBSP}асяроддзе -> Гарады».
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Ідуць дарожныя работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Немагчыма зьнішчыць горад:{}да яго адносіцца станцыя або дэпо, альбо немагчыма ачысьціць адну з занятых ім клетак.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... у цэнтры горада няма месца для статуі

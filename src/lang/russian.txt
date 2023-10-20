@@ -5053,7 +5053,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... сл
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... слишком близко к другому городу
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... слишком много городов
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... нет места на карте
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Города не будут строить дороги сами. Вы можете включить строительство дорог в разделе «Настройки -> Окр.{NBSP}среда -> Города».
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Идут дорожные работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно уничтожить город:{}к нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... в центре города нет места для статуи

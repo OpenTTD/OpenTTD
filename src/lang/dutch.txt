@@ -4866,7 +4866,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te d
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te dicht bij een andere plaats
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel plaatsen
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er is geen ruimte meer op de kaart
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}De stad bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Instellingen->Omgeving->Steden
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wegwerkzaamheden in uitvoering
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze stad niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de stad beheerde tegel kan niet worden verwijderd
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... er is geen geschikte plaats voor een standbeeld in het centrum van dit dorp

@@ -4865,7 +4865,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... πο
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... πολύ κοντά σε άλλη πόλη
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... πάρα πολλές πόλεις
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... δεν υπάρχει άλλος χώρος στον χάρτη
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω τις Προχωρημένες Επιλογές->Οικονομία->Πόλεις
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Έργα οδοποιίας σε εξέλιξη
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο που αναφέρεται στην πόλη ή ένα τετραγωνίδιο της πόλης δεν μπορεί να αφαιρεθεί
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... δεν υπάρχει κατάλληλο μέρος για άγαλμα στο κέντρο αυτής της πόλης

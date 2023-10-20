@@ -4820,7 +4820,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liig
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liiga lähedal teisele asulale
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liiga palju asulaid
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... pole enam ruumi kaardil
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Asula ei ehita teid. Teedeehituse lubamiseks Põhjalik seadistus->Majandus->Asulad
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Teede ehitamine
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Seda asulat ei saa kõrvaldada...{}Jaam või depoo viitab asulale, või asulale kuuluvat ruutu ei saa kõrvaldada
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... asula keskuses ei leidu kujule sobivat kohta

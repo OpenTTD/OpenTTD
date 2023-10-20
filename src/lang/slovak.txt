@@ -4880,7 +4880,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... prí
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... príliš blízko iného mesta
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... príliš veľa miest
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie je miesto na mape
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesto nebude stavať cesty. Môžete povoliť budovanie ciest cez Pokročilé nasvavenia->Ekonomika->Mestá.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Prebiehajú cestné práce
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Toto mesto nie je možné odstrániť...{}Stanica alebo depo sa odvoláva na mesto, alebo parcela vo vlastníctve mesta nemôže byť odstránená
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... v centre mesta sa nenachádza žiadne vhodné miesto pre sochu

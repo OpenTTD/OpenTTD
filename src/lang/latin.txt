@@ -4558,7 +4558,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... nimi
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... nimis prope aliud oppidum
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... nimis oppida adsunt
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... plus spatium tabulae deest
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oppidum non vias struet. Potes hanc optionem mutare in Electionibus->Circumiecta->Oppida
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Constructio viaria agitur
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Non licet oppidum delere...{}Statio receptaculumve est oppido sive non licet tegulam oppidi removere
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non est locus effigiei idoneus in medio oppidi

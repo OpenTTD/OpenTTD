@@ -4812,7 +4812,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... dema
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado preto doutra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... hai demasiadas cidades
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non queda máis espazo no mapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}O pobo non construirá estradas. Podes activar a función de construción de estradas en Opcións Avanzadas->Economía->Pobos
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras na estrada en curso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Non se pode borrar esta vila...{}Unha estación ou depósito está relacionado coa vila ou un cadro propiedade da vila non pode ser eliminado
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non hai ningún sitio adecuado para unha estatua no centro desta vila

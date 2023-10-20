@@ -4839,7 +4839,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 太�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 太接近另一個市鎮
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 已有太多市鎮
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 地圖沒有足夠空間
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}市鎮不會自動興建道路。你可以在 [設定] -> [環境] -> [市鎮] 啟用市鎮自行興建道路的功能。
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路施工中
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}無法刪除此市鎮...{}市鎮範圍內還有車站或機廠或無法移除的區塊
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 市中心沒有適合的空間建造雕像

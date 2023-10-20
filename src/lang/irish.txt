@@ -4670,7 +4670,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... rogh
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... roghearr do bhaile eile
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... an iomarca bailte
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... níl a thuilleadh spáis ar an léarscáil
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Ní thógfaidh an baile seo bóithre. Is féidir leat tógáil bóithre a chumasú in Ardsocruithe->Geilleagar->Bailte.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tá oibreacha bóthair ar bun
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ní féidir an baile seo a scriosadh...{}Ní féidir stáisiún nó iosta atá ag tagairt don bhaile nó do thíle atá faoi úinéireacht an bhaile a bhaint
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... níl aon suíomh oiriúnach do dhealbh i lár an bhaile seo

@@ -4251,7 +4251,6 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... пр
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... прекалено близо до друг град
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... прекалено много градове
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма повече място на картата
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Градът няма да изгражда пътища. Можете да активирате строенето на пътища чрез Настройки за напреднали->Икономика->Градове.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Пътни ремонти в процес
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Градът не може да бъде премахнат...{}Станция или депо има връзка с града, или плочка, собственост на града, не може да бъде отстранена
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... няма подходящо място за статуя в центъра на града
