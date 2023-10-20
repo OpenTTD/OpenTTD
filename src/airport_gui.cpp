@@ -241,7 +241,7 @@ class BuildAirportWindow : public PickerWindowBase {
 		DropDownList list;
 
 		for (uint i = 0; i < AirportClass::GetClassCount(); i++) {
-			list.emplace_back(new DropDownListStringItem(AirportClass::Get((AirportClassID)i)->name, i, false));
+			list.push_back(std::make_unique<DropDownListStringItem>(AirportClass::Get((AirportClassID)i)->name, i, false));
 		}
 
 		return list;

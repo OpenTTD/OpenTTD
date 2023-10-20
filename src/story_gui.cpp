@@ -253,11 +253,11 @@ protected:
 		for (const StoryPage *p : this->story_pages) {
 			bool current_page = p->index == this->selected_page_id;
 			if (!p->title.empty()) {
-				list.emplace_back(new DropDownListStringItem(p->title, p->index, current_page));
+				list.push_back(std::make_unique<DropDownListStringItem>(p->title, p->index, current_page));
 			} else {
 				/* No custom title => use a generic page title with page number. */
 				SetDParam(0, page_num);
-				list.emplace_back(new DropDownListStringItem(STR_STORY_BOOK_GENERIC_PAGE_ITEM, p->index, current_page));
+				list.push_back(std::make_unique<DropDownListStringItem>(STR_STORY_BOOK_GENERIC_PAGE_ITEM, p->index, current_page));
 			}
 			page_num++;
 		}

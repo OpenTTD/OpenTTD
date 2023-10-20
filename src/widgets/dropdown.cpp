@@ -464,7 +464,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 	for (uint i = 0; strings[i] != INVALID_STRING_ID; i++) {
 		if (!HasBit(hidden_mask, i)) {
-			list.emplace_back(new DropDownListStringItem(strings[i], i, HasBit(disabled_mask, i)));
+			list.push_back(std::make_unique<DropDownListStringItem>(strings[i], i, HasBit(disabled_mask, i)));
 		}
 	}
 

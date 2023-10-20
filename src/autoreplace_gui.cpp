@@ -568,8 +568,8 @@ public:
 
 			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN: {
 				DropDownList list;
-				list.emplace_back(new DropDownListStringItem(STR_REPLACE_ENGINES, 1, false));
-				list.emplace_back(new DropDownListStringItem(STR_REPLACE_WAGONS, 0, false));
+				list.push_back(std::make_unique<DropDownListStringItem>(STR_REPLACE_ENGINES, 1, false));
+				list.push_back(std::make_unique<DropDownListStringItem>(STR_REPLACE_WAGONS, 0, false));
 				ShowDropDownList(this, std::move(list), this->replace_engines ? 1 : 0, WID_RV_TRAIN_ENGINEWAGON_DROPDOWN);
 				break;
 			}

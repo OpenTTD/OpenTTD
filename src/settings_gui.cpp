@@ -213,18 +213,18 @@ struct GameOptionsWindow : Window {
 					int i = &currency - _currency_specs;
 					if (i == CURRENCY_CUSTOM) continue;
 					if (currency.code.empty()) {
-						list.emplace_back(new DropDownListStringItem(currency.name, i, HasBit(disabled, i)));
+						list.push_back(std::make_unique<DropDownListStringItem>(currency.name, i, HasBit(disabled, i)));
 					} else {
 						SetDParam(0, currency.name);
 						SetDParamStr(1, currency.code);
-						list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CODE, i, HasBit(disabled, i)));
+						list.push_back(std::make_unique<DropDownListStringItem>(STR_GAME_OPTIONS_CURRENCY_CODE, i, HasBit(disabled, i)));
 					}
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 
 				/* Append custom currency at the end */
-				list.emplace_back(new DropDownListItem(-1, false)); // separator line
-				list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM)));
+				list.push_back(std::make_unique<DropDownListItem>(-1, false)); // separator line
+				list.push_back(std::make_unique<DropDownListStringItem>(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM)));
 				break;
 			}
 
@@ -238,7 +238,7 @@ struct GameOptionsWindow : Window {
 
 				const StringID *items = _autosave_dropdown;
 				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list.emplace_back(new DropDownListStringItem(*items, i, false));
+					list.push_back(std::make_unique<DropDownListStringItem>(*items, i, false));
 				}
 				break;
 			}
@@ -260,7 +260,7 @@ struct GameOptionsWindow : Window {
 						SetDParamStr(0, _languages[i].name);
 					}
 					SetDParam(1, (LANGUAGE_TOTAL_STRINGS - _languages[i].missing) * 100 / LANGUAGE_TOTAL_STRINGS);
-					list.emplace_back(new DropDownListStringItem(hide_percentage ? STR_JUST_RAW_STRING : STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, i, false));
+					list.push_back(std::make_unique<DropDownListStringItem>(hide_percentage ? STR_JUST_RAW_STRING : STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, i, false));
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 				break;
@@ -273,7 +273,7 @@ struct GameOptionsWindow : Window {
 				for (uint i = 0; i < _resolutions.size(); i++) {
 					SetDParam(0, _resolutions[i].width);
 					SetDParam(1, _resolutions[i].height);
-					list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_RESOLUTION_ITEM, i, false));
+					list.push_back(std::make_unique<DropDownListStringItem>(STR_GAME_OPTIONS_RESOLUTION_ITEM, i, false));
 				}
 				break;
 
@@ -282,7 +282,7 @@ struct GameOptionsWindow : Window {
 					auto i = std::distance(_refresh_rates.begin(), it);
 					if (*it == _settings_client.gui.refresh_rate) *selected_index = i;
 					SetDParam(0, *it);
-					list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, i, false));
+					list.push_back(std::make_unique<DropDownListStringItem>(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, i, false));
 				}
 				break;
 
@@ -2219,15 +2219,15 @@ struct GameSettingsWindow : Window {
 					 * we don't want to allow comparing with new game's settings. */
 					bool disabled = mode == RM_CHANGED_AGAINST_NEW && settings_ptr == &_settings_newgame;
 
-					list.emplace_back(new DropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled));
+					list.push_back(std::make_unique<DropDownListStringItem>(_game_settings_restrict_dropdown[mode], mode, disabled));
 				}
 				break;
 
 			case WID_GS_TYPE_DROPDOWN:
-				list.emplace_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL, false));
-				list.emplace_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME, false));
-				list.emplace_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY, false));
-				list.emplace_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT, false));
+				list.push_back(std::make_unique<DropDownListStringItem>(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL, false));
+				list.push_back(std::make_unique<DropDownListStringItem>(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME, false));
+				list.push_back(std::make_unique<DropDownListStringItem>(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY, false));
+				list.push_back(std::make_unique<DropDownListStringItem>(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT, false));
 				break;
 		}
 		return list;
@@ -2391,7 +2391,7 @@ struct GameSettingsWindow : Window {
 
 					DropDownList list;
 					for (int i = sd->min; i <= (int)sd->max; i++) {
-						list.emplace_back(new DropDownListStringItem(sd->str_val + i - sd->min, i, false));
+						list.push_back(std::make_unique<DropDownListStringItem>(sd->str_val + i - sd->min, i, false));
 					}
 
 					ShowDropDownListAt(this, std::move(list), value, WID_GS_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);

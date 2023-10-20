@@ -1814,7 +1814,7 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 	DropDownList list;
 
 	if (all_option) {
-		list.emplace_back(new DropDownListStringItem(STR_REPLACE_ALL_ROADTYPE, INVALID_ROADTYPE, false));
+		list.push_back(std::make_unique<DropDownListStringItem>(STR_REPLACE_ALL_ROADTYPE, INVALID_ROADTYPE, false));
 	}
 
 	Dimension d = { 0, 0 };
@@ -1836,18 +1836,18 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 		SetDParam(0, rti->strings.menu_text);
 		SetDParam(1, rti->max_speed / 2);
 		if (for_replacement) {
-			list.emplace_back(new DropDownListStringItem(rti->strings.replace_text, rt, !HasBit(avail_roadtypes, rt)));
+			list.push_back(std::make_unique<DropDownListStringItem>(rti->strings.replace_text, rt, !HasBit(avail_roadtypes, rt)));
 		} else {
 			StringID str = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
-			DropDownListIconItem *iconitem = new DropDownListIconItem(rti->gui_sprites.build_x_road, PAL_NONE, str, rt, !HasBit(avail_roadtypes, rt));
+			auto iconitem = std::make_unique<DropDownListIconItem>(rti->gui_sprites.build_x_road, PAL_NONE, str, rt, !HasBit(avail_roadtypes, rt));
 			iconitem->SetDimension(d);
-			list.emplace_back(iconitem);
+			list.push_back(std::move(iconitem));
 		}
 	}
 
 	if (list.size() == 0) {
 		/* Empty dropdowns are not allowed */
-		list.emplace_back(new DropDownListStringItem(STR_NONE, INVALID_ROADTYPE, true));
+		list.push_back(std::make_unique<DropDownListStringItem>(STR_NONE, INVALID_ROADTYPE, true));
 	}
 
 	return list;
@@ -1880,14 +1880,14 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 		SetDParam(0, rti->strings.menu_text);
 		SetDParam(1, rti->max_speed / 2);
 		StringID str = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
-		DropDownListIconItem *item = new DropDownListIconItem(rti->gui_sprites.build_x_road, PAL_NONE, str, rt, !HasBit(avail_roadtypes, rt));
+		auto item = std::make_unique<DropDownListIconItem>(rti->gui_sprites.build_x_road, PAL_NONE, str, rt, !HasBit(avail_roadtypes, rt));
 		item->SetDimension(d);
-		list.emplace_back(item);
+		list.push_back(std::move(item));
 	}
 
 	if (list.size() == 0) {
 		/* Empty dropdowns are not allowed */
-		list.emplace_back(new DropDownListStringItem(STR_NONE, -1, true));
+		list.push_back(std::make_unique<DropDownListStringItem>(STR_NONE, -1, true));
 	}
 
 	return list;

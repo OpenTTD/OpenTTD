@@ -3063,7 +3063,7 @@ struct IndustryCargoesWindow : public Window {
 			case WID_IC_CARGO_DROPDOWN: {
 				DropDownList lst;
 				for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-					lst.emplace_back(new DropDownListStringItem(cs->name, cs->Index(), false));
+					lst.push_back(std::make_unique<DropDownListStringItem>(cs->name, cs->Index(), false));
 				}
 				if (!lst.empty()) {
 					int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
@@ -3077,7 +3077,7 @@ struct IndustryCargoesWindow : public Window {
 				for (IndustryType ind : _sorted_industry_types) {
 					const IndustrySpec *indsp = GetIndustrySpec(ind);
 					if (!indsp->enabled) continue;
-					lst.emplace_back(new DropDownListStringItem(indsp->name, ind, false));
+					lst.push_back(std::make_unique<DropDownListStringItem>(indsp->name, ind, false));
 				}
 				if (!lst.empty()) {
 					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;
