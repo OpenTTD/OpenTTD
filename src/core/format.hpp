@@ -37,7 +37,7 @@ struct fmt::formatter<T, Char, std::enable_if_t<std::is_base_of<StrongTypedefBas
 	}
 
 	fmt::format_context::iterator format(const T &t, format_context &ctx) const {
-		return parent::format(underlying_type(t), ctx);
+		return parent::format(t.base(), ctx);
 	}
 };
 

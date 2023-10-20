@@ -37,7 +37,7 @@ namespace SQConvert {
 	template <> struct Return<int32_t>        { static inline int Set(HSQUIRRELVM vm, int32_t res)       { sq_pushinteger(vm, res); return 1; } };
 	template <> struct Return<int64_t>        { static inline int Set(HSQUIRRELVM vm, int64_t res)       { sq_pushinteger(vm, res); return 1; } };
 	template <> struct Return<Money>        { static inline int Set(HSQUIRRELVM vm, Money res)       { sq_pushinteger(vm, res); return 1; } };
-	template <> struct Return<TileIndex>    { static inline int Set(HSQUIRRELVM vm, TileIndex res)   { sq_pushinteger(vm, (int32_t)static_cast<uint32_t>(res)); return 1; } };
+	template <> struct Return<TileIndex>    { static inline int Set(HSQUIRRELVM vm, TileIndex res)   { sq_pushinteger(vm, (int32_t)res.base()); return 1; } };
 	template <> struct Return<bool>         { static inline int Set(HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; } };
 	template <> struct Return<char *>       { /* Do not use char *, use std::optional<std::string> instead. */ };
 	template <> struct Return<const char *> { /* Do not use const char *, use std::optional<std::string> instead. */ };

@@ -27,7 +27,7 @@ struct CYapfRailSegmentKey
 
 	inline void Set(const CYapfNodeKeyTrackDir &node_key)
 	{
-		m_value = (static_cast<uint32_t>(node_key.m_tile) << 4) | node_key.m_td;
+		m_value = (node_key.m_tile.base() << 4) | node_key.m_td;
 	}
 
 	inline int32_t CalcHash() const

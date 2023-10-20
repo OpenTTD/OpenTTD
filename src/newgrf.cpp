@@ -6512,18 +6512,18 @@ bool GetGlobalVariable(byte param, uint32_t *value, const GRFFile *grffile)
 {
 	switch (param) {
 		case 0x00: // current date
-			*value = static_cast<int32_t>(std::max(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::Date(0)));
+			*value = std::max(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::Date(0)).base();
 			return true;
 
 		case 0x01: // current year
-			*value = static_cast<int32_t>(Clamp(TimerGameCalendar::year, CalendarTime::ORIGINAL_BASE_YEAR, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR);
+			*value = (Clamp(TimerGameCalendar::year, CalendarTime::ORIGINAL_BASE_YEAR, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR).base();
 			return true;
 
 		case 0x02: { // detailed date information: month of year (bit 0-7), day of month (bit 8-12), leap year (bit 15), day of year (bit 16-24)
 			TimerGameCalendar::YearMonthDay ymd;
 			TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
 			TimerGameCalendar::Date start_of_year = TimerGameCalendar::ConvertYMDToDate(ymd.year, 0, 1);
-			*value = ymd.month | (ymd.day - 1) << 8 | (TimerGameCalendar::IsLeapYear(ymd.year) ? 1 << 15 : 0) | static_cast<int32_t>(TimerGameCalendar::date - start_of_year) << 16;
+			*value = ymd.month | (ymd.day - 1) << 8 | (TimerGameCalendar::IsLeapYear(ymd.year) ? 1 << 15 : 0) | (TimerGameCalendar::date - start_of_year).base() << 16;
 			return true;
 		}
 
@@ -6629,11 +6629,11 @@ bool GetGlobalVariable(byte param, uint32_t *value, const GRFFile *grffile)
 			return true;
 
 		case 0x23: // long format date
-			*value = static_cast<int32_t>(TimerGameCalendar::date);
+			*value = TimerGameCalendar::date.base();
 			return true;
 
 		case 0x24: // long format year
-			*value = static_cast<int32_t>(TimerGameCalendar::year);
+			*value = TimerGameCalendar::year.base();
 			return true;
 
 		default: return false;
@@ -6645,6 +6645,7 @@ static uint32_t GetParamVal(byte param, uint32_t *cond_val)
 	/* First handle variable common with VarAction2 */
 	uint32_t value;
 	if (GetGlobalVariable(param - 0x80, &value, _cur.grffile)) return value;
+
 
 	/* Non-common variable */
 	switch (param) {
@@ -7228,7 +7229,7 @@ static uint32_t GetPatchVariable(uint8_t param)
 {
 	switch (param) {
 		/* start year - 1920 */
-		case 0x0B: return static_cast<int32_t>(std::max(_settings_game.game_creation.starting_year, CalendarTime::ORIGINAL_BASE_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR);
+		case 0x0B: return (std::max(_settings_game.game_creation.starting_year, CalendarTime::ORIGINAL_BASE_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR).base();
 
 		/* freight trains weight factor */
 		case 0x0E: return _settings_game.vehicle.freight_trains;

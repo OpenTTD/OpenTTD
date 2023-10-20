@@ -220,7 +220,7 @@ constexpr To ClampTo(From value)
 template <typename To, typename From, std::enable_if_t<std::is_base_of<StrongTypedefBase, From>::value, int> = 0>
 constexpr To ClampTo(From value)
 {
-	return ClampTo<To>(static_cast<typename From::BaseType>(value));
+	return ClampTo<To>(value.base());
 }
 
 /**
@@ -268,7 +268,7 @@ template <typename T, std::enable_if_t<std::disjunction_v<std::is_convertible<T,
 static constexpr inline bool IsInsideMM(const T x, const size_t min, const size_t max) noexcept
 {
 	if constexpr (std::is_base_of_v<StrongTypedefBase, T>) {
-		return (size_t)(static_cast<typename T::BaseType>(x) - min) < (max - min);
+		return (size_t)(x.base() - min) < (max - min);
 	} else {
 		return (size_t)(x - min) < (max - min);
 	}

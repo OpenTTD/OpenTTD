@@ -439,7 +439,7 @@ uint Engine::GetDisplayMaxTractiveEffort() const
 TimerGameCalendar::Date Engine::GetLifeLengthInDays() const
 {
 	/* Assume leap years; this gives the player a bit more than the given amount of years, but never less. */
-	return static_cast<int32_t>(this->info.lifelength + _settings_game.vehicle.extend_vehicle_life) * CalendarTime::DAYS_IN_LEAP_YEAR;
+	return (this->info.lifelength + _settings_game.vehicle.extend_vehicle_life).base() * CalendarTime::DAYS_IN_LEAP_YEAR;
 }
 
 /**
@@ -664,7 +664,7 @@ void SetYearEngineAgingStops()
 
 		/* Base year ending date on half the model life */
 		TimerGameCalendar::YearMonthDay ymd;
-		TimerGameCalendar::ConvertDateToYMD(ei->base_intro + (static_cast<int32_t>(ei->lifelength) * CalendarTime::DAYS_IN_LEAP_YEAR) / 2, &ymd);
+		TimerGameCalendar::ConvertDateToYMD(ei->base_intro + (ei->lifelength.base() * CalendarTime::DAYS_IN_LEAP_YEAR) / 2, &ymd);
 
 		_year_engine_aging_stops = std::max(_year_engine_aging_stops, ymd.year);
 	}
@@ -690,7 +690,7 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32_t se
 	SavedRandomSeeds saved_seeds;
 	SaveRandomSeeds(&saved_seeds);
 	SetRandomSeed(_settings_game.game_creation.generation_seed ^ seed ^
-	              static_cast<int32_t>(ei->base_intro) ^
+	              ei->base_intro.base() ^
 	              e->type ^
 	              e->GetGRFID());
 	uint32_t r = Random();
@@ -700,7 +700,7 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32_t se
 	 * Note: TTDP uses fixed 1922 */
 	e->intro_date = ei->base_intro <= TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (TimerGameCalendar::Date)GB(r, 0, 9) + ei->base_intro;
 	if (e->intro_date <= TimerGameCalendar::date) {
-		e->age = static_cast<int32_t>(aging_date - e->intro_date) >> 5;
+		e->age = (aging_date - e->intro_date).base() >> 5;
 		e->company_avail = MAX_UVALUE(CompanyMask);
 		e->flags |= ENGINE_AVAILABLE;
 	}
@@ -712,8 +712,8 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32_t se
 	}
 
 	SetRandomSeed(_settings_game.game_creation.generation_seed ^ seed ^
-	              (re->index << 16) ^ (static_cast<int32_t>(re->info.base_intro) << 12) ^ (re->info.decay_speed << 8) ^
-	              (static_cast<int32_t>(re->info.lifelength) << 4) ^ re->info.retire_early ^
+	              (re->index << 16) ^ (re->info.base_intro.base() << 12) ^ (re->info.decay_speed << 8) ^
+	              (re->info.lifelength.base() << 4) ^ re->info.retire_early ^
 	              e->type ^
 	              e->GetGRFID());
 
@@ -724,7 +724,7 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32_t se
 	r = Random();
 	e->reliability_final = GB(r, 16, 14) + 0x3FFF;
 	e->duration_phase_1 = GB(r, 0, 5) + 7;
-	e->duration_phase_2 = GB(r, 5, 4) + static_cast<int32_t>(ei->base_life) * 12 - 96;
+	e->duration_phase_2 = GB(r, 5, 4) + ei->base_life.base() * 12 - 96;
 	e->duration_phase_3 = GB(r, 9, 7) + 120;
 
 	RestoreRandomSeeds(saved_seeds);

@@ -53,7 +53,7 @@ public:
 		if constexpr (std::is_enum_v<T>) {
 			this->Write(static_cast<std::underlying_type_t<const T>>(data));
 		} else if constexpr (std::is_base_of_v<StrongTypedefBase, T>) {
-			this->Write(static_cast<typename T::BaseType>(data));
+			this->Write(data.base());
 		} else {
 			this->Write(data);
 		}

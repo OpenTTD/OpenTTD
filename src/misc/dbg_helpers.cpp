@@ -63,7 +63,7 @@ std::string ValueStr(SignalType t)
 std::string TileStr(TileIndex tile)
 {
 	std::stringstream ss;
-	ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << static_cast<uint32_t>(tile); // 0x%04X
+	ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << tile.base(); // 0x%04X
 	ss << " (" << TileX(tile) << ", " << TileY(tile) << ")";
 	return ss.str();
 }

@@ -31,7 +31,7 @@ public:
 	 * compose valid date values for a known year, month and day.
 	 */
 	enum Date {
-		DATE_INVALID = (int32_t)::CalendarTime::INVALID_DATE, ///< A value representing an invalid date.
+		DATE_INVALID = ::CalendarTime::INVALID_DATE.base(), ///< A value representing an invalid date.
 	};
 
 	/**

@@ -86,13 +86,13 @@ void SetDParamMaxDigits(size_t n, uint count, FontSize size = FS_NORMAL);
 template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 void SetDParam(size_t n, T v)
 {
-	SetDParam(n, static_cast<typename T::BaseType>(v));
+	SetDParam(n, v.base());
 }
 
 template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 void SetDParamMaxValue(size_t n, T max_value, uint min_count = 0, FontSize size = FS_NORMAL)
 {
-	SetDParamMaxValue(n, static_cast<typename T::BaseType>(max_value), min_count, size);
+	SetDParamMaxValue(n, max_value.base(), min_count, size);
 }
 
 void SetDParamStr(size_t n, const char *str);

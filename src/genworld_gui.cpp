@@ -962,7 +962,7 @@ struct GenerateLandscapeWindow : public Window {
 			/* An empty string means revert to the default */
 			switch (this->widget_id) {
 				case WID_GL_HEIGHTMAP_HEIGHT_TEXT: value = MAP_HEIGHT_LIMIT_AUTO_MINIMUM; break;
-				case WID_GL_START_DATE_TEXT: value = static_cast<int32_t>(CalendarTime::DEF_START_YEAR); break;
+				case WID_GL_START_DATE_TEXT: value = CalendarTime::DEF_START_YEAR.base(); break;
 				case WID_GL_SNOW_COVERAGE_TEXT: value = DEF_SNOW_COVERAGE; break;
 				case WID_GL_DESERT_COVERAGE_TEXT: value = DEF_DESERT_COVERAGE; break;
 				case WID_GL_TOWN_PULLDOWN: value = 1; break;

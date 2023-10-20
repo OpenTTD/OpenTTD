@@ -277,7 +277,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte local_id, uint32_t grf
 				break;
 
 			/* Construction date */
-			case 0x42: return static_cast<int32_t>(TimerGameCalendar::date);
+			case 0x42: return TimerGameCalendar::date.base();
 
 			/* Object founder information */
 			case 0x44: return _current_company;
@@ -315,7 +315,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte local_id, uint32_t grf
 		case 0x41: return GetTileSlope(this->tile) << 8 | GetTerrainType(this->tile);
 
 		/* Construction date */
-		case 0x42: return static_cast<int32_t>(this->obj->build_date);
+		case 0x42: return this->obj->build_date.base();
 
 		/* Animation counter */
 		case 0x43: return GetAnimationFrame(this->tile);

@@ -182,7 +182,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(ScriptDate::DATE_INVALID, IsValidStoryPage(story_page_id));
 	EnforceDeityMode(ScriptDate::DATE_INVALID);
 
-	return (ScriptDate::Date)(int32_t)StoryPage::Get(story_page_id)->date;
+	return (ScriptDate::Date)StoryPage::Get(story_page_id)->date.base();
 }
 
 /* static */ bool ScriptStoryPage::SetDate(StoryPageID story_page_id, ScriptDate::Date date)

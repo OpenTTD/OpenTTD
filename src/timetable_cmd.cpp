@@ -437,7 +437,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		just_started = !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
 
 		if (v->timetable_start != 0) {
-			v->lateness_counter = static_cast<int32_t>(TimerGameCalendar::date - v->timetable_start) * Ticks::DAY_TICKS + TimerGameCalendar::date_fract;
+			v->lateness_counter = (TimerGameCalendar::date - v->timetable_start).base() * Ticks::DAY_TICKS + TimerGameCalendar::date_fract;
 			v->timetable_start = 0;
 		}
 

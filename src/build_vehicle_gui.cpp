@@ -1186,7 +1186,7 @@ struct BuildVehicleWindow : Window {
 	{
 		this->vehicle_type = type;
 		this->listview_mode = tile == INVALID_TILE;
-		this->window_number = this->listview_mode ? (int)type : static_cast<uint32_t>(tile);
+		this->window_number = this->listview_mode ? (int)type : tile.base();
 
 		this->sel_engine = INVALID_ENGINE;
 
@@ -1917,7 +1917,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 	 *  so if tile == INVALID_TILE (Available XXX Window), use 'type' as unique number.
 	 *  As it always is a low value, it won't collide with any real tile
 	 *  number. */
-	uint num = (tile == INVALID_TILE) ? (int)type : static_cast<uint32_t>(tile);
+	uint num = (tile == INVALID_TILE) ? (int)type : tile.base();
 
 	assert(IsCompanyBuildableVehicleType(type));
 

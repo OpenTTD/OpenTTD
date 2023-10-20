@@ -928,7 +928,7 @@ void StartupEconomy()
 
 	if (_settings_game.economy.inflation) {
 		/* Apply inflation that happened before our game start year. */
-		int months = static_cast<int32_t>(std::min(TimerGameCalendar::year, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR) * 12;
+		int months = (std::min(TimerGameCalendar::year, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR).base() * 12;
 		for (int i = 0; i < months; i++) {
 			AddInflation(false);
 		}

@@ -77,7 +77,7 @@ public:
 	/**
 	 * Implicit conversion to the uint for bounds checking.
 	 */
-	debug_inline constexpr operator uint() const { return static_cast<uint32_t>(tile); }
+	debug_inline constexpr operator uint() const { return tile.base(); }
 
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
@@ -88,7 +88,7 @@ public:
 	 */
 	debug_inline byte &type()
 	{
-		return base_tiles[static_cast<uint32_t>(tile)].type;
+		return base_tiles[tile.base()].type;
 	}
 
 	/**
@@ -100,7 +100,7 @@ public:
 	 */
 	debug_inline byte &height()
 	{
-		return base_tiles[static_cast<uint32_t>(tile)].height;
+		return base_tiles[tile.base()].height;
 	}
 
 	/**
@@ -112,7 +112,7 @@ public:
 	 */
 	debug_inline byte &m1()
 	{
-		return base_tiles[static_cast<uint32_t>(tile)].m1;
+		return base_tiles[tile.base()].m1;
 	}
 
 	/**
@@ -124,7 +124,7 @@ public:
 	 */
 	debug_inline uint16_t &m2()
 	{
-		return base_tiles[static_cast<uint32_t>(tile)].m2;
+		return base_tiles[tile.base()].m2;
 	}
 
 	/**
@@ -136,7 +136,7 @@ public:
 	 */
 	debug_inline byte &m3()
 	{
-		return base_tiles[static_cast<uint32_t>(tile)].m3;
+		return base_tiles[tile.base()].m3;
 	}
 
 	/**
@@ -148,7 +148,7 @@ public:
 	 */
 	debug_inline byte &m4()
 	{
-		return base_tiles[static_cast<uint32_t>(tile)].m4;
+		return base_tiles[tile.base()].m4;
 	}
 
 	/**
@@ -160,7 +160,7 @@ public:
 	 */
 	debug_inline byte &m5()
 	{
-		return base_tiles[static_cast<uint32_t>(tile)].m5;
+		return base_tiles[tile.base()].m5;
 	}
 
 	/**
@@ -172,7 +172,7 @@ public:
 	 */
 	debug_inline byte &m6()
 	{
-		return extended_tiles[static_cast<uint32_t>(tile)].m6;
+		return extended_tiles[tile.base()].m6;
 	}
 
 	/**
@@ -184,7 +184,7 @@ public:
 	 */
 	debug_inline byte &m7()
 	{
-		return extended_tiles[static_cast<uint32_t>(tile)].m7;
+		return extended_tiles[tile.base()].m7;
 	}
 
 	/**
@@ -196,7 +196,7 @@ public:
 	 */
 	debug_inline uint16_t &m8()
 	{
-		return extended_tiles[static_cast<uint32_t>(tile)].m8;
+		return extended_tiles[tile.base()].m8;
 	}
 };
 
@@ -316,7 +316,7 @@ public:
 	 */
 	static inline TileIndex WrapToMap(TileIndex tile)
 	{
-		return static_cast<uint32_t>(tile) & Map::tile_mask;
+		return tile.base() & Map::tile_mask;
 	}
 
 	/**
@@ -426,7 +426,7 @@ debug_inline static TileIndex TileVirtXY(uint x, uint y)
  */
 debug_inline static uint TileX(TileIndex tile)
 {
-	return static_cast<uint32_t>(tile) & Map::MaxX();
+	return tile.base() & Map::MaxX();
 }
 
 /**
@@ -436,7 +436,7 @@ debug_inline static uint TileX(TileIndex tile)
  */
 debug_inline static uint TileY(TileIndex tile)
 {
-	return static_cast<uint32_t>(tile) >> Map::LogX();
+	return tile.base() >> Map::LogX();
 }
 
 /**

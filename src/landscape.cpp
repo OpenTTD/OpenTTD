@@ -787,7 +787,7 @@ void RunTileLoop()
 		_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
 
 		/* Get the next tile in sequence using a Galois LFSR. */
-		tile = (static_cast<uint32_t>(tile) >> 1) ^ (-(int32_t)(static_cast<uint32_t>(tile) & 1) & feedback);
+		tile = (tile.base() >> 1) ^ (-(int32_t)(tile.base() & 1) & feedback);
 	}
 
 	_cur_tileloop_tile = tile;
@@ -939,7 +939,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 	const TileIndexDiffC *data;
 
 	for (TileIndex tile = 0; tile != Map::Size(); ++tile) {
-		if ((static_cast<uint32_t>(tile) % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		if ((tile.base() % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 		if (!IsValidTile(tile)) continue;
 
@@ -960,7 +960,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
 	}
 
 	for (TileIndex tile = 0; tile != Map::Size(); ++tile) {
-		if ((static_cast<uint32_t>(tile) % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+		if ((tile.base() % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 		if (!IsValidTile(tile)) continue;
 
