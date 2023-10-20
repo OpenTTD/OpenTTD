@@ -8850,7 +8850,7 @@ void ResetPersistentNewGRFData()
  */
 static void BuildCargoTranslationMap()
 {
-	memset(_cur.grffile->cargo_map, 0xFF, sizeof(_cur.grffile->cargo_map));
+	_cur.grffile->cargo_map.fill(UINT8_MAX);
 
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		if (!cs->IsValid()) continue;
@@ -9067,20 +9067,13 @@ static void CalculateRefitMasks()
 		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
 		if (!IsValidCargoID(ei->cargo_type) && ei->refit_mask != 0) {
 			/* Figure out which CTT to use for the default cargo, if it is 'first refittable'. */
-			const uint8_t *cargo_map_for_first_refittable = nullptr;
-			{
-				const GRFFile *file = _gted[engine].defaultcargo_grf;
-				if (file == nullptr) file = e->GetGRF();
-				if (file != nullptr && file->grf_version >= 8 && file->cargo_list.size() != 0) {
-					cargo_map_for_first_refittable = file->cargo_map;
-				}
-			}
-
-			if (cargo_map_for_first_refittable != nullptr) {
+			const GRFFile *file = _gted[engine].defaultcargo_grf;
+			if (file == nullptr) file = e->GetGRF();
+			if (file != nullptr && file->grf_version >= 8 && file->cargo_list.size() != 0) {
 				/* Use first refittable cargo from cargo translation table */
-				byte best_local_slot = 0xFF;
+				byte best_local_slot = UINT8_MAX;
 				for (CargoID cargo_type : SetCargoBitIterator(ei->refit_mask)) {
-					byte local_slot = cargo_map_for_first_refittable[cargo_type];
+					byte local_slot = file->cargo_map[cargo_type];
 					if (local_slot < best_local_slot) {
 						best_local_slot = local_slot;
 						ei->cargo_type = cargo_type;

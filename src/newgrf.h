@@ -127,7 +127,7 @@ struct GRFFile : ZeroedMemoryAllocator {
 	std::vector<GRFLabel> labels;                   ///< List of labels
 
 	std::vector<CargoLabel> cargo_list;             ///< Cargo translation table (local ID -> label)
-	uint8_t cargo_map[NUM_CARGO];                     ///< Inverse cargo translation table (CargoID -> local ID)
+	std::array<uint8_t, NUM_CARGO> cargo_map{}; ///< Inverse cargo translation table (CargoID -> local ID)
 
 	std::vector<RailTypeLabel> railtype_list;       ///< Railtype translation table
 	RailType railtype_map[RAILTYPE_END];
