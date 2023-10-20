@@ -29,7 +29,7 @@ DropDownList BuildSetDropDownList(int *selected_index)
 	*selected_index = T::GetIndexOfUsedSet();
 	DropDownList list;
 	for (int i = 0; i < n; i++) {
-		list.emplace_back(new DropDownListStringItem(T::GetSet(i)->name, i, false));
+		list.push_back(std::make_unique<DropDownListStringItem>(T::GetSet(i)->name, i, false));
 	}
 	return list;
 }

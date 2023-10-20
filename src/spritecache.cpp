@@ -98,7 +98,7 @@ SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdi
 {
 	SpriteFile *file = GetCachedSpriteFileByName(filename);
 	if (file == nullptr) {
-		file = _sprite_files.emplace_back(new SpriteFile(filename, subdir, palette_remap)).get();
+		file = _sprite_files.insert(std::end(_sprite_files), std::make_unique<SpriteFile>(filename, subdir, palette_remap))->get();
 	} else {
 		file->SeekToBegin();
 	}

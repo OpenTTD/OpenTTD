@@ -2353,7 +2353,7 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	DropDownList list;
 
 	if (all_option) {
-		list.emplace_back(new DropDownListStringItem(STR_REPLACE_ALL_RAILTYPE, INVALID_RAILTYPE, false));
+		list.push_back(std::make_unique<DropDownListStringItem>(STR_REPLACE_ALL_RAILTYPE, INVALID_RAILTYPE, false));
 	}
 
 	Dimension d = { 0, 0 };
@@ -2375,18 +2375,18 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 		SetDParam(0, rti->strings.menu_text);
 		SetDParam(1, rti->max_speed);
 		if (for_replacement) {
-			list.emplace_back(new DropDownListStringItem(rti->strings.replace_text, rt, !HasBit(avail_railtypes, rt)));
+			list.push_back(std::make_unique<DropDownListStringItem>(rti->strings.replace_text, rt, !HasBit(avail_railtypes, rt)));
 		} else {
 			StringID str = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
-			DropDownListIconItem *iconitem = new DropDownListIconItem(rti->gui_sprites.build_x_rail, PAL_NONE, str, rt, !HasBit(avail_railtypes, rt));
+			auto iconitem = std::make_unique<DropDownListIconItem>(rti->gui_sprites.build_x_rail, PAL_NONE, str, rt, !HasBit(avail_railtypes, rt));
 			iconitem->SetDimension(d);
-			list.emplace_back(iconitem);
+			list.push_back(std::move(iconitem));
 		}
 	}
 
 	if (list.size() == 0) {
 		/* Empty dropdowns are not allowed */
-		list.emplace_back(new DropDownListStringItem(STR_NONE, INVALID_RAILTYPE, true));
+		list.push_back(std::make_unique<DropDownListStringItem>(STR_NONE, INVALID_RAILTYPE, true));
 	}
 
 	return list;

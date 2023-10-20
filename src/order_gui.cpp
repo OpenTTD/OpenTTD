@@ -1299,7 +1299,7 @@ public:
 			case WID_O_COND_VARIABLE: {
 				DropDownList list;
 				for (uint i = 0; i < lengthof(_order_conditional_variable); i++) {
-					list.emplace_back(new DropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + _order_conditional_variable[i], _order_conditional_variable[i], false));
+					list.push_back(std::make_unique<DropDownListStringItem>(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + _order_conditional_variable[i], _order_conditional_variable[i], false));
 				}
 				ShowDropDownList(this, std::move(list), this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable(), WID_O_COND_VARIABLE);
 				break;

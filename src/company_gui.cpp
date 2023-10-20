@@ -675,10 +675,10 @@ private:
 		if (default_livery != nullptr) {
 			/* Add COLOUR_END to put the colour out of range, but also allow us to show what the default is */
 			default_col = (primary ? default_livery->colour1 : default_livery->colour2) + COLOUR_END;
-			list.emplace_back(new DropDownListColourItem(default_col, false));
+			list.push_back(std::make_unique<DropDownListColourItem>(default_col, false));
 		}
 		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
-			list.emplace_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
+			list.push_back(std::make_unique<DropDownListColourItem>(i, HasBit(used_colours, i)));
 		}
 
 		byte sel = (default_livery == nullptr || HasBit(livery->in_use, primary ? 0 : 1)) ? (primary ? livery->colour1 : livery->colour2) : default_col;
