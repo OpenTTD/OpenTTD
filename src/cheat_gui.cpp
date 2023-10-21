@@ -163,6 +163,7 @@ enum CheatNumbers {
 	CHT_CROSSINGTUNNELS, ///< Allow tunnels to cross each other.
 	CHT_NO_JETCRASH,     ///< Disable jet-airplane crashes.
 	CHT_SETUP_PROD,      ///< Allow manually editing of industry production.
+	CHT_STATION_RATING,  ///< Fix station ratings at 100%.
 	CHT_EDIT_MAX_HL,     ///< Edit maximum allowed heightlevel
 	CHT_CHANGE_DATE,     ///< Do time traveling.
 
@@ -196,6 +197,7 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,               &_cheats.crossing_tunnels.been_used, nullptr                  },
 	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,                    &_cheats.no_jetcrash.been_used,      nullptr                  },
 	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,                     &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
+	{SLE_BOOL,  STR_CHEAT_STATION_RATING,  &_cheats.station_rating.value,                 &_cheats.station_rating.been_used,   nullptr                  },
 	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.map_height_limit, &_cheats.edit_max_hl.been_used,      &ClickChangeMaxHlCheat   },
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &TimerGameCalendar::year,                      &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };

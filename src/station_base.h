@@ -19,7 +19,8 @@
 #include "newgrf_storage.h"
 #include "bitmap_type.h"
 
-static const byte INITIAL_STATION_RATING = 175;
+static const uint8_t INITIAL_STATION_RATING = 175;
+static const uint8_t MAX_STATION_RATING = 255;
 
 /**
  * Flow statistics telling how much flow should be sent along a link. This is

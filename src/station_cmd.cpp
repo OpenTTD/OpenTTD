@@ -64,6 +64,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_tick.h"
+#include "cheat_type.h"
 
 #include "table/strings.h"
 
@@ -3650,7 +3651,10 @@ static void UpdateStationRating(Station *st)
 			 */
 			uint waiting_avg = waiting / (num_dests + 1);
 
-			if (HasBit(cs->callback_mask, CBM_CARGO_STATION_RATING_CALC)) {
+			if (_cheats.station_rating.value) {
+				ge->rating = rating = MAX_STATION_RATING;
+				skip = true;
+			} else if (HasBit(cs->callback_mask, CBM_CARGO_STATION_RATING_CALC)) {
 				/* Perform custom station rating. If it succeeds the speed, days in transit and
 				 * waiting cargo ratings must not be executed. */
 
