@@ -962,10 +962,6 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Uus {STR
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Ava sõiduki jaole fokuseeritud jaoaken
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Jaam {STATION} ei võta enam vastu veost {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Jaam {STATION} ei võta enam vastu veoseid {STRING}, ega {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Jaam {STATION} võtab nüüd vastu veost {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Jaam {STATION} võtab nüüd vastu veoseid {STRING} ja {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Toetuse pakkumine lõppes:{}{}{STRING.g} kohast {STRING} kohta {STRING} veoste eest ei maksta enam toetusi
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Toetuse maksmise aeg sai läbi:{}{}{STRING}kohast {STRING} kohta {STRING} eest ei maksta enam edaspidi toetust

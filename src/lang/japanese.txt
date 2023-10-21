@@ -906,10 +906,6 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}車両のグループに焦点を合わせたグループウィンドウを開きます
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}は今後{STRING}を受入れません
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}は今後{STRING}と{STRING}を受入れません
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION}は今後{STRING}を受入れます
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}は今後{STRING}と{STRING}を受入れます
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}助成金交付案失効:{}{1:STRING}から{2:STRING}に{0:STRING}を運ぶ便の{}助成金交付案は失効しました
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}助成金支払満了:{}{1:STRING}から{2:STRING}に{0:STRING}を運ぶ便の{}助成金は終了しました

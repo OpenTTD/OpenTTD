@@ -870,10 +870,6 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Neie {STRING} is no beskikber!  -  {ENGINE}
 
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} akseptearret gjin {STRING} mear
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} akseptearret gjin {STRING} en {STRING} mear
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} akseptearrret no {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} akseptearret no {STRING} en {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsydzje oanbieding ferrûn:{}{}{STRING} fan {STRING} nei {STRING} sil no net in subsydzje krije.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsydzje ôfrûn:{}{}{STRING} tsjinst fan {STRING} nei {STRING} krijt gjin subsydzje mear.

@@ -1100,10 +1100,6 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G ""
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Otvori grupni prozor fokusiran na grupu vozila
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} više ne prihvata {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} više ne prihvata ni {STRING} ni {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} od sada prihvata {STRING.aku}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} od sada prihvata {STRING.aku} i {STRING.aku}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponuda subvencije istekla:{}{}Prevoz {STRING.gen} iz {STRING} u {STRING} se više neće stimulisati
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencija povučena:{}{}Usluga prevoza {STRING.gen} između stanica {STRING} i {STRING} više nije u opticaju

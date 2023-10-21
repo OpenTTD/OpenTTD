@@ -882,10 +882,6 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuwe {ST
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Maak die groepvenster oop en fokus op die voertuiggroep
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} aanvaar nie meer {STRING} nie
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} aanvaar nie meer {STRING} of {STRING} nie
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} aanvaar nou {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} aanvaar nou {STRING} en {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidie-aanbod het verval:{}{}{STRING} van {STRING} tot {STRING} sal nou nie 'n subsidie aantrek nie.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie onttrek:{}{}{STRING} diens van {STRING} tot {STRING} is nie meer gesubsideieer nie.

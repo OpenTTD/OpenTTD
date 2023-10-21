@@ -876,10 +876,6 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}ให�
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}เปิดแถบกลุ่มยาพาหนะที่ได้เลือกไว้
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ไม่ต้องการรับ {STRING} อีกต่อไป
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ไม่รับ {STRING} หรือ {STRING} แล้ว
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} ขณะนี้ยอมรับ {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} ขณะนี้ยอมรับ {STRING} และ {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}ข้อเสนอสำหรับการอุดหนุนสิ้นสุด:{}{}{STRING} จาก {STRING} ถึง {STRING} จะไม่ได้รับการอุดหนุนอีกต่อไป.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}การอุดหนุนถูกถอดถอน:{}{}บริการ {STRING} จาก {STRING} ถึง {STRING} จะไม่ได้รับการสนับสนุนอีกต่อไป.
