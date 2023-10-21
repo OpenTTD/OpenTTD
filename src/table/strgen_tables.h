@@ -30,6 +30,7 @@ struct CmdStruct {
 };
 
 extern void EmitSingleChar(Buffer *buffer, char *buf, int value);
+extern void EmitCargoList(Buffer *buffer, char *buf, int value);
 extern void EmitPlural(Buffer *buffer, char *buf, int value);
 extern void EmitGender(Buffer *buffer, char *buf, int value);
 
@@ -77,7 +78,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"CARGO_LONG",        EmitSingleChar, SCC_CARGO_LONG,         2,  1, C_NONE | C_GENDER},
 	{"CARGO_SHORT",       EmitSingleChar, SCC_CARGO_SHORT,        2,  1, C_NONE | C_GENDER}, // short cargo description, only ### tons, or ### litres
 	{"CARGO_TINY",        EmitSingleChar, SCC_CARGO_TINY,         2,  1, C_NONE}, // tiny cargo description with only the amount, not a specifier for the amount or the actual cargo name
-	{"CARGO_LIST",        EmitSingleChar, SCC_CARGO_LIST,         1, -1, C_CASE},
+	{"CARGO_LIST",        EmitCargoList,  0,                      1, -1, C_CASE},
 	{"POWER",             EmitSingleChar, SCC_POWER,              1,  0, C_NONE},
 	{"POWER_TO_WEIGHT",   EmitSingleChar, SCC_POWER_TO_WEIGHT,    1,  0, C_NONE},
 	{"VOLUME_LONG",       EmitSingleChar, SCC_VOLUME_LONG,        1,  0, C_NONE},

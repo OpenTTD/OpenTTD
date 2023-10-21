@@ -315,14 +315,17 @@ char *ParseWord(char **buf)
 /* Forward declaration */
 static int TranslateArgumentIdx(int arg, int offset = 0);
 
+static void EmitWord(Buffer *buffer, const char *word)
+{
+	for (const char *p = word; *p != '\0'; ++p) buffer->AppendByte(*p);
+	buffer->AppendByte('\0');
+}
+
 static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words, uint nw)
 {
 	buffer->AppendByte(nw);
 	for (uint i = 0; i < nw; i++) buffer->AppendByte((byte)strlen(words[i]) + 1);
-	for (uint i = 0; i < nw; i++) {
-		for (uint j = 0; words[i][j] != '\0'; j++) buffer->AppendByte(words[i][j]);
-		buffer->AppendByte(0);
-	}
+	for (uint i = 0; i < nw; i++) EmitWord(buffer, words[i]);
 }
 
 void EmitPlural(Buffer *buffer, char *buf, int)
@@ -417,6 +420,24 @@ void EmitGender(Buffer *buffer, char *buf, int)
 		buffer->AppendByte(TranslateArgumentIdx(argidx, offset));
 		EmitWordList(buffer, words, nw);
 	}
+}
+
+void EmitCargoList(Buffer *buffer, char *buf, int)
+{
+	/* This is a {CARGO_LIST " and " ", "} command. */
+	const char *last_separator = ", "; // or " and " / ", and " / " or " / ", or "
+	const char *separator = ", ";
+
+	const char *word = ParseWord(&buf);
+	if (word != nullptr) {
+		last_separator = word;
+		word = ParseWord(&buf);
+		if (word != nullptr) separator = word;
+	}
+
+	buffer->AppendUtf8(SCC_CARGO_LIST);
+	EmitWord(buffer, separator);
+	EmitWord(buffer, last_separator);
 }
 
 static const CmdStruct *FindCmd(const char *s, int len)

@@ -1252,7 +1252,16 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 			case SCC_CARGO_LIST: { // {CARGO_LIST}
 				CargoTypes cmask = args.GetNextParameter<CargoTypes>();
+				/* After the SCC_CARGO_LIST character, there are two '\0' terminated strings with separators.
+				 * Get their pointers and advance str to beyond them.
+				 */
+				const char *separator = str;
+				str += strlen(str) + 1;
+				const char *last_separator = str;
+				str += strlen(str) + 1;
+
 				bool first = true;
+				int remaining = CountBits(cmask);
 
 				for (const auto &cs : _sorted_cargo_specs) {
 					if (!HasBit(cmask, cs->Index())) continue;
@@ -1261,8 +1270,9 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						first = false;
 					} else {
 						/* Add a comma if this is not the first item */
-						builder += ", ";
+						builder += remaining == 1 ? last_separator : separator;
 					}
+					remaining--;
 
 					GetStringWithArgs(builder, cs->name, args, next_substr_case_index, game_script);
 				}
