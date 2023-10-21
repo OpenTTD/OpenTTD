@@ -1258,7 +1258,7 @@ uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 			cmask ^= lmask;
 			SetDParam(0, STR_PURCHASE_INFO_ALL_BUT);
 		} else {
-			SetDParam(0, STR_JUST_CARGO_LIST);
+			SetDParam(0, STR_PURCHASE_INFO_CARGO_LIST);
 		}
 		SetDParam(1, cmask);
 	}

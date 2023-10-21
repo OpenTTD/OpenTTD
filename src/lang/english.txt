@@ -924,8 +924,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}New {STR
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Open the group window focused on the vehicle's group
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} no longer accepts: {CARGO_LIST}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} now accepts: {CARGO_LIST}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} no longer accepts: {CARGO_LIST " or "}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} now accepts: {CARGO_LIST " and "}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Offer of subsidy expired:{}{}{STRING} from {STRING2} to {STRING2} will now not attract a subsidy
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidy withdrawn:{}{}{STRING} service from {STRING2} to {STRING2} is no longer subsidised
@@ -2694,8 +2694,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Don't highlight coverage area of proposed site
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Highlight coverage area of proposed site
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepts: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Supplies: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepts: {GOLD}{CARGO_LIST " and "}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Supplies: {GOLD}{CARGO_LIST " and "}
 STR_STATION_BUILD_INFRASTRUCTURE_COST                           :{BLACK}Maintenance cost: {GOLD}{CURRENCY_SHORT}/yr
 
 # Join station window
@@ -3667,7 +3667,7 @@ STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepts
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Show list of accepted cargo
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepts: {WHITE}{CARGO_LIST}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepts: {WHITE}{CARGO_LIST " and "}
 
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}This station has exclusive transport rights in this town.
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} bought exclusive transport rights in this town.
@@ -3897,7 +3897,7 @@ STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Replace vehicle
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send for servicing
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Create group
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit this year: {CURRENCY_LONG} (last year: {CURRENCY_LONG})
-STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST " and "}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING1} {STRING1}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Send to depot
@@ -3985,7 +3985,8 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refittab
 STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
 STR_PURCHASE_INFO_NONE                                          :None
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :Engines only
-STR_PURCHASE_INFO_ALL_BUT                                       :All but {CARGO_LIST}
+STR_PURCHASE_INFO_ALL_BUT                                       :All but {CARGO_LIST " and "}
+STR_PURCHASE_INFO_CARGO_LIST                                    :{CARGO_LIST " or "}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {GOLD}{COMMA} tiles
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Aircraft type: {GOLD}{STRING}
