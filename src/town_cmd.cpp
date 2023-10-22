@@ -3561,22 +3561,6 @@ static void UpdateTownGrowth(Town *t)
 	SetWindowDirty(WC_TOWN_VIEW, t->index);
 }
 
-static void UpdateTownAmounts(Town *t)
-{
-	for (auto &supplied : t->supplied) supplied.NewMonth();
-	for (auto &received : t->received) received.NewMonth();
-	if (t->fund_buildings_months != 0) t->fund_buildings_months--;
-
-	SetWindowDirty(WC_TOWN_VIEW, t->index);
-}
-
-static void UpdateTownUnwanted(Town *t)
-{
-	for (const Company *c : Company::Iterate()) {
-		if (t->unwanted[c->index] > 0) t->unwanted[c->index]--;
-	}
-}
-
 /**
  * Checks whether the local authority allows construction of a new station (rail, road, airport, dock) on the given tile
  * @param tile The tile where the station shall be constructed.
@@ -3775,16 +3759,27 @@ CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType
 static IntervalTimer<TimerGameCalendar> _towns_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::TOWN}, [](auto)
 {
 	for (Town *t : Town::Iterate()) {
+		/* Check for active town actions and decrement their counters. */
 		if (t->road_build_months != 0) t->road_build_months--;
+		if (t->fund_buildings_months != 0) t->fund_buildings_months--;
 
 		if (t->exclusive_counter != 0) {
 			if (--t->exclusive_counter == 0) t->exclusivity = INVALID_COMPANY;
 		}
 
-		UpdateTownAmounts(t);
+		/* Check for active failed bribe cooloff periods and decrement them. */
+		for (const Company *c : Company::Iterate()) {
+			if (t->unwanted[c->index] > 0) t->unwanted[c->index]--;
+		}
+
+		/* Update cargo statistics. */
+		for (auto &supplied : t->supplied) supplied.NewMonth();
+		for (auto &received : t->received) received.NewMonth();
+
 		UpdateTownGrowth(t);
 		UpdateTownRating(t);
-		UpdateTownUnwanted(t);
+
+		SetWindowDirty(WC_TOWN_VIEW, t->index);
 	}
 });
 
