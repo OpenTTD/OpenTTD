@@ -305,7 +305,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 
 	/* Don't let a timetable start more than 15 years into the future or 1 year in the past. */
 	if (start_date < 0 || start_date > CalendarTime::MAX_DATE) return CMD_ERROR;
-	if (start_date - TimerGameCalendar::date > static_cast<int32_t>(MAX_TIMETABLE_START_YEARS) * CalendarTime::DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+	if (start_date - TimerGameCalendar::date > TimerGameCalendar::DateAtStartOfYear(MAX_TIMETABLE_START_YEARS)) return CMD_ERROR;
 	if (TimerGameCalendar::date - start_date > CalendarTime::DAYS_IN_LEAP_YEAR) return CMD_ERROR;
 	if (timetable_all && !v->orders->IsCompleteTimetable()) return CommandCost(STR_ERROR_TIMETABLE_INCOMPLETE);
 	if (timetable_all && start_date + total_duration / Ticks::DAY_TICKS > CalendarTime::MAX_DATE) return CMD_ERROR;
