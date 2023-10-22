@@ -216,11 +216,11 @@ static inline bool IsRoadStopTile(Tile t)
 }
 
 /**
- * Is tile \a t a standard (non-drive through) road stop station?
+ * Is tile \a t a bay (non-drive through) road stop station?
  * @param t Tile to check
- * @return \c true if the tile is a station tile and a standard road stop
+ * @return \c true if the tile is a station tile and a bay road stop
  */
-static inline bool IsStandardRoadStopTile(Tile t)
+static inline bool IsBayRoadStopTile(Tile t)
 {
 	return IsRoadStopTile(t) && GetStationGfx(t) < GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET;
 }

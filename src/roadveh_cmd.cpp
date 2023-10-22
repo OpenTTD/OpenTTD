@@ -893,7 +893,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 			/* Road depot owned by another company or with the wrong orientation */
 			trackdirs = TRACKDIR_BIT_NONE;
 		}
-	} else if (IsTileType(tile, MP_STATION) && IsStandardRoadStopTile(tile)) {
+	} else if (IsTileType(tile, MP_STATION) && IsBayRoadStopTile(tile)) {
 		/* Standard road stop (drive-through stops are treated as normal road) */
 
 		if (!IsTileOwner(tile, v->owner) || GetRoadStopDir(tile) == enterdir || v->HasArticulatedPart()) {
@@ -908,7 +908,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 				trackdirs = TRACKDIR_BIT_NONE;
 			} else {
 				/* Proper station type, check if there is free loading bay */
-				if (!_settings_game.pf.roadveh_queue && IsStandardRoadStopTile(tile) &&
+				if (!_settings_game.pf.roadveh_queue && IsBayRoadStopTile(tile) &&
 						!RoadStop::GetByTile(tile, rstype)->HasFreeBay()) {
 					/* Station is full and RV queuing is off */
 					trackdirs = TRACKDIR_BIT_NONE;
@@ -1535,7 +1535,7 @@ again:
 			if (v->current_order.IsType(OT_LEAVESTATION)) v->current_order.Free();
 		}
 
-		if (IsStandardRoadStopTile(v->tile)) rs->SetEntranceBusy(true);
+		if (IsBayRoadStopTile(v->tile)) rs->SetEntranceBusy(true);
 
 		StartRoadVehSound(v);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
@@ -1740,7 +1740,7 @@ Trackdir RoadVehicle::GetVehicleTrackdir() const
 		return DiagDirToDiagTrackdir(GetRoadDepotDirection(this->tile));
 	}
 
-	if (IsStandardRoadStopTile(this->tile)) {
+	if (IsBayRoadStopTile(this->tile)) {
 		/* We'll assume the road vehicle is facing outwards */
 		return DiagDirToDiagTrackdir(GetRoadStopDir(this->tile)); // Road vehicle in a station
 	}

@@ -847,7 +847,7 @@ void OnTick_Town()
  */
 static RoadBits GetTownRoadBits(TileIndex tile)
 {
-	if (IsRoadDepotTile(tile) || IsStandardRoadStopTile(tile)) return ROAD_NONE;
+	if (IsRoadDepotTile(tile) || IsBayRoadStopTile(tile)) return ROAD_NONE;
 
 	return GetAnyRoadBits(tile, RTT_ROAD, true);
 }

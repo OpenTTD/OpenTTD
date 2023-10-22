@@ -211,7 +211,7 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 		/* The vehicle cannot go to this roadstop (different roadtype) */
 		if (!HasTileAnyRoadType(rs->xy, v->compatible_roadtypes)) continue;
 		/* The vehicle is articulated and can therefore not go to a standard road stop. */
-		if (IsStandardRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
+		if (IsBayRoadStopTile(rs->xy) && v->HasArticulatedPart()) continue;
 
 		/* The vehicle can actually go to this road stop. So, return it! */
 		break;

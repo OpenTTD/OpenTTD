@@ -247,7 +247,7 @@ protected:
 	inline bool CanExitOldTile()
 	{
 		/* road stop can be left at one direction only unless it's a drive-through stop */
-		if (IsRoadTT() && IsStandardRoadStopTile(m_old_tile)) {
+		if (IsRoadTT() && IsBayRoadStopTile(m_old_tile)) {
 			DiagDirection exitdir = GetRoadStopDir(m_old_tile);
 			if (exitdir != m_exitdir) {
 				m_err = EC_NO_WAY;
@@ -278,7 +278,7 @@ protected:
 	/** return true if we can enter m_new_tile from m_exitdir */
 	inline bool CanEnterNewTile()
 	{
-		if (IsRoadTT() && IsStandardRoadStopTile(m_new_tile)) {
+		if (IsRoadTT() && IsBayRoadStopTile(m_new_tile)) {
 			/* road stop can be entered from one direction only unless it's a drive-through stop */
 			DiagDirection exitdir = GetRoadStopDir(m_new_tile);
 			if (ReverseDiagDir(exitdir) != m_exitdir) {
@@ -402,7 +402,7 @@ protected:
 
 		/* Single tram bits and standard road stops cause reversing. */
 		if (IsRoadTT() && ((IsTram() && GetSingleTramBit(m_old_tile) == ReverseDiagDir(m_exitdir)) ||
-				(IsStandardRoadStopTile(m_old_tile) && GetRoadStopDir(m_old_tile) == ReverseDiagDir(m_exitdir)))) {
+				(IsBayRoadStopTile(m_old_tile) && GetRoadStopDir(m_old_tile) == ReverseDiagDir(m_exitdir)))) {
 			/* reverse */
 			m_new_tile = m_old_tile;
 			m_new_td_bits = TrackdirToTrackdirBits(ReverseTrackdir(m_old_td));

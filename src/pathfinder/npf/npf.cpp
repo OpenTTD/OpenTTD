@@ -695,7 +695,7 @@ static bool CanEnterTileOwnerCheck(Owner owner, TileIndex tile, DiagDirection en
 	if (IsTileType(tile, MP_RAILWAY) || // Rail tile (also rail depot)
 			HasStationTileRail(tile) ||     // Rail station tile/waypoint
 			IsRoadDepotTile(tile) ||        // Road depot tile
-			IsStandardRoadStopTile(tile)) { // Road station tile (but not drive-through stops)
+			IsBayRoadStopTile(tile)) { // Road station tile (but not drive-through stops)
 		return IsTileOwner(tile, owner);  // You need to own these tiles entirely to use them
 	}
 
@@ -768,7 +768,7 @@ static DiagDirection GetTileSingleEntry(TileIndex tile, TransportType type, uint
 	if (type != TRANSPORT_WATER && IsDepotTypeTile(tile, type)) return GetDepotDirection(tile, type);
 
 	if (type == TRANSPORT_ROAD) {
-		if (IsStandardRoadStopTile(tile)) return GetRoadStopDir(tile);
+		if (IsBayRoadStopTile(tile)) return GetRoadStopDir(tile);
 		if ((RoadTramType)subtype == RTT_TRAM) return GetSingleTramBit(tile);
 	}
 
