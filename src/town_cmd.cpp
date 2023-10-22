@@ -481,14 +481,14 @@ static void RemoveNearbyStations(Town *t, TileIndex tile, BuildingFlags flags)
 }
 
 /**
- * Helper function for house completion stages progression
- * @param tile TileIndex of the house (or parts of it) to "grow"
+ * Helper function for house construction stage progression.
+ * @param tile TileIndex of the house (or parts of it) to construct.
  */
-static void MakeSingleHouseBigger(TileIndex tile)
+static void AdvanceSingleHouseConstruction(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_HOUSE));
 
-	/* progress in construction stages */
+	/* Progress in construction stages */
 	IncHouseConstructionTick(tile);
 	if (GetHouseConstructionTick(tile) != 0) return;
 
@@ -504,16 +504,16 @@ static void MakeSingleHouseBigger(TileIndex tile)
 }
 
 /**
- * Make the house advance in its construction stages until completion
- * @param tile TileIndex of house
+ * Increase the construction stage of a house.
+ * @param tile The tile of the house under construction.
  */
-static void MakeTownHouseBigger(TileIndex tile)
+static void AdvanceHouseConstruction(TileIndex tile)
 {
 	uint flags = HouseSpec::Get(GetHouseType(tile))->building_flags;
-	if (flags & BUILDING_HAS_1_TILE)  MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 0));
-	if (flags & BUILDING_2_TILES_Y)   MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 1));
-	if (flags & BUILDING_2_TILES_X)   MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 0));
-	if (flags & BUILDING_HAS_4_TILES) MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 1));
+	if (flags & BUILDING_HAS_1_TILE)  AdvanceSingleHouseConstruction(TILE_ADDXY(tile, 0, 0));
+	if (flags & BUILDING_2_TILES_Y)   AdvanceSingleHouseConstruction(TILE_ADDXY(tile, 0, 1));
+	if (flags & BUILDING_2_TILES_X)   AdvanceSingleHouseConstruction(TILE_ADDXY(tile, 1, 0));
+	if (flags & BUILDING_HAS_4_TILES) AdvanceSingleHouseConstruction(TILE_ADDXY(tile, 1, 1));
 }
 
 /**
@@ -531,8 +531,8 @@ static void TileLoop_Town(TileIndex tile)
 	if (house_id >= NEW_HOUSE_OFFSET && !NewHouseTileLoop(tile)) return;
 
 	if (!IsHouseCompleted(tile)) {
-		/* Construction is not completed. See if we can go further in construction*/
-		MakeTownHouseBigger(tile);
+		/* Construction is not completed, so we advance a construction stage. */
+		AdvanceHouseConstruction(tile);
 		return;
 	}
 
