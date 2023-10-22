@@ -3408,7 +3408,7 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 				Axis axis = DiagDirToAxis(dir);
 
 				if (side != INVALID_DIAGDIR) {
-					if (axis != DiagDirToAxis(side) || (IsStandardRoadStopTile(tile) && dir != side)) break;
+					if (axis != DiagDirToAxis(side) || (IsBayRoadStopTile(tile) && dir != side)) break;
 				}
 
 				trackbits = AxisToTrackBits(axis);

@@ -2896,7 +2896,7 @@ StringID GetVehicleCannotUseStationReason(const Vehicle *v, const Station *st)
 
 			for (; rs != nullptr; rs = rs->next) {
 				/* Articulated vehicles cannot use bay road stops, only drive-through. Make sure the vehicle can actually use this bay stop */
-				if (HasTileAnyRoadType(rs->xy, rv->compatible_roadtypes) && IsStandardRoadStopTile(rs->xy) && rv->HasArticulatedPart()) {
+				if (HasTileAnyRoadType(rs->xy, rv->compatible_roadtypes) && IsBayRoadStopTile(rs->xy) && rv->HasArticulatedPart()) {
 					err = STR_ERROR_NO_STOP_ARTICULATED_VEHICLE;
 					continue;
 				}

@@ -2828,7 +2828,7 @@ bool AfterLoadGame()
 	/* The road owner of standard road stops was not properly accounted for. */
 	if (IsSavegameVersionBefore(SLV_172)) {
 		for (auto t : Map::Iterate()) {
-			if (!IsStandardRoadStopTile(t)) continue;
+			if (!IsBayRoadStopTile(t)) continue;
 			Owner o = GetTileOwner(t);
 			SetRoadOwner(t, RTT_ROAD, o);
 			SetRoadOwner(t, RTT_TRAM, o);

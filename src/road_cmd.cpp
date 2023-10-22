@@ -2487,7 +2487,7 @@ CommandCost CmdConvertRoad(DoCommandFlag flags, TileIndex tile, TileIndex area_s
 			}
 
 			uint num_pieces = CountBits(GetAnyRoadBits(tile, rtt));
-			if (tt == MP_STATION && IsStandardRoadStopTile(tile)) {
+			if (tt == MP_STATION && IsBayRoadStopTile(tile)) {
 				num_pieces *= ROAD_STOP_TRACKBIT_FACTOR;
 			} else if (tt == MP_ROAD && IsRoadDepot(tile)) {
 				num_pieces *= ROAD_DEPOT_TRACKBIT_FACTOR;
