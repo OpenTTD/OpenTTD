@@ -79,12 +79,12 @@ void RebuildTownKdtree()
 
 /**
  * Check if a town 'owns' a bridge.
- * Bridges to not directly have an owner, so we check the tiles adjacent to the bridge ends.
+ * Bridges do not directly have an owner, so we check the tiles adjacent to the bridge ends.
  * If either adjacent tile belongs to the town then it will be assumed that the town built
  * the bridge.
- * @param tile Bridge tile to test
- * @param t Town we are interested in
- * @return true if town 'owns' a bridge.
+ * @param tile The bridge tile to test
+ * @param t The town we are interested in
+ * @return true If town 'owns' a bridge.
  */
 static bool TestTownOwnsBridge(TileIndex tile, const Town *t)
 {
@@ -168,7 +168,8 @@ void Town::PostDestructor(size_t)
 }
 
 /**
- * Assigns town layout. If Random, generates one based on TileHash.
+ * Assign the town layout.
+ * @param layout The desired layout. If TL_RANDOM, we pick one based on TileHash.
  */
 void Town::InitializeLayout(TownLayout layout)
 {
@@ -182,7 +183,7 @@ void Town::InitializeLayout(TownLayout layout)
 
 /**
  * Return a random valid town.
- * @return random town, nullptr if there are no towns
+ * @return A random town, or nullptr if there are no towns.
  */
 /* static */ Town *Town::GetRandom()
 {
@@ -210,8 +211,8 @@ void Town::FillCachedName() const
 }
 
 /**
- * Get the cost for removing this house
- * @return the cost (inflation corrected etc)
+ * Get the cost for removing this house.
+ * @return The cost adjusted for inflation, etc.
  */
 Money HouseSpec::GetRemovalCost() const
 {
@@ -221,7 +222,7 @@ Money HouseSpec::GetRemovalCost() const
 /* Local */
 static int _grow_town_result;
 
-/* Describe the possible states */
+/* The possible states of town growth. */
 enum TownGrowthResult {
 	GROWTH_SUCCEED         = -1,
 	GROWTH_SEARCH_STOPPED  =  0
@@ -252,8 +253,7 @@ static inline DiagDirection RandomDiagDir()
 }
 
 /**
- * House Tile drawing handler.
- * Part of the tile loop process
+ * Draw a house and its tile. This is a tile callback routine.
  * @param ti TileInfo of the tile to draw
  */
 static void DrawTile_Town(TileInfo *ti)
@@ -310,7 +310,11 @@ static int GetSlopePixelZ_Town(TileIndex tile, uint, uint, bool)
 	return GetTileMaxPixelZ(tile);
 }
 
-/** Tile callback routine */
+/**
+ * Get the foundation for a house. This is a tile callback routine.
+ * @param tile The tile to find a foundation for.
+ * @param tileh The slope of the tile.
+ */
 static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 {
 	HouseID hid = GetHouseType(tile);
@@ -330,10 +334,10 @@ static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 }
 
 /**
- * Animate a tile for a town
- * Only certain houses can be animated
- * The newhouses animation supersedes regular ones
- * @param tile TileIndex of the house to animate
+ * Animate a tile for a town.
+ * Only certain houses can be animated.
+ * The newhouses animation supersedes regular ones.
+ * @param tile TileIndex of the house to animate.
  */
 static void AnimateTile_Town(TileIndex tile)
 {
@@ -381,10 +385,10 @@ static void AnimateTile_Town(TileIndex tile)
 }
 
 /**
- * Determines if a town is close to a tile
- * @param tile TileIndex of the tile to query
- * @param dist maximum distance to be accepted
- * @returns true if the tile correspond to the distance criteria
+ * Determines if a town is close to a tile.
+ * @param tile TileIndex of the tile to query.
+ * @param dist The maximum distance to be accepted.
+ * @returns true if the tile is within the specified distance.
  */
 static bool IsCloseToTown(TileIndex tile, uint dist)
 {
@@ -393,10 +397,7 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
 	return DistanceManhattan(tile, t->xy) < dist;
 }
 
-/**
- * Resize the sign(label) of the town after changes in
- * population (creation or growth or else)
- */
+/** Resize the sign (label) of the town after it changes population. */
 void Town::UpdateVirtCoord()
 {
 	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
@@ -422,6 +423,7 @@ void UpdateAllTownVirtCoords()
 	}
 }
 
+/** Clear the cached_name of all towns. */
 void ClearAllTownCachedNames()
 {
 	for (Town *t : Town::Iterate()) {
@@ -430,9 +432,9 @@ void ClearAllTownCachedNames()
 }
 
 /**
- * Change the towns population
- * @param t Town which population has changed
- * @param mod population change (can be positive or negative)
+ * Change the town's population as recorded in the town cache, town label, and town directory.
+ * @param t The town which has changed.
+ * @param mod The population change (can be positive or negative).
  */
 static void ChangePopulation(Town *t, int mod)
 {
@@ -444,9 +446,8 @@ static void ChangePopulation(Town *t, int mod)
 }
 
 /**
- * Determines the world population
- * Basically, count population of all towns, one by one
- * @return uint32_t the calculated population of the world
+ * Get the total population, the sum of all towns in the world.
+ * @return The calculated population of the world
  */
 uint32_t GetWorldPopulation()
 {
@@ -458,9 +459,9 @@ uint32_t GetWorldPopulation()
 /**
  * Remove stations from nearby station list if a town is no longer in the catchment area of each.
  * To improve performance only checks stations that cover the provided house area (doesn't need to contain an actual house).
- * @param t Town to work on
- * @param tile Location of house area (north part)
- * @param flags BuildingFlags containing the size of house area
+ * @param t Town to work on.
+ * @param tile Location of house area (north tile).
+ * @param flags BuildingFlags containing the size of house area.
  */
 static void RemoveNearbyStations(Town *t, TileIndex tile, BuildingFlags flags)
 {
@@ -517,9 +518,7 @@ static void AdvanceHouseConstruction(TileIndex tile)
 }
 
 /**
- * Tile callback function.
- *
- * Periodic tic handler for houses and town
+ * Tile callback function. Periodic tick handler for the tiles of a town.
  * @param tile been asked to do its stuff
  */
 static void TileLoop_Town(TileIndex tile)
@@ -660,6 +659,12 @@ static void TileLoop_Town(TileIndex tile)
 	cur_company.Restore();
 }
 
+/**
+ * Callback function to clear a house tile.
+ * @param tile The tile to clear.
+ * @param flags Type of operation.
+ * @return The cost of this operation or an error.
+ */
 static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 {
 	if (flags & DC_AUTO) return_cmd_error(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
@@ -812,6 +817,10 @@ static void ChangeTileOwner_Town(TileIndex, Owner, Owner)
 
 static bool GrowTown(Town *t);
 
+/**
+ * Handle the town tick for a single town, by growing the town if desired.
+ * @param t The town to try growing.
+ */
 static void TownTickHandler(Town *t)
 {
 	if (HasBit(t->flags, TOWN_IS_GROWING)) {
@@ -828,6 +837,7 @@ static void TownTickHandler(Town *t)
 	}
 }
 
+/** Iterate through all towns and call their tick handler. */
 void OnTick_Town()
 {
 	if (_game_mode == GM_EDITOR) return;
@@ -838,12 +848,9 @@ void OnTick_Town()
 }
 
 /**
- * Return the RoadBits of a tile
- *
- * @note There are many other functions doing things like that.
- * @note Needs to be checked for needlessness.
- * @param tile The tile we want to analyse
- * @return The roadbits of the given tile
+ * Return the RoadBits of a tile, ignoring depot and bay road stops.
+ * @param tile The tile to check.
+ * @return The roadbits of the given tile.
  */
 static RoadBits GetTownRoadBits(TileIndex tile)
 {
@@ -852,6 +859,10 @@ static RoadBits GetTownRoadBits(TileIndex tile)
 	return GetAnyRoadBits(tile, RTT_ROAD, true);
 }
 
+/**
+ * Get the road type that towns should build at this current moment.
+ * They may have built a different type in the past.
+ */
 RoadType GetTownRoadType()
 {
 	RoadType best_rt = ROADTYPE_ROAD;
@@ -888,10 +899,10 @@ RoadType GetTownRoadType()
  *   Assuming a road from (tile - TileOffsByDiagDir(dir)) to tile,
  *   is there a parallel road left or right of it within distance dist_multi?
  *
- * @param tile current tile
- * @param dir target direction
- * @param dist_multi distance multiplayer
- * @return true if there is a parallel road
+ * @param tile The current tile.
+ * @param dir The target direction.
+ * @param dist_multi The distance multiplier.
+ * @return true if there is a parallel road.
  */
 static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dist_multi)
 {
@@ -920,12 +931,12 @@ static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dis
 }
 
 /**
- * Check if a Road is allowed on a given tile
+ * Check if a Road is allowed on a given tile.
  *
- * @param t The current town
- * @param tile The target tile
- * @param dir The direction in which we want to extend the town
- * @return true if it is allowed else false
+ * @param t The current town.
+ * @param tile The target tile.
+ * @param dir The direction in which we want to extend the town.
+ * @return true if it is allowed.
  */
 static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 {
@@ -997,13 +1008,12 @@ static void LevelTownLand(TileIndex tile)
 }
 
 /**
- * Generate the RoadBits of a grid tile
+ * Generate the RoadBits of a grid tile.
  *
- * @param t current town
- * @param tile tile in reference to the town
- * @param dir The direction to which we are growing ATM
- * @return the RoadBit of the current tile regarding
- *  the selected town layout
+ * @param t The current town.
+ * @param tile The tile in reference to the town.
+ * @param dir The direction to which we are growing.
+ * @return The RoadBit of the current tile regarding the selected town layout.
  */
 static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection dir)
 {
@@ -1060,9 +1070,9 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
  *  next to the current tile. If there are enough
  *  add another house.
  *
- * @param t The current town
- * @param tile The target tile for the extra house
- * @return true if an extra house has been added
+ * @param t The current town.
+ * @param tile The target tile for the extra house.
+ * @return true if an extra house has been added.
  */
 static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 {
@@ -1101,10 +1111,10 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 /**
  * Grows the town with a road piece.
  *
- * @param t The current town
- * @param tile The current tile
- * @param rcmd The RoadBits we want to build on the tile
- * @return true if the RoadBits have been added else false
+ * @param t The current town.
+ * @param tile The current tile.
+ * @param rcmd The RoadBits we want to build on the tile.
+ * @return true if the RoadBits have been added.
  */
 static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
 {
@@ -1332,10 +1342,10 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 }
 
 /**
- * Checks whether at least one surrounding roads allows to build a house here
+ * Checks whether at least one surrounding road allows to build a house here.
  *
- * @param t the tile where the house will be built
- * @return true if at least one surrounding roadtype allows building houses here
+ * @param t The tile where the house will be built.
+ * @return true if at least one surrounding roadtype allows building houses here.
  */
 static inline bool RoadTypesAllowHouseHere(TileIndex t)
 {
@@ -1645,10 +1655,10 @@ static bool CanFollowRoad(TileIndex tile, DiagDirection dir)
 }
 
 /**
- * Returns "growth" if a house was built, or no if the build failed.
- * @param t town to inquiry
- * @param tile to inquiry
- * @return true if town expansion was possible
+ * Try to grow a town at a given road tile.
+ * @param t The town to grow.
+ * @param tile The road tile to try growing from.
+ * @return true if we successfully expanded the town.
  */
 static bool GrowTownAtRoad(Town *t, TileIndex tile)
 {
@@ -1742,9 +1752,9 @@ static RoadBits GenRandomRoadBits()
 }
 
 /**
- * Grow the town
- * @param t town to grow
- * @return true iff something (house, road, bridge, ...) was built
+ * Grow the town.
+ * @param t The town to grow
+ * @return true if we successfully grew the town with a road or house.
  */
 static bool GrowTown(Town *t)
 {
@@ -1802,6 +1812,10 @@ static bool GrowTown(Town *t)
 	return false;
 }
 
+/**
+ * Update the cached town zone radii of a town, based on the number of houses.
+ * @param t The town to update.
+ */
 void UpdateTownRadius(Town *t)
 {
 	static const uint32_t _town_squared_town_zone_radius_data[23][5] = {
@@ -1845,6 +1859,10 @@ void UpdateTownRadius(Town *t)
 	}
 }
 
+/**
+ * Update the maximum amount of montly passengers and mail for a town, based on its population.
+ * @param t The town to update.
+ */
 void UpdateTownMaxPass(Town *t)
 {
 	t->supplied[CT_PASSENGERS].old_max = t->cache.population >> 3;
@@ -1855,15 +1873,15 @@ static void UpdateTownGrowthRate(Town *t);
 static void UpdateTownGrowth(Town *t);
 
 /**
- * Does the actual town creation.
+ * Actually create a town.
  *
- * @param t The town
- * @param tile Where to put it
- * @param townnameparts The town name
- * @param size Parameter for size determination
- * @param city whether to build a city or town
- * @param layout the (road) layout of the town
- * @param manual was the town placed manually?
+ * @param t The town.
+ * @param tile Where to put it.
+ * @param townnameparts The town name.
+ * @param size The preset size of the town.
+ * @param city Should we create a city?
+ * @param layout The road layout of the town.
+ * @param manual Was the town placed manually?
  */
 static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSize size, bool city, TownLayout layout, bool manual)
 {
@@ -1937,9 +1955,9 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 }
 
 /**
- * Checks if it's possible to place a town at given tile
- * @param tile tile to check
- * @return error value or zero cost
+ * Check if it's possible to place a town on a given tile.
+ * @param tile The tile to check.
+ * @return A zero cost if allowed, otherwise an error.
  */
 static CommandCost TownCanBePlacedHere(TileIndex tile)
 {
@@ -1963,8 +1981,8 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
 
 /**
  * Verifies this custom name is unique. Only custom names are checked.
- * @param name name to check
- * @return is this name unique?
+ * @param name The name to check.
+ * @return true if the name is unique
  */
 static bool IsUniqueTownName(const std::string &name)
 {
@@ -1977,15 +1995,15 @@ static bool IsUniqueTownName(const std::string &name)
 
 /**
  * Create a new town.
- * @param flags type of operation
- * @param tile coordinates where town is built
- * @param size size of the town (@see TownSize)
- * @param city true iff it should be a city
- * @param layout town road layout (@see TownLayout)
- * @param random_location use random location (randomize \c tile )
- * @param townnameparts town name parts
+ * @param flags The type of operation.
+ * @param tile The coordinates where town is built.
+ * @param size The size of the town (@see TownSize).
+ * @param city Should we build a city?
+ * @param layout The town road layout (@see TownLayout).
+ * @param random_location Should we use a random location? (randomize \c tile )
+ * @param townnameparts Town name parts.
  * @param text Custom name for the town. If empty, the town name parts will be used.
- * @return the cost of this operation or an error
+ * @return The cost of this operation or an error.
  */
 std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text)
 {
@@ -2090,9 +2108,9 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileInd
  * interpenetrate their road networks will not mesh nicely; this
  * function adjusts a tile so that it aligns properly.
  *
- * @param tile the tile to start at
- * @param layout which town layout algo is in effect
- * @return the adjusted tile
+ * @param tile The tile to start at.
+ * @param layout The town layout in effect.
+ * @return The adjusted tile.
  */
 static TileIndex AlignTileToGrid(TileIndex tile, TownLayout layout)
 {
@@ -2108,9 +2126,9 @@ static TileIndex AlignTileToGrid(TileIndex tile, TownLayout layout)
  * interpenetrate their road networks will not mesh nicely; this
  * function tells you if a tile is properly aligned.
  *
- * @param tile the tile to start at
- * @param layout which town layout algo is in effect
- * @return true if the tile is in the correct location
+ * @param tile The tile to start at.
+ * @param layout The town layout in effect.
+ * @return true if the tile is in the correct location.
  */
 static bool IsTileAlignedToGrid(TileIndex tile, TownLayout layout)
 {
@@ -2163,8 +2181,7 @@ static bool FindFurthestFromWater(TileIndex tile, void *user_data)
 }
 
 /**
- * CircularTileSearch callback; finds the nearest land tile
- *
+ * CircularTileSearch callback to find the nearest land tile.
  * @param tile Start looking from this tile
  */
 static bool FindNearestEmptyLand(TileIndex tile, void *)
@@ -2175,7 +2192,7 @@ static bool FindNearestEmptyLand(TileIndex tile, void *)
 /**
  * Given a spot on the map (presumed to be a water tile), find a good
  * coastal spot to build a city. We don't want to build too close to
- * the edge if we can help it (since that retards city growth) hence
+ * the edge if we can help it (since that inhibits city growth) hence
  * the search within a search within a search. O(n*m^2), where n is
  * how far to search for land, and m is how far inland to look for a
  * flat spot.
@@ -2198,6 +2215,15 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 	return INVALID_TILE;
 }
 
+/**
+ * Create a random town somewhere in the world.
+ * @param attempts How many times should we try?
+ * @param townnameparts The name of the town.
+ * @param size The size preset of the town.
+ * @param city Should we build a city?
+ * @param layout The road layout to build.
+ * @return The town object, or nullptr if we failed to create a town anywhere.
+ */
 static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize size, bool city, TownLayout layout)
 {
 	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
@@ -2245,11 +2271,10 @@ static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize si
 static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, normal, high
 
 /**
- * This function will generate a certain amount of towns, with a certain layout
- * It can be called from the scenario editor (i.e.: generate Random Towns)
- * as well as from world creation.
- * @param layout which towns will be set to, when created
- * @return true if towns have been successfully created
+ * Generate a number of towns with a given layout.
+ * This function is used by the Random Towns button in Scenario Editor as well as in world generation.
+ * @param layout The road layout to build.
+ * @return true if towns have been successfully created.
  */
 bool GenerateTowns(TownLayout layout)
 {
@@ -2303,10 +2328,10 @@ bool GenerateTowns(TownLayout layout)
 
 
 /**
- * Returns the bit corresponding to the town zone of the specified tile
- * @param t Town on which town zone is to be found
- * @param tile TileIndex where town zone needs to be found
- * @return the bit position of the given zone, as defined in HouseZones
+ * Returns the bit corresponding to the town zone of the specified tile.
+ * @param t Town on which town zone is to be found.
+ * @param tile TileIndex where town zone needs to be found.
+ * @return the bit position of the given zone, as defined in HouseZones.
  */
 HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
 {
@@ -2324,13 +2349,13 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
 
 /**
  * Clears tile and builds a house or house part.
- * @param tile tile index
- * @param t The town to clear the house for
- * @param counter of construction step
- * @param stage of construction (used for drawing)
- * @param type of house. Index into house specs array
- * @param random_bits required for newgrf houses
- * @pre house can be built here
+ * @param tile The tile to build upon.
+ * @param t The town which will own the house.
+ * @param counter The construction stage counter for the house.
+ * @param stage The current construction stage of the house.
+ * @param type The type of house.
+ * @param random_bits Random bits for newgrf houses to use.
+ * @pre The house can be built here.
  */
 static inline void ClearMakeHouseTile(TileIndex tile, Town *t, byte counter, byte stage, HouseID type, byte random_bits)
 {
@@ -2372,11 +2397,10 @@ static void MakeTownHouse(TileIndex tile, Town *t, byte counter, byte stage, Hou
 
 
 /**
- * Checks if a house can be built here. Important is slope, bridge above
- * and ability to clear the land.
- * @param tile tile to check
- * @param noslope are slopes (foundations) allowed?
- * @return true iff house can be built here
+ * Check if a house can be built here, based on slope, whether there's a bridge above, and if we can clear the land.
+ * @param tile The tile to check.
+ * @param noslope Are foundations prohibited for this house?
+ * @return true iff house can be built here.
  */
 static inline bool CanBuildHouseHere(TileIndex tile, bool noslope)
 {
@@ -2396,11 +2420,11 @@ static inline bool CanBuildHouseHere(TileIndex tile, bool noslope)
 
 
 /**
- * Checks if a house can be built at this tile, must have the same max z as parameter.
- * @param tile tile to check
- * @param z max z of this tile so more parts of a house are at the same height (with foundation)
- * @param noslope are slopes (foundations) allowed?
- * @return true iff house can be built here
+ * Check if a tile where we want to build a multi-tile house has an appropriate max Z.
+ * @param tile The tile to check.
+ * @param z The max Z level to allow.
+ * @param noslope Are foundations disallowed for this house?
+ * @return true iff house can be built here.
  * @see CanBuildHouseHere()
  */
 static inline bool CheckBuildHouseSameZ(TileIndex tile, int z, bool noslope)
@@ -2415,11 +2439,11 @@ static inline bool CheckBuildHouseSameZ(TileIndex tile, int z, bool noslope)
 
 
 /**
- * Checks if a house of size 2x2 can be built at this tile
- * @param tile tile, N corner
- * @param z maximum tile z so all tile have the same max z
- * @param noslope are slopes (foundations) allowed?
- * @return true iff house can be built
+ * Checks if a house of size 2x2 can be built at this tile.
+ * @param tile The tile of the house's northernmost tile.
+ * @param z The maximum tile z, so all tiles are the same height.
+ * @param noslope Are foundations disallowed for this house?
+ * @return true iff house can be built here.
  * @see CheckBuildHouseSameZ()
  */
 static bool CheckFree2x2Area(TileIndex tile, int z, bool noslope)
@@ -2437,10 +2461,10 @@ static bool CheckFree2x2Area(TileIndex tile, int z, bool noslope)
 
 
 /**
- * Checks if current town layout allows building here
- * @param t town
- * @param tile tile to check
- * @return true iff town layout allows building here
+ * Checks if the current town layout allows building here.
+ * @param t The town.
+ * @param tile The tile to check.
+ * @return true iff town layout allows building here.
  * @note see layouts
  */
 static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
@@ -2468,10 +2492,10 @@ static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
 
 
 /**
- * Checks if current town layout allows 2x2 building here
- * @param t town
- * @param tile tile to check
- * @return true iff town layout allows 2x2 building here
+ * Checks if the current town layout allows a 2x2 building here.
+ * @param t The town.
+ * @param tile The tile to check.
+ * @return true iff town layout allows a 2x2 building here.
  * @note see layouts
  */
 static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
@@ -2503,13 +2527,13 @@ static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
 
 
 /**
- * Checks if 1x2 or 2x1 building is allowed here, also takes into account current town layout
- * Also, tests both building positions that occupy this tile
- * @param tile tile where the building should be built
- * @param t town
- * @param maxz all tiles should have the same height
- * @param noslope are slopes forbidden?
- * @param second diagdir from first tile to second tile
+ * Checks if a 1x2 or 2x1 building is allowed here, accounting for road layout and tile heights.
+ * Also, tests both building positions that occupy this tile.
+ * @param tile The tile where the building should be built.
+ * @param t The town.
+ * @param maxz The maximum Z level, since all tiles must have the same height.
+ * @param noslope Are foundations disallowed for this house?
+ * @param second The diagdir from the first tile to the second tile.
  */
 static bool CheckTownBuild2House(TileIndex *tile, Town *t, int maxz, bool noslope, DiagDirection second)
 {
@@ -2529,12 +2553,12 @@ static bool CheckTownBuild2House(TileIndex *tile, Town *t, int maxz, bool noslop
 
 
 /**
- * Checks if 2x2 building is allowed here, also takes into account current town layout
- * Also, tests all four building positions that occupy this tile
- * @param tile tile where the building should be built
- * @param t town
- * @param maxz all tiles should have the same height
- * @param noslope are slopes forbidden?
+ * Checks if a 1x2 or 2x1 building is allowed here, accounting for road layout and tile heights.
+ * Also, tests all four building positions that occupy this tile.
+ * @param tile The tile where the building should be built.
+ * @param t The town.
+ * @param maxz The maximum Z level, since all tiles must have the same height.
+ * @param noslope Are foundations disallowed for this house?
  */
 static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool noslope)
 {
@@ -2554,10 +2578,10 @@ static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool nosl
 
 
 /**
- * Tries to build a house at this tile
- * @param t town the house will belong to
- * @param tile where the house will be built
- * @return false iff no house can be built at this tile
+ * Tries to build a house at this tile.
+ * @param t The town the house will belong to.
+ * @param tile The tile to try building on.
+ * @return false iff no house can be built on this tile.
  */
 static bool BuildTownHouse(Town *t, TileIndex tile)
 {
@@ -2750,14 +2774,19 @@ TileIndexDiff GetHouseNorthPart(HouseID &house)
 	return 0;
 }
 
+/**
+ * Clear a town house.
+ * @param t The town which owns the house.
+ * @param tile The tile to clear.
+ */
 void ClearTownHouse(Town *t, TileIndex tile)
 {
 	assert(IsTileType(tile, MP_HOUSE));
 
 	HouseID house = GetHouseType(tile);
 
-	/* need to align the tile to point to the upper left corner of the house */
-	tile += GetHouseNorthPart(house); // modifies house to the ID of the north tile
+	/* The northernmost tile of the house is the main house. */
+	tile += GetHouseNorthPart(house);
 
 	const HouseSpec *hs = HouseSpec::Get(house);
 
@@ -3088,6 +3117,12 @@ const byte _town_action_costs[TACT_COUNT] = {
 	2, 4, 9, 35, 48, 53, 117, 175
 };
 
+/**
+ * Perform the "small advertising campaign" town action.
+ * @param t The town to advertise in.
+ * @param flags Type of operation.
+ * @return An empty cost.
+ */
 static CommandCost TownActionAdvertiseSmall(Town *t, DoCommandFlag flags)
 {
 	if (flags & DC_EXEC) {
@@ -3096,6 +3131,12 @@ static CommandCost TownActionAdvertiseSmall(Town *t, DoCommandFlag flags)
 	return CommandCost();
 }
 
+/**
+ * Perform the "medium advertising campaign" town action.
+ * @param t The town to advertise in.
+ * @param flags Type of operation.
+ * @return An empty cost.
+ */
 static CommandCost TownActionAdvertiseMedium(Town *t, DoCommandFlag flags)
 {
 	if (flags & DC_EXEC) {
@@ -3104,6 +3145,12 @@ static CommandCost TownActionAdvertiseMedium(Town *t, DoCommandFlag flags)
 	return CommandCost();
 }
 
+/**
+ * Perform the "large advertising campaign" town action.
+ * @param t The town to advertise in.
+ * @param flags Type of operation.
+ * @return An empty cost.
+ */
 static CommandCost TownActionAdvertiseLarge(Town *t, DoCommandFlag flags)
 {
 	if (flags & DC_EXEC) {
@@ -3112,6 +3159,12 @@ static CommandCost TownActionAdvertiseLarge(Town *t, DoCommandFlag flags)
 	return CommandCost();
 }
 
+/**
+ * Perform the "local road reconstruction" town action.
+ * @param t The town to grief in.
+ * @param flags Type of operation.
+ * @return An empty cost.
+ */
 static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 {
 	/* Check if the company is allowed to fund new roads. */
@@ -3222,6 +3275,12 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 	return CommandCost();
 }
 
+/**
+ * Perform the "fund new buildings" town action.
+ * @param t The town to fund buildings in.
+ * @param flags Type of operation.
+ * @return An empty cost.
+ */
 static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 {
 	/* Check if it's allowed to buy the rights */
@@ -3249,6 +3308,12 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 	return CommandCost();
 }
 
+/**
+ * Perform the "buy exclusive transport rights" town action.
+ * @param t The town to buy exclusivity in.
+ * @param flags Type of operation.
+ * @return An empty cost.
+ */
 static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
 {
 	/* Check if it's allowed to buy the rights */
@@ -3276,6 +3341,12 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
 	return CommandCost();
 }
 
+/**
+ * Perform the "bribe" town action.
+ * @param t The town to bribe.
+ * @param flags Type of operation.
+ * @return An empty cost.
+ */
 static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 {
 	if (flags & DC_EXEC) {
@@ -3326,10 +3397,10 @@ static TownActionProc * const _town_action_proc[] = {
 };
 
 /**
- * Get a list of available actions to do at a town.
- * @param cid the company that is querying the town
- * @param t the town that is queried
- * @return bitmasked value of enabled actions
+ * Get a list of available town authority actions.
+ * @param cid The company that is querying the town.
+ * @param t The town that is queried.
+ * @return The bitmasked value of enabled actions.
  */
 TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 {
@@ -3413,6 +3484,10 @@ static void ForAllStationsNearTown(Town *t, Func func)
 	});
 }
 
+/**
+ * Monthly callback to update town and station ratings.
+ * @param t The town to update.
+ */
 static void UpdateTownRating(Town *t)
 {
 	/* Increase company ratings if they're low */
