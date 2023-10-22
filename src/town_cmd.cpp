@@ -3136,9 +3136,9 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 /**
  * Check whether the land can be cleared.
  * @param tile Tile to check.
- * @return The tile can be cleared.
+ * @return true if the tile can be cleared.
  */
-static bool TryClearTile(TileIndex tile)
+static bool CheckClearTile(TileIndex tile)
 {
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 	CommandCost r = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_NONE, tile);
@@ -3173,7 +3173,7 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
 	if (IsBridgeAbove(tile)) return false;
 
 	/* A clear-able open space is always preferred. */
-	if ((IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) && TryClearTile(tile)) {
+	if ((IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) && CheckClearTile(tile)) {
 		statue_data->best_position = tile;
 		return true;
 	}
@@ -3183,7 +3183,7 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
 	/* Searching inside the inner circle. */
 	if (statue_data->tile_count <= STATUE_NUMBER_INNER_TILES) {
 		/* Save first house in inner circle. */
-		if (house && statue_data->best_position == INVALID_TILE && TryClearTile(tile)) {
+		if (house && statue_data->best_position == INVALID_TILE && CheckClearTile(tile)) {
 			statue_data->best_position = tile;
 		}
 
@@ -3193,7 +3193,7 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
 
 	/* Searching outside the circle, just pick the first possible spot. */
 	statue_data->best_position = tile; // Is optimistic, the condition below must also hold.
-	return house && TryClearTile(tile);
+	return house && CheckClearTile(tile);
 }
 
 /**
