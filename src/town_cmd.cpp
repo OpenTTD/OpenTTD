@@ -2346,26 +2346,26 @@ static inline void ClearMakeHouseTile(TileIndex tile, Town *t, byte counter, byt
 
 
 /**
- * Write house information into the map. For houses > 1 tile, all tiles are marked.
- * @param t tile index
+ * Write house information into the map. For multi-tile houses, all tiles are marked.
  * @param town The town related to this house
- * @param counter of construction step
- * @param stage of construction (used for drawing)
- * @param type of house. Index into house specs array
- * @param random_bits required for newgrf houses
- * @pre house can be built here
+ * @param t The tile to build on. If a multi-tile house, this is the northern-most tile.
+ * @param counter The counter of the construction stage.
+ * @param stage The current construction stage.
+ * @param The type of house.
+ * @param random_bits Random bits for newgrf houses to use.
+ * @pre The house can be built here.
  */
-static void MakeTownHouse(TileIndex t, Town *town, byte counter, byte stage, HouseID type, byte random_bits)
+static void MakeTownHouse(TileIndex tile, Town *t, byte counter, byte stage, HouseID type, byte random_bits)
 {
 	BuildingFlags size = HouseSpec::Get(type)->building_flags;
 
-	ClearMakeHouseTile(t, town, counter, stage, type, random_bits);
-	if (size & BUILDING_2_TILES_Y)   ClearMakeHouseTile(t + TileDiffXY(0, 1), town, counter, stage, ++type, random_bits);
-	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(t + TileDiffXY(1, 0), town, counter, stage, ++type, random_bits);
-	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(t + TileDiffXY(1, 1), town, counter, stage, ++type, random_bits);
+	ClearMakeHouseTile(tile, t, counter, stage, type, random_bits);
+	if (size & BUILDING_2_TILES_Y)   ClearMakeHouseTile(tile + TileDiffXY(0, 1), t, counter, stage, ++type, random_bits);
+	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(tile + TileDiffXY(1, 0), t, counter, stage, ++type, random_bits);
+	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(tile + TileDiffXY(1, 1), t, counter, stage, ++type, random_bits);
 
-	ForAllStationsAroundTiles(TileArea(t, (size & BUILDING_2_TILES_X) ? 2 : 1, (size & BUILDING_2_TILES_Y) ? 2 : 1), [town](Station *st, TileIndex) {
-		town->stations_near.insert(st);
+	ForAllStationsAroundTiles(TileArea(tile, (size & BUILDING_2_TILES_X) ? 2 : 1, (size & BUILDING_2_TILES_Y) ? 2 : 1), [t](Station *st, TileIndex) {
+		t->stations_near.insert(st);
 		return true;
 	});
 }
