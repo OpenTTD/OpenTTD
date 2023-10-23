@@ -524,6 +524,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Alle Nachrichte
 # About menu
 ###length 11
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebietsinformationen
+STR_ABOUT_MENU_HELP                                             :Hilfe u. Anleitungen
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole öffnen/schließen
 STR_ABOUT_MENU_AI_DEBUG                                         :KI-/Skript-Debug
@@ -924,6 +925,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Neue{G r
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Das Gruppenfenster mit der bereits ausgewählten Fahrzeuggruppe öffnen
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} akzeptiert nicht mehr: {CARGO_LIST}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} akzeptiert jetzt: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subventionsangebot abgelaufen:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subventionsende:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert
@@ -1423,6 +1426,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Keine
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verringert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Bau von Bahnübergängen auf Straßen oder Schienen im Eigentum von Mitbewerbern erlauben: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Bau von Bahnübergängen auf Straßen oder Schienen im Eigentum von Mitbewerbern erlauben
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Bus- und Lkw-Haltestellen auf Straßen im Stadteigentum erlauben: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaubt die Errichtung von Bus- und Lkw-Haltestellen auf Straßen im Stadteigentum
@@ -2119,6 +2124,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Mehrspie
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spieleinstellungen
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bestenliste
+STR_INTRO_HELP                                                  :{BLACK}Hilfe u. Anleitungen
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Einstellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-Einstellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Erweiterungen herunterladen
@@ -2140,6 +2146,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Spielzeu
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spieleinstellungen anzeigen und/oder ändern
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Zeige die Bestenliste
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Zugriff auf Dokumentation und Onlinehilfsmittel erhalten
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Einstellungen anzeigen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-Einstellungen anzeigen und/oder ändern
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe, ob neue oder aktualisierte Erweiterungen zum Herunterladen bereitstehen
@@ -2162,6 +2169,17 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Das Spi
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Soll das Szenario wirklich verlassen werden?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Hilfe u. Anleitungen
+STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Webseiten
+STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Dokumente
+STR_HELP_WINDOW_README                                          :{BLACK}Liesmich
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Änderungsprotokoll
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Bekannte Fehler
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Lizenz
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Anleitung / Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Einen Fehler melden
+STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Gemeinschaft
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
@@ -2177,6 +2195,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Die Maxi
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ändere Datum: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ändert das Spieljahr
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Erlaube manuelles Ändern der Produktionsleistungen: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Stationsbewertungen bei 100% fixieren: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} – Farbschema
@@ -2650,6 +2669,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transpar
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparenz für Oberleitungen einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Transparenz für Beladung und Kosten-/Einkommenstext umschalten. Strg+Klick zum Sperren
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objekte unsichtbar statt transparent machen
 
 # Linkgraph legend window
@@ -3380,6 +3400,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspizie
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} bei {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Gleisart
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Straßentyp
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-Variable 60+x Parameter (hexadecimal)
 
@@ -4695,6 +4716,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Inhaltsverzeichnis
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :{BLACK}Schnell zu einem Abschnitt in der angezeigten Datei mittels dieser Liste springen
+STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Zurück in Navigationshistorie gehen
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Wieder vorwärts in Navigationshistorie gehen
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Text umbrechen
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Text des Fensters so umbrechen, dass es ohne Scrollen hineinpasst
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Liesmich anzeigen
@@ -4705,6 +4731,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}-Änderungen von {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}-Lizenz von {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Vorschau des Umfragenergebnisses
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD-Dokument „{STRING}“
 
 
 # Vehicle loading indicators
