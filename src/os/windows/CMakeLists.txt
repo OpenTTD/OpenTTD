@@ -4,6 +4,7 @@ add_files(
     font_win32.h
     string_uniscribe.cpp
     string_uniscribe.h
+    social_win.cpp
     survey_win.cpp
     win32.cpp
     win32.h

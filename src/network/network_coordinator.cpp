@@ -15,6 +15,7 @@
 #include "../strings_func.h"
 #include "../window_func.h"
 #include "../window_type.h"
+#include "social/loader.h"
 #include "network.h"
 #include "network_coordinator.h"
 #include "network_gamelist.h"
@@ -193,6 +194,13 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p)
 	 * and _settings_client.network.server_invite_code contains the one we will
 	 * attempt to re-use when registering again. */
 	_network_server_invite_code = _settings_client.network.server_invite_code;
+
+	JoinData data = {
+		_settings_client.network.server_name.c_str(),
+		_network_server_invite_code.c_str()
+	};
+
+	SocialPlatformLoader::GetInstance()->NewState(OTTD_SOCIAL_EVENT_SERVER_JOINED, &data);
 
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 

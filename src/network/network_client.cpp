@@ -29,6 +29,7 @@
 #include "network_base.h"
 #include "network_client.h"
 #include "network_gamelist.h"
+#include "social/loader.h"
 #include "../core/backup_type.hpp"
 #include "../thread.h"
 
@@ -844,6 +845,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 		/* take control over an existing company */
 		SetLocalCompany(_network_join.company);
 	}
+
+	JoinData data = {
+		"Unknown", // TODO: fix this
+		this->connection_string.c_str()
+	};
+
+	SocialPlatformLoader::GetInstance()->NewState(OTTD_SOCIAL_EVENT_SERVER_JOINED, &data);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }

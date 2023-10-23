@@ -35,6 +35,7 @@
 #include "screenshot.h"
 #include "network/network.h"
 #include "network/network_func.h"
+#include "network/social/loader.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
 #include "settings_func.h"
@@ -1040,6 +1041,8 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_EDITOR: // Switch to scenario editor
 			MakeNewEditorWorld();
 			GenerateSavegameId();
+
+			SocialPlatformLoader::GetInstance()->NewState(OTTD_SOCIAL_EVENT_SINGLE_PLAYER, nullptr);
 			break;
 
 		case SM_RELOADGAME: // Reload with what-ever started the game
@@ -1063,6 +1066,8 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_NEWGAME: // New Game --> 'Random game'
 			MakeNewGame(false, new_mode == SM_NEWGAME);
 			GenerateSavegameId();
+
+			SocialPlatformLoader::GetInstance()->NewState(OTTD_SOCIAL_EVENT_SINGLE_PLAYER, nullptr);
 			break;
 
 		case SM_LOAD_GAME: { // Load game, Play Scenario
@@ -1079,6 +1084,8 @@ void SwitchToMode(SwitchMode new_mode)
 				OnStartGame(_network_dedicated);
 				/* Decrease pause counter (was increased from opening load dialog) */
 				Command<CMD_PAUSE>::Post(PM_PAUSED_SAVELOAD, false);
+
+				SocialPlatformLoader::GetInstance()->NewState(OTTD_SOCIAL_EVENT_SINGLE_PLAYER, nullptr);
 			}
 			break;
 		}
@@ -1087,6 +1094,8 @@ void SwitchToMode(SwitchMode new_mode)
 		case SM_START_HEIGHTMAP: // Load a heightmap and start a new game from it
 			MakeNewGame(true, new_mode == SM_START_HEIGHTMAP);
 			GenerateSavegameId();
+
+			SocialPlatformLoader::GetInstance()->NewState(OTTD_SOCIAL_EVENT_SINGLE_PLAYER, nullptr);
 			break;
 
 		case SM_LOAD_HEIGHTMAP: // Load heightmap from scenario editor
@@ -1095,6 +1104,8 @@ void SwitchToMode(SwitchMode new_mode)
 			GenerateWorld(GWM_HEIGHTMAP, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			GenerateSavegameId();
 			MarkWholeScreenDirty();
+
+			SocialPlatformLoader::GetInstance()->NewState(OTTD_SOCIAL_EVENT_SINGLE_PLAYER, nullptr);
 			break;
 
 		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
@@ -1108,6 +1119,8 @@ void SwitchToMode(SwitchMode new_mode)
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_CRITICAL);
 			}
+
+			SocialPlatformLoader::GetInstance()->NewState(OTTD_SOCIAL_EVENT_SINGLE_PLAYER, nullptr);
 			break;
 		}
 
@@ -1130,6 +1143,8 @@ void SwitchToMode(SwitchMode new_mode)
 					ShowNetworkAskSurvey();
 				}
 			}
+
+			SocialPlatformLoader::GetInstance()->NewState(OTTD_SOCIAL_EVENT_MENU, nullptr);
 			break;
 
 		case SM_SAVE_GAME: // Save game.
@@ -1536,6 +1551,7 @@ void GameLoop()
 
 	if (!_pause_mode && HasBit(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
 
+	SocialPlatformLoader::GetInstance()->RunDispatch();
 	SoundDriver::GetInstance()->MainLoop();
 	MusicLoop();
 }
