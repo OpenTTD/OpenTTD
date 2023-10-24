@@ -6,6 +6,7 @@ add_files(
 
 add_files(
     unix.cpp
+    social_unix.cpp
     CONDITION UNIX
 )
 

@@ -27,7 +27,7 @@ class SocialPlatformLoader {
 public:
 	void Shutdown();
 	void RunDispatch();
-	void NewState(eventCode event, void* parameter);
+	void NewState(OTTD_Social_Event event, void* parameter);
 
 	static SocialPlatformLoader* GetInstance();
 
@@ -37,7 +37,9 @@ private:
 	std::vector<SocialPlatformPlugin> plugins;
 };
 
+#if !defined(__EMSCRIPTEN__)
 /* Defined in os/<os>/social_<os>.cpp. */
 void LoadSocialPlatforms(std::vector<SocialPlatformPlugin>& plugins);
+#endif
 
 #endif

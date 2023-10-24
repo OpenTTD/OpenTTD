@@ -16,7 +16,9 @@ void callback(const char* serverName) {
 }
 
 SocialPlatformLoader::SocialPlatformLoader() {
+#if !defined(__EMSCRIPTEN__)
 	LoadSocialPlatforms(this->plugins);
+#endif
 
 	for (SocialPlatformPlugin plugin : plugins) {
 		plugin.initialize(callback, &plugin.userdata);
@@ -35,7 +37,7 @@ void SocialPlatformLoader::RunDispatch() {
 	}
 }
 
-void SocialPlatformLoader::NewState(eventCode event, void* parameter) {
+void SocialPlatformLoader::NewState(OTTD_Social_Event event, void* parameter) {
 	for (SocialPlatformPlugin plugin : plugins) {
 		plugin.newState(event, parameter, plugin.userdata);
 	}

@@ -14,7 +14,7 @@
 extern "C" {
 #endif
 
-struct JoinData {
+struct OTTD_Social_Event_Server_Joined_Data {
 	// Name of the server as shown to players.
 	const char* server_name;
 
@@ -22,7 +22,7 @@ struct JoinData {
 	const char* connection_string;
 };
 
-enum eventCode {
+enum OTTD_Social_Event {
 	// Called when the player has entered the main menu.
 	// Parameter: N/A
 	OTTD_SOCIAL_EVENT_MENU,
@@ -46,7 +46,9 @@ typedef void (* OTTD_Social_JoinCallback)(const char* serverName);
 
 // Initializes the plugin.
 // The plugin is free to initialize the memory pointed to at the given address with any structure it needs to keep data around.
-// The plugin loader will keep track of this memory for the plugin.
+// The plugin loader will keep track of this memory for the plugin. It remains valid until the shutdown function is called.
+//
+// The callback function is a static reference to a function, however, the plugin should leverage its user data to keep track of it.
 typedef bool (* OTTD_Social_Initialize)(OTTD_Social_JoinCallback callback, void **userdata);
 
 // Called by the plugin loader to indicate that OpenTTD is currently shutting down.
@@ -57,7 +59,9 @@ typedef void (* OTTD_Social_Shutdown)(void *userdata);
 typedef void (* OTTD_Social_Dispatch)(void *userdata);
 
 // Called when the game's state changes.
-typedef void (* OTTD_Social_NewState)(eventCode event, void* parameter, void *userdata);
+//
+// The data pointed to by parameter is only valid during the duration of this function.
+typedef void (* OTTD_Social_NewState)(OTTD_Social_Event event, void* parameter, void *userdata);
 
 #ifdef __cplusplus
 }

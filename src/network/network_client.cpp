@@ -846,7 +846,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 		SetLocalCompany(_network_join.company);
 	}
 
-	JoinData data = {
+	OTTD_Social_Event_Server_Joined_Data data = {
 		"Unknown", // TODO: fix this
 		this->connection_string.c_str()
 	};

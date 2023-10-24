@@ -195,7 +195,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p)
 	 * attempt to re-use when registering again. */
 	_network_server_invite_code = _settings_client.network.server_invite_code;
 
-	JoinData data = {
+	OTTD_Social_Event_Server_Joined_Data data = {
 		_settings_client.network.server_name.c_str(),
 		_network_server_invite_code.c_str()
 	};
