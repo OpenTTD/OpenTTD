@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file network_chat_gui.cpp GUI for handling chat messages. */
+/** @file loader.cpp Loader code for social plugins. */
 
 #include "../../stdafx.h"
 #include "../network_func.h"

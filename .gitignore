@@ -1,6 +1,4 @@
-/.cache
 /.vs
-/.vscode
 /build*
 CMakeSettings.json
 docs/aidocs/*

@@ -5,12 +5,11 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file network_client.h Client part of the network protocol. */
+/** @file loader.h Social plugin loader class. */
 
 #ifndef NETWORK_SOCIAL_LOADER_H
 #define NETWORK_SOCIAL_LOADER_H
 
-#include "../../core/alloc_type.hpp"
 #include "social_api.h"
 
 struct SocialPlatformPlugin {
@@ -24,7 +23,7 @@ struct SocialPlatformPlugin {
 	void* userdata;
 };
 
-class SocialPlatformLoader : public ZeroedMemoryAllocator {
+class SocialPlatformLoader {
 public:
 	void Shutdown();
 	void RunDispatch();

@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file survey_win.cpp Windows implementation of OS-specific survey information. */
+/** @file social_win.cpp Win32 backing implementation for social plugin loading. */
 
 #include "../../stdafx.h"
 
@@ -43,6 +43,7 @@ void LoadSocialPlatforms(std::vector<SocialPlatformPlugin>& plugins) {
 
 			if (plugin.initialize == nullptr || plugin.shutdown == nullptr || plugin.dispatch == nullptr || plugin.newState == nullptr) {
 				FreeLibrary(library);
+				continue;
 			}
 
 			plugins.push_back(plugin);
