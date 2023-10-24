@@ -430,6 +430,16 @@ void Station::RemoveFromAllNearbyLists()
 	for (Industry *i : Industry::Iterate()) { i->stations_near.erase(this); }
 }
 
+Owner Station::GetExclusivityConsumer() const
+{
+	return this->industry == nullptr || this->industry->exclusive_consumer == INVALID_OWNER ? this->owner : this->industry->exclusive_consumer;
+}
+
+Owner Station::GetExclusivitySupplier() const
+{
+	return this->industry == nullptr || this->industry->exclusive_supplier == INVALID_OWNER ? this->owner : this->industry->exclusive_supplier;
+}
+
 /**
  * Test if the given town ID is covered by our catchment area.
  * This is used when removing a house tile to determine if it was the last house tile

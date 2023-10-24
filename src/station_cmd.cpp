@@ -4179,7 +4179,7 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 	std::vector<StationInfo> used_stations;
 
 	for (Station *st : *all_stations) {
-		if (exclusivity != INVALID_OWNER && exclusivity != st->owner) continue;
+		if (exclusivity != INVALID_OWNER && exclusivity != st->GetExclusivityConsumer()) continue;
 		if (!CanMoveGoodsToStation(st, type)) continue;
 
 		/* Avoid allocating a vector if there is only one station to significantly
