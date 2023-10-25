@@ -29,7 +29,6 @@ enum GoalQuestionWidgets {
 	WID_GQ_BUTTON_1,       ///< First button.
 	WID_GQ_BUTTON_2,       ///< Second button.
 	WID_GQ_BUTTON_3,       ///< Third button.
-	WID_GQ_BUTTON_SPACER,  ///< Selection to hide extra padding if there are no buttons
 };
 
 #endif /* WIDGETS_GOAL_WIDGET_H */
