@@ -121,7 +121,7 @@ void UserErrorI(const std::string &str)
 	EM_ASM(if (window["openttd_abort"]) openttd_abort());
 #endif
 
-	exit(1);
+	_exit(1);
 }
 
 /**
