@@ -521,7 +521,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 		 * another size would be chosen it won't have truncated too little for
 		 * the truncation dots.
 		 */
-		FontCache *fc = ((const Font*)line.GetVisualRun(0).GetFont())->fc;
+		FontCache *fc = line.GetVisualRun(0).GetFont()->fc;
 		GlyphID dot_glyph = fc->MapCharToGlyph('.');
 		dot_width = fc->GetGlyphWidth(dot_glyph);
 		dot_sprite = fc->GetGlyph(dot_glyph);
@@ -570,7 +570,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 	bool draw_shadow = false;
 	for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
-		const Font *f = (const Font*)run.GetFont();
+		const Font *f = run.GetFont();
 
 		FontCache *fc = f->fc;
 		colour = f->colour;
