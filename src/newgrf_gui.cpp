@@ -30,6 +30,7 @@
 #include "fios.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "zoom_func.h"
 
 #include "widgets/newgrf_widget.h"
 #include "widgets/misc_widget.h"
@@ -1680,16 +1681,16 @@ public:
 		/* Use 2 or 3 columns? */
 		uint min_three_columns = min_avs_width + min_acs_width + min_inf_width + 2 * WidgetDimensions::scaled.hsep_wide;
 		uint min_two_columns   = min_list_width + min_inf_width + WidgetDimensions::scaled.hsep_wide;
-		bool use_three_columns = this->editable && (min_three_columns + MIN_EXTRA_FOR_3_COLUMNS <= given_width);
+		bool use_three_columns = this->editable && (min_three_columns + ScaleGUITrad(MIN_EXTRA_FOR_3_COLUMNS) <= given_width);
 
 		/* Info panel is a separate column in both modes. Compute its width first. */
 		uint extra_width, inf_width;
 		if (use_three_columns) {
 			extra_width = given_width - min_three_columns;
-			inf_width = std::min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
+			inf_width = std::min<uint>(ScaleGUITrad(MAX_EXTRA_INFO_WIDTH), extra_width / 2);
 		} else {
 			extra_width = given_width - min_two_columns;
-			inf_width = std::min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
+			inf_width = std::min<uint>(ScaleGUITrad(MAX_EXTRA_INFO_WIDTH), extra_width / 2);
 		}
 		inf_width = ComputeMaxSize(this->inf->smallest_x, this->inf->smallest_x + inf_width, this->inf->GetHorizontalStepSize(sizing));
 		extra_width -= inf_width - this->inf->smallest_x;
