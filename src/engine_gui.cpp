@@ -57,12 +57,13 @@ static const NWidgetPart _nested_engine_preview_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetDataTip(STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
-		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_EP_QUESTION), SetMinimalSize(300, 0), SetPadding(8, 8, 8, 8), SetFill(1, 0),
-		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(85, 10, 85),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_EP_NO), SetDataTip(STR_QUIT_NO, STR_NULL), SetFill(1, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_EP_YES), SetDataTip(STR_QUIT_YES, STR_NULL), SetFill(1, 0),
+		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_EP_QUESTION), SetMinimalSize(300, 0), SetFill(1, 0),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(85, WidgetDimensions::unscaled.hsep_wide, 85),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_EP_NO), SetDataTip(STR_QUIT_NO, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_EP_YES), SetDataTip(STR_QUIT_YES, STR_NULL), SetFill(1, 0),
+			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
 };
 
