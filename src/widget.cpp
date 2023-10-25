@@ -152,9 +152,12 @@ const WidgetDimensions WidgetDimensions::unscaled = {
 	{WD_DROPDOWNTEXT_LEFT, WD_DROPDOWNTEXT_TOP, WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_BOTTOM}, ///< dropdowntext
 	{20, 10, 20, 10},    ///< modalpopup
 	{3, 3, 3, 3},        ///< picker
+	{10, 8, 10, 8},      ///< sparse window padding
+	{10, 8, 10, 1},      ///< resizable sparse window padding
 	1,                   ///< pressed
 	1,                   ///< vsep_picker
 	WD_PAR_VSEP_NORMAL,  ///< vsep_normal
+	4,                   ///< vsep_sparse
 	WD_PAR_VSEP_WIDE,    ///< vsep_wide
 	2,                   ///< hsep_normal
 	6,                   ///< hsep_wide
