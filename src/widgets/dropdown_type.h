@@ -37,10 +37,10 @@ public:
  */
 class DropDownListStringItem : public DropDownListItem {
 public:
-	const std::string string; ///< String of item
+	std::string string; ///< String of item
 
 	DropDownListStringItem(StringID string, int result, bool masked);
-	DropDownListStringItem(const std::string &string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
+	DropDownListStringItem(const std::string &string, int result, bool masked);
 
 	bool Selectable() const override { return true; }
 	uint Width() const override;
