@@ -87,6 +87,7 @@ enum WidgetType {
 	WPT_DATATIP,      ///< Widget part for specifying data and tooltip.
 	WPT_PADDING,      ///< Widget part for specifying a padding.
 	WPT_PIPSPACE,     ///< Widget part for specifying pre/inter/post space for containers.
+	WPT_PIPRATIO,     ///< Widget part for specifying pre/inter/post ratio for containers.
 	WPT_TEXTSTYLE,    ///< Widget part for specifying text colour.
 	WPT_ALIGNMENT,    ///< Widget part for specifying text/image alignment.
 	WPT_ENDCONTAINER, ///< Widget part to denote end of a container.
@@ -482,12 +483,16 @@ public:
 
 	void AdjustPaddingForZoom() override;
 	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
+	void SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_inter, uint8_t pip_rato_post);
 
 protected:
 	NWidContainerFlags flags; ///< Flags of the container.
 	uint8_t pip_pre;            ///< Amount of space before first widget.
 	uint8_t pip_inter;          ///< Amount of space between widgets.
 	uint8_t pip_post;           ///< Amount of space after last widget.
+	uint8_t pip_ratio_pre;      ///< Ratio of remaining space before first widget.
+	uint8_t pip_ratio_inter;    ///< Ratio of remaining space between widgets.
+	uint8_t pip_ratio_post;     ///< Ratio of remaining space after last widget.
 
 	uint8_t uz_pip_pre;         ///< Unscaled space before first widget.
 	uint8_t uz_pip_inter;       ///< Unscaled space between widgets.
@@ -598,6 +603,7 @@ public:
 
 	void Add(NWidgetBase *nwid);
 	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
+	void SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_inter, uint8_t pip_ratio_post);
 
 	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w, bool init_array) override;
@@ -1224,6 +1230,25 @@ static inline NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
 	part.u.pip.pre = pre;
 	part.u.pip.inter = inter;
 	part.u.pip.post = post;
+
+	return part;
+}
+
+/**
+ * Widget part function for setting a pre/inter/post ratio.
+ * @param pre The ratio of space before the first widget.
+ * @param inter The ratio of space between widgets.
+ * @param post The ratio of space after the last widget.
+ * @ingroup NestedWidgetParts
+ */
+static inline NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_t ratio_post)
+{
+	NWidgetPart part;
+
+	part.type = WPT_PIPRATIO;
+	part.u.pip.pre = ratio_pre;
+	part.u.pip.inter = ratio_inter;
+	part.u.pip.post = ratio_post;
 
 	return part;
 }
