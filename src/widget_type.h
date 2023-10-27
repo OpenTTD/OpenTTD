@@ -492,6 +492,8 @@ protected:
 	uint8_t uz_pip_pre;         ///< Unscaled space before first widget.
 	uint8_t uz_pip_inter;       ///< Unscaled space between widgets.
 	uint8_t uz_pip_post;        ///< Unscaled space after last widget.
+
+	uint8_t gaps; ///< Number of gaps between widgets.
 };
 
 /**

@@ -1511,6 +1511,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 	this->fill_y = 1;     // smallest common child fill step.
 	this->resize_x = 0;   // smallest non-zero child widget resize step.
 	this->resize_y = 1;   // smallest common child resize step.
+	this->gaps = 0;
 
 	/* 1a. Forward call, collect biggest nested array index, and longest/widest child length. */
 	uint longest = 0; // Longest child found.
@@ -1520,7 +1521,9 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		longest = std::max(longest, child_wid->smallest_x);
 		max_vert_fill = std::max(max_vert_fill, child_wid->GetVerticalStepSize(ST_SMALLEST));
 		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
+		this->gaps++;
 	}
+	if (this->gaps > 0) this->gaps--; // Number of gaps is number of widgets less one.
 	/* 1b. Make the container higher if needed to accommodate all children nicely. */
 	[[maybe_unused]] uint max_smallest = this->smallest_y + 3 * max_vert_fill; // Upper limit to computing smallest height.
 	uint cur_height = this->smallest_y;
@@ -1546,15 +1549,8 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 			if (child_wid->fill_x == 1) child_wid->smallest_x = longest;
 		}
 	}
-	/* 3. Move PIP space to the children, compute smallest, fill, and resize values of the container. */
-	if (this->head != nullptr) this->head->padding.left += this->pip_pre;
+	/* 3. Compute smallest, fill, and resize values of the container. */
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		if (child_wid->next != nullptr) {
-			child_wid->padding.right += this->pip_inter;
-		} else {
-			child_wid->padding.right += this->pip_post;
-		}
-
 		this->smallest_x += child_wid->smallest_x + child_wid->padding.Horizontal();
 		if (child_wid->fill_x > 0) {
 			if (this->fill_x == 0 || this->fill_x > child_wid->fill_x) this->fill_x = child_wid->fill_x;
@@ -1566,8 +1562,8 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		}
 		this->resize_y = LeastCommonMultiple(this->resize_y, child_wid->resize_y);
 	}
-	/* We need to zero the PIP settings so we can re-initialize the tree. */
-	this->pip_pre = this->pip_inter = this->pip_post = 0;
+	/* 4. Increase by required PIP space. */
+	this->smallest_x += this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 }
 
 void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl)
@@ -1578,6 +1574,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 	uint additional_length = given_width;
 	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
 		/* For EQUALSIZE containers this does not sum to smallest_x during initialisation */
+		additional_length -= this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 			additional_length -= child_wid->smallest_x + child_wid->padding.Horizontal();
 		}
@@ -1657,7 +1654,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 	assert(num_changing_childs == 0);
 
 	/* Third loop: Compute position and call the child. */
-	uint position = rtl ? this->current_x : 0; // Place to put next child relative to origin of the container.
+	uint position = rtl ? this->current_x - this->pip_pre : this->pip_pre; // Place to put next child relative to origin of the container.
 	NWidgetBase *child_wid = this->head;
 	while (child_wid != nullptr) {
 		uint child_width = child_wid->current_x;
@@ -1665,7 +1662,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 		uint child_y = y + child_wid->padding.top;
 
 		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, rtl);
-		uint padded_child_width = child_width + child_wid->padding.Horizontal();
+		uint padded_child_width = child_width + child_wid->padding.Horizontal() + this->pip_inter;
 		position = rtl ? position - padded_child_width : position + padded_child_width;
 
 		child_wid = child_wid->next;
@@ -1696,6 +1693,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 	this->fill_y = 0;     // smallest non-zero child widget fill step.
 	this->resize_x = 1;   // smallest common child resize step.
 	this->resize_y = 0;   // smallest non-zero child widget resize step.
+	this->gaps = 0;
 
 	/* 1a. Forward call, collect biggest nested array index, and longest/widest child length. */
 	uint highest = 0; // Highest child found.
@@ -1705,7 +1703,9 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		highest = std::max(highest, child_wid->smallest_y);
 		max_hor_fill = std::max(max_hor_fill, child_wid->GetHorizontalStepSize(ST_SMALLEST));
 		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.Horizontal());
+		this->gaps++;
 	}
+	if (this->gaps > 0) this->gaps--; // Number of gaps is number of widgets less one.
 	/* 1b. Make the container wider if needed to accommodate all children nicely. */
 	[[maybe_unused]] uint max_smallest = this->smallest_x + 3 * max_hor_fill; // Upper limit to computing smallest height.
 	uint cur_width = this->smallest_x;
@@ -1731,15 +1731,8 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 			if (child_wid->fill_y == 1) child_wid->smallest_y = highest;
 		}
 	}
-	/* 3. Move PIP space to the child, compute smallest, fill, and resize values of the container. */
-	if (this->head != nullptr) this->head->padding.top += this->pip_pre;
+	/* 3. Compute smallest, fill, and resize values of the container. */
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		if (child_wid->next != nullptr) {
-			child_wid->padding.bottom += this->pip_inter;
-		} else {
-			child_wid->padding.bottom += this->pip_post;
-		}
-
 		this->smallest_y += child_wid->smallest_y + child_wid->padding.Vertical();
 		if (child_wid->fill_y > 0) {
 			if (this->fill_y == 0 || this->fill_y > child_wid->fill_y) this->fill_y = child_wid->fill_y;
@@ -1751,8 +1744,8 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		}
 		this->resize_x = LeastCommonMultiple(this->resize_x, child_wid->resize_x);
 	}
-	/* We need to zero the PIP settings so we can re-initialize the tree. */
-	this->pip_pre = this->pip_inter = this->pip_post = 0;
+	/* 4. Increase by required PIP space. */
+	this->smallest_y += this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 }
 
 void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl)
@@ -1763,6 +1756,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 	uint additional_length = given_height;
 	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
 		/* For EQUALSIZE containers this does not sum to smallest_y during initialisation */
+		additional_length -= this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 			additional_length -= child_wid->smallest_y + child_wid->padding.Vertical();
 		}
@@ -1833,13 +1827,13 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 	assert(num_changing_childs == 0);
 
 	/* Third loop: Compute position and call the child. */
-	uint position = 0; // Place to put next child relative to origin of the container.
+	uint position = this->pip_pre; // Place to put next child relative to origin of the container.
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		uint child_x = x + (rtl ? child_wid->padding.right : child_wid->padding.left);
 		uint child_height = child_wid->current_y;
 
 		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding.top, child_wid->current_x, child_height, rtl);
-		position += child_height + child_wid->padding.Vertical();
+		position += child_height + child_wid->padding.Vertical() + this->pip_inter;
 	}
 }
 
