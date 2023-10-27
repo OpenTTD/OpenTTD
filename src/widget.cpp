@@ -1537,7 +1537,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		longest = std::max(longest, child_wid->smallest_x);
 		max_vert_fill = std::max(max_vert_fill, child_wid->GetVerticalStepSize(ST_SMALLEST));
 		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
-		this->gaps++;
+		if (child_wid->smallest_x != 0 || child_wid->fill_x != 0) this->gaps++;
 	}
 	if (this->gaps > 0) this->gaps--; // Number of gaps is number of widgets less one.
 	/* 1b. Make the container higher if needed to accommodate all children nicely. */
@@ -1593,7 +1593,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 		/* For EQUALSIZE containers this does not sum to smallest_x during initialisation */
 		additional_length -= this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			additional_length -= child_wid->smallest_x + child_wid->padding.Horizontal();
+			if (child_wid->smallest_x != 0 || child_wid->fill_x != 0) additional_length -= child_wid->smallest_x + child_wid->padding.Horizontal();
 		}
 	} else {
 		additional_length -= this->smallest_x;
@@ -1692,8 +1692,10 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 		uint child_y = y + child_wid->padding.top;
 
 		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, rtl);
-		uint padded_child_width = child_width + child_wid->padding.Horizontal() + inter;
-		position = rtl ? position - padded_child_width : position + padded_child_width;
+		if (child_wid->current_x != 0) {
+			uint padded_child_width = child_width + child_wid->padding.Horizontal() + inter;
+			position = rtl ? position - padded_child_width : position + padded_child_width;
+		}
 
 		child_wid = child_wid->next;
 	}
@@ -1733,7 +1735,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		highest = std::max(highest, child_wid->smallest_y);
 		max_hor_fill = std::max(max_hor_fill, child_wid->GetHorizontalStepSize(ST_SMALLEST));
 		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.Horizontal());
-		this->gaps++;
+		if (child_wid->smallest_y != 0 || child_wid->fill_y != 0) this->gaps++;
 	}
 	if (this->gaps > 0) this->gaps--; // Number of gaps is number of widgets less one.
 	/* 1b. Make the container wider if needed to accommodate all children nicely. */
@@ -1789,7 +1791,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 		/* For EQUALSIZE containers this does not sum to smallest_y during initialisation */
 		additional_length -= this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			additional_length -= child_wid->smallest_y + child_wid->padding.Vertical();
+			if (child_wid->smallest_y != 0 || child_wid->fill_y != 0) additional_length -= child_wid->smallest_y + child_wid->padding.Vertical();
 		}
 	} else {
 		additional_length -= this->smallest_y;
@@ -1877,7 +1879,9 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 		uint child_height = child_wid->current_y;
 
 		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding.top, child_wid->current_x, child_height, rtl);
-		position += child_height + child_wid->padding.Vertical() + inter;
+		if (child_wid->current_y != 0) {
+			position += child_height + child_wid->padding.Vertical() + inter;
+		}
 	}
 }
 
