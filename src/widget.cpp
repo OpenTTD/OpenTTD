@@ -1498,6 +1498,22 @@ void NWidgetPIPContainer::SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip
 	this->pip_post = ScaleGUITrad(this->uz_pip_post);
 }
 
+/**
+ * Set additional pre/inter/post space for the container.
+ *
+ * @param pip_ratio_pre   Ratio of additional space in front of the first child widget (above
+ *                        for the vertical container, at the left for the horizontal container).
+ * @param pip_ratio_inter Ratio of additional space between two child widgets.
+ * @param pip_ratio_post  Ratio of additional space after the last child widget (below for the
+ *                        vertical container, at the right for the horizontal container).
+ */
+void NWidgetPIPContainer::SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_inter, uint8_t pip_ratio_post)
+{
+	this->pip_ratio_pre = pip_ratio_pre;
+	this->pip_ratio_inter = pip_ratio_inter;
+	this->pip_ratio_post = pip_ratio_post;
+}
+
 /** Horizontal container widget. */
 NWidgetHorizontal::NWidgetHorizontal(NWidContainerFlags flags) : NWidgetPIPContainer(NWID_HORIZONTAL, flags)
 {
@@ -1562,6 +1578,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		}
 		this->resize_y = LeastCommonMultiple(this->resize_y, child_wid->resize_y);
 	}
+	if (this->fill_x == 0 && this->pip_ratio_pre + this->pip_ratio_inter + this->pip_ratio_post > 0) this->fill_x = 1;
 	/* 4. Increase by required PIP space. */
 	this->smallest_x += this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 }
@@ -1572,7 +1589,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 
 	/* Compute additional width given to us. */
 	uint additional_length = given_width;
-	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
+	if (this->pip_ratio_pre + this->pip_ratio_inter + this->pip_ratio_post != 0 || (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE))) {
 		/* For EQUALSIZE containers this does not sum to smallest_x during initialisation */
 		additional_length -= this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
@@ -1653,8 +1670,21 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 	}
 	assert(num_changing_childs == 0);
 
+	uint pre = this->pip_pre;
+	uint inter = this->pip_inter;
+
+	if (additional_length > 0) {
+		/* Allocate remaining space by pip ratios. If this doesn't round exactly, the unused space will fall into pip_post
+		 * which is never explicitly needed. */
+		int r = this->pip_ratio_pre + this->gaps * this->pip_ratio_inter + this->pip_ratio_post;
+		if (r > 0) {
+			pre += this->pip_ratio_pre * additional_length / r;
+			if (this->gaps > 0) inter += this->pip_ratio_inter * additional_length / r;
+		}
+	}
+
 	/* Third loop: Compute position and call the child. */
-	uint position = rtl ? this->current_x - this->pip_pre : this->pip_pre; // Place to put next child relative to origin of the container.
+	uint position = rtl ? this->current_x - pre : pre; // Place to put next child relative to origin of the container.
 	NWidgetBase *child_wid = this->head;
 	while (child_wid != nullptr) {
 		uint child_width = child_wid->current_x;
@@ -1662,7 +1692,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 		uint child_y = y + child_wid->padding.top;
 
 		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, rtl);
-		uint padded_child_width = child_width + child_wid->padding.Horizontal() + this->pip_inter;
+		uint padded_child_width = child_width + child_wid->padding.Horizontal() + inter;
 		position = rtl ? position - padded_child_width : position + padded_child_width;
 
 		child_wid = child_wid->next;
@@ -1744,6 +1774,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		}
 		this->resize_x = LeastCommonMultiple(this->resize_x, child_wid->resize_x);
 	}
+	if (this->fill_y == 0 && this->pip_ratio_pre + this->pip_ratio_inter + this->pip_ratio_post > 0) this->fill_y = 1;
 	/* 4. Increase by required PIP space. */
 	this->smallest_y += this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 }
@@ -1754,7 +1785,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 
 	/* Compute additional height given to us. */
 	uint additional_length = given_height;
-	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
+	if (this->pip_ratio_pre + this->pip_ratio_inter + this->pip_ratio_post != 0 || (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE))) {
 		/* For EQUALSIZE containers this does not sum to smallest_y during initialisation */
 		additional_length -= this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
@@ -1826,14 +1857,27 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 	}
 	assert(num_changing_childs == 0);
 
+	uint pre = this->pip_pre;
+	uint inter = this->pip_inter;
+
+	if (additional_length > 0) {
+		/* Allocate remaining space by pip ratios. If this doesn't round exactly, the unused space will fall into pip_post
+		 * which is never explicitly needed. */
+		int r = this->pip_ratio_pre + this->gaps * this->pip_ratio_inter + this->pip_ratio_post;
+		if (r > 0) {
+			pre += this->pip_ratio_pre * additional_length / r;
+			if (this->gaps > 0) inter += this->pip_ratio_inter * additional_length / r;
+		}
+	}
+
 	/* Third loop: Compute position and call the child. */
-	uint position = this->pip_pre; // Place to put next child relative to origin of the container.
+	uint position = pre; // Place to put next child relative to origin of the container.
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		uint child_x = x + (rtl ? child_wid->padding.right : child_wid->padding.left);
 		uint child_height = child_wid->current_y;
 
 		child_wid->AssignSizePosition(sizing, child_x, y + position + child_wid->padding.top, child_wid->current_x, child_height, rtl);
-		position += child_height + child_wid->padding.Vertical() + this->pip_inter;
+		position += child_height + child_wid->padding.Vertical() + inter;
 	}
 }
 
@@ -2168,6 +2212,24 @@ void NWidgetBackground::SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_p
 		this->child = new NWidgetVertical();
 	}
 	this->child->SetPIP(pip_pre, pip_inter, pip_post);
+}
+
+/**
+ * Set additional pre/inter/post space ratios for the background widget.
+ *
+ * @param pip_ratio_pre   Ratio of additional space in front of the first child widget (above
+ *                        for the vertical container, at the left for the horizontal container).
+ * @param pip_ratio_inter Ratio of additional space between two child widgets.
+ * @param pip_ratio_post  Ratio of additional space after the last child widget (below for the
+ *                        vertical container, at the right for the horizontal container).
+ * @note Using this function implies that the widget has (or will have) child widgets.
+ */
+void NWidgetBackground::SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_inter, uint8_t pip_ratio_post)
+{
+	if (this->child == nullptr) {
+		this->child = new NWidgetVertical();
+	}
+	this->child->SetPIPRatio(pip_ratio_pre, pip_ratio_inter, pip_ratio_post);
 }
 
 void NWidgetBackground::AdjustPaddingForZoom()
@@ -3177,6 +3239,15 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 
 				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(*dest);
 				if (nwb != nullptr) nwb->SetPIP(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
+				break;
+			}
+
+			case WPT_PIPRATIO: {
+				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(*dest);
+				if (nwc != nullptr) nwc->SetPIPRatio(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
+
+				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(*dest);
+				if (nwb != nullptr) nwb->SetPIPRatio(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
 				break;
 			}
 
