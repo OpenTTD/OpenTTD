@@ -10,7 +10,7 @@
 #ifndef ERROR_FUNC_H
 #define ERROR_FUNC_H
 
-#include "3rdparty/fmt/format.h"
+#include <fmt/format.h>
 
 void NORETURN UserErrorI(const std::string &str);
 void NORETURN FatalErrorI(const std::string &str);

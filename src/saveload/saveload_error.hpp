@@ -10,7 +10,7 @@
 #ifndef SAVELOAD_ERROR_HPP
 #define SAVELOAD_ERROR_HPP
 
-#include "../3rdparty/fmt/format.h"
+#include <fmt/format.h>
 #include "../strings_type.h"
 
 void NORETURN SlError(StringID string, const std::string &extra_msg = {});

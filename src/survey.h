@@ -10,7 +10,7 @@
 #ifndef SURVEY_H
 #define SURVEY_H
 
-#include "3rdparty/nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 
 std::string SurveyMemoryToText(uint64_t memory);
 

@@ -10,7 +10,7 @@
 #ifndef FORMAT_HPP
 #define FORMAT_HPP
 
-#include "../3rdparty/fmt/format.h"
+#include <fmt/format.h>
 #include "strong_typedef_type.hpp"
 
 template <typename E, typename Char>

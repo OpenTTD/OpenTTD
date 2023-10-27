@@ -19,7 +19,7 @@
 #include "os/windows/win32.h"
 #endif
 
-#include "3rdparty/fmt/chrono.h"
+#include <fmt/chrono.h>
 
 #include "network/network_admin.h"
 SOCKET _debug_socket = INVALID_SOCKET;

@@ -13,8 +13,8 @@
 #include "network.h"
 #include "../debug.h"
 #include "../survey.h"
-#include "../3rdparty/fmt/chrono.h"
-#include "../3rdparty/fmt/std.h"
+#include <fmt/chrono.h>
+#include <fmt/std.h>
 
 #include "../safeguards.h"
 

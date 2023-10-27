@@ -15,7 +15,7 @@
 #include "../strings_type.h"
 #include "../misc/getoptdata.h"
 #include "../table/control_codes.h"
-#include "../3rdparty/fmt/std.h"
+#include <fmt/std.h>
 
 #include "strgen.h"
 

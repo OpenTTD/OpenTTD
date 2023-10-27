@@ -18,7 +18,7 @@
 #include "../../string_func.h"
 #include "../../economy_cmd.h"
 #include "../../engine_cmd.h"
-#include "../../3rdparty/nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 #include "table/strings.h"
 
 #include "../../safeguards.h"

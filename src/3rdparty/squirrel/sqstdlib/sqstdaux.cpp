@@ -5,7 +5,7 @@
 #include <squirrel.h>
 #include <sqstdaux.h>
 
-#include "../../fmt/format.h"
+#include <fmt/format.h>
 #include "../../../safeguards.h"
 
 void sqstd_printcallstack(HSQUIRRELVM v)

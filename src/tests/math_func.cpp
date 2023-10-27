@@ -9,7 +9,7 @@
 
 #include "../stdafx.h"
 
-#include "../3rdparty/catch2/catch.hpp"
+#include <catch2/catch.hpp>
 
 #include "../core/math_func.hpp"
 

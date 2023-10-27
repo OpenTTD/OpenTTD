@@ -73,6 +73,7 @@ function(set_options)
     endif()
 
     option(OPTION_SURVEY_KEY "Survey-key to use for the opt-in survey (empty if you have none)" "")
+    option(OPTION_PREFER_SYSLIBS "Prefer system libraries over 3rdparty bundled sources" OFF)
 endfunction()
 
 # Show the values of the generic options.
@@ -86,6 +87,7 @@ function(show_options)
     message(STATUS "Option Use assert - ${OPTION_USE_ASSERTS}")
     message(STATUS "Option Use threads - ${OPTION_USE_THREADS}")
     message(STATUS "Option Use NSIS - ${OPTION_USE_NSIS}")
+    message(STATUS "Option prefer syslibs - ${OPTION_PREFER_SYSLIBS}")
 
     if(OPTION_SURVEY_KEY)
         message(STATUS "Option Survey Key - USED")

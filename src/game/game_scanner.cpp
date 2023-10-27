@@ -13,7 +13,7 @@
 #include "game_info.hpp"
 #include "game_scanner.hpp"
 
-#include "../3rdparty/fmt/format.h"
+#include <fmt/format.h>
 
 #include "../safeguards.h"
 

@@ -10,7 +10,7 @@
 #ifndef CRASHLOG_H
 #define CRASHLOG_H
 
-#include "3rdparty/nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 
 /**
  * Helper class for creating crash logs.

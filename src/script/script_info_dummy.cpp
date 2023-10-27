@@ -12,7 +12,7 @@
 
 #include "../string_func.h"
 #include "../strings_func.h"
-#include "../3rdparty/fmt/format.h"
+#include <fmt/format.h>
 
 #include "../safeguards.h"
 

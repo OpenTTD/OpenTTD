@@ -3,7 +3,7 @@
  */
 
 #include "../../../stdafx.h"
-#include "../../fmt/format.h"
+#include <fmt/format.h>
 
 #include "sqpcheader.h"
 #include "sqcompiler.h"

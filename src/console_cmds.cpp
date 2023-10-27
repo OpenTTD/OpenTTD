@@ -42,10 +42,10 @@
 #include "rail.h"
 #include "game/game.hpp"
 #include "table/strings.h"
-#include "3rdparty/fmt/chrono.h"
 #include "company_cmd.h"
 #include "misc_cmd.h"
 
+#include <fmt/chrono.h>
 #include <sstream>
 
 #include "safeguards.h"

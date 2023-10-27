@@ -125,6 +125,24 @@ find_package(LibLZMA)
 find_package(LZO)
 find_package(PNG)
 
+if (OPTION_PREFER_SYSLIBS)
+	# src/3rdparty ships those libraries
+	# Allow them to be used from the system if compatible version found
+	find_package(Catch2 2)
+	find_package(fmt 10)
+	find_package(nlohmann_json 3.11)
+endif()
+
+if (NOT Catch2_FOUND)
+	include_directories(src/3rdparty/catch2)
+endif()
+if (NOT fmt_FOUND)
+	include_directories(src/3rdparty/fmt)
+endif()
+if (NOT nlohmann_json_FOUND)
+	include_directories(src/3rdparty/json)
+endif()
+
 if(WIN32 OR EMSCRIPTEN)
     # Windows uses WinHttp for HTTP requests.
     # Emscripten uses Javascript for HTTP requests.
@@ -336,6 +354,13 @@ if(NOT OPTION_DEDICATED)
     else()
         link_package(OpenGL TARGET OpenGL::GL)
     endif()
+endif()
+
+if (fmt_FOUND AND OPTION_PREFER_SYSLIBS)
+	link_package(fmt TARGET fmt::fmt)
+endif()
+if (nlohmann_json_FOUND AND OPTION_PREFER_SYSLIBS)
+	link_package(nlohmann_json TARGET nlohmann_json::nlohmann_json)
 endif()
 
 include(CheckAtomic)

@@ -2,7 +2,7 @@
 #ifndef _SQUTILS_H_
 #define _SQUTILS_H_
 
-#include "../../fmt/format.h"
+#include <fmt/format.h>
 #include "../../../script/script_fatalerror.hpp"
 
 void *sq_vm_malloc(SQUnsignedInteger size);

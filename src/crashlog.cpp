@@ -23,8 +23,8 @@
 #include "fileio_type.h"
 
 #include "company_func.h"
-#include "3rdparty/fmt/chrono.h"
-#include "3rdparty/fmt/std.h"
+#include <fmt/chrono.h>
+#include <fmt/std.h>
 #include "core/format.hpp"
 
 #include "safeguards.h"

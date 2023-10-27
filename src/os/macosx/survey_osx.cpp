@@ -9,7 +9,7 @@
 
 #include "../../stdafx.h"
 
-#include "../../3rdparty/fmt/format.h"
+#include <fmt/format.h>
 #include "../../survey.h"
 #include "macos.h"
 

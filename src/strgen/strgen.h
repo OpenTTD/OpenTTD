@@ -11,7 +11,7 @@
 #define STRGEN_H
 
 #include "../language.h"
-#include "../3rdparty/fmt/format.h"
+#include <fmt/format.h>
 
 #include <unordered_map>
 #include <array>

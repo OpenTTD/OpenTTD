@@ -12,7 +12,7 @@
 #include "string_func.h"
 #include "console_func.h"
 #include "spritecache.h"
-#include "3rdparty/fmt/chrono.h"
+#include <fmt/chrono.h>
 #include "timer/timer.h"
 #include "timer/timer_game_tick.h"
 

@@ -7,3 +7,4 @@ add_files(
     ranges.h
     std.h
 )
+add_definitions(-DFMT_HEADER_ONLY)

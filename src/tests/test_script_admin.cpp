@@ -9,7 +9,7 @@
 
 #include "../stdafx.h"
 
-#include "../3rdparty/catch2/catch.hpp"
+#include <catch2/catch.hpp>
 
 #include "../game/game_instance.hpp"
 #include "../script/api/script_admin.hpp"
@@ -17,8 +17,8 @@
 #include "../script/script_instance.hpp"
 #include "../script/squirrel.hpp"
 
-#include "../3rdparty/fmt/format.h"
-#include "../3rdparty/nlohmann/json.hpp"
+#include <fmt/format.h>
+#include <nlohmann/json.hpp>
 
 #include <squirrel.h>
 
