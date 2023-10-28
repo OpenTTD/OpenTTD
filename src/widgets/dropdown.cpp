@@ -36,6 +36,13 @@ DropDownListStringItem::DropDownListStringItem(StringID string, int result, bool
 {
 }
 
+DropDownListStringItem::DropDownListStringItem(const std::string &string, int result, bool masked) : DropDownListItem(result, masked)
+{
+	/* A raw string may contain parsable tokens, so it needs to be passed through GetString. */
+	SetDParamStr(0, string);
+	this->string = GetString(STR_JUST_RAW_STRING);
+}
+
 uint DropDownListStringItem::Width() const
 {
 	return GetStringBoundingBox(this->String()).width + WidgetDimensions::scaled.dropdowntext.Horizontal();
