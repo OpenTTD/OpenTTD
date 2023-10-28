@@ -665,7 +665,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historia nuntio
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Delere omnia nuntia
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terrae regionis indicia
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Monstrare celareve consolam

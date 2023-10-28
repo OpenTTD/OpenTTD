@@ -442,7 +442,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :शेवटच
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :निरोपांचा इतिहास
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :जागाची माहिती
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_SCREENSHOT                                       :द्श्य

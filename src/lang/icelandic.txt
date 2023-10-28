@@ -452,7 +452,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Síðustu skila
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Saga skilaboða
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landssvæðisupplýsingar
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Kveikja á stýriskjá

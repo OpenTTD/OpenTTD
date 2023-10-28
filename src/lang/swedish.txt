@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meddelandehisto
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Ta bort alla meddelanden
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Information om mark
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen

@@ -496,7 +496,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidligere meldi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Slett alle meldinger
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll

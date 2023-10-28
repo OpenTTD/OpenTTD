@@ -691,7 +691,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Istorija Obave�
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Obriši sve poruke
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Podaci o zemljištu
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Uključi/isključi konzolu

@@ -792,7 +792,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Гісторы�
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Выдаліць усе паведамленьні
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Зьвесткі аб зямлі
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Кансоль

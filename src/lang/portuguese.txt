@@ -522,7 +522,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Histórico de m
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as mensagens
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
 STR_ABOUT_MENU_HELP                                             :Ajuda & manuais
 STR_ABOUT_MENU_SEPARATOR                                        :

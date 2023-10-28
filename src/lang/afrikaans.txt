@@ -483,7 +483,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Boodskapgeskied
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Vee alle boodskappe uit
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terreininligting
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skakel terminaal

@@ -476,7 +476,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Siste melding/n
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidlegare meldingar
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll

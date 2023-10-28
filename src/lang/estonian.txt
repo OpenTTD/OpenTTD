@@ -560,7 +560,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Teadete ajalugu
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Kustuta kõik teated
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-ala andmed
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja

@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berichtengeschi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Alle berichten verwijderen
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatie
 STR_ABOUT_MENU_HELP                                             :Help en handleidingen
 STR_ABOUT_MENU_SEPARATOR                                        :

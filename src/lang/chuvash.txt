@@ -281,7 +281,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Сасӑ/Юрӑ
 ###length 3
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_SCREENSHOT                                       :Экран сӑнӗ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' çинчен

@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :訊息記錄
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :刪除所有訊息
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :土地資訊
 STR_ABOUT_MENU_HELP                                             :幫助和手冊
 STR_ABOUT_MENU_SEPARATOR                                        :

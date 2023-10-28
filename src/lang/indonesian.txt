@@ -507,7 +507,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berita Lampau
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Hapus semua pesan
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi area daratan
 STR_ABOUT_MENU_HELP                                             :Bantuan & panduan
 STR_ABOUT_MENU_SEPARATOR                                        :

@@ -628,7 +628,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Zadnje sporoči
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Zgodovina sporočil
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacije o terenu
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vklopi/Izklopi konzolo

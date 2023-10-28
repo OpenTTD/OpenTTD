@@ -522,7 +522,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historique des 
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Effacer tous les messages
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Outil d'inspection du paysage
 STR_ABOUT_MENU_HELP                                             :Aide et manuels
 STR_ABOUT_MENU_SEPARATOR                                        :

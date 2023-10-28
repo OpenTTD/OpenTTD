@@ -482,7 +482,7 @@ STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Neges/Adroddiad
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Hanes negeseuon
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gwybodaeth ardal tir
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglu Consol

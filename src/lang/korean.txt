@@ -522,7 +522,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :과거 메시�
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :모든 뉴스 메시지 삭제
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :지형 정보
 STR_ABOUT_MENU_HELP                                             :도움말 & 매뉴얼
 STR_ABOUT_MENU_SEPARATOR                                        :

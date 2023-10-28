@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Viestihistoria
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Poista kaikki viestit
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-alueen tiedot
 STR_ABOUT_MENU_HELP                                             :Ohjeet ja oppaat
 STR_ABOUT_MENU_SEPARATOR                                        :

@@ -522,7 +522,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de mi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Esborra tots els missatges
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de la casella
 STR_ABOUT_MENU_HELP                                             :Ajuda i manuals
 STR_ABOUT_MENU_SEPARATOR                                        :

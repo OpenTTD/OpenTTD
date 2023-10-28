@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :消息历史
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :删除全部消息
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :查询地块信息
 STR_ABOUT_MENU_HELP                                             :帮助和指南
 STR_ABOUT_MENU_SEPARATOR                                        :

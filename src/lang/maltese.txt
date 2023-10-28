@@ -315,7 +315,7 @@ STR_FILE_MENU_SEPARATOR                                         :
 ###length 3
 
 # About menu
-###length 11
+###length 12
 
 # Place in highscore window
 ###length 15

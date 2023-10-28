@@ -900,7 +900,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Poprzednie wiad
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Usuń wszystkie wiadomości
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacje o terenie
 STR_ABOUT_MENU_HELP                                             :Pomoc i instrukcje
 STR_ABOUT_MENU_SEPARATOR                                        :

@@ -485,7 +485,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :செய்த
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :எல்லா செய்திகளையும் நீக்கு
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :நிலா பகுதி விவரம்
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :முனையத்தை மாற்று
