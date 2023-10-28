@@ -521,7 +521,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Message history
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Delete all messages
 
 # About menu
-###length 11
+###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Land area information
 STR_ABOUT_MENU_HELP                                             :Help & manuals
 STR_ABOUT_MENU_SEPARATOR                                        :
@@ -533,6 +533,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :About 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toggle bounding boxes
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toggle colouring of dirty blocks
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Toggle widget outlines
 
 # Place in highscore window
 ###length 15

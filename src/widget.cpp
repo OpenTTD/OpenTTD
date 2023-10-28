@@ -915,6 +915,18 @@ int Window::SortButtonWidth()
 	return NWidgetScrollbar::GetVerticalDimension().width + 1;
 }
 
+bool _draw_widget_outlines;
+
+void DrawOutline(const Window *, const NWidgetBase *wid)
+{
+	if (!_draw_widget_outlines || wid->current_x == 0 || wid->current_y == 0) return;
+
+	Rect r = wid->GetCurrentRect();
+	GfxDrawLine(r.left,  r.top,    r.right, r.top,    PC_WHITE, 1, 4);
+	GfxDrawLine(r.left,  r.top,    r.left,  r.bottom, PC_WHITE, 1, 4);
+	GfxDrawLine(r.right, r.top,    r.right, r.bottom, PC_WHITE, 1, 4);
+	GfxDrawLine(r.left,  r.bottom, r.right, r.bottom, PC_WHITE, 1, 4);
+}
 
 /**
  * @defgroup NestedWidgets Hierarchical widgets
@@ -1308,6 +1320,8 @@ void NWidgetContainer::Draw(const Window *w)
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		child_wid->Draw(w);
 	}
+
+	DrawOutline(w, this);
 }
 
 NWidgetCore *NWidgetContainer::GetWidgetFromPos(int x, int y)
@@ -1420,6 +1434,7 @@ void NWidgetStacked::Draw(const Window *w)
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; plane++, child_wid = child_wid->next) {
 		if (plane == this->shown_plane) {
 			child_wid->Draw(w);
+			DrawOutline(w, this);
 			return;
 		}
 	}
@@ -1849,9 +1864,16 @@ void NWidgetSpacer::FillNestedArray(NWidgetBase **, uint)
 {
 }
 
-void NWidgetSpacer::Draw(const Window *)
+void NWidgetSpacer::Draw(const Window *w)
 {
-	/* Spacer widget is never visible. */
+	/* Spacer widget is never normally visible. */
+
+	if (_draw_widget_outlines && this->current_x != 0 && this->current_y != 0) {
+		/* Spacers indicate a potential design issue, so get extra highlighting. */
+		GfxFillRect(this->GetCurrentRect(), PC_WHITE, FILLRECT_CHECKER);
+
+		DrawOutline(w, this);
+	}
 }
 
 void NWidgetSpacer::SetDirty(const Window *) const
@@ -2030,39 +2052,44 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 	bool rtl = _current_text_dir == TD_RTL;
 	DrawPixelInfo tmp_dpi;
 	if (!FillDrawPixelInfo(&tmp_dpi, this->pos_x + (rtl ? this->pip_post : this->pip_pre), this->pos_y + this->pip_pre, this->current_x - this->pip_pre - this->pip_post, this->current_y - this->pip_pre - this->pip_post)) return;
-	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
-	/* Get the appropriate offsets so we can draw the right widgets. */
-	NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
-	assert(child != nullptr);
-	int start_x, start_y, base_offs_x, base_offs_y;
-	this->GetScrollOffsets(start_x, start_y, base_offs_x, base_offs_y);
+	{
+		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
-	int offs_y = base_offs_y;
-	for (int y = start_y; y < start_y + this->widgets_y + 1; y++, offs_y += this->widget_h) {
-		/* Are we within bounds? */
-		if (offs_y + child->smallest_y <= 0) continue;
-		if (offs_y >= (int)this->current_y) break;
+		/* Get the appropriate offsets so we can draw the right widgets. */
+		NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
+		assert(child != nullptr);
+		int start_x, start_y, base_offs_x, base_offs_y;
+		this->GetScrollOffsets(start_x, start_y, base_offs_x, base_offs_y);
 
-		/* We've passed our amount of widgets. */
-		if (y * this->widgets_x >= this->count) break;
-
-		int offs_x = base_offs_x;
-		for (int x = start_x; x < start_x + this->widgets_x + 1; x++, offs_x += rtl ? -this->widget_w : this->widget_w) {
+		int offs_y = base_offs_y;
+		for (int y = start_y; y < start_y + this->widgets_y + 1; y++, offs_y += this->widget_h) {
 			/* Are we within bounds? */
-			if (offs_x + child->smallest_x <= 0) continue;
-			if (offs_x >= (int)this->current_x) continue;
+			if (offs_y + child->smallest_y <= 0) continue;
+			if (offs_y >= (int)this->current_y) break;
 
-			/* Do we have this many widgets? */
-			int sub_wid = y * this->widgets_x + x;
-			if (sub_wid >= this->count) break;
+			/* We've passed our amount of widgets. */
+			if (y * this->widgets_x >= this->count) break;
 
-			child->AssignSizePosition(ST_RESIZE, offs_x, offs_y, child->smallest_x, child->smallest_y, rtl);
-			child->SetLowered(this->clicked == sub_wid);
-			SB(child->index, 16, 16, sub_wid);
-			child->Draw(w);
+			int offs_x = base_offs_x;
+			for (int x = start_x; x < start_x + this->widgets_x + 1; x++, offs_x += rtl ? -this->widget_w : this->widget_w) {
+				/* Are we within bounds? */
+				if (offs_x + child->smallest_x <= 0) continue;
+				if (offs_x >= (int)this->current_x) continue;
+
+				/* Do we have this many widgets? */
+				int sub_wid = y * this->widgets_x + x;
+				if (sub_wid >= this->count) break;
+
+				child->AssignSizePosition(ST_RESIZE, offs_x, offs_y, child->smallest_x, child->smallest_y, rtl);
+				child->SetLowered(this->clicked == sub_wid);
+				SB(child->index, 16, 16, sub_wid);
+				child->Draw(w);
+			}
 		}
 	}
+
+	DrawOutline(w, this);
 }
 
 /**
@@ -2275,6 +2302,8 @@ void NWidgetBackground::Draw(const Window *w)
 	if (this->IsDisabled()) {
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
 	}
+
+	DrawOutline(w, this);
 }
 
 NWidgetCore *NWidgetBackground::GetWidgetFromPos(int x, int y)
@@ -2328,6 +2357,8 @@ void NWidgetViewport::Draw(const Window *w)
 		GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1,
 				(this->disp_flags & ND_SHADE_DIMMED) ? PALETTE_TO_TRANSPARENT : PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 	}
+
+	DrawOutline(w, this);
 }
 
 /**
@@ -2527,6 +2558,8 @@ void NWidgetScrollbar::Draw(const Window *w)
 	if (this->IsDisabled()) {
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
 	}
+
+	DrawOutline(w, this);
 }
 
 /* static */ void NWidgetScrollbar::InvalidateDimensionCache()
@@ -2872,6 +2905,10 @@ void NWidgetLeaf::Draw(const Window *w)
 	bool clicked = this->IsLowered();
 	switch (this->type) {
 		case WWT_EMPTY:
+			/* WWT_EMPTY used as a spacer indicates a potential design issue. */
+			if (this->index == -1 && _draw_widget_outlines) {
+				GfxFillRect(r, PC_BLACK, FILLRECT_CHECKER);
+			}
 			break;
 
 		case WWT_PUSHBTN:
@@ -2979,6 +3016,8 @@ void NWidgetLeaf::Draw(const Window *w)
 	if (this->IsDisabled()) {
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
 	}
+
+	DrawOutline(w, this);
 }
 
 /**
