@@ -191,6 +191,7 @@ STR_COLOUR_WHITE                                                :Putih
 STR_COLOUR_RANDOM                                               :Acak
 
 ###length 17
+STR_COLOUR_SECONDARY_DARK_BLUE                                  :Biru Tua
 STR_COLOUR_SECONDARY_PALE_GREEN                                 :Hijau Pucat
 STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Merah Muda
 STR_COLOUR_SECONDARY_BROWN                                      :Cokelat

@@ -533,6 +533,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite justering
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Slå afgrænsningsrammerne til/fra
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Slå farvning af beskidte blokke til/fra
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Skift widget konturer
 
 # Place in highscore window
 ###length 15

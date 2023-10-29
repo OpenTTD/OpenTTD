@@ -658,7 +658,8 @@ STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Информа�
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Об игре
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выравнивание спрайтов
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Переключить ограничивающие рамки
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Подкрашивать блоки, требующие перерисовки
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Подкраска блоков, требующих перерисовки
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Выделение границ виджетов
 
 # Place in highscore window
 ###length 15

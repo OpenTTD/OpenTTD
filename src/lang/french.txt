@@ -534,6 +534,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :À propos d'Ope
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alignement de sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Afficher/Cacher les boites de dimensions maximum
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activer/Désactiver la colorisation des blocs foireux
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Afficher/Cacher la bordure des fenêtres
 
 # Place in highscore window
 ###length 15

@@ -533,6 +533,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-kohdistaja
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Rajakehikot päälle/pois
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Likaisten lohkojen värjäys päälle/pois
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Käyttöliittymäkomponenttien ääriviivat päälle/pois
 
 # Place in highscore window
 ###length 15

@@ -534,6 +534,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de "sprites"
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar caixas limítrofes
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Alterna a colorização dos blocos sujos
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alterna o contorno do elemento
 
 # Place in highscore window
 ###length 15
