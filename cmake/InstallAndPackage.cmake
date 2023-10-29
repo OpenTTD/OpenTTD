@@ -90,6 +90,10 @@ if(UNIX AND NOT APPLE)
                     ${CMAKE_BINARY_DIR}/media/${BINARY_NAME}.desktop
             DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
             COMPONENT menu)
+    install(FILES
+                    ${CMAKE_SOURCE_DIR}/media/org.openttd.OpenTTD.metainfo.xml
+            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
+            COMPONENT docs)
 endif()
 
 if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
