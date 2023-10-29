@@ -1037,7 +1037,7 @@ struct NetworkStartServerWindow : public Window {
 			case WID_NSS_SETPWD: // Set password button
 				this->widget_id = WID_NSS_SETPWD;
 				SetDParamStr(0, _settings_client.network.server_password);
-				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_START_SERVER_SET_PASSWORD, 20, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_START_SERVER_SET_PASSWORD, NETWORK_PASSWORD_LENGTH, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 
 			case WID_NSS_CONNTYPE_BTN: // Connection type
