@@ -39,5 +39,7 @@
   </provides>
   <!-- TODO: generate releases from the source automatically -->
   <!-- <releases/> -->
-  <content_rating type="oars-1.1"/>
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-chat">intense</content_attribute>
+  </content_rating>
 </component>
