@@ -297,7 +297,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Wanneer 
 STR_BUTTON_DEFAULT                                              :{BLACK}Standaard
 STR_BUTTON_CANCEL                                               :{BLACK}Annuleren
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Waarschuwing: het kan zijn dat serverbeheerders tekst niet kunnen lezen die hier wordt ingevoerd.
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Waarschuwing: het kan zijn dat serverbeheerders de tekst kunnen lezen die hier is ingevoerd.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .

@@ -533,6 +533,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :About 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toggle bounding boxes
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toggle colouring of dirty blocks
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Toggle widget outlines
 
 # Place in highscore window
 ###length 15

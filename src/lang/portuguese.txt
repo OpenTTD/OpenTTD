@@ -534,6 +534,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o 'OpenTT
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de gráficos
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar as caixas envolventes
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar coloração de blocos sujos
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alternar contornos de "widget"
 
 # Place in highscore window
 ###length 15

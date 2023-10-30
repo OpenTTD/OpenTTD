@@ -904,7 +904,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Usuń wszystkie
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacje o terenie
 STR_ABOUT_MENU_HELP                                             :Pomoc i instrukcje
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Włącz/wyłącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / Game Script
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Wyświetl liczbę klatek na sekundę
@@ -912,6 +912,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informacje o �
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite'ów
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Włącz/wyłącz ramki
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Włącz/wyłącz kolorowanie brudnych bloków
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Włącz/wyłącz obrysy widżetów
 
 # Place in highscore window
 ###length 15
@@ -1424,7 +1425,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Zaznacz 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ustawienie to zacznie obowiązywać dopiero po ponownym uruchomieniu gry.
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Synchronizacja pionowa
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaznacz to pole aby włączyć synchronizację pionową. Zmiany zostaną zastosowane po restarcie gry. Działa tylko z włączoną akceleracją sprzętową.
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaznacz to pole aby włączyć synchronizację pionową. Zmiany zostaną zastosowane po restarcie gry. Działa tylko z włączonym przyspieszeniem sprzętowym.
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Bieżący sterownik: {STRING}
 
@@ -2489,7 +2490,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nie powi
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Błąd ustawień obrazu...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nie znaleziono kompatybilnego procesora graficznego. Przyspieszenie sprzętowe wyłączone.
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Sterownik GPU spowodował awarię gry. Wyłączono akcelerację sprzętową
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Sterownik GPU spowodował awarię gry. Wyłączono przyspieszenie sprzętowe
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
