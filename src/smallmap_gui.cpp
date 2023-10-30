@@ -1222,7 +1222,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 			bool rtl = _current_text_dir == TD_RTL;
 			uint i = 0; // Row counter for industry legend.
 			uint row_height = FONT_HEIGHT_SMALL;
-			int padding = WidgetDimensions::scaled.hsep_normal;
+			int padding = ScaleGUITrad(1);
 
 			Rect origin = r.WithWidth(this->column_width, rtl).Shrink(WidgetDimensions::scaled.framerect).WithHeight(row_height);
 			Rect text = origin.Indent(this->legend_width + WidgetDimensions::scaled.hsep_normal, rtl);
