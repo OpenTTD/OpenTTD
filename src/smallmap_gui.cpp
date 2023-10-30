@@ -1186,7 +1186,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 	this->legend_width = (FONT_HEIGHT_SMALL - ScaleGUITrad(1)) * 8 / 5;
 
 	/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
-	this->column_width = min_width + this->legend_width + WidgetDimensions::scaled.framerect.Horizontal();
+	this->column_width = min_width + WidgetDimensions::scaled.hsep_normal + this->legend_width + WidgetDimensions::scaled.framerect.Horizontal();
 }
 
 /* virtual */ void SmallMapWindow::OnPaint()
