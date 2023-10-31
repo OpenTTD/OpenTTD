@@ -39,7 +39,7 @@ void IniItem::SetValue(const std::string_view value)
  * @param parent the file we belong to
  * @param name   the name of the group
  */
-IniGroup::IniGroup(const std::string &name, IniGroupType type) : type(type)
+IniGroup::IniGroup(const std::string &name, IniGroupType type) : type(type), comment("\n")
 {
 	this->name = StrMakeValid(name);
 }
