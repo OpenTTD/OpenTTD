@@ -138,12 +138,33 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		return IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == this->index;
 	}
 
+	/**
+	 * Get produced cargo slot for a specific cargo type.
+	 * @param cargo CargoID to find.
+	 * @return Iterator pointing to produced cargo slot if it exists, or the end iterator.
+	 */
 	inline ProducedCargoArray::iterator GetCargoProduced(CargoID cargo)
 	{
 		if (!IsValidCargoID(cargo)) return std::end(this->produced);
 		return std::find_if(std::begin(this->produced), std::end(this->produced), [&cargo](const auto &p) { return p.cargo == cargo; });
 	}
 
+	/**
+	 * Get produced cargo slot for a specific cargo type (const-variant).
+	 * @param cargo CargoID to find.
+	 * @return Iterator pointing to produced cargo slot if it exists, or the end iterator.
+	 */
+	inline ProducedCargoArray::const_iterator GetCargoProduced(CargoID cargo) const
+	{
+		if (!IsValidCargoID(cargo)) return std::end(this->produced);
+		return std::find_if(std::begin(this->produced), std::end(this->produced), [&cargo](const auto &p) { return p.cargo == cargo; });
+	}
+
+	/**
+	 * Get accepted cargo slot for a specific cargo type.
+	 * @param cargo CargoID to find.
+	 * @return Iterator pointing to accepted cargo slot if it exists, or the end iterator.
+	 */
 	inline AcceptedCargoArray::iterator GetCargoAccepted(CargoID cargo)
 	{
 		if (!IsValidCargoID(cargo)) return std::end(this->accepted);
