@@ -1509,14 +1509,16 @@ protected:
 		if (filter == CF_NONE) return IndustryTypeSorter(a, b);
 
 		uint prod_a = 0, prod_b = 0;
-		for (auto ita = std::begin(a->produced), itb = std::begin(b->produced); ita != std::end(a->produced) && itb != std::end(b->produced); ++ita, ++itb) {
-			if (filter == CF_ANY) {
-				if (IsValidCargoID(ita->cargo)) prod_a += ita->history[LAST_MONTH].production;
-				if (IsValidCargoID(itb->cargo)) prod_b += ita->history[LAST_MONTH].production;
-			} else {
-				if (ita->cargo == filter) prod_a += ita->history[LAST_MONTH].production;
-				if (itb->cargo == filter) prod_b += itb->history[LAST_MONTH].production;
+		if (filter == CF_ANY) {
+			for (const auto &pa : a->produced) {
+				if (IsValidCargoID(pa.cargo)) prod_a += pa.history[LAST_MONTH].production;
 			}
+			for (const auto &pb : b->produced) {
+				if (IsValidCargoID(pb.cargo)) prod_b += pb.history[LAST_MONTH].production;
+			}
+		} else {
+			if (auto ita = a->GetCargoProduced(filter); ita != std::end(a->produced)) prod_a = ita->history[LAST_MONTH].production;
+			if (auto itb = b->GetCargoProduced(filter); itb != std::end(b->produced)) prod_b = itb->history[LAST_MONTH].production;
 		}
 		int r = prod_a - prod_b;
 
