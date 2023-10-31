@@ -648,7 +648,7 @@ protected:
 	int32_t subscroll; ///< Number of pixels (0..3) between the right end of the base tile and the pixel at the top-left corner of the smallmap display.
 	int zoom;        ///< Zoom level. Bigger number means more zoom-out (further away).
 
-	LinkGraphOverlay *overlay;
+	std::unique_ptr<LinkGraphOverlay> overlay;
 
 	/** Notify the industry chain window to stop sending newly selected industries. */
 	static void BreakIndustryChainLink()
@@ -1402,7 +1402,7 @@ public:
 	SmallMapWindow(WindowDesc *desc, int window_number) : Window(desc)
 	{
 		_smallmap_industry_highlight = INVALID_INDUSTRYTYPE;
-		this->overlay = new LinkGraphOverlay(this, WID_SM_MAP, 0, this->GetOverlayCompanyMask(), 1);
+		this->overlay = std::make_unique<LinkGraphOverlay>(this, WID_SM_MAP, 0, this->GetOverlayCompanyMask(), 1);
 		this->InitNested(window_number);
 		this->LowerWidget(this->map_type + WID_SM_CONTOUR);
 
@@ -1417,11 +1417,6 @@ public:
 		this->SetZoomLevel(ZLC_INITIALIZE, nullptr);
 		this->SmallMapCenterOnCurrentPos();
 		this->SetOverlayCargoMask();
-	}
-
-	virtual ~SmallMapWindow()
-	{
-		delete this->overlay;
 	}
 
 	/**
