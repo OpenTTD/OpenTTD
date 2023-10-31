@@ -10,15 +10,10 @@
 #ifndef SMALLMAP_GUI_H
 #define SMALLMAP_GUI_H
 
-#include "industry_type.h"
-#include "company_base.h"
-#include "window_gui.h"
-#include "strings_func.h"
-#include "blitter/factory.hpp"
-#include "linkgraph/linkgraph_gui.h"
-#include "widgets/smallmap_widget.h"
-#include "timer/timer.h"
-#include "timer/timer_window.h"
+#include "core/geometry_type.hpp"
+#include "station_type.h"
+#include "tile_type.h"
+#include "window_type.h"
 
 /* set up the cargos to be displayed in the smallmap's route legend */
 void BuildLinkStatsLegend();

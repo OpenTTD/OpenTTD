@@ -19,6 +19,8 @@
 #include "../smallmap_gui.h"
 #include "../core/geometry_func.hpp"
 #include "../widgets/link_graph_legend_widget.h"
+#include "../strings_func.h"
+#include "linkgraph_gui.h"
 
 #include "table/strings.h"
 

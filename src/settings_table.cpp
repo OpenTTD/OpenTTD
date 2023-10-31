@@ -46,6 +46,8 @@
 #include "vehicle_func.h"
 #include "viewport_func.h"
 #include "void_map.h"
+#include "station_func.h"
+#include "station_base.h"
 
 #include "table/strings.h"
 #include "table/settings.h"

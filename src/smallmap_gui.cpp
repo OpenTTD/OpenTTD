@@ -23,7 +23,12 @@
 #include "window_func.h"
 #include "company_base.h"
 #include "zoom_func.h"
-
+#include "strings_func.h"
+#include "blitter/factory.hpp"
+#include "linkgraph/linkgraph_gui.h"
+#include "widgets/smallmap_widget.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
 #include "smallmap_gui.h"
 
 #include "table/strings.h"
