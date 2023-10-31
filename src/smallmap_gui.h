@@ -212,4 +212,6 @@ public:
 	void OnMouseOver([[maybe_unused]] Point pt, int widget) override;
 };
 
+Point GetSmallMapStationMiddle(const Window *w, const Station *st);
+
 #endif /* SMALLMAP_GUI_H */
