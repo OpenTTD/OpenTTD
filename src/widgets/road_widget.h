@@ -44,7 +44,6 @@ enum BuildRoadDepotWidgets {
 enum BuildRoadStationWidgets {
 	/* Name starts with BRO instead of BR, because of collision with BuildRailStationWidgets */
 	WID_BROS_CAPTION,                ///< Caption of the window.
-	WID_BROS_BACKGROUND,             ///< Background of the window.
 	WID_BROS_STATION_NE,             ///< Terminal station with NE entry.
 	WID_BROS_STATION_SE,             ///< Terminal station with SE entry.
 	WID_BROS_STATION_SW,             ///< Terminal station with SW entry.
