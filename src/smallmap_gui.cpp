@@ -1888,3 +1888,13 @@ bool ScrollMainWindowTo(int x, int y, int z, bool instant)
 
 	return res;
 }
+
+/**
+ * Determine the middle of a station in the smallmap window.
+ * @param st The station we're looking for.
+ * @return Middle point of the station in the smallmap window.
+ */
+Point GetSmallMapStationMiddle(const Window *w, const Station *st)
+{
+	return static_cast<const SmallMapWindow *>(w)->GetStationMiddle(st);
+}
