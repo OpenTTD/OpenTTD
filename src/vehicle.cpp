@@ -1609,7 +1609,7 @@ void Vehicle::UpdatePosition()
 /**
  * Update the bounding box co-ordinates of the vehicle
  * @param update_cache Update the cached values for previous co-ordinate values
-*/
+ */
 void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache) const
 {
 	Rect new_coord;

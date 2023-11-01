@@ -336,7 +336,7 @@ void VideoDriver_Cocoa::GameSizeChanged()
 	::GameSizeChanged();
 
 	/* We need to store the window size as non-Retina size in
-	* the config file to get same windows size on next start. */
+	 * the config file to get same windows size on next start. */
 	_cur_resolution.width = [ this->cocoaview frame ].size.width;
 	_cur_resolution.height = [ this->cocoaview frame ].size.height;
 }

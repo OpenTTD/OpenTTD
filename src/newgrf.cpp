@@ -3591,12 +3591,12 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 							it.ti.y = (int8_t)GB(it.ti.y, 0, 8);
 
 							/* When there were only 256x256 maps, TileIndex was a uint16_t and
-								* it.ti was just a TileIndexDiff that was added to it.
-								* As such negative "x" values were shifted into the "y" position.
-								*   x = -1, y = 1 -> x = 255, y = 0
-								* Since GRF version 8 the position is interpreted as pair of independent int8.
-								* For GRF version < 8 we need to emulate the old shifting behaviour.
-								*/
+							 * it.ti was just a TileIndexDiff that was added to it.
+							 * As such negative "x" values were shifted into the "y" position.
+							 *   x = -1, y = 1 -> x = 255, y = 0
+							 * Since GRF version 8 the position is interpreted as pair of independent int8.
+							 * For GRF version < 8 we need to emulate the old shifting behaviour.
+							 */
 							if (_cur.grffile->grf_version < 8 && it.ti.x < 0) it.ti.y += 1;
 						}
 					}
@@ -9348,8 +9348,8 @@ static void FinaliseIndustriesArray()
 
 			StringID strid;
 			/* process the conversion of text at the end, so to be sure everything will be fine
-				* and available.  Check if it does not return undefind marker, which is a very good sign of a
-				* substitute industry who has not changed the string been examined, thus using it as such */
+			 * and available.  Check if it does not return undefind marker, which is a very good sign of a
+			 * substitute industry who has not changed the string been examined, thus using it as such */
 			strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->name);
 			if (strid != STR_UNDEFINED) indsp->name = strid;
 
@@ -9367,7 +9367,7 @@ static void FinaliseIndustriesArray()
 
 			if (indsp->station_name != STR_NULL) {
 				/* STR_NULL (0) can be set by grf.  It has a meaning regarding assignation of the
-					* station's name. Don't want to lose the value, therefore, do not process. */
+				 * station's name. Don't want to lose the value, therefore, do not process. */
 				strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->station_name);
 				if (strid != STR_UNDEFINED) indsp->station_name = strid;
 			}

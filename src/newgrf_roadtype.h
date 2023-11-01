@@ -21,12 +21,12 @@ struct RoadTypeScopeResolver : public ScopeResolver {
 	const RoadTypeInfo *rti;
 
 	/**
-	* Constructor of the roadtype scope resolvers.
-	* @param ro Surrounding resolver.
-	* @param rti Associated RoadTypeInfo.
-	* @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
-	* @param context Are we resolving sprites for the upper halftile, or on a bridge?
-	*/
+	 * Constructor of the roadtype scope resolvers.
+	 * @param ro Surrounding resolver.
+	 * @param rti Associated RoadTypeInfo.
+	 * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
+	 * @param context Are we resolving sprites for the upper halftile, or on a bridge?
+	 */
 	RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeInfo *rti, TileIndex tile, TileContext context)
 		: ScopeResolver(ro), tile(tile), context(context), rti(rti)
 	{

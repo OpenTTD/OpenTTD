@@ -279,7 +279,7 @@ struct TerraformToolbarWindow : Window {
 				case DDSP_BUILD_OBJECT:
 					if (!_settings_game.construction.freeform_edges) {
 						/* When end_tile is MP_VOID, the error tile will not be visible to the
-							* user. This happens when terraforming at the southern border. */
+						 * user. This happens when terraforming at the southern border. */
 						if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
 						if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
 					}

@@ -171,9 +171,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		this->SendPackets(true);
 
 		/* Wait a number of ticks so our leave message can reach the server.
-		* This is especially needed for Windows servers as they seem to get
-		* the "socket is closed" message before receiving our leave message,
-		* which would trigger the server to close the connection as well. */
+		 * This is especially needed for Windows servers as they seem to get
+		 * the "socket is closed" message before receiving our leave message,
+		 * which would trigger the server to close the connection as well. */
 		CSleep(3 * MILLISECONDS_PER_TICK);
 	}
 

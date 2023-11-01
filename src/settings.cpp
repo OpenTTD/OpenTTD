@@ -413,7 +413,7 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 {
 	size_t r = OneOfManySettingDesc::ParseSingleValue(str, strlen(str), this->many);
 	/* if the first attempt of conversion from string to the appropriate value fails,
-		* look if we have defined a converter from old value to new value. */
+	 * look if we have defined a converter from old value to new value. */
 	if (r == (size_t)-1 && this->many_cnvt != nullptr) r = this->many_cnvt(str);
 	if (r != (size_t)-1) return r; // and here goes converted value
 
