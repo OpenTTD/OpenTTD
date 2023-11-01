@@ -3117,64 +3117,60 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 
 			case WPT_RESIZE: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
-				if (nwrb != nullptr) {
-					assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
-					nwrb->SetResize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
-				}
+				if (unlikely(nwrb == nullptr)) throw std::runtime_error("WPT_RESIZE requires NWidgetResizeBase");
+				assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
+				nwrb->SetResize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
 				break;
 			}
 
 			case WPT_MINSIZE: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
-				if (nwrb != nullptr) {
-					assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
-					nwrb->SetMinimalSize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
-				}
+				if (unlikely(nwrb == nullptr)) throw std::runtime_error("WPT_MINSIZE requires NWidgetResizeBase");
+				assert(nwid_begin->u.xy.x >= 0 && nwid_begin->u.xy.y >= 0);
+				nwrb->SetMinimalSize(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
 				break;
 			}
 
 			case WPT_MINTEXTLINES: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
-				if (nwrb != nullptr) {
-					assert(nwid_begin->u.text_lines.size >= FS_BEGIN && nwid_begin->u.text_lines.size < FS_END);
-					nwrb->SetMinimalTextLines(nwid_begin->u.text_lines.lines, nwid_begin->u.text_lines.spacing, nwid_begin->u.text_lines.size);
-				}
+				if (unlikely(nwrb == nullptr)) throw std::runtime_error("WPT_MINTEXTLINES requires NWidgetResizeBase");
+				assert(nwid_begin->u.text_lines.size >= FS_BEGIN && nwid_begin->u.text_lines.size < FS_END);
+				nwrb->SetMinimalTextLines(nwid_begin->u.text_lines.lines, nwid_begin->u.text_lines.spacing, nwid_begin->u.text_lines.size);
 				break;
 			}
 
 			case WPT_TEXTSTYLE: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
-				if (nwc != nullptr) {
-					nwc->SetTextStyle(nwid_begin->u.text_style.colour, nwid_begin->u.text_style.size);
-				}
+				if (unlikely(nwc == nullptr)) throw std::runtime_error("WPT_TEXTSTYLE requires NWidgetCore");
+				nwc->SetTextStyle(nwid_begin->u.text_style.colour, nwid_begin->u.text_style.size);
 				break;
 			}
 
 			case WPT_ALIGNMENT: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
-				if (nwc != nullptr) {
-					nwc->SetAlignment(nwid_begin->u.align.align);
-				}
+				if (unlikely(nwc == nullptr)) throw std::runtime_error("WPT_ALIGNMENT requires NWidgetCore");
+				nwc->SetAlignment(nwid_begin->u.align.align);
 				break;
 			}
 
 			case WPT_FILL: {
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
-				if (nwrb != nullptr) nwrb->SetFill(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
+				if (unlikely(nwrb == nullptr)) throw std::runtime_error("WPT_FILL requires NWidgetResizeBase");
+				nwrb->SetFill(nwid_begin->u.xy.x, nwid_begin->u.xy.y);
 				break;
 			}
 
 			case WPT_DATATIP: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
-				if (nwc != nullptr) {
-					nwc->widget_data = nwid_begin->u.data_tip.data;
-					nwc->tool_tip = nwid_begin->u.data_tip.tooltip;
-				}
+				if (unlikely(nwc == nullptr)) throw std::runtime_error("WPT_DATATIP requires NWidgetCore");
+				nwc->widget_data = nwid_begin->u.data_tip.data;
+				nwc->tool_tip = nwid_begin->u.data_tip.tooltip;
 				break;
 			}
 
 			case WPT_PADDING:
-				if (*dest != nullptr) (*dest)->SetPadding(nwid_begin->u.padding);
+				if (unlikely(*dest == nullptr)) throw std::runtime_error("WPT_PADDING requires NWidgetBase");
+				(*dest)->SetPadding(nwid_begin->u.padding);
 				break;
 
 			case WPT_PIPSPACE: {
@@ -3183,14 +3179,15 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 
 				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(*dest);
 				if (nwb != nullptr) nwb->SetPIP(nwid_begin->u.pip.pre, nwid_begin->u.pip.inter, nwid_begin->u.pip.post);
+
+				if (unlikely(nwc == nullptr && nwb == nullptr)) throw std::runtime_error("WPT_PIPSPACE requires NWidgetPIPContainer or NWidgetBackground");
 				break;
 			}
 
 			case WPT_SCROLLBAR: {
 				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
-				if (nwc != nullptr) {
-					nwc->scrollbar_index = nwid_begin->u.widget.index;
-				}
+				if (unlikely(nwc == nullptr)) throw std::runtime_error("WPT_SCROLLBAR requires NWidgetCore");
+				nwc->scrollbar_index = nwid_begin->u.widget.index;
 				break;
 			}
 
@@ -3307,7 +3304,10 @@ NWidgetContainer *MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart 
 	*biggest_index = -1;
 	if (container == nullptr) container = new NWidgetVertical();
 	NWidgetBase *cont_ptr = container;
-	MakeWidgetTree(nwid_begin, nwid_end, &cont_ptr, biggest_index);
+	[[maybe_unused]] const NWidgetPart *nwid_part = MakeWidgetTree(nwid_begin, nwid_end, &cont_ptr, biggest_index);
+#ifdef WITH_ASSERT
+	if (unlikely(nwid_part != nwid_end)) throw std::runtime_error("Did not consume all NWidgetParts");
+#endif
 	return container;
 }
 
