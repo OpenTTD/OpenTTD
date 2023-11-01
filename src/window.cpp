@@ -228,7 +228,7 @@ void Window::DisableAllWidgetHighlight()
 
 		if (nwid->IsHighlighted()) {
 			nwid->SetHighlighted(TC_INVALID);
-			this->SetWidgetDirty(i);
+			nwid->SetDirty(this);
 		}
 	}
 
@@ -248,7 +248,7 @@ void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour
 	if (nwid == nullptr) return;
 
 	nwid->SetHighlighted(highlighted_colour);
-	this->SetWidgetDirty(widget_index);
+	nwid->SetDirty(this);
 
 	if (highlighted_colour != TC_INVALID) {
 		/* If we set a highlight, the window has a highlight */
