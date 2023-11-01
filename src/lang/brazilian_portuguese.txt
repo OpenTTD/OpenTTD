@@ -3385,6 +3385,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Salvar
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Salva o padrão com o nome selecionado
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Alterar parâmetros dos gráficos base
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Redefinir parâmetros

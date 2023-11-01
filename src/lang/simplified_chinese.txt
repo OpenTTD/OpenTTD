@@ -533,6 +533,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 'OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 对齐
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :切换边界框
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :切换脏方块的颜色
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :调节小组件边框
 
 # Place in highscore window
 ###length 15
@@ -924,6 +925,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}新 {STR
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}打开该运输工具所属的组
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION}不再接受：{CARGO_LIST}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION}现在接受：{CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}财政补贴项目到期：{}{}将 {STRING} 从 {STRING} 运送到 {STRING} 将不再获得财政补贴。
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}财政补贴项目流标：{}{}将 {STRING} 从 {STRING} 运送到 {STRING} 将不是财政补贴项目。
@@ -2192,6 +2195,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}修改�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}改变日期：{ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}改变当前年份
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}开启可调整产量模式：{ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}车站评价固定为100%：{ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} 的色彩方案
@@ -3380,6 +3384,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}保存
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}以当前选定的名称保存预设值
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}改变基本图形组参数
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}关闭
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重置

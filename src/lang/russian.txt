@@ -3559,6 +3559,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Сохр
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Сохранить набор под выбранным именем
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Изменение параметров графического пакета
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Изменить параметры NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрыть
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Сброс

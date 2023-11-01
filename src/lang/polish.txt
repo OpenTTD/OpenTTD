@@ -3764,6 +3764,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Zapisz
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Zapisz schemat z wybraną nazwą
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Zmień parametry grafik podstawowych
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmień parametry NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zamknij
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetuj

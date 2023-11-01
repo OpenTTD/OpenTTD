@@ -534,6 +534,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 �
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬 도구
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :박스 경계선 보기 전환
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :시각적 업데이트 블록 표시 전환
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :위젯 경계선 켜기/끄기
 
 # Place in highscore window
 ###length 15
@@ -3384,6 +3385,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}저장
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}이 프리셋을 선택한 이름으로 저장합니다
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}기본 그래픽 매개 변수를 변경합니다
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 매개 변숫값 변경
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}초기화
