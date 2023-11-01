@@ -438,9 +438,9 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, 
 	if ((nwi->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
 		nwi->disp_flags |= ND_DROPDOWN_ACTIVE;
 	} else {
-		w->LowerWidget(button);
+		nwi->SetLowered(true);
 	}
-	w->SetWidgetDirty(button);
+	nwi->SetDirty(w);
 
 	if (width != 0) {
 		if (_current_text_dir == TD_RTL) {
