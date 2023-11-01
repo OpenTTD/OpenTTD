@@ -106,10 +106,10 @@ public:
 	static void SetDate(Date date, DateFract fract);
 
 	/**
-	* Calculate the year of a given date.
-	* @param date The date to consider.
-	* @return the year.
-	*/
+	 * Calculate the year of a given date.
+	 * @param date The date to consider.
+	 * @return the year.
+	 */
 	static constexpr Year DateToYear(Date date)
 	{
 		/* Hardcode the number of days in a year because we can't access CalendarTime from here. */
@@ -117,10 +117,10 @@ public:
 	}
 
 	/**
-	* Calculate the date of the first day of a given year.
-	* @param year the year to get the first day of.
-	* @return the date.
-	*/
+	 * Calculate the date of the first day of a given year.
+	 * @param year the year to get the first day of.
+	 * @return the date.
+	 */
 	static constexpr Date DateAtStartOfYear(Year year)
 	{
 		int32_t year_as_int = static_cast<int32_t>(year);

@@ -79,8 +79,8 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 				if (!font_style.empty() && !StrEqualsIgnoreCase(font_style, (char *)style)) continue;
 
 				/* Font config takes the best shot, which, if the family name is spelled
-					* wrongly a 'random' font, so check whether the family name is the
-					* same as the supplied name */
+				 * wrongly a 'random' font, so check whether the family name is the
+				 * same as the supplied name */
 				if (StrEqualsIgnoreCase(font_family, (char *)family)) {
 					err = FT_New_Face(_library, (char *)file, index, face);
 				}

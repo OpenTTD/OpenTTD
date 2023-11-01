@@ -719,7 +719,7 @@ void ScanScenarios()
 /**
  * Constructs FiosNumberedSaveName. Initial number is the most recent save, or -1 if not found.
  * @param prefix The prefix to use to generate a filename.
-*/
+ */
 FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(prefix), number(-1)
 {
 	static std::optional<std::string> _autosave_path;
@@ -756,7 +756,7 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 /**
  * Generate a savegame name and number according to _settings_client.gui.max_num_autosaves.
  * @return A filename in format "<prefix><number>.sav".
-*/
+ */
 std::string FiosNumberedSaveName::Filename()
 {
 	if (++this->number >= _settings_client.gui.max_num_autosaves) this->number = 0;
@@ -766,7 +766,7 @@ std::string FiosNumberedSaveName::Filename()
 /**
  * Generate an extension for a savegame name.
  * @return An extension in format "-<prefix>.sav".
-*/
+ */
 std::string FiosNumberedSaveName::Extension()
 {
 	return fmt::format("-{}.sav", this->prefix);

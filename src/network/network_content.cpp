@@ -219,7 +219,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 	p->Send_string("patchpack"); // Or what-ever the name of your patchpack is.
 	p->Send_string(_openttd_content_version_patchpack);
 
-	*/
+	 */
 
 	this->SendPacket(p);
 }

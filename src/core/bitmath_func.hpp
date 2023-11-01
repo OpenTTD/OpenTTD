@@ -324,7 +324,7 @@ static inline T ROR(const T x, const uint8_t n)
  * Iterable ensemble of each set bit in a value.
  * @tparam Tbitpos Type of the position variable.
  * @tparam Tbitset Type of the bitset value.
-*/
+ */
 template <typename Tbitpos = uint, typename Tbitset = uint>
 struct SetBitIterator {
 	struct Iterator {

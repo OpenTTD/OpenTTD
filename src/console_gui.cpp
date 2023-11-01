@@ -457,7 +457,7 @@ void IConsoleGUIPrint(TextColour colour_code, const std::string &str)
  * all lines in the buffer are aged by one. When a line exceeds both the maximum position
  * and also the maximum age, it gets removed.
  * @return true if any lines were removed
-*/
+ */
 static bool TruncateBuffer()
 {
 	bool need_truncation = false;
