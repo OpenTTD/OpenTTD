@@ -1008,7 +1008,7 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  */
 
 /**
- * @fn void NWidgetBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+ * @fn void NWidgetBase::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl)
  * Assign size and position to the widget.
  * @param sizing       Type of resizing to perform.
  * @param x            Horizontal offset of the widget relative to the left edge of the window.
@@ -1163,7 +1163,7 @@ bool NWidgetResizeBase::UpdateVerticalSize(uint min_y)
 	return true;
 }
 
-void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool)
+void NWidgetResizeBase::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool)
 {
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
 }
@@ -1400,7 +1400,7 @@ void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
 	}
 }
 
-void NWidgetStacked::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+void NWidgetStacked::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
@@ -1570,7 +1570,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 	this->pip_pre = this->pip_inter = this->pip_post = 0;
 }
 
-void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
@@ -1678,7 +1678,7 @@ NWidgetHorizontalLTR::NWidgetHorizontalLTR(NWidContainerFlags flags) : NWidgetHo
 	this->type = NWID_HORIZONTAL_LTR;
 }
 
-void NWidgetHorizontalLTR::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool)
+void NWidgetHorizontalLTR::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool)
 {
 	NWidgetHorizontal::AssignSizePosition(sizing, x, y, given_width, given_height, false);
 }
@@ -1755,7 +1755,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 	this->pip_pre = this->pip_inter = this->pip_post = 0;
 }
 
-void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
@@ -1981,7 +1981,7 @@ void NWidgetMatrix::SetupSmallestSize(Window *w, bool init_array)
 	this->resize_y = resize.height;
 }
 
-void NWidgetMatrix::AssignSizePosition(SizingType, uint x, uint y, uint given_width, uint given_height, bool)
+void NWidgetMatrix::AssignSizePosition(SizingType, int x, int y, uint given_width, uint given_height, bool)
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
@@ -2249,7 +2249,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 	}
 }
 
-void NWidgetBackground::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+void NWidgetBackground::AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl)
 {
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
