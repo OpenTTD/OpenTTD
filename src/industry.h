@@ -150,23 +150,27 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		return std::find_if(std::begin(this->accepted), std::end(this->accepted), [&cargo](const auto &a) { return a.cargo == cargo; });
 	}
 
-	/** Test if this industry accepts any cargo.
+	/**
+	 * Test if this industry accepts any cargo.
 	 * @return true iff the industry accepts any cargo.
 	 */
 	bool IsCargoAccepted() const { return std::any_of(std::begin(this->accepted), std::end(this->accepted), [](const auto &a) { return IsValidCargoID(a.cargo); }); }
 
-	/** Test if this industry produces any cargo.
+	/**
+	 * Test if this industry produces any cargo.
 	 * @return true iff the industry produces any cargo.
 	 */
 	bool IsCargoProduced() const { return std::any_of(std::begin(this->produced), std::end(this->produced), [](const auto &p) { return IsValidCargoID(p.cargo); }); }
 
-	/** Test if this industry accepts a specific cargo.
+	/**
+	 * Test if this industry accepts a specific cargo.
 	 * @param cargo Cargo type to test.
 	 * @return true iff the industry accepts the given cargo type.
 	 */
 	bool IsCargoAccepted(CargoID cargo) const { return std::any_of(std::begin(this->accepted), std::end(this->accepted), [&cargo](const auto &a) { return a.cargo == cargo; }); }
 
-	/** Test if this industry produces a specific cargo.
+	/**
+	 * Test if this industry produces a specific cargo.
 	 * @param cargo Cargo type to test.
 	 * @return true iff the industry produces the given cargo types.
 	 */
