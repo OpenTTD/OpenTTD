@@ -249,7 +249,7 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
  */
 static inline DiagDirection RandomDiagDir()
 {
-	return (DiagDirection)(3 & Random());
+	return (DiagDirection)(RandomRange(DIAGDIR_END));
 }
 
 /**
