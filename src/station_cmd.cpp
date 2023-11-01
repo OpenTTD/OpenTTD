@@ -3246,7 +3246,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 				DrawSprite(SPR_TRAMWAY_TRAM + sprite_offset, PAL_NONE, x, y);
 			}
 		} else {
-			/* Drive-in stop */
+			/* Bay stop */
 			if (RoadTypeIsRoad(roadtype) && roadtype_info->UsesOverlay()) {
 				SpriteID ground = GetCustomRoadSprite(roadtype_info, INVALID_TILE, ROTSG_ROADSTOP);
 				DrawSprite(ground + image, PAL_NONE, x, y);
