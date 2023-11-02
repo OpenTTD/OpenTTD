@@ -743,7 +743,7 @@ static const NWidgetPart _nested_timetable_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _timetable_desc(
+static WindowDesc _timetable_desc(__FILE__, __LINE__,
 	WDP_AUTO, "view_vehicle_timetable", 400, 130,
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
 	WDF_CONSTRUCTION,

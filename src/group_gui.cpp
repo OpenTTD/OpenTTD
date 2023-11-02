@@ -1101,14 +1101,14 @@ public:
 };
 
 
-static WindowDesc _other_group_desc(
+static WindowDesc _other_group_desc(__FILE__, __LINE__,
 	WDP_AUTO, "list_groups", 460, 246,
 	WC_INVALID, WC_NONE,
 	0,
 	std::begin(_nested_group_widgets), std::end(_nested_group_widgets)
 );
 
-static WindowDesc _train_group_desc(
+static WindowDesc _train_group_desc(__FILE__, __LINE__,
 	WDP_AUTO, "list_groups_train", 525, 246,
 	WC_TRAINS_LIST, WC_NONE,
 	0,

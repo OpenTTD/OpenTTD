@@ -73,7 +73,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 };
 
 /** Window definition for the configure AI window. */
-static WindowDesc _ai_config_desc(
+static WindowDesc _ai_config_desc(__FILE__, __LINE__,
 	WDP_CENTER, nullptr, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,

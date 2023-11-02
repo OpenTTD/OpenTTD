@@ -85,28 +85,28 @@ static const NWidgetPart _nested_train_depot_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _train_depot_desc(
+static WindowDesc _train_depot_desc(__FILE__, __LINE__,
 	WDP_AUTO, "depot_train", 362, 123,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	0,
 	std::begin(_nested_train_depot_widgets), std::end(_nested_train_depot_widgets)
 );
 
-static WindowDesc _road_depot_desc(
+static WindowDesc _road_depot_desc(__FILE__, __LINE__,
 	WDP_AUTO, "depot_roadveh", 316, 97,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	0,
 	std::begin(_nested_train_depot_widgets), std::end(_nested_train_depot_widgets)
 );
 
-static WindowDesc _ship_depot_desc(
+static WindowDesc _ship_depot_desc(__FILE__, __LINE__,
 	WDP_AUTO, "depot_ship", 306, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	0,
 	std::begin(_nested_train_depot_widgets), std::end(_nested_train_depot_widgets)
 );
 
-static WindowDesc _aircraft_depot_desc(
+static WindowDesc _aircraft_depot_desc(__FILE__, __LINE__,
 	WDP_AUTO, "depot_aircraft", 332, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	0,

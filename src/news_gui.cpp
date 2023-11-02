@@ -96,7 +96,7 @@ static const NWidgetPart _nested_normal_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _normal_news_desc(
+static WindowDesc _normal_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
@@ -123,7 +123,7 @@ static const NWidgetPart _nested_vehicle_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _vehicle_news_desc(
+static WindowDesc _vehicle_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
@@ -151,7 +151,7 @@ static const NWidgetPart _nested_company_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _company_news_desc(
+static WindowDesc _company_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
@@ -174,7 +174,7 @@ static const NWidgetPart _nested_thin_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _thin_news_desc(
+static WindowDesc _thin_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
@@ -200,7 +200,7 @@ static const NWidgetPart _nested_small_news_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _small_news_desc(
+static WindowDesc _small_news_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_NEWS_WINDOW, WC_NONE,
 	0,
@@ -1227,7 +1227,7 @@ static const NWidgetPart _nested_message_history[] = {
 	EndContainer(),
 };
 
-static WindowDesc _message_history_desc(
+static WindowDesc _message_history_desc(__FILE__, __LINE__,
 	WDP_AUTO, "list_news", 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
 	0,

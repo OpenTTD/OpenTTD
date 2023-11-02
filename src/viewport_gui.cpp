@@ -159,7 +159,7 @@ public:
 	}
 };
 
-static WindowDesc _extra_viewport_desc(
+static WindowDesc _extra_viewport_desc(__FILE__, __LINE__,
 	WDP_AUTO, "extra_viewport", 300, 268,
 	WC_EXTRA_VIEWPORT, WC_NONE,
 	0,

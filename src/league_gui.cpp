@@ -196,7 +196,7 @@ static const NWidgetPart _nested_performance_league_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_PLT_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WidgetDimensions::unscaled.framerect.Vertical()),
 };
 
-static WindowDesc _performance_league_desc(
+static WindowDesc _performance_league_desc(__FILE__, __LINE__,
 	WDP_AUTO, "performance_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,
@@ -428,7 +428,7 @@ static const NWidgetPart _nested_script_league_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_SLT_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WidgetDimensions::scaled.framerect.Vertical()),
 };
 
-static WindowDesc _script_league_desc(
+static WindowDesc _script_league_desc(__FILE__, __LINE__,
 	WDP_AUTO, "script_league", 0, 0,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	0,

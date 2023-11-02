@@ -92,7 +92,7 @@ static const NWidgetPart _nested_network_content_download_status_window_widgets[
 };
 
 /** Window description for the download window */
-static WindowDesc _network_content_download_status_window_desc(
+static WindowDesc _network_content_download_status_window_desc(__FILE__, __LINE__,
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL,
@@ -1109,7 +1109,7 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 };
 
 /** Window description of the content list */
-static WindowDesc _network_content_list_desc(
+static WindowDesc _network_content_list_desc(__FILE__, __LINE__,
 	WDP_CENTER, "list_content", 630, 460,
 	WC_NETWORK_WINDOW, WC_NONE,
 	0,

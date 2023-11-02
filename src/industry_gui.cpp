@@ -291,7 +291,7 @@ static const NWidgetPart _nested_build_industry_widgets[] = {
 };
 
 /** Window definition of the dynamic place industries gui */
-static WindowDesc _build_industry_desc(
+static WindowDesc _build_industry_desc(__FILE__, __LINE__,
 	WDP_AUTO, "build_industry", 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -1201,7 +1201,7 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 };
 
 /** Window definition of the view industry gui */
-static WindowDesc _industry_view_desc(
+static WindowDesc _industry_view_desc(__FILE__, __LINE__,
 	WDP_AUTO, "view_industry", 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
 	0,
@@ -1865,7 +1865,7 @@ CargoID IndustryDirectoryWindow::produced_cargo_filter = CF_ANY;
 
 
 /** Window definition of the industry directory gui */
-static WindowDesc _industry_directory_desc(
+static WindowDesc _industry_directory_desc(__FILE__, __LINE__,
 	WDP_AUTO, "list_industries", 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	0,
@@ -1903,7 +1903,7 @@ static const NWidgetPart _nested_industry_cargoes_widgets[] = {
 };
 
 /** Window description for the industry cargoes window. */
-static WindowDesc _industry_cargoes_desc(
+static WindowDesc _industry_cargoes_desc(__FILE__, __LINE__,
 	WDP_AUTO, "industry_cargoes", 300, 210,
 	WC_INDUSTRY_CARGOES, WC_NONE,
 	0,
