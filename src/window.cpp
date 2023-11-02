@@ -96,7 +96,7 @@ SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
  * List of all WindowDescs.
  * This is a pointer to ensure initialisation order with the various static WindowDesc instances.
  */
-static std::vector<WindowDesc*> *_window_descs = nullptr;
+std::vector<WindowDesc*> *_window_descs = nullptr;
 
 /** Config file to store WindowDesc */
 std::string _windows_file;
