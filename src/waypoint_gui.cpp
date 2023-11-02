@@ -183,7 +183,7 @@ static const NWidgetPart _nested_waypoint_view_widgets[] = {
 };
 
 /** The description of the waypoint view. */
-static WindowDesc _waypoint_view_desc(
+static WindowDesc _waypoint_view_desc(__FILE__, __LINE__,
 	WDP_AUTO, "view_waypoint", 260, 118,
 	WC_WAYPOINT_VIEW, WC_NONE,
 	0,

@@ -148,7 +148,7 @@ static const NWidgetPart _nested_transparency_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _transparency_desc(
+static WindowDesc _transparency_desc(__FILE__, __LINE__,
 	WDP_MANUAL, "toolbar_transparency", 0, 0,
 	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
 	0,

@@ -39,7 +39,7 @@ static const struct NWidgetPart _background_widgets[] = {
 /**
  * Window description for the background window to prevent smearing.
  */
-static WindowDesc _background_desc(
+static WindowDesc _background_desc(__FILE__, __LINE__,
 	WDP_MANUAL, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	WDF_NO_CLOSE,
@@ -75,7 +75,7 @@ static const NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
 };
 
 /** Window description for the error window. */
-static WindowDesc _bootstrap_errmsg_desc(
+static WindowDesc _bootstrap_errmsg_desc(__FILE__, __LINE__,
 	WDP_CENTER, nullptr, 0, 0,
 	WC_BOOTSTRAP, WC_NONE,
 	WDF_MODAL | WDF_NO_CLOSE,
@@ -132,7 +132,7 @@ static const NWidgetPart _nested_bootstrap_download_status_window_widgets[] = {
 };
 
 /** Window description for the download window */
-static WindowDesc _bootstrap_download_status_window_desc(
+static WindowDesc _bootstrap_download_status_window_desc(__FILE__, __LINE__,
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL | WDF_NO_CLOSE,
@@ -184,7 +184,7 @@ static const NWidgetPart _bootstrap_query_widgets[] = {
 };
 
 /** The window description for the query. */
-static WindowDesc _bootstrap_query_desc(
+static WindowDesc _bootstrap_query_desc(__FILE__, __LINE__,
 	WDP_CENTER, nullptr, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_NO_CLOSE,

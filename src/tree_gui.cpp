@@ -316,7 +316,7 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _build_trees_desc(
+static WindowDesc _build_trees_desc(__FILE__, __LINE__,
 	WDP_AUTO, "build_tree", 0, 0,
 	WC_BUILD_TREES, WC_NONE,
 	WDF_CONSTRUCTION,

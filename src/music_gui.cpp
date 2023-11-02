@@ -641,7 +641,7 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _music_track_selection_desc(
+static WindowDesc _music_track_selection_desc(__FILE__, __LINE__,
 	WDP_AUTO, nullptr, 0, 0,
 	WC_MUSIC_TRACK_SELECTION, WC_NONE,
 	0,
@@ -900,7 +900,7 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _music_window_desc(
+static WindowDesc _music_window_desc(__FILE__, __LINE__,
 	WDP_AUTO, "music", 0, 0,
 	WC_MUSIC_WINDOW, WC_NONE,
 	0,

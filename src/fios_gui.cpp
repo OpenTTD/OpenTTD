@@ -883,7 +883,7 @@ public:
 };
 
 /** Load game/scenario */
-static WindowDesc _load_dialog_desc(
+static WindowDesc _load_dialog_desc(__FILE__, __LINE__,
 	WDP_CENTER, "load_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	0,
@@ -891,7 +891,7 @@ static WindowDesc _load_dialog_desc(
 );
 
 /** Load heightmap */
-static WindowDesc _load_heightmap_dialog_desc(
+static WindowDesc _load_heightmap_dialog_desc(__FILE__, __LINE__,
 	WDP_CENTER, "load_heightmap", 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	0,
@@ -899,7 +899,7 @@ static WindowDesc _load_heightmap_dialog_desc(
 );
 
 /** Save game/scenario */
-static WindowDesc _save_dialog_desc(
+static WindowDesc _save_dialog_desc(__FILE__, __LINE__,
 	WDP_CENTER, "save_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	0,

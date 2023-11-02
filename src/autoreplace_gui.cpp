@@ -809,7 +809,7 @@ static const NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _replace_rail_vehicle_desc(
+static WindowDesc _replace_rail_vehicle_desc(__FILE__, __LINE__,
 	WDP_AUTO, "replace_vehicle_train", 500, 140,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -867,7 +867,7 @@ static const NWidgetPart _nested_replace_road_vehicle_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _replace_road_vehicle_desc(
+static WindowDesc _replace_road_vehicle_desc(__FILE__, __LINE__,
 	WDP_AUTO, "replace_vehicle_road", 500, 140,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -921,7 +921,7 @@ static const NWidgetPart _nested_replace_vehicle_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _replace_vehicle_desc(
+static WindowDesc _replace_vehicle_desc(__FILE__, __LINE__,
 	WDP_AUTO, "replace_vehicle", 456, 118,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,

@@ -207,7 +207,7 @@ static const NWidgetPart _nested_air_toolbar_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _air_toolbar_desc(
+static WindowDesc _air_toolbar_desc(__FILE__, __LINE__,
 	WDP_ALIGN_TOOLBAR, "toolbar_air", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -618,7 +618,7 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _build_airport_desc(
+static WindowDesc _build_airport_desc(__FILE__, __LINE__,
 	WDP_AUTO, nullptr, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,

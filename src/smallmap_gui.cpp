@@ -1978,7 +1978,7 @@ static const NWidgetPart _nested_smallmap_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _smallmap_desc(
+static WindowDesc _smallmap_desc(__FILE__, __LINE__,
 	WDP_AUTO, "smallmap", 484, 314,
 	WC_SMALLMAP, WC_NONE,
 	0,

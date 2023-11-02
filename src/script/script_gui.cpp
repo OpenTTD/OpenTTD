@@ -261,7 +261,7 @@ static const NWidgetPart _nested_script_list_widgets[] = {
 };
 
 /** Window definition for the ai list window. */
-static WindowDesc _script_list_desc(
+static WindowDesc _script_list_desc(__FILE__, __LINE__,
 	WDP_CENTER, "settings_script_list", 200, 234,
 	WC_SCRIPT_LIST, WC_NONE,
 	0,
@@ -606,7 +606,7 @@ static const NWidgetPart _nested_script_settings_widgets[] = {
 };
 
 /** Window definition for the Script settings window. */
-static WindowDesc _script_settings_desc(
+static WindowDesc _script_settings_desc(__FILE__, __LINE__,
 	WDP_CENTER, "settings_script", 500, 208,
 	WC_SCRIPT_SETTINGS, WC_NONE,
 	0,
@@ -1193,7 +1193,7 @@ EndContainer(),
 };
 
 /** Window definition for the Script debug window. */
-static WindowDesc _script_debug_desc(
+static WindowDesc _script_debug_desc(__FILE__, __LINE__,
 	WDP_AUTO, "script_debug", 600, 450,
 	WC_SCRIPT_DEBUG, WC_NONE,
 	0,
