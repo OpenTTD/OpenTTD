@@ -1,6 +1,7 @@
 add_test_files(
     landscape_partial_pixel_z.cpp
     math_func.cpp
+    mock_fontcache.h
     string_func.cpp
     strings_func.cpp
     test_main.cpp
