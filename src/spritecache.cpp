@@ -102,7 +102,6 @@ static uint _allocated_sprite_cache_size = 0;
 static int _compact_cache_counter;
 
 static void CompactSpriteCache();
-static void *AllocSprite(size_t mem_req);
 
 /**
  * Skip the given amount of sprite graphics data.
@@ -831,7 +830,7 @@ static void DeleteEntryFromSpriteCache()
 	DeleteEntryFromSpriteCache(best);
 }
 
-static void *AllocSprite(size_t mem_req)
+void *AllocSprite(size_t mem_req)
 {
 	mem_req += sizeof(MemBlock);
 
