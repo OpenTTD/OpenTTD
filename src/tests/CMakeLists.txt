@@ -5,4 +5,5 @@ add_test_files(
     strings_func.cpp
     test_main.cpp
     test_script_admin.cpp
+    test_window_desc.cpp
 )
