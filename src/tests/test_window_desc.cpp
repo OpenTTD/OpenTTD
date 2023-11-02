@@ -11,6 +11,8 @@
 
 #include "../3rdparty/catch2/catch.hpp"
 
+#include "mock_environment.h"
+
 #include "../window_gui.h"
 
 /**
@@ -18,6 +20,13 @@
  * WindowDesc is a self-registering class so all WindowDescs will be included in the list.
  */
 extern std::vector<WindowDesc*> *_window_descs;
+
+
+class WindowDescTestsFixture {
+private:
+	MockEnvironment &mock = MockEnvironment::Instance();
+};
+
 
 TEST_CASE("WindowDesc - ini_key uniqueness")
 {
@@ -72,4 +81,18 @@ TEST_CASE("WindowDesc - NWidgetParts properly closed")
 	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
 
 	CHECK(IsNWidgetTreeClosed(window_desc->nwid_begin, window_desc->nwid_end));
+}
+
+TEST_CASE_METHOD(WindowDescTestsFixture, "WindowDesc - NWidgetPart validity")
+{
+	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
+
+	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
+
+	int biggest_index = -1;
+	NWidgetStacked *shade_select = nullptr;
+	NWidgetBase *root = nullptr;
+
+	REQUIRE_NOTHROW(root = MakeWindowNWidgetTree(window_desc->nwid_begin, window_desc->nwid_end, &biggest_index, &shade_select));
+	CHECK((root != nullptr));
 }
