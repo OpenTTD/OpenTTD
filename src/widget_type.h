@@ -1294,6 +1294,7 @@ static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 	return part;
 }
 
+bool IsContainerWidgetType(WidgetType tp);
 NWidgetContainer *MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, int *biggest_index, NWidgetContainer *container);
 NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, int *biggest_index, NWidgetStacked **shade_select);
 

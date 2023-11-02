@@ -47,3 +47,29 @@ TEST_CASE("WindowDesc - ini_key validity")
 
 	CHECK((has_widget == has_inikey));
 }
+
+/**
+ * Test if a NWidgetTree is properly closed, meaning the number of container-type parts matches the number of
+ * EndContainer() parts.
+ * @param nwid_begin Pointer to beginning of nested widget parts.
+ * @param nwid_end Pointer to ending of nested widget parts.
+ * @return True iff nested tree is properly closed.
+ */
+static bool IsNWidgetTreeClosed(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end)
+{
+	int depth = 0;
+	for (; nwid_begin < nwid_end; ++nwid_begin) {
+		if (IsContainerWidgetType(nwid_begin->type)) ++depth;
+		if (nwid_begin->type == WPT_ENDCONTAINER) --depth;
+	}
+	return depth == 0;
+}
+
+TEST_CASE("WindowDesc - NWidgetParts properly closed")
+{
+	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
+
+	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
+
+	CHECK(IsNWidgetTreeClosed(window_desc->nwid_begin, window_desc->nwid_end));
+}
