@@ -343,12 +343,12 @@ struct CaseInsensitiveCharTraits : public std::char_traits<char> {
 		return 0;
 	}
 
-	static const char *find(const char *s, int n, char a)
+	static const char *find(const char *s, size_t n, char a)
 	{
-		while (n-- > 0 && toupper(*s) != toupper(a)) {
-			++s;
+		for (; n > 0; --n, ++s) {
+			if (toupper(*s) == toupper(a)) return s;
 		}
-		return s;
+		return nullptr;
 	}
 };
 
