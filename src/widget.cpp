@@ -3234,6 +3234,17 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 }
 
 /**
+ * Test if WidgetType is a container widget.
+ * @param tp WidgetType to test.
+ * @return True iff WidgetType is a container widget.
+ */
+bool IsContainerWidgetType(WidgetType tp)
+{
+	return tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == NWID_MATRIX
+		|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION;
+}
+
+/**
  * Build a nested widget tree by recursively filling containers with nested widgets read from their parts.
  * @param nwid_begin Pointer to beginning of nested widget parts.
  * @param nwid_end Pointer to ending of nested widget parts.
@@ -3259,9 +3270,7 @@ static const NWidgetPart *MakeWidgetTree(const NWidgetPart *nwid_begin, const NW
 		if (sub_widget == nullptr) break;
 
 		/* If sub-widget is a container, recursively fill that container. */
-		WidgetType tp = sub_widget->type;
-		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == NWID_MATRIX
-							|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION)) {
+		if (fill_sub && IsContainerWidgetType(sub_widget->type)) {
 			NWidgetBase *sub_ptr = sub_widget;
 			nwid_begin = MakeWidgetTree(nwid_begin, nwid_end, &sub_ptr, biggest_index);
 		}
