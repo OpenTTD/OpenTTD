@@ -19,9 +19,8 @@ static const GlyphID SPRITE_GLYPH = 1U << 30;
 
 /** Font cache for basic fonts. */
 class FontCache {
-private:
-	static FontCache *caches[FS_END]; ///< All the font caches.
 protected:
+	static FontCache *caches[FS_END]; ///< All the font caches.
 	FontCache *parent;                ///< The parent of this font cache.
 	const FontSize fs;                ///< The size of the font.
 	int height;                       ///< The height of the font.
