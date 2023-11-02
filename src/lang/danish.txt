@@ -3384,6 +3384,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Gem
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Gem forudindstilling til det valgte navn
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Skift grundlæggende grafiske parametre
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ændre NewGRF parameterne
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Luk
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Nulstil
