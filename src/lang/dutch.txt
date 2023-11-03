@@ -533,6 +533,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Over 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-uitlijner
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Selectiekaders in-uitschakelen
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Kleuren van vuile blokken in-uitschakelen
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Widgetkaders in-uitschakelen
 
 # Place in highscore window
 ###length 15
@@ -3383,6 +3384,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Opslaan
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Sla de huidige voorkeursinstelling op onder de huidige gekozen naam
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Grafische basisinstellingen wijzigen
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF-parameters wijzigen
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sluiten
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Terugstellen
@@ -5187,6 +5189,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan geen
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Voertuigen kunnen alleen wachten op stations
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dit voertuig stopt niet op dit station
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... dienstregeling is niet compleet
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... dienstregeling is nog niet gestart
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te veel bordjes

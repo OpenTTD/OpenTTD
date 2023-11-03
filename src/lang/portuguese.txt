@@ -5190,6 +5190,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossí
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículos apenas podem esperar em estações.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este veículo não pára nesta estação.
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... horário incompleto
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... o horário ainda não começou
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados sinais

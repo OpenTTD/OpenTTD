@@ -5376,6 +5376,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не у�
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Транспорт может ждать только на станции
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Это транспортное средство не останавливается на этой станции
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... график движения неполный
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... график движения не установлен
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... слишком много табличек
