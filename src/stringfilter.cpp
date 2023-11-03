@@ -118,9 +118,16 @@ void StringFilter::AddLine(const char *str)
 	bool match_case = this->case_sensitive != nullptr && *this->case_sensitive;
 	for (WordState &ws : this->word_index) {
 		if (!ws.match) {
-			if ((match_case ? strstr(str, ws.start) : strcasestr(str, ws.start)) != nullptr) {
-				ws.match = true;
-				this->word_matches++;
+			if (this->locale_aware) {
+				if (match_case ? StrNaturalContains(str, ws.start) : StrNaturalContainsIgnoreCase(str, ws.start)) {
+					ws.match = true;
+					this->word_matches++;
+				}
+			} else {
+				if ((match_case ? strstr(str, ws.start) : strcasestr(str, ws.start)) != nullptr) {
+					ws.match = true;
+					this->word_matches++;
+				}
 			}
 		}
 	}

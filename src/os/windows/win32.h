@@ -60,5 +60,6 @@ wchar_t *convert_to_fs(const std::string_view name, wchar_t *utf16_buf, size_t b
 
 void Win32SetCurrentLocaleName(const char *iso_code);
 int OTTDStringCompare(std::string_view s1, std::string_view s2);
+int Win32StringContains(const std::string_view str, const std::string_view value, bool case_insensitive);
 
 #endif /* WIN32_H */

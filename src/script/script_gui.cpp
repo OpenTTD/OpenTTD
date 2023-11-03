@@ -1139,7 +1139,7 @@ CompanyID ScriptDebugWindow::script_debug_company = INVALID_COMPANY;
 std::string ScriptDebugWindow::break_string;
 bool ScriptDebugWindow::break_check_enabled = true;
 bool ScriptDebugWindow::case_sensitive_break_check = false;
-StringFilter ScriptDebugWindow::break_string_filter(&ScriptDebugWindow::case_sensitive_break_check);
+StringFilter ScriptDebugWindow::break_string_filter(&ScriptDebugWindow::case_sensitive_break_check, false);
 
 /** Make a number of rows with buttons for each company for the Script debug window. */
 NWidgetBase *MakeCompanyButtonRowsScriptDebug(int *biggest_index)
