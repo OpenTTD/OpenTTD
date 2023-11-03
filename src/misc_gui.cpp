@@ -648,7 +648,7 @@ void HideFillingPercent(TextEffectID *te_id)
 }
 
 static const NWidgetPart _nested_tooltips_widgets[] = {
-	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_TT_BACKGROUND), EndContainer(),
+	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_TT_BACKGROUND),
 };
 
 static WindowDesc _tool_tips_desc(__FILE__, __LINE__,
