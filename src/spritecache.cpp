@@ -19,6 +19,8 @@
 #include "core/math_func.hpp"
 #include "core/mem_func.hpp"
 #include "video/video_driver.hpp"
+#include "spritecache.h"
+#include "spritecache_internal.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -28,17 +30,6 @@
 
 /* Default of 4MB spritecache */
 uint _sprite_cache_size = 4;
-
-struct SpriteCache {
-	void *ptr;
-	size_t file_pos;
-	SpriteFile *file;    ///< The file the sprite in this entry can be found in.
-	uint32_t id;
-	int16_t lru;
-	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
-	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
-	byte control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
-};
 
 
 static uint _spritecache_items = 0;
@@ -50,12 +41,7 @@ static inline SpriteCache *GetSpriteCache(uint index)
 	return &_spritecache[index];
 }
 
-static inline bool IsMapgenSpriteID(SpriteID sprite)
-{
-	return IsInsideMM(sprite, SPR_MAPGEN_BEGIN, SPR_MAPGEN_END);
-}
-
-static SpriteCache *AllocateSpriteCache(uint index)
+SpriteCache *AllocateSpriteCache(uint index)
 {
 	if (index >= _spritecache_items) {
 		/* Add another 1024 items to the 'pool' */
