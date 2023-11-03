@@ -50,8 +50,10 @@ struct WidgetDimensions {
 	RectPadding captiontext;  ///< Offsets of text within a caption.
 	RectPadding dropdowntext; ///< Offsets of text within a dropdown widget.
 	RectPadding modalpopup;   ///< Padding for a modal popup.
+	RectPadding picker;       ///< Padding for a picker (dock, station, etc) window.
 
 	int pressed;              ///< Offset for contents of depressed widget.
+	int vsep_picker;          ///< Vertical spacing of picker-window widgets.
 	int vsep_normal;          ///< Normal vertical spacing.
 	int vsep_wide;            ///< Wide vertical spacing.
 	int hsep_normal;          ///< Normal horizontal spacing.
