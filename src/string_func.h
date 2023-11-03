@@ -39,6 +39,8 @@ void StrTrimInPlace(std::string &str);
 [[nodiscard]] int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2);
 [[nodiscard]] bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str2);
 [[nodiscard]] int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garbage_at_front = false);
+[[nodiscard]] bool StrNaturalContains(const std::string_view str, const std::string_view value);
+[[nodiscard]] bool StrNaturalContainsIgnoreCase(const std::string_view str, const std::string_view value);
 
 /** Case insensitive comparator for strings, for example for use in std::map. */
 struct CaseInsensitiveComparator {

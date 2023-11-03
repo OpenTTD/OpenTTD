@@ -19,6 +19,7 @@
 #define NO_SHOBJIDL_SORTDIRECTION // Avoid multiple definition of SORT_ASCENDING
 #include <shlobj.h> /* SHGetFolderPath */
 #include <shellapi.h>
+#include <WinNls.h>
 #include "win32.h"
 #include "../../fios.h"
 #include "../../core/alloc_func.hpp"
@@ -599,6 +600,44 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 	convert_to_fs(s2, s2_buf, lengthof(s2_buf));
 
 	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, s1_buf, -1, s2_buf, -1);
+}
+
+/**
+ * Search if a string is contained in another string using the current locale.
+ *
+ * @param str String to search in.
+ * @param value String to search for.
+ * @param case_insensitive Search case-insensitive.
+ * @return 1 if value was found, 0 if it was not found, or -1 if not supported by the OS.
+ */
+int Win32StringContains(const std::string_view str, const std::string_view value, bool case_insensitive)
+{
+	typedef int (WINAPI *PFNFINDNLSSTRINGEX)(LPCWSTR, DWORD, LPCWSTR, int, LPCWSTR, int, LPINT, LPNLSVERSIONINFO, LPVOID, LPARAM);
+	static PFNFINDNLSSTRINGEX _FindNLSStringEx = nullptr;
+	static bool first_time = true;
+
+	if (first_time) {
+		static DllLoader _kernel32(L"Kernel32.dll");
+		_FindNLSStringEx = _kernel32.GetProcAddress("FindNLSStringEx");
+		first_time = false;
+	}
+
+	if (_FindNLSStringEx != nullptr) {
+		int len_str = MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), nullptr, 0);
+		int len_value = MultiByteToWideChar(CP_UTF8, 0, value.data(), (int)value.size(), nullptr, 0);
+
+		if (len_str != 0 && len_value != 0) {
+			std::wstring str_str(len_str, L'\0'); // len includes terminating null
+			std::wstring str_value(len_value, L'\0');
+
+			MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), str_str.data(), len_str);
+			MultiByteToWideChar(CP_UTF8, 0, value.data(), (int)value.size(), str_value.data(), len_value);
+
+			return _FindNLSStringEx(_cur_iso_locale, FIND_FROMSTART | (case_insensitive ? LINGUISTIC_IGNORECASE : 0), str_str.data(), -1, str_value.data(), -1, nullptr, nullptr, nullptr, 0) >= 0 ? 1 : 0;
+		}
+	}
+
+	return -1; // Failure indication.
 }
 
 #ifdef _MSC_VER

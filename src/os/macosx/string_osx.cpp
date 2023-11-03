@@ -336,6 +336,31 @@ int MacOSStringCompare(std::string_view s1, std::string_view s2)
 	return (int)CFStringCompareWithOptionsAndLocale(cf1.get(), cf2.get(), CFRangeMake(0, CFStringGetLength(cf1.get())), flags, _osx_locale.get()) + 2;
 }
 
+/**
+ * Search if a string is contained in another string using the current locale.
+ *
+ * @param str String to search in.
+ * @param value String to search for.
+ * @param case_insensitive Search case-insensitive.
+ * @return 1 if value was found, 0 if it was not found, or -1 if not supported by the OS.
+ */
+int MacOSStringContains(const std::string_view str, const std::string_view value, bool case_insensitive)
+{
+	static bool supported = MacOSVersionIsAtLeast(10, 5, 0);
+	if (!supported) return -1;
+
+	CFStringCompareFlags flags = kCFCompareLocalized | kCFCompareWidthInsensitive;
+	if (case_insensitive) flags |= kCFCompareCaseInsensitive;
+
+	CFAutoRelease<CFStringRef> cf_str(CFStringCreateWithBytes(kCFAllocatorDefault, (const UInt8 *)str.data(), str.size(), kCFStringEncodingUTF8, false));
+	CFAutoRelease<CFStringRef> cf_value(CFStringCreateWithBytes(kCFAllocatorDefault, (const UInt8 *)value.data(), value.size(), kCFStringEncodingUTF8, false));
+
+	/* If any CFString could not be created (e.g., due to UTF8 invalid chars), return OS unsupported functionality */
+	if (cf_str == nullptr || cf_value == nullptr) return -1;
+
+	return CFStringFindWithOptionsAndLocale(cf_str.get(), cf_value.get(), CFRangeMake(0, CFStringGetLength(cf_str.get())), flags, _osx_locale.get(), nullptr) ? 1 : 0;
+}
+
 
 /* virtual */ void OSXStringIterator::SetString(const char *s)
 {
