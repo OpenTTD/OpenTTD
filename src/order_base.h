@@ -350,9 +350,6 @@ public:
 	 */
 	inline uint GetNumVehicles() const { return this->num_vehicles; }
 
-	bool IsVehicleInSharedOrdersList(const Vehicle *v) const;
-	int GetPositionInSharedOrderList(const Vehicle *v) const;
-
 	/**
 	 * Adds the given vehicle to this shared order list.
 	 * @note This is supposed to be called after the vehicle has been inserted

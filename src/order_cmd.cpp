@@ -572,31 +572,6 @@ void OrderList::RemoveVehicle(Vehicle *v)
 }
 
 /**
- * Checks whether a vehicle is part of the shared vehicle chain.
- * @param v is the vehicle to search in the shared vehicle chain.
- */
-bool OrderList::IsVehicleInSharedOrdersList(const Vehicle *v) const
-{
-	for (const Vehicle *v_shared = this->first_shared; v_shared != nullptr; v_shared = v_shared->NextShared()) {
-		if (v_shared == v) return true;
-	}
-
-	return false;
-}
-
-/**
- * Gets the position of the given vehicle within the shared order vehicle list.
- * @param v is the vehicle of which to get the position
- * @return position of v within the shared vehicle chain.
- */
-int OrderList::GetPositionInSharedOrderList(const Vehicle *v) const
-{
-	int count = 0;
-	for (const Vehicle *v_shared = v->PreviousShared(); v_shared != nullptr; v_shared = v_shared->PreviousShared()) count++;
-	return count;
-}
-
-/**
  * Checks whether all orders of the list have a filled timetable.
  * @return whether all orders have a filled timetable.
  */

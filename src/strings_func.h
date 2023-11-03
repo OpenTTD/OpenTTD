@@ -110,8 +110,6 @@ extern TextDirection _current_text_dir; ///< Text direction of the currently sel
 void InitializeLanguagePacks();
 const char *GetCurrentLanguageIsoCode();
 
-bool StringIDSorter(const StringID &a, const StringID &b);
-
 /**
  * A searcher for missing glyphs.
  */

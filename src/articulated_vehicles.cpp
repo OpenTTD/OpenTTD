@@ -226,20 +226,6 @@ CargoTypes GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial
 }
 
 /**
- * Ands the refit_masks of all articulated parts.
- * @param engine the first part
- * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
- * @return bit mask of CargoIDs which are a refit option for every articulated part (with default capacity > 0)
- */
-CargoTypes GetIntersectionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type)
-{
-	CargoTypes union_mask, intersection_mask;
-	GetArticulatedRefitMasks(engine, include_initial_cargo_type, &union_mask, &intersection_mask);
-	return intersection_mask;
-}
-
-
-/**
  * Tests if all parts of an articulated vehicle are refitted to the same cargo.
  * Note: Vehicles not carrying anything are ignored
  * @param v the first vehicle in the chain

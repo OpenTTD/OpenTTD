@@ -427,12 +427,6 @@ public:
 		return next_trackdir;
 	}
 
-	static uint stDistanceToTile(const RoadVehicle *v, TileIndex tile)
-	{
-		Tpf pf;
-		return pf.DistanceToTile(v, tile);
-	}
-
 	inline uint DistanceToTile(const RoadVehicle *v, TileIndex dst_tile)
 	{
 		/* handle special case - when current tile is the destination tile */

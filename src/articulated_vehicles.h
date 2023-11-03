@@ -18,7 +18,6 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine);
 void AddArticulatedParts(Vehicle *first);
 void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, CargoTypes *union_mask, CargoTypes *intersection_mask);
 CargoTypes GetUnionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type);
-CargoTypes GetIntersectionOfArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type);
 bool IsArticulatedVehicleCarryingDifferentCargoes(const Vehicle *v, CargoID *cargo_type);
 bool IsArticulatedVehicleRefittable(EngineID engine);
 bool IsArticulatedEngine(EngineID engine_type);
