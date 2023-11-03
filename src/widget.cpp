@@ -151,7 +151,9 @@ const WidgetDimensions WidgetDimensions::unscaled = {
 	{WD_CAPTIONTEXT_LEFT,  WD_CAPTIONTEXT_TOP,  WD_CAPTIONTEXT_RIGHT,  WD_CAPTIONTEXT_BOTTOM},  ///< captiontext
 	{WD_DROPDOWNTEXT_LEFT, WD_DROPDOWNTEXT_TOP, WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_BOTTOM}, ///< dropdowntext
 	{20, 10, 20, 10},    ///< modalpopup
+	{3, 3, 3, 3},        ///< picker
 	1,                   ///< pressed
+	1,                   ///< vsep_picker
 	WD_PAR_VSEP_NORMAL,  ///< vsep_normal
 	WD_PAR_VSEP_WIDE,    ///< vsep_wide
 	2,                   ///< hsep_normal
