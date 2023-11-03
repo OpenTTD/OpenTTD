@@ -391,10 +391,6 @@ public:
 
 	void HandleLoading(bool mode = false);
 
-	void GetConsistFreeCapacities(std::map<CargoID, uint> &capacities) const;
-
-	uint GetConsistTotalCapacity() const;
-
 	/**
 	 * Marks the vehicles to be redrawn and updates cached variables
 	 *

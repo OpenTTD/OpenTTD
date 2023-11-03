@@ -1957,14 +1957,6 @@ const char *GetCurrentLocale(const char *param)
 const char *GetCurrentLocale(const char *param);
 #endif /* !(defined(_WIN32) || defined(__APPLE__)) */
 
-bool StringIDSorter(const StringID &a, const StringID &b)
-{
-	std::string stra = GetString(a);
-	std::string strb = GetString(b);
-
-	return StrNaturalCompare(stra, strb) < 0;
-}
-
 /**
  * Get the language with the given NewGRF language ID.
  * @param newgrflangid NewGRF languages ID to check.

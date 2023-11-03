@@ -744,8 +744,6 @@ struct TextRefStack {
 		this->grffile = grffile;
 		this->used = true;
 	}
-
-	void RewindStack() { this->position = 0; }
 };
 
 /** The stack that is used for TTDP compatible string code parsing */
@@ -817,11 +815,6 @@ void StartTextRefStackUsage(const GRFFile *grffile, byte numEntries, const uint3
 void StopTextRefStackUsage()
 {
 	_newgrf_textrefstack.used = false;
-}
-
-void RewindTextRefStack()
-{
-	_newgrf_textrefstack.RewindStack();
 }
 
 /**

@@ -2354,32 +2354,6 @@ void Vehicle::HandleLoading(bool mode)
 }
 
 /**
- * Get a map of cargoes and free capacities in the consist.
- * @param capacities Map to be filled with cargoes and capacities.
- */
-void Vehicle::GetConsistFreeCapacities(std::map<CargoID, uint> &capacities) const
-{
-	for (const Vehicle *v = this; v != nullptr; v = v->Next()) {
-		if (v->cargo_cap == 0) continue;
-		auto pair = capacities.find(v->cargo_type);
-		if (pair == capacities.end()) {
-			capacities[v->cargo_type] = v->cargo_cap - v->cargo.StoredCount();
-		} else {
-			pair->second += v->cargo_cap - v->cargo.StoredCount();
-		}
-	}
-}
-
-uint Vehicle::GetConsistTotalCapacity() const
-{
-	uint result = 0;
-	for (const Vehicle *v = this; v != nullptr; v = v->Next()) {
-		result += v->cargo_cap;
-	}
-	return result;
-}
-
-/**
  * Send this vehicle to the depot using the given command(s).
  * @param flags   the command flags (like execute and such).
  * @param command the command to execute.
