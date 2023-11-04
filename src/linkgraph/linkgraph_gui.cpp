@@ -501,7 +501,8 @@ NWidgetBase *MakeCargoesLegendLinkGraphGUI(int *biggest_index)
 		spc->SetResize(0, 0);
 		col->Add(spc);
 	}
-	panel->Add(col);
+	/* If there are no cargo specs defined, then col won't have been created so don't add it. */
+	if (col != nullptr) panel->Add(col);
 	*biggest_index = WID_LGL_CARGO_LAST;
 	return panel;
 }
