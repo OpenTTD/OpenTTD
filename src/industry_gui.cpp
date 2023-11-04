@@ -1237,10 +1237,11 @@ static const NWidgetPart _nested_industry_directory_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_BROWN, WID_ID_INDUSTRY_LIST), SetDataTip(0x0, STR_INDUSTRY_DIRECTORY_LIST_CAPTION), SetResize(1, 1), SetScrollbar(WID_ID_VSCROLLBAR),
 			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_ID_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
-		EndContainer(),
+		NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_ID_VSCROLLBAR),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HSCROLLBAR, COLOUR_BROWN, WID_ID_HSCROLLBAR),
+		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
 
@@ -1316,6 +1317,7 @@ protected:
 
 	GUIIndustryList industries;
 	Scrollbar *vscroll;
+	Scrollbar *hscroll;
 
 	CargoID cargo_filter[NUM_CARGO + 2];        ///< Available cargo filters; CargoID or CF_ANY or CF_NONE
 	StringID cargo_filter_texts[NUM_CARGO + 3]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
@@ -1404,6 +1406,19 @@ protected:
 		this->industries.SetFilterState(is_filtering_necessary);
 	}
 
+	/**
+	 * Get the width needed to draw the longest industry line.
+	 * @return Returns width of the longest industry line, including padding.
+	 */
+	uint GetIndustryListWidth() const
+	{
+		uint width = 0;
+		for (const Industry *i : this->industries) {
+			width = std::max(width, GetStringBoundingBox(this->GetIndustryString(i)).width);
+		}
+		return width + WidgetDimensions::scaled.framerect.Horizontal();
+	}
+
 	/** (Re)Build industries list */
 	void BuildSortIndustriesList()
 	{
@@ -1429,6 +1444,7 @@ protected:
 			this->industries.Filter(filter);
 
 			this->hscroll->SetCount(this->GetIndustryListWidth());
+			this->vscroll->SetCount(this->industries.size()); // Update scrollbar as well.
 		}
 
 		IndustryDirectoryWindow::produced_cargo_filter = this->cargo_filter[this->produced_cargo_filter_criteria];
@@ -1620,7 +1636,8 @@ public:
 	IndustryDirectoryWindow(WindowDesc *desc, WindowNumber) : Window(desc), industry_editbox(MAX_FILTER_LENGTH * MAX_CHAR_LENGTH, MAX_FILTER_LENGTH)
 	{
 		this->CreateNestedTree();
-		this->vscroll = this->GetScrollbar(WID_ID_SCROLLBAR);
+		this->vscroll = this->GetScrollbar(WID_ID_VSCROLLBAR);
+		this->hscroll = this->GetScrollbar(WID_ID_HSCROLLBAR);
 
 		this->industries.SetListing(this->last_sorting);
 		this->industries.SetSortFuncs(IndustryDirectoryWindow::sorter_funcs);
@@ -1670,6 +1687,19 @@ public:
 
 			case WID_ID_INDUSTRY_LIST: {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
+
+				/* Setup a clipping rectangle... */
+				DrawPixelInfo tmp_dpi;
+				if (!FillDrawPixelInfo(&tmp_dpi, ir.left, ir.top, ir.Width(), ir.Height())) return;
+				/* ...but keep coordinates relative to the window. */
+				tmp_dpi.left += ir.left;
+				tmp_dpi.top += ir.top;
+
+				AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+
+				ir.left -= this->hscroll->GetPosition();
+				ir.right += this->hscroll->GetCapacity() - this->hscroll->GetPosition();
+
 				if (this->industries.empty()) {
 					DrawString(ir, STR_INDUSTRY_DIRECTORY_NONE);
 					break;
@@ -1718,9 +1748,6 @@ public:
 
 			case WID_ID_INDUSTRY_LIST: {
 				Dimension d = GetStringBoundingBox(STR_INDUSTRY_DIRECTORY_NONE);
-				for (uint i = 0; i < this->industries.size(); i++) {
-					d = maxdim(d, GetStringBoundingBox(this->GetIndustryString(this->industries[i])));
-				}
 				resize->height = d.height;
 				d.height *= 5;
 				d.width += padding.width;
@@ -1794,6 +1821,7 @@ public:
 	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_ID_INDUSTRY_LIST);
+		this->hscroll->SetCapacityFromWidget(this, WID_ID_INDUSTRY_LIST);
 	}
 
 	void OnEditboxChanged(int wid) override
