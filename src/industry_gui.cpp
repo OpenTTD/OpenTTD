@@ -1422,17 +1422,17 @@ protected:
 
 			this->industries.shrink_to_fit();
 			this->industries.RebuildDone();
+
+			auto filter = std::make_pair(this->cargo_filter[this->accepted_cargo_filter_criteria],
+										this->cargo_filter[this->produced_cargo_filter_criteria]);
+
+			this->industries.Filter(filter);
+
+			this->hscroll->SetCount(this->GetIndustryListWidth());
 		}
-
-		auto filter = std::make_pair(this->cargo_filter[this->accepted_cargo_filter_criteria],
-		                             this->cargo_filter[this->produced_cargo_filter_criteria]);
-
-		this->industries.Filter(filter);
 
 		IndustryDirectoryWindow::produced_cargo_filter = this->cargo_filter[this->produced_cargo_filter_criteria];
 		this->industries.Sort();
-
-		this->vscroll->SetCount(this->industries.size()); // Update scrollbar as well.
 
 		this->SetDirty();
 	}
