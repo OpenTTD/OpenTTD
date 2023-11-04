@@ -48,7 +48,6 @@ public:
 	Blitter::PaletteAnimation UsePaletteAnimation() override;
 
 	const char *GetName() override { return "32bpp-anim"; }
-	int GetBytesPerPixel() override { return 6; }
 	void PostResize() override;
 
 	/**

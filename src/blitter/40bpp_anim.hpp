@@ -33,7 +33,6 @@ public:
 	bool NeedsAnimationBuffer() override;
 
 	const char *GetName()  override { return "40bpp-anim"; }
-	int GetBytesPerPixel()  override { return 5; }
 
 	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 
