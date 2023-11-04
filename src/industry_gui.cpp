@@ -1669,16 +1669,15 @@ public:
 				break;
 
 			case WID_ID_INDUSTRY_LIST: {
-				int n = 0;
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 				if (this->industries.empty()) {
 					DrawString(ir, STR_INDUSTRY_DIRECTORY_NONE);
 					break;
 				}
-				TextColour tc;
+				int n = 0;
 				const CargoID acf_cid = this->cargo_filter[this->accepted_cargo_filter_criteria];
 				for (uint i = this->vscroll->GetPosition(); i < this->industries.size(); i++) {
-					tc = TC_FROMSTRING;
+					TextColour tc = TC_FROMSTRING;
 					if (acf_cid != CF_ANY && acf_cid != CF_NONE) {
 						Industry *ind = const_cast<Industry *>(this->industries[i]);
 						if (IndustryTemporarilyRefusesCargo(ind, acf_cid)) {
