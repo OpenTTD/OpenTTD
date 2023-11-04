@@ -30,7 +30,6 @@ public:
 	size_t BufferSize(uint width, uint height) override;
 	void PaletteAnimate(const Palette &palette) override;
 	Blitter::PaletteAnimation UsePaletteAnimation() override;
-	int GetBytesPerPixel() override { return 4; }
 
 	/**
 	 * Look up the colour in the current palette.

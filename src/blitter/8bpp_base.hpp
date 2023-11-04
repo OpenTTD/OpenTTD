@@ -28,7 +28,6 @@ public:
 	size_t BufferSize(uint width, uint height) override;
 	void PaletteAnimate(const Palette &palette) override;
 	Blitter::PaletteAnimation UsePaletteAnimation() override;
-	int GetBytesPerPixel() override { return 1; }
 };
 
 #endif /* BLITTER_8BPP_BASE_HPP */

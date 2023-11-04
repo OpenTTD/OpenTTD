@@ -32,7 +32,6 @@ public:
 	Blitter::PaletteAnimation UsePaletteAnimation() override { return Blitter::PALETTE_ANIMATION_NONE; };
 
 	const char *GetName() override { return "null"; }
-	int GetBytesPerPixel() override { return 0; }
 };
 
 /** Factory for the blitter that does nothing. */
