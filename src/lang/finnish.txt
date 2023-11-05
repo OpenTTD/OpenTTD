@@ -5189,6 +5189,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ei voi a
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kulkuneuvo voi odottaa vain asemalla
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Tämä kulkuneuvo ei pysähdy tällä asemalla
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}… aikataulu on puutteellinen
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}… aikataulu ei ole vielä alkanut
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... liian monta kylttiä.

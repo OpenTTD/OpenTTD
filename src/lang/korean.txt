@@ -5190,6 +5190,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}차량�
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}차량은 정거장에서만 기다릴 수 있습니다
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}이 차량은 이 정거장에 서지 않습니다
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... 시간표가 모두 작성되지 않았습니다
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... 시간표가 아직 시작되지 않았습니다
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 팻말 수가 너무 많습니다
