@@ -178,6 +178,9 @@ public:
 	/** The date of the first day of the original base year. */
 	static constexpr TimerGameCalendar::Date DAYS_TILL_ORIGINAL_BASE_YEAR = TimerGameCalendar::DateAtStartOfYear(ORIGINAL_BASE_YEAR);
 
+	/** The absolute minimum date. */
+	static constexpr TimerGameCalendar::Date MIN_DATE = 0;
+
 	/** The date of the last day of the max year. */
 	static constexpr TimerGameCalendar::Date MAX_DATE = TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR + 1) - 1;
 
