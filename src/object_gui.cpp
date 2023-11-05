@@ -689,7 +689,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_BO_SELECT_SCROLL),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_SELECT_MATRIX), SetFill(0, 1), SetPIP(0, 2, 0),
+					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_SELECT_MATRIX), SetPIP(0, 2, 0),
 						NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BO_SELECT_IMAGE), SetMinimalSize(66, 60), SetDataTip(0x0, STR_OBJECT_BUILD_TOOLTIP),
 								SetFill(0, 0), SetResize(0, 0), SetScrollbar(WID_BO_SELECT_SCROLL),
 						EndContainer(),
