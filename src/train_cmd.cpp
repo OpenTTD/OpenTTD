@@ -469,7 +469,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 
 	if (offset != nullptr) {
 		if (HasBit(this->flags, VRF_REVERSE_DIRECTION) && !HasBit(EngInfo(this->engine_type)->misc_flags, EF_RAIL_FLIPS)) {
-			offset->x = ScaleSpriteTrad((this->gcache.cached_veh_length - VEHICLE_LENGTH / 2) * reference_width / VEHICLE_LENGTH);
+			offset->x = ScaleSpriteTrad(((int)this->gcache.cached_veh_length - (int)VEHICLE_LENGTH / 2) * reference_width / (int)VEHICLE_LENGTH);
 		} else {
 			offset->x = ScaleSpriteTrad(reference_width) / 2;
 		}
