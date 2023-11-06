@@ -96,28 +96,28 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}탄산음�
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :승객{NBSP}{COMMA}명
 STR_QUANTITY_COAL                                               :석탄 {WEIGHT_LONG}
-STR_QUANTITY_MAIL                                               :우편 {COMMA}{NBSP}자루
+STR_QUANTITY_MAIL                                               :우편 {COMMA}자루
 STR_QUANTITY_OIL                                                :석유 {VOLUME_LONG}
-STR_QUANTITY_LIVESTOCK                                          :가축 {COMMA}{NBSP}마리
-STR_QUANTITY_GOODS                                              :상품 {COMMA}{NBSP}상자
+STR_QUANTITY_LIVESTOCK                                          :가축 {COMMA}마리
+STR_QUANTITY_GOODS                                              :상품 {COMMA}상자
 STR_QUANTITY_GRAIN                                              :곡물 {WEIGHT_LONG}
 STR_QUANTITY_WOOD                                               :목재 {WEIGHT_LONG}
 STR_QUANTITY_IRON_ORE                                           :철광석 {WEIGHT_LONG}
 STR_QUANTITY_STEEL                                              :철 {WEIGHT_LONG}
-STR_QUANTITY_VALUABLES                                          :귀금속 {COMMA}{NBSP}자루
+STR_QUANTITY_VALUABLES                                          :귀금속 {COMMA}자루
 STR_QUANTITY_COPPER_ORE                                         :구리 광석 {WEIGHT_LONG}
 STR_QUANTITY_MAIZE                                              :옥수수 {WEIGHT_LONG}
 STR_QUANTITY_FRUIT                                              :과일 {WEIGHT_LONG}
-STR_QUANTITY_DIAMONDS                                           :다이아몬드 {COMMA}{NBSP}자루
+STR_QUANTITY_DIAMONDS                                           :다이아몬드 {COMMA}자루
 STR_QUANTITY_FOOD                                               :식품 {WEIGHT_LONG}
 STR_QUANTITY_PAPER                                              :종이 {WEIGHT_LONG}
-STR_QUANTITY_GOLD                                               :금 {COMMA}{NBSP}자루
+STR_QUANTITY_GOLD                                               :금 {COMMA}자루
 STR_QUANTITY_WATER                                              :물 {VOLUME_LONG}
 STR_QUANTITY_WHEAT                                              :밀 {WEIGHT_LONG}
 STR_QUANTITY_RUBBER                                             :고무 {VOLUME_LONG}
 STR_QUANTITY_SUGAR                                              :설탕 {WEIGHT_LONG}
-STR_QUANTITY_TOYS                                               :장난감 {COMMA}{NBSP}상자
-STR_QUANTITY_SWEETS                                             :사탕 {COMMA}{NBSP}자루
+STR_QUANTITY_TOYS                                               :장난감 {COMMA}상자
+STR_QUANTITY_SWEETS                                             :사탕 {COMMA}자루
 STR_QUANTITY_COLA                                               :콜라 {VOLUME_LONG}
 STR_QUANTITY_CANDYFLOSS                                         :솜사탕 {WEIGHT_LONG}
 STR_QUANTITY_BUBBLES                                            :거품 {COMMA}개
@@ -165,11 +165,11 @@ STR_ABBREV_ALL                                                  :모두
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{G=m}{COMMA}명
-STR_BAGS                                                        :{G=f}{COMMA}{NBSP}자루
-STR_TONS                                                        :{G=m}{COMMA}{NBSP}톤
-STR_LITERS                                                      :{G=f}{COMMA}{NBSP}리터
-STR_ITEMS                                                       :{G=m}{COMMA}{NBSP}마리
-STR_CRATES                                                      :{G=f}{COMMA}{NBSP}상자
+STR_BAGS                                                        :{G=f}{COMMA}자루
+STR_TONS                                                        :{G=m}{COMMA}톤
+STR_LITERS                                                      :{G=f}{COMMA}리터
+STR_ITEMS                                                       :{G=m}{COMMA}마리
+STR_CRATES                                                      :{G=f}{COMMA}상자
 
 STR_COLOUR_DEFAULT                                              :기본
 ###length 17
@@ -1780,7 +1780,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :항공기에 �
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :항공기에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :선박에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :선박에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}일/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}일/%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :사용 안 함
 

@@ -5575,6 +5575,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nie moż
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Pojazdy mogą czekać tylko na stacjach
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ten pojazd nie zatrzymuje się na tej stacji.
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... rozkład jazdy jest niekompletny
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... rozkład jazdy jeszcze się nie rozpoczął
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zbyt wiele napisów
