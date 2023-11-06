@@ -42,7 +42,7 @@ public:
 	DropDownListStringItem(StringID string, int result, bool masked);
 	DropDownListStringItem(const std::string &string, int result, bool masked);
 
-	bool Selectable() const override { return true; }
+	bool Selectable() const override { return !this->String().empty(); }
 	uint Width() const override;
 	void Draw(const Rect &r, bool sel, Colours bg_colour) const override;
 	virtual const std::string &String() const { return this->string; }

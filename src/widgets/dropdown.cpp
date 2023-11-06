@@ -48,10 +48,14 @@ uint DropDownListStringItem::Width() const
 	return GetStringBoundingBox(this->String()).width + WidgetDimensions::scaled.dropdowntext.Horizontal();
 }
 
-void DropDownListStringItem::Draw(const Rect &r, bool sel, Colours) const
+void DropDownListStringItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
 {
-	Rect ir = r.Shrink(WidgetDimensions::scaled.dropdowntext);
-	DrawString(ir.left, ir.right, r.top, this->String(), sel ? TC_WHITE : TC_BLACK);
+	if (this->String().empty()) {
+		this->DropDownListItem::Draw(r, sel, bg_colour);
+	} else {
+		Rect ir = r.Shrink(WidgetDimensions::scaled.dropdowntext);
+		DrawString(ir.left, ir.right, r.top, this->String(), sel ? TC_WHITE : TC_BLACK);
+	}
 }
 
 /**
