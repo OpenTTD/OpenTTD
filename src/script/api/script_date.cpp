@@ -22,7 +22,7 @@
 
 /* static */ ScriptDate::Date ScriptDate::GetCurrentDate()
 {
-	return (ScriptDate::Date)(int32_t)TimerGameCalendar::date;
+	return (ScriptDate::Date)TimerGameCalendar::date.base();
 }
 
 /* static */ SQInteger ScriptDate::GetYear(ScriptDate::Date date)
@@ -31,7 +31,7 @@
 
 	::TimerGameCalendar::YearMonthDay ymd;
 	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
-	return (int32_t)ymd.year;
+	return ymd.year.base();
 }
 
 /* static */ SQInteger ScriptDate::GetMonth(ScriptDate::Date date)
@@ -58,7 +58,7 @@
 	if (day_of_month < 1 || day_of_month > 31) return DATE_INVALID;
 	if (year < 0 || year > CalendarTime::MAX_YEAR) return DATE_INVALID;
 
-	return (ScriptDate::Date)(int32_t)::TimerGameCalendar::ConvertYMDToDate(year, month - 1, day_of_month);
+	return (ScriptDate::Date)::TimerGameCalendar::ConvertYMDToDate(year, month - 1, day_of_month).base();
 }
 
 /* static */ SQInteger ScriptDate::GetSystemTime()

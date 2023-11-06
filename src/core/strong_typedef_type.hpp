@@ -160,10 +160,10 @@ namespace StrongType {
 		constexpr Typedef &operator =(Typedef &&rhs) { this->value = std::move(rhs.value); return *this; }
 		constexpr Typedef &operator =(const TBaseType &rhs) { this->value = rhs; return *this; }
 
-		/* Only allow explicit conversions to BaseType. */
-		explicit constexpr operator TBaseType () const { return this->value; }
+		/* Only allow conversion to BaseType via method. */
+		constexpr TBaseType base() const { return this->value; }
 
-		/* Only allow TProperties classes access to the internal value. Everyone else needs to do an explicit cast. */
+		/* Only allow TProperties classes access to the internal value. Everyone else needs to call .base(). */
 		friend struct Compare;
 		friend struct Integer;
 		template <typename TCompatibleType> friend struct Compatible;
@@ -171,7 +171,7 @@ namespace StrongType {
 /* GCC / MSVC don't pick up on the "friend struct" above, where CLang does.
  * As in our CI we compile for all three targets, it is sufficient to have one
  * that errors on this; but nobody should be using "value" directly. Instead,
- * use a static_cast<> to convert to the base type. */
+ * use base() to convert to the base type. */
 #ifdef __clang__
 	protected:
 #endif /* __clang__ */

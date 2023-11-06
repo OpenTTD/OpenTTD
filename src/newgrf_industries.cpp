@@ -162,8 +162,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 		/* Variables available during construction check. */
 
 		switch (variable) {
-			case 0x80: return static_cast<uint32_t>(this->tile);
-			case 0x81: return GB(static_cast<uint32_t>(this->tile), 8, 8);
+			case 0x80: return this->tile.base();
+			case 0x81: return GB(this->tile.base(), 8, 8);
 
 			/* Pointer to the town the industry is associated with */
 			case 0x82: return this->industry->town->index;
@@ -247,7 +247,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 			return this->industry->founder | (is_ai ? 0x10000 : 0) | (colours << 24);
 		}
 
-		case 0x46: return static_cast<int32_t>(this->industry->construction_date); // Date when built - long format - (in days)
+		case 0x46: return this->industry->construction_date.base(); // Date when built - long format - (in days)
 
 		/* Override flags from GS */
 		case 0x47: return this->industry->ctlflags;
@@ -338,7 +338,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 			if (!IsValidCargoID(cargo)) return 0;
 			auto it = this->industry->GetCargoAccepted(cargo);
 			if (it == std::end(this->industry->accepted)) return 0; // invalid cargo
-			if (variable == 0x6E) return static_cast<int32_t>(it->last_accepted);
+			if (variable == 0x6E) return it->last_accepted.base();
 			if (variable == 0x6F) return it->waiting;
 			NOT_REACHED();
 		}
@@ -347,8 +347,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(byte param_setID, byte layo
 		case 0x7C: return (this->industry->psa != nullptr) ? this->industry->psa->GetValue(parameter) : 0;
 
 		/* Industry structure access*/
-		case 0x80: return static_cast<uint32_t>(this->industry->location.tile);
-		case 0x81: return GB(static_cast<uint32_t>(this->industry->location.tile), 8, 8);
+		case 0x80: return this->industry->location.tile.base();
+		case 0x81: return GB(this->industry->location.tile.base(), 8, 8);
 		/* Pointer to the town the industry is associated with */
 		case 0x82: return this->industry->town->index;
 		case 0x83:

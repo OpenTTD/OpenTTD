@@ -113,7 +113,7 @@ public:
 	static constexpr Year DateToYear(Date date)
 	{
 		/* Hardcode the number of days in a year because we can't access CalendarTime from here. */
-		return static_cast<int32_t>(date) / 366;
+		return date.base() / 366;
 	}
 
 	/**
@@ -123,7 +123,7 @@ public:
 	 */
 	static constexpr Date DateAtStartOfYear(Year year)
 	{
-		int32_t year_as_int = static_cast<int32_t>(year);
+		int32_t year_as_int = year.base();
 		uint number_of_leap_years = (year == 0) ? 0 : ((year_as_int - 1) / 4 - (year_as_int - 1) / 100 + (year_as_int - 1) / 400 + 1);
 
 		/* Hardcode the number of days in a year because we can't access CalendarTime from here. */

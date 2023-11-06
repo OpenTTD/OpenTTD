@@ -156,7 +156,7 @@ public:
 	template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 	void SetParam(size_t n, T v)
 	{
-		SetParam(n, static_cast<typename T::BaseType>(v));
+		SetParam(n, v.base());
 	}
 
 	void SetParam(size_t n, const char *str)

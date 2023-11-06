@@ -2499,7 +2499,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			value = atoi(str);
 		} else {
 			/* An empty string means revert to the default */
-			value = static_cast<int32_t>(CalendarTime::DEF_START_YEAR);
+			value = CalendarTime::DEF_START_YEAR.base();
 		}
 		SetStartingYear(value);
 

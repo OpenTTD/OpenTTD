@@ -102,7 +102,7 @@ static int32_t ClickChangeDateCheat(int32_t new_value, int32_t)
 {
 	/* Don't allow changing to an invalid year, or the current year. */
 	auto new_year = Clamp(TimerGameCalendar::Year(new_value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
-	if (new_year == TimerGameCalendar::year) return static_cast<int32_t>(TimerGameCalendar::year);
+	if (new_year == TimerGameCalendar::year) return TimerGameCalendar::year.base();
 
 	TimerGameCalendar::YearMonthDay ymd;
 	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
@@ -122,7 +122,7 @@ static int32_t ClickChangeDateCheat(int32_t new_value, int32_t)
 	InvalidateWindowClassesData(WC_TRUCK_STATION, 0);
 	InvalidateWindowClassesData(WC_BUILD_OBJECT, 0);
 	ResetSignalVariant();
-	return static_cast<int32_t>(TimerGameCalendar::year);
+	return TimerGameCalendar::year.base();
 }
 
 /**

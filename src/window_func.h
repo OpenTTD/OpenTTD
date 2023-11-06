@@ -23,7 +23,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner);
 template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 Window *FindWindowById(WindowClass cls, T number)
 {
-	return FindWindowById(cls, static_cast<typename T::BaseType>(number));
+	return FindWindowById(cls, number.base());
 }
 
 void ResizeWindow(Window *w, int x, int y, bool clamp_to_screen = true);
@@ -47,7 +47,7 @@ void InvalidateWindowClassesData(WindowClass cls, int data = 0, bool gui_scope =
 template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 void InvalidateWindowData(WindowClass cls, T number, int data = 0, bool gui_scope = false)
 {
-	InvalidateWindowData(cls, static_cast<typename T::BaseType>(number), data, gui_scope);
+	InvalidateWindowData(cls, number.base(), data, gui_scope);
 }
 
 void CloseNonVitalWindows();
@@ -70,7 +70,7 @@ void SetWindowClassesDirty(WindowClass cls);
 template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 void SetWindowDirty(WindowClass cls, T number)
 {
-	SetWindowDirty(cls, static_cast<typename T::BaseType>(number));
+	SetWindowDirty(cls, number.base());
 }
 
 void CloseWindowById(WindowClass cls, WindowNumber number, bool force = true, int data = 0);
@@ -79,7 +79,7 @@ void CloseWindowByClass(WindowClass cls, int data = 0);
 template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 void CloseWindowById(WindowClass cls, T number, bool force = true, int data = 0)
 {
-	CloseWindowById(cls, static_cast<typename T::BaseType>(number), force, data);
+	CloseWindowById(cls, number.base(), force, data);
 }
 
 bool EditBoxInGlobalFocus();

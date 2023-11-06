@@ -185,7 +185,7 @@ public:
 	 */
 	inline static uint Scale(uint val, TimerGameCalendar::Date target_age, TimerGameCalendar::Date orig_age)
 	{
-		return val > 0 ? std::max(1U, val * static_cast<int32_t>(target_age) / static_cast<int32_t>(orig_age)) : 0;
+		return val > 0 ? std::max(1U, val * target_age.base() / orig_age.base()) : 0;
 	}
 
 	/** Bare constructor, only for save/load. */
@@ -248,7 +248,7 @@ public:
 	 */
 	inline uint Monthly(uint base) const
 	{
-		return base * 30 / static_cast<int32_t>(TimerGameCalendar::date - this->last_compression + 1);
+		return base * 30 / (TimerGameCalendar::date - this->last_compression + 1).base();
 	}
 
 	NodeID AddNode(const Station *st);

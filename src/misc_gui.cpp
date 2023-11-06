@@ -207,7 +207,7 @@ public:
 
 		/* Location */
 		std::stringstream tile_ss;
-		tile_ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << std::uppercase << static_cast<uint32_t>(tile); // 0x%.4X
+		tile_ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << std::uppercase << tile.base(); // 0x%.4X
 
 		SetDParam(0, TileX(tile));
 		SetDParam(1, TileY(tile));
@@ -332,12 +332,12 @@ public:
 
 	bool IsNewGRFInspectable() const override
 	{
-		return ::IsNewGRFInspectable(GetGrfSpecFeature(this->tile), static_cast<uint32_t>(this->tile));
+		return ::IsNewGRFInspectable(GetGrfSpecFeature(this->tile), this->tile.base());
 	}
 
 	void ShowNewGRFInspectWindow() const override
 	{
-		::ShowNewGRFInspectWindow(GetGrfSpecFeature(this->tile), static_cast<uint32_t>(this->tile));
+		::ShowNewGRFInspectWindow(GetGrfSpecFeature(this->tile), this->tile.base());
 	}
 
 	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override

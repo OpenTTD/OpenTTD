@@ -83,7 +83,7 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 
 	if (x >= Map::SizeX() || y >= Map::SizeY()) {
 		std::string message = fmt::format("TILE_ADD({}) when adding 0x{:04X} and 0x{%04X} failed",
-			exp, (uint32_t)tile, add);
+			exp, tile, add);
 #if !defined(_MSC_VER)
 		fmt::print(stderr, "{}:{} {}\n", file, line, message);
 #else

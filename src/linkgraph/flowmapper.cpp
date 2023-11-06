@@ -52,7 +52,7 @@ void FlowMapper::Run(LinkGraphJob &job) const
 			 * LinkGraph::Monthly(). */
 			auto runtime = job.JoinDate() - job.Settings().recalc_time / CalendarTime::SECONDS_PER_DAY - job.LastCompression() + 1;
 			for (auto &it : flows) {
-				it.second.ScaleToMonthly(static_cast<int32_t>(runtime));
+				it.second.ScaleToMonthly(runtime.base());
 			}
 		}
 		/* Clear paths. */

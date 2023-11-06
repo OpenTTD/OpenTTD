@@ -527,7 +527,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	/* Do not draw trees when the invisible trees setting is set */
 	if (IsInvisibilitySet(TO_TREES)) return;
 
-	uint tmp = CountBits(static_cast<uint32_t>(ti->tile + ti->x + ti->y));
+	uint tmp = CountBits(ti->tile.base() + ti->x + ti->y);
 	uint index = GB(tmp, 0, 2) + (GetTreeType(ti->tile) << 2);
 
 	/* different tree styles above one of the grounds */

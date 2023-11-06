@@ -174,25 +174,25 @@ struct IntSettingDesc : SettingDesc {
 			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
 			post_callback(post_callback) {
 		if constexpr (std::is_base_of_v<StrongTypedefBase, Tdef>) {
-			this->def = static_cast<typename Tdef::BaseType>(def);
+			this->def = def.base();
 		} else {
 			this->def = def;
 		}
 
 		if constexpr (std::is_base_of_v<StrongTypedefBase, Tmin>) {
-			this->min = static_cast<typename Tmin::BaseType>(min);
+			this->min = min.base();
 		} else {
 			this->min = min;
 		}
 
 		if constexpr (std::is_base_of_v<StrongTypedefBase, Tmax>) {
-			this->max = static_cast<typename Tmax::BaseType>(max);
+			this->max = max.base();
 		} else {
 			this->max = max;
 		}
 
 		if constexpr (std::is_base_of_v<StrongTypedefBase, Tinterval>) {
-			this->interval = static_cast<typename Tinterval::BaseType>(interval);
+			this->interval = interval.base();
 		} else {
 			this->interval = interval;
 		}

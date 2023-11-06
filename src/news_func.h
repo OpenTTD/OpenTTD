@@ -44,7 +44,7 @@ static inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
 
 static inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, const NewsAllocatedData *data = nullptr, StationID station = INVALID_STATION)
 {
-	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_TILE, static_cast<uint32_t>(tile), station == INVALID_STATION ? NR_NONE : NR_STATION, station, data);
+	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_TILE, tile.base(), station == INVALID_STATION ? NR_NONE : NR_STATION, station, data);
 }
 
 static inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID industry, const NewsAllocatedData *data = nullptr)

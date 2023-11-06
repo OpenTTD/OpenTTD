@@ -1400,7 +1400,7 @@ void AgeVehicle(Vehicle *v)
 		str = STR_NEWS_VEHICLE_IS_GETTING_OLD;
 	} else if (age == TimerGameCalendar::DateAtStartOfYear(0)) {
 		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD;
-	} else if (age > TimerGameCalendar::DateAtStartOfYear(0) && (static_cast<int32_t>(age) % CalendarTime::DAYS_IN_LEAP_YEAR) == 0) {
+	} else if (age > TimerGameCalendar::DateAtStartOfYear(0) && (age.base() % CalendarTime::DAYS_IN_LEAP_YEAR) == 0) {
 		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND;
 	} else {
 		return;

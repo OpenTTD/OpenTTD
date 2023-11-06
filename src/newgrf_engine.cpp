@@ -557,7 +557,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		}
 
 		case 0x48: return v->GetEngine()->flags; // Vehicle Type Info
-		case 0x49: return static_cast<int32_t>(v->build_year);
+		case 0x49: return v->build_year.base();
 
 		case 0x4A:
 			switch (v->type) {
@@ -582,7 +582,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			}
 
 		case 0x4B: // Long date of last service
-			return static_cast<int32_t>(v->date_of_last_service_newgrf);
+			return v->date_of_last_service_newgrf.base();
 
 		case 0x4C: // Current maximum speed in NewGRF units
 			if (!v->IsPrimaryVehicle()) return 0;
@@ -814,7 +814,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x41: return GB(ClampTo<uint16_t>(v->age), 8, 8);
 		case 0x42: return ClampTo<uint16_t>(v->max_age);
 		case 0x43: return GB(ClampTo<uint16_t>(v->max_age), 8, 8);
-		case 0x44: return static_cast<int32_t>(Clamp(v->build_year, CalendarTime::ORIGINAL_BASE_YEAR, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR);
+		case 0x44: return (Clamp(v->build_year, CalendarTime::ORIGINAL_BASE_YEAR, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR).base();
 		case 0x45: return v->unitnumber;
 		case 0x46: return v->GetEngine()->grf_prop.local_id;
 		case 0x47: return GB(v->GetEngine()->grf_prop.local_id, 8, 8);
@@ -957,11 +957,11 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				}
 			}
 			case 0x48: return Engine::Get(this->self_type)->flags; // Vehicle Type Info
-			case 0x49: return static_cast<int32_t>(TimerGameCalendar::year); // 'Long' format build year
-			case 0x4B: return static_cast<int32_t>(TimerGameCalendar::date); // Long date of last service
+			case 0x49: return TimerGameCalendar::year.base(); // 'Long' format build year
+			case 0x4B: return TimerGameCalendar::date.base(); // Long date of last service
 			case 0x92: return ClampTo<uint16_t>(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Date of last service
 			case 0x93: return GB(ClampTo<uint16_t>(TimerGameCalendar::date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR), 8, 8);
-			case 0xC4: return static_cast<int32_t>(Clamp(TimerGameCalendar::year, CalendarTime::ORIGINAL_BASE_YEAR, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR); // Build year
+			case 0xC4: return (Clamp(TimerGameCalendar::year, CalendarTime::ORIGINAL_BASE_YEAR, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR).base(); // Build year
 			case 0xC6: return Engine::Get(this->self_type)->grf_prop.local_id;
 			case 0xC7: return GB(Engine::Get(this->self_type)->grf_prop.local_id, 8, 8);
 			case 0xDA: return INVALID_VEHICLE; // Next vehicle

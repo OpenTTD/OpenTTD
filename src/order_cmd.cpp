@@ -1900,7 +1900,7 @@ static bool OrderConditionCompare(OrderConditionComparator occ, int variable, in
 template <typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 static bool OrderConditionCompare(OrderConditionComparator occ, T variable, int value)
 {
-	return OrderConditionCompare(occ, static_cast<typename T::BaseType>(variable), value);
+	return OrderConditionCompare(occ, variable.base(), value);
 }
 
 /**

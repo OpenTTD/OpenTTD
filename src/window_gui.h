@@ -289,7 +289,7 @@ public:
 	template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 	void FinishInitNested(T number)
 	{
-		this->FinishInitNested(static_cast<typename T::BaseType>(number));
+		this->FinishInitNested(number.base());
 	}
 
 	/**
@@ -935,7 +935,7 @@ Window *FindWindowFromPt(int x, int y);
 template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>
 Window *BringWindowToFrontById(WindowClass cls, T number)
 {
-	return BringWindowToFrontById(cls, static_cast<typename T::BaseType>(number));
+	return BringWindowToFrontById(cls, number.base());
 }
 
 /**
