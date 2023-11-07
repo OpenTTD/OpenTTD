@@ -5189,6 +5189,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}不能�
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}车辆只能在站内等候。
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此车辆将不停靠本站。
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... 时间表不完整
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}……时间表尚未开始
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}……标志太多了

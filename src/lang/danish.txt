@@ -5189,6 +5189,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan ikke
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Transportmidler kan kun vente ved stationer.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dette transportmiddel stopper ikke ved denne station.
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... tidsplanen er ufuldstændig
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... tidsplanen er ikke startet endnu
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... for mange skilte
