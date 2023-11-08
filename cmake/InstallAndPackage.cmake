@@ -183,7 +183,7 @@ elseif(UNIX)
             OUTPUT_STRIP_TRAILING_WHITESPACE
         )
         if(LSB_RELEASE_ID)
-            if(LSB_RELEASE_ID STREQUAL "Ubuntu" OR LSB_RELEASE_ID STREQUAL "Debian")
+            if(LSB_RELEASE_ID STREQUAL "Ubuntu" OR LSB_RELEASE_ID STREQUAL "Debian" OR LSB_RELEASE_ID STREQUAL "Linuxmint")
                 execute_process(COMMAND ${LSB_RELEASE_EXEC} -cs
                     OUTPUT_VARIABLE LSB_RELEASE_CODENAME
                     OUTPUT_STRIP_TRAILING_WHITESPACE
