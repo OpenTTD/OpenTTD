@@ -198,17 +198,35 @@ public:
 };
 
 /**
- * Extension of StringParameters with its own statically allocated buffer for
+ * Extension of StringParameters with its own statically sized buffer for
  * the parameters.
  */
-class AllocatedStringParameters : public StringParameters {
-	std::vector<StringParameter> params; ///< The actual parameters
+template <size_t N>
+class ArrayStringParameters : public StringParameters {
+	std::array<StringParameter, N> params{}; ///< The actual parameters
 
 public:
-	AllocatedStringParameters(size_t parameters = 0) : params(parameters)
+	ArrayStringParameters()
 	{
 		this->parameters = span(params.data(), params.size());
 	}
+
+	ArrayStringParameters(ArrayStringParameters&& other) noexcept
+	{
+		*this = std::move(other);
+	}
+
+	ArrayStringParameters& operator=(ArrayStringParameters &&other) noexcept
+	{
+		this->offset = other.offset;
+		this->next_type = other.next_type;
+		this->params = std::move(other.params);
+		this->parameters = span(params.data(), params.size());
+		return *this;
+	}
+
+	ArrayStringParameters(const ArrayStringParameters& other) = delete;
+	ArrayStringParameters& operator=(const ArrayStringParameters &other) = delete;
 };
 
 /**
@@ -220,7 +238,7 @@ public:
 template <typename... Args>
 static auto MakeParameters(const Args&... args)
 {
-	AllocatedStringParameters parameters(sizeof...(args));
+	ArrayStringParameters<sizeof...(args)> parameters;
 	size_t index = 0;
 	(parameters.SetParam(index++, std::forward<const Args&>(args)), ...);
 	return parameters;
