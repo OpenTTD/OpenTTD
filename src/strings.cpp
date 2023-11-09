@@ -58,7 +58,7 @@ TextDirection _current_text_dir; ///< Text direction of the currently selected l
 std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
 #endif /* WITH_ICU_I18N */
 
-AllocatedStringParameters _global_string_params(20);
+ArrayStringParameters<20> _global_string_params;
 
 /**
  * Prepare the string parameters for the next formatting run. This means
@@ -927,7 +927,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		args.SetTypeOfNextParameter(b);
 		switch (b) {
 			case SCC_ENCODED: {
-				AllocatedStringParameters sub_args(20);
+				ArrayStringParameters<20> sub_args;
 
 				char *p;
 				uint32_t stringid = std::strtoul(str, &p, 16);
@@ -1440,7 +1440,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 						assert(grffile != nullptr);
 
 						StartTextRefStackUsage(grffile, 6);
-						AllocatedStringParameters tmp_params(6);
+						ArrayStringParameters<6> tmp_params;
 						GetStringWithArgs(builder, GetGRFStringID(grffile->grfid, 0xD000 + callback), tmp_params);
 						StopTextRefStackUsage();
 
@@ -1448,7 +1448,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					}
 				}
 
-				auto tmp_params = AllocatedStringParameters();
+				auto tmp_params = ArrayStringParameters<0>();
 				GetStringWithArgs(builder, e->info.string_id, tmp_params);
 				break;
 			}
@@ -1478,7 +1478,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				} else if (_scan_for_gender_data) {
 					/* Gender is defined by the industry type.
 					 * STR_FORMAT_INDUSTRY_NAME may have the town first, so it would result in the gender of the town name */
-					auto tmp_params = AllocatedStringParameters();
+					auto tmp_params = ArrayStringParameters<0>();
 					FormatString(builder, GetStringPtr(GetIndustrySpec(i->type)->name), tmp_params, next_substr_case_index);
 				} else {
 					/* First print the town name and the industry type name. */
@@ -1511,7 +1511,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					/* The station doesn't exist anymore. The only place where we might
 					 * be "drawing" an invalid station is in the case of cargo that is
 					 * in transit. */
-					auto tmp_params = AllocatedStringParameters();
+					auto tmp_params = ArrayStringParameters<0>();
 					GetStringWithArgs(builder, STR_UNKNOWN_STATION, tmp_params);
 					break;
 				}
@@ -1612,7 +1612,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					auto tmp_params = MakeParameters(si->name);
 					GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 				} else {
-					auto tmp_params = AllocatedStringParameters();
+					auto tmp_params = ArrayStringParameters<0>();
 					GetStringWithArgs(builder, STR_DEFAULT_SIGN_NAME, tmp_params);
 				}
 				break;
