@@ -79,7 +79,7 @@ struct FileStringReader : StringReader {
 	 * @param translation Are we reading a translation?
 	 */
 	FileStringReader(StringData &data, const std::filesystem::path &file, bool master, bool translation) :
-			StringReader(data, file.generic_string().c_str(), master, translation)
+			StringReader(data, file.generic_string(), master, translation)
 	{
 		this->input_stream.open(file, std::ifstream::binary);
 	}

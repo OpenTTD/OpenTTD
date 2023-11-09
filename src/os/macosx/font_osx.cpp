@@ -326,7 +326,7 @@ void LoadCoreTextFont(FontSize fs)
 			path.reset(CFStringCreateWithCString(kCFAllocatorDefault, settings->font.c_str(), kCFStringEncodingUTF8));
 		} else {
 			/* Scan the search-paths to see if it can be found. */
-			std::string full_font = FioFindFullPath(BASE_DIR, settings->font.c_str());
+			std::string full_font = FioFindFullPath(BASE_DIR, settings->font);
 			if (!full_font.empty()) {
 				path.reset(CFStringCreateWithCString(kCFAllocatorDefault, full_font.c_str(), kCFStringEncodingUTF8));
 			}

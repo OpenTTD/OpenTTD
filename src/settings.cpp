@@ -1552,7 +1552,7 @@ void DeleteGRFPresetFromConfig(const char *config_name)
 	section += config_name;
 
 	ConfigIniFile ini(_config_file);
-	ini.RemoveGroup(section.c_str());
+	ini.RemoveGroup(section);
 	ini.SaveToDisk(_config_file);
 }
 

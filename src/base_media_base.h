@@ -106,19 +106,19 @@ struct BaseSet {
 	 * @param isocode the isocode to search for
 	 * @return the description
 	 */
-	const char *GetDescription(const std::string &isocode) const
+	const std::string &GetDescription(const std::string &isocode) const
 	{
 		if (!isocode.empty()) {
 			/* First the full ISO code */
 			auto desc = this->description.find(isocode);
-			if (desc != this->description.end()) return desc->second.c_str();
+			if (desc != this->description.end()) return desc->second;
 
 			/* Then the first two characters */
 			desc = this->description.find(isocode.substr(0, 2));
-			if (desc != this->description.end()) return desc->second.c_str();
+			if (desc != this->description.end()) return desc->second;
 		}
 		/* Then fall back */
-		return this->description.at(std::string{}).c_str();
+		return this->description.at(std::string{});
 	}
 
 	/**
