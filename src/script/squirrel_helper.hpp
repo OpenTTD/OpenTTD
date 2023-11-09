@@ -45,7 +45,8 @@ namespace SQConvert {
 	template <> struct Return<HSQOBJECT>    { static inline int Set(HSQUIRRELVM vm, HSQOBJECT res)   { sq_pushobject(vm, res); return 1; } };
 
 	template <> struct Return<std::optional<std::string>> {
-		static inline int Set(HSQUIRRELVM vm, std::optional<std::string> res) {
+		static inline int Set(HSQUIRRELVM vm, std::optional<std::string> res)
+		{
 			if (res.has_value()) {
 				sq_pushstring(vm, res.value(), -1);
 			} else {

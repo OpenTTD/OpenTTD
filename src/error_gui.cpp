@@ -444,7 +444,8 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
  * Close active error message window
  * @return true if a window was closed.
  */
-bool HideActiveErrorMessage() {
+bool HideActiveErrorMessage()
+{
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
 	if (w == nullptr) return false;
 	w->Close();

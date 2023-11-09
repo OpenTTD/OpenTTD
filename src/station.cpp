@@ -413,7 +413,8 @@ void Station::AddIndustryToDeliver(Industry *ind, TileIndex tile)
  * Remove nearby industry from station's industries_near list.
  * @param ind  Industry
  */
-void Station::RemoveIndustryToDeliver(Industry *ind) {
+void Station::RemoveIndustryToDeliver(Industry *ind)
+{
 	auto pos = std::find_if(this->industries_near.begin(), this->industries_near.end(), [&](const IndustryListEntry &e) { return e.industry->index == ind->index; });
 	if (pos != this->industries_near.end()) {
 		this->industries_near.erase(pos);

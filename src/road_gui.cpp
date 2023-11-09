@@ -1395,7 +1395,8 @@ public:
 	/**
 	 * Simply to have a easier way to get the StationType for bus, truck and trams from the WindowClass.
 	 */
-	StationType GetRoadStationTypeByWindowClass(WindowClass window_class) const {
+	StationType GetRoadStationTypeByWindowClass(WindowClass window_class) const
+	{
 		switch (window_class) {
 			case WC_BUS_STATION:          return STATION_BUS;
 			case WC_TRUCK_STATION:        return STATION_TRUCK;
@@ -1475,13 +1476,15 @@ public:
 		}
 	}
 
-	void OnResize() override {
+	void OnResize() override
+	{
 		if (this->vscrollList != nullptr) {
 			this->vscrollList->SetCapacityFromWidget(this, WID_BROS_NEWST_LIST);
 		}
 	}
 
-	void SetStringParameters(int widget) const override {
+	void SetStringParameters(int widget) const override
+	{
 		if (widget == WID_BROS_SHOW_NEWST_TYPE) {
 			const RoadStopSpec *roadstopspec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(_roadstop_gui_settings.roadstop_type);
 			SetDParam(0, (roadstopspec != nullptr && roadstopspec->name != 0) ? roadstopspec->name : STR_STATION_CLASS_DFLT_ROADSTOP);

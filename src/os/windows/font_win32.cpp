@@ -38,7 +38,8 @@ struct EFCParam {
 	MissingGlyphSearcher *callback;
 	std::vector<std::wstring> fonts;
 
-	bool Add(const std::wstring_view &font) {
+	bool Add(const std::wstring_view &font)
+	{
 		for (const auto &entry : this->fonts) {
 			if (font.compare(entry) == 0) return false;
 		}

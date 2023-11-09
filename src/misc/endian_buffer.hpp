@@ -72,7 +72,8 @@ public:
 private:
 	/** Helper function to write a tuple to the buffer. */
 	template<class Ttuple, size_t... Tindices>
-	void WriteTuple(const Ttuple &values, std::index_sequence<Tindices...>) {
+	void WriteTuple(const Ttuple &values, std::index_sequence<Tindices...>)
+	{
 		((*this << std::get<Tindices>(values)), ...);
 	}
 
@@ -165,7 +166,8 @@ public:
 private:
 	/** Helper function to read a tuple from the buffer. */
 	template<class Ttuple, size_t... Tindices>
-	void ReadTuple(Ttuple &values, std::index_sequence<Tindices...>) {
+	void ReadTuple(Ttuple &values, std::index_sequence<Tindices...>)
+	{
 		((*this >> std::get<Tindices>(values)), ...);
 	}
 

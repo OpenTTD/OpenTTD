@@ -483,7 +483,8 @@ public:
 	 * @param widgets list of widgets
 	 */
 	template<typename... Args>
-	void RaiseWidgetsWhenLowered(Args... widgets) {
+	void RaiseWidgetsWhenLowered(Args... widgets)
+	{
 		(this->RaiseWidgetWhenLowered(widgets), ...);
 	}
 

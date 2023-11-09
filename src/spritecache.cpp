@@ -64,7 +64,8 @@ SpriteCache *AllocateSpriteCache(uint index)
  * @param filename The name of the file at the disk.
  * @return The SpriteFile or \c null.
  */
-static SpriteFile *GetCachedSpriteFileByName(const std::string &filename) {
+static SpriteFile *GetCachedSpriteFileByName(const std::string &filename)
+{
 	for (auto &f : _sprite_files) {
 		if (f->GetFilename() == filename) {
 			return f.get();

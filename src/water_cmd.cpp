@@ -434,7 +434,8 @@ bool RiverModifyDesertZone(TileIndex tile, void *)
  * Make a river tile and remove desert directly around it.
  * @param tile The tile to change into river and create non-desert around
  */
-void MakeRiverAndModifyDesertZoneAround(TileIndex tile) {
+void MakeRiverAndModifyDesertZoneAround(TileIndex tile)
+{
 	MakeRiver(tile, Random());
 	MarkTileDirtyByTile(tile);
 

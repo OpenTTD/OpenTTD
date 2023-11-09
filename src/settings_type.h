@@ -563,7 +563,8 @@ struct LinkGraphSettings {
 	uint8_t demand_distance;                  ///< influence of distance between stations on the demand function
 	uint8_t short_path_saturation;            ///< percentage up to which short paths are saturated before saturating most capacious paths
 
-	inline DistributionType GetDistributionType(CargoID cargo) const {
+	inline DistributionType GetDistributionType(CargoID cargo) const
+	{
 		if (IsCargoInClass(cargo, CC_PASSENGERS)) return this->distribution_pax;
 		if (IsCargoInClass(cargo, CC_MAIL)) return this->distribution_mail;
 		if (IsCargoInClass(cargo, CC_ARMOURED)) return this->distribution_armoured;
