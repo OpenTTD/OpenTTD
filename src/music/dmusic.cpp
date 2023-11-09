@@ -71,7 +71,8 @@ struct DLSFile {
 		WSMPL wave_sample;
 		std::vector<WLOOP> wave_loops;
 
-		bool operator ==(long offset) const {
+		bool operator ==(long offset) const
+		{
 			return this->file_offset == offset;
 		}
 	};

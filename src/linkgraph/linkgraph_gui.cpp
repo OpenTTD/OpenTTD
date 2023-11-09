@@ -569,7 +569,8 @@ LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc *desc, int window_number
  * Set the overlay belonging to this menu and import its company/cargo settings.
  * @param overlay New overlay for this menu.
  */
-void LinkGraphLegendWindow::SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay) {
+void LinkGraphLegendWindow::SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay)
+{
 	this->overlay = overlay;
 	CompanyMask companies = this->overlay->GetCompanyMask();
 	for (uint c = 0; c < MAX_COMPANIES; c++) {

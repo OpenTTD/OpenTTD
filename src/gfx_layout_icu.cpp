@@ -154,7 +154,8 @@ ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
  * @param buff The buffer of which a partial (depending on start/length of the run) will be shaped.
  * @param length The length of the buffer.
  */
-void ICURun::Shape(UChar *buff, size_t buff_length) {
+void ICURun::Shape(UChar *buff, size_t buff_length)
+{
 	auto hbfont = hb_ft_font_create_referenced(*(static_cast<const FT_Face *>(font->fc->GetOSHandle())));
 	hb_font_set_scale(hbfont, this->font->fc->GetFontSize() * FONT_SCALE, this->font->fc->GetFontSize() * FONT_SCALE);
 

@@ -251,7 +251,8 @@ void OSOpenBrowser(const char *url)
 }
 #endif /* __APPLE__ */
 
-void SetCurrentThreadName([[maybe_unused]] const char *threadName) {
+void SetCurrentThreadName([[maybe_unused]] const char *threadName)
+{
 #if defined(__GLIBC__)
 	if (threadName) pthread_setname_np(pthread_self(), threadName);
 #endif /* defined(__GLIBC__) */

@@ -197,7 +197,8 @@ public:
 	/**
 	 * Get the currently active instance of the video driver.
 	 */
-	static VideoDriver *GetInstance() {
+	static VideoDriver *GetInstance()
+	{
 		return static_cast<VideoDriver*>(*DriverFactoryBase::GetActiveDriver(Driver::DT_VIDEO));
 	}
 
@@ -260,7 +261,8 @@ protected:
 	 * Make sure the video buffer is ready for drawing.
 	 * @returns True if the video buffer has to be unlocked.
 	 */
-	virtual bool LockVideoBuffer() {
+	virtual bool LockVideoBuffer()
+	{
 		return false;
 	}
 

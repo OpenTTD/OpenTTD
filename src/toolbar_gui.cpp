@@ -690,7 +690,8 @@ static const int LTMN_PERFORMANCE_LEAGUE = -7;        ///< Show default league t
 static const int LTMN_PERFORMANCE_RATING = -8;        ///< Show detailed performance rating
 static const int LTMN_HIGHSCORE          = -9;        ///< Show highscrore table
 
-static void AddDropDownLeagueTableOptions(DropDownList &list) {
+static void AddDropDownLeagueTableOptions(DropDownList &list)
+{
 	if (LeagueTable::GetNumItems() > 0) {
 		for (LeagueTable *lt : LeagueTable::Iterate()) {
 			list.push_back(std::make_unique<DropDownListStringItem>(lt->title, lt->index, false));
