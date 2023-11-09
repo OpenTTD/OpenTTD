@@ -1372,7 +1372,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, Til
 					last_suitable_trackdir = trackdir;
 				}
 			}
-		} else if(signal_ctr >= last_used_ctr + signal_density) {
+		} else if (signal_ctr >= last_used_ctr + signal_density) {
 			/* We're always keeping regular interval between signals so doesn't matter whether we succeed or not. */
 			build_signal(tile, trackdir, false);
 			last_used_ctr = signal_ctr;
@@ -1396,7 +1396,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlag flags, TileIndex tile, Til
 						/* To keep regular interval we need to emulate placing signals on a bridge.
 						 * We start with TILE_AXIAL_DISTANCE as one bridge tile gets processed in the main loop. */
 						signal_ctr += TILE_AXIAL_DISTANCE;
-						for(uint i = TILE_AXIAL_DISTANCE; i < len; i += TILE_AXIAL_DISTANCE) {
+						for (uint i = TILE_AXIAL_DISTANCE; i < len; i += TILE_AXIAL_DISTANCE) {
 							if (signal_ctr >= last_used_ctr + signal_density) last_used_ctr = signal_ctr;
 							signal_ctr += TILE_AXIAL_DISTANCE;
 						}

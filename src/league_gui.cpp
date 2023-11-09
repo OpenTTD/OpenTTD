@@ -278,7 +278,7 @@ private:
 		this->title = lt->title;
 
 		std::vector<const LeagueTableElement *> elements;
-		for(LeagueTableElement *lte : LeagueTableElement::Iterate()) {
+		for (LeagueTableElement *lte : LeagueTableElement::Iterate()) {
 			if (lte->table == this->table) {
 				elements.push_back(lte);
 			}
