@@ -1287,7 +1287,6 @@ STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Чашч
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Набор базавай ґрафікі
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбар базавага набору ґрафічных аб'ектаў
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} адсутнічаюч{P ы ых ых}/пашкоджан{P ы ых ых} файл{P "" ы аў}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Дадатковая інфармацыя аб базавым ґрафічным наборы
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Базавы набор гукаў
@@ -1296,8 +1295,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Дада
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Базавы набор музыкі
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Выберыце базавы музычны набор для выкарыстаньня
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} пашкоджан{P ы ых ых} файл{P 0 "" ы аў}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Дадатковая інфармацыя аб базавым музычным наборы
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Не атрымалася атрымаць сьпіс падтрымліваемых разрозненьняў экрана
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Памылка поўнаэкраннага рэжыму

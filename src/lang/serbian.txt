@@ -1227,7 +1227,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Frekvenc
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni skup grafika
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberi željeni skup osnovnih grafika
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} datotek{P a e a} nedostaj{P e u e}/neispravn{P a o o}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatni podaci o osnovnom skupu grafika
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Osnovni skup zvukova
@@ -1236,8 +1235,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatni 
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Osnovni skup muzike
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Odaberi željeni skup osnovne muzike
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} oštećen{P a e ih} datotek{P a e a}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatni podaci o osnovnom skupu muzike
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Neuspešno dobijanje spiska podržanih rezolucija
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Neuspešno prebacivanje u ceo ekran

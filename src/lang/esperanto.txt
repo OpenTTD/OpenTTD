@@ -1128,7 +1128,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Aktualig
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Baza grafikaro
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektu la uzendan bazgrafikaron
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} mankanta{P "" j}/koruptita{P "" j} dosiero{P "" j}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Aldonaj informoj pri la baza grafikaro
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Baza sonaro
@@ -1137,8 +1136,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aldonaj 
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Baza muzikaro.
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Elekti bazan muzikaron por uzi.
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} difektita{P "" j} dosiero{P "" j}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Pluaj informoj pri la baza muzikaro.
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Ne eblis akiri liston de subtenataj distingivoj
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Plenekrana moduso fiaskis

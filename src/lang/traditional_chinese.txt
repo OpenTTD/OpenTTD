@@ -1072,7 +1072,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}高於60
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本圖形集
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基本圖形集
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 檔案遺失／損毀
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}關於基本圖形集的額外資訊
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基本音效集
@@ -1081,8 +1080,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}關於�
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基本音樂集
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}選擇要使用的基本音樂集
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} 檔案已損毀
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}關於基本音樂集的額外資訊
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}無法擷取可用的螢幕解析度清單
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}無法切換全螢幕模式

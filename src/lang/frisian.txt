@@ -975,7 +975,6 @@ STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Byldferf
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset for ôfbyldings
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektearje de basis ôfbyldingsset om te brûken
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ûntbrekke{P "" nde}/korrupt{P "" e} bestân
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Oanfoljende ynformaasje oer de basisset foar ôfbyldings
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basisset foar lûdseffekten
@@ -984,8 +983,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Oanfolje
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basisset foar musyk
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selektearje de basisset foar musyk om te brûken
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} korrupt{P "" e} bestân{P "" en}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Oanfoljende ynformaasje oer de basisset foar musyk
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Koe gjin list mei brûkbere resolúsjes ophelje
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Folslein skermmodus mislearre

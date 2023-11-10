@@ -992,7 +992,6 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graffeg
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set raffeg sylfaenol
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Dewiswch y set raffeg sylfaenol i'w defnyddio
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ffeil ar goll/llygredig
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Gwybodaeth ychwanegol am y set graffeg sylfaenol
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set sain sylfaenol
@@ -1001,8 +1000,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Gwybodae
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set cerddoriaeth sylfaenol
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Dewisiwch y set cerddoriaeth sylfaenol i'w ddefnyddio
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ffeil llygredig
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Gwybodaeth bellach am y set gerddoriaeth sylfaenol
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Methu nôl rhestr o cydraniadau cydnaws
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Methodd y modd sgrin llawn

@@ -977,7 +977,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafikastel
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies die basis-grafikastel stel om te gebruik
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} verlore / korrupte ler{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Meer inligting oor die basis-grafikastel
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis klank stel
@@ -986,8 +985,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Addision
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis musiek stel
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Kies die basis musiek stel om te gebruik
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} korrupte lêer{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Addisionele informasie oor die basis musiek stel
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Kon nie 'n lys van beskikbare skermresolusies bepaal nie
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Volskerm metode gedop

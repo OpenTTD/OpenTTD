@@ -1081,7 +1081,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hz를 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}게임에 사용할 기본 그래픽 세트를 선택하세요 (플레이 도중에는 변경할 수 없고 메인 메뉴에서만 변경 가능합니다)
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM}개 파일 손실
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}기본 그래픽 세트에 대한 추가 정보를 봅니다.
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}기본 효과음 세트
@@ -1090,8 +1089,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 �
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 배경 음악 세트
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}게임에 사용할 기본 배경 음악 세트를 선택하세요
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}개의 파일이 손상되었습니다.
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 배경 음악 세트에 대한 추가 정보를 봅니다.
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}지원되는 해상도 목록을 불러오는데 실패하였습니다.
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}전체화면 모드 실패

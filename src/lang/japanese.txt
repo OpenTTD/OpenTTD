@@ -1051,7 +1051,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hzを�
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本グラフィックセット
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}使用するグラフィックセットを選択します
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}見つからないか破損しているファイルが{NUM}個あります
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}基本グラフィックセットについての追加情報
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基本効果音セット
@@ -1060,8 +1059,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}基本�
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基本音楽セット
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}使用する音楽セットを選択します
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}個の破損ファイルがあります
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}基本音楽セットについての追加情報
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}サポートされている解像度リストの回復に失敗しました
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}フルスクリーンモードでの実行に失敗しました

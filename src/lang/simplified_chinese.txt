@@ -1080,7 +1080,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}高于 6
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基础图形组
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}选择要使用的基础图形组（只能在主菜单更改，不能在游戏中更改）
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 文件{}未找到或不正确
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}关于基本图组的额外信息
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基础音效组
@@ -1089,8 +1088,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}有关�
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基础音乐组
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}选择要使用的基础音乐组
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} 文件已损坏
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}有关基础音乐组的附加信息
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}无法撷取可用的屏幕分辨率清单
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率

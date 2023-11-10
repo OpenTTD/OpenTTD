@@ -1080,7 +1080,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Verversi
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset voor graphics
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecteer de te gebruiken basisset voor grafische elementen (kan tijdens het spel niet worden gewijzigd, alleen in het hoofdmenu)
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ontbrekend{P "" e}/beschadigd{P "" e} bestand{P "" en}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Aanvullende informatie over de basisset voor graphics
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basisset voor geluidseffecten
@@ -1089,8 +1088,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aanvulle
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basisset voor muziek
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecteer de te gebruiken basisset voor muziek
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} beschadigd{P "" e} bestand{P "" en}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Aanvullende informatie over the basisset voor muziek
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Mislukt om een lijst met ondersteunde resoluties op te halen
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus voor volledig scherm is mislukt

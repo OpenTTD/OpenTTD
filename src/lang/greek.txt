@@ -1138,7 +1138,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ρυθμ
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} αρχεί{P ο α} που λείπ{P ει ουν} ή είναι κατεστραμμέν{P ο α}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ γραφικών
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Σετ βασικών ήχων
@@ -1147,8 +1146,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Επιπ
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Βασικό σετ μουσικής
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Επιλέξτε το βασικό σετ μουσικής για χρήση
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} κατεστραμμέν{P ο α} αρχεί{P ο α}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ μουσικής
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Αποτυχία ανάκτησης λίστας υποστηριζόμενων αναλύσεων
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Θέση του παιχνιδιού σε λειτουργία πλήρης οθόνης απέτυχε

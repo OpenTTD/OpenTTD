@@ -1225,7 +1225,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Част
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Основной графический пакет
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбор основного графического пакета (его нельзя сменить в игре; только в главном меню)
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} отсутствующи{P й х х}/повреждённы{P й х х} файл{P "" а ов}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Дополнительная информация о выбранном графическом пакете
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Основной звуковой пакет
@@ -1234,8 +1233,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Допо
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Основной музыкальный пакет
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Выбор основного музыкального пакета
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} повреждённы{P й х х} файл{P "" а ов}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Дополнительная информация о выбранном музыкальном пакете
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Не удалось получить список поддерживаемых разрешений экрана
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Сбой полноэкранного режима

@@ -1080,7 +1080,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Opdateri
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis-grafiksæt
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vælg det grundlæggende grafiksæt, der skal bruges
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} forsvund{P en ne}/ødelagt{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Yderligere information om basis-grafiksættet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis-lydsæt
@@ -1089,8 +1088,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Mere inf
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis-musiksæt
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vælg basismusik-sæt
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} beskadiget fil{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yderligere information om basismusik-sættet
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Det lykkedes ikke at hente en liste over understøttede opløsninger
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fuldskærmstilstand fejlede

@@ -1080,7 +1080,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Yli 60 H
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Perusgrafiikat
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valitse käytettävät perusgrafiikat (ei vaihdettavissa pelin aikana, ainoastaan päävalikosta)
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuttuva{P "" a}/korruptoitunut{P "" ta} tiedosto{P "" a}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätietoja perusgrafiikoista
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Perusäänet
@@ -1089,8 +1088,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätie
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musiikkipaketti
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valitse käytettävä musiikkipaketti
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} korruptoitun{P ut utta} tiedosto{P "" a}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Lisätietoja musiikkipaketista
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Tuettujen näyttötarkkuuksien hakeminen epäonnistui
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täyskuvatila ei toimi

@@ -1180,7 +1180,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Онов
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} відсутн{P ій іх іх}/пошкоджен{P ий их их} файл{P "" а ів}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Додаткова інформація про базовий набір графіки
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Базовий набір звуків
@@ -1189,8 +1188,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Дода
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Базовий музичний набір
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Оберіть базовий музичний набір для використання
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} зіпсовани{P й х х} файл{P "" а ів}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допоміжна інформація про базовий музичний набір
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Не вдалося отримати список підтримуваних дозволів
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Повноекранний режим не працює

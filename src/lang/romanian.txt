@@ -1080,7 +1080,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratele d
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectați setul de grafică de bază pe care să îl utilizați (nu poate fi schimbat în joc, doar din meniul principal)
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} {P fișier fișiere "de fișiere"} lipsă/corupt{P "" e e}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informaţii adiţionale despre setul grafic de bază
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set sunete de bază
@@ -1089,8 +1088,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informa�
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Setul de muzică de bază
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selectaţi setul de muzică de bază
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} {P fișier fișiere "de fișiere"} corupt{P "" e e}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informaţii adiţionale despre setul de muzică de bază
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nu s-a putut obține lista de rezoluții suportate
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Comutarea pe întreg ecranul a eşuat

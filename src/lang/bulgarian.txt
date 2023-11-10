@@ -956,7 +956,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базов графичен набор
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Изберете базов графичен набор
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} липсващи/повредени файлове
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Допълнителна информация за базовия графичен пакет
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Базов звуков пакет
@@ -965,8 +964,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Допъ
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Пакет базова музика
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Избери пакет базова музика
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} повреден файл{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Допълнителна информация за пакетът базовата музика
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Неуспешно извличане на списък с поддържаните резолюции
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Проблем при включване на режим "цял екран"

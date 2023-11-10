@@ -1153,7 +1153,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Fundamentum graphicum
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Eligere fundamentum graphicum adhibendum
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fascicul{P us i} absen{P s tes}/corrupt{P us i}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Indicia additicia de hoc fundamento graphico
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Fundamentum sonicum
@@ -1162,8 +1161,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Indicia 
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Fundamentum musicum
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Eligere fundamentum musicum adhibendum
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fascicul{P us i} corrupt{P us i}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Indicia additicia de hoc fundamento musico
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Non potuit repperire indicem resolutionum
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Mutatio ad cunctum scrinium defecit

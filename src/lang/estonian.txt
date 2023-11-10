@@ -1088,7 +1088,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Värsken
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Lähtegraafikakogu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valib kasutatava lähtegraafikakogu
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuduv{P "" ad}/viga{P ne sed} fail{P "" id}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisateave lähtegraafikakogu kohta
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Lähtehelikogu
@@ -1097,8 +1096,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Lisateav
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Lähtemuusikakogu
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valib kasutatava lähtemuusikakogu
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} viga{P "ne" "sed"} fail{P "" "id"}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Rohkem teavet lähtemuusikakogu kohta
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Ei õnnestunud tuvastada toetatud resulutsioone
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täisekraanrežiim ebaõnnestus

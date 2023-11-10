@@ -1034,7 +1034,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Atsvaidz
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pamata grafikas kopa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Atlasīt lietošanai pamata grafikas kopu
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} iztrūkstošs/bojāts fail{P s i ""}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Papildinformācija par pamata grafikas kopu
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Pamata skaņas kopa
@@ -1043,8 +1042,8 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Papildin
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Pamata mūzikas kopa
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Atlasīt lietošanai pamata mūzikas kopu
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} bojāt{P s i u} fail{P s i u}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Papildinformācija par pamata mūzikas kopu
+
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Neizdevās saņemt sarakstu ar atbalstītajām izšķirtspējām
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Pilnekrāna spēles iestatīšana neizdevās
