@@ -1056,9 +1056,9 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 
 				switch (tracktype) {
-					case 0: _gted[e->index].railtypelabel = rvi->engclass >= 2 ? RAILTYPE_ELECTRIC_LABEL : RAILTYPE_RAIL_LABEL; break;
-					case 1: _gted[e->index].railtypelabel = RAILTYPE_MONO_LABEL; break;
-					case 2: _gted[e->index].railtypelabel = RAILTYPE_MAGLEV_LABEL; break;
+					case 0: _gted[e->index].railtypelabel = rvi->engclass >= 2 ? RAILTYPE_LABEL_ELECTRIC : RAILTYPE_LABEL_RAIL; break;
+					case 1: _gted[e->index].railtypelabel = RAILTYPE_LABEL_MONO; break;
+					case 2: _gted[e->index].railtypelabel = RAILTYPE_LABEL_MAGLEV; break;
 					default:
 						GrfMsg(1, "RailVehicleChangeInfo: Invalid track type {} specified, ignoring", tracktype);
 						break;
@@ -1195,8 +1195,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				if (_cur.grffile->railtype_list.empty()) {
 					/* Use traction type to select between normal and electrified
 					 * rail only when no translation list is in place. */
-					if (_gted[e->index].railtypelabel == RAILTYPE_RAIL_LABEL     && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_ELECTRIC_LABEL;
-					if (_gted[e->index].railtypelabel == RAILTYPE_ELECTRIC_LABEL && engclass  < EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_RAIL_LABEL;
+					if (_gted[e->index].railtypelabel == RAILTYPE_LABEL_RAIL     && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_LABEL_ELECTRIC;
+					if (_gted[e->index].railtypelabel == RAILTYPE_LABEL_ELECTRIC && engclass  < EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_LABEL_RAIL;
 				}
 
 				rvi->engclass = engclass;

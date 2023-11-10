@@ -14,10 +14,10 @@
 
 typedef uint32_t RailTypeLabel;
 
-static const RailTypeLabel RAILTYPE_RAIL_LABEL     = 'RAIL';
-static const RailTypeLabel RAILTYPE_ELECTRIC_LABEL = 'ELRL';
-static const RailTypeLabel RAILTYPE_MONO_LABEL     = 'MONO';
-static const RailTypeLabel RAILTYPE_MAGLEV_LABEL   = 'MGLV';
+static const RailTypeLabel RAILTYPE_LABEL_RAIL     = 'RAIL';
+static const RailTypeLabel RAILTYPE_LABEL_ELECTRIC = 'ELRL';
+static const RailTypeLabel RAILTYPE_LABEL_MONO     = 'MONO';
+static const RailTypeLabel RAILTYPE_LABEL_MAGLEV   = 'MGLV';
 
 /**
  * Enumeration for all possible railtypes.

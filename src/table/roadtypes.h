@@ -73,7 +73,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		0,
 
 		/* road type label */
-		ROADTYPE_ROAD_LABEL,
+		ROADTYPE_LABEL_ROAD,
 
 		/* alternate labels */
 		RoadTypeLabelList(),
@@ -153,7 +153,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		0,
 
 		/* road type label */
-		ROADTYPE_TRAM_LABEL,
+		ROADTYPE_LABEL_TRAM,
 
 		/* alternate labels */
 		RoadTypeLabelList(),
