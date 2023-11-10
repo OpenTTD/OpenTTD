@@ -46,7 +46,7 @@ ScriptStorage::~ScriptStorage()
 static void PrintFunc(bool error_msg, const std::string &message)
 {
 	/* Convert to OpenTTD internal capable string */
-	ScriptController::Print(error_msg, message.c_str());
+	ScriptController::Print(error_msg, message);
 }
 
 ScriptInstance::ScriptInstance(const char *APIName) :

@@ -125,11 +125,11 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	 */
 	virtual void UpdateVirtCoord() = 0;
 
-	inline const char *GetCachedName() const
+	inline const std::string &GetCachedName() const
 	{
-		if (!this->name.empty()) return this->name.c_str();
+		if (!this->name.empty()) return this->name;
 		if (this->cached_name.empty()) this->FillCachedName();
-		return this->cached_name.c_str();
+		return this->cached_name;
 	}
 
 	virtual void MoveSign(TileIndex new_xy)
