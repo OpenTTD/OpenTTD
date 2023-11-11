@@ -22,82 +22,6 @@
 #include "../safeguards.h"
 
 
-void DropDownListItem::Draw(const Rect &r, bool, Colours bg_colour) const
-{
-	int c1 = _colour_gradient[bg_colour][3];
-	int c2 = _colour_gradient[bg_colour][7];
-
-	int mid = CenterBounds(r.top, r.bottom, 0);
-	GfxFillRect(r.left, mid - WidgetDimensions::scaled.bevel.bottom, r.right, mid - 1, c1);
-	GfxFillRect(r.left, mid, r.right, mid + WidgetDimensions::scaled.bevel.top - 1, c2);
-}
-
-DropDownListStringItem::DropDownListStringItem(StringID string, int result, bool masked) : DropDownListItem(result, masked), string(GetString(string))
-{
-}
-
-DropDownListStringItem::DropDownListStringItem(const std::string &string, int result, bool masked) : DropDownListItem(result, masked)
-{
-	/* A raw string may contain parsable tokens, so it needs to be passed through GetString. */
-	SetDParamStr(0, string);
-	this->string = GetString(STR_JUST_RAW_STRING);
-}
-
-uint DropDownListStringItem::Width() const
-{
-	return GetStringBoundingBox(this->String()).width + WidgetDimensions::scaled.dropdowntext.Horizontal();
-}
-
-void DropDownListStringItem::Draw(const Rect &r, bool sel, Colours) const
-{
-	Rect ir = r.Shrink(WidgetDimensions::scaled.dropdowntext);
-	DrawString(ir.left, ir.right, r.top, this->String(), sel ? TC_WHITE : TC_BLACK);
-}
-
-/**
- * Natural sorting comparator function for DropDownList::sort().
- * @param first Left side of comparison.
- * @param second Right side of comparison.
- * @return true if \a first precedes \a second.
- * @warning All items in the list need to be derivates of DropDownListStringItem.
- */
-/* static */ bool DropDownListStringItem::NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second)
-{
-	std::string str1 = static_cast<const DropDownListStringItem*>(first.get())->String();
-	std::string str2 = static_cast<const DropDownListStringItem*>(second.get())->String();
-	return StrNaturalCompare(str1, str2) < 0;
-}
-
-DropDownListIconItem::DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked) : DropDownListStringItem(string, result, masked), sprite(sprite), pal(pal)
-{
-	this->dim = GetSpriteSize(sprite);
-	this->sprite_y = dim.height;
-}
-
-uint DropDownListIconItem::Height() const
-{
-	return std::max(this->dim.height, (uint)GetCharacterHeight(FS_NORMAL));
-}
-
-uint DropDownListIconItem::Width() const
-{
-	return DropDownListStringItem::Width() + this->dim.width + WidgetDimensions::scaled.hsep_wide;
-}
-
-void DropDownListIconItem::Draw(const Rect &r, bool sel, Colours) const
-{
-	bool rtl = _current_text_dir == TD_RTL;
-	Rect ir = r.Shrink(WidgetDimensions::scaled.dropdowntext);
-	Rect tr = ir.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl);
-	DrawSprite(this->sprite, this->pal, ir.WithWidth(this->dim.width, rtl).left, CenterBounds(r.top, r.bottom, this->sprite_y));
-	DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), this->String(), sel ? TC_WHITE : TC_BLACK);
-}
-
-void DropDownListIconItem::SetDimension(Dimension d)
-{
-	this->dim = d;
-}
-
 static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_END, WID_DM_ITEMS), SetMinimalSize(1, 1), SetScrollbar(WID_DM_SCROLL), EndContainer(),
@@ -256,14 +180,12 @@ struct DropdownWindow : Window {
 			if (--pos >= 0) continue;
 
 			if (y + item_height - 1 <= ir.bottom) {
+				Rect full{ir.left, y, ir.right, y + item_height - 1};
+
 				bool selected = (this->selected_index == item->result);
-				if (selected) GfxFillRect(ir.left, y, ir.right, y + item_height - 1, PC_BLACK);
+				if (selected) GfxFillRect(full, PC_BLACK);
 
-				item->Draw({ir.left, y, ir.right, y + item_height - 1}, selected, colour);
-
-				if (item->masked) {
-					GfxFillRect(ir.left, y, ir.right, y + item_height - 1, _colour_gradient[colour][5], FILLRECT_CHECKER);
-				}
+				item->Draw(full, full.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero), selected, colour);
 			}
 			y += item_height;
 		}
@@ -343,6 +265,7 @@ Dimension GetDropDownListDimension(const DropDownList &list)
 		dim.height += item->Height();
 		dim.width = std::max(dim.width, item->Width());
 	}
+	dim.width += WidgetDimensions::scaled.dropdowntext.Horizontal();
 	return dim;
 }
 
