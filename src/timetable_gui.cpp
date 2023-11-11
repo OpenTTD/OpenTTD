@@ -145,7 +145,7 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
  */
 static void ChangeTimetableStartCallback(const Window *w, TimerGameCalendar::Date date, void *data)
 {
-	Command<CMD_SET_TIMETABLE_START>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, (VehicleID)w->window_number, reinterpret_cast<std::uintptr_t>(data) != 0, date);
+	Command<CMD_SET_TIMETABLE_START>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, (VehicleID)w->window_number, reinterpret_cast<std::uintptr_t>(data) != 0, GetStartTickFromDate(date));
 }
 
 
@@ -494,7 +494,7 @@ struct TimetableWindow : Window {
 			/* We are running towards the first station so we can start the
 			 * timetable at the given time. */
 			SetDParam(0, STR_JUST_DATE_TINY);
-			SetDParam(1, v->timetable_start);
+			SetDParam(1, GetDateFromStartTick(v->timetable_start));
 			DrawString(tr, STR_TIMETABLE_STATUS_START_AT);
 		} else if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
 			/* We aren't running on a timetable yet, so how can we be "on time"

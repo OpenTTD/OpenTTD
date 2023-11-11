@@ -11,7 +11,7 @@
 #define BASE_CONSIST_H
 
 #include "order_type.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
 
 /** Various front vehicle properties that are preserved when autoreplacing, using order-backup or switching front engines within a consist. */
 struct BaseConsist {
@@ -20,7 +20,7 @@ struct BaseConsist {
 	/* Used for timetabling. */
 	uint32_t current_order_time;               ///< How many ticks have passed since this order started.
 	int32_t lateness_counter;                  ///< How many ticks late (or early if negative) this vehicle is.
-	TimerGameCalendar::Date timetable_start; ///< When the vehicle is supposed to start the timetable.
+	TimerGameTick::TickCounter timetable_start; ///< At what tick of TimerGameTick::counter the vehicle should start its timetable.
 
 	uint16_t service_interval;            ///< The interval for (automatic) servicing; either in days or %.
 

@@ -17,6 +17,7 @@
 #include "../roadveh.h"
 #include "../ship.h"
 #include "../aircraft.h"
+#include "../timetable.h"
 #include "../station_base.h"
 #include "../effectvehicle_base.h"
 #include "../company_base.h"
@@ -373,6 +374,16 @@ void AfterLoadVehicles(bool part_of_load)
 				s->rotation_y_pos = s->y_pos;
 			}
 		}
+
+		if (IsSavegameVersionBefore(SLV_TIMETABLE_START_TICKS)) {
+			/* Convert timetable start from a date to an absolute tick in TimerGameTick::counter. */
+			for (Vehicle *v : Vehicle::Iterate()) {
+				/* If the start date is 0, the vehicle is not waiting to start and can be ignored. */
+				if (v->timetable_start == 0) continue;
+
+				v->timetable_start = GetStartTickFromDate(v->timetable_start);
+			}
+		}
 	}
 
 	CheckValidVehicles();
@@ -663,7 +674,8 @@ public:
 		SLE_CONDVAR(Vehicle, current_order.wait_time,     SLE_UINT16,            SLV_67, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, current_order.travel_time,   SLE_UINT16,            SLV_67, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, current_order.max_speed,     SLE_UINT16,           SLV_174, SL_MAX_VERSION),
-		SLE_CONDVAR(Vehicle, timetable_start,       SLE_INT32,                  SLV_129, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, timetable_start,       SLE_FILE_I32 | SLE_VAR_U64, SLV_129, SLV_TIMETABLE_START_TICKS),
+		SLE_CONDVAR(Vehicle, timetable_start,       SLE_UINT64,                 SLV_TIMETABLE_START_TICKS, SL_MAX_VERSION),
 
 		SLE_CONDREF(Vehicle, orders,                REF_ORDER,                    SL_MIN_VERSION, SLV_105),
 		SLE_CONDREF(Vehicle, orders,                REF_ORDERLIST,              SLV_105, SL_MAX_VERSION),

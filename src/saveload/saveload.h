@@ -363,6 +363,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CARGO_TRAVELLED,                    ///< 319  PR#11283 CargoPacket now tracks how far it travelled inside a vehicle.
 
 	SLV_STATION_RATING_CHEAT,               ///< 320  PR#11346 Add cheat to fix station ratings at 100%.
+	SLV_TIMETABLE_START_TICKS,              ///< 321  PR#11468 Convert timetable start from a date to ticks.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
