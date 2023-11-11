@@ -12,60 +12,199 @@
 
 #include "../window_type.h"
 #include "../gfx_func.h"
-#include "table/strings.h"
+#include "../gfx_type.h"
+#include "../string_func.h"
+#include "../strings_func.h"
+#include "../table/strings.h"
+#include "../window_gui.h"
 
 /**
- * Base list item class from which others are derived. If placed in a list it
- * will appear as a horizontal line in the menu.
+ * Base list item class from which others are derived.
  */
 class DropDownListItem {
 public:
-	int result;  ///< Result code to return to window on selection
-	bool masked; ///< Masked and unselectable item
+	int result; ///< Result value to return to window on selection.
+	bool masked; ///< Masked and unselectable item.
+	bool shaded; ///< Shaded item, affects text colour.
 
-	DropDownListItem(int result, bool masked) : result(result), masked(masked) {}
+	explicit DropDownListItem(int result, bool masked = false, bool shaded = false) : result(result), masked(masked), shaded(shaded) {}
 	virtual ~DropDownListItem() = default;
 
-	virtual bool Selectable() const { return false; }
-	virtual uint Height() const { return GetCharacterHeight(FS_NORMAL); }
+	virtual bool Selectable() const { return true; }
+	virtual uint Height() const { return 0; }
 	virtual uint Width() const { return 0; }
-	virtual void Draw(const Rect &r, bool sel, Colours bg_colour) const;
+
+	virtual void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const
+	{
+		if (this->masked) GfxFillRect(full, _colour_gradient[bg_colour][5], FILLRECT_CHECKER);
+	}
+
+	TextColour GetColour(bool sel) const
+	{
+		if (this->shaded) return (sel ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
+		return sel ? TC_WHITE : TC_BLACK;
+	}
 };
 
 /**
- * Common string list item.
+ * Drop down divider component.
+ * @tparam TBase Base component.
+ * @tparam TFs Font size -- used to determine height.
  */
-class DropDownListStringItem : public DropDownListItem {
+template<class TBase, FontSize TFs = FS_NORMAL>
+class DropDownDivider : public TBase {
 public:
-	std::string string; ///< String of item
+	template <typename... Args>
+	explicit DropDownDivider(Args&&... args) : TBase(std::forward<Args>(args)...) {}
 
-	DropDownListStringItem(StringID string, int result, bool masked);
-	DropDownListStringItem(const std::string &string, int result, bool masked);
+	bool Selectable() const override { return false; }
+	uint Height() const override { return std::max<uint>(GetCharacterHeight(TFs), this->TBase::Height()); }
 
-	bool Selectable() const override { return true; }
-	uint Width() const override;
-	void Draw(const Rect &r, bool sel, Colours bg_colour) const override;
-	virtual const std::string &String() const { return this->string; }
+	void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const override
+	{
+		uint8_t c1 = _colour_gradient[bg_colour][3];
+		uint8_t c2 = _colour_gradient[bg_colour][7];
 
-	static bool NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second);
+		int mid = CenterBounds(full.top, full.bottom, 0);
+		GfxFillRect(full.left, mid - WidgetDimensions::scaled.bevel.bottom, full.right, mid - 1, c1);
+		GfxFillRect(full.left, mid, full.right, mid + WidgetDimensions::scaled.bevel.top - 1, c2);
+	}
 };
 
 /**
- * List item with icon and string.
+ * Drop down string component.
+ * @tparam TBase Base component.
+ * @tparam TFs Font size.
+ * @tparam TEnd Position string at end if true, or start if false.
  */
-class DropDownListIconItem : public DropDownListStringItem {
-	SpriteID sprite;
-	PaletteID pal;
-	Dimension dim;
-	uint sprite_y;
+template<class TBase, FontSize TFs = FS_NORMAL, bool TEnd = false>
+class DropDownString : public TBase {
+	std::string string; ///< String to be drawn.
+	Dimension dim; ///< Dimensions of string.
 public:
-	DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked);
+	template <typename... Args>
+	explicit DropDownString(StringID string, Args&&... args) : TBase(std::forward<Args>(args)...)
+	{
+		this->SetString(GetString(string));
+	}
 
-	uint Height() const override;
-	uint Width() const override;
-	void Draw(const Rect &r, bool sel, Colours bg_colour) const override;
-	void SetDimension(Dimension d);
+	template <typename... Args>
+	explicit DropDownString(const std::string &string, Args&&... args) : TBase(std::forward<Args>(args)...)
+	{
+		SetDParamStr(0, string);
+		this->SetString(GetString(STR_JUST_RAW_STRING));
+	}
+
+	void SetString(std::string &&string)
+	{
+		this->string = std::move(string);
+		this->dim = GetStringBoundingBox(this->string, TFs);
+	}
+
+	uint Height() const override
+	{
+		return std::max<uint>(this->dim.height, this->TBase::Height());
+	}
+
+	uint Width() const override { return this->dim.width + this->TBase::Width(); }
+
+	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), this->string, this->GetColour(sel), SA_CENTER, false, TFs);
+		this->TBase::Draw(full, r.Indent(this->dim.width, rtl), sel, bg_colour);
+	}
+
+	/**
+	* Natural sorting comparator function for DropDownList::sort().
+	* @param first Left side of comparison.
+	* @param second Right side of comparison.
+	* @return true if \a first precedes \a second.
+	* @warning All items in the list need to be derivates of DropDownListStringItem.
+	*/
+	static bool NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second)
+	{
+		const std::string &str1 = static_cast<const DropDownString*>(first.get())->string;
+		const std::string &str2 = static_cast<const DropDownString*>(second.get())->string;
+		return StrNaturalCompare(str1, str2) < 0;
+	}
 };
+
+/**
+ * Drop down icon component.
+ * @tparam TBase Base component.
+ * @tparam TEnd Position icon at end if true, or start if false.
+ */
+template<class TBase, bool TEnd = false>
+class DropDownIcon : public TBase {
+	SpriteID sprite; ///< Sprite ID to be drawn.
+	PaletteID palette; ///< Palette ID to use.
+	Dimension dsprite; ///< Bounding box dimensions of sprite.
+	Dimension dbounds; ///< Bounding box dimensions of bounds.
+public:
+	template <typename... Args>
+	explicit DropDownIcon(SpriteID sprite, PaletteID palette, Args&&... args) : TBase(std::forward<Args>(args)...), sprite(sprite), palette(palette)
+	{
+		this->dsprite = GetSpriteSize(this->sprite);
+		this->dbounds = this->dsprite;
+	}
+
+	uint Height() const override { return std::max(this->dbounds.height, this->TBase::Height()); }
+	uint Width() const override { return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width(); }
+
+	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		Rect ir = r.WithWidth(this->dbounds.width, rtl);
+		DrawSprite(this->sprite, this->palette, CenterBounds(ir.left, ir.right, this->dsprite.width), CenterBounds(r.top, r.bottom, this->dsprite.height));
+		this->TBase::Draw(full, r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, bg_colour);
+	}
+
+	/**
+	 * Override bounding box dimensions of sprite, to allow multiple options to have consistent spacing.
+	 * @param dim New bounding box to assign.
+	 */
+	void SetDimension(const Dimension &dim)
+	{
+		this->dbounds = dim;
+	}
+};
+
+/**
+ * Drop down checkmark component.
+ * @tparam TBase Base component.
+ * @tparam TFs Font size.
+ * @tparam TEnd Position checkmark at end if true, or start if false.
+ */
+template<class TBase, bool TEnd = false, FontSize TFs = FS_NORMAL>
+class DropDownCheck : public TBase {
+	bool checked; ///< Is item checked.
+	Dimension dim; ///< Dimension of checkmark.
+public:
+	template <typename... Args>
+	explicit DropDownCheck(bool checked, Args&&... args) : TBase(std::forward<Args>(args)...), checked(checked)
+	{
+		this->dim = GetStringBoundingBox(STR_JUST_CHECKMARK, TFs);
+	}
+
+	uint Height() const override { return std::max<uint>(this->dim.height, this->TBase::Height()); }
+	uint Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
+
+	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		if (this->checked) {
+			DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), STR_JUST_CHECKMARK, this->GetColour(sel), SA_CENTER, false, TFs);
+		}
+		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, bg_colour);
+	}
+};
+
+/* Commonly used drop down list items. */
+using DropDownListDividerItem = DropDownDivider<DropDownListItem>;
+using DropDownListStringItem = DropDownString<DropDownListItem>;
+using DropDownListIconItem = DropDownIcon<DropDownString<DropDownListItem>>;
+using DropDownListCheckedItem = DropDownCheck<DropDownString<DropDownListItem>>;
 
 /**
  * A drop down list is a collection of drop down list items.

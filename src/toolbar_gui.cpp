@@ -89,97 +89,16 @@ enum CallBackFunction {
 
 static CallBackFunction _last_started_action = CBF_NONE; ///< Last started user action.
 
-
 /**
- * Drop down list entry for showing a checked/unchecked toggle item.
+ * Company name list item, with company-colour icon, name, and lock components.
  */
-class DropDownListCheckedItem : public DropDownListStringItem {
-	uint checkmark_width;
+class DropDownListCompanyItem : public DropDownIcon<DropDownIcon<DropDownString<DropDownListItem>, true>> {
 public:
-	bool checked;
-
-	DropDownListCheckedItem(StringID string, int result, bool masked, bool checked) : DropDownListStringItem(string, result, masked), checked(checked)
+	DropDownListCompanyItem(CompanyID company, bool shaded) : DropDownIcon<DropDownIcon<DropDownString<DropDownListItem>, true>>(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(company), NetworkCompanyIsPassworded(company) ? SPR_LOCK : SPR_EMPTY, PAL_NONE, STR_NULL, company, false, shaded)
 	{
-		this->checkmark_width = GetStringBoundingBox(STR_JUST_CHECKMARK).width + WidgetDimensions::scaled.hsep_wide;
-	}
-
-	uint Width() const override
-	{
-		return DropDownListStringItem::Width() + this->checkmark_width;
-	}
-
-	void Draw(const Rect &r, bool sel, Colours) const override
-	{
-		bool rtl = _current_text_dir == TD_RTL;
-		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
-		if (this->checked) {
-			DrawString(tr, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
-		}
-		DrawString(tr.Indent(this->checkmark_width, rtl), this->String(), sel ? TC_WHITE : TC_BLACK);
-	}
-};
-
-/**
- * Drop down list entry for showing a company entry, with companies 'blob'.
- */
-class DropDownListCompanyItem : public DropDownListItem {
-	Dimension icon_size;
-	Dimension lock_size;
-public:
-	bool greyed;
-
-	DropDownListCompanyItem(int result, bool masked, bool greyed) : DropDownListItem(result, masked), greyed(greyed)
-	{
-		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
-		this->lock_size = GetSpriteSize(SPR_LOCK);
-	}
-
-	bool Selectable() const override
-	{
-		return true;
-	}
-
-	uint Width() const override
-	{
-		CompanyID company = (CompanyID)this->result;
 		SetDParam(0, company);
 		SetDParam(1, company);
-		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + this->lock_size.width + WidgetDimensions::scaled.dropdowntext.Horizontal() + WidgetDimensions::scaled.hsep_wide;
-	}
-
-	uint Height() const override
-	{
-		return std::max(std::max(this->icon_size.height, this->lock_size.height) + WidgetDimensions::scaled.imgbtn.Vertical(), (uint)GetCharacterHeight(FS_NORMAL));
-	}
-
-	void Draw(const Rect &r, bool sel, Colours) const override
-	{
-		CompanyID company = (CompanyID)this->result;
-		bool rtl = _current_text_dir == TD_RTL;
-
-		/* It's possible the company is deleted while the dropdown is open */
-		if (!Company::IsValidID(company)) return;
-
-		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
-		int icon_y = CenterBounds(r.top, r.bottom, icon_size.height);
-		int text_y = CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
-		int lock_y = CenterBounds(r.top, r.bottom, lock_size.height);
-
-		DrawCompanyIcon(company, tr.WithWidth(this->icon_size.width, rtl).left, icon_y);
-		if (NetworkCompanyIsPassworded(company)) {
-			DrawSprite(SPR_LOCK, PAL_NONE, tr.WithWidth(this->lock_size.width, !rtl).left, lock_y);
-		}
-
-		SetDParam(0, company);
-		SetDParam(1, company);
-		TextColour col;
-		if (this->greyed) {
-			col = (sel ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
-		} else {
-			col = sel ? TC_WHITE : TC_BLACK;
-		}
-		tr = tr.Indent(this->icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl).Indent(this->lock_size.width + WidgetDimensions::scaled.hsep_normal, !rtl);
-		DrawString(tr.left, tr.right, text_y, STR_COMPANY_NAME_COMPANY_NUM, col);
+		this->SetString(GetString(STR_COMPANY_NAME_COMPANY_NUM));
 	}
 };
 
@@ -208,7 +127,7 @@ static void PopupMainToolbarMenu(Window *w, int widget, const std::initializer_l
 	int i = 0;
 	for (StringID string : strings) {
 		if (string == STR_NULL) {
-			list.push_back(std::make_unique<DropDownListItem>(-1, false));
+			list.push_back(std::make_unique<DropDownListDividerItem>(-1, false));
 		} else {
 			list.push_back(std::make_unique<DropDownListStringItem>(string, i, false));
 			i++;
@@ -254,7 +173,7 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (!Company::IsValidID(c)) continue;
-		list.push_back(std::make_unique<DropDownListCompanyItem>(c, false, HasBit(grey, c)));
+		list.push_back(std::make_unique<DropDownListCompanyItem>(c, HasBit(grey, c)));
 	}
 
 	PopupMainToolbarMenu(w, widget, std::move(list), _local_company == COMPANY_SPECTATOR ? (widget == WID_TN_COMPANIES ? CTMN_CLIENT_LIST : CTMN_SPECTATOR) : (int)_local_company);
@@ -341,16 +260,16 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	}
 	list.push_back(std::make_unique<DropDownListStringItem>(STR_SETTINGS_MENU_NEWGRF_SETTINGS,          OME_NEWGRFSETTINGS, false));
 	list.push_back(std::make_unique<DropDownListStringItem>(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS,     OME_TRANSPARENCIES, false));
-	list.push_back(std::make_unique<DropDownListItem>(-1, false));
-	list.push_back(std::make_unique<DropDownListCheckedItem>(STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED,    OME_SHOW_TOWNNAMES, false, HasBit(_display_opt, DO_SHOW_TOWN_NAMES)));
-	list.push_back(std::make_unique<DropDownListCheckedItem>(STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES, false, HasBit(_display_opt, DO_SHOW_STATION_NAMES)));
-	list.push_back(std::make_unique<DropDownListCheckedItem>(STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED,     OME_SHOW_WAYPOINTNAMES, false, HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES)));
-	list.push_back(std::make_unique<DropDownListCheckedItem>(STR_SETTINGS_MENU_SIGNS_DISPLAYED,         OME_SHOW_SIGNS, false, HasBit(_display_opt, DO_SHOW_SIGNS)));
-	list.push_back(std::make_unique<DropDownListCheckedItem>(STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS,   OME_SHOW_COMPETITOR_SIGNS, false, HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS)));
-	list.push_back(std::make_unique<DropDownListCheckedItem>(STR_SETTINGS_MENU_FULL_ANIMATION,          OME_FULL_ANIMATION, false, HasBit(_display_opt, DO_FULL_ANIMATION)));
-	list.push_back(std::make_unique<DropDownListCheckedItem>(STR_SETTINGS_MENU_FULL_DETAIL,             OME_FULL_DETAILS, false, HasBit(_display_opt, DO_FULL_DETAIL)));
-	list.push_back(std::make_unique<DropDownListCheckedItem>(STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS,   OME_TRANSPARENTBUILDINGS, false, IsTransparencySet(TO_HOUSES)));
-	list.push_back(std::make_unique<DropDownListCheckedItem>(STR_SETTINGS_MENU_TRANSPARENT_SIGNS,       OME_SHOW_STATIONSIGNS, false, IsTransparencySet(TO_SIGNS)));
+	list.push_back(std::make_unique<DropDownListDividerItem>(-1, false));
+	list.push_back(std::make_unique<DropDownListCheckedItem>(HasBit(_display_opt, DO_SHOW_TOWN_NAMES), STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED, OME_SHOW_TOWNNAMES, false));
+	list.push_back(std::make_unique<DropDownListCheckedItem>(HasBit(_display_opt, DO_SHOW_STATION_NAMES), STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES, false));
+	list.push_back(std::make_unique<DropDownListCheckedItem>(HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES), STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED, OME_SHOW_WAYPOINTNAMES, false));
+	list.push_back(std::make_unique<DropDownListCheckedItem>(HasBit(_display_opt, DO_SHOW_SIGNS), STR_SETTINGS_MENU_SIGNS_DISPLAYED, OME_SHOW_SIGNS, false));
+	list.push_back(std::make_unique<DropDownListCheckedItem>(HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS), STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS, OME_SHOW_COMPETITOR_SIGNS, false));
+	list.push_back(std::make_unique<DropDownListCheckedItem>(HasBit(_display_opt, DO_FULL_ANIMATION), STR_SETTINGS_MENU_FULL_ANIMATION, OME_FULL_ANIMATION, false));
+	list.push_back(std::make_unique<DropDownListCheckedItem>(HasBit(_display_opt, DO_FULL_DETAIL), STR_SETTINGS_MENU_FULL_DETAIL, OME_FULL_DETAILS, false));
+	list.push_back(std::make_unique<DropDownListCheckedItem>(IsTransparencySet(TO_HOUSES), STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS, OME_TRANSPARENTBUILDINGS, false));
+	list.push_back(std::make_unique<DropDownListCheckedItem>(IsTransparencySet(TO_SIGNS), STR_SETTINGS_MENU_TRANSPARENT_SIGNS, OME_SHOW_STATIONSIGNS, false));
 
 	ShowDropDownList(w, std::move(list), 0, WID_TN_SETTINGS, 140, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);

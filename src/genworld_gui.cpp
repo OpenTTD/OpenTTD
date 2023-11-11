@@ -358,7 +358,7 @@ static DropDownList BuildTownNameDropDown()
 	size_t newgrf_size = list.size();
 	/* Insert newgrf_names at the top of the list */
 	if (newgrf_size > 0) {
-		list.push_back(std::make_unique<DropDownListItem>(-1, false)); // separator line
+		list.push_back(std::make_unique<DropDownListDividerItem>(-1, false)); // separator line
 		newgrf_size++;
 	}
 

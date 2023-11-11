@@ -575,36 +575,15 @@ static const LiveryClass _livery_class[LS_END] = {
 	LC_ROAD, LC_ROAD,
 };
 
-class DropDownListColourItem : public DropDownListStringItem {
+/**
+ * Colour selection list item, with icon and string components.
+ * @tparam TSprite Recolourable sprite to draw as icon.
+ */
+template <SpriteID TSprite = SPR_SQUARE>
+class DropDownListColourItem : public DropDownIcon<DropDownString<DropDownListItem>> {
 public:
-	DropDownListColourItem(int result, bool masked) : DropDownListStringItem(result >= COLOUR_END ? STR_COLOUR_DEFAULT : _colour_dropdown[result], result, masked) {}
-
-	uint Width() const override
+	DropDownListColourItem(int colour, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, PALETTE_RECOLOUR_START + (colour % COLOUR_END), colour < COLOUR_END ? _colour_dropdown[colour] : STR_COLOUR_DEFAULT, colour, masked)
 	{
-		return ScaleGUITrad(28) + WidgetDimensions::scaled.hsep_normal + GetStringBoundingBox(this->String()).width + WidgetDimensions::scaled.dropdowntext.Horizontal();
-	}
-
-	uint Height() const override
-	{
-		return std::max(GetCharacterHeight(FS_NORMAL), ScaleGUITrad(12) + WidgetDimensions::scaled.vsep_normal);
-	}
-
-	bool Selectable() const override
-	{
-		return true;
-	}
-
-	void Draw(const Rect &r, bool sel, Colours) const override
-	{
-		bool rtl = _current_text_dir == TD_RTL;
-		int icon_y = CenterBounds(r.top, r.bottom, 0);
-		int text_y = CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
-		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext);
-		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + (this->result % COLOUR_END),
-				   rtl ? tr.right - ScaleGUITrad(14) : tr.left + ScaleGUITrad(14),
-				   icon_y);
-		tr = tr.Indent(ScaleGUITrad(28) + WidgetDimensions::scaled.hsep_normal, rtl);
-		DrawString(tr.left, tr.right, text_y, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
@@ -662,10 +641,10 @@ private:
 		if (default_livery != nullptr) {
 			/* Add COLOUR_END to put the colour out of range, but also allow us to show what the default is */
 			default_col = (primary ? default_livery->colour1 : default_livery->colour2) + COLOUR_END;
-			list.push_back(std::make_unique<DropDownListColourItem>(default_col, false));
+			list.push_back(std::make_unique<DropDownListColourItem<>>(default_col, false));
 		}
 		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
-			list.push_back(std::make_unique<DropDownListColourItem>(i, HasBit(used_colours, i)));
+			list.push_back(std::make_unique<DropDownListColourItem<>>(i, HasBit(used_colours, i)));
 		}
 
 		byte sel = (default_livery == nullptr || HasBit(livery->in_use, primary ? 0 : 1)) ? (primary ? livery->colour1 : livery->colour2) : default_col;

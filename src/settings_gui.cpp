@@ -224,7 +224,7 @@ struct GameOptionsWindow : Window {
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 
 				/* Append custom currency at the end */
-				list.push_back(std::make_unique<DropDownListItem>(-1, false)); // separator line
+				list.push_back(std::make_unique<DropDownListDividerItem>(-1, false)); // separator line
 				list.push_back(std::make_unique<DropDownListStringItem>(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM)));
 				break;
 			}
