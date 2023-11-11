@@ -42,7 +42,7 @@ static WindowDesc _dropdown_desc(__FILE__, __LINE__,
 struct DropdownWindow : Window {
 	WidgetID parent_button;       ///< Parent widget number where the window is dropped from.
 	Rect wi_rect;                 ///< Rect of the button that opened the dropdown.
-	const DropDownList list;      ///< List with dropdown menu items.
+	DropDownList list;            ///< List with dropdown menu items.
 	int selected_result;          ///< Result value of the selected item in the list.
 	byte click_delay = 0;         ///< Timer to delay selection.
 	bool drag_mode = true;
@@ -303,7 +303,22 @@ struct DropdownWindow : Window {
 			}
 		}
 	}
+
+	void ReplaceList(DropDownList &&list)
+	{
+		this->list = std::move(list);
+		this->UpdateSizeAndPosition();
+		this->ReInit(0, 0);
+		this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
+		this->SetDirty();
+	}
 };
+
+void ReplaceDropDownList(Window *parent, DropDownList &&list)
+{
+	DropdownWindow *ddw = dynamic_cast<DropdownWindow *>(parent->FindChildWindow(WC_DROPDOWN_MENU));
+	if (ddw != nullptr) ddw->ReplaceList(std::move(list));
+}
 
 /**
  * Determine width and height required to fully display a DropDownList
