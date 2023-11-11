@@ -1020,10 +1020,10 @@ void Window::SetShaded(bool make_shaded)
  * @param wc Window class of the window to remove; #WC_INVALID if class does not matter
  * @return a Window pointer that is the child of \a w, or \c nullptr otherwise
  */
-static Window *FindChildWindow(const Window *w, WindowClass wc)
+Window *Window::FindChildWindow(WindowClass wc) const
 {
 	for (Window *v : Window::Iterate()) {
-		if ((wc == WC_INVALID || wc == v->window_class) && v->parent == w) return v;
+		if ((wc == WC_INVALID || wc == v->window_class) && v->parent == this) return v;
 	}
 
 	return nullptr;
@@ -1035,10 +1035,10 @@ static Window *FindChildWindow(const Window *w, WindowClass wc)
  */
 void Window::CloseChildWindows(WindowClass wc) const
 {
-	Window *child = FindChildWindow(this, wc);
+	Window *child = this->FindChildWindow(wc);
 	while (child != nullptr) {
 		child->Close();
-		child = FindChildWindow(this, wc);
+		child = this->FindChildWindow(wc);
 	}
 }
 
