@@ -47,6 +47,7 @@ struct DropdownWindow : Window {
 	byte click_delay = 0;         ///< Timer to delay selection.
 	bool drag_mode = true;
 	bool instant_close;           ///< Close the window when the mouse button is raised.
+	bool persist;                 ///< Persist dropdown menu.
 	int scrolling = 0;            ///< If non-zero, auto-scroll the item list (one time).
 	Point position;               ///< Position of the topleft corner of the window.
 	Scrollbar *vscroll;
@@ -62,14 +63,16 @@ struct DropdownWindow : Window {
 	 * @param wi_rect       Rect of the button that opened the dropdown.
 	 * @param instant_close Close the window when the mouse button is raised.
 	 * @param wi_colour     Colour of the parent widget.
+	 * @param persist       Dropdown menu will persist.
 	 */
-	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour)
+	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour, bool persist)
 			: Window(&_dropdown_desc)
 			, parent_button(button)
 			, wi_rect(wi_rect)
 			, list(std::move(list))
 			, selected_result(selected)
 			, instant_close(instant_close)
+			, persist(persist)
 	{
 		assert(!this->list.empty());
 
@@ -265,7 +268,7 @@ struct DropdownWindow : Window {
 		if (this->click_delay != 0 && --this->click_delay == 0) {
 			/* Close the dropdown, so it doesn't affect new window placement.
 			 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
-			this->Close();
+			if (!this->persist) this->Close();
 			this->parent->OnDropdownSelect(this->parent_button, this->selected_result);
 			return;
 		}
@@ -328,11 +331,12 @@ Dimension GetDropDownListDimension(const DropDownList &list)
  * @param wi_rect  Coord of the parent drop down button, used to position the dropdown menu.
  * @param instant_close Set to true if releasing mouse button should close the
  *                      list regardless of where the cursor is.
+ * @param persist  Set if this dropdown should stay open after an option is selected.
  */
-void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, bool instant_close)
+void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, bool instant_close, bool persist)
 {
 	CloseWindowByClass(WC_DROPDOWN_MENU);
-	new DropdownWindow(w, std::move(list), selected, button, wi_rect, instant_close, wi_colour);
+	new DropdownWindow(w, std::move(list), selected, button, wi_rect, instant_close, wi_colour, persist);
 }
 
 /**
@@ -345,8 +349,9 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID b
  * @param width    Override the minimum width determined by the selected widget and list contents.
  * @param instant_close Set to true if releasing mouse button should close the
  *                      list regardless of where the cursor is.
+ * @param persist  Set if this dropdown should stay open after an option is selected.
  */
-void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width, bool instant_close)
+void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width, bool instant_close, bool persist)
 {
 	/* Our parent's button widget is used to determine where to place the drop
 	 * down list window. */
@@ -369,7 +374,7 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID but
 		}
 	}
 
-	ShowDropDownListAt(w, std::move(list), selected, button, wi_rect, wi_colour, instant_close);
+	ShowDropDownListAt(w, std::move(list), selected, button, wi_rect, wi_colour, instant_close, persist);
 }
 
 /**
