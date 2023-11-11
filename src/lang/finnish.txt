@@ -1090,6 +1090,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musiikki
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valitse käytettävä musiikkipaketti
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Lisätietoja musiikkipaketista
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} puuttuvaa tai vioittunutta tiedosto{P "" a})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Tuettujen näyttötarkkuuksien hakeminen epäonnistui
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täyskuvatila ei toimi

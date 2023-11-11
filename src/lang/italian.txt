@@ -535,6 +535,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informazioni su
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Strumento allineamento sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Attiva/disattiva bounding box
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Attiva/disattiva colorazione blocchi invalidati
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alterna i contorni dei widget
 
 # Place in highscore window
 ###length 15
@@ -926,6 +927,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuov{G o
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Apri la finestra del gruppo focalizzata sul gruppo del veicolo
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} non accetta più: {CARGO_LIST}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} Accetta: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Sussidio terminato:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non è più sovvenzionato
@@ -1089,6 +1092,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Pacchett
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleziona il pacchetto musicale di base da utilizzare
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informazioni aggiuntive sul pacchetto musicale di base
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file{P "" s} mancant{P e i}/corrott{P o i})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Errore nel recupero della lista delle risoluzioni supportate
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Attivazione modalità schermo intero non riuscita
@@ -2226,6 +2230,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Modifica
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambia data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambia l'anno corrente
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permetti la modifica dei valori di produzione: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fissa le valutazioni delle stazioni al 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Schema colori
@@ -3420,6 +3425,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Salva
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Salva il profilo utilizzando il nome inserito
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Modifica dei parametri grafici di base
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambia parametri NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Chiudi
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reimposta
@@ -5224,6 +5230,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossib
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}I veicoli possono attendere solo alle stazioni
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Il veicolo non ferma a questa stazione
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... l'orario è incompleto
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... l'orario non è ancora partito
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... troppi cartelli
