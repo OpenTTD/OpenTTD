@@ -16,6 +16,9 @@
 
 static const TimerGameCalendar::Year MAX_TIMETABLE_START_YEARS = 15; ///< The maximum start date offset, in years.
 
+TimerGameTick::TickCounter GetStartTickFromDate(TimerGameCalendar::Date start_date);
+TimerGameCalendar::Date GetDateFromStartTick(TimerGameTick::TickCounter start_tick);
+
 void ShowTimetableWindow(const Vehicle *v);
 void UpdateVehicleTimetable(Vehicle *v, bool travelling);
 void SetTimetableParams(int param1, int param2, TimerGameTick::Ticks ticks);

@@ -22,6 +22,40 @@
 #include "safeguards.h"
 
 /**
+ * Get the TimerGameTick::TickCounter tick of a given date.
+ * @param start_date The date when the timetable starts.
+ * @return The first tick of this date.
+ */
+TimerGameTick::TickCounter GetStartTickFromDate(TimerGameCalendar::Date start_date)
+{
+	/* Calculate the offset in ticks from the current date. */
+	TimerGameTick::Ticks tick_offset = (start_date - TimerGameCalendar::date).base() * Ticks::DAY_TICKS;
+
+	/* Compensate for the current date_fract. */
+	tick_offset -= TimerGameCalendar::date_fract;
+
+	/* Return the current tick plus the offset. */
+	return TimerGameTick::counter + tick_offset;
+}
+
+/**
+ * Get a date from a given start tick of timetable.
+ * @param start_tick The TimerGameTick::TickCounter when the timetable starts.
+ * @return The date when we reach this tick.
+ */
+TimerGameCalendar::Date GetDateFromStartTick(TimerGameTick::TickCounter start_tick)
+{
+	/* Calculate the offset in ticks from the current counter tick. */
+	TimerGameTick::Ticks tick_offset = start_tick - TimerGameTick::counter;
+
+	/* Compensate for the current date_fract. */
+	tick_offset += TimerGameCalendar::date_fract;
+
+	/* Return the current date plus the offset in days. */
+	return TimerGameCalendar::date + (tick_offset / Ticks::DAY_TICKS);
+}
+
+/**
  * Change/update a particular timetable entry.
  * @param v            The vehicle to change the timetable of.
  * @param order_number The index of the timetable in the order list.
@@ -300,10 +334,10 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
  * @param flags Operation to perform.
  * @param veh_id Vehicle ID.
  * @param timetable_all Set to set timetable start for all vehicles sharing this order
- * @param start_date The timetable start date.
+ * @param start_tick The TimerGameTick::counter tick when the timetable starts.
  * @return The error or cost of the operation.
  */
-CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool timetable_all, TimerGameCalendar::Date start_date)
+CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool timetable_all, TimerGameTick::TickCounter start_tick)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
@@ -312,6 +346,8 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 	if (ret.Failed()) return ret;
 
 	TimerGameTick::Ticks total_duration = v->orders->GetTimetableTotalDuration();
+
+	TimerGameCalendar::Date start_date = GetDateFromStartTick(start_tick);
 
 	/* Don't let a timetable start at an invalid date. */
 	if (start_date < 0 || start_date > CalendarTime::MAX_DATE) return CMD_ERROR;
@@ -351,7 +387,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 			w->lateness_counter = 0;
 			ClrBit(w->vehicle_flags, VF_TIMETABLE_STARTED);
 			/* Do multiplication, then division to reduce rounding errors. */
-			w->timetable_start = start_date + idx * total_duration / num_vehs / Ticks::DAY_TICKS;
+			w->timetable_start = start_tick + (idx * total_duration / num_vehs);
 			SetWindowDirty(WC_VEHICLE_TIMETABLE, w->index);
 			++idx;
 		}
@@ -444,7 +480,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		just_started = !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
 
 		if (v->timetable_start != 0) {
-			v->lateness_counter = (TimerGameCalendar::date - v->timetable_start).base() * Ticks::DAY_TICKS + TimerGameCalendar::date_fract;
+			v->lateness_counter = TimerGameTick::counter - v->timetable_start;
 			v->timetable_start = 0;
 		}
 
