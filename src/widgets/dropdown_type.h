@@ -215,4 +215,6 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID but
 
 Dimension GetDropDownListDimension(const DropDownList &list);
 
+void ReplaceDropDownList(Window *parent, DropDownList &&list);
+
 #endif /* WIDGETS_DROPDOWN_TYPE_H */
