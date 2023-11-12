@@ -76,4 +76,6 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 
 void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, uint width = 0, bool instant_close = false);
 
+Dimension GetDropDownListDimension(const DropDownList &list);
+
 #endif /* WIDGETS_DROPDOWN_TYPE_H */

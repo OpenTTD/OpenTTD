@@ -336,6 +336,21 @@ struct DropdownWindow : Window {
 };
 
 /**
+ * Determine width and height required to fully display a DropDownList
+ * @param list The list.
+ * @return Dimension required to display the list.
+ */
+Dimension GetDropDownListDimension(const DropDownList &list)
+{
+	Dimension dim{};
+	for (const auto &item : list) {
+		dim.height += item->Height();
+		dim.width = std::max(dim.width, item->Width());
+	}
+	return dim;
+}
+
+/**
  * Show a drop down list.
  * @param w        Parent window for the list.
  * @param list     Prepopulated DropDownList.
@@ -356,18 +371,9 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 	/* The preferred width equals the calling widget */
 	uint width = wi_rect.Width();
 
-	/* Longest item in the list */
-	uint max_item_width = 0;
-
-	/* Total height of list */
-	uint height = 0;
-
-	for (const auto &item : list) {
-		height += item->Height();
-		max_item_width = std::max(max_item_width, item->Width());
-	}
-
-	max_item_width += WidgetDimensions::scaled.fullbevel.Horizontal();
+	/* Get the height and width required for the list. */
+	Dimension dim = GetDropDownListDimension(list);
+	dim.width += WidgetDimensions::scaled.fullbevel.Horizontal();
 
 	/* Scrollbar needed? */
 	bool scroll = false;
@@ -379,7 +385,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 	uint available_height = std::max(GetMainViewBottom() - top - (int)WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0);
 
 	/* If the dropdown doesn't fully fit below the widget... */
-	if (height > available_height) {
+	if (dim.height > available_height) {
 
 		uint available_height_above = std::max(w->top + wi_rect.top - GetMainViewTop() - (int)WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0);
 
@@ -390,29 +396,28 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 		}
 
 		/* If the dropdown doesn't fully fit, we need a dropdown. */
-		if (height > available_height) {
+		if (dim.height > available_height) {
 			scroll = true;
-			uint avg_height = height / (uint)list.size();
+			uint avg_height = dim.height / (uint)list.size();
 
 			/* Fit the list; create at least one row, even if there is no height available. */
 			uint rows = std::max<uint>(available_height / avg_height, 1);
-			height = rows * avg_height;
+			dim.height = rows * avg_height;
 
 			/* Add space for the scrollbar. */
-			max_item_width += NWidgetScrollbar::GetVerticalDimension().width;
+			dim.width += NWidgetScrollbar::GetVerticalDimension().width;
 		}
 
 		/* Set the top position if needed. */
 		if (above) {
-			top = w->top + wi_rect.top - height - WidgetDimensions::scaled.fullbevel.Vertical() * 2;
+			top = w->top + wi_rect.top - dim.height - WidgetDimensions::scaled.fullbevel.Vertical() * 2;
 		}
 	}
 
-	width = std::max(width, max_item_width);
+	dim.width = std::max(width, dim.width);
 
 	Point dw_pos = { w->left + (_current_text_dir == TD_RTL ? wi_rect.right + 1 - (int)width : wi_rect.left), top};
-	Dimension dw_size = {width, height};
-	DropdownWindow *dropdown = new DropdownWindow(w, std::move(list), selected, button, instant_close, dw_pos, dw_size, wi_colour, scroll);
+	DropdownWindow *dropdown = new DropdownWindow(w, std::move(list), selected, button, instant_close, dw_pos, dim, wi_colour, scroll);
 
 	/* The dropdown starts scrolling downwards when opening it towards
 	 * the top and holding down the mouse button. It can be fooled by
