@@ -533,6 +533,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Giới thiệu 
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Trình điều chỉnh sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Bật/tắt hiển thị khối nhà
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Bật/tắt màu sắc trên các ô 'bẩn'
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Bật/tắt đường viền của tiện ích
 
 # Place in highscore window
 ###length 15
@@ -924,6 +925,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Mở cửa sổ gom nhóm và hiện nhóm của phương tiện
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} không còn chấp nhận: {CARGO_LIST}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} đã chấp nhận: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Trợ cấp đã hết:{}{}Dịch vụ vận chuyển {STRING} từ {STRING} đến {STRING} sẽ không được trợ cấp nữa.
@@ -1087,6 +1090,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Gói nh�
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Chọn gói nhạc để sử dụng
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Thông tin thêm về gói nhạc chuẩn
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file bị hỏng/thiếu
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Không thể lấy danh sách độ phân giải được hỗ trợ
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Thất bại khi bật chế độ fullscreen
@@ -2191,6 +2195,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Thay đ�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Sửa thời gian: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Thay đổi thời gian hiện tại
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cho phép khả năng sửa giá trị sản xuất: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Cố định uy tín 100% cho các ga bến cảng: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Cách Phối Màu Mới
@@ -3379,6 +3384,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Lưu
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Lưu thiết lập bằng tên được chọn
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Thay đổi các thông số của gói đồ họa chuẩn
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay Đổi Tham Số NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Đóng
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Đặt mặc định
@@ -5183,6 +5189,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Không t
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Phương tiện chỉ có thể chờ ở nhà ga, bến, cảng.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Phương tiện này không dừng lại tại ga, bến này theo lộ trình.
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... lịch trình chưa hoàn thiện
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... bảng lịch trình chưa bắt đầu
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... quá nhiều biển hiệu

@@ -534,6 +534,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Quant a l'OpenT
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Commuta les caixes delimitadores
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Commuta l'acoloriment de blocs bruts
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Commuta les línies delimitadores dels widgets
 
 # Place in highscore window
 ###length 15
@@ -925,6 +926,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}No{G u v
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Obre la finestra del grup amb el focus en el vehicle.
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} ja no accepta: {CARGO_LIST}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} ara accepta: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvenció caducada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} no tindrà subvenció
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvenció retirada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} ja no està subvencionat
@@ -1088,6 +1091,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunt 
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona el conjunt de peces de música base a utilitzar
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informació addicional sobre el conjunt de peces de música base
 
+STR_BASESET_STATUS                                              :{STRING} {RED}(hi ha {NUM} fitxer{P " que fa falta o està corromput" "s que fan falta o estan corromputs"})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}No s'ha pogut obtenir la llista de resolucions permeses
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Ha fallat el mode pantalla completa
@@ -2192,6 +2196,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Edita l'
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canvia la data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Canvia l'any actual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació dels valors de producció: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Arregla els ratis d'estació al 100{NBSP}%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Esquema de colors nou
@@ -3380,6 +3385,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Guarda
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Guarda la configuració NewGRF preestablerta amb el nom seleccionat
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Canvia els paràmetres dels gràfics base
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Canvia els paràmetres NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tanca
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Restableix
@@ -5184,6 +5190,7 @@ STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossib
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Els vehicles només poden esperar a les estacions
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Aquest vehicle no para en aquesta estació
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... l'horari està incomplet.
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... l'horari encara no ha començat.
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... massa senyals
