@@ -1135,9 +1135,7 @@ struct BuildVehicleWindow : Window {
 	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
 	EngineID rename_engine;                     ///< Engine being renamed.
 	GUIEngineList eng_list;
-	CargoID cargo_filter[NUM_CARGO + 3];        ///< Available cargo filters; CargoID or CF_ANY or CF_NONE or CF_ENGINES
-	StringID cargo_filter_texts[NUM_CARGO + 4]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
-	byte cargo_filter_criteria;                 ///< Selected cargo filter
+	CargoID cargo_filter_criteria;              ///< Selected cargo filter
 	int details_height;                         ///< Minimal needed height of the details panels, in text lines (found so far).
 	Scrollbar *vscroll;
 	TestedEngineDetails te;                     ///< Tested cost and capacity after refit.
@@ -1149,8 +1147,8 @@ struct BuildVehicleWindow : Window {
 	{
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_BV_BUILD);
 
-		bool refit = this->sel_engine != INVALID_ENGINE && this->cargo_filter[this->cargo_filter_criteria] != CF_ANY && this->cargo_filter[this->cargo_filter_criteria] != CF_NONE;
-		if (refit) refit = Engine::Get(this->sel_engine)->GetDefaultCargoType() != this->cargo_filter[this->cargo_filter_criteria];
+		bool refit = this->sel_engine != INVALID_ENGINE && this->cargo_filter_criteria != CF_ANY && this->cargo_filter_criteria != CF_NONE;
+		if (refit) refit = Engine::Get(this->sel_engine)->GetDefaultCargoType() != this->cargo_filter_criteria;
 
 		if (refit) {
 			widget->widget_data = STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + this->vehicle_type;
@@ -1272,58 +1270,29 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
+	StringID GetCargoFilterLabel(CargoID cid) const
+	{
+		switch (cid) {
+			case CF_ANY: return STR_PURCHASE_INFO_ALL_TYPES;
+			case CF_ENGINES: return STR_PURCHASE_INFO_ENGINES_ONLY;
+			case CF_NONE: return STR_PURCHASE_INFO_NONE;
+			default: return CargoSpec::Get(cid)->name;
+		}
+	}
+
 	/** Populate the filter list and set the cargo filter criteria. */
 	void SetCargoFilterArray()
 	{
-		uint filter_items = 0;
-
-		/* Add item for disabling filtering. */
-		this->cargo_filter[filter_items] = CF_ANY;
-		this->cargo_filter_texts[filter_items] = STR_PURCHASE_INFO_ALL_TYPES;
-		filter_items++;
-
-		/* Specific filters for trains. */
-		if (this->vehicle_type == VEH_TRAIN) {
-			/* Add item for locomotives only in case of trains. */
-			this->cargo_filter[filter_items] = CF_ENGINES;
-			this->cargo_filter_texts[filter_items] = STR_PURCHASE_INFO_ENGINES_ONLY;
-			filter_items++;
-
-			/* Add item for vehicles not carrying anything, e.g. train engines.
-			 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
-			this->cargo_filter[filter_items] = CF_NONE;
-			this->cargo_filter_texts[filter_items] = STR_PURCHASE_INFO_NONE;
-			filter_items++;
-		}
-
-		/* Collect available cargo types for filtering. */
-		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			this->cargo_filter[filter_items] = cs->Index();
-			this->cargo_filter_texts[filter_items] = cs->name;
-			filter_items++;
-		}
-
-		/* Terminate the filter list. */
-		this->cargo_filter_texts[filter_items] = INVALID_STRING_ID;
-
-		/* If not found, the cargo criteria will be set to all cargoes. */
-		this->cargo_filter_criteria = 0;
-
-		/* Find the last cargo filter criteria. */
-		for (uint i = 0; i < filter_items; i++) {
-			if (this->cargo_filter[i] == _engine_sort_last_cargo_criteria[this->vehicle_type]) {
-				this->cargo_filter_criteria = i;
-				break;
-			}
-		}
+		/* Set the last cargo filter criteria. */
+		this->cargo_filter_criteria = _engine_sort_last_cargo_criteria[this->vehicle_type];
 
 		this->eng_list.SetFilterFuncs(_filter_funcs);
-		this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
+		this->eng_list.SetFilterState(this->cargo_filter_criteria != CF_ANY);
 	}
 
 	void SelectEngine(EngineID engine)
 	{
-		CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
+		CargoID cargo = this->cargo_filter_criteria;
 		if (cargo == CF_ANY || cargo == CF_ENGINES || cargo == CF_NONE) cargo = CT_INVALID;
 
 		this->sel_engine = engine;
@@ -1359,7 +1328,7 @@ struct BuildVehicleWindow : Window {
 	/** Filter the engine list against the currently selected cargo filter */
 	void FilterEngineList()
 	{
-		this->eng_list.Filter(this->cargo_filter[this->cargo_filter_criteria]);
+		this->eng_list.Filter(this->cargo_filter_criteria);
 		if (0 == this->eng_list.size()) { // no engine passed through the filter, invalidate the previously selected engine
 			this->SelectEngine(INVALID_ENGINE);
 		} else if (std::find(this->eng_list.begin(), this->eng_list.end(), this->sel_engine) == this->eng_list.end()) { // previously selected engine didn't pass the filter, select the first engine of the list
@@ -1370,9 +1339,8 @@ struct BuildVehicleWindow : Window {
 	/** Filter a single engine */
 	bool FilterSingleEngine(EngineID eid)
 	{
-		CargoID filter_type = this->cargo_filter[this->cargo_filter_criteria];
 		GUIEngineListItem item = {eid, eid, EngineDisplayFlags::None, 0};
-		return CargoAndEngineFilter(&item, filter_type);
+		return CargoAndEngineFilter(&item, this->cargo_filter_criteria);
 	}
 
 	/** Filter by name and NewGRF extra text */
@@ -1594,6 +1562,29 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.RebuildDone();
 	}
 
+	DropDownList BuildCargoDropDownList() const
+	{
+		DropDownList list;
+
+		/* Add item for disabling filtering. */
+		list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_ANY), CF_ANY, false));
+		/* Specific filters for trains. */
+		if (this->vehicle_type == VEH_TRAIN) {
+			/* Add item for locomotives only in case of trains. */
+			list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_ENGINES), CF_ENGINES, false));
+			/* Add item for vehicles not carrying anything, e.g. train engines.
+			 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
+			list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_NONE), CF_NONE, false));
+		}
+
+		/* Add cargos */
+		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
+			list.push_back(std::make_unique<DropDownListStringItem>(cs->name, cs->Index(), false));
+		}
+
+		return list;
+	}
+
 	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
@@ -1645,7 +1636,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
-				ShowDropDownMenu(this, this->cargo_filter_texts, this->cargo_filter_criteria, WID_BV_CARGO_FILTER_DROPDOWN, 0, 0);
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
 				break;
 
 			case WID_BV_SHOW_HIDE: {
@@ -1659,7 +1650,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_BUILD: {
 				EngineID sel_eng = this->sel_engine;
 				if (sel_eng != INVALID_ENGINE) {
-					CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
+					CargoID cargo = this->cargo_filter_criteria;
 					if (cargo == CF_ANY || cargo == CF_ENGINES || cargo == CF_NONE) cargo = CT_INVALID;
 					if (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) {
 						Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, this->window_number, sel_eng, true, cargo, INVALID_CLIENT_ID);
@@ -1735,7 +1726,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:
-				SetDParam(0, this->cargo_filter_texts[this->cargo_filter_criteria]);
+				SetDParam(0, this->GetCargoFilterLabel(this->cargo_filter_criteria));
 				break;
 
 			case WID_BV_SHOW_HIDE: {
@@ -1770,6 +1761,10 @@ struct BuildVehicleWindow : Window {
 				*size = maxdim(*size, d);
 				break;
 			}
+
+			case WID_BV_CARGO_FILTER_DROPDOWN:
+				size->width = std::max(size->width, GetDropDownListDimension(this->BuildCargoDropDownList()).width + padding.width);
+				break;
 
 			case WID_BV_BUILD:
 				*size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + this->vehicle_type);
@@ -1859,9 +1854,9 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select a cargo filter criteria
 				if (this->cargo_filter_criteria != index) {
 					this->cargo_filter_criteria = index;
-					_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter[this->cargo_filter_criteria];
+					_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter_criteria;
 					/* deactivate filter if criteria is 'Show All', activate it otherwise */
-					this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
+					this->eng_list.SetFilterState(this->cargo_filter_criteria != CF_ANY);
 					this->eng_list.ForceRebuild();
 					this->SelectEngine(this->sel_engine);
 				}
