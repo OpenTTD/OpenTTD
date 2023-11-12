@@ -300,7 +300,7 @@ void BaseVehicleListWindow::SetCargoFilterIndex(byte index)
 	if (this->cargo_filter_criteria != index) {
 		this->cargo_filter_criteria = index;
 		/* Deactivate filter if criteria is 'Show All', activate it otherwise. */
-		this->vehgroups.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
+		this->vehgroups.SetFilterState(this->cargo_filter_criteria != CF_ANY);
 		this->vehgroups.SetFilterType(0);
 		this->vehgroups.ForceRebuild();
 	}
@@ -311,36 +311,9 @@ void BaseVehicleListWindow::SetCargoFilterIndex(byte index)
  */
 void BaseVehicleListWindow::SetCargoFilterArray()
 {
-	byte filter_items = 0;
-
-	/* Add item for disabling filtering. */
-	this->cargo_filter[filter_items] = CF_ANY;
-	this->cargo_filter_texts[filter_items] = STR_CARGO_TYPE_FILTER_ALL;
-	this->cargo_filter_criteria = filter_items;
-	filter_items++;
-
-	/* Add item for freight (i.e. vehicles with cargo capacity and with no passenger capacity). */
-	this->cargo_filter[filter_items] = CF_FREIGHT;
-	this->cargo_filter_texts[filter_items] = STR_CARGO_TYPE_FILTER_FREIGHT;
-	filter_items++;
-
-	/* Add item for vehicles not carrying anything, e.g. train engines. */
-	this->cargo_filter[filter_items] = CF_NONE;
-	this->cargo_filter_texts[filter_items] = STR_CARGO_TYPE_FILTER_NONE;
-	filter_items++;
-
-	/* Collect available cargo types for filtering. */
-	for (const auto &cs : _sorted_cargo_specs) {
-		this->cargo_filter[filter_items] = cs->Index();
-		this->cargo_filter_texts[filter_items] = cs->name;
-		filter_items++;
-	}
-
-	/* Terminate the filter list. */
-	this->cargo_filter_texts[filter_items] = INVALID_STRING_ID;
-
+	this->cargo_filter_criteria = CF_ANY;
 	this->vehgroups.SetFilterFuncs(_filter_funcs);
-	this->vehgroups.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
+	this->vehgroups.SetFilterState(this->cargo_filter_criteria != CF_ANY);
 }
 
 /**
@@ -348,7 +321,7 @@ void BaseVehicleListWindow::SetCargoFilterArray()
  */
 void BaseVehicleListWindow::FilterVehicleList()
 {
-	this->vehgroups.Filter(this->cargo_filter[this->cargo_filter_criteria]);
+	this->vehgroups.Filter(this->cargo_filter_criteria);
 	if (this->vehicles.empty()) {
 		/* No vehicle passed through the filter, invalidate the previously selected vehicle */
 		this->vehicle_sel = INVALID_VEHICLE;
@@ -386,6 +359,35 @@ void BaseVehicleListWindow::OnInit()
 {
 	this->order_arrow_width = GetStringBoundingBox(STR_JUST_RIGHT_ARROW, FS_SMALL).width;
 	this->SetCargoFilterArray();
+}
+
+StringID BaseVehicleListWindow::GetCargoFilterLabel(CargoID cid) const
+{
+	switch (cid) {
+		case CF_ANY: return STR_CARGO_TYPE_FILTER_ALL;
+		case CF_FREIGHT: return STR_CARGO_TYPE_FILTER_FREIGHT;
+		case CF_NONE: return STR_CARGO_TYPE_FILTER_NONE;
+		default: return CargoSpec::Get(cid)->name;
+	}
+}
+
+DropDownList BaseVehicleListWindow::BuildCargoDropDownList() const
+{
+	DropDownList list;
+
+	/* Add item for disabling filtering. */
+	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_ANY), CF_ANY, false));
+	/* Add item for freight (i.e. vehicles with cargo capacity and with no passenger capacity). */
+	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_FREIGHT), CF_FREIGHT, false));
+	/* Add item for vehicles not carrying anything, e.g. train engines. */
+	list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_NONE), CF_NONE, false));
+
+	/* Add cargos */
+	for (const CargoSpec *cs : _sorted_cargo_specs) {
+		list.push_back(std::make_unique<DropDownListStringItem>(cs->name, cs->Index(), false));
+	}
+
+	return list;
 }
 
 /**
@@ -1874,7 +1876,7 @@ public:
 				break;
 
 			case WID_VL_FILTER_BY_CARGO:
-				size->width = GetStringListWidth(this->cargo_filter_texts) + padding.width;
+				size->width = std::max(size->width, GetDropDownListDimension(this->BuildCargoDropDownList()).width + padding.width);
 				break;
 
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN: {
@@ -1895,7 +1897,7 @@ public:
 				break;
 
 			case WID_VL_FILTER_BY_CARGO:
-				SetDParam(0, this->cargo_filter_texts[this->cargo_filter_criteria]);
+				SetDParam(0, this->GetCargoFilterLabel(this->cargo_filter_criteria));
 				break;
 
 			case WID_VL_CAPTION:
@@ -1975,7 +1977,7 @@ public:
 		/* Set text of sort by dropdown widget. */
 		this->GetWidget<NWidgetCore>(WID_VL_SORT_BY_PULLDOWN)->widget_data = this->GetVehicleSorterNames()[this->vehgroups.SortType()];
 
-		this->GetWidget<NWidgetCore>(WID_VL_FILTER_BY_CARGO)->widget_data = this->cargo_filter_texts[this->cargo_filter_criteria];
+		this->GetWidget<NWidgetCore>(WID_VL_FILTER_BY_CARGO)->widget_data = this->GetCargoFilterLabel(this->cargo_filter_criteria);
 
 		this->DrawWidgets();
 	}
@@ -2004,7 +2006,7 @@ public:
 				return;
 
 			case WID_VL_FILTER_BY_CARGO: // Cargo filter dropdown
-				ShowDropDownMenu(this, this->cargo_filter_texts, this->cargo_filter_criteria, WID_VL_FILTER_BY_CARGO, 0, 0);
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
 				break;
 
 			case WID_VL_LIST: { // Matrix to show vehicles

@@ -1319,10 +1319,8 @@ protected:
 	Scrollbar *vscroll;
 	Scrollbar *hscroll;
 
-	CargoID cargo_filter[NUM_CARGO + 2];        ///< Available cargo filters; CargoID or CF_ANY or CF_NONE
-	StringID cargo_filter_texts[NUM_CARGO + 3]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
-	byte produced_cargo_filter_criteria;        ///< Selected produced cargo filter index
-	byte accepted_cargo_filter_criteria;        ///< Selected accepted cargo filter index
+	CargoID produced_cargo_filter_criteria;     ///< Selected produced cargo filter index
+	CargoID accepted_cargo_filter_criteria;     ///< Selected accepted cargo filter index
 	static CargoID produced_cargo_filter;
 
 	const int MAX_FILTER_LENGTH = 16;           ///< The max length of the filter, in chars
@@ -1345,7 +1343,7 @@ protected:
 		if (this->produced_cargo_filter_criteria != index) {
 			this->produced_cargo_filter_criteria = index;
 			/* deactivate filter if criteria is 'Show All', activate it otherwise */
-			bool is_filtering_necessary = this->cargo_filter[this->produced_cargo_filter_criteria] != CF_ANY || this->cargo_filter[this->accepted_cargo_filter_criteria] != CF_ANY;
+			bool is_filtering_necessary = this->produced_cargo_filter_criteria != CF_ANY || this->accepted_cargo_filter_criteria != CF_ANY;
 
 			this->industries.SetFilterState(is_filtering_necessary);
 			this->industries.SetFilterType(0);
@@ -1362,11 +1360,20 @@ protected:
 		if (this->accepted_cargo_filter_criteria != index) {
 			this->accepted_cargo_filter_criteria = index;
 			/* deactivate filter if criteria is 'Show All', activate it otherwise */
-			bool is_filtering_necessary = this->cargo_filter[this->produced_cargo_filter_criteria] != CF_ANY || this->cargo_filter[this->accepted_cargo_filter_criteria] != CF_ANY;
+			bool is_filtering_necessary = this->produced_cargo_filter_criteria != CF_ANY || this->accepted_cargo_filter_criteria != CF_ANY;
 
 			this->industries.SetFilterState(is_filtering_necessary);
 			this->industries.SetFilterType(0);
 			this->industries.ForceRebuild();
+		}
+	}
+
+	StringID GetCargoFilterLabel(CargoID cid) const
+	{
+		switch (cid) {
+			case CF_ANY: return STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES;
+			case CF_NONE: return STR_INDUSTRY_DIRECTORY_FILTER_NONE;
+			default: return CargoSpec::Get(cid)->name;
 		}
 	}
 
@@ -1375,33 +1382,12 @@ protected:
 	 */
 	void SetCargoFilterArray()
 	{
-		byte filter_items = 0;
-
-		/* Add item for disabling filtering. */
-		this->cargo_filter[filter_items] = CF_ANY;
-		this->cargo_filter_texts[filter_items] = STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES;
-		this->produced_cargo_filter_criteria = filter_items;
-		this->accepted_cargo_filter_criteria = filter_items;
-		filter_items++;
-
-		/* Add item for industries not producing anything, e.g. power plants */
-		this->cargo_filter[filter_items] = CF_NONE;
-		this->cargo_filter_texts[filter_items] = STR_INDUSTRY_DIRECTORY_FILTER_NONE;
-		filter_items++;
-
-		/* Collect available cargo types for filtering. */
-		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			this->cargo_filter[filter_items] = cs->Index();
-			this->cargo_filter_texts[filter_items] = cs->name;
-			filter_items++;
-		}
-
-		/* Terminate the filter list. */
-		this->cargo_filter_texts[filter_items] = INVALID_STRING_ID;
+		this->produced_cargo_filter_criteria = CF_ANY;
+		this->accepted_cargo_filter_criteria = CF_ANY;
 
 		this->industries.SetFilterFuncs(_filter_funcs);
 
-		bool is_filtering_necessary = this->cargo_filter[this->produced_cargo_filter_criteria] != CF_ANY || this->cargo_filter[this->accepted_cargo_filter_criteria] != CF_ANY;
+		bool is_filtering_necessary = this->produced_cargo_filter_criteria != CF_ANY || this->accepted_cargo_filter_criteria != CF_ANY;
 
 		this->industries.SetFilterState(is_filtering_necessary);
 	}
@@ -1438,8 +1424,7 @@ protected:
 			this->industries.shrink_to_fit();
 			this->industries.RebuildDone();
 
-			auto filter = std::make_pair(this->cargo_filter[this->accepted_cargo_filter_criteria],
-										this->cargo_filter[this->produced_cargo_filter_criteria]);
+			auto filter = std::make_pair(this->accepted_cargo_filter_criteria, this->produced_cargo_filter_criteria);
 
 			this->industries.Filter(filter);
 
@@ -1447,7 +1432,7 @@ protected:
 			this->vscroll->SetCount(this->industries.size()); // Update scrollbar as well.
 		}
 
-		IndustryDirectoryWindow::produced_cargo_filter = this->cargo_filter[this->produced_cargo_filter_criteria];
+		IndustryDirectoryWindow::produced_cargo_filter = this->produced_cargo_filter_criteria;
 		this->industries.Sort();
 
 		this->SetDirty();
@@ -1599,7 +1584,7 @@ protected:
 
 		/* If the produced cargo filter is active then move the filtered cargo to the beginning of the list,
 		 * because this is the one the player interested in, and that way it is not hidden in the 'n' more cargos */
-		const CargoID cid = this->cargo_filter[this->produced_cargo_filter_criteria];
+		const CargoID cid = this->produced_cargo_filter_criteria;
 		if (cid != CF_ANY && cid != CF_NONE) {
 			auto filtered_ci = std::find_if(cargos.begin(), cargos.end(), [cid](const CargoInfo &ci) -> bool {
 				return ci.cargo_id == cid;
@@ -1669,11 +1654,11 @@ public:
 				break;
 
 			case WID_ID_FILTER_BY_ACC_CARGO:
-				SetDParam(0, this->cargo_filter_texts[this->accepted_cargo_filter_criteria]);
+				SetDParam(0, this->GetCargoFilterLabel(this->accepted_cargo_filter_criteria));
 				break;
 
 			case WID_ID_FILTER_BY_PROD_CARGO:
-				SetDParam(0, this->cargo_filter_texts[this->produced_cargo_filter_criteria]);
+				SetDParam(0, this->GetCargoFilterLabel(this->produced_cargo_filter_criteria));
 				break;
 		}
 	}
@@ -1705,7 +1690,7 @@ public:
 					break;
 				}
 				int n = 0;
-				const CargoID acf_cid = this->cargo_filter[this->accepted_cargo_filter_criteria];
+				const CargoID acf_cid = this->accepted_cargo_filter_criteria;
 				for (uint i = this->vscroll->GetPosition(); i < this->industries.size(); i++) {
 					TextColour tc = TC_FROMSTRING;
 					if (acf_cid != CF_ANY && acf_cid != CF_NONE) {
@@ -1758,6 +1743,22 @@ public:
 		}
 	}
 
+	DropDownList BuildCargoDropDownList() const
+	{
+		DropDownList list;
+
+		/* Add item for disabling filtering. */
+		list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_ANY), CF_ANY, false));
+		/* Add item for industries not producing anything, e.g. power plants */
+		list.push_back(std::make_unique<DropDownListStringItem>(this->GetCargoFilterLabel(CF_NONE), CF_NONE, false));
+
+		/* Add cargos */
+		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
+			list.push_back(std::make_unique<DropDownListStringItem>(cs->name, cs->Index(), false));
+		}
+
+		return list;
+	}
 
 	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
 	{
@@ -1772,11 +1773,11 @@ public:
 				break;
 
 			case WID_ID_FILTER_BY_ACC_CARGO: // Cargo filter dropdown
-				ShowDropDownMenu(this, this->cargo_filter_texts, this->accepted_cargo_filter_criteria, WID_ID_FILTER_BY_ACC_CARGO, 0, 0);
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->accepted_cargo_filter_criteria, widget);
 				break;
 
 			case WID_ID_FILTER_BY_PROD_CARGO: // Cargo filter dropdown
-				ShowDropDownMenu(this, this->cargo_filter_texts, this->produced_cargo_filter_criteria, WID_ID_FILTER_BY_PROD_CARGO, 0, 0);
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->produced_cargo_filter_criteria, widget);
 				break;
 
 			case WID_ID_INDUSTRY_LIST: {
