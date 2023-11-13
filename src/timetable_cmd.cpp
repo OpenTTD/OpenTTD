@@ -311,14 +311,21 @@ CommandCost CmdSetTimetableStart(DoCommandFlag flags, VehicleID veh_id, bool tim
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 
-	int total_duration = v->orders->GetTimetableTotalDuration();
+	TimerGameTick::Ticks total_duration = v->orders->GetTimetableTotalDuration();
 
-	/* Don't let a timetable start more than 15 years into the future or 1 year in the past. */
+	/* Don't let a timetable start at an invalid date. */
 	if (start_date < 0 || start_date > CalendarTime::MAX_DATE) return CMD_ERROR;
+
+	/* Don't let a timetable start more than 15 years into the future... */
 	if (start_date - TimerGameCalendar::date > TimerGameCalendar::DateAtStartOfYear(MAX_TIMETABLE_START_YEARS)) return CMD_ERROR;
+	/* ...or 1 year in the past. */
 	if (TimerGameCalendar::date - start_date > CalendarTime::DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+
+	/* If trying to distribute start dates over a shared order group, we need to know the total duration. */
 	if (timetable_all && !v->orders->IsCompleteTimetable()) return CommandCost(STR_ERROR_TIMETABLE_INCOMPLETE);
-	if (timetable_all && start_date + total_duration / Ticks::DAY_TICKS > CalendarTime::MAX_DATE) return CMD_ERROR;
+
+	/* Don't allow invalid start dates for other vehicles in the shared order group. */
+	if (timetable_all && start_date + (total_duration / Ticks::DAY_TICKS) > CalendarTime::MAX_DATE) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		std::vector<Vehicle *> vehs;
