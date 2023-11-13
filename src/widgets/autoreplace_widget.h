@@ -32,12 +32,13 @@ enum ReplaceVehicleWidgets {
 	WID_RV_INFO_TAB,                 ///< Info tab.
 	WID_RV_STOP_REPLACE,             ///< Stop Replacing button.
 
-	/* Train/road only widgets */
-	WID_RV_RAIL_ROAD_TYPE_DROPDOWN,  ///< Dropdown menu about the rail/roadtype.
-
 	/* Train only widgets. */
+	WID_RV_RAIL_TYPE_DROPDOWN, ///< Dropdown to select railtype.
 	WID_RV_TRAIN_ENGINEWAGON_DROPDOWN, ///< Dropdown to select engines and/or wagons.
 	WID_RV_TRAIN_WAGONREMOVE_TOGGLE, ///< Button to toggle removing wagons.
+
+	/* Road only widgets. */
+	WID_RV_ROAD_TYPE_DROPDOWN, ///< Dropdown to select roadtype.
 };
 
 #endif /* WIDGETS_AUTOREPLACE_WIDGET_H */
