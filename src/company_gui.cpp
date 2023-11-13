@@ -239,7 +239,7 @@ static Money DrawYearCategory(const Rect &r, int start_y, const ExpensesList &li
 	}
 
 	/* Draw the total at the bottom of the category. */
-	GfxFillRect(r.left, y, r.right, y, PC_BLACK);
+	GfxFillRect(r.left, y, r.right, y + WidgetDimensions::scaled.bevel.top - 1, PC_BLACK);
 	y += WidgetDimensions::scaled.vsep_normal;
 	if (sum != 0) DrawPrice(sum, r.left, r.right, y, TC_WHITE);
 
@@ -274,7 +274,7 @@ static void DrawYearColumn(const Rect &r, TimerGameCalendar::Year year, const Ex
 	}
 
 	/* Total income. */
-	GfxFillRect(r.left, y, r.right, y, PC_BLACK);
+	GfxFillRect(r.left, y, r.right, y + WidgetDimensions::scaled.bevel.top - 1, PC_BLACK);
 	y += WidgetDimensions::scaled.vsep_normal;
 	DrawPrice(sum, r.left, r.right, y, TC_WHITE);
 }
@@ -438,7 +438,7 @@ struct CompanyFinancesWindow : Window {
 			}
 
 			case WID_CF_BALANCE_LINE:
-				GfxFillRect(r.left, r.top, r.right, r.top, PC_BLACK);
+				GfxFillRect(r.left, r.top, r.right, r.top + WidgetDimensions::scaled.bevel.top - 1, PC_BLACK);
 				break;
 		}
 	}
@@ -2106,7 +2106,7 @@ struct CompanyInfrastructureWindow : Window
 			case WID_CI_TOTAL:
 				if (_settings_game.economy.infrastructure_maintenance) {
 					Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
-					GfxFillRect(tr.left, y, tr.right, y, PC_WHITE);
+					GfxFillRect(tr.left, y, tr.right, y + WidgetDimensions::scaled.bevel.top - 1, PC_WHITE);
 					y += WidgetDimensions::scaled.vsep_normal;
 					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
 					DrawString(tr.left, tr.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
