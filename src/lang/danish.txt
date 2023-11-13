@@ -1090,6 +1090,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis-mu
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vælg basismusik-sæt
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yderligere information om basismusik-sættet
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} manglende/beskadiget fil{P "" s})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Det lykkedes ikke at hente en liste over understøttede opløsninger
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fuldskærmstilstand fejlede

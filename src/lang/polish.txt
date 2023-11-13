@@ -1470,6 +1470,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Podstawo
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wybierz podstawowy zestaw muzyki do użycia
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatkowe informacje o muzyce podstawowej
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} brakując{P y e ych}/uszkodzon{P y e ych} plik{P "" i ów})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nie udało się pobrać listy obsługiwanych rozdzielczości
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Uruchomienie trybu pełnoekranowego nie powiodło się
