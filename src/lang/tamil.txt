@@ -3255,6 +3255,7 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}இரய
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}சாலை வாகனங்களை இயக்கும் செலவுகள்
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}விமானங்களை இயக்கும் செலவுகள்
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}கப்பல்களை இயக்கும் செலவுகள்
+STR_FINANCES_SECTION_ROAD_VEHICLE_REVENUE                       :{GOLD}சாலை வாகனங்கள்
 STR_FINANCES_SECTION_SHIP_REVENUE                               :{GOLD}கப்பல்கள்
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}கடன் வட்டி
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}மற்றவை
@@ -3302,6 +3303,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}வி�
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}விவரமான கட்டட எண்ணிக்கைகளை காட்டு
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}பணத்தை வழங்கு
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}இந்த நிறுவனத்திற்கு பணம் கொடு
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}இந்த நிறுவனத்தை விரோதமாகக் கையகப்படுத்துங்கள்
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}புதிய முகம்
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}மேலாளருக்கு புதிய முகத்தினைத் தேர்ந்தெடு
@@ -4181,6 +4183,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :புதிய
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :கோப்பினை படிக்க இயலவில்லை
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :கோப்பில் எழுத இயலவில்லை
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :தகவல் முழுமை சரிபார்த்தல் தோல்வியடைந்தது
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :பதிவுஆட்டம் மாற்றியமைக்கப்பட்ட பதிப்புடன் தயாரிக்கப்பட்டுள்ளது
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<கிடைக்கவில்லை>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}ஆட்டம் ட்ராம் துணையில்லாத பதிப்புடன் பதிவு செய்யப்பட்டது. ஆதலால் அனைத்து ட்ராம்களும் நீக்கப்பட்டுள்ளன.
 
