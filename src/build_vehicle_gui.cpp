@@ -1579,8 +1579,9 @@ struct BuildVehicleWindow : Window {
 		}
 
 		/* Add cargos */
+		Dimension d = GetLargestCargoIconSize();
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			list.push_back(std::make_unique<DropDownListStringItem>(cs->name, cs->Index(), false));
+			list.push_back(std::make_unique<DropDownListIconItem>(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false));
 		}
 
 		return list;
