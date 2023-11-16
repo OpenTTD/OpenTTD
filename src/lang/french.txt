@@ -1091,6 +1091,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musique 
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Sélectionner la musique de base à utiliser
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informations additionnelles sur la musique de base
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} fichier{P "" s} manquant{P "" s}/corrompu{P "" s})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Échec de la récupération de la liste des résolutions prises en charge
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Échec du mode plein écran
