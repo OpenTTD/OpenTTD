@@ -1490,8 +1490,9 @@ public:
 	void Draw(const Window *w) override
 	{
 		/* Draw brown-red toolbar bg. */
-		GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1, PC_VERY_DARK_RED);
-		GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1, PC_DARK_RED, FILLRECT_CHECKER);
+		const Rect r = this->GetCurrentRect();
+		GfxFillRect(r, PC_VERY_DARK_RED);
+		GfxFillRect(r, PC_DARK_RED, FILLRECT_CHECKER);
 
 		this->NWidgetContainer::Draw(w);
 	}
