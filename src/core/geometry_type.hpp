@@ -65,6 +65,8 @@ struct RectPadding {
 	inline uint Vertical() const { return this->top + this->bottom; }
 };
 
+inline const RectPadding RectPadding::zero{};
+
 /** Specification of a rectangle with absolute coordinates of all edges */
 struct Rect {
 	int left;
