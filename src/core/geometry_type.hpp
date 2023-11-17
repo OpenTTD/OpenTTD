@@ -28,7 +28,8 @@ struct Dimension {
 	uint width;
 	uint height;
 
-	Dimension(uint w = 0, uint h = 0) : width(w), height(h) {};
+	constexpr Dimension() : width(0), height(0) {}
+	constexpr Dimension(uint w, uint h) : width(w), height(h) {}
 
 	bool operator< (const Dimension &other) const
 	{
