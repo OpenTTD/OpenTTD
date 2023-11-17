@@ -1090,6 +1090,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basisset
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecteer de te gebruiken basisset voor muziek
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Aanvullende informatie over the basisset voor muziek
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} {P "ontbrekend/beschadigd bestand" "ontbrekende/beschadigde bestanden"})
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Mislukt om een lijst met ondersteunde resoluties op te halen
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus voor volledig scherm is mislukt
