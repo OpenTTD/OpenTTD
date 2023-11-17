@@ -125,7 +125,7 @@ void MusicDriver_ExtMidi::DoPlay()
 			FALLTHROUGH;
 
 		default:
-			this->song[0] = '\0';
+			this->song.clear();
 			break;
 	}
 }
