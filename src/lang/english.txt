@@ -2346,7 +2346,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}The game
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set password
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protect your game with a password if you don't want it to be publicly accessible
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibility
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibility:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Whether other people can see your server in the public listing
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximum number of clients:
