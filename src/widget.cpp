@@ -1593,15 +1593,9 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
 	/* Compute additional width given to us. */
-	uint additional_length = given_width;
-	if (this->pip_ratio_pre + this->pip_ratio_inter + this->pip_ratio_post != 0 || (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE))) {
-		/* For EQUALSIZE containers this does not sum to smallest_x during initialisation */
-		additional_length -= this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			if (child_wid->smallest_x != 0 || child_wid->fill_x != 0) additional_length -= child_wid->smallest_x + child_wid->padding.Horizontal();
-		}
-	} else {
-		additional_length -= this->smallest_x;
+	uint additional_length = given_width - (this->pip_pre + this->gaps * this->pip_inter + this->pip_post);
+	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		if (child_wid->smallest_x != 0 || child_wid->fill_x != 0) additional_length -= child_wid->smallest_x + child_wid->padding.Horizontal();
 	}
 
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
@@ -1791,15 +1785,9 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
 	/* Compute additional height given to us. */
-	uint additional_length = given_height;
-	if (this->pip_ratio_pre + this->pip_ratio_inter + this->pip_ratio_post != 0 || (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE))) {
-		/* For EQUALSIZE containers this does not sum to smallest_y during initialisation */
-		additional_length -= this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			if (child_wid->smallest_y != 0 || child_wid->fill_y != 0) additional_length -= child_wid->smallest_y + child_wid->padding.Vertical();
-		}
-	} else {
-		additional_length -= this->smallest_y;
+	uint additional_length = given_height - (this->pip_pre + this->gaps * this->pip_inter + this->pip_post);
+	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		if (child_wid->smallest_y != 0 || child_wid->fill_y != 0) additional_length -= child_wid->smallest_y + child_wid->padding.Vertical();
 	}
 
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
