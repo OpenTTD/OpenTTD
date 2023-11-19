@@ -8,6 +8,7 @@
 /** @file error_gui.cpp GUI related to errors. */
 
 #include "stdafx.h"
+#include "core/geometry_func.hpp"
 #include "core/mem_func.hpp"
 #include "landscape.h"
 #include "newgrf_text.h"
@@ -208,12 +209,9 @@ public:
 				size->height = std::max(size->height, panel_height);
 				break;
 			}
-			case WID_EM_FACE: {
-				Dimension face_size = GetScaledSpriteSize(SPR_GRADIENT);
-				size->width = std::max(size->width, face_size.width);
-				size->height = std::max(size->height, face_size.height);
+			case WID_EM_FACE:
+				*size = maxdim(*size, GetScaledSpriteSize(SPR_GRADIENT));
 				break;
-			}
 		}
 	}
 
