@@ -297,33 +297,21 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void OnResize() override
 	{
-		StringID str = 0;
-		switch (widget) {
-			case WID_SGI_BASESET:
-				SetDParam(0, _missing_extra_graphics);
-				str = STR_INTRO_BASESET;
-				break;
+		bool changed = false;
 
-			case WID_SGI_TRANSLATION:
-				SetDParam(0, _current_language->missing);
-				str = STR_INTRO_TRANSLATION;
-				break;
+		if (NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_SGI_BASESET); wid != nullptr && wid->current_x > 0) {
+			SetDParam(0, _missing_extra_graphics);
+			changed |= wid->UpdateMultilineWidgetSize(GetString(STR_INTRO_BASESET), 3);
 		}
 
-		if (str != 0) {
-			int height = GetStringHeight(str, size->width);
-			if (height > 3 * FONT_HEIGHT_NORMAL) {
-				/* Don't let the window become too high. */
-				Dimension textdim = GetStringBoundingBox(str);
-				textdim.height *= 3;
-				textdim.width -= textdim.width / 2;
-				*size = maxdim(*size, textdim);
-			} else {
-				size->height = height + padding.height;
-			}
+		if (NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_SGI_TRANSLATION); wid != nullptr && wid->current_x > 0) {
+			SetDParam(0, _current_language->missing);
+			changed |= wid->UpdateMultilineWidgetSize(GetString(STR_INTRO_TRANSLATION), 3);
 		}
+
+		if (changed) this->ReInit(0, 0, this->flags & WF_CENTERED);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
