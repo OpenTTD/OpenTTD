@@ -693,6 +693,7 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
  */
 int GetStringHeight(std::string_view str, int maxw, FontSize fontsize)
 {
+	assert(maxw > 0);
 	Layouter layout(str, maxw, TC_FROMSTRING, fontsize);
 	return layout.GetBounds().height;
 }
