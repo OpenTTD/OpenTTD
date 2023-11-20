@@ -16,7 +16,7 @@
 
 #include "../safeguards.h"
 
-uint64_t TimerGameTick::counter = 0;
+TimerGameTick::TickCounter TimerGameTick::counter = 0;
 
 template<>
 void IntervalTimer<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)

@@ -331,7 +331,7 @@ public:
 
 	StationID last_station_visited;     ///< The last station we stopped at.
 	StationID last_loading_station;     ///< Last station the vehicle has stopped at and could possibly leave from with any cargo loaded.
-	uint64_t last_loading_tick;         ///< Last time (based on TimerGameTick counter) the vehicle has stopped at a station and could possibly leave with any cargo loaded.
+	TimerGameTick::TickCounter last_loading_tick; ///< Last TimerGameTick::counter tick that the vehicle has stopped at a station and could possibly leave with any cargo loaded.
 
 	CargoID cargo_type;                 ///< type of cargo this vehicle is carrying
 	byte cargo_subtype;                 ///< Used for livery refits (NewGRF variations)

@@ -22,6 +22,7 @@
 class TimerGameTick {
 public:
 	using Ticks = int32_t; ///< The type to store ticks in
+	using TickCounter = uint64_t; ///< The type that the tick counter is stored in
 
 	using TPeriod = uint;
 	using TElapsed = uint;
@@ -29,7 +30,7 @@ public:
 		uint elapsed;
 	};
 
-	static uint64_t counter; ///< Monotonic counter, in ticks, since start of game.
+	static TickCounter counter; ///< Monotonic counter, in ticks, since start of game.
 };
 
 /**
