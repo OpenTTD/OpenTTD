@@ -1158,6 +1158,22 @@ void NWidgetResizeBase::SetResize(uint resize_x, uint resize_y)
 
 /**
  * Set absolute (post-scaling) minimal size of the widget.
+ * The window will need to be reinited if the size is changed.
+ * @param min_x Horizontal minimal size of the widget.
+ * @param min_y Vertical minimal size of the widget.
+ * @return true iff the widget minimum size has changed.
+ */
+bool NWidgetResizeBase::UpdateSize(uint min_x, uint min_y)
+{
+	if (min_x == this->min_x && min_y == this->min_y) return false;
+	this->min_x = min_x;
+	this->min_y = min_y;
+	return true;
+}
+
+/**
+ * Set absolute (post-scaling) minimal size of the widget.
+ * The window will need to be reinited if the size is changed.
  * @param min_y Vertical minimal size of the widget.
  * @return true iff the widget minimum size has changed.
  */
