@@ -445,17 +445,8 @@ struct GameOptionsWindow : Window {
 
 			default: {
 				int selected;
-				DropDownList list = this->BuildDropDownList(widget, &selected);
-				if (!list.empty()) {
-					/* Find the biggest item for the default size. */
-					for (const auto &ddli : list) {
-						Dimension string_dim;
-						int width = ddli->Width();
-						string_dim.width = width + padding.width;
-						string_dim.height = ddli->Height() + padding.height;
-						*size = maxdim(*size, string_dim);
-					}
-				}
+				size->width = std::max(size->width, GetDropDownListDimension(this->BuildDropDownList(widget, &selected)).width + padding.width);
+				break;
 			}
 		}
 	}
