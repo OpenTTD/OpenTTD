@@ -16,6 +16,7 @@
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "articulated_vehicles.h"
+#include "core/bitmath_func.hpp"
 #include "core/random_func.hpp"
 #include "vehiclelist.h"
 #include "road.h"
@@ -236,7 +237,15 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 	if (union_mask == 0) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity
 
 	CargoID cargo_type;
-	if (IsArticulatedVehicleCarryingDifferentCargoes(v, &cargo_type)) return CT_INVALID; // We cannot refit to mixed cargoes in an automated way
+	CargoTypes cargo_mask = GetCargoTypesOfArticulatedVehicle(v, &cargo_type);
+	if (!HasAtMostOneBit(cargo_mask)) {
+		CargoTypes new_engine_default_cargoes = GetCargoTypesOfArticulatedParts(engine_type);
+		if ((cargo_mask & new_engine_default_cargoes) == cargo_mask) {
+			return CT_NO_REFIT; // engine_type is already a mixed cargo type which matches the incoming vehicle by default, no refit required
+		}
+
+		return CT_INVALID; // We cannot refit to mixed cargoes in an automated way
+	}
 
 	if (!IsValidCargoID(cargo_type)) {
 		if (v->type != VEH_TRAIN) return CT_NO_REFIT; // If the vehicle does not carry anything at all, every replacement is fine.

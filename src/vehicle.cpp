@@ -229,13 +229,20 @@ bool Vehicle::NeedsServicing() const
 		/* Is there anything to refit? */
 		if (union_mask != 0) {
 			CargoID cargo_type;
-			/* We cannot refit to mixed cargoes in an automated way */
-			if (IsArticulatedVehicleCarryingDifferentCargoes(v, &cargo_type)) continue;
-
-			/* Did the old vehicle carry anything? */
-			if (IsValidCargoID(cargo_type)) {
-				/* We can't refit the vehicle to carry the cargo we want */
-				if (!HasBit(available_cargo_types, cargo_type)) continue;
+			CargoTypes cargo_mask = GetCargoTypesOfArticulatedVehicle(v, &cargo_type);
+			if (!HasAtMostOneBit(cargo_mask)) {
+				CargoTypes new_engine_default_cargoes = GetCargoTypesOfArticulatedParts(new_engine);
+				if ((cargo_mask & new_engine_default_cargoes) != cargo_mask) {
+					/* We cannot refit to mixed cargoes in an automated way */
+					continue;
+				}
+				/* engine_type is already a mixed cargo type which matches the incoming vehicle by default, no refit required */
+			} else {
+				/* Did the old vehicle carry anything? */
+				if (IsValidCargoID(cargo_type)) {
+					/* We can't refit the vehicle to carry the cargo we want */
+					if (!HasBit(available_cargo_types, cargo_type)) continue;
+				}
 			}
 		}
 
