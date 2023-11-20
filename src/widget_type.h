@@ -262,6 +262,7 @@ public:
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 
+	bool UpdateSize(uint min_x, uint min_y);
 	bool UpdateVerticalSize(uint min_y);
 
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
