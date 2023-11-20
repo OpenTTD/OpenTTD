@@ -262,6 +262,7 @@ public:
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 
+	bool UpdateMultilineWidgetSize(const std::string &str, int max_lines);
 	bool UpdateSize(uint min_x, uint min_y);
 	bool UpdateVerticalSize(uint min_y);
 

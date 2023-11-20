@@ -1157,6 +1157,26 @@ void NWidgetResizeBase::SetResize(uint resize_x, uint resize_y)
 }
 
 /**
+ * Try to set optimum widget size for a multiline text widget.
+ * The window will need to be reinited if the size is changed.
+ * @param str Multiline string contents that will fill the widget.
+ * @param max_line Maximum number of lines.
+ * @return true iff the widget minimum size has changed.
+ */
+bool NWidgetResizeBase::UpdateMultilineWidgetSize(const std::string &str, int max_lines)
+{
+	int y = GetStringHeight(str, this->current_x);
+	if (y > max_lines * FONT_HEIGHT_NORMAL) {
+		/* Text at the current width is too tall, so try to guess a better width. */
+		Dimension d = GetStringBoundingBox(str);
+		d.height *= max_lines;
+		d.width /= 2;
+		return this->UpdateSize(d.width, d.height);
+	}
+	return this->UpdateVerticalSize(y);
+}
+
+/**
  * Set absolute (post-scaling) minimal size of the widget.
  * The window will need to be reinited if the size is changed.
  * @param min_x Horizontal minimal size of the widget.
