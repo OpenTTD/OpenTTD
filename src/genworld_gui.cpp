@@ -147,7 +147,7 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 								NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_DESERT_COVERAGE_UP), SetDataTip(SPR_ARROW_UP, STR_MAPGEN_DESERT_COVERAGE_UP), SetFill(0, 1),
 							EndContainer(),
 							/* Temperate/Toyland spacer. */
-							NWidget(NWID_SPACER),
+							NWidget(NWID_SPACER), SetFill(1, 1),
 						EndContainer(),
 						/* Starting date. */
 						NWidget(NWID_HORIZONTAL),
