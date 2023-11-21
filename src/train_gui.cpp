@@ -354,7 +354,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 	bool rtl = _current_text_dir == TD_RTL;
 	int line_height = r.Height();
 	int sprite_y_offset = line_height / 2;
-	int text_y_offset = (line_height - FONT_HEIGHT_NORMAL) / 2;
+	int text_y_offset = (line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 	/* draw the first 3 details tabs */
 	if (det_tab != TDW_TAB_TOTALS) {

@@ -693,7 +693,7 @@ static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colo
 
 	/* If the frame has text, adjust the top bar to fit half-way through */
 	Rect inner = r.Shrink(ScaleGUITrad(1));
-	if (str != STR_NULL) inner.top = r.top + FONT_HEIGHT_NORMAL / 2;
+	if (str != STR_NULL) inner.top = r.top + GetCharacterHeight(FS_NORMAL) / 2;
 
 	Rect outer  = inner.Expand(WidgetDimensions::scaled.bevel);
 	Rect inside = inner.Shrink(WidgetDimensions::scaled.bevel);
@@ -851,14 +851,14 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 		DrawImageButtons(r.WithWidth(dd_width, true), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (str != STR_NULL) {
 			int o = clicked_button ? WidgetDimensions::scaled.pressed : 0;
-			DrawString(r.left + WidgetDimensions::scaled.dropdowntext.left + o, r.right - dd_width - WidgetDimensions::scaled.dropdowntext.right + o, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL) + o, str, TC_BLACK, align);
+			DrawString(r.left + WidgetDimensions::scaled.dropdowntext.left + o, r.right - dd_width - WidgetDimensions::scaled.dropdowntext.right + o, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)) + o, str, TC_BLACK, align);
 		}
 	} else {
 		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
 		DrawImageButtons(r.WithWidth(dd_width, false), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (str != STR_NULL) {
 			int o = clicked_button ? WidgetDimensions::scaled.pressed : 0;
-			DrawString(r.left + dd_width + WidgetDimensions::scaled.dropdowntext.left + o, r.right - WidgetDimensions::scaled.dropdowntext.right + o, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL) + o, str, TC_BLACK, align);
+			DrawString(r.left + dd_width + WidgetDimensions::scaled.dropdowntext.left + o, r.right - WidgetDimensions::scaled.dropdowntext.right + o, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)) + o, str, TC_BLACK, align);
 		}
 	}
 }
@@ -1166,7 +1166,7 @@ void NWidgetResizeBase::SetResize(uint resize_x, uint resize_y)
 bool NWidgetResizeBase::UpdateMultilineWidgetSize(const std::string &str, int max_lines)
 {
 	int y = GetStringHeight(str, this->current_x);
-	if (y > max_lines * FONT_HEIGHT_NORMAL) {
+	if (y > max_lines * GetCharacterHeight(FS_NORMAL)) {
 		/* Text at the current width is too tall, so try to guess a better width. */
 		Dimension d = GetStringBoundingBox(str);
 		d.height *= max_lines;
@@ -2293,7 +2293,7 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		if (this->type == WWT_FRAME) {
 			/* Account for the size of the frame's text if that exists */
 			this->child->padding     = WidgetDimensions::scaled.frametext;
-			this->child->padding.top = std::max<uint8_t>(WidgetDimensions::scaled.frametext.top, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.frametext.top / 2 : 0);
+			this->child->padding.top = std::max<uint8_t>(WidgetDimensions::scaled.frametext.top, this->widget_data != STR_NULL ? GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.frametext.top / 2 : 0);
 
 			this->smallest_x += this->child->padding.Horizontal();
 			this->smallest_y += this->child->padding.Vertical();

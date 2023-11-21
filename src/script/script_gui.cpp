@@ -106,7 +106,7 @@ struct ScriptListWindow : public Window {
 	{
 		if (widget != WID_SCRL_LIST) return;
 
-		this->line_height = FONT_HEIGHT_NORMAL + padding.height;
+		this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 
 		resize->width = 1;
 		resize->height = this->line_height;
@@ -149,14 +149,14 @@ struct ScriptListWindow : public Window {
 					Rect tr = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 					SetDParamStr(0, selected_info->GetAuthor());
 					DrawString(tr, STR_AI_LIST_AUTHOR);
-					tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 					SetDParam(0, selected_info->GetVersion());
 					DrawString(tr, STR_AI_LIST_VERSION);
-					tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 					if (!selected_info->GetURL().empty()) {
 						SetDParamStr(0, selected_info->GetURL());
 						DrawString(tr, STR_AI_LIST_URL);
-						tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+						tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 					}
 					SetDParamStr(0, selected_info->GetDescription());
 					DrawStringMultiLine(tr, STR_JUST_RAW_STRING, TC_WHITE);
@@ -346,7 +346,7 @@ struct ScriptSettingsWindow : public Window {
 	{
 		if (widget != WID_SCRS_BACKGROUND) return;
 
-		this->line_height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + padding.height;
+		this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 		resize->width = 1;
 		resize->height = this->line_height;
@@ -369,7 +369,7 @@ struct ScriptSettingsWindow : public Window {
 
 		int y = r.top;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
 			const ScriptConfigItem &config_item = **it;
 			int current_value = config->GetSetting((config_item).name);
@@ -793,7 +793,7 @@ struct ScriptDebugWindow : public Window {
 	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_SCRD_LOG_PANEL) {
-			resize->height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+			resize->height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			size->height = 14 * resize->height + WidgetDimensions::scaled.framerect.Vertical();
 		}
 	}

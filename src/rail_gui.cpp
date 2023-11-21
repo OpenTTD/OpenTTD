@@ -969,7 +969,7 @@ private:
 public:
 	BuildRailStationWindow(WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(desc, parent), filter_editbox(EDITBOX_MAX_SIZE * MAX_CHAR_LENGTH, EDITBOX_MAX_SIZE)
 	{
-		this->coverage_height = 2 * FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+		this->coverage_height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 		this->vscroll = nullptr;
 		_railstation.newstations = newstation;
 
@@ -1194,7 +1194,7 @@ public:
 					d = maxdim(d, GetStringBoundingBox(StationClass::Get(station_class)->name));
 				}
 				size->width = std::max(size->width, d.width + padding.width);
-				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
+				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				size->height = 5 * this->line_height;
 				resize->height = this->line_height;
 				break;

@@ -125,7 +125,7 @@ struct IConsoleWindow : Window
 
 	void OnInit() override
 	{
-		this->line_height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.hsep_normal;
+		this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.hsep_normal;
 		this->line_offset = GetStringBoundingBox("] ").width + WidgetDimensions::scaled.frametext.left;
 	}
 

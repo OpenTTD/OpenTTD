@@ -377,7 +377,7 @@ struct NewGRFInspectWindow : Window {
 			}
 
 			case WID_NGRFI_MAINPANEL:
-				resize->height = std::max(11, FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal);
+				resize->height = std::max(11, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
 				resize->width  = 1;
 
 				size->height = 5 * resize->height + WidgetDimensions::scaled.frametext.Vertical();
@@ -879,7 +879,7 @@ struct SpriteAlignerWindow : Window {
 			case WID_SA_LIST:
 				SetDParamMaxDigits(0, 6);
 				size->width = GetStringBoundingBox(STR_JUST_COMMA).width + padding.width;
-				resize->height = FONT_HEIGHT_NORMAL + padding.height;
+				resize->height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				resize->width  = 1;
 				fill->height = resize->height;
 				break;

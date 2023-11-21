@@ -572,7 +572,7 @@ struct GenerateLandscapeWindow : public Window {
 
 	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
-		Dimension d{0, (uint)FONT_HEIGHT_NORMAL};
+		Dimension d{0, (uint)GetCharacterHeight(FS_NORMAL)};
 		const StringID *strs = nullptr;
 		switch (widget) {
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT:
@@ -1408,7 +1408,7 @@ struct GenerateProgressWindow : public Window {
 				for (uint i = 0; i < GWP_CLASS_COUNT; i++) {
 					size->width = std::max(size->width, GetStringBoundingBox(_generation_class_table[i]).width + padding.width);
 				}
-				size->height = FONT_HEIGHT_NORMAL * 2 + WidgetDimensions::scaled.vsep_normal;
+				size->height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
 				break;
 		}
 	}
@@ -1422,7 +1422,7 @@ struct GenerateProgressWindow : public Window {
 				Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 				DrawFrameRect(br.WithWidth(br.Width() * _gws.percent / 100, false), COLOUR_MAUVE, FR_NONE);
 				SetDParam(0, _gws.percent);
-				DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, FONT_HEIGHT_NORMAL), STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_NORMAL)), STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
@@ -1433,7 +1433,7 @@ struct GenerateProgressWindow : public Window {
 				/* And say where we are in that class */
 				SetDParam(0, _gws.current);
 				SetDParam(1, _gws.total);
-				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_HOR_CENTER);
 		}
 	}
 };

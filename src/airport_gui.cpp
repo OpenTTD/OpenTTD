@@ -338,7 +338,7 @@ public:
 					size->width = std::max(size->width, GetStringBoundingBox(as->name).width + padding.width);
 				}
 
-				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
+				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				size->height = 5 * this->line_height;
 				break;
 			}
@@ -431,14 +431,14 @@ public:
 				/* show the noise of the selected airport */
 				SetDParam(0, as->noise_level);
 				DrawString(r.left, r.right, top, STR_STATION_BUILD_NOISE);
-				top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+				top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			}
 
 			if (_settings_game.economy.infrastructure_maintenance) {
 				Money monthly = _price[PR_INFRASTRUCTURE_AIRPORT] * as->maintenance_cost >> 3;
 				SetDParam(0, monthly * 12);
 				DrawString(r.left, r.right, top, STR_STATION_BUILD_INFRASTRUCTURE_COST);
-				top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+				top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			}
 
 			/* strings such as 'Size' and 'Coverage Area' */

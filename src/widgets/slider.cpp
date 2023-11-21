@@ -29,7 +29,7 @@ static const int SLIDER_WIDTH = 3;
 void DrawSliderWidget(Rect r, int min_value, int max_value, int value, const std::map<int, StringID> &labels)
 {
 	/* Allow space for labels. We assume they are in the small font. */
-	if (!labels.empty()) r.bottom -= FONT_HEIGHT_SMALL + WidgetDimensions::scaled.hsep_normal;
+	if (!labels.empty()) r.bottom -= GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.hsep_normal;
 
 	max_value -= min_value;
 

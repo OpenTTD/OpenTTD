@@ -80,7 +80,7 @@ DropDownListIconItem::DropDownListIconItem(SpriteID sprite, PaletteID pal, Strin
 
 uint DropDownListIconItem::Height() const
 {
-	return std::max(this->dim.height, (uint)FONT_HEIGHT_NORMAL);
+	return std::max(this->dim.height, (uint)GetCharacterHeight(FS_NORMAL));
 }
 
 uint DropDownListIconItem::Width() const
@@ -94,7 +94,7 @@ void DropDownListIconItem::Draw(const Rect &r, bool sel, Colours) const
 	Rect ir = r.Shrink(WidgetDimensions::scaled.dropdowntext);
 	Rect tr = ir.Indent(this->dim.width + WidgetDimensions::scaled.hsep_normal, rtl);
 	DrawSprite(this->sprite, this->pal, ir.WithWidth(this->dim.width, rtl).left, CenterBounds(r.top, r.bottom, this->sprite_y));
-	DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
+	DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), this->String(), sel ? TC_WHITE : TC_BLACK);
 }
 
 void DropDownListIconItem::SetDimension(Dimension d)

@@ -112,7 +112,7 @@ uint TextfileWindow::ReflowContent()
 		int max_width = this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WidgetDimensions::scaled.frametext.Horizontal();
 		for (auto &line : this->lines) {
 			line.top = height;
-			height += GetStringHeight(line.text, max_width, FS_MONO) / FONT_HEIGHT_MONO;
+			height += GetStringHeight(line.text, max_width, FS_MONO) / GetCharacterHeight(FS_MONO);
 			line.bottom = height;
 		}
 	}
@@ -130,7 +130,7 @@ uint TextfileWindow::GetContentHeight()
 {
 	switch (widget) {
 		case WID_TF_BACKGROUND:
-			resize->height = FONT_HEIGHT_MONO;
+			resize->height = GetCharacterHeight(FS_MONO);
 
 			size->height = 4 * resize->height + WidgetDimensions::scaled.frametext.Vertical(); // At least 4 lines are visible.
 			size->width = std::max(200u, size->width); // At least 200 pixels wide.
@@ -301,7 +301,7 @@ void TextfileWindow::CheckHyperlinkClick(Point pt)
 	if (this->links.empty()) return;
 
 	/* Which line was clicked. */
-	const int clicked_row = this->GetRowFromWidget(pt.y, WID_TF_BACKGROUND, WidgetDimensions::scaled.frametext.top, FONT_HEIGHT_MONO) + this->GetScrollbar(WID_TF_VSCROLLBAR)->GetPosition();
+	const int clicked_row = this->GetRowFromWidget(pt.y, WID_TF_BACKGROUND, WidgetDimensions::scaled.frametext.top, GetCharacterHeight(FS_MONO)) + this->GetScrollbar(WID_TF_VSCROLLBAR)->GetPosition();
 	size_t line_index;
 	size_t subline;
 	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
@@ -311,7 +311,7 @@ void TextfileWindow::CheckHyperlinkClick(Point pt)
 		subline = clicked_row - it->top;
 		Debug(misc, 4, "TextfileWindow check hyperlink: clicked_row={}, line_index={}, line.top={}, subline={}", clicked_row, line_index, it->top, subline);
 	} else {
-		line_index = clicked_row / FONT_HEIGHT_MONO;
+		line_index = clicked_row / GetCharacterHeight(FS_MONO);
 		subline = 0;
 	}
 
@@ -560,7 +560,7 @@ void TextfileWindow::AfterLoadMarkdown()
 
 	/* Draw content (now coordinates given to DrawString* are local to the new clipping region). */
 	fr = fr.Translate(-fr.left, -fr.top);
-	int line_height = FONT_HEIGHT_MONO;
+	int line_height = GetCharacterHeight(FS_MONO);
 	int pos = this->vscroll->GetPosition();
 	int cap = this->vscroll->GetCapacity();
 

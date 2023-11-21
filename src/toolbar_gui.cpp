@@ -149,7 +149,7 @@ public:
 
 	uint Height() const override
 	{
-		return std::max(std::max(this->icon_size.height, this->lock_size.height) + WidgetDimensions::scaled.imgbtn.Vertical(), (uint)FONT_HEIGHT_NORMAL);
+		return std::max(std::max(this->icon_size.height, this->lock_size.height) + WidgetDimensions::scaled.imgbtn.Vertical(), (uint)GetCharacterHeight(FS_NORMAL));
 	}
 
 	void Draw(const Rect &r, bool sel, Colours) const override
@@ -162,7 +162,7 @@ public:
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
 		int icon_y = CenterBounds(r.top, r.bottom, icon_size.height);
-		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
+		int text_y = CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
 		int lock_y = CenterBounds(r.top, r.bottom, lock_size.height);
 
 		DrawCompanyIcon(company, tr.WithWidth(this->icon_size.width, rtl).left, icon_y);
@@ -2368,11 +2368,11 @@ struct ScenarioEditorToolbarWindow : Window {
 		switch (widget) {
 			case WID_TE_SPACER: {
 				int height = r.Height();
-				if (height > 2 * FONT_HEIGHT_NORMAL) {
-					DrawString(r.left, r.right, height / 2 - FONT_HEIGHT_NORMAL, STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
+				if (height > 2 * GetCharacterHeight(FS_NORMAL)) {
+					DrawString(r.left, r.right, height / 2 - GetCharacterHeight(FS_NORMAL), STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
 					DrawString(r.left, r.right, height / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
 				} else {
-					DrawString(r.left, r.right, (height - FONT_HEIGHT_NORMAL) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
+					DrawString(r.left, r.right, (height - GetCharacterHeight(FS_NORMAL)) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
 				}
 				break;
 			}

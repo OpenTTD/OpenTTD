@@ -539,7 +539,7 @@ struct MusicTrackSelectionWindow : public Window {
 					SetDParam(1, 2);
 					SetDParamStr(2, song.songname);
 					DrawString(tr, STR_PLAYLIST_TRACK_NAME);
-					tr.top += FONT_HEIGHT_SMALL;
+					tr.top += GetCharacterHeight(FS_SMALL);
 				}
 				break;
 			}
@@ -553,7 +553,7 @@ struct MusicTrackSelectionWindow : public Window {
 					SetDParam(1, 2);
 					SetDParamStr(2, song.songname);
 					DrawString(tr, STR_PLAYLIST_TRACK_NAME);
-					tr.top += FONT_HEIGHT_SMALL;
+					tr.top += GetCharacterHeight(FS_SMALL);
 				}
 				break;
 			}
@@ -564,13 +564,13 @@ struct MusicTrackSelectionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_MTS_LIST_LEFT: { // add to playlist
-				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
+				int y = this->GetRowFromWidget(pt.y, widget, 0, GetCharacterHeight(FS_SMALL));
 				_music.PlaylistAdd(y);
 				break;
 			}
 
 			case WID_MTS_LIST_RIGHT: { // remove from playlist
-				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
+				int y = this->GetRowFromWidget(pt.y, widget, 0, GetCharacterHeight(FS_SMALL));
 				_music.PlaylistRemove(y);
 				break;
 			}

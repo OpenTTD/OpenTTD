@@ -250,7 +250,7 @@ struct CheatWindow : Window {
 		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH);
 		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH : 0);
 
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		int box_y_offset = (this->line_height - this->box.height) / 2;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
@@ -339,7 +339,7 @@ struct CheatWindow : Window {
 
 		this->line_height = std::max(this->box.height, this->icon.height);
 		this->line_height = std::max<uint>(this->line_height, SETTING_BUTTON_HEIGHT);
-		this->line_height = std::max<uint>(this->line_height, FONT_HEIGHT_NORMAL) + WidgetDimensions::scaled.framerect.Vertical();
+		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
 
 		size->width = width + WidgetDimensions::scaled.hsep_wide * 4 + this->box.width + SETTING_BUTTON_WIDTH /* stuff on the left */ + WidgetDimensions::scaled.hsep_wide * 2 /* extra spacing on right */;
 		size->height = WidgetDimensions::scaled.framerect.Vertical() + this->line_height * lengthof(_cheats_ui);

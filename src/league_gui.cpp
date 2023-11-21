@@ -106,7 +106,7 @@ public:
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect ordinal = ir.WithWidth(this->ordinal_width, rtl);
@@ -148,7 +148,7 @@ public:
 		}
 
 		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, FONT_HEIGHT_NORMAL);
+		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
 
 		for (const Company *c : Company::Iterate()) {
 			SetDParam(0, c->index);
@@ -328,7 +328,7 @@ public:
 		}
 
 		int icon_y_offset = (this->line_height - this->icon_size.height) / 2;
-		int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		/* Calculate positions.of the columns */
 		bool rtl = _current_text_dir == TD_RTL;
@@ -363,7 +363,7 @@ public:
 		if (lt == nullptr) return;
 
 		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = std::max<int>(this->icon_size.height + WidgetDimensions::scaled.fullbevel.Vertical(), FONT_HEIGHT_NORMAL);
+		this->line_height = std::max<int>(this->icon_size.height + WidgetDimensions::scaled.fullbevel.Vertical(), GetCharacterHeight(FS_NORMAL));
 
 		/* Calculate maximum width of every column */
 		this->rank_width = this->text_width = this->score_width = 0;
