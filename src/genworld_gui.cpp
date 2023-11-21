@@ -212,7 +212,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 				/* Heightmap name label. */
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_HEIGHTMAP_NAME, STR_NULL),
-				NWidget(WWT_TEXT, COLOUR_ORANGE, WID_GL_HEIGHTMAP_NAME_TEXT), SetTextStyle(TC_ORANGE), SetDataTip(STR_JUST_RAW_STRING, STR_EMPTY), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_ORANGE, WID_GL_HEIGHTMAP_NAME_TEXT), SetTextStyle(TC_ORANGE), SetDataTip(STR_JUST_RAW_STRING, STR_NULL), SetFill(1, 0),
 			EndContainer(),
 
 			/* Generation options. */
