@@ -1515,7 +1515,7 @@ public:
 		}
 
 		/* Width of the legend blob. */
-		this->legend_width = (GetCharacterHeight(FS_SMALL) - ScaleGUITrad(1)) * 8 / 5;
+		this->legend_width = GetCharacterHeight(FS_SMALL) * 9 / 6;
 
 		/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
 		this->column_width = min_width + WidgetDimensions::scaled.hsep_normal + this->legend_width + WidgetDimensions::scaled.framerect.Horizontal();

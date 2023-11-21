@@ -419,7 +419,7 @@ public:
 	{
 		/* Width of the legend blob -- slightly larger than the smallmap legend blob. */
 		this->legend.height = GetCharacterHeight(FS_SMALL);
-		this->legend.width = this->legend.height * 8 / 5;
+		this->legend.width = this->legend.height * 9 / 6;
 
 		this->SetupArrays();
 	}
@@ -2552,7 +2552,7 @@ struct IndustryCargoesWindow : public Window {
 
 		/* Size of the legend blob -- slightly larger than the smallmap legend blob. */
 		CargoesField::legend.height = GetCharacterHeight(FS_SMALL);
-		CargoesField::legend.width = CargoesField::legend.height * 8 / 5;
+		CargoesField::legend.width = CargoesField::legend.height * 9 / 6;
 
 		/* Size of cargo lines. */
 		CargoesField::cargo_line.width = ScaleGUITrad(6);
