@@ -194,7 +194,20 @@ STR_COLOUR_RANDOM                                               :Acak
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :Biru Tua
 STR_COLOUR_SECONDARY_PALE_GREEN                                 :Hijau Pucat
 STR_COLOUR_SECONDARY_SECONDARY_PINK                             :Merah Muda
+STR_COLOUR_SECONDARY_YELLOW                                     :Kuning
+STR_COLOUR_SECONDARY_RED                                        :Merah
+STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :Biru Muda
+STR_COLOUR_SECONDARY_GREEN                                      :Hijau
+STR_COLOUR_SECONDARY_DARK_GREEN                                 :Hijau Tua
+STR_COLOUR_SECONDARY_BLUE                                       :Biru
+STR_COLOUR_SECONDARY_CREAM                                      :Krim
+STR_COLOUR_SECONDARY_MAUVE                                      :Ungu Muda
+STR_COLOUR_SECONDARY_PURPLE                                     :Ungu
+STR_COLOUR_SECONDARY_ORANGE                                     :Jingga
 STR_COLOUR_SECONDARY_BROWN                                      :Cokelat
+STR_COLOUR_SECONDARY_GREY                                       :Abu-abu
+STR_COLOUR_SECONDARY_WHITE                                      :Putih
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Sama seperti Utama
 
 
 # Units used in OpenTTD
@@ -520,6 +533,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTT
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar Sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Hidup/Matikan kotak batas
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Menampilkan pewarnaan dari area kotor
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alihkan kerangka widget
 
 # Place in highscore window
 ###length 15
@@ -911,6 +925,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Membuka jendela grup yang berfokus pada rombongan kendaraan
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} tidak lagi menerima: {CARGO_LIST}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} menerima: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Penawaran subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} mulai sekarang tidak lagi mendapat subsidi
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} tidak lagi mendapat subsidi
@@ -1048,7 +1064,10 @@ STR_GAME_OPTIONS_GUI_SCALE_4X                                   :4x
 STR_GAME_OPTIONS_GUI_SCALE_5X                                   :5x
 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Survei Otomatis
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Berpartisipasi pada survey otomatis
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Jika diaktifkan, OpenTTD akan mengirimkan survei saat meninggalkan game
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Tentang survei dan privasi
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Ini akan membuka browser dengan informasi lebih lanjut tentang survei otomatis
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Tampilkan hasil survey
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Tampilkan hasil survey pada game yang berjalan saat ini
 
@@ -1071,6 +1090,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set Musi
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Pilih musik dasar yang akan digunakan
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informasi tambahan tentang musik dasar
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file hilang/rusak
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Tidak bisa mendapatkan daftar resolusi layak
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus layar penuh gagal
@@ -1234,11 +1254,13 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}detik
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum pinjaman awal: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jumlah maksimum yang dapat dipinjam (tanpa menghitung inflasi)
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Tidak ada pinjaman {RED}Memerlukan Game Script untuk menyediakan dana awal
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Bunga pinjaman: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Bunga pinjaman; juga mengendalikan inflasi jika dinyalakan
@@ -1404,6 +1426,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nihil
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Dikurangi
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Izinkan perlintasan sebidang dengan jalan atau rel milik pesaing: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Izinkan pembangunan lintasan sebidang di jalan atau rel milik pesaing
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ijinkan terminal drive-thru pada jalan milik kota: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Membolehkan konstruksi halte di jalan kota
@@ -1417,6 +1441,8 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Jika dinyalakan
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Memulai warna perusahaan: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Pilih warna awal perusahaan
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Warna sekunder perusahaan awal: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Pilih warna sekunder awal untuk perusahaan, jika menggunakan NewGRF yang mengaktifkannya.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Bandara tidak kedaluarsa: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Menyalakan setelan ini membuat semua jenis bandara tetap ada selamanya sejak pendesainanya
@@ -1619,6 +1645,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Non-aktifkan
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Tutup jendela dengan klik kanan: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Menutup jendela dengan mengklik kanan di dalamnya. Menonaktifkan keterangan alat saat klik kanan!
 ###length 3
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :Tidak
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Ya
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Ya, kecuali lekat
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gunakan format tanggal {STRING} untuk berkas simpanan
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format tanggal di nama berkas permainan tersimpan
@@ -1946,6 +1975,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Faktor kali uku
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Ukuran rata-rata kota besar terhadap kota kecil saat permainan dimulai
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Pembaruan grafik distribusi setiap {STRING}{NBSP} detikP 0:2 "" }
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Waktu antara penghitungan ulang berikutnya dari grafik tautan. Setiap perhitungan ulang menghitung rencana untuk satu komponen grafik. Artinya, nilai X untuk pengaturan ini tidak berarti keseluruhan grafik akan diperbarui setiap X detik. Hanya beberapa komponen yang akan melakukannya. Semakin pendek Anda mengaturnya, semakin banyak waktu CPU yang diperlukan untuk menghitungnya. Semakin lama Anda mengaturnya, semakin lama waktu yang dibutuhkan hingga distribusi kargo dimulai pada rute baru.
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Ambil {STRING} untuk menghitung ulang grafik distribusi
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Waktu yang dibutuhkan untuk setiap penghitungan ulang komponen grafik tautan. Ketika penghitungan ulang dimulai, sebuah thread muncul yang diizinkan berjalan selama beberapa detik ini. Semakin pendek Anda mengaturnya, semakin besar kemungkinan bahwa thread tersebut tidak selesai sebagaimana mestinya. Kemudian permainan dihentikan sampai (“lag”). Semakin lama Anda mengaturnya, semakin lama waktu yang diperlukan untuk memperbarui distribusi ketika rute berubah.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modus distribusi untuk penumpang: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetris" berarti kira-kira jumlah penumpang sama akan pergi dari stasiun A ke stasiun B sebagaimana dari B ke A. "Asimetris" berarti jumlah penumpang pergi pada kedua arah bisa berbeda-beda. "Manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk penumpang.
@@ -2078,6 +2110,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Mengalok
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Kesalahan dengan pengaturan video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... tidak ditemukan GPU yang kompatibel. Akselerasi perangkat keras dinonaktifkan
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Driver GPU membuat game crash. Akselerasi perangkat keras dinonaktifkan
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2113,6 +2146,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih ga
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Tampilkan opsi permainan
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Tampilkan tabel nilai tertinggi
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Dapatkan izin dokumentasi dan sumber daya online
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Tampilkan pengaturan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan pengaturan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
@@ -2135,8 +2169,16 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah 
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apakah anda yakin untuk mengabaikan skenario ini ?
 
 # Help window
+STR_HELP_WINDOW_CAPTION                                         :{WHITE}Bantuan & Petunjuk
 STR_HELP_WINDOW_WEBSITES                                        :{BLACK}Situs web
 STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}Dokumen
+STR_HELP_WINDOW_README                                          :{BLACK}Readme
+STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Log Perubahan
+STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Bug yang diketahui
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}Lisensi
+STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
+STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual/ Wiki
+STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Laporkan Bug
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Komunitas
 
 # Cheat window
@@ -2153,6 +2195,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Ubah ket
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ganti tanggal: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ubah tahun sekarang
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktifkan modifikasi nilai produksi: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Memperbaiki rating stasiun pada 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Skema Warna
@@ -2387,6 +2430,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Ciptakan
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Ini adalah Anda
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Ini adalah hos permainan
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klien{P ""} - {NUM}/{NUM} perusahaan{P ""}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Jumlah klien yang terhubung saat ini, jumlah perusahaan dan jumlah maksimum perusahaan yang diizinkan oleh administrator server
 
 # Matches ConnectionType
 ###length 5
@@ -2413,6 +2457,8 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}Tidak
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Ya, kali ini
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Iya, Jangan tanya lagi
 
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :Berpartisipasi pada survey otomatis?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :Apakah Anda ingin berpartisipasi dalam survei otomatis?{}OpenTTD akan mengirimkan survei saat keluar dari game.{}Anda bisa mengubahnya kapan saja di "Pengaturan Game".
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Tampilkan hasil survey
 STR_NETWORK_ASK_SURVEY_LINK                                     :Tentang survei dan privasi
 STR_NETWORK_ASK_SURVEY_NO                                       :Tidak
@@ -2623,6 +2669,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Hidup/ma
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidup/matikan transparansi jembatan. CTRL+klik untuk mengunci
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Hidup/matikan transparansi struktur bangunan semacam mercusuar dan antena. CTRL+klik untuk mengunci
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Hidup/matikan transparansi katenari CTRL+klik untuk mengunci
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Alihkan transparansi untuk pemuatan dan teks biaya/pendapatan. Ctrl+Klik untuk mengunci
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Atur obyek menjadi sama sekali tidak nampak daripada transparan.
 
 # Linkgraph legend window
@@ -2710,6 +2757,7 @@ STR_STATION_CLASS_DFLT                                          :Standar
 STR_STATION_CLASS_DFLT_STATION                                  :Stasiun standar
 STR_STATION_CLASS_DFLT_ROADSTOP                                 :Pemberhentian jalan standar
 STR_STATION_CLASS_WAYP                                          :Waypoint
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :Waypoint bawaan
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Pemilihan Sinyal
@@ -3077,7 +3125,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} Tim OpenTTD
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :{WHITE}laju bingkai
+STR_FRAMERATE_CAPTION                                           :{WHITE}Laju bingkai
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{WHITE}Rata simulasi: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Jumlah detak permainan tersimulasi per detik.
@@ -3336,6 +3384,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}Menyimpa
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Menyimpan presetnya pada nama yang sedang dipilih
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Ubah parameter grafik dasar
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tutup
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
@@ -3352,6 +3401,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Periksa 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} pada {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Obyek
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipe rel
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :Tipe jalan
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Variabel NewGRF harus 60+x (hexadecimal)
 
@@ -3758,6 +3808,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detail
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Lihat jumlah infrastruktur lebih detail
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Berikan uang
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Berikan uang kepada perusahaan ini
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Pengambilalihan secara bermusuhan
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Lakukan perseteruan untuk mengambil alih perusahaan ini
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ganti Wajah
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Pilih wajah baru pimpinan
@@ -3853,7 +3905,7 @@ STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRIN
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Perintahkan ke bengkel
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Perintahkan ke Bengkel
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Perintahkan ke Galangan
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Perintahkan ke Hangar
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Perintahkan ke Hanggar
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klik untuk menghentikan semua kendaraan dalam daftar
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klik untuk menjalankan semua kendaraan dalam daftar
@@ -4615,6 +4667,7 @@ STR_AI_CONFIG_RANDOM_AI                                         :AI Acak
 STR_AI_CONFIG_NONE                                              :(tidak ada)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Jumlah pesaing maksimal: {ORANGE}{COMMA}
+STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Interval antara permulaan kompetitor: {ORANGE}{COMMA} menit
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Naikkan
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Naikkan AI terpilih dalam daftar
@@ -4664,7 +4717,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_JUMPLIST                                           :{WHITE}Daftar Isi
+STR_TEXTFILE_JUMPLIST_TOOLTIP                                   :Loncat ke halaman yang ditampilkan melalui daftar ini
 STR_TEXTFILE_JUMPLIST_ITEM                                      :{WHITE}{STRING}
+STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Kembali ke riwayat navigasi
+STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Kembali ke awal dalam riwayat navigasi
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Mengebatkan teks
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Mengebatkan teks dari jendela sehingga akan muat tanpa menggulir
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
@@ -4675,6 +4732,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}keterang
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Catatan perubahan {STRING} dari {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Lisensi {STRING} dari {STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Tanpilan hasil survei
+STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE} dokumen OpenTTD '{STRING}'
 
 
 # Vehicle loading indicators
@@ -5116,16 +5174,22 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... pesa
 STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Tidak ada stasiun kereta
 STR_ERROR_NO_BUS_STATION                                        :{WHITE}Tidak ada stasiun bis
 STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Tidak ada stasiun lori
+STR_ERROR_NO_DOCK                                               :{WHITE}Tidak ada dermaga
 STR_ERROR_NO_AIRPORT                                            :{WHITE}Tidak ada bandara/heliport
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Tidak ada pemberhentian dengan kompatibilitas tipe jalan
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Tidak ada pemberhentian yang kompatibel dengan tipe tram
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Tidak ada perhentian yang cocok untuk kendaraan jalan gandeng.{}Kendaraan jalan gandeng memerlukan perhentian drive-through, bukan perhentian teluk
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Pesawat ini tidak dapat mendarat di heliport ini
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Helikopter ini tidak dapat mendarat di bandara
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Tidak ada titik jalan kereta api
+STR_ERROR_NO_BUOY                                               :{WHITE}Tidak ada pelampung
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tidak dapat membuat jadwal keberangkatan kendaraan...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kendaran hanya dapat menunggu di stasiun
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Kendaraan tidak berhenti pada stasiun ini
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... Jadway tidak kompatibel
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... Jadwal tidak kompatibel
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... jadwal belum dimulai
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... terlalu banyak tanda
