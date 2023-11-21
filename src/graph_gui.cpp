@@ -901,7 +901,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	void OnInit() override
 	{
 		/* Width of the legend blob. */
-		this->legend_width = (GetCharacterHeight(FS_SMALL) - ScaleGUITrad(1)) * 8 / 5;
+		this->legend_width = GetCharacterHeight(FS_SMALL) * 9 / 6;
 	}
 
 	void UpdateExcludedData()
