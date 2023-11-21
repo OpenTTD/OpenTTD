@@ -112,7 +112,7 @@ struct StatusBarWindow : Window {
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
-		tr.top = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
+		tr.top = CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
 		switch (widget) {
 			case WID_S_LEFT:
 				/* Draw the date */

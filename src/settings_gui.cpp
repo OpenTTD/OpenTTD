@@ -1350,7 +1350,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 				editable && value != (sd->flags & SF_GUI_0_IS_SPECIAL ? 0 : sd->min), editable && (uint32_t)value != sd->max);
 	}
 	this->SetValueDParams(1, value);
-	DrawString(text_left, text_right, y + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) / 2, sd->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
+	DrawString(text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, sd->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
 /* == SettingsContainer methods == */
@@ -1673,7 +1673,7 @@ void SettingsPage::DrawSetting(GameSettings *, int left, int right, int y, bool)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - _circle_size.width : left, y + (SETTING_HEIGHT - _circle_size.height) / 2);
-	DrawString(rtl ? left : left + _circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - _circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) / 2, this->title, TC_ORANGE);
+	DrawString(rtl ? left : left + _circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - _circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
 }
 
 /** Construct settings tree */
@@ -2078,7 +2078,7 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_OPTIONSPANEL:
-				resize->height = SETTING_HEIGHT = std::max({(int)_circle_size.height, SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL}) + WidgetDimensions::scaled.vsep_normal;
+				resize->height = SETTING_HEIGHT = std::max({(int)_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
 				resize->width = 1;
 
 				size->height = 5 * resize->height + WidgetDimensions::scaled.framerect.Vertical();
@@ -2094,7 +2094,7 @@ struct GameSettingsWindow : Window {
 					SetDParam(0, setting_types[i]);
 					size->width = std::max(size->width, GetStringBoundingBox(STR_CONFIG_SETTING_TYPE).width + padding.width);
 				}
-				size->height = 2 * FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal +
+				size->height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal +
 						std::max(size->height, GetSettingsTree().GetMaxHelpHeight(size->width));
 				break;
 			}
@@ -2138,7 +2138,7 @@ struct GameSettingsWindow : Window {
 		/* Draw the 'some search results are hidden' notice. */
 		if (this->warn_missing != WHR_NONE) {
 			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
-			DrawStringMultiLine(panel.WithHeight(this->warn_lines * FONT_HEIGHT_NORMAL), warn_str, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(panel.WithHeight(this->warn_lines * GetCharacterHeight(FS_NORMAL)), warn_str, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -2209,11 +2209,11 @@ struct GameSettingsWindow : Window {
 						default: NOT_REACHED();
 					}
 					DrawString(tr, STR_CONFIG_SETTING_TYPE);
-					tr.top += FONT_HEIGHT_NORMAL;
+					tr.top += GetCharacterHeight(FS_NORMAL);
 
 					this->last_clicked->SetValueDParams(0, sd->def);
 					DrawString(tr, STR_CONFIG_SETTING_DEFAULT_VALUE);
-					tr.top += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
 					DrawStringMultiLine(tr, this->last_clicked->GetHelpText(), TC_WHITE);
 				}

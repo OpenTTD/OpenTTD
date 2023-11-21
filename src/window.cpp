@@ -1612,7 +1612,7 @@ static Point GetAutoPlacePosition(int width, int height)
 	 */
 	int left = rtl ? _screen.width - width : 0, top = toolbar_y;
 	int offset_x = rtl ? -(int)NWidgetLeaf::closebox_dimension.width : (int)NWidgetLeaf::closebox_dimension.width;
-	int offset_y = std::max<int>(NWidgetLeaf::closebox_dimension.height, FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.captiontext.Vertical());
+	int offset_y = std::max<int>(NWidgetLeaf::closebox_dimension.height, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.captiontext.Vertical());
 
 restart:
 	for (const Window *w : Window::Iterate()) {
@@ -1678,7 +1678,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16_t sm_width, i
 			 *  - Y position: closebox of parent + closebox of child + statusbar
 			 *  - X position: closebox on left/right, resizebox on right/left (depending on ltr/rtl)
 			 */
-			int indent_y = std::max<int>(NWidgetLeaf::closebox_dimension.height, FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.captiontext.Vertical());
+			int indent_y = std::max<int>(NWidgetLeaf::closebox_dimension.height, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.captiontext.Vertical());
 			if (w->top + 3 * indent_y < _screen.height) {
 				pt.y = w->top + indent_y;
 				int indent_close = NWidgetLeaf::closebox_dimension.width;

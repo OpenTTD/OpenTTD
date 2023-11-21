@@ -135,7 +135,7 @@ struct AIConfigWindow : public Window {
 				break;
 
 			case WID_AIC_LIST:
-				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
+				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				resize->height = this->line_height;
 				size->height = 8 * this->line_height;
 				break;

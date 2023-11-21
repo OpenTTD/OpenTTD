@@ -136,14 +136,14 @@ struct GSConfigWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GSC_SETTINGS:
-				this->line_height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + padding.height;
+				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
 				resize->width = 1;
 				resize->height = this->line_height;
 				size->height = 5 * this->line_height;
 				break;
 
 			case WID_GSC_GSLIST:
-				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
+				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				size->height = 1 * this->line_height;
 				break;
 		}
@@ -186,7 +186,7 @@ struct GSConfigWindow : public Window {
 
 				int y = r.top;
 				int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-				int text_y_offset = (this->line_height - FONT_HEIGHT_NORMAL) / 2;
+				int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 				for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
 					const ScriptConfigItem &config_item = **it;
 					int current_value = config->GetSetting((config_item).name);

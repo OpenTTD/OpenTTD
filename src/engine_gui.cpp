@@ -100,7 +100,7 @@ struct EnginePreviewWindow : Window {
 
 		size->width = std::max(size->width, x - x_offs);
 		SetDParam(0, GetEngineCategoryName(engine));
-		size->height = GetStringHeight(STR_ENGINE_PREVIEW_MESSAGE, size->width) + WidgetDimensions::scaled.vsep_wide + FONT_HEIGHT_NORMAL + this->vehicle_space;
+		size->height = GetStringHeight(STR_ENGINE_PREVIEW_MESSAGE, size->width) + WidgetDimensions::scaled.vsep_wide + GetCharacterHeight(FS_NORMAL) + this->vehicle_space;
 		SetDParam(0, engine);
 		size->height += GetStringHeight(GetEngineInfoString(engine), size->width);
 	}
@@ -115,7 +115,7 @@ struct EnginePreviewWindow : Window {
 
 		SetDParam(0, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
 		DrawString(r.left, r.right, y, STR_ENGINE_NAME, TC_BLACK, SA_HOR_CENTER);
-		y += FONT_HEIGHT_NORMAL;
+		y += GetCharacterHeight(FS_NORMAL);
 
 		DrawVehicleEngine(r.left, r.right, this->width >> 1, y + this->vehicle_space / 2, engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
 

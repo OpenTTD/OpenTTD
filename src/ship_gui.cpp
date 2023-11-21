@@ -67,13 +67,13 @@ void DrawShipDetails(const Vehicle *v, const Rect &r)
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
 	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_BUILT_VALUE);
-	y += FONT_HEIGHT_NORMAL;
+	y += GetCharacterHeight(FS_NORMAL);
 
 	SetDParam(0, v->cargo_type);
 	SetDParam(1, v->cargo_cap);
 	SetDParam(4, GetCargoSubtypeText(v));
 	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_CAPACITY);
-	y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+	y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
 	StringID str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
 	if (v->cargo.StoredCount() > 0) {
@@ -83,7 +83,7 @@ void DrawShipDetails(const Vehicle *v, const Rect &r)
 		str = STR_VEHICLE_DETAILS_CARGO_FROM;
 	}
 	DrawString(r.left, r.right, y, str);
-	y += FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+	y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
 	/* Draw Transfer credits text */
 	SetDParam(0, v->cargo.GetFeederShare());

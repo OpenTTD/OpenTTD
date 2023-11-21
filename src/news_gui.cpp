@@ -559,9 +559,9 @@ struct NewsWindow : Window {
 	/**
 	 * Scroll the news message slowly up from the bottom.
 	 *
-	 * The interval of 210ms is chosen to maintain 15ms at normal zoom: 210 / FONT_HEIGHT_NORMAL = 15ms.
+	 * The interval of 210ms is chosen to maintain 15ms at normal zoom: 210 / GetCharacterHeight(FS_NORMAL) = 15ms.
 	 */
-	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / FONT_HEIGHT_NORMAL, [this](uint count) {
+	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
 		int newtop = std::max(this->top - 2 * static_cast<int>(count), _screen.height - this->height - this->status_height - this->chat_height);
 		this->SetWindowTop(newtop);
 	}};
@@ -1130,7 +1130,7 @@ struct MessageHistoryWindow : Window {
 	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
-			this->line_height = FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+			this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 			resize->height = this->line_height;
 
 			/* Months are off-by-one, so it's actually 8. Not using

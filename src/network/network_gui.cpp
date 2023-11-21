@@ -352,7 +352,7 @@ protected:
 		}
 
 		/* offsets to vertically centre text and icons */
-		int text_y_offset = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2 + 1;
+		int text_y_offset = (this->resize.step_height - GetCharacterHeight(FS_NORMAL)) / 2 + 1;
 		int icon_y_offset = (this->resize.step_height - GetSpriteSize(SPR_BLOT).height) / 2;
 		int lock_y_offset = (this->resize.step_height - GetSpriteSize(SPR_LOCK).height) / 2;
 
@@ -468,13 +468,13 @@ public:
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				resize->height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
+				resize->height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
 				fill->height = resize->height;
 				size->height = 12 * resize->height;
 				break;
 
 			case WID_NG_LASTJOINED:
-				size->height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + WidgetDimensions::scaled.matrix.Vertical();
+				size->height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.matrix.Vertical();
 				break;
 
 			case WID_NG_LASTJOINED_SPACER:
@@ -586,7 +586,7 @@ public:
 		NetworkGameList *sel = this->server;
 
 		/* Height for the title banner */
-		int HEADER_HEIGHT = 3 * FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.frametext.Vertical();
+		int HEADER_HEIGHT = 3 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.frametext.Vertical();
 
 		Rect hr = r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.frametext);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
@@ -610,45 +610,45 @@ public:
 			}
 
 			DrawString(hr.left, hr.right, hr.top, message, TC_FROMSTRING, SA_HOR_CENTER); // server offline
-			DrawStringMultiLine(hr.left, hr.right, hr.top + FONT_HEIGHT_NORMAL, hr.bottom, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
+			DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FS_NORMAL), hr.bottom, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
 			DrawString(tr.left, tr.right, tr.top, message, TC_FROMSTRING, SA_HOR_CENTER); // server offline
 		} else { // show game info
 
 			DrawString(hr.left, hr.right, hr.top, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_HOR_CENTER);
-			DrawStringMultiLine(hr.left, hr.right, hr.top + FONT_HEIGHT_NORMAL, hr.bottom, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
+			DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FS_NORMAL), hr.bottom, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
 
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
 			SetDParam(2, sel->info.companies_on);
 			SetDParam(3, sel->info.companies_max);
 			DrawString(tr, STR_NETWORK_SERVER_LIST_CLIENTS);
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 
 			SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + sel->info.landscape);
 			DrawString(tr, STR_NETWORK_SERVER_LIST_LANDSCAPE); // landscape
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 
 			SetDParam(0, sel->info.map_width);
 			SetDParam(1, sel->info.map_height);
 			DrawString(tr, STR_NETWORK_SERVER_LIST_MAP_SIZE); // map size
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 
 			SetDParamStr(0, sel->info.server_revision);
 			DrawString(tr, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 
 			SetDParamStr(0, sel->connection_string);
 			StringID invite_or_address = StrStartsWith(sel->connection_string, "+") ? STR_NETWORK_SERVER_LIST_INVITE_CODE : STR_NETWORK_SERVER_LIST_SERVER_ADDRESS;
 			DrawString(tr, invite_or_address); // server address / invite code
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 
 			SetDParam(0, sel->info.start_date);
 			DrawString(tr, STR_NETWORK_SERVER_LIST_START_DATE); // start date
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 
 			SetDParam(0, sel->info.game_date);
 			DrawString(tr, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 
 			if (sel->info.gamescript_version != -1) {
 				SetDParamStr(0, sel->info.gamescript_name);
@@ -1682,7 +1682,7 @@ public:
 			case WID_CL_MATRIX: {
 				uint height = std::max({GetSpriteSize(SPR_COMPANY_ICON).height, GetSpriteSize(SPR_JOIN).height, GetSpriteSize(SPR_ADMIN).height, GetSpriteSize(SPR_CHAT).height});
 				height += WidgetDimensions::scaled.framerect.Vertical();
-				this->line_height = std::max(height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
+				this->line_height = std::max(height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 				resize->width = 1;
 				resize->height = this->line_height;
@@ -1947,7 +1947,7 @@ public:
 	void DrawCompany(CompanyID company_id, const Rect &r, uint &line) const
 	{
 		bool rtl = _current_text_dir == TD_RTL;
-		int text_y_offset = CenterBounds(0, this->line_height, FONT_HEIGHT_NORMAL);
+		int text_y_offset = CenterBounds(0, this->line_height, GetCharacterHeight(FS_NORMAL));
 
 		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
 		int offset = CenterBounds(0, this->line_height, d.height);
@@ -2125,7 +2125,7 @@ struct NetworkJoinStatusWindow : Window {
 						break;
 				}
 				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, false), COLOUR_MAUVE, FR_NONE);
-				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, FONT_HEIGHT_NORMAL), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 

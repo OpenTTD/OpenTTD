@@ -128,7 +128,7 @@ void BaseNetworkContentDownloadStatusWindow::UpdateWidgetSize(int widget, Dimens
 			break;
 
 		case WID_NCDS_PROGRESS_TEXT:
-			size->height = FONT_HEIGHT_NORMAL * 2 + WidgetDimensions::scaled.vsep_normal;
+			size->height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
 			break;
 	}
 }
@@ -144,7 +144,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, int widge
 			SetDParam(0, this->downloaded_bytes);
 			SetDParam(1, this->total_bytes);
 			SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
-			DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, FONT_HEIGHT_NORMAL), STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_FROMSTRING, SA_HOR_CENTER);
+			DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_FROMSTRING, SA_HOR_CENTER);
 			break;
 		}
 
@@ -598,7 +598,7 @@ public:
 			}
 
 			case WID_NCL_MATRIX:
-				resize->height = std::max(this->checkbox_size.height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
+				resize->height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
 				size->height = 10 * resize->height;
 				break;
 		}
@@ -647,7 +647,7 @@ public:
 
 		/* Fill the matrix with the information */
 		int sprite_y_offset = (this->resize.step_height - this->checkbox_size.height) / 2;
-		int text_y_offset   = (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2;
+		int text_y_offset   = (this->resize.step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		Rect mr = r.WithHeight(this->resize.step_height);
 		auto iter = this->content.begin() + this->vscroll->GetPosition();
@@ -686,7 +686,7 @@ public:
 	void DrawDetails(const Rect &r) const
 	{
 		/* Height for the title banner */
-		int HEADER_HEIGHT = 3 * FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.frametext.Vertical();
+		int HEADER_HEIGHT = 3 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.frametext.Vertical();
 
 		Rect hr = r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.frametext);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
@@ -698,15 +698,15 @@ public:
 
 		/* Draw the total download size */
 		SetDParam(0, this->filesize_sum);
-		DrawString(tr.left, tr.right, tr.bottom - FONT_HEIGHT_NORMAL + 1, STR_CONTENT_TOTAL_DOWNLOAD_SIZE);
+		DrawString(tr.left, tr.right, tr.bottom - GetCharacterHeight(FS_NORMAL) + 1, STR_CONTENT_TOTAL_DOWNLOAD_SIZE);
 
 		if (this->selected == nullptr) return;
 
 		/* And fill the rest of the details when there's information to place there */
-		DrawStringMultiLine(hr.left, hr.right, hr.top + FONT_HEIGHT_NORMAL, hr.bottom, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + this->selected->state, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FS_NORMAL), hr.bottom, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + this->selected->state, TC_FROMSTRING, SA_CENTER);
 
 		/* Also show the total download size, so keep some space from the bottom */
-		tr.bottom -= FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_wide;
+		tr.bottom -= GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
 
 		if (this->selected->upgrade) {
 			SetDParam(0, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS);

@@ -334,7 +334,7 @@ public:
 
 			case WID_RV_LEFT_DETAILS:
 			case WID_RV_RIGHT_DETAILS:
-				size->height = FONT_HEIGHT_NORMAL * this->details_height + padding.height;
+				size->height = GetCharacterHeight(FS_NORMAL) * this->details_height + padding.height;
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
@@ -530,7 +530,7 @@ public:
 					const Rect r = this->GetWidget<NWidgetBase>(side == 0 ? WID_RV_LEFT_DETAILS : WID_RV_RIGHT_DETAILS)->GetCurrentRect()
 							.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 					int text_end = DrawVehiclePurchaseInfo(r.left, r.right, r.top, this->sel_engine[side], ted);
-					needed_height = std::max(needed_height, (text_end - r.top) / FONT_HEIGHT_NORMAL);
+					needed_height = std::max(needed_height, (text_end - r.top) / GetCharacterHeight(FS_NORMAL));
 				}
 			}
 			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.

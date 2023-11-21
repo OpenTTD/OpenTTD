@@ -582,12 +582,12 @@ public:
 				SetDParam(0, this_year);
 				DrawString(tr, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
 
-				tr.top += FONT_HEIGHT_NORMAL;
+				tr.top += GetCharacterHeight(FS_NORMAL);
 				DrawString(tr, STR_GROUP_PROFIT_LAST_YEAR, TC_BLACK);
 				SetDParam(0, last_year);
 				DrawString(tr, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
 
-				tr.top += FONT_HEIGHT_NORMAL;
+				tr.top += GetCharacterHeight(FS_NORMAL);
 				DrawString(tr, STR_GROUP_OCCUPANCY, TC_BLACK);
 				const size_t vehicle_count = this->vehicles.size();
 				if (vehicle_count > 0) {

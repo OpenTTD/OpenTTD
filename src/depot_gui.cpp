@@ -330,7 +330,7 @@ struct DepotWindow : Window {
 				SetDParam(0, CeilDiv(u->gcache.cached_total_length * 10, TILE_SIZE));
 				SetDParam(1, 1);
 				Rect count = text.WithWidth(this->count_width - WidgetDimensions::scaled.hsep_normal, !rtl);
-				DrawString(count.left, count.right, count.bottom - FONT_HEIGHT_SMALL + 1, STR_JUST_DECIMAL, TC_BLACK, SA_RIGHT, false, FS_SMALL); // Draw the counter
+				DrawString(count.left, count.right, count.bottom - GetCharacterHeight(FS_SMALL) + 1, STR_JUST_DECIMAL, TC_BLACK, SA_RIGHT, false, FS_SMALL); // Draw the counter
 				break;
 			}
 
@@ -348,10 +348,10 @@ struct DepotWindow : Window {
 		} else {
 			/* Arrange unitnumber and flag vertically */
 			diff_x = 0;
-			diff_y = WidgetDimensions::scaled.matrix.top + FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal;
+			diff_y = WidgetDimensions::scaled.matrix.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 		}
 
-		text = text.WithWidth(this->header_width - WidgetDimensions::scaled.hsep_normal, rtl).WithHeight(FONT_HEIGHT_NORMAL).Indent(diff_x, rtl);
+		text = text.WithWidth(this->header_width - WidgetDimensions::scaled.hsep_normal, rtl).WithHeight(GetCharacterHeight(FS_NORMAL)).Indent(diff_x, rtl);
 		if (free_wagon) {
 			DrawString(text, STR_DEPOT_NO_ENGINE);
 		} else {
@@ -507,7 +507,7 @@ struct DepotWindow : Window {
 
 				case VEH_SHIP:
 				case VEH_AIRCRAFT:
-					if (xm <= this->flag_size.width && ym >= (uint)(FONT_HEIGHT_NORMAL + WidgetDimensions::scaled.vsep_normal)) return MODE_START_STOP;
+					if (xm <= this->flag_size.width && ym >= (uint)(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal)) return MODE_START_STOP;
 					break;
 
 				default: NOT_REACHED();

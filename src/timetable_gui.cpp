@@ -200,12 +200,12 @@ struct TimetableWindow : Window {
 
 			case WID_VT_ARRIVAL_DEPARTURE_SELECTION:
 			case WID_VT_TIMETABLE_PANEL:
-				resize->height = FONT_HEIGHT_NORMAL;
+				resize->height = GetCharacterHeight(FS_NORMAL);
 				size->height = 8 * resize->height + padding.height;
 				break;
 
 			case WID_VT_SUMMARY_PANEL:
-				size->height = 2 * FONT_HEIGHT_NORMAL + padding.height;
+				size->height = 2 * GetCharacterHeight(FS_NORMAL) + padding.height;
 				break;
 		}
 	}
@@ -411,7 +411,7 @@ struct TimetableWindow : Window {
 			}
 
 			i++;
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
 	}
 
@@ -470,7 +470,7 @@ struct TimetableWindow : Window {
 					DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE, i == selected ? TC_WHITE : TC_BLACK);
 				}
 			}
-			tr.top += FONT_HEIGHT_NORMAL;
+			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
 	}
 
@@ -488,7 +488,7 @@ struct TimetableWindow : Window {
 			SetTimetableParams(0, 1, total_time);
 			DrawString(tr, v->orders->IsCompleteTimetable() ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE);
 		}
-		tr.top += FONT_HEIGHT_NORMAL;
+		tr.top += GetCharacterHeight(FS_NORMAL);
 
 		if (v->timetable_start != 0) {
 			/* We are running towards the first station so we can start the
