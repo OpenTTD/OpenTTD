@@ -801,76 +801,10 @@ struct ScriptDebugWindow : public Window {
 	void OnPaint() override
 	{
 		this->SelectValidDebugCompany();
+		this->UpdateLogScroll();
 
 		/* Draw standard stuff */
 		this->DrawWidgets();
-
-		if (this->IsShaded()) return; // Don't draw anything when the window is shaded.
-
-		bool dirty = false;
-
-		/* Paint the company icons */
-		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			NWidgetCore *button = this->GetWidget<NWidgetCore>(i + WID_SCRD_COMPANY_BUTTON_START);
-
-			bool valid = Company::IsValidAiID(i);
-
-			/* Check whether the validity of the company changed */
-			dirty |= (button->IsDisabled() == valid);
-
-			/* Mark dead/paused AIs by setting the background colour. */
-			bool dead = valid && Company::Get(i)->ai_instance->IsDead();
-			bool paused = valid && Company::Get(i)->ai_instance->IsPaused();
-			/* Re-paint if the button was updated.
-			 * (note that it is intentional that SetScriptButtonColour is always called) */
-			dirty |= SetScriptButtonColour(*button, dead, paused);
-
-			/* Draw company icon only for valid AI companies */
-			if (!valid) continue;
-
-			byte offset = (i == script_debug_company) ? 1 : 0;
-			DrawCompanyIcon(i, button->pos_x + button->current_x / 2 - 7 + offset, this->GetWidget<NWidgetBase>(WID_SCRD_COMPANY_BUTTON_START + i)->pos_y + 2 + offset);
-		}
-
-		/* Set button colour for Game Script. */
-		GameInstance *game = Game::GetInstance();
-		bool valid = game != nullptr;
-		bool dead = valid && game->IsDead();
-		bool paused = valid && game->IsPaused();
-
-		NWidgetCore *button = this->GetWidget<NWidgetCore>(WID_SCRD_SCRIPT_GAME);
-		dirty |= (button->IsDisabled() == valid) || SetScriptButtonColour(*button, dead, paused);
-
-		if (dirty) this->InvalidateData(-1);
-
-		/* If there are no active companies, don't display anything else. */
-		if (script_debug_company == INVALID_COMPANY) return;
-
-		ScriptLogTypes::LogData &log = this->GetLogData();
-
-		int scroll_count = (int)log.size();
-		if (this->vscroll->GetCount() != scroll_count) {
-			this->vscroll->SetCount(scroll_count);
-
-			/* We need a repaint */
-			this->SetWidgetDirty(WID_SCRD_SCROLLBAR);
-		}
-
-		if (log.empty()) return;
-
-		/* Detect when the user scrolls the window. Enable autoscroll when the
-		 * bottom-most line becomes visible. */
-		if (this->last_vscroll_pos != this->vscroll->GetPosition()) {
-			this->autoscroll = this->vscroll->GetPosition() + this->vscroll->GetCapacity() >= (int)log.size();
-		}
-		if (this->autoscroll) {
-			if (this->vscroll->SetPosition((int)log.size())) {
-				/* We need a repaint */
-				this->SetWidgetDirty(WID_SCRD_SCROLLBAR);
-				this->SetWidgetDirty(WID_SCRD_LOG_PANEL);
-			}
-		}
-		this->last_vscroll_pos = this->vscroll->GetPosition();
 	}
 
 	void SetStringParameters(int widget) const override
@@ -896,9 +830,41 @@ struct ScriptDebugWindow : public Window {
 
 	void DrawWidget(const Rect &r, int widget) const override
 	{
-		if (script_debug_company == INVALID_COMPANY) return;
+		switch (widget) {
+			case WID_SCRD_LOG_PANEL:
+				this->DrawWidgetLog(r);
+				break;
 
-		if (widget != WID_SCRD_LOG_PANEL) return;
+			default:
+				if (IsInsideBS(widget, WID_SCRD_COMPANY_BUTTON_START, MAX_COMPANIES)) {
+					this->DrawWidgetCompanyButton(r, widget, WID_SCRD_COMPANY_BUTTON_START);
+				}
+				break;
+		}
+	}
+
+	/**
+	 * Draw a company button icon.
+	 * @param r Rect area to draw within.
+	 * @param widget Widget index to start.
+	 * @param start Widget index of first company button.
+	 */
+	void DrawWidgetCompanyButton(const Rect &r, int widget, int start) const
+	{
+		if (this->IsWidgetDisabled(widget)) return;
+		CompanyID cid = (CompanyID)(widget - start);
+		int offset = (cid == script_debug_company) ? WidgetDimensions::scaled.pressed : 0;
+		Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
+		DrawCompanyIcon(cid, CenterBounds(r.left, r.right, sprite_size.width) + offset, CenterBounds(r.top, r.bottom, sprite_size.height) + offset);
+	}
+
+	/**
+	 * Draw the AI/GS log.
+	 * @param r Rect area to draw within.
+	 */
+	void DrawWidgetLog(const Rect &r) const
+	{
+		if (script_debug_company == INVALID_COMPANY) return;
 
 		ScriptLogTypes::LogData &log = this->GetLogData();
 		if (log.empty()) return;
@@ -927,6 +893,75 @@ struct ScriptDebugWindow : public Window {
 			DrawString(tr, line.text, colour, SA_LEFT | SA_FORCE);
 			tr.top += this->resize.step_height;
 		}
+	}
+
+	/**
+	 * Update the scrollbar and scroll position of the log panel.
+	 */
+	void UpdateLogScroll()
+	{
+		this->SetWidgetDisabledState(WID_SCRD_SCROLLBAR, script_debug_company == INVALID_COMPANY);
+		if (script_debug_company == INVALID_COMPANY) return;
+
+		ScriptLogTypes::LogData &log = this->GetLogData();
+
+		int scroll_count = (int)log.size();
+		if (this->vscroll->GetCount() != scroll_count) {
+			this->vscroll->SetCount(scroll_count);
+
+			/* We need a repaint */
+			this->SetWidgetDirty(WID_SCRD_SCROLLBAR);
+		}
+
+		if (log.empty()) return;
+
+		/* Detect when the user scrolls the window. Enable autoscroll when the bottom-most line becomes visible. */
+		if (this->last_vscroll_pos != this->vscroll->GetPosition()) {
+			this->autoscroll = this->vscroll->GetPosition() + this->vscroll->GetCapacity() >= (int)log.size();
+		}
+
+		if (this->autoscroll && this->vscroll->SetPosition((int)log.size())) {
+			/* We need a repaint */
+			this->SetWidgetDirty(WID_SCRD_SCROLLBAR);
+			this->SetWidgetDirty(WID_SCRD_LOG_PANEL);
+		}
+
+		this->last_vscroll_pos = this->vscroll->GetPosition();
+	}
+
+	/**
+	 * Update state of all Company (AI) buttons.
+	 */
+	void UpdateAIButtonsState()
+	{
+		/* Update company buttons */
+		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+			/* Mark dead/paused AIs by setting the background colour. */
+			bool valid = Company::IsValidAiID(i);
+			bool dead = valid && Company::Get(i)->ai_instance->IsDead();
+			bool paused = valid && Company::Get(i)->ai_instance->IsPaused();
+
+			NWidgetCore *button = this->GetWidget<NWidgetCore>(i + WID_SCRD_COMPANY_BUTTON_START);
+			button->SetDisabled(!valid);
+			button->SetLowered(script_debug_company == i);
+			SetScriptButtonColour(*button, dead, paused);
+		}
+	}
+
+	/**
+	 * Update state of game script button.
+	 */
+	void UpdateGSButtonState()
+	{
+		GameInstance *game = Game::GetInstance();
+		bool valid = game != nullptr;
+		bool dead = valid && game->IsDead();
+		bool paused = valid && game->IsPaused();
+
+		NWidgetCore *button = this->GetWidget<NWidgetCore>(WID_SCRD_SCRIPT_GAME);
+		button->SetDisabled(!valid);
+		button->SetLowered(script_debug_company == OWNER_DEITY);
+		SetScriptButtonColour(*button, dead, paused);
 	}
 
 	/**
@@ -1072,14 +1107,8 @@ struct ScriptDebugWindow : public Window {
 
 		this->vscroll->SetCount(script_debug_company != INVALID_COMPANY ? this->GetLogData().size() : 0);
 
-		/* Update company buttons */
-		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			this->SetWidgetDisabledState(i + WID_SCRD_COMPANY_BUTTON_START, !Company::IsValidAiID(i));
-			this->SetWidgetLoweredState(i + WID_SCRD_COMPANY_BUTTON_START, script_debug_company == i);
-		}
-
-		this->SetWidgetDisabledState(WID_SCRD_SCRIPT_GAME, Game::GetGameInstance() == nullptr);
-		this->SetWidgetLoweredState(WID_SCRD_SCRIPT_GAME, script_debug_company == OWNER_DEITY);
+		this->UpdateAIButtonsState();
+		this->UpdateGSButtonState();
 
 		this->SetWidgetLoweredState(WID_SCRD_BREAK_STR_ON_OFF_BTN, this->break_check_enabled);
 		this->SetWidgetLoweredState(WID_SCRD_MATCH_CASE_BTN, this->case_sensitive_break_check);
