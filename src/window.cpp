@@ -1393,10 +1393,9 @@ void Window::InitializeData(WindowNumber window_number)
 	this->resize.step_width  = this->nested_root->resize_x;
 	this->resize.step_height = this->nested_root->resize_y;
 
-	/* Give focus to the opened window unless a text box
-	 * of focused window has focus (so we don't interrupt typing). But if the new
-	 * window has a text box, then take focus anyway. */
-	if (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != nullptr) SetFocusedWindow(this);
+	/* Give focus to the opened window unless a dropdown menu has focus or a text box of the focused window has focus
+	 * (so we don't interrupt typing) unless the new window has a text box. */
+	if ((_focused_window == nullptr || _focused_window->window_class != WC_DROPDOWN_MENU) && (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != nullptr)) SetFocusedWindow(this);
 
 	/* Insert the window into the correct location in the z-ordering. */
 	BringWindowToFront(this, false);
