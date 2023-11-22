@@ -1395,7 +1395,9 @@ void Window::InitializeData(WindowNumber window_number)
 
 	/* Give focus to the opened window unless a dropdown menu has focus or a text box of the focused window has focus
 	 * (so we don't interrupt typing) unless the new window has a text box. */
-	if ((_focused_window == nullptr || _focused_window->window_class != WC_DROPDOWN_MENU) && (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != nullptr)) SetFocusedWindow(this);
+	bool dropdown_active = _focused_window != nullptr && _focused_window->window_class == WC_DROPDOWN_MENU;
+	bool editbox_active = EditBoxInGlobalFocus() && this->nested_root->GetWidgetOfType(WWT_EDITBOX) == nullptr;
+	if (!dropdown_active && !editbox_active) SetFocusedWindow(this);
 
 	/* Insert the window into the correct location in the z-ordering. */
 	BringWindowToFront(this, false);
