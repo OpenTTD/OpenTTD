@@ -1285,6 +1285,7 @@ struct BuildVehicleWindow : Window {
 	{
 		/* Set the last cargo filter criteria. */
 		this->cargo_filter_criteria = _engine_sort_last_cargo_criteria[this->vehicle_type];
+		if (this->cargo_filter_criteria < NUM_CARGO && !HasBit(_standard_cargo_mask, this->cargo_filter_criteria)) this->cargo_filter_criteria = CF_ANY;
 
 		this->eng_list.SetFilterFuncs(_filter_funcs);
 		this->eng_list.SetFilterState(this->cargo_filter_criteria != CF_ANY);
