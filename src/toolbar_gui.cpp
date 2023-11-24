@@ -200,14 +200,19 @@ static void PopupMainToolbMenu(Window *w, int widget, DropDownList &&list, int d
  * Pop up a generic text only menu.
  * @param w Toolbar
  * @param widget Toolbar button
- * @param string String for the first item in the menu
- * @param count Number of items in the menu
+ * @param strings List of strings for each item in the menu
  */
-static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count)
+static void PopupMainToolbMenu(Window *w, int widget, const std::initializer_list<StringID> &strings)
 {
 	DropDownList list;
-	for (int i = 0; i < count; i++) {
-		list.push_back(std::make_unique<DropDownListStringItem>(string + i, i, false));
+	int i = 0;
+	for (StringID string : strings) {
+		if (string == STR_NULL) {
+			list.push_back(std::make_unique<DropDownListItem>(-1, false));
+		} else {
+			list.push_back(std::make_unique<DropDownListStringItem>(string, i, false));
+			i++;
+		}
 	}
 	PopupMainToolbMenu(w, widget, std::move(list), 0);
 }
@@ -389,24 +394,22 @@ static CallBackFunction MenuClickSettings(int index)
  * SaveLoad entries in scenario editor mode.
  */
 enum SaveLoadEditorMenuEntries {
-	SLEME_SAVE_SCENARIO   = 0,
+	SLEME_SAVE_SCENARIO = 0,
 	SLEME_LOAD_SCENARIO,
 	SLEME_SAVE_HEIGHTMAP,
 	SLEME_LOAD_HEIGHTMAP,
 	SLEME_EXIT_TOINTRO,
-	SLEME_EXIT_GAME       = 6,
-	SLEME_MENUCOUNT,
+	SLEME_EXIT_GAME,
 };
 
 /**
  * SaveLoad entries in normal game mode.
  */
 enum SaveLoadNormalMenuEntries {
-	SLNME_SAVE_GAME   = 0,
+	SLNME_SAVE_GAME = 0,
 	SLNME_LOAD_GAME,
 	SLNME_EXIT_TOINTRO,
-	SLNME_EXIT_GAME = 4,
-	SLNME_MENUCOUNT,
+	SLNME_EXIT_GAME,
 };
 
 /**
@@ -417,7 +420,8 @@ enum SaveLoadNormalMenuEntries {
  */
 static CallBackFunction ToolbarSaveClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_SAVE, STR_FILE_MENU_SAVE_GAME, SLNME_MENUCOUNT);
+	PopupMainToolbMenu(w, WID_TN_SAVE, {STR_FILE_MENU_SAVE_GAME, STR_FILE_MENU_LOAD_GAME, STR_FILE_MENU_QUIT_GAME,
+			STR_NULL, STR_FILE_MENU_EXIT});
 	return CBF_NONE;
 }
 
@@ -429,7 +433,9 @@ static CallBackFunction ToolbarSaveClick(Window *w)
  */
 static CallBackFunction ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TE_SAVE, STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, SLEME_MENUCOUNT);
+	PopupMainToolbMenu(w, WID_TE_SAVE, {STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO,
+			STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP, STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP,
+			STR_SCENEDIT_FILE_MENU_QUIT_EDITOR, STR_NULL, STR_SCENEDIT_FILE_MENU_QUIT});
 	return CBF_NONE;
 }
 
@@ -518,7 +524,11 @@ static CallBackFunction MenuClickMap(int index)
 
 static CallBackFunction ToolbarTownClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_TOWNS, STR_TOWN_MENU_TOWN_DIRECTORY, (_settings_game.economy.found_town == TF_FORBIDDEN) ? 1 : 2);
+	if (_settings_game.economy.found_town == TF_FORBIDDEN) {
+		PopupMainToolbMenu(w, WID_TN_TOWNS, {STR_TOWN_MENU_TOWN_DIRECTORY});
+	} else {
+		PopupMainToolbMenu(w, WID_TN_TOWNS, {STR_TOWN_MENU_TOWN_DIRECTORY, STR_TOWN_MENU_FOUND_TOWN});
+	}
 	return CBF_NONE;
 }
 
@@ -543,7 +553,7 @@ static CallBackFunction MenuClickTown(int index)
 
 static CallBackFunction ToolbarSubsidiesClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_SUBSIDIES, STR_SUBSIDIES_MENU_SUBSIDIES, 1);
+	PopupMainToolbMenu(w, WID_TN_SUBSIDIES, {STR_SUBSIDIES_MENU_SUBSIDIES});
 	return CBF_NONE;
 }
 
@@ -771,7 +781,11 @@ static CallBackFunction MenuClickGraphsOrLeague(int index)
 static CallBackFunction ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, WID_TN_INDUSTRIES, STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, (_local_company == COMPANY_SPECTATOR) ? 2 : 3);
+	if (_local_company == COMPANY_SPECTATOR) {
+		PopupMainToolbMenu(w, WID_TN_INDUSTRIES, {STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, STR_INDUSTRY_MENU_INDUSTRY_CHAIN});
+	} else {
+		PopupMainToolbMenu(w, WID_TN_INDUSTRIES, {STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, STR_INDUSTRY_MENU_INDUSTRY_CHAIN, STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY});
+	}
 	return CBF_NONE;
 }
 
@@ -1047,7 +1061,7 @@ static CallBackFunction MenuClickForest(int index)
 
 static CallBackFunction ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_MUSIC_SOUND : (int)WID_TN_MUSIC_SOUND, STR_TOOLBAR_SOUND_MUSIC, 1);
+	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_MUSIC_SOUND : (int)WID_TN_MUSIC_SOUND, {STR_TOOLBAR_SOUND_MUSIC});
 	return CBF_NONE;
 }
 
@@ -1066,7 +1080,7 @@ static CallBackFunction MenuClickMusicWindow(int)
 
 static CallBackFunction ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_MESSAGES, STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, 3);
+	PopupMainToolbMenu(w, WID_TN_MESSAGES, {STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, STR_NEWS_MENU_MESSAGE_HISTORY_MENU, STR_NEWS_MENU_DELETE_ALL_MESSAGES});
 	return CBF_NONE;
 }
 
@@ -1101,7 +1115,17 @@ static CallBackFunction PlaceLandBlockInfo()
 
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 12 : 8);
+	if (_settings_client.gui.newgrf_developer_tools) {
+		PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
+				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
+				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD,
+				STR_ABOUT_MENU_SPRITE_ALIGNER, STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES, STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS,
+				STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES});
+	} else {
+		PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
+				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
+				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD});
+	}
 	return CBF_NONE;
 }
 
@@ -1176,15 +1200,15 @@ static CallBackFunction MenuClickHelp(int index)
 	switch (index) {
 		case  0: return PlaceLandBlockInfo();
 		case  1: ShowHelpWindow();                 break;
-		case  3: IConsoleSwitch();                 break;
-		case  4: ShowScriptDebugWindow();          break;
-		case  5: ShowScreenshotWindow();           break;
-		case  6: ShowFramerateWindow();            break;
-		case  7: ShowAboutWindow();                break;
-		case  8: ShowSpriteAlignerWindow();        break;
-		case  9: ToggleBoundingBoxes();            break;
-		case 10: ToggleDirtyBlocks();              break;
-		case 11: ToggleWidgetOutlines();           break;
+		case  2: IConsoleSwitch();                 break;
+		case  3: ShowScriptDebugWindow();          break;
+		case  4: ShowScreenshotWindow();           break;
+		case  5: ShowFramerateWindow();            break;
+		case  6: ShowAboutWindow();                break;
+		case  7: ShowSpriteAlignerWindow();        break;
+		case  8: ToggleBoundingBoxes();            break;
+		case  9: ToggleDirtyBlocks();              break;
+		case 10: ToggleWidgetOutlines();           break;
 	}
 	return CBF_NONE;
 }
