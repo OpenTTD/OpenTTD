@@ -440,31 +440,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Làm trong su�
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Làm trong suốt biển hiệu
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Lưu game
 STR_FILE_MENU_LOAD_GAME                                         :Nạp game
 STR_FILE_MENU_QUIT_GAME                                         :Bỏ game
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Thoát
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Bản đồ thế giới
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Cửa sổ bổ sung
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Ghi chú luồng hàng hóa
 STR_MAP_MENU_SIGN_LIST                                          :Danh sách biển hiệu
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Thư mục thị trấn
 STR_TOWN_MENU_FOUND_TOWN                                        :Thị Xã
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tiền trợ cấp
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Biều đồ lợi nhuận hoạt động
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Biểu đồ thu nhập
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Biểu đồ hàng hoá phân phối
@@ -473,58 +467,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Biểu đồ gi
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Bảng giá cước vận chuyển
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng tầm cỡ công ty
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết hệ số năng suất
 STR_GRAPH_MENU_HIGHSCORE                                        :Bảng điểm chơi cao nhất
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Danh mục các ngành
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Chuỗi cung ứng
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Góp vốn xây nhà máy mới
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Công trình đường ray
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Công trình đường ray điện
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Công trình tàu đơn ray
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Công trình tàu điện từ
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Công trình đường ôtô
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Công trình ô tô điện
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Công trình đường thuỷ
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Công trình sân bay
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Phong cảnh
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Trồng cây
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Đặt ký hiệu
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Âm thanh/nhạc
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Thư/bản tin cuối cùng
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Thông báo cũ
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Xoá tất cả thông điệp
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Thông tin vùng đất
 STR_ABOUT_MENU_HELP                                             :Trợ giúp & hướng dẫn
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
 STR_ABOUT_MENU_AI_DEBUG                                         :Gỡ rối AI / Game script
 STR_ABOUT_MENU_SCREENSHOT                                       :Ảnh chụp màn hình

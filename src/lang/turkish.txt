@@ -441,31 +441,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Şeffaf binalar
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Şeffaf tabelalar
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Kaydet
 STR_FILE_MENU_LOAD_GAME                                         :Yükle
 STR_FILE_MENU_QUIT_GAME                                         :Ana menüye dön
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Çıkış
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Dünya haritası
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ek görünüm
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kargo Akış Göstergesi
 STR_MAP_MENU_SIGN_LIST                                          :Tabela listesi
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Şehir listesi
 STR_TOWN_MENU_FOUND_TOWN                                        :Şehir başlat
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Teşvikler
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Faaliyet kar grafiği
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Gelir grafiği
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Taşınan kargo grafiği
@@ -474,58 +468,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Şirket değeri
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kargo ödeme tablosu
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Şirketler ligi tablosu
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Ayrıntılı performans değerlendirmesi
 STR_GRAPH_MENU_HIGHSCORE                                        :Puan tablosu
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Fabrika listesi
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Sanayi zincirleri
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Yeni fabrika kur
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Demiryolu yapımı
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrikli demiryolu yapımı
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Tekli ray yapımı
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Manyetik ray yapımı
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Yol yapımı
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramvay yapımı
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Suyolu inşaatı
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Havalimanı inşası
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Peyzaj
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Ağaç dik
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Tabela dik
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Ses/müzik
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Son mesaj/haber raporu
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaj geçmişi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Tüm mesajları sil
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
 STR_ABOUT_MENU_HELP                                             :Yardım & Kılavuzlar
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolu aç/kapa
 STR_ABOUT_MENU_AI_DEBUG                                         :YZ/Oyun betik hata ayıklama
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekran görüntüsü

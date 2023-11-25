@@ -365,29 +365,23 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :इमारत
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :स्थानकांची नावे पारदर्शक
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :खेळ वाचवणे
 STR_FILE_MENU_LOAD_GAME                                         :खेळ उघडा
 STR_FILE_MENU_QUIT_GAME                                         :खेळ सोडून द्या
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :बाहेर पडा
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :वैश्विक नकाशा
 STR_MAP_MENU_SIGN_LIST                                          :चिन्हांची यादी
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :शहरांची यादी
 STR_TOWN_MENU_FOUND_TOWN                                        :सापडलेलं शहर
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :अनुदान
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :चालू असले नफा आलेख
 STR_GRAPH_MENU_INCOME_GRAPH                                     :आवक आलेख
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :वितरित मालवाहू आलेख
@@ -396,55 +390,44 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :कंपनी
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :मालवाहू देयक दर
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :कंपनी लीग तक्ता
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :तपशीलावर कामगिरी रेटिंग
 STR_GRAPH_MENU_HIGHSCORE                                        :उच्च स्कोअर तक्ता
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :उद्योग निर्देशिका
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :इंडस्ट्री बंदिवासात
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :नवीन उद्योग फंड
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :लोहमार्ग बांधणी
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्युत लोहमार्ग बांधणी
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :मोनोरेल बांधणी
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :मॅग्लेव बांधणी
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :रस्तेबांधणी
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :ट्रामगाडी बांधणी
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :जलमार्ग बांधणी
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :विमानतळ बांधणी
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_PLANT_TREES                                :झाडे लावा
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :चिन्ह लावा
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :ध्वनी/संगीत
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :शेवटचा संदेश/बातम्या अहवाल
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :निरोपांचा इतिहास
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :जागाची माहिती
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_SCREENSHOT                                       :द्श्य
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन टीटीडी बद्दल
 

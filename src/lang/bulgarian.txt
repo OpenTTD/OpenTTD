@@ -395,30 +395,24 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Прозрач�
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозрачни табели
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Запази игра
 STR_FILE_MENU_LOAD_GAME                                         :Отваряне на игра
 STR_FILE_MENU_QUIT_GAME                                         :Прекъсване на играта
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Изход
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта на света
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Допълнителна камера
 STR_MAP_MENU_SIGN_LIST                                          :Списък с табели
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Списък с градовете
 STR_TOWN_MENU_FOUND_TOWN                                        :Основи град
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидии
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Графика на капитала
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Графика на приходите
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Графика на доставките
@@ -427,57 +421,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Стойнос�
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Тарифи за доставка на стоки
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Класиране на компаниите
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Рейтинг на представянето в детайли
 STR_GRAPH_MENU_HIGHSCORE                                        :Таблица с най-добрите резултати
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Списък на индустриите
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Индустриални вериги
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Инвестирай в нова индустрия
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Конструиране на Двурелсов път
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Строене на електрифицирана ЖП мрежа
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Конструиране на Еднорелсов път
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Конструиране на Магниторелсов път
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Пътно строителство
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Трамвайно строителство
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Воднопътен строеж
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Строене на летище
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Тераформиране
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Засаждане на дървета
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Поставяне на знак
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Звук/музика
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Последно съобщение/новини
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :История на съобщенията
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Изтрий всички съобщения
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Информация за терена
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Показване/скриване на конзола
 STR_ABOUT_MENU_AI_DEBUG                                         :ИИ дебъг
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot

@@ -440,31 +440,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Peisaj transpar
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nume staţii/semne transparente
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Salvează jocul
 STR_FILE_MENU_LOAD_GAME                                         :Încarcă joc
 STR_FILE_MENU_QUIT_GAME                                         :Ieșire în meniul principal
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Ieşire din joc
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Harta lumii
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ecran suplimentar
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda flux încărcătură
 STR_MAP_MENU_SIGN_LIST                                          :Lista de semne
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista oraşelor
 STR_TOWN_MENU_FOUND_TOWN                                        :Fondează oraş
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenţii
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Profitul operaţional
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Venituri
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Număr încărcături livrate
@@ -473,58 +467,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Valoarea compan
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Valorile plăților pe mărfuri
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Clasamentul companiilor
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rating de performanţă detaliat
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela cu scoruri maxime
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Lista industriilor
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Lanțuri industriale
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Obiectiv industrial nou
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construcţie cale ferată
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcţie cale ferată electrificată
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construcţie monoşină
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construcţie pernă magnetică
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construcţii rutiere
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construcție tramvai
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcţie rute acvatice
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construire aeroport
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Modificare peisaj
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantează arbori
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Plasează semn
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Sunet/muzică
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimul mesaj/ultima știre
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Lista ultimelor mesaje
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Șterge toate mesajele
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informaţii despre teren
 STR_ABOUT_MENU_HELP                                             :Ajutor și manuale
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Consolă pornit/oprit
 STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenţă Artificială / Script Joc
 STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecranul

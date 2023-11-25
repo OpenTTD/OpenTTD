@@ -440,31 +440,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gennemsigtige b
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gennemsigtige skilte
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Gem spil
 STR_FILE_MENU_LOAD_GAME                                         :Fortsæt spil
 STR_FILE_MENU_QUIT_GAME                                         :Forlad spillet
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Afslut
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kort over verden
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Nyt lokalitetsvindue
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Laststrømforklaring
 STR_MAP_MENU_SIGN_LIST                                          :Liste over skilte
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversigt
 STR_TOWN_MENU_FOUND_TOWN                                        :Stift by
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tilskudsordninger
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf over afkast
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf over indkomster
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf over leveret last
@@ -473,58 +467,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf over selsk
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Graf over lastudbetalingsrater
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Selskabsoversigt
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljeret præstationsoversigt
 STR_GRAPH_MENU_HIGHSCORE                                        :Topresultater
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrioversigt
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrikæder
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansiér ny industri
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Jernbanekonstruktion
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrisk jernbanekonstruktion
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorailkonstruktion
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magnetskinnekonstruktion
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Vejkonstruktion
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Sporvejskonstruktion
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Bygning af vandveje
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lufthavnskonstruktion
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landskabsværktøjer
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant træer
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Placer skilt
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Lyd/Musik
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Seneste besked/nyhedsrapport
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidligere beskeder
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Slet alle beskeder
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landområde information
 STR_ABOUT_MENU_HELP                                             :Hjælp & manualer
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Tænd/Sluk konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :Computerspiller/spilscript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skærmbillede (Ctrl-S)

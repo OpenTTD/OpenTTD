@@ -482,31 +482,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Διαφανέ�
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Διάφανες ταμπέλες
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Αποθήκευση παιχνιδιού
 STR_FILE_MENU_LOAD_GAME                                         :Φόρτωση παιχνιδιού
 STR_FILE_MENU_QUIT_GAME                                         :Έξοδος από το παιχνίδι
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Έξοδος
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Χάρτης του κόσμου
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Πρόσθετη εμφάνιση
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Υπόμνημα Ροής Φορτίου
 STR_MAP_MENU_SIGN_LIST                                          :Λίστα πινακίδων
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Καταλογος πόλεων
 STR_TOWN_MENU_FOUND_TOWN                                        :Ιδρύση πόλης
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Χρηματοδοτήσεις
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Γράφημα λειτουργικού κέρδους
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Γράφημα εισοδήματος
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Γράφημα παραδοθέντος φορτίου
@@ -515,57 +509,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Γράφημα 
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ποσοστά πληρωμής φορτίου
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Πίνακας κατάταξης επιχειρήσεων
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Λεπτομερής εκτίμηση απόδοσης
 STR_GRAPH_MENU_HIGHSCORE                                        :Πίνακας βαθμολογίας
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Κατάλογος Βιομηχανιών
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Αλυσίδες βιομηχανιών
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Χρηματοδότηση νέας βιομηχανίας
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Κατασκευή σιδηρόδρομου
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Κατασκευή ηλεκτροδοτουμένου σιδηρόδρομου
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Κατασκευή μονοτρόχιου
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Κατασκευή Maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Κατασκευή δρόμου
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Κατασκευή τροχιόδρομου
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Κατασκευή καναλιού νερού
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Κατασκευή αεροδρομίου
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Μορφοποίηση εδάφους
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Φύτευση δέντρων
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Τοποθέτηση πινακίδας
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Ήχος/Μουσική
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Τελευταίο μήνυμα/αναφορά ειδήσεων
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ιστορικό μηνυμάτων
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Διαγραφή όλων των μηνυμάτων
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Πληροφορίες περιοχής εδάφους
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή κονσόλας
 STR_ABOUT_MENU_AI_DEBUG                                         :Αποσφαλμάτωση AI και δέσμης ενεργειών παιχνιδιού
 STR_ABOUT_MENU_SCREENSHOT                                       :Στιγμιότυπο οθόνης

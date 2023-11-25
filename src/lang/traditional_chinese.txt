@@ -440,31 +440,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :視野穿透建
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :半透明標籤
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :儲存遊戲
 STR_FILE_MENU_LOAD_GAME                                         :載入遊戲
 STR_FILE_MENU_QUIT_GAME                                         :放棄遊戲
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :離開
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :世界地圖
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :打開新視野
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :貨物流程索引
 STR_MAP_MENU_SIGN_LIST                                          :標誌清單
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :市鎮目錄
 STR_TOWN_MENU_FOUND_TOWN                                        :興建市鎮
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :補助資訊
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :營運報表
 STR_GRAPH_MENU_INCOME_GRAPH                                     :收入圖表
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :運載報表
@@ -473,58 +467,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :公司市值圖
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :貨物運費表
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :公司排行榜
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :詳細營運評比
 STR_GRAPH_MENU_HIGHSCORE                                        :積分排行榜
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :工業目錄
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :工業關係鏈
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :投資成立工廠
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :鋪設鐵軌
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :鋪設電氣化鐵路
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :鋪設單軌
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :鋪設磁浮軌
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :鋪設道路
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :鋪設電車軌
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :興建水道
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :興建機場
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :地形
 STR_LANDSCAPING_MENU_PLANT_TREES                                :植樹
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :放置標誌
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :音效／背景音樂
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :上次訊息／新聞報告
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :訊息記錄
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :刪除所有訊息
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :土地資訊
 STR_ABOUT_MENU_HELP                                             :幫助和手冊
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切換主控台
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/遊戲腳本除錯
 STR_ABOUT_MENU_SCREENSHOT                                       :擷取畫面

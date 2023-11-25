@@ -402,31 +402,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :مباني شف
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :اسماء المحطات شفافة
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :حفظ
 STR_FILE_MENU_LOAD_GAME                                         :تحميل
 STR_FILE_MENU_QUIT_GAME                                         :اغلاق اللعبة
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :خروج
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :خريطة العالم
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :شاشة عرض اضافية
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :مفتاح تدفق البضائع
 STR_MAP_MENU_SIGN_LIST                                          :قائمة العلامات
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :دليل المدن
 STR_TOWN_MENU_FOUND_TOWN                                        :جد المدينة
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :العروض
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :مخطط التشغيل
 STR_GRAPH_MENU_INCOME_GRAPH                                     :مخطط الارباح
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :مخطط البضاعة المشحونة
@@ -435,57 +429,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :مخطط قيم
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :معدل تكلفة النقل
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :ترتيب الشركات
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :تقييم أداء مفصل
 STR_GRAPH_MENU_HIGHSCORE                                        :قائمه المتفوقين
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :دليل المصانع
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :سلاسل الصناعة
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :مول بناء مصنع
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :بناء سكة قطار حديدية
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :بناء سكة الحديد الكهربائية
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :بناء سكة قطار احادية
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :بناء سكة قطار ممغنطة
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :بناء الطرق
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :بناء الترام
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :بناء ممرات مائيه
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :بناء المطار
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :تصميم الخريطة
 STR_LANDSCAPING_MENU_PLANT_TREES                                :زراعة اشجار
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :وضع علامات
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :الموسيقى/الصوت
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :الرسالة الأخيرة/التقرير الجديد
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :الرسائل السابقة
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :احذف كل الرسائل
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :معلومات مربع في الخريطة
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :توقل كونسول
 STR_ABOUT_MENU_AI_DEBUG                                         :مكتشف اخطاء الذكاء الصناعي
 STR_ABOUT_MENU_SCREENSHOT                                       :صورة من الشاشة - Ctrl-S -

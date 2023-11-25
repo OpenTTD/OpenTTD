@@ -613,31 +613,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Skaidrūs pasta
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Skaidrūs ženklai
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Išsaugoti žaidimą
 STR_FILE_MENU_LOAD_GAME                                         :Įkelti žaidimą
 STR_FILE_MENU_QUIT_GAME                                         :Palikti žaidimą
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Išeiti
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Žemėlapis
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Papildomas peržiūros langas
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Krovinių srautų legenda
 STR_MAP_MENU_SIGN_LIST                                          :Ženklų sąrašas
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Miestų sąrašas
 STR_TOWN_MENU_FOUND_TOWN                                        :Įkurti miestą
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidijos
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Įprastinės veiklos pelno diagrama
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Pajamų diagrama
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Krovinių pristatymo diagrama
@@ -646,57 +640,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Kompanijos vert
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Krovinių apmokėjimo lygis
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Kompanijos užimama vieta
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Išsamus veiklos įvertinimas
 STR_GRAPH_MENU_HIGHSCORE                                        :Nugalėtojų lentelė
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Pramonės katalogas
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Gamybos grandinės
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Įsteigti naują pramonės įmonę
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Tiesti geležinkelius
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Tiesti elektrifikuotus geležinkelius
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Tiesti vienbėgius geležinkelius
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Tiesti „Maglev“ geležinkelius
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Tiesti kelius
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tiesti tramvajaus linijas
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Tiesti vandens kelius
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Statyti oro uostus
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Formuoti kraštovaizdį
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Sodinti medžius
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Statyti ženklus
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Garsas/muzika
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Paskutinė žinutė/naujiena
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Žinučių istorija
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Pašalinti visas žinutes
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Žemės ploto informacija
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Perjungti konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript derinimas
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekrano nuotrauka

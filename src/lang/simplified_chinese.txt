@@ -440,31 +440,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :透明建筑
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :透明车站标志
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :保存游戏
 STR_FILE_MENU_LOAD_GAME                                         :读取存档
 STR_FILE_MENU_QUIT_GAME                                         :放弃游戏
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :退出
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :缩略地图
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :额外视点
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :客货流图标
 STR_MAP_MENU_SIGN_LIST                                          :标志列表
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :城镇列表
 STR_TOWN_MENU_FOUND_TOWN                                        :建立城镇
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :财政补贴
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :利润图表
 STR_GRAPH_MENU_INCOME_GRAPH                                     :收入图表
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :运输货物图表
@@ -473,58 +467,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :公司市值图
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :货物运费图表
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :公司评价排名
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :公司评价明细
 STR_GRAPH_MENU_HIGHSCORE                                        :高分榜
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :工业列表
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :产业链
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :新建工业设施
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :铁路建设
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :电气化铁路建设
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :单轨铁路建设
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :磁悬浮铁路建设
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :道路建设
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :电车建设
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :水运建设
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :机场建设
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :景观美化
 STR_LANDSCAPING_MENU_PLANT_TREES                                :植树
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :放置标志
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :声音/音乐
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :最新消息/新闻
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :消息历史
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :删除全部消息
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :查询地块信息
 STR_ABOUT_MENU_HELP                                             :帮助和指南
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制台模式
 STR_ABOUT_MENU_AI_DEBUG                                         :AI /游戏脚本调试
 STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图

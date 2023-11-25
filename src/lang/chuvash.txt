@@ -234,55 +234,38 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Вӑййи ма
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF майлаштару
 
 # File menu
-###length 5
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Тух
 
 # Map menu
-###length 4
 
 # Town menu
-###length 2
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Грантсем
 
 # Graph menu
-###length 6
 
 # Company league menu
-###length 3
 
 # Industry menu
-###length 3
 
 # URailway construction menu
-###length 4
 
 # Road construction menu
-###length 2
 
 # Waterways construction menu
-###length 1
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Аэропорт ҫурт
 
 # Landscaping menu
-###length 3
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Сасӑ/Юрӑ-кӗвӗ
 
 # Message menu
-###length 3
 
 # About menu
-###length 12
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_SCREENSHOT                                       :Экран сӑнӗ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' çинчен
 

@@ -404,31 +404,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :கட்டட
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :ஒளிபுகும் குறிகள்
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :விளையாட்டை பதி
 STR_FILE_MENU_LOAD_GAME                                         :விளையாட்டை ஏற்று
 STR_FILE_MENU_QUIT_GAME                                         :விளையாட்டை கைவிடு
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :வெளியேறு
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :உலகப் படம்
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :கூடுதல் பார்வைபடம்
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :சரக்கு செல்லும் வழிப் படம்
 STR_MAP_MENU_SIGN_LIST                                          :குறிகளின் பட்டியல்
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :நகர புத்தகம்
 STR_TOWN_MENU_FOUND_TOWN                                        :நகரம் உருவாக்கு
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :மானியங்கள்
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :தொழிற்பாட்டு இலாப வரைபடம்
 STR_GRAPH_MENU_INCOME_GRAPH                                     :வருமான வரைபடம்
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :கொண்டு சேர்கப்பட்ட சரக்கு வரைபடம்
@@ -437,57 +431,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :கம்பெ
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :சரக்கு வருமானங்கள்
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :நிறுவனங்களின் பட்டியல்
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :விவரமான செயல்திறன் மதிப்பீடு
 STR_GRAPH_MENU_HIGHSCORE                                        :புள்ளிகள் பட்டியல்
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :தொழிற்சாலைகளின் பட்டியல்
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :தொழிற்சாலைத் தொடர்கள்
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :புதிய தொழிற்சாலையை நிறுவு
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :இரயில்வே கட்டுமானம்
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :மின்சார இரயில்வே கட்டுமானம்
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :மோனோ இரயில் கட்டுமானம்
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :மேக்லெவ் கட்டுமானம்
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :சாலை கட்டுமானம்
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :அமிழ் தண்டூர்திப் பாதை கட்டுமானம்
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :கடல்வழி போக்குவரத்து கட்டுமானம்
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :விமானநிலைய கட்டுமானம்
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :நிலத்தோற்றம் மாற்றுதல்
 STR_LANDSCAPING_MENU_PLANT_TREES                                :மரங்களை நடு
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :அறிவிக்கை பலகை வை
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :ஒலி/இசை
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :கடைசி செய்தி/செய்தி அறிவிக்கை
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :செய்தி வரலாறு
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :எல்லா செய்திகளையும் நீக்கு
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :நிலா பகுதி விவரம்
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :முனையத்தை மாற்று
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/வரிவடிவம் சரிபார்
 STR_ABOUT_MENU_SCREENSHOT                                       :திரைபிடிப்பு

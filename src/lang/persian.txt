@@ -385,31 +385,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :ساختمان 
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف کردن نشان های ایستگاه ها
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :ذخیره بازی
 STR_FILE_MENU_LOAD_GAME                                         :فراخوانی بازی
 STR_FILE_MENU_QUIT_GAME                                         :رها کردن بازی
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :خروج
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :نقشه ی دنیا
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :نمای اضافه
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :میزان حمل بار
 STR_MAP_MENU_SIGN_LIST                                          :لیست نشانه
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :لیست شهر ها
 STR_TOWN_MENU_FOUND_TOWN                                        :ساخت شهر
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :یارانه ها
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :نمودار سود خالص
 STR_GRAPH_MENU_INCOME_GRAPH                                     :نمودار درآمد
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :نمودار محموله های رسانده شده
@@ -418,56 +412,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :نمودار ا
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :نمودار قیمت پرداختی محموله ها
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :جدول اتحادیه شرکتها
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :جزییات امتیازهای کارایی
 STR_GRAPH_MENU_HIGHSCORE                                        :جدول بالاترین امتیازها
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :فهرست صنایع
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :زنجیره تولید
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ساخت کارخانه جدید
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :ساخت راه آهن
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :ساخت و ساز ریل برقی
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :ساخت مونوریل
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :ساخت ریل مغناطیسی
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :ساخت جاده
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :ساخت ساز تراموا
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :ساخت ساز آبراهه
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ساختمان فرودگاه
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :محوطه سازی
 STR_LANDSCAPING_MENU_PLANT_TREES                                :کاشتن درخت
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :قرار دادن علامت
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :صدا/موسیقی
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :گزارش آخرین پیام/خبر
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخچه پیام ها
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :اطلاعات زمین ها
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :باز و بسته کردن کنسول
 STR_ABOUT_MENU_AI_DEBUG                                         :خطایابی هوش مصنوعی
 STR_ABOUT_MENU_SCREENSHOT                                       :تصویر از بازی

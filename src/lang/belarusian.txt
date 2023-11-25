@@ -711,31 +711,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Празрыс�
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Празрыстыя надпісы
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Захаваць гульню
 STR_FILE_MENU_LOAD_GAME                                         :Загрузіць гульню
 STR_FILE_MENU_QUIT_GAME                                         :Да галоўнага мэню
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Выхад
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Мапа сусьвету
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Дадатковае вакно прагляду
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Леґенда грузаперавозак
 STR_MAP_MENU_SIGN_LIST                                          :Сьпіс таблічак
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Сьпіс гарадоў
 STR_TOWN_MENU_FOUND_TOWN                                        :Заснаваць горад
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсыдыі
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Ґрафік прыбытку
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Ґрафік даходу
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Ґрафік дастаўленага грузу
@@ -744,57 +738,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Ґрафік в
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ґрафік аплаты перавозак
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Табліца фірмаў
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Дэталізаваны рэйтынґ кампаніі
 STR_GRAPH_MENU_HIGHSCORE                                        :Табліца рэкордаў
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Пералік прамысловасьці
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Вытворчыя ланцужкі
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Заснаваць новае прадпрыемства
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Будаўніцтва чыгункі
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Будаўніцтва электрыфікаванай чыгункі
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Будаўніцтва монарэйкавай дарогі
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Будаўніцтва маґлева
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Будаўніцтва дарогаў
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будаўніцтва трамвайных каляiнаў
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Будаўніцтва водных камунікацыяў
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Будаўніцтва аэрапортаў
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Ляндшафт
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Пасадзіць дрэвы
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Паставіць метку
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Гукі/музыка
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Апошняе паведамленьне
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Гісторыя паведамленьняў
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Выдаліць усе паведамленьні
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Зьвесткі аб зямлі
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Кансоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Наладка штучнага інтэлекту (ШІ/AI) / скрыптоў
 STR_ABOUT_MENU_SCREENSHOT                                       :Здымак экрана (Ctrl+S)

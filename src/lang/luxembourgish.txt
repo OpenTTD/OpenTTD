@@ -422,31 +422,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparent Geb
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent Schëlder
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Spill späicheren
 STR_FILE_MENU_LOAD_GAME                                         :Spill lueden
 STR_FILE_MENU_QUIT_GAME                                         :Spill ophalen
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Eraus
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Weltkaart
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra Usiicht
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Cargo Flow Legend
 STR_MAP_MENU_SIGN_LIST                                          :Schëlderlëscht
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stiedverzeeschnëss
 STR_TOWN_MENU_FOUND_TOWN                                        :Stad grënnen
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subside
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafik: Operative Gewënn
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafik: Akommes
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafik: Geliwwert Luedungen
@@ -455,57 +449,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafik: Betribs
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Luedungs Bezuelraten
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Betribsranglëscht
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailléiert Leeschtungsbewäertung
 STR_GRAPH_MENU_HIGHSCORE                                        :Beschtelëscht
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrielëscht
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrieketten
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finanzéiert eng nei Industrie
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Schinnebau
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrësche Schinnebau
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorailbau
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magnéitbunnbau
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Stroossebau
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Trambau
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Waasserstroosse bauen
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Fluchhafebau
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landschaftsbau
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Beem planzen
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Schëld opstellen
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Lescht Meldung/Neiegkeet
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meldungshistorie
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :All Message läschen
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatiounen
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole un/aus
 STR_ABOUT_MENU_AI_DEBUG                                         :KI / Spill-Script Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)

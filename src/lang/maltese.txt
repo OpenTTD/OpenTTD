@@ -272,50 +272,34 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 ###length 15
 
 # File menu
-###length 5
-STR_FILE_MENU_SEPARATOR                                         :
 
 # Map menu
-###length 4
 
 # Town menu
-###length 2
 
 # Subsidies menu
-###length 1
 
 # Graph menu
-###length 6
 
 # Company league menu
-###length 3
 
 # Industry menu
-###length 3
 
 # URailway construction menu
-###length 4
 
 # Road construction menu
-###length 2
 
 # Waterways construction menu
-###length 1
 
 # Aairport construction menu
-###length 1
 
 # Landscaping menu
-###length 3
 
 # Music menu
-###length 1
 
 # Message menu
-###length 3
 
 # About menu
-###length 12
 
 # Place in highscore window
 ###length 15

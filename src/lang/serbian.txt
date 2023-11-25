@@ -610,31 +610,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparentne z
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentni znakovi
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Sačuvaj igru
 STR_FILE_MENU_LOAD_GAME                                         :Učitaj igru
 STR_FILE_MENU_QUIT_GAME                                         :Napusti igru
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Izađi
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Karta sveta
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Dodatno gledište
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda protoka tereta
 STR_MAP_MENU_SIGN_LIST                                          :Lista Znakova
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Popis naselja
 STR_TOWN_MENU_FOUND_TOWN                                        :Osnivanje naselja
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafikon operativnog profita
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafikon prihoda
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafikon dostavljenog tereta
@@ -643,57 +637,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafikon vredno
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stope naplate tereta
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabela lige preduzeća
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljan pregled poslovanja
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela najboljih rezultata
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Spisak fabrika
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Lanci fabrika
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansiranje nove fabrike
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Izgradnja železnice
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Izgradnja elektrifikovane železnice
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Izgradnja jednošinske železnice
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Izgradnja magnetne železnice
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Izgradnja drumskog sistema
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Izgradnja tramvajskog sistema
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Izgradnja plovnog sistema
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Izgradnja aerodroma
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Oblikovanje terena
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Posadi drvo
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Postavi znak
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Zvuk/muzika
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Poslednja poruka/izveštaj
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Istorija Obaveštenja
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Obriši sve poruke
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Podaci o zemljištu
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Uključi/isključi konzolu
 STR_ABOUT_MENU_AI_DEBUG                                         :Korekcija VI / skripte igre
 STR_ABOUT_MENU_SCREENSHOT                                       :Sačuvaj sliku

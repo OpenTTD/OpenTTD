@@ -424,31 +424,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Caurspīdīgas 
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Caurspīdīgas zīmes
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Saglabāt spēli
 STR_FILE_MENU_LOAD_GAME                                         :Ielādēt spēli
 STR_FILE_MENU_QUIT_GAME                                         :Pamest spēli
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Iziet
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Pasaules karte
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Papildu skatvieta
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kravu plūsmas apzīmējumi
 STR_MAP_MENU_SIGN_LIST                                          :Zīmju saraksts
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Pilsētu saraksts
 STR_TOWN_MENU_FOUND_TOWN                                        :Dibināt pilsētu
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsīdijas
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Darbības peļņas diagramma
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Ienākumu diagramma
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Piegādāto kravu diagramma
@@ -457,57 +451,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Uzņēmuma vēr
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kravas apmaksas cenas
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Uzņēmumu rangu saraksts
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detalizēts uzņēmējdarbības vērtējums
 STR_GRAPH_MENU_HIGHSCORE                                        :Sasniegumu tabula
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Ražotņu saraksts
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Ražotņu ķēdes
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansēt jaunu ražotni
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Dzelzceļa būvniecība
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrificētā dzelzceļa būvniecība
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Viensliedes būvniecība
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magleva būvniecība
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Ceļu būvēšana
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramvaju ceļa būvniecība
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Ūdensceļu būvniecība
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lidostas būvniecība
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Ainavas veidošana
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Stādīt kokus
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Novietot zīmi
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Skaņa/mūzika
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Pēdējais ziņojums/avīzes raksts
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ziņojumu vēsture
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Dzēst visus ziņojumus
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Zemes platības informācija
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Atvērt/aizvērt konsoli
 STR_ABOUT_MENU_AI_DEBUG                                         :MI/spēles skriptu atkļūdošana
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekrānuzņēmums

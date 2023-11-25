@@ -133,53 +133,36 @@ STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :पथ-सं�
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :पारदर्शी संकेत
 
 # File menu
-###length 5
-STR_FILE_MENU_SEPARATOR                                         :
 
 # Map menu
-###length 4
 
 # Town menu
-###length 2
 
 # Subsidies menu
-###length 1
 
 # Graph menu
-###length 6
 
 # Company league menu
-###length 3
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :औद्योगिक शृंखला
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्युतिकृत रेलवे निर्माण
 
 # Road construction menu
-###length 2
 
 # Waterways construction menu
-###length 1
 
 # Aairport construction menu
-###length 1
 
 # Landscaping menu
-###length 3
 
 # Music menu
-###length 1
 
 # Message menu
-###length 3
 
 # About menu
-###length 12
-STR_ABOUT_MENU_SEPARATOR                                        :
 
 # Place in highscore window
 ###length 15

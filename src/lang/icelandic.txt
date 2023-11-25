@@ -373,30 +373,24 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gegnsæjar bygg
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gegnsæ skilti
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Vista leik
 STR_FILE_MENU_LOAD_GAME                                         :Opna leik
 STR_FILE_MENU_QUIT_GAME                                         :Hætta leik
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Hætta
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Heimskort
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Auka sjónarhorn
 STR_MAP_MENU_SIGN_LIST                                          :Skiltalisti
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Listi yfir bæi
 STR_TOWN_MENU_FOUND_TOWN                                        :Fann bæ
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Samstarfssamningar
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Línurit: Rekstrarhagnaður
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Línurit: Tekjur
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Línurit: Fluttur farmur
@@ -405,56 +399,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Línurit: Verð
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Línurit: Flutningsgróði
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Stigatafla fyrirtækja
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Nákvæm frammistöðumæling
 STR_GRAPH_MENU_HIGHSCORE                                        :Stigatafla
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Fyrirtækjaskrá
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Tengdur iðnaður
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fjármagna nýjan iðnað
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Járnbrautarspors framkvæmdir
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Rafmagnsspora framkvæmdir
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Einteinungsframkvæmdir
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Segulsvifvagna framkvæmdir
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Vegagerð
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Sporvagnaframkvæmdir
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Vatnaframkvæmdir
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flugvallarframkvæmdir
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Mótun lands
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Gróðursetja tré
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Setja skilti
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Hljóð/tónlist
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Síðustu skilaboð/frétt
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Saga skilaboða
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landssvæðisupplýsingar
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Kveikja á stýriskjá
 STR_ABOUT_MENU_AI_DEBUG                                         :Aflúsun gervigreindar/forskrifta
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjámynd

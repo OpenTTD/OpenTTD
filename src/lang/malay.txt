@@ -377,30 +377,24 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Bangunan-bangun
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Teluskan tanda arah
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Simpan Permainan
 STR_FILE_MENU_LOAD_GAME                                         :Buka Permainan
 STR_FILE_MENU_QUIT_GAME                                         :Tinggalkan Permainan
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Keluar
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Peta Dunia
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Tetingkap pemandangan tambahan
 STR_MAP_MENU_SIGN_LIST                                          :Senarai papan tanda
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Senarai Nama Bandar
 STR_TOWN_MENU_FOUND_TOWN                                        :Binakan bandar
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidi
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf keuntungan operasi
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf Pendapatan
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf Penghantaran Kargo
@@ -409,56 +403,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf nilai syar
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kadar bayaran kargo
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Jadual liga syarikat
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Penarafan prestasi secara terperinci
 STR_GRAPH_MENU_HIGHSCORE                                        :Carta mata tertinggi
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Direktori Industri
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Rantaian industri
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Biaya industri baru
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Pembinaan landasan keretapi
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Pembinaan landasan keretapi berelektrik
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Pembinaan landasan monorel
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Pembinaan landasan maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Pembinaan jalanraya
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Pembinaan laluan trem
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Pembinaan tali air
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Pembinaan lapangan terbang
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Pemindaan lanskap
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Tanam pokok-pokok
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Letakkan papan tanda
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Bunyi/muzik
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Pesanan/laporan berita terkini
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Pesanan sebelumnya
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maklumat kawasan tanah
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Papar atau padamkan konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :Al/Skrip pepijat permainan
 STR_ABOUT_MENU_SCREENSHOT                                       :Tangkapan skrin (Ctrl+S)

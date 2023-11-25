@@ -582,31 +582,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Togalaichean tr
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Sanasan trìd-sholleir
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Sàbhail an geama
 STR_FILE_MENU_LOAD_GAME                                         :Luchdaich geama
 STR_FILE_MENU_QUIT_GAME                                         :Fàg an geama
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Fàg an-seo
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa an t-saoghail
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Port-seallaidh a bharrachd
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Clàr-mìneachaidh an t-srutha carago
 STR_MAP_MENU_SIGN_LIST                                          :Liosta nan sanas
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Eòlaire nam bailtean
 STR_TOWN_MENU_FOUND_TOWN                                        :Baile air a lorg
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tarrailean
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf air prothaid-obrachaidh
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf air teachd a-steach
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf air carago air a lìbhrigeadh
@@ -615,56 +609,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf air luach 
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Reataichean pàighidh carago
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Clàr co-bhann nan companaidh
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Mion-rangachadh dèanadais
 STR_GRAPH_MENU_HIGHSCORE                                        :Liosta nan sgòran àrda
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Eòlaire nan gnìomhachas
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Sreathan nan gnìomhachas
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Maoinich gnìomhachas ùr
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Togail rathaid-iarainn
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Togail rathaid-iarainn dealain
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Togail rathaid-iarainn aona-rèile
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Togail rathaid-iarainn magnaiteach
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Togail rathaidean
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Togail slighe-trama
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Togail slighe-uisge
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Togail puirt-adhair
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Cruth-tìre
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Cuir craobhan
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Cuir sanas
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Fuaim/ceòl
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Am brath/aithris naidheachd mu dheireadh
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Eachdraidh nam brath
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Fiosrachadh raon tìre
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglaich a' chonsoil
 STR_ABOUT_MENU_AI_DEBUG                                         :Dì-bhugaich IF/sgriobt geama
 STR_ABOUT_MENU_SCREENSHOT                                       :Glacadh-sgrìn

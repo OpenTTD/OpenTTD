@@ -441,31 +441,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificis transp
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Senyals transparents
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Desa la partida
 STR_FILE_MENU_LOAD_GAME                                         :Carrega una partida
 STR_FILE_MENU_QUIT_GAME                                         :Abandona la partida
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Surt
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa del món
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Vista extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Llegenda del flux de càrrega
 STR_MAP_MENU_SIGN_LIST                                          :Llista de senyals
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Llista de poblacions
 STR_TOWN_MENU_FOUND_TOWN                                        :Funda una població
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencions
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gràfic de beneficis operatius
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Gràfic d'ingressos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gràfic d'entrega de càrrega
@@ -474,58 +468,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gràfic del val
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifes de pagament per càrrega
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Taula de la lliga de companyies
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detall de ratis de rendiment
 STR_GRAPH_MENU_HIGHSCORE                                        :Taula de puntuacions
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Llista d'indústries
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadenes industrials
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finança una nova indústria
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construcció de ferrocarril
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construcció de ferrocarril elèctric
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construcció de monorail
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construcció de maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construcció de carreteres
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construcció de tramvies
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcció de canals
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construcció d'aeroports
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Modificació del paisatge
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Planta arbres
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Situa un senyal
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :So/música
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Darrer missatge/notícia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de missatges
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Esborra tots els missatges
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de la casella
 STR_ABOUT_MENU_HELP                                             :Ajuda i manuals
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Commuta la consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuració de les IA i l'script de partida
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla

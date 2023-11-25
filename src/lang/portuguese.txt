@@ -441,31 +441,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edifícios tran
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Sinais Transparentes
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Guardar jogo
 STR_FILE_MENU_LOAD_GAME                                         :Abrir jogo
 STR_FILE_MENU_QUIT_GAME                                         :Abandonar jogo
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Sair
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa do mundo
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Visualizador extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda do fluxo de carga
 STR_MAP_MENU_SIGN_LIST                                          :Lista de sinais
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de localidades
 STR_TOWN_MENU_FOUND_TOWN                                        :Fundar localidade
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfico do lucro operacional
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Rendimentos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Carga entregue
@@ -474,58 +468,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Valor da empres
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas por carga
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Classificação de empresas
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Classificação detalhada de desempenho
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela de classificações
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Lista de indústrias
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadeias de indústria
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiar nova indústria
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construção de caminhos-de-ferro
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construção de caminhos-de-ferro eletrificados
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construir monocarril
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construir Maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construir estradas
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construção de carris para eléctricos
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construção de hidrovia
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construção de aeroportos
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Paisagem
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantar árvores
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Colocar sinal
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Som/música
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Última mensagem/notícia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Histórico de mensagens
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as mensagens
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
 STR_ABOUT_MENU_HELP                                             :Ajuda & manuais
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/Ocultar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA/Scripts de jogo
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã

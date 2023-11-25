@@ -548,31 +548,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Prosojne stavbe
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Prosojni napisi postaj
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Shrani igro
 STR_FILE_MENU_LOAD_GAME                                         :Naloži igro
 STR_FILE_MENU_QUIT_GAME                                         :Zapusti igro
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Izhod
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Zemljevid sveta
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Dodaten pogled
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda pretoka tovora
 STR_MAP_MENU_SIGN_LIST                                          :Seznam napisov
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Imenik mest
 STR_TOWN_MENU_FOUND_TOWN                                        :Ustanovi mesto
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf dobička
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf prihodkov
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf dostavljenega tovora
@@ -581,56 +575,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf vrednosti 
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Graf plačila za tovore
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabela lige podjetij
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Podrobna ocena uspeha
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela najboljših rezultatov
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Imenik industrij
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrijske verige
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiraj novo industrijo
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Gradnja železnice
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Gradnja elektrificirane železnice
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Enotirna železnica
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magnetna železnica
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Gradnja ceste
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Gradnja tramvaj proge
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Gradnja vodnih poti
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Gradnja letališča
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Oblikovanje terena
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Posadi drevesa
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Postavi znak
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Zvok/glasba
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Zadnje sporočilo/novica
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Zgodovina sporočil
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacije o terenu
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vklopi/Izklopi konzolo
 STR_ABOUT_MENU_AI_DEBUG                                         :Razhročevanje UI / skript
 STR_ABOUT_MENU_SCREENSHOT                                       :Zajemi sliko

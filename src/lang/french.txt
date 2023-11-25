@@ -441,31 +441,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Édifices trans
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Panneaux transparents
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Sauvegarder la partie
 STR_FILE_MENU_LOAD_GAME                                         :Charger une partie
 STR_FILE_MENU_QUIT_GAME                                         :Abandonner la partie
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Quitter le jeu
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Carte du monde
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Vue supplémentaire
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Légende du flux de marchandises
 STR_MAP_MENU_SIGN_LIST                                          :Liste des panneaux
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Annuaire des villes
 STR_TOWN_MENU_FOUND_TOWN                                        :Fonder une ville
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventions
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Profit d'opération
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Revenu
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Cargaison livrée
@@ -474,58 +468,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Valeur de la co
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Valeur des marchandises
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Classement des compagnies
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Détail des performances
 STR_GRAPH_MENU_HIGHSCORE                                        :Meilleurs scores
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Annuaire des industries
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Chaînes des industries
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financer une nouvelle industrie
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construction de voie ferrée
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construction de voie ferrée électrifiée
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construction de Monorail
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construction de Maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construction routière
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construction de tramway
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construction de voies navigables
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construction d'aéroports
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Modification du paysage
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Planter des arbres
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Placer un panneau
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Son/Musique
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Message/Bulletin précédent
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historique des messages
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Effacer tous les messages
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Outil d'inspection du paysage
 STR_ABOUT_MENU_HELP                                             :Aide et manuels
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Afficher/Cacher la console
 STR_ABOUT_MENU_AI_DEBUG                                         :Débogage de scripts
 STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran

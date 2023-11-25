@@ -395,31 +395,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Trochsichtige g
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Trochsichtige nammen
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Spul opslaan
 STR_FILE_MENU_LOAD_GAME                                         :Spul lade
 STR_FILE_MENU_QUIT_GAME                                         :Spul ferlitte
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Ôfslute
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Wrâldkaart
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ekstra finster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Frachtstreamleginda
 STR_MAP_MENU_SIGN_LIST                                          :Buordsjeslist
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stêdlist
 STR_TOWN_MENU_FOUND_TOWN                                        :In stêd stichte
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydzjes
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Fertsjinstengrafyk
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Ynkomstengrafyk
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Oflevere frachtgrafyk
@@ -428,56 +422,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Bedriuwsweardeg
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Frachtprizengrafyk
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bedriuwskompetysjetabel
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Wiidweidiche prestaasjewurdearring
 STR_GRAPH_MENU_HIGHSCORE                                        :Topskoretabel
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Yndustrylist
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Yndustrykeatlings
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Nije yndustry finansierje
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoarwei bouwe
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektifisearre spoarwei bouwe
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorail bouwe
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglev bouwe
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Wegen bouwe
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramwei bouwe
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Wetterwei bouwe
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Fleanfjild bouwe
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Lânskipsfoarming
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantsje beammen
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Buordsje delsette
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Lûd/musyk
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Lêtste (nijs)berjocht
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berjochtenskiednis
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebietsynformaasje
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skeakel console oan/ût
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Gamescript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermôfbylding

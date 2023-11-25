@@ -441,31 +441,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparenz fü
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparenz für Schilder
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Spiel speichern
 STR_FILE_MENU_LOAD_GAME                                         :Spiel laden
 STR_FILE_MENU_QUIT_GAME                                         :Spiel beenden
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :OpenTTD beenden
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Weltkarte
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Zusatzansicht
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Frachtverbindungen
 STR_MAP_MENU_SIGN_LIST                                          :Schilderliste
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Städteverzeichnis
 STR_TOWN_MENU_FOUND_TOWN                                        :Stadt gründen
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventionen
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Betriebsgewinndiagramm
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Einkommensdiagramm
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Frachtlieferungsdiagramm
@@ -474,58 +468,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Firmenwertdiagr
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Frachtratendiagramm
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Firmentabelle
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Leistungsaufschlüsselung
 STR_GRAPH_MENU_HIGHSCORE                                        :Bestenliste
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrieverzeichnis
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Wirtschaftsketten
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Neue Industrie finanzieren
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Gleisbau
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Bau elektrifizierter Strecken
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Einschienenbahnbau
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magnetschwebebahnbau
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Straßenbau
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Straßenbahnbau
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Wasserstraßenbau
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flughafenbau
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landschaftsbau
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Bäume pflanzen
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Schild aufstellen
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Letzte Mitteilung/Nachricht
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Vergangene Nachrichten
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Alle Nachrichten löschen
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebietsinformationen
 STR_ABOUT_MENU_HELP                                             :Hilfe u. Anleitungen
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole öffnen/schließen
 STR_ABOUT_MENU_AI_DEBUG                                         :KI-/Skript-Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Standard: Strg+S)

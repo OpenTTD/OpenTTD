@@ -295,58 +295,42 @@ STR_SETTINGS_MENU_FULL_DETAIL                                   :Plene detaloza
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Diafana konstrukturi
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Salvas ludo
 STR_FILE_MENU_LOAD_GAME                                         :Kargas ludo
 STR_FILE_MENU_QUIT_GAME                                         :Abandonas ludo
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Ekiras
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapo di mondo
 STR_MAP_MENU_SIGN_LIST                                          :Listo di signi
 
 # Town menu
-###length 2
 
 # Subsidies menu
-###length 1
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Revenuo grafiko
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Livrita kargajo grafiko
 
 # Company league menu
-###length 3
 
 # Industry menu
-###length 3
 
 # URailway construction menu
-###length 4
 
 # Road construction menu
-###length 2
 
 # Waterways construction menu
-###length 1
 
 # Aairport construction menu
-###length 1
 
 # Landscaping menu
-###length 3
 
 # Music menu
-###length 1
 
 # Message menu
-###length 3
 
 # About menu
-###length 12
 
 # Place in highscore window
 ###length 15

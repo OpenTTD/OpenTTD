@@ -441,31 +441,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :건물 감추�
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :역명판 감추기
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :게임 저장하기
 STR_FILE_MENU_LOAD_GAME                                         :게임 불러오기
 STR_FILE_MENU_QUIT_GAME                                         :게임 그만두기
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :종료
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :전체 지도 보기
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :외부 화면
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :화물 흐름 범례
 STR_MAP_MENU_SIGN_LIST                                          :팻말 목록
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :도시 목록
 STR_TOWN_MENU_FOUND_TOWN                                        :도시 건설
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :보조금
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :경영 수익 그래프
 STR_GRAPH_MENU_INCOME_GRAPH                                     :수익 그래프
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :수송 화물량 그래프
@@ -474,58 +468,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :회사가치 �
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :화물 운송단가 그래프
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :회사 성취도 순위
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :상세 성취도
 STR_GRAPH_MENU_HIGHSCORE                                        :고득점 순위표
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :산업시설 목록
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :산업시설 연계도
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :새 산업시설 건설
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :선로 건설
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :전기선로 건설
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :모노레일 건설
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :자기부상열차 건설
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :도로 건설
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :전찻길 건설
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :항만 건설
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :공항 건설
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :지형 편집
 STR_LANDSCAPING_MENU_PLANT_TREES                                :나무 심기
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :팻말 달기
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :효과음/배경 음악
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :최근 메시지/뉴스 기록
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :과거 메시지 목록
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :모든 뉴스 메시지 삭제
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :지형 정보
 STR_ABOUT_MENU_HELP                                             :도움말 & 매뉴얼
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
 STR_ABOUT_MENU_AI_DEBUG                                         :인공지능/게임 스크립트 디버그
 STR_ABOUT_MENU_SCREENSHOT                                       :스크린샷 찍기

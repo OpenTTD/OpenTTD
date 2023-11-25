@@ -501,31 +501,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Průhledné bud
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Průhledné popisky
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Uložit hru
 STR_FILE_MENU_LOAD_GAME                                         :Načíst hru
 STR_FILE_MENU_QUIT_GAME                                         :Ukončit hru
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Ukončit program
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa světa
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Další pohled
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda toku nákladu
 STR_MAP_MENU_SIGN_LIST                                          :Seznam popisků
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Seznam měst
 STR_TOWN_MENU_FOUND_TOWN                                        :Založit město
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotace
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf provozního zisku
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf příjmů
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf doručeného zboží
@@ -534,57 +528,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf hodnoty sp
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Graf přepravních sazeb
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabulka společností
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Podrobné hodnocení výkonu
 STR_GRAPH_MENU_HIGHSCORE                                        :Nejlepší výsledky
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Seznam průmyslu
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Průmyslové řetězce
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Investovat do průmyslu
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Výstavba železnice
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Výstavba elektrifikované železnice
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Výstavba monorailu
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Výstavba maglevu
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Výstavba silnic
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Výstavba tramvajové tratě
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Výstavba vodních cest
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Stavba letiště
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Úpravy krajiny
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Vysadit stromy
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Umístit nápis
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Zvuk/Hudba
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Poslední zpráva nebo článek
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historie zpráv
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Smazat všechny zprávy
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informace o zemi
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Zobrazit nebo skrýt konzoli
 STR_ABOUT_MENU_AI_DEBUG                                         :Ladění AI / herních skriptů
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot

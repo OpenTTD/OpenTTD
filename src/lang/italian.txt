@@ -442,31 +442,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edifici traspar
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Cartelli trasparenti
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Salva partita
 STR_FILE_MENU_LOAD_GAME                                         :Carica partita
 STR_FILE_MENU_QUIT_GAME                                         :Abbandona partita
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Esci
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mappa del mondo
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Mini visuale extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda del flusso di merci
 STR_MAP_MENU_SIGN_LIST                                          :Elenco cartelli
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Elenco città
 STR_TOWN_MENU_FOUND_TOWN                                        :Fonda città
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sussidi
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafico margine operativo
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafico ricavi
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafico carichi consegnati
@@ -475,58 +469,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafico valore 
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Grafico tariffe carichi
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Classifica compagnie
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Valutazione dettagliata prestazioni
 STR_GRAPH_MENU_HIGHSCORE                                        :Punteggi migliori
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Elenco industrie
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Catene di distribuzione
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finanzia nuova industria
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Costruzione ferrovie
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Costruzione ferrovie elettrificate
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Costruzione monorotaia
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Costruzione maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Costruzione strade
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Costruzione tranvie
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Costruzione trasporti su acqua
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Costruzione aeroporto
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Modellazione terreno
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Pianta alberi
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Posiziona cartello
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Suoni/musica
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimo messaggio/notizia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Cronologia messaggi
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Elimina tutti i messaggi
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informazioni sull'area di terreno
 STR_ABOUT_MENU_HELP                                             :Aiuto e manuali
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Apri/chiudi console
 STR_ABOUT_MENU_AI_DEBUG                                         :Debug IA/Script
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot

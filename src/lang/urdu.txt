@@ -379,30 +379,24 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :شفاف عما
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف اشارے
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :کھیل محفوظ کرو
 STR_FILE_MENU_LOAD_GAME                                         :کھیل دوبارہ چڑھاو
 STR_FILE_MENU_QUIT_GAME                                         :کھیل چھوڑ دو
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :باہر نکلو
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :دنیا کا نقشھ
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :اضافی منظر
 STR_MAP_MENU_SIGN_LIST                                          :اشاروں کی فھرست
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :کتبِ قصبھ جات
 STR_TOWN_MENU_FOUND_TOWN                                        :قصبھ قائم کیجیئے
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :امداد
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :عملی منافع مخطط
 STR_GRAPH_MENU_INCOME_GRAPH                                     :آمدنی مخطط
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :پھنچائے گئے سامان کا مخطط
@@ -411,54 +405,43 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :کمپنی کی
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی ادایگی کا تناسب
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :کمپنیوں کے گروپ کی فہرست
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :تفصیلی عملی درجہ بندی
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :کتبِ صنعت
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :نئ سنعت تعمیر کیجیئے
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :راھ آھن پٹری کی تعمیر
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :برقی راھ آھن پٹری کی تعمیر
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :وحید راھ کی تعمیر
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :علناظیس کی تعمیر
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :سڑک کی تعمیر
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :ٹرام وے کی تعمیر
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :نھر کی تعمیر
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ھواگاھ کی تعمیر
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :منظر کشی
 STR_LANDSCAPING_MENU_PLANT_TREES                                :درخت لگایئے
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :اشارھ لگایے
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :آواز و موسیقی
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :پچھلا پیعام/ خبر
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخِ پیغامات
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :زمینی رقبہ کی معلومات
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :حائطھ تدویم
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :اسکرین کی تصویر

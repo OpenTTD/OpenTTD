@@ -411,31 +411,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :בניינים 
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :שלטים שקופים
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :שמור משחק
 STR_FILE_MENU_LOAD_GAME                                         :טען משחק
 STR_FILE_MENU_QUIT_GAME                                         :עזוב משחק
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :יציאה
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :מפת העולם
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :השקפה נוספת
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :מקרא זרימת מטענים
 STR_MAP_MENU_SIGN_LIST                                          :רשימת שלטים
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :מדריך הערים
 STR_TOWN_MENU_FOUND_TOWN                                        :ייסד עיר
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :סובסידיות
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :גרף רווח תפעולי
 STR_GRAPH_MENU_INCOME_GRAPH                                     :גרף הכנסות
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :גרף שינוע מטענים
@@ -444,56 +438,45 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :גרף שווי
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :שערי תשלום עבור שירותי הובלה
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :טבלת ליגת החברות
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :דירוג ביצועים מפורט
 STR_GRAPH_MENU_HIGHSCORE                                        :טבלת ניקוד מירבי
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :ספריית תעשיות
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :שרשראות תעשיה
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ממן תעשיה חדשה
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :בניית מסילות
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :בניית מסילות רכבת מחושמלות
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :בניית מסילות חד פסיות
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :בניית מסילות מגנטיות
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :סלילת כבישים
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :בניית מסילה חשמלית
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :בניית נתיבי מים
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :בניית שדה תעופה
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :עיצוב פני השטח
 STR_LANDSCAPING_MENU_PLANT_TREES                                :נטע עצים
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :מקם סימניות
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :צלילים/מנגינה
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :הודעה אחרונה/מבזק חדשות אחרון
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :היסטורית הודעות
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :מידע על שטח קרקע
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :פתח/סגור קונסולה
 STR_ABOUT_MENU_AI_DEBUG                                         :דיבאג של סקריפטים של בינה מלאכותית או של המשחק
 STR_ABOUT_MENU_SCREENSHOT                                       :צילום מסך

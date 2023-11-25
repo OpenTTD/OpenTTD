@@ -411,31 +411,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Foignimh trédh
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Comharthaí trédhearcacha
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Sábháil an cluiche
 STR_FILE_MENU_LOAD_GAME                                         :Lódáil cluiche
 STR_FILE_MENU_QUIT_GAME                                         :Fág an cluiche
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Scoir
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Léarscáil den domhan
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Fuinneog amhairc bhreise
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Eochair an tSreafa Lastais
 STR_MAP_MENU_SIGN_LIST                                          :Liosta na gcomharthaí
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Liosta bailte
 STR_TOWN_MENU_FOUND_TOWN                                        :Aimsíodh baile
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Fóirdheontais
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf den bhrabús oibriúcháin
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf den ioncam
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf den lastas a seachadadh
@@ -444,57 +438,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf de luach n
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rátaí íocaíochta do lastas
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tábla sraithe na gcuideachtaí
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rátáil feidhmíochta mionsonraithe
 STR_GRAPH_MENU_HIGHSCORE                                        :Tábla na n-ardscór
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Liosta de na tionscail
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Slabhraí na dtionscal
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Déan maoiniú ar thionscal nua
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Tógáil iarnróid
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Tógáil iarnróid leictrithe
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Tógáil iarnród aonráille
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Tógáil maglev
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Tógáil bóithre
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tógáil trambhealaigh
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Tógáil uiscebhealaí
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Tógáil aerfoirt
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Tírdhreachú
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Crainnte a chur
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Comhartha a chur
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Fuaim/ceol
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Teachtaireacht/tuairisc nuachta deiridh
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Stair na dteachtaireachtaí
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Scrios gach teachtaireacht
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Faisnéis faoin limistéar talún
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Scoránaigh consól
 STR_ABOUT_MENU_AI_DEBUG                                         :Dífhabhtú AI/Scripteanna Cluiche
 STR_ABOUT_MENU_SCREENSHOT                                       :Seat scáileáin

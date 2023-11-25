@@ -402,31 +402,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Deurskynende ge
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Deurskynende stasie tekens
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Stoor spel
 STR_FILE_MENU_LOAD_GAME                                         :Laai spel
 STR_FILE_MENU_QUIT_GAME                                         :Verlaat spel
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Verlaat
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart van wêreld
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ekstra toonvenster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Vragverspreidingsleutel
 STR_MAP_MENU_SIGN_LIST                                          :Teken lys
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Dorp gids
 STR_TOWN_MENU_FOUND_TOWN                                        :Stig dorp
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Bedryfswins grafiek
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Inkomste grafiek
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gelewerde vrag grafiek
@@ -435,57 +429,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Maatskappy waar
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Vragbetalingstariewe
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Maatskappy verbond tabel
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Omstandig prestasie gradering
 STR_GRAPH_MENU_HIGHSCORE                                        :Hoogste tellings tafel
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Nywerheid Gids
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Nywerheidsskakels
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Konsolideer nuwe nywerheid
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoorwegkonstruksie
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elekriese spoorwegkonstruksie
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monospoor konstruksie
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magneetsweeftrein konstruksie
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Pad konstruksie
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tremweg konstruksie
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Waterweg konstruksie
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lughawe konstruksie
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landargitektuur
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant bome
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Plaas teken
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Klank/musiek
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Laaste boodskap/nuus verslag
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Boodskapgeskiedenis
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Vee alle boodskappe uit
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terreininligting
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skakel terminaal
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Spel skript ontfout
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermskoot

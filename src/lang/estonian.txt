@@ -479,31 +479,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Läbipaistvad h
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Läbipaistvad sildid
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Mängu salvestamine
 STR_FILE_MENU_LOAD_GAME                                         :Mängu jätkamine
 STR_FILE_MENU_QUIT_GAME                                         :Lahku mängust
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Välju
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Maailmakaart
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Lisa vaateaken
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kaubavoo legend
 STR_MAP_MENU_SIGN_LIST                                          :Siltide register
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Asustuste register
 STR_TOWN_MENU_FOUND_TOWN                                        :Raja asustus
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Toetused
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Opereerimiskasumi graafik
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Tulugraafik
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Äraveetud kauba graafik
@@ -512,57 +506,46 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Firmaväärtust
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Veotasude määrad
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ettevõtete edetabel
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Täpsustatud tulemushinnang
 STR_GRAPH_MENU_HIGHSCORE                                        :Edetabel
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Tööstuste register
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Tööstuste ahel
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Uue tööstuse rahastamine
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Rööbastee ehitamine
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektriraudtee ehitamine
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorelsi ehitamine
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magnethõljuktee ehitamine
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Maanteede ehitamine
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Trammiteede ehitamine
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Veeteede ehitamine
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lennuväljade ehitamine
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Maapinna kujundamine
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Puude istutamine
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Paigalda silt
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Heli/muusika
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Viimane teade
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Teadete ajalugu
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Kustuta kõik teated
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-ala andmed
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/GameScripti debugimine
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekraanipilt

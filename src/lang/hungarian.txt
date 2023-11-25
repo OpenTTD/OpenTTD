@@ -503,31 +503,25 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Átlátszó ép
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Átlátszó feliratok
 
 # File menu
-###length 5
 STR_FILE_MENU_SAVE_GAME                                         :Játék mentése
 STR_FILE_MENU_LOAD_GAME                                         :Játék betöltése
 STR_FILE_MENU_QUIT_GAME                                         :Kilépés a játékból
-STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Kilépés
 
 # Map menu
-###length 4
 STR_MAP_MENU_MAP_OF_WORLD                                       :Világtérkép
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra látkép
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Rakományáramlási jelmagyarázat
 STR_MAP_MENU_SIGN_LIST                                          :Feliratok listája
 
 # Town menu
-###length 2
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Városlista
 STR_TOWN_MENU_FOUND_TOWN                                        :Új város alapítása
 
 # Subsidies menu
-###length 1
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Támogatások
 
 # Graph menu
-###length 6
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Működési nyereség grafikon
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Bevétel grafikon
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Elszállított rakomány grafikon
@@ -536,58 +530,47 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Vállalat ért�
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rakományok szállítási díja
 
 # Company league menu
-###length 3
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Vállalatok helyezései
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Teljesítményértékelések részletezése
 STR_GRAPH_MENU_HIGHSCORE                                        :Rekord Tábla
 
 # Industry menu
-###length 3
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Gazdasági épületek listája
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Ipari lánc
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Új gazdasági épület építése
 
 # URailway construction menu
-###length 4
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Normál vasút építése
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Villamosított vasút építése
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Egysínű vasút építése
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglev vasút építése
 
 # Road construction menu
-###length 2
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Út építése
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Villamospálya építése
 
 # Waterways construction menu
-###length 1
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Vízi út építése
 
 # Aairport construction menu
-###length 1
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Repülőtér építése
 
 # Landscaping menu
-###length 3
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Tájrendezés
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Faültetés
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Felirat lerakása
 
 # Music menu
-###length 1
 STR_TOOLBAR_SOUND_MUSIC                                         :Hang/zene
 
 # Message menu
-###length 3
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Legutóbbi üzenet/újsághír
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Előző üzenetek
 STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Az összes üzenet törlése
 
 # About menu
-###length 12
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terület-információ
 STR_ABOUT_MENU_HELP                                             :Súgó és útmutatók
-STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
 STR_ABOUT_MENU_AI_DEBUG                                         :MI / Játékszkript nyomkövetés
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés
