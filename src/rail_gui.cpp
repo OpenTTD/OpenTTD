@@ -2354,9 +2354,7 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 			list.push_back(std::make_unique<DropDownListStringItem>(rti->strings.replace_text, rt, !HasBit(avail_railtypes, rt)));
 		} else {
 			StringID str = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
-			auto iconitem = std::make_unique<DropDownListIconItem>(rti->gui_sprites.build_x_rail, PAL_NONE, str, rt, !HasBit(avail_railtypes, rt));
-			iconitem->SetDimension(d);
-			list.push_back(std::move(iconitem));
+			list.push_back(std::make_unique<DropDownListIconItem>(d, rti->gui_sprites.build_x_rail, PAL_NONE, str, rt, !HasBit(avail_railtypes, rt)));
 		}
 	}
 

@@ -149,6 +149,12 @@ public:
 		this->dbounds = this->dsprite;
 	}
 
+	template <typename... Args>
+	explicit DropDownIcon(const Dimension &dim, SpriteID sprite, PaletteID palette, Args&&... args) : TBase(std::forward<Args>(args)...), sprite(sprite), palette(palette), dbounds(dim)
+	{
+		this->dsprite = GetSpriteSize(this->sprite);
+	}
+
 	uint Height() const override { return std::max(this->dbounds.height, this->TBase::Height()); }
 	uint Width() const override { return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width(); }
 
@@ -158,15 +164,6 @@ public:
 		Rect ir = r.WithWidth(this->dbounds.width, rtl);
 		DrawSprite(this->sprite, this->palette, CenterBounds(ir.left, ir.right, this->dsprite.width), CenterBounds(r.top, r.bottom, this->dsprite.height));
 		this->TBase::Draw(full, r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, bg_colour);
-	}
-
-	/**
-	 * Override bounding box dimensions of sprite, to allow multiple options to have consistent spacing.
-	 * @param dim New bounding box to assign.
-	 */
-	void SetDimension(const Dimension &dim)
-	{
-		this->dbounds = dim;
 	}
 };
 
