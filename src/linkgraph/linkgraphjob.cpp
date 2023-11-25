@@ -221,7 +221,7 @@ void Path::Fork(Path *base, uint cap, int free_cap, uint dist)
 uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
 {
 	if (this->parent != nullptr) {
-		LinkGraphJob::EdgeAnnotation edge = job[this->parent->node][this->node];
+		LinkGraphJob::EdgeAnnotation &edge = job[this->parent->node][this->node];
 		if (max_saturation != UINT_MAX) {
 			uint usable_cap = edge.base.capacity * max_saturation / 100;
 			if (usable_cap > edge.Flow()) {
