@@ -185,6 +185,7 @@ void SetupCargoForClimate(LandscapeID l);
 CargoID GetCargoIDByLabel(CargoLabel cl);
 CargoID GetCargoIDByBitnum(uint8_t bitnum);
 CargoID GetDefaultCargoID(LandscapeID l, CargoType ct);
+Dimension GetLargestCargoIconSize();
 
 void InitializeSortedCargoSpecs();
 extern std::array<uint8_t, NUM_CARGO> _sorted_cargo_types;

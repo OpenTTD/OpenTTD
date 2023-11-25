@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "cargotype.h"
+#include "core/geometry_func.hpp"
 #include "newgrf_cargo.h"
 #include "string_func.h"
 #include "strings_func.h"
@@ -68,6 +69,19 @@ void SetupCargoForClimate(LandscapeID l)
 
 	/* Reset and disable remaining cargo types. */
 	std::fill(insert, std::end(CargoSpec::array), CargoSpec{});
+}
+
+/**
+ * Get dimensions of largest cargo icon.
+ * @return Dimensions of largest cargo icon.
+ */
+Dimension GetLargestCargoIconSize()
+{
+	Dimension size = {0, 0};
+	for (const CargoSpec *cs : _sorted_cargo_specs) {
+		size = maxdim(size, GetSpriteSize(cs->GetCargoIcon()));
+	}
+	return size;
 }
 
 /**
@@ -179,7 +193,7 @@ static bool CargoSpecClassSorter(const CargoSpec * const &a, const CargoSpec * c
 void InitializeSortedCargoSpecs()
 {
 	_sorted_cargo_specs.clear();
-	/* Add each cargo spec to the list. */
+	/* Add each cargo spec to the list, and determine the largest cargo icon size. */
 	for (const CargoSpec *cargo : CargoSpec::Iterate()) {
 		_sorted_cargo_specs.push_back(cargo);
 	}
