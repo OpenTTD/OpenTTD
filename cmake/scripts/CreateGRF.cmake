@@ -50,7 +50,7 @@ if(RESULT)
     message(FATAL_ERROR "NFORenum failed")
 endif()
 
-execute_process(COMMAND ${GRFCODEC_EXECUTABLE} -n -s -e -p1 ${GRF_SOURCE_FOLDER_NAME}.grf RESULT_VARIABLE RESULT)
+execute_process(COMMAND ${GRFCODEC_EXECUTABLE} -n -s -e -g2 -p1 ${GRF_SOURCE_FOLDER_NAME}.grf RESULT_VARIABLE RESULT)
 if(RESULT)
     if(NOT RESULT MATCHES "^[0-9]*$")
         message(FATAL_ERROR "Failed to run GRFCodec (${RESULT}), please check GRFCODEC_EXECUTABLE variable")
