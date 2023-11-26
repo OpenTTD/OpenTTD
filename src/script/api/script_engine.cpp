@@ -94,9 +94,8 @@
 		case VEH_ROAD:
 		case VEH_TRAIN: {
 			CargoArray capacities = GetCapacityOfArticulatedParts(engine_id);
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
-				if (capacities[c] == 0) continue;
-				return capacities[c];
+			for (uint &cap : capacities) {
+				if (cap != 0) return cap;
 			}
 			return -1;
 		}
