@@ -18,8 +18,8 @@ struct BaseConsist {
 	std::string name;                   ///< Name of vehicle
 
 	/* Used for timetabling. */
-	uint32_t current_order_time;               ///< How many ticks have passed since this order started.
-	int32_t lateness_counter;                  ///< How many ticks late (or early if negative) this vehicle is.
+	TimerGameTick::Ticks current_order_time;    ///< How many ticks have passed since this order started.
+	TimerGameTick::Ticks lateness_counter;      ///< How many ticks late (or early if negative) this vehicle is.
 	TimerGameTick::TickCounter timetable_start; ///< At what tick of TimerGameTick::counter the vehicle should start its timetable.
 
 	uint16_t service_interval;            ///< The interval for (automatic) servicing; either in days or %.
