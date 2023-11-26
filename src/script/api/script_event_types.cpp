@@ -42,16 +42,10 @@ CargoID ScriptEventEnginePreview::GetCargoType()
 	if (!this->IsEngineValid()) return CT_INVALID;
 	CargoArray cap = ::GetCapacityOfArticulatedParts(this->engine);
 
-	CargoID most_cargo = CT_INVALID;
-	uint amount = 0;
-	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-		if (cap[cid] > amount) {
-			amount = cap[cid];
-			most_cargo = cid;
-		}
-	}
+	auto it = std::max_element(std::cbegin(cap), std::cend(cap));
+	if (*it == 0) return CT_INVALID;
 
-	return most_cargo;
+	return CargoID(std::distance(std::cbegin(cap), it));
 }
 
 int32_t ScriptEventEnginePreview::GetCapacity()
