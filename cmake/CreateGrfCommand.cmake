@@ -28,12 +28,13 @@ function(create_grf_command)
         list(APPEND GRF_PNG_BINARY_FILES ${GRF_PNG_BINARY_FILE})
     endforeach()
 
-    add_custom_command(OUTPUT ${GRF_BINARY_FILE}
+    add_custom_command(OUTPUT ${GRF_BINARY_FILE} ${GRF_BINARY_FILE}.hash
             COMMAND ${CMAKE_COMMAND}
                     -DGRF_SOURCE_FOLDER=${CMAKE_CURRENT_SOURCE_DIR}
                     -DGRF_BINARY_FILE=${GRF_BINARY_FILE}
                     -DNFORENUM_EXECUTABLE=${NFORENUM_EXECUTABLE}
                     -DGRFCODEC_EXECUTABLE=${GRFCODEC_EXECUTABLE}
+                    -DGRFID_EXECUTABLE=${GRFID_EXECUTABLE}
                     -P ${CMAKE_SOURCE_DIR}/cmake/scripts/CreateGRF.cmake
             MAIN_DEPENDENCY ${CMAKE_SOURCE_DIR}/cmake/scripts/CreateGRF.cmake
             DEPENDS ${GRF_PNG_BINARY_FILES}
