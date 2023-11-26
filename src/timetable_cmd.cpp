@@ -264,7 +264,7 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlag flags, VehicleID veh, bool apply_t
 
 	if (flags & DC_EXEC) {
 		if (apply_to_group) {
-			int32_t most_late = 0;
+			TimerGameTick::Ticks most_late = 0;
 			for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
 				/* A vehicle can't be late if its timetable hasn't started. */
 				if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) continue;
@@ -454,7 +454,7 @@ CommandCost CmdAutofillTimetable(DoCommandFlag flags, VehicleID veh, bool autofi
  */
 void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 {
-	uint time_taken = v->current_order_time;
+	TimerGameTick::Ticks time_taken = v->current_order_time;
 
 	v->current_order_time = 0;
 
@@ -514,7 +514,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		 * the timetable entry like is done for road vehicles/ships.
 		 * Thus always make sure at least one tick is used between the
 		 * processing of different orders when filling the timetable. */
-		uint time_to_set = CeilDiv(std::max(time_taken, 1U), Ticks::DAY_TICKS) * Ticks::DAY_TICKS;
+		uint time_to_set = CeilDiv(std::max(time_taken, 1), Ticks::DAY_TICKS) * Ticks::DAY_TICKS;
 
 		if (travelling && (autofilling || !real_current_order->IsTravelTimetabled())) {
 			ChangeTimetable(v, v->cur_real_order_index, time_to_set, MTF_TRAVEL_TIME, autofilling);
@@ -533,7 +533,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	if (autofilling) return;
 
-	uint timetabled = travelling ? real_current_order->GetTimetabledTravel() :
+	TimerGameTick::Ticks timetabled = travelling ? real_current_order->GetTimetabledTravel() :
 			real_current_order->GetTimetabledWait();
 
 	/* Vehicles will wait at stations if they arrive early even if they are not
@@ -548,7 +548,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	 * shorter than the amount of ticks we are late we reduce the lateness by the
 	 * length of a full cycle till lateness is less than the length of a timetable
 	 * cycle. When the timetable isn't fully filled the cycle will be Ticks::INVALID_TICKS. */
-	if (v->lateness_counter > (int)timetabled) {
+	if (v->lateness_counter > timetabled) {
 		TimerGameTick::Ticks cycle = v->orders->GetTimetableTotalDuration();
 		if (cycle != Ticks::INVALID_TICKS && v->lateness_counter > cycle) {
 			v->lateness_counter %= cycle;

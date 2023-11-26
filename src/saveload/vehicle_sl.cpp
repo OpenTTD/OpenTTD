@@ -720,7 +720,8 @@ public:
 		SLE_CONDREF(Vehicle, next_shared,           REF_VEHICLE,                  SLV_2, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, group_id,              SLE_UINT16,                  SLV_60, SL_MAX_VERSION),
 
-		SLE_CONDVAR(Vehicle, current_order_time,    SLE_UINT32,                  SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order_time,    SLE_FILE_U32 | SLE_VAR_I32,  SLV_67, SLV_TIMETABLE_TICKS_TYPE),
+		SLE_CONDVAR(Vehicle, current_order_time,    SLE_INT32,                   SLV_TIMETABLE_TICKS_TYPE, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, last_loading_tick,     SLE_UINT64,                   SLV_LAST_LOADING_TICK, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_67, SL_MAX_VERSION),
 	};

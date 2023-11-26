@@ -233,8 +233,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 			 * probably far off and we'd greatly overestimate the capacity by increasing.*/
 			if (this->is_full_loading && this->vehicle->orders != nullptr &&
 					st->index == vehicle->last_station_visited &&
-					this->vehicle->orders->GetTotalDuration() >
-					(TimerGameTick::Ticks)this->vehicle->current_order_time) {
+					this->vehicle->orders->GetTotalDuration() > this->vehicle->current_order_time) {
 				uint effective_capacity = cargo_quantity * this->vehicle->load_unload_ticks;
 				if (effective_capacity > (uint)this->vehicle->orders->GetTotalDuration()) {
 					IncreaseStats(st, c, next_station, effective_capacity /
