@@ -88,7 +88,7 @@ struct BaseVehicleListWindow : public Window {
 	Scrollbar *vscroll;
 	VehicleListIdentifier vli;                  ///< Identifier of the vehicle list we want to currently show.
 	VehicleID vehicle_sel;                      ///< Selected vehicle
-	byte cargo_filter_criteria;                 ///< Selected cargo filter index
+	CargoID cargo_filter_criteria;              ///< Selected cargo filter index
 	uint order_arrow_width;                     ///< Width of the arrow in the small order list.
 
 	typedef GUIVehicleGroupList::SortFunction VehicleGroupSortFunction;
