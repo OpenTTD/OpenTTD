@@ -21,7 +21,7 @@
 
 #include "safeguards.h"
 
-static SoundEntry _original_sounds[ORIGINAL_SAMPLE_COUNT];
+static std::array<SoundEntry, ORIGINAL_SAMPLE_COUNT> _original_sounds;
 
 static void OpenBankFile(const std::string &filename)
 {
@@ -31,12 +31,12 @@ static void OpenBankFile(const std::string &filename)
 	 */
 	static std::unique_ptr<RandomAccessFile> original_sound_file;
 
-	memset(_original_sounds, 0, sizeof(_original_sounds));
+	_original_sounds.fill({});
 
 	/* If there is no sound file (nosound set), don't load anything */
 	if (filename.empty()) return;
 
-	original_sound_file.reset(new RandomAccessFile(filename, BASESET_DIR));
+	original_sound_file = std::make_unique<RandomAccessFile>(filename, BASESET_DIR);
 	size_t pos = original_sound_file->GetPos();
 	uint count = original_sound_file->ReadDword();
 

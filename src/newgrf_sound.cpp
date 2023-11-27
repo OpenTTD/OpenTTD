@@ -156,7 +156,7 @@ bool LoadNewGRFSound(SoundEntry *sound)
 	Debug(grf, 1, "LoadNewGRFSound [{}]: RIFF does not contain any sound data", file.GetSimplifiedFilename());
 
 	/* Clear everything that was read */
-	MemSetT(sound, 0);
+	*sound = {};
 	return false;
 }
 
