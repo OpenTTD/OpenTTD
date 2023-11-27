@@ -197,6 +197,7 @@ void MusicSystem::Shuffle()
 
 	if (_settings_client.music.playing) this->Play();
 
+	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
 	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
 }
 
@@ -208,6 +209,7 @@ void MusicSystem::Unshuffle()
 
 	if (_settings_client.music.playing) this->Play();
 
+	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
 	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
 }
 
