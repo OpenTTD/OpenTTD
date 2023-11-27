@@ -14,6 +14,8 @@
 #include "vehicle_type.h"
 #include "tile_type.h"
 
+bool LoadSound(SoundEntry &sound, bool new_format, SoundID sound_id, const std::string &name);
+
 void SndPlayTileFx(SoundID sound, TileIndex tile);
 void SndPlayVehicleFx(SoundID sound, const Vehicle *v);
 void SndPlayFx(SoundID sound);

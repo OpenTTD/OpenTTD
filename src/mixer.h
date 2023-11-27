@@ -24,7 +24,7 @@ bool MxInitialize(uint rate);
 void MxMixSamples(void *buffer, uint samples);
 
 MixerChannel *MxAllocateChannel();
-void MxSetChannelRawSrc(MixerChannel *mc, int8_t *mem, size_t size, uint rate, bool is16bit);
+void MxSetChannelRawSrc(MixerChannel *mc, const std::shared_ptr<std::vector<byte>> &mem, uint rate, bool is16bit);
 void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan);
 void MxActivateChannel(MixerChannel*);
 

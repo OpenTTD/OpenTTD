@@ -63,7 +63,7 @@ uint GetNumSounds()
  * @param sound Sound to load.
  * @return True if a valid sound was loaded.
  */
-bool LoadNewGRFSound(SoundEntry *sound)
+bool LoadNewGRFSound(SoundEntry *sound, SoundID sound_id)
 {
 	if (sound->file_offset == SIZE_MAX || sound->file == nullptr) return false;
 
@@ -76,7 +76,7 @@ bool LoadNewGRFSound(SoundEntry *sound)
 
 	/* Format: <num> <FF> <FF> <name_len> <name> '\0' <data> */
 
-	uint32_t num = sound->grf_container_ver >= 2 ? file.ReadDword() : file.ReadWord();
+	sound->file_size = sound->grf_container_ver >= 2 ? file.ReadDword() : file.ReadWord();
 	if (file.ReadByte() != 0xFF) return false;
 	if (file.ReadByte() != 0xFF) return false;
 
@@ -85,78 +85,20 @@ bool LoadNewGRFSound(SoundEntry *sound)
 	file.ReadBlock(name.data(), name_len + 1);
 
 	/* Test string termination */
-	if (name[name_len] != 0) {
+	if (name[name_len] != '\0') {
 		Debug(grf, 2, "LoadNewGRFSound [{}]: Name not properly terminated", file.GetSimplifiedFilename());
 		return false;
 	}
 
-	Debug(grf, 2, "LoadNewGRFSound [{}]: Sound name '{}'...", file.GetSimplifiedFilename(), name);
-
-	if (file.ReadDword() != BSWAP32('RIFF')) {
-		Debug(grf, 1, "LoadNewGRFSound [{}]: Missing RIFF header", file.GetSimplifiedFilename());
-		return false;
+	if (LoadSound(*sound, true, sound_id, name)) {
+		Debug(grf, 2, "LoadNewGRFSound [{}]: channels {}, sample rate {}, bits per sample {}, length {}", file.GetSimplifiedFilename(), sound->channels, sound->rate, sound->bits_per_sample, sound->file_size);
+		return true;
 	}
 
-	uint32_t total_size = file.ReadDword();
-	uint header_size = 11;
-	if (sound->grf_container_ver >= 2) header_size++; // The first FF in the sprite is only counted for container version >= 2.
-	if (total_size + name_len + header_size > num) {
-		Debug(grf, 1, "LoadNewGRFSound [{}]: RIFF was truncated", file.GetSimplifiedFilename());
-		return false;
-	}
-
-	if (file.ReadDword() != BSWAP32('WAVE')) {
-		Debug(grf, 1, "LoadNewGRFSound [{}]: Invalid RIFF type", file.GetSimplifiedFilename());
-		return false;
-	}
-
-	while (total_size >= 8) {
-		uint32_t tag  = file.ReadDword();
-		uint32_t size = file.ReadDword();
-		total_size -= 8;
-		if (total_size < size) {
-			Debug(grf, 1, "LoadNewGRFSound [{}]: Invalid RIFF", file.GetSimplifiedFilename());
-			return false;
-		}
-		total_size -= size;
-
-		switch (tag) {
-			case ' tmf': // 'fmt '
-				/* Audio format, must be 1 (PCM) */
-				if (size < 16 || file.ReadWord() != 1) {
-					Debug(grf, 1, "LoadGRFSound [{}]: Invalid audio format", file.GetSimplifiedFilename());
-					return false;
-				}
-				sound->channels = file.ReadWord();
-				sound->rate = file.ReadDword();
-				file.ReadDword();
-				file.ReadWord();
-				sound->bits_per_sample = file.ReadWord();
-
-				/* The rest will be skipped */
-				size -= 16;
-				break;
-
-			case 'atad': // 'data'
-				sound->file_size   = size;
-				sound->file_offset = file.GetPos();
-
-				Debug(grf, 2, "LoadNewGRFSound [{}]: channels {}, sample rate {}, bits per sample {}, length {}", file.GetSimplifiedFilename(), sound->channels, sound->rate, sound->bits_per_sample, size);
-				return true; // the fmt chunk has to appear before data, so we are finished
-
-			default:
-				/* Skip unknown chunks */
-				break;
-		}
-
-		/* Skip rest of chunk */
-		if (size > 0) file.SkipBytes(size);
-	}
-
-	Debug(grf, 1, "LoadNewGRFSound [{}]: RIFF does not contain any sound data", file.GetSimplifiedFilename());
+	Debug(grf, 1, "LoadNewGRFSound [{}]: does not contain any sound data", file.GetSimplifiedFilename());
 
 	/* Clear everything that was read */
-	*sound = {};
+	sound = {};
 	return false;
 }
 

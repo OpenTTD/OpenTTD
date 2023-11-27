@@ -19,7 +19,7 @@
 
 struct MixerChannel {
 	/* pointer to allocated buffer memory */
-	int8_t *memory;
+	std::shared_ptr<std::vector<byte>> memory;
 
 	/* current position in memory */
 	uint32_t pos;
@@ -73,7 +73,7 @@ static void mix_int16(MixerChannel *sc, int16_t *buffer, uint samples, uint8_t e
 	sc->samples_left -= samples;
 	assert(samples > 0);
 
-	const T *b = (const T *)sc->memory + sc->pos;
+	const T *b = (const T *)sc->memory->data() + sc->pos;
 	uint32_t frac_pos = sc->frac_pos;
 	uint32_t frac_speed = sc->frac_speed;
 	int volume_left = sc->volume_left * effect_vol / 255;
@@ -100,7 +100,7 @@ static void mix_int16(MixerChannel *sc, int16_t *buffer, uint samples, uint8_t e
 	}
 
 	sc->frac_pos = frac_pos;
-	sc->pos = b - (const T *)sc->memory;
+	sc->pos = b - (const T *)sc->memory->data();
 }
 
 static void MxCloseChannel(uint8_t channel_index)
@@ -157,19 +157,19 @@ MixerChannel *MxAllocateChannel()
 	uint8_t channel_index = FindFirstBit(available);
 
 	MixerChannel *mc = &_channels[channel_index];
-	free(mc->memory);
 	mc->memory = nullptr;
 	return mc;
 }
 
-void MxSetChannelRawSrc(MixerChannel *mc, int8_t *mem, size_t size, uint rate, bool is16bit)
+void MxSetChannelRawSrc(MixerChannel *mc, const std::shared_ptr<std::vector<byte>> &mem, uint rate, bool is16bit)
 {
 	mc->memory = mem;
 	mc->frac_pos = 0;
 	mc->pos = 0;
 
-	mc->frac_speed = (rate << 16) / _play_rate;
+	mc->frac_speed = (rate << 16U) / _play_rate;
 
+	size_t size = mc->memory->size();
 	if (is16bit) size /= 2;
 
 	/* adjust the magnitude to prevent overflow */
@@ -178,7 +178,8 @@ void MxSetChannelRawSrc(MixerChannel *mc, int8_t *mem, size_t size, uint rate, b
 		rate = (rate >> 1) + 1;
 	}
 
-	mc->samples_left = (uint)size * _play_rate / rate;
+	/* Scale number of samples by play rate, less 1 to allow for the resampler's padding sample. */
+	mc->samples_left = (uint)size * _play_rate / rate - 1;
 	mc->is16bit = is16bit;
 }
 

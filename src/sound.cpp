@@ -8,6 +8,7 @@
 /** @file sound.cpp Handling of playing sounds. */
 
 #include "stdafx.h"
+#include "core/endian_func.hpp"
 #include "landscape.h"
 #include "mixer.h"
 #include "newgrf_sound.h"
@@ -22,6 +23,180 @@
 #include "safeguards.h"
 
 static std::array<SoundEntry, ORIGINAL_SAMPLE_COUNT> _original_sounds;
+
+/**
+ * Convert u8 samples to i8.
+ * @param in buffer of samples to convert.
+ */
+void NormaliseInt8(std::vector<byte> &in)
+{
+	/* Convert 8-bit samples from unsigned to signed. */
+	uint8_t *inb = reinterpret_cast<uint8_t *>(&*std::begin(in));
+	uint8_t *ine = reinterpret_cast<uint8_t *>(&*std::end(in)) - 1;
+	for (; inb != ine; ++inb) {
+		*inb = *inb - 128;
+	}
+}
+
+/**
+ * Convert i16 samples from little endian.
+ * @param in buffer of samples to convert.
+ */
+void NormaliseInt16(std::vector<byte> &in)
+{
+	/* Buffer sized must be aligned to 2 bytes. */
+	assert((in.size() & 1) == 0);
+
+	/* Convert samples from little endian. On a LE system this will do nothing. */
+	int16_t *inb = reinterpret_cast<int16_t *>(&*std::begin(in));
+	int16_t *ine = reinterpret_cast<int16_t *>(&*std::end(in));
+	for (; inb != ine; ++inb) {
+		*inb = FROM_LE16(*inb);
+	}
+}
+
+/**
+ * Raw PCM sound loader, used as a fallback if the WAV sound loader fails.
+ * @param[in,out] sound Sound to load. Playback parameters will be filled in.
+ * @param new_format Whether this sound comes from a new format file.
+ * @param[in,out] data buffer to load sound data into.
+ */
+static bool LoadSoundRaw(SoundEntry &sound, bool new_format, std::vector<byte> &data)
+{
+	/* No raw sounds are permitted with a new format file. */
+	if (new_format) return false;
+
+	/*
+	 * Special case for the jackhammer sound
+	 * (name in Windows sample.cat is "Corrupt sound")
+	 * It's no RIFF file, but raw PCM data
+	 */
+	sound.channels = 1;
+	sound.rate = 11025;
+	sound.bits_per_sample = 8;
+
+	/* Allocate an extra sample to ensure the runtime resampler doesn't go out of bounds.*/
+	data.resize(sound.file_size + 1);
+	sound.file->ReadBlock(data.data(), sound.file_size);
+
+	NormaliseInt8(data);
+
+	return true;
+}
+
+/**
+ * Wav file (RIFF/WAVE) sound louder.
+ * @param[in,out] sound Sound to load. Playback parameters will be filled in.
+ * @param new_format Whether this sound comes from a new format file.
+ * @param[in,out] data buffer to load sound data into.
+ */
+static bool LoadSoundWav(SoundEntry &sound, bool new_format, std::vector<byte> &data)
+{
+	RandomAccessFile &file = *sound.file;
+
+	/* Check RIFF/WAVE header. */
+	if (file.ReadDword() != BSWAP32('RIFF')) return false;
+	file.ReadDword(); // Skip data size
+	if (file.ReadDword() != BSWAP32('WAVE')) return false;
+
+	/* Read riff tags */
+	for (;;) {
+		uint32_t tag = file.ReadDword();
+		uint32_t size = file.ReadDword();
+
+		if (tag == BSWAP32('fmt ')) {
+			uint16_t format = file.ReadWord();        // wFormatTag
+			if (format != 1) return false; // File must be Uncompressed PCM
+			sound.channels = file.ReadWord();         // wChannels
+			sound.rate     = file.ReadDword();        // samples per second
+			if (!new_format) sound.rate = 11025;      // seems like all old samples should be played at this rate.
+			file.ReadDword();                         // avg bytes per second
+			file.ReadWord();                          // alignment
+			sound.bits_per_sample = file.ReadWord();  // bits per sample
+			if (sound.bits_per_sample != 8 && sound.bits_per_sample != 16) return false; // File must be 8 or 16 BPS.
+		} else if (tag == BSWAP32('data')) {
+			uint align = sound.channels * sound.bits_per_sample / 8;
+			if ((size & (align - 1)) != 0) return false; // Ensure length is aligned correctly for channels and BPS.
+
+			sound.file_size = size;
+			if (size == 0) return true; // No need to continue.
+
+			/* Allocate an extra sample to ensure the runtime resampler doesn't go out of bounds.*/
+			data.resize(sound.file_size + sound.channels * sound.bits_per_sample / 8);
+			file.ReadBlock(data.data(), sound.file_size);
+
+			if (sound.bits_per_sample == 8) NormaliseInt8(data);
+			if (sound.bits_per_sample == 16) NormaliseInt16(data);
+
+			return true;
+		} else {
+			sound.file_size = 0;
+			break;
+		}
+	}
+
+	return false;
+}
+
+using SoundLoader = bool (*)(SoundEntry &sound, bool new_format, std::vector<byte> &data);
+
+static std::initializer_list<SoundLoader> _sound_loaders = {
+	LoadSoundWav,
+	LoadSoundRaw,
+};
+
+bool LoadSound(SoundEntry &sound, bool new_format, SoundID sound_id, const std::string &name)
+{
+	/* Check for valid sound size. */
+	if (sound.file_size == 0 || sound.file_size > ((size_t)-1) - 2) return false;
+
+	size_t pos = sound.file->GetPos();
+	sound.data = std::make_shared<std::vector<byte>>();
+	for (auto &sl : _sound_loaders) {
+		sound.file->SeekTo(pos, SEEK_SET);
+		if (sl(sound, new_format, *sound.data)) break;
+	}
+
+	if (sound.data->empty()) {
+		/* Some sounds are unused so it does not matter if they are empty. */
+		static const std::initializer_list<SoundID> UNUSED_SOUNDS = {
+			SND_0D_UNUSED + 2, SND_11_UNUSED + 2, SND_22_UNUSED + 2, SND_23_UNUSED + 2, SND_32_UNUSED,
+		};
+
+		if (std::find(std::begin(UNUSED_SOUNDS), std::end(UNUSED_SOUNDS), sound_id) == std::end(UNUSED_SOUNDS)) {
+			Debug(grf, 0, "LoadSound [{}]: Failed to load sound '{}' for slot {}", sound.file->GetSimplifiedFilename(), name, sound_id);
+		}
+		return false;
+	}
+
+	assert(sound.bits_per_sample == 8 || sound.bits_per_sample == 16);
+	assert(sound.channels == 1);
+	assert(!sound.data->empty() && sound.rate != 0);
+
+	return true;
+}
+
+static bool LoadBasesetSound(SoundEntry &sound, bool new_format, SoundID sound_id)
+{
+	sound.file->SeekTo(sound.file_offset, SEEK_SET);
+
+	/* Read name of sound for diagnostics. */
+	size_t name_len = sound.file->ReadByte();
+	std::string name(name_len, '\0');
+	sound.file->ReadBlock(name.data(), name_len);
+
+	return LoadSound(sound, new_format, sound_id, name);
+}
+
+static bool LoadSoundSource(SoundEntry &sound, SoundID sound_id)
+{
+	switch (sound.source) {
+		case SoundSource::BasesetOldFormat: return LoadBasesetSound(sound, false, sound_id);
+		case SoundSource::BasesetNewFormat: return LoadBasesetSound(sound, true, sound_id);
+		case SoundSource::NewGRF: return LoadNewGRFSound(&sound, sound_id);
+		default: NOT_REACHED();
+	}
+}
 
 static void OpenBankFile(const std::string &filename)
 {
@@ -41,7 +216,7 @@ static void OpenBankFile(const std::string &filename)
 	uint count = original_sound_file->ReadDword();
 
 	/* The new format has the highest bit always set */
-	bool new_format = HasBit(count, 31);
+	auto source = HasBit(count, 31) ? SoundSource::BasesetNewFormat : SoundSource::BasesetOldFormat;
 	ClrBit(count, 31);
 	count /= 8;
 
@@ -56,101 +231,32 @@ static void OpenBankFile(const std::string &filename)
 
 	original_sound_file->SeekTo(pos, SEEK_SET);
 
-	for (uint i = 0; i != ORIGINAL_SAMPLE_COUNT; i++) {
-		_original_sounds[i].file = original_sound_file.get();
-		_original_sounds[i].file_offset = GB(original_sound_file->ReadDword(), 0, 31) + pos;
-		_original_sounds[i].file_size = original_sound_file->ReadDword();
-	}
-
-	for (uint i = 0; i != ORIGINAL_SAMPLE_COUNT; i++) {
-		SoundEntry *sound = &_original_sounds[i];
-		char name[255];
-
-		original_sound_file->SeekTo(sound->file_offset, SEEK_SET);
-
-		/* Check for special case, see else case */
-		original_sound_file->ReadBlock(name, original_sound_file->ReadByte()); // Read the name of the sound
-		if (new_format || strcmp(name, "Corrupt sound") != 0) {
-			original_sound_file->SeekTo(12, SEEK_CUR); // Skip past RIFF header
-
-			/* Read riff tags */
-			for (;;) {
-				uint32_t tag = original_sound_file->ReadDword();
-				uint32_t size = original_sound_file->ReadDword();
-
-				if (tag == ' tmf') {
-					original_sound_file->ReadWord();                          // wFormatTag
-					sound->channels = original_sound_file->ReadWord();        // wChannels
-					sound->rate     = original_sound_file->ReadDword();       // samples per second
-					if (!new_format) sound->rate = 11025;                      // seems like all old samples should be played at this rate.
-					original_sound_file->ReadDword();                         // avg bytes per second
-					original_sound_file->ReadWord();                          // alignment
-					sound->bits_per_sample = original_sound_file->ReadByte(); // bits per sample
-					original_sound_file->SeekTo(size - (2 + 2 + 4 + 4 + 2 + 1), SEEK_CUR);
-				} else if (tag == 'atad') {
-					sound->file_size = size;
-					sound->file = original_sound_file.get();
-					sound->file_offset = original_sound_file->GetPos();
-					break;
-				} else {
-					sound->file_size = 0;
-					break;
-				}
-			}
-		} else {
-			/*
-			 * Special case for the jackhammer sound
-			 * (name in sample.cat is "Corrupt sound")
-			 * It's no RIFF file, but raw PCM data
-			 */
-			sound->channels = 1;
-			sound->rate = 11025;
-			sound->bits_per_sample = 8;
-			sound->file = original_sound_file.get();
-			sound->file_offset = original_sound_file->GetPos();
-		}
+	/* Read sound file positions. */
+	for (auto &sound : _original_sounds) {
+		sound.file = original_sound_file.get();
+		sound.file_offset = GB(original_sound_file->ReadDword(), 0, 31) + pos;
+		sound.file_size = original_sound_file->ReadDword();
+		sound.source = source;
 	}
 }
 
-static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
+static bool SetBankSource(MixerChannel *mc, SoundEntry *sound, SoundID sound_id)
 {
 	assert(sound != nullptr);
 
-	/* Check for valid sound size. */
-	if (sound->file_size == 0 || sound->file_size > ((size_t)-1) - 2) return false;
-
-	int8_t *mem = MallocT<int8_t>(sound->file_size + 2);
-	/* Add two extra bytes so rate conversion can read these
-	 * without reading out of its input buffer. */
-	mem[sound->file_size    ] = 0;
-	mem[sound->file_size + 1] = 0;
-
-	RandomAccessFile *file = sound->file;
-	file->SeekTo(sound->file_offset, SEEK_SET);
-	file->ReadBlock(mem, sound->file_size);
-
-	/* 16-bit PCM WAV files should be signed by default */
-	if (sound->bits_per_sample == 8) {
-		for (uint i = 0; i != sound->file_size; i++) {
-			mem[i] += -128; // Convert unsigned sound data to signed
+	if (sound->file != nullptr) {
+		if (!LoadSoundSource(*sound, sound_id)) {
+			/* Mark as invalid. */
+			sound->file = nullptr;
+			return false;
 		}
+		sound->file = nullptr;
 	}
 
-#if TTD_ENDIAN == TTD_BIG_ENDIAN
-	if (sound->bits_per_sample == 16) {
-		uint num_samples = sound->file_size / 2;
-		int16_t *samples = (int16_t *)mem;
-		for (uint i = 0; i < num_samples; i++) {
-			samples[i] = BSWAP16(samples[i]);
-		}
-	}
-#endif
+	/* Check for valid sound. */
+	if (sound->data->empty()) return false;
 
-	assert(sound->bits_per_sample == 8 || sound->bits_per_sample == 16);
-	assert(sound->channels == 1);
-	assert(sound->file_size != 0 && sound->rate != 0);
-
-	MxSetChannelRawSrc(mc, mem, sound->file_size, sound->rate, sound->bits_per_sample == 16);
+	MxSetChannelRawSrc(mc, sound->data, sound->rate, sound->bits_per_sample == 16);
 
 	return true;
 }
@@ -161,6 +267,7 @@ void InitializeSound()
 	OpenBankFile(BaseSounds::GetUsedSet()->files->filename);
 }
 
+
 /* Low level sound player */
 static void StartSound(SoundID sound_id, float pan, uint volume)
 {
@@ -169,22 +276,13 @@ static void StartSound(SoundID sound_id, float pan, uint volume)
 	SoundEntry *sound = GetSound(sound_id);
 	if (sound == nullptr) return;
 
-	/* NewGRF sound that wasn't loaded yet? */
-	if (sound->rate == 0 && sound->file != nullptr) {
-		if (!LoadNewGRFSound(sound)) {
-			/* Mark as invalid. */
-			sound->file = nullptr;
-			return;
-		}
-	}
-
 	/* Empty sound? */
-	if (sound->rate == 0) return;
+	if (sound->rate == 0 && sound->file == nullptr) return;
 
 	MixerChannel *mc = MxAllocateChannel();
 	if (mc == nullptr) return;
 
-	if (!SetBankSource(mc, sound)) return;
+	if (!SetBankSource(mc, sound, sound_id)) return;
 
 	/* Apply the sound effect's own volume. */
 	volume = sound->volume * volume;
