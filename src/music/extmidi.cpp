@@ -130,22 +130,37 @@ void MusicDriver_ExtMidi::DoPlay()
 	}
 }
 
+/**
+ * Try to end child process with kill/waitpid for up to 1 second.
+ * @param pid The process ID to end.
+ * @param signal The signal type to send.
+ * @return True if the process has been ended.
+ */
+static bool KillWait(pid_t &pid, int signal)
+{
+	/* First try to stop for about a second;
+	 * 1 seconds = 1000 milliseconds, 50 ms per cycle => 20 cycles. */
+	for (int i = 0; i < 20; i++) {
+		kill(pid, signal);
+		if (waitpid(pid, nullptr, WNOHANG) == pid) {
+			/* It has shut down, so we are done */
+			pid = -1;
+			return true;
+		}
+		/* Wait 50 milliseconds. */
+		CSleep(50);
+	}
+
+	return false;
+}
+
 void MusicDriver_ExtMidi::DoStop()
 {
 	if (this->pid <= 0) return;
 
-	/* First try to gracefully stop for about five seconds;
-	 * 5 seconds = 5000 milliseconds, 10 ms per cycle => 500 cycles. */
-	for (int i = 0; i < 500; i++) {
-		kill(this->pid, SIGTERM);
-		if (waitpid(this->pid, nullptr, WNOHANG) == this->pid) {
-			/* It has shut down, so we are done */
-			this->pid = -1;
-			return;
-		}
-		/* Wait 10 milliseconds. */
-		CSleep(10);
-	}
+	if (KillWait(this->pid, SIGINT)) return;
+
+	if (KillWait(this->pid, SIGTERM)) return;
 
 	Debug(driver, 0, "extmidi: gracefully stopping failed, trying the hard way");
 	/* Gracefully stopping failed. Do it the hard way
