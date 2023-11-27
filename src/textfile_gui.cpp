@@ -160,7 +160,7 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 static const std::regex _markdown_link_regex{"\\[(.+?)\\]\\((.+?)\\)", std::regex_constants::ECMAScript | std::regex_constants::optimize};
 
 /** Types of link we support in markdown files. */
-enum class LinkType {
+enum class HyperlinkType {
 	Internal, ///< Internal link, or "anchor" in HTML language.
 	Web,      ///< Link to an external website.
 	File,     ///< Link to a local file.
@@ -172,20 +172,20 @@ enum class LinkType {
  *
  * @param destination The hyperlink destination.
  * @param trusted Whether we trust the content of this file.
- * @return LinkType The classification of the link.
+ * @return HyperlinkType The classification of the link.
  */
-static LinkType ClassifyHyperlink(const std::string &destination, bool trusted)
+static HyperlinkType ClassifyHyperlink(const std::string &destination, bool trusted)
 {
-	if (destination.empty()) return LinkType::Unknown;
-	if (StrStartsWith(destination, "#")) return LinkType::Internal;
+	if (destination.empty()) return HyperlinkType::Unknown;
+	if (StrStartsWith(destination, "#")) return HyperlinkType::Internal;
 
 	/* Only allow external / internal links for sources we trust. */
-	if (!trusted) return LinkType::Unknown;
+	if (!trusted) return HyperlinkType::Unknown;
 
-	if (StrStartsWith(destination, "http://")) return LinkType::Web;
-	if (StrStartsWith(destination, "https://")) return LinkType::Web;
-	if (StrStartsWith(destination, "./")) return LinkType::File;
-	return LinkType::Unknown;
+	if (StrStartsWith(destination, "http://")) return HyperlinkType::Web;
+	if (StrStartsWith(destination, "https://")) return HyperlinkType::Web;
+	if (StrStartsWith(destination, "./")) return HyperlinkType::File;
+	return HyperlinkType::Unknown;
 }
 
 /**
@@ -249,16 +249,16 @@ void TextfileWindow::FindHyperlinksInMarkdown(Line &line, size_t line_index)
 		link.destination = match[2].str();
 		this->links.push_back(link);
 
-		LinkType link_type = ClassifyHyperlink(link.destination, this->trusted);
+		HyperlinkType link_type = ClassifyHyperlink(link.destination, this->trusted);
 		StringControlCode link_colour;
 		switch (link_type) {
-			case LinkType::Internal:
+			case HyperlinkType::Internal:
 				link_colour = SCC_GREEN;
 				break;
-			case LinkType::Web:
+			case HyperlinkType::Web:
 				link_colour = SCC_LTBLUE;
 				break;
-			case LinkType::File:
+			case HyperlinkType::File:
 				link_colour = SCC_LTBROWN;
 				break;
 			default:
@@ -394,7 +394,7 @@ void TextfileWindow::NavigateHistory(int delta)
 /* virtual */ void TextfileWindow::OnHyperlinkClick(const Hyperlink &link)
 {
 	switch (ClassifyHyperlink(link.destination, this->trusted)) {
-		case LinkType::Internal:
+		case HyperlinkType::Internal:
 		{
 			auto it = std::find_if(this->link_anchors.cbegin(), this->link_anchors.cend(), [&](const Hyperlink &other) { return link.destination == other.destination; });
 			if (it != this->link_anchors.cend()) {
@@ -405,11 +405,11 @@ void TextfileWindow::NavigateHistory(int delta)
 			break;
 		}
 
-		case LinkType::Web:
+		case HyperlinkType::Web:
 			OpenBrowser(link.destination.c_str());
 			break;
 
-		case LinkType::File:
+		case HyperlinkType::File:
 			this->NavigateToFile(link.destination, 0);
 			break;
 
