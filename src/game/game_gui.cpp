@@ -37,35 +37,38 @@ static const NWidgetPart _nested_gs_config_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_GSC_BACKGROUND),
-		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse),
+		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse_resize),
 			NWidget(WWT_FRAME, COLOUR_MAUVE), SetDataTip(STR_AI_CONFIG_GAMESCRIPT, STR_NULL), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_GSC_GSLIST), SetMinimalSize(288, 14), SetFill(1, 1), SetResize(1, 0), SetMatrixDataTip(1, 1, STR_AI_CONFIG_GAMELIST_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_FRAME, COLOUR_MAUVE), SetDataTip(STR_AI_CONFIG_GAMESCRIPT_PARAM, STR_NULL), SetFill(1, 1), SetResize(1, 0),
+			NWidget(WWT_FRAME, COLOUR_MAUVE), SetDataTip(STR_AI_CONFIG_GAMESCRIPT_PARAM, STR_NULL), SetFill(1, 1), SetResize(1, 0), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_GSC_SETTINGS), SetFill(1, 0), SetResize(1, 1), SetMinimalSize(188, 182), SetMatrixDataTip(1, 0, STR_NULL), SetScrollbar(WID_GSC_SCROLLBAR),
 					NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_GSC_SCROLLBAR),
 				EndContainer(),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_RESET), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_AI_SETTINGS_RESET, STR_NULL),
 			EndContainer(),
-			NWidget(NWID_VERTICAL, NC_EQUALSIZE),
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_CHANGE), SetFill(1, 1), SetResize(1, 0), SetMinimalSize(93, 0), SetDataTip(STR_AI_CONFIG_CHANGE_GAMESCRIPT, STR_AI_CONFIG_CHANGE_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_TEXTFILE + TFT_README), SetFill(1, 1), SetResize(1, 0), SetMinimalSize(93, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_CHANGE), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_AI_CONFIG_CHANGE_GAMESCRIPT, STR_AI_CONFIG_CHANGE_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_CONTENT_DOWNLOAD), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 				EndContainer(),
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_TEXTFILE + TFT_LICENSE), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_OPEN_URL), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_TEXTFILE + TFT_README), SetFill(1, 1), SetResize(1, 0), SetMinimalSize(93, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_TEXTFILE + TFT_LICENSE), SetFill(1, 1), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+					EndContainer(),
 				EndContainer(),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GSC_CONTENT_DOWNLOAD), SetFill(1, 1), SetResize(1, 0), SetMinimalSize(279, 0), SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 			EndContainer(),
 		EndContainer(),
-	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_GSC_ACCEPT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_AI_SETTINGS_CLOSE, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_GSC_RESET), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_AI_SETTINGS_RESET, STR_NULL),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 		EndContainer(),
-		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
 
@@ -349,9 +352,12 @@ struct GSConfigWindow : public Window {
 				break;
 			}
 
-			case WID_GSC_ACCEPT:
-				this->Close();
+			case WID_GSC_OPEN_URL: {
+				const GameConfig *config = GameConfig::GetConfig();
+				if (config == nullptr || config->GetInfo() == nullptr) return;
+				OpenBrowser(config->GetInfo()->GetURL());
 				break;
+			}
 
 			case WID_GSC_RESET:
 				this->gs_config->ResetEditableSettings(_game_mode == GM_MENU);
@@ -408,8 +414,10 @@ struct GSConfigWindow : public Window {
 
 		this->SetWidgetDisabledState(WID_GSC_CHANGE, (_game_mode == GM_NORMAL) || !IsEditable());
 
+		const GameConfig *config = GameConfig::GetConfig();
+		this->SetWidgetDisabledState(WID_GSC_OPEN_URL, config->GetInfo() == nullptr || config->GetInfo()->GetURL().empty());
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
-			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, !GameConfig::GetConfig()->GetTextfile(tft, (CompanyID)OWNER_DEITY).has_value());
+			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, !config->GetTextfile(tft, (CompanyID)OWNER_DEITY).has_value());
 		}
 		this->RebuildVisibleSettings();
 		this->CloseChildWindows(WC_DROPDOWN_MENU);
