@@ -156,12 +156,8 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
 		this->selected_playlist = pl;
 		this->playlist_position = 0;
 
-		if (_settings_client.music.shuffle) {
-			this->Shuffle();
-			/* Shuffle() will also Play() if necessary, only start once */
-		} else if (_settings_client.music.playing) {
-			this->Play();
-		}
+		if (_settings_client.music.shuffle) this->Shuffle();
+		if (_settings_client.music.playing) this->Play();
 	}
 
 	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
