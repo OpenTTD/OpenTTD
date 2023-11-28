@@ -59,6 +59,7 @@ struct BaseSet {
 	static const char * const *file_names;
 
 	std::string name;              ///< The name of the base set
+	std::string url;               ///< URL for information about the base set
 	TranslatedStrings description; ///< Description of the base set
 	uint32_t shortname;              ///< Four letter short variant of the name
 	uint32_t version;                ///< The version of this base set

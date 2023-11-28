@@ -601,6 +601,21 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
+			case WID_GO_BASE_GRF_OPEN_URL:
+				if (BaseGraphics::GetUsedSet() == nullptr || BaseGraphics::GetUsedSet()->url.empty()) return;
+				OpenBrowser(BaseGraphics::GetUsedSet()->url);
+				break;
+
+			case WID_GO_BASE_SFX_OPEN_URL:
+				if (BaseSounds::GetUsedSet() == nullptr || BaseSounds::GetUsedSet()->url.empty()) return;
+				OpenBrowser(BaseSounds::GetUsedSet()->url);
+				break;
+
+			case WID_GO_BASE_MUSIC_OPEN_URL:
+				if (BaseMusic::GetUsedSet() == nullptr || BaseMusic::GetUsedSet()->url.empty()) return;
+				OpenBrowser(BaseMusic::GetUsedSet()->url);
+				break;
+
 			default: {
 				int selected;
 				DropDownList list = this->BuildDropDownList(widget, &selected);
@@ -720,6 +735,10 @@ struct GameOptionsWindow : Window {
 
 		this->SetWidgetDisabledState(WID_GO_BASE_GRF_PARAMETERS, BaseGraphics::GetUsedSet() == nullptr || !BaseGraphics::GetUsedSet()->IsConfigurable());
 
+		this->SetWidgetDisabledState(WID_GO_BASE_GRF_OPEN_URL, BaseGraphics::GetUsedSet() == nullptr || BaseGraphics::GetUsedSet()->url.empty());
+		this->SetWidgetDisabledState(WID_GO_BASE_SFX_OPEN_URL, BaseSounds::GetUsedSet() == nullptr || BaseSounds::GetUsedSet()->url.empty());
+		this->SetWidgetDisabledState(WID_GO_BASE_MUSIC_OPEN_URL, BaseMusic::GetUsedSet() == nullptr || BaseMusic::GetUsedSet()->url.empty());
+
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
 			this->SetWidgetDisabledState(WID_GO_BASE_GRF_TEXTFILE + tft, BaseGraphics::GetUsedSet() == nullptr || !BaseGraphics::GetUsedSet()->GetTextfile(tft).has_value());
 			this->SetWidgetDisabledState(WID_GO_BASE_SFX_TEXTFILE + tft, BaseSounds::GetUsedSet() == nullptr || !BaseSounds::GetUsedSet()->GetTextfile(tft).has_value());
@@ -822,10 +841,15 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_PARAMETERS), SetDataTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS, STR_NULL),
 					EndContainer(),
 					NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_GRF_DESCRIPTION), SetMinimalSize(200, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP), SetFill(1, 0),
-					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+					NWidget(NWID_VERTICAL),
+						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_OPEN_URL), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+						EndContainer(),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
@@ -846,10 +870,15 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_SFX, STR_NULL), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_SFX_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP), SetFill(1, 0),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_BASE_SFX_DESCRIPTION), SetMinimalSize(200, 0), SetMinimalTextLines(1, 0), SetDataTip(STR_NULL, STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP), SetFill(1, 0),
-					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_SFX_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_SFX_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_SFX_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+					NWidget(NWID_VERTICAL),
+						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_SFX_OPEN_URL), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_SFX_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_SFX_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_SFX_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+						EndContainer(),
 					EndContainer(),
 				EndContainer(),
 
@@ -861,10 +890,15 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 							NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_JUKEBOX), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
 						EndContainer(),
 					EndContainer(),
-					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+					NWidget(NWID_VERTICAL),
+						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_OPEN_URL), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
+						EndContainer(),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
