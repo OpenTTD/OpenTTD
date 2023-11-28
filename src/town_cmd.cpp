@@ -17,6 +17,7 @@
 #include "command_func.h"
 #include "industry.h"
 #include "station_base.h"
+#include "waypoint_base.h"
 #include "station_kdtree.h"
 #include "company_base.h"
 #include "news_func.h"
@@ -3038,6 +3039,11 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 			CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, st->airport.tile);
 			if (ret.Failed()) return ret;
 		}
+	}
+
+	/* Waypoints refer to towns. */
+	for (const Waypoint *wp : Waypoint::Iterate()) {
+		if (wp->town == t) return CMD_ERROR;
 	}
 
 	/* Depots refer to towns. */
