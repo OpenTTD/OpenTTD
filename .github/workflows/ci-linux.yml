@@ -54,6 +54,7 @@ jobs:
           libogg-dev \
           libopus-dev \
           libopusfile-dev \
+          libsoxr-dev \
           ${{ inputs.libraries }} \
           zlib1g-dev \
           # EOF

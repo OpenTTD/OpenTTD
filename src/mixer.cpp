@@ -250,6 +250,15 @@ bool MxInitialize(uint rate)
 	return true;
 }
 
+/**
+ * Get the current mixer sampling rate.
+ * @return Current sampling rate.
+ */
+uint32_t MxGetRate()
+{
+	return _play_rate;
+}
+
 void SetEffectVolume(uint8_t volume)
 {
 	_effect_vol.store(volume, std::memory_order_relaxed);

@@ -41,6 +41,7 @@ jobs:
           libogg:p
           opus:p
           opusfile:p
+          libsoxr:p
 
     - name: Install OpenGFX
       shell: bash
