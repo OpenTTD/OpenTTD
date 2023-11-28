@@ -689,6 +689,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlag flags, TileIndex tile, const 
 /** Move all free vehicles in the depot to the train */
 void NormalizeTrainVehInDepot(const Train *u)
 {
+	assert(u->IsEngine());
 	for (const Train *v : Train::Iterate()) {
 		if (v->IsFreeWagon() && v->tile == u->tile &&
 				v->track == TRACK_BIT_DEPOT) {

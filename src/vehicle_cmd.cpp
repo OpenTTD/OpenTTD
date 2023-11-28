@@ -172,7 +172,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 		}
 
 		if (flags & DC_EXEC) {
-			if (type == VEH_TRAIN && use_free_vehicles && !(flags & DC_AUTOREPLACE)) {
+			if (type == VEH_TRAIN && use_free_vehicles && !(flags & DC_AUTOREPLACE) && Train::From(v)->IsEngine()) {
 				/* Move any free wagons to the new vehicle. */
 				NormalizeTrainVehInDepot(Train::From(v));
 			}
