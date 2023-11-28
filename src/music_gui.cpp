@@ -87,6 +87,7 @@ struct MusicSystem {
 	void PlaylistClear();
 
 private:
+	uint GetSetIndex();
 	void SetPositionBySetIndex(uint set_index);
 	void ChangePlaylistPosition(int ofs);
 	int playlist_position;
@@ -192,13 +193,24 @@ void MusicSystem::SetPositionBySetIndex(uint set_index)
 }
 
 /**
+ * Get set index from current playlist position.
+ * @return current set index, or UINT_MAX if nothing is selected.
+ */
+uint MusicSystem::GetSetIndex()
+{
+	return static_cast<size_t>(this->playlist_position) < this->active_playlist.size()
+		? this->active_playlist[this->playlist_position].set_index
+		: UINT_MAX;
+}
+
+/**
  * Enable shuffle mode.
  */
 void MusicSystem::Shuffle()
 {
 	_settings_client.music.shuffle = true;
 
-	uint set_index = this->active_playlist[this->playlist_position].set_index;
+	uint set_index = this->GetSetIndex();
 	this->active_playlist = this->displayed_playlist;
 	for (size_t i = 0; i < this->active_playlist.size(); i++) {
 		size_t shuffle_index = InteractiveRandom() % (this->active_playlist.size() - i);
@@ -217,7 +229,7 @@ void MusicSystem::Unshuffle()
 {
 	_settings_client.music.shuffle = false;
 
-	uint set_index = this->active_playlist[this->playlist_position].set_index;
+	uint set_index = this->GetSetIndex();
 	this->active_playlist = this->displayed_playlist;
 	this->SetPositionBySetIndex(set_index);
 
