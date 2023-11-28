@@ -27,17 +27,20 @@ enum GameOptionsWidgets {
 	WID_GO_GUI_SCALE_BEVEL_BUTTON, ///< Toggle for chunky bevels.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
 	WID_GO_BASE_GRF_PARAMETERS,    ///< Base GRF parameters.
+	WID_GO_BASE_GRF_OPEN_URL,      ///< Open base GRF URL.
 	WID_GO_BASE_GRF_TEXTFILE,      ///< Open base GRF readme, changelog (+1) or license (+2).
 	WID_GO_BASE_GRF_DESCRIPTION = WID_GO_BASE_GRF_TEXTFILE + TFT_CONTENT_END,     ///< Description of selected base GRF.
 	WID_GO_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX.
 	WID_GO_TEXT_SFX_VOLUME,        ///< Sound effects volume label.
 	WID_GO_BASE_SFX_VOLUME,        ///< Change sound effects volume.
+	WID_GO_BASE_SFX_OPEN_URL,      ///< Open base SFX URL.
 	WID_GO_BASE_SFX_TEXTFILE,      ///< Open base SFX readme, changelog (+1) or license (+2).
 	WID_GO_BASE_SFX_DESCRIPTION = WID_GO_BASE_SFX_TEXTFILE + TFT_CONTENT_END,     ///< Description of selected base SFX.
 	WID_GO_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set.
 	WID_GO_TEXT_MUSIC_VOLUME,      ///< Music volume label.
 	WID_GO_BASE_MUSIC_VOLUME,      ///< Change music volume.
 	WID_GO_BASE_MUSIC_JUKEBOX,     ///< Open the jukebox.
+	WID_GO_BASE_MUSIC_OPEN_URL,    ///< Open base music URL.
 	WID_GO_BASE_MUSIC_TEXTFILE,    ///< Open base music readme, changelog (+1) or license (+2).
 	WID_GO_BASE_MUSIC_DESCRIPTION = WID_GO_BASE_MUSIC_TEXTFILE + TFT_CONTENT_END, ///< Description of selected base music set.
 	WID_GO_VIDEO_ACCEL_BUTTON,     ///< Toggle for video acceleration.

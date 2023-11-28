@@ -55,6 +55,9 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(const IniFile &ini,
 	fetch_metadata("description");
 	this->description[std::string{}] = *item->value;
 
+	item = metadata->GetItem("url");
+	if (item != nullptr) this->url = *item->value;
+
 	/* Add the translations of the descriptions too. */
 	for (const IniItem &titem : metadata->items) {
 		if (titem.name.compare(0, 12, "description.") != 0) continue;
