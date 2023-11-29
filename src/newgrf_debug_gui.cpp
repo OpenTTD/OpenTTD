@@ -819,11 +819,15 @@ struct SpriteAlignerWindow : Window {
 	Scrollbar *vscroll;
 	std::map<SpriteID, XyOffs> offs_start_map; ///< Mapping of starting offsets for the sprites which have been aligned in the sprite aligner window.
 
+	static inline ZoomLevel zoom = ZOOM_LVL_END;
 	static bool centre;
 	static bool crosshair;
 
 	SpriteAlignerWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
 	{
+		/* On first opening, set initial zoom to current zoom level. */
+		if (SpriteAlignerWindow::zoom == ZOOM_LVL_END) SpriteAlignerWindow::zoom = _gui_zoom;
+
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SA_SCROLLBAR);
 		this->vscroll->SetCount(_newgrf_debug_sprite_picker.sprites.size());
@@ -834,6 +838,8 @@ struct SpriteAlignerWindow : Window {
 
 		/* Oh yes, we assume there is at least one normal sprite! */
 		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) this->current_sprite++;
+
+		this->InvalidateData(0, true);
 	}
 
 	void SetStringParameters(int widget) const override
@@ -846,8 +852,8 @@ struct SpriteAlignerWindow : Window {
 				break;
 
 			case WID_SA_OFFSETS_ABS:
-				SetDParam(0, spr->x_offs);
-				SetDParam(1, spr->y_offs);
+				SetDParam(0, UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom));
+				SetDParam(1, UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom));
 				break;
 
 			case WID_SA_OFFSETS_REL: {
@@ -856,8 +862,8 @@ struct SpriteAlignerWindow : Window {
 				 */
 				const auto key_offs_pair = this->offs_start_map.find(this->current_sprite);
 				if (key_offs_pair != this->offs_start_map.end()) {
-					SetDParam(0, spr->x_offs - key_offs_pair->second.first);
-					SetDParam(1, spr->y_offs - key_offs_pair->second.second);
+					SetDParam(0, UnScaleByZoom(spr->x_offs - key_offs_pair->second.first, SpriteAlignerWindow::zoom));
+					SetDParam(1, UnScaleByZoom(spr->y_offs - key_offs_pair->second.second, SpriteAlignerWindow::zoom));
 				} else {
 					SetDParam(0, 0);
 					SetDParam(1, 0);
@@ -898,8 +904,8 @@ struct SpriteAlignerWindow : Window {
 				int x;
 				int y;
 				if (SpriteAlignerWindow::centre) {
-					x = -UnScaleGUI(spr->x_offs) + (ir.Width() - UnScaleGUI(spr->width)) / 2;
-					y = -UnScaleGUI(spr->y_offs) + (ir.Height() - UnScaleGUI(spr->height)) / 2;
+					x = -UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom) + (ir.Width() - UnScaleByZoom(spr->width, SpriteAlignerWindow::zoom)) / 2;
+					y = -UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom) + (ir.Height() - UnScaleByZoom(spr->height, SpriteAlignerWindow::zoom)) / 2;
 				} else {
 					x = ir.Width() / 2;
 					y = ir.Height() / 2;
@@ -909,8 +915,8 @@ struct SpriteAlignerWindow : Window {
 				if (!FillDrawPixelInfo(&new_dpi, ir.left, ir.top, ir.Width(), ir.Height())) break;
 				AutoRestoreBackup dpi_backup(_cur_dpi, &new_dpi);
 
-				DrawSprite(this->current_sprite, PAL_NONE, x, y, nullptr, ZOOM_LVL_GUI);
-				if (this->crosshair) {
+				DrawSprite(this->current_sprite, PAL_NONE, x, y, nullptr, SpriteAlignerWindow::zoom);
+				if (SpriteAlignerWindow::crosshair) {
 					GfxDrawLine(x, 0, x, ir.Height() - 1, PC_WHITE, 1, 1);
 					GfxDrawLine(0, y, ir.Width() - 1, y, PC_WHITE, 1, 1);
 				}
@@ -927,7 +933,7 @@ struct SpriteAlignerWindow : Window {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.matrix);
 				for (int i = this->vscroll->GetPosition(); i < max; i++) {
 					SetDParam(0, list[i]);
-					DrawString(ir, STR_JUST_COMMA, TC_BLACK, SA_RIGHT | SA_FORCE);
+					DrawString(ir, STR_JUST_COMMA, list[i] == this->current_sprite ? TC_WHITE : TC_BLACK, SA_RIGHT | SA_FORCE);
 					ir.top += step_size;
 				}
 				break;
@@ -995,12 +1001,13 @@ struct SpriteAlignerWindow : Window {
 				if (this->offs_start_map.count(this->current_sprite) == 0) {
 					this->offs_start_map[this->current_sprite] = XyOffs(spr->x_offs, spr->y_offs);
 				}
+				int amt = ScaleByZoom(_ctrl_pressed ? 8 : 1, SpriteAlignerWindow::zoom);
 				switch (widget) {
 					/* Move eight units at a time if ctrl is pressed. */
-					case WID_SA_UP:    spr->y_offs -= _ctrl_pressed ? 8 : 1; break;
-					case WID_SA_DOWN:  spr->y_offs += _ctrl_pressed ? 8 : 1; break;
-					case WID_SA_LEFT:  spr->x_offs -= _ctrl_pressed ? 8 : 1; break;
-					case WID_SA_RIGHT: spr->x_offs += _ctrl_pressed ? 8 : 1; break;
+					case WID_SA_UP:    spr->y_offs -= amt; break;
+					case WID_SA_DOWN:  spr->y_offs += amt; break;
+					case WID_SA_LEFT:  spr->x_offs -= amt; break;
+					case WID_SA_RIGHT: spr->x_offs += amt; break;
 				}
 				/* Of course, we need to redraw the sprite, but where is it used?
 				 * Everywhere is a safe bet. */
@@ -1024,6 +1031,13 @@ struct SpriteAlignerWindow : Window {
 				SpriteAlignerWindow::crosshair = !SpriteAlignerWindow::crosshair;
 				this->SetWidgetLoweredState(widget, SpriteAlignerWindow::crosshair);
 				this->SetDirty();
+				break;
+
+			default:
+				if (IsInsideBS(widget, WID_SA_ZOOM, ZOOM_LVL_END)) {
+					SpriteAlignerWindow::zoom = ZoomLevel(widget - WID_SA_ZOOM);
+					this->InvalidateData(0, true);
+				}
 				break;
 		}
 	}
@@ -1052,6 +1066,10 @@ struct SpriteAlignerWindow : Window {
 			/* Sprite picker finished */
 			this->RaiseWidget(WID_SA_PICKER);
 			this->vscroll->SetCount(_newgrf_debug_sprite_picker.sprites.size());
+		}
+
+		for (ZoomLevel z = ZOOM_LVL_NORMAL; z < ZOOM_LVL_END; z++) {
+			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + z);
 		}
 	}
 
@@ -1116,6 +1134,14 @@ static const NWidgetPart _nested_sprite_aligner_widgets[] = {
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_MATRIX, COLOUR_GREY, WID_SA_LIST), SetResize(1, 1), SetMatrixDataTip(1, 0, STR_NULL), SetFill(1, 1), SetScrollbar(WID_SA_SCROLLBAR),
 					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SA_SCROLLBAR),
+				EndContainer(),
+				NWidget(NWID_VERTICAL),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_NORMAL), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_2X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_4X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_8X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_16X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X, STR_NULL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_32X), SetDataTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X, STR_NULL), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
