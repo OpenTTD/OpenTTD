@@ -958,8 +958,9 @@ void Window::ReInit(int rx, int ry, bool reposition)
 	this->SetDirty(); // Mark whole current window as dirty.
 
 	/* Save current size. */
-	int window_width  = this->width;
-	int window_height = this->height;
+	int window_width  = this->width * _gui_scale / this->scale;
+	int window_height = this->height * _gui_scale / this->scale;
+	this->scale = _gui_scale;
 
 	this->OnInit();
 	/* Re-initialize the window from the ground up. No need to change the nested_array, as all widgets stay where they are. */
@@ -1770,7 +1771,7 @@ void Window::InitNested(WindowNumber window_number)
  * Empty constructor, initialization has been moved to #InitNested() called from the constructor of the derived class.
  * @param desc The description of the window.
  */
-Window::Window(WindowDesc *desc) : window_desc(desc), mouse_capture_widget(-1)
+Window::Window(WindowDesc *desc) : window_desc(desc), scale(_gui_scale), mouse_capture_widget(-1)
 {
 	this->z_position = _z_windows.insert(_z_windows.end(), this);
 }

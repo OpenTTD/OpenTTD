@@ -242,6 +242,8 @@ public:
 	WindowClass window_class;   ///< Window class
 	WindowNumber window_number; ///< Window number within the window class
 
+	int scale; ///< Scale of this window -- used to determine how to resize.
+
 	uint8_t timeout_timer;      ///< Timer value of the WF_TIMEOUT for flags.
 	uint8_t white_border_timer; ///< Timer value of the WF_WHITE_BORDER for flags.
 
