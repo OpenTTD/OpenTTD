@@ -51,6 +51,13 @@ public:
 	static inline std::array<CargoID, INDUSTRY_NUM_INPUTS> old_cargo;
 	static inline std::array<uint16_t, INDUSTRY_NUM_INPUTS> old_waiting;
 	static inline std::array<TimerGameEconomy::Date, INDUSTRY_NUM_INPUTS> old_last_accepted;
+
+	static void ResetOldStructure()
+	{
+		SlIndustryAccepted::old_cargo.fill(INVALID_CARGO);
+		SlIndustryAccepted::old_waiting.fill(0);
+		SlIndustryAccepted::old_last_accepted.fill(0);
+	}
 };
 
 class SlIndustryProducedHistory : public DefaultSaveLoadHandler<SlIndustryProducedHistory, Industry::ProducedCargo> {
@@ -124,6 +131,17 @@ public:
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_this_month_transported;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_last_month_production;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_last_month_transported;
+
+	static void ResetOldStructure()
+	{
+		SlIndustryProduced::old_cargo.fill(INVALID_CARGO);
+		SlIndustryProduced::old_waiting.fill(0);
+		SlIndustryProduced::old_rate.fill(0);
+		SlIndustryProduced::old_this_month_production.fill(0);
+		SlIndustryProduced::old_this_month_transported.fill(0);
+		SlIndustryProduced::old_last_month_production.fill(0);
+		SlIndustryProduced::old_this_month_production.fill(0);
+	}
 };
 
 static const SaveLoad _industry_desc[] = {
@@ -223,6 +241,8 @@ struct INDYChunkHandler : ChunkHandler {
 
 		int index;
 
+		SlIndustryAccepted::ResetOldStructure();
+		SlIndustryProduced::ResetOldStructure();
 		Industry::ResetIndustryCounts();
 
 		while ((index = SlIterateArray()) != -1) {
