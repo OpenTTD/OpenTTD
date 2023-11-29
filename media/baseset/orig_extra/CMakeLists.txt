@@ -10,6 +10,7 @@ if(GRFCODEC_FOUND)
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/rapids.nfo
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/temperate.nfo
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/toyland.nfo
+                         ${CMAKE_CURRENT_SOURCE_DIR}/rivers/toyland_rapids.nfo
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/tropic.nfo
                          ${CMAKE_CURRENT_SOURCE_DIR}/airports_orig_extra.nfo
                          ${CMAKE_CURRENT_SOURCE_DIR}/canals_extra.nfo
@@ -24,6 +25,8 @@ if(GRFCODEC_FOUND)
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/rapids_shading.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/temperate.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/toyland.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/rivers/toyland_rapids.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/rivers/toyland_rapids_shading.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/tropic_desert.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/tropic_forest.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/fix_graphics.png
