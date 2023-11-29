@@ -90,7 +90,7 @@ void SwitchToMode(SwitchMode new_mode);
 bool RequestNewGRFScan(struct NewGRFScanCallback *callback = nullptr);
 void GenerateSavegameId();
 
-void OpenBrowser(const char *url);
+void OpenBrowser(const std::string &url);
 void ChangeAutosaveFrequency(bool reset);
 
 #endif /* OPENTTD_H */

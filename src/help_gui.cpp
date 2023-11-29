@@ -145,16 +145,16 @@ struct HelpWindow : public Window {
 				new GameManualTextfileWindow(LICENSE_FILENAME);
 				break;
 			case WID_HW_WEBSITE:
-				OpenBrowser(WEBSITE_LINK.c_str());
+				OpenBrowser(WEBSITE_LINK);
 				break;
 			case WID_HW_WIKI:
-				OpenBrowser(WIKI_LINK.c_str());
+				OpenBrowser(WIKI_LINK);
 				break;
 			case WID_HW_BUGTRACKER:
-				OpenBrowser(BUGTRACKER_LINK.c_str());
+				OpenBrowser(BUGTRACKER_LINK);
 				break;
 			case WID_HW_COMMUNITY:
-				OpenBrowser(COMMUNITY_LINK.c_str());
+				OpenBrowser(COMMUNITY_LINK);
 				break;
 		}
 	}
