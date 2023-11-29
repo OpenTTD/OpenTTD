@@ -52,7 +52,7 @@ void ShowOSErrorBox(const char *buf, bool)
 	MessageBox(GetActiveWindow(), OTTD2FS(buf).c_str(), L"Error!", MB_ICONSTOP | MB_TASKMODAL);
 }
 
-void OSOpenBrowser(const char *url)
+void OSOpenBrowser(const std::string &url)
 {
 	ShellExecute(GetActiveWindow(), L"open", OTTD2FS(url).c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 }

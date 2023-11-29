@@ -384,7 +384,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 			}
 		}
 
-		OpenBrowser(url.c_str());
+		OpenBrowser(url);
 	}
 
 	/**
@@ -855,7 +855,7 @@ public:
 
 			case WID_NCL_OPEN_URL:
 				if (this->selected != nullptr) {
-					OpenBrowser(this->selected->url.c_str());
+					OpenBrowser(this->selected->url);
 				}
 				break;
 

@@ -94,7 +94,7 @@ bool HandleBootstrap();
 
 extern void AfterLoadCompanyStats();
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
-extern void OSOpenBrowser(const char *url);
+extern void OSOpenBrowser(const std::string &url);
 extern void RebuildTownCaches();
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern std::string _config_file;
@@ -370,7 +370,7 @@ void MakeNewgameSettingsLive()
 	}
 }
 
-void OpenBrowser(const char *url)
+void OpenBrowser(const std::string &url)
 {
 	/* Make sure we only accept urls that are sure to open a browser. */
 	if (StrStartsWith(url, "http://") || StrStartsWith(url, "https://")) {

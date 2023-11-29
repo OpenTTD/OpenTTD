@@ -406,7 +406,7 @@ void TextfileWindow::NavigateHistory(int delta)
 		}
 
 		case HyperlinkType::Web:
-			OpenBrowser(link.destination.c_str());
+			OpenBrowser(link.destination);
 			break;
 
 		case HyperlinkType::File:

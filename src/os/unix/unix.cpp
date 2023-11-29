@@ -230,20 +230,20 @@ std::optional<std::string> GetClipboardContents()
 
 
 #if defined(__EMSCRIPTEN__)
-void OSOpenBrowser(const char *url)
+void OSOpenBrowser(const std::string &url)
 {
 	/* Implementation in pre.js */
-	EM_ASM({ if(window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url, strlen(url));
+	EM_ASM({ if (window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url.c_str(), url.size());
 }
 #elif !defined( __APPLE__)
-void OSOpenBrowser(const char *url)
+void OSOpenBrowser(const std::string &url)
 {
 	pid_t child_pid = fork();
 	if (child_pid != 0) return;
 
 	const char *args[3];
 	args[0] = "xdg-open";
-	args[1] = url;
+	args[1] = url.c_str();
 	args[2] = nullptr;
 	execvp(args[0], const_cast<char * const *>(args));
 	Debug(misc, 0, "Failed to open url: {}", url);

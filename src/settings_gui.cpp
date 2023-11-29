@@ -495,7 +495,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_SURVEY_LINK_BUTTON:
-				OpenBrowser(NETWORK_SURVEY_DETAILS_LINK.c_str());
+				OpenBrowser(NETWORK_SURVEY_DETAILS_LINK);
 				break;
 
 			case WID_GO_SURVEY_PREVIEW_BUTTON:
