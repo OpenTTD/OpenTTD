@@ -48,14 +48,10 @@ public:
 	}
 
 	/* Old array structure used for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
-	static CargoID old_cargo[INDUSTRY_NUM_INPUTS];
-	static uint16_t old_waiting[INDUSTRY_NUM_INPUTS];
-	static TimerGameEconomy::Date old_last_accepted[INDUSTRY_NUM_INPUTS];
+	static inline std::array<CargoID, INDUSTRY_NUM_INPUTS> old_cargo;
+	static inline std::array<uint16_t, INDUSTRY_NUM_INPUTS> old_waiting;
+	static inline std::array<TimerGameEconomy::Date, INDUSTRY_NUM_INPUTS> old_last_accepted;
 };
-
-/* static */ CargoID SlIndustryAccepted::old_cargo[INDUSTRY_NUM_INPUTS];
-/* static */ uint16_t SlIndustryAccepted::old_waiting[INDUSTRY_NUM_INPUTS];
-/* static */ TimerGameEconomy::Date SlIndustryAccepted::old_last_accepted[INDUSTRY_NUM_INPUTS];
 
 class SlIndustryProducedHistory : public DefaultSaveLoadHandler<SlIndustryProducedHistory, Industry::ProducedCargo> {
 public:
@@ -121,22 +117,14 @@ public:
 	}
 
 	/* Old array structure used for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
-	static CargoID old_cargo[INDUSTRY_NUM_OUTPUTS];
-	static uint16_t old_waiting[INDUSTRY_NUM_OUTPUTS];
-	static uint8_t old_rate[INDUSTRY_NUM_OUTPUTS];
-	static uint16_t old_this_month_production[INDUSTRY_NUM_OUTPUTS];
-	static uint16_t old_this_month_transported[INDUSTRY_NUM_OUTPUTS];
-	static uint16_t old_last_month_production[INDUSTRY_NUM_OUTPUTS];
-	static uint16_t old_last_month_transported[INDUSTRY_NUM_OUTPUTS];
+	static inline std::array<CargoID, INDUSTRY_NUM_OUTPUTS> old_cargo;
+	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_waiting;
+	static inline std::array<uint8_t, INDUSTRY_NUM_OUTPUTS> old_rate;
+	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_this_month_production;
+	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_this_month_transported;
+	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_last_month_production;
+	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_last_month_transported;
 };
-
-/* static */ CargoID SlIndustryProduced::old_cargo[INDUSTRY_NUM_OUTPUTS];
-/* static */ uint16_t SlIndustryProduced::old_waiting[INDUSTRY_NUM_OUTPUTS];
-/* static */ uint8_t SlIndustryProduced::old_rate[INDUSTRY_NUM_OUTPUTS];
-/* static */ uint16_t SlIndustryProduced::old_this_month_production[INDUSTRY_NUM_OUTPUTS];
-/* static */ uint16_t SlIndustryProduced::old_this_month_transported[INDUSTRY_NUM_OUTPUTS];
-/* static */ uint16_t SlIndustryProduced::old_last_month_production[INDUSTRY_NUM_OUTPUTS];
-/* static */ uint16_t SlIndustryProduced::old_last_month_transported[INDUSTRY_NUM_OUTPUTS];
 
 static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, location.tile,              SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_6),
