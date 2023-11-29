@@ -214,9 +214,9 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 				if ((indspec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) {
 					if (this->industry->prod_level == 0) return 0;
-					return ClampTo<uint16_t>(this->industry->accepted[variable - 0x40].waiting / this->industry->prod_level);
+					return ClampTo<uint16_t>(this->industry->GetAccepted(variable - 0x40).waiting / this->industry->prod_level);
 				} else {
-					return ClampTo<uint16_t>(this->industry->accepted[variable - 0x40].waiting);
+					return ClampTo<uint16_t>(this->industry->GetAccepted(variable - 0x40).waiting);
 				}
 			} else {
 				return 0;
@@ -358,40 +358,40 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		case 0x87: return this->industry->location.h;// xy dimensions
 
 		case 0x88:
-		case 0x89: return this->industry->produced[variable - 0x88].cargo;
-		case 0x8A: return this->industry->produced[0].waiting;
-		case 0x8B: return GB(this->industry->produced[0].waiting, 8, 8);
-		case 0x8C: return this->industry->produced[1].waiting;
-		case 0x8D: return GB(this->industry->produced[1].waiting, 8, 8);
+		case 0x89: return this->industry->GetProduced(variable - 0x88).cargo;
+		case 0x8A: return this->industry->GetProduced(0).waiting;
+		case 0x8B: return GB(this->industry->GetProduced(0).waiting, 8, 8);
+		case 0x8C: return this->industry->GetProduced(1).waiting;
+		case 0x8D: return GB(this->industry->GetProduced(1).waiting, 8, 8);
 		case 0x8E:
-		case 0x8F: return this->industry->produced[variable - 0x8E].rate;
+		case 0x8F: return this->industry->GetProduced(variable - 0x8E).rate;
 		case 0x90:
 		case 0x91:
-		case 0x92: return this->industry->accepted[variable - 0x90].cargo;
+		case 0x92: return this->industry->GetAccepted(variable - 0x90).cargo;
 		case 0x93: return this->industry->prod_level;
 		/* amount of cargo produced so far THIS month. */
-		case 0x94: return this->industry->produced[0].history[THIS_MONTH].production;
-		case 0x95: return GB(this->industry->produced[0].history[THIS_MONTH].production, 8, 8);
-		case 0x96: return this->industry->produced[1].history[THIS_MONTH].production;
-		case 0x97: return GB(this->industry->produced[1].history[THIS_MONTH].production, 8, 8);
+		case 0x94: return this->industry->GetProduced(0).history[THIS_MONTH].production;
+		case 0x95: return GB(this->industry->GetProduced(0).history[THIS_MONTH].production, 8, 8);
+		case 0x96: return this->industry->GetProduced(1).history[THIS_MONTH].production;
+		case 0x97: return GB(this->industry->GetProduced(1).history[THIS_MONTH].production, 8, 8);
 		/* amount of cargo transported so far THIS month. */
-		case 0x98: return this->industry->produced[0].history[THIS_MONTH].transported;
-		case 0x99: return GB(this->industry->produced[0].history[THIS_MONTH].transported, 8, 8);
-		case 0x9A: return this->industry->produced[1].history[THIS_MONTH].transported;
-		case 0x9B: return GB(this->industry->produced[1].history[THIS_MONTH].transported, 8, 8);
+		case 0x98: return this->industry->GetProduced(0).history[THIS_MONTH].transported;
+		case 0x99: return GB(this->industry->GetProduced(0).history[THIS_MONTH].transported, 8, 8);
+		case 0x9A: return this->industry->GetProduced(1).history[THIS_MONTH].transported;
+		case 0x9B: return GB(this->industry->GetProduced(1).history[THIS_MONTH].transported, 8, 8);
 		/* fraction of cargo transported LAST month. */
 		case 0x9C:
-		case 0x9D: return this->industry->produced[variable - 0x9C].history[LAST_MONTH].PctTransported();
+		case 0x9D: return this->industry->GetProduced(variable - 0x9C).history[LAST_MONTH].PctTransported();
 		/* amount of cargo produced LAST month. */
-		case 0x9E: return this->industry->produced[0].history[LAST_MONTH].production;
-		case 0x9F: return GB(this->industry->produced[0].history[LAST_MONTH].production, 8, 8);
-		case 0xA0: return this->industry->produced[1].history[LAST_MONTH].production;
-		case 0xA1: return GB(this->industry->produced[1].history[LAST_MONTH].production, 8, 8);
+		case 0x9E: return this->industry->GetProduced(0).history[LAST_MONTH].production;
+		case 0x9F: return GB(this->industry->GetProduced(0).history[LAST_MONTH].production, 8, 8);
+		case 0xA0: return this->industry->GetProduced(1).history[LAST_MONTH].production;
+		case 0xA1: return GB(this->industry->GetProduced(1).history[LAST_MONTH].production, 8, 8);
 		/* amount of cargo transported last month. */
-		case 0xA2: return this->industry->produced[0].history[LAST_MONTH].transported;
-		case 0xA3: return GB(this->industry->produced[0].history[LAST_MONTH].transported, 8, 8);
-		case 0xA4: return this->industry->produced[1].history[LAST_MONTH].transported;
-		case 0xA5: return GB(this->industry->produced[1].history[LAST_MONTH].transported, 8, 8);
+		case 0xA2: return this->industry->GetProduced(0).history[LAST_MONTH].transported;
+		case 0xA3: return GB(this->industry->GetProduced(0).history[LAST_MONTH].transported, 8, 8);
+		case 0xA4: return this->industry->GetProduced(1).history[LAST_MONTH].transported;
+		case 0xA5: return GB(this->industry->GetProduced(1).history[LAST_MONTH].transported, 8, 8);
 
 		case 0xA6: return indspec->grf_prop.local_id;
 		case 0xA7: return this->industry->founder;
@@ -642,11 +642,11 @@ void IndustryProductionCallback(Industry *ind, int reason)
 
 		if (group->version < 2) {
 			/* Callback parameters map directly to industry cargo slot indices */
-			for (uint i = 0; i < group->num_input; i++) {
+			for (uint i = 0; i < group->num_input && i < ind->accepted.size(); i++) {
 				if (!IsValidCargoID(ind->accepted[i].cargo)) continue;
 				ind->accepted[i].waiting = ClampTo<uint16_t>(ind->accepted[i].waiting - DerefIndProd(group->subtract_input[i], deref) * multiplier);
 			}
-			for (uint i = 0; i < group->num_output; i++) {
+			for (uint i = 0; i < group->num_output && i < ind->produced.size(); i++) {
 				if (!IsValidCargoID(ind->produced[i].cargo)) continue;
 				ind->produced[i].waiting = ClampTo<uint16_t>(ind->produced[i].waiting + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier);
 			}
