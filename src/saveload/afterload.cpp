@@ -3058,7 +3058,7 @@ bool AfterLoadGame()
 			 * The loading routine should put the original singular value into the first array element. */
 			for (auto &a : i->accepted) {
 				if (IsValidCargoID(a.cargo)) {
-					a.last_accepted = i->accepted[0].last_accepted;
+					a.last_accepted = i->GetAccepted(0).last_accepted;
 				} else {
 					a.last_accepted = 0;
 				}

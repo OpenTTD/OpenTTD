@@ -1125,8 +1125,9 @@ static bool SearchLumberMillTrees(TileIndex tile, void *)
  */
 static void ChopLumberMillTrees(Industry *i)
 {
-	/* Skip production if cargo slot is invalid. */
-	if (!IsValidCargoID(i->produced[0].cargo)) return;
+	/* Don't process lumber mill if cargo is not set up correctly. */
+	auto itp = std::begin(i->produced);
+	if (itp == std::end(i->produced) || !IsValidCargoID(itp->cargo)) return;
 
 	/* We only want to cut trees if all tiles are completed. */
 	for (TileIndex tile_cur : i->location) {
@@ -1137,7 +1138,7 @@ static void ChopLumberMillTrees(Industry *i)
 
 	TileIndex tile = i->location.tile;
 	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, nullptr)) { // 40x40 tiles  to search.
-		i->produced[0].waiting = ClampTo<uint16_t>(i->produced[0].waiting + ScaleByCargoScale(45, false)); // Found a tree, add according value to waiting cargo.
+		itp->waiting = ClampTo<uint16_t>(itp->waiting + ScaleByCargoScale(45, false)); // Found a tree, add according value to waiting cargo.
 	}
 }
 
@@ -2847,7 +2848,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		if (original_economy) {
 			if (only_decrease || Chance16(1, 3)) {
 				/* If more than 60% transported, 66% chance of increase, else 33% chance of increase */
-				if (!only_decrease && (i->produced[0].history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_60) != Chance16(1, 3)) {
+				if (!only_decrease && (i->GetProduced(0).history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_60) != Chance16(1, 3)) {
 					mul = 1; // Increase production
 				} else {
 					div = 1; // Decrease production

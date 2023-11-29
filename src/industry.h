@@ -140,6 +140,28 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	}
 
 	/**
+	 * Safely get a produced cargo slot, or an empty data if the slot does not exist.
+	 * @param slot produced cargo slot to retrieve.
+	 * @return the real slot, or an empty slot.
+	 */
+	inline const ProducedCargo &GetProduced(size_t slot) const
+	{
+		static const ProducedCargo empty{INVALID_CARGO, 0, 0, {}};
+		return slot < this->produced.size() ? this->produced[slot] : empty;
+	}
+
+	/**
+	 * Safely get an accepted cargo slot, or an empty data if the slot does not exist.
+	 * @param slot accepted cargo slot to retrieve.
+	 * @return the real slot, or an empty slot.
+	 */
+	inline const AcceptedCargo &GetAccepted(size_t slot) const
+	{
+		static const AcceptedCargo empty{INVALID_CARGO, 0, {}};
+		return slot < this->accepted.size() ? this->accepted[slot] : empty;
+	}
+
+	/**
 	 * Get produced cargo slot for a specific cargo type.
 	 * @param cargo CargoID to find.
 	 * @return Iterator pointing to produced cargo slot if it exists, or the end iterator.

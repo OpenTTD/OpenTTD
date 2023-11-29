@@ -274,42 +274,47 @@ static const NIFeature _nif_industrytile = {
 
 
 /*** NewGRF industries ***/
+#define NIP_PRODUCED_CARGO(prop, base, slot, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->GetProduced(slot).cargo); }, sizeof(CargoID), prop, type }
+#define NIP_ACCEPTED_CARGO(prop, base, slot, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->GetAccepted(slot).cargo); }, sizeof(CargoID), prop, type }
 
 static const NIProperty _nip_industries[] = {
-	NIP(0x25, Industry, produced[ 0].cargo, NIT_CARGO, "produced cargo 0"),
-	NIP(0x25, Industry, produced[ 1].cargo, NIT_CARGO, "produced cargo 1"),
-	NIP(0x25, Industry, produced[ 2].cargo, NIT_CARGO, "produced cargo 2"),
-	NIP(0x25, Industry, produced[ 3].cargo, NIT_CARGO, "produced cargo 3"),
-	NIP(0x25, Industry, produced[ 4].cargo, NIT_CARGO, "produced cargo 4"),
-	NIP(0x25, Industry, produced[ 5].cargo, NIT_CARGO, "produced cargo 5"),
-	NIP(0x25, Industry, produced[ 6].cargo, NIT_CARGO, "produced cargo 6"),
-	NIP(0x25, Industry, produced[ 7].cargo, NIT_CARGO, "produced cargo 7"),
-	NIP(0x25, Industry, produced[ 8].cargo, NIT_CARGO, "produced cargo 8"),
-	NIP(0x25, Industry, produced[ 9].cargo, NIT_CARGO, "produced cargo 9"),
-	NIP(0x25, Industry, produced[10].cargo, NIT_CARGO, "produced cargo 10"),
-	NIP(0x25, Industry, produced[11].cargo, NIT_CARGO, "produced cargo 11"),
-	NIP(0x25, Industry, produced[12].cargo, NIT_CARGO, "produced cargo 12"),
-	NIP(0x25, Industry, produced[13].cargo, NIT_CARGO, "produced cargo 13"),
-	NIP(0x25, Industry, produced[14].cargo, NIT_CARGO, "produced cargo 14"),
-	NIP(0x25, Industry, produced[15].cargo, NIT_CARGO, "produced cargo 15"),
-	NIP(0x26, Industry, accepted[ 0].cargo, NIT_CARGO, "accepted cargo 0"),
-	NIP(0x26, Industry, accepted[ 1].cargo, NIT_CARGO, "accepted cargo 1"),
-	NIP(0x26, Industry, accepted[ 2].cargo, NIT_CARGO, "accepted cargo 2"),
-	NIP(0x26, Industry, accepted[ 3].cargo, NIT_CARGO, "accepted cargo 3"),
-	NIP(0x26, Industry, accepted[ 4].cargo, NIT_CARGO, "accepted cargo 4"),
-	NIP(0x26, Industry, accepted[ 5].cargo, NIT_CARGO, "accepted cargo 5"),
-	NIP(0x26, Industry, accepted[ 6].cargo, NIT_CARGO, "accepted cargo 6"),
-	NIP(0x26, Industry, accepted[ 7].cargo, NIT_CARGO, "accepted cargo 7"),
-	NIP(0x26, Industry, accepted[ 8].cargo, NIT_CARGO, "accepted cargo 8"),
-	NIP(0x26, Industry, accepted[ 9].cargo, NIT_CARGO, "accepted cargo 9"),
-	NIP(0x26, Industry, accepted[10].cargo, NIT_CARGO, "accepted cargo 10"),
-	NIP(0x26, Industry, accepted[11].cargo, NIT_CARGO, "accepted cargo 11"),
-	NIP(0x26, Industry, accepted[12].cargo, NIT_CARGO, "accepted cargo 12"),
-	NIP(0x26, Industry, accepted[13].cargo, NIT_CARGO, "accepted cargo 13"),
-	NIP(0x26, Industry, accepted[14].cargo, NIT_CARGO, "accepted cargo 14"),
-	NIP(0x26, Industry, accepted[15].cargo, NIT_CARGO, "accepted cargo 15"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  0, NIT_CARGO, "produced cargo 0"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  1, NIT_CARGO, "produced cargo 1"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  2, NIT_CARGO, "produced cargo 2"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  3, NIT_CARGO, "produced cargo 3"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  4, NIT_CARGO, "produced cargo 4"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  5, NIT_CARGO, "produced cargo 5"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  6, NIT_CARGO, "produced cargo 6"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  7, NIT_CARGO, "produced cargo 7"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  8, NIT_CARGO, "produced cargo 8"),
+	NIP_PRODUCED_CARGO(0x25, Industry,  9, NIT_CARGO, "produced cargo 9"),
+	NIP_PRODUCED_CARGO(0x25, Industry, 10, NIT_CARGO, "produced cargo 10"),
+	NIP_PRODUCED_CARGO(0x25, Industry, 11, NIT_CARGO, "produced cargo 11"),
+	NIP_PRODUCED_CARGO(0x25, Industry, 12, NIT_CARGO, "produced cargo 12"),
+	NIP_PRODUCED_CARGO(0x25, Industry, 13, NIT_CARGO, "produced cargo 13"),
+	NIP_PRODUCED_CARGO(0x25, Industry, 14, NIT_CARGO, "produced cargo 14"),
+	NIP_PRODUCED_CARGO(0x25, Industry, 15, NIT_CARGO, "produced cargo 15"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  0, NIT_CARGO, "accepted cargo 0"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  1, NIT_CARGO, "accepted cargo 1"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  2, NIT_CARGO, "accepted cargo 2"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  3, NIT_CARGO, "accepted cargo 3"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  4, NIT_CARGO, "accepted cargo 4"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  5, NIT_CARGO, "accepted cargo 5"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  6, NIT_CARGO, "accepted cargo 6"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  7, NIT_CARGO, "accepted cargo 7"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  8, NIT_CARGO, "accepted cargo 8"),
+	NIP_ACCEPTED_CARGO(0x26, Industry,  9, NIT_CARGO, "accepted cargo 9"),
+	NIP_ACCEPTED_CARGO(0x26, Industry, 10, NIT_CARGO, "accepted cargo 10"),
+	NIP_ACCEPTED_CARGO(0x26, Industry, 11, NIT_CARGO, "accepted cargo 11"),
+	NIP_ACCEPTED_CARGO(0x26, Industry, 12, NIT_CARGO, "accepted cargo 12"),
+	NIP_ACCEPTED_CARGO(0x26, Industry, 13, NIT_CARGO, "accepted cargo 13"),
+	NIP_ACCEPTED_CARGO(0x26, Industry, 14, NIT_CARGO, "accepted cargo 14"),
+	NIP_ACCEPTED_CARGO(0x26, Industry, 15, NIT_CARGO, "accepted cargo 15"),
 	NIP_END()
 };
+
+#undef NIP_PRODUCED_CARGO
+#undef NIP_ACCEPTED_CARGO
 
 #define NICI(cb_id, bit) NIC(cb_id, IndustrySpec, callback_mask, bit)
 static const NICallback _nic_industries[] = {
