@@ -270,6 +270,7 @@ static void ZoomMinMaxChanged(int32_t)
 		_gui_zoom = _settings_client.gui.zoom_min;
 		UpdateCursorSize();
 		LoadStringWidthTable();
+		ReInitAllWindows(true);
 	}
 }
 

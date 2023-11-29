@@ -1391,8 +1391,6 @@ void LoadStringWidthTable(bool monospace)
 			_stringwidth_table[fs][i] = GetGlyphWidth(fs, i + 32);
 		}
 	}
-
-	ReInitAllWindows(false);
 }
 
 /**
