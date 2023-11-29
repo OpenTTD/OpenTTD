@@ -103,6 +103,12 @@ bool UsesWagonOverride(const Vehicle *v);
 int GetVehicleProperty(const Vehicle *v, PropertyID property, int orig_value, bool is_signed = false);
 int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, const Vehicle *v = nullptr, bool is_signed = false);
 
+enum class BuildProbabilityType {
+	Reversed = 0,
+};
+
+bool TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type);
+
 enum VehicleTrigger {
 	VEHICLE_TRIGGER_NEW_CARGO     = 0x01,
 	/* Externally triggered only for the first vehicle in chain */
