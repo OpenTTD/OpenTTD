@@ -452,6 +452,21 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 }
 
 /**
+ * Draw the outline of a Rect
+ * @param r Rect to draw.
+ * @param colour Colour of the outline.
+ * @param width Width of the outline.
+ * @param dash Length of dashes for dashed lines. 0 means solid lines.
+ */
+void DrawRectOutline(const Rect &r, int colour, int width, int dash)
+{
+	GfxDrawLine(r.left,  r.top,    r.right, r.top,    colour, width, dash);
+	GfxDrawLine(r.left,  r.top,    r.left,  r.bottom, colour, width, dash);
+	GfxDrawLine(r.right, r.top,    r.right, r.bottom, colour, width, dash);
+	GfxDrawLine(r.left,  r.bottom, r.right, r.bottom, colour, width, dash);
+}
+
+/**
  * Set the colour remap to be for the given colour.
  * @param colour the new colour of the remap.
  */

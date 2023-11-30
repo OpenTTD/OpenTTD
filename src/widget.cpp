@@ -922,15 +922,11 @@ int Window::SortButtonWidth()
 
 bool _draw_widget_outlines;
 
-void DrawOutline(const Window *, const NWidgetBase *wid)
+static void DrawOutline(const Window *, const NWidgetBase *wid)
 {
 	if (!_draw_widget_outlines || wid->current_x == 0 || wid->current_y == 0) return;
 
-	Rect r = wid->GetCurrentRect();
-	GfxDrawLine(r.left,  r.top,    r.right, r.top,    PC_WHITE, 1, 4);
-	GfxDrawLine(r.left,  r.top,    r.left,  r.bottom, PC_WHITE, 1, 4);
-	GfxDrawLine(r.right, r.top,    r.right, r.bottom, PC_WHITE, 1, 4);
-	GfxDrawLine(r.left,  r.bottom, r.right, r.bottom, PC_WHITE, 1, 4);
+	DrawRectOutline(wid->GetCurrentRect(), PC_WHITE, 1, 4);
 }
 
 /**
