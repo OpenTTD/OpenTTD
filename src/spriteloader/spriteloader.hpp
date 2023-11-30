@@ -62,7 +62,7 @@ public:
 		void AllocateData(ZoomLevel zoom, size_t size) { this->data = Sprite::buffer[zoom].ZeroAllocate(size); }
 	private:
 		/** Allocated memory to pass sprite data around */
-		static ReusableBuffer<SpriteLoader::CommonPixel> buffer[ZOOM_LVL_COUNT];
+		static ReusableBuffer<SpriteLoader::CommonPixel> buffer[ZOOM_LVL_END];
 	};
 
 	/**
