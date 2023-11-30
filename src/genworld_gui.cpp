@@ -575,6 +575,12 @@ struct GenerateLandscapeWindow : public Window {
 		Dimension d{0, (uint)GetCharacterHeight(FS_NORMAL)};
 		const StringID *strs = nullptr;
 		switch (widget) {
+			case WID_GL_TEMPERATE: case WID_GL_ARCTIC:
+			case WID_GL_TROPICAL: case WID_GL_TOYLAND:
+				size->width += WidgetDimensions::scaled.fullbevel.Horizontal();
+				size->height += WidgetDimensions::scaled.fullbevel.Vertical();
+				break;
+
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT:
 				SetDParam(0, MAX_TILE_HEIGHT);
 				d = GetStringBoundingBox(STR_JUST_INT);
@@ -1118,6 +1124,12 @@ struct CreateScenarioWindow : public Window
 	{
 		StringID str = STR_JUST_INT;
 		switch (widget) {
+			case WID_CS_TEMPERATE: case WID_CS_ARCTIC:
+			case WID_CS_TROPICAL: case WID_CS_TOYLAND:
+				size->width += WidgetDimensions::scaled.fullbevel.Horizontal();
+				size->height += WidgetDimensions::scaled.fullbevel.Vertical();
+				break;
+
 			case WID_CS_START_DATE_TEXT:
 				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
 				str = STR_JUST_DATE_LONG;
