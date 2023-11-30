@@ -916,6 +916,11 @@ struct SpriteAlignerWindow : Window {
 				AutoRestoreBackup dpi_backup(_cur_dpi, &new_dpi);
 
 				DrawSprite(this->current_sprite, PAL_NONE, x, y, nullptr, SpriteAlignerWindow::zoom);
+
+				Rect outline = {0, 0, UnScaleByZoom(spr->width, SpriteAlignerWindow::zoom) - 1, UnScaleByZoom(spr->height, SpriteAlignerWindow::zoom) - 1};
+				outline = outline.Translate(x + UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom),y + UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom));
+				DrawRectOutline(outline.Expand(1), PC_LIGHT_BLUE, 1, 1);
+
 				if (SpriteAlignerWindow::crosshair) {
 					GfxDrawLine(x, 0, x, ir.Height() - 1, PC_WHITE, 1, 1);
 					GfxDrawLine(0, y, ir.Width() - 1, y, PC_WHITE, 1, 1);
