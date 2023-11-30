@@ -277,7 +277,7 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 	/* streams of pixels (a, r, g, b channels)
 	 *
 	 * stored in separated stream so data are always aligned on 4B boundary */
-	Colour *dst_px_orig[ZOOM_LVL_COUNT];
+	Colour *dst_px_orig[ZOOM_LVL_END];
 
 	/* interleaved stream of 'm' channel and 'n' channel
 	 * 'n' is number of following pixels with the same alpha channel class
@@ -285,10 +285,10 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 	 *
 	 * it has to be stored in one stream so fewer registers are used -
 	 * x86 has problems with register allocation even with this solution */
-	uint16_t *dst_n_orig[ZOOM_LVL_COUNT];
+	uint16_t *dst_n_orig[ZOOM_LVL_END];
 
 	/* lengths of streams */
-	uint32_t lengths[ZOOM_LVL_COUNT][2];
+	uint32_t lengths[ZOOM_LVL_END][2];
 
 	ZoomLevel zoom_min;
 	ZoomLevel zoom_max;

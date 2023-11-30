@@ -195,7 +195,7 @@ static void StartSound(SoundID sound_id, float pan, uint volume)
 
 
 static const byte _vol_factor_by_zoom[] = {255, 255, 255, 190, 134, 87};
-static_assert(lengthof(_vol_factor_by_zoom) == ZOOM_LVL_COUNT);
+static_assert(lengthof(_vol_factor_by_zoom) == ZOOM_LVL_END);
 
 static const byte _sound_base_vol[] = {
 	128,  90, 128, 128, 128, 128, 128, 128,
@@ -258,7 +258,7 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 			StartSound(
 				sound,
 				panning,
-				_vol_factor_by_zoom[vp->zoom - ZOOM_LVL_BEGIN]
+				_vol_factor_by_zoom[vp->zoom]
 			);
 			return;
 		}

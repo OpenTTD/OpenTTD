@@ -72,7 +72,7 @@ public:
 	};
 	struct SpriteData {
 		SpriteFlags flags;
-		SpriteInfo infos[ZOOM_LVL_COUNT];
+		SpriteInfo infos[ZOOM_LVL_END];
 		byte data[]; ///< Data, all zoomlevels.
 	};
 
