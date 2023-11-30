@@ -8728,7 +8728,7 @@ static void ResetNewGRF()
 /** Clear all NewGRF errors */
 static void ResetNewGRFErrors()
 {
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (auto &c : _grfconfig) {
 		c->error.reset();
 	}
 }
@@ -8871,16 +8871,16 @@ static void BuildCargoTranslationMap()
  * Prepare loading a NewGRF file with its config
  * @param config The NewGRF configuration struct with name, id, parameters and alike.
  */
-static void InitNewGRFFile(const GRFConfig *config)
+static void InitNewGRFFile(const GRFConfig &config)
 {
-	GRFFile *newfile = GetFileByFilename(config->filename);
+	GRFFile *newfile = GetFileByFilename(config.filename);
 	if (newfile != nullptr) {
 		/* We already loaded it once. */
 		_cur.grffile = newfile;
 		return;
 	}
 
-	newfile = new GRFFile(config);
+	newfile = new GRFFile(&config);
 	_grf_files.push_back(_cur.grffile = newfile);
 }
 
@@ -9526,12 +9526,12 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
  * @param stage  The loading stage of the NewGRF.
  * @param file   The file to load the GRF data from.
  */
-static void LoadNewGRFFileFromFile(GRFConfig *config, GrfLoadingStage stage, SpriteFile &file)
+static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, SpriteFile &file)
 {
 	_cur.file = &file;
-	_cur.grfconfig = config;
+	_cur.grfconfig = &config;
 
-	Debug(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '{}'", config->filename);
+	Debug(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '{}'", config.filename);
 
 	byte grf_container_version = file.GetContainerVersion();
 	if (grf_container_version == 0) {
@@ -9615,9 +9615,9 @@ static void LoadNewGRFFileFromFile(GRFConfig *config, GrfLoadingStage stage, Spr
  * @param temporary  The NewGRF/sprite file is to be loaded temporarily and should be closed immediately,
  *                   contrary to loading the SpriteFile and having it cached by the SpriteCache.
  */
-void LoadNewGRFFile(GRFConfig *config, GrfLoadingStage stage, Subdirectory subdir, bool temporary)
+void LoadNewGRFFile(GRFConfig &config, GrfLoadingStage stage, Subdirectory subdir, bool temporary)
 {
-	const std::string &filename = config->filename;
+	const std::string &filename = config.filename;
 
 	/* A .grf file is activated only if it was active when the game was
 	 * started.  If a game is loaded, only its active .grfs will be
@@ -9631,11 +9631,11 @@ void LoadNewGRFFile(GRFConfig *config, GrfLoadingStage stage, Subdirectory subdi
 	if (stage != GLS_FILESCAN && stage != GLS_SAFETYSCAN && stage != GLS_LABELSCAN) {
 		_cur.grffile = GetFileByFilename(filename);
 		if (_cur.grffile == nullptr) UserError("File '{}' lost in cache.\n", filename);
-		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
-		if (stage == GLS_ACTIVATION && !HasBit(config->flags, GCF_RESERVED)) return;
+		if (stage == GLS_RESERVE && config.status != GCS_INITIALISED) return;
+		if (stage == GLS_ACTIVATION && !HasBit(config.flags, GCF_RESERVED)) return;
 	}
 
-	bool needs_palette_remap = config->palette & GRFP_USE_MASK;
+	bool needs_palette_remap = config.palette & GRFP_USE_MASK;
 	if (temporary) {
 		SpriteFile temporarySpriteFile(filename, subdir, needs_palette_remap);
 		LoadNewGRFFileFromFile(config, stage, temporarySpriteFile);
@@ -9968,7 +9968,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	 * be reset, the NewGRF would remain disabled even though it should
 	 * have been enabled.
 	 */
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+	for (auto &c : _grfconfig) {
 		if (c->status != GCS_NOT_FOUND) c->status = GCS_UNKNOWN;
 	}
 
@@ -9980,7 +9980,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 	for (GrfLoadingStage stage = GLS_LABELSCAN; stage <= GLS_ACTIVATION; stage++) {
 		/* Set activated grfs back to will-be-activated between reservation- and activation-stage.
 		 * This ensures that action7/9 conditions 0x06 - 0x0A work correctly. */
-		for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+		for (auto &c : _grfconfig) {
 			if (c->status == GCS_ACTIVATED) c->status = GCS_INITIALISED;
 		}
 
@@ -9999,7 +9999,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 		uint num_non_static = 0;
 
 		_cur.stage = stage;
-		for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+		for (auto &c : _grfconfig) {
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
 
@@ -10010,7 +10010,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 				continue;
 			}
 
-			if (stage == GLS_LABELSCAN) InitNewGRFFile(c);
+			if (stage == GLS_LABELSCAN) InitNewGRFFile(*c);
 
 			if (!HasBit(c->flags, GCF_STATIC) && !HasBit(c->flags, GCF_SYSTEM)) {
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
@@ -10024,7 +10024,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 
 			num_grfs++;
 
-			LoadNewGRFFile(c, stage, subdir, false);
+			LoadNewGRFFile(*c, stage, subdir, false);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {

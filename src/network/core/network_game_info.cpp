@@ -111,7 +111,7 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
 	ngi.compatible = ngi.version_compatible;
 
 	/* Check if we have all the GRFs on the client-system too. */
-	for (const GRFConfig *c = ngi.grfconfig; c != nullptr; c = c->next) {
+	for (const auto &c : ngi.grfconfig) {
 		if (c->status == GCS_NOT_FOUND) ngi.compatible = false;
 	}
 }
@@ -161,20 +161,20 @@ const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
  * @param config The GRF to handle.
  * @param name The name of the NewGRF, empty when unknown.
  */
-static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config, std::string name)
+static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig &config, std::string name)
 {
 	/* Find the matching GRF file */
-	const GRFConfig *f = FindGRFConfig(config->ident.grfid, FGCM_EXACT, &config->ident.md5sum);
+	const GRFConfig *f = FindGRFConfig(config.ident.grfid, FGCM_EXACT, &config.ident.md5sum);
 	if (f == nullptr) {
-		AddGRFTextToList(config->name, name.empty() ? GetString(STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN) : name);
-		config->status = GCS_NOT_FOUND;
+		AddGRFTextToList(config.name, name.empty() ? GetString(STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN) : name);
+		config.status = GCS_NOT_FOUND;
 	} else {
-		config->filename = f->filename;
-		config->name = f->name;
-		config->info = f->info;
-		config->url = f->url;
+		config.filename = f->filename;
+		config.name = f->name;
+		config.info = f->info;
+		config.url = f->url;
 	}
-	SetBit(config->flags, GCF_COPY);
+	SetBit(config.flags, GCF_COPY);
 }
 
 /**
@@ -208,17 +208,16 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, bool
 		 * the GRFs that are needed, i.e. the ones that the server has
 		 * selected in the NewGRF GUI and not the ones that are used due
 		 * to the fact that they are in [newgrf-static] in openttd.cfg */
-		const GRFConfig *c;
 		uint count = 0;
 
 		/* Count number of GRFs to send information about */
-		for (c = info->grfconfig; c != nullptr; c = c->next) {
+		for (const auto &c : info->grfconfig) {
 			if (!HasBit(c->flags, GCF_STATIC)) count++;
 		}
 		p->Send_uint8 (count); // Send number of GRFs
 
 		/* Send actual GRF Identifications */
-		for (c = info->grfconfig; c != nullptr; c = c->next) {
+		for (const auto &c : info->grfconfig) {
 			if (HasBit(c->flags, GCF_STATIC)) continue;
 
 			SerializeGRFIdentifier(p, &c->ident);
@@ -285,7 +284,7 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 			static_assert(std::numeric_limits<uint8_t>::max() == NETWORK_MAX_GRF_COUNT);
 			uint num_grfs = p->Recv_uint8();
 
-			GRFConfig **dst = &info->grfconfig;
+			GRFConfigList &dst = info->grfconfig;
 			for (uint i = 0; i < num_grfs; i++) {
 				NamedGRFIdentifier grf;
 				switch (newgrf_serialisation) {
@@ -309,13 +308,12 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info, const GameInfo
 						NOT_REACHED();
 				}
 
-				GRFConfig *c = new GRFConfig();
+				auto c = std::make_shared<GRFConfig>();
 				c->ident = grf.ident;
-				HandleIncomingNetworkGameInfoGRFConfig(c, grf.name);
+				HandleIncomingNetworkGameInfoGRFConfig(*c, grf.name);
 
 				/* Append GRFConfig to the list */
-				*dst = c;
-				dst = &c->next;
+				dst.push_back(c);
 			}
 			FALLTHROUGH;
 		}

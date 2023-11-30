@@ -91,7 +91,7 @@ enum NewGRFSerializationType {
  * The game information that is sent from the server to the client.
  */
 struct NetworkServerGameInfo {
-	GRFConfig *grfconfig;        ///< List of NewGRF files used
+	GRFConfigList grfconfig; ///< List of NewGRF files used
 	TimerGameCalendar::Date start_date; ///< When the game started
 	TimerGameCalendar::Date game_date;  ///< Current date
 	uint16_t map_width;            ///< Map width

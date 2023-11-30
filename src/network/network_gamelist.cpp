@@ -73,7 +73,7 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 			}
 
 			/* Remove GRFConfig information */
-			ClearGRFConfigList(&remove->info.grfconfig);
+			ClearGRFConfigList(remove->info.grfconfig);
 			delete remove;
 
 			NetworkRebuildHostList();
@@ -100,7 +100,7 @@ void NetworkGameListRemoveExpired()
 			*prev_item = item;
 
 			/* Remove GRFConfig information */
-			ClearGRFConfigList(&remove->info.grfconfig);
+			ClearGRFConfigList(remove->info.grfconfig);
 			delete remove;
 		} else {
 			prev_item = &item->next;
@@ -121,7 +121,7 @@ void NetworkAfterNewGRFScan()
 		/* Reset compatibility state */
 		item->info.compatible = item->info.version_compatible;
 
-		for (GRFConfig *c = item->info.grfconfig; c != nullptr; c = c->next) {
+		for (auto &c : item->info.grfconfig) {
 			assert(HasBit(c->flags, GCF_COPY));
 
 			const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, &c->ident.md5sum);
