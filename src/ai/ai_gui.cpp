@@ -205,6 +205,7 @@ struct AIConfigWindow : public Window {
 					new_value = std::min(MAX_COMPANIES - 1, GetGameSettings().difficulty.max_no_competitors + 1);
 				}
 				IConsoleSetSetting("difficulty.max_no_competitors", new_value);
+				this->InvalidateData();
 				break;
 			}
 
@@ -217,6 +218,7 @@ struct AIConfigWindow : public Window {
 					new_value = std::min(static_cast<int>(MAX_COMPETITORS_INTERVAL), GetGameSettings().difficulty.competitors_interval + 1);
 				}
 				IConsoleSetSetting("difficulty.competitors_interval", new_value);
+				this->InvalidateData();
 				break;
 			}
 
