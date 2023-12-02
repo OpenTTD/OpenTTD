@@ -15,8 +15,6 @@
   </application>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
     <application>
-      <!--This Id value indicates the application supports Windows Vista functionality -->
-      <supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}"/>
       <!--This Id value indicates the application supports Windows 7 functionality-->
       <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>
       <!--This Id value indicates the application supports Windows 8 functionality-->
