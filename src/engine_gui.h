@@ -28,7 +28,7 @@ struct GUIEngineListItem {
 	bool operator == (const EngineID &other) const { return this->engine_id == other; }
 };
 
-typedef GUIList<GUIEngineListItem, CargoID> GUIEngineList;
+typedef GUIList<GUIEngineListItem, std::nullptr_t, CargoID> GUIEngineList;
 
 typedef bool EngList_SortTypeFunction(const GUIEngineListItem&, const GUIEngineListItem&); ///< argument type for #EngList_Sort.
 void EngList_Sort(GUIEngineList &el, EngList_SortTypeFunction compare);

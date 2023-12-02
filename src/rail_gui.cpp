@@ -903,7 +903,7 @@ private:
 	Scrollbar *vscroll;   ///< Vertical scrollbar of the new station list.
 	Scrollbar *vscroll2;  ///< Vertical scrollbar of the matrix with new stations.
 
-	typedef GUIList<StationClassID, StringFilter &> GUIStationClassList; ///< Type definition for the list to hold available station classes.
+	typedef GUIList<StationClassID, std::nullptr_t, StringFilter &> GUIStationClassList; ///< Type definition for the list to hold available station classes.
 
 	static const uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
 

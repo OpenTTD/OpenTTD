@@ -602,7 +602,7 @@ static void ShowSavePresetWindow(const char *initial_text);
  * Window for showing NewGRF files
  */
 struct NewGRFWindow : public Window, NewGRFScanCallback {
-	typedef GUIList<const GRFConfig *, StringFilter &> GUIGRFConfigList;
+	typedef GUIList<const GRFConfig *, std::nullptr_t, StringFilter &> GUIGRFConfigList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50;
 

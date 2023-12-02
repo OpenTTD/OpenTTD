@@ -209,7 +209,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 	if (w != 0) GfxFillRect(left + padding, y, left + w - 1, y + padding - 1, PC_GREEN);
 }
 
-typedef GUIList<const Station*> GUIStationList;
+typedef GUIList<const Station*, const CargoTypes &> GUIStationList;
 
 /**
  * The list of stations per company.
@@ -228,7 +228,7 @@ protected:
 	static const StringID sorter_names[];
 	static GUIStationList::SortFunction * const sorter_funcs[];
 
-	GUIStationList stations;
+	GUIStationList stations{cargo_filter};
 	Scrollbar *vscroll;
 	uint rating_width;
 
@@ -273,7 +273,7 @@ protected:
 	}
 
 	/** Sort stations by their name */
-	static bool StationNameSorter(const Station * const &a, const Station * const &b)
+	static bool StationNameSorter(const Station * const &a, const Station * const &b, const CargoTypes &)
 	{
 		int r = StrNaturalCompare(a->GetCachedName(), b->GetCachedName()); // Sort by name (natural sorting).
 		if (r == 0) return a->index < b->index;
@@ -281,13 +281,13 @@ protected:
 	}
 
 	/** Sort stations by their type */
-	static bool StationTypeSorter(const Station * const &a, const Station * const &b)
+	static bool StationTypeSorter(const Station * const &a, const Station * const &b, const CargoTypes &)
 	{
 		return a->facilities < b->facilities;
 	}
 
 	/** Sort stations by their waiting cargo */
-	static bool StationWaitingTotalSorter(const Station * const &a, const Station * const &b)
+	static bool StationWaitingTotalSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
 	{
 		int diff = 0;
 
@@ -299,7 +299,7 @@ protected:
 	}
 
 	/** Sort stations by their available waiting cargo */
-	static bool StationWaitingAvailableSorter(const Station * const &a, const Station * const &b)
+	static bool StationWaitingAvailableSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
 	{
 		int diff = 0;
 
@@ -311,7 +311,7 @@ protected:
 	}
 
 	/** Sort stations by their rating */
-	static bool StationRatingMaxSorter(const Station * const &a, const Station * const &b)
+	static bool StationRatingMaxSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
 	{
 		byte maxr1 = 0;
 		byte maxr2 = 0;
@@ -325,7 +325,7 @@ protected:
 	}
 
 	/** Sort stations by their rating */
-	static bool StationRatingMinSorter(const Station * const &a, const Station * const &b)
+	static bool StationRatingMinSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
 	{
 		byte minr1 = 255;
 		byte minr2 = 255;

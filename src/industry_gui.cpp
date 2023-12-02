@@ -1245,7 +1245,7 @@ static const NWidgetPart _nested_industry_directory_widgets[] = {
 	EndContainer(),
 };
 
-typedef GUIList<const Industry *, const std::pair<CargoID, CargoID> &> GUIIndustryList;
+typedef GUIList<const Industry *, const CargoID &, const std::pair<CargoID, CargoID> &> GUIIndustryList;
 
 /** Special cargo filter criteria */
 enum CargoFilterSpecialType {
@@ -1315,7 +1315,7 @@ protected:
 	static const StringID sorter_names[];
 	static GUIIndustryList::SortFunction * const sorter_funcs[];
 
-	GUIIndustryList industries;
+	GUIIndustryList industries{IndustryDirectoryWindow::produced_cargo_filter};
 	Scrollbar *vscroll;
 	Scrollbar *hscroll;
 
@@ -1484,7 +1484,7 @@ protected:
 	}
 
 	/** Sort industries by name */
-	static bool IndustryNameSorter(const Industry * const &a, const Industry * const &b)
+	static bool IndustryNameSorter(const Industry * const &a, const Industry * const &b, const CargoID &)
 	{
 		int r = StrNaturalCompare(a->GetCachedName(), b->GetCachedName()); // Sort by name (natural sorting).
 		if (r == 0) return a->index < b->index;
@@ -1492,21 +1492,20 @@ protected:
 	}
 
 	/** Sort industries by type and name */
-	static bool IndustryTypeSorter(const Industry * const &a, const Industry * const &b)
+	static bool IndustryTypeSorter(const Industry * const &a, const Industry * const &b, const CargoID &filter)
 	{
 		int it_a = 0;
 		while (it_a != NUM_INDUSTRYTYPES && a->type != _sorted_industry_types[it_a]) it_a++;
 		int it_b = 0;
 		while (it_b != NUM_INDUSTRYTYPES && b->type != _sorted_industry_types[it_b]) it_b++;
 		int r = it_a - it_b;
-		return (r == 0) ? IndustryNameSorter(a, b) : r < 0;
+		return (r == 0) ? IndustryNameSorter(a, b, filter) : r < 0;
 	}
 
 	/** Sort industries by production and name */
-	static bool IndustryProductionSorter(const Industry * const &a, const Industry * const &b)
+	static bool IndustryProductionSorter(const Industry * const &a, const Industry * const &b, const CargoID &filter)
 	{
-		CargoID filter = IndustryDirectoryWindow::produced_cargo_filter;
-		if (filter == CF_NONE) return IndustryTypeSorter(a, b);
+		if (filter == CF_NONE) return IndustryTypeSorter(a, b, filter);
 
 		uint prod_a = 0, prod_b = 0;
 		if (filter == CF_ANY) {
@@ -1522,14 +1521,14 @@ protected:
 		}
 		int r = prod_a - prod_b;
 
-		return (r == 0) ? IndustryTypeSorter(a, b) : r < 0;
+		return (r == 0) ? IndustryTypeSorter(a, b, filter) : r < 0;
 	}
 
 	/** Sort industries by transported cargo and name */
-	static bool IndustryTransportedCargoSorter(const Industry * const &a, const Industry * const &b)
+	static bool IndustryTransportedCargoSorter(const Industry * const &a, const Industry * const &b, const CargoID &filter)
 	{
 		int r = GetCargoTransportedSortValue(a) - GetCargoTransportedSortValue(b);
-		return (r == 0) ? IndustryNameSorter(a, b) : r < 0;
+		return (r == 0) ? IndustryNameSorter(a, b, filter) : r < 0;
 	}
 
 	/**

@@ -19,7 +19,7 @@
 #include "window_gui.h"
 #include "widgets/dropdown_type.h"
 
-typedef GUIList<const Vehicle*, CargoID> GUIVehicleList;
+typedef GUIList<const Vehicle*, std::nullptr_t, CargoID> GUIVehicleList;
 
 struct GUIVehicleGroup {
 	VehicleList::const_iterator vehicles_begin;    ///< Pointer to beginning element of this vehicle group.
@@ -62,7 +62,7 @@ struct GUIVehicleGroup {
 	}
 };
 
-typedef GUIList<GUIVehicleGroup, CargoID> GUIVehicleGroupList;
+typedef GUIList<GUIVehicleGroup, std::nullptr_t, CargoID> GUIVehicleGroupList;
 
 struct BaseVehicleListWindow : public Window {
 

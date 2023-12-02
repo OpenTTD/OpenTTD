@@ -1101,7 +1101,7 @@ private:
 	Scrollbar *vscrollList; ///< Vertical scrollbar of the new station list.
 	Scrollbar *vscrollMatrix; ///< Vertical scrollbar of the station picker matrix.
 
-	typedef GUIList<RoadStopClassID, StringFilter &> GUIRoadStopClassList; ///< Type definition for the list to hold available road stop classes.
+	typedef GUIList<RoadStopClassID, std::nullptr_t, StringFilter &> GUIRoadStopClassList; ///< Type definition for the list to hold available road stop classes.
 
 	static const uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
 
