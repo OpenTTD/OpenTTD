@@ -3750,6 +3750,7 @@ STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :No cargo types
 STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :Only no cargo rating
 STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :Select all and no rating
 STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :No cargo rating
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Show more...
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
