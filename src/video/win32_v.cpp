@@ -1258,7 +1258,7 @@ static const char *SelectPixelFormat(HDC dc)
 		0, 0, 0, 0                     // Ignored/reserved.
 	};
 
-	if (IsWindowsVistaOrGreater()) pfd.dwFlags |= PFD_SUPPORT_COMPOSITION; // Make OpenTTD compatible with Aero.
+	pfd.dwFlags |= PFD_SUPPORT_COMPOSITION; // Make OpenTTD compatible with Aero.
 
 	/* Choose a suitable pixel format. */
 	int format = ChoosePixelFormat(dc, &pfd);
