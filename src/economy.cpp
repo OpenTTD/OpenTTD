@@ -1933,8 +1933,8 @@ static void LoadUnloadVehicle(Vehicle *front)
 	}
 	if (dirty_station) {
 		st->MarkTilesDirty(true);
-		SetWindowDirty(WC_STATION_VIEW, last_visited);
-		InvalidateWindowData(WC_STATION_LIST, last_visited);
+		SetWindowDirty(WC_STATION_VIEW, st->index);
+		InvalidateWindowData(WC_STATION_LIST, st->owner);
 	}
 }
 

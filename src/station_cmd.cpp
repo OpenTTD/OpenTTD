@@ -4055,7 +4055,7 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 	if (lg != nullptr) (*lg)[ge.node].UpdateSupply(amount);
 
 	if (!ge.HasRating()) {
-		InvalidateWindowData(WC_STATION_LIST, st->index);
+		InvalidateWindowData(WC_STATION_LIST, st->owner);
 		SetBit(ge.status, GoodsEntry::GES_RATING);
 	}
 
