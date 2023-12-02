@@ -45,7 +45,7 @@ enum BuildObjectHotkeys {
 
 /** The window used for building objects. */
 class BuildObjectWindow : public Window {
-	typedef GUIList<ObjectClassID, StringFilter &> GUIObjectClassList; ///< Type definition for the list to hold available object classes.
+	typedef GUIList<ObjectClassID, std::nullptr_t, StringFilter &> GUIObjectClassList; ///< Type definition for the list to hold available object classes.
 
 	static const uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
 

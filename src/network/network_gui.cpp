@@ -79,7 +79,7 @@ static DropDownList BuildVisibilityDropDownList()
 	return list;
 }
 
-typedef GUIList<NetworkGameList*, StringFilter&> GUIGameServerList;
+typedef GUIList<NetworkGameList*, std::nullptr_t, StringFilter&> GUIGameServerList;
 typedef int ServerListPosition;
 static const ServerListPosition SLP_INVALID = -1;
 

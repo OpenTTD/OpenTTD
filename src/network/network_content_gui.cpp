@@ -326,7 +326,7 @@ enum ContentListFilterCriteria {
 /** Window that lists the content that's at the content server */
 class NetworkContentListWindow : public Window, ContentCallback {
 	/** List with content infos. */
-	typedef GUIList<const ContentInfo *, ContentListFilterData &> GUIContentList;
+	typedef GUIList<const ContentInfo *, std::nullptr_t, ContentListFilterData &> GUIContentList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50; ///< Maximum size of the editbox in characters.
 
