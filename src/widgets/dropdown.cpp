@@ -182,7 +182,7 @@ struct DropdownWindow : Window {
 			if (y + item_height - 1 <= ir.bottom) {
 				Rect full{ir.left, y, ir.right, y + item_height - 1};
 
-				bool selected = (this->selected_index == item->result);
+				bool selected = (this->selected_index == item->result) && item->Selectable();
 				if (selected) GfxFillRect(full, PC_BLACK);
 
 				item->Draw(full, full.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero), selected, colour);
