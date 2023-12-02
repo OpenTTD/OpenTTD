@@ -240,6 +240,7 @@ protected:
 	GUIStationList stations{filter.cargoes};
 	Scrollbar *vscroll;
 	uint rating_width;
+	bool filter_expanded;
 	std::array<uint16_t, NUM_CARGO> stations_per_cargo_type; ///< Number of stations with a rating for each cargo type.
 	uint16_t stations_per_cargo_type_no_rating; ///< Number of stations without a rating.
 
@@ -526,7 +527,7 @@ public:
 		}
 	}
 
-	DropDownList BuildCargoDropDownList() const
+	DropDownList BuildCargoDropDownList(bool expanded) const
 	{
 		/* Define a custom item consisting of check mark, count string, icon and name string. */
 		using DropDownListCargoItem = DropDownCheck<DropDownString<DropDownListIconItem, FS_SMALL, true>>;
@@ -535,13 +536,28 @@ public:
 		list.push_back(std::make_unique<DropDownListStringItem>(STR_STATION_LIST_CARGO_FILTER_SELECT_ALL, CargoFilterCriteria::CF_SELECT_ALL));
 		list.push_back(std::make_unique<DropDownListDividerItem>(-1));
 
+		bool any_hidden = false;
+
 		uint16_t count = this->stations_per_cargo_type_no_rating;
-		list.push_back(std::make_unique<DropDownString<DropDownListCheckedItem, FS_SMALL, true>>(fmt::format("{}", count), this->filter.include_no_rating, STR_STATION_LIST_CARGO_FILTER_NO_RATING, CargoFilterCriteria::CF_NO_RATING, false, count == 0));
+		if (count == 0 && !expanded) {
+			any_hidden = true;
+		} else {
+			list.push_back(std::make_unique<DropDownString<DropDownListCheckedItem, FS_SMALL, true>>(fmt::format("{}", count), this->filter.include_no_rating, STR_STATION_LIST_CARGO_FILTER_NO_RATING, CargoFilterCriteria::CF_NO_RATING, false, count == 0));
+		}
 
 		Dimension d = GetLargestCargoIconSize();
 		for (const CargoSpec *cs : _sorted_cargo_specs) {
 			count = this->stations_per_cargo_type[cs->Index()];
-			list.push_back(std::make_unique<DropDownListCargoItem>(HasBit(this->filter.cargoes, cs->Index()), fmt::format("{}", count), d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false, count == 0));
+			if (count == 0 && !expanded) {
+				any_hidden = true;
+			} else {
+				list.push_back(std::make_unique<DropDownListCargoItem>(HasBit(this->filter.cargoes, cs->Index()), fmt::format("{}", count), d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false, count == 0));
+			}
+		}
+
+		if (!expanded && any_hidden) {
+			if (list.size() > 2) list.push_back(std::make_unique<DropDownListDividerItem>(-1));
+			list.push_back(std::make_unique<DropDownListStringItem>(STR_STATION_LIST_CARGO_FILTER_EXPAND, CargoFilterCriteria::CF_EXPAND_LIST));
 		}
 
 		return list;
@@ -605,8 +621,8 @@ public:
 				break;
 
 			case WID_STL_CARGODROPDOWN:
-				/* Multiple-choice list should not have a default row selected, so use a non-present value. */
-				ShowDropDownList(this, this->BuildCargoDropDownList(), -1, widget, 0, false, true);
+				this->filter_expanded = false;
+				ShowDropDownList(this, this->BuildCargoDropDownList(this->filter_expanded), -1, widget, 0, false, true);
 				break;
 		}
 	}
@@ -644,6 +660,10 @@ public:
 			} else if (index == CargoFilterCriteria::CF_SELECT_ALL) {
 				this->filter.cargoes = _cargo_mask;
 				this->filter.include_no_rating = true;
+			} else if (index == CargoFilterCriteria::CF_EXPAND_LIST) {
+				this->filter_expanded = true;
+				ReplaceDropDownList(this, this->BuildCargoDropDownList(this->filter_expanded));
+				return;
 			}
 
 			if (oldstate.cargoes != this->filter.cargoes || oldstate.include_no_rating != this->filter.include_no_rating) {
@@ -651,7 +671,7 @@ public:
 				this->SetDirty();
 
 				/* Only refresh the list if it's changed. */
-				if (_ctrl_pressed) ReplaceDropDownList(this, this->BuildCargoDropDownList());
+				if (_ctrl_pressed) ReplaceDropDownList(this, this->BuildCargoDropDownList(this->filter_expanded));
 			}
 
 			/* Always close the list if ctrl is not pressed. */
