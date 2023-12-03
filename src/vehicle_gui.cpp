@@ -191,6 +191,14 @@ void BaseVehicleListWindow::BuildVehicleList()
 
 	GenerateVehicleSortList(&this->vehicles, this->vli);
 
+	CargoTypes used = 0;
+	for (const Vehicle *v : this->vehicles) {
+		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
+			if (u->cargo_cap > 0) SetBit(used, u->cargo_type);
+		}
+	}
+	this->used_cargoes = used;
+
 	if (this->grouping == GB_NONE) {
 		uint max_unitnumber = 0;
 		for (auto it = this->vehicles.begin(); it != this->vehicles.end(); ++it) {
@@ -371,7 +379,12 @@ StringID BaseVehicleListWindow::GetCargoFilterLabel(CargoID cid) const
 	}
 }
 
-DropDownList BaseVehicleListWindow::BuildCargoDropDownList() const
+/**
+ * Build drop down list for cargo filter selection.
+ * @param full If true, build list with all cargo types, instead of only used cargo types.
+ * @return Drop down list for cargo filter.
+ */
+DropDownList BaseVehicleListWindow::BuildCargoDropDownList(bool full) const
 {
 	DropDownList list;
 
@@ -385,7 +398,8 @@ DropDownList BaseVehicleListWindow::BuildCargoDropDownList() const
 	/* Add cargos */
 	Dimension d = GetLargestCargoIconSize();
 	for (const CargoSpec *cs : _sorted_cargo_specs) {
-		list.push_back(std::make_unique<DropDownListIconItem>(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false));
+		if (!full && !HasBit(this->used_cargoes, cs->Index())) continue;
+		list.push_back(std::make_unique<DropDownListIconItem>(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index(), false, !HasBit(this->used_cargoes, cs->Index())));
 	}
 
 	return list;
@@ -1877,7 +1891,7 @@ public:
 				break;
 
 			case WID_VL_FILTER_BY_CARGO:
-				size->width = std::max(size->width, GetDropDownListDimension(this->BuildCargoDropDownList()).width + padding.width);
+				size->width = std::max(size->width, GetDropDownListDimension(this->BuildCargoDropDownList(true)).width + padding.width);
 				break;
 
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN: {
@@ -2007,7 +2021,7 @@ public:
 				return;
 
 			case WID_VL_FILTER_BY_CARGO: // Cargo filter dropdown
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
+				ShowDropDownList(this, this->BuildCargoDropDownList(false), this->cargo_filter_criteria, widget);
 				break;
 
 			case WID_VL_LIST: { // Matrix to show vehicles

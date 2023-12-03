@@ -90,6 +90,7 @@ struct BaseVehicleListWindow : public Window {
 	VehicleID vehicle_sel;                      ///< Selected vehicle
 	CargoID cargo_filter_criteria;              ///< Selected cargo filter index
 	uint order_arrow_width;                     ///< Width of the arrow in the small order list.
+	CargoTypes used_cargoes;
 
 	typedef GUIVehicleGroupList::SortFunction VehicleGroupSortFunction;
 	typedef GUIVehicleList::SortFunction VehicleIndividualSortFunction;
@@ -124,7 +125,7 @@ struct BaseVehicleListWindow : public Window {
 	void SetCargoFilterArray();
 	void FilterVehicleList();
 	StringID GetCargoFilterLabel(CargoID cid) const;
-	DropDownList BuildCargoDropDownList() const;
+	DropDownList BuildCargoDropDownList(bool full) const;
 	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group, bool show_create);
 	DropDownList BuildActionDropdownList(bool show_autoreplace, bool show_group, bool show_create);
 

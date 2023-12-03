@@ -424,7 +424,7 @@ public:
 				break;
 
 			case WID_GL_FILTER_BY_CARGO:
-				size->width = std::max(size->width, GetDropDownListDimension(this->BuildCargoDropDownList()).width + padding.width);
+				size->width = std::max(size->width, GetDropDownListDimension(this->BuildCargoDropDownList(true)).width + padding.width);
 				break;
 
 			case WID_GL_MANAGE_VEHICLES_DROPDOWN: {
@@ -665,7 +665,7 @@ public:
 				return;
 
 			case WID_GL_FILTER_BY_CARGO: // Select filtering criteria dropdown menu
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
+				ShowDropDownList(this, this->BuildCargoDropDownList(false), this->cargo_filter_criteria, widget);
 				break;
 
 			case WID_GL_ALL_VEHICLES: // All vehicles button
