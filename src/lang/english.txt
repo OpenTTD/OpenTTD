@@ -2581,7 +2581,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Search c
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}You are leaving OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}The terms and conditions for downloading content from external websites vary.{}You will have to refer to the external sites for instructions how to install the content into OpenTTD.{}Do you want to continue?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name filter:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Visit website
+STR_CONTENT_OPEN_URL                                            :{BLACK}Website
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visit the website for this content
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start downloading the selected content
@@ -4707,9 +4707,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Go back 
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Return forward in navigation history
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Wrap text
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Wrap the text of the window so it all fits without having to scroll
-STR_TEXTFILE_VIEW_README                                        :{BLACK}View readme
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :View readme for this content
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :View changelog for this content
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :View licence for this content
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme of {RAW_STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog of {RAW_STRING}
