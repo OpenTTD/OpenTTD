@@ -95,6 +95,9 @@ namespace CargoFilterCriteria {
 	static constexpr CargoID CF_NONE    = NUM_CARGO + 1; ///< Show only items which do not carry cargo (e.g. train engines)
 	static constexpr CargoID CF_ENGINES = NUM_CARGO + 2; ///< Show only engines (for rail vehicles only)
 	static constexpr CargoID CF_FREIGHT = NUM_CARGO + 3; ///< Show only vehicles which carry any freight (non-passenger) cargo
+
+	static constexpr CargoID CF_NO_RATING  = NUM_CARGO + 4; ///< Show items with no rating (station list)
+	static constexpr CargoID CF_SELECT_ALL = NUM_CARGO + 5; ///< Select all items (station list)
 };
 
 /** Test whether cargo type is not CT_INVALID */
