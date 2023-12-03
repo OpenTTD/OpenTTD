@@ -1466,12 +1466,9 @@ public:
 				*size = maxdim(*size, GetStringBoundingBox(STR_FACE_MOUSTACHE));
 				break;
 
-			case WID_SCMF_FACE: {
-				Dimension face_size = GetScaledSpriteSize(SPR_GRADIENT);
-				size->width  = std::max(size->width,  face_size.width);
-				size->height = std::max(size->height, face_size.height);
+			case WID_SCMF_FACE:
+				*size = maxdim(*size, GetScaledSpriteSize(SPR_GRADIENT));
 				break;
-			}
 
 			case WID_SCMF_HAS_MOUSTACHE_EARRING:
 			case WID_SCMF_HAS_GLASSES:
@@ -2323,12 +2320,9 @@ struct CompanyWindow : Window
 	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
-			case WID_C_FACE: {
-				Dimension face_size = GetScaledSpriteSize(SPR_GRADIENT);
-				size->width  = std::max(size->width,  face_size.width);
-				size->height = std::max(size->height, face_size.height);
+			case WID_C_FACE:
+				*size = maxdim(*size, GetScaledSpriteSize(SPR_GRADIENT));
 				break;
-			}
 
 			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
 				Point offset;
