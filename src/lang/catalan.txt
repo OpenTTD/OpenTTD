@@ -2582,7 +2582,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cerca co
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Esteu sortint de l'OpenTTD.
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Els termes i condicions per descarregar contingut des de webs externes varia.{}Haureu d'adreçar-vos a les webs externes per trobar instruccions sobre com instal·lar contingut a l'OpenTTD.{}Voleu continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Marca/anomena filtre:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Visita la web
+STR_CONTENT_OPEN_URL                                            :{BLACK}Lloc web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visita la web per accedir a aquest contingut
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarrega
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Comença a descarregar el contingut seleccionat
@@ -4708,9 +4708,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Torneu e
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Aneu avant segons l'historial de navegació.
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Ajusta text
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ajusta el text afegint-hi canvis de línia, de manera que sigui més fàcil desplaçar-se pel text
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeix-me
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Llegeix-me
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Mostra el fitxer d'informació d'aquest contingut
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registre de canvis
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Mostra el registre de canvis d'aquest contingut
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Llicència
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Mostra la llicència d'aquest contingut
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeix-me del {STRING} de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}

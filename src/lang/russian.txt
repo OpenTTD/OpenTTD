@@ -2732,7 +2732,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Резу
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Вы покидаете OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Условия загрузки содержимого со сторонних сайтов могут различаться.{}За инструкциями по установке компонентов OpenTTD вам следует обратиться на соответствующие сайты.{}Вы желаете продолжить?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фильтр:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Посетить сайт
+STR_CONTENT_OPEN_URL                                            :{BLACK}Веб-сайт
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посетить веб-сайт с информацией об этом модуле
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Скачать
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Начать загрузку выбранного контента
@@ -4894,9 +4894,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Наза
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Вперёд
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Переносить текст
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Переносить текст так, чтобы он помещался в окне без необходимости прокрутки
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Посмотреть инструкцию
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Инструкция
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Просмотр инструкции
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Список изменений
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Просмотр списка изменений
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лицензия
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Просмотр лицензии
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Инструкция к {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Список изменений к {STRING} {STRING}

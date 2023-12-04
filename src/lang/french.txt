@@ -2582,7 +2582,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Chercher
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Vous quittez OpenTTD{NBSP}!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Les termes et conditions du téléchargement de contenu depuis des sites externes varient.{}Vous devrez vous référer aux sites externes pour les instructions d'installation du contenu dans OpenTTD.{}Voulez-vous continuer{NBSP}?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur les étiquettes/le nom{NBSP}:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Visiter le site web
+STR_CONTENT_OPEN_URL                                            :{BLACK}Site web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visiter le site web pour ce module
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Télécharger
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Démarrer le téléchargement des modules sélectionnés
@@ -4708,9 +4708,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Reculer 
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Avancer dans l'historique de navigation
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Retour à la ligne automatique
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Insérer des retours à la ligne dans le texte de la fenêtre afin qu'il s'affiche entièrement sans faire défiler
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Voir le Lisez-moi
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Lisez-moi
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Afficher le lisez-moi pour ce contenu
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Journal des modifications
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Afficher le journal des modifications pour ce contenu
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Afficher la licence pour ce contenu
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Lisez-moi du module {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Journal des modifications pour le module {STRING} {STRING}

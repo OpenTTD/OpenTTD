@@ -2582,7 +2582,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}OpenTTD�
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}OpenTTD를 종료하는 중입니다!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}외부 웹사이트에서 콘텐츠를 다운로드할 때에는 그에 대한 약관과 조건이 다양합니다.{}이 콘텐츠를 OpenTTD에 설치하는 방법은 외부 사이트에서 찾아보아야 합니다.{}계속하시겠습니까?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}태그/이름 검색:
-STR_CONTENT_OPEN_URL                                            :{BLACK}웹 사이트 방문
+STR_CONTENT_OPEN_URL                                            :{BLACK}웹 사이트
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}이 컨텐츠의 웹 사이트를 방문합니다
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운로드
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}선택한 콘텐츠의 다운로드를 시작합니다
@@ -4708,9 +4708,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}탐색 �
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}탐색 기록 앞으로 가기
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}자동 줄 바꿈
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}본문 내용에 자동 줄 바꿈을 설정하여 스크롤하지 않고도 본문의 모든 내용을 볼 수 있게 합니다.
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme 보기
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :이 콘텐츠의 Readme를 봅니다
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}변경기록
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :이 콘텐츠의 변경 기록을 봅니다
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}저작권
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :이 콘텐츠의 라이선스를 봅니다
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}의 Readme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}의 변경기록
