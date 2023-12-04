@@ -454,8 +454,9 @@ if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     add_definitions(-DPOINTER_IS_64BIT)
 endif()
 
-include(CreateRegression)
-create_regression()
+enable_testing()
+
+add_subdirectory(regression)
 
 if(APPLE OR WIN32)
     find_package(Pandoc)
