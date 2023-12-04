@@ -487,7 +487,7 @@ public:
 					/* show cargo waiting and station ratings */
 					for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 						CargoID cid = cs->Index();
-						if (st->goods[cid].cargo.TotalCount() > 0) {
+						if (st->goods[cid].HasRating()) {
 							/* For RTL we work in exactly the opposite direction. So
 							 * decrement the space needed first, then draw to the left
 							 * instead of drawing to the left and then incrementing
