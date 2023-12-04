@@ -93,6 +93,7 @@ jobs:
         - name: GCC - Dedicated
           compiler: gcc
           cxxcompiler: g++
+          libraries: grfcodec
           extra-cmake-parameters: -DOPTION_DEDICATED=ON -DCMAKE_CXX_FLAGS_INIT="-DRANDOM_DEBUG" -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
           # Compile without SDL / SDL2, as that should compile fine too.
 
@@ -169,6 +170,9 @@ jobs:
       run: |
         cd build
         ctest -j $(nproc) --timeout 120
+
+        # Check no tracked files have been modified
+        git diff --exit-code
 
   macos:
     strategy:
