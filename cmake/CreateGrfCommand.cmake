@@ -1,16 +1,13 @@
 # Macro which contains all bits and pieces to create a single grf file based
 # on NFO and PNG files.
 #
-# create_grf_command()
+# create_grf_command(NFO_SOURCE_FILES nfo_file1 ... PNG_SOURCE_FILES png_file1 ...)
 #
 function(create_grf_command)
-    set(EXTRA_PNG_SOURCE_FILES ${ARGV})
+    cmake_parse_arguments(GRF "" "" "NFO_SOURCE_FILES;PNG_SOURCE_FILES" ${ARGN})
 
     get_filename_component(GRF_SOURCE_FOLDER_NAME "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
     get_filename_component(GRF_BINARY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../${GRF_SOURCE_FOLDER_NAME}.grf ABSOLUTE)
-    file(GLOB_RECURSE GRF_PNG_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.png)
-    file(GLOB_RECURSE GRF_NFO_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.nfo)
-    set(GRF_PNG_SOURCE_FILES ${GRF_PNG_SOURCE_FILES} ${EXTRA_PNG_SOURCE_FILES})
 
     # Copy over all the PNG files to the correct folder
     foreach(GRF_PNG_SOURCE_FILE IN LISTS GRF_PNG_SOURCE_FILES)
