@@ -234,7 +234,7 @@ public:
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges.size(); i++) {
 					const BuildBridgeData &bridge_data = this->bridges.at(i);
 					const BridgeSpec *b = bridge_data.spec;
-					DrawSpriteIgnorePadding(b->sprite, b->pal, tr.WithWidth(this->icon_width, rtl), false, SA_HOR_CENTER | SA_BOTTOM);
+					DrawSpriteIgnorePadding(b->sprite, b->pal, tr.WithWidth(this->icon_width, rtl), SA_HOR_CENTER | SA_BOTTOM);
 					DrawStringMultiLine(tr.Indent(this->icon_width + WidgetDimensions::scaled.hsep_normal, rtl), GetBridgeSelectString(bridge_data));
 					tr = tr.Translate(0, this->resize.step_height);
 				}

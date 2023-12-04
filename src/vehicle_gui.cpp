@@ -3080,10 +3080,9 @@ public:
 		/* Draw the flag plus orders. */
 		bool rtl = (_current_text_dir == TD_RTL);
 		uint icon_width = std::max({GetScaledSpriteSize(SPR_WARNING_SIGN).width, GetScaledSpriteSize(SPR_FLAG_VEH_STOPPED).width, GetScaledSpriteSize(SPR_FLAG_VEH_RUNNING).width});
-		int lowered = this->IsWidgetLowered(widget) ? WidgetDimensions::scaled.pressed : 0;
-		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect).Translate(lowered, lowered);
+		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 		SpriteID image = ((v->vehstatus & VS_STOPPED) != 0) ? SPR_FLAG_VEH_STOPPED : (HasBit(v->vehicle_flags, VF_PATHFINDER_LOST)) ? SPR_WARNING_SIGN : SPR_FLAG_VEH_RUNNING;
-		DrawSpriteIgnorePadding(image, PAL_NONE, tr.WithWidth(icon_width, rtl), false, SA_CENTER);
+		DrawSpriteIgnorePadding(image, PAL_NONE, tr.WithWidth(icon_width, rtl), SA_CENTER);
 		tr = tr.Indent(icon_width + WidgetDimensions::scaled.imgbtn.Horizontal(), rtl);
 		DrawString(tr.left, tr.right, CenterBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), str, text_colour, SA_HOR_CENTER);
 	}

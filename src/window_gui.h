@@ -54,7 +54,6 @@ struct WidgetDimensions {
 	RectPadding sparse;       ///< Padding used for 'sparse' widget window, usually containing multiple frames.
 	RectPadding sparse_resize; ///< Padding used for a resizeable 'sparse' widget window, usually containing multiple frames.
 
-	int pressed;              ///< Offset for contents of depressed widget.
 	int vsep_picker;          ///< Vertical spacing of picker-window widgets.
 	int vsep_normal;          ///< Normal vertical spacing.
 	int vsep_sparse;          ///< Normal vertical spacing for 'sparse' widget window.
