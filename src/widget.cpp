@@ -29,9 +29,9 @@
 enum WidgetDrawDistances {
 	/* WWT_IMGBTN(_2) */
 	WD_IMGBTN_LEFT    = 1,      ///< Left offset of the image in the button.
-	WD_IMGBTN_RIGHT   = 2,      ///< Right offset of the image in the button.
+	WD_IMGBTN_RIGHT   = 1,      ///< Right offset of the image in the button.
 	WD_IMGBTN_TOP     = 1,      ///< Top offset of image in the button.
-	WD_IMGBTN_BOTTOM  = 2,      ///< Bottom offset of image in the button.
+	WD_IMGBTN_BOTTOM  = 1,      ///< Bottom offset of image in the button.
 
 	/* WWT_INSET */
 	WD_INSET_LEFT  = 2,         ///< Left offset of string.
@@ -154,7 +154,7 @@ const WidgetDimensions WidgetDimensions::unscaled = {
 	{3, 3, 3, 3},        ///< picker
 	{10, 8, 10, 8},      ///< sparse window padding
 	{10, 8, 10, 1},      ///< resizable sparse window padding
-	1,                   ///< pressed
+	0,                   ///< pressed
 	1,                   ///< vsep_picker
 	WD_PAR_VSEP_NORMAL,  ///< vsep_normal
 	4,                   ///< vsep_sparse
