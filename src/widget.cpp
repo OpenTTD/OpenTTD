@@ -154,7 +154,6 @@ const WidgetDimensions WidgetDimensions::unscaled = {
 	{3, 3, 3, 3},        ///< picker
 	{10, 8, 10, 8},      ///< sparse window padding
 	{10, 8, 10, 1},      ///< resizable sparse window padding
-	0,                   ///< pressed
 	1,                   ///< vsep_picker
 	WD_PAR_VSEP_NORMAL,  ///< vsep_normal
 	4,                   ///< vsep_sparse
@@ -227,7 +226,6 @@ void SetupWidgetDimensions()
 	WidgetDimensions::scaled.dropdowntext = ScaleGUITrad(WidgetDimensions::unscaled.dropdowntext);
 	WidgetDimensions::scaled.modalpopup   = ScaleGUITrad(WidgetDimensions::unscaled.modalpopup);
 
-	WidgetDimensions::scaled.pressed      = ScaleGUITrad(WidgetDimensions::unscaled.pressed);
 	WidgetDimensions::scaled.vsep_normal  = ScaleGUITrad(WidgetDimensions::unscaled.vsep_normal);
 	WidgetDimensions::scaled.vsep_wide    = ScaleGUITrad(WidgetDimensions::unscaled.vsep_wide);
 	WidgetDimensions::scaled.hsep_normal  = ScaleGUITrad(WidgetDimensions::unscaled.hsep_normal);
@@ -453,7 +451,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 	}
 }
 
-void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, bool clicked, StringAlignment align)
+void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, StringAlignment align)
 {
 	Point offset;
 	Dimension d = GetSpriteSize(img, &offset);
@@ -461,8 +459,7 @@ void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, bool cl
 	d.height -= offset.y;
 
 	Point p = GetAlignedPosition(r, d, align);
-	int o = clicked ? WidgetDimensions::scaled.pressed : 0;
-	DrawSprite(img, pal, p.x + o - offset.x, p.y + o - offset.y);
+	DrawSprite(img, pal, p.x - offset.x, p.y - offset.y);
 }
 
 /**
@@ -470,7 +467,7 @@ void DrawSpriteIgnorePadding(SpriteID img, PaletteID pal, const Rect &r, bool cl
  * @param r       Rectangle of the button.
  * @param type    Widget type (#WWT_IMGBTN or #WWT_IMGBTN_2).
  * @param colour  Colour of the button.
- * @param clicked Button is lowered.
+ * @param clicked Button is clicked.
  * @param img     Sprite to draw.
  * @param align   Alignment of the sprite.
  */
@@ -480,14 +477,14 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
 	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
-	DrawSpriteIgnorePadding(img, PAL_NONE, r, clicked, align);
+	DrawSpriteIgnorePadding(img, PAL_NONE, r, align);
 }
 
 /**
  * Draw the label-part of a widget.
  * @param r       Rectangle of the label background.
  * @param type    Widget type (#WWT_TEXTBTN, #WWT_TEXTBTN_2, or #WWT_LABEL).
- * @param clicked Label is rendered lowered.
+ * @param clicked Label is clicked.
  * @param colour  Colour of the text.
  * @param str     Text to draw.
  * @param align   Alignment of the text.
@@ -499,8 +496,7 @@ static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextC
 	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
 	Dimension d = GetStringBoundingBox(str, fs);
 	Point p = GetAlignedPosition(r, d, align);
-	int o = clicked ? WidgetDimensions::scaled.pressed : 0;
-	DrawString(r.left + o, r.right + o, p.y + o, str, colour, align, false, fs);
+	DrawString(r.left, r.right, p.y, str, colour, align, false, fs);
 }
 
 /**
@@ -783,7 +779,7 @@ static inline void DrawDebugBox(const Rect &r, Colours colour, bool clicked)
 static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
-	DrawSpriteIgnorePadding(at_left ? SPR_WINDOW_RESIZE_LEFT : SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.Shrink(ScaleGUITrad(2)), clicked, at_left ? (SA_LEFT | SA_BOTTOM | SA_FORCE) : (SA_RIGHT | SA_BOTTOM | SA_FORCE));
+	DrawSpriteIgnorePadding(at_left ? SPR_WINDOW_RESIZE_LEFT : SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.Shrink(ScaleGUITrad(2)), at_left ? (SA_LEFT | SA_BOTTOM | SA_FORCE) : (SA_RIGHT | SA_BOTTOM | SA_FORCE));
 }
 
 /**
@@ -835,8 +831,8 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
  * Draw a button with a dropdown (#WWT_DROPDOWN and #NWID_BUTTON_DROPDOWN).
  * @param r                Rectangle containing the widget.
  * @param colour           Background colour of the widget.
- * @param clicked_button   The button-part is lowered.
- * @param clicked_dropdown The drop-down part is lowered.
+ * @param clicked_button   The button-part is clicked.
+ * @param clicked_dropdown The drop-down part is clicked.
  * @param str              Text of the button.
  * @param align            Alignment of the text within the dropdown.
  *
@@ -850,15 +846,13 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
 		DrawImageButtons(r.WithWidth(dd_width, true), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (str != STR_NULL) {
-			int o = clicked_button ? WidgetDimensions::scaled.pressed : 0;
-			DrawString(r.left + WidgetDimensions::scaled.dropdowntext.left + o, r.right - dd_width - WidgetDimensions::scaled.dropdowntext.right + o, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)) + o, str, TC_BLACK, align);
+			DrawString(r.left + WidgetDimensions::scaled.dropdowntext.left, r.right - dd_width - WidgetDimensions::scaled.dropdowntext.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), str, TC_BLACK, align);
 		}
 	} else {
 		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
 		DrawImageButtons(r.WithWidth(dd_width, false), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (str != STR_NULL) {
-			int o = clicked_button ? WidgetDimensions::scaled.pressed : 0;
-			DrawString(r.left + dd_width + WidgetDimensions::scaled.dropdowntext.left + o, r.right - WidgetDimensions::scaled.dropdowntext.right + o, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)) + o, str, TC_BLACK, align);
+			DrawString(r.left + dd_width + WidgetDimensions::scaled.dropdowntext.left, r.right - WidgetDimensions::scaled.dropdowntext.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), str, TC_BLACK, align);
 		}
 	}
 }
@@ -908,7 +902,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	/* Sort button uses the same sprites as vertical scrollbar */
 	Dimension dim = NWidgetScrollbar::GetVerticalDimension();
 
-	DrawSpriteIgnorePadding(state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, PAL_NONE, r.WithWidth(dim.width, _current_text_dir == TD_LTR), this->IsWidgetLowered(widget), SA_CENTER);
+	DrawSpriteIgnorePadding(state == SBS_DOWN ? SPR_ARROW_DOWN : SPR_ARROW_UP, PAL_NONE, r.WithWidth(dim.width, _current_text_dir == TD_LTR), SA_CENTER);
 }
 
 /**

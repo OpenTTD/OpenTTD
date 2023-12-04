@@ -614,7 +614,6 @@ void LinkGraphLegendWindow::UpdateWidgetSize(int widget, Dimension *size, [[mayb
 void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 {
 	Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
-	if (this->IsWidgetLowered(widget)) br = br.Translate(WidgetDimensions::scaled.pressed, WidgetDimensions::scaled.pressed);
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) return;
 		CompanyID cid = (CompanyID)(widget - WID_LGL_COMPANY_FIRST);
