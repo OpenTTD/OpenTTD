@@ -2961,7 +2961,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Przeszuk
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Opuszczasz OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Warunki pobierania dodatków z zewnętrznych stron internetowych są inne.{}Będziesz musiał(a) odnieść się do zewnętrznych stron w celu uzyskania wskazówek dotyczących instalacji dodatku w OpenTTD.{}Czy chcesz kontynuować?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr etykiety/nazwy:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Wejdź na stronę
+STR_CONTENT_OPEN_URL                                            :{BLACK}Strona internetowa
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Wejdź na stronę, by pobrać tę zawartość
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Pobierz
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Rozpocznij pobieranie zaznaczonych danych
@@ -5093,9 +5093,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Cofnij s
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Powrót do przodu w historii nawigacji
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Zawijaj tekst
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zawiń tekst w oknie, aby zmieścił się bez konieczności przewijania
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Odczytaj plik „readme”
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Plik „readme”
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Wyświetl plik „readme” dla tej zawartości
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista zmian
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Wyświetl listę zmian dla tej zawartości
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencja
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Wyświetl licencję dla tej zawartości
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} - plik „readme”
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} - lista zmian

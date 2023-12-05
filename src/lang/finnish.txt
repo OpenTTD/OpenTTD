@@ -2581,7 +2581,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Etsi Ope
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Olet poistumassa OpenTTD:stä!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Ulkopuolisilta verkkosivuilta ladattaessa käyttöehdot voivat vaihdella.{}Sinun on noudatettava ulkopuolisen sivuston ohjeita sisällön asentamiseksi OpenTTD:hen.{}Haluatko jatkaa?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Suodata avainsanalla tai nimellä:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Vieraile verkkosivulla
+STR_CONTENT_OPEN_URL                                            :{BLACK}Verkkosivu
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Vieraile sisällön verkkosivulla
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lataa
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Aloita valitun sisällön lataaminen
@@ -4707,9 +4707,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Siirry t
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Siirry eteenpäin selaushistoriassa
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Tekstin rivitys
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Rivitä teksti ikkunaan niin, että se näkyy kokonaan rullaamatta
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Näytä readme-tiedosto
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme-tiedosto
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Katso tämän sisällön readme-tiedosto
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Muutosloki
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Katso tämän sisällön muutosloki
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisenssi
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Katso tämän sisällön lisenssi
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}:n {STRING} readme-tiedosto
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}:n {STRING} muutosloki
