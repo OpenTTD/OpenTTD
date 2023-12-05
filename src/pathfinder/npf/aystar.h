@@ -20,6 +20,8 @@
 #include "../../tile_type.h"
 #include "../../track_type.h"
 
+static const int AYSTAR_DEF_MAX_SEARCH_NODES = 10000; ///< Reference limit for #AyStar::max_search_nodes
+
 /** Return status of #AyStar methods. */
 enum AystarStatus {
 	AYSTAR_FOUND_END_NODE, ///< An end node was found.
