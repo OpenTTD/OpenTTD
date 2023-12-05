@@ -189,7 +189,9 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		this->SetupHighScoreEndWindow();
 		Point pt = this->GetTopLeft(ScaleSpriteTrad(640), ScaleSpriteTrad(480));
 
-		SetDParam(0, _settings_game.game_creation.ending_year);
+		TimerGameCalendar::Year year = _game_mode == GM_MENU ? _settings_newgame.game_creation.ending_year : _settings_game.game_creation.ending_year;
+		if (year == 0) year = CalendarTime::DEF_END_YEAR; // Use default ending year if configuration is set to never.
+		SetDParam(0, year);
 		DrawStringMultiLine(pt.x + ScaleSpriteTrad(70), pt.x + ScaleSpriteTrad(570), pt.y, pt.y + ScaleSpriteTrad(140), !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
 
 		/* Draw Highscore peepz */
