@@ -21,6 +21,9 @@ if(NOT GRF_BINARY_FILE)
     message(FATAL_ERROR "Script needs GRF_BINARY_FILE defined")
 endif()
 
+# Remove the existing output so failures never go unnoticed
+file(REMOVE ${GRF_BINARY_FILE} ${GRF_BINARY_FILE}.hash)
+
 get_filename_component(GRF_SOURCE_FOLDER_NAME "${GRF_SOURCE_FOLDER}" NAME)
 
 file(WRITE sprites/${GRF_SOURCE_FOLDER_NAME}.nfo "")
