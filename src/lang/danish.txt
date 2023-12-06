@@ -4708,8 +4708,11 @@ STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Vend til
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Ombryd tekst
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ombryd teksten i vinduet, så det hele passer uden at skulle rulle
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Se readme
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Se readme for dette indhold
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ændringslog
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Se ændringslog for dette indhold
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Se licens til dette indhold
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme for {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}

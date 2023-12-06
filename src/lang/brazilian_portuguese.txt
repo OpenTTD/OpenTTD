@@ -2582,7 +2582,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Conteúd
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Você está saindo do OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Os termos e condições ao baixar conteúdo de fontes externas pode varias.{}Você deverá consultar as fontes para obter instruções de como instalar o conteúdo no OpenTTD.{} Deseja continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/nome do filtro:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Visitar website
+STR_CONTENT_OPEN_URL                                            :{BLACK}Visitar a página web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar o site desse conteúdo
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Baixar
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Baixa o conteúdo selecionado
@@ -4708,9 +4708,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Retornar
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Retornar adiante no histórico de navegação
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Quebra de linha
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :[BLACK}Quebra linhas automaticamente para que o texto caiba na janela
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver o leia-me
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver o arquivo Leia-me
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver o arquivo Leia-me para este conteúdo
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log de mudanças
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o registro de modificações para este conteúdo
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença para este conteúdo
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} Leia-me de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} log de mudanças de {STRING}
