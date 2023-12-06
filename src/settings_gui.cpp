@@ -170,6 +170,7 @@ struct GameOptionsWindow : Window {
 	GameSettings *opt;
 	bool reload;
 	int gui_scale;
+	static inline int active_tab = WID_GO_TAB_GENERAL;
 
 	GameOptionsWindow(WindowDesc *desc) : Window(desc)
 	{
@@ -182,7 +183,7 @@ struct GameOptionsWindow : Window {
 		this->InitNested(WN_GAME_OPTIONS_GAME_OPTIONS);
 		this->OnInvalidateData(0);
 
-		this->SetTab(WID_GO_TAB_GENERAL);
+		this->SetTab(GameOptionsWindow::active_tab);
 
 		if constexpr (!NetworkSurveyHandler::IsSurveyPossible()) this->GetWidget<NWidgetStacked>(WID_GO_SURVEY_SEL)->SetDisplayedPlane(SZSP_NONE);
 	}
@@ -387,6 +388,7 @@ struct GameOptionsWindow : Window {
 	{
 		this->SetWidgetsLoweredState(false, WID_GO_TAB_GENERAL, WID_GO_TAB_GRAPHICS, WID_GO_TAB_SOUND);
 		this->LowerWidget(widget);
+		GameOptionsWindow::active_tab = widget;
 
 		int pane = 0;
 		if (widget == WID_GO_TAB_GRAPHICS) pane = 1;
