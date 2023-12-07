@@ -24,7 +24,7 @@
 
 static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_END, WID_DM_ITEMS), SetMinimalSize(1, 1), SetScrollbar(WID_DM_SCROLL), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_END, WID_DM_ITEMS), SetScrollbar(WID_DM_SCROLL), EndContainer(),
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_DM_SHOW_SCROLL),
 			NWidget(NWID_VSCROLLBAR, COLOUR_END, WID_DM_SCROLL),
 		EndContainer(),
@@ -41,6 +41,7 @@ static WindowDesc _dropdown_desc(__FILE__, __LINE__,
 /** Drop-down menu window */
 struct DropdownWindow : Window {
 	int parent_button;            ///< Parent widget number where the window is dropped from.
+	Rect wi_rect;                 ///< Rect of the button that opened the dropdown.
 	const DropDownList list;      ///< List with dropdown menu items.
 	int selected_result;          ///< Result value of the selected item in the list.
 	byte click_delay = 0;         ///< Timer to delay selection.
@@ -50,25 +51,25 @@ struct DropdownWindow : Window {
 	Point position;               ///< Position of the topleft corner of the window.
 	Scrollbar *vscroll;
 
+	Dimension items_dim; ///< Calculated cropped and padded dimension for the items widget.
+
 	/**
 	 * Create a dropdown menu.
 	 * @param parent        Parent window.
 	 * @param list          Dropdown item list.
 	 * @param selected      Initial selected result of the list.
 	 * @param button        Widget of the parent window doing the dropdown.
+	 * @param wi_rect       Rect of the button that opened the dropdown.
 	 * @param instant_close Close the window when the mouse button is raised.
-	 * @param position      Topleft position of the dropdown menu window.
-	 * @param size          Size of the dropdown menu window.
 	 * @param wi_colour     Colour of the parent widget.
-	 * @param scroll        Dropdown menu has a scrollbar.
 	 */
-	DropdownWindow(Window *parent, DropDownList &&list, int selected, int button, bool instant_close, const Point &position, const Dimension &size, Colours wi_colour, bool scroll)
+	DropdownWindow(Window *parent, DropDownList &&list, int selected, int button, const Rect wi_rect, bool instant_close, Colours wi_colour)
 			: Window(&_dropdown_desc)
 			, parent_button(button)
+			, wi_rect(wi_rect)
 			, list(std::move(list))
 			, selected_result(selected)
 			, instant_close(instant_close)
-			, position(position)
 	{
 		assert(!this->list.empty());
 
@@ -76,30 +77,13 @@ struct DropdownWindow : Window {
 
 		this->CreateNestedTree();
 
+		this->GetWidget<NWidgetCore>(WID_DM_ITEMS)->colour = wi_colour;
+		this->GetWidget<NWidgetCore>(WID_DM_SCROLL)->colour = wi_colour;
 		this->vscroll = this->GetScrollbar(WID_DM_SCROLL);
-
-		uint items_width = size.width - (scroll ? NWidgetScrollbar::GetVerticalDimension().width : 0);
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_DM_ITEMS);
-		nwi->SetMinimalSizeAbsolute(items_width, size.height + WidgetDimensions::scaled.dropdownlist.Vertical());
-		nwi->colour = wi_colour;
-
-		nwi = this->GetWidget<NWidgetCore>(WID_DM_SCROLL);
-		nwi->colour = wi_colour;
-
-		this->GetWidget<NWidgetStacked>(WID_DM_SHOW_SCROLL)->SetDisplayedPlane(scroll ? 0 : SZSP_NONE);
+		this->UpdateSizeAndPosition();
 
 		this->FinishInitNested(0);
 		CLRBITS(this->flags, WF_WHITE_BORDER);
-
-		/* Total length of list */
-		int list_height = 0;
-		for (const auto &item : this->list) {
-			list_height += item->Height();
-		}
-
-		/* Capacity is the average number of items visible */
-		this->vscroll->SetCapacity(size.height * this->list.size() / list_height);
-		this->vscroll->SetCount(this->list.size());
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -124,6 +108,73 @@ struct DropdownWindow : Window {
 			this->instant_close = false;
 			this->Close();
 		}
+	}
+
+	/**
+	 * Fit dropdown list into available height, rounding to average item size. Width is adjusted if scrollbar is present.
+	 * @param[in,out] desired Desired dimensions of dropdown list.
+	 * @param list Dimensions of the list itself, without padding or cropping.
+	 * @param available_height Available height to fit list within.
+	 */
+	void FitAvailableHeight(Dimension &desired, const Dimension &list, uint available_height)
+	{
+		if (desired.height < available_height) return;
+
+		/* If the dropdown doesn't fully fit, we a need a dropdown. */
+		uint avg_height = list.height / (uint)this->list.size();
+		uint rows = std::max((available_height - WidgetDimensions::scaled.dropdownlist.Vertical()) / avg_height, 1U);
+
+		desired.width = std::max(list.width, desired.width - NWidgetScrollbar::GetVerticalDimension().width);
+		desired.height = rows * avg_height + WidgetDimensions::scaled.dropdownlist.Vertical();
+	}
+
+	/**
+	 * Update size and position of window to fit dropdown list into available space.
+	 */
+	void UpdateSizeAndPosition()
+	{
+		Rect button_rect = this->wi_rect.Translate(this->parent->left, this->parent->top);
+
+		/* Get the dimensions required for the list. */
+		Dimension list_dim = GetDropDownListDimension(this->list);
+
+		/* Set up dimensions for the items widget. */
+		Dimension widget_dim = list_dim;
+		widget_dim.width += WidgetDimensions::scaled.dropdownlist.Horizontal();
+		widget_dim.height += WidgetDimensions::scaled.dropdownlist.Vertical();
+
+		/* Width should match at least the width of the parent widget. */
+		widget_dim.width = std::max<uint>(widget_dim.width, button_rect.Width());
+
+		/* Available height below (or above, if the dropdown is placed above the widget). */
+		uint available_height_below = std::max(GetMainViewBottom() - button_rect.bottom - 1, 0);
+		uint available_height_above = std::max(button_rect.top - 1 - GetMainViewTop(), 0);
+
+		/* Is it better to place the dropdown above the widget? */
+		if (widget_dim.height > available_height_below && available_height_above > available_height_below) {
+			FitAvailableHeight(widget_dim, list_dim, available_height_above);
+			this->position.y = button_rect.top - widget_dim.height;
+		} else {
+			FitAvailableHeight(widget_dim, list_dim, available_height_below);
+			this->position.y = button_rect.bottom + 1;
+		}
+
+		this->position.x = (_current_text_dir == TD_RTL) ? button_rect.right + 1 - (int)widget_dim.width : button_rect.left;
+
+		this->items_dim = widget_dim;
+		this->GetWidget<NWidgetStacked>(WID_DM_SHOW_SCROLL)->SetDisplayedPlane(list_dim.height > widget_dim.height ? 0 : SZSP_NONE);
+
+		/* Capacity is the average number of items visible */
+		this->vscroll->SetCapacity((widget_dim.height - WidgetDimensions::scaled.dropdownlist.Vertical()) * this->list.size() / list_dim.height);
+		this->vscroll->SetCount(this->list.size());
+
+		/* If the dropdown is positioned above the parent widget, start selection at the bottom. */
+		if (this->position.y < button_rect.top && list_dim.height > widget_dim.height) this->vscroll->UpdatePosition(INT_MAX);
+	}
+
+	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	{
+		if (widget == WID_DM_ITEMS) *size = this->items_dim;
 	}
 
 	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
@@ -281,65 +332,7 @@ Dimension GetDropDownListDimension(const DropDownList &list)
 void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button, Rect wi_rect, Colours wi_colour, bool instant_close)
 {
 	CloseWindowByClass(WC_DROPDOWN_MENU);
-
-	/* The preferred position is just below the dropdown calling widget */
-	int top = w->top + wi_rect.bottom + 1;
-
-	/* The preferred width equals the calling widget */
-	uint width = wi_rect.Width();
-
-	/* Get the height and width required for the list. */
-	Dimension dim = GetDropDownListDimension(list);
-	dim.width += WidgetDimensions::scaled.dropdownlist.Horizontal();
-
-	/* Scrollbar needed? */
-	bool scroll = false;
-
-	/* Is it better to place the dropdown above the widget? */
-	bool above = false;
-
-	/* Available height below (or above, if the dropdown is placed above the widget). */
-	uint available_height = std::max(GetMainViewBottom() - top - (int)WidgetDimensions::scaled.dropdownlist.Vertical(), 0);
-
-	/* If the dropdown doesn't fully fit below the widget... */
-	if (dim.height > available_height) {
-
-		uint available_height_above = std::max(w->top + wi_rect.top - GetMainViewTop() - (int)WidgetDimensions::scaled.dropdownlist.Vertical(), 0);
-
-		/* Put the dropdown above if there is more available space. */
-		if (available_height_above > available_height) {
-			above = true;
-			available_height = available_height_above;
-		}
-
-		/* If the dropdown doesn't fully fit, we need a dropdown. */
-		if (dim.height > available_height) {
-			scroll = true;
-			uint avg_height = dim.height / (uint)list.size();
-
-			/* Fit the list; create at least one row, even if there is no height available. */
-			uint rows = std::max<uint>(available_height / avg_height, 1);
-			dim.height = rows * avg_height;
-
-			/* Add space for the scrollbar. */
-			dim.width += NWidgetScrollbar::GetVerticalDimension().width;
-		}
-
-		/* Set the top position if needed. */
-		if (above) {
-			top = w->top + wi_rect.top - dim.height - WidgetDimensions::scaled.dropdownlist.Vertical();
-		}
-	}
-
-	dim.width = std::max(width, dim.width);
-
-	Point dw_pos = { w->left + (_current_text_dir == TD_RTL ? wi_rect.right + 1 - (int)width : wi_rect.left), top};
-	DropdownWindow *dropdown = new DropdownWindow(w, std::move(list), selected, button, instant_close, dw_pos, dim, wi_colour, scroll);
-
-	/* The dropdown starts scrolling downwards when opening it towards
-	 * the top and holding down the mouse button. It can be fooled by
-	 * opening the dropdown scrolled to the very bottom.  */
-	if (above && scroll) dropdown->vscroll->UpdatePosition(INT_MAX);
+	new DropdownWindow(w, std::move(list), selected, button, wi_rect, instant_close, wi_colour);
 }
 
 /**
