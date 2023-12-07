@@ -75,7 +75,7 @@ struct DropdownWindow : Window {
 
 		uint items_width = size.width - (scroll ? NWidgetScrollbar::GetVerticalDimension().width : 0);
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_DM_ITEMS);
-		nwi->SetMinimalSizeAbsolute(items_width, size.height + WidgetDimensions::scaled.fullbevel.Vertical() * 2);
+		nwi->SetMinimalSizeAbsolute(items_width, size.height + WidgetDimensions::scaled.dropdownlist.Vertical());
 		nwi->colour = wi_colour;
 
 		nwi = this->GetWidget<NWidgetCore>(WID_DM_SCROLL);
@@ -142,8 +142,8 @@ struct DropdownWindow : Window {
 	{
 		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return false;
 
-		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
-		int y     = _cursor.pos.y - this->top - r.top - WidgetDimensions::scaled.fullbevel.top;
+		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.dropdownlist);
+		int y     = _cursor.pos.y - this->top - r.top;
 		int pos   = this->vscroll->GetPosition();
 
 		for (const auto &item : this->list) {
@@ -170,7 +170,7 @@ struct DropdownWindow : Window {
 
 		Colours colour = this->GetWidget<NWidgetCore>(widget)->colour;
 
-		Rect ir = r.Shrink(WidgetDimensions::scaled.fullbevel).Shrink(RectPadding::zero, WidgetDimensions::scaled.fullbevel);
+		Rect ir = r.Shrink(WidgetDimensions::scaled.dropdownlist);
 		int y = ir.top;
 		int pos = this->vscroll->GetPosition();
 		for (const auto &item : this->list) {
@@ -292,7 +292,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 
 	/* Get the height and width required for the list. */
 	Dimension dim = GetDropDownListDimension(list);
-	dim.width += WidgetDimensions::scaled.fullbevel.Horizontal();
+	dim.width += WidgetDimensions::scaled.dropdownlist.Horizontal();
 
 	/* Scrollbar needed? */
 	bool scroll = false;
@@ -301,12 +301,12 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 	bool above = false;
 
 	/* Available height below (or above, if the dropdown is placed above the widget). */
-	uint available_height = std::max(GetMainViewBottom() - top - (int)WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0);
+	uint available_height = std::max(GetMainViewBottom() - top - (int)WidgetDimensions::scaled.dropdownlist.Vertical(), 0);
 
 	/* If the dropdown doesn't fully fit below the widget... */
 	if (dim.height > available_height) {
 
-		uint available_height_above = std::max(w->top + wi_rect.top - GetMainViewTop() - (int)WidgetDimensions::scaled.fullbevel.Vertical() * 2, 0);
+		uint available_height_above = std::max(w->top + wi_rect.top - GetMainViewTop() - (int)WidgetDimensions::scaled.dropdownlist.Vertical(), 0);
 
 		/* Put the dropdown above if there is more available space. */
 		if (available_height_above > available_height) {
@@ -329,7 +329,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 
 		/* Set the top position if needed. */
 		if (above) {
-			top = w->top + wi_rect.top - dim.height - WidgetDimensions::scaled.fullbevel.Vertical() * 2;
+			top = w->top + wi_rect.top - dim.height - WidgetDimensions::scaled.dropdownlist.Vertical();
 		}
 	}
 
