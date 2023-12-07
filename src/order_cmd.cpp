@@ -1961,6 +1961,10 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 			}
 
 			if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+				/* If the vehicle can't find its destination, delay its next search.
+				 * In case many vehicles are in this state, use the vehicle index to spread out pathfinder calls. */
+				if (v->dest_tile == 0 && TimerGameCalendar::date_fract != (v->index % Ticks::DAY_TICKS)) break;
+
 				/* We need to search for the nearest depot (hangar). */
 				ClosestDepot closestDepot = v->FindClosestDepot();
 
