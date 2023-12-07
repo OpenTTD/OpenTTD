@@ -1475,7 +1475,7 @@ static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::millise
  */
 void ChangeAutosaveFrequency(bool reset)
 {
-	_autosave_interval.SetInterval({_settings_client.gui.autosave_interval, TimerGameRealtime::AUTOSAVE}, reset);
+	_autosave_interval.SetInterval({std::chrono::minutes(_settings_client.gui.autosave_interval), TimerGameRealtime::AUTOSAVE}, reset);
 }
 
 /**
