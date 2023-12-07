@@ -136,7 +136,7 @@
 	const AirportSpec *as = ::AirportSpec::Get(type);
 	if (!as->IsWithinMapBounds(0, tile)) return -1;
 
-	if (_settings_game.economy.station_noise_level) {
+	if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE && _settings_game.economy.station_noise_level) {
 		AirportTileTableIterator it(as->table[0], tile);
 		uint dist;
 		AirportGetNearestTown(as, it, dist);

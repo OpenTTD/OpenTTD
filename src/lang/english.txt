@@ -1883,7 +1883,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Towns are allow
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Enabling this setting allows towns to build level crossings
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Limit airport placement based on noise level: {STRING2}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Allow towns to block airport construction based on their noise acceptance level, which is based on the town's population and airport size and distance. If this setting is disabled, towns allow only two airports unless the local authority attitude is set to "Permissive"
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Allow towns to block airport construction based on their noise acceptance level, which is based on the town's population and airport size and distance. If this setting is disabled, towns allow only two airports unless the local authority attitude is set to "Permissive". This setting has no effect when the setting "Local authority attitude" is set to "permissive".
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Founding towns in game: {STRING2}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Enabling this setting allows players to found new towns in the game

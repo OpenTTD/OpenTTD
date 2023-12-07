@@ -462,7 +462,7 @@ public:
 		}
 
 		/* only show the town noise, if the noise option is activated. */
-		if (_settings_game.economy.station_noise_level) {
+		if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE && _settings_game.economy.station_noise_level) {
 			SetDParam(0, this->town->noise_reached);
 			SetDParam(1, this->town->MaxTownNoise());
 			DrawString(tr, STR_TOWN_VIEW_NOISE_IN_TOWN);
@@ -541,7 +541,7 @@ public:
 		}
 		aimed_height += GetCharacterHeight(FS_NORMAL);
 
-		if (_settings_game.economy.station_noise_level) aimed_height += GetCharacterHeight(FS_NORMAL);
+		if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE && _settings_game.economy.station_noise_level) aimed_height += GetCharacterHeight(FS_NORMAL);
 
 		if (!this->town->text.empty()) {
 			SetDParamStr(0, this->town->text);

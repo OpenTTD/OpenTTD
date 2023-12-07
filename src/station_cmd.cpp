@@ -2280,6 +2280,8 @@ CommandCost CmdRemoveRoadStop(DoCommandFlag flags, TileIndex tile, uint8_t width
  */
 uint8_t GetAirportNoiseLevelForDistance(const AirportSpec *as, uint distance)
 {
+	assert(_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE);
+
 	/* 0 cannot be accounted, and 1 is the lowest that can be reduced from town.
 	 * So no need to go any further*/
 	if (as->noise_level < 2) return as->noise_level;
@@ -2344,6 +2346,8 @@ void UpdateAirportsNoise()
 {
 	for (Town *t : Town::Iterate()) t->noise_reached = 0;
 
+	if (_settings_game.difficulty.town_council_tolerance == TOWN_COUNCIL_PERMISSIVE || !_settings_game.economy.station_noise_level) return;
+
 	for (const Station *st : Station::Iterate()) {
 		if (st->airport.tile != INVALID_TILE && st->airport.type != AT_OILRIG) {
 			const AirportSpec *as = st->airport.GetSpec();
@@ -2400,27 +2404,32 @@ CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, byte airport_ty
 	/* The noise level is the noise from the airport and reduce it to account for the distance to the town center. */
 	uint dist;
 	Town *nearest = AirportGetNearestTown(as, tile_iter, dist);
-	uint newnoise_level = GetAirportNoiseLevelForDistance(as, dist);
+	uint newnoise_level = 0;
+	if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE && _settings_game.economy.station_noise_level) {
+		newnoise_level = GetAirportNoiseLevelForDistance(as, dist);
+	}
 
 	/* Check if local auth would allow a new airport */
 	StringID authority_refuse_message = STR_NULL;
 	Town *authority_refuse_town = nullptr;
 
-	if (_settings_game.economy.station_noise_level) {
-		/* do not allow to build a new airport if this raise the town noise over the maximum allowed by town */
-		if ((nearest->noise_reached + newnoise_level) > nearest->MaxTownNoise()) {
-			authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE;
-			authority_refuse_town = nearest;
-		}
-	} else if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE) {
-		Town *t = ClosestTownFromTile(tile, UINT_MAX);
-		uint num = 0;
-		for (const Station *st : Station::Iterate()) {
-			if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
-		}
-		if (num >= 2) {
-			authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT;
-			authority_refuse_town = t;
+	if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE) {
+		if (_settings_game.economy.station_noise_level) {
+			/* do not allow to build a new airport if this raise the town noise over the maximum allowed by town */
+			if ((nearest->noise_reached + newnoise_level) > nearest->MaxTownNoise()) {
+				authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE;
+				authority_refuse_town = nearest;
+			}
+		} else {
+			Town *t = ClosestTownFromTile(tile, UINT_MAX);
+			uint num = 0;
+			for (const Station *st : Station::Iterate()) {
+				if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
+			}
+			if (num >= 2) {
+				authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT;
+				authority_refuse_town = t;
+			}
 		}
 	}
 
@@ -2480,7 +2489,7 @@ CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, byte airport_ty
 		st->AfterStationTileSetChange(true, STATION_AIRPORT);
 		InvalidateWindowData(WC_STATION_VIEW, st->index, -1);
 
-		if (_settings_game.economy.station_noise_level) {
+		if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE && _settings_game.economy.station_noise_level) {
 			SetWindowDirty(WC_TOWN_VIEW, nearest->index);
 		}
 	}
@@ -2521,16 +2530,16 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 			CloseWindowById(WC_VEHICLE_DEPOT, tile_cur);
 		}
 
-		const AirportSpec *as = st->airport.GetSpec();
-		/* The noise level is the noise from the airport and reduce it to account for the distance to the town center.
-		 * And as for construction, always remove it, even if the setting is not set, in order to avoid the
-		 * need of recalculation */
-		AirportTileIterator it(st);
-		uint dist;
-		Town *nearest = AirportGetNearestTown(as, it, dist);
-		nearest->noise_reached -= GetAirportNoiseLevelForDistance(as, dist);
+		if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE && _settings_game.economy.station_noise_level) {
+			const AirportSpec *as = st->airport.GetSpec();
+			/* The noise level is the noise from the airport and reduce it to account for the distance to the town center.
+			* And as for construction, always remove it, even if the setting is not set, in order to avoid the
+			* need of recalculation */
+			AirportTileIterator it(st);
+			uint dist;
+			Town *nearest = AirportGetNearestTown(as, it, dist);
+			nearest->noise_reached -= GetAirportNoiseLevelForDistance(as, dist);
 
-		if (_settings_game.economy.station_noise_level) {
 			SetWindowDirty(WC_TOWN_VIEW, nearest->index);
 		}
 	}

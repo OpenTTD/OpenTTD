@@ -368,7 +368,7 @@
 	if (!IsValidTown(town_id)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
-	if (_settings_game.economy.station_noise_level) {
+	if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE && _settings_game.economy.station_noise_level) {
 		return t->MaxTownNoise() - t->noise_reached;
 	}
 
