@@ -43,10 +43,10 @@ struct DropdownWindow : Window {
 	int parent_button;            ///< Parent widget number where the window is dropped from.
 	const DropDownList list;      ///< List with dropdown menu items.
 	int selected_result;          ///< Result value of the selected item in the list.
-	byte click_delay;             ///< Timer to delay selection.
-	bool drag_mode;
+	byte click_delay = 0;         ///< Timer to delay selection.
+	bool drag_mode = true;
 	bool instant_close;           ///< Close the window when the mouse button is raised.
-	int scrolling;                ///< If non-zero, auto-scroll the item list (one time).
+	int scrolling = 0;            ///< If non-zero, auto-scroll the item list (one time).
 	Point position;               ///< Position of the topleft corner of the window.
 	Scrollbar *vscroll;
 
@@ -63,11 +63,16 @@ struct DropdownWindow : Window {
 	 * @param scroll        Dropdown menu has a scrollbar.
 	 */
 	DropdownWindow(Window *parent, DropDownList &&list, int selected, int button, bool instant_close, const Point &position, const Dimension &size, Colours wi_colour, bool scroll)
-			: Window(&_dropdown_desc), list(std::move(list))
+			: Window(&_dropdown_desc)
+			, parent_button(button)
+			, list(std::move(list))
+			, selected_result(selected)
+			, instant_close(instant_close)
+			, position(position)
 	{
 		assert(!this->list.empty());
 
-		this->position = position;
+		this->parent = parent;
 
 		this->CreateNestedTree();
 
@@ -95,13 +100,6 @@ struct DropdownWindow : Window {
 		/* Capacity is the average number of items visible */
 		this->vscroll->SetCapacity(size.height * this->list.size() / list_height);
 		this->vscroll->SetCount(this->list.size());
-
-		this->parent           = parent;
-		this->parent_button    = button;
-		this->selected_result   = selected;
-		this->click_delay      = 0;
-		this->drag_mode        = true;
-		this->instant_close    = instant_close;
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
