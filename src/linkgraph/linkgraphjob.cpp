@@ -138,7 +138,7 @@ LinkGraphJob::~LinkGraphJob()
 				 * from the new flows. This avoids flow cycles between old and
 				 * new flows. */
 				while (!erased.IsEmpty()) ge.flows.erase(erased.Pop());
-			} else if ((*lg)[node_id][dest_id].last_restricted_update == CalendarTime::INVALID_DATE) {
+			} else if ((*lg)[node_id][dest_id].last_unrestricted_update == CalendarTime::INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);
 			}
