@@ -42,7 +42,7 @@ static WindowDesc _dropdown_desc(__FILE__, __LINE__,
 struct DropdownWindow : Window {
 	int parent_button;            ///< Parent widget number where the window is dropped from.
 	const DropDownList list;      ///< List with dropdown menu items.
-	int selected_index;           ///< Index of the selected item in the list.
+	int selected_result;          ///< Result value of the selected item in the list.
 	byte click_delay;             ///< Timer to delay selection.
 	bool drag_mode;
 	bool instant_close;           ///< Close the window when the mouse button is raised.
@@ -54,7 +54,7 @@ struct DropdownWindow : Window {
 	 * Create a dropdown menu.
 	 * @param parent        Parent window.
 	 * @param list          Dropdown item list.
-	 * @param selected      Index of the selected item in the list.
+	 * @param selected      Initial selected result of the list.
 	 * @param button        Widget of the parent window doing the dropdown.
 	 * @param instant_close Close the window when the mouse button is raised.
 	 * @param position      Topleft position of the dropdown menu window.
@@ -98,7 +98,7 @@ struct DropdownWindow : Window {
 
 		this->parent           = parent;
 		this->parent_button    = button;
-		this->selected_index   = selected;
+		this->selected_result   = selected;
 		this->click_delay      = 0;
 		this->drag_mode        = true;
 		this->instant_close    = instant_close;
@@ -113,7 +113,7 @@ struct DropdownWindow : Window {
 		Point pt = _cursor.pos;
 		pt.x -= this->parent->left;
 		pt.y -= this->parent->top;
-		this->parent->OnDropdownClose(pt, this->parent_button, this->selected_index, this->instant_close);
+		this->parent->OnDropdownClose(pt, this->parent_button, this->selected_result, this->instant_close);
 
 		/* Set flag on parent widget to indicate that we have just closed. */
 		NWidgetCore *nwc = this->parent->GetWidget<NWidgetCore>(this->parent_button);
@@ -182,7 +182,7 @@ struct DropdownWindow : Window {
 			if (y + item_height - 1 <= ir.bottom) {
 				Rect full{ir.left, y, ir.right, y + item_height - 1};
 
-				bool selected = (this->selected_index == item->result) && item->Selectable();
+				bool selected = (this->selected_result == item->result) && item->Selectable();
 				if (selected) GfxFillRect(full, PC_BLACK);
 
 				item->Draw(full, full.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero), selected, colour);
@@ -197,7 +197,7 @@ struct DropdownWindow : Window {
 		int item;
 		if (this->GetDropDownItem(item)) {
 			this->click_delay = 4;
-			this->selected_index = item;
+			this->selected_result = item;
 			this->SetDirty();
 		}
 	}
@@ -217,7 +217,7 @@ struct DropdownWindow : Window {
 			/* Close the dropdown, so it doesn't affect new window placement.
 			 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
 			this->Close();
-			this->parent->OnDropdownSelect(this->parent_button, this->selected_index);
+			this->parent->OnDropdownSelect(this->parent_button, this->selected_result);
 			return;
 		}
 
@@ -245,8 +245,8 @@ struct DropdownWindow : Window {
 				if (!this->GetDropDownItem(item)) return;
 			}
 
-			if (this->selected_index != item) {
-				this->selected_index = item;
+			if (this->selected_result != item) {
+				this->selected_result = item;
 				this->SetDirty();
 			}
 		}
