@@ -60,12 +60,12 @@ static const StringID _autosave_dropdown[] = {
 };
 
 /** Available settings for autosave intervals. */
-static const std::chrono::minutes _autosave_dropdown_to_minutes[] = {
-	std::chrono::minutes::zero(), ///< never
-	std::chrono::minutes(10),
-	std::chrono::minutes(30),
-	std::chrono::minutes(60),
-	std::chrono::minutes(120),
+static const uint32_t _autosave_dropdown_to_minutes[] = {
+	0, ///< never
+	10,
+	30,
+	60,
+	120,
 };
 
 static Dimension _circle_size; ///< Dimension of the circle +/- icon. This is here as not all users are within the class of the settings window.

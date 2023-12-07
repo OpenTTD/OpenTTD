@@ -1397,11 +1397,11 @@ void LoadFromConfig(bool startup)
 			auto old_value = OneOfManySettingDesc::ParseSingleValue(old_item->value->c_str(), old_item->value->size(), _old_autosave_interval);
 
 			switch (old_value) {
-				case 0: _settings_client.gui.autosave_interval = std::chrono::minutes::zero(); break;
-				case 1: _settings_client.gui.autosave_interval = std::chrono::minutes(10); break;
-				case 2: _settings_client.gui.autosave_interval = std::chrono::minutes(30); break;
-				case 3: _settings_client.gui.autosave_interval = std::chrono::minutes(60); break;
-				case 4: _settings_client.gui.autosave_interval = std::chrono::minutes(120); break;
+				case 0: _settings_client.gui.autosave_interval = 0; break;
+				case 1: _settings_client.gui.autosave_interval = 10; break;
+				case 2: _settings_client.gui.autosave_interval = 30; break;
+				case 3: _settings_client.gui.autosave_interval = 60; break;
+				case 4: _settings_client.gui.autosave_interval = 120; break;
 				default: break;
 			}
 		}
