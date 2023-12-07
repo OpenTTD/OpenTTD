@@ -150,6 +150,7 @@ const WidgetDimensions WidgetDimensions::unscaled = {
 	{WD_CLOSEBOX_LEFT,     WD_CLOSEBOX_TOP,     WD_CLOSEBOX_RIGHT,     WD_CLOSEBOX_BOTTOM},     ///< closebox
 	{WD_CAPTIONTEXT_LEFT,  WD_CAPTIONTEXT_TOP,  WD_CAPTIONTEXT_RIGHT,  WD_CAPTIONTEXT_BOTTOM},  ///< captiontext
 	{WD_DROPDOWNTEXT_LEFT, WD_DROPDOWNTEXT_TOP, WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_BOTTOM}, ///< dropdowntext
+	{WD_BEVEL_LEFT,        WD_BEVEL_TOP * 2,    WD_BEVEL_RIGHT,        WD_BEVEL_BOTTOM * 2},    ///< dropdownmenu
 	{20, 10, 20, 10},    ///< modalpopup
 	{3, 3, 3, 3},        ///< picker
 	{10, 8, 10, 8},      ///< sparse window padding
@@ -224,6 +225,7 @@ void SetupWidgetDimensions()
 	WidgetDimensions::scaled.closebox     = ScaleGUITrad(WidgetDimensions::unscaled.closebox);
 	WidgetDimensions::scaled.captiontext  = ScaleGUITrad(WidgetDimensions::unscaled.captiontext);
 	WidgetDimensions::scaled.dropdowntext = ScaleGUITrad(WidgetDimensions::unscaled.dropdowntext);
+	WidgetDimensions::scaled.dropdownlist = ScaleGUITrad(WidgetDimensions::unscaled.dropdownlist);
 	WidgetDimensions::scaled.modalpopup   = ScaleGUITrad(WidgetDimensions::unscaled.modalpopup);
 
 	WidgetDimensions::scaled.vsep_normal  = ScaleGUITrad(WidgetDimensions::unscaled.vsep_normal);

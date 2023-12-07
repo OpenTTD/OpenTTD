@@ -49,6 +49,7 @@ struct WidgetDimensions {
 	RectPadding closebox;
 	RectPadding captiontext;  ///< Offsets of text within a caption.
 	RectPadding dropdowntext; ///< Offsets of text within a dropdown widget.
+	RectPadding dropdownlist; ///< Offsets used by a dropdown list itself.
 	RectPadding modalpopup;   ///< Padding for a modal popup.
 	RectPadding picker;       ///< Padding for a picker (dock, station, etc) window.
 	RectPadding sparse;       ///< Padding used for 'sparse' widget window, usually containing multiple frames.
