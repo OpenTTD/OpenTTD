@@ -64,14 +64,14 @@ enum IndustryDensity {
 };
 
 /** Possible values for "use_relay_service" setting. */
-enum UseRelayService {
+enum UseRelayService : uint8_t {
 	URS_NEVER = 0,
 	URS_ASK,
 	URS_ALLOW,
 };
 
 /** Possible values for "participate_survey" setting. */
-enum ParticipateSurvey {
+enum ParticipateSurvey : uint8_t {
 	PS_ASK = 0,
 	PS_NO,
 	PS_YES,
