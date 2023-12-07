@@ -710,6 +710,38 @@ struct SaveLoadCompat {
 };
 
 /**
+ * Get the NumberType of a setting. This describes the integer type
+ * as it is represented in memory
+ * @param type VarType holding information about the variable-type
+ * @return the SLE_VAR_* part of a variable-type description
+ */
+static inline constexpr VarType GetVarMemType(VarType type)
+{
+	return GB(type, 4, 4) << 4;
+}
+
+/**
+ * Get the FileType of a setting. This describes the integer type
+ * as it is represented in a savegame/file
+ * @param type VarType holding information about the file-type
+ * @return the SLE_FILE_* part of a variable-type description
+ */
+static inline constexpr VarType GetVarFileType(VarType type)
+{
+	return GB(type, 0, 4);
+}
+
+/**
+ * Check if the given saveload type is a numeric type.
+ * @param conv the type to check
+ * @return True if it's a numeric type.
+ */
+static inline constexpr bool IsNumericType(VarType conv)
+{
+	return GetVarMemType(conv) <= SLE_VAR_U64;
+}
+
+/**
  * Storage of simple variables, references (pointers), and arrays.
  * @param cmd      Load/save type. @see SaveLoadType
  * @param name     Field name for table chunks.
@@ -1131,38 +1163,6 @@ static inline bool SlIsObjectCurrentlyValid(SaveLoadVersion version_from, SaveLo
 {
 	extern const SaveLoadVersion SAVEGAME_VERSION;
 	return version_from <= SAVEGAME_VERSION && SAVEGAME_VERSION < version_to;
-}
-
-/**
- * Get the NumberType of a setting. This describes the integer type
- * as it is represented in memory
- * @param type VarType holding information about the variable-type
- * @return the SLE_VAR_* part of a variable-type description
- */
-static inline VarType GetVarMemType(VarType type)
-{
-	return GB(type, 4, 4) << 4;
-}
-
-/**
- * Get the FileType of a setting. This describes the integer type
- * as it is represented in a savegame/file
- * @param type VarType holding information about the file-type
- * @return the SLE_FILE_* part of a variable-type description
- */
-static inline VarType GetVarFileType(VarType type)
-{
-	return GB(type, 0, 4);
-}
-
-/**
- * Check if the given saveload type is a numeric type.
- * @param conv the type to check
- * @return True if it's a numeric type.
- */
-static inline bool IsNumericType(VarType conv)
-{
-	return GetVarMemType(conv) <= SLE_VAR_U64;
 }
 
 /**
