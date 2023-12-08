@@ -119,7 +119,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 		if (this->cache.population == 0) return 0; // no population? no noise
 
 		/* 3 is added (the noise of the lowest airport), so the  user can at least build a small airfield. */
-		return (this->cache.population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3;
+		return ClampTo<uint16_t>((this->cache.population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3);
 	}
 
 	void UpdateVirtCoord();
