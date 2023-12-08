@@ -16,6 +16,10 @@
 #include "window_gui.h"
 #include "vehicle_base.h"
 
+#ifdef WITH_LIBMAD
+#include <mad.h>
+#endif /* WITH_LIBMAD */
+
 /* The type of set we're replacing */
 #define SET_TYPE "sounds"
 #include "base_media_func.h"
@@ -138,10 +142,86 @@ static bool LoadSoundWav(SoundEntry &sound, bool new_format, std::vector<byte> &
 	return false;
 }
 
+#ifdef WITH_LIBMAD
+
+/* Struct to hold context during MP3 decoding. */
+struct MadContext {
+	SoundEntry &sound;
+	std::vector<byte> &data;
+	bool read;
+	std::vector<byte> in_data{};
+};
+
+static mad_flow MadInputFunc(void *context, struct mad_stream *stream)
+{
+	MadContext *ctx = static_cast<MadContext *>(context);
+	if (ctx->read) return MAD_FLOW_STOP;
+
+	ctx->in_data.resize(ctx->sound.file_size);
+	ctx->sound.file->ReadBlock(ctx->in_data.data(), ctx->in_data.size());
+	ctx->read = true;
+
+	mad_stream_buffer(stream, ctx->in_data.data(), ctx->in_data.size());
+
+	return MAD_FLOW_CONTINUE;
+}
+
+static inline int16_t MadConvertToInt16(mad_fixed_t sample)
+{
+	if (sample >= MAD_F_ONE) return INT16_MAX;
+	if (sample <= -MAD_F_ONE) return INT16_MIN;
+	return sample >> (MAD_F_FRACBITS - 15);
+}
+
+static mad_flow MadOutputFunc(void *context, struct mad_header const *, struct mad_pcm *pcm)
+{
+	MadContext *ctx = static_cast<MadContext *>(context);
+
+	ctx->sound.rate = pcm->samplerate;
+	ctx->sound.bits_per_sample = 16;
+	ctx->sound.channels = 1;
+
+	const mad_fixed_t *lin = pcm->samples[0];
+	// const mad_fixed_t *rin = pcm->samples[1];
+	int nsamples = pcm->length;
+
+	ctx->data.reserve(ctx->data.size() + nsamples * 2 + 2);
+	while (nsamples--) {
+		int16_t sample = MadConvertToInt16(*lin++);
+		ctx->data.push_back(GB((uint16_t)sample, 0, 8));
+		ctx->data.push_back(GB((uint16_t)sample, 8, 8));
+	}
+
+	return MAD_FLOW_CONTINUE;
+}
+
+static bool LoadSoundMp3(SoundEntry &sound, bool, std::vector<byte> &data)
+{
+	MadContext ctx{sound, data, false};
+
+	struct mad_decoder decoder;
+	mad_decoder_init(&decoder, &ctx, MadInputFunc, nullptr, nullptr, MadOutputFunc, nullptr, nullptr);
+	mad_decoder_run(&decoder, MAD_DECODER_MODE_SYNC);
+	mad_decoder_finish(&decoder);
+
+	if (sound.rate == 0) return false;
+
+	/* Add padding sample for resampler. */
+	uint padding = sound.channels * sound.bits_per_sample / 8;
+	while (padding--) data.push_back(0);
+
+	return true;
+}
+
+#endif /* WITH_LIBMAD */
+
 using SoundLoader = bool (*)(SoundEntry &sound, bool new_format, std::vector<byte> &data);
 
 static std::initializer_list<SoundLoader> _sound_loaders = {
 	LoadSoundWav,
+#ifdef WITH_LIBMAD
+	LoadSoundMp3,
+#endif /* WITH_LIBMAD */
 	LoadSoundRaw,
 };
 
