@@ -2581,7 +2581,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Zoek inh
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Je verlaat OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}De voorwaarden voor het downloaden van inhoud van externe websites variëren.{}Ga  naar de externe website voor instructies over het installeren van de inhoud in OpenTTD.{}Wil je doorgaan?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/naamfilter:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Website bezoeken
+STR_CONTENT_OPEN_URL                                            :{BLACK}Website
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Bezoek de website voor deze inhoud
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start met het downloaden van de geselecteerde inhoud
@@ -4707,9 +4707,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Terug in
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Vooruit in de bladergeschiedenis
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Tekst afbreken
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Tekst aanpassen aan venster zodat je niet hoeft te bladeren
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Leesmij-bestand bekijken
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Leesmij-bestand
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Leesmij-bestand bekijken
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Wijzigingen
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Overzicht van wijzigingen bekijken
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licentie
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Licentie bekijken
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} leesmij van {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} wijzigingen van {STRING}

@@ -2580,7 +2580,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在与Op
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}正在离开游戏！
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载內容的规则及条款可能跟OpenTTD引用的规则及条款不同。{}您需要参照有关网站以取得在OpenTTD安装有关內容的资讯。{}您要継续吗？
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}标签/名称过滤器
-STR_CONTENT_OPEN_URL                                            :{BLACK}查看主页
+STR_CONTENT_OPEN_URL                                            :{BLACK}主页
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}打开该扩展包主页
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}下载
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}下载选定的内容
@@ -4707,8 +4707,11 @@ STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}取消�
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}強迫文字换行
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}強迫宽于窗格的內文自动换行
 STR_TEXTFILE_VIEW_README                                        :{BLACK}查看说明
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :查看此项目的说明文件
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}更新日志
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :查看此项目的许可证
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}版权信息
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :查看此项目的许可证
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} 的说明
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} 的更新日志

@@ -2580,7 +2580,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}OpenTTD'
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}OpenTTD'den çıkıyorsunuz!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Harici sitelerden içerik indirmenin şart ve koşulları değişiklik gösterir.{}İndirdiğiniz içeriği OpenTTD'ye nasıl kuracağınıza dair talimatlar için harici sitelere bakmalısınız.{}Devam etmek istiyor musunuz?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiket/isim süzgeci:
-STR_CONTENT_OPEN_URL                                            :{BLACK}İnternet sitesine git
+STR_CONTENT_OPEN_URL                                            :{BLACK}Website
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Bu içeriğin internet sitesi
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}İndir
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Seçili içeriği indirmeye başla
@@ -4708,6 +4708,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Metni, o
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Benioku dosyasını göster
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Değişiklik kayıtları
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisans
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Bu içeriğin lisansını incele
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} adlı {STRING}'nin benioku dosyası
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} adlı {STRING}'nin değişiklik kaydı

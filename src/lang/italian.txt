@@ -1994,7 +1994,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensione medi
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Aggiornare il grafico di distribuzione ogni {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tempo tra i successivi ricalcoli del grafico dei collegamenti. Ogni ricalcolo calcola i piani per un componente del grafico. Ciò significa che un valore X per questa impostazione non significa che l'intero grafico verrà aggiornato ogni X secondi. Solo alcuni componenti lo saranno. Quanto più breve è l'impostazione, tanto più tempo di CPU sarà necessario per il calcolo. Più lungo è il valore impostato, più tempo ci vorrà prima che la distribuzione del carico inizi su nuove rotte.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Prendere {STRING} per il ricalcolo del grafico di distribuzione
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Impiegare {STRING} per il ricalcolo del grafico di distribuzione
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tempo necessario per ogni ricalcolo di un componente del grafo dei collegamenti. Quando viene avviato un ricalcolo, viene generato un thread che può essere eseguito per questo numero di secondi. Quanto più breve è il tempo impostato, tanto più è probabile che il thread non finisca quando dovrebbe. In questo caso il gioco si ferma finché non viene terminato ("lag"). Più lungo è il valore impostato, più tempo ci vuole per aggiornare la distribuzione quando i percorsi cambiano.
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modalità di distribuzione dei passeggeri: {STRING}
@@ -2616,7 +2616,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cerca co
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Si sta lasciando OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}I termini e le condizioni per lo scaricamento di contenuti da siti web esterni possono variare.{}Fare riferimento ai siti esterni per istruzioni su come installare il contenuto in OpenTTD.{}Si desidera proseguire?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtra per nome/tag:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Visita sito web
+STR_CONTENT_OPEN_URL                                            :{BLACK}Sito web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visita il sito web di questo contenuto
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Scarica
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Avvia il download dei contenuti selezionati
@@ -4748,9 +4748,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Torna in
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Vai avanti nella cronologia di navigazione
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}A capo automatico
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Manda automaticamente a capo il testo della finestra in modo che sia visibile senza doverlo scorrere
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Visualizza file leggimi
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Leggimi
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Visualizza il file Readme di questo contenuto
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Visualizza il changelog di questo contenuto
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenza
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Visualizza la licenza per questo contenuto
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}File leggimi del {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Changelog del {STRING} {STRING}
