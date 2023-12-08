@@ -8579,7 +8579,8 @@ static void InitializeGRFSpecial()
 	                   |                                                       (1U << 0x1D)  // lowmemory
 	                   |                                                       (1U << 0x1E); // generalfixes
 
-	_ttdpatch_flags[1] =   ((_settings_game.economy.station_noise_level ? 1U : 0U) << 0x07)  // moreairports - based on units of noise
+	_ttdpatch_flags[1] = ((_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE &&
+	                         _settings_game.economy.station_noise_level ? 1U : 0U) << 0x07)  // moreairports - based on units of noise
 	                   |                                                       (1U << 0x08)  // mammothtrains
 	                   |                                                       (1U << 0x09)  // trainrefit
 	                   |                                                       (0U << 0x0B)  // subsidiaries

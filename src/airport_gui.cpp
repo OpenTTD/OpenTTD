@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "economy_func.h"
+#include "town.h"
 #include "window_gui.h"
 #include "station_gui.h"
 #include "terraform_gui.h"
@@ -427,7 +428,7 @@ public:
 			int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
 
 			/* only show the station (airport) noise, if the noise option is activated */
-			if (_settings_game.economy.station_noise_level) {
+			if (_settings_game.difficulty.town_council_tolerance != TOWN_COUNCIL_PERMISSIVE && _settings_game.economy.station_noise_level) {
 				/* show the noise of the selected airport */
 				SetDParam(0, as->noise_level);
 				DrawString(r.left, r.right, top, STR_STATION_BUILD_NOISE);
