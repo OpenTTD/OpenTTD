@@ -403,16 +403,13 @@ public:
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_DPI_SCROLLBAR);
+		/* Show scenario editor tools in editor. */
+		if (_game_mode != GM_EDITOR) {
+			this->GetWidget<NWidgetStacked>(WID_DPI_SCENARIO_EDITOR_PANE)->SetDisplayedPlane(SZSP_HORIZONTAL);
+		}
 		this->FinishInitNested(0);
 
 		this->SetButtons();
-
-		/* Show scenario editor tools in editor. */
-		if (_game_mode != GM_EDITOR) {
-			auto *se_tools = this->GetWidget<NWidgetStacked>(WID_DPI_SCENARIO_EDITOR_PANE);
-			se_tools->SetDisplayedPlane(SZSP_HORIZONTAL);
-			this->ReInit();
-		}
 	}
 
 	void OnInit() override
