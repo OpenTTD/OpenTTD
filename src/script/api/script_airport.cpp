@@ -139,7 +139,7 @@
 	if (_settings_game.economy.station_noise_level) {
 		AirportTileTableIterator it(as->table[0], tile);
 		uint dist;
-		AirportGetNearestTown(as, it, dist);
+		AirportGetNearestTown(as, tile, it, dist);
 		return GetAirportNoiseLevelForDistance(as, dist);
 	}
 
@@ -155,7 +155,7 @@
 	if (!as->IsWithinMapBounds(0, tile)) return INVALID_TOWN;
 
 	uint dist;
-	return AirportGetNearestTown(as, AirportTileTableIterator(as->table[0], tile), dist)->index;
+	return AirportGetNearestTown(as, tile, AirportTileTableIterator(as->table[0], tile), dist)->index;
 }
 
 /* static */ SQInteger ScriptAirport::GetMaintenanceCostFactor(AirportType type)
