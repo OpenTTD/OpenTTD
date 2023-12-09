@@ -141,17 +141,15 @@ class BuildTreesWindow : public Window
 public:
 	BuildTreesWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc), tree_to_plant(-1), mode(PM_NORMAL)
 	{
-		this->InitNested(window_number);
+		this->CreateNestedTree();
 		ResetObjectToPlace();
 
 		this->LowerWidget(WID_BT_MODE_NORMAL);
-
 		/* Show scenario editor tools in editor */
-		auto *se_tools = this->GetWidget<NWidgetStacked>(WID_BT_SE_PANE);
 		if (_game_mode != GM_EDITOR) {
-			se_tools->SetDisplayedPlane(SZSP_HORIZONTAL);
-			this->ReInit();
+			this->GetWidget<NWidgetStacked>(WID_BT_SE_PANE)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		}
+		this->FinishInitNested(window_number);
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
