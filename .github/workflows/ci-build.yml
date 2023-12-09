@@ -123,6 +123,7 @@ jobs:
           libicu-dev \
           liblzma-dev \
           liblzo2-dev \
+          libmad0-dev \
           ${{ matrix.libraries }} \
           zlib1g-dev \
           # EOF
@@ -220,6 +221,7 @@ jobs:
           breakpad \
           curl \
           liblzma \
+          libmad \
           libpng \
           lzo \
           zlib \
@@ -304,6 +306,7 @@ jobs:
         vcpkg install --triplet=${{ matrix.arch }}-windows-static \
           breakpad \
           liblzma \
+          libmad \
           libpng \
           lzo \
           zlib \
@@ -389,6 +392,7 @@ jobs:
           mingw-w64-${{ matrix.arch }}-cmake
           mingw-w64-${{ matrix.arch }}-gcc
           mingw-w64-${{ matrix.arch }}-lzo2
+          mingw-w64-${{ matrix.arch }}-libmad
           mingw-w64-${{ matrix.arch }}-libpng
           mingw-w64-${{ matrix.arch }}-lld
           mingw-w64-${{ matrix.arch }}-ninja
