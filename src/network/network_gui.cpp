@@ -581,74 +581,68 @@ public:
 		this->DrawWidgets();
 	}
 
+	StringID GetHeaderString() const
+	{
+		if (this->server == nullptr) return STR_NETWORK_SERVER_LIST_GAME_INFO;
+		switch (this->server->status) {
+			case NGLS_OFFLINE: return STR_NETWORK_SERVER_LIST_SERVER_OFFLINE;
+			case NGLS_ONLINE: return STR_NETWORK_SERVER_LIST_GAME_INFO;
+			case NGLS_FULL: return STR_NETWORK_SERVER_LIST_SERVER_FULL;
+			case NGLS_BANNED: return STR_NETWORK_SERVER_LIST_SERVER_BANNED;
+			case NGLS_TOO_OLD: return STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD;
+			default: NOT_REACHED();
+		}
+	}
+
 	void DrawDetails(const Rect &r) const
 	{
 		NetworkGameList *sel = this->server;
 
-		/* Height for the title banner */
-		int HEADER_HEIGHT = 3 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.frametext.Vertical();
-
-		Rect hr = r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.frametext);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
-		tr.top += HEADER_HEIGHT;
+		StringID header_msg = this->GetHeaderString();
+		int header_height = GetStringHeight(header_msg, tr.Width()) +
+				(sel == nullptr ? 0 : GetStringHeight(sel->info.server_name, tr.Width())) +
+				WidgetDimensions::scaled.frametext.Vertical();
+
+		/* Height for the title banner */
+		Rect hr = r.WithHeight(header_height).Shrink(WidgetDimensions::scaled.frametext);
+		tr.top += header_height;
 
 		/* Draw the right menu */
 		/* Create the nice grayish rectangle at the details top */
-		GfxFillRect(r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.bevel.left, WidgetDimensions::scaled.bevel.top, WidgetDimensions::scaled.bevel.right, 0), PC_DARK_BLUE);
-		if (sel == nullptr) {
-			DrawString(hr.left, hr.right, hr.top, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_HOR_CENTER);
-		} else if (sel->status != NGLS_ONLINE) {
-			StringID message = INVALID_STRING_ID;
-			switch (sel->status) {
-				case NGLS_OFFLINE: message = STR_NETWORK_SERVER_LIST_SERVER_OFFLINE; break;
-				case NGLS_FULL: message = STR_NETWORK_SERVER_LIST_SERVER_FULL; break;
-				case NGLS_BANNED: message = STR_NETWORK_SERVER_LIST_SERVER_BANNED; break;
-				case NGLS_TOO_OLD: message = STR_NETWORK_SERVER_LIST_SERVER_TOO_OLD; break;
+		GfxFillRect(r.WithHeight(header_height).Shrink(WidgetDimensions::scaled.bevel), PC_DARK_BLUE);
+		hr.top = DrawStringMultiLine(hr, header_msg, TC_FROMSTRING, SA_HOR_CENTER);
+		if (sel == nullptr) return;
 
-				/* Handled by the if-case above. */
-				case NGLS_ONLINE: NOT_REACHED();
-			}
-
-			DrawString(hr.left, hr.right, hr.top, message, TC_FROMSTRING, SA_HOR_CENTER); // server offline
-			DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FS_NORMAL), hr.bottom, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
-			DrawString(tr.left, tr.right, tr.top, message, TC_FROMSTRING, SA_HOR_CENTER); // server offline
+		hr.top = DrawStringMultiLine(hr, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
+		if (sel->status != NGLS_ONLINE) {
+			tr.top = DrawStringMultiLine(tr, header_msg, TC_FROMSTRING, SA_HOR_CENTER);
 		} else { // show game info
-
-			DrawString(hr.left, hr.right, hr.top, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_HOR_CENTER);
-			DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FS_NORMAL), hr.bottom, sel->info.server_name, TC_ORANGE, SA_HOR_CENTER); // game name
-
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
 			SetDParam(2, sel->info.companies_on);
 			SetDParam(3, sel->info.companies_max);
-			DrawString(tr, STR_NETWORK_SERVER_LIST_CLIENTS);
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_CLIENTS);
 
 			SetDParam(0, STR_CLIMATE_TEMPERATE_LANDSCAPE + sel->info.landscape);
-			DrawString(tr, STR_NETWORK_SERVER_LIST_LANDSCAPE); // landscape
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_LANDSCAPE); // landscape
 
 			SetDParam(0, sel->info.map_width);
 			SetDParam(1, sel->info.map_height);
-			DrawString(tr, STR_NETWORK_SERVER_LIST_MAP_SIZE); // map size
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_MAP_SIZE); // map size
 
 			SetDParamStr(0, sel->info.server_revision);
-			DrawString(tr, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
 
 			SetDParamStr(0, sel->connection_string);
 			StringID invite_or_address = StrStartsWith(sel->connection_string, "+") ? STR_NETWORK_SERVER_LIST_INVITE_CODE : STR_NETWORK_SERVER_LIST_SERVER_ADDRESS;
-			DrawString(tr, invite_or_address); // server address / invite code
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top = DrawStringMultiLine(tr, invite_or_address); // server address / invite code
 
 			SetDParam(0, sel->info.start_date);
-			DrawString(tr, STR_NETWORK_SERVER_LIST_START_DATE); // start date
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_START_DATE); // start date
 
 			SetDParam(0, sel->info.game_date);
-			DrawString(tr, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top = DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
 
 			if (sel->info.gamescript_version != -1) {
 				SetDParamStr(0, sel->info.gamescript_name);
@@ -659,12 +653,12 @@ public:
 			tr.top += WidgetDimensions::scaled.vsep_wide;
 
 			if (!sel->info.compatible) {
-				DrawString(tr, sel->info.version_compatible ? STR_NETWORK_SERVER_LIST_GRF_MISMATCH : STR_NETWORK_SERVER_LIST_VERSION_MISMATCH, TC_FROMSTRING, SA_HOR_CENTER); // server mismatch
+				DrawStringMultiLine(tr, sel->info.version_compatible ? STR_NETWORK_SERVER_LIST_GRF_MISMATCH : STR_NETWORK_SERVER_LIST_VERSION_MISMATCH, TC_FROMSTRING, SA_HOR_CENTER); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				/* Show: server full, when clients_on == max_clients */
-				DrawString(tr, STR_NETWORK_SERVER_LIST_SERVER_FULL, TC_FROMSTRING, SA_HOR_CENTER); // server full
+				DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_SERVER_FULL, TC_FROMSTRING, SA_HOR_CENTER); // server full
 			} else if (sel->info.use_password) {
-				DrawString(tr, STR_NETWORK_SERVER_LIST_PASSWORD, TC_FROMSTRING, SA_HOR_CENTER); // password warning
+				DrawStringMultiLine(tr, STR_NETWORK_SERVER_LIST_PASSWORD, TC_FROMSTRING, SA_HOR_CENTER); // password warning
 			}
 		}
 	}
