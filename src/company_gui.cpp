@@ -2259,54 +2259,24 @@ struct CompanyWindow : Window
 			bool reinit = false;
 
 			/* Button bar selection. */
-			int plane = local ? 0 : SZSP_NONE;
-			NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_BUTTONS);
-			if (plane != wi->shown_plane) {
-				wi->SetDisplayedPlane(plane);
-				this->InvalidateData();
-				reinit = true;
-			}
+			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_BUTTONS)->SetDisplayedPlane(local ? 0 : SZSP_NONE);
 
 			/* Build HQ button handling. */
-			plane = (local && c->location_of_HQ == INVALID_TILE) ? CWP_VB_BUILD : CWP_VB_VIEW;
-			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_VIEW_BUILD_HQ);
-			if (plane != wi->shown_plane) {
-				wi->SetDisplayedPlane(plane);
-				reinit = true;
-			}
+			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_VIEW_BUILD_HQ)->SetDisplayedPlane((local && c->location_of_HQ == INVALID_TILE) ? CWP_VB_BUILD : CWP_VB_VIEW);
 
 			this->SetWidgetDisabledState(WID_C_VIEW_HQ, c->location_of_HQ == INVALID_TILE);
 
 			/* Enable/disable 'Relocate HQ' button. */
-			plane = (!local || c->location_of_HQ == INVALID_TILE) ? CWP_RELOCATE_HIDE : CWP_RELOCATE_SHOW;
-			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_RELOCATE);
-			if (plane != wi->shown_plane) {
-				wi->SetDisplayedPlane(plane);
-				reinit = true;
-			}
+			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_RELOCATE)->SetDisplayedPlane((!local || c->location_of_HQ == INVALID_TILE) ? CWP_RELOCATE_HIDE : CWP_RELOCATE_SHOW);
 			/* Enable/disable 'Give money' button. */
-			plane = ((local || _local_company == COMPANY_SPECTATOR || !_settings_game.economy.give_money) ? SZSP_NONE : 0);
-			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_GIVE_MONEY);
-			if (plane != wi->shown_plane) {
-				wi->SetDisplayedPlane(plane);
-				reinit = true;
-			}
+			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_GIVE_MONEY)->SetDisplayedPlane((local || _local_company == COMPANY_SPECTATOR || !_settings_game.economy.give_money) ? SZSP_NONE : 0);
 			/* Enable/disable 'Hostile Takeover' button. */
-			plane = ((local || _local_company == COMPANY_SPECTATOR || !c->is_ai || _networking) ? SZSP_NONE : 0);
-			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_HOSTILE_TAKEOVER);
-			if (plane != wi->shown_plane) {
-				wi->SetDisplayedPlane(plane);
-				reinit = true;
-			}
+			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_HOSTILE_TAKEOVER)->SetDisplayedPlane((local || _local_company == COMPANY_SPECTATOR || !c->is_ai || _networking) ? SZSP_NONE : 0);
 
 			/* Multiplayer buttons. */
-			plane = ((!_networking) ? (int)SZSP_NONE : (int)(local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
-			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER);
-			if (plane != wi->shown_plane) {
-				wi->SetDisplayedPlane(plane);
-				reinit = true;
-			}
-			this->SetWidgetDisabledState(WID_C_COMPANY_JOIN,   c->is_ai);
+			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER)->SetDisplayedPlane((!_networking) ? (int)SZSP_NONE : (int)(local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
+
+			this->SetWidgetDisabledState(WID_C_COMPANY_JOIN, c->is_ai);
 
 			if (reinit) {
 				this->ReInit();
