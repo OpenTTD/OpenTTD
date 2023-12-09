@@ -461,7 +461,7 @@ public:
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 
-	void SetDisplayedPlane(int plane);
+	bool SetDisplayedPlane(int plane);
 
 	int shown_plane; ///< Plane being displayed (for #NWID_SELECTION only).
 	int index;       ///< If non-negative, index in the #Window::nested_array.
