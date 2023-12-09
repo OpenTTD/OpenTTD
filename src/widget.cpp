@@ -1492,10 +1492,13 @@ NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
 /**
  * Select which plane to show (for #NWID_SELECTION only).
  * @param plane Plane number to display.
+ * @return true iff the shown plane changed.
  */
-void NWidgetStacked::SetDisplayedPlane(int plane)
+bool NWidgetStacked::SetDisplayedPlane(int plane)
 {
+	if (this->shown_plane == plane) return false;
 	this->shown_plane = plane;
+	return true;
 }
 
 NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags) : NWidgetContainer(tp)
