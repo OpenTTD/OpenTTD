@@ -78,7 +78,7 @@ struct ObjectSpec {
 
 	/**
 	 * Test if this object is enabled.
-	 * @return True iif this object is enabled.
+	 * @return True iff this object is enabled.
 	 */
 	bool IsEnabled() const { return this->views > 0; }
 
