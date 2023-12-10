@@ -215,7 +215,7 @@ struct Rect {
 	/**
 	 * Test if a point falls inside this Rect.
 	 * @param pt the point to test.
-	 * @return true iif the point falls inside the Rect.
+	 * @return true iff the point falls inside the Rect.
 	 */
 	inline bool Contains(const Point &pt) const
 	{
