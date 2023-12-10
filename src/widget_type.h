@@ -36,6 +36,12 @@ enum ArrowWidgetValues {
 	AWV_RIGHT,    ///< Force the arrow to the right
 };
 
+/** WidgetData values for a resize box widget. */
+enum ResizeWidgetValues {
+	RWV_SHOW_BEVEL, ///< Bevel of resize box is shown.
+	RWV_HIDE_BEVEL, ///< Bevel of resize box is hidden.
+};
+
 /**
  * Window widget types, nested widget types, and nested widget part types.
  */

@@ -154,7 +154,7 @@ const WidgetDimensions WidgetDimensions::unscaled = {
 	{20, 10, 20, 10},    ///< modalpopup
 	{3, 3, 3, 3},        ///< picker
 	{10, 8, 10, 8},      ///< sparse window padding
-	{10, 8, 10, 1},      ///< resizable sparse window padding
+	{10, 8, 10, 0},      ///< resizable sparse window padding
 	1,                   ///< vsep_picker
 	WD_PAR_VSEP_NORMAL,  ///< vsep_normal
 	4,                   ///< vsep_sparse
@@ -777,10 +777,15 @@ static inline void DrawDebugBox(const Rect &r, Colours colour, bool clicked)
  * @param colour  Colour of the resize box.
  * @param at_left Resize box is at left-side of the window,
  * @param clicked Box is lowered.
+ * @param bevel   Draw bevel iff set.
  */
-static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked)
+static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked, bool bevel)
 {
-	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+	if (bevel) {
+		DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+	} else if (clicked) {
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[colour][6]);
+	}
 	DrawSpriteIgnorePadding(at_left ? SPR_WINDOW_RESIZE_LEFT : SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.Shrink(ScaleGUITrad(2)), at_left ? (SA_LEFT | SA_BOTTOM | SA_FORCE) : (SA_RIGHT | SA_BOTTOM | SA_FORCE));
 }
 
@@ -2774,7 +2779,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32_t data
 		case WWT_RESIZEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WD_RESIZEBOX_WIDTH, 12);
-			this->SetDataTip(STR_NULL, STR_TOOLTIP_RESIZE);
+			this->SetDataTip(RWV_SHOW_BEVEL, STR_TOOLTIP_RESIZE);
 			break;
 
 		case WWT_CLOSEBOX:
@@ -3072,8 +3077,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_RESIZEBOX:
-			assert(this->widget_data == 0);
-			DrawResizeBox(r, this->colour, this->pos_x < (w->width / 2), !!(w->flags & WF_SIZING));
+			DrawResizeBox(r, this->colour, this->pos_x < (w->width / 2), !!(w->flags & WF_SIZING), this->widget_data == 0);
 			break;
 
 		case WWT_CLOSEBOX:
