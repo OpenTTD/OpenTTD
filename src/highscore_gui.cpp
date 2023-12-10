@@ -189,8 +189,8 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		this->SetupHighScoreEndWindow();
 		Point pt = this->GetTopLeft(ScaleSpriteTrad(640), ScaleSpriteTrad(480));
 
-		SetDParam(0, _settings_game.game_creation.ending_year);
-		DrawStringMultiLine(pt.x + ScaleSpriteTrad(70), pt.x + ScaleSpriteTrad(570), pt.y, pt.y + ScaleSpriteTrad(140), !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
+		/* Draw the title. */
+		DrawStringMultiLine(pt.x + ScaleSpriteTrad(70), pt.x + ScaleSpriteTrad(570), pt.y, pt.y + ScaleSpriteTrad(140), STR_HIGHSCORE_TOP_COMPANIES, TC_FROMSTRING, SA_CENTER);
 
 		/* Draw Highscore peepz */
 		for (uint8_t i = 0; i < ClampTo<uint8_t>(hs.size()); i++) {
