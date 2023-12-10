@@ -34,7 +34,6 @@ enum NetworkGameWidgets {
 	WID_NG_LASTJOINED_SPACER,  ///< Spacer after last joined server panel.
 
 	WID_NG_DETAILS,            ///< Panel with game details.
-	WID_NG_DETAILS_SPACER,     ///< Spacer for game actual details.
 	WID_NG_JOIN,               ///< 'Join game' button.
 	WID_NG_REFRESH,            ///< 'Refresh server' button.
 	WID_NG_NEWGRF,             ///< 'NewGRF Settings' button.
