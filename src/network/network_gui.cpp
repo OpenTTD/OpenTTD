@@ -2244,13 +2244,10 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt, std::shared_ptr<NetworkAut
 
 struct NetworkCompanyPasswordWindow : public Window {
 	QueryString password_editbox; ///< Password editbox.
-	Dimension warning_size;       ///< How much space to use for the warning text
 
 	NetworkCompanyPasswordWindow(WindowDesc *desc, Window *parent) : Window(desc), password_editbox(NETWORK_PASSWORD_LENGTH)
 	{
 		this->InitNested(0);
-		this->UpdateWarningStringSize();
-
 		this->parent = parent;
 		this->querystrings[WID_NCP_PASSWORD] = &this->password_editbox;
 		this->password_editbox.cancel_button = WID_NCP_CANCEL;
@@ -2258,29 +2255,21 @@ struct NetworkCompanyPasswordWindow : public Window {
 		this->SetFocusedWidget(WID_NCP_PASSWORD);
 	}
 
-	void UpdateWarningStringSize()
+	void OnResize() override
 	{
-		assert(this->nested_root->smallest_x > 0);
-		this->warning_size.width = this->nested_root->current_x - (WidgetDimensions::scaled.framerect.Horizontal()) * 2;
-		this->warning_size.height = GetStringHeight(STR_WARNING_PASSWORD_SECURITY, this->warning_size.width);
-		this->warning_size.height += (WidgetDimensions::scaled.framerect.Vertical()) * 2;
+		bool changed = false;
 
-		this->ReInit();
-	}
+		auto nwid = this->GetWidget<NWidgetResizeBase>(WID_NCP_WARNING);
+		changed |= nwid->UpdateVerticalSize(GetStringHeight(STR_WARNING_PASSWORD_SECURITY, nwid->current_x));
 
-	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
-	{
-		if (widget == WID_NCP_WARNING) {
-			size = this->warning_size;
-		}
+		if (changed) this->ReInit(0, 0, this->flags & WF_CENTERED);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_NCP_WARNING) return;
 
-		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
-			STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r, STR_WARNING_PASSWORD_SECURITY, TC_FROMSTRING, SA_CENTER);
 	}
 
 	void OnOk()
@@ -2317,19 +2306,21 @@ static constexpr NWidgetPart _nested_network_company_password_window_widgets[] =
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_COMPANY_PASSWORD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCP_BACKGROUND),
-		NWidget(NWID_VERTICAL), SetPIP(5, 5, 5),
-			NWidget(NWID_HORIZONTAL), SetPIP(5, 5, 5),
+		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.frametext),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_NCP_LABEL), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_NULL),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NCP_PASSWORD), SetFill(1, 0), SetMinimalSize(194, 12), SetDataTip(STR_COMPANY_VIEW_SET_PASSWORD, STR_NULL),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NCP_PASSWORD), SetFill(1, 0), SetMinimalSize(194, 0), SetDataTip(STR_COMPANY_VIEW_SET_PASSWORD, STR_NULL),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(5, 0, 5),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 				NWidget(NWID_SPACER), SetFill(1, 0),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_NCP_SAVE_AS_DEFAULT_PASSWORD), SetMinimalSize(194, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_NCP_SAVE_AS_DEFAULT_PASSWORD), SetMinimalSize(194, 0),
 											SetDataTip(STR_COMPANY_PASSWORD_MAKE_DEFAULT, STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCP_WARNING), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NCP_WARNING), SetPadding(WidgetDimensions::unscaled.frametext),
+	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NCP_CANCEL), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_COMPANY_PASSWORD_CANCEL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NCP_OK), SetFill(1, 0), SetDataTip(STR_BUTTON_OK, STR_COMPANY_PASSWORD_OK),
