@@ -206,7 +206,7 @@
 	if (!IsValidTown(town_id)) return false;
 
 	const Town *t = ::Town::Get(town_id);
-	return ((uint32_t)GetDistanceSquareToTile(town_id, tile) <= t->cache.squared_town_zone_radius[0]);
+	return ((uint32_t)GetDistanceSquareToTile(town_id, tile) <= t->cache.squared_town_zone_radius[HZB_TOWN_EDGE]);
 }
 
 /* static */ bool ScriptTown::HasStatue(TownID town_id)

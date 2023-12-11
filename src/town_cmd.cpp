@@ -1819,7 +1819,7 @@ static bool GrowTown(Town *t)
  */
 void UpdateTownRadius(Town *t)
 {
-	static const uint32_t _town_squared_town_zone_radius_data[23][5] = {
+	static const uint32_t _town_squared_town_zone_radius_data[23][HZB_END] = {
 		{  4,  0,  0,  0,  0}, // 0
 		{ 16,  0,  0,  0,  0},
 		{ 25,  0,  0,  0,  0},
@@ -1852,11 +1852,11 @@ void UpdateTownRadius(Town *t)
 		/* Actually we are proportional to sqrt() but that's right because we are covering an area.
 		 * The offsets are to make sure the radii do not decrease in size when going from the table
 		 * to the calculated value.*/
-		t->cache.squared_town_zone_radius[0] = mass * 15 - 40;
-		t->cache.squared_town_zone_radius[1] = mass * 9 - 15;
-		t->cache.squared_town_zone_radius[2] = 0;
-		t->cache.squared_town_zone_radius[3] = mass * 5 - 5;
-		t->cache.squared_town_zone_radius[4] = mass * 3 + 5;
+		t->cache.squared_town_zone_radius[HZB_TOWN_EDGE] = mass * 15 - 40;
+		t->cache.squared_town_zone_radius[HZB_TOWN_OUTSKIRT] = mass * 9 - 15;
+		t->cache.squared_town_zone_radius[HZB_TOWN_OUTER_SUBURB] = 0;
+		t->cache.squared_town_zone_radius[HZB_TOWN_INNER_SUBURB] = mass * 5 - 5;
+		t->cache.squared_town_zone_radius[HZB_TOWN_CENTRE] = mass * 3 + 5;
 	}
 }
 
@@ -3482,9 +3482,9 @@ static void ForAllStationsNearTown(Town *t, Func func)
 	 * The true radius is not stored or calculated anywhere, only the squared radius. */
 	/* The efficiency of this search might be improved for large towns and many stations on the map,
 	 * by using an integer square root approximation giving a value not less than the true square root. */
-	uint search_radius = t->cache.squared_town_zone_radius[0] / 2;
+	uint search_radius = t->cache.squared_town_zone_radius[HZB_TOWN_EDGE] / 2;
 	ForAllStationsRadius(t->xy, search_radius, [&](const Station * st) {
-		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[0]) {
+		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[HZB_TOWN_EDGE]) {
 			func(st);
 		}
 	});
