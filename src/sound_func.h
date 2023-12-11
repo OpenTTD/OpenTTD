@@ -15,6 +15,7 @@
 #include "tile_type.h"
 
 bool LoadSound(SoundEntry &sound, bool new_format, SoundID sound_id, const std::string &name);
+void ChangeSoundSet(int index);
 
 void SndPlayTileFx(SoundID sound, TileIndex tile);
 void SndPlayVehicleFx(SoundID sound, const Vehicle *v);

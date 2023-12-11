@@ -46,6 +46,7 @@
 #include "network/network_gui.h"
 #include "network/network_survey.h"
 #include "video/video_driver.hpp"
+#include "sound_func.h"
 
 #include "safeguards.h"
 
@@ -696,13 +697,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_BASE_SFX_DROPDOWN:
-				if (_game_mode == GM_MENU) {
-					auto* set = BaseSounds::GetSet(index);
-					BaseSounds::ini_set = set->name;
-					BaseSounds::SetSet(set);
-					this->reload = true;
-					this->InvalidateData();
-				}
+				ChangeSoundSet(index);
 				break;
 
 			case WID_GO_BASE_MUSIC_DROPDOWN:
@@ -733,7 +728,6 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetLoweredState(WID_GO_GUI_SCALE_BEVEL_BUTTON, _settings_client.gui.scale_bevels);
 
 		this->SetWidgetDisabledState(WID_GO_BASE_GRF_DROPDOWN, _game_mode != GM_MENU);
-		this->SetWidgetDisabledState(WID_GO_BASE_SFX_DROPDOWN, _game_mode != GM_MENU);
 
 		this->SetWidgetDisabledState(WID_GO_BASE_GRF_PARAMETERS, BaseGraphics::GetUsedSet() == nullptr || !BaseGraphics::GetUsedSet()->IsConfigurable());
 
