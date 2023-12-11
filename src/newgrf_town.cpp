@@ -51,16 +51,16 @@
 		case 0x8A: return this->t->grow_counter / Ticks::TOWN_GROWTH_TICKS;
 		case 0x92: return this->t->flags;  // In original game, 0x92 and 0x93 are really one word. Since flags is a byte, this is to adjust
 		case 0x93: return 0;
-		case 0x94: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[0]);
-		case 0x95: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[0]), 8, 8);
-		case 0x96: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[1]);
-		case 0x97: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[1]), 8, 8);
-		case 0x98: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[2]);
-		case 0x99: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[2]), 8, 8);
-		case 0x9A: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[3]);
-		case 0x9B: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[3]), 8, 8);
-		case 0x9C: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[4]);
-		case 0x9D: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[4]), 8, 8);
+		case 0x94: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_EDGE]);
+		case 0x95: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_EDGE]), 8, 8);
+		case 0x96: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_OUTSKIRT]);
+		case 0x97: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_OUTSKIRT]), 8, 8);
+		case 0x98: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_OUTER_SUBURB]);
+		case 0x99: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_OUTER_SUBURB]), 8, 8);
+		case 0x9A: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_INNER_SUBURB]);
+		case 0x9B: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_INNER_SUBURB]), 8, 8);
+		case 0x9C: return ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_CENTRE]);
+		case 0x9D: return GB(ClampTo<uint16_t>(this->t->cache.squared_town_zone_radius[HZB_TOWN_CENTRE]), 8, 8);
 		case 0x9E: return this->t->ratings[0];
 		case 0x9F: return GB(this->t->ratings[0], 8, 8);
 		case 0xA0: return this->t->ratings[1];
