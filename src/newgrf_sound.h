@@ -34,6 +34,7 @@ bool LoadNewGRFSound(SoundEntry *sound, SoundID sound_id);
 SoundID GetNewGRFSoundID(const struct GRFFile *file, SoundID sound_id);
 SoundEntry *GetSound(SoundID sound_id);
 uint GetNumSounds();
+size_t GetSoundPoolAllocatedMemory();
 bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event, bool force  = false);
 void PlayTileSound(const struct GRFFile *file, SoundID sound_id, TileIndex tile);
 
