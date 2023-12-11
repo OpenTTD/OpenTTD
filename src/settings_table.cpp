@@ -265,11 +265,7 @@ static void ZoomMinMaxChanged(int32_t)
 {
 	ConstrainAllViewportsZoom();
 	GfxClearSpriteCache();
-	if (_settings_client.gui.zoom_min > _gui_zoom) {
-		/* Restrict GUI zoom if it is no longer available. */
-		_gui_zoom = _settings_client.gui.zoom_min;
-		UpdateCursorSize();
-		LoadStringWidthTable();
+	if (AdjustGUIZoom(false)) {
 		ReInitAllWindows(true);
 	}
 }

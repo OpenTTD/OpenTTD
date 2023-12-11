@@ -1980,7 +1980,7 @@ bool AdjustGUIZoom(bool automatic)
 	ZoomLevel old_font_zoom = _font_zoom;
 	int old_scale = _gui_scale;
 	UpdateGUIZoom();
-	if (old_scale == _gui_scale) return false;
+	if (old_scale == _gui_scale && old_gui_zoom == _gui_zoom) return false;
 
 	/* Reload sprites if sprite zoom level has changed. */
 	if (old_gui_zoom != _gui_zoom) {
