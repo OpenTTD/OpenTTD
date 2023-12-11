@@ -35,6 +35,7 @@ struct MixerChannel {
 };
 
 static std::atomic<uint8_t> _active_channels;
+static std::atomic<uint8_t> _stop_channels;
 static MixerChannel _channels[8];
 static uint32_t _play_rate = 11025;
 static uint32_t _max_size = UINT_MAX;
@@ -108,6 +109,16 @@ static void MxCloseChannel(uint8_t channel_index)
 	_active_channels.fetch_and(~(1 << channel_index), std::memory_order_release);
 }
 
+/**
+ * Close all mixer channels.
+ * This signals to the mixer that each channel should be closed even if it has not played all remaining samples.
+ * This is safe (and designed) to be called from the main thread.
+ */
+void MxCloseAllChannels()
+{
+	_stop_channels.fetch_or(~0, std::memory_order_release);
+}
+
 void MxMixSamples(void *buffer, uint samples)
 {
 	PerformanceMeasurer framerate(PFE_SOUND);
@@ -124,6 +135,12 @@ void MxMixSamples(void *buffer, uint samples)
 		std::lock_guard<std::mutex> lock{ _music_stream_mutex };
 		/* Fetch music if a sampled stream is available */
 		if (_music_stream) _music_stream((int16_t*)buffer, samples);
+	}
+
+	/* Check if any channels should be stopped. */
+	uint8_t stop = _stop_channels.load(std::memory_order_acquire);
+	for (uint8_t idx : SetBitIterator(stop)) {
+		MxCloseChannel(idx);
 	}
 
 	/* Apply simple x^3 scaling to master effect volume. This increases the
@@ -200,6 +217,7 @@ void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan)
 void MxActivateChannel(MixerChannel *mc)
 {
 	uint8_t channel_index = mc - _channels;
+	_stop_channels.fetch_and(~(1 << channel_index), std::memory_order_release);
 	_active_channels.fetch_or((1 << channel_index), std::memory_order_release);
 }
 
