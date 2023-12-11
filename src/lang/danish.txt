@@ -255,6 +255,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} fod
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer udtryk:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Indtast filterstreng
@@ -718,8 +719,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik på
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik på et musiknummer for at fjerne det fra programlisten (kun for Custom1/Custom2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Bedste virksomheder, som har nået {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Selskabsoversigt i {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmand
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenør
@@ -1656,8 +1655,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Aktiver brug af
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Benyt laste-indikatorer: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vælg om lastnings-indikatorer vises ved pålæsning og aflæsning af køretøjer
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Vis køreplan i tik i stedet for dage: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Vis rejsetider i køreplaner i spil ticks i stedet for dage
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Vis ankomst og afgang i tidsplaner: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vis forventede ankomst-og afgangstider i tidsplaner
@@ -2346,7 +2344,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Navnet v
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sæt kodeord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskyt dit spil med et kodeord hvis du ikke vil have fremmede med
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Synlighed
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Synlighed:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Hvorvidt andre kan se din server i den offentlige liste
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimalt antal tilladte klienter:
@@ -4566,8 +4564,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ophold for {ST
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(rejse for {STRING}, ikke skemalagt)
 STR_TIMETABLE_STAY_FOR                                          :og vent i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og rejs i {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" e}
-STR_TIMETABLE_TICKS                                             :{COMMA} tik
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Denne køreplan vil tage {STRING} at fuldføre
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denne køreplan vil tage mindst {STRING} at fuldføre (ikke alt indført i køreplan)
@@ -4576,10 +4572,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dette tr
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dette transportmiddel er nu {STRING} forsinket
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dette transportmiddel er nu {STRING} foran køreplanen
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Denne tidsplan er endnu ikke begyndt.
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Denne tidsplan vil starte på {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vælg en dato som starttidspunkt for denne køreplan. Ctrl+Klik sætter starttidspunkt for denne køreplan, og distribuerer alle køretøjer der deler denne ordre ligeligt baseret på deres relative rækkefølge, hvis ordren er fuldstændigt tidsplanlagt
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ændre tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre den tid, som den fremhævede rækkefølge skal tage. Ctrl+Click angiver tidspunktet for alle ordrer
@@ -4603,8 +4597,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Forvente
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skift mellem forventet og tidslagt
 
-STR_TIMETABLE_ARRIVAL                                           :A: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_DEPARTURE                                         :D: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)

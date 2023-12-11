@@ -363,6 +363,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}м
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введіть одне чи більше слів для фільтрування списку
@@ -827,8 +828,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Вибе
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клацніть мишою на мелодії для її видалення зі списку (лише Набір1 та Набір2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Кращі компанії, які досягли {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Таблиця компаній з {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Підприємець
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Підприємець
@@ -1746,8 +1745,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Вмикає в
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Показувати індикатори завантаження: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Вмикає\вимикає відображення індикатора процесу завантаження над транспортними засобами.
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Показувати розклад в тіках замість днів: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Відображати час руху в розкладах в тіках замість днів
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Показувати час прибуття та відправлення у розкладах: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Відображати очікуваний час прибуття та відправлення у розкладі
@@ -4627,8 +4625,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(стояти �
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(їхати протягом {STRING}, без розкладу)
 STR_TIMETABLE_STAY_FOR                                          :і стояти {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :і прямувати до {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}д{P ень ні нів}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}одиниц{P я і ь}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Цей розклад займе {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Цей розклад займе якнайменше {STRING} (не все враховано)
@@ -4637,10 +4633,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Цей �
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Цей транспорт запізнюється на {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Цей транспорт випереджує розклад на {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Цей розклад ще не почався
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Цей розклад почнеться о {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Дата початку
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Оберіть дату як точку відліку даного розкладу. Ctrl+клац мишою рівномірно розподіляє весь транспорт, що має ці спільні завдання, згідно його відносного порядку розміщення, якщо порядок повністю розписаний у розкладі
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змінити час
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Змінити час, впродовж якого має виконуватись наказ. Ctrl+клац змінить час в усіх завданнях

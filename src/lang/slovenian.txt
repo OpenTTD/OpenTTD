@@ -378,6 +378,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtriraj niz:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vnesite niz za filtriranje
@@ -819,8 +820,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikni n
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikni na skladbo, če jo želiš odstraniti iz programa (samo Poljubno1 ali Poljubno2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najboljša podjetja, ki so dosegla {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Seznam najboljših podjetij v {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Poslovnež
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Podjetnik
@@ -1632,8 +1631,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Omogoči uporab
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Uporabi pregledno polnenje: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Izbira prikaza stanja med polnjenjem vozil.
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Prikaz urnikov v pikah namesto dneh: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Prikaži čase potovanja v časovnih tabelah kot enote igre namesto dni.
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Prikaži prihod in odhod v urnikih: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Prikaži pričakovane čase odhodov in prihodov v časovnih tabelah.
@@ -4167,8 +4165,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(počakaj najve
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(Potuj z največ {STRING}, brez časovne tabele)
 STR_TIMETABLE_STAY_FOR                                          :in ostani za {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :s potovanjem za {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} d{P an neva nevi ni}
-STR_TIMETABLE_TICKS                                             :{COMMA} pik{P a i e ""}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ta urnik bo potreboval {STRING} do zaključka
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ta urnik bo potreboval vsaj {STRING} do zaključka (ni vse zajeto v urniku)
@@ -4177,10 +4173,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}To vozil
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}To vozilo zamuja za {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}To vozilo prehiteva za {STRING} .
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ta urnik se še ni začel
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ta urnik se bo začel ob {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Začetni datum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izberi datum za začetek te časovne tabele. Ctrl+klik nastavi začetek te časovne tabele in razporedi vsa vozila, ki si delijo ta ukaz, enakomerno glede na njihov relativni ukaz, če je ta popolnoma naravnan po časovni tabeli
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Spremeni čas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Spremeni čas, ki naj bi ga označeni ukaz porabil

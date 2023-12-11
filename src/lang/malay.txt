@@ -220,6 +220,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ka
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Tapis barisan:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan penapis rangkaian
@@ -646,8 +647,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pad
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada lagu untuk mengeluarkan daripada rancangan semasa (Pilihan Diri 1 atau Pilihan Diri 2 sahaja)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Jadual Liga Syarikat dalam {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Ahli perniagaan
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Usahawan
@@ -1383,7 +1382,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gunakan senarai
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Gunakan penunjuk muatan: {STRING}
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Tunjukkan jadual menggunakan tanda rait dan bukan hari: {STRING}
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Tunjukkan ketibaan dan pelepasan dalam jadual: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tunjukkan jangkaan waktu ketibaan dan pelepasan dalam jadual
@@ -3693,8 +3692,6 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kembara (tanpa 
 STR_TIMETABLE_TRAVEL_FOR                                        :Kembara ke {STRING}
 STR_TIMETABLE_STAY_FOR                                          :dan tinggal untuk {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :dan kembara untuk {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} hari
-STR_TIMETABLE_TICKS                                             :{COMMA} detik
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Jadual waktu ini akan mengambil {STRING} untuk menghabis
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Jadual waktu ini akan mengambil sekurangnya {STRING} untuk dilengkapi (bukan semua dijadualkan)
@@ -3703,9 +3700,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kenderaa
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kenderaan ini sedang bergerak {STRING} lewat
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kenderaan ini sedang bergerak {STRING} awal
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Jadual waktu ini belum bermula
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Jadual waktu ini akan bermula pada {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Tarikh mula
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tukar Masa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Tukar tempoh masa bagi jadual waktu yang terpilih

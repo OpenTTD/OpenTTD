@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtur strong:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriva inn filtur strong
@@ -643,8 +644,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Trýst �
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Trýst á tónleika spor fyri at strika frá núverðani skrá (Sjálvgjørdur1 ella Sjálvgjørdur2 einans)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Fremstu fyritøkunar ið rukku {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Yvirlit fyri Fyritøku Deildina í {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Vinnumaður
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Íverksetari
@@ -1417,8 +1416,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Gilda nýtsluna
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Nýt lessingar vísarar: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vel um lessi vísarar verða vístir omanfyri lessandi og avlessandi flutningstól ella ikki
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Vís tíðarætlan í klikkum heldur enn døgum: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Vís koyri tíðir í tíðarætlanum við 'spæli klikkum' í staðin fyri við døgum
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Vís komir og fráferðir í tíðarætlanum: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vís væntaðu komu og fráferðs tíðir í tíðarætlanum
@@ -3575,7 +3573,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Skift ti
 
 
 STR_TIMETABLE_NO_TRAVEL                                         :Ferðast ikki
-STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
+
 
 
 

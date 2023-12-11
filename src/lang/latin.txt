@@ -415,6 +415,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Series colans:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Inscribe seriem colantem
@@ -859,8 +860,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Preme in
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Preme in carmen ut ex compositione removeatur (modo Propria I aut Propria II)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Societates supremae quae attigerunt {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Album Foederis Societatum in {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Laborator
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Venditor
@@ -1681,8 +1680,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Annuere indices
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Signa onerandi adhibenda: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Annuere signa onerandi monstrari super vehicula onerantia/exonerantia
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Monstrare horarium cum punctis et non cum diebus: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Monstrare tempora navigandi in horariis punctis ludi et non diebus
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Monstrare adventum atque exitum in horariis: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Monstrare in horariis adventum atque exitum aestimatum
@@ -4276,10 +4274,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(mora {STRING},
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(iter {STRING}, sine horario)
 STR_TIMETABLE_STAY_FOR                                          :cum mora {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :cum itinere {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}die{P i rum}
-STR_TIMETABLE_DAYS.acc                                          :{COMMA}{NBSP}die{P m s}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}punct{P i orum}
-STR_TIMETABLE_TICKS.acc                                         :{COMMA}{NBSP}punct{P um a}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Hic horarius peragitur {STRING.acc}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Hic horarius peragitur saltem {STRING.acc} (omnia non in horario)
@@ -4288,10 +4282,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Hoc vehi
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Hoc vehiculum est {STRING.acc} tardum
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Hoc vehiculum est {STRING.acc} citum
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Hic horarius adhuc non incipitur
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Hic horarius incipietur {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dies Initii
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Elige diem ad initium huius horarii. Ctrl+Preme ut dies initialis huius horarii eligatur ac aequaliter partiuntur omnia vehicula quae hoc iussum communicant secundum ordinem eorum, si iussa tota in horariis sunt
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mutare Tempus
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mutare durationem iussi electi

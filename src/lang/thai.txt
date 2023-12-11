@@ -226,6 +226,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ฟ�
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} เมตร
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} ม.
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}คำกรอง:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}ใส่คำกรอง
@@ -671,8 +672,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}คล�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}คลิกที่ชื่อเพลงเพื่อลบออกจากโปรแกรม (Custom1 or Custom2 เท่านั้น)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}บริษัทชั้นนำที่ก้าวไปสู่ {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}ตารางแสดงการแข่งขันของบริษัทใน {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :นักธุรกิจ
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :ผู้ประกอบการ
@@ -1490,8 +1489,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :เปิดใ
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :แสดงสถานะการขนถ่ายเมื่อกำลังขนถ่ายที่สถานี: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :เลือกเพื่อแสดงตัวเลขปริมาณการบรรทุกขณะขนถ่ายที่สถานีของพาหนะ
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :แสดงตารางเวลาในแบบติ๊กแทนแบบวัน: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :แสดงเวลาในการเดินทางในตารางเวลาเป็น ticks แทนที่ days
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :แสดงเวลามาถึงและออกไปในตารางเวลา: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :แสดงการคาดการณ์เวลาในการเดินทางไปถึงหรือเวลาออกของยานพาหนะในตารางเวลา
@@ -4128,8 +4126,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ตารา�
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(ตารางการเดินทางของ {STRING}, ไม่ได้ถูกกำหนดเวลาไว้)
 STR_TIMETABLE_STAY_FOR                                          :หยุดเป็นเวลา {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :และเดินทาง {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} วัน
-STR_TIMETABLE_TICKS                                             :{COMMA} tick
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}ตารางเวลานี้เสร็จสิ้นโดยใช้เวลาทั้งหมด {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}ตารางเวลานี้ใช้เวลารวมทั้งสิ้น {STRING} (และยังไม่สมบูรณ์)
@@ -4138,10 +4134,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}ยา�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}ยานพาหนะนี้เดินทางช้ากว่าเวลาปกติอยู่ {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}ยานพาหนะนี้เดินทางเร็วกว่าเวลาปกติอยู่ {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}ตารางเวลายังไม่เริ่มต้น
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}ตารางเวลานี้จะเริ่มใน {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}วันที่เริ่มต้น
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}เลือกวันที่ที่จะให้เริ่มต้นตารางเวลา. Ctrl+Click เพื่อให้ยานพาหนะที่ใช้ตารางเวลานี้เริ่มต้นที่จุดเดียวกัน, ถ้าตารางเวลาสมบูรณ์แล้ว
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}ปรับเปลี่ยนเวลา
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}เปลี่ยนเวลาที่ตำแหน่งไฮไลท์ในรายการ

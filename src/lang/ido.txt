@@ -217,6 +217,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} pd
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+
 # Common window strings
 
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordinas per
@@ -681,6 +682,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
+###length 3
 
 
 
@@ -1418,6 +1420,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 # Time table window
+
 
 
 

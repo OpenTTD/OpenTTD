@@ -237,6 +237,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Gëff een oder méi Wieder an fir d'Lëscht ze filteren
@@ -698,8 +699,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klick op
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klick op d'Lidd fir et vum aktuellen Programm ze läschen (Benotzerdefinéiert 1 an 2 nëmmen)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top Firmen déi {NUM} erreecht hunn
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Firmeligatabell {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Businesspersoun
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
@@ -1598,8 +1597,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Schalt d'erweid
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Weist de Luedstatus un: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Wielt aus, ob Luedindikatoren iwwert engem Gefier ugewise ginn oder net, wann et beluede gëtt
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Weis den Zäitplang an Ticken amplaz vun Deeg: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Weist d'Transportdauer an der Zäittafel als Gameticks un, amplaz an Deeg
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Weis Arrivée an Départ am Zäitplang un: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Weis d'geplangten Departen an Arrivéeën an der Zäittafel un
@@ -4467,8 +4465,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(bleif während
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(fuer während {STRING}, ouni Zäitplang)
 STR_TIMETABLE_STAY_FOR                                          :an bleif fir {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :an ënnerwee während {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}D{P ag eeg}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}Tick{P "" er}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Dësen Zäitplang brauch {STRING} fir faërdeg ze ginn
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dësen Zäitplang brauch op manst {STRING} (net all geplangt)
@@ -4477,10 +4473,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}D'Gefier
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}D'Gefier ass grad {STRING} ze spéit
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}D'Gefier ass grad {STRING} ze fréi
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dësen Zäitplang gouf nach net gestart
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Dësen Zäitplang start um {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Start Datum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wiel en Datum als Startpunkt fir dësen Zäitplang. Ctrl+Klick verdeelt all Gefierer mat dësem Optrag gläichméisseg vum Startpunkt op hierem relativen Optrag aus, wann den Optrag komplett mat engem Zäitplang versinn ass
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zäit wiesselen
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Änner Zäit déi den ugewielten Optrag brauche soll. Ctrl+Klick ännert d'Zäit fir all Opträg

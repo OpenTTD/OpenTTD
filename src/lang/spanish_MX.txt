@@ -238,6 +238,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrar:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Indicar texto a filtrar
@@ -699,8 +700,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clic en 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clic en la pista de música para quitarla del programa actual (solo Personal 1 y 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Lista de empresas que han llegado a {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabla de clasificación de empresas en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Empresario(a)
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresario
@@ -1599,8 +1598,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activar el uso 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Mostrar indicadores sobre los vehículos mientras cargan o descargan
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostrar tiempo de viaje en ticks en lugar de días: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Mostrar los tiempos de viaje en los itinerarios en impulsos de reloj de sistema (ticks) en lugar de días
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar salidas y llegadas en itinerarios: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar tiempos anticipados de llegadas y salidas en los itinerarios
@@ -4467,8 +4465,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(esperar {STRIN
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar {STRING}, no programado)
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}día{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El itinerario completo se recorre en {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}El itinerario completo se recorre en {STRING} (no todo programado)
@@ -4477,10 +4473,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este veh
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo va retrasado por {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo va adelantado por {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este itinerario no ha comenzado
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este itinerario comenzará el {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Fecha de inicio
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Elegir una fecha de inicio del itinerario. Ctrl+Clic para distribuir uniformemente todos los demás vehículos que lo compartan, siempre y cuando esté programado completamente
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar tiempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifica la cantidad de tiempo que la orden seleccionada debe tomar. Ctrl+clic modifica la duración para todas las órdenes

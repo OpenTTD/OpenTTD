@@ -231,6 +231,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Hidlydd:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Rhowch un neu fwy o allweddeiriau i hildio'r rhestr
@@ -673,8 +674,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliciwch
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliciwch i dynnu trac cerddoriaeth o'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Y Cwmnïau Brig a gyrhaeddodd Lefel {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Y Tabl Cynghrair Cwmnïau yn {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Rheolwr Busnes
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
@@ -1525,8 +1524,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Galluogi defnyd
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Dangos llwytho: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Dewis a fydd dangosyddion llwytho'n cael eu dangos uwch cerbydau sy'n llwytho neu dadlwytho
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Dangos amserlen fesul ticiau yn hytrach na dyddiau: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Dangos amseroedd teithio mewn amserlenni mewn ticiau yn hytrach na dyddiau
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Dangos cyrraedd a gadael mewn amserlenni: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Dangos amseroedd cyrraedd a gadael rhagdybiedig mewn amserlenni
@@ -4156,8 +4154,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(aros am {STRIN
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(teithio am {STRING}, heb ei amserlennu)
 STR_TIMETABLE_STAY_FOR                                          :aros am {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :a theithio am {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}diwrnod
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tic
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Bydd yr amserlen hon yn cymryd {STRING} i'w chwblhau
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Bydd yr amserlen hon yn cymryd o leiaf {STRING} i'w chwblhau (heb ei hamserlennu'n llwyr)
@@ -4166,10 +4162,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Mae'r ce
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Mae'r cerbyd hwn yn rhedeg {STRING} yn hwyr ar hyn o bryd
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Mae'r cerbyd hwn yn rhedeg {STRING} yn gynnar ar hyn o bryd
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Nid yw'r amserlen yma wedi dechrau
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bydd yr amserlen yma'n dechrau ar {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dyddiad dechrau
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Dewis dyddiad fel pwynt dechrau ar gyfer yr amserlen yma. Mae Ctrl+Clic yn gosod pwynt dechrau yr amselen yma ac yn dosbarthu'r holl gerbydau sy'n rhannu'r gorchymyn yma yn gyson yn ôl eu trefn cymharol, os yw'r gorchymyn wedi ei amserlennu'n llwyr
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Newid Amser
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Newid faint o amser y dylai'r gorchymyn a amlygwyd ei gymryd

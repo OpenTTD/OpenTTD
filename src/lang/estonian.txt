@@ -294,6 +294,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} meete
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Märksõna:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sisesta üks või enam märksõna mille järgi nimekirja filtreerida
@@ -755,8 +756,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Vajuta l
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Vajuta laulule, et see eemaldada praegusest progammist (Custom1 või Custom2 ainult)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Parimad ettevõtted aastal {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Ettevõtete edetabelis {NUM} kohal
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Äriinimene
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Ettevõtja
@@ -1654,8 +1653,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Laseb kasutada 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Kasuta laadimisnäidikuid: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vali, kas koorma laadimisel ja tühjendamisel näidatakse laadimisnäidikuid
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Graafik on sammudes, mitte päevades: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Graafikus on ajad märgitud mitte päevades, vaid sammudes
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Graafikus on saabumis- ja väljumisajad: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Sõiduki graafikus esitatakse eeldatavaid saabumis- ja väljumisaegu
@@ -4524,8 +4522,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(Oode {STRING},
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} sõidukestus, ajastamata)
 STR_TIMETABLE_STAY_FOR                                          :ja oota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja sõida {STRING} jaoks
-STR_TIMETABLE_DAYS                                              :{COMMA} päev{P "" a}
-STR_TIMETABLE_TICKS                                             :{COMMA} samm{P "" u}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Selle graafiku läbimine võtab {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Selle graafiku läbimine võtab vähemalt {STRING} (kõik ei ole planeeritud)
@@ -4534,10 +4530,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Sõiduk 
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}See sõiduk on {STRING} hiljaks jäämas
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}See sõiduk on {STRING} varajane
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Graafikuga pole veel alustatud
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Graafikuga alustatakse {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Alguskuupäev
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vali graafiku alguskuupäev. Ctrl-klõps määrab graafiku alguskuupäeva ja jaotab sõidukid ühtlaselt, kasutades järjestust, kui sihid on planeeritud
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda aega
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda märgitud korraldusele määratud aega. Ctrl+klõps seab aja kõigile korraldustele

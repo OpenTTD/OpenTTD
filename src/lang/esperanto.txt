@@ -321,6 +321,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtroteksto:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entajpu filtrotekston.
@@ -778,8 +779,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Alklaku 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Alklaku muzikeron por viŝi el la nuna programo (nur propra)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Superkompanioj kiuj atingis {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Kompania tabelo en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Komercisto
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenisto
@@ -1677,7 +1676,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ebligu uzadon d
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Uzu ŝarg-indikilojn: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Elektu ĉu ŝarĝ-indikiloj estas montrataj sub ŝarĝataj aŭ malŝarĝataj veturiloj
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Montru horaron laŭ tikoj anstataŭ laŭ tagoj: {STRING}
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Montru alvenojn kaj forirojn sur horaroj: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Montru antaŭvidatajn alven- kaj forir-tempojn en horaroj
@@ -4471,9 +4470,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(haltu dum {STR
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(veturos dum {STRING}, sen horaro)
 STR_TIMETABLE_STAY_FOR                                          :kaj restu dum {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :kaj veturu dum {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}tago{P "" j}
-STR_TIMETABLE_DAYS.n                                            :{COMMA}{NBSP}tago{P "" j}n
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tiko{P "" j}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Plenumi ĉi tiun horaron postulos {STRING.n}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ĉi tio horaro postulos alemnaŭ {STRING} plenigi (ne ĉiu horarita)
@@ -4482,9 +4478,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ĉi tiu 
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ĉi tiu veturilo nun malfruas je {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ĉi tiu veturilo nun fruas je {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ĉi tiu horaro ankoraŭ ne komenciĝas.
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ĉi tiu horaro komenciĝos je {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Komencodato
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu tempon
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ŝanĝu kiom da tempo devus postuli la markita ordono. Stir+Klak ŝanĝas la tempon por ĉiuj ordonoj
@@ -4508,8 +4503,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Atendite
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planite
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ŝalti inter atendite kaj planite
 
-STR_TIMETABLE_ARRIVAL                                           :A: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_DEPARTURE                                         :E: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)

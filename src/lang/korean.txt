@@ -256,6 +256,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}피트
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}검색:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색할 단어를 하나 이상 입력하세요
@@ -719,8 +720,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}배경 �
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}배경 음악 목록에서 음악을 제거하려면 클릭하세요. (사용자1, 사용자2에서만 사용 가능)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM}년까지 존재한 최고의 회사 목록
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}{NUM}의 회사 성취도 목록
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :{G=f}초보자
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :{G=f}사업가
@@ -1657,8 +1656,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :고급 차량 �
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :적재율 표시: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :적재나 하차하는 차량 위에 적재/하차율을 표시할지 말지를 선택합니다.
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :열차 시간표의 1일을 74틱으로 바꿔 표시: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :열차 시간표에서 열차의 운행 시간을 '일'보다 자세한 '틱'으로 표시합니다. 1일은 74틱과 같습니다.
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :시간표에서 출발일과 도착일 표시: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :열차 시간표에서 예상 출발 & 도착 시간을 표시합니다.
@@ -4567,8 +4565,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :({STRING} 동�
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} 동안 운행, 시간표 작성 안 됨)
 STR_TIMETABLE_STAY_FOR                                          :& {STRING} 동안 정차
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :& 다음 목적지({STRING})로 이동
-STR_TIMETABLE_DAYS                                              :{COMMA}일
-STR_TIMETABLE_TICKS                                             :{COMMA}틱
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {STRING}이 걸릴 것입니다.
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시간표를 완주하는데 최소 {STRING}이 필요합니다 (시간표가 일부만 지정됨)
@@ -4577,10 +4573,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}이 차�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}이 차량은 현재 {STRING} 늦게 운행하고 있습니다
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}이 차량은 현재 {STRING} 빨리 운행하고 있습니다
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}이 시간표는 아직 시작되지 않았습니다
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}이 시간표는 {STRING}에 시작될 것입니다
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}시작 날짜
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요. CTRL+클릭하면, 시간표가 모두 작성되어 있다는 가정 하에, 주어진 경로를 기반으로 설정한 날짜부터 이 경로를 공유하는 모든 차량을 균등하게 출발시킵니다
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다. CTRL+클릭하면 모든 경로에 그 시간 값을 설정합니다
@@ -4604,8 +4598,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}예정�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}예정 소요시간 기준
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}시간표 검사 기준을 도착 예정일과 도착 예정 시간 기준 중에서 선택합니다
 
-STR_TIMETABLE_ARRIVAL                                           :도착: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_DEPARTURE                                         :착: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)

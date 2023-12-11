@@ -225,6 +225,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Foer filter namme yn
@@ -666,8 +667,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op musyknûmmer om't út it aktive program it heljen (allinnich Oanpast1 of Oanpast2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Topbedriuwen dy't niveau {NUM} helle hawwe
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Bedriuwskompetysjetabel yn {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Sakeman
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Undernimmer
@@ -1492,8 +1491,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Skeakelje de av
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Brûk laadyndikators: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :By ynskeakeljen sille ydikators sjen litten wurde boppe fiertugen dy't oan it yn- as útladen binne
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Toan tsjinstregeling yn tikken yn stee fan yn dagen: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Lit reistiden sjen in tikken yn stee fan yn dagen op tsjinstregelings
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Toan oankomst- en ofreistiid yn de tsjinstregeling: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Lit oankomst- en ôfriidtiden sjen yn tsjinstregelings
@@ -3766,14 +3764,12 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Reizgje (foar {
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(bliuw foar {STRING}, sûnder tjinstregeling)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reizgje foar {STRING}, sûnder tjinstregeling)
 STR_TIMETABLE_STAY_FOR                                          :en bliuw foar{STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}{P dei dagen}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tik{P "" ken}
 
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dit fiertûch is op tiid
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dit fiertûch is {STRING} te betiid
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Begjin datum
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tiid Feroarje
 

@@ -226,6 +226,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Lokarri iragazkia:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sartu lokarri iragazkia
@@ -660,8 +661,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Musika k
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Musika kantan clik egin uneko programatik ezabatzeko (Perstonala1 edo Pertsonala2 bakarrik)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top companiak {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Konpainien Ligaren Tabla {NUM}-tan
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negozio gizona
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresaria
@@ -1445,8 +1444,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Gaitu ibilgailu
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Zama adierazleak erabili: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Aukeratu ibilgailuen zama lanen adierazlea ikusgai dagoen ibilgailuen gainean
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Ordutegiak tick-etan erakutsi egunetan erakutsi ordez: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Erakutsi denbora tauletako denbora jokoaren uniteetan egunak erabili ordez
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Iritsierak eta irteerak ordutegietan erakutsi: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Erakutsi aurreikusitako iritsiera eta irteera denborak denbora tauletan
@@ -3894,8 +3892,6 @@ STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} bidaia
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING}-ra bidaiatu gehienez {VELOCITY}ra
 STR_TIMETABLE_STAY_FOR                                          :{STRING} gelditu
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :{STRING} bidaiatu
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}egun{P "" ak}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick{P "" ak}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ordutegi honek {STRING} beharko du betetzeko
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ordutegi honek gutxienez {STRING} beharko du (ez ordutegi guztiak)
@@ -3904,9 +3900,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ibilgail
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ibilgailu hau {STRING} berandu dabil
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ibilgailu hau {STRING} aurreratua dabil
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ordutegia ez da hasi
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK} {STRING} hasiko da ordutegia
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Hasiera data
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Denbora aldatu
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Piztutako agindua betzeko denbora aldatu

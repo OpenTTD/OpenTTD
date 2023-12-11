@@ -425,6 +425,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Pretraga:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unesi jednu ili više ključnih reči za pretragu liste
@@ -886,8 +887,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik na 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik na muzičku numeru radi uklanjanja sa trenutnog rasporeda (samo za Custom1 ili Custom2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najbolja preduzeća koja su dostigla {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}{NUM} u Tabeli Lige Preduzeća
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Poslovna osoba
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN.gen                 :poslovne osobe
@@ -1791,8 +1790,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Omogući upotre
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Koristiti pokazatelj utovarivanja: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Odaberi da li će se prikazati indikatori utovara i istovara iznad vozila
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Prikazati red vožnje u diskretnim otkucajima: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Prikaži vreme putovanja u redu vožnje u diskretnim otkucajima umesto u danima
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Prikazivanje polaska i dolaska u rasporedima: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Prikazivanje očekivanog vremena dolaska i odlaska u rasporedima
@@ -4670,8 +4668,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(stajanje za {S
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(putovanje za {STRING}, bez rasporeda)
 STR_TIMETABLE_STAY_FOR                                          :i ostani {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i putuj {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dan{P "" a a}
-STR_TIMETABLE_TICKS                                             :{COMMA} utkucaj{P "" a a}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Za završetak rasporeda trebaće {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Za završetak rasporeda trebaće barem {STRING} (merenja nisu završena)
@@ -4680,10 +4676,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Vozilo t
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vozilo trenutno kasni za {STRING} od rasporeda
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Vozilo trenutno žuri za {STRING} od rasporeda
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ovaj raspored još nije počeo
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ovaj raspored počinje {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Datum početka
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izaberi datum kao početak ovog rasporeda. Ctrl+klik jednako raspoređuje sva vozila koja dele ovu naredbu od datog datuma prema njihovom rasporedu, ukoliko je naredba u potpunosti unesena u vozni red
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promena vremena
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Promena količine vremena za koje će obeležena naredba trajati. Ctrl+klik podešava vreme za sve naredbe

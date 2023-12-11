@@ -216,6 +216,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL} m³
 
 
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}शब्द गाळा:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}गाळेला शब्द प्रविष्ट करा
@@ -620,7 +621,6 @@ STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLA
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}स्पष्ट
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM} स्थान अव्वल कंपन्या
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
@@ -919,6 +919,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 
+###length 3
 
 
 
@@ -1711,6 +1712,7 @@ STR_ORDER_IMPLICIT                                              :(आपोआ�
 
 
 # Time table window
+
 
 
 

@@ -539,6 +539,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}м
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтар:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце радок фільтра
@@ -987,8 +988,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Клік
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніце па назьве трэка, каб выдаліць яго з уласнай праґрамы
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Найбуйнейшыя кампаніі, якія дасягнулі {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Табліца кампаніяў у {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бізнэсоўца
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Прадпрымальнік
@@ -1821,8 +1820,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Дазволі�
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Паказваць індыкатар загрузкі: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Выбраць, ці будуць паказвацца індыкатары загрузкі над транспартам, які грузіцца ці разгружаецца.
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Паказваць расклад ў «ціках» замест дзён: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Паказваць у раскладзе час падарожжа ў гульнёвых "ціках" замест дзён.
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Паказваць у раскладах час прыбыцьця й адпраўленьня: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Паказваць верагодны час прыбыцьця й адпраўленьня ў раскладах.
@@ -4497,8 +4495,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(чакаць {
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(у дарозе {STRING}, графік не складзены)
 STR_TIMETABLE_STAY_FOR                                          :і чакаць {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :і рухацца да {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}д{P зень нi зён}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}цiк{P "" i аў}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Увесь маршрут зойме {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Рух па маршруце зойме {STRING} (ня ўсё ўлічана)
@@ -4507,10 +4503,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Гэты
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Гэты транспарт спазьняецца на {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Гэты транспарт апярэджвае ґрафік на {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ґрафік руху яшчэ не ўсталяваны
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Адлік часу пачнецца з {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Пачатковая дата
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Выберыце пачатковую дату для гэтага ґрафіка. Ctrl+пстрычка ўсталюе пачатковую дату і раўнамерна разьмяркуе ўсе транспартныя сродкі, якія рухаюцца па гэтым маршруце, калі час руху па ім цалкам разьлічаны.
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Зьмяніць час
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Зьмяніць час для вылучанага заданьня

@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}پا
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}متر
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}متن فیلتر:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}وارد کردن رشته پایش
@@ -656,8 +657,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}روی �
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}روی آهنگ کلیک کنید تا از برنامه فعلی پاک شوند (فقط لیست سفارشی 1 و سفارشی 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}بالانرین شرکت هایی که به مرحله {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}جدول اتحادیه شرکت ها در {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :تاجر
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :موسس شرکت
@@ -1357,7 +1356,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :اسنفاده 
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :استفاده از نشانه‌های بارگیری/بارگذاری: {STRING}
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :استفاده از تیک(هزارم ثانیه) به جای روز در برنامه ساعتی: {STRING}
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :نشان دادن ورود و خروج در جدول زمانی: {STRING}
 
@@ -3385,6 +3384,7 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :حرکت ({STRI
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :حرکت ({STRING}, برنامه ریزی نشده است) با حداکثر {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(توقف برای {STRING}, برنامه ریزی نشده است)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(دستور کار {STRING}, برنامه ریزی نشده است)
+
 
 
 

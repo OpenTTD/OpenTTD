@@ -228,6 +228,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}م
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP} متر
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}تصفية القائمة:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} ادخل فلتر
@@ -674,8 +675,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}اضغط
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}اضغط على المسار لازالته من القائمة
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}الشركات الكبرى التي وصلت لـ {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}ترتيب الشركات {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :رجل اعمال
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :مغامر
@@ -1407,7 +1406,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :استخدام 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :تفعيل مؤشر التحميل: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :حدد ما إذا كانت مؤشرات التحميل معروضة فوق تحميل المركبات أو تفريغها
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :عرض جدولة الأعمال بالمهام بدلا من الأيام: {STRING}
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :عرض الوصول و المغادرة في جدولة الاعمال: {STRING}
 
@@ -3864,8 +3863,6 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :سافر (إل�
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(البقاء ل{STRING}، ليس مجدول)
 STR_TIMETABLE_STAY_FOR                                          :ويبقى لـ {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ويسافر لـ {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}يوم
-STR_TIMETABLE_TICKS                                             :{COMMA} علامة
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}جدولة الاوامر هذه ستأخذ {STRING} لنهاية
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}جدولة الاوامر هذه ستأخذ على الاقل {STRING} لتكتمل (لايشمل كل الجدولة)
@@ -3874,10 +3871,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}هذه �
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}هذه العربه {STRING} مُتاخِرة حاليا عن الجدوله
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}هذه العربه {STRING} مُتَقَدِمه عن الجدوله
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}جدولة الاعمال لم تبدأ بعد
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}جدولة الاعمال ستبدأ فى {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}تاريخ البدأ
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}حدد تاريخًا كنقطة بداية لهذا الجدول الزمني. Ctrl + Click يوزع جميع المركبات التي تشارك هذا الطلب بالتساوي من التاريخ المحدد بناءً على ترتيبها النسبي ، إذا كان الطلب محددًا بجدول زمني كامل
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}غير الوقت
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}غير مقدار الزمن الذي يستغرقه هذا الامر

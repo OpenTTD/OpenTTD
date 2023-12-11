@@ -240,6 +240,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} רג�
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} מ'
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} מ'
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}מחרוזת סינון:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}הכנס מחרוזת סינון
@@ -685,8 +686,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}(לחץ 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}חמש החברות שהגיעו לשנת {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}טבלת ליגה של חברות ב {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}.{COMMA}
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :איש עסקים
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :יזם
@@ -1521,8 +1520,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :אפשר שימ
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{STRING} :הצג מצביעי הטענה
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :בחר האם מדדי טעינה יוצגו מעל רכבים בעת טעינתם או פריקתם
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{STRING} :הצג לוח זמנים בפעימות במקום בימים
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :הצג זמני נסיעה בלוחות זמנים בפעימות משחק במקום בימים
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :הצג לוחות זמנים של הגעות ועזיבות: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :הצג זמני הגעה ויציאה צפויים בלוחות זמנים
@@ -4181,8 +4179,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(נשאר ל-{S
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(מסע עבור {STRING} ללא טבלת זמנים)
 STR_TIMETABLE_STAY_FOR                                          :{STRING} והמתן למשך
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :{STRING} וערוך מסע ל
-STR_TIMETABLE_DAYS                                              :{P 0 "יום " ""}{COMMA}{P "" " ימים"}
-STR_TIMETABLE_TICKS                                             :{P 0 "פעימה " ""}{COMMA}{P "" " פעימות"}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}{STRING} להשלמת לוח זמנים זה נדרשים
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}.(לא כל היעדים תוזמנו) {STRING} להשלמת לוח זמנים זה ידרשו לפחות
@@ -4191,10 +4187,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}כלי �
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}{STRING} רכב זה מאחר ב
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}{STRING} רכב זה מקדים ב
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}לוח זמנים זה עדיין לא התחיל
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}לוח זמנים זה יתחיל ב-{STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}תאריך התחלה
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}בחר תאריך כנקודת ההתחלה ללוח הזמנים. Ctrl+לחיצה קובע את נקודת ההתחלה של לוח זמנים זה ומפזר בצורה אחידה בין כל כלי התחבורה המשותפים בלוח זמנים זה לפי סדרם, במידה וכל ההוראות כפופות ללוח הזמנים.
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}שנה זמן
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}שנה את פרק הזמן לשהייה ביעד שנבחר

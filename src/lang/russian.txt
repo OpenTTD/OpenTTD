@@ -381,6 +381,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}м
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фильтр:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введите ключевые слова для фильтрации списка
@@ -856,8 +857,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Щёлк
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Выберите трек для удаления из пользовательского списка
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Крупнейшие компании, достигшие {NUM} года
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Порядковая таблица компаний в {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнесмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN.abl                 :бизнесменом
@@ -1807,8 +1806,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Включит�
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Показывать индикатор загрузки: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Отображение индикаторов загрузки над загружающимся и разгружающимся транспортом
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Графики движения в «тиках», а не днях: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Измерять время в графиках движения игровыми «тиками», а не днями. 1 день равен 74 «тикам».
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Показывать время прибытия и отправления в графиках: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Показывать ожидаемое время прибытия и отправления в графиках движения
@@ -2497,7 +2495,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Установить пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитите вашу игру паролем, если не хотите, чтобы к ней могли подключиться посторонние.
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Видимость
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Видимость:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Видимость вашего сервера в публичном списке
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" а ов}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. количество клиентов:
@@ -4753,8 +4751,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ждать {ST
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(в пути {STRING}, график не составлен)
 STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :и идти в {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}д{P ень ня ней}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}тик{P "" а ов}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Весь маршрут займёт {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Движение по маршруту займёт {STRING} (не всё учтено)
@@ -4763,10 +4759,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Этот
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Этот транспорт опаздывает на {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Этот транспорт опережает график на {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}График движения ещё не установлен
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Отсчёт времени начнётся с {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Начальная дата
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Выберите начальную дату для этого графика. Ctrl+щелчок равномерно распределит все транспортные средства, следующие по этому маршруту, если время движения по нему полностью рассчитано.
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изменить время
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время исполнения выделенного задания. Ctrl+щелчок устанавливает время для всех заданий.
@@ -4790,8 +4784,6 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Ожид
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}График
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Переключение между графиком движения и ожидаемым временем прибытия/отправления
 
-STR_TIMETABLE_ARRIVAL                                           :Приб: {COLOUR}{DATE_TINY}
-STR_TIMETABLE_DEPARTURE                                         :Отпр: {COLOUR}{DATE_TINY}
 
 
 # Date window (for timetable)

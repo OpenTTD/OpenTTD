@@ -228,6 +228,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}м
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Филтриращ низ:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Въведете филтър
@@ -666,8 +667,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Нати
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Натиснете върху парче за да го премахнете от програмата (Custom1 и Custom2 само)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Първите компании достигнали {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Таблица Лига на компании в {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнесмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Предприемач
@@ -1468,8 +1467,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Разреша�
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Товарни индикатори: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Изберете дали индикаторът за зареждане се показва над превозните средства, които товарят и разтоварват
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Разписанието в цикли вместо дни: {STRING.n}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Показва времената за придвижване в таблиците в игрови единици, вместо в дни
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Покажи пристигането и заминаването в расписанията: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Показвай очакваните времена за пристигане и заминаване в таблиците
@@ -3971,8 +3969,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(престой
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(Пътувай към {STRING}, без разписание)
 STR_TIMETABLE_STAY_FOR                                          :и остани за {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :и отпътувай към {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}ден{P "" а}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}щракане{P "" та}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ще трябва {STRING} за това разписание да бъде приключено
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Това разписание ще вземе най-малко {STRING} за да приклучи (не всичко е планирано)
@@ -3981,10 +3977,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Това
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Това превозно средство е в момента с {STRING} закъснение
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Това превозно средство е в момента с {STRING} по-рано
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Това разписание още не е започнало
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Това разписание ще започне на {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Дата на започване
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK} Изберете начална дата на това разписание. Ctrl + Click задава началната дата и равномерно разпределя всички превозни средства, които споделят тази поръчка, на базата на тяхната относителна поръчка, ако поръчката е изцяло по разписание
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Промени времето
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Промени времетраенето на маркираната заповед

@@ -171,6 +171,7 @@ STR_UNITS_FORCE_SI                                              :{DECIMAL} kN
 STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} ft
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Daħħal sentenza għall-iffiltrar
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Daħħal kelma biex tiffiltra din il-lista għall-
@@ -612,6 +613,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Uza l-lista avv
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uzu tal-listi avvanzati tal-vetturi biex tghaqqad il-vetturi fi gruppi
 
 
+###length 3
 
 
 
@@ -1288,6 +1290,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Патуваа�
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :патуваат за {STRING} со најмногу {VELOCITY}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-iskeda ser iddum {STRING} biex titlesta
+
 
 
 

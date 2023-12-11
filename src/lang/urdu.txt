@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{NBSP}{DECIMAL}
 STR_UNITS_HEIGHT_IMPERIAL                                       :{NBSP}{DECIMAL} فٹ
 STR_UNITS_HEIGHT_SI                                             :{NBSP}{DECIMAL} میٹر
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} چھان کے الفاظ درج کیجیئے
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK} فھرست کے چھان کے لیے کوئی حرف دیجیئے
@@ -644,8 +645,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}موجو
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}موجودہ پروگرام میں سے نکالنے کے لئے گانے پر کلک کریں (صرف اپنی مرضی کے مطابق 1 یا 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}سر فہرست کمپنیاں جو {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}کمپنیوں کی فہرست میں {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :کاروباری
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :سرمایہ دار
@@ -1281,7 +1280,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :گاڑیوں ک
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :سامان بھرنے کی نشانی دکھائیں: {STRING}
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :اوقات کا جدول دنوں کی بجائے ٹِکس میں دکھائیں: {STRING}
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :قوقات کے جدول میں آمد اور روانگی دکھائیں: {STRING}
 
@@ -2672,6 +2671,7 @@ STR_ORDER_OUT_OF_RANGE                                          :{RED} (اگلا
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :زیادہ سے زیادہ {2:VELOCITY} رفتار پر سفر کریں (بغیر اوقات کے)
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} کے لئے زیادہ سے زیادہ {VELOCITY} رفتار پر سفر کریں
+
 
 
 

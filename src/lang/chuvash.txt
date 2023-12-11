@@ -167,6 +167,7 @@ STR_UNITS_POWER_SI                                              :{DECIMAL}кВт
 
 
 
+
 # Common window strings
 
 
@@ -715,6 +716,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
+###length 3
 
 
 
@@ -1556,6 +1558,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 # Time table window
+
 
 
 

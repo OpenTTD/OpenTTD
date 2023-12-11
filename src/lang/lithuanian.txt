@@ -429,6 +429,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Raktažodis:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Įveskite filtro raktažodį
@@ -889,8 +890,6 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Paspausk
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Spragtelėjus takelį, jis pašalinamas iš dabartinės programos (tik „Speciali 1“ ir „Speciali 2“)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Geriausios kompanijos, kurios pasiekė {NUM}
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Kompaniju Lygos lentele {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Komersantas
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Verslininkas
@@ -1785,8 +1784,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Išplėstinio (
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Rodyti krovos indikatorius: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Krovos indikatoriai rodomi virš pakraunamų bei iškraunamų tansporto priemonių
 
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Tvarkaraščio trukmes matuoti vidiniais impulsais, o ne dienomis: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Vieną dieną sudaro keliasdešimt vidinių impulsų
+###length 3
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Rodyti arvykimą ir išvykimą tvarkaraščiuose: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tvarkaraščiuose rodyti numatomas atvykimo ir išvykimo datas
@@ -4667,14 +4665,6 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(stovėti {STRI
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(vykti {STRING.ka}, neįtraukiant į tvarkaraštį)
 STR_TIMETABLE_STAY_FOR                                          :ir pasilikti {STRING.ka}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ir keliauti {STRING.ka}
-STR_TIMETABLE_DAYS                                              :{G=mot}{COMMA}{NBSP}dien{P a os ų}
-STR_TIMETABLE_DAYS.kas                                          :{COMMA} dien{P a os ų}
-STR_TIMETABLE_DAYS.ko                                           :{COMMA} dien{P os as ų}
-STR_TIMETABLE_DAYS.kam                                          :{COMMA} dien{P ai oms ų}
-STR_TIMETABLE_DAYS.ka                                           :{COMMA} dien{P ą as ų}
-STR_TIMETABLE_DAYS.kuo                                          :{COMMA} dien{P a omis ų}
-STR_TIMETABLE_DAYS.kur                                          :{COMMA} dien{P oje ose ų}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}impuls{P as ai ų}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Maršruto trukmė yra {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Maršruto trukmė yra mažiausiai {STRING}, nes nustatytos ne visų užduočių trukmės
@@ -4683,10 +4673,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Transpor
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Transporto priemonė vėluoja {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Transporto priemonė skuba {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tvarkaraštis dar nėra aktyvintas
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tvarkaraštis bus aktyvintas {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aktyvinimo data
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Tvarkaraštyje pasirinkite pradžios datą. Ctrl+pelės paspaudimas pažymės datą kaip pradžios tašką ir paskirstys visas transporto priemones su tokiais pačiais maršrutais tolygiai pagal jų santykinę poziciją maršrute (jei kryptys maršrute visiškai apibūdintos)
+
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Keisti trukmę
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Keisti pažymėtos užduoties trukmę
