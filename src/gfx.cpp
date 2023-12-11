@@ -1982,17 +1982,17 @@ bool AdjustGUIZoom(bool automatic)
 	UpdateGUIZoom();
 	if (old_scale == _gui_scale && old_gui_zoom == _gui_zoom) return false;
 
-	/* Reload sprites if sprite zoom level has changed. */
+	/* Update cursors if sprite zoom level has changed. */
 	if (old_gui_zoom != _gui_zoom) {
-		GfxClearSpriteCache();
 		VideoDriver::GetInstance()->ClearSystemSprites();
 		UpdateCursorSize();
-	} else if (old_font_zoom != _font_zoom) {
+	}
+	if (old_font_zoom != _font_zoom) {
 		GfxClearFontSpriteCache();
+		ClearFontCache();
+		LoadStringWidthTable();
 	}
 
-	ClearFontCache();
-	LoadStringWidthTable();
 	UpdateAllVirtCoords();
 
 	/* Adjust all window sizes to match the new zoom level, so that they don't appear
