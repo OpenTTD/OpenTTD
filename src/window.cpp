@@ -1807,8 +1807,11 @@ void InitWindowSystem()
 	_scrolling_viewport = false;
 	_mouse_hovering = false;
 
+	SetupWidgetDimensions();
 	NWidgetLeaf::InvalidateDimensionCache(); // Reset cached sizes of several widgets.
 	NWidgetScrollbar::InvalidateDimensionCache();
+
+	InitDepotWindowBlockSizes();
 
 	ShowFirstError();
 }
