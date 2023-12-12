@@ -116,7 +116,9 @@ static int32_t ClickChangeDateCheat(int32_t new_value, int32_t)
 
 	/* Now it's safe to actually change the date. */
 	TimerGameCalendar::SetDate(new_calendar_date, TimerGameCalendar::date_fract);
-	TimerGameEconomy::SetDate(new_economy_date, TimerGameEconomy::date_fract);
+
+	/* If not using wallclock units, we keep economy date in sync with calendar date and must change it also. */
+	if (!TimerGameEconomy::UsingWallclockUnits()) TimerGameEconomy::SetDate(new_economy_date, TimerGameEconomy::date_fract);
 
 	CalendarEnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
