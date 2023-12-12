@@ -503,4 +503,14 @@ static void ChangeTimekeepingUnits(int32_t)
 	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
 }
 
+/**
+ * Pre-callback check when trying to change the timetable mode. This is locked to Seconds when using wallclock units.
+ * @param Unused.
+ * @return True if we allow changing the timetable mode.
+ */
+static bool CanChangeTimetableMode(int32_t &)
+{
+	return !TimerGameEconomy::UsingWallclockUnits();
+}
+
 /* End - Callback Functions */

@@ -215,6 +215,12 @@ struct TimetableWindow : Window {
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_VT_SCROLLBAR);
+
+		/* When using wallclock units, we must ensure the client displays timetables in seconds. */
+		if (TimerGameEconomy::UsingWallclockUnits()) {
+			_settings_client.gui.timetable_mode = TimetableMode::Seconds;
+		}
+
 		this->UpdateSelectionStates();
 		this->FinishInitNested(window_number);
 
