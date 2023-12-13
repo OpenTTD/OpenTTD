@@ -1,6 +1,8 @@
 add_files(
     grf.cpp
     grf.hpp
+    makeindexed.cpp
+    makeindexed.h
     sprite_file.cpp
     sprite_file_type.hpp
     spriteloader.hpp

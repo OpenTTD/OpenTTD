@@ -20,6 +20,7 @@ bool CopyPalette(Palette &local_palette, bool force_copy = false);
 void GfxInitPalettes();
 
 uint8_t GetNearestColourIndex(uint8_t r, uint8_t g, uint8_t b);
+uint8_t GetNearestColourReshadeIndex(uint8_t b);
 
 static inline uint8_t GetNearestColourIndex(const Colour colour)
 {
