@@ -381,6 +381,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}м
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}м
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}д{P ень ня ней}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}секунд{P а ы ""}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}тик{P "" а ов}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фильтр:
@@ -857,6 +860,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Щёлк
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Выберите трек для удаления из пользовательского списка
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Крупнейшие компании
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнесмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN.abl                 :бизнесменом
@@ -1806,7 +1810,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Включит�
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Показывать индикатор загрузки: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Отображение индикаторов загрузки над загружающимся и разгружающимся транспортом
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Единицы времени в графиках: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Единицы времени, используемые в графиках движения транспорта
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :дни
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :секунды
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :тики
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Показывать время прибытия и отправления в графиках: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Показывать ожидаемое время прибытия и отправления в графиках движения
@@ -4759,8 +4768,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Этот
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Этот транспорт опаздывает на {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Этот транспорт опережает график на {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}График движения ещё не установлен
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Этот график будет запущен {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}До запуска графика осталось {COMMA} секунд{P а ы ""}
 
+STR_TIMETABLE_START                                             :{BLACK}Запуск графика
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Выберите время запуска графика. Ctrl+щелчок запустит транспортные средства, следующие по этому маршруту, через равные промежутки времени, если график движения по маршруту полностью рассчитан.
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Секунд до запуска графика
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изменить время
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время исполнения выделенного задания. Ctrl+щелчок устанавливает время для всех заданий.
@@ -4784,6 +4798,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Ожид
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}График
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Переключение между графиком движения и ожидаемым временем прибытия/отправления
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :П: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :О: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :П: {COLOUR}{COMMA} с
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :О: {COLOUR}{COMMA} с
 
 
 # Date window (for timetable)
