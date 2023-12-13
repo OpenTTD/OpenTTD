@@ -1989,9 +1989,9 @@ bool AdjustGUIZoom(bool automatic)
 	}
 	if (old_font_zoom != _font_zoom) {
 		GfxClearFontSpriteCache();
-		ClearFontCache();
-		LoadStringWidthTable();
 	}
+	ClearFontCache();
+	LoadStringWidthTable();
 
 	UpdateAllVirtCoords();
 
