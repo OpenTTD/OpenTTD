@@ -215,7 +215,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 	return true;
 }
 
-uint8_t LoadSpriteV1(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp)
+uint8_t LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp)
 {
 	/* Check the requested colour depth. */
 	if (load_32bpp) return 0;
@@ -252,7 +252,7 @@ uint8_t LoadSpriteV1(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file
 	return 0;
 }
 
-uint8_t LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags)
+uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags)
 {
 	static const ZoomLevel zoom_lvl_map[6] = {ZOOM_LVL_OUT_4X, ZOOM_LVL_NORMAL, ZOOM_LVL_OUT_2X, ZOOM_LVL_OUT_8X, ZOOM_LVL_OUT_16X, ZOOM_LVL_OUT_32X};
 
@@ -350,7 +350,7 @@ uint8_t LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file
 	return loaded_sprites;
 }
 
-uint8_t SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags)
+uint8_t SpriteLoaderGrf::LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags)
 {
 	if (this->container_ver >= 2) {
 		return LoadSpriteV2(sprite, file, file_pos, sprite_type, load_32bpp, control_flags);

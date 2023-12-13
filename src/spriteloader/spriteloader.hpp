@@ -66,6 +66,11 @@ public:
 	};
 
 	/**
+	 * Type defining a collection of sprites, one for each zoom level.
+	 */
+	using SpriteCollection = std::array<Sprite, ZOOM_LVL_END>;
+
+	/**
 	 * Load a sprite from the disk and return a sprite struct which is the same for all loaders.
 	 * @param[out] sprite The sprites to fill with data.
 	 * @param file_slot   The file "descriptor" of the file we read from.
@@ -75,7 +80,7 @@ public:
 	 * @param control_flags Control flags, see SpriteCacheCtrlFlags.
 	 * @return Bit mask of the zoom levels successfully loaded or 0 if no sprite could be loaded.
 	 */
-	virtual uint8_t LoadSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags) = 0;
+	virtual uint8_t LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, byte control_flags) = 0;
 
 	virtual ~SpriteLoader() = default;
 };
@@ -94,7 +99,7 @@ public:
 	/**
 	 * Convert a sprite from the loader to our own format.
 	 */
-	virtual Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) = 0;
+	virtual Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator) = 0;
 
 	/**
 	 * Get the value which the height and width on a sprite have to be aligned by.

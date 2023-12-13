@@ -235,7 +235,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) UserError("Font glyph is too large");
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
-	SpriteLoader::Sprite sprite;
+	SpriteLoader::SpriteCollection spritecollection;
+	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_NORMAL];
 	sprite.AllocateData(ZOOM_LVL_NORMAL, static_cast<size_t>(width) * height);
 	sprite.type = SpriteType::Font;
 	sprite.colours = (aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
@@ -266,7 +267,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	}
 
 	GlyphEntry new_glyph;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, SimpleSpriteAlloc);
+	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, SimpleSpriteAlloc);
 	new_glyph.width  = slot->advance.x >> 6;
 
 	this->SetGlyphPtr(key, &new_glyph);

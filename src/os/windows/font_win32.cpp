@@ -230,7 +230,8 @@ void Win32FontCache::ClearFontCache()
 	GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
 
 	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
-	SpriteLoader::Sprite sprite;
+	SpriteLoader::SpriteCollection spritecollection;
+	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_NORMAL];
 	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
 	sprite.type = SpriteType::Font;
 	sprite.colours = (aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
@@ -270,7 +271,7 @@ void Win32FontCache::ClearFontCache()
 	}
 
 	GlyphEntry new_glyph;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, SimpleSpriteAlloc);
+	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, SimpleSpriteAlloc);
 	new_glyph.width = gm.gmCellIncX;
 
 	this->SetGlyphPtr(key, &new_glyph);

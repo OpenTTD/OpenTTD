@@ -18,7 +18,7 @@ public:
 	uint8_t GetScreenDepth() override { return 0; }
 	void Draw(Blitter::BlitterParams *, BlitterMode, ZoomLevel) override {};
 	void DrawColourMappingRect(void *, int, int, PaletteID) override {};
-	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override;
+	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator) override;
 	void *MoveTo(void *, int, int) override { return nullptr; };
 	void SetPixel(void *, int, int, uint8_t) override {};
 	void DrawRect(void *, int, int, uint8_t) override {};

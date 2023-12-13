@@ -20,7 +20,7 @@
 /** Instantiation of the SSE2 32bpp blitter factory. */
 static FBlitter_32bppSSE2 iFBlitter_32bppSSE2;
 
-Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
+Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &sprite, AllocatorProc *allocator)
 {
 	/* First uint32_t of a line = the number of transparent pixels from the left.
 	 * Second uint32_t of a line = the number of transparent pixels from the right.
@@ -28,7 +28,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 	 */
 	ZoomLevel zoom_min = ZOOM_LVL_NORMAL;
 	ZoomLevel zoom_max = ZOOM_LVL_NORMAL;
-	if (sprite->type != SpriteType::Font) {
+	if (sprite[ZOOM_LVL_NORMAL].type != SpriteType::Font) {
 		zoom_min = _settings_client.gui.zoom_min;
 		zoom_max = _settings_client.gui.zoom_max;
 		if (zoom_max == zoom_min) zoom_max = ZOOM_LVL_MAX;
@@ -52,10 +52,10 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 	}
 
 	Sprite *dst_sprite = (Sprite *) allocator(sizeof(Sprite) + sizeof(SpriteData) + all_sprites_size);
-	dst_sprite->height = sprite->height;
-	dst_sprite->width  = sprite->width;
-	dst_sprite->x_offs = sprite->x_offs;
-	dst_sprite->y_offs = sprite->y_offs;
+	dst_sprite->height = sprite[ZOOM_LVL_NORMAL].height;
+	dst_sprite->width  = sprite[ZOOM_LVL_NORMAL].width;
+	dst_sprite->x_offs = sprite[ZOOM_LVL_NORMAL].x_offs;
+	dst_sprite->y_offs = sprite[ZOOM_LVL_NORMAL].y_offs;
 	memcpy(dst_sprite->data, &sd, sizeof(SpriteData));
 
 	/* Copy colours and determine flags. */

@@ -136,7 +136,7 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 			};
 #undef CPSET
 #undef CP___
-			static const SpriteLoader::Sprite builtin_questionmark = {
+			static const SpriteLoader::SpriteCollection builtin_questionmark = {{ {
 				10, // height
 				8,  // width
 				0,  // x_offs
@@ -144,9 +144,9 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 				SpriteType::Font,
 				SCC_PAL,
 				builtin_questionmark_data
-			};
+			} }};
 
-			Sprite *spr = BlitterFactory::GetCurrentBlitter()->Encode(&builtin_questionmark, SimpleSpriteAlloc);
+			Sprite *spr = BlitterFactory::GetCurrentBlitter()->Encode(builtin_questionmark, SimpleSpriteAlloc);
 			assert(spr != nullptr);
 			GlyphEntry new_glyph;
 			new_glyph.sprite = spr;

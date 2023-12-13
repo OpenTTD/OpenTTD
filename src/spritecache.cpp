@@ -213,7 +213,7 @@ uint GetMaxSpriteID()
 	return _spritecache_items;
 }
 
-static bool ResizeSpriteIn(SpriteLoader::Sprite *sprite, ZoomLevel src, ZoomLevel tgt)
+static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, ZoomLevel src, ZoomLevel tgt)
 {
 	uint8_t scaled_1 = ScaleByZoom(1, (ZoomLevel)(src - tgt));
 
@@ -240,7 +240,7 @@ static bool ResizeSpriteIn(SpriteLoader::Sprite *sprite, ZoomLevel src, ZoomLeve
 	return true;
 }
 
-static void ResizeSpriteOut(SpriteLoader::Sprite *sprite, ZoomLevel zoom)
+static void ResizeSpriteOut(SpriteLoader::SpriteCollection &sprite, ZoomLevel zoom)
 {
 	/* Algorithm based on 32bpp_Optimized::ResizeSprite() */
 	sprite[zoom].width  = UnScaleByZoom(sprite[ZOOM_LVL_NORMAL].width,  zoom);
@@ -323,7 +323,7 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 	return true;
 }
 
-static bool PadSprites(SpriteLoader::Sprite *sprite, uint8_t sprite_avail, SpriteEncoder *encoder)
+static bool PadSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite_avail, SpriteEncoder *encoder)
 {
 	/* Get minimum top left corner coordinates. */
 	int min_xoffs = INT32_MAX;
@@ -371,7 +371,7 @@ static bool PadSprites(SpriteLoader::Sprite *sprite, uint8_t sprite_avail, Sprit
 	return true;
 }
 
-static bool ResizeSprites(SpriteLoader::Sprite *sprite, uint8_t sprite_avail, SpriteEncoder *encoder)
+static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite_avail, SpriteEncoder *encoder)
 {
 	/* Create a fully zoomed image if it does not exist */
 	ZoomLevel first_avail = static_cast<ZoomLevel>(FIND_FIRST_BIT(sprite_avail));
@@ -457,7 +457,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 	Debug(sprite, 9, "Load sprite {}", id);
 
-	SpriteLoader::Sprite sprite[ZOOM_LVL_END];
+	SpriteLoader::SpriteCollection sprite;
 	uint8_t sprite_avail = 0;
 	sprite[ZOOM_LVL_NORMAL].type = sprite_type;
 
@@ -509,7 +509,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, allocator, encoder);
 	}
 
-	if (sprite->type == SpriteType::Font && _font_zoom != ZOOM_LVL_NORMAL) {
+	if (sprite[ZOOM_LVL_NORMAL].type == SpriteType::Font && _font_zoom != ZOOM_LVL_NORMAL) {
 		/* Make ZOOM_LVL_NORMAL be ZOOM_LVL_GUI */
 		sprite[ZOOM_LVL_NORMAL].width  = sprite[_font_zoom].width;
 		sprite[ZOOM_LVL_NORMAL].height = sprite[_font_zoom].height;
