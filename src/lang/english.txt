@@ -1491,7 +1491,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrain type: {STRING2}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Hilliness of the landscape
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Hilliness of the landscape
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industry density: {STRING2}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set how many industries should be generated and what level should be maintained during the game
@@ -1511,7 +1511,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Control the app
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain: {STRING2}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Choose the frequency of hills: Smooth landscapes have fewer, more wide-spread hills. Rough landscapes have many hills, which may look repetitive
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Choose the frequency of hills: Smooth landscapes have fewer, more wide-spread hills. Rough landscapes have many hills, which may look repetitive
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Smooth
@@ -1519,7 +1519,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rough
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Very Rough
 
 STR_CONFIG_SETTING_VARIETY                                      :Variety distribution: {STRING2}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis only) Control whether the map contains both mountainous and flat areas. Since this only makes the map flatter, other settings should be set to mountainous
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Control whether the map contains both mountainous and flat areas. Since this only makes the map flatter, other settings should be set to mountainous
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :River amount: {STRING2}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Choose how many rivers to generate
