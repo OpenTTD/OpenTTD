@@ -242,11 +242,22 @@ void InitializeWindowViewport(Window *w, int x, int y,
 		veh = Vehicle::Get(vp->follow_vehicle);
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 	} else {
-		x = TileX(std::get<TileIndex>(focus)) * TILE_SIZE;
-		y = TileY(std::get<TileIndex>(focus)) * TILE_SIZE;
+		TileIndex tile = std::get<TileIndex>(focus);
+		if (tile == INVALID_TILE) {
+			/* No tile? Use center of main viewport. */
+			const Window *mw = GetMainWindow();
 
+			/* center on same place as main window (zoom is maximum, no adjustment needed) */
+			pt.x = mw->viewport->scrollpos_x + mw->viewport->virtual_width / 2;
+			pt.x -= vp->virtual_width / 2;
+			pt.y = mw->viewport->scrollpos_y + mw->viewport->virtual_height / 2;
+			pt.y -= vp->virtual_height / 2;
+		} else {
+			x = TileX(tile) * TILE_SIZE;
+			y = TileY(tile) * TILE_SIZE;
+			pt = MapXYZToViewport(vp, x, y, GetSlopePixelZ(x, y));
+		}
 		vp->follow_vehicle = INVALID_VEHICLE;
-		pt = MapXYZToViewport(vp, x, y, GetSlopePixelZ(x, y));
 	}
 
 	vp->scrollpos_x = pt.x;

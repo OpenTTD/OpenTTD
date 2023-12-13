@@ -57,25 +57,8 @@ public:
 		this->InitNested(window_number);
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_EV_VIEWPORT);
-		nvp->InitializeViewport(this, 0, ScaleZoomGUI(ZOOM_LVL_VIEWPORT));
+		nvp->InitializeViewport(this, tile, ScaleZoomGUI(ZOOM_LVL_VIEWPORT));
 		if (_settings_client.gui.zoom_min == viewport->zoom) this->DisableWidget(WID_EV_ZOOM_IN);
-
-		Point pt;
-		if (tile == INVALID_TILE) {
-			/* No tile? Use center of main viewport. */
-			const Window *w = GetMainWindow();
-
-			/* center on same place as main window (zoom is maximum, no adjustment needed) */
-			pt.x = w->viewport->scrollpos_x + w->viewport->virtual_width / 2;
-			pt.y = w->viewport->scrollpos_y + w->viewport->virtual_height / 2;
-		} else {
-			pt = RemapCoords(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2, TilePixelHeight(tile));
-		}
-
-		this->viewport->scrollpos_x = pt.x - this->viewport->virtual_width / 2;
-		this->viewport->scrollpos_y = pt.y - this->viewport->virtual_height / 2;
-		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
-		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
 	}
 
 	void SetStringParameters(int widget) const override
