@@ -1231,7 +1231,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					}
 
 					default: {
-						StringParameters tmp_params(args, 1);
+						auto tmp_params = MakeParameters(args.GetNextParameter<int64_t>());
 						GetStringWithArgs(builder, cargo_str, tmp_params);
 						break;
 					}
@@ -1245,7 +1245,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				if (IsValidCargoID(cargo) && cargo >= CargoSpec::GetArraySize()) break;
 
 				StringID cargo_str = !IsValidCargoID(cargo) ? STR_QUANTITY_N_A : CargoSpec::Get(cargo)->quantifier;
-				StringParameters tmp_args(args, 1);
+				auto tmp_args = MakeParameters(args.GetNextParameter<int64_t>());
 				GetStringWithArgs(builder, cargo_str, tmp_args);
 				break;
 			}
@@ -1405,7 +1405,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 			case SCC_DEPOT_NAME: { // {DEPOT}
 				VehicleType vt = args.GetNextParameter<VehicleType>();
 				if (vt == VEH_AIRCRAFT) {
-					StringParameters tmp_params = StringParameters(args, 1);
+					auto tmp_params = MakeParameters(args.GetNextParameter<StationID>());
 					GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_AIRCRAFT, tmp_params);
 					break;
 				}
