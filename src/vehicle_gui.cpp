@@ -300,13 +300,13 @@ static GUIVehicleGroupList::FilterFunction * const _filter_funcs[] = {
 };
 
 /**
- * Set cargo filter list item index.
- * @param index The index to be set
+ * Set cargo filter for the vehicle group list.
+ * @param cid The cargo to be set.
  */
-void BaseVehicleListWindow::SetCargoFilterIndex(byte index)
+void BaseVehicleListWindow::SetCargoFilter(CargoID cid)
 {
-	if (this->cargo_filter_criteria != index) {
-		this->cargo_filter_criteria = index;
+	if (this->cargo_filter_criteria != cid) {
+		this->cargo_filter_criteria = cid;
 		/* Deactivate filter if criteria is 'Show All', activate it otherwise. */
 		this->vehgroups.SetFilterState(this->cargo_filter_criteria != CF_ANY);
 		this->vehgroups.SetFilterType(0);
@@ -2093,7 +2093,7 @@ public:
 				break;
 
 			case WID_VL_FILTER_BY_CARGO:
-				this->SetCargoFilterIndex(index);
+				this->SetCargoFilter(index);
 				break;
 
 			case WID_VL_MANAGE_VEHICLES_DROPDOWN:

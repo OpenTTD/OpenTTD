@@ -953,7 +953,7 @@ public:
 				break;
 
 			case WID_GL_FILTER_BY_CARGO: // Select a cargo filter criteria
-				this->SetCargoFilterIndex(index);
+				this->SetCargoFilter(index);
 				break;
 
 			case WID_GL_MANAGE_VEHICLES_DROPDOWN:

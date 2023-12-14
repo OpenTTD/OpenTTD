@@ -1332,13 +1332,13 @@ protected:
 	};
 
 	/**
-	 * Set cargo filter list item index.
-	 * @param index The index of the cargo to be set
+	 * Set produced cargo filter for the industry list.
+	 * @param cid The cargo to be set
 	 */
-	void SetProducedCargoFilterIndex(byte index)
+	void SetProducedCargoFilter(CargoID cid)
 	{
-		if (this->produced_cargo_filter_criteria != index) {
-			this->produced_cargo_filter_criteria = index;
+		if (this->produced_cargo_filter_criteria != cid) {
+			this->produced_cargo_filter_criteria = cid;
 			/* deactivate filter if criteria is 'Show All', activate it otherwise */
 			bool is_filtering_necessary = this->produced_cargo_filter_criteria != CF_ANY || this->accepted_cargo_filter_criteria != CF_ANY;
 
@@ -1349,13 +1349,13 @@ protected:
 	}
 
 	/**
-	 * Set cargo filter list item index.
-	 * @param index The index of the cargo to be set
+	 * Set accepted cargo filter for the industry list.
+	 * @param index The cargo to be set
 	 */
-	void SetAcceptedCargoFilterIndex(byte index)
+	void SetAcceptedCargoFilter(CargoID cid)
 	{
-		if (this->accepted_cargo_filter_criteria != index) {
-			this->accepted_cargo_filter_criteria = index;
+		if (this->accepted_cargo_filter_criteria != cid) {
+			this->accepted_cargo_filter_criteria = cid;
 			/* deactivate filter if criteria is 'Show All', activate it otherwise */
 			bool is_filtering_necessary = this->produced_cargo_filter_criteria != CF_ANY || this->accepted_cargo_filter_criteria != CF_ANY;
 
@@ -1803,13 +1803,13 @@ public:
 			}
 
 			case WID_ID_FILTER_BY_ACC_CARGO: {
-				this->SetAcceptedCargoFilterIndex(index);
+				this->SetAcceptedCargoFilter(index);
 				this->BuildSortIndustriesList();
 				break;
 			}
 
 			case WID_ID_FILTER_BY_PROD_CARGO: {
-				this->SetProducedCargoFilterIndex(index);
+				this->SetProducedCargoFilter(index);
 				this->BuildSortIndustriesList();
 				break;
 			}
