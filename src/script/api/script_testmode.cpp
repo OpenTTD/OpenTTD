@@ -31,8 +31,8 @@ ScriptTestMode::ScriptTestMode()
 void ScriptTestMode::FinalRelease()
 {
 	if (this->GetDoCommandModeInstance() != this) {
-		/* Ignore this error if the script already died. */
-		if (!ScriptObject::GetActiveInstance()->IsDead()) {
+		/* Ignore this error if the script is not alive. */
+		if (ScriptObject::GetActiveInstance()->IsAlive()) {
 			throw Script_FatalError("Testmode object was removed while it was not the latest *Mode object created.");
 		}
 	}
