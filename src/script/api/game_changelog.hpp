@@ -22,6 +22,21 @@
  * \li GSAsyncMode
  * \li GSCompanyMode::IsValid
  * \li GSCompanyMode::IsDeity
+ * \li GSDateEconomy::DATE_INVALID
+ * \li GSDateEconomy::IsValidDate
+ * \li GSDateEconomy::GetCurrentDate
+ * \li GSDateEconomy::GetYear
+ * \li GSDateEconomy::GetMonth
+ * \li GSDateEconomy::GetDayOfMonth
+ * \li GSDateEconomy::GetDate
+ * \li GSDateEconomy::GetSystemTime
+ * \li GSDateCalendar::DATE_INVALID
+ * \li GSDateCalendar::IsValidDate
+ * \li GSDateCalendar::GetCurrentDate
+ * \li GSDateCalendar::GetYear
+ * \li GSDateCalendar::GetMonth
+ * \li GSDateCalendar::GetDayOfMonth
+ * \li GSDateCalendar::GetDate
  * \li GSTown::ROAD_LAYOUT_RANDOM
  * \li GSVehicle::IsPrimaryVehicle
  * \li GSOrder::SetOrderJumpTo

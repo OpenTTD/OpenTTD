@@ -5,27 +5,27 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_date.cpp Implementation of ScriptDate. */
+/** @file script_date_economy.cpp Implementation of ScriptDateEconomy. */
 
 #include "../../stdafx.h"
-#include "script_date.hpp"
-#include "../../timer/timer_game_calendar.h"
+#include "script_date_economy.hpp"
+#include "../../timer/timer_game_economy.h"
 
 #include <time.h>
 
 #include "../../safeguards.h"
 
-/* static */ bool ScriptDate::IsValidDate(Date date)
+/* static */ bool ScriptDateEconomy::IsValidDate(Date date)
 {
 	return date >= 0;
 }
 
-/* static */ ScriptDate::Date ScriptDate::GetCurrentDate()
+/* static */ ScriptDateEconomy::Date ScriptDateEconomy::GetCurrentDate()
 {
-	return (ScriptDate::Date)TimerGameCalendar::date.base();
+	return (ScriptDateEconomy::Date)TimerGameCalendar::date.base();
 }
 
-/* static */ SQInteger ScriptDate::GetYear(ScriptDate::Date date)
+/* static */ SQInteger ScriptDateEconomy::GetYear(ScriptDateEconomy::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
@@ -34,7 +34,7 @@
 	return ymd.year.base();
 }
 
-/* static */ SQInteger ScriptDate::GetMonth(ScriptDate::Date date)
+/* static */ SQInteger ScriptDateEconomy::GetMonth(ScriptDateEconomy::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
@@ -43,7 +43,7 @@
 	return ymd.month + 1;
 }
 
-/* static */ SQInteger ScriptDate::GetDayOfMonth(ScriptDate::Date date)
+/* static */ SQInteger ScriptDateEconomy::GetDayOfMonth(ScriptDateEconomy::Date date)
 {
 	if (date < 0) return DATE_INVALID;
 
@@ -52,16 +52,16 @@
 	return ymd.day;
 }
 
-/* static */ ScriptDate::Date ScriptDate::GetDate(SQInteger year, SQInteger month, SQInteger day_of_month)
+/* static */ ScriptDateEconomy::Date ScriptDateEconomy::GetDate(SQInteger year, SQInteger month, SQInteger day_of_month)
 {
 	if (month < 1 || month > 12) return DATE_INVALID;
 	if (day_of_month < 1 || day_of_month > 31) return DATE_INVALID;
 	if (year < 0 || year > CalendarTime::MAX_YEAR) return DATE_INVALID;
 
-	return (ScriptDate::Date)::TimerGameCalendar::ConvertYMDToDate(year, month - 1, day_of_month).base();
+	return (ScriptDateEconomy::Date)::TimerGameCalendar::ConvertYMDToDate(year, month - 1, day_of_month).base();
 }
 
-/* static */ SQInteger ScriptDate::GetSystemTime()
+/* static */ SQInteger ScriptDateEconomy::GetSystemTime()
 {
 	time_t t;
 	time(&t);

@@ -5,13 +5,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_date.hpp Everything to query and manipulate date related information. */
+/** @file script_date_economy.hpp Everything to query and manipulate date related information. */
 
-#ifndef SCRIPT_DATE_HPP
-#define SCRIPT_DATE_HPP
+#ifndef SCRIPT_DATE_ECONOMY_HPP
+#define SCRIPT_DATE_ECONOMY_HPP
 
 #include "script_object.hpp"
-#include "timer/timer_game_calendar.h"
+#include "../../timer/timer_game_economy.h"
 
 /**
  * Class that handles all date related (calculation) functions.
@@ -24,10 +24,10 @@
  *       two different moments in time because they count the number
  *       of days since the year 0.
  */
-class ScriptDate : public ScriptObject {
+class ScriptDateEconomy : public ScriptObject {
 public:
 	/**
-	 * Date data type is an integer value. Use ScriptDate::GetDate to
+	 * Date data type is an integer value. Use ScriptDateEconomy::GetDate to
 	 * compose valid date values for a known year, month and day.
 	 */
 	enum Date {
@@ -89,4 +89,4 @@ public:
 	static SQInteger GetSystemTime();
 };
 
-#endif /* SCRIPT_DATE_HPP */
+#endif /* SCRIPT_DATE_ECONOMY_HPP */

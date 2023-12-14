@@ -18,6 +18,25 @@
  * This version is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li GSIndustry::GetConstructionDate
+ * \li GSAsyncMode
+ * \li GSCompanyMode::IsValid
+ * \li GSCompanyMode::IsDeity
+ * \li AIDateEconomy::DATE_INVALID
+ * \li AIDateEconomy::IsValidDate
+ * \li AIDateEconomy::GetCurrentDate
+ * \li AIDateEconomy::GetYear
+ * \li AIDateEconomy::GetMonth
+ * \li AIDateEconomy::GetDayOfMonth
+ * \li AIDateEconomy::GetDate
+ * \li AIDateEconomy::GetSystemTime
+ * \li AIDateCalendar::DATE_INVALID
+ * \li AIDateCalendar::IsValidDate
+ * \li AIDateCalendar::GetCurrentDate
+ * \li AIDateCalendar::GetYear
+ * \li AIDateCalendar::GetMonth
+ * \li AIDateCalendar::GetDayOfMonth
+ * \li AIDateCalendar::GetDate
  * \li AITown::ROAD_LAYOUT_RANDOM
  * \li AIVehicle::IsPrimaryVehicle
  *

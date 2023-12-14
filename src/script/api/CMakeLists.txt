@@ -159,7 +159,8 @@ add_files(
     script_company.hpp
     script_companymode.hpp
     script_controller.hpp
-    script_date.hpp
+    script_date_calendar.hpp
+    script_date_economy.hpp
     script_depotlist.hpp
     script_engine.hpp
     script_enginelist.hpp
@@ -233,7 +234,8 @@ add_files(
     script_company.cpp
     script_companymode.cpp
     script_controller.cpp
-    script_date.cpp
+    script_date_calendar.cpp
+    script_date_economy.cpp
     script_depotlist.cpp
     script_engine.cpp
     script_enginelist.cpp
