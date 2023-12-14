@@ -2272,7 +2272,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				started++;
 
 				if (!grfids.empty()) grfids += ", ";
-				fmt::format_to(std::back_inserter(grfids), "[{%:08X}]", BSWAP32(pr.grffile->grfid));
+				fmt::format_to(std::back_inserter(grfids), "[{:08X}]", BSWAP32(pr.grffile->grfid));
 			}
 		}
 		if (started > 0) {
