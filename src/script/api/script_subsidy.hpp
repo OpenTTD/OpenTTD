@@ -11,7 +11,7 @@
 #define SCRIPT_SUBSIDY_HPP
 
 #include "script_company.hpp"
-#include "script_date.hpp"
+#include "script_date_economy.hpp"
 
 /**
  * Class that handles all subsidy related functions.
@@ -74,8 +74,8 @@ public:
 	static ScriptCompany::CompanyID GetAwardedTo(SubsidyID subsidy_id);
 
 	/**
-	 * Get the date this subsidy expires. In case the subsidy is already
-	 *  awarded, return the date the subsidy expires, else, return the date the
+	 * Get the economy date this subsidy expires. In case the subsidy is already
+	 *  awarded, return the economy date the subsidy expires, else, return the economy date the
 	 *  offer expires.
 	 * @param subsidy_id The SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id).
@@ -83,7 +83,7 @@ public:
 	 * @note The return value of this function will change if the subsidy is
 	 *  awarded.
 	 */
-	static ScriptDate::Date GetExpireDate(SubsidyID subsidy_id);
+	static ScriptDateEconomy::Date GetExpireDate(SubsidyID subsidy_id);
 
 	/**
 	 * Get the cargo type that has to be transported in order to be awarded this

@@ -11,7 +11,7 @@
 #define SCRIPT_BASESTATION_HPP
 
 #include "script_text.hpp"
-#include "script_date.hpp"
+#include "script_date_calendar.hpp"
 
 /**
  * Base class for stations and waypoints.
@@ -68,11 +68,11 @@ public:
 	static TileIndex GetLocation(StationID station_id);
 
 	/**
-	 * Get the last date a station part was added to this station.
+	 * Get the last calendar date a station part was added to this station.
 	 * @param station_id The station to look at.
 	 * @return The last date some part of this station was build.
 	 */
-	static ScriptDate::Date GetConstructionDate(StationID station_id);
+	static ScriptDateCalendar::Date GetConstructionDate(StationID station_id);
 };
 
 #endif /* SCRIPT_BASESTATION_HPP */

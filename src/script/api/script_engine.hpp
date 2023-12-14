@@ -13,7 +13,7 @@
 #include "script_vehicle.hpp"
 #include "script_rail.hpp"
 #include "script_airport.hpp"
-#include "script_date.hpp"
+#include "script_date_calendar.hpp"
 
 /**
  * Class that handles all engine related functions.
@@ -172,7 +172,7 @@ public:
 	 * @pre IsValidEngine(engine_id).
 	 * @return The date this engine was designed.
 	 */
-	static ScriptDate::Date GetDesignDate(EngineID engine_id);
+	static ScriptDateCalendar::Date GetDesignDate(EngineID engine_id);
 
 	/**
 	 * Get the type of an engine.

@@ -177,15 +177,15 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	return company;
 }
 
-/* static */ ScriptDate::Date ScriptStoryPage::GetDate(StoryPageID story_page_id)
+/* static */ ScriptDateCalendar::Date ScriptStoryPage::GetDate(StoryPageID story_page_id)
 {
-	EnforcePrecondition(ScriptDate::DATE_INVALID, IsValidStoryPage(story_page_id));
-	EnforceDeityMode(ScriptDate::DATE_INVALID);
+	EnforcePrecondition(ScriptDateCalendar::DATE_INVALID, IsValidStoryPage(story_page_id));
+	EnforceDeityMode(ScriptDateCalendar::DATE_INVALID);
 
-	return (ScriptDate::Date)StoryPage::Get(story_page_id)->date.base();
+	return (ScriptDateCalendar::Date)StoryPage::Get(story_page_id)->date.base();
 }
 
-/* static */ bool ScriptStoryPage::SetDate(StoryPageID story_page_id, ScriptDate::Date date)
+/* static */ bool ScriptStoryPage::SetDate(StoryPageID story_page_id, ScriptDateCalendar::Date date)
 {
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
 	EnforceDeityMode(false);

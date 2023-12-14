@@ -11,7 +11,7 @@
 #define SCRIPT_CLIENT_HPP
 
 #include "script_text.hpp"
-#include "script_date.hpp"
+#include "script_date_calendar.hpp"
 #include "script_company.hpp"
 #include "../../network/network_type.h"
 
@@ -56,12 +56,12 @@ public:
 	static ScriptCompany::CompanyID GetCompany(ClientID client);
 
 	/**
-	 * Get the game date when the given client has joined.
+	 * Get the game calendar date when the given client has joined.
 	 * @param client The client to get joining date for.
 	 * @pre ResolveClientID(client) != CLIENT_INVALID.
 	 * @return The date when client has joined.
 	 */
-	static ScriptDate::Date GetJoinDate(ClientID client);
+	static ScriptDateCalendar::Date GetJoinDate(ClientID client);
 };
 
 

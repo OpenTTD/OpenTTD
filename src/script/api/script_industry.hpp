@@ -11,7 +11,8 @@
 #define SCRIPT_INDUSTRY_HPP
 
 #include "script_company.hpp"
-#include "script_date.hpp"
+#include "script_date_economy.hpp"
+#include "script_date_calendar.hpp"
 #include "script_object.hpp"
 #include "../../industry.h"
 
@@ -86,13 +87,13 @@ public:
 	static std::optional<std::string> GetName(IndustryID industry_id);
 
 	/**
-	 * Get the construction date of an industry.
+	 * Get the construction calendar date of an industry.
 	 * @param industry_id The index of the industry.
 	 * @pre IsValidIndustry(industry_id).
 	 * @return Date the industry was constructed.
 	 * @api -ai
 	 */
-	static ScriptDate::Date GetConstructionDate(IndustryID industry_id);
+	static ScriptDateCalendar::Date GetConstructionDate(IndustryID industry_id);
 
 	/**
 	 * Set the custom text of an industry, shown in the GUI.
@@ -255,15 +256,15 @@ public:
 	static SQInteger GetLastProductionYear(IndustryID industry_id);
 
 	/**
-	 * Get the last date this industry accepted any cargo delivery.
+	 * Get the last economy date this industry accepted any cargo delivery.
 	 * @param industry_id The index of the industry.
 	 * @param cargo_type The cargo to query, or CT_INVALID to query latest of all accepted cargoes.
 	 * @pre IsValidIndustry(industry_id).
 	 * @pre IsValidCargo(cargo_type) || cargo_type == CT_INVALID.
-	 * @return Date the industry last received cargo from a delivery, or ScriptDate::DATE_INVALID on error.
+	 * @return Date the industry last received cargo from a delivery, or ScriptDateEconomy::DATE_INVALID on error.
 	 * @api -ai
 	 */
-	static ScriptDate::Date GetCargoLastAcceptedDate(IndustryID industry_id, CargoID cargo_type);
+	static ScriptDateEconomy::Date GetCargoLastAcceptedDate(IndustryID industry_id, CargoID cargo_type);
 
 	/**
 	 * Get the current control flags for an industry.

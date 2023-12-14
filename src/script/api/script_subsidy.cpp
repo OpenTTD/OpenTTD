@@ -9,7 +9,7 @@
 
 #include "../../stdafx.h"
 #include "script_subsidy.hpp"
-#include "script_date.hpp"
+#include "script_date_economy.hpp"
 #include "script_industry.hpp"
 #include "script_town.hpp"
 #include "script_error.hpp"
@@ -50,19 +50,19 @@
 	return (ScriptCompany::CompanyID)((byte)::Subsidy::Get(subsidy_id)->awarded);
 }
 
-/* static */ ScriptDate::Date ScriptSubsidy::GetExpireDate(SubsidyID subsidy_id)
+/* static */ ScriptDateEconomy::Date ScriptSubsidy::GetExpireDate(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return ScriptDate::DATE_INVALID;
+	if (!IsValidSubsidy(subsidy_id)) return ScriptDateEconomy::DATE_INVALID;
 
-	int year = ScriptDate::GetYear(ScriptDate::GetCurrentDate());
-	int month = ScriptDate::GetMonth(ScriptDate::GetCurrentDate());
+	int year = ScriptDateEconomy::GetYear(ScriptDateEconomy::GetCurrentDate());
+	int month = ScriptDateEconomy::GetMonth(ScriptDateEconomy::GetCurrentDate());
 
 	month += ::Subsidy::Get(subsidy_id)->remaining;
 
 	year += (month - 1) / 12;
 	month = ((month - 1) % 12) + 1;
 
-	return ScriptDate::GetDate(year, month, 1);
+	return ScriptDateEconomy::GetDate(year, month, 1);
 }
 
 /* static */ CargoID ScriptSubsidy::GetCargoType(SubsidyID subsidy_id)

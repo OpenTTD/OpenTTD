@@ -11,7 +11,7 @@
 #define SCRIPT_STORY_HPP
 
 #include "script_company.hpp"
-#include "script_date.hpp"
+#include "script_date_calendar.hpp"
 #include "script_vehicle.hpp"
 #include "../../story_type.h"
 #include "../../story_base.h"
@@ -255,22 +255,22 @@ public:
 	static ScriptCompany::CompanyID GetCompany(StoryPageID story_page_id);
 
 	/**
-	 * Get the page date which is displayed at the top of each page.
+	 * Get the page calendar date which is displayed at the top of each page.
 	 * @param story_page_id The story page to get the date of.
 	 * @return The date
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
-	static ScriptDate::Date GetDate(StoryPageID story_page_id);
+	static ScriptDateCalendar::Date GetDate(StoryPageID story_page_id);
 
 	/**
-	 * Update date of a story page. The date is shown in the top left of the page
+	 * Update calendar date of a story page. The date is shown in the top left of the page
 	 * @param story_page_id The story page to set the date for.
-	 * @param date Date to display at the top of story page or ScriptDate::DATE_INVALID to disable showing date on this page. (also, @see ScriptDate)
+	 * @param date Date to display at the top of story page or ScriptDateCalendar::DATE_INVALID to disable showing date on this page. (also, @see ScriptDateCalendar)
 	 * @return True if the action succeeded.
 	 * @pre ScriptCompanyMode::IsDeity().
 	 * @pre IsValidStoryPage(story_page_id).
 	 */
-	static bool SetDate(StoryPageID story_page_id, ScriptDate::Date date);
+	static bool SetDate(StoryPageID story_page_id, ScriptDateCalendar::Date date);
 
 	/**
 	 * Update title of a story page. The title is shown in the page selector drop down.
