@@ -255,6 +255,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} fod
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dag{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer udtryk:
@@ -719,6 +720,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik på
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik på et musiknummer for at fjerne det fra programlisten (kun for Custom1/Custom2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Top virksomheder
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmand
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenør
@@ -1655,7 +1657,10 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Aktiver brug af
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Benyt laste-indikatorer: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vælg om lastnings-indikatorer vises ved pålæsning og aflæsning af køretøjer
 
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Vælg de tidsenheder, der skal bruges til køreplaner
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Dage
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Sekunder
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Vis ankomst og afgang i tidsplaner: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vis forventede ankomst-og afgangstider i tidsplaner
@@ -4572,8 +4577,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dette tr
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dette transportmiddel er nu {STRING} forsinket
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dette transportmiddel er nu {STRING} foran køreplanen
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Denne tidsplan er endnu ikke begyndt.
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Denne tidsplan starter kl {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Denne tidsplan starter om {COMMA} Sekunder
 
+STR_TIMETABLE_START                                             :{BLACK}Start tidsplan
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Vælg, hvornår denne tidsplan starter. Ctrl+klik fordeler starten af alle køretøjer, der deler denne rækkefølge, jævnt baseret på deres relative rækkefølge, hvis ordren er fuldstændig tidsplanlagt
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunder til tidsplanen starter
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ændre tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre den tid, som den fremhævede rækkefølge skal tage. Ctrl+Click angiver tidspunktet for alle ordrer
@@ -4597,6 +4607,9 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Forvente
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skift mellem forventet og tidslagt
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} sek
 
 
 # Date window (for timetable)

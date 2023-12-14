@@ -256,6 +256,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dia{P "" s}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sedundo{P "" s}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tique{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
@@ -720,6 +723,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clique n
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clique na faixa de música para remover do programa atual (apenas Personalizado 1 ou Personalizado 2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Melhores empresas
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Empresário
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empreendedor
@@ -1656,7 +1660,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ativa o uso da 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Seleciona se os indicadores de carga são exibidos sobre os veículos (des)carregando
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Unidades de tempo para as ordens: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Selecionar as unidades de tempo usadas nas ordens dos veículos
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Dias
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Segundos
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Tiques
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar chegada e saída nos planos de horário: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Exibe tempos de chegada e partida anticipados nos planos de horário
@@ -4573,8 +4582,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este ve�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este veículo está atualmente circulando {STRING} atrasado
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este veículo está atualmente circulando {STRING} adiantado
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horário ainda não começou
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Essa ordem irá iniciar às {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Essa ordem irá iniciar em {COMMA} segundos
 
+STR_TIMETABLE_START                                             :{BLACK}Iniciar Ordem
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Selecionar quando essa ordem inicia. Ctrl+Click distribui igualmente a partida de todos os veículos que compartilham essa ordem com base em sua ordem relativa, se a ordem for totalmente programada
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos até a ordem iniciar
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar horário
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mudar a duração do tempo que a ordem em destaque deve durar. Ctrl+Clique define o tempo para todas as ordens
@@ -4598,6 +4612,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Agendado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Trocar entre esperado e agendado
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} segundos
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} segundos
 
 
 # Date window (for timetable)

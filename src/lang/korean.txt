@@ -256,6 +256,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}피트
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}m
 
+STR_UNITS_DAYS                                                  :{COMMA}일
+STR_UNITS_SECONDS                                               :{COMMA}초
+STR_UNITS_TICKS                                                 :{COMMA}틱
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}검색:
@@ -720,6 +723,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}배경 �
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}배경 음악 목록에서 음악을 제거하려면 클릭하세요. (사용자1, 사용자2에서만 사용 가능)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}최고의 회사
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :{G=f}초보자
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :{G=f}사업가
@@ -1656,7 +1660,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :고급 차량 �
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :적재율 표시: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :적재나 하차하는 차량 위에 적재/하차율을 표시할지 말지를 선택합니다.
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :시간표에 사용할 시간 단위: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :차량 시간표에 사용할 시간 단위를 선택합니다
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :일
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :초
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :틱
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :시간표에서 출발일과 도착일 표시: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :열차 시간표에서 예상 출발 & 도착 시간을 표시합니다.
@@ -2345,7 +2354,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}멀티�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}비밀번호 설정
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}서버에 공개적으로 접근하는 것을 막고 싶을 때 비밀번호를 걸어 보호합니다.
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}공개 여부
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}공개 여부:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}서버 목록에 이 서버를 공개할 지 여부를 설정합니다
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}명
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}최대 접속자 수:
@@ -4566,15 +4575,20 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} 동�
 STR_TIMETABLE_STAY_FOR                                          :& {STRING} 동안 정차
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :& 다음 목적지({STRING})로 이동
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {STRING}이 걸릴 것입니다.
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {STRING}이 걸립니다
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시간표를 완주하는데 최소 {STRING}이 필요합니다 (시간표가 일부만 지정됨)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}이 차량은 지금 정시운행 중입니다
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}이 차량은 현재 {STRING} 늦게 운행하고 있습니다
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}이 차량은 현재 {STRING} 빨리 운행하고 있습니다
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}이 시간표는 아직 시작되지 않았습니다
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}이 시간표는 {STRING}에 시작합니다
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}이 시간표는 {COMMA}초 뒤에 시작합니다
 
+STR_TIMETABLE_START                                             :{BLACK}시간표 시작
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}이 시간표가 언제 시작할지 선택합니다. CTRL+클릭하면, 만약 모든 경로에 시간표가 작성되어 있는 경우 이 경로를 공유하고 있는 모든 차량을 차량의 상대적인 순서에 따라 동일하게 배치시킵니다
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :시간표를 이 시간(초) 뒤에 시작
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다. CTRL+클릭하면 모든 경로에 그 시간 값을 설정합니다
@@ -4598,6 +4612,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}예정�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}예정 소요시간 기준
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}시간표 검사 기준을 도착 예정일과 도착 예정 시간 기준 중에서 선택합니다
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :착: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :발: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :착: {COLOUR}{COMMA}초
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :발: {COLOUR}{COMMA}초
 
 
 # Date window (for timetable)
