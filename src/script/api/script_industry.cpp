@@ -20,6 +20,7 @@
 #include "../../station_base.h"
 #include "../../newgrf_industries.h"
 #include "../../industry_cmd.h"
+#include "../../timer/timer_game_economy.h"
 #include "../../timer/timer_game_calendar.h"
 #include "table/strings.h"
 
