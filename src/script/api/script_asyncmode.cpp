@@ -48,8 +48,8 @@ ScriptAsyncMode::ScriptAsyncMode(HSQUIRRELVM vm)
 void ScriptAsyncMode::FinalRelease()
 {
 	if (this->GetDoCommandAsyncModeInstance() != this) {
-		/* Ignore this error if the script already died. */
-		if (!ScriptObject::GetActiveInstance()->IsDead()) {
+		/* Ignore this error if the script is not alive. */
+		if (ScriptObject::GetActiveInstance()->IsAlive()) {
 			throw Script_FatalError("Asyncmode object was removed while it was not the latest *Mode object created.");
 		}
 	}
