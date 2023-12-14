@@ -6,3 +6,55 @@
  */
 
 GSLog.Info("13 API compatibility in effect.");
+
+/* 14 splits date into calendar and economy time. Economy time ticks at the usual rate, but calendar time can be sped up, slowed down, or frozen entirely.
+ * This may break some scripts, but for maximum compatibility, all ScriptDate calls go to TimerGameEcomomy. */
+GSDate <- GSDateEconomy;
+
+GSBaseStation._GetConstructionDate <- GSBaseStation.GetConstructionDate;
+GSBaseStation.GetConstructionDate <- function(station_id)
+{
+	if (!IsValidBaseStation(station_id)) return ScriptDateEconomy::DATE_INVALID;
+
+	return (ScriptDateEconomy::Date)::BaseStation::Get(station_id)->build_date.base();
+}
+
+GSClient._GetJoinDate <- GSClient.GetJoinDate;
+GSClient.GetJoinDate <- function(client)
+{
+	NetworkClientInfo *ci = FindClientInfo(client);
+	if (ci == nullptr) return ScriptDateEconomy::DATE_INVALID;
+	return (ScriptDateEconomy::Date)ci->join_date.base();
+}
+
+GSEngine._GetDesignDate <- GSEngine.GetDesignDate;
+GSEngine.GetDesignDate <- function(engine_id)
+{
+	if (!IsValidEngine(engine_id)) return ScriptDateEconomy::DATE_INVALID;
+
+	return (ScriptDateEconomy::Date)::Engine::Get(engine_id)->intro_date.base();
+}
+
+GSIndustry._GetConstructionDate <- GSIndustry.GetConstructionDate;
+GSIndustry.GetConstructionDate <- function(industry_id)
+{
+	Industry *i = Industry::GetIfValid(industry_id);
+	if (i == nullptr) return ScriptDateEconomy::DATE_INVALID;
+	return (ScriptDateEconomy::Date)i->construction_date.base();
+}
+
+GSStoryPage._GetDate <- GSStoryPage.GetDate;
+GSStoryPage.GetDate <- function(story_page_id)
+{
+	EnforcePrecondition(ScriptDateEconomy::DATE_INVALID, IsValidStoryPage(story_page_id));
+	EnforceDeityMode(ScriptDateEconomy::DATE_INVALID);
+	return (ScriptDateEconomy::Date)StoryPage::Get(story_page_id)->date.base();
+}
+
+GSStoryPage._SetDate <- GSStoryPage.SetDate;
+GSStoryPage.SetDate <- function(story_page_id, date)
+{
+	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
+	EnforceDeityMode(false);
+	return ScriptObject::Command<CMD_SET_STORY_PAGE_DATE>::Do(story_page_id, date);
+}

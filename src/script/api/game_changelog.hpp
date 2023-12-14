@@ -17,6 +17,10 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * Major API changes:
+ * \li All GSDate:: functions are split into GSDateCalendar and GSDateEconomy classes and mirrored in both. The exception is GSDate::GetSystemTime, which only exists in GSDateEconomy.
+ * \li Compatibility layers for GSDate:: map all functions to GSDateEconomy to break the fewest number of scripts possible. We apologize for any broken scripts. :(
+ *
  * API additions:
  * \li GSIndustry::GetConstructionDate
  * \li GSAsyncMode

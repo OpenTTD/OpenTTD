@@ -17,6 +17,10 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * Major API changes:
+ * \li All AIDate:: functions are split into AIDateCalendar and AIDateEconomy classes and mirrored in both. The exception is AIDate::GetSystemTime, which only exists in AIDateEconomy.
+ * \li Compatibility layers for AIDate:: map all functions to AIDateEconomy to break the fewest number of scripts possible. We apologize for any broken scripts. :(
+ *
  * API additions:
  * \li GSIndustry::GetConstructionDate
  * \li GSAsyncMode

@@ -144,3 +144,23 @@ AIRoad.HasRoadType <- function(tile, road_type)
 	}
 	return false;
 }
+
+/* 14 splits date into calendar and economy time. Economy time ticks at the usual rate, but calendar time can be sped up, slowed down, or frozen entirely.
+ * For maximum compatibility, all ScriptDate calls go to TimerGameEcomomy. */
+AIDate <- AIDateEconomy;
+
+AIBaseStation._GetConstructionDate <- AIBaseStation.GetConstructionDate;
+AIBaseStation.GetConstructionDate <- function(station_id)
+{
+	if (!IsValidBaseStation(station_id)) return ScriptDateEconomy::DATE_INVALID;
+
+	return (ScriptDateEconomy::Date)::BaseStation::Get(station_id)->build_date.base();
+}
+
+AIEngine._GetDesignDate <- AIScriptEngine.GetDesignDate;
+AIEngine.GetDesignDate <- function(engine_id)
+{
+	if (!IsValidEngine(engine_id)) return ScriptDateEconomy::DATE_INVALID;
+
+	return (ScriptDateEconomy::Date)::Engine::Get(engine_id)->intro_date.base();
+}
