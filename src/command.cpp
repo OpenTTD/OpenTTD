@@ -18,7 +18,7 @@
 #include "strings_func.h"
 #include "texteff.hpp"
 #include "town.h"
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "company_func.h"
 #include "company_base.h"
 #include "signal_func.h"
@@ -274,7 +274,7 @@ void CommandHelperBase::InternalPostResult(const CommandCost &res, TileIndex til
 /** Helper to make a desync log for a command. */
 void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, TileIndex tile, const CommandDataBuffer &args, bool failed)
 {
-	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", failed ? "cmdf" : "cmd", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)_current_company, cmd, err_message, tile, FormatArrayAsHex(args), GetCommandName(cmd));
+	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", failed ? "cmdf" : "cmd", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)_current_company, cmd, err_message, tile, FormatArrayAsHex(args), GetCommandName(cmd));
 }
 
 /**
