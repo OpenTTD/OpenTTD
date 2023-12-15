@@ -255,6 +255,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}day{P "" s}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}second{P "" s}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
@@ -719,6 +722,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click on
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click on music track to remove it from current program (Custom1 or Custom2 only)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Top companies
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Businessperson
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
@@ -1655,7 +1659,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Enable usage of
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Use loading indicators: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Select whether loading indicators are displayed above loading or unloading vehicles
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Time units for timetables: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Select the time units used for vehicle timetables
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Days
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Seconds
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Ticks
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Show arrival and departure in timetables: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Display anticipated arrival and departure times in timetables
@@ -2344,7 +2353,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}The game
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set password
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protect your game with a password if you don't want it to be publicly accessible
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibility
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibility:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Whether other people can see your server in the public listing
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximum number of clients:
@@ -4572,8 +4581,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}This veh
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}This vehicle is currently running {STRING} late
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}This vehicle is currently running {STRING} early
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}This timetable has not yet started
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}This timetable will start at {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}This timetable will start in {COMMA} seconds
 
+STR_TIMETABLE_START                                             :{BLACK}Start Timetable
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Select when this timetable starts. Ctrl+Click evenly distributes the start of all vehicles sharing this order based on their relative order, if the order is completely timetabled
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Seconds until timetable starts
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Change Time
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Change the amount of time that the highlighted order should take. Ctrl+Click sets the time for all orders
@@ -4597,6 +4611,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Expected
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Scheduled
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and scheduled
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} sec
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} sec
 
 
 # Date window (for timetable)

@@ -255,6 +255,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dag{P "" en}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}seconde{P "" n}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tik{P "" ken}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter:
@@ -719,6 +722,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op een nummer om dit uit het programma te verwijderen (alleen Aangepast1 en Aangepast2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Hoogst genoteerde bedrijven
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :ZZP'er
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Ondernemer
@@ -1655,7 +1659,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Schakelt het ge
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Laadpercentages gebruiken: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Geef aan of laadindicatoren worden weergegeven boven ladende of lossende voertuigen
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Tijdeenheid voor dienstregelingen: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Selecteer de tijdeenheid voor dienstregelingen
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Dagen
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Seconden
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Tikken
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Aankomst- en vertrektijden in dienstregeling weergeven: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Geef de verwachte aankomst-en vertrektijden in de dienstregeling weer
@@ -2344,7 +2353,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De speln
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Wachtwoord instellen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beveilig je spel met een wachtwoord als je niet wilt dat dit algemeen toegankelijk is
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Zichtbaarheid
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Zichtbaarheid:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Bepaalt of andere mensen je server kunnen zien in de openbare lijst
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} speler{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximumaantal spelers:
@@ -4572,8 +4581,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dit voer
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dit voertuig heeft {STRING} vertraging
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dit voertuig is {STRING} te vroeg
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Deze dienstregeling is nog niet gestart
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Deze dienstregeling begint om {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Deze dienstregeling start over {COMMA} seconden
 
+STR_TIMETABLE_START                                             :{BLACK}Start dienstregeling
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Selecteer wanneer deze dienstregeling start. Ctrl+klik verdeelt de start van alle voertuigen met deze orders op basis van hun relatieve volgorde, mits de order een volledige dienstregeling heeft
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Seconden tot de dienstregeling start
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tijd wijzigen
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de tijdsduur die de geselecteerde order mag duren. Met Ctrl+klik stel je de tijd voor alle orders in
@@ -4597,6 +4611,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Verwacht
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Volgens dienstregeling
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Wissel tussen verwacht en volgens dienstregeling
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :V: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} sec
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :V: {COLOUR}{COMMA} sec
 
 
 # Date window (for timetable)

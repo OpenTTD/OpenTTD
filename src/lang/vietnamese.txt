@@ -255,6 +255,8 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}giây
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc:
@@ -719,6 +721,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click v�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click vào bài nhạc để xóa khỏi chương trình hiện tại (cho "Tự chọn 1" hay "Tự chọn 2")
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Những công ty hàng đầu
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Doanh Nhân
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Nhà Thầu
@@ -1655,7 +1658,11 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Cho phép sử 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Hiển thị quá trình nạp hàng: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Lựa chọn liệu có chỉ thị tỉ lệ bốc xếp hiển thị khi bốc xếp hàng
 
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Chọn đơn vị thời gian sử dụng cho bảng biểu của phương tiện
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Ngày
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Giây
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Tick
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Hiển thị nơi đến và nơi đi trên lịch trình: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Hiển thị thời gian đi và đến trong bảng lịch trình
@@ -2344,7 +2351,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Tên c�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Đặt mật khẩu
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bảo vệ game của bạn bằng mật khẩu nếu bạn không muốn người khác vào tùy tiện
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Hiển thị
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Hiển thị:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Cho phép người khác thấy server của bạn trong danh sách công khai
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy trạm
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Số máy trạm tối đa:
@@ -2579,7 +2586,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Tìm nh�
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Bạn đang thoát khỏi OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Có nhiều điều kiện và điều khoản để tải nội dung từ những trang ngoài.{}Bạn sẽ phải tham khảo trang ngoài để đọc những hướng dẫn cài nội dung vào OpenTTD.{}Bạn có muốn tiếp tục?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Lọc theo tên:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Đến trang web
+STR_CONTENT_OPEN_URL                                            :{BLACK}Trang web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Đến trang web của nội dung này
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Tải về
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Tải các nội dung đã chọn về
@@ -4572,6 +4579,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Phương
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Phương tiện này đang chạy trễ dự kiến {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Phương tiện này đang chạy sớm hơn dự kiến {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Bảng lịch trình này chưa khởi tạo
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Lịch trình này sẽ bắt đầu trong {COMMA} giây
 
 
 
@@ -4597,6 +4605,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Mong mu�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Chốt lịch
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Chuyển giữa lịch mong muốn và lịch được chốt
 
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :Đến: {COLOUR}{COMMA} giây
 
 
 # Date window (for timetable)
@@ -4699,9 +4708,11 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Trở v�
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Trở về sau trong lịch sử điều hướng
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Ép văn bản
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ép chữ cái vừa khung cửa sổ để khỏi phải cuộn chuột
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Xem readme
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Xem readme của nội dung này
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lịch sử thay đổi
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Giấy phép
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Xem giấy phép của nội dung này
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Readme của {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lịch sử thay đổi của {STRING} {STRING}
