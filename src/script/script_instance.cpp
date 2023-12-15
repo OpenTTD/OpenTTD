@@ -76,6 +76,10 @@ void ScriptInstance::Initialize(const std::string &main_script, const std::strin
 	/* Register the API functions and classes */
 	this->engine->SetGlobalPointer(this->engine);
 	this->RegisterAPI();
+	if (this->IsDead()) {
+		/* Failed to register API; a message has already been logged. */
+		return;
+	}
 
 	try {
 		ScriptObject::SetAllowDoCommand(false);
