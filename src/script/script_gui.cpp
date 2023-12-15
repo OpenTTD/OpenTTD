@@ -692,23 +692,34 @@ static bool SetScriptButtonColour(NWidgetCore &button, bool dead, bool paused)
 struct ScriptDebugWindow : public Window {
 	static const uint MAX_BREAK_STR_STRING_LENGTH = 256;   ///< Maximum length of the break string.
 
-	static CompanyID script_debug_company;                 ///< The AI that is (was last) being debugged.
+	struct FilterState {
+		std::string break_string; ///< The string to match to the AI output
+		CompanyID script_debug_company; ///< The AI that is (was last) being debugged.
+		bool break_check_enabled; ///< Stop an AI when it prints a matching string
+		bool case_sensitive_break_check; ///< Is the matching done case-sensitive
+	};
+
+	static inline FilterState initial_state = {
+		"",
+		INVALID_COMPANY,
+		true,
+		false,
+	};
+
 	int redraw_timer;                                      ///< Timer for redrawing the window, otherwise it'll happen every tick.
 	int last_vscroll_pos;                                  ///< Last position of the scrolling.
 	bool autoscroll;                                       ///< Whether automatically scrolling should be enabled or not.
 	bool show_break_box;                                   ///< Whether the break/debug box is visible.
-	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
-	static std::string break_string;                       ///< The string to match to the AI output
 	QueryString break_editbox;                             ///< Break editbox
-	static StringFilter break_string_filter;               ///< Log filter for break.
-	static bool case_sensitive_break_check;                ///< Is the matching done case-sensitive
+	StringFilter break_string_filter;                      ///< Log filter for break.
 	int highlight_row;                                     ///< The output row that matches the given string, or -1
 	Scrollbar *vscroll;                                    ///< Cache of the vertical scrollbar.
+	FilterState filter;
 
 	ScriptLogTypes::LogData &GetLogData() const
 	{
-		if (script_debug_company == OWNER_DEITY) return Game::GetInstance()->GetLogData();
-		return Company::Get(script_debug_company)->ai_instance->GetLogData();
+		if (this->filter.script_debug_company == OWNER_DEITY) return Game::GetInstance()->GetLogData();
+		return Company::Get(this->filter.script_debug_company)->ai_instance->GetLogData();
 	}
 
 	/**
@@ -717,11 +728,11 @@ struct ScriptDebugWindow : public Window {
 	 */
 	bool IsDead() const
 	{
-		if (script_debug_company == OWNER_DEITY) {
+		if (this->filter.script_debug_company == OWNER_DEITY) {
 			GameInstance *game = Game::GetInstance();
 			return game == nullptr || game->IsDead();
 		}
-		return !Company::IsValidAiID(script_debug_company) || Company::Get(script_debug_company)->ai_instance->IsDead();
+		return !Company::IsValidAiID(this->filter.script_debug_company) || Company::Get(this->filter.script_debug_company)->ai_instance->IsDead();
 	}
 
 	/**
@@ -745,9 +756,9 @@ struct ScriptDebugWindow : public Window {
 	void SelectValidDebugCompany()
 	{
 		/* Check if the currently selected company is still active. */
-		if (this->IsValidDebugCompany(script_debug_company)) return;
+		if (this->IsValidDebugCompany(this->filter.script_debug_company)) return;
 
-		script_debug_company = INVALID_COMPANY;
+		this->filter.script_debug_company = INVALID_COMPANY;
 
 		for (const Company *c : Company::Iterate()) {
 			if (c->is_ai) {
@@ -767,13 +778,16 @@ struct ScriptDebugWindow : public Window {
 	 */
 	ScriptDebugWindow(WindowDesc *desc, WindowNumber number) : Window(desc), break_editbox(MAX_BREAK_STR_STRING_LENGTH)
 	{
+		this->filter = ScriptDebugWindow::initial_state;
+		this->break_string_filter = {&this->filter.case_sensitive_break_check, false};
+
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCRD_SCROLLBAR);
 		this->show_break_box = _settings_client.gui.ai_developer_tools;
 		this->GetWidget<NWidgetStacked>(WID_SCRD_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_break_box ? 0 : SZSP_HORIZONTAL);
 		this->FinishInitNested(number);
 
-		if (!this->show_break_box) break_check_enabled = false;
+		if (!this->show_break_box) this->filter.break_check_enabled = false;
 
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
@@ -784,10 +798,15 @@ struct ScriptDebugWindow : public Window {
 		SetWidgetsDisabledState(!this->show_break_box, WID_SCRD_BREAK_STR_ON_OFF_BTN, WID_SCRD_BREAK_STR_EDIT_BOX, WID_SCRD_MATCH_CASE_BTN);
 
 		/* Restore the break string value from static variable */
-		this->break_editbox.text.Assign(this->break_string);
+		this->break_editbox.text.Assign(this->filter.break_string);
 
 		this->SelectValidDebugCompany();
 		this->InvalidateData(-1);
+	}
+
+	~ScriptDebugWindow()
+	{
+		ScriptDebugWindow::initial_state = this->filter;
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
@@ -811,16 +830,16 @@ struct ScriptDebugWindow : public Window {
 	{
 		if (widget != WID_SCRD_NAME_TEXT) return;
 
-		if (script_debug_company == OWNER_DEITY) {
+		if (this->filter.script_debug_company == OWNER_DEITY) {
 			const GameInfo *info = Game::GetInfo();
 			assert(info != nullptr);
 			SetDParam(0, STR_AI_DEBUG_NAME_AND_VERSION);
 			SetDParamStr(1, info->GetName());
 			SetDParam(2, info->GetVersion());
-		} else if (script_debug_company == INVALID_COMPANY || !Company::IsValidAiID(script_debug_company)) {
+		} else if (this->filter.script_debug_company == INVALID_COMPANY || !Company::IsValidAiID(this->filter.script_debug_company)) {
 			SetDParam(0, STR_EMPTY);
 		} else {
-			const AIInfo *info = Company::Get(script_debug_company)->ai_info;
+			const AIInfo *info = Company::Get(this->filter.script_debug_company)->ai_info;
 			assert(info != nullptr);
 			SetDParam(0, STR_AI_DEBUG_NAME_AND_VERSION);
 			SetDParamStr(1, info->GetName());
@@ -863,7 +882,7 @@ struct ScriptDebugWindow : public Window {
 	 */
 	void DrawWidgetLog(const Rect &r) const
 	{
-		if (script_debug_company == INVALID_COMPANY) return;
+		if (this->filter.script_debug_company == INVALID_COMPANY) return;
 
 		ScriptLogTypes::LogData &log = this->GetLogData();
 		if (log.empty()) return;
@@ -899,8 +918,8 @@ struct ScriptDebugWindow : public Window {
 	 */
 	void UpdateLogScroll()
 	{
-		this->SetWidgetDisabledState(WID_SCRD_SCROLLBAR, script_debug_company == INVALID_COMPANY);
-		if (script_debug_company == INVALID_COMPANY) return;
+		this->SetWidgetDisabledState(WID_SCRD_SCROLLBAR, this->filter.script_debug_company == INVALID_COMPANY);
+		if (this->filter.script_debug_company == INVALID_COMPANY) return;
 
 		ScriptLogTypes::LogData &log = this->GetLogData();
 
@@ -942,7 +961,7 @@ struct ScriptDebugWindow : public Window {
 
 			NWidgetCore *button = this->GetWidget<NWidgetCore>(i + WID_SCRD_COMPANY_BUTTON_START);
 			button->SetDisabled(!valid);
-			button->SetLowered(script_debug_company == i);
+			button->SetLowered(this->filter.script_debug_company == i);
 			SetScriptButtonColour(*button, dead, paused);
 		}
 	}
@@ -959,7 +978,7 @@ struct ScriptDebugWindow : public Window {
 
 		NWidgetCore *button = this->GetWidget<NWidgetCore>(WID_SCRD_SCRIPT_GAME);
 		button->SetDisabled(!valid);
-		button->SetLowered(script_debug_company == OWNER_DEITY);
+		button->SetLowered(this->filter.script_debug_company == OWNER_DEITY);
 		SetScriptButtonColour(*button, dead, paused);
 	}
 
@@ -971,7 +990,7 @@ struct ScriptDebugWindow : public Window {
 	{
 		if (!this->IsValidDebugCompany(show_script)) return;
 
-		script_debug_company = show_script;
+		this->filter.script_debug_company = show_script;
 
 		this->highlight_row = -1; // The highlight of one Script make little sense for another Script.
 
@@ -1000,33 +1019,33 @@ struct ScriptDebugWindow : public Window {
 				break;
 
 			case WID_SCRD_RELOAD_TOGGLE:
-				if (script_debug_company == OWNER_DEITY) break;
+				if (this->filter.script_debug_company == OWNER_DEITY) break;
 				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, script_debug_company, CRR_MANUAL, INVALID_CLIENT_ID);
-				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, script_debug_company, CRR_NONE, INVALID_CLIENT_ID);
+				Command<CMD_COMPANY_CTRL>::Post(CCA_DELETE, this->filter.script_debug_company, CRR_MANUAL, INVALID_CLIENT_ID);
+				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, this->filter.script_debug_company, CRR_NONE, INVALID_CLIENT_ID);
 				break;
 
 			case WID_SCRD_SETTINGS:
-				ShowScriptSettingsWindow(script_debug_company);
+				ShowScriptSettingsWindow(this->filter.script_debug_company);
 				break;
 
 			case WID_SCRD_BREAK_STR_ON_OFF_BTN:
-				this->break_check_enabled = !this->break_check_enabled;
+				this->filter.break_check_enabled = !this->filter.break_check_enabled;
 				this->InvalidateData(-1);
 				break;
 
 			case WID_SCRD_MATCH_CASE_BTN:
-				this->case_sensitive_break_check = !this->case_sensitive_break_check;
+				this->filter.case_sensitive_break_check = !this->filter.case_sensitive_break_check;
 				this->InvalidateData(-1);
 				break;
 
 			case WID_SCRD_CONTINUE_BTN:
 				/* Unpause current AI / game script and mark the corresponding script button dirty. */
 				if (!this->IsDead()) {
-					if (script_debug_company == OWNER_DEITY) {
+					if (this->filter.script_debug_company == OWNER_DEITY) {
 						Game::Unpause();
 					} else {
-						AI::Unpause(script_debug_company);
+						AI::Unpause(this->filter.script_debug_company);
 					}
 				}
 
@@ -1058,8 +1077,8 @@ struct ScriptDebugWindow : public Window {
 		if (wid != WID_SCRD_BREAK_STR_EDIT_BOX) return;
 
 		/* Save the current string to static member so it can be restored next time the window is opened. */
-		this->break_string = this->break_editbox.text.buf;
-		break_string_filter.SetFilterTerm(this->break_string);
+		this->filter.break_string = this->break_editbox.text.buf;
+		this->break_string_filter.SetFilterTerm(this->filter.break_string);
 	}
 
 	/**
@@ -1072,7 +1091,9 @@ struct ScriptDebugWindow : public Window {
 	{
 		/* If the log message is related to the active company tab, check the break string.
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
-		if (!gui_scope && data == script_debug_company && this->IsValidDebugCompany(script_debug_company) && this->break_check_enabled && !this->break_string_filter.IsEmpty()) {
+		if (!gui_scope && data == this->filter.script_debug_company &&
+				this->IsValidDebugCompany(this->filter.script_debug_company) &&
+				this->filter.break_check_enabled && !this->break_string_filter.IsEmpty()) {
 			/* Get the log instance of the active company */
 			ScriptLogTypes::LogData &log = this->GetLogData();
 
@@ -1082,10 +1103,10 @@ struct ScriptDebugWindow : public Window {
 				if (this->break_string_filter.GetState()) {
 					/* Pause execution of script. */
 					if (!this->IsDead()) {
-						if (script_debug_company == OWNER_DEITY) {
+						if (this->filter.script_debug_company == OWNER_DEITY) {
 							Game::Pause();
 						} else {
-							AI::Pause(script_debug_company);
+							AI::Pause(this->filter.script_debug_company);
 						}
 					}
 
@@ -1104,19 +1125,22 @@ struct ScriptDebugWindow : public Window {
 
 		this->SelectValidDebugCompany();
 
-		this->vscroll->SetCount(script_debug_company != INVALID_COMPANY ? this->GetLogData().size() : 0);
+		this->vscroll->SetCount(this->filter.script_debug_company != INVALID_COMPANY ? this->GetLogData().size() : 0);
 
 		this->UpdateAIButtonsState();
 		this->UpdateGSButtonState();
 
-		this->SetWidgetLoweredState(WID_SCRD_BREAK_STR_ON_OFF_BTN, this->break_check_enabled);
-		this->SetWidgetLoweredState(WID_SCRD_MATCH_CASE_BTN, this->case_sensitive_break_check);
+		this->SetWidgetLoweredState(WID_SCRD_BREAK_STR_ON_OFF_BTN, this->filter.break_check_enabled);
+		this->SetWidgetLoweredState(WID_SCRD_MATCH_CASE_BTN, this->filter.case_sensitive_break_check);
 
-		this->SetWidgetDisabledState(WID_SCRD_SETTINGS, script_debug_company == INVALID_COMPANY);
+		this->SetWidgetDisabledState(WID_SCRD_SETTINGS, this->filter.script_debug_company == INVALID_COMPANY);
 		extern CompanyID _local_company;
-		this->SetWidgetDisabledState(WID_SCRD_RELOAD_TOGGLE, script_debug_company == INVALID_COMPANY || script_debug_company == OWNER_DEITY || script_debug_company == _local_company);
-		this->SetWidgetDisabledState(WID_SCRD_CONTINUE_BTN, script_debug_company == INVALID_COMPANY ||
-			(script_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(script_debug_company)));
+		this->SetWidgetDisabledState(WID_SCRD_RELOAD_TOGGLE,
+				this->filter.script_debug_company == INVALID_COMPANY ||
+				this->filter.script_debug_company == OWNER_DEITY ||
+				this->filter.script_debug_company == _local_company);
+		this->SetWidgetDisabledState(WID_SCRD_CONTINUE_BTN, this->filter.script_debug_company == INVALID_COMPANY ||
+			(this->filter.script_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(this->filter.script_debug_company)));
 	}
 
 	void OnResize() override
@@ -1162,12 +1186,6 @@ struct ScriptDebugWindow : public Window {
 		Hotkey(WKC_RETURN, "continue", WID_SCRD_CONTINUE_BTN),
 	}, ScriptDebugGlobalHotkeys};
 };
-
-CompanyID ScriptDebugWindow::script_debug_company = INVALID_COMPANY;
-std::string ScriptDebugWindow::break_string;
-bool ScriptDebugWindow::break_check_enabled = true;
-bool ScriptDebugWindow::case_sensitive_break_check = false;
-StringFilter ScriptDebugWindow::break_string_filter(&ScriptDebugWindow::case_sensitive_break_check, false);
 
 /** Make a number of rows with buttons for each company for the Script debug window. */
 NWidgetBase *MakeCompanyButtonRowsScriptDebug(int *biggest_index)
@@ -1252,7 +1270,7 @@ Window *ShowScriptDebugWindow(CompanyID show_company)
  */
 void InitializeScriptGui()
 {
-	ScriptDebugWindow::script_debug_company = INVALID_COMPANY;
+	ScriptDebugWindow::initial_state.script_debug_company = INVALID_COMPANY;
 }
 
 /** Open the AI debug window if one of the AI scripts has crashed. */
