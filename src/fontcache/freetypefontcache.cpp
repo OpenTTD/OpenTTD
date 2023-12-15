@@ -41,7 +41,7 @@ public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key) override;
+	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return fmt::format("{}, {}", face->family_name, face->style_name); }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return &face; }
@@ -276,15 +276,17 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 }
 
 
-GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key)
+GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 {
 	assert(IsPrintable(key));
 
-	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
+	FT_UInt glyph = FT_Get_Char_Index(this->face, key);
+
+	if (glyph == 0 && allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
 		return this->parent->MapCharToGlyph(key);
 	}
 
-	return FT_Get_Char_Index(this->face, key);
+	return glyph;
 }
 
 const void *FreeTypeFontCache::InternalGetFontTable(uint32_t tag, size_t &length)

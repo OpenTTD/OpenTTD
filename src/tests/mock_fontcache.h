@@ -29,7 +29,7 @@ public:
 	const Sprite *GetGlyph(GlyphID) override { return nullptr; }
 	uint GetGlyphWidth(GlyphID) override { return this->height / 2; }
 	bool GetDrawGlyphShadow() override { return false; }
-	GlyphID MapCharToGlyph(char32_t key) override { return key; }
+	GlyphID MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback = true) override { return key; }
 	const void *GetFontTable(uint32_t, size_t &length) override { length = 0; return nullptr; }
 	std::string GetFontName() override { return "mock"; }
 	bool IsBuiltInFont() override { return true; }
