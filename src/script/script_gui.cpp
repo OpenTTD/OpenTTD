@@ -776,7 +776,7 @@ struct ScriptDebugWindow : public Window {
 	 * @param desc The description of the window.
 	 * @param number The window number (actually unused).
 	 */
-	ScriptDebugWindow(WindowDesc *desc, WindowNumber number) : Window(desc), break_editbox(MAX_BREAK_STR_STRING_LENGTH)
+	ScriptDebugWindow(WindowDesc *desc, WindowNumber number, Owner show_company) : Window(desc), break_editbox(MAX_BREAK_STR_STRING_LENGTH)
 	{
 		this->filter = ScriptDebugWindow::initial_state;
 		this->break_string_filter = {&this->filter.case_sensitive_break_check, false};
@@ -800,7 +800,11 @@ struct ScriptDebugWindow : public Window {
 		/* Restore the break string value from static variable */
 		this->break_editbox.text.Assign(this->filter.break_string);
 
-		this->SelectValidDebugCompany();
+		if (show_company == INVALID_COMPANY) {
+			this->SelectValidDebugCompany();
+		} else {
+			this->ChangeToScript(show_company);
+		}
 		this->InvalidateData(-1);
 	}
 
@@ -985,10 +989,17 @@ struct ScriptDebugWindow : public Window {
 	/**
 	 * Change all settings to select another Script.
 	 * @param show_ai The new AI to show.
+	 * @param new_window Open the script in a new window.
 	 */
-	void ChangeToScript(CompanyID show_script)
+	void ChangeToScript(CompanyID show_script, bool new_window = false)
 	{
 		if (!this->IsValidDebugCompany(show_script)) return;
+
+		if (new_window) {
+			ScriptDebugWindow::initial_state = this->filter;
+			ShowScriptDebugWindow(show_script, true);
+			return;
+		}
 
 		this->filter.script_debug_company = show_script;
 
@@ -1010,12 +1021,12 @@ struct ScriptDebugWindow : public Window {
 
 		/* Check which button is clicked */
 		if (IsInsideMM(widget, WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END + 1)) {
-			ChangeToScript((CompanyID)(widget - WID_SCRD_COMPANY_BUTTON_START));
+			ChangeToScript((CompanyID)(widget - WID_SCRD_COMPANY_BUTTON_START), _ctrl_pressed);
 		}
 
 		switch (widget) {
 			case WID_SCRD_SCRIPT_GAME:
-				ChangeToScript(OWNER_DEITY);
+				ChangeToScript(OWNER_DEITY, _ctrl_pressed);
 				break;
 
 			case WID_SCRD_RELOAD_TOGGLE:
@@ -1250,14 +1261,32 @@ static WindowDesc _script_debug_desc(__FILE__, __LINE__,
 /**
  * Open the Script debug window and select the given company.
  * @param show_company Display debug information about this AI company.
+ * @param new_window Show in new window instead of existing window.
  */
-Window *ShowScriptDebugWindow(CompanyID show_company)
+Window *ShowScriptDebugWindow(CompanyID show_company, bool new_window)
 {
 	if (!_networking || _network_server) {
-		ScriptDebugWindow *w = (ScriptDebugWindow *)BringWindowToFrontById(WC_SCRIPT_DEBUG, 0);
-		if (w == nullptr) w = new ScriptDebugWindow(&_script_debug_desc, 0);
-		if (show_company != INVALID_COMPANY) w->ChangeToScript(show_company);
-		return w;
+		int i = 0;
+		if (new_window) {
+			/* find next free window number for script debug */
+			while (FindWindowById(WC_SCRIPT_DEBUG, i) != nullptr) i++;
+		} else {
+			/* Find existing window showing show_company. */
+			for (Window *w : Window::Iterate()) {
+				if (w->window_class == WC_SCRIPT_DEBUG && static_cast<ScriptDebugWindow *>(w)->filter.script_debug_company == show_company) {
+					return BringWindowToFrontById(w->window_class, w->window_number);
+				}
+			}
+
+			/* Maybe there's a window showing a different company which can be switched. */
+			ScriptDebugWindow *w = static_cast<ScriptDebugWindow *>(FindWindowByClass(WC_SCRIPT_DEBUG));
+			if (w != nullptr) {
+				BringWindowToFrontById(w->window_class, w->window_number);
+				w->ChangeToScript(show_company);
+				return w;
+			}
+		}
+		return new ScriptDebugWindow(&_script_debug_desc, i, show_company);
 	} else {
 		ShowErrorMessage(STR_ERROR_AI_DEBUG_SERVER_ONLY, INVALID_STRING_ID, WL_INFO);
 	}
