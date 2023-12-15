@@ -14,7 +14,7 @@
 #include "../textfile_type.h"
 
 void ShowScriptListWindow(CompanyID slot, bool show_all);
-Window *ShowScriptDebugWindow(CompanyID show_company = INVALID_COMPANY);
+Window *ShowScriptDebugWindow(CompanyID show_company = INVALID_COMPANY, bool new_window = false);
 void ShowScriptSettingsWindow(CompanyID slot);
 void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot);
 void ShowScriptDebugWindowIfScriptError();
