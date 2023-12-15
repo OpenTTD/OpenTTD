@@ -282,13 +282,9 @@ void Win32FontCache::ClearFontCache()
 	return new_glyph.sprite;
 }
 
-/* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key)
+/* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 {
 	assert(IsPrintable(key));
-
-	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return this->parent->MapCharToGlyph(key);
-	}
 
 	/* Convert characters outside of the BMP into surrogate pairs. */
 	WCHAR chars[2];
@@ -302,7 +298,8 @@ void Win32FontCache::ClearFontCache()
 	WORD glyphs[2] = { 0, 0 };
 	GetGlyphIndicesW(this->dc, chars, key >= 0x010000U ? 2 : 1, glyphs, GGI_MARK_NONEXISTING_GLYPHS);
 
-	return glyphs[0] != 0xFFFF ? glyphs[0] : 0;
+	if (glyphs[0] != 0xFFFF) return glyphs[0];
+	return allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END ? this->parent->MapCharToGlyph(key) : 0;
 }
 
 /* virtual */ const void *Win32FontCache::InternalGetFontTable(uint32_t tag, size_t &length)

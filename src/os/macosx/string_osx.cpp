@@ -189,9 +189,9 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, i.first - last), kCTForegroundColorAttributeName, color);
 		CGColorRelease(color);
 
-		/* Install a size callback for our special sprite glyphs. */
+		/* Install a size callback for our special private-use sprite glyphs in case the font does not provide them. */
 		for (ssize_t c = last; c < i.first; c++) {
-			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END) {
+			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END && i.second->fc->MapCharToGlyph(buff[c], false) == 0) {
 				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (i.second->fc->GetSize() << 24))));
 				CFAttributedStringSetAttribute(str.get(), CFRangeMake(c, 1), kCTRunDelegateAttributeName, del.get());
 			}
@@ -242,7 +242,7 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 	CGGlyph gl[this->glyphs.size()];
 	CTRunGetGlyphs(run, CFRangeMake(0, 0), gl);
 	for (size_t i = 0; i < this->glyphs.size(); i++) {
-		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END) {
+		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END && gl[i] == 0) {
 			this->glyphs[i] = font->fc->MapCharToGlyph(buff[this->glyph_to_char[i]]);
 			this->positions[i * 2 + 0] = pts[i].x;
 			this->positions[i * 2 + 1] = (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2; // Align sprite font to centre

@@ -29,7 +29,7 @@ public:
 	~CoreTextFontCache() {}
 
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key) override;
+	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return font_name; }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return font.get(); }

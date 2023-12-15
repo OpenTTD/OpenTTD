@@ -180,13 +180,9 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->font_name, pixels);
 }
 
-GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key)
+GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 {
 	assert(IsPrintable(key));
-
-	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return this->parent->MapCharToGlyph(key);
-	}
 
 	/* Convert characters outside of the Basic Multilingual Plane into surrogate pairs. */
 	UniChar chars[2];
@@ -200,6 +196,10 @@ GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key)
 	CGGlyph glyph[2] = {0, 0};
 	if (CTFontGetGlyphsForCharacters(this->font.get(), chars, glyph, key >= 0x010000U ? 2 : 1)) {
 		return glyph[0];
+	}
+
+	if (allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
+		return this->parent->MapCharToGlyph(key);
 	}
 
 	return 0;

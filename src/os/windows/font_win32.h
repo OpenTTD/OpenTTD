@@ -35,7 +35,7 @@ public:
 	Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels);
 	~Win32FontCache();
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key) override;
+	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
 	std::string GetFontName() override { return this->fontname; }
 	const void *GetOSHandle() override { return &this->logfont; }
 };
