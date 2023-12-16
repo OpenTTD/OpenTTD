@@ -25,6 +25,8 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_GUI_SCALE,              ///< GUI Scale slider.
 	WID_GO_GUI_SCALE_AUTO,         ///< Autodetect GUI scale button.
 	WID_GO_GUI_SCALE_BEVEL_BUTTON, ///< Toggle for chunky bevels.
+	WID_GO_GUI_FONT_SPRITE,        ///< Toggle whether to prefer the sprite font over TTF fonts.
+	WID_GO_GUI_FONT_AA,            ///< Toggle whether to anti-alias fonts.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
 	WID_GO_BASE_GRF_PARAMETERS,    ///< Base GRF parameters.
 	WID_GO_BASE_GRF_OPEN_URL,      ///< Open base GRF URL.

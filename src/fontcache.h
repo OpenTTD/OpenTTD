@@ -218,6 +218,8 @@ struct FontCacheSettings {
 	FontCacheSubSetting medium; ///< The normal font size.
 	FontCacheSubSetting large;  ///< The largest font; mostly used for newspapers.
 	FontCacheSubSetting mono;   ///< The mono space font used for license/readme viewers.
+	bool prefer_sprite;         ///< Whether to prefer the built-in sprite font over resizable fonts.
+	bool global_aa;             ///< Whether to anti alias all font sizes.
 };
 
 extern FontCacheSettings _fcsettings;
