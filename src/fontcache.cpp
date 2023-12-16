@@ -18,6 +18,7 @@
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_func.h"
+#include "fileio_func.h"
 
 #include "safeguards.h"
 
@@ -143,12 +144,51 @@ void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa)
 
 #ifdef WITH_FREETYPE
 extern void LoadFreeTypeFont(FontSize fs);
+extern void LoadFreeTypeFont(FontSize fs, const std::string &file_name, uint size);
 extern void UninitFreeType();
 #elif defined(_WIN32)
 extern void LoadWin32Font(FontSize fs);
+extern void LoadWin32Font(FontSize fs, const std::string &file_name, uint size);
 #elif defined(WITH_COCOA)
 extern void LoadCoreTextFont(FontSize fs);
+extern void LoadCoreTextFont(FontSize fs, const std::string &file_name, uint size);
 #endif
+
+static void TryLoadDefaultTrueTypeFont([[maybe_unused]] FontSize fs)
+{
+#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
+	std::string font_name{};
+	switch (fs) {
+		case FS_NORMAL:
+			font_name = "OpenTTD-Sans.ttf";
+			break;
+		case FS_SMALL:
+			font_name = "OpenTTD-Small.ttf";
+			break;
+		case FS_LARGE:
+			font_name = "OpenTTD-Serif.ttf";
+			break;
+		case FS_MONO:
+			font_name = "OpenTTD-Mono.ttf";
+			break;
+
+		default: NOT_REACHED();
+	}
+
+	/* Find font file. */
+	std::string full_font = FioFindFullPath(BASESET_DIR, font_name);
+	if (!full_font.empty()) {
+		int size = FontCache::GetDefaultFontHeight(fs);
+#ifdef WITH_FREETYPE
+		LoadFreeTypeFont(fs, full_font, size);
+#elif defined(_WIN32)
+		LoadWin32Font(fs, full_font, size);
+#elif defined(WITH_COCOA)
+		LoadCoreTextFont(fs, full_font, size);
+#endif
+	}
+#endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */
+}
 
 /**
  * (Re)initialize the font cache related things, i.e. load the non-sprite fonts.
@@ -164,13 +204,17 @@ void InitFontCache(bool monospace)
 		FontCache *fc = FontCache::Get(fs);
 		if (fc->HasParent()) delete fc;
 
+		if (GetFontCacheSubSetting(fs)->font.empty()) {
+			TryLoadDefaultTrueTypeFont(fs);
+		} else {
 #ifdef WITH_FREETYPE
-		LoadFreeTypeFont(fs);
+			LoadFreeTypeFont(fs);
 #elif defined(_WIN32)
-		LoadWin32Font(fs);
+			LoadWin32Font(fs);
 #elif defined(WITH_COCOA)
-		LoadCoreTextFont(fs);
+			LoadCoreTextFont(fs);
 #endif
+		}
 	}
 }
 
