@@ -56,6 +56,7 @@
 - George - Canal/Lock graphics
 - Andrew Parkhouse (andythenorth) - River graphics
 - David Dallaston (Pikka) - Tram tracks
+- Richard Wheeler (zephyris) - OpenTTD TrueType font
 - All Translators - For their support to make OpenTTD a truly international game
 - Bug Reporters - Thanks for all bug reports
 - Chris Sawyer - For an amazing game!
