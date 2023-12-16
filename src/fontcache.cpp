@@ -96,7 +96,7 @@ bool GetFontAAState(FontSize size, bool check_blitter)
 	/* AA is only supported for 32 bpp */
 	if (check_blitter && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32) return false;
 
-	return GetFontCacheSubSetting(size)->aa;
+	return _fcsettings.global_aa || GetFontCacheSubSetting(size)->aa;
 }
 
 void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa)
@@ -204,7 +204,7 @@ void InitFontCache(bool monospace)
 		FontCache *fc = FontCache::Get(fs);
 		if (fc->HasParent()) delete fc;
 
-		if (GetFontCacheSubSetting(fs)->font.empty()) {
+		if (!_fcsettings.prefer_sprite && GetFontCacheSubSetting(fs)->font.empty()) {
 			TryLoadDefaultTrueTypeFont(fs);
 		} else {
 #ifdef WITH_FREETYPE
