@@ -41,7 +41,7 @@ enum ScriptDebugWidgets {
 	WID_SCRD_SCRIPT_GAME,          ///< Game Script button.
 	WID_SCRD_RELOAD_TOGGLE,        ///< Reload button.
 	WID_SCRD_LOG_PANEL,            ///< Panel where the log is in.
-	WID_SCRD_SCROLLBAR,            ///< Scrollbar of the log panel.
+	WID_SCRD_VSCROLLBAR,           ///< Vertical scrollbar of the log panel.
 	WID_SCRD_COMPANY_BUTTON_START, ///< Buttons in the VIEW.
 	WID_SCRD_COMPANY_BUTTON_END = WID_SCRD_COMPANY_BUTTON_START + MAX_COMPANIES - 1, ///< Last possible button in the VIEW.
 	WID_SCRD_BREAK_STRING_WIDGETS, ///< The panel to handle the breaking on string.
@@ -49,6 +49,7 @@ enum ScriptDebugWidgets {
 	WID_SCRD_BREAK_STR_EDIT_BOX,   ///< Edit box for the string to break on.
 	WID_SCRD_MATCH_CASE_BTN,       ///< Checkbox to use match caching or not.
 	WID_SCRD_CONTINUE_BTN,         ///< Continue button.
+	WID_SCRD_HSCROLLBAR,           ///< Horizontal scrollbar of the log panel.
 };
 
 #endif /* WIDGETS_SCRIPT_WIDGET_H */
