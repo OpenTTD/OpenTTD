@@ -1492,7 +1492,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis apenas) O quão acidentado é o terreno
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Apenas TerraGenesis) Relevo do terreno
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidade de indústrias: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Define quantas indústrias devem ser geradas e o nível que deve ser mantido durante o jogo
@@ -1501,18 +1501,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Dist máx da bo
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Refinarias são construídas apenas nas bordas, ou no litoral, para ilhas
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a que altitude a neve começa nos climas sub-árticos. Neve também afeta geração de indústrias e necessidades para o crescimento das cidades. Só pode ser modificado por meio do Editor de cenário ou é de outra forma calculado por meio de "cobertura de neve"
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a que altura começa a neve no clima sub-ártico. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Só pode ser modificado no Editor de Cenário ou então é calculado usando a "cobertura de neve"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cobertura de neve: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controla a quantidade aproximada de neve no terreno subártico. A neve também afeta os requisitos de geração de indústria e crescimento de cidades. Usado apenas durante a geração de mapas. Terreno logo acima do nível do mar é sempre sem neve
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controla a quantidade aproximada de neve no clima sub-ártico. A neve também afeta a geração das indústrias e os requisitos de crescimento das localidades. Usado apenas durante a geração do mapa. O terreno logo acima do nível do mar nunca terá neve.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Cobertura do deserto: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controla a quantidade aproximada de deserto no terreno tropical. O deserto também afeta a geração de indústrias. Usado apenas durante a geração do mapa
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controla a quantidade aproximada de deserto no clima tropical. O deserto também afeta a geração das indústrias. Usado apenas durante a geração do mapa
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidade do terreno: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis apenas) Escolhe a frequência de colinas: Terrenos planos têm menos colinas, mais espalhadas. Montanhosos tem mais colinas, que pode se tornar repetitivo
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Apenas TerraGenesis) Escolhe a frequência de montes: paisagens macias têm menos montes e mais espalhados. Paisagens duras têm muitos montes, que podem parecer repetitivos
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito Regular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Regular
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Irregular
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito Irregular
 
 STR_CONFIG_SETTING_VARIETY                                      :Distribuição de variedade: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis apenas) Controla se o mapa contém tanto áreas montanhosas como planas. Como isso apenas torna o mapa mais plano, as outras configurações devem ser mantidas em montanhoso
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Apenas TerraGenesis) Controla se o mapa contém áreas planas e montanhosas. Como isto apenas torna o mapa mais plano, outras definições devem ser definidas como montanhosas
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantidade de rios: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Escolha quantos rios a serem gerados
@@ -1540,6 +1540,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Dirigem na esqu
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Dirigem na direita
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotação do mapa topográfico: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Escolher como a imagem do mapa topográfico será rotacionado para se ajustar ao mapa do jogo
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido Anti-Horário
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido Horário
@@ -2253,9 +2254,9 @@ STR_FACE_SAVE                                                   :{BLACK}Salvar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvar face favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Este rosto irá ser salvo como seu rosto favorito no arquivo de configuração do OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Europeu
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecione faces Européias
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecionar faces Européias
 STR_FACE_AFRICAN                                                :{BLACK}Africano
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selecione faces Africanas
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selecionar faces Africanas
 STR_FACE_YES                                                    :Sim
 STR_FACE_NO                                                     :Não
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Ativar bigode ou brinco
@@ -2599,7 +2600,7 @@ STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMA
 ###length 5
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Você não selecionou para ser baixado
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Você selecionou para ser baixado
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esse dependente será baixado
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esta dependência foi seleccionada para ser baixada
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Você já baixou isso
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Esse conteúdo é desconhecido e não pode ser baixado pelo OpenTTD
 
@@ -2667,7 +2668,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir 
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda do Fluxo de Carga
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todas
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nenhuma
-STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecione companhias a serem exibidas
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecionar as empresas a serem exibidas
 STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
@@ -2948,7 +2949,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Cidades grandes cresem mais rápido que as cidades normais{}Dependendo das configs. são maiores quando fundadas.
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposição das ruas das cidades
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selecione a disposição de ruas a ser utilizada nessa cidade
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Seleccionar disposição das estradas utilizada para esta localidade
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Melhorado
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Quadras 2x2
@@ -2957,7 +2958,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Randômi
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financiar Indústria
-STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Escolha a indústria apropriada
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Escolher a indústria apropriada desta lista
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Criar indústrias aleatórias
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cobrir o mapa com indústrias colocadas aleatoriamente
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Criar indústrias aleatórias
@@ -2983,10 +2984,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadeia d
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Exibe indústrias que suprem e aceitam carga
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Exiba também no minimapa
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selecione as indústrias exibidas no minimapa também
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Seleciona carga
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Seleciona a carga que você deseja exibir
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Seleciona indústria
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Seleciona a indústria que você deseja exibir
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Selecionar carga
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Selecionar a carga que você deseja exibir
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Selecionar a indústria
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Selecionar a indústria que você deseja exibir
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informações do Terreno
@@ -3209,13 +3210,17 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Dimensõ
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Seleciona o tamanho do mapa em quadrados. O número de quadrados disponíveis será um pouco menor
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de cidades:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Selecionar a densidade de cidades ou fornecer um número
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nome das cidades:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selecionar o estilo dos nomes das cidades
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Selecionar a data inicial
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. de indústrias:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Selecione a densidade de indústrias ou forneça um número
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Pico mais alto:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Escolher o pico mais alto que o jogo tentará criar, medido em elevação acima do nível do mar
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Aumentar a altura máxima do pico mais alto no mapa por um
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuir a altura máxima do pico mais alto no mapa por um
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuir de uma unidade a altura máxima do pico mais alto no mapa
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Cobertura de neve:
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Aumentar em dez porcento a cobertura de neve
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Reduzir em dez porcento a cobertura de neve
@@ -3226,10 +3231,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuir
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nível do mar:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Selecionar o nível do mar
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rios:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Regularidade
 STR_MAPGEN_VARIETY                                              :{BLACK}Distribuição da variedade
 STR_MAPGEN_GENERATE                                             :{WHITE}Gerar
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Criar o mapa e jogar o OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Definições de NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Mostrar definições de NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Definições de IA
@@ -3262,6 +3269,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalão
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Bordas do mapa:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Escolher as bordas do mapa do jogo
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Noroeste
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordeste
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sudeste
@@ -3274,7 +3282,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação do mapa topográfico:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa topográfico:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}O nome do arquivo de imagem do mapa topográfico
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}O tamanho da imagem do mapa topográfico original. Para melhores resultados, cada lado deve ser igual a um comprimento de lado de mapa disponível no OpenTTD, como 256, 512, 1024, etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura alvo do pico
@@ -3289,6 +3299,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terra pl
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Gera uma terra plana
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terra randômica
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altitude da terra plana
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Escolher a elevação do terreno acima do nível do mar
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mover a altitude da terra plana em uma unidade a menos
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mover a altitude da terra plana em uma unidade a mais
 
@@ -3316,7 +3327,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configur
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informação detalhada de NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Arquivos NewGRF ativos
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arquivos NewGRF inativos
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selecione um modelo:
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Seleccionar predefinição:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtro:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega o padrão selecionado
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvar padrão
@@ -4372,7 +4383,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova cap
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Lucro vindo da adaptação: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Lucro da adaptação: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecione os veículos para recuperar. Arrastar com o mouse permite a seleção de vários veículos. Clicar em espaço vazio selecionará todo o veículo. Ctrl+Clique selecionará um veículo e a lista de construção em seguida
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecionar os veículos para recuperar. Arrastar com o mouse permite a seleção de vários veículos. Clicar em espaço vazio selecionará todo o veículo. Ctrl+Clique selecionará um veículo e a lista de construção em seguida
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecionar tipo de carga para o trem

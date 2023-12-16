@@ -257,6 +257,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}giorn{P "o" i}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}second{P "o" i}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
@@ -721,6 +724,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Fare cli
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Fare clic su un brano per rimuoverlo dal programma corrente (solo Personale1 o Personale2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Aziende top
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Commerciante
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Imprenditore
@@ -1531,7 +1535,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Massima distanz
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita la distanza dal bordo della mappa entro cui possono essere costruite raffinerie e piattaforme petrolifere. Nelle mappe insulari sono comunque sempre vicino alla costa. Su mappe più grandi di 256 caselle il valore aumenta proporzionalmente.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altezza delle nevi perenni: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Determina la quota alla quale appare la neve nei paesaggi subartici. La neve ha anche l'effetto di influenzare la generazione delle industrie e i requisiti per la crescita delle città. Può essere modificato solo tramite l'Editor di scenari o altrimenti calcolato tramite "Aree innevate".
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Scegliere a quale altezza inizia a nevicare nel paesaggio sub-artico. La neve influisce anche sulla generazione di industrie e sui requisiti di crescita delle città. Può essere modificato solo tramite l'Editor scenari o viene altrimenti calcolato tramite le "Aree innevate".
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Aree innevate: {STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Regola la quantità approssimativa di neve presente nel paesaggio subartico. La neve influisce anche sulla generazione dell'industria e sui requisiti di crescita della città. Si può impostare solo durante la generazione della mappa o nelle impostazioni prima dell'inizio di una nuova partita. La terra appena sopra il livello del mare non è mai innevata.
@@ -1542,7 +1546,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Regola la quant
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregolarità del terreno: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Solo con TerraGenesis) Seleziona la frequenza delle colline. I paesaggi morbidi presentano poche colline di forma allargata. I paesaggi accidentati hanno molte colline, che potrebbero apparire ripetitive.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Scegliere la forma e il numero di colline. I paesaggi morbidi hanno un numero minore di colline più ampie, mentre i paesaggi ruvidi hanno un numero maggiore di colline più piccole.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molto morbido
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Morbido
@@ -1570,6 +1574,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Guida a sinistr
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Guida a destra
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotazione heightmap: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Scegliere il modo in cui l'immagine della heightmap viene ruotata per adattarsi al mondo di gioco.
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antioraria
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria
@@ -1690,7 +1695,11 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Abilita l'utili
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utilizza gli indicatori di caricamento: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Determina se gli indicatori di caricamento sono mostrati sopra i veicoli in caricamento o scaricamento
 
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Selezionare le unità di tempo utilizzate per gli orari dei veicoli.
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Giorni
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Secondi
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Ticks
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostra gli arrivi e le partenze nelle tabelle orarie: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostra gli orari di arrivo e partenza previsti nelle tabelle orarie
@@ -3240,11 +3249,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Area map
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Seleziona l'area della mappa espressa in caselle. Il numero effettivo di caselle disponibili sarà leggermente inferiore
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numero città:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Selezionare la densità di città o un numero personalizzato.
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomi città:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Seleziona lo stile per i nomi delle città
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Selezionare la data di inizio
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numero industrie:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Selezionare la densità delle industrie o un numero personalizzato.
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Picco massimo:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Scegliere la vetta più alta che il gioco tenterà di creare, misurata in altezza sul livello del mare
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Aumenta la massima altezza del picco più alto sulla mappa di uno
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuisci la massima altezza del picco più alto sulla mappa di uno
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Aree innevate:
@@ -3257,10 +3270,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuis
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Livello di mare:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Selezionare il livello del mare
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Fiumi:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Levigatezza:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varietà del terreno:
 STR_MAPGEN_GENERATE                                             :{WHITE}Genera
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Crea il mondo e gioca a OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Impostazioni NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Mostra impostazioni NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Impostazioni IA
@@ -3293,6 +3308,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalani
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Bordi della mappa:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Scegliere i confini del mondo di gioco
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Nord-ovest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nord-est
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sud-est
@@ -3305,7 +3321,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuale
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotazione heightmap:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome heightmap:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Il nome del file dell'immagine heightmap
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dim.:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}La dimensione dell'immagine heightmap di origine. Per ottenere risultati ottimali, ogni bordo deve corrispondere alla lunghezza del bordo della mappa disponibile in OpenTTD, ad esempio 256, 512, 1024, ecc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Limite altezza massima
@@ -3320,6 +3338,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Pianeggi
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genera un terreno pianeggiante
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Casuale
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altezza terreno pianeggiante:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Scegliere l'altitudine del terreno sul livello del mare
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Sposta in giù di uno l'altezza del terreno pianeggiante
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Sposta in su di uno l'altezza del terreno pianeggiante
 
@@ -4613,8 +4632,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Il veico
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Il veicolo viaggia con un ritardo di {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Il veicolo viaggia con un anticipo di {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Il viaggio non è ancora iniziato
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Questo orario inizierà alle ore {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Questo orario inizierà tra {COMMA} secondi.
 
+STR_TIMETABLE_START                                             :{BLACK}Orario di partenza
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Selezionare quando inizia l'orario. Ctrl+Click distribuisce uniformemente l'inizio di tutti i veicoli che condividono l'ordine in base al loro ordine relativo, se l'ordine è completamente programmato.
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Secondi prima dell'inizio dell'orario
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambia tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la quantità di tempo che dovrebbe essere impiegata per l'ordine selezionato. CTRL+clic imposta il tempo di tutti gli ordini
@@ -4638,6 +4662,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Orari at
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Orari programmati
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterna fra la visualizzazione degli orari attesi e degli orari programmati
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} sec
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} sec
 
 
 # Date window (for timetable)

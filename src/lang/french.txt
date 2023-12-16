@@ -256,6 +256,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}jour{P "" s}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}seconde{P "" s}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre{NBSP}:
@@ -720,6 +723,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliquer 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliquer sur une piste pour la retirer du programme courant (Personnalisé 1 ou Personnalisé 2 seulement)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Top 5 des compagnies
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Personne d'affaires
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
@@ -1488,7 +1492,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Type de terrain{NBSP}: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Vallonnement du paysage
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Chosir la hauteur des collines et montagnes du paysage
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densité des industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Définit combien d'industries doivent être générée et quel niveau doit être maintenu pendant la partie
@@ -1497,18 +1501,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distance maximu
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distance par rapport au bord de la carte où les raffineries et les plateformes pétrolières peuvent être construites. Sur les cartes d'îles cela assure qu'elles sont près de la côte. Sur les cartes plus large que 256 tuiles, cette valeur est mise à l'échelle.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude d'enneigement{NBSP}: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Contrôle à quelle altitude la neige commence dans le climat sub-arctique. La neige affecte aussi la génération des industries et les exigences pour la croissance des villes. Ne peut être modifié que via l'éditeur de scénario autrement il est calculé via "couverture de neige"
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Chosir à quelle altitude la neige commence dans le climat sub-arctique. La neige affecte aussi la génération des industries et les exigences pour la croissance des villes. Ne peut être modifié que via l'éditeur de scénario autrement il est calculé via "couverture de neige"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Couverture de neige: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Contrôle la quantité approximative de neige sur le paysage sub-arctique. La neige affecte également la production des industrielles et les besoins de croissance des villes. Seulement utilisé lors de la création de la carte. La terre juste au-dessus du niveau de la mer est toujours sans neige
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Contrôle la quantité approximative de neige sur le paysage sub-arctique. La neige affecte également la création d'industries et les besoins des villes pour croître. Seulement utilisé lors de la création de la carte. L'eau et les côtes ne seront jamais enneigées.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Couverture du désert: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Contrôlez la quantité approximative de zone du désert sur le paysage tropical. Le désert affecte également la création du nombre d'industries. Uniquement utilisé lors de la création de la carte
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Choisir la quantité approximative de zone du désert sur le paysage tropical. Le désert affecte également le nombre d'industries créées et les besoins des villes pour croître. Uniquement utilisé lors de la création de la carte
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosité du terrain{NBSP}: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Choisir la fréquence des collines{NBSP}: Les paysages doux ont des collines moins nombreuses et plus éloignées. Les paysages rudes ont beaucoup de collines, ce qui peut sembler répétitif
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Choisir la forme et le nombre de collines. Les paysages doux ont des collines basses et larges, tandis que les paysages rugueux ont de plus petites collines.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Très lisse
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lisse
@@ -1516,7 +1520,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rugueux
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Très rugueux
 
 STR_CONFIG_SETTING_VARIETY                                      :Distribution de variété{NBSP}: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis seulement) Contrôle si la carte contient à la fois de la montagne et du terrain plat. Comme cela rend seulement la carte plus plate, les autres paramètres doivent être définis sur montagneux
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Contrôle si la carte contient à la fois des montagnes et des plaines. Plus la valeur est élevée, plus la différence d'élévation entre le plateau montagneux et les plaines sera importante.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantité de rivières{NBSP}: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Choisir combien de rivières générer
@@ -1536,6 +1540,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conduite à gau
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conduite à droite
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotation de la carte d'altitude{NBSP}: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Choisir de quelle manière l'image de la carte d'altitude est pivotée pour s'insérer correctement dans la carte actuelle.
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-horaire
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horaire
@@ -1656,7 +1661,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Active l'utilis
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utiliser les indicateurs de chargement{NBSP}: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Choisir si les indicateurs de chargement doivent être affichés au dessus des véhicules qui chargent ou déchargent
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Unité de temps pour les horaires{NBSP}: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Sélectionner l'unité de temps utilisée pour les horaires des véhicules
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Jours
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Secondes
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Ticks
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afficher l'arrivée et le départ dans les horaires{NBSP}: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Afficher les temps d'arrivée et de départ prévues dans les horaires
@@ -3200,11 +3210,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Taille d
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Définir la taille de la carte en cases. Le nombre de cases utilisables sera légèrement plus petit
 STR_MAPGEN_BY                                                   :{BLACK}{NBSP}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nb. de villes{NBSP}:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Sélectionner la quantité de villes sur la carte ou entrer un nombre précis
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nom des villes{NBSP}:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Sélectionner la nationalité des noms des villes
 STR_MAPGEN_DATE                                                 :{BLACK}Date{NBSP}:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Chosir la date de départ
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nb. d'industries{NBSP}:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Sélectionner la quantité d'industries sur la carte ou entrer un nombre précis
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Sommet le plus élevé:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Chosir le plus haut pic que le jeu pourra créer (mesuré par rapport au niveau de l'eau)
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Augmenter la hauteur maximale du plus haut sommet de la carte de un
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuer la hauteur maximale du plus haut sommet de la carte de un
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Couverture de la neige:
@@ -3217,10 +3231,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuer
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Type de terrain{NBSP}:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Niveau de la mer{NBSP}:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Sélectionner le niveau de l'eau
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nb. de rivières{NBSP}:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Lissage{NBSP}:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variété de distribution{NBSP}:
 STR_MAPGEN_GENERATE                                             :{WHITE}Créer
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Créer la carte et jouer à OpenTTD !
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Paramètres NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Afficher la configuration des NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Paramètres des IAs
@@ -3253,6 +3269,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalans
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Bords de la carte{NBSP}:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Choisir les bordures de la carte
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Nord-Ouest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nord-Est
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sud-Est
@@ -3265,7 +3282,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotation de la carte d'altitude{NBSP}:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom de la carte d'altitude{NBSP}:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Nom de l'image de la carte d'altitude
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Taille{NBSP}:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Taille de l'image de la carte d'altitude. Pour un meilleur résultat, chaque longueur de bordure doit correspondre à une taille de bordure disponible sur OpenTTD (256, 512, 1024, etc).
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}{NBSP}×{NBSP}{NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Hauteur du pic
@@ -3280,6 +3299,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terrain 
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Créer un monde plat
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terrain aléatoire
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altitude du terrain plat{NBSP}:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Choisir la hauteur du sol par rapport au niveau de l'eau
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Diminuer l'altitude du terrain plat
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Augmenter l'altitude du terrain plat
 
@@ -4573,8 +4593,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ce véhi
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ce véhicule est en retard de {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ce véhicule est en avance de {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Cet horaire n'a pas encore démarré
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Cet horaire démarrera le/à {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Cet horaire commencera dans {COMMA} seconde{P "" s}
 
+STR_TIMETABLE_START                                             :{BLACK}Démarrer l'horaire
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Sélectionner quand l'horaire doit démarrer. Ctrl-clic pourra donner l'ordre de démarrer l'horaire aux véhicules qui le partagent, seulement si leurs ordres sont complètement définis dans leurs horaires respectifs
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Nombre de secondes avant que l'horaire ne commence
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier la durée
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre sélectionné. Ctrl-clic pour définir la durée pour tous les ordres
@@ -4598,6 +4623,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Attendu
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planifié
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alterner entre attendu et planifié
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} seconde{P "" s}
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} seconde{P "" s}
 
 
 # Date window (for timetable)
@@ -4779,7 +4808,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Seuls le
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Très grande capture d'écran
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La capture d'écran aura une résolution de {COMMA} x {COMMA} pixels. Faire cette capture peut prendre un moment . Êtes-vous sûr de vouloir continuer{NBSP}?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}La carte de hauteur a bien été enregistrée sous '{STRING}'. Le pic le plus élevé est {NUM}
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}La carte d'altitude a bien été enregistrée sous '{STRING}'. Le pic le plus élevé est {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Copie d'écran enregistrée avec succès sous "{STRING}"
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Échec de la copie d'écran{NBSP}!
 
