@@ -168,6 +168,9 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 	CFAutoRelease<CFStringRef> base(CFStringCreateWithCharactersNoCopy(kCFAllocatorDefault, buff, length, kCFAllocatorNull));
 	CFAttributedStringReplaceString(str.get(), CFRangeMake(0, 0), base.get());
 
+	const UniChar replacment_char = 0xFFFC;
+	CFAutoRelease<CFStringRef> replacment_str(CFStringCreateWithCharacters(kCFAllocatorDefault, &replacment_char, 1));
+
 	/* Apply font and colour ranges to our string. This is important to make sure
 	 * that we get proper glyph boundaries on style changes. */
 	int last = 0;
@@ -193,6 +196,8 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 		for (ssize_t c = last; c < i.first; c++) {
 			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END && i.second->fc->MapCharToGlyph(buff[c], false) == 0) {
 				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (i.second->fc->GetSize() << 24))));
+				/* According to the offical documentation, if a run delegate is used, the char should always be 0xFFFC. */
+				CFAttributedStringReplaceString(str.get(), CFRangeMake(c, 1), replacment_str.get());
 				CFAttributedStringSetAttribute(str.get(), CFRangeMake(c, 1), kCTRunDelegateAttributeName, del.get());
 			}
 		}
@@ -242,7 +247,8 @@ CoreTextParagraphLayout::CoreTextVisualRun::CoreTextVisualRun(CTRunRef run, Font
 	CGGlyph gl[this->glyphs.size()];
 	CTRunGetGlyphs(run, CFRangeMake(0, 0), gl);
 	for (size_t i = 0; i < this->glyphs.size(); i++) {
-		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END && gl[i] == 0) {
+		if (buff[this->glyph_to_char[i]] >= SCC_SPRITE_START && buff[this->glyph_to_char[i]] <= SCC_SPRITE_END && (gl[i] == 0 || gl[i] == 3)) {
+			/* A glyph of 0 indidicates not found, while apparently 3 is what char 0xFFFC maps to. */
 			this->glyphs[i] = font->fc->MapCharToGlyph(buff[this->glyph_to_char[i]]);
 			this->positions[i * 2 + 0] = pts[i].x;
 			this->positions[i * 2 + 1] = (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2; // Align sprite font to centre
