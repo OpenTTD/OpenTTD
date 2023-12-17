@@ -255,6 +255,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}ngày
 STR_UNITS_SECONDS                                               :{COMMA}{NBSP}giây
 STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick
 
@@ -1490,7 +1491,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên Bản
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Kiểu nền đất: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Chỉ cho TerraGenesis) Địa hình nhiều đồi núi
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Chọn độ cao của đồi núi trên địa hình
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Mật độ nhà máy: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Thiết lập số nhà máy sẽ được tạo ra và mức độ dùy trì trong ván chơi
@@ -1518,7 +1519,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Gồ Ghề
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Rất Gồ Ghề
 
 STR_CONFIG_SETTING_VARIETY                                      :Phân bổ sự đa dạng: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Chỉ cho TerraGenesis) Điều chỉnh liệu rằng bản đồ gồm cả vùng núi cao và vùng đồng bằng. Đây chỉ là điều chỉnh cho sự bằng phẳng hơn, các thiết lập khác sẽ điều chỉnh cho vùng núi.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Điều chỉnh liệu rằng bản đồ gồm cả vùng núi cao và vùng đồng bằng. Độ đa dạng càng cao thì sự chênh lệch về độ cao giữa vùng núi và vùng đồng bằng càng nhiều.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Số lượng sông ngòi: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Chọn số lượng sông ngòi được khởi tạo
@@ -1538,6 +1539,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Lái bên trái
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Lái bên phải
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Xoay bản đồ địa hình: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Chọn chiều xoay của ảnh địa hình để dùng trong thế giới của trò chơi
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ngược chiều đồng hồ
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Xuôi chiều đồng hồ
@@ -1658,6 +1660,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Cho phép sử 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Hiển thị quá trình nạp hàng: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Lựa chọn liệu có chỉ thị tỉ lệ bốc xếp hiển thị khi bốc xếp hàng
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Đơn vị thời gian của bảng biểu: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Chọn đơn vị thời gian sử dụng cho bảng biểu của phương tiện
 ###length 3
 STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Ngày
@@ -3206,10 +3209,13 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kích th
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Lựa chọn kích thước bản đồ theo đơn vị ô. Số lượng ô thực sự có thể nhỏ hơn 1 chút.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Số lượng đô thị:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Chọn độ dày đặc của thị trấn, hoặc nhập một số tự chọn
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Tên thị trấn:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Lựa chọn kiểu tên thị trấn
 STR_MAPGEN_DATE                                                 :{BLACK}Thời điểm:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Chọn ngày bắt đầu
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lượng nhà máy:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :Chọn độ dày đặc của nhà máy, hoặc nhập một số tự chọn
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Độ cao đỉnh cao nhất:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Tăng chiều cao tối đa của đỉnh cao nhất lên một đơn vị
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Giảm độ cao tối đa của đỉnh cao nhất trên bản đồ một đơn vị
@@ -3223,10 +3229,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Giảm �
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Mực nước biển:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Chọn mực nước biển
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Số sông/suối:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Độ phẳng phiu:
 STR_MAPGEN_VARIETY                                              :{BLACK}Phân bổ sự đa dạng:
 STR_MAPGEN_GENERATE                                             :{WHITE}Khởi Tạo
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Kiến tạo thế giới và chơi với OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Thiết Lập NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Thiết lập AI
@@ -3259,6 +3267,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalan
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Rìa bản đồ:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Chọn loại ranh giới của thế giới của trò chơi
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Tây Bắc
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Đông Bắc
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Đông Nam
@@ -3271,6 +3280,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Bằng T
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Xoay bản đồ địa hình:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên bản đồ địa hình:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Tên tập tin bản đồ địa hình
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Cỡ:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
@@ -3286,6 +3296,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Đất b
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Tạo ra đất bằng
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Nền đất ngẫu nhiên
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Độ cao của đồng bằng:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Chọn độ cao của đất so với mực nước biển
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Hạ độ cao của đồng bằng xuống một
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Nâng độ cao của đồng bằng lên một
 
@@ -4579,9 +4590,12 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Phương
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Phương tiện này đang chạy trễ dự kiến {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Phương tiện này đang chạy sớm hơn dự kiến {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Bảng lịch trình này chưa khởi tạo
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Bảng biểu sẽ bắt đầu lúc {STRING}
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Lịch trình này sẽ bắt đầu trong {COMMA} giây
 
+STR_TIMETABLE_START                                             :{BLACK}Khởi động bảng biểu
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Số giây cho đến khi lịch trình bắt đầu
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Đổi thời gian
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đổi thời lượng của điểm lộ trình được phép sử dụng. Ctrl+Click đặt thời gian cho mọi lộ trình
@@ -4605,7 +4619,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Mong mu�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Chốt lịch
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Chuyển giữa lịch mong muốn và lịch được chốt
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :Đến: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :Đến: {COLOUR}{DATE_TINY}
 STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :Đến: {COLOUR}{COMMA} giây
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :Đến: {COLOUR}{COMMA} giây
 
 
 # Date window (for timetable)
@@ -4711,6 +4728,7 @@ STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Ép ch�
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme
 STR_TEXTFILE_VIEW_README_TOOLTIP                                :Xem readme của nội dung này
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lịch sử thay đổi
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Xem lịch sử thay đổi của nội dung này
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Giấy phép
 STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Xem giấy phép của nội dung này
 ###length 5

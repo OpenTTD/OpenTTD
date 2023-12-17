@@ -1526,7 +1526,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originale
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo di terreno: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Solo con TerraGenesis) Tipo di dislivelli presenti nel paesaggio.
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Scegliere l'altezza delle colline e delle montagne del paesaggio
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densità delle industrie: {STRING.fs}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Determina quante industrie sono generate e a quale livello di densità sulla mappa sono mantenute nel corso della partita.
@@ -1538,11 +1538,11 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altezza delle n
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Scegliere a quale altezza inizia a nevicare nel paesaggio sub-artico. La neve influisce anche sulla generazione di industrie e sui requisiti di crescita delle città. Può essere modificato solo tramite l'Editor scenari o viene altrimenti calcolato tramite le "Aree innevate".
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Aree innevate: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Regola la quantità approssimativa di neve presente nel paesaggio subartico. La neve influisce anche sulla generazione dell'industria e sui requisiti di crescita della città. Si può impostare solo durante la generazione della mappa o nelle impostazioni prima dell'inizio di una nuova partita. La terra appena sopra il livello del mare non è mai innevata.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Scegliere la quantità approssimativa di neve sul paesaggio sub-artico. La neve influisce anche sulla generazione di industrie e sui requisiti di crescita delle città. Si usa solo durante la generazione della mappa. Le caselle del livello del mare e della costa non hanno mai neve.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Aree desertiche: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Regola la quantità approssimativa di deserto nei paesaggi tropicali. Il deserto influenza anche la generazione di industrie. Si può impostare solo durante la generazione della mappa o nelle impostazioni prima dell'inizio di una nuova partita.
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Scegliere la quantità approssimativa di deserto nel paesaggio tropicale. Il deserto influisce anche sulla generazione di industrie e sui requisiti di crescita delle città. Utilizzato solo durante la generazione della mappa
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregolarità del terreno: {STRING}
@@ -1554,7 +1554,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Accidentato
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molto accidentato
 
 STR_CONFIG_SETTING_VARIETY                                      :Varietà del terreno: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Solo con TerraGenesis) Determina in quale misura la mappa affianca aree montuose ed aree pianeggianti. Poiché questa impostazione agisce abbassando progressivamente la quota del terreno, le altre impostazioni dovrebbero essere impostate per un terreno montuoso.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Scegliere se la mappa deve contenere sia montagne che aree pianeggianti. Più alta è la varietà, maggiori sono le differenze di altitudine tra aree montuose e pianeggianti.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantità di fiumi: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Imposta la quantità di fiumi da generare.
@@ -1695,6 +1695,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Abilita l'utili
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utilizza gli indicatori di caricamento: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Determina se gli indicatori di caricamento sono mostrati sopra i veicoli in caricamento o scaricamento
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Unità di tempo per gli orari: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Selezionare le unità di tempo utilizzate per gli orari dei veicoli.
 ###length 3
 STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Giorni
