@@ -121,21 +121,10 @@ void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa)
 
 	if (!changed) return;
 
-	if (fontsize != FS_MONO) {
-		/* Try to reload only the modified font. */
-		FontCacheSettings backup = _fcsettings;
-		for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-			if (fs == fontsize) continue;
-			FontCache *fc = FontCache::Get(fs);
-			GetFontCacheSubSetting(fs)->font = fc->HasParent() ? fc->GetFontName() : "";
-		}
-		CheckForMissingGlyphs();
-		_fcsettings = backup;
-	} else {
-		InitFontCache(true);
-	}
+	InitFontCache(fontsize);
+	if (fontsize != FS_MONO) CheckForMissingGlyphs();
 
-	LoadStringWidthTable();
+	LoadStringWidthTable(fontsize);
 	UpdateAllVirtCoords();
 	ReInitAllWindows(true);
 
@@ -191,37 +180,42 @@ static void TryLoadDefaultTrueTypeFont([[maybe_unused]] FontSize fs)
 }
 
 /**
- * (Re)initialize the font cache related things, i.e. load the non-sprite fonts.
- * @param monospace Whether to initialise the monospace or regular fonts.
+ * (Re)initialise the font cache related things for a specific font size.
+ * @param fs Font size to (re)initialise.
  */
-void InitFontCache(bool monospace)
+void InitFontCache(FontSize fs)
+{
+	FontCache *fc = FontCache::Get(fs);
+	if (fc->HasParent()) delete fc;
+
+	if (!_fcsettings.prefer_sprite && GetFontCacheSubSetting(fs)->font.empty()) {
+		TryLoadDefaultTrueTypeFont(fs);
+	} else {
+#ifdef WITH_FREETYPE
+		LoadFreeTypeFont(fs);
+#elif defined(_WIN32)
+		LoadWin32Font(fs);
+#elif defined(WITH_COCOA)
+		LoadCoreTextFont(fs);
+#endif
+	}
+}
+
+/**
+ * (Re)initialise the font cache related things, i.e. load the non-sprite fonts, for all font sizes.
+ */
+void InitFontCaches()
 {
 	FontCache::InitializeFontCaches();
-
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		if (monospace != (fs == FS_MONO)) continue;
-
-		FontCache *fc = FontCache::Get(fs);
-		if (fc->HasParent()) delete fc;
-
-		if (!_fcsettings.prefer_sprite && GetFontCacheSubSetting(fs)->font.empty()) {
-			TryLoadDefaultTrueTypeFont(fs);
-		} else {
-#ifdef WITH_FREETYPE
-			LoadFreeTypeFont(fs);
-#elif defined(_WIN32)
-			LoadWin32Font(fs);
-#elif defined(WITH_COCOA)
-			LoadCoreTextFont(fs);
-#endif
-		}
+		InitFontCache(fs);
 	}
 }
 
 /**
  * Free everything allocated w.r.t. fonts.
  */
-void UninitFontCache()
+void UninitFontCaches()
 {
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
 		FontCache *fc = FontCache::Get(fs);

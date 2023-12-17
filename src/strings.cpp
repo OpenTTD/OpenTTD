@@ -2165,7 +2165,7 @@ const char *GetCurrentLanguageIsoCode()
  */
 bool MissingGlyphSearcher::FindMissingGlyphs()
 {
-	InitFontCache(this->Monospace());
+	InitFontCache(this->DefaultSize());
 	const Sprite *question_mark[FS_END];
 
 	for (FontSize size = this->Monospace() ? FS_MONO : FS_BEGIN; size < (this->Monospace() ? FS_END : FS_MONO); size++) {
@@ -2301,7 +2301,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 			/* Our fallback font does miss characters too, so keep the
 			 * user chosen font as that is more likely to be any good than
 			 * the wild guess we made */
-			InitFontCache(searcher->Monospace());
+			InitFontCache(searcher->DefaultSize());
 		}
 	}
 #endif
@@ -2318,12 +2318,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
 
 		/* Reset the font width */
-		LoadStringWidthTable(searcher->Monospace());
+		LoadStringWidthTable(searcher->DefaultSize());
 		return;
 	}
 
 	/* Update the font with cache */
-	LoadStringWidthTable(searcher->Monospace());
+	LoadStringWidthTable(searcher->DefaultSize());
 
 #if !(defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)) && !defined(WITH_UNISCRIBE) && !defined(WITH_COCOA)
 	/*

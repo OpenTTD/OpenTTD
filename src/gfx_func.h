@@ -139,7 +139,8 @@ int GetStringHeight(StringID str, int maxw);
 int GetStringLineCount(StringID str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion);
-void LoadStringWidthTable(bool monospace = false);
+void LoadStringWidthTable();
+void LoadStringWidthTable(FontSize fs);
 Point GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize = FS_NORMAL);
 ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize = FS_NORMAL);
 

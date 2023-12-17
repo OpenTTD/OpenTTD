@@ -1227,18 +1227,23 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
 }
 
 /**
- * Initialize _stringwidth_table cache
- * @param monospace Whether to load the monospace cache or the normal fonts.
+ * Initialize _stringwidth_table cache for a specific font size.
+ * @param fs Font size to initialize stringwidth table for.
  */
-void LoadStringWidthTable(bool monospace)
+void LoadStringWidthTable(FontSize fs)
 {
-	ClearFontCache();
-
-	for (FontSize fs = monospace ? FS_MONO : FS_BEGIN; fs < (monospace ? FS_END : FS_MONO); fs++) {
-		for (uint i = 0; i != 224; i++) {
-			_stringwidth_table[fs][i] = GetGlyphWidth(fs, i + 32);
-		}
+	ClearFontCache(fs);
+	for (uint i = 0; i != 224; i++) {
+		_stringwidth_table[fs][i] = GetGlyphWidth(fs, i + 32);
 	}
+}
+
+/**
+ * Initialize _stringwidth_table cache for all font sizes.
+ */
+void LoadStringWidthTable()
+{
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) LoadStringWidthTable(fs);
 }
 
 /**
@@ -1827,7 +1832,7 @@ bool AdjustGUIZoom(bool automatic)
 	if (old_font_zoom != _font_zoom) {
 		GfxClearFontSpriteCache();
 	}
-	ClearFontCache();
+	ClearFontCaches();
 	LoadStringWidthTable();
 
 	SetupWidgetDimensions();

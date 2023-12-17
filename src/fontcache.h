@@ -177,10 +177,15 @@ inline void InitializeUnicodeGlyphMap()
 	}
 }
 
-inline void ClearFontCache()
+inline void ClearFontCache(FontSize fs)
+{
+	FontCache::Get(fs)->ClearFontCache();
+}
+
+inline void ClearFontCaches()
 {
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		FontCache::Get(fs)->ClearFontCache();
+		ClearFontCache(fs);
 	}
 }
 
@@ -240,8 +245,9 @@ inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 	}
 }
 
-void InitFontCache(bool monospace);
-void UninitFontCache();
+void InitFontCaches();
+void InitFontCache(FontSize fs);
+void UninitFontCaches();
 bool HasAntialiasedFonts();
 
 bool GetFontAAState(FontSize size, bool check_blitter = true);
