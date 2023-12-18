@@ -2002,8 +2002,6 @@ bool AdjustGUIZoom(bool automatic)
 		if (automatic) {
 			w->left   = (w->left   * _gui_scale) / old_scale;
 			w->top    = (w->top    * _gui_scale) / old_scale;
-			w->width  = (w->width  * _gui_scale) / old_scale;
-			w->height = (w->height * _gui_scale) / old_scale;
 		}
 		if (w->viewport != nullptr) {
 			w->viewport->zoom = Clamp(ZoomLevel(w->viewport->zoom - zoom_shift), _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
