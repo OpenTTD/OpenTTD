@@ -1537,6 +1537,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Kør i venstre 
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Kør i højre side
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotér højdekort: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Vælg, hvilken vej højdekortets billede skal roteres for at passe ind i spilverdenen
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mod uret
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med uret
@@ -3204,9 +3205,11 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kortstø
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Vælg kortets størrelse i fliser. Antallet af tilgængelige fliser vil være en anelse mindre
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal byer:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Vælg tætheden af byer eller et brugerdefineret nummer
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Bynavne:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vælg stil for bynavne
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Vælg startdato
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industrier:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Højeste bjergtop:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Forøger den maksimale højde på højeste bjergtop på kortet med én
@@ -3225,6 +3228,7 @@ STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Floder:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Blødhed:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varietet af distributionen:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generer
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Skab en verden og spil OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF indstillinger
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Vis indstillinger for NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI indstillinger
