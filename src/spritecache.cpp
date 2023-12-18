@@ -397,6 +397,12 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite
 		if (!HasBit(sprite_avail, zoom)) ResizeSpriteOut(sprite, zoom);
 	}
 
+	/* Upscale to desired sprite_min_zoom if provided sprite only had zoomed in versions. */
+	if (first_avail < _settings_client.gui.sprite_zoom_min) {
+		if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_OUT_4X) ResizeSpriteIn(sprite, ZOOM_LVL_OUT_4X, ZOOM_LVL_OUT_2X);
+		if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_OUT_2X) ResizeSpriteIn(sprite, ZOOM_LVL_OUT_2X, ZOOM_LVL_NORMAL);
+	}
+
 	return  true;
 }
 
