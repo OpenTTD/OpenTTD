@@ -436,6 +436,41 @@ static void *ReadRecolourSprite(SpriteFile &file, uint num)
 }
 
 /**
+ * Test if a single 8bpp sprite is a potentially a dummy sprite.
+ * A sprite is considered dummy if all (8bpp) pixels are the same colour.
+ * @param sprite Sprite to test.
+ * @returns true iff sprite is likely a dummy sprite.
+ **/
+static bool IsDummySingleSprite(const SpriteLoader::Sprite &sprite)
+{
+	uint8_t m = sprite.data[0].m;
+	const SpriteLoader::CommonPixel *pixel_end = sprite.data + sprite.width * sprite.height;
+	for (const SpriteLoader::CommonPixel *pixel = sprite.data; pixel != pixel_end; ++pixel) {
+		if (pixel->m != m && pixel->m != 0x0e) return false;
+	}
+	return true;
+}
+
+/**
+ * Test if an 8bpp sprite collection is a potentially a dummy sprite.
+ * A sprite collection is considered dummy if it is not a known-blank SpriteID and all (8bpp) pixels are the same colour.
+ * @param id Sprite ID being tested.
+ * @param spritecollection Sprite collection to test.
+ * @param avail Available zoom levels.
+ * @returns true iff sprite is likely a dummy sprite.
+ **/
+bool IsDummySprite(SpriteID id, const SpriteLoader::SpriteCollection &spritecollection, uint8_t avail)
+{
+	/* Known-blank sprites. */
+	if (id == SPR_EMPTY || id == SPR_EMPTY_BOUNDING_BOX) return false;
+
+	for (ZoomLevel zoom = ZOOM_LVL_NORMAL; zoom != ZOOM_LVL_END; zoom++) {
+		if (HasBit(avail, zoom) && IsDummySingleSprite(spritecollection[zoom])) return true;
+	}
+	return false;
+}
+
+/**
  * Read a sprite from disk.
  * @param sc          Location of sprite.
  * @param id          Sprite number.
@@ -471,7 +506,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	}
 	if (sprite_avail == 0) {
 		sprite_avail = sprite_loader.LoadSprite(sprite, file, file_pos, sprite_type, false, sc->control_flags, avail_8bpp, avail_32bpp);
-		if (sprite_type == SpriteType::Normal && avail_32bpp != 0 && !encoder->Is32BppSupported() && sprite_avail == 0) {
+		if (sprite_type == SpriteType::Normal && avail_32bpp != 0 && !encoder->Is32BppSupported() && (sprite_avail == 0 || IsDummySprite(id, sprite, sprite_avail))) {
 			/* No 8bpp available, try converting from 32bpp. */
 			SpriteLoaderMakeIndexed downsampler(sprite_loader);
 			sprite_avail = downsampler.LoadSprite(sprite, file, file_pos, sprite_type, true, sc->control_flags, sprite_avail, avail_32bpp);
