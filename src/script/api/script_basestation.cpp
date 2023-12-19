@@ -15,6 +15,7 @@
 #include "../../strings_func.h"
 #include "../../station_cmd.h"
 #include "../../waypoint_cmd.h"
+#include "../../timer/timer_game_calendar.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"

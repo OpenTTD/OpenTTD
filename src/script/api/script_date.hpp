@@ -11,7 +11,7 @@
 #define SCRIPT_DATE_HPP
 
 #include "script_object.hpp"
-#include "timer/timer_game_calendar.h"
+#include "../../timer/timer_game_calendar.h"
 
 /**
  * Class that handles all date related (calculation) functions.
