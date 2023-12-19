@@ -688,7 +688,7 @@ public:
 
 		/* Set up a clipping region for the panel. */
 		DrawPixelInfo tmp_dpi;
-		if (!FillDrawPixelInfo(&tmp_dpi, fr.left, fr.top, fr.Width(), fr.Height())) return;
+		if (!FillDrawPixelInfo(&tmp_dpi, fr)) return;
 
 		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 

@@ -337,7 +337,7 @@ public:
 
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */
-				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+				if (FillDrawPixelInfo(&tmp_dpi, r)) {
 					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 					if (spec->grf_prop.grffile == nullptr) {
 						extern const DrawTileSprites _objects[];
@@ -362,7 +362,7 @@ public:
 				}
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */
-				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+				if (FillDrawPixelInfo(&tmp_dpi, r)) {
 					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 					if (spec->grf_prop.grffile == nullptr) {
 						extern const DrawTileSprites _objects[];

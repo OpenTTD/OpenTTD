@@ -1543,7 +1543,7 @@ public:
 			case WID_SM_MAP: {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				DrawPixelInfo new_dpi;
-				if (!FillDrawPixelInfo(&new_dpi, ir.left, ir.top, ir.Width(), ir.Height())) return;
+				if (!FillDrawPixelInfo(&new_dpi, ir)) return;
 				this->DrawSmallMap(&new_dpi);
 				break;
 			}

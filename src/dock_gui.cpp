@@ -549,7 +549,7 @@ public:
 			case WID_BDD_Y: {
 				Axis axis = widget == WID_BDD_X ? AXIS_X : AXIS_Y;
 
-				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+				if (FillDrawPixelInfo(&tmp_dpi, r)) {
 					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 					int x = (r.Width()  - ScaleSpriteTrad(96)) / 2;
 					int y = (r.Height() - ScaleSpriteTrad(64)) / 2;
