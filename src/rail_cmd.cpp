@@ -886,22 +886,32 @@ static CommandCost CmdRailTrackHelper(DoCommandFlag flags, TileIndex tile, TileI
 	if (ret.Failed()) return ret;
 
 	bool had_success = false;
+	bool under_tunnelbridge = false;
 	CommandCost last_error = CMD_ERROR;
 	for (;;) {
-		ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
-
-		if (ret.Failed()) {
-			last_error = ret;
-			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
-				if (fail_on_obstacle) return last_error;
-				if (had_success) break; // Keep going if we haven't constructed any rail yet, skipping the start of the drag
+		/* Don't try to place rail between tunnelbridge ends */
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+			under_tunnelbridge = !under_tunnelbridge;
+		} else if (!under_tunnelbridge) {
+			if (remove) {
+				ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir));
+			} else {
+				ret = Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
 			}
 
-			/* Ownership errors are more important. */
-			if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY && remove) break;
-		} else {
-			had_success = true;
-			total_cost.AddCost(ret);
+			if (ret.Failed()) {
+				last_error = ret;
+				if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
+					if (fail_on_obstacle) return last_error;
+					if (had_success) break; // Keep going if we haven't constructed any rail yet, skipping the start of the drag
+				}
+
+				/* Ownership errors are more important. */
+				if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY && remove) break;
+			} else {
+				had_success = true;
+				total_cost.AddCost(ret);
+			}
 		}
 
 		if (tile == end_tile) break;
