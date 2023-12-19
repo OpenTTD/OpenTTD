@@ -406,8 +406,6 @@ bad_town_name:;
 	}
 }
 
-/** Sorting weights for the company colours. */
-static const byte _colour_sort[COLOUR_END] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
 /** Similar colours, so we can try to prevent same coloured companies. */
 static const Colours _similar_colour[COLOUR_END][2] = {
 	{ COLOUR_BLUE,       COLOUR_LIGHT_BLUE }, // COLOUR_DARK_BLUE
@@ -443,15 +441,6 @@ static Colours GenerateCompanyColour()
 	for (uint i = 0; i < 100; i++) {
 		uint r = Random();
 		Swap(colours[GB(r, 0, 4)], colours[GB(r, 4, 4)]);
-	}
-
-	/* Bubble sort it according to the values in table 1 */
-	for (uint i = 0; i < COLOUR_END; i++) {
-		for (uint j = 1; j < COLOUR_END; j++) {
-			if (_colour_sort[colours[j - 1]] < _colour_sort[colours[j]]) {
-				Swap(colours[j - 1], colours[j]);
-			}
-		}
 	}
 
 	/* Move the colours that look similar to each company's colour to the side */
