@@ -1055,21 +1055,21 @@ void NetworkGameLoop()
 #ifdef DEBUG_DUMP_COMMANDS
 		/* Loading of the debug commands from -ddesync>=1 */
 		static FILE *f = FioFOpenFile("commands.log", "rb", SAVE_DIR);
-		static Date next_date = 0;
+		static TimerGameCalendar::Date next_date(0);
 		static uint32_t next_date_fract;
 		static CommandPacket *cp = nullptr;
 		static bool check_sync_state = false;
 		static uint32_t sync_state[2];
 		if (f == nullptr && next_date == 0) {
 			Debug(desync, 0, "Cannot open commands.log");
-			next_date = 1;
+			next_date = TimerGameCalendar::Date(1);
 		}
 
 		while (f != nullptr && !feof(f)) {
 			if (TimerGameCalendar::date == next_date && TimerGameCalendar::date_fract == next_date_fract) {
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->cmd, cp->err_msg, nullptr, cp->company, cp->data);
-					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {:06x}; {} ({})", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)_current_company, cp->cmd, cp->tile, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
+					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)_current_company, cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
 				}
@@ -1109,8 +1109,10 @@ void NetworkGameLoop()
 				int company;
 				uint cmd;
 				char buffer[256];
-				int ret = sscanf(p, "%x; %x; %x; %x; %x; %x; %255s", &next_date, &next_date_fract, &company, &cmd, &cp->err_msg, &cp->tile, buffer);
+				uint32_t next_date_raw;
+				int ret = sscanf(p, "%x; %x; %x; %x; %x; %255s", &next_date_raw, &next_date_fract, &company, &cmd, &cp->err_msg, buffer);
 				assert(ret == 6);
+				next_date = TimerGameCalendar::Date((int32_t)next_date_raw);
 				cp->company = (CompanyID)company;
 				cp->cmd = (Commands)cmd;
 
@@ -1119,13 +1121,15 @@ void NetworkGameLoop()
 				size_t arg_len = strlen(buffer);
 				for (size_t i = 0; i + 1 < arg_len; i += 2) {
 					byte e = 0;
-					std::from_chars(buffer + i, buffer + i + 1, e, 16);
+					std::from_chars(buffer + i, buffer + i + 2, e, 16);
 					args.emplace_back(e);
 				}
 				cp->data = args;
 			} else if (strncmp(p, "join: ", 6) == 0) {
 				/* Manually insert a pause when joining; this way the client can join at the exact right time. */
-				int ret = sscanf(p + 6, "%x; %x", &next_date, &next_date_fract);
+				uint32_t next_date_raw;
+				int ret = sscanf(p + 6, "%x; %x", &next_date_raw, &next_date_fract);
+				next_date = TimerGameCalendar::Date((int32_t)next_date_raw);
 				assert(ret == 2);
 				Debug(desync, 0, "Injecting pause for join at {:08x}:{:02x}; please join when paused", next_date, next_date_fract);
 				cp = new CommandPacket();
@@ -1134,7 +1138,9 @@ void NetworkGameLoop()
 				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{ PM_PAUSED_NORMAL, true });
 				_ddc_fastforward = false;
 			} else if (strncmp(p, "sync: ", 6) == 0) {
-				int ret = sscanf(p + 6, "%x; %x; %x; %x", &next_date, &next_date_fract, &sync_state[0], &sync_state[1]);
+				uint32_t next_date_raw;
+				int ret = sscanf(p + 6, "%x; %x; %x; %x", &next_date_raw, &next_date_fract, &sync_state[0], &sync_state[1]);
+				next_date = TimerGameCalendar::Date((int32_t)next_date_raw);
 				assert(ret == 4);
 				check_sync_state = true;
 			} else if (strncmp(p, "msg: ", 5) == 0 || strncmp(p, "client: ", 8) == 0 ||
