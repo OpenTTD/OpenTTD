@@ -483,40 +483,6 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 }
 
 /**
- * Draw the label-part of a widget.
- * @param r       Rectangle of the label background.
- * @param type    Widget type (#WWT_TEXTBTN, #WWT_TEXTBTN_2, or #WWT_LABEL).
- * @param clicked Label is clicked.
- * @param colour  Colour of the text.
- * @param str     Text to draw.
- * @param align   Alignment of the text.
- * @param fs      Font size of the text.
- */
-static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextColour colour, StringID str, StringAlignment align, FontSize fs)
-{
-	if (str == STR_NULL) return;
-	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
-	Dimension d = GetStringBoundingBox(str, fs);
-	Point p = GetAlignedPosition(r, d, align);
-	DrawString(r.left, r.right, p.y, str, colour, align, false, fs);
-}
-
-/**
- * Draw text.
- * @param r      Rectangle of the background.
- * @param colour Colour of the text.
- * @param str    Text to draw.
- * @param align  Alignment of the text.
- * @param fs     Font size of the text.
- */
-static inline void DrawText(const Rect &r, TextColour colour, StringID str, StringAlignment align, FontSize fs)
-{
-	Dimension d = GetStringBoundingBox(str, fs);
-	Point p = GetAlignedPosition(r, d, align);
-	if (str != STR_NULL) DrawString(r.left, r.right, p.y, str, colour, align, false, fs);
-}
-
-/**
  * Draw an inset widget.
  * @param r           Rectangle of the background.
  * @param colour      Colour of the inset.
@@ -827,11 +793,7 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_col
 		GfxFillRect(ir.Shrink(WidgetDimensions::scaled.bevel), _colour_gradient[_company_colours[owner]][4]);
 	}
 
-	if (str != STR_NULL) {
-		Dimension d = GetStringBoundingBox(str);
-		Point p = GetAlignedPosition(r, d, align);
-		DrawString(r.left + WidgetDimensions::scaled.captiontext.left, r.right - WidgetDimensions::scaled.captiontext.left, p.y, str, text_colour, align, false, fs);
-	}
+	if (str != STR_NULL) DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.captiontext), str, text_colour, align, false, fs);
 }
 
 /**
@@ -3013,9 +2975,11 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_TEXTBTN:
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2:
-			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align, this->text_size);
+			if (this->widget_data != STR_NULL) {
+				if (this->index >= 0) w->SetStringParameters(this->index);
+				DrawStringMultiLine(r, this->widget_data + ((type == WWT_TEXTBTN_2 && clicked) ? 1 : 0), this->text_colour, this->align, false, this->text_size);
+			}
 			break;
 
 		case WWT_ARROWBTN:
@@ -3032,14 +2996,12 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 		}
 
-		case WWT_LABEL:
-			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align, this->text_size);
-			break;
-
 		case WWT_TEXT:
-			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawText(r, this->text_colour, this->widget_data, this->align, this->text_size);
+		case WWT_LABEL:
+			if (this->widget_data != STR_NULL) {
+				if (this->index >= 0) w->SetStringParameters(this->index);
+				DrawStringMultiLine(r, this->widget_data, this->text_colour, this->align, false, this->text_size);
+			}
 			break;
 
 		case WWT_MATRIX:
