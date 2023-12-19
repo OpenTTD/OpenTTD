@@ -38,7 +38,7 @@ OpenTTD needs the Platform SDK, if it isn't installed already. This can be
 done during installing Visual Studio, by selecting
 `Visual C++ MFC for x86 and x64` (and possibly
 `Visual C++ ATL for x86 and x64` depending on your version). If not, you
-can get download it as [MS Windows Platform SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-10-sdk).
+can get download it as [MS Windows Platform SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk).
 
 Install the SDK by following the instructions as given.
 
