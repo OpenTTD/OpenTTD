@@ -1101,6 +1101,8 @@ private:
 	RoadStopType roadStopType; ///< The RoadStopType for this Window.
 	uint line_height; ///< Height of a single line in the newstation selection matrix.
 	uint coverage_height; ///< Height of the coverage texts.
+	Dimension name; ///< Dimension of roadstop type name widget.
+	bool newstops; ///< Set if NewGRF roadstops are available.
 	Scrollbar *vscrollList; ///< Vertical scrollbar of the new station list.
 	Scrollbar *vscrollMatrix; ///< Vertical scrollbar of the station picker matrix.
 
@@ -1147,19 +1149,19 @@ public:
 		this->vscrollList = nullptr;
 		this->vscrollMatrix = nullptr;
 		this->roadStopType = rs;
-		bool newstops = GetIfNewStopsByType(rs, _cur_roadtype);
+		this->newstops = GetIfNewStopsByType(rs, _cur_roadtype);
 
 		this->CreateNestedTree();
 
 		/* Hide the station class filter if no stations other than the default one are available. */
-		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_DEFSIZE)->SetDisplayedPlane(newstops ? 0 : SZSP_NONE);
-		this->GetWidget<NWidgetStacked>(WID_BROS_FILTER_CONTAINER)->SetDisplayedPlane(newstops ? 0 : SZSP_HORIZONTAL);
-		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_ADDITIONS)->SetDisplayedPlane(newstops ? 0 : SZSP_HORIZONTAL);
-		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_ORIENTATION)->SetDisplayedPlane(newstops ? 0 : SZSP_HORIZONTAL);
-		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_TYPE_SEL)->SetDisplayedPlane(newstops ? 0 : SZSP_HORIZONTAL);
-		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_MATRIX)->SetDisplayedPlane(newstops ? 0 : SZSP_NONE);
-		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_RESIZE)->SetDisplayedPlane(newstops ? 0 : SZSP_NONE);
-		if (newstops) {
+		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_DEFSIZE)->SetDisplayedPlane(this->newstops ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_BROS_FILTER_CONTAINER)->SetDisplayedPlane(this->newstops ? 0 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_ADDITIONS)->SetDisplayedPlane(this->newstops ? 0 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_ORIENTATION)->SetDisplayedPlane(this->newstops ? 0 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_TYPE_SEL)->SetDisplayedPlane(this->newstops ? 0 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_MATRIX)->SetDisplayedPlane(this->newstops ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_BROS_SHOW_NEWST_RESIZE)->SetDisplayedPlane(this->newstops ? 0 : SZSP_NONE);
+		if (this->newstops) {
 			this->vscrollList = this->GetScrollbar(WID_BROS_NEWST_SCROLL);
 			this->vscrollMatrix = this->GetScrollbar(WID_BROS_MATRIX_SCROLL);
 
@@ -1190,13 +1192,13 @@ public:
 		this->FinishInitNested(TRANSPORT_ROAD);
 
 		this->window_class = (rs == ROADSTOP_BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
-		if (!newstops || _roadstop_gui_settings.roadstop_class >= (int)RoadStopClass::GetClassCount()) {
+		if (!this->newstops || _roadstop_gui_settings.roadstop_class >= (int)RoadStopClass::GetClassCount()) {
 			/* There's no new stops available or the list has reduced in size.
 			 * Now, set the default road stops as selected. */
 			_roadstop_gui_settings.roadstop_class = ROADSTOP_CLASS_DFLT;
 			_roadstop_gui_settings.roadstop_type = 0;
 		}
-		if (newstops) {
+		if (this->newstops) {
 			/* The currently selected class doesn't have any stops for this RoadStopType, reset the selection. */
 			if (!GetIfClassHasNewStopsByType(RoadStopClass::Get(_roadstop_gui_settings.roadstop_class), rs, _cur_roadtype)) {
 				_roadstop_gui_settings.roadstop_class = ROADSTOP_CLASS_DFLT;
@@ -1347,31 +1349,15 @@ public:
 	{
 		switch (widget) {
 			case WID_BROS_NEWST_LIST: {
-				Dimension d = { 0, 0 };
-				for (auto rs_class : this->roadstop_classes) {
-					d = maxdim(d, GetStringBoundingBox(RoadStopClass::Get(rs_class)->name));
-				}
-				size->width = std::max(size->width, d.width + padding.width);
-				this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.matrix.Vertical();
+				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				size->height = 5 * this->line_height;
 				resize->height = this->line_height;
 				break;
 			}
 
-			case WID_BROS_SHOW_NEWST_TYPE: {
-				Dimension d = {0, 0};
-				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
-				for (auto roadstop_class : this->roadstop_classes) {
-					RoadStopClass *rs_class = RoadStopClass::Get(roadstop_class);
-					for (uint j = 0; j < rs_class->GetSpecCount(); j++) {
-						const RoadStopSpec *roadstopspec = rs_class->GetSpec(j);
-						SetDParam(0, (roadstopspec != nullptr && roadstopspec->name != 0) ? roadstopspec->name : STR_STATION_CLASS_DFLT_ROADSTOP);
-						d = maxdim(d, GetStringBoundingBox(str));
-					}
-				}
-				size->width = std::max(size->width, d.width + padding.width);
+			case WID_BROS_SHOW_NEWST_TYPE:
+				size->width = 0;
 				break;
-			}
 
 			case WID_BROS_STATION_NE:
 			case WID_BROS_STATION_SE:
@@ -1405,6 +1391,16 @@ public:
 			case WC_TRUCK_STATION:        return STATION_TRUCK;
 			default: NOT_REACHED();
 		}
+	}
+
+	/**
+	 * Get name of custom road stop.
+	 * @param roadstopspec Custom road stop to get name of.
+	 * @returns Name of road stop, or default string if not a custom road stop.
+	 */
+	static StringID GetRoadStopNameString(const RoadStopSpec *roadstopspec)
+	{
+		return (roadstopspec != nullptr && roadstopspec->name != 0) ? roadstopspec->name : STR_STATION_CLASS_DFLT_ROADSTOP;
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -1450,6 +1446,10 @@ public:
 				break;
 			}
 
+			case WID_BROS_SHOW_NEWST_TYPE:
+				DrawStringMultiLine(r, GetRoadStopNameString(RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(_roadstop_gui_settings.roadstop_type)), TC_ORANGE, SA_CENTER);
+				break;
+
 			case WID_BROS_IMAGE: {
 				uint16_t type = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 				assert(type < _roadstop_gui_settings.roadstop_count);
@@ -1480,18 +1480,35 @@ public:
 		}
 	}
 
+	/**
+	 * Get dimensions in pixels of roadstop type names for the given width.
+	 * @param width Width of text in pixels.
+	 * @returns Dimensions required for roadstop type name.
+	 */
+	Dimension GetRoadStopTypeNameDimension(int width) const
+	{
+		int y = 0;
+		for (RoadStopClassID cls_id = ROADSTOP_CLASS_BEGIN; cls_id < RoadStopClass::GetClassCount(); cls_id++) {
+			if (cls_id == ROADSTOP_CLASS_WAYP) continue;
+			RoadStopClass *rs_class = RoadStopClass::Get(cls_id);
+			for (uint j = 0; j < rs_class->GetSpecCount(); j++) {
+				y = std::max(y, GetStringHeight(GetRoadStopNameString(rs_class->GetSpec(j)), width));
+			}
+		}
+		return Dimension(width, y);
+	}
+
 	void OnResize() override
 	{
 		if (this->vscrollList != nullptr) {
 			this->vscrollList->SetCapacityFromWidget(this, WID_BROS_NEWST_LIST);
 		}
-	}
 
-	void SetStringParameters(WidgetID widget) const override
-	{
-		if (widget == WID_BROS_SHOW_NEWST_TYPE) {
-			const RoadStopSpec *roadstopspec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(_roadstop_gui_settings.roadstop_type);
-			SetDParam(0, (roadstopspec != nullptr && roadstopspec->name != 0) ? roadstopspec->name : STR_STATION_CLASS_DFLT_ROADSTOP);
+		if (this->newstops) {
+			/* Update height of text for roadtype type name widget if its width has changed. */
+			NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_BROS_SHOW_NEWST_TYPE);
+			if (this->name.width != wid->current_x) this->name = this->GetRoadStopTypeNameDimension(wid->current_x);
+			if (wid->UpdateVerticalSize(this->name.height)) this->ReInit(0, 0);
 		}
 	}
 
@@ -1647,7 +1664,7 @@ static const NWidgetPart _nested_road_station_picker_widgets[] = {
 							EndContainer(),
 						EndContainer(),
 						NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BROS_SHOW_NEWST_TYPE_SEL),
-							NWidget(WWT_LABEL, COLOUR_DARK_GREEN, WID_BROS_SHOW_NEWST_TYPE), SetMinimalSize(144, 8), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_ORANGE), SetFill(1, 0),
+							NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, WID_BROS_SHOW_NEWST_TYPE),
 						EndContainer(),
 						NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetFill(1, 0),
 						NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
@@ -1724,7 +1741,7 @@ static const NWidgetPart _nested_tram_station_picker_widgets[] = {
 							NWidget(WWT_PANEL, COLOUR_GREY, WID_BROS_STATION_Y),  SetMinimalSize(66, 50), SetFill(0, 0), EndContainer(),
 						EndContainer(),
 						NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BROS_SHOW_NEWST_TYPE_SEL),
-							NWidget(WWT_LABEL, COLOUR_DARK_GREEN, WID_BROS_SHOW_NEWST_TYPE), SetMinimalSize(144, 8), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_ORANGE), SetFill(1, 0),
+							NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, WID_BROS_SHOW_NEWST_TYPE),
 						EndContainer(),
 						NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetFill(1, 0),
 						NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),

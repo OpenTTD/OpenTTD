@@ -52,6 +52,7 @@ class BuildObjectWindow : public Window {
 	int object_margin;                     ///< The margin (in pixels) around an object.
 	int line_height;                       ///< The height of a single line.
 	int info_height;                       ///< The height of the info box.
+	Dimension name;                        ///< Dimensions of object type name widget.
 	Scrollbar *vscroll;                    ///< The scrollbar.
 
 	static Listing   last_sorting;         ///< Default sorting of #GUIObjectClassList.
@@ -187,13 +188,6 @@ public:
 	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
-			case WID_BO_OBJECT_NAME: {
-				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
-				SetDParam(0, spec != nullptr ? spec->name : STR_EMPTY);
-				break;
-			}
-
 			case WID_BO_OBJECT_SIZE: {
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
 				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
@@ -216,11 +210,6 @@ public:
 	{
 		switch (widget) {
 			case WID_BO_CLASS_LIST: {
-				for (auto object_class_id : this->object_classes) {
-					ObjectClass *objclass = ObjectClass::Get(object_class_id);
-					if (objclass->GetUISpecCount() == 0) continue;
-					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width + padding.width);
-				}
 				this->line_height = GetCharacterHeight(FS_NORMAL) + padding.height;
 				resize->height = this->line_height;
 				size->height = 5 * this->line_height;
@@ -318,6 +307,12 @@ public:
 							(object_class_id == _selected_object_class) ? TC_WHITE : TC_BLACK);
 					mr.top += this->line_height;
 				}
+				break;
+			}
+
+			case WID_BO_OBJECT_NAME: {
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
+				if (spec != nullptr) DrawStringMultiLine(r, spec->name, TC_ORANGE, SA_CENTER);
 				break;
 			}
 
@@ -490,9 +485,29 @@ public:
 		this->BuildObjectClassesAvailable();
 	}
 
+	/**
+	 * Get dimensions in pixels of object type names for the given width.
+	 * @param width Width of text in pixels.
+	 * @returns Dimensions required for object type name.
+	 */
+	Dimension GetObjectTypeNameDimension(int width) const
+	{
+		int y = 0;
+		for (const ObjectSpec &spec : ObjectSpec::Specs()) {
+			if (!spec.IsEverAvailable()) continue;
+			y = std::max(y, GetStringHeight(spec.name, width));
+		}
+		return Dimension(width, y);
+	}
+
 	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_BO_CLASS_LIST);
+
+		/* Update height of text for object type name widget if its width has changed. */
+		NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_BO_OBJECT_NAME);
+		if (this->name.width != wid->current_x) this->name = this->GetObjectTypeNameDimension(wid->current_x);
+		if (wid->UpdateVerticalSize(this->name.height)) this->ReInit(0, 0);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -689,7 +704,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 							NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
 						EndContainer(),
 					EndContainer(),
-					NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_NAME), SetDataTip(STR_JUST_STRING, STR_NULL), SetTextStyle(TC_ORANGE), SetAlignment(SA_CENTER),
+					NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, WID_BO_OBJECT_NAME),
 					NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetAlignment(SA_CENTER),
 				EndContainer(),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_BO_SELECT_SCROLL),
