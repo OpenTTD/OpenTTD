@@ -101,7 +101,7 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 	int highlight_r = 0;
 	int max_width = r.Width();
 
-	if (!FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, r)) return;
 
 	{
 		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);

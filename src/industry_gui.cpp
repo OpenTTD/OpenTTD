@@ -1675,7 +1675,7 @@ public:
 
 				/* Setup a clipping rectangle... */
 				DrawPixelInfo tmp_dpi;
-				if (!FillDrawPixelInfo(&tmp_dpi, ir.left, ir.top, ir.Width(), ir.Height())) return;
+				if (!FillDrawPixelInfo(&tmp_dpi, ir)) return;
 				/* ...but keep coordinates relative to the window. */
 				tmp_dpi.left += ir.left;
 				tmp_dpi.top += ir.top;
@@ -2982,7 +2982,7 @@ struct IndustryCargoesWindow : public Window {
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 		DrawPixelInfo tmp_dpi;
-		if (!FillDrawPixelInfo(&tmp_dpi, ir.left, ir.top, ir.Width(), ir.Height())) return;
+		if (!FillDrawPixelInfo(&tmp_dpi, ir)) return;
 		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
 		int left_pos = WidgetDimensions::scaled.frametext.left - WidgetDimensions::scaled.bevel.left;

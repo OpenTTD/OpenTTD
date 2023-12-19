@@ -912,7 +912,7 @@ struct SpriteAlignerWindow : Window {
 				}
 
 				DrawPixelInfo new_dpi;
-				if (!FillDrawPixelInfo(&new_dpi, ir.left, ir.top, ir.Width(), ir.Height())) break;
+				if (!FillDrawPixelInfo(&new_dpi, ir)) break;
 				AutoRestoreBackup dpi_backup(_cur_dpi, &new_dpi);
 
 				DrawSprite(this->current_sprite, PAL_NONE, x, y, nullptr, SpriteAlignerWindow::zoom);

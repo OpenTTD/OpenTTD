@@ -799,7 +799,7 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	fr = fr.Shrink(WidgetDimensions::scaled.framerect);
 	/* Limit the drawing of the string inside the widget boundaries */
 	DrawPixelInfo dpi;
-	if (!FillDrawPixelInfo(&dpi, fr.left, fr.top, fr.Width(), fr.Height())) return;
+	if (!FillDrawPixelInfo(&dpi, fr)) return;
 
 	AutoRestoreBackup dpi_backup(_cur_dpi, &dpi);
 

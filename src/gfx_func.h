@@ -153,6 +153,11 @@ void CheckBlitter();
 
 bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int height);
 
+static inline bool FillDrawPixelInfo(DrawPixelInfo *n, const Rect &r)
+{
+	return FillDrawPixelInfo(n, r.left, r.top, r.Width(), r.Height());
+}
+
 /**
  * Determine where to draw a centred object inside a widget.
  * @param min The top or left coordinate.

@@ -555,7 +555,7 @@ void TextfileWindow::AfterLoadMarkdown()
 	Rect fr = r.Shrink(WidgetDimensions::scaled.frametext);
 
 	DrawPixelInfo new_dpi;
-	if (!FillDrawPixelInfo(&new_dpi, fr.left, fr.top, fr.Width(), fr.Height())) return;
+	if (!FillDrawPixelInfo(&new_dpi, fr)) return;
 	AutoRestoreBackup dpi_backup(_cur_dpi, &new_dpi);
 
 	/* Draw content (now coordinates given to DrawString* are local to the new clipping region). */

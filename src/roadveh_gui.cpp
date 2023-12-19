@@ -128,7 +128,7 @@ void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, Engi
 	DrawPixelInfo tmp_dpi;
 	int max_width = r.Width();
 
-	if (!FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, r)) return;
 
 	AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
