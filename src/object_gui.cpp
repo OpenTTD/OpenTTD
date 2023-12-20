@@ -358,9 +358,6 @@ public:
 				const ObjectSpec *spec = objclass->GetSpec(obj_index);
 				if (spec == nullptr) break;
 
-				if (!spec->IsAvailable()) {
-					GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK, FILLRECT_CHECKER);
-				}
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
@@ -374,6 +371,9 @@ public:
 						DrawNewObjectTileInGUI(ir.Width() / 2 - 1, ir.Height() - this->object_margin - ScaleSpriteTrad(TILE_PIXELS), spec,
 								std::min<int>(_selected_object_view, spec->views - 1));
 					}
+				}
+				if (!spec->IsAvailable()) {
+					GfxFillRect(ir, PC_BLACK, FILLRECT_CHECKER);
 				}
 				break;
 			}

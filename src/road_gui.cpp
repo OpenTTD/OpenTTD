@@ -1425,11 +1425,11 @@ public:
 					int y = (ir.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
 					if (spec == nullptr || disabled) {
 						StationPickerDrawSprite(x, y, st, INVALID_RAILTYPE, _cur_roadtype, widget - WID_BROS_STATION_NE);
-						if (disabled) GfxFillRect(0, 0, ir.Width(), ir.Height(), PC_BLACK, FILLRECT_CHECKER);
 					} else {
 						DrawRoadStopTile(x, y, _cur_roadtype, spec, st, widget - WID_BROS_STATION_NE);
 					}
 				}
+				if (disabled) GfxFillRect(ir, PC_BLACK, FILLRECT_CHECKER);
 				break;
 			}
 
@@ -1455,10 +1455,6 @@ public:
 				const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(type);
 				StationType st = GetRoadStationTypeByWindowClass(this->window_class);
 
-				if (!IsRoadStopAvailable(spec, st)) {
-					GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK, FILLRECT_CHECKER);
-				}
-
 				/* Set up a clipping area for the sprite preview. */
 				DrawPixelInfo tmp_dpi;
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
@@ -1473,6 +1469,9 @@ public:
 						if (orientation < DIAGDIR_END && HasBit(spec->flags, RSF_DRIVE_THROUGH_ONLY)) orientation = DIAGDIR_END;
 						DrawRoadStopTile(x, y, _cur_roadtype, spec, st, (uint8_t)orientation);
 					}
+				}
+				if (!IsRoadStopAvailable(spec, st)) {
+					GfxFillRect(ir, PC_BLACK, FILLRECT_CHECKER);
 				}
 				break;
 			}

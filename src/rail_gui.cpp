@@ -1289,9 +1289,6 @@ public:
 				assert(type < _railstation.station_count);
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(type);
-				if (!IsStationAvailable(statspec)) {
-					GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK, FILLRECT_CHECKER);
-				}
 
 				/* Set up a clipping area for the station preview. */
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
@@ -1302,6 +1299,9 @@ public:
 					if (!DrawStationTile(x, y, _cur_railtype, _railstation.orientation, _railstation.station_class, type)) {
 						StationPickerDrawSprite(x, y, STATION_RAIL, _cur_railtype, INVALID_ROADTYPE, 2 + _railstation.orientation);
 					}
+				}
+				if (!IsStationAvailable(statspec)) {
+					GfxFillRect(ir, PC_BLACK, FILLRECT_CHECKER);
 				}
 				break;
 			}
@@ -2110,7 +2110,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				}
 
 				if (!IsStationAvailable(statspec)) {
-					GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK, FILLRECT_CHECKER);
+					GfxFillRect(ir, PC_BLACK, FILLRECT_CHECKER);
 				}
 			}
 		}
