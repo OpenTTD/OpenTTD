@@ -549,10 +549,11 @@ public:
 			case WID_BDD_Y: {
 				Axis axis = widget == WID_BDD_X ? AXIS_X : AXIS_Y;
 
-				if (FillDrawPixelInfo(&tmp_dpi, r)) {
+				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
+				if (FillDrawPixelInfo(&tmp_dpi, ir)) {
 					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
-					int x = (r.Width()  - ScaleSpriteTrad(96)) / 2;
-					int y = (r.Height() - ScaleSpriteTrad(64)) / 2;
+					int x = (ir.Width()  - ScaleSpriteTrad(96)) / 2;
+					int y = (ir.Height() - ScaleSpriteTrad(64)) / 2;
 					int x1 = ScaleSpriteTrad(63);
 					int x2 = ScaleSpriteTrad(31);
 					DrawShipDepotSprite(x + (axis == AXIS_X ? x1 : x2), y + ScaleSpriteTrad(17), axis, DEPOT_PART_NORTH);
