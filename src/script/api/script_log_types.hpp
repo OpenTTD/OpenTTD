@@ -32,6 +32,7 @@ namespace ScriptLogTypes {
 	struct LogLine {
 		std::string text; ///< The text
 		ScriptLogType type; ///< Text type
+		uint width; ///< The text width
 	};
 
 	/**

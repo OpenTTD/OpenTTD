@@ -714,6 +714,7 @@ struct ScriptDebugWindow : public Window {
 	StringFilter break_string_filter;                      ///< Log filter for break.
 	int highlight_row;                                     ///< The output row that matches the given string, or -1
 	Scrollbar *vscroll;                                    ///< Cache of the vertical scrollbar.
+	Scrollbar *hscroll;                                    ///< Cache of the horizontal scrollbar.
 	FilterState filter;
 
 	ScriptLogTypes::LogData &GetLogData() const
@@ -782,7 +783,8 @@ struct ScriptDebugWindow : public Window {
 		this->break_string_filter = {&this->filter.case_sensitive_break_check, false};
 
 		this->CreateNestedTree();
-		this->vscroll = this->GetScrollbar(WID_SCRD_SCROLLBAR);
+		this->vscroll = this->GetScrollbar(WID_SCRD_VSCROLLBAR);
+		this->hscroll = this->GetScrollbar(WID_SCRD_HSCROLLBAR);
 		this->show_break_box = _settings_client.gui.ai_developer_tools;
 		this->GetWidget<NWidgetStacked>(WID_SCRD_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_break_box ? 0 : SZSP_HORIZONTAL);
 		this->FinishInitNested(number);
@@ -796,6 +798,7 @@ struct ScriptDebugWindow : public Window {
 		this->querystrings[WID_SCRD_BREAK_STR_EDIT_BOX] = &this->break_editbox;
 
 		SetWidgetsDisabledState(!this->show_break_box, WID_SCRD_BREAK_STR_ON_OFF_BTN, WID_SCRD_BREAK_STR_EDIT_BOX, WID_SCRD_MATCH_CASE_BTN);
+		this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
 
 		/* Restore the break string value from static variable */
 		this->break_editbox.text.Assign(this->filter.break_string);
@@ -805,6 +808,10 @@ struct ScriptDebugWindow : public Window {
 		} else {
 			this->ChangeToScript(show_company);
 		}
+	}
+
+	void OnInit() override
+	{
 		this->InvalidateData(-1);
 	}
 
@@ -912,7 +919,7 @@ struct ScriptDebugWindow : public Window {
 				if (colour == TC_BLACK) colour = TC_WHITE; // Make black text readable by inverting it to white.
 			}
 
-			DrawString(tr, line.text, colour, SA_LEFT | SA_FORCE);
+			DrawString(-this->hscroll->GetPosition(), tr.right, tr.top, line.text, colour, SA_LEFT | SA_FORCE);
 			tr.top += this->resize.step_height;
 		}
 	}
@@ -922,7 +929,7 @@ struct ScriptDebugWindow : public Window {
 	 */
 	void UpdateLogScroll()
 	{
-		this->SetWidgetDisabledState(WID_SCRD_SCROLLBAR, this->filter.script_debug_company == INVALID_COMPANY);
+		this->SetWidgetsDisabledState(this->filter.script_debug_company == INVALID_COMPANY, WID_SCRD_VSCROLLBAR, WID_SCRD_HSCROLLBAR);
 		if (this->filter.script_debug_company == INVALID_COMPANY) return;
 
 		ScriptLogTypes::LogData &log = this->GetLogData();
@@ -932,7 +939,7 @@ struct ScriptDebugWindow : public Window {
 			this->vscroll->SetCount(scroll_count);
 
 			/* We need a repaint */
-			this->SetWidgetDirty(WID_SCRD_SCROLLBAR);
+			this->SetWidgetDirty(WID_SCRD_VSCROLLBAR);
 		}
 
 		if (log.empty()) return;
@@ -944,7 +951,7 @@ struct ScriptDebugWindow : public Window {
 
 		if (this->autoscroll && this->vscroll->SetPosition((int)log.size())) {
 			/* We need a repaint */
-			this->SetWidgetDirty(WID_SCRD_SCROLLBAR);
+			this->SetWidgetDirty(WID_SCRD_VSCROLLBAR);
 			this->SetWidgetDirty(WID_SCRD_LOG_PANEL);
 		}
 
@@ -1136,7 +1143,16 @@ struct ScriptDebugWindow : public Window {
 
 		this->SelectValidDebugCompany();
 
+		uint max_width = 0;
+		if (this->filter.script_debug_company != INVALID_COMPANY) {
+			for (auto &line : this->GetLogData()) {
+				if (line.width == 0 || data == -1) line.width = GetStringBoundingBox(line.text).width;
+				max_width = std::max(max_width, line.width);
+			}
+		}
+
 		this->vscroll->SetCount(this->filter.script_debug_company != INVALID_COMPANY ? this->GetLogData().size() : 0);
+		this->hscroll->SetCount(max_width + WidgetDimensions::scaled.frametext.Horizontal());
 
 		this->UpdateAIButtonsState();
 		this->UpdateGSButtonState();
@@ -1157,6 +1173,7 @@ struct ScriptDebugWindow : public Window {
 	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_SCRD_LOG_PANEL, WidgetDimensions::scaled.framerect.Vertical());
+		this->hscroll->SetCapacityFromWidget(this, WID_SCRD_LOG_PANEL);
 	}
 
 	/**
@@ -1225,7 +1242,7 @@ static const NWidgetPart _nested_script_debug_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
 		/* Log panel */
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_SCRD_LOG_PANEL), SetMinimalSize(287, 180), SetResize(1, 1), SetScrollbar(WID_SCRD_SCROLLBAR),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_SCRD_LOG_PANEL), SetMinimalSize(287, 180), SetResize(1, 1), SetScrollbar(WID_SCRD_VSCROLLBAR),
 		EndContainer(),
 		/* Break string widgets */
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SCRD_BREAK_STRING_WIDGETS),
@@ -1241,9 +1258,10 @@ static const NWidgetPart _nested_script_debug_widgets[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCRD_CONTINUE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_CONTINUE, STR_AI_DEBUG_CONTINUE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
+		NWidget(NWID_HSCROLLBAR, COLOUR_GREY, WID_SCRD_HSCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_VERTICAL),
-		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SCRD_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SCRD_VSCROLLBAR),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 EndContainer(),
