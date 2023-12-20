@@ -1993,6 +1993,7 @@ bool AdjustGUIZoom(bool automatic)
 	ClearFontCache();
 	LoadStringWidthTable();
 
+	SetupWidgetDimensions();
 	UpdateAllVirtCoords();
 
 	/* Adjust all window sizes to match the new zoom level, so that they don't appear
