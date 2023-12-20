@@ -112,7 +112,7 @@ Every pull request should have a clear scope, with no unrelated commits.
 
 Adhering to the following process is the best way to get your work included in the project:
 
-1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork, and configure the remotes:
+1. [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) the project, clone your fork, and configure the remotes:
 
 ```bash
 git clone https://github.com/<your-username>/OpenTTD.git openttd
@@ -266,7 +266,7 @@ This is inevitable, because it is a main feature of git.
 If you are concerned about your privacy, we strongly recommend to use "Anonymous &lt;anonymous@openttd.org&gt;" as the git commit author. We might refuse anonymous contributions if malicious intent is suspected.
 
 Please note that the contributor identity, once given, is used for copyright verification and to provide proof should a malicious commit be made.
-As such, the [EU GDPR](https://www.eugdpr.org/key-changes.html) "right to be forgotten" does not apply, as this is an overriding legitimate interest.
+As such, the [EU GDPR](https://gdpr.eu) "right to be forgotten" does not apply, as this is an overriding legitimate interest.
 
 Please also note that your commit is public and as such will potentially be processed by many third-parties.
 Git's distributed nature makes it impossible to track where exactly your commit, and thus your personal data, will be stored and be processed.
