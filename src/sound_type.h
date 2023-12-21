@@ -119,4 +119,6 @@ typedef uint16_t SoundID;
 
 static const SoundID INVALID_SOUND = 0xFFFF;
 
+static const uint8_t SOUND_EFFECT_MAX_VOLUME = 128;
+
 #endif /* SOUND_TYPE_H */

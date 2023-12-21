@@ -3153,7 +3153,7 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, B
 
 		switch (prop) {
 			case 0x08: // Relative volume
-				sound->volume = buf->ReadByte();
+				sound->volume = Clamp(buf->ReadByte(), 0, SOUND_EFFECT_MAX_VOLUME);
 				break;
 
 			case 0x09: // Priority
@@ -7857,7 +7857,7 @@ static void ImportGRFSound(SoundEntry *sound)
 	*sound = *GetSound(file->sound_offset + sound_id);
 
 	/* Reset volume and priority, which TTDPatch doesn't copy */
-	sound->volume   = 128;
+	sound->volume = SOUND_EFFECT_MAX_VOLUME;
 	sound->priority = 0;
 }
 
@@ -7869,7 +7869,7 @@ static void ImportGRFSound(SoundEntry *sound)
 static void LoadGRFSound(size_t offs, SoundEntry *sound)
 {
 	/* Set default volume and priority */
-	sound->volume = 0x80;
+	sound->volume = SOUND_EFFECT_MAX_VOLUME;
 	sound->priority = 0;
 
 	if (offs != SIZE_MAX) {
