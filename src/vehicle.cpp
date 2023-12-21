@@ -2383,9 +2383,9 @@ void Vehicle::UpdateAutomaticSeparation()
 	/* Check this feature is enabled on the vehicle's orders */
 	if (!this->AutomaticSeparationIsEnabled()) return;
 
-	/* Only perform the separation at the first manual order (saves on storage) */
+	/* Only perform the separation at the first manual order which can load/unload (saves on storage) */
 	VehicleOrderID first_manual_order = 0;
-	for (Order *o = this->GetFirstOrder(); o != nullptr && o->IsType(OT_IMPLICIT); o = o->next) {
+	for (Order *o = this->GetFirstOrder(); o != nullptr && (o->IsType(OT_IMPLICIT) || !o->CanLoadOrUnload()); o = o->next) {
 		++first_manual_order;
 	}
 	if (this->cur_implicit_order_index != first_manual_order) return;
