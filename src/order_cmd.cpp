@@ -1096,6 +1096,7 @@ CommandCost CmdSkipToOrder(DoCommandFlag flags, VehicleID veh_id, VehicleOrderID
 
 		v->cur_implicit_order_index = v->cur_real_order_index = sel_ord;
 		v->UpdateRealOrderIndex();
+		v->ResetAutomaticSeparation();
 
 		InvalidateVehicleOrder(v, VIWD_MODIFY_ORDERS);
 
