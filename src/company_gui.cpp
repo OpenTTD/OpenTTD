@@ -924,9 +924,10 @@ public:
 			y += this->line_height;
 		};
 
+		const Company *c = Company::Get((CompanyID)this->window_number);
+
 		if (livery_class < LC_GROUP_RAIL) {
 			int pos = this->vscroll->GetPosition();
-			const Company *c = Company::Get((CompanyID)this->window_number);
 			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
 					if (pos-- > 0) continue;
@@ -937,8 +938,9 @@ public:
 			uint max = static_cast<uint>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->groups.size()));
 			for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
 				const Group *g = this->groups[i];
+				const bool livery_set = HasBit(g->livery.in_use, 0);
 				SetDParam(0, g->index);
-				draw_livery(STR_GROUP_NAME, g->livery, this->sel == g->index, false, this->indents[i] * WidgetDimensions::scaled.hsep_indent);
+				draw_livery(STR_GROUP_NAME, livery_set ? g->livery : c->livery[LS_DEFAULT], this->sel == g->index, livery_set, this->indents[i] * WidgetDimensions::scaled.hsep_indent);
 			}
 		}
 	}
