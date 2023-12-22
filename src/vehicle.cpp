@@ -2444,7 +2444,12 @@ void Vehicle::UpdateAutomaticSeparation()
 	TimerGameTick::Ticks separation = std::max(1, vehicles > 0 ? round_trip_time * vehicles_moving_ratio / vehicles / vehicles : 1);
 
 	/* Finally we can calculate when this vehicle should depart; if that's in the past, it'll depart right now */
-	this->first_order_last_departure = std::max(last_departure + separation, TimerGameTick::counter);
+	TimerGameTick::TickCounter next_departure = last_departure + separation;
+	this->first_order_last_departure = std::max(next_departure, TimerGameTick::counter);
+
+	/* Update vehicle lateness based on the automatic separation, overriding the timetable */
+	this->lateness_counter = TimerGameTick::counter - next_departure;
+	SetWindowDirty(WC_VEHICLE_TIMETABLE, this->index);
 
 	/* Debug logging can be quite spammy as it prints a line every time a vehicle departs the first manual order */
 	if (_debug_misc_level >= 4) {
