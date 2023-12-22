@@ -22,8 +22,8 @@ struct BaseConsist {
 	TimerGameTick::Ticks lateness_counter;      ///< How many ticks late (or early if negative) this vehicle is.
 	TimerGameTick::TickCounter timetable_start; ///< At what tick of TimerGameTick::counter the vehicle should start its timetable.
 
-	TimerGameTick::Ticks first_order_last_departure;  ///< When the vehicle last left the first order.
-	TimerGameTick::Ticks first_order_round_trip_time; ///< How many ticks for a single circumnavigation of the orders.
+	TimerGameTick::TickCounter first_order_last_departure; ///< When the vehicle last left the first order.
+	TimerGameTick::Ticks first_order_round_trip_time;      ///< How many ticks for a single circumnavigation of the orders.
 
 	uint16_t service_interval;            ///< The interval for (automatic) servicing; either in days or %.
 

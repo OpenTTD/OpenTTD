@@ -771,7 +771,6 @@ void Vehicle::ShiftDates(TimerGameCalendar::Date interval)
 	this->date_of_last_service = std::max(this->date_of_last_service + interval, TimerGameCalendar::Date(0));
 	/* date_of_last_service_newgrf is not updated here as it must stay stable
 	 * for vehicles outside of a depot. */
-	this->first_order_last_departure += interval.base() * Ticks::DAY_TICKS;
 }
 
 /**
@@ -2371,8 +2370,7 @@ void Vehicle::HandleLoading(bool mode)
  * it is ready to depart)
  */
 bool Vehicle::IsWaitingForAutomaticSeparation() const {
-	TimerGameTick::Ticks now = (TimerGameCalendar::date.base() * Ticks::DAY_TICKS) + TimerGameCalendar::date_fract;
-	return this->AutomaticSeparationIsEnabled() && this->first_order_last_departure > now;
+	return this->AutomaticSeparationIsEnabled() && this->first_order_last_departure > TimerGameTick::counter;
 };
 
 /**
@@ -2392,12 +2390,11 @@ void Vehicle::UpdateAutomaticSeparation()
 	if (this->cur_implicit_order_index != first_manual_order) return;
 
 	/* A "last departure" >= now means we've already calculated the separation */
-	TimerGameTick::Ticks now = TimerGameCalendar::date.base() * Ticks::DAY_TICKS + TimerGameCalendar::date_fract;
-	if (this->first_order_last_departure >= now) return;
+	if (this->first_order_last_departure >= TimerGameTick::counter) return;
 
 	/* Calculate round trip time from last departure and now - automatic separation waiting time is not included */
 	if (this->first_order_last_departure > 0) {
-		this->first_order_round_trip_time = now - this->first_order_last_departure;
+		this->first_order_round_trip_time = TimerGameTick::counter - this->first_order_last_departure;
 	}
 
 	/* To work out the automatic separation waiting time we need to know:
@@ -2406,7 +2403,7 @@ void Vehicle::UpdateAutomaticSeparation()
 	 *   - How many vehicles are currently operating the order list
 	 *   - How many vehicles are currently queuing for the first manual order
 	 */
-	TimerGameTick::Ticks last_departure = 0;
+	TimerGameTick::TickCounter last_departure = 0;
 	TimerGameTick::Ticks round_trip_sum = 0;
 	int round_trip_count = 0;
 	int vehicles = 0;
@@ -2447,12 +2444,12 @@ void Vehicle::UpdateAutomaticSeparation()
 	TimerGameTick::Ticks separation = std::max(1, vehicles > 0 ? round_trip_time * vehicles_moving_ratio / vehicles / vehicles : 1);
 
 	/* Finally we can calculate when this vehicle should depart; if that's in the past, it'll depart right now */
-	this->first_order_last_departure = std::max(last_departure + separation, now);
+	this->first_order_last_departure = std::max(last_departure + separation, TimerGameTick::counter);
 
 	/* Debug logging can be quite spammy as it prints a line every time a vehicle departs the first manual order */
 	if (_debug_misc_level >= 4) {
 		SetDParam(0, this->index);
-		Debug(misc, 4, "Orders for {}: RTT = {} [{:.2f} days, {} veh], separation = {} [{:.2f} days, {} veh, {} queuing] / gap = {} [{:.2f} days], wait = {} [{:.2f} days]", GetString(STR_VEHICLE_NAME), round_trip_time, (float)round_trip_time / Ticks::DAY_TICKS, round_trip_count, separation, (float)separation / Ticks::DAY_TICKS, vehicles, vehicles_queuing, now - last_departure, (float)(now - last_departure) / Ticks::DAY_TICKS, this->first_order_last_departure - now, (float)(this->first_order_last_departure - now) / Ticks::DAY_TICKS);
+		Debug(misc, 4, "Orders for {}: RTT = {} [{:.2f} days, {} veh], separation = {} [{:.2f} days, {} veh, {} queuing] / gap = {} [{:.2f} days], wait = {} [{:.2f} days]", GetString(STR_VEHICLE_NAME), round_trip_time, (float)round_trip_time / Ticks::DAY_TICKS, round_trip_count, separation, (float)separation / Ticks::DAY_TICKS, vehicles, vehicles_queuing, TimerGameTick::counter - last_departure, (float)(TimerGameTick::counter - last_departure) / Ticks::DAY_TICKS, this->first_order_last_departure - TimerGameTick::counter, (float)(this->first_order_last_departure - TimerGameTick::counter) / Ticks::DAY_TICKS);
 	}
 }
 
