@@ -2196,6 +2196,10 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Show tra
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Show road vehicle colour schemes
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Show ship colour schemes
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Show aircraft colour schemes
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Show colours of train groups
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Show colours of road vehicle groups
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Show colours of ship groups
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Show colours of aircraft groups
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choose the primary colour for the selected scheme. Ctrl+Click will set this colour for every scheme
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choose the secondary colour for the selected scheme. Ctrl+Click will set this colour for every scheme
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Select a colour scheme to change, or multiple schemes with Ctrl+Click. Click on the box to toggle use of the scheme
