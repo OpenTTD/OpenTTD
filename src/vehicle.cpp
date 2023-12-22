@@ -771,6 +771,7 @@ void Vehicle::ShiftDates(TimerGameCalendar::Date interval)
 	this->date_of_last_service = std::max(this->date_of_last_service + interval, TimerGameCalendar::Date(0));
 	/* date_of_last_service_newgrf is not updated here as it must stay stable
 	 * for vehicles outside of a depot. */
+	this->first_order_last_departure += interval.base() * Ticks::DAY_TICKS;
 }
 
 /**
