@@ -8,6 +8,7 @@
 /** @file slider.cpp Implementation of the horizontal slider widget. */
 
 #include "../stdafx.h"
+#include "../palette_func.h"
 #include "../window_gui.h"
 #include "../window_func.h"
 #include "../strings_func.h"

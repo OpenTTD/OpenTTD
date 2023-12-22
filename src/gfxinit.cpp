@@ -17,6 +17,7 @@
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"
 #include "window_func.h"
+#include "palette_func.h"
 
 /* The type of set we're replacing */
 #define SET_TYPE "graphics"
