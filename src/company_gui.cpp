@@ -1092,7 +1092,7 @@ public:
 	}
 };
 
-static const NWidgetPart _nested_select_company_livery_widgets [] = {
+static const NWidgetPart _nested_select_company_livery_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SCL_CAPTION), SetDataTip(STR_LIVERY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -1110,17 +1110,14 @@ static const NWidgetPart _nested_select_company_livery_widgets [] = {
 		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(90, 22), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_SCL_SPACER_DROPDOWN), SetMinimalSize(150, 12), SetFill(1, 1), EndContainer(),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_PRI_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(0, 1), SetDataTip(STR_JUST_STRING, STR_LIVERY_PRIMARY_TOOLTIP),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_SEC_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(0, 1),
-				SetDataTip(STR_JUST_STRING, STR_LIVERY_SECONDARY_TOOLTIP),
+		NWidget(WWT_MATRIX, COLOUR_GREY, WID_SCL_MATRIX), SetMinimalSize(275, 0), SetResize(1, 0), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_LIVERY_PANEL_TOOLTIP), SetScrollbar(WID_SCL_MATRIX_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SCL_MATRIX_SCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, WID_SCL_MATRIX), SetMinimalSize(275, 0), SetResize(1, 0), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_LIVERY_PANEL_TOOLTIP), SetScrollbar(WID_SCL_MATRIX_SCROLLBAR),
-		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SCL_MATRIX_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
-		EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_SCL_SPACER_DROPDOWN), SetMinimalSize(150, 12), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_PRI_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(0, 1), SetDataTip(STR_JUST_STRING, STR_LIVERY_PRIMARY_TOOLTIP),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_SEC_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(0, 1), SetDataTip(STR_JUST_STRING, STR_LIVERY_SECONDARY_TOOLTIP),
+		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
 
