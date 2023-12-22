@@ -7,6 +7,7 @@
 
 /** @file 32bpp_anim_sse4.cpp Implementation of the SSE4 32 bpp blitter with animation support. */
 
+#include "palette_func.h"
 #ifdef WITH_SSE
 
 #include "../stdafx.h"
@@ -317,6 +318,21 @@ bmcr_alpha_blend_single:
 				}
 				break;
 
+			case BM_TRANSPARENT_REMAP:
+				/* Apply custom transparency remap. */
+				for (uint x = (uint) bp->width; x > 0; x--) {
+					if (src->a != 0) {
+						*dst = this->LookupColourInPalette(bp->remap[GetNearestColourIndex(*dst)]);
+						*anim = 0;
+					}
+					src_mv++;
+					dst++;
+					src++;
+					anim++;
+				}
+				break;
+
+
 			case BM_CRASH_REMAP:
 				for (uint x = (uint) bp->width; x > 0; x--) {
 					if (src_mv->m == 0) {
@@ -351,7 +367,7 @@ bmcr_alpha_blend_single:
 		}
 
 next_line:
-		if (mode != BM_TRANSPARENT) src_mv_line += si->sprite_width;
+		if (mode != BM_TRANSPARENT && mode != BM_TRANSPARENT_REMAP) src_mv_line += si->sprite_width;
 		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
 		dst_line += bp->pitch;
 		anim_line += this->anim_buf_pitch;
@@ -414,6 +430,7 @@ bm_normal:
 			}
 			break;
 		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
+		case BM_TRANSPARENT_REMAP: Draw<BM_TRANSPARENT_REMAP, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
 		case BM_CRASH_REMAP:  Draw<BM_CRASH_REMAP, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
 		case BM_BLACK_REMAP:  Draw<BM_BLACK_REMAP, RM_NONE, BT_NONE, true, true>(bp, zoom); return;
 	}

@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "../video/video_driver.hpp"
+#include "../palette_func.h"
 #include "32bpp_anim.hpp"
 #include "common.hpp"
 
@@ -190,10 +191,6 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					break;
 
 				case BM_TRANSPARENT:
-					/* TODO -- We make an assumption here that the remap in fact is transparency, not some colour.
-					 *  This is never a problem with the code we produce, but newgrfs can make it fail... or at least:
-					 *  we produce a result the newgrf maker didn't expect ;) */
-
 					/* Make the current colour a bit more black, so it looks like this image is transparent */
 					src_n += n;
 					if (src_px->a == 255) {
@@ -212,6 +209,24 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							dst++;
 							src_px++;
 						} while (--n != 0);
+					}
+					break;
+
+				case BM_TRANSPARENT_REMAP:
+					/* Apply custom transparency remap. */
+					src_n += n;
+					if (src_px->a != 0) {
+						src_px += n;
+						do {
+							*dst = this->LookupColourInPalette(bp->remap[GetNearestColourIndex(*dst)]);
+							*anim = 0;
+							anim++;
+							dst++;
+						} while (--n != 0);
+					} else {
+						dst += n;
+						anim += n;
+						src_px += n;
 					}
 					break;
 
@@ -264,6 +279,7 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 		case BM_NORMAL:       Draw<BM_NORMAL>      (bp, zoom); return;
 		case BM_COLOUR_REMAP: Draw<BM_COLOUR_REMAP>(bp, zoom); return;
 		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT> (bp, zoom); return;
+		case BM_TRANSPARENT_REMAP: Draw<BM_TRANSPARENT_REMAP>(bp, zoom); return;
 		case BM_CRASH_REMAP:  Draw<BM_CRASH_REMAP> (bp, zoom); return;
 		case BM_BLACK_REMAP:  Draw<BM_BLACK_REMAP> (bp, zoom); return;
 	}
