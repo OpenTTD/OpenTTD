@@ -2371,7 +2371,7 @@ void Vehicle::HandleLoading(bool mode)
  * it is ready to depart)
  */
 bool Vehicle::IsWaitingForAutomaticSeparation() const {
-	TimerGameTick::Ticks now = TimerGameCalendar::date.base() * Ticks::DAY_TICKS + TimerGameCalendar::date_fract;
+	TimerGameTick::Ticks now = (TimerGameCalendar::date.base() * Ticks::DAY_TICKS) + TimerGameCalendar::date_fract;
 	return this->AutomaticSeparationIsEnabled() && this->first_order_last_departure > now;
 };
 
@@ -2421,7 +2421,7 @@ void Vehicle::UpdateAutomaticSeparation()
 		/* A stopped vehicle is not included; it might be stopped by player or parked in a depot */
 		if (!(v->vehstatus & VS_STOPPED)) {
 			vehicles++;
-			/* Count vehicles queing for the first manual order but not currently in the station */
+			/* Count vehicles queuing for the first manual order but not currently in the station */
 			if (v != this && v->cur_speed == 0 && v->cur_implicit_order_index == first_manual_order && !v->current_order.IsType(OT_LOADING)) {
 				vehicles_queuing++;
 			}

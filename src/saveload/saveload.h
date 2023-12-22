@@ -331,7 +331,6 @@ enum SaveLoadVersion : uint16_t {
 	SLV_CUSTOM_SUBSIDY_DURATION,            ///< 292  PR#9081 Configurable subsidy duration.
 	SLV_SAVELOAD_LIST_LENGTH,               ///< 293  PR#9374 Consistency in list length with SL_STRUCT / SL_STRUCTLIST / SL_DEQUE / SL_REFLIST.
 	SLV_RIFF_TO_ARRAY,                      ///< 294  PR#9375 Changed many CH_RIFF chunks to CH_ARRAY chunks.
-	SLV_AUTOMATIC_SEPARATION,               ///< 295  PR#8342 Allow automatically separating vehicles in shared orders.
 
 	SLV_TABLE_CHUNKS,                       ///< 295  PR#9322 Introduction of CH_TABLE and CH_SPARSE_TABLE.
 	SLV_SCRIPT_INT64,                       ///< 296  PR#9415 SQInteger is 64bit but was saved as 32bit.
@@ -367,6 +366,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_TIMETABLE_START_TICKS,              ///< 321  PR#11468 Convert timetable start from a date to ticks.
 	SLV_TIMETABLE_START_TICKS_FIX,          ///< 322  PR#11557 Fix for missing convert timetable start from a date to ticks.
 	SLV_TIMETABLE_TICKS_TYPE,               ///< 323  PR#11435 Convert timetable current order time to ticks.
+	SLV_AUTOMATIC_SEPARATION,               ///< 324  PR#8342 Allow automatically separating vehicles in shared orders.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

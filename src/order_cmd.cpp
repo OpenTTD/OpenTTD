@@ -1470,7 +1470,7 @@ static bool CheckAircraftOrderDistance(const Aircraft *v_new, const Vehicle *v_o
 /**
  * Enable or disable automatic separation for a vehicle's order list
  * @param flags operation to perform
- * @param veh vehicle who's order list is being modified
+ * @param veh vehicle whose order list is being modified
  * @param enabled value indicating whether to enable (true) or disable (false) automatic separation
  * @return the cost of this operation or an error
  */
