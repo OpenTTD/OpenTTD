@@ -147,8 +147,6 @@ void DrawDirtyBlocks();
 void AddDirtyBlock(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty();
 
-bool CopyPalette(Palette &local_palette, bool force_copy = false);
-void GfxInitPalettes();
 void CheckBlitter();
 
 bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int height);
@@ -191,60 +189,4 @@ int GetCharacterHeight(FontSize size);
 
 extern DrawPixelInfo *_cur_dpi;
 
-/**
- * Checks if a Colours value is valid.
- *
- * @param colours The value to check
- * @return true if the given value is a valid Colours.
- */
-static inline bool IsValidColours(Colours colours)
-{
-	return colours < COLOUR_END;
-}
-
-TextColour GetContrastColour(uint8_t background, uint8_t threshold = 128);
-
-/**
- * All 16 colour gradients
- * 8 colours per gradient from darkest (0) to lightest (7)
- */
-extern byte _colour_gradient[COLOUR_END][8];
-
-/**
- * Return the colour for a particular greyscale level.
- * @param level Intensity, 0 = black, 15 = white
- * @return colour
- */
-#define GREY_SCALE(level) (level)
-
-static const uint8_t PC_BLACK              = GREY_SCALE(1);  ///< Black palette colour.
-static const uint8_t PC_DARK_GREY          = GREY_SCALE(6);  ///< Dark grey palette colour.
-static const uint8_t PC_GREY               = GREY_SCALE(10); ///< Grey palette colour.
-static const uint8_t PC_WHITE              = GREY_SCALE(15); ///< White palette colour.
-
-static const uint8_t PC_VERY_DARK_RED      = 0xB2;           ///< Almost-black red palette colour.
-static const uint8_t PC_DARK_RED           = 0xB4;           ///< Dark red palette colour.
-static const uint8_t PC_RED                = 0xB8;           ///< Red palette colour.
-
-static const uint8_t PC_VERY_DARK_BROWN    = 0x56;           ///< Almost-black brown palette colour.
-
-static const uint8_t PC_ORANGE             = 0xC2;           ///< Orange palette colour.
-
-static const uint8_t PC_YELLOW             = 0xBF;           ///< Yellow palette colour.
-static const uint8_t PC_LIGHT_YELLOW       = 0x44;           ///< Light yellow palette colour.
-static const uint8_t PC_VERY_LIGHT_YELLOW  = 0x45;           ///< Almost-white yellow palette colour.
-
-static const uint8_t PC_GREEN              = 0xD0;           ///< Green palette colour.
-
-static const uint8_t PC_VERY_DARK_BLUE     = 0x9A;           ///< Almost-black blue palette colour.
-static const uint8_t PC_DARK_BLUE          = 0x9D;           ///< Dark blue palette colour.
-static const uint8_t PC_LIGHT_BLUE         = 0x98;           ///< Light blue palette colour.
-
-static const uint8_t PC_ROUGH_LAND         = 0x52;           ///< Dark green palette colour for rough land.
-static const uint8_t PC_GRASS_LAND         = 0x54;           ///< Dark green palette colour for grass land.
-static const uint8_t PC_BARE_LAND          = 0x37;           ///< Brown palette colour for bare land.
-static const uint8_t PC_RAINFOREST         = 0x5C;           ///< Pale green palette colour for rainforest.
-static const uint8_t PC_FIELDS             = 0x25;           ///< Light brown palette colour for fields.
-static const uint8_t PC_TREES              = 0x57;           ///< Green palette colour for trees.
-static const uint8_t PC_WATER              = 0xC9;           ///< Dark blue palette colour for water.
 #endif /* GFX_FUNC_H */
