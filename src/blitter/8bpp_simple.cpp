@@ -42,6 +42,7 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 					break;
 
 				case BM_TRANSPARENT:
+				case BM_TRANSPARENT_REMAP:
 					if (*src != 0) colour = bp->remap[*dst];
 					break;
 

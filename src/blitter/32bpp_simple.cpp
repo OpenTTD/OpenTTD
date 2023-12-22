@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "../zoom_func.h"
+#include "../palette_func.h"
 #include "32bpp_simple.hpp"
 
 #include "../table/sprites.h"
@@ -63,12 +64,17 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					break;
 
 				case BM_TRANSPARENT:
-					/* TODO -- We make an assumption here that the remap in fact is transparency, not some colour.
-					 *  This is never a problem with the code we produce, but newgrfs can make it fail... or at least:
-					 *  we produce a result the newgrf maker didn't expect ;) */
-
 					/* Make the current colour a bit more black, so it looks like this image is transparent */
-					if (src->a != 0) *dst = MakeTransparent(*dst, 192);
+					if (src->a != 0) {
+						*dst = MakeTransparent(*dst, 192);
+					}
+					break;
+
+				case BM_TRANSPARENT_REMAP:
+					/* Apply custom transparency remap. */
+					if (src->a != 0) {
+						*dst = this->LookupColourInPalette(bp->remap[GetNearestColourIndex(*dst)]);
+					}
 					break;
 
 				default:
