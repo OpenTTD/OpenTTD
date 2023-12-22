@@ -2449,7 +2449,7 @@ void Vehicle::UpdateAutomaticSeparation()
 	/* Debug logging can be quite spammy as it prints a line every time a vehicle departs the first manual order */
 	if (_debug_misc_level >= 4) {
 		SetDParam(0, this->index);
-		Debug(misc, 4, "Orders for {}: RTT = {} [{:.2f} days, {} veh], separation = {} [{:.2f} days, {} veh, {} queuing] / gap = {} [{:.2f} days], wait = {} [{:.2f} days]", GetString(STR_VEHICLE_NAME), round_trip_time, (float)round_trip_time / Ticks::DAY_TICKS, round_trip_count, separation, (float)separation / Ticks::DAY_TICKS, vehicles, vehicles_queuing, TimerGameTick::counter - last_departure, (float)(TimerGameTick::counter - last_departure) / Ticks::DAY_TICKS, this->first_order_last_departure - TimerGameTick::counter, (float)(this->first_order_last_departure - TimerGameTick::counter) / Ticks::DAY_TICKS);
+		Debug(misc, 4, "Orders for {}: RTT = {} [{:.2f} days, {} veh], separation = {} [{:.2f} days, {} veh, {} queuing] / gap = {} [{:.2f} days], wait = {} [{:.2f} days]", GetString(STR_VEHICLE_NAME), round_trip_time, (float)round_trip_time / Ticks::DAY_TICKS, round_trip_count, separation, (float)separation / Ticks::DAY_TICKS, vehicles, vehicles_queuing, (int64_t)(TimerGameTick::counter - last_departure), (float)(int64_t)(TimerGameTick::counter - last_departure) / Ticks::DAY_TICKS, this->first_order_last_departure - TimerGameTick::counter, (float)(this->first_order_last_departure - TimerGameTick::counter) / Ticks::DAY_TICKS);
 	}
 }
 
