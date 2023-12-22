@@ -2203,6 +2203,10 @@ STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Show col
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choose the primary colour for the selected scheme. Ctrl+Click will set this colour for every scheme
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choose the secondary colour for the selected scheme. Ctrl+Click will set this colour for every scheme
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Select a colour scheme to change, or multiple schemes with Ctrl+Click. Click on the box to toggle use of the scheme
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :No train groups are set up
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :No road vehicle groups are set up
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :No ship groups are set up
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :No aircraft groups are set up
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Standard Livery
