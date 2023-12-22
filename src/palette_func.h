@@ -19,6 +19,13 @@ extern Palette _cur_palette; ///< Current palette
 bool CopyPalette(Palette &local_palette, bool force_copy = false);
 void GfxInitPalettes();
 
+uint8_t GetNearestColourIndex(uint8_t r, uint8_t g, uint8_t b);
+
+static inline uint8_t GetNearestColourIndex(const Colour colour)
+{
+	return GetNearestColourIndex(colour.r, colour.g, colour.b);
+}
+
 /**
  * Checks if a Colours value is valid.
  *

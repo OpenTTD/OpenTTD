@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "blitter/base.hpp"
 #include "blitter/factory.hpp"
+#include "fileio_func.h"
 #include "gfx_type.h"
 #include "landscape_type.h"
 #include "palette_func.h"
@@ -25,6 +26,112 @@ Palette _cur_palette;
 byte _colour_gradient[COLOUR_END][8];
 
 static std::recursive_mutex _palette_mutex; ///< To coordinate access to _cur_palette.
+
+/**
+ * PALETTE_BITS reduces the bits-per-channel of 32bpp graphics data to allow faster palette lookups from
+ * a smaller lookup table.
+ *
+ * 6 bpc is chosen as this results in a palette lookup table of 256KiB with adequate fidelty.
+ * In constract, a 5 bpc lookup table would be 32KiB, and 7 bpc would be 2MiB.
+ *
+ * Values in the table are filled as they are first encountered -- larger lookup table means more colour
+ * distance calculations, and is therefore slower.
+ */
+const uint PALETTE_BITS = 6;
+const uint PALETTE_SHIFT = 8 - PALETTE_BITS;
+const uint PALETTE_BITS_MASK = ((1U << PALETTE_BITS) - 1) << PALETTE_SHIFT;
+const uint PALETTE_BITS_OR = (1U << (PALETTE_SHIFT - 1));
+
+/* Palette and reshade lookup table. */
+using PaletteLookup = std::array<uint8_t, 1U << (PALETTE_BITS * 3)>;
+static PaletteLookup _palette_lookup{};
+
+/**
+ * Reduce bits per channel to PALETTE_BITS, and place value in the middle of the reduced range.
+ * This is to counteract the information lost between bright and dark pixels, e.g if PALETTE_BITS was 2:
+ *    0 -  63 ->  32
+ *   64 - 127 ->  96
+ *  128 - 191 -> 160
+ *  192 - 255 -> 224
+ * @param c 8 bit colour component.
+ * @returns Colour component reduced to PALETTE_BITS.
+ */
+inline uint CrunchColour(uint c)
+{
+	return (c & PALETTE_BITS_MASK) | PALETTE_BITS_OR;
+}
+
+/**
+ * Calculate distance between two colours.
+ * @param col1 First colour.
+ * @param r2 Red component of second colour.
+ * @param g2 Green component of second colour.
+ * @param b2 Blue component of second colour.
+ * @returns Euclidean distance between first and second colour.
+ */
+static uint CalculateColourDistance(const Colour &col1, int r2, int g2, int b2)
+{
+	/* Euclidean colour distance for sRGB based on https://en.wikipedia.org/wiki/Color_difference#sRGB */
+	int r = (int)col1.r - (int)r2;
+	int g = (int)col1.g - (int)g2;
+	int b = (int)col1.b - (int)b2;
+
+	int avgr = (col1.r + r2) / 2;
+	return ((2 + (avgr / 256.0)) * r * r) + (4 * g * g) + ((2 + ((255 - avgr) / 256.0)) * b * b);
+}
+
+/* Palette indexes for conversion. See docs/palettes/palette_key.png */
+const uint8_t PALETTE_INDEX_CC_START = 198; ///< Palette index of start of company colour remap area.
+const uint8_t PALETTE_INDEX_CC_END = PALETTE_INDEX_CC_START + 8; ///< Palette index of end of company colour remap area.
+const uint8_t PALETTE_INDEX_START = 1; ///< Palette index of start of defined palette.
+const uint8_t PALETTE_INDEX_END = 215; ///< Palette index of end of defined palette.
+
+/**
+ * Find nearest colour palette index for a 32bpp pixel.
+ * @param r Red component.
+ * @param g Green component.
+ * @param b Blue component.
+ * @returns palette index of nearest colour.
+ */
+static uint8_t FindNearestColourIndex(uint8_t r, uint8_t g, uint8_t b)
+{
+	r = CrunchColour(r);
+	g = CrunchColour(g);
+	b = CrunchColour(b);
+
+	uint best_index = 0;
+	uint best_distance = UINT32_MAX;
+
+	for (uint i = PALETTE_INDEX_START; i < PALETTE_INDEX_CC_START; i++) {
+		if (uint distance = CalculateColourDistance(_palette.palette[i], r, g, b); distance < best_distance) {
+			best_index = i;
+			best_distance = distance;
+		}
+	}
+	/* There's a hole in the palette reserved for company colour remaps. */
+	for (uint i = PALETTE_INDEX_CC_END; i < PALETTE_INDEX_END; i++) {
+		if (uint distance = CalculateColourDistance(_palette.palette[i], r, g, b); distance < best_distance) {
+			best_index = i;
+			best_distance = distance;
+		}
+	}
+	return best_index;
+}
+
+/**
+ * Get nearest colour palette index from an RGB colour.
+ * A search is performed if this colour is not already in the lookup table.
+ * @param r Red component.
+ * @param g Green component.
+ * @param b Blue component.
+ * @returns nearest colour palette index.
+ */
+uint8_t GetNearestColourIndex(uint8_t r, uint8_t g, uint8_t b)
+{
+	uint32_t key = (r >> PALETTE_SHIFT) | (g >> PALETTE_SHIFT) << PALETTE_BITS | (b >> PALETTE_SHIFT) << (PALETTE_BITS * 2);
+	if (_palette_lookup[key] == 0) _palette_lookup[key] = FindNearestColourIndex(r, g, b);
+	return _palette_lookup[key];
+}
 
 void DoPaletteAnimations();
 
