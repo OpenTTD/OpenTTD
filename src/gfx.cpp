@@ -1368,12 +1368,10 @@ void DoPaletteAnimations()
 
 	if (blitter != nullptr && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
 		palette_animation_counter = old_tc;
-	} else {
-		if (memcmp(old_val, &_cur_palette.palette[PALETTE_ANIM_START], sizeof(old_val)) != 0 && _cur_palette.count_dirty == 0) {
-			/* Did we changed anything on the palette? Seems so.  Mark it as dirty */
-			_cur_palette.first_dirty = PALETTE_ANIM_START;
-			_cur_palette.count_dirty = PALETTE_ANIM_SIZE;
-		}
+	} else if (_cur_palette.count_dirty == 0 && memcmp(old_val, &_cur_palette.palette[PALETTE_ANIM_START], sizeof(old_val)) != 0) {
+		/* Did we changed anything on the palette? Seems so.  Mark it as dirty */
+		_cur_palette.first_dirty = PALETTE_ANIM_START;
+		_cur_palette.count_dirty = PALETTE_ANIM_SIZE;
 	}
 }
 
