@@ -2005,7 +2005,7 @@ bool AdjustGUIZoom(bool automatic)
 			w->top    = (w->top    * _gui_scale) / old_scale;
 		}
 		if (w->viewport != nullptr) {
-			w->viewport->zoom = Clamp(ZoomLevel(w->viewport->zoom - zoom_shift), _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
+			w->viewport->zoom = static_cast<ZoomLevel>(Clamp(w->viewport->zoom - zoom_shift, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
 		}
 	}
 
