@@ -942,6 +942,12 @@ public:
 				SetDParam(0, g->index);
 				draw_livery(STR_GROUP_NAME, livery_set ? g->livery : c->livery[LS_DEFAULT], this->sel == g->index, livery_set, this->indents[i] * WidgetDimensions::scaled.hsep_indent);
 			}
+
+			if (this->vscroll->GetCount() == 0) {
+				const StringID empty_labels[] = { STR_LIVERY_TRAIN_GROUP_EMPTY, STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY, STR_LIVERY_SHIP_GROUP_EMPTY, STR_LIVERY_AIRCRAFT_GROUP_EMPTY };
+				VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
+				DrawString(ir.left, ir.right, y + text_offs, empty_labels[vtype], TC_BLACK);
+			}
 		}
 	}
 
