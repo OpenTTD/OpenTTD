@@ -901,4 +901,12 @@ void GfxClearFontSpriteCache()
 	}
 }
 
+/**
+ * Shrink to fit the sprite cache index.
+ */
+void GfxShrinkToFitSpriteCacheIndex()
+{
+	_spritecache.shrink_to_fit();
+}
+
 /* static */ ReusableBuffer<SpriteLoader::CommonPixel> SpriteLoader::Sprite::buffer[ZOOM_LVL_END];
