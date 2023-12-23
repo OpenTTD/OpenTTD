@@ -827,6 +827,7 @@ struct SpriteAlignerWindow : Window {
 	{
 		/* On first opening, set initial zoom to current zoom level. */
 		if (SpriteAlignerWindow::zoom == ZOOM_LVL_END) SpriteAlignerWindow::zoom = _gui_zoom;
+		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SA_SCROLLBAR);
@@ -1073,7 +1074,9 @@ struct SpriteAlignerWindow : Window {
 			this->vscroll->SetCount(_newgrf_debug_sprite_picker.sprites.size());
 		}
 
+		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 		for (ZoomLevel z = ZOOM_LVL_NORMAL; z < ZOOM_LVL_END; z++) {
+			this->SetWidgetsDisabledState(z < _settings_client.gui.zoom_min || z > _settings_client.gui.zoom_max, WID_SA_ZOOM + z);
 			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + z);
 		}
 	}
