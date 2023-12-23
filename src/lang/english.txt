@@ -2209,7 +2209,7 @@ STR_LIVERY_SHIP_GROUP_EMPTY                                     :No ship groups 
 STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :No aircraft groups are set up
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Standard Livery
+STR_LIVERY_DEFAULT                                              :Default Livery
 STR_LIVERY_STEAM                                                :Steam Engine
 STR_LIVERY_DIESEL                                               :Diesel Engine
 STR_LIVERY_ELECTRIC                                             :Electric Engine
