@@ -265,6 +265,7 @@ static void ZoomMinMaxChanged(int32_t)
 {
 	ConstrainAllViewportsZoom();
 	GfxClearSpriteCache();
+	InvalidateWindowClassesData(WC_SPRITE_ALIGNER);
 	if (AdjustGUIZoom(false)) {
 		ReInitAllWindows(true);
 	}
