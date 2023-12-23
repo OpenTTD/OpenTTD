@@ -800,8 +800,9 @@ struct ScriptDebugWindow : public Window {
 		SetWidgetsDisabledState(!this->show_break_box, WID_SCRD_BREAK_STR_ON_OFF_BTN, WID_SCRD_BREAK_STR_EDIT_BOX, WID_SCRD_MATCH_CASE_BTN);
 		this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
 
-		/* Restore the break string value from static variable */
+		/* Restore the break string value from static variable, and enable the filter. */
 		this->break_editbox.text.Assign(this->filter.break_string);
+		this->break_string_filter.SetFilterTerm(this->filter.break_string);
 
 		if (show_company == INVALID_COMPANY) {
 			this->SelectValidDebugCompany();
