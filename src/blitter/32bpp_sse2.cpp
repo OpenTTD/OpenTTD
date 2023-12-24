@@ -42,7 +42,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 		const SpriteLoader::Sprite *src_sprite = &sprite[z];
 		sd.infos[z].sprite_width = src_sprite->width;
 		sd.infos[z].sprite_offset = all_sprites_size;
-		sd.infos[z].sprite_line_size = sizeof(Colour) * src_sprite->width + sizeof(uint32_t) * META_LENGTH;
+		sd.infos[z].sprite_line_size = sizeof(RgbaColour) * src_sprite->width + sizeof(uint32_t) * META_LENGTH;
 
 		const uint rgba_size = sd.infos[z].sprite_line_size * src_sprite->height;
 		sd.infos[z].mv_offset = all_sprites_size + rgba_size;
@@ -65,10 +65,10 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
 		const SpriteLoader::Sprite *src_sprite = &sprite[z];
 		const SpriteLoader::CommonPixel *src = (const SpriteLoader::CommonPixel *) src_sprite->data;
-		Colour *dst_rgba_line = (Colour *) &dst_sprite->data[sizeof(SpriteData) + sd.infos[z].sprite_offset];
+		RgbaColour *dst_rgba_line = (RgbaColour *) &dst_sprite->data[sizeof(SpriteData) + sd.infos[z].sprite_offset];
 		MapValue *dst_mv = (MapValue *) &dst_sprite->data[sizeof(SpriteData) + sd.infos[z].mv_offset];
 		for (uint y = src_sprite->height; y != 0; y--) {
-			Colour *dst_rgba = dst_rgba_line + META_LENGTH;
+			RgbaColour *dst_rgba = dst_rgba_line + META_LENGTH;
 			for (uint x = src_sprite->width; x != 0; x--) {
 				if (src->a != 0) {
 					dst_rgba->a = src->a;
@@ -84,7 +84,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 						dst_mv->v = (rgb_max == 0) ? Blitter_32bppBase::DEFAULT_BRIGHTNESS : rgb_max;
 
 						/* Pre-convert the mapping channel to a RGB value. */
-						const Colour colour = AdjustBrightneSSE(Blitter_32bppBase::LookupColourInPalette(src->m), dst_mv->v);
+						const RgbaColour colour = AdjustBrightneSSE(Blitter_32bppBase::LookupColourInPalette(src->m), dst_mv->v);
 						dst_rgba->r = colour.r;
 						dst_rgba->g = colour.g;
 						dst_rgba->b = colour.b;
@@ -113,8 +113,8 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 			}
 			(*dst_rgba_line).data = nb_pix_transp;
 
-			Colour *nb_right = dst_rgba_line + 1;
-			dst_rgba_line = (Colour*) ((byte*) dst_rgba_line + sd.infos[z].sprite_line_size);
+			RgbaColour *nb_right = dst_rgba_line + 1;
+			dst_rgba_line = (RgbaColour*) ((byte*) dst_rgba_line + sd.infos[z].sprite_line_size);
 
 			/* Count the number of transparent pixels from the right. */
 			dst_rgba = dst_rgba_line - 1;

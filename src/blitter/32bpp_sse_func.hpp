@@ -111,7 +111,7 @@ inline __m128i DarkenTwoPixels(__m128i src, __m128i dst, const __m128i &distribu
 
 IGNORE_UNINITIALIZED_WARNING_START
 GNU_TARGET(SSE_TARGET)
-static Colour ReallyAdjustBrightness(Colour colour, uint8_t brightness)
+static RgbaColour ReallyAdjustBrightness(RgbaColour colour, uint8_t brightness)
 {
 	uint64_t c16 = colour.b | (uint64_t) colour.g << 16 | (uint64_t) colour.r << 32;
 	c16 *= brightness;
@@ -145,7 +145,7 @@ IGNORE_UNINITIALIZED_WARNING_STOP
 /** ReallyAdjustBrightness() is not called that often.
  * Inlining this function implies a far jump, which has a huge latency.
  */
-inline Colour AdjustBrightneSSE(Colour colour, uint8_t brightness)
+inline RgbaColour AdjustBrightneSSE(RgbaColour colour, uint8_t brightness)
 {
 	/* Shortcut for normal brightness. */
 	if (brightness == Blitter_32bppBase::DEFAULT_BRIGHTNESS) return colour;
@@ -215,14 +215,14 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 #endif
 {
 	const byte * const remap = bp->remap;
-	Colour *dst_line = (Colour *) bp->dst + bp->top * bp->pitch + bp->left;
+	RgbaColour *dst_line = (RgbaColour *) bp->dst + bp->top * bp->pitch + bp->left;
 	int effective_width = bp->width;
 
 	/* Find where to start reading in the source sprite. */
 	const SpriteData * const sd = (const SpriteData *) bp->sprite;
 	const SpriteInfo * const si = &sd->infos[zoom];
 	const MapValue *src_mv_line = (const MapValue *) &sd->data[si->mv_offset] + bp->skip_top * si->sprite_width;
-	const Colour *src_rgba_line = (const Colour *) ((const byte *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
+	const RgbaColour *src_rgba_line = (const RgbaColour *) ((const byte *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
 
 	if (read_mode != RM_WITH_MARGIN) {
 		src_rgba_line += bp->skip_left;
@@ -250,8 +250,8 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	const __m128i tr_nom_base = TRANSPARENT_NOM_BASE;
 
 	for (int y = bp->height; y != 0; y--) {
-		Colour *dst = dst_line;
-		const Colour *src = src_rgba_line + META_LENGTH;
+		RgbaColour *dst = dst_line;
+		const RgbaColour *src = src_rgba_line + META_LENGTH;
 		if (mode == BM_COLOUR_REMAP || mode == BM_CRASH_REMAP) src_mv = src_mv_line;
 
 		if (read_mode == RM_WITH_MARGIN) {
@@ -304,12 +304,12 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					if (mvX2 & 0x00FF00FF) {
 						#define CMOV_REMAP(m_colour, m_colour_init, m_src, m_m) \
 							/* Written so the compiler uses CMOV. */ \
-							Colour m_colour = m_colour_init; \
+							RgbaColour m_colour = m_colour_init; \
 							{ \
-							const Colour srcm = (Colour) (m_src); \
+							const RgbaColour srcm = (RgbaColour) (m_src); \
 							const uint m = (byte) (m_m); \
 							const uint r = remap[m]; \
-							const Colour cmap = (this->LookupColourInPalette(r).data & 0x00FFFFFF) | (srcm.data & 0xFF000000); \
+							const RgbaColour cmap = (this->LookupColourInPalette(r).data & 0x00FFFFFF) | (srcm.data & 0xFF000000); \
 							m_colour = r == 0 ? m_colour : cmap; \
 							m_colour = m != 0 ? m_colour : srcm; \
 							}
@@ -322,7 +322,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 						remapped_src |= (uint64_t) c1.data << 32;
 						srcABCD = _mm_cvtsi64_si128(remapped_src);
 #else
-						Colour remapped_src[2];
+						RgbaColour remapped_src[2];
 						CMOV_REMAP(c0, 0, _mm_cvtsi128_si32(srcABCD), mvX2);
 						remapped_src[0] = c0.data;
 						CMOV_REMAP(c1, 0, src[1], mvX2 >> 16);
@@ -349,7 +349,7 @@ inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					if (src_mv->m) {
 						const uint r = remap[src_mv->m];
 						if (r != 0) {
-							Colour remapped_colour = AdjustBrightneSSE(this->LookupColourInPalette(r), src_mv->v);
+							RgbaColour remapped_colour = AdjustBrightneSSE(this->LookupColourInPalette(r), src_mv->v);
 							if (src->a == 255) {
 								*dst = remapped_colour;
 							} else {
@@ -424,7 +424,7 @@ bmcr_alpha_blend_single:
 			case BM_BLACK_REMAP:
 				for (uint x = (uint) bp->width; x > 0; x--) {
 					if (src->a != 0) {
-						*dst = Colour(0, 0, 0);
+						*dst = RgbaColour(0, 0, 0);
 					}
 					src_mv++;
 					dst++;
@@ -435,7 +435,7 @@ bmcr_alpha_blend_single:
 
 next_line:
 		if (mode == BM_COLOUR_REMAP || mode == BM_CRASH_REMAP) src_mv_line += si->sprite_width;
-		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
+		src_rgba_line = (const RgbaColour*) ((const byte*) src_rgba_line + si->sprite_line_size);
 		dst_line += bp->pitch;
 	}
 }

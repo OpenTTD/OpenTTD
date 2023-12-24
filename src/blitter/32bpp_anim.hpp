@@ -53,7 +53,7 @@ public:
 	/**
 	 * Look up the colour in the current palette.
 	 */
-	inline Colour LookupColourInPalette(uint index)
+	inline RgbaColour LookupColourInPalette(uint index)
 	{
 		return this->palette.palette[index];
 	}

@@ -156,7 +156,7 @@ struct DrawPixelInfo {
 };
 
 /** Structure to access the alpha, red, green, and blue channels from a 32 bit number. */
-union Colour {
+union RgbaColour {
 	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
 	struct {
 #if defined(__EMSCRIPTEN__)
@@ -175,7 +175,7 @@ union Colour {
 	 * @param b The channel for the blue colour.
 	 * @param a The channel for the alpha/transparency.
 	 */
-	Colour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) :
+	RgbaColour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) :
 #if defined(__EMSCRIPTEN__)
 		r(r), g(g), b(b), a(a)
 #elif TTD_ENDIAN == TTD_BIG_ENDIAN
@@ -190,12 +190,12 @@ union Colour {
 	 * Create a new colour.
 	 * @param data The colour in the correct packed format.
 	 */
-	Colour(uint data = 0) : data(data)
+	RgbaColour(uint data = 0) : data(data)
 	{
 	}
 };
 
-static_assert(sizeof(Colour) == sizeof(uint32_t));
+static_assert(sizeof(RgbaColour) == sizeof(uint32_t));
 
 
 /** Available font sizes */
@@ -321,7 +321,7 @@ static const uint MILLISECONDS_PER_TICK = 27;
 
 /** Information about the currently used palette. */
 struct Palette {
-	Colour palette[256]; ///< Current palette. Entry 0 has to be always fully transparent!
+	RgbaColour palette[256]; ///< Current palette. Entry 0 has to be always fully transparent!
 	int first_dirty;     ///< The first dirty element.
 	int count_dirty;     ///< The number of dirty elements.
 };

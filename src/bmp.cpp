@@ -374,7 +374,7 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 		/* More palette colours than palette indices is not supported. */
 		if (info->palette_size > maximum_palette_size) return false;
 
-		data->palette = CallocT<Colour>(info->palette_size);
+		data->palette = CallocT<RgbaColour>(info->palette_size);
 
 		for (i = 0; i < info->palette_size; i++) {
 			data->palette[i].b = ReadByte(buffer);

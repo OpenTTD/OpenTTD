@@ -37,7 +37,7 @@ public:
 	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 
 protected:
-	static inline Colour RealizeBlendedColour(uint8_t anim, Colour c)
+	static inline RgbaColour RealizeBlendedColour(uint8_t anim, RgbaColour c)
 	{
 		return anim != 0 ? AdjustBrightness(LookupColourInPalette(anim), GetColourBrightness(c)) : c;
 	}

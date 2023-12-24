@@ -34,7 +34,7 @@ GNU_TARGET("sse4.1")
 inline void Blitter_32bppSSE4_Anim::Draw(const BlitterParams *bp, ZoomLevel zoom)
 {
 	const byte * const remap = bp->remap;
-	Colour *dst_line = (Colour *) bp->dst + bp->top * bp->pitch + bp->left;
+	RgbaColour *dst_line = (RgbaColour *) bp->dst + bp->top * bp->pitch + bp->left;
 	uint16_t *anim_line = this->anim_buf + this->ScreenToAnimOffset((uint32_t *)bp->dst) + bp->top * this->anim_buf_pitch + bp->left;
 	int effective_width = bp->width;
 
@@ -42,7 +42,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const BlitterParams *bp, ZoomLevel zoom
 	const Blitter_32bppSSE_Base::SpriteData * const sd = (const Blitter_32bppSSE_Base::SpriteData *) bp->sprite;
 	const SpriteInfo * const si = &sd->infos[zoom];
 	const MapValue *src_mv_line = (const MapValue *) &sd->data[si->mv_offset] + bp->skip_top * si->sprite_width;
-	const Colour *src_rgba_line = (const Colour *) ((const byte *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
+	const RgbaColour *src_rgba_line = (const RgbaColour *) ((const byte *) &sd->data[si->sprite_offset] + bp->skip_top * si->sprite_line_size);
 
 	if (read_mode != RM_WITH_MARGIN) {
 		src_rgba_line += bp->skip_left;
@@ -57,8 +57,8 @@ inline void Blitter_32bppSSE4_Anim::Draw(const BlitterParams *bp, ZoomLevel zoom
 	const __m128i a_am        = ALPHA_AND_MASK;
 
 	for (int y = bp->height; y != 0; y--) {
-		Colour *dst = dst_line;
-		const Colour *src = src_rgba_line + META_LENGTH;
+		RgbaColour *dst = dst_line;
+		const RgbaColour *src = src_rgba_line + META_LENGTH;
 		if (mode != BM_TRANSPARENT) src_mv = src_mv_line;
 		uint16_t *anim = anim_line;
 
@@ -106,12 +106,12 @@ inline void Blitter_32bppSSE4_Anim::Draw(const BlitterParams *bp, ZoomLevel zoom
 						/* Remap colours. */
 						const byte m0 = mvX2;
 						if (m0 >= PALETTE_ANIM_START) {
-							const Colour c0 = (this->LookupColourInPalette(m0).data & 0x00FFFFFF) | (src[0].data & 0xFF000000);
+							const RgbaColour c0 = (this->LookupColourInPalette(m0).data & 0x00FFFFFF) | (src[0].data & 0xFF000000);
 							InsertFirstUint32(AdjustBrightneSSE(c0, (byte) (mvX2 >> 8)).data, srcABCD);
 						}
 						const byte m1 = mvX2 >> 16;
 						if (m1 >= PALETTE_ANIM_START) {
-							const Colour c1 = (this->LookupColourInPalette(m1).data & 0x00FFFFFF) | (src[1].data & 0xFF000000);
+							const RgbaColour c1 = (this->LookupColourInPalette(m1).data & 0x00FFFFFF) | (src[1].data & 0xFF000000);
 							InsertSecondUint32(AdjustBrightneSSE(c1, (byte) (mvX2 >> 24)).data, srcABCD);
 						}
 
@@ -167,7 +167,7 @@ bmno_full_transparency:
 						__m128i srcABCD;
 						__m128i dstABCD = _mm_cvtsi32_si128(dst->data);
 						if (src_mv->m >= PALETTE_ANIM_START) {
-							Colour colour = AdjustBrightneSSE(LookupColourInPalette(src_mv->m), src_mv->v);
+							RgbaColour colour = AdjustBrightneSSE(LookupColourInPalette(src_mv->m), src_mv->v);
 							colour.a = src->a;
 							srcABCD = _mm_cvtsi32_si128(colour.data);
 						} else {
@@ -192,12 +192,12 @@ bmno_full_transparency:
 					if (mvX2 & 0x00FF00FF) {
 						#define CMOV_REMAP(m_colour, m_colour_init, m_src, m_m) \
 							/* Written so the compiler uses CMOV. */ \
-							Colour m_colour = m_colour_init; \
+							RgbaColour m_colour = m_colour_init; \
 							{ \
-							const Colour srcm = (Colour) (m_src); \
+							const RgbaColour srcm = (RgbaColour) (m_src); \
 							const uint m = (byte) (m_m); \
 							const uint r = remap[m]; \
-							const Colour cmap = (this->LookupColourInPalette(r).data & 0x00FFFFFF) | (srcm.data & 0xFF000000); \
+							const RgbaColour cmap = (this->LookupColourInPalette(r).data & 0x00FFFFFF) | (srcm.data & 0xFF000000); \
 							m_colour = r == 0 ? m_colour : cmap; \
 							m_colour = m != 0 ? m_colour : srcm; \
 							}
@@ -212,7 +212,7 @@ bmno_full_transparency:
 						remapped_src |= (uint64_t) c1.data << 32;
 						srcABCD = _mm_cvtsi64_si128(remapped_src);
 #else
-						Colour remapped_src[2];
+						RgbaColour remapped_src[2];
 						CMOV_REMAP(c0, animated ? _mm_cvtsi128_si32(dstABCD) : 0, _mm_cvtsi128_si32(srcABCD), mvX2);
 						remapped_src[0] = c0.data;
 						CMOV_REMAP(c1, animated ? dst[1] : 0, src[1], mvX2 >> 16);
@@ -275,7 +275,7 @@ bmcr_full_transparency:
 						const uint r = remap[src_mv->m];
 						*anim = (animated && src->a == 255) ? r | ((uint16_t) src_mv->v << 8 ) : 0;
 						if (r != 0) {
-							Colour remapped_colour = AdjustBrightneSSE(this->LookupColourInPalette(r), src_mv->v);
+							RgbaColour remapped_colour = AdjustBrightneSSE(this->LookupColourInPalette(r), src_mv->v);
 							if (src->a == 255) {
 								*dst = remapped_colour;
 							} else {
@@ -355,7 +355,7 @@ bmcr_alpha_blend_single:
 			case BM_BLACK_REMAP:
 				for (uint x = (uint) bp->width; x > 0; x--) {
 					if (src->a != 0) {
-						*dst = Colour(0, 0, 0);
+						*dst = RgbaColour(0, 0, 0);
 						*anim = 0;
 					}
 					src_mv++;
@@ -368,7 +368,7 @@ bmcr_alpha_blend_single:
 
 next_line:
 		if (mode != BM_TRANSPARENT && mode != BM_TRANSPARENT_REMAP) src_mv_line += si->sprite_width;
-		src_rgba_line = (const Colour*) ((const byte*) src_rgba_line + si->sprite_line_size);
+		src_rgba_line = (const RgbaColour*) ((const byte*) src_rgba_line + si->sprite_line_size);
 		dst_line += bp->pitch;
 		anim_line += this->anim_buf_pitch;
 	}

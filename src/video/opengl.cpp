@@ -936,7 +936,7 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 	if (bpp == 32) {
 		/* Initialize backing store alpha to opaque for 32bpp modes. */
-		Colour black(0, 0, 0);
+		RgbaColour black(0, 0, 0);
 		if (_glClearBufferSubData != nullptr) {
 			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_RGBA8, 0, line_pixel_count * bpp / 8, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &black.data);
 		} else {
@@ -1022,7 +1022,7 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
  * @param first First entry to update.
  * @param length Number of entries to update.
  */
-void OpenGLBackend::UpdatePalette(const Colour *pal, uint first, uint length)
+void OpenGLBackend::UpdatePalette(const RgbaColour *pal, uint first, uint length)
 {
 	assert(first + length <= 256);
 
@@ -1360,7 +1360,7 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
 	_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 
 	/* Load dummy RGBA texture. */
-	const Colour rgb_pixel(0, 0, 0);
+	const RgbaColour rgb_pixel(0, 0, 0);
 	_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_RGBA]);
 	_glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1, 1, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &rgb_pixel);
 
@@ -1473,7 +1473,7 @@ OpenGLSprite::~OpenGLSprite()
  */
 void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoader::CommonPixel * data)
 {
-	static ReusableBuffer<Colour> buf_rgba;
+	static ReusableBuffer<RgbaColour> buf_rgba;
 	static ReusableBuffer<uint8_t> buf_pal;
 
 	_glActiveTexture(GL_TEXTURE0);
@@ -1483,7 +1483,7 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 	if (this->tex[TEX_RGBA] != 0) {
 		/* Unpack pixel data */
 		size_t size = static_cast<size_t>(width) * height;
-		Colour *rgba = buf_rgba.Allocate(size);
+		RgbaColour *rgba = buf_rgba.Allocate(size);
 		for (size_t i = 0; i < size; i++) {
 			rgba[i].r = data[i].r;
 			rgba[i].g = data[i].g;

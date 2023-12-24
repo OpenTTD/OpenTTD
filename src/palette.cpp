@@ -69,7 +69,7 @@ inline uint CrunchColour(uint c)
  * @param b2 Blue component of second colour.
  * @returns Euclidean distance between first and second colour.
  */
-static uint CalculateColourDistance(const Colour &col1, int r2, int g2, int b2)
+static uint CalculateColourDistance(const RgbaColour &col1, int r2, int g2, int b2)
 {
 	/* Euclidean colour distance for sRGB based on https://en.wikipedia.org/wiki/Color_difference#sRGB */
 	int r = (int)col1.r - (int)r2;
@@ -180,9 +180,9 @@ void DoPaletteAnimations()
 	palette_animation_counter += 8;
 
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
-	const Colour *s;
+	const RgbaColour *s;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
-	Colour old_val[PALETTE_ANIM_SIZE];
+	RgbaColour old_val[PALETTE_ANIM_SIZE];
 	const uint old_tc = palette_animation_counter;
 	uint j;
 
@@ -190,7 +190,7 @@ void DoPaletteAnimations()
 		palette_animation_counter = 0;
 	}
 
-	Colour *palette_pos = &_cur_palette.palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
+	RgbaColour *palette_pos = &_cur_palette.palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
 	/* Makes a copy of the current animation palette in old_val,
 	 * so the work on the current palette could be compared, see if there has been any changes */
 	memcpy(old_val, palette_pos, sizeof(old_val));
@@ -288,7 +288,7 @@ void DoPaletteAnimations()
  */
 TextColour GetContrastColour(uint8_t background, uint8_t threshold)
 {
-	Colour c = _cur_palette.palette[background];
+	RgbaColour c = _cur_palette.palette[background];
 	/* Compute brightness according to http://www.w3.org/TR/AERT#color-contrast.
 	 * The following formula computes 1000 * brightness^2, with brightness being in range 0 to 255. */
 	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;

@@ -21,7 +21,7 @@ void GfxInitPalettes();
 
 uint8_t GetNearestColourIndex(uint8_t r, uint8_t g, uint8_t b);
 
-inline uint8_t GetNearestColourIndex(const Colour colour)
+inline uint8_t GetNearestColourIndex(const RgbaColour colour)
 {
 	return GetNearestColourIndex(colour.r, colour.g, colour.b);
 }

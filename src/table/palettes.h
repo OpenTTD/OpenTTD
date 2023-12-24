@@ -9,13 +9,13 @@
 
 #include "../core/endian_type.hpp"
 
-#define M(r, g, b) Colour(r, g, b)
+#define M(r, g, b) RgbaColour(r, g, b)
 
 /** Colour palette (DOS) */
 static const Palette _palette = {
 	{
 		/* transparent */
-		Colour(0, 0, 0, 0),
+		RgbaColour(0, 0, 0, 0),
 		/* grey scale */
 		                  M( 16,  16,  16), M( 32,  32,  32), M( 48,  48,  48),
 		M( 65,  64,  65), M( 82,  80,  82), M( 98, 101,  98), M(115, 117, 115),
@@ -102,13 +102,13 @@ static const uint EPV_CYCLES_GLITTER_WATER = 15; ///< length of the glittery wat
 
 /** Description of tables for the palette animation */
 struct ExtraPaletteValues {
-	Colour dark_water[EPV_CYCLES_DARK_WATER];               ///< dark blue water
-	Colour dark_water_toyland[EPV_CYCLES_DARK_WATER];       ///< dark blue water Toyland
-	Colour lighthouse[EPV_CYCLES_LIGHTHOUSE];               ///< lighthouse & stadium
-	Colour oil_refinery[EPV_CYCLES_OIL_REFINERY];           ///< oil refinery
-	Colour fizzy_drink[EPV_CYCLES_FIZZY_DRINK];             ///< fizzy drinks
-	Colour glitter_water[EPV_CYCLES_GLITTER_WATER];         ///< glittery water
-	Colour glitter_water_toyland[EPV_CYCLES_GLITTER_WATER]; ///< glittery water Toyland
+	RgbaColour dark_water[EPV_CYCLES_DARK_WATER];               ///< dark blue water
+	RgbaColour dark_water_toyland[EPV_CYCLES_DARK_WATER];       ///< dark blue water Toyland
+	RgbaColour lighthouse[EPV_CYCLES_LIGHTHOUSE];               ///< lighthouse & stadium
+	RgbaColour oil_refinery[EPV_CYCLES_OIL_REFINERY];           ///< oil refinery
+	RgbaColour fizzy_drink[EPV_CYCLES_FIZZY_DRINK];             ///< fizzy drinks
+	RgbaColour glitter_water[EPV_CYCLES_GLITTER_WATER];         ///< glittery water
+	RgbaColour glitter_water_toyland[EPV_CYCLES_GLITTER_WATER]; ///< glittery water Toyland
 };
 
 /** Actual palette animation tables */
