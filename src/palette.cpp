@@ -295,3 +295,31 @@ TextColour GetContrastColour(uint8_t background, uint8_t threshold)
 	/* Compare with threshold brightness which defaults to 128 (50%) */
 	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TC_WHITE : TC_BLACK;
 }
+
+static const uint COLOUR_MASK = 0xF;
+static const uint BRIGHTNESS_MASK = 0x7;
+
+static_assert(lengthof(_colour_gradient) == COLOUR_MASK + 1);
+static_assert(lengthof(_colour_gradient[0]) == BRIGHTNESS_MASK + 1);
+
+/**
+ * Get colour gradient palette index.
+ * @param colour Colour.
+ * @param brightness Brightness level from 1 to 7.
+ * @returns palette index of colour.
+ */
+byte GetColourGradient(Colours colour, uint8_t brightness)
+{
+	return _colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK];
+}
+
+/**
+ * Set colour gradient palette index.
+ * @param colour Colour.
+ * @param brightness Brightness level from 1 to 7.
+ * @param palette_index Palette index to set.
+ */
+void SetColourGradient(Colours colour, uint8_t brightness, uint8_t palette_index)
+{
+	_colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK] = palette_index;
+}
