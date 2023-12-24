@@ -493,8 +493,8 @@ bool IsValidConsoleColour(TextColour c)
 	/* A text colour from the palette is used; must be the company
 	 * colour gradient, so it must be one of those. */
 	c &= ~TC_IS_PALETTE_COLOUR;
-	for (uint i = COLOUR_BEGIN; i < COLOUR_END; i++) {
-		if (_colour_gradient[i][4] == c) return true;
+	for (Colours i = COLOUR_BEGIN; i < COLOUR_END; i++) {
+		if (GetColourGradient(i, 4) == c) return true;
 	}
 
 	return false;

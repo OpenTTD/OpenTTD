@@ -312,7 +312,7 @@ void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &c
 		GfxDrawLine(pta.x, pta.y + offset_y, ptb.x, ptb.y + offset_y, colour, width, dash);
 	}
 
-	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, _colour_gradient[COLOUR_GREY][1], width);
+	GfxDrawLine(pta.x, pta.y, ptb.x, ptb.y, GetColourGradient(COLOUR_GREY, 1), width);
 }
 
 /**
@@ -331,9 +331,9 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 		uint r = width * 2 + width * 2 * std::min(200U, i.second) / 200;
 
 		LinkGraphOverlay::DrawVertex(pt.x, pt.y, r,
-				_colour_gradient[st->owner != OWNER_NONE ?
-						Company::Get(st->owner)->colour : COLOUR_GREY][5],
-				_colour_gradient[COLOUR_GREY][1]);
+				GetColourGradient(st->owner != OWNER_NONE ?
+						Company::Get(st->owner)->colour : COLOUR_GREY, 5),
+				GetColourGradient(COLOUR_GREY, 1));
 	}
 }
 

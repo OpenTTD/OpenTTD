@@ -39,11 +39,8 @@ inline bool IsValidColours(Colours colours)
 
 TextColour GetContrastColour(uint8_t background, uint8_t threshold = 128);
 
-/**
- * All 16 colour gradients
- * 8 colours per gradient from darkest (0) to lightest (7)
- */
-extern byte _colour_gradient[COLOUR_END][8];
+byte GetColourGradient(Colours colour, uint8_t shade);
+void SetColourGradient(Colours colour, uint8_t shade, byte palette_colour);
 
 /**
  * Return the colour for a particular greyscale level.
