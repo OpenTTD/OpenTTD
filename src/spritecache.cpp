@@ -817,6 +817,8 @@ static void CompactSpriteCache()
  */
 static void DeleteEntryFromSpriteCache(uint item)
 {
+	if (GetSpriteCache(item)->ptr == nullptr) return;
+
 	/* Mark the block as free (the block must be in use) */
 	MemBlock *s = (MemBlock*)GetSpriteCache(item)->ptr - 1;
 	assert(!(s->size & S_FREE_MASK));
@@ -899,6 +901,26 @@ void *AllocSprite(size_t mem_req)
 void *SimpleSpriteAlloc(size_t size)
 {
 	return MallocT<byte>(size);
+}
+
+/**
+ * Allocate and inject memory for a memory-based sprite.
+ */
+void *InjectSprite(SpriteType type, int load_index, size_t len)
+{
+	if (SpriteExists(load_index)) DeleteEntryFromSpriteCache(load_index);
+
+	SpriteCache *sc = AllocateSpriteCache(load_index);
+	sc->file_pos      = SIZE_MAX;
+	sc->file          = nullptr;
+	sc->ptr           = AllocSprite(len);
+	sc->id            = 0;
+	sc->lru           = 0;
+	sc->type          = type;
+	sc->warned        = false;
+	sc->control_flags = 0;
+
+	return sc->ptr;
 }
 
 /**
@@ -1077,3 +1099,42 @@ void GfxClearFontSpriteCache()
 }
 
 /* static */ ReusableBuffer<SpriteLoader::CommonPixel> SpriteLoader::Sprite::buffer[ZOOM_LVL_END];
+
+static SpriteID _sprites_end;             ///< First usable free sprite ID.
+static std::vector<uint32_t> _dynamic_sprites; ///< List of used/free custom sprite slots.
+
+/**
+ * Clear custom sprites mapping and set first usable free sprite ID.
+ */
+void ClearDynamicSprites(SpriteID base)
+{
+	_dynamic_sprites.clear();
+	_sprites_end = base;
+}
+
+/**
+ * Allocate a custom sprite ID.
+ */
+SpriteID AllocateDynamicSprite()
+{
+	/* Find first unused slot, or make one. */
+	auto it = std::find(std::begin(_dynamic_sprites), std::end(_dynamic_sprites), 0);
+	if (it == std::end(_dynamic_sprites)) it = _dynamic_sprites.emplace(it, 0);
+
+	(*it)++;
+	return _sprites_end + std::distance(std::begin(_dynamic_sprites), it);
+}
+
+/**
+ * Mark a custom sprite ID as deallocated.
+ * The sprite slot is merely marked as reusable.
+ */
+void DeallocateDynamicSprite(SpriteID sprite)
+{
+	if (sprite >= _sprites_end && sprite < _sprites_end + _dynamic_sprites.size()) {
+		assert(_dynamic_sprites[sprite - _sprites_end] > 0);
+		--_dynamic_sprites[sprite - _sprites_end];
+
+		if (_dynamic_sprites[sprite - _sprites_end] == 0) DeleteEntryFromSpriteCache(sprite);
+	}
+}
