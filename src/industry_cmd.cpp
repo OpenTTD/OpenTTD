@@ -1778,7 +1778,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->owner = OWNER_NONE;
 
 	uint16_t r = Random();
-	i->random_colour = GB(r, 0, 4);
+	i->random_colour = static_cast<Colours>(GB(r, 0, 4));
 	i->counter = GB(r, 4, 12);
 	i->random = initial_random_bits;
 	i->was_cargo_delivered = false;
@@ -1832,7 +1832,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		uint16_t res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) {
 			if (GB(res, 4, 11) != 0) ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_DECIDE_COLOUR, res);
-			i->random_colour = GB(res, 0, 4);
+			i->random_colour = static_cast<Colours>(GB(res, 0, 4));
 		}
 	}
 

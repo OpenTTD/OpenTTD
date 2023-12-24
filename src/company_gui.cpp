@@ -582,7 +582,7 @@ static const LiveryClass _livery_class[LS_END] = {
 template <SpriteID TSprite = SPR_SQUARE>
 class DropDownListColourItem : public DropDownIcon<DropDownString<DropDownListItem>> {
 public:
-	DropDownListColourItem(int colour, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, PALETTE_RECOLOUR_START + (colour % COLOUR_END), colour < COLOUR_END ? _colour_dropdown[colour] : STR_COLOUR_DEFAULT, colour, masked)
+	DropDownListColourItem(int colour, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GENERAL_SPRITE_COLOUR(colour % COLOUR_END), colour < COLOUR_END ? _colour_dropdown[colour] : STR_COLOUR_DEFAULT, colour, masked)
 	{
 	}
 };
@@ -647,7 +647,12 @@ private:
 			list.push_back(std::make_unique<DropDownListColourItem<>>(i, HasBit(used_colours, i)));
 		}
 
-		byte sel = (default_livery == nullptr || HasBit(livery->in_use, primary ? 0 : 1)) ? (primary ? livery->colour1 : livery->colour2) : default_col;
+		byte sel;
+		if (default_livery == nullptr || HasBit(livery->in_use, primary ? 0 : 1)) {
+			sel = primary ? livery->colour1 : livery->colour2;
+		} else {
+			sel = default_col;
+		}
 		ShowDropDownList(this, std::move(list), sel, widget);
 	}
 
@@ -1034,19 +1039,20 @@ public:
 		bool local = (CompanyID)this->window_number == _local_company;
 		if (!local) return;
 
-		if (index >= COLOUR_END) index = INVALID_COLOUR;
+		Colours colour = static_cast<Colours>(index);
+		if (colour >= COLOUR_END) colour = INVALID_COLOUR;
 
 		if (this->livery_class < LC_GROUP_RAIL) {
 			/* Set company colour livery */
 			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
 				if (HasBit(this->sel, scheme) || (_ctrl_pressed && _livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme))) {
-					Command<CMD_SET_COMPANY_COLOUR>::Post(scheme, widget == WID_SCL_PRI_COL_DROPDOWN, (Colours)index);
+					Command<CMD_SET_COMPANY_COLOUR>::Post(scheme, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
 				}
 			}
 		} else {
 			/* Setting group livery */
-			Command<CMD_SET_GROUP_LIVERY>::Post(this->sel, widget == WID_SCL_PRI_COL_DROPDOWN, (Colours)index);
+			Command<CMD_SET_GROUP_LIVERY>::Post(this->sel, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
 		}
 	}
 
@@ -1149,7 +1155,7 @@ void ShowCompanyLiveryWindow(CompanyID company, GroupID group)
  * @param colour the (background) colour of the gradient
  * @param r      position to draw the face
  */
-void DrawCompanyManagerFace(CompanyManagerFace cmf, int colour, const Rect &r)
+void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &r)
 {
 	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
 

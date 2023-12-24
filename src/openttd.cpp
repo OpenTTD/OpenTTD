@@ -876,11 +876,11 @@ static void MakeNewGameDone()
 	if (_settings_client.gui.starting_colour != COLOUR_END) {
 		c->colour = _settings_client.gui.starting_colour;
 		ResetCompanyLivery(c);
-		_company_colours[c->index] = (Colours)c->colour;
+		_company_colours[c->index] = c->colour;
 	}
 
 	if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
-		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, false, (Colours)_settings_client.gui.starting_colour_secondary);
+		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, false, _settings_client.gui.starting_colour_secondary);
 	}
 
 	OnStartGame(false);

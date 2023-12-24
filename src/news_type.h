@@ -11,6 +11,7 @@
 #define NEWS_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "gfx_type.h"
 #include "timer/timer_game_calendar.h"
 #include "strings_type.h"
 #include "sound_type.h"
@@ -161,7 +162,7 @@ struct CompanyNewsInformation : NewsAllocatedData {
 	std::string other_company_name; ///< The name of the company taking over this one
 
 	uint32_t face; ///< The face of the president
-	byte colour; ///< The colour related to the company
+	Colours colour; ///< The colour related to the company
 
 	CompanyNewsInformation(const struct Company *c, const struct Company *other = nullptr);
 };

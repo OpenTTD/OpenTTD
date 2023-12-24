@@ -143,7 +143,7 @@ void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
 /** Get the button background colour. */
 Colours StoryPageButtonData::GetColour() const
 {
-	Colours colour = (Colours)GB(this->referenced_id, 0, 8);
+	Colours colour = static_cast<Colours>(GB(this->referenced_id, 0, 8));
 	if (!IsValidColours(colour)) return INVALID_COLOUR;
 	return colour;
 }

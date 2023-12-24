@@ -2405,10 +2405,11 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 					housespec->grf_prop.local_id = hid + i;
 					housespec->grf_prop.subst_id = subs_id;
 					housespec->grf_prop.grffile = _cur.grffile;
-					housespec->random_colour[0] = 0x04;  // those 4 random colours are the base colour
-					housespec->random_colour[1] = 0x08;  // for all new houses
-					housespec->random_colour[2] = 0x0C;  // they stand for red, blue, orange and green
-					housespec->random_colour[3] = 0x06;
+					/* Set default colours for randomization, used if not overridden. */
+					housespec->random_colour[0] = COLOUR_RED;
+					housespec->random_colour[1] = COLOUR_BLUE;
+					housespec->random_colour[2] = COLOUR_ORANGE;
+					housespec->random_colour[3] = COLOUR_GREEN;
 
 					/* House flags 40 and 80 are exceptions; these flags are never set automatically. */
 					housespec->building_flags &= ~(BUILDING_IS_CHURCH | BUILDING_IS_STADIUM);
@@ -2502,7 +2503,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				break;
 
 			case 0x17: // Four random colours to use
-				for (uint j = 0; j < 4; j++) housespec->random_colour[j] = buf->ReadByte();
+				for (uint j = 0; j < 4; j++) housespec->random_colour[j] = static_cast<Colours>(GB(buf->ReadByte(), 0, 4));
 				break;
 
 			case 0x18: // Relative probability of appearing
