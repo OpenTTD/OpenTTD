@@ -37,7 +37,7 @@ public:
 
 	virtual void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const
 	{
-		if (this->masked) GfxFillRect(full, _colour_gradient[bg_colour][5], FILLRECT_CHECKER);
+		if (this->masked) GfxFillRect(full, GetColourGradient(bg_colour, 5), FILLRECT_CHECKER);
 	}
 
 	TextColour GetColour(bool sel) const
@@ -63,8 +63,8 @@ public:
 
 	void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const override
 	{
-		uint8_t c1 = _colour_gradient[bg_colour][3];
-		uint8_t c2 = _colour_gradient[bg_colour][7];
+		uint8_t c1 = GetColourGradient(bg_colour, 3);
+		uint8_t c2 = GetColourGradient(bg_colour, 7);
 
 		int mid = CenterBounds(full.top, full.bottom, 0);
 		GfxFillRect(full.left, mid - WidgetDimensions::scaled.bevel.bottom, full.right, mid - 1, c1);

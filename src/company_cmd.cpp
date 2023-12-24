@@ -146,8 +146,8 @@ void SetLocalCompany(CompanyID new_company)
  */
 TextColour GetDrawStringCompanyColour(CompanyID company)
 {
-	if (!Company::IsValidID(company)) return (TextColour)_colour_gradient[COLOUR_WHITE][4] | TC_IS_PALETTE_COLOUR;
-	return (TextColour)_colour_gradient[_company_colours[company]][4] | TC_IS_PALETTE_COLOUR;
+	if (!Company::IsValidID(company)) return (TextColour)GetColourGradient(COLOUR_WHITE, 4) | TC_IS_PALETTE_COLOUR;
+	return (TextColour)GetColourGradient(_company_colours[company], 4) | TC_IS_PALETTE_COLOUR;
 }
 
 /**
@@ -477,7 +477,7 @@ static Colours GenerateCompanyColour()
 	Colours colours[COLOUR_END];
 
 	/* Initialize array */
-	for (uint i = 0; i < COLOUR_END; i++) colours[i] = (Colours)i;
+	for (uint i = 0; i < COLOUR_END; i++) colours[i] = static_cast<Colours>(i);
 
 	/* And randomize it */
 	for (uint i = 0; i < 100; i++) {
