@@ -95,7 +95,7 @@ protected:
 	void RebuildCache();
 
 	static void AddStats(CargoID new_cargo, uint new_cap, uint new_usg, uint new_flow, uint32_t time, bool new_shared, LinkProperties &cargo);
-	static void DrawVertex(int x, int y, int size, int colour, int border_colour);
+	static void DrawVertex(int x, int y, int size, RgbMColour colour, RgbMColour border_colour);
 };
 
 void ShowLinkGraphLegend();

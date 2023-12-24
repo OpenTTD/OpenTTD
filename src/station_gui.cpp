@@ -182,7 +182,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 
 	int padding = ScaleGUITrad(1);
 	int width = right - left;
-	int colour = cs->rating_colour;
+	const RgbMColour colour = cs->rating_colour;
 	TextColour tc = GetContrastColour(colour);
 	uint w = std::min(amount + 5, units_full) * width / units_full;
 

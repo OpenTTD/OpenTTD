@@ -297,7 +297,7 @@ void LinkGraphOverlay::DrawLinks(const DrawPixelInfo *dpi) const
 void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &cargo) const
 {
 	uint usage_or_plan = std::min(cargo.capacity * 2 + 1, cargo.Usage());
-	int colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][usage_or_plan * lengthof(LinkGraphOverlay::LINK_COLOURS[0]) / (cargo.capacity * 2 + 2)];
+	const RgbMColour colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][usage_or_plan * lengthof(LinkGraphOverlay::LINK_COLOURS[0]) / (cargo.capacity * 2 + 2)];
 	int width = ScaleGUITrad(this->scale);
 	int dash = cargo.shared ? width * 4 : 0;
 
@@ -345,7 +345,7 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
  * @param colour Colour with which the vertex will be filled.
  * @param border_colour Colour for the border of the vertex.
  */
-/* static */ void LinkGraphOverlay::DrawVertex(int x, int y, int size, int colour, int border_colour)
+/* static */ void LinkGraphOverlay::DrawVertex(int x, int y, int size, RgbMColour colour, RgbMColour border_colour)
 {
 	size--;
 	int w1 = size / 2;
@@ -621,7 +621,7 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, WidgetID widget) const
 		DrawCompanyIcon(cid, CenterBounds(br.left, br.right, sprite_size.width), CenterBounds(br.top, br.bottom, sprite_size.height));
 	}
 	if (IsInsideMM(widget, WID_LGL_SATURATION_FIRST, WID_LGL_SATURATION_LAST + 1)) {
-		uint8_t colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][widget - WID_LGL_SATURATION_FIRST];
+		RgbMColour colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][widget - WID_LGL_SATURATION_FIRST];
 		GfxFillRect(br, colour);
 		StringID str = STR_NULL;
 		if (widget == WID_LGL_SATURATION_FIRST) {

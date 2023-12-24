@@ -326,19 +326,19 @@ void Blitter_32bppAnim::DrawColourMappingRect(void *dst, int width, int height, 
 	Debug(misc, 0, "32bpp blitter doesn't know how to draw this colour table ('{}')", pal);
 }
 
-void Blitter_32bppAnim::SetPixel(void *video, int x, int y, uint8_t colour)
+void Blitter_32bppAnim::SetPixel(void *video, int x, int y, RgbMColour colour)
 {
-	*((RgbaColour *)video + x + y * _screen.pitch) = LookupColourInPalette(colour);
+	*((RgbaColour *)video + x + y * _screen.pitch) = this->UnpackColour(colour);
 
 	/* Set the colour in the anim-buffer too, if we are rendering to the screen */
 	if (_screen_disable_anim) return;
 
-	this->anim_buf[this->ScreenToAnimOffset((uint32_t *)video) + x + y * this->anim_buf_pitch] = colour | (DEFAULT_BRIGHTNESS << 8);
+	this->anim_buf[this->ScreenToAnimOffset((uint32_t *)video) + x + y * this->anim_buf_pitch] = colour.m | (DEFAULT_BRIGHTNESS << 8);
 }
 
-void Blitter_32bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash)
+void Blitter_32bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, RgbMColour colour, int width, int dash)
 {
-	const RgbaColour c = LookupColourInPalette(colour);
+	const RgbaColour c = this->UnpackColour(colour);
 
 	if (_screen_disable_anim)  {
 		this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [&](int x, int y) {
@@ -346,7 +346,7 @@ void Blitter_32bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int 
 		});
 	} else {
 		uint16_t * const offset_anim_buf = this->anim_buf + this->ScreenToAnimOffset((uint32_t *)video);
-		const uint16_t anim_colour = colour | (DEFAULT_BRIGHTNESS << 8);
+		const uint16_t anim_colour = colour.m | (DEFAULT_BRIGHTNESS << 8);
 		this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [&](int x, int y) {
 			*((RgbaColour *)video + x + y * _screen.pitch) = c;
 			offset_anim_buf[x + y * this->anim_buf_pitch] = anim_colour;
@@ -354,7 +354,7 @@ void Blitter_32bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int 
 	}
 }
 
-void Blitter_32bppAnim::DrawRect(void *video, int width, int height, uint8_t colour)
+void Blitter_32bppAnim::DrawRect(void *video, int width, int height, RgbMColour colour)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawRect() */
@@ -362,7 +362,8 @@ void Blitter_32bppAnim::DrawRect(void *video, int width, int height, uint8_t col
 		return;
 	}
 
-	RgbaColour colour32 = LookupColourInPalette(colour);
+	RgbaColour rgb_colour = this->UnpackColour(colour);
+	uint16_t anim_colour = colour.HasRgb() ? 0 : (colour.m | (DEFAULT_BRIGHTNESS << 8));
 	uint16_t *anim_line = this->ScreenToAnimOffset((uint32_t *)video) + this->anim_buf;
 
 	do {
@@ -370,9 +371,9 @@ void Blitter_32bppAnim::DrawRect(void *video, int width, int height, uint8_t col
 		uint16_t *anim = anim_line;
 
 		for (int i = width; i > 0; i--) {
-			*dst = colour32;
+			*dst = rgb_colour;
 			/* Set the colour in the anim-buffer too */
-			*anim = colour | (DEFAULT_BRIGHTNESS << 8);
+			*anim = anim_colour;
 			dst++;
 			anim++;
 		}

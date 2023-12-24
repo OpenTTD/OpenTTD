@@ -545,7 +545,7 @@ void SetupColoursAndInitialWindow()
 		const byte *b = GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour);
 		assert(b != nullptr);
 		for (uint j = 0; j < 8; j++) {
-			SetColourGradient(Colours(i), j, b[0xC6 + j]);
+			SetColourGradient(Colours(i), j, RgbMColour(b[0xC6 + j]));
 		}
 	}
 

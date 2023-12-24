@@ -175,7 +175,7 @@ union RgbaColour {
 	 * @param b The channel for the blue colour.
 	 * @param a The channel for the alpha/transparency.
 	 */
-	RgbaColour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) :
+	constexpr RgbaColour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) :
 #if defined(__EMSCRIPTEN__)
 		r(r), g(g), b(b), a(a)
 #elif TTD_ENDIAN == TTD_BIG_ENDIAN
@@ -190,13 +190,66 @@ union RgbaColour {
 	 * Create a new colour.
 	 * @param data The colour in the correct packed format.
 	 */
-	RgbaColour(uint data = 0) : data(data)
+	constexpr RgbaColour(uint data = 0) : data(data)
 	{
 	}
 };
 
 static_assert(sizeof(RgbaColour) == sizeof(uint32_t));
 
+/** Structure to access the palette index, red, green, and blue channels from a 32 bit number. */
+union RgbMColour {
+	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
+	struct {
+#if defined(__EMSCRIPTEN__)
+		uint8_t r, g, b, m;  ///< colour channels as used in browsers
+#elif TTD_ENDIAN == TTD_BIG_ENDIAN
+		uint8_t m, r, g, b; ///< colour channels in BE order
+#else
+		uint8_t b, g, r, m; ///< colour channels in LE order
+#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+	};
+
+	/**
+	 * Create a new colour.
+	 * @param r The channel for the red colour.
+	 * @param g The channel for the green colour.
+	 * @param b The channel for the blue colour.
+	 * @param m The channel for the plaette index.
+	 */
+	constexpr RgbMColour(uint8_t r, uint8_t g, uint8_t b, uint8_t m) :
+#if defined(__EMSCRIPTEN__)
+		r(r), g(g), b(b), m(m)
+#elif TTD_ENDIAN == TTD_BIG_ENDIAN
+		m(m), r(r), g(g), b(b)
+#else
+		b(b), g(g), r(r), m(m)
+#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+	{
+	}
+
+	/**
+	 * Create a new colour.
+	 * @param data The colour in the correct packed format.
+	 */
+	constexpr RgbMColour(uint8_t m = 0) : RgbMColour(0, 0, 0, m)
+	{
+	}
+
+	inline constexpr bool HasRgb() const
+	{
+		return (this->r | this->g | this->b) != 0;
+	}
+
+	inline constexpr RgbaColour Rgb() const
+	{
+		RgbaColour colour = RgbaColour(this->data);
+		colour.a = UINT8_MAX;
+		return colour;
+	}
+};
+
+static_assert(sizeof(RgbMColour) == sizeof(uint32_t));
 
 /** Available font sizes */
 enum FontSize {

@@ -27,19 +27,19 @@ static FBlitter_40bppAnim iFBlitter_40bppAnim;
 static const RgbaColour _black_colour(0, 0, 0);
 
 
-void Blitter_40bppAnim::SetPixel(void *video, int x, int y, uint8_t colour)
+void Blitter_40bppAnim::SetPixel(void *video, int x, int y, RgbMColour colour)
 {
 	if (_screen_disable_anim) {
 		Blitter_32bppOptimized::SetPixel(video, x, y, colour);
 	} else {
 		size_t y_offset = static_cast<size_t>(y) * _screen.pitch;
-		*((RgbaColour *)video + x + y_offset) = _black_colour;
+		*((RgbaColour *)video + x + y_offset) = colour.Rgb();
 
-		VideoDriver::GetInstance()->GetAnimBuffer()[((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + x + y_offset] = colour;
+		VideoDriver::GetInstance()->GetAnimBuffer()[((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + x + y_offset] = colour.HasRgb() ? 0 : colour.m;
 	}
 }
 
-void Blitter_40bppAnim::DrawRect(void *video, int width, int height, uint8_t colour)
+void Blitter_40bppAnim::DrawRect(void *video, int width, int height, RgbMColour colour)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawRect() */
@@ -52,11 +52,13 @@ void Blitter_40bppAnim::DrawRect(void *video, int width, int height, uint8_t col
 
 	do {
 		RgbaColour *dst = (RgbaColour *)video;
+		RgbaColour rgb = colour.Rgb();
+		uint8_t m = colour.HasRgb() ? 0 : colour.m;
 		uint8_t *anim = anim_line;
 
 		for (int i = width; i > 0; i--) {
-			*dst = _black_colour;
-			*anim = colour;
+			*dst = rgb;
+			*anim = m;
 			dst++;
 			anim++;
 		}
@@ -65,7 +67,7 @@ void Blitter_40bppAnim::DrawRect(void *video, int width, int height, uint8_t col
 	} while (--height);
 }
 
-void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash)
+void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, RgbMColour colour, int width, int dash)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawRect() */
@@ -75,10 +77,12 @@ void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int 
 
 	assert(VideoDriver::GetInstance()->GetAnimBuffer() != nullptr);
 	uint8_t *anim = ((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + VideoDriver::GetInstance()->GetAnimBuffer();
+	RgbaColour rgb = colour.Rgb();
+	uint8_t m = colour.HasRgb() ? 0 : colour.m;
 
 	this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [=](int x, int y) {
-		*((RgbaColour *)video + x + y * _screen.pitch) = _black_colour;
-		*(anim + x + y * _screen.pitch) = colour;
+		*((RgbaColour *)video + x + y * _screen.pitch) = rgb;
+		*(anim + x + y * _screen.pitch) = m;
 	});
 }
 

@@ -23,7 +23,7 @@
 
 Palette _cur_palette;
 
-byte _colour_gradient[COLOUR_END][8];
+RgbMColour _colour_gradient[COLOUR_END][8];
 
 static std::recursive_mutex _palette_mutex; ///< To coordinate access to _cur_palette.
 
@@ -286,9 +286,9 @@ void DoPaletteAnimations()
  * @param threshold Background colour brightness threshold below which the background is considered dark and TC_WHITE is returned, range: 0 - 255, default 128.
  * @return TC_BLACK or TC_WHITE depending on what gives a better contrast.
  */
-TextColour GetContrastColour(uint8_t background, uint8_t threshold)
+TextColour GetContrastColour(RgbMColour background, uint8_t threshold)
 {
-	RgbaColour c = _cur_palette.palette[background];
+	RgbaColour c = background.HasRgb() ? background.Rgb() : _cur_palette.palette[background.m];
 	/* Compute brightness according to http://www.w3.org/TR/AERT#color-contrast.
 	 * The following formula computes 1000 * brightness^2, with brightness being in range 0 to 255. */
 	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;
@@ -308,7 +308,7 @@ static_assert(lengthof(_colour_gradient[0]) == BRIGHTNESS_MASK + 1);
  * @param brightness Brightness level from 1 to 7.
  * @returns palette index of colour.
  */
-byte GetColourGradient(Colours colour, uint8_t brightness)
+RgbMColour GetColourGradient(Colours colour, uint8_t brightness)
 {
 	return _colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK];
 }
@@ -317,9 +317,9 @@ byte GetColourGradient(Colours colour, uint8_t brightness)
  * Set colour gradient palette index.
  * @param colour Colour.
  * @param brightness Brightness level from 1 to 7.
- * @param palette_index Palette index to set.
+ * @param palette_colour Palette colour to set.
  */
-void SetColourGradient(Colours colour, uint8_t brightness, uint8_t palette_index)
+void SetColourGradient(Colours colour, uint8_t brightness, RgbMColour palette_colour)
 {
-	_colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK] = palette_index;
+	_colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK] = palette_colour;
 }

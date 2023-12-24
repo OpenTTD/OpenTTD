@@ -167,11 +167,11 @@ struct ValuesInterval {
 struct BaseGraphWindow : Window {
 protected:
 	static const int GRAPH_MAX_DATASETS     =  64;
-	static const int GRAPH_BASE_COLOUR      =  GREY_SCALE(2);
-	static const int GRAPH_GRID_COLOUR      =  GREY_SCALE(3);
-	static const int GRAPH_AXIS_LINE_COLOUR =  GREY_SCALE(1);
-	static const int GRAPH_ZERO_LINE_COLOUR =  GREY_SCALE(8);
-	static const int GRAPH_YEAR_LINE_COLOUR =  GREY_SCALE(5);
+	static inline const uint8_t GRAPH_BASE_COLOUR      =  GREY_SCALE(2);
+	static inline const uint8_t GRAPH_GRID_COLOUR      =  GREY_SCALE(3);
+	static inline const uint8_t GRAPH_AXIS_LINE_COLOUR =  GREY_SCALE(1);
+	static inline const uint8_t GRAPH_ZERO_LINE_COLOUR =  GREY_SCALE(8);
+	static inline const uint8_t GRAPH_YEAR_LINE_COLOUR =  GREY_SCALE(5);
 	static const int GRAPH_NUM_MONTHS       =  24; ///< Number of months displayed in the graph.
 	static const int PAYMENT_GRAPH_X_STEP_DAYS    = 20; ///< X-axis step label for cargo payment rates "Days in transit".
 	static const int PAYMENT_GRAPH_X_STEP_SECONDS = 10; ///< X-axis step label for cargo payment rates "Seconds in transit".
@@ -199,7 +199,7 @@ protected:
 	uint16_t x_values_increment;
 
 	StringID format_str_y_axis;
-	byte colours[GRAPH_MAX_DATASETS];
+	RgbMColour colours[GRAPH_MAX_DATASETS];
 	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][GRAPH_NUM_MONTHS]; ///< Stored costs for the last #GRAPH_NUM_MONTHS months
 
 	/**
@@ -443,7 +443,7 @@ protected:
 				/* Centre the dot between the grid lines. */
 				x = r.left + (x_sep / 2);
 
-				byte colour  = this->colours[i];
+				RgbMColour colour = this->colours[i];
 				uint prev_x = INVALID_DATAPOINT_POS;
 				uint prev_y = INVALID_DATAPOINT_POS;
 
@@ -1294,8 +1294,8 @@ struct PerformanceRatingDetailWindow : Window {
 		ScoreID score_type = (ScoreID)(widget - WID_PRD_SCORE_FIRST);
 
 		/* The colours used to show how the progress is going */
-		int colour_done = GetColourGradient(COLOUR_GREEN, 4);
-		int colour_notdone = GetColourGradient(COLOUR_RED, 4);
+		const RgbMColour colour_done = GetColourGradient(COLOUR_GREEN, 4);
+		const RgbMColour colour_notdone = GetColourGradient(COLOUR_RED, 4);
 
 		/* Draw all the score parts */
 		int64_t val    = _score_part[company][score_type];

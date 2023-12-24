@@ -110,7 +110,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
  *         FILLRECT_CHECKER:  Like FILLRECT_OPAQUE, but only draw every second pixel (used to grey out things)
  *         FILLRECT_RECOLOUR:  Apply a recolour sprite to every pixel in the rectangle currently on screen
  */
-void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectMode mode)
+void GfxFillRect(int left, int top, int right, int bottom, std::variant<RgbMColour, PaletteID> colour, FillRectMode mode)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	const DrawPixelInfo *dpi = _cur_dpi;
@@ -139,17 +139,18 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 
 	switch (mode) {
 		default: // FILLRECT_OPAQUE
-			blitter->DrawRect(dst, right, bottom, (uint8_t)colour);
+			blitter->DrawRect(dst, right, bottom, std::get<RgbMColour>(colour));
 			break;
 
 		case FILLRECT_RECOLOUR:
-			blitter->DrawColourMappingRect(dst, right, bottom, GB(colour, 0, PALETTE_WIDTH));
+			blitter->DrawColourMappingRect(dst, right, bottom, GB(std::get<PaletteID>(colour), 0, PALETTE_WIDTH));
 			break;
 
 		case FILLRECT_CHECKER: {
 			byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
+			RgbMColour rgbm = std::get<RgbMColour>(colour);
 			do {
-				for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8_t)colour);
+				for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, rgbm);
 				dst = blitter->MoveTo(dst, 0, 1);
 			} while (--bottom > 0);
 			break;
@@ -206,7 +207,7 @@ static std::vector<LineSegment> MakePolygonSegments(const std::vector<Point> &sh
  *         FILLRECT_CHECKER:  Fill every other pixel with the specified colour, in a checkerboard pattern.
  *         FILLRECT_RECOLOUR: Apply a recolour sprite to every pixel in the polygon.
  */
-void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mode)
+void GfxFillPolygon(const std::vector<Point> &shape, std::variant<RgbMColour, PaletteID> colour, FillRectMode mode)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	const DrawPixelInfo *dpi = _cur_dpi;
@@ -275,18 +276,20 @@ void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mo
 			void *dst = blitter->MoveTo(dpi->dst_ptr, x1, y);
 			switch (mode) {
 				default: // FILLRECT_OPAQUE
-					blitter->DrawRect(dst, x2 - x1, 1, (uint8_t)colour);
+					blitter->DrawRect(dst, x2 - x1, 1, std::get<RgbMColour>(colour));
 					break;
 				case FILLRECT_RECOLOUR:
-					blitter->DrawColourMappingRect(dst, x2 - x1, 1, GB(colour, 0, PALETTE_WIDTH));
+					blitter->DrawColourMappingRect(dst, x2 - x1, 1, GB(std::get<PaletteID>(colour), 0, PALETTE_WIDTH));
 					break;
-				case FILLRECT_CHECKER:
+				case FILLRECT_CHECKER: {
 					/* Fill every other pixel, offset such that the sum of filled pixels' X and Y coordinates is odd.
 					 * This creates a checkerboard effect. */
+					RgbMColour rgbm = std::get<RgbMColour>(colour);
 					for (int x = (x1 + y) & 1; x < x2 - x1; x += 2) {
-						blitter->SetPixel(dst, x, 0, (uint8_t)colour);
+						blitter->SetPixel(dst, x, 0, rgbm);
 					}
 					break;
+				}
 			}
 		}
 
@@ -309,7 +312,7 @@ void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mo
  * @param width Width of the line.
  * @param dash Length of dashes for dashed lines. 0 means solid line.
  */
-static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash = 0)
+static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, RgbMColour colour, int width, int dash = 0)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
@@ -382,7 +385,7 @@ static inline bool GfxPreprocessLine(DrawPixelInfo *dpi, int &x, int &y, int &x2
 	return true;
 }
 
-void GfxDrawLine(int x, int y, int x2, int y2, int colour, int width, int dash)
+void GfxDrawLine(int x, int y, int x2, int y2, RgbMColour colour, int width, int dash)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	if (GfxPreprocessLine(dpi, x, y, x2, y2, width)) {
@@ -390,7 +393,7 @@ void GfxDrawLine(int x, int y, int x2, int y2, int colour, int width, int dash)
 	}
 }
 
-void GfxDrawLineUnscaled(int x, int y, int x2, int y2, int colour)
+void GfxDrawLineUnscaled(int x, int y, int x2, int y2, RgbMColour colour)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	if (GfxPreprocessLine(dpi, x, y, x2, y2, 1)) {
@@ -431,7 +434,7 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 	 *            ....V.
 	 */
 
-	static const byte colour = PC_WHITE;
+	static const RgbMColour colour = PC_WHITE;
 
 	GfxDrawLineUnscaled(x, y, x + dx1, y + dy1, colour);
 	GfxDrawLineUnscaled(x, y, x + dx2, y + dy2, colour);
@@ -452,7 +455,7 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
  * @param width Width of the outline.
  * @param dash Length of dashes for dashed lines. 0 means solid lines.
  */
-void DrawRectOutline(const Rect &r, int colour, int width, int dash)
+void DrawRectOutline(const Rect &r, RgbMColour colour, int width, int dash)
 {
 	GfxDrawLine(r.left,  r.top,    r.right, r.top,    colour, width, dash);
 	GfxDrawLine(r.left,  r.top,    r.left,  r.bottom, colour, width, dash);
@@ -628,7 +631,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 	}
 
 	if (underline) {
-		GfxFillRect(left, y + h, right, y + h + WidgetDimensions::scaled.bevel.top - 1, _string_colourremap[1]);
+		GfxFillRect(left, y + h, right, y + h + WidgetDimensions::scaled.bevel.top - 1, RgbMColour(_string_colourremap[1]));
 	}
 
 	return (align & SA_HOR_MASK) == SA_RIGHT ? left : right;

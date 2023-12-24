@@ -18,22 +18,22 @@ void *Blitter_32bppBase::MoveTo(void *video, int x, int y)
 	return (uint32_t *)video + x + y * _screen.pitch;
 }
 
-void Blitter_32bppBase::SetPixel(void *video, int x, int y, uint8_t colour)
+void Blitter_32bppBase::SetPixel(void *video, int x, int y, RgbMColour colour)
 {
-	*((RgbaColour *)video + x + y * _screen.pitch) = LookupColourInPalette(colour);
+	*((RgbaColour *)video + x + y * _screen.pitch) = this->UnpackColour(colour);
 }
 
-void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash)
+void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, RgbMColour colour, int width, int dash)
 {
-	const RgbaColour c = LookupColourInPalette(colour);
+	const RgbaColour c = this->UnpackColour(colour);
 	this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [=](int x, int y) {
 		*((RgbaColour *)video + x + y * _screen.pitch) = c;
 	});
 }
 
-void Blitter_32bppBase::DrawRect(void *video, int width, int height, uint8_t colour)
+void Blitter_32bppBase::DrawRect(void *video, int width, int height, RgbMColour colour)
 {
-	RgbaColour colour32 = LookupColourInPalette(colour);
+	RgbaColour colour32 = this->UnpackColour(colour);
 
 	do {
 		RgbaColour *dst = (RgbaColour *)video;

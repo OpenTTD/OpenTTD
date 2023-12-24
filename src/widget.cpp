@@ -282,15 +282,15 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 {
 	assert(colour < COLOUR_END);
 
-	uint dark         = GetColourGradient(colour, 3);
-	uint medium_dark  = GetColourGradient(colour, 5);
-	uint medium_light = GetColourGradient(colour, 6);
-	uint light        = GetColourGradient(colour, 7);
+	const RgbMColour dark         = GetColourGradient(colour, 3);
+	const RgbMColour medium_dark  = GetColourGradient(colour, 5);
+	const RgbMColour medium_light = GetColourGradient(colour, 6);
+	const RgbMColour light        = GetColourGradient(colour, 7);
 
 	if (flags & FR_TRANSPARENT) {
 		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR);
 	} else {
-		uint interior;
+		RgbMColour interior;
 
 		Rect outer = {left, top, right, bottom};                   // Outside rectangle
 		Rect inner = outer.Shrink(WidgetDimensions::scaled.bevel); // Inside rectangle
@@ -423,7 +423,7 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
 		row_height = r.Height() / num_rows;
 	}
 
-	int col = GetColourGradient(colour, 6);
+	RgbMColour col = GetColourGradient(colour, 6);
 
 	int x = r.left;
 	for (int ctr = num_columns; ctr > 1; ctr--) {
@@ -469,8 +469,8 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
 	DrawImageButtons(r.WithHeight(height, false),  NWID_VSCROLLBAR, colour, up_clicked,   SPR_ARROW_UP,   SA_CENTER);
 	DrawImageButtons(r.WithHeight(height, true),   NWID_VSCROLLBAR, colour, down_clicked, SPR_ARROW_DOWN, SA_CENTER);
 
-	int c1 = GetColourGradient(colour, 3);
-	int c2 = GetColourGradient(colour, 7);
+	const RgbMColour c1 = GetColourGradient(colour, 3);
+	const RgbMColour c2 = GetColourGradient(colour, 7);
 
 	/* draw "shaded" background */
 	GfxFillRect(r.left, r.top + height, r.right, r.bottom - height, c2);
@@ -508,8 +508,8 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 	DrawImageButtons(r.WithWidth(width, false), NWID_HSCROLLBAR, colour, left_clicked,  SPR_ARROW_LEFT,  SA_CENTER);
 	DrawImageButtons(r.WithWidth(width, true),  NWID_HSCROLLBAR, colour, right_clicked, SPR_ARROW_RIGHT, SA_CENTER);
 
-	int c1 = GetColourGradient(colour, 3);
-	int c2 = GetColourGradient(colour, 7);
+	const RgbMColour c1 = GetColourGradient(colour, 3);
+	const RgbMColour c2 = GetColourGradient(colour, 7);
 
 	/* draw "shaded" background */
 	GfxFillRect(r.left + width, r.top, r.right - width, r.bottom, c2);
@@ -547,8 +547,8 @@ static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colo
 
 	if (str != STR_NULL) x2 = DrawString(r.left + WidgetDimensions::scaled.frametext.left, r.right - WidgetDimensions::scaled.frametext.right, r.top, str, text_colour, align, false, fs);
 
-	int c1 = GetColourGradient(colour, 3);
-	int c2 = GetColourGradient(colour, 7);
+	const RgbMColour c1 = GetColourGradient(colour, 3);
+	const RgbMColour c2 = GetColourGradient(colour, 7);
 
 	/* If the frame has text, adjust the top bar to fit half-way through */
 	Rect inner = r.Shrink(ScaleGUITrad(1));
@@ -745,7 +745,7 @@ void Window::DrawWidgets() const
 			Rect outer = widget->GetCurrentRect();
 			Rect inner = outer.Shrink(WidgetDimensions::scaled.bevel).Expand(1);
 
-			int colour = _string_colourmap[_window_highlight_colour ? widget->GetHighlightColour() : TC_WHITE];
+			RgbMColour colour = _string_colourmap[_window_highlight_colour ? widget->GetHighlightColour() : TC_WHITE];
 
 			GfxFillRect(outer.left,     outer.top,    inner.left,      inner.bottom, colour);
 			GfxFillRect(inner.left + 1, outer.top,    inner.right - 1, inner.top,    colour);
