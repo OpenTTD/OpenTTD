@@ -107,7 +107,7 @@ struct SQObjectPtr;
 		(obj)->_uiRef--; \
 		if((obj)->_uiRef == 0) \
 			(obj)->Release(); \
-		(obj) = NULL;	\
+		(obj) = nullptr;	\
 	} \
 }
 
@@ -417,7 +417,7 @@ public:
 #define ADD_TO_CHAIN(chain,obj) AddToChain(chain,obj)
 #define REMOVE_FROM_CHAIN(chain,obj) {if(!(_uiRef&MARK_FLAG))RemoveFromChain(chain,obj);}
 #define CHAINABLE_OBJ SQCollectable
-#define INIT_CHAIN() {_next=NULL;_prev=NULL;_sharedstate=ss;}
+#define INIT_CHAIN() {_next=nullptr;_prev=nullptr;_sharedstate=ss;}
 #else
 
 #define ADD_TO_CHAIN(chain,obj) ((void)0)
