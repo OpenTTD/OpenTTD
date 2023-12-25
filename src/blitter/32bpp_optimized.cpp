@@ -209,7 +209,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 					if (src_px->a != 0) {
 						src_px += n;
 						do {
-							*dst = this->LookupColourInPalette(bp->remap[GetNearestColourIndex(*dst)]);
+							*dst = this->LookupColourInPalette(remap[GetNearestColourIndex(*dst)]);
 							dst++;
 						} while (--n != 0);
 					} else {
