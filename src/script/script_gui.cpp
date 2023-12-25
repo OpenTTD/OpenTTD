@@ -899,8 +899,19 @@ struct ScriptDebugWindow : public Window {
 		ScriptLogTypes::LogData &log = this->GetLogData();
 		if (log.empty()) return;
 
-		Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
-		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
+		Rect fr = r.Shrink(WidgetDimensions::scaled.framerect);
+
+		/* Setup a clipping rectangle... */
+		DrawPixelInfo tmp_dpi;
+		if (!FillDrawPixelInfo(&tmp_dpi, fr)) return;
+		/* ...but keep coordinates relative to the window. */
+		tmp_dpi.left += fr.left;
+		tmp_dpi.top += fr.top;
+
+		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+
+		fr.left -= this->hscroll->GetPosition();
+
 		for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && (size_t)i < log.size(); i++) {
 			const ScriptLogTypes::LogLine &line = log[i];
 
@@ -916,12 +927,13 @@ struct ScriptDebugWindow : public Window {
 
 			/* Check if the current line should be highlighted */
 			if (i == this->highlight_row) {
-				GfxFillRect(br.left, tr.top, br.right, tr.top + this->resize.step_height - 1, PC_BLACK);
+				fr.bottom = fr.top + this->resize.step_height - 1;
+				GfxFillRect(fr, PC_BLACK);
 				if (colour == TC_BLACK) colour = TC_WHITE; // Make black text readable by inverting it to white.
 			}
 
-			DrawString(-this->hscroll->GetPosition(), tr.right, tr.top, line.text, colour, SA_LEFT | SA_FORCE);
-			tr.top += this->resize.step_height;
+			DrawString(fr, line.text, colour, SA_LEFT | SA_FORCE);
+			fr.top += this->resize.step_height;
 		}
 	}
 
