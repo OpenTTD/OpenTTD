@@ -275,7 +275,7 @@ static bool DrawIMECompositionString()
 static void SetCompositionPos(HWND hwnd)
 {
 	HIMC hIMC = ImmGetContext(hwnd);
-	if (hIMC != NULL) {
+	if (hIMC != nullptr) {
 		COMPOSITIONFORM cf;
 		cf.dwStyle = CFS_POINT;
 
@@ -297,7 +297,7 @@ static void SetCompositionPos(HWND hwnd)
 static void SetCandidatePos(HWND hwnd)
 {
 	HIMC hIMC = ImmGetContext(hwnd);
-	if (hIMC != NULL) {
+	if (hIMC != nullptr) {
 		CANDIDATEFORM cf;
 		cf.dwIndex = 0;
 		cf.dwStyle = CFS_EXCLUDE;
@@ -332,7 +332,7 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
 	HIMC hIMC = ImmGetContext(hwnd);
 
-	if (hIMC != NULL) {
+	if (hIMC != nullptr) {
 		if (lParam & GCS_RESULTSTR) {
 			/* Read result string from the IME. */
 			LONG len = ImmGetCompositionString(hIMC, GCS_RESULTSTR, nullptr, 0); // Length is always in bytes, even in UNICODE build.
@@ -391,7 +391,7 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 static void CancelIMEComposition(HWND hwnd)
 {
 	HIMC hIMC = ImmGetContext(hwnd);
-	if (hIMC != NULL) ImmNotifyIME(hIMC, NI_COMPOSITIONSTR, CPS_CANCEL, 0);
+	if (hIMC != nullptr) ImmNotifyIME(hIMC, NI_COMPOSITIONSTR, CPS_CANCEL, 0);
 	ImmReleaseContext(hwnd, hIMC);
 	/* Clear any marked string from the current edit box. */
 	HandleTextInput(nullptr, true);
@@ -688,7 +688,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			/* Resize the window to match the new DPI setting. */
 			RECT *prcNewWindow = (RECT *)lParam;
 			SetWindowPos(hwnd,
-				NULL,
+				nullptr,
 				prcNewWindow->left,
 				prcNewWindow->top,
 				prcNewWindow->right - prcNewWindow->left,
