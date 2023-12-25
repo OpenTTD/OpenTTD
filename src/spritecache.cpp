@@ -444,6 +444,18 @@ static void *ReadRecolourSprite(SpriteFile &file, uint num)
 		file.ReadBlock(dest->remap_index.data(), std::min(RECOLOUR_SPRITE_SIZE, entries));
 	}
 
+	num -= entries;
+	if (num == entries * 4) {
+		/* RGBA palette data is present. */
+		for (uint j = 0; j < entries; j++) {
+			dest->remap_rgba[j].r = file.ReadByte();
+			dest->remap_rgba[j].g = file.ReadByte();
+			dest->remap_rgba[j].b = file.ReadByte();
+			dest->remap_rgba[j].a = file.ReadByte();
+		}
+		dest->is_rgba = true;
+	}
+
 	return dest;
 }
 

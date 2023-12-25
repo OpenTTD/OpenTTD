@@ -24,6 +24,8 @@ struct Sprite {
 
 struct RecolourSprite {
 	std::array<uint8_t, 256> remap_index{};
+	std::array<RgbaColour, 256> remap_rgba{};
+	bool is_rgba;
 };
 
 enum SpriteCacheCtrlFlags {

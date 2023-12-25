@@ -545,7 +545,7 @@ void SetupColoursAndInitialWindow()
 		const RecolourSprite *s = reinterpret_cast<const RecolourSprite *>(GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour));
 		assert(s != nullptr);
 		for (uint j = 0; j < 8; j++) {
-			SetColourGradient(Colours(i), j, RgbMColour(s->remap_index[0xC5 + j]));
+			SetColourGradient(Colours(i), j, RgbMColour(s->remap_rgba[0xC5 + j].r, s->remap_rgba[0xC5 + j].g, s->remap_rgba[0xC5 + j].b, s->remap_index[0xC5 + j]));
 		}
 	}
 
