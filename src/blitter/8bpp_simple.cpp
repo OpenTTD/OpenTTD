@@ -38,12 +38,12 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 			switch (mode) {
 				case BM_COLOUR_REMAP:
 				case BM_CRASH_REMAP:
-					colour = bp->remap[*src];
+					colour = bp->remap->remap_index[*src];
 					break;
 
 				case BM_TRANSPARENT:
 				case BM_TRANSPARENT_REMAP:
-					if (*src != 0) colour = bp->remap[*dst];
+					if (*src != 0) colour = bp->remap->remap_index[*dst];
 					break;
 
 				case BM_BLACK_REMAP:

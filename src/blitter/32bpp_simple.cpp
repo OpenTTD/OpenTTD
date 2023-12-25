@@ -42,7 +42,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					if (src->m == 0) {
 						if (src->a != 0) *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
 					} else {
-						if (bp->remap[src->m] != 0) *dst = ComposeColourPA(this->AdjustBrightness(this->LookupColourInPalette(bp->remap[src->m]), src->v), src->a, *dst);
+						if (bp->remap->remap_index[src->m] != 0) *dst = ComposeColourPA(this->AdjustBrightness(this->LookupColourInPalette(bp->remap->remap_index[src->m]), src->v), src->a, *dst);
 					}
 					break;
 
@@ -53,7 +53,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 							*dst = ComposeColourRGBA(g, g, g, src->a, *dst);
 						}
 					} else {
-						if (bp->remap[src->m] != 0) *dst = ComposeColourPA(this->AdjustBrightness(this->LookupColourInPalette(bp->remap[src->m]), src->v), src->a, *dst);
+						if (bp->remap->remap_index[src->m] != 0) *dst = ComposeColourPA(this->AdjustBrightness(this->LookupColourInPalette(bp->remap->remap_index[src->m]), src->v), src->a, *dst);
 					}
 					break;
 
@@ -73,7 +73,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 				case BM_TRANSPARENT_REMAP:
 					/* Apply custom transparency remap. */
 					if (src->a != 0) {
-						*dst = this->LookupColourInPalette(bp->remap[GetNearestColourIndex(*dst)]);
+						*dst = this->LookupColourInPalette(bp->remap->remap_index[GetNearestColourIndex(*dst)]);
 					}
 					break;
 

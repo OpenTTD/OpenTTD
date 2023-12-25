@@ -13,6 +13,7 @@
 #include "gfx_func.h"
 #include "error.h"
 #include "error_func.h"
+#include "newgrf.h"
 #include "zoom_func.h"
 #include "settings_type.h"
 #include "blitter/factory.hpp"
@@ -418,23 +419,29 @@ static void *ReadRecolourSprite(SpriteFile &file, uint num)
 	 * number of recolour sprites that are 17 bytes that only exist in DOS
 	 * GRFs which are the same as 257 byte recolour sprites, but with the last
 	 * 240 bytes zeroed.  */
-	static const uint RECOLOUR_SPRITE_SIZE = 257;
-	byte *dest = (byte *)AllocSprite(std::max(RECOLOUR_SPRITE_SIZE, num));
+	static const uint RECOLOUR_SPRITE_SIZE = 256;
+	RecolourSprite *dest = new (AllocSprite(sizeof(RecolourSprite))) RecolourSprite;
+
+	/* The first byte of the recolour sprite specifies the number of entries, with the caveat that because this is a
+	 * byte, 256 is recorded as 0x00. */
+	uint entries = file.ReadByte();
+	if (entries == 0) entries = 256;
+	num--;
+
+	if (entries > num) {
+		Debug(grf, 1, "ReadRecolourSprite: Expected recolour sprite with {} entries but only {} present", entries, num);
+		entries = num;
+	}
 
 	if (file.NeedsPaletteRemap()) {
-		byte *dest_tmp = new byte[std::max(RECOLOUR_SPRITE_SIZE, num)];
+		std::array<uint8_t, RECOLOUR_SPRITE_SIZE> dest_tmp{};
+		file.ReadBlock(dest_tmp.data(), std::min(RECOLOUR_SPRITE_SIZE, entries));
 
-		/* Only a few recolour sprites are less than 257 bytes */
-		if (num < RECOLOUR_SPRITE_SIZE) memset(dest_tmp, 0, RECOLOUR_SPRITE_SIZE);
-		file.ReadBlock(dest_tmp, num);
-
-		/* The data of index 0 is never used; "literal 00" according to the (New)GRF specs. */
-		for (uint i = 1; i < RECOLOUR_SPRITE_SIZE; i++) {
-			dest[i] = _palmap_w2d[dest_tmp[_palmap_d2w[i - 1] + 1]];
+		for (uint i = 0; i < RECOLOUR_SPRITE_SIZE; i++) {
+			dest->remap_index[i] = _palmap_w2d[dest_tmp[_palmap_d2w[i]]];
 		}
-		delete[] dest_tmp;
 	} else {
-		file.ReadBlock(dest, num);
+		file.ReadBlock(dest->remap_index.data(), std::min(RECOLOUR_SPRITE_SIZE, entries));
 	}
 
 	return dest;

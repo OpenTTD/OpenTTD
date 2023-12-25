@@ -214,7 +214,7 @@ inline void Blitter_32bppSSSE3::Draw(const Blitter::BlitterParams *bp, ZoomLevel
 inline void Blitter_32bppSSE4::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 #endif
 {
-	const byte * const remap = bp->remap;
+	const byte * const remap = bp->remap->remap_index.data();
 	RgbaColour *dst_line = (RgbaColour *) bp->dst + bp->top * bp->pitch + bp->left;
 	int effective_width = bp->width;
 

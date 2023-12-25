@@ -118,7 +118,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	uint8_t *anim = VideoDriver::GetInstance()->GetAnimBuffer() + ((uint32_t *)bp->dst - (uint32_t *)_screen.dst_ptr) + bp->top * bp->pitch + bp->left;
 
 	/* store so we don't have to access it via bp everytime (compiler assumes pointer aliasing) */
-	const byte *remap = bp->remap;
+	const byte *remap = bp->remap->remap_index.data();
 
 	for (int y = 0; y < bp->height; y++) {
 		/* next dst line begins here */
@@ -378,11 +378,11 @@ void Blitter_40bppAnim::DrawColourMappingRect(void *dst, int width, int height, 
 			anim = anim - width + _screen.pitch;
 		} while (--height);
 	} else if (pal == PALETTE_NEWSPAPER) {
-		const uint8_t *remap = GetNonSprite(pal, SpriteType::Recolour) + 1;
+		const RecolourSprite *remap = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
 		do {
 			for (int i = 0; i != width; i++) {
 				if (*anim == 0) *udst = MakeGrey(*udst);
-				*anim = remap[*anim];
+				*anim = remap->remap_index[*anim];
 				udst++;
 				anim++;
 			}
@@ -390,10 +390,10 @@ void Blitter_40bppAnim::DrawColourMappingRect(void *dst, int width, int height, 
 			anim = anim - width + _screen.pitch;
 		} while (--height);
 	} else {
-		const uint8_t *remap = GetNonSprite(pal, SpriteType::Recolour) + 1;
+		const RecolourSprite *remap = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
 		do {
 			for (int i = 0; i != width; i++) {
-				*anim = remap[*anim];
+				*anim = remap->remap_index[*anim];
 				anim++;
 			}
 			anim = anim - width + _screen.pitch;

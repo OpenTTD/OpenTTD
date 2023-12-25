@@ -16,10 +16,10 @@
 
 void Blitter_8bppBase::DrawColourMappingRect(void *dst, int width, int height, PaletteID pal)
 {
-	const uint8_t *ctab = GetNonSprite(pal, SpriteType::Recolour) + 1;
+	const RecolourSprite *ctab = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
 
 	do {
-		for (int i = 0; i != width; i++) *((uint8_t *)dst + i) = ctab[((uint8_t *)dst)[i]];
+		for (int i = 0; i != width; i++) *((uint8_t *)dst + i) = ctab->remap_index[((uint8_t *)dst)[i]];
 		dst = (uint8_t *)dst + _screen.pitch;
 	} while (--height);
 }

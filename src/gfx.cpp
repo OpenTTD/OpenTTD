@@ -70,8 +70,8 @@ int _gui_scale_cfg;                         ///< GUI scale in config.
  * @ingroup dirty
  */
 static Rect _invalid_rect;
-static const byte *_colour_remap_ptr;
-static byte _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures that #SpriteType::Font sprites only use colours 0 to 2.
+static const RecolourSprite *_colour_remap_ptr;
+static RecolourSprite _string_colourremap; ///< Recolour sprite for string drawing.
 
 static const uint DIRTY_BLOCK_HEIGHT   = 8;
 static const uint DIRTY_BLOCK_WIDTH    = 64;
@@ -475,11 +475,10 @@ static void SetColourRemap(TextColour colour)
 	 * would be invisible at best, but it actually makes it illegible. */
 	bool no_shade   = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
 	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
-	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR | TC_FORCED);
 
-	_string_colourremap[1] = raw_colour ? (byte)colour : _string_colourmap[colour];
-	_string_colourremap[2] = no_shade ? 0 : 1;
-	_colour_remap_ptr = _string_colourremap;
+	_string_colourremap.remap_index[1] = raw_colour ? (byte)colour : _string_colourmap[(byte)colour];
+	_string_colourremap.remap_index[2] = no_shade ? 0 : 1;
+	_colour_remap_ptr = &_string_colourremap;
 }
 
 /**
@@ -631,7 +630,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 	}
 
 	if (underline) {
-		GfxFillRect(left, y + h, right, y + h + WidgetDimensions::scaled.bevel.top - 1, RgbMColour(_string_colourremap[1]));
+		GfxFillRect(left, y + h, right, y + h + WidgetDimensions::scaled.bevel.top - 1, RgbMColour(_string_colourremap.remap_index[1]));
 	}
 
 	return (align & SA_HOR_MASK) == SA_RIGHT ? left : right;
@@ -980,13 +979,13 @@ void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSpri
 	SpriteID real_sprite = GB(img, 0, SPRITE_WIDTH);
 	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		pal = GB(pal, 0, PALETTE_WIDTH);
-		_colour_remap_ptr = GetNonSprite(pal, SpriteType::Recolour) + 1;
+		_colour_remap_ptr = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
 		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, pal == PALETTE_TO_TRANSPARENT ? BM_TRANSPARENT : BM_TRANSPARENT_REMAP, sub, real_sprite);
 	} else if (pal != PAL_NONE) {
 		if (HasBit(pal, PALETTE_TEXT_RECOLOUR)) {
 			SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
 		} else {
-			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour) + 1;
+			_colour_remap_ptr = reinterpret_cast<const RecolourSprite *>(GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour));
 		}
 		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal), sub, real_sprite);
 	} else {
@@ -1008,13 +1007,13 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub,
 	SpriteID real_sprite = GB(img, 0, SPRITE_WIDTH);
 	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		pal = GB(pal, 0, PALETTE_WIDTH);
-		_colour_remap_ptr = GetNonSprite(pal, SpriteType::Recolour) + 1;
+		_colour_remap_ptr = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
 		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, pal == PALETTE_TO_TRANSPARENT ? BM_TRANSPARENT : BM_TRANSPARENT_REMAP, sub, real_sprite, zoom);
 	} else if (pal != PAL_NONE) {
 		if (HasBit(pal, PALETTE_TEXT_RECOLOUR)) {
 			SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
 		} else {
-			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour) + 1;
+			_colour_remap_ptr = reinterpret_cast<const RecolourSprite *>(GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour));
 		}
 		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, GetBlitterMode(pal), sub, real_sprite, zoom);
 	} else {

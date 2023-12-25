@@ -33,7 +33,7 @@ template <BlitterMode mode, Blitter_32bppSSE2::ReadMode read_mode, Blitter_32bpp
 GNU_TARGET("sse4.1")
 inline void Blitter_32bppSSE4_Anim::Draw(const BlitterParams *bp, ZoomLevel zoom)
 {
-	const byte * const remap = bp->remap;
+	const byte * const remap = bp->remap->remap_index.data();
 	RgbaColour *dst_line = (RgbaColour *) bp->dst + bp->top * bp->pitch + bp->left;
 	uint16_t *anim_line = this->anim_buf + this->ScreenToAnimOffset((uint32_t *)bp->dst) + bp->top * this->anim_buf_pitch + bp->left;
 	int effective_width = bp->width;

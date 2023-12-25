@@ -22,6 +22,10 @@ struct Sprite {
 	byte data[];   ///< Sprite data.
 };
 
+struct RecolourSprite {
+	std::array<uint8_t, 256> remap_index{};
+};
+
 enum SpriteCacheCtrlFlags {
 	SCCF_ALLOW_ZOOM_MIN_1X_PAL    = 0, ///< Allow use of sprite min zoom setting at 1x in palette mode.
 	SCCF_ALLOW_ZOOM_MIN_1X_32BPP  = 1, ///< Allow use of sprite min zoom setting at 1x in 32bpp mode.

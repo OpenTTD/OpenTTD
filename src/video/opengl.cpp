@@ -1308,7 +1308,8 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, OpenGLSprite::pal_pbo);
 			_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 
-			_glBufferSubData(GL_PIXEL_UNPACK_BUFFER, 0, 256, GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour) + 1);
+			const RecolourSprite *remap = reinterpret_cast<const RecolourSprite *>(GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour));
+			_glBufferSubData(GL_PIXEL_UNPACK_BUFFER, 0, 256, remap->remap_index.data());
 			_glTexSubImage1D(GL_TEXTURE_1D, 0, 0, 256, GL_RED, GL_UNSIGNED_BYTE, nullptr);
 
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
