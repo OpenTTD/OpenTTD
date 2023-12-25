@@ -322,7 +322,7 @@ bmcr_alpha_blend_single:
 				/* Apply custom transparency remap. */
 				for (uint x = (uint) bp->width; x > 0; x--) {
 					if (src->a != 0) {
-						*dst = this->LookupColourInPalette(bp->remap[GetNearestColourIndex(*dst)]);
+						*dst = this->LookupColourInPalette(remap[GetNearestColourIndex(*dst)]);
 						*anim = 0;
 					}
 					src_mv++;

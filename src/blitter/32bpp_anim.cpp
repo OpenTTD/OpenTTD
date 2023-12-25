@@ -218,7 +218,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					if (src_px->a != 0) {
 						src_px += n;
 						do {
-							*dst = this->LookupColourInPalette(bp->remap[GetNearestColourIndex(*dst)]);
+							*dst = this->LookupColourInPalette(remap[GetNearestColourIndex(*dst)]);
 							*anim = 0;
 							anim++;
 							dst++;
