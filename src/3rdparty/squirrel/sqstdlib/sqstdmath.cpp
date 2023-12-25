@@ -84,7 +84,7 @@ static SQRegFunction mathlib_funcs[] = {
 	_DECL_FUNC(exp,2,".n"),
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 	_DECL_FUNC(srand,2,".n"),
-	_DECL_FUNC(rand,1,NULL),
+	_DECL_FUNC(rand,1,nullptr),
 #endif /* EXPORT_DEFAULT_SQUIRREL_FUNCTIONS */
 	_DECL_FUNC(fabs,2,".n"),
 	_DECL_FUNC(abs,2,".n"),

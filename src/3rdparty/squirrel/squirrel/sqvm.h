@@ -194,7 +194,7 @@ inline SQObjectPtr &stack_get(HSQUIRRELVM v,SQInteger idx){return ((idx>=0)?(v->
 #ifndef NO_GARBAGE_COLLECTOR
 #define _opt_ss(_vm_) (_vm_)->_sharedstate
 #else
-#define _opt_ss(_vm_) NULL
+#define _opt_ss(_vm_) nullptr
 #endif
 
 #define PUSH_CALLINFO(v,nci){ \
@@ -218,6 +218,6 @@ inline SQObjectPtr &stack_get(HSQUIRRELVM v,SQInteger idx){return ((idx>=0)?(v->
 	if(v->_callsstacksize)	\
 		v->ci = &v->_callsstack[v->_callsstacksize-1] ; \
 	else	\
-		v->ci = NULL; \
+		v->ci = nullptr; \
 }
 #endif //_SQVM_H_
