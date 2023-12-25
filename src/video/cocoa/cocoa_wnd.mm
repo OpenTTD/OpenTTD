@@ -929,16 +929,16 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	NSString *s = [ aString isKindOfClass:[ NSAttributedString class ] ] ? [ aString string ] : (NSString *)aString;
 
-	const char *insert_point = NULL;
-	const char *replace_range = NULL;
+	const char *insert_point = nullptr;
+	const char *replace_range = nullptr;
 	if (replacementRange.location != NSNotFound) {
 		/* Calculate the part to be replaced. */
 		insert_point = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedTextbuf()->GetText(), replacementRange.location);
 		replace_range = Utf8AdvanceByUtf16Units(insert_point, replacementRange.length);
 	}
 
-	HandleTextInput(NULL, true);
-	HandleTextInput([ s UTF8String ], false, NULL, insert_point, replace_range);
+	HandleTextInput(nullptr, true);
+	HandleTextInput([ s UTF8String ], false, nullptr, insert_point, replace_range);
 }
 
 /** Insert the given text at the caret. */
@@ -955,9 +955,9 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	NSString *s = [ aString isKindOfClass:[ NSAttributedString class ] ] ? [ aString string ] : (NSString *)aString;
 
 	const char *utf8 = [ s UTF8String ];
-	if (utf8 != NULL) {
-		const char *insert_point = NULL;
-		const char *replace_range = NULL;
+	if (utf8 != nullptr) {
+		const char *insert_point = nullptr;
+		const char *replace_range = nullptr;
 		if (replacementRange.location != NSNotFound) {
 			/* Calculate the part to be replaced. */
 			NSRange marked = [ self markedRange ];

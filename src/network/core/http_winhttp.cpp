@@ -67,7 +67,7 @@ static std::string GetLastErrorAsString()
 	DWORD error_code = GetLastError();
 
 	if (FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_FROM_HMODULE | FORMAT_MESSAGE_IGNORE_INSERTS, GetModuleHandleA("winhttp.dll"), error_code,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, sizeof(buffer), NULL) == 0) {
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, sizeof(buffer), nullptr) == 0) {
 		return fmt::format("unknown error {}", error_code);
 	}
 

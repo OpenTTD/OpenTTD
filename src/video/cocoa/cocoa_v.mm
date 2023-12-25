@@ -664,7 +664,7 @@ void VideoDriver_CocoaQuartz::AllocateBackingStore(bool)
 		kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Host
 	);
 
-	assert(this->cgcontext != NULL);
+	assert(this->cgcontext != nullptr);
 	CGContextSetShouldAntialias(this->cgcontext, FALSE);
 	CGContextSetAllowsAntialiasing(this->cgcontext, FALSE);
 	CGContextSetInterpolationQuality(this->cgcontext, kCGInterpolationNone);
