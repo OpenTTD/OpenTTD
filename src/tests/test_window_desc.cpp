@@ -95,4 +95,5 @@ TEST_CASE_METHOD(WindowDescTestsFixture, "WindowDesc - NWidgetPart validity")
 
 	REQUIRE_NOTHROW(root = MakeWindowNWidgetTree(window_desc->nwid_begin, window_desc->nwid_end, &biggest_index, &shade_select));
 	CHECK((root != nullptr));
+	delete root;
 }
