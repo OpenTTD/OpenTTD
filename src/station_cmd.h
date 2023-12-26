@@ -16,7 +16,7 @@
 enum StationClassID : byte;
 enum RoadStopClassID : byte;
 
-extern Town *AirportGetNearestTown(const struct AirportSpec *as, TileIndex tile, const TileIterator &it, uint &mindist);
+extern Town *AirportGetNearestTown(const struct AirportSpec *as, Direction rotation, TileIndex tile, TileIterator &&it, uint &mindist);
 extern uint8_t GetAirportNoiseLevelForDistance(const struct AirportSpec *as, uint distance);
 
 CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, byte airport_type, byte layout, StationID station_to_join, bool allow_adjacent);
