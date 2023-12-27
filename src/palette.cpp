@@ -296,6 +296,78 @@ TextColour GetContrastColour(RgbMColour background, uint8_t threshold)
 	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TC_WHITE : TC_BLACK;
 }
 
+HsvColour ConvertRgbToHsv(RgbaColour rgb)
+{
+	HsvColour hsv;
+
+	uint8_t rgbmin = std::min({rgb.r, rgb.g, rgb.b});
+	uint8_t rgbmax = std::max({rgb.r, rgb.g, rgb.b});
+
+	hsv.v = rgbmax;
+	if (hsv.v == 0) {
+		hsv.h = 0;
+		hsv.s = 0;
+		return hsv;
+	}
+
+	int d = rgbmax - rgbmin;
+	hsv.s = HsvColour::SAT_MAX * d / rgbmax;
+	if (hsv.s == 0) {
+		hsv.h = 0;
+		return hsv;
+	}
+
+	int hue;
+	if (rgbmax == rgb.r) {
+		hue = HsvColour::HUE_RGN * 0 + HsvColour::HUE_RGN * ((int)rgb.g - (int)rgb.b) / d;
+	} else if (rgbmax == rgb.g) {
+		hue = HsvColour::HUE_RGN * 2 + HsvColour::HUE_RGN * ((int)rgb.b - (int)rgb.r) / d;
+	} else {
+		hue = HsvColour::HUE_RGN * 4 + HsvColour::HUE_RGN * ((int)rgb.r - (int)rgb.g) / d;
+	}
+	if (hue > HsvColour::HUE_MAX) hue -= HsvColour::HUE_MAX;
+	if (hue < 0) hue += HsvColour::HUE_MAX;
+	hsv.h = hue;
+
+	return hsv;
+}
+
+RgbaColour ConvertHsvToRgb(HsvColour hsv)
+{
+	if (hsv.s == 0) return RgbaColour(hsv.v, hsv.v, hsv.v);
+	if (hsv.h >= HsvColour::HUE_MAX) hsv.h = 0;
+
+	int region = hsv.h / HsvColour::HUE_RGN;
+	int remainder = (hsv.h - (region * HsvColour::HUE_RGN)) * 6;
+	int p = (hsv.v * (UINT8_MAX - hsv.s)) / UINT8_MAX;
+	int q = (hsv.v * (UINT8_MAX - ((hsv.s * remainder) / HsvColour::HUE_MAX))) / UINT8_MAX;
+	int t = (hsv.v * (UINT8_MAX - ((hsv.s * (HsvColour::HUE_MAX - remainder)) / HsvColour::HUE_MAX))) / UINT8_MAX;
+
+	switch (region) {
+		case 0: return RgbaColour(hsv.v, t, p);
+		case 1: return RgbaColour(q, hsv.v, p);
+		case 2: return RgbaColour(p, hsv.v, t);
+		case 3: return RgbaColour(p, q, hsv.v);
+		case 4: return RgbaColour(t, p, hsv.v);
+		default: return RgbaColour(hsv.v, p, q);
+	}
+}
+
+/**
+ * Adjust brightness of an HSV colour.
+ * @param hsv colour to adjust.
+ * @param amt amount to adjust brightness.
+ * @returns Adjusted HSV colour.
+ **/
+HsvColour AdjustHsvColourBrightness(HsvColour hsv, int amt)
+{
+	HsvColour r = hsv;
+	int overflow = (hsv.v + amt) - HsvColour::VAL_MAX;
+	r.v = ClampTo<uint8_t>(hsv.v + amt);
+	r.s = ClampTo<uint8_t>(hsv.s - std::max(0, overflow));
+	return r;
+}
+
 static const uint COLOUR_MASK = 0xF;
 static const uint BRIGHTNESS_MASK = 0x7;
 

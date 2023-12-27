@@ -37,6 +37,10 @@ inline bool IsValidColours(Colours colours)
 	return colours < COLOUR_END;
 }
 
+HsvColour ConvertRgbToHsv(RgbaColour rgb);
+RgbaColour ConvertHsvToRgb(HsvColour hsv);
+HsvColour AdjustHsvColourBrightness(HsvColour hsv, int amt);
+
 TextColour GetContrastColour(RgbMColour background, uint8_t threshold = 128);
 
 /**

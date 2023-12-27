@@ -251,6 +251,17 @@ union RgbMColour {
 
 static_assert(sizeof(RgbMColour) == sizeof(uint32_t));
 
+struct HsvColour {
+	static inline const int HUE_MAX = 360 * 128; ///< Maximum value for hue.
+	static inline const int SAT_MAX = 255; ///< Maximum value for saturation.
+	static inline const int VAL_MAX = 255; ///< Maximum value for value.
+	static inline const int HUE_RGN = HUE_MAX / 6;
+
+	uint16_t h; ///< Hue ranging from 0 to HUE_MAX.
+	uint8_t s; ///< Saturation ranging from 0 to SAT_MAX.
+	uint8_t v; ///< Value ranging from 0 to VAL_MAX.
+};
+
 /** Available font sizes */
 enum FontSize {
 	FS_NORMAL, ///< Index of the normal font in the font tables.
@@ -301,6 +312,7 @@ enum Colours : uint32_t {
 	INVALID_COLOUR = UINT32_MAX,
 };
 DECLARE_ENUM_AS_ADDABLE(Colours)
+DECLARE_ENUM_AS_BIT_SET(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
 enum TextColour {
