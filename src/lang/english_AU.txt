@@ -4467,9 +4467,9 @@ STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How to c
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is not equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :is less than
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is less or equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is less than or equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :is more than
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is more or equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is more than or equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is true
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is false
 

@@ -1491,7 +1491,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terreintype: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Alleen TerraGenesis) Heuvelachtigheid van het landschap
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Kies de hoogte van heuvels en bergen in het landschap
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedichtheid: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Stelt in hoeveel industrieën worden gegenereerd en welk niveau tijdens het spel moet worden gehandhaafd
@@ -1500,18 +1500,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximumafstand 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderijen worden alleen gebouwd nabij de kaartgrens, dat is aan de kust van eilandkaarten
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Stelt in op welke hoogte de sneeuw begint in subarctisch landschap. Sneeuw heeft ook invloed op het ontstaan van industrieën en op de vereisten voor stadsgroei. Kan alleen worden aangepast in de scenariobewerker of wordt berekend met behulp van 'sneeuwoppervlak'
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kies op welke hoogte de sneeuw begint in subarctisch landschap. Sneeuw heeft ook invloed op het ontstaan van industrieën en op de vereisten voor stadsgroei. Kan alleen worden aangepast in de scenariobewerker of wordt berekend met behulp van 'sneeuwoppervlak'
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Sneeuwoppervlak: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Bepaalt de hoeveelheid sneeuw in het subarctische landschap. Sneeuw is ook van invloed op de industrieën en de groei van steden. Wordt alleen gebruikt tijdens het maken van de kaart. Land net boven zeeniveau krijgt nooit sneeuw
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kies de hoeveelheid sneeuw in het subarctische landschap. Sneeuw is ook van invloed op de industrieën en de groei van steden. Wordt alleen gebruikt tijdens het maken van de kaart. Land op zeeniveau of aan de kust krijgt nooit sneeuw.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Woestijnoppervlak: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Bepaalt de hoeveelheid woestijn in het tropische landschap. Woestijn is ook van invloed op industrieën. Wordt alleen gebruikt tijdens het maken van de kaart
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kies de hoeveelheid woestijn in het tropische landschap. Woestijn is ook van invloed op het ontstaan van industrieën en de vereisten voor stadsgroei. Wordt alleen gebruikt tijdens het maken van de kaart
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Alleen TerraGenesis) Selecteer de frequentie van heuvels: gladde landschappen hebben minder, meer wijdverspreide heuvels. Ruwe landschappen hebben veel heuvels, die repetitief kunnen lijken.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Kies vorm en aantal heuvels. Gladde landschappen hebben minder en bredere heuvels. Ruwe landschappen hebben meer, maar kleinere heuvels.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glad
@@ -1519,7 +1519,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ruig
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erg ruig
 
 STR_CONFIG_SETTING_VARIETY                                      :Variëteit distributie: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Alleen TerraGenesis) Bepaalt of de kaart zowel bergachtige als vlakke gebieden bevat. Aangezien dit de kaart alleen platter maakt, moeten andere instellingen worden ingesteld op bergachtig.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Kies of de kaart zowel bergachtige als vlakke gebieden bevat. Hoe groter de variatie, hoe meer verschillen in hoogte tussen bergachtige en vlakke gebieden.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Hoeveelheid rivieren: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Selecteer hoeveel rivieren er gegenereerd worden
@@ -1539,6 +1539,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Links rijden
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Rechts rijden
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Draaiing van hoogtekaart: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Kies in welke richting de hoogtekaart wordt gedraaid om deze aan te passen aan de spelwereld
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tegen de klok in
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Met de klok mee
@@ -3208,11 +3209,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaartgro
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selecteer het formaat van de kaart in tegels. Het aantal beschikbare tegels zal iets kleiner zijn
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Aantal steden:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Kies de dichtheid van steden of een aangepast getal
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Plaatsnamen:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Stijl voor plaatsnamen kiezen
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Kies de startdatum
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal industrieën:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Kies de dichtheid van industrieën of een aangepast getal
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Hoogste berg:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Kies de hoogste piek die het spel probeert te creëren, gemeten in hoogte boven zeeniveau
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Verhoogt de maximale hoogte van de hoogste berg op de kaart met één
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Verlaagt de maximale hoogte van de hoogste berg op de kaart met één
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Sneeuwoppervlak:
@@ -3225,10 +3230,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Verklein
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Zeeniveau:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Kies het zeeniveau
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivieren:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gladheid:
 STR_MAPGEN_VARIETY                                              :{BLACK}Landschapsvariatie:
 STR_MAPGEN_GENERATE                                             :{WHITE}Maken
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Creëer de wereld en speel OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF-instellingen
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF-instellingen weergeven
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI-instellingen
@@ -3261,6 +3268,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalaans
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kaartranden:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Kies de grenzen van de spelwereld
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Noordwest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Noordoost
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Zuidoost
@@ -3273,7 +3281,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handmati
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotatie van hoogtekaart:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naam van hoogtekaart:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}De naam van het hoogtekaart-bestand
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grootte:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}De grootte van de bron-hoogtekaart. Voor optimaal resultaat kies je de lengten van de zijden gelijk aan de beschikbare kaartmaten in OpenTTD, zoals 256, 512, 1024 enz.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Gewenste hoogte van bergen
@@ -3288,6 +3298,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Vlak lan
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genereer een vlakke kaart
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Willekeurig land
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hoogte van vlak land:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Kies de hoogte van het land boven zee
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Verlaag de hoogte van vlak land met één
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Verhoog de hoogte van vlak land met één
 

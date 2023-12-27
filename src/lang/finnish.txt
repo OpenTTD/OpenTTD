@@ -255,6 +255,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}vrk
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekunti{P "" a}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}räpäys{P "" tä}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Suodatin:
@@ -719,6 +722,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Valitse 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Poista musiikkiraita nykyiseltä soittolistalta napsauttamalla (vain oma{NBSP}1 tai oma{NBSP}2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Huippuyhtiöt
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Kaupantekijä
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Yrittäjä
@@ -1487,7 +1491,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maaston tyyppi: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Vain TerraGenesis) Maaston mäkisyys
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Valitse maiseman mäkien ja vuorten korkeus
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Teollisuuden määrä: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Määritä, kuinka paljon teollisuutta tulisi luoda ja millä tasolla teollisuuden tulisi pysytellä pelin aikana
@@ -1496,18 +1500,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Suurin sallittu
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Öljynjalostamojen ja öljynporauslauttojen suurin etäisyys kartan reunasta. Saarikartoilla tämä takaa sen, että ne ovat lähellä rannikkoa. Yli 256 ruudun kartoilla tämä arvo suhteutetaan kartan kokoon.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumirajan korkeus: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määritä, millä korkeudella lumiraja on pohjoisessa maastotyypissä. Lumi vaikuttaa teollisuuslaitosten luontiin sekä kuntien kasvuedellytyksiin. Voidaan muuttaa vain Skenaariomuokkaimessa, muuten lasketaan ”lumen peiton” perusteella
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Säätää lumirajan korkeutta pohjoisessa maastossa. Lumi vaikuttaa myös teollisuuslaitosten luontiin ja kuntien kasvuedellytyksiin. Voidaan muuttaa vain skenaariomuokkaimessa, lasketaan muutoin ”lumen peiton” perusteella
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Lumen peitto: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Säätele lumen määrän suuruusluokkaa pohjoisessa maastossa. Lumi vaikuttaa myös teollisuuden luontiin ja kuntien kasvuedellytyksiin. Käytetään vain karttaa luodessa. Juuri merenpinnan yläpuolella oleva maa on aina lumetonta
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Säätää lumen määrän suuruusluokkaa pohjoisessa maastossa. Lumi vaikuttaa myös teollisuuslaitosten luontiin ja kuntien kasvuedellytyksiin. Käytetään vain karttaa luotaessa. Merenpinnan tasolla sijaitsevat ruudut ja rannikkoruudut ovat aina lumettomat.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}{NBSP}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Aavikon peitto: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Säätele aavikon määrän suuruusluokkaa subtrooppisessa maastossa. Aavikko vaikuttaa myös teollisuuden luontiin. Käytetään vain karttaa luodessa
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Säätele aavikon määrän suuruusluokkaa subtrooppisessa maastossa. Aavikko vaikuttaa myös teollisuuslaitosten luontiin ja kuntien kasvuedellytyksiin. Käytetään vain karttaa luotaessa.
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}{NBSP}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maaston epätasaisuus: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Vain TerraGenesis) Määritä mäkien tiheys: Tasaisessa maastossa mäet ovat laajempia ja niitä on vähemmän. Epätasaisessa maastossa on enemmän mäkiä, mikä voi saada maaston näyttämään itseään toistavalta
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Määritä mäkien muoto ja tiheys. Tasaisessa maastossa mäkiä on vähemmän ja ne ovat laajempia, kun taas epätasaisessa maastossa on useampia pienempiä mäkiä.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erittäin tasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Tasainen
@@ -1515,7 +1519,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Epätasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erittäin epätasainen
 
 STR_CONFIG_SETTING_VARIETY                                      :Maaston vaihtelu: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Vain TerraGenesis) Valitse, onko kartalla sekä vuoristoisia että tasaisia alueita. Koska tämä asetus tekee maastosta tasaisempaa, muut asetukset tulisi määrittää vuoristoisiksi
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Valitse, onko kartalla sekä vuoristoisia että tasaisia alueita. Mitä suurempi on vaihtelu, sitä suurempia ovat korkeuserot vuoristoisten ja tasaisten alueiden välillä.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Jokien määrä: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Valitse, kuinka paljon jokia luodaan
@@ -1535,6 +1539,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vasemmanpuoline
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Oikeanpuolinen liikenne
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Korkeuskartan pyöritys:{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Valitse, mihin suuntaan korkeuskartan kuvaa kierretään pelimaailmaan sopiakseen
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastapäivään
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivään
@@ -1655,7 +1660,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Salli kehittyne
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lastausilmaisimet: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Määritä näytetäänkö lastausilmaisimet kulkuneuvojen yläpuolella lastatessa ja purettaessa rahtia
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Aikataulujen aikayksikkö: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Valitse kulkuneuvojen aikatauluissa käytettävä aikayksikkö
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Vuorokaudet
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Sekunnit
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Räpäykset
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Näytä saapuminen ja lähtö aikatauluissa: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Näytä odotetut saapumis- ja lähtemisajat aikatauluissa
@@ -2344,7 +2354,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nimi nä
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Aseta salasana
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Jos peliin ei halua ulkopuolisia, voi sen suojata salasanalla
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Näkyvyys
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Näkyvyys:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Näkyykö palvelimesi muille julkisessa listauksessa
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} asiakas{P "" ta}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Pelaajien enimmäismäärä:
@@ -3199,11 +3209,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartan k
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Valitse kartan koko ruutuina. Saatavilla olevien ruutujen määrä on hieman alhaisempi
 STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kuntien määrä:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Valitse kuntien tiheys tai valinnainen määrä
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Kuntien nimet:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Valitse kuntien nimien tyyli
 STR_MAPGEN_DATE                                                 :{BLACK}Päivämäärä:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Valitse aloituspäivä
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Teollisuuden määrä:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Valitse teollisuuden tiheys tai valinnainen määrä
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Korkein huippu:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Valitse korkein huippu, jonka peli pyrkii luomaan, mitattuna korkeutena merenpinnasta
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Korota kartan korkeimman huipun maksimikorkeutta yhdellä
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Madalla kartan korkeimman huipun maksimikorkeutta yhdellä
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Lumen peitto:
@@ -3216,10 +3230,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Vähenn�
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}{NBSP}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Merenpinta:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Valitse merenpinnan taso
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Joet:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Tasaisuus:
 STR_MAPGEN_VARIETY                                              :{BLACK}Vaihtelu:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generoi
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Luo maailma ja pelaa OpenTTD:tä!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF-asetukset
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Näytä NewGRF-asetukset
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Tekoälyasetukset
@@ -3252,6 +3268,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Katalonialainen
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kartan reunat:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Valitse pelimaailman reunukset
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Luode
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Koillinen
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Kaakko
@@ -3264,7 +3281,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuaali
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Korkeuskartan kierto:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Korkeuskartan nimi:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Korkeuskartan kuvatiedoston nimi
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Koko:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Korkeuskartan lähdekuvan koko. Paras tulos tulee, kun kuvan mitat vastaavat OpenTTD:n karttojen reunamittoja, kuten 256, 512, 1024, jne.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}×{NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Huipun tavoitekorkeus
@@ -3279,6 +3298,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Tasainen
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Luo tasainen maa
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Satunnainen maa
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Tasaisen maan korkeus:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Valitse merenpinnan yläpuolisen maan korkeus
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Siirrä tasaista maata yksi alaspäin
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Siirrä tasaista maata yksi ylöspäin
 
@@ -4572,8 +4592,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kulkuneu
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kulkuneuvo on {STRING} myöhässä
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kulkuneuvo on {STRING} etuajassa
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tämä aikataulu ei ole vielä alkanut
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Tämä aikataulu alkaa {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Tämä aikataulu alkaa {COMMA} sekunnin päästä
 
+STR_TIMETABLE_START                                             :{BLACK}Käynnistä aikataulu
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Valitse tämän aikataulun alkamisajankohta. Ctrl+napsautus jakaa tasaisesti kaikkien tätä käskyä jakavien kulkuneuvojen lähtöajat niiden keskinäisen järjestyksen mukaan, mikäli käsky on kokonaan aikataulutettu
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunteja aikataulun alkamiseen
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuta aikaa, jonka valitun käskyn tulisi kestää. Ctrl+napsautus asettaa keston kaikille käskyille
@@ -4597,6 +4622,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Odotettu
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Aikataulu
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaihda odotetun ja aikataulun välillä
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :T: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :L: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :T: {COLOUR}{COMMA} s
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :L: {COLOUR}{COMMA} s
 
 
 # Date window (for timetable)

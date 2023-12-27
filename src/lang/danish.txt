@@ -256,6 +256,7 @@ STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dag{P "" s}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}sekund{P "" er}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrer udtryk:
@@ -1489,7 +1490,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terræn type: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Kun TerraGenesis) Størrelse af højderygge
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Vælg højden på bakker og bjerge i landskabet
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industri tæthed: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Angiv hvor mange industrier skal genereres og hvilket niveau der bevares i løbet af spillet
@@ -1498,18 +1499,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimal afstan
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Grænse for hvor langt fra kortets kant olieraffinaderier kan blive bygget. På ø-kort sikrer dette at de er nær kysten. På kort større end 256 felter bliver denne værdi automatisk skaleret op.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snelinjehøjden: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Styrer ved hvilken højde sneen starter i det sub-arktiske landskab. Sne påvirker også industri-generering og byers krav for at vokse.Kan kun ændres i Scenarieeditoren, og beregnes ellers via "snedække".
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Vælg, i hvilken højde sneen starter i det subarktiske landskab. Sne påvirker også industriproduktion og byvækstkrav. Kan kun ændres via Scenario Editor eller på anden måde beregnes via "snedækning"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Snedække: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Styrer den omtrentlige mængde sne i det sub-arktiske landskab. Sne påvirker også industri-generering og byernes krav for at vokse. Anvendes kun under landskabsgenerering. Land lige over havniveau er altid snefrit.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Vælg den omtrentlige mængde sne på det subarktiske landskab. Sne påvirker også industriproduktion og byvækstkrav. Bruges kun under kortgenerering. Havniveau og kystfliser har aldrig sne.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Ørkendækning: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Styrer den omtrentlige mængde ørken i det tropiske landskab. Ørken påvirker også industri-generering. Anvendes kun under landskabsgenerering.
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Vælg den omtrentlige mængde ørken i det tropiske landskab. Ørken påvirker også industriproduktion og byvækstkrav. Bruges kun under kortgenerering
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Tærrenets hårdhed (kun TerraGenesis) : {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis kun) Vælg frekvensen af bakkerne: Glatte landskaber har færre, mere udbredt bakker. Ujævne landskaber har mange bakker, der kan se gentaget ud
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Vælg formen og antallet af bakker. Glatte landskaber har færre, bredere bakker, mens barske landskaber har flere mindre bakker.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Meget blødt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Blødt
@@ -1517,7 +1518,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Råt
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Meget råt
 
 STR_CONFIG_SETTING_VARIETY                                      :Forskelligheds fordeling: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis kun) Kontrollere, om kortet indeholder både bjerg- og flade områder. Da dette kun gør kortet fladere bør andre indstillinger sættes til bjergrigt
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Vælg om kortet indeholder både bjerge og flade områder. Jo højere sorten er, jo flere højdeforskelle mellem bjergrige og flade områder.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Floder antal: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Vælg, hvor mange floder at skabe
@@ -1658,6 +1659,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Aktiver brug af
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Benyt laste-indikatorer: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vælg om lastnings-indikatorer vises ved pålæsning og aflæsning af køretøjer
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Tidsenheder for køreplaner: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Vælg de tidsenheder, der skal bruges til køreplaner
 ###length 3
 STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Dage
@@ -3211,7 +3213,9 @@ STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Vælg st
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Vælg startdato
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industrier:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Vælg tætheden af industrier eller et brugerdefineret tal
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Højeste bjergtop:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Vælg den højeste top, som spillet vil forsøge at skabe, målt i højde over havets overflade
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Forøger den maksimale højde på højeste bjergtop på kortet med én
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Sænker den maksimale højde på højeste bjergtop på kortet med én
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Snedække:
@@ -3224,6 +3228,7 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Sænker 
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terræntype:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Havniveau
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Vælg havniveau
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Floder:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Blødhed:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varietet af distributionen:
@@ -3261,6 +3266,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalanske
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kortkanter:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :Vælg ydre grænser for spilverdenen
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordvest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordøst
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sydøst
@@ -3273,7 +3279,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Højdekortets rotation:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Højdekortets navn:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Navnet på højdekort-billedfilen
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Størrelsen på kildehøjdekortbilledet. For de bedste resultater skal hver kant matche en tilgængelig kortkantlængde i OpenTTD, såsom 256, 512, 1024 osv.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Ønsket højeste bjergtop
@@ -3288,6 +3296,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Fladt la
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generer fladt landskab
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tilfældigt land
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Højde af fladt landskab:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Vælg højden af landet over havets overflade
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Sæt højden af fladt landskab en ned
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Sæt højden af fladt landskab en op
 
@@ -4614,6 +4623,7 @@ STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skift me
 STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
 STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
 STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} sek
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} sek
 
 
 # Date window (for timetable)

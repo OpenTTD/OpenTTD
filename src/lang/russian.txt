@@ -1259,8 +1259,8 @@ STR_NUM_VERY_LOW                                                :Очень ма
 STR_NUM_LOW                                                     :Малое
 STR_NUM_NORMAL                                                  :Среднее
 STR_NUM_HIGH                                                    :Большое
-STR_NUM_CUSTOM                                                  :Указанное
-STR_NUM_CUSTOM_NUMBER                                           :Заданный ({NUM})
+STR_NUM_CUSTOM                                                  :Указанное...
+STR_NUM_CUSTOM_NUMBER                                           :Указанное: {NUM}
 
 STR_VARIETY_NONE                                                :Нет
 STR_VARIETY_VERY_LOW                                            :Очень низкое
@@ -1285,8 +1285,8 @@ STR_SEA_LEVEL_MEDIUM                                            :Среднее
 STR_SEA_LEVEL_MEDIUM.p                                          :Средние
 STR_SEA_LEVEL_HIGH                                              :Большое
 STR_SEA_LEVEL_HIGH.p                                            :Высокие
-STR_SEA_LEVEL_CUSTOM                                            :Заданный
-STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Заданный ({NUM}%)
+STR_SEA_LEVEL_CUSTOM                                            :Заданное...
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Заданное: {NUM}%
 
 ###length 4
 STR_RIVERS_NONE                                                 :Нет
@@ -1317,8 +1317,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Равнинн�
 STR_TERRAIN_TYPE_HILLY                                          :Холмистый
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Преимущественно горный
 STR_TERRAIN_TYPE_ALPINIST                                       :Исключительно горный
-STR_TERRAIN_TYPE_CUSTOM                                         :Установить высоту вручную
-STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Установленная высота ({NUM})
+STR_TERRAIN_TYPE_CUSTOM                                         :Указанная высота...
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Указанная высота: {NUM}
 
 ###length 4
 STR_CITY_APPROVAL_LENIENT                                       :снисходительное
@@ -2281,10 +2281,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Нача
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Создать собственный сценарий
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Начать сетевую игру
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Выбрать умеренный климат
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Выбрать субарктический климат
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Выбрать субтропический климат
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбрать игрушечный мир
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Умеренный климат
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Субарктический климат
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Субтропический климат
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Детский мир
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Изменить основные настройки игры
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показать таблицу рекордов
@@ -3404,8 +3404,8 @@ STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Увел
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Уменьшить площадь песчаного покрытия на 10%
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
-STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Количество морей и озёр:
-STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Выберите значение уровня моря
+STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Количество водоёмов:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Выберите количество морей и озёр на карте
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Количество рек:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Грубость ландшафта:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразие ландшафта:
@@ -4799,7 +4799,7 @@ STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Изме
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Сбросить огранич. скорости
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Сбросить ограничение скорости движения для выделенного задания. Ctrl+щелчок - сбросить время для всех заданий.
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Сбросить счетчик опозд.
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Сбросить счётчик опозд.
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить счётчик опоздания, чтобы ТС считалось идущим по графику. Ctrl+щелчок сбросит счётчики у всей группы, так что последнее ТС будет идти по графику, а остальные - раньше графика.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Авторасчёт

@@ -719,6 +719,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click pe
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Apasă pe melodie pentru a o elimina din programul actual (doar Custom1 sau Custom2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Companii de top
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Om de afaceri
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Întreprinzător
@@ -1533,6 +1534,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Pe partea stân
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Pe partea dreaptă
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotaţie hartă înălţimi: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Alegeți modul în care imaginea hărții de înălțime este rotită pentru a se potrivi în lumea jocului
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Spre stânga
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Spre dreapta
@@ -1653,7 +1655,11 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activează folo
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Foloseşte indicatorii de încărcare: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Alege dacă indicatori de încărcare sunt afișați deasupra unor vehicule care sunt în proces de încărcare sau descărcare
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Unități de timp pentru orare: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Selectați unitățile de timp utilizate pentru orarele vehiculelor
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Zile
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Secunde
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afișează plecările și sosirile din orare: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii estimați de plecare și sosire din orar
@@ -3197,11 +3203,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Mărime 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Alege mărimea hărții folosind ca unitate de măsură suprafețele. Numărul de suprafețe disponibile va fi puțin mai mic decât această valoare
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. de oraşe:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Selectați densitatea orașelor sau un număr personalizat
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Numele orașelor:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Alege naţionalitatea numelor oraşelor
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Selectați data de începere
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. de industrii:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Selectați densitatea industriilor sau un număr personalizat
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cel mai înalt vârf:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Alegeți cel mai înalt vârf pe care jocul va încerca să îl creeze, măsurat în altitudine deasupra nivelului mării
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Crește cu o unitate înălțimea maximă a celui mai înalt vârf al hărții
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Redu cu o unitate înălțimea maximă a celui mai înalt vârf al hărții
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Acoperire cu zăpadă:
@@ -3214,10 +3224,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Reduce �
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip teren:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nivelul mării:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Selectați nivelul mării
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Râuri:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Netezime:
 STR_MAPGEN_VARIETY                                              :{BLACK}Distribuţia varietăţii:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generează
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Creează lumea și joacă OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Setări NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Afişează setările NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Configurație AI
@@ -3250,6 +3262,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalană
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Margine:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Alegeți granițele lumii jocului
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Nord-vest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nord-est
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sud-est
@@ -3262,7 +3275,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotaţie hartă înălţimi:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume hartă înălţimi:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}Numele fișierului al hărții de înălțime
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dimensiune:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}Dimensiunea imaginii hărții de înălțime. Pentru cele mai bune rezultate, fiecare margine ar trebui să se potrivească cu o lungime disponibilă a marginii hărții în OpenTTD, cum ar fi 256, 512, 1024 etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Înălțimea maximă dorită
@@ -3277,6 +3292,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Teren pl
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generează un teren plat
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Teren aleator
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Înălţimea terenului plat:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Alegeți înălțimea terenului deasupra nivelului mării
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mută înălţimea terenului plat cu o unitate în jos
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mută înălţimea terenului plat cu o unitate în sus
 
@@ -4570,8 +4586,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Acest ve
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Vehiculul are întârziere de {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Momentan, acest vehicul și-a devansat programul {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Acest orar nu a început încă
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Acest orar va începe la {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Acest orar va începe în {COMMA} secunde
 
+STR_TIMETABLE_START                                             :{BLACK}Începe orarul
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Selectați când începe acest orar. Ctrl+Click distribuie uniform pornirea tuturor vehiculelor care partajează această comandă pe baza ordinii lor relative, dacă comanda este complet programată
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Secunde până la începerea orarului
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifică timpul
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modificați timpul pe care ar trebui să o dureze comanda evidențiată. Ctrl+Click setează ora pentru toate comenzile
@@ -4595,6 +4616,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Estimat
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planificat
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Comută între estimare şi orar
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :S: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :P: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :S: {COLOUR}{COMMA} sec
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :P: {COLOUR}{COMMA} sec
 
 
 # Date window (for timetable)
@@ -4698,8 +4723,11 @@ STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Reveniț
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Încadrează textul
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Încadrează textul ferestrei ca să fie vizibil integral, fără derulare
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Vizualizați "citiți-mă / readme" pentru acest conținut
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Listă modificări
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Vizualizați jurnalul de modificări pentru acest conținut
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenţă
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Vedeți licența pentru acest conținut
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}, fișier readme al {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}, lista de modificări a {STRING}

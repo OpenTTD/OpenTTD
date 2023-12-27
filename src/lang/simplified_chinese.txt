@@ -255,6 +255,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}米
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}米
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP} 日
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP} 秒
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP} 刻
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}关键字词:
@@ -719,6 +722,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}点击�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}点击音乐曲目以从当前播放列表中删除{}(仅限自定义1或自定义2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}顶级公司
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :运输个体户
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :运输代理商
@@ -1072,6 +1076,7 @@ STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基础�
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}选择要使用的基础音乐组
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}有关基础音乐组的附加信息
 
+STR_BASESET_STATUS                                              :{STRING} {RED}（共有{NUM}份缺失或损坏的文件）
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}无法撷取可用的屏幕分辨率清单
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率
@@ -1486,7 +1491,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原始算法
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :新算法
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :地貌类型: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(仅限生成地图时) 多丘陵地形
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :选择生成地图的起伏度
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工业布局: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :设置地图生成过程中，工业数量及一、二级工业比例。
@@ -1498,15 +1503,15 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪线高度：
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :控制在寒带气候中雪线高度。大雪会影响工业和城镇发展需求。只能在场景编辑器中更改或由“积雪覆盖率”计算得到。
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :积雪覆盖率：{STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :控制寒带气候中大致的雪量。雪会影响工业和城镇发展需求。只在地图生成时使用。海平面以上一格的土地永远没有积雪
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :控制寒带气候中大致的雪量。雪会影响工业和城镇发展需求。只在地图生成时使用。海岸线上的土地永远没有积雪
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :沙漠覆盖率：{STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :控制热带气候中大致的沙漠量。沙漠会影响工业生成。只在地图生成时使用
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :控制热带气候中大致的沙漠量。沙漠会影响工业生成和城镇发展需求。只在地图生成时有效
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度 (仅限生成地图时):{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(仅限新算法) 选择在地图上的山丘密度。光滑的地形会包含较少、相互之间较分散的山丘。粗糙的地形的山丘较密集，但可能会使地图显得重复
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :选择在地图上的山丘密度。光滑的地形会包含较少且相互之间较分散的山丘；粗糙的地形的山丘较密集，但可能会使地图显得重复
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
@@ -1514,7 +1519,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :粗糙
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
 
 STR_CONFIG_SETTING_VARIETY                                      :多样的分发: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(仅限新算法) 此设置控制地图是否同时包含多山及平坦的地带。由于此设置只会使地图的一部份変得较平坦，请把其他相关设置（如 "地形特点"）的值设为 "山地"
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :此设置控制地图是否同时包含多山及平坦的地带。由于此设置只会使地图的一部份変得较平坦，请把其他相关设置（如 "地形特点"）的值设为 "山地"
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :河流数量: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :选择生成河流的数量
@@ -1534,6 +1539,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :左侧通行
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :右侧通行
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :高度图旋转：{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :选择高度图旋转的方向以创建地图
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆时针
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :顺时针
@@ -1654,7 +1660,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :允许使用高
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :使用装货进度指示： {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :选择是否在车辆上方显示装卸货物进度
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :时刻表使用的时间单位： {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :选择载具时刻表所使用的时间单位
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :日
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :秒
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :刻
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :在时刻表中显示到达时间和出发时间： {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :在时刻表中显示预期的到达和出发时间
@@ -1956,7 +1967,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :游戏开局时
 
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :每 {STRING} 更新货物分配
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :两次连结图的重新计算间隔。每次重新计算会计算图中一个部分的计划。这意味着填入的值X不意味着整张图会每X秒更新一次，只有其中的一部分会被更新。此设定赋值越小，则更多的CPU时间会被用来重新计算。此设定赋值越大，则在线路改变时货物再分配所需时间会变长。
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :花费 {STRING} 在货物分配的重新计算上
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :在货物分配的重新计算上花费 {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :每一个连结图的重新计算时间。当一次重新计算开始，一个线程会被允许运行这个秒数。此设定赋值越小，则线程无法按时结束的可能性越大，从而导致游戏运行延迟。此设定赋值越大，则在线路改变时货物再分配所需时间会变长。
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :乗客分配方式：{STRING}
@@ -3198,11 +3209,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}地图�
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}选择地图尺寸（单位：格）。可用的数值会略小。
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}城镇数量：
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}选择城镇密度，或者输入一个自定义数字
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}城镇名称：
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}选择城镇名称的命名风格
 STR_MAPGEN_DATE                                                 :{BLACK}日期:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}选择起始日期
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工业数量：
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}选择工业密度，或者输入一个自定义数字
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}最高峰：
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}选择游戏地图中最高峰的海拔，以海平面为原点计。
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}提高最高峰的最大高度一格
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}降低最高峰的最大高度一格
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}积雪覆盖率:
@@ -3215,10 +3230,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}减少 1
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形特点：
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}海洋面积：
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK} 选择覆盖率
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流数量:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑度：
 STR_MAPGEN_VARIETY                                              :{BLACK}多样的分发：
 STR_MAPGEN_GENERATE                                             :{WHITE}生成
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK} 创建世界并开始游玩OpenTTD！
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF设置
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}显示NewGRF设置
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI 设置
@@ -3251,6 +3268,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :加泰罗尼亚
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}地图边缘：
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}选择地图边界的样式
 STR_MAPGEN_NORTHWEST                                            :{BLACK}西北
 STR_MAPGEN_NORTHEAST                                            :{BLACK}东北
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}东南
@@ -3263,7 +3281,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手动
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}高度图旋转：
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度图名称：
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}高度图图像文件的名字
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}地图尺寸：
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}高度图的长宽大小。建议选择长宽符合游戏地图大小的图片作为高度图，如256、512、1024等
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}最高峰目标高度
@@ -3278,6 +3298,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}平坦�
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}生成平坦水面
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}随机地面
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}地面高度：
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}选择地面海拔高度
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}提升地面高度
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}降低地面高度
 
@@ -3303,7 +3324,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}准备�
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 设置
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 详细信息
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}激活 NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}已激活 NewGRF
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}停用 NewGRF
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}选择预设
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}关键字词搜索：
@@ -4571,8 +4592,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}该车�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}该车辆目前晚点 {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}该车辆目前提前 {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此时刻表尚未开始
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}本时刻表将在 {STRING} 开始
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}本时刻表将会在 {COMMA} 秒内开始
 
+STR_TIMETABLE_START                                             :{BLACK}开始时刻表
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}选择此时刻表开始的时间。如果订单完全按时刻表安排，则按住Ctrl键并单击会根据它们的相对顺序，且均匀分配共享此订单的所有车辆的开始时间。
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :直至时刻表开始的秒数
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变高亮选择的命令执行的时间，按住Ctrl单击可为所有命令设置时间
@@ -4596,6 +4622,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}预期�
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}表定时间
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}切换显示（根据实际情况计算的）预期时间或表定时间
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :抵： {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :发：{COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :抵： {COLOUR}{COMMA} 秒
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :发： {COLOUR}{COMMA} 秒
 
 
 # Date window (for timetable)
