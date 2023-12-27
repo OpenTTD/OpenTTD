@@ -19,6 +19,7 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "company_manager_face.h"
+#include "sprite.h"
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "window_func.h"
@@ -261,7 +262,7 @@ public:
 		switch (widget) {
 			case WID_EM_FACE: {
 				const Company *c = Company::Get(this->face);
-				DrawCompanyManagerFace(c->face, c->colour, r);
+				DrawCompanyManagerFace(c->face, COMPANY_SPRITE_COLOUR(c->index), r);
 				break;
 			}
 

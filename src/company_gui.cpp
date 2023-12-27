@@ -7,6 +7,7 @@
 
 /** @file company_gui.cpp %Company related GUIs. */
 
+#include "palette_func.h"
 #include "stdafx.h"
 #include "currency.h"
 #include "error.h"
@@ -44,6 +45,7 @@
 #include "object_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "blitter/factory.hpp"
 
 #include "widgets/company_widget.h"
 
@@ -579,6 +581,13 @@ static const LiveryClass _livery_class[LS_END] = {
 	LC_ROAD, LC_ROAD,
 };
 
+StringID GetColourString(Colours colour)
+{
+	if (ColoursPacker(colour).IsCustom()) return STR_COLOUR_CUSTOM;
+	if (colour == INVALID_COLOUR) return STR_COLOUR_DEFAULT;
+	return STR_COLOUR_DARK_BLUE + colour;
+}
+
 /**
  * Colour selection list item, with icon and string components.
  * @tparam TSprite Recolourable sprite to draw as icon.
@@ -586,12 +595,378 @@ static const LiveryClass _livery_class[LS_END] = {
 template <SpriteID TSprite = SPR_SQUARE>
 class DropDownListColourItem : public DropDownIcon<DropDownString<DropDownListItem>> {
 public:
-	DropDownListColourItem(int colour, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GENERAL_SPRITE_COLOUR(colour % COLOUR_END), (Colours)colour < COLOUR_END ? _colour_dropdown[colour] : STR_COLOUR_DEFAULT, colour, masked)
+	DropDownListColourItem(PaletteID pal, StringID str, int value, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, pal, str, value, masked)
 	{
 	}
 };
 
-typedef GUIList<const Group*> GUIGroupList;
+class SelectCustomColourWindow : public Window {
+	/* Preserved values from parent window when this window was opened. */
+	uint32_t sel;
+	LiveryClass lc;
+	bool ctrl_pressed;
+	bool primary;
+	bool group;
+
+	Scrollbar *hue, *sat, *val, *con;
+	Colours current;
+
+	HsvColour current_hsv;
+	uint8_t contrast;
+
+	static inline const int BUTTON_SIZE = 10;
+	static inline const int CON_MAX = UINT8_MAX;
+
+	void SetPresetColours()
+	{
+		for (uint i = 0; i < std::size(_settings_client.gui.preset_colours); ++i) {
+			this->GetWidget<NWidgetCore>(WID_SCC_PRESETS + i)->colour = _settings_client.gui.preset_colours[i];
+		}
+	}
+
+	RgbaColour AdjustBrightness(const RgbaColour &rgb, int level) const
+	{
+		level = level * rgb.a / 4;
+		return {
+			ClampTo<uint8_t>(rgb.r + level),
+			ClampTo<uint8_t>(rgb.g + level),
+			ClampTo<uint8_t>(rgb.b + level)
+		};
+	}
+
+	bool SetScrollbarPositions()
+	{
+		bool changed = false;
+		changed |= this->hue->SetPosition(HsvColour::HUE_MAX - this->current_hsv.h);
+		changed |= this->sat->SetPosition(this->current_hsv.s);
+		changed |= this->val->SetPosition(HsvColour::VAL_MAX - this->current_hsv.v);
+		changed |= this->con->SetPosition(CON_MAX - this->contrast);
+		return changed;
+	}
+
+public:
+	SelectCustomColourWindow(WindowDesc *desc, int window_number, CompanyID company, Colours colour, uint32_t sel, LiveryClass lc, bool ctrl, bool primary, bool group) :
+		Window(desc), sel(sel), lc(lc), ctrl_pressed(ctrl), primary(primary), group(group)
+	{
+		this->InitNested(window_number);
+		this->owner = (Owner)company;
+
+		this->current = colour;
+
+		ColoursPacker colourp(colour);
+		if ((colourp.H() | colourp.S() | colourp.V()) == 0) {
+			RgbaColour rgba = GetCompanyColourRGB(colour);
+			this->current_hsv = ConvertRgbToHsv(rgba);
+			this->contrast = rgba.a;
+		} else {
+			this->current_hsv = colourp.Hsv();
+			this->contrast = colourp.C();
+		}
+
+		this->hue = this->GetScrollbar(WID_SCC_SCROLLBAR_HUE);
+		this->hue->SetCapacity(HsvColour::HUE_MAX / BUTTON_SIZE);
+		this->hue->SetCount(HsvColour::HUE_MAX + HsvColour::HUE_MAX / BUTTON_SIZE);
+		this->sat = this->GetScrollbar(WID_SCC_SCROLLBAR_SAT);
+		this->sat->SetCapacity(HsvColour::SAT_MAX / BUTTON_SIZE);
+		this->sat->SetCount(HsvColour::SAT_MAX + HsvColour::SAT_MAX / BUTTON_SIZE);
+		this->val = this->GetScrollbar(WID_SCC_SCROLLBAR_VAL);
+		this->val->SetCapacity(HsvColour::VAL_MAX / BUTTON_SIZE);
+		this->val->SetCount(HsvColour::VAL_MAX + HsvColour::VAL_MAX / BUTTON_SIZE);
+		this->con = this->GetScrollbar(WID_SCC_SCROLLBAR_CON);
+		this->con->SetCapacity(CON_MAX / BUTTON_SIZE);
+		this->con->SetCount(CON_MAX + CON_MAX / BUTTON_SIZE);
+
+		this->SetScrollbarPositions();
+		this->SetPresetColours();
+	}
+
+	void SetStringParameters(int widget) const override
+	{
+		switch (widget) {
+			case WID_SCC_CAPTION:
+				SetDParam(0, (CompanyID)this->owner);
+				break;
+		}
+	}
+
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		HsvColour hsv = this->current_hsv;
+		switch (widget) {
+			case WID_SCC_HUE: {
+				int range = r.Height() - 1;
+				int mid = CenterBounds(r.left, r.right, 0);
+				hsv.s = HsvColour::SAT_MAX;
+				for (int i = 0; i <= range; i++) {
+					hsv.h = HsvColour::HUE_MAX * i / range;
+					hsv.v = HsvColour::VAL_MAX;
+					GfxFillRect(r.left, r.bottom - i, mid - 1, r.bottom - i, RgbMColour(ConvertHsvToRgb(hsv)), FILLRECT_OPAQUE);
+					hsv.v = HsvColour::VAL_MAX * 3 / 4;
+					GfxFillRect(mid, r.bottom - i, r.right, r.bottom - i, RgbMColour(ConvertHsvToRgb(hsv)), FILLRECT_OPAQUE);
+				}
+				GfxDrawLine(r.left, r.bottom - this->current_hsv.h * range / HsvColour::HUE_MAX, r.right, r.bottom - this->current_hsv.h * range / HsvColour::HUE_MAX, PC_WHITE, 1, 1);
+				break;
+			}
+
+			case WID_SCC_SAT: {
+				int width = r.Width() - 1;
+				int height = r.Height() - 1;
+
+				// DrawPixelInfo tmp_dpi;
+				// if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.Width(), r.Height())) {
+					// Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+
+					// DrawPixelInfo *old_dpi = _cur_dpi;
+					// _cur_dpi = &tmp_dpi;
+
+					for (int x = 0; x <= width; x++) {
+						hsv.s = HsvColour::SAT_MAX * x / width;
+						for (int y = 0; y <= height; y++) {
+							hsv.v = HsvColour::VAL_MAX * y / height;
+							// blitter->SetPixel(_cur_dpi->dst_ptr, x, height - y - 1, RgbMColour(HsvToRgb(hsv)));
+							GfxFillRect(r.left + x, r.bottom - y, r.left + x, r.bottom - y, RgbMColour(ConvertHsvToRgb(hsv)), FILLRECT_OPAQUE);
+						}
+					}
+					// _cur_dpi = old_dpi;
+				// }
+				GfxDrawLine(r.left + this->current_hsv.s * width / HsvColour::SAT_MAX, r.top, r.left + this->current_hsv.s * width / HsvColour::SAT_MAX, r.bottom, PC_WHITE, 1, 1);
+				GfxDrawLine(r.left, r.bottom - this->current_hsv.v * height / HsvColour::VAL_MAX, r.right, r.bottom - this->current_hsv.v * height / HsvColour::VAL_MAX, PC_WHITE, 1, 1);
+				break;
+			}
+
+			case WID_SCC_CON: {
+				int range = r.Height() - 1;
+				int mid = CenterBounds(r.left, r.right, 0);
+				RgbaColour rgb = ConvertHsvToRgb(HsvColour{0, 0, HsvColour::VAL_MAX / 2});
+				for (int i = 0; i <= range; i++) {
+					rgb.a = i * CON_MAX / width;
+					RgbaColour c = AdjustBrightness(rgb, 3);
+					GfxFillRect(r.left, r.bottom - i, mid - 1, r.bottom - i, RgbMColour(c), FILLRECT_OPAQUE);
+
+					c = AdjustBrightness(rgb, -3);
+					GfxFillRect(mid, r.bottom - i, r.right, r.bottom - i, RgbMColour(c), FILLRECT_OPAQUE);
+				}
+				GfxDrawLine(r.left, r.bottom - this->contrast * range / CON_MAX, r.right, r.bottom - this->contrast * range / CON_MAX, PC_WHITE, 1, 1);
+				break;
+			}
+
+			case WID_SCC_OUTPUT: {
+				int range = r.Height();
+				/* Pack and unpack to colours, to produce the result. */
+				Colours colour = this->PackColour();
+				ColoursPacker colourp(colour);
+				HsvColour hsv = colourp.Hsv();
+				uint8_t con = colourp.C();
+				for (int i = 0; i < 8; i++) {
+					RgbaColour c = ConvertHsvToRgb(AdjustHsvColourBrightness(hsv, (i - 3) * con / 4));
+					// RgbaColour c = AdjustBrightness(rgb, i - 4);
+					GfxFillRect(r.left, r.bottom - (i + 1) * range / 8 + 1, r.right, r.bottom - i * range / 8, RgbMColour(c), FILLRECT_OPAQUE);
+				}
+				break;
+			}
+		}
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		bool changed = false;
+
+		if (widget >= WID_SCC_DEFAULT && widget <= WID_SCC_DEFAULT_LAST && !_ctrl_pressed) {
+			/* Select colour from default preset. */
+			this->current = this->GetWidget<NWidgetCore>(widget)->colour;
+
+			RgbaColour rgba = GetCompanyColourRGB(this->current);
+			this->current_hsv = ConvertRgbToHsv(rgba);
+			this->contrast = rgba.a;
+
+			changed = this->SetScrollbarPositions();
+		}
+
+		if (widget >= WID_SCC_PRESETS && widget <= WID_SCC_PRESETS_LAST) {
+			if (_ctrl_pressed) {
+				/* Save colour to preset. */
+				_settings_client.gui.preset_colours[widget - WID_SCC_PRESETS] = this->PackColour();
+				this->SetPresetColours();
+			} else {
+				/* Select colour from preset. */
+				ColoursPacker cp(_settings_client.gui.preset_colours[widget - WID_SCC_PRESETS]);
+				this->current_hsv = cp.Hsv();
+				this->contrast = cp.C();
+
+				changed = this->SetScrollbarPositions();
+			}
+		}
+
+		if (widget == WID_SCC_HUE) {
+			/* Click and drag on hue widget */
+			const NWidgetCore *wi = this->GetWidget<NWidgetCore>(widget);
+			this->current_hsv.h = std::clamp<int>(HsvColour::HUE_MAX - (pt.y - wi->pos_y) * HsvColour::HUE_MAX / (int)wi->current_y, 0, HsvColour::HUE_MAX);
+			this->contrast = CON_MAX - this->con->GetPosition();
+
+			changed = this->SetScrollbarPositions();
+			if (click_count > 0) this->mouse_capture_widget = widget;
+		}
+
+		if (widget == WID_SCC_SAT) {
+			/* Click and drag on saturation/value widget */
+			const NWidgetCore *wi = this->GetWidget<NWidgetCore>(widget);
+			this->current_hsv.s = std::clamp<int>((pt.x - wi->pos_x) * HsvColour::SAT_MAX / (int)wi->current_x, 0, HsvColour::SAT_MAX);
+			this->current_hsv.v = std::clamp<int>(HsvColour::VAL_MAX - (pt.y - wi->pos_y) * HsvColour::VAL_MAX / (int)wi->current_y, 0, HsvColour::VAL_MAX);
+			this->contrast = CON_MAX - this->con->GetPosition();
+
+			changed = this->SetScrollbarPositions();
+			if (click_count > 0) this->mouse_capture_widget = widget;
+		}
+
+		if (widget == WID_SCC_CON) {
+			/* Click and drag on contrast widget */
+			const NWidgetCore *wi = this->GetWidget<NWidgetCore>(widget);
+			this->contrast = std::clamp<int>(CON_MAX - (pt.y - wi->pos_y) * CON_MAX / (int)wi->current_y, 0, CON_MAX);
+
+			changed = this->SetScrollbarPositions();
+			if (click_count > 0) this->mouse_capture_widget = widget;
+		}
+
+		if (!changed) return;
+
+		this->SetDirty();
+		this->SetTimeout();
+	}
+
+	void OnScrollbarChanged(int) override
+	{
+		/* Update colour from new scrollbar positions. */
+		this->current_hsv.h = HsvColour::HUE_MAX - this->hue->GetPosition();
+		this->current_hsv.s = this->sat->GetPosition();
+		this->current_hsv.v = HsvColour::VAL_MAX - this->val->GetPosition();
+		this->contrast = CON_MAX - this->con->GetPosition();
+
+		this->SetTimeout();
+	}
+
+	Colours PackColour() const
+	{
+		Colours colour;
+		ColoursPacker cp(colour);
+		cp.SetI(this->current);
+		cp.SetCustom(true);
+		cp.SetH(this->current_hsv.h);
+		cp.SetS(this->current_hsv.s);
+		cp.SetV(this->current_hsv.v);
+		cp.SetC(this->contrast);
+		return colour;
+	}
+
+	void OnTimeout() override
+	{
+		Colours colour = this->PackColour();
+		if (colour != this->current) {
+			this->current = colour;
+
+			if (this->group) {
+				Command<CMD_SET_GROUP_LIVERY>::Post(this->sel, primary, this->current);
+			} else {
+				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+					/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
+					if (HasBit(this->sel, scheme) || (this->ctrl_pressed && _livery_class[scheme] == this->lc && HasBit(_loaded_newgrf_features.used_liveries, scheme))) {
+						Command<CMD_SET_COMPANY_COLOUR>::Post(scheme, primary, this->current);
+					}
+				}
+			}
+		}
+	}
+};
+
+static const NWidgetPart _nested_select_custom_colour_widgets [] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SCC_CAPTION), SetDataTip(STR_LIVERY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1),
+		NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0), SetPadding(WidgetDimensions::unscaled.frametext),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_BLUE,  WID_SCC_DEFAULT +  0), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1), SetMinimalSize(16, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_PALE_GREEN, WID_SCC_DEFAULT +  1), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_PINK,       WID_SCC_DEFAULT +  2), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW,     WID_SCC_DEFAULT +  3), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_RED,        WID_SCC_DEFAULT +  4), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_SCC_DEFAULT +  5), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN,      WID_SCC_DEFAULT +  6), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_SCC_DEFAULT +  7), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+				EndContainer(),
+				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_BLUE,       WID_SCC_DEFAULT +  8), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1), SetMinimalSize(16, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM,      WID_SCC_DEFAULT +  9), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE,      WID_SCC_DEFAULT + 10), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_PURPLE,     WID_SCC_DEFAULT + 11), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE,     WID_SCC_DEFAULT + 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN,      WID_SCC_DEFAULT + 13), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY,       WID_SCC_DEFAULT + 14), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE,      WID_SCC_DEFAULT + 15), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+				EndContainer(),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_BLUE,  WID_SCC_PRESETS +  0), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1), SetMinimalSize(16, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_PALE_GREEN, WID_SCC_PRESETS +  1), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_PINK,       WID_SCC_PRESETS +  2), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW,     WID_SCC_PRESETS +  3), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_RED,        WID_SCC_PRESETS +  4), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_SCC_PRESETS +  5), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN,      WID_SCC_PRESETS +  6), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_DARK_GREEN, WID_SCC_PRESETS +  7), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+				EndContainer(),
+				NWidget(NWID_VERTICAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_BLUE,       WID_SCC_PRESETS +  8), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1), SetMinimalSize(16, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM,      WID_SCC_PRESETS +  9), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE,      WID_SCC_PRESETS + 10), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_PURPLE,     WID_SCC_PRESETS + 11), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE,     WID_SCC_PRESETS + 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN,      WID_SCC_PRESETS + 13), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY,       WID_SCC_PRESETS + 14), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE,      WID_SCC_PRESETS + 15), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 1),
+				EndContainer(),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_INSET, COLOUR_GREY),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCC_HUE), SetMinimalSize(16, 0),
+				EndContainer(),
+				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SCC_SCROLLBAR_HUE),
+			EndContainer(),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_INSET, COLOUR_GREY),
+						NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCC_SAT), SetMinimalSize(160, 160),
+					EndContainer(),
+					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SCC_SCROLLBAR_VAL),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_HSCROLLBAR, COLOUR_GREY, WID_SCC_SCROLLBAR_SAT),
+					NWidget(NWID_SPACER), SetMinimalSize(11, 11),
+				EndContainer(),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_INSET, COLOUR_GREY),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCC_CON), SetMinimalSize(16, 0),
+				EndContainer(),
+				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SCC_SCROLLBAR_CON),
+			EndContainer(),
+			NWidget(WWT_INSET, COLOUR_GREY),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCC_OUTPUT), SetFill(1, 1), SetMinimalSize(16, 0),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+static WindowDesc _select_custom_colour_desc(__FILE__, __LINE__,
+	WDP_AUTO, nullptr, 0, 0,
+	WC_CUSTOM_COLOUR, WC_NONE,
+	0,
+	std::begin(_nested_select_custom_colour_widgets), std::end(_nested_select_custom_colour_widgets)
+);
+
+typedef GUIList<const Group *> GUIGroupList;
 
 /** Company livery colour scheme window. */
 struct SelectCompanyLiveryWindow : public Window {
@@ -605,57 +980,86 @@ private:
 	std::vector<int> indents;
 	Scrollbar *vscroll;
 
-	void ShowColourDropDownMenu(uint32_t widget)
+	/**
+	 * Get the first selected livery.
+	 */
+	const Livery *GetSelectedLivery() const
 	{
-		uint32_t used_colours = 0;
-		const Livery *livery, *default_livery = nullptr;
-		bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
-		byte default_col = 0;
-
-		/* Disallow other company colours for the primary colour */
-		if (this->livery_class < LC_GROUP_RAIL && HasBit(this->sel, LS_DEFAULT) && primary) {
-			for (const Company *c : Company::Iterate()) {
-				if (c->index != _local_company) SetBit(used_colours, c->colour);
-			}
-		}
-
-		const Company *c = Company::Get((CompanyID)this->window_number);
-
 		if (this->livery_class < LC_GROUP_RAIL) {
 			/* Get the first selected livery to use as the default dropdown item */
 			LiveryScheme scheme;
 			for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
 				if (HasBit(this->sel, scheme)) break;
 			}
+
 			if (scheme == LS_END) scheme = LS_DEFAULT;
-			livery = &c->livery[scheme];
-			if (scheme != LS_DEFAULT) default_livery = &c->livery[LS_DEFAULT];
+
+			const Company *c = Company::Get((CompanyID)this->window_number);
+			return &c->livery[scheme];
 		} else {
 			const Group *g = Group::Get(this->sel);
-			livery = &g->livery;
+			return &g->livery;
+		}
+	}
+
+	/**
+	 * Get the default selected livery.
+	 */
+	const Livery *GetDefaultLivery() const
+	{
+		const Company *c = Company::Get((CompanyID)this->window_number);
+
+		if (this->livery_class < LC_GROUP_RAIL) {
+			if (!HasBit(this->sel, LS_DEFAULT)) return &c->livery[LS_DEFAULT];
+		} else {
+			const Group *g = Group::Get(this->sel);
 			if (g->parent == INVALID_GROUP) {
-				default_livery = &c->livery[LS_DEFAULT];
+				return &c->livery[LS_DEFAULT];
 			} else {
 				const Group *pg = Group::Get(g->parent);
-				default_livery = &pg->livery;
+				return &pg->livery;
 			}
 		}
+		return nullptr;
+	}
+
+
+	void ShowColourDropDownMenu(uint32_t widget)
+	{
+		uint32_t used_colours = 0;
+		bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
+
+		/* Disallow other company colours for the primary colour */
+		if (this->livery_class < LC_GROUP_RAIL && HasBit(this->sel, LS_DEFAULT) && primary) {
+			for (const Company *c : Company::Iterate()) {
+				if (c->index != _local_company) SetBit(used_colours, c->colour & 0xF);
+			}
+		}
+
+		/* Get the first selected livery to use as the default dropdown item */
+		const Livery *livery = GetSelectedLivery();
+		const Livery *default_livery = GetDefaultLivery();
 
 		DropDownList list;
 		if (default_livery != nullptr) {
 			/* Add COLOUR_END to put the colour out of range, but also allow us to show what the default is */
-			default_col = (primary ? default_livery->colour1 : default_livery->colour2) + COLOUR_END;
-			list.push_back(std::make_unique<DropDownListColourItem<>>(default_col, false));
+			list.push_back(std::make_unique<DropDownListColourItem<>>(primary ? default_livery->cached_pal_1cc : default_livery->cached_pal_2cr, STR_COLOUR_DEFAULT, INVALID_COLOUR, false));
 		}
 		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
-			list.push_back(std::make_unique<DropDownListColourItem<>>(i, HasBit(used_colours, i)));
+			list.push_back(std::make_unique<DropDownListColourItem<>>(GENERAL_SPRITE_COLOUR(i), _colour_dropdown[i], i, HasBit(used_colours, i)));
 		}
+		list.push_back(std::make_unique<DropDownListColourItem<>>(primary ? livery->cached_pal_1cc : livery->cached_pal_2cr, STR_COLOUR_CUSTOM, 0xFF, BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32));
 
-		byte sel;
+		int sel;
 		if (default_livery == nullptr || HasBit(livery->in_use, primary ? 0 : 1)) {
-			sel = primary ? livery->colour1 : livery->colour2;
+			Colours col = primary ? livery->colour1 : livery->colour2;
+			if (ColoursPacker(col).IsCustom()) {
+				sel = 0xFF;
+			} else {
+				sel = ColoursPacker(col).I();
+			}
 		} else {
-			sel = default_col;
+			sel = INVALID_COLOUR;
 		}
 		ShowDropDownList(this, std::move(list), sel, widget);
 	}
@@ -681,7 +1085,7 @@ private:
 			GUIGroupList list;
 			VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
 
-			for (const Group *g : Group::Iterate()) {
+			for (Group *g : Group::Iterate()) {
 				if (g->owner == owner && g->vehicle_type == vtype) {
 					list.push_back(g);
 				}
@@ -869,7 +1273,7 @@ public:
 						if (scheme == LS_END) scheme = LS_DEFAULT;
 						const Livery *livery = &c->livery[scheme];
 						if (scheme == LS_DEFAULT || HasBit(livery->in_use, primary ? 0 : 1)) {
-							colour = STR_COLOUR_DARK_BLUE + (primary ? livery->colour1 : livery->colour2);
+							colour = GetColourString(primary ? livery->colour1 : livery->colour2);
 						}
 					}
 				} else {
@@ -877,7 +1281,7 @@ public:
 						const Group *g = Group::Get(this->sel);
 						const Livery *livery = &g->livery;
 						if (HasBit(livery->in_use, primary ? 0 : 1)) {
-							colour = STR_COLOUR_DARK_BLUE + (primary ? livery->colour1 : livery->colour2);
+							colour = GetColourString(primary ? livery->colour1 : livery->colour2);
 						}
 					}
 				}
@@ -915,25 +1319,25 @@ public:
 
 		int y = ir.top;
 
+		const Company *c = Company::Get((CompanyID)this->window_number);
+
 		/* Helper function to draw livery info. */
 		auto draw_livery = [&](StringID str, const Livery &livery, bool is_selected, bool is_default_scheme, int indent) {
 			/* Livery Label. */
 			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, is_selected ? TC_WHITE : TC_BLACK);
 
 			/* Text below the first dropdown. */
-			DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(livery.colour1), pri_squ.left, y + square_offs);
-			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 0)) ? STR_COLOUR_DARK_BLUE + livery.colour1 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
+			DrawSprite(SPR_SQUARE, HasBit(livery.in_use, 0) ? livery.cached_pal_1cc : c->livery[LS_DEFAULT].cached_pal_1cc, pri_squ.left, y + square_offs);
+			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 0)) ? GetColourString(livery.colour1) : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(livery.colour2), sec_squ.left, y + square_offs);
-				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 1)) ? STR_COLOUR_DARK_BLUE + livery.colour2 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
+				DrawSprite(SPR_SQUARE, HasBit(livery.in_use, 1) ? livery.cached_pal_2cr : c->livery[LS_DEFAULT].cached_pal_2cr, sec_squ.left, y + square_offs);
+				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 1)) ? GetColourString(livery.colour2) : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 			}
 
 			y += this->line_height;
 		};
-
-		const Company *c = Company::Get((CompanyID)this->window_number);
 
 		if (livery_class < LC_GROUP_RAIL) {
 			int pos = this->vscroll->GetPosition();
@@ -1042,6 +1446,16 @@ public:
 	{
 		bool local = (CompanyID)this->window_number == _local_company;
 		if (!local) return;
+
+		if (index == 0xFF) {
+			/* Special case for 'Custom...' option */
+			int number = ((widget == WID_SCL_PRI_COL_DROPDOWN) ? 1 : 0) | (this->window_number << 1);
+			if (BringWindowToFrontById(WC_CUSTOM_COLOUR, number)) return;
+
+			const Livery *livery = GetSelectedLivery();
+			new SelectCustomColourWindow(&_select_custom_colour_desc, number, (CompanyID)this->window_number, (widget == WID_SCL_PRI_COL_DROPDOWN) ? livery->colour1 : livery->colour2, this->sel, this->livery_class, _ctrl_pressed, widget == WID_SCL_PRI_COL_DROPDOWN, this->livery_class >= LC_GROUP_RAIL);
+			return;
+		}
 
 		Colours colour = static_cast<Colours>(index);
 		if (colour >= COLOUR_END) colour = INVALID_COLOUR;
@@ -1159,10 +1573,10 @@ void ShowCompanyLiveryWindow(CompanyID company, GroupID group)
 /**
  * Draws the face of a company manager's face.
  * @param cmf   the company manager's face
- * @param colour the (background) colour of the gradient
+ * @param palette the palette of the gradient
  * @param r      position to draw the face
  */
-void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &r)
+void DrawCompanyManagerFace(CompanyManagerFace cmf, PaletteID palette, const Rect &r)
 {
 	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
 
@@ -1189,7 +1603,7 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &
 	}
 
 	/* Draw the gradient (background) */
-	DrawSprite(SPR_GRADIENT, GENERAL_SPRITE_COLOUR(colour), x, y);
+	DrawSprite(SPR_GRADIENT, palette, x, y);
 
 	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
 		switch (cmfv) {
@@ -1633,7 +2047,7 @@ public:
 	{
 		switch (widget) {
 			case WID_SCMF_FACE:
-				DrawCompanyManagerFace(this->face, Company::Get((CompanyID)this->window_number)->colour, r);
+				DrawCompanyManagerFace(this->face, COMPANY_SPRITE_COLOUR((CompanyID)this->window_number), r);
 				break;
 		}
 	}
@@ -2442,7 +2856,7 @@ struct CompanyWindow : Window
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		switch (widget) {
 			case WID_C_FACE:
-				DrawCompanyManagerFace(c->face, c->colour, r);
+				DrawCompanyManagerFace(c->face, COMPANY_SPRITE_COLOUR(c->index), r);
 				break;
 
 			case WID_C_FACE_TITLE:
@@ -2697,7 +3111,7 @@ struct BuyCompanyWindow : Window {
 		switch (widget) {
 			case WID_BC_FACE: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
-				DrawCompanyManagerFace(c->face, c->colour, r);
+				DrawCompanyManagerFace(c->face, COMPANY_SPRITE_COLOUR(c->index), r);
 				break;
 			}
 

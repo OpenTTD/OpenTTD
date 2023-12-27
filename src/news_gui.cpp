@@ -439,7 +439,7 @@ struct NewsWindow : Window {
 
 			case WID_N_MGR_FACE: {
 				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
-				DrawCompanyManagerFace(cni->face, cni->colour, r);
+				DrawCompanyManagerFace(cni->face, cni->colour, r); // XXX TODO this should be a palette
 				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}

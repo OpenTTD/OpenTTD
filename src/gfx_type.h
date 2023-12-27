@@ -197,6 +197,11 @@ union RgbaColour {
 
 static_assert(sizeof(RgbaColour) == sizeof(uint32_t));
 
+static inline bool operator <(const RgbaColour &lhs, const RgbaColour &rhs)
+{
+	return lhs.data < rhs.data;
+}
+
 /** Structure to access the palette index, red, green, and blue channels from a 32 bit number. */
 union RgbMColour {
 	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
@@ -235,6 +240,8 @@ union RgbMColour {
 	constexpr RgbMColour(uint8_t m = 0) : RgbMColour(0, 0, 0, m)
 	{
 	}
+
+	constexpr RgbMColour(const RgbaColour &colour) : RgbMColour(colour.r, colour.g, colour.b, 0) { }
 
 	inline constexpr bool HasRgb() const
 	{

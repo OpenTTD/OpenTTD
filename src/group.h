@@ -83,6 +83,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	GroupID parent;             ///< Parent group
 
 	Group(CompanyID owner = INVALID_COMPANY);
+	~Group();
 };
 
 

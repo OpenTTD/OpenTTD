@@ -15,6 +15,7 @@
 #include "landscape_type.h"
 #include "palette_func.h"
 #include "settings_type.h"
+#include "sprite.h"
 #include "thread.h"
 
 #include "table/palettes.h"
@@ -82,7 +83,9 @@ static uint CalculateColourDistance(const RgbaColour &col1, int r2, int g2, int 
 
 /* Palette indexes for conversion. See docs/palettes/palette_key.png */
 const uint8_t PALETTE_INDEX_CC_START = 198; ///< Palette index of start of company colour remap area.
-const uint8_t PALETTE_INDEX_CC_END = PALETTE_INDEX_CC_START + 8; ///< Palette index of end of company colour remap area.
+const uint8_t PALETTE_INDEX_CC_COUNT = 8; ///< Number of colours in the remap area.
+const uint8_t PALETTE_INDEX_CC_END = PALETTE_INDEX_CC_START + PALETTE_INDEX_CC_COUNT; ///< Palette index of end of company colour remap area.
+const uint8_t PALETTE_INDEX_CC2_START = 80; ///< Palette index of start of second company colour remap area.
 const uint8_t PALETTE_INDEX_START = 1; ///< Palette index of start of defined palette.
 const uint8_t PALETTE_INDEX_END = 215; ///< Palette index of end of defined palette.
 const uint8_t PALETTE_INDEX_CC_OFFSET = 3; ///< Offset from PALETTE_INDEX_CC_START of 'main' company colour.
@@ -431,4 +434,56 @@ TextColour TextColourGradient(Colours colour, uint8_t brightness)
 void SetColourGradient(Colours colour, uint8_t brightness, RgbMColour palette_colour)
 {
 	_colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK] = palette_colour;
+}
+
+RgbaColour GetCompanyColourRGB(Colours colour)
+{
+	static const uint8_t CC_PALETTE_CONTRAST = 90;
+
+	PaletteID pal = GENERAL_SPRITE_COLOUR(colour & 0xF);
+	const RecolourSprite *map = reinterpret_cast<const RecolourSprite *>(GetNonSprite(pal, SpriteType::Recolour));
+
+	RgbaColour rgb = _palette.palette[map->remap_index[PALETTE_INDEX_CC_START + PALETTE_INDEX_CC_OFFSET]];
+	rgb.a = CC_PALETTE_CONTRAST;
+	return rgb;
+}
+
+PaletteID CreateCompanyColourRemap(Colours colour1, Colours colour2, bool twocc, PaletteID basemap, PaletteID hint)
+{
+	DeallocateDynamicSprite(hint);
+
+	PaletteID pal = AllocateDynamicSprite();
+	const RecolourSprite *base = reinterpret_cast<const RecolourSprite *>(GetNonSprite(basemap, SpriteType::Recolour));
+	RecolourSprite *p = new (InjectSprite(SpriteType::Recolour, pal, sizeof(RecolourSprite))) RecolourSprite;
+
+	/* Mark as RGB recolour */
+	p->is_rgba = true;
+
+	/* Copy base remap */
+	p->remap_index = base->remap_index;
+	for (uint i = 0; i < uint(p->remap_rgba.size()); ++i) {
+		p->remap_rgba[i] = _palette.palette[p->remap_index[i]];
+	}
+
+	if (ColoursPacker(colour1).IsCustom()) {
+		/* First recolour region */
+		HsvColour cc1hsv = ColoursPacker(colour1).Hsv();
+		uint8_t cc1con = ColoursPacker(colour1).C();
+		for (uint i = 0; i < PALETTE_INDEX_CC_COUNT; ++i) {
+			int adj = ((int)i - PALETTE_INDEX_CC_OFFSET) * cc1con / 4;
+			p->remap_rgba[i + PALETTE_INDEX_CC_START] = ConvertHsvToRgb(AdjustHsvColourBrightness(cc1hsv, adj));
+		}
+	}
+
+	if (twocc && ColoursPacker(colour2).IsCustom()) {
+		/* Second recolour region */
+		HsvColour cc2hsv = ColoursPacker(colour2).Hsv();
+		uint8_t cc2con = ColoursPacker(colour2).C();
+		for (uint i = 0; i < PALETTE_INDEX_CC_COUNT; ++i) {
+			int adj = ((int)i - PALETTE_INDEX_CC_OFFSET) * cc2con / 4;
+			p->remap_rgba[i + PALETTE_INDEX_CC2_START] = ConvertHsvToRgb(AdjustHsvColourBrightness(cc2hsv, adj));
+		}
+	}
+
+	return pal;
 }

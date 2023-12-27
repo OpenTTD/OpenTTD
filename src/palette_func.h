@@ -135,6 +135,9 @@ RgbMColour GetColourGradient(Colours colour, uint8_t brightness);
 TextColour TextColourGradient(Colours colour, uint8_t brightness);
 void SetColourGradient(Colours colour, uint8_t brightness, RgbMColour palette_colour);
 
+RgbaColour GetCompanyColourRGB(Colours colour);
+PaletteID CreateCompanyColourRemap(Colours rgb1, Colours rgb2, bool twocc, PaletteID basemap, PaletteID hint);
+
 /**
  * Return the colour for a particular greyscale level.
  * @param level Intensity, 0 = black, 15 = white
