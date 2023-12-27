@@ -3,7 +3,7 @@
 // OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
-   -1 * 0	 0C "Toyland river graphics by andythenorth (Andrew Parkhouse)"
+   -1 * 0	 0C "Toyland river graphics by zephyris (Richard Wheeler)"
    -1 * 4	 01 05 01 3C
    -1 sprites/toyland.png 8bpp  10   10  38  19  -5   0 normal
    -1 sprites/toyland.png 8bpp  58   10  38  18  -5  13 normal
