@@ -950,6 +950,20 @@ CommandCost CmdSetCompanyManagerFace(DoCommandFlag flags, CompanyManagerFace cmf
 }
 
 /**
+ * Update liveries for a company. This is called when the LS_DEFAULT scheme is changed, to update schemes with colours
+ * set to default.
+ * @param c Company to update.
+ */
+void UpdateCompanyLiveries(Company *c)
+{
+	for (int i = 1; i < LS_END; i++) {
+		if (!HasBit(c->livery[i].in_use, 0)) c->livery[i].colour1 = c->livery[LS_DEFAULT].colour1;
+		if (!HasBit(c->livery[i].in_use, 1)) c->livery[i].colour2 = c->livery[LS_DEFAULT].colour2;
+	}
+	UpdateCompanyGroupLiveries(c);
+}
+
+/**
  * Change the company's company-colour
  * @param flags operation to perform
  * @param scheme scheme to set
@@ -982,9 +996,7 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool p
 			/* If setting the first colour of the default scheme, adjust the
 			 * original and cached company colours too. */
 			if (scheme == LS_DEFAULT) {
-				for (int i = 1; i < LS_END; i++) {
-					if (!HasBit(c->livery[i].in_use, 0)) c->livery[i].colour1 = colour;
-				}
+				UpdateCompanyLiveries(c);
 				_company_colours[_current_company] = colour;
 				c->colour = colour;
 				CompanyAdminUpdate(c);
@@ -995,9 +1007,7 @@ CommandCost CmdSetCompanyColour(DoCommandFlag flags, LiveryScheme scheme, bool p
 			c->livery[scheme].colour2 = colour;
 
 			if (scheme == LS_DEFAULT) {
-				for (int i = 1; i < LS_END; i++) {
-					if (!HasBit(c->livery[i].in_use, 1)) c->livery[i].colour2 = colour;
-				}
+				UpdateCompanyGroupLiveries(c);
 			}
 		}
 

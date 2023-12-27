@@ -275,17 +275,20 @@ const Livery *GetParentLivery(const Group *g)
 
 
 /**
- * Propagate a livery change to a group's children.
- * @param g Group.
+ * Propagate a livery change to a group's children, and optionally update cached vehicle colourmaps.
+ * @param g Group to propagate colours to children.
+ * @param reset_cache Reset colourmap of vehicles in this group.
  */
-void PropagateChildLivery(const Group *g)
+static void PropagateChildLivery(const Group *g, bool reset_cache)
 {
-	/* Company colour data is indirectly cached. */
-	for (Vehicle *v : Vehicle::Iterate()) {
-		if (v->group_id == g->index && (!v->IsGroundVehicle() || v->IsFrontEngine())) {
-			for (Vehicle *u = v; u != nullptr; u = u->Next()) {
-				u->colourmap = PAL_NONE;
-				u->InvalidateNewGRFCache();
+	if (reset_cache) {
+		/* Company colour data is indirectly cached. */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			if (v->group_id == g->index && (!v->IsGroundVehicle() || v->IsFrontEngine())) {
+				for (Vehicle *u = v; u != nullptr; u = u->Next()) {
+					u->colourmap = PAL_NONE;
+					u->InvalidateNewGRFCache();
+				}
 			}
 		}
 	}
@@ -294,11 +297,26 @@ void PropagateChildLivery(const Group *g)
 		if (cg->parent == g->index) {
 			if (!HasBit(cg->livery.in_use, 0)) cg->livery.colour1 = g->livery.colour1;
 			if (!HasBit(cg->livery.in_use, 1)) cg->livery.colour2 = g->livery.colour2;
-			PropagateChildLivery(cg);
+			PropagateChildLivery(cg, reset_cache);
 		}
 	}
 }
 
+/**
+ * Update group liveries for a company. This is called when the LS_DEFAULT scheme is changed, to update groups with
+ * colours set to default.
+ * @param c Company to update.
+ */
+void UpdateCompanyGroupLiveries(const Company *c)
+{
+	for (Group *g : Group::Iterate()) {
+		if (g->owner == c->index && g->parent == INVALID_GROUP) {
+			if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
+			if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+			PropagateChildLivery(g, false);
+		}
+	}
+}
 
 Group::Group(Owner owner)
 {
@@ -453,7 +471,7 @@ CommandCost CmdAlterGroup(DoCommandFlag flags, AlterGroupMode mode, GroupID grou
 				g->livery.colour1 = livery->colour1;
 				g->livery.colour2 = livery->colour2;
 
-				PropagateChildLivery(g);
+				PropagateChildLivery(g, true);
 				MarkWholeScreenDirty();
 			}
 		}
@@ -661,7 +679,7 @@ CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primar
 			g->livery.colour2 = colour;
 		}
 
-		PropagateChildLivery(g);
+		PropagateChildLivery(g, true);
 		MarkWholeScreenDirty();
 	}
 
