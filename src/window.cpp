@@ -2303,7 +2303,10 @@ static void HandleScrollbarScrolling(Window *w)
 	if (sb->disp_flags & ND_SCROLLBAR_BTN) {
 		if (_scroller_click_timeout == 1) {
 			_scroller_click_timeout = 3;
-			if (sb->UpdatePosition(rtl == HasBit(sb->disp_flags, NDB_SCROLLBAR_UP) ? 1 : -1)) w->SetDirty();
+			if (sb->UpdatePosition(rtl == HasBit(sb->disp_flags, NDB_SCROLLBAR_UP) ? 1 : -1)) {
+				w->OnScrollbarChanged(sb->index);
+				w->SetDirty();
+			}
 		}
 		return;
 	}
@@ -2311,7 +2314,10 @@ static void HandleScrollbarScrolling(Window *w)
 	/* Find the item we want to move to. SetPosition will make sure it's inside bounds. */
 	int pos = RoundDivSU((i + _scrollbar_start_pos) * sb->GetCount(), _scrollbar_size);
 	if (rtl) pos = sb->GetCount() - sb->GetCapacity() - pos;
-	if (sb->SetPosition(pos)) w->SetDirty();
+	if (sb->SetPosition(pos)) {
+		w->OnScrollbarChanged(sb->index);
+		w->SetDirty();
+	}
 }
 
 /**

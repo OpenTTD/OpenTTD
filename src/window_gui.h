@@ -673,6 +673,12 @@ public:
 	virtual bool OnRightClick([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) { return false; }
 
 	/**
+	 * Scrollbar position has been changed.
+	 * @param widget the scrollbar widget.
+	 */
+	virtual void OnScrollbarChanged([[maybe_unused]] int widget) {}
+
+	/**
 	 * The mouse is hovering over a widget in the window, perform an action for it.
 	 * @param pt     The point where the mouse is hovering.
 	 * @param widget The widget where the mouse is hovering.

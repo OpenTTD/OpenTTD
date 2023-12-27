@@ -224,6 +224,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 
 	if (changed) {
 		/* Position changed so refresh the window */
+		w->OnScrollbarChanged(sb->index);
 		w->SetDirty();
 	} else {
 		/* No change so only refresh this scrollbar */
