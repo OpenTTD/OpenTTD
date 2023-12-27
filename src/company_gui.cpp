@@ -907,18 +907,18 @@ public:
 		int y = ir.top;
 
 		/* Helper function to draw livery info. */
-		auto draw_livery = [&](StringID str, const Livery &liv, bool sel, bool def, int indent) {
+		auto draw_livery = [&](StringID str, const Livery &livery, bool is_selected, bool is_default_scheme, int indent) {
 			/* Livery Label. */
-			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, sel ? TC_WHITE : TC_BLACK);
+			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, is_selected ? TC_WHITE : TC_BLACK);
 
 			/* Text below the first dropdown. */
-			DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour1), pri_squ.left, y + square_offs);
-			DrawString(pri.left, pri.right, y + text_offs, (def || HasBit(liv.in_use, 0)) ? STR_COLOUR_DARK_BLUE + liv.colour1 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
+			DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(livery.colour1), pri_squ.left, y + square_offs);
+			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 0)) ? STR_COLOUR_DARK_BLUE + livery.colour1 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(liv.colour2), sec_squ.left, y + square_offs);
-				DrawString(sec.left, sec.right, y + text_offs, (def || HasBit(liv.in_use, 1)) ? STR_COLOUR_DARK_BLUE + liv.colour2 : STR_COLOUR_DEFAULT, sel ? TC_WHITE : TC_GOLD);
+				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(livery.colour2), sec_squ.left, y + square_offs);
+				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 1)) ? STR_COLOUR_DARK_BLUE + livery.colour2 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 			}
 
 			y += this->line_height;
@@ -938,9 +938,8 @@ public:
 			uint max = static_cast<uint>(std::min<size_t>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->groups.size()));
 			for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
 				const Group *g = this->groups[i];
-				const bool livery_set = HasBit(g->livery.in_use, 0);
 				SetDParam(0, g->index);
-				draw_livery(STR_GROUP_NAME, livery_set ? g->livery : c->livery[LS_DEFAULT], this->sel == g->index, livery_set, this->indents[i] * WidgetDimensions::scaled.hsep_indent);
+				draw_livery(STR_GROUP_NAME, g->livery, this->sel == g->index, false, this->indents[i] * WidgetDimensions::scaled.hsep_indent);
 			}
 
 			if (this->vscroll->GetCount() == 0) {

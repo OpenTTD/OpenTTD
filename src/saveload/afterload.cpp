@@ -3262,6 +3262,10 @@ bool AfterLoadGame()
 		}
 	}
 
+	for (Company *c : Company::Iterate()) {
+		UpdateCompanyLiveries(c);
+	}
+
 	AfterLoadLabelMaps();
 	AfterLoadCompanyStats();
 	AfterLoadStoryBook();

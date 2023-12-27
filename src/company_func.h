@@ -24,6 +24,7 @@ void ShowBuyCompanyDialog(CompanyID company, bool hostile_takeover);
 void CompanyAdminUpdate(const Company *company);
 void CompanyAdminBankrupt(CompanyID company_id);
 void UpdateLandscapingLimits();
+void UpdateCompanyLiveries(Company *c);
 
 bool CheckCompanyHasMoney(CommandCost &cost);
 void SubtractMoneyFromCompany(const CommandCost& cost);
