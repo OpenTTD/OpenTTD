@@ -483,8 +483,7 @@ static void FormatBytes(StringBuilder &builder, int64_t number)
 
 static void FormatYmdString(StringBuilder &builder, TimerGameCalendar::Date date, uint case_index)
 {
-	TimerGameCalendar::YearMonthDay ymd;
-	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(date);
 
 	auto tmp_params = MakeParameters(ymd.day + STR_DAY_NUMBER_1ST - 1, STR_MONTH_ABBREV_JAN + ymd.month, ymd.year);
 	FormatString(builder, GetStringPtr(STR_FORMAT_DATE_LONG), tmp_params, case_index);
@@ -492,8 +491,7 @@ static void FormatYmdString(StringBuilder &builder, TimerGameCalendar::Date date
 
 static void FormatMonthAndYear(StringBuilder &builder, TimerGameCalendar::Date date, uint case_index)
 {
-	TimerGameCalendar::YearMonthDay ymd;
-	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(date);
 
 	auto tmp_params = MakeParameters(STR_MONTH_JAN + ymd.month, ymd.year);
 	FormatString(builder, GetStringPtr(STR_FORMAT_DATE_SHORT), tmp_params, case_index);
@@ -501,8 +499,7 @@ static void FormatMonthAndYear(StringBuilder &builder, TimerGameCalendar::Date d
 
 static void FormatTinyOrISODate(StringBuilder &builder, TimerGameCalendar::Date date, StringID str)
 {
-	TimerGameCalendar::YearMonthDay ymd;
-	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(date);
 
 	/* Day and month are zero-padded with ZEROFILL_NUM, hence the two 2s. */
 	auto tmp_params = MakeParameters(ymd.day, 2, ymd.month + 1, 2, ymd.year);

@@ -66,9 +66,9 @@ static const uint16_t _accum_days_for_month[] = {
 /**
  * Converts a Date to a Year, Month & Day.
  * @param date the date to convert from
- * @param ymd  the year, month and day to write to
+ * @returns YearMonthDay representation of the Date.
  */
-/* static */ void TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::Date date, TimerGameCalendar::YearMonthDay *ymd)
+/* static */ TimerGameCalendar::YearMonthDay TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::Date date)
 {
 	/* Year determination in multiple steps to account for leap
 	 * years. First do the large steps, then the smaller ones.
@@ -77,7 +77,6 @@ static const uint16_t _accum_days_for_month[] = {
 	/* There are 97 leap years in 400 years */
 	TimerGameCalendar::Year yr = 400 * (date.base() / (CalendarTime::DAYS_IN_YEAR * 400 + 97));
 	int rem = date.base() % (CalendarTime::DAYS_IN_YEAR * 400 + 97);
-	uint16_t x;
 
 	if (rem >= CalendarTime::DAYS_IN_YEAR * 100 + 25) {
 		/* There are 25 leap years in the first 100 years after
@@ -110,11 +109,13 @@ static const uint16_t _accum_days_for_month[] = {
 	/* Skip the 29th of February in non-leap years */
 	if (!TimerGameCalendar::IsLeapYear(yr) && rem >= ACCUM_MAR - 1) rem++;
 
-	ymd->year = yr;
+	uint16_t x = _month_date_from_year_day[rem];
 
-	x = _month_date_from_year_day[rem];
-	ymd->month = x >> 5;
-	ymd->day = x & 0x1F;
+	YearMonthDay ymd;
+	ymd.year = yr;
+	ymd.month = x >> 5;
+	ymd.day = x & 0x1F;
+	return ymd;
 }
 
 /**
@@ -153,11 +154,9 @@ static const uint16_t _accum_days_for_month[] = {
 {
 	assert(fract < Ticks::DAY_TICKS);
 
-	TimerGameCalendar::YearMonthDay ymd;
-
 	TimerGameCalendar::date = date;
 	TimerGameCalendar::date_fract = fract;
-	TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(date);
 	TimerGameCalendar::year = ymd.year;
 	TimerGameCalendar::month = ymd.month;
 }
@@ -195,8 +194,7 @@ void TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar
 	/* increase day counter */
 	TimerGameCalendar::date++;
 
-	TimerGameCalendar::YearMonthDay ymd;
-	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 
 	/* check if we entered a new month? */
 	bool new_month = ymd.month != TimerGameCalendar::month;

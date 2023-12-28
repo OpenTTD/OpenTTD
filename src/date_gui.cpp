@@ -51,7 +51,7 @@ struct SetDateWindow : Window {
 		this->InitNested(window_number);
 
 		if (initial_date == 0) initial_date = TimerGameCalendar::date;
-		TimerGameCalendar::ConvertDateToYMD(initial_date, &this->date);
+		this->date = TimerGameCalendar::ConvertDateToYMD(initial_date);
 		this->date.year = Clamp(this->date.year, min_year, max_year);
 	}
 

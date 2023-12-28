@@ -381,8 +381,7 @@ protected:
 			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_DATE); nwid->current_x != 0) {
 				/* current date */
 				Rect date = nwid->GetCurrentRect();
-				TimerGameCalendar::YearMonthDay ymd;
-				TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date, &ymd);
+				TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date);
 				SetDParam(0, ymd.year);
 				DrawString(date.left, date.right, y + text_y_offset, STR_JUST_INT, TC_BLACK, SA_HOR_CENTER);
 			}
@@ -390,9 +389,8 @@ protected:
 			if (const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_NG_YEARS); nwid->current_x != 0) {
 				/* number of years the game is running */
 				Rect years = nwid->GetCurrentRect();
-				TimerGameCalendar::YearMonthDay ymd_cur, ymd_start;
-				TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date, &ymd_cur);
-				TimerGameCalendar::ConvertDateToYMD(cur_item->info.start_date, &ymd_start);
+				TimerGameCalendar::YearMonthDay ymd_cur = TimerGameCalendar::ConvertDateToYMD(cur_item->info.game_date);
+				TimerGameCalendar::YearMonthDay ymd_start = TimerGameCalendar::ConvertDateToYMD(cur_item->info.start_date);
 				SetDParam(0, ymd_cur.year - ymd_start.year);
 				DrawString(years.left, years.right, y + text_y_offset, STR_JUST_INT, TC_BLACK, SA_HOR_CENTER);
 			}

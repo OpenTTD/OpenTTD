@@ -29,8 +29,7 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::TimerGameCalendar::YearMonthDay ymd;
-	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd = ::TimerGameCalendar::ConvertDateToYMD(date);
 	return ymd.year.base();
 }
 
@@ -38,8 +37,7 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::TimerGameCalendar::YearMonthDay ymd;
-	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd = ::TimerGameCalendar::ConvertDateToYMD(date);
 	return ymd.month + 1;
 }
 
@@ -47,8 +45,7 @@
 {
 	if (date < 0) return DATE_INVALID;
 
-	::TimerGameCalendar::YearMonthDay ymd;
-	::TimerGameCalendar::ConvertDateToYMD(date, &ymd);
+	::TimerGameCalendar::YearMonthDay ymd = ::TimerGameCalendar::ConvertDateToYMD(date);
 	return ymd.day;
 }
 

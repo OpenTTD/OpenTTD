@@ -142,8 +142,7 @@ struct SubsidyListWindow : Window {
 	{
 		if (widget != WID_SUL_PANEL) return;
 
-		TimerGameCalendar::YearMonthDay ymd;
-		TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+		TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
