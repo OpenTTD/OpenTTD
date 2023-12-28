@@ -1017,7 +1017,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 	int sprite_right = GetVehicleImageCellSize(type, EIT_PURCHASE).extend_right;
 	int sprite_width = sprite_left + sprite_right;
 	int circle_width = std::max(GetScaledSpriteSize(SPR_CIRCLE_FOLDED).width, GetScaledSpriteSize(SPR_CIRCLE_UNFOLDED).width);
-	int linecolour = GetColourGradient(COLOUR_ORANGE, 4);
+	int linecolour = GetColourGradient(COLOUR_ORANGE, SHADE_4);
 
 	Rect ir      = r.WithHeight(step_size).Shrink(WidgetDimensions::scaled.matrix);
 	int sprite_y_offset = ScaleSpriteTrad(sprite_y_offsets[type]) + ir.Height() / 2;

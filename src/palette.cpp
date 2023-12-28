@@ -300,7 +300,7 @@ TextColour GetContrastColour(uint8_t background, uint8_t threshold)
  */
 struct ColourGradients
 {
-	using ColourGradient = std::array<byte, 8>;
+	using ColourGradient = std::array<byte, SHADE_END>;
 
 	static inline std::array<ColourGradient, COLOUR_END> gradient{};
 };
@@ -311,9 +311,9 @@ struct ColourGradients
  * @param shade Shade level from 1 to 7.
  * @returns palette index of colour.
  */
-byte GetColourGradient(Colours colour, uint8_t shade)
+byte GetColourGradient(Colours colour, ColourShade shade)
 {
-	return ColourGradients::gradient[colour % COLOUR_END][shade % 8];
+	return ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END];
 }
 
 /**
@@ -322,9 +322,9 @@ byte GetColourGradient(Colours colour, uint8_t shade)
  * @param shade Shade level from 1 to 7.
  * @param palette_index Palette index to set.
  */
-void SetColourGradient(Colours colour, uint8_t shade, byte palette_index)
+void SetColourGradient(Colours colour, ColourShade shade, byte palette_index)
 {
 	assert(colour < COLOUR_END);
-	assert(shade < 8);
-	ColourGradients::gradient[colour % COLOUR_END][shade % 8] = palette_index;
+	assert(shade < SHADE_END);
+	ColourGradients::gradient[colour % COLOUR_END][shade % SHADE_END] = palette_index;
 }

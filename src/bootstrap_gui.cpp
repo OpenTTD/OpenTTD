@@ -386,7 +386,7 @@ bool HandleBootstrap()
 	GfxInitPalettes();
 	static const int offsets[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
 	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
-		for (int j = 0; j < 8; j++) {
+		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
 			SetColourGradient(i, j, offsets[i] + j);
 		}
 	}
