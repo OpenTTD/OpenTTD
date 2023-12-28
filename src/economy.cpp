@@ -210,9 +210,9 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		bool min_profit_first = true;
 		uint num = 0;
 
-		for (const Vehicle *v : Vehicle::Iterate()) {
-			if (v->owner != owner) continue;
-			if (IsCompanyBuildableVehicleType(v->type) && v->IsPrimaryVehicle()) {
+		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			const VehicleList &vehicle_list = c->group_all[type].vehicle_list;
+			for (const Vehicle *v : vehicle_list) {
 				if (v->profit_last_year > 0) num++; // For the vehicle score only count profitable vehicles
 				if (v->age > 730) {
 					/* Find the vehicle with the lowest amount of profit */
