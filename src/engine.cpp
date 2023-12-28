@@ -724,7 +724,7 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32_t se
 	r = Random();
 	e->reliability_final = GB(r, 16, 14) + 0x3FFF;
 	e->duration_phase_1 = GB(r, 0, 5) + 7;
-	e->duration_phase_2 = GB(r, 5, 4) + ei->base_life.base() * 12 - 96;
+	e->duration_phase_2 = std::max(0, int(GB(r, 5, 4)) + ei->base_life.base() * 12 - 96);
 	e->duration_phase_3 = GB(r, 9, 7) + 120;
 
 	RestoreRandomSeeds(saved_seeds);
