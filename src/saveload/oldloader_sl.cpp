@@ -844,8 +844,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 			if (i->type > 0x06) i->type++; // Printing Works were added
 			if (i->type == 0x0A) i->type = 0x12; // Iron Ore Mine has different ID
 
-			TimerGameCalendar::YearMonthDay ymd;
-			TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+			TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 			i->last_prod_year = ymd.year;
 
 			i->random_colour = RemapTTOColour(i->random_colour);

@@ -311,8 +311,7 @@ void SurveyTimers(nlohmann::json &survey)
 	survey["ticks"] = TimerGameTick::counter;
 	survey["seconds"] = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - _switch_mode_time).count();
 
-	TimerGameCalendar::YearMonthDay ymd;
-	TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date, &ymd);
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
 	survey["calendar"] = fmt::format("{:04}-{:02}-{:02} ({})", ymd.year, ymd.month + 1, ymd.day, TimerGameCalendar::date_fract);
 }
 

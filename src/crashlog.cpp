@@ -57,8 +57,7 @@ static void SurveyRecentNews(nlohmann::json &json)
 
 	int i = 0;
 	for (NewsItem *news = _latest_news; i < 32 && news != nullptr; news = news->prev, i++) {
-		TimerGameCalendar::YearMonthDay ymd;
-		TimerGameCalendar::ConvertDateToYMD(news->date, &ymd);
+		TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(news->date);
 		json.push_back(fmt::format("({}-{:02}-{:02}) StringID: {}, Type: {}, Ref1: {}, {}, Ref2: {}, {}",
 		               ymd.year, ymd.month + 1, ymd.day, news->string_id, news->type,
 		               news->reftype1, news->ref1, news->reftype2, news->ref2));

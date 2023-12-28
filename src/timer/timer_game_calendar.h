@@ -101,7 +101,7 @@ public:
 	};
 
 	static bool IsLeapYear(Year yr);
-	static void ConvertDateToYMD(Date date, YearMonthDay * ymd);
+	static YearMonthDay ConvertDateToYMD(Date date);
 	static Date ConvertYMDToDate(Year year, Month month, Day day);
 	static void SetDate(Date date, DateFract fract);
 
