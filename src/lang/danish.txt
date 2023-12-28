@@ -2194,12 +2194,19 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vis farv
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Vis farveskemaer for køretøjer
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Vis farveskemaer for skibe
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Vis farveskemaer for fly
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Vis farver på toggrupper
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Vis farver på vejkøretøjsgrupper
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Vis farver på skibsgrupper
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Vis farverne på flygrupper
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vælg den primære farve for det valgte farveskema. Ctrl+Click vil sætte denne farve for alle farveskemaer
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vælg den sekundære farve for det valgte farveskema. Ctrl+Click vil sætte denne farve for alle farveskemaer
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vælg et farveskema, som skal ændres, eller flere farveskemaer vha. CTRL+klik. Klik på boksen for at slå brug af farveskemaet til/fra
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Der er ikke oprettet grupper af vejkøretøjer
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Der er ikke oprettet skibsgrupper
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Der er ikke oprettet flygrupper
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Standardfarver
+STR_LIVERY_DEFAULT                                              :Standard Livery
 STR_LIVERY_STEAM                                                :Damplokomotiv
 STR_LIVERY_DIESEL                                               :Diesellokomotiv
 STR_LIVERY_ELECTRIC                                             :Elektrisk lokomotiv
@@ -4651,7 +4658,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Match st
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Vis matchende stort/lille bogstav ved sammenligning af AI log beskeder messages mod teksten
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortsæt
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sæt spillet i gang, og start den kunstige intelligens igen
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Se debug output for denne AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Se fejlretningsoutput af denne AI. Ctrl-klik for at åbne i et nyt vindue
 STR_AI_GAME_SCRIPT                                              :{BLACK}Spil Script
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Tjek SpilScript-loggen
 

@@ -2197,9 +2197,17 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Exibe es
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Exibir os esquemas de cor de automóveis
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Exibir esquemas de cor de embarcação
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Exibir esquemas de cor de aviões
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Exibir cores de grupos de trens
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Exibir cores dos grupos de veículos
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Exibir cores de grupos de embarcações
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Exibir cores dos grupos de aeronaves
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Escolha a cor principal para o esquema selecionado. Ctrl+Clique seleciona essa cor para todos os esquemas
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Escolha a cor secundária para o esquema selecionado. Ctrl+Clique seleciona essa cor para todos os esquemas
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecionar um esquema de cores para mudar, ou múltiplos esquemas com CTRL+clique. Marque a opção para utilizar o esquema
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Não há grupos de trens configurados
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Não há grupos de veículos configurados
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Não há grupos de embarcações configurados
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Não há grupos de aeronaves configurados
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Cores padrão
@@ -4654,9 +4662,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Correspo
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar correspondencia de "case" quando comparar mensagens de resgisto da IA contra a sequencia de falhas
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar e continuar o AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver a depuração produzida desta IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver saída de depuração desta IA
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Checando o log do Game Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifique o registo do Script de jogo
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nenhuma IA adequada encontrada para carregar.{} Esta IA é falsa e não irá fazer nada.{} Você pode pode baixar várias IA através do sistema de 'Conteúdo Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Um dos scripts em execução travou. Favor relatar isto ao autor do script com uma captura de tela da Janela de Depuração da I.A./Script do jogo
