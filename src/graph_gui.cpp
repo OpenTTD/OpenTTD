@@ -627,7 +627,7 @@ public:
 		for (CompanyID k = COMPANY_FIRST; k < MAX_COMPANIES; k++) {
 			const Company *c = Company::GetIfValid(k);
 			if (c != nullptr) {
-				this->colours[numd] = GetColourGradient(c->colour, SHADE_6);
+				this->colours[numd] = GetColourGradient(c->colour, SHADE_LIGHTER);
 				for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
 					if (j >= c->num_valid_stat_ent) {
 						this->cost[numd][i] = INVALID_DATAPOINT;
@@ -1294,8 +1294,8 @@ struct PerformanceRatingDetailWindow : Window {
 		ScoreID score_type = (ScoreID)(widget - WID_PRD_SCORE_FIRST);
 
 		/* The colours used to show how the progress is going */
-		int colour_done = GetColourGradient(COLOUR_GREEN, SHADE_4);
-		int colour_notdone = GetColourGradient(COLOUR_RED, SHADE_4);
+		int colour_done = GetColourGradient(COLOUR_GREEN, SHADE_NORMAL);
+		int colour_notdone = GetColourGradient(COLOUR_RED, SHADE_NORMAL);
 
 		/* Draw all the score parts */
 		int64_t val    = _score_part[company][score_type];
