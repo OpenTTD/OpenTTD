@@ -675,7 +675,7 @@ void SetYearEngineAgingStops()
  * @param aging_date The date used for age calculations.
  * @param seed Random seed.
  */
-void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32_t seed)
+void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ymd, uint32_t seed)
 {
 	const EngineInfo *ei = &e->info;
 
@@ -699,7 +699,11 @@ void StartupOneEngine(Engine *e, TimerGameCalendar::Date aging_date, uint32_t se
 	 * Note: TTDP uses fixed 1922 */
 	e->intro_date = ei->base_intro <= TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (TimerGameCalendar::Date)GB(r, 0, 9) + ei->base_intro;
 	if (e->intro_date <= TimerGameCalendar::date) {
-		e->age = (aging_date - e->intro_date).base() >> 5;
+		TimerGameCalendar::YearMonthDay intro_ymd = TimerGameCalendar::ConvertDateToYMD(e->intro_date);
+		int aging_months = aging_ymd.year.base() * 12 + aging_ymd.month;
+		int intro_months = intro_ymd.year.base() * 12 + intro_ymd.month;
+		if (intro_ymd.day > 1) intro_months++; // Engines are introduced at the first month start at/after intro date.
+		e->age = aging_months - intro_months;
 		e->company_avail = MAX_UVALUE(CompanyMask);
 		e->flags |= ENGINE_AVAILABLE;
 	}
@@ -756,10 +760,11 @@ void StartupEngines()
 {
 	/* Aging of vehicles stops, so account for that when starting late */
 	const TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date, TimerGameCalendar::ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
+	TimerGameCalendar::YearMonthDay aging_ymd = TimerGameCalendar::ConvertDateToYMD(aging_date);
 	uint32_t seed = Random();
 
 	for (Engine *e : Engine::Iterate()) {
-		StartupOneEngine(e, aging_date, seed);
+		StartupOneEngine(e, aging_ymd, seed);
 	}
 	for (Engine *e : Engine::Iterate()) {
 		CalcEngineReliability(e, false);
