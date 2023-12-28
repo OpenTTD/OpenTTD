@@ -334,9 +334,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		v->state = 1;
 
 		uint n = 0; // Total number of targetable road vehicles.
-		for (const RoadVehicle *u : RoadVehicle::Iterate()) {
-			if (u->IsFrontEngine()) n++;
-		}
+		for (const Company *c : Company::Iterate()) n += (uint)c->group_all[VEH_ROAD].vehicle_list.size();
 
 		if (n == 0) {
 			/* If there are no targetable road vehicles, destroy the UFO. */
@@ -345,13 +343,17 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		}
 
 		n = RandomRange(n); // Choose one of them.
-		for (const RoadVehicle *u : RoadVehicle::Iterate()) {
-			/* Find (n+1)-th road vehicle. */
-			if (u->IsFrontEngine() && (n-- == 0)) {
-				/* Target it. */
-				v->dest_tile = u->index;
-				v->age = 0;
-				break;
+		for (const Company *c : Company::Iterate()) {
+			const VehicleList &vehicle_list = c->group_all[VEH_ROAD].vehicle_list;
+			for (const Vehicle *vehicle : vehicle_list) {
+				const RoadVehicle *u = RoadVehicle::From(vehicle);
+				/* Find (n+1)-th road vehicle. */
+				if (n-- == 0) {
+					/* Target it. */
+					v->dest_tile = u->index;
+					v->age = 0;
+					return true;
+				}
 			}
 		}
 
@@ -544,11 +546,15 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 
 		v->state = 2;
 
-		for (Vehicle *target : Vehicle::Iterate()) {
-			if (target->IsGroundVehicle()) {
-				if (Delta(target->x_pos, v->x_pos) + Delta(target->y_pos, v->y_pos) <= 12 * (int)TILE_SIZE) {
-					target->breakdown_ctr = 5;
-					target->breakdown_delay = 0xF0;
+		for (const Company *c : Company::Iterate()) {
+			for (VehicleType type = VEH_TRAIN; type <= VEH_ROAD; type++) {
+				const VehicleList &vehicle_list = c->group_all[type].vehicle_list;
+				for (const Vehicle *vehicle : vehicle_list) {
+					Vehicle *target = Vehicle::Get(vehicle->index);
+					if (Delta(target->x_pos, v->x_pos) + Delta(target->y_pos, v->y_pos) <= 12 * (int)TILE_SIZE) {
+						target->breakdown_ctr = 5;
+						target->breakdown_delay = 0xF0;
+					}
 				}
 			}
 		}
@@ -581,15 +587,19 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		v->state = 1;
 
 		const auto is_valid_target = [](const Train *t) {
-			return t->IsFrontEngine() // Only the engines
-				&& Company::IsHumanID(t->owner) // Don't break AIs
-				&& IsPlainRailTile(t->tile) // No tunnels
+			return IsPlainRailTile(t->tile) // No tunnels
 				&& (t->vehstatus & VS_CRASHED) == 0; // Not crashed
 		};
 
 		uint n = 0; // Total number of targetable trains.
-		for (const Train *t : Train::Iterate()) {
-			if (is_valid_target(t)) n++;
+		for (const Company *c : Company::Iterate()) {
+			if (!Company::IsHumanID(c->index)) continue;
+
+			const VehicleList &vehicle_list = c->group_all[VEH_TRAIN].vehicle_list;
+			for (const Vehicle *vehicle : vehicle_list) {
+				const Train *t = Train::From(Vehicle::Get(vehicle->index));
+				if (is_valid_target(t)) n++;
+			}
 		}
 
 		if (n == 0) {
@@ -599,13 +609,19 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		}
 
 		n = RandomRange(n); // Choose one of them.
-		for (const Train *t : Train::Iterate()) {
-			/* Find (n+1)-th train. */
-			if (is_valid_target(t) && (n-- == 0)) {
-				/* Target it. */
-				v->dest_tile = t->tile;
-				v->age = 0;
-				break;
+		for (const Company *c : Company::Iterate()) {
+			if (!Company::IsHumanID(c->index)) continue; // Don't break AIs
+
+			const VehicleList &vehicle_list = c->group_all[VEH_TRAIN].vehicle_list;
+			for (const Vehicle *vehicle : vehicle_list) {
+				const Train *t = Train::From(Vehicle::Get(vehicle->index));
+				/* Find (n+1)-th train. */
+				if (is_valid_target(t) && (n-- == 0)) {
+					/* Target it. */
+					v->dest_tile = t->tile;
+					v->age = 0;
+					return true;
+				}
 			}
 		}
 	}
