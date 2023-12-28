@@ -42,13 +42,14 @@ TextColour GetContrastColour(uint8_t background, uint8_t threshold = 128);
 
 enum ColourShade : uint8_t {
 	SHADE_BEGIN = 0,
-	SHADE_DARKEST,
+	SHADE_DARKEST = SHADE_BEGIN,
 	SHADE_DARKER,
 	SHADE_DARK,
 	SHADE_NORMAL,
 	SHADE_LIGHT,
 	SHADE_LIGHTER,
 	SHADE_LIGHTEST,
+	SHADE_LIGHTEREST,
 	SHADE_END,
 };
 DECLARE_POSTFIX_INCREMENT(ColourShade)
