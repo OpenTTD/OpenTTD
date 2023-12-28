@@ -543,7 +543,7 @@ void SetupColoursAndInitialWindow()
 	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
 		const byte *b = GetNonSprite(GENERAL_SPRITE_COLOUR(i), SpriteType::Recolour);
 		assert(b != nullptr);
-		for (uint j = 0; j < 8; j++) {
+		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
 			SetColourGradient(i, j, b[0xC6 + j]);
 		}
 	}

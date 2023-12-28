@@ -10,6 +10,7 @@
 #ifndef PALETTE_FUNC_H
 #define PALETTE_FUNC_H
 
+#include "core/enum_type.hpp"
 #include "gfx_type.h"
 #include "strings_type.h"
 #include "string_type.h"
@@ -39,8 +40,21 @@ inline bool IsValidColours(Colours colours)
 
 TextColour GetContrastColour(uint8_t background, uint8_t threshold = 128);
 
-byte GetColourGradient(Colours colour, uint8_t shade);
-void SetColourGradient(Colours colour, uint8_t shade, byte palette_colour);
+enum ColourShade : uint8_t {
+	SHADE_BEGIN = 0,
+	SHADE_1,
+	SHADE_2,
+	SHADE_3,
+	SHADE_4,
+	SHADE_5,
+	SHADE_6,
+	SHADE_7,
+	SHADE_END,
+};
+DECLARE_POSTFIX_INCREMENT(ColourShade)
+
+byte GetColourGradient(Colours colour, ColourShade shade);
+void SetColourGradient(Colours colour, ColourShade shade, byte palette_colour);
 
 /**
  * Return the colour for a particular greyscale level.

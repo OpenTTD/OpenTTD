@@ -146,8 +146,8 @@ void SetLocalCompany(CompanyID new_company)
  */
 TextColour GetDrawStringCompanyColour(CompanyID company)
 {
-	if (!Company::IsValidID(company)) return (TextColour)GetColourGradient(COLOUR_WHITE, 4) | TC_IS_PALETTE_COLOUR;
-	return (TextColour)GetColourGradient(_company_colours[company], 4) | TC_IS_PALETTE_COLOUR;
+	if (!Company::IsValidID(company)) return (TextColour)GetColourGradient(COLOUR_WHITE, SHADE_4) | TC_IS_PALETTE_COLOUR;
+	return (TextColour)GetColourGradient(_company_colours[company], SHADE_4) | TC_IS_PALETTE_COLOUR;
 }
 
 /**
