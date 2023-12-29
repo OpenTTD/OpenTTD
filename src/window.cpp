@@ -496,7 +496,7 @@ bool Window::SetFocusedWidget(int widget_index)
 	/* Do nothing if widget_index is already focused, or if it wasn't a valid widget. */
 	if ((uint)widget_index >= this->nested_array_size) return false;
 
-	assert(this->nested_array[widget_index] != nullptr); // Setting focus to a non-existing widget is a bad idea.
+	assert(this->widget_lookup[widget_index] != nullptr); // Setting focus to a non-existing widget is a bad idea.
 	if (this->nested_focus != nullptr) {
 		if (this->GetWidget<NWidgetCore>(widget_index) == this->nested_focus) return false;
 
@@ -532,8 +532,8 @@ void Window::OnFocusLost(bool)
 void Window::RaiseButtons(bool autoraise)
 {
 	for (uint i = 0; i < this->nested_array_size; i++) {
-		if (this->nested_array[i] == nullptr) continue;
-		WidgetType type = this->nested_array[i]->type;
+		if (this->widget_lookup[i] == nullptr) continue;
+		WidgetType type = this->widget_lookup[i]->type;
 		if (((type & ~WWB_PUSHBUTTON) < WWT_LAST || type == NWID_PUSHBUTTON_DROPDOWN) &&
 				(!autoraise || (type & WWB_PUSHBUTTON) || type == WWT_EDITBOX) && this->IsWidgetLowered(i)) {
 			this->RaiseWidget(i);
@@ -556,9 +556,9 @@ void Window::RaiseButtons(bool autoraise)
 void Window::SetWidgetDirty(byte widget_index) const
 {
 	/* Sometimes this function is called before the window is even fully initialized */
-	if (this->nested_array == nullptr) return;
+	if (this->widget_lookup == nullptr) return;
 
-	this->nested_array[widget_index]->SetDirty(this);
+	this->widget_lookup[widget_index]->SetDirty(this);
 }
 
 /**
@@ -1092,7 +1092,7 @@ Window::~Window()
 
 	if (this->viewport != nullptr) DeleteWindowViewport(this);
 
-	free(this->nested_array); // Contents is released through deletion of #nested_root.
+	free(this->widget_lookup); // Contents is released through deletion of #nested_root.
 	delete this->nested_root;
 }
 
@@ -1366,7 +1366,7 @@ static void BringWindowToFront(Window *w, bool dirty)
  * @param window_number Number being assigned to the new window
  * @return Window pointer of the newly created window
  * @pre If nested widgets are used (\a widget is \c nullptr), #nested_root and #nested_array_size must be initialized.
- *      In addition, #nested_array is either \c nullptr, or already initialized.
+ *      In addition, #widget_lookup is either \c nullptr, or already initialized.
  */
 void Window::InitializeData(WindowNumber window_number)
 {
@@ -1722,9 +1722,9 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16_t sm_width, i
 
 /**
  * Perform the first part of the initialization of a nested widget tree.
- * Construct a nested widget tree in #nested_root, and optionally fill the #nested_array array to provide quick access to the uninitialized widgets.
+ * Construct a nested widget tree in #nested_root, and optionally fill the #widget_lookup array to provide quick access to the uninitialized widgets.
  * This is mainly useful for setting very basic properties.
- * @param fill_nested Fill the #nested_array (enabling is expensive!).
+ * @param fill_nested Fill the #widget_lookup (enabling is expensive!).
  * @note Filling the nested array requires an additional traversal through the nested widget tree, and is best performed by #FinishInitNested rather than here.
  */
 void Window::CreateNestedTree()
@@ -1733,8 +1733,8 @@ void Window::CreateNestedTree()
 	this->nested_root = MakeWindowNWidgetTree(this->window_desc->nwid_begin, this->window_desc->nwid_end, &biggest_index, &this->shade_select);
 	this->nested_array_size = (uint)(biggest_index + 1);
 
-	this->nested_array = CallocT<NWidgetBase *>(this->nested_array_size);
-	this->nested_root->FillNestedArray(this->nested_array, this->nested_array_size);
+	this->widget_lookup = CallocT<NWidgetBase *>(this->nested_array_size);
+	this->nested_root->FillWidgetLookup(this->widget_lookup, this->nested_array_size);
 }
 
 /**
@@ -1841,7 +1841,7 @@ static void DecreaseWindowCounters()
 		if (_scroller_click_timeout == 0) {
 			/* Unclick scrollbar buttons if they are pressed. */
 			for (uint i = 0; i < w->nested_array_size; i++) {
-				NWidgetBase *nwid = w->nested_array[i];
+				NWidgetBase *nwid = w->widget_lookup[i];
 				if (nwid != nullptr && (nwid->type == NWID_HSCROLLBAR || nwid->type == NWID_VSCROLLBAR)) {
 					NWidgetScrollbar *sb = static_cast<NWidgetScrollbar*>(nwid);
 					if (sb->disp_flags & (ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN)) {
