@@ -51,7 +51,7 @@ struct GoalListWindow : public Window {
 		this->OnInvalidateData(0);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget != WID_GOAL_CAPTION) return;
 
@@ -63,7 +63,7 @@ struct GoalListWindow : public Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_GOAL_GLOBAL_BUTTON:
@@ -168,7 +168,7 @@ struct GoalListWindow : public Window {
 		return num;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_GOAL_LIST) return;
 		Dimension d = GetStringBoundingBox(STR_GOALS_NONE);
@@ -351,7 +351,7 @@ struct GoalQuestionWindow : public Window {
 	}
 
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
@@ -368,7 +368,7 @@ struct GoalQuestionWindow : public Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
@@ -388,7 +388,7 @@ struct GoalQuestionWindow : public Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
@@ -396,7 +396,7 @@ struct GoalQuestionWindow : public Window {
 		size->height = GetStringHeight(STR_JUST_RAW_STRING, size->width);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_GQ_QUESTION) return;
 

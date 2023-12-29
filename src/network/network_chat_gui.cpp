@@ -440,7 +440,7 @@ struct NetworkChatWindow : public Window {
 		return pt;
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget != WID_NC_DESTINATION) return;
 
@@ -449,7 +449,7 @@ struct NetworkChatWindow : public Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_NC_SENDBUTTON: /* Send */
@@ -472,7 +472,7 @@ struct NetworkChatWindow : public Window {
 		return state;
 	}
 
-	void OnEditboxChanged(int widget) override
+	void OnEditboxChanged(WidgetID widget) override
 	{
 		if (widget == WID_NC_TEXTBOX) {
 			_chat_tab_completion_active = false;

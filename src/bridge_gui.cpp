@@ -174,7 +174,7 @@ public:
 		this->last_sorting = this->bridges.GetListing();
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_BBS_DROPDOWN_ORDER: {
@@ -221,7 +221,7 @@ public:
 		return corner;
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_BBS_DROPDOWN_ORDER:
@@ -255,7 +255,7 @@ public:
 		return ES_NOT_HANDLED;
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			default: break;
@@ -279,7 +279,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		if (widget == WID_BBS_DROPDOWN_CRITERIA && this->bridges.SortType() != index) {
 			this->bridges.SetSortType(index);

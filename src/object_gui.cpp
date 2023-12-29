@@ -184,7 +184,7 @@ public:
 		assert(ObjectClass::Get(_selected_object_class)->GetUISpecCount() > 0); // object GUI should be disabled elsewise
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_BO_OBJECT_NAME: {
@@ -212,7 +212,7 @@ public:
 		this->object_margin = ScaleGUITrad(4);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_BO_CLASS_LIST: {
@@ -304,7 +304,7 @@ public:
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
@@ -494,7 +494,7 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_BO_CLASS_LIST);
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
@@ -575,7 +575,7 @@ public:
 		return ES_HANDLED;
 	}
 
-	void OnEditboxChanged(int widget) override
+	void OnEditboxChanged(WidgetID widget) override
 	{
 		if (widget == WID_BO_FILTER) {
 			string_filter.SetFilterTerm(this->filter_editbox.text.buf);

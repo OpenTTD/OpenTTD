@@ -236,7 +236,7 @@ struct CheatWindow : Window {
 		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_C_PANEL) return;
 
@@ -298,7 +298,7 @@ struct CheatWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_C_PANEL) return;
 
@@ -344,7 +344,7 @@ struct CheatWindow : Window {
 		size->height = WidgetDimensions::scaled.framerect.Vertical() + this->line_height * lengthof(_cheats_ui);
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget != WID_C_PANEL) return;
 

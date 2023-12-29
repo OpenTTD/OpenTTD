@@ -402,7 +402,7 @@ void ScrollbarClickHandler(Window *w, NWidgetCore *nw, int x, int y)
  * @param  y The Window client y coordinate
  * @return A widget index, or -1 if no widget was found.
  */
-int GetWidgetFromPos(const Window *w, int x, int y)
+WidgetID GetWidgetFromPos(const Window *w, int x, int y)
 {
 	NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
 	return (nw != nullptr) ? nw->index : -1;
@@ -899,7 +899,7 @@ void Window::DrawWidgets() const
  * @param widget Sort button widget
  * @param state State of sort button
  */
-void Window::DrawSortButtonState(int widget, SortButtonState state) const
+void Window::DrawSortButtonState(WidgetID widget, SortButtonState state) const
 {
 	if (state == SBS_OFF) return;
 
@@ -1229,7 +1229,7 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y
  * Set index of the nested widget in the widget array.
  * @param index Index to use.
  */
-void NWidgetCore::SetIndex(int index)
+void NWidgetCore::SetIndex(WidgetID index)
 {
 	assert(index >= 0);
 	this->index = index;
@@ -1379,7 +1379,7 @@ NWidgetStacked::NWidgetStacked() : NWidgetContainer(NWID_SELECTION)
 	this->index = -1;
 }
 
-void NWidgetStacked::SetIndex(int index)
+void NWidgetStacked::SetIndex(WidgetID index)
 {
 	this->index = index;
 }
@@ -1954,7 +1954,7 @@ NWidgetMatrix::NWidgetMatrix() : NWidgetPIPContainer(NWID_MATRIX, NC_EQUALSIZE),
 {
 }
 
-void NWidgetMatrix::SetIndex(int index)
+void NWidgetMatrix::SetIndex(WidgetID index)
 {
 	this->index = index;
 }
@@ -2189,7 +2189,7 @@ void NWidgetMatrix::GetScrollOffsets(int &start_x, int &start_y, int &base_offs_
  *               vertical container will be inserted while adding the first
  *               child widget.
  */
-NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetPIPContainer *child) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL)
+NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, WidgetID index, NWidgetPIPContainer *child) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL)
 {
 	assert(tp == WWT_PANEL || tp == WWT_INSET || tp == WWT_FRAME);
 	if (index >= 0) this->SetIndex(index);
@@ -2397,7 +2397,7 @@ NWidgetBase *NWidgetBackground::GetWidgetOfType(WidgetType tp)
 	return nwid;
 }
 
-NWidgetViewport::NWidgetViewport(int index) : NWidgetCore(NWID_VIEWPORT, INVALID_COLOUR, 1, 1, 0x0, STR_NULL)
+NWidgetViewport::NWidgetViewport(WidgetID index) : NWidgetCore(NWID_VIEWPORT, INVALID_COLOUR, 1, 1, 0x0, STR_NULL)
 {
 	this->SetIndex(index);
 }
@@ -2467,7 +2467,7 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
  * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
  * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
  */
-int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding, int line_height) const
+int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, WidgetID widget, int padding, int line_height) const
 {
 	uint pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
 	if (pos != INT_MAX) pos += this->GetPosition();
@@ -2541,7 +2541,7 @@ EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16_t 
  * @param padding Padding to subtract from the size.
  * @note Updates the position if needed.
  */
-void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
+void Scrollbar::SetCapacityFromWidget(Window *w, WidgetID widget, int padding)
 {
 	NWidgetBase *nwid = w->GetWidget<NWidgetBase>(widget);
 	if (this->IsVertical()) {
@@ -2557,7 +2557,7 @@ void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
  * @param colour Colour of the scrollbar.
  * @param index  Index of the widget.
  */
-NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL), Scrollbar(tp != NWID_HSCROLLBAR)
+NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, WidgetID index) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL), Scrollbar(tp != NWID_HSCROLLBAR)
 {
 	assert(tp == NWID_HSCROLLBAR || tp == NWID_VSCROLLBAR);
 	this->SetIndex(index);
@@ -2683,7 +2683,7 @@ Dimension NWidgetLeaf::dropdown_dimension   = {0, 0};
  * @param data   Data of the widget.
  * @param tip    Tooltip of the widget.
  */
-NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32_t data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
+NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
 {
 	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_DEFSIZEBOX || tp == WWT_DEBUGBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
 	if (index >= 0) this->SetIndex(index);
@@ -3416,7 +3416,7 @@ NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWi
  * @param button_tooltip The tooltip-string of every button.
  * @return Panel with rows of company buttons.
  */
-NWidgetBase *MakeCompanyButtonRows(int widget_first, int widget_last, Colours button_colour, int max_length, StringID button_tooltip)
+NWidgetBase *MakeCompanyButtonRows(WidgetID widget_first, WidgetID widget_last, Colours button_colour, int max_length, StringID button_tooltip)
 {
 	assert(max_length >= 1);
 	NWidgetVertical *vert = nullptr; // Storage for all rows.
@@ -3427,7 +3427,7 @@ NWidgetBase *MakeCompanyButtonRows(int widget_first, int widget_last, Colours bu
 	sprite_size.width  += WidgetDimensions::unscaled.matrix.Horizontal();
 	sprite_size.height += WidgetDimensions::unscaled.matrix.Vertical() + 1; // 1 for the 'offset' of being pressed
 
-	for (int widnum = widget_first; widnum <= widget_last; widnum++) {
+	for (WidgetID widnum = widget_first; widnum <= widget_last; widnum++) {
 		/* Ensure there is room in 'hor' for another button. */
 		if (hor_length == max_length) {
 			if (vert == nullptr) vert = new NWidgetVertical();

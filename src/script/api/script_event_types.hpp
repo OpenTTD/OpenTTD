@@ -924,7 +924,7 @@ public:
 	 * @param number The windownumber that was clicked.
 	 * @param widget The widget in the window that was clicked.
 	 */
-	ScriptEventWindowWidgetClick(ScriptWindow::WindowClass window, uint32_t number, uint8_t widget) :
+	ScriptEventWindowWidgetClick(ScriptWindow::WindowClass window, uint32_t number, WidgetID widget) :
 		ScriptEvent(ET_WINDOW_WIDGET_CLICK),
 		window(window),
 		number(number),
@@ -955,12 +955,12 @@ public:
 	 * Get the number of the widget that was clicked.
 	 * @return The number of the clicked widget.
 	 */
-	uint8_t GetWidgetNumber() { return this->widget; }
+	int GetWidgetNumber() { return this->widget; }
 
 private:
 	ScriptWindow::WindowClass window; ///< Window of the click.
-	uint32_t number;                    ///< Number of the click.
-	uint8_t widget;                     ///< Widget of the click.
+	uint32_t number;                  ///< Number of the click.
+	WidgetID widget;                       ///< Widget of the click.
 };
 
 /**

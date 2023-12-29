@@ -582,7 +582,7 @@ void LinkGraphLegendWindow::SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay
 	}
 }
 
-void LinkGraphLegendWindow::UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize)
+void LinkGraphLegendWindow::UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize)
 {
 	if (IsInsideMM(widget, WID_LGL_SATURATION_FIRST, WID_LGL_SATURATION_LAST + 1)) {
 		StringID str = STR_NULL;
@@ -609,7 +609,7 @@ void LinkGraphLegendWindow::UpdateWidgetSize(int widget, Dimension *size, [[mayb
 	}
 }
 
-void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
+void LinkGraphLegendWindow::DrawWidget(const Rect &r, WidgetID widget) const
 {
 	Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
@@ -640,7 +640,7 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, int widget) const
 	}
 }
 
-bool LinkGraphLegendWindow::OnTooltip([[maybe_unused]] Point, int widget, TooltipCloseCondition close_cond)
+bool LinkGraphLegendWindow::OnTooltip([[maybe_unused]] Point, WidgetID widget, TooltipCloseCondition close_cond)
 {
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) {
@@ -687,7 +687,7 @@ void LinkGraphLegendWindow::UpdateOverlayCargoes()
 	this->overlay->SetCargoMask(mask);
 }
 
-void LinkGraphLegendWindow::OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count)
+void LinkGraphLegendWindow::OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count)
 {
 	/* Check which button is clicked */
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {

@@ -399,7 +399,7 @@ public:
 		CompanyStationsWindow::initial_state = this->filter;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_STL_SORTBY: {
@@ -453,7 +453,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_STL_SORTBY:
@@ -525,7 +525,7 @@ public:
 		}
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget == WID_STL_CAPTION) {
 			SetDParam(0, this->window_number);
@@ -533,7 +533,7 @@ public:
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_STL_LIST: {
@@ -572,7 +572,7 @@ public:
 				break;
 
 			case WID_STL_FACILALL:
-				for (uint i = WID_STL_TRAIN; i <= WID_STL_SHIP; i++) {
+				for (WidgetID i = WID_STL_TRAIN; i <= WID_STL_SHIP; i++) {
 					this->LowerWidget(i);
 				}
 
@@ -648,7 +648,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		if (widget == WID_STL_SORTDROPBTN) {
 			if (this->stations.SortType() != index) {
@@ -1386,7 +1386,7 @@ struct StationViewWindow : public Window {
 		data->Update(count);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SV_WAITING:
@@ -1470,7 +1470,7 @@ struct StationViewWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget == WID_SV_CAPTION) {
 			const Station *st = Station::Get(this->window_number);
@@ -1914,7 +1914,7 @@ struct StationViewWindow : public Window {
 		this->SetWidgetDirty(WID_SV_WAITING);
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_SV_WAITING:
@@ -2079,7 +2079,7 @@ struct StationViewWindow : public Window {
 		this->SetDirty();
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		if (widget == WID_SV_SORT_BY) {
 			this->SelectSortBy(index);
@@ -2299,7 +2299,7 @@ struct SelectStationWindow : Window {
 		this->Window::Close();
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget != WID_JS_PANEL) return;
 
@@ -2320,7 +2320,7 @@ struct SelectStationWindow : Window {
 		*size = d;
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_JS_PANEL) return;
 
@@ -2338,7 +2338,7 @@ struct SelectStationWindow : Window {
 
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget != WID_JS_PANEL) return;
 
@@ -2378,7 +2378,7 @@ struct SelectStationWindow : Window {
 		this->SetDirty();
 	}
 
-	void OnMouseOver([[maybe_unused]] Point pt, int widget) override
+	void OnMouseOver([[maybe_unused]] Point pt, WidgetID widget) override
 	{
 		if (widget != WID_JS_PANEL) {
 			SetViewportCatchmentSpecializedStation<T>(nullptr, true);

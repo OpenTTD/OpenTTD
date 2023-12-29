@@ -462,7 +462,7 @@ public:
 		this->flag_offset = this->blot_offset + ScaleGUITrad(2) + GetSpriteSize(SPR_BLOT).width;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
@@ -508,7 +508,7 @@ public:
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_NG_MATRIX: {
@@ -666,7 +666,7 @@ public:
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_NG_CANCEL: // Cancel button
@@ -800,7 +800,7 @@ public:
 		return state;
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(WidgetID wid) override
 	{
 		switch (wid) {
 			case WID_NG_FILTER: {
@@ -963,7 +963,7 @@ void ShowNetworkGameWindow()
 }
 
 struct NetworkStartServerWindow : public Window {
-	byte widget_id;              ///< The widget that has the pop-up input menu
+	WidgetID widget_id;          ///< The widget that has the pop-up input menu
 	QueryString name_editbox;    ///< Server name editbox.
 
 	NetworkStartServerWindow(WindowDesc *desc) : Window(desc), name_editbox(NETWORK_NAME_LENGTH)
@@ -976,7 +976,7 @@ struct NetworkStartServerWindow : public Window {
 		this->SetFocusedWidget(WID_NSS_GAMENAME);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
@@ -993,7 +993,7 @@ struct NetworkStartServerWindow : public Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
@@ -1004,7 +1004,7 @@ struct NetworkStartServerWindow : public Window {
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_NSS_SETPWD:
@@ -1013,7 +1013,7 @@ struct NetworkStartServerWindow : public Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_NSS_CANCEL: // Cancel button
@@ -1091,7 +1091,7 @@ struct NetworkStartServerWindow : public Window {
 		}
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
@@ -1656,7 +1656,7 @@ public:
 		this->SetWidgetDisabledState(WID_CL_SERVER_NAME_EDIT, !_network_server);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_CL_SERVER_VISIBILITY:
@@ -1684,7 +1684,7 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_CL_MATRIX);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_CL_SERVER_NAME:
@@ -1719,7 +1719,7 @@ public:
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_CL_SERVER_NAME_EDIT:
@@ -1753,7 +1753,7 @@ public:
 		}
 	}
 
-	bool OnTooltip([[maybe_unused]] Point pt, int widget, TooltipCloseCondition close_cond) override
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
 	{
 		switch (widget) {
 			case WID_CL_MATRIX: {
@@ -1792,7 +1792,7 @@ public:
 		return false;
 	}
 
-	void OnDropdownClose(Point pt, int widget, int index, bool instant_close) override
+	void OnDropdownClose(Point pt, WidgetID widget, int index, bool instant_close) override
 	{
 		/* If you close the dropdown outside the list, don't take any action. */
 		if (widget == WID_CL_MATRIX) return;
@@ -1800,7 +1800,7 @@ public:
 		Window::OnDropdownClose(pt, widget, index, instant_close);
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		switch (widget) {
 			case WID_CL_SERVER_VISIBILITY:
@@ -2010,7 +2010,7 @@ public:
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_CL_MATRIX: {
@@ -2046,7 +2046,7 @@ public:
 		}
 	}
 
-	void OnMouseOver([[maybe_unused]] Point pt, int widget) override
+	void OnMouseOver([[maybe_unused]] Point pt, WidgetID widget) override
 	{
 		if (widget != WID_CL_MATRIX) {
 			if (this->hover_index != -1) {
@@ -2082,7 +2082,7 @@ struct NetworkJoinStatusWindow : Window {
 		this->InitNested(WN_NETWORK_STATUS_WINDOW_JOIN);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_NJS_PROGRESS_BAR: {
@@ -2133,7 +2133,7 @@ struct NetworkJoinStatusWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_NJS_PROGRESS_BAR:
@@ -2159,7 +2159,7 @@ struct NetworkJoinStatusWindow : Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget == WID_NJS_CANCELOK) { // Disconnect button
 			NetworkDisconnect();
@@ -2248,14 +2248,14 @@ struct NetworkCompanyPasswordWindow : public Window {
 		this->ReInit();
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_NCP_WARNING) {
 			*size = this->warning_size;
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_NCP_WARNING) return;
 
@@ -2272,7 +2272,7 @@ struct NetworkCompanyPasswordWindow : public Window {
 		NetworkChangeCompanyPassword(_local_company, this->password_editbox.text.buf);
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_NCP_OK:
@@ -2354,14 +2354,14 @@ struct NetworkAskRelayWindow : public Window {
 		this->Window::Close();
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_NAR_TEXT) {
 			*size = GetStringBoundingBox(STR_NETWORK_ASK_RELAY_TEXT);
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_NAR_TEXT) {
 			DrawStringMultiLine(r, STR_NETWORK_ASK_RELAY_TEXT, TC_FROMSTRING, SA_CENTER);
@@ -2376,7 +2376,7 @@ struct NetworkAskRelayWindow : public Window {
 		this->SetDirty();
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_NAR_TEXT:
@@ -2386,7 +2386,7 @@ struct NetworkAskRelayWindow : public Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_NAR_NO:
@@ -2457,14 +2457,14 @@ struct NetworkAskSurveyWindow : public Window {
 		this->InitNested(0);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_NAS_TEXT) {
 			*size = GetStringBoundingBox(STR_NETWORK_ASK_SURVEY_TEXT);
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_NAS_TEXT) {
 			DrawStringMultiLine(r, STR_NETWORK_ASK_SURVEY_TEXT, TC_BLACK, SA_CENTER);
@@ -2479,7 +2479,7 @@ struct NetworkAskSurveyWindow : public Window {
 		this->SetDirty();
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_NAS_PREVIEW:

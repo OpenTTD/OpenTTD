@@ -54,7 +54,7 @@ public:
 	 * @param company_mask Bitmask of companies to be shown.
 	 * @param scale Desired thickness of lines and size of station dots.
 	 */
-	LinkGraphOverlay(Window *w, uint wid, CargoTypes cargo_mask, CompanyMask company_mask, uint scale) :
+	LinkGraphOverlay(Window *w, WidgetID wid, CargoTypes cargo_mask, CompanyMask company_mask, uint scale) :
 			window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale)
 	{}
 
@@ -75,7 +75,7 @@ public:
 
 protected:
 	Window *window;                    ///< Window to be drawn into.
-	const uint widget_id;              ///< ID of Widget in Window to be drawn to.
+	const WidgetID widget_id;          ///< ID of Widget in Window to be drawn to.
 	CargoTypes cargo_mask;             ///< Bitmask of cargos to be displayed.
 	CompanyMask company_mask;          ///< Bitmask of companies to be displayed.
 	LinkMap cached_links;              ///< Cache for links to reduce recalculation.
@@ -108,10 +108,10 @@ public:
 	LinkGraphLegendWindow(WindowDesc *desc, int window_number);
 	void SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay);
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override;
-	void DrawWidget(const Rect &r, int widget) const override;
-	bool OnTooltip([[maybe_unused]] Point pt, int widget, TooltipCloseCondition close_cond) override;
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override;
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override;
+	void DrawWidget(const Rect &r, WidgetID widget) const override;
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override;
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 
 private:
