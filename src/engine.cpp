@@ -885,13 +885,18 @@ static CompanyID GetPreviewCompany(Engine *e)
 				c->old_economy[0].performance_history > best_hist) {
 
 			/* Check whether the company uses similar vehicles */
-			for (const Vehicle *v : Vehicle::Iterate()) {
-				if (v->owner != c->index || v->type != e->type) continue;
-				if (!v->GetEngine()->CanCarryCargo() || !HasBit(cargomask, v->cargo_type)) continue;
+			bool match = false;
+			const VehicleList &vehicle_list = c->group_all[e->type].vehicle_list;
+			for (const Vehicle *v : vehicle_list) {
+				for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
+					if (!u->GetEngine()->CanCarryCargo() || !HasBit(cargomask, u->cargo_type)) continue;
 
-				best_hist = c->old_economy[0].performance_history;
-				best_company = c->index;
-				break;
+					best_hist = c->old_economy[0].performance_history;
+					best_company = c->index;
+					match = true;
+					break;
+				}
+				if (match) break;
 			}
 		}
 	}
@@ -1052,15 +1057,20 @@ static void NewVehicleAvailable(Engine *e)
 			/* We assume the user did NOT build it.. prove me wrong ;) */
 			c->block_preview = 20;
 
-			for (const Vehicle *v : Vehicle::Iterate()) {
-				if (v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_SHIP ||
-						(v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft())) {
-					if (v->owner == c->index && v->engine_type == index) {
+			bool match = false;
+			const VehicleList &vehicle_list = c->group_all[e->type].vehicle_list;
+			for (const Vehicle *v : vehicle_list) {
+				for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
+					if (u->type == VEH_AIRCRAFT && !Aircraft::From(u)->IsNormalAircraft()) continue;
+
+					if (u->engine_type == index) {
 						/* The user did prove me wrong, so restore old value */
 						c->block_preview = block_preview;
+						match = true;
 						break;
 					}
 				}
+				if (match) break;
 			}
 		}
 	}
