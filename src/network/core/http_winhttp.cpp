@@ -15,6 +15,7 @@
 #include "../network_internal.h"
 
 #include "http.h"
+#include "http_shared.h"
 
 #include <mutex>
 #include <winhttp.h>
@@ -26,9 +27,9 @@ static HINTERNET _winhttp_session = nullptr;
 /** Single HTTP request. */
 class NetworkHTTPRequest {
 private:
-	const std::wstring uri;       ///< URI to connect to.
-	HTTPCallback *callback;       ///< Callback to send data back on.
-	const std::string data;       ///< Data to send, if any.
+	const std::wstring uri; ///< URI to connect to.
+	HTTPThreadSafeCallback callback; ///< Callback to send data back on.
+	const std::string data; ///< Data to send, if any.
 
 	HINTERNET connection = nullptr;      ///< Current connection object.
 	HINTERNET request = nullptr;         ///< Current request object.
@@ -49,6 +50,11 @@ static std::vector<NetworkHTTPRequest *> _http_requests;
 static std::vector<NetworkHTTPRequest *> _new_http_requests;
 static std::mutex _new_http_requests_mutex;
 
+static std::vector<HTTPThreadSafeCallback *> _http_callbacks;
+static std::vector<HTTPThreadSafeCallback *> _new_http_callbacks;
+static std::mutex _http_callback_mutex;
+static std::mutex _new_http_callback_mutex;
+
 /**
  * Create a new HTTP request.
  *
@@ -61,6 +67,8 @@ NetworkHTTPRequest::NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *ca
 	callback(callback),
 	data(data)
 {
+	std::lock_guard<std::mutex> lock(_new_http_callback_mutex);
+	_new_http_callbacks.push_back(&this->callback);
 }
 
 static std::string GetLastErrorAsString()
@@ -113,7 +121,7 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			if (this->depth++ > 5) {
 				Debug(net, 0, "HTTP request failed: too many redirects");
 				this->finished = true;
-				this->callback->OnFailure();
+				this->callback.OnFailure();
 				return;
 			}
 			break;
@@ -136,7 +144,7 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 				/* No need to be verbose about rate limiting. */
 				Debug(net, status_code == HTTP_429_TOO_MANY_REQUESTS ? 1 : 0, "HTTP request failed: status-code {}", status_code);
 				this->finished = true;
-				this->callback->OnFailure();
+				this->callback.OnFailure();
 				return;
 			}
 
@@ -150,17 +158,15 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			DWORD size = *(DWORD *)info;
 
 			/* Next step: read the data in a temporary allocated buffer.
-			 * The buffer will be free'd in the next step. */
-			char *buffer = size == 0 ? nullptr : MallocT<char>(size);
+			 * The buffer will be free'd by OnReceiveData() in the next step. */
+			char *buffer = size == 0 ? nullptr : new char[size];
 			WinHttpReadData(this->request, buffer, size, 0);
 		} break;
 
 		case WINHTTP_CALLBACK_STATUS_READ_COMPLETE:
 			Debug(net, 4, "HTTP callback: {} bytes", length);
 
-			this->callback->OnReceiveData(static_cast<char *>(info), length);
-			/* Free the temporary buffer that was allocated in the previous step. */
-			free(info);
+			this->callback.OnReceiveData(std::unique_ptr<char[]>(static_cast<char *>(info)), length);
 
 			if (length == 0) {
 				/* Next step: no more data available: request is finished. */
@@ -177,13 +183,13 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 		case WINHTTP_CALLBACK_STATUS_REQUEST_ERROR:
 			Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
 			this->finished = true;
-			this->callback->OnFailure();
+			this->callback.OnFailure();
 			break;
 
 		default:
 			Debug(net, 0, "HTTP request failed: unexepected callback code 0x{:x}", code);
 			this->finished = true;
-			this->callback->OnFailure();
+			this->callback.OnFailure();
 			return;
 	}
 }
@@ -227,7 +233,7 @@ void NetworkHTTPRequest::Connect()
 	if (this->connection == nullptr) {
 		Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
 		this->finished = true;
-		this->callback->OnFailure();
+		this->callback.OnFailure();
 		return;
 	}
 
@@ -237,7 +243,7 @@ void NetworkHTTPRequest::Connect()
 
 		Debug(net, 0, "HTTP request failed: {}", GetLastErrorAsString());
 		this->finished = true;
-		this->callback->OnFailure();
+		this->callback.OnFailure();
 		return;
 	}
 
@@ -258,14 +264,14 @@ void NetworkHTTPRequest::Connect()
  */
 bool NetworkHTTPRequest::Receive()
 {
-	if (this->callback->IsCancelled()) {
+	if (this->callback.cancelled && !this->finished) {
 		Debug(net, 1, "HTTP request failed: cancelled by user");
 		this->finished = true;
-		this->callback->OnFailure();
-		return true;
+		this->callback.OnFailure();
+		/* Fall-through, as we are waiting for IsQueueEmpty() to happen. */
 	}
 
-	return this->finished;
+	return this->finished && this->callback.IsQueueEmpty();
 }
 
 /**
@@ -279,6 +285,9 @@ NetworkHTTPRequest::~NetworkHTTPRequest()
 		WinHttpCloseHandle(this->request);
 		WinHttpCloseHandle(this->connection);
 	}
+
+	std::lock_guard<std::mutex> lock(_http_callback_mutex);
+	_http_callbacks.erase(std::remove(_http_callbacks.begin(), _http_callbacks.end(), &this->callback), _http_callbacks.end());
 }
 
 /* static */ void NetworkHTTPSocketHandler::Connect(const std::string &uri, HTTPCallback *callback, const std::string data)
@@ -292,6 +301,25 @@ NetworkHTTPRequest::~NetworkHTTPRequest()
 
 /* static */ void NetworkHTTPSocketHandler::HTTPReceive()
 {
+	/* Process all callbacks. */
+	{
+		std::lock_guard<std::mutex> lock(_http_callback_mutex);
+
+		{
+			std::lock_guard<std::mutex> lock(_new_http_callback_mutex);
+			if (!_new_http_callbacks.empty()) {
+				/* We delay adding new callbacks, as HandleQueue() below might add a new callback. */
+				_http_callbacks.insert(_http_callbacks.end(), _new_http_callbacks.begin(), _new_http_callbacks.end());
+				_new_http_callbacks.clear();
+			}
+		}
+
+		for (auto &callback : _http_callbacks) {
+			callback->HandleQueue();
+		}
+	}
+
+	/* Process all requests. */
 	{
 		std::lock_guard<std::mutex> lock(_new_http_requests_mutex);
 		if (!_new_http_requests.empty()) {

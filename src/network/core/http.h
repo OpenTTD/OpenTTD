@@ -30,7 +30,7 @@ struct HTTPCallback {
 	 * @param length the amount of received data, 0 when all data has been received.
 	 * @note When nullptr is sent the HTTP socket handler is closed/freed.
 	 */
-	virtual void OnReceiveData(const char *data, size_t length) = 0;
+	virtual void OnReceiveData(std::unique_ptr<char[]> data, size_t length) = 0;
 
 	/**
 	 * Check if there is a request to cancel the transfer.
