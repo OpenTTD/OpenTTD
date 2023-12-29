@@ -284,7 +284,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 			if (!quoted && e == t) {
 				item.value.reset();
 			} else {
-				item.value = StrMakeValid(std::string(t));
+				item.value = StrMakeValid(std::string_view(t));
 			}
 		} else {
 			/* it's an orphan item */
