@@ -86,9 +86,9 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 	this->CreateNestedTree();
 	this->vscroll = this->GetScrollbar(WID_TF_VSCROLLBAR);
 	this->hscroll = this->GetScrollbar(WID_TF_HSCROLLBAR);
-	this->FinishInitNested(file_type);
 	this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetDataTip(STR_TEXTFILE_README_CAPTION + file_type, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 	this->GetWidget<NWidgetStacked>(WID_TF_SEL_JUMPLIST)->SetDisplayedPlane(SZSP_HORIZONTAL);
+	this->FinishInitNested(file_type);
 
 	this->DisableWidget(WID_TF_NAVBACK);
 	this->DisableWidget(WID_TF_NAVFORWARD);
@@ -493,7 +493,7 @@ void TextfileWindow::NavigateToFile(std::string newfile, size_t line)
 
 	if (StrEndsWithIgnoreCase(this->filename, ".md")) this->AfterLoadMarkdown();
 
-	this->GetWidget<NWidgetStacked>(WID_TF_SEL_JUMPLIST)->SetDisplayedPlane(this->jumplist.empty() ? SZSP_HORIZONTAL : 0);
+	if (this->GetWidget<NWidgetStacked>(WID_TF_SEL_JUMPLIST)->SetDisplayedPlane(this->jumplist.empty() ? SZSP_HORIZONTAL : 0)) this->ReInit();
 }
 
 /**
@@ -761,8 +761,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	this->lines.clear();
 	this->jumplist.clear();
 
-	this->GetWidget<NWidgetStacked>(WID_TF_SEL_JUMPLIST)->SetDisplayedPlane(SZSP_HORIZONTAL);
-	this->ReInit();
+	if (this->GetWidget<NWidgetStacked>(WID_TF_SEL_JUMPLIST)->SetDisplayedPlane(SZSP_HORIZONTAL)) this->ReInit();
 
 	if (textfile.empty()) return;
 
