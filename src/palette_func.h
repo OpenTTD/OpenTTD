@@ -52,7 +52,7 @@ HsvColour AdjustHsvColourBrightness(HsvColour hsv, int amt);
  * @returns 8 bit stretched value.
  */
 template <uint TNumBits>
-static inline uint8_t StretchBits(uint8_t v)
+static inline constexpr uint8_t StretchBits(uint8_t v)
 {
 	return (v << (8 - TNumBits)) | (v >> (8 - (8 - TNumBits) * 2));
 }
@@ -87,7 +87,7 @@ struct ColoursPacker
 	inline constexpr bool IsCustom() const { return HasBit(this->c, IS_CUSTOM); }
 
 	inline constexpr uint8_t I() const { return GB(this->c, I_START, I_SIZE); }
-	inline constexpr uint16_t H() const { return GB(this->c, H_START, H_SIZE) * HsvColour::HUE_MAX / (1U << 9); }
+	inline constexpr uint16_t H() const { return GB(this->c, H_START, H_SIZE) * HsvColour::HUE_MAX / (1U << H_SIZE); }
 	inline constexpr uint8_t S() const { return StretchBits<S_SIZE>(GB(this->c, S_START, S_SIZE)); }
 	inline constexpr uint8_t V() const { return StretchBits<V_SIZE>(GB(this->c, V_START, V_SIZE)); }
 	inline constexpr uint8_t C() const { return StretchBits<C_SIZE>(GB(this->c, C_START, C_SIZE)); }
@@ -122,9 +122,9 @@ struct TextColourPacker
 	inline constexpr uint8_t G() const { return StretchBits<G_SIZE>(GB(this->tc, G_START, G_SIZE)); }
 	inline constexpr uint8_t B() const { return StretchBits<B_SIZE>(GB(this->tc, B_START, B_SIZE)); }
 
-	inline constexpr void SetR(uint8_t v) { SB(this->tc, R_START, R_SIZE, v >> (8 - R_SIZE)); }
-	inline constexpr void SetG(uint8_t v) { SB(this->tc, G_START, G_SIZE, v >> (8 - G_SIZE)); }
-	inline constexpr void SetB(uint8_t v) { SB(this->tc, B_START, B_SIZE, v >> (8 - B_SIZE)); }
+	inline void SetR(uint8_t v) { SB(this->tc, R_START, R_SIZE, v >> (8 - R_SIZE)); }
+	inline void SetG(uint8_t v) { SB(this->tc, G_START, G_SIZE, v >> (8 - G_SIZE)); }
+	inline void SetB(uint8_t v) { SB(this->tc, B_START, B_SIZE, v >> (8 - B_SIZE)); }
 
 	inline constexpr RgbaColour Rgba() const { return RgbaColour(this->R(), this->G(), this->B(), UINT8_MAX); }
 };
