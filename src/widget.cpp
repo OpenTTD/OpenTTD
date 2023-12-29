@@ -903,7 +903,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 {
 	if (state == SBS_OFF) return;
 
-	assert(this->nested_array != nullptr);
+	assert(this->widget_lookup != nullptr);
 	Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect();
 
 	/* Sort button uses the same sprites as vertical scrollbar */
@@ -1023,8 +1023,8 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  */
 
 /**
- * @fn void NWidgetBase::FillNestedArray(NWidgetBase **array, uint length)
- * Fill the Window::nested_array array with pointers to nested widgets in the tree.
+ * @fn void NWidgetBase::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
+ * Fill the Window::widget_lookup array with pointers to nested widgets in the tree.
  * @param array Base pointer of the array.
  * @param length Length of the array.
  */
@@ -1276,9 +1276,9 @@ void NWidgetCore::SetAlignment(StringAlignment align)
 	this->align = align;
 }
 
-void NWidgetCore::FillNestedArray(NWidgetBase **array, uint length)
+void NWidgetCore::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
 {
-	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
+	if (this->index >= 0 && (uint)(this->index) < length) widget_lookup[this->index] = this;
 }
 
 NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
@@ -1345,10 +1345,10 @@ void NWidgetContainer::Add(NWidgetBase *wid)
 	}
 }
 
-void NWidgetContainer::FillNestedArray(NWidgetBase **array, uint length)
+void NWidgetContainer::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
 {
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-		child_wid->FillNestedArray(array, length);
+		child_wid->FillWidgetLookup(widget_lookup, length);
 	}
 }
 
@@ -1452,10 +1452,10 @@ void NWidgetStacked::AssignSizePosition(SizingType sizing, int x, int y, uint gi
 	}
 }
 
-void NWidgetStacked::FillNestedArray(NWidgetBase **array, uint length)
+void NWidgetStacked::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
 {
-	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
-	NWidgetContainer::FillNestedArray(array, length);
+	if (this->index >= 0 && (uint)(this->index) < length) widget_lookup[this->index] = this;
+	NWidgetContainer::FillWidgetLookup(widget_lookup, length);
 }
 
 void NWidgetStacked::Draw(const Window *w)
@@ -1925,7 +1925,7 @@ void NWidgetSpacer::SetupSmallestSize(Window *)
 	this->smallest_y = this->min_y;
 }
 
-void NWidgetSpacer::FillNestedArray(NWidgetBase **, uint)
+void NWidgetSpacer::FillWidgetLookup(NWidgetBase **, uint)
 {
 }
 
@@ -2065,10 +2065,10 @@ void NWidgetMatrix::AssignSizePosition(SizingType, int x, int y, uint given_widt
 	this->SetCount(this->count);
 }
 
-void NWidgetMatrix::FillNestedArray(NWidgetBase **array, uint length)
+void NWidgetMatrix::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
 {
-	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
-	NWidgetContainer::FillNestedArray(array, length);
+	if (this->index >= 0 && (uint)(this->index) < length) widget_lookup[this->index] = this;
+	NWidgetContainer::FillWidgetLookup(widget_lookup, length);
 }
 
 NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
@@ -2335,10 +2335,10 @@ void NWidgetBackground::AssignSizePosition(SizingType sizing, int x, int y, uint
 	}
 }
 
-void NWidgetBackground::FillNestedArray(NWidgetBase **array, uint length)
+void NWidgetBackground::FillWidgetLookup(NWidgetBase **widget_lookup, uint length)
 {
-	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
-	if (this->child != nullptr) this->child->FillNestedArray(array, length);
+	if (this->index >= 0 && (uint)(this->index) < length) widget_lookup[this->index] = this;
+	if (this->child != nullptr) this->child->FillWidgetLookup(widget_lookup, length);
 }
 
 void NWidgetBackground::Draw(const Window *w)

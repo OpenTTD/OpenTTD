@@ -260,7 +260,7 @@ public:
 	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
 	std::map<int, QueryString*> querystrings; ///< QueryString associated to WWT_EDITBOX widgets.
 	NWidgetBase *nested_root;        ///< Root of the nested tree.
-	NWidgetBase **nested_array;      ///< Array of pointers into the tree. Do not access directly, use #Window::GetWidget() instead.
+	NWidgetBase **widget_lookup;      ///< Array of pointers into the tree. Do not access directly, use #Window::GetWidget() instead.
 	uint nested_array_size;          ///< Size of the nested array.
 	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c nullptr, window cannot shade.
 	Dimension unshaded_size;         ///< Last known unshaded size (only valid while shaded).
@@ -329,7 +329,7 @@ public:
 	inline void SetWidgetDisabledState(byte widget_index, bool disab_stat)
 	{
 		assert(widget_index < this->nested_array_size);
-		if (this->nested_array[widget_index] != nullptr) this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
+		if (this->widget_lookup[widget_index] != nullptr) this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
 	}
 
 	/**
@@ -520,7 +520,7 @@ public:
 
 	/**
 	 * Notification that the nested widget tree gets initialized. The event can be used to perform general computations.
-	 * @note #nested_root and/or #nested_array (normally accessed via #GetWidget()) may not exist during this call.
+	 * @note #nested_root and/or #widget_lookup (normally accessed via #GetWidget()) may not exist during this call.
 	 */
 	virtual void OnInit() { }
 
@@ -894,8 +894,8 @@ inline bool AllEqual(It begin, It end, Pred pred)
 template <class NWID>
 inline NWID *Window::GetWidget(uint widnum)
 {
-	if (widnum >= this->nested_array_size || this->nested_array[widnum] == nullptr) return nullptr;
-	NWID *nwid = dynamic_cast<NWID *>(this->nested_array[widnum]);
+	if (widnum >= this->nested_array_size || this->widget_lookup[widnum] == nullptr) return nullptr;
+	NWID *nwid = dynamic_cast<NWID *>(this->widget_lookup[widnum]);
 	assert(nwid != nullptr);
 	return nwid;
 }
@@ -905,7 +905,7 @@ template <>
 inline const NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
 {
 	if (widnum >= this->nested_array_size) return nullptr;
-	return this->nested_array[widnum];
+	return this->widget_lookup[widnum];
 }
 
 /**

@@ -136,7 +136,7 @@ public:
 	virtual void SetupSmallestSize(Window *w) = 0;
 	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
 
-	virtual void FillNestedArray(NWidgetBase **array, uint length) = 0;
+	virtual void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) = 0;
 
 	virtual NWidgetCore *GetWidgetFromPos(int x, int y) = 0;
 	virtual NWidgetBase *GetWidgetOfType(WidgetType tp);
@@ -337,7 +337,7 @@ public:
 	inline void SetDisabled(bool disabled);
 	inline bool IsDisabled() const;
 
-	void FillNestedArray(NWidgetBase **array, uint length) override;
+	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	bool IsHighlighted() const override;
 	TextColour GetHighlightColour() const override;
@@ -419,7 +419,7 @@ public:
 
 	void AdjustPaddingForZoom() override;
 	void Add(NWidgetBase *wid);
-	void FillNestedArray(NWidgetBase **array, uint length) override;
+	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
 
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
@@ -462,7 +462,7 @@ public:
 	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
-	void FillNestedArray(NWidgetBase **array, uint length) override;
+	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
 
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
@@ -470,7 +470,7 @@ public:
 	bool SetDisplayedPlane(int plane);
 
 	int shown_plane; ///< Plane being displayed (for #NWID_SELECTION only).
-	int index;       ///< If non-negative, index in the #Window::nested_array.
+	int index;       ///< If non-negative, index in the #Window::widget_lookup.
 };
 
 /** Nested widget container flags, */
@@ -564,12 +564,12 @@ public:
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
-	void FillNestedArray(NWidgetBase **array, uint length) override;
+	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
 
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	void Draw(const Window *w) override;
 protected:
-	int index;      ///< If non-negative, index in the #Window::nested_array.
+	int index;      ///< If non-negative, index in the #Window::widget_lookup.
 	Colours colour; ///< Colour of this widget.
 	int clicked;    ///< The currently clicked widget.
 	int count;      ///< Amount of valid widgets.
@@ -593,7 +593,7 @@ public:
 	NWidgetSpacer(int width, int height);
 
 	void SetupSmallestSize(Window *w) override;
-	void FillNestedArray(NWidgetBase **array, uint length) override;
+	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
 
 	void Draw(const Window *w) override;
 	void SetDirty(const Window *w) const override;
@@ -617,7 +617,7 @@ public:
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 
-	void FillNestedArray(NWidgetBase **array, uint length) override;
+	void FillWidgetLookup(NWidgetBase **widget_lookup, uint length) override;
 
 	void Draw(const Window *w) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
