@@ -2196,9 +2196,17 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Kleurens
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Kleurenschema's voor wegvoertuigen weergeven
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Kleurenschema's voor schepen weergeven
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Kleurenschema's voor vliegtuigen weergeven
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Kleuren van treingroepen weergeven
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Kleuren van wegvoertuiggroepen weergeven
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Kleuren van scheepsgroepen weergeven
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Kleuren van vliegtuiggroepen weergeven
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Selecteer de hoofdkleur voor het geselecteerde schema. Ctrl+klik zal deze kleur instellen voor elk schema
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Selecteer de secundaire kleur voor het geselecteerde schema. Met Ctrl+klik stel je deze kleur in voor alle schema's
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecteer een kleurenschema om te wijzigen of meerdere schema's met Ctrl+klik. Vink de keuzevakjes aan-uit om het schema aan-uit te zetten
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Geen treingroepen ingesteld
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Geen wegvoertuiggroepen ingesteld
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Geen scheepsgroepen ingesteld
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Geen vliegtuiggroepen ingesteld
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Standaard kleurenschema
@@ -4653,9 +4661,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Hoofdlet
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hoofdlettergevoeligheid aan-uitzetten bij het vergelijken van AI-logberichten t.o.v. de afbreektekst
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Doorgaan
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Het spel vervolgen en de AI voortzetten
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Probleemgegevens van deze AI weergeven
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Probleemgegevens van deze AI weergeven. Ctrl+klik opent in een nieuw venster
 STR_AI_GAME_SCRIPT                                              :{BLACK}Spelscript
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Controleer het logboek van het spelscript
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Controleer het logboek van het spelscript. Ctrl+klik opent in een nieuw venster
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden.{} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van de actieve scripts is vastgelopen. Meld dit a.u.b. bij de auteur van dit script met een schermafdruk van het AI-/spelscript-probleemvenster.
