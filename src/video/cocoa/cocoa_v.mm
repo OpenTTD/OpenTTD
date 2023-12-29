@@ -569,7 +569,7 @@ static FVideoDriver_CocoaQuartz iFVideoDriver_CocoaQuartz;
 /** Clear buffer to opaque black. */
 static void ClearWindowBuffer(uint32_t *buffer, uint32_t pitch, uint32_t height)
 {
-	uint32_t fill = Colour(0, 0, 0).data;
+	uint32_t fill = RgbaColour(0, 0, 0).data;
 	for (uint32_t y = 0; y < height; y++) {
 		for (uint32_t x = 0; x < pitch; x++) {
 			buffer[y * pitch + x] = fill;
