@@ -16,6 +16,7 @@
 
 #include "http.h"
 
+#include <mutex>
 #include <winhttp.h>
 
 #include "../../safeguards.h"
@@ -46,6 +47,7 @@ public:
 
 static std::vector<NetworkHTTPRequest *> _http_requests;
 static std::vector<NetworkHTTPRequest *> _new_http_requests;
+static std::mutex _new_http_requests_mutex;
 
 /**
  * Create a new HTTP request.
@@ -283,15 +285,20 @@ NetworkHTTPRequest::~NetworkHTTPRequest()
 {
 	auto request = new NetworkHTTPRequest(std::wstring(uri.begin(), uri.end()), callback, data);
 	request->Connect();
+
+	std::lock_guard<std::mutex> lock(_new_http_requests_mutex);
 	_new_http_requests.push_back(request);
 }
 
 /* static */ void NetworkHTTPSocketHandler::HTTPReceive()
 {
-	if (!_new_http_requests.empty()) {
-		/* We delay adding new requests, as Receive() below can cause a callback which adds a new requests. */
-		_http_requests.insert(_http_requests.end(), _new_http_requests.begin(), _new_http_requests.end());
-		_new_http_requests.clear();
+	{
+		std::lock_guard<std::mutex> lock(_new_http_requests_mutex);
+		if (!_new_http_requests.empty()) {
+			/* We delay adding new requests, as Receive() below can cause a callback which adds a new requests. */
+			_http_requests.insert(_http_requests.end(), _new_http_requests.begin(), _new_http_requests.end());
+			_new_http_requests.clear();
+		}
 	}
 
 	if (_http_requests.empty()) return;
