@@ -11,7 +11,7 @@
 #define WIDGETS_SETTINGS_WIDGET_H
 
 /** Widgets of the #GameOptionsWindow class. */
-enum GameOptionsWidgets {
+enum GameOptionsWidgets : WidgetID {
 	WID_GO_TAB_GENERAL,            ///< General tab.
 	WID_GO_TAB_GRAPHICS,           ///< Graphics tab.
 	WID_GO_TAB_SOUND,              ///< Sound tab.
@@ -54,7 +54,7 @@ enum GameOptionsWidgets {
 };
 
 /** Widgets of the #GameSettingsWindow class. */
-enum GameSettingsWidgets {
+enum GameSettingsWidgets : WidgetID {
 	WID_GS_FILTER,             ///< Text filter.
 	WID_GS_OPTIONSPANEL,       ///< Panel widget containing the option lists.
 	WID_GS_SCROLLBAR,          ///< Scrollbar.
@@ -71,7 +71,7 @@ enum GameSettingsWidgets {
 };
 
 /** Widgets of the #CustomCurrencyWindow class. */
-enum CustomCurrencyWidgets {
+enum CustomCurrencyWidgets : WidgetID {
 	WID_CC_RATE_DOWN,      ///< Down button.
 	WID_CC_RATE_UP,        ///< Up button.
 	WID_CC_RATE,           ///< Rate of currency.

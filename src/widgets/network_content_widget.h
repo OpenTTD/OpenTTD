@@ -13,14 +13,14 @@
 #include "../textfile_type.h"
 
 /** Widgets of the #NetworkContentDownloadStatusWindow class. */
-enum NetworkContentDownloadStatusWidgets {
+enum NetworkContentDownloadStatusWidgets : WidgetID {
 	WID_NCDS_PROGRESS_BAR,  ///< Simple progress bar.
 	WID_NCDS_PROGRESS_TEXT, ///< Text explaining what is happening.
 	WID_NCDS_CANCELOK,      ///< (Optional) Cancel/OK button.
 };
 
 /** Widgets of the #NetworkContentListWindow class. */
-enum NetworkContentListWidgets {
+enum NetworkContentListWidgets : WidgetID {
 	WID_NCL_BACKGROUND,     ///< Resize button.
 
 	WID_NCL_FILTER_CAPT,    ///< Caption for the filter editbox.

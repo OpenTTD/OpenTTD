@@ -11,7 +11,7 @@
 #define WIDGETS_NEWGRF_DEBUG_WIDGET_H
 
 /** Widgets of the #NewGRFInspectWindow class. */
-enum NewGRFInspectWidgets {
+enum NewGRFInspectWidgets : WidgetID {
 	WID_NGRFI_CAPTION,   ///< The caption bar of course.
 	WID_NGRFI_PARENT,    ///< Inspect the parent.
 	WID_NGRFI_VEH_PREV,  ///< Go to previous vehicle in chain.
@@ -22,7 +22,7 @@ enum NewGRFInspectWidgets {
 };
 
 /** Widgets of the #SpriteAlignerWindow class. */
-enum SpriteAlignerWidgets {
+enum SpriteAlignerWidgets : WidgetID {
 	WID_SA_CAPTION,     ///< Caption of the window.
 	WID_SA_PREVIOUS,    ///< Skip to the previous sprite.
 	WID_SA_GOTO,        ///< Go to a given sprite.

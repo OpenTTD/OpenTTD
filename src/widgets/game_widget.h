@@ -13,7 +13,7 @@
 #include "../textfile_type.h"
 
 /** Widgets of the #GSConfigWindow class. */
-enum GSConfigWidgets {
+enum GSConfigWidgets : WidgetID {
 	WID_GSC_BACKGROUND,       ///< Window background.
 	WID_GSC_GSLIST,           ///< List with current selected Game Script.
 	WID_GSC_SETTINGS,         ///< Panel to draw the Game Script settings on

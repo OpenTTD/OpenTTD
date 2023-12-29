@@ -11,7 +11,7 @@
 #define WIDGETS_OBJECT_WIDGET_H
 
 /** Widgets of the #BuildObjectWindow class. */
-enum BuildObjectWidgets {
+enum BuildObjectWidgets : WidgetID {
 	WID_BO_FILTER,         ///< The filter text box for the object list.
 	WID_BO_CLASS_LIST,     ///< The list with classes.
 	WID_BO_SCROLLBAR,      ///< The scrollbar associated with the list.

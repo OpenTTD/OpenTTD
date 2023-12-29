@@ -12,7 +12,7 @@
 #define WIDGETS_GOAL_WIDGET_H
 
 /** Widgets of the #GoalListWindow class. */
-enum GoalListWidgets {
+enum GoalListWidgets : WidgetID {
 	WID_GOAL_CAPTION,         ///< Caption of the window.
 	WID_GOAL_SELECT_BUTTONS,  ///< Selection widget for the title bar button.
 	WID_GOAL_GLOBAL_BUTTON,   ///< Button to show global goals.
@@ -22,7 +22,7 @@ enum GoalListWidgets {
 };
 
 /** Widgets of the #GoalQuestionWindow class. */
-enum GoalQuestionWidgets {
+enum GoalQuestionWidgets : WidgetID {
 	WID_GQ_CAPTION,        ///< Caption of the window.
 	WID_GQ_QUESTION,       ///< Question text.
 	WID_GQ_BUTTONS,        ///< Buttons selection (between 1, 2 or 3).

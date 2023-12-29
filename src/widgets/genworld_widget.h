@@ -11,7 +11,7 @@
 #define WIDGETS_GENWORLD_WIDGET_H
 
 /** Widgets of the #GenerateLandscapeWindow class. */
-enum GenerateLandscapeWidgets {
+enum GenerateLandscapeWidgets : WidgetID {
 	WID_GL_TEMPERATE,                   ///< Button with icon "Temperate".
 	WID_GL_ARCTIC,                      ///< Button with icon "Arctic".
 	WID_GL_TROPICAL,                    ///< Button with icon "Tropical".
@@ -69,7 +69,7 @@ enum GenerateLandscapeWidgets {
 };
 
 /** Widgets of the #CreateScenarioWindow class. */
-enum CreateScenarioWidgets {
+enum CreateScenarioWidgets : WidgetID {
 	WID_CS_TEMPERATE,              ///< Select temperate landscape style.
 	WID_CS_ARCTIC,                 ///< Select arctic landscape style.
 	WID_CS_TROPICAL,               ///< Select tropical landscape style.
@@ -87,7 +87,7 @@ enum CreateScenarioWidgets {
 };
 
 /** Widgets of the #GenerateProgressWindow class. */
-enum GenerationProgressWidgets {
+enum GenerationProgressWidgets : WidgetID {
 	WID_GP_PROGRESS_BAR,  ///< Progress bar.
 	WID_GP_PROGRESS_TEXT, ///< Text with the progress bar.
 	WID_GP_ABORT,         ///< Abort button.

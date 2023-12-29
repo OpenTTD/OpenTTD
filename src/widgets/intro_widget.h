@@ -11,7 +11,7 @@
 #define WIDGETS_INTRO_WIDGET_H
 
 /** Widgets of the #SelectGameWindow class. */
-enum SelectGameIntroWidgets {
+enum SelectGameIntroWidgets : WidgetID {
 	WID_SGI_GENERATE_GAME,         ///< Generate game button.
 	WID_SGI_LOAD_GAME,             ///< Load game button.
 	WID_SGI_PLAY_SCENARIO,         ///< Play scenario button.

@@ -11,7 +11,7 @@
 #define WIDGETS_TERRAFORM_WIDGET_H
 
 /** Widgets of the #TerraformToolbarWindow class. */
-enum TerraformToolbarWidgets {
+enum TerraformToolbarWidgets : WidgetID {
 	WID_TT_SHOW_PLACE_OBJECT,                 ///< Should the place object button be shown?
 	WID_TT_BUTTONS_START,                     ///< Start of pushable buttons.
 	WID_TT_LOWER_LAND = WID_TT_BUTTONS_START, ///< Lower land button.
@@ -27,7 +27,7 @@ enum TerraformToolbarWidgets {
 };
 
 /** Widgets of the #ScenarioEditorLandscapeGenerationWindow class. */
-enum EditorTerraformToolbarWidgets {
+enum EditorTerraformToolbarWidgets : WidgetID {
 	WID_ETT_SHOW_PLACE_DESERT,                   ///< Should the place desert button be shown?
 	WID_ETT_START,                               ///< Used for iterations.
 	WID_ETT_DOTS = WID_ETT_START,                ///< Invisible widget for rendering the terraform size on.

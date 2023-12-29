@@ -12,7 +12,7 @@
 #define WIDGETS_STORY_WIDGET_H
 
 /** Widgets of the #GoalListWindow class. */
-enum StoryBookWidgets {
+enum StoryBookWidgets : WidgetID {
 	WID_SB_CAPTION,   ///< Caption of the window.
 	WID_SB_SEL_PAGE,  ///< Page selector.
 	WID_SB_PAGE_PANEL,///< Page body.

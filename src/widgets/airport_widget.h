@@ -11,7 +11,7 @@
 #define WIDGETS_AIRPORT_WIDGET_H
 
 /** Widgets of the #BuildAirToolbarWindow class. */
-enum AirportToolbarWidgets {
+enum AirportToolbarWidgets : WidgetID {
 	WID_AT_AIRPORT,  ///< Build airport button.
 	WID_AT_DEMOLISH, ///< Demolish button.
 
@@ -19,7 +19,7 @@ enum AirportToolbarWidgets {
 };
 
 /** Widgets of the #BuildAirportWindow class. */
-enum AirportPickerWidgets {
+enum AirportPickerWidgets : WidgetID {
 	WID_AP_CLASS_DROPDOWN,  ///< Dropdown of airport classes.
 	WID_AP_AIRPORT_LIST,    ///< List of airports.
 	WID_AP_SCROLLBAR,       ///< Scrollbar of the list.

@@ -11,7 +11,7 @@
 #define WIDGETS_MAIN_WIDGET_H
 
 /** Widgets of the #MainWindow class. */
-enum MainWidgets {
+enum MainWidgets : WidgetID {
 	WID_M_VIEWPORT, ///< Main window viewport.
 };
 
