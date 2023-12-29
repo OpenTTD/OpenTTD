@@ -1335,7 +1335,7 @@ public:
 		return type == WWT_IMGBTN || type == WWT_IMGBTN_2 || type == WWT_PUSHIMGBTN;
 	}
 
-	void SetupSmallestSize(Window *w, bool init_array) override
+	void SetupSmallestSize(Window *w) override
 	{
 		this->smallest_x = 0; // Biggest child
 		this->smallest_y = 0; // Biggest child
@@ -1348,7 +1348,7 @@ public:
 		uint nbuttons = 0;
 		/* First initialise some variables... */
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			child_wid->SetupSmallestSize(w, init_array);
+			child_wid->SetupSmallestSize(w);
 			this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
 			if (this->IsButton(child_wid->type)) {
 				nbuttons++;
@@ -1777,9 +1777,9 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 	uint panel_widths[2]; ///< The width of the two panels (the text panel and date panel)
 
-	void SetupSmallestSize(Window *w, bool init_array) override
+	void SetupSmallestSize(Window *w) override
 	{
-		this->NWidgetToolbarContainer::SetupSmallestSize(w, init_array);
+		this->NWidgetToolbarContainer::SetupSmallestSize(w);
 
 		/* Find the size of panel_widths */
 		uint i = 0;

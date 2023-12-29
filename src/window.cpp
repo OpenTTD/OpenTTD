@@ -963,8 +963,8 @@ void Window::ReInit(int rx, int ry, bool reposition)
 	this->scale = _gui_scale;
 
 	this->OnInit();
-	/* Re-initialize the window from the ground up. No need to change the nested_array, as all widgets stay where they are. */
-	this->nested_root->SetupSmallestSize(this, false);
+	/* Re-initialize window smallest size. */
+	this->nested_root->SetupSmallestSize(this);
 	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _current_text_dir == TD_RTL);
 	this->width  = this->nested_root->smallest_x;
 	this->height = this->nested_root->smallest_y;
@@ -1379,13 +1379,8 @@ void Window::InitializeData(WindowNumber window_number)
 	this->window_number = window_number;
 
 	this->OnInit();
-	/* Initialize nested widget tree. */
-	if (this->nested_array == nullptr) {
-		this->nested_array = CallocT<NWidgetBase *>(this->nested_array_size);
-		this->nested_root->SetupSmallestSize(this, true);
-	} else {
-		this->nested_root->SetupSmallestSize(this, false);
-	}
+	/* Initialize smallest size. */
+	this->nested_root->SetupSmallestSize(this);
 	/* Initialize to smallest size. */
 	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _current_text_dir == TD_RTL);
 
@@ -1732,16 +1727,14 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16_t sm_width, i
  * @param fill_nested Fill the #nested_array (enabling is expensive!).
  * @note Filling the nested array requires an additional traversal through the nested widget tree, and is best performed by #FinishInitNested rather than here.
  */
-void Window::CreateNestedTree(bool fill_nested)
+void Window::CreateNestedTree()
 {
 	int biggest_index = -1;
 	this->nested_root = MakeWindowNWidgetTree(this->window_desc->nwid_begin, this->window_desc->nwid_end, &biggest_index, &this->shade_select);
 	this->nested_array_size = (uint)(biggest_index + 1);
 
-	if (fill_nested) {
-		this->nested_array = CallocT<NWidgetBase *>(this->nested_array_size);
-		this->nested_root->FillNestedArray(this->nested_array, this->nested_array_size);
-	}
+	this->nested_array = CallocT<NWidgetBase *>(this->nested_array_size);
+	this->nested_root->FillNestedArray(this->nested_array, this->nested_array_size);
 }
 
 /**
@@ -1763,7 +1756,7 @@ void Window::FinishInitNested(WindowNumber window_number)
  */
 void Window::InitNested(WindowNumber window_number)
 {
-	this->CreateNestedTree(false);
+	this->CreateNestedTree();
 	this->FinishInitNested(window_number);
 }
 

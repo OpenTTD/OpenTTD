@@ -288,7 +288,7 @@ public:
 	virtual ptrdiff_t GetTextCharacterAtPosition(const Point &pt) const;
 
 	void InitNested(WindowNumber number = 0);
-	void CreateNestedTree(bool fill_nested = true);
+	void CreateNestedTree();
 	void FinishInitNested(WindowNumber window_number = 0);
 
 	template<typename T, std::enable_if_t<std::is_base_of<StrongTypedefBase, T>::value, int> = 0>

@@ -1850,13 +1850,13 @@ public:
 		this->smallmap_window = nullptr;
 	}
 
-	void SetupSmallestSize(Window *w, bool init_array) override
+	void SetupSmallestSize(Window *w) override
 	{
 		NWidgetBase *display = this->head;
 		NWidgetBase *bar = display->next;
 
-		display->SetupSmallestSize(w, init_array);
-		bar->SetupSmallestSize(w, init_array);
+		display->SetupSmallestSize(w);
+		bar->SetupSmallestSize(w);
 
 		this->smallmap_window = dynamic_cast<SmallMapWindow *>(w);
 		assert(this->smallmap_window != nullptr);

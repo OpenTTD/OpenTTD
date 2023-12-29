@@ -106,7 +106,7 @@ public:
 		this->Add(leaf);
 	}
 
-	void SetupSmallestSize(Window *w, bool init_array) override
+	void SetupSmallestSize(Window *w) override
 	{
 		this->smallest_y = 0; // Biggest child.
 		this->fill_x = 1;
@@ -116,7 +116,7 @@ public:
 
 		/* First initialise some variables... */
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			child_wid->SetupSmallestSize(w, init_array);
+			child_wid->SetupSmallestSize(w);
 			this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
 		}
 
