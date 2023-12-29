@@ -13,7 +13,7 @@
 #include "../textfile_type.h"
 
 /** Widgets of the #AIConfigWindow class. */
-enum AIConfigWidgets {
+enum AIConfigWidgets : WidgetID {
 	WID_AIC_BACKGROUND,       ///< Window background.
 	WID_AIC_DECREASE_NUMBER,  ///< Decrease the number of AIs.
 	WID_AIC_INCREASE_NUMBER,  ///< Increase the number of AIs.

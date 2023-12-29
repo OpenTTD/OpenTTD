@@ -11,7 +11,7 @@
 #define WIDGETS_TRANSPARENCY_WIDGET_H
 
 /** Widgets of the #TransparenciesWindow class. */
-enum TransparencyToolbarWidgets {
+enum TransparencyToolbarWidgets : WidgetID {
 	/* Button row. */
 	WID_TT_BEGIN,                    ///< First toggle button.
 	WID_TT_SIGNS = WID_TT_BEGIN,     ///< Signs background transparency toggle button.

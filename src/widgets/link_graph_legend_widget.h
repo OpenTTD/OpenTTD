@@ -14,7 +14,7 @@
 
 /** Widgets of the WC_LINKGRAPH_LEGEND. */
 
-enum LinkGraphLegendWidgets {
+enum LinkGraphLegendWidgets : WidgetID {
 	WID_LGL_CAPTION,           ///< Caption widget.
 	WID_LGL_SATURATION,        ///< Saturation legend.
 	WID_LGL_SATURATION_FIRST,

@@ -11,7 +11,7 @@
 #define WIDGETS_SIGN_WIDGET_H
 
 /** Widgets of the #SignListWindow class. */
-enum SignListWidgets {
+enum SignListWidgets : WidgetID {
 	/* Name starts with SI instead of S, because of collision with SaveLoadWidgets */
 	WID_SIL_CAPTION,               ///< Caption of the window.
 	WID_SIL_LIST,                  ///< List of signs.
@@ -22,7 +22,7 @@ enum SignListWidgets {
 };
 
 /** Widgets of the #SignWindow class. */
-enum QueryEditSignWidgets {
+enum QueryEditSignWidgets : WidgetID {
 	WID_QES_CAPTION,  ///< Caption of the window.
 	WID_QES_LOCATION, ///< Scroll to sign location.
 	WID_QES_TEXT,     ///< Text of the query.

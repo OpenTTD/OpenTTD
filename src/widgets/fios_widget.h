@@ -11,7 +11,7 @@
 #define WIDGETS_FIOS_WIDGET_H
 
 /** Widgets of the #SaveLoadWindow class. */
-enum SaveLoadWidgets {
+enum SaveLoadWidgets : WidgetID {
 	WID_SL_CAPTION,                 ///< Caption of the window.
 	WID_SL_SORT_BYNAME,             ///< Sort by name button.
 	WID_SL_SORT_BYDATE,             ///< Sort by date button.

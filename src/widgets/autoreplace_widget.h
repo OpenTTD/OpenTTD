@@ -11,7 +11,7 @@
 #define WIDGETS_AUTOREPLACE_WIDGET_H
 
 /** Widgets of the #ReplaceVehicleWindow class. */
-enum ReplaceVehicleWidgets {
+enum ReplaceVehicleWidgets : WidgetID {
 	WID_RV_CAPTION,                  ///< Caption of the window.
 
 	/* Sort dropdown at the right. */

@@ -13,7 +13,7 @@
 #include "../company_type.h"
 
 /** Widgets of the #ScriptListWindow class. */
-enum ScriptListWidgets {
+enum ScriptListWidgets : WidgetID {
 	WID_SCRL_CAPTION,   ///< Caption of the window.
 	WID_SCRL_LIST,      ///< The matrix with all available Scripts.
 	WID_SCRL_SCROLLBAR, ///< Scrollbar next to the Script list.
@@ -23,7 +23,7 @@ enum ScriptListWidgets {
 };
 
 /** Widgets of the #ScriptSettingsWindow class. */
-enum ScriptSettingsWidgets {
+enum ScriptSettingsWidgets : WidgetID {
 	WID_SCRS_CAPTION,    ///< Caption of the window.
 	WID_SCRS_BACKGROUND, ///< Panel to draw the settings on.
 	WID_SCRS_SCROLLBAR,  ///< Scrollbar to scroll through all settings.
@@ -34,7 +34,7 @@ enum ScriptSettingsWidgets {
 };
 
 /** Widgets of the #ScriptDebugWindow class. */
-enum ScriptDebugWidgets {
+enum ScriptDebugWidgets : WidgetID {
 	WID_SCRD_VIEW,                 ///< The row of company buttons.
 	WID_SCRD_NAME_TEXT,            ///< Name of the current selected.
 	WID_SCRD_SETTINGS,             ///< Settings button.

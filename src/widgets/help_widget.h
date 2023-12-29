@@ -11,7 +11,7 @@
 #define WIDGETS_HELP_WIDGET_H
 
 /** Widgets of the #HelpWindow class. */
-enum HelpWindowWidgets {
+enum HelpWindowWidgets : WidgetID {
 	WID_HW_README,
 	WID_HW_CHANGELOG,
 	WID_HW_KNOWN_BUGS,

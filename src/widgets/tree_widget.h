@@ -11,7 +11,7 @@
 #define WIDGETS_TREE_WIDGET_H
 
 /** Widgets of the #BuildTreesWindow class. */
-enum BuildTreesWidgets {
+enum BuildTreesWidgets : WidgetID {
 	WID_BT_TYPE_RANDOM,     ///< Button to build random type of tree.
 	WID_BT_SE_PANE,         ///< Selection pane to show/hide scenario editor tools.
 	WID_BT_MODE_NORMAL,     ///< Select normal/rectangle planting mode.

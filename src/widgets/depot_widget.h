@@ -11,7 +11,7 @@
 #define WIDGETS_DEPOT_WIDGET_H
 
 /** Widgets of the #DepotWindow class. */
-enum DepotWidgets {
+enum DepotWidgets : WidgetID {
 	WID_D_CAPTION,         ///< Caption of window.
 	WID_D_SELL,            ///< Sell button.
 	WID_D_SHOW_SELL_CHAIN, ///< Show sell chain panel.
