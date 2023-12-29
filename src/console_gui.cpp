@@ -271,7 +271,7 @@ struct IConsoleWindow : Window
 		return ES_HANDLED;
 	}
 
-	void InsertTextString(int, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end) override
+	void InsertTextString(WidgetID, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end) override
 	{
 		if (_iconsole_cmdline.InsertString(str, marked, caret, insert_location, replacement_end)) {
 			IConsoleWindow::scroll = 0;

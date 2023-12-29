@@ -264,21 +264,21 @@ public:
 	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c nullptr, window cannot shade.
 	Dimension unshaded_size;         ///< Last known unshaded size (only valid while shaded).
 
-	int mouse_capture_widget;        ///< Widgetindex of current mouse capture widget (e.g. dragged scrollbar). -1 if no widget has mouse capture.
+	WidgetID mouse_capture_widget;   ///< ID of current mouse capture widget (e.g. dragged scrollbar). -1 if no widget has mouse capture.
 
 	Window *parent;                  ///< Parent window.
 	WindowList::iterator z_position;
 
 	template <class NWID>
-	inline const NWID *GetWidget(uint widnum) const;
+	inline const NWID *GetWidget(WidgetID widnum) const;
 	template <class NWID>
-	inline NWID *GetWidget(uint widnum);
+	inline NWID *GetWidget(WidgetID widnum);
 
-	const Scrollbar *GetScrollbar(uint widnum) const;
-	Scrollbar *GetScrollbar(uint widnum);
+	const Scrollbar *GetScrollbar(WidgetID widnum) const;
+	Scrollbar *GetScrollbar(WidgetID widnum);
 
-	const QueryString *GetQueryString(uint widnum) const;
-	QueryString *GetQueryString(uint widnum);
+	const QueryString *GetQueryString(WidgetID widnum) const;
+	QueryString *GetQueryString(WidgetID widnum);
 	void UpdateQueryStringSize();
 
 	virtual const struct Textbuf *GetFocusedTextbuf() const;
@@ -315,8 +315,8 @@ public:
 	}
 
 	void DisableAllWidgetHighlight();
-	void SetWidgetHighlight(byte widget_index, TextColour highlighted_colour);
-	bool IsWidgetHighlighted(byte widget_index) const;
+	void SetWidgetHighlight(WidgetID widget_index, TextColour highlighted_colour);
+	bool IsWidgetHighlighted(WidgetID widget_index) const;
 
 	/**
 	 * Sets the enabled/disabled status of a widget.
@@ -325,7 +325,7 @@ public:
 	 * @param widget_index index of this widget in the window
 	 * @param disab_stat status to use ie: disabled = true, enabled = false
 	 */
-	inline void SetWidgetDisabledState(byte widget_index, bool disab_stat)
+	inline void SetWidgetDisabledState(WidgetID widget_index, bool disab_stat)
 	{
 		this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
 	}
@@ -334,7 +334,7 @@ public:
 	 * Sets a widget to disabled.
 	 * @param widget_index index of this widget in the window
 	 */
-	inline void DisableWidget(byte widget_index)
+	inline void DisableWidget(WidgetID widget_index)
 	{
 		SetWidgetDisabledState(widget_index, true);
 	}
@@ -343,7 +343,7 @@ public:
 	 * Sets a widget to Enabled.
 	 * @param widget_index index of this widget in the window
 	 */
-	inline void EnableWidget(byte widget_index)
+	inline void EnableWidget(WidgetID widget_index)
 	{
 		SetWidgetDisabledState(widget_index, false);
 	}
@@ -353,7 +353,7 @@ public:
 	 * @param widget_index index of this widget in the window
 	 * @return status of the widget ie: disabled = true, enabled = false
 	 */
-	inline bool IsWidgetDisabled(byte widget_index) const
+	inline bool IsWidgetDisabled(WidgetID widget_index) const
 	{
 		return this->GetWidget<NWidgetCore>(widget_index)->IsDisabled();
 	}
@@ -363,7 +363,7 @@ public:
 	 * @param widget_index : index of the widget in the window to check
 	 * @return true if given widget is the focused window in this window
 	 */
-	inline bool IsWidgetFocused(byte widget_index) const
+	inline bool IsWidgetFocused(WidgetID widget_index) const
 	{
 		return this->nested_focus != nullptr && this->nested_focus->index == widget_index;
 	}
@@ -374,7 +374,7 @@ public:
 	 * @param widget_index : index of the widget in the window to check
 	 * @return true if given widget is the focused window in this window and this window has focus
 	 */
-	inline bool IsWidgetGloballyFocused(byte widget_index) const
+	inline bool IsWidgetGloballyFocused(WidgetID widget_index) const
 	{
 		return _focused_window == this && IsWidgetFocused(widget_index);
 	}
@@ -384,7 +384,7 @@ public:
 	 * @param widget_index index of this widget in the window
 	 * @param lowered_stat status to use ie: lowered = true, raised = false
 	 */
-	inline void SetWidgetLoweredState(byte widget_index, bool lowered_stat)
+	inline void SetWidgetLoweredState(WidgetID widget_index, bool lowered_stat)
 	{
 		this->GetWidget<NWidgetCore>(widget_index)->SetLowered(lowered_stat);
 	}
@@ -393,7 +393,7 @@ public:
 	 * Invert the lowered/raised  status of a widget.
 	 * @param widget_index index of this widget in the window
 	 */
-	inline void ToggleWidgetLoweredState(byte widget_index)
+	inline void ToggleWidgetLoweredState(WidgetID widget_index)
 	{
 		bool lowered_state = this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
 		this->GetWidget<NWidgetCore>(widget_index)->SetLowered(!lowered_state);
@@ -403,7 +403,7 @@ public:
 	 * Marks a widget as lowered.
 	 * @param widget_index index of this widget in the window
 	 */
-	inline void LowerWidget(byte widget_index)
+	inline void LowerWidget(WidgetID widget_index)
 	{
 		SetWidgetLoweredState(widget_index, true);
 	}
@@ -412,7 +412,7 @@ public:
 	 * Marks a widget as raised.
 	 * @param widget_index index of this widget in the window
 	 */
-	inline void RaiseWidget(byte widget_index)
+	inline void RaiseWidget(WidgetID widget_index)
 	{
 		SetWidgetLoweredState(widget_index, false);
 	}
@@ -434,19 +434,19 @@ public:
 	 * @param widget_index index of this widget in the window
 	 * @return status of the widget ie: lowered = true, raised= false
 	 */
-	inline bool IsWidgetLowered(byte widget_index) const
+	inline bool IsWidgetLowered(WidgetID widget_index) const
 	{
 		return this->GetWidget<NWidgetCore>(widget_index)->IsLowered();
 	}
 
 	void UnfocusFocusedWidget();
-	bool SetFocusedWidget(int widget_index);
+	bool SetFocusedWidget(WidgetID widget_index);
 
-	EventState HandleEditBoxKey(int wid, char32_t key, uint16_t keycode);
-	virtual void InsertTextString(int wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end);
+	EventState HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode);
+	virtual void InsertTextString(WidgetID wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end);
 
-	void HandleButtonClick(byte widget);
-	int GetRowFromWidget(int clickpos, int widget, int padding, int line_height = -1) const;
+	void HandleButtonClick(WidgetID widget);
+	int GetRowFromWidget(int clickpos, WidgetID widget, int padding, int line_height = -1) const;
 
 	void RaiseButtons(bool autoraise = false);
 
@@ -484,11 +484,11 @@ public:
 		(this->RaiseWidgetWhenLowered(widgets), ...);
 	}
 
-	void SetWidgetDirty(byte widget_index) const;
+	void SetWidgetDirty(WidgetID widget_index) const;
 
 	void DrawWidgets() const;
 	void DrawViewport() const;
-	void DrawSortButtonState(int widget, SortButtonState state) const;
+	void DrawSortButtonState(WidgetID widget, SortButtonState state) const;
 	static int SortButtonWidth();
 
 	void CloseChildWindows(WindowClass wc = WC_INVALID) const;
@@ -544,7 +544,7 @@ public:
 	 * @param widget Number of the widget to draw.
 	 * @note This method may not change any state, it may only use drawing functions.
 	 */
-	virtual void DrawWidget([[maybe_unused]] const Rect &r, [[maybe_unused]] int widget) const {}
+	virtual void DrawWidget([[maybe_unused]] const Rect &r, [[maybe_unused]] WidgetID widget) const {}
 
 	/**
 	 * Update size and resize step of a widget in the window.
@@ -558,7 +558,7 @@ public:
 	 * @param fill    Fill step of the widget.
 	 * @param resize  Resize step of the widget.
 	 */
-	virtual void UpdateWidgetSize([[maybe_unused]] int widget, [[maybe_unused]] Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) {}
+	virtual void UpdateWidgetSize([[maybe_unused]] WidgetID widget, [[maybe_unused]] Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) {}
 
 	/**
 	 * Initialize string parameters for a widget.
@@ -566,7 +566,7 @@ public:
 	 * and while re-initializing the window. Only for widgets that render text initializing is requested.
 	 * @param widget  Widget number.
 	 */
-	virtual void SetStringParameters([[maybe_unused]] int widget) const {}
+	virtual void SetStringParameters([[maybe_unused]] WidgetID widget) const {}
 
 	/**
 	 * The window has gained focus.
@@ -604,7 +604,7 @@ public:
 	 * @param widget the clicked widget.
 	 * @param click_count Number of fast consecutive clicks at same position
 	 */
-	virtual void OnClick([[maybe_unused]] Point pt, [[maybe_unused]] int widget, [[maybe_unused]] int click_count) {}
+	virtual void OnClick([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget, [[maybe_unused]] int click_count) {}
 
 	/**
 	 * A click with the right mouse button has been made on the window.
@@ -613,14 +613,14 @@ public:
 	 * @return true if the click was actually handled, i.e. do not show a
 	 *         tooltip if tooltip-on-right-click is enabled.
 	 */
-	virtual bool OnRightClick([[maybe_unused]] Point pt, [[maybe_unused]] int widget) { return false; }
+	virtual bool OnRightClick([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) { return false; }
 
 	/**
 	 * The mouse is hovering over a widget in the window, perform an action for it.
 	 * @param pt     The point where the mouse is hovering.
 	 * @param widget The widget where the mouse is hovering.
 	 */
-	virtual void OnHover([[maybe_unused]] Point pt, [[maybe_unused]] int widget) {}
+	virtual void OnHover([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) {}
 
 	/**
 	 * Event to display a custom tooltip.
@@ -628,21 +628,21 @@ public:
 	 * @param widget The widget where the mouse is located.
 	 * @return True if the event is handled, false if it is ignored.
 	 */
-	virtual bool OnTooltip([[maybe_unused]] Point pt, [[maybe_unused]] int widget, [[maybe_unused]] TooltipCloseCondition close_cond) { return false; }
+	virtual bool OnTooltip([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget, [[maybe_unused]] TooltipCloseCondition close_cond) { return false; }
 
 	/**
 	 * An 'object' is being dragged at the provided position, highlight the target if possible.
 	 * @param pt     The point inside the window that the mouse hovers over.
 	 * @param widget The widget the mouse hovers over.
 	 */
-	virtual void OnMouseDrag([[maybe_unused]] Point pt, [[maybe_unused]] int widget) {}
+	virtual void OnMouseDrag([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) {}
 
 	/**
 	 * A dragged 'object' has been released.
 	 * @param pt     the point inside the window where the release took place.
 	 * @param widget the widget where the release took place.
 	 */
-	virtual void OnDragDrop([[maybe_unused]] Point pt, [[maybe_unused]] int widget) {}
+	virtual void OnDragDrop([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) {}
 
 	/**
 	 * Handle the request for (viewport) scrolling.
@@ -656,7 +656,7 @@ public:
 	 * @param pt     the point inside the window that the mouse hovers over.
 	 * @param widget the widget the mouse hovers over.
 	 */
-	virtual void OnMouseOver([[maybe_unused]] Point pt, [[maybe_unused]] int widget) {}
+	virtual void OnMouseOver([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) {}
 
 	/**
 	 * The mouse wheel has been turned.
@@ -697,15 +697,15 @@ public:
 	 * @param widget the widget (button) that the dropdown is associated with.
 	 * @param index  the element in the dropdown that is selected.
 	 */
-	virtual void OnDropdownSelect([[maybe_unused]] int widget, [[maybe_unused]] int index) {}
+	virtual void OnDropdownSelect([[maybe_unused]] WidgetID widget, [[maybe_unused]] int index) {}
 
-	virtual void OnDropdownClose(Point pt, int widget, int index, bool instant_close);
+	virtual void OnDropdownClose(Point pt, WidgetID widget, int index, bool instant_close);
 
 	/**
 	 * The text in an editbox has been edited.
 	 * @param widget The widget of the editbox.
 	 */
-	virtual void OnEditboxChanged([[maybe_unused]] int widget) {}
+	virtual void OnEditboxChanged([[maybe_unused]] WidgetID widget) {}
 
 	/**
 	 * The query window opened from this window has closed.
@@ -886,7 +886,7 @@ inline bool AllEqual(It begin, It end, Pred pred)
  * @return The requested widget if it is instantiated, \c nullptr otherwise.
  */
 template <class NWID>
-inline NWID *Window::GetWidget(uint widnum)
+inline NWID *Window::GetWidget(WidgetID widnum)
 {
 	auto it = this->widget_lookup.find(widnum);
 	if (it == std::end(this->widget_lookup)) return nullptr;
@@ -897,7 +897,7 @@ inline NWID *Window::GetWidget(uint widnum)
 
 /** Specialized case of #Window::GetWidget for the nested widget base class. */
 template <>
-inline const NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
+inline const NWidgetBase *Window::GetWidget<NWidgetBase>(WidgetID widnum) const
 {
 	auto it = this->widget_lookup.find(widnum);
 	if (it == std::end(this->widget_lookup)) return nullptr;
@@ -911,7 +911,7 @@ inline const NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
  * @return The requested widget if it is instantiated, \c nullptr otherwise.
  */
 template <class NWID>
-inline const NWID *Window::GetWidget(uint widnum) const
+inline const NWID *Window::GetWidget(WidgetID widnum) const
 {
 	return const_cast<Window *>(this)->GetWidget<NWID>(widnum);
 }
@@ -961,7 +961,7 @@ void RelocateAllWindows(int neww, int newh);
 void GuiShowTooltips(Window *parent, StringID str, TooltipCloseCondition close_tooltip, uint paramcount = 0);
 
 /* widget.cpp */
-int GetWidgetFromPos(const Window *w, int x, int y);
+WidgetID GetWidgetFromPos(const Window *w, int x, int y);
 
 extern Point _cursorpos_drag_start;
 

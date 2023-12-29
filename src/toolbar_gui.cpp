@@ -109,7 +109,7 @@ public:
  * @param list List of items
  * @param def Default item
  */
-static void PopupMainToolbarMenu(Window *w, int widget, DropDownList &&list, int def)
+static void PopupMainToolbarMenu(Window *w, WidgetID widget, DropDownList &&list, int def)
 {
 	ShowDropDownList(w, std::move(list), def, widget, 0, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
@@ -121,7 +121,7 @@ static void PopupMainToolbarMenu(Window *w, int widget, DropDownList &&list, int
  * @param widget Toolbar button
  * @param strings List of strings for each item in the menu
  */
-static void PopupMainToolbarMenu(Window *w, int widget, const std::initializer_list<StringID> &strings)
+static void PopupMainToolbarMenu(Window *w, WidgetID widget, const std::initializer_list<StringID> &strings)
 {
 	DropDownList list;
 	int i = 0;
@@ -147,7 +147,7 @@ static const int CTMN_SPECTATOR   = -3; ///< Show a company window as spectator
  * @param widget The button widget id.
  * @param grey A bitbask of which items to mark as disabled.
  */
-static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
+static void PopupMainCompanyToolbMenu(Window *w, WidgetID widget, int grey = 0)
 {
 	DropDownList list;
 
@@ -820,7 +820,7 @@ static CallBackFunction MenuClickShowAir(int index)
 static CallBackFunction ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, GetMainWindow())) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)WID_TE_ZOOM_IN : (byte)WID_TN_ZOOM_IN);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_IN : (WidgetID)WID_TN_ZOOM_IN);
 		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	}
 	return CBF_NONE;
@@ -831,7 +831,7 @@ static CallBackFunction ToolbarZoomInClick(Window *w)
 static CallBackFunction ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, GetMainWindow())) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)WID_TE_ZOOM_OUT : (byte)WID_TN_ZOOM_OUT);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_OUT : (WidgetID)WID_TN_ZOOM_OUT);
 		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	}
 	return CBF_NONE;
@@ -980,7 +980,7 @@ static CallBackFunction MenuClickForest(int index)
 
 static CallBackFunction ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_MUSIC_SOUND : (int)WID_TN_MUSIC_SOUND, {STR_TOOLBAR_SOUND_MUSIC});
+	PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_MUSIC_SOUND : (WidgetID)WID_TN_MUSIC_SOUND, {STR_TOOLBAR_SOUND_MUSIC});
 	return CBF_NONE;
 }
 
@@ -1035,13 +1035,13 @@ static CallBackFunction PlaceLandBlockInfo()
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
 	if (_settings_client.gui.newgrf_developer_tools) {
-		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
+		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
 				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
 				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD,
 				STR_ABOUT_MENU_SPRITE_ALIGNER, STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES, STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS,
 				STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES});
 	} else {
-		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
+		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
 				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
 				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD});
 	}
@@ -1143,7 +1143,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 	}
 
 	w->ReInit();
-	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? (uint)WID_TE_SWITCH_BAR : (uint)WID_TN_SWITCH_BAR, _toolbar_mode == TB_LOWER);
+	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? (WidgetID)WID_TE_SWITCH_BAR : (WidgetID)WID_TN_SWITCH_BAR, _toolbar_mode == TB_LOWER);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -1379,7 +1379,7 @@ public:
 
 		/* Figure out what are the visible buttons */
 		uint arrangable_count, button_count, spacer_count;
-		const byte *arrangement = GetButtonArrangement(given_width, arrangable_count, button_count, spacer_count);
+		const WidgetID *arrangement = GetButtonArrangement(given_width, arrangable_count, button_count, spacer_count);
 
 		/* Create us ourselves a quick lookup table */
 		NWidgetBase *widgets[WID_TN_END];
@@ -1397,7 +1397,7 @@ public:
 		uint button_i = 0;
 
 		/* Index into the arrangement indices. The macro lastof cannot be used here! */
-		const byte *cur_wid = rtl ? &arrangement[arrangable_count - 1] : arrangement;
+		const WidgetID *cur_wid = rtl ? &arrangement[arrangable_count - 1] : arrangement;
 		for (uint i = 0; i < arrangable_count; i++) {
 			NWidgetBase *child_wid = widgets[*cur_wid];
 			/* If we have to give space to the spacers, do that */
@@ -1448,12 +1448,12 @@ public:
 	 * @param spacer_count output of the number of spacers.
 	 * @return the button configuration.
 	 */
-	virtual const byte *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const = 0;
+	virtual const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const = 0;
 };
 
 /** Container for the 'normal' main toolbar */
 class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
-	const byte *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const override
+	const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const override
 	{
 		static const uint SMALLEST_ARRANGEMENT = 14;
 		static const uint BIGGEST_ARRANGEMENT  = 20;
@@ -1464,7 +1464,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 		 * pause button appearing on the right of the lower toolbar and weird resizing of the widgets even if there is
 		 * enough space.
 		 */
-		static const byte arrange14[] = {
+		static const WidgetID arrange14[] = {
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_TRAINS,
@@ -1495,7 +1495,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_HELP,
 			WID_TN_SWITCH_BAR,
 		};
-		static const byte arrange15[] = {
+		static const WidgetID arrange15[] = {
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SMALL_MAP,
@@ -1528,7 +1528,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_HELP,
 			WID_TN_SWITCH_BAR,
 		};
-		static const byte arrange16[] = {
+		static const WidgetID arrange16[] = {
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SETTINGS,
@@ -1563,7 +1563,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
 		};
-		static const byte arrange17[] = {
+		static const WidgetID arrange17[] = {
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SETTINGS,
@@ -1600,7 +1600,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
 		};
-		static const byte arrange18[] = {
+		static const WidgetID arrange18[] = {
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SETTINGS,
@@ -1639,7 +1639,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
 		};
-		static const byte arrange19[] = {
+		static const WidgetID arrange19[] = {
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SETTINGS,
@@ -1680,7 +1680,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
 		};
-		static const byte arrange20[] = {
+		static const WidgetID arrange20[] = {
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SETTINGS,
@@ -1723,7 +1723,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
 		};
-		static const byte arrange_all[] = {
+		static const WidgetID arrange_all[] = {
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SETTINGS,
@@ -1765,7 +1765,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 		}
 
 		/* Introduce the split toolbar */
-		static const byte * const arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19, arrange20 };
+		static const WidgetID * const arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19, arrange20 };
 
 		button_count = arrangable_count = full_buttons;
 		spacer_count = this->spacers;
@@ -1792,9 +1792,9 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		}
 	}
 
-	const byte *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const override
+	const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const override
 	{
-		static const byte arrange_all[] = {
+		static const WidgetID arrange_all[] = {
 			WID_TE_PAUSE,
 			WID_TE_FAST_FORWARD,
 			WID_TE_SETTINGS,
@@ -1815,7 +1815,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 			WID_TE_MUSIC_SOUND,
 			WID_TE_HELP,
 		};
-		static const byte arrange_nopanel[] = {
+		static const WidgetID arrange_nopanel[] = {
 			WID_TE_PAUSE,
 			WID_TE_FAST_FORWARD,
 			WID_TE_SETTINGS,
@@ -1835,7 +1835,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 			WID_TE_MUSIC_SOUND,
 			WID_TE_HELP,
 		};
-		static const byte arrange_switch[] = {
+		static const WidgetID arrange_switch[] = {
 			WID_TE_DATE_PANEL,
 			WID_TE_SMALL_MAP,
 			WID_TE_LAND_GENERATE,
@@ -1962,12 +1962,12 @@ struct MainToolbarWindow : Window {
 		this->DrawWidgets();
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (_game_mode != GM_MENU && !this->IsWidgetDisabled(widget)) _toolbar_button_procs[widget](this);
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		CallBackFunction cbf = _menu_clicked_procs[widget](index);
 		if (cbf != CBF_NONE) _last_started_action = cbf;
@@ -2060,7 +2060,7 @@ struct MainToolbarWindow : Window {
 	{
 		/* We do not want to automatically raise the pause, fast forward and
 		 * switchbar buttons; they have to stay down when pressed etc. */
-		for (uint i = WID_TN_SETTINGS; i < WID_TN_SWITCH_BAR; i++) {
+		for (WidgetID i = WID_TN_SETTINGS; i < WID_TN_SWITCH_BAR; i++) {
 			this->RaiseWidgetWhenLowered(i);
 		}
 	}
@@ -2158,7 +2158,7 @@ static NWidgetBase *MakeMainToolbar()
 	};
 
 	NWidgetMainToolbarContainer *hor = new NWidgetMainToolbarContainer();
-	for (uint i = 0; i < WID_TN_END; i++) {
+	for (WidgetID i = 0; i < WID_TN_END; i++) {
 		switch (i) {
 			case WID_TN_SMALL_MAP:
 			case WID_TN_FINANCES:
@@ -2296,7 +2296,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->DrawWidgets();
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_TE_DATE:
@@ -2305,7 +2305,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_TE_SPACER: {
@@ -2321,7 +2321,7 @@ struct ScenarioEditorToolbarWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_TE_SPACER:
@@ -2335,14 +2335,14 @@ struct ScenarioEditorToolbarWindow : Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (_game_mode == GM_MENU) return;
 		CallBackFunction cbf = _scen_toolbar_button_procs[widget](this);
 		if (cbf != CBF_NONE) _last_started_action = cbf;
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		CallBackFunction cbf = _scen_toolbar_dropdown_procs[widget](index);
 		if (cbf != CBF_NONE) _last_started_action = cbf;

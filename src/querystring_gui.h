@@ -40,17 +40,17 @@ struct QueryString {
 	}
 
 public:
-	void DrawEditBox(const Window *w, int wid) const;
-	void ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed);
-	void HandleEditBox(Window *w, int wid);
+	void DrawEditBox(const Window *w, WidgetID wid) const;
+	void ClickEditBox(Window *w, Point pt, WidgetID wid, int click_count, bool focus_changed);
+	void HandleEditBox(Window *w, WidgetID wid);
 
-	Point GetCaretPosition(const Window *w, int wid) const;
-	Rect GetBoundingRect(const Window *w, int wid, const char *from, const char *to) const;
-	ptrdiff_t GetCharAtPosition(const Window *w, int wid, const Point &pt) const;
+	Point GetCaretPosition(const Window *w, WidgetID wid) const;
+	Rect GetBoundingRect(const Window *w, WidgetID wid, const char *from, const char *to) const;
+	ptrdiff_t GetCharAtPosition(const Window *w, WidgetID wid, const Point &pt) const;
 };
 
-void ShowOnScreenKeyboard(Window *parent, int button);
-void UpdateOSKOriginalText(const Window *parent, int button);
-bool IsOSKOpenedFor(const Window *w, int button);
+void ShowOnScreenKeyboard(Window *parent, WidgetID button);
+void UpdateOSKOriginalText(const Window *parent, WidgetID button);
+bool IsOSKOpenedFor(const Window *w, WidgetID button);
 
 #endif /* QUERYSTRING_GUI_H */

@@ -1459,7 +1459,7 @@ public:
 		this->Window::Close();
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_SM_CAPTION:
@@ -1537,7 +1537,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_SM_MAP: {
@@ -1634,7 +1634,7 @@ public:
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_SM_MAP: { // Map window
@@ -1779,7 +1779,7 @@ public:
 		this->SetDirty();
 	}
 
-	bool OnRightClick(Point, int widget) override
+	bool OnRightClick(Point, WidgetID widget) override
 	{
 		if (widget != WID_SM_MAP || _scrolling_viewport) return false;
 
@@ -1812,7 +1812,7 @@ public:
 		this->SetDirty();
 	}
 
-	void OnMouseOver([[maybe_unused]] Point pt, int widget) override
+	void OnMouseOver([[maybe_unused]] Point pt, WidgetID widget) override
 	{
 		IndustryType new_highlight = INVALID_INDUSTRYTYPE;
 		if (widget == WID_SM_LEGEND && this->map_type == SMT_INDUSTRY) {

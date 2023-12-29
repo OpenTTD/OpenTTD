@@ -40,7 +40,7 @@ static WindowDesc _dropdown_desc(__FILE__, __LINE__,
 
 /** Drop-down menu window */
 struct DropdownWindow : Window {
-	int parent_button;            ///< Parent widget number where the window is dropped from.
+	WidgetID parent_button;       ///< Parent widget number where the window is dropped from.
 	Rect wi_rect;                 ///< Rect of the button that opened the dropdown.
 	const DropDownList list;      ///< List with dropdown menu items.
 	int selected_result;          ///< Result value of the selected item in the list.
@@ -63,7 +63,7 @@ struct DropdownWindow : Window {
 	 * @param instant_close Close the window when the mouse button is raised.
 	 * @param wi_colour     Colour of the parent widget.
 	 */
-	DropdownWindow(Window *parent, DropDownList &&list, int selected, int button, const Rect wi_rect, bool instant_close, Colours wi_colour)
+	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour)
 			: Window(&_dropdown_desc)
 			, parent_button(button)
 			, wi_rect(wi_rect)
@@ -172,7 +172,7 @@ struct DropdownWindow : Window {
 		if (this->position.y < button_rect.top && list_dim.height > widget_dim.height) this->vscroll->UpdatePosition(INT_MAX);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_DM_ITEMS) *size = this->items_dim;
 	}
@@ -213,7 +213,7 @@ struct DropdownWindow : Window {
 		return false;
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_DM_ITEMS) return;
 
@@ -240,7 +240,7 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget != WID_DM_ITEMS) return;
 		int item;
@@ -329,7 +329,7 @@ Dimension GetDropDownListDimension(const DropDownList &list)
  * @param instant_close Set to true if releasing mouse button should close the
  *                      list regardless of where the cursor is.
  */
-void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button, Rect wi_rect, Colours wi_colour, bool instant_close)
+void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, bool instant_close)
 {
 	CloseWindowByClass(WC_DROPDOWN_MENU);
 	new DropdownWindow(w, std::move(list), selected, button, wi_rect, instant_close, wi_colour);
@@ -346,7 +346,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
  * @param instant_close Set to true if releasing mouse button should close the
  *                      list regardless of where the cursor is.
  */
-void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, uint width, bool instant_close)
+void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width, bool instant_close)
 {
 	/* Our parent's button widget is used to determine where to place the drop
 	 * down list window. */
@@ -383,7 +383,7 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, 
  * @param hidden_mask   Bitmask for hidden items (items with their bit set are not copied to the dropdown list).
  * @param width         Minimum width of the dropdown menu.
  */
-void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32_t disabled_mask, uint32_t hidden_mask, uint width)
+void ShowDropDownMenu(Window *w, const StringID *strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width)
 {
 	DropDownList list;
 

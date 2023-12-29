@@ -1586,7 +1586,7 @@ struct BuildVehicleWindow : Window {
 		return list;
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_BV_SORT_ASCENDING_DESCENDING:
@@ -1707,7 +1707,7 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.ForceRebuild();
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_BV_CAPTION:
@@ -1742,7 +1742,7 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_BV_LIST:
@@ -1783,7 +1783,7 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_BV_LIST:
@@ -1841,7 +1841,7 @@ struct BuildVehicleWindow : Window {
 		Command<CMD_RENAME_ENGINE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type, this->rename_engine, str);
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		switch (widget) {
 			case WID_BV_SORT_DROPDOWN:
@@ -1871,7 +1871,7 @@ struct BuildVehicleWindow : Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_BV_LIST);
 	}
 
-	void OnEditboxChanged(int wid) override
+	void OnEditboxChanged(WidgetID wid) override
 	{
 		if (wid == WID_BV_FILTER) {
 			this->string_filter.SetFilterTerm(this->vehicle_editbox.text.buf);

@@ -342,7 +342,7 @@ struct NewsWindow : Window {
 		return pt;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		StringID str = STR_NULL;
 		switch (widget) {
@@ -416,12 +416,12 @@ struct NewsWindow : Window {
 		*size = maxdim(*size, d);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget == WID_N_DATE) SetDParam(0, this->ni->date);
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
@@ -478,7 +478,7 @@ struct NewsWindow : Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_N_CLOSEBOX:
@@ -590,7 +590,7 @@ private:
 		return this->ni->params[1].data;
 	}
 
-	StringID GetNewVehicleMessageString(int widget) const
+	StringID GetNewVehicleMessageString(WidgetID widget) const
 	{
 		assert(this->ni->reftype1 == NR_ENGINE);
 		EngineID engine = this->ni->ref1;
@@ -1127,7 +1127,7 @@ struct MessageHistoryWindow : Window {
 		this->OnInvalidateData(0);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
 			this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
@@ -1149,7 +1149,7 @@ struct MessageHistoryWindow : Window {
 		this->DrawWidgets();
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_MH_BACKGROUND || _total_news == 0) return;
 
@@ -1188,7 +1188,7 @@ struct MessageHistoryWindow : Window {
 		this->vscroll->SetCount(_total_news);
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget == WID_MH_BACKGROUND) {
 			NewsItem *ni = _latest_news;

@@ -10,6 +10,13 @@
 #ifndef WINDOW_TYPE_H
 #define WINDOW_TYPE_H
 
+/**
+ * Widget ID.
+ * Even though the ID is signed, actual IDs must be non-negative.
+ * Negative IDs are used for special cases, like denoting 'no widget'.
+ */
+using WidgetID = int;
+
 /** %Window numbers. */
 enum WindowNumberEnum {
 	WN_GAME_OPTIONS_AI = 0,          ///< AI settings.

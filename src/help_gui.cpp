@@ -73,7 +73,7 @@ struct GameManualTextfileWindow : public TextfileWindow {
 		this->OnClick({ 0, 0 }, WID_TF_WRAPTEXT, 1);
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		if (widget == WID_TF_CAPTION) {
 			SetDParamStr(0, this->filename);
@@ -129,7 +129,7 @@ struct HelpWindow : public Window {
 		this->EnableTextfileButton(LICENSE_FILENAME, WID_HW_LICENSE);
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_HW_README:

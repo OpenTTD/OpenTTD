@@ -35,7 +35,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window * w);
 void ConstrainAllViewportsZoom();
 Point GetTileZoomCenterWindow(bool in, Window * w);
 void FixTitleGameZoom(int zoom_adjust = 0);
-void HandleZoomMessage(Window *w, const Viewport *vp, byte widget_zoom_in, byte widget_zoom_out);
+void HandleZoomMessage(Window *w, const Viewport *vp, WidgetID widget_zoom_in, WidgetID widget_zoom_out);
 
 /**
  * Zoom a viewport as far as possible in the given direction.

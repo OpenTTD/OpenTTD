@@ -152,7 +152,7 @@ public:
 		this->FinishInitNested(window_number);
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
 			/* Ensure tree type buttons are sized after the largest tree type */
@@ -162,7 +162,7 @@ public:
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
 			const int index = widget - WID_BT_TYPE_BUTTON_FIRST;
@@ -171,7 +171,7 @@ public:
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_BT_TYPE_RANDOM: // tree of random type.

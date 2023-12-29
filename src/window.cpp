@@ -211,7 +211,7 @@ void Window::ApplyDefaults()
  * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
  * @note The widget does not know where a list printed at the widget ends, so below a list is not a wrong position.
  */
-int Window::GetRowFromWidget(int clickpos, int widget, int padding, int line_height) const
+int Window::GetRowFromWidget(int clickpos, WidgetID widget, int padding, int line_height) const
 {
 	const NWidgetBase *wid = this->GetWidget<NWidgetBase>(widget);
 	if (line_height < 0) line_height = wid->resize_y;
@@ -240,7 +240,7 @@ void Window::DisableAllWidgetHighlight()
  * @param widget_index index of this widget in the window
  * @param highlighted_colour Colour of highlight, or TC_INVALID to disable.
  */
-void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour)
+void Window::SetWidgetHighlight(WidgetID widget_index, TextColour highlighted_colour)
 {
 	NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget_index);
 	if (nwid == nullptr) return;
@@ -270,7 +270,7 @@ void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour
  * @param widget_index index of this widget in the window
  * @return status of the widget ie: highlighted = true, not highlighted = false
  */
-bool Window::IsWidgetHighlighted(byte widget_index) const
+bool Window::IsWidgetHighlighted(WidgetID widget_index) const
 {
 	const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget_index);
 	if (nwid == nullptr) return false;
@@ -285,7 +285,7 @@ bool Window::IsWidgetHighlighted(byte widget_index) const
  * @param index the element in the dropdown that is selected.
  * @param instant_close whether the dropdown was configured to close on mouse up.
  */
-void Window::OnDropdownClose(Point pt, int widget, int index, bool instant_close)
+void Window::OnDropdownClose(Point pt, WidgetID widget, int index, bool instant_close)
 {
 	if (widget < 0) return;
 
@@ -312,7 +312,7 @@ void Window::OnDropdownClose(Point pt, int widget, int index, bool instant_close
  * @param widnum Scrollbar widget index
  * @return Scrollbar to the widget
  */
-const Scrollbar *Window::GetScrollbar(uint widnum) const
+const Scrollbar *Window::GetScrollbar(WidgetID widnum) const
 {
 	return this->GetWidget<NWidgetScrollbar>(widnum);
 }
@@ -322,7 +322,7 @@ const Scrollbar *Window::GetScrollbar(uint widnum) const
  * @param widnum Scrollbar widget index
  * @return Scrollbar to the widget
  */
-Scrollbar *Window::GetScrollbar(uint widnum)
+Scrollbar *Window::GetScrollbar(WidgetID widnum)
 {
 	return this->GetWidget<NWidgetScrollbar>(widnum);
 }
@@ -332,7 +332,7 @@ Scrollbar *Window::GetScrollbar(uint widnum)
  * @param widnum Editbox widget index
  * @return QueryString or nullptr.
  */
-const QueryString *Window::GetQueryString(uint widnum) const
+const QueryString *Window::GetQueryString(WidgetID widnum) const
 {
 	auto query = this->querystrings.find(widnum);
 	return query != this->querystrings.end() ? query->second : nullptr;
@@ -343,7 +343,7 @@ const QueryString *Window::GetQueryString(uint widnum) const
  * @param widnum Editbox widget index
  * @return QueryString or nullptr.
  */
-QueryString *Window::GetQueryString(uint widnum)
+QueryString *Window::GetQueryString(WidgetID widnum)
 {
 	auto query = this->querystrings.find(widnum);
 	return query != this->querystrings.end() ? query->second : nullptr;
@@ -484,7 +484,7 @@ void Window::UnfocusFocusedWidget()
  * @param widget_index Index of the widget in the window to set the focus to.
  * @return Focus has changed.
  */
-bool Window::SetFocusedWidget(int widget_index)
+bool Window::SetFocusedWidget(WidgetID widget_index)
 {
 	NWidgetCore *widget = this->GetWidget<NWidgetCore>(widget_index);
 	assert(widget != nullptr); /* Setting focus to a non-existing widget is a bad idea. */
@@ -549,7 +549,7 @@ void Window::RaiseButtons(bool autoraise)
  * Invalidate a widget, i.e. mark it as being changed and in need of redraw.
  * @param widget_index the widget to redraw.
  */
-void Window::SetWidgetDirty(byte widget_index) const
+void Window::SetWidgetDirty(WidgetID widget_index) const
 {
 	/* Sometimes this function is called before the window is even fully initialized */
 	auto it = this->widget_lookup.find(widget_index);
@@ -588,7 +588,7 @@ EventState Window::OnHotkey(int hotkey)
  * unclicked in a few ticks.
  * @param widget the widget to "click"
  */
-void Window::HandleButtonClick(byte widget)
+void Window::HandleButtonClick(WidgetID widget)
 {
 	this->LowerWidget(widget);
 	this->SetTimeout();
@@ -627,7 +627,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	/* don't allow any interaction if the button has been disabled */
 	if (nw->IsDisabled()) return;
 
-	int widget_index = nw->index; ///< Index of the widget
+	WidgetID widget_index = nw->index; ///< Index of the widget
 
 	/* Clicked on a widget that is not disabled.
 	 * So unless the clicked widget is the caption bar, change focus to this widget.
@@ -2472,7 +2472,7 @@ static bool MaybeBringWindowToFront(Window *w)
  * @return #ES_HANDLED if the key press has been handled and no other
  *         window should receive the event.
  */
-EventState Window::HandleEditBoxKey(int wid, char32_t key, uint16_t keycode)
+EventState Window::HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode)
 {
 	QueryString *query = this->GetQueryString(wid);
 	if (query == nullptr) return ES_NOT_HANDLED;
@@ -2630,7 +2630,7 @@ void HandleCtrlChanged()
  * @param wid Edit box widget.
  * @param str Text string to insert.
  */
-/* virtual */ void Window::InsertTextString(int wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end)
+/* virtual */ void Window::InsertTextString(WidgetID wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end)
 {
 	QueryString *query = this->GetQueryString(wid);
 	if (query == nullptr) return;
@@ -3092,7 +3092,7 @@ void SetWindowDirty(WindowClass cls, WindowNumber number)
  * @param number Window number in that class
  * @param widget_index Index number of the widget that needs repainting
  */
-void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, byte widget_index)
+void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, WidgetID widget_index)
 {
 	for (const Window *w : Window::Iterate()) {
 		if (w->window_class == cls && w->window_number == number) {

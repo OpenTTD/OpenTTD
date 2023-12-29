@@ -342,7 +342,7 @@ struct CompanyFinancesWindow : Window {
 		this->owner = (Owner)this->window_number;
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_CF_CAPTION:
@@ -383,7 +383,7 @@ struct CompanyFinancesWindow : Window {
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_CF_EXPS_CATEGORY:
@@ -410,7 +410,7 @@ struct CompanyFinancesWindow : Window {
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_CF_EXPS_CATEGORY:
@@ -479,7 +479,7 @@ struct CompanyFinancesWindow : Window {
 		this->DrawWidgets();
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_CF_TOGGLE_SIZE: // toggle size
@@ -772,7 +772,7 @@ public:
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SCL_SPACER_DROPDOWN: {
@@ -838,7 +838,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_SCL_CAPTION:
@@ -878,7 +878,7 @@ public:
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_SCL_MATRIX) return;
 
@@ -950,7 +950,7 @@ public:
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			/* Livery Class buttons */
@@ -1029,7 +1029,7 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_SCL_MATRIX);
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		bool local = (CompanyID)this->window_number == _local_company;
 		if (!local) return;
@@ -1368,7 +1368,7 @@ class SelectCompanyManagerFaceWindow : public Window
 	 * @param val            the value which will be displayed
 	 * @param is_bool_widget is it a bool button
 	 */
-	void SetFaceStringParameters(byte widget_index, uint8_t val, bool is_bool_widget) const
+	void SetFaceStringParameters(WidgetID widget_index, uint8_t val, bool is_bool_widget) const
 	{
 		const NWidgetCore *nwi_widget = this->GetWidget<NWidgetCore>(widget_index);
 		if (nwi_widget->IsDisabled()) {
@@ -1452,7 +1452,7 @@ public:
 		this->number_dim = number_dim;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT:
@@ -1555,7 +1555,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_SCMF_HAS_MOUSTACHE_EARRING:
@@ -1616,7 +1616,7 @@ public:
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_SCMF_FACE:
@@ -1625,7 +1625,7 @@ public:
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			/* Toggle size, advanced/simple face selection */
@@ -1878,7 +1878,7 @@ struct CompanyInfrastructureWindow : Window
 		return total;
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_CI_CAPTION:
@@ -1887,7 +1887,7 @@ struct CompanyInfrastructureWindow : Window
 		}
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
 
@@ -2012,7 +2012,7 @@ struct CompanyInfrastructureWindow : Window
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
 
@@ -2291,7 +2291,7 @@ struct CompanyWindow : Window
 		this->DrawWidgets();
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_C_FACE:
@@ -2419,7 +2419,7 @@ struct CompanyWindow : Window
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		switch (widget) {
@@ -2456,7 +2456,7 @@ struct CompanyWindow : Window
 		}
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_C_CAPTION:
@@ -2474,7 +2474,7 @@ struct CompanyWindow : Window
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_C_NEW_FACE: DoSelectCompanyManagerFace(this); break;
@@ -2648,7 +2648,7 @@ struct BuyCompanyWindow : Window {
 		this->company_value = hostile_takeover ? CalculateHostileTakeoverValue(c) : c->bankrupt_value;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
+	void UpdateWidgetSize(WidgetID widget, Dimension *size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension *fill, [[maybe_unused]] Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_BC_FACE:
@@ -2664,7 +2664,7 @@ struct BuyCompanyWindow : Window {
 		}
 	}
 
-	void SetStringParameters(int widget) const override
+	void SetStringParameters(WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_BC_CAPTION:
@@ -2674,7 +2674,7 @@ struct BuyCompanyWindow : Window {
 		}
 	}
 
-	void DrawWidget(const Rect &r, int widget) const override
+	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_BC_FACE: {
@@ -2693,7 +2693,7 @@ struct BuyCompanyWindow : Window {
 		}
 	}
 
-	void OnClick([[maybe_unused]] Point pt, int widget, [[maybe_unused]] int click_count) override
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_BC_NO:

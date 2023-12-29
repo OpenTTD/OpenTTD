@@ -60,7 +60,7 @@
  * @param mode Tile highlighting mode, e.g. drawing a rectangle or a dot on the ground
  * @return true if the button is clicked, false if it's unclicked
  */
-bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, HighLightStyle mode)
+bool HandlePlacePushButton(Window *w, WidgetID widget, CursorID cursor, HighLightStyle mode)
 {
 	if (w->IsWidgetDisabled(widget)) return false;
 
@@ -448,7 +448,7 @@ struct MainWindow : Window
 		}
 	}
 
-	bool OnTooltip([[maybe_unused]] Point pt, int widget, TooltipCloseCondition close_cond) override
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
 	{
 		if (widget != WID_M_VIEWPORT) return false;
 		return this->viewport->overlay->ShowTooltip(pt, close_cond);
