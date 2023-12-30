@@ -120,7 +120,7 @@ std::string GetDebugString();
 void ShowInfoI(const std::string &str);
 #define ShowInfo(format_string, ...) ShowInfoI(fmt::format(FMT_STRING(format_string), ## __VA_ARGS__))
 
-const char *GetLogPrefix();
+std::string GetLogPrefix();
 
 void DebugSendRemoteMessages();
 void DebugReconsiderSendRemoteMessages();

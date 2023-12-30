@@ -51,10 +51,9 @@ static void IConsoleWriteToLogFile(const std::string &string)
 {
 	if (_iconsole_output_file != nullptr) {
 		/* if there is an console output file ... also print it there */
-		const char *header = GetLogPrefix();
-		if ((strlen(header) != 0 && fwrite(header, strlen(header), 1, _iconsole_output_file) != 1) ||
-				fwrite(string.c_str(), string.size(), 1, _iconsole_output_file) != 1 ||
-				fwrite("\n", 1, 1, _iconsole_output_file) != 1) {
+		try {
+			fmt::print(_iconsole_output_file, "{}{}\n", GetLogPrefix(), string);
+		} catch (const std::system_error &) {
 			fclose(_iconsole_output_file);
 			_iconsole_output_file = nullptr;
 			IConsolePrint(CC_ERROR, "Cannot write to console log file; closing the log file.");
