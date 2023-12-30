@@ -327,9 +327,8 @@ DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
  */
 class NWidgetCore : public NWidgetResizeBase {
 public:
-	NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip);
+	NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip);
 
-	void SetIndex(WidgetID index);
 	void SetDataTip(uint32_t widget_data, StringID tool_tip);
 	void SetToolTip(StringID tool_tip);
 	void SetTextStyle(TextColour colour, FontSize size);
@@ -348,7 +347,7 @@ public:
 
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
-	WidgetID index;            ///< Index of the nested widget (\c -1 means 'not used').
+	const WidgetID index;      ///< Index of the nested widget (\c -1 means 'not used').
 	uint32_t widget_data;        ///< Data of the widget. @see Widget::data
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
 	WidgetID scrollbar_index;  ///< Index of an attached scrollbar.
@@ -458,9 +457,7 @@ enum StackedZeroSizePlanes {
  */
 class NWidgetStacked : public NWidgetContainer {
 public:
-	NWidgetStacked();
-
-	void SetIndex(WidgetID index);
+	NWidgetStacked(WidgetID index);
 
 	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w) override;
@@ -473,7 +470,7 @@ public:
 	bool SetDisplayedPlane(int plane);
 
 	int shown_plane; ///< Plane being displayed (for #NWID_SELECTION only).
-	WidgetID index;  ///< If non-negative, index in the #Window::widget_lookup.
+	const WidgetID index; ///< If non-negative, index in the #Window::widget_lookup.
 };
 
 /** Nested widget container flags, */
@@ -557,10 +554,8 @@ public:
  */
 class NWidgetMatrix : public NWidgetPIPContainer {
 public:
-	NWidgetMatrix();
+	NWidgetMatrix(Colours colour, WidgetID index);
 
-	void SetIndex(WidgetID index);
-	void SetColour(Colours colour);
 	void SetClicked(int clicked);
 	void SetCount(int count);
 	void SetScrollbar(Scrollbar *sb);
@@ -573,7 +568,7 @@ public:
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	void Draw(const Window *w) override;
 protected:
-	WidgetID index; ///< If non-negative, index in the #Window::widget_lookup.
+	const WidgetID index; ///< If non-negative, index in the #Window::widget_lookup.
 	Colours colour; ///< Colour of this widget.
 	int clicked;    ///< The currently clicked element.
 	int count;      ///< Amount of valid elements.
