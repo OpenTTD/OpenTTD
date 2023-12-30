@@ -109,19 +109,19 @@ struct GraphLegendWindow : Window {
  * Construct a vertical list of buttons, one for each company.
  * @return Panel with company buttons.
  */
-static NWidgetBase *MakeNWidgetCompanyLines()
+static std::unique_ptr<NWidgetBase> MakeNWidgetCompanyLines()
 {
-	NWidgetVertical *vert = new NWidgetVertical(NC_EQUALSIZE);
+	auto vert = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
 	vert->SetPadding(2, 2, 2, 2);
 	uint sprite_height = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_OUT_4X).height;
 
 	for (WidgetID widnum = WID_GL_FIRST_COMPANY; widnum <= WID_GL_LAST_COMPANY; widnum++) {
-		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_BROWN, widnum);
+		auto panel = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_BROWN, widnum);
 		panel->SetMinimalSize(246, sprite_height + WidgetDimensions::unscaled.framerect.Vertical());
 		panel->SetMinimalTextLines(1, WidgetDimensions::unscaled.framerect.Vertical(), FS_NORMAL);
 		panel->SetFill(1, 1);
 		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
-		vert->Add(panel);
+		vert->Add(std::move(panel));
 	}
 	return vert;
 }
@@ -1337,7 +1337,7 @@ CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
  * Make a vertical list of panels for outputting score details.
  * @return Panel with performance details.
  */
-static NWidgetBase *MakePerformanceDetailPanels()
+static std::unique_ptr<NWidgetBase> MakePerformanceDetailPanels()
 {
 	const StringID performance_tips[] = {
 		STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP,
@@ -1354,18 +1354,18 @@ static NWidgetBase *MakePerformanceDetailPanels()
 
 	static_assert(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
 
-	NWidgetVertical *vert = new NWidgetVertical(NC_EQUALSIZE);
+	auto vert = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
 	for (WidgetID widnum = WID_PRD_SCORE_FIRST; widnum <= WID_PRD_SCORE_LAST; widnum++) {
-		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_BROWN, widnum);
+		auto panel = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_BROWN, widnum);
 		panel->SetFill(1, 1);
 		panel->SetDataTip(0x0, performance_tips[widnum - WID_PRD_SCORE_FIRST]);
-		vert->Add(panel);
+		vert->Add(std::move(panel));
 	}
 	return vert;
 }
 
 /** Make a number of rows with buttons for each company for the performance rating detail window. */
-NWidgetBase *MakeCompanyButtonRowsGraphGUI()
+std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsGraphGUI()
 {
 	return MakeCompanyButtonRows(WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST, COLOUR_BROWN, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
 }

@@ -716,18 +716,18 @@ const StringID CompanyStationsWindow::sorter_names[] = {
  * Make a horizontal row of cargo buttons, starting at widget #WID_STL_CARGOSTART.
  * @return Horizontal row.
  */
-static NWidgetBase *CargoWidgets()
+static std::unique_ptr<NWidgetBase> CargoWidgets()
 {
-	NWidgetHorizontal *container = new NWidgetHorizontal();
+	auto container = std::make_unique<NWidgetHorizontal>();
 
 	for (uint i = 0; i < _sorted_standard_cargo_specs.size(); i++) {
-		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, WID_STL_CARGOSTART + i);
+		auto panel = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_GREY, WID_STL_CARGOSTART + i);
 		panel->SetMinimalSize(14, 0);
 		panel->SetMinimalTextLines(1, 0, FS_NORMAL);
 		panel->SetResize(0, 0);
 		panel->SetFill(0, 1);
 		panel->SetDataTip(0, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE);
-		container->Add(panel);
+		container->Add(std::move(panel));
 	}
 	return container;
 }

@@ -84,6 +84,7 @@ enum WidgetType {
 	NWID_BUTTON_DROPDOWN, ///< Button with a drop-down.
 	NWID_HSCROLLBAR,      ///< Horizontal scrollbar
 	NWID_VSCROLLBAR,      ///< Vertical scrollbar
+	NWID_CUSTOM,          ///< General Custom widget.
 
 	/* Nested widget part types. */
 	WPT_RESIZE,       ///< Widget part for specifying resizing.
@@ -446,7 +447,7 @@ public:
 	NWidgetContainer(WidgetType tp) : NWidgetBase(tp) { }
 
 	void AdjustPaddingForZoom() override;
-	void Add(NWidgetBase *wid);
+	void Add(std::unique_ptr<NWidgetBase> &&wid);
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	void Draw(const Window *w) override;
@@ -631,10 +632,9 @@ public:
  */
 class NWidgetBackground : public NWidgetCore {
 public:
-	NWidgetBackground(WidgetType tp, Colours colour, WidgetID index, NWidgetPIPContainer *child = nullptr);
-	~NWidgetBackground();
+	NWidgetBackground(WidgetType tp, Colours colour, WidgetID index, std::unique_ptr<NWidgetPIPContainer> &&child = nullptr);
 
-	void Add(NWidgetBase *nwid);
+	void Add(std::unique_ptr<NWidgetBase> &&nwid);
 	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
 	void SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_inter, uint8_t pip_ratio_post);
 
@@ -649,7 +649,7 @@ public:
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
 
 private:
-	NWidgetPIPContainer *child; ///< Child widget.
+	std::unique_ptr<NWidgetPIPContainer> child; ///< Child widget.
 };
 
 /**
@@ -1029,7 +1029,7 @@ struct NWidgetPartAlignment {
  * Pointer to function returning a nested widget.
  * @return Nested widget (tree).
  */
-typedef NWidgetBase *NWidgetFunctionType();
+typedef std::unique_ptr<NWidgetBase> NWidgetFunctionType();
 
 /**
  * Partial widget specification to allow NWidgets to be written nested.
@@ -1353,10 +1353,10 @@ static inline NWidgetPart NWidgetFunction(NWidgetFunctionType *func_ptr)
 }
 
 bool IsContainerWidgetType(WidgetType tp);
-NWidgetContainer *MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetContainer *container);
-NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetStacked **shade_select);
+std::unique_ptr<NWidgetBase> MakeNWidgets(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, std::unique_ptr<NWidgetBase> &&container);
+std::unique_ptr<NWidgetBase> MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWidgetPart *nwid_end, NWidgetStacked **shade_select);
 
-NWidgetBase *MakeCompanyButtonRows(WidgetID widget_first, WidgetID widget_last, Colours button_colour, int max_length, StringID button_tooltip);
+std::unique_ptr<NWidgetBase> MakeCompanyButtonRows(WidgetID widget_first, WidgetID widget_last, Colours button_colour, int max_length, StringID button_tooltip);
 
 void SetupWidgetDimensions();
 
