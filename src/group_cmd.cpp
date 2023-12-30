@@ -645,13 +645,10 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlag flags, GroupID group_id)
 
 	if (flags & DC_EXEC) {
 		/* Find each Vehicle that belongs to the group old_g and add it to the default group */
-		for (const Vehicle *v : Vehicle::Iterate()) {
-			if (v->IsPrimaryVehicle()) {
-				if (v->group_id != group_id) continue;
-
-				/* Add The Vehicle to the default group */
-				Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, DEFAULT_GROUP, v->index, false, VehicleListIdentifier{});
-			}
+		const VehicleList vehicle_list = g->statistics.vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
+			/* Add The Vehicle to the default group */
+			Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, DEFAULT_GROUP, v->index, false, VehicleListIdentifier{});
 		}
 
 		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
