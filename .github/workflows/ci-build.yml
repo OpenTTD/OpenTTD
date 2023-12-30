@@ -192,15 +192,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Install dependencies
-      env:
-        HOMEBREW_NO_AUTO_UPDATE: 1
-        HOMEBREW_NO_INSTALL_CLEANUP: 1
-      run: |
-        brew install \
-          pkg-config \
-          # EOF
-
     - name: Prepare cache key
       id: key
       run: |

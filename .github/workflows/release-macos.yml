@@ -40,7 +40,6 @@ jobs:
         echo "::group::Install brew dependencies"
         brew install \
           pandoc \
-          pkg-config \
           # EOF
         echo "::endgroup::"
 
