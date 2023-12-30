@@ -1600,27 +1600,22 @@ NewGRFWindow::GUIGRFConfigList::FilterFunction * const NewGRFWindow::filter_func
  * - two column mode, put the #acs and the #avs underneath each other and the #inf next to it, or
  * - three column mode, put the #avs, #acs, and #inf each in its own column.
  */
-class NWidgetNewGRFDisplay : public NWidgetContainer {
+class NWidgetNewGRFDisplay : public NWidgetBase {
 public:
 	static const uint MAX_EXTRA_INFO_WIDTH;    ///< Maximal additional width given to the panel.
 	static const uint MIN_EXTRA_FOR_3_COLUMNS; ///< Minimal additional width needed before switching to 3 columns.
 
-	NWidgetBase *avs; ///< Widget with the available grfs list and buttons.
-	NWidgetBase *acs; ///< Widget with the active grfs list and buttons.
-	NWidgetBase *inf; ///< Info panel.
+	std::unique_ptr<NWidgetBase> avs; ///< Widget with the available grfs list and buttons.
+	std::unique_ptr<NWidgetBase> acs; ///< Widget with the active grfs list and buttons.
+	std::unique_ptr<NWidgetBase> inf; ///< Info panel.
 	bool editable;    ///< Editable status of the parent NewGRF window (if \c false, drop all widgets that make the window editable).
 
-	NWidgetNewGRFDisplay(NWidgetBase *avs, NWidgetBase *acs, NWidgetBase *inf) : NWidgetContainer(NWID_HORIZONTAL)
+	NWidgetNewGRFDisplay(std::unique_ptr<NWidgetBase> &&avs, std::unique_ptr<NWidgetBase> &&acs, std::unique_ptr<NWidgetBase> &&inf) : NWidgetBase(NWID_CUSTOM)
+		, avs(std::move(avs))
+		, acs(std::move(acs))
+		, inf(std::move(inf))
+		, editable(true) // Temporary setting, 'real' value is set in SetupSmallestSize().
 	{
-		this->avs = avs;
-		this->acs = acs;
-		this->inf = inf;
-
-		this->Add(this->avs);
-		this->Add(this->acs);
-		this->Add(this->inf);
-
-		this->editable = true; // Temporary setting, 'real' value is set in SetupSmallestSize().
 	}
 
 	void SetupSmallestSize(Window *w) override
@@ -1785,6 +1780,13 @@ public:
 		}
 	}
 
+	void FillWidgetLookup(WidgetLookup &widget_lookup) override
+	{
+		this->avs->FillWidgetLookup(widget_lookup);
+		this->acs->FillWidgetLookup(widget_lookup);
+		this->inf->FillWidgetLookup(widget_lookup);
+	}
+
 	NWidgetCore *GetWidgetFromPos(int x, int y) override
 	{
 		if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return nullptr;
@@ -1937,13 +1939,13 @@ static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 };
 
 /** Construct nested container widget for managing the lists and the info panel of the NewGRF GUI. */
-NWidgetBase* NewGRFDisplay()
+std::unique_ptr<NWidgetBase> NewGRFDisplay()
 {
-	NWidgetBase *avs = MakeNWidgets(std::begin(_nested_newgrf_availables_widgets), std::end(_nested_newgrf_availables_widgets), nullptr);
-	NWidgetBase *acs = MakeNWidgets(std::begin(_nested_newgrf_actives_widgets), std::end(_nested_newgrf_actives_widgets), nullptr);
-	NWidgetBase *inf = MakeNWidgets(std::begin(_nested_newgrf_infopanel_widgets), std::end(_nested_newgrf_infopanel_widgets), nullptr);
+	std::unique_ptr<NWidgetBase> avs = MakeNWidgets(std::begin(_nested_newgrf_availables_widgets), std::end(_nested_newgrf_availables_widgets), nullptr);
+	std::unique_ptr<NWidgetBase> acs = MakeNWidgets(std::begin(_nested_newgrf_actives_widgets), std::end(_nested_newgrf_actives_widgets), nullptr);
+	std::unique_ptr<NWidgetBase> inf = MakeNWidgets(std::begin(_nested_newgrf_infopanel_widgets), std::end(_nested_newgrf_infopanel_widgets), nullptr);
 
-	return new NWidgetNewGRFDisplay(avs, acs, inf);
+	return std::make_unique<NWidgetNewGRFDisplay>(std::move(avs), std::move(acs), std::move(inf));
 }
 
 /* Widget definition of the manage newgrfs window */

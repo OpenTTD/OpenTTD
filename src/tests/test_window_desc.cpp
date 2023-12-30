@@ -90,9 +90,8 @@ TEST_CASE_METHOD(WindowDescTestsFixture, "WindowDesc - NWidgetPart validity")
 	INFO(fmt::format("{}:{}", window_desc->file, window_desc->line));
 
 	NWidgetStacked *shade_select = nullptr;
-	NWidgetBase *root = nullptr;
+	std::unique_ptr<NWidgetBase> root = nullptr;
 
 	REQUIRE_NOTHROW(root = MakeWindowNWidgetTree(window_desc->nwid_begin, window_desc->nwid_end, &shade_select));
 	CHECK((root != nullptr));
-	delete root;
 }

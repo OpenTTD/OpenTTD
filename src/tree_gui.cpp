@@ -256,7 +256,7 @@ public:
  * get producing the correct result than dynamically building the widgets is.
  * @see NWidgetFunctionType
  */
-static NWidgetBase *MakeTreeTypeButtons()
+static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 {
 	const byte type_base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
 	const byte type_count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
@@ -266,20 +266,20 @@ static NWidgetBase *MakeTreeTypeButtons()
 	const int num_rows = CeilDiv(type_count, num_columns);
 	byte cur_type = type_base;
 
-	NWidgetVertical *vstack = new NWidgetVertical(NC_EQUALSIZE);
+	auto vstack = std::make_unique<NWidgetVertical>(NC_EQUALSIZE);
 	vstack->SetPIP(0, 1, 0);
 
 	for (int row = 0; row < num_rows; row++) {
-		NWidgetHorizontal *hstack = new NWidgetHorizontal(NC_EQUALSIZE);
+		auto hstack = std::make_unique<NWidgetHorizontal>(NC_EQUALSIZE);
 		hstack->SetPIP(0, 1, 0);
-		vstack->Add(hstack);
 		for (int col = 0; col < num_columns; col++) {
 			if (cur_type > type_base + type_count) break;
-			NWidgetBackground *button = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_BUTTON_FIRST + cur_type);
+			auto button = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_BUTTON_FIRST + cur_type);
 			button->SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP);
-			hstack->Add(button);
+			hstack->Add(std::move(button));
 			cur_type++;
 		}
+		vstack->Add(std::move(hstack));
 	}
 
 	return vstack;

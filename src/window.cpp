@@ -1088,7 +1088,6 @@ Window::~Window()
 	assert(*this->z_position == nullptr);
 
 	if (this->viewport != nullptr) DeleteWindowViewport(this);
-	delete this->nested_root;
 }
 
 /**

@@ -1944,12 +1944,12 @@ static const NWidgetPart _nested_smallmap_bar[] = {
 	EndContainer(),
 };
 
-static NWidgetBase *SmallMapDisplay()
+static std::unique_ptr<NWidgetBase> SmallMapDisplay()
 {
-	NWidgetContainer *map_display = new NWidgetSmallmapDisplay;
+	std::unique_ptr<NWidgetBase> map_display = std::make_unique<NWidgetSmallmapDisplay>();
 
-	MakeNWidgets(std::begin(_nested_smallmap_display), std::end(_nested_smallmap_display), map_display);
-	MakeNWidgets(std::begin(_nested_smallmap_bar), std::end(_nested_smallmap_bar), map_display);
+	map_display = MakeNWidgets(std::begin(_nested_smallmap_display), std::end(_nested_smallmap_display), std::move(map_display));
+	map_display = MakeNWidgets(std::begin(_nested_smallmap_bar), std::end(_nested_smallmap_bar), std::move(map_display));
 	return map_display;
 }
 

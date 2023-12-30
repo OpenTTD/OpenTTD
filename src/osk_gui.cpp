@@ -222,32 +222,32 @@ static const int KEY_PADDING = 6;     // Vertical padding for remaining key rows
  * @param widdata Data value of the key widget.
  * @note Key width is measured in 1/2 keys to allow for 1/2 key shifting between rows.
  */
-static void AddKey(NWidgetHorizontal *hor, int pad_y, int num_half, WidgetType widtype, WidgetID widnum, uint16_t widdata)
+static void AddKey(std::unique_ptr<NWidgetHorizontal> &hor, int pad_y, int num_half, WidgetType widtype, WidgetID widnum, uint16_t widdata)
 {
 	int key_width = HALF_KEY_WIDTH + (INTER_KEY_SPACE + HALF_KEY_WIDTH) * (num_half - 1);
 
 	if (widtype == NWID_SPACER) {
 		if (!hor->IsEmpty()) key_width += INTER_KEY_SPACE;
-		NWidgetSpacer *spc = new NWidgetSpacer(key_width, 0);
+		auto spc = std::make_unique<NWidgetSpacer>(key_width, 0);
 		spc->SetMinimalTextLines(1, pad_y, FS_NORMAL);
-		hor->Add(spc);
+		hor->Add(std::move(spc));
 	} else {
 		if (!hor->IsEmpty()) {
-			NWidgetSpacer *spc = new NWidgetSpacer(INTER_KEY_SPACE, 0);
+			auto spc = std::make_unique<NWidgetSpacer>(INTER_KEY_SPACE, 0);
 			spc->SetMinimalTextLines(1, pad_y, FS_NORMAL);
-			hor->Add(spc);
+			hor->Add(std::move(spc));
 		}
-		NWidgetLeaf *leaf = new NWidgetLeaf(widtype, COLOUR_GREY, widnum, widdata, STR_NULL);
+		auto leaf = std::make_unique<NWidgetLeaf>(widtype, COLOUR_GREY, widnum, widdata, STR_NULL);
 		leaf->SetMinimalSize(key_width, 0);
 		leaf->SetMinimalTextLines(1, pad_y, FS_NORMAL);
-		hor->Add(leaf);
+		hor->Add(std::move(leaf));
 	}
 }
 
 /** Construct the top row keys (cancel, ok, backspace). */
-static NWidgetBase *MakeTopKeys()
+static std::unique_ptr<NWidgetBase> MakeTopKeys()
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontal();
+	auto hor = std::make_unique<NWidgetHorizontal>();
 
 	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    STR_BUTTON_CANCEL);
 	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        STR_BUTTON_OK    );
@@ -256,9 +256,9 @@ static NWidgetBase *MakeTopKeys()
 }
 
 /** Construct the row containing the digit keys. */
-static NWidgetBase *MakeNumberKeys()
+static std::unique_ptr<NWidgetBase> MakeNumberKeys()
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
+	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
 
 	for (WidgetID widnum = WID_OSK_NUMBERS_FIRST; widnum <= WID_OSK_NUMBERS_LAST; widnum++) {
 		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0);
@@ -267,9 +267,9 @@ static NWidgetBase *MakeNumberKeys()
 }
 
 /** Construct the qwerty row keys. */
-static NWidgetBase *MakeQwertyKeys()
+static std::unique_ptr<NWidgetBase> MakeQwertyKeys()
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
+	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
 
 	AddKey(hor, KEY_PADDING, 3, WWT_PUSHIMGBTN, WID_OSK_SPECIAL, SPR_OSK_SPECIAL);
 	for (WidgetID widnum = WID_OSK_QWERTY_FIRST; widnum <= WID_OSK_QWERTY_LAST; widnum++) {
@@ -280,9 +280,9 @@ static NWidgetBase *MakeQwertyKeys()
 }
 
 /** Construct the asdfg row keys. */
-static NWidgetBase *MakeAsdfgKeys()
+static std::unique_ptr<NWidgetBase> MakeAsdfgKeys()
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
+	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
 
 	AddKey(hor, KEY_PADDING, 4, WWT_IMGBTN, WID_OSK_CAPS, SPR_OSK_CAPS);
 	for (WidgetID widnum = WID_OSK_ASDFG_FIRST; widnum <= WID_OSK_ASDFG_LAST; widnum++) {
@@ -292,9 +292,9 @@ static NWidgetBase *MakeAsdfgKeys()
 }
 
 /** Construct the zxcvb row keys. */
-static NWidgetBase *MakeZxcvbKeys()
+static std::unique_ptr<NWidgetBase> MakeZxcvbKeys()
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
+	std::unique_ptr<NWidgetHorizontal> hor = std::make_unique<NWidgetHorizontalLTR>();
 
 	AddKey(hor, KEY_PADDING, 3, WWT_IMGBTN, WID_OSK_SHIFT, SPR_OSK_SHIFT);
 	for (WidgetID widnum = WID_OSK_ZXCVB_FIRST; widnum <= WID_OSK_ZXCVB_LAST; widnum++) {
@@ -305,9 +305,9 @@ static NWidgetBase *MakeZxcvbKeys()
 }
 
 /** Construct the spacebar row keys. */
-static NWidgetBase *MakeSpacebarKeys()
+static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 {
-	NWidgetHorizontal *hor = new NWidgetHorizontal();
+	auto hor = std::make_unique<NWidgetHorizontal>();
 
 	AddKey(hor, KEY_PADDING,  8, NWID_SPACER, 0, 0);
 	AddKey(hor, KEY_PADDING, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, STR_EMPTY);
