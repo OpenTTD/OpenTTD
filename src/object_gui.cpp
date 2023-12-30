@@ -333,7 +333,7 @@ public:
 				 * look nice in all layouts, we use the 4x4 layout (smallest previews) as starting point. For the bigger
 				 * previews in the layouts with less views we add space homogeneously on all sides, so the 4x4 preview-rectangle
 				 * is centered in the 2x1, 1x2 resp. 1x1 buttons. */
-				const NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX);
+				const NWidgetMatrix *matrix = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>();
 				uint matrix_height = matrix->current_y;
 
 				DrawPixelInfo tmp_dpi;
@@ -354,7 +354,7 @@ public:
 
 			case WID_BO_SELECT_IMAGE: {
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-				int obj_index = objclass->GetIndexFromUI(this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->GetCurrentElement());
+				int obj_index = objclass->GetIndexFromUI(this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement());
 				if (obj_index < 0) break;
 				const ObjectSpec *spec = objclass->GetSpec(obj_index);
 				if (spec == nullptr) break;
@@ -509,14 +509,14 @@ public:
 
 			case WID_BO_SELECT_IMAGE: {
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-				int num_clicked = objclass->GetIndexFromUI(this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->GetCurrentElement());
+				int num_clicked = objclass->GetIndexFromUI(this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement());
 				if (num_clicked >= 0 && objclass->GetSpec(num_clicked)->IsAvailable()) this->SelectOtherObject(num_clicked);
 				break;
 			}
 
 			case WID_BO_OBJECT_SPRITE:
 				if (_selected_object_index != -1) {
-					_selected_object_view = this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->GetCurrentElement();
+					_selected_object_view = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 					this->SelectOtherObject(_selected_object_index); // Re-select the object for a different view.
 				}
 				break;
