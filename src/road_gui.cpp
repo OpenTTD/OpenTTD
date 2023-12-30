@@ -1409,7 +1409,7 @@ public:
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		switch (GB(widget, 0, 16)) {
+		switch (widget) {
 			case WID_BROS_STATION_NE:
 			case WID_BROS_STATION_SE:
 			case WID_BROS_STATION_SW:
@@ -1451,7 +1451,7 @@ public:
 			}
 
 			case WID_BROS_IMAGE: {
-				uint16_t type = GB(widget, 16, 16);
+				uint16_t type = this->GetWidget<NWidgetMatrix>(WID_BROS_MATRIX)->GetCurrentElement();
 				assert(type < _roadstop_gui_settings.roadstop_count);
 
 				const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(type);
@@ -1497,7 +1497,7 @@ public:
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		switch (GB(widget, 0, 16)) {
+		switch (widget) {
 			case WID_BROS_STATION_NE:
 			case WID_BROS_STATION_SE:
 			case WID_BROS_STATION_SW:
@@ -1549,7 +1549,7 @@ public:
 			}
 
 			case WID_BROS_IMAGE: {
-				uint16_t y = GB(widget, 16, 16);
+				uint16_t y = this->GetWidget<NWidgetMatrix>(WID_BROS_MATRIX)->GetCurrentElement();
 				if (y >= _roadstop_gui_settings.roadstop_count) return;
 
 				const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(y);
