@@ -1208,31 +1208,21 @@ void NWidgetResizeBase::AssignSizePosition(SizingType sizing, int x, int y, uint
  * Initialization of a 'real' widget.
  * @param tp          Type of the widget.
  * @param colour      Colour of the widget.
+ * @param index       Index of the widget.
  * @param fill_x      Default horizontal filling.
  * @param fill_y      Default vertical filling.
  * @param widget_data Data component of the widget. @see Widget::data
  * @param tool_tip    Tool tip of the widget. @see Widget::tooltips
  */
-NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y)
+NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fill_x, uint fill_y, uint32_t widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y), index(index)
 {
 	this->colour = colour;
-	this->index = -1;
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
 	this->scrollbar_index = -1;
 	this->text_colour = tp == WWT_CAPTION ? TC_WHITE : TC_BLACK;
 	this->text_size = FS_NORMAL;
 	this->align = SA_CENTER;
-}
-
-/**
- * Set index of the nested widget in the widget array.
- * @param index Index to use.
- */
-void NWidgetCore::SetIndex(WidgetID index)
-{
-	assert(index >= 0);
-	this->index = index;
 }
 
 /**
@@ -1374,14 +1364,8 @@ NWidgetCore *NWidgetContainer::GetWidgetFromPos(int x, int y)
 /**
  * Widgets stacked on top of each other.
  */
-NWidgetStacked::NWidgetStacked() : NWidgetContainer(NWID_SELECTION)
+NWidgetStacked::NWidgetStacked(WidgetID index) : NWidgetContainer(NWID_SELECTION), index(index)
 {
-	this->index = -1;
-}
-
-void NWidgetStacked::SetIndex(WidgetID index)
-{
-	this->index = index;
 }
 
 void NWidgetStacked::AdjustPaddingForZoom()
@@ -1950,16 +1934,7 @@ NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int, int)
 	return nullptr;
 }
 
-NWidgetMatrix::NWidgetMatrix() : NWidgetPIPContainer(NWID_MATRIX, NC_EQUALSIZE), index(-1), clicked(-1), count(-1)
-{
-}
-
-void NWidgetMatrix::SetIndex(WidgetID index)
-{
-	this->index = index;
-}
-
-void NWidgetMatrix::SetColour(Colours colour)
+NWidgetMatrix::NWidgetMatrix(Colours colour, WidgetID index) : NWidgetPIPContainer(NWID_MATRIX, NC_EQUALSIZE), index(index), clicked(-1), count(-1)
 {
 	this->colour = colour;
 }
@@ -2191,10 +2166,9 @@ void NWidgetMatrix::GetScrollOffsets(int &start_x, int &start_y, int &base_offs_
  *               vertical container will be inserted while adding the first
  *               child widget.
  */
-NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, WidgetID index, NWidgetPIPContainer *child) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL)
+NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, WidgetID index, NWidgetPIPContainer *child) : NWidgetCore(tp, colour, index, 1, 1, 0x0, STR_NULL)
 {
 	assert(tp == WWT_PANEL || tp == WWT_INSET || tp == WWT_FRAME);
-	if (index >= 0) this->SetIndex(index);
 	this->child = child;
 	this->SetAlignment(SA_TOP | SA_LEFT);
 }
@@ -2399,9 +2373,8 @@ NWidgetBase *NWidgetBackground::GetWidgetOfType(WidgetType tp)
 	return nwid;
 }
 
-NWidgetViewport::NWidgetViewport(WidgetID index) : NWidgetCore(NWID_VIEWPORT, INVALID_COLOUR, 1, 1, 0x0, STR_NULL)
+NWidgetViewport::NWidgetViewport(WidgetID index) : NWidgetCore(NWID_VIEWPORT, INVALID_COLOUR, index, 1, 1, 0x0, STR_NULL)
 {
-	this->SetIndex(index);
 }
 
 void NWidgetViewport::SetupSmallestSize(Window *)
@@ -2559,10 +2532,9 @@ void Scrollbar::SetCapacityFromWidget(Window *w, WidgetID widget, int padding)
  * @param colour Colour of the scrollbar.
  * @param index  Index of the widget.
  */
-NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, WidgetID index) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL), Scrollbar(tp != NWID_HSCROLLBAR)
+NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, WidgetID index) : NWidgetCore(tp, colour, index, 1, 1, 0x0, STR_NULL), Scrollbar(tp != NWID_HSCROLLBAR)
 {
 	assert(tp == NWID_HSCROLLBAR || tp == NWID_VSCROLLBAR);
-	this->SetIndex(index);
 
 	switch (this->type) {
 		case NWID_HSCROLLBAR:
@@ -2685,10 +2657,9 @@ Dimension NWidgetLeaf::dropdown_dimension   = {0, 0};
  * @param data   Data of the widget.
  * @param tip    Tooltip of the widget.
  */
-NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
+NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, uint32_t data, StringID tip) : NWidgetCore(tp, colour, index, 1, 1, data, tip)
 {
 	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_DEFSIZEBOX || tp == WWT_DEBUGBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
-	if (index >= 0) this->SetIndex(index);
 	this->min_x = 0;
 	this->min_y = 0;
 	this->SetResize(0, 0);
@@ -3153,11 +3124,8 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 
 			case NWID_MATRIX: {
 				if (*dest != nullptr) return nwid_begin;
-				NWidgetMatrix *nwm = new NWidgetMatrix();
-				*dest = nwm;
+				*dest = new NWidgetMatrix(nwid_begin->u.widget.colour, nwid_begin->u.widget.index);
 				*fill_dest = true;
-				nwm->SetIndex(nwid_begin->u.widget.index);
-				nwm->SetColour(nwid_begin->u.widget.colour);
 				break;
 			}
 
@@ -3271,10 +3239,8 @@ static const NWidgetPart *MakeNWidget(const NWidgetPart *nwid_begin, const NWidg
 
 			case NWID_SELECTION: {
 				if (*dest != nullptr) return nwid_begin;
-				NWidgetStacked *nws = new NWidgetStacked();
-				*dest = nws;
+				*dest = new NWidgetStacked(nwid_begin->u.widget.index);
 				*fill_dest = true;
-				nws->SetIndex(nwid_begin->u.widget.index);
 				break;
 			}
 
@@ -3394,7 +3360,7 @@ NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *nwid_begin, const NWi
 	NWidgetHorizontal *hor_cont = dynamic_cast<NWidgetHorizontal *>(nwid);
 	NWidgetContainer *body;
 	if (hor_cont != nullptr && hor_cont->GetWidgetOfType(WWT_CAPTION) != nullptr && hor_cont->GetWidgetOfType(WWT_SHADEBOX) != nullptr) {
-		*shade_select = new NWidgetStacked;
+		*shade_select = new NWidgetStacked(-1);
 		root->Add(*shade_select);
 		body = new NWidgetVertical;
 		(*shade_select)->Add(body);
