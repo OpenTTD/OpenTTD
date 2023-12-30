@@ -293,12 +293,11 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 {
 	if (reset_cache) {
 		/* Company colour data is indirectly cached. */
-		for (Vehicle *v : Vehicle::Iterate()) {
-			if (v->group_id == g->index && (!v->IsGroundVehicle() || v->IsFrontEngine())) {
-				for (Vehicle *u = v; u != nullptr; u = u->Next()) {
-					u->colourmap = PAL_NONE;
-					u->InvalidateNewGRFCache();
-				}
+		const VehicleList &vehicle_list = g->statistics.vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
+			for (Vehicle *u = Vehicle::Get(v->index); u != nullptr; u = u->Next()) {
+				u->colourmap = PAL_NONE;
+				u->InvalidateNewGRFCache();
 			}
 		}
 	}
