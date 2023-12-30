@@ -12,7 +12,7 @@ jobs:
   macos:
     name: MacOS
 
-    runs-on: macos-12
+    runs-on: macos-latest
     env:
       MACOSX_DEPLOYMENT_TARGET: 10.13
 
