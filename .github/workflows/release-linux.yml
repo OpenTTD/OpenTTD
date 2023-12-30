@@ -12,7 +12,7 @@ jobs:
   linux:
     name: Linux (Generic)
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       # manylinux2014 is based on CentOS 7, but already has a lot of things
       # installed and preconfigured. It makes it easier to build OpenTTD.
