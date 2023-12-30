@@ -614,16 +614,13 @@ CommandCost CmdAddSharedVehicleGroup(DoCommandFlag flags, GroupID id_g, VehicleT
 	if (!Group::IsValidID(id_g) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		/* Find the first front engine which belong to the group id_g
-		 * then add all shared vehicles of this front engine to the group id_g */
-		for (const Vehicle *v : Vehicle::Iterate()) {
-			if (v->type == type && v->IsPrimaryVehicle()) {
-				if (v->group_id != id_g) continue;
-
-				/* For each shared vehicles add it to the group */
-				for (Vehicle *v2 = v->FirstShared(); v2 != nullptr; v2 = v2->NextShared()) {
-					if (v2->group_id != id_g) Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, id_g, v2->index, false, VehicleListIdentifier{});
-				}
+		/* For each vehicle belonging to the group id_g
+		 * add all vehicles sharing orders with it to that group */
+		const VehicleList vehicle_list = Group::Get(id_g)->statistics.vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
+			/* For each shared vehicles add it to the group */
+			for (Vehicle *v2 = v->FirstShared(); v2 != nullptr; v2 = v2->NextShared()) {
+				if (v2->group_id != id_g) Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, id_g, v2->index, false, VehicleListIdentifier{});
 			}
 		}
 
