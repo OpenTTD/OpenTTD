@@ -1451,7 +1451,7 @@ public:
 			}
 
 			case WID_BROS_IMAGE: {
-				uint16_t type = this->GetWidget<NWidgetMatrix>(WID_BROS_MATRIX)->GetCurrentElement();
+				uint16_t type = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 				assert(type < _roadstop_gui_settings.roadstop_count);
 
 				const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(type);
@@ -1549,7 +1549,7 @@ public:
 			}
 
 			case WID_BROS_IMAGE: {
-				uint16_t y = this->GetWidget<NWidgetMatrix>(WID_BROS_MATRIX)->GetCurrentElement();
+				uint16_t y = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 				if (y >= _roadstop_gui_settings.roadstop_count) return;
 
 				const RoadStopSpec *spec = RoadStopClass::Get(_roadstop_gui_settings.roadstop_class)->GetSpec(y);
@@ -1559,7 +1559,7 @@ public:
 
 				_roadstop_gui_settings.roadstop_type = y;
 
-				this->GetWidget<NWidgetMatrix>(WID_BROS_MATRIX)->SetClicked(_roadstop_gui_settings.roadstop_type);
+				this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->SetClicked(_roadstop_gui_settings.roadstop_type);
 
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();

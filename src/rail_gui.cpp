@@ -1285,7 +1285,7 @@ public:
 			}
 
 			case WID_BRAS_IMAGE: {
-				uint16_t type = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX)->GetCurrentElement();
+				uint16_t type = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 				assert(type < _railstation.station_count);
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(type);
@@ -1470,7 +1470,7 @@ public:
 			}
 
 			case WID_BRAS_IMAGE: {
-				uint16_t y = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX)->GetCurrentElement();
+				uint16_t y = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 				if (y >= _railstation.station_count) return;
 
 				/* Check station availability callback */
@@ -1480,7 +1480,7 @@ public:
 				_railstation.station_type = y;
 
 				this->CheckSelectedSize(statspec);
-				this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX)->SetClicked(_railstation.station_type);
+				this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->SetClicked(_railstation.station_type);
 
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
@@ -2097,7 +2097,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 	{
 		switch (widget) {
 			case WID_BRW_WAYPOINT: {
-				uint16_t type = this->list.at(this->GetWidget<NWidgetMatrix>(WID_BRW_WAYPOINT_MATRIX)->GetCurrentElement());
+				uint16_t type = this->list.at(this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement());
 				const StationSpec *statspec = this->waypoints->GetSpec(type);
 
 				DrawPixelInfo tmp_dpi;
@@ -2120,7 +2120,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 	{
 		switch (widget) {
 			case WID_BRW_WAYPOINT: {
-				uint16_t sel = this->GetWidget<NWidgetMatrix>(WID_BRW_WAYPOINT_MATRIX)->GetCurrentElement();
+				uint16_t sel = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
 				assert(sel < this->list.size());
 				uint16_t type = this->list.at(sel);
 
@@ -2129,7 +2129,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				if (!IsStationAvailable(statspec)) return;
 
 				_cur_waypoint_type = type;
-				this->GetWidget<NWidgetMatrix>(WID_BRW_WAYPOINT_MATRIX)->SetClicked(sel);
+				this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->SetClicked(sel);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;
