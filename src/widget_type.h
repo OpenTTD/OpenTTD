@@ -235,9 +235,6 @@ public:
 	int pos_x;            ///< Horizontal position of top-left corner of the widget in the window.
 	int pos_y;            ///< Vertical position of top-left corner of the widget in the window.
 
-	NWidgetBase *next;    ///< Pointer to next widget in container. Managed by parent container widget.
-	NWidgetBase *prev;    ///< Pointer to previous widget in container. Managed by parent container widget.
-
 	RectPadding padding;    ///< Padding added to the widget. Managed by parent container widget. (parent container may swap left and right for RTL)
 	RectPadding uz_padding; ///< Unscaled padding, for resize calculation.
 
@@ -446,8 +443,7 @@ inline bool NWidgetCore::IsDisabled() const
  */
 class NWidgetContainer : public NWidgetBase {
 public:
-	NWidgetContainer(WidgetType tp);
-	~NWidgetContainer();
+	NWidgetContainer(WidgetType tp) : NWidgetBase(tp) { }
 
 	void AdjustPaddingForZoom() override;
 	void Add(NWidgetBase *wid);
@@ -457,13 +453,12 @@ public:
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 
 	/** Return whether the container is empty. */
-	inline bool IsEmpty() { return head == nullptr; }
+	inline bool IsEmpty() { return this->children.empty(); }
 
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
 
 protected:
-	NWidgetBase *head; ///< Pointer to first widget in container.
-	NWidgetBase *tail; ///< Pointer to last widget in container.
+	std::vector<std::unique_ptr<NWidgetBase>> children; ///< Child widgets in contaier.
 };
 
 /** Display planes with zero size for #NWidgetStacked. */
