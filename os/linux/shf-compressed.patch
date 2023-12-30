@@ -1,0 +1,10 @@
+--- a/usr/include/elf.h	2023-12-30 13:46:27.038645199 +0100
++++ b/usr/include/elf.h	2023-12-30 13:46:42.278641893 +0100
+@@ -365,6 +365,7 @@
+ 					   required */
+ #define SHF_GROUP	     (1 << 9)	/* Section is member of a group.  */
+ #define SHF_TLS		     (1 << 10)	/* Section hold thread-local data.  */
++#define SHF_COMPRESSED	     (1 << 11)	/* Section with compressed data. */
+ #define SHF_MASKOS	     0x0ff00000	/* OS-specific.  */
+ #define SHF_MASKPROC	     0xf0000000	/* Processor-specific */
+ #define SHF_ORDERED	     (1 << 30)	/* Special ordering requirement
