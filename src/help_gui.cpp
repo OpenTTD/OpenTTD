@@ -85,7 +85,7 @@ struct GameManualTextfileWindow : public TextfileWindow {
 		if (this->filename == CHANGELOG_FILENAME) {
 			this->link_anchors.clear();
 			this->AfterLoadChangelog();
-			this->GetWidget<NWidgetStacked>(WID_TF_SEL_JUMPLIST)->SetDisplayedPlane(this->jumplist.empty() ? SZSP_HORIZONTAL : 0);
+			if (this->GetWidget<NWidgetStacked>(WID_TF_SEL_JUMPLIST)->SetDisplayedPlane(this->jumplist.empty() ? SZSP_HORIZONTAL : 0)) this->ReInit();
 		} else {
 			this->TextfileWindow::AfterLoadText();
 		}
