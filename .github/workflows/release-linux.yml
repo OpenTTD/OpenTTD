@@ -132,28 +132,12 @@ jobs:
         # Make Python3 available for other packages. This needs to be done
         # first, as otherwise dependencies fail to build because Python3 is
         # not available.
-        /vcpkg/vcpkg install python3
-        ln -sf /vcpkg/installed/x64-linux/tools/python3/python3.[0-9][0-9] /usr/bin/python3
+        (
+          cd /
 
-        # SDL2 needs dbus, but dbus default install comes with libsystemd
-        # and some of libsystemd deps fail to build on our quite old linux.
-        # So just install basic dbus without any extra deps.
-        /vcpkg/vcpkg install dbus[core]
-
-        # Now we can install OpenTTD dependencies
-        /vcpkg/vcpkg install \
-          breakpad \
-          curl[http2] \
-          fontconfig \
-          freetype \
-          harfbuzz \
-          icu \
-          liblzma \
-          libpng \
-          lzo \
-          sdl2 \
-          zlib \
-          # EOF
+          /vcpkg/vcpkg install python3
+          ln -sf /vcpkg/installed/x64-linux/tools/python3/python3.[0-9][0-9] /usr/bin/python3
+        )
         echo "::endgroup::"
 
         echo "::group::Install breakpad dependencies"
