@@ -1347,7 +1347,7 @@ public:
 
 		uint nbuttons = 0;
 		/* First initialise some variables... */
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		for (const auto &child_wid : this->children) {
 			child_wid->SetupSmallestSize(w);
 			this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
 			if (this->IsButton(child_wid->type)) {
@@ -1359,7 +1359,7 @@ public:
 		}
 
 		/* ... then in a second pass make sure the 'current' heights are set. Won't change ever. */
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		for (const auto &child_wid : this->children) {
 			child_wid->current_y = this->smallest_y;
 			if (!this->IsButton(child_wid->type)) {
 				child_wid->current_x = child_wid->smallest_x;
@@ -1381,12 +1381,13 @@ public:
 		uint arrangable_count, button_count, spacer_count;
 		const WidgetID *arrangement = GetButtonArrangement(given_width, arrangable_count, button_count, spacer_count);
 
-		/* Create us ourselves a quick lookup table */
-		NWidgetBase *widgets[WID_TN_END];
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
-			child_wid->current_x = 0; /* Hide widget, it will be revealed in the next step. */
-			if (child_wid->type == NWID_SPACER) continue;
-			widgets[((NWidgetCore*)child_wid)->index] = child_wid;
+		/* Create us ourselves a quick lookup table from WidgetID to slot. */
+		std::map<WidgetID, uint> lookup;
+		for (auto it = std::begin(this->children); it != std::end(this->children); ++it) {
+			NWidgetBase *nwid = it->get();
+			nwid->current_x = 0; /* Hide widget, it will be revealed in the next step. */
+			if (nwid->type == NWID_SPACER) continue;
+			lookup[dynamic_cast<NWidgetCore *>(nwid)->index] = std::distance(this->children.begin(), it);
 		}
 
 		/* Now assign the widgets to their rightful place */
@@ -1397,12 +1398,13 @@ public:
 		uint button_i = 0;
 
 		/* Index into the arrangement indices. The macro lastof cannot be used here! */
-		const WidgetID *cur_wid = rtl ? &arrangement[arrangable_count - 1] : arrangement;
+		const WidgetID *slotp = rtl ? &arrangement[arrangable_count - 1] : arrangement;
 		for (uint i = 0; i < arrangable_count; i++) {
-			NWidgetBase *child_wid = widgets[*cur_wid];
-			/* If we have to give space to the spacers, do that */
-			if (spacer_space != 0) {
-				NWidgetBase *possible_spacer = rtl ? child_wid->next : child_wid->prev;
+			uint slot = lookup[*slotp];
+			auto &child_wid = this->children[slot];
+			/* If we have space to give to the spacers, do that. */
+			if (spacer_space > 0 && slot > 0 && slot < this->children.size() - 1) {
+				const auto &possible_spacer = this->children[slot + (rtl ? 1 : -1)];
 				if (possible_spacer != nullptr && possible_spacer->type == NWID_SPACER) {
 					uint add = spacer_space / (spacer_count - spacer_i);
 					position += add;
@@ -1423,9 +1425,9 @@ public:
 			position += child_wid->current_x;
 
 			if (rtl) {
-				cur_wid--;
+				slotp--;
 			} else {
-				cur_wid++;
+				slotp++;
 			}
 		}
 	}
@@ -1783,7 +1785,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 
 		/* Find the size of panel_widths */
 		uint i = 0;
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		for (const auto &child_wid : this->children) {
 			if (child_wid->type == NWID_SPACER || this->IsButton(child_wid->type)) continue;
 
 			assert(i < lengthof(this->panel_widths));

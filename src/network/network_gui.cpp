@@ -115,18 +115,18 @@ public:
 		this->resize_y = 0; // We never resize in this direction
 
 		/* First initialise some variables... */
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		for (const auto &child_wid : this->children) {
 			child_wid->SetupSmallestSize(w);
 			this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
 		}
 
 		/* ... then in a second pass make sure the 'current' sizes are set. Won't change for most widgets. */
-		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		for (const auto &child_wid : this->children) {
 			child_wid->current_x = child_wid->smallest_x;
 			child_wid->current_y = this->smallest_y;
 		}
 
-		this->smallest_x = this->head->smallest_x + this->tail->smallest_x; // First and last are always shown, rest not
+		this->smallest_x = this->children.front()->smallest_x + this->children.back()->smallest_x; // First and last are always shown, rest not
 	}
 
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override
@@ -138,27 +138,38 @@ public:
 		this->current_x = given_width;
 		this->current_y = given_height;
 
-		given_width -= this->tail->smallest_x;
+		given_width -= this->children.back()->smallest_x;
 		/* The first and last widget are always visible, determine which other should be visible */
-		for (NWidgetBase *child_wid = this->head->next; child_wid->next != nullptr; child_wid = child_wid->next) {
-			if (given_width > ScaleGUITrad(MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER) + child_wid->smallest_x && child_wid->prev->current_x != 0) {
-				given_width -= child_wid->smallest_x;
-				child_wid->current_x = child_wid->smallest_x; /* Make visible. */
-			} else {
-				child_wid->current_x = 0; /* Make invisible. */
+		if (this->children.size() > 2) {
+			auto first = std::next(std::begin(this->children));
+			auto last = std::prev(std::end(this->children));
+			for (auto it = first; it != last; ++it) {
+				auto &child_wid = *it;
+				if (given_width > ScaleGUITrad(MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER) + child_wid->smallest_x && (*std::prev(it))->current_x != 0) {
+					given_width -= child_wid->smallest_x;
+					child_wid->current_x = child_wid->smallest_x; /* Make visible. */
+				} else {
+					child_wid->current_x = 0; /* Make invisible. */
+				}
 			}
 		}
 
 		/* All remaining space goes to the first (name) widget */
-		this->head->current_x = given_width;
+		this->children.front()->current_x = given_width;
 
 		/* Now assign the widgets to their rightful place */
 		uint position = 0; // Place to put next child relative to origin of the container.
-		for (NWidgetBase *child_wid = rtl ? this->tail : this->head; child_wid != nullptr; child_wid = rtl ? child_wid->prev : child_wid->next) {
+		auto assign_position = [&](const std::unique_ptr<NWidgetBase> &child_wid) {
 			if (child_wid->current_x != 0) {
 				child_wid->AssignSizePosition(sizing, x + position, y, child_wid->current_x, this->current_y, rtl);
 				position += child_wid->current_x;
 			}
+		};
+
+		if (rtl) {
+			std::for_each(std::rbegin(this->children), std::rend(this->children), assign_position);
+		} else {
+			std::for_each(std::begin(this->children), std::end(this->children), assign_position);
 		}
 	}
 };

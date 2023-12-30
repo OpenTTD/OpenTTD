@@ -1852,8 +1852,9 @@ public:
 
 	void SetupSmallestSize(Window *w) override
 	{
-		NWidgetBase *display = this->head;
-		NWidgetBase *bar = display->next;
+		assert(this->children.size() == 2);
+		NWidgetBase *display = this->children.front().get();
+		NWidgetBase *bar = this->children.back().get();
 
 		display->SetupSmallestSize(w);
 		bar->SetupSmallestSize(w);
@@ -1875,8 +1876,9 @@ public:
 		this->current_x = given_width;
 		this->current_y = given_height;
 
-		NWidgetBase *display = this->head;
-		NWidgetBase *bar = display->next;
+		assert(this->children.size() == 2);
+		NWidgetBase *display = this->children.front().get();
+		NWidgetBase *bar = this->children.back().get();
 
 		if (sizing == ST_SMALLEST) {
 			this->smallest_x = given_width;
