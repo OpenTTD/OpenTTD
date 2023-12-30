@@ -97,6 +97,14 @@ jobs:
           cmake --build . -j $(nproc)
           cmake --install .
         )
+
+        # The container we use is old enough, that it doesn't know SHF_COMPRESSED.
+        # But, breakpad needs this symbol to exist. So we patch it in our system
+        # libraries.
+        (
+          cd /
+          patch -p1 < ${GITHUB_WORKSPACE}/os/linux/shf-compressed.patch
+        )
         echo "::endgroup::"
 
         echo "::group::Install audio drivers"
