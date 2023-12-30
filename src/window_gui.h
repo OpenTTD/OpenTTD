@@ -327,7 +327,8 @@ public:
 	 */
 	inline void SetWidgetDisabledState(WidgetID widget_index, bool disab_stat)
 	{
-		this->GetWidget<NWidgetCore>(widget_index)->SetDisabled(disab_stat);
+		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(widget_index);
+		if (nwid != nullptr) nwid->SetDisabled(disab_stat);
 	}
 
 	/**
