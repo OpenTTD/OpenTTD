@@ -2684,40 +2684,39 @@ int WhoCanServiceIndustry(Industry *ind)
 	if (ind->stations_near.empty()) return 0; // No stations found at all => nobody services
 
 	int result = 0;
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		/* Is it worthwhile to try this vehicle? */
-		if (v->owner != _local_company && result != 0) continue;
+	for (const Company *c : Company::Iterate()) {
+		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			const VehicleList &vehicle_list = c->group_all[type].vehicle_list;
+			for (const Vehicle *v : vehicle_list) {
+				/* Is it worthwhile to try this vehicle? */
+				if (v->owner != _local_company && result != 0) continue;
 
-		/* Check whether it accepts the right kind of cargo */
-		bool c_accepts = false;
-		bool c_produces = false;
-		if (v->type == VEH_TRAIN && v->IsFrontEngine()) {
-			for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
-				CanCargoServiceIndustry(u->cargo_type, ind, &c_accepts, &c_produces);
-			}
-		} else if (v->type == VEH_ROAD || v->type == VEH_SHIP || v->type == VEH_AIRCRAFT) {
-			CanCargoServiceIndustry(v->cargo_type, ind, &c_accepts, &c_produces);
-		} else {
-			continue;
-		}
-		if (!c_accepts && !c_produces) continue; // Wrong cargo
+				/* Check whether it accepts the right kind of cargo */
+				bool c_accepts = false;
+				bool c_produces = false;
+				for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
+					CanCargoServiceIndustry(u->cargo_type, ind, &c_accepts, &c_produces);
+				}
+				if (!c_accepts && !c_produces) continue; // Wrong cargo
 
-		/* Check orders of the vehicle.
-		 * We cannot check the first of shared orders only, since the first vehicle in such a chain
-		 * may have a different cargo type.
-		 */
-		for (const Order *o : v->Orders()) {
-			if (o->IsType(OT_GOTO_STATION) && !(o->GetUnloadType() & OUFB_TRANSFER)) {
-				/* Vehicle visits a station to load or unload */
-				Station *st = Station::Get(o->GetDestination());
-				assert(st != nullptr);
+				/* Check orders of the vehicle.
+				 * We cannot check the first of shared orders only, since the first vehicle in such a chain
+				 * may have a different cargo type.
+				 */
+				for (const Order *o : v->Orders()) {
+					if (o->IsType(OT_GOTO_STATION) && !(o->GetUnloadType() & OUFB_TRANSFER)) {
+						/* Vehicle visits a station to load or unload */
+						Station *st = Station::Get(o->GetDestination());
+						assert(st != nullptr);
 
-				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
-				if ((o->GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
+						/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
+						if ((o->GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
 
-				if (ind->stations_near.find(st) != ind->stations_near.end()) {
-					if (v->owner == _local_company) return 2; // Company services industry
-					result = 1; // Competitor services industry
+						if (ind->stations_near.find(st) != ind->stations_near.end()) {
+							if (v->owner == _local_company) return 2; // Company services industry
+							result = 1; // Competitor services industry
+						}
+					}
 				}
 			}
 		}
