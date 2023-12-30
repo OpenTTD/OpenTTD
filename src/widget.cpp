@@ -1319,6 +1319,8 @@ void NWidgetContainer::AdjustPaddingForZoom()
  */
 void NWidgetContainer::Add(NWidgetBase *wid)
 {
+	assert(wid != nullptr);
+	wid->parent = this;
 	assert(wid->next == nullptr && wid->prev == nullptr);
 
 	if (this->head == nullptr) {
@@ -2170,6 +2172,7 @@ NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, WidgetID ind
 {
 	assert(tp == WWT_PANEL || tp == WWT_INSET || tp == WWT_FRAME);
 	this->child = child;
+	if (this->child != nullptr) this->child->parent = this;
 	this->SetAlignment(SA_TOP | SA_LEFT);
 }
 
@@ -2190,6 +2193,7 @@ void NWidgetBackground::Add(NWidgetBase *nwid)
 	if (this->child == nullptr) {
 		this->child = new NWidgetVertical();
 	}
+	nwid->parent = this->child;
 	this->child->Add(nwid);
 }
 
@@ -2208,6 +2212,7 @@ void NWidgetBackground::SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_p
 	if (this->child == nullptr) {
 		this->child = new NWidgetVertical();
 	}
+	this->child->parent = this;
 	this->child->SetPIP(pip_pre, pip_inter, pip_post);
 }
 
@@ -2226,6 +2231,7 @@ void NWidgetBackground::SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_int
 	if (this->child == nullptr) {
 		this->child = new NWidgetVertical();
 	}
+	this->child->parent = this;
 	this->child->SetPIPRatio(pip_ratio_pre, pip_ratio_inter, pip_ratio_post);
 }
 
