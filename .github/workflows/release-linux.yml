@@ -17,11 +17,6 @@ jobs:
       # manylinux2014 is based on CentOS 7, but already has a lot of things
       # installed and preconfigured. It makes it easier to build OpenTTD.
       image: quay.io/pypa/manylinux2014_x86_64
-      volumes:
-      - /usr/local/share/vcpkg:/vcpkg
-      env:
-        ImageOS: ${{ env.ImageOS }}
-        ImageVersion: ${{ env.ImageVersion }}
 
     steps:
     - name: Download source
@@ -57,18 +52,13 @@ jobs:
     - name: Enable Rust cache
       uses: Swatinem/rust-cache@v2
 
-    - name: Prepare cache key
-      id: key
-      run: |
-        echo "image=$ImageOS-$ImageVersion" >> $GITHUB_OUTPUT
-
-    - name: Enable vcpkg cache
-      uses: actions/cache@v3
+    - name: Setup vcpkg caching
+      uses: actions/github-script@v6
       with:
-        path: /vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-release-1 # Increase the number whenever dependencies are modified
-        restore-keys: |
-          ${{ steps.key.outputs.image }}-vcpkg-release
+        script: |
+          core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+          core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
 
     - name: Install dependencies
       run: |
@@ -132,7 +122,16 @@ jobs:
         # We use vcpkg for our dependencies, to get more up-to-date version.
         echo "::group::Install vcpkg and dependencies"
 
-        # Make Python3 available for other packages.
+        git clone https://github.com/microsoft/vcpkg /vcpkg
+
+        (
+          cd /vcpkg
+          ./bootstrap-vcpkg.sh -disableMetrics
+        )
+
+        # Make Python3 available for other packages. This needs to be done
+        # first, as otherwise dependencies fail to build because Python3 is
+        # not available.
         /vcpkg/vcpkg install python3
         ln -sf /vcpkg/installed/x64-linux/tools/python3/python3.[0-9][0-9] /usr/bin/python3
 
