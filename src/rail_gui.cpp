@@ -1240,7 +1240,7 @@ public:
 	{
 		DrawPixelInfo tmp_dpi;
 
-		switch (GB(widget, 0, 16)) {
+		switch (widget) {
 			case WID_BRAS_PLATFORM_DIR_X: {
 				/* Set up a clipping area for the '/' station preview */
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
@@ -1285,7 +1285,7 @@ public:
 			}
 
 			case WID_BRAS_IMAGE: {
-				uint16_t type = GB(widget, 16, 16);
+				uint16_t type = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX)->GetCurrentElement();
 				assert(type < _railstation.station_count);
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(type);
@@ -1325,7 +1325,7 @@ public:
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		switch (GB(widget, 0, 16)) {
+		switch (widget) {
 			case WID_BRAS_PLATFORM_DIR_X:
 			case WID_BRAS_PLATFORM_DIR_Y:
 				this->RaiseWidget(_railstation.orientation + WID_BRAS_PLATFORM_DIR_X);
@@ -1470,7 +1470,7 @@ public:
 			}
 
 			case WID_BRAS_IMAGE: {
-				uint16_t y = GB(widget, 16, 16);
+				uint16_t y = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX)->GetCurrentElement();
 				if (y >= _railstation.station_count) return;
 
 				/* Check station availability callback */
@@ -2095,9 +2095,9 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
-		switch (GB(widget, 0, 16)) {
+		switch (widget) {
 			case WID_BRW_WAYPOINT: {
-				uint16_t type = this->list.at(GB(widget, 16, 16));
+				uint16_t type = this->list.at(this->GetWidget<NWidgetMatrix>(WID_BRW_WAYPOINT_MATRIX)->GetCurrentElement());
 				const StationSpec *statspec = this->waypoints->GetSpec(type);
 
 				DrawPixelInfo tmp_dpi;
@@ -2118,9 +2118,9 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		switch (GB(widget, 0, 16)) {
+		switch (widget) {
 			case WID_BRW_WAYPOINT: {
-				uint16_t sel = GB(widget, 16, 16);
+				uint16_t sel = this->GetWidget<NWidgetMatrix>(WID_BRW_WAYPOINT_MATRIX)->GetCurrentElement();
 				assert(sel < this->list.size());
 				uint16_t type = this->list.at(sel);
 

@@ -564,6 +564,7 @@ public:
 	void SetClicked(int clicked);
 	void SetCount(int count);
 	void SetScrollbar(Scrollbar *sb);
+	int GetCurrentElement() const;
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
@@ -574,8 +575,9 @@ public:
 protected:
 	WidgetID index; ///< If non-negative, index in the #Window::widget_lookup.
 	Colours colour; ///< Colour of this widget.
-	int clicked;    ///< The currently clicked widget.
-	int count;      ///< Amount of valid widgets.
+	int clicked;    ///< The currently clicked element.
+	int count;      ///< Amount of valid elements.
+	int current_element; ///< The element currently being processed.
 	Scrollbar *sb;  ///< The scrollbar we're associated with.
 private:
 	int widget_w;   ///< The width of the child widget including inter spacing.

@@ -1965,8 +1965,8 @@ void NWidgetMatrix::SetColour(Colours colour)
 }
 
 /**
- * Sets the clicked widget in the matrix.
- * @param clicked The clicked widget.
+ * Sets the clicked element in the matrix.
+ * @param clicked The clicked element.
  */
 void NWidgetMatrix::SetClicked(int clicked)
 {
@@ -2014,15 +2014,20 @@ void NWidgetMatrix::SetScrollbar(Scrollbar *sb)
 	this->sb = sb;
 }
 
+/**
+ * Get current element.
+ * @returns index of current element.
+ */
+int NWidgetMatrix::GetCurrentElement() const
+{
+	return this->current_element;
+}
+
 void NWidgetMatrix::SetupSmallestSize(Window *w)
 {
 	assert(this->head != nullptr);
 	assert(this->head->next == nullptr);
 
-	/* Reset the widget number. */
-	NWidgetCore *nw = dynamic_cast<NWidgetCore *>(this->head);
-	assert(nw != nullptr);
-	SB(nw->index, 16, 16, 0);
 	this->head->SetupSmallestSize(w);
 
 	Dimension padding = { (uint)this->pip_pre + this->pip_post, (uint)this->pip_pre + this->pip_post};
@@ -2087,8 +2092,8 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 
 	int widget_row = (y - base_offs_y - (int)this->pip_pre - this->pos_y) / this->widget_h;
 
-	int sub_wid = (widget_row + start_y) * this->widgets_x + start_x + widget_col;
-	if (sub_wid >= this->count) return nullptr;
+	this->current_element = (widget_row + start_y) * this->widgets_x + start_x + widget_col;
+	if (this->current_element >= this->count) return nullptr;
 
 	NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
 	assert(child != nullptr);
@@ -2096,8 +2101,6 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 			this->pos_x + (rtl ? this->pip_post - widget_col * this->widget_w : this->pip_pre + widget_col * this->widget_w) + base_offs_x,
 			this->pos_y + this->pip_pre + widget_row * this->widget_h + base_offs_y,
 			child->smallest_x, child->smallest_y, rtl);
-
-	SB(child->index, 16, 16, sub_wid);
 
 	return child->GetWidgetFromPos(x, y);
 }
@@ -2137,12 +2140,11 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 				if (offs_x >= (int)this->current_x) continue;
 
 				/* Do we have this many widgets? */
-				int sub_wid = y * this->widgets_x + x;
-				if (sub_wid >= this->count) break;
+				this->current_element = y * this->widgets_x + x;
+				if (this->current_element >= this->count) break;
 
 				child->AssignSizePosition(ST_RESIZE, offs_x, offs_y, child->smallest_x, child->smallest_y, rtl);
-				child->SetLowered(this->clicked == sub_wid);
-				SB(child->index, 16, 16, sub_wid);
+				child->SetLowered(this->clicked == this->current_element);
 				child->Draw(w);
 			}
 		}
