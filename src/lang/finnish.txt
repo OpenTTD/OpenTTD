@@ -2196,12 +2196,20 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näytä 
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Näytä tieajoneuvojen väriteemat
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Näytä laivojen väriteemat
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Näytä ilma-alusten väriteemat
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Näytä junaryhmien värit
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Näytä ajoneuvoryhmien värit
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Näytä laivaryhmien värit
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Näytä ilma-alusryhmien värit
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Valitse valitun kaavan ensisijainen väri. Ctrl+napsautus asettaa tämän värin kaikille kaavoille.
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Valitse valitun kaavan toissijainen väri. Ctrl+napsautus asettaa tämän värin kaikille kaavoille.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Valitse muutettava väriteema, tai valitse useita Ctrl pohjassa. Paina valintalaatikkoa valitaksesi teeman
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Junaryhmiä ei ole muodostettu
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Ajoneuvoryhmiä ei ole muodostettu
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Laivaryhmiä ei ole muodostettu
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Ilma-alusryhmiä ei ole muodostettu
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Normaalit tunnusvärit
+STR_LIVERY_DEFAULT                                              :Oletusväritys
 STR_LIVERY_STEAM                                                :Höyryveturi
 STR_LIVERY_DIESEL                                               :Dieselveturi
 STR_LIVERY_ELECTRIC                                             :Sähköveturi
@@ -2711,7 +2719,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Rakenna veturitalli (junien ostamista ja huoltoa varten). Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Muunna raide reittipisteeksi. Ctrl liittää reittipisteet. Shift vaihtaa muuntotilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Rakenna rautatieasema. Ctrl liittää asemat. Shift vaihtaa rakennustilan ja kustannusarvion välillä
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastimia. Ctrl vaihtaa joko siipiopastimet tai valo-opastimet{}Vetäminen rakentaa opastimia suoralle rautatielle. Ctrl rakentaa opastimia seuraavaan risteykseen saakka{}Ctrl+Click avaa opastimenvalintaikkunan. Shift vaihtaa rakennustilan ja kustannusarvion välillä
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Rakenna opastimia. Ctrl vaihtaa siipi- ja valo-opastimien välillä{}Vetäminen rakentaa opastimia suoralle rataosuudelle. Ctrl rakentaa opastimia seuraavaan risteykseen tai opastimeen saakka{}Ctrl+napsautus avaa opastimenvalintaikkunan. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna rautatiesilta. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, opastimien, reittipisteiden ja asemien rakentaminen/poisto päälle/pois. Pidä pohjassa Ctrl-näppäintä poistaaksesi myös aseman tai reittipisteen alla olevat raiteet
@@ -4653,9 +4661,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Kirjaink
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Kytke kirjainkoon täsmäys, kun verrataan tekoälyn viestejä pysäytysmerkkijonoon
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jatka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jatka tekoälyn suorittamista
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Näytä tämän tekoälyn virheenkorjaustiedot
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Näytä tämän tekoälyn virheenkorjaustiedot. Ctrl+napsautus avaa uuteen ikkunaan
 STR_AI_GAME_SCRIPT                                              :{BLACK}Peliskripti
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Tarkista peliskriptin loki
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Tarkista peliskriptin loki. Ctrl+napsautus avaa uuteen ikkunaan
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata useita tekoälyjä ”online-sisältö” -järjestelmän kautta
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista skripteistä kaatui. Ilmoita tästä skriptin kehittäjälle liittäen mukaan kuvankaappaus Tekoälyn/peliskriptin virheenjäljitys -ikkunasta
