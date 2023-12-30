@@ -33,12 +33,23 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
-    # dtolnay/rust-toolchain uses a curl argument (--retry-connrefused) that the curl shipped with our container doesn't support.
-    # So we need to do one part ourselves; the action takes over the rest and prepares the setup further.
-    - name: Prepare Rust toolchain
+    # curl is too old for most of the tools to work properly. For example,
+    # rust-toolchain doesn't work properly, neither vcpkg caching.
+    # The easier solution here is to upgrade curl.
+    - name: Update curl
       run: |
-        curl --proto '=https' --tlsv1.2 --retry 10 --location --silent --show-error --fail "https://sh.rustup.rs" | sh -s -- --default-toolchain none -y
-        echo "${CARGO_HOME:-$HOME/.cargo}/bin" >> $GITHUB_PATH
+        yum install -y \
+          openssl-devel \
+          # EOF
+
+        mkdir /curl
+        cd /curl
+        curl -o curl-7.81.0.zip https://curl.se/download/curl-7.81.0.zip
+        unzip curl-7.81.0.zip
+        cd curl-7.81.0
+        ./configure --with-ssl --with-zlib --prefix=/usr --libdir=/usr/lib64
+        make -j $(nproc)
+        make install
 
     - name: Install Rust toolchain
       uses: dtolnay/rust-toolchain@stable
