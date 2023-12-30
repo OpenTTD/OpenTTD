@@ -144,6 +144,34 @@ public:
 	virtual NWidgetCore *GetWidgetFromPos(int x, int y) = 0;
 	virtual NWidgetBase *GetWidgetOfType(WidgetType tp);
 
+	/**
+	 * Get parent widget of type NWID.
+	 * @tparam NWID Type of the nested widget.
+	 * @returns Parent widget, or nullptr if no widget of the specified type is found.
+	 */
+	template <class NWID>
+	NWID *GetParentWidget()
+	{
+		for (NWidgetBase *nwid_parent = this->parent; nwid_parent != nullptr; nwid_parent = nwid_parent->parent) {
+			if (NWID *nwid = dynamic_cast<NWID *>(nwid_parent); nwid != nullptr) return nwid;
+		}
+		return nullptr;
+	}
+
+	/**
+	 * Get parent widget of type NWID.
+	 * @tparam NWID Type of the nested widget.
+	 * @returns Parent widget, or nullptr if no widget of the specified type is found.
+	 */
+	template <class NWID>
+	const NWID *GetParentWidget() const
+	{
+		for (const NWidgetBase *nwid_parent = this->parent; nwid_parent != nullptr; nwid_parent = nwid_parent->parent) {
+			if (const NWID *nwid = dynamic_cast<const NWID *>(nwid_parent); nwid != nullptr) return nwid;
+		}
+		return nullptr;
+	}
+
 	virtual bool IsHighlighted() const { return false; }
 	virtual TextColour GetHighlightColour() const { return TC_INVALID; }
 	virtual void SetHighlighted([[maybe_unused]] TextColour highlight_colour) {}
@@ -212,6 +240,8 @@ public:
 
 	RectPadding padding;    ///< Padding added to the widget. Managed by parent container widget. (parent container may swap left and right for RTL)
 	RectPadding uz_padding; ///< Unscaled padding, for resize calculation.
+
+	NWidgetBase *parent; ///< Parent widget of this widget, automatically filled in when added to container.
 
 protected:
 	inline void StoreSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height);
