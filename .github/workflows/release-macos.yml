@@ -55,23 +55,6 @@ jobs:
         cargo install dump_syms
         echo "::endgroup::"
 
-    - name: Prepare vcpkg
-      run: |
-        vcpkg install \
-          breakpad:x64-osx \
-          breakpad:arm64-osx \
-          curl:x64-osx \
-          curl:arm64-osx \
-          liblzma:x64-osx \
-          liblzma:arm64-osx \
-          libpng:x64-osx \
-          libpng:arm64-osx \
-          lzo:x64-osx \
-          lzo:arm64-osx \
-          zlib:x64-osx \
-          zlib:arm64-osx \
-          # EOF
-
     - name: Install GCC problem matcher
       uses: ammaraskar/gcc-problem-matcher@master
 

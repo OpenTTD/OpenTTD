@@ -135,9 +135,15 @@ jobs:
           zlib1g-dev \
           # EOF
 
-        sudo vcpkg install \
-          breakpad \
-          # EOF
+        echo "::group::Install vcpkg dependencies"
+
+        # Disable vcpkg integration, as we mostly use system libraries.
+        mv vcpkg.json vcpkg-disabled.json
+
+        # We only use breakpad from vcpkg, as its CMake files
+        # are a bit special. So the Ubuntu's variant doesn't work.
+        vcpkg install breakpad
+
         echo "::endgroup::"
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -176,10 +182,15 @@ jobs:
 
     - name: Test
       run: |
-        cd build
-        ctest -j $(nproc) --timeout 120
+        (
+          cd build
+          ctest -j $(nproc) --timeout 120
+        )
 
-        # Check no tracked files have been modified
+        # Re-enable vcpkg.
+        mv vcpkg-disabled.json vcpkg.json
+
+        # Check no tracked files have been modified.
         git diff --exit-code
 
   macos:
@@ -207,17 +218,6 @@ jobs:
           core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
           core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
           core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
-
-    - name: Prepare vcpkg
-      run: |
-        vcpkg install --triplet=${{ matrix.arch }}-osx \
-          breakpad \
-          curl \
-          liblzma \
-          libpng \
-          lzo \
-          zlib \
-          # EOF
 
     - name: Install OpenGFX
       run: |
@@ -282,17 +282,6 @@ jobs:
           core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
           core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
           core.exportVariable('VCPKG_BINARY_SOURCES', 'clear;x-gha,readwrite')
-
-    - name: Prepare vcpkg
-      shell: bash
-      run: |
-        vcpkg install --triplet=${{ matrix.arch }}-windows-static \
-          breakpad \
-          liblzma \
-          libpng \
-          lzo \
-          zlib \
-          # EOF
 
     - name: Install OpenGFX
       shell: bash
