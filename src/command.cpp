@@ -272,9 +272,9 @@ void CommandHelperBase::InternalPostResult(const CommandCost &res, TileIndex til
 }
 
 /** Helper to make a desync log for a command. */
-void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, TileIndex tile, const CommandDataBuffer &args, bool failed)
+void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed)
 {
-	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {:06x}; {} ({})", failed ? "cmdf" : "cmd", TimerGameCalendar::date, TimerGameCalendar::date_fract, (int)_current_company, cmd, err_message, tile, FormatArrayAsHex(args), GetCommandName(cmd));
+	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameCalendar::date.base(), TimerGameCalendar::date_fract, (int)_current_company, cmd, err_message, FormatArrayAsHex(args), GetCommandName(cmd));
 }
 
 /**
