@@ -232,18 +232,16 @@ std::string GetDebugString()
 
 /**
  * Get the prefix for logs; if show_date_in_logs is enabled it returns
- * the date, otherwise it returns nothing.
- * @return the prefix for logs (do not free), never nullptr
+ * the date, otherwise it returns an empty string.
+ * @return the prefix for logs.
  */
-const char *GetLogPrefix()
+std::string GetLogPrefix()
 {
-	static std::string _log_prefix;
+	std::string log_prefix;
 	if (_settings_client.gui.show_date_in_logs) {
-		_log_prefix = fmt::format("[{:%Y-%m-%d %H:%M:%S}] ", fmt::localtime(time(nullptr)));
-	} else {
-		_log_prefix.clear();
+		log_prefix = fmt::format("[{:%Y-%m-%d %H:%M:%S}] ", fmt::localtime(time(nullptr)));
 	}
-	return _log_prefix.c_str();
+	return log_prefix;
 }
 
 /**
