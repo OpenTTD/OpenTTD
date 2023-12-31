@@ -510,6 +510,19 @@ public:
 		if (wid->UpdateVerticalSize(this->name.height)) this->ReInit(0, 0);
 	}
 
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
+	{
+		if (widget != WID_BO_CLASS_LIST) return false;
+
+		auto it = this->vscroll->GetScrolledItemFromWidget(this->object_classes, pt.y, this, WID_BO_CLASS_LIST);
+		if (it == this->object_classes.end()) return false;
+
+		StringID str = ObjectClass::Get(*it)->name;
+		GuiShowTooltips(this, str, close_cond, 0);
+
+		return true;
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {

@@ -1512,6 +1512,19 @@ public:
 		}
 	}
 
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
+	{
+		if (widget != WID_BROS_NEWST_LIST) return false;
+
+		auto it = this->vscrollList->GetScrolledItemFromWidget(this->roadstop_classes, pt.y, this, WID_BROS_NEWST_LIST);
+		if (it == this->roadstop_classes.end()) return false;
+
+		StringID str = RoadStopClass::Get(*it)->name;
+		GuiShowTooltips(this, str, close_cond, 0);
+
+		return true;
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
