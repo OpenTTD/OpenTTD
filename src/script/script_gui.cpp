@@ -785,11 +785,7 @@ struct ScriptDebugWindow : public Window {
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCRD_VSCROLLBAR);
 		this->hscroll = this->GetScrollbar(WID_SCRD_HSCROLLBAR);
-		this->show_break_box = _settings_client.gui.ai_developer_tools;
-		this->GetWidget<NWidgetStacked>(WID_SCRD_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_break_box ? 0 : SZSP_HORIZONTAL);
 		this->FinishInitNested(number);
-
-		if (!this->show_break_box) this->filter.break_check_enabled = false;
 
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
@@ -797,7 +793,6 @@ struct ScriptDebugWindow : public Window {
 
 		this->querystrings[WID_SCRD_BREAK_STR_EDIT_BOX] = &this->break_editbox;
 
-		SetWidgetsDisabledState(!this->show_break_box, WID_SCRD_BREAK_STR_ON_OFF_BTN, WID_SCRD_BREAK_STR_EDIT_BOX, WID_SCRD_MATCH_CASE_BTN);
 		this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
 
 		/* Restore the break string value from static variable, and enable the filter. */
@@ -813,6 +808,11 @@ struct ScriptDebugWindow : public Window {
 
 	void OnInit() override
 	{
+		this->show_break_box = _settings_client.gui.ai_developer_tools;
+		this->GetWidget<NWidgetStacked>(WID_SCRD_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_break_box ? 0 : SZSP_HORIZONTAL);
+		if (!this->show_break_box) this->filter.break_check_enabled = false;
+		SetWidgetsDisabledState(!this->show_break_box, WID_SCRD_BREAK_STR_ON_OFF_BTN, WID_SCRD_BREAK_STR_EDIT_BOX, WID_SCRD_MATCH_CASE_BTN);
+
 		this->InvalidateData(-1);
 	}
 
@@ -1120,6 +1120,8 @@ struct ScriptDebugWindow : public Window {
 	 */
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
+		if (this->show_break_box != _settings_client.gui.ai_developer_tools) this->ReInit();
+
 		/* If the log message is related to the active company tab, check the break string.
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
 		if (!gui_scope && data == this->filter.script_debug_company &&
