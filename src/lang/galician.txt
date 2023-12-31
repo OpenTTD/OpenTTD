@@ -256,6 +256,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} pés
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tick{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrar:
@@ -1657,6 +1658,8 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadore
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Escolle se os indicadores de carga se amosan sobre os vehículos en carga/descarga
 
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Días
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Segundos
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar chegada e saída nos horarios: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Amosar chegadas e saídas anticipadas nos horarios
@@ -2187,9 +2190,14 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra-l
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostra-los esquemas de cor dos vehículos de estrada
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostra-los esquemas de cor dos barcos
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostra-los esquemas de cor das aeronaves
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :Amosa as cores dos grupos de trens
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :Amosa as cores dos grupos de barcos
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Elixe a cor primaria para o esquema seleccionado. Ctrl+Click aplicará esta cor a tódolos esquemas
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Elixe a cor secundaria para o esquema seleccionado. Ctrl+Click aplicará esta cor a tódolos esquemas
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecciona un esquema de cor para cambialo, ou múltiples esquemas con CTRL+click. Pincha na caixa para cambia lo uso do esquema
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Non se creou ningún grupo de trens
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Non se creou ningún grupo de barcos
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Non se crearon grupos de aeronaves
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :Esquemas de cor estándar
@@ -3200,6 +3208,7 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Tamaño 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK} Selecciona o tamaño do mapa en cadros. O número de cadros dispoñíbeis será sensiblemente menor
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nº de cidades:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :Selecciona a densidade das cidades ou un número á túa escolla
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomes das localidades:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selecciona o estilo dos nomes das cidades
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
@@ -3265,6 +3274,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotación do mapa de alturas:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa de alturas:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :O nome do arquivo de imaxe do mapa de alturas.
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaño:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
@@ -4573,8 +4583,11 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este veh
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está retrasado {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo vai adiantado {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horario aínda non comezóu
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Este horario comezará no seguinte horario{STRING}
 
+STR_TIMETABLE_START                                             :Empezar táboa de horarios
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos até empezar a táboa de horarios
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar o tempo que debería levar a orde seleccionada. Ctrl+Click cambia o tempo para todas as ordes

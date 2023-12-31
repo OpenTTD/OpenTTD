@@ -1071,7 +1071,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Atlasiet
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Papildinformācija par pamata grafikas kopu
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Pamata skaņas kopa
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Atlasīt lietošanai pamata skaņas kopu
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Atlasiet izmantojamās pamata skaņas (nevar mainīt spēlē, tikai galvenajā izvēlnē)
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Papildinformācija par pamata skaņas kopu
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Pamata mūzikas kopa
@@ -1301,7 +1301,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Atļaut realist
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Atšķirīga lieluma apkalpojamās platības dažādu veidu stacijām un lidostām
 
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Uzņēmumu stacijas var apkalpot industrijas, kurām ir pievienotas neitrālas stacijas: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Ja ieslēgts, industrijas ar pievienotām stacijām (piemēram, naftas ieguves platformas) var apkalpot arī netālu esošās uzņēmumumam piederošās stacijas. Ja izslēgts, šīs industrijas var apkalpot tikai to pašu stacijas. Tuvumā esošās uzņēmumu stacijas nevarēs tās apkalpot, un pievienotās stacijas neapkalpos preču veidus, kas nav atbilstošas attiecīgajai industrijai.
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Kad ieslēgts, nozares ar pievienotajām stacijām (piemēram, naftas ieguves platformām) var apkalpot arī uzņēmumam piederošas stacijas, kas uzbūvētas tuvumā. Ja tas ir atspējots, šīs nozares var apkalpot tikai tām pievienotās stacijas. Nevienas tuvumā esošās uzņēmuma stacijas nevarēs tos apkalpot, kā arī pievienotā stacija apkalpos neko citu kā tikai nozari
 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Atļaut pilsētai piederošo ceļu, tiltu un tuneļu nojaukšanu: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Padara vieglāku pilsētai piederošas infrastruktūras un ēku nojaukšanu
@@ -1576,7 +1576,7 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :Pelēks uz sark
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :Pelēktonis
 
 STR_CONFIG_SETTING_SCROLLMODE                                   :Skatvietas ritināšanas uzvedība: {STRING}
-STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Uzvedība, kad ritina karti
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Uzvedība, ritinot karti. Opcijas “peles pozīcija bloķēta” nedarbojas visās sistēmās, piemēram, tīmekļa versijās, skārienekrānos, Linux ar Wayland un citās
 ###length 4
 STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Pārvietot skatvietu ar labo peles pogu, peles pozīcija ir fiksēta
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Pārvietot karti ar labo peles pogu, peles pozīcija ir fiksēta
@@ -1893,7 +1893,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Pilsētam ir at
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Šā iestatījuma ieslēgšana pilsētām atļauj būvēt vienlīmeņa krustojumus
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Lidostas izvietojuma ierobežojums, pamatojoties uz trokšņa līmeni: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ja šis iestatījums ir izslēgts, tad katrā pilsētā var būt divas lidostas. Ja šis iestatījums ir ieslēgts, tad lidostu daudzums pilsētā ir ierobežots ar pilsētas piekrišanu troksnim, kas ir atkarīga no iedzīvotāju skaita, lidostas lieluma un attāluma
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ļaujiet pilsētām bloķēt lidostu būvniecību, pamatojoties uz to trokšņa pieļaujamo līmeni, kas ir balstīts uz pilsētas iedzīvotāju skaitu un lidostas lielumu un attālumu. Ja šis iestatījums ir izslēgts, pilsētās tiek atļautas tikai divas lidostas, ja vien vietējās iestādes attieksme nav "Atļaujoša"
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Pilsētu dibināšana: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Šā iestatījuma ieslēgšana atļauj spēlētājiem spēlē nodibināt jaunas pilsētas
@@ -2432,6 +2432,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Jauna kompāni
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Izveidot jaunu kompāniju un pievienoties tai
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Tas esat jūs
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Šis ir spēles īpašnieks
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}Klientu: {NUM}; uzņēmumu: {NUM}/{NUM}
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Pašlaik savienoto klientu skaits, uzņēmumu skaits un maksimālais servera administratora atļautais uzņēmumu skaits
 
 # Matches ConnectionType
@@ -2908,7 +2909,7 @@ STR_OBJECT_CLASS_TRNS                                           :Raidītāji
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Koki
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izvēlēties koka veidu stādīšanai. Ja lauciņš jau ir koks, tas pievienos vairāk jauktu veidu kokus neatkarīgi no izvēlētā veida
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Nejauši izvēlēta veida koki
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Izvietot nejaušus kokus. Shift pārslēdz būve/rādīt izmaksu tāmi
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Novietojiet jaukta veida kokus. Ctrl atlasa apgabalu pa diagonāli. Shift pārslēdz celtniecību/rāda izmaksas
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nejauši koki
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Stādīt nejaušus kokus visā ainavā
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normāls
@@ -2983,8 +2984,8 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE} Noņemt
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Vai tiešām vēlaties noņemt visas nozares?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ražotnes '{STRING}' kravu ķēde
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} kravas ražotņu ķēde
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Nozares ķēde - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Kravas ķēde - {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Ražotāji
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Patērētāji
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Mājas
@@ -3450,6 +3451,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Brīdināj
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kļūda: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatāls: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF "{STRING}" apstrādājas dēl neatgrieziniskās kļūdas:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF "{STRING}"uzrāda kļūdu:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nedarbosies kopā ar TTDPatch versiju (par ko ziņoja OpenTTD).
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ir paredzēts TTD versijai {2:STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ir paredzēts lietošanai ar {2:STRING}
@@ -3923,7 +3925,7 @@ STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRIN
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Nosūtīt uz depo
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Nosūtīt uz depo
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Nosūtīt uz depo
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Sūtīt uz angāru
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Nosūtīt uz angāru
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klikšķināt, lai apstādinātu visas mašīnas, kas ir sarakstā
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klikšķināt, lai iedarbinātu visas mašīnas, kas ir saraks
@@ -4630,7 +4632,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Nodzēst
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Dzēst iezīmētā pasūtījuma maksimālo braukšanas ātrumu. Ctrl+klikšķis notīra ātrumu visiem pasūtījumiem
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Atiestatīt kavējuma skaitītāju
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju, lai transportlīdzeklis būtu laikā
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atiestatiet kavējuma skaitītāju, lai transportlīdzeklis būtu laikā. Nospiežot taustiņu kombināciju Ctrl+klikšķis, tiks atiestatīta visa grupa, lai jaunākais transportlīdzeklis būtu laicīgi un visi pārējie ātrāk
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automātiska aizpildīšana
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automātiski aizpildiet kustības grafiku ar vērtībām no nākamā brauciena. Ctrl+noklikšķiniet, lai mēģinātu saglabāt gaidīšanas laiku
@@ -4670,7 +4672,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ievērot
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Pārslēgt lielo/mazo burtu ievērošanu, kad salīdzināt MI ziņojumus ar slēgšanas tekstu
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Turpināt
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Atsākt un turpināt šo MI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Attēlot šī MI atkļūdošanas izvadu
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Skatīt šī AI atkļūdošanas izeju. Ctrl-klikšķis, lai atvērtu jaunā logā
 STR_AI_GAME_SCRIPT                                              :{BLACK}Spēles skripts
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Pārbaudiet spēles skripta žurnālu. Ctrl-klikšķis, lai atvērtu jaunā logā
 
@@ -4700,7 +4702,7 @@ STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Paramet
 STR_AI_CONFIG_AI                                                :{SILVER}MI
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Izvēlēties MI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Atlasiet spēles skriptu
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Izvētaties spēles skriptu
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ielādēt citu skriptu. Ctrl+klikšķis, lai parādītu visas pieejamās versijas
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurēt
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurēt skripta parametrus
@@ -4730,7 +4732,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minikart
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Iestatījumi
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}MI Parametri
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spēles skripts
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Aizvērt
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atiestatīt

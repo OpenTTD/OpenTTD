@@ -256,6 +256,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
 STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{DECIMAL}{NBSP}m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}di{P a es}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}segon{P "" s}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tic{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre:
@@ -720,6 +723,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clica la
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clica la pista de música per treure-la de la llista actual (només en llistes personalitzables)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Millors companyies
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Empresari
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Emprenedor
@@ -1488,7 +1492,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipus de terreny: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Només TerraGenesis) Escollir el tipus de terreny: des de molt pla fins a escarpat
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolliu l'altura dels turons i muntanyes del paisatge.
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densitat d'indústries: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Fixa el nombre d'indústries que s'haurien de generar i mantenir durant la partida
@@ -1497,18 +1501,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distància màx
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita a quina distància del mapa es poden construir refineries de petroli i plataformes petrolíferes. En mapes amb illes, serveix per assegurar que estan prop de la costa. En mapes de més de 256 caselles, aquest valor s'escala automàticament.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Alçada dels estatges amb neu: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a partir de quina alçada apareix la neu en el paisatge subàrtic. La neu també afecta la generació d'indústries i els requisits per al creixement de les poblacions. Només es pot modificar a l'editor d'escenaris; altrament, es calcula fent servir la proporció de terreny nevat.
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Tria a quina altura comença a aparèixer neu al paisatge subàrtic. La neu també afecta a la generació d'indústries i els requisits per al creixement de les poblacions. Només es pot modificar a l'editor d'escenaris; altrament, es calcula fent servir la proporció de terreny nevat.
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Terreny nevat: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controla la quantitat aproximada de terreny nevat que hi ha en els paisatges subàrtics. La neu afecta a la generació d'indústries i el creixement de les poblacions. Només s'usa durant la generació de mapes. El terreny d'alçada propera al nivell del mar mai està nevat.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Escolliu la quantitat aproximada de neu als paisatges subàrtics. La neu també afecta a la generació d'indústries i els requisits per al creixement de les poblacions. Només es fa servir durant la generació de mapes. A nivell de mar i a les caselles costeres mai hi haurà neu.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}{NBSP}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Terreny desèrtic: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controla la quantitat aproximada de terreny desèrtic que hi ha en els paisatges tropicals. Els deserts afecten a la generació d'indústries. Només s'usa durant la generació de mapes.
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Escolliu la quantitat aproximada de desert dels paisatges tropicals. El desert afecta a la generació d'indústries i els requisits de creixement de les poblacions. Només es fa servir durant la generació de mapes.
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}{NBSP}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Geografia del terreny: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Només TerraGenesis) Escollir la suavitat del paisatge: els terrenys suaus tenen menys turons i són regulars; els terrenys més rugosos són irregulars i tenen molts turons
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Trieu la forma i quantitat de turons. Els terrenys més suaus tenen menys turons i són més amples, mentre que els terrenys més irregulars tenen més turons i són més petits.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molt suau
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suau
@@ -1516,7 +1520,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Escarpat
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molt escarpat
 
 STR_CONFIG_SETTING_VARIETY                                      :Varietat: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Només TerraGenesis) Controla la varietat en la distribució de les zones muntanyoses i planes. Aquesta opció controla la distribució d'aquestes zones; si es vol modificar si el terreny és més o menys muntanyós s'han de modificar altres opcions
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Trieu si el mapa ha de contenir muntanyes o àrees planes. Com més varietat, més diferències hi haurà entre l'elevació de les àrees muntanyoses i planes.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantitat de rius: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Escollir la quantitat de rius a generar
@@ -1536,6 +1540,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conducció per 
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conducció per la dreta
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotació del mapa d'alçades: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Escolliu de quina manera s'ha de rotar el mapa d'alçades per a encaixar-lo al món de la partida.
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antihorari
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
@@ -1656,7 +1661,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activa la utili
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utilitza indicadors de càrrega: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Selecciona si els indicadors de càrrega seran mostrats sobre els vehicles en càrrega o descàrrega
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Unitats de temps per als horaris: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Seleccioneu les unitats de temps que es faran servir per als horaris.
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Dies
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Segons
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Tics
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostra l'arribada i la sortida als horaris: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostra als horaris l'arribada anticipadament i les hores de sortida
@@ -2187,12 +2197,20 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra e
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostra els esquemes de colors dels automòbils
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostra els esquemes de colors dels vaixells
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostra esquemes de colors dels avions
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Mostra els colors dels grups de trens.
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Mostra els colors dels grups de vehicles de carretera.
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Mostra els colors dels grups de vaixells.
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Mostra els colors dels grups d'aeronaus
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Escolleix el color primari per l'esquema triat. Ctr+Click establirà el color per a cada esquema
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Escolleix el color secundari per l'esquema triat. Ctrl+Click establirà el color per a cada esquema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecciona un esquema de colors per canviar-lo, o diversos esquemes amb CTRL+Clic. Clica a la casella per canviar l'esquema
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :No hi ha grups de trens establerts
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :No hi ha grups de vehicles de carretera establerts
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :No hi ha grups de vaixells establerts
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :No hi ha grups d'aeronaus establerts
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Decoració estàndard
+STR_LIVERY_DEFAULT                                              :Decoració per defecte
 STR_LIVERY_STEAM                                                :Locomotora a Vapor
 STR_LIVERY_DIESEL                                               :Locomotora Dièsel
 STR_LIVERY_ELECTRIC                                             :Locomotora Elèctrica
@@ -2345,7 +2363,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}El nom d
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Posa una contrasenya
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegeix la teva partida amb una contrasenya si no vols que sigui accessible a desconeguts
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilitat
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilitat:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Permet establir si altres persones poden veure el vostre servidor a la llista pública.
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Màxim nombre de clients:
@@ -3200,11 +3218,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Mida del
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selecciona la mida del mapa en cel·les. El nombre de cel·les disponibles serà lleugerament més petit
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nombre de poblacions:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Trieu la densitat de les poblacions o un nombre personalitzat.
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Estil dels noms de les poblacions:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Selecciona l'estil dels noms de poblacions
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Trieu la data d'inici.
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nombre d'indústries:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Trieu la densitat de les indústries o un nombre personalitzat.
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Alçada del cim més alt:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Trieu l'altura del cim més alt que el joc mirarà de crear, mesurat respecte el nivell de mar.
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Augmenta l'alçada màxima o l'alçada màxima dels cims en una unitat
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Redueix l'alçada màxima o l'alçada màxima dels cims en una unitat
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Proporció de terreny nevat:
@@ -3217,10 +3239,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Redueix 
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}{NBSP}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nivell de mar:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Seleccioneu el nivell de la mar
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Quantitat de rius:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavitat:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varietat:
 STR_MAPGEN_GENERATE                                             :{WHITE}Genera
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Creeu el món i jugueu a l'OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Configuració del NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Mostra la configuració de NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Configuració d'IA
@@ -3253,6 +3277,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Català
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Vores del mapa:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Escolliu les vores del món de la partida.
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Nord-oest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nord-est
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sud-est
@@ -3265,7 +3290,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotació del mapa d'alçades:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom del mapa d'alçades:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}El nom del fitxer imatge del mapa d'alçades
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Mida:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}La mida de la imatge d'origen del mapa d'alçades. Per a obtenir bons resultats, cada costat hauria de coincidir amb una mida disponible de l'OpenTTD, com ara 256, 512 o 1024.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Alçada desitjada dels cims
@@ -3280,6 +3307,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terreny 
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generar un terreny pla
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terreny aleatori
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Alçada del terreny pla:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Trieu l'altura de la terra per damunt del nivell de la mar.
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mou l'alçada del terreny pla un pas avall
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mou l'alçada del terreny pla un pas amunt
 
@@ -4573,8 +4601,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Actualme
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Actualment aquest vehicle va {STRING} tard
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Actualment aquest vehicle va {STRING} d'hora
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Aquest horari encara no ha començat
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Aquest horari començarà a {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Aquest horari començarà en {COMMA}{NBSP}segons
 
+STR_TIMETABLE_START                                             :{BLACK}Comença l'horari
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Trieu quan ha de començar l'horari. Amb Ctrl+clic es distribuirà l'inici de tots els vehicles que comparteixen les ordres segons el seu ordre relatiu, si s'ha establert completament l'horari.
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Segons fins que comenci l'horari
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia Temps
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia el emps que l'ordre marcada hauria de prendre. Amb Ctrl+clic estableix el temps per a totes les ordres.
@@ -4598,6 +4631,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperat
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planificat
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Canvia entre esperat i planificat
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :S: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA}{NBSP}s
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :S: {COLOUR}{COMMA}{NBSP}s
 
 
 # Date window (for timetable)
@@ -4625,9 +4662,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Distinge
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Commuta la distinció entre majúscules i minúscules quan es comparin els missatges de registre d'IA amb la cadena de parada.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprèn i continua l'execució de la IA.
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostra la sortida de depuració d'aquesta IA.
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostra la sortida de depuració d'aquesta IA. Feu Ctrl+clic per a mostrar-la en una finestra nova.
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de partida
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Mostra el registre de l'script de partida.
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Mostra el registre de l'script de partida. Feu Ctrl+clic per a obrir-lo en una finestra nova.
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA que no fa res.{}Podeu descarregar diverses IA via el sistema de «Contingut en línia».
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts que s'executava ha fallat. Si us plau, informeu l'autor de l'script amb una captura de pantalla de la finestra de depuració de l'script d'IA/partida.

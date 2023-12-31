@@ -256,6 +256,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL} pé(s
 STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL} m
 STR_UNITS_HEIGHT_SI                                             :{DECIMAL} m
 
+STR_UNITS_DAYS                                                  :{COMMA}{NBSP}dia{P "" s}
+STR_UNITS_SECONDS                                               :{COMMA}{NBSP}segundo{P "" s}
+STR_UNITS_TICKS                                                 :{COMMA}{NBSP}tique{P "" s}
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
@@ -720,6 +723,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clique n
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Faça clique numa faixa para a remover da lista (Personaliz. 1 ou Personaliz. 2 apenas)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}Melhores empresas
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negociante
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresário
@@ -1488,7 +1492,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tipo de terreno: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Apenas TerraGenesis) Relevo do terreno
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolher a altura das colinas e montanhas da paisagem
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidade industrial: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Define quantas indústrias devem ser geradas e que nível deve ser mantido durante o jogo
@@ -1497,18 +1501,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máx
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Refinarias de petróleo são construídas apenas próximo da borda do mapa, isto é, na costa para mapas de ilha
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a que altura começa a neve no clima sub-ártico. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Só pode ser modificado no Editor de Cenário ou então é calculado por via da "cobertura de neve"
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher a que altura a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Só pode ser modificado através do Editor de Cenários ou é calculado através da "cobertura de neve"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cobertura de neve: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controla a quantidade aproximada de neve no clima sub-ártico. A neve também afeta a geração das indústrias e os requisitos de crescimento das localidades. Usado apenas durante a geração do mapa. A terra logo acima do nível do mar está sempre sem neve
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Escolher a quantidade aproximada de neve no clima subártico. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Usado apenas durante a geração do mapa. O nível do mar e as suas encostas nunca têm neve.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Cobertura do deserto: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controla a quantidade aproximada de deserto no clima tropical. O deserto também afeta a geração das indústrias. Usado apenas durante a geração do mapa
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Escolher a quantidade aproximada de deserto na paisagem tropical. O deserto também afeta a geração de indústrias e os requisitos de crescimento das localidades. Usado apenas durante a geração do mapa
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rudeza do terreno: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Apenas TerraGenesis) Escolhe a frequência de montes: paisagens macias têm menos montes e mais espalhados. Paisagens duras têm muitos montes, que podem parecer repetitivos
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :Escolher a forma e o número de colinas. As paisagens suaves têm poucas colinas, largas, enquanto as paisagens acidentadas possuem mais, colinas pequenas.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
@@ -1516,7 +1520,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Acidentado
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito acidentado
 
 STR_CONFIG_SETTING_VARIETY                                      :Distribuição de variedade: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(Apenas TerraGenesis) Controla se o mapa contém áreas planas e montanhosas. Como isto apenas torna o mapa mais plano, outras definições devem ser definidas como montanhosas
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Escolher se o mapa contém tanto áreas montanhosas como áreas planas. Quanto maior a variedade, maiores as diferenças de altitude entre essas as áreas.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Quantidade de rios: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Escolhe quantos rios serão gerados
@@ -1536,6 +1540,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Circular pela e
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Circular pela direita
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotação mapa de alt.: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Escolher de que forma a imagem topográfica será girada para caber no mundo do jogo
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido anti-horário
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horário
@@ -1656,7 +1661,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ativar a utiliz
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Seleccionar se os indicadores de carga são mostrados acima de veículos em carga ou descarga
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Unidades de tempo para horários: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Selecionar as unidades de tempo usadas nos horários dos veículos
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Dias
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Segundos
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Tiques
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar chegada e partida nos horários: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar horários previstos de chegada e partida nas tabelas de horários
@@ -2187,12 +2197,20 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Exibir e
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Exibir esquemas de cores dos veículos rodoviários
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Exibir esquemas de cores dos navios
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Exibir esquema de cores da aeronave
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Exibir cores de grupos de comboios
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Exibir cores de grupos de veículos rodoviários
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Exibir cores de grupos de navios
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Exibir cores de grupos de aeronaves
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seleccione a cor primária para o veículo seleccionado. Ctrl+Clique vai usar esta cor para todos os esquemas
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Selecione a cor secundária para o esquema selecionado. Ctrl+Clique seleciona essa cor para todos os esquemas
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Seleccione o esquema de cores a alterar, ou esquemas múltiplos utilizando a tecla Ctrl com o botão esquerdo do rato. Marque a caixa para comutar a utilização do esquema de cores
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Não estão configurados grupos de comboios
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Não estão configurados grupos de veículos rodoviários
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Não estão configurados grupos de navios
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Não estão configurados grupos de aeronaves
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Estampagem Padrão
+STR_LIVERY_DEFAULT                                              :Pintura Padrão
 STR_LIVERY_STEAM                                                :Locomotivas a Vapor
 STR_LIVERY_DIESEL                                               :Locomotivas Diesel
 STR_LIVERY_ELECTRIC                                             :Locomotivas Eléctricas
@@ -2345,7 +2363,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome d
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Definir palavra-chave
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas se juntem
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilidade
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilidade:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Se as outras pessoas podem ver o seu servidor na lista pública
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máximo de clientes:
@@ -2580,7 +2598,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Escolher
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Está a sair do OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Os termos e condições para o download de conteúdo de sites externos variam.{}Terá que se referir aos sites externos para instruções em como instalar o conteúdo no OpenTTD.{}Pretende continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtrar por etiqueta/nome:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Visitar a página web
+STR_CONTENT_OPEN_URL                                            :{BLACK}Website
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar a página web para este conteúdo
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarregar
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Iniciar a descarga do conteúdo seleccionado
@@ -3200,11 +3218,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Dim. do 
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Seleccionar o tamanho do mapa em mosaicos. O numero de mosaicos disponiveis será ligeiramente menor
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Num. de localidades:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Selecionar a densidade das cidades, ou um número personalizado
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}Nomes das localidades:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}Seleccionar o estilo dos nomes das localidades
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Selecionar a data inicial
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Num. de indústrias:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Selecionar a densidade das indústrias, ou um número personalizado
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Pico mais alto:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Escolher o pico mais alto que o jogo tentará criar, medido em elevação acima do nível do mar
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Subir a altura máxima do pico mais alto do mapa em um
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Baixar a altura máxima do pico mais alto do mapa em um
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Cobertura de neve:
@@ -3217,10 +3239,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuir
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}Nível do mar:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}Selecione o nível do mar
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rios:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidade:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variedade da distribuição:
 STR_MAPGEN_GENERATE                                             :{WHITE}Gerar
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Criar o mapa e jogar OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Definições de NewGRF
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Mostrar definições de NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Definições de IA
@@ -3253,6 +3277,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :Catalão
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Limites do mapa:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}Escolher as bordas do mundo do jogo
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Noroeste
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordeste
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sudeste
@@ -3265,7 +3290,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação mapa de alt.:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome mapa de alt.:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}O nome do ficheiro de imagem topográfica
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}As dimensões da imagem topográfica de origem. Para obter melhores resultados, cada aresta deve corresponder a um comprimento de aresta de mapa disponível no OpenTTD, tais como 256, 512, 1024, etc.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura do pico alvo
@@ -3280,6 +3307,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terra pl
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Criar terra plana
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terra aleatória
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altura da terra plana:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Escolher a elevação do terreno acima do nível do mar
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mover altura da terra plana um nível abaixo
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mover altura da terra plana um nível acima
 
@@ -4573,8 +4601,13 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este ve�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este veículo está presentemente atrasado {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este veículo está presentemente adiantado {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horário ainda não começou
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Este horário tem início às {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Este horário tem início em {COMMA} segundos
 
+STR_TIMETABLE_START                                             :{BLACK}Iniciar Horário
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Selecionar quando este horário começa. Ctrl+Clique distribui uniformemente o arranque de todos os veículos que partilham esta ordem com base na sua ordem relativa, se a ordem estiver completamente programada
 
+STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos até o horário iniciar
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar Tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mudar a duração do tempo que a ordem selecionada deve durar. Ctrl+Clique define o tempo para todas as ordens
@@ -4598,6 +4631,10 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Marcado
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar entre tempo esperado e marcado
 
+STR_TIMETABLE_ARRIVAL_DATE                                      :A: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DATE_TINY}
+STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} seg
+STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} seg
 
 
 # Date window (for timetable)
@@ -4625,9 +4662,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Caso de 
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar o caso de igualdade quando se compara o resgisto da IA contra a string de paragem
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sair da pausa e continuar a IA
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver saída de depuração desta IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver saída de depuração desta IA. Ctrl+Clique para abrir numa nova janela
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de jogo
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifique o registo do Script de jogo
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifique o registo do Script de jogo. Ctrl+Clique para abrir numa nova janela
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Não foi encontrada IA adequada para carregar.{}Esta IA é um pacote vazio e não fará nada.{}Pode descarregar várias IA através do sistema 'Conteúdo Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Houve um erro num script. Por favor reporte isto ao autor do script com uma imagem da janela Depuramento de IA/Scripts de Jogo.
@@ -4700,9 +4737,12 @@ STR_TEXTFILE_NAVBACK_TOOLTIP                                    :{BLACK}Recuar n
 STR_TEXTFILE_NAVFORWARD_TOOLTIP                                 :{BLACK}Avançar no histórico de navegação
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Envolver o texto
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Envolve o texto da janela de forma que não é necessário deslizar listagem
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver leia-me
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Leia-me
+STR_TEXTFILE_VIEW_README_TOOLTIP                                :Ver "readme" para este conteúdo
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista de alterações
+STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :Ver o "log" de alterações para este conteúdo
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :Ver a licença para este conteúdo
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leiame {STRING} de {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lista de alterações {STRING} de {STRING}

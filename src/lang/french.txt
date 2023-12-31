@@ -2197,12 +2197,20 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Montrer 
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Montrer les livrées de véhicules routiers
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Montrer les livrées de navires
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Montrer les livrées d'aéronefs
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Afficher les couleurs des groupes de trains
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Afficher les couleurs des groupes de véhicules
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Afficher les couleurs des groupes de bateaux
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Afficher les couleurs des groupes d'avions
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choisir la couleur primaire de la livrée sélectionnée. Ctrl-clic appliquera cette couleur à toutes les livrées.
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choisir la couleur secondaire de la livrée sélectionnée. Ctrl-clic appliquera cette couleur à toutes les livrées.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Sélectionner la livrée à modifier ou plusieurs d'entre elles par Ctrl-clic. Cliquer sur la case à cocher pour en activer l'utilisation ou non.
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :Aucun groupe de trains
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :Aucun groupe de véhicules
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :Aucun groupe de bateaux
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :Aucun groupe d'avions
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Livrée standard
+STR_LIVERY_DEFAULT                                              :Livrée par défaut
 STR_LIVERY_STEAM                                                :Locomotive à vapeur
 STR_LIVERY_DIESEL                                               :Locomotive Diesel
 STR_LIVERY_ELECTRIC                                             :Locomotive électrique
@@ -4654,9 +4662,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Respecte
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Activer/Désactiver le respect de la casse pour comparer les messages d'IA avec la chaîne d'arrêt
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuer
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprendre la partie et continuer l'IA
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Afficher la sortie de débogage de cette IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Afficher la sortie de débogage de cette IA. Ctrl+Click pour ouvrir dans une nouvelle fenêtre
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de jeu
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le journal du script de jeu
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le journal du script de jeu. Ctrl+Click pour ouvrir dans une nouvelle fenêtre
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des scripts a rencontré un problème. Merci de rapporter ceci à l'auteur du script avec une capture d'écran de la fenêtre de débogage de scripts.
