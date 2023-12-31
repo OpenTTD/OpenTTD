@@ -9391,6 +9391,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
 
 --VehicleList--
   Count():             5
+  InDepot Count():     4
+  RoadVehicle Count(): 2
   Location ListDump:
     13 => 33417
     12 => 33417
