@@ -399,6 +399,7 @@ static bool FixTTOEngines()
 	}
 
 	TimerGameCalendar::Date aging_date = std::min(TimerGameCalendar::date + CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR, TimerGameCalendar::ConvertYMDToDate(2050, 0, 1));
+	TimerGameCalendar::YearMonthDay aging_ymd = TimerGameCalendar::ConvertDateToYMD(aging_date);
 
 	for (EngineID i = 0; i < 256; i++) {
 		int oi = ttd_to_tto[i];
@@ -407,7 +408,7 @@ static bool FixTTOEngines()
 		if (oi == 255) {
 			/* Default engine is used */
 			TimerGameCalendar::date += CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
-			StartupOneEngine(e, aging_date, 0);
+			StartupOneEngine(e, aging_ymd, 0);
 			CalcEngineReliability(e, false);
 			e->intro_date -= CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
 			TimerGameCalendar::date -= CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR;
