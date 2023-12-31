@@ -52,6 +52,6 @@ Waypoint::~Waypoint()
 {
 	if (CleaningPool()) return;
 	CloseWindowById(WC_WAYPOINT_VIEW, this->index);
-	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
+	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index, this->owner);
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(this->index));
 }

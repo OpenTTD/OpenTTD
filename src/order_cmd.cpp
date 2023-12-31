@@ -1735,62 +1735,71 @@ void CheckOrders(const Vehicle *v)
  * Removes an order from all vehicles. Triggers when, say, a station is removed.
  * @param type The type of the order (OT_GOTO_[STATION|DEPOT|WAYPOINT]).
  * @param destination The destination. Can be a StationID, DepotID or WaypointID.
+ * @param owner The owner of the destination object.
  * @param hangar Only used for airports in the destination.
  *               When false, remove airport and hangar orders.
  *               When true, remove either airport or hangar order.
  */
-void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, bool hangar)
+void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, Owner owner, bool hangar)
 {
 	/* Aircraft have StationIDs for depot orders and never use DepotIDs
 	 * This fact is handled specially below
 	 */
 
 	/* Go through all vehicles */
-	for (Vehicle *v : Vehicle::Iterate()) {
-		if ((v->type == VEH_AIRCRAFT && v->current_order.IsType(OT_GOTO_DEPOT) && !hangar ? OT_GOTO_STATION : v->current_order.GetType()) == type &&
-				(!hangar || v->type == VEH_AIRCRAFT) && v->current_order.GetDestination() == destination) {
-			v->current_order.MakeDummy();
-			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		}
+	for (const Company *c : Company::Iterate()) {
+		/* Only iterate over all companies in the case of neutral owners */
+		if (owner != c->index && owner != OWNER_NONE) continue;
+		for (VehicleType vtype = VEH_BEGIN; vtype < VEH_COMPANY_END; vtype++) {
+			const VehicleList &vehicle_list = c->group_all[vtype].vehicle_list;
+			for (const Vehicle *u : vehicle_list) {
+				Vehicle *v = Vehicle::Get(u->index);
+				if ((v->type == VEH_AIRCRAFT && v->current_order.IsType(OT_GOTO_DEPOT) && !hangar ? OT_GOTO_STATION : v->current_order.GetType()) == type &&
+						(!hangar || v->type == VEH_AIRCRAFT) && v->current_order.GetDestination() == destination) {
+					v->current_order.MakeDummy();
+					SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+				}
 
-		/* Clear the order from the order-list */
-		int id = -1;
-		for (Order *order : v->Orders()) {
-			id++;
+				/* Clear the order from the order-list */
+				int id = -1;
+				for (Order *order : v->Orders()) {
+					id++;
 restart:
 
-			OrderType ot = order->GetType();
-			if (ot == OT_GOTO_DEPOT && (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
-			if (ot == OT_GOTO_DEPOT && hangar && v->type != VEH_AIRCRAFT) continue; // Not an aircraft? Can't have a hangar order.
-			if (ot == OT_IMPLICIT || (v->type == VEH_AIRCRAFT && ot == OT_GOTO_DEPOT && !hangar)) ot = OT_GOTO_STATION;
-			if (ot == type && order->GetDestination() == destination) {
-				/* We want to clear implicit orders, but we don't want to make them
-				 * dummy orders. They should just vanish. Also check the actual order
-				 * type as ot is currently OT_GOTO_STATION. */
-				if (order->IsType(OT_IMPLICIT)) {
-					order = order->next; // DeleteOrder() invalidates current order
-					DeleteOrder(v, id);
-					if (order != nullptr) goto restart;
-					break;
-				}
+					OrderType ot = order->GetType();
+					if (ot == OT_GOTO_DEPOT && (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
+					if (ot == OT_GOTO_DEPOT && hangar && v->type != VEH_AIRCRAFT) continue; // Not an aircraft? Can't have a hangar order.
+					if (ot == OT_IMPLICIT || (v->type == VEH_AIRCRAFT && ot == OT_GOTO_DEPOT && !hangar)) ot = OT_GOTO_STATION;
+					if (ot == type && order->GetDestination() == destination) {
+						/* We want to clear implicit orders, but we don't want to make them
+						 * dummy orders. They should just vanish. Also check the actual order
+						 * type as ot is currently OT_GOTO_STATION. */
+						if (order->IsType(OT_IMPLICIT)) {
+							order = order->next; // DeleteOrder() invalidates current order
+							DeleteOrder(v, id);
+							if (order != nullptr) goto restart;
+							break;
+						}
 
-				/* Clear wait time */
-				v->orders->UpdateTotalDuration(-order->GetWaitTime());
-				if (order->IsWaitTimetabled()) {
-					v->orders->UpdateTimetableDuration(-order->GetTimetabledWait());
-					order->SetWaitTimetabled(false);
-				}
-				order->SetWaitTime(0);
+						/* Clear wait time */
+						v->orders->UpdateTotalDuration(-order->GetWaitTime());
+						if (order->IsWaitTimetabled()) {
+							v->orders->UpdateTimetableDuration(-order->GetTimetabledWait());
+							order->SetWaitTimetabled(false);
+						}
+						order->SetWaitTime(0);
 
-				/* Clear order, preserving travel time */
-				bool travel_timetabled = order->IsTravelTimetabled();
-				order->MakeDummy();
-				order->SetTravelTimetabled(travel_timetabled);
+						/* Clear order, preserving travel time */
+						bool travel_timetabled = order->IsTravelTimetabled();
+						order->MakeDummy();
+						order->SetTravelTimetabled(travel_timetabled);
 
-				for (const Vehicle *w = v->FirstShared(); w != nullptr; w = w->NextShared()) {
-					/* In GUI, simulate by removing the order and adding it back */
-					InvalidateVehicleOrder(w, id | (INVALID_VEH_ORDER_ID << 8));
-					InvalidateVehicleOrder(w, (INVALID_VEH_ORDER_ID << 8) | id);
+						for (const Vehicle *w = v->FirstShared(); w != nullptr; w = w->NextShared()) {
+							/* In GUI, simulate by removing the order and adding it back */
+							InvalidateVehicleOrder(w, id | (INVALID_VEH_ORDER_ID << 8));
+							InvalidateVehicleOrder(w, (INVALID_VEH_ORDER_ID << 8) | id);
+						}
+					}
 				}
 			}
 		}

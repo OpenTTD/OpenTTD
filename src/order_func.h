@@ -15,7 +15,7 @@
 #include "company_type.h"
 
 /* Functions */
-void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, bool hangar = false);
+void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, Owner owner, bool hangar = false);
 void InvalidateVehicleOrder(const Vehicle *v, int data);
 void CheckOrders(const Vehicle*);
 void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist = false, bool reset_order_indices = true);

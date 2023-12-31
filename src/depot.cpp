@@ -38,7 +38,7 @@ Depot::~Depot()
 	OrderBackup::Reset(this->xy, false);
 
 	/* Clear the depot from all order-lists */
-	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->index);
+	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->index, GetTileOwner(this->xy));
 
 	/* Delete the depot-window */
 	CloseWindowById(WC_VEHICLE_DEPOT, this->xy);

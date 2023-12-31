@@ -143,7 +143,7 @@ Station::~Station()
 	CloseWindowById(WC_STATION_VIEW, index);
 
 	/* Now delete all orders that go to the station */
-	RemoveOrderFromAllVehicles(OT_GOTO_STATION, this->index);
+	RemoveOrderFromAllVehicles(OT_GOTO_STATION, this->index, this->owner);
 
 	/* Remove all news items */
 	DeleteStationNews(this->index);

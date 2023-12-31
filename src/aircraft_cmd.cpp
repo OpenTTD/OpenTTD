@@ -2163,5 +2163,5 @@ void UpdateAirplanesOnNewStation(const Station *st)
 	}
 
 	/* Heliports don't have a hangar. Invalidate all go to hangar orders from all aircraft. */
-	if (!st->airport.HasHangar()) RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, st->index, true);
+	if (!st->airport.HasHangar()) RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, st->index, st->owner, true);
 }
