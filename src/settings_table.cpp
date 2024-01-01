@@ -160,10 +160,14 @@ static void UpdateAllServiceInterval(int32_t new_value)
 
 	if (update_vehicles) {
 		const Company *c = Company::Get(_current_company);
-		for (Vehicle *v : Vehicle::Iterate()) {
-			if (v->owner == _current_company && v->IsPrimaryVehicle() && !v->ServiceIntervalIsCustom()) {
-				v->SetServiceInterval(CompanyServiceInterval(c, v->type));
-				v->SetServiceIntervalIsPercent(new_value != 0);
+		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			const VehicleList &vehicle_list = c->group_all[type].vehicle_list;
+			for (const Vehicle *vehicle : vehicle_list) {
+				Vehicle *v = Vehicle::Get(vehicle->index);
+				if (!v->ServiceIntervalIsCustom()) {
+					v->SetServiceInterval(CompanyServiceInterval(c, v->type));
+					v->SetServiceIntervalIsPercent(new_value != 0);
+				}
 			}
 		}
 	}
@@ -188,8 +192,10 @@ static bool CanUpdateServiceInterval(VehicleType, int32_t &new_value)
 static void UpdateServiceInterval(VehicleType type, int32_t new_value)
 {
 	if (_game_mode != GM_MENU && Company::IsValidID(_current_company)) {
-		for (Vehicle *v : Vehicle::Iterate()) {
-			if (v->owner == _current_company && v->type == type && v->IsPrimaryVehicle() && !v->ServiceIntervalIsCustom()) {
+		const VehicleList &vehicle_list = Company::Get(_current_company)->group_all[type].vehicle_list;
+		for (const Vehicle *vehicle : vehicle_list) {
+			Vehicle *v = Vehicle::Get(vehicle->index);
+			if (!v->ServiceIntervalIsCustom()) {
 				v->SetServiceInterval(new_value);
 			}
 		}
@@ -200,8 +206,10 @@ static void UpdateServiceInterval(VehicleType type, int32_t new_value)
 
 static void TrainAccelerationModelChanged(int32_t)
 {
-	for (Train *t : Train::Iterate()) {
-		if (t->IsFrontEngine()) {
+	for (const Company *c : Company::Iterate()) {
+		const VehicleList &vehicle_list = c->group_all[VEH_TRAIN].vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
+			Train *t = Train::From(Vehicle::Get(v->index));
 			t->tcache.cached_max_curve_speed = t->GetCurveSpeedLimit();
 			t->UpdateAcceleration();
 		}
@@ -218,8 +226,11 @@ static void TrainAccelerationModelChanged(int32_t)
  */
 static void TrainSlopeSteepnessChanged(int32_t)
 {
-	for (Train *t : Train::Iterate()) {
-		if (t->IsFrontEngine()) t->CargoChanged();
+	for (const Company *c : Company::Iterate()) {
+		const VehicleList &vehicle_list = c->group_all[VEH_TRAIN].vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
+			Train::From(Vehicle::Get(v->index))->CargoChanged();
+		}
 	}
 }
 
@@ -229,9 +240,10 @@ static void TrainSlopeSteepnessChanged(int32_t)
 static void RoadVehAccelerationModelChanged(int32_t)
 {
 	if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
-		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
-			if (rv->IsFrontEngine()) {
-				rv->CargoChanged();
+		for (const Company *c : Company::Iterate()) {
+			const VehicleList &vehicle_list = c->group_all[VEH_ROAD].vehicle_list;
+			for (const Vehicle *v : vehicle_list) {
+				RoadVehicle::From(Vehicle::Get(v->index))->CargoChanged();
 			}
 		}
 	}
@@ -247,8 +259,11 @@ static void RoadVehAccelerationModelChanged(int32_t)
  */
 static void RoadVehSlopeSteepnessChanged(int32_t)
 {
-	for (RoadVehicle *rv : RoadVehicle::Iterate()) {
-		if (rv->IsFrontEngine()) rv->CargoChanged();
+	for (const Company *c : Company::Iterate()) {
+		const VehicleList &vehicle_list = c->group_all[VEH_ROAD].vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
+			RoadVehicle::From(Vehicle::Get(v->index))->CargoChanged();
+		}
 	}
 }
 
@@ -344,11 +359,15 @@ static bool CheckFreeformEdges(int32_t &new_value)
 {
 	if (_game_mode == GM_MENU) return true;
 	if (new_value != 0) {
-		for (Ship *s : Ship::Iterate()) {
-			/* Check if there is a ship on the northern border. */
-			if (TileX(s->tile) == 0 || TileY(s->tile) == 0) {
-				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_EMPTY, INVALID_STRING_ID, WL_ERROR);
-				return false;
+		for (const Company *c : Company::Iterate()) {
+			const VehicleList &vehicle_list = c->group_all[VEH_SHIP].vehicle_list;
+			for (const Vehicle *v : vehicle_list) {
+				const Ship *s = Ship::From(v);
+				/* Check if there is a ship on the northern border. */
+				if (TileX(s->tile) == 0 || TileY(s->tile) == 0) {
+					ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_EMPTY, INVALID_STRING_ID, WL_ERROR);
+					return false;
+				}
 			}
 		}
 		for (const BaseStation *st : BaseStation::Iterate()) {
@@ -456,8 +475,11 @@ static void MaxVehiclesChanged(int32_t)
 
 static void InvalidateShipPathCache(int32_t)
 {
-	for (Ship *s : Ship::Iterate()) {
-		s->path.clear();
+	for (const Company *c : Company::Iterate()) {
+		const VehicleList &vehicle_list = c->group_all[VEH_SHIP].vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
+			Ship::From(Vehicle::Get(v->index))->path.clear();
+		}
 	}
 }
 
