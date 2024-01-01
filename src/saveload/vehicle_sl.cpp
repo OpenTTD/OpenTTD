@@ -491,6 +491,8 @@ void AfterLoadVehicles(bool part_of_load)
 		v->UpdatePosition();
 		v->UpdateViewport(false);
 	}
+
+	GroupStatistics::UpdateAfterLoad();
 }
 
 bool TrainController(Train *v, Vehicle *nomove, bool reverse = true); // From train_cmd.cpp

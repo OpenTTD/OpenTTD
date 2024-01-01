@@ -1899,7 +1899,6 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(SLV_62)) {
-		GroupStatistics::UpdateAfterLoad(); // Ensure statistics pool is initialised before trying to delete vehicles
 		/* Remove all trams from savegames without tram support.
 		 * There would be trams without tram track under causing crashes sooner or later. */
 		for (RoadVehicle *v : RoadVehicle::Iterate()) {
@@ -3317,7 +3316,6 @@ void ReloadNewGRFData()
 	ResetVehicleHash();
 	AfterLoadVehicles(false);
 	StartupEngines();
-	GroupStatistics::UpdateAfterLoad();
 	/* update station graphics */
 	AfterLoadStations();
 	/* Update company statistics. */
