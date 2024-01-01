@@ -2196,12 +2196,20 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Show tra
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Show road vehicle color schemes
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Show ship color schemes
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Show aircraft color schemes
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}Show colors of train groups
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}Show colors of road vehicle groups
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}Show colors of ship groups
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}Show colors of aircraft groups
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choose the primary color for the selected scheme. Ctrl+Click will set this color for every scheme
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choose the secondary color for the selected scheme. Ctrl+Click will set this color for every scheme
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Select a color scheme to change, or multiple schemes with Ctrl+Click. Click on the box to toggle use of the scheme
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :No train groups are set up
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :No road vehicle groups are set up
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :No ship groups are set up
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :No aircraft groups are set up
 
 ###length 23
-STR_LIVERY_DEFAULT                                              :Standard Livery
+STR_LIVERY_DEFAULT                                              :Default Livery
 STR_LIVERY_STEAM                                                :Steam Engine
 STR_LIVERY_DIESEL                                               :Diesel Engine
 STR_LIVERY_ELECTRIC                                             :Electric Engine
@@ -4653,9 +4661,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Match ca
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toggle matching case when comparing AI log messages against the break string
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continue
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Unpause and continue the AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}View debug output of this AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}View debug output of this AI. Ctrl-Click to open in a new window
 STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Check the Game Script log
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Check the Game Script log. Ctrl-Click to open in a new window
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No suitable AI found to load.{}This AI is a dummy AI and won't do anything.{}You can download several AIs via the 'Online Content' system
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}One of the running scripts crashed. Please report this to the script author with a screenshot of the AI/Game Script Debug Window

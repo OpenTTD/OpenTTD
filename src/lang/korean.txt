@@ -403,8 +403,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}툴바�
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}시나리오를 저장하거나, 불러오거나, 시나리오 에디터를 종료하거나, 게임을 종료합니다
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}시나리오 에디터
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}시작년도를 1년 앞당깁니다.
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}시작년도를 1년 늦춥니다.
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}시작 일시를 1년 앞당깁니다.
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}시작 일시를 1년 늦춥니다.
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}시작 연도를 입력하세요.
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}지도, 도시 목록 보여주기
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}지형을 생성합니다.
@@ -1492,7 +1492,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
 
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :지형 종류: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(천지창조 전용) 지형의 언덕 모양을 결정합니다.
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :지형의 언덕과 산지 모양을 결정합니다
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :산업시설 수: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :게임을 플레이하는 동안 얼마나 많은 산업시설이 생성되고 유지되어야 할 지를 설정합니다.
@@ -1501,18 +1501,18 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :석유 관련 �
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장과 유전이 맵 가장자리에서 얼마나 멀리 떨어진 곳까지 건설될 수 있는지를 나타냅니다. 섬 맵에서는 이 설정을 이용해서 해당 산업시설이 해안에 가까이 있도록 조정할 수 있습니다. 256칸보다 큰 맵의 경우에는 이 값은 더 크게 조정됩니다.
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :설선 고도: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :아한대 기후의 설선 고도를 조절합니다. 눈은 산업시설의 생성과 도시 성장에 영향을 미칩니다. 시나리오 에디터에서 수정할 수 있고 설정하지 않은 경우 "눈 비율" 설정을 따릅니다.
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :아한대 기후의 설선 고도를 선택합니다. 눈은 산업시설의 생성과 도시 성장에 영향을 미칩니다. 시나리오 에디터에서 수정할 수 있고 설정하지 않은 경우 "눈 비율" 설정을 따릅니다.
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :눈 비율: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :아한대 기후에서 눈 지역의 양을 대략적으로 조절할 수 있습니다. 눈은 산업시설 생성과 도시 성장 요구사항에도 영향을 미칩니다. 지도를 생성할 때에만 사용하는 설정입니다. 해수면 바로 위에 있는 땅은 무조건 눈이 없을 것입니다.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :아한대 기후에서 눈 지역의 양을 대략적으로 선택합니다. 눈은 산업시설 생성과 도시 성장 요구 조건에도 영향을 미칩니다. 지도를 생성할 때에만 사용하는 설정입니다. 해수면 바로 위에 있는 땅은 무조건 눈이 없을 것입니다.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :사막 비율: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :아열대 기후에서 사막 지역의 양을 대략적으로 조절할 수 있습니다. 사막은 산업시설 생성에도 영향을 미칩니다. 지도를 생성할 때에만 사용하는 설정입니다
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :아열대 기후에서 사막 지역의 양을 대략적으로 선택합니다. 사막은 산업시설 생성과 도시 성장 요구 조건에도 영향을 미칩니다. 지도를 생성할 때에만 사용하는 설정입니다
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(천지창조 전용) 언덕의 빈도수를 선택합니다. 평탄한 지형은 개수가 적고 넓게 퍼진 언덕을 만듭니다. 거친 지형은 똑같아 보일 수 있는 많은 언덕이 생기게 됩니다.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :언덕의 모양과 빈도 수를 선택합니다. 평탄한 지형은 개수가 적고 넓게 퍼진 언덕을 만들고, 거친 지형은 작은 언덕이 많이 만듭니다.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
@@ -1520,7 +1520,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :거칠게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :매우 거칠게
 
 STR_CONFIG_SETTING_VARIETY                                      :산세 험준도: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(천지창조 전용) 지도가 산지와 평지를 모두 갖도록 만들 것인 지를 결정합니다. 이 설정은 지형을 더 평평하게 만드므로, 다른 설정은 '산'으로 설정하시기 바랍니다.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :지도가 산지와 평지를 모두 갖도록 만들 것인 지를 결정합니다. 더 높은 값을 사용할 수록, 산지와 평지 사이의 고도 차이가 더 많아집니다.
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :강의 양: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :강을 얼마나 만들지 선택하세요
@@ -1540,6 +1540,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :좌측통행
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :우측통행
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :높이맵 회전: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :높이맵을 게임 세계에 맞추기 위해 어느 방향으로 회전시킬지 선택합니다
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
@@ -2196,9 +2197,17 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}열차 �
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}차량 색상 선택
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}선박 색상 선택
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}항공기 색상 선택
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}열차 그룹 색상 선택
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}자동차 그룹 색상 선택
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}선박 그룹 색상 선택
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}항공기 그룹 색상 선택
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}선택한 색상을 1차 색상으로 선택합니다. CTRL+클릭하면 모든 항목에 적용됩니다
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}선택한 색상을 2차 색상으로 선택합니다. CTRL+클릭하면 모든 항목에 적용됩니다
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}색상 조합을 바꾸려면 선택하세요. 2개 이상 선택하려면 CTRL+클릭하세요. 네모를 클릭하여 체크하면 해당 색상 조합을 사용하게 됩니다
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :열차 그룹을 설정하지 않았습니다
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :자동차 그룹을 설정하지 않았습니다
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :선박 그룹을 설정하지 않았습니다
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :항공기 그룹을 설정하지 않았습니다
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :기본 색상
@@ -3209,11 +3218,15 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}지도 �
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}지도의 크기를 칸 수 기준으로 선택하세요. 사용 가능한 지도의 칸 수는 설정한 값보다 조금 작을 것입니다
 STR_MAPGEN_BY                                                   :{BLACK}x
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}도시의 수:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}도시의 수를 선택하거나, 직접 그 개수를 입력합니다
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}도시 이름:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}도시 이름 스타일을 선택하세요
 STR_MAPGEN_DATE                                                 :{BLACK}날짜:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}시작 일시를 선택합니다.
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}산업시설 수:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}산업 시설의 수를 선택하거나, 직접 그 개수를 입력합니다
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}가장 높은 지점의 높이:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}해수면을 기준으로, 게임이 생성하려고 하는 가장 높은 곳의 높이를 선택합니다.
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}지도에서 가장 높은 지점의 최대 높이를 1만큼 높입니다
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}지도에서 가장 높은 지점의 최대 높이를 1만큼 낮춥니다
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}눈 비율:
@@ -3226,10 +3239,12 @@ STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}사막 �
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}해수면:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}해수면 높이를 선택합니다
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}강:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}지표면을 깎는 방식:
 STR_MAPGEN_VARIETY                                              :{BLACK}산세 험준도:
 STR_MAPGEN_GENERATE                                             :{WHITE}만들기
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}세계를 만들고 OpenTTD를 플레이해보세요!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF 설정
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF 설정 창을 엽니다
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}인공지능 설정
@@ -3262,6 +3277,7 @@ STR_MAPGEN_TOWN_NAME_CATALAN                                    :카탈로니아
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}지도 가장자리:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}게임 세계의 지도 가장자리를 선택합니다
 STR_MAPGEN_NORTHWEST                                            :{BLACK}북서
 STR_MAPGEN_NORTHEAST                                            :{BLACK}북동
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}남동
@@ -3274,7 +3290,9 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}사용�
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}높이맵 방향:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}높이맵 이름:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}높이맵 이미지 파일의 이름입니다
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}크기:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}원본 높이맵 이미지의 크기입니다. 최상의 조건을 위해서는, 이미지의 가로/세로 크기를 OpenTTD의 지도 크기와 같은 256, 512, 1024 등으로 맞추는 것이 좋습니다.
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}목표 정상 높이
@@ -3289,6 +3307,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}평평�
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}평평한 땅 만들기
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}무작위 지형
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}평지의 높이:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}해수면 위의 땅 높이를 선택합니다
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}평지의 높이를 1칸 낮춥니다
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}평지의 높이를 1칸 높입니다
 
@@ -4643,9 +4662,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}대소�
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}인공지능 기록 메시지에서 중단 문구를 검색할 때 대소문자를 구분할지 여부를 선택합니다
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}계속
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}중단된 인공지능의 연산을 재개합니다
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 인공지능에서 출력된 기록 메시지를 보여줍니다
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 인공지능에서 출력된 기록 메시지를 보여줍니다. CTRL + 클릭하면 새 창으로 엽니다
 STR_AI_GAME_SCRIPT                                              :{BLACK}게임 스크립트
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}게임 스크립트 기록 체크
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}게임 스크립트 기록을 확인합니다. CTRL + 클릭하면 새 창으로 엽니다
 
 STR_ERROR_AI_NO_AI_FOUND                                        :사용할 수 있는 인공지능이 없습니다.{}따라서 이 경쟁사는 아무 것도 하지 못하는 회사입니다.{}'온라인 컨텐츠 다운로드'에서 새로운 인공지능을 다운로드받으세요
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동 중이던 스크립트 중 하나에서 오류가 발생하여 중단되었습니다. 인공지능/게임 스크립트 디버그 창에서 스크린샷을 찍어 스크립트 제작자에게 보고하십시오
