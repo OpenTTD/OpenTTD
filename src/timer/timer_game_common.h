@@ -66,8 +66,8 @@ public:
 		return year_as_int % 4 == 0 && (year_as_int % 100 != 0 || year_as_int % 400 == 0);
 	}
 
-	static YearMonthDay ConvertDateToYMD(Date date);
-	static Date ConvertYMDToDate(Year year, Month month, Day day);
+	static YearMonthDay CalendarConvertDateToYMD(Date date);
+	static Date CalendarConvertYMDToDate(Year year, Month month, Day day);
 
 	/**
 	 * Calculate the year of a given date.

@@ -39,6 +39,41 @@ TimerGameEconomy::Date TimerGameEconomy::date = {};
 TimerGameEconomy::DateFract TimerGameEconomy::date_fract = {};
 
 /**
+ * Converts a Date to a Year, Month & Day.
+ * @param date the date to convert from
+ * @returns YearMonthDay representation of the Date.
+ */
+/* static */ TimerGameEconomy::YearMonthDay TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::Date date)
+{
+	/* If we're not using wallclock units, we keep the economy date in sync with the calendar. */
+	if (!UsingWallclockUnits()) return CalendarConvertDateToYMD(date);
+
+	/* If we're using wallclock units, economy months have 30 days and an economy year has 360 days. */
+	TimerGameEconomy::YearMonthDay ymd;
+	ymd.year = TimerGameEconomy::date.base() / EconomyTime::DAYS_IN_ECONOMY_YEAR;
+	ymd.month = (TimerGameEconomy::date.base() % EconomyTime::DAYS_IN_ECONOMY_YEAR) / EconomyTime::DAYS_IN_ECONOMY_MONTH;
+	ymd.day = TimerGameEconomy::date.base() % EconomyTime::DAYS_IN_ECONOMY_MONTH;
+	return ymd;
+}
+
+/**
+ * Converts a tuple of Year, Month and Day to a Date.
+ * @param year  is a number between 0..MAX_YEAR
+ * @param month is a number between 0..11
+ * @param day   is a number between 1..31
+ * @returns The equivalent date.
+ */
+/* static */ TimerGameEconomy::Date TimerGameEconomy::ConvertYMDToDate(TimerGameEconomy::Year year, TimerGameEconomy::Month month, TimerGameEconomy::Day day)
+{
+	/* If we're not using wallclock units, we keep the economy date in sync with the calendar. */
+	if (!UsingWallclockUnits()) return CalendarConvertYMDToDate(year, month, day);
+
+	/* If we're using wallclock units, economy months have 30 days and an economy year has 360 days. */
+	const int total_months = (year.base() * EconomyTime::MONTHS_IN_YEAR) + month;
+	return (total_months * EconomyTime::DAYS_IN_ECONOMY_MONTH) + day - 1; // Day is 1-indexed but Date is 0-indexed, hence the - 1.
+}
+
+/**
  * Set the date.
  * @param date The new date
  * @param fract The number of ticks that have passed on this date.

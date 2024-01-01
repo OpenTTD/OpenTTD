@@ -63,7 +63,7 @@ static constexpr uint16_t _accum_days_for_month[] = {
  * @returns YearMonthDay representation of the Date.
  */
 template <class T>
-/* static */ typename TimerGame<T>::YearMonthDay TimerGame<T>::ConvertDateToYMD(Date date)
+/* static */ typename TimerGame<T>::YearMonthDay TimerGame<T>::CalendarConvertDateToYMD(Date date)
 {
 	/* Year determination in multiple steps to account for leap
 	 * years. First do the large steps, then the smaller ones.
@@ -118,9 +118,10 @@ template <class T>
  * @param year  is a number between 0..MAX_YEAR
  * @param month is a number between 0..11
  * @param day   is a number between 1..31
+ * @returns The equivalent date.
  */
 template <class T>
-/* static */ typename TimerGame<T>::Date TimerGame<T>::ConvertYMDToDate(Year year, Month month, Day day)
+/* static */ typename TimerGame<T>::Date TimerGame<T>::CalendarConvertYMDToDate(Year year, Month month, Day day)
 {
 	/* Day-offset in a leap year */
 	int days = _accum_days_for_month[month] + day - 1;
@@ -133,8 +134,8 @@ template <class T>
 
 /* Create instances of the two template variants that we have.
  * This is needed, as this templated functions are not in a header-file. */
-template TimerGame<struct Calendar>::YearMonthDay TimerGame<struct Calendar>::ConvertDateToYMD(Date date);
-template TimerGame<struct Economy>::YearMonthDay TimerGame<struct Economy>::ConvertDateToYMD(Date date);
+template TimerGame<struct Calendar>::YearMonthDay TimerGame<struct Calendar>::CalendarConvertDateToYMD(Date date);
+template TimerGame<struct Economy>::YearMonthDay TimerGame<struct Economy>::CalendarConvertDateToYMD(Date date);
 
-template TimerGame<struct Calendar>::Date TimerGame<struct Calendar>::ConvertYMDToDate(Year year, Month month, Day day);
-template TimerGame<struct Economy>::Date TimerGame<struct Economy>::ConvertYMDToDate(Year year, Month month, Day day);
+template TimerGame<struct Calendar>::Date TimerGame<struct Calendar>::CalendarConvertYMDToDate(Year year, Month month, Day day);
+template TimerGame<struct Economy>::Date TimerGame<struct Economy>::CalendarConvertYMDToDate(Year year, Month month, Day day);

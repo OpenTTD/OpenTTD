@@ -34,6 +34,30 @@ TimerGameCalendar::Date TimerGameCalendar::date = {};
 TimerGameCalendar::DateFract TimerGameCalendar::date_fract = {};
 
 /**
+ * Converts a Date to a Year, Month & Day.
+ * @param date the date to convert from
+ * @returns YearMonthDay representation of the Date.
+ */
+/* static */ TimerGameCalendar::YearMonthDay TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::Date date)
+{
+	/* This wrapper function only exists because economy time sometimes does things differently, when using wallclock units. */
+	return CalendarConvertDateToYMD(date);
+}
+
+/**
+ * Converts a tuple of Year, Month and Day to a Date.
+ * @param year  is a number between 0..MAX_YEAR
+ * @param month is a number between 0..11
+ * @param day   is a number between 1..31
+ * @returns The equivalent date.
+ */
+/* static */ TimerGameCalendar::Date TimerGameCalendar::ConvertYMDToDate(TimerGameCalendar::Year year, TimerGameCalendar::Month month, TimerGameCalendar::Day day)
+{
+	/* This wrapper function only exists because economy time sometimes does things differently, when using wallclock units. */
+	return CalendarConvertYMDToDate(year, month, day);
+}
+
+/**
  * Set the date.
  * @param date  New date
  * @param fract The number of ticks that have passed on this date.
