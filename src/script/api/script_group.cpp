@@ -180,10 +180,8 @@
 
 	Money profit = 0;
 
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->group_id != group_id) continue;
-		if (!v->IsPrimaryVehicle()) continue;
-
+	const VehicleList &vehicle_list = ::Group::Get(group_id)->statistics.vehicle_list;
+	for (const Vehicle *v : vehicle_list) {
 		profit += v->GetDisplayProfitThisYear();
 	}
 
@@ -204,10 +202,8 @@
 	uint32_t occupancy = 0;
 	uint32_t vehicle_count = 0;
 
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->group_id != group_id) continue;
-		if (!v->IsPrimaryVehicle()) continue;
-
+	const VehicleList &vehicle_list = ::Group::Get(group_id)->statistics.vehicle_list;
+	for (const Vehicle *v : vehicle_list) {
 		occupancy += v->trip_occupancy;
 		vehicle_count++;
 	}
