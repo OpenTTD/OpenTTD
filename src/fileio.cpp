@@ -486,7 +486,7 @@ static std::string ExtractString(char *buffer, size_t buffer_length)
 {
 	size_t length = 0;
 	for (; length < buffer_length && buffer[length] != '\0'; length++) {}
-	return StrMakeValid(std::string(buffer, length));
+	return StrMakeValid(std::string_view(buffer, length));
 }
 
 bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] const std::string &tar_filename)

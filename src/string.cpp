@@ -141,7 +141,7 @@ static void StrMakeValid(T &dst, const char *str, const char *last, StringValida
 		 * would also reach the "last" byte of the string and a normal '\0'
 		 * termination will be placed after it.
 		 */
-		if (len == 0 || str + len > last || len != Utf8Decode(&c, str)) {
+		if (len == 0 || str + len > last + 1 || len != Utf8Decode(&c, str)) {
 			/* Maybe the next byte is still a valid character? */
 			str++;
 			continue;
@@ -211,8 +211,10 @@ void StrMakeValidInPlace(char *str, StringValidationSettings settings)
  */
 std::string StrMakeValid(std::string_view str, StringValidationSettings settings)
 {
+	if (str.empty()) return {};
+
 	auto buf = str.data();
-	auto last = buf + str.size();
+	auto last = buf + str.size() - 1;
 
 	std::ostringstream dst;
 	std::ostreambuf_iterator<char> dst_iter(dst);
