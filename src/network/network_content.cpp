@@ -609,6 +609,8 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 	/* Ignore any latent data coming from a connection we closed. */
 	if (this->http_response_index == -2) return;
 
+	this->lastActivity = std::chrono::steady_clock::now();
+
 	if (this->http_response_index == -1) {
 		if (data != nullptr) {
 			/* Append the rest of the response. */
