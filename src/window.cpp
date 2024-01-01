@@ -3436,6 +3436,18 @@ void RelocateAllWindows(int neww, int newh)
 {
 	CloseWindowByClass(WC_DROPDOWN_MENU);
 
+	/* Reposition toolbar then status bar before other all windows. */
+	if (Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0); wt != nullptr) {
+		ResizeWindow(wt, std::min<uint>(neww, _toolbar_width) - wt->width, 0, false);
+		wt->left = PositionMainToolbar(wt);
+	}
+
+	if (Window *ws = FindWindowById(WC_STATUS_BAR, 0); ws != nullptr) {
+		ResizeWindow(ws, std::min<uint>(neww, _toolbar_width) - ws->width, 0, false);
+		ws->top = newh - ws->height;
+		ws->left = PositionStatusbar(ws);
+	}
+
 	for (Window *w : Window::Iterate()) {
 		int left, top;
 		/* XXX - this probably needs something more sane. For example specifying
@@ -3447,22 +3459,12 @@ void RelocateAllWindows(int neww, int newh)
 				continue;
 
 			case WC_MAIN_TOOLBAR:
-				ResizeWindow(w, std::min<uint>(neww, _toolbar_width) - w->width, 0, false);
-
-				top = w->top;
-				left = PositionMainToolbar(w); // changes toolbar orientation
-				break;
+			case WC_STATUS_BAR:
+				continue;
 
 			case WC_NEWS_WINDOW:
 				top = newh - w->height;
 				left = PositionNewsMessage(w);
-				break;
-
-			case WC_STATUS_BAR:
-				ResizeWindow(w, std::min<uint>(neww, _toolbar_width) - w->width, 0, false);
-
-				top = newh - w->height;
-				left = PositionStatusbar(w);
 				break;
 
 			case WC_SEND_NETWORK_MSG:
