@@ -14,6 +14,7 @@
 
 #include "timer_game_common.h"
 #include "timer_game_calendar.h"
+#include "timer_game_economy.h"
 
 #include "../safeguards.h"
 
@@ -133,5 +134,7 @@ template <class T>
 /* Create instances of the two template variants that we have.
  * This is needed, as this templated functions are not in a header-file. */
 template TimerGame<struct Calendar>::YearMonthDay TimerGame<struct Calendar>::ConvertDateToYMD(Date date);
+template TimerGame<struct Economy>::YearMonthDay TimerGame<struct Economy>::ConvertDateToYMD(Date date);
 
 template TimerGame<struct Calendar>::Date TimerGame<struct Calendar>::ConvertYMDToDate(Year year, Month month, Day day);
+template TimerGame<struct Economy>::Date TimerGame<struct Economy>::ConvertYMDToDate(Year year, Month month, Day day);

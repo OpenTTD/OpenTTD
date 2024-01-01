@@ -92,21 +92,9 @@ void TimerManager<TimerGameCalendar>::Elapsed([[maybe_unused]] TimerGameCalendar
 		timer->Elapsed(TimerGameCalendar::DAY);
 	}
 
-	if ((TimerGameCalendar::date.base() % 7) == 3) {
-		for (auto timer : timers) {
-			timer->Elapsed(TimerGameCalendar::WEEK);
-		}
-	}
-
 	if (new_month) {
 		for (auto timer : timers) {
 			timer->Elapsed(TimerGameCalendar::MONTH);
-		}
-
-		if ((TimerGameCalendar::month % 3) == 0) {
-			for (auto timer : timers) {
-				timer->Elapsed(TimerGameCalendar::QUARTER);
-			}
 		}
 	}
 

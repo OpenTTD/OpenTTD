@@ -3,6 +3,8 @@ add_files(
     timer_game_common.h
     timer_game_calendar.cpp
     timer_game_calendar.h
+    timer_game_economy.cpp
+    timer_game_economy.h
     timer_game_realtime.cpp
     timer_game_realtime.h
     timer_game_tick.cpp
