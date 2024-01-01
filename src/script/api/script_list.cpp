@@ -11,7 +11,9 @@
 #include "script_list.hpp"
 #include "script_controller.hpp"
 #include "../../debug.h"
+#include "../../core/backup_type.hpp"
 #include "../../script/squirrel.hpp"
+#include <../squirrel/sqvm.h>
 
 #include "../../safeguards.h"
 
@@ -865,6 +867,14 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 	 * mid C++-code. */
 	bool backup_allow = ScriptObject::GetAllowDoCommand();
 	ScriptObject::SetAllowDoCommand(false);
+
+	/* Limit the total number of ops that can be consumed by a valuate operation */
+	SQInteger new_ops_error_threshold = vm->_ops_till_suspend_error_threshold;
+	if (vm->_ops_till_suspend_error_threshold == INT64_MIN) {
+		new_ops_error_threshold = vm->_ops_till_suspend - MAX_VALUATE_OPS;
+		vm->_ops_till_suspend_error_label = "valuator function";
+	}
+	AutoRestoreBackup ops_error_threshold_backup(vm->_ops_till_suspend_error_threshold, new_ops_error_threshold);
 
 	/* Push the function to call */
 	sq_push(vm, 2);
