@@ -1,4 +1,6 @@
 add_files(
+    timer_game_common.cpp
+    timer_game_common.h
     timer_game_calendar.cpp
     timer_game_calendar.h
     timer_game_realtime.cpp
