@@ -625,10 +625,13 @@ void SettingsDisableElrail(int32_t new_value)
 		}
 	}
 
-	/* Fix the total power and acceleration for trains */
-	for (Train *t : Train::Iterate()) {
-		/* power and acceleration is cached only for front engines */
-		if (t->IsFrontEngine()) {
+	for (const Company *c : Company::Iterate()) {
+		/* Fix the total power and acceleration for trains.
+		 * These values are only cached for front engines which
+		 * is what the collection enumerates. */
+		const VehicleList &vehicle_list = c->group_all[VEH_TRAIN].vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
+			Train *t = Train::From(Vehicle::Get(v->index));
 			t->ConsistChanged(CCF_TRACK);
 		}
 	}
