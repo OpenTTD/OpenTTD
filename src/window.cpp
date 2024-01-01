@@ -2160,8 +2160,8 @@ static EventState HandleWindowDragging()
 			int ny = y;
 
 			if (_settings_client.gui.window_snap_radius != 0) {
-				int hsnap = _settings_client.gui.window_snap_radius;
-				int vsnap = _settings_client.gui.window_snap_radius;
+				int hsnap = ScaleGUITrad(_settings_client.gui.window_snap_radius);
+				int vsnap = ScaleGUITrad(_settings_client.gui.window_snap_radius);
 				int delta;
 
 				for (const Window *v : Window::Iterate()) {
