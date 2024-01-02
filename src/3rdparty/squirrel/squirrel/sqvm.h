@@ -168,11 +168,18 @@ public:
 
 	SQBool _can_suspend;
 	SQInteger _ops_till_suspend;
+	SQInteger _ops_till_suspend_error_threshold;
+	const char *_ops_till_suspend_error_label;
 	SQBool _in_stackoverflow;
 
 	bool ShouldSuspend()
 	{
 		return _can_suspend && _ops_till_suspend <= 0;
+	}
+
+	bool IsOpsTillSuspendError()
+	{
+		return _ops_till_suspend < _ops_till_suspend_error_threshold;
 	}
 
 	void DecreaseOps(SQInteger amount)

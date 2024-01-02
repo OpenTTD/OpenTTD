@@ -15,6 +15,8 @@
 #include "../../depot_map.h"
 #include "../../vehicle_base.h"
 #include "../../train.h"
+#include "../../core/backup_type.hpp"
+#include <../squirrel/sqvm.h>
 
 #include "../../safeguards.h"
 
@@ -40,6 +42,14 @@ ScriptVehicleList::ScriptVehicleList(HSQUIRRELVM vm)
 	 * mid C++-code. */
 	bool backup_allow = ScriptObject::GetAllowDoCommand();
 	ScriptObject::SetAllowDoCommand(false);
+
+	/* Limit the total number of ops that can be consumed by a filter operation, if a filter function is present */
+	SQInteger new_ops_error_threshold = vm->_ops_till_suspend_error_threshold;
+	if (nparam >= 1 && vm->_ops_till_suspend_error_threshold == INT64_MIN) {
+		new_ops_error_threshold = vm->_ops_till_suspend - MAX_VALUATE_OPS;
+		vm->_ops_till_suspend_error_label = "vehicle filter function";
+	}
+	AutoRestoreBackup ops_error_threshold_backup(vm->_ops_till_suspend_error_threshold, new_ops_error_threshold);
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->owner != ScriptObject::GetCompany() && !ScriptCompanyMode::IsDeity()) continue;

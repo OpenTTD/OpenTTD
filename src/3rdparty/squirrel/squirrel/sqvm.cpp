@@ -116,6 +116,8 @@ SQVM::SQVM(SQSharedState *ss)
 	_can_suspend = false;
 	_in_stackoverflow = false;
 	_ops_till_suspend = 0;
+	_ops_till_suspend_error_threshold = INT64_MIN;
+	_ops_till_suspend_error_label = nullptr;
 	_callsstack = nullptr;
 	_callsstacksize = 0;
 	_alloccallsstacksize = 0;
@@ -744,6 +746,10 @@ exception_restore:
 		{
 			DecreaseOps(1);
 			if (ShouldSuspend()) { _suspended = SQTrue; _suspended_traps = traps; return true; }
+			if (IsOpsTillSuspendError()) {
+				Raise_Error(fmt::format("excessive CPU usage in {}", _ops_till_suspend_error_label));
+				SQ_THROW();
+			}
 
 			const SQInstruction &_i_ = *ci->_ip++;
 #ifdef _DEBUG_DUMP
