@@ -2174,7 +2174,9 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags, int repla
 		delete cur_stop;
 
 		/* Make sure no vehicle is going to the old roadstop */
-		for (RoadVehicle *v : RoadVehicle::Iterate()) {
+		const VehicleList &vehicle_list = Company::Get(st->owner)->group_all[VEH_ROAD].vehicle_list;
+		for (const Vehicle *vehicle : vehicle_list) {
+			RoadVehicle *v = RoadVehicle::From(Vehicle::Get(vehicle->index));
 			if (v->First() == v && v->current_order.IsType(OT_GOTO_STATION) &&
 					v->dest_tile == tile) {
 				v->SetDestTile(v->GetOrderStationLocation(st->index));
@@ -2524,7 +2526,9 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	for (const Aircraft *a : Aircraft::Iterate()) {
+	const VehicleList &vehicle_list = Company::Get(st->owner)->group_all[VEH_AIRCRAFT].vehicle_list;
+	for (const Vehicle *v : vehicle_list) {
+		const Aircraft *a = Aircraft::From(v);
 		if (!a->IsNormalAircraft()) continue;
 		if (a->targetairport == st->index && a->state != FLYING) {
 			return_cmd_error(STR_ERROR_AIRCRAFT_IN_THE_WAY);
@@ -2617,11 +2621,16 @@ CommandCost CmdOpenCloseAirport(DoCommandFlag flags, StationID station_id)
  */
 bool HasStationInUse(StationID station, bool include_company, CompanyID company)
 {
-	for (const Vehicle *v : Vehicle::Iterate()) {
-		if ((v->owner == company) == include_company) {
-			for (const Order *order : v->Orders()) {
-				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station) {
-					return true;
+	for (Company *c : Company::Iterate()) {
+		if ((c->index == company) == include_company) {
+			for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+				const VehicleList &vehicle_list = c->group_all[type].vehicle_list;
+				for (const Vehicle *v : vehicle_list) {
+					for (const Order *order : v->Orders()) {
+						if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station) {
+							return true;
+						}
+					}
 				}
 			}
 		}
@@ -2835,7 +2844,9 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 		ClearDockingTilesCheckingNeighbours(tile1);
 		ClearDockingTilesCheckingNeighbours(tile2);
 
-		for (Ship *s : Ship::Iterate()) {
+		const VehicleList &vehicle_list = Company::Get(st->owner)->group_all[VEH_SHIP].vehicle_list;
+		for (const Vehicle *v : vehicle_list) {
+			Ship *s = Ship::From(Vehicle::Get(v->index));
 			/* Find all ships going to our dock. */
 			if (s->current_order.GetDestination() != st->index) {
 				continue;
