@@ -2802,29 +2802,35 @@ void Vehicle::RemoveFromShared()
 
 static IntervalTimer<TimerGameCalendar> _vehicles_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::VEHICLE}, [](auto)
 {
-	for (Vehicle *v : Vehicle::Iterate()) {
-		if (v->IsPrimaryVehicle()) {
-			/* show warning if vehicle is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
-			Money profit = v->GetDisplayProfitThisYear();
-			if (v->age >= 730 && profit < 0) {
-				if (_settings_client.gui.vehicle_income_warn && v->owner == _local_company) {
-					SetDParam(0, v->index);
-					SetDParam(1, profit);
-					AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_IS_UNPROFITABLE, v->index);
-				}
-				AI::NewEvent(v->owner, new ScriptEventVehicleUnprofitable(v->index));
-			}
+	for (const Company *c : Company::Iterate()) {
+		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			const VehicleList &vehicle_list = c->group_all[type].vehicle_list;
+			for (const Vehicle *vehicle : vehicle_list) {
+				Vehicle *v = Vehicle::Get(vehicle->index);
 
-			v->profit_last_year = v->profit_this_year;
-			v->profit_this_year = 0;
-			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+				/* show warning if vehicle is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
+				Money profit = v->GetDisplayProfitThisYear();
+				if (v->age >= 730 && profit < 0) {
+					if (_settings_client.gui.vehicle_income_warn && v->owner == _local_company) {
+						SetDParam(0, v->index);
+						SetDParam(1, profit);
+						AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_IS_UNPROFITABLE, v->index);
+					}
+					AI::NewEvent(v->owner, new ScriptEventVehicleUnprofitable(v->index));
+				}
+
+				v->profit_last_year = v->profit_this_year;
+				v->profit_this_year = 0;
+				SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+
+			}
+			GroupStatistics::UpdateProfits();
+			SetWindowClassesDirty(WC_TRAINS_LIST);
+			SetWindowClassesDirty(WC_SHIPS_LIST);
+			SetWindowClassesDirty(WC_ROADVEH_LIST);
+			SetWindowClassesDirty(WC_AIRCRAFT_LIST);
 		}
 	}
-	GroupStatistics::UpdateProfits();
-	SetWindowClassesDirty(WC_TRAINS_LIST);
-	SetWindowClassesDirty(WC_SHIPS_LIST);
-	SetWindowClassesDirty(WC_ROADVEH_LIST);
-	SetWindowClassesDirty(WC_AIRCRAFT_LIST);
 });
 
 /**
