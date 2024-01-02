@@ -2724,7 +2724,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nazwa gr
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Ustaw hasło
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zabezpiecz grę hasłem jeśli nie chcesz, by była publicznie dostępna
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Widoczność
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Widoczność:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Czy inni ludzie mogą zobaczyć twój serwer na publicznej liście
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ów ów}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dopuszczalna liczba klientów:

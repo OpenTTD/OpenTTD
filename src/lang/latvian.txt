@@ -1120,11 +1120,11 @@ STR_NUM_CUSTOM                                                  :Pielāgots
 STR_NUM_CUSTOM_NUMBER                                           :Pielāgots ({NUM})
 
 STR_VARIETY_NONE                                                :Nav
-STR_VARIETY_VERY_LOW                                            :Ļoti zema
-STR_VARIETY_LOW                                                 :Zema
-STR_VARIETY_MEDIUM                                              :Vidēja
-STR_VARIETY_HIGH                                                :Augsta
-STR_VARIETY_VERY_HIGH                                           :Ļoti augsta
+STR_VARIETY_VERY_LOW                                            :Ļoti zems
+STR_VARIETY_LOW                                                 :Zems
+STR_VARIETY_MEDIUM                                              :Vidējs
+STR_VARIETY_HIGH                                                :Augsts
+STR_VARIETY_VERY_HIGH                                           :Ļoti augsts
 
 ###length 5
 STR_AI_SPEED_VERY_SLOW                                          :Ļoti lēns
@@ -2432,7 +2432,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Jauna kompāni
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Izveidot jaunu kompāniju un pievienoties tai
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Tas esat jūs
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Šis ir spēles īpašnieks
-STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}Klientu: {NUM}; uzņēmumu: {NUM}/{NUM}
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}klientu: {NUM}; kompāniju: {NUM}/{NUM}
 STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT_TOOLTIP            :{BLACK}Pašlaik savienoto klientu skaits, uzņēmumu skaits un maksimālais servera administratora atļautais uzņēmumu skaits
 
 # Matches ConnectionType
@@ -2506,8 +2506,8 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Tīkla s
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nevar ielādēt saglabāto spēli
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nevar uzsākt servera darbību
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Tika pielaista protokola kļūda un savienojums tika slēgts
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE} Jūsu spēlētāja vārds nav iestatīts. Nosaukumu var iestatīt vMultiplayer loga augšdaļā
-STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE} Jūsu servera nosaukums nav iestatīts. Nosaukumu var iestatīt Multiplayer loga augšdaļā
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE} Jūsu spēlētāja vārds nav iestatīts. Nosaukumu var iestatīt šī loga augšdaļā
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE} Jūsu servera nosaukums nav iestatīts. Nosaukumu var iestatīt vairākspēlētāju loga augšdaļā
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Klienta pārskats neatbilst servera pārskatam
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Nepareiza parole
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveris ir pilns
