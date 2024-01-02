@@ -93,11 +93,6 @@ Station::~Station()
 		this->loading_vehicles.front()->LeaveStation();
 	}
 
-	for (Aircraft *a : Aircraft::Iterate()) {
-		if (!a->IsNormalAircraft()) continue;
-		if (a->targetairport == this->index) a->targetairport = INVALID_STATION;
-	}
-
 	for (CargoID c = 0; c < NUM_CARGO; ++c) {
 		LinkGraph *lg = LinkGraph::GetIfValid(this->goods[c].link_graph);
 		if (lg == nullptr) continue;
@@ -117,13 +112,24 @@ Station::~Station()
 		}
 	}
 
-	for (Vehicle *v : Vehicle::Iterate()) {
-		/* Forget about this station if this station is removed */
-		if (v->last_station_visited == this->index) {
-			v->last_station_visited = INVALID_STATION;
-		}
-		if (v->last_loading_station == this->index) {
-			v->last_loading_station = INVALID_STATION;
+	for (const Company *c : Company::Iterate()) {
+		if (this->owner != c->index && this->owner != OWNER_NONE) continue;
+		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			const VehicleList &vehicle_list = c->group_all[type].vehicle_list;
+			for (const Vehicle *vehicle : vehicle_list) {
+				Vehicle *v = Vehicle::Get(vehicle->index);
+				if (type == VEH_AIRCRAFT) {
+					Aircraft *a = Aircraft::From(v);
+					if (a->targetairport == this->index) a->targetairport = INVALID_STATION;
+				}
+				/* Forget about this station if this station is removed */
+				if (v->last_station_visited == this->index) {
+					v->last_station_visited = INVALID_STATION;
+				}
+				if (v->last_loading_station == this->index) {
+					v->last_loading_station = INVALID_STATION;
+				}
+			}
 		}
 	}
 
