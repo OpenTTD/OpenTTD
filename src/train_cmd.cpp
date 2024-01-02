@@ -77,23 +77,27 @@ void CheckTrainsLengths()
 {
 	bool first = true;
 
-	for (const Train *v : Train::Iterate()) {
-		if (v->First() == v && !(v->vehstatus & VS_CRASHED)) {
-			for (const Train *u = v, *w = v->Next(); w != nullptr; u = w, w = w->Next()) {
-				if (u->track != TRACK_BIT_DEPOT) {
-					if ((w->track != TRACK_BIT_DEPOT &&
+	for (const Company *c : Company::Iterate()) {
+		const VehicleList &vehicle_list = c->group_all[VEH_TRAIN].vehicle_list;
+		for (const Vehicle *vehicle : vehicle_list) {
+			const Train *v = Train::From(vehicle);
+			if (v->First() == v && !(v->vehstatus & VS_CRASHED)) {
+				for (const Train *u = v, *w = v->Next(); w != nullptr; u = w, w = w->Next()) {
+					if (u->track != TRACK_BIT_DEPOT) {
+						if ((w->track != TRACK_BIT_DEPOT &&
 							std::max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->CalcNextVehicleOffset()) ||
-							(w->track == TRACK_BIT_DEPOT && TicksToLeaveDepot(u) <= 0)) {
-						SetDParam(0, v->index);
-						SetDParam(1, v->owner);
-						ShowErrorMessage(STR_BROKEN_VEHICLE_LENGTH, INVALID_STRING_ID, WL_CRITICAL);
+								(w->track == TRACK_BIT_DEPOT && TicksToLeaveDepot(u) <= 0)) {
+							SetDParam(0, v->index);
+							SetDParam(1, v->owner);
+							ShowErrorMessage(STR_BROKEN_VEHICLE_LENGTH, INVALID_STRING_ID, WL_CRITICAL);
 
-						if (!_networking && first) {
-							first = false;
-							Command<CMD_PAUSE>::Post(PM_PAUSED_ERROR, true);
+							if (!_networking && first) {
+								first = false;
+								Command<CMD_PAUSE>::Post(PM_PAUSED_ERROR, true);
+							}
+							/* Break so we warn only once for each train. */
+							break;
 						}
-						/* Break so we warn only once for each train. */
-						break;
 					}
 				}
 			}
