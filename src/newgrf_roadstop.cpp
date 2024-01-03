@@ -227,7 +227,7 @@ RoadStopResolverObject::~RoadStopResolverObject()
 	delete this->town_scope;
 }
 
-TownScopeResolver* RoadStopResolverObject::GetTown()
+TownScopeResolver *RoadStopResolverObject::GetTown()
 {
 	if (this->town_scope == nullptr) {
 		Town *t;

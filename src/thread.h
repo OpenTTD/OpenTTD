@@ -74,7 +74,7 @@ inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&
 		}
 
 		return true;
-	} catch (const std::system_error& e) {
+	} catch (const std::system_error &e) {
 		/* Something went wrong, the system we are running on might not support threads. */
 		Debug(misc, 1, "Can't create thread '{}': {}", name, e.what());
 	}

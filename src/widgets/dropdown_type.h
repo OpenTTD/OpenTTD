@@ -117,12 +117,12 @@ public:
 	}
 
 	/**
-	* Natural sorting comparator function for DropDownList::sort().
-	* @param first Left side of comparison.
-	* @param second Right side of comparison.
-	* @return true if \a first precedes \a second.
-	* @warning All items in the list need to be derivates of DropDownListStringItem.
-	*/
+	 * Natural sorting comparator function for DropDownList::sort().
+	 * @param first Left side of comparison.
+	 * @param second Right side of comparison.
+	 * @return true if \a first precedes \a second.
+	 * @warning All items in the list need to be derivates of DropDownListStringItem.
+	 */
 	static bool NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second)
 	{
 		const std::string &str1 = static_cast<const DropDownString*>(first.get())->string;

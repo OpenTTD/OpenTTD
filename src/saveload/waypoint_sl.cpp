@@ -86,7 +86,7 @@ void MoveWaypointsToBaseStations()
 		/* As of version 17, we recalculate the custom graphic ID of waypoints
 		 * from the GRF ID / station index. */
 		for (OldWaypoint &wp : _old_waypoints) {
-			StationClass* stclass = StationClass::Get(STAT_CLASS_WAYP);
+			StationClass *stclass = StationClass::Get(STAT_CLASS_WAYP);
 			for (uint i = 0; i < stclass->GetSpecCount(); i++) {
 				const StationSpec *statspec = stclass->GetSpec(i);
 				if (statspec != nullptr && statspec->grf_prop.grffile->grfid == wp.grfid && statspec->grf_prop.local_id == wp.localidx) {

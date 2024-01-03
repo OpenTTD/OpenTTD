@@ -28,7 +28,7 @@ protected:
 	SuperArray data; ///< array of arrays of items
 
 	/** return first sub-array with free space for new item */
-	inline SubArray& FirstFreeSubArray()
+	inline SubArray &FirstFreeSubArray()
 	{
 		uint super_size = data.Length();
 		if (super_size > 0) {

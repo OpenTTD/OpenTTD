@@ -48,7 +48,7 @@ static std::vector<Engine*> _temp_engine;
  * The allocated Engine must be freed using FreeEngine;
  * @return Allocated engine.
  */
-static Engine* CallocEngine()
+static Engine *CallocEngine()
 {
 	uint8_t *zero = CallocT<uint8_t>(sizeof(Engine));
 	Engine *engine = new (zero) Engine();

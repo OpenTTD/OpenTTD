@@ -216,7 +216,7 @@ public:
 	}
 
 	/** non-const item search & removal */
-	Titem_& Pop(const Tkey &key)
+	Titem_ &Pop(const Tkey &key)
 	{
 		Titem_ *item = TryPop(key);
 		assert(item != nullptr);

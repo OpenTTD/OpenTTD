@@ -1404,7 +1404,7 @@ void DrawRoadTypeCatenary(const TileInfo *ti, RoadType rt, RoadBits rb)
 		if (CountBits(rb_new) >= 2) rb = rb_new;
 	}
 
-	const RoadTypeInfo* rti = GetRoadTypeInfo(rt);
+	const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 	SpriteID front = GetCustomRoadSprite(rti, ti->tile, ROTSG_CATENARY_FRONT);
 	SpriteID back = GetCustomRoadSprite(rti, ti->tile, ROTSG_CATENARY_BACK);
 
@@ -1849,7 +1849,7 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 {
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 
-	const RoadTypeInfo* rti = GetRoadTypeInfo(rt);
+	const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 	int relocation = GetCustomRoadSprite(rti, INVALID_TILE, ROTSG_DEPOT);
 	bool default_gfx = relocation == 0;
 	if (default_gfx) {

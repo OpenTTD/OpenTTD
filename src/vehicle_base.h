@@ -1017,8 +1017,8 @@ public:
 	 */
 	struct OrderIterator {
 		typedef Order value_type;
-		typedef Order* pointer;
-		typedef Order& reference;
+		typedef Order *pointer;
+		typedef Order &reference;
 		typedef size_t difference_type;
 		typedef std::forward_iterator_tag iterator_category;
 

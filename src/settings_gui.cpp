@@ -87,10 +87,10 @@ static void ShowCustCurrency();
 /** Window for displaying the textfile of a BaseSet. */
 template <class TBaseSet>
 struct BaseSetTextfileWindow : public TextfileWindow {
-	const TBaseSet* baseset; ///< View the textfile of this BaseSet.
+	const TBaseSet *baseset; ///< View the textfile of this BaseSet.
 	StringID content_type;   ///< STR_CONTENT_TYPE_xxx for title.
 
-	BaseSetTextfileWindow(TextfileType file_type, const TBaseSet* baseset, StringID content_type) : TextfileWindow(file_type), baseset(baseset), content_type(content_type)
+	BaseSetTextfileWindow(TextfileType file_type, const TBaseSet *baseset, StringID content_type) : TextfileWindow(file_type), baseset(baseset), content_type(content_type)
 	{
 		auto textfile = this->baseset->GetTextfile(file_type);
 		this->LoadTextfile(textfile.value(), BASESET_DIR);
@@ -112,7 +112,7 @@ struct BaseSetTextfileWindow : public TextfileWindow {
  * @param content_type STR_CONTENT_TYPE_xxx for title.
  */
 template <class TBaseSet>
-void ShowBaseSetTextfileWindow(TextfileType file_type, const TBaseSet* baseset, StringID content_type)
+void ShowBaseSetTextfileWindow(TextfileType file_type, const TBaseSet *baseset, StringID content_type)
 {
 	CloseWindowById(WC_TEXTFILE, file_type);
 	new BaseSetTextfileWindow<TBaseSet>(file_type, baseset, content_type);
@@ -688,7 +688,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_BASE_GRF_DROPDOWN:
 				if (_game_mode == GM_MENU) {
 					CloseWindowByClass(WC_GRF_PARAMETERS);
-					auto* set = BaseGraphics::GetSet(index);
+					auto set = BaseGraphics::GetSet(index);
 					BaseGraphics::SetSet(set);
 					this->reload = true;
 					this->InvalidateData();
@@ -697,7 +697,7 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_BASE_SFX_DROPDOWN:
 				if (_game_mode == GM_MENU) {
-					auto* set = BaseSounds::GetSet(index);
+					auto set = BaseSounds::GetSet(index);
 					BaseSounds::ini_set = set->name;
 					BaseSounds::SetSet(set);
 					this->reload = true;

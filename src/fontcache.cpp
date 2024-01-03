@@ -98,7 +98,7 @@ bool GetFontAAState(FontSize size, bool check_blitter)
 	return GetFontCacheSubSetting(size)->aa;
 }
 
-void SetFont(FontSize fontsize, const std::string& font, uint size, bool aa)
+void SetFont(FontSize fontsize, const std::string &font, uint size, bool aa)
 {
 	FontCacheSubSetting *setting = GetFontCacheSubSetting(fontsize);
 	bool changed = false;

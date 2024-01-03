@@ -37,9 +37,9 @@ static const int MS_TO_REFTIME = 1000 * 10; ///< DirectMusic time base is 100 ns
 static const int MIDITIME_TO_REFTIME = 10;  ///< Time base of the midi file reader is 1 us.
 
 
-#define FOURCC_INFO  mmioFOURCC('I','N','F','O')
-#define FOURCC_fmt   mmioFOURCC('f','m','t',' ')
-#define FOURCC_data  mmioFOURCC('d','a','t','a')
+#define FOURCC_INFO  mmioFOURCC('I', 'N', 'F', 'O')
+#define FOURCC_fmt   mmioFOURCC('f', 'm', 't', ' ')
+#define FOURCC_data  mmioFOURCC('d', 'a', 't', 'a')
 
 /** A DLS file. */
 struct DLSFile {

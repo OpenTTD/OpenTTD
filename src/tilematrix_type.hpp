@@ -78,7 +78,7 @@ public:
 	 * Get the total covered area.
 	 * @return The area covered by the matrix.
 	 */
-	const TileArea& GetArea() const
+	const TileArea &GetArea() const
 	{
 		return this->area;
 	}

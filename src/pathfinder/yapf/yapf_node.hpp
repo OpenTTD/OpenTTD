@@ -97,7 +97,7 @@ struct CYapfNodeT {
 		return m_key.m_td;
 	}
 
-	inline const Tkey_& GetKey() const
+	inline const Tkey_ &GetKey() const
 	{
 		return m_key;
 	}

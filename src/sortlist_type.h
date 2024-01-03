@@ -96,7 +96,7 @@ public:
 
 	/* If sort parameters are used then we require a reference to the params. */
 	template <typename T_ = T, typename P_ = P, typename _F = F, std::enable_if_t<!std::is_same_v<P_, std::nullptr_t>>* = nullptr>
-	GUIList(const P& params) :
+	GUIList(const P &params) :
 		sort_func_list(nullptr),
 		filter_func_list(nullptr),
 		flags(VL_NONE),

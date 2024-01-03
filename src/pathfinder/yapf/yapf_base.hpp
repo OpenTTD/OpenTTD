@@ -87,14 +87,14 @@ public:
 
 protected:
 	/** to access inherited path finder */
-	inline Tpf& Yapf()
+	inline Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
 
 public:
 	/** return current settings (can be custom - company based - but later) */
-	inline const YAPFSettings& PfGetSettings() const
+	inline const YAPFSettings &PfGetSettings() const
 	{
 		return *m_settings;
 	}
@@ -167,7 +167,7 @@ public:
 	 * Calls NodeList::CreateNewNode() - allocates new node that can be filled and used
 	 *  as argument for AddStartupNode() or AddNewNode()
 	 */
-	inline Node& CreateNewNode()
+	inline Node &CreateNewNode()
 	{
 		Node &node = *m_nodes.CreateNewNode();
 		return node;

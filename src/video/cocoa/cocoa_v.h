@@ -78,7 +78,7 @@ protected:
 
 	bool MakeWindow(int width, int height);
 
-	virtual NSView* AllocateDrawView() = 0;
+	virtual NSView *AllocateDrawView() = 0;
 
 	/** Get a pointer to the video buffer. */
 	virtual void *GetVideoPointer() = 0;
@@ -121,7 +121,7 @@ protected:
 	void Paint() override;
 	void CheckPaletteAnim() override;
 
-	NSView* AllocateDrawView() override;
+	NSView *AllocateDrawView() override;
 
 	void *GetVideoPointer() override { return this->buffer_depth == 8 ? this->pixel_buffer : this->window_buffer; }
 };

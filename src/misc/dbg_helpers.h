@@ -124,7 +124,7 @@ struct DumpTarget {
 		: m_indent(0)
 	{}
 
-	static size_t& LastTypeId();
+	static size_t &LastTypeId();
 	std::string GetCurrentStructName();
 	bool FindKnownName(size_t type_id, const void *ptr, std::string &name);
 
