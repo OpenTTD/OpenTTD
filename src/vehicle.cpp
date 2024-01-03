@@ -1222,21 +1222,40 @@ Vehicle *CheckClickOnVehicle(const Viewport *vp, int x, int y)
 	x = ScaleByZoom(x, vp->zoom) + vp->virtual_left;
 	y = ScaleByZoom(y, vp->zoom) + vp->virtual_top;
 
-	for (Vehicle *v : Vehicle::Iterate()) {
-		if ((v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0 &&
-				x >= v->coord.left && x <= v->coord.right &&
-				y >= v->coord.top && y <= v->coord.bottom) {
+	/* Border size of MAX_VEHICLE_PIXEL_xy */
+	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE;
+	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE;
 
-			dist = std::max(
-				abs(((v->coord.left + v->coord.right) >> 1) - x),
-				abs(((v->coord.top + v->coord.bottom) >> 1) - y)
-			);
+	/* The hash area to scan */
+	int xl = GEN_HASHX(x - xb);
+	int xu = GEN_HASHX(x);
+	int yl = GEN_HASHY(y - yb);
+	int yu = GEN_HASHY(y);
 
-			if (dist < best_dist) {
-				found = v;
-				best_dist = dist;
+	for (int hy = yl;; hy = (hy + GEN_HASHY_INC) & GEN_HASHY_MASK) {
+		for (int hx = xl;; hx = (hx + GEN_HASHX_INC) & GEN_HASHX_MASK) {
+			Vehicle *v = _vehicle_viewport_hash[hx + hy]; // already masked & 0xFFF
+
+			while (v != nullptr) {
+				if ((v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0 &&
+					x >= v->coord.left && x <= v->coord.right &&
+					y >= v->coord.top && y <= v->coord.bottom) {
+
+					dist = std::max(
+						abs(((v->coord.left + v->coord.right) >> 1) - x),
+						abs(((v->coord.top + v->coord.bottom) >> 1) - y)
+					);
+
+					if (dist < best_dist) {
+						found = v;
+						best_dist = dist;
+					}
+				}
+				v = v->hash_viewport_next;
 			}
+			if (hx == xu) break;
 		}
+		if (hy == yu) break;
 	}
 
 	return found;
