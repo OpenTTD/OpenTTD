@@ -905,7 +905,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nevar doties uz nākamo galamērķi, jo tas ir ārpus apgabala
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} ir apstājies, jo neizdevās pasūtītā pielāgošana
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automātiskās atjaunošanas kļūda {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automātiskā atjaunošana neizdevās transportlīdzeklī {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Tagad ir pieejams jauns {STRING}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -918,7 +918,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsīdijas piedāvājums beidzies:{}{}{STRING} no {STRING} uz {STRING} subsidēšana ir atcelta
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidēšana atcelta:{}{}{STRING} pārvadājumi no {STRING} uz {STRING} turpmāk vairs netiek subsidēti
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Līnijas subsīdijas piedāvājums:{}{}Sākot no {STRING} līdz {STRING} uz {STRING} piesaistīs {NUM} gadu subsīdijas no vietējās pašvaldības!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Līnijas subsīdijas piedāvājums:{}{}Krava: {STRING} no{STRING} uz {STRING} piesaistīs {NUM} gadu subsīdijas no vietējās pašvaldības!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Līnijas subsīdija tiek piešķirta {STRING}!{}{}{STRING} no {STRING} uz {STRING} tiks maksāts 50% vairāk nākamos {NUM} gad{P u us us}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Līnijas subsīdija tiek piešķrita {STRING}!{}{}{STRING} no {STRING} uz {STRING} tiks maksātas dubultās likmes nākamos {NUM} gad{P u us us}!

@@ -904,7 +904,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :O lucro de {WHI
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} não pode chegar ao próximo destino porque está fora de alcance
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque uma readaptação ordenada falhou
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autorenovação falhou no {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autorenovação falhou para {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nov{G o a} {STRING} já está disponível!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
