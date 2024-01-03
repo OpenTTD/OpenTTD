@@ -70,7 +70,7 @@ class CrashLogOSX : public CrashLog {
 	}
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD
-	static bool MinidumpCallback(const char* dump_dir, const char* minidump_id, void* context, bool succeeded)
+	static bool MinidumpCallback(const char *dump_dir, const char *minidump_id, void *context, bool succeeded)
 	{
 		CrashLogOSX *crashlog = reinterpret_cast<CrashLogOSX *>(context);
 

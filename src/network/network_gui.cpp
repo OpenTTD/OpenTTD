@@ -1097,7 +1097,7 @@ struct NetworkStartServerWindow : public Window {
 			case WID_NSS_PLAY_HEIGHTMAP:
 				if (!CheckServerName()) return;
 				_is_network_server = true;
-				ShowSaveLoadDialog(FT_HEIGHTMAP,SLO_LOAD);
+				ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_LOAD);
 				break;
 		}
 	}

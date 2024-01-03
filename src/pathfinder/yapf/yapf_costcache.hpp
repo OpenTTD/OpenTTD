@@ -63,7 +63,7 @@ protected:
 	LocalCache      m_local_cache;
 
 	/** to access inherited path finder */
-	inline Tpf& Yapf()
+	inline Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
@@ -138,7 +138,7 @@ struct CSegmentCostCacheT : public CSegmentCostCacheBase {
 		m_heap.Clear();
 	}
 
-	inline Tsegment& Get(Key &key, bool *found)
+	inline Tsegment &Get(Key &key, bool *found)
 	{
 		Tsegment *item = m_map.Find(key);
 		if (item == nullptr) {
@@ -174,12 +174,12 @@ protected:
 	inline CYapfSegmentCostCacheGlobalT() : m_global_cache(stGetGlobalCache()) {};
 
 	/** to access inherited path finder */
-	inline Tpf& Yapf()
+	inline Tpf &Yapf()
 	{
 		return *static_cast<Tpf *>(this);
 	}
 
-	inline static Cache& stGetGlobalCache()
+	inline static Cache &stGetGlobalCache()
 	{
 		static int last_rail_change_counter = 0;
 		static Cache C;

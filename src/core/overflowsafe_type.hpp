@@ -37,7 +37,7 @@ private:
 public:
 	constexpr OverflowSafeInt() : m_value(0) { }
 
-	constexpr OverflowSafeInt(const OverflowSafeInt& other) : m_value(other.m_value) { }
+	constexpr OverflowSafeInt(const OverflowSafeInt &other) : m_value(other.m_value) { }
 	constexpr OverflowSafeInt(const T int_) : m_value(int_) { }
 
 	inline constexpr OverflowSafeInt& operator = (const OverflowSafeInt& other) { this->m_value = other.m_value; return *this; }

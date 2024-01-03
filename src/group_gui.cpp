@@ -901,7 +901,7 @@ public:
 
 					case GB_SHARED_ORDERS: {
 						if (!VehicleClicked(vehgroup)) {
-							const Vehicle* v = vehgroup.vehicles_begin[0];
+							const Vehicle *v = vehgroup.vehicles_begin[0];
 							if (vindex == v->index) {
 								if (vehgroup.NumVehicles() == 1) {
 									ShowVehicleViewWindow(v);

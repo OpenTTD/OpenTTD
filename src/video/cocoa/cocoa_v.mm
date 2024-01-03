@@ -400,7 +400,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 		behavior |= NSWindowCollectionBehaviorFullScreenPrimary;
 		[ this->window setCollectionBehavior:behavior ];
 
-		NSButton* fullscreenButton = [ this->window standardWindowButton:NSWindowZoomButton ];
+		NSButton *fullscreenButton = [ this->window standardWindowButton:NSWindowZoomButton ];
 		[ fullscreenButton setAction:@selector(toggleFullScreen:) ];
 		[ fullscreenButton setTarget:this->window ];
 	}

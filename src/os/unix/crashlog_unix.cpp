@@ -70,7 +70,7 @@ class CrashLogUnix : public CrashLog {
 	}
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD
-	static bool MinidumpCallback(const google_breakpad::MinidumpDescriptor& descriptor, void* context, bool succeeded)
+	static bool MinidumpCallback(const google_breakpad::MinidumpDescriptor &descriptor, void *context, bool succeeded)
 	{
 		CrashLogUnix *crashlog = reinterpret_cast<CrashLogUnix *>(context);
 

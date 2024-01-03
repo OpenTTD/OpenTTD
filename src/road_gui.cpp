@@ -755,7 +755,7 @@ struct BuildRoadToolbarWindow : Window {
 	 */
 	static EventState RoadTramToolbarGlobalHotkeys(int hotkey, RoadType last_build, RoadTramType rtt)
 	{
-		Window* w = nullptr;
+		Window *w = nullptr;
 		switch (_game_mode) {
 			case GM_NORMAL:
 				w = ShowBuildRoadToolbar(last_build);

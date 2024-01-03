@@ -3045,7 +3045,7 @@ uint32_t Vehicle::GetDisplayMaxWeight() const
 {
 	uint32_t max_weight = 0;
 
-	for (const Vehicle* u = this; u != nullptr; u = u->Next()) {
+	for (const Vehicle *u = this; u != nullptr; u = u->Next()) {
 		max_weight += u->GetMaxWeight();
 	}
 

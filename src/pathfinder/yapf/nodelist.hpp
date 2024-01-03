@@ -116,7 +116,7 @@ public:
 	}
 
 	/** remove and return the open node specified by a key */
-	inline Titem_& PopOpenNode(const Key &key)
+	inline Titem_ &PopOpenNode(const Key &key)
 	{
 		Titem_ &item = m_open.Pop(key);
 		uint idxPop = m_open_queue.FindIndex(item);
@@ -145,7 +145,7 @@ public:
 	}
 
 	/** Get a particular item. */
-	inline Titem_& ItemAt(int idx)
+	inline Titem_ &ItemAt(int idx)
 	{
 		return m_arr[idx];
 	}

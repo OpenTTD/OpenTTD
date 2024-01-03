@@ -36,7 +36,7 @@ using Microsoft::WRL::ComPtr;
 #include "../safeguards.h"
 
 // Definition of the "XAudio2Create" call used to initialise XAudio2
-typedef HRESULT(__stdcall *API_XAudio2Create)(_Outptr_ IXAudio2** ppXAudio2, UINT32 Flags, XAUDIO2_PROCESSOR XAudio2Processor);
+typedef HRESULT(__stdcall *API_XAudio2Create)(_Outptr_ IXAudio2 **ppXAudio2, UINT32 Flags, XAUDIO2_PROCESSOR XAudio2Processor);
 
 static FSoundDriver_XAudio2 iFSoundDriver_XAudio2;
 
@@ -51,7 +51,7 @@ private:
 	char *buffer;
 
 public:
-	IXAudio2SourceVoice* SourceVoice;
+	IXAudio2SourceVoice *SourceVoice;
 
 	StreamingVoiceContext(int bufferLength)
 	{
@@ -112,10 +112,10 @@ public:
 };
 
 static HMODULE _xaudio_dll_handle;
-static IXAudio2SourceVoice* _source_voice = nullptr;
-static IXAudio2MasteringVoice* _mastering_voice = nullptr;
+static IXAudio2SourceVoice *_source_voice = nullptr;
+static IXAudio2MasteringVoice *_mastering_voice = nullptr;
 static ComPtr<IXAudio2> _xaudio2;
-static StreamingVoiceContext* _voice_context = nullptr;
+static StreamingVoiceContext *_voice_context = nullptr;
 
 /** Create XAudio2 context with SEH exception checking. */
 static HRESULT CreateXAudio(API_XAudio2Create xAudio2Create)

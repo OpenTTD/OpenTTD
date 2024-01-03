@@ -225,7 +225,7 @@ public:
 		return *this;
 	}
 
-	ArrayStringParameters(const ArrayStringParameters& other) = delete;
+	ArrayStringParameters(const ArrayStringParameters &other) = delete;
 	ArrayStringParameters& operator=(const ArrayStringParameters &other) = delete;
 };
 

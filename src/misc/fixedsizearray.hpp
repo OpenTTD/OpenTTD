@@ -39,25 +39,25 @@ protected:
 	T *data;
 
 	/** return reference to the array header (non-const) */
-	inline ArrayHeader& Hdr()
+	inline ArrayHeader &Hdr()
 	{
 		return *(ArrayHeader*)(((byte*)data) - HeaderSize);
 	}
 
 	/** return reference to the array header (const) */
-	inline const ArrayHeader& Hdr() const
+	inline const ArrayHeader &Hdr() const
 	{
 		return *(ArrayHeader*)(((byte*)data) - HeaderSize);
 	}
 
 	/** return reference to the block reference counter */
-	inline uint& RefCnt()
+	inline uint &RefCnt()
 	{
 		return Hdr().reference_count;
 	}
 
 	/** return reference to number of used items */
-	inline uint& SizeRef()
+	inline uint &SizeRef()
 	{
 		return Hdr().items;
 	}

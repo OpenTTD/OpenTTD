@@ -82,7 +82,7 @@ struct CYapfRailSegment
 		, m_hash_next(nullptr)
 	{}
 
-	inline const Key& GetKey() const
+	inline const Key &GetKey() const
 	{
 		return m_key;
 	}

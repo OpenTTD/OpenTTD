@@ -534,7 +534,7 @@ protected:
 	 * Internal event handler for when a page element is clicked.
 	 * @param pe The clicked page element.
 	 */
-	void OnPageElementClick(const StoryPageElement& pe)
+	void OnPageElementClick(const StoryPageElement &pe)
 	{
 		switch (pe.type) {
 			case SPET_TEXT:

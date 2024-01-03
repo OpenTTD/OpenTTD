@@ -377,7 +377,7 @@ static bool FixupMidiData(MidiFile &target)
 	while (cur_block < target.blocks.size()) {
 		MidiFile::DataBlock &block = target.blocks[cur_block];
 		MidiFile::TempoChange &tempo = target.tempos[cur_tempo];
-		MidiFile::TempoChange &next_tempo = target.tempos[cur_tempo+1];
+		MidiFile::TempoChange &next_tempo = target.tempos[cur_tempo + 1];
 		if (block.ticktime <= next_tempo.ticktime) {
 			/* block is within the current tempo */
 			int64_t tickdiff = block.ticktime - last_ticktime;
@@ -792,12 +792,12 @@ struct MpsMachine {
 
 		/* Always reset percussion channel to program 0 */
 		this->target.blocks.push_back(MidiFile::DataBlock());
-		AddMidiData(this->target.blocks.back(), MIDIST_PROGCHG+9, 0x00);
+		AddMidiData(this->target.blocks.back(), MIDIST_PROGCHG + 9, 0x00);
 
 		/* Technically should be an endless loop, but having
 		 * a maximum (about 10 minutes) avoids getting stuck,
 		 * in case of corrupted data. */
-		for (uint32_t tick = 0; tick < 100000; tick+=1) {
+		for (uint32_t tick = 0; tick < 100000; tick += 1) {
 			this->target.blocks.push_back(MidiFile::DataBlock());
 			auto &block = this->target.blocks.back();
 			block.ticktime = tick;

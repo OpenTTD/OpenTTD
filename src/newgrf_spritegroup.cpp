@@ -180,7 +180,7 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver
 }
 
 
-static bool RangeHighComparator(const DeterministicSpriteGroupRange& range, uint32_t value)
+static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint32_t value)
 {
 	return range.high < value;
 }

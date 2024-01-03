@@ -39,7 +39,7 @@ template <class C, class E>
 struct is_compatible_container : std::bool_constant
 <
 	has_size_and_data<C>::value
-	&& is_compatible_element<C,E>::value
+	&& is_compatible_element<C, E>::value
 >{};
 
 /**

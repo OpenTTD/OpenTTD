@@ -166,7 +166,7 @@ void WindowDesc::LoadFromConfig()
 /**
  * Sort WindowDesc by ini_key.
  */
-static bool DescSorter(WindowDesc* const &a, WindowDesc* const &b)
+static bool DescSorter(WindowDesc * const &a, WindowDesc * const &b)
 {
 	if (a->ini_key != nullptr && b->ini_key != nullptr) return strcmp(a->ini_key, b->ini_key) < 0;
 	return a->ini_key != nullptr;

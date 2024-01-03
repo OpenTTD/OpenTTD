@@ -403,7 +403,7 @@ struct NewGRFInspectWindow : Window {
 	 * Helper function to draw the vehicle chain widget.
 	 * @param r The rectangle to draw within.
 	 */
-	void DrawVehicleChainWidget(const Rect& r) const
+	void DrawVehicleChainWidget(const Rect &r) const
 	{
 		const Vehicle *v = Vehicle::Get(this->GetFeatureIndex());
 		int total_width = 0;
@@ -444,7 +444,7 @@ struct NewGRFInspectWindow : Window {
 	 * Helper function to draw the main panel widget.
 	 * @param r The rectangle to draw within.
 	 */
-	void DrawMainPanelWidget(const Rect& r) const
+	void DrawMainPanelWidget(const Rect &r) const
 	{
 		uint index = this->GetFeatureIndex();
 		const NIFeature *nif  = GetFeature(this->window_number);
@@ -919,7 +919,7 @@ struct SpriteAlignerWindow : Window {
 				DrawSprite(this->current_sprite, PAL_NONE, x, y, nullptr, SpriteAlignerWindow::zoom);
 
 				Rect outline = {0, 0, UnScaleByZoom(spr->width, SpriteAlignerWindow::zoom) - 1, UnScaleByZoom(spr->height, SpriteAlignerWindow::zoom) - 1};
-				outline = outline.Translate(x + UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom),y + UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom));
+				outline = outline.Translate(x + UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom), y + UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom));
 				DrawRectOutline(outline.Expand(1), PC_LIGHT_BLUE, 1, 1);
 
 				if (SpriteAlignerWindow::crosshair) {
